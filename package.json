@@ -1,0 +1,25 @@
+{
+  "name": "covid19",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@11ty/eleventy": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "npx @11ty/eleventy --serve --formats=html --input ./pages --output ./docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagov/covid19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cagov/covid19/issues"
+  },
+  "homepage": "https://github.com/cagov/covid19#readme"
+}
