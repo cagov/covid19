@@ -1,0 +1,16 @@
+.mapboxgl-ctrl-geocoder {
+  border: solid 1px;
+  width: 90vw;
+  max-width: 600px;
+  border-radius: 0;
+  box-shadow: none;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+#geocoder .mapboxgl-ctrl-geocoder {
+  z-index: 99;
+}
+.mt-10 {
+  margin: 0 0 10px 0;
+}
