@@ -26,30 +26,66 @@
   <link rel="icon" href="https://cwds.dev/docs/4.3/assets/img/favicons/favicon.ico">
   <meta name="msapplication-config" content="https://cwds.dev/docs/4.3/assets/img/favicons/browserconfig.xml">
   <meta name="theme-color" content="#000000">
+
 </head>
-<!-- eh -->
+
 <style>
-  .navbar-brand {
+	
+html{
+
+	scroll-behavior:smooth;
+	
+}
+.navbar-brand {
     background-size: 30%;
-    padding-left: 40px;
-  }
-
-  .navbar-inverse,
-  .navbar-inverse .navbar-collapse,
-  .navbar-inverse .navbar-form {
+	padding-left: 40px;
+}	
+	
+.navbar-inverse, .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
     background: #1172b3;
-  }
-
-  .jumbotron,
-  .jumbotron h1,
-  .jumbotron .lead {
+}	
+	
+.jumbotron, .jumbotron h1, .jumbotron .lead {
     color: #fff;
     background: #0066ab;
-  }
-
-  a.btn {
-    background: #0066ab;
-  }
+}
+	
+a.btn {
+	background: #0066ab;
+}
+	
+.bd-navbar .navbar-nav .nav-link {
+    font-weight: 600;
+    font-family: "Public Sans Bold", sans-serif;
+    font-size: 1.2rem;
+	padding-right: .7rem;
+	color: #fff;
+}
+	
+.bd-navbar .navbar-nav .nav-link.active, .bd-navbar .navbar-nav .nav-link:hover, .bd-navbar .navbar-nav .nav-link:focus {
+    color: #fff;
+	text-decoration: underline !important;
+	
+}	
+	
+	
+	
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+	
+.navbar-nav {
+	display: block;
+}
+	
+.navbar-nav.mobile {
+	display: flex;
+}
+	
+.bd-navbar .navbar-nav  {
+	padding-top: .5rem;
+}
+	
+}
 
   @media (max-width: 992px) {
     nav.navbar .flex-row {
@@ -79,6 +115,15 @@
   .collapse:not(.show) {
     display: block; /* overriding bootstrap for rough animation */
   }
+	
+h2 {
+    padding-bottom: 10px;
+    /* border-left: 3px #1172b3 solid; */
+    border-bottom: 3px #1172b3 solid;
+    width: fit-content;
+    padding: .5rem .5rem .5rem 0rem;
+}
+	
 </style>
 
 <header>
@@ -93,7 +138,7 @@
     </div>
   </div>
 
-
+<!--
   <nav class="navbar navbar-expand-lg navbar-dark bd-navbar navbar-inverse px-0">
     <div class="container-xl py-0 px-3">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -148,7 +193,41 @@
       </div>
 
     </div>
-  </nav>
+  </nav> -->
+	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
+  <div class="container-xl flex-wrap flex-md-nowrap py-0 px-3">
+    <a class="navbar-brand docs-brand navbar-left mr-3" href="/" aria-label="California Design System (ALPHA)">CA.gov</a>
+
+    <div class="order-3 order-md-0 d-flex justify-content-center justify-content-md-start">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+        <li class="nav-item">
+          <a class="nav-link" href="#what-to-do" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">What to do</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">COVID-19 in CA</a>
+        </li>
+		  <li class="nav-item">
+          <a class="nav-link" href="#" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Work, schools, and businesses</a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="navbar-nav mobile ml-sm-auto ">
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/cagov/cwds" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 50 50" >    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
+
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path></svg>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
 
 </header>
 
@@ -157,204 +236,81 @@
 <div class="container-fluid jumbotron">
       <div class="container">
         <div class="row">
-          <div class="col-md-10">
-              <h1>Coronavirus COVID-19 Response Portal</h1>
-			  <p class="lead">An outbreak of respiratory disease caused by a novel (new) coronavirus that has been detected in more than 100 locations internationally, including in the United States. The virus has been named “SARS-CoV-2” and the disease it causes has been named “coronavirus disease 2019” (abbreviated “COVID-19”). </p>
+          <div class="col-lg-10">
+              <h1>Coronavirus COVID-19 Response</h1>
+			  <p class="lead">COVID-19 is a new illness that can affect your lungs and airways. It's caused by a virus called coronavirus. </p>
           </div>
         </div>
       </div>
     </div>
 
-  <div class="container">
+ <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <h2>Symptoms of COVID-19</h2>
-		  <p>The following symptoms may appear 2-14 days after exposure to the virus: </p>
-		  	<ul>
-			  	<li>fever</li>
-				<li>cough</li>
-				<li>shortness of breath</li>
-		  	</ul>
-		 
-      </div>
-	       <div class="col-md-6">
-        <h2>I have symptoms</h2>
-		  <p>If you have symptoms, and</p> 
+	<div class="col-lg-9">	
+	  <h2 id="what-to-do">What to do</h2> 
+	  <h3>Stay home if you’ve been exposed or have symptoms</h3>
+     </div> 
+		
+		<div class="col-lg-8">
+		  <p class="bold">Stay at home for 7 days if:</p>
+		  <ul>
+			<li>You have a high temperature (fever)</li>
+			<li>You have a new continuous cough </li>
+			<li>You have traveled recently to an area of concern [Link to map/CDC/WHO]</li>
+			<li>You have had contact with a person with COVID-19</li>
+		  </ul>
+			
+			
+		  <p class="bold">It is not helpful to:</p>
+			  <ul>
+				<li>Wear a face mask if you are not sick or in a healthcare setting</li>
+				<li>Go to the doctor if you’re managing symptoms at home</li>
+			  </ul>
+
+			</div>
+	   
+      
+		
+	<div class="col-lg-8">	
+		
+		<h3>Help prevent community spread</h3>
+		<p>Older adults and people with serious medical conditions are most at risk of getting very sick from COVID-19. People can spread the disease even if they never develop symptoms, so the best way to protect your community is to stay healthy and be careful. Here’s how everyone can help:</p>
+		
+		 <ol>
+			 <li>Wash your hands often with soap and water for at least 20 seconds. If soap and water are not available, use an alcohol-based hand sanitizer that contains at least 60% alcohol.</li>
+			 <li>Avoid touching your eyes, nose and mouth.</li>
+			 <li>Clean and disinfect frequently touched objects and surfaces.</li>
+			 <li>Avoid contact with people who are sick, and stay home if you feel sick.</li>
+			 <li>Cough or sneeze into a tissue, then throw the tissue in the trash.</li>
+			 <li>Avoid large gatherings and follow guidance from local public health officials. For the latest, <a href="https://www.alpha.ca.gov/sign-up-for-local-emergency-alerts/" target="_self">sign up for local emergency alerts</a>.</li>
+		 </ol>
+		
+	    </div>
+		<div class="col-lg-8">	
+		  <h3>Testing and treatment for COVID-19 symptoms</h3>
+		   <p class="bold">If you have symptoms, and</p> 
 		  	<ul>
 			  	<li>may have had contact with a person with COVID-19</li>
 				<li>or traveled recently to an area of concern</li>
 		  	</ul>
-		  <p>Contact your healthcare provider or your <a href="https://www.cdph.ca.gov/Programs/CCLHO/CDPH%20Document%20Library/LHD_CD_Contact_Info_ADA.pdf" target="_self">local health department</a> </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action lead">Renew your drivers license</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Find Fire Information</a>
-          <a href="#" class="list-group-item list-group-item-action lead">File for Unemployment</a>
-     
-        </div>
-      </div>
-			 
-      <div class="col-md-6">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action lead">Locate Current Road Conditions</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Get Disaster Relief Assistance</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Find the 2020 minimum wage in your city</a>
-     
-        </div>
-      </div>
-    </div>
+		 	 <p>Contact your healthcare provider or your <a href="https://www.cdph.ca.gov/Programs/CCLHO/CDPH%20Document%20Library/LHD_CD_Contact_Info_ADA.pdf" target="_self">local health department</a></p>
+		
+		
 
-   
+	 
+  
+        <h2>COVID-19 in CA</h2>
+			<p>As of [March 11, 2020, 7 a.m. Pacific Time], there are a total of 198 positive cases and 4 deaths in California.
+
+			(Link to: CDPH page since they have most -up-to-date and decreases places where it has to be updated)
+			</p>
+
+		</div>
+		
+	</div>	 
   </div>
 
-<div class="container pt-5">
-  <div class="row">
-  <div class="col-md-12">
-    <h2>Find Services </h2>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-medical-heart text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Health
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
 
-      </div>
-    <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-roadways text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Transportation
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-</div>
-<div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-briefcase text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Employment
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-fire text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Emergency
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-justice-legal  text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Legal
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-graduate text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Education
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-building text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Housing
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-hand-money text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Financial
-            <div class="pull-right badge"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-12">
-    <a class="btn btn-outline-dark" href="#services-all.html" role="button">View All Services &rarr;</a>
-  </div>
-</div>
-
-
- <div class="row">   
-<div class="col-md-12 pt-5">
-    <h2>California Initiatives</h2>
-</div>
-	 </div>
-	<div class="row">
-		<div class="col-md-6">	
-				<div class="card">
-				  <img src="/docs/4.3/assets/img/real-id.jpg" class="card-img-top" alt="">
-				  <div class="card-body">
-					    <h3 class="card-title">Need a REAL ID?</h3>
-					<p class="card-text">Fly Often? Find out more about applying for a REAL ID Driver License or ID card.</p>
-					  <a href="#" class="card-link">Visit Real ID Portal </a>
-				  </div>
-				</div>
-			</div>
-		<div class="col-md-6">	
-				<div class="card">
-				  <img src="/docs/4.3/assets/img/disaster.jpg" class="card-img-top" alt="">
-				  <div class="card-body">
-					   <h3 class="card-title">Disaster Resources</h3>
-					<p class="card-text">California has been hit with devastating wildfires and other natural disasters, find out resources available to you.</p>
-					  <a href="#" class="card-link">Visit resources website </a>
-				  </div>
-				</div>
-			</div>
-	</div>
-	</div>	
 </main>
 
 
