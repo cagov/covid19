@@ -1,0 +1,59 @@
+/* mapbox geocoder, to be removed ASAP, used on water page */
+.check-water {
+  .mapboxgl-ctrl-geocoder {
+    width: 90vw;
+    max-width: 100%;
+    box-shadow: none;
+  }
+  .mapboxgl-ctrl-geocoder--input {
+    display: block;
+    min-height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    text-indent: 20px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  #geocoder .mapboxgl-ctrl-geocoder {
+    z-index: 99;
+  }
+}
+
+/* water specific styles */
+.water-label {
+  padding-left: 0;
+  padding-right: 2%;
+  padding-top: 1%;
+  width: 66%;
+}
+@media (max-width: 767.98px) {
+  .water-label {
+    padding-left: 10%;
+    padding-top: 0;
+    margin-top: -2%;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 7%;
+  }
+}
+
+/* customized bootstrap progress bars used on water */
+.progress {
+  background: none;
+}
+.limit {
+  overflow: visible;
+  margin: 0rem 0rem 0 -6rem;
+  color: #fff;
+  z-index: 2;
+  width: 100px;
+  position: absolute;
+  font-size: 1rem;
+  font-family: "Public Sans Bold", sans-serif;
+}

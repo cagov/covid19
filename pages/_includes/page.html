@@ -90,35 +90,6 @@ a.btn {
 	
 }
 
-  @media (max-width: 992px) {
-    nav.navbar .flex-row {
-      flex-direction: column !important;
-    }
-  }
-  @media (max-width: 992px) {
-    .navbar-collapse {
-      margin-top: 10px;
-    }
-  }
-
-  @media (max-width: 992px) {
-    .collapse {
-    max-height: 0px;
-    }
-  }
-  .collapse {
-    display: block;
-    overflow: hidden;
-    transition: max-height .5s cubic-bezier(0, 1, 0, 1);
-  }
-  .collapse.show {
-    max-height: 99em;
-    transition: max-height .5s ease-in-out;
-  }
-  .collapse:not(.show) {
-    display: block; /* overriding bootstrap for rough animation */
-  }
-	
 h2 {
     padding-bottom: 10px;
     /* border-left: 3px #1172b3 solid; */

@@ -1,0 +1,60 @@
+.alert.alert-info {
+  padding-top: 20px;
+}
+.display-4, .display-3, .display-4, .display-5, .display-6 {
+  font-family: 'Public Sans Bold', sans-serif;
+}
+.display-5 {
+  font-size: 1.5rem;
+}
+.display-6 {
+  font-size: 1.2rem;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.card-set {
+  display: grid;
+  grid-template-columns: 33% 33% 33%; 
+}
+.foodbanks, .shelters {
+  .card-set .card {
+    margin-right: 20px;
+    min-width: 200px;
+    max-width: 360px;
+    float: left;
+  }
+}
+.foodbanks {
+  #mapid {
+    width: 100%;
+  }
+}
+.food-map #mapid { 
+  height: 280px; 
+  margin-bottom: 20px;
+}
+@media (max-width: 1080px) {
+  .card-set {
+    grid-template-columns: 50% 50%; 
+  }
+}
+@media (max-width: 720px) {
+  .card-set {
+    grid-template-columns: 100%; 
+  }
+  .foodbanks {
+    .card-set .card {
+      max-width: none;
+    }
+  }
+}
+.d-none, .card.d-none {
+  display: none;
+}
