@@ -108,10 +108,10 @@ a.btn {
 
 h2 {
     padding-bottom: 10px;
-    /* border-left: 3px #1172b3 solid; */
+    /* border-left: 3px #1172b3 solid; 
     border-bottom: 3px #1172b3 solid;
     width: fit-content;
-    padding: .5rem .5rem .5rem 0rem;
+    padding: .5rem .5rem .5rem 0rem;*/
 }
 	
 	ol, ul, dl {
@@ -125,6 +125,22 @@ h2 {
 .alphabar {
     background-color: #0066ab;
     background: #0066ab;
+}
+
+.text-primary {
+    color: #0066ab!important;
+}
+
+.wrimagecard.wrimagecard-topimage a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.wrimagecard-topimage_title {
+    min-height: 6rem;
+}
+
+a.list-group-item.list-group-item-action {
+    color: #0066ab;
 }
 
 @media only screen and (min-width: 992px){
@@ -266,24 +282,24 @@ h2 {
 	 <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Featured</h2>
+        <h2 id="what-to-do">What you can do</h2> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action lead">Renew your drivers license</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Find Fire Information</a>
-          <a href="#" class="list-group-item list-group-item-action lead">File for Unemployment</a>
+          <a href="#" class="list-group-item list-group-item-action lead">If you’ve been exposed or have symptoms</a>
+          <a href="#" class="list-group-item list-group-item-action lead">If you’re at higher risk of illness</a>
+          <a href="#" class="list-group-item list-group-item-action lead">Testing and treatment</a>
      
         </div>
       </div>
 			 
       <div class="col-md-6">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action lead">Locate Current Road Conditions</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Get Disaster Relief Assistance</a>
-          <a href="#" class="list-group-item list-group-item-action lead">Find the 2020 minimum wage in your city</a>
+          <a href="#" class="list-group-item list-group-item-action lead">What everyone can do</a>
+          <a href="#" class="list-group-item list-group-item-action lead">Cancel or postpone gatherings</a>
+          
      
         </div>
       </div>
@@ -294,37 +310,27 @@ h2 {
 
 <div class="container pt-5">
   <div class="row">
-  <div class="col-md-12">
-    <h2>Find Services </h2>
+  <div class="col-md-12 pb-3">
+    <h2>Find more information</h2>
   </div>
-  <div class="col-md-3 col-sm-4">
+	  
+	  
+  <div class="col-md-4 col-sm-4">
       <div class="wrimagecard wrimagecard-topimage">
           <a href="#">
          <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-medical-heart text-primary"></i></center>
+            <center><i class="ca-gov-icon-graduate text-primary"></i></center>
           </div>
           <div class="wrimagecard-topimage_title text-center">
-            <h4>Health
+            <h4>Education
             <div class="pull-right badge" id="WrThemesIcons"></div></h4>
           </div>
         </a>
       </div>
 
       </div>
-    <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-roadways text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Transportation
-            <div class="pull-right badge" id="WrThemesIcons"></div></h4>
-          </div>
-        </a>
-      </div>
-</div>
-<div class="col-md-3 col-sm-4">
+    
+<div class="col-md-4 col-sm-4">
       <div class="wrimagecard wrimagecard-topimage">
           <a href="#">
          <div class="wrimagecard-topimage_header display-3">
@@ -338,71 +344,59 @@ h2 {
       </div>
 
   </div>
-  <div class="col-md-3 col-sm-4">
+  <div class="col-md-4 col-sm-4">
       <div class="wrimagecard wrimagecard-topimage">
           <a href="#">
          <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-fire text-primary"></i></center>
+            <center><i class="ca-gov-icon-medical-heart text-primary"></i></center>
           </div>
           <div class="wrimagecard-topimage_title text-center">
-            <h4>Emergency
+            <h4>Health
             <div class="pull-right badge" id="WrThemesIcons"></div></h4>
           </div>
         </a>
       </div>
   </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-justice-legal  text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Legal
-            <div class="pull-right badge" id="WrThemesIcons"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
-      <div class="wrimagecard wrimagecard-topimage">
-          <a href="#">
-         <div class="wrimagecard-topimage_header display-3">
-            <center><i class="ca-gov-icon-graduate text-primary"></i></center>
-          </div>
-          <div class="wrimagecard-topimage_title text-center">
-            <h4>Education
-            <div class="pull-right badge" id="WrThemesIcons"></div></h4>
-          </div>
-        </a>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-4">
+  <div class="col-md-4 col-sm-4">
       <div class="wrimagecard wrimagecard-topimage">
           <a href="#">
          <div class="wrimagecard-topimage_header display-3">
             <center><i class="ca-gov-icon-building text-primary"></i></center>
           </div>
           <div class="wrimagecard-topimage_title text-center">
-            <h4>Housing
+            <h4>Safety in public places
             <div class="pull-right badge" id="WrThemesIcons"></div></h4>
           </div>
         </a>
       </div>
   </div>
-  <div class="col-md-3 col-sm-4">
+  <div class="col-md-4 col-sm-4">
       <div class="wrimagecard wrimagecard-topimage">
           <a href="#">
          <div class="wrimagecard-topimage_header display-3">
             <center><i class="ca-gov-icon-hand-money text-primary"></i></center>
           </div>
           <div class="wrimagecard-topimage_title text-center">
-            <h4>Financial
+            <h4>Taxes
             <div class="pull-right badge" id="WrThemesIcons"></div></h4>
           </div>
         </a>
       </div>
   </div>
+  <div class="col-md-4 col-sm-4">
+      <div class="wrimagecard wrimagecard-topimage">
+          <a href="#">
+         <div class="wrimagecard-topimage_header display-3">
+            <center><i class="ca-gov-icon-cal-bear text-primary"></i></center>
+          </div>
+          <div class="wrimagecard-topimage_title text-center">
+            <h4>State and local resources
+            <div class="pull-right badge" id="WrThemesIcons"></div></h4>
+          </div>
+        </a>
+      </div>
+  </div>
+
   <div class="col-md-12">
     <a class="btn btn-outline-dark" href="#services-all.html" role="button">View All Services &rarr;</a>
   </div>
