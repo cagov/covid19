@@ -12,6 +12,7 @@
   <!-- Bootstrap core CSS -->
   <link href="https://cwds.dev/docs/4.3/dist/css/bootstrap.css" rel="stylesheet">
 
+
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
@@ -69,7 +70,7 @@ a.btn {
 	
 .bd-navbar .navbar-nav .nav-link {
     
-    font-family: "Public Sans Bold", sans-serif;
+
     font-size: 1.2rem;
 	padding-right: .7rem;
 	color: #fff;
@@ -131,6 +132,10 @@ h2 {
    position:fixed;
  }
 }
+
+.inverse-hyperlink a, a:hover, a:visited {
+    color: white;
+}
         
 
 </style>
@@ -146,26 +151,118 @@ h2 {
       </div>
     </div>
   </div>
+
+<!--
+  <nav class="navbar navbar-expand-lg navbar-dark bd-navbar navbar-inverse px-0">
+    <div class="container-xl py-0 px-3">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse flex-column flex-md-row flex-wrap flex-md-nowrap ">
+        <a class="navbar-brand docs-brand navbar-left mr-3" href="/"
+          aria-label="California Design System (ALPHA)">CA.gov</a>
+        <ul class="navbar-nav bd-navbar-nav flex-row order-md-0 justify-content-md-start">
+          <li class="nav-item">
+            <a class="nav-link active" href="/"
+              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Latest Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs/4.3/getting-started/introduction/"
+              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Prevent Spread</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs/4.3/getting-started/introduction/"
+              onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Unemployment Benefits</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-sm-auto">
+          <li class="nav-item">
+            <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://github.com/cagov/cwds" target="_blank" rel="noopener"
+              aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg"
+                viewBox="0 0 512 499.36" role="img">
+                <title>GitHub</title>
+                <path fill="currentColor" fill-rule="evenodd"
+                  d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                </path>
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://twitter.com/cadotgov" target="_blank" rel="noopener"
+              aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" class="navbar-nav-svg"
+                viewBox="0 0 512 416.32" role="img">
+                <title>Twitter</title>
+                <path fill="currentColor"
+                  d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92">
+                </path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav> -->
+	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
+  <div class="container flex-wrap flex-md-nowrap py-0 px-3">
+    <a class="navbar-brand docs-brand navbar-left mr-3" href="/" aria-label="California Design System (ALPHA)">CA.gov</a>
+
+    <!--<div class="order-3 order-md-0 d-flex justify-content-center justify-content-md-start">
+      <ul class="navbar-nav bd-navbar-nav flex-row pl-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#what-to-do">What to do</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#covid-19">COVID-19 in CA</a>
+        </li>
+		  <li class="nav-item">
+          <a class="nav-link" href="#school-work">School and work</a>
+        </li>
+      </ul>
+    </div>-->
+
+    <ul class="navbar-nav mobile ml-sm-auto ">
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/cagov/cwds" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" >    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
+
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path></svg>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
 </header>
 
 <main>
 
-  <div id="top" class="container-fluid jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10">
-          <h1>Coronavirus COVID-19 Resoponse Portal - Translate</h1>
+<div id="top" class="container-fluid jumbotron inverse-hyperlink ">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10">
+              <h1>Coronavirus COVID-19 Response</h1>
+			  <p class="lead">COVID-19 is a new illness that can affect your lungs and airways. It's caused by a virus called coronavirus. </p>
+        <p>As of Friday, <span class="bold">March 13</span>, there are <span class="bold">198 positive cases</span> and <span class="bold">4 deaths</span> in California. See the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">California Department of Public Health (CDPH) for the latest data</a>.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-12">
-
-        
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+  
 <div id="top" class="container-fluid jumbotron">
   <div class="container">
     <div class="row">
@@ -198,11 +295,9 @@ h2 {
 
 <!-- deploy test -->
 
-
-        </div>
-      </div>
-    </div>
   </div>
+</div>
+</div>
 
 </main>
 
@@ -238,15 +333,6 @@ h2 {
   </div>
 </div>
 
-<script>
-  if(document.querySelector('.navbar-toggler')) {
-    document.querySelector('.navbar-toggler').addEventListener('click',function(event) {
-      event.preventDefault();
-      this.classList.toggle('collapsed')
-      document.querySelector('.navbar-collapse').classList.toggle('show');
-    })
-  }
-</script>
 <script
   type="text/javascript"
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
