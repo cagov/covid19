@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: 'css/[chunkhash].css'
+      chunkFilename: 'css/build/built.css'
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
@@ -51,7 +51,7 @@ module.exports = {
       filename: 'index.html',
       template: 'docs/index.html',
       minify: minificationOptions
-    })
+    }),
   ],
   module: {
     rules: [
