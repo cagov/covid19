@@ -433,11 +433,13 @@ h2 {
 </div>
 
 <script>
-  document.querySelector('.navbar-toggler').addEventListener('click',function(event) {
-    event.preventDefault();
-    this.classList.toggle('collapsed')
-    document.querySelector('.navbar-collapse').classList.toggle('show');
-  })
+  if(document.querySelector('.navbar-toggler')) {
+    document.querySelector('.navbar-toggler').addEventListener('click',function(event) {
+      event.preventDefault();
+      this.classList.toggle('collapsed')
+      document.querySelector('.navbar-collapse').classList.toggle('show');
+    })
+  }
 </script>
 <script
   type="text/javascript"
