@@ -1,7 +1,7 @@
 const path = require('path');
 const glob = require('glob');
 const PATHS = {
-  src: path.join(__dirname, 'src')
+  src: path.join(__dirname, 'pages')
 };
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
