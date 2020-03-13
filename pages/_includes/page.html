@@ -97,7 +97,19 @@ h2 {
     width: fit-content;
     padding: .5rem .5rem .5rem 0rem;
 }
-	
+
+@media (min-width: 992px) {
+  .container-xl {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-xl {
+    max-width: 1140px;
+  }
+}
+
 </style>
 
 <header>
@@ -169,7 +181,7 @@ h2 {
     </div>
   </nav> -->
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
-  <div class="container-xl flex-wrap flex-md-nowrap py-0 px-3">
+  <div class="container flex-wrap flex-md-nowrap py-0 px-3">
     <a class="navbar-brand docs-brand navbar-left mr-3" href="/" aria-label="California Design System (ALPHA)">CA.gov</a>
 
     <div class="order-3 order-md-0 d-flex justify-content-center justify-content-md-start">
