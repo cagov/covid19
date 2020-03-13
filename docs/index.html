@@ -132,6 +132,10 @@ h2 {
    position:fixed;
  }
 }
+
+.inverse-hyperlink a, a:hover, a:visited {
+    color: white;
+}
         
 
 </style>
@@ -243,7 +247,7 @@ h2 {
 
 <main>
 
-<div id="top" class="container-fluid jumbotron">
+<div id="top" class="container-fluid jumbotron inverse-hyperlink ">
       <div class="container">
         <div class="row">
           <div class="col-lg-10">
@@ -434,13 +438,11 @@ h2 {
 </div>
 
 <script>
-  if(document.querySelector('.navbar-toggler')) {
-    document.querySelector('.navbar-toggler').addEventListener('click',function(event) {
-      event.preventDefault();
-      this.classList.toggle('collapsed')
-      document.querySelector('.navbar-collapse').classList.toggle('show');
-    })
-  }
+  document.querySelector('.navbar-toggler').addEventListener('click',function(event) {
+    event.preventDefault();
+    this.classList.toggle('collapsed')
+    document.querySelector('.navbar-collapse').classList.toggle('show');
+  })
 </script>
 <script
   type="text/javascript"
