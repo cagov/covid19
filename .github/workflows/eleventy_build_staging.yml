@@ -2,7 +2,7 @@ name: Eleventy Build
 on:
   push:
     branches:
-      - master
+      - staging
 
 jobs:
   build_deploy:
@@ -17,5 +17,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
           PUBLISH_DIR: ./docs 
-          PUBLISH_BRANCH: deploy_production
+          PUBLISH_BRANCH: deploy_staging
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
