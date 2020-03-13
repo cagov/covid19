@@ -260,7 +260,19 @@ h2 {
     </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row flex-md-row-reverse">
+  	<div class="col-lg-4">
+		<div class="aside col-lg-3 p-0">
+			<div class="list-group">
+				<a href="/education/" class="list-group-item list-group-item-action guide">Education</a>
+				<a href="/employment/" class="list-group-item list-group-item-action guide pl-5">Employment</a>
+				<a href="/healthcare/" class="list-group-item list-group-item-action guide pl-5">Health</a>
+				<a href="/safety-public-places/" class="list-group-item list-group-item-action guide">Safety in public places</a>
+				<a href="/taxes/" class="list-group-item list-group-item-action guide">Taxes</a>
+        <a href="/state-local-resources/" class="list-group-item list-group-item-action guide">State and local resources</a>
+			</div>
+			</div>
+		</div>
     <div class="col-lg-9">
     <h2>{{ title }}</h2>
   {{ content | safe }}
