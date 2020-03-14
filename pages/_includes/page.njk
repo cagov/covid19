@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ meta }}">
+  <meta name="description" content="{{ meta | safe }}">
   <meta name="author" content="alpha.ca.gov team">
-  <title>{{ title }} - Coronavirus COVID-19 Response</title>
+  <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
   
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
@@ -32,12 +32,33 @@
   <style>
     {{ css | cssmin | safe }}
     .translate {margin-top:.3rem;}
+    .skippy {display: block;
+    padding: 1em;
+    color: #fff;
+    text-align: center;
+    background-color: #0066ab;}
+    .skippy-text {padding: .5em;
+    border: 1px dotted;}  
+
+    .sr-only-focusable:not(:focus) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;}
   </style>
 </head>
 
 
 
 <header>
+<a class="skippy sr-only-focusable text-center" href="#main">
+      <span class="skippy-text">Skip to main content</span>
+ </a>
   <div class="official">
     <div class="container">
       <div class="row">
@@ -74,7 +95,7 @@
 
 </header>
 
-<main>
+<main id="main">
 
 <div id="top" class="container-fluid jumbotron inverse-hyperlink ">
       <div class="container">
@@ -131,6 +152,7 @@
             <li class="list-group-item alpha-footer"><a href="/feedback/">Feedback</a></li>
           </ul>
           <p class="text-secondary">Official California State Government Website</p>
+          <p class="bold">Updated {{ publishdate | formatDate }}</p>
         </div>
       </div>
     </div>
