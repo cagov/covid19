@@ -97,8 +97,29 @@ h2 {
     background: #0066ab;
 }
 
+.text-primary {
+    color: #0066ab!important;
+}
+
+.wrimagecard.wrimagecard-topimage a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.wrimagecard-topimage_title {
+    min-height: 6rem;
+}
+
+a.list-group-item.list-group-item-action {
+    color: #0066ab;
+}
+
+
+.translate {
+    margin-top:.3rem;
+}
+
 @media only screen and (min-width: 992px){
- .aside{ 
+ .aside { 
        /*position: fixed;*/
  }
 }
@@ -106,5 +127,7 @@ h2 {
 .inverse-hyperlink a, a:hover, a:visited {
     color: white;
 }
+
+
         
 
