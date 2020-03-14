@@ -352,9 +352,9 @@ a.navbar-brand:visited {
 .navbar img {
     width: 100%;
     height: auto;
-    max-width: 50px;
-    margin-top: 8px;
-    max-height: 35px;
+    max-width: 90px;
+    max-height: 60px;
+    margin-top:0;
 }
 
 .nav-cali-bg {
@@ -571,7 +571,7 @@ a.navbar-brand:visited {
 
 .official {
     background: #f1f1f1;
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
 .official a,
@@ -591,7 +591,7 @@ a.navbar-brand:visited {
 
 .official img {
     margin-right: 10px;
-    max-width: 60px;
+    max-width: 40px;
 }
 
 .official-footer {
