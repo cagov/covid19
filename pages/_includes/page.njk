@@ -80,9 +80,7 @@ title: Coronavirus COVID-19 Response
       <div class="container">
         <div class="row">
           <div class="col-lg-10">
-              <h1>Coronavirus COVID-19 Response</h1>
-			  <p class="lead">COVID-19 is a new illness that can affect your lungs and airways. It's caused by a virus called coronavirus. </p>
-        <p>As of Friday, <span class="bold">March 13</span>, there are <span class="bold">198 positive cases</span> and <span class="bold">4 deaths</span> in California. See the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">California Department of Public Health (CDPH) for the latest data</a>.</p>
+              <h1>>{{ title | safe }} - Coronavirus COVID-19 Response</h1>
           </div>
         </div>
       </div>
@@ -104,7 +102,6 @@ title: Coronavirus COVID-19 Response
 			</div>
 		</div>
     <div class="col-lg-8">
-    <h2>{{ title | safe }}</h2>
   {{ content | safe }}
   </div>
 </div>
