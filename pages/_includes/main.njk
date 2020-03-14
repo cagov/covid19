@@ -12,8 +12,10 @@ title: Coronavirus COVID-19 Response
   <meta name="generator" content="Hugo 0.61.0">
   <title>{{ title }}</title>
 
-  <link href="https://california.azureedge.net/cdt/statetemplate/6.0.0/css/cagov.font-only.min.css" rel="stylesheet" />
-  
+  <!-- Bootstrap core CSS -->
+  <link href="https://cwds.dev/docs/4.3/dist/css/bootstrap.css" rel="stylesheet">
+
+
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
@@ -41,7 +43,121 @@ title: Coronavirus COVID-19 Response
   </style>
 </head>
 
+<style>
+	
+html{
+
+	scroll-behavior:smooth;
+	
+}
+.navbar-brand {
+    background-size: 30%;
+	padding-left: 40px;
+}	
+	
+.navbar-inverse, .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    background: #1172b3;
+}	
+	
+.jumbotron, .jumbotron h1, .jumbotron .lead {
+    color: #fff;
+    background: #0066ab;
+}
+	
+a.btn {
+	background: #0066ab;
+}
+	
+.bd-navbar .navbar-nav .nav-link {
+    
+
+    font-size: 1.2rem;
+	padding-right: .7rem;
+	color: #fff;
+}
+	
+.bd-navbar .navbar-nav .nav-link.active, .bd-navbar .navbar-nav .nav-link:hover, .bd-navbar .navbar-nav .nav-link:focus {
+    color: #fff;
+	text-decoration: underline !important;
+	
+}	
+	
+	.bold {
+		
+		font-family: "Public Sans Bold", sans-serif;
+	}
+	
+	
+	
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+	
+.navbar-nav {
+	display: block;
+}
+	
+.navbar-nav.mobile {
+	display: flex;
+}
+	
+.bd-navbar .navbar-nav  {
+	padding-top: .5rem;
+}
+	
+}
+
+h2 {
+    padding-bottom: 10px;
+    /* border-left: 3px #1172b3 solid; 
+    border-bottom: 3px #1172b3 solid;
+    width: fit-content;
+    padding: .5rem .5rem .5rem 0rem;*/
+}
+	
+	ol, ul, dl {
+    line-height: 2rem;
+}
+	
+	h2, h3, h4 {
+		
+		padding-top: .7rem;
+	}
+.alphabar {
+    background-color: #0066ab;
+    background: #0066ab;
+}
+
+.text-primary {
+    color: #0066ab!important;
+}
+
+.wrimagecard.wrimagecard-topimage a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.wrimagecard-topimage_title {
+    min-height: 6rem;
+}
+
+a.list-group-item.list-group-item-action {
+    color: #0066ab;
+}
+
+@media only screen and (min-width: 992px){
+ .aside{ 
+   position:fixed;
+ }
+}
+
+.inverse-hyperlink a, a:hover, a:visited {
+    color: white;
+}
+        
+
+</style>
+
 <header>
+  <link href="https://california.azureedge.net/cdt/statetemplate/6.0.0/css/cagov.font-only.min.css" rel="stylesheet" />
   <div class="official">
     <div class="container">
       <div class="row">
@@ -55,6 +171,7 @@ title: Coronavirus COVID-19 Response
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
     <a class="navbar-brand docs-brand navbar-left mr-3" href="/" aria-label="California Design System (ALPHA)">CA.gov</a>
+
 
     <ul class="navbar-nav mobile ml-sm-auto ">
       <li class="nav-item">
@@ -127,15 +244,5 @@ title: Coronavirus COVID-19 Response
   type="text/javascript"
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
 defer></script>
-
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
-      { pageLanguage: "en" },
-      "google_translate_element"
-    );
-  }
-</script>
-
 </body>
 </html>
