@@ -1,5 +1,4 @@
 const CleanCSS = require("clean-css");
-const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
@@ -8,10 +7,13 @@ module.exports = function(eleventyConfig) {
   });
 
   // Format dates within templates.
-  // https://moment.github.io/luxon/docs/manual/formatting.html
-  eleventyConfig.addFilter('formatDate', function(date) {
-    return DateTime.fromISO(date).toFormat("LLLL d',' yyyy 'at' t");
+  eleventyConfig.addFilter('formatDate', function(datestring) {
+    const date = new Date(datestring);
+    const locales = 'en-US';
+    const timeZone = 'America/Los_Angeles';
+    return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
   });
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
+
