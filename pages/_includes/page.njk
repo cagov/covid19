@@ -102,8 +102,9 @@ title: Coronavirus COVID-19 Response
 			</div>
 			</div>
 		</div>
-    <div class="col-lg-8">
-  {{ content | safe }}
+    <div class="col-lg-8">      
+      <p class="bold">Updated {{ publishdate | formatDate }}</p>
+      {{ content | safe }}
   </div>
 </div>
 </div>
