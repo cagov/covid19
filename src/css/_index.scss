@@ -124,8 +124,8 @@ a.list-group-item.list-group-item-action {
  }
 }
 
-.inverse-hyperlink a, .inverse-hyperlink a:hover, .inverse-hyperlink a:visited {
-    color: white;
+.inverse-hyperlink > a, a:hover, a:visited {
+    /*color: white;*/
 }
 
 .skippy {display: block;
