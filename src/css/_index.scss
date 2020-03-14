@@ -48,11 +48,15 @@ a.btn {
 	
 }	
 	
-	.bold {
-		
-		font-family: "Public Sans Bold", sans-serif;
-	}
+.bold {
+
+	font-family: "Public Sans Bold", sans-serif;
+}
 	
+a.list-group-item.list-group-item-action {
+	border-radius: .25rem;
+}
+
 	
 	
 /* Small devices (landscape phones, less than 768px) */
