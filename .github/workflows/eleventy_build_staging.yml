@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+        with:
           ref: staging
       - name: Build
         uses: cagov/actions-eleventy@v1.4.1
