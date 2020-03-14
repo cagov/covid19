@@ -12,7 +12,7 @@ jobs:
       - name: Build
         uses: cagov/actions-eleventy@v1.4.1
         with:
-          args: --formats=html --input ./pages
+          args: --formats=html,njk --input ./pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
