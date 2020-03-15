@@ -15,13 +15,13 @@ module.exports = function(eleventyConfig) {
   });
 
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', function(pageslug,pagelink) {
-    return pageslug.toLocaleLowerCase()===pagelink.toLocaleLowerCase() ? " active" : "";
+  eleventyConfig.addFilter('pageActive', function(page, pagelink) {
+    return page.fileSlug.toLocaleLowerCase()===pagelink.toLocaleLowerCase() ? " active" : "";
   });
 
   // show or hide content based on page
-  eleventyConfig.addPairedShortcode("pagesection", function(content, pageslug, sectionslug) { 
-    return pageslug.toLocaleLowerCase()===sectionslug.toLocaleLowerCase() ? content : "";
+  eleventyConfig.addPairedShortcode("pagesection", function(content, page, sectionslug) { 
+    return page.fileSlug.toLocaleLowerCase()===sectionslug.toLocaleLowerCase() ? content : "";
   });
 
 
