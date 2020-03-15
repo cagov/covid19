@@ -12,7 +12,7 @@ jobs:
         with:
           ref: staging
       - name: Build
-        uses: cagov/actions-eleventy@v1.4.1
+        uses: cagov/actions-eleventy@2.0
         with:
           args: --formats=html,njk --input ./pages --output ./docs
       - name: Deploy
