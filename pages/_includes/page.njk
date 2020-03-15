@@ -85,21 +85,24 @@
   	<div class="col-lg-4">
 		<div class="aside p-0">
 			<div class="list-group">
-        <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide">What you can do</a>
-        <div class="list-group-item">
-        <ul class="subnav"><li><a href="/what-you-can-do/#been-exposed" class="text-black">If you’ve been exposed or have symptoms</a></li>
-      <li><a href="/what-you-can-do/#higher-risk" class="text-black">If you’re at higher risk of illness</a></li>
-      <li><a href="/what-you-can-do/#testing" class="text-black">Testing and treatment</a></li>
-     <li><a href="/what-you-can-do/#gatherings" class="text-black">Cancel or postpone gatherings</a></li>
 
-        </ul>
+        <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide {{page | pageActive('what-you-can-do')}}">What you can do</a>
+        {% pagesection page, "what-you-can-do" %}
+        <div class="list-group-item">
+          <ul class="subnav">
+            <li><a href="/what-you-can-do/#been-exposed" class="text-black">If you’ve been exposed or have symptoms</a></li>
+            <li><a href="/what-you-can-do/#higher-risk" class="text-black">If you’re at higher risk of illness</a></li>
+            <li><a href="/what-you-can-do/#testing" class="text-black">Testing and treatment</a></li>
+            <li><a href="/what-you-can-do/#gatherings" class="text-black">Cancel or postpone gatherings</a></li>
+          </ul>
         </div>
-				<a href="/education/" class="list-group-item list-group-item-action guide">Education</a>
-				<a href="/employment/" class="list-group-item list-group-item-action guide">Employment</a>
-				<a href="/healthcare/" class="list-group-item list-group-item-action guide">Healthcare</a>
-				<a href="/safety-in-public-places/" class="list-group-item list-group-item-action guide">Safety in public places</a>
-				<a href="/taxes/" class="list-group-item list-group-item-action guide">Taxes</a>
-        <a href="/state-local-resources/" class="list-group-item list-group-item-action guide">State and local resources</a>
+        {% endpagesection %}
+				<a href="/education/" class="list-group-item list-group-item-action guide {{page | pageActive('education')}}">Education </a>
+				<a href="/employment/" class="list-group-item list-group-item-action guide {{page | pageActive('employment')}}">Employment </a>
+				<a href="/healthcare/" class="list-group-item list-group-item-action guide {{page | pageActive('healthcare')}}">Healthcare </a>
+				<a href="/safety-in-public-places/" class="list-group-item list-group-item-action guide {{page | pageActive('safety-in-public-places')}}">Safety in public places</a>
+				<a href="/taxes/" class="list-group-item list-group-item-action guide {{page | pageActive('taxes')}}">Taxes</a>
+        <a href="/state-local-resources/" class="list-group-item list-group-item-action guide {{page | pageActive('state-local-resources')}}">State and local resources</a>
 			</div>
 			</div>
 		</div>
@@ -158,5 +161,9 @@ defer></script>
   }
 </script>
 
+{% pagesection page, "foo" %}
+<!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
+<a href="" class="list-group-item list-group-item-action guide active d-none"></a>
+{% endpagesection %}
 </body>
 </html>
