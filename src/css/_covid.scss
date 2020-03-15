@@ -138,6 +138,10 @@ a.list-group-item.list-group-item-action {
     color: #fff;
 }
 
+.list-group-item.list-group-item-action ul li a {
+    text-decoration: none;
+}
+
 @media only screen and (min-width: 992px){
  .aside { 
        /*position: fixed;*/
