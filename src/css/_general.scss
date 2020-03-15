@@ -195,6 +195,8 @@ strong,
     color: #4F4F4F !important;
 }
 
+.text-black {color:#000 !important;}
+
 /* List group */
 
 
@@ -291,6 +293,8 @@ a.list-group-item.list-group-item-action.guide:last-child {
 .list-group.home {
     margin-left: -.5rem;
 }
+
+.list-group-item ul.subnav li {line-height: 1.4em; margin-top: .4em;} 
 
 
 /* Navbar */
