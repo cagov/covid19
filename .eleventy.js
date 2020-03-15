@@ -14,16 +14,13 @@ module.exports = function(eleventyConfig) {
     return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
   });
 
+  const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
+
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', function(page, pagelink) {
-    return page.fileSlug.toLocaleLowerCase()===pagelink.toLocaleLowerCase() ? " active" : "";
-  });
+  eleventyConfig.addFilter('pageActive', (page, slug) => contentfrompage(" active", page, slug));
 
   // show or hide content based on page
-  eleventyConfig.addPairedShortcode("pagesection", function(content, page, sectionslug) { 
-    return page.fileSlug.toLocaleLowerCase()===sectionslug.toLocaleLowerCase() ? content : "";
-  });
-
+  eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
