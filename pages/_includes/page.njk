@@ -87,7 +87,7 @@
   	<div class="col-lg-4">
 		<div class="aside p-0">
 			<div class="list-group">
-        <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
+
         <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide {{page.fileSlug | pageActive('what-you-can-do')}}">What you can do</a>
         {% pagesection page.fileSlug, "what-you-can-do" %}
         <div class="list-group-item">
@@ -163,5 +163,9 @@ defer></script>
   }
 </script>
 
+{% pagesection "", "foo" %}
+<!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
+<a href="" class="list-group-item list-group-item-action guide active d-none"></a>
+{% endpagesection %}
 </body>
 </html>
