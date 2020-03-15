@@ -18,6 +18,7 @@ steps:
     versionSpec: '10.x'
 
 - script: npm install
+- script: npm run build
 
 - task: ArchiveFiles@2
   inputs:
