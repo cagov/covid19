@@ -22,6 +22,9 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
+  eleventyConfig.addFilter('contentfilter', code => 
+    code.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
+
   eleventyConfig.htmlTemplateEngine = "njk";
 };
 
