@@ -950,7 +950,14 @@ label.custom-control-label {
     	margin-right: -20px;
 }
 
+a .wrimagecard-topimage_header h4 {
+    /*text-decoration: underline;*/
+    color: #1470b0;
+}
 
+a:hover .wrimagecard-topimage_header h4 {
+    text-decoration: underline;
+}
 
 
 
@@ -1012,6 +1019,10 @@ label.custom-control-label {
 	.mobile-padding-top {
 		padding-top: 3rem;
 	}
+	.navbar-brand {
+    display: contents;
+    white-space: normal;
+}
 
 }
 .mb-0 {margin-bottom: 0 !important;}
