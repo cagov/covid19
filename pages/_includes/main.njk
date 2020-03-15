@@ -6,10 +6,16 @@ title: Coronavirus COVID-19 Response
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
   <meta name="description"
     content="California is issuing daily updates on COVID-19, check this website for the latest updates and resources.">
   <meta name="author" content="Bootstrap, alpha.ca.gov team">
   <title>{{ title }}</title>
+=======
+  <meta name="description" content="{{ meta | safe }}">
+  <meta name="author" content="alpha.ca.gov team">
+  <title>{{ title | safe }}</title>
+>>>>>>> staging
 
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
@@ -37,122 +43,9 @@ title: Coronavirus COVID-19 Response
     {{ css | cssmin | safe }}
   </style>
 </head>
-
-<style>
-	
-html{
-
-	scroll-behavior:smooth;
-	
-}
-.navbar-brand {
-    background-size: 30%;
-	padding-left: 40px;
-}	
-	
-.navbar-inverse, .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    background: #1172b3;
-}	
-	
-.jumbotron, .jumbotron h1, .jumbotron .lead {
-    color: #fff;
-    background: #0066ab;
-}
-	
-a.btn {
-	background: #0066ab;
-}
-	
-.bd-navbar .navbar-nav .nav-link {
-    
-
-    font-size: 1.2rem;
-	padding-right: .7rem;
-	color: #fff;
-}
-	
-.bd-navbar .navbar-nav .nav-link.active, .bd-navbar .navbar-nav .nav-link:hover, .bd-navbar .navbar-nav .nav-link:focus {
-    color: #fff;
-	text-decoration: underline !important;
-	
-}	
-	
-	.bold {
-		
-		font-family: "Public Sans Bold", sans-serif;
-	}
-	
-	
-	
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-	
-.navbar-nav {
-	display: block;
-}
-	
-.navbar-nav.mobile {
-	display: flex;
-}
-	
-.bd-navbar .navbar-nav  {
-	padding-top: .5rem;
-}
-	
-}
-
-h2 {
-    padding-bottom: 10px;
-    /* border-left: 3px #1172b3 solid; 
-    border-bottom: 3px #1172b3 solid;
-    width: fit-content;
-    padding: .5rem .5rem .5rem 0rem;*/
-}
-	
-	ol, ul, dl {
-    line-height: 2rem;
-}
-	
-	h2, h3, h4 {
-		
-		padding-top: .7rem;
-	}
-.alphabar {
-    background-color: #0066ab;
-    background: #0066ab;
-}
-
-.text-primary {
-    color: #0066ab!important;
-}
-
-.wrimagecard.wrimagecard-topimage a:focus {
-    outline: 2px solid #0257d5;
-}
-
-.wrimagecard-topimage_title {
-    min-height: 6rem;
-}
-
-a.list-group-item.list-group-item-action {
-    color: #0066ab;
-}
-
-@media only screen and (min-width: 992px){
- .aside{ 
-   position:fixed;
- }
-}
-
-.inverse-hyperlink a, a:hover, a:visited {
-    color: white;
-}
-        
-
-</style>
-
 <header>
   <link href="https://california.azureedge.net/cdt/statetemplate/6.0.0/css/cagov.font-only.min.css" rel="stylesheet" />
+<<<<<<< HEAD
   <div class="official">
     <div class="container">
       <div class="row">
@@ -162,11 +55,16 @@ a.list-group-item.list-group-item-action {
       </div>
     </div>
   </div>
+=======
+<a class="skippy sr-only-focusable text-center" href="#main">
+      <span class="skippy-text">Skip to main content</span>
+ </a>
+<div class="official"><div class="container"><div class="row"><div class="col-md-12"><p>State of California</p></div></div></div></div>
+>>>>>>> staging
 
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
-    <a class="navbar-brand docs-brand navbar-left mr-3" href="/" aria-label="California Design System (ALPHA)">CA.gov</a>
-
+    <a class="navbar-brand docs-brand navbar-left mr-3" href="/">COVID-19 Response</a>
 
     <ul class="navbar-nav mobile ml-sm-auto ">
       <li class="nav-item">
@@ -180,6 +78,9 @@ a.list-group-item.list-group-item-action {
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path></svg>
         </a>
       </li>
+      <li class="nav-item">
+      <a href="/translate/" class="btn translate">Translate</a>
+      </li>
     </ul>
 
   </div>
@@ -187,7 +88,7 @@ a.list-group-item.list-group-item-action {
 
 </header>
 
-<main>
+<main id="main">
 
 <div id="top" class="container-fluid jumbotron inverse-hyperlink ">
       <div class="container">
@@ -195,7 +96,8 @@ a.list-group-item.list-group-item-action {
           <div class="col-lg-10">
               <h1>Coronavirus COVID-19 Response</h1>
 			  <p class="lead">COVID-19 is a new illness that can affect your lungs and airways. It's caused by a virus called coronavirus. </p>
-        <p>As of Friday, <span class="bold">March 13</span>, there are <span class="bold">198 positive cases</span> and <span class="bold">4 deaths</span> in California. See the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">California Department of Public Health (CDPH) for the latest data</a>.</p>
+    
+          <p class="lead bold">We are working rapidly to keep our state healthy. There’s a lot you can do to help.</P>
           </div>
         </div>
       </div>
@@ -239,5 +141,6 @@ a.list-group-item.list-group-item-action {
   type="text/javascript"
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
 defer></script>
+<script type="text/javascript">function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element'); }</script>
 </body>
 </html>

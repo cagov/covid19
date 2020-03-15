@@ -48,11 +48,15 @@ a.btn {
 	
 }	
 	
-	.bold {
-		
-		font-family: "Public Sans Bold", sans-serif;
-	}
+.bold {
+
+	font-family: "Public Sans Bold", sans-serif;
+}
 	
+a.list-group-item.list-group-item-action {
+	border-radius: .25rem;
+}
+
 	
 	
 /* Small devices (landscape phones, less than 768px) */
@@ -93,14 +97,58 @@ h2 {
     background: #0066ab;
 }
 
+.text-primary {
+    color: #0066ab!important;
+}
+
+.wrimagecard.wrimagecard-topimage a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.wrimagecard-topimage_title {
+    min-height: 6rem;
+}
+
+a.list-group-item.list-group-item-action {
+    color: #0066ab;
+}
+
+
+.translate {
+    margin-top:.3rem;
+}
+
 @media only screen and (min-width: 992px){
- .aside{ 
+ .aside { 
        /*position: fixed;*/
  }
 }
 
-.inverse-hyperlink a, a:hover, a:visited {
-    color: white;
+.inverse-hyperlink > a, a:hover, a:visited {
+    /*color: white;*/
 }
+
+.skippy {display: block;
+    padding: 1em;
+    color: #fff !important;
+    text-align: center;
+    background-color: #0066ab;}
+.skippy-text {padding: .5em;
+    border: 1px dotted;}  
+
+.sr-only-focusable:not(:focus) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;}
+
+    .text-sm {font-size: .9rem !important;}
+
+
         
 

@@ -1,4 +1,4 @@
-name: Eleventy Build
+name: Eleventy Build Master
 on:
   push:
     branches:
@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build
-        uses: cagov/actions-eleventy@v1.4.1
+        uses: cagov/actions-eleventy@2.0
         with:
-          args: --formats=html --input ./pages
+          args: --formats=html,njk --input ./pages --output ./docs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
