@@ -87,15 +87,18 @@
   	<div class="col-lg-4">
 		<div class="aside p-0">
 			<div class="list-group">
+        <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
         <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide {{page.fileSlug | pageActive('what-you-can-do')}}">What you can do</a>
+        {% pagesection page.fileSlug, "what-you-can-do" %}
         <div class="list-group-item">
-        <ul class="subnav"><li><a href="/what-you-can-do/#been-exposed" class="text-black">If you’ve been exposed or have symptoms</a></li>
-      <li><a href="/what-you-can-do/#higher-risk" class="text-black">If you’re at higher risk of illness</a></li>
-      <li><a href="/what-you-can-do/#testing" class="text-black">Testing and treatment</a></li>
-     <li><a href="/what-you-can-do/#gatherings" class="text-black">Cancel or postpone gatherings</a></li>
-
-        </ul>
+          <ul class="subnav">
+            <li><a href="/what-you-can-do/#been-exposed" class="text-black">If you’ve been exposed or have symptoms</a></li>
+            <li><a href="/what-you-can-do/#higher-risk" class="text-black">If you’re at higher risk of illness</a></li>
+            <li><a href="/what-you-can-do/#testing" class="text-black">Testing and treatment</a></li>
+            <li><a href="/what-you-can-do/#gatherings" class="text-black">Cancel or postpone gatherings</a></li>
+          </ul>
         </div>
+        {% endpagesection %}
 				<a href="/education/" class="list-group-item list-group-item-action guide {{page.fileSlug | pageActive('education')}}">Education </a>
 				<a href="/employment/" class="list-group-item list-group-item-action guide {{page.fileSlug | pageActive('employment')}}">Employment </a>
 				<a href="/healthcare/" class="list-group-item list-group-item-action guide {{page.fileSlug | pageActive('healthcare')}}">Healthcare </a>
