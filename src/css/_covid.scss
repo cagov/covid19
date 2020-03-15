@@ -132,6 +132,12 @@ a.list-group-item.list-group-item-action {
 	border-width: 2px;
 }
 
+.list-group-item.list-group-item-action.guide.active {
+    background: #0066ab;
+    border-color: #0066ab;
+    color: #fff;
+}
+
 @media only screen and (min-width: 992px){
  .aside { 
        /*position: fixed;*/
