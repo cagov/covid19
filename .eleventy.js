@@ -14,6 +14,11 @@ module.exports = function(eleventyConfig) {
     return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
   });
 
+    // return the active class for a matching string
+    eleventyConfig.addFilter('pageActive', function(pageslug,pagelink) {
+      return pageslug.toLocaleLowerCase()===pagelink.toLocaleLowerCase() ? " active" : "";
+    });
+
   eleventyConfig.htmlTemplateEngine = "njk";
 };
 
