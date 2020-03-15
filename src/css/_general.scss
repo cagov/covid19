@@ -294,7 +294,10 @@ a.list-group-item.list-group-item-action.guide:last-child {
     margin-left: -.5rem;
 }
 
-.list-group-item ul.subnav li {line-height: 1.4em; margin-top: .4em;} 
+.list-group-item ul.subnav li {
+    line-height: 1.4rem; 
+    margin-top: 0.4rem;
+} 
 
 
 /* Navbar */
@@ -317,11 +320,12 @@ a.navbar-brand:visited {
 
 .navbar-brand {
     font-family: 'Public Sans Bold', sans-serif;
-    padding-left: 35px;
+    // padding-left: 35px;
+    padding-left: 0px !important;
     background-repeat: no-repeat;
     background-position: 5px 50%;
     background-size: 15%;
-    background-image: url('https://www.alpha.ca.gov/img/ca-light.png');
+   // background-image: url('https://www.alpha.ca.gov/img/ca-light.png');
 }
 
 .navbar-inverse,
