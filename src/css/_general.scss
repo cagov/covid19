@@ -960,7 +960,15 @@ a:hover .wrimagecard-topimage_header h4 {
 }
 
 .bg-light {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1!important;
+}
+
+a, a, a:hover, a:visited {
+    color: #0066ab;
+}
+
+.wrimagecard p {
+    color: #000;
 }
 
 
