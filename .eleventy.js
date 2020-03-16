@@ -14,6 +14,17 @@ module.exports = function(eleventyConfig) {
     return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
   });
 
+  const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
+
+  // return the active class for a matching string
+  eleventyConfig.addFilter('pageActive', (page, slug) => contentfrompage(" active", page, slug));
+
+  // show or hide content based on page
+  eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
+
+  eleventyConfig.addFilter('contentfilter', code => 
+    code.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
+
   eleventyConfig.htmlTemplateEngine = "njk";
 };
 

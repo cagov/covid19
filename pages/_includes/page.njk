@@ -34,6 +34,7 @@
 
   </style>
 </head>
+  <link href="https://california.azureedge.net/cdt/statetemplate/6.0.0/css/cagov.font-only.min.css" rel="stylesheet" />
 
 
 
@@ -41,15 +42,13 @@
 <a class="skippy sr-only-focusable text-center" href="#main">
       <span class="skippy-text">Skip to main content</span>
  </a>
-<div class="official"><div class="container"><div class="row"><div class="col-md-12"><p>State of California</p></div></div></div></div>
 
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
-    <a class="navbar-brand docs-brand navbar-left mr-3" href="/">COVID-19 Response</a>
-
+    <a href="/"><img src="https://california.azureedge.net/cdt/statetemplate/global/images/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">California Coronavirus COVID-19 Response</a></div>
     <ul class="navbar-nav mobile ml-sm-auto ">
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/cagov/cwds" target="_blank" rel="noopener" aria-label="Facebook">
+        <a class="nav-link" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" >    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
 
         </a>
@@ -76,7 +75,7 @@
         <div class="row">
           <div class="col-lg-10">
               <h1>{{ title | safe }}</h1>
-              <p class="lead">Coronavirus COVID-19 Response - Updated {{ publishdate | formatDate }}</p>
+              <p class="lead">Coronavirus COVID-19 in California - Updated {{ publishdate | formatDate }}</p>
           </div>
         </div>
       </div>
@@ -87,27 +86,29 @@
   	<div class="col-lg-4">
 		<div class="aside p-0">
 			<div class="list-group">
-        <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide">What you can do</a>
-        <div class="list-group-item">
-        <ul class="subnav"><li><a href="/what-you-can-do/#been-exposed" class="text-black">If you’ve been exposed or have symptoms</a></li>
-      <li><a href="/what-you-can-do/#higher-risk" class="text-black">If you’re at higher risk of illness</a></li>
-      <li><a href="/what-you-can-do/#testing" class="text-black">Testing and treatment</a></li>
-     <li><a href="/what-you-can-do/#gatherings" class="text-black">Cancel or postpone gatherings</a></li>
 
-        </ul>
+        <a href="/what-you-can-do/" class="list-group-item list-group-item-action guide {{page | pageActive('what-you-can-do')}}">What you can do</a>
+        {% pagesection page, "what-you-can-do" %}
+        <div class="list-group-item list-group-item-action guide pl-3">
+          <ul class="list-unstyled">
+            <li><a href="/what-you-can-do/#stay-home"><span class="ca-gov-icon-arrow-next"></span> Stay home</a></li>
+            <li><a href="/what-you-can-do/#avoid-group-events"><span class="ca-gov-icon-arrow-next"></span> Avoid group events</a></li>
+            <li><a href="/what-you-can-do/#testing"> <span class="ca-gov-icon-arrow-next"></span> Testing and treatment</a></li>
+          </ul>
         </div>
-				<a href="/education/" class="list-group-item list-group-item-action guide">Education</a>
-				<a href="/employment/" class="list-group-item list-group-item-action guide">Employment</a>
-				<a href="/healthcare/" class="list-group-item list-group-item-action guide">Healthcare</a>
-				<a href="/safety-in-public-places/" class="list-group-item list-group-item-action guide">Safety in public places</a>
-				<a href="/taxes/" class="list-group-item list-group-item-action guide">Taxes</a>
-        <a href="/state-local-resources/" class="list-group-item list-group-item-action guide">State and local resources</a>
+        {% endpagesection %}
+				<a href="/education/" class="list-group-item list-group-item-action guide {{page | pageActive('education')}}">Education </a>
+				<a href="/employment/" class="list-group-item list-group-item-action guide {{page | pageActive('employment')}}">Employment </a>
+				<a href="/healthcare/" class="list-group-item list-group-item-action guide {{page | pageActive('healthcare')}}">Healthcare </a>
+				<a href="/safety-in-public-places/" class="list-group-item list-group-item-action guide {{page | pageActive('safety-in-public-places')}}">Safety in public places</a>
+				<a href="/taxes/" class="list-group-item list-group-item-action guide {{page | pageActive('taxes')}}">Taxes</a>
+        <a href="/state-local-resources/" class="list-group-item list-group-item-action guide {{page | pageActive('state-local-resources')}}">State and local resources</a>
 			</div>
 			</div>
 		</div>
     <div class="col-lg-8">      
      
-      {{ content | safe }}
+      {{ content | contentfilter | safe }}
   </div>
 </div>
 </div>
@@ -129,9 +130,10 @@
       <div class="col-md-12">
         <div class="col-md-12">
           <ul class="list-group list list-group-horizontal-lg flex-fill list-group-flush">
-            <li class="list-group-item alpha-footer"><a href="/about/">About</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://news.alpha.ca.gov/">News</a></li>
-            <li class="list-group-item alpha-footer"><a href="/feedback/">Feedback</a></li>
+            <li class="list-group-item alpha-footer"><a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx" target="_blank">Department of Public Health</a></li>
+            <li class="list-group-item alpha-footer"><a href="https://www.gov.ca.gov/newsroom/" target="_blank">Governor's Newsroom</a></li>
+            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/accessibility/" target="_blank">Accessibility</a></li>
+            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/privacy-policy/" target="_blank">Privacy Policy</a></li>
           </ul>
           <p class="text-secondary">Official California State Government Website</p>
         </div>
@@ -141,8 +143,8 @@
 </div>
 
 <div class="alphabar">
-  <div class="container">
-    <p><a href="#top">Back to top</a></p>
+  <div class="container text-right">
+    <p><a class="pr-3" href="#top">Back to top</a><a href="/">Home</a></p>
   </div>
 </div>
 
@@ -153,12 +155,18 @@ defer></script>
 
 <script type="text/javascript">
   function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
-      { pageLanguage: "en" },
-      "google_translate_element"
-    );
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+       },
+      'google_translate_element'
+    ); 
   }
 </script>
 
+{% pagesection page, "foo" %}
+<!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
+<a href="" class="list-group-item list-group-item-action guide active d-none"></a>
+{% endpagesection %}
 </body>
 </html>
