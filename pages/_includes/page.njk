@@ -75,16 +75,22 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-10">
-              <h1>{{ title | safe }}</h1>
-              <p class="lead">Coronavirus COVID-19 in California - Updated {{ publishdate | formatDate }}</p>
+              <h1 id="content-begin">{{ title | safe }}</h1>
+              <p class="lead">Last Update {{ publishdate | formatDate }}</p>
           </div>
         </div>
       </div>
     </div>
 
 <div class="container">
-  <div class="row flex-md-row-reverse">
-  	<div class="col-lg-4">
+  <div class="row">
+  	
+    <div class="col-lg-8">      
+     
+      {{ content | contentfilter | safe }}
+  </div>
+
+  <div class="col-lg-4">
 		<div class="aside p-0">
 			<div class="list-group pb-5">
 
@@ -107,10 +113,6 @@
 			</div>
 			</div>
 		</div>
-    <div class="col-lg-8">      
-     
-      {{ content | contentfilter | safe }}
-  </div>
 </div>
 </div>
 
