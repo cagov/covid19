@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+      - uses: n1hility/cancel-previous-runs@v2
       - name: Build
         uses: cagov/actions-eleventy@2.0
         with:
