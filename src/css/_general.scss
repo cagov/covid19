@@ -571,9 +571,6 @@ a.navbar-brand:visited {
     padding-top: 10px;
 }
 
-.alphabar a {
-    color: #fff;
-}
 
 /* Official */
 
@@ -951,12 +948,24 @@ label.custom-control-label {
 }
 
 a .wrimagecard-topimage_header h4 {
-    /*text-decoration: underline;*/
+    text-decoration: underline;
     color: #1470b0;
 }
 
 a:hover .wrimagecard-topimage_header h4 {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.bg-light {
+    background-color: #f1f1f1!important;
+}
+
+a, a, a:hover, a:visited {
+    color: #0066ab;
+}
+
+.wrimagecard p {
+    color: #000;
 }
 
 

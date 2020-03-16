@@ -142,6 +142,24 @@ a.list-group-item.list-group-item-action {
     text-decoration: none;
 }
 
+a.list-group-item.list-group-item-action.guide {
+    color: #0066ab;
+}
+
+.alphabar a, {
+    color: #fff;
+}
+
+.alphabar a:hover {
+    color: #fff;
+}
+
+.alphabar a:visited {
+    color: #fff;
+}
+
+
+
 @media only screen and (min-width: 992px){
  .aside { 
        /*position: fixed;*/
