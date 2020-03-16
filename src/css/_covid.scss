@@ -182,8 +182,21 @@ a.list-group-item.list-group-item-action.guide {
     white-space: nowrap !important;
     border: 0 !important;}
 
-    .text-sm {font-size: .9rem !important;}
+.text-sm {font-size: 
+	.9rem !important;
+}
 
+
+.guide ul.list-unstyled li {
+    padding-bottom: 1rem;
+    text-indent: -24px;
+    padding-left: 27px;
+}
+
+a.list-group-item.list-group-item-action {
+    text-indent: -24px;
+    padding-left: 35px;
+}
 
 
 @media only screen and (max-height: 1100px) {
