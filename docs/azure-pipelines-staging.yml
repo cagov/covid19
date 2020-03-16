@@ -4,6 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
+  batch: true
 - deploy_staging
 
 # no PR triggers
