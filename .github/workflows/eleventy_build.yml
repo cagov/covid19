@@ -1,6 +1,7 @@
 name: Eleventy Build Master
 on:
   push:
+    batch: true
     branches:
       - master
 
