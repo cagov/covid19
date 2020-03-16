@@ -4,7 +4,10 @@
 # https://aka.ms/yaml
 
 trigger:
-- deploy_production
+  batch: true
+  branches:
+    include:
+    - deploy_production
 
 # no PR triggers
 pr: none
