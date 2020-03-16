@@ -51,12 +51,7 @@ module.exports = {
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'docs/index.html',
-      minify: minificationOptions
-    }),
+    })
   ],
   module: {
     rules: [

@@ -195,6 +195,8 @@ strong,
     color: #4F4F4F !important;
 }
 
+.text-black {color:#000 !important;}
+
 /* List group */
 
 
@@ -292,6 +294,11 @@ a.list-group-item.list-group-item-action.guide:last-child {
     margin-left: -.5rem;
 }
 
+.list-group-item ul.subnav li {
+    line-height: 1.4rem; 
+    margin-top: 0.4rem;
+} 
+
 
 /* Navbar */
 
@@ -313,11 +320,12 @@ a.navbar-brand:visited {
 
 .navbar-brand {
     font-family: 'Public Sans Bold', sans-serif;
-    padding-left: 35px;
+    // padding-left: 35px;
+    padding-left: 0px !important;
     background-repeat: no-repeat;
     background-position: 5px 50%;
     background-size: 15%;
-    background-image: url('https://www.alpha.ca.gov/img/ca-light.png');
+   // background-image: url('https://www.alpha.ca.gov/img/ca-light.png');
 }
 
 .navbar-inverse,
@@ -352,9 +360,9 @@ a.navbar-brand:visited {
 .navbar img {
     width: 100%;
     height: auto;
-    max-width: 50px;
-    margin-top: 8px;
-    max-height: 35px;
+    max-width: 90px;
+    max-height: 60px;
+    margin-top:0;
 }
 
 .nav-cali-bg {
@@ -571,7 +579,7 @@ a.navbar-brand:visited {
 
 .official {
     background: #f1f1f1;
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
 .official a,
@@ -591,7 +599,7 @@ a.navbar-brand:visited {
 
 .official img {
     margin-right: 10px;
-    max-width: 60px;
+    max-width: 40px;
 }
 
 .official-footer {
@@ -942,7 +950,14 @@ label.custom-control-label {
     	margin-right: -20px;
 }
 
+a .wrimagecard-topimage_header h4 {
+    /*text-decoration: underline;*/
+    color: #1470b0;
+}
 
+a:hover .wrimagecard-topimage_header h4 {
+    text-decoration: underline;
+}
 
 
 
@@ -1004,5 +1019,11 @@ label.custom-control-label {
 	.mobile-padding-top {
 		padding-top: 3rem;
 	}
+	.navbar-brand {
+    display: contents;
+    white-space: normal;
+}
 
 }
+.mb-0 {margin-bottom: 0 !important;}
+.mt-0 {margin-top: 0 !important;}
