@@ -96,7 +96,7 @@
 
         <a href="/what-you-can-do/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('what-you-can-do')}}"><span class="ca-gov-icon-arrow-next"></span> What you can do</a>
         {% pagesection page, "what-you-can-do" %}
-        <div class="list-group-item list-group-item-action guide pl-3">
+        <div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
           <ul class="list-unstyled">
             <li><a href="/what-you-can-do/#stay-home"><span class="ca-gov-icon-caret-right"></span> Stay home</a></li>
             <li><a href="/what-you-can-do/#avoid-group-events"><span class="ca-gov-icon-caret-right"></span> Avoid group events</a></li>
@@ -106,7 +106,16 @@
         {% endpagesection %}
 				<a href="/education/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('education')}}"><span class="ca-gov-icon-arrow-next"></span> Education </a>
 				<a href="/employment/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('employment')}}"><span class="ca-gov-icon-arrow-next"></span> Employment and taxes</a>
-				<a href="/healthcare/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('healthcare')}}"><span class="ca-gov-icon-arrow-next"></span> Healthcare </a>
+        {% pagesection page, "employment" %}
+        <div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
+          <ul class="list-unstyled">
+            <li><a href="/employment/#questions-workers"><span class="ca-gov-icon-caret-right"></span> Workers</a></li>
+            <li><a href="/employment/#questions-employers"><span class="ca-gov-icon-caret-right"></span> Employers</a></li>
+            <li><a href="/employment/#questions-taxes"> <span class="ca-gov-icon-caret-right"></span> Taxes</a></li>
+          </ul>
+        </div>
+        {% endpagesection %}
+				<a href="/healthcare/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('healthcare')}}"><span class="ca-gov-icon-arrow-next"></span> Health care </a>
 				<a href="/safety-in-public-places/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('safety-in-public-places')}}"><span class="ca-gov-icon-arrow-next"></span> Public places</a>
         <a href="/state-local-resources/#content-begin" class="list-group-item list-group-item-action guide {{page | pageActive('state-local-resources')}}"><span class="ca-gov-icon-arrow-next"></span> State and local resources</a>
 			</div>
