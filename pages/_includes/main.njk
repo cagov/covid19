@@ -8,6 +8,15 @@
   <meta name="keywords" content="{{ tags| safe }}">
   <title>{{ title | safe }}</title>
 
+  <!-- combined social media meta -->
+  <meta content="{{ title | safe }}" property="og:title">
+  <meta content="We’re all in this together. We are working rapidly to keep our state healthy." property="og:description">
+  <meta content="https://as-cdt-pub-acovid-w-p-001-staging.azurewebsites.net/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
+  <meta content="https://covid19.ca.gov/" property="og:url">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://covid19.ca.gov/" rel="canonical">
+
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
@@ -29,7 +38,6 @@
   {% set css %}
     {% include "built.css" %}
   {% endset %}
-  <!-- feed it through our cssmin filter to minify -->
   <style>
     {{ css | cssmin | safe }}
   </style>
