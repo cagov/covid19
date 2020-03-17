@@ -96,38 +96,6 @@
     </div>
   {{ content | contentfilter | safe }}
 </main>
-
-
-<script src="https://www.googletagmanager.com/gtag/js?id=UA-154336791-1" defer="defer">
-</script>
-<script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'UA-154336791-1');
-</script>
-
-<div class="footer alpha-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          <ul class="list-group list list-group-horizontal-lg flex-fill list-group-flush">
-            <li class="list-group-item alpha-footer"><a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">Department of Public Health</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.gov.ca.gov/newsroom/">Governor's Newsroom</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/accessibility/">Accessibility</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/privacy-policy/">Privacy Policy</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.surveymonkey.com/r/COVID19CA">Feedback</a></li>
-          </ul>
-          <p class="text-secondary">Official California State Government Website</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="alphabar">
-  <div class="container text-right">
-    <p><a class="pr-3" href="#top">Back to top</a><a href="/">Home</a></p>
-  </div>
-</div>
-{% include "googletranslate.njk" %}
+{% include "footer.njk" %}
 </body>
 </html>
