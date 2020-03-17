@@ -58,6 +58,11 @@ a.list-group-item.list-group-item-action {
 	padding-top: .5rem;
 }
 	
+	
+.jumbotron img {
+	display: none;
+}
+	
 }
 
 h2 {
@@ -199,9 +204,35 @@ a.list-group-item.list-group-item-action {
 }
 
 .jumbotron img {
-	max-width: 100px;
+	max-width: 115px;
 }
 
+a.img.jumbotron:focus {
+    outline: 2px solid #FFF!important;
+}
+
+a .wrimagecard-topimage_header h3 {
+    text-decoration: underline;
+    color: #1470b0;
+	font-size: 1.5rem;
+}
+
+a:hover .wrimagecard-topimage_header h3 {
+    text-decoration: none;
+	font-size: 1.5rem;
+}
+
+.bg-light {
+    background-color: #f1f1f1!important;
+}
+
+a, a, a:hover, a:visited {
+    color: #0066ab;
+}
+
+.wrimagecard p {
+    color: #000;
+}
 
 
 @media only screen and (max-height: 1100px) {
