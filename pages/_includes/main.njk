@@ -8,6 +8,15 @@
   <meta name="keywords" content="{{ tags| safe }}">
   <title>{{ title | safe }}</title>
 
+  <!-- combined social media meta -->
+  <meta content="{{ title | safe }}" property="og:title">
+  <meta content="We’re all in this together. We are working rapidly to keep our state healthy." property="og:description">
+  <meta content="https://as-cdt-pub-acovid-w-p-001-staging.azurewebsites.net/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
+  <meta content="https://covid19.ca.gov/" property="og:url">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://covid19.ca.gov/" rel="canonical">
+
   <!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
@@ -29,7 +38,6 @@
   {% set css %}
     {% include "built.css" %}
   {% endset %}
-  <!-- feed it through our cssmin filter to minify -->
   <style>
     {{ css | cssmin | safe }}
   </style>
@@ -79,8 +87,8 @@
           </div>
 
       <div class="col-lg-4">
-          <img src="/img/California-For-All_Logo_Full-Color_263.png" class="rounded float-left img-fluid mr-3" alt="California for All">
-          <img src="/img/cdph-logo.png" class="rounded float-left img-fluid" alt="Department of Public Health">
+          <a href="https://www.gov.ca.gov/"><img src="/img/California-For-All.png" class="rounded float-left img-fluid mr-5" alt="visit California for All website"></a>
+          <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"><img src="/img/cdph-logo.png" class="rounded float-left img-fluid pt-3" alt="visit Department of Public Health website"></a>
       </div>
 
         </div>
