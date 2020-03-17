@@ -41,6 +41,16 @@ a.list-group-item.list-group-item-action {
 	border-radius: .25rem;
 }
 
+a.list-group-item.list-group-item-action {
+	border-radius: 0;
+}
+	
+a.list-group-item.list-group-item-action {
+    border-top: 0;
+	border-left: 0;
+    border-right: 0;
+}
+
 	
 	
 /* Small devices (landscape phones, less than 768px) */
@@ -62,6 +72,11 @@ a.list-group-item.list-group-item-action {
 .jumbotron img {
 	display: none;
 }
+	
+.wrimagecard-topimage_header.text-center {
+text-align: left!important;
+}
+
 	
 }
 
