@@ -165,32 +165,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
-{
-  function addGoogleTranslateCode() {
-      var JS= document.createElement('script');
-      JS.type='text/javascript';
-      JS.defer='defer';
-      JS.src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      document.body.appendChild(JS);
-  }
-
-  const slug = '{{ page.fileSlug }}';
-
-  //alert(slug);
-
-  addGoogleTranslateCode();
-}({});
-
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-       },
-      'google_translate_element'
-    ); 
-  }
-</script>
+{% include "googletranslate.njk" %}
 
 {% pagesection page, "foo" %}
 <!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
