@@ -209,12 +209,12 @@ a.list-group-item.list-group-item-action.guide {
 
 .guide ul.list-unstyled li {
     padding-bottom: 1rem;
-    text-indent: -24px;
+    text-indent: -27px;
     padding-left: 27px;
 }
 
 a.list-group-item.list-group-item-action {
-    text-indent: -24px;
+    text-indent: -25px;
     padding-left: 35px;
 }
 
@@ -222,8 +222,8 @@ a.list-group-item.list-group-item-action {
 	max-width: 115px;
 }
 
-a.img.jumbotron:focus {
-    outline: 2px solid #FFF!important;
+.jumbotron a:focus {
+    outline: 2px solid #FFF;
 }
 
 a .wrimagecard-topimage_header h3 {
@@ -248,6 +248,33 @@ a, a, a:hover, a:visited {
 .wrimagecard p {
     color: #000;
 }
+
+
+.list-group-flush .list-group-item {
+    text-indent: -24px;
+    padding-left: 27px;
+}
+
+li.list-group-item.alpha-footer {
+    padding-right: 2rem;
+	padding-left: 1.5rem;
+}
+
+.footer a, .footer a:hover, .footer a:visited {
+    color: #000;
+    background-image: linear-gradient(to right, #0066ab 50%, transparent 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 1px;
+    background-position: center bottom 5%;
+    background-origin: padding-box;
+    text-decoration: none !important;
+}
+
+.alpha-footer .container .list-group {
+    margin-left: 0;
+}
+
+
 
 
 @media only screen and (max-height: 1100px) {
