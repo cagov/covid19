@@ -274,18 +274,44 @@ li.list-group-item.alpha-footer {
     margin-left: 0;
 }
 
+p a:focus {
+    outline: 2px solid #0257d5;
+}
+
+ul a:focus {
+    outline: 2px solid #0257d5;
+}
+
+ol a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.footer a:focus {
+    outline: 2px solid #0257d5;
+}
+
+.navbar a:focus {
+    outline: 2px solid #FFF;
+}
+
+.alphabar a:focus {
+    outline: 2px solid #FFF;
+}
+
+@media only screen and (min-width: 992px){
+ .aside { 
+       position: fixed;
+	 	width: 23%;
+ }
+}
 
 
 
 @media only screen and (max-height: 1100px) {
    .aside { 
        position: relative!important;
+	   width: auto;
  }
 }
  
 
-@media only screen and (min-width: 992px){
- .aside { 
-       position: fixed;
- }
-}
