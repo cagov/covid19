@@ -10,7 +10,9 @@ module.exports = function(eleventyConfig) {
       }
     })
     return posts.slice().sort(function(a, b) {
-      return new Date(b.data.publishdate).getTime() - new Date(a.data.publishdate).getTime();
+      let bPub = new Date(b.data.publishdate);
+      let aPub = new Date(a.data.publishdate)
+      return bPub.getTime() - aPub.getTime();
     });
   });
 
