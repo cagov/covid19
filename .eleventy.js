@@ -32,6 +32,14 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addFilter('truncate220', function(textstring) {
+    if(textstring.length <221) {
+      return textstring;
+    } else {
+      return textstring.slice(0,220)+'...';
+    }
+  });
+
   const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
 
   // return the active class for a matching string
