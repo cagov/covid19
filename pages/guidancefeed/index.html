@@ -9,6 +9,8 @@ tags: "covid19"
 
 <ul>
 {%- for post in collections.guidancefeed -%}
-  <li>{{ post.data.publishdate }} {{ post.data.title }}</li>
+  <li>{{ post.data.publishdate | formatDate }} {{ post.data.content }}
+    {{ post.templateContent }}
+  </li>
 {%- endfor -%}
 </ul>
