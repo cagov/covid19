@@ -2,6 +2,19 @@ const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
 
+  eleventyConfig.addCollection("covidGuidance", function(collection) {
+    let posts = [];
+    collection.getAll().forEach( (item) => {
+      if(item.data.tags[0] == 'guidancefeed') {
+        posts.push(item);
+      }
+    })
+    return posts.sort(function(a, b) {
+      return new Date(a.data.publishdate) - new Date(b.data.publishdate);
+    }).reverse();
+  });
+
+
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
