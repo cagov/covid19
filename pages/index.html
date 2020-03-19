@@ -152,42 +152,42 @@ tags: covid19, coronavirus, covid19, covid-19, california
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
-          {{ collections.covidGuidance[0].data.content }}
           <p class="card-text">
             <small class="text-muted"
               >{{ collections.covidGuidance[0].data.publishdate | formatDate }}
             </small>
           </p>
           <div class="card-text">
-            {{ collections.covidGuidance[0].templateContent | truncate220 }}
+            <a href="{{ collections.covidGuidance[0].data.url }}">{{ collections.covidGuidance[0].data.title }}</a>
+            <div class="card-text">{{ collections.covidGuidance[0].data.meta | truncate220 }}</div>
           </div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-body">
-          {{ collections.covidGuidance[1].data.content }}
           <p class="card-text">
             <small class="text-muted"
               >{{ collections.covidGuidance[1].data.publishdate | formatDate }}
             </small>
           </p>
           <div class="card-text">
-            {{ collections.covidGuidance[1].templateContent | truncate220 }}
+            <a href="{{ collections.covidGuidance[1].data.url }}">{{ collections.covidGuidance[1].data.title }}</a>
+            <div class="card-text">{{ collections.covidGuidance[1].data.meta | truncate220 }}</div>
           </div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-body">
-          {{ collections.covidGuidance[2].data.content }}
           <p class="card-text">
             <small class="text-muted"
               >{{ collections.covidGuidance[2].data.publishdate | formatDate }}
             </small>
           </p>
           <div class="card-text">
-            {{ collections.covidGuidance[2].templateContent }}
+            <a href="{{ collections.covidGuidance[2].data.url }}">{{ collections.covidGuidance[2].data.title }}</a>
+            <div class="card-text">{{ collections.covidGuidance[2].data.meta | truncate220 }}</div>
           </div>
         </div>
       </div>
