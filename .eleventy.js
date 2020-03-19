@@ -14,17 +14,20 @@ module.exports = function(eleventyConfig) {
     }).reverse();
   });
 
-
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    const date = new Date(datestring);
-    const locales = 'en-US';
-    const timeZone = 'America/Los_Angeles';
-    return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    if(datestring.indexOf('Z') > -1) {
+      const date = new Date(datestring);
+      const locales = 'en-US';
+      const timeZone = 'America/Los_Angeles';
+      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    } else {
+      return datestring;
+    }
   });
 
   const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
