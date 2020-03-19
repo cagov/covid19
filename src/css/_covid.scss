@@ -286,6 +286,10 @@ ol a:focus {
     outline: 2px solid #0257d5;
 }
 
+a:focus {
+    outline: 2px solid #0257d5;
+}
+
 .footer a:focus {
     outline: 2px solid #0257d5;
 }
@@ -297,6 +301,11 @@ ol a:focus {
 .alphabar a:focus {
     outline: 2px solid #FFF;
 }
+
+a .card-title {
+    color: #0066ab;
+}
+
 
 @media only screen and (min-width: 992px){
  .aside { 
