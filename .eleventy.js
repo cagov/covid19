@@ -2,16 +2,32 @@ const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
 
+  eleventyConfig.addCollection("covidGuidance", function(collection) {
+    let posts = [];
+    collection.getAll().forEach( (item) => {
+      if(item.data.tags[0] == 'guidancefeed') {
+        posts.push(item);
+      }
+    })
+    return posts.sort(function(a, b) {
+      return new Date(a.data.publishdate) - new Date(b.data.publishdate);
+    }).reverse();
+  });
+
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    const date = new Date(datestring);
-    const locales = 'en-US';
-    const timeZone = 'America/Los_Angeles';
-    return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    if(datestring.indexOf('Z') > -1) {
+      const date = new Date(datestring);
+      const locales = 'en-US';
+      const timeZone = 'America/Los_Angeles';
+      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    } else {
+      return datestring;
+    }
   });
 
   const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
