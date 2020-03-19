@@ -9,9 +9,9 @@ module.exports = function(eleventyConfig) {
         posts.push(item);
       }
     })
-    return posts.sort(function(a, b) {
-      return new Date(a.data.publishdate) - new Date(b.data.publishdate);
-    }).reverse();
+    return posts.slice().sort(function(a, b) {
+      return new Date(b.data.publishdate).getTime() - new Date(a.data.publishdate).getTime();
+    });
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
