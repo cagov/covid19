@@ -13,7 +13,7 @@ tags: "covid19"
 
   <div class="card border-0 border-bottom rounded-0">
     <div class="card-body pl-0">
-		<a href="{{ post.data.url }}"><h2 class="card-title h4">{{ post.data.title }}</h2></a>
+		<h2 class="card-title lead"><a href="{{ post.data.url }}">{{ post.data.title }}</a></h2>
 		   <p class="card-text"><small class="text-muted"><!--{{ post.fileSlug }} -->{{ post.data.publishdate | formatDate }} </small></p>
       <div class="card-text">{{ post.data.meta | truncate220 }}</div>
     </div>
