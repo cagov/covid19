@@ -2,16 +2,42 @@ const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
 
+  eleventyConfig.addCollection("covidGuidance", function(collection) {
+    let posts = [];
+    collection.getAll().forEach( (item) => {
+      if(item.data.tags[0] == 'guidancefeed') {
+        posts.push(item);
+      }
+    })
+    return posts.slice().sort(function(a, b) {
+      let bPub = new Date(b.data.publishdate);
+      let aPub = new Date(a.data.publishdate)
+      return bPub.getTime() - aPub.getTime();
+    });
+  });
+
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    const date = new Date(datestring);
-    const locales = 'en-US';
-    const timeZone = 'America/Los_Angeles';
-    return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    if(datestring.indexOf('Z') > -1) {
+      const date = new Date(datestring);
+      const locales = 'en-US';
+      const timeZone = 'America/Los_Angeles';
+      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    } else {
+      return datestring;
+    }
+  });
+
+  eleventyConfig.addFilter('truncate220', function(textstring) {
+    if(textstring.length <221) {
+      return textstring;
+    } else {
+      return textstring.slice(0,220)+'...';
+    }
   });
 
   const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
