@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
 {% for page in collections.all %}{% if page.data.addtositemap %}
     <url>
         <loc>https://covid19.ca.gov{{ page.url | url | removetrailingslash }}</loc>
-        <lastmod>{{ page.data.publishdate }}</lastmod>
+        <lastmod>{{ page | publishdateorfiledate }}</lastmod>
     </url>
 {% endif %}{% endfor %}
 </urlset>
