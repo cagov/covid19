@@ -325,11 +325,14 @@ a .card-title {
 	background-image: none;
 }
 
+.action-link.mr-30 {
+    margin-right: 30px;
+}
 
 @media only screen and (min-width: 992px){
- .aside { 
-       position: fixed;
- }
+    .aside { 
+        position: fixed;
+    }
 }
 
 
