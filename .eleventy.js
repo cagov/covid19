@@ -51,6 +51,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('contentfilter', code => code);
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
+  
+  eleventyConfig.addFilter('removetrailingslash', code => code.replace(/\/$/,''));
+
   eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
 
   eleventyConfig.htmlTemplateEngine = "njk";
