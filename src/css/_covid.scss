@@ -286,6 +286,10 @@ ol a:focus {
     outline: 2px solid #0257d5;
 }
 
+a:focus {
+    outline: 2px solid #0257d5;
+}
+
 .footer a:focus {
     outline: 2px solid #0257d5;
 }
@@ -297,6 +301,30 @@ ol a:focus {
 .alphabar a:focus {
     outline: 2px solid #FFF;
 }
+
+a .card-title {
+    color: #0066ab;
+}
+
+.action-link {
+	color: #0066ab;
+    border-bottom: 2px solid #0066ab;
+    border-radius: .25rem;
+}
+
+.card-text a, a:visited {
+    background-image: linear-gradient(to right,#0066ab 50%,transparent 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 1px;
+    background-position: center bottom 5%;
+    background-origin: padding-box;
+    text-decoration: none!important;
+}
+
+.card-text a:hover {
+	background-image: none;
+}
+
 
 @media only screen and (min-width: 992px){
  .aside { 
