@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
-      if(item.data.tags[0] == 'guidancefeed') {
+      if(item.data.tags && item.data.tags[0] == 'guidancefeed') {
         posts.push(item);
       }
     })
@@ -14,6 +14,16 @@ module.exports = function(eleventyConfig) {
       let aPub = new Date(a.data.publishdate)
       return bPub.getTime() - aPub.getTime();
     });
+  });
+
+  eleventyConfig.addCollection("stats", function(collection) {
+    let posts = [];
+    collection.getAll().forEach( (item) => {
+      if(item.data.title == 'stats') {
+        posts.push(item);
+      }
+    })
+    return posts;
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {

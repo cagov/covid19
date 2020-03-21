@@ -1,0 +1,53 @@
+
+<div class="container-fluid bg-light">
+  <div class="container pb-3">
+    <h2 id="news">Latest news</h2>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">
+            <small class="text-muted"
+              >{{ collections.covidGuidance[0].data.publishdate | formatDate }}
+            </small>
+          </p>
+          <div class="card-text">
+            <h3 class="lead"><a href="{{ collections.covidGuidance[0].data.url }}">{{ collections.covidGuidance[0].data.title }}</a></h3>
+            <div class="card-text">{{ collections.covidGuidance[0].data.meta | truncate220 }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">
+            <small class="text-muted"
+              >{{ collections.covidGuidance[1].data.publishdate | formatDate }}
+            </small>
+          </p>
+          <div class="card-text">
+            <h3 class="lead"><a href="{{ collections.covidGuidance[1].data.url }}">{{ collections.covidGuidance[1].data.title }}</a></h3>
+            <div class="card-text">{{ collections.covidGuidance[1].data.meta | truncate220 }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">
+            <small class="text-muted"
+              >{{ collections.covidGuidance[2].data.publishdate | formatDate }}
+            </small>
+          </p>
+          <div class="card-text">
+            <h3 class="lead"><a href="{{ collections.covidGuidance[2].data.url }}">{{ collections.covidGuidance[2].data.title }}</a></h3>
+            <div class="card-text">{{ collections.covidGuidance[2].data.meta | truncate220 }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center">
+      <a href="latest-news/" class="action-link mt-4">View more news</a>
+    </div>
+  </div>
+</div>
+
