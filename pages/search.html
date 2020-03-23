@@ -25,12 +25,12 @@ addtositemap: true
 <gcse:searchresults-only></gcse:searchresults-only>
 
 <script>
-	var cx = '003358532045999200914:uxxka6d3pge';
-	var gcse = document.createElement('script');
+	const cx = '003358532045999200914:uxxka6d3pge';
+	const gcse = document.createElement('script');
 	gcse.type = 'text/javascript';
 	gcse.async = true;
 	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-	var s = document.getElementsByTagName('script');
+	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
 	const urlParam = function (name) {
@@ -39,6 +39,7 @@ addtositemap: true
 
 		return (results !== null) ? results[1] || 0 : false;
 	}
-  var query = decodeURIComponent(urlParam('q').replace(/\+/g," "));
+	const urlq = urlParam('q')||'';
+  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
   document.querySelector('input[name=q]').value = query;
 </script> 
