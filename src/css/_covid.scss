@@ -17,6 +17,25 @@
 a.btn {
 	background: #0066ab;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #0066ab;
+    background: #0066ab;
+    border-color: #0066ab;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #005d9c;
+    border-color: #005d9c;
+}
+
+a.btn:hover {
+    color: #fff;
+    background-color: #005d9c;
+    border-color: #005d9c;
+}
 	
 .bd-navbar .navbar-nav .nav-link {
     
@@ -327,6 +346,14 @@ a .card-title {
 
 .action-link.mr-30 {
     margin-right: 30px;
+}
+
+input:focus {
+    outline: 2px solid #0257d5;
+}
+
+button:focus {
+    outline: 2px solid #0257d5;
 }
 
 @media only screen and (min-width: 992px){
