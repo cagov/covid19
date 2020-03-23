@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for page in collections.all %}{% if page.data.addtositemap %}
     <url>
-        <loc>https://covid19.ca.gov{{ page.url | url | removetrailingslash }}</loc>
+        <loc>https://covid19.ca.gov{{ page.url | url }}</loc>
         <lastmod>{{ page | publishdateorfiledate }}</lastmod>
     </url>
 {% endif %}{% endfor %}
