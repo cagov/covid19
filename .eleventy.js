@@ -63,7 +63,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
 
-  eleventyConfig.addFilter('publishdateorfiledate', page => page.data.publishdate || page.date.toISOString());
+  eleventyConfig.addFilter('publishdateorfiledate', page => page.data ? page.data.publishdate : null || page.date.toISOString());
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
