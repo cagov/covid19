@@ -3,7 +3,43 @@ layout: "page.njk"
 title: "Search"
 meta: "Search the Covid19 website."
 author: "State of California"
-publishdate: "2020-03-23T19:45:51Z"
+publishdate: "2020-03-23T22:00:00Z"
 tags: "covid19"
 addtositemap: true
 ---
+<style>
+   .aside { 
+       position: relative!important;
+ }
+
+</style>
+
+<h2>Search this website</h2>
+<label id="SearchInput" for="q">Enter your search text</label>
+<form action="/Search/" class="form-inline">
+
+  <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
+	<button type="submit"  class="btn btn-primary">Search</button>	  
+</form>
+
+<gcse:searchresults-only></gcse:searchresults-only>
+
+<script>
+	const cx = '003358532045999200914:uxxka6d3pge';
+	const gcse = document.createElement('script');
+	gcse.type = 'text/javascript';
+	gcse.async = true;
+	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	const s = document.getElementsByTagName('script');
+	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
+
+	const urlParam = function (name) {
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+			.exec(window.location.search);
+
+		return (results !== null) ? results[1] || 0 : false;
+	}
+	const urlq = urlParam('q')||'';
+  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
+  document.querySelector('input[name=q]').value = query;
+</script> 
