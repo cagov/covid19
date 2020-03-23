@@ -32,7 +32,7 @@ module.exports = function(eleventyConfig) {
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    if(datestring.indexOf('Z') > -1) {
+    if(datestring&&datestring.indexOf('Z') > -1) {
       const date = new Date(datestring);
       const locales = 'en-US';
       const timeZone = 'America/Los_Angeles';
@@ -63,7 +63,13 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
 
-  eleventyConfig.addFilter('publishdateorfiledate', page => page.data ? page.data.publishdate : null || page.date.toISOString());
+  eleventyConfig.addFilter('publishdateorfiledate', page => 
+    (page.data
+      ? page.data.publishdate
+      : page.publishdate) 
+      || page.date.toISOString()
+  );
+  
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
