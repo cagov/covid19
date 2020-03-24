@@ -119,5 +119,12 @@
 
 </main>
 {% include "footer.njk" %}
+
+{% dothisifcontentexists content, "<cwds-accordion>" %}
+{% include "accordion.html" %}
+{% enddothisifcontentexists %}
+
 </body>
+
+
 </html>

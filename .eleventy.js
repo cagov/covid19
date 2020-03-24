@@ -70,6 +70,8 @@ module.exports = function(eleventyConfig) {
       || page.date.toISOString()
   );
   
+  eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
+    contentcontent.match(match) ? content : "");
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
