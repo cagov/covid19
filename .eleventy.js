@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("stats", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
-      if(item.data.title == 'stats') {
+      if(item.data.title.toLocaleLowerCase() == 'stats') {
         posts.push(item);
       }
     })
