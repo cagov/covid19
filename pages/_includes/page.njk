@@ -70,6 +70,18 @@
 			<div class="list-group pb-5">
        <a href="/" class="list-group-item list-group-item-action guide"><span class="ca-gov-icon-arrow-next"></span> Homepage</a>
         <a href="/stay-home-except-for-essential-needs/#top" class="list-group-item list-group-item-action guide {{page | pageActive('stay-home-except-for-essential-needs')}}"><span class="ca-gov-icon-arrow-next"></span> Stay home order</a>
+         {% pagesection page, "stay-home-except-for-essential-needs" %}
+        <div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
+          <ul class="list-unstyled">
+            <li><a href="/stay-home-except-for-essential-needs/#faq"><span class="ca-gov-icon-caret-right"></span> Frequently asked questions:</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#business"><span class="ca-gov-icon-caret-right"></span> Business and taxes</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#school"> <span class="ca-gov-icon-caret-right"></span> Schools and childcare</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#health"> <span class="ca-gov-icon-caret-right"></span> Health care</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#outdoor"> <span class="ca-gov-icon-caret-right"></span> Outdoor recreation</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#pets"> <span class="ca-gov-icon-caret-right"></span> Pets</a></li>
+          </ul>
+        </div>
+        {% endpagesection %}
         <a href="/what-you-can-do/#top" class="list-group-item list-group-item-action guide {{page | pageActive('what-you-can-do')}}"><span class="ca-gov-icon-arrow-next"></span> What you can do</a>
         {% pagesection page, "what-you-can-do" %}
         <div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
