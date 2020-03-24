@@ -59,13 +59,8 @@
 
 <div class="container">
   <div class="row">
-  	
-    <div class="col-lg-8">      
-     
-      {{ content | contentfilter | safe }}
-  </div>
 
-  <div class="col-lg-4 sticky-wrapper">
+   <div class="col-lg-4 sticky-wrapper">
 		<div class="aside p-0">
 			<div class="list-group pb-5">
        <a href="/" class="list-group-item list-group-item-action guide"><span class="ca-gov-icon-arrow-next"></span> Homepage</a>
@@ -73,11 +68,11 @@
          {% pagesection page, "stay-home-except-for-essential-needs" %}
         <div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
           <ul class="list-unstyled">
-            <li><a href="/stay-home-except-for-essential-needs/#faq"><span class="ca-gov-icon-caret-right"></span> Frequently asked questions:</a></li>
-            <li><a href="/stay-home-except-for-essential-needs/#business"><span class="ca-gov-icon-caret-right"></span> Business and taxes</a></li>
-            <li><a href="/stay-home-except-for-essential-needs/#school"> <span class="ca-gov-icon-caret-right"></span> Schools and childcare</a></li>
-            <li><a href="/stay-home-except-for-essential-needs/#health"> <span class="ca-gov-icon-caret-right"></span> Health care</a></li>
-            <li><a href="/stay-home-except-for-essential-needs/#outdoor"> <span class="ca-gov-icon-caret-right"></span> Outdoor recreation</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#faq"><span class="ca-gov-icon-caret-down"></span> Frequently asked questions</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#business"><span class="ca-gov-icon-minus-mark"></span> Business and taxes</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#school"> <span class="ca-gov-icon-minus-mark"></span> Schools and childcare</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#health"> <span class="ca-gov-icon-minus-mark"></span> Health care</a></li>
+            <li><a href="/stay-home-except-for-essential-needs/#outdoor"> <span class="ca-gov-icon-minus-mark"></span> Outdoor recreation</a></li>
           </ul>
         </div>
         {% endpagesection %}
@@ -109,6 +104,15 @@
 			</div>
 			</div>
 		</div>
+
+    <div class="col-lg-8">      
+     
+      {{ content | contentfilter | safe }}
+  </div>
+
+ 
+
+  
 </div>
 </div>
 
