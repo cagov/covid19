@@ -229,7 +229,11 @@ a:hover .wrimagecard-topimage_header h3 {
 }
 
 .bg-light {
-    background-color: #f1f1f1!important;
+    background-color: #f1f1f1;
+}
+.bg-primary {
+    background-color: #0066ab;
+    background: #0066ab;
 }
 
 a, a, a:hover, a:visited {
@@ -291,6 +295,11 @@ a:focus {
 
 .alphabar a:focus {
     outline: 2px solid #FFF;
+}
+
+.bg-primary a:focus {
+    outline: 2px dashed #ffffff;
+    text-decoration: underline;
 }
 
 a .card-title {
