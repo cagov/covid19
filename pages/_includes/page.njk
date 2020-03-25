@@ -60,7 +60,11 @@
 <div class="container">
   <div class="row">
 
-   <div class="col-lg-4 sticky-wrapper">
+    <div class="col-lg-8">      
+      {{ content | contentfilter | safe }}
+  </div>
+
+  <div class="col-lg-4 sticky-wrapper">
 		<div class="aside p-0">
 			<div class="list-group pb-5">
        <a href="/" class="list-group-item list-group-item-action guide"><span class="ca-gov-icon-arrow-next"></span> Homepage</a>
@@ -104,11 +108,6 @@
 			</div>
 			</div>
 		</div>
-
-    <div class="col-lg-8">      
-     
-      {{ content | contentfilter | safe }}
-  </div>
 
 </div>
 </div>
