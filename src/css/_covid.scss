@@ -70,34 +70,6 @@ a.list-group-item.list-group-item-action {
     border-right: 0;
 }
 
-	
-	
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-	
-.navbar-nav {
-	display: block;
-}
-	
-.navbar-nav.mobile {
-	display: flex;
-}
-	
-.bd-navbar .navbar-nav  {
-	padding-top: .5rem;
-}
-	
-	
-.jumbotron img {
-	display: none;
-}
-	
-.wrimagecard-topimage_header.text-center {
-text-align: left!important;
-}
-
-	
-}
 
 h2 {
     padding-bottom: 10px;
@@ -228,7 +200,7 @@ a.list-group-item.list-group-item-action.guide {
 
 .guide ul.list-unstyled li {
     padding-bottom: 1rem;
-    text-indent: -27px;
+    text-indent: -25px;
     padding-left: 27px;
 }
 
@@ -257,7 +229,11 @@ a:hover .wrimagecard-topimage_header h3 {
 }
 
 .bg-light {
-    background-color: #f1f1f1!important;
+    background-color: #f1f1f1;
+}
+.bg-primary {
+    background-color: #0066ab;
+    background: #0066ab;
 }
 
 a, a, a:hover, a:visited {
@@ -321,6 +297,11 @@ a:focus {
     outline: 2px solid #FFF;
 }
 
+.bg-primary a:focus {
+    outline: 2px dashed #ffffff;
+    text-decoration: underline;
+}
+
 a .card-title {
     color: #0066ab;
 }
@@ -356,19 +337,60 @@ button:focus {
     outline: 2px solid #0257d5;
 }
 
-@media only screen and (min-width: 992px){
-    .aside { 
-        position: fixed;
-		z-index: 2;
-    }
+
+
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+	
+.navbar-nav {
+	display: block;
+}
+	
+.navbar-nav.mobile {
+	display: flex;
+}
+	
+.bd-navbar .navbar-nav  {
+	padding-top: .5rem;
+}
+	
+	
+.jumbotron img {
+	display: none;
+}
+	
+.wrimagecard-topimage_header.text-center {
+text-align: left!important;
+}
+	
+.sticky-wrapper {
+	height: fit-content;
+	margin: auto;
+	display: block;
+    padding-left: 1.5rem;
+}
+		
 }
 
 
 
+@media only screen and (min-width: 992px){
+    .aside { 
+ 	position: sticky;
+    z-index: 2;
+    height: fit-content;
+    top: 2rem;
+		
+    }
+}
+
+
+/*
 @media only screen and (max-height: 1100px) {
    .aside { 
        position: relative!important;
  }
 }
- 
+*/
 
