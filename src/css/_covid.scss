@@ -370,6 +370,8 @@ text-align: left!important;
 	margin: auto;
 	display: block;
     padding-left: 1.5rem;
+	padding: 0;
+    margin-top: -7px;
 }
 
 
@@ -377,14 +379,22 @@ text-align: left!important;
     display: inline !important;
 }
 
-cwds-accordion .card-body {
+cwds-accordion .card .card-container .card-body {
+    padding: 0!important;
+}
+	
+#body-nav {
     padding: 0!important;
 }
 
-cwds-accordion .list-group {
+cwds-accordion .card .card-container .card-body .list-group {
     padding: 0!important;
     margin: 0!important;
 	margin-left: 0!important;
+}
+	
+#side-nav {
+    margin-left: 0!important;
 }
 
 cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
@@ -394,6 +404,8 @@ cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
 cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0!important;
 }
+	
+	
 		
 }
 
