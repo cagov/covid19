@@ -370,6 +370,25 @@ text-align: left!important;
 	display: block;
     padding-left: 1.5rem;
 }
+	
+cwds-accordion .card-body {
+    padding: 0!important;
+}
+
+cwds-accordion .list-group {
+    padding: 0!important;
+    margin: 0!important;
+	margin-left: 0!important;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
+    border-radius: 0!important;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
+    border-radius: 0!important;
+}
+
 		
 }
 
