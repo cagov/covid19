@@ -41,6 +41,7 @@
   <style>
     {{ css | cssmin | safe }}
   </style>
+  <script type="module">{% include "built.js" %}</script>
 </head>
 <body>
 {% include "header.njk" %}
