@@ -340,6 +340,7 @@ button:focus {
 
 
 
+
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
 	
@@ -369,7 +370,42 @@ text-align: left!important;
 	margin: auto;
 	display: block;
     padding-left: 1.5rem;
+	padding: 0;
+    margin-top: -7px;
 }
+
+
+.d-sm-block {
+    display: inline !important;
+}
+
+cwds-accordion .card .card-container .card-body {
+    padding: 0!important;
+}
+	
+#body-nav {
+    padding: 0!important;
+}
+
+cwds-accordion .card .card-container .card-body .list-group {
+    padding: 0!important;
+    margin: 0!important;
+	margin-left: 0!important;
+}
+	
+#side-nav {
+    margin-left: 0!important;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
+    border-radius: 0!important;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
+    border-radius: 0!important;
+}
+	
+	
 		
 }
 
