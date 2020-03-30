@@ -44,7 +44,6 @@
   <style>
     {{ css | cssmin | safe }}
   </style>
-  <script type="module">{% include "built.js" %}</script>
 </head>
 <body>
 {% include "header.njk" %}
@@ -103,7 +102,7 @@
                     </div>
 
 
-           <cwds-accordion class="d-none d-sm-block d-md-none">
+           <cwds-accordion class="d-sm-block d-md-none">
               <div class="card">
                 <button class="card-header accordion-alpha" type="button" aria-expanded="false">
                     <div class="accordion-title">Menu</div>

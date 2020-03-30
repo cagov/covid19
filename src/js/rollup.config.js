@@ -7,6 +7,5 @@ module.exports = {
     file: 'pages/_includes/built.js',
     format: 'esm'
   },
-  plugins: [resolve(), terser()
-  ]
+  plugins: [resolve(), terser()]
 };
