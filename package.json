@@ -6,10 +6,16 @@
   "dependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@cagov/accordion": "^1.0.6",
-    "@cagov/step-list": "^1.0.11"
+    "@cagov/step-list": "^1.0.11",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "url-search-params-polyfill": "^8.0.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "@rollup/plugin-node-resolve": "^7.1.1",
+    "babel-loader": "^8.1.0",
     "clean-css": "^4.2.3",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
@@ -29,8 +35,9 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "npx @11ty/eleventy --serve --formats=html,njk --input ./pages --output ./docs",
-    "build": "npm run build:rollup && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
-    "build:rollup": "rollup --config src/js/rollup.config.js"
+    "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
+    "build:rollup": "rollup --config src/js/rollup.config.js",
+    "build:ancient": "webpack --config src/js/webpack.config.es5.js"
   },
   "repository": {
     "type": "git",
