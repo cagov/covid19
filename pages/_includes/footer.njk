@@ -39,4 +39,8 @@
 {% endpagesection %}
 
 <script type="module">{% include "built.js" %}</script>
+{% if page.fileSlug.indexOf('county-alerts') > -1 %}
+<script type="module">{% include "alerts.js" %}</script>
+{% endif %}
+
 <script nomodule src="/js/es5.js"></script>
