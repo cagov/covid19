@@ -45,7 +45,7 @@ function lookupSuccess (inputCounty, inputval, isZip, counties) {
       return '';
     }
   })()}
-    <div class="card-body bg-light">
+    <div class="card-body">
       <a class="action-link" href="${url}">
         Sign up for ${
           county.toLowerCase().indexOf('county') > -1
