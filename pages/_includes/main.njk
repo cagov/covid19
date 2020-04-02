@@ -65,6 +65,25 @@
         </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+			<div id="side-nav"  class="p-0">
+				<cwds-accordion class="d-sm-block d-md-none">
+							  <div id="nav-card" class="card mb-n3">
+								<button class="card-header accordion-alpha" type="button" aria-expanded="false">
+									<div class="accordion-title"><span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
+								</button>
+								<div class="card-container collapsed">
+								  <div id="body-nav" class="card-body">
+									{% include "page-nav.html" %}
+								  </div>
+								</div>
+							  </div>
+							</cwds-accordion>
+		  </div>
+	</div>
+</div>
   {{ content | contentfilter | safe }}
   
   <div class="container-fluid bg-primary text-white">

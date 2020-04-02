@@ -207,6 +207,7 @@ a.list-group-item.list-group-item-action.guide {
 a.list-group-item.list-group-item-action {
     text-indent: -25px;
     padding-left: 35px;
+	padding-right: 0;
 }
 
 .jumbotron img {
@@ -337,11 +338,21 @@ button:focus {
     outline: 2px solid #0257d5;
 }
 
+#mobile-icon {
+    text-align: center;
+    vertical-align: sub;
+    font-size: 2rem;
+    color: #0066ab;
+}
 
 
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+	
+.jumbotron h1 {
+    font-size: 2rem;
+}
 	
 .navbar-nav {
 	display: block;
@@ -369,7 +380,47 @@ text-align: left!important;
 	margin: auto;
 	display: block;
     padding-left: 1.5rem;
+	padding: 0;
+    margin-top: -10px;
 }
+
+
+.d-sm-block {
+    display: inline !important;
+}
+
+cwds-accordion .card .card-container .card-body {
+    padding: 0!important;
+}
+	
+#body-nav {
+    padding: 0!important;
+}
+
+cwds-accordion .card .card-container .card-body .list-group {
+    padding: 0!important;
+    margin: 0!important;
+	margin-left: 0!important;
+}
+	
+#nav-card {
+	border-radius: 0!important;
+}
+	
+#side-nav {
+    margin-left: 0!important;
+	width: 100%;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
+    border-radius: 0!important;
+}
+
+cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
+    border-radius: 0!important;
+}
+	
+	
 		
 }
 
