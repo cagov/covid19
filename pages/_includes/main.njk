@@ -103,15 +103,16 @@
     </div>
   </div>
 </div>
+{% include "find-services.html" %}
   <div class="container-fluid bg-light">
     <div class="container pt-3">
       <!-- have to use it as a collection -->
       {{ collections.stats[0].templateContent | contentfilter | safe }}
     </div>
   </div>
-
+  
   {% include "news-feed-home.html" %}
-  {% include "find-services.html" %}
+
 </main>
 {% include "footer.njk" %}
 </body>
