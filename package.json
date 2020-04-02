@@ -8,12 +8,14 @@
     "@cagov/accordion": "^1.0.6",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.4.3",
+    "awesomplete-es6": "^1.2.2",
     "url-search-params-polyfill": "^8.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "babel-loader": "^8.1.0",
     "clean-css": "^4.2.3",
@@ -23,6 +25,8 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.1.0",
     "purgecss-webpack-plugin": "^2.1.0",
     "rollup": "^2.3.1",
     "rollup-plugin-terser": "^5.3.0",
@@ -35,8 +39,11 @@
     "start": "npm run serve",
     "serve": "npx @11ty/eleventy --serve --formats=html,njk --input ./pages --output ./docs",
     "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
-    "build:rollup": "rollup --config src/js/rollup.config.js",
-    "build:ancient": "webpack --config src/js/webpack.config.es5.js"
+    "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts",
+    "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
+    "build:ancient": "webpack --config src/js/webpack.config.es5.js",
+    "watch": "onchange 'src/**' -- npm run build && touch pages/_includes/main.njk",
+    "local": "run-p watch start"
   },
   "repository": {
     "type": "git",
