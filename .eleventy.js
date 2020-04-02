@@ -7,6 +7,7 @@ module.exports = function(eleventyConfig) {
     collection.getAll().forEach( (item) => {
       if(item.data.tags && item.data.tags[0] == 'guidancefeed') {
         posts.push(item);
+        item.outputPath='./docs/guidancefeed_delme.html'; //This will use the same file to prevent writing output.  Would prefer not to wrtie the file at all.
       }
     })
     return posts.slice().sort(function(a, b) {
@@ -43,7 +44,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
-    if(textstring.length <221) {
+    if(!textstring || textstring.length <221) {
       return textstring;
     } else {
       return textstring.slice(0,220)+'...';
