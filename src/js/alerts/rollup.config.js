@@ -8,5 +8,5 @@ module.exports = {
     file: 'pages/_includes/alerts.js',
     format: 'esm'
   },
-  plugins: [resolve(), json()] // , terser()
+  plugins: [resolve(), json(), terser()]
 };
