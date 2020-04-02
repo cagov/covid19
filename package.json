@@ -43,7 +43,7 @@
     "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
     "build:ancient": "webpack --config src/js/webpack.config.es5.js",
     "watch": "onchange 'src/**' -- npm run build && touch pages/_includes/main.njk",
-    "local": "run-p watch start"
+    "local": "npm run build && run-p watch start"
   },
   "repository": {
     "type": "git",
