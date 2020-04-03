@@ -5,6 +5,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
   eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
+  eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
+  //azure-pipelines-staging.yml
 
   //Process manual content folder
   eleventyConfig.addCollection("manualcontent", function(collection) {
@@ -13,6 +15,7 @@ module.exports = function(eleventyConfig) {
     collection.getAll().forEach(item => {
       if(item.inputPath.includes(manualContentFolderName)) {
         item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
+        item.url = item.url.replace(`/${manualContentFolderName}`,'');
         output.push(item);
       };
     });
