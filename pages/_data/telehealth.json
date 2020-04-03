@@ -1,0 +1,38 @@
+{
+  "telehealthList": [
+    {
+      "provider": "Kaiser Permanente",
+      "description": "Members can log into provider website to schedule video or phone appointments, no need to call.",
+      "links": [
+        {
+          "desc": "Visit Telehealth Website",
+          "url": "https://www.kp.org"
+        },
+        {
+          "desc": "Visit Health Provider Website",
+          "url": "https://www.kp.org/tele"
+        }
+      ]
+    },
+    {
+      "provider": "Molina Healthcare",
+      "description": "Available at no cost for Marketplace and Medicare members. in the process of evaluating Teladoc for our Medi-Cal population.",
+      "links": [
+        {
+          "desc": "Visit Telehealth Website",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "provider": "Sutter Health Plan",
+      "description": "Members can schedule video visits either by logging onto My Health Online website or calling the number above.",
+      "links": [
+        {
+          "desc": "Visit Telehealth Website",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}

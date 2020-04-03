@@ -6,58 +6,42 @@ author: "State of California"
 publishdate: "2020-06-02T11:56:23Z"
 tags: "Online, phone, medical, care, telehealth"
 addtositemap: true
-permalink: /manual-content/telehealth.html
+permalink: /telehealth/index.html
 ---
 
+{{ collections.telehealth[0].templateContent | contentfilter | safe }}
 
-
-{%- for post in collections.covidGuidance -%}
-
-  
-
-{%- endfor -%}
-
-<h2>Find your telehealth options</h2>
-<div class="dropdown">
+<!--<div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Select your county
   </button>
-	<!----- Dynamic county list ------>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Sacramento</a>
     <a class="dropdown-item" href="#">Loas Angeles</a>
     <a class="dropdown-item" href="#">San Diego</a>
   </div>
+</div>-->
+<h2>Find your telehealth options</h2>
+<div class="pt-5 js-provider-list">
+  {%- for item in telehealth.telehealthList -%}
+  <div class="card">
+    <div class="card-header bold">
+      {{item.provider}}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        {{ item.description }}
+      </p>
+      {%- for link in item.links -%}
+        <a href="{{ link.url }}" class="action-link mr-3">{{ link.desc }}</a>
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endfor -%}
 </div>
-	<!----- Dynamic results ------>
-<div class="pt-5">
-	<div class="card">
-	  <div class="card-header bold">
-		Kaiser Permanente
-	  </div>
-	  <div class="card-body">
-		<p class="card-text">Members can log into provider website to schedule video or phone appointments, no need to call.</p>
-		<a href="#" class="action-link mr-3">Visit Telehealth Website</a> <a href="#" class="action-link">Visit Health Provider Website</a>
-	  </div>
-	</div>
-		<div class="card">
-	  <div class="card-header bold">
-		Molina Healthcare
-	  </div>
-	  <div class="card-body">
-		
-		<p class="card-text">Available at no cost for Marketplace and Medicare members. in the process of evaluating Teladoc for our Medi-Cal population.</p>
-		<a href="#" class="action-link mr-3">Visit Telehealth Website</a> 
-	  </div>
-	</div>
-		<div class="card">
-	  <div class="card-header bold">
-		Sutter Health Plan
-	  </div>
-	  <div class="card-body">
-		
-		<p class="card-text">Members can schedule video visits either by logging onto My Health Online website or calling the number above.</p>
-		<a href="#" class="action-link">Visit Health Provider Website</a>
-	  </div>
-	</div>
-</div>
+
+<!--
+<cagov-telehealth data-url="/js/telehealth.json"></cagov-telehealth>
+<template id="telehealth-options">
+</template>
+-->
