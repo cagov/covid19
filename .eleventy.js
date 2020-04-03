@@ -1,6 +1,9 @@
 const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
+  eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
+  eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
 
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
