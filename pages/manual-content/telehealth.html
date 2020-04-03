@@ -13,24 +13,19 @@ permalink: /manual-content/telehealth.html
 
 {%- for post in collections.covidGuidance -%}
 
-  <div class="card border-0 border-bottom rounded-0">
-    <div class="card-body pl-0">
-		<h2 class="card-title lead"><a href="{{ post.data.url }}">{{ post.data.title }}</a></h2>
-		   <p class="card-text"><small class="text-muted"><!--{{ post.fileSlug }} -->{{ post.data.publishdate | formatDate }} </small></p>
-      <div class="card-text">{{ post.data.meta | truncate220 }}</div>
-    </div>
-  </div>
+  
 
 {%- endfor -%}
 
 <h2>Find your telehealth options</h2>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Select your county
   </button>
+	<!----- Dynamic county list ------>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <a class="dropdown-item" href="#">Sacramento</a>
+    <a class="dropdown-item" href="#">Loas Angeles</a>
+    <a class="dropdown-item" href="#">San Diego</a>
   </div>
 </div>
