@@ -123,7 +123,6 @@ a.list-group-item.list-group-item-action {
     max-width: 60px;
 }
 
-
 .translate {
     margin-top:.3rem;
 }
@@ -419,6 +418,7 @@ cwds-accordion .card .card-container .card-body .list-group {
 #side-nav {
     margin-left: 0!important;
 	width: 100%;
+	padding-top: 0;
 }
 
 cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
@@ -429,6 +429,9 @@ cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0!important;
 }
 	
+ .aside { 
+	 padding-bottom: 0!important;
+ }	
 	
 		
 }
