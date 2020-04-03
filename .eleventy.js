@@ -1,9 +1,27 @@
 const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
+  //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
   eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
+  eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
+  //azure-pipelines-staging.yml
+
+  //Process manual content folder
+  eleventyConfig.addCollection("manualcontent", function(collection) {
+    const manualContentFolderName = 'manual-content';
+    let output = [];
+    collection.getAll().forEach(item => {
+      if(item.inputPath.includes(manualContentFolderName)) {
+        item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
+        item.url = item.url.replace(`/${manualContentFolderName}`,'');
+        output.push(item);
+      };
+    });
+
+    return output;
+  });
 
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
@@ -90,4 +108,3 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
-
