@@ -6,7 +6,6 @@ const PATHS = {
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 // Minification options here -> https://github.com/DanielRuf/html-minifier-terser#options-quick-reference
 const minificationOptions = {
@@ -41,10 +40,6 @@ module.exports = {
     }
   },
   plugins: [
-    new CopyPlugin([
-      { from: 'src/css/fonts', to: 'fonts' },
-      { from: 'src/img', to: 'img' }
-    ]),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: 'css/build/built.css'
