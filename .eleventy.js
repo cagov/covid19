@@ -20,6 +20,17 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("telehealth", function(collection) {
+    let posts = [];
+    collection.getAll().forEach( (item) => {
+      if(item.data.tags && item.data.tags[0].indexOf('telehealth') > -1) {
+        posts.push(item);
+      }
+    })
+    console.log('hello')
+    return posts;
+  });
+
   eleventyConfig.addCollection("stats", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
