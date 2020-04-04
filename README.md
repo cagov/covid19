@@ -26,7 +26,7 @@ We audit all deliverables for accessibility, running initial siteimprove and lig
 
 We create static final deliverable using content pregeneration powered by <a href="https://www.11ty.dev/">11ty</a> which reduces resource requirements in our production environment and lets us smoothly scale to handle traffic spikes.
 
-We need to balance pregenerating a lean site with ease of authoring. We do this by using WordPress internally as an authorign tool and integrating changes into the pregen pipeline via the WordPress API. Most of the content on pages is authored in a separate WordPress environment so we can take advantage of the mature writing interface. Any change to this content triggers a custom serverless function which synchs changes directly to this github repository. Code changes trigger 11ty rebuilds via github actions which then trigger deploys to our staging or production environments.
+We need to balance pregenerating a lean site with ease of authoring. We do this by using WordPress internally as an authoring tool and integrating changes into the pregen pipeline via the WordPress API. Most of the content on pages is authored in a separate WordPress environment so we can take advantage of the mature writing interface. Any change to this content triggers a custom serverless function which synchs changes directly to this github repository. Code changes trigger 11ty rebuilds via github actions which then trigger deploys to our staging or production environments.
 
 ### Simplified web app architecture diagram
 
