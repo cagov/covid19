@@ -44,7 +44,7 @@ if (document.querySelector('.js-alert-lookup')) {
       document.querySelector('.invalid-feedback').style.display = 'none';
       document.querySelector('.city-search').classList.remove('is-invalid');
       let finalval = this.querySelector('input').value;
-      templateHTML(finalval);
+      templateHTML(finalval, counties);
     });
 }
 
