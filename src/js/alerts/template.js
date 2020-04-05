@@ -3,7 +3,8 @@ export default function templateHTML (inputval, counties) {
   if (inputval.match(/^\d+$/)) {
     // we are dealing with a zip code
     isZip = true;
-    window.fetch('https://api.alpha.ca.gov/countyfromzip/' + inputval)
+    let url = `https://api.alpha.ca.gov/countyfromzip/${inputval}`;
+    window.fetch(url)
       .then(response => {
         return response.json();
       })
