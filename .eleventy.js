@@ -89,9 +89,44 @@ module.exports = function(eleventyConfig) {
     return "";
   }
 
-  // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', (page, slug) => contentfrompage(" active", page, slug));
+  const isTranslated = (tags) => {
+    if(tags) {
+      let allTags = tags[0].split(',');
+      let langTag = allTags.filter((str) => str.indexOf('lang-') === 0);
+      if(langTag.length > 0) {
+        return langTag[0];
+      }
+    }
+    return false;
+  }
+  const getPageNavDetails = (pageNav, matchUrl) => {
+    let filtered = pageNav.navList.filter((obj) => obj.url === matchUrl);
+    if(filtered.length > 0) {
+      return filtered[0];
+    }
+    return false;
+  }
 
+  const getTranslatedValue = (tags, pageNav, matchUrl, field) => {
+    let langTag = isTranslated(tags);
+    let pageObj = getPageNavDetails(pageNav, matchUrl)
+    if(langTag && pageObj && pageObj[langTag] && pageObj[langTag][field]) {
+      return pageObj[langTag][field];
+    } 
+    if(pageObj && pageObj[field]) {
+      return pageObj[field];
+    }
+    return "";
+  }
+
+  // return the active class for a matching string
+  eleventyConfig.addFilter('pageActive', (page, tags, pageNav, matchUrl, field) => contentfrompage(" active", page, getTranslatedValue(tags, pageNav, matchUrl, field)));
+
+  // return the translated url or title if appropriate
+  eleventyConfig.addFilter('getTranslatedVal', (page, tags, pageNav, matchUrl, field) => {
+    return getTranslatedValue(tags, pageNav, matchUrl, field);
+  });
+  
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 

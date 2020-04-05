@@ -1,11 +1,7 @@
 <div class="list-group">
 	<!-- use {{ tags }} to choose translation strings -->
 	{%- for item in pageNav.navList -%}
-		{% if tags[0].indexOf('lang-es') > -1 %}
-			<a href="{{ item['lang-es'].url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item['lang-es'].slug)}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ item['lang-es'].title }}</a>
-		{% else %}
-			<a href="{{ item.url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item.slug)}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ item.title }}</a>
-		{% endif %}
+		<a href="{{ page | getTranslatedVal(tags, pageNav, item.url, 'url') }}" class="list-group-item list-group-item-action guide {{page | pageActive(tags, pageNav, item.url, 'slug')}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ page | getTranslatedVal(tags, pageNav, item.url, 'title') }}</a>
 		{% if item.subsections.length > 0 %}
 			{% pagesection page, item.slug %}
 				<div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
