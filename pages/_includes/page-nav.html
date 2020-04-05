@@ -2,9 +2,9 @@
 	<!-- use {{ tags }} to choose translation strings -->
 	{%- for item in pageNav.navList -%}
 		{% if tags[0].indexOf('lang-es') > -1 %}
-			<a href="{{ item['lang-es'].url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item['lang-es'].slug)}}"><span class="ca-gov-icon-arrow-next"></span>  {{ item['lang-es'].title }}</a>
+			<a href="{{ item['lang-es'].url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item['lang-es'].slug)}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ item['lang-es'].title }}</a>
 		{% else %}
-			<a href="{{ item.url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item.slug)}}"><span class="ca-gov-icon-arrow-next"></span>  {{ item.title }}</a>
+			<a href="{{ item.url }}" class="list-group-item list-group-item-action guide {{page | pageActive(item.slug)}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ item.title }}</a>
 		{% endif %}
 		{% if item.subsections.length > 0 %}
 			{% pagesection page, item.slug %}
@@ -12,9 +12,9 @@
 					<ul class="list-unstyled">
 					{%- for section in item.subsections -%}
 						{% if tags[0].indexOf('lang-es') > -1 %}
-							<li><a href="{{ section.url }}"><span class="ca-gov-icon-caret-down"></span> {{ section['lang-es'] }}</a></li>
+							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section['lang-es'] }}</a></li>
 						{% else %}
-							<li><a href="{{ section.url }}"><span class="ca-gov-icon-caret-down"></span> {{ section.title }}</a></li>
+							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section.title }}</a></li>
 						{% endif %}
 					{%- endfor -%}
 					</ul>
