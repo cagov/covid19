@@ -66,13 +66,17 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
-      return textstring;
-    } else {
       return textstring.slice(0,220)+'...';
     }
+    return textstring;
   });
 
-  const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
+  const contentfrompage = (content, page, slug) => {
+    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
+      return content;
+    }
+    return "";
+  }
 
   // return the active class for a matching string
   eleventyConfig.addFilter('pageActive', (page, slug) => contentfrompage(" active", page, slug));
