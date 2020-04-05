@@ -45,7 +45,6 @@ module.exports = function(eleventyConfig) {
         posts.push(item);
       }
     })
-    console.log('hello')
     return posts;
   });
 
