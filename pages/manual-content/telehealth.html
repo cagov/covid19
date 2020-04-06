@@ -11,30 +11,26 @@ permalink: /telehealth/index.html
 
 {{ collections.telehealth[0].templateContent | contentfilter | safe }}
 
-<!--<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select your county
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Sacramento</a>
-    <a class="dropdown-item" href="#">Loas Angeles</a>
-    <a class="dropdown-item" href="#">San Diego</a>
-  </div>
-</div>-->
 <h2>Find your telehealth options</h2>
 <div class="pt-5 js-provider-list">
   {%- for item in telehealth.telehealthList -%}
   <div class="card">
     <div class="card-header bold">
-      {{item.provider}}
+      {{item['Health Plan Name']}}
     </div>
     <div class="card-body">
       <p class="card-text">
-        {{ item.description }}
+        {{ item['Special Note'] }}
       </p>
-      {%- for link in item.links -%}
-        <a href="{{ link.url }}" class="action-link mr-3">{{ link.desc }}</a>
-      {%- endfor -%}
+      {% if item['Telehealth Website Website'] != '' %}
+        <a href="{{ item['Telehealth Website Website'] }}" class="action-link mr-3">website</a>
+      {% endif %}
+      {% if item['Telehealth Services Phone Number'] != '' %}
+        <a href="tel:{{ item['Telehealth Services Phone Number'] }}" class="action-link mr-3">{{ item['Telehealth Services Phone Number'] }}</a>
+      {% endif %}
+      {% if item['Health Plan Nurse Advice Line'] != '' %}
+        <a href="{{ item['Health Plan Nurse Advice Line'] }}" class="action-link mr-3">{{ item['Health Plan Nurse Advice Line'] }}</a>
+      {% endif %}
     </div>
   </div>
   {%- endfor -%}
