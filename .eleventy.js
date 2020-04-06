@@ -59,7 +59,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("telehealth", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
-      if(item.data.tags && item.data.tags[0].indexOf('telehealth') > -1) {
+      if(item.data.tags && item.data.tags.toString().indexOf('telehealth') > -1) {
         posts.push(item);
       }
     })
@@ -98,8 +98,7 @@ module.exports = function(eleventyConfig) {
 
   const isTranslated = (tags) => {
     if(tags) {
-      let allTags = tags[0].split(',');
-      let langTag = allTags.filter((str) => str.indexOf('lang-') === 0);
+      let langTag = tags.filter((str) => str.indexOf('lang-') === 0);
       if(langTag.length > 0) {
         return langTag[0];
       }
