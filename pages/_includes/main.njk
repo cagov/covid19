@@ -107,7 +107,7 @@
   <div class="container-fluid bg-light">
     <div class="container pt-3">
       <!-- have to use it as a collection -->
-      {{ collections.stats[0].templateContent | contentfilter | safe }}
+      {% include "../stats.html" %}
     </div>
   </div>
   

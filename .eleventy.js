@@ -37,16 +37,6 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  eleventyConfig.addCollection("stats", function(collection) {
-    let posts = [];
-    collection.getAll().forEach( (item) => {
-      if((item.data.title||'').toLocaleLowerCase() == 'stats') {
-        posts.push(item);
-      }
-    })
-    return posts;
-  });
-
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
