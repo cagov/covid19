@@ -3,6 +3,7 @@
 cwds-accordion .card-container {
   height: 0px;
   display: block;
+  overflow: hidden;
   transition: height .3s;
 }
 
