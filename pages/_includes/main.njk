@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ meta | safe }}">
   <meta name="author" content="{{ author | safe }}">
-  <meta name="keywords" content="{{ tags| safe }}">
+  <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
   <title>{{ title | safe }}</title>
 
   <!-- combined social media meta -->
@@ -107,7 +107,7 @@
   <div class="container-fluid bg-light">
     <div class="container pt-3">
       <!-- have to use it as a collection -->
-      {{ collections.stats[0].templateContent | contentfilter | safe }}
+      {% include "../wordpress-posts/stats.html" %}
     </div>
   </div>
   

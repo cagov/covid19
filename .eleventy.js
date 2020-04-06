@@ -23,6 +23,25 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
+  eleventyConfig.addCollection("wordpressposts", function(collection) {
+    const FolderName = 'wordpress-posts';
+    let output = [];
+    collection.getAll().forEach(item => {
+      if(item.filePathStem.replace(item.fileSlug,'')==='/') {
+        //To be removed once the root content is removed
+        item.outputPath=false;
+        item.url = false;
+      } else 
+        if(item.inputPath.includes(FolderName)) {
+          item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          item.url = item.url.replace(`/${FolderName}`,'');
+          output.push(item);
+        };
+    });
+
+    return output;
+  });
+
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
@@ -35,16 +54,6 @@ module.exports = function(eleventyConfig) {
       let aPub = new Date(a.data.publishdate)
       return bPub.getTime() - aPub.getTime();
     });
-  });
-
-  eleventyConfig.addCollection("stats", function(collection) {
-    let posts = [];
-    collection.getAll().forEach( (item) => {
-      if((item.data.title||'').toLocaleLowerCase() == 'stats') {
-        posts.push(item);
-      }
-    })
-    return posts;
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
