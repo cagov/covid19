@@ -27,31 +27,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("wordpressposts", function(collection) {
     const FolderName = 'wordpress-posts';
     let output = [];
-
+    
     collection.getAll().forEach(item => {
-      if(item.inputPath.includes(FolderName)) {
-        item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
-        item.url = item.url.replace(`/${FolderName}`,'');
-        output.push(item);
-
-
-
-
-      };
-    });
-
-
-
-    collection.getAll().forEach(item => {
-      if(item.inputPath.includes(FolderName)) {
-        item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
-        item.url = item.url.replace(`/${FolderName}`,'');
-        output.push(item);
-
-
-
-
-      };
+        if(item.inputPath.includes(FolderName)) {
+          item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          item.url = item.url.replace(`/${FolderName}`,'');
+          output.push(item);
+        };
     });
 
     return output;
