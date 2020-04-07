@@ -8,9 +8,13 @@
   gtag('config','UA-3419582-47');
 </script>
 
-{% include "footer-fragment.html" %}
+{% set footerfragment %}
+    {% include "footer-fragment.html" %}
+{% endset %}
+{{ footerfragment | contentfilter2 | safe }}
 
 {% include "googletranslate.njk" %}
+
 
 {% pagesection page, "foo" %}
 <!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->

@@ -1,4 +1,6 @@
 const CleanCSS = require("clean-css");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -91,18 +93,41 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  eleventyConfig.addFilter('contentfilter', html => {
-      const dom = new JSDOM(html);
-      dom.window.document.querySelectorAll('ul.footer').forEach(target => {
-        console.log(target);
+  eleventyConfig.addFilter('contentfilter', html => { return html });
+
+
+  eleventyConfig.addFilter('contentfilter2', html => { //return html });
+    const dom = new JSDOM(html);
+    dom.querySelectorAll('ul.magic-footer').forEach(target => {
 
 
 
-        //let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-        //accordion.innerHTML = html;
-      });
-      return dom.serialize();
+
+      let container = dom.createElement('div');
+      container.setAttribute('class', 'col-md-12');
+
+
+target.appendChild(container);
+      //target.parentNode.appendChild(container);
+      //target.parentNode=null;
+      //container.appendChild(target);
+
+
+      //target.parentNode.insertBefore(container, target);
+      //target.parentNode=null;
+      //container.appendChild(target);
+
+      //console.log(target);
+      
+
+
+
+      //let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+      //accordion.innerHTML = html;
     });
+
+    return dom.serialize();
+  });
 
 
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
