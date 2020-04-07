@@ -349,6 +349,10 @@ button:focus {
     color: #0066ab;
 }
 
+.accordion-title {
+	padding-top: 0!important;
+	padding-bottom: 0!important;
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
@@ -424,6 +428,10 @@ cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0!important;
 }
 	
+
+ .aside { 
+	 padding-bottom: 0!important;
+ }	
 	
 		
 }
