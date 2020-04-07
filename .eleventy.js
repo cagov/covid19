@@ -91,7 +91,20 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  eleventyConfig.addFilter('contentfilter', code => code);
+  eleventyConfig.addFilter('contentfilter', html => {
+      const dom = new JSDOM(html);
+      dom.window.document.querySelectorAll('ul.footer').forEach(target => {
+        console.log(target);
+
+
+
+        //let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+        //accordion.innerHTML = html;
+      });
+      return dom.serialize();
+    });
+
+
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
   eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
