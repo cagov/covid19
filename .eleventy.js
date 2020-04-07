@@ -97,36 +97,30 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addFilter('contentfilter2', html => { //return html });
-    const dom = new JSDOM(html);
-    dom.querySelectorAll('ul.magic-footer').forEach(target => {
+    const document = new JSDOM(`<fragment>${html}</fragment>`).window.document;
+    document.querySelectorAll('ul.magic-footer').forEach(target => {      
+      target.querySelectorAll('li').forEach(li => {
+        li.setAttribute('class','list-group-item alpha-footer');
+      });
 
+      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
 
-
-
-      let container = dom.createElement('div');
-      container.setAttribute('class', 'col-md-12');
-
-
-target.appendChild(container);
-      //target.parentNode.appendChild(container);
-      //target.parentNode=null;
-      //container.appendChild(target);
-
-
-      //target.parentNode.insertBefore(container, target);
-      //target.parentNode=null;
-      //container.appendChild(target);
-
-      //console.log(target);
-      
-
-
-
-      //let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-      //accordion.innerHTML = html;
+      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
+      target.outerHTML = html;
     });
 
-    return dom.serialize();
+//    document.querySelectorAll('p.magic-footer').forEach(target => {      
+//      target.querySelectorAll('a').forEach(li => {
+//        li.setAttribute('class','pr-3');
+//      });
+
+//      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
+
+//      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
+//      target.outerHTML = html;
+//    });
+
+    return document.querySelector('fragment').innerHTML;
   });
 
 
