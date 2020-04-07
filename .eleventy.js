@@ -33,6 +33,12 @@ module.exports = function(eleventyConfig) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
           item.url = item.url.replace(`/${FolderName}`,'');
           output.push(item);
+
+          if(!item.data.title) {
+            //No title means fragment
+            console.log(`Skipping fragment ${item.inputPath}`)
+            item.outputPath = false;
+          }
         };
     });
 
@@ -88,7 +94,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('contentfilter', code => code);
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
-  eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
+  eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
