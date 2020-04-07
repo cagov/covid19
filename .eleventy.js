@@ -6,7 +6,7 @@ module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
-  eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
+  eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
 
