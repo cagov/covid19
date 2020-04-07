@@ -23,15 +23,12 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
+  //Process wordpress posts
   eleventyConfig.addCollection("wordpressposts", function(collection) {
     const FolderName = 'wordpress-posts';
     let output = [];
+    
     collection.getAll().forEach(item => {
-      if(item.filePathStem.replace(item.fileSlug,'')==='/') {
-        //To be removed once the root content is removed
-        item.outputPath=false;
-        item.url = false;
-      } else 
         if(item.inputPath.includes(FolderName)) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
           item.url = item.url.replace(`/${FolderName}`,'');
