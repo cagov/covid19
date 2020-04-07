@@ -1,5 +1,4 @@
 <div class="list-group">
-	<!-- use {{ tags }} to choose translation strings -->
 	{%- for item in pageNav.navList -%}
 		<a href="{{ page | getTranslatedVal(tags, pageNav, item.url, 'url') }}" class="list-group-item list-group-item-action guide {{page | pageActive(tags, pageNav, item.url, 'slug')}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ page | getTranslatedVal(tags, pageNav, item.url, 'title') }}</a>
 		{% if item.subsections.length > 0 %}
@@ -7,7 +6,7 @@
 				<div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
 					<ul class="list-unstyled">
 					{%- for section in item.subsections -%}
-						{% if tags.toString().indexOf('lang-es') > -1 %}
+						{% if tags and tags.toString().indexOf('lang-es') > -1 %}
 							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section['lang-es'] }}</a></li>
 						{% else %}
 							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section.title }}</a></li>

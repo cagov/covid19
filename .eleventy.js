@@ -1,4 +1,6 @@
 const CleanCSS = require("clean-css");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -141,6 +143,18 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('contentfilter', code => code);
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
+
+  eleventyConfig.addFilter('findaccordions', html => {
+    // return html.replace('<div class="cwds-accordion">','<cwds-accordion>');
+    // parse the dom with jsdom
+    // let accordionContent = parsed.dom.querySelector('.cwds-accordion).innerHTML
+    const dom = new JSDOM(html);
+    dom.window.document.querySelectorAll('.cwds-accordion').forEach( (accordion) => {
+      let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+      accordion.innerHTML = html;
+    })
+    return dom.serialize();
+  });
 
   eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
 
