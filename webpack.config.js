@@ -3,7 +3,6 @@ const glob = require('glob');
 const PATHS = {
   src: path.join(__dirname, 'pages')
 };
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
