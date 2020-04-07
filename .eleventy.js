@@ -1,6 +1,49 @@
 const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
+  //Copy static assets
+  eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
+  eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
+  eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
+  eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
+  //azure-pipelines-staging.yml
+
+  //Process manual content folder
+  eleventyConfig.addCollection("manualcontent", function(collection) {
+    const manualContentFolderName = 'manual-content';
+    let output = [];
+    collection.getAll().forEach(item => {
+      if(item.inputPath.includes(manualContentFolderName)) {
+        item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
+        item.url = item.url.replace(`/${manualContentFolderName}`,'');
+        output.push(item);
+      };
+    });
+
+    return output;
+  });
+
+  //Process wordpress posts
+  eleventyConfig.addCollection("wordpressposts", function(collection) {
+    const FolderName = 'wordpress-posts';
+    let output = [];
+    
+    collection.getAll().forEach(item => {
+        if(item.inputPath.includes(FolderName)) {
+          item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          item.url = item.url.replace(`/${FolderName}`,'');
+          output.push(item);
+
+          if(!item.data.title) {
+            //No title means fragment
+            console.log(`Skipping fragment ${item.inputPath}`)
+            item.outputPath = false;
+          }
+        };
+    });
+
+    return output;
+  });
 
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
@@ -14,16 +57,6 @@ module.exports = function(eleventyConfig) {
       let aPub = new Date(a.data.publishdate)
       return bPub.getTime() - aPub.getTime();
     });
-  });
-
-  eleventyConfig.addCollection("stats", function(collection) {
-    let posts = [];
-    collection.getAll().forEach( (item) => {
-      if((item.data.title||'').toLocaleLowerCase() == 'stats') {
-        posts.push(item);
-      }
-    })
-    return posts;
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
@@ -43,7 +76,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
-    if(textstring.length <221) {
+    if(!textstring || textstring.length <221) {
       return textstring;
     } else {
       return textstring.slice(0,220)+'...';
@@ -61,7 +94,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('contentfilter', code => code);
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
-  eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
+  eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
@@ -75,4 +108,3 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
-
