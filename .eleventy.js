@@ -96,7 +96,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('contentfilter', html => { return html });
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
-  eleventyConfig.addFilter('stringify', object => JSON.stringify(object,null,2));
 
 //  eleventyConfig.addFilter('contentfilter2', html => { return html });
 

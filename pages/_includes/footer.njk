@@ -8,22 +8,18 @@
   gtag('config','UA-3419582-47');
 </script>
 
-{% set tabledata %}
-{% include "../wordpress-posts/footer-fragment.json" %}
-{% endset %}
-{% set JSON = tabledata | jsonparse %}
-
+{% set JSONraw %}{% include "../wordpress-posts/footer-fragment.json" %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
-
-
 
 <div class="footer alpha-footer">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
           <ul class="list-group list list-group-horizontal-lg flex-fill list-group-flush">
-            {% for item in FooterLinks1 %}<li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
+            {% for item in FooterLinks1 %}
+            <li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
             {% endfor %}
           </ul>
           <p class="text-secondary">Official California State Government Website</p>
