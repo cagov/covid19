@@ -1,6 +1,6 @@
 const CleanCSS = require("clean-css");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+//const jsdom = require("jsdom");
+//const { JSDOM } = jsdom;
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -150,26 +150,3 @@ module.exports = function(eleventyConfig) {
 };
 
 
-function tableToJson(document) {
-  const data = {};
-
-  document.querySelectorAll('table').forEach(table => {
-    const rows = [];
-    const headers = [];
-    let tableindex = 1;
-
-    table.querySelectorAll('thead tr').forEach(target => {
-      target.childNodes.forEach(x=>headers.push(x.innerHTML));
-    });
-
-    table.querySelectorAll('tbody tr').forEach(target => {
-      const rowdata = {};
-      target.childNodes.forEach((x,i)=>rowdata[headers[i]] = x.innerHTML);
-      rows.push(rowdata);
-    });
-
-    data[`Table${tableindex++}`] = rows;
-  });
-
-  return data;
-}
