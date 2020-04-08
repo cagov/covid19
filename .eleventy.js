@@ -95,19 +95,23 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('contentfilter', html => { return html });
 
-
   eleventyConfig.addFilter('contentfilter2', html => { //return html });
     const document = new JSDOM(`<fragment>${html}</fragment>`).window.document;
-    document.querySelectorAll('ul.magic-footer').forEach(target => {      
-      target.querySelectorAll('li').forEach(li => {
-        li.setAttribute('class','list-group-item alpha-footer');
-      });
 
-      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
+    const data = tableToJson(document);
+ 
+    console.log(JSON.stringify(data));
 
-      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
-      target.outerHTML = html;
-    });
+//    document.querySelectorAll('ul.magic-footer').forEach(target => {      
+//      target.querySelectorAll('li').forEach(li => {
+//        li.setAttribute('class','list-group-item alpha-footer');
+//      });
+
+//      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
+
+//      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
+//      target.outerHTML = html;
+//    });
 
 //    document.querySelectorAll('p.magic-footer').forEach(target => {      
 //      target.querySelectorAll('a').forEach(li => {
@@ -140,3 +144,21 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
+
+
+function tableToJson(document) {
+  const data = [];
+  const headers = [];
+  document.querySelectorAll('table thead tr').forEach(target => {
+    target.childNodes.forEach(x=>headers.push(x.innerHTML));
+  });
+
+
+  document.querySelectorAll('table tbody tr').forEach(target => {
+    const rowdata = {};
+    target.childNodes.forEach((x,i)=>rowdata[headers[i]] = x.innerHTML);
+    data.push(rowdata);
+  });
+
+  return data;
+}
