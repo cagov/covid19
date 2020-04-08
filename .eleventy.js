@@ -100,7 +100,7 @@ module.exports = function(eleventyConfig) {
 
     const data = tableToJson(document);
  
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data,null,2));
 
 //    document.querySelectorAll('ul.magic-footer').forEach(target => {      
 //      target.querySelectorAll('li').forEach(li => {
@@ -147,17 +147,24 @@ module.exports = function(eleventyConfig) {
 
 
 function tableToJson(document) {
-  const data = [];
-  const headers = [];
-  document.querySelectorAll('table thead tr').forEach(target => {
-    target.childNodes.forEach(x=>headers.push(x.innerHTML));
-  });
+  const data = {};
 
+  document.querySelectorAll('table').forEach(table => {
+    const rows = [];
+    const headers = [];
+    let tableindex = 1;
 
-  document.querySelectorAll('table tbody tr').forEach(target => {
-    const rowdata = {};
-    target.childNodes.forEach((x,i)=>rowdata[headers[i]] = x.innerHTML);
-    data.push(rowdata);
+    table.querySelectorAll('thead tr').forEach(target => {
+      target.childNodes.forEach(x=>headers.push(x.innerHTML));
+    });
+
+    table.querySelectorAll('tbody tr').forEach(target => {
+      const rowdata = {};
+      target.childNodes.forEach((x,i)=>rowdata[headers[i]] = x.innerHTML);
+      rows.push(rowdata);
+    });
+
+    data[`Table ${tableindex++}`] = rows;
   });
 
   return data;
