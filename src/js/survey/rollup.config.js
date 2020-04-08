@@ -7,5 +7,5 @@ module.exports = {
     file: 'pages/_includes/survey.js',
     format: 'esm'
   },
-  plugins: [resolve()]
+  plugins: [resolve(), terser()]
 };
