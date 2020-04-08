@@ -28,7 +28,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
   if(isZip) {
     resultDescription = `${inputval} is in ${inputCounty}, showing providers in ${inputCounty}`
   }
-  window.fetch('https://api.alpha.ca.gov/TeleHealth/'+inputCounty)
+  window.fetch('https://api.alpha.ca.gov/TeleHealth/'+inputCounty.replace(' County',''))
   .then(response => {
     return response.json();
   })
@@ -36,7 +36,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     document.querySelector('.js-telehealth-providers').innerHTML = `
       <h3>${resultDescription}</h3>
       <div class="pt-5 js-provider-list">
-        ${telehealth.telehealthList.map( (item) => {
+        ${telehealth.map( (item) => {
           return `
             <div class="card">
               <div class="card-header card-header-multi">
