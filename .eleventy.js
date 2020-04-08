@@ -151,6 +151,15 @@ module.exports = function(eleventyConfig) {
     // let accordionContent = parsed.dom.querySelector('.cwds-accordion).innerHTML
     const dom = new JSDOM(html);
     dom.window.document.querySelectorAll('.cwds-accordion').forEach( (accordion) => {
+
+      let titleVal = accordion.querySelector('h4').innerHTML;
+      let target = accordion.querySelector('h4').parentNode;
+      accordion.querySelector('h4').remove();
+      target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
+      <div class="accordion-title">
+      <h4>${titleVal}</h4>
+      </div>
+      </button>`)
       let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
       accordion.innerHTML = html;
     })
