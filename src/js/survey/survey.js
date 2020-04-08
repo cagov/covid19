@@ -20,7 +20,9 @@ function somePercent() {
 }
 
 function applyListeners(target) {
-  target.querySelector('.js-goto-survey').addEventListener('click',reportEvent('openSurvey'));
+  target.querySelector('.js-goto-survey').addEventListener('click',function() {
+    reportEvent('openSurvey');
+  });
   target.querySelector('.js-dismiss-survey').addEventListener('click',function(event) {
     event.preventDefault();
     reportEvent('dismissSurvey');
@@ -35,8 +37,8 @@ function reportEvent(eventString) {
 }
 
 function reportGA(eventString) {
-  if(typeof(ga) !== 'undefined') {
-    ga('send', 'event', 'banner', 'click', 'survey', eventString);
+  if(typeof(gtag) !== 'undefined') {
+    gtag('event','click',{'event_category':'survey','event_label':eventString});
   } else {
     setTimeout(function() {
       reportGA(eventString)
