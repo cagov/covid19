@@ -34,6 +34,7 @@ module.exports = function(eleventyConfig) {
         if(item.inputPath.includes(FolderName)) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
           item.url = item.url.replace(`/${FolderName}`,'');
+          item.data.page.url = item.url;
           output.push(item);
 
           if(!item.data.title) {
