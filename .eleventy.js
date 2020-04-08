@@ -94,45 +94,9 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  eleventyConfig.addFilter('contentfilter', html => { return html });
+  eleventyConfig.addFilter('contentfilter', html => html);
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
-
-//  eleventyConfig.addFilter('contentfilter2', html => { return html });
-
-//    const document = new JSDOM(`<fragment>${html}</fragment>`).window.document;
-
-//    const data = tableToJson(document);
- 
-//    console.log(JSON.stringify(data,null,2));
-
-//    document.querySelectorAll('ul.magic-footer').forEach(target => {      
-//      target.querySelectorAll('li').forEach(li => {
-//        li.setAttribute('class','list-group-item alpha-footer');
-//      });
-
-//      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
-
-//      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
-//      target.outerHTML = html;
-//    });
-
-//    document.querySelectorAll('p.magic-footer').forEach(target => {      
-//      target.querySelectorAll('a').forEach(li => {
-//        li.setAttribute('class','pr-3');
-//      });
-
-//      target.setAttribute('class','list-group list list-group-horizontal-lg flex-fill list-group-flush');
-
-//      let html = `<div class="footer alpha-footer"><div class="container"><div class="row"><div class="col-md-12">${target.outerHTML}</div></div></div></div>`;
-//      target.outerHTML = html;
-//    });
-
-//    return document.querySelector('fragment').innerHTML;
-//  });
-
-
-      //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
   eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
 
