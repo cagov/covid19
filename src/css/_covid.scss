@@ -332,6 +332,12 @@ a .card-title {
   border-radius: 0.25rem;
 }
 
+.card-header-multi {
+  justify-content: space-between;
+  display: flex;
+  padding-right: 2%;
+}
+
 .card-text a,
 a:visited {
   background-image: linear-gradient(to right, #0066ab 50%, transparent 50%);

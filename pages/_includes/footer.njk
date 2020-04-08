@@ -21,5 +21,7 @@
 {% if page.fileSlug.indexOf('county-alerts') > -1 %}
 <script type="module">{% include "alerts.js" %}</script>
 {% endif %}
-
+{% if page.fileSlug.indexOf('telehealth') > -1 %}
+<script type="module">{% include "telehealth.js" %}</script>
+{% endif %}
 <script nomodule src="/js/es5.js"></script>

@@ -12,28 +12,55 @@ permalink: /telehealth/index.html
 {{ collections.telehealth[0].templateContent | contentfilter | safe }}
 
 <h2>Find your telehealth options</h2>
-<div class="pt-5 js-provider-list">
-  {%- for item in telehealth.telehealthList -%}
-  <div class="card">
-    <div class="card-header bold">
-      {{item['Health Plan Name']}}
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        {{ item['Special Note'] }}
-      </p>
-      {% if item['Telehealth Website Website'] != '' %}
-        <a href="{{ item['Telehealth Website Website'] }}" class="action-link mr-3">website</a>
-      {% endif %}
-      {% if item['Telehealth Services Phone Number'] != '' %}
-        <a href="tel:{{ item['Telehealth Services Phone Number'] }}" class="action-link mr-3">{{ item['Telehealth Services Phone Number'] }}</a>
-      {% endif %}
-      {% if item['Health Plan Nurse Advice Line'] != '' %}
-        <a href="{{ item['Health Plan Nurse Advice Line'] }}" class="action-link mr-3">{{ item['Health Plan Nurse Advice Line'] }}</a>
-      {% endif %}
+
+<div class="row">
+  <div class="col-md-12">
+    <form class="form-inline js-telehealth-lookup">
+      <div class="form-group">
+        <label for="location-query"
+          >Please enter your county or zip code:</label
+        >
+        <div class="awesomplete">
+          <div class="awesomplete">
+            <input
+              aria-expanded="false"
+              aria-owns="awesomplete_list_1"
+              autocomplete="off"
+              class="city-search form-control"
+              data-list=""
+              data-multiple=""
+              id="location-query"
+              role="combobox"
+              type="text"
+            />
+            <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+            <span
+              class="visually-hidden"
+              role="status"
+              aria-live="assertive"
+              aria-atomic="true"
+              >Type 2 or more characters for results.</span
+            >
+          </div>
+          <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+          <span
+            class="visually-hidden"
+            aria-atomic="true"
+            aria-live="assertive"
+            role="status"
+            >Type 2 or more characters for results.</span
+          >
+        </div>
+        <button class="btn btn-primary" type="submit">Find providers</button>
+        <div class="invalid-feedback">
+          Please enter a county or zip code in California.
+        </div>
+      </div>
+    </form>
+    <div class="js-telehealth-providers" aria-live="polite">
+      <ul class="card-set"></ul>
     </div>
   </div>
-  {%- endfor -%}
 </div>
 
 <!--
