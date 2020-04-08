@@ -13,7 +13,7 @@ export default function () {
 
 function somePercent() { 
   let lastSurveyInteraction = localStorage.getItem("surveyInteraction");
-  if(!lastSurveyInteraction && Math.random() < 0.99) { 
+  if(!lastSurveyInteraction && Math.random() < 0.1) { 
     return true; 
   }
   return false;
