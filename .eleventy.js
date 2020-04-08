@@ -95,12 +95,16 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('contentfilter', html => { return html });
 
-  eleventyConfig.addFilter('contentfilter2', html => { //return html });
-    const document = new JSDOM(`<fragment>${html}</fragment>`).window.document;
+  eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
+  eleventyConfig.addFilter('stringify', object => JSON.stringify(object,null,2));
 
-    const data = tableToJson(document);
+//  eleventyConfig.addFilter('contentfilter2', html => { return html });
+
+//    const document = new JSDOM(`<fragment>${html}</fragment>`).window.document;
+
+//    const data = tableToJson(document);
  
-    console.log(JSON.stringify(data,null,2));
+//    console.log(JSON.stringify(data,null,2));
 
 //    document.querySelectorAll('ul.magic-footer').forEach(target => {      
 //      target.querySelectorAll('li').forEach(li => {
@@ -124,8 +128,8 @@ module.exports = function(eleventyConfig) {
 //      target.outerHTML = html;
 //    });
 
-    return document.querySelector('fragment').innerHTML;
-  });
+//    return document.querySelector('fragment').innerHTML;
+//  });
 
 
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
@@ -164,7 +168,7 @@ function tableToJson(document) {
       rows.push(rowdata);
     });
 
-    data[`Table ${tableindex++}`] = rows;
+    data[`Table${tableindex++}`] = rows;
   });
 
   return data;
