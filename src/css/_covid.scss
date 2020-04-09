@@ -372,6 +372,11 @@ button:focus {
     font-size: 2rem;
 }
 	
+body {
+
+    font-size: 1rem;
+}
+	
 .navbar-nav {
 	display: block;
 }
@@ -437,6 +442,10 @@ cwds-accordion a.list-group-item.list-group-item-action.guide:first-child {
 
 cwds-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0!important;
+}
+	
+a.list-group-item.list-group-item-action {
+    font-size: 1.15rem;
 }
 	
 .aside { 
