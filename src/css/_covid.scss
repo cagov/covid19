@@ -165,7 +165,7 @@ a.list-group-item.list-group-item-action.guide {
     color: #0066ab;
 }
 
-.alphabar a, {
+.alphabar a {
     color: #fff;
 }
 
@@ -177,9 +177,16 @@ a.list-group-item.list-group-item-action.guide {
     color: #fff;
 }
 
-
-.inverse-hyperlink > a, a:hover, a:visited {
-    /*color: white;*/
+.skippy {
+  display: block;
+  padding: 1em;
+  color: #fff !important;
+  text-align: center;
+  background-color: #0066ab;
+}
+.skippy-text {
+  padding: 0.5em;
+  border: 1px dotted;
 }
 
 .skippy {display: block;
@@ -354,7 +361,7 @@ button:focus {
 }
 
 .aside {
-    padding-top: 0;
+    padding-top: 0!important;
 }
 
 
