@@ -166,6 +166,7 @@ module.exports = function(eleventyConfig) {
     })
     return dom.serialize();
   });
+  eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
   eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
 
