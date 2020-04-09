@@ -153,13 +153,18 @@ module.exports = function(eleventyConfig) {
       let target = accordion.querySelector('h4').parentNode;
       accordion.querySelector('h4').remove();
       accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
-      accordion.querySelector('.card-container').setAttribute('aria-hidden',"true");
-      accordion.querySelector('.card-container').setAttribute('style',"display: none; height: 0px;");
+      let container = accordion.querySelector('.card-container');
+      let containerContent = container.innerHTML;
+      container.parentNode.insertAdjacentHTML('beforeend',`
+        <div class="card-container" aria-hidden="true" style="height: 0px;">
+          <div class="card-body">${containerContent}</div>
+        </div>`);
+      container.parentNode.removeChild(container);
       target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
-      <div class="accordion-title">
-      <h4>${titleVal}</h4>
-      </div>
-      </button>`)
+        <div class="accordion-title">
+        <h4>${titleVal}</h4>
+        </div>
+        </button>`)
       let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
       accordion.innerHTML = html;
     })
