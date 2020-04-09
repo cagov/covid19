@@ -146,16 +146,15 @@ module.exports = function(eleventyConfig) {
       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
   eleventyConfig.addFilter('findaccordions', html => {
-    // return html.replace('<div class="cwds-accordion">','<cwds-accordion>');
-    // parse the dom with jsdom
-    // let accordionContent = parsed.dom.querySelector('.cwds-accordion).innerHTML
     const dom = new JSDOM(html);
     dom.window.document.querySelectorAll('.cwds-accordion').forEach( (accordion) => {
-
+      // bunch of weird hax to make custom elements out of wordpress content
       let titleVal = accordion.querySelector('h4').innerHTML;
       let target = accordion.querySelector('h4').parentNode;
       accordion.querySelector('h4').remove();
       accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
+      accordion.querySelector('.card-container').setAttribute('aria-hidden',"true");
+      accordion.querySelector('.card-container').setAttribute('style',"display: none; height: 0px;");
       target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
       <h4>${titleVal}</h4>
