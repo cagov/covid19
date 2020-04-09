@@ -447,22 +447,22 @@ button:focus {
     padding-bottom: 0 !important;
   }
 
-	
-.aside { 
-	 padding-bottom: 0!important;
- }
-	
-		
-}
 
 cwds-accordion a.list-group-item.list-group-item-action.guide:last-child  {
   border-radius: 0 !important;
 }
 
-.aside {
-  padding-bottom: 0 !important;
+#side-nav {
+  margin-left: 0!important;
+  width: 100%;
 }
 
+#nav-card {
+  border-radius: 0!important;
+}
+
+}
+	
 @media only screen and (min-width: 992px) {
   .aside {
     position: sticky;
