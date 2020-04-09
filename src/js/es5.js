@@ -5,3 +5,4 @@ import './polyfills/endswith.js';
 import '@cagov/accordion';
 import '@cagov/step-list';
 import './alerts/index.js';
+import './telehealth/index.js';
