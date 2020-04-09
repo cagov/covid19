@@ -168,7 +168,7 @@ a.list-group-item.list-group-item-action.guide {
 }
 
 .alphabar a {
-    color: #fff;
+  color: #fff;
 }
 
 .alphabar a:hover {
@@ -382,53 +382,50 @@ button:focus {
   padding-bottom: 0 !important;
 }
 .aside {
-    padding-top: 0!important;
+  padding-top: 0 !important;
 }
 
 .info-left {
-	border-left: 4px solid #0166ab;
-	margin-left: 1rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+  border-left: 4px solid #0166ab;
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
-
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
   .jumbotron h1 {
     font-size: 2rem;
-}
-	
-body {
+  }
 
+  body {
     font-size: 1rem;
-}
-	
-.navbar-nav {
-	display: block;
-}
-	
-.navbar-nav.mobile {
-	display: flex;
-}
-	
-.bd-navbar .navbar-nav  {
-	padding-top: .5rem;
-}
-	
-	
-.jumbotron img {
-	display: none;
-}
-	
-.wrimagecard-topimage_header.text-center {
-text-align: left!important;
-}
-	
-.sticky-wrapper {
-	height: fit-content;
-	margin: auto;
-	display: block;
+  }
+
+  .navbar-nav {
+    display: block;
+  }
+
+  .navbar-nav.mobile {
+    display: flex;
+  }
+
+  .bd-navbar .navbar-nav {
+    padding-top: 0.5rem;
+  }
+
+  .jumbotron img {
+    display: none;
+  }
+
+  .wrimagecard-topimage_header.text-center {
+    text-align: left !important;
+  }
+
+  .sticky-wrapper {
+    height: fit-content;
+    margin: auto;
+    display: block;
     padding-left: 1.5rem;
     padding: 0;
     margin-top: -10px;
@@ -460,38 +457,31 @@ text-align: left!important;
     padding-bottom: 0 !important;
   }
 
+  cwds-accordion a.list-group-item.list-group-item-action.guide:last-child  {
+    border-radius: 0 !important;
+  }
 
-cwds-accordion a.list-group-item.list-group-item-action.guide:last-child  {
-  border-radius: 0 !important;
+  #side-nav {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  #nav-card {
+    border-radius: 0 !important;
+  }
 }
 
-#side-nav {
-  margin-left: 0!important;
-  width: 100%;
-}
-
-#nav-card {
-  border-radius: 0!important;
-}
-
-}
-	
 a.list-group-item.list-group-item-action {
-    font-size: 1.15rem;
-}
-	
-.aside { 
-	 padding-bottom: 0!important;
- }
-	
-		
+  font-size: 1.15rem;
 }
 
+.aside {
+  padding-bottom: 0 !important;
+}
 
-
-@media only screen and (min-width: 992px){
-    .aside { 
- 	position: sticky;
+@media only screen and (min-width: 992px) {
+  .aside {
+    position: sticky;
     z-index: 2;
     height: fit-content;
     top: 2rem;
