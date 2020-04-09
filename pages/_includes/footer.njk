@@ -22,7 +22,7 @@
             <li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
             {% endfor %}
           </ul>
-          <p class="text-secondary">Official California State Government Website</p>
+          <p class="text-secondary">{{JSON.Table3[0].Text | safe}}</p>
       </div>
     </div>
   </div>
@@ -31,10 +31,10 @@
 <div class="alphabar">
   <div class="container text-right">
     <p>
-      <a class="pr-3" href="{{FooterLinks2[0].URL}}">{{FooterLinks2[0].Name}}</a>
-      <a class="pr-3" href="{{FooterLinks2[1].URL}}">{{FooterLinks2[1].Name}}</a>
-      <a class="pr-3" href="{{FooterLinks2[2].URL}}">{{FooterLinks2[2].Name}}</a>
-      <a class="pr-3 d-none d-sm-block d-md-none" href="{{FooterLinks2[3].URL}}">{{FooterLinks2[3].Name}}</a>
+      <a class="pr-3" href="{{FooterLinks2[0].URL}}">{{FooterLinks2[0].Name | safe}}</a>
+      <a class="pr-3" href="{{FooterLinks2[1].URL}}">{{FooterLinks2[1].Name | safe}}</a>
+      <a class="pr-3" href="{{FooterLinks2[2].URL}}">{{FooterLinks2[2].Name | safe}}</a>
+      <a class="pr-3 d-none d-sm-block d-md-none" href="{{FooterLinks2[3].URL}}">{{FooterLinks2[3].Name | safe}}</a>
     </p>
   </div>
 </div>
