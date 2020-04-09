@@ -155,6 +155,7 @@ module.exports = function(eleventyConfig) {
       let titleVal = accordion.querySelector('h4').innerHTML;
       let target = accordion.querySelector('h4').parentNode;
       accordion.querySelector('h4').remove();
+      accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
       target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
       <h4>${titleVal}</h4>
