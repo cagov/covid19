@@ -1,6 +1,4 @@
 const CleanCSS = require("clean-css");
-//const jsdom = require("jsdom");
-//const { JSDOM } = jsdom;
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -8,7 +6,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
   eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
-  //azure-pipelines-staging.yml
 
   //Process manual content folder
   eleventyConfig.addCollection("manualcontent", function(collection) {
