@@ -41,7 +41,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
             <div class="card">
               <div class="card-header card-header-multi">
                 <span class="bold">${ item['Health Plan Name'] }</span>
-                <span class="">${ item['Plan Type'] }</span>
+                <span class="">${ (item['Plan Type'].toLowerCase().indexOf('medi-cal') > -1) ? item['Plan Type'] : '' }</span>
               </div>
               <div class="card-body">
                 <p class="card-text">

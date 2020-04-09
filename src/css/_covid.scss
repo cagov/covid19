@@ -385,6 +385,10 @@ button:focus {
   padding-top: 0 !important;
 }
 
+.form-inline.form-inline-left label {
+  justify-content: left;
+}
+
 .info-left {
   border-left: 4px solid #0166ab;
   margin-left: 1rem;
