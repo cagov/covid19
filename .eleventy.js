@@ -92,7 +92,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
   eleventyConfig.addFilter('contentfilter', code => code);
-       //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
+      //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
@@ -110,5 +110,3 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.htmlTemplateEngine = "njk";
 };
-
-
