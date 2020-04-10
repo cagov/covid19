@@ -12,6 +12,7 @@
 {% set JSON = JSONraw | jsonparse %}
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
+{% set Terms = JSON.Table3 %}
 
 <div class="footer alpha-footer">
   <div class="container">
@@ -22,7 +23,7 @@
             <li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
             {% endfor %}
           </ul>
-          <p class="text-secondary">{{JSON.Table3[0].Text | safe}}</p>
+          <p class="text-secondary">{{Terms[0].Text | safe}}</p>
       </div>
     </div>
   </div>
