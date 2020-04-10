@@ -173,7 +173,8 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
-  eleventyConfig.addFilter('lang', tags => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US');
+  const getLangCode = (tags) => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US';
+  eleventyConfig.addFilter('lang', getLangCode);
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
@@ -185,5 +186,34 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
+  // return the page record in pageNav
+  eleventyConfig.addFilter('getAltPageRows', (page, pageNav, tags) => {
+    const pageNavRecord = pageNav.navList.find(x=>x.slug===page.fileSlug || x['lang-es'].slug===page.fileSlug);
+    const lang = getLangCode(tags);
+    let list = [];
+
+    if(pageNavRecord) {
+      if (lang==='es-ES') {
+        list.push({
+            langcode:'en',
+            langname:'English',
+            url:pageNavRecord.url
+          });
+      } else {
+        const url = pageNavRecord['lang-es'].url;
+
+        if (url) 
+          list.push({
+            langcode:'es',
+            langname: 'Español',
+            url
+          });
+        }
+      }
+
+      return list;
+  });
+
   eleventyConfig.htmlTemplateEngine = "njk";
 };
+
