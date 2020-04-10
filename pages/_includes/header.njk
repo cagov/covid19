@@ -1,6 +1,9 @@
+{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
+{% set Terms = JSON.Table3 %}
 <header>
   <a class="skippy sr-only-focusable text-center" href="#main">
-    <span class="skippy-text">Skip to main content</span>
+    <span class="skippy-text">{{Terms[1].Text}}</span>
   </a>
   <div class="js-survey-display"></div>
   <script type="module">
@@ -8,7 +11,7 @@
   </script>
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
-    <a href="https://www.gov.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">California Coronavirus (COVID-19) Response</a></div>
+    <a href="https://www.gov.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">{{Terms[2].Text}}</a></div>
     <ul class="navbar-nav mobile ml-sm-auto ">
       <li class="nav-item">
         <a class="nav-link" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -22,7 +25,7 @@
         </a>
       </li>
       <li class="nav-item mr-3">
-        <a href="/search/" class="btn translate"><span class="ca-gov-icon-search" aria-hidden="true"></span> Search</a>
+        <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
       </li>
       <li class="nav-item">
  {% set altlangs = page | getAltPageRows(pageNav, tags) %} 
