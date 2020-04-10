@@ -65,7 +65,7 @@
         
 
         <div class="col-lg-4 sticky-wrapper">
-          <div id="side-nav"  class="aside p-0">
+          <div id="side-nav"  class="aside">
                    
                   <div class="d-none d-sm-none d-md-block">
                       {% include "page-nav.html" %}
@@ -74,7 +74,7 @@
 
            <cwds-accordion class="d-sm-block d-md-none">
               <div id="nav-card" class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                <button class="card-header accordion-alpha mobile-menu" type="button" aria-expanded="false">
                     <div class="accordion-title"><span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
                 </button>
                 <div class="card-container collapsed">
@@ -87,8 +87,8 @@
           </div>
         </div>  
 
-<div class="col-lg-8">      
-          {{ content | contentfilter | safe }}
+        <div class="col-lg-8">      
+          {{ content | contentfilter | findaccordions | safe  }}
         </div>
 
 
