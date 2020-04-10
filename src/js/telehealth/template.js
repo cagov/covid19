@@ -45,12 +45,13 @@ function lookupSuccess(inputCounty, inputval, isZip) {
               </div>
               <div class="card-body">
                 <p class="card-text">
-                  <p>Telehealth care offered: ${(item['Health Plan Offered Telehealth'] == 'Yes') ? '<span class="bold">Yes</span>' : '<span class="bold">No</span>' }
+                  <p>Telehealth care offered: ${(item['Telehealth Offered by Health Plan	'] == 'Yes') ? '<span class="bold">Yes</span>' : '<span class="bold">No</span>' }
                   ${ (item['Telehealth Services Phone Number'] != '') ? `<p>Telehealth services phone number: <a href="tel:${ item['Telehealth Services Phone Number'] }">${ item['Telehealth Services Phone Number'] }</a></p>` : '' }                
                   ${ (item['Health Plan Nurse Advice Line'] != '') ? `<p>Health plan nurse advice line: <a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a></p>` : ''}
                   ${ item['Special Note'] }
                 </p>
-                ${ (item['Telehealth Website Website'] != '') ? `<a href="${ item['Telehealth Website Website'] }" class="action-link mr-3">Visit Telehealth website</a>` : ''}
+                ${ (item['Visit Health Plan Website'] != '') ? `<a href="${ item['Visit Health Plan Website'] }" class="action-link mr-3">Visit Health Plan website</a>` : ''}
+                ${ (item['Visit Telehealth Website'] != '') ? `<a href="${ item['Visit Telehealth Website'] }" class="action-link mr-3">Visit Telehealth website</a>` : ''}
               </div>
             </div>
           `

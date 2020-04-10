@@ -122,6 +122,7 @@ module.exports = function(eleventyConfig) {
   const getTranslatedValue = (tags, pageNav, matchUrl, field) => {
     let langTag = isTranslated(tags);
     let pageObj = getPageNavDetails(pageNav, matchUrl)
+    
     if(langTag && pageObj && pageObj[langTag] && pageObj[langTag][field]) {
       return pageObj[langTag][field];
     } 
