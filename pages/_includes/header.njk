@@ -3,7 +3,9 @@
     <span class="skippy-text">Skip to main content</span>
   </a>
   <div class="js-survey-display"></div>
-  <script type="module">{% include "survey.js" %}</script> 
+  <script type="module">
+  {% include "survey.js" %}
+  </script>
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
     <a href="https://www.gov.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">California Coronavirus (COVID-19) Response</a></div>
@@ -23,7 +25,12 @@
         <a href="/search/" class="btn translate"><span class="ca-gov-icon-search" aria-hidden="true"></span> Search</a>
       </li>
       <li class="nav-item">
-        <a href="/translate/" class="btn translate"><span class="ca-gov-icon-globe" aria-hidden="true"></span> Translate</a>
+ {% set altlangs = page | getAltPageRows(pageNav, tags) %} 
+ {% for item in altlangs %}
+    <a class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+ {% else %}
+    <a class="btn translate" rel="alternate">(No alt language)</a>
+ {% endfor %}
       </li>
     </ul>
   </div>
