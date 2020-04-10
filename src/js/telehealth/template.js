@@ -26,7 +26,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
   }
   let resultDescription = `Providers in ${inputCounty}`;
   if(isZip) {
-    resultDescription = `${inputval} is in ${inputCounty}, showing providers in ${inputCounty}`
+    resultDescription = `${inputval} is in ${inputCounty}, showing telehealth services or nurse advice lines offered by health plans in ${inputCounty}.`
   }
   window.fetch('https://api.alpha.ca.gov/TeleHealth/'+inputCounty.replace(' County',''))
   .then(response => {
@@ -36,7 +36,15 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     document.querySelector('.js-telehealth-providers').innerHTML = `
       <h3>${resultDescription}</h3>
       <div class="pt-5 js-provider-list">
-        ${telehealth.map( (item) => {
+        ${telehealth.sort(function(a,b) {
+          if (a['Health Plan Name'] < b['Health Plan Name']) {
+            return -1;
+          }
+          if (a['Health Plan Name'] > b['Health Plan Name']) {
+            return 1;
+          }
+          return 0;
+        }).map( (item) => {
           return `
             <div class="card">
               <div class="card-header card-header-multi">
@@ -45,7 +53,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
               </div>
               <div class="card-body">
                 <p class="card-text">
-                  <p>Telehealth care offered: ${(item['Telehealth Offered by Health Plan	'] == 'Yes') ? '<span class="bold">Yes</span>' : '<span class="bold">No</span>' }
+                  <p>Telehealth care offered: ${(item['Telehealth Offered by Health Plan'] == 'Yes') ? '<span class="bold">Yes</span>' : '<span class="bold">No</span>' }
                   ${ (item['Telehealth Services Phone Number'] != '') ? `<p>Telehealth services phone number: <a href="tel:${ item['Telehealth Services Phone Number'] }">${ item['Telehealth Services Phone Number'] }</a></p>` : '' }                
                   ${ (item['Health Plan Nurse Advice Line'] != '') ? `<p>Health plan nurse advice line: <a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a></p>` : ''}
                   ${ item['Special Note'] }
