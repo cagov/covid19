@@ -62,16 +62,6 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  eleventyConfig.addCollection("telehealth", function(collection) {
-    let posts = [];
-    collection.getAll().forEach( (item) => {
-      if(item.data.tags && item.data.tags.toString().indexOf('telehealth') > -1) {
-        posts.push(item);
-      }
-    })
-    return posts;
-  });
-
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
