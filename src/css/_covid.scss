@@ -485,10 +485,6 @@ a.list-group-item.list-group-item-action {
     border-radius: 0 !important;
   }
 	
-  #side-nav cwds-accordion .card-container {
-    padding-left: .9rem;
-}
-
   #side-nav {
     margin-left: 0 !important;
     width: 100%;
@@ -498,9 +494,14 @@ a.list-group-item.list-group-item-action {
     border-radius: 0 !important;
   }
 	
-.card-body {
-    padding: .75rem 1.25rem;
-}
+  .card-body {
+	padding: .75rem 1.25rem;
+  }
+	
+   #body-nav {
+    padding: 0!important;
+  }
+	
 //-----------end of Small breakpoint
 }
 
