@@ -1,18 +1,40 @@
 # Covid19
 
-The new website, COVID19.CA.gov, is designed to answer the questions people have and present information that is real time and actionable. It provides a single source of  truth for people looking for information about COVID-19 developments and response here in California. As well as a centralized location for simplified policy guidance. It is intended to be simple to understand while providing links back to department websites.
+The new website, COVID19.CA.gov, is designed to answer the questions people have and present information that is real time and actionable. It provides a single source of  truth for people looking for information about COVID-19 developments and response here in California. As well as a centralized location for simplified policy guidance. It is intended to be simple to understand while providing links back to department websites. 
 
 As the situation develops, the website will be updated in real time with information as it becomes available.
 
-## Content style guide 
+> Crisis standard: https://github.com/cagov/covid19/wiki/Crisis-standard
 
-> <a href="https://docs.google.com/document/d/1txYjL0T2Qmi6Bn7UMtRyECNGbJpOzVQ5ALtqrVTOPOI/edit">covid19.ca.gov content style guide</a>
+## Content principles 
+We are in a public health emergency. All communication from the State of California must create clarity in order to lead Californians through this crisis.
+
+The website (covid19.ca.gov) speaks directly to all Californians — not just journalists, experts, or government employees. There are a number of web-specific best practices that must be implemented for all content. The web/covid19.ca.gov team will revise and format all content to make all content on covid19.ca.gov:
+
+#### Accessible to all.
+This is a legal, moral, and practical consideration. This includes accessibility for users with physical disabilities, cognitive impairment, assistive technologies, all devices, and all levels of education/literacy (6th grade level tested in Hemingway).
+
+#### Clear. 
+Because navigating this crisis requires public compliance with frequently-changing public health guidance, confusion is actually dangerous. If users can’t understand what to do, they won’t do it. The site must also be concise: based on analytics data, we have ~1.5 minutes to get each user the most important information.
+
+#### Trustworthy. 
+Content on the site must be true, complete, and current. This means that the web team must be able to update the content rapidly to fit changing circumstances, and approval must be iterative so that the site is never out-of-date. To maintain trust, it’s crucial that the site come across as an apolitical authority, not as a vehicle for political messaging.
+
+#### Inclusive.
+
+> See the <a href="https://docs.google.com/document/d/10Nz7sFJBlcOXNPhaw6ujjSFvv99xvid3kwBp58Up9Eo/edit#">full list for inclusivity considerations and common issues</a>
+
+### Content style guide 
+
+> <a href="https://docs.google.com/document/d/1txYjL0T2Qmi6Bn7UMtRyECNGbJpOzVQ5ALtqrVTOPOI/edit">Read the covid19.ca.gov content style guide</a>
 
 For a more comprehensive style guide see:
 
 > <a href="https://docs.google.com/document/d/1O5xf74pMzeGKIcMOx_dUooteSTVb2NwB9dze9D9T_fs/edit">Alpha content style guide</a>
 
 ### For content requests or questions email: covid19@alpha.ca.gov 
+
+***
 
 ## Technical architecture
 
