@@ -275,8 +275,8 @@ a:visited {
 }
 
 li.list-group-item.alpha-footer {
-    padding-right: 2rem;
-	padding-left: 1.5rem;
+    padding-right: 1rem;
+    padding-left: 0;
 	text-indent: inherit;
 }
 
@@ -397,6 +397,24 @@ button:focus {
   margin-top: 1.5rem;
 }
 
+
+a.list-group-item.list-group-item-action {
+    font-size: 1.15rem;
+}
+	
+.aside { 
+	 padding-bottom: 0!important;
+ }
+	
+.wrimagecard-topimage_header {
+    min-height: 10rem;
+}
+
+ .accordion-title {
+	 padding-left: 0!important;
+	}
+
+
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
   .jumbotron h1 {
@@ -439,6 +457,7 @@ button:focus {
   .d-sm-block {
     display: inline !important;
   }
+	
 
   cwds-accordion .card .card-container .card-body  {
     padding: 0 !important;
@@ -465,7 +484,7 @@ button:focus {
   cwds-accordion a.list-group-item.list-group-item-action.guide:last-child  {
     border-radius: 0 !important;
   }
-
+	
   #side-nav {
     margin-left: 0 !important;
     width: 100%;
@@ -474,23 +493,20 @@ button:focus {
   #nav-card {
     border-radius: 0 !important;
   }
+	
+  .card-body {
+	padding: .75rem 1.25rem;
+  }
+	
+   #body-nav {
+    padding: 0!important;
+  }
+	
+//-----------end of Small breakpoint
 }
 
-a.list-group-item.list-group-item-action {
-    font-size: 1.15rem;
-}
-	
-.aside { 
-	 padding-bottom: 0!important;
- }
-	
-.wrimagecard-topimage_header {
-    min-height: 10rem;
-}
 
-.aside {
-  padding-bottom: 0 !important;
-}
+
 
 @media only screen and (min-width: 992px) {
   .aside {
