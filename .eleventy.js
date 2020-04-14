@@ -62,16 +62,6 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  eleventyConfig.addCollection("telehealth", function(collection) {
-    let posts = [];
-    collection.getAll().forEach( (item) => {
-      if(item.data.tags && item.data.tags.toString().indexOf('telehealth') > -1) {
-        posts.push(item);
-      }
-    })
-    return posts;
-  });
-
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
@@ -150,24 +140,31 @@ module.exports = function(eleventyConfig) {
     const dom = new JSDOM(html);
     dom.window.document.querySelectorAll('.cwds-accordion').forEach( (accordion) => {
       // bunch of weird hax to make custom elements out of wordpress content
-      let titleVal = accordion.querySelector('h4').innerHTML;
-      let target = accordion.querySelector('h4').parentNode;
-      accordion.querySelector('h4').remove();
-      accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
-      let container = accordion.querySelector('.card-container');
-      let containerContent = container.innerHTML;
-      container.parentNode.insertAdjacentHTML('beforeend',`
-        <div class="card-container" aria-hidden="true" style="height: 0px;">
-          <div class="card-body">${containerContent}</div>
-        </div>`);
-      container.parentNode.removeChild(container);
-      target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
-        <div class="accordion-title">
-        <h4>${titleVal}</h4>
-        </div>
-        </button>`)
-      let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-      accordion.innerHTML = html;
+      if(accordion.querySelector('h4')) {
+        let titleVal = accordion.querySelector('h4').innerHTML;
+        let target = accordion.querySelector('h4').parentNode;
+        accordion.querySelector('h4').remove();
+        accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
+        let container = accordion.querySelector('.card-container');
+        if(!container) {
+          container = accordion.querySelector('ul');
+        }
+        if(container) {
+          let containerContent = container.innerHTML;
+          container.parentNode.insertAdjacentHTML('beforeend',`
+            <div class="card-container" aria-hidden="true" style="height: 0px;">
+              <div class="card-body">${containerContent}</div>
+            </div>`);
+          container.parentNode.removeChild(container);
+          target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
+            <div class="accordion-title">
+            <h4>${titleVal}</h4>
+            </div>
+            </button>`)
+          let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+          accordion.innerHTML = html;  
+        }
+      }
     })
     return dom.serialize();
   });
