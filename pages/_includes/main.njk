@@ -72,7 +72,12 @@
 	</div>
 </div>
   {{ content | contentfilter | safe }}
-  
+    <div class="container-fluid bg-light">
+    <div class="container pt-3">
+      <!-- have to use it as a collection -->
+      {% include "../wordpress-posts/stats.html" %}
+    </div>
+  </div>
   <div class="container-fluid bg-primary text-white">
   <div class="container pb-3 pt-3 text-white">
     <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
@@ -91,15 +96,7 @@
   </div>
 </div>
 {% include "find-services.html" %}
-  <div class="container-fluid bg-light">
-    <div class="container pt-3">
-      <!-- have to use it as a collection -->
-      {% include "../wordpress-posts/stats.html" %}
-    </div>
-  </div>
-  
-  {% include "news-feed-home.html" %}
-
+{% include "news-feed-home.html" %}
 </main>
 {% include "footer.njk" %}
 </body>
