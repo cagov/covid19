@@ -1,6 +1,9 @@
 const CleanCSS = require("clean-css");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const fs = require('fs')
+//const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -101,7 +104,7 @@ module.exports = function(eleventyConfig) {
     }
     return false;
   }
-  const getPageNavDetails = (pageNav, matchUrl) => {
+  const getPageNavDetails = matchUrl => {
     let filtered = pageNav.navList.filter((obj) => obj.url === matchUrl);
     if(filtered.length > 0) {
       return filtered[0];
@@ -109,9 +112,9 @@ module.exports = function(eleventyConfig) {
     return false;
   }
 
-  const getTranslatedValue = (tags, pageNav, matchUrl, field) => {
+  const getTranslatedValue = (tags, matchUrl, field) => {
     let langTag = isTranslated(tags);
-    let pageObj = getPageNavDetails(pageNav, matchUrl)
+    let pageObj = getPageNavDetails(matchUrl)
     
     if(langTag && pageObj && pageObj[langTag] && pageObj[langTag][field]) {
       return pageObj[langTag][field];
@@ -123,11 +126,11 @@ module.exports = function(eleventyConfig) {
   }
 
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', (page, tags, pageNav, matchUrl, field) => contentfrompage(" active", page, getTranslatedValue(tags, pageNav, matchUrl, field)));
+  eleventyConfig.addFilter('pageActive', (page, tags, matchUrl, field) => contentfrompage(" active", page, getTranslatedValue(tags, matchUrl, field)));
 
   // return the translated url or title if appropriate
-  eleventyConfig.addFilter('getTranslatedVal', (page, tags, pageNav, matchUrl, field) => {
-    return getTranslatedValue(tags, pageNav, matchUrl, field);
+  eleventyConfig.addFilter('getTranslatedVal', (page, tags, matchUrl, field) => {
+    return getTranslatedValue(tags, matchUrl, field);
   });
   
   // show or hide content based on page
@@ -184,7 +187,7 @@ module.exports = function(eleventyConfig) {
     contentcontent.match(match) ? content : "");
 
   // return the page record in pageNav
-  eleventyConfig.addFilter('getAltPageRows', (page, pageNav, tags) => {
+  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
     const pageNavRecord = pageNav.navList.find(x=>x.slug===page.fileSlug || x['lang-es'].slug===page.fileSlug);
     const lang = getLangCode(tags);
     let list = [];

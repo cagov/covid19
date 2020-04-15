@@ -28,7 +28,7 @@
         <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
       </li>
       <li class="nav-item">
- {% set altlangs = page | getAltPageRows(pageNav, tags) %} 
+ {% set altlangs = page | getAltPageRows(tags) %} 
  {% for item in altlangs %}
     <a class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
  {% else %}
