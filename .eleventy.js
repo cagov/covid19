@@ -173,7 +173,13 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
-  const getLangCode = (tags) => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US';
+  const getLangCode = tags => {
+    return ((tags || [])
+      .find(tag => langData.languages.find(x=>x.wptag===tag))
+      || langData.languages[0])
+      .hreflang;
+  }
+  
   eleventyConfig.addFilter('lang', getLangCode);
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
