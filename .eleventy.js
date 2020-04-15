@@ -173,13 +173,26 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
+  function gimmeLangs(tags) {
+    return tags.filter((tag) => {
+      return tag.indexOf('lang-') > -1;
+    })
+  }
+
+  eleventyConfig.addFilter('getLangFromTags', tags => {
+    if(tags && gimmeLangs(tags).length > 0) {
+      return gimmeLangs(tags)[0].replace('lang','');
+    }
+    return "";
+  });
+
   const getLangCode = tags => {
     return ((tags || [])
       .find(tag => langData.languages.find(x=>x.wptag===tag))
       || langData.languages[0])
       .hreflang;
   }
-  
+
   eleventyConfig.addFilter('lang', getLangCode);
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
