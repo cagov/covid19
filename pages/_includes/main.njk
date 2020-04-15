@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ tags | lang }}" xml:lang="{{ tags | lang }}">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{ meta | safe }}" />
-    <meta name="author" content="{{ author | safe }}" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="{{ meta | safe }}"/>
+    <meta name="author" content="{{ author | safe }}"/>
     <meta
       name="keywords"
       content="covid19, coronavirus, covid19, covid-19, california"
-    />
+/>
     <title>{{ title | safe }}</title>
 
     <!-- combined social media meta -->
-    <meta content="{{ title | safe }}" property="og:title" />
+    <meta content="{{ title | safe }}" property="og:title"/>
     <meta
-      content="We’re all in this together. We are working rapidly to keep our state healthy."
+      content="we’re all in this together. we are working rapidly to keep our state healthy."
       property="og:description"
-    />
+/>
     <meta
-      content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg"
+      content="https://covid19.ca.gov/img/awareness/caforall_covid_endcards_v4_english.jpg"
       property="og:image"
-    />
-    <meta content="https://covid19.ca.gov/" property="og:url" />
-    <meta name="twitter:card" content="summary_large_image" />
+/>
+    <meta content="https://covid19.ca.gov/" property="og:url"/>
+    <meta name="twitter:card" content="summary_large_image"/>
 
-    <link href="https://covid19.ca.gov/" rel="canonical" />
+    <link href="https://covid19.ca.gov/" rel="canonical"/>
 
     {% include "favicons.njk" %}
-    <link rel="manifest" href="/img/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
-    {% set css %} {% include "built.css" %} {% endset %}
+    <link rel="manifest" href="/img/manifest.json"/>
+    <meta name="msapplication-tilecolor" content="#ffffff"/>
+    <meta name="msapplication-tileimage" content="img/ms-icon-144x144.png"/>
+    <meta name="theme-color" content="#ffffff"/>
+    {% set css %}
+    {% include "built.css" %}
+    {% endset %}
     <style>
-      {{ css | cssmin | safe }}
+      {{css | cssmin | safe}}
     </style>
   </head>
   <body>
@@ -57,17 +59,17 @@
             <div class="col-lg-4">
               <a href="https://toolkit.covid19.ca.gov/"
                 ><img
-                  src="/img/California-For-All.png"
+                  src="/img/california-for-all.png"
                   class="rounded float-left img-fluid mr-5"
-                  alt="california for all your actions save lives visit California for All website"
-              /></a>
+                  alt="california for all your actions save lives visit california for all website"
+/></a>
               <a
-                href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
+                href="https://www.cdph.ca.gov/programs/cid/dcdc/pages/immunization/ncov2019.aspx"
                 ><img
                   src="/img/cdph-logo.png"
                   class="rounded float-left img-fluid pt-3"
-                  alt="visit Department of Public Health website"
-              /></a>
+                  alt="visit department of public health website"
+/></a>
             </div>
           </div>
         </div>
@@ -94,6 +96,13 @@
                 </div>
               </div>
             </cwds-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-3 pt-3 bg-highlight">
+        <div class="container">
+          <div class="col-md-12 alert-left js-disclaimer ml-0">
+            {% include "../wordpress-posts/new.html" %}
           </div>
         </div>
       </div>
@@ -145,7 +154,8 @@
           </div>
         </div>
       </div>
-      {% include "find-services.html" %} {% include "news-feed-home.html" %}
+      {% include "find-services.html" %}
+      {% include "news-feed-home.html" %}
     </main>
     {% include "footer.njk" %}
   </body>
