@@ -186,12 +186,8 @@ module.exports = function(eleventyConfig) {
     return "";
   });
 
-  const getLangCode = tags => {
-    return ((tags || [])
-      .find(tag => langData.languages.find(x=>x.wptag===tag))
-      || langData.languages[0])
-      .hreflang;
-  }
+  const getLangCode = tags => 
+    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0].hreflang;
 
   eleventyConfig.addFilter('lang', getLangCode);
 
