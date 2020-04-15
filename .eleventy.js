@@ -2,7 +2,7 @@ const CleanCSS = require("clean-css");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs')
-//const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 
 module.exports = function(eleventyConfig) {
