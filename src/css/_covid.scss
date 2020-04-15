@@ -167,6 +167,10 @@ a.list-group-item.list-group-item-action.guide {
   color: #0066ab;
 }
 
+a.list-group-item.list-group-item-action {
+	border-bottom: solid 1px;
+}
+
 .alphabar a {
   color: #fff;
 }
@@ -253,6 +257,11 @@ a:hover .wrimagecard-topimage_header h3 {
 .bg-light {
   background-color: #f1f1f1;
 }
+
+.bg-highlight {
+  background-color: #f9f6ef;
+}
+
 .bg-primary {
   background-color: #0066ab;
   background: #0066ab;
@@ -407,7 +416,7 @@ a.list-group-item.list-group-item-action {
  }
 	
 .wrimagecard-topimage_header {
-    min-height: 10rem;
+    min-height: 14.5rem;
 }
 
  .accordion-title {
