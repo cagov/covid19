@@ -31,13 +31,9 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
-<<<<<<< HEAD
     {% set css %} {% include "built.css" %} {% endset %} 
 
     {% set fileExtension %}{{ tags | getLangFromTags }}{% endset %} 
-=======
-    {% set css %} {% include "built.css" %} {% endset %}
->>>>>>> format
     <style>
       {{ css | cssmin | safe }}
     </style>
@@ -49,19 +45,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-<<<<<<< HEAD
               {% include "../wordpress-posts/home-header" + fileExtension + ".html" %}
-=======
-              <h1>Coronavirus (COVID-19) in California</h1>
-              <p class="lead">
-                COVID-19 is a new illness that can affect your lungs and
-                airways. It's caused by a virus called coronavirus.
-              </p>
-              <!--<p class="lead bold">We’re all in this together. We are working rapidly to keep our state healthy.</P>-->
-              <p class="lead">
-                Last updated {{ page | publishdateorfiledate | formatDate }}
-              </p>
->>>>>>> format
             </div>
 
             <div class="col-lg-4">
