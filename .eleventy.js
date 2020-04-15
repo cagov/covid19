@@ -1,6 +1,10 @@
 const CleanCSS = require("clean-css");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const fs = require('fs')
+const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const langWptagList = langData.languages.map(l=>l.wptag);
+const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -92,43 +96,22 @@ module.exports = function(eleventyConfig) {
     return "";
   }
 
-  const isTranslated = (tags) => {
-    if(tags) {
-      let langTag = tags.filter((str) => str.indexOf('lang-') === 0);
-      if(langTag.length > 0) {
-        return langTag[0];
-      }
-    }
-    return false;
-  }
-  const getPageNavDetails = (pageNav, matchUrl) => {
-    let filtered = pageNav.navList.filter((obj) => obj.url === matchUrl);
-    if(filtered.length > 0) {
-      return filtered[0];
-    }
-    return false;
-  }
-
-  const getTranslatedValue = (tags, pageNav, matchUrl, field) => {
-    let langTag = isTranslated(tags);
-    let pageObj = getPageNavDetails(pageNav, matchUrl)
+  const getTranslatedValue = (pageObj, tags, field) => {
     
-    if(langTag && pageObj && pageObj[langTag] && pageObj[langTag][field]) {
-      return pageObj[langTag][field];
+    let langTag = getLangRecord(tags);
+
+    if(pageObj && pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
+      return pageObj[langTag.wptag][field];
     } 
-    if(pageObj && pageObj[field]) {
-      return pageObj[field];
-    }
     return "";
   }
 
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', (page, tags, pageNav, matchUrl, field) => contentfrompage(" active", page, getTranslatedValue(tags, pageNav, matchUrl, field)));
+  eleventyConfig.addFilter('pageActive', (page, tags, pageObj) => contentfrompage(" active", page, getTranslatedValue(pageObj, tags, 'slug')));
 
   // return the translated url or title if appropriate
-  eleventyConfig.addFilter('getTranslatedVal', (page, tags, pageNav, matchUrl, field) => {
-    return getTranslatedValue(tags, pageNav, matchUrl, field);
-  });
+  eleventyConfig.addFilter('getTranslatedVal', getTranslatedValue);
+  
   
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
@@ -183,8 +166,13 @@ module.exports = function(eleventyConfig) {
     return "";
   });
 
-  const getLangCode = (tags) => (tags || []).includes('lang-es') ? 'es-ES' : 'en-US';
+  const getLangRecord = tags => 
+    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
+  const getLangCode = tags => 
+    getLangRecord(tags).hreflang;
+
   eleventyConfig.addFilter('lang', getLangCode);
+  eleventyConfig.addFilter('langRecord', getLangRecord);
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
@@ -196,32 +184,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
-  // return the page record in pageNav
-  eleventyConfig.addFilter('getAltPageRows', (page, pageNav, tags) => {
-    const pageNavRecord = pageNav.navList.find(x=>x.slug===page.fileSlug || x['lang-es'].slug===page.fileSlug);
-    const lang = getLangCode(tags);
-    let list = [];
-
+  // return alternate language pages
+  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
+    const pageNavRecord = pageNav.navList.find(f=> langWptagList.find(l=>f[l].slug===page.fileSlug));
     if(pageNavRecord) {
-      if (lang==='es-ES') {
-        list.push({
-            langcode:'en',
-            langname:'English',
-            url:pageNavRecord.url
-          });
-      } else {
-        const url = pageNavRecord['lang-es'].url;
-
-        if (url) 
-          list.push({
-            langcode:'es',
-            langname: 'Español',
-            url
-          });
-        }
+      return langData.languages
+        .filter(x=>pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
+        .map(x=>({
+          langcode:x.id,
+          langname:x.name,
+          url:pageNavRecord[x.wptag].url
+        }));
       }
-
-      return list;
   });
 
   eleventyConfig.htmlTemplateEngine = "njk";
