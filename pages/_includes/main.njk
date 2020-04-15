@@ -34,6 +34,7 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
+    {% set fileExtension %}{{ tags | getLangFromTags }}{% endset %} 
     <style>
       {{css | cssmin | safe}}
     </style>
@@ -110,8 +111,8 @@
           %}
         </div>
       </div>
-      {% include "find-services.html" %}
-      {% include "news-feed-home.html" %}
+      {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
+      {% include "../wordpress-posts/news-feed-home.html" %}
     </main>
     {% include "footer.njk" %}
   </body>
