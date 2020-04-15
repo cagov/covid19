@@ -24,7 +24,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
   if(inputCounty.toLowerCase().indexOf('county') === -1) {
     inputCounty += ' County';
   }
-  let resultDescription = `Providers in ${inputCounty}`;
+  let resultDescription = `Showing telehealth services or nurse advice lines offered by health plans in ${inputCounty}.`;
   if(isZip) {
     resultDescription = `${inputval} is in ${inputCounty}, showing telehealth services or nurse advice lines offered by health plans in ${inputCounty}.`
   }
