@@ -172,6 +172,7 @@ module.exports = function(eleventyConfig) {
     getLangRecord(tags).hreflang;
 
   eleventyConfig.addFilter('lang', getLangCode);
+  eleventyConfig.addFilter('langRecord', getLangRecord);
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
@@ -183,7 +184,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
-  // return the page record in pageNav
+  // return alternate language pages
   eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
     const pageNavRecord = pageNav.navList.find(f=> langWptagList.find(l=>f[l].slug===page.fileSlug));
     if(pageNavRecord) {
