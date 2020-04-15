@@ -95,31 +95,22 @@ module.exports = function(eleventyConfig) {
     return "";
   }
 
-  const isTranslated = tags => (tags || []).find(x => x.startsWith('lang-'));
-
-  const getPageNavDetails = matchUrl => 
-    pageNav.navList.find(obj => obj.url === matchUrl);
-
-  const getTranslatedValue = (tags, matchUrl, field) => {
-    let langTag = isTranslated(tags);
-    let pageObj = getPageNavDetails(matchUrl)
+  const getTranslatedValue = (pageObj, tags, field) => {
     
-    if(langTag && pageObj && pageObj[langTag] && pageObj[langTag][field]) {
-      return pageObj[langTag][field];
+    let langTag = getLangRecord(tags);
+
+    if(pageObj && pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
+      return pageObj[langTag.wptag][field];
     } 
-    if(pageObj && pageObj[field]) {
-      return pageObj[field];
-    }
     return "";
   }
 
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', (page, tags, matchUrl, field) => contentfrompage(" active", page, getTranslatedValue(tags, matchUrl, field)));
+  eleventyConfig.addFilter('pageActive', (page, tags, pageObj) => contentfrompage(" active", page, getTranslatedValue(pageObj, tags, 'slug')));
 
   // return the translated url or title if appropriate
-  eleventyConfig.addFilter('getTranslatedVal', (page, tags, matchUrl, field) => {
-    return getTranslatedValue(tags, matchUrl, field);
-  });
+  eleventyConfig.addFilter('getTranslatedVal', getTranslatedValue);
+  
   
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
