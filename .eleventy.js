@@ -95,15 +95,8 @@ module.exports = function(eleventyConfig) {
     return "";
   }
 
-  const isTranslated = (tags) => {
-    if(tags) {
-      let langTag = tags.filter((str) => str.indexOf('lang-') === 0);
-      if(langTag.length > 0) {
-        return langTag[0];
-      }
-    }
-    return false;
-  }
+  const isTranslated = tags => (tags || []).find(x => x.startsWith('lang-'));
+
   const getPageNavDetails = matchUrl => 
     pageNav.navList.find(obj => obj.url === matchUrl);
 
