@@ -186,8 +186,10 @@ module.exports = function(eleventyConfig) {
     return "";
   });
 
+  const getLangRecord = tags => 
+    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
-    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0].hreflang;
+    getLangRecord(tags).hreflang;
 
   eleventyConfig.addFilter('lang', getLangCode);
 
@@ -206,7 +208,7 @@ module.exports = function(eleventyConfig) {
     const pageNavRecord = pageNav.navList.find(x=>x.slug===page.fileSlug || x['lang-es'].slug===page.fileSlug);
     const lang = getLangCode(tags);
     let list = [];
-
+    
     if(pageNavRecord) {
       if (lang==='es-ES') {
         list.push({
