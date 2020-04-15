@@ -1,116 +1,162 @@
-<!doctype html>
-<html lang="{{tags | lang}}" xml:lang="{{tags | lang}}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ meta | safe }}">
-  <meta name="author" content="{{ author | safe }}">
-  <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
-  <title>{{ title | safe }}</title>
+<!DOCTYPE html>
+<html lang="{{ tags | lang }}" xml:lang="{{ tags | lang }}">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="{{ meta | safe }}"/>
+    <meta name="author" content="{{ author | safe }}"/>
+    <meta
+      name="keywords"
+      content="covid19, coronavirus, covid19, covid-19, california"
+/>
+    <title>{{ title | safe }}</title>
 
-  <!-- combined social media meta -->
-  <meta content="{{ title | safe }}" property="og:title">
-  <meta content="We’re all in this together. We are working rapidly to keep our state healthy." property="og:description">
-  <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
-  <meta content="https://covid19.ca.gov/" property="og:url">
-  <meta name="twitter:card" content="summary_large_image">
+    <!-- combined social media meta -->
+    <meta content="{{ title | safe }}" property="og:title"/>
+    <meta
+      content="we’re all in this together. we are working rapidly to keep our state healthy."
+      property="og:description"
+/>
+    <meta
+      content="https://covid19.ca.gov/img/awareness/caforall_covid_endcards_v4_english.jpg"
+      property="og:image"
+/>
+    <meta content="https://covid19.ca.gov/" property="og:url"/>
+    <meta name="twitter:card" content="summary_large_image"/>
 
-  <link href="https://covid19.ca.gov/" rel="canonical">
+    <link href="https://covid19.ca.gov/" rel="canonical"/>
 
-  {% include "favicons.njk" %}
-	<link rel="manifest" href="/img/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-  {% set css %}
+    {% include "favicons.njk" %}
+    <link rel="manifest" href="/img/manifest.json"/>
+    <meta name="msapplication-tilecolor" content="#ffffff"/>
+    <meta name="msapplication-tileimage" content="img/ms-icon-144x144.png"/>
+    <meta name="theme-color" content="#ffffff"/>
+    {% set css %}
     {% include "built.css" %}
-  {% endset %}
-  <style>
-    {{ css | cssmin | safe }}
-  </style>
-</head>
-<body>
-{% include "header.njk" %}
-<main id="main">
-
-<div id="top" class="container-fluid jumbotron inverse-hyperlink mb-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
+    {% endset %}
+    <style>
+      {{css | cssmin | safe}}
+    </style>
+  </head>
+  <body>
+    {% include "header.njk" %}
+    <main id="main">
+      <div id="top" class="container-fluid jumbotron inverse-hyperlink mb-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
               <h1>Coronavirus (COVID-19) in California</h1>
-			  <p class="lead">COVID-19 is a new illness that can affect your lungs and airways. It's caused by a virus called coronavirus. </p>
-        <!--<p class="lead bold">We’re all in this together. We are working rapidly to keep our state healthy.</P>-->
-        <p class="lead">Last updated {{ page | publishdateorfiledate | formatDate }}</p>
+              <p class="lead">
+                COVID-19 is a new illness that can affect your lungs and
+                airways. It's caused by a virus called coronavirus.
+              </p>
+              <!--<p class="lead bold">We’re all in this together. We are working rapidly to keep our state healthy.</P>-->
+              <p class="lead">
+                Last updated {{ page | publishdateorfiledate | formatDate }}
+              </p>
+            </div>
+
+            <div class="col-lg-4">
+              <a href="https://toolkit.covid19.ca.gov/"
+                ><img
+                  src="/img/california-for-all.png"
+                  class="rounded float-left img-fluid mr-5"
+                  alt="california for all your actions save lives visit california for all website"
+/></a>
+              <a
+                href="https://www.cdph.ca.gov/programs/cid/dcdc/pages/immunization/ncov2019.aspx"
+                ><img
+                  src="/img/cdph-logo.png"
+                  class="rounded float-left img-fluid pt-3"
+                  alt="visit department of public health website"
+/></a>
+            </div>
           </div>
-
-      <div class="col-lg-4">
-          <a href="https://toolkit.covid19.ca.gov/"><img src="/img/California-For-All.png" class="rounded float-left img-fluid mr-5" alt="california for all your actions save lives visit California for All website"></a>
-          <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"><img src="/img/cdph-logo.png" class="rounded float-left img-fluid pt-3" alt="visit Department of Public Health website"></a>
-      </div>
-     
-
         </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="row">
-			<div id="side-nav"  class="p-0">
-				<cwds-accordion class="d-sm-block d-md-none">
-							  <div id="nav-card" class="card mb-n3">
-								<button class="card-header accordion-alpha mobile-menu" type="button" aria-expanded="false">
-									<div class="accordion-title"><span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
-								</button>
-								<div class="card-container collapsed">
-								  <div id="body-nav" class="card-body">
-									{% include "page-nav.njk" %}
-								  </div>
-								</div>
-							  </div>
-							</cwds-accordion>
-		  </div>
-	</div>
-</div>
-<div class="container-fluid pb-3 pt-3 bg-highlight">
-  <div class="container">
-	  <div class="col-md-12 alert-left js-disclaimer ml-0">
-  {% include "../wordpress-posts/new.html" %}
-</div>
-	  </div>
-	  </div>
+      <div class="container">
+        <div class="row">
+          <div id="side-nav" class="p-0">
+            <cwds-accordion class="d-sm-block d-md-none">
+              <div id="nav-card" class="card mb-n3">
+                <button
+                  class="card-header accordion-alpha mobile-menu"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  <div class="accordion-title">
+                    <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu
+                  </div>
+                </button>
+                <div class="card-container collapsed">
+                  <div id="body-nav" class="card-body">
+                    {% include "page-nav.njk" %}
+                  </div>
+                </div>
+              </div>
+            </cwds-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid pb-3 pt-3 bg-highlight">
+        <div class="container">
+          <div class="col-md-12 alert-left js-disclaimer ml-0">
+            {% include "../wordpress-posts/new.html" %}
+          </div>
+        </div>
+      </div>
+      {{ content | contentfilter | safe }}
+      <div class="container-fluid bg-light">
+        <div class="container pt-3">
+          <!-- have to use it as a collection -->
+          {% include "../wordpress-posts/stats.html" %}
+        </div>
+      </div>
 
+      <div class="container-fluid bg-primary text-white">
+        <div class="container pb-3 pt-3 text-white">
+          <h2 class="text-white">
+            California is working around the clock to respond to COVID-19
+          </h2>
+          <ul>
+            <li>
+              Directed Californians to stay at home to slow the spread of the
+              virus
+            </li>
+            <li>
+              Made testing free for most Californians who are medically eligible
+              for testing
+            </li>
+            <li>
+              Ensured students continue to learn and get meals even when schools
+              physically close
+            </li>
+            <li>
+              Deployed the California National Guard to work at food banks
+            </li>
+            <li>
+              Distributed millions of N95 masks and other protective gear to
+              health care workers, with more to come soon
+            </li>
+            <li>
+              Secured travel trailers and hotels to house people experiencing
+              homelessness
+            </li>
+          </ul>
 
-
-  {{ content | contentfilter | safe }}
-    <div class="container-fluid bg-light">
-    <div class="container pt-3">
-      <!-- have to use it as a collection -->
-      {% include "../wordpress-posts/stats.html" %}
-    </div>
-  </div>
-
-
-  
-  <div class="container-fluid bg-primary text-white">
-  <div class="container pb-3 pt-3 text-white">
-    <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
-	  <ul>
-      <li>Directed Californians to stay at home to slow the spread of the virus</li>
-      <li>Made testing free for most Californians who are medically eligible for testing</li>
-      <li>Ensured students continue to learn and get meals even when schools physically close</li>
-      <li>Deployed the California National Guard to work at food banks</li>
-      <li>Distributed millions of N95 masks and other protective gear to health care workers, with more to come soon</li>
-      <li>Secured travel trailers and hotels to house people experiencing homelessness</li>
-    </ul>
-	  
-    <div class="container text-center">
-      <a href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/" class="action-link mt-4">See CA State actions</a>
-    </div>
-  </div>
-</div>
-{% include "find-services.html" %}
-{% include "news-feed-home.html" %}
-</main>
-{% include "footer.njk" %}
-</body>
+          <div class="container text-center">
+            <a
+              href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/"
+              class="action-link mt-4"
+              >See CA State actions</a
+            >
+          </div>
+        </div>
+      </div>
+      {% include "find-services.html" %}
+      {% include "news-feed-home.html" %}
+    </main>
+    {% include "footer.njk" %}
+  </body>
 </html>
