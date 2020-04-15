@@ -1,16 +1,13 @@
 <div class="list-group">
 	{%- for item in pageNav.navList -%}
-		<a href="{{ page | getTranslatedVal(tags, pageNav, item.url, 'url') }}" class="list-group-item list-group-item-action guide {{page | pageActive(tags, pageNav, item.url, 'slug')}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ page | getTranslatedVal(tags, pageNav, item.url, 'title') }}</a>
+		<a href="{{ item | getTranslatedVal(tags, 'url') }}" class="list-group-item list-group-item-action guide {{page | pageActive(tags, item)}}"><span aria-hidden="true" class="ca-gov-icon-arrow-next"></span>  {{ item | getTranslatedVal(tags, 'title') }}</a>
 		{% if item.subsections.length > 0 %}
-			{% pagesection page, item.slug %}
+			{% set langwptag = (tags | langRecord).wptag %}
+			{% pagesection page, item | getTranslatedVal(tags, 'slug') %}
 				<div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
 					<ul class="list-unstyled">
 					{%- for section in item.subsections -%}
-						{% if tags and tags.toString().indexOf('lang-es') > -1 %}
-							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section['lang-es'] }}</a></li>
-						{% else %}
-							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section.title }}</a></li>
-						{% endif %}
+							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section[langwptag] }}</a></li>
 					{%- endfor -%}
 					</ul>
 				</div>
