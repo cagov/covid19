@@ -104,13 +104,8 @@ module.exports = function(eleventyConfig) {
     }
     return false;
   }
-  const getPageNavDetails = matchUrl => {
-    let filtered = pageNav.navList.filter((obj) => obj.url === matchUrl);
-    if(filtered.length > 0) {
-      return filtered[0];
-    }
-    return false;
-  }
+  const getPageNavDetails = matchUrl => 
+    pageNav.navList.find(obj => obj.url === matchUrl);
 
   const getTranslatedValue = (tags, matchUrl, field) => {
     let langTag = isTranslated(tags);
@@ -208,7 +203,7 @@ module.exports = function(eleventyConfig) {
     const pageNavRecord = pageNav.navList.find(x=>x.slug===page.fileSlug || x['lang-es'].slug===page.fileSlug);
     const lang = getLangCode(tags);
     let list = [];
-    
+
     if(pageNavRecord) {
       if (lang==='es-ES') {
         list.push({
