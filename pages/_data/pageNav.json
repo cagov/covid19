@@ -1,9 +1,11 @@
 {
   "navList": [
     {
-      "url": "/",
-      "title": "Homepage",
-      "slug": "manual-content",
+      "lang-en": {
+        "url": "/",
+        "title": "Homepage",
+        "slug": "manual-content"
+      },
       "lang-es": {
         "title": "Página principal",
         "slug": "es",
@@ -12,9 +14,11 @@
       "subsections" : []
     },
     {
-      "url": "/stay-home-except-for-essential-needs/#top",
-      "slug": "stay-home-except-for-essential-needs",
-      "title": "Stay home order",
+      "lang-en": {
+        "url": "/stay-home-except-for-essential-needs/#top",
+        "slug": "stay-home-except-for-essential-needs",
+        "title": "Stay home order"
+      },
       "lang-es": {
         "title": "Para quedarse en casa",
         "slug": "quedese-en-casa-excepto-por-necesidades-esenciales",
@@ -23,35 +27,37 @@
       "subsections" : [
         { 
           "url": "#faq", 
-          "title": "Frequently asked questions",
+          "lang-en": "Frequently asked questions",
           "lang-es": "Preguntas frecuentes"
         },
         { 
           "url": "#business", 
-          "title": "Business and taxes",
+          "lang-en": "Business and taxes",
           "lang-es": "Negocio y los impuestos"
         },
         { 
           "url": "#school", 
-          "title": "Schools and childcare",
+          "lang-en": "Schools and childcare",
           "lang-es": "Escuelas y guarderías"
         },
         { 
           "url": "#health", 
-          "title": "Health care",
+          "lang-en": "Health care",
           "lang-es": "Cuidado de la salud"
         },
         { 
           "url": "#outdoor", 
-          "title": "Outdoor recreation",
+          "lang-en": "Outdoor recreation",
           "lang-es": "Recreación al aire libre"
         }
       ]
     },
     {
-      "url": "/symptoms-and-risks/#top",
-      "slug": "symptoms-and-risks",
-      "title": "Know symptoms and risks",
+      "lang-en": {
+        "url": "/symptoms-and-risks/#top",
+        "slug": "symptoms-and-risks",
+        "title": "Know symptoms and risks"
+      },
       "lang-es": {
         "title": "Los síntomas y los riesgos",
         "slug": "los-sintomas-y-los-riesgos",
@@ -60,9 +66,11 @@
       "subsections" : []
     },
     {
-      "url": "/testing-and-treatment/#top",
-      "slug": "testing-and-treatment",
-      "title": "Get testing and treatment",
+      "lang-en": {
+        "url": "/testing-and-treatment/#top",
+        "slug": "testing-and-treatment",
+        "title": "Get testing and treatment"
+      },
       "lang-es": {
         "title": "Pruebas y tratamiento",
         "slug": "pruebas-y-tratamiento",
@@ -71,9 +79,11 @@
       "subsections" : []
     },
     {
-      "url": "/resources-for-emotional-support-and-well-being/#top",
-      "slug": "resources-for-emotional-support-and-well-being",
-      "title": "Emotional health resources",
+      "lang-en": {
+        "url": "/resources-for-emotional-support-and-well-being/#top",
+        "slug": "resources-for-emotional-support-and-well-being",
+        "title": "Emotional health resources"
+      },
       "lang-es": {
         "title": "Recursos de salud emocional",
         "slug": "recursos-para-el-apoyo-emocional-y-el-bienestar",
@@ -82,9 +92,11 @@
       "subsections" : []
     },
     {
-      "url": "/manage-stress-for-health/#top",
-      "slug": "manage-stress-for-health",
-      "title": "Stress playbooks",
+      "lang-en": {
+        "url": "/manage-stress-for-health/#top",
+        "slug": "manage-stress-for-health",
+        "title": "Stress playbooks"
+      },
       "lang-es": {
         "title": "Cuadernos de estrés",
         "slug": "manejar-el-estres-para-la-salud",
@@ -93,9 +105,11 @@
       "subsections" : []
     },
     {
-      "url": "/get-financial-help/#top",
-      "slug": "get-financial-help",
-      "title": "Get financial help",
+      "lang-en": {
+        "url": "/get-financial-help/#top",
+        "slug": "get-financial-help",
+        "title": "Get financial help"
+      },
       "lang-es": {
         "title": "Obtener ayuda financiera",
         "slug": "obtener-ayuda-financiera",
@@ -104,20 +118,11 @@
       "subsections" : []
     },
     {
-      "url": "/guide-immigrant-californians/",
-      "slug": "guide-immigrant-californians",
-      "title": "Guide for Immigrant Californians",
-      "lang-es": {
-        "title": "Guía para los Californianos inmigrantes",
-        "slug": "guia-californianos-inmigrantes",
-        "url": "/guia-californianos-inmigrantes/"
+      "lang-en": {
+        "url": "/state-local-resources/#top",
+        "slug": "state-local-resources",
+        "title": "Get local information"
       },
-      "subsections" : []
-    },
-    {
-      "url": "/state-local-resources/#top",
-      "slug": "state-local-resources",
-      "title": "Get local information",
       "lang-es": {
         "title": "Obtener información local",
         "slug": "obtenga-informacion-local",
@@ -126,9 +131,11 @@
       "subsections" : []
     },
     {
-      "url": "/sign-up-for-county-alerts/#top",
-      "slug": "sign-up-for-county-alerts",
-      "title": "Sign up for alerts",
+      "lang-en": {
+        "url": "/sign-up-for-county-alerts/#top",
+        "slug": "sign-up-for-county-alerts",
+        "title": "Sign up for alerts"
+      },
       "lang-es": {
         "title": "Inscribirse para recibir alertas",
         "slug": "",
@@ -137,9 +144,11 @@
       "subsections" : []
     },
     {
-      "url": "/safety-in-public-places/#top",
-      "slug": "safety-in-public-places",
-      "title": "Public places",
+      "lang-en": {
+        "url": "/safety-in-public-places/#top",
+        "slug": "safety-in-public-places",
+        "title": "Public places"
+      },
       "lang-es": {
         "title": "Lugares públicos",
         "slug": "lugares-publicos",
@@ -148,9 +157,11 @@
       "subsections" : []
     },
     {
-      "url": "/business-and-employers/#top",
-      "slug": "business-and-employers",
-      "title": "Businesses and employers",
+      "lang-en": {
+        "url": "/business-and-employers/#top",
+        "slug": "business-and-employers",
+        "title": "Businesses and employers"
+      },
       "lang-es": {
         "title": "Empresas y empleadores",
         "slug": "empresas-y-empleadores",
@@ -159,9 +170,11 @@
       "subsections" : []
     },
     {
-      "url": "/education/#top",
-      "slug": "education",
-      "title": "Education",
+      "lang-en": {
+        "url": "/education/#top",
+        "slug": "education",
+        "title": "Education"
+      },
       "lang-es": {
         "title": "La educación",
         "slug": "la-educacion",
@@ -170,9 +183,11 @@
       "subsections" : []
     },
     {
-      "url": "/healthcare/#top",
-      "slug": "healthcare",
-      "title": "Health care",
+      "lang-en": {
+        "url": "/healthcare/#top",
+        "slug": "healthcare",
+        "title": "Health care"
+      },
       "lang-es": {
         "title": "El cuidado de la salud",
         "slug": "el-cuidado-de-la-salud",
@@ -181,9 +196,11 @@
       "subsections" : []
     },
     {
-      "url": "/housing-and-homelessness/#top",
-      "slug": "housing-and-homelessness",
-      "title": "Housing and homelessness",
+      "lang-en": {
+        "url": "/housing-and-homelessness/#top",
+        "slug": "housing-and-homelessness",
+        "title": "Housing and homelessness"
+      },
       "lang-es": {
         "title": "La vivienda y las personas sin hogar",
         "slug": "la-vivienda-y-las-personas-sin-hogar",
@@ -192,9 +209,11 @@
       "subsections" : []
     },
     {
-      "url": "/workers/#top",
-      "slug": "workers",
-      "title": "Workers",
+      "lang-en": {
+        "url": "/workers/#top",
+        "slug": "workers",
+        "title": "Workers"
+      },
       "lang-es": {
         "title": "Trabajadores",
         "slug": "trabajadores",
@@ -203,9 +222,11 @@
       "subsections" : []
     },
     {
-      "url": "/taxes/#top",
-      "slug": "taxes",
-      "title": "Taxes",
+      "lang-en": {
+        "url": "/taxes/#top",
+        "slug": "taxes",
+        "title": "Taxes"
+      },
       "lang-es": {
         "title": "Impuestos",
         "slug": "impuestos",
@@ -214,9 +235,11 @@
       "subsections" : []
     },
     {
-      "url": "/healthcorps/#top",
-      "slug": "healthcorps",
-      "title": "California Health Corps",
+      "lang-en": {
+        "url": "/healthcorps/#top",
+        "slug": "healthcorps",
+        "title": "California Health Corps"
+      },
       "lang-es": {
         "title": "Cuerpo de Salud de California",
         "slug": "cuerpo-de-salud-de-california",
