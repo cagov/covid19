@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      {{ content | contentfilter | safe }}
+      {{ content | safe }}
       <div class="container-fluid bg-light">
         <div class="container pt-3">
           {% include "../wordpress-posts/stats" + fileExtension + ".html" %}

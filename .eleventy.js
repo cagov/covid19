@@ -116,12 +116,12 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  eleventyConfig.addFilter('contentfilter', code => code);
-      //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
-
-  eleventyConfig.addFilter('findaccordions', html => {
-    const dom = new JSDOM(html);
-    dom.window.document.querySelectorAll('.cwds-accordion').forEach( (accordion) => {
+  eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
+    if(outputPath&&outputPath.endsWith(".html") ) {
+      const dom = new JSDOM(html);
+      const accordions = dom.window.document.querySelectorAll('.cwds-accordion');
+    if(accordions.length>0) {
+      accordions.forEach(accordion => {
       // bunch of weird hax to make custom elements out of wordpress content
       if(accordion.querySelector('h4')) {
         let titleVal = accordion.querySelector('h4').innerHTML;
@@ -150,6 +150,7 @@ module.exports = function(eleventyConfig) {
       }
     })
     return dom.serialize();
+    }} return html;
   });
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
@@ -198,6 +199,6 @@ module.exports = function(eleventyConfig) {
       }
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
 };
 
