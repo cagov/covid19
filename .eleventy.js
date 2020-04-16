@@ -164,10 +164,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('langRecord', getLangRecord);
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
-    
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
   });
-  //lang="{{ langRecord.hreflang }}" xml:lang="{{ langRecord.hreflang }}"{{ ' dir="rtl"' | safe if langRecord.rtl }}
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
