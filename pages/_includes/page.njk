@@ -1,5 +1,6 @@
+{%- set langRecord = tags | langRecord -%}
 <!doctype html>
-<html lang="{{tags | lang}}" xml:lang="{{tags | lang}}">
+<html lang="{{ langRecord.hreflang }}" xml:lang="{{ langRecord.hreflang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

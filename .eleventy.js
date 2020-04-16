@@ -155,19 +155,6 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
-  function gimmeLangs(tags) {
-    return tags.filter((tag) => {
-      return tag.indexOf('lang-') > -1;
-    })
-  }
-
-  eleventyConfig.addFilter('getLangFromTags', tags => {
-    if(tags && gimmeLangs(tags).length > 0) {
-      return gimmeLangs(tags)[0].replace('lang','');
-    }
-    return "";
-  });
-
   const getLangRecord = tags => 
     langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
