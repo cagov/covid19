@@ -148,13 +148,10 @@ module.exports = function(eleventyConfig) {
           accordion.innerHTML = html;  
         }
       }
-    });
+    })
     return dom.serialize();
-    }
-    }
-    return html;
+    }} return html;
   });
-
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
   function gimmeLangs(tags) {
