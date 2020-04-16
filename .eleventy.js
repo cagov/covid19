@@ -117,23 +117,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
-    if(outputPath&&outputPath.endsWith(".html") ) {
+    if(outputPath&&outputPath.endsWith(".html")) {
       const dom = new JSDOM(html);
       const accordions = dom.window.document.querySelectorAll('.cwds-accordion');
       if(accordions.length>0) {
         accordions.forEach(accordion => {
           // bunch of weird hax to make custom elements out of wordpress content
           if(accordion.querySelector('h4')) {
-            let titleVal = accordion.querySelector('h4').innerHTML;
-            let target = accordion.querySelector('h4').parentNode;
+            const titleVal = accordion.querySelector('h4').innerHTML;
+            const target = accordion.querySelector('h4').parentNode;
             accordion.querySelector('h4').remove();
-            accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
+            accordion.querySelector('.wp-block-group__inner-container').classList.add('card');
             let container = accordion.querySelector('.card-container');
             if(!container) {
               container = accordion.querySelector('ul');
             }
             if(container) {
-              let containerContent = container.innerHTML;
+              const containerContent = container.innerHTML;
               container.parentNode.insertAdjacentHTML('beforeend',`
                 <div class="card-container" aria-hidden="true" style="height: 0px;">
                   <div class="card-body">${containerContent}</div>
@@ -143,9 +143,8 @@ module.exports = function(eleventyConfig) {
                 <div class="accordion-title">
                 <h4>${titleVal}</h4>
                 </div>
-                </button>`)
-              let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-              accordion.innerHTML = html;  
+                </button>`);
+              accordion.innerHTML = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
             }
           }
         });
@@ -154,21 +153,7 @@ module.exports = function(eleventyConfig) {
     }
     return html;
   });
-
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
-
-  function gimmeLangs(tags) {
-    return tags.filter((tag) => {
-      return tag.indexOf('lang-') > -1;
-    })
-  }
-
-  eleventyConfig.addFilter('getLangFromTags', tags => {
-    if(tags && gimmeLangs(tags).length > 0) {
-      return gimmeLangs(tags)[0].replace('lang','');
-    }
-    return "";
-  });
 
   const getLangRecord = tags => 
     langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
@@ -177,6 +162,10 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('htmllangattributes', tags => {
+    const langRecord = getLangRecord(tags);
+    return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
+  });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
