@@ -120,37 +120,37 @@ module.exports = function(eleventyConfig) {
     if(outputPath&&outputPath.endsWith(".html") ) {
       const dom = new JSDOM(html);
       const accordions = dom.window.document.querySelectorAll('.cwds-accordion');
-      if(accordions.length>0) {
-        accordions.forEach(accordion => {
-          // bunch of weird hax to make custom elements out of wordpress content
-          if(accordion.querySelector('h4')) {
-            let titleVal = accordion.querySelector('h4').innerHTML;
-            let target = accordion.querySelector('h4').parentNode;
-            accordion.querySelector('h4').remove();
-            accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
-            let container = accordion.querySelector('.card-container');
-            if(!container) {
-              container = accordion.querySelector('ul');
-            }
-            if(container) {
-              let containerContent = container.innerHTML;
-              container.parentNode.insertAdjacentHTML('beforeend',`
-                <div class="card-container" aria-hidden="true" style="height: 0px;">
-                  <div class="card-body">${containerContent}</div>
-                </div>`);
-              container.parentNode.removeChild(container);
-              target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                <div class="accordion-title">
-                <h4>${titleVal}</h4>
-                </div>
-                </button>`)
-              let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-              accordion.innerHTML = html;  
-            }
+    if(accordions.length>0) {
+      accordions.forEach(accordion => {
+        // bunch of weird hax to make custom elements out of wordpress content
+        if(accordion.querySelector('h4')) {
+          let titleVal = accordion.querySelector('h4').innerHTML;
+          let target = accordion.querySelector('h4').parentNode;
+          accordion.querySelector('h4').remove();
+          accordion.querySelector('.wp-block-group__inner-container').classList.add('card')
+          let container = accordion.querySelector('.card-container');
+          if(!container) {
+            container = accordion.querySelector('ul');
           }
-        });
-        return dom.serialize();
-      }
+          if(container) {
+            let containerContent = container.innerHTML;
+            container.parentNode.insertAdjacentHTML('beforeend',`
+              <div class="card-container" aria-hidden="true" style="height: 0px;">
+                <div class="card-body">${containerContent}</div>
+              </div>`);
+            container.parentNode.removeChild(container);
+            target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
+              <div class="accordion-title">
+              <h4>${titleVal}</h4>
+              </div>
+              </button>`)
+            let html = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+            accordion.innerHTML = html;  
+          }
+        }
+      });
+      return dom.serialize();
+    }
     }
     return html;
   });
