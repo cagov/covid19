@@ -1,6 +1,5 @@
-{%- set langRecord = tags | langRecord -%}
 <!DOCTYPE html>
-<html lang="{{ langRecord.hreflang }}" xml:lang="{{ langRecord.hreflang }}">
+<html {{ tags | htmllangattributes | safe }}>
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -35,7 +34,7 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
-    {% set fileExtension = langRecord.filepostfix | default("") %}
+    {% set fileExtension = (tags | langRecord).filepostfix | default("") %}
     <style>
       {{css | cssmin | safe}}
     </style>
