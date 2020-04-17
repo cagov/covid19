@@ -153,6 +153,44 @@ module.exports = function(eleventyConfig) {
     }
     return html;
   });
+
+  eleventyConfig.addTransform("findaccordions2", function(html, outputPath) {
+    const headerclass = 'carter-accordion';
+    const contentclass = 'carter-accordion-content';
+
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+
+      for(const header of document.querySelectorAll(`.${headerclass}`)) {
+        const container = document.createElement('cwds-accordion');
+        const body = document.createElement('div');
+        body.className="card-body";
+
+        header.parentNode.insertBefore(container, header);
+        container.appendChild(header);
+        container.appendChild(body);
+
+        let direct;
+        //Look for direct siblngs of the new accordion element to a content class
+        while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
+          body.appendChild(direct);
+
+          direct.classList.remove(contentclass);
+          if (direct.classList.length===0) direct.removeAttribute('class');
+        }
+
+        //blah blah blah nasty html around it required
+        header.outerHTML=`<button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="accordion-title">${header.outerHTML}</div></button>`
+        body.outerHTML = `<div class="card-container" aria-hidden="true" style="height: 0px;">${body.outerHTML}</div>`;
+      }
+      return dom.serialize();
+    }
+    return html;
+  });
+
+
+
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
   const getLangRecord = tags => 
@@ -191,6 +229,6 @@ module.exports = function(eleventyConfig) {
       }
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findaccordions2";
 };
 
