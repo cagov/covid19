@@ -1,32 +1,40 @@
 {
   "Table1": [
     {
-      "Cómo ayudar a prevenirlo": "Quedese en casa",
-      "No hacer": "Salir de la casa excepto por actividades esenciales."
+      "Headers": "<strong>Cómo ayudar a prevenirlo</strong>"
     },
     {
-      "Cómo ayudar a prevenirlo": "Evite a personas fuera de su hogar",
-      "No hacer": "Salude de mano"
+      "Headers": "<strong>No hacer</strong>"
+    }
+  ],
+  "Table2": [
+    {
+      "do": "Quedese en casa",
+      "donot": "Salir de la casa excepto por actividades esenciales."
     },
     {
-      "Cómo ayudar a prevenirlo": "Lávese las manos con agua y jabón durante al menos 20 segundos.",
-      "No hacer": "Toque su cara"
+      "do": "Evite a personas fuera de su hogar",
+      "donot": "Salude de mano"
     },
     {
-      "Cómo ayudar a prevenirlo": "Cubra su tos o estornude con un pañuelo",
-      "No hacer": "Vaya al médico a menos que llame primero"
+      "do": "Lávese las manos con agua y jabón durante al menos 20 segundos.",
+      "donot": "Toque su cara"
     },
     {
-      "Cómo ayudar a prevenirlo": "Limpie y desinfecte objetos y superficies que se tocan con frecuencia.",
-      "No hacer": "Se guarde máscaras o guantes"
+      "do": "Cubra su tos o estornude con un pañuelo",
+      "donot": "Vaya al médico a menos que llame primero"
     },
     {
-      "Cómo ayudar a prevenirlo": "Mantenga una distancia fisica de 6 pies cuando esté fuera de la casa y use cubierta de tela",
-      "No hacer": ""
+      "do": "Limpie y desinfecte objetos y superficies que se tocan con frecuencia.",
+      "donot": "Se guarde máscaras o guantes"
     },
     {
-      "Cómo ayudar a prevenirlo": "",
-      "No hacer": ""
+      "do": "Mantenga una distancia fisica de 6 pies cuando esté fuera de la casa y use cubierta de tela",
+      "donot": ""
+    },
+    {
+      "do": "",
+      "donot": ""
     }
   ]
 }

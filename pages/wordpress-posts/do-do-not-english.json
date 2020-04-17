@@ -1,32 +1,40 @@
 {
   "Table1": [
     {
-      "Do": "Stay home",
-      "Don’t": "Leave the house except for essential activities"
+      "Headers": "Do"
     },
     {
-      "Do": "Avoid people outside your household",
-      "Don’t": "Shake hands"
+      "Headers": "Do Not"
+    }
+  ],
+  "Table2": [
+    {
+      "do": "Stay home",
+      "donot": "Leave the house except for essential activities"
     },
     {
-      "Do": "Wash hands with soap and water for at least 20 seconds",
-      "Don’t": "Touch your face"
+      "do": "Avoid people outside your household",
+      "donot": "Shake hands"
     },
     {
-      "Do": "Cover your cough or sneeze with a tissue",
-      "Don’t": "Go to doctor unless you call first"
+      "do": "Wash hands with soap and water for at least 20 seconds",
+      "donot": "Touch your face"
     },
     {
-      "Do": "Clean and disinfect frequently touched objects and surfaces",
-      "Don’t": "Stockpile masks or gloves"
+      "do": "Cover your cough or sneeze with a tissue",
+      "donot": "Go to doctor unless you call first"
     },
     {
-      "Do": "Maintain a safe social distance of 6 feet whenever outside of the house",
-      "Don’t": ""
+      "do": "Clean and disinfect frequently touched objects and surfaces",
+      "donot": "Stockpile masks or gloves"
     },
     {
-      "Do": "Wear a cloth face covering if you go outside",
-      "Don’t": ""
+      "do": "Maintain a safe social distance of 6 feet whenever outside of the house",
+      "donot": ""
+    },
+    {
+      "do": "Wear a cloth face covering if you go outside",
+      "donot": ""
     }
   ]
 }
