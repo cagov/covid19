@@ -32,7 +32,9 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.4",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    
+    "acorn": ">=5.7.4"
   },
   "scripts": {
     "start": "npm run serve",
