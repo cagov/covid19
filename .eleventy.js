@@ -155,8 +155,8 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addTransform("findaccordions2", function(html, outputPath) {
-    const headerclass = 'carter-accordion';
-    const contentclass = 'carter-accordion-content';
+    const headerclass = 'wp-accordion';
+    const contentclass = 'wp-accordion-content';
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       const dom = new JSDOM(html);
