@@ -163,26 +163,38 @@ module.exports = function(eleventyConfig) {
       const document = dom.window.document;
 
       for(const header of document.querySelectorAll(`.${headerclass}`)) {
+        //create the wrapper element and wrap it around the header
         const container = document.createElement('cwds-accordion');
-        const body = document.createElement('div');
-        body.className="card-body";
-
         header.parentNode.insertBefore(container, header);
         container.appendChild(header);
+
+        //create the card body section and add it to the container
+        const body = document.createElement('div');
+        body.className="card-body";
         container.appendChild(body);
 
+        //Add all remaining content classes to the card body, they must be directly after the new container
         let direct;
-        //Look for direct siblngs of the new accordion element to a content class
         while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
           body.appendChild(direct);
 
+          //remove custom class name
           direct.classList.remove(contentclass);
           if (direct.classList.length===0) direct.removeAttribute('class');
         }
 
-        //blah blah blah nasty html around it required
-        header.outerHTML=`<button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="accordion-title">${header.outerHTML}</div></button>`
-        body.outerHTML = `<div class="card-container" aria-hidden="true" style="height: 0px;">${body.outerHTML}</div>`;
+        //apply required html around components
+        header.outerHTML=`
+          <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+            <div class="accordion-title">
+              ${header.outerHTML}
+            </div>
+          </button>`;
+
+        body.outerHTML = `
+          <div class="card-container" aria-hidden="true" style="height: 0px;">
+            ${body.outerHTML}
+          </div>`;
       }
       return dom.serialize();
     }
