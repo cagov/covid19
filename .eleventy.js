@@ -182,7 +182,7 @@ module.exports = function(eleventyConfig) {
     const pageNavRecord = pageNav.navList.find(f=> langWptagList.find(l=>f[l].slug===page.fileSlug));
     if(pageNavRecord) {
       return langData.languages
-        .filter(x=>pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
+        .filter(x=>pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url&&x.enabled)
         .map(x=>({
           langcode:x.id,
           langname:x.name,
