@@ -17,6 +17,60 @@
       "filepostfix": "-es",
       "rtl": false,
       "enabled": true
+    },
+    {
+      "id": "tl",
+      "name": "Tagalog",
+      "wptag": "lang-tl",
+      "hreflang": "tl",
+      "filepostfix": "-tl",
+      "rtl": false,
+      "enabled": false
+    },
+    {
+      "id": "ar",
+      "name": "Arabic",
+      "wptag": "lang-ar",
+      "hreflang": "ar",
+      "filepostfix": "-ar",
+      "rtl": true,
+      "enabled": false
+    },
+    {
+      "id": "ko",
+      "name": "Korean",
+      "wptag": "lang-ko",
+      "hreflang": "ko",
+      "filepostfix": "-ko",
+      "rtl": false,
+      "enabled": false
+    },
+    {
+      "id": "vi",
+      "name": "Vietnamese",
+      "wptag": "lang-vi",
+      "hreflang": "vi",
+      "filepostfix": "-vi",
+      "rtl": false,
+      "enabled": false
+    },
+    {
+      "id": "zh-Hans",
+      "name": "Chinese (Simplified)",
+      "wptag": "lang-zh-Hans",
+      "hreflang": "zh-Hans",
+      "filepostfix": "-zh-Hans",
+      "rtl": false,
+      "enabled": false
+    },
+    {
+      "id": "zh-Hant",
+      "name": "Chinese (Traditional)",
+      "wptag": "lang-zh-Hant",
+      "hreflang": "zh-Hant",
+      "filepostfix": "-zh-Hant",
+      "rtl": false,
+      "enabled": false
     }
   ]
 }
