@@ -5,22 +5,25 @@
   gtag('js', new Date());
   gtag('config','UA-154336791-1');
   gtag('config','UA-3419582-2');
-  gtag('config','UA-3419582-47');
+  gtag('config','UA-21974567-38');
 </script>
+
+{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
+{% set FooterLinks1 = JSON.Table1 %}
+{% set FooterLinks2 = JSON.Table2 %}
+{% set Terms = JSON.Table3 %}
 
 <div class="footer alpha-footer">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
           <ul class="list-group list list-group-horizontal-lg flex-fill list-group-flush">
-            <li class="list-group-item alpha-footer"><a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">Department of Public Health</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.gov.ca.gov/newsroom/">Governor's Newsroom</a></li>
-            <li class="list-group-item alpha-footer"><a href="/hotline/">Statewide COVID19 Hotline</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/accessibility/">Accessibility</a></li>
-            <li class="list-group-item alpha-footer"><a href="https://www.ca.gov/privacy-policy/">Privacy Policy</a></li>
-             <li class="list-group-item alpha-footer"><a href="https://www.surveymonkey.com/r/COVID19CAGOV">Feedback</a></li>
+            {% for item in FooterLinks1 %}
+            <li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
+            {% endfor %}
           </ul>
-          <p class="text-secondary">Official California State Government Website</p>
+          <p class="text-secondary">{{Terms[0].Text | safe}}</p>
       </div>
     </div>
   </div>
@@ -28,11 +31,14 @@
 
 <div class="alphabar">
   <div class="container text-right">
-    <p><a class="pr-3" href="/">Home</a><a class="pr-3" href="#top">Back to top</a><a class="pr-3 d-none d-sm-block d-md-none" href="#side-nav">Menu</a></p>
+    <p>
+      <a class="pr-3" href="{{FooterLinks2[0].URL}}">{{FooterLinks2[0].Name | safe}}</a>
+      <a class="pr-3" href="{{FooterLinks2[1].URL}}">{{FooterLinks2[1].Name | safe}}</a>
+      <a class="pr-3" href="{{FooterLinks2[2].URL}}">{{FooterLinks2[2].Name | safe}}</a>
+      <a class="pr-3 d-none d-sm-block d-md-none" href="{{FooterLinks2[3].URL}}">{{FooterLinks2[3].Name | safe}}</a>
+    </p>
   </div>
 </div>
-
-{% include "googletranslate.njk" %}
 
 {% pagesection page, "foo" %}
 <!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
@@ -42,6 +48,9 @@
 <script type="module">{% include "built.js" %}</script>
 {% if page.fileSlug.indexOf('county-alerts') > -1 %}
 <script type="module">{% include "alerts.js" %}</script>
+{% endif %}
+{% if page.fileSlug.indexOf('telehealth') > -1 %}
+<script type="module">{% include "telehealth.js" %}</script>
 {% endif %}
 
 <script nomodule src="/js/es5.js"></script>
