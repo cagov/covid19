@@ -1,10 +1,16 @@
 const CleanCSS = require("clean-css");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const fs = require('fs')
+const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const langWptagList = langData.languages.map(l=>l.wptag);
+const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
-  eleventyConfig.addPassthroughCopy({ "./src/img/awareness": "img/awareness" });
+  eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
 
@@ -32,7 +38,14 @@ module.exports = function(eleventyConfig) {
         if(item.inputPath.includes(FolderName)) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
           item.url = item.url.replace(`/${FolderName}`,'');
+          item.data.page.url = item.url;
           output.push(item);
+
+          if(!item.data.title) {
+            //No title means fragment
+            console.log(`Skipping fragment ${item.inputPath}`)
+            item.outputPath = false;
+          }
         };
     });
 
@@ -71,24 +84,88 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
-      return textstring;
-    } else {
       return textstring.slice(0,220)+'...';
     }
+    return textstring;
   });
 
-  const contentfrompage = (content, page, slug) => page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase() ? content : "";
+  const contentfrompage = (content, page, slug) => {
+    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
+      return content;
+    }
+    return "";
+  }
+
+  const getTranslatedValue = (pageObj, tags, field) => {
+    
+    let langTag = getLangRecord(tags);
+
+    if(pageObj && pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
+      return pageObj[langTag.wptag][field];
+    } 
+    return "";
+  }
 
   // return the active class for a matching string
-  eleventyConfig.addFilter('pageActive', (page, slug) => contentfrompage(" active", page, slug));
+  eleventyConfig.addFilter('pageActive', (page, tags, pageObj) => contentfrompage(" active", page, getTranslatedValue(pageObj, tags, 'slug')));
 
+  // return the translated url or title if appropriate
+  eleventyConfig.addFilter('getTranslatedVal', getTranslatedValue);
+  
+  
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  eleventyConfig.addFilter('contentfilter', code => code);
-      //.replace(/COVID-19/g,'COVID&#8288;-&#8288;19'));
+  eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
+    if(outputPath&&outputPath.endsWith(".html")) {
+      const dom = new JSDOM(html);
+      const accordions = dom.window.document.querySelectorAll('.cwds-accordion');
+      if(accordions.length>0) {
+        accordions.forEach(accordion => {
+          // bunch of weird hax to make custom elements out of wordpress content
+          if(accordion.querySelector('h4')) {
+            const titleVal = accordion.querySelector('h4').innerHTML;
+            const target = accordion.querySelector('h4').parentNode;
+            accordion.querySelector('h4').remove();
+            accordion.querySelector('.wp-block-group__inner-container').classList.add('card');
+            let container = accordion.querySelector('.card-container');
+            if(!container) {
+              container = accordion.querySelector('ul');
+            }
+            if(container) {
+              const containerContent = container.innerHTML;
+              container.parentNode.insertAdjacentHTML('beforeend',`
+                <div class="card-container" aria-hidden="true" style="height: 0px;">
+                  <div class="card-body">${containerContent}</div>
+                </div>`);
+              container.parentNode.removeChild(container);
+              target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                <div class="accordion-title">
+                <h4>${titleVal}</h4>
+                </div>
+                </button>`);
+              accordion.innerHTML = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
+            }
+          }
+        });
+        return dom.serialize();
+      }
+    }
+    return html;
+  });
+  eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
-  eleventyConfig.addFilter('lang', metatags => metatags.toString().includes('lang-es') ? 'es-ES' : 'en-US');
+  const getLangRecord = tags => 
+    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
+  const getLangCode = tags => 
+    getLangRecord(tags).hreflang;
+
+  eleventyConfig.addFilter('lang', getLangCode);
+  eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('htmllangattributes', tags => {
+    const langRecord = getLangRecord(tags);
+    return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
+  });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
@@ -100,5 +177,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
-  eleventyConfig.htmlTemplateEngine = "njk";
+  // return alternate language pages
+  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
+    const pageNavRecord = pageNav.navList.find(f=> langWptagList.find(l=>f[l].slug===page.fileSlug));
+    if(pageNavRecord) {
+      return langData.languages
+        .filter(x=>pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
+        .map(x=>({
+          langcode:x.id,
+          langname:x.name,
+          url:pageNavRecord[x.wptag].url
+        }));
+      }
+  });
+
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
 };
+
