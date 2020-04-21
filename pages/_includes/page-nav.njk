@@ -7,7 +7,9 @@
 				<div class="list-group-item list-group-item-action guide pl-3 mb-0 pb-0">
 					<ul class="list-unstyled">
 					{%- for section in item.subsections -%}
+						{% if section[langwptag] %}
 							<li><a href="{{ section.url }}"><span aria-hidden="true" class="ca-gov-icon-caret-down"></span> {{ section[langwptag] }}</a></li>
+						{% endif %}
 					{%- endfor -%}
 					</ul>
 				</div>
