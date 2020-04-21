@@ -94,6 +94,11 @@ h3,
 h4 {
   padding-top: 0.7rem;
 }
+
+.small-text {
+	font-size: 1rem;
+}
+
 .alphabar {
   background-color: #0066ab;
   background: #0066ab;
@@ -236,7 +241,7 @@ a.list-group-item.list-group-item-action {
 }
 
 .jumbotron img {
-  max-width: 115px;
+  max-width: 100px;
 }
 
 .jumbotron a:focus {
