@@ -45,7 +45,7 @@
       <div id="top" class="container-fluid jumbotron inverse-hyperlink mb-0">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8">-----{{ fileExtension }}-----
+            <div class="col-lg-8">
               {% include "../wordpress-posts/home-header" + fileExtension + ".html" %}
             </div>
 
@@ -106,7 +106,7 @@
       {% include "dodonot.njk" %}
       <div class="container-fluid bg-light">
         <div class="container pt-3">
-          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
+          {% include "../wordpress-posts/stats" + fileExtension.toLowerCase() + ".html" %}
         </div>
       </div>
       <div class="container-fluid bg-primary text-white">

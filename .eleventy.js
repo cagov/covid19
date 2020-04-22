@@ -212,11 +212,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
-  const getLangRecord = tags => {
-    let disc = langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
-    console.log(disc)
-    return disc;
-  }
+  const getLangRecord = tags =>
+    langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
 
