@@ -171,7 +171,7 @@ module.exports = function(eleventyConfig) {
         header.parentNode.insertBefore(container, header);
         container.appendChild(header);
 
-        //remove the specail wp class
+        //remove the special wp class
         header.classList.remove(headerclass);
         if (header.classList.length===0) header.removeAttribute('class');
 
