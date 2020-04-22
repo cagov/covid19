@@ -171,6 +171,10 @@ module.exports = function(eleventyConfig) {
         header.parentNode.insertBefore(container, header);
         container.appendChild(header);
 
+        //remove the special wp class
+        header.classList.remove(headerclass);
+        if (header.classList.length===0) header.removeAttribute('class');
+
         //create the card body section and add it to the container
         const body = document.createElement('div');
         body.className="card-body";
