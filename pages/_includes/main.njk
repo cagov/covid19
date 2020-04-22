@@ -7,7 +7,7 @@
     <meta name="author" content="{{ author | safe }}"/>
     <meta
       name="keywords"
-      content="covid19, coronavirus, covid19, covid-19, california"
+      content="Covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, stay home save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 Medi-Cal, covid-19 healthcare, covid-19 alerts"
 />
     <title>{{ title | safe }}</title>
 
@@ -49,7 +49,7 @@
               {% include "../wordpress-posts/home-header" + fileExtension + ".html" %}
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 text-right">
               <a href="https://toolkit.covid19.ca.gov/"
                 ><img
                   src="/img/california-for-all.png"
@@ -92,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid pb-3 pt-3 bg-highlight">
+      <div class="container-fluid pb-3 pt-3 bg-light mb-3">
         <div class="container">
           <div class="col-md-12 alert-left js-disclaimer ml-0">
             {% include "../wordpress-posts/new" + fileExtension + ".html" %}
@@ -100,6 +100,8 @@
         </div>
       </div>
       {{ content | safe }}
+      {% include "home-nav-links.njk" %}
+      {% include "dodonot.njk" %}
       <div class="container-fluid bg-light">
         <div class="container pt-3">
           {% include "../wordpress-posts/stats" + fileExtension + ".html" %}

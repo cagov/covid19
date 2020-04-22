@@ -3,7 +3,6 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs')
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
-const langWptagList = langData.languages.map(l=>l.wptag);
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 
 module.exports = function(eleventyConfig) {
@@ -206,7 +205,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
   const getLangRecord = tags => 
-    langData.languages.filter(x=>(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
+    langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
 
@@ -229,10 +228,10 @@ module.exports = function(eleventyConfig) {
 
   // return alternate language pages
   eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
-    const pageNavRecord = pageNav.navList.find(f=> langWptagList.find(l=>f[l].slug===page.fileSlug));
+    const pageNavRecord = pageNav.navList.find(f=>langData.languages.find(l=>f[l.wptag]&&f[l.wptag].slug===page.fileSlug));
     if(pageNavRecord) {
       return langData.languages
-        .filter(x=>pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
+        .filter(x=>x.enabled&&pageNavRecord[x.wptag]&&pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
         .map(x=>({
           langcode:x.id,
           langname:x.name,
