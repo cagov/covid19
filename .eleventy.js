@@ -152,6 +152,56 @@ module.exports = function(eleventyConfig) {
     }
     return html;
   });
+
+  eleventyConfig.addTransform("findaccordions2", function(html, outputPath) {
+    const headerclass = 'wp-accordion';
+    const contentclass = 'wp-accordion-content';
+
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+
+      for(const header of document.querySelectorAll(`.${headerclass}`)) {
+        //create the wrapper element and wrap it around the header
+        const container = document.createElement('cwds-accordion');
+        header.parentNode.insertBefore(container, header);
+        container.appendChild(header);
+
+        //create the card body section and add it to the container
+        const body = document.createElement('div');
+        body.className="card-body";
+        container.appendChild(body);
+
+        //Add all remaining content classes to the card body, they must be directly after the new container
+        let direct;
+        while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
+          body.appendChild(direct);
+
+          //remove custom class name
+          direct.classList.remove(contentclass);
+          if (direct.classList.length===0) direct.removeAttribute('class');
+        }
+
+        //apply required html around components
+        header.outerHTML=`
+          <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+            <div class="accordion-title">
+              ${header.outerHTML}
+            </div>
+          </button>`;
+
+        body.outerHTML = `
+          <div class="card-container" aria-hidden="true" style="height: 0px;">
+            ${body.outerHTML}
+          </div>`;
+      }
+      return dom.serialize();
+    }
+    return html;
+  });
+
+
+
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
 
   const getLangRecord = tags => 
@@ -190,6 +240,6 @@ module.exports = function(eleventyConfig) {
       }
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findaccordions2";
 };
 
