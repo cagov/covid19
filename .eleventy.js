@@ -99,10 +99,14 @@ module.exports = function(eleventyConfig) {
     
     let langTag = getLangRecord(tags);
 
-    if(pageObj && pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
+    if(!pageObj)
+      return "";
+
+    if(pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
       return pageObj[langTag.wptag][field];
     } 
-    return "";
+    //that page is missing for that lang, bring in the default
+    return pageObj[getLangRecord([]).wptag][field];
   }
 
   // return the active class for a matching string
