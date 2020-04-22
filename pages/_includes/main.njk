@@ -34,7 +34,7 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
-    {% set fileExtension = (tags | langRecord).filepostfix | default("") %}
+    {% set fileExtension = (tags | langRecord).filepostfix | default("").toLowerCase() %}
     <style>
       {{css | cssmin | safe}}
     </style>
@@ -63,7 +63,7 @@
                 ><img
                   src="/img/cdph-logo.png"
                   class="rounded float-left img-fluid pt-3"
-                  alt="Visit department of public health website"
+                  alt="visit department of public health website"
 /></a>
             </div>
           </div>
@@ -106,7 +106,7 @@
       {% include "dodonot.njk" %}
       <div class="container-fluid bg-light">
         <div class="container pt-3">
-          {% include "../wordpress-posts/stats" + fileExtension.toLowerCase() + ".html" %}
+          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
         </div>
       </div>
       <div class="container-fluid bg-primary text-white">
