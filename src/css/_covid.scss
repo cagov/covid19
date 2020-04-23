@@ -540,10 +540,10 @@ a.list-group-item.list-group-item-action {
   }
 }
 
-/*
-@media only screen and (max-height: 1100px) {
-   .aside { 
-       position: relative!important;
- }
+@media (min-width: 1200px) {
+	.h4, h4 {
+    font-size: 1.4rem;
 }
-*/
+	
+}
+
