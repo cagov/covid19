@@ -215,6 +215,7 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
+  eleventyConfig.addFilter('includes', (items,value) => (items || []).includes(value));
 
   const getLangRecord = tags => 
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
