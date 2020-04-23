@@ -1,3 +1,10 @@
+---
+permalink: /web.config
+eleventyExcludeFromCollections: true
+---
+{%- set JSONraw %}{%- include "../wordpress-posts/page-redirect-table.json" -%}{%- endset -%}
+{%- set JSON = JSONraw | jsonparse -%}
+{%- set redirects = JSON.Table1 | selectattr("original_url")  -%}
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <system.webServer>
@@ -12,25 +19,14 @@
     <rewrite>
       <rewriteMaps>
         <rewriteMap name="410Removals" defaultValue="">
-          <add key="/translate/" value="foo" />
+          {%- for item in redirects | rejectattr("replacement_url") %}
+          <add key="{{item.original_url}}" value="foo" />
+          {%- endfor %}
         </rewriteMap>
         <rewriteMap name="StaticRewrites" defaultValue="">
-          <add key="/what-you-can-do/" value="/stay-home-except-for-essential-needs/" />
-          <add key="/health-corps/" value="/healthcorps/" />
-          <add key="/employment/" value="/business-and-employers/" />
-          <add key="/toolkit/" value="https://toolkit.covid19.ca.gov/" />
-          <add
-            key="/img/wp/caregivers-and-kids_california-surgeon-general_stress-busting-playbook_draft-v2_clean_ada_04072020.pdf"
-            value="/pdf/caregivers_and_kids_california_surgeon_general_stress_busting_playbook_draft_v2_clean_ada_04072020v2.pdf"
-          />
-          <add
-            key="/img/wp/essential-workforce-document-spanish-03222020.pdf"
-            value="/img/wp/essential-workforce_espanol_final.pdf"
-          />
-          <add
-            key="/img/wp/covid-19-immigrant-guidance-accessible-gov7sp23150.pdf"
-            value="/img/wp/spanish-covid-19-immigrant-guide-accessible.pdf"
-          />
+          {%- for item in redirects | selectattr("replacement_url") %}
+          <add key="{{item.original_url}}" value="{{item.replacement_url}}" />
+          {%- endfor %}
         </rewriteMap>
       </rewriteMaps>
       <rules>
