@@ -428,6 +428,15 @@ a.list-group-item.list-group-item-action {
 	 padding-left: 0!important;
 	}
 
+	
+  .nav-item {
+    padding-right: .5rem;
+	      margin-right: .5rem;
+	}
+	.alphabar-link {
+		padding-right: .7rem;
+		    margin-right: .5rem;
+	}
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -531,10 +540,10 @@ a.list-group-item.list-group-item-action {
   }
 }
 
-/*
-@media only screen and (max-height: 1100px) {
-   .aside { 
-       position: relative!important;
- }
+@media (min-width: 1200px) {
+	.h4, h4 {
+    font-size: 1.4rem;
 }
-*/
+	
+}
+
