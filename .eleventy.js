@@ -167,8 +167,12 @@ module.exports = function(eleventyConfig) {
 
       for(const header of document.querySelectorAll(`.${headerclass}`)) {
         //create the wrapper element and wrap it around the header
-        const container = document.createElement('cwds-accordion');
-        header.parentNode.insertBefore(container, header);
+        const cwdscontainer = document.createElement('cwds-accordion');
+        const container = document.createElement('div');
+        container.classList.add('card');
+        cwdscontainer.appendChild(container);
+
+        header.parentNode.insertBefore(cwdscontainer, header);
         container.appendChild(header);
 
         //remove the special wp class
