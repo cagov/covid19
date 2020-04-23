@@ -54,6 +54,13 @@ eleventyExcludeFromCollections: true
           </conditions>
           <action type="CustomResponse" statusCode="410" statusReason="Gone" statusDescription="Gone. The requested resource is no longer available." />
         </rule>
+        <rule name="RemoveQuerystringFromPdf" stopProcessing="true">
+          <match url="(.*\.pdf$)" />
+          <conditions>
+            <add input="{QUERY_STRING}" pattern=".+" />
+          </conditions>
+          <action type="Redirect" url="{R:1}" appendQueryString="false" />
+        </rule>
       </rules>
       <outboundRules>
         <rule name="Add Strict-Transport-Security when HTTPS">
