@@ -94,6 +94,11 @@
           </div>
         </div>
       </div>
+            <div class="container-fluid bg-highlight ">
+        <div class="container pt-3">
+          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
+        </div>
+      </div>
       <div class="container-fluid pb-3 pt-3 bg-light mb-3">
         <div class="container">
           <div class="col-md-12 alert-left js-disclaimer ml-0">
@@ -104,11 +109,6 @@
       {{ content | safe }}
       {% include "home-nav-links.njk" %}
       {% include "dodonot.njk" %}
-      <div class="container-fluid bg-light">
-        <div class="container pt-3">
-          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
-        </div>
-      </div>
       <div class="container-fluid bg-primary text-white">
         <div class="container pb-3 pt-3 text-white">
           {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
