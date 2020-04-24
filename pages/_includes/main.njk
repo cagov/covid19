@@ -7,7 +7,7 @@
     <meta name="author" content="{{ author | safe }}"/>
     <meta
       name="keywords"
-      content="Covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, stay home save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 Medi-Cal, covid-19 healthcare, covid-19 alerts"
+      content="covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, stay home save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 medi-cal, covid-19 healthcare, covid-19 alerts"
 />
     <title>{{ title | safe }}</title>
 
@@ -51,11 +51,11 @@
 
             <div class="col-lg-4 text-right">
               <a href="https://toolkit.covid19.ca.gov/"
-                aria-label="California for all your actions save lives visit california for all website"
+                aria-label="california for all your actions save lives visit california for all website"
                 ><img
                   src="/img/california-for-all.png"
                   class="rounded float-left img-fluid mr-5"
-                  alt="California for all your actions save lives visit california for all website"
+                  alt="california for all your actions save lives visit california for all website"
 /></a>
               <a
                 href="https://www.cdph.ca.gov/programs/cid/dcdc/pages/immunization/ncov2019.aspx"
@@ -94,29 +94,53 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid pb-3 pt-3 bg-light mb-3">
+      <div class="container-fluid bg-highlight pb-3 pt-3">
         <div class="container">
-          <div class="col-md-12 alert-left js-disclaimer ml-0">
-            {% include "../wordpress-posts/new" + fileExtension + ".html" %}
+          <!--{% include "../wordpress-posts/stats" + fileExtension + ".html" %}-->
+          <h2> COVID-19 in CA as of 4/23/20</h2>
+          <div class="row">
+            <div class="col">
+
+              <h3>Total cases:</h3>
+              <p class="h2">
+                <span class="ca-gov-icon-triangle-up h1 bold text-danger"></span>37,396 (+5.1%)</p>
+            </div>
+            <div class="col">
+              <h3>Total deaths:</h3>
+              <p class="h2">
+                <span class="ca-gov-icon-triangle-up h1 bold text-danger"></span>1,469 (+10.7%)</p>
+            </div>
+            <div class="col">
+              <h3>Tested:</h3>
+              <p class="h2">
+                <span class="ca-gov-icon-people h1 bold"></span> 482,097</p>
+            </div>
+                
           </div>
+              <a class="action-link mt-1" href="#">See the full data story</a>
+              <p>California Health and Human Services Agency is releasing <a href="https://public.tableau.com/views/COVID-19PublicDashboard/Covid-19Hospitals?:embed=y&:display_count=no&:showVizHome=no">Hospital data</a> and <a href="https://public.tableau.com/views/COVID-19PublicDashboard/Covid-19Public?:embed=y&:display_count=no&:showVizHome=no">Cases by county</a> information as an open dataset.</p>
+              <p>Check for Governor’s updates on <a href="https://twitter.com/CAgovernor">Twitter</a> and <a href="https://www.facebook.com/CAgovernor/">Facebook</a>.</p>
         </div>
       </div>
-      {{ content | safe }}
-      {% include "home-nav-links.njk" %}
-      {% include "dodonot.njk" %}
-      <div class="container-fluid bg-light">
-        <div class="container pt-3">
-          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
+    </div>
+    <div class="container-fluid pb-3 pt-3 bg-light mb-3">
+      <div class="container">
+        <div class="col-md-12 alert-left js-disclaimer ml-0">
+          {% include "../wordpress-posts/new" + fileExtension + ".html" %}
         </div>
       </div>
-      <div class="container-fluid bg-primary text-white">
-        <div class="container pb-3 pt-3 text-white">
-          {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
-        </div>
+    </div>
+    {{ content | safe }}
+    {% include "home-nav-links.njk" %}
+    {% include "dodonot.njk" %}
+    <div class="container-fluid bg-primary text-white">
+      <div class="container pb-3 pt-3 text-white">
+        {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
       </div>
-      {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
-      {% include "./news-feed-home.html" %}
-    </main>
-    {% include "footer.njk" %}
-  </body>
+    </div>
+    {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
+    {% include "./news-feed-home.html" %}
+  </main>
+  {% include "footer.njk" %}
+</body>
 </html>
