@@ -11,7 +11,7 @@
   </script>
 	<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar navbar-inverse px-0">
   <div class="container flex-wrap flex-md-nowrap py-0 px-3">
-    <a href="https://www.gov.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">{{Terms[2].Text}}</a></div>
+    <a href="https://covid19.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">{{Terms[2].Text}}</a></div>
     <ul class="navbar-nav mobile ml-sm-auto ">
       <li class="nav-item">
         <a class="nav-link" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -29,8 +29,10 @@
       </li>
       <li class="nav-item">
  {% for item in page | getAltPageRows(tags) %}
-    <a class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+    <a style="margin-right: .5em;" class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
  {% endfor %}
+        <!-- temporarily put this back while we wait for human translations to arrive, remove this along with the inline style above asap -->
+        <a href="/translate/" class="btn translate">Translate</a>
       </li>
     </ul>
   </div>
