@@ -33,7 +33,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     return response.json();
   })
   .then(telehealth => {
-    document.querySelector('.js-telehealth-providers').innerHTML = `
+    let html = `
       <h3>${resultDescription}</h3>
       <div class="pt-5 js-provider-list">
         ${telehealth.sort(function(a,b) {
@@ -65,7 +65,8 @@ function lookupSuccess(inputCounty, inputval, isZip) {
           `
         }).join(' ')}
       </div>
-    `    
+    `;
+    document.querySelector('.js-telehealth-providers').innerHTML = html;
   })
   .catch((err) => {
     lookupFail();

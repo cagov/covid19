@@ -1,60 +1,10 @@
-import Awesomplete from 'awesomplete-es6';
-import templateHTML from './template.js';
+import '@cagov/lookup';
+// the @cagov/lookup web component on the page will handle form with autocomplete
 
-if (document.querySelector('.js-telehealth-lookup')) {
+import telehealthResults from './template.js';
+// listen for custom event, then
+const searchEl = document.querySelector("cwds-lookup");
+searchEl.addEventListener("showResults", (evt) => {
+  telehealthResults(evt.detail);
+});
 
-  const fieldSelector = 'input[data-multiple]';
-  const awesompleteSettings = {
-    autoFirst: true,
-    filter: function (text, input) {
-      return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
-    },
-
-    item: function (text, input) {
-      document.querySelector('.invalid-feedback').style.display = 'none';
-      document.querySelector('.city-search').classList.remove('is-invalid');
-      return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
-    },
-
-    replace: function (text) {
-      let before = this.input.value.match(/^.+,\s*|/)[0];
-      let finalval = before + text;
-      this.input.value = finalval;
-      templateHTML(finalval);
-    }
-  };
-
-  const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
-
-  document.querySelector(fieldSelector).addEventListener('keyup', event => {
-    const skipKeys = [13, 9, 27, 38, 40]; // do not reset suggestion list if using arrow keys, enter, tab
-    if (event.target.value.length >= 2) {
-      if (skipKeys.indexOf(event.keyCode) === -1) {
-        queryLoc(event.target.value,aplete);
-      }
-    }
-  });
-
-  document
-    .querySelector('.js-telehealth-lookup')
-    .addEventListener('submit', function (event) {
-      event.preventDefault();
-      document.querySelector('.invalid-feedback').style.display = 'none';
-      document.querySelector('.city-search').classList.remove('is-invalid');
-      let finalval = this.querySelector('input').value;
-      templateHTML(finalval);
-    });
-}
-
-function queryLoc (q,aplete) {
-  window.lookup = q;
-  const url = `https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=${q}`;
-  window.fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        aplete.list = data.match.map(x=>x);
-    })
-    .catch(() => {
-      //resetForm();
-    });
-}
