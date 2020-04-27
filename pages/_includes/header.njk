@@ -31,7 +31,7 @@
  {% for item in page | getAltPageRows(tags) %}
     <a class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
  {% endfor %}
-        <a href="/translate/" class="btn translate" style="margin-right: 0; height: 38px;"><i class="ca-gov-icon-globe"></i></a>
+        <a href="/translate/" class="btn translate" style="margin-right: 0; height: 38px;" aria-label="Translate to other languages"><i class="ca-gov-icon-globe"></i></a>
       </li>
     </ul>
   </div>
