@@ -17,7 +17,7 @@
   {% else %}
   <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
   {% endif %}
-  <meta content="Coronavirus COVID-19 Response" property="og:description">
+  <meta content="{{ meta | safe }}" property="og:description">
   <meta property="og:url" content="https://covid19.ca.gov{{ page.url }}">
   <meta name="twitter:card" content="summary_large_image">
 
