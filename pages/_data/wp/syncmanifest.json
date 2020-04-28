@@ -213,6 +213,7 @@
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
+        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
@@ -323,8 +324,7 @@
       "github_path": "src/img/wp/essential-workforce_espanol_final.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "page-redirect-table",
-        "quedese-en-casa-excepto-por-necesidades-esenciales"
+        "page-redirect-table"
       ],
       "wp_sha": "5aeb479ed6468476a26284ce351ea86d8f8da619",
       "github_sha": "fbf0c04f37ff38fc728fd4c0bcf239deea654dae"
@@ -636,8 +636,7 @@
       "github_path": "src/img/wp/spanish-covid-19-immigrant-guidance-accessible-1.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "page-redirect-table",
-        "guia-californianos-inmigrantes"
+        "page-redirect-table"
       ],
       "wp_sha": "e433f366ece5f4f4af3ccc401b2aa3a02763ecfc",
       "github_sha": "a4f7e6e4a85f43f26353971936cb88da63b0cb4d"
@@ -678,6 +677,52 @@
   ],
   "posts": [
     {
+      "filename": "lucha-contra-la-discriminacion",
+      "slug": "lucha-contra-la-discriminacion",
+      "pagetitle": "Lucha contra la discriminación",
+      "modified": "2020-04-28T15:00:10",
+      "tags": [
+        "lang-es"
+      ],
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "wp_sha": "c8cdb6a30323e04aedcdbc3659783860ee0dd9ab",
+      "github_sha": "0be4d1908830aba2afd692bcf5b8f92ce1900fb4"
+    },
+    {
+      "filename": "telehealth-es",
+      "slug": "telehealth-es",
+      "pagetitle": "telehealth es",
+      "modified": "2020-04-28T14:53:37",
+      "tags": [
+        "fragment",
+        "lang-es"
+      ],
+      "isFragment": true,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "wp_sha": "3ca39a3ee539c31c7e6b7449f1591a14f6523ac3",
+      "github_sha": "0c5893eeebfcce0268f05e79caad8b20edf0dd37"
+    },
+    {
+      "filename": "linea-de-atencion-de-covid-19",
+      "slug": "linea-de-atencion-de-covid-19",
+      "pagetitle": "Línea de atención de COVID-19",
+      "modified": "2020-04-28T02:17:24",
+      "tags": [
+        "lang-es"
+      ],
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "wp_sha": "2a346373f85c45af8c9dae302cf4ce0d53005b8c",
+      "github_sha": "2b2a6d51f4e308cc4a07dce898d5dfbbefd2bb95"
+    },
+    {
       "filename": "recovery-input",
       "slug": "recovery-input",
       "pagetitle": "Give your input: California Recovery Roadmap Survey",
@@ -707,7 +752,7 @@
       "filename": "entregas-a-domicilio-para-personas-de-la-tercera-edad",
       "slug": "entregas-a-domicilio-para-personas-de-la-tercera-edad",
       "pagetitle": "Restaurantes Entregan a Domicilio: Comidas para las Personas de la Tercera Edad",
-      "modified": "2020-04-24T20:42:41",
+      "modified": "2020-04-28T14:56:28",
       "tags": [
         "lang-es"
       ],
@@ -715,8 +760,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "3acc296fb481eec706eebfbe3c088d668e11fdcd",
-      "github_sha": "b7b4b57d909ce5fa0e943aa108e9cbc8127dedcb"
+      "wp_sha": "4303f3cb32b0f788f2e3bb00863762ed72625fe4",
+      "github_sha": "f71f4e355dc0b0d9d18111278c90e7517d027b4c"
     },
     {
       "filename": "restaurants-deliver-home-meals-for-seniors",
@@ -1933,7 +1978,7 @@
       "filename": "homepage-links-english",
       "slug": "homepage-links-english",
       "pagetitle": "homepage links english",
-      "modified": "2020-04-25T00:13:07",
+      "modified": "2020-04-28T01:28:16",
       "tags": [
         "table-data"
       ],
@@ -1941,8 +1986,8 @@
       "isTableData": true,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "e47592807c618ffa4371f899ca6584b7a741360e",
-      "github_sha": "4e25bb88080a0d718f880cea778cb3740c4b41d4"
+      "wp_sha": "2b9e96bdf069384f13090a80a03fa52b93f4381c",
+      "github_sha": "e44b7d563c9a0f5c27fac77a59c1a679182dc0d2"
     },
     {
       "filename": "stats-zh-hant",
@@ -2518,7 +2563,7 @@
       "filename": "guia-californianos-inmigrantes",
       "slug": "guia-californianos-inmigrantes",
       "pagetitle": "Guía para los Californianos inmigrantes",
-      "modified": "2020-04-23T21:30:15",
+      "modified": "2020-04-28T14:57:50",
       "tags": [
         "lang-es"
       ],
@@ -2526,8 +2571,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "074df026ad524b4fb539e67d6275cddf6c8b1452",
-      "github_sha": "ec3fbc5cd293910c8e02d46576f0c6290a3ebb65"
+      "wp_sha": "c1732adc51cc8e19766f540e9355cfdf63bc8199",
+      "github_sha": "ea575e37c8472b7563da5b78b469a6770dadadc5"
     },
     {
       "filename": "guide-immigrant-californians",
@@ -2593,7 +2638,7 @@
       "filename": "stats-es",
       "slug": "stats-es",
       "pagetitle": "stats es",
-      "modified": "2020-04-26T17:44:27",
+      "modified": "2020-04-28T04:14:27",
       "tags": [
         "fragment",
         "lang-es"
@@ -2602,8 +2647,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "6e08fe1c5ff6b37e17aa421804b7ff5f32a35063",
-      "github_sha": "cdc4a222691f8f3df14ad742d045662ffd30c4f3"
+      "wp_sha": "9b47ad889feb7fdce1ef49d3dcf1329b28450327",
+      "github_sha": "7bd1927d968a8559dfd2e8b43448de1ccb6bcebd"
     },
     {
       "filename": "cali-working-es",
@@ -3072,7 +3117,7 @@
       "filename": "cuerpo-de-salud-de-california",
       "slug": "cuerpo-de-salud-de-california",
       "pagetitle": "Campaña California Health Corps",
-      "modified": "2020-04-11T00:53:20",
+      "modified": "2020-04-28T15:07:23",
       "tags": [
         "lang-es",
         "machine-translated"
@@ -3081,14 +3126,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "790bc838d676e34890cf5e65082eb4b3fb2ffbe1",
-      "github_sha": "4aef4424df9e663f3781356a2d0ef5d07f5bb7f8"
+      "wp_sha": "a2e8461c73f2d4921510bf5cf9f6671fe95ba365",
+      "github_sha": "366ca68ec167fb223a237650e852085d1693fd0d"
     },
     {
       "filename": "lugares-publicos",
       "slug": "lugares-publicos",
       "pagetitle": "Lugares públicos",
-      "modified": "2020-04-10T19:25:34",
+      "modified": "2020-04-28T14:52:04",
       "tags": [
         "lang-es",
         "machine-translated"
@@ -3097,14 +3142,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "bc25dd0567e9109de72c759657aa808ee8dbd791",
-      "github_sha": "830ba2bcc1fb789339d18759e2a9536fd175e3f1"
+      "wp_sha": "774b9a51fc7b2d1714fd3b84aef74bf68fd957de",
+      "github_sha": "00ff326bf10ed0a831133fd2ad1bb5eb7f12f06e"
     },
     {
       "filename": "empresas-y-empleadores",
       "slug": "empresas-y-empleadores",
       "pagetitle": "Empresas y empleadores",
-      "modified": "2020-04-10T19:27:21",
+      "modified": "2020-04-28T14:47:05",
       "tags": [
         "lang-es"
       ],
@@ -3112,14 +3157,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "7ca15c8428c560ac1c5a8cbcde40a3bf1148aaf0",
-      "github_sha": "2520e32597121e90cd59c0cd1821171c20e1d854"
+      "wp_sha": "91cd111b1a715be1e834f9bdec6d4f0685c7b4a1",
+      "github_sha": "84d6c5de35e1957f0326e675559aa58800a9675a"
     },
     {
       "filename": "la-educacion",
       "slug": "la-educacion",
       "pagetitle": "La educación",
-      "modified": "2020-04-10T18:00:43",
+      "modified": "2020-04-28T15:16:22",
       "tags": [
         "lang-es"
       ],
@@ -3127,8 +3172,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "46e3f6a12b42b487e730d6655d38868e8b991102",
-      "github_sha": "80fd6241e24f0880c8f7ee2ff637c7beed797fde"
+      "wp_sha": "d55fcd4a39144fa9f891baf9dfc6e6e3cb72e757",
+      "github_sha": "5a6c46cee756d2186ceb82b499bfee43391df91c"
     },
     {
       "filename": "obtenga-informacion-local",
@@ -3149,7 +3194,7 @@
       "filename": "el-cuidado-de-la-salud",
       "slug": "el-cuidado-de-la-salud",
       "pagetitle": "El cuidado de la salud",
-      "modified": "2020-04-10T19:32:53",
+      "modified": "2020-04-28T15:23:12",
       "tags": [
         "lang-es"
       ],
@@ -3157,14 +3202,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "35ee2ebe69168c449dc82722598153e561765c8f",
-      "github_sha": "6ef7f3212b105bb86a2249ceb04f41c163dc8612"
+      "wp_sha": "a8481a3bf367e6f0601801b7cbc7392d47bd5496",
+      "github_sha": "22a23161e842af05b850781ed6e87facc3489862"
     },
     {
       "filename": "la-vivienda-y-las-personas-sin-hogar",
       "slug": "la-vivienda-y-las-personas-sin-hogar",
       "pagetitle": "La vivienda y las personas sin hogar",
-      "modified": "2020-04-10T19:34:06",
+      "modified": "2020-04-28T15:26:53",
       "tags": [
         "lang-es"
       ],
@@ -3172,8 +3217,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "38e6d634c0f48209d83701f2f2a2f04aed6cf1d4",
-      "github_sha": "97674b3b5a046bd7fd4e5ca33a7f9b558ba2787a"
+      "wp_sha": "706013e3c60cb7292bfa548e0a81055b0615c56e",
+      "github_sha": "e1be51eaff50f009a9eb982d6a5a6ba31e40e10a"
     },
     {
       "filename": "los-sintomas-y-los-riesgos",
@@ -3209,7 +3254,7 @@
       "filename": "pruebas-y-tratamiento",
       "slug": "pruebas-y-tratamiento",
       "pagetitle": "Pruebas y tratamiento",
-      "modified": "2020-04-10T19:37:27",
+      "modified": "2020-04-28T15:17:49",
       "tags": [
         "lang-es"
       ],
@@ -3217,14 +3262,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "dfc94d95a4def457dc5b79093318d8b277319fcc",
-      "github_sha": "40e433a178b448975ea7bf790b17627679941703"
+      "wp_sha": "20fb6efa7b34308a44a0f85f984a57f2ea552527",
+      "github_sha": "916abc68810fd9737bab2afc3bab566401b66195"
     },
     {
       "filename": "trabajadores",
       "slug": "trabajadores",
       "pagetitle": "Trabajadores",
-      "modified": "2020-04-14T03:57:41",
+      "modified": "2020-04-28T15:27:51",
       "tags": [
         "lang-es"
       ],
@@ -3232,8 +3277,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "ca7710e8fcbd81e315abef86b50db4a78d6bc728",
-      "github_sha": "d4ca2377e01fb437b80e76065882a0fd300de3f3"
+      "wp_sha": "c7ef39f0b1c7e7c7bd520412586798929012b7e9",
+      "github_sha": "c2f016542d95b7ac004c8370aa5324f9cfd38c62"
     },
     {
       "filename": "footer-data-spanish",
@@ -3355,14 +3400,14 @@
       "filename": "workers",
       "slug": "workers",
       "pagetitle": "Workers",
-      "modified": "2020-04-27T18:40:06",
+      "modified": "2020-04-28T14:45:53",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "0400a98d3e8d13f4baf97d182621c8e459298f30",
-      "github_sha": "5e1d6a271171af967582d36ec9d778d694f608b3"
+      "wp_sha": "cd2142d20b527f999687292f1ec95291acdb02d3",
+      "github_sha": "520e282e9f434478c6e8579fd5823004937665a0"
     },
     {
       "filename": "taxes",
@@ -3394,40 +3439,40 @@
       "filename": "hotline",
       "slug": "hotline",
       "pagetitle": "COVID-19 Hotline",
-      "modified": "2020-04-18T00:25:42",
+      "modified": "2020-04-28T02:15:49",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "3f7180a2d6bc210b0240ade8a2d53021fd84a310",
-      "github_sha": "f294267c0949264073a86ad88232e3aea89fc854"
+      "wp_sha": "368e00a53876703dda99bcf03b68db4be253ced4",
+      "github_sha": "641c706fa52256912549c535bac5881cba11f0c6"
     },
     {
       "filename": "healthcorps",
       "slug": "healthcorps",
       "pagetitle": "California Health Corps",
-      "modified": "2020-04-27T20:30:20",
+      "modified": "2020-04-28T15:03:37",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "35d9a3040535a164e572bedecdae11dc82a96758",
-      "github_sha": "3dba9891c3ce57b46faae90d65abb1086e9574b2"
+      "wp_sha": "5261f79e2b1d30519afa99989be517911ab67639",
+      "github_sha": "89dce280624a69fa45c2767e6c2523e470edfccb"
     },
     {
       "filename": "testing-and-treatment",
       "slug": "testing-and-treatment",
       "pagetitle": "Testing and treatment",
-      "modified": "2020-04-26T22:46:33",
+      "modified": "2020-04-27T23:08:09",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "921ea0103e9d02d9802353356c5dcf81949075fd",
-      "github_sha": "01db7b2f3fa2845c3dcb4407fc84ba363b06e1b0"
+      "wp_sha": "b870772ba42c457718089322ac45a6523c79482b",
+      "github_sha": "102f54b19b00be2896b0d3a8cc6dec659aaec651"
     },
     {
       "filename": "symptoms-and-risks",
@@ -3446,20 +3491,20 @@
       "filename": "get-financial-help",
       "slug": "get-financial-help",
       "pagetitle": "Get financial help",
-      "modified": "2020-04-21T01:17:32",
+      "modified": "2020-04-28T14:52:50",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "3260b36edc04676251db6e789d2bd4ff9887103a",
-      "github_sha": "d420e0f7346b5c2bb6536d7612bebe63c4083b62"
+      "wp_sha": "a25642abaa5f88c0a0a3f495a46ae6ff9918d353",
+      "github_sha": "2b7625e4ddaa6e171d4a37c8922113f454eae42c"
     },
     {
       "filename": "stats",
       "slug": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-04-27T19:22:47",
+      "modified": "2020-04-28T04:07:53",
       "tags": [
         "fragment"
       ],
@@ -3467,14 +3512,14 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "5d7eadbc58c0e8043932f91ffdf76351eeedd5a1",
-      "github_sha": "2c6a1c781a5483c22e889f3cf1b515937b715891"
+      "wp_sha": "7680af4f50ed30cc53fbf8d7e622b21c85b18fc6",
+      "github_sha": "36d2671aefa0a7da6651320bd732a50ded4854f8"
     },
     {
       "filename": "quedese-en-casa-excepto-por-necesidades-esenciales",
       "slug": "quedese-en-casa-excepto-por-necesidades-esenciales",
       "pagetitle": "Quédese en casa excepto por necesidades esenciales",
-      "modified": "2020-04-15T22:39:06",
+      "modified": "2020-04-28T15:29:31",
       "tags": [
         "lang-es"
       ],
@@ -3482,8 +3527,8 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "6e6ad30d2dd73f2d78c5be4828e0939b6e818a87",
-      "github_sha": "2351a6bb193b1bb3acccad57d5912c60381fc080"
+      "wp_sha": "641988cddc0f6c5c1e3f1e08b0cf199a30df69ba",
+      "github_sha": "e333c5f96187a0b151b4a6928aeaa402d8f01b10"
     },
     {
       "filename": "stay-home-except-for-essential-needs",
@@ -3543,14 +3588,14 @@
       "filename": "education",
       "slug": "education",
       "pagetitle": "Education",
-      "modified": "2020-04-27T22:37:53",
+      "modified": "2020-04-27T23:14:07",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "9043c0af9be681cab867378c58df6d09a34fc865",
-      "github_sha": "1ea254c2114ded7c36861834b00609c6e70f3068"
+      "wp_sha": "06bf79d3d7d297144194b8f9cf77cf7f57e2076b",
+      "github_sha": "880b65410368e452f6fb3cba85d862909486a8fb"
     },
     {
       "filename": "employment",
@@ -3569,14 +3614,14 @@
       "filename": "healthcare",
       "slug": "healthcare",
       "pagetitle": "Health care",
-      "modified": "2020-04-27T21:28:28",
+      "modified": "2020-04-28T00:20:39",
       "tags": [],
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "wp_sha": "65e32394340b6554e36dac6d5b9bdbf58cba3e66",
-      "github_sha": "b878ce1c0dff0a55a61bfd18f7b2ae1195bddcac"
+      "wp_sha": "2972710028bb9ce573d2b5760d3e7493838628dc",
+      "github_sha": "bbcc04c1a3ccabfeea4784a27a69d2221022731a"
     }
   ]
 }
