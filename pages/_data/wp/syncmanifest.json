@@ -176,7 +176,7 @@
       "slug": "covid-19-immigrant-guidance-accessible_ch_simplified",
       "file": "covid-19-immigrant-guidance-accessible_ch_simplified.pdf",
       "id": 2038,
-      "modified": "2020-04-24T22:33:06",
+      "modified": "2020-04-24T22:33:07",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Accessible_CH_Simplified.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-accessible_ch_simplified.pdf",
       "mime_type": "application/pdf",
@@ -224,7 +224,11 @@
       "modified": "2020-04-28T23:22:13",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Accessible_Vietnamese.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-accessible_vietnamese-2.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guia-californianos-inmigrantes",
+        "guide-immigrant-californians"
+      ]
     },
     {
       "slug": "covid-19-immigrant-guidance-accessible_vietnamese",
@@ -233,12 +237,7 @@
       "modified": "2020-04-25T02:36:09",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Accessible_Vietnamese.docx",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-accessible_vietnamese.docx",
-      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "usedbyslugs": [
-        "guia-californianos-inmigrantes"
-      ],
-      "wp_sha": "88c79f2b541116eacc5e7996681d8848b68050cd",
-      "github_sha": "9f9392d632f7a0bb531d79bdfa9040dc4b651c26"
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     },
     {
       "slug": "covid-19-immigrant-guidance-accessible-1-2",
@@ -2196,7 +2195,7 @@
       "id": 1383,
       "filename": "guia-californianos-inmigrantes",
       "pagetitle": "Guía para los Californianos inmigrantes",
-      "modified": "2020-04-28T22:59:44",
+      "modified": "2020-04-28T23:23:39",
       "tags": [
         "lang-es"
       ],
@@ -2204,24 +2203,20 @@
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "ignore": false,
-      "wp_sha": "f24de0a84fed1e7af8b623c7a607a758c7addc83",
-      "github_sha": "44d6907b42615bd7773ef55095e4000a183374e6"
+      "ignore": false
     },
     {
       "slug": "guide-immigrant-californians",
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Guide for Immigrant Californians",
-      "modified": "2020-04-28T23:19:16",
+      "modified": "2020-04-28T23:23:13",
       "tags": [],
       "category": "guide immigrant californians",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "ignore": false,
-      "wp_sha": "c80040e2f19da78170504838af3d8378dd131ad2",
-      "github_sha": "48a56295506854a8cb744ce6b0fe83b1438cb8b7"
+      "ignore": false
     },
     {
       "slug": "health-care-ar",
