@@ -3,6 +3,7 @@
     {
       "id": "en",
       "name": "English",
+      "name-english": "English",
       "wptag": "lang-en",
       "hreflang": "en-US",
       "filepostfix": "",
@@ -12,6 +13,7 @@
     {
       "id": "es",
       "name": "Español",
+      "name-english": "Spanish",
       "wptag": "lang-es",
       "hreflang": "es-ES",
       "filepostfix": "-es",
@@ -21,56 +23,62 @@
     {
       "id": "tl",
       "name": "Tagalog",
+      "name-english": "Tagalog",
       "wptag": "lang-tl",
       "hreflang": "tl",
       "filepostfix": "-tl",
       "rtl": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "ar",
-      "name": "Arabic",
+      "name": "العربية",
+      "name-english": "Arabic",
       "wptag": "lang-ar",
       "hreflang": "ar",
       "filepostfix": "-ar",
       "rtl": true,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "ko",
-      "name": "Korean",
+      "name": "한국어",
+      "name-english": "Korean",
       "wptag": "lang-ko",
       "hreflang": "ko",
       "filepostfix": "-ko",
       "rtl": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "vi",
-      "name": "Vietnamese",
+      "name": "Tiếng Việt",
+      "name-english": "Vietnamese",
       "wptag": "lang-vi",
       "hreflang": "vi",
       "filepostfix": "-vi",
       "rtl": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "zh-Hans",
-      "name": "Chinese (Simplified)",
+      "name": "中文",
+      "name-english": "Chinese (Simplified)",
       "wptag": "lang-zh-Hans",
       "hreflang": "zh-Hans",
       "filepostfix": "-zh-Hans",
       "rtl": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "zh-Hant",
-      "name": "Chinese (Traditional)",
+      "name": "文言",
+      "name-english": "Chinese (Traditional)",
       "wptag": "lang-zh-Hant",
       "hreflang": "zh-Hant",
       "filepostfix": "-zh-Hant",
       "rtl": false,
-      "enabled": false
+      "enabled": true
     }
   ]
 }
