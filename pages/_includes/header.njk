@@ -27,14 +27,31 @@
       <li class="nav-item">
         <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
       </li>
-      <li class="nav-item">
- {% for item in page | getAltPageRows(tags) %}
-    <a class="btn translate" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
- {% endfor %}
+      <li class="nav-item" style='display:flex;align-items:center;'>
+        <div class="dropdown">
+          <button
+            class="btn btn-clear btn-sm dropdown-toggle"
+            onclick='document.querySelector(".dropdown-menu").classList.toggle("show")'
+            type="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            data-toggle="dropdown"
+            id="dropdown-menu-button"
+          >
+            Select language
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
+            {% for item in page | getAltPageRows(tags) %}
+              <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+            {% endfor %}
+          </div>
+        </div>
       </li>
+      <!--
        <li class="nav-item">
         <a href="/translate/" class="btn translate align-baseline"><i class="ca-gov-icon-globe align-baseline"></i> Language</a>
-      </li> 
+      </li>
+      --> 
     </ul>
   </div>
 </nav>
