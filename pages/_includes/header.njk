@@ -44,14 +44,10 @@
             {% for item in page | getAltPageRows(tags) %}
               <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
             {% endfor %}
+            <a class="dropdown-item" href="/translate/">More...</a>
           </div>
         </div>
       </li>
-      <!--
-       <li class="nav-item">
-        <a href="/translate/" class="btn translate align-baseline"><i class="ca-gov-icon-globe align-baseline"></i> Language</a>
-      </li>
-      --> 
     </ul>
   </div>
 </nav>
