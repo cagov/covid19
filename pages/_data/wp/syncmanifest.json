@@ -4,12 +4,11 @@
       "slug": "2020-0334-osg-general-stress-relief-playbook-spanish-lsu-final",
       "file": "2020-0334-osg-general-stress-relief-playbook-spanish-lsu-final.pdf",
       "id": 1872,
-      "modified": "2019-04-22T15:56:34",
+      "modified": "2020-04-22T15:56:34",
       "wp_path": "/wp-content/uploads/2020/04/2020-0334-OSG-General-Stress-Relief-Playbook-Spanish-LSU-FINAL.pdf",
       "github_path": "src/img/wp/2020-0334-osg-general-stress-relief-playbook-spanish-lsu-final.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guide-immigrant-californians",
         "manejar-el-estres-para-la-salud"
       ],
       "wp_sha": "47dd5e1b8bb0a32de90edcdc8b7bbfe8ba72f3cd",
@@ -276,12 +275,7 @@
       "modified": "2020-04-22T22:13:46",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Accessible-1-2.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-accessible-1-3.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "guia-californianos-inmigrantes"
-      ],
-      "wp_sha": "7504c401bf9cd16f23e90c8b06305471df04b4e6",
-      "github_sha": "8f0c7de5700d225cf8a907d81ddd50384a2e7fbc"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "covid-19-immigrant-guidance-accessible-gov7sp23150",
@@ -304,13 +298,7 @@
       "modified": "2020-04-15T16:18:27",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Final-Accessible-1.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
-      ],
-      "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
-      "github_sha": "a17099ef60a45ff3840a16ab3cb30a1bd475005a"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "cropped-ms-icon-310x310-1-png",
@@ -480,6 +468,32 @@
       ],
       "wp_sha": "8d4600dfe38c4972395c7ad1aa8a371192fbbe3c",
       "github_sha": "49a53e6ed4eb7308b8c0e56ce04d74b453efbb3b"
+    },
+    {
+      "slug": "listos_covid_19_immigrant_guidance_en_daf",
+      "file": "listos_covid_19_immigrant_guidance_en_daf.pdf",
+      "id": 2355,
+      "modified": "2020-04-29T20:07:42",
+      "wp_path": "/wp-content/uploads/2020/04/LISTOS_COVID_19_immigrant_guidance_EN_dAf.pdf",
+      "github_path": "src/img/wp/listos_covid_19_immigrant_guidance_en_daf.pdf",
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guia-californianos-inmigrantes",
+        "guide-immigrant-californians"
+      ]
+    },
+    {
+      "slug": "listos_covid_19_immigrant_guidance_es_daf",
+      "file": "listos_covid_19_immigrant_guidance_es_daf.pdf",
+      "id": 2356,
+      "modified": "2020-04-29T20:07:43",
+      "wp_path": "/wp-content/uploads/2020/04/LISTOS_COVID_19_immigrant_guidance_ES_dAf.pdf",
+      "github_path": "src/img/wp/listos_covid_19_immigrant_guidance_es_daf.pdf",
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guia-californianos-inmigrantes",
+        "guide-immigrant-californians"
+      ]
     },
     {
       "slug": "listos-tips-for-public-health-emergencies-en-1_03",
@@ -1222,7 +1236,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en"
+      "lang": "en",
+      "wp_sha": "60fd55b67e29048f80389834f54b8240760eb0b2",
+      "github_sha": "138bec797f1faa51b5f7a319dedcc6299ad59485"
     },
     {
       "slug": "conseguir-comida",
@@ -1861,7 +1877,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en"
+      "lang": "en",
+      "wp_sha": "0025f6f40c1da05df34ec0286b8ba47ebbb1ed4d",
+      "github_sha": "68707550ad5466749c4cf7cc1e5b7db166667d05"
     },
     {
       "slug": "footer-data-english",
@@ -2268,7 +2286,7 @@
       "id": 1383,
       "filename": "guia-californianos-inmigrantes",
       "pagetitle": "Guía para los Californianos inmigrantes",
-      "modified": "2020-04-28T23:23:39",
+      "modified": "2020-04-29T20:10:20",
       "tags": [
         "lang-es"
       ],
@@ -2277,25 +2295,21 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "es",
-      "wp_sha": "41f86811eb9701284af27635c93622880604b9ff",
-      "github_sha": "45b90354f29e6a904f2cea20333ae8031e0d2ff3"
+      "lang": "es"
     },
     {
       "slug": "guide-immigrant-californians",
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Guide for Immigrant Californians",
-      "modified": "2020-04-28T23:57:09",
+      "modified": "2020-04-29T20:09:18",
       "tags": [],
       "category": "guide immigrant californians",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en",
-      "wp_sha": "ce3fc8bed6fd34aec849d3bf1b0e8778d545702d",
-      "github_sha": "ab01138cdb5d9f7fed3cdc5e9e9c2c292c7884de"
+      "lang": "en"
     },
     {
       "slug": "health-care-ar",
@@ -2457,7 +2471,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en"
+      "lang": "en",
+      "wp_sha": "16047e9786ab38ba89c5535f8cd99ab07aa9fde9",
+      "github_sha": "2916b9b88f41375792021acab0cc201be144b07f"
     },
     {
       "slug": "home-header-ar",
@@ -2649,7 +2665,9 @@
       "isTableData": true,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en"
+      "lang": "en",
+      "wp_sha": "002cf1dfc2b48a090da7aefc0e04383848887e20",
+      "github_sha": "5f7d226a6e6d6d23b6f0a375a4bbb6f745989560"
     },
     {
       "slug": "homepage-links-ko",
@@ -3143,7 +3161,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "en"
+      "lang": "en",
+      "wp_sha": "974d7b9834aab2337aa962116a35ad5adf4b0ec2",
+      "github_sha": "bd080767863db7b6a62a5a6aa8c8829dc9c60504"
     },
     {
       "slug": "new-ar",
@@ -3180,7 +3200,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "es"
+      "lang": "es",
+      "wp_sha": "95c0985f3545b46988538f256e953675018d7029",
+      "github_sha": "ea07edfafe22700076938ed78bcbda6306c35a04"
     },
     {
       "slug": "new-ko",
@@ -3619,7 +3641,9 @@
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
-      "lang": "es"
+      "lang": "es",
+      "wp_sha": "1e22df227e265e86d7ec2a9134d2f7aa587969eb",
+      "github_sha": "7db648bb2a3db093888b1c9f162712fc517a28fb"
     },
     {
       "slug": "stats-ko",
