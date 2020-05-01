@@ -42,3 +42,17 @@ addtositemap: true
   const query = decodeURIComponent(urlq.replace(/\+/g,' '));
   document.querySelector('input[name=q]').value = query;
 </script> 
+
+
+<script>
+	//----- Removing some styling attributes after load
+setTimeout(function(){
+document.getElementsByTagName("TABLE")[0].removeAttribute("cellspacing");
+document.getElementsByTagName("TABLE")[0].removeAttribute("cellpadding");
+document.getElementById("gs_id50").removeAttribute("cellpadding"); 
+document.getElementById("gs_id50").removeAttribute("cellspacing"); 
+document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellpadding"); 
+document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellspacing"); 
+			  
+}, 2000);
+</script> 

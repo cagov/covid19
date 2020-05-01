@@ -11,60 +11,16 @@ permalink: /telehealth/index.html
 
 {% include "../wordpress-posts/online-and-phone-medical-care-options-telehealth.html" %}
 
-<h2>Find your telehealth options</h2>
+<div class="row">
+  <div class="col-md-12">
+    <cwds-lookup data-search-api="https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=" />
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-12">
-    <form class="form-inline form-inline-left js-telehealth-lookup">
-      <div class="form-group">
-        <label for="location-query"
-          >Please enter your county or zip code:</label
-        >
-        <div class="awesomplete">
-          <div class="awesomplete">
-            <input
-              aria-expanded="false"
-              aria-owns="awesomplete_list_1"
-              autocomplete="off"
-              class="city-search form-control"
-              data-list=""
-              data-multiple=""
-              id="location-query"
-              role="combobox"
-              type="text"
-            />
-            <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
-            <span
-              class="visually-hidden"
-              role="status"
-              aria-live="assertive"
-              aria-atomic="true"
-              >Type 2 or more characters for results.</span
-            >
-          </div>
-          <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
-          <span
-            class="visually-hidden"
-            aria-atomic="true"
-            aria-live="assertive"
-            role="status"
-            >Type 2 or more characters for results.</span
-          >
-        </div>
-        <button class="btn btn-primary" type="submit">Find health plan</button>
-        <div class="invalid-feedback">
-          Please enter a county or zip code in California.
-        </div>
-      </div>
-    </form>
     <div class="js-telehealth-providers" aria-live="polite">
       <ul class="card-set"></ul>
     </div>
   </div>
 </div>
-
-<!--
-<cagov-telehealth data-url="/js/telehealth.json"></cagov-telehealth>
-<template id="telehealth-options">
-</template>
--->
