@@ -7,14 +7,14 @@
     <meta name="author" content="{{ author | safe }}"/>
     <meta
       name="keywords"
-      content="Covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, stay home save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 Medi-Cal, covid-19 healthcare, covid-19 alerts"
+      content="covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, stay home save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 medi-cal, covid-19 healthcare, covid-19 alerts"
 />
     <title>{{ title | safe }}</title>
 
     <!-- combined social media meta -->
     <meta content="{{ title | safe }}" property="og:title"/>
     <meta
-      content="we’re all in this together. we are working rapidly to keep our state healthy."
+      content="{{ meta | safe }}"
       property="og:description"
 />
     <meta
@@ -51,11 +51,11 @@
 
             <div class="col-lg-4 text-right">
               <a href="https://toolkit.covid19.ca.gov/"
-                aria-label="California for all your actions save lives visit california for all website"
+                aria-label="california for all your actions save lives visit california for all website"
                 ><img
                   src="/img/california-for-all.png"
                   class="rounded float-left img-fluid mr-5"
-                  alt="California for all your actions save lives visit california for all website"
+                  alt="california for all your actions save lives visit california for all website"
 /></a>
               <a
                 href="https://www.cdph.ca.gov/programs/cid/dcdc/pages/immunization/ncov2019.aspx"
@@ -94,29 +94,30 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid pb-3 pt-3 bg-light mb-3">
+      <div class="container-fluid bg-highlight pb-3 pt-3">
         <div class="container">
-          <div class="col-md-12 alert-left js-disclaimer ml-0">
-            {% include "../wordpress-posts/new" + fileExtension + ".html" %}
-          </div>
-        </div>
-      </div>
-      {{ content | safe }}
-      {% include "home-nav-links.njk" %}
-      {% include "dodonot.njk" %}
-      <div class="container-fluid bg-light">
-        <div class="container pt-3">
           {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
         </div>
       </div>
-      <div class="container-fluid bg-primary text-white">
-        <div class="container pb-3 pt-3 text-white">
-          {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
+    </div>
+    <div class="container-fluid pb-3 pt-3 bg-light mb-3">
+      <div class="container">
+        <div class="col-md-12 alert-left js-disclaimer ml-0">
+          {% include "../wordpress-posts/new" + fileExtension + ".html" %}
         </div>
       </div>
-      {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
-      {% include "./news-feed-home.html" %}
-    </main>
-    {% include "footer.njk" %}
-  </body>
+    </div>
+    {{ content | safe }}
+    {% include "home-nav-links.njk" %}
+    {% include "dodonot.njk" %}
+    <div class="container-fluid bg-primary text-white">
+      <div class="container pb-3 pt-3 text-white">
+        {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
+      </div>
+    </div>
+    {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
+    {% include "./news-feed-home.html" %}
+  </main>
+  {% include "footer.njk" %}
+</body>
 </html>
