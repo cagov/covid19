@@ -130,7 +130,9 @@
       "github_path": "src/img/wp/child-abuse-and-youth-victim-service-providers-ipv-programs-info.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "resources-for-emotional-support-and-well-being"
+        "resources-for-emotional-support-and-well-being",
+        "resources-for-emotional-support-and-well-being-zh-hans",
+        "resources-for-emotional-support-and-well-being-zh-hant"
       ],
       "wp_sha": "480be7798459b821f7a5fae81ba681f64664b1c5",
       "github_sha": "7126cceb321737fcb925d910bb00a970294c66f7"
@@ -145,7 +147,9 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "recursos-para-el-apoyo-emocional-y-el-bienestar",
-        "resources-for-emotional-support-and-well-being"
+        "resources-for-emotional-support-and-well-being",
+        "resources-for-emotional-support-and-well-being-zh-hans",
+        "resources-for-emotional-support-and-well-being-zh-hant"
       ],
       "wp_sha": "d680547025029582ba111e27b53dfe236aedbede",
       "github_sha": "e6bbbeeeab14194068861225c76baa98b25254ad"
@@ -277,7 +281,13 @@
       "modified": "2020-04-15T16:18:27",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Final-Accessible-1.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians-zh-hans",
+        "guide-immigrant-californians-zh-hant"
+      ],
+      "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
+      "github_sha": "a17099ef60a45ff3840a16ab3cb30a1bd475005a"
     },
     {
       "slug": "cropped-ms-icon-310x310-1-png",
@@ -516,7 +526,9 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "recursos-para-el-apoyo-emocional-y-el-bienestar",
-        "resources-for-emotional-support-and-well-being"
+        "resources-for-emotional-support-and-well-being",
+        "resources-for-emotional-support-and-well-being-zh-hans",
+        "resources-for-emotional-support-and-well-being-zh-hant"
       ],
       "wp_sha": "8d4600dfe38c4972395c7ad1aa8a371192fbbe3c",
       "github_sha": "49a53e6ed4eb7308b8c0e56ce04d74b453efbb3b"
@@ -665,6 +677,20 @@
       ],
       "wp_sha": "035212e6322136f592ec985f0b4557fbd12820ef",
       "github_sha": "c4672745144b852b1ed9d474cd021af0e05a9685"
+    },
+    {
+      "slug": "osg-caregivers-and-kids-playbook-spanish",
+      "file": "osg-caregivers-and-kids-playbook-spanish.pdf",
+      "id": 2439,
+      "modified": "2020-04-30T23:06:15",
+      "wp_path": "/wp-content/uploads/2020/04/OSG-Caregivers-and-Kids-Playbook-Spanish.pdf",
+      "github_path": "src/img/wp/osg-caregivers-and-kids-playbook-spanish.pdf",
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "manejar-el-estres-para-la-salud"
+      ],
+      "wp_sha": "a70114cd5474ddd9b1888496452977fe4d123690",
+      "github_sha": "f01adb27483e1ae215805873d8b36e645524e0f8"
     },
     {
       "slug": "osg-general-stress-relief-playbook_arabic",
@@ -824,7 +850,9 @@
       "github_path": "src/img/wp/sexual-assault-human-trafficking-victim-service-provider-list-ipv-programs-info.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "resources-for-emotional-support-and-well-being"
+        "resources-for-emotional-support-and-well-being",
+        "resources-for-emotional-support-and-well-being-zh-hans",
+        "resources-for-emotional-support-and-well-being-zh-hant"
       ],
       "wp_sha": "d658a58bd6c48e7bb43a10c94f97896bda8bb789",
       "github_sha": "756501132a1fcbe7780bdff8347b330b67bc0a60"
@@ -1038,7 +1066,7 @@
       "id": 1597,
       "filename": "business-and-employers-zh-hans",
       "pagetitle": "企业和雇主",
-      "modified": "2020-04-22T16:53:45",
+      "modified": "2020-05-01T00:15:30",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -1049,27 +1077,26 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "8deff7a239d0b9d71f3015e461946860389eeba2",
-      "github_sha": "c850554aa7dc34cfa3082e4d3d656068d87edc48"
+      "wp_sha": "9dc5fa150a84f9a5a61a7d8a88b02f6a39aca000",
+      "github_sha": "7f8f0352d19fd0cc350de83de4d1170613888834"
     },
     {
       "slug": "business-and-employers-zh-hant",
       "id": 1488,
       "filename": "business-and-employers-zh-hant",
-      "pagetitle": "企業和雇主",
-      "modified": "2020-04-22T16:53:30",
+      "pagetitle": "企業與雇主",
+      "modified": "2020-05-01T03:15:14",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "business and employers",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "d188b41b52c608b897d4acd592d05c31b32f801b",
-      "github_sha": "85feafd7ab69e90c1454fe568c6836c1f473aa2e"
+      "wp_sha": "e9d51367a0532d529b89a54fc3aea03865ceca33",
+      "github_sha": "ef9e6bd73a993afbff6ec790076f92d345f3b749"
     },
     {
       "slug": "cali-working",
@@ -1239,6 +1266,42 @@
       "github_sha": "ce1b70c724bc80b2a4e4e078f53f24be8700f50a"
     },
     {
+      "slug": "childcare-zh-hans",
+      "id": 2467,
+      "filename": "childcare-zh-hans",
+      "pagetitle": "查找您附近的托儿服务选择",
+      "modified": "2020-05-01T16:21:21",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "child care",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "dacbdd4d15e91d610fdce9586460a229884f19b1",
+      "github_sha": "a36bbcfb0b674d64056d31c742fd505c0826ac5c"
+    },
+    {
+      "slug": "childcare-zh-hant",
+      "id": 2489,
+      "filename": "childcare-zh-hant",
+      "pagetitle": "查找您附近的托兒服務選擇",
+      "modified": "2020-05-01T17:05:33",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "child care",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "03225880df679d72f9fbc0efdb1e260c62807b1d",
+      "github_sha": "e5eefc9492dd1611bddcd6a27dfd1604a2b77c9a"
+    },
+    {
       "slug": "conseguir-comida",
       "id": 2291,
       "filename": "conseguir-comida",
@@ -1308,6 +1371,24 @@
       "lang": "en",
       "wp_sha": "2ccfee59817926c5ca4fac2435269fb9e94638d2",
       "github_sha": "ebbc2237401503c5af0ecd9b99362f42f8d1ce24"
+    },
+    {
+      "slug": "discrimination-zh-hant",
+      "id": 2450,
+      "filename": "discrimination-zh-hant",
+      "pagetitle": "反歧視",
+      "modified": "2020-05-01T05:16:01",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "discrimination",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "17cd33ec2e218abb54960a23bf85fc8feebf6858",
+      "github_sha": "6a7c12d153d4c4d3fd2d43ca4f46b9b3d401dd9f"
     },
     {
       "slug": "do-do-not-arabic",
@@ -1557,7 +1638,7 @@
       "id": 1580,
       "filename": "education-zh-hans",
       "pagetitle": "教育",
-      "modified": "2020-04-22T17:27:05",
+      "modified": "2020-05-01T05:18:20",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -1568,27 +1649,26 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "98628f2b953a2c0d41ed6695b92ffd6a9523d967",
-      "github_sha": "01ffe782e5bf80919828b140e9cca836107e3a71"
+      "wp_sha": "d071d5b3d15bef549aaf0809af26b043bc0fa8e1",
+      "github_sha": "ba70b773b6ade1cb65b1363baaa3829854e6eb2b"
     },
     {
       "slug": "education-zh-hant",
       "id": 1452,
       "filename": "education-zh-hant",
       "pagetitle": "教育",
-      "modified": "2020-04-22T17:29:32",
+      "modified": "2020-05-01T16:46:19",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "education",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "4db0fe2e13639c5584b4a6c71baf293b6abd7adf",
-      "github_sha": "23d975338196aa91def15bb41133a4ecf498919e"
+      "wp_sha": "574608be34ff08344afc6b3907e2d9e70909b3d4",
+      "github_sha": "a171899d54c4372ea05dbe853d48a85f4d14a8e8"
     },
     {
       "slug": "el-cuidado-de-la-salud",
@@ -1647,18 +1727,18 @@
       "id": 2295,
       "filename": "encuentre-opciones-de-cuidado-infantil-cerca-de-usted",
       "pagetitle": "Encuentre opciones de cuidado infantil cerca de usted",
-      "modified": "2020-04-28T21:57:57",
+      "modified": "2020-05-01T16:20:51",
       "tags": [
         "lang-es"
       ],
-      "category": "My child care",
+      "category": "child care",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
       "ignore": false,
       "lang": "es",
-      "wp_sha": "5a19176b9c3ab73adcfda48ed02c5f34c2fd1268",
-      "github_sha": "186c1305b25028f9a3cd7eb3d0c71a8ff015bc50"
+      "wp_sha": "17c36da4750b7386d599f93ee938ba0f8fc02460",
+      "github_sha": "1016dcc987d09a1b610348fc4ddefc939c0cf9b6"
     },
     {
       "slug": "encuesta-de-reactivacion-en-california",
@@ -1884,7 +1964,7 @@
       "id": 1040,
       "filename": "footer-data-english",
       "pagetitle": "Footer Data &#8211; English",
-      "modified": "2020-04-29T21:33:54",
+      "modified": "2020-05-01T15:47:19",
       "tags": [
         "table-data"
       ],
@@ -1894,8 +1974,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "c8e037dbe692d65ed4292d3bef1e77d5aef98a0e",
-      "github_sha": "1306a0d230584eb9f84e86c7f9763410ad7158f8"
+      "wp_sha": "983eaae178e1cbd0f599969110df19b6126d9d53",
+      "github_sha": "95d071e108b4b5d9a92a836ad9019626c32825da"
     },
     {
       "slug": "footer-data-ko",
@@ -1981,10 +2061,9 @@
       "id": 1830,
       "filename": "footer-data-zh-hans",
       "pagetitle": "footer data zh hans",
-      "modified": "2020-04-29T21:40:09",
+      "modified": "2020-05-01T17:58:27",
       "tags": [
         "lang-zh-Hans",
-        "needs-translation",
         "table-data"
       ],
       "category": "footer data",
@@ -1993,18 +2072,17 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "7ab80a215c544fc432ac00c01bfa54078937790b",
-      "github_sha": "500059d216ba5a77cef053c67fcb5d0dcb68f258"
+      "wp_sha": "2119588023e2c0c2e61b6a3820a056bfd7ec6098",
+      "github_sha": "9085c36feaa4ddd63f90fac2c8aa49c28937a2eb"
     },
     {
       "slug": "footer-data-zh-hant",
       "id": 1832,
       "filename": "footer-data-zh-hant",
       "pagetitle": "footer data zh hant",
-      "modified": "2020-04-29T21:40:23",
+      "modified": "2020-05-01T17:51:53",
       "tags": [
         "lang-zh-Hant",
-        "needs-translation",
         "table-data"
       ],
       "category": "footer data",
@@ -2013,8 +2091,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "7ab80a215c544fc432ac00c01bfa54078937790b",
-      "github_sha": "500059d216ba5a77cef053c67fcb5d0dcb68f258"
+      "wp_sha": "c23f47f884082d2adffb4344d90bd4725c313347",
+      "github_sha": "73fba3dab735848d5353f69db5a1dd542c1ac25d"
     },
     {
       "slug": "footerdata-arabic",
@@ -2280,6 +2358,42 @@
       "github_sha": "37c79a9774c470600b8411f1bd9581c313d34307"
     },
     {
+      "slug": "getting-food-zh-hans",
+      "id": 2469,
+      "filename": "getting-food-zh-hans",
+      "pagetitle": "取得食物",
+      "modified": "2020-05-01T05:23:19",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "getting food",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "9bfd21265b17d0d36d9edd88a38de18b6edfcc89",
+      "github_sha": "ac13a73e049efaed72c5aa75ec08611de6b91d31"
+    },
+    {
+      "slug": "getting-food-zh-hant",
+      "id": 2491,
+      "filename": "getting-food-zh-hant",
+      "pagetitle": "食物取得",
+      "modified": "2020-05-01T17:10:56",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "getting food",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "baf19b17cbc3b6aee75d32f25ae664ad33bf7feb",
+      "github_sha": "cf12188baca05e5ce88c7337c2d7e01ea34f26e9"
+    },
+    {
       "slug": "guia-californianos-inmigrantes",
       "id": 1383,
       "filename": "guia-californianos-inmigrantes",
@@ -2312,6 +2426,42 @@
       "lang": "en",
       "wp_sha": "36f3a1fcee83085529adeed1c380a6ca29ab29ba",
       "github_sha": "4c97f507fe2402aee9cdf5e1cb0b2ae143e9c5b7"
+    },
+    {
+      "slug": "guide-immigrant-californians-zh-hans",
+      "id": 2099,
+      "filename": "guide-immigrant-californians-zh-hans",
+      "pagetitle": "加州移民指南",
+      "modified": "2020-05-01T17:20:15",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "943223ecaf6de36310082242c73cd4625139959f",
+      "github_sha": "2a747cea9dabaa376ca66da045c7a9573cb967a3"
+    },
+    {
+      "slug": "guide-immigrant-californians-zh-hant",
+      "id": 2116,
+      "filename": "guide-immigrant-californians-zh-hant",
+      "pagetitle": "加州移民指南",
+      "modified": "2020-05-01T17:21:37",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "b3c8e58e7984dbd0f7946d4289a9d4046a7a7310",
+      "github_sha": "2dece317df5c1d6516cd3a8dd5d4817ae59a68ac"
     },
     {
       "slug": "health-care-ar",
@@ -2410,7 +2560,7 @@
       "id": 1176,
       "filename": "healthcare-zh-hans",
       "pagetitle": "医疗保健",
-      "modified": "2020-04-22T17:33:03",
+      "modified": "2020-05-01T05:25:56",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -2421,27 +2571,26 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "9c5cebf4890b34347a003f47551d034a6a66a740",
-      "github_sha": "e8d93936b675bf82ac9c6da46a25ae3ba365dd0f"
+      "wp_sha": "37fb8bc61f63db822604cc6454157bd470caf26a",
+      "github_sha": "eff18ba25c83aa7b320c7990f46e5d5f6035a94d"
     },
     {
       "slug": "healthcare-zh-hant",
       "id": 1456,
       "filename": "healthcare-zh-hant",
       "pagetitle": "醫療保健",
-      "modified": "2020-04-22T17:33:18",
+      "modified": "2020-05-01T17:26:44",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "health care",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "3caab5ff4f0415553e1edfa809e69729e2e41624",
-      "github_sha": "55883452d90e6f99a94138f696d85214a7b98856"
+      "wp_sha": "9d6f0df86c88b025fdafe747d021bc353ac619a3",
+      "github_sha": "d9f331978f656e231ddd32cb52952b45c90520d9"
     },
     {
       "slug": "healthcorps",
@@ -2458,6 +2607,42 @@
       "lang": "en",
       "wp_sha": "5261f79e2b1d30519afa99989be517911ab67639",
       "github_sha": "89dce280624a69fa45c2767e6c2523e470edfccb"
+    },
+    {
+      "slug": "healthcorps-zh-hans",
+      "id": 2474,
+      "filename": "healthcorps-zh-hans",
+      "pagetitle": "加州医疗队",
+      "modified": "2020-05-01T16:19:37",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "healthcorps",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "c5ff0d552200d9122971ef3aa1704768776055bc",
+      "github_sha": "a2bc3f7984eec171a5007634e3e188218c0a2ccf"
+    },
+    {
+      "slug": "healthcorps-zh-hant",
+      "id": 2501,
+      "filename": "healthcorps-zh-hant",
+      "pagetitle": "加州醫療隊",
+      "modified": "2020-05-01T17:29:22",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "healthcorps",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "75a537d4254498b5c973acd03b8b76a2b8b15bf6",
+      "github_sha": "b5a968dc8ec12cea0713bbf3e9eadc37895e5cba"
     },
     {
       "slug": "home-header",
@@ -2782,6 +2967,24 @@
       "github_sha": "641c706fa52256912549c535bac5881cba11f0c6"
     },
     {
+      "slug": "hotline-zh-hans",
+      "id": 2508,
+      "filename": "hotline-zh-hans",
+      "pagetitle": "COVID-19热线",
+      "modified": "2020-05-01T17:34:55",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "hotline",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "2ee554a891ae644ad8a095663aa1815c04cd3877",
+      "github_sha": "2eb52992fa02d1594d5cb78629262bf1c9fa1a60"
+    },
+    {
       "slug": "housing-and-homelessness",
       "id": 699,
       "filename": "housing-and-homelessness",
@@ -2878,7 +3081,7 @@
       "id": 1591,
       "filename": "housing-and-homelessness-zh-hans",
       "pagetitle": "住房和无家可归",
-      "modified": "2020-04-22T17:36:49",
+      "modified": "2020-05-01T16:03:47",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -2889,8 +3092,8 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "ec449353cd0ff477e76ef41e71f7671c9d217763",
-      "github_sha": "b146a867fdd0c3dfcd4f6a491a834837e07a16be"
+      "wp_sha": "f1d372cf46bf8ff04f084b9cc3e16d17f6221adc",
+      "github_sha": "b9aba2f0a174c987f2bca8b268cea976405ed777"
     },
     {
       "slug": "housing-and-homelessness-zh-hant",
@@ -3173,7 +3376,7 @@
       "id": 1119,
       "filename": "manejar-el-estres-para-la-salud",
       "pagetitle": "Manejar el estrés para la salud.",
-      "modified": "2020-04-22T15:58:51",
+      "modified": "2020-04-30T23:07:59",
       "tags": [
         "lang-es",
         "machine-translated"
@@ -3184,15 +3387,15 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "es",
-      "wp_sha": "5b6d8879751f64a49f384e0fd651d6e57d539420",
-      "github_sha": "5bb1b586692417bac6fb33a02e3276d950330bb8"
+      "wp_sha": "363e37e0f4dff671ce1b33d59123213071a8292b",
+      "github_sha": "b39fa888c4a0c40957e68b859400a580798313a6"
     },
     {
       "slug": "new",
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-04-30T18:33:56",
+      "modified": "2020-05-01T18:17:43",
       "tags": [
         "fragment"
       ],
@@ -3202,8 +3405,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "3e78fc46a09bb43cd07d848ff1971e3d4d6602af",
-      "github_sha": "53547d4dbcc149b7a05e0bcf46ce0f4a07f9fa39"
+      "wp_sha": "ff43693467479c691a6209c39a55dd232b8ddfe3",
+      "github_sha": "5d0a2824a298bf92d1a5536737deba5f1a6ea68e"
     },
     {
       "slug": "new-ar",
@@ -3329,11 +3532,10 @@
       "id": 1810,
       "filename": "new-zh-hant",
       "pagetitle": "new zh hant",
-      "modified": "2020-04-21T20:33:59",
+      "modified": "2020-05-01T03:20:54",
       "tags": [
         "fragment",
-        "lang-zh-Hant",
-        "needs-translation"
+        "lang-zh-Hant"
       ],
       "category": "homepage new",
       "isFragment": true,
@@ -3341,8 +3543,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "2845b3dbc90ba44126c5b326c3915ae4e9ddd155",
-      "github_sha": "debad4e439d59b2b5aeaace4bd7e3c3a17c6173a"
+      "wp_sha": "e472d8026456e00175290222a599b0ab556777cc",
+      "github_sha": "0d68dfea46eb2ec6ff96e3117a779008b3212bc2"
     },
     {
       "slug": "obtener-ayuda-financiera",
@@ -3404,7 +3606,7 @@
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-04-26T21:47:35",
+      "modified": "2020-05-01T18:02:12",
       "tags": [
         "table-data"
       ],
@@ -3414,8 +3616,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "e62d59f3bf70290fa54d243f2c6c6afb2b18942d",
-      "github_sha": "1ea9add69c527bba11114a64a7d256008c8a994c"
+      "wp_sha": "2b2868dab8bb2a028a4f62482876b60632984675",
+      "github_sha": "66d297d98619c61dd1aa25fc98f2987e774d4f18"
     },
     {
       "slug": "pruebas-y-tratamiento",
@@ -3562,30 +3764,47 @@
       "github_sha": "9a27fca4366618f77692795147e2665c6bffd0db"
     },
     {
+      "slug": "resources-for-emotional-support-and-well-being-zh-hans",
+      "id": 2486,
+      "filename": "resources-for-emotional-support-and-well-being-zh-hans",
+      "pagetitle": "有关情感支持和情绪健康的资源",
+      "modified": "2020-05-01T16:30:22",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "resources for emotional support",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "e2068b4d3c92c460c110847ac1bc34a549870ad3",
+      "github_sha": "ce329669162c84e47b0fc82ba4d61d9ceb2b2c82"
+    },
+    {
       "slug": "resources-for-emotional-support-and-well-being-zh-hant",
       "id": 1520,
       "filename": "resources-for-emotional-support-and-well-being-zh-hant",
-      "pagetitle": "情感支援和福祉的資源",
-      "modified": "2020-04-21T23:47:07",
+      "pagetitle": "有關情感支援和情緒健康的資源",
+      "modified": "2020-05-01T03:25:52",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "resources for emotional support",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "2c61733a021225602701a09a13b13c20b3114416",
-      "github_sha": "12a61d195e9f5c6bb0dca9afdd25aab6b0af2632"
+      "wp_sha": "d253131498b9d30b39ba1932c779d75864a5a4d4",
+      "github_sha": "8d509943dfbd7f3a6ddbb3bb4e0a972030a24b91"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors",
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-04-30T18:56:17",
+      "modified": "2020-05-01T17:54:08",
       "tags": [],
       "category": "restaurants deliver: home meals for seniors",
       "isFragment": false,
@@ -3593,15 +3812,51 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "71478c7515960244e3eceefe52a6fcd3ba113cca",
-      "github_sha": "2a415b2395a4f9bf86f920d192482a708f6dd3c9"
+      "wp_sha": "85fd60251fdb0929b8ab1016223b96cc2b392e34",
+      "github_sha": "a146cb0c7d609b40a35d615f4f97267a7810dd42"
+    },
+    {
+      "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
+      "id": 2497,
+      "filename": "restaurants-deliver-home-meals-for-seniors-zh-hans",
+      "pagetitle": "餐厅送餐服务：为年长者送餐到家",
+      "modified": "2020-05-01T17:26:27",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "restaurants deliver: home meals for seniors",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "f2a6369e74aef3d086576487d292dd8a81933a52",
+      "github_sha": "5ea9fb6a07c2740848c4428de76bbe141578b871"
+    },
+    {
+      "slug": "restaurants-deliver-home-meals-for-seniors-zh-hant",
+      "id": 2457,
+      "filename": "restaurants-deliver-home-meals-for-seniors-zh-hant",
+      "pagetitle": "餐廳送餐服務：為年長者送餐到家",
+      "modified": "2020-05-01T03:29:22",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "restaurants deliver: home meals for seniors",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "8a8261e4136cf86ac68d5e60b69cd6e5f0c753eb",
+      "github_sha": "0d646bda7a05011e4e94cfc8d92c9bb242bdb1b2"
     },
     {
       "slug": "safety-in-public-places",
       "id": 59,
       "filename": "safety-in-public-places",
       "pagetitle": "Public places",
-      "modified": "2020-04-27T19:48:16",
+      "modified": "2020-05-01T04:06:27",
       "tags": [],
       "category": "safety in public places",
       "isFragment": false,
@@ -3609,15 +3864,51 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "fe90d88c30015e14e8bc3b2eb018b8445f251746",
-      "github_sha": "e89e1248f85b57088462884a25e1f3e3917488b2"
+      "wp_sha": "2d5b3372e7b598dc41a838e63f717e92a7af48fb",
+      "github_sha": "f5b3d09eae2fa11ffb08f80f417e0868f6f7aa59"
+    },
+    {
+      "slug": "safety-in-public-places-zh-hans",
+      "id": 2102,
+      "filename": "safety-in-public-places-zh-hans",
+      "pagetitle": "公共场所",
+      "modified": "2020-05-01T17:28:05",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "044726c5c9cb091e72b55a1993c3d6fd89a72727",
+      "github_sha": "5319861595a9e51f7c92968f7ea31bb00060d7d2"
+    },
+    {
+      "slug": "safety-in-public-places-zh-hant",
+      "id": 2122,
+      "filename": "safety-in-public-places-zh-hant",
+      "pagetitle": "公共場所",
+      "modified": "2020-05-01T03:48:42",
+      "tags": [
+        "lang-zh-Hant"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "c46e704e07b3af3e97f957a3d0ad4b64ffdc8e7f",
+      "github_sha": "3ba17b0ba2499d422ec099627a11a3c7f64b84df"
     },
     {
       "slug": "state-local-resources",
       "id": 54,
       "filename": "state-local-resources",
       "pagetitle": "Get local information",
-      "modified": "2020-04-27T20:38:25",
+      "modified": "2020-05-01T15:47:38",
       "tags": [],
       "category": "local information",
       "isFragment": false,
@@ -3625,15 +3916,15 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "79d04b04d193c9422e27cd00193c9cb0adeaaebd",
-      "github_sha": "1cfdd21cc3e30daa2b646c85fb628dede517a30b"
+      "wp_sha": "f2f14ad18ac6146db369106901f0e04adbc457af",
+      "github_sha": "6c673182ffaac42e2d34c15a1c81860cc4dc09a0"
     },
     {
       "slug": "stats",
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-04-30T18:03:50",
+      "modified": "2020-05-01T18:14:03",
       "tags": [
         "fragment"
       ],
@@ -3643,8 +3934,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "81c30f0cc2b216ae9a84d3ae05bb903756ee7950",
-      "github_sha": "8f18bdd7caa88951edcedc66bf024d9c01c0664c"
+      "wp_sha": "ce8b688e42226bc3c7e2708f9ffe9fe19c159ba1",
+      "github_sha": "8feb69ddd4718bca9ef8312b8893e6992c57bb7d"
     },
     {
       "slug": "stats-ar",
@@ -3786,11 +4077,10 @@
       "id": 1889,
       "filename": "stats-zh-hans",
       "pagetitle": "stats zh-Hans",
-      "modified": "2020-04-22T18:39:41",
+      "modified": "2020-05-01T17:29:48",
       "tags": [
         "fragment",
-        "lang-zh-Hans",
-        "needs-translation"
+        "lang-zh-Hans"
       ],
       "category": "stats",
       "isFragment": true,
@@ -3798,8 +4088,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "01f1788664b3f56c6d77d45dc0bbc4df2e381abe",
-      "github_sha": "4679b80014521d78d9cd6ebedaef9e14d1d04fc3"
+      "wp_sha": "91314cb37a8eca2d500a15e4647e8b01aaee9a7a",
+      "github_sha": "5341bc36f550e25918f212ceb23002d1735e5655"
     },
     {
       "slug": "stats-zh-hant",
@@ -3825,7 +4115,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home except for essential needs",
-      "modified": "2020-04-30T19:38:02",
+      "modified": "2020-05-01T02:06:04",
       "tags": [],
       "category": "stay home",
       "isFragment": false,
@@ -3833,8 +4123,8 @@
       "addToSitemap": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "d7917f9d4d3cf8683d52331cd3f4d160a371919e",
-      "github_sha": "f22a67edbe584ac78184ba7a8d28648b853d751e"
+      "wp_sha": "3a82d3978601b6022172edbae5af95417df6c183",
+      "github_sha": "a6f428cbc7afc8a39530d644fb75fbec2b329059"
     },
     {
       "slug": "stay-home-except-for-essential-needs-ar",
@@ -3916,8 +4206,8 @@
       "slug": "stay-home-except-for-essential-needs-zh-hans",
       "id": 1294,
       "filename": "stay-home-except-for-essential-needs-zh-hans",
-      "pagetitle": "除必不可少的需求外，要待在家中",
-      "modified": "2020-04-21T23:25:40",
+      "pagetitle": "只在满足基本需求时外出",
+      "modified": "2020-05-01T17:31:16",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -3928,27 +4218,26 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "7ac84e26c9a6be31d982d5b1f4325b9d45493e49",
-      "github_sha": "14d693899ea75dfaf0928a6444f544f96c7ab00c"
+      "wp_sha": "4918f01b59ecc5fa8a3f97a97c9c1a400d6f4ff0",
+      "github_sha": "73e95da7132a4e04b465dbc2f33c557be3ce23a9"
     },
     {
       "slug": "stay-home-except-for-essential-needs-zh-hant",
       "id": 1556,
       "filename": "stay-home-except-for-essential-needs-zh-hant",
-      "pagetitle": "除必不可少的需求外，要待在家中 (In addition to the essential needs, stay at home)",
-      "modified": "2020-04-21T23:26:00",
+      "pagetitle": "只在滿足基本需求時外出",
+      "modified": "2020-05-01T03:50:20",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "stay home",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "b76fd9533c0b1eec1ba80dfe683e1493e84fc441",
-      "github_sha": "610ac94acef0882a36ceb999f0ccd8093f17b6f7"
+      "wp_sha": "184fef56e9f25dd3fde11fc1a8a29d5b00541b91",
+      "github_sha": "87a0d9830f7a295c49b6ba7e2275d301920f98fb"
     },
     {
       "slug": "symptoms-and-risks",
@@ -4230,6 +4519,43 @@
       "github_sha": "0c5893eeebfcce0268f05e79caad8b20edf0dd37"
     },
     {
+      "slug": "telehealth-zh-hans",
+      "id": 2484,
+      "filename": "telehealth-zh-hans",
+      "pagetitle": "远程健康护理",
+      "modified": "2020-05-01T16:27:29",
+      "tags": [
+        "lang-zh-Hans"
+      ],
+      "category": "telehealth",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "1599ab2809d19c9f83dcc8bfe8642c5ffc95c538",
+      "github_sha": "d38df31d26c017e1aefc248d07664461297aea84"
+    },
+    {
+      "slug": "telehealth-zh-hant",
+      "id": 2453,
+      "filename": "telehealth-zh-hant",
+      "pagetitle": "telehealth zh hant",
+      "modified": "2020-05-01T03:23:17",
+      "tags": [
+        "fragment",
+        "lang-zh-Hant"
+      ],
+      "category": "telehealth",
+      "isFragment": true,
+      "isTableData": false,
+      "addToSitemap": true,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "ee6dd4a10ef7d4abacb099e7a3838863ebf2d429",
+      "github_sha": "1b330ea80d9a763ee554ff8b17df80d9471e5ca7"
+    },
+    {
       "slug": "testing-and-treatment",
       "id": 623,
       "filename": "testing-and-treatment",
@@ -4326,7 +4652,7 @@
       "id": 1589,
       "filename": "testing-and-treatment-zh-hans",
       "pagetitle": "检测与治疗",
-      "modified": "2020-04-21T23:41:10",
+      "modified": "2020-05-01T17:32:14",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -4337,8 +4663,8 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "5057db7b9421ba91c04df57524b0d4175d8d6461",
-      "github_sha": "cf01cecaea71f34f5af9cc23b525bc2ab1a49b55"
+      "wp_sha": "51dcd280e38b5152c2bb777cf1b39db2c903a8fc",
+      "github_sha": "cf33970eef92b3b1aa16ccdf12768dc07e529163"
     },
     {
       "slug": "testing-and-treatment-zh-hant",
@@ -4473,8 +4799,8 @@
       "slug": "workers-zh-hans",
       "id": 1593,
       "filename": "workers-zh-hans",
-      "pagetitle": "員工",
-      "modified": "2020-04-22T17:39:53",
+      "pagetitle": "工作者",
+      "modified": "2020-05-01T17:33:15",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -4485,27 +4811,26 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "77409a720382d54b22b2efca2ade4e708873dd91",
-      "github_sha": "89fa3550962e59bfe31a3bd0bcf0b62bf95575ad"
+      "wp_sha": "795c8fe929b5acee4d55e6140d68ba412c4740b0",
+      "github_sha": "b073c887e7be8ce65b49b4b806f37a33b97c799c"
     },
     {
       "slug": "workers-zh-hant",
       "id": 1552,
       "filename": "workers-zh-hant",
-      "pagetitle": "工人",
-      "modified": "2020-04-22T17:40:08",
+      "pagetitle": "工作者",
+      "modified": "2020-05-01T16:13:00",
       "tags": [
-        "do-not-crawl",
         "lang-zh-Hant"
       ],
       "category": "workers",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
+      "addToSitemap": true,
       "ignore": false,
       "lang": "zh-Hant",
-      "wp_sha": "5770b8159cf26c7e0dbb35e60eb300ecf61b52fb",
-      "github_sha": "1b6c3cd30bff9e9b5a9eeba609875accff8bc605"
+      "wp_sha": "adfabb02056a87a2ce8088a59dd809c2f52077ac",
+      "github_sha": "d50d632a746a814419afede7e65e398eb1a85490"
     }
   ]
 }
