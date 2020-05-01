@@ -6,6 +6,7 @@
   "dependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@cagov/accordion": "^1.0.6",
+    "@cagov/lookup": "^1.0.1",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "awesomplete-es6": "^1.2.2",
@@ -33,7 +34,6 @@
     "style-loader": "^1.1.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    
     "acorn": ">=5.7.4"
   },
   "scripts": {

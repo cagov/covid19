@@ -24,14 +24,16 @@
     </div>
     <div class="col-md-6">
       <h2>{{ Headers[1].table }}</h2>
-      {% for item in homeLinks2 %}
-      <a href="{{ item.url }}" class="list-group-item list-group-item-action"
-        ><span
-          class="ca-gov-icon-arrow-next font-weight-bold"
-          aria-hidden="true"
-        ></span>
-        {{ item.name | safe }}</a>
-      {% endfor %}
+      <div class="list-group-flush pb-5">
+        {% for item in homeLinks2 %}
+        <a href="{{ item.url }}" class="list-group-item list-group-item-action"
+          ><span
+            class="ca-gov-icon-arrow-next font-weight-bold"
+            aria-hidden="true"
+          ></span>
+          {{ item.name | safe }}</a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
