@@ -44,6 +44,9 @@
 </head>
 <body>
 {% include "header.njk" %}
+{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
+{% set Terms = JSON.Table3 %}
 <main id="main">
     <div id="top" class="container-fluid jumbotron inverse-hyperlink ">
           <div class="container">
@@ -51,7 +54,7 @@
               <div class="col-lg-10">
                   <h1>{{ title | safe }}</h1>
                   {% if page.fileSlug.indexOf('search') !== 0 %}
-                  <p class="small-text">Last updated {{ publishdate | formatDate }}</p>
+                  <p class="small-text">{{Terms[5].Text}} {{ publishdate | formatDate }}</p>
                   {% endif %}
               </div>
             </div>
