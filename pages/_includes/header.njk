@@ -42,7 +42,9 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
             {% for item in page | getAltPageRows(tags) %}
-              <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+              {% if item.enabled == true %}
+                <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+              {% endif %}
             {% endfor %}
             <a class="dropdown-item" href="/translate/">More...</a>
           </div>
