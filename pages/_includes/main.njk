@@ -34,7 +34,7 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
-    {% set fileExtension = (tags | langRecord).filepostfix | default("") %}
+    {% set fileExtension = (tags | langRecord).filepostfix.toLowerCase() | default("") %}
     <style>
       {{css | cssmin | safe}}
     </style>
