@@ -11,6 +11,36 @@
         "slug": "es",
         "url": "/es/"
       },
+      "lang-ar": {
+        "title": "الصفحة الرئيسية",
+        "slug": "ar",
+        "url": "/ar/"
+      },
+      "lang-vi": {
+        "title": "trang chủ",
+        "slug": "vi",
+        "url": "/vi/"
+      },
+      "lang-tl": {
+        "title": "Home",
+        "slug": "tl",
+        "url": "/tl/"
+      },
+      "lang-ko": {
+        "title": "홈페이지",
+        "slug": "ko",
+        "url": "/ko/"
+      },
+      "lang-zh-Hans": {
+        "title": "主頁",
+        "slug": "zh-hans",
+        "url": "/zh-hans/"
+      },
+      "lang-zh-Hant": {
+        "title": "主页",
+        "slug": "zh-hant",
+        "url": "/zh-hant/"
+      },
       "subsections" : []
     },
     {
@@ -24,31 +54,71 @@
         "slug": "quedese-en-casa-excepto-por-necesidades-esenciales",
         "url": "/quedese-en-casa-excepto-por-necesidades-esenciales/"
       },
+      "lang-ar": {
+        "url": "/stay-home-except-for-essential-needs-ar/",
+        "slug": "stay-home-except-for-essential-needs-ar",
+        "title": "البقاء في المنزل باستثناء للاحتياجات الأساسية"
+      },
+      "lang-vi": {
+        "url": "/stay-home-except-for-essential-needs-vi/",
+        "slug": "stay-home-except-for-essential-needs-vi",
+        "title": "Hãy ở nhà trừ phi cần ra ngoài để phục vụ nhu yếu cần thiết"
+      },
+      "lang-tl": {
+        "url": "/stay-home-except-for-essential-needs-tl/",
+        "slug": "stay-home-except-for-essential-needs-tl",
+        "title": "Manatili sa tahanan maliban sa mga mahalagang pangangailangan"
+      },
+      "lang-ko": {
+        "url": "/stay-home-except-for-essential-needs-ko/",
+        "slug": "stay-home-except-for-essential-needs-ko",
+        "title": "필수 요구 상황을 제외한 자택 격리 명령"
+      },
+      "lang-zh-Hans": {
+        "url": "/stay-home-except-for-essential-needs-zh-hans/",
+        "slug": "stay-home-except-for-essential-needs-zh-hans",
+        "title": "除必不可少的需求外，要待在家中"
+      },
+      "lang-zh-Hant": {
+        "url": "/stay-home-except-for-essential-needs-zh-hant/",
+        "slug": "stay-home-except-for-essential-needs-zh-hant",
+        "title": "除必不可少的需求外，要待在家中"
+      },
       "subsections" : [
         { 
           "url": "#faq", 
           "lang-en": "Frequently asked questions",
-          "lang-es": "Preguntas frecuentes"
+          "lang-es": "Preguntas frecuentes",
+          "lang-zh-Hant": "常見問題與解答",
+          "lang-zh-Hans": "常见问题与解答"
         },
         { 
           "url": "#business", 
           "lang-en": "Business and taxes",
-          "lang-es": "Negocio y los impuestos"
+          "lang-es": "Negocio y los impuestos",
+          "lang-zh-Hant": "企業與稅收",
+          "lang-zh-Hans": "企业与税收"
         },
         { 
           "url": "#school", 
           "lang-en": "Schools and childcare",
-          "lang-es": "Escuelas y guarderías"
+          "lang-es": "Escuelas y guarderías",
+          "lang-zh-Hant": "學校和托兒所",
+          "lang-zh-Hans": "学校和托儿所"
         },
         { 
           "url": "#health", 
           "lang-en": "Health care",
-          "lang-es": "Cuidado de la salud"
+          "lang-es": "Cuidado de la salud",
+          "lang-zh-Hant": "醫療護理和幫助患病的親戚",
+          "lang-zh-Hans": "医疗护理和帮助患病的亲戚"
         },
         { 
           "url": "#outdoor", 
           "lang-en": "Outdoor recreation",
-          "lang-es": "Recreación al aire libre"
+          "lang-es": "Recreación al aire libre",
+          "lang-zh-Hant": "戶外運動",
+          "lang-zh-Hans": "户外运动"
         }
       ]
     },
@@ -63,11 +133,41 @@
         "slug": "los-sintomas-y-los-riesgos",
         "url": "/los-sintomas-y-los-riesgos/"
       },
+      "lang-ar": {
+        "url": "/symptoms-and-risks-ar/",
+        "slug": "symptoms-and-risks-ar",
+        "title": "الأعراض والمخاطر"
+      },
+      "lang-vi": {
+        "url": "/symptoms-and-risks-vi/",
+        "slug": "symptoms-and-risks-vi",
+        "title": "Triệu chứng và rủi ro"
+      },
+      "lang-tl": {
+        "url": "/symptoms-and-risks-tl/",
+        "slug": "symptoms-and-risks-tl",
+        "title": "Sintomas at mga Panganib"
+      },
+      "lang-ko": {
+        "url": "/symptoms-and-risks-ko/",
+        "slug": "symptoms-and-risks-ko",
+        "title": "증상과 위험 취약 요인"
+      },
+      "lang-zh-Hans": {
+        "url": "/symptoms-and-risks-zh-hans/",
+        "slug": "symptoms-and-risks-zh-hans",
+        "title": "症状和风险"
+      },
+      "lang-zh-Hant": {
+        "url": "/symptoms-and-risks-zh-hant/",
+        "slug": "symptoms-and-risks-zh-hant",
+        "title": "症狀和風險"
+      },
       "subsections" : []
     },
     {
       "lang-en": {
-        "url": "/testing-and-treatment/#top",
+        "url": "/testing-and-treatment/",
         "slug": "testing-and-treatment",
         "title": "Get testing and treatment"
       },
@@ -76,11 +176,41 @@
         "slug": "pruebas-y-tratamiento",
         "url": "/pruebas-y-tratamiento/"
       },
+      "lang-ar": {
+        "url": "/testing-and-treatment-ar/",
+        "slug": "testing-and-treatment-ar",
+        "title": "الفحوصات والعلاج"
+      },
+      "lang-tl": {
+        "title": "Pagpapasuri at Pagpapagamot",
+        "slug": "testing-and-treatment-tl",
+        "url": "/testing-and-treatment-tl/"
+      },
+      "lang-vi": {
+        "title": "",
+        "slug": "testing-and-treatment-vi",
+        "url": "/testing-and-treatment-vi/"
+      },
+      "lang-ko": {
+        "title": "",
+        "slug": "testing-and-treatment-ko",
+        "url": "/testing-and-treatment-ko/"
+      },
+      "lang-zh-Hans": {
+        "title": "检测与治疗",
+        "slug": "testing-and-treatment-zh-hans",
+        "url": "/testing-and-treatment-zh-hans/"
+      },
+      "lang-zh-Hant": {
+        "title": "檢測與治療",
+        "slug": "testing-and-treatment-zh-hant",
+        "url": "/testing-and-treatment-zh-hant/"
+      },
       "subsections" : []
     },
     {
       "lang-en": {
-        "url": "/resources-for-emotional-support-and-well-being/#top",
+        "url": "/resources-for-emotional-support-and-well-being/",
         "slug": "resources-for-emotional-support-and-well-being",
         "title": "Emotional health resources"
       },
@@ -89,11 +219,36 @@
         "slug": "recursos-para-el-apoyo-emocional-y-el-bienestar",
         "url": "/recursos-para-el-apoyo-emocional-y-el-bienestar/"
       },
+      "lang-ar": {
+        "url": "/resources-for-emotional-support-and-well-being-ar/",
+        "slug": "resources-for-emotional-support-and-well-being-ar",
+        "title": "موارد الدعم النفسي والرفاهة"
+      },
+      "lang-vi": {
+        "url": "/resources-for-emotional-support-and-well-being-vi/",
+        "slug": "resources-for-emotional-support-and-well-being-vi",
+        "title": "Nguồn thông tin hỗ trợ cho sức khỏe tinh thần và an lành của quý vị."
+      },
+      "lang-tl": {
+        "url": "/resources-for-emotional-support-and-well-being-tl/",
+        "slug": "resources-for-emotional-support-and-well-being-tl",
+        "title": "Mapagkukunan para sa suportang emosyonal at buong pagkatao"
+      },
+      "lang-zh-Hant": {
+        "url": "/resources-for-emotional-support-and-well-being-zh-hant/",
+        "slug": "resources-for-emotional-support-and-well-being-zh-hant",
+        "title": "情感支援和福祉的資源"
+      },
+      "lang-zh-Hans": {
+        "url": "/resources-for-emotional-support-and-well-being-zh-hans/",
+        "slug": "resources-for-emotional-support-and-well-being-zh-hans",
+        "title": "檢測與治療"
+      },
       "subsections" : []
     },
     {
       "lang-en": {
-        "url": "/manage-stress-for-health/#top",
+        "url": "/manage-stress-for-health/",
         "slug": "manage-stress-for-health",
         "title": "Manage your stress"
       },
@@ -101,6 +256,36 @@
         "title": "Manejar tu estrés",
         "slug": "manejar-el-estres-para-la-salud",
         "url": "/manejar-el-estres-para-la-salud/"
+      },
+      "lang-ar": {
+        "url": "/manage-stress-for-health-ar/",
+        "slug": "manage-stress-for-health-ar",
+        "title": "التحكم في الضغط النفسي من أجل الصحة"
+      },
+      "lang-vi": {
+        "url": "/manage-stress-for-health-vi/",
+        "slug": "manage-stress-for-health-vi",
+        "title": "Quản lý căng thẳng để giữ sức khỏe"
+      },
+      "lang-tl": {
+        "url": "/manage-stress-for-health-tl/",
+        "slug": "manage-stress-for-health-tl",
+        "title": "Ang pamamahala sa stress para sa kalusugan"
+      },
+      "lang-ko": {
+        "url": "/manage-stress-for-health-ko/",
+        "slug": "manage-stress-for-health-ko",
+        "title": "건강을 위한 스트레스 관리"
+      },
+      "lang-zh-Hant": {
+        "url": "/manage-stress-for-health-zh-hant/",
+        "slug": "manage-stress-for-health-zh-hant",
+        "title": "為了健康管理壓力"
+      },
+      "lang-zh-Hans": {
+        "url": "/manage-stress-for-health-zh-hans/",
+        "slug": "manage-stress-for-health-zh-hans",
+        "title": "加州移民指南"
       },
       "subsections" : []
     },
@@ -115,6 +300,36 @@
         "slug": "obtener-ayuda-financiera",
         "url": "/obtener-ayuda-financiera/"
       },
+      "lang-zh-Hans": {
+        "url": "/get-financial-help-zh-hans/",
+        "slug": "get-financial-help-zh-hans",
+        "title": "获得财务帮助"
+      },
+      "lang-zh-Hant": {
+        "url": "/get-financial-help-zh-hant/",
+        "slug": "get-financial-help-zh-hant",
+        "title": "獲得財務幫助"
+      },
+      "lang-tl": {
+        "url": "/get-financial-help-tl/",
+        "slug": "get-financial-help-tl",
+        "title": "Humingi ng tulong Pang Pinansyal"
+      },
+      "lang-ar": {
+        "url": "/get-financial-help-ar/",
+        "slug": "get-financial-help-ar",
+        "title": "احصل على مساعدة مالية"
+      },
+      "lang-vi": {
+        "url": "/get-financial-help-vi/",
+        "slug": "get-financial-help-vi",
+        "title": "Nhận hỗ trợ tài chính"
+      },
+      "lang-ko": {
+        "url": "/get-financial-help-ko/",
+        "slug": "get-financial-help-ko",
+        "title": "재정적 지원 확인"
+      },
       "subsections" : []
     },
     {
@@ -127,6 +342,16 @@
         "title": "Guía para los Californianos inmigrantes",
         "slug": "guia-californianos-inmigrantes",
         "url": "/guia-californianos-inmigrantes/"
+      },
+      "lang-zh-Hant": {
+        "url": "/guide-immigrant-californians-zh-hant/",
+        "slug": "guide-immigrant-californians-zh-hant",
+        "title": "加州移民指南"
+      },
+      "lang-zh-Hans": {
+        "url": "/guide-immigrant-californians-zh-hans/",
+        "slug": "guide-immigrant-californians-zh-hans",
+        "title": "加州移民指南"
       },
       "subsections" : []
     },
@@ -141,18 +366,78 @@
         "slug": "obtenga-informacion-local",
         "url": "/obtenga-informacion-local/"
       },
+      "lang-ar": {
+        "url": "/get-local-information-ar/",
+        "slug": "get-local-information-ar",
+        "title": "احصل على المعلومات المحلية"
+      },
+      "lang-zh-Hans": {
+        "url": "/get-local-information-zh-hans/",
+        "slug": "get-local-information-zh-hans",
+        "title": "获取当地信息"
+      },
+      "lang-zh-Hant": {
+        "url": "/get-local-information-zh-hant/",
+        "slug": "get-local-information-zh-hant",
+        "title": "獲取當地資訊"
+      },
+      "lang-tl": {
+        "url": "/get-local-information-tl/",
+        "slug": "get-local-information-tl",
+        "title": "Kumuha ng Lokal na Impormasyon"
+      },
+      "lang-vi": {
+        "url": "/get-local-information-vi/",
+        "slug": "get-local-information-vi",
+        "title": "Lấy thông tin từ nguồn địa phương"
+      },
+      "lang-ko": {
+        "url": "/get-local-information-ko/",
+        "slug": "get-local-information-ko",
+        "title": "지역 정보 확인"
+      },
       "subsections" : []
     },
     {
       "lang-en": {
-        "url": "/sign-up-for-county-alerts/#top",
+        "url": "/sign-up-for-county-alerts/",
         "slug": "sign-up-for-county-alerts",
         "title": "Sign up for alerts"
       },
       "lang-es": {
         "title": "Inscribirse para recibir alertas",
-        "slug": "",
-        "url": ""
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-ar": {
+        "title": "الاشتراك في تنبيهات المقاطعات",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-tl": {
+        "title": "Mag-sign up para sa mga alerto sa iyong county",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-vi": {
+        "title": "Đăng ký nhận thông báo trong quận của quý vị",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-ko": {
+        "title": "해당 카운티 경보 정보 사이트 가입하기",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-zh-Hant": {
+        "title": "登記接收所在縣的預警",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
+      },
+      "lang-zh-Hans": {
+        "title": "注册接收所在县的预警",
+        "slug": "sign-up-for-county-alerts",
+        "url": "/sign-up-for-county-alerts/"
       },
       "subsections" : []
     },
@@ -167,6 +452,16 @@
         "slug": "lugares-publicos",
         "url": "/lugares-publicos/"
       },
+      "lang-zh-Hant": {
+        "url": "/safety-in-public-places-zh-hant/",
+        "slug": "safety-in-public-places-zh-hant",
+        "title": "公共場所"
+      },
+      "lang-zh-Hans": {
+        "url": "/safety-in-public-places-zh-hans/",
+        "slug": "safety-in-public-places-zh-hans",
+        "title": "公共场所"
+      },
       "subsections" : []
     },
     {
@@ -179,6 +474,36 @@
         "title": "Empresas y empleadores",
         "slug": "empresas-y-empleadores",
         "url": "/empresas-y-empleadores/"
+      },
+      "lang-ar": {
+        "url": "/business-and-employers-ar/",
+        "slug": "business-and-employers-ar",
+        "title": "الأعمال التجارية وأصحاب العمل"
+      },
+      "lang-tl": {
+        "url": "/business-and-employers-tl/",
+        "slug": "business-and-employers-tl",
+        "title": "Ang mga Negosyo at mga Nagmamay-ari"
+      },
+      "lang-zh-Hans": {
+        "url": "/business-and-employers-zh-hans/",
+        "slug": "business-and-employers-zh-hans",
+        "title": "企业和雇主"
+      },
+      "lang-zh-Hant": {
+        "url": "/business-and-employers-zh-hant/",
+        "slug": "business-and-employers-zh-hant",
+        "title": "企業和雇主"
+      },
+      "lang-vi": {
+        "url": "/business-and-employers-vi/",
+        "slug": "business-and-employers-vi",
+        "title": "Doanh Nghiệp và Chủ Lao Động"
+      },
+      "lang-ko": {
+        "url": "/business-and-employers-ko/",
+        "slug": "business-and-employers-ko",
+        "title": "사업체와 고용주"
       },
       "subsections" : []
     },
@@ -193,6 +518,36 @@
         "slug": "la-educacion",
         "url": "/la-educacion/"
       },
+      "lang-ar": {
+        "url": "/education-ar/",
+        "slug": "education-ar",
+        "title": "التعليم"
+      },
+      "lang-zh-Hans": {
+        "url": "/education-zh-hans/",
+        "slug": "education-zh-hans",
+        "title": "教育"
+      },
+      "lang-zh-Hant": {
+        "url": "/education-zh-hant/",
+        "slug": "education-zh-hant",
+        "title": "教育"
+      },
+      "lang-tl": {
+        "url": "/education-tl/",
+        "slug": "education-tl",
+        "title": "Edukasyon"
+      },
+      "lang-vi": {
+        "url": "/education-vi/",
+        "slug": "education-vi",
+        "title": "Giáo Dục"
+      },
+      "lang-ko": {
+        "url": "/education-ko/",
+        "slug": "education-ko",
+        "title": "교육"
+      },
       "subsections" : []
     },
     {
@@ -205,6 +560,36 @@
         "title": "El cuidado de la salud",
         "slug": "el-cuidado-de-la-salud",
         "url": "/el-cuidado-de-la-salud/"
+      },
+      "lang-ar": {
+        "url": "/healthcare-ar/",
+        "slug": "healthcare-ar",
+        "title": "الرعاية الصحية"
+      },
+      "lang-zh-Hans": {
+        "url": "/healthcare-zh-hans/",
+        "slug": "healthcare-zh-hans",
+        "title": "医疗保健"
+      },
+      "lang-zh-Hant": {
+        "url": "/healthcare-zh-hant/",
+        "slug": "healthcare-zh-hant",
+        "title": "醫療保健"
+      },
+      "lang-tl": {
+        "url": "/healthcare-tl/",
+        "slug": "healthcare-tl",
+        "title": "Pangangalaga sa Kalusugan"
+      },
+      "lang-vi": {
+        "url": "/healthcare-vi/",
+        "slug": "healthcare-vi",
+        "title": "Chăm sóc sức khỏe / Y tế"
+      },
+      "lang-ko": {
+        "url": "/healthcare-ko/",
+        "slug": "healthcare-ko",
+        "title": "의료 서비스"
       },
       "subsections" : []
     },
@@ -219,6 +604,36 @@
         "slug": "la-vivienda-y-las-personas-sin-hogar",
         "url": "/la-vivienda-y-las-personas-sin-hogar/"
       },
+      "lang-ar": {
+        "url": "/housing-and-homelessness-ar/",
+        "slug": "housing-and-homelessness-ar",
+        "title": "الإسكان والتشرد"
+      },
+      "lang-tl": {
+        "url": "/housing-and-homelessness-tl/",
+        "slug": "housing-and-homelessness-tl",
+        "title": "Ang Pabahay at Kawalan ng Tirahan"
+      },
+      "lang-zh-Hans": {
+        "url": "/housing-and-homelessness-zh-hans/",
+        "slug": "housing-and-homelessness-zh-hans",
+        "title": "住房和无家可归"
+      },
+      "lang-zh-Hant": {
+        "url": "/housing-and-homelessness-zh-hant/",
+        "slug": "housing-and-homelessness-zh-hant",
+        "title": "住房和無家可歸"
+      },
+      "lang-vi": {
+        "url": "/housing-and-homelessness-vi/",
+        "slug": "housing-and-homelessness-vi",
+        "title": "Nhà ở và tình trạng vô gia cư"
+      },
+      "lang-ko": {
+        "url": "/housing-and-homelessness-ko/",
+        "slug": "housing-and-homelessness-ko",
+        "title": "주택과 노숙자"
+      },
       "subsections" : []
     },
     {
@@ -231,6 +646,36 @@
         "title": "Trabajadores",
         "slug": "trabajadores",
         "url": "/trabajadores/"
+      },
+      "lang-ar": {
+        "url": "/workers-ar/",
+        "slug": "workers-ar",
+        "title": "العاملون"
+      },
+      "lang-zh-Hans": {
+        "url": "/workers-zh-hans/",
+        "slug": "workers-zh-hans",
+        "title": "員工"
+      },
+      "lang-zh-Hant": {
+        "url": "/workers-zh-hant/",
+        "slug": "workers-zh-hant",
+        "title": "工人"
+      },
+      "lang-tl": {
+        "url": "/workers-tl/",
+        "slug": "workers-tl",
+        "title": "Mga Manggagawa"
+      },
+      "lang-vi": {
+        "url": "/workers-vi/",
+        "slug": "workers-vi",
+        "title": "Người Lao Động"
+      },
+      "lang-ko": {
+        "url": "/workers-ko/",
+        "slug": "workers-ko",
+        "title": "근로자들"
       },
       "subsections" : []
     },
@@ -245,6 +690,36 @@
         "slug": "impuestos",
         "url": "/impuestos/"
       },
+      "lang-ar": {
+        "url": "/taxes-ar/",
+        "slug": "taxes-ar",
+        "title": "الضرائب"
+      },
+      "lang-zh-Hans": {
+        "url": "/taxes-zh-hans/",
+        "slug": "taxes-zh-hans",
+        "title": "税务"
+      },
+      "lang-zh-Hant": {
+        "url": "/taxes-zh-hant/",
+        "slug": "taxes-zh-hant",
+        "title": "稅務"
+      },
+      "lang-tl": {
+        "url": "/taxes-tl/",
+        "slug": "taxes-tl",
+        "title": "Mga buwis"
+      },
+      "lang-vi": {
+        "url": "/taxes-vi/",
+        "slug": "taxes-vi",
+        "title": "Thuế"
+      },
+      "lang-ko": {
+        "url": "/taxes-ko/",
+        "slug": "taxes-ko",
+        "title": "세금"
+      },
       "subsections" : []
     },
     {
@@ -257,6 +732,16 @@
         "title": "Cuerpo de Salud de California",
         "slug": "cuerpo-de-salud-de-california",
         "url": "/cuerpo-de-salud-de-california/"
+      },
+      "lang-zh-Hant": {
+        "url": "/healthcorps-zh-hant/",
+        "slug": "healthcorps-zh-hant",
+        "title": "加州醫療隊"
+      },
+      "lang-zh-Hans": {
+        "url": "/healthcorps-zh-hans/",
+        "slug": "healthcorps-zh-hans",
+        "title": "加州医疗队"
       },
       "subsections" : []
     }
