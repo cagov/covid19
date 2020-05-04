@@ -1,4 +1,4 @@
-a.btn {
+a.btn, .btn-clear {
   background: #000;
   color: #fff;
   border: 1px solid #f1f1f1;
@@ -50,10 +50,19 @@ a.btn:visited, a:visited, a:hover {
     border-color: #0f1e6b;
 }
 
-.btn-light {
-    color: #000;
-    background-color: #fff;
-    border-color: #fff;
+.nav-item .dropdown .btn-light {
+    height: 38px;
+}
+
+.btn-clear {
+    color: #fff;
+    background: none;
+}
+    
+.btn.btn-clear:hover, .btn.btn-clear:focus {
+    color: #fff;
+    background: none;
+    border: solid 1px #fff
 }
 
 .btn-primary:hover {
