@@ -697,7 +697,12 @@
       "modified": "2020-05-04T19:11:26",
       "wp_path": "/wp-content/uploads/2020/05/OSG-Caregivers-and-Kids-Playbook_CH_Simplified.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_ch_simplified.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "manage-stress-for-health-zh-hans"
+      ],
+      "wp_sha": "e159e52ad798b89640e23cea5a05644dedf7e7df",
+      "github_sha": "b5b950bd9bdbaf0b3f93f7465b4c1424a5149d35"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_chinese_simplified",
@@ -706,12 +711,7 @@
       "modified": "2020-04-20T17:26:17",
       "wp_path": "/wp-content/uploads/2020/04/OSG-Caregivers-and-Kids-Playbook_Chinese_Simplified.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_chinese_simplified.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "manage-stress-for-health-zh-hans"
-      ],
-      "wp_sha": "3fc238e018749ab091d4def2d3f7cfeedfe203c6",
-      "github_sha": "bc07a5135f39f5e8af8a9f134009f5262500cee1"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_chinesetraditional",
@@ -3520,7 +3520,7 @@
       "id": 2097,
       "filename": "manage-stress-for-health-zh-hans",
       "pagetitle": "为了健康管理压力",
-      "modified": "2020-05-04T19:01:42",
+      "modified": "2020-05-04T19:13:22",
       "tags": [
         "do-not-crawl",
         "lang-zh-Hans"
@@ -3531,8 +3531,8 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "71a9afcc9f063a443ff3d81d9167fe777ce6408f",
-      "github_sha": "821cc6a2667268ccbe4194ed8f26bb94fa5323ce"
+      "wp_sha": "31f38262133f89ad46d756463b73a06ab6d92751",
+      "github_sha": "a314aeafbf7f168ba0a7a248739f51f31a56b844"
     },
     {
       "slug": "manage-stress-for-health-zh-hant",
