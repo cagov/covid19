@@ -674,12 +674,7 @@
       "modified": "2020-04-20T17:26:16",
       "wp_path": "/wp-content/uploads/2020/04/OSG-Caregivers-and-Kids-Playbook_Arabic.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_arabic.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "manage-stress-for-health-ar"
-      ],
-      "wp_sha": "ed787665df588efa01453c63e879795f663af159",
-      "github_sha": "ada50d8aaaf7e3c29f3a2e6b68a813ea0b76cc35"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_arabic-2",
@@ -688,7 +683,12 @@
       "modified": "2020-05-04T19:11:25",
       "wp_path": "/wp-content/uploads/2020/05/OSG-Caregivers-and-Kids-Playbook_Arabic.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_arabic-2.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "manage-stress-for-health-ar"
+      ],
+      "wp_sha": "1ede8ebb3fc0ab0164e94496fa1320595953741e",
+      "github_sha": "68547d13953b86915a2050f549b6288feec4f001"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_ch_simplified",
@@ -3444,7 +3444,7 @@
       "id": 1653,
       "filename": "manage-stress-for-health-ar",
       "pagetitle": "التحكم في الضغط النفسي من أجل الصحة",
-      "modified": "2020-04-29T23:26:24",
+      "modified": "2020-05-04T19:13:54",
       "tags": [
         "do-not-crawl",
         "lang-ar"
@@ -3455,8 +3455,8 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "ar",
-      "wp_sha": "0862c028e89555c4577abbdf41e72f327edd24e3",
-      "github_sha": "7046cfbc8e52b318b7da2a3ae1b8eb94de67c12c"
+      "wp_sha": "6939aa6f6305fe397bc7f70431b86050c88f4ba5",
+      "github_sha": "b3edb3e535d106c0ee4080c55a99eb14204a2f10"
     },
     {
       "slug": "manage-stress-for-health-ko",
