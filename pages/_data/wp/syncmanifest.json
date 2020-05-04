@@ -752,7 +752,12 @@
       "modified": "2020-05-04T19:11:23",
       "wp_path": "/wp-content/uploads/2020/05/OSG-Caregivers-and-Kids-Playbook_Tagalog.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_tagalog.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "manage-stress-for-health-tl"
+      ],
+      "wp_sha": "0dcfdc6617be86bc37fe8aaa8a38b901e2dcc5a7",
+      "github_sha": "d6b59309f225943feb80125166534cd1f93b3fe1"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_tl",
@@ -761,12 +766,7 @@
       "modified": "2020-04-20T17:26:20",
       "wp_path": "/wp-content/uploads/2020/04/OSG-Caregivers-and-Kids-Playbook_TL.pdf",
       "github_path": "src/img/wp/osg-caregivers-and-kids-playbook_tl.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "manage-stress-for-health-tl"
-      ],
-      "wp_sha": "5dc07eeb818d1afc81d2af3b161b1319c5ebb29d",
-      "github_sha": "64aaab4b35b05a4dc99804157c2ddf8fb681fe78"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "osg-caregivers-and-kids-playbook_vi",
@@ -3482,7 +3482,7 @@
       "id": 1672,
       "filename": "manage-stress-for-health-tl",
       "pagetitle": "Ang pamamahala sa stress para sa kalusugan",
-      "modified": "2020-04-21T23:51:04",
+      "modified": "2020-05-04T19:14:42",
       "tags": [
         "do-not-crawl",
         "lang-tl"
@@ -3493,8 +3493,8 @@
       "addToSitemap": false,
       "ignore": false,
       "lang": "tl",
-      "wp_sha": "6a1b7ac0ea4f605e16fa875ece559076b77f9369",
-      "github_sha": "55b9b9f8061284d03ed22d4b01dd6bfbd4580e31"
+      "wp_sha": "5fca90e95868cd147232ed858e7b5496d947f945",
+      "github_sha": "3a3b2af1c56306cdebe430f5cbfce6a86be7a2cc"
     },
     {
       "slug": "manage-stress-for-health-vi",
