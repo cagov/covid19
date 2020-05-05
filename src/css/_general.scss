@@ -957,6 +957,30 @@ button#dropdown-menu-button:hover {
     border-color: #005d9c;
 }
 
+button#dropdown-menu-button:focus {
+    outline: 2px solid #fff;
+	background-color: #0257d5;
+    border-color: #0257d5;
+    box-shadow: none;
+}
+
+.bg-gradient {
+	background: rgb(255,230,155);
+	background: -webkit-linear-gradient(left, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
+	background: -o-linear-gradient(left, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
+	background: linear-gradient(to right, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
+}
+
+.card-header {
+    padding: .75rem .75rem;
+}
+
+.bg-primary-accordion {
+    background-color: #0066ab!important;
+    color: #fff!important;
+}
+
+
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
