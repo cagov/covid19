@@ -947,7 +947,15 @@ label.custom-control-label {
     	margin-right: -20px;
 }
 
-
+button#dropdown-menu-button {
+    border: 1px solid #f1f1f1;
+    background: #0066ab;
+    color: white;
+}
+button#dropdown-menu-button:hover {
+    background-color: #005d9c;
+    border-color: #005d9c;
+}
 
 
 /* Medium devices (tablets, 768px and up)*/
