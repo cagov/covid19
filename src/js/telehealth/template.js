@@ -10,7 +10,7 @@ export default function template(inputval) {
         return response.json();
       })
       .then(myzip => {
-        lookupSuccess(myzip.county, inputval, isZip);
+        lookupSuccess(myzip[0].county, inputval, isZip);
       })
       .catch(() => {
         lookupFail();
