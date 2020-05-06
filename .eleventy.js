@@ -28,14 +28,16 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
-  //Process wordpress posts
-  eleventyConfig.addCollection("wordpressposts", function(collection) {
-    const FolderName = 'wordpress-posts';
+  //Process translated posts
+  let translatedPaths = []
+  eleventyConfig.addCollection("translatedposts", function(collection) {
+    const FolderName = 'translated-posts';
     let output = [];
     
     collection.getAll().forEach(item => {
         if(item.inputPath.includes(FolderName)) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          translatedPaths.push(item.outputPath);
           item.url = item.url.replace(`/${FolderName}`,'');
           item.data.page.url = item.url;
           output.push(item);
@@ -51,6 +53,37 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
+  // while I am creating the wordpressposts collection
+  // can I loop throught the translatedposts collection
+  // find item with the existing url?
+  // and then skip it...
+  
+  //Process wordpress posts
+  eleventyConfig.addCollection("wordpressposts", function(collection) {
+    const FolderName = 'wordpress-posts';
+    let output = [];
+    
+    collection.getAll().forEach(item => {
+        if(item.inputPath.includes(FolderName)) {
+          let outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          if(translatedPaths.indexOf(outputPath) === -1) {
+            item.outputPath = outputPath;
+            item.url = item.url.replace(`/${FolderName}`,'');
+            item.data.page.url = item.url;
+            output.push(item);
+
+            if(!item.data.title) {
+              //No title means fragment
+              console.log(`Skipping fragment ${item.inputPath}`)
+              item.outputPath = false;
+            }
+          }
+        };
+    });
+
+    return output;
+  });
+  
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
@@ -98,7 +131,7 @@ module.exports = function(eleventyConfig) {
   const getTranslatedValue = (pageObj, tags, field) => {
     
     let langTag = getLangRecord(tags);
-
+    
     if(!pageObj)
       return "";
 
@@ -106,6 +139,12 @@ module.exports = function(eleventyConfig) {
       return pageObj[langTag.wptag][field];
     } 
     //that page is missing for that lang, bring in the default
+    console.log(pageObj['lang-en'].url)
+    if(pageObj['lang-en'].url.indexOf('healt') > -1) {
+      console.log('cannot field '+field)
+      console.log(langTag.wptag)
+      console.log(pageObj)  
+    }
     return pageObj[getLangRecord([]).wptag][field];
   }
 
