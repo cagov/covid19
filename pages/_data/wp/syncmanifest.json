@@ -266,7 +266,8 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
+        "guide-immigrant-californians",
+        "guide-immigrant-californians-tl-2"
       ],
       "wp_sha": "b009fb33123c5e0f3711cf1fb33b14fd15d263c8",
       "github_sha": "ec570a0ec0c03e3e7520d4d34d4aa8468ebd8e21"
@@ -2788,6 +2789,25 @@
       "github_sha": "908c28e35f3afe7153628fd5dfac31d18ba0195d"
     },
     {
+      "slug": "guide-immigrant-californians-tl-2",
+      "id": 2154,
+      "filename": "guide-immigrant-californians-tl-2",
+      "pagetitle": "Gabay sa mga Imigrante sa California",
+      "modified": "2020-05-06T23:47:10",
+      "tags": [
+        "lang-tl"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "b2f9e8871e9bc6d04006f571d59f2fbf043d00a2",
+      "github_sha": "451dec9002696912e9bf5885d49a55518f0d8359"
+    },
+    {
       "slug": "guide-immigrant-californians-zh-hans",
       "id": 2099,
       "filename": "guide-immigrant-californians-zh-hans",
@@ -3060,26 +3080,6 @@
       "lang": "ar",
       "wp_sha": "1b7964a70e8a350a6fb8eae2580de57f747a8b2b",
       "github_sha": "96d20443f759ec314044c792555422fd6fabd095"
-    },
-    {
-      "slug": "home-header-es",
-      "id": 1374,
-      "filename": "home-header-es",
-      "pagetitle": "home header es",
-      "modified": "2020-04-22T19:33:08",
-      "tags": [
-        "fragment",
-        "lang-es"
-      ],
-      "category": "home header",
-      "isFragment": true,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "es",
-      "wp_sha": "b19fcdbbb3e255f02bbe9f16e68501c600c3ffe4",
-      "github_sha": "fb3ea33339466aa70b8fc37ad6b8fb3307c2017e"
     },
     {
       "slug": "home-header-es",
