@@ -52,14 +52,19 @@ function lookupSuccess(inputCounty, inputval, isZip) {
                 <span class="">${ (item['Plan Type'].toLowerCase().indexOf('medi-cal') > -1) ? item['Plan Type'] : '' }</span>
               </div>
               <div class="card-body">
-                <p class="card-text">
+                <div class="card-text">
                   <p>Telehealth care offered: ${(item['Telehealth Offered by Health Plan'] == 'Yes') ? '<span class="bold">Yes</span>' : '<span class="bold">No</span>' }
-                  ${ (item['Telehealth Services Phone Number'] != '') ? `<p>Telehealth services phone number: <a href="tel:${ item['Telehealth Services Phone Number'] }">${ item['Telehealth Services Phone Number'] }</a></p>` : '' }                
-                  ${ (item['Health Plan Nurse Advice Line'] != '') ? `<p>Health plan nurse advice line: <a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a></p>` : ''}
-                  ${ item['Special Note'] }
-                </p>
-                ${ (item['Visit Health Plan Website'] != '') ? `<a href="${ item['Visit Health Plan Website'] }" class="action-link mr-3">Visit Health Plan website</a>` : ''}
-                ${ (item['Visit Telehealth Website'] != '') ? `<a href="${ item['Visit Telehealth Website'] }" class="action-link mr-3">Visit Telehealth website</a>` : ''}
+
+                  ${ (item['Telehealth Services Phone Number'] != '') ? `<p>Telehealth services phone number: <a href="tel:${ item['Telehealth Services Phone Number'] }">${ item['Telehealth Services Phone Number'] }</a></p>` : '' }   
+
+                  ${ (item['Health Plan Nurse Advice Line'] != '' && !item['Health Plan Nurse Advice Line'].match(/[A-Za-z]/)) ? `<p>Health plan nurse advice line: <a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a></p>` : ''}
+                  
+                  ${ (item['Special Note'] != '') ? `<p>${item['Special Note'] }</p>` : '' }
+
+                  ${ (item['Visit Health Plan Website'] != '') ? `<p><a href="${ item['Visit Health Plan Website'] }" class="action-link mr-3">Visit Health Plan website</a></p>` : ''}
+                  
+                  ${ (item['Visit Telehealth Website'] != '') ? `<p><a href="${ item['Visit Telehealth Website'] }" class="action-link mr-3">Visit Telehealth website</a></p>` : ''}
+                </div>
               </div>
             </div>
           `
