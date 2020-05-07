@@ -250,7 +250,8 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
+        "guide-immigrant-californians",
+        "guide-immigrant-californians-ko"
       ],
       "wp_sha": "665b0f8e3881fbbf8b8b7b153375cc9380d8dd40",
       "github_sha": "9c79e9f56af5169da853597f3b285014eb5cf65b"
@@ -265,7 +266,8 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
+        "guide-immigrant-californians",
+        "guide-immigrant-californians-tl-2"
       ],
       "wp_sha": "b009fb33123c5e0f3711cf1fb33b14fd15d263c8",
       "github_sha": "ec570a0ec0c03e3e7520d4d34d4aa8468ebd8e21"
@@ -2730,6 +2732,82 @@
       "github_sha": "685daae157c28f7edcffcba03d6eb776b160f846"
     },
     {
+      "slug": "guide-immigrant-californians-ar",
+      "id": 2284,
+      "filename": "guide-immigrant-californians-ar",
+      "pagetitle": "دليل لسكان كاليفورنيا من المهاجرين",
+      "modified": "2020-05-06T23:46:48",
+      "tags": [
+        "lang-ar"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "ar",
+      "wp_sha": "1ac8fa0c1db18c1e96da90e6052bd08ba2d74a2e",
+      "github_sha": "57ef119678396c61b5fc583553bcf94caee22587"
+    },
+    {
+      "slug": "guide-immigrant-californians-ko",
+      "id": 2166,
+      "filename": "guide-immigrant-californians-ko",
+      "pagetitle": "캘리포니아 이민자들을 위한 가이드",
+      "modified": "2020-05-06T23:47:00",
+      "tags": [
+        "lang-ko"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "ko",
+      "wp_sha": "cfd34c5ab11c7eae1806e188852673f84d6a2a2a",
+      "github_sha": "05e3ef3c658a7c2f0f1d7d19d1ea3ac0907cfe94"
+    },
+    {
+      "slug": "guide-immigrant-californians-tl",
+      "id": 2396,
+      "filename": "guide-immigrant-californians-tl",
+      "pagetitle": "Hướng dẫn cho Người nhập cư ở California",
+      "modified": "2020-05-06T23:46:37",
+      "tags": [
+        "lang-vi"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "cd5cf915a651d509c29f490dd7c741c58ba0079e",
+      "github_sha": "908c28e35f3afe7153628fd5dfac31d18ba0195d"
+    },
+    {
+      "slug": "guide-immigrant-californians-tl-2",
+      "id": 2154,
+      "filename": "guide-immigrant-californians-tl-2",
+      "pagetitle": "Gabay sa mga Imigrante sa California",
+      "modified": "2020-05-06T23:47:10",
+      "tags": [
+        "lang-tl"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "b2f9e8871e9bc6d04006f571d59f2fbf043d00a2",
+      "github_sha": "451dec9002696912e9bf5885d49a55518f0d8359"
+    },
+    {
       "slug": "guide-immigrant-californians-zh-hans",
       "id": 2099,
       "filename": "guide-immigrant-californians-zh-hans",
@@ -2910,8 +2988,9 @@
       "id": 642,
       "filename": "healthcorps",
       "pagetitle": "California Health Corps",
-      "modified": "2020-05-06T20:45:19",
+      "modified": "2020-05-06T23:48:51",
       "tags": [
+        "forgotten-page",
         "translate"
       ],
       "category": "healthcorps",
@@ -2921,8 +3000,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ba85f5c634cb9e21a276896c974a24af9223bb80",
-      "github_sha": "70057690ad1e5b09ebe398211e6d28ce9e0a90ef"
+      "wp_sha": "72036978f4018fa2761b1c588ef812dc51c789b4",
+      "github_sha": "1221f047e9d974c3c0a224c12796c616c33410fc"
     },
     {
       "slug": "healthcorps-zh-hans",
@@ -4234,7 +4313,7 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-06T20:44:34",
+      "modified": "2020-05-06T23:36:26",
       "tags": [
         "translate"
       ],
@@ -4245,8 +4324,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "6a7d5e1085e1b57fd8ba63513ec15a82a4551f7b",
-      "github_sha": "3955b3f2949371539c28a333337e67eed8458a48"
+      "wp_sha": "35d546b694d9813a8d0e383fdd16f8625f00cb05",
+      "github_sha": "47d328c15ab9dbabc869e3a7e7c15bfd88e95a99"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
@@ -4323,6 +4402,44 @@
       "lang": "ar",
       "wp_sha": "651fcbd2e19daa5b899bcb18738254f257e9c362",
       "github_sha": "fee7c245bf4cb5a2d43000dacb4d959a907d6818"
+    },
+    {
+      "slug": "safety-in-public-places-tl",
+      "id": 2151,
+      "filename": "safety-in-public-places-tl",
+      "pagetitle": "Mga Pampublikong mga Lugar",
+      "modified": "2020-05-06T23:46:09",
+      "tags": [
+        "lang-tl"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "c5d37d57304bd90366739b7a14105c8b88100801",
+      "github_sha": "6fb15a16936d1b1d37965613923b8223396befb3"
+    },
+    {
+      "slug": "safety-in-public-places-vi",
+      "id": 2393,
+      "filename": "safety-in-public-places-vi",
+      "pagetitle": "Những nơi công cộng",
+      "modified": "2020-05-06T23:45:57",
+      "tags": [
+        "lang-vi"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "b5901fd138e065f573147d04fb80a3ae1cf86765",
+      "github_sha": "726f8dc9865777d5b7590f1c5eae960c7a649bcb"
     },
     {
       "slug": "safety-in-public-places-zh-hans",
