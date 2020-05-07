@@ -250,7 +250,8 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
+        "guide-immigrant-californians",
+        "guide-immigrant-californians-ko"
       ],
       "wp_sha": "665b0f8e3881fbbf8b8b7b153375cc9380d8dd40",
       "github_sha": "9c79e9f56af5169da853597f3b285014eb5cf65b"
@@ -265,7 +266,8 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians"
+        "guide-immigrant-californians",
+        "guide-immigrant-californians-tl-2"
       ],
       "wp_sha": "b009fb33123c5e0f3711cf1fb33b14fd15d263c8",
       "github_sha": "ec570a0ec0c03e3e7520d4d34d4aa8468ebd8e21"
@@ -1179,19 +1181,17 @@
       "id": 725,
       "filename": "business-and-employers",
       "pagetitle": "Businesses and employers",
-      "modified": "2020-05-06T20:37:03",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T15:49:53",
+      "tags": [],
       "category": "business and employers",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "c008029f771a94225266e04fabf611d9ca0d7473",
-      "github_sha": "9a0e7791095476dc328d9ecb0337ec4035d1f8cc"
+      "wp_sha": "d56582d062c1a500bb0ff79c63a7503a8365e321",
+      "github_sha": "e7c5991a4c6b57b55748727389cfbb355d0c762e"
     },
     {
       "slug": "business-and-employers-ar",
@@ -1317,16 +1317,15 @@
       "id": 1364,
       "filename": "cali-working",
       "pagetitle": "cali working",
-      "modified": "2020-05-06T20:37:18",
+      "modified": "2020-05-07T00:27:47",
       "tags": [
-        "fragment",
-        "translate"
+        "fragment"
       ],
       "category": "cali working",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "8701a274d98dd9ce319c48ff4a4ed6ff13fe3b42",
@@ -1477,19 +1476,17 @@
       "id": 1885,
       "filename": "childcare",
       "pagetitle": "Find child care options near you",
-      "modified": "2020-05-06T20:37:38",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:24:51",
+      "tags": [],
       "category": "child care",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ed220b413f837f8c3aba4f115265f50ea1645df2",
-      "github_sha": "eedc352c8fa7c81fb2a67f38a60cae8c779d0435"
+      "wp_sha": "adc09a0d4de655832ee6ee9037f8801da074370d",
+      "github_sha": "4ad6414e4fa47f696f4a4ad8d698edc04e8ff97a"
     },
     {
       "slug": "childcare-zh-hans",
@@ -1592,19 +1589,17 @@
       "id": 2040,
       "filename": "discrimination",
       "pagetitle": "Fight discrimination",
-      "modified": "2020-05-06T20:38:25",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:24:27",
+      "tags": [],
       "category": "discrimination",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ba8776610d86655b5f7ca7eced5e97901dd93a48",
-      "github_sha": "25af1d80c13d933a09902d2f39499392e126bd9c"
+      "wp_sha": "a410ac148c3692cf47e1d1e09b6035ac33cf18fd",
+      "github_sha": "fa55f46e423acc7473d93c32cdb0ca6e976b8879"
     },
     {
       "slug": "discrimination-zh-hant",
@@ -1650,16 +1645,15 @@
       "id": 1557,
       "filename": "do-do-not-english",
       "pagetitle": "do, don&#8217;t english",
-      "modified": "2020-05-06T20:38:56",
+      "modified": "2020-05-07T00:26:17",
       "tags": [
-        "table-data",
-        "translate"
+        "table-data"
       ],
       "category": "do and do not",
       "isFragment": false,
       "isTableData": true,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "6dac6e130f8e7247c52f43b21d7c21ad228d8d06",
@@ -2040,19 +2034,17 @@
       "id": 2258,
       "filename": "essential-workforce",
       "pagetitle": "Essential workforce",
-      "modified": "2020-05-06T20:41:18",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:21:20",
+      "tags": [],
       "category": "essential jobs",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "6cfa75fd0c45bd339a20d4eece647be145fe5ac0",
-      "github_sha": "417684af50396b9c62b1d8b016c05dff49d4e0ef"
+      "wp_sha": "133ce0acdeabbb41e33476c5ab9b5c5563ccce18",
+      "github_sha": "ff1f583f71487c68aa66188c49d032570325d45f"
     },
     {
       "slug": "find-services",
@@ -2218,35 +2210,32 @@
       "id": 1437,
       "filename": "food-resources",
       "pagetitle": "Getting food",
-      "modified": "2020-05-06T20:44:16",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:26:28",
+      "tags": [],
       "category": "getting food",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "dc36990718901cbec491595a5d4fc33e89e0374c",
-      "github_sha": "687137baec8a8f82684feda69229b3bb117419f2"
+      "wp_sha": "ceecbc6199bfc67ffe7ebcbf8f4fa3967773a8b6",
+      "github_sha": "cdc696a72c4728ba020a09ccc8cba3babfd911df"
     },
     {
       "slug": "footer-data-english",
       "id": 1040,
       "filename": "footer-data-english",
       "pagetitle": "Footer Data &#8211; English",
-      "modified": "2020-05-06T20:41:34",
+      "modified": "2020-05-07T00:28:03",
       "tags": [
-        "table-data",
-        "translate"
+        "table-data"
       ],
       "category": "footer data",
       "isFragment": false,
       "isTableData": true,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "589b39acf7c62cef944a27ab1dbf45c1df98df78",
@@ -2715,19 +2704,93 @@
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Guide for Immigrant Californians",
-      "modified": "2020-05-06T20:44:54",
+      "modified": "2020-05-07T00:27:34",
+      "tags": [],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "0eb6a5717b50de83837e07259879fc68b281ebd9",
+      "github_sha": "f3a1bc2a4b5487c5c303ea106325919dd2684b83"
+    },
+    {
+      "slug": "guide-immigrant-californians-ar",
+      "id": 2284,
+      "filename": "guide-immigrant-californians-ar",
+      "pagetitle": "دليل لسكان كاليفورنيا من المهاجرين",
+      "modified": "2020-05-06T23:46:48",
       "tags": [
-        "translate"
+        "lang-ar"
       ],
       "category": "guide immigrant californians",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
-      "lang": "en",
-      "wp_sha": "73a930308c143d3ee2f1284279e5b388b5750ae0",
-      "github_sha": "685daae157c28f7edcffcba03d6eb776b160f846"
+      "lang": "ar",
+      "wp_sha": "1ac8fa0c1db18c1e96da90e6052bd08ba2d74a2e",
+      "github_sha": "57ef119678396c61b5fc583553bcf94caee22587"
+    },
+    {
+      "slug": "guide-immigrant-californians-ko",
+      "id": 2166,
+      "filename": "guide-immigrant-californians-ko",
+      "pagetitle": "캘리포니아 이민자들을 위한 가이드",
+      "modified": "2020-05-06T23:47:00",
+      "tags": [
+        "lang-ko"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "ko",
+      "wp_sha": "cfd34c5ab11c7eae1806e188852673f84d6a2a2a",
+      "github_sha": "05e3ef3c658a7c2f0f1d7d19d1ea3ac0907cfe94"
+    },
+    {
+      "slug": "guide-immigrant-californians-tl",
+      "id": 2396,
+      "filename": "guide-immigrant-californians-tl",
+      "pagetitle": "Hướng dẫn cho Người nhập cư ở California",
+      "modified": "2020-05-06T23:46:37",
+      "tags": [
+        "lang-vi"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "cd5cf915a651d509c29f490dd7c741c58ba0079e",
+      "github_sha": "908c28e35f3afe7153628fd5dfac31d18ba0195d"
+    },
+    {
+      "slug": "guide-immigrant-californians-tl-2",
+      "id": 2154,
+      "filename": "guide-immigrant-californians-tl-2",
+      "pagetitle": "Gabay sa mga Imigrante sa California",
+      "modified": "2020-05-06T23:47:10",
+      "tags": [
+        "lang-tl"
+      ],
+      "category": "guide immigrant californians",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "b2f9e8871e9bc6d04006f571d59f2fbf043d00a2",
+      "github_sha": "451dec9002696912e9bf5885d49a55518f0d8359"
     },
     {
       "slug": "guide-immigrant-californians-zh-hans",
@@ -2910,8 +2973,9 @@
       "id": 642,
       "filename": "healthcorps",
       "pagetitle": "California Health Corps",
-      "modified": "2020-05-06T20:45:19",
+      "modified": "2020-05-06T23:48:51",
       "tags": [
+        "forgotten-page",
         "translate"
       ],
       "category": "healthcorps",
@@ -2921,8 +2985,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ba85f5c634cb9e21a276896c974a24af9223bb80",
-      "github_sha": "70057690ad1e5b09ebe398211e6d28ce9e0a90ef"
+      "wp_sha": "72036978f4018fa2761b1c588ef812dc51c789b4",
+      "github_sha": "1221f047e9d974c3c0a224c12796c616c33410fc"
     },
     {
       "slug": "healthcorps-zh-hans",
@@ -2967,16 +3031,15 @@
       "id": 1372,
       "filename": "home-header",
       "pagetitle": "home header",
-      "modified": "2020-05-06T20:45:30",
+      "modified": "2020-05-07T00:27:12",
       "tags": [
-        "fragment",
-        "translate"
+        "fragment"
       ],
       "category": "home header",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "16047e9786ab38ba89c5535f8cd99ab07aa9fde9",
@@ -3210,16 +3273,15 @@
       "id": 1574,
       "filename": "homepage-links-spanish",
       "pagetitle": "home page links spanish",
-      "modified": "2020-05-06T20:45:49",
+      "modified": "2020-05-07T00:25:08",
       "tags": [
-        "table-data",
-        "translate"
+        "table-data"
       ],
       "category": "home-links",
       "isFragment": false,
       "isTableData": true,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "7f4de87963c997b33f8c78df1021eafb9809f258",
@@ -3619,19 +3681,17 @@
       "id": 884,
       "filename": "manage-stress-for-health",
       "pagetitle": "Manage stress for health",
-      "modified": "2020-05-06T20:46:56",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:28:17",
+      "tags": [],
       "category": "manage stress for health",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "cfd51284d5087b8a6d4a9f72526998a1fa9ecb6d",
-      "github_sha": "e0f726c4e7263212a1657ced36acce8ad9856b79"
+      "wp_sha": "5c764a7fa2f6a5adc9a48a7dfd410f740c8461f7",
+      "github_sha": "b001e1379b254f2bb4710d685370c520e551acfd"
     },
     {
       "slug": "manage-stress-for-health-ar",
@@ -3778,16 +3838,17 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-05-06T19:05:10",
+      "modified": "2020-05-07T00:26:40",
       "tags": [
         "fragment",
+        "translate",
         "translate-priority"
       ],
       "category": "homepage new",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
       "wp_sha": "5c62f3f934a75655a93dd7705c3cefdc92cd24a9",
@@ -3980,17 +4041,16 @@
       "id": 691,
       "filename": "online-and-phone-medical-care-options-telehealth",
       "pagetitle": "Getting health care from home through telehealth",
-      "modified": "2020-05-06T20:52:01",
+      "modified": "2020-05-07T00:28:45",
       "tags": [
         "fragment",
-        "telehealth",
-        "translate"
+        "telehealth"
       ],
       "category": "telehealth",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "17be390a659f111be65ca12913e4bf45084dd2d1",
@@ -4014,6 +4074,25 @@
       "lang": "en",
       "wp_sha": "f6874386672438cc28289545abb5d6304e182435",
       "github_sha": "dd8992a018652a64504e70f57f9bec28628d0311"
+    },
+    {
+      "slug": "plasma",
+      "id": 2777,
+      "filename": "plasma",
+      "pagetitle": "Survivors of COVID-19: Donate your plasma",
+      "modified": "2020-05-06T22:34:14",
+      "tags": [
+        "do-not-crawl"
+      ],
+      "category": "plasma",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "f916813adaa7a43580e418567c84d1f59178acd4",
+      "github_sha": "20ceda44d6af7ba70b2d7143afb0c9df1caa22a6"
     },
     {
       "slug": "pruebas-y-tratamiento",
@@ -4058,19 +4137,17 @@
       "id": 2083,
       "filename": "recovery-input",
       "pagetitle": "Give your input: California Recovery Roadmap Survey",
-      "modified": "2020-05-06T20:47:22",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:24:05",
+      "tags": [],
       "category": "recovery input",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a922df571aea929c48cfceaaab9dd2d40d9e4b12",
-      "github_sha": "222d23edd1ec729a7d1bbbd8d94cfee62d9791e1"
+      "wp_sha": "3de1f5a7f2eaa6b3011d1d0e648868e7435a204f",
+      "github_sha": "c57f99a6a49122a4fc79589c1abee8987e80710e"
     },
     {
       "slug": "recursos-para-el-apoyo-emocional-y-el-bienestar",
@@ -4097,19 +4174,17 @@
       "id": 839,
       "filename": "resources-for-emotional-support-and-well-being",
       "pagetitle": "Resources for emotional support and well-being",
-      "modified": "2020-05-06T20:47:39",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:28:26",
+      "tags": [],
       "category": "resources for emotional support",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "e54d1e85caec6f913ba59963274933943de9dc3b",
-      "github_sha": "b998eea11af0fbb8b12cdc4995c595aad718a12b"
+      "wp_sha": "074cb1b317fad1dcba3e913cc11646ce3f34f1c6",
+      "github_sha": "3eec96d725bb91c969cc7d1e0367f9dc09131337"
     },
     {
       "slug": "resources-for-emotional-support-and-well-being-ar",
@@ -4214,19 +4289,17 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-06T20:44:34",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T01:56:26",
+      "tags": [],
       "category": "great plates delivered: home meals for seniors",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "6a7d5e1085e1b57fd8ba63513ec15a82a4551f7b",
-      "github_sha": "3955b3f2949371539c28a333337e67eed8458a48"
+      "wp_sha": "b9b8c2209f4ca2d8d0e0eed89dcfdbe278044ca9",
+      "github_sha": "0d189a5348e4ae8fc9603b9790af607932838b57"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
@@ -4267,6 +4340,44 @@
       "github_sha": "27be1b05857d6ce9ddcbefcc6a40e834a9492ee0"
     },
     {
+      "slug": "roadmap",
+      "id": 2554,
+      "filename": "roadmap",
+      "pagetitle": "Resilience Roadmap",
+      "modified": "2020-05-07T16:31:30",
+      "tags": [
+        "do-not-crawl"
+      ],
+      "category": "Roadmap",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "cdf15f27f9f596d06a637e0f0ef07b1bf5d0d06b",
+      "github_sha": "05ebdfaea29c3be4993307d46d3f9b5a358bf0a6"
+    },
+    {
+      "slug": "roadmap-counties",
+      "id": 2802,
+      "filename": "roadmap-counties",
+      "pagetitle": "County variance",
+      "modified": "2020-05-07T16:23:46",
+      "tags": [
+        "do-not-crawl"
+      ],
+      "category": "roadmap counties",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "033a8a3a7a15e3084d66913254f53486c107ee50",
+      "github_sha": "65a6f5d6cc510e50c981aeabbaf743d62065d47a"
+    },
+    {
       "slug": "safety-in-public-places",
       "id": 59,
       "filename": "safety-in-public-places",
@@ -4303,6 +4414,63 @@
       "lang": "ar",
       "wp_sha": "651fcbd2e19daa5b899bcb18738254f257e9c362",
       "github_sha": "fee7c245bf4cb5a2d43000dacb4d959a907d6818"
+    },
+    {
+      "slug": "safety-in-public-places-ko",
+      "id": 2789,
+      "filename": "safety-in-public-places-ko",
+      "pagetitle": "공공 장소",
+      "modified": "2020-05-07T00:27:52",
+      "tags": [
+        "lang-ko"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "ko",
+      "wp_sha": "1c5661acb9800eb034b205d563467e566a446bd0",
+      "github_sha": "1af8308f53953cf404e35db335d955ab6ac52d8a"
+    },
+    {
+      "slug": "safety-in-public-places-tl",
+      "id": 2151,
+      "filename": "safety-in-public-places-tl",
+      "pagetitle": "Mga Pampublikong mga Lugar",
+      "modified": "2020-05-06T23:46:09",
+      "tags": [
+        "lang-tl"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "c5d37d57304bd90366739b7a14105c8b88100801",
+      "github_sha": "6fb15a16936d1b1d37965613923b8223396befb3"
+    },
+    {
+      "slug": "safety-in-public-places-vi",
+      "id": 2393,
+      "filename": "safety-in-public-places-vi",
+      "pagetitle": "Những nơi công cộng",
+      "modified": "2020-05-06T23:45:57",
+      "tags": [
+        "lang-vi"
+      ],
+      "category": "safety in public places",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "b5901fd138e065f573147d04fb80a3ae1cf86765",
+      "github_sha": "726f8dc9865777d5b7590f1c5eae960c7a649bcb"
     },
     {
       "slug": "safety-in-public-places-zh-hans",
@@ -4366,16 +4534,15 @@
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-05-06T20:52:50",
+      "modified": "2020-05-06T21:20:50",
       "tags": [
-        "fragment",
-        "translate"
+        "fragment"
       ],
       "category": "stats",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
       "wp_sha": "f7da5f31322f87fbaa1961e14fcd81d6ad78e19d",
@@ -4845,19 +5012,17 @@
       "id": 718,
       "filename": "taxes",
       "pagetitle": "Taxes",
-      "modified": "2020-05-06T20:57:30",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:29:20",
+      "tags": [],
       "category": "taxes",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "383c9d33f23c4e5f66accc6066400a22e9efcd7e",
-      "github_sha": "7b75af8435310a7303eba37ed559bf8ff95c1543"
+      "wp_sha": "106f5c0076e75722c2ce036c710b814d1d6db260",
+      "github_sha": "4b47fed2b8ec5e24b5efbbb80aacc44afd214dec"
     },
     {
       "slug": "taxes-ar",
@@ -5042,8 +5207,8 @@
       "slug": "testing-and-treatment",
       "id": 623,
       "filename": "testing-and-treatment",
-      "pagetitle": "Testing and treatment",
-      "modified": "2020-05-06T20:51:39",
+      "pagetitle": "Testing and Treatment",
+      "modified": "2020-05-07T16:37:18",
       "tags": [
         "translate"
       ],
@@ -5054,8 +5219,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "306b8081091a05b1c7e28ca709acf326540adb4e",
-      "github_sha": "18d6d04767ec4daa80f3c1c8aa8d003e3429f270"
+      "wp_sha": "95b54ccf8960c803e76f750b505e0584b214fba5",
+      "github_sha": "b0c959d2cb28be42f3f7ce408a1cca0ced43a720"
     },
     {
       "slug": "testing-and-treatment-ar",
@@ -5220,19 +5385,17 @@
       "id": 722,
       "filename": "workers",
       "pagetitle": "Workers",
-      "modified": "2020-05-06T20:49:41",
-      "tags": [
-        "translate"
-      ],
+      "modified": "2020-05-07T00:29:13",
+      "tags": [],
       "category": "workers",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": true,
+      "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "07b2f27c562613f5d963b64dfaf6468b399620df",
-      "github_sha": "15c864007aba7f14617c806cec4099d168374327"
+      "wp_sha": "282328033ec12cb5014adb1a351ad80037990391",
+      "github_sha": "02c2e5a478415d718603a4d2fd4710dc5e3c22df"
     },
     {
       "slug": "workers-ar",
