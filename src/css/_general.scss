@@ -966,9 +966,9 @@ button#dropdown-menu-button:focus {
 
 .bg-gradient {
 	background: rgb(255,230,155);
-	background: -webkit-linear-gradient(left, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
-	background: -o-linear-gradient(left, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
-	background: linear-gradient(to right, rgba(255,230,155,1) 0%, rgba(241,241,241,1) 50%);
+	background: -webkit-linear-gradient(left, rgba(255,243,208,1) 0%, rgba(241,241,241,1) 66%);
+	background: -o-linear-gradient(left, rgba(255,243,208,1) 0%, rgba(241,241,241,1) 66%);
+	background: linear-gradient(to right, rgba(255,243,208,1) 0%, rgba(241,241,241,1) 66%);
 }
 
 .card-header {
@@ -987,7 +987,7 @@ button#dropdown-menu-button:focus {
     background-repeat: no-repeat;
 }
 
-.accordion-alpha-open-primary {
+.accordion-alpha-primary.bg-primary-accordion.accordion-alpha-open {
     background-image: url(/img/minus-white.svg);
     background-position: right 1.25rem center;
     background-size: 1rem;
@@ -998,6 +998,10 @@ button#dropdown-menu-button:focus {
     background-color: #0066ab!important;
     color: #fff!important;
 	border-radius: .25rem!important;
+}
+
+.bg-grey {
+    background-color: #f1f1f1;
 }
 
 
