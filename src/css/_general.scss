@@ -971,6 +971,12 @@ button#dropdown-menu-button:focus {
 	background: linear-gradient(to right, rgba(255,243,208,1) 0%, rgba(241,241,241,1) 66%);
 }
 
+.bg-gradient-primary {
+	background: -webkit-linear-gradient(left, #b7d5ef 0%, #f1f1f1 77%);
+	background: -o-linear-gradient(left, #b7d5ef 0%, #f1f1f1 77%);
+	background: linear-gradient(to right, #b7d5ef 0%, #f1f1f1 77%);
+}
+	
 .card-header {
     padding: .75rem .75rem;
 }
@@ -992,6 +998,10 @@ button#dropdown-menu-button:focus {
     background-position: right 1.25rem center;
     background-size: 1rem;
     background-repeat: no-repeat;
+}
+
+.accordion-title {
+	padding-right: 10%!important;
 }
 
 .bg-primary-accordion {
