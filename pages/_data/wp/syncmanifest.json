@@ -1589,17 +1589,19 @@
       "id": 2040,
       "filename": "discrimination",
       "pagetitle": "Fight discrimination",
-      "modified": "2020-05-07T00:24:27",
-      "tags": [],
+      "modified": "2020-05-08T00:59:29",
+      "tags": [
+        "translate"
+      ],
       "category": "discrimination",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a410ac148c3692cf47e1d1e09b6035ac33cf18fd",
-      "github_sha": "fa55f46e423acc7473d93c32cdb0ca6e976b8879"
+      "wp_sha": "51cb0c478111058cf46273ce4c6a0782630a8306",
+      "github_sha": "f1b1e58fdb073aa2f6138a521ea1b81b62ea3b35"
     },
     {
       "slug": "discrimination-zh-hant",
@@ -2051,7 +2053,7 @@
       "id": 1419,
       "filename": "find-services",
       "pagetitle": "find services",
-      "modified": "2020-04-20T22:28:54",
+      "modified": "2020-05-08T18:53:40",
       "tags": [
         "fragment"
       ],
@@ -2062,8 +2064,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "cd730b8338730a50ebeb7052c5a1f81b1b57d7d6",
-      "github_sha": "1d33a381bb5496758e5ffcbe83bcf4ead835e23a"
+      "wp_sha": "119b7d3796257c5f72edc0d8b8c9640335a8ef06",
+      "github_sha": "57a846acae2faffb8d7cac836cf711757c8002c4"
     },
     {
       "slug": "find-services-ar",
@@ -2831,26 +2833,6 @@
       "github_sha": "2dece317df5c1d6516cd3a8dd5d4817ae59a68ac"
     },
     {
-      "slug": "health-care-ar",
-      "id": 1536,
-      "filename": "health-care-ar",
-      "pagetitle": "الرعاية الصحية",
-      "modified": "2020-04-20T23:17:22",
-      "tags": [
-        "do-not-crawl",
-        "lang-ar"
-      ],
-      "category": "health care",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "ar",
-      "wp_sha": "e107188e73247f9325ab9d38245879d45bdbc5a8",
-      "github_sha": "d2f5ce33a7bbbcf695c12c6510e352de3254ef39"
-    },
-    {
       "slug": "healthcare",
       "id": 18,
       "filename": "healthcare",
@@ -2868,6 +2850,26 @@
       "lang": "en",
       "wp_sha": "408708e52c63aa683ed567fcbef17183f0b95f79",
       "github_sha": "796b50674a82ab072a6db5968192e56c8d10b200"
+    },
+    {
+      "slug": "healthcare-ar",
+      "id": 1536,
+      "filename": "healthcare-ar",
+      "pagetitle": "الرعاية الصحية",
+      "modified": "2020-05-07T22:50:07",
+      "tags": [
+        "do-not-crawl",
+        "lang-ar"
+      ],
+      "category": "health care",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "ar",
+      "wp_sha": "398e2473013e8469493c4e0e30c0a33aca7849db",
+      "github_sha": "05d1950aa2e1568bfc2691d36d18a8b3bc38b519"
     },
     {
       "slug": "healthcare-ko",
@@ -3031,7 +3033,7 @@
       "id": 1372,
       "filename": "home-header",
       "pagetitle": "home header",
-      "modified": "2020-05-07T21:46:01",
+      "modified": "2020-05-07T23:24:49",
       "tags": [
         "fragment",
         "translate",
@@ -3044,8 +3046,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "c85e163ae8bb5c11215e7d318d3bb8d70f3cbb79",
-      "github_sha": "b749eb7a7109658e0fe57a13b39c5164cbc37b33"
+      "wp_sha": "b17c24ccb144fc543f45dc64441e68ca8fc0a48d",
+      "github_sha": "d0cd3d667a3a788fa2267220d344a7b672266808"
     },
     {
       "slug": "home-header-ar",
@@ -3354,9 +3356,10 @@
       "id": 679,
       "filename": "hotline",
       "pagetitle": "COVID-19 Hotline",
-      "modified": "2020-05-06T20:46:18",
+      "modified": "2020-05-08T00:01:26",
       "tags": [
-        "translate"
+        "translate",
+        "translate-priority"
       ],
       "category": "hotline",
       "isFragment": false,
@@ -3365,8 +3368,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "9e8d4548345ac4820b37bfd335fa293623a8f5bb",
-      "github_sha": "fab280d8307a1c7515cc5fa1666ddb7be1accced"
+      "wp_sha": "7980c36524abdd63d13d8fbaffa1a4d2bb4b1c8a",
+      "github_sha": "b050a35f7f79169627a796cbfcd555145f661557"
     },
     {
       "slug": "hotline-zh-hans",
@@ -3840,7 +3843,7 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-05-07T21:46:44",
+      "modified": "2020-05-08T18:39:38",
       "tags": [
         "fragment",
         "translate",
@@ -3853,8 +3856,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ddf4e40797e259766004d69d7b0bc78d363aa230",
-      "github_sha": "1b0893b0fd5e9561adf9a7383b2a014f1dc1d8fa"
+      "wp_sha": "9214c03ba1b9426a35a0516eddfc8e038cb8e103",
+      "github_sha": "eee98f16f601a81da0de813f1c94541d9f123a80"
     },
     {
       "slug": "new-ar",
@@ -3882,7 +3885,7 @@
       "id": 1395,
       "filename": "new-es",
       "pagetitle": "new es",
-      "modified": "2020-05-06T19:51:57",
+      "modified": "2020-05-08T18:40:51",
       "tags": [
         "fragment",
         "lang-es"
@@ -3894,8 +3897,8 @@
       "translate": false,
       "ignore": false,
       "lang": "es",
-      "wp_sha": "d32ac2513075ef3db1f1883f1cc4c27d4e0e2ae8",
-      "github_sha": "5b5ef6caa9debcb1a97cbbe640ab40c9da302a9c"
+      "wp_sha": "7befa0850b15160b8f0aa97c69e604312a73052d",
+      "github_sha": "765109911add243f2e6d441735de59fd90130989"
     },
     {
       "slug": "new-ko",
@@ -4063,7 +4066,7 @@
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-05-05T23:19:45",
+      "modified": "2020-05-08T18:48:03",
       "tags": [
         "table-data"
       ],
@@ -4074,8 +4077,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "f6874386672438cc28289545abb5d6304e182435",
-      "github_sha": "dd8992a018652a64504e70f57f9bec28628d0311"
+      "wp_sha": "10cea7716a53c67c9a5bf5c661570fa1d0165fc9",
+      "github_sha": "3ca0bced0f3d9c492c1c0a1a7263b3c637962ebc"
     },
     {
       "slug": "plasma",
@@ -4116,6 +4119,23 @@
       "github_sha": "916abc68810fd9737bab2afc3bab566401b66195"
     },
     {
+      "slug": "public-recreation",
+      "id": 2886,
+      "filename": "public-recreation",
+      "pagetitle": "Public recreation",
+      "modified": "2020-05-08T18:56:37",
+      "tags": [],
+      "category": "Uncategorized",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "f30f38adb6e8bad572eaac260fff8437879302c8",
+      "github_sha": "a633a5747d848b7ef6e63454bda0c5643f04647c"
+    },
+    {
       "slug": "quedese-en-casa-excepto-por-necesidades-esenciales",
       "id": 479,
       "filename": "quedese-en-casa-excepto-por-necesidades-esenciales",
@@ -4139,7 +4159,7 @@
       "id": 2083,
       "filename": "recovery-input",
       "pagetitle": "Give your input: California Recovery Roadmap Survey",
-      "modified": "2020-05-07T00:24:05",
+      "modified": "2020-05-08T15:34:58",
       "tags": [],
       "category": "recovery input",
       "isFragment": false,
@@ -4148,8 +4168,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "3de1f5a7f2eaa6b3011d1d0e648868e7435a204f",
-      "github_sha": "c57f99a6a49122a4fc79589c1abee8987e80710e"
+      "wp_sha": "31eb5232c3882a470f83f7e6ee926cb15bfa60a8",
+      "github_sha": "67191fd65d2c38f50f632397cb19f51f6633951c"
     },
     {
       "slug": "recursos-para-el-apoyo-emocional-y-el-bienestar",
@@ -4176,7 +4196,7 @@
       "id": 839,
       "filename": "resources-for-emotional-support-and-well-being",
       "pagetitle": "Resources for emotional support and well-being",
-      "modified": "2020-05-07T00:28:26",
+      "modified": "2020-05-08T17:22:21",
       "tags": [],
       "category": "resources for emotional support",
       "isFragment": false,
@@ -4185,8 +4205,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "074cb1b317fad1dcba3e913cc11646ce3f34f1c6",
-      "github_sha": "3eec96d725bb91c969cc7d1e0367f9dc09131337"
+      "wp_sha": "21104e72e01ff9a3b83dff728410c01749324e3b",
+      "github_sha": "4e709d4a8965de232bf0c427a54452c5b9d4f67e"
     },
     {
       "slug": "resources-for-emotional-support-and-well-being-ar",
@@ -4291,7 +4311,7 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-07T21:59:13",
+      "modified": "2020-05-08T19:40:18",
       "tags": [],
       "category": "great plates delivered: home meals for seniors",
       "isFragment": false,
@@ -4300,8 +4320,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "47b8ca2dc3bc9d3c242404714f4ab7d54c632c7b",
-      "github_sha": "a682fc61481b60c08f903322c79db51971354aa1"
+      "wp_sha": "ceb2c54b1a7bd11496af21d06762d6dfa5858cf2",
+      "github_sha": "9dcebc533e4931dca21540121ed47d99e9d65850"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
@@ -4346,34 +4366,40 @@
       "id": 2554,
       "filename": "roadmap",
       "pagetitle": "Resilience Roadmap",
-      "modified": "2020-05-07T22:25:59",
-      "tags": [],
+      "modified": "2020-05-08T19:26:20",
+      "tags": [
+        "translate",
+        "translate-priority"
+      ],
       "category": "Roadmap",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "d7aba6169084f07041f3baa6e0fc6b7a1e5ed9bb",
-      "github_sha": "6057faf1b1ff9ae9ed9add82dedc0279203fe701"
+      "wp_sha": "86065d899469d0eae6843773b87b9e55d08b1916",
+      "github_sha": "e9a01dccf360c1c24ef6f59c8232cf141185f95b"
     },
     {
       "slug": "roadmap-counties",
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance",
-      "modified": "2020-05-07T20:51:53",
-      "tags": [],
+      "modified": "2020-05-08T00:01:00",
+      "tags": [
+        "translate",
+        "translate-priority"
+      ],
       "category": "roadmap counties",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ef029475652249b83ba374d50c7e2aa978a04c11",
-      "github_sha": "1d38b55c8fd2c13a56e07b6b34a29ea6ad4bfd2f"
+      "wp_sha": "8cf9055a5a399168d7ce31bb3e9ebde81e1e2555",
+      "github_sha": "0ff4473dd9d70a1cad8b92e31ffd8be7ee3bcdb8"
     },
     {
       "slug": "safety-in-public-places",
@@ -4532,7 +4558,7 @@
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-05-07T18:07:08",
+      "modified": "2020-05-08T18:09:08",
       "tags": [
         "fragment"
       ],
@@ -4543,8 +4569,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "4d85ac50778d001548e1da8d8a7fd7caf05025ff",
-      "github_sha": "f19899e4513d07cdc05fca5857ba384ccc8feb90"
+      "wp_sha": "819abd35d63fc1eff429e46289e5ac66939471d4",
+      "github_sha": "9e0d5a1843be8257aaa431f6856b28d640be5e3e"
     },
     {
       "slug": "stats-ar",
@@ -4572,7 +4598,7 @@
       "id": 1370,
       "filename": "stats-es",
       "pagetitle": "stats es",
-      "modified": "2020-05-07T18:58:00",
+      "modified": "2020-05-08T18:42:25",
       "tags": [
         "fragment",
         "lang-es"
@@ -4584,8 +4610,8 @@
       "translate": false,
       "ignore": false,
       "lang": "es",
-      "wp_sha": "0ff363578a52d45c71b8ad3d7099e98864f4f8fb",
-      "github_sha": "adc8d91eda6c16292e73f15d6e75a8e582c5a68f"
+      "wp_sha": "da7f0f9c337c64d5ae2ff4a47f0bbc49abe041c1",
+      "github_sha": "8865c7d3bed26421f84f34c578002485aa79e8d5"
     },
     {
       "slug": "stats-ko",
@@ -4733,7 +4759,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home except for essential needs",
-      "modified": "2020-05-06T20:52:38",
+      "modified": "2020-05-08T15:20:18",
       "tags": [
         "translate"
       ],
@@ -4744,8 +4770,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "5f31a321103d5448d52f63c3a8421f7996e8e4e4",
-      "github_sha": "4dd7c6b8bb80ee27fce71fa5d61e4f32e2b238ce"
+      "wp_sha": "c0c3da062b1f9c87326a997e4e10915c769e12dc",
+      "github_sha": "885f6277399881220f4de05495b6564df048a92d"
     },
     {
       "slug": "stay-home-except-for-essential-needs-ar",
@@ -5206,9 +5232,10 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and Treatment",
-      "modified": "2020-05-07T16:37:18",
+      "modified": "2020-05-07T23:58:51",
       "tags": [
-        "translate"
+        "translate",
+        "translate-priority"
       ],
       "category": "testing and treatment",
       "isFragment": false,
@@ -5217,8 +5244,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "95b54ccf8960c803e76f750b505e0584b214fba5",
-      "github_sha": "b0c959d2cb28be42f3f7ce408a1cca0ced43a720"
+      "wp_sha": "377e2e5f100c2a04decc89ca89096d48e6ba2787",
+      "github_sha": "d64fc11189b20f7ebe1461edf65ac16c0bab22b7"
     },
     {
       "slug": "testing-and-treatment-ar",
@@ -5245,7 +5272,7 @@
       "id": 1264,
       "filename": "testing-and-treatment-ko",
       "pagetitle": "검사와 치료",
-      "modified": "2020-05-06T20:43:48",
+      "modified": "2020-05-08T06:35:45",
       "tags": [
         "do-not-crawl",
         "lang-ko"
@@ -5257,15 +5284,15 @@
       "translate": false,
       "ignore": false,
       "lang": "ko",
-      "wp_sha": "b8ca9a9e93e41729e1b5c820ad70b9cdbc3f86c1",
-      "github_sha": "c3ff2d17b28643df5b68abd3bb57182e11b6e638"
+      "wp_sha": "56cb14f74cf105cea497d7c4f4ea4f8f9fe21f02",
+      "github_sha": "2eee1ede9135a4c6bbb5e3817034bc793427b033"
     },
     {
       "slug": "testing-and-treatment-tl",
       "id": 1503,
       "filename": "testing-and-treatment-tl",
       "pagetitle": "Pagpapasuri at Pagpapagamot",
-      "modified": "2020-04-21T23:40:30",
+      "modified": "2020-05-08T06:37:22",
       "tags": [
         "do-not-crawl",
         "lang-tl"
@@ -5277,15 +5304,15 @@
       "translate": false,
       "ignore": false,
       "lang": "tl",
-      "wp_sha": "373b8de05dc17632270559c028fa5a100a74a64f",
-      "github_sha": "7c9d03feaa01f4fc5c0c97b460c7bc7b8ffe030e"
+      "wp_sha": "1e16b07038526f0b8a8d577085d1641558843905",
+      "github_sha": "b1248fbced62baa20319ad46895702ed29aead79"
     },
     {
       "slug": "testing-and-treatment-vi",
       "id": 1329,
       "filename": "testing-and-treatment-vi",
       "pagetitle": "Xét nghiệm và điều trị",
-      "modified": "2020-05-06T20:43:37",
+      "modified": "2020-05-08T06:36:45",
       "tags": [
         "do-not-crawl",
         "lang-vi"
@@ -5297,8 +5324,8 @@
       "translate": false,
       "ignore": false,
       "lang": "vi",
-      "wp_sha": "04faf56a33ce91251ea85da75c99450a5e57fea6",
-      "github_sha": "4fd8bf05af4e0a8e574123c5b8ca1796dfbd7c05"
+      "wp_sha": "57a7b2e18b30aa14d78e89a25878917b10f7b233",
+      "github_sha": "689f6f495933175c6b28792d1ccb6da7a171e874"
     },
     {
       "slug": "testing-and-treatment-zh-hans",
