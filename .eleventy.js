@@ -89,9 +89,9 @@ module.exports = function(eleventyConfig) {
     return textstring;
   });
 
-  eleventyConfig.addFilter('_statsdata_', field => statsData[field]);
+  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
   //Usage...
-  //        {{'_as_of_date_' | _statsdata_}}
+  //        {{0|_statsdata_}}
 
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
