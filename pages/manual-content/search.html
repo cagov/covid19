@@ -40,49 +40,34 @@ addtositemap: true
 
 <h2>Search this website</h2>
 <label id="SearchInput" for="q">Enter your search text</label>
-<form action="/Search/" class="form-inline">
+<!--<form action="/Search/" class="form-inline">
 
   <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
 	<button type="submit"  class="btn btn-primary">Search</button>	  
-</form>
+</form>-->
 
-<div id="answersNow"></div>
+<div class="gcse-search" enableAutoComplete="true"></div>
+
+
 
 <script>
-if(window.location.search.indexOf("q=") > 0) {
-	fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${window.location.search.replace('?q=','')}&name=123`)
-  .then(response => response.json())
-  .then(data => {
-		let answers = [...data[0].answers, ...data[1].answers];
-		let html = `<h4>Related questions</h4>
-			<ul>${answers.map(function(a) {
-				if(a.questions.length > 0) {
-					return `<li>
-								<a class="question-link">${a.questions[0]}</a>
-								<div class="answer-details">
-									<p>${a.answer}</p>
-									<p>more info: <a href="${a.source}">${a.source}</a></p>
-									<p>confidence: ${a.score}</p>
-								</div>
-							</li>`;
-				} else {
-					return '';
-				}
-		}).join('	')}</ul>`
-		document.querySelector('#answersNow').innerHTML = html;
-		document.querySelector('#answersNow').querySelectorAll('.question-link').forEach(function(a) {
-			a.addEventListener('click',function(event) {
-				event.preventDefault();
-				this.parentNode.classList.toggle('selected')
-			})
-		})
-	});
+// use search callback to modify url with history.pushState(null,null,current location?q=searchvalue)
+// and also execute below
+/*
+const urlParam = function (name) {
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+		.exec(window.location.search);
+
+	return (results !== null) ? results[1] || 0 : false;
 }
-
+const urlq = urlParam('q')||'';
+const query = decodeURIComponent(urlq.replace(/\+/g,' '));
+document.querySelector('input[name=q]').value = query;
+*/
 </script>
-
+<!--
 <gcse:searchresults-only></gcse:searchresults-only>
-
+-->
 <script>
 	const cx = '003358532045999200914:uxxka6d3pge';
 	const gcse = document.createElement('script');
@@ -92,19 +77,59 @@ if(window.location.search.indexOf("q=") > 0) {
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
-	const urlParam = function (name) {
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-			.exec(window.location.search);
 
-		return (results !== null) ? results[1] || 0 : false;
+	const myWebSearchStartingCallback = (gname, query) => {
+		console.log(gname);
+		console.log(query)
+		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
+		.then(response => response.json())
+		.then(data => {
+			let answers = [...data[0].answers, ...data[1].answers];
+			let html = `<h4>Related questions</h4>
+				<ul>${answers.map(function(a) {
+					if(a.questions.length > 0) {
+						return `<li>
+									<a class="question-link">${a.questions[0]}</a>
+									<div class="answer-details">
+										<p>${a.answer}</p>
+										<p>more info: <a href="${a.source}">${a.source}</a></p>
+										<p>confidence: ${a.score}</p>
+									</div>
+								</li>`;
+					} else {
+						return '';
+					}
+			}).join('	')}</ul>`
+			document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
+			document.querySelector('#answersNow').innerHTML = html;
+			document.querySelector('#answersNow').querySelectorAll('.question-link').forEach(function(a) {
+				a.addEventListener('click',function(event) {
+					event.preventDefault();
+					this.parentNode.classList.toggle('selected')
+				})
+			})
+		});
 	}
-	const urlq = urlParam('q')||'';
-  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
-  document.querySelector('input[name=q]').value = query;
+	window.myImageSearchStartingCallbackName = myWebSearchStartingCallback;
+
+	window.__gcse || (window.__gcse = {});
+    window.__gcse.searchCallbacks = {
+      web: {
+        starting: myWebSearchStartingCallback,
+      },
+    };
 </script> 
 
 
 <script>
+	/*
+
+	they aren't real accordions yet, just divs I will make them into accordions
+9:30
+and I'll restyle that search input to what it was before and reapply some of the results CSS that got overriden
+
+
+
 	//----- Removing some styling attributes after load
 setTimeout(function(){
 document.getElementsByTagName("TABLE")[0].removeAttribute("cellspacing");
@@ -115,4 +140,5 @@ document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellpadding")
 document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellspacing"); 
 			  
 }, 2000);
+*/
 </script> 
