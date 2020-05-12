@@ -11,6 +11,31 @@ addtositemap: true
        position: relative!important;
  }
 
+
+
+#answersNow ul {
+	list-style: none;
+  padding: 0px;
+}
+#answersNow li {
+	border: solid 1px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+#answersNow li:hover .question-link {
+	text-decoration: underline;
+}
+#answersNow .question-link {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#answersNow .answer-details {
+	display: none;
+	margin-top: 20px;
+}
+#answersNow li.selected .answer-details {
+	display: block;
+}
 </style>
 
 <h2>Search this website</h2>
@@ -20,6 +45,38 @@ addtositemap: true
   <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
 	<button type="submit"  class="btn btn-primary">Search</button>	  
 </form>
+
+<div id="answersNow"></div>
+
+<script>
+if(window.location.search.indexOf("q=") > 0) {
+	fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${window.location.search.replace('?q=','')}&name=123`)
+  .then(response => response.json())
+  .then(data => {
+		console.log(data)
+		let answers = [...data[0].answers, ...data[1].answers];
+		let html = `<h4>Related questions</h4>
+			<ul>${answers.map(function(a) {
+			return `<li>
+								<a class="question-link">${a.questions[0]}</a>
+								<div class="answer-details">
+									<p>${a.answer}</p>
+									<p>more info: <a href="${a.source}">${a.source}</a></p>
+									<p>confidence: ${a.score}</p>
+								</div>
+							</li>`;
+		}).join('	')}</ul>`
+		document.querySelector('#answersNow').innerHTML = html;
+		document.querySelector('#answersNow').querySelectorAll('.question-link').forEach(function(a) {
+			a.addEventListener('click',function(event) {
+				event.preventDefault();
+				this.parentNode.classList.toggle('selected')
+			})
+		})
+	});
+}
+
+</script>
 
 <gcse:searchresults-only></gcse:searchresults-only>
 
