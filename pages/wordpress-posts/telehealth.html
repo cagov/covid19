@@ -1,3 +1,12 @@
+---
+layout: "page.njk"
+title: "Getting health care from home through telehealth"
+meta: "During this coronavirus outbreak, the safest way to get medical care is over the phone or online."
+author: "State of California"
+publishdate: "2020-05-12T20:50:04Z"
+tags: ["telehealth"]
+addtositemap: true
+---
 
 <p>If you’re having a medical emergency, you should call 911 or go to the nearest emergency room.</p>
 
@@ -51,7 +60,7 @@
 
 
 
-<ul><li>The simplest way to get treated over the phone is to call your doctor or regular provider. </li><li>If you don’t have a regular doctor or your doctor isn’t available, you can <strong>use the search below to find telehealth options offered by your plan</strong> through its member website. If telehealth isn’t available from your doctor or your health plan, please use the health plan’s nurse advice line included in the search results.</li><li>You should not have to pay more for telehealth than you would for an in-person visit. Some health plans or providers may waive the copay.</li></ul>
+<ul><li>The simplest way to get treated over the phone is to call your doctor or regular provider.&nbsp;</li><li>If you don’t have a regular doctor or your doctor isn’t available, you can <strong>use the search below to find telehealth options offered by your plan</strong> through its member website. If telehealth isn’t available from your doctor or your health plan, please use the health plan’s nurse advice line included in the search results.</li><li>You should not have to pay more for telehealth than you would for an in-person visit. Some health plans or providers may waive the copay.</li></ul>
 
 
 
@@ -68,3 +77,19 @@
 
 
 <h2><strong>Look up telehealth or nurse advice line options offered by your health plan here</strong>.</h2>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <cwds-lookup data-search-api="https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&#038;countymode=true&#038;q=" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="js-telehealth-providers" aria-live="polite">
+      <ul class="card-set"></ul>
+    </div>
+  </div>
+</div>
