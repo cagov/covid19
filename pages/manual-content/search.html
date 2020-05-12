@@ -10,32 +10,6 @@ addtositemap: true
    .aside { 
        position: relative!important;
  }
-
-
-
-#answersNow ul {
-	list-style: none;
-  padding: 0px;
-}
-#answersNow li {
-	border: solid 1px;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-#answersNow li:hover .question-link {
-	text-decoration: underline;
-}
-#answersNow .question-link {
-	font-weight: bold;
-	font-size: 1.2em;
-}
-#answersNow .answer-details {
-	display: none;
-	margin-top: 20px;
-}
-#answersNow li.selected .answer-details {
-	display: block;
-}
 </style>
 
 <h2>Search this website</h2>
@@ -80,7 +54,9 @@ addtositemap: true
 						return '';
 					}
 			}).join('	')}</ul>`
-			document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
+			if(!document.querySelector('#answersNow')) {
+				document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
+			}
 			document.querySelector('#answersNow').innerHTML = html;
 		});
 	}
