@@ -27,10 +27,12 @@ addtositemap: true
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
-
 	const myWebSearchStartingCallback = (gname, query) => {
-		console.log(gname);
-		console.log(query)
+		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
+		if(window.location.port !== '80') {
+			currentHost += `:${window.location.port}`;
+		}
+		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`)
 		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
 		.then(response => response.json())
 		.then(data => {
