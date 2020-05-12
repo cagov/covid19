@@ -10,6 +10,10 @@ addtositemap: true
    .aside { 
        position: relative!important;
  }
+ #answersNow .accordion-title {
+    font-size: 1.3rem;
+    color: #0066ab;
+ }
 </style>
 
 <h2>Search this website</h2>
@@ -38,7 +42,7 @@ addtositemap: true
 		.then(data => {
 			let answers = [...data[0].answers, ...data[1].answers];
 			let html = `<h4>Quick answers</h4>
-				<ul>${answers.map(function(a) {
+				${answers.map(function(a) {
 					if(a.questions.length > 0) {
 						return `<cwds-accordion>
 							<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
@@ -55,7 +59,7 @@ addtositemap: true
 					} else {
 						return '';
 					}
-			}).join('	')}</ul>`
+			}).join('	')}`
 			if(!document.querySelector('#answersNow')) {
 				document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
 			}
