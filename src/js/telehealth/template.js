@@ -57,7 +57,9 @@ function lookupSuccess(inputCounty, inputval, isZip) {
 
                   ${ (item['Telehealth Services Phone Number'] != '') ? `<p>Telehealth services phone number: <a href="tel:${ item['Telehealth Services Phone Number'] }">${ item['Telehealth Services Phone Number'] }</a></p>` : '' }   
 
-                  ${ (item['Health Plan Nurse Advice Line'] != '' && !item['Health Plan Nurse Advice Line'].match(/[A-Za-z]/)) ? `<p>Health plan nurse advice line: <a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a></p>` : ''}
+                  <p>Health plan nurse advice line: 
+                    ${ (item['Health Plan Nurse Advice Line'] != '' && !item['Health Plan Nurse Advice Line'].match(/[A-Za-z]/)) ? `<a href="${ item['Health Plan Nurse Advice Line'] }">${ item['Health Plan Nurse Advice Line'] }</a>` : 'See insurance card'}
+                  </p>
                   
                   ${ (item['Special Note'] != '') ? `<p>${item['Special Note'] }</p>` : '' }
 
