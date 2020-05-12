@@ -4,6 +4,7 @@ const { JSDOM } = jsdom;
 const fs = require('fs')
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
+const statsData = JSON.parse(fs.readFileSync('pages/wordpress-posts/stats-data.json','utf8')).Table1[0];
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -115,6 +116,10 @@ module.exports = function(eleventyConfig) {
     }
     return textstring;
   });
+
+  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
+  //Usage...
+  //        {{0|_statsdata_}}
 
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
