@@ -53,11 +53,11 @@ if(window.location.search.indexOf("q=") > 0) {
 	fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${window.location.search.replace('?q=','')}&name=123`)
   .then(response => response.json())
   .then(data => {
-		console.log(data)
 		let answers = [...data[0].answers, ...data[1].answers];
 		let html = `<h4>Related questions</h4>
 			<ul>${answers.map(function(a) {
-			return `<li>
+				if(a.questions.length > 0) {
+					return `<li>
 								<a class="question-link">${a.questions[0]}</a>
 								<div class="answer-details">
 									<p>${a.answer}</p>
@@ -65,6 +65,9 @@ if(window.location.search.indexOf("q=") > 0) {
 									<p>confidence: ${a.score}</p>
 								</div>
 							</li>`;
+				} else {
+					return '';
+				}
 		}).join('	')}</ul>`
 		document.querySelector('#answersNow').innerHTML = html;
 		document.querySelector('#answersNow').querySelectorAll('.question-link').forEach(function(a) {
