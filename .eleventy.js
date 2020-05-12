@@ -63,6 +63,7 @@ module.exports = function(eleventyConfig) {
         if(item.inputPath.includes(FolderName)) {
           let outputPath = item.outputPath.replace(`/${FolderName}`,'');
           if(translatedPaths.indexOf(outputPath) === -1) {
+            //This page is not in the AvantPage list
             item.outputPath = outputPath;
             item.url = item.url.replace(`/${FolderName}`,'');
             item.data.page.url = item.url;
@@ -73,6 +74,11 @@ module.exports = function(eleventyConfig) {
               console.log(`Skipping fragment ${item.inputPath}`)
               item.outputPath = false;
             }
+          } else {
+            //Turn this page off since we already have a translation
+            output.push(item);
+            item.outputPath = false;
+            console.log(`Skipping traslated page ${item.inputPath}`)
           }
         };
     });
