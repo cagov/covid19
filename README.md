@@ -4,7 +4,7 @@ The new website, COVID19.CA.gov, is designed to answer the questions people have
 
 As the situation develops, the website will be updated in real time with information as it becomes available.
 
-> Crisis standard: https://github.com/cagov/covid19/wiki/Crisis-standard
+> See our Wiki: https://github.com/cagov/covid19/wiki
 
 ## Content principles 
 We are in a public health emergency. All communication from the State of California must create clarity in order to lead Californians through this crisis.
