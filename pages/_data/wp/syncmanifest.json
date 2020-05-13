@@ -516,8 +516,8 @@
       "usedbyslugs": [
         "masks-and-ppe"
       ],
-      "wp_sha": "404cd4fb7ec35bb0302a0260c6731718a4414ae3",
-      "github_sha": "88767d6b03dc0689cb3ca37d3bb5b96b40705117"
+      "wp_sha": "de16e0326dafec2e2f553cde211ac6a580c8e815",
+      "github_sha": "2fb99580591f49bedcec5d5d2a0898e3d3e83a19"
     },
     {
       "slug": "facecoveringdistributionprocess",
@@ -539,8 +539,8 @@
       "usedbyslugs": [
         "masks-and-ppe"
       ],
-      "wp_sha": "cf4d6113644b636e007aacd0f5d2c628f8a93cd6",
-      "github_sha": "badb4905f983a5dfaf16741e3546ab6c36a3f758"
+      "wp_sha": "de16e0326dafec2e2f553cde211ac6a580c8e815",
+      "github_sha": "2fb99580591f49bedcec5d5d2a0898e3d3e83a19"
     },
     {
       "slug": "facecoveringdistributionprocess",
@@ -553,8 +553,8 @@
       "usedbyslugs": [
         "masks-and-ppe"
       ],
-      "wp_sha": "f826b06184aac301568e5eabcda48ae0894cf5ff",
-      "github_sha": "a9cab8920e0af4dacf3744ce3528e4a959c6081d"
+      "wp_sha": "de16e0326dafec2e2f553cde211ac6a580c8e815",
+      "github_sha": "2fb99580591f49bedcec5d5d2a0898e3d3e83a19"
     },
     {
       "slug": "facecoveringdistributionprocess",
@@ -567,8 +567,8 @@
       "usedbyslugs": [
         "masks-and-ppe"
       ],
-      "wp_sha": "e37b55f49e8da8e6618b5381310beea8d3b27bcd",
-      "github_sha": "b723a548d83912b6e7e8c58c3196222d504eaad8"
+      "wp_sha": "de16e0326dafec2e2f553cde211ac6a580c8e815",
+      "github_sha": "2fb99580591f49bedcec5d5d2a0898e3d3e83a19"
     },
     {
       "slug": "facecoveringdistributionprocess",
@@ -1564,17 +1564,19 @@
       "id": 1885,
       "filename": "childcare",
       "pagetitle": "Find child care options near you",
-      "modified": "2020-05-07T00:24:51",
-      "tags": [],
+      "modified": "2020-05-12T23:33:30",
+      "tags": [
+        "translate"
+      ],
       "category": "child care",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "adc09a0d4de655832ee6ee9037f8801da074370d",
-      "github_sha": "4ad6414e4fa47f696f4a4ad8d698edc04e8ff97a"
+      "wp_sha": "f887805c8bdc8f092bff31078711f3bfffe7bed9",
+      "github_sha": "33e2b247e4d47679ea9d8090401e31ee9a128ddf"
     },
     {
       "slug": "childcare-zh-hans",
@@ -1632,6 +1634,25 @@
       "lang": "es",
       "wp_sha": "9141f4a40677a66a6da4098d4fd5f66c7b77fd44",
       "github_sha": "bba459e2ff69f6f84c2d154dd78a01bdfa74e8bf"
+    },
+    {
+      "slug": "contact-tracing",
+      "id": 3186,
+      "filename": "contact-tracing",
+      "pagetitle": "Contact tracing",
+      "modified": "2020-05-13T00:04:47",
+      "tags": [
+        "do-not-crawl"
+      ],
+      "category": "contact tracing",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "2b70978c9709ebc1195add29a085e8fe49718e85",
+      "github_sha": "535e12d07beea91aaa18678fd42a3dd51a7c758a"
     },
     {
       "slug": "cuerpo-de-salud-de-california",
@@ -3658,20 +3679,21 @@
       "slug": "industry-guidance",
       "id": 3075,
       "filename": "industry-guidance",
-      "pagetitle": "Industry guidance to reduce risk",
-      "modified": "2020-05-12T16:17:23",
+      "pagetitle": "Statewide industry guidance to reduce risk",
+      "modified": "2020-05-13T15:34:06",
       "tags": [
-        "do-not-crawl"
+        "translate",
+        "translate-priority"
       ],
       "category": "Industry guidance",
       "isFragment": false,
       "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
+      "addToSitemap": true,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1fd36102ed28db68a653b9991c324aba45025944",
-      "github_sha": "8f0dc3937ee4ca915351e0aa528133e084e0e18e"
+      "wp_sha": "4194555c767756f836f5b8bf6c2ab9b4cbc5cc07",
+      "github_sha": "e55d7d8c5d46b36b0c45760b607a123408924cb0"
     },
     {
       "slug": "la-educacion",
@@ -3950,7 +3972,7 @@
       "id": 2997,
       "filename": "masks-and-ppe",
       "pagetitle": "Masks and PPE",
-      "modified": "2020-05-12T01:37:40",
+      "modified": "2020-05-13T17:35:39",
       "tags": [
         "translate"
       ],
@@ -3961,15 +3983,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "75634d62fbac15da4da0a435963c9333598e1566",
-      "github_sha": "574f27e70cc578b6c051a67a490377231fd996be"
+      "wp_sha": "0faece7d45e0a4f65aa075329e83a4e434f8bd2a",
+      "github_sha": "2e65356ddfa0fe009ed837dae901e17078fd3ad8"
     },
     {
       "slug": "new",
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-05-11T19:28:30",
+      "modified": "2020-05-12T20:03:30",
       "tags": [
         "fragment",
         "translate",
@@ -3982,8 +4004,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "309d54eba16f30253a5acdf4a04d9ea08f9ad6f9",
-      "github_sha": "9ffb91ae5fece7effb7fbade983cba8f2ca0424f"
+      "wp_sha": "2b5f5feae22c6b9c3572620ec6bdd33b122766a0",
+      "github_sha": "df46571f6e30cc50a10cb08afc47fcda4dcec69b"
     },
     {
       "slug": "new-ar",
@@ -4011,7 +4033,7 @@
       "id": 1395,
       "filename": "new-es",
       "pagetitle": "new es",
-      "modified": "2020-05-08T18:40:51",
+      "modified": "2020-05-12T20:03:32",
       "tags": [
         "fragment",
         "lang-es"
@@ -4023,8 +4045,8 @@
       "translate": false,
       "ignore": false,
       "lang": "es",
-      "wp_sha": "7befa0850b15160b8f0aa97c69e604312a73052d",
-      "github_sha": "765109911add243f2e6d441735de59fd90130989"
+      "wp_sha": "bdab6165650f73893aa7dc50e4b25ed1cf8ee2ba",
+      "github_sha": "6f2f1608127bcf16115bb64408d25116c59afd89"
     },
     {
       "slug": "new-ko",
@@ -4168,32 +4190,11 @@
       "github_sha": "50d01cc78ab2ef31d1f7c04f30da5d9f04e3aa9f"
     },
     {
-      "slug": "online-and-phone-medical-care-options-telehealth",
-      "id": 691,
-      "filename": "online-and-phone-medical-care-options-telehealth",
-      "pagetitle": "Getting health care from home through telehealth",
-      "modified": "2020-05-11T22:16:28",
-      "tags": [
-        "fragment",
-        "telehealth",
-        "translate"
-      ],
-      "category": "telehealth",
-      "isFragment": true,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": true,
-      "ignore": false,
-      "lang": "en",
-      "wp_sha": "e052b1269e940b04797fc7fd7fa48b2917cd0f57",
-      "github_sha": "0cd29ce600277f3d39b75c1986b5e7b891243030"
-    },
-    {
       "slug": "page-redirect-table",
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-05-08T18:48:03",
+      "modified": "2020-05-13T17:53:12",
       "tags": [
         "table-data"
       ],
@@ -4204,8 +4205,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "10cea7716a53c67c9a5bf5c661570fa1d0165fc9",
-      "github_sha": "3ca0bced0f3d9c492c1c0a1a7263b3c637962ebc"
+      "wp_sha": "227012aaf9f0a46fba7fd6bb40d8d0456b17b9c5",
+      "github_sha": "9511770812103f7d72a511b09b9d636d5539abc8"
     },
     {
       "slug": "plasma",
@@ -4497,7 +4498,7 @@
       "id": 2554,
       "filename": "roadmap",
       "pagetitle": "Resilience Roadmap",
-      "modified": "2020-05-11T18:06:43",
+      "modified": "2020-05-13T00:30:08",
       "tags": [
         "translate",
         "translate-priority"
@@ -4509,15 +4510,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "bc05c632a75fa253fe23e08a79747685ebd9d3cd",
-      "github_sha": "93b45f8dc762f61fdd0f1fdb018d1600d8e2afec"
+      "wp_sha": "99e1dac6cc85577907cdf5dfed735f9643d95e91",
+      "github_sha": "a6d4a2417f44319e5cf93a7cf21650f6c81fe2bb"
     },
     {
       "slug": "roadmap-counties",
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance",
-      "modified": "2020-05-09T00:59:39",
+      "modified": "2020-05-13T05:09:12",
       "tags": [
         "translate",
         "translate-priority"
@@ -4529,8 +4530,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "8908d493fc3f815d48a8b8339ff1b016715da77e",
-      "github_sha": "77e63cc13ba4af8469abce8196dad174559c39ea"
+      "wp_sha": "52cc036ba9394eb37ad7ec95cb78fee3d4dc9171",
+      "github_sha": "8ecb7d3e71a45a1127a85224eb25c341c1f7470a"
     },
     {
       "slug": "safety-in-public-places",
@@ -4689,7 +4690,7 @@
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-05-11T21:58:14",
+      "modified": "2020-05-13T16:31:10",
       "tags": [
         "fragment"
       ],
@@ -4700,8 +4701,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "12bb037e38f1e4336a9304f9b8bf85c7eae73fdc",
-      "github_sha": "67c71c9b62fc1cac6180da4b2789afb0ed209fff"
+      "wp_sha": "0530bf7f22f36d042989047498a070d703493030",
+      "github_sha": "e4cdeecb6443da4385e21d495ce026a88248fa4b"
     },
     {
       "slug": "stats-ar",
@@ -4729,7 +4730,7 @@
       "id": 2948,
       "filename": "stats-data",
       "pagetitle": "Stats Data",
-      "modified": "2020-05-11T19:49:36",
+      "modified": "2020-05-13T18:06:19",
       "tags": [
         "do-not-crawl",
         "table-data"
@@ -4741,8 +4742,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "91a37440e1bf1747bdac6acae001f7bf76b14029",
-      "github_sha": "b4c26e1cff3dbb4ce0bca3d54317394c9b1edeba"
+      "wp_sha": "17e04119fdc8662bc33a1d8bca62bd5d5f17b754",
+      "github_sha": "a5b32d0a3a263eb1a50c44eceab9b4db35ea1170"
     },
     {
       "slug": "stats-es",
@@ -4910,7 +4911,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home except for essential needs",
-      "modified": "2020-05-11T18:01:25",
+      "modified": "2020-05-13T01:44:28",
       "tags": [
         "translate"
       ],
@@ -4921,8 +4922,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "b5bc0dd0a5bedb10c7a9f11b27b8e5263d1aec2c",
-      "github_sha": "4a2778622938b03e93cf16dcbda3235dc67e5ecd"
+      "wp_sha": "2345d4547a78699ce0d6e9ed67a262853c8f5f80",
+      "github_sha": "019407d75b8bf3795da904515565602180c15db8"
     },
     {
       "slug": "stay-home-except-for-essential-needs-ar",
@@ -5320,6 +5321,26 @@
       "github_sha": "24cd459cfdf121d633ea7e2c8a382121a7a594bb"
     },
     {
+      "slug": "telehealth",
+      "id": 691,
+      "filename": "telehealth",
+      "pagetitle": "Getting health care from home through telehealth",
+      "modified": "2020-05-12T23:46:24",
+      "tags": [
+        "telehealth",
+        "translate"
+      ],
+      "category": "telehealth",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": true,
+      "translate": true,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "6a7b89ab8b19185912abfabf6f9faf6e0eac1e7f",
+      "github_sha": "55ae637e6ee6dfdae40fed2e773649df710bc2bf"
+    },
+    {
       "slug": "telehealth-es",
       "id": 2218,
       "filename": "telehealth-es",
@@ -5383,7 +5404,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and Treatment",
-      "modified": "2020-05-08T20:20:21",
+      "modified": "2020-05-12T19:19:45",
       "tags": [
         "translate",
         "translate-priority"
@@ -5395,8 +5416,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "187bd2425f21ae39e446d168396493858daabb34",
-      "github_sha": "630f7ee590e0b31d0ca748e25dfc29c348f5a4c4"
+      "wp_sha": "fbf2588711bea246d6d77b8c5fa8db86efd9bc55",
+      "github_sha": "c0f3946c9d79c914b2b941e866b2c6846f255538"
     },
     {
       "slug": "testing-and-treatment-ar",
