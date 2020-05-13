@@ -40,7 +40,7 @@ addtositemap: true
 		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
 		.then(response => response.json())
 		.then(data => {
-			let answers = [...data[0].answers, ...data[1].answers];
+			let answers = [...data[0].answers];
 			let html = `<h4>Quick answers</h4>
 				${answers.map(function(a) {
 					if(a.questions.length > 0) {
