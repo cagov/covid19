@@ -1,3 +1,4 @@
+{% set langFilePostfix = tags | langFilePostfix %}
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -34,7 +35,6 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
-    {% set fileExtension = (tags | langRecord).filepostfix.toLowerCase() | default("") %}
     <style>
       {{css | cssmin | safe}}
     </style>
@@ -46,7 +46,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header" + fileExtension + ".html" %}
+              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
             </div>
 
             <div class="col-lg-4 text-right">
@@ -96,14 +96,14 @@
       </div>
       <div class="container-fluid bg-highlight pb-3 pt-3">
         <div class="container">
-          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
+          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
         </div>
       </div>
     </div>
     <div class="container-fluid pb-3 pt-3 bg-light mb-3">
       <div class="container">
         <div class="col-md-12 alert-left js-disclaimer ml-0">
-          {% include "../wordpress-posts/new" + fileExtension + ".html" %}
+          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
         </div>
       </div>
     </div>
@@ -112,10 +112,10 @@
     {% include "dodonot.njk" %}
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
-        {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
+        {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
       </div>
     </div>
-    {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
+    {% include "../wordpress-posts/find-services" + langFilePostfix + ".html" %}
     {% include "./news-feed-home.html" %}
   </main>
   {% include "footer.njk" %}

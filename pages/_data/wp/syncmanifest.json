@@ -250,8 +250,7 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians",
-        "guide-immigrant-californians-ko"
+        "guide-immigrant-californians"
       ],
       "wp_sha": "665b0f8e3881fbbf8b8b7b153375cc9380d8dd40",
       "github_sha": "9c79e9f56af5169da853597f3b285014eb5cf65b"
@@ -266,8 +265,7 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians",
-        "guide-immigrant-californians-tl"
+        "guide-immigrant-californians"
       ],
       "wp_sha": "b009fb33123c5e0f3711cf1fb33b14fd15d263c8",
       "github_sha": "ec570a0ec0c03e3e7520d4d34d4aa8468ebd8e21"
@@ -341,7 +339,6 @@
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guide-immigrant-californians-zh-hans",
         "guide-immigrant-californians-zh-hant"
       ],
       "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
@@ -472,6 +469,15 @@
       "wp_path": "/wp-content/uploads/2020/03/cropped-thumbnail.png",
       "github_path": "src/img/wp/cropped-thumbnail.png",
       "mime_type": "image/png"
+    },
+    {
+      "slug": "domestic-violence-service-providers-list",
+      "file": "domestic-violence-service-providers-list.pdf",
+      "id": 3277,
+      "modified": "2020-05-14T19:44:38",
+      "wp_path": "/wp-content/uploads/2020/05/Domestic-Violence-Service-Providers-List.pdf",
+      "github_path": "src/img/wp/domestic-violence-service-providers-list.pdf",
+      "mime_type": "application/pdf"
     },
     {
       "slug": "essential-workforce_espanol_final",
@@ -627,12 +633,7 @@
       "modified": "2020-05-07T21:36:25",
       "wp_path": "/wp-content/uploads/2020/04/Great-Plates-Delivered-Participants-FAQs.pdf",
       "github_path": "src/img/wp/great-plates-delivered-participants-faqs.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "restaurants-deliver-home-meals-for-seniors"
-      ],
-      "wp_sha": "a89e4dab6431d697f5eb5e9ba6f24d5f864ff761",
-      "github_sha": "bf5f78ab0857cc20d2691d5178f0ec39a8ff0f53"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "great-plates-delivered-program-guidance",
@@ -1134,20 +1135,18 @@
       "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
     },
     {
-      "slug": "sexual-assault-human-trafficking-victim-service-provider-list-ipv-programs-info",
-      "file": "sexual-assault-human-trafficking-victim-service-provider-list-ipv-programs-info.pdf",
+      "slug": "sexual-assault-human-trafficking-service-providers",
+      "file": "sexual-assault-human-trafficking-service-providers.pdf",
       "id": 1447,
-      "modified": "2020-04-16T15:07:40",
-      "wp_path": "/wp-content/uploads/2020/04/Sexual.Assault.Human_.Trafficking.Victim.Service.Provider.List-IPV-Programs-Info.pdf",
-      "github_path": "src/img/wp/sexual-assault-human-trafficking-victim-service-provider-list-ipv-programs-info.pdf",
+      "modified": "2020-05-14T19:49:22",
+      "wp_path": "/wp-content/uploads/2020/04/Sexual-Assault-Human-Trafficking-Service-Providers.pdf",
+      "github_path": "src/img/wp/sexual-assault-human-trafficking-service-providers.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "resources-for-emotional-support-and-well-being",
-        "resources-for-emotional-support-and-well-being-zh-hans",
-        "resources-for-emotional-support-and-well-being-zh-hant"
+        "resources-for-emotional-support-and-well-being"
       ],
-      "wp_sha": "d658a58bd6c48e7bb43a10c94f97896bda8bb789",
-      "github_sha": "756501132a1fcbe7780bdff8347b330b67bc0a60"
+      "wp_sha": "244cedbb4eda545e51d879819be918f4332eb50a",
+      "github_sha": "d6084e207fc77a79879a96edc5b84e0dc5a39d9c"
     },
     {
       "slug": "spanish-covid-19-immigrant-guidance-accessible-1",
@@ -1732,11 +1731,30 @@
       "github_sha": "6a7c12d153d4c4d3fd2d43ca4f46b9b3d401dd9f"
     },
     {
-      "slug": "do-do-not-arabic",
+      "slug": "do-dont",
+      "id": 1557,
+      "filename": "do-dont",
+      "pagetitle": "do, don&#8217;t english",
+      "modified": "2020-05-14T16:02:05",
+      "tags": [
+        "table-data"
+      ],
+      "category": "do and do not",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "6dac6e130f8e7247c52f43b21d7c21ad228d8d06",
+      "github_sha": "0fb779ae7174cf19a5765a2e0cf2e7f541be82a8"
+    },
+    {
+      "slug": "do-dont-ar",
       "id": 1723,
-      "filename": "do-do-not-arabic",
+      "filename": "do-dont-ar",
       "pagetitle": "do don&#8217;t arabic",
-      "modified": "2020-04-21T00:37:26",
+      "modified": "2020-05-14T16:02:33",
       "tags": [
         "lang-ar",
         "table-data"
@@ -1752,12 +1770,13 @@
       "github_sha": "bf1015b1bbd23160ca5ffdcdf15855b79586128e"
     },
     {
-      "slug": "do-do-not-english",
-      "id": 1557,
-      "filename": "do-do-not-english",
-      "pagetitle": "do, don&#8217;t english",
-      "modified": "2020-05-07T00:26:17",
+      "slug": "do-dont-es",
+      "id": 1561,
+      "filename": "do-dont-es",
+      "pagetitle": "do, don&#8217;t spanish",
+      "modified": "2020-05-14T16:02:17",
       "tags": [
+        "lang-es",
         "table-data"
       ],
       "category": "do and do not",
@@ -1766,9 +1785,9 @@
       "addToSitemap": true,
       "translate": false,
       "ignore": false,
-      "lang": "en",
-      "wp_sha": "6dac6e130f8e7247c52f43b21d7c21ad228d8d06",
-      "github_sha": "0fb779ae7174cf19a5765a2e0cf2e7f541be82a8"
+      "lang": "es",
+      "wp_sha": "54bb7dea0bd6b670406ae383939c9b7fbd603a67",
+      "github_sha": "9b86e8bd857281591406737daa22d78f21bef1b7"
     },
     {
       "slug": "do-dont-ko",
@@ -1789,26 +1808,6 @@
       "lang": "ko",
       "wp_sha": "f8741b3ead2a0980c73bd4a98ed79d038abd53bf",
       "github_sha": "78d0ee81a1ac6c135fd4bb82f21ef4dd20b3d162"
-    },
-    {
-      "slug": "do-dont-spanish",
-      "id": 1561,
-      "filename": "do-dont-spanish",
-      "pagetitle": "do, don&#8217;t spanish",
-      "modified": "2020-04-17T18:05:59",
-      "tags": [
-        "lang-es",
-        "table-data"
-      ],
-      "category": "do and do not",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "es",
-      "wp_sha": "54bb7dea0bd6b670406ae383939c9b7fbd603a67",
-      "github_sha": "9b86e8bd857281591406737daa22d78f21bef1b7"
     },
     {
       "slug": "do-dont-tl",
@@ -2334,11 +2333,11 @@
       "github_sha": "cdc696a72c4728ba020a09ccc8cba3babfd911df"
     },
     {
-      "slug": "footer-data-english",
+      "slug": "footer-data",
       "id": 1040,
-      "filename": "footer-data-english",
+      "filename": "footer-data",
       "pagetitle": "Footer Data &#8211; English",
-      "modified": "2020-05-07T00:28:03",
+      "modified": "2020-05-14T16:21:44",
       "tags": [
         "table-data"
       ],
@@ -2353,134 +2352,11 @@
       "github_sha": "56b69640e832c1c3c19d8c21832542372e75c7f2"
     },
     {
-      "slug": "footer-data-ko",
-      "id": 1828,
-      "filename": "footer-data-ko",
-      "pagetitle": "footer data ko",
-      "modified": "2020-05-08T22:45:34",
-      "tags": [
-        "lang-ko",
-        "needs-translation",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "ko",
-      "wp_sha": "eb3629cbfc21d727dc29cfba6a25c2b3b40ffe3b",
-      "github_sha": "1c1e247bb45b198e14df6dbf0a5f41265c365a0b"
-    },
-    {
-      "slug": "footer-data-spanish",
-      "id": 1044,
-      "filename": "footer-data-spanish",
-      "pagetitle": "Footer Data &#8211; Spanish",
-      "modified": "2020-05-01T20:50:22",
-      "tags": [
-        "lang-es",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "es",
-      "wp_sha": "c9c388fbe552949ec35dc00be11faffbab92bd92",
-      "github_sha": "7c56e668dc317c06187c881d715b36c781820904"
-    },
-    {
-      "slug": "footer-data-tl",
-      "id": 1826,
-      "filename": "footer-data-tl",
-      "pagetitle": "footer data tl",
-      "modified": "2020-05-08T22:12:38",
-      "tags": [
-        "lang-tl",
-        "needs-translation",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "tl",
-      "wp_sha": "17a2d1de4877856de835e95c38678cbfe6b2a4ab",
-      "github_sha": "03902d4206e1adf0bb7795a0cd364c913179db89"
-    },
-    {
-      "slug": "footer-data-vi",
-      "id": 1824,
-      "filename": "footer-data-vi",
-      "pagetitle": "footer data vi",
-      "modified": "2020-05-08T22:17:11",
-      "tags": [
-        "lang-vi",
-        "needs-translation",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "vi",
-      "wp_sha": "a9603b68e4f1b9d3b39893462df05656cd604bd7",
-      "github_sha": "fa5c809bf743c235c066433bce20125761e69493"
-    },
-    {
-      "slug": "footer-data-zh-hans",
-      "id": 1830,
-      "filename": "footer-data-zh-hans",
-      "pagetitle": "footer data zh hans",
-      "modified": "2020-05-01T20:45:26",
-      "tags": [
-        "lang-zh-Hans",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "zh-Hans",
-      "wp_sha": "6dd63982054a87f7b44ea859c55c77f13dc81cb6",
-      "github_sha": "0040b9c19fdbb4fa8d42a3ea91fb89ab7fce274e"
-    },
-    {
-      "slug": "footer-data-zh-hant",
-      "id": 1832,
-      "filename": "footer-data-zh-hant",
-      "pagetitle": "footer data zh hant",
-      "modified": "2020-05-01T20:44:43",
-      "tags": [
-        "lang-zh-Hant",
-        "table-data"
-      ],
-      "category": "footer data",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "zh-Hant",
-      "wp_sha": "0a12a25f27a6ad5903641538d1842385200cfb92",
-      "github_sha": "01bfd3cef0acfdd9255fc009ca7f3760fa51b503"
-    },
-    {
-      "slug": "footerdata-arabic",
+      "slug": "footer-data-ar",
       "id": 1716,
-      "filename": "footerdata-arabic",
+      "filename": "footer-data-ar",
       "pagetitle": "Footer data Arabic",
-      "modified": "2020-04-29T21:40:49",
+      "modified": "2020-05-14T16:22:00",
       "tags": [
         "lang-ar",
         "table-data"
@@ -2494,6 +2370,129 @@
       "lang": "ar",
       "wp_sha": "63039872f47fa5e3c598f51c408e5886550a8bfa",
       "github_sha": "a634b8f4a42b678339456ae5d3f22146881c2d27"
+    },
+    {
+      "slug": "footer-data-es",
+      "id": 1044,
+      "filename": "footer-data-es",
+      "pagetitle": "Footer Data &#8211; Spanish",
+      "modified": "2020-05-14T16:21:50",
+      "tags": [
+        "lang-es",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "es",
+      "wp_sha": "c2cfd04117a5f7768252cb4f42c7b5f89169f6b8",
+      "github_sha": "e2babe89003a99ede3bff433c2687fbd4a4f226e"
+    },
+    {
+      "slug": "footer-data-ko",
+      "id": 1828,
+      "filename": "footer-data-ko",
+      "pagetitle": "footer data ko",
+      "modified": "2020-05-14T15:35:57",
+      "tags": [
+        "lang-ko",
+        "needs-translation",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "ko",
+      "wp_sha": "f559950df5b92c83553eb6a4ce167a883ee0c91b",
+      "github_sha": "a61c4c144ca0b98fbfe079b5b42e59d853330b03"
+    },
+    {
+      "slug": "footer-data-tl",
+      "id": 1826,
+      "filename": "footer-data-tl",
+      "pagetitle": "footer data tl",
+      "modified": "2020-05-14T15:35:35",
+      "tags": [
+        "lang-tl",
+        "needs-translation",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "tl",
+      "wp_sha": "490cea04aa9ff280208bf7a54bcf032b6fb7e9ab",
+      "github_sha": "6fc60fd928dad6d60cb2fea5e0bdc7c727b6d6e7"
+    },
+    {
+      "slug": "footer-data-vi",
+      "id": 1824,
+      "filename": "footer-data-vi",
+      "pagetitle": "footer data vi",
+      "modified": "2020-05-14T15:35:12",
+      "tags": [
+        "lang-vi",
+        "needs-translation",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "3df3e7f21437614fcf9d10d64e6a8f3838ff4c44",
+      "github_sha": "e7753de25270cc13c6d5e5b3f7b51bc534670ec9"
+    },
+    {
+      "slug": "footer-data-zh-hans",
+      "id": 1830,
+      "filename": "footer-data-zh-hans",
+      "pagetitle": "footer data zh hans",
+      "modified": "2020-05-14T15:36:22",
+      "tags": [
+        "lang-zh-Hans",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "zh-Hans",
+      "wp_sha": "6c4df4c270dd9f657179ab426a156c3b5f6845e5",
+      "github_sha": "e7b1ae83e4661f4a05a5f82679f4e5dda7861cfc"
+    },
+    {
+      "slug": "footer-data-zh-hant",
+      "id": 1832,
+      "filename": "footer-data-zh-hant",
+      "pagetitle": "footer data zh hant",
+      "modified": "2020-05-14T15:36:44",
+      "tags": [
+        "lang-zh-Hant",
+        "table-data"
+      ],
+      "category": "footer data",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "zh-Hant",
+      "wp_sha": "bca0d49dc0efe22caa8d4605cae5e3f500d27432",
+      "github_sha": "57927bd951d10e4bd24a8b54f7b138579bb63ac9"
     },
     {
       "slug": "get-financial-help",
@@ -2832,7 +2831,7 @@
       "id": 2284,
       "filename": "guide-immigrant-californians-ar",
       "pagetitle": "دليل لسكان كاليفورنيا من المهاجرين",
-      "modified": "2020-05-06T23:46:48",
+      "modified": "2020-05-14T17:52:19",
       "tags": [
         "lang-ar"
       ],
@@ -2843,15 +2842,15 @@
       "translate": false,
       "ignore": false,
       "lang": "ar",
-      "wp_sha": "1ac8fa0c1db18c1e96da90e6052bd08ba2d74a2e",
-      "github_sha": "57ef119678396c61b5fc583553bcf94caee22587"
+      "wp_sha": "87b1a6116f66c77602c1eaa9be0d78ddd49907ad",
+      "github_sha": "348aa565382ea2800753859b01bca79c6293dcf3"
     },
     {
       "slug": "guide-immigrant-californians-ko",
       "id": 2166,
       "filename": "guide-immigrant-californians-ko",
       "pagetitle": "캘리포니아 이민자들을 위한 가이드",
-      "modified": "2020-05-06T23:47:00",
+      "modified": "2020-05-14T17:49:42",
       "tags": [
         "lang-ko"
       ],
@@ -2862,15 +2861,15 @@
       "translate": false,
       "ignore": false,
       "lang": "ko",
-      "wp_sha": "cfd34c5ab11c7eae1806e188852673f84d6a2a2a",
-      "github_sha": "05e3ef3c658a7c2f0f1d7d19d1ea3ac0907cfe94"
+      "wp_sha": "338ef6663419d1301e32eecf87ae386c6ee57920",
+      "github_sha": "7df80a4f128ab45daa6443cdb9c4d5d9bfaef667"
     },
     {
       "slug": "guide-immigrant-californians-tl",
       "id": 2154,
       "filename": "guide-immigrant-californians-tl",
       "pagetitle": "Gabay sa mga Imigrante sa California",
-      "modified": "2020-05-07T21:35:46",
+      "modified": "2020-05-14T17:48:49",
       "tags": [
         "lang-tl"
       ],
@@ -2881,15 +2880,15 @@
       "translate": false,
       "ignore": false,
       "lang": "tl",
-      "wp_sha": "4f215344173d9e7d57259a5e995deeb7e9be8d1f",
-      "github_sha": "dde4fc42a66a533a669f0716de61bbd4e224e2d4"
+      "wp_sha": "f65e91f58f855fd5c0b082c77efec704eb6ec677",
+      "github_sha": "fbcadd1659f25a1866afa418117a1d99b3794402"
     },
     {
       "slug": "guide-immigrant-californians-vi",
       "id": 2396,
       "filename": "guide-immigrant-californians-vi",
       "pagetitle": "Hướng dẫn cho Người nhập cư ở California",
-      "modified": "2020-05-07T21:35:27",
+      "modified": "2020-05-14T17:53:46",
       "tags": [
         "lang-vi"
       ],
@@ -2900,15 +2899,15 @@
       "translate": false,
       "ignore": false,
       "lang": "vi",
-      "wp_sha": "fd4ce6862570754561134a7d91d31fbb00b4be9b",
-      "github_sha": "ffaf3d9120d0f3ce4c5154c8c429736b893de2d4"
+      "wp_sha": "312aae7f7aa27b58b69b25d262ff687deaefadfd",
+      "github_sha": "540950fb52109ddcee17b753a8258e5e99d856f9"
     },
     {
       "slug": "guide-immigrant-californians-zh-hans",
       "id": 2099,
       "filename": "guide-immigrant-californians-zh-hans",
       "pagetitle": "加州移民指南",
-      "modified": "2020-05-01T17:20:15",
+      "modified": "2020-05-14T17:54:46",
       "tags": [
         "lang-zh-Hans"
       ],
@@ -2919,8 +2918,8 @@
       "translate": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "943223ecaf6de36310082242c73cd4625139959f",
-      "github_sha": "2a747cea9dabaa376ca66da045c7a9573cb967a3"
+      "wp_sha": "ff2a95ced198c9571e0961100f53b530c94ef1f2",
+      "github_sha": "b7600de92ada50eb285e0881a64d632838987acb"
     },
     {
       "slug": "guide-immigrant-californians-zh-hant",
@@ -3303,11 +3302,30 @@
       "github_sha": "df28429af031c49b227f7160ff3e0a33d87ec702"
     },
     {
-      "slug": "home-page-links-arabic",
+      "slug": "homepage-links",
+      "id": 1568,
+      "filename": "homepage-links",
+      "pagetitle": "homepage links english",
+      "modified": "2020-05-14T16:32:07",
+      "tags": [
+        "table-data"
+      ],
+      "category": "home-links",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "f13b52245e4743b59abebe811a0732fa0a6f32f8",
+      "github_sha": "2ce57d936cd8539f3636aaeb2fcce96a587728a8"
+    },
+    {
+      "slug": "homepage-links-ar",
       "id": 1721,
-      "filename": "home-page-links-arabic",
+      "filename": "homepage-links-ar",
       "pagetitle": "home page links arabic",
-      "modified": "2020-04-21T00:39:48",
+      "modified": "2020-05-14T16:32:23",
       "tags": [
         "lang-ar",
         "table-data"
@@ -3323,31 +3341,11 @@
       "github_sha": "f64dbe7c1c78e0daf6d6b880aba7350453eba998"
     },
     {
-      "slug": "home-page-links-vi",
-      "id": 1736,
-      "filename": "home-page-links-vi",
-      "pagetitle": "home page links vietnamese",
-      "modified": "2020-04-22T18:31:26",
-      "tags": [
-        "lang-vi",
-        "table-data"
-      ],
-      "category": "home-links",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "vi",
-      "wp_sha": "d7f4a5b751bba9e04cabe44208ea1b9bb6197b0c",
-      "github_sha": "259ec6558893de1828ecb38e3b94f7497ac736cb"
-    },
-    {
-      "slug": "homepage-links-english",
-      "id": 1568,
-      "filename": "homepage-links-english",
-      "pagetitle": "homepage links english",
-      "modified": "2020-05-14T01:09:05",
+      "slug": "homepage-links-es",
+      "id": 1574,
+      "filename": "homepage-links-es",
+      "pagetitle": "home page links spanish",
+      "modified": "2020-05-14T16:32:13",
       "tags": [
         "table-data"
       ],
@@ -3358,8 +3356,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "f13b52245e4743b59abebe811a0732fa0a6f32f8",
-      "github_sha": "2ce57d936cd8539f3636aaeb2fcce96a587728a8"
+      "wp_sha": "7f4de87963c997b33f8c78df1021eafb9809f258",
+      "github_sha": "61654eed7bfed956742b6dfa38ca9006c241620f"
     },
     {
       "slug": "homepage-links-ko",
@@ -3382,25 +3380,6 @@
       "github_sha": "2a975a4c48d0314621efbc982d2ef9d7b7311d96"
     },
     {
-      "slug": "homepage-links-spanish",
-      "id": 1574,
-      "filename": "homepage-links-spanish",
-      "pagetitle": "home page links spanish",
-      "modified": "2020-05-07T00:25:08",
-      "tags": [
-        "table-data"
-      ],
-      "category": "home-links",
-      "isFragment": false,
-      "isTableData": true,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "en",
-      "wp_sha": "7f4de87963c997b33f8c78df1021eafb9809f258",
-      "github_sha": "61654eed7bfed956742b6dfa38ca9006c241620f"
-    },
-    {
       "slug": "homepage-links-tl",
       "id": 1844,
       "filename": "homepage-links-tl",
@@ -3419,6 +3398,26 @@
       "lang": "tl",
       "wp_sha": "9df8cd34beca2ed0d0c4f6fe849e711ad7fcac18",
       "github_sha": "53e344709790e8b22c1f3266b4599554cebc3e7e"
+    },
+    {
+      "slug": "homepage-links-vi",
+      "id": 1736,
+      "filename": "homepage-links-vi",
+      "pagetitle": "home page links vietnamese",
+      "modified": "2020-05-14T16:32:27",
+      "tags": [
+        "lang-vi",
+        "table-data"
+      ],
+      "category": "home-links",
+      "isFragment": false,
+      "isTableData": true,
+      "addToSitemap": true,
+      "translate": false,
+      "ignore": false,
+      "lang": "vi",
+      "wp_sha": "d7f4a5b751bba9e04cabe44208ea1b9bb6197b0c",
+      "github_sha": "259ec6558893de1828ecb38e3b94f7497ac736cb"
     },
     {
       "slug": "homepage-links-zh-hans",
@@ -3680,7 +3679,7 @@
       "id": 3075,
       "filename": "industry-guidance",
       "pagetitle": "Statewide industry guidance to reduce risk",
-      "modified": "2020-05-13T15:34:06",
+      "modified": "2020-05-14T15:28:08",
       "tags": [
         "translate",
         "translate-priority"
@@ -3692,8 +3691,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "4194555c767756f836f5b8bf6c2ab9b4cbc5cc07",
-      "github_sha": "e55d7d8c5d46b36b0c45760b607a123408924cb0"
+      "wp_sha": "eb0c44e8bd725b374edd24217fd94922a5c46fab",
+      "github_sha": "523bc8fdb680d38757457c217e01b59226cbf8a5"
     },
     {
       "slug": "la-educacion",
@@ -4326,7 +4325,7 @@
       "id": 839,
       "filename": "resources-for-emotional-support-and-well-being",
       "pagetitle": "Resources for emotional support and well-being",
-      "modified": "2020-05-13T19:35:09",
+      "modified": "2020-05-14T19:49:22",
       "tags": [],
       "category": "resources for emotional support",
       "isFragment": false,
@@ -4335,8 +4334,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "0efc9e00dd5e2e060fedbbe0fb096ca2a4d441e4",
-      "github_sha": "df4bf300ba1dc140963c0e65b47cd3c03e2d62a0"
+      "wp_sha": "f8d6fe027905a9d2558a9d9a54be23fae38818fa",
+      "github_sha": "25c5bb457d225f111f21ebce450b9eb1f5df17ce"
     },
     {
       "slug": "resources-for-emotional-support-and-well-being-ar",
@@ -4441,7 +4440,7 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-13T22:33:48",
+      "modified": "2020-05-14T16:19:00",
       "tags": [
         "translate"
       ],
@@ -4452,8 +4451,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1a897fca3cb52d14840b6cb59f7f40b6077ca32f",
-      "github_sha": "dbfe513bd63040467ba8635b997726084147dd12"
+      "wp_sha": "af9e4d6f5557fd31feba8de5cb3f520c007d5f6b",
+      "github_sha": "e712332dcb73eef0f60eab7093af7fc1f7183590"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
@@ -4498,7 +4497,7 @@
       "id": 2554,
       "filename": "roadmap",
       "pagetitle": "Resilience Roadmap",
-      "modified": "2020-05-13T00:30:08",
+      "modified": "2020-05-14T16:27:50",
       "tags": [
         "translate",
         "translate-priority"
@@ -4510,15 +4509,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "99e1dac6cc85577907cdf5dfed735f9643d95e91",
-      "github_sha": "a6d4a2417f44319e5cf93a7cf21650f6c81fe2bb"
+      "wp_sha": "1e1733fdcfb256f09a7009d310bc69d2d9d81c54",
+      "github_sha": "310e5e328e684855f74eb71dae57bd68cb1d27ba"
     },
     {
       "slug": "roadmap-counties",
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance",
-      "modified": "2020-05-13T05:09:12",
+      "modified": "2020-05-14T15:10:35",
       "tags": [
         "translate",
         "translate-priority"
@@ -4530,8 +4529,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "52cc036ba9394eb37ad7ec95cb78fee3d4dc9171",
-      "github_sha": "8ecb7d3e71a45a1127a85224eb25c341c1f7470a"
+      "wp_sha": "a40fbf780d6b7722f7d76dc07bd32df93f69bb20",
+      "github_sha": "1370f4d09e83c29f78207b9295cd76a982efd0e6"
     },
     {
       "slug": "safety-in-public-places",
@@ -4730,7 +4729,7 @@
       "id": 2948,
       "filename": "stats-data",
       "pagetitle": "Stats Data",
-      "modified": "2020-05-13T18:06:19",
+      "modified": "2020-05-14T18:19:12",
       "tags": [
         "do-not-crawl",
         "table-data"
@@ -4742,8 +4741,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "17e04119fdc8662bc33a1d8bca62bd5d5f17b754",
-      "github_sha": "a5b32d0a3a263eb1a50c44eceab9b4db35ea1170"
+      "wp_sha": "c769bed3fc00bc3737810b6dea65235b92ac7e2d",
+      "github_sha": "40c537d485659465a6d4366f712fece25ecec253"
     },
     {
       "slug": "stats-es",
@@ -4911,7 +4910,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home except for essential needs",
-      "modified": "2020-05-14T02:15:52",
+      "modified": "2020-05-14T16:31:16",
       "tags": [
         "translate"
       ],
@@ -4922,8 +4921,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "e1e45120ce9b6021fd4f8257e1ebdad64b040179",
-      "github_sha": "4d3c3201ef9e3c4724653614a0eae9b0d39c3348"
+      "wp_sha": "7f26690a90fe0eceba04fdb556aaa257f6d92b08",
+      "github_sha": "a7a1cde4ab6e1a8780efcd85c2960f0830db1aeb"
     },
     {
       "slug": "stay-home-except-for-essential-needs-ar",
@@ -5404,7 +5403,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and Treatment",
-      "modified": "2020-05-12T19:19:45",
+      "modified": "2020-05-14T16:44:39",
       "tags": [
         "translate",
         "translate-priority"
@@ -5416,8 +5415,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "fbf2588711bea246d6d77b8c5fa8db86efd9bc55",
-      "github_sha": "c0f3946c9d79c914b2b941e866b2c6846f255538"
+      "wp_sha": "c173e0a15579347e3e14629ab7cf7fcb2f405504",
+      "github_sha": "d445f8184eb665c8c201e95abb6510e7ceb6a3c3"
     },
     {
       "slug": "testing-and-treatment-ar",
