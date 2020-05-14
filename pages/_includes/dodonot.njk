@@ -1,5 +1,4 @@
-{% set fileExtension = (tags | langRecord).filepostfix.toLowerCase() | default("") %}
-{% set JSONraw %}{% include "../wordpress-posts/do-dont" + fileExtension + ".json" %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/do-dont" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set Headers = JSON.Table1 %}
 {% set text = JSON.Table2 %}
