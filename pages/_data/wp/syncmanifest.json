@@ -235,7 +235,12 @@
       "modified": "2020-05-14T17:45:45",
       "wp_path": "/wp-content/uploads/2020/05/COVID_immigrant_guidance_Korean.pdf",
       "github_path": "src/img/wp/covid_immigrant_guidance_korean.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians-ko"
+      ],
+      "wp_sha": "1936e22edc211692045c8f4d693f713b47f2a250",
+      "github_sha": "7729ad58513db7023d347380a633df2e63172395"
     },
     {
       "slug": "covid_immigrant_guidance_tagalog",
@@ -300,8 +305,7 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "guia-californianos-inmigrantes",
-        "guide-immigrant-californians",
-        "guide-immigrant-californians-ko"
+        "guide-immigrant-californians"
       ],
       "wp_sha": "665b0f8e3881fbbf8b8b7b153375cc9380d8dd40",
       "github_sha": "9c79e9f56af5169da853597f3b285014eb5cf65b"
@@ -2895,7 +2899,7 @@
       "id": 2166,
       "filename": "guide-immigrant-californians-ko",
       "pagetitle": "캘리포니아 이민자들을 위한 가이드",
-      "modified": "2020-05-06T23:47:00",
+      "modified": "2020-05-14T17:49:42",
       "tags": [
         "lang-ko"
       ],
@@ -2906,8 +2910,8 @@
       "translate": false,
       "ignore": false,
       "lang": "ko",
-      "wp_sha": "cfd34c5ab11c7eae1806e188852673f84d6a2a2a",
-      "github_sha": "05e3ef3c658a7c2f0f1d7d19d1ea3ac0907cfe94"
+      "wp_sha": "51300818a88f3c8cbf9e009f7c937050643910f9",
+      "github_sha": "dc318236c45136c0f9d12f10cc7ee57ffaf7447e"
     },
     {
       "slug": "guide-immigrant-californians-tl",
