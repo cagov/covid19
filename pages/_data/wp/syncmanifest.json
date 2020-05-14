@@ -231,7 +231,12 @@
       "modified": "2020-05-14T17:45:43",
       "wp_path": "/wp-content/uploads/2020/05/COVID_immigrant_guidance_CH_Simplified.pdf",
       "github_path": "src/img/wp/covid_immigrant_guidance_ch_simplified.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians-zh-hans"
+      ],
+      "wp_sha": "581817c12a1a3b1642498e82d207492419dbbdd8",
+      "github_sha": "68ad424e81523550785fc6fae964e95e2f3157ab"
     },
     {
       "slug": "covid_immigrant_guidance_korean",
@@ -404,7 +409,6 @@
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guide-immigrant-californians-zh-hans",
         "guide-immigrant-californians-zh-hant"
       ],
       "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
@@ -2966,7 +2970,7 @@
       "id": 2099,
       "filename": "guide-immigrant-californians-zh-hans",
       "pagetitle": "加州移民指南",
-      "modified": "2020-05-01T17:20:15",
+      "modified": "2020-05-14T17:54:46",
       "tags": [
         "lang-zh-Hans"
       ],
@@ -2977,8 +2981,8 @@
       "translate": false,
       "ignore": false,
       "lang": "zh-Hans",
-      "wp_sha": "943223ecaf6de36310082242c73cd4625139959f",
-      "github_sha": "2a747cea9dabaa376ca66da045c7a9573cb967a3"
+      "wp_sha": "ddba7d7b6317a9f757fe22378047ed199fdd7713",
+      "github_sha": "ec28df420937d2066eaad4bdeeea55b3556bfdb4"
     },
     {
       "slug": "guide-immigrant-californians-zh-hant",
