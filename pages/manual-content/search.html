@@ -19,7 +19,7 @@ addtositemap: true
 <h2>Search this website</h2>
 <label id="SearchInput" for="q">Enter your search text</label>
 
-<div class="gcse-search" enableAutoComplete="true"></div>
+<div class="gcse-search" enableAutoComplete="false"></div>
 
 <script>
 	const cx = '003358532045999200914:uxxka6d3pge';
@@ -35,7 +35,8 @@ addtositemap: true
 		if(window.location.port !== '80') {
 			currentHost += `:${window.location.port}`;
 		}
-		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`)
+		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
+		document.querySelector('#answersNow').innerHTML = "";
 		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
 		.then(response => response.json())
 		.then(data => {
