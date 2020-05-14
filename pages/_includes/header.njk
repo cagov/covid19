@@ -1,4 +1,4 @@
-{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set Terms = JSON.Table3 %}
 <header>
