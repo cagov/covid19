@@ -17,12 +17,12 @@
         "url": "/ar/"
       },
       "lang-vi": {
-        "title": "trang chủ",
+        "title": "Trang chủ",
         "slug": "vi",
         "url": "/vi/"
       },
       "lang-tl": {
-        "title": "Home",
+        "title": "Homepage",
         "slug": "tl",
         "url": "/tl/"
       },
@@ -119,6 +119,11 @@
           "lang-es": "Recreación al aire libre",
           "lang-zh-Hant": "戶外運動",
           "lang-zh-Hans": "户外运动"
+        },
+        { 
+          "url": "#govservices", 
+          "lang-en": "Government services",
+          "lang-es": "Servicios gubernamentales"
         }
       ]
     },
@@ -187,12 +192,12 @@
         "url": "/testing-and-treatment-tl/"
       },
       "lang-vi": {
-        "title": "",
+        "title": "Xét nghiệm và điều trị",
         "slug": "testing-and-treatment-vi",
         "url": "/testing-and-treatment-vi/"
       },
       "lang-ko": {
-        "title": "",
+        "title": "검사와 치료",
         "slug": "testing-and-treatment-ko",
         "url": "/testing-and-treatment-ko/"
       },
@@ -207,6 +212,23 @@
         "url": "/testing-and-treatment-zh-hant/"
       },
       "subsections" : []
+    },
+    {
+      "lang-en": {
+        "url": "/roadmap/",
+        "slug": "roadmap",
+        "title": "Resilience Roadmap"
+      },
+      "subsections" : [
+        { 
+          "url": "/industry-guidance/", 
+          "lang-en": "Statewide guidance"
+        },
+        { 
+          "url": "/roadmap-counties/", 
+          "lang-en": "County by county guidance"
+        }
+      ]
     },
     {
       "lang-en": {
@@ -228,6 +250,11 @@
         "url": "/resources-for-emotional-support-and-well-being-vi/",
         "slug": "resources-for-emotional-support-and-well-being-vi",
         "title": "Nguồn thông tin hỗ trợ cho sức khỏe tinh thần và an lành của quý vị."
+      },
+      "lang-ko": {
+        "url": "/resources-for-emotional-support-and-well-being-ko/",
+        "slug": "resources-for-emotional-support-and-well-being-ko",
+        "title": "정서적 지지와 건강을 위한 자원"
       },
       "lang-tl": {
         "url": "/resources-for-emotional-support-and-well-being-tl/",
@@ -343,6 +370,26 @@
         "slug": "guia-californianos-inmigrantes",
         "url": "/guia-californianos-inmigrantes/"
       },
+      "lang-ar": {
+        "url": "/guide-immigrant-californians-ar/",
+        "slug": "guide-immigrant-californians-ar",
+        "title": "دليل لسكان كاليفورنيا من المهاجرين"
+      },
+      "lang-tl": {
+        "url": "/guide-immigrant-californians-tl/",
+        "slug": "guide-immigrant-californians-tl",
+        "title": "Gabay sa mga Imigrante sa California"
+      },
+      "lang-vi": {
+        "url": "/guide-immigrant-californians-vi/",
+        "slug": "guide-immigrant-californians-vi",
+        "title": "Hướng dẫn cho Người nhập cư ở California"
+      },
+      "lang-ko": {
+        "url": "/guide-immigrant-californians-ko/",
+        "slug": "guide-immigrant-californians-ko",
+        "title": "캘리포니아 이민자들을 위한 가이드"
+      },
       "lang-zh-Hant": {
         "url": "/guide-immigrant-californians-zh-hant/",
         "slug": "guide-immigrant-californians-zh-hant",
@@ -452,6 +499,26 @@
         "slug": "lugares-publicos",
         "url": "/lugares-publicos/"
       },
+      "lang-ar": {
+        "url": "/safety-in-public-places-ar/",
+        "slug": "safety-in-public-places-ar",
+        "title": "الأماكن العامة"
+      },
+      "lang-vi": {
+        "url": "/safety-in-public-places-vi/",
+        "slug": "safety-in-public-places-vi",
+        "title": "Những nơi công cộng"
+      },
+      "lang-tl": {
+        "url": "/safety-in-public-places-tl/",
+        "slug": "safety-in-public-places-tl",
+        "title": "Mga Pampublikong mga Lugar"
+      },
+      "lang-ko": {
+        "url": "/safety-in-public-places-ko/",
+        "slug": "safety-in-public-places-ko",
+        "title": "공공 장소"
+      },
       "lang-zh-Hant": {
         "url": "/safety-in-public-places-zh-hant/",
         "slug": "safety-in-public-places-zh-hant",
@@ -552,7 +619,7 @@
     },
     {
       "lang-en": {
-        "url": "/healthcare/#top",
+        "url": "/healthcare/",
         "slug": "healthcare",
         "title": "Health care"
       },
@@ -732,6 +799,26 @@
         "title": "Cuerpo de Salud de California",
         "slug": "cuerpo-de-salud-de-california",
         "url": "/cuerpo-de-salud-de-california/"
+      },
+      "lang-tl": {
+        "url": "/healthcorps-tl/",
+        "slug": "healthcorps-tl",
+        "title": "California Health Corps"
+      },
+      "lang-ar": {
+        "url": "/healthcorps-ar/",
+        "slug": "healthcorps-ar",
+        "title": "California Health Corps"
+      },
+      "lang-ko": {
+        "url": "/healthcorps-ko/",
+        "slug": "healthcorps-ko",
+        "title": "California Health Corps"
+      },
+      "lang-vi": {
+        "url": "/healthcorps-vi/",
+        "slug": "healthcorps-vi",
+        "title": "California Health Corps"
       },
       "lang-zh-Hant": {
         "url": "/healthcorps-zh-hant/",

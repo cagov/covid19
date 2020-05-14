@@ -4,6 +4,7 @@ const { JSDOM } = jsdom;
 const fs = require('fs')
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
+const statsData = JSON.parse(fs.readFileSync('pages/wordpress-posts/stats-data.json','utf8')).Table1[0];
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -28,14 +29,16 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
-  //Process wordpress posts
-  eleventyConfig.addCollection("wordpressposts", function(collection) {
-    const FolderName = 'wordpress-posts';
+  //Process translated posts
+  let translatedPaths = []
+  eleventyConfig.addCollection("translatedposts", function(collection) {
+    const FolderName = 'translated-posts';
     let output = [];
     
     collection.getAll().forEach(item => {
         if(item.inputPath.includes(FolderName)) {
           item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          translatedPaths.push(item.outputPath);
           item.url = item.url.replace(`/${FolderName}`,'');
           item.data.page.url = item.url;
           output.push(item);
@@ -51,6 +54,43 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
+  // while I am creating the wordpressposts collection
+  // can I loop throught the translatedposts collection
+  // find item with the existing url?
+  // and then skip it...
+  
+  //Process wordpress posts
+  eleventyConfig.addCollection("wordpressposts", function(collection) {
+    const FolderName = 'wordpress-posts';
+    let output = [];
+    
+    collection.getAll().forEach(item => {
+        if(item.inputPath.includes(FolderName)) {
+          let outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          if(translatedPaths.indexOf(outputPath) === -1) {
+            //This page is not in the AvantPage list
+            item.outputPath = outputPath;
+            item.url = item.url.replace(`/${FolderName}`,'');
+            item.data.page.url = item.url;
+            output.push(item);
+
+            if(!item.data.title) {
+              //No title means fragment
+              console.log(`Skipping fragment ${item.inputPath}`)
+              item.outputPath = false;
+            }
+          } else {
+            //Turn this page off since we already have a translation
+            output.push(item);
+            item.outputPath = false;
+            console.log(`Skipping traslated page ${item.inputPath}`)
+          }
+        };
+    });
+
+    return output;
+  });
+  
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
@@ -88,6 +128,10 @@ module.exports = function(eleventyConfig) {
     return textstring;
   });
 
+  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
+  //Usage...
+  //        {{0|_statsdata_}}
+
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
       return content;
@@ -98,7 +142,7 @@ module.exports = function(eleventyConfig) {
   const getTranslatedValue = (pageObj, tags, field) => {
     
     let langTag = getLangRecord(tags);
-
+    
     if(!pageObj)
       return "";
 
@@ -120,44 +164,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
-    if(outputPath&&outputPath.endsWith(".html")) {
-      const dom = new JSDOM(html);
-      const accordions = dom.window.document.querySelectorAll('.cwds-accordion');
-      if(accordions.length>0) {
-        accordions.forEach(accordion => {
-          // bunch of weird hax to make custom elements out of wordpress content
-          if(accordion.querySelector('h4')) {
-            const titleVal = accordion.querySelector('h4').innerHTML;
-            const target = accordion.querySelector('h4').parentNode;
-            accordion.querySelector('h4').remove();
-            accordion.querySelector('.wp-block-group__inner-container').classList.add('card');
-            let container = accordion.querySelector('.card-container');
-            if(!container) {
-              container = accordion.querySelector('ul');
-            }
-            if(container) {
-              const containerContent = container.innerHTML;
-              container.parentNode.insertAdjacentHTML('beforeend',`
-                <div class="card-container" aria-hidden="true" style="height: 0px;">
-                  <div class="card-body">${containerContent}</div>
-                </div>`);
-              container.parentNode.removeChild(container);
-              target.insertAdjacentHTML('afterbegin',`<button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                <div class="accordion-title">
-                <h4>${titleVal}</h4>
-                </div>
-                </button>`);
-              accordion.innerHTML = `<cwds-accordion>${accordion.innerHTML}</cwds-accordion>`;
-            }
-          }
-        });
-        return dom.serialize();
-      }
-    }
-    return html;
-  });
-
-  eleventyConfig.addTransform("findaccordions2", function(html, outputPath) {
     const headerclass = 'wp-accordion';
     const contentclass = 'wp-accordion-content';
 
@@ -217,7 +223,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
   eleventyConfig.addFilter('includes', (items,value) => (items || []).includes(value));
 
-  const getLangRecord = tags => 
+  const getLangRecord = tags =>
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
@@ -253,6 +259,6 @@ module.exports = function(eleventyConfig) {
       }
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findaccordions2";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
 };
 
