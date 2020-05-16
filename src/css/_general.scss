@@ -77,8 +77,8 @@ li,
 /* Colors */
 
 .bg-primary {
-	background-color: #0066ab !important;
-	background: #0066ab !important;
+	background-color: #003d9d !important;
+	background: #003d9d !important;
 }
 
 /* Pagination */
@@ -488,6 +488,7 @@ a.navbar-brand:visited {
 .wrimagecard-topimage_header {
     background: #f1f1f1;
     padding: 20px;
+	padding-top: 10%;
 }
 
 .wrimagecard-topimage a {
@@ -527,7 +528,7 @@ a.navbar-brand:visited {
 .jumbotron,
 .jumbotron h1,
 .jumbotron .lead {
-    color: #000;
+    color: #fff;
 }
 
 .jumbotron.alpha {
@@ -951,12 +952,12 @@ label.custom-control-label {
 
 button#dropdown-menu-button {
     border: 1px solid #f1f1f1;
-    background: #0066ab;
+    background: #003d9d;
     color: white;
 }
 button#dropdown-menu-button:hover {
-    background-color: #005d9c;
-    border-color: #005d9c;
+    background-color: #0257d5;
+    border-color: #0257d5;
 }
 
 button#dropdown-menu-button:focus {
@@ -1007,7 +1008,7 @@ button#dropdown-menu-button:focus {
 }
 
 .bg-primary-accordion {
-    background-color: #0066ab!important;
+    background-color: #003d9d!important;
     color: #fff!important;
 	border-radius: .25rem!important;
 }
