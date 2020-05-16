@@ -268,11 +268,7 @@ a.list-group-item.list-group-item-action {
 .jumbotron img {
   max-width: 130px;
 }
-.jumbo-img {
-    background-image: url('/img/StateCapitol_Blue.jpg');
-    background-size: cover;
-	background-color: #003d9d;
-}
+
 
 .jumbotron a:focus {
   outline: 2px solid #fff;
@@ -560,6 +556,18 @@ a.list-group-item.list-group-item-action {
 	
 //-----------end of Small breakpoint
 }
+
+
+@media (min-width: 768px) {
+
+.jumbo-img {
+    background-image: url('/img/StateCapitol_Blue.jpg');
+    background-size: cover;
+	background-color: #003d9d;
+}
+}
+
+
 @media (max-width: 992px) {
 
  .navbar-nav.mobile {
