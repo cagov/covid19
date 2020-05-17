@@ -1,11 +1,7 @@
 export default function applyAccordionListeners() {
-  console.log('applying listeners')
   document.querySelectorAll('cwds-accordion').forEach((acc) => {
-    console.log(acc)
     acc.addEventListener('click',function() {
-      console.log('click')
       if(this.querySelector('.accordion-title')) {
-        console.log(this)
         reportGA('accordion', this.querySelector('.accordion-title').textContent.trim())
       }
     });
