@@ -559,12 +559,14 @@ a.list-group-item.list-group-item-action {
 
 
 @media (min-width: 768px) {
-
-.jumbo-img {
-    background-image: url('/img/StateCapitol_Blue.jpg');
+  .jumbo-img {
+    background-image: url('/img/StateCapitol_Blue.webp');
     background-size: cover;
-	background-color: #003d9d;
-}
+    background-color: #003d9d;
+  }
+  .no-webp .jumbo-img {
+    background-image: url('/img/StateCapitol_Blue.jpg');
+  }
 }
 
 

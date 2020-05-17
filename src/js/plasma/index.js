@@ -3,8 +3,9 @@ import '@cagov/lookup';
 
 import plasmaResults from './template.js';
 // listen for custom event, then
-const searchEl = document.querySelector("cwds-lookup");
-searchEl.addEventListener("showResults", (evt) => {
-  plasmaResults(evt.detail);
-});
+if(document.querySelector("cwds-lookup")) {
+  document.querySelector("cwds-lookup").addEventListener("showResults", (evt) => {
+    plasmaResults(evt.detail);
+  });  
+}
 
