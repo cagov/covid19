@@ -298,6 +298,10 @@ a:hover .wrimagecard-topimage_header h3 {
   background: #003d9d;
 }
 
+.bg-secondary-covid {
+    background-color: #f2f5fc;
+}
+
 a,
 a,
 a:hover,
@@ -494,7 +498,7 @@ a.list-group-item.list-group-item-action {
   }
 
   .wrimagecard-topimage_header.text-center {
-    text-align: left !important;
+        min-height: auto!important;
   }
 
   .sticky-wrapper {
@@ -554,8 +558,13 @@ a.list-group-item.list-group-item-action {
     padding: 0!important;
   }
 	
-//-----------end of Small breakpoint
+  .text-center-mobile {
+	text-align: center!important;
 }
+	
+}
+
+//-----------end of Small breakpoint
 
 
 @media (min-width: 768px) {
