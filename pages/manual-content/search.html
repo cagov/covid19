@@ -10,7 +10,10 @@ addtositemap: true
    .aside { 
        position: relative!important;
  }
-
+ #answersNow .accordion-title {
+    font-size: 1.3rem;
+    color: #0066ab;
+ }
 </style>
 
 <h2>Search this website</h2>
@@ -20,6 +23,8 @@ addtositemap: true
   <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
 	<button type="submit"  class="btn btn-primary">Search</button>	  
 </form>
+
+<div id="answersNow"></div>
 
 <gcse:searchresults-only></gcse:searchresults-only>
 
@@ -43,16 +48,40 @@ addtositemap: true
   document.querySelector('input[name=q]').value = query;
 </script> 
 
-
-<script>
-	//----- Removing some styling attributes after load
-setTimeout(function(){
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellspacing");
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellpadding");
-document.getElementById("gs_id50").removeAttribute("cellpadding"); 
-document.getElementById("gs_id50").removeAttribute("cellspacing"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellpadding"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellspacing"); 
-			  
-}, 2000);
+<script>	
+	const myWebSearchStartingCallback = (query) => {
+		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
+		if(window.location.port !== '80') {
+			currentHost += `:${window.location.port}`;
+		}
+		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
+		document.querySelector('#answersNow').innerHTML = "";
+		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
+		.then(response => response.json())
+		.then(data => {
+			let answers = [...data[0].answers];
+			if(answers[0].questions.length > 0) {
+				let html = `<h4>Quick answers</h4>
+					${answers.map(function(a) {
+						if(a.questions.length > 0) {
+							return `<cwds-accordion>
+								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
+										<div class="accordion-title">${a.questions[0]}</div>
+									</button>
+									<div class="card-container collapsed">
+										<div class="card-body">
+											<p>${a.answer}</p>
+										</div>
+									</div>
+								</div>
+							</cwds-accordion>`;
+						} else {
+							return '';
+						}
+				}).join('	')}`
+				document.querySelector('#answersNow').innerHTML = html;
+			}
+		});
+	}
+	myWebSearchStartingCallback(query)
 </script> 

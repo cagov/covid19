@@ -52,6 +52,9 @@
 {% if page.fileSlug.indexOf('telehealth') > -1 %}
 <script type="module">{% include "telehealth.js" %}</script>
 {% endif %}
+{% if page.fileSlug === "plasma-test" or page.fileSlug === "plasms" %}
+<script type="module">{% include "plasma.js" %}</script>
+{% endif %}
 
 <script nomodule src="/js/es5.js"></script>
 
