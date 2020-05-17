@@ -498,7 +498,7 @@ a.list-group-item.list-group-item-action {
   }
 
   .wrimagecard-topimage_header.text-center {
-    text-align: left !important;
+        min-height: auto!important;
   }
 
   .sticky-wrapper {
