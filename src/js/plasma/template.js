@@ -33,32 +33,35 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     return response.json();
   })
   .then(locations => {
-    let html = `
-      <h3>${resultDescription}</h3>
-      <div class="pt-5 js-provider-list">
-        ${locations.map( (item) => {
-          return `
-            <div class="card">
-              <div class="card-header card-header-multi">
-                <span class="bold">${ item['Name'] }</span>
-              </div>
-              <div class="card-body">
-                <div class="card-text">
+    let html = `There does not appear to be a donation center in this county. You could either type in a neighboring county into the search or view more current listings at <a href="http://www.aabb.org/tm/donation/Pages/Blood-Bank-Locator.aspx">http://www.aabb.org/tm/donation/Pages/Blood-Bank-Locator.aspx</a>.`
+    if(locations.length > 0 && locations[0].Name) {
+      html = `
+        <h3>${resultDescription}</h3>
+        <div class="pt-5 js-provider-list">
+          ${locations.map( (item) => {
+            return `
+              <div class="card">
+                <div class="card-header card-header-multi">
+                  <span class="bold">${ item['Name'] }</span>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
 
-                  <p>
-                    ${ (item['Address1'] != '') ? `${ item['Address1'] }<br>` : '' }
-                    ${ (item['Address2']) ? `${ item['Address2'] }<br>` : '' }
-                    ${ (item['CityStateZip'] != '') ? `${ item['CityStateZip'] }` : '' }
-                  </p>
-                  ${ (item['Contact'] != '') ? `<p><a href="tel:${ item['Contact'] }">${ item['Contact'] }</a></p>` : '' }                   
-                  ${ (item['Website'] != '') ? `<p><a href="${ item['Website'] }" class="action-link mr-3">Visit website</a></p>` : ''}
+                    <p>
+                      ${ (item['Address1'] != '') ? `${ item['Address1'] }<br>` : '' }
+                      ${ (item['Address2']) ? `${ item['Address2'] }<br>` : '' }
+                      ${ (item['CityStateZip'] != '') ? `${ item['CityStateZip'] }` : '' }
+                    </p>
+                    ${ (item['Contact']) ? `<p><a href="tel:${ item['Contact'] }">${ item['Contact'] }</a></p>` : '' }                   
+                    ${ (item['Website']) ? `<p><a href="${ item['Website'] }" class="action-link mr-3">Visit website</a></p>` : ''}
+                  </div>
                 </div>
               </div>
-            </div>
-          `
-        }).join(' ')}
-      </div>
-    `;
+            `
+          }).join(' ')}
+        </div>
+      `;
+    }
     document.querySelector('.js-plasma-providers').innerHTML = html;
   })
   .catch((err) => {
