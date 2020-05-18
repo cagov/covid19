@@ -41,36 +41,36 @@
   </head>
   <body>
     {% include "header.njk" %}
-          <div class="container">
-        <div class="row">
-          <div id="side-nav" class="p-0">
-            <cwds-accordion class="d-sm-block d-md-none">
-              <div id="nav-card" class="card mb-n3">
-                <button
-                  class="card-header accordion-alpha mobile-menu"
+    <div class="container">
+      <div class="row">
+        <div id="side-nav" class="p-0">
+          <cwds-accordion class="d-sm-block d-md-none">
+            <div id="nav-card" class="card mb-n3">
+              <button
+                  class="card-header accordion-alpha mobile-menu bg-secondary-covid"
                   type="button"
                   aria-expanded="false"
                 >
-                  <div class="accordion-title">
-                    <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu
+                <div class="accordion-title">
+                  <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu
                   </div>
-                </button>
-                <div class="card-container collapsed">
-                  <div id="body-nav" class="card-body">
-                    {% include "page-nav.njk" %}
-                  </div>
+              </button>
+              <div class="card-container collapsed">
+                <div id="body-nav" class="card-body">
+                  {% include "page-nav.njk" %}
                 </div>
               </div>
-            </cwds-accordion>
-          </div>
+            </div>
+          </cwds-accordion>
         </div>
       </div>
+    </div>
     <main id="main">
-      <div id="top" class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-3">
+      <div id="top" class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header-new" + ".html" %}
+              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
             </div>
 
             <div class="col-lg-4 text-center pt-1">
@@ -83,8 +83,14 @@
             </div>
           </div>
         </div>
-            <div class="container pt-3 text-center-mobile">
-          {% include "../wordpress-posts/stats-new" + ".html" %}
+      </div>
+      <div class="container-fluid bg-secondary-covid-darker">
+        <div class="container pt-3 text-center-mobile">
+          {% if langFilePostfix === "" %}
+            {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+          {% else %}
+            {% include "../translated-posts/stats" + langFilePostfix + ".html" %}
+          {% endif %}
         </div>
       </div>
 
@@ -92,7 +98,11 @@
     <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
       <div class="container">
         <div class="col-md-12 row alert-left js-disclaimer ml-0">
-          {% include "../wordpress-posts/new-new" + ".html" %}
+          {% if langFilePostfix === "" %}
+            {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
+          {% else %}
+            {% include "../translated-posts/new" + langFilePostfix + ".html" %}
+          {% endif %}
         </div>
       </div>
     </div>
@@ -101,10 +111,10 @@
     <!--{% include "dodonot.njk" %}-->
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
-        {% include "../wordpress-posts/cali-working" + ".html" %}
+        {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
       </div>
     </div>
-    {% include "../wordpress-posts/find-services"  + ".html" %}
+    {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}
     {% include "./news-feed-home.html" %}
   </main>
   {% include "footer.njk" %}

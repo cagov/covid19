@@ -481,6 +481,35 @@
       "github_sha": "35f3d2f8bf224c9caca39205d2dc7e243af1b23e"
     },
     {
+      "slug": "drai-applicant-flyer-final-1",
+      "file": "drai-applicant-flyer-final-1.pdf",
+      "id": 3449,
+      "modified": "2020-05-18T18:33:10",
+      "wp_path": "/wp-content/uploads/2020/05/DRAI.Applicant.Flyer_.FINAL_.1.pdf",
+      "github_path": "src/img/wp/drai-applicant-flyer-final-1.pdf",
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians",
+        "guide-immigrant-californians"
+      ],
+      "wp_sha": "89131e7a36fd5c2ebb842c5160fb6b2c5aefd7cb",
+      "github_sha": "8bf88c2b30266b627d9d813fe27743a3a40806e8"
+    },
+    {
+      "slug": "drai-distribution-table",
+      "file": "drai-distribution-table.pdf",
+      "id": 3455,
+      "modified": "2020-05-18T18:45:42",
+      "wp_path": "/wp-content/uploads/2020/05/DRAI-Distribution-Table.pdf",
+      "github_path": "src/img/wp/drai-distribution-table.pdf",
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians"
+      ],
+      "wp_sha": "a664b576d6812769d579094e1abf07b0ee63b481",
+      "github_sha": "366f3d12e0258742c91128069038a1f999b5a515"
+    },
+    {
       "slug": "essential-workforce_espanol_final",
       "file": "essential-workforce_espanol_final.pdf",
       "id": 1359,
@@ -703,6 +732,7 @@
       "github_path": "src/img/wp/listos_covid_19_immigrant_guidance_en_daf.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
+        "contact-tracing",
         "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
@@ -1644,9 +1674,10 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-05-16T20:33:01",
+      "modified": "2020-05-18T20:32:49",
       "tags": [
-        "do-not-crawl"
+        "do-not-crawl",
+        "translate-priority"
       ],
       "category": "contact tracing",
       "isFragment": false,
@@ -1655,8 +1686,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "bb1810febe1c7766920345085f74df936d6a3746",
-      "github_sha": "81a4db2466acff517e04d6e694d3b71ec4690dc4"
+      "wp_sha": "75c868d37db9756ec365b3cf313d9f53cea22c47",
+      "github_sha": "addb91a816b27b2c0e1c2ae37cb7da64cf3294ff"
     },
     {
       "slug": "contracts",
@@ -1910,25 +1941,6 @@
       "lang": "zh-Hant",
       "wp_sha": "61d712336a49c58ee50bbcbaa1b6fc91b5dc1c41",
       "github_sha": "c8f15855ca9f4e34ceb0d8c93dd7a855d51d13be"
-    },
-    {
-      "slug": "donate-plasma",
-      "id": 2777,
-      "filename": "donate-plasma",
-      "pagetitle": "Survivors of COVID-19: Donate your plasma",
-      "modified": "2020-05-18T04:19:33",
-      "tags": [
-        "do-not-crawl"
-      ],
-      "category": "plasma",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "en",
-      "wp_sha": "9ef5febf3d7245f94362bcb0a159f5cbb4cb4cb1",
-      "github_sha": "1647d6c70a6bf3a3462cf694ef346945b1de5bd9"
     },
     {
       "slug": "education",
@@ -2202,7 +2214,7 @@
       "id": 1419,
       "filename": "find-services",
       "pagetitle": "find services",
-      "modified": "2020-05-16T18:32:16",
+      "modified": "2020-05-18T19:29:12",
       "tags": [
         "fragment"
       ],
@@ -2213,8 +2225,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "9bf1a23e03f20f877dda9f8d1f1a07bf494b52ab",
-      "github_sha": "458f9e1eb72dcfc3d770c2e7b71ae3d4e096abc4"
+      "wp_sha": "2143fa8f57d19c66fdf50c213aad2c2d6d41cb69",
+      "github_sha": "2eeb9593da780c0419b3854c1c68a19569fb0aa3"
     },
     {
       "slug": "find-services-ar",
@@ -2855,7 +2867,7 @@
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Help for immigrants",
-      "modified": "2020-05-14T23:58:07",
+      "modified": "2020-05-18T19:11:12",
       "tags": [],
       "category": "guide immigrant californians",
       "isFragment": false,
@@ -2864,8 +2876,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "3380584f440c522356f1fe4080d2777560f62240",
-      "github_sha": "6c296c76b3a7d3f1e52432c4be1e812448c03af7"
+      "wp_sha": "71ca5212963e3ec2e688d488ce834ebdfbc2a713",
+      "github_sha": "822bebfd8e2b0a725416f9a6eab8dc2185d9a332"
     },
     {
       "slug": "guide-immigrant-californians-ar",
@@ -2891,7 +2903,7 @@
       "id": 2166,
       "filename": "guide-immigrant-californians-ko",
       "pagetitle": "캘리포니아 이민자들을 위한 가이드",
-      "modified": "2020-05-14T17:49:42",
+      "modified": "2020-05-18T16:07:32",
       "tags": [
         "lang-ko"
       ],
@@ -2902,8 +2914,8 @@
       "translate": false,
       "ignore": false,
       "lang": "ko",
-      "wp_sha": "338ef6663419d1301e32eecf87ae386c6ee57920",
-      "github_sha": "7df80a4f128ab45daa6443cdb9c4d5d9bfaef667"
+      "wp_sha": "693e3062b140d62d68e09dc84bf788f9ecffd0e9",
+      "github_sha": "4483e2dded48c72d7c91de921ea46225ad0b8311"
     },
     {
       "slug": "guide-immigrant-californians-tl",
@@ -3182,7 +3194,7 @@
       "id": 1372,
       "filename": "home-header",
       "pagetitle": "home header",
-      "modified": "2020-05-16T20:54:00",
+      "modified": "2020-05-18T20:54:27",
       "tags": [
         "fragment",
         "translate",
@@ -3195,8 +3207,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "b17c24ccb144fc543f45dc64441e68ca8fc0a48d",
-      "github_sha": "d0cd3d667a3a788fa2267220d344a7b672266808"
+      "wp_sha": "a86899d074e40276186fb6b0dc0b86021ac48c15",
+      "github_sha": "7698d212900b42351322bc5cf76f8aae5287a668"
     },
     {
       "slug": "home-header-ar",
@@ -3265,7 +3277,7 @@
       "id": 3341,
       "filename": "home-header-new",
       "pagetitle": "home-header-new",
-      "modified": "2020-05-16T20:53:52",
+      "modified": "2020-05-18T21:50:47",
       "tags": [
         "do-not-crawl",
         "fragment"
@@ -3277,8 +3289,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "351c28f270804406d1fcd5119d3356753f2e9252",
-      "github_sha": "8ea47c831f02903999c71c18812e0f7d60ef4575"
+      "wp_sha": "45047c1cc4534facede584fe4be36bc5fa65ff35",
+      "github_sha": "ef1157841fcf2ee98e8515690c4b6eece6a9c63a"
     },
     {
       "slug": "home-header-tl",
@@ -3740,7 +3752,7 @@
       "id": 3075,
       "filename": "industry-guidance",
       "pagetitle": "Statewide industry guidance to reduce risk",
-      "modified": "2020-05-14T15:28:08",
+      "modified": "2020-05-18T19:28:34",
       "tags": [
         "translate",
         "translate-priority"
@@ -3752,8 +3764,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "eb0c44e8bd725b374edd24217fd94922a5c46fab",
-      "github_sha": "523bc8fdb680d38757457c217e01b59226cbf8a5"
+      "wp_sha": "fc87c63c8c50f23cb02b483dacbb8b66230830a5",
+      "github_sha": "b30dabe431ce35dc8e80841f7562c9d507b01a90"
     },
     {
       "slug": "la-educacion",
@@ -4051,7 +4063,7 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-05-12T20:03:30",
+      "modified": "2020-05-18T20:57:08",
       "tags": [
         "fragment",
         "translate",
@@ -4064,8 +4076,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "2b5f5feae22c6b9c3572620ec6bdd33b122766a0",
-      "github_sha": "df46571f6e30cc50a10cb08afc47fcda4dcec69b"
+      "wp_sha": "922ab9883231bd8dde7d2c8271a977f6697570f0",
+      "github_sha": "5b0ca5b56f6a81e810fe56f22caaa397d90252c0"
     },
     {
       "slug": "new-ar",
@@ -4134,7 +4146,7 @@
       "id": 3344,
       "filename": "new-new",
       "pagetitle": "new-new",
-      "modified": "2020-05-17T19:56:12",
+      "modified": "2020-05-18T19:36:31",
       "tags": [
         "do-not-crawl",
         "fragment"
@@ -4146,8 +4158,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1baa2320b5f39c7a2d824acdae32cc8899624240",
-      "github_sha": "eb0c83dcda521bd757f4f45239faf077b4a184bf"
+      "wp_sha": "75e98279f363c332d05523394b2d3556a821f9d2",
+      "github_sha": "3a7972c87991918f3a8f56ad6146384c6e45fe8e"
     },
     {
       "slug": "new-tl",
@@ -4274,7 +4286,7 @@
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-05-13T17:53:12",
+      "modified": "2020-05-18T21:06:56",
       "tags": [
         "table-data"
       ],
@@ -4285,15 +4297,34 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "227012aaf9f0a46fba7fd6bb40d8d0456b17b9c5",
-      "github_sha": "9511770812103f7d72a511b09b9d636d5539abc8"
+      "wp_sha": "c8b8ebe5ff4504915a7387f6cff6475cec6c3b71",
+      "github_sha": "bb0b2302899b1df13fcc4bb1c6d4c5be6c14b629"
+    },
+    {
+      "slug": "plasma",
+      "id": 2777,
+      "filename": "plasma",
+      "pagetitle": "Survivors of COVID-19: Donate your plasma",
+      "modified": "2020-05-18T14:27:16",
+      "tags": [
+        "do-not-crawl"
+      ],
+      "category": "plasma",
+      "isFragment": false,
+      "isTableData": false,
+      "addToSitemap": false,
+      "translate": false,
+      "ignore": false,
+      "lang": "en",
+      "wp_sha": "aed7edbf31e064c56fa9fa4cd3a1f587cf53360e",
+      "github_sha": "081cdd888eecefbf59a4ce6b66ea54f15cf429cf"
     },
     {
       "slug": "preview",
       "id": 3416,
       "filename": "preview",
       "pagetitle": "Preview",
-      "modified": "2020-05-18T06:02:31",
+      "modified": "2020-05-18T17:57:09",
       "tags": [
         "do-not-crawl"
       ],
@@ -4304,8 +4335,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a7bcb0d34032a1a33bd4227726cbe20959392147",
-      "github_sha": "68670cd489c36cc8f4f3d278ae61d89c163eacb3"
+      "wp_sha": "288431a43383f3d24bbad531acb45947b5fe4f32",
+      "github_sha": "79a6232c5b77ae333412ca1bae0213e78fbbdeed"
     },
     {
       "slug": "pruebas-y-tratamiento",
@@ -4523,7 +4554,7 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-15T19:53:42",
+      "modified": "2020-05-18T17:31:26",
       "tags": [
         "translate"
       ],
@@ -4534,8 +4565,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "6d360aa31e439c4b509eacce1c5c7c89d104c2e5",
-      "github_sha": "e49ebab03d11007d272edb2ca54fd1f13bbc5b93"
+      "wp_sha": "15c86d8738d63da6570c1079736dd9cbc37418d0",
+      "github_sha": "0204f21e667b27200496fc125ab82c2b441d69bb"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors-zh-hans",
@@ -4600,7 +4631,7 @@
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance",
-      "modified": "2020-05-15T17:26:01",
+      "modified": "2020-05-18T22:30:36",
       "tags": [
         "translate",
         "translate-priority"
@@ -4612,8 +4643,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "cbe0c83b4df9feaccf274621cd27d575c6839c78",
-      "github_sha": "c35526dd0e0c9d2b034d139ea35c468cb64cf060"
+      "wp_sha": "ceeb418b667c46d0e63eca86c193ea30073bc973",
+      "github_sha": "da1a694c3795c1385652eb8aecf4628b4b1673e8"
     },
     {
       "slug": "safety-in-public-places",
@@ -4753,7 +4784,7 @@
       "id": 54,
       "filename": "state-local-resources",
       "pagetitle": "Get local information",
-      "modified": "2020-05-06T20:46:42",
+      "modified": "2020-05-18T22:31:47",
       "tags": [
         "translate"
       ],
@@ -4764,15 +4795,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "9818ab79e46f857147f704427fc4ae7db34c0d66",
-      "github_sha": "51bc5d962156d9df66ac3014dfc5aa30a3787a45"
+      "wp_sha": "85d6b1ddcf564797f223dfa8e032f08deef7589d",
+      "github_sha": "e04ee8fbc829bbdf028596b1f4d65fd889c63a66"
     },
     {
       "slug": "stats",
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-05-13T16:31:10",
+      "modified": "2020-05-18T22:22:30",
       "tags": [
         "fragment"
       ],
@@ -4783,8 +4814,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "0530bf7f22f36d042989047498a070d703493030",
-      "github_sha": "e4cdeecb6443da4385e21d495ce026a88248fa4b"
+      "wp_sha": "b60d740a020c3c8e155009ca2456663facd73bc4",
+      "github_sha": "cbd84723a0fe18d4cb91efd4b5dca90550376ec9"
     },
     {
       "slug": "stats-ar",
@@ -4812,7 +4843,7 @@
       "id": 2948,
       "filename": "stats-data",
       "pagetitle": "Stats Data",
-      "modified": "2020-05-17T18:08:08",
+      "modified": "2020-05-18T18:08:00",
       "tags": [
         "do-not-crawl",
         "table-data"
@@ -4824,8 +4855,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "4fd1249e14737d6db3898e31416fca3dfee9e515",
-      "github_sha": "5560dce968285a66675d292b45ea7e57050be36c"
+      "wp_sha": "aca9c1093152746e15ee312d3cd2d06e743314bf",
+      "github_sha": "81f34254ff58b815e698c1e36c61b1ed1037c434"
     },
     {
       "slug": "stats-es",
@@ -4872,7 +4903,7 @@
       "id": 3333,
       "filename": "stats-new",
       "pagetitle": "stats-new",
-      "modified": "2020-05-17T18:57:55",
+      "modified": "2020-05-18T19:15:31",
       "tags": [
         "do-not-crawl",
         "fragment"
@@ -4884,8 +4915,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "722ac8d2b25c58b19ced120d7e4770bf88f6028f",
-      "github_sha": "a3ce058fb2d7ce6c90d9d6afd9737a07054efe3a"
+      "wp_sha": "ff37e2ea08ffb2c53c2bf6266213185dcb9f22c0",
+      "github_sha": "fdb0338f49b0190c0777df759dc48a13abb04fc2"
     },
     {
       "slug": "stats-test",
