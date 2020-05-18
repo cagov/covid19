@@ -70,7 +70,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header-new" + ".html" %}
+              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
             </div>
 
             <div class="col-lg-4 text-center pt-1">
@@ -86,7 +86,7 @@
       </div>
       <div class="container-fluid bg-secondary-covid-darker">
         <div class="container pt-3 text-center-mobile">
-          {% include "../wordpress-posts/stats-new" + ".html" %}
+          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
         </div>
       </div>
 
@@ -94,7 +94,7 @@
     <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
       <div class="container">
         <div class="col-md-12 row alert-left js-disclaimer ml-0">
-          {% include "../wordpress-posts/new-new" + ".html" %}
+          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
         </div>
       </div>
     </div>
@@ -103,10 +103,10 @@
     <!--{% include "dodonot.njk" %}-->
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
-        {% include "../wordpress-posts/cali-working" + ".html" %}
+        {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
       </div>
     </div>
-    {% include "../wordpress-posts/find-services"  + ".html" %}
+    {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}
     {% include "./news-feed-home.html" %}
   </main>
   {% include "footer.njk" %}
