@@ -487,7 +487,12 @@
       "modified": "2020-05-18T18:33:10",
       "wp_path": "/wp-content/uploads/2020/05/DRAI.Applicant.Flyer_.FINAL_.1.pdf",
       "github_path": "src/img/wp/drai-applicant-flyer-final-1.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians"
+      ],
+      "wp_sha": "89131e7a36fd5c2ebb842c5160fb6b2c5aefd7cb",
+      "github_sha": "8bf88c2b30266b627d9d813fe27743a3a40806e8"
     },
     {
       "slug": "drai-distribution-table",
@@ -496,7 +501,12 @@
       "modified": "2020-05-18T18:45:42",
       "wp_path": "/wp-content/uploads/2020/05/DRAI-Distribution-Table.pdf",
       "github_path": "src/img/wp/drai-distribution-table.pdf",
-      "mime_type": "application/pdf"
+      "mime_type": "application/pdf",
+      "usedbyslugs": [
+        "guide-immigrant-californians"
+      ],
+      "wp_sha": "a664b576d6812769d579094e1abf07b0ee63b481",
+      "github_sha": "366f3d12e0258742c91128069038a1f999b5a515"
     },
     {
       "slug": "essential-workforce_espanol_final",
@@ -2856,7 +2866,7 @@
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Help for immigrants",
-      "modified": "2020-05-18T16:01:15",
+      "modified": "2020-05-18T18:48:52",
       "tags": [],
       "category": "guide immigrant californians",
       "isFragment": false,
@@ -2865,8 +2875,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "b17ee26f05147e2adadb9d3a46f5ee1d23d81be8",
-      "github_sha": "251c936cd173c17b48b62684a90eea2acca92d0c"
+      "wp_sha": "658cbed050a7ff3b200b0ff516d773dba131fa24",
+      "github_sha": "5081978ba76ab2371642b99b6bef575d7b717422"
     },
     {
       "slug": "guide-immigrant-californians-ar",
@@ -4892,7 +4902,7 @@
       "id": 3333,
       "filename": "stats-new",
       "pagetitle": "stats-new",
-      "modified": "2020-05-18T18:46:28",
+      "modified": "2020-05-18T18:52:57",
       "tags": [
         "do-not-crawl",
         "fragment"
@@ -4904,8 +4914,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "87b39c91e86745496f41ac4954c49fc25dc06c5f",
-      "github_sha": "ea1a63b597cdcdf603535d44a10c68973966b776"
+      "wp_sha": "fd0e289d6a81eb12166dc8eb8366a1296e1b3698",
+      "github_sha": "dba24b6260f780d9f9f02b59515bfb22cf084629"
     },
     {
       "slug": "stats-test",
