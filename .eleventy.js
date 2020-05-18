@@ -54,11 +54,6 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
-  // while I am creating the wordpressposts collection
-  // can I loop throught the translatedposts collection
-  // find item with the existing url?
-  // and then skip it...
-  
   //Process wordpress posts
   eleventyConfig.addCollection("wordpressposts", function(collection) {
     const FolderName = 'wordpress-posts';
