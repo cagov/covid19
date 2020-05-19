@@ -86,7 +86,11 @@
       </div>
       <div class="container-fluid bg-secondary-covid-darker">
         <div class="container pt-3 text-center-mobile">
-          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+          {% if langFilePostfix === "" %}
+            {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+          {% else %}
+            {% include "../translated-posts/stats" + langFilePostfix + ".html" %}
+          {% endif %}
         </div>
       </div>
 
@@ -94,7 +98,11 @@
     <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
       <div class="container">
         <div class="col-md-12 row alert-left js-disclaimer ml-0">
-          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
+          {% if langFilePostfix === "" %}
+            {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
+          {% else %}
+            {% include "../translated-posts/new" + langFilePostfix + ".html" %}
+          {% endif %}
         </div>
       </div>
     </div>
