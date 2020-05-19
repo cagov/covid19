@@ -1674,20 +1674,21 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-05-18T20:32:49",
+      "modified": "2020-05-18T23:06:20",
       "tags": [
         "do-not-crawl",
+        "translate",
         "translate-priority"
       ],
       "category": "contact tracing",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": false,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "75c868d37db9756ec365b3cf313d9f53cea22c47",
-      "github_sha": "addb91a816b27b2c0e1c2ae37cb7da64cf3294ff"
+      "wp_sha": "c087d34afe42693661f8de97b878da41b76d3319",
+      "github_sha": "56b060275fc9c3f764235efbe94f8bf4c153849c"
     },
     {
       "slug": "contracts",
@@ -2390,7 +2391,7 @@
       "id": 1040,
       "filename": "footer-data",
       "pagetitle": "Footer Data &#8211; English",
-      "modified": "2020-05-14T16:21:44",
+      "modified": "2020-05-19T00:07:57",
       "tags": [
         "table-data"
       ],
@@ -2401,8 +2402,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "589b39acf7c62cef944a27ab1dbf45c1df98df78",
-      "github_sha": "56b69640e832c1c3c19d8c21832542372e75c7f2"
+      "wp_sha": "9181401634966193cac8457e51814f4b8863899f",
+      "github_sha": "fca876d8e12d07dc67effe8f3a5c507efa802cf4"
     },
     {
       "slug": "footer-data-ar",
@@ -3194,7 +3195,7 @@
       "id": 1372,
       "filename": "home-header",
       "pagetitle": "home header",
-      "modified": "2020-05-18T20:54:27",
+      "modified": "2020-05-19T03:33:21",
       "tags": [
         "fragment",
         "translate",
@@ -3207,8 +3208,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a86899d074e40276186fb6b0dc0b86021ac48c15",
-      "github_sha": "7698d212900b42351322bc5cf76f8aae5287a668"
+      "wp_sha": "076549f6b8550cb1c9b727a33901a16ae04e63fb",
+      "github_sha": "81fd690674b07e38a927ddca63fb1d949af74d64"
     },
     {
       "slug": "home-header-ar",
@@ -3277,7 +3278,7 @@
       "id": 3341,
       "filename": "home-header-new",
       "pagetitle": "home-header-new",
-      "modified": "2020-05-16T20:53:52",
+      "modified": "2020-05-18T23:14:13",
       "tags": [
         "do-not-crawl",
         "fragment"
@@ -3289,8 +3290,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "351c28f270804406d1fcd5119d3356753f2e9252",
-      "github_sha": "8ea47c831f02903999c71c18812e0f7d60ef4575"
+      "wp_sha": "245f866c171fa3734e26e40abf8ab940f27cc420",
+      "github_sha": "d79e4025efebcda5afd263003a6ff7ea0b64854b"
     },
     {
       "slug": "home-header-tl",
@@ -4324,7 +4325,7 @@
       "id": 3416,
       "filename": "preview",
       "pagetitle": "Preview",
-      "modified": "2020-05-18T17:57:09",
+      "modified": "2020-05-19T16:21:00",
       "tags": [
         "do-not-crawl"
       ],
@@ -4335,8 +4336,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "288431a43383f3d24bbad531acb45947b5fe4f32",
-      "github_sha": "79a6232c5b77ae333412ca1bae0213e78fbbdeed"
+      "wp_sha": "cef6b808ce87c2602b64b5a5b79db1bbd111ff0a",
+      "github_sha": "f42beadcac344ab560ec26a93331d7b7ef68956a"
     },
     {
       "slug": "pruebas-y-tratamiento",
@@ -4611,7 +4612,7 @@
       "id": 2554,
       "filename": "roadmap",
       "pagetitle": "Resilience Roadmap",
-      "modified": "2020-05-16T17:30:53",
+      "modified": "2020-05-19T16:09:59",
       "tags": [
         "translate",
         "translate-priority"
@@ -4623,15 +4624,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "75488c866db3781687f6761ef6afca5e2d42cc60",
-      "github_sha": "46d66d6fb081a6da8bdc74caac250a202e7f0180"
+      "wp_sha": "65240034705944472f36112898b5729b6e7389d9",
+      "github_sha": "7eeb772a591eef86870636b93fed9deecfcde809"
     },
     {
       "slug": "roadmap-counties",
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance",
-      "modified": "2020-05-18T19:05:46",
+      "modified": "2020-05-19T02:52:02",
       "tags": [
         "translate",
         "translate-priority"
@@ -4643,8 +4644,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "e36258c82244cb9b668774039da4ea5549231110",
-      "github_sha": "255a5070b97214e1bd073584604a6eae169f24ef"
+      "wp_sha": "21f20bf2941d9ca42be1dfe9ca7cdbc8d9b46e7c",
+      "github_sha": "50c33a8a263a887a97a8b894ab39d80441805284"
     },
     {
       "slug": "safety-in-public-places",
@@ -4784,7 +4785,7 @@
       "id": 54,
       "filename": "state-local-resources",
       "pagetitle": "Get local information",
-      "modified": "2020-05-06T20:46:42",
+      "modified": "2020-05-19T00:20:41",
       "tags": [
         "translate"
       ],
@@ -4795,15 +4796,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "9818ab79e46f857147f704427fc4ae7db34c0d66",
-      "github_sha": "51bc5d962156d9df66ac3014dfc5aa30a3787a45"
+      "wp_sha": "7e0f285da52336c12091e371d18903d640805d53",
+      "github_sha": "7657410dd827179140841ce713237707ed16d320"
     },
     {
       "slug": "stats",
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-05-18T20:55:39",
+      "modified": "2020-05-19T00:32:53",
       "tags": [
         "fragment"
       ],
@@ -4814,8 +4815,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "240f001f3e8dc31ae7e1be0e2816b410d7c10bd4",
-      "github_sha": "687bacca0c597f5ad4b5cc01edab862042606a7f"
+      "wp_sha": "e36dbc4ef2acf73030a69b32431346465e27cc1b",
+      "github_sha": "51093b5f6dbe28c9692a5f520d7a92216eb9874a"
     },
     {
       "slug": "stats-ar",
@@ -5715,7 +5716,7 @@
       "id": 722,
       "filename": "workers",
       "pagetitle": "Workers",
-      "modified": "2020-05-07T00:29:13",
+      "modified": "2020-05-18T23:15:00",
       "tags": [],
       "category": "workers",
       "isFragment": false,
@@ -5724,8 +5725,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "282328033ec12cb5014adb1a351ad80037990391",
-      "github_sha": "02c2e5a478415d718603a4d2fd4710dc5e3c22df"
+      "wp_sha": "77834f77ce7b1b4ed5f7057a8285d81910c0640e",
+      "github_sha": "8614974f4fe5bf22f9e73c811346c576a0642e00"
     },
     {
       "slug": "workers-ar",

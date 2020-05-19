@@ -1,3 +1,4 @@
+{% set langFilePostfix = tags | langFilePostfix %}
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -34,88 +35,78 @@
     {% set css %}
     {% include "built.css" %}
     {% endset %}
-    {% set fileExtension = (tags | langRecord).filepostfix.toLowerCase() | default("") %}
     <style>
       {{css | cssmin | safe}}
     </style>
   </head>
   <body>
     {% include "header.njk" %}
+    <div class="container">
+      <div class="row">
+        <div id="side-nav" class="p-0">
+          <cwds-accordion class="d-sm-block d-md-none">
+            <div id="nav-card" class="card mb-n3">
+              <button
+                  class="card-header accordion-alpha mobile-menu bg-secondary-covid"
+                  type="button"
+                  aria-expanded="false"
+                >
+                <div class="accordion-title">
+                  <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu
+                  </div>
+              </button>
+              <div class="card-container collapsed">
+                <div id="body-nav" class="card-body">
+                  {% include "page-nav.njk" %}
+                </div>
+              </div>
+            </div>
+          </cwds-accordion>
+        </div>
+      </div>
+    </div>
     <main id="main">
-      <div id="top" class="container-fluid jumbotron inverse-hyperlink mb-0">
+      <div id="top" class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header" + fileExtension + ".html" %}
+              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
             </div>
 
-            <div class="col-lg-4 text-right">
+            <div class="col-lg-4 text-center pt-1">
               <a href="https://toolkit.covid19.ca.gov/"
                 aria-label="california for all your actions save lives visit california for all website"
                 ><img
                   src="/img/california-for-all.png"
-                  class="rounded float-left img-fluid mr-5"
-                  alt="california for all your actions save lives visit california for all website"
-/></a>
-              <a
-                href="https://www.cdph.ca.gov/programs/cid/dcdc/pages/immunization/ncov2019.aspx"
-                aria-label="visit department of public health website"
-                ><img
-                  src="/img/cdph-logo.png"
-                  class="rounded float-left img-fluid pt-3"
-                  alt="visit department of public health website"
-/></a>
+                  class="rounded img-fluid "
+                  alt="california for all your actions save lives visit california for all website"/></a>
             </div>
           </div>
         </div>
       </div>
+      <div class="container-fluid bg-secondary-covid-darker">
+        <div class="container pt-3 text-center-mobile">
+          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+        </div>
+      </div>
 
-      <div class="container">
-        <div class="row">
-          <div id="side-nav" class="p-0">
-            <cwds-accordion class="d-sm-block d-md-none">
-              <div id="nav-card" class="card mb-n3">
-                <button
-                  class="card-header accordion-alpha mobile-menu"
-                  type="button"
-                  aria-expanded="false"
-                >
-                  <div class="accordion-title">
-                    <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu
-                  </div>
-                </button>
-                <div class="card-container collapsed">
-                  <div id="body-nav" class="card-body">
-                    {% include "page-nav.njk" %}
-                  </div>
-                </div>
-              </div>
-            </cwds-accordion>
-          </div>
-        </div>
-      </div>
-      <div class="container-fluid bg-highlight pb-3 pt-3">
-        <div class="container">
-          {% include "../wordpress-posts/stats" + fileExtension + ".html" %}
-        </div>
-      </div>
     </div>
-    <div class="container-fluid pb-3 pt-3 bg-light mb-3">
+    <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
       <div class="container">
-        <div class="col-md-12 alert-left js-disclaimer ml-0">
-          {% include "../wordpress-posts/new" + fileExtension + ".html" %}
+        <div class="col-md-12 row alert-left js-disclaimer ml-0">
+          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
         </div>
       </div>
     </div>
     {{ content | safe }}
     {% include "home-nav-links.njk" %}
-    {% include "dodonot.njk" %}
+    <!--{% include "dodonot.njk" %}-->
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
-        {% include "../wordpress-posts/cali-working" + fileExtension + ".html" %}
+        {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
       </div>
     </div>
-    {% include "../wordpress-posts/find-services" + fileExtension + ".html" %}
+    {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}
     {% include "./news-feed-home.html" %}
   </main>
   {% include "footer.njk" %}
