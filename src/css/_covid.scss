@@ -580,12 +580,20 @@ a:visited.card {
 
 @media (min-width: 768px) {
   .jumbo-img {
-    background-image: url('/img/StateCapitol_Blue.jpg');
+    background-image: url('/img/StateCapitol_Blue.webp');
     background-size: cover;
     background-color: #003d9d;
   }
   .no-webp .jumbo-img {
     background-image: url('/img/StateCapitol_Blue.jpg');
+  }
+  .jumbo-img.county-img {
+    background-image: url('/img/CaliforniaCounties.webp');
+    background-size: cover;
+    background-color: #003d9d;
+  }
+  .no-webp .jumbo-img.county-img {
+    background-image: url('/img/CaliforniaCounties.jpg');
   }
 }
 
