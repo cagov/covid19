@@ -473,7 +473,13 @@ a.list-group-item.list-group-item-action {
 		    margin-right: .5rem;
 	}
 
+a.card {
+    text-decoration: none!important;
+}
 
+a:visited.card {
+    text-decoration: none!important;
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
