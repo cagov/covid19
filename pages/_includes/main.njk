@@ -86,11 +86,7 @@
       </div>
       <div class="container-fluid bg-secondary-covid-darker">
         <div class="container pt-3 text-center-mobile">
-          {% if langFilePostfix === "" %}
-            {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
-          {% else %}
-            {% include "../translated-posts/stats" + langFilePostfix + ".html" %}
-          {% endif %}
+          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
         </div>
       </div>
 
