@@ -10,18 +10,16 @@ addtositemap: true
    .aside { 
        position: relative!important;
  }
-
+ #answersNow .accordion-title {
+    font-size: 1.3rem;
+    color: #0066ab;
+ }
 </style>
 
 <h2>Search this website</h2>
 <label id="SearchInput" for="q">Enter your search text</label>
-<form action="/Search/" class="form-inline">
 
-  <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
-	<button type="submit"  class="btn btn-primary">Search</button>	  
-</form>
-
-<gcse:searchresults-only></gcse:searchresults-only>
+<div class="gcse-search" enableAutoComplete="false"></div>
 
 <script>
 	const cx = '003358532045999200914:uxxka6d3pge';
@@ -32,27 +30,49 @@ addtositemap: true
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
-	const urlParam = function (name) {
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-			.exec(window.location.search);
-
-		return (results !== null) ? results[1] || 0 : false;
+	const myWebSearchStartingCallback = (gname, query) => {
+		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
+		if(window.location.port !== '80') {
+			currentHost += `:${window.location.port}`;
+		}
+		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
+		document.querySelector('#answersNow').innerHTML = "";
+		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
+		.then(response => response.json())
+		.then(data => {
+			let answers = [...data[0].answers];
+			if(answers[0].questions.length > 0) {
+				let html = `<h4>Quick answers</h4>
+					${answers.map(function(a) {
+						if(a.questions.length > 0) {
+							return `<cwds-accordion>
+								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
+										<div class="accordion-title">${a.questions[0]}</div>
+									</button>
+									<div class="card-container collapsed">
+										<div class="card-body">
+											<p>${a.answer}</p>
+										</div>
+									</div>
+								</div>
+							</cwds-accordion>`;
+						} else {
+							return '';
+						}
+				}).join('	')}`
+				if(!document.querySelector('#answersNow')) {
+					document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
+				}
+				document.querySelector('#answersNow').innerHTML = html;
+			}
+		});
 	}
-	const urlq = urlParam('q')||'';
-  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
-  document.querySelector('input[name=q]').value = query;
-</script> 
+	window.myImageSearchStartingCallbackName = myWebSearchStartingCallback;
 
-
-<script>
-	//----- Removing some styling attributes after load
-setTimeout(function(){
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellspacing");
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellpadding");
-document.getElementById("gs_id50").removeAttribute("cellpadding"); 
-document.getElementById("gs_id50").removeAttribute("cellspacing"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellpadding"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellspacing"); 
-			  
-}, 2000);
+	window.__gcse || (window.__gcse = {});
+    window.__gcse.searchCallbacks = {
+      web: {
+        starting: myWebSearchStartingCallback,
+      },
+    };
 </script> 
