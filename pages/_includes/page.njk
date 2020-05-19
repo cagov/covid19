@@ -1,104 +1,110 @@
 <!doctype html>
 <html {{ tags | htmllangattributes | safe }}>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ meta | safe }}">
-  <meta name="author" content="{{ author | safe }}">
-  <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
-  {%- if tags | includes("do-not-crawl") %}
-  <meta name="robots" content="noindex">
-  {%- endif %}
-  <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
-  
-  <meta content="{{ title | safe }}" property="og:title">
-  {% if page.fileSlug === "healthcorps" %}
-    <meta content="https://covid19.ca.gov/img/Health-Corps-Website-Banner.jpg" property="og:image">
-  {% elseif page.fileSlug === "roadmap" or page.fileSlug === "industry-guidance" or page.fileSlug === "roadmap-counties" %}
-    <meta content="https://covid19.ca.gov/img/recovery-roadmap-share.jpg" property="og:image">
-  {% else %}
-    <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
-  {% endif %}
-  <meta content="{{ meta | safe }}" property="og:description">
-  <meta property="og:url" content="https://covid19.ca.gov{{ page.url }}">
-  <meta name="twitter:card" content="summary_large_image">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ meta | safe }}">
+    <meta name="author" content="{{ author | safe }}">
+    <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
+    {%- if tags | includes("do-not-crawl") %}
+      <meta name="robots" content="noindex">
+    {%- endif %}
+    <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
 
-  <link rel="preconnect" href="https://www.google-analytics.com/">
-  <link href="https://covid19.ca.gov{{ page.url }}" rel="canonical">
+    <meta content="{{ title | safe }}" property="og:title">
+    {% if page.fileSlug === "healthcorps" %}
+      <meta content="https://covid19.ca.gov/img/Health-Corps-Website-Banner.jpg" property="og:image">
+    {% elseif page.fileSlug === "roadmap" or page.fileSlug === "industry-guidance" or page.fileSlug === "roadmap-counties" %}
+      <meta content="https://covid19.ca.gov/img/recovery-roadmap-share.jpg" property="og:image">
+    {% else %}
+      <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
+    {% endif %}
+    <meta content="{{ meta | safe }}" property="og:description">
+    <meta property="og:url" content="https://covid19.ca.gov{{ page.url }}">
+    <meta name="twitter:card" content="summary_large_image">
 
-  {% include "favicons.njk" %}
-	<link rel="manifest" href="/img/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-  {% set css %}
+    <link rel="preconnect" href="https://www.google-analytics.com/">
+    <link href="https://covid19.ca.gov{{ page.url }}" rel="canonical">
+
+    {% include "favicons.njk" %}
+    <link rel="manifest" href="/img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    {% set css %}
     {% include "built.css" %}
-  {% endset %}
-  <style>
-    {{ css | cssmin | safe }}
-  </style>
-  <!-- WC polyfill for legacy Edge -->
-  <script>
-  (function() {
-    if(window.fetch&&!window.customElements){var s=document.createElement("script");s.type="text/javascript",s.src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.14.3/document-register-element.js",document.head.appendChild(s)}
-  })();
-  </script>
-</head>
-<body>
-{% include "header.njk" %}
-{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
-{% set JSON = JSONraw | jsonparse %}
-{% set Terms = JSON.Table3 %}
-<main id="main">
-    <div id="top" class="container-fluid jumbotron inverse-hyperlink ">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-10">
-                  <h1>{{ title | safe }}</h1>
-                  {% if page.fileSlug !== "search" %}
-                    <p class="small-text">{{Terms[5].Text}} {{ publishdate | formatDate }}</p>
-                  {% endif %}
-              </div>
+    {% endset %}
+    <style>
+      {{css | cssmin | safe}}
+    </style>
+    <!-- WC polyfill for legacy Edge -->
+    <script>
+      (function () {
+        if (window.fetch && !window.customElements) {
+          var s = document.createElement("script");
+          s.type = "text/javascript",
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.14.3/document-register-element.js",
+          document
+            .head
+            .appendChild(s)
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    {% include "header.njk" %}
+    {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
+    {% set JSON = JSONraw | jsonparse %}
+    {% set Terms = JSON.Table3 %}
+    <main id="main">
+      
+      <div id="top" class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10">
+              <h1>{{ title | safe }}</h1>
+              {% if page.fileSlug !== "search" %}
+                <p class="small-text">{{Terms[5].Text}}
+                  {{ publishdate | formatDate }}</p>
+              {% endif %}
             </div>
           </div>
-    </div>
+        </div>
+      </div>
 
-    <div class="container">
-      <div class="row">
+      <div class="container">
+        <div class="row flex-row-reverse flex-md-wrap-reverse flex-lg-wrap-reverse">
 
-        
+          <div class="col-lg-4 sticky-wrapper">
+            <div id="side-nav"  class="aside">
 
-        <div class="col-lg-4 sticky-wrapper">
-          <div id="side-nav"  class="aside">
-                   
-                  <div class="d-none d-sm-none d-md-block">
+              <div class="d-none d-sm-none d-md-block">
+                {% include "page-nav.njk" %}
+              </div>
+
+              <cwds-accordion class="d-sm-block d-md-none">
+                <div id="nav-card" class="card">
+                  <button class="card-header accordion-alpha mobile-menu" type="button" aria-expanded="false">
+                    <div class="accordion-title">
+                      <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
+                  </button>
+                  <div class="card-container collapsed">
+                    <div id="body-nav" class="card-body">
                       {% include "page-nav.njk" %}
                     </div>
-
-
-           <cwds-accordion class="d-sm-block d-md-none">
-              <div id="nav-card" class="card">
-                <button class="card-header accordion-alpha mobile-menu" type="button" aria-expanded="false">
-                    <div class="accordion-title"><span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
-                </button>
-                <div class="card-container collapsed">
-                  <div id="body-nav" class="card-body">
-                    {% include "page-nav.njk" %}
                   </div>
                 </div>
-              </div>
-            </cwds-accordion>
+              </cwds-accordion>
+            </div>
           </div>
-        </div>  
 
-        <div class="col-lg-8">      
-          {{ content | safe  }}
+          <div class="col-lg-8">
+            {{ content | safe  }}
+          </div>
+
         </div>
-
-
-    </div>
-  </div>
-</main>
-{% include "footer.njk" %}
-</body>
+      </div>
+    </main>
+    {% include "footer.njk" %}
+  </body>
 </html>

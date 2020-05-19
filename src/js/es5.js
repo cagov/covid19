@@ -6,3 +6,5 @@ import '@cagov/accordion';
 import '@cagov/step-list';
 import './alerts/index.js';
 import './telehealth/index.js';
+import './plasma/index.js';
+import './feature-detect/webp.js';
