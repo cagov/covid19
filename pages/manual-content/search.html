@@ -18,8 +18,15 @@ addtositemap: true
 
 <h2>Search this website</h2>
 <label id="SearchInput" for="q">Enter your search text</label>
+<form action="/Search/" class="form-inline">
 
-<div class="gcse-search" enableAutoComplete="false"></div>
+  <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
+	<button type="submit"  class="btn btn-primary">Search</button>	  
+</form>
+
+<div id="answersNow"></div>
+
+<gcse:searchresults-only></gcse:searchresults-only>
 
 <script>
 	const cx = '003358532045999200914:uxxka6d3pge';
@@ -30,7 +37,19 @@ addtositemap: true
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
-	const myWebSearchStartingCallback = (gname, query) => {
+	const urlParam = function (name) {
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+			.exec(window.location.search);
+
+		return (results !== null) ? results[1] || 0 : false;
+	}
+	const urlq = urlParam('q')||'';
+  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
+  document.querySelector('input[name=q]').value = query;
+</script> 
+
+<script>	
+	const myWebSearchStartingCallback = (query) => {
 		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
 		if(window.location.port !== '80') {
 			currentHost += `:${window.location.port}`;
@@ -60,19 +79,9 @@ addtositemap: true
 							return '';
 						}
 				}).join('	')}`
-				if(!document.querySelector('#answersNow')) {
-					document.querySelector(".gsc-search-box.gsc-search-box-tools").insertAdjacentHTML('afterend','<div id="answersNow"></div>');
-				}
 				document.querySelector('#answersNow').innerHTML = html;
 			}
 		});
 	}
-	window.myImageSearchStartingCallbackName = myWebSearchStartingCallback;
-
-	window.__gcse || (window.__gcse = {});
-    window.__gcse.searchCallbacks = {
-      web: {
-        starting: myWebSearchStartingCallback,
-      },
-    };
+	myWebSearchStartingCallback(query)
 </script> 
