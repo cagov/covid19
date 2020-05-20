@@ -85,7 +85,12 @@
       "modified": "2020-05-20T00:20:37",
       "wp_path": "/wp-content/uploads/2020/05/82390097-a0f88b80-99f2-11ea-9c36-b46e24ae3012-300x118.jpg",
       "github_path": "src/img/wp/82390097-a0f88b80-99f2-11ea-9c36-b46e24ae3012-300x118.jpg",
-      "mime_type": "image/jpeg"
+      "mime_type": "image/jpeg",
+      "usedbyslugs": [
+        "contact-tracing"
+      ],
+      "wp_sha": "910930d12b33c08a3794acd6879482a5ef1a1e4e",
+      "github_sha": "7faab2528debb34fa3405e67dca538dfbc8f4b8b"
     },
     {
       "slug": "82390097-a0f88b80-99f2-11ea-9c36-b46e24ae3012",
@@ -103,7 +108,12 @@
       "modified": "2020-05-20T00:20:37",
       "wp_path": "/wp-content/uploads/2020/05/82390097-a0f88b80-99f2-11ea-9c36-b46e24ae3012.jpg",
       "github_path": "src/img/wp/82390097-a0f88b80-99f2-11ea-9c36-b46e24ae3012.jpg",
-      "mime_type": "image/jpeg"
+      "mime_type": "image/jpeg",
+      "usedbyslugs": [
+        "contact-tracing"
+      ],
+      "wp_sha": "ab93e4d3a7f8d268041886b65df5f1e8ac715337",
+      "github_sha": "a101efca23c125982f02af85629a475653394a9c"
     },
     {
       "slug": "android-icon-192x192",
@@ -1709,7 +1719,7 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-05-19T22:30:43",
+      "modified": "2020-05-20T00:34:30",
       "tags": [
         "do-not-crawl",
         "translate",
@@ -1722,8 +1732,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "f3fe2b7512e5227404b86a42877b00cb9e2aaa0a",
-      "github_sha": "d7d480dd9107d2a7f09ddbc74b09941fe1e8751e"
+      "wp_sha": "13beabd607377072ed07ba4ec88be2505baa081b",
+      "github_sha": "e6daf1658f8217c054a0908607f21bc7c8de341d"
     },
     {
       "slug": "contracts",
