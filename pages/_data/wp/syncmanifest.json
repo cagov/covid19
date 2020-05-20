@@ -422,12 +422,7 @@
       "modified": "2020-05-15T00:00:38",
       "wp_path": "/wp-content/uploads/2020/04/COVID_immigrant_guidance_CH_Simplified.pdf",
       "github_path": "src/img/wp/covid_immigrant_guidance_ch_simplified.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "guia-californianos-inmigrantes"
-      ],
-      "wp_sha": "581817c12a1a3b1642498e82d207492419dbbdd8",
-      "github_sha": "68ad424e81523550785fc6fae964e95e2f3157ab"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "covid_immigrant_guidance_korean",
@@ -436,12 +431,7 @@
       "modified": "2020-05-14T23:59:02",
       "wp_path": "/wp-content/uploads/2020/04/COVID_immigrant_guidance_Korean.pdf",
       "github_path": "src/img/wp/covid_immigrant_guidance_korean.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "guia-californianos-inmigrantes"
-      ],
-      "wp_sha": "1936e22edc211692045c8f4d693f713b47f2a250",
-      "github_sha": "7729ad58513db7023d347380a633df2e63172395"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "covid_immigrant_guidance_tagalog",
@@ -452,7 +442,6 @@
       "github_path": "src/img/wp/covid_immigrant_guidance_tagalog.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "bcf4d24bfb65849a7e78980917692b55c976dac7",
@@ -467,7 +456,6 @@
       "github_path": "src/img/wp/covid_immigrant_guidance_vietnamese.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "a6c9b5a80d51044e04b170dfd2289140dbc08d97",
@@ -482,7 +470,6 @@
       "github_path": "src/img/wp/covid-19-immigrant-guidance_ch-traditional-accessible-2.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "aa29f89e06437a2137d8054c14b9a5c9e5050fd6",
@@ -540,12 +527,7 @@
       "modified": "2020-04-15T16:18:27",
       "wp_path": "/wp-content/uploads/2020/04/COVID-19-IMMIGRANT-GUIDANCE-Final-Accessible-1.pdf",
       "github_path": "src/img/wp/covid-19-immigrant-guidance-final-accessible-1.pdf",
-      "mime_type": "application/pdf",
-      "usedbyslugs": [
-        "guide-immigrant-californians-zh-hant"
-      ],
-      "wp_sha": "e06bb11284e2a866e684db76cc12f770023abdd2",
-      "github_sha": "a17099ef60a45ff3840a16ab3cb30a1bd475005a"
+      "mime_type": "application/pdf"
     },
     {
       "slug": "cropped-ms-icon-310x310-1-png",
@@ -940,7 +922,6 @@
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "contact-tracing",
-        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "742e284622b8905cfcc45d1b470d58d499539c54",
@@ -955,7 +936,6 @@
       "github_path": "src/img/wp/listos_covid_19_immigrant_guidance_es_daf.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
-        "guia-californianos-inmigrantes",
         "guide-immigrant-californians"
       ],
       "wp_sha": "868ca889f4696d111918b9d6df5af317029f5c45",
@@ -2893,25 +2873,6 @@
       "github_sha": "cf12188baca05e5ce88c7337c2d7e01ea34f26e9"
     },
     {
-      "slug": "guia-californianos-inmigrantes",
-      "id": 1383,
-      "filename": "guia-californianos-inmigrantes",
-      "pagetitle": "Guía para los Californianos inmigrantes",
-      "modified": "2020-05-15T00:00:38",
-      "tags": [
-        "lang-es"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "es",
-      "wp_sha": "fb18791fce7614a0e055d29c0e53763a7594aa3f",
-      "github_sha": "382593e7f539dc89f6b42b131f30522186f6700e"
-    },
-    {
       "slug": "guide-immigrant-californians",
       "id": 1378,
       "filename": "guide-immigrant-californians",
@@ -2927,120 +2888,6 @@
       "lang": "en",
       "wp_sha": "d80b69d3467021bb7124f6132972de06c71a6afb",
       "github_sha": "b7688e016d51e9192fe24471b5d5e9934bbe9245"
-    },
-    {
-      "slug": "guide-immigrant-californians-ar",
-      "id": 2284,
-      "filename": "guide-immigrant-californians-ar",
-      "pagetitle": "دليل لسكان كاليفورنيا من المهاجرين",
-      "modified": "2020-05-15T20:00:44",
-      "tags": [
-        "lang-ar"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "ar",
-      "wp_sha": "fae1eefb283f9c34e5464626e3610e02a09ede62",
-      "github_sha": "bfdaec970ee74ee6756df2943d582513c1dc30b4"
-    },
-    {
-      "slug": "guide-immigrant-californians-ko",
-      "id": 2166,
-      "filename": "guide-immigrant-californians-ko",
-      "pagetitle": "캘리포니아 이민자들을 위한 가이드",
-      "modified": "2020-05-18T16:07:32",
-      "tags": [
-        "lang-ko"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "ko",
-      "wp_sha": "693e3062b140d62d68e09dc84bf788f9ecffd0e9",
-      "github_sha": "4483e2dded48c72d7c91de921ea46225ad0b8311"
-    },
-    {
-      "slug": "guide-immigrant-californians-tl",
-      "id": 2154,
-      "filename": "guide-immigrant-californians-tl",
-      "pagetitle": "Gabay sa mga Imigrante sa California",
-      "modified": "2020-05-14T23:41:14",
-      "tags": [
-        "lang-tl"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "tl",
-      "wp_sha": "67fa320e8029bfcf5db555fbb95c2cf931201303",
-      "github_sha": "4dc61c602fb78b0cf5ad3e4fd418dfd0e298a4d1"
-    },
-    {
-      "slug": "guide-immigrant-californians-vi",
-      "id": 2396,
-      "filename": "guide-immigrant-californians-vi",
-      "pagetitle": "Hướng dẫn cho Người nhập cư ở California",
-      "modified": "2020-05-14T17:53:46",
-      "tags": [
-        "lang-vi"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "vi",
-      "wp_sha": "312aae7f7aa27b58b69b25d262ff687deaefadfd",
-      "github_sha": "540950fb52109ddcee17b753a8258e5e99d856f9"
-    },
-    {
-      "slug": "guide-immigrant-californians-zh-hans",
-      "id": 2099,
-      "filename": "guide-immigrant-californians-zh-hans",
-      "pagetitle": "加州移民指南",
-      "modified": "2020-05-14T17:54:46",
-      "tags": [
-        "lang-zh-Hans"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "zh-Hans",
-      "wp_sha": "ff2a95ced198c9571e0961100f53b530c94ef1f2",
-      "github_sha": "b7600de92ada50eb285e0881a64d632838987acb"
-    },
-    {
-      "slug": "guide-immigrant-californians-zh-hant",
-      "id": 2116,
-      "filename": "guide-immigrant-californians-zh-hant",
-      "pagetitle": "加州移民指南",
-      "modified": "2020-05-01T17:21:37",
-      "tags": [
-        "lang-zh-Hant"
-      ],
-      "category": "guide immigrant californians",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "zh-Hant",
-      "wp_sha": "b3c8e58e7984dbd0f7946d4289a9d4046a7a7310",
-      "github_sha": "2dece317df5c1d6516cd3a8dd5d4817ae59a68ac"
     },
     {
       "slug": "healthcare",
