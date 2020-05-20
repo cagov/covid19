@@ -182,7 +182,7 @@
       "slug": "californiaconnected_infographic_english_05192020-1",
       "file": "californiaconnected_infographic_english_05192020-1.pdf",
       "id": 3551,
-      "modified": "2020-05-20T00:27:33",
+      "modified": "2020-05-20T01:51:35",
       "wp_path": "/wp-content/uploads/2020/05/CaliforniaConnected_Infographic_English_05192020.1.pdf",
       "github_path": "src/img/wp/californiaconnected_infographic_english_05192020-1.pdf",
       "mime_type": "application/pdf"
@@ -391,7 +391,12 @@
       "modified": "2020-05-19T22:29:28",
       "wp_path": "/wp-content/uploads/2020/05/Contact-Tracing.png",
       "github_path": "src/img/wp/Contact-Tracing.png",
-      "mime_type": "image/png"
+      "mime_type": "image/png",
+      "usedbyslugs": [
+        "contact-tracing"
+      ],
+      "wp_sha": "49902fb74741e50a7fa4f765bee136a57816ec6e",
+      "github_sha": "4c435b96bbf72089ff2255ec94e945b306a4b790"
     },
     {
       "slug": "county_crisis_services_and_suicide_prev-_hotlines_4-08-2020",
@@ -1719,7 +1724,7 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-05-20T00:55:31",
+      "modified": "2020-05-20T01:55:20",
       "tags": [
         "do-not-crawl",
         "translate",
@@ -1732,8 +1737,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "33087a70e004e8af58bbf06c9ca0f6580d3379ad",
-      "github_sha": "af4662567973591425845d46bcbf592e336df90e"
+      "wp_sha": "d5f1c6a7a01f3162938c538e32ae93e3ddf3b562",
+      "github_sha": "aee7c8e84a8ee6eeb6c8691906a50df2bb5a6c2e"
     },
     {
       "slug": "contracts",
