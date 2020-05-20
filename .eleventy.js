@@ -4,7 +4,7 @@ const { JSDOM } = jsdom;
 const fs = require('fs')
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
-const statsData = JSON.parse(fs.readFileSync('pages/wordpress-posts/stats-data.json','utf8')).Table1[0];
+const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
