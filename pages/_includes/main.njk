@@ -102,9 +102,46 @@
         </div>
       </div>
     </div>
-    {{ content | safe }}
+    <!--{{ content | safe }}
     {% include "home-nav-links.njk" %}
-    <!--{% include "dodonot.njk" %}-->
+    {% include "dodonot.njk" %}-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 id="what-to-do" class="text-center text-primary"><span class="ca-gov-icon-hand-heart text-primary"> </span> Get help</h2>
+      <div class="list-group-flush pb-5">
+        <a href="/get-financial-help/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Get financial help</a>
+          <a href="/business-and-employers/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Businesses and employers</a>
+          <a href="/business-and-employers/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Housing and homelessness</a>
+          <a href="/workers/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Workers</a>
+          <a href="/childcare/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Find child care</a>
+           <a href="/food-resources/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Getting food</a>
+          <a href="/hotline/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          COVID-19 Hotline</a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2>Health information</h2>
+      <div class="list-group-flush pb-5">
+        <a href="/" class="list-group-item list-group-item-action"
+          ><span
+            class="ca-gov-icon-caret-right text-secondary"
+            aria-hidden="true"
+          ></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
         {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
