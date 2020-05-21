@@ -52,7 +52,8 @@
     "build:ancient": "webpack --config src/js/webpack.config.es5.js",
     "watch": "onchange 'src/**' -- npm run rebuild",
     "rebuild": "npm run build && touch pages/_includes/main.njk",
-    "local": "npm run build && run-p watch start"
+    "local": "npm run build && run-p watch start",
+    "compress:img": "cd src/build && node img.js"
   },
   "repository": {
     "type": "git",
