@@ -18,6 +18,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         env:
-          PUBLISH_DIR: ./docs 
-          PUBLISH_BRANCH: deploy_staging
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy_staging
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
