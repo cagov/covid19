@@ -19,5 +19,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
           PUBLISH_DIR: ./docs 
-          PUBLISH_BRANCH: deploy_staging
+          PUBLISH_BRANCH: deploy_staging_test
+          keep_files: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
