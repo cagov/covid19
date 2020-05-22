@@ -28,6 +28,7 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-webp": "^5.1.0",
     "jsdom": "^16.2.2",
+    "md5": "^2.2.1",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
@@ -42,7 +43,7 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "serve": "npx @11ty/eleventy --serve --formats=html,njk --input ./pages --output ./docs",
+    "serve": "npx @11ty/eleventy --serve --quiet --formats=html,njk --input ./pages --output ./docs",
     "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
     "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts && npm run build:survey && npm run build:telehealth && npm run build:plasma",
     "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
