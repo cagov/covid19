@@ -5,6 +5,7 @@ const fs = require('fs')
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
+let miniCSS = '';
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -102,7 +103,10 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
+    if(!miniCSS) {
+      miniCSS = new CleanCSS({}).minify(code).styles;
+    }
+    return miniCSS;
   });
 
   // Format dates within templates.
@@ -171,7 +175,8 @@ module.exports = function(eleventyConfig) {
       const dom = new JSDOM(html);
       const document = dom.window.document;
 
-      let lang = document.querySelector('html').lang.split('-')[0].toLowerCase();
+      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
+
       if(lang !== "en") {
         for(const image of document.querySelectorAll(`.${imageclass}`)) {
           image.classList.remove(imageclass);
