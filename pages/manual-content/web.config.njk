@@ -85,7 +85,12 @@ eleventyExcludeFromCollections: true
         <remove name="X-Powered-By" />
       </customHeaders>
     </httpProtocol>
-
+    <httpErrors errorMode="Custom" defaultResponseMode="File" >
+      <remove statusCode="404" />
+      <remove statusCode="500" />
+      <error statusCode="404" path="404\index.html" />
+      <error statusCode="500" path="500\index.html" />
+    </httpErrors>
   </system.webServer>
   <location path="img">
     <system.webServer>
