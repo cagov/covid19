@@ -17,9 +17,7 @@ jobs:
           args: --formats=html,njk --input ./pages --output ./docs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        env:
-          PublishBranch: deploy_staging
-          PublishDir: ./docs
-          publish_branch: deploy_staging
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          publish_branch: deploy_staging
