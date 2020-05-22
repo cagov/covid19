@@ -45,7 +45,7 @@ module.exports = function(eleventyConfig) {
 
           if(!item.data.title) {
             //No title means fragment
-            console.log(`Skipping fragment ${item.inputPath}`)
+            // console.log(`Skipping fragment ${item.inputPath}`)
             item.outputPath = false;
           }
         };
@@ -71,14 +71,14 @@ module.exports = function(eleventyConfig) {
 
             if(!item.data.title) {
               //No title means fragment
-              console.log(`Skipping fragment ${item.inputPath}`)
+              // console.log(`Skipping fragment ${item.inputPath}`)
               item.outputPath = false;
             }
           } else {
             //Turn this page off since we already have a translation
             output.push(item);
             item.outputPath = false;
-            console.log(`Skipping traslated page ${item.inputPath}`)
+            // console.log(`Skipping traslated page ${item.inputPath}`)
           }
         };
     });
@@ -157,6 +157,42 @@ module.exports = function(eleventyConfig) {
   
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
+
+  function localizeUrl(url, lang) {
+    if(url.indexOf('_en.') > -1) {
+      return url.replace('_en.',`_${lang}.`)
+    }
+    return url;
+  }
+  eleventyConfig.addTransform("findimagestolocalize", function(html, outputPath) {
+    const imageclass = 'localize-me';
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(imageclass)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+
+      let lang = document.querySelector('html').lang.split('-')[0].toLowerCase();
+      if(lang !== "en") {
+        for(const image of document.querySelectorAll(`.${imageclass}`)) {
+          image.classList.remove(imageclass);
+          if (image.classList.length===0) image.removeAttribute('class');
+          if(image.nodeName === "FIGURE") {
+            image.querySelectorAll('img').forEach(internalImg => {
+              internalImg.src = localizeUrl(internalImg.src, lang);
+            })
+            image.querySelectorAll('source').forEach(internalImg => {
+              internalImg.srcset = localizeUrl(internalImg.srcset, lang);
+            })
+          }
+          if(image.nodeName === "IMG") {
+            image.src = localizeUrl(image.src, lang);
+          }
+        }
+        return dom.serialize();  
+      }
+    }
+    return html;
+  });
+
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
