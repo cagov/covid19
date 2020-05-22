@@ -6,7 +6,10 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
-let htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
+let htmlmap = [];
+if(fs.existsSync('pages/_data/htmlmap.json')) {
+  htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
+}
 let miniCSS = '';
 
 module.exports = function(eleventyConfig) {
