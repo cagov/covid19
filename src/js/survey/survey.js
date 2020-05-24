@@ -2,7 +2,7 @@ import surveyTemplate from './template.js'
 
 export default function () {
   let shouldDisplay = somePercent();
-  if(false) { // temporarily disabling survey because surveymonkey is down
+  if(shouldDisplay) {
     reportEvent('surveyDisplay');
     let html = surveyTemplate();
     let target = document.querySelector('.js-survey-display');
