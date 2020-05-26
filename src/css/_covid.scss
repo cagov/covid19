@@ -7,37 +7,46 @@
 .navbar-inverse,
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  background: #1172b3;
+  background: #003d9d;
 }
 
-.jumbotron,
-.jumbotron h1,
-.jumbotron .lead {
-  color: #fff;
-  background: #0066ab;
+
+.jumbotron {
+	background-color: #003d9d;
+	color: white;
 }
+
+h1 {
+	color: #003d9d;
+}
+
+.jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron p, .jumbotron .lead  {
+	color: #fff;
+}
+
+
 
 a.btn {
-  background: #0066ab;
+  background: #003d9d;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #0066ab;
-  background: #0066ab;
-  border-color: #0066ab;
+  background-color: #003d9d;
+  background: #003d9d;
+  border-color: #003d9d;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #005d9c;
-  border-color: #005d9c;
+  background-color: #0257d5;
+  border-color: #0257d5;
 }
 
 a.btn:hover {
   color: #fff;
-  background-color: #005d9c;
-  border-color: #005d9c;
+  background-color: #0257d5;
+  border-color: #0257d5;
 }
 
 .bd-navbar .navbar-nav .nav-link {
@@ -81,8 +90,8 @@ a.list-group-item {
 
 h2 {
   padding-bottom: 10px;
-  /* border-left: 3px #1172b3 solid; 
-    border-bottom: 3px #1172b3 solid;
+  /* border-left: 3px #003d9d solid; 
+    border-bottom: 3px #003d9d solid;
     width: fit-content;
     padding: .5rem .5rem .5rem 0rem;*/
 }
@@ -104,12 +113,24 @@ h4 {
 }
 
 .alphabar {
-  background-color: #0066ab;
-  background: #0066ab;
+  background-color: #003d9d;
+  background: #003d9d;
 }
 
 .text-primary {
-  color: #0066ab !important;
+  color: #003d9d !important;
+}
+
+.text-white a {
+    color: white!important;
+}
+
+.text-primary a {
+    color: #003d9d!important;
+}
+
+.text-white a.action-link {
+    color: #003d9d!important;
 }
 
 .wrimagecard.wrimagecard-topimage a:focus {
@@ -122,7 +143,7 @@ h4 {
 }
 
 a.list-group-item.list-group-item-action {
-  color: #0066ab;
+  color: #003d9d;
 }
 
 .mobile-menu {
@@ -132,7 +153,7 @@ a.list-group-item.list-group-item-action {
 }
 
 .navbar img {
-  max-width: 60px;
+  max-width: 70px;
 }
 
 .translate {
@@ -163,8 +184,8 @@ a.list-group-item.list-group-item-action {
 }
 
 .list-group-item.list-group-item-action.guide.active {
-  background: #0066ab;
-  border-color: #0066ab;
+  background: #003d9d;
+  border-color: #003d9d;
   color: #fff;
 }
 
@@ -173,7 +194,7 @@ a.list-group-item.list-group-item-action {
 }
 
 a.list-group-item.list-group-item-action.guide {
-  color: #0066ab;
+  color: #003d9d;
 }
 
 a.list-group-item.list-group-item-action {
@@ -197,7 +218,7 @@ a.list-group-item.list-group-item-action {
   padding: 1em;
   color: #fff !important;
   text-align: center;
-  background-color: #0066ab;
+  background-color: #003d9d;
 }
 .skippy-text {
   padding: 0.5em;
@@ -209,7 +230,7 @@ a.list-group-item.list-group-item-action {
   padding: 1em;
   color: #fff !important;
   text-align: center;
-  background-color: #0066ab;
+  background-color: #003d9d;
 }
 .skippy-text {
   padding: 0.5em;
@@ -245,8 +266,9 @@ a.list-group-item.list-group-item-action {
 }
 
 .jumbotron img {
-  max-width: 100px;
+  max-width: 130px;
 }
+
 
 .jumbotron a:focus {
   outline: 2px solid #fff;
@@ -254,7 +276,7 @@ a.list-group-item.list-group-item-action {
 
 a .wrimagecard-topimage_header h3 {
   text-decoration: underline;
-  color: #1470b0;
+  color: #003d9d;
   font-size: 1.5rem;
 }
 
@@ -272,15 +294,24 @@ a:hover .wrimagecard-topimage_header h3 {
 }
 
 .bg-primary {
-  background-color: #0066ab;
-  background: #0066ab;
+  background-color: #003d9d;
+  background: #003d9d;
 }
+
+.bg-secondary-covid {
+    background-color: #f2f5fc;
+}
+
+.bg-secondary-covid-darker {
+    background-color: #dae0ef;
+}
+
 
 a,
 a,
 a:hover,
 a:visited {
-  color: #0066ab;
+  color: #003d9d;
 }
 
 .wrimagecard p {
@@ -302,7 +333,7 @@ li.list-group-item.alpha-footer {
 .footer a:hover,
 .footer a:visited {
   color: #000;
-  background-image: linear-gradient(to right, #0066ab 50%, transparent 50%);
+  background-image: linear-gradient(to right, #003d9d 50%, transparent 50%);
   background-repeat: repeat-x;
   background-size: 2px 1px;
   background-position: center bottom 5%;
@@ -348,12 +379,12 @@ a:focus {
 }
 
 a .card-title {
-  color: #0066ab;
+  color: #003d9d;
 }
 
 .action-link {
-  color: #0066ab;
-  border-bottom: 2px solid #0066ab;
+  color: #003d9d;
+  border-bottom: 2px solid #003d9d;
   border-radius: 0.25rem;
 }
 
@@ -365,7 +396,7 @@ a .card-title {
 
 .card-text a,
 a:visited {
-  background-image: linear-gradient(to right, #0066ab 50%, transparent 50%);
+  background-image: linear-gradient(to right, #003d9d 50%, transparent 50%);
   background-repeat: repeat-x;
   background-size: 2px 1px;
   background-position: center bottom 5%;
@@ -393,7 +424,7 @@ button:focus {
   text-align: center;
   vertical-align: sub;
   font-size: 2rem;
-  color: #0066ab;
+  color: #003d9d;
 }
 
 .accordion-title {
@@ -442,7 +473,13 @@ a.list-group-item.list-group-item-action {
 		    margin-right: .5rem;
 	}
 
+a.card {
+    text-decoration: none!important;
+}
 
+a:visited.card {
+    text-decoration: none!important;
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
@@ -472,7 +509,7 @@ a.list-group-item.list-group-item-action {
   }
 
   .wrimagecard-topimage_header.text-center {
-    text-align: left !important;
+        min-height: auto!important;
   }
 
   .sticky-wrapper {
@@ -532,8 +569,35 @@ a.list-group-item.list-group-item-action {
     padding: 0!important;
   }
 	
-//-----------end of Small breakpoint
+  .text-center-mobile {
+	text-align: center!important;
 }
+	
+}
+
+//-----------end of Small breakpoint
+
+
+@media (min-width: 768px) {
+  .jumbo-img {
+    background-image: url('/img/StateCapitol_Blue.webp');
+    background-size: cover;
+    background-color: #003d9d;
+  }
+  .no-webp .jumbo-img {
+    background-image: url('/img/StateCapitol_Blue.jpg');
+  }
+  .jumbo-img.county-img {
+    background-image: url('/img/CaliforniaCounties.webp');
+    background-size: cover;
+    background-color: #003d9d;
+  }
+  .no-webp .jumbo-img.county-img {
+    background-image: url('/img/CaliforniaCounties.jpg');
+  }
+}
+
+
 @media (max-width: 992px) {
 
  .navbar-nav.mobile {
@@ -554,8 +618,11 @@ a.list-group-item.list-group-item-action {
 
 @media (min-width: 1200px) {
 	.h4, h4 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 	
+	.h3, h3 {
+    font-size: 1.5rem;
+}
 }
 

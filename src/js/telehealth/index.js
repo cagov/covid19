@@ -3,8 +3,9 @@ import '@cagov/lookup';
 
 import telehealthResults from './template.js';
 // listen for custom event, then
-const searchEl = document.querySelector("cwds-lookup");
-searchEl.addEventListener("showResults", (evt) => {
-  telehealthResults(evt.detail);
-});
+if(document.querySelector("cwds-lookup")) {
+  document.querySelector("cwds-lookup").addEventListener("showResults", (evt) => {
+    telehealthResults(evt.detail);
+  });  
+}
 

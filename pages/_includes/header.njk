@@ -1,4 +1,4 @@
-{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set Terms = JSON.Table3 %}
 <header>
@@ -9,11 +9,11 @@
   <script type="module">
   {% include "survey.js" %}
   </script>
-	<nav class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0">
+	<nav class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
   <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
-    <a href="https://covid19.ca.gov/"><img src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse"><a href="/" aria-label="home">{{Terms[2].Text}}</a></div>
+    <a href="https://covid19.ca.gov/"><img class="pr-3" src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse bold"><a href="/" aria-label="home">COVID19.CA.GOV</a></div>
     <ul class="navbar-nav ml-sm-auto mobile ">
-      <li class="nav-item">
+      <li class="nav-item pl-2">
         <a class="nav-link mr-0 pr-0" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="California public health Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" alt="">    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
 

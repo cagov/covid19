@@ -87,10 +87,15 @@
       "subsections" : [
         { 
           "url": "#faq", 
-          "lang-en": "Frequently asked questions",
-          "lang-es": "Preguntas frecuentes",
+          "lang-en": "Questions and answers",
+          "lang-es": "Preguntas y respuestas",
           "lang-zh-Hant": "常見問題與解答",
           "lang-zh-Hans": "常见问题与解答"
+        },
+        { 
+          "url": "#political", 
+          "lang-en": "Political activity",
+          "lang-es": "Actividades políticas"
         },
         { 
           "url": "#business", 
@@ -219,16 +224,128 @@
         "slug": "roadmap",
         "title": "Resilience Roadmap"
       },
-      "subsections" : [
-        { 
-          "url": "/industry-guidance/", 
-          "lang-en": "Statewide guidance"
-        },
-        { 
-          "url": "/roadmap-counties/", 
-          "lang-en": "County by county guidance"
-        }
-      ]
+      "lang-es": {
+        "url": "/roadmap-es/",
+        "slug": "roadmap-es",
+        "title": "Hoja de ruta de resistencia"
+      },
+      "lang-ar": {
+        "url": "/roadmap-ar/",
+        "slug": "roadmap-ar",
+        "title": "خارطة طريق المرونة والقدرة على التكيف"
+      },
+      "lang-ko": {
+        "url": "/roadmap-ko/",
+        "slug": "roadmap-ko",
+        "title": "복구 로드맵"
+      },
+      "lang-vi": {
+        "url": "/roadmap-vi/",
+        "slug": "roadmap-vi",
+        "title": "Lộ Trình Hồi Phục"
+      },
+      "lang-tl": {
+        "url": "/roadmap-tl/",
+        "slug": "roadmap-tl",
+        "title": "Plano sa Pagiging Resilyente"
+      },
+      "lang-zh-Hant": {
+        "url": "/roadmap-zh-hant/",
+        "slug": "roadmap-zh-hant",
+        "title": "恢復路線圖"
+      },
+      "lang-zh-Hans": {
+        "url": "/roadmap-zh-hans/",
+        "slug": "roadmap-zh-hans",
+        "title": "恢复路线图"
+      },
+      "subsections" : []
+    },
+    {
+      "lang-en": {
+        "url": "/industry-guidance/",
+        "slug": "industry-guidance",
+        "title": "Statewide guidance"
+      },
+      "lang-tl": {
+        "url": "/industry-guidance-tl/",
+        "slug": "industry-guidance-tl",
+        "title": "Pambuong industriya na gabay para mabawasan ang panganib"
+      },
+      "lang-zh-Hans": {
+        "url": "/industry-guidance-zh-hans/",
+        "slug": "industry-guidance-zh-hans",
+        "title": "为减少风险的全州行业指引"
+      },
+      "lang-zh-Hant": {
+        "url": "/industry-guidance-zh-hant/",
+        "slug": "industry-guidance-zh-hant",
+        "title": "全州降低風險之行業指引"
+      },
+      "lang-vi": {
+        "url": "/industry-guidance-vi/",
+        "slug": "industry-guidance-vi",
+        "title": "Hướng dẫn dành cho các ngành trên toàn tiểu bang để giảm thiểu nguy cơ"
+      },
+      "lang-es": {
+        "url": "/industry-guidance-es/",
+        "slug": "industry-guidance-es",
+        "title": "Guía estatal para las industrias para reducir el riesgo"
+      },
+      "lang-ko": {
+        "url": "/industry-guidance-ko/",
+        "slug": "industry-guidance-ko",
+        "title": "위험성을 줄이기 위한 주 전역 산업 지침"
+      },
+      "lang-ar": {
+        "url": "/industry-guidance-ar/",
+        "slug": "industry-guidance-ar",
+        "title": "الإرشادات الخاصة بالحد من المخاطر والموجهة لمجال الصناعة على مستوى الولاية"
+      },
+      "subsections" : []
+    },
+    {
+      "lang-en": {
+        "url": "/roadmap-counties/",
+        "slug": "roadmap-counties",
+        "title": "County by county guidance"
+      },
+      "lang-tl": {
+        "url": "/roadmap-counties-tl/",
+        "slug": "roadmap-counties-tl",
+        "title": "Pagkakaiba-iba ng County"
+      },
+      "lang-zh-Hans": {
+        "url": "/roadmap-counties-zh-hans/",
+        "slug": "roadmap-counties-zh-hans",
+        "title": "县差异"
+      },
+      "lang-zh-Hant": {
+        "url": "/roadmap-counties-zh-hant/",
+        "slug": "roadmap-counties-zh-hant",
+        "title": "縣寬免"
+      },
+      "lang-vi": {
+        "url": "/roadmap-counties-vi/",
+        "slug": "roadmap-counties-vi",
+        "title": "Sự khác nhau giữa các quận"
+      },
+      "lang-es": {
+        "url": "/roadmap-counties-es/",
+        "slug": "roadmap-counties-es",
+        "title": "Excepciones por condado"
+      },
+      "lang-ko": {
+        "url": "/roadmap-counties-ko/",
+        "slug": "roadmap-counties-ko",
+        "title": "카운티 분산"
+      },
+      "lang-ar": {
+        "url": "/roadmap-counties-ar/",
+        "slug": "roadmap-counties-ar",
+        "title": "الأمر المغاير الخاص بالمقاطعة"
+      },
+      "subsections" : []
     },
     {
       "lang-en": {
@@ -363,7 +480,7 @@
       "lang-en": {
         "url": "/guide-immigrant-californians/",
         "slug": "guide-immigrant-californians",
-        "title": "Guide for Immigrant Californians"
+        "title": "Get help for immigrants"
       },
       "lang-es": {
         "title": "Guía para los Californianos inmigrantes",
@@ -619,6 +736,49 @@
     },
     {
       "lang-en": {
+        "url": "/childcare/",
+        "slug": "childcare",
+        "title": "Find child care"
+      },
+      "lang-es": {
+        "title": "Encuentre opciones de cuidado infantil cerca de usted",
+        "slug": "childcare-es",
+        "url": "/la-educacion/"
+      },
+      "lang-ar": {
+        "url": "/childcare-ar/",
+        "slug": "childcare-ar",
+        "title": "العثور على خيارات خدمات رعاية أطفال بالقرب منك"
+      },
+      "lang-zh-Hans": {
+        "url": "/childcare-zh-hans/",
+        "slug": "childcare-zh-hans",
+        "title": "找到离您最近的托儿服务选择"
+      },
+      "lang-zh-Hant": {
+        "url": "/childcare-zh-hant/",
+        "slug": "childcare-zh-hant",
+        "title": "查找附近的托兒服務選擇"
+      },
+      "lang-tl": {
+        "url": "/childcare-tl/",
+        "slug": "childcare-tl",
+        "title": "Maghanap ng mga opsyon sa pangangalaga ng bata na malapit sa iyo"
+      },
+      "lang-vi": {
+        "url": "/childcare-vi/",
+        "slug": "childcare-vi",
+        "title": "Tìm kiếm các dịch vụ chăm sóc trẻ em gần nơi quý vị sinh sống"
+      },
+      "lang-ko": {
+        "url": "/childcare-ko/",
+        "slug": "childcare-ko",
+        "title": "인근 보육 서비스 찾기"
+      },
+      "subsections" : []
+    },
+    {
+      "lang-en": {
         "url": "/healthcare/",
         "slug": "healthcare",
         "title": "Health care"
@@ -700,6 +860,50 @@
         "url": "/housing-and-homelessness-ko/",
         "slug": "housing-and-homelessness-ko",
         "title": "주택과 노숙자"
+      },
+      "subsections" : []
+    },
+
+    {
+      "lang-en": {
+        "url": "/discrimination/",
+        "slug": "discrimination",
+        "title": "Fight discrimination"
+      },
+      "lang-es": {
+        "title": "Combata la discriminación",
+        "slug": "discrimination-es",
+        "url": "/discrimination-es/"
+      },
+      "lang-ar": {
+        "url": "/discrimination-ar/",
+        "slug": "discrimination-ar",
+        "title": "مكافحة التمييز"
+      },
+      "lang-zh-Hans": {
+        "url": "/discrimination-zh-hans/",
+        "slug": "discrimination-zh-hans",
+        "title": "反对歧视"
+      },
+      "lang-zh-Hant": {
+        "url": "/discrimination-zh-hant/",
+        "slug": "discrimination-zh-hant",
+        "title": "對抗歧視"
+      },
+      "lang-tl": {
+        "url": "/discrimination-tl/",
+        "slug": "discrimination-tl",
+        "title": "Diskriminasyon sa hindi pagkakaunawaan"
+      },
+      "lang-vi": {
+        "url": "/discrimination-vi/",
+        "slug": "discrimination-vi",
+        "title": "Chống phân biệt đối xử"
+      },
+      "lang-ko": {
+        "url": "/discrimination-ko/",
+        "slug": "discrimination-ko",
+        "title": "차별에 맞섭시다"
       },
       "subsections" : []
     },
@@ -829,6 +1033,49 @@
         "url": "/healthcorps-zh-hans/",
         "slug": "healthcorps-zh-hans",
         "title": "加州医疗队"
+      },
+      "subsections" : []
+    },
+    {
+      "lang-en": {
+        "url": "/hotline/",
+        "slug": "hotline",
+        "title": "Statewide COVID19 Hotline"
+      },
+      "lang-es": {
+        "url": "/hotline-es/",
+        "slug": "hotline-es",
+        "title": "Línea directa de COVID-19 Estatal"
+      },
+      "lang-tl": {
+        "url": "/hotline-tl/",
+        "slug": "hotline-tl",
+        "title": "Pambuong Estado na Hotline sa COVID19"
+      },
+      "lang-ar": {
+        "url": "/hotline-ar/",
+        "slug": "hotline-ar",
+        "title": "الخط الساخن COVID19 على مستوى الولاية"
+      },
+      "lang-ko": {
+        "url": "/hotline-ko/",
+        "slug": "hotline-ko",
+        "title": "주 전역 COVID-19 핫라인"
+      },
+      "lang-vi": {
+        "url": "/hotline-vi/",
+        "slug": "hotline-vi",
+        "title": "Đường Dây Nóng COVID-19 Toàn Tiểu Bang"
+      },
+      "lang-zh-Hant": {
+        "url": "/hotline-zh-hant/",
+        "slug": "hotline-zh-hant",
+        "title": "全州COVID19熱線"
+      },
+      "lang-zh-Hans": {
+        "url": "/hotline-zh-hans/",
+        "slug": "hotline-zh-hans",
+        "title": "全州COVID19热线"
       },
       "subsections" : []
     }

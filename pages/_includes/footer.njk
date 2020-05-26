@@ -8,7 +8,7 @@
   gtag('config','UA-21974567-38');
 </script>
 
-{% set JSONraw %}{% include "../wordpress-posts/" + langFiles[tags | lang].Footer %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
@@ -51,6 +51,9 @@
 {% endif %}
 {% if page.fileSlug.indexOf('telehealth') > -1 %}
 <script type="module">{% include "telehealth.js" %}</script>
+{% endif %}
+{% if page.fileSlug === "plasma-test" or page.fileSlug === "plasma" or page.fileSlug === "donate-plasma" %}
+<script type="module">{% include "plasma.js" %}</script>
 {% endif %}
 
 <script nomodule src="/js/es5.js"></script>

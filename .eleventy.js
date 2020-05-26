@@ -54,11 +54,6 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
-  // while I am creating the wordpressposts collection
-  // can I loop throught the translatedposts collection
-  // find item with the existing url?
-  // and then skip it...
-  
   //Process wordpress posts
   eleventyConfig.addCollection("wordpressposts", function(collection) {
     const FolderName = 'wordpress-posts';
@@ -230,6 +225,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix.toLowerCase() || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;

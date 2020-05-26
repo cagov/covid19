@@ -77,8 +77,8 @@ li,
 /* Colors */
 
 .bg-primary {
-	background-color: #0066ab !important;
-	background: #0066ab !important;
+	background-color: #003d9d !important;
+	background: #003d9d !important;
 }
 
 /* Pagination */
@@ -131,7 +131,7 @@ a:hover,
     background: #F5F9FF;
     display: inline-block;
     padding: .5rem .5rem;
-    padding-left: 1.75rem;
+    //padding-left: 1.75rem;
     font-size: 1.2rem;
     text-decoration: none;
     border-bottom: 2px solid #004abc;
@@ -142,7 +142,7 @@ a:hover,
 
 .action-link,
 a.action-link::after {
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA5IDEyIiB3aWR0aD0iOXB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHRpdGxlLz48ZGVzYy8+PGRlZnMvPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiPjxnIGZpbGw9IiMwMDAwMDAiIGlkPSJDb3JlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjYwLjAwMDAwMCwgLTkwLjAwMDAwMCkiPjxnIGlkPSJjaGV2cm9uLXJpZ2h0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNjAuNTAwMDAwLCA5MC4wMDAwMDApIj48cGF0aCBkPSJNMSwwIEwtMC40LDEuNCBMNC4yLDYgTC0wLjQsMTAuNiBMMSwxMiBMNyw2IEwxLDAgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+");
+    //background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA5IDEyIiB3aWR0aD0iOXB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHRpdGxlLz48ZGVzYy8+PGRlZnMvPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiPjxnIGZpbGw9IiMwMDAwMDAiIGlkPSJDb3JlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjYwLjAwMDAwMCwgLTkwLjAwMDAwMCkiPjxnIGlkPSJjaGV2cm9uLXJpZ2h0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNjAuNTAwMDAwLCA5MC4wMDAwMDApIj48cGF0aCBkPSJNMSwwIEwtMC40LDEuNCBMNC4yLDYgTC0wLjQsMTAuNiBMMSwxMiBMNyw2IEwxLDAgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+");
     background-size: 1rem;
     background-repeat: no-repeat;
     background-position-x: .4rem;
@@ -488,6 +488,7 @@ a.navbar-brand:visited {
 .wrimagecard-topimage_header {
     background: #f1f1f1;
     padding: 20px;
+	padding-top: 10%;
 }
 
 .wrimagecard-topimage a {
@@ -527,7 +528,7 @@ a.navbar-brand:visited {
 .jumbotron,
 .jumbotron h1,
 .jumbotron .lead {
-    color: #000;
+    color: #fff;
 }
 
 .jumbotron.alpha {
@@ -951,12 +952,12 @@ label.custom-control-label {
 
 button#dropdown-menu-button {
     border: 1px solid #f1f1f1;
-    background: #0066ab;
+    background: #003d9d;
     color: white;
 }
 button#dropdown-menu-button:hover {
-    background-color: #005d9c;
-    border-color: #005d9c;
+    background-color: #0257d5;
+    border-color: #0257d5;
 }
 
 button#dropdown-menu-button:focus {
@@ -1007,7 +1008,7 @@ button#dropdown-menu-button:focus {
 }
 
 .bg-primary-accordion {
-    background-color: #0066ab!important;
+    background-color: #003d9d!important;
     color: #fff!important;
 	border-radius: .25rem!important;
 }
