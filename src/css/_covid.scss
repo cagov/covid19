@@ -179,6 +179,19 @@ a.list-group-item.list-group-item-action {
 .navbar .container-fluid {
   justify-content: end !important;
 }
+
+.top-nav {
+    font-size: 1.3rem;
+}
+
+.top-nav .nav-link:focus, .top-nav .nav-link:hover {
+    text-decoration: none;
+    background: #d5e6ff;
+}
+
+
+
+
 .border-bold {
   border-width: 2px;
 }
