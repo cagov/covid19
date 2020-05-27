@@ -36,11 +36,11 @@ export default function applyAccordionListeners() {
 
   document.body.addEventListener('click',function(event) {
     // close all dropdowns
-    if(!event.target.classList.contains('dropdown-toggle')) {
-      let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
-      openDropDowns.forEach(d => {
+    let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
+    openDropDowns.forEach(d => {
+      if(d.parentNode !== event.target.parentNode) {
         d.classList.remove('show');
-      })  
-    }
+      }
+    })
   })
 }
