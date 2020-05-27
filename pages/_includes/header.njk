@@ -32,7 +32,7 @@
             </svg>
           </a>
         </li>
-        <li class="nav-item .d-none .d-sm-block .d-md-none">
+        <li class="nav-item">
           <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
         </li>
         <li class="nav-item mr-0 pr-0">
@@ -62,8 +62,8 @@
   <nav class="d-none d-md-block container-fluid navbar navbar-expand-lg navbar-light bg-secondary-covid">
     <div class="container collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item d-lg-none d-xl-block">
+          <a class="nav-link" href="/">Home</a>
         </li>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-1").classList.toggle("show")' 
@@ -147,10 +147,7 @@
             <a class="dropdown-item" href="https://toolkit.covid19.ca.gov/"> Spread the word (Media toolkit)</a>
             <a class="dropdown-item" href="/food-resources/#top">Getting food</a>
           </div>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="/search/">Search</a>
-        </li>
+
       </ul>
     </div>
   </nav>
