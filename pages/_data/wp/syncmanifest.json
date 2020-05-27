@@ -1312,12 +1312,7 @@
       "modified": "2020-04-23T22:52:19",
       "wp_path": "/wp-content/uploads/2020/04/samplefile.txt",
       "github_path": "src/img/wp/samplefile.txt",
-      "mime_type": "text/plain",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "2d50f4f20473c83ae69fbf21962156b86c01556c",
-      "github_sha": "b4ebb2914bcf223406d52365f3fe3dc6455a6cf1"
+      "mime_type": "text/plain"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1326,12 +1321,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM-300x66.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-300x66.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1349,12 +1339,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM-768x168.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-768x168.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1363,12 +1348,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "sexual-assault-human-trafficking-service-providers",
@@ -1598,19 +1578,20 @@
       "id": 375,
       "filename": "development-sample",
       "pagetitle": "Development Sample",
-      "modified": "2020-05-07T22:11:38",
+      "modified": "2020-05-27T20:54:18",
       "tags": [
-        "do-not-crawl"
+        "do-not-crawl",
+        "table-data"
       ],
       "category": "Do Not Deploy",
       "isFragment": false,
-      "isTableData": false,
+      "isTableData": true,
       "addToSitemap": false,
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1ef3b252b9357f4901f171962ddd2b0060c22824",
-      "github_sha": "a41a5eefd4d244ff978c065468c7512290f3750c"
+      "wp_sha": "e8ab42e4847cb697a5195e97c60f8fecdd989eb3",
+      "github_sha": "c57133e03db366f99cc544731df160c1c07ca53a"
     },
     {
       "slug": "discrimination",
