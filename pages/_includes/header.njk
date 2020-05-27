@@ -7,29 +7,37 @@
   </a>
   <div class="js-survey-display"></div>
   <script type="module">
-  {% include "survey.js" %}
+    {% include "survey.js" %}
   </script>
-	<nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
-  <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
-    <a href="https://covid19.ca.gov/"><img class="pr-3" src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse bold"><a href="/" aria-label="home">COVID19.CA.GOV</a></div>
-    <ul class="navbar-nav ml-sm-auto mobile ">
-      <li class="nav-item pl-2">
-        <a class="nav-link mr-0 pr-0" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="California public health Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" alt="">    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
+  <nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
+    <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
+      <a href="https://covid19.ca.gov/"><img class="pr-3" src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a>
+      <div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse bold">
+        <a href="/" aria-label="home">COVID19.CA.GOV</a>
+      </div>
+      <ul class="navbar-nav ml-sm-auto mobile ">
+        <li class="nav-item pl-2">
+          <a class="nav-link mr-0 pr-0" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="California public health Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" alt="">
+              <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path>
+            </svg>
 
-        </a>
-      </li>
-      <li class="nav-item mr-0 pr-0">
-        <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="California public health Twitter">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="presentation" alt=""><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path></svg>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
-      </li>
-      <li class="nav-item mr-0 pr-0">
-        <div class="dropdown">
-          <button
+          </a>
+        </li>
+        <li class="nav-item mr-0 pr-0">
+          <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="California public health Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="presentation" alt="">
+              <title>Twitter</title>
+              <path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item .d-none .d-sm-block .d-md-none">
+          <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
+        </li>
+        <li class="nav-item mr-0 pr-0">
+          <div class="dropdown">
+            <button
             class="btn translate dropdown-toggle"
             onclick='document.querySelector(".dropdown-menu").classList.toggle("show")'
             type="button"
@@ -38,42 +46,112 @@
             data-toggle="dropdown"
             id="dropdown-menu-button"
           >
-            {{Terms[4].Text}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
-            {% for item in page | getAltPageRows(tags) %}
-              <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
-            {% endfor %}
-            <a class="dropdown-item" href="/translate/">More...</a>
+              {{Terms[4].Text}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
+              {% for item in page | getAltPageRows(tags) %}
+                <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+              {% endfor %}
+              <a class="dropdown-item" href="/translate/">More...</a>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-<nav class="d-none d-md-block container-fluid navbar navbar-expand-lg navbar-light bg-secondary-covid">
-  <div class="container collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="d-none d-md-block container-fluid navbar navbar-expand-lg navbar-light bg-secondary-covid">
+    <div class="container collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-1").classList.toggle("show")' 
+          type="button" 
+          aria-expanded="false" 
+          aria-haspopup="true" 
+          data-toggle="dropdown" 
+          id="dropdown-menu-button-1">
+          Get Help
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+          <div class="dropdown-menu" id="dropdown-1" aria-labelledby="dropdown-menu-button-1">
+            <a class="dropdown-item" href="/get-financial-help/#top">Financial help</a>
+            <a class="dropdown-item" href="/childcare/#top">Childcare</a>
+            <a class="dropdown-item" href="/guide-immigrant-californians/#top">Help for immigrants</a>
+            <a class="dropdown-item" href="/food-resources/#top">Food</a>
+            <a class="dropdown-item" href="/resources-for-emotional-support-and-well-being/#top">Emotional support</a>
+            <a class="dropdown-item" href="/workers/#top">Help for workers</a>
+            <a class="dropdown-item" href="/business-and-employers/#top">Help for businesses and employers</a>
+          </div>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-2").classList.toggle("show")' 
+          type="button" 
+          aria-expanded="false" 
+          aria-haspopup="true" 
+          data-toggle="dropdown" 
+          id="dropdown-menu-button-2">
+          Health information
+        </a>
+          <div class="dropdown-menu" id="dropdown-2" aria-labelledby="dropdown-menu-button-2">
+            <a class="dropdown-item" href="/symptoms-and-risks/#top">Symptoms and risks</a>
+            <a class="dropdown-item" href="/testing-and-treatment/#top">Testing and treatment</a>
+            <a class="dropdown-item" href="/contact-tracing/#top">Contact tracing</a>
+            <a class="dropdown-item" href="/telehealth/#top">Telehealth</a>
+            <a class="dropdown-item" href="/healthcare/#top">Health care</a>
+            <a class="dropdown-item" href="/masks-and-ppe/#top">Masks and PPE</a>
+            <a class="dropdown-item" href="/manage-stress-for-health/#top">Help for stress</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-3").classList.toggle("show")' 
+          type="button" 
+          aria-expanded="false" 
+          aria-haspopup="true" 
+          data-toggle="dropdown" 
+          id="dropdown-menu-button-3">
+          Working and living safely
+        </a>
+          <div class="dropdown-menu" id="dropdown-3" aria-labelledby="dropdown-menu-button-3">
+            <a class="dropdown-item" href="/stay-home-except-for-essential-needs/#open">What's open</a>
+            <a class="dropdown-item" href="/state-local-resources/#top">Local info and alerts</a>
+            <a class="dropdown-item" href="/education/#top">Education</a>
+            <a class="dropdown-item" href="/public-recreation/#top">Public recreation</a>
+            <a class="dropdown-item" href="/roadmap-counties/#top">County varience</a>
+            <a class="dropdown-item" href="/roadmap/#top">Reopening Roadmap</a>
+            <a class="dropdown-item" href="/industry-guidance/#top">Industry guidance</a>
+            <a class="dropdown-item" href="/contracts/#top">Contracts</a>
+            <a class="dropdown-item" href="/hotline/#top">Hotline</a>
+            <a class="dropdown-item" href="/taxes/#top">Taxes</a>
+            <a class="dropdown-item" href="/housing-and-homelessness/#top">Housing and homelessness</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-4").classList.toggle("show")' 
+          type="button" 
+          aria-expanded="false" 
+          aria-haspopup="true" 
+          data-toggle="dropdown" 
+          id="dropdown-menu-button-4">
+          How you can help
+        </a>
+          <div class="dropdown-menu" id="dropdown-4" aria-labelledby="dropdown-menu-button-4">
+            <a class="dropdown-item" href="/healthcorps/#top">Health corps</a>
+            <a class="dropdown-item" href="/plasma/#top">Plasma donation</a>
+            <a class="dropdown-item" href="/discrimination/#top">Discrimination</a>
+            <a class="dropdown-item" href="https://state-of-california-agency.forms.fm/great-plates-delivered-food-provider-interest-form/forms/7917">Great plates provider form</a>
+            <a class="dropdown-item" href="/recovery-input/#top">Recovery survey</a>
+            <a class="dropdown-item" href="https://serve.ca.gov/" class="list-group-item list-group-item-action text-larger">Volunteer</a>
+            <a class="dropdown-item" href="https://www.engageca.org/">Checking on the elderly</a>
+            <a class="dropdown-item" href="https://tech.covid19.ca.gov/#top">Technology solutions</a>
+            <a class="dropdown-item" href="https://toolkit.covid19.ca.gov/"> Spread the word (Media toolkit)</a>
+            <a class="dropdown-item" href="/food-resources/#top">Getting food</a>
+          </div>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="/search/">Search</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
