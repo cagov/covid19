@@ -7,6 +7,21 @@ export default function applyAccordionListeners() {
     });
   });
 
+  document.querySelectorAll('a').forEach((a) => {
+    // look for and track offsite and pdf links
+    if(a.href.indexOf(window.location.hostname) > -1) {
+      if(a.href.indexOf('.pdf') > -1) {
+        a.addEventListener('click',function() {
+          reportGA('pdf', this.href.split(window.location.hostname)[1])
+        });    
+      }
+    } else {
+      a.addEventListener('click',function() {
+        reportGA('offsite', this.href)
+      })
+    }
+  });
+
   function reportGA(elementType,eventString) {
     if(typeof(gtag) !== 'undefined') {
       gtag('event','click',{'event_category':elementType,'event_label':eventString});
