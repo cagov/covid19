@@ -7,8 +7,10 @@ eleventyExcludeFromCollections: true
 {%- set redirects = JSON.Table1 | selectattr("original_url")  -%}
 <?xml version="1.0" encoding="utf-8"?>
 {%- if redirects | groupby("original_url") | length !== redirects | length %}
+{# duplicate "original_url" in data, throw error #}
 {{ error_web_config_duplicate_original_url() }}
 {% endif -%}
+
 <configuration>
   <system.webServer>
     <staticContent>
