@@ -500,6 +500,11 @@ a:visited.card {
     text-decoration: none!important;
 }
 
+ .top-nav li.nav-item a {
+    text-decoration: none;
+    
+} 
+
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -614,6 +619,25 @@ a:visited.card {
   .no-webp .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.jpg');
   }
+	
+  .top-nav .nav-item {
+    font-size: 1.3rem;
+}
+	
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+	
+		
+ .top-nav .nav-item {
+    font-size: 1.1rem;
+  }
+	
+#dropdown-4 {
+    left: -30%;
+}
+	
+	
 }
 
 
@@ -621,11 +645,6 @@ a:visited.card {
 
  .navbar-nav.mobile {
     margin-left: 0!important;
-  }
-	
-	
- .top-nav .nav-item {
-    font-size: 1.2rem;
   }
 	
 }
