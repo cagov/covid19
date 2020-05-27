@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="utf-8"?>
 {%- if redirects | groupby("original_url") | length !== redirects | length %}
 {# duplicate "original_url" in data, throw error #}
-{{ error_web_config_duplicate_original_url() }}
+{{ 'web.config build fail -> duplicate "original_url" in data' | error }}
 {% endif -%}
 <configuration>
   <system.webServer>
