@@ -33,4 +33,14 @@ export default function applyAccordionListeners() {
         .forEach(y => y.classList.toggle('d-none'));
     });
   });
+
+  document.body.addEventListener('click',function(event) {
+    // close all dropdowns
+    if(!event.target.classList.contains('dropdown-toggle')) {
+      let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
+      openDropDowns.forEach(d => {
+        d.classList.remove('show');
+      })  
+    }
+  })
 }

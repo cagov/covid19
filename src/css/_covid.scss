@@ -190,6 +190,10 @@ a.list-group-item.list-group-item-action {
     background: #d5e6ff;
 }
 
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
 
 
 
@@ -622,6 +626,12 @@ a:visited.card {
  .navbar-nav.mobile {
     margin-left: 0!important;
   }
+	
+	
+ .top-nav .nav-item {
+    font-size: 1.2rem;
+  }
+	
 }
 
 
