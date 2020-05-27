@@ -1312,12 +1312,7 @@
       "modified": "2020-04-23T22:52:19",
       "wp_path": "/wp-content/uploads/2020/04/samplefile.txt",
       "github_path": "src/img/wp/samplefile.txt",
-      "mime_type": "text/plain",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "2d50f4f20473c83ae69fbf21962156b86c01556c",
-      "github_sha": "b4ebb2914bcf223406d52365f3fe3dc6455a6cf1"
+      "mime_type": "text/plain"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1326,12 +1321,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM-300x66.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-300x66.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1349,12 +1339,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM-768x168.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-768x168.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "screen-shot-2020-04-14-at-1-22-42-pm",
@@ -1363,12 +1348,7 @@
       "modified": "2020-04-23T22:39:20",
       "wp_path": "/wp-content/uploads/2020/04/Screen-Shot-2020-04-14-at-1.22.42-PM.png",
       "github_path": "src/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM.png",
-      "mime_type": "image/png",
-      "usedbyslugs": [
-        "development-sample"
-      ],
-      "wp_sha": "13eab75b5e9bef4fb15ad531fd526cccff2a23d0",
-      "github_sha": "f38ff3546bd0d4a69cf7434282e996e1d956e017"
+      "mime_type": "image/png"
     },
     {
       "slug": "sexual-assault-human-trafficking-service-providers",
@@ -1581,7 +1561,7 @@
       "id": 3305,
       "filename": "contracts",
       "pagetitle": "Released COVID-19 Response Contracts",
-      "modified": "2020-05-26T16:01:26",
+      "modified": "2020-05-27T19:41:15",
       "tags": [],
       "category": "Uncategorized",
       "isFragment": false,
@@ -1590,27 +1570,28 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "7ceca58c77e9fdc6947a002f3451b55526c051d3",
-      "github_sha": "98bc2c5f7493220e363dcbab9eee0876d359e4bd"
+      "wp_sha": "b3ba528d5d3bd03cbd81a17ec4499f936218b641",
+      "github_sha": "52188fcd2ab64d0b1a73aae6601f07db14037c50"
     },
     {
       "slug": "development-sample",
       "id": 375,
       "filename": "development-sample",
       "pagetitle": "Development Sample",
-      "modified": "2020-05-07T22:11:38",
+      "modified": "2020-05-27T20:55:06",
       "tags": [
-        "do-not-crawl"
+        "do-not-crawl",
+        "table-data"
       ],
       "category": "Do Not Deploy",
       "isFragment": false,
-      "isTableData": false,
+      "isTableData": true,
       "addToSitemap": false,
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1ef3b252b9357f4901f171962ddd2b0060c22824",
-      "github_sha": "a41a5eefd4d244ff978c065468c7512290f3750c"
+      "wp_sha": "35cbec591fd2542c8ef6105e02fa0f02c3457adf",
+      "github_sha": "f44c926abbc22ce0b40a98526a1f350e91f1e302"
     },
     {
       "slug": "discrimination",
@@ -2030,7 +2011,7 @@
       "id": 606,
       "filename": "get-financial-help",
       "pagetitle": "Get financial help",
-      "modified": "2020-05-06T20:41:47",
+      "modified": "2020-05-27T16:23:01",
       "tags": [
         "translate"
       ],
@@ -2041,8 +2022,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a520c707b54bcebafb3e85d57ef1c40155c2dc6e",
-      "github_sha": "468f69fc27b771adce0662c9e56c9662ac3b966c"
+      "wp_sha": "08bf802939562da4896cda2d644b948a3d1cfea2",
+      "github_sha": "3aa098f38fe0773dfd8dec865fb720b88c9a5e79"
     },
     {
       "slug": "get-local-information-ar",
@@ -3114,7 +3095,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home Q&#038;A",
-      "modified": "2020-05-26T23:37:41",
+      "modified": "2020-05-27T18:38:26",
       "tags": [
         "translate"
       ],
@@ -3125,8 +3106,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "0edf0fcb0ae3d6113eadc8a8a8533467d68df69a",
-      "github_sha": "c7559dbfb4ac0cc30ce3a1be5e0dda718b3f8c74"
+      "wp_sha": "f1dff17c981a38cec691a6a5a6cbec6aadb387aa",
+      "github_sha": "371f5ee2fb6771ecd98a4242d82a2f2068bf875c"
     },
     {
       "slug": "symptoms-and-risks",
@@ -3389,7 +3370,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and treatment",
-      "modified": "2020-05-20T20:04:51",
+      "modified": "2020-05-27T20:54:52",
       "tags": [
         "translate",
         "translate-priority"
@@ -3401,15 +3382,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "30b5585962f2f038f98ab86fc92cae123744d37c",
-      "github_sha": "44a8a736f9d5ce92f159ee431ea2d0685cbffea4"
+      "wp_sha": "5d4644f7589c63a74a208e06d579df53dd6abb44",
+      "github_sha": "789fd86c74d8f19b037b86e68b7842558e3dd16d"
     },
     {
       "slug": "workers",
       "id": 722,
       "filename": "workers",
       "pagetitle": "Workers",
-      "modified": "2020-05-20T22:41:42",
+      "modified": "2020-05-27T00:30:46",
       "tags": [
         "translate"
       ],
@@ -3420,8 +3401,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "d57376235131056fc003704282315377228faaa8",
-      "github_sha": "10ce2d3091d4bc16e6f52462b256aadfccb72686"
+      "wp_sha": "d167a3fdb500f378066c0dd1cac96a184cb4b680",
+      "github_sha": "dbee19dd84b04a8392548766d11e9a74ff0e11e5"
     }
   ]
 }
