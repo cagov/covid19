@@ -186,15 +186,21 @@ a.list-group-item.list-group-item-action {
 }
 
 .top-nav .nav-link:focus, .top-nav .nav-link:hover {
-    text-decoration: none;
-    background: #d5e6ff;
+    background: #e2eeff;
+    border-radius: .25rem;
+}
+
+a.dropdown-item {
+    font-size: 1.1rem;
 }
 
 .navbar-nav .dropdown-menu {
     position: absolute;
 }
 
-
+.show {
+	text-decoration: none!important;
+}
 
 
 .border-bold {
