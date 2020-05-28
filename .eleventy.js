@@ -107,6 +107,17 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+
+  //usage
+  //    {{ 'My Error message' | error }}
+  eleventyConfig.addFilter('error', errorMessage => {
+    if (errorMessage)
+      throw errorMessage;
+    else
+      return null;
+  }
+  );
+
   eleventyConfig.addFilter("cssmin", function(code) {
     if(!miniCSS) {
       miniCSS = new CleanCSS({}).minify(code).styles;
