@@ -127,7 +127,7 @@ export default function getCounties () {
     },
     {
       name: 'San Luis Obispo',
-      url: 'ttp://www.slosheriff.org/reverse_911.php'
+      url: 'https://www.prepareslo.org/en/alert-and-notification-systems.aspx'
     },
     {
       name: 'Santa Barbara',
