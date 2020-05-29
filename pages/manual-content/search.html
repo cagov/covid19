@@ -91,7 +91,7 @@ addtositemap: true
 						}
 				}).join('	')}`
 				document.querySelector('#answersNow').innerHTML = html;
-				// send an event that we got quick answers
+				// send an event that we got quick answers	
 				if(typeof(gtag) !== 'undefined') {
 					gtag('event','search',{'event_category':'got_quick_answers','event_label':query});
 				}
