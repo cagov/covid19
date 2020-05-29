@@ -1559,7 +1559,7 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-05-22T22:22:23",
+      "modified": "2020-05-28T22:07:24",
       "tags": [
         "translate"
       ],
@@ -1570,15 +1570,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "532111f2d2ddd12b294f5560c9b575db4222e619",
-      "github_sha": "d4fc8f7fd1b582c58cf019dcd3adefb010624536"
+      "wp_sha": "a2eea7fe8caffb49ba6e260c4d84b722ab440b32",
+      "github_sha": "ee50cfb988e764e9076b0622f1989788e817e931"
     },
     {
       "slug": "contracts",
       "id": 3305,
       "filename": "contracts",
       "pagetitle": "Released COVID-19 Response Contracts",
-      "modified": "2020-05-27T23:22:44",
+      "modified": "2020-05-28T22:42:54",
       "tags": [],
       "category": "Uncategorized",
       "isFragment": false,
@@ -1587,8 +1587,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "a5d82a93330541416cd87e38ad44209049ced83e",
-      "github_sha": "4841bbb1b0b9c89fdc94701672706d1de9765389"
+      "wp_sha": "1ad6c12bc6222c3d0fb23767a2661b764bb83430",
+      "github_sha": "380e8ba7cac79e093b5f7266420f3053da477fee"
     },
     {
       "slug": "development-sample",
@@ -1829,7 +1829,7 @@
       "id": 1419,
       "filename": "find-services",
       "pagetitle": "find services",
-      "modified": "2020-05-20T22:54:01",
+      "modified": "2020-05-28T22:08:34",
       "tags": [
         "fragment",
         "translate"
@@ -1841,8 +1841,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "aee4098099cdb5005bb7e5849eda04f536abc4f9",
-      "github_sha": "22a34a9ae57c7ede97b5e69f757d3a3d9b07f7fc"
+      "wp_sha": "8c2b59b41c3196f0640e9402de963c27bae0f1b4",
+      "github_sha": "a145136af39ce0c2fa2a4eaf1025df12f46138f9"
     },
     {
       "slug": "food-resources",
@@ -2043,123 +2043,23 @@
       "github_sha": "f5ece3d4877cfd1f513dbe7e22661c1e0a98f24b"
     },
     {
-      "slug": "get-local-information-ar",
-      "id": 1532,
-      "filename": "get-local-information-ar",
-      "pagetitle": "احصل على المعلومات المحلية",
-      "modified": "2020-04-20T23:17:07",
+      "slug": "get-local-information",
+      "id": 54,
+      "filename": "get-local-information",
+      "pagetitle": "Get local information",
+      "modified": "2020-05-29T15:08:32",
       "tags": [
-        "do-not-crawl",
-        "lang-ar"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "ar",
-      "wp_sha": "7b08a80382d66fac6f66cb98726c9c124faaae13",
-      "github_sha": "c8c9afe3330bf399695e14617978f3fa8adb5c17"
-    },
-    {
-      "slug": "get-local-information-ko",
-      "id": 1281,
-      "filename": "get-local-information-ko",
-      "pagetitle": "지역 정보 확인",
-      "modified": "2020-04-22T16:42:10",
-      "tags": [
-        "do-not-crawl",
-        "lang-ko"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "ko",
-      "wp_sha": "dc88afcb47e5d1a2d2311d553a041c13a67cde89",
-      "github_sha": "3ffc99edb7875d52ca908461cf9c00d4e1c8926c"
-    },
-    {
-      "slug": "get-local-information-tl",
-      "id": 1510,
-      "filename": "get-local-information-tl",
-      "pagetitle": "Kumuha ng Lokal na Impormasyon",
-      "modified": "2020-04-22T16:41:43",
-      "tags": [
-        "do-not-crawl",
-        "lang-tl"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "tl",
-      "wp_sha": "c1ce3d20881dfac7e26771225073215d398e90d3",
-      "github_sha": "6024ed2aebd9b6f023e63f6327d707cf57a5be5d"
-    },
-    {
-      "slug": "get-local-information-vi",
-      "id": 1336,
-      "filename": "get-local-information-vi",
-      "pagetitle": "Lấy thông tin từ nguồn địa phương",
-      "modified": "2020-04-22T16:41:56",
-      "tags": [
-        "do-not-crawl",
-        "lang-vi"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "vi",
-      "wp_sha": "db244f409247711d3c5ffe3e9dab55940bc5b142",
-      "github_sha": "cb5f3209f4bf6aed7d6aea84624ed5abb602847b"
-    },
-    {
-      "slug": "get-local-information-zh-hans",
-      "id": 1584,
-      "filename": "get-local-information-zh-hans",
-      "pagetitle": "获取当地信息",
-      "modified": "2020-04-22T16:41:10",
-      "tags": [
-        "do-not-crawl",
-        "lang-zh-Hans"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "zh-Hans",
-      "wp_sha": "c4628b35346723ca5d97375dfdbbe9c066109f45",
-      "github_sha": "3c85d3851e104219e846e7e3f126fcd9b94b9d0d"
-    },
-    {
-      "slug": "get-local-information-zh-hant",
-      "id": 1483,
-      "filename": "get-local-information-zh-hant",
-      "pagetitle": "獲取當地資訊",
-      "modified": "2020-05-09T00:24:21",
-      "tags": [
-        "lang-zh-Hant"
+        "translate"
       ],
       "category": "local information",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
-      "lang": "zh-Hant",
-      "wp_sha": "1891ebab211b1a12253259d6726d34a7693e97a7",
-      "github_sha": "a898b367cebdb218aabe896a33d57b40d7ab2ff2"
+      "lang": "en",
+      "wp_sha": "b7f707d16a6da6209ee412fe5b8c4bbf747755bd",
+      "github_sha": "a0c3a5734b60132f2938c5ec6ad086c6759b7de1"
     },
     {
       "slug": "guide-immigrant-californians",
@@ -2680,30 +2580,11 @@
       "github_sha": "121ee095a05e440a14bc52667eb9523450249ed0"
     },
     {
-      "slug": "obtenga-informacion-local",
-      "id": 804,
-      "filename": "obtenga-informacion-local",
-      "pagetitle": "Obtenga información local",
-      "modified": "2020-04-10T19:31:40",
-      "tags": [
-        "lang-es"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "es",
-      "wp_sha": "f32392097243eeee95da6ea5801e96e259c49fcc",
-      "github_sha": "50d01cc78ab2ef31d1f7c04f30da5d9f04e3aa9f"
-    },
-    {
       "slug": "page-redirect-table",
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-05-28T18:39:42",
+      "modified": "2020-05-28T21:59:08",
       "tags": [
         "table-data"
       ],
@@ -2714,8 +2595,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1018c267612f57108dd0322ddc6fe4482f8c0bb3",
-      "github_sha": "67486eca71b96d0498498fa780dac7324e114400"
+      "wp_sha": "aeb5bd7d60fa59c4f414f810084d93982f8242c9",
+      "github_sha": "9f85767c1237b5aadb97635de90558e5e6e864fa"
     },
     {
       "slug": "plasma",
@@ -2854,7 +2735,7 @@
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance info",
-      "modified": "2020-05-27T21:19:21",
+      "modified": "2020-05-29T01:34:11",
       "tags": [
         "translate"
       ],
@@ -2865,27 +2746,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "61ac44a1d17b9c69e831de3afca59008a583a2c0",
-      "github_sha": "cad1a6615e38def4d8a943e2a07be3a028661e04"
-    },
-    {
-      "slug": "state-local-resources",
-      "id": 54,
-      "filename": "state-local-resources",
-      "pagetitle": "Get local information",
-      "modified": "2020-05-28T15:30:00",
-      "tags": [
-        "translate"
-      ],
-      "category": "local information",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": true,
-      "ignore": false,
-      "lang": "en",
-      "wp_sha": "ec9807c6c374f6bb95229757671f4221fb60a288",
-      "github_sha": "c4678e9af3658e1db36be20f089fec9a70d72eeb"
+      "wp_sha": "493beeb7b95bbc417c219244e937653eb865abda",
+      "github_sha": "1d1700df00ef9d754a3ec3cfaa54e08cf429498e"
     },
     {
       "slug": "stats",
@@ -2966,26 +2828,6 @@
       "lang": "ko",
       "wp_sha": "d181dd96f70599c7dcb9edf3b50b84a536cf418a",
       "github_sha": "9f71251fd2641bc33e2d547c8eb44883d6c3951c"
-    },
-    {
-      "slug": "stats-test",
-      "id": 1991,
-      "filename": "stats-test",
-      "pagetitle": "stats test",
-      "modified": "2020-05-28T19:35:00",
-      "tags": [
-        "do-not-crawl",
-        "fragment"
-      ],
-      "category": "stats",
-      "isFragment": true,
-      "isTableData": false,
-      "addToSitemap": false,
-      "translate": false,
-      "ignore": false,
-      "lang": "en",
-      "wp_sha": "aeee62269782b69280013924bdb8e4653f1e68a4",
-      "github_sha": "1bb6c527e1e91b47a6f360cd5a318bf8577ffb52"
     },
     {
       "slug": "stats-tl",
@@ -3072,7 +2914,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home Q&#038;A",
-      "modified": "2020-05-28T15:44:53",
+      "modified": "2020-05-28T22:40:29",
       "tags": [
         "translate"
       ],
@@ -3083,8 +2925,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ca549d959acaf2c8fb900b68bdd60dabda288bbc",
-      "github_sha": "7f88015348941203fecfc0d98343cf3e4de66b8b"
+      "wp_sha": "b7b260ffc0865c0b81dfb1d32a8f4cfe7fd11020",
+      "github_sha": "279bbd157749b1421281bd22d776ed1bc67f0982"
     },
     {
       "slug": "symptoms-and-risks",
@@ -3347,7 +3189,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and treatment",
-      "modified": "2020-05-27T20:54:52",
+      "modified": "2020-05-29T14:55:07",
       "tags": [
         "translate",
         "translate-priority"
@@ -3359,8 +3201,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "5d4644f7589c63a74a208e06d579df53dd6abb44",
-      "github_sha": "789fd86c74d8f19b037b86e68b7842558e3dd16d"
+      "wp_sha": "ab74d178b062d027664fadc6a07473cf0bb5f100",
+      "github_sha": "f280695b942a79d3d95646dc3dbd03d58f0f7afe"
     },
     {
       "slug": "workers",
