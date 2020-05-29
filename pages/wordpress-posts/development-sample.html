@@ -1,27 +1,50 @@
----
-layout: "page.njk"
-title: "Development Sample"
-meta: "testing &#8220;Quotes&#8221; in the excerpt &#038; other characters"
-author: "State of California"
-publishdate: "2020-05-07T22:11:38Z"
-tags: ["do-not-crawl"]
-addtositemap: false
----
-
-<p>This document will not be published.  Used to develop and troubleshoot WordPress integration.<br>&#8211; Carter Medlin</p>
-
-
-
-<figure class="wp-block-table is-style-stripes"><table class="has-fixed-layout"><thead><tr><th>Name</th><th>URL</th></tr></thead><tbody><tr><td>Department of Public Health</td><td>https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx</td></tr><tr><td>Governor’s Newsroom</td><td>https://www.gov.ca.gov/newsroom/</td></tr><tr><td>Statewide COVID19 Hotline</td><td>/hotline/</td></tr><tr><td>Accessibility</td><td>https://www.ca.gov/accessibility/</td></tr><tr><td>Privacy Policy</td><td>https://www.ca.gov/privacy-policy/</td></tr><tr><td>Feedback</td><td>https://www.surveymonkey.com/r/COVID19CAGOV</td></tr></tbody></table><figcaption>Primary links</figcaption></figure>
-
-
-
-<figure class="wp-block-table is-style-stripes"><table class="has-fixed-layout"><thead><tr><th>Name</th><th>URL</th></tr></thead><tbody><tr><td>Home</td><td>/</td></tr><tr><td>Search</td><td>/search/#top</td></tr><tr><td>Back to top</td><td>#top</td></tr><tr><td>Menu</td><td>#side-nav</td></tr></tbody></table><figcaption>Links on the very bottom</figcaption></figure>
-
-
-
-<figure class="wp-block-image size-large"><img src="/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM.png" alt="" class="wp-image-1919" srcset="/img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM.png 988w, /img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-300x66.png 300w, /img/wp/Screen-Shot-2020-04-14-at-1.22.42-PM-768x168.png 768w" sizes="(max-width: 988px) 100vw, 988px" /></figure>
-
-
-
-<p><a href="/img/wp/samplefile.txt">Test File Link</a></p>
+{
+  "Table1": [
+    {
+      "Name": "Department of Public Health",
+      "URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
+    },
+    {
+      "Name": "Governor’s Newsroom",
+      "URL": "https://www.gov.ca.gov/newsroom/"
+    },
+    {
+      "Name": "Statewide COVID19 Hotline",
+      "URL": "/hotline/"
+    },
+    {
+      "Name": "Accessibility",
+      "URL": "https://www.ca.gov/accessibility/"
+    },
+    {
+      "Name": "Privacy Policy",
+      "URL": "https://www.ca.gov/privacy-policy/"
+    },
+    {
+      "Name": "Feedback",
+      "URL": "https://www.surveymonkey.com/r/COVID19CAGOV"
+    }
+  ],
+  "Table2": [
+    {
+      "Name": "Home",
+      "URL": "/"
+    },
+    {
+      "Name": "Search",
+      "URL": "/search/#top"
+    },
+    {
+      "Name": "Back to top",
+      "URL": "#top"
+    },
+    {
+      "Name": "Menu",
+      "URL": "#side-nav"
+    },
+    {
+      "Name": "“bad””” characters&lt;&gt;”<br>next line<br>…!@#$%^&amp;",
+      "URL": "also “bad”?&gt;&lt;./,?&gt;&lt;"
+    }
+  ]
+}

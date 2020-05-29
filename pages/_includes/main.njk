@@ -1,4 +1,9 @@
 {% set langFilePostfix = tags | langFilePostfix %}
+{% if langFilePostfix === "" %}
+  {% set langIncludeFolder="../wordpress-posts/" %}
+{% else %}
+  {% set langIncludeFolder="../translated-posts/" %}
+{% endif %}
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -32,6 +37,9 @@
     <meta name="msapplication-tilecolor" content="#ffffff"/>
     <meta name="msapplication-tileimage" content="img/ms-icon-144x144.png"/>
     <meta name="theme-color" content="#ffffff"/>
+    {% for item in page | getAltPageRows(tags) -%}
+      <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
+    {%- endfor %}
     {% set css %}
     {% include "built.css" %}
     {% endset %}
@@ -94,11 +102,7 @@
     <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
       <div class="container">
         <div class="col-md-12 row alert-left js-disclaimer ml-0">
-          {% if langFilePostfix === "" %}
-            {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
-          {% else %}
-            {% include "../translated-posts/new" + langFilePostfix + ".html" %}
-          {% endif %}
+          {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
         </div>
       </div>
     </div>
@@ -107,10 +111,10 @@
     <!--{% include "dodonot.njk" %}-->
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
-        {% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}
+        {% include langIncludeFolder + "cali-working" + langFilePostfix + ".html" %}
       </div>
     </div>
-    {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}
+    {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
     {% include "./news-feed-home.html" %}
   </main>
   {% include "footer.njk" %}

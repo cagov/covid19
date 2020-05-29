@@ -107,6 +107,17 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+
+  //usage
+  //    {{ 'My Error message' | error }}
+  eleventyConfig.addFilter('error', errorMessage => {
+    if (errorMessage)
+      throw errorMessage;
+    else
+      return null;
+  }
+  );
+
   eleventyConfig.addFilter("cssmin", function(code) {
     if(!miniCSS) {
       miniCSS = new CleanCSS({}).minify(code).styles;
@@ -214,7 +225,7 @@ module.exports = function(eleventyConfig) {
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
-      // if(processedPostMap.get(outputPath)!==initialHTML) {
+      if(processedPostMap.get(outputPath)!==initialHTML) {
         const dom = new JSDOM(html);
         const document = dom.window.document;
 
@@ -263,7 +274,7 @@ module.exports = function(eleventyConfig) {
         processedPostMap.set(outputPath,initialHTML);
         fs.writeFileSync('./pages/_data/htmlmap.json',JSON.stringify([...processedPostMap]),'utf8')
         return dom.serialize();
-      // }
+      }
     }
     return html;
   });
