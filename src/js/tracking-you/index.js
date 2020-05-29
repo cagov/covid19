@@ -36,11 +36,13 @@ export default function applyAccordionListeners() {
 
 
   // navbar toggles
-  document.querySelectorAll('.navbar-toggler')
-  listener on .navbar-toggler
-  finds # of aria-controls
-  toggles show on that
-  and toggles aria-expanded on self
+  document.querySelectorAll('.navbar-toggler').forEach(function(nav) {
+    let t
+    finds # of aria-controls
+    toggles show on that
+    this.toggles aria-expanded
+  
+  })
 
   listener on dropdown-toggle
   does preventDefault
