@@ -69,21 +69,17 @@
       <div id="top" class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
+            <div class="col text-center">
+              <!--{% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}-->
+              <h1>Your actions save lives</h1>
+              <p class="lead text-white">As California reopens, Californians must follow best practices: <br> wear a face covering, wash your hands, stay home when sick.</p>
             </div>
 
-            <div class="col-lg-4 text-center pt-1">
-              <a href="https://toolkit.covid19.ca.gov/"
-                aria-label="california for all your actions save lives visit california for all website"
-                ><img
-                  src="/img/california-for-all.png"
-                  class="rounded img-fluid "
-                  alt="california for all your actions save lives visit california for all website"/></a>
-            </div>
+          
           </div>
         </div>
         <div class="container pt-3 text-center-mobile">
+        <p class="lead text-white text-center bold mb-n2">California numbers as of 5/28/2020</p>
           {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
         </div>
       </div>
@@ -105,162 +101,264 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-    <div class="ca-gov-icon-hand-heart text-primary text-center h1"></div>
-      <h2 class="text-center text-primary">Get help</h2>
-      <div class="list-group-flush pb-5">
-        <a href="/get-financial-help/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Financial help</a>
-          <a href="/childcare/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Childcare</a>
-          <a href="/guide-immigrant-californians/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Help for immigrants</a>
-          <a href="/food-resources/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Food</a>
+    <div class="container pt-5 pb-5">
+      <div class="row">
+      <h2 id="services">Featured services and information </h2>
+        <div class="col-md-12 pb-3"> 
+        </div>
 
-     <a href="/resources-for-emotional-support-and-well-being/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Emotional support</a>
+        <div class="col-md-3 col-sm-3">
+          <div class="wrimagecard wrimagecard-topimage">
+            <a href="/roadmap/#top">
+              <div class="wrimagecard-topimage_header text-center bg-secondary-covid list-group-item-action">
+<i class="ca-gov-icon-state text-primary display-4"></i> 
+                <h3>State reopening
+                  <div class="pull-right badge"></div>
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
 
-          <a href="/workers/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Help for workers</a>
-          <a href="/business-and-employers/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Help for businesses and employers</a>
- 
-      </div>
-    </div>
-    <div class="col-md-6">
-    <div class="ca-gov-icon-medical-heart text-primary text-center h1"></div>
-      <h2 class="text-center text-primary">Health information</h2>
-      <div class="list-group-flush pb-5">
-        <a href="/symptoms-and-risks/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Symptoms and risks</a>
+        <div class="col-md-3 col-sm-3">
+          <div class="wrimagecard wrimagecard-topimage">
+            <a href="/roadmap-counties/#top">
+              <div class="wrimagecard-topimage_header text-center bg-secondary-covid list-group-item-action">
+<i class="ca-gov-icon-map text-primary display-4"></i> 
+                <h3>County variance info
+                  <div class="pull-right badge"></div>
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
 
-          <a href="/testing-and-treatment/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Testing and treatment</a>
+        <div class="col-md-3 col-sm-3">
+          <div class="wrimagecard wrimagecard-topimage">
+            <a href="/get-financial-help/#top">
+              <div class="wrimagecard-topimage_header text-center bg-secondary-covid list-group-item-action">
+<i class="ca-gov-icon-hand-money text-primary display-4"></i>
+                <h3>Fnancial help
+                  <div class="pull-right badge"></div>
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
 
-          <a href="/contact-tracing/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Contact tracing</a>
-
-          <a href="/telehealth/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Telehealth</a>
-
-          <a href="/healthcare/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Health care</a>
-
-          <a href="/masks-and-ppe/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Masks and PPE</a>
-
-           <a href="/manage-stress-for-health/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Help for stress</a>
-
-      </div>
-    </div>
-  </div>
-
-<div class="row">
-    <div class="col-md-6">
-    <div class="ca-gov-icon-online-services text-primary text-center h1"></div>
-      <h2 class="text-center text-primary">Working and living safely</h2>
-      <div class="list-group-flush pb-5">
-
-          <a href="/stay-home-except-for-essential-needs/#open" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          What's open</a>
-        
-          <a href="/state-local-resources/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Local info and alerts</a>
-
-          <a href="/education/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Education</a>
-
-          <a href="/public-recreation/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Public recreation</a>
-
-          <a href="/roadmap-counties/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          County varience</a>
-
-          <a href="/roadmap/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Reopening Roadmap</a>
-
-          <a href="/industry-guidance/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Industry guidance </a>
-
-          <a href="/contracts/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Contracts </a>
-
-          <a href="/hotline/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Hotline</a>
-
-          <a href="/taxes/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Taxes</a>
-
-          <a href="/housing-and-homelessness/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Housing and homelessness</a>
-
-
-      </div>
-    </div>
-    <div class="col-md-6">
-    <div class="ca-gov-icon-hand text-primary text-center h1"></div>
-      <h2 class="text-center text-primary">How you can help</h2>
-      <div class="list-group-flush pb-5">
-
-      <a href="/stay-home-except-for-essential-needs/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Stay home Q&amp;A</a>
-
-        <a href="/healthcorps/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Health corps</a>
-
-        <a href="/plasma/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Plasma donation</a>
-
-        <a href="/discrimination/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Discrimination</a>
-
-         <a href="https://state-of-california-agency.forms.fm/great-plates-delivered-food-provider-interest-form/forms/7917" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Great plates provider form</a>
-
-         <a href="/recovery-input/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-         Recovery survey</a>
-
-        <a href="https://serve.ca.gov/" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Volunteer</a>
-
-        <a href="https://www.engageca.org/" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Checking on the elderly</a>
-
-        <a href="https://tech.covid19.ca.gov/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Technology solutions</a>
-
-        <a href="https://toolkit.covid19.ca.gov/" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
-          Spread the word (Media toolkit)</a>   
-
-         <a href="/food-resources/#top" class="list-group-item list-group-item-action text-larger"><span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
-          Getting food</a>
+        <div class="col-md-3 col-sm-3">
+          <div class="wrimagecard wrimagecard-topimage">
+            <a href="/stay-home-except-for-essential-needs/#top">
+              <div class="wrimagecard-topimage_header text-center bg-secondary-covid list-group-item-action">
+<i class="ca-gov-icon-stay-home text-primary display-4"></i>
+                <h3>Stay home Q&amp;A
+                  <div class="pull-right badge"></div>
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
 
       </div>
     </div>
   </div>
-
 </div>
 
 
+
+<!--
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ca-gov-icon-hand-heart text-primary text-center h1"></div>
+          <h2 class="text-center text-primary">Get help</h2>
+          <div class="list-group-flush pb-5">
+            <a href="/get-financial-help/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Financial help</a>
+            <a href="/childcare/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Childcare</a>
+            <a href="/guide-immigrant-californians/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Help for immigrants</a>
+            <a href="/food-resources/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Food</a>
+
+            <a href="/resources-for-emotional-support-and-well-being/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Emotional support</a>
+
+            <a href="/workers/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Help for workers</a>
+            <a href="/business-and-employers/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Help for businesses and employers</a>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ca-gov-icon-medical-heart text-primary text-center h1"></div>
+          <h2 class="text-center text-primary">Health information</h2>
+          <div class="list-group-flush pb-5">
+            <a href="/symptoms-and-risks/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Symptoms and risks</a>
+
+            <a href="/testing-and-treatment/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Testing and treatment</a>
+
+            <a href="/contact-tracing/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Contact tracing</a>
+
+            <a href="/telehealth/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Telehealth</a>
+
+            <a href="/healthcare/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Health care</a>
+
+            <a href="/masks-and-ppe/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Masks and PPE</a>
+
+            <a href="/manage-stress-for-health/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Help for stress</a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ca-gov-icon-online-services text-primary text-center h1"></div>
+          <h2 class="text-center text-primary">Working and living safely</h2>
+          <div class="list-group-flush pb-5">
+
+            <a href="/stay-home-except-for-essential-needs/#open" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          What's open</a>
+
+            <a href="/state-local-resources/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Local info and alerts</a>
+
+            <a href="/education/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Education</a>
+
+            <a href="/public-recreation/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Public recreation</a>
+
+            <a href="/roadmap-counties/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          County varience</a>
+
+            <a href="/roadmap/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Reopening Roadmap</a>
+
+            <a href="/industry-guidance/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Industry guidance </a>
+
+            <a href="/contracts/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Contracts </a>
+
+            <a href="/hotline/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Hotline</a>
+
+            <a href="/taxes/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Taxes</a>
+
+            <a href="/housing-and-homelessness/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Housing and homelessness</a>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ca-gov-icon-hand text-primary text-center h1"></div>
+          <h2 class="text-center text-primary">How you can help</h2>
+          <div class="list-group-flush pb-5">
+
+            <a href="/stay-home-except-for-essential-needs/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Stay home Q&amp;A</a>
+
+            <a href="/healthcorps/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Health corps</a>
+
+            <a href="/plasma/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Plasma donation</a>
+
+            <a href="/discrimination/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Discrimination</a>
+
+            <a href="https://state-of-california-agency.forms.fm/great-plates-delivered-food-provider-interest-form/forms/7917" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Great plates provider form</a>
+
+            <a href="/recovery-input/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+         Recovery survey</a>
+
+            <a href="https://serve.ca.gov/" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Volunteer</a>
+
+            <a href="https://www.engageca.org/" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Checking on the elderly</a>
+
+            <a href="https://tech.covid19.ca.gov/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Technology solutions</a>
+
+            <a href="https://toolkit.covid19.ca.gov/" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right " aria-hidden="true"></span>
+          Spread the word (Media toolkit)</a>
+
+            <a href="/food-resources/#top" class="list-group-item list-group-item-action text-larger">
+              <span class="ca-gov-icon-caret-right text-secondary" aria-hidden="true"></span>
+          Getting food</a>
+
+          </div>
+        </div>
+      </div>
+
+    </div> -->
 
     <div class="container-fluid bg-primary text-white">
       <div class="container pb-3 pt-3 text-white">
         <!--{% include "../wordpress-posts/cali-working" + langFilePostfix + ".html" %}-->
         <div class="row pb-3">
-        <div class="col-sm text-right text-center-mobile"><img src="https://www.gov.ca.gov/wp-content/uploads/2019/06/California-For-All_Logo_Full-Color_263.png" alt="Seal of the Governor of the State of California" title="" style="max-width: 60%;"></div>
-        <div class="col-md-8 container text-left text-center-mobile"> 
-              <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
-        <a href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/" class="action-link mt-4">See CA State actions</a> 
+          <div class="col-sm text-right text-center-mobile"><img src="https://www.gov.ca.gov/wp-content/uploads/2019/06/California-For-All_Logo_Full-Color_263.png" alt="Seal of the Governor of the State of California" title="" style="max-width: 60%;"></div>
+          <div class="col-md-8 container text-left text-center-mobile">
+            <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
+            <a href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/" class="action-link mt-4">See CA State actions</a>
+          </div>
         </div>
       </div>
     </div>
-          </div>
-    </div>
-   <!-- {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}-->
-    {% include "./news-feed-home.html" %}
-  </main>
-  {% include "footer.njk" %}
+  </div>
+  <!-- {% include "../wordpress-posts/find-services"  + langFilePostfix + ".html" %}-->
+  {% include "./news-feed-home.html" %}
+</main>
+{% include "footer.njk" %}
 </body>
 </html>
