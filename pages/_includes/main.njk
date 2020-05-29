@@ -78,52 +78,46 @@
         <div class="container">
           <div class="row">
             <div class="col text-center">
-              {#{% include  langIncludeFolder + “home-header" + langFilePostfix + ".html" %}#}
-              <h1>Your actions save lives</h1>
-              <p class="lead text-white">As California reopens, Californians must follow best practices: <br> wear a face covering, wash your hands, stay home when sick.</p>
-              </div>
-              </div>
-              </div>
-              <div class="container pt-3 text-center-mobile">
-              <p class="lead text-white text-center bold mb-n2">California numbers as of 5/28/2020</p>
-              <div class="text-center pt-3 pb-3"><a class="btn btn-outline-light" hreflang="en" href="/roadmap-counties/#track-data"><span class="ca-gov-icon-state text-white h1"></span><span class="h4 text-white align-super">Track your county data</span></a></div>
-     
-          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+              {% include  langIncludeFolder + “home-header" + langFilePostfix + ".html" %}
+            </div>
+          </div>
         </div>
+        {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
       </div>
     </div>
-    <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
-      <div class="container">
-        <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
-          {% if langFilePostfix === "" %}
-            {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
-          {% else %}
-            {% include "../translated-posts/new" + langFilePostfix + ".html" %}
-          {% endif %}
-        </div>
+  </div>
+  <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
+    <div class="container">
+      <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
+        {% if langFilePostfix === "" %}
+          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
+        {% else %}
+          {% include "../translated-posts/new" + langFilePostfix + ".html" %}
+        {% endif %}
       </div>
     </div>
-     {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
+  </div>
+  {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
 
-    <div class="container-fluid bg-primary text-white">
-      <div class="container pb-3 pt-3 text-white">
-        {#  {% include  langIncludeFolder + “cali-working" + langFilePostfix + ".html" %} #}
-        <div class="row pb-3">
-          <div class="col-sm text-right text-center-mobile"><img src="/img/california-for-all.png" style="    
+  <div class="container-fluid bg-primary text-white">
+    <div class="container pb-3 pt-3 text-white">
+      {#  {% include  langIncludeFolder + “cali-working" + langFilePostfix + ".html" %} #}
+      <div class="row pb-3">
+        <div class="col-sm text-right text-center-mobile"><img src="/img/california-for-all.png" style="    
           width: 137px;
     padding-top: 14px;
     padding-right: 9px;
     margin-right: 20px;" class="rounded" alt="california for all your actions save lives visit california for all website"></div>
-          <div class="col-md-8 container text-left text-center-mobile">
-            <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
-            <a href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/" class="action-link mt-4">See CA State actions</a>
-          </div>
+        <div class="col-md-8 container text-left text-center-mobile">
+          <h2 class="text-white">California is working around the clock to respond to COVID-19</h2>
+          <a href="https://www.gov.ca.gov/california-takes-action-to-combat-covid-19/" class="action-link mt-4">See CA State actions</a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  {% include "./news-feed-home.html" %}
+{% include "./news-feed-home.html" %}
 </main>
 {% include "footer.njk" %}
 </body>
