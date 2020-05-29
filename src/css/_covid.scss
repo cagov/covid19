@@ -179,6 +179,30 @@ a.list-group-item.list-group-item-action {
 .navbar .container-fluid {
   justify-content: end !important;
 }
+
+.top-nav {
+    font-size: 1.3rem!important;
+	width: 100%;
+}
+
+.top-nav .nav-link:focus, .top-nav .nav-link:hover {
+    background: #e2eeff;
+    border-radius: .25rem;
+}
+
+a.dropdown-item {
+    font-size: 1.1rem;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.show {
+	text-decoration: none!important;
+}
+
+
 .border-bold {
   border-width: 2px;
 }
@@ -483,6 +507,19 @@ a:visited.card {
     text-decoration: none!important;
 }
 
+.text-larger {
+	font-size: 1.4rem!important;
+}
+ .top-nav li.nav-item a {
+    text-decoration: none;
+    
+} 
+
+.align-super {
+	vertical-align: super!important;
+}
+
+
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -597,6 +634,25 @@ a:visited.card {
   .no-webp .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.jpg');
   }
+	
+  .top-nav .nav-item {
+    font-size: 1.3rem;
+}
+	
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+	
+		
+ .top-nav .nav-item {
+    font-size: 1.1rem;
+  }
+	
+#dropdown-4 {
+    left: -30%;
+}
+	
+	
 }
 
 
@@ -605,6 +661,7 @@ a:visited.card {
  .navbar-nav.mobile {
     margin-left: 0!important;
   }
+	
 }
 
 
