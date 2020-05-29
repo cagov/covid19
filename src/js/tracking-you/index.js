@@ -33,4 +33,19 @@ export default function applyAccordionListeners() {
         .forEach(y => y.classList.toggle('d-none'));
     });
   });
+
+
+  // navbar toggles
+  document.querySelectorAll('.navbar-toggler')
+  listener on .navbar-toggler
+  finds # of aria-controls
+  toggles show on that
+  and toggles aria-expanded on self
+
+  listener on dropdown-toggle
+  does preventDefault
+  finds sibling with aria-labelledby which matches its id
+  toggles show on ^
+  toggles aria-expanded on self
+*/
 }
