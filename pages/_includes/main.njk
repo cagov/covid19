@@ -77,46 +77,39 @@
       <div id="top" class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8">
-              {% include "../wordpress-posts/home-header" + langFilePostfix + ".html" %}
-            </div>
-
-            <div class="col-lg-4 text-center pt-1">
-              <a href="https://toolkit.covid19.ca.gov/"
-                aria-label="california for all your actions save lives visit california for all website"
-                ><img
-                  src="/img/california-for-all.png"
-                  class="rounded img-fluid "
-                  alt="california for all your actions save lives visit california for all website"/></a>
+            <div class="col text-center">
+              {% include  langIncludeFolder + "home-header" + langFilePostfix + ".html" %}
             </div>
           </div>
         </div>
+        {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
       </div>
-      <div class="container-fluid bg-secondary-covid-darker">
-        <div class="container pt-3 text-center-mobile">
-          {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
-        </div>
+    </div>
+  </div>
+  <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
+    <div class="container">
+      <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
+        {% if langFilePostfix === "" %}
+          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
+        {% else %}
+          {% include "../translated-posts/new" + langFilePostfix + ".html" %}
+        {% endif %}
       </div>
+    </div>
+  </div>
+  {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
 
-    </div>
-    <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
-      <div class="container">
-        <div class="col-md-12 row alert-left js-disclaimer ml-0">
-          {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
+  <div class="container-fluid bg-primary text-white">
+    <div class="container pb-3 pt-3 text-white">
+        {% include  langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
         </div>
       </div>
     </div>
-    {{ content | safe }}
-    {% include "home-nav-links.njk" %}
-    <!--{% include "dodonot.njk" %}-->
-    <div class="container-fluid bg-primary text-white">
-      <div class="container pb-3 pt-3 text-white">
-        {% include langIncludeFolder + "cali-working" + langFilePostfix + ".html" %}
-      </div>
-    </div>
-    {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
-    {% include "./news-feed-home.html" %}
-  </main>
-  {% include "footer.njk" %}
+  </div>
+</div>
+
+{% include "./news-feed-home.html" %}
+</main>
+{% include "footer.njk" %}
 </body>
 </html>
