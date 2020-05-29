@@ -52,12 +52,19 @@
   </div>
 </nav>
 <!-- New Bootstrap Nav -->
+<style>
+  @media (max-width: 992px) {
+    .show {
+        float: none;
+    }
+  }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" onclick="event.preventDefault;document.querySelector('.art-menu-full').classList.toggle('show');">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div class="collapse navbar-collapse art-menu-full" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -69,7 +76,7 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="document.querySelector('.art-menu').classList.toggle('show');">
+        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="document.querySelector('.art-menu').classList.toggle('show');">
           Dropdown link
         </a>
         <div class="dropdown-menu art-menu" aria-labelledby="navbarDropdownMenuLink">
