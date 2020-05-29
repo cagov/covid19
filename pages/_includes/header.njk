@@ -1,6 +1,8 @@
 {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set Terms = JSON.Table3 %}
+{% set langwptag = (tags | langRecord).wptag %}
+{% set langFilePostfix = tags | langFilePostfix %}
 <header>
   <a class="skippy sr-only-focusable text-center" href="#main">
     <span class="skippy-text">{{Terms[1].Text}}</span>
@@ -62,93 +64,42 @@
   <nav class="d-none d-md-block container-fluid navbar navbar-expand-lg navbar-light bg-secondary-covid">
     <div class="container collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
+       
+{%- for section in menuData.sections -%}
+  {%- set sectionNameRecord = pageNames | find("lang-en", section.title) -%}
+  {%- set sectionTitle = sectionNameRecord[langwptag] | default(section.title) -%}
+	{%- if section.links -%}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-{{loop.index}}").classList.toggle("show")' 
+            type="button" 
+            aria-expanded="false" 
+            aria-haspopup="true" 
+            data-toggle="dropdown" 
+            id="dropdown-menu-button-{{loop.index}}">
+            {{sectionTitle}}
+          </a>
+          <div class="dropdown-menu" id="dropdown-{{loop.index}}" aria-labelledby="dropdown-menu-button-{{loop.index}}">
+            {%- for link in section.links -%}
+              {%- set href = link.href | default("/"+link.slug+langFilePostfix+"/#top")-%}
+    
+              {%- if link.slug -%}
+                {%- set pageNameRecord = pageNames | find("slug", link.slug) -%}
+                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(link.slug)  -%}
+              {%- else -%}
+                {%- set pageNameRecord = pageNames | find("href", href) -%}
+                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(href) -%}
+              {%- endif -%}
+    
+              <a class="dropdown-item" href="{{href}}">{{pageName}}</a>
+            {%- endfor -%}
+          </div>
+        </li>
+  {%- else -%}
         <li class="nav-item d-none d-lg-block d-xl-block">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="{{section.href}}">{{sectionTitle}}</a>
         </li>
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-1").classList.toggle("show")' 
-          type="button" 
-          aria-expanded="false" 
-          aria-haspopup="true" 
-          data-toggle="dropdown" 
-          id="dropdown-menu-button-1">
-          Get help
-        </a>
-          <div class="dropdown-menu" id="dropdown-1" aria-labelledby="dropdown-menu-button-1">
-            <a class="dropdown-item" href="/get-financial-help/#top">Financial help</a>
-            <a class="dropdown-item" href="/food-resources/#top">Food food assistance</a>
-            <a class="dropdown-item" href="/workers/#top">Workers</a>
-            <a class="dropdown-item" href="/business-and-employers/#top">Businesses and employers</a>
-            <a class="dropdown-item" href="/guide-immigrant-californians/#top">Immigrant communities</a>
-            <a class="dropdown-item" href="/housing-and-homelessness/#top">Housing and homelessness</a>
-            <a class="dropdown-item" href="/resources-for-emotional-support-and-well-being/#top">Emotional support</a>
-            <a class="dropdown-item" href="/manage-stress-for-health/#top">Manage your stress</a>
-            <a class="dropdown-item" href="/childcare/#top">Childcare</a>
-          </div>
-        </li>
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-2").classList.toggle("show")' 
-          type="button" 
-          aria-expanded="false" 
-          aria-haspopup="true" 
-          data-toggle="dropdown" 
-          id="dropdown-menu-button-2">
-          Health information
-        </a>
-          <div class="dropdown-menu" id="dropdown-2" aria-labelledby="dropdown-menu-button-2">
-            <a class="dropdown-item" href="/symptoms-and-risks/#top">Symptoms and risks</a>
-            <a class="dropdown-item" href="/testing-and-treatment/#top">Testing sites</a>
-            <a class="dropdown-item" href="/contact-tracing/#top">Contact tracing</a>
-            <a class="dropdown-item" href="/telehealth/#top">Telehealth</a>
-            <a class="dropdown-item" href="/healthcare/#top">Health care</a>
-            <a class="dropdown-item" href="/masks-and-ppe/#top">Masks and PPE</a>
-            <a class="dropdown-item" href="/hotline/#top">COVID-19 Hotline</a>
-            
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-3").classList.toggle("show")' 
-          type="button" 
-          aria-expanded="false" 
-          aria-haspopup="true" 
-          data-toggle="dropdown" 
-          id="dropdown-menu-button-3">
-          Working and living safely
-        </a>
-          <div class="dropdown-menu" id="dropdown-3" aria-labelledby="dropdown-menu-button-3">
-            <a class="dropdown-item" href="/stay-home-except-for-essential-needs/#open">What's open</a>
-            <a class="dropdown-item" href="/stay-home-except-for-essential-needs/#top">Stay home Q&amp;A</a>
-            <a class="dropdown-item" href="/roadmap-counties/#top">County variance and map</a>
-            <a class="dropdown-item" href="/roadmap/#top">Reopening roadmap</a>
-            <a class="dropdown-item" href="/industry-guidance/#top">Industry guidance</a>
-            <a class="dropdown-item" href="/state-local-resources/#top">Local info and alerts</a>
-            <a class="dropdown-item" href="/education/#top">Education</a>
-            <a class="dropdown-item" href="/public-recreation/#top">Public recreation</a>
-            <a class="dropdown-item" href="/contracts/#top">Contracts</a>
-            <a class="dropdown-item" href="/taxes/#top">Taxes</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-4").classList.toggle("show")' 
-          type="button" 
-          aria-expanded="false" 
-          aria-haspopup="true" 
-          data-toggle="dropdown" 
-          id="dropdown-menu-button-4">
-          How you can help
-        </a>
-          <div class="dropdown-menu" id="dropdown-4" aria-labelledby="dropdown-menu-button-4">
-            <a class="dropdown-item" href="/healthcorps/#top">California Health Corps</a>
-            <a class="dropdown-item" href="/plasma/#top">Plasma donation</a>
-            <a class="dropdown-item" href="/discrimination/#top">Fighting Discrimination</a>
-            <a class="dropdown-item" href="https://state-of-california-agency.forms.fm/great-plates-delivered-food-provider-interest-form/forms/7917">Great Plates provider form</a>
-            <a class="dropdown-item" href="/recovery-input/#top">Recovery roadmap survey</a>
-            <a class="dropdown-item" href="https://serve.ca.gov/" class="list-group-item list-group-item-action text-larger">Volunteering</a>
-            <a class="dropdown-item" href="https://www.engageca.org/">Checking on the elderly</a>
-            <a class="dropdown-item" href="https://tech.covid19.ca.gov/#top">Technology solutions</a>
-            <a class="dropdown-item" href="https://toolkit.covid19.ca.gov/">Social media sharing</a>
-          </div>
-
+  {%- endif -%}
+{%- endfor -%}
       </ul>
     </div>
   </nav>
