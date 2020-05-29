@@ -35,19 +35,28 @@ export default function applyAccordionListeners() {
   });
 
 
+  function toggleBoolean(el,attr) {
+    if(el[attr] === "false") {
+      el[attr] = "true";
+    }
+    el[attr] = "false";
+  }
+
   // navbar toggles
   document.querySelectorAll('.navbar-toggler').forEach(function(nav) {
-    let t
-    finds # of aria-controls
-    toggles show on that
-    this.toggles aria-expanded
-  
+    nav.addEventListener('click',function(event) {
+      let target = document.querySelector('#'+nav.getAttribute('aria-controls'));
+      target.classList.toggle('show')
+      toggleBoolean(this,'aria-expanded')
+    })
   })
 
-  listener on dropdown-toggle
-  does preventDefault
-  finds sibling with aria-labelledby which matches its id
-  toggles show on ^
-  toggles aria-expanded on self
-*/
+  document.querySelectorAll('.dropdown-toggle').forEach(function(drop) {
+    drop.addEventListener('click',function(event) {
+      event.preventDefault();
+      let target = document.querySelector('[aria-labelledby="'+this.id+'"]');
+      target.classList.toggle('show')
+      toggleBoolean(this,'aria-expanded')  
+    })
+  })
 }
