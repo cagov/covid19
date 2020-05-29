@@ -66,7 +66,8 @@
       <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
        
 {%- for section in menuData.sections -%}
-  {%- set sectionTitle = section[langwptag] | default(section['lang-en']) -%}
+  {%- set sectionNameRecord = pageNames | find("lang-en", section.title) -%}
+  {%- set sectionTitle = sectionNameRecord[langwptag] | default(section.title) -%}
 	{%- if section.links -%}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-{{loop.index}}").classList.toggle("show")' 
@@ -81,15 +82,21 @@
             {%- for link in section.links -%}
               {%- set href = link.href | default("/"+link.slug+langFilePostfix+"/#top")-%}
     
-              {%- set pageNameRecord = pageNames | find("slug", link.slug) | default(href) -%}
-              {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(pageNameRecord) -%}
+              {%- if link.slug -%}
+                {%- set pageNameRecord = pageNames | find("slug", link.slug) -%}
+                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(link.slug)  -%}
+              {%- else -%}
+                {%- set pageNameRecord = pageNames | find("href", href) -%}
+                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(href) -%}
+              {%- endif -%}
+    
               <a class="dropdown-item" href="{{href}}">{{pageName}}</a>
             {%- endfor -%}
           </div>
         </li>
   {%- else -%}
         <li class="nav-item d-none d-lg-block d-xl-block">
-          <a class="nav-link" href="/">{{sectionTitle}}</a>
+          <a class="nav-link" href="{{section.href}}">{{sectionTitle}}</a>
         </li>
   {%- endif -%}
 {%- endfor -%}
