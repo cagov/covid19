@@ -1,12 +1,14 @@
-<script src="https://www.googletagmanager.com/gtag/js?id=UA-154336791-1" defer="defer">
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-154336791-1', 'auto');
+ga('create', 'UA-3419582-2', 'auto', 'tracker2');
+ga('create', 'UA-21974567-38', 'auto', 'tracker3');
+ga('send', 'pageview');
+ga('tracker2.send', 'pageview');
+ga('tracker3.send', 'pageview');
 </script>
-<script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config','UA-154336791-1');
-  gtag('config','UA-3419582-2');
-  gtag('config','UA-21974567-38');
-</script>
+<script async defer src='https://www.google-analytics.com/analytics.js'></script>
+
 
 {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
