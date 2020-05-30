@@ -7,13 +7,24 @@ publishdate: "2020-03-23T22:00:00Z"
 addtositemap: true
 ---
 <style>
-   .aside { 
-       position: relative!important;
- }
- #answersNow .accordion-title {
+  .aside { 
+		position: relative!important;
+	}
+	a.gs-title, a.gs-title b {
+    font-size: 1.5rem!important;
+    color: #003d9d!important;
+    font-weight: 400;
+	}
+	.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
+    display: none;
+	}
+	.gs-bidi-start-align.gs-snippet {
+    font-size: 1rem;
+	}
+	#answersNow .accordion-title {
     font-size: 1.3rem;
-    color: #0066ab;
- }
+    color: #003d9d;
+	}
 </style>
 
 <h2>Search this website</h2>
@@ -80,6 +91,15 @@ addtositemap: true
 						}
 				}).join('	')}`
 				document.querySelector('#answersNow').innerHTML = html;
+				// send an event that we got quick answers	
+				if(typeof(gtag) !== 'undefined') {
+					gtag('event','search',{'event_category':'got_quick_answers','event_label':query});
+				}
+			} else {
+				// send an event with or without answers
+				if(typeof(gtag) !== 'undefined') {
+					gtag('event','search',{'event_category':'no_quick_answers','event_label':query});
+				}
 			}
 		});
 	}
