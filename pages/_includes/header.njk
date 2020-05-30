@@ -7,29 +7,37 @@
   </a>
   <div class="js-survey-display"></div>
   <script type="module">
-  {% include "survey.js" %}
+    {% include "survey.js" %}
   </script>
-	<nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
-  <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
-    <a href="https://covid19.ca.gov/"><img class="pr-3" src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a><div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse bold"><a href="/" aria-label="home">COVID19.CA.GOV</a></div>
-    <ul class="navbar-nav ml-sm-auto mobile ">
-      <li class="nav-item pl-2">
-        <a class="nav-link mr-0 pr-0" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="California public health Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" alt="">    <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path></svg>
+  <nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
+    <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
+      <a href="https://covid19.ca.gov/"><img class="pr-3" src="/img/Ca-Gov-Logo-White.svg" alt="ca.gov"></a>
+      <div class="navbar-brand docs-brand navbar-left mr-3 ml-3 navbar-inverse bold">
+        <a href="/" aria-label="home">COVID19.CA.GOV</a>
+      </div>
+      <ul class="navbar-nav ml-sm-auto mobile ">
+        <li class="nav-item pl-2">
+          <a class="nav-link mr-0 pr-0" href="https://www.facebook.com/CAPublicHealth/" target="_blank" rel="noopener" aria-label="California public health Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="23" height="23" class="navbar-nav-svg" viewBox="0 0 50 50" alt="">
+              <path fill="currentColor" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"></path>
+            </svg>
 
-        </a>
-      </li>
-      <li class="nav-item mr-0 pr-0">
-        <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="California public health Twitter">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="presentation" alt=""><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path></svg>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
-      </li>
-      <li class="nav-item mr-0 pr-0">
-        <div class="dropdown">
-          <button
+          </a>
+        </li>
+        <li class="nav-item mr-0 pr-0">
+          <a class="nav-link" href="https://twitter.com/CAPublicHealth" target="_blank" rel="noopener" aria-label="California public health Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="presentation" alt="">
+              <title>Twitter</title>
+              <path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/search/" class="btn translate">{{Terms[3].Text}}</a>
+        </li>
+        <li class="nav-item mr-0 pr-0">
+          <div class="dropdown">
+            <button
             class="btn translate dropdown-toggle"
             onclick='document.querySelector(".dropdown-menu").classList.toggle("show")'
             type="button"
@@ -38,35 +46,30 @@
             data-toggle="dropdown"
             id="dropdown-menu-button"
           >
-            {{Terms[4].Text}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
-            {% for item in page | getAltPageRows(tags) -%}
-              <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
-            {%- endfor %}
-            <a class="dropdown-item" href="/translate/">More...</a>
+              {{Terms[4].Text}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
+              {% for item in page | getAltPageRows(tags) %}
+                <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+              {% endfor %}
+              <a class="dropdown-item" href="/translate/">More...</a>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
 <!-- New Bootstrap Nav -->
-<style>
-  @media (max-width: 992px) {
-    .show {
-        float: none;
-    }
-  }
-</style>
+
 <div class="container-fluid bg-secondary-covid">
-<nav class="container navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand d-sm-block d-md-none" href="#">Menu</a>
+<nav class="container navbar navbar-expand-md navbar-light">
+  <a class="navbar-brand d-sm-block d-md-none text-right" href="#">Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="ca-gov-icon-menu h1 text-primary"></span>
   </button>
   <div class="collapse navbar-collapse art-menu-full" id="navbarNavDropdown">
-    <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
+    <ul class="navbar-nav flex-row text-primary text-larger justify-content-between top-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
