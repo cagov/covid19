@@ -7,10 +7,24 @@ publishdate: "2020-03-23T22:00:00Z"
 addtositemap: true
 ---
 <style>
-   .aside { 
-       position: relative!important;
- }
-
+  .aside { 
+		position: relative!important;
+	}
+	a.gs-title, a.gs-title b {
+    font-size: 1.5rem!important;
+    color: #003d9d!important;
+    font-weight: 400;
+	}
+	.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
+    display: none;
+	}
+	.gs-bidi-start-align.gs-snippet {
+    font-size: 1rem;
+	}
+	#answersNow .accordion-title {
+    font-size: 1.3rem;
+    color: #003d9d;
+	}
 </style>
 
 <h2>Search this website</h2>
@@ -20,6 +34,8 @@ addtositemap: true
   <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
 	<button type="submit"  class="btn btn-primary">Search</button>	  
 </form>
+
+<div id="answersNow"></div>
 
 <gcse:searchresults-only></gcse:searchresults-only>
 
@@ -43,16 +59,49 @@ addtositemap: true
   document.querySelector('input[name=q]').value = query;
 </script> 
 
-
-<script>
-	//----- Removing some styling attributes after load
-setTimeout(function(){
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellspacing");
-document.getElementsByTagName("TABLE")[0].removeAttribute("cellpadding");
-document.getElementById("gs_id50").removeAttribute("cellpadding"); 
-document.getElementById("gs_id50").removeAttribute("cellspacing"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellpadding"); 
-document.getElementsByClassName("gstl_50 gssb_c").removeAttribute("cellspacing"); 
-			  
-}, 2000);
+<script>	
+	const myWebSearchStartingCallback = (query) => {
+		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
+		if(window.location.port !== '80') {
+			currentHost += `:${window.location.port}`;
+		}
+		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
+		document.querySelector('#answersNow').innerHTML = "";
+		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
+		.then(response => response.json())
+		.then(data => {
+			let answers = [...data[0].answers];
+			if(answers[0].questions.length > 0) {
+				let html = `<h4>Quick answers</h4>
+					${answers.map(function(a) {
+						if(a.questions.length > 0) {
+							return `<cwds-accordion>
+								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
+										<div class="accordion-title">${a.questions[0]}</div>
+									</button>
+									<div class="card-container collapsed">
+										<div class="card-body">
+											<p>${a.answer}</p>
+										</div>
+									</div>
+								</div>
+							</cwds-accordion>`;
+						} else {
+							return '';
+						}
+				}).join('	')}`
+				document.querySelector('#answersNow').innerHTML = html;
+				// send an event that we got quick answers	
+				if(typeof(ga) !== 'undefined') {
+					ga('send', 'event', 'search', 'got_quick_answers', query);
+				}
+			} else {
+				// send an event with or without answers
+				if(typeof(ga) !== 'undefined') {
+					ga('send', 'event', 'search', 'no_quick_answers', query);
+				}
+			}
+		});
+	}
+	myWebSearchStartingCallback(query)
 </script> 
