@@ -6,8 +6,9 @@
 ----------------------------------------- */
 @font-face {
   font-family: 'CaGov';
-  src: url("/fonts/CaGov.woff") format("woff"), 
-  url("https://california.azureedge.net/cdt/statetemplate/6.0.1/fonts/CaGov.svg??ocljyw#CaGov") format("svg");
+  src: 
+    url("/fonts/CaGov.woff2") format("woff2"), 
+    url("/fonts/CaGov.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
