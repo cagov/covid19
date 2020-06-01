@@ -1,16 +1,23 @@
 const CleanCSS = require("clean-css");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const fs = require('fs')
+const fs = require('fs');
+const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
-const statsData = JSON.parse(fs.readFileSync('pages/wordpress-posts/stats-data.json','utf8')).Table1[0];
+const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
+let htmlmap = [];
+if(fs.existsSync('pages/_data/htmlmap.json')) {
+  htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
+}
+let miniCSS = '';
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
   eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
+  eleventyConfig.addPassthroughCopy({ "./src/js/maps": "js/maps" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
 
@@ -45,7 +52,7 @@ module.exports = function(eleventyConfig) {
 
           if(!item.data.title) {
             //No title means fragment
-            console.log(`Skipping fragment ${item.inputPath}`)
+            // console.log(`Skipping fragment ${item.inputPath}`)
             item.outputPath = false;
           }
         };
@@ -71,14 +78,14 @@ module.exports = function(eleventyConfig) {
 
             if(!item.data.title) {
               //No title means fragment
-              console.log(`Skipping fragment ${item.inputPath}`)
+              // console.log(`Skipping fragment ${item.inputPath}`)
               item.outputPath = false;
             }
           } else {
             //Turn this page off since we already have a translation
             output.push(item);
             item.outputPath = false;
-            console.log(`Skipping traslated page ${item.inputPath}`)
+            // console.log(`Skipping traslated page ${item.inputPath}`)
           }
         };
     });
@@ -101,7 +108,10 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
+    if(!miniCSS) {
+      miniCSS = new CleanCSS({}).minify(code).styles;
+    }
+    return miniCSS;
   });
 
   // Format dates within templates.
@@ -158,57 +168,102 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
+  function localizeUrl(url, lang) {
+    if(url.indexOf('_en.') > -1) {
+      return url.replace('_en.',`_${lang}.`)
+    }
+    return url;
+  }
+  eleventyConfig.addTransform("findimagestolocalize", function(html, outputPath) {
+    const imageclass = 'localize-me';
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(imageclass)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+
+      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
+
+      if(lang !== "en") {
+        for(const image of document.querySelectorAll(`.${imageclass}`)) {
+          image.classList.remove(imageclass);
+          if (image.classList.length===0) image.removeAttribute('class');
+          if(image.nodeName === "FIGURE") {
+            image.querySelectorAll('img').forEach(internalImg => {
+              internalImg.src = localizeUrl(internalImg.src, lang);
+            })
+            image.querySelectorAll('source').forEach(internalImg => {
+              internalImg.srcset = localizeUrl(internalImg.srcset, lang);
+            })
+          }
+          if(image.nodeName === "IMG") {
+            image.src = localizeUrl(image.src, lang);
+          }
+        }
+        return dom.serialize();  
+      }
+    }
+    return html;
+  });
+
+  let processedPostMap = new Map();
+  htmlmap.forEach(pair => {
+    processedPostMap.set(pair[0],pair[1])
+  })
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
     const contentclass = 'wp-accordion-content';
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
+      let initialHTML = md5(html);
+      if(processedPostMap.get(outputPath)!==initialHTML) {
+        const dom = new JSDOM(html);
+        const document = dom.window.document;
 
-      for(const header of document.querySelectorAll(`.${headerclass}`)) {
-        //create the wrapper element and wrap it around the header
-        const cwdscontainer = document.createElement('cwds-accordion');
-        const container = document.createElement('div');
-        container.classList.add('card');
-        cwdscontainer.appendChild(container);
+        for(const header of document.querySelectorAll(`.${headerclass}`)) {
+          //create the wrapper element and wrap it around the header
+          const cwdscontainer = document.createElement('cwds-accordion');
+          const container = document.createElement('div');
+          container.classList.add('card');
+          cwdscontainer.appendChild(container);
 
-        header.parentNode.insertBefore(cwdscontainer, header);
-        container.appendChild(header);
+          header.parentNode.insertBefore(cwdscontainer, header);
+          container.appendChild(header);
 
-        //remove the special wp class
-        header.classList.remove(headerclass);
-        if (header.classList.length===0) header.removeAttribute('class');
+          //remove the special wp class
+          header.classList.remove(headerclass);
+          if (header.classList.length===0) header.removeAttribute('class');
 
-        //create the card body section and add it to the container
-        const body = document.createElement('div');
-        body.className="card-body";
-        container.appendChild(body);
+          //create the card body section and add it to the container
+          const body = document.createElement('div');
+          body.className="card-body";
+          container.appendChild(body);
 
-        //Add all remaining content classes to the card body, they must be directly after the new container
-        let direct;
-        while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
-          body.appendChild(direct);
+          //Add all remaining content classes to the card body, they must be directly after the new container
+          let direct;
+          while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
+            body.appendChild(direct);
 
-          //remove custom class name
-          direct.classList.remove(contentclass);
-          if (direct.classList.length===0) direct.removeAttribute('class');
+            //remove custom class name
+            direct.classList.remove(contentclass);
+            if (direct.classList.length===0) direct.removeAttribute('class');
+          }
+
+          //apply required html around components
+          header.outerHTML=`
+            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+              <div class="accordion-title">
+                ${header.outerHTML}
+              </div>
+            </button>`;
+
+          body.outerHTML = `
+            <div class="card-container" aria-hidden="true" style="height: 0px;">
+              ${body.outerHTML}
+            </div>`;
         }
-
-        //apply required html around components
-        header.outerHTML=`
-          <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-            <div class="accordion-title">
-              ${header.outerHTML}
-            </div>
-          </button>`;
-
-        body.outerHTML = `
-          <div class="card-container" aria-hidden="true" style="height: 0px;">
-            ${body.outerHTML}
-          </div>`;
+        processedPostMap.set(outputPath,initialHTML);
+        fs.writeFileSync('./pages/_data/htmlmap.json',JSON.stringify([...processedPostMap]),'utf8')
+        return dom.serialize();
       }
-      return dom.serialize();
     }
     return html;
   });

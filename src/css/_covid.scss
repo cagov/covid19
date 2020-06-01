@@ -462,16 +462,18 @@ a.list-group-item.list-group-item-action {
  .accordion-title {
 	 padding-left: 0!important;
 	}
-
 	
-  .nav-item {
-    padding-right: .5rem;
-	  margin-right: .2rem; /* temporarily shrunk to accommodate globe translate button */
-	}
-	.alphabar-link {
-		padding-right: .7rem;
-		    margin-right: .5rem;
-	}
+.nav-item {
+padding-right: .5rem;
+  margin-right: .2rem; /* temporarily shrunk to accommodate globe translate button */
+}
+
+.alphabar-link {
+	padding-right: .7rem;
+	margin-right: .5rem;
+	font-size: 1rem;
+	line-height: 2rem;
+}
 
 a.card {
     text-decoration: none!important;
