@@ -23,8 +23,9 @@ export default function applyAccordionListeners() {
   });
 
   function reportGA(elementType,eventString) {
-    if(typeof(gtag) !== 'undefined') {
-      gtag('event','click',{'event_category':elementType,'event_label':eventString});
+    if(typeof(ga) !== 'undefined') {
+      ga('send', 'event', 'click', elementType, eventString);
+      // gtag('event','click',{'event_category':elementType,'event_label':eventString});
     } else {
       setTimeout(function() {
         reportGA(elementType,eventString)

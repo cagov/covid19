@@ -38,7 +38,7 @@ function reportEvent(eventString) {
 
 function reportGA(eventString) {
   if(typeof(gtag) !== 'undefined') {
-    gtag('event','click',{'event_category':'survey','event_label':eventString});
+    ga('send', 'event', 'click', 'survey', eventString);
   } else {
     setTimeout(function() {
       reportGA(eventString)
