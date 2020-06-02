@@ -129,10 +129,13 @@ module.exports = function(eleventyConfig) {
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    if(datestring&&datestring.indexOf('Z') > -1) {
+    const locales = 'en-US';
+    const timeZone = 'America/Los_Angeles';
+  if(datestring&&datestring.indexOf('Z') > -1) {
       const date = new Date(datestring);
-      const locales = 'en-US';
-      const timeZone = 'America/Los_Angeles';
+      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    } else if(datestring === 'today') {
+      const date = new Date();
       return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
     } else {
       return datestring;
