@@ -54,9 +54,20 @@ export default function applyAccordionListeners() {
   document.querySelectorAll('.dropdown-toggle').forEach(function(drop) {
     drop.addEventListener('click',function(event) {
       event.preventDefault();
+      // close all other menus...
       let target = document.querySelector('[aria-labelledby="'+this.id+'"]');
       target.classList.toggle('show')
       toggleBoolean(this,'aria-expanded')  
+    })
+  })
+
+  document.body.addEventListener('click',function(event) {
+    // close all dropdowns
+    let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
+    openDropDowns.forEach(d => {
+      if(d.parentNode !== event.target.parentNode) {
+        d.classList.remove('show');
+      }
     })
   })
 }
