@@ -50,6 +50,33 @@ export default function applyAccordionListeners() {
     });
   });
 
+
+  function toggleBoolean(el,attr) {
+    if(el[attr] === "false") {
+      el[attr] = "true";
+    }
+    el[attr] = "false";
+  }
+
+  // navbar toggles
+  document.querySelectorAll('.navbar-toggler').forEach(function(nav) {
+    nav.addEventListener('click',function(event) {
+      let target = document.querySelector('#'+nav.getAttribute('aria-controls'));
+      target.classList.toggle('show')
+      toggleBoolean(this,'aria-expanded')
+    })
+  })
+
+  document.querySelectorAll('.dropdown-toggle').forEach(function(drop) {
+    drop.addEventListener('click',function(event) {
+      event.preventDefault();
+      // close all other menus...
+      let target = document.querySelector('[aria-labelledby="'+this.id+'"]');
+      target.classList.toggle('show')
+      toggleBoolean(this,'aria-expanded')  
+    })
+  })
+  
   document.body.addEventListener('click',function(event) {
     // close all dropdowns
     let openDropDowns = document.querySelectorAll('.dropdown-menu.show');

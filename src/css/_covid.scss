@@ -200,6 +200,7 @@ a.dropdown-item {
 
 .show {
 	text-decoration: none!important;
+	float:none!important;
 }
 
 
@@ -512,8 +513,14 @@ a:visited.card {
 }
  .top-nav li.nav-item a {
     text-decoration: none;
-    
 } 
+
+.navbar-light .navbar-toggler {
+    color: rgb(0, 61, 157);
+    border-color: rgb(0, 61, 157);
+    padding: .1rem .75rem;
+	border: 2px;
+}
 
 .align-super {
 	vertical-align: super!important;
@@ -537,6 +544,9 @@ a:visited.card {
 
   .navbar-nav.mobile {
     display: contents;
+  }
+  .navbar-nav .dropdown-menu {
+    position: relative;
   }
 
   .bd-navbar .navbar-nav {
@@ -610,6 +620,11 @@ a:visited.card {
 	
   .text-center-mobile {
 	text-align: center!important;
+}
+	
+  .navbar-brand {
+    padding-top: 3%;
+	padding-bottom: 0;
 }
 	
 }

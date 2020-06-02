@@ -41,7 +41,6 @@
           <div class="dropdown">
             <button
             class="btn translate dropdown-toggle"
-            onclick='document.querySelector(".dropdown-menu").classList.toggle("show")'
             type="button"
             aria-expanded="false"
             aria-haspopup="true"
@@ -61,16 +60,21 @@
       </ul>
     </div>
   </nav>
-  <nav class="d-none d-md-block container-fluid navbar navbar-expand-lg navbar-light bg-secondary-covid">
-    <div class="container collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav flex-row text-primary text-larger d-flex justify-content-between top-nav">
-       
-{%- for section in menuData.sections -%}
-  {%- set sectionNameRecord = pageNames | find("lang-en", section.title) -%}
-  {%- set sectionTitle = sectionNameRecord[langwptag] | default(section.title) -%}
-	{%- if section.links -%}
+
+<div class="container-fluid bg-secondary-covid">
+<nav class="container navbar navbar-expand-md navbar-light">
+  
+  <button class="navbar-toggler px-0 w-100" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="navbar-brand d-sm-block d-md-none float-left ml-0 text-primary text-larger" href="#" style="">Menu</div><div class="ca-gov-icon-menu h1 text-primary text-right mr-0 float-right display-4"></div>
+  </button>
+  <div class="collapse navbar-collapse art-menu-full show" id="navbarNavDropdown">
+    <ul class="navbar-nav flex-row text-primary text-larger justify-content-between top-nav">
+      {%- for section in menuData.sections -%}
+      {%- set sectionNameRecord = pageNames | find("lang-en", section.title) -%}
+      {%- set sectionTitle = sectionNameRecord[langwptag] | default(section.title) -%}
+      {%- if section.links -%}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" onclick='document.querySelector("#dropdown-{{loop.index}}").classList.toggle("show")' 
+          <a class="nav-link dropdown-toggle" 
             type="button" 
             aria-expanded="false" 
             aria-haspopup="true" 
@@ -81,7 +85,6 @@
           <div class="dropdown-menu" id="dropdown-{{loop.index}}" aria-labelledby="dropdown-menu-button-{{loop.index}}">
             {%- for link in section.links -%}
               {%- set href = link.href | default("/"+link.slug+langFilePostfix+"/#top")-%}
-    
               {%- if link.slug -%}
                 {%- set pageNameRecord = pageNames | find("slug", link.slug) -%}
                 {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(link.slug)  -%}
@@ -89,18 +92,19 @@
                 {%- set pageNameRecord = pageNames | find("href", href) -%}
                 {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(href) -%}
               {%- endif -%}
-    
               <a class="dropdown-item" href="{{href}}">{{pageName}}</a>
             {%- endfor -%}
           </div>
         </li>
-  {%- else -%}
-        <li class="nav-item d-none d-lg-block d-xl-block">
+      {%- else -%}
+        <li class="nav-item">
           <a class="nav-link" href="{{section.href}}">{{sectionTitle}}</a>
         </li>
-  {%- endif -%}
-{%- endfor -%}
-      </ul>
-    </div>
-  </nav>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+  </div>
+</nav>
+</div>
+
 </header>
