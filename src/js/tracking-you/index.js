@@ -7,9 +7,25 @@ export default function applyAccordionListeners() {
     });
   });
 
+  document.querySelectorAll('a').forEach((a) => {
+    // look for and track offsite and pdf links
+    if(a.href.indexOf(window.location.hostname) > -1) {
+      if(a.href.indexOf('.pdf') > -1) {
+        a.addEventListener('click',function() {
+          reportGA('pdf', this.href.split(window.location.hostname)[1])
+        });    
+      }
+    } else {
+      a.addEventListener('click',function() {
+        reportGA('offsite', this.href)
+      })
+    }
+  });
+
   function reportGA(elementType,eventString) {
-    if(typeof(gtag) !== 'undefined') {
-      gtag('event','click',{'event_category':elementType,'event_label':eventString});
+    if(typeof(ga) !== 'undefined') {
+      ga('send', 'event', 'click', elementType, eventString);
+      // gtag('event','click',{'event_category':elementType,'event_label':eventString});
     } else {
       setTimeout(function() {
         reportGA(elementType,eventString)
@@ -60,7 +76,7 @@ export default function applyAccordionListeners() {
       toggleBoolean(this,'aria-expanded')  
     })
   })
-
+  
   document.body.addEventListener('click',function(event) {
     // close all dropdowns
     let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
