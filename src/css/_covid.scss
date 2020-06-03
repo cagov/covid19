@@ -522,6 +522,14 @@ a:visited.card {
 	border: 2px;
 }
 
+.navbar-light .navbar-nav .nav-link {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background: transparent;
+border: none;
+}
+
 .align-super {
 	vertical-align: super!important;
 }
