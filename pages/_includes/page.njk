@@ -81,37 +81,10 @@
       </div>
 
       <div class="container">
-        <div class="row flex-row-reverse flex-md-wrap-reverse flex-lg-wrap-reverse">
-
-          <div class="col sticky-wrapper">
-            <div id="side-nav"  class="aside">
-
-            <!-- In-page Nav  
-              <div class="d-none d-sm-none d-md-block">
-                {% include "page-nav.njk" %}
-              </div>-->
-              
-            <!-- Mobile Nav  -->
-              <cwds-accordion class="d-sm-block d-md-none">
-                <div id="nav-card" class="card">
-                  <button class="card-header accordion-alpha mobile-menu bg-secondary-covid" type="button" aria-expanded="false">
-                    <div class="accordion-title">
-                      <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
-                  </button>
-                  <div class="card-container collapsed">
-                    <div id="body-nav" class="card-body">
-                      {% include "page-nav.njk" %}
-                    </div>
-                  </div>
-                </div>
-              </cwds-accordion>
-            </div>
-          </div>
-
+        <div class="row">
           <div class="col-lg-10">
             {{ content | safe  }}
           </div>
-
         </div>
       </div>
     </main>
