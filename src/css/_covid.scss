@@ -549,6 +549,9 @@ border: none;
   .navbar-nav {
     display: block;
   }
+  .navbar {
+	  padding-left: 0;
+   }
 
   .navbar-nav.mobile {
     display: contents;
