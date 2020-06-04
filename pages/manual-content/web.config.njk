@@ -37,7 +37,7 @@ eleventyExcludeFromCollections: true
       </rewriteMaps>
       <rules>
         <rule name="FolderRemoval1" stopProcessing="true">
-          <match url="wordpress-posts/(.*)" />
+          <match url="(?:wordpress-posts|manual-content)/(.*)" />
           <action type="Redirect" url="/{R:1}" />
         </rule>
         <rule name="AddTrailingSlash BeforeStaticRewrites" stopProcessing="true">
