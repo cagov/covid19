@@ -1,0 +1,27 @@
+---
+layout: "page.njk"
+title: "What is open where"
+meta: "Project Alameda haircut"
+author: "State of California"
+publishdate: "2020-06-04T21:14:45Z"
+tags: ["do-not-crawl"]
+addtositemap: false
+---
+
+<p>Project Alameda haircut</p>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <cwds-lookup data-search-api="https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&#038;countymode=true&#038;q=" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="js-alameda-haircut" aria-live="polite">
+      <ul class="card-set"></ul>
+    </div>
+  </div>
+</div>
