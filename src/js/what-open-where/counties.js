@@ -70,7 +70,7 @@ export default function getCounties () {
     },
     {
       name: 'Alameda',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Alpine',
@@ -82,7 +82,7 @@ export default function getCounties () {
     },
     {
       name: 'Contra Costa',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Fresno',
@@ -98,11 +98,11 @@ export default function getCounties () {
     },
     {
       name: 'San Mateo',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Santa Clara',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Mono',
@@ -178,7 +178,7 @@ export default function getCounties () {
     },
     {
       name: 'Marin',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'San Joaquin',
@@ -190,11 +190,11 @@ export default function getCounties () {
     },
     {
       name: 'San Francisco',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Imperial',
-      stage: '2b'
+      stage: '2a'
     },
     {
       name: 'Placer',
