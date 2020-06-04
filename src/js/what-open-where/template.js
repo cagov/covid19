@@ -1,5 +1,5 @@
 import getCounties from './counties.js';
-import activityList from 'activities.json';
+import activityList from './activities.json';
 // npx csvtojson activities.csv > activities.json
 
 export default function template(inputval) {
@@ -25,14 +25,6 @@ export default function template(inputval) {
 }
 
 function lookupSuccess(inputCounty, inputval, isZip) {
-  if(inputCounty.toLowerCase().indexOf('county') === -1) {
-    inputCounty += ' County';
-  }
-  let resultDescription = ` ${inputCounty}`;
-  if(isZip) {
-    resultDescription = `${inputval} is in ${inputCounty}`
-  }
-
   let chosenCounty;
   const counties = getCounties();
   counties.forEach(county => {
@@ -43,6 +35,15 @@ function lookupSuccess(inputCounty, inputval, isZip) {
   if (!chosenCounty) {
     lookupFail();
   } else {
+
+    if(inputCounty.toLowerCase().indexOf('county') === -1) {
+      inputCounty += ' County';
+    }
+    let resultDescription = ` ${chosenCounty.name} County`;
+    if(isZip) {
+      resultDescription = `${inputval} is in ${chosenCounty.name} County`
+    }
+
     let currentStage = chosenCounty.stage;
 
     let allowedActivities = [];
