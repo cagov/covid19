@@ -394,6 +394,14 @@ a:focus {
   outline: 2px solid #fff;
 }
 
+.navbar a.nav-link:focus {
+    outline: 2px solid #0257d5;
+}
+
+a.nav-link.mr-0.pr-0:focus {
+    outline: 2px solid #fff;
+}
+
 .alphabar a:focus {
   outline: 2px solid #fff;
 }
