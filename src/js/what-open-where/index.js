@@ -27,3 +27,8 @@ if(document.querySelector("cwds-lookup")) {
   });  
 }
 
+if(document.querySelector('.calimap')) {
+  document.querySelector('.calimap').addEventListener("showResults", (evt) => {
+    activityResults(evt.detail);
+  });
+}
