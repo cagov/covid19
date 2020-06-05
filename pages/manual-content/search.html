@@ -77,7 +77,7 @@ addtositemap: true
 						if(a.questions.length > 0) {
 							return `<cwds-accordion>
 								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
-										<div class="accordion-title">${a.questions[0]}</div>
+										<div class="accordion-title">${a.questions.join(' ')}</div>
 									</button>
 									<div class="card-container collapsed">
 										<div class="card-body">
