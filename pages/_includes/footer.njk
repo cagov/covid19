@@ -56,7 +56,7 @@ ga('tracker3.send', 'pageview');
 {% if page.fileSlug === "plasma-test" or page.fileSlug === "plasma" or page.fileSlug === "donate-plasma" %}
 <script type="module">{% include "plasma.js" %}</script>
 {% endif %}
-{% if page.fileSlug === "what-is-open-where" %}
+{% if page.fileSlug === "what-is-open-where" or page.fileSlug === "what-where" %}
 <script type="module">{% include "what-open-where.js" %}</script>
 {% endif %}
 
