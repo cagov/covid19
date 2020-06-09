@@ -123,7 +123,7 @@ export default function getCounties () {
     },
     {
       name: 'San Diego',
-      url: 'https://www.readysandiego.org/alertsandiego/'
+      url: 'https://www.sandiegocounty.gov/coronavirus.html'
     },
     {
       name: 'San Luis Obispo',
