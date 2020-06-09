@@ -1,0 +1,23 @@
+---
+permalink: /routes.json
+eleventyExcludeFromCollections: true
+---
+{
+  "routes": [
+    {
+      "route": "/specials-test-redirect",
+      "serve": "/Search/?q=closed",
+      "statusCode": 301
+    }
+  ],
+  "platformErrorOverrides": [
+    {
+      "errorType": "NotFound",
+      "serve": "/404/"
+    },
+    {
+      "errorType": "Unauthenticated",
+      "serve": "/404/"
+    }
+  ]
+}
