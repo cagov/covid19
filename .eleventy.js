@@ -4,6 +4,7 @@ const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const langPostfixRegExp = new RegExp(`(?:${langData.languages.map(x=>x.filepostfix.toLowerCase()).filter(x=>x).join('|')})$`);
 const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
@@ -29,6 +30,7 @@ module.exports = function(eleventyConfig) {
       if(item.inputPath.includes(manualContentFolderName)) {
         item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
         item.url = item.url.replace(`/${manualContentFolderName}`,'');
+        item.data.page.fileSlug = item.data.page.fileSlug.replace(/manual-content/,'');
         output.push(item);
       };
     });
@@ -312,19 +314,51 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
+  const getEnglishSlug = page => page.fileSlug.replace(langPostfixRegExp,'');
+  eleventyConfig.addFilter('getEnglishSlug', getEnglishSlug);
+
   // return alternate language pages
-  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
-    const pageNavRecord = pageNav.navList.find(f=>langData.languages.find(l=>f[l.wptag]&&f[l.wptag].slug===page.fileSlug));
-    if(pageNavRecord) {
-      return langData.languages
-        .filter(x=>x.enabled&&pageNavRecord[x.wptag]&&pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
-        .map(x=>({
-          langcode:x.id,
-          langname:x.name,
-          url:pageNavRecord[x.wptag].url
-        }));
-      }
+  eleventyConfig.addFilter('getAltPageRows', page => {
+    if(!page.url)
+      return [];
+
+    let engSlug = getEnglishSlug(page);
+
+
+    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
+      engSlug='';
+    }
+
+    if(!page.url) {
+      console.log(page);
+    }
+    
+    const thisURL = page.url.replace(/^\/manual-content/,'');
+
+
+
+//if(!page.data) {
+//  console.log(page);
+//}
+
+
+  //  const thisURL = `/${page.fileSlug}/`.replace(/\/\//,'/');
+    //const thisURL = page.data.url.replace(/^\/manual-content/,'');
+
+    return langData.languages
+      .filter(x=>x.enabled)
+      .map(x=>({
+        url: `/${(engSlug+x.filepostfix)
+          .replace(/^-/,'')}/` //Remove dashes from start of root URLs
+          .replace(/\/\//,'/'), //Replace double slash with singles
+        langcode:x.id,
+        langname:x.name
+        }))
+      .filter(x=>x.url!==thisURL)
+      ;
   });
+
+
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
 };
