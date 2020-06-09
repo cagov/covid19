@@ -30,7 +30,8 @@ module.exports = function(eleventyConfig) {
       if(item.inputPath.includes(manualContentFolderName)) {
         item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
         item.url = item.url.replace(`/${manualContentFolderName}`,'');
-        item.data.page.fileSlug = item.data.page.fileSlug.replace(/manual-content/,'');
+        item.data.page.fileSlug = item.data.page.fileSlug.replace(manualContentFolderName,'');
+        item.data.page.url = item.data.page.url.replace(`/${manualContentFolderName}`,'');
         output.push(item);
       };
     });
@@ -324,27 +325,15 @@ module.exports = function(eleventyConfig) {
 
     let engSlug = getEnglishSlug(page);
 
-
     if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
+      //This is a root language page
       engSlug='';
     }
 
     if(!page.url) {
       console.log(page);
     }
-    
-    const thisURL = page.url.replace(/^\/manual-content/,'');
-
-
-
-//if(!page.data) {
-//  console.log(page);
-//}
-
-
-  //  const thisURL = `/${page.fileSlug}/`.replace(/\/\//,'/');
-    //const thisURL = page.data.url.replace(/^\/manual-content/,'');
-
+  
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
@@ -354,7 +343,7 @@ module.exports = function(eleventyConfig) {
         langcode:x.id,
         langname:x.name
         }))
-      .filter(x=>x.url!==thisURL)
+      .filter(x=>x.url!==page.url)
       ;
   });
 
