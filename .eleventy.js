@@ -16,7 +16,9 @@ module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
+  // this line is commented out in staging branch only so we can get under the Azure Static Web App 100MB deploy limit
   // eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
+  eleventyConfig.addPassthroughCopy({ "./.github/workflows": ".github/workflows" });
   eleventyConfig.addPassthroughCopy({ "./src/js/maps": "js/maps" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
