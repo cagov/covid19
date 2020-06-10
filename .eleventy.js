@@ -13,7 +13,7 @@ let miniCSS = '';
 
 //RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
 const langPostfixRegExp = new RegExp(`(?:${langData.languages
-  .map(x=>x.filepostfix.toLowerCase())
+  .map(x=>x.filepostfix)
   .filter(x=>x)
   .join('|')})$`);
 
@@ -303,7 +303,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
-  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix.toLowerCase() || "");
+  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
