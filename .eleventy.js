@@ -346,8 +346,6 @@ module.exports = function(eleventyConfig) {
       ;
   });
 
-
-
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
 };
 
