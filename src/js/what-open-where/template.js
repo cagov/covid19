@@ -70,13 +70,23 @@ function lookupSuccess(inputCounty, inputval, isZip) {
       padding: 0;
       margin: 0;
     }
+    .open-results-set ul li {
+      text-indent: -20px;
+      padding-left: 20px;
+    }
     </style>
       <h3>${resultDescription}</h3>
       <div class="open-results">
         <span class="open-results-set">
           <h4>What's open:</h4>
           <ul>
-            ${allowedActivities.sort().map( (item) => {
+            ${allowedActivities.sort(function(a,b) {
+               if(a.Activity.toUpperCase() < b.Activity.toUpperCase()) {
+                 return -1;
+               } else {
+                 return 1;
+               }
+            }).map( (item) => {
               return `
                 <li>${item.Activity}</li>
               `
@@ -86,9 +96,15 @@ function lookupSuccess(inputCounty, inputval, isZip) {
         <span class="open-results-set">
           <h4>What's closed:</h4>
           <ul>
-            ${nonAllowedActivities.sort().map( (item) => {
+            ${nonAllowedActivities.sort(function(a,b) {
+              if(a.Activity.toUpperCase() < b.Activity.toUpperCase()) {
+                return -1;
+              } else {
+                return 1;
+              }
+           }).map( (item) => {
               return `
-                <li>${item.Activity} ${(item.Stage == '2c' && chosenCounty.stage == '2b') ? '(opening June 12)' : ''}</li>
+                <li>${item.Activity} ${(item.Stage == '2c' && chosenCounty.stage == '2b') ? '(can open June 12th)' : ''}</li>
               `
             }).join(' ')}
           </ul>
