@@ -4,13 +4,18 @@ const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
-const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
   htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
 }
 let miniCSS = '';
+
+//RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
+const langPostfixRegExp = new RegExp(`(?:${langData.languages
+  .map(x=>x.filepostfix)
+  .filter(x=>x)
+  .join('|')})$`);
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -29,6 +34,8 @@ module.exports = function(eleventyConfig) {
       if(item.inputPath.includes(manualContentFolderName)) {
         item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
         item.url = item.url.replace(`/${manualContentFolderName}`,'');
+        item.data.page.fileSlug = item.data.page.fileSlug.replace(manualContentFolderName,'');
+        item.data.page.url = item.data.page.url.replace(`/${manualContentFolderName}`,'');
         output.push(item);
       };
     });
@@ -296,7 +303,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
-  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix.toLowerCase() || "");
+  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
@@ -313,17 +320,30 @@ module.exports = function(eleventyConfig) {
     contentcontent.match(match) ? content : "");
 
   // return alternate language pages
-  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
-    const pageNavRecord = pageNav.navList.find(f=>langData.languages.find(l=>f[l.wptag]&&f[l.wptag].slug===page.fileSlug));
-    if(pageNavRecord) {
-      return langData.languages
-        .filter(x=>x.enabled&&pageNavRecord[x.wptag]&&pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
-        .map(x=>({
-          langcode:x.id,
-          langname:x.name,
-          url:pageNavRecord[x.wptag].url
-        }));
-      }
+  eleventyConfig.addFilter('getAltPageRows', page => {
+    if(!page.url) {
+      //skip "guidancefeed", etc. or pages with no output (permalink: false)
+      return [];
+    }
+
+    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
+
+    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
+      //This is a root language page
+      engSlug='';
+    }
+  
+    return langData.languages
+      .filter(x=>x.enabled)
+      .map(x=>({
+        url: `/${(engSlug+x.filepostfix)
+          .replace(/^-/,'')}/` //Remove dashes from start of root URLs
+          .replace(/\/\//,'/'), //Replace double slash with singles
+        langcode:x.id,
+        langname:x.name
+        }))
+      .filter(x=>x.url!==page.url)
+      ;
   });
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
