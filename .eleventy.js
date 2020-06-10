@@ -11,7 +11,7 @@ if(fs.existsSync('pages/_data/htmlmap.json')) {
 }
 let miniCSS = '';
 
-//RegExp for removing language suffixes
+//RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
 const langPostfixRegExp = new RegExp(`(?:${langData.languages
   .map(x=>x.filepostfix.toLowerCase())
   .filter(x=>x)
