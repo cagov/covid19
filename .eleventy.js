@@ -5,7 +5,6 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const langPostfixRegExp = new RegExp(`(?:${langData.languages.map(x=>x.filepostfix.toLowerCase()).filter(x=>x).join('|')})$`);
-const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
