@@ -4,13 +4,18 @@ const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
-const langPostfixRegExp = new RegExp(`(?:${langData.languages.map(x=>x.filepostfix.toLowerCase()).filter(x=>x).join('|')})$`);
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
   htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
 }
 let miniCSS = '';
+
+//RegExp for removing language suffixes
+const langPostfixRegExp = new RegExp(`(?:${langData.languages
+  .map(x=>x.filepostfix.toLowerCase())
+  .filter(x=>x)
+  .join('|')})$`);
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -314,23 +319,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
     contentcontent.match(match) ? content : "");
 
-  const getEnglishSlug = page => page.fileSlug.replace(langPostfixRegExp,'');
-  eleventyConfig.addFilter('getEnglishSlug', getEnglishSlug);
-
   // return alternate language pages
   eleventyConfig.addFilter('getAltPageRows', page => {
-    if(!page.url)
+    if(!page.url) {
+      //skip "guidancefeed", etc. or pages with no output (permalink: false)
       return [];
+    }
 
-    let engSlug = getEnglishSlug(page);
+    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
 
     if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
       //This is a root language page
       engSlug='';
-    }
-
-    if(!page.url) {
-      console.log(page);
     }
   
     return langData.languages
