@@ -50,30 +50,48 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     let nonAllowedActivities = [];
     activityList.forEach(ac => {
       if(ac.Stage <= currentStage) {
-        allowedActivities.push(ac.Activity)
+        allowedActivities.push(ac)
       } else {
-        nonAllowedActivities.push(ac.Activity)
+        nonAllowedActivities.push(ac)
       }
     })
     let html = `
+    <style>
+    .open-results {
+      display: flex;
+    }
+    .open-results-set {
+      margin-right: 20px;
+    }
+    .open-results-set ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    </style>
       <h3>${resultDescription}</h3>
-
-      <h4>What's open:</h4>
-      <ul class="list-group">
-        ${allowedActivities.sort().map( (item) => {
-          return `
-            <li class="list-group-item">${item}</li>
-          `
-        }).join(' ')}
-      </ul>
-      <h4>What's closed:</h4>
-      <ul class="list-group">
-        ${nonAllowedActivities.sort().map( (item) => {
-          return `
-            <li class="list-group-item">${item}</li>
-          `
-        }).join(' ')}
-      </ul>
+      <div class="open-results">
+        <span class="open-results-set">
+          <h4>What's open:</h4>
+          <ul>
+            ${allowedActivities.sort().map( (item) => {
+              return `
+                <li>${item.Activity}</li>
+              `
+            }).join(' ')}
+          </ul>
+        </span>
+        <span class="open-results-set">
+          <h4>What's closed:</h4>
+          <ul>
+            ${nonAllowedActivities.sort().map( (item) => {
+              return `
+                <li>${item.Activity} ${(item.Stage == '2c' && chosenCounty.stage == '2b') ? '(opening June 12)' : ''}</li>
+              `
+            }).join(' ')}
+          </ul>
+        </span>
+      </div>
     `;
     document.querySelector('.js-alameda-haircut').innerHTML = html;
   }
