@@ -57,8 +57,10 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     })
     let html = `
     <style>
-    .open-results {
-      display: flex;
+    @media (min-width: 570px) {
+      .open-results {
+        display: flex;
+      }
     }
     .open-results-set {
       margin-right: 20px;
