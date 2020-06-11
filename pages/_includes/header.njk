@@ -50,7 +50,7 @@
               {{Terms[4].Text}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
-              {% for item in page | getAltPageRows(tags) %}
+              {% for item in page | getAltPageRows %}
                 <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
               {% endfor %}
               <a class="dropdown-item" href="/translate/">More...</a>
