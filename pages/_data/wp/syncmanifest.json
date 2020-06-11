@@ -730,6 +730,20 @@
       "mime_type": "image/png"
     },
     {
+      "slug": "data-reporting-questionnaire_great-plates-delivered-program",
+      "file": "data-reporting-questionnaire_great-plates-delivered-program.docx",
+      "id": 4103,
+      "modified": "2020-06-10T00:50:42",
+      "wp_path": "/wp-content/uploads/2020/06/Data-Reporting-Questionnaire_Great-Plates-Delivered-Program.docx",
+      "github_path": "src/img/wp/data-reporting-questionnaire_great-plates-delivered-program.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "usedbyslugs": [
+        "restaurants-deliver-home-meals-for-seniors"
+      ],
+      "wp_sha": "6330300656d200784245d62e67b33aa42fb0cff4",
+      "github_sha": "2cab7beabe8d2fed9a10d58fe77ad4d4717f1b4f"
+    },
+    {
       "slug": "domestic-violence-service-providers-list",
       "file": "domestic-violence-service-providers-list.pdf",
       "id": 3277,
@@ -906,15 +920,15 @@
       "slug": "great-plates-delivered-program-guidance",
       "file": "great-plates-delivered-program-guidance.pdf",
       "id": 2389,
-      "modified": "2020-05-07T21:35:49",
+      "modified": "2020-06-10T00:50:06",
       "wp_path": "/wp-content/uploads/2020/04/Great-Plates-Delivered-Program-Guidance.pdf",
       "github_path": "src/img/wp/great-plates-delivered-program-guidance.pdf",
       "mime_type": "application/pdf",
       "usedbyslugs": [
         "restaurants-deliver-home-meals-for-seniors"
       ],
-      "wp_sha": "e22966a3b6d4198fdf0c230d3428d1fefb17d864",
-      "github_sha": "13583760a41c1060369f3d44c52500b157069086"
+      "wp_sha": "dc740a5a1980dd66a9c50fcf6c45701b8a25725e",
+      "github_sha": "ae487892b5f1b225d403aee207dd1598e63a03a4"
     },
     {
       "slug": "great-plates-delivered-restaurants-faqs",
@@ -1791,7 +1805,7 @@
       "id": 36,
       "filename": "education",
       "pagetitle": "Education",
-      "modified": "2020-06-05T01:06:50",
+      "modified": "2020-06-10T22:41:07",
       "tags": [
         "translate"
       ],
@@ -1802,8 +1816,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "069ad85811b4e05d14580744db693f4c1864d495",
-      "github_sha": "613382d2dff8a27289632f02711831ccfd001841"
+      "wp_sha": "6e3710b2be2d7d86df5452bae9baa0aead36e243",
+      "github_sha": "dc0b50503a2f6df93de10210f5e71f48b6d1a3a9"
     },
     {
       "slug": "essential-workforce",
@@ -2026,7 +2040,7 @@
       "id": 606,
       "filename": "get-financial-help",
       "pagetitle": "Get financial help",
-      "modified": "2020-05-28T17:48:44",
+      "modified": "2020-06-11T17:04:13",
       "tags": [
         "translate"
       ],
@@ -2037,8 +2051,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ad1b78afdcd98945ca47f85a6beb1148e2e37e73",
-      "github_sha": "f5ece3d4877cfd1f513dbe7e22661c1e0a98f24b"
+      "wp_sha": "5a94e6ce442d6fd6c2673edb436f4131a113ea6e",
+      "github_sha": "703bd866863538d6261a6cfe7b5066a3fca46eec"
     },
     {
       "slug": "get-local-information",
@@ -2561,7 +2575,7 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-06-01T20:13:21",
+      "modified": "2020-06-10T00:02:33",
       "tags": [
         "fragment",
         "translate",
@@ -2574,8 +2588,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "0ec9447a2185da7a9374020fb9c2f2494557c75d",
-      "github_sha": "1cae1f37de1295b1ba24937cb931b95f15761485"
+      "wp_sha": "b5cdef4826edcc445fef2f23657bd8dc14cda7c5",
+      "github_sha": "1f8d130c70112255af542d0b05ad937a2fc029ee"
     },
     {
       "slug": "page-redirect-table",
@@ -2675,24 +2689,26 @@
       "id": 3942,
       "filename": "request-ppe",
       "pagetitle": "Request PPE",
-      "modified": "2020-06-05T01:14:19",
-      "tags": [],
+      "modified": "2020-06-10T16:40:49",
+      "tags": [
+        "translate"
+      ],
       "category": "request PPE",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "c8b31b967b41fa8a7043906bdd7227ede376931c",
-      "github_sha": "cab8ba1cbe7b3ec8150a09b36ea2911876ec7d9f"
+      "wp_sha": "cc6226e279cb2f335748793aba0b82ccefe14c9f",
+      "github_sha": "3af0fe5745b2a21999495b5694959765e745f65f"
     },
     {
       "slug": "resources-for-emotional-support-and-well-being",
       "id": 839,
       "filename": "resources-for-emotional-support-and-well-being",
       "pagetitle": "Resources for emotional support and well-being",
-      "modified": "2020-06-03T19:07:17",
+      "modified": "2020-06-10T14:55:33",
       "tags": [
         "translate"
       ],
@@ -2703,15 +2719,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "c337999a84e53de55290f6ed59e15da30195f9ad",
-      "github_sha": "45956ee926d3e394baccf42aa94642add542a977"
+      "wp_sha": "028c2b4c46753b3d4907b6edbdbf85b34580f597",
+      "github_sha": "d4c4270d106867c1094da217af86b4e8de1b7206"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors",
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-29T20:01:24",
+      "modified": "2020-06-10T00:55:55",
       "tags": [
         "translate"
       ],
@@ -2722,8 +2738,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "ea74bee802e7c54085722479b46f1aae5b9da944",
-      "github_sha": "6b234cac89d285e3530c74eb30caf19cf952307e"
+      "wp_sha": "8ae47da853b0561558accb5b850b0ae78fec22f1",
+      "github_sha": "72e31d27a4339106bd1e53a871e83ff2c5144c39"
     },
     {
       "slug": "roadmap",
@@ -2929,7 +2945,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home Q&#038;A",
-      "modified": "2020-06-08T23:02:13",
+      "modified": "2020-06-10T00:24:09",
       "tags": [
         "translate"
       ],
@@ -2940,15 +2956,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "1c3eaef323f753a38b7069f1d13182f1c74ffa7d",
-      "github_sha": "074067ce226e601a05f83b9c8dc4687784a8f3e6"
+      "wp_sha": "7ff0d186cdbf9e31e6a6422d304ed848603c81b0",
+      "github_sha": "44bfc1cf325e429f56bd769fd12d3b8df9062a3f"
     },
     {
       "slug": "symptoms-and-risks",
       "id": 621,
       "filename": "symptoms-and-risks",
       "pagetitle": "Symptoms and risks",
-      "modified": "2020-06-09T16:34:44",
+      "modified": "2020-06-11T15:32:34",
       "tags": [
         "translate"
       ],
@@ -2959,8 +2975,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "eae0d4ad3413ab4b45ef084ba6903e8c86c2d299",
-      "github_sha": "054fece6a79f6c9db80308754d62facc9fa8ee8c"
+      "wp_sha": "bcdd6b8f6da342110f4e2ed9816dcf1c4b7b42f5",
+      "github_sha": "12e49eae95ee8574bf423e096dbe74a61f232061"
     },
     {
       "slug": "taxes",
@@ -3006,7 +3022,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and treatment",
-      "modified": "2020-06-09T16:38:51",
+      "modified": "2020-06-10T17:49:37",
       "tags": [
         "translate",
         "translate-priority"
@@ -3018,15 +3034,15 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "3cd6ef9116b3ee6a4abb5b61de0ffe9abc65e464",
-      "github_sha": "1f763399f293677c6cf84e33b1950e757261f98d"
+      "wp_sha": "1abfd957f1f50e36109a06ec8eb977caf1b9963c",
+      "github_sha": "5988f12610bca9dafd5afd8256f7fd811fc9d9ba"
     },
     {
       "slug": "what-is-open-where",
       "id": 3930,
       "filename": "what-is-open-where",
       "pagetitle": "What&#8217;s open?",
-      "modified": "2020-06-05T01:19:21",
+      "modified": "2020-06-10T16:34:59",
       "tags": [
         "do-not-crawl"
       ],
@@ -3037,8 +3053,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "446d7ac6e5a745ebc7e7363410476ec997816a5f",
-      "github_sha": "44cc47a524a1c8f80022a95f26d1d89031458145"
+      "wp_sha": "095ed879ffa6384c3f3d464d2fbbf7f35ba5c495",
+      "github_sha": "3af3344e71a8673e3ab9030d71a34f2c5db6ae59"
     },
     {
       "slug": "workers",
