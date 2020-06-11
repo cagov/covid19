@@ -646,7 +646,7 @@ border: none;
 	padding-bottom: 0;
 }
 	
-.alphabar {
+  .alphabar {
     position: relative;
 }
 	
@@ -674,7 +674,11 @@ border: none;
   }
 	
   .top-nav .nav-item {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+}
+	
+  .navbar-expand-md .navbar-nav {
+    flex-wrap: wrap;
 }
 	
 }
