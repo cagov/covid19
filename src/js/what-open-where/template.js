@@ -88,7 +88,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
                }
             }).map( (item) => {
               return `
-                <li>${item.Activity}</li>
+                <li>${item.Activity} ${(item.Stage == '2c') ? '(as of June 12th)' : ''}</li>
               `
             }).join(' ')}
           </ul>
@@ -104,7 +104,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
               }
            }).map( (item) => {
               return `
-                <li>${item.Activity} ${(item.Stage == '2c' && chosenCounty.stage == '2b') ? '(can open June 12th)' : ''}</li>
+                <li>${item.Activity}</li>
               `
             }).join(' ')}
           </ul>

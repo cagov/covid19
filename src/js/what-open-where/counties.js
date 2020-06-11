@@ -2,71 +2,71 @@ export default function getCounties () {
   const counties = [
     {
       name: 'Modoc',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Siskiyou',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Del Norte',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Humboldt',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Trinity',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Shasta',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Lassen',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Mendocino',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Tehama',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Plumas',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Lake',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Colusa',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Glenn',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Butte',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Yuba',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Sierra',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Nevada',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Alameda',
@@ -74,11 +74,11 @@ export default function getCounties () {
     },
     {
       name: 'Alpine',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Amador',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Contra Costa',
@@ -86,15 +86,15 @@ export default function getCounties () {
     },
     {
       name: 'Fresno',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Los Angeles',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Merced',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Mateo',
@@ -106,75 +106,75 @@ export default function getCounties () {
     },
     {
       name: 'Mono',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Napa',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Orange',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Benito',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Diego',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Luis Obispo',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Santa Barbara',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Sonoma',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Sutter',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Tulare',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Yolo',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Madera',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Calaveras',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Mariposa',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Solano',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Inyo',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Monterey',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Stanislaus',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Marin',
@@ -182,11 +182,11 @@ export default function getCounties () {
     },
     {
       name: 'San Joaquin',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Kings',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Francisco',
@@ -198,39 +198,39 @@ export default function getCounties () {
     },
     {
       name: 'Placer',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Tuolumne',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Ventura',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Santa Cruz',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Kern',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'San Bernardino',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'El Dorado',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Sacramento',
-      stage: '2b'
+      stage: '2c'
     },
     {
       name: 'Riverside',
-      stage: '2b'
+      stage: '2c'
     }
   ];
   return counties;
