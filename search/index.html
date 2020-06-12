@@ -367,12 +367,12 @@
 				document.querySelector('#answersNow').innerHTML = html;
 				// send an event that we got quick answers	
 				if(typeof(ga) !== 'undefined') {
-					ga('send', 'event', 'search', 'got_quick_answers', query);
+					ga('send', 'event', 'search', 'got_quick_answers', query.toLowerCase());
 				}
 			} else {
 				// send an event with or without answers
 				if(typeof(ga) !== 'undefined') {
-					ga('send', 'event', 'search', 'no_quick_answers', query);
+					ga('send', 'event', 'search', 'no_quick_answers', query.toLowerCase());
 				}
 			}
 		});
