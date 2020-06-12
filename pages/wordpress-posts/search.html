@@ -1,0 +1,25 @@
+---
+layout: "page.njk"
+title: "Search"
+meta: "Search the Covid19 website."
+author: "State of California"
+publishdate: "2020-03-23T22:00:00Z"
+addtositemap: true
+---
+
+<h2>Search this website</h2>
+<label id="SearchInput" for="q">
+	Enter your search text
+</label>
+<form class="form-inline">
+	<input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
+	<button type="submit" class="btn btn-primary">
+		Search
+	</button>	  
+</form>
+
+<div id="queries"></div>
+
+<div id="answersNow"></div>
+
+<h4>Related pages on this website</h4>

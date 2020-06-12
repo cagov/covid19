@@ -1,11 +1,4 @@
----
-layout: "page.njk"
-title: "Search"
-meta: "Search the Covid19 website."
-author: "State of California"
-publishdate: "2020-03-23T22:00:00Z"
-addtositemap: true
----
+{% set langFilePostfix = tags | langFilePostfix %}
 <style>
   .aside { 
 		position: relative!important;
@@ -33,17 +26,6 @@ addtositemap: true
 	}
 </style>
 
-<h2>Search this website</h2>
-<label id="SearchInput" for="q">Enter your search text</label>
-<form action="/Search/" class="form-inline">
-
-  <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
-	<button type="submit"  class="btn btn-primary">Search</button>	  
-</form>
-
-<div id="answersNow"></div>
-
-<h4>Related pages on this website</h4>
 <gcse:searchresults-only></gcse:searchresults-only>
 
 <script>
@@ -51,7 +33,7 @@ addtositemap: true
 	const gcse = document.createElement('script');
 	gcse.type = 'text/javascript';
 	gcse.async = true;
-	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	gcse.src = 'https://cse.google.com/cse.js?language={{(tags | langRecord).hreflang}}&cx=' + cx;
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
@@ -62,12 +44,14 @@ addtositemap: true
 		return (results !== null) ? results[1] || 0 : false;
 	}
 	const urlq = urlParam('q')||'';
-  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
+  const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
   document.querySelector('input[name=q]').value = query;
 </script> 
 
 <script>	
 	const myWebSearchStartingCallback = (query) => {
+		if(!query) return;
+
 		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
 		if(window.location.port !== '80') {
 			currentHost += `:${window.location.port}`;
@@ -111,4 +95,7 @@ addtositemap: true
 		});
 	}
 	myWebSearchStartingCallback(query)
-</script> 
+</script>
+
+<script src="https://cse.google.com/query_renderer.js"></script>
+<script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=(new+PopularQueryRenderer(document.getElementById(%22queries%22))).render"></script>
