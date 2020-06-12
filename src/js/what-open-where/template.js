@@ -66,13 +66,13 @@ function lookupSuccess(inputCounty, inputval, isZip) {
       margin-right: 20px;
     }
     .open-results-set ul {
-      list-style: none;
       padding: 0;
-      margin: 0;
+      margin-left: 20px;
     }
     .open-results-set ul li {
-      text-indent: -20px;
-      padding-left: 20px;
+      text-indent: -15px;
+      padding-left: 0;
+      margin-left: 15px;
     }
     </style>
       <h3>${resultDescription}</h3>

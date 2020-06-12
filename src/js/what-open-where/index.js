@@ -21,14 +21,16 @@ window.addEventListener('popstate', function(e) {
 
 function resetPage() {
   let county = '';
+  document.querySelector('.invalid-feedback').style.display = 'none';
   if(window.location.search) {
     county = decodeURIComponent(window.location.search.replace('?county=',''));
   }
   if(county) {
-    console.log(county)
     activityResults(county);
+    document.querySelector('.city-search').value = county;
   } else {
     document.querySelector('.js-alameda-haircut').innerHTML = '';
+    document.querySelector('.city-search').value = '';
   }
 }
 resetPage();
