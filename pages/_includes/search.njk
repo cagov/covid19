@@ -49,7 +49,7 @@
 </script> 
 
 <script>	
-	const myWebSearchStartingCallback = (query) => {
+	const myWebSearchStartingCallback = query => {
 		if(!query) return;
 
 		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
@@ -82,6 +82,7 @@
 						}
 				}).join('	')}`
 				document.querySelector('#answersNow').innerHTML = html;
+
 				// send an event that we got quick answers	
 				if(typeof(ga) !== 'undefined') {
 					ga('send', 'event', 'search', 'got_quick_answers', query.toLowerCase());
@@ -95,7 +96,14 @@
 		});
 	}
 	myWebSearchStartingCallback(query)
+
+	const popularQueryiesCallback = data => {
+		document.querySelector('#queries').innerHTML += data.popularQueries
+			.map(x=>
+				`<a href="?q=${x.query}">${x.query}</a>`
+			).join(', ');
+	}
+
 </script>
 
-<script src="https://cse.google.com/query_renderer.js"></script>
-<script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=(new+PopularQueryRenderer(document.getElementById(%22queries%22))).render"></script>
+<script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script>
