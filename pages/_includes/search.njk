@@ -98,7 +98,7 @@
 	const popularQueryiesCallback = data => {
 		document.querySelector('#queries').innerHTML += data.popularQueries
 			.map(x=>
-				`<a class="action-link border-0 mr-3" style="margin:0" href="?q=${x.query}">${x.query}</a>`
+				`<a class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x.query}">${x.query}</a>`
 			).join('');
 	}
 
