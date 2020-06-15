@@ -273,7 +273,39 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-10">
-            <style>
+            
+<h2>Search this website</h2>
+
+
+
+<label id="SearchInput" for="q">
+	Enter your search text
+</label>
+<form class="form-inline">
+	<input type="search" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus="" required="">
+	<button type="submit" class="btn btn-primary">
+		Search
+	</button>	  
+</form>
+
+<div id="answersNow"></div>
+
+<gcse:searchresults-only></gcse:searchresults-only>
+
+
+
+<h4>Popular searches</h4>
+
+
+
+<div id="queries"></div>
+
+
+
+<p></p>
+
+            
+<style>
   .aside { 
 		position: relative!important;
 	}
@@ -300,25 +332,12 @@
 	}
 </style>
 
-<h2>Search this website</h2>
-<label id="SearchInput" for="q">Enter your search text</label>
-<form action="/Search/" class="form-inline">
-
-  <input type="text" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus />
-	<button type="submit"  class="btn btn-primary">Search</button>	  
-</form>
-
-<div id="answersNow"></div>
-
-<h4>Related pages on this website</h4>
-<gcse:searchresults-only></gcse:searchresults-only>
-
 <script>
 	const cx = '003358532045999200914:uxxka6d3pge';
 	const gcse = document.createElement('script');
 	gcse.type = 'text/javascript';
 	gcse.async = true;
-	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	gcse.src = 'https://cse.google.com/cse.js?language=en-US&cx=' + cx;
 	const s = document.getElementsByTagName('script');
 	s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
 
@@ -329,12 +348,14 @@
 		return (results !== null) ? results[1] || 0 : false;
 	}
 	const urlq = urlParam('q')||'';
-  const query = decodeURIComponent(urlq.replace(/\+/g,' '));
+  const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
   document.querySelector('input[name=q]').value = query;
 </script> 
 
-<script>	
-	const myWebSearchStartingCallback = (query) => {
+<script>
+	const myWebSearchStartingCallback = query => {
+		if(!query) return;
+
 		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
 		if(window.location.port !== '80') {
 			currentHost += `:${window.location.port}`;
@@ -365,6 +386,7 @@
 						}
 				}).join('	')}`
 				document.querySelector('#answersNow').innerHTML = html;
+
 				// send an event that we got quick answers	
 				if(typeof(ga) !== 'undefined') {
 					ga('send', 'event', 'search', 'got_quick_answers', query.toLowerCase());
@@ -378,8 +400,20 @@
 		});
 	}
 	myWebSearchStartingCallback(query)
-</script> 
-          </div>
+</script>
+<script>
+	const popularQueryiesCallback = data => {
+		document.querySelector('#queries').innerHTML += data.popularQueries
+			.map(x=>x.query)
+			.filter(x=>x.match(/\S+/g).length<=4)
+			.map(x=>
+				`<a class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
+			).join('');
+	}
+</script>
+<script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script>
+
+            </div>
         </div>
       </div>
     </main>
