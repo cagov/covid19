@@ -1,0 +1,29 @@
+---
+layout: "page.njk"
+title: "Tìm kiếm"
+meta: "Search the Covid19 website."
+author: "State of California"
+publishdate: "2020-03-23T22:00:00Z"
+tags: ["lang-vi"]
+addtositemap: true
+---
+
+<h2>Search this website (Vietnamese)</h2>
+<label id="SearchInput" for="q">
+  Enter your search text
+</label>
+<form class="form-inline">
+  <input type="search" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus required />
+	<button type="submit" class="btn btn-primary">
+    Search
+  </button>	  
+</form>
+
+<div id="answersNow"></div>
+
+<gcse:searchresults-only></gcse:searchresults-only>
+
+<div>
+	<h4>Popular searches</h4>
+	<div id="queries"></div>
+</div>
