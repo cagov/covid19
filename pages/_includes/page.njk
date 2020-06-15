@@ -84,6 +84,9 @@
         <div class="row">
           <div class="col-lg-10">
             {{ content | safe  }}
+            {%- pagesection page, "search" %}
+            {% include "search.njk" %}
+            {% endpagesection -%}
           </div>
         </div>
       </div>
