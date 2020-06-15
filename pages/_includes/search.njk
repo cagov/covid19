@@ -46,7 +46,7 @@
   document.querySelector('input[name=q]').value = query;
 </script> 
 
-<script>	
+<script>
 	const myWebSearchStartingCallback = query => {
 		if(!query) return;
 
@@ -94,14 +94,15 @@
 		});
 	}
 	myWebSearchStartingCallback(query)
-
+</script>
+<script>
 	const popularQueryiesCallback = data => {
 		document.querySelector('#queries').innerHTML += data.popularQueries
+			.map(x=>x.query)
+			.filter(x=>x.match(/\S+/g).length<=4)
 			.map(x=>
-				`<a class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x.query}">${x.query}</a>`
+				`<a class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
 			).join('');
 	}
-
 </script>
-
 <script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script>
