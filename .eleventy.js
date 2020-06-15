@@ -163,7 +163,7 @@ module.exports = function(eleventyConfig) {
   //        {{0|_statsdata_}}
 
   const contentfrompage = (content, page, slug) => {
-    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
+    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
       return content;
     }
     return "";
