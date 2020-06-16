@@ -2,7 +2,7 @@
   {	
     function googleTranslateElementInit() {	
       new google.translate.TranslateElement({	
-          pageLanguage: 'en',	
+          pageLanguage: '{{(tags | langRecord).hreflang}}',
           layout: google.translate.TranslateElement.InlineLayout.VERTICAL	
          },	
         'google_translate_element'	
