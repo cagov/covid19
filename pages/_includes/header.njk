@@ -57,7 +57,7 @@
               {% for item in page | getAltPageRows %}
                 <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
               {% endfor %}
-              <a class="dropdown-item" href="/translate/">More...</a>
+              <a class="dropdown-item" href="/translate{{langFilePostfix}}/">{{Terms[6].Text}}</a>
             </div>
           </div>
         </li>
