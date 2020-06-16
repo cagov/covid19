@@ -160,7 +160,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="/search-tl/" class="btn translate">Paghahanap</a>
+          <a rel="nofollow" href="/search-tl/" class="btn translate">Paghahanap</a>
         </li>
         <li class="nav-item mr-0 pr-0">
           <div class="dropdown">
@@ -406,7 +406,7 @@
 			.map(x=>x.query)
 			.filter(x=>x.match(/\S+/g).length<=4)
 			.map(x=>
-				`<a class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
+				`<a rel="nofollow" class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
 			).join('');
 	}
 </script>
