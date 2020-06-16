@@ -378,11 +378,8 @@ ga('tracker3.send', 'pageview');
       );	
     }	
     function addGoogleTranslateCode() {	
-      const slug = 'translate-tl';	
-      const storagekey = 'google_translate_page_used';	
-  	
-      if (slug==='translate') sessionStorage.setItem(storagekey, new Date().getTime());	
-    	
+      const storagekey = 'google_translate_page_used';
+      sessionStorage.setItem(storagekey, new Date().getTime());	
       if (sessionStorage.getItem(storagekey)) {	
         const JS= document.createElement('script');	
         JS.type='text/javascript';	

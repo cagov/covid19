@@ -481,12 +481,7 @@ ga('tracker3.send', 'pageview');
       );	
     }	
     function addGoogleTranslateCode() {	
-      const slug = 'testing-and-treatment-ar';	
-      const storagekey = 'google_translate_page_used';	
-  	
-      if (slug==='translate') sessionStorage.setItem(storagekey, new Date().getTime());	
-    	
-      if (sessionStorage.getItem(storagekey)) {	
+      const storagekey = 'google_translate_page_used';if (sessionStorage.getItem(storagekey)) {	
         const JS= document.createElement('script');	
         JS.type='text/javascript';	
         JS.defer='defer';	
