@@ -1,29 +1,16 @@
 ---
 layout: "page.njk"
 title: "Buscar"
-meta: "Search the Covid19 website."
+meta: "Busque en el sitio web de COVID-19."
 author: "State of California"
-publishdate: "2020-03-23T22:00:00Z"
+publishdate: "2020-06-16T23:43:04.000Z"
 tags: ["lang-es"]
-addtositemap: false
+addtositemap: true
 ---
+ <h2>Busque en este sitio web</h2>    <label id="SearchInput" for="q"> Escriba el texto que desea buscar </label> <form class="form-inline"> 	<input type="search" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus="" required=""> <button type="submit" class="btn btn-primary"> Buscar </button>	   </form>
 
-<h2>Search this website (Spanish)</h2>
-<label id="SearchInput" for="q">
-  Enter your search text
-</label>
-<form class="form-inline">
-  <input type="search" class="form-control col-md-6" id="q" name="q" aria-labelledby="SearchInput" autofocus required />
-	<button type="submit" class="btn btn-primary">
-    Search
-  </button>	  
-</form>
+<div id="answersNow"></div>  <gcse:searchresults-only></gcse:searchresults-only>    <h4>Búsquedas populares</h4>
 
-<div id="answersNow"></div>
 
-<gcse:searchresults-only></gcse:searchresults-only>
 
-<div>
-	<h4>Popular searches</h4>
-	<div id="queries"></div>
-</div>
+<div id="queries"></div>
