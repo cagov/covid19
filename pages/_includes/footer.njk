@@ -42,21 +42,21 @@ ga('tracker3.send', 'pageview');
   </div>
 </div>
 
-{% pagesection page, "foo" %}
+{%- pagesection page, "foo" %}
 <!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
 <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
-{% endpagesection %}
+{% endpagesection -%}
 
 <script type="module">{% include "built.js" %}</script>
-{% if page.fileSlug.indexOf('county-alerts') > -1 %}
+{%- pagesection page, "sign-up-for-county-alerts" %}
 <script type="module">{% include "alerts.js" %}</script>
-{% endif %}
-{% if page.fileSlug.indexOf('telehealth') > -1 %}
+{% endpagesection -%}
+{%- pagesection page, "telehealth" %}
 <script type="module">{% include "telehealth.js" %}</script>
-{% endif %}
-{% if page.fileSlug === "plasma-test" or page.fileSlug === "plasma" or page.fileSlug === "donate-plasma" %}
+{% endpagesection -%}
+{%- pagesection page, "plasma" %}
 <script type="module">{% include "plasma.js" %}</script>
-{% endif %}
+{% endpagesection -%}
 
 <script nomodule src="/js/es5.js"></script>
 
