@@ -5,13 +5,8 @@ eleventyExcludeFromCollections: true
 {
   "routes": [
     {
-      "route": "/specials-test-redirect",
-      "serve": "/search/?q=closed",
-      "statusCode": 301
-    },
-    {
-      "route": "/pdf/*",
-      "serve": "https://covid19pdfs.azureedge.net/pdf/*",
+      "route": "/pdf",
+      "serve": "https://covid19pdfs.azureedge.net/pdf",
       "statusCode": 301
     }
 
