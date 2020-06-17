@@ -8,3 +8,4 @@ import './alerts/index.js';
 import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
+import './what-open-where/index.js'

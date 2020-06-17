@@ -95,7 +95,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
               }
            }).map( (item) => {
               return `
-                <li>${item.Activity}</li>
+                <li>${item.Activity} ${(item.Stage == '2d' && chosenCounty.stage == '2c') ? '(can open June 19th)' : ''}</li>
               `
             }).join(' ')}
           </ul>
