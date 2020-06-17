@@ -56,10 +56,10 @@ ga('tracker3.send', 'pageview');
 {% endpagesection -%}
 {%- pagesection page, "plasma" %}
 <script type="module">{% include "plasma.js" %}</script>
-{% endif %}
-{% if page.fileSlug === "what-is-open-where" or page.fileSlug === "what-where" %}
+{% endpagesection -%}
+{%- pagesection page, "what-is-open-where" %}
 <script type="module">{% include "what-open-where.js" %}</script>
-{% endif %}
+{% endpagesection -%}
 <script nomodule src="/js/es5.js"></script>
 
 {% include "googletranslate.njk" %}
