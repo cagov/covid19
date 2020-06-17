@@ -8,7 +8,13 @@ eleventyExcludeFromCollections: true
       "route": "/specials-test-redirect",
       "serve": "/search/?q=closed",
       "statusCode": 301
+    },
+    {
+      "route": "/yahoo/*",
+      "serve": "https://www.yahoo.com",
+      "statusCode": 301
     }
+
   ],
   "platformErrorOverrides": [
     {
