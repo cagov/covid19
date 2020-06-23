@@ -3,6 +3,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
+const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
@@ -191,46 +192,14 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  function localizeUrl(url, lang) {
-    if(url.indexOf('_en.') > -1) {
-      return url.replace('_en.',`_${lang}.`)
-    }
-    return url;
-  }
-  eleventyConfig.addTransform("findimagestolocalize", function(html, outputPath) {
-    const imageclass = 'localize-me';
-    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(imageclass)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`.${imageclass}`)) {
-          image.classList.remove(imageclass);
-          if (image.classList.length===0) image.removeAttribute('class');
-          if(image.nodeName === "FIGURE") {
-            image.querySelectorAll('img').forEach(internalImg => {
-              internalImg.src = localizeUrl(internalImg.src, lang);
-            })
-            image.querySelectorAll('source').forEach(internalImg => {
-              internalImg.srcset = localizeUrl(internalImg.srcset, lang);
-            })
-          }
-          if(image.nodeName === "IMG") {
-            image.src = localizeUrl(image.src, lang);
-          }
-        }
-        return dom.serialize();  
-      }
-    }
-    return html;
-  });
-
   let processedPostMap = new Map();
   htmlmap.forEach(pair => {
     processedPostMap.set(pair[0],pair[1])
   })
+
+
+
+
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
     const contentclass = 'wp-accordion-content';
@@ -292,6 +261,66 @@ module.exports = function(eleventyConfig) {
   });
 
 
+  eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
+    let localizeString = '--en.';
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
+      if(lang !== "en") {
+        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
+          let englishUrl = image.src;          
+          for(let langCount = 0; langCount < langData.languages.length;langCount++) {
+            let currentLang = langData.languages[langCount].filepostfix;
+            if(currentLang) {
+              let localizedUrl = englishUrl.replace('--en.',`-${currentLang}.`);
+              let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+              await new Promise(resolve => {
+                fileChecker.get({
+                  host: "files.covid19.ca.gov", 
+                  port: 443, 
+                  path: localizedUri,
+                  method: "HEAD",
+                  agent: false  // Create a new agent just for this one request
+                }, (res) => {
+                  if(res.statusCode === 200) {
+                    image.src = localizedUrl;
+                  }
+                  resolve('done')
+                });
+              });    
+            }
+          }
+        }
+        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
+          let englishUrl = link.href;
+          for(let langCount = 0; langCount < langData.languages.length;langCount++) {
+            let currentLang = langData.languages[langCount].filepostfix;
+            if(currentLang) {
+              let localizedUrl = englishUrl.replace('--en.',`-${currentLang}.`);
+              let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+              await new Promise(resolve => {
+                fileChecker.get({
+                  host: "files.covid19.ca.gov", 
+                  port: 443, 
+                  path: localizedUri,
+                  method: "HEAD",
+                  agent: false  // Create a new agent just for this one request
+                }, (res) => {
+                  if(res.statusCode === 200) {
+                    link.href = localizedUrl;
+                  }
+                  resolve('done')
+                });
+              });    
+            }
+          }
+        }
+        return dom.serialize();  
+      }      
+    }
+    return html;
+  });
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
   eleventyConfig.addFilter('includes', (items,value) => (items || []).includes(value));
@@ -346,6 +375,6 @@ module.exports = function(eleventyConfig) {
       ;
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
 };
 
