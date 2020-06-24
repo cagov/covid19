@@ -269,52 +269,43 @@ module.exports = function(eleventyConfig) {
       let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
       if(lang !== "en") {
         for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
-          let englishUrl = image.src;          
-          for(let langCount = 0; langCount < langData.languages.length;langCount++) {
-            let currentLang = langData.languages[langCount].filepostfix;
-            if(currentLang) {
-              let localizedUrl = englishUrl.replace('--en.',`-${currentLang}.`);
-              let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-              await new Promise(resolve => {
-                fileChecker.get({
-                  host: "files.covid19.ca.gov", 
-                  port: 443, 
-                  path: localizedUri,
-                  method: "HEAD",
-                  agent: false  // Create a new agent just for this one request
-                }, (res) => {
-                  if(res.statusCode === 200) {
-                    image.src = localizedUrl;
-                  }
-                  resolve('done')
-                });
-              });    
-            }
-          }
+          let englishUrl = image.src;
+          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
+          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+          await new Promise(resolve => {
+            fileChecker.get({
+              host: "files.covid19.ca.gov", 
+              port: 443, 
+              path: localizedUri,
+              method: "HEAD",
+              agent: false  // Create a new agent just for this one request
+            }, (res) => {
+              if(res.statusCode === 200) {
+                image.src = localizedUrl;
+              }
+              resolve('done')
+            });
+          });    
         }
         for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
           let englishUrl = link.href;
-          for(let langCount = 0; langCount < langData.languages.length;langCount++) {
-            let currentLang = langData.languages[langCount].filepostfix;
-            if(currentLang) {
-              let localizedUrl = englishUrl.replace('--en.',`-${currentLang}.`);
-              let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-              await new Promise(resolve => {
-                fileChecker.get({
-                  host: "files.covid19.ca.gov", 
-                  port: 443, 
-                  path: localizedUri,
-                  method: "HEAD",
-                  agent: false  // Create a new agent just for this one request
-                }, (res) => {
-                  if(res.statusCode === 200) {
-                    link.href = localizedUrl;
-                  }
-                  resolve('done')
-                });
-              });    
-            }
-          }
+
+          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
+          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+          await new Promise(resolve => {
+            fileChecker.get({
+              host: "files.covid19.ca.gov", 
+              port: 443, 
+              path: localizedUri,
+              method: "HEAD",
+              agent: false  // Create a new agent just for this one request
+            }, (res) => {
+              if(res.statusCode === 200) {
+                link.href = localizedUrl;
+              }
+              resolve('done')
+            });
+          });    
         }
         return dom.serialize();  
       }      
