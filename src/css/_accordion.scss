@@ -7,6 +7,10 @@ cwds-accordion .card-container {
   transition: height .3s;
 }
 
+cwds-accordion .card-body .wp-block-table {
+  overflow: scroll;
+}
+
 cwds-accordion .card-header {
   cursor: pointer;
 }
