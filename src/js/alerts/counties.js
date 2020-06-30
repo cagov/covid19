@@ -123,11 +123,11 @@ export default function getCounties () {
     },
     {
       name: 'San Diego',
-      url: 'https://www.readysandiego.org/alertsandiego/'
+      url: 'https://www.sandiegocounty.gov/coronavirus.html'
     },
     {
       name: 'San Luis Obispo',
-      url: 'ttp://www.slosheriff.org/reverse_911.php'
+      url: 'https://www.prepareslo.org/en/alert-and-notification-systems.aspx'
     },
     {
       name: 'Santa Barbara',

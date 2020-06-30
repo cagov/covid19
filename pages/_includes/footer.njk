@@ -1,12 +1,14 @@
-<script src="https://www.googletagmanager.com/gtag/js?id=UA-154336791-1" defer="defer">
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-154336791-1', 'auto');
+ga('create', 'UA-3419582-2', 'auto', 'tracker2');
+ga('create', 'UA-21974567-38', 'auto', 'tracker3');
+ga('send', 'pageview');
+ga('tracker2.send', 'pageview');
+ga('tracker3.send', 'pageview');
 </script>
-<script>window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config','UA-154336791-1');
-  gtag('config','UA-3419582-2');
-  gtag('config','UA-21974567-38');
-</script>
+<script async defer src='https://www.google-analytics.com/analytics.js'></script>
+
 
 {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
@@ -23,6 +25,7 @@
             <li class="list-group-item alpha-footer"><a href="{{ item.URL }}">{{ item.Name | safe }}</a></li>
             {% endfor %}
           </ul>
+          <p><strong>{{Terms[7].Text | safe}}</strong>: <a href="tel:18334224255">1-833-422-4255</a> {{Terms[8].Text | safe}}</p>
           <p class="text-secondary">{{Terms[0].Text | safe}}</p>
       </div>
     </div>
@@ -35,27 +38,25 @@
       <a class="alphabar-link" href="{{FooterLinks2[0].URL}}">{{FooterLinks2[0].Name | safe}}</a>
       <a class="alphabar-link" href="{{FooterLinks2[1].URL}}">{{FooterLinks2[1].Name | safe}}</a>
       <a class="alphabar-link" href="{{FooterLinks2[2].URL}}">{{FooterLinks2[2].Name | safe}}</a>
-      <a class="alphabar-link d-none d-sm-block d-md-none" href="{{FooterLinks2[3].URL}}">{{FooterLinks2[3].Name | safe}}</a>
-      <a class="alphabar-link" href="{{FooterLinks2[4].URL}}">{{FooterLinks2[4].Name | safe}}</a>
     </p>
   </div>
 </div>
 
-{% pagesection page, "foo" %}
+{%- pagesection page, "foo" %}
 <!-- Using this to make sure certain classes are included in the CSS build.  Should not ever render. -->
 <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
-{% endpagesection %}
+{% endpagesection -%}
 
 <script type="module">{% include "built.js" %}</script>
-{% if page.fileSlug.indexOf('county-alerts') > -1 %}
+{%- pagesection page, "sign-up-for-county-alerts" %}
 <script type="module">{% include "alerts.js" %}</script>
-{% endif %}
-{% if page.fileSlug.indexOf('telehealth') > -1 %}
+{% endpagesection -%}
+{%- pagesection page, "telehealth" %}
 <script type="module">{% include "telehealth.js" %}</script>
-{% endif %}
-{% if page.fileSlug === "plasma-test" or page.fileSlug === "plasma" or page.fileSlug === "donate-plasma" %}
+{% endpagesection -%}
+{%- pagesection page, "plasma" %}
 <script type="module">{% include "plasma.js" %}</script>
-{% endif %}
+{% endpagesection -%}
 
 <script nomodule src="/js/es5.js"></script>
 

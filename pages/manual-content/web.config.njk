@@ -6,6 +6,10 @@ eleventyExcludeFromCollections: true
 {%- set JSON = JSONraw | jsonparse -%}
 {%- set redirects = JSON.Table1 | selectattr("original_url")  -%}
 <?xml version="1.0" encoding="utf-8"?>
+{%- if redirects | groupby("original_url") | length !== redirects | length %}
+{# duplicate "original_url" in data, throw error #}
+{{ 'web.config build fail -> duplicate "original_url" in data' | error }}
+{% endif -%}
 <configuration>
   <system.webServer>
     <staticContent>
@@ -33,8 +37,12 @@ eleventyExcludeFromCollections: true
       </rewriteMaps>
       <rules>
         <rule name="FolderRemoval1" stopProcessing="true">
-          <match url="wordpress-posts/(.*)" />
+          <match url="(?:wordpress-posts|manual-content)/(.*)" />
           <action type="Redirect" url="/{R:1}" />
+        </rule>
+        <rule name="PdfToBlobStorage" stopProcessing="true">
+          <match url="^pdf/(.*)" />
+          <action type="Redirect" url="https://files.covid19.ca.gov/pdf/{R:1}" appendQueryString="false" />
         </rule>
         <rule name="AddTrailingSlash BeforeStaticRewrites" stopProcessing="true">
           <match url="(^[^.]*[^/]$)" />

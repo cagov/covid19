@@ -31,7 +31,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    {% for item in page | getAltPageRows(tags) -%}
+    {% for item in page | getAltPageRows -%}
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
     {% set css %}
@@ -61,14 +61,19 @@
     {% set Terms = JSON.Table3 %}
     <main id="main">
       
-      <div id="top" class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
+      <div class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
         <div class="container">
           <div class="row">
             <div class="col-lg-10">
               <h1>{{ title | safe }}</h1>
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
-                  {{ publishdate | formatDate }}</p>
+                  {% if page.fileSlug === "roadmap-counties" %}
+                    {{ "today" | formatDate }}
+                  {% else %}
+                    {{ publishdate | formatDate }}
+                  {% endif %}
+                </p>
               {% endif %}
             </div>
           </div>
@@ -76,35 +81,13 @@
       </div>
 
       <div class="container">
-        <div class="row flex-row-reverse flex-md-wrap-reverse flex-lg-wrap-reverse">
-
-          <div class="col-lg-4 sticky-wrapper">
-            <div id="side-nav"  class="aside">
-
-              <div class="d-none d-sm-none d-md-block">
-                {% include "page-nav.njk" %}
-              </div>
-
-              <cwds-accordion class="d-sm-block d-md-none">
-                <div id="nav-card" class="card">
-                  <button class="card-header accordion-alpha mobile-menu" type="button" aria-expanded="false">
-                    <div class="accordion-title">
-                      <span id="mobile-icon" class="ca-gov-icon-menu"></span> Menu</div>
-                  </button>
-                  <div class="card-container collapsed">
-                    <div id="body-nav" class="card-body">
-                      {% include "page-nav.njk" %}
-                    </div>
-                  </div>
-                </div>
-              </cwds-accordion>
-            </div>
-          </div>
-
-          <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-10">
             {{ content | safe  }}
+            {%- pagesection page, "search" %}
+            {% include "search.njk" %}
+            {% endpagesection -%}
           </div>
-
         </div>
       </div>
     </main>
