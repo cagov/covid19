@@ -12,7 +12,7 @@ export default function () {
 };
 
 function somePercent() { 
-  let lastSurveyInteraction = localStorage.getItem("surveyInteraction2");
+  let lastSurveyInteraction = localStorage.getItem("surveyInteraction3");
   if(!lastSurveyInteraction && Math.random() < 0.1) { 
     return true; 
   }
@@ -31,14 +31,14 @@ function applyListeners(target) {
 }
 
 function reportEvent(eventString) {
-  localStorage.setItem("surveyInteraction2", new Date().getTime());
+  localStorage.setItem("surveyInteraction3", new Date().getTime());
   reportGA(eventString);
   // report to new API: { site, event }
 }
 
 function reportGA(eventString) {
   if(typeof(gtag) !== 'undefined') {
-    gtag('event','click',{'event_category':'survey','event_label':eventString});
+    ga('send', 'event', 'click', 'survey', eventString);
   } else {
     setTimeout(function() {
       reportGA(eventString)

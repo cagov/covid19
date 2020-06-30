@@ -179,6 +179,31 @@ a.list-group-item.list-group-item-action {
 .navbar .container-fluid {
   justify-content: end !important;
 }
+
+.top-nav {
+    font-size: 1.3rem!important;
+	width: 100%;
+}
+
+.top-nav .nav-link:focus, .top-nav .nav-link:hover {
+    background: #e2eeff;
+    border-radius: .25rem;
+}
+
+a.dropdown-item {
+    font-size: 1.1rem;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.show {
+	text-decoration: none!important;
+	float:none!important;
+}
+
+
 .border-bold {
   border-width: 2px;
 }
@@ -369,6 +394,14 @@ a:focus {
   outline: 2px solid #fff;
 }
 
+.navbar a.nav-link:focus {
+    outline: 2px solid #0257d5;
+}
+
+a.nav-link.mr-0.pr-0:focus {
+    outline: 2px solid #fff;
+}
+
 .alphabar a:focus {
   outline: 2px solid #fff;
 }
@@ -483,6 +516,33 @@ a:visited.card {
     text-decoration: none!important;
 }
 
+.text-larger {
+	font-size: 1.4rem!important;
+}
+ .top-nav li.nav-item a {
+    text-decoration: none;
+} 
+
+.navbar-light .navbar-toggler {
+    color: rgb(0, 61, 157);
+    border-color: rgb(0, 61, 157);
+    padding: .1rem .75rem;
+	border: 2px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background: transparent;
+border: none;
+}
+
+.align-super {
+	vertical-align: super!important;
+}
+
+
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -497,9 +557,15 @@ a:visited.card {
   .navbar-nav {
     display: block;
   }
+  .navbar {
+	  padding-left: 0;
+   }
 
   .navbar-nav.mobile {
     display: contents;
+  }
+  .navbar-nav .dropdown-menu {
+    position: relative;
   }
 
   .bd-navbar .navbar-nav {
@@ -575,6 +641,15 @@ a:visited.card {
 	text-align: center!important;
 }
 	
+  .navbar-brand {
+    padding-top: 3%;
+	padding-bottom: 0;
+}
+	
+  .alphabar {
+    position: relative;
+}
+	
 }
 
 //-----------end of Small breakpoint
@@ -597,6 +672,29 @@ a:visited.card {
   .no-webp .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.jpg');
   }
+	
+  .top-nav .nav-item {
+    font-size: 1.2rem;
+}
+	
+  .navbar-expand-md .navbar-nav {
+    flex-wrap: wrap;
+}
+	
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+	
+		
+ .top-nav .nav-item {
+    font-size: 1.1rem;
+  }
+	
+#dropdown-4 {
+    left: -30%;
+}
+	
+	
 }
 
 
@@ -605,6 +703,7 @@ a:visited.card {
  .navbar-nav.mobile {
     margin-left: 0!important;
   }
+	
 }
 
 

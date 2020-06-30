@@ -3,8 +3,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
+const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
-const pageNav = JSON.parse(fs.readFileSync('pages/_data/pageNav.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
@@ -12,11 +12,16 @@ if(fs.existsSync('pages/_data/htmlmap.json')) {
 }
 let miniCSS = '';
 
+//RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
+const langPostfixRegExp = new RegExp(`(?:${langData.languages
+  .map(x=>x.filepostfix)
+  .filter(x=>x)
+  .join('|')})$`);
+
 module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
-  eleventyConfig.addPassthroughCopy({ "./src/pdf": "pdf" });
   eleventyConfig.addPassthroughCopy({ "./src/js/maps": "js/maps" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
@@ -29,6 +34,8 @@ module.exports = function(eleventyConfig) {
       if(item.inputPath.includes(manualContentFolderName)) {
         item.outputPath = item.outputPath.replace(`/${manualContentFolderName}`,'');
         item.url = item.url.replace(`/${manualContentFolderName}`,'');
+        item.data.page.fileSlug = item.data.page.fileSlug.replace(manualContentFolderName,'');
+        item.data.page.url = item.data.page.url.replace(`/${manualContentFolderName}`,'');
         output.push(item);
       };
     });
@@ -107,6 +114,19 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+
+  //usage
+  //    {{ 'My Error message' | error }}
+  eleventyConfig.addFilter('error', errorMessage => {
+    if (errorMessage)
+      throw errorMessage;
+    else
+      return null;
+  }
+  );
+
+  eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
+
   eleventyConfig.addFilter("cssmin", function(code) {
     if(!miniCSS) {
       miniCSS = new CleanCSS({}).minify(code).styles;
@@ -116,10 +136,13 @@ module.exports = function(eleventyConfig) {
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
-    if(datestring&&datestring.indexOf('Z') > -1) {
+    const locales = 'en-US';
+    const timeZone = 'America/Los_Angeles';
+  if(datestring&&datestring.indexOf('Z') > -1) {
       const date = new Date(datestring);
-      const locales = 'en-US';
-      const timeZone = 'America/Los_Angeles';
+      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
+    } else if(datestring === 'today') {
+      const date = new Date();
       return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
     } else {
       return datestring;
@@ -138,7 +161,7 @@ module.exports = function(eleventyConfig) {
   //        {{0|_statsdata_}}
 
   const contentfrompage = (content, page, slug) => {
-    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase()===slug.toLocaleLowerCase()) {
+    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
       return content;
     }
     return "";
@@ -168,46 +191,14 @@ module.exports = function(eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
-  function localizeUrl(url, lang) {
-    if(url.indexOf('_en.') > -1) {
-      return url.replace('_en.',`_${lang}.`)
-    }
-    return url;
-  }
-  eleventyConfig.addTransform("findimagestolocalize", function(html, outputPath) {
-    const imageclass = 'localize-me';
-    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(imageclass)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`.${imageclass}`)) {
-          image.classList.remove(imageclass);
-          if (image.classList.length===0) image.removeAttribute('class');
-          if(image.nodeName === "FIGURE") {
-            image.querySelectorAll('img').forEach(internalImg => {
-              internalImg.src = localizeUrl(internalImg.src, lang);
-            })
-            image.querySelectorAll('source').forEach(internalImg => {
-              internalImg.srcset = localizeUrl(internalImg.srcset, lang);
-            })
-          }
-          if(image.nodeName === "IMG") {
-            image.src = localizeUrl(image.src, lang);
-          }
-        }
-        return dom.serialize();  
-      }
-    }
-    return html;
-  });
-
   let processedPostMap = new Map();
   htmlmap.forEach(pair => {
     processedPostMap.set(pair[0],pair[1])
   })
+
+
+
+
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
     const contentclass = 'wp-accordion-content';
@@ -269,6 +260,57 @@ module.exports = function(eleventyConfig) {
   });
 
 
+  eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
+    let localizeString = '--en.';
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
+      if(lang !== "en") {
+        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
+          let englishUrl = image.src;
+          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
+          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+          await new Promise(resolve => {
+            fileChecker.get({
+              host: "files.covid19.ca.gov", 
+              port: 443, 
+              path: localizedUri,
+              method: "HEAD",
+              agent: false  // Create a new agent just for this one request
+            }, (res) => {
+              if(res.statusCode === 200) {
+                image.src = localizedUrl;
+              }
+              resolve('done')
+            });
+          });    
+        }
+        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
+          let englishUrl = link.href;
+
+          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
+          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
+          await new Promise(resolve => {
+            fileChecker.get({
+              host: "files.covid19.ca.gov", 
+              port: 443, 
+              path: localizedUri,
+              method: "HEAD",
+              agent: false  // Create a new agent just for this one request
+            }, (res) => {
+              if(res.statusCode === 200) {
+                link.href = localizedUrl;
+              }
+              resolve('done')
+            });
+          });    
+        }
+        return dom.serialize();  
+      }      
+    }
+    return html;
+  });
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
   eleventyConfig.addFilter('includes', (items,value) => (items || []).includes(value));
@@ -280,7 +322,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
-  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix.toLowerCase() || "");
+  eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
@@ -297,19 +339,32 @@ module.exports = function(eleventyConfig) {
     contentcontent.match(match) ? content : "");
 
   // return alternate language pages
-  eleventyConfig.addFilter('getAltPageRows', (page, tags) => {
-    const pageNavRecord = pageNav.navList.find(f=>langData.languages.find(l=>f[l.wptag]&&f[l.wptag].slug===page.fileSlug));
-    if(pageNavRecord) {
-      return langData.languages
-        .filter(x=>x.enabled&&pageNavRecord[x.wptag]&&pageNavRecord[x.wptag].slug!==page.fileSlug&&pageNavRecord[x.wptag].url)
-        .map(x=>({
-          langcode:x.id,
-          langname:x.name,
-          url:pageNavRecord[x.wptag].url
-        }));
-      }
+  eleventyConfig.addFilter('getAltPageRows', page => {
+    if(!page.url) {
+      //skip "guidancefeed", etc. or pages with no output (permalink: false)
+      return [];
+    }
+
+    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
+
+    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
+      //This is a root language page
+      engSlug='';
+    }
+  
+    return langData.languages
+      .filter(x=>x.enabled)
+      .map(x=>({
+        url: `/${(engSlug+x.filepostfix)
+          .replace(/^-/,'')}/` //Remove dashes from start of root URLs
+          .replace(/\/\//,'/'), //Replace double slash with singles
+        langcode:x.id,
+        langname:x.name
+        }))
+      .filter(x=>x.url!==page.url)
+      ;
   });
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
 };
 
