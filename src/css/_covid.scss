@@ -318,13 +318,18 @@ a:hover .wrimagecard-topimage_header h3 {
   background-color: #e2eafd;
 }
 
-button.card-header.accordion-alpha.bg-light-yellow {
+.bg-light-yellow {
   background-color: #fff2d4;
+  box-shadow: 5px 5px 5px 5px #fff2d4;
+  border-radius: 3px;
 }
 
 .bg-light-blue {
   background-color: #dae5ff;
+  box-shadow: 5px 5px 5px 5px #dae5ff;
+  border-radius: 3px;
 }
+
 
 .bg-primary {
   background-color: #003d9d;
