@@ -1612,9 +1612,10 @@
       "id": 375,
       "filename": "development-sample",
       "pagetitle": "Development Sample",
-      "modified": "2020-07-03T01:19:30",
+      "modified": "2020-07-03T21:35:11",
       "tags": [
-        "do-not-crawl"
+        "do-not-crawl",
+        "staging-only"
       ],
       "category": "Do Not Deploy",
       "isFragment": false,
@@ -1623,9 +1624,9 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "nomaster": false,
-      "wp_sha": "f1229d5af11c5fa87b373aef8010fe3aa0fa3d80",
-      "github_sha": "899b64534dd8b5e5c0bf1bc9964ba1b049c8746f"
+      "nomaster": true,
+      "wp_sha": "7d21f7eb48f6d49078cb55762536dbd83dbe69c9",
+      "github_sha": "fdf4360fbfd721ded29892a74153a7d55924d4a0"
     },
     {
       "slug": "discrimination",
