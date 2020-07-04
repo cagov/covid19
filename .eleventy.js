@@ -150,6 +150,27 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addFilter('formatDateParts', function(datestring) {
+    if(datestring) {
+      let output = new Date(datestring);
+      if(output) {
+        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
+      }  
+    }
+    return "";
+  })
+
+  eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
+    if(datestring) {
+      let output = new Date(datestring);
+      if(output) {
+        output.setDate(output.getDate() + 1)
+        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
+      }  
+    }
+    return "";
+  })
+
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
       return textstring.slice(0,220)+'...';
