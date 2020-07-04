@@ -2,7 +2,7 @@ import surveyTemplate from './template.js'
 
 export default function () {
   let shouldDisplay = somePercent();
-  if(false) { // shouldDisplay
+  if(shouldDisplay) {
     reportEvent('surveyDisplay');
     let html = surveyTemplate();
     let target = document.querySelector('.js-survey-display');
