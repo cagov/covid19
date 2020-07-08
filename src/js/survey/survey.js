@@ -12,7 +12,7 @@ export default function () {
 };
 
 function somePercent() { 
-  let lastSurveyInteraction = localStorage.getItem("surveyInteraction3");
+  let lastSurveyInteraction = localStorage.getItem("surveyInteraction5");
   if(!lastSurveyInteraction && Math.random() < 0.1) { 
     return true; 
   }
@@ -31,7 +31,7 @@ function applyListeners(target) {
 }
 
 function reportEvent(eventString) {
-  localStorage.setItem("surveyInteraction3", new Date().getTime());
+  localStorage.setItem("surveyInteraction5", new Date().getTime());
   reportGA(eventString);
   // report to new API: { site, event }
 }
