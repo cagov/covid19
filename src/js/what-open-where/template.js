@@ -26,16 +26,16 @@ export default function template(inputval) {
 
 function lookupSuccess(inputCounty, inputval, isZip) {
   let chosenCounty;
-  const counties = getCounties();
   counties.forEach(county => {
     if (county.name.toLowerCase() === inputCounty.toLowerCase()) {
       chosenCounty = county;
     }
   });
-  if (!chosenCounty) {
+  if (!chosenCounty && countyMap.get(county)) {
     lookupFail();
   } else {
 
+    let activityDetails = countyMap.get(chosenCounty);
     if(inputCounty.toLowerCase().indexOf('county') === -1) {
       inputCounty += ' County';
     }
@@ -44,12 +44,12 @@ function lookupSuccess(inputCounty, inputval, isZip) {
       resultDescription = `${inputval} is in ${chosenCounty.name} County`
     }
 
-    let currentStage = chosenCounty.stage;
+    
 
     let allowedActivities = [];
     let nonAllowedActivities = [];
-    activityList.forEach(ac => {
-      if(ac.Stage <= currentStage) {
+    activityDetails.forEach(ac => {
+      if(ac.status != "N") {
         allowedActivities.push(ac)
       } else {
         nonAllowedActivities.push(ac)
@@ -72,14 +72,14 @@ function lookupSuccess(inputCounty, inputval, isZip) {
           <h4>What's open:</h4>
           <ul>
             ${allowedActivities.sort(function(a,b) {
-               if(a.Activity.toUpperCase() < b.Activity.toUpperCase()) {
+               if(a.activity.toUpperCase() < b.activity.toUpperCase()) {
                  return -1;
                } else {
                  return 1;
                }
             }).map( (item) => {
               return `
-                <li>${item.Activity} ${(item.Stage == '2c') ? '(as of June 12th)' : ''} ${(item.Stage == '2d') ? '(as of June 19th)' : ''}</li>
+                <li>${item.activity}  ${(item.status.toLowerCase().indexOf('outdoor') > -1) ? item.status : ''}</li>
               `
             }).join(' ')}
           </ul>
@@ -88,14 +88,14 @@ function lookupSuccess(inputCounty, inputval, isZip) {
           <h4>What's closed:</h4>
           <ul>
             ${nonAllowedActivities.sort(function(a,b) {
-              if(a.Activity.toUpperCase() < b.Activity.toUpperCase()) {
+              if(a.activity.toUpperCase() < b.activity.toUpperCase()) {
                 return -1;
               } else {
                 return 1;
               }
            }).map( (item) => {
               return `
-                <li>${item.Activity}</li>
+                <li>${item.activity}</li>
               `
             }).join(' ')}
           </ul>
@@ -109,3 +109,19 @@ function lookupSuccess(inputCounty, inputval, isZip) {
 function lookupFail () {
   document.querySelector('.invalid-feedback').style.display = 'block';
 }
+
+const counties = getCounties();
+let countyMap = new Map();
+activityList.forEach(ac => {
+  counties.forEach(county => {
+    let currentCountyActivities = countyMap.get(county);
+    if(!currentCountyActivities) {
+      currentCountyActivities = [];
+    }
+    let newObj = {};
+    newObj.activity = ac.activity;
+    newObj.status = ac[county.name];
+    currentCountyActivities.push(newObj);
+    countyMap.set(county,currentCountyActivities);
+  })
+})
