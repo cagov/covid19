@@ -48,11 +48,12 @@ function lookupSuccess(inputCounty, inputval, isZip) {
 
     let allowedActivities = [];
     let nonAllowedActivities = [];
+    let outdoorActivities = [];
     activityDetails.forEach(ac => {
-      if(ac.status != "N") {
-        allowedActivities.push(ac)
-      } else {
+      if(ac.status == "N") {
         nonAllowedActivities.push(ac)
+      } else {
+        allowedActivities.push(ac)
       }
     })
     let html = `
@@ -71,15 +72,9 @@ function lookupSuccess(inputCounty, inputval, isZip) {
         <span class="open-results-set">
           <h4>What's open:</h4>
           <ul>
-            ${allowedActivities.sort(function(a,b) {
-               if(a.activity.toUpperCase() < b.activity.toUpperCase()) {
-                 return -1;
-               } else {
-                 return 1;
-               }
-            }).map( (item) => {
+            ${allowedActivities.sort(sortByActivity).map( (item) => {
               return `
-                <li>${item.activity}  ${(item.status.toLowerCase().indexOf('outdoor') > -1) ? item.status : ''}</li>
+                <li>${item.activity}  ${(item.status.toLowerCase().indexOf('outdoor') > -1) ? ' - outdoor operations only' : ''}</li>
               `
             }).join(' ')}
           </ul>
@@ -87,13 +82,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
         <span class="open-results-set">
           <h4>What's closed:</h4>
           <ul>
-            ${nonAllowedActivities.sort(function(a,b) {
-              if(a.activity.toUpperCase() < b.activity.toUpperCase()) {
-                return -1;
-              } else {
-                return 1;
-              }
-           }).map( (item) => {
+            ${nonAllowedActivities.sort(sortByActivity).map( (item) => {
               return `
                 <li>${item.activity}</li>
               `
@@ -125,3 +114,11 @@ activityList.forEach(ac => {
     countyMap.set(county,currentCountyActivities);
   })
 })
+
+function sortByActivity(a,b) {
+  if(a.activity.toUpperCase() < b.activity.toUpperCase()) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
