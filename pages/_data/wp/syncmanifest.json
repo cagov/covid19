@@ -1924,7 +1924,7 @@
       "id": 1044,
       "filename": "footer-data-es",
       "pagetitle": "Footer Data &#8211; Spanish",
-      "modified": "2020-06-17T20:14:46",
+      "modified": "2020-07-13T21:13:21",
       "tags": [
         "lang-es",
         "table-data"
@@ -1937,8 +1937,8 @@
       "ignore": false,
       "lang": "es",
       "nomaster": false,
-      "wp_sha": "1caa472543f68a57fea51e64020120db737f1e90",
-      "github_sha": "8066ce53a6c9d63cfa96804db7b53814f12c0e24"
+      "wp_sha": "119eb21745d76d02a2504289019930a3a34409c0",
+      "github_sha": "0c22039173b3784569d8959510b6d639ee9eb111"
     },
     {
       "slug": "footer-data-ko",
@@ -2853,8 +2853,9 @@
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance info",
-      "modified": "2020-07-13T20:38:52",
+      "modified": "2020-07-13T22:14:02",
       "tags": [
+        "staging-only",
         "translate",
         "watch-list"
       ],
@@ -2865,9 +2866,9 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "nomaster": false,
-      "wp_sha": "6ea36c6516809282ee07d27315d4a9fee7e22666",
-      "github_sha": "5ed19de61a67b3f9023ec459742b756bcb3b397b"
+      "nomaster": true,
+      "wp_sha": "6f780360414a69bee89602c233a20a6926e50fbf",
+      "github_sha": "1abdb55fbe4ab1e1a9f036dc4f34e15810316bb1"
     },
     {
       "slug": "search",
