@@ -348,6 +348,10 @@ module.exports = function(eleventyConfig) {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
   });
+  eleventyConfig.addFilter('surveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord.survey;
+  });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 
     (page.data
