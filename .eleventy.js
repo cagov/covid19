@@ -445,6 +445,10 @@ module.exports = function (eleventyConfig) {
       langRecord.rtl ? ` dir="rtl"` : ""
     }`;
   });
+  eleventyConfig.addFilter('surveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord.survey;
+  });
 
   eleventyConfig.addFilter(
     "publishdateorfiledate",
