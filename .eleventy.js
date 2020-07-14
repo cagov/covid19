@@ -445,9 +445,13 @@ module.exports = function (eleventyConfig) {
       langRecord.rtl ? ` dir="rtl"` : ""
     }`;
   });
-  eleventyConfig.addFilter('surveyUrl', tags => {
+  eleventyConfig.addFilter('npiSurveyUrl', tags => {
     const langRecord = getLangRecord(tags);
-    return langRecord.survey;
+    return langRecord['npi-survey'];
+  });
+  eleventyConfig.addFilter('pulseSurveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord['pulse-survey'];
   });
 
   eleventyConfig.addFilter(
