@@ -348,9 +348,13 @@ module.exports = function(eleventyConfig) {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
   });
-  eleventyConfig.addFilter('surveyUrl', tags => {
+  eleventyConfig.addFilter('npiSurveyUrl', tags => {
     const langRecord = getLangRecord(tags);
-    return langRecord.survey;
+    return langRecord['npi-survey'];
+  });
+  eleventyConfig.addFilter('pulseSurveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord['pulse-survey'];
   });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 

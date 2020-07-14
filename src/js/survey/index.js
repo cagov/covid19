@@ -2,10 +2,15 @@ import surveyTemplate from './template.js'
 
 class CWDSSurvey extends window.HTMLElement {
   connectedCallback () {
-    let shouldDisplay = somePercent();
-    if(shouldDisplay) {
+    let shouldDisplayNPI = somePercent();
+    let seenSurvey = seenSurveyPrompt();
+    let surveyUrl = this.dataset.pulseSurveyUrl;
+    if(!seenSurvey) {
+      if(shouldDisplayNPI) {
+        surveyUrl = this.dataset.npiSurveyUrl
+      }
       reportEvent('surveyDisplay');
-      let html = surveyTemplate(this.dataset.surveyUrl, this.dataset.surveyPrompt);
+      let html = surveyTemplate(surveyUrl, this.dataset.surveyPrompt);
       this.innerHTML = html;
       applyListeners(this);
     }
@@ -13,10 +18,15 @@ class CWDSSurvey extends window.HTMLElement {
 }
 window.customElements.define('cwds-survey', CWDSSurvey);
 
-
+function seenSurveyPrompt() {
+  let lastSurveyInteraction = localStorage.getItem("surveyInteraction8");
+  if(!lastSurveyInteraction) { 
+    return false; 
+  }
+  return true;
+}
 function somePercent() { 
-  let lastSurveyInteraction = localStorage.getItem("surveyInteraction7");
-  if(!lastSurveyInteraction && Math.random() < 0.1) { 
+  if(Math.random() < 0.1) { 
     return true; 
   }
   return false;
@@ -34,7 +44,7 @@ function applyListeners(target) {
 }
 
 function reportEvent(eventString) {
-  localStorage.setItem("surveyInteraction7", new Date().getTime());
+  localStorage.setItem("surveyInteraction8", new Date().getTime());
   reportGA(eventString);
   // report to new API: { site, event }
 }
