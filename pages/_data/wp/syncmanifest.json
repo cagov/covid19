@@ -1393,7 +1393,7 @@
       "id": 1196,
       "filename": "404",
       "pagetitle": "404",
-      "modified": "2020-07-03T01:08:52",
+      "modified": "2020-07-08T20:16:45",
       "tags": [
         "do-not-crawl",
         "machine-translated"
@@ -1406,8 +1406,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "aaa5e41c1ae6e47083f1c3b221d9a456d12b7e47",
-      "github_sha": "6c8628baf51949cb3d2c8f9dbad882a6fd407179"
+      "wp_sha": "1cb403320715e1597e96b44fccbd585710bc45cc",
+      "github_sha": "e7c8d3bca0576f3676a5a991563550e14853e59d"
     },
     {
       "slug": "500",
@@ -1429,24 +1429,6 @@
       "nomaster": false,
       "wp_sha": "71f490783a59cb3928c88e8239037bf79132cac9",
       "github_sha": "c4cdec3c54482916d21c0c646e3e8ce856baaa9c"
-    },
-    {
-      "slug": "accordion-color-test",
-      "id": 4539,
-      "filename": "accordion-color-test",
-      "pagetitle": "Accordion-color-test",
-      "modified": "2020-07-01T18:28:37",
-      "tags": [],
-      "category": "Uncategorized",
-      "isFragment": false,
-      "isTableData": false,
-      "addToSitemap": true,
-      "translate": false,
-      "ignore": false,
-      "lang": "en",
-      "nomaster": false,
-      "wp_sha": "724a50458c914272fef52d95c85a72afd94ec6c5",
-      "github_sha": "f6b472df46fcb5ac27cc5ce19d21c2e8cc652868"
     },
     {
       "slug": "accordion-test",
@@ -1473,7 +1455,7 @@
       "id": 725,
       "filename": "business-and-employers",
       "pagetitle": "Businesses and employers",
-      "modified": "2020-07-03T20:09:33",
+      "modified": "2020-07-07T23:32:49",
       "tags": [
         "translate"
       ],
@@ -1485,15 +1467,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "2473d81eedcd7f896cc1ffab9dfddc31e9c82ea7",
-      "github_sha": "2a08ada6d23cd892ea2e6cd450c02079d9058493"
+      "wp_sha": "f9861f8309feabea4fbf522e1fc2a3b24c314892",
+      "github_sha": "7a721e9d811c87257046cc31cc49a70e10f137d1"
     },
     {
       "slug": "cali-working",
       "id": 1364,
       "filename": "cali-working",
       "pagetitle": "cali working",
-      "modified": "2020-06-24T20:57:31",
+      "modified": "2020-07-10T23:58:07",
       "tags": [
         "fragment",
         "translate"
@@ -1506,8 +1488,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "cf32192f51839357b8754dd20a16f300a07ffdec",
-      "github_sha": "d2fa995eec3f69bdb86f7381375ff5b8e560f78c"
+      "wp_sha": "307c198fbbce7ce4c876d4fbdb6b6f49d79fdd0a",
+      "github_sha": "5b72d625bf3fba696e2f41ba8549f0d2c4caa47c"
     },
     {
       "slug": "care-in-senior-facilities",
@@ -1554,7 +1536,7 @@
       "id": 3186,
       "filename": "contact-tracing",
       "pagetitle": "Contact tracing",
-      "modified": "2020-06-26T03:20:52",
+      "modified": "2020-07-07T14:35:38",
       "tags": [
         "translate"
       ],
@@ -1566,8 +1548,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "e95d160dd8981609cad24d45b82c4c375ecda829",
-      "github_sha": "6a87851ebbf62fa7bf99614fd7302829e6fc46e9"
+      "wp_sha": "a62fca9e10fcfd07047b0252927286e7011327ac",
+      "github_sha": "3db648a1b949fb49db0d28fb0eba898d77e9145b"
     },
     {
       "slug": "contracts",
@@ -1594,28 +1576,29 @@
       "id": 4397,
       "filename": "data-and-tools",
       "pagetitle": "COVID-19 data and tools",
-      "modified": "2020-06-26T00:02:36",
-      "tags": [],
+      "modified": "2020-07-06T22:33:53",
+      "tags": [
+        "translate"
+      ],
       "category": "data and tools",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "623f034ddbf029816f24f0bf2c0a06f5744622ee",
-      "github_sha": "a4a4f6d4a014048ebbaf2e444681845f900aaf55"
+      "wp_sha": "4e297e575355ca2ff18aedf71a2632a62a7e944e",
+      "github_sha": "3d92539e2746f720cf365b4e72ec6037a30cfc9b"
     },
     {
       "slug": "development-sample",
       "id": 375,
       "filename": "development-sample",
       "pagetitle": "Development Sample",
-      "modified": "2020-07-03T21:41:06",
+      "modified": "2020-07-08T17:44:41",
       "tags": [
-        "do-not-crawl",
-        "staging-only"
+        "do-not-crawl"
       ],
       "category": "Do Not Deploy",
       "isFragment": false,
@@ -1624,17 +1607,18 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "nomaster": true,
-      "wp_sha": "1046fe5b97e7891d7793f7cee041367960f12f12",
-      "github_sha": "ba20e2a4965e96de17ee9a267b57fdcfa95b50fc"
+      "nomaster": false,
+      "wp_sha": "656a33059289dd91faaee86f42e0d9ad91f736a1",
+      "github_sha": "6d8b230fff6df1617963069ba227f64c23c941b8"
     },
     {
       "slug": "discrimination",
       "id": 2040,
       "filename": "discrimination",
       "pagetitle": "Fight discrimination",
-      "modified": "2020-07-02T23:28:49",
+      "modified": "2020-07-06T23:15:43",
       "tags": [
+        "needs-translation",
         "translate"
       ],
       "category": "discrimination",
@@ -1645,8 +1629,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "21eac50a0ddad3773662853c4b3ea29e7df7c015",
-      "github_sha": "58ef78003d87d4c7a4cc8b3259ea890f49e014b3"
+      "wp_sha": "6ff142d7ffa0fe6b85a09333c940979a84513d6a",
+      "github_sha": "af9d6dbf3f6fa40691c8ed8ccdfaf8d0348a9d4a"
     },
     {
       "slug": "do-dont",
@@ -1840,33 +1824,36 @@
       "id": 2258,
       "filename": "essential-workforce",
       "pagetitle": "Essential workforce",
-      "modified": "2020-06-30T00:11:42",
-      "tags": [],
+      "modified": "2020-07-06T23:22:42",
+      "tags": [
+        "translate"
+      ],
       "category": "essential jobs",
       "isFragment": false,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "f9a3eba6ae5e6f7bde7c49b80f466d810785b774",
-      "github_sha": "8d928245bae9c6af3e10fc751b9ee4a0d21e7550"
+      "wp_sha": "deb79e99321923ac4686c666705b0cebea582805",
+      "github_sha": "b31cca1775fff0047f1fb600979be530758e9123"
     },
     {
       "slug": "find-services",
       "id": 1419,
       "filename": "find-services",
       "pagetitle": "find services",
-      "modified": "2020-07-01T17:13:52",
+      "modified": "2020-07-14T17:52:20",
       "tags": [
-        "fragment"
+        "fragment",
+        "translate"
       ],
       "category": "homepage find services",
       "isFragment": true,
       "isTableData": false,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
       "nomaster": false,
@@ -1896,20 +1883,21 @@
       "id": 1040,
       "filename": "footer-data",
       "pagetitle": "Footer Data &#8211; English",
-      "modified": "2020-07-02T23:49:06",
+      "modified": "2020-07-13T20:56:03",
       "tags": [
-        "table-data"
+        "table-data",
+        "translate"
       ],
       "category": "footer data",
       "isFragment": false,
       "isTableData": true,
       "addToSitemap": true,
-      "translate": false,
+      "translate": true,
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "93bca6de6d17b9f1c05d54c83a601347efa65849",
-      "github_sha": "d7b80267e062e9dfbe22fec29119dd694c7ac247"
+      "wp_sha": "961a5fab0342994dbfe0b134b79906702a25fd21",
+      "github_sha": "7c3f714a1a96da4b728d4abd7d7e4f25e733f64e"
     },
     {
       "slug": "footer-data-ar",
@@ -1937,7 +1925,7 @@
       "id": 1044,
       "filename": "footer-data-es",
       "pagetitle": "Footer Data &#8211; Spanish",
-      "modified": "2020-06-17T20:14:46",
+      "modified": "2020-07-13T21:13:21",
       "tags": [
         "lang-es",
         "table-data"
@@ -1950,8 +1938,8 @@
       "ignore": false,
       "lang": "es",
       "nomaster": false,
-      "wp_sha": "1caa472543f68a57fea51e64020120db737f1e90",
-      "github_sha": "8066ce53a6c9d63cfa96804db7b53814f12c0e24"
+      "wp_sha": "119eb21745d76d02a2504289019930a3a34409c0",
+      "github_sha": "0c22039173b3784569d8959510b6d639ee9eb111"
     },
     {
       "slug": "footer-data-ko",
@@ -2024,7 +2012,7 @@
       "id": 1830,
       "filename": "footer-data-zh-hans",
       "pagetitle": "footer data zh hans",
-      "modified": "2020-06-17T20:16:10",
+      "modified": "2020-07-13T16:59:25",
       "tags": [
         "lang-zh-Hans",
         "table-data"
@@ -2037,15 +2025,15 @@
       "ignore": false,
       "lang": "zh-Hans",
       "nomaster": false,
-      "wp_sha": "302cafa294e91831649115ec7e77228cb0dc3370",
-      "github_sha": "979cebd9441f8b4943d2e388eb8b7834d0ac2f0b"
+      "wp_sha": "a4aed9ff42e657d78d8a8c29a0900f39cf24168f",
+      "github_sha": "8d7a9f51889758424fb494ff35c5dedc1427ca39"
     },
     {
       "slug": "footer-data-zh-hant",
       "id": 1832,
       "filename": "footer-data-zh-hant",
       "pagetitle": "footer data zh hant",
-      "modified": "2020-06-17T20:16:27",
+      "modified": "2020-07-13T16:58:27",
       "tags": [
         "lang-zh-Hant",
         "table-data"
@@ -2058,8 +2046,8 @@
       "ignore": false,
       "lang": "zh-Hant",
       "nomaster": false,
-      "wp_sha": "4852803004db161d7e3bd3d9f9af3199214ad3cb",
-      "github_sha": "24eb585eb4cddbfc365c87788f164a048589d318"
+      "wp_sha": "2a90884656a67a26eccfe257787fbd6d084f1836",
+      "github_sha": "86a0be137dc91caec821c67a323d1c5e43731252"
     },
     {
       "slug": "get-financial-help",
@@ -2086,7 +2074,7 @@
       "id": 54,
       "filename": "get-local-information",
       "pagetitle": "Get local information",
-      "modified": "2020-06-19T19:07:39",
+      "modified": "2020-07-09T00:09:39",
       "tags": [
         "translate"
       ],
@@ -2098,15 +2086,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "bb92a2e4bd4587fec20d431786d8a96124a2bc9a",
-      "github_sha": "ad9102d63896e9c68b99b2adb929fbd4637b36e7"
+      "wp_sha": "0363f802cdbf9c165b9dd50f4e787181b59c1133",
+      "github_sha": "ac3f0fa54668d0e892fcfe6a68928d5273e0c82c"
     },
     {
       "slug": "guide-immigrant-californians",
       "id": 1378,
       "filename": "guide-immigrant-californians",
       "pagetitle": "Help for immigrants",
-      "modified": "2020-06-13T00:04:10",
+      "modified": "2020-07-09T19:42:53",
       "tags": [
         "translate"
       ],
@@ -2118,8 +2106,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "0b5c8ed7ac3a50264f35781249cd55698a7c25a6",
-      "github_sha": "abbfa23b4fcee8aeebd8056edb5a182b1de8e270"
+      "wp_sha": "b9d54c30efb87b55641c31c3f54e4f30d5267110",
+      "github_sha": "73a0d1cc3f59f5bf4f333bf0ce41b7ad35466316"
     },
     {
       "slug": "healthcare",
@@ -2146,7 +2134,7 @@
       "id": 642,
       "filename": "healthcorps",
       "pagetitle": "California Health Corps",
-      "modified": "2020-06-16T23:40:42",
+      "modified": "2020-07-09T17:29:22",
       "tags": [
         "forgotten-page",
         "translate"
@@ -2159,15 +2147,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "42f21f6be40cab71a8187437e67fb51c0218578f",
-      "github_sha": "2214f7f9e23f5277336c4eeb5920b8c64c553a5f"
+      "wp_sha": "63b22fea8b967d65aa21aaffcdda7989b9a92114",
+      "github_sha": "cd0143b15b43a183a36f5486412c6f84e2d9bc54"
     },
     {
       "slug": "home-header",
       "id": 1372,
       "filename": "home-header",
       "pagetitle": "home header",
-      "modified": "2020-07-03T00:08:17",
+      "modified": "2020-07-06T19:11:01",
       "tags": [
         "fragment",
         "translate"
@@ -2180,8 +2168,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "d93147e4c0adfbda8631ec9a52b70bf7093ee53c",
-      "github_sha": "f899820e725eedebfe908d2f455f6522fddde2d2"
+      "wp_sha": "f0b8f1fa5e37d0d530a6197b0bb3f15ee52cbe58",
+      "github_sha": "65d405a402741cf0d99ac34b9fd3777ecd8ff615"
     },
     {
       "slug": "home-header-ar",
@@ -2587,7 +2575,7 @@
       "id": 3075,
       "filename": "industry-guidance",
       "pagetitle": "Industry guidance to reduce risk",
-      "modified": "2020-07-03T18:59:27",
+      "modified": "2020-07-14T00:59:08",
       "tags": [
         "translate"
       ],
@@ -2599,15 +2587,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "5613d54f3a5296da0564a05d30e1b2bf215b8472",
-      "github_sha": "0336973317f839d044c96a9d1464181536d1495e"
+      "wp_sha": "0a3099f4fe8691cdc6d7c96d4fe896d6a90ca03e",
+      "github_sha": "c58d193b2367db6fe49342b2d6a85534c339c07a"
     },
     {
       "slug": "manage-stress-for-health",
       "id": 884,
       "filename": "manage-stress-for-health",
       "pagetitle": "Manage stress for health",
-      "modified": "2020-05-20T22:44:06",
+      "modified": "2020-07-06T22:21:30",
       "tags": [
         "translate"
       ],
@@ -2619,15 +2607,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "6cfcfe75f8a71c7b0a4865f29081f9fb0b1dd09e",
-      "github_sha": "e73abd4540463fde564b9d5269fab77b42f5e5f3"
+      "wp_sha": "1ed6b52312e76db86263e4739abe68a09b85daa8",
+      "github_sha": "1c02a43e2dfb2da08dda4711b9a3d3e55d8ff7a8"
     },
     {
       "slug": "masks-and-ppe",
       "id": 2997,
       "filename": "masks-and-ppe",
       "pagetitle": "Masks and face coverings",
-      "modified": "2020-07-03T18:52:14",
+      "modified": "2020-07-14T18:58:56",
       "tags": [
         "translate"
       ],
@@ -2639,8 +2627,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "90a376cce561b2c684bf3e1f4c8c02eebc885c2d",
-      "github_sha": "2c9dbbbd015bb7f3ae67ebb371861564a2e953ef"
+      "wp_sha": "a753ddd504d299f5c24e6e720f2b7a3e604f3e76",
+      "github_sha": "fdb70944e1f79a3bf92924bc3bb46528dd62c98c"
     },
     {
       "slug": "more-ways-to-help",
@@ -2667,7 +2655,7 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-07-02T20:47:11",
+      "modified": "2020-07-13T18:52:22",
       "tags": [
         "fragment",
         "translate"
@@ -2680,15 +2668,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "c1349c0ae98e237b25f105336ae13ef64e8bca40",
-      "github_sha": "96b67f08cf21322106ef96b19a39300b3408a59a"
+      "wp_sha": "16a7cfc6c9cc1d2428e3b09e4a64738c40c0c2ac",
+      "github_sha": "33983884d2c3831d8cb2f02881cc83126f61e7bf"
     },
     {
       "slug": "page-redirect-table",
       "id": 1933,
       "filename": "page-redirect-table",
       "pagetitle": "Page Redirect Table",
-      "modified": "2020-06-13T16:19:46",
+      "modified": "2020-07-05T15:04:43",
       "tags": [
         "table-data"
       ],
@@ -2728,7 +2716,7 @@
       "id": 3416,
       "filename": "preview",
       "pagetitle": "Preview",
-      "modified": "2020-07-01T19:46:47",
+      "modified": "2020-07-13T18:17:36",
       "tags": [
         "do-not-crawl"
       ],
@@ -2740,8 +2728,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "93db124943440978bec9555c901ad747598ff876",
-      "github_sha": "b6f6be365a95e8b358e12ca9770ce963baa003cb"
+      "wp_sha": "917ac0834b1a67af9664d6cb5979bb638c994bde",
+      "github_sha": "231f7f8c25a30b7a9062ed9c8a5359d82f91548c"
     },
     {
       "slug": "public-recreation",
@@ -2785,8 +2773,8 @@
       "slug": "request-ppe",
       "id": 3942,
       "filename": "request-ppe",
-      "pagetitle": "Request PPE",
-      "modified": "2020-06-22T16:04:48",
+      "pagetitle": "Get PPE",
+      "modified": "2020-07-10T00:42:11",
       "tags": [
         "translate"
       ],
@@ -2798,15 +2786,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "0958bc95e070b30bc44a372b2c0da80ea1a5f3be",
-      "github_sha": "8c0527cf1667685f0bfc1a2398a2202c7199c943"
+      "wp_sha": "1cd90ca1a82df388d8be323057af42e1f6237378",
+      "github_sha": "0fa8ed6796aa42e589c659467b5aee40cfa3927e"
     },
     {
       "slug": "resources-for-emotional-support-and-well-being",
       "id": 839,
       "filename": "resources-for-emotional-support-and-well-being",
       "pagetitle": "Resources for emotional support and well-being",
-      "modified": "2020-07-02T23:34:34",
+      "modified": "2020-07-06T22:55:40",
       "tags": [
         "translate"
       ],
@@ -2818,15 +2806,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "01f7f98ad1378e482ecf6f2e437ac42f5595d038",
-      "github_sha": "719d67adaa763acaaf753468ff6668bff1cf775c"
+      "wp_sha": "423c51653ddd77676c1ea0e427e7110bbd0dd1bb",
+      "github_sha": "6d4f3fe48cb166b879ceac6050e9ba7d85cc6af5"
     },
     {
       "slug": "restaurants-deliver-home-meals-for-seniors",
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-07-02T23:39:29",
+      "modified": "2020-07-10T15:31:07",
       "tags": [
         "translate"
       ],
@@ -2838,8 +2826,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "eb0d16df5ce75fff15342234345bf3c14e674b7c",
-      "github_sha": "793513751ed20a8e3483367e61d7a5e7de41c792"
+      "wp_sha": "511c753dbe0660ba543046b585f4f6ab08b6fd90",
+      "github_sha": "280fb8ee9e62ca5e201668d749f8a3ab3b5a4579"
     },
     {
       "slug": "roadmap",
@@ -2866,9 +2854,10 @@
       "id": 2802,
       "filename": "roadmap-counties",
       "pagetitle": "County variance info",
-      "modified": "2020-07-02T01:15:56",
+      "modified": "2020-07-14T17:49:50",
       "tags": [
-        "translate"
+        "translate",
+        "watch-list"
       ],
       "category": "roadmap counties",
       "isFragment": false,
@@ -2878,8 +2867,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "45e5c13d9a6f4ce8e2c2e35568175f1fb2f594ef",
-      "github_sha": "8053aa66f80795ca1955f031e346cfad174308e8"
+      "wp_sha": "c7d7bb5a46a38132848cf64c4db87157480cc283",
+      "github_sha": "680e86515f2c89964f6d1761cff2498e6dda798a"
     },
     {
       "slug": "search",
@@ -2927,7 +2916,7 @@
       "id": 548,
       "filename": "stats",
       "pagetitle": "Stats",
-      "modified": "2020-06-25T19:41:48",
+      "modified": "2020-07-09T20:41:10",
       "tags": [
         "fragment"
       ],
@@ -2939,8 +2928,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "c4b4d0431670da387da3a6c63bfad9156a0fb275",
-      "github_sha": "6b7362a3e2cf6a682d291da84748c56be80a4913"
+      "wp_sha": "19e82fd80e6829f9e6c353b1cfbb06187033f1a6",
+      "github_sha": "a55a524c5efccfea8ad4ec73eadf64bce416b8f4"
     },
     {
       "slug": "stats-ar",
@@ -3095,7 +3084,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home Q&#038;A",
-      "modified": "2020-07-02T00:52:01",
+      "modified": "2020-07-14T00:06:37",
       "tags": [
         "translate"
       ],
@@ -3107,8 +3096,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "c760f494bd144ca731bd5b8bddeb92f0e676d87d",
-      "github_sha": "a1cb032a082d0278c555c4d03170d9c1a15ef605"
+      "wp_sha": "199bfc3321a5aaf3148c5c0cb25884dcb00d785c",
+      "github_sha": "5c467153ba1044b797f0c77f6e843a22fe11b9b4"
     },
     {
       "slug": "symptoms-and-risks",
@@ -3176,7 +3165,7 @@
       "id": 623,
       "filename": "testing-and-treatment",
       "pagetitle": "Testing and treatment",
-      "modified": "2020-07-03T15:28:29",
+      "modified": "2020-07-14T18:05:28",
       "tags": [
         "translate"
       ],
@@ -3188,8 +3177,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "7851e9c427fa145396e411cfc806c93b733c3e04",
-      "github_sha": "9034a80aaaa597c03825c9b82b123896e9ef0bf1"
+      "wp_sha": "4e80fa3376b39f29693b265b0e007ff96c48439e",
+      "github_sha": "b68a94ff8d4f2052e90026062a448e680cac7bb1"
     },
     {
       "slug": "translate",
@@ -3216,7 +3205,7 @@
       "id": 3930,
       "filename": "what-is-open-where",
       "pagetitle": "What&#8217;s open?",
-      "modified": "2020-06-16T17:33:48",
+      "modified": "2020-07-11T01:20:27",
       "tags": [
         "do-not-crawl"
       ],
@@ -3228,15 +3217,15 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "cfbac5398da01cbb98c7217b90ac61dc48a34202",
-      "github_sha": "30eec533acfece389b956c3f29caaf1f46c8ae5f"
+      "wp_sha": "fb4d25b65597f8643cf402479557f0dfe3136a46",
+      "github_sha": "0b7ff090b44fbad41865b23b00b1aa51824005f8"
     },
     {
       "slug": "workers",
       "id": 722,
       "filename": "workers",
       "pagetitle": "Workers",
-      "modified": "2020-07-03T20:33:31",
+      "modified": "2020-07-09T17:07:02",
       "tags": [
         "translate"
       ],
@@ -3248,8 +3237,8 @@
       "ignore": false,
       "lang": "en",
       "nomaster": false,
-      "wp_sha": "f9a11c6c7914a68905090894de8140bb186c49fc",
-      "github_sha": "6828147709781fe0c0849c74d8e11b240ee7167b"
+      "wp_sha": "868b038f98944035e71248ed8bdfb5a17274815a",
+      "github_sha": "c010a31f686e64119378737da4cda26c2d7e0fc2"
     }
   ]
 }
