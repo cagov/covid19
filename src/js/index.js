@@ -5,4 +5,5 @@ window.onload = (event) => {
   applyAccordionListeners();
 }
 import './feature-detect/webp.js';
-import './feedback/feedback.js';
+
+import './temp-helpful/index.js';

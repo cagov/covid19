@@ -16,36 +16,7 @@ ga('tracker3.send', 'pageview');
 {% set FooterLinks2 = JSON.Table2 %}
 {% set Terms = JSON.Table3 %}
 
-<div class="container-fluid bg-primary ">
-  <div class="container text-white pt-3 pb-3">
-    <div class="row">
-      <div class="col-md-5">
-
-        <div class="feedback-form">
-          <label>Is this page useful?</label>
-          <button class="ml-4 btn btn-sm btn-outline-light underline" id="feedback-yes">Yes</button>
-          <button class="ml-4 btn btn-sm btn-outline-light underline" id="feedback-no">No</button>
-        </div>
-        
-        <div class="feedback-thanks d-none">Thank you for your feedback!</div>
-      
-      </div>
-      
-      <div class="col-md-7">
-
-        <div class="feedback-form-add">
-            <label for="add-feedback">Additional comments:</label>
-            <textarea name="add-feedback" class="w-90" id="add-feedback" rows="1"></textarea>
-            <div class="feedback-error d-none small-text mt-0 mb-3">This field required</div>
-            <button class="btn d-none btn-outline-light" type="submit" id="feedback-submit">Submit</button>
-        </div>
-        
-        <div class="feedback-thanks-add d-none">Thank you for your comments!</div>
-      
-      </div>
-    </div>
-  </div>
-</div>
+<cwds-pagerating></cwds-pagerating>
 
 <div class="footer mt-0 alpha-footer">
   <div class="container">
