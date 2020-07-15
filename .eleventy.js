@@ -149,6 +149,27 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addFilter('formatDateParts', function(datestring) {
+    if(datestring) {
+      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
+      if(output) {
+        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
+      }  
+    }
+    return "";
+  })
+
+  eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
+    if(datestring) {
+      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
+      if(output) {
+        output.setDate(output.getDate() + 1)
+        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
+      }  
+    }
+    return "";
+  })
+
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
       return textstring.slice(0,220)+'...';
@@ -326,6 +347,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
+  });
+  eleventyConfig.addFilter('npiSurveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord['npi-survey'];
+  });
+  eleventyConfig.addFilter('pulseSurveyUrl', tags => {
+    const langRecord = getLangRecord(tags);
+    return langRecord['pulse-survey'];
   });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => 

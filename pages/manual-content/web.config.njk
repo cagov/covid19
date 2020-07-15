@@ -44,6 +44,10 @@ eleventyExcludeFromCollections: true
           <match url="^pdf/(.*)" />
           <action type="Redirect" url="https://files.covid19.ca.gov/pdf/{R:1}" appendQueryString="false" />
         </rule>
+        <rule name="WPPdfToBlobStorage" stopProcessing="true">
+          <match url="^img/wp/(.*)" />
+          <action type="Redirect" url="https://files.covid19.ca.gov/pdf/wp/{R:1}" appendQueryString="false" />
+        </rule>
         <rule name="AddTrailingSlash BeforeStaticRewrites" stopProcessing="true">
           <match url="(^[^.]*[^/]$)" />
           <action type="Redirect" url="{UrlEncode:{R:1}}/" />

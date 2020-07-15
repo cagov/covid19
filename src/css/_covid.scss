@@ -315,8 +315,21 @@ a:hover .wrimagecard-topimage_header h3 {
 }
 
 .bg-highlight {
-  background-color: #f9f6ef;
+  background-color: #e2eafd;
 }
+
+.bg-light-yellow {
+  background-color: #fff2d4;
+  box-shadow: 5px 5px 5px 5px #fff2d4;
+  border-radius: 3px;
+}
+
+.bg-light-blue {
+  background-color: #dae5ff;
+  box-shadow: 5px 5px 5px 5px #dae5ff;
+  border-radius: 3px;
+}
+
 
 .bg-primary {
   background-color: #003d9d;
