@@ -10,7 +10,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
             <button class="ml-4 btn btn-sm btn-outline-light underline js-feedback-no" id="feedback-no">${no}</button>
           </div>
           
-          <div class="feedback-thanks d-none">${thanksFeedback}</div>
+          <div class="js-feedback-thanks d-none">${thanksFeedback}</div>
         
         </div>
         

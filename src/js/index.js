@@ -6,4 +6,4 @@ window.onload = (event) => {
 }
 import './feature-detect/webp.js';
 
-// import './temp-helpful/index.js';
+import './temp-helpful/index.js';
