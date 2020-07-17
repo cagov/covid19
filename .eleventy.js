@@ -54,6 +54,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("translatedposts", function(collection) {
     const FolderName = 'translated-posts';
     let output = [];
+    
     collection.getAll().forEach(item => {
       //fix all http/https links to covid sites
       replaceContent(item,/"http:\/\/covid19.ca.gov\//g,`"https://covid19.ca.gov/`);
