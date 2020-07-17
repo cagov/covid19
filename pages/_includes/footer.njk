@@ -15,26 +15,27 @@ ga('tracker3.send', 'pageview');
 {% set FooterLinks2 = JSON.Table2 %}
 {% set Terms = JSON.Table3 %}
 
-<!--
-  fix the endpoint
-  get the json data
-  read all json values
-  use new import from npm
-  fix readme in module published
-  try pulling out some data
--->
-<cwds-pagerating 
-  data-endpoint-url="https://fa-go-alph-d-001.azurewebsites.net/WasHelpful"
-  data-question="Was this page useful?"
-  data-yes="Yes"
-  data-no="No"
-  data-comment-prompt="Additional comments:"
-  data-thanks-feedback="Thank you for your feedback!"
-  data-thanks-comments="Thank you for your comments!"
-  data-submit="Submit"
-  data-required-field="This field is required"
-></cwds-pagerating>
+{% set langFilePostfix = tags | langFilePostfix %}
+{% if langFilePostfix === "" %}
+  {% set langIncludeFolder="../wordpress-posts/" %}
+{% else %}
+  {% set langIncludeFolder="../translated-posts/" %}
+{% endif %}
+{% set WasHelpfulJSONraw %}{% include langIncludeFolder + "was-this-page-helpful" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set HelpfulJSON = WasHelpfulJSONraw | jsonparse %}
+{% set WasHelpfulStrings = HelpfulJSON.Table1 %}
 
+<cwds-pagerating 
+data-endpoint-url="https://fa-go-alph-d-001.azurewebsites.net/WasHelpful"
+data-question="{{WasHelpfulStrings[0].undefined}}"
+data-yes="{{WasHelpfulStrings[1].undefined}}"
+data-no="{{WasHelpfulStrings[2].undefined}}"
+data-comment-prompt="{{WasHelpfulStrings[3].undefined}}"
+data-thanks-feedback="{{WasHelpfulStrings[4].undefined}}"
+data-thanks-comments="{{WasHelpfulStrings[5].undefined}}"
+data-submit="{{WasHelpfulStrings[6].undefined}}"
+data-required-field="{{WasHelpfulStrings[7].undefined}}"
+></cwds-pagerating>
 <div class="footer alpha-footer">
   <div class="container">
     <div class="row">
