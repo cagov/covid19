@@ -5,3 +5,4 @@ window.onload = (event) => {
   applyAccordionListeners();
 }
 import './feature-detect/webp.js';
+import '@cagov/pagerating'

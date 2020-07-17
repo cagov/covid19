@@ -86,4 +86,12 @@ export default function applyAccordionListeners() {
       }
     })
   })
+
+  if(document.querySelector("cwds-pagerating")) {
+    document.querySelector("cwds-pagerating").addEventListener("ratedPage", (evt) => {
+      console.log('got event from pagerating')
+      console.log(evt)
+      ga('send', 'event', 'rating', 'helpful', evt.detail);
+    });  
+  }
 }
