@@ -9,16 +9,33 @@ ga('tracker3.send', 'pageview');
 </script>
 <script async defer src='https://www.google-analytics.com/analytics.js'></script>
 
-
 {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
 {% set Terms = JSON.Table3 %}
 
-<cwds-pagerating data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"></cwds-pagerating>
+<!--
+  fix the endpoint
+  get the json data
+  read all json values
+  use new import from npm
+  fix readme in module published
+  try pulling out some data
+-->
+<cwds-pagerating 
+  data-endpoint-url="https://fa-go-alph-d-001.azurewebsites.net/WasHelpful"
+  data-question="Was this page useful?"
+  data-yes="Yes"
+  data-no="No"
+  data-comment-prompt="Additional comments:"
+  data-thanks-feedback="Thank you for your feedback!"
+  data-thanks-comments="Thank you for your comments!"
+  data-submit="Submit"
+  data-required-field="This field is required"
+></cwds-pagerating>
 
-<div class="footer mt-0 alpha-footer">
+<div class="footer alpha-footer">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -59,9 +76,7 @@ ga('tracker3.send', 'pageview');
 {%- pagesection page, "plasma" %}
 <script type="module">{% include "plasma.js" %}</script>
 {% endpagesection -%}
-{%- pagesection page, "what-is-open-where" %}
-<script type="module">{% include "what-open-where.js" %}</script>
-{% endpagesection -%}
+
 <script nomodule src="/js/es5.js"></script>
 
 {% include "googletranslate.njk" %}
