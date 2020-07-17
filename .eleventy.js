@@ -44,16 +44,25 @@ module.exports = function(eleventyConfig) {
   });
 
   //Process translated posts
+
+
   let translatedPaths = []
   eleventyConfig.addCollection("translatedposts", function(collection) {
     const FolderName = 'translated-posts';
     let output = [];
-    
+
     collection.getAll().forEach(item => {
         if(item.inputPath.includes(FolderName)) {
-          item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          //update translated paths.
+          const langrecord = getLangRecord(item.data.tags);
+          const getTranslatedPath = path =>
+            path
+              .replace(`${langrecord.filepostfix}/`,`/`)
+              .replace(`${FolderName}/`,`${langrecord.pathpostfix}`);
+
+          item.outputPath = getTranslatedPath(item.outputPath)
           translatedPaths.push(item.outputPath);
-          item.url = item.url.replace(`/${FolderName}`,'');
+          item.url = getTranslatedPath(item.url);
           item.data.page.url = item.url;
           output.push(item);
 
