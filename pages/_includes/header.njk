@@ -2,7 +2,6 @@
 {% set JSON = JSONraw | jsonparse %}
 {% set Terms = JSON.Table3 %}
 {% set langwptag = (tags | langRecord).wptag %}
-{% set langFilePostfix = tags | langFilePostfix %}
 {% set homelinkpath = "/" + (tags | langRecord).pathpostfix %}
 {% set homeLink = "https://covid19.ca.gov" + homelinkpath %}
 
@@ -39,7 +38,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a rel="nofollow" href="/search{{langFilePostfix}}/" class="btn translate">{{Terms[3].Text}}</a>
+          <a rel="nofollow" href="{{homelinkpath}}/search/" class="btn translate">{{Terms[3].Text}}</a>
         </li>
         <li class="nav-item mr-0 pr-0">
           <div class="dropdown">
@@ -57,7 +56,7 @@
               {% for item in page | getAltPageRows %}
                 <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
               {% endfor %}
-              <a class="dropdown-item" href="/translate{{langFilePostfix}}/">{{Terms[6].Text}}</a>
+              <a class="dropdown-item" href="{{homelinkpath}}translate/">{{Terms[6].Text}}</a>
             </div>
           </div>
         </li>
@@ -89,7 +88,7 @@
           </a>
           <div class="dropdown-menu" id="dropdown-{{loop.index}}" aria-labelledby="dropdown-menu-button-{{loop.index}}">
             {%- for link in section.links -%}
-              {%- set href = link.href | default("/"+link.slug+langFilePostfix+"/#top")-%}
+              {%- set href = link.href | default(homelinkpath+link.slug+"/#top")-%}
               {%- if link.slug -%}
                 {%- set pageNameRecord = pageNames | find("slug", link.slug) -%}
                 {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(link.slug)  -%}
