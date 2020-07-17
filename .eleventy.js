@@ -70,6 +70,11 @@ module.exports = function(eleventyConfig) {
               .replace(`${langrecord.filepostfix}/`,`/`)
               .replace(`${FolderName}/`,`${langrecord.pathpostfix}`);
 
+          //quick check to see if the tag matches the file name
+          if(!item.url.endsWith(langrecord.filepostfix+'/')) {
+            console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
+          }
+    
           replaceContent(item,/"https:\/\/covid19.ca.gov\//g,`"/${langrecord.pathpostfix}`);
 
           item.outputPath = getTranslatedPath(item.outputPath)
