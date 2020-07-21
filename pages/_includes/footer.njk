@@ -9,13 +9,33 @@ ga('tracker3.send', 'pageview');
 </script>
 <script async defer src='https://www.google-analytics.com/analytics.js'></script>
 
-
 {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
 {% set Terms = JSON.Table3 %}
 
+{% set langFilePostfix = tags | langFilePostfix %}
+{% if langFilePostfix === "" %}
+  {% set langIncludeFolder="../wordpress-posts/" %}
+{% else %}
+  {% set langIncludeFolder="../translated-posts/" %}
+{% endif %}
+{% set WasHelpfulJSONraw %}{% include langIncludeFolder + "was-this-page-helpful" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set HelpfulJSON = WasHelpfulJSONraw | jsonparse %}
+{% set WasHelpfulStrings = HelpfulJSON.Table1 %}
+
+<cwds-pagerating 
+data-endpoint-url="https://fa-go-alph-d-001.azurewebsites.net/WasHelpful"
+data-question="{{WasHelpfulStrings[0].undefined}}"
+data-yes="{{WasHelpfulStrings[1].undefined}}"
+data-no="{{WasHelpfulStrings[2].undefined}}"
+data-comment-prompt="{{WasHelpfulStrings[3].undefined}}"
+data-thanks-feedback="{{WasHelpfulStrings[4].undefined}}"
+data-thanks-comments="{{WasHelpfulStrings[5].undefined}}"
+data-submit="{{WasHelpfulStrings[6].undefined}}"
+data-required-field="{{WasHelpfulStrings[7].undefined}}"
+></cwds-pagerating>
 <div class="footer alpha-footer">
   <div class="container">
     <div class="row">

@@ -5,21 +5,25 @@ class CWDSSurvey extends window.HTMLElement {
     let shouldDisplayNPI = somePercent();
     let seenSurvey = seenSurveyPrompt();
     let surveyUrl = this.dataset.pulseSurveyUrl;
+    let surveyPrompt = this.dataset.pulseSurveyPrompt;
     if(!seenSurvey) {
       if(shouldDisplayNPI) {
         surveyUrl = this.dataset.npiSurveyUrl
+        surveyPrompt = this.dataset.surveyPrompt
       }
-      reportEvent('surveyDisplay');
-      let html = surveyTemplate(surveyUrl, this.dataset.surveyPrompt);
-      this.innerHTML = html;
-      applyListeners(this);
+      if(surveyUrl) { // We disable the pulse survey by removing the url from the langData config file
+        reportEvent('surveyDisplay');
+        let html = surveyTemplate(surveyUrl, surveyPrompt);
+        this.innerHTML = html;
+        applyListeners(this);
+      }
     }
   }
 }
 window.customElements.define('cwds-survey', CWDSSurvey);
 
 function seenSurveyPrompt() {
-  let lastSurveyInteraction = localStorage.getItem("surveyInteraction8");
+  let lastSurveyInteraction = localStorage.getItem("surveyInteraction9");
   if(!lastSurveyInteraction) { 
     return false; 
   }
@@ -44,7 +48,7 @@ function applyListeners(target) {
 }
 
 function reportEvent(eventString) {
-  localStorage.setItem("surveyInteraction8", new Date().getTime());
+  localStorage.setItem("surveyInteraction9", new Date().getTime());
   reportGA(eventString);
   // report to new API: { site, event }
 }

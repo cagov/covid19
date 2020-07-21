@@ -612,7 +612,7 @@ a.navbar-brand:visited {
 .footer {
     border-top: 1px solid #f1f1f1;
     background-color: #fff;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     margin-bottom: 50px;
     padding-bottom: 40px;
     padding-top: 50px;
@@ -1086,3 +1086,10 @@ button#dropdown-menu-button:focus {
 }
 .mb-0 {margin-bottom: 0 !important;}
 .mt-0 {margin-top: 0 !important;}
+.w-100 {width: 100% !important;}
+.w-90 {width: 90% !important;}
+.w-80 {width: 80% !important;}
+.w-50 {width: 50% !important;}
+.underline {
+    text-decoration: underline !important;
+}
