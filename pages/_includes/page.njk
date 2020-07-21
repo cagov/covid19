@@ -68,7 +68,7 @@
               <h1>{{ title | safe }}</h1>
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
-                  {% if page.fileSlug === "roadmap-counties" %}
+                  {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" %}
                     {{ "today" | formatDate }}
                   {% else %}
                     {{ publishdate | formatDate }}
