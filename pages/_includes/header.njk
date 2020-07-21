@@ -11,7 +11,7 @@
   <a class="skippy sr-only-focusable text-center" href="#main">
     <span class="skippy-text">{{Terms[1].Text}}</span>
   </a>
-  <cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}"></cwds-survey>
+  <cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey>
   <script type="module">
     {% include "survey.js" %}
   </script>
