@@ -410,7 +410,7 @@ module.exports = function(eleventyConfig) {
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${x.pathpostfix}${(engSlug)}/`,
+        url: `/${x.pathpostfix}${(engSlug)}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))
