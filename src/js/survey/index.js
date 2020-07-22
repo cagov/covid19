@@ -5,13 +5,15 @@ class CWDSSurvey extends window.HTMLElement {
     let shouldDisplayNPI = somePercent();
     let seenSurvey = seenSurveyPrompt();
     let surveyUrl = this.dataset.pulseSurveyUrl;
+    let surveyPrompt = this.dataset.pulseSurveyPrompt;
     if(!seenSurvey) {
       if(shouldDisplayNPI) {
         surveyUrl = this.dataset.npiSurveyUrl
+        surveyPrompt = this.dataset.surveyPrompt
       }
       if(surveyUrl) { // We disable the pulse survey by removing the url from the langData config file
         reportEvent('surveyDisplay');
-        let html = surveyTemplate(surveyUrl, this.dataset.surveyPrompt);
+        let html = surveyTemplate(surveyUrl, surveyPrompt);
         this.innerHTML = html;
         applyListeners(this);
       }
