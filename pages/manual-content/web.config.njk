@@ -48,6 +48,10 @@ eleventyExcludeFromCollections: true
           <match url="^img/wp/(.*)" />
           <action type="Redirect" url="https://files.covid19.ca.gov/pdf/wp/{R:1}" appendQueryString="false" />
         </rule>
+        <rule name="langpostfixFix" stopProcessing="true">
+          <match url="(.*)-(es|ar|tl|vi|zh|ko|zh-hant|zh-hans)/$" />
+          <action type="Redirect" url="{R:2}/{R:1}/" />
+        </rule>
         <rule name="AddTrailingSlash BeforeStaticRewrites" stopProcessing="true">
           <match url="(^[^.]*[^/]$)" />
           <action type="Redirect" url="{UrlEncode:{R:1}}/" />
