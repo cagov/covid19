@@ -28,8 +28,12 @@ video.closeModal = function(){
   }
 
   document.getElementsByTagName("HTML")[0].classList.remove("popup_visible");
-  document.getElementById("video-"+video.youtubeId).style.display = "none";
-  video.modal.style.display = "none";
+  if(document.getElementById("video-"+video.youtubeId)) {
+    document.getElementById("video-"+video.youtubeId).style.display = "none";
+  }
+  if(video.modal) {
+    video.modal.style.display = "none";
+  }
   video.youtubeId = null;
 };
 
@@ -72,6 +76,7 @@ video.play = function(){
   if(player){
     player.style.display = "block";
   } else {
+    console.log('playing with no player')
     container.innerHTML += "<div id='" + playerId + "'></div>";
   }
 
@@ -86,8 +91,10 @@ video.play = function(){
       }
     });
   } else {
-    player.style.display = "block";
-    video.players[video.youtubeId].playVideo();
+    if(player) {
+      player.style.display = "block";
+      video.players[video.youtubeId].playVideo();
+    }
   }
 };
 
@@ -103,7 +110,7 @@ video.playerReady = function(e){
  */
 for(let i=0; i<video.openers.length; i++){
   video.openers[i].onclick = function(e){
-    if(e.target.dataset.video){
+    if(e.target.dataset && e.target.dataset.video){
       video.youtubeId = e.target.dataset.video;
     } else {
       video.youtubeId = e.target.closest("[data-video]").dataset.video;
@@ -123,7 +130,9 @@ for(let i=0; i<video.openers.length; i++){
       }
 
       document.getElementsByTagName("HTML")[0].classList.add("popup_visible");
-      video.modal.style.display = "block";
+      if(video.modal) {
+        video.modal.style.display = "block";
+      }
     }
   };
 }
@@ -131,7 +140,7 @@ for(let i=0; i<video.openers.length; i++){
 /**
  * Any element with a .video-close will close the modal.
  */
-for(i=0; i<video.closers.length; i++){
+for(let i=0; i<video.closers.length; i++){
   video.closers[i].onclick = video.closeModal;
 }
 
