@@ -1,14 +1,13 @@
 /**
+ * 
+ * 
+ * This all code from a vendor named trilogy
+ * 
+ * 
+ * 
+ * 
   * Video namespace
   */
- window.video = {
-  modal:   document.getElementById('video-modal'), // The modal window container
-  openers: document.getElementsByClassName("video-modal-open"), // Elements that will open the modal
-  closers: document.getElementsByClassName("video-modal-close"), // Elements that will close the modal
-  players: {}, // Cache each player's data in case the user closes and reopens it
-  youtubeId: null, // The data-video attribute of the opener that was clicked
-  youtubeStatus: "notLoaded" // One of: "notLoaded", "loading", "loaded"
-};
 
 /**
  * Fired by YouTube when the API is ready.
@@ -16,6 +15,23 @@
 window.onYouTubeIframeAPIReady = function(){
   video.youtubeStatus = "loaded";
 };
+
+
+window.addEventListener ? 
+window.addEventListener("load",videoStuff,false) : 
+window.attachEvent && window.attachEvent("onload",videoStuff);
+
+function videoStuff() {
+  console.log('hi')
+  window.video = {
+    modal:   document.getElementById('video-modal'), // The modal window container
+    openers: document.getElementsByClassName("video-modal-open"), // Elements that will open the modal
+    closers: document.getElementsByClassName("video-modal-close"), // Elements that will close the modal
+    players: {}, // Cache each player's data in case the user closes and reopens it
+    youtubeId: null, // The data-video attribute of the opener that was clicked
+    youtubeStatus: "notLoaded" // One of: "notLoaded", "loading", "loaded"
+  };
+
 
 /**
  * Closes the modal and pauses the video. Videos will resume where they left off if the user opens the modal again.
@@ -77,10 +93,12 @@ video.play = function(){
     player.style.display = "block";
   } else {
     console.log('playing with no player')
-    container.innerHTML += "<div id='" + playerId + "'></div>";
+    container.innerHTML += `<div id="${playerId}"></div>`;
+    video.modal.style.display = 'block';
   }
 
   if(!video.players[video.youtubeId]){
+    console.log('creating new YT player')
     video.players[video.youtubeId] = new YT.Player(playerId, {
       host:    "https://www.youtube.com",
       height:  "390",
@@ -91,7 +109,9 @@ video.play = function(){
       }
     });
   } else {
+    console.log('else')
     if(player) {
+      console.log('is a player now')
       player.style.display = "block";
       video.players[video.youtubeId].playVideo();
     }
@@ -104,45 +124,6 @@ video.play = function(){
 video.playerReady = function(e){
   e.target.playVideo();
 };
-
-/**
- * Any element with a .open-video-modal will open the modal.
- */
-for(let i=0; i<video.openers.length; i++){
-  video.openers[i].onclick = function(e){
-    if(e.target.dataset && e.target.dataset.video){
-      video.youtubeId = e.target.dataset.video;
-    } else {
-      video.youtubeId = e.target.closest("[data-video]").dataset.video;
-    }
-    if(video.youtubeId){
-      switch(video.youtubeStatus){
-        case "notLoaded":
-          video.initYouTube();
-          break;
-
-        case "loading":
-          video.waitForYouTube();
-          break;
-
-        case "loaded":
-          video.play();
-      }
-
-      document.getElementsByTagName("HTML")[0].classList.add("popup_visible");
-      if(video.modal) {
-        video.modal.style.display = "block";
-      }
-    }
-  };
-}
-
-/**
- * Any element with a .video-close will close the modal.
- */
-for(let i=0; i<video.closers.length; i++){
-  video.closers[i].onclick = video.closeModal;
-}
 
 /**
  * Clicking outside the modal will close it.
@@ -165,3 +146,46 @@ window.onkeydown = function(e){
       break;
   }
 };
+
+
+  
+  /**
+   * Any element with a .open-video-modal will open the modal.
+   */
+  for(let i=0; i<video.openers.length; i++){
+    video.openers[i].onclick = function(e){
+      if(e.target.dataset && e.target.dataset.video){
+        video.youtubeId = e.target.dataset.video;
+      } else {
+        video.youtubeId = e.target.closest("[data-video]").dataset.video;
+      }
+      if(video.youtubeId){
+        switch(video.youtubeStatus){
+          case "notLoaded":
+            video.initYouTube();
+            break;
+
+          case "loading":
+            video.waitForYouTube();
+            break;
+
+          case "loaded":
+            video.play();
+        }
+
+        document.getElementsByTagName("HTML")[0].classList.add("popup_visible");
+        if(video.modal) {
+          video.modal.style.display = "block";
+        }
+      }
+    };
+  }
+
+  /**
+   * Any element with a .video-close will close the modal.
+   */
+  for(let i=0; i<video.closers.length; i++){
+    video.closers[i].onclick = video.closeModal;
+  }
+
+}
