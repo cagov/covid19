@@ -144,3 +144,24 @@ button.card-header.accordion-alpha:focus {
     background-color: #2d2d2d;
     border-color: #2d2d2d;
 }
+
+.btn-search  {
+    color:#003d9d !important;
+     background-color: #fff !important;
+     border-color: #fff !important;
+     position:relative;
+     padding-right:45px !important;
+  }
+ 
+   .btn-search:focus, .btn-search:hover {
+    color:#003d9d !important;
+     background-color: #f2f5fc !important;
+     border-color: #0257d5 !important;
+  }
+ 
+  .btn-search span {
+    position:absolute;
+    right:10px;
+    top:-1px;
+    font-size:26px !important;
+  }
