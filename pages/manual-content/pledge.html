@@ -6,10 +6,16 @@ author: State of California alpha.ca.gov team
 addtositemap: true
 ---
 
+<style>
+  .submit-response {
+    margin: 150px 10px;
+  }
+</style>
+
 <h2>Pledge for California!</h2>
 <h3>Only togetherwe can win the fight against COVID-19. Pledge to do your part to protect yourself and those around you.</h3>
 
-<form>
+<form class="js-submit-pledge" action="#">
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
     <label class="form-check-label" for="defaultCheck1">
@@ -32,8 +38,23 @@ addtositemap: true
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">Tell us where you are from!</small>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary js-submit-button">Submit</button>
 </form>
 
+<div class="submit-response d-none" aria-role="live">
+  <h2>Thank you</h2>
+  <h3>Your response has been recorded in the cloud ledger of the State of California</h3>
+</div>
+
+<script>
+document.querySelector('.js-submit-pledge').addEventListener('submit',function(e) {
+  e.preventDefault();
+  document.querySelector('.js-submit-button').innerHTML = "Thank you"
+  setTimeout(function() {
+    document.querySelector('.js-submit-pledge').classList.add('d-none')
+    document.querySelector('.submit-response').classList.remove('d-none')
+  }, 300)
+})
+</script>
 
 
