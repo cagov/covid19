@@ -13,48 +13,70 @@ addtositemap: true
 </style>
 
 <h2>Pledge for California!</h2>
-<h3>Only together we can win the fight against COVID-19. Pledge to do your part to protect yourself and those around you.</h3>
+<h3>
+  Only together we can win the fight against COVID-19. Pledge to do your part to
+  protect yourself and those around you.
+</h3>
 
 <form class="js-submit-pledge" action="#">
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1">
-      I pledge not to go to family get togethers to protect my family from COVID-19.
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-family"
+      value="true"
+      id="pledgeFamily"
+    />
+    <label class="form-check-label" for="pledgeFamily"
+      >I pledge not to go to family get togethers to protect my family from
+      COVID-19.</label
+    >
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-mask"
+      value="true"
+      id="pledgeMask"
+    />
+    <label class="form-check-label" for="pledgeMask">
       I pledge to wear a mask to protect my community from COVID-19.
     </label>
   </div>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1">
-      I pledge to physically distance to protect myself from COVID-19 and my community from COVID-19.
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-distance"
+      value="true"
+      id="pledgeDistance"
+    />
+    <label class="form-check-label" for="pledgeDistance">
+      I pledge to physically distance to protect myself from COVID-19 and my
+      community from COVID-19.
     </label>
   </div>
-<div class="form-group">
-    <label for="exampleInputEmail1">Zip code</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">Tell us where you are from!</small>
+  <div class="form-group">
+    <label for="zipcode">Zip code</label>
+    <input
+      type="text"
+      class="form-control"
+      name="zipcode"
+      id="zipcode"
+      aria-describedby="zipHelp"
+    />
+    <small id="zipHelp" class="form-text text-muted"
+      >Tell us where you are from!</small
+    >
   </div>
   <button type="submit" class="btn btn-primary js-submit-button">Submit</button>
 </form>
 
 <div class="submit-response d-none" aria-role="live">
   <h2>Thank you</h2>
-  <h3>Your response has been recorded in the cloud ledger of the State of California</h3>
+  <h3>
+    Your response has been recorded in the cloud ledger of the State of
+    California
+  </h3>
 </div>
-
-<script>
-document.querySelector('.js-submit-pledge').addEventListener('submit',function(e) {
-  e.preventDefault();
-  document.querySelector('.js-submit-button').innerHTML = "Thank you"
-  setTimeout(function() {
-    document.querySelector('.js-submit-pledge').classList.add('d-none')
-    document.querySelector('.submit-response').classList.remove('d-none')
-  }, 300)
-})
-</script>
-
-
