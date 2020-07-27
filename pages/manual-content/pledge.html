@@ -10,6 +10,9 @@ addtositemap: true
   .submit-response {
     margin: 150px 10px;
   }
+  .mt-2 {
+    margin-top: 2rem;
+  }
 </style>
 
 <h2>Pledge for California!</h2>
@@ -57,20 +60,27 @@ addtositemap: true
       community from COVID-19.
     </label>
   </div>
-  <div class="form-group">
-    <label for="zipcode">Zip code</label>
-    <input
-      type="text"
-      class="form-control"
-      name="zipcode"
-      id="zipcode"
-      aria-describedby="zipHelp"
-    />
-    <small id="zipHelp" class="form-text text-muted"
-      >Tell us where you are from!</small
-    >
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="zipcode">Zip code</label>
+      <input
+        style="width: 200px;"
+        class="form-control"
+        name="zipcode"
+        id="zipcode"
+        aria-describedby="zipHelp"
+        type="text"
+        pattern="[0-9]*"
+        maxlength="5"
+        placeholder="95814"
+        required
+      />
+      <small id="zipHelp" class="form-text text-muted"
+        >Tell us where you are from!</small
+      >
+    </div>  
   </div>
-  <button type="submit" class="btn btn-primary js-submit-button">Submit</button>
+  <button type="submit" class="mt-2 btn btn-primary js-submit-button">Submit</button>
 </form>
 
 <div class="submit-response d-none" aria-role="live">
