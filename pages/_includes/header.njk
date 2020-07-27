@@ -5,7 +5,7 @@
 {% set homelinkpath = "/" + (tags | langRecord).pathpostfix %}
 {% set homeLink = "https://covid19.ca.gov" + homelinkpath %}
 
-
+{% include "gabody.njk" %}
 <header>
   <a class="skippy sr-only-focusable text-center" href="#main">
     <span class="skippy-text">{{Terms[1].Text}}</span>
