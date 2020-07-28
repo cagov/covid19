@@ -14,34 +14,22 @@
           "November [day]",
           "December [day]"
       ],
-      "monthdayyearam": [
-          "January [day], [year], 8:00 AM",
-          "February [day], [year], 8:00 AM",
-          "March [day], [year], 8:00 AM",
-          "April [day], [year], 8:00 AM",
-          "May [day], [year], 8:00 AM",
-          "June [day], [year], 8:00 AM",
-          "July [day], [year], 8:00 AM",
-          "August [day], [year], 8:00 AM",
-          "September [day], [year], 8:00 AM",
-          "October [day], [year], 8:00 AM",
-          "November [day], [year], 8:00 AM",
-          "December [day], [year], 8:00 AM"
+      "monthdayyear": [
+          "January [day], [year]",
+          "February [day], [year]",
+          "March [day], [year]",
+          "April [day], [year]",
+          "May [day], [year]",
+          "June [day], [year]",
+          "July [day], [year]",
+          "August [day], [year]",
+          "September [day], [year]",
+          "October [day], [year]",
+          "November [day], [year]",
+          "December [day], [year]"
       ],
-      "monthdayyearpm": [
-          "January [day], [year], 8:00 PM",
-          "February [day], [year], 8:00 PM",
-          "March [day], [year], 8:00 PM",
-          "April [day], [year], 8:00 PM",
-          "May [day], [year], 8:00 PM",
-          "June [day], [year], 8:00 PM",
-          "July [day], [year], 8:00 PM",
-          "August [day], [year], 8:00 PM",
-          "September [day], [year], 8:00 PM",
-          "October [day], [year], 8:00 PM",
-          "November [day], [year], 8:00 PM",
-          "December [day], [year], 8:00 PM"
-      ]
+      "timeam": "[hour-12]:[min] AM",
+      "timepm": "[hour-12]:[min] PM"
   },
   "es": {
       "monthday": [
@@ -58,34 +46,22 @@
           "[day] de noviembre",
           "[day] de diciembre"
       ],
-      "monthdayyearam": [
-          "[day] de enero de [year] 8:00 a. m.",
-          "[day] de febrero de [year] 8:00 a. m.",
-          "[day] de marzo de [year] 8:00 a. m.",
-          "[day] de abril de [year] 8:00 a. m.",
-          "[day] de mayo de [year] 8:00 a. m.",
-          "[day] de junio de [year] 8:00 a. m.",
-          "[day] de julio de [year] 8:00 a. m.",
-          "[day] de agosto de [year] 8:00 a. m.",
-          "[day] de septiembre de [year] 8:00 a. m.",
-          "[day] de octubre de [year] 8:00 a. m.",
-          "[day] de noviembre de [year] 8:00 a. m.",
-          "[day] de diciembre de [year] 8:00 a. m."
+      "monthdayyear": [
+          "[day] de enero de [year]",
+          "[day] de febrero de [year]",
+          "[day] de marzo de [year]",
+          "[day] de abril de [year]",
+          "[day] de mayo de [year]",
+          "[day] de junio de [year]",
+          "[day] de julio de [year]",
+          "[day] de agosto de [year]",
+          "[day] de septiembre de [year]",
+          "[day] de octubre de [year]",
+          "[day] de noviembre de [year]",
+          "[day] de diciembre de [year]"
       ],
-      "monthdayyearpm": [
-          "[day] de enero de [year] 8:00 p. m.",
-          "[day] de febrero de [year] 8:00 p. m.",
-          "[day] de marzo de [year] 8:00 p. m.",
-          "[day] de abril de [year] 8:00 p. m.",
-          "[day] de mayo de [year] 8:00 p. m.",
-          "[day] de junio de [year] 8:00 p. m.",
-          "[day] de julio de [year] 8:00 p. m.",
-          "[day] de agosto de [year] 8:00 p. m.",
-          "[day] de septiembre de [year] 8:00 p. m.",
-          "[day] de octubre de [year] 8:00 p. m.",
-          "[day] de noviembre de [year] 8:00 p. m.",
-          "[day] de diciembre de [year] 8:00 p. m."
-      ]
+      "timeam": "[hour-12]:[min] a. m.",
+      "timepm": "[hour-12]:[min] p. m."
   },
   "ar": {
       "monthday": [
@@ -102,34 +78,22 @@
           "[day] نوفمبر",
           "[day] ديسمبر"
       ],
-      "monthdayyearam": [
-          "[day] يناير [year] 8:00 ص",
-          "[day] فبراير [year] 8:00 ص",
-          "[day] مارس [year] 8:00 ص",
-          "[day] أبريل [year] 8:00 ص",
-          "[day] مايو [year] 8:00 ص",
-          "[day] يونيو [year] 8:00 ص",
-          "[day] يوليو [year] 8:00 ص",
-          "[day] أغسطس [year] 8:00 ص",
-          "[day] سبتمبر [year] 8:00 ص",
-          "[day] أكتوبر [year] 8:00 ص",
-          "[day] نوفمبر [year] 8:00 ص",
-          "[day] ديسمبر [year] 8:00 ص"
+      "monthdayyear": [
+          "[day] يناير [year]",
+          "[day] فبراير [year]",
+          "[day] مارس [year]",
+          "[day] أبريل [year]",
+          "[day] مايو [year]",
+          "[day] يونيو [year]",
+          "[day] يوليو [year]",
+          "[day] أغسطس [year]",
+          "[day] سبتمبر [year]",
+          "[day] أكتوبر [year]",
+          "[day] نوفمبر [year]",
+          "[day] ديسمبر [year]"
       ],
-      "monthdayyearpm": [
-          "[day] يناير [year] 8:00 م",
-          "[day] فبراير [year] 8:00 م",
-          "[day] مارس [year] 8:00 م",
-          "[day] أبريل [year] 8:00 م",
-          "[day] مايو [year] 8:00 م",
-          "[day] يونيو [year] 8:00 م",
-          "[day] يوليو [year] 8:00 م",
-          "[day] أغسطس [year] 8:00 م",
-          "[day] سبتمبر [year] 8:00 م",
-          "[day] أكتوبر [year] 8:00 م",
-          "[day] نوفمبر [year] 8:00 م",
-          "[day] ديسمبر [year] 8:00 م"
-      ]
+      "timeam": "[hour-12]:[min] ص",
+      "timepm": "[hour-12]:[min] م"
   },
   "tl": {
       "monthday": [
@@ -146,34 +110,22 @@
           "Nobyembre [day]",
           "Disyembre [day]"
       ],
-      "monthdayyearam": [
-          "Enero [day], [year], 8:00 AM",
-          "Pebrero [day], [year], 8:00 AM",
-          "Marso [day], [year], 8:00 AM",
-          "Abril [day], [year], 8:00 AM",
-          "Mayo [day], [year], 8:00 AM",
-          "Hunyo [day], [year], 8:00 AM",
-          "Hulyo [day], [year], 8:00 AM",
-          "Agosto [day], [year], 8:00 AM",
-          "Setyembre [day], [year], 8:00 AM",
-          "Oktubre [day], [year], 8:00 AM",
-          "Nobyembre [day], [year], 8:00 AM",
-          "Disyembre [day], [year], 8:00 AM"
+      "monthdayyear": [
+          "Enero [day], [year]",
+          "Pebrero [day], [year]",
+          "Marso [day], [year]",
+          "Abril [day], [year]",
+          "Mayo [day], [year]",
+          "Hunyo [day], [year]",
+          "Hulyo [day], [year]",
+          "Agosto [day], [year]",
+          "Setyembre [day], [year]",
+          "Oktubre [day], [year]",
+          "Nobyembre [day], [year]",
+          "Disyembre [day], [year]"
       ],
-      "monthdayyearpm": [
-          "Enero [day], [year], 8:00 PM",
-          "Pebrero [day], [year], 8:00 PM",
-          "Marso [day], [year], 8:00 PM",
-          "Abril [day], [year], 8:00 PM",
-          "Mayo [day], [year], 8:00 PM",
-          "Hunyo [day], [year], 8:00 PM",
-          "Hulyo [day], [year], 8:00 PM",
-          "Agosto [day], [year], 8:00 PM",
-          "Setyembre [day], [year], 8:00 PM",
-          "Oktubre [day], [year], 8:00 PM",
-          "Nobyembre [day], [year], 8:00 PM",
-          "Disyembre [day], [year], 8:00 PM"
-      ]
+      "timeam": "[hour-12]:[min] AM",
+      "timepm": "[hour-12]:[min] PM"
   },
   "ko": {
       "monthday": [
@@ -190,34 +142,22 @@
           "11월 [day]일",
           "12월 [day]일"
       ],
-      "monthdayyearam": [
-          "[year]년 1월 [day]일 오전 8:00",
-          "[year]년 2월 [day]일 오전 8:00",
-          "[year]년 3월 [day]일 오전 8:00",
-          "[year]년 4월 [day]일 오전 8:00",
-          "[year]년 5월 [day]일 오전 8:00",
-          "[year]년 6월 [day]일 오전 8:00",
-          "[year]년 7월 [day]일 오전 8:00",
-          "[year]년 8월 [day]일 오전 8:00",
-          "[year]년 9월 [day]일 오전 8:00",
-          "[year]년 10월 [day]일 오전 8:00",
-          "[year]년 11월 [day]일 오전 8:00",
-          "[year]년 12월 [day]일 오전 8:00"
+      "monthdayyear": [
+          "[year]년 1월 [day]일",
+          "[year]년 2월 [day]일",
+          "[year]년 3월 [day]일",
+          "[year]년 4월 [day]일",
+          "[year]년 5월 [day]일",
+          "[year]년 6월 [day]일",
+          "[year]년 7월 [day]일",
+          "[year]년 8월 [day]일",
+          "[year]년 9월 [day]일",
+          "[year]년 10월 [day]일",
+          "[year]년 11월 [day]일",
+          "[year]년 12월 [day]일"
       ],
-      "monthdayyearpm": [
-          "[year]년 1월 [day]일 오후 8:00",
-          "[year]년 2월 [day]일 오후 8:00",
-          "[year]년 3월 [day]일 오후 8:00",
-          "[year]년 4월 [day]일 오후 8:00",
-          "[year]년 5월 [day]일 오후 8:00",
-          "[year]년 6월 [day]일 오후 8:00",
-          "[year]년 7월 [day]일 오후 8:00",
-          "[year]년 8월 [day]일 오후 8:00",
-          "[year]년 9월 [day]일 오후 8:00",
-          "[year]년 10월 [day]일 오후 8:00",
-          "[year]년 11월 [day]일 오후 8:00",
-          "[year]년 12월 [day]일 오후 8:00"
-      ]
+      "timeam": "오전 [hour-12]:[min]",
+      "timepm": "오후 [hour-12]:[min]"
   },
   "vi": {
       "monthday": [
@@ -234,34 +174,22 @@
           "[day] tháng 11",
           "[day] tháng 12"
       ],
-      "monthdayyearam": [
-          "8:00, [day] tháng 1, [year]",
-          "8:00, [day] tháng 2, [year]",
-          "8:00, [day] tháng 3, [year]",
-          "8:00, [day] tháng 4, [year]",
-          "8:00, [day] tháng 5, [year]",
-          "8:00, [day] tháng 6, [year]",
-          "8:00, [day] tháng 7, [year]",
-          "8:00, [day] tháng 8, [year]",
-          "8:00, [day] tháng 9, [year]",
-          "8:00, [day] tháng 10, [year]",
-          "8:00, [day] tháng 11, [year]",
-          "8:00, [day] tháng 12, [year]"
+      "monthdayyear": [
+          "[day] tháng 1, [year]",
+          "[day] tháng 2, [year]",
+          "[day] tháng 3, [year]",
+          "[day] tháng 4, [year]",
+          "[day] tháng 5, [year]",
+          "[day] tháng 6, [year]",
+          "[day] tháng 7, [year]",
+          "[day] tháng 8, [year]",
+          "[day] tháng 9, [year]",
+          "[day] tháng 10, [year]",
+          "[day] tháng 11, [year]",
+          "[day] tháng 12, [year]"
       ],
-      "monthdayyearpm": [
-          "20:00, [day] tháng 1, [year]",
-          "20:00, [day] tháng 2, [year]",
-          "20:00, [day] tháng 3, [year]",
-          "20:00, [day] tháng 4, [year]",
-          "20:00, [day] tháng 5, [year]",
-          "20:00, [day] tháng 6, [year]",
-          "20:00, [day] tháng 7, [year]",
-          "20:00, [day] tháng 8, [year]",
-          "20:00, [day] tháng 9, [year]",
-          "20:00, [day] tháng 10, [year]",
-          "20:00, [day] tháng 11, [year]",
-          "20:00, [day] tháng 12, [year]"
-      ]
+      "timeam": "[hour-12]:[min]",
+      "timepm": "[hour-24]:[min]"
   },
   "zh-hans": {
       "monthday": [
@@ -278,34 +206,22 @@
           "11月[day]日",
           "12月[day]日"
       ],
-      "monthdayyearam": [
-          "[year]年1月[day]日 上午8:00",
-          "[year]年2月[day]日 上午8:00",
-          "[year]年3月[day]日 上午8:00",
-          "[year]年4月[day]日 上午8:00",
-          "[year]年5月[day]日 上午8:00",
-          "[year]年6月[day]日 上午8:00",
-          "[year]年7月[day]日 上午8:00",
-          "[year]年8月[day]日 上午8:00",
-          "[year]年9月[day]日 上午8:00",
-          "[year]年10月[day]日 上午8:00",
-          "[year]年11月[day]日 上午8:00",
-          "[year]年12月[day]日 上午8:00"
+      "monthdayyear": [
+          "[year]年1月[day]日",
+          "[year]年2月[day]日",
+          "[year]年3月[day]日",
+          "[year]年4月[day]日",
+          "[year]年5月[day]日",
+          "[year]年6月[day]日",
+          "[year]年7月[day]日",
+          "[year]年8月[day]日",
+          "[year]年9月[day]日",
+          "[year]年10月[day]日",
+          "[year]年11月[day]日",
+          "[year]年12月[day]日"
       ],
-      "monthdayyearpm": [
-          "[year]年1月[day]日 下午8:00",
-          "[year]年2月[day]日 下午8:00",
-          "[year]年3月[day]日 下午8:00",
-          "[year]年4月[day]日 下午8:00",
-          "[year]年5月[day]日 下午8:00",
-          "[year]年6月[day]日 下午8:00",
-          "[year]年7月[day]日 下午8:00",
-          "[year]年8月[day]日 下午8:00",
-          "[year]年9月[day]日 下午8:00",
-          "[year]年10月[day]日 下午8:00",
-          "[year]年11月[day]日 下午8:00",
-          "[year]年12月[day]日 下午8:00"
-      ]
+      "timeam": "上午[hour-12]:[min]",
+      "timepm": "下午[hour-12]:[min]"
   },
   "zh-hant": {
       "monthday": [
@@ -322,33 +238,21 @@
           "11月[day]日",
           "12月[day]日"
       ],
-      "monthdayyearam": [
-          "[year]年1月[day]日 上午8:00",
-          "[year]年2月[day]日 上午8:00",
-          "[year]年3月[day]日 上午8:00",
-          "[year]年4月[day]日 上午8:00",
-          "[year]年5月[day]日 上午8:00",
-          "[year]年6月[day]日 上午8:00",
-          "[year]年7月[day]日 上午8:00",
-          "[year]年8月[day]日 上午8:00",
-          "[year]年9月[day]日 上午8:00",
-          "[year]年10月[day]日 上午8:00",
-          "[year]年11月[day]日 上午8:00",
-          "[year]年12月[day]日 上午8:00"
+      "monthdayyear": [
+          "[year]年1月[day]日",
+          "[year]年2月[day]日",
+          "[year]年3月[day]日",
+          "[year]年4月[day]日",
+          "[year]年5月[day]日",
+          "[year]年6月[day]日",
+          "[year]年7月[day]日",
+          "[year]年8月[day]日",
+          "[year]年9月[day]日",
+          "[year]年10月[day]日",
+          "[year]年11月[day]日",
+          "[year]年12月[day]日"
       ],
-      "monthdayyearpm": [
-          "[year]年1月[day]日 下午8:00",
-          "[year]年2月[day]日 下午8:00",
-          "[year]年3月[day]日 下午8:00",
-          "[year]年4月[day]日 下午8:00",
-          "[year]年5月[day]日 下午8:00",
-          "[year]年6月[day]日 下午8:00",
-          "[year]年7月[day]日 下午8:00",
-          "[year]年8月[day]日 下午8:00",
-          "[year]年9月[day]日 下午8:00",
-          "[year]年10月[day]日 下午8:00",
-          "[year]年11月[day]日 下午8:00",
-          "[year]年12月[day]日 下午8:00"
-      ]
+      "timeam": "上午[hour-12]:[min]",
+      "timepm": "下午[hour-12]:[min]"
   }
 }

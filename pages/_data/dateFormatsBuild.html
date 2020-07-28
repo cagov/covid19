@@ -24,9 +24,10 @@
       const targetpmhour = 20;
 
       const formats = [
-        {name:"monthday",hour:targetamhour,format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' }},
-        {name:"monthdayyearam",hour:targetamhour, format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }},
-        {name:"monthdayyearpm",hour:targetpmhour, format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }}
+        {name:"monthday",format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' }},
+        {name:"monthdayyear", format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long', year: 'numeric' }},
+        {name:"timeam",hour:targetamhour, format: { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: 'numeric' }},
+        {name:"timepm",hour:targetpmhour, format: { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: 'numeric' }}
       ];
 
 
@@ -36,15 +37,23 @@
         const formatresults = {};
         
         formats.forEach(format=>{
-          formatresults[format.name] = months.map(m=>
-             new Date(targetyear,m,targetday,format.hour,targetminute)
-              .toLocaleDateString(lang+'-US', format.format)
-              .replace(targetyear,'[year]')
-              .replace(targetday,'[day]')
+          if(format.hour) {
+            formatresults[format.name] = new Date(0,0,0,format.hour,targetminute)
+              .toLocaleTimeString(lang+'-US', format.format)
               .replace(targetamhour,'[hour-12]')
               .replace(targetpmhour,'[hour-24]')
               .replace(targetminute,'[min]')
+          } else {
+            formatresults[format.name] = months.map(m=>
+             new Date(targetyear,m,targetday)
+              .toLocaleDateString(lang+'-US', format.format)
+              .replace(targetyear,'[year]')
+              .replace(targetday,'[day]')
           );
+          }
+
+
+
         });
 
         results[lang]=formatresults;
