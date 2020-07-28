@@ -1,5 +1,6 @@
 {
   "en": {
+      "joinstring": "[date] at [time]",
       "monthday": [
           "January [day]",
           "February [day]",
@@ -32,6 +33,7 @@
       "timepm": "[hour-12]:[min] PM"
   },
   "es": {
+      "joinstring": "[date] a las [time]",
       "monthday": [
           "[day] de enero",
           "[day] de febrero",
@@ -64,6 +66,7 @@
       "timepm": "[hour-12]:[min] p. m."
   },
   "ar": {
+      "joinstring": "[time] الساعة [date]",
       "monthday": [
           "[day] يناير",
           "[day] فبراير",
@@ -96,6 +99,7 @@
       "timepm": "[hour-12]:[min] م"
   },
   "tl": {
+      "joinstring": "[date] at [time]",
       "monthday": [
           "Enero [day]",
           "Pebrero [day]",
@@ -128,6 +132,7 @@
       "timepm": "[hour-12]:[min] PM"
   },
   "ko": {
+      "joinstring": "[date] [time]",
       "monthday": [
           "1월 [day]일",
           "2월 [day]일",
@@ -160,6 +165,7 @@
       "timepm": "오후 [hour-12]:[min]"
   },
   "vi": {
+      "joinstring": "[date] lúc [time]",
       "monthday": [
           "[day] tháng 1",
           "[day] tháng 2",
@@ -192,6 +198,7 @@
       "timepm": "[hour-24]:[min]"
   },
   "zh-hans": {
+      "joinstring": "[date], [time]",
       "monthday": [
           "1月[day]日",
           "2月[day]日",
@@ -224,6 +231,7 @@
       "timepm": "下午[hour-12]:[min]"
   },
   "zh-hant": {
+      "joinstring": "[date], [time]",
       "monthday": [
           "1月[day]日",
           "2月[day]日",

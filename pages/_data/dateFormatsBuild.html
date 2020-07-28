@@ -5,14 +5,14 @@
 
     <script>
       const langs = [
-        'en',
-        'es',
-        'ar',
-        'tl',
-        'ko',
-        'vi',
-        'zh-hans',
-        'zh-hant'
+        {id:'en',joinstring:"[date] at [time]"},
+        {id:'es',joinstring:"[date] a las [time]"},
+        {id:'ar',joinstring:"[time] الساعة [date]"},
+        {id:'tl',joinstring:"[date] at [time]"},
+        {id:'ko',joinstring:"[date] [time]"},
+        {id:'vi',joinstring:"[date] lúc [time]"},
+        {id:'zh-hans',joinstring:"[date], [time]"},
+        {id:'zh-hant',joinstring:"[date], [time]"}
       ];
 
       const months = [0,1,2,3,4,5,6,7,8,9,10,11];
@@ -34,29 +34,26 @@
       const results = {};
 
       langs.forEach(lang=> {
-        const formatresults = {};
-        
+        const formatresults = {joinstring:lang.joinstring};
+
         formats.forEach(format=>{
           if(format.hour) {
             formatresults[format.name] = new Date(0,0,0,format.hour,targetminute)
-              .toLocaleTimeString(lang+'-US', format.format)
+              .toLocaleTimeString(lang.id+'-US', format.format)
               .replace(targetamhour,'[hour-12]')
               .replace(targetpmhour,'[hour-24]')
               .replace(targetminute,'[min]')
           } else {
             formatresults[format.name] = months.map(m=>
              new Date(targetyear,m,targetday)
-              .toLocaleDateString(lang+'-US', format.format)
+              .toLocaleDateString(lang.id+'-US', format.format)
               .replace(targetyear,'[year]')
               .replace(targetday,'[day]')
           );
           }
-
-
-
         });
 
-        results[lang]=formatresults;
+        results[lang.id]=formatresults;
       });
 
       console.log(JSON.stringify(results, null, 4));
