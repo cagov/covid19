@@ -79,28 +79,7 @@
     </div>
   </div>
 
-  <!-- begin video test -->
-  <div class="container-fluid bg-primary text-white py-5">
-    <div class="container video-item" data-id="qQNBSlWJhfU">
-    <div class="row flex-md-nowrap align-items-center">
-        <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zDX9PXkotA" href="javascript:void(0);">
-          <figure class="video-thumb-photo">
-            <div class="video-thumb-play-button">
-              <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M43.3,25L0,50V0L43.3,25z"></path></svg>
-            </div>
-            <img class="video-thumb-photo-img" src="/img/mask-thumb.jpg" alt="Wear a Mask">
-          </figure>
-        </a>
-        <div class="video-text pl-md-5 pt-3 pt-lg-0">
-          <h2 class="text-white mb-1 font-weight-bold">Wear a Mask</h2>
-          Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.
-          <a href="javascript:void(0);" data-video="1zDX9PXkotA" class="video-modal-open action-link mt-4 d-table px-3">Watch the Video</a>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-  <!-- end video test -->
+
 
   {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
 
@@ -117,18 +96,6 @@
 </main>
 {% include "footer.njk" %}
 
-<!-- end video test -->
-<div id="video-modal" class="video-modal">
-  <div class="video-modal-content">
-    <button class="video-modal-close modal_close">
-      <svg class="video-modal-close-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path></svg>
-    </button>
-    <div class="video-modal-player" id="video-container"></div>
-  </div>
-</div>
-<div class="popup_background"></div>
-<script type="module">{% include "video.js" %}</script>
-<!-- end video test -->
 
 </body>
 </html>
