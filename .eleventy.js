@@ -176,21 +176,13 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter('formatDateParts', function(datestring) {
+  eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
     if(datestring) {
       let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
       if(output) {
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
-    }
-    return "";
-  })
-
-  eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
-    if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        output.setDate(output.getDate() + 1)
+        if(adddays) {
+          output.setDate(output.getDate() + adddays);
+        }
         return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
       }  
     }
