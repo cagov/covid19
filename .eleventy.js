@@ -176,7 +176,7 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
+  const formatDate = (datestring, adddays) => {
     if(datestring) {
       let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
       if(output) {
@@ -187,7 +187,17 @@ module.exports = function(eleventyConfig) {
       }  
     }
     return "";
+  }
+
+  eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
+    return formatDate(datestring,adddays);
   })
+
+  eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
+    return formatDate(datestring,1);
+  })
+
+  
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
