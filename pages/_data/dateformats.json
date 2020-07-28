@@ -1,506 +1,242 @@
-[
-  [
-      {
-          "lang": "en",
-          "monthday": "January [day]",
-          "monthdayyear": "January [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de enero",
-          "monthdayyear": "[day] de enero de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] يناير",
-          "monthdayyear": "[day] يناير [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Enero [day]",
-          "monthdayyear": "Enero [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "1월 [day]일",
-          "monthdayyear": "[year]년 1월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 1",
-          "monthdayyear": "[day] tháng 1, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "1月[day]日",
-          "monthdayyear": "[year]年1月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "1月[day]日",
-          "monthdayyear": "[year]年1月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "February [day]",
-          "monthdayyear": "February [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de febrero",
-          "monthdayyear": "[day] de febrero de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] فبراير",
-          "monthdayyear": "[day] فبراير [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Pebrero [day]",
-          "monthdayyear": "Pebrero [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "2월 [day]일",
-          "monthdayyear": "[year]년 2월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 2",
-          "monthdayyear": "[day] tháng 2, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "2月[day]日",
-          "monthdayyear": "[year]年2月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "2月[day]日",
-          "monthdayyear": "[year]年2月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "March [day]",
-          "monthdayyear": "March [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de marzo",
-          "monthdayyear": "[day] de marzo de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] مارس",
-          "monthdayyear": "[day] مارس [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Marso [day]",
-          "monthdayyear": "Marso [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "3월 [day]일",
-          "monthdayyear": "[year]년 3월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 3",
-          "monthdayyear": "[day] tháng 3, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "3月[day]日",
-          "monthdayyear": "[year]年3月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "3月[day]日",
-          "monthdayyear": "[year]年3月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "April [day]",
-          "monthdayyear": "April [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de abril",
-          "monthdayyear": "[day] de abril de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] أبريل",
-          "monthdayyear": "[day] أبريل [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Abril [day]",
-          "monthdayyear": "Abril [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "4월 [day]일",
-          "monthdayyear": "[year]년 4월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 4",
-          "monthdayyear": "[day] tháng 4, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "4月[day]日",
-          "monthdayyear": "[year]年4月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "4月[day]日",
-          "monthdayyear": "[year]年4月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "May [day]",
-          "monthdayyear": "May [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de mayo",
-          "monthdayyear": "[day] de mayo de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] مايو",
-          "monthdayyear": "[day] مايو [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Mayo [day]",
-          "monthdayyear": "Mayo [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "5월 [day]일",
-          "monthdayyear": "[year]년 5월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 5",
-          "monthdayyear": "[day] tháng 5, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "5月[day]日",
-          "monthdayyear": "[year]年5月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "5月[day]日",
-          "monthdayyear": "[year]年5月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "June [day]",
-          "monthdayyear": "June [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de junio",
-          "monthdayyear": "[day] de junio de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] يونيو",
-          "monthdayyear": "[day] يونيو [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Hunyo [day]",
-          "monthdayyear": "Hunyo [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "6월 [day]일",
-          "monthdayyear": "[year]년 6월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 6",
-          "monthdayyear": "[day] tháng 6, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "6月[day]日",
-          "monthdayyear": "[year]年6月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "6月[day]日",
-          "monthdayyear": "[year]年6月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "July [day]",
-          "monthdayyear": "July [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de julio",
-          "monthdayyear": "[day] de julio de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] يوليو",
-          "monthdayyear": "[day] يوليو [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Hulyo [day]",
-          "monthdayyear": "Hulyo [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "7월 [day]일",
-          "monthdayyear": "[year]년 7월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 7",
-          "monthdayyear": "[day] tháng 7, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "7月[day]日",
-          "monthdayyear": "[year]年7月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "7月[day]日",
-          "monthdayyear": "[year]年7月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "August [day]",
-          "monthdayyear": "August [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de agosto",
-          "monthdayyear": "[day] de agosto de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] أغسطس",
-          "monthdayyear": "[day] أغسطس [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Agosto [day]",
-          "monthdayyear": "Agosto [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "8월 [day]일",
-          "monthdayyear": "[year]년 8월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 8",
-          "monthdayyear": "[day] tháng 8, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "8月[day]日",
-          "monthdayyear": "[year]年8月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "8月[day]日",
-          "monthdayyear": "[year]年8月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "September [day]",
-          "monthdayyear": "September [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de septiembre",
-          "monthdayyear": "[day] de septiembre de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] سبتمبر",
-          "monthdayyear": "[day] سبتمبر [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Setyembre [day]",
-          "monthdayyear": "Setyembre [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "9월 [day]일",
-          "monthdayyear": "[year]년 9월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 9",
-          "monthdayyear": "[day] tháng 9, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "9月[day]日",
-          "monthdayyear": "[year]年9月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "9月[day]日",
-          "monthdayyear": "[year]年9月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "October [day]",
-          "monthdayyear": "October [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de octubre",
-          "monthdayyear": "[day] de octubre de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] أكتوبر",
-          "monthdayyear": "[day] أكتوبر [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Oktubre [day]",
-          "monthdayyear": "Oktubre [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "10월 [day]일",
-          "monthdayyear": "[year]년 10월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 10",
-          "monthdayyear": "[day] tháng 10, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "10月[day]日",
-          "monthdayyear": "[year]年10月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "10月[day]日",
-          "monthdayyear": "[year]年10月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "November [day]",
-          "monthdayyear": "November [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de noviembre",
-          "monthdayyear": "[day] de noviembre de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] نوفمبر",
-          "monthdayyear": "[day] نوفمبر [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Nobyembre [day]",
-          "monthdayyear": "Nobyembre [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "11월 [day]일",
-          "monthdayyear": "[year]년 11월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 11",
-          "monthdayyear": "[day] tháng 11, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "11月[day]日",
-          "monthdayyear": "[year]年11月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "11月[day]日",
-          "monthdayyear": "[year]年11月[day]日"
-      }
-  ],
-  [
-      {
-          "lang": "en",
-          "monthday": "December [day]",
-          "monthdayyear": "December [day], [year]"
-      },
-      {
-          "lang": "es",
-          "monthday": "[day] de diciembre",
-          "monthdayyear": "[day] de diciembre de [year]"
-      },
-      {
-          "lang": "ar",
-          "monthday": "[day] ديسمبر",
-          "monthdayyear": "[day] ديسمبر [year]"
-      },
-      {
-          "lang": "tl",
-          "monthday": "Disyembre [day]",
-          "monthdayyear": "Disyembre [day], [year]"
-      },
-      {
-          "lang": "ko",
-          "monthday": "12월 [day]일",
-          "monthdayyear": "[year]년 12월 [day]일"
-      },
-      {
-          "lang": "vi",
-          "monthday": "[day] tháng 12",
-          "monthdayyear": "[day] tháng 12, [year]"
-      },
-      {
-          "lang": "zh-hans",
-          "monthday": "12月[day]日",
-          "monthdayyear": "[year]年12月[day]日"
-      },
-      {
-          "lang": "zh-hant",
-          "monthday": "12月[day]日",
-          "monthdayyear": "[year]年12月[day]日"
-      }
-  ]
-]
+{
+  "en": {
+      "monthday": [
+          "January [day]",
+          "February [day]",
+          "March [day]",
+          "April [day]",
+          "May [day]",
+          "June [day]",
+          "July [day]",
+          "August [day]",
+          "September [day]",
+          "October [day]",
+          "November [day]",
+          "December [day]"
+      ],
+      "monthdayyear": [
+          "January [day], [year]",
+          "February [day], [year]",
+          "March [day], [year]",
+          "April [day], [year]",
+          "May [day], [year]",
+          "June [day], [year]",
+          "July [day], [year]",
+          "August [day], [year]",
+          "September [day], [year]",
+          "October [day], [year]",
+          "November [day], [year]",
+          "December [day], [year]"
+      ]
+  },
+  "es": {
+      "monthday": [
+          "[day] de enero",
+          "[day] de febrero",
+          "[day] de marzo",
+          "[day] de abril",
+          "[day] de mayo",
+          "[day] de junio",
+          "[day] de julio",
+          "[day] de agosto",
+          "[day] de septiembre",
+          "[day] de octubre",
+          "[day] de noviembre",
+          "[day] de diciembre"
+      ],
+      "monthdayyear": [
+          "[day] de enero de [year]",
+          "[day] de febrero de [year]",
+          "[day] de marzo de [year]",
+          "[day] de abril de [year]",
+          "[day] de mayo de [year]",
+          "[day] de junio de [year]",
+          "[day] de julio de [year]",
+          "[day] de agosto de [year]",
+          "[day] de septiembre de [year]",
+          "[day] de octubre de [year]",
+          "[day] de noviembre de [year]",
+          "[day] de diciembre de [year]"
+      ]
+  },
+  "ar": {
+      "monthday": [
+          "[day] يناير",
+          "[day] فبراير",
+          "[day] مارس",
+          "[day] أبريل",
+          "[day] مايو",
+          "[day] يونيو",
+          "[day] يوليو",
+          "[day] أغسطس",
+          "[day] سبتمبر",
+          "[day] أكتوبر",
+          "[day] نوفمبر",
+          "[day] ديسمبر"
+      ],
+      "monthdayyear": [
+          "[day] يناير [year]",
+          "[day] فبراير [year]",
+          "[day] مارس [year]",
+          "[day] أبريل [year]",
+          "[day] مايو [year]",
+          "[day] يونيو [year]",
+          "[day] يوليو [year]",
+          "[day] أغسطس [year]",
+          "[day] سبتمبر [year]",
+          "[day] أكتوبر [year]",
+          "[day] نوفمبر [year]",
+          "[day] ديسمبر [year]"
+      ]
+  },
+  "tl": {
+      "monthday": [
+          "Enero [day]",
+          "Pebrero [day]",
+          "Marso [day]",
+          "Abril [day]",
+          "Mayo [day]",
+          "Hunyo [day]",
+          "Hulyo [day]",
+          "Agosto [day]",
+          "Setyembre [day]",
+          "Oktubre [day]",
+          "Nobyembre [day]",
+          "Disyembre [day]"
+      ],
+      "monthdayyear": [
+          "Enero [day], [year]",
+          "Pebrero [day], [year]",
+          "Marso [day], [year]",
+          "Abril [day], [year]",
+          "Mayo [day], [year]",
+          "Hunyo [day], [year]",
+          "Hulyo [day], [year]",
+          "Agosto [day], [year]",
+          "Setyembre [day], [year]",
+          "Oktubre [day], [year]",
+          "Nobyembre [day], [year]",
+          "Disyembre [day], [year]"
+      ]
+  },
+  "ko": {
+      "monthday": [
+          "1월 [day]일",
+          "2월 [day]일",
+          "3월 [day]일",
+          "4월 [day]일",
+          "5월 [day]일",
+          "6월 [day]일",
+          "7월 [day]일",
+          "8월 [day]일",
+          "9월 [day]일",
+          "10월 [day]일",
+          "11월 [day]일",
+          "12월 [day]일"
+      ],
+      "monthdayyear": [
+          "[year]년 1월 [day]일",
+          "[year]년 2월 [day]일",
+          "[year]년 3월 [day]일",
+          "[year]년 4월 [day]일",
+          "[year]년 5월 [day]일",
+          "[year]년 6월 [day]일",
+          "[year]년 7월 [day]일",
+          "[year]년 8월 [day]일",
+          "[year]년 9월 [day]일",
+          "[year]년 10월 [day]일",
+          "[year]년 11월 [day]일",
+          "[year]년 12월 [day]일"
+      ]
+  },
+  "vi": {
+      "monthday": [
+          "[day] tháng 1",
+          "[day] tháng 2",
+          "[day] tháng 3",
+          "[day] tháng 4",
+          "[day] tháng 5",
+          "[day] tháng 6",
+          "[day] tháng 7",
+          "[day] tháng 8",
+          "[day] tháng 9",
+          "[day] tháng 10",
+          "[day] tháng 11",
+          "[day] tháng 12"
+      ],
+      "monthdayyear": [
+          "[day] tháng 1, [year]",
+          "[day] tháng 2, [year]",
+          "[day] tháng 3, [year]",
+          "[day] tháng 4, [year]",
+          "[day] tháng 5, [year]",
+          "[day] tháng 6, [year]",
+          "[day] tháng 7, [year]",
+          "[day] tháng 8, [year]",
+          "[day] tháng 9, [year]",
+          "[day] tháng 10, [year]",
+          "[day] tháng 11, [year]",
+          "[day] tháng 12, [year]"
+      ]
+  },
+  "zh-hans": {
+      "monthday": [
+          "1月[day]日",
+          "2月[day]日",
+          "3月[day]日",
+          "4月[day]日",
+          "5月[day]日",
+          "6月[day]日",
+          "7月[day]日",
+          "8月[day]日",
+          "9月[day]日",
+          "10月[day]日",
+          "11月[day]日",
+          "12月[day]日"
+      ],
+      "monthdayyear": [
+          "[year]年1月[day]日",
+          "[year]年2月[day]日",
+          "[year]年3月[day]日",
+          "[year]年4月[day]日",
+          "[year]年5月[day]日",
+          "[year]年6月[day]日",
+          "[year]年7月[day]日",
+          "[year]年8月[day]日",
+          "[year]年9月[day]日",
+          "[year]年10月[day]日",
+          "[year]年11月[day]日",
+          "[year]年12月[day]日"
+      ]
+  },
+  "zh-hant": {
+      "monthday": [
+          "1月[day]日",
+          "2月[day]日",
+          "3月[day]日",
+          "4月[day]日",
+          "5月[day]日",
+          "6月[day]日",
+          "7月[day]日",
+          "8月[day]日",
+          "9月[day]日",
+          "10月[day]日",
+          "11月[day]日",
+          "12月[day]日"
+      ],
+      "monthdayyear": [
+          "[year]年1月[day]日",
+          "[year]年2月[day]日",
+          "[year]年3月[day]日",
+          "[year]年4月[day]日",
+          "[year]年5月[day]日",
+          "[year]年6月[day]日",
+          "[year]年7月[day]日",
+          "[year]年8月[day]日",
+          "[year]年9月[day]日",
+          "[year]年10月[day]日",
+          "[year]年11月[day]日",
+          "[year]年12月[day]日"
+      ]
+  }
+}
