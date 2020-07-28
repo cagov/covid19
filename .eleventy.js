@@ -5,6 +5,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateFormats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {

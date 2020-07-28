@@ -1,0 +1,56 @@
+<html>
+  <body>
+    Run this in a regular web browser.<br/>
+    Check the console log for formatted JSON.  
+
+    <script>
+      const langs = [
+        'en',
+        'es',
+        'ar',
+        'tl',
+        'ko',
+        'vi',
+        'zh-hans',
+        'zh-hant'
+      ];
+
+      const months = [0,1,2,3,4,5,6,7,8,9,10,11];
+
+      const targetyear = 2020;
+      const targetday = 28;
+      const targetminute = 59;
+      const targetamhour = 8;
+      const targetpmhour = 20;
+
+      const formats = [
+        {name:"monthday",hour:targetamhour,format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' }},
+        {name:"monthdayyearam",hour:targetamhour, format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }},
+        {name:"monthdayyearpm",hour:targetpmhour, format: { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }}
+      ];
+
+
+      const results = {};
+
+      langs.forEach(lang=> {
+        const formatresults = {};
+        
+        formats.forEach(format=>{
+          formatresults[format.name] = months.map(m=>
+             new Date(targetyear,m,targetday,format.hour,targetminute)
+              .toLocaleDateString(lang+'-US', format.format)
+              .replace(targetyear,'[year]')
+              .replace(targetday,'[day]')
+              .replace(targetamhour,'[hour-12]')
+              .replace(targetpmhour,'[hour-24]')
+              .replace(targetminute,'[min]')
+          );
+        });
+
+        results[lang]=formatresults;
+      });
+
+      console.log(JSON.stringify(results, null, 4));
+    </script>
+  </body>
+</html>
