@@ -1,0 +1,148 @@
+
+.header-logo {
+	margin: 0;
+	width: 100%;
+	order: 4
+}
+
+@media (max-width:64em) {
+	.header-logo {
+		background: #0d3892
+	}
+}
+
+@media (min-width:48em) {
+	.header-logo {
+		background: transparent;
+		order: 0;
+		width: auto
+	}
+}
+
+.header-logo-grid {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center
+}
+
+.header-logo-mark {
+	width: 6rem;
+	display: block;
+	background: #003d9d;
+	padding: 0.5rem 0.75rem;
+	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+	transition: width 0.4s cubic-bezier(0.57, 0.2, 0.21, 0.89), background 0.4s cubic-bezier(0.57, 0.2, 0.21, 0.89);
+	overflow-y: hidden
+}
+
+@media (min-width:81.25em) {
+	.header-logo-mark {
+		width: 8rem;
+		padding: 1rem 0.75rem
+	}
+}
+
+.header-logo-text {
+	text-align: left;
+	padding-left: 0.75rem
+}
+
+.header-logo-text-url {
+	color: #ff8000;
+	text-transform: uppercase;
+	display: block;
+	transition: color 0.4s cubic-bezier(0.57, 0.2, 0.21, 0.89)
+}
+
+.header-logo-text-title {
+	color: #fff;
+	white-space: nowrap;
+	display: block;
+	transition: color 0.4s cubic-bezier(0.57, 0.2, 0.21, 0.89)
+}
+
+@media (max-width:64em) {
+	.header-logo-text-title {
+		font-size: 1.2rem
+	}
+}
+
+.header-logo:hover .header-logo-mark {
+	background: #fff
+}
+
+.header-logo:hover .header-logo-text-url {
+	color: #fff
+}
+
+.header-logo:hover .header-logo-text-title {
+	color: #ff8000
+}
+
+.header-logo:hover .logo-mark-orange {
+	fill: #1f2574
+}
+
+.header-logo:hover .logo-mark-white {
+	fill: #ff8000
+}
+
+.header-logo:focus .header-logo-mark {
+	background: #fff;
+	box-shadow: 0 0 0 4px #ecca00, 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3)
+}
+
+.header-logo:focus .header-logo-text-url {
+	color: #fff
+}
+
+.header-logo:focus .header-logo-text-title {
+	color: #ff8000
+}
+
+.header-logo:focus .logo-mark-orange {
+	fill: #1f2574
+}
+
+.header-logo:focus .logo-mark-white {
+	fill: #ff8000
+}
+
+.header-right {
+	margin-left: 0
+}
+
+.header-search {
+	background: #003d9d;
+	border-radius: 2rem;
+	transition: background 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89);
+	padding: 0;
+	margin: 0.5rem 0.5rem 0.5rem auto;
+	width: 55%;
+	order: 2
+}
+
+@media (min-width:48em) {
+	.header-search {
+		width: 13rem;
+		padding: 0 0 0 0.25rem;
+		margin: 0;
+		order: 0;
+		margin-left: auto
+	}
+}
+
+@media (min-width:64em) {
+	.header-search {
+		width: 22rem;
+		padding: 0.25rem 0.25rem 0.25rem 0.75rem
+	}
+}
+
+@media (min-width:81.25em) {
+	.header-search {
+		width: 25rem;
+		padding: 0.5rem 0.5rem 0.5rem 1rem
+	}
+}
