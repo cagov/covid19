@@ -59,7 +59,9 @@
           </div>
         </li>
         <li class="nav-item mr-0 pr-0">
-          <a rel="nofollow" href="{{homelinkpath}}search/" class="btn translate btn-search rounded-50">{{Terms[3].Text}}<span class="ca-gov-icon-search" aria-hidden="true"></span></a>
+          <form action="{{homelinkpath}}search/">
+            <input name="q" type="search" placeholder="{{Terms[3].Text}}" class="btn translate btn-search rounded-50">
+          </form>
         </li>
       </ul>
     </div>
