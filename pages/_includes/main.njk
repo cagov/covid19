@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <!-- begin video test -->
+  <!-- begin video section -->
   <div class="container-fluid bg-primary text-white py-5">
     <div class="container video-item" data-id="qQNBSlWJhfU">
     <div class="row flex-md-nowrap align-items-center">
@@ -100,24 +100,14 @@
       </div>
     </div>
   </div>
-  <!-- end video test -->
+  <!-- end video section -->
 
-  {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
-
-  <div class="container-fluid bg-primary text-white">
-    <div class="container pb-3 pt-3 text-white">
-        {% include  langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 {% include "./news-feed-home.html" %}
 </main>
 {% include "footer.njk" %}
 
-<!-- end video test -->
+<!-- begin video overlay -->
 <div id="video-modal" class="video-modal">
   <div class="video-modal-content">
     <button class="video-modal-close modal_close">
@@ -127,8 +117,9 @@
   </div>
 </div>
 <div class="popup_background"></div>
+<!-- end video overlay -->
 <script type="module">{% include "video.js" %}</script>
-<!-- end video test -->
+
 
 </body>
 </html>
