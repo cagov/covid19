@@ -31,10 +31,17 @@
 		</a>
 
 <ul class="navbar-nav ml-sm-auto mobile ">
+        
+        <li class="nav-item mr-0 pr-0">
+          <form action="{{homelinkpath}}search/">
+            <input name="q" type="search" placeholder="{{Terms[3].Text}}" class="btn translate btn-search rounded-50">
+          </form>
+        </li>
+
         <li class="nav-item">
           <div class="dropdown">
             <button
-            class="btn translate dropdown-toggle"
+            class="translate dropdown-toggle border-0 rounded-50 ml-3"
             type="button"
             aria-expanded="false"
             aria-haspopup="true"
@@ -51,11 +58,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item mr-0 pr-0">
-          <form action="{{homelinkpath}}search/">
-            <input name="q" type="search" placeholder="{{Terms[3].Text}}" class="btn translate btn-search rounded-50">
-          </form>
-        </li>
+
       </ul>
     </div>
   </nav>
