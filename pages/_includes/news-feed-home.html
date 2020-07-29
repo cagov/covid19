@@ -1,49 +1,25 @@
 
 <div class="container-fluid pt-3">
   <div class="container pb-3">
-    <h2 id="news">Latest news</h2>
-    <div class="card-deck">
+    <h2 id="news">{{varLatestNews}}</h2>
+    <div class="card-deck" lang="en-US">
+      {%- for i in range(0, 3) %}
       <div class="card">
         <div class="card-body">
           <p class="card-text">
             <small class="text-muted"
-              >{{ collections.covidGuidance[0].data.publishdate | formatDate }}
+              >{{ collections.covidGuidance[i].data.publishdate | formatDate }}
             </small>
           </p>
           <div class="card-text">
-            <h3 class="lead"><a href="{{ collections.covidGuidance[0].data.url }}">{{ collections.covidGuidance[0].data.title | safe }}</a></h3>
+            <h3 class="lead"><a href="{{ collections.covidGuidance[1].data.url }}">{{ collections.covidGuidance[i].data.title | safe }}</a></h3>
           </div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">
-            <small class="text-muted"
-              >{{ collections.covidGuidance[1].data.publishdate | formatDate }}
-            </small>
-          </p>
-          <div class="card-text">
-            <h3 class="lead"><a href="{{ collections.covidGuidance[1].data.url }}">{{ collections.covidGuidance[1].data.title | safe }}</a></h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">
-            <small class="text-muted"
-              >{{ collections.covidGuidance[2].data.publishdate | formatDate }}
-            </small>
-          </p>
-          <div class="card-text">
-            <h3 class="lead"><a href="{{ collections.covidGuidance[2].data.url }}">{{ collections.covidGuidance[2].data.title | safe }}</a></h3>
-          </div>
-        </div>
-      </div>
+      {%- endfor -%}
     </div>
     <div class="container text-center">
-      <a href="/latest-news/" class="action-link mt-4">View more news</a>
+      <a href="latest-news/" class="action-link mt-4">{{varViewMoreNews}}</a>
     </div>
   </div>
 </div>
