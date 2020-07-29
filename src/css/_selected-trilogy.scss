@@ -50,6 +50,7 @@
 
 .header-logo-text-url {
 	color: #ff8000;
+	font-size: larger;
 	text-transform: uppercase;
 	display: block;
 	transition: color 0.4s cubic-bezier(0.57, 0.2, 0.21, 0.89)
@@ -145,4 +146,50 @@
 		width: 25rem;
 		padding: 0.5rem 0.5rem 0.5rem 1rem
 	}
+}
+
+@media (-ms-high-contrast:active),
+(-ms-high-contrast:none) {
+	.fixed .header .logo-mark {
+		max-height: 3.5rem
+	}
+}
+
+.fixed .header-logo-mark {
+	width: 5rem
+}
+
+@media (min-width:48em) {
+	.fixed .header-logo-mark {
+		width: 6rem
+	}
+}
+
+.logo-mark {
+	width: 100%
+}
+
+@media (-ms-high-contrast:active),
+(-ms-high-contrast:none) {
+	.logo-mark {
+		max-height: 5rem
+	}
+}
+
+.logo-mark-orange {
+	fill: #ff8000;
+	transition: fill 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89)
+}
+
+.logo-mark-white {
+	fill: #fff;
+	transition: fill 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89)
+}
+
+.logo:hover .logo-orange {
+	fill: #fff
+}
+
+.logo:hover .logo-white {
+	fill: #ff8000
 }
