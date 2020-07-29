@@ -46,7 +46,7 @@
     "start": "npm run serve",
     "serve": "npx @11ty/eleventy --serve --quiet --formats=html,njk --input ./pages --output ./docs",
     "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
-    "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts && npm run build:survey && npm run build:telehealth && npm run build:plasma",
+    "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts && npm run build:survey && npm run build:telehealth && npm run build:video && npm run build:whatwhere && npm run build:plasma",
     "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
     "build:survey": "rollup --config src/js/survey/rollup.config.js",
     "build:telehealth": "rollup --config src/js/telehealth/rollup.config.js",
