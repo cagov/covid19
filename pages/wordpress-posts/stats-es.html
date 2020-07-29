@@ -20,7 +20,7 @@
 </div>
 
 <div class="text-center pt-3 pb-3">
-  Números actualizados ({{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }} a las 11:00 a.m.) con información
+  Números actualizados ({{ lastStatDate | formatDate2(true,tags) }} con información
   (del {{ lastStatDate | formatDateParts }})
 </div>
 <div class="text-center pt-3 pb-3">

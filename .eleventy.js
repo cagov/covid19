@@ -176,25 +176,64 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  const formatDate = (datestring, adddays) => {
+  eleventyConfig.addFilter('formatDate2', function(datestring,withTime,tags,addDays) {
+    return formatDate(datestring,withTime,tags,addDays);
+  });
+
+  const formatDate = (datestring, withTime, tags, addDays) => {
+
+
     if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        if(adddays) {
-          output.setDate(output.getDate() + adddays);
+      let targetdate =
+        datestring==='today'
+          ? new Date()
+          : datestring.indexOf('Z') > -1
+            ? new Date(datestring)
+            : new Date(`2020-${datestring}T00:00:00.000-07:00`);
+      if(targetdate) {
+        if(addDays) {
+          targetdate.setDate(targetdate.getDate() + addDays);
         }
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
+
+        const locales = 'en-US';
+        const timeZone = 'America/Los_Angeles';
+        const langId = getLangRecord(tags).id;
+        const formatRecord = dateFormats[langId];
+
+        const dateformatstring = formatRecord
+          .monthdayyear[targetdate.getMonth()]
+          .replace('[day]',targetdate.getDate())
+          .replace('[year]',targetdate.getFullYear());
+
+        const timeformatstring = 
+          (targetdate.getHours()<12
+            ? formatRecord.timeam
+            : formatRecord.timepm
+          )
+          .replace('[hour-12]',targetdate.getHours() % 12)
+          .replace('[hour-24]',targetdate.getHours())
+          .replace('[min]',targetdate.getMinutes().toString().padStart(2, '0'));
+
+
+        if(withTime) {
+          return formatRecord.joinstring
+            .replace('[date]',dateformatstring)
+            .replace('[time]',timeformatstring);
+        } else {
+          return dateformatstring;
+        }
+      }
     }
-    return "";
+    return datestring;
   }
+  
 
   eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
-    return formatDate(datestring,adddays);
+    return formatDate(datestring,null,null,adddays);
   })
 
   eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
-    return formatDate(datestring,1);
+    return formatDate(datestring,null,null,1);
   })
 
   
