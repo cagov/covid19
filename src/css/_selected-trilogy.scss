@@ -753,6 +753,7 @@
 }
 
 .hero-alert-blurb {
+	font-size: 1.2rem;
 	line-height: 1.4
 }
 
@@ -812,7 +813,7 @@
 
 .hero-alert-social-headline {
 	color: #1f2574;
-	margin-bottom: 1rem
+	margin-bottom: 0;
 }
 
 .hero-alert-social .social-link {
@@ -839,7 +840,7 @@
 	width: 3rem;
 	height: 3rem;
 	display: inline-block;
-	padding: 0.75rem;
+	padding: 0.5125rem;
 	margin: 0 0.25rem;
 	transition: fill 0.5s cubic-bezier(0.5, 1.65, 0.4, 0.8), transform 0.5s cubic-bezier(0.5, 1.65, 0.4, 0.8)
 }
@@ -1188,14 +1189,15 @@
 	fill: #1f2574;
 	display: block;
 	margin: 0 auto 1rem auto;
-	position: relative
+	position: relative;
+	font-size: 3.5rem;
 }
 
 @media (min-width:48em) {
 	.hero-alert-icon {
 		width: 3rem;
 		height: 3rem;
-		margin: 0 1rem 0 0;
+		margin: 0 2rem 0 0;
 		flex: 1 0 auto;
 		top: 0.5rem;
 		align-self: flex-start
@@ -1203,6 +1205,7 @@
 }
 
 .hero-alert-headline {
+	font-size: 1.5rem;
 	color: #1f2574;
 	line-height: 1.2;
 	margin-bottom: 0.25rem
@@ -1273,8 +1276,8 @@
 }
 
 .hero-alert-social-headline {
+	font-size: 1.2rem;
 	color: #1f2574;
-	margin-bottom: 1rem
 }
 
 .hero-alert-social .social-link {
