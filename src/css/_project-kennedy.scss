@@ -17,3 +17,97 @@ main {
 	}
 
 }
+
+/*Footer Styles*/
+
+.footer-ca-all-logo {
+	padding:0 70px 0 70px;
+  }
+  
+  
+  .footer-logo {
+	text-decoration:none !important;
+	background:none !important;
+	margin: 0 auto;
+  
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px)  {
+  .footer-ca-all-logo {
+	padding:0 20px 0 20px;
+  }
+	 
+   }
+  
+  
+  @media (max-width: 767px) {
+  .footer-ca-all-logo {
+	padding:0 200px 0 200px;
+  }
+	.footer-logo {
+	  display: block;
+	  margin: 0 auto;
+	}
+	 
+   }
+   
+  .logo-mark {
+	width: 100%;
+  }
+  .logo-mark-white {
+	fill: #fff;
+	transition: fill 0.5s cubic-bezier(0.57,0.2,0.21,0.89);
+  }
+  .logo-mark-orange {
+	fill: #ff8000;
+	transition: fill 0.5s cubic-bezier(0.57,0.2,0.21,0.89);
+  }
+  
+  .footer-logo:hover .logo-mark-white {
+	fill: #ff8000;
+  }
+  .footer-logo:hover .logo-mark-orange {
+	fill: #fff;
+  }
+  
+  
+  
+  
+  .footer-links {
+	list-style:none !important;
+	font-weight:700;
+  }
+  
+  .font-size-2em {
+	font-size:2rem !important;
+  }
+  .font-size-1-9em {
+	font-size:1.9rem !important;
+  }
+  
+  .font-size-1-8em {
+	font-size:1.8rem !important;
+  }
+  
+  .font-size-1-7em {
+	font-size:1.7rem !important;
+  }
+  .font-size-1-6em {
+	font-size:1.6rem !important;
+  }
+  .font-size-1-5em {
+	font-size:1.5rem !important;
+  }
+  
+  .btn-social {
+   padding:13px 10px 8px 10px;
+	border-radius:50px;
+  }
+  
+  .btn-social span {
+	font-size:1.5rem !important;
+  }
+  .line-height-2 {
+	line-height:2em;
+  }
+
