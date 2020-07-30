@@ -10,13 +10,7 @@ main {
   padding-top: 164px
 }
 
-@media (max-width: 768px) {
 
-	main {
-		padding-top: 237px
-	}
-
-}
 
 /*Footer Styles*/
 
@@ -109,5 +103,20 @@ main {
   }
   .line-height-2 {
 	line-height:2em;
-  }
+	}
+	
+/*Media Queries*/
 
+
+	@media (max-width: 768px) {
+
+		main {
+			padding-top: 237px
+		}
+	
+		.hero-text {
+	
+			min-height: 20vh;
+		}
+	
+	}
