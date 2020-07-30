@@ -61,94 +61,47 @@
 
               <div class="hero-text col" role="region" aria-labelledby="hero-text">
                 <div class="hero-text-align">
-
                   <h1 class="hero-headline">
-                  
                       <span href="/" class="hero-headline-background" id="hero-text">
-						We will get through this together.
-					</span>
-                    
+						            We will get through this together.
+					            </span>
                   </h1>
-
-         
-
                 </div>
               </div>
 
               <div class="hero-stats col-md-6" role="region" aria-labelledby="tracking-covid">
                 <h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
-                <div class="hero-stats-subheadline">In California, Updated June 22, 2020</div>
-
-          
-
+                <div class="hero-stats-subheadline">In California, Updated {{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }}</div>
                 <div class="hero-stats-slider">
-
                   <div class="hero-stats-slide" aria-hidden="false" aria-labelledby="cumulative-stats">
-
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Cases</span>
                       </div>
-                      <div class="hero-stats-row-figure">184,951</div>
+                      <div class="hero-stats-row-figure">{{3|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							186 today
-						</div>
+                        +{{4|_statsdata_}}%
+						          </div>
                     </div>
 
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Deaths</span>
                       </div>
-                      <div class="hero-stats-row-figure">5,565</div>
+                      <div class="hero-stats-row-figure">{{5|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							63 today
-						</div>
+                        +{{6|_statsdata_}}%
+						          </div>
                     </div>
 
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Tests</span>
                       </div>
-                      <div class="hero-stats-row-figure">3,411,686</div>
+                      <div class="hero-stats-row-figure">{{7|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							85,243 today
-						</div>
+						          </div>
                     </div>
-
-                  </div>
-
-                  <div class="hero-stats-slide" aria-hidden="true" aria-labelledby="fortnite-stats" style="display: none;">
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Cases</span>
-                      </div>
-                      <div class="hero-stats-row-figure">109,910</div>
-                      <div class="hero-stats-row-details">
-							+50.1%
-						</div>
-                    </div>
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Deaths</span>
-                      </div>
-                      <div class="hero-stats-row-figure">1,104</div>
-                      <div class="hero-stats-row-details">
-							+18.6%
-						</div>
-                    </div>
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Tests</span>
-                      </div>
-                      <div class="hero-stats-row-figure">1,482,673</div>
-                      <div class="hero-stats-row-details">
-							+36.5%
-						</div>
-                    </div>
-
                   </div>
 
                 </div>
@@ -162,10 +115,11 @@
                 <div class="hero-alert-align col-md-8">
                   <span class="ca-gov-icon-warning-triangle hero-alert-icon display-4 text-primary" aria-hidden="true" title="Alert!"></span>
                   <div class="hero-alert-text">
-                    <h2 class="hero-alert-headline text-primary" id="alert-headline">Face coverings required in public spaces</h2>
-                    <div class="hero-alert-blurb">
-                      <p class="text-dark">Cloth face coverings or <a href="/">masks</a> help reduce the spread of coronavirus especially when combined with physical distancing and frequent hand washing. Californians must wear face coverings in common and public indoor spaces and outdoors when distancing is not possible. Learn more about the <a href="/">guidance and limited exceptions here</a>.</p>
-                    </div>
+                    {% if langFilePostfix === "" %}
+                      {% include "../wordpress-posts/banner" + langFilePostfix + ".html" %}
+                    {% else %}
+                      {% include "../translated-posts/banner" + langFilePostfix + ".html" %}
+                    {% endif %}
                   </div>
                 </div>
                 <div class="hero-alert-social">
