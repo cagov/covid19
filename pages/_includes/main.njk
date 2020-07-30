@@ -151,7 +151,9 @@
   <section class="padded faq-twitter mt-5" role="region" aria-labelledby="want-to-know">
     <h2 class="headline"><a class="headline-link" href="#" id="want-to-know"></a>People want to know</a></h2>
     <div class="faq-people">
-    
+      {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
+      {% set JSON = JSONraw | jsonparse %}
+      {% set questionLinks = JSON.Table1 %}
       <div class="faq trigger reveal">
         <article class="faq-item trigger reveal">
         <a class="faq-item-link" href="/roadmap-counties/">
@@ -218,7 +220,7 @@
   <div class="container-fluid bg-primary text-white py-5">
     <div class="container video-item" data-id="qqnbslwjhfu">
       <div class="row flex-md-nowrap align-items-center">
-        <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zdx9pxkota" href="javascript:void(0);">
+        <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zDX9PXkotA" href="#">
           <figure class="video-thumb-photo">
             <div class="video-thumb-play-button">
               <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
