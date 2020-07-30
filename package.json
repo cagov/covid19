@@ -46,7 +46,7 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "npx @11ty/eleventy --serve --quiet --formats=html,njk --input ./pages --output ./docs",
-    "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && shx cp ./docs/css/build/built.css ./pages/_includes/built.css",
+    "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && npm run build:homecss && shx cp ./docs/css/build/built.css ./pages/_includes/built.css && shx cp ./docs/css/build/home.css ./pages/_includes/home.css",
     "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts && npm run build:survey && npm run build:telehealth && npm run build:video && npm run build:whatwhere && npm run build:plasma",
     "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
     "build:survey": "rollup --config src/js/survey/rollup.config.js",
@@ -55,6 +55,7 @@
     "build:plasma": "rollup --config src/js/plasma/rollup.config.js",
     "build:video": "rollup --config src/js/video/rollup.config.js",
     "build:ancient": "webpack --config src/js/webpack.config.es5.js",
+    "build:homecss": "webpack --mode production --config webpack.home.config.js",
     "watch": "onchange \"src/**\" -- npm run rebuild",
     "rebuild": "npm run build && shx touch pages/_includes/main.njk",
     "local": "npm run build && run-p watch start",
