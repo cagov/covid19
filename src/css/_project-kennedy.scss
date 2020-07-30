@@ -98,4 +98,27 @@ main {
 		min-height: 20vh;
 	}
 
+	header {
+		position: absolute;
+	}
+
 }
+
+.dropdown-toggle::after {
+	font-family: 'CaGov' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	font-size: larger;
+	content: "\33";
+	display: inline-block;
+	margin-left: 0;
+	vertical-align: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
