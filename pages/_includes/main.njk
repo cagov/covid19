@@ -153,65 +153,29 @@
     <div class="faq-people">
       {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
       {% set JSON = JSONraw | jsonparse %}
-      {% set questionLinks = JSON.Table1 %}
+      {% set questionLinks1 = JSON.Table1 %}
+      {% set questionLinks2 = JSON.Table2 %}
+
       <div class="faq trigger reveal">
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/roadmap-counties/">
-          <h4 class="faq-item-headline">What's open in my county?</h4>
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/testing-and-treatment/">
-          <h4 class="faq-item-headline">Where can I get a test?</h4>
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/industry-guidance/">
-          <h4 class="faq-item-headline">How can I safely open my business?</h4>
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/education/">
-          <h4 class="faq-item-headline">How are schools reopening?</h4>
-          <cwds-arrow />
-        </a>
-        </article>    
+        {% for item in questionLinks1 %}
+          <article class="faq-item trigger reveal">
+            <a class="faq-item-link" href="{{ item.url }}">
+              <h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+              <cwds-arrow />
+            </a>
+          </article>
+        {% endfor %}
       </div>
     
       <div class="faq trigger reveal">
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/roadmap-counties/">
-          <h4 class="faq-item-headline">What's open in my county?</h4>    
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/testing-and-treatment/">
-          <h4 class="faq-item-headline">Where can I get a test?</h4>
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/industry-guidance/">
-          <h4 class="faq-item-headline">How can I safely open my business?</h4>
-          <cwds-arrow />
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/education/">
-          <h4 class="faq-item-headline">How are schools reopening?</h4>
-          <cwds-arrow />
-        </a>
-        </article>    
+        {% for item in questionLinks2 %}
+          <article class="faq-item trigger reveal">
+            <a class="faq-item-link" href="{{ item.url }}">
+              <h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+              <cwds-arrow />
+            </a>
+          </article>
+        {% endfor %}
       </div>
     </div>
     </section>
