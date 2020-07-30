@@ -196,13 +196,12 @@ a:hover,
 
 .action-link {
   color: #004abc;
-  background: #f5f9ff;
+  background: #92c5de;
   display: inline-block;
   padding: 0.5rem 0.5rem;
   //padding-left: 1.75rem;
   font-size: 1.2rem;
   text-decoration: none;
-  border-bottom: 2px solid #004abc;
   line-height: 2rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
@@ -218,9 +217,8 @@ a.action-link::after {
 }
 
 a.action-link:hover {
-  border-color: #000;
-  color: #000;
-  background-color: #d5e6ff;
+  color: #fff!important;
+  background-color: #0257d5;
 }
 
 /* Tables */

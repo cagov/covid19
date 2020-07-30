@@ -125,15 +125,15 @@ h4 {
 }
 
 .text-white a {
-    color: white!important;
+    color: white;
 }
 
 .text-primary a {
-    color: #1D2574!important;
+    color: #1D2574;
 }
 
 .text-white a.action-link {
-    color: #1D2574!important;
+    color: #1e2673;
 }
 
 .wrimagecard.wrimagecard-topimage a:focus {
@@ -433,8 +433,7 @@ a .card-title {
 
 .action-link {
   color: #1D2574;
-  border-bottom: 2px solid #1D2574;
-  border-radius: 0.25rem;
+  border-radius: 50px;
 }
 
 .card-header-multi {
