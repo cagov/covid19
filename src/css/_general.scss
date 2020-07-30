@@ -1247,7 +1247,7 @@ button#dropdown-menu-button:focus {
     transition: fill 0.5s cubic-bezier(0.57,0.2,0.21,0.89);
 }
 .transition-bg-color-hover:hover {
-    transition: background-color 1000ms linear;
+    transition: background-color 300ms linear;
 }
 .transform-scale-hover:hover {
     transform: scale3d(1.05, 1.05, 1.05);

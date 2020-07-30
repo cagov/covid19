@@ -10,7 +10,117 @@ main {
   padding-top: 164px
 }
 
-
+/* Header search and translate */
+.header-search-field {
+	background:#fff;
+	width:250px;
+	height:45px;
+	border-radius:50px;
+	padding-left:10px;
+  cursor:pointer;  
+  
+  }
+  
+  .header-search-field::placeholder { 
+	color: #003d9d;
+	opacity: 1; 
+  }
+  
+  .header-search-field:hover::placeholder, .header-search-field:focus::placeholder  { 
+	color: #1f2574;
+	opacity: 1; 
+  }
+  
+  
+  .header-search-field:focus {
+	outline-color:#fff;}
+  
+  .search-form {
+	position:relative;
+	transition-duration: .3s;
+	  transition-property: all;
+	  transition-timing-function: ease;
+	  transition-delay: 0s;
+	  padding-bottom:0;
+  }
+  
+  .search-form:hover { 
+	transform: scale3d(1.05, 1.05, 1.05);
+  }
+  
+  .header-search-field::-ms-clear, .header-search-field::-ms-reveal, .header-search-field::-webkit-search-decoration { display: none; width : 0; height: 0; } 
+  
+  .header-search-field::-webkit-search-decoration,
+  .header-search-field::-webkit-search-cancel-button,
+  .header-search-field::-webkit-search-results-button,
+  .header-search-field::-webkit-search-results-decoration { 
+	display: none; 
+  }
+  
+  .search-header-btn {
+	position:absolute;
+	right:10px;
+	background-color:transparent;
+	border:none;
+   font-size:32px;
+   top:4px;
+   color: #003d9d;
+  }
+  
+  .search-header-btn:hover {
+	background:none !important;
+	border:none !important;
+	color: #1f2574;
+  }
+  
+  .translate {
+	position:relative;
+	padding-right: 30px;
+  }
+  .translate::after {
+	display:none !important;
+  }  
+  
+  button#dropdown-menu-button {
+	  transition-duration: .3s;
+	  transition-property: all;
+	  transition-timing-function: ease;
+	  transition-delay: 0s;
+	  padding-left:14px;
+  }
+  button#dropdown-menu-button:hover {
+	background-color:transparent;
+	border-color:transparent;
+	color: #ecca00;
+  }
+  
+  
+  button#dropdown-menu-button[aria-expanded="false"] .rotate {
+	  right: 2px;
+	  top: 1px;
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  
+	  text-align: center;
+	  transition: all .2s ease !important;
+  }
+  button#dropdown-menu-button[aria-expanded="true"] .rotate {
+   transform: rotate(90deg) !important;
+   right: -5px;
+	  top: 6px;
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  text-align: center;
+  }
+  
+  
+  @media (max-width: 767px) {
+   .utility-nav li {
+	  margin-bottom: 10px !important;
+	}
+  }
 
 /*Footer Styles*/
 

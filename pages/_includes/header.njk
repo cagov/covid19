@@ -30,15 +30,16 @@
 			</div>
 		</a>
 
-<ul class="navbar-nav ml-sm-auto mobile ">
+<ul class="utility-nav navbar-nav ml-sm-auto mobile">
         
-        <li class="nav-item mr-0 pr-0">
-          <form action="{{homelinkpath}}search/">
-            <input name="q" type="search" placeholder="{{Terms[3].Text}}" class="btn translate btn-search rounded-50">
+        <li class="nav-item mr-0 pr-0 mt-3">
+          <form action="{{homelinkpath}}search/" class="search-form">
+            <input name="q" type="search" placeholder="{{Terms[3].Text}}" class="header-search-field">
+            <button class="search-header-btn"><span class="ca-gov-icon-search" aria-hidden="true"></span><span class="sr-only">Search</span></button>
           </form>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item mt-3">
           <div class="dropdown">
             <button
             class="translate dropdown-toggle border-0 rounded-50 ml-3"
@@ -49,6 +50,7 @@
             id="dropdown-menu-button"
           >
               {{Terms[4].Text}}
+              <div class="ca-gov-icon-caret-right rotate" aria-hidden="true"></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
               {% for item in page | getAltPageRows %}
