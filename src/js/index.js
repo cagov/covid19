@@ -6,3 +6,4 @@ window.onload = (event) => {
 }
 import './feature-detect/webp.js';
 import '@cagov/pagerating';
+import './arrow/index.js';

@@ -44,7 +44,7 @@ module.exports = {
       chunkFilename: 'css/build/home.css'
     }),
     new PurgecssPlugin({
-      paths: [`${PATHS.src}/_includes/main.njk`, `${PATHS.src}/_includes/header.njk`, `${PATHS.src}/_includes/news-feed-home.html`, `${PATHS.src}/_includes/footer.njk`]
+      paths: [`${PATHS.src}/_includes/main.njk`, `${PATHS.src}/_includes/header.njk`, `${PATHS.src}/_includes/news-feed-home.html`, `${PATHS.src}/_includes/footer.njk`, `${PATHS.src.replace('/pages','')}/src/js/arrow/template.html`]
     })
   ],
   module: {
