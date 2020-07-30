@@ -1,7 +1,7 @@
 header {
 	position: fixed;
 	width: 100%;
-	z-index: 300;
+	z-index: 1;
 	box-shadow: 0px 0px 15px 0px rgba(0, 21, 97, 0.5);
 }
 
@@ -10,8 +10,6 @@ main {
   padding-top: 164px
 }
 
-@import './arrows';
-@media (max-width: 768px) {
 
 
 /*Footer Styles*/
@@ -110,15 +108,15 @@ main {
 /*Media Queries*/
 
 
-	@media (max-width: 768px) {
+@media (max-width: 768px) {
 
-		main {
-			padding-top: 237px
-		}
-	
-		.hero-text {
-	
-			min-height: 20vh;
-		}
-	
+	main {
+		padding-top: 237px
 	}
+
+	.hero-text {
+
+		min-height: 20vh;
+	}
+
+}
