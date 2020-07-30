@@ -115,11 +115,7 @@
                 <div class="hero-alert-align col-md-8">
                   <span class="ca-gov-icon-warning-triangle hero-alert-icon display-4 text-primary" aria-hidden="true" title="Alert!"></span>
                   <div class="hero-alert-text">
-                    {% if langFilePostfix === "" %}
-                      {% include "../wordpress-posts/banner" + langFilePostfix + ".html" %}
-                    {% else %}
-                      {% include "../translated-posts/banner" + langFilePostfix + ".html" %}
-                    {% endif %}
+                    {% include "../wordpress-posts/banner" + langFilePostfix + ".html" %}
                   </div>
                 </div>
                 <div class="hero-alert-social">

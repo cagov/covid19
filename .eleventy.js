@@ -7,8 +7,9 @@ const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
-if(fs.existsSync('pages/_data/htmlmap.json')) {
-  htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
+let htmlmapLocation = './docs/htmlmap.json';
+if(fs.existsSync(htmlmapLocation)) {
+  htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
 }
 let miniCSS = '';
 
@@ -299,7 +300,7 @@ module.exports = function(eleventyConfig) {
             </div>`;
         }
         processedPostMap.set(outputPath,initialHTML);
-        fs.writeFileSync('./pages/_data/htmlmap.json',JSON.stringify([...processedPostMap]),'utf8')
+        fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         return dom.serialize();
       }
     }
