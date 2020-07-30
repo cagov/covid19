@@ -673,13 +673,13 @@ border: none;
 
 @media (min-width: 768px) {
   .jumbo-img {
-    background-image: url('/img/StateCapitol_Blue.webp');
+    background-image: url('/img/hero.jpg');
     background-size: cover;
     background-color: #1D2574;
     background-position-x: 75%;
   }
   .no-webp .jumbo-img {
-    background-image: url('/img/StateCapitol_Blue.jpg');
+    background-image: url('/img/hero.jpg');
   }
   .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.webp');

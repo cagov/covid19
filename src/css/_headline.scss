@@ -4,6 +4,7 @@
   color: #1f2574;
   padding: 0.5rem 1rem;
   border-radius: 2.5rem;
+  text-align: center;
 }
 .headline:hover {
   color: #ff8000;
@@ -36,10 +37,31 @@ section.padded {
 }
 section.padded {
   padding: 2.5rem 1.5rem;
+  width: 100%;
+}
+@media (min-width: 48em) {
+  .faq-people {
+    display: flex;
+    align-items: center;
+  }
+}
+.faq-people {
+  width: 100%;
+  max-width: 81.25em;
+  margin: 0 auto;
+  position: relative;
 }
 
 
-
+@media (min-width: 48em) {
+  .faq {
+    width: 50%;
+    padding: 0 2rem 0 0;
+  }
+}
+.faq {
+  text-align: left;
+}
 .faq-item-link {
 	width: 100%;
 	display: flex;
@@ -60,7 +82,7 @@ section.padded {
 }
 
 .faq-item:hover .faq-item-link {
-	background: #003d9d
+	background: #c7e1ef
 }
 
 .faq-item:hover .faq-icon {
