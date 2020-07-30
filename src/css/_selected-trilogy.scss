@@ -40,7 +40,7 @@
 
 @media (min-width:81.25em) {
 	.header-logo-mark {
-		width: 8rem;
+		width: 7rem;
 		padding: 1rem 0.75rem
 	}
 }
@@ -264,7 +264,8 @@
 
 @media (min-width:64em) {
 	.hero-text {
-		width: 60%
+		width: 60%;
+		top: -7vh;
 	}
 }
 
