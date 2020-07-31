@@ -186,9 +186,7 @@ main {
 
 /*Footer Styles*/
 
-.footer-ca-all-logo {
-	padding:0 70px 0 70px;
-  }
+
   
   
   .footer-logo {
@@ -198,24 +196,39 @@ main {
   
   }
   
-  @media (min-width: 768px) and (max-width: 992px)  {
-  .footer-ca-all-logo {
-	padding:0 20px 0 20px;
-  }
-	 
-   }
-  
-  
-  @media (max-width: 767px) {
-  .footer-ca-all-logo {
-	padding:0 200px 0 200px;
-  }
-	.footer-logo {
-	  display: block;
-	  margin: 0 auto;
+
+  @media (max-width: 575px) {
+	.footer-ca-all-logo {
+	  padding:0 120px 0 120px;
 	}
-	 
+	  .footer-logo {
+		display: block;
+		margin: 0 auto;
+	  }
+  }
+  
+	@media (min-width: 576px) and (max-width: 767px) {
+	.footer-ca-all-logo {
+	  padding:0 150px 0 150px;
+	}
+	  .footer-logo {
+		display: block;
+		margin: 0 auto;
+	  }
+	 }
+  
+	@media (min-width: 768px) and (max-width: 991px)  {
+	.footer-ca-all-logo {
+	  padding:0 30px 0 30px;
+	}
    }
+  
+  
+	@media (min-width: 992px) {
+   .footer-ca-all-logo {
+	  padding:0 100px 0 100px;
+	}
+  }
    
   .logo-mark {
 	width: 100%;
