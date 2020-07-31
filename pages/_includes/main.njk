@@ -73,7 +73,7 @@
                 <h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
                 <div class="hero-stats-subheadline">In California, Updated {{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }}</div>
                 <div class="hero-stats-slider">
-                  <div class="hero-stats-slide" aria-hidden="false" aria-labelledby="cumulative-stats">
+                  <div class="hero-stats-slide">
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Cases</span>
@@ -150,7 +150,7 @@
   </div>
 
   <section class="padded faq-twitter mt-5" role="region" aria-labelledby="want-to-know">
-    <h2 class="headline"><a class="headline-link" href="#" id="want-to-know"></a>People want to know</a></h2>
+    <h2 class="headline"><span class="headline-link" href="#" id="want-to-know">People want to know</span></h2>
     <div class="faq-people">
       {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
       {% set JSON = JSONraw | jsonparse %}
@@ -161,7 +161,7 @@
         {% for item in questionLinks1 %}
           <article class="faq-item trigger reveal">
             <a class="faq-item-link" href="{{ item.url }}">
-              <h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
               <cwds-arrow />
             </a>
           </article>
@@ -172,7 +172,7 @@
         {% for item in questionLinks2 %}
           <article class="faq-item trigger reveal">
             <a class="faq-item-link" href="{{ item.url }}">
-              <h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
               <cwds-arrow />
             </a>
           </article>
