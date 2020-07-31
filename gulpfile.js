@@ -24,7 +24,8 @@ const purgeCssForHome = purgecss({
   ]
 });
 
-const sassOutputFolder = 'pages/_includes';
+const includesOutputFolder = 'pages/_includes';
+const buildOutputFolder = 'docs/css/build';
 
 // Process and purge sass files.
 gulp.task('scss', (done) => gulp.src('src/css/index.scss')
@@ -35,11 +36,13 @@ gulp.task('scss', (done) => gulp.src('src/css/index.scss')
   // Next: purge, minify, and save as 'built.css'.
   .pipe(postcss([purgeCssForAll, cssnano]))
   .pipe(rename('built.css'))
-  .pipe(gulp.dest(sassOutputFolder))
+  .pipe(gulp.dest(includesOutputFolder))
+  .pipe(gulp.dest(buildOutputFolder))
   // Finally: purge even more for 'home.css'.
   .pipe(postcss([purgeCssForHome, cssnano]))
   .pipe(rename('home.css'))
-  .pipe(gulp.dest(sassOutputFolder))
+  .pipe(gulp.dest(includesOutputFolder))
+  .pipe(gulp.dest(buildOutputFolder))
   .on('end', done)
 );
 
