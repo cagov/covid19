@@ -1,4 +1,3 @@
-const CleanCSS = require("clean-css");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
@@ -152,13 +151,6 @@ module.exports = function(eleventyConfig) {
   );
 
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
-
-  eleventyConfig.addFilter("cssmin", function(code) {
-    if(!miniCSS) {
-      miniCSS = new CleanCSS({}).minify(code).styles;
-    }
-    return miniCSS;
-  });
 
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
