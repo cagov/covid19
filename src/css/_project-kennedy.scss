@@ -24,7 +24,7 @@ main {
   
   }
   
-  .header-search-field:focus {
+  .header-search-field:focus, .search-header-btn:focus {
 	outline-color:#fff;
 }
   
@@ -74,32 +74,45 @@ main {
 	  transition-delay: 0s;
 	  color:#fff
   }
-  
-  .search-form ::placeholder { 
-	color:#fff;
-	opacity: 1; 
-  }
-  
-  .search-form :-ms-input-placeholder { 
-	color:#fff;
-  }
-  
-  .search-form ::-ms-input-placeholder {
-	color:#fff;
-  }
-  
-  
+
   .search-form:hover {
 	background:#fff;
   }
-  .search-form:hover ::placeholder {
-	color: #003d9d;
+
+  .search-form .search-label {
+	color:#fff;
+	font-size:.9em;
+	position:relative;
+	top:5px;
+	margin-left:14px;
+  }
+  
+  .search-form:hover .search-label {
+	color:#1D2574;
+  }
+  
+  .search-form ::placeholder { 
+	color:#92c5de;
+	opacity: 1; 
+	font-size:.9em;
+  }
+  
+  .search-form :-ms-input-placeholder { 
+	color:#92c5de;
+  }
+  
+  .search-form ::-ms-input-placeholder {
+	color:#92c5de;
+  }
+
+    .search-form:hover ::placeholder {
+	color: #416aac;
   }
   .search-form:hover :-ms-input-placeholder  {
-	color: #003d9d;
+	color: #416aac;
   }
   .search-form:hover ::-ms-input-placeholder {
-	color: #003d9d;
+	color: #416aac;
   }
   
   .search-form:hover .search-header-btn {
