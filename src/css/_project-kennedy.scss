@@ -36,7 +36,11 @@ main {
 	  transition-delay: 0s;
 	  padding-bottom:0;
   }
-  
+	
+	.navbar {
+		padding-top: 0;
+    padding-bottom: .3rem;
+}
 
   
   
@@ -175,7 +179,11 @@ main {
 	  height: 20px;
 	  position: absolute;
 	  text-align: center;
-  }
+	}
+	
+	li.nav-item:first-child {
+    margin-top: 4px;
+}
   
   
   @media (max-width: 767px) {
@@ -290,7 +298,23 @@ main {
 		position: absolute;
 	}
 
+	.navbar {
+		padding-top: 5px;
+		padding-bottom: 0;
+	}
+	
+	.navbar-toggler {
+		padding: 0;
+	}
+
 }
+
+@media (min-width: 768px) {
+
+
+
+}
+
 
 .dropdown-toggle::after {
 	font-family: 'CaGov' !important;
