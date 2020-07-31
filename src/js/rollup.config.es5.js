@@ -11,6 +11,8 @@ export default {
     format: 'umd'
   },
   moduleContext: {
+    // whatwg-fetch angers Rollup due to ancient use of 'this'.
+    // This fix is not essential to function. It removes a warning during the build process.
     // https://rollupjs.org/guide/en/#error-this-is-undefined
     [path.resolve('./node_modules/whatwg-fetch/fetch.js')]: 'window'
   },
