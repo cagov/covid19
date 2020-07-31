@@ -418,6 +418,9 @@ module.exports = function(eleventyConfig) {
       ;
   });
 
+  // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
+  eleventyConfig.setUseGitIgnore(false);
+
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
 };
 
