@@ -60,7 +60,7 @@
     "build:whatwhere": "rollup --config src/js/what-open-where/rollup.config.js",
     "build:plasma": "rollup --config src/js/plasma/rollup.config.js",
     "build:video": "rollup --config src/js/video/rollup.config.js",
-    "build:ancient": "webpack --config src/js/webpack.config.es5.js",
+    "build:ancient": "rollup --config src/js/rollup.config.es5.js",
     "build:homecss": "webpack --mode production --config webpack.home.config.js",
     "watch": "onchange \"src/**\" -- npm run rebuild",
     "rebuild": "npm run build && shx touch pages/_includes/main.njk",
