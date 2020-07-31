@@ -52,10 +52,11 @@ export default function applyAccordionListeners() {
 
 
   function toggleBoolean(el,attr) {
-    if(el[attr] === "false") {
-      el[attr] = "true";
+    if(el.getAttribute(attr) === "false") {
+      el.setAttribute(attr,"true");
+    } else {
+      el.setAttribute(attr,"false");
     }
-    el[attr] = "false";
   }
 
   // navbar toggles
@@ -78,12 +79,16 @@ export default function applyAccordionListeners() {
   })
   
   document.body.addEventListener('click',function(event) {
-    // close all dropdowns
+    // close all dropdowns and reset all aria-expanded on triggers
     let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
     openDropDowns.forEach(d => {
       if(d.parentNode !== event.target.parentNode) {
         d.classList.remove('show');
       }
+    })
+    let dropDownToggles = document.querySelectorAll('.dropdown-toggle[aria-expanded="true"]');
+    dropDownToggles.forEach(d => {
+      d.setAttribute('aria-expanded','false')
     })
   })
 
