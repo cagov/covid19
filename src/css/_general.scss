@@ -85,6 +85,15 @@ li,
 	background-color: #1D2574 !important;
 	background: #1D2574 !important;
 }
+
+.bg-blue {
+    background-color: #003d9d !important;
+    background: #003d9d !important;
+  }
+  .bg-blue-hover:hover, .bg-blue-hover:focus {
+      background-color: #003d9d !important;
+      background: #003d9d !important;
+  }
 .bg-yellow {
     background-color: #ecca00 !important;
     background: #ecca00 !important;
@@ -124,6 +133,12 @@ li,
 .color-primary-hover:hover, .color-primary-hover:focus {
 	color: #1D2574 !important;
 }
+.bg-blue {
+    color: #003d9d !important;
+  }
+  .bg-blue-hover:hover, .bg-blue-hover:focus {
+    color: #003d9d !important;
+  }
 .color-yellow {
     color: #ecca00 !important;
 }

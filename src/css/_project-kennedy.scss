@@ -11,14 +11,16 @@ main {
 }
 
 /* Header search and translate */
+
+/* header Search form */
 .header-search-field {
-	background:#fff;
+	background:transparent;
 	width:250px;
 	height:45px;
-	border-radius:50px;
 	padding-left:10px;
 	padding-right:50px;
-  cursor:pointer;  
+  cursor:pointer;
+  border: none;  
   
   }
   
@@ -35,9 +37,8 @@ main {
 	  padding-bottom:0;
   }
   
-  .search-form:hover { 
-	transform: scale3d(1.05, 1.05, 1.05);
-  }
+
+  
   
   .header-search-field::-ms-clear, .header-search-field::-ms-reveal, .header-search-field::-webkit-search-decoration { display: none; width : 0; height: 0; } 
   
@@ -50,20 +51,76 @@ main {
   
   .search-header-btn {
 	position:absolute;
-	right:7px;
+	right:5px;
 	background-color:transparent;
 	border:none;
-   font-size:32px;
+   font-size:28px;
    top:4px;
-   color: #003d9d;
+   color: #fff;
   }
   
   .search-header-btn:hover {
 	background:none !important;
 	border:none !important;
-	color: #1f2574;
+	
+  }
+
+  .search-form {
+	background:#003d9d;
+	border-radius:50px;
+	transition-duration: .3s;
+	  transition-property: all;
+	  transition-timing-function: ease;
+	  transition-delay: 0s;
+	  color:#fff
   }
   
+  .search-form ::placeholder { 
+	color:#fff;
+	opacity: 1; 
+  }
+  
+  .search-form :-ms-input-placeholder { 
+	color:#fff;
+  }
+  
+  .search-form ::-ms-input-placeholder {
+	color:#fff;
+  }
+  
+  
+  .search-form:hover {
+	background:#fff;
+  }
+  .search-form:hover ::placeholder {
+	color: #003d9d;
+  }
+  .search-form:hover :-ms-input-placeholder  {
+	color: #003d9d;
+  }
+  .search-form:hover ::-ms-input-placeholder {
+	color: #003d9d;
+  }
+  
+  .search-form:hover .search-header-btn {
+	color: #003d9d;
+  }
+  
+  .search-form:hover .header-search-field {
+	color: #000;
+  }
+  .search-form .header-search-field {
+	color: #fff;
+  }
+  .search-form .header-search-field:focus {
+	color: #fff;
+  }
+  .search-form:hover .header-search-field:focus {
+	color: #000;
+  }
+
+
+  /*translate*/
   .translate {
 	position:relative;
 	padding-right: 30px;
@@ -78,6 +135,7 @@ main {
 	  transition-timing-function: ease;
 	  transition-delay: 0s;
 	  padding-left:14px;
+	  padding-right: 14px;
   }
   button#dropdown-menu-button:hover {
 	background-color:transparent;
