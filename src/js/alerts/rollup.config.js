@@ -2,7 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
-module.exports = {
+export default {
   input: 'src/js/alerts/index.js',
   output: {
     file: 'pages/_includes/alerts.js',
