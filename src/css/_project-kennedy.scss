@@ -36,7 +36,11 @@ main {
 	  transition-delay: 0s;
 	  padding-bottom:0;
   }
-  
+	
+	.navbar {
+		padding-top: 0;
+    padding-bottom: .3rem;
+}
 
   
   
@@ -175,7 +179,11 @@ main {
 	  height: 20px;
 	  position: absolute;
 	  text-align: center;
-  }
+	}
+	
+	li.nav-item:first-child {
+    margin-top: 4px;
+}
   
   
   @media (max-width: 767px) {
@@ -186,9 +194,7 @@ main {
 
 /*Footer Styles*/
 
-.footer-ca-all-logo {
-	padding:0 70px 0 70px;
-  }
+
   
   
   .footer-logo {
@@ -198,24 +204,39 @@ main {
   
   }
   
-  @media (min-width: 768px) and (max-width: 992px)  {
-  .footer-ca-all-logo {
-	padding:0 20px 0 20px;
-  }
-	 
-   }
-  
-  
-  @media (max-width: 767px) {
-  .footer-ca-all-logo {
-	padding:0 200px 0 200px;
-  }
-	.footer-logo {
-	  display: block;
-	  margin: 0 auto;
+
+  @media (max-width: 575px) {
+	.footer-ca-all-logo {
+	  padding:0 120px 0 120px;
 	}
-	 
+	  .footer-logo {
+		display: block;
+		margin: 0 auto;
+	  }
+  }
+  
+	@media (min-width: 576px) and (max-width: 767px) {
+	.footer-ca-all-logo {
+	  padding:0 150px 0 150px;
+	}
+	  .footer-logo {
+		display: block;
+		margin: 0 auto;
+	  }
+	 }
+  
+	@media (min-width: 768px) and (max-width: 991px)  {
+	.footer-ca-all-logo {
+	  padding:0 30px 0 30px;
+	}
    }
+  
+  
+	@media (min-width: 992px) {
+   .footer-ca-all-logo {
+	  padding:0 100px 0 100px;
+	}
+  }
    
   .logo-mark {
 	width: 100%;
@@ -247,8 +268,11 @@ main {
   
   
   .btn-social {
-   padding:13px 10px 8px 10px;
-	border-radius:50px;
+	width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50px;
+    padding-top: 7px;
   }
   
   .btn-social span {
@@ -274,7 +298,23 @@ main {
 		position: absolute;
 	}
 
+	.navbar {
+		padding-top: 5px;
+		padding-bottom: 0;
+	}
+	
+	.navbar-toggler {
+		padding: 0;
+	}
+
 }
+
+@media (min-width: 768px) {
+
+
+
+}
+
 
 .dropdown-toggle::after {
 	font-family: 'CaGov' !important;
