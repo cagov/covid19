@@ -55,7 +55,7 @@
     "build:js:telehealth": "rollup --config src/js/telehealth/rollup.config.js",
     "build:js:whatwhere": "rollup --config src/js/what-open-where/rollup.config.js",
     "build:js:video": "rollup --config src/js/video/rollup.config.js",
-    "build:css": "gulp scss",
+    "build:css": "gulp css",
     "watch:css": "gulp watch",
     "watch": "run-p watch:js watch:css",
     "local": "run-p watch start",

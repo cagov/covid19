@@ -27,8 +27,7 @@ const purgeCssForHome = purgecss({
 const includesOutputFolder = 'pages/_includes';
 const buildOutputFolder = 'docs/css/build';
 
-// Process and purge sass files.
-gulp.task('scss', (done) => gulp.src('src/css/index.scss')
+const scss = (done) => gulp.src('src/css/index.scss')
   // First: process the Sass files.
   .pipe(sass({
     includePaths: 'src/css'
@@ -36,20 +35,29 @@ gulp.task('scss', (done) => gulp.src('src/css/index.scss')
   // Next: purge, minify, and save as 'built.css'.
   .pipe(postcss([purgeCssForAll, cssnano]))
   .pipe(rename('built.css'))
-  .pipe(gulp.dest(includesOutputFolder))
   .pipe(gulp.dest(buildOutputFolder))
   // Finally: purge even more for 'home.css'.
   .pipe(postcss([purgeCssForHome, cssnano]))
   .pipe(rename('home.css'))
-  .pipe(gulp.dest(includesOutputFolder))
   .pipe(gulp.dest(buildOutputFolder))
-  .on('end', done)
-);
+  .on('end', done);
 
-// Watch sass files for changes, then process and purge.
-gulp.task('watch', gulp.series('scss', (done) => {
-  gulp.watch('src/css/**/*', gulp.parallel('scss'));
-  done();
-}));
+const builtFilesToMove = [
+  `${buildOutputFolder}/home.css`,
+  `${buildOutputFolder}/built.css`
+];
 
-gulp.task('default', gulp.series('watch'));
+const move = (done) => gulp.src(builtFilesToMove)
+  .pipe(gulp.dest(includesOutputFolder))
+  .on('end', done);
+
+const css = gulp.series(scss, move);
+
+const watcher = () => gulp.watch('src/css/**/*', css);
+const watch = gulp.series(css, watcher);
+
+module.exports = {
+  css,
+  watch,
+  default: watch
+};
