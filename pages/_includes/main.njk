@@ -44,7 +44,7 @@
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
     <style>
-      {% include "home.css" %}
+      {% include "development.css" if env.dev else "home.css" %}
     </style>
   </head>
   <body>

@@ -24,6 +24,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "acorn": ">=7.3.1",
+    "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
@@ -59,7 +60,9 @@
     "watch:css": "gulp watch",
     "watch": "run-p watch:js watch:css",
     "local": "run-p watch start",
-    "compress:img": "cd src/build && node img.js"
+    "local:dev": "cross-env NODE_ENV=development npm run local",
+    "compress:img": "cd src/build && node img.js",
+    "env": "cross-env NODE_ENV=development npx gulp sassy"
   },
   "repository": {
     "type": "git",

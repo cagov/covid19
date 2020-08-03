@@ -27,6 +27,43 @@ const purgeCssForHome = purgecss({
 const includesOutputFolder = 'pages/_includes';
 const buildOutputFolder = 'docs/css/build';
 
+const sassy = (done) => {
+  let stream = gulp.src('src/css/index.scss')
+    // First: we process the Sass files.
+    .pipe(sass({
+      includePaths: 'src/css'
+    }).on('error', sass.logError));
+
+  if (process.env.NODE_ENV === 'development') {
+    stream = stream
+      .pipe(rename('development.css'))
+      .pipe(gulp.dest(buildOutputFolder))
+      .pipe(gulp.dest(includesOutputFolder))
+      .on('end', () => {
+        console.log('Generated: development.css.');
+        done();
+      });
+  } else {
+    stream = stream
+      // Next: purge, minify, and save as 'built.css'.
+      .pipe(postcss([purgeCssForAll, cssnano]))
+      .pipe(rename('built.css'))
+      .pipe(gulp.dest(buildOutputFolder))
+      .pipe(gulp.dest(includesOutputFolder))
+      // Finally: purge even more for 'home.css'.
+      .pipe(postcss([purgeCssForHome, cssnano]))
+      .pipe(rename('home.css'))
+      .pipe(gulp.dest(buildOutputFolder))
+      .pipe(gulp.dest(includesOutputFolder))
+      .on('end', () => {
+        console.log('Generated: built.css, home.css.');
+        done();
+      });
+  }
+
+  return stream;
+};
+
 const scss = (done) => gulp.src('src/css/index.scss')
   // First: process the Sass files.
   .pipe(sass({
@@ -53,11 +90,18 @@ const move = (done) => gulp.src(builtFilesToMove)
 
 const css = gulp.series(scss, move);
 
-const watcher = () => gulp.watch('src/css/**/*', css);
-const watch = gulp.series(css, watcher);
+const watcher = () => gulp.watch('src/css/**/*', sassy);
+const watch = gulp.series(sassy, watcher);
+
+const env = (done) => gulp.src(builtFilesToMove).on('end', () => {
+  console.log(process.env.NODE_ENV);
+  done();
+});
 
 module.exports = {
+  sassy,
   css,
   watch,
-  default: watch
+  default: watch,
+  env
 };

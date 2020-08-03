@@ -35,7 +35,7 @@
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
     <style>
-      {% include "built.css" %}
+      {% include "development.css" if env.dev else "built.css" %}
     </style>
     <!-- WC polyfill for legacy Edge -->
     <script>
