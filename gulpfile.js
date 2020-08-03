@@ -4,6 +4,39 @@ const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const cssnano = require('cssnano');
+const spawn = require('cross-spawn');
+const log = require('fancy-log');
+const del = require('del');
+const browsersync = require('browser-sync').create();
+
+// Initialize BrowserSync.
+const server = (done) => {
+  browsersync.init({
+    server: 'docs',
+    watch: false,
+    ghostMode: false,
+    logFileChanges: true,
+    logLevel: 'info',
+    open: true,
+    port: 8000
+  });
+  done();
+};
+
+// Reload BrowserSync as needed.
+const serverReload = (done) => {
+  browsersync.reload();
+  done();
+};
+
+const clean = () => del([
+  'docs'
+]);
+
+const eleventy = (done) => {
+  spawn.sync('npx', ['@11ty/eleventy', '--quiet'], { stdio: 'inherit' });
+  done();
+};
 
 // Initialize PurgeCSS, comparing against the whole site.
 const purgeCssForAll = purgecss({
@@ -42,7 +75,7 @@ const css = (done) => {
       .pipe(gulp.dest(buildOutputFolder))
       .pipe(gulp.dest(includesOutputFolder))
       .on('end', () => {
-        console.log('Generated: development.css.');
+        log('Generated: development.css.');
         done();
       });
   // If not development environment, then create two CSS files: home.css and built.css.
@@ -60,7 +93,7 @@ const css = (done) => {
       .pipe(gulp.dest(buildOutputFolder))
       .pipe(gulp.dest(includesOutputFolder))
       .on('end', () => {
-        console.log('Generated: built.css, home.css.');
+        log('Generated: built.css, home.css.');
         done();
       });
   }
@@ -68,11 +101,30 @@ const css = (done) => {
   return stream;
 };
 
-const watcher = () => gulp.watch('src/css/**/*', css);
-const watch = gulp.series(css, watcher);
+const build = gulp.series(css, eleventy);
+
+const watcher = () => {
+  gulp.watch([
+    'src/css/**/*'
+  ], gulp.series(css, eleventy, serverReload));
+  gulp.watch([
+    'pages/**/*',
+    '!pages/**/*.css'
+  ], gulp.series(eleventy, css, serverReload));
+  gulp.watch([
+    'src/img/**/*'
+  ], gulp.series(eleventy, serverReload));
+};
+
+const watch = gulp.series(build, gulp.parallel(watcher, server));
+
+const deploy = gulp.series(clean, build);
 
 module.exports = {
+  eleventy,
+  build,
   css,
   watch,
+  deploy,
   default: watch
 };
