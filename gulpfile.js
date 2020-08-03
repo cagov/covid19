@@ -27,13 +27,15 @@ const purgeCssForHome = purgecss({
 const includesOutputFolder = 'pages/_includes';
 const buildOutputFolder = 'docs/css/build';
 
-const sassy = (done) => {
+const css = (done) => {
+  // First: we process the Sass files.
   let stream = gulp.src('src/css/index.scss')
-    // First: we process the Sass files.
     .pipe(sass({
       includePaths: 'src/css'
     }).on('error', sass.logError));
 
+  // If development environment, create one CSS file: development.css.
+  // Don't do any CSS purging.
   if (process.env.NODE_ENV === 'development') {
     stream = stream
       .pipe(rename('development.css'))
@@ -43,14 +45,16 @@ const sassy = (done) => {
         console.log('Generated: development.css.');
         done();
       });
+  // If not development environment, then create two CSS files: home.css and built.css.
+  // Assume production; do full purging on both files.
   } else {
     stream = stream
-      // Next: purge, minify, and save as 'built.css'.
+      // Purge, minify, and save 'built.css'.
       .pipe(postcss([purgeCssForAll, cssnano]))
       .pipe(rename('built.css'))
       .pipe(gulp.dest(buildOutputFolder))
       .pipe(gulp.dest(includesOutputFolder))
-      // Finally: purge even more for 'home.css'.
+      // Purge even more for 'home.css'.
       .pipe(postcss([purgeCssForHome, cssnano]))
       .pipe(rename('home.css'))
       .pipe(gulp.dest(buildOutputFolder))
@@ -64,44 +68,11 @@ const sassy = (done) => {
   return stream;
 };
 
-const scss = (done) => gulp.src('src/css/index.scss')
-  // First: process the Sass files.
-  .pipe(sass({
-    includePaths: 'src/css'
-  }).on('error', sass.logError))
-  // Next: purge, minify, and save as 'built.css'.
-  .pipe(postcss([purgeCssForAll, cssnano]))
-  .pipe(rename('built.css'))
-  .pipe(gulp.dest(buildOutputFolder))
-  // Finally: purge even more for 'home.css'.
-  .pipe(postcss([purgeCssForHome, cssnano]))
-  .pipe(rename('home.css'))
-  .pipe(gulp.dest(buildOutputFolder))
-  .on('end', done);
-
-const builtFilesToMove = [
-  `${buildOutputFolder}/home.css`,
-  `${buildOutputFolder}/built.css`
-];
-
-const move = (done) => gulp.src(builtFilesToMove)
-  .pipe(gulp.dest(includesOutputFolder))
-  .on('end', done);
-
-const css = gulp.series(scss, move);
-
-const watcher = () => gulp.watch('src/css/**/*', sassy);
-const watch = gulp.series(sassy, watcher);
-
-const env = (done) => gulp.src(builtFilesToMove).on('end', () => {
-  console.log(process.env.NODE_ENV);
-  done();
-});
+const watcher = () => gulp.watch('src/css/**/*', css);
+const watch = gulp.series(css, watcher);
 
 module.exports = {
-  sassy,
   css,
   watch,
-  default: watch,
-  env
+  default: watch
 };
