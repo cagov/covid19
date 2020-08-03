@@ -69,19 +69,15 @@
   <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
     <div class="container">
       <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
-        {% if langFilePostfix === "" %}
-          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
-        {% else %}
-          {% include "../translated-posts/new" + langFilePostfix + ".html" %}
-        {% endif %}
+        {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
       </div>
     </div>
   </div>
-  {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
+  {% include langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
 
   <div class="container-fluid bg-primary text-white">
     <div class="container pb-3 pt-3 text-white">
-        {% include  langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
+        {% include langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
         </div>
       </div>
     </div>
