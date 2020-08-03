@@ -44,7 +44,7 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "serve": "npx @11ty/eleventy --serve --quiet --formats=html,njk --input ./pages --output ./docs",
+    "serve": "npx @11ty/eleventy --serve --quiet",
     "build": "run-p build:js build:css",
     "build:js": "rollup --config src/js/rollup.config.all.js",
     "watch:js": "npm run build:js -- --watch",
@@ -61,8 +61,7 @@
     "watch": "run-p watch:js watch:css",
     "local": "run-p watch start",
     "local:dev": "cross-env NODE_ENV=development npm run local",
-    "compress:img": "cd src/build && node img.js",
-    "env": "cross-env NODE_ENV=development npx gulp sassy"
+    "compress:img": "cd src/build && node img.js"
   },
   "repository": {
     "type": "git",

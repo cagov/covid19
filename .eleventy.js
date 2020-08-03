@@ -414,5 +414,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
+  return {
+    templateFormats: ["html", "njk"],
+    dir: {
+      input: "pages",
+      output: "docs",
+    }
+  };
 };
 
