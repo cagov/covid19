@@ -181,8 +181,9 @@ module.exports = function(eleventyConfig) {
   });
 
   const formatDate = (datestring, withTime, tags, addDays) => {
-
-
+    const locales = 'en-US';
+    const timeZone = 'America/Los_Angeles';
+    
     if(datestring) {
       let targetdate =
         datestring==='today'
@@ -192,25 +193,33 @@ module.exports = function(eleventyConfig) {
             : new Date(`2020-${datestring}T00:00:00.000-07:00`);
       if(targetdate) {
         if(addDays) {
-          targetdate.setDate(targetdate.getDate() + addDays);
+          targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
         }
 
         const langId = getLangRecord(tags).id;
-        const formatRecord = dateFormats[langId.toLocaleLowerCase()];
+        const formatRecord = dateFormats[langId.toLowerCase()];
+
+        const defaultTimeString = targetdate.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: '2-digit' })
+        const dateHours = Number(defaultTimeString.split(' ')[0].split(':')[0]);
+        const dateMinutes = defaultTimeString.split(' ')[0].split(':')[1];
+        const dateAm = defaultTimeString.split(' ')[1]==='AM';
+        const dateYear = Number(targetdate.toLocaleDateString(locales, { timeZone, year: 'numeric' }));
+        const dateDay = Number(targetdate.toLocaleDateString(locales, { timeZone, day: 'numeric' }));
+        const dateMonth = Number(targetdate.toLocaleDateString(locales, { timeZone, month: 'numeric' }))-1;
 
         const dateformatstring = formatRecord
-          .monthdayyear[targetdate.getMonth()]
-          .replace('[day]',targetdate.getDate())
-          .replace('[year]',targetdate.getFullYear());
+          .monthdayyear[dateMonth]
+          .replace('[day]',dateDay)
+          .replace('[year]',dateYear);
 
         const timeformatstring = 
-          (targetdate.getHours()<12
+          (dateAm
             ? formatRecord.timeam
             : formatRecord.timepm
           )
-          .replace('[hour-12]',targetdate.getHours() % 12)
-          .replace('[hour-24]',targetdate.getHours())
-          .replace('[min]',targetdate.getMinutes().toString().padStart(2, '0'));
+          .replace('[hour-12]',dateHours)
+          .replace('[hour-24]',(dateHours+(dateAm ? 0 : 12)))
+          .replace('[min]',dateMinutes);
 
         if(withTime) {
           return formatRecord.joinstring
