@@ -47,11 +47,12 @@
     "rollup-plugin-terser": "^6.1.0"
   },
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
-    "build": "run-p build:js build:css",
+    "build": "gulp build",
+    "build:css": "gulp css",
+    "build:site": "gulp eleventy",
     "build:js": "rollup --config src/js/rollup.config.all.js",
-    "watch:js": "npm run build:js -- --watch",
     "build:js:ancient": "rollup --config src/js/rollup.config.es5.js",
     "build:js:esm": "rollup --config src/js/rollup.config.js",
     "build:js:alerts": "rollup --config src/js/alerts/rollup.config.js",
@@ -60,11 +61,11 @@
     "build:js:telehealth": "rollup --config src/js/telehealth/rollup.config.js",
     "build:js:whatwhere": "rollup --config src/js/what-open-where/rollup.config.js",
     "build:js:video": "rollup --config src/js/video/rollup.config.js",
-    "build:css": "gulp css",
-    "watch:css": "gulp watch",
-    "watch": "run-p watch:js watch:css",
-    "local": "run-p watch start",
-    "local:dev": "cross-env NODE_ENV=development npm run local",
+    "watch": "gulp watch",
+    "clean": "gulp clean",
+    "deploy": "gulp deploy",
+    "local": "npm run watch",
+    "local:dev": "cross-env NODE_ENV=development npm run watch",
     "compress:img": "cd src/build && node img.js"
   },
   "repository": {

@@ -17,25 +17,37 @@ const server = (done) => {
     ghostMode: false,
     logFileChanges: true,
     logLevel: 'info',
-    open: true,
-    port: 8000
+    open: false,
+    port: 8000,
+    ui: {
+      port: 8001
+    }
   });
   done();
 };
 
-// Reload BrowserSync as needed.
-const serverReload = (done) => {
-  browsersync.reload();
-  done();
-};
-
+// Empty out the deployment folder.
 const clean = () => del([
   'docs'
 ]);
 
+// Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
-  spawn.sync('npx', ['@11ty/eleventy', '--quiet'], { stdio: 'inherit' });
-  done();
+  spawn('npx', ['@11ty/eleventy', '--quiet'], {
+    stdio: 'inherit'
+  }).on('close', () => {
+    browsersync.reload();
+    done();
+  });
+};
+
+// Build the site's javascript via Rollup.
+const rollup = (done) => {
+  spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
+    stdio: 'inherit'
+  }).on('close', () => {
+    done();
+  });
 };
 
 // Initialize PurgeCSS, comparing against the whole site.
@@ -57,10 +69,11 @@ const purgeCssForHome = purgecss({
   ]
 });
 
-const includesOutputFolder = 'pages/_includes';
-const buildOutputFolder = 'docs/css/build';
-
+// Build the site's CSS.
 const css = (done) => {
+  const includesOutputFolder = 'pages/_includes';
+  const buildOutputFolder = 'docs/css/build';
+
   // First: we process the Sass files.
   let stream = gulp.src('src/css/index.scss')
     .pipe(sass({
@@ -101,29 +114,48 @@ const css = (done) => {
   return stream;
 };
 
-const build = gulp.series(css, eleventy);
+// Build JS, CSS, then the site, in that order.
+const build = gulp.series(rollup, css, eleventy);
 
+// Watch files for changes, trigger rebuilds.
 const watcher = () => {
+  // Watch the following files for CSS-related changes.
   gulp.watch([
-    'src/css/**/*'
-  ], gulp.series(css, eleventy, serverReload));
+    // CSS files, of course.
+    './src/css/**/*',
+    // Templates too, in case we need a re-purge.
+    './pages/**/*',
+    // Do not watch translations because it was in .eleventyignore.
+    '!./pages/translations/**/*',
+    // Do not watch CSS and JS _includes. We will trigger those rebuilds manually.
+    '!./pages/_includes/*.(css|js)',
+    // Do not watch htmlmap.json because it was in .gitignore.
+    '!./pages/_data/htmlmap.json'
+  ], gulp.series(css, eleventy));
+
+  // Watch for changes to JS files.
   gulp.watch([
-    'pages/**/*',
-    '!pages/**/*.css'
-  ], gulp.series(eleventy, css, serverReload));
+    './src/js/**/*'
+  ], gulp.series(rollup, eleventy));
+
+  // Watch for changes to static asset files.
   gulp.watch([
-    'src/img/**/*'
-  ], gulp.series(eleventy, serverReload));
+    './src/img/**/*'
+  ], eleventy);
 };
 
+// Build the site before firing up the watcher, browsersync.
 const watch = gulp.series(build, gulp.parallel(watcher, server));
 
+// Nukes the deployment directory prior to build. Totally clean.
 const deploy = gulp.series(clean, build);
 
 module.exports = {
   eleventy,
-  build,
+  rollup,
   css,
+  build,
+  clean,
   watch,
   deploy,
   default: watch
