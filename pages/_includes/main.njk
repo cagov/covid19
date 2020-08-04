@@ -5,7 +5,8 @@
   {% set langIncludeFolder="../translated-posts/" %}
 {% endif %}
 
-{% set lastStatDate = 1|_statsdata_ + "-" + 2|_statsdata_ %}
+{% set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" %}
+{% set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))%}
 
 
 <!DOCTYPE html>
@@ -58,22 +59,54 @@
         <div class="container">
           <div class="row">
             <div class="col text-center">
-              {% include  langIncludeFolder + "home-header" + langFilePostfix + ".html" %}
+              {% include langIncludeFolder + "home-header" + langFilePostfix + ".html" %}
             </div>
           </div>
         </div>
-        {% include "../wordpress-posts/stats" + langFilePostfix + ".html" %}
+        <div class="row card-deck pb-3 text-center pl-3">
+          <div class="card col-md bg-secondary-covid border-0">
+          <h3 class="pb-0 unbold h5 text-primary">{{varTotalCases}}</h3>
+            <div class="h3 text-primary mt-n3 pt-0">
+              <span class="ca-gov-icon-triangle-up h1 bold text-danger" aria-hidden="true" ></span> {{3|_statsdata_}} <span class="unbold small-text">(+{{4|_statsdata_}}{{varPercentIncrease}})</span>
+            </div>
+          </div>
+          <div class="card col-md bg-secondary-covid border-0">
+            <h3 class="pb-0 unbold h4 text-primary">{{varTotalDeaths}}</h3>
+            <div class="h3 text-primary mt-n3 pt-0">
+              <span class="ca-gov-icon-triangle-up h1 bold text-danger" aria-hidden="true" ></span>{{5|_statsdata_}} <span class="unbold small-text">(+{{6|_statsdata_}}{{varPercentIncrease}})</span>
+            </div>
+          </div>
+          <div class="card col-md bg-secondary-covid border-0">
+            <h3 class="pb-0 unbold h4 text-primary">{{varTestsReported}}</h3>
+            <div class="h3 text-primary mt-n3 pt-2">
+              <span class="ca-gov-icon-people h2 bold text-primary" aria-hidden="true" ></span> {{7|_statsdata_}}</div>
+            </div>  
+          </div>     
+          <div class="text-center pt-3 pb-3">
+            {{FormattedUpdateText}}
+          </div>
+          <div class="text-center pt-3 pb-3">
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="/roadmap-counties/#track-data">
+              <div class="ca-gov-icon-map text-white h2 float-left mb-1 pr-1 pt-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varCountyMap}}</div>
+            </a>
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="https://update.covid19.ca.gov/">
+              <div class="ca-gov-icon-state text-white h2 float-left mb-1 pr-1 pt-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varStateSummary}}</div>
+            </a>
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="/data-and-tools/">
+              <div class="ca-gov-icon-pie-chart text-white h2 float-left mb-1 pr-1 pt-lg-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varDataAndTools}}</div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
     <div class="container">
       <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
-        {% if langFilePostfix === "" %}
-          {% include "../wordpress-posts/new" + langFilePostfix + ".html" %}
-        {% else %}
-          {% include "../translated-posts/new" + langFilePostfix + ".html" %}
-        {% endif %}
+        {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
       </div>
     </div>
   </div>
@@ -101,11 +134,11 @@
   </div>
   <!-- end video test -->
 
-  {% include  langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
+  {% include langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
 
   <div class="container-fluid bg-primary text-white">
     <div class="container pb-3 pt-3 text-white">
-        {% include  langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
+        {% include langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
         </div>
       </div>
     </div>
