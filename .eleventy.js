@@ -5,6 +5,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
@@ -175,26 +176,64 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter('formatDateParts', function(datestring) {
+  eleventyConfig.addFilter('formatDate2', function(datestring,withTime,tags,addDays) {
+    return formatDate(datestring,withTime,tags,addDays);
+  });
+
+  const formatDate = (datestring, withTime, tags, addDays) => {
+
+
     if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
+      let targetdate =
+        datestring==='today'
+          ? new Date()
+          : datestring.indexOf('Z') > -1
+            ? new Date(datestring)
+            : new Date(`2020-${datestring}T00:00:00.000-07:00`);
+      if(targetdate) {
+        if(addDays) {
+          targetdate.setDate(targetdate.getDate() + addDays);
+        }
+
+        const langId = getLangRecord(tags).id;
+        const formatRecord = dateFormats[langId.toLocaleLowerCase()];
+
+        const dateformatstring = formatRecord
+          .monthdayyear[targetdate.getMonth()]
+          .replace('[day]',targetdate.getDate())
+          .replace('[year]',targetdate.getFullYear());
+
+        const timeformatstring = 
+          (targetdate.getHours()<12
+            ? formatRecord.timeam
+            : formatRecord.timepm
+          )
+          .replace('[hour-12]',targetdate.getHours() % 12)
+          .replace('[hour-24]',targetdate.getHours())
+          .replace('[min]',targetdate.getMinutes().toString().padStart(2, '0'));
+
+        if(withTime) {
+          return formatRecord.joinstring
+            .replace('[date]',dateformatstring)
+            .replace('[time]',timeformatstring);
+        } else {
+          return dateformatstring;
+        }
+      }
     }
-    return "";
+    return datestring;
+  }
+  
+
+  eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
+    return formatDate(datestring,null,null,adddays);
   })
 
   eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
-    if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        output.setDate(output.getDate() + 1)
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
-    }
-    return "";
+    return formatDate(datestring,null,null,1);
   })
+
+  
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {

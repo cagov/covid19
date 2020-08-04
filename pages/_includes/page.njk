@@ -69,9 +69,9 @@
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
                   {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" %}
-                    {{ "today" | formatDate }}
+                    {{ "today" | formatDate2(true,tags) }}
                   {% else %}
-                    {{ publishdate | formatDate }}
+                    {{ publishdate | formatDate2(true,tags) }}
                   {% endif %}
                 </p>
               {% endif %}
