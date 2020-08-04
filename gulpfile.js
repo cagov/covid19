@@ -41,34 +41,14 @@ const eleventy = (done) => {
   });
 };
 
-// Create functions to build all the various Rollup configs.
-const [
-  rollup,
-  ancient,
-  esm,
-  alerts,
-  plasma,
-  survey,
-  telehealth,
-  whatwhere,
-  video
-] = [
-  'src/js/rollup.config.all.js',
-  'src/js/rollup.config.es5.js',
-  'src/js/rollup.config.js',
-  'src/js/alerts/rollup.config.js',
-  'src/js/plasma/rollup.config.js',
-  'src/js/survey/rollup.config.js',
-  'src/js/telehealth/rollup.config.js',
-  'src/js/what-open-where/rollup.config.js',
-  'src/js/video/rollup.config.js'
-].map((config) => (done) => {
-  spawn('npx', ['rollup', '--config', config], {
+// Build the site's javascript via Rollup.
+const rollup = (done) => {
+  spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', () => {
     done();
   });
-});
+};
 
 // Initialize PurgeCSS, comparing against the whole site.
 const purgeCssForAll = purgecss({
@@ -172,19 +152,11 @@ const deploy = gulp.series(clean, build);
 
 module.exports = {
   eleventy,
+  rollup,
   css,
   build,
   clean,
   watch,
   deploy,
-  default: watch,
-  rollup,
-  ancient,
-  esm,
-  alerts,
-  plasma,
-  survey,
-  telehealth,
-  whatwhere,
-  video
+  default: watch
 };
