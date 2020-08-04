@@ -124,3 +124,20 @@
 .faq-item-link:focus .faq-icon-arrow:last-of-type {
 	transform: translate(-50%, -50%)
 }
+
+
+/* carets */
+.header-language-arrow {
+	margin-left: 0.5rem;
+}
+.header-language-arrow {
+	fill: #ff8000;
+	width: 0.75rem;
+	max-height: 1rem;
+	margin-left: 0.25rem;
+	transition: all 0.6s cubic-bezier(0.5,1.65,0.4,0.8);
+}
+button[aria-expanded="true"] .header-language-arrow {
+	transform: rotate(180deg);
+	/* fill: #1f2574; need focus state too for this to be useful */
+}

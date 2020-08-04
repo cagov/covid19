@@ -4,9 +4,7 @@
 {% else %}
   {% set langIncludeFolder="../translated-posts/" %}
 {% endif %}
-
 {% set lastStatDate = 1|_statsdata_ + "-" + 2|_statsdata_ %}
-
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -50,7 +48,7 @@
   <body>
     {% include "header.njk" %}
     <main id="main">
-      <div class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
+      <div class="jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
         <div class="container">
           <div class="row">
 
@@ -58,100 +56,54 @@
 
               <div class="hero-text col" role="region" aria-labelledby="hero-text">
                 <div class="hero-text-align">
-
                   <h1 class="hero-headline">
-                  
                       <span href="/" class="hero-headline-background" id="hero-text">
-						We will get through this together.
-					</span>
-                    
+						            We will get through this together.
+					            </span>
                   </h1>
-
-         
-
                 </div>
               </div>
 
               <div class="hero-stats col-md-6" role="region" aria-labelledby="tracking-covid">
                 <h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
-                <div class="hero-stats-subheadline">In California, Updated June 22, 2020</div>
-
-          
-
+                <div class="hero-stats-subheadline">In California, Updated {{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }}</div>
                 <div class="hero-stats-slider">
-
-                  <div class="hero-stats-slide" aria-hidden="false" aria-labelledby="cumulative-stats">
-
+                  <div class="hero-stats-slide">
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Cases</span>
                       </div>
-                      <div class="hero-stats-row-figure">184,951</div>
+                      <div class="hero-stats-row-figure">{{3|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							186 today
-						</div>
+                        +{{4|_statsdata_}}%
+						          </div>
                     </div>
 
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Deaths</span>
                       </div>
-                      <div class="hero-stats-row-figure">5,565</div>
+                      <div class="hero-stats-row-figure">{{5|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							63 today
-						</div>
+                        +{{6|_statsdata_}}%
+						          </div>
                     </div>
 
                     <div class="hero-stats-row">
                       <div class="hero-stats-row-label">
                         <span class="hero-stats-row-label-text">Tests</span>
                       </div>
-                      <div class="hero-stats-row-figure">3,411,686</div>
+                      <div class="hero-stats-row-figure">{{7|_statsdata_}}</div>
                       <div class="hero-stats-row-details">
-							85,243 today
-						</div>
+						          </div>
                     </div>
-
-                  </div>
-
-                  <div class="hero-stats-slide" aria-hidden="true" aria-labelledby="fortnite-stats" style="display: none;">
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Cases</span>
-                      </div>
-                      <div class="hero-stats-row-figure">109,910</div>
-                      <div class="hero-stats-row-details">
-							+50.1%
-						</div>
-                    </div>
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Deaths</span>
-                      </div>
-                      <div class="hero-stats-row-figure">1,104</div>
-                      <div class="hero-stats-row-details">
-							+18.6%
-						</div>
-                    </div>
-
-                    <div class="hero-stats-row">
-                      <div class="hero-stats-row-label">
-                        <span class="hero-stats-row-label-text">Tests</span>
-                      </div>
-                      <div class="hero-stats-row-figure">1,482,673</div>
-                      <div class="hero-stats-row-details">
-							+36.5%
-						</div>
-                    </div>
-
                   </div>
 
                 </div>
                 <div class="hero-stats-footer">
-                  <a class="btn rounded-50" href="/">County Dashboard</a>
-                  <a class="btn rounded-50" href="/">State Dashboard</a>
+                  <a href="roadmap-counties/#track-data">County data</a>
+                  <a href="https://update.covid19.ca.gov/">State data</a>
+                  <a href="data-and-tools/">Data tools and resources</a>
                 </div>
               </div>
 
@@ -159,10 +111,7 @@
                 <div class="hero-alert-align col-md-8">
                   <span class="ca-gov-icon-warning-triangle hero-alert-icon display-4 text-primary" aria-hidden="true" title="Alert!"></span>
                   <div class="hero-alert-text">
-                    <h2 class="hero-alert-headline text-primary" id="alert-headline">Face coverings required in public spaces</h2>
-                    <div class="hero-alert-blurb">
-                      <p class="text-dark">Cloth face coverings or <a href="/">masks</a> help reduce the spread of coronavirus especially when combined with physical distancing and frequent hand washing. Californians must wear face coverings in common and public indoor spaces and outdoors when distancing is not possible. Learn more about the <a href="/">guidance and limited exceptions here</a>.</p>
-                    </div>
+                    {% include "../wordpress-posts/banner" + langFilePostfix + ".html" %}
                   </div>
                 </div>
                 <div class="hero-alert-social">
@@ -196,192 +145,42 @@
   </div>
 
   <section class="padded faq-twitter mt-5" role="region" aria-labelledby="want-to-know">
-    <h2 class="headline"><a class="headline-link" href="#" id="want-to-know"></a>People want to know</a></h2>
+    <h2 class="headline"><span class="headline-link" id="want-to-know">People want to know</span></h2>
     <div class="faq-people">
-    
+      {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
+      {% set JSON = JSONraw | jsonparse %}
+      {% set questionLinks1 = JSON.Table1 %}
+      {% set questionLinks2 = JSON.Table2 %}
+
       <div class="faq trigger reveal">
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/roadmap-counties/">
-          <h4 class="faq-item-headline">What's open in my county?</h4>
-    
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/testing-and-treatment/">
-          <h4 class="faq-item-headline">Where can I get a test?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/industry-guidance/">
-          <h4 class="faq-item-headline">How can I safely open my business?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/education/">
-          <h4 class="faq-item-headline">How are schools reopening?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>    
+        {% for item in questionLinks1 %}
+          <article class="faq-item trigger reveal">
+            <a class="faq-item-link" href="{{ item.url }}">
+              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
+              <cwds-arrow />
+            </a>
+          </article>
+        {% endfor %}
       </div>
     
       <div class="faq trigger reveal">
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/roadmap-counties/">
-          <h4 class="faq-item-headline">What's open in my county?</h4>    
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/testing-and-treatment/">
-          <h4 class="faq-item-headline">Where can I get a test?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/industry-guidance/">
-          <h4 class="faq-item-headline">How can I safely open my business?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>
-    
-        <article class="faq-item trigger reveal">
-        <a class="faq-item-link" href="/education/">
-          <h4 class="faq-item-headline">How are schools reopening?</h4>
-          <figure class="faq-icon" aria-hidden="true">
-            <span class="faq-icon-circle"></span>
-            <span class="faq-icon-arrow-wrapper">
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-              <span class="faq-icon-arrow">
-                <span class="faq-icon-arrow-svg">
-                  <svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-                </span>
-              </span>
-            </span>
-          </figure>
-        </a>
-        </article>    
+        {% for item in questionLinks2 %}
+          <article class="faq-item trigger reveal">
+            <a class="faq-item-link" href="{{ item.url }}">
+              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
+              <cwds-arrow />
+            </a>
+          </article>
+        {% endfor %}
       </div>
-    
     </div>
     </section>
-
-
 
   <!-- begin video section -->
   <div class="container-fluid bg-primary text-white py-5">
     <div class="container video-item" data-id="qqnbslwjhfu">
       <div class="row flex-md-nowrap align-items-center">
-        <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zdx9pxkota" href="javascript:void(0);">
+        <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zDX9PXkotA" href="javascript:void(0);">
           <figure class="video-thumb-photo">
             <div class="video-thumb-play-button">
               <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
@@ -394,7 +193,7 @@
         <div class="video-text pl-md-5 pt-3 pt-lg-0">
           <h2 class="text-white mb-1 font-weight-bold">Wear a Mask</h2>
           Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.
-          <a href="#" data-video="1zdx9pxkota" class="video-modal-open action-link mt-4 d-table px-3">Watch the Video</a>
+          <a href="javascript:void(0);" data-video="1zdx9pxkota" class="video-modal-open action-link mt-4 d-table px-3">Watch the Video</a>
         </div>
 
       </div>

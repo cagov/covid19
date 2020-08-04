@@ -12,14 +12,18 @@
             </small>
           </p>
           <div class="card-text">
-            <h3 class="lead"><a href="{{ collections.covidGuidance[1].data.url }}">{{ collections.covidGuidance[i].data.title | safe }}</a></h3>
+            <h3 class="lead"><a href="{{ collections.covidGuidance[i].data.url }}" class="color-orange-hover transition-0_3">{{ collections.covidGuidance[i].data.title | safe }}</a></h3>
           </div>
         </div>
       </div>
       {%- endfor -%}
     </div>
-    <div class="container text-center">
-      <a href="latest-news/" class="action-link mt-4">{{varViewMoreNews}}</a>
+    <div class="container text-center pt-4 pb-5">
+      <a href="latest-news/" class="action-link-arrow mt-4 hi-icon-effect-5 hi-icon-effect-5a">{{varViewMoreNews}}
+        <span class="hi-icon-wrap" aria-hidden="true">
+          <span class="hi-icon ca-gov-icon-arrow-next"></span>
+        </span>
+      </a>
     </div>
   </div>
 </div>

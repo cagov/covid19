@@ -22,7 +22,6 @@ window.addEventListener("load",videoStuff,false) :
 window.attachEvent && window.attachEvent("onload",videoStuff);
 
 function videoStuff() {
-  console.log('hi')
   window.video = {
     modal:   document.getElementById('video-modal'), // The modal window container
     openers: document.getElementsByClassName("video-modal-open"), // Elements that will open the modal
@@ -92,13 +91,11 @@ video.play = function(){
   if(player){
     player.style.display = "block";
   } else {
-    console.log('playing with no player')
     container.innerHTML += `<div id="${playerId}"></div>`;
     video.modal.style.display = 'block';
   }
 
   if(!video.players[video.youtubeId]){
-    console.log('creating new YT player')
     video.players[video.youtubeId] = new YT.Player(playerId, {
       host:    "https://www.youtube.com",
       height:  "390",
@@ -109,9 +106,7 @@ video.play = function(){
       }
     });
   } else {
-    console.log('else')
     if(player) {
-      console.log('is a player now')
       player.style.display = "block";
       video.players[video.youtubeId].playVideo();
     }

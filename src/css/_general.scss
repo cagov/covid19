@@ -85,6 +85,15 @@ li,
 	background-color: #1D2574 !important;
 	background: #1D2574 !important;
 }
+
+.bg-blue {
+    background-color: #003d9d !important;
+    background: #003d9d !important;
+  }
+  .bg-blue-hover:hover, .bg-blue-hover:focus {
+      background-color: #003d9d !important;
+      background: #003d9d !important;
+  }
 .bg-yellow {
     background-color: #ecca00 !important;
     background: #ecca00 !important;
@@ -124,6 +133,12 @@ li,
 .color-primary-hover:hover, .color-primary-hover:focus {
 	color: #1D2574 !important;
 }
+.bg-blue {
+    color: #003d9d !important;
+  }
+  .bg-blue-hover:hover, .bg-blue-hover:focus {
+    color: #003d9d !important;
+  }
 .color-yellow {
     color: #ecca00 !important;
 }
@@ -196,13 +211,12 @@ a:hover,
 
 .action-link {
   color: #004abc;
-  background: #f5f9ff;
+  background: #92c5de;
   display: inline-block;
   padding: 0.5rem 0.5rem;
   //padding-left: 1.75rem;
   font-size: 1.2rem;
   text-decoration: none;
-  border-bottom: 2px solid #004abc;
   line-height: 2rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
@@ -218,9 +232,8 @@ a.action-link::after {
 }
 
 a.action-link:hover {
-  border-color: #000;
-  color: #000;
-  background-color: #d5e6ff;
+  color: #fff!important;
+  background-color: #0257d5;
 }
 
 /* Tables */
@@ -1178,3 +1191,80 @@ button#dropdown-menu-button:focus {
 .rounded-50 {
   border-radius: 50px;
 }
+
+/* Font size */
+.font-size-2em {
+	font-size:2rem !important;
+  }
+  .font-size-1-9em {
+	font-size:1.9rem !important;
+  }
+  .font-size-1-8em {
+	font-size:1.8rem !important;
+  }
+  .font-size-1-7em {
+	font-size:1.7rem !important;
+  }
+  .font-size-1-6em {
+	font-size:1.6rem !important;
+  }
+  .font-size-1-5em {
+	font-size:1.5rem !important;
+  }
+/*Line heihght*/
+.line-height-0-8 {
+	line-height:.8em;
+	}
+.line-height-0-9 {
+	line-height:.9em;
+	}
+.line-height-1 {
+	line-height:1em;
+	}
+.line-height-1-1 {
+	line-height:1.1em;
+	}
+.line-height-1-2 {
+	line-height:1.2em;
+	}
+.line-height-1-3 {
+	line-height:1.3em;
+	}
+.line-height-1-4 {
+	line-height:1.4em;
+	}
+.line-height-1-5 {
+	line-height:1.5em;
+	}
+.line-height-1-6 {
+	line-height:1.6em;
+	}
+.line-height-1-7 {
+	line-height:1.7em;
+	}
+.line-height-1-8 {
+	line-height:1.8em;
+	}
+.line-height-1-9 {
+	line-height:1.9em;
+	}
+.line-height-2 {
+	line-height:2em;
+	}
+/* Transitions */
+.transition-0_3, .transition-0_3:before, .transition-0_3:after, .transition-0_3 path, .transition-0_3 polygon {
+    transition-duration: .3s;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+.transition-fill {
+    transition: fill 0.5s cubic-bezier(0.57,0.2,0.21,0.89);
+}
+.transition-bg-color-hover:hover {
+    transition: background-color 300ms linear;
+}
+.transform-scale-hover:hover {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+

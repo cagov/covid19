@@ -9,7 +9,9 @@
 .headline:hover {
   color: #ff8000;
 }
-
+.hero-alert-blurb {
+  color: #1d2574;
+}
 
 
 @media (min-width: 81.25em) {
@@ -62,6 +64,10 @@ section.padded {
 .faq {
   text-align: left;
 }
+.faq cwds-arrow {
+  margin-left: auto;
+}
+
 .faq-item-link {
 	width: 100%;
 	display: flex;
@@ -101,4 +107,8 @@ section.padded {
 
 .faq-item:hover .faq-icon-arrow:last-of-type {
 	transform: translate(-50%, -50%)
+}
+
+.hero-stats-footer a {
+  color: #fff;
 }
