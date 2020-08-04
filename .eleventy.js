@@ -190,7 +190,7 @@ module.exports = function(eleventyConfig) {
           ? new Date()
           : datestring.indexOf('Z') > -1
             ? new Date(datestring)
-            : new Date(`2020-${datestring}T00:00:00.000-07:00`);
+            : new Date(`${new Date().getUTCFullYear()}-${datestring}T08:00:00.000Z`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
