@@ -14,6 +14,7 @@ ga('tracker3.send', 'pageview');
 {% set FooterLinks1 = JSON.Table1 %}
 {% set FooterLinks2 = JSON.Table2 %}
 {% set Terms = JSON.Table3 %}
+{% set homelinkpath = "/" + (tags | langRecord).pathpostfix %}
 
 {% set langFilePostfix = tags | langFilePostfix %}
 {% if langFilePostfix === "" %}
@@ -26,7 +27,7 @@ ga('tracker3.send', 'pageview');
 {% set WasHelpfulStrings = HelpfulJSON.Table1 %}
 
 <cwds-pagerating 
-data-endpoint-url="https://fa-go-alph-d-001.azurewebsites.net/WasHelpful"
+data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
 data-question="{{WasHelpfulStrings[0].undefined}}"
 data-yes="{{WasHelpfulStrings[1].undefined}}"
 data-no="{{WasHelpfulStrings[2].undefined}}"
@@ -55,9 +56,9 @@ data-required-field="{{WasHelpfulStrings[7].undefined}}"
 <div class="alphabar">
   <div class="container text-right text-center-mobile">
     <p>
-      <a class="alphabar-link" href="{{FooterLinks2[0].URL}}">{{FooterLinks2[0].Name | safe}}</a>
-      <a class="alphabar-link" href="{{FooterLinks2[1].URL}}">{{FooterLinks2[1].Name | safe}}</a>
-      <a class="alphabar-link" href="{{FooterLinks2[2].URL}}">{{FooterLinks2[2].Name | safe}}</a>
+      <a class="alphabar-link" href="{{homelinkpath}}sign-up-for-county-alerts/">{{FooterLinks2[0].Name | safe}}</a>
+      <a class="alphabar-link" href="{{homelinkpath}}search/">{{FooterLinks2[1].Name | safe}}</a>
+      <a class="alphabar-link" href="#top">{{FooterLinks2[2].Name | safe}}</a>
     </p>
   </div>
 </div>
