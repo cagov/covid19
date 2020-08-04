@@ -52,7 +52,7 @@
     "build": "gulp build",
     "build:css": "gulp css",
     "build:site": "gulp eleventy",
-    "build:js": "rollup --config src/js/rollup.config.all.js",
+    "build:js": "gulp rollup",
     "build:js:ancient": "rollup --config src/js/rollup.config.es5.js",
     "build:js:esm": "rollup --config src/js/rollup.config.js",
     "build:js:alerts": "rollup --config src/js/alerts/rollup.config.js",
