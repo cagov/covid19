@@ -195,10 +195,8 @@ module.exports = function(eleventyConfig) {
           targetdate.setDate(targetdate.getDate() + addDays);
         }
 
-        const locales = 'en-US';
-        const timeZone = 'America/Los_Angeles';
         const langId = getLangRecord(tags).id;
-        const formatRecord = dateFormats[langId];
+        const formatRecord = dateFormats[langId.toLocaleLowerCase()];
 
         const dateformatstring = formatRecord
           .monthdayyear[targetdate.getMonth()]
@@ -213,7 +211,6 @@ module.exports = function(eleventyConfig) {
           .replace('[hour-12]',targetdate.getHours() % 12)
           .replace('[hour-24]',targetdate.getHours())
           .replace('[min]',targetdate.getMinutes().toString().padStart(2, '0'));
-
 
         if(withTime) {
           return formatRecord.joinstring
