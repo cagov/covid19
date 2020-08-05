@@ -65,15 +65,69 @@ const purgeCssForHome = purgecss({
     'pages/_includes/main.njk',
     'pages/_includes/header.njk',
     'pages/_includes/news-feed-home.html',
-    'pages/_includes/footer.njk'
+    'pages/_includes/footer.njk',
+    'pages/**/*.js'
   ]
 });
 
+const includesOutputFolder = 'pages/_includes';
+const buildOutputFolder = 'docs/css/build';
+
+/*
+// Uncomment as needed to test specific CSS builds.
+// This may replace the current css function, more to come.
+
+const scss = (done) => gulp.src('src/css/index.scss')
+  .pipe(sass({
+    includePaths: 'src/css'
+  }).on('error', sass.logError))
+  .pipe(rename('development.css'))
+  .pipe(gulp.dest('temp'))
+  .on('end', () => {
+    log('Sass files compiled.');
+    done();
+  });
+
+const devCSS = (done) => gulp.src('temp/development.css')
+  .pipe(gulp.dest(buildOutputFolder))
+  .pipe(gulp.dest(includesOutputFolder))
+  .on('end', () => {
+    log('Generated: development.css.');
+    done();
+  });
+
+const homeCSS = (done) => gulp.src('temp/development.css')
+  .pipe(postcss([purgeCssForHome, cssnano]))
+  .pipe(rename('home.css'))
+  .pipe(gulp.dest(buildOutputFolder))
+  .pipe(gulp.dest(includesOutputFolder))
+  .on('end', () => {
+    log('Generated: home.css.');
+    done();
+  });
+
+const builtCSS = (done) => gulp.src('temp/development.css')
+  .pipe(postcss([purgeCssForAll, cssnano]))
+  .pipe(rename('built.css'))
+  .pipe(gulp.dest(buildOutputFolder))
+  .pipe(gulp.dest(includesOutputFolder))
+  .on('end', () => {
+    log('Generated: built.css.');
+    done();
+  });
+
+// Clear out the temp folder.
+const removeTemp = () => del([
+  'temp'
+]);
+
+const cssByEnv = (process.env.NODE_ENV === 'development') ? devCSS : gulp.parallel(builtCSS, homeCSS);
+
+const css = gulp.series(scss, cssByEnv, removeTemp);
+*/
+
 // Build the site's CSS.
 const css = (done) => {
-  const includesOutputFolder = 'pages/_includes';
-  const buildOutputFolder = 'docs/css/build';
-
   // First: we process the Sass files.
   let stream = gulp.src('src/css/index.scss')
     .pipe(sass({
