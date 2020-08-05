@@ -255,12 +255,10 @@ module.exports = function(eleventyConfig) {
   //Usage...
   //        {{0|_statsdata_}}
 
-  const contentfrompage = (content, page, slug) => {
-    if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
-      return content;
-    }
-    return "";
-  }
+  //returns true if the slug matches the current page
+  const slugMatchesPage = (page, slug) => page.fileSlug && slug && page.fileSlug.toLowerCase().startsWith(slug.toLowerCase());
+
+  const contentfrompage = (content, page, slug) => slugMatchesPage(page,slug) ? content : "";
 
   const getTranslatedValue = (pageObj, tags, field) => {
     
@@ -288,6 +286,12 @@ module.exports = function(eleventyConfig) {
   //...
   //{% endpagesection -%}
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
+
+  // return the translated url or title if appropriate
+  // usage
+  // {{ "guidance-languages" | loadforslug("pages/wordpress-posts/industry-guidance-in-other-languages-links-fragment.html" | safe}}
+  //eleventyConfig.addFilter('loadforslug', (slug, page, path) => slugMatchesPage(page,slug) ? fs.readFileSync(path,'utf8') : "");
+
 
   let processedPostMap = new Map();
   htmlmap.forEach(pair => {
