@@ -284,6 +284,9 @@ module.exports = function(eleventyConfig) {
   
   
   // show or hide content based on page
+  //{%- pagesection page, "mypage" %}
+  //...
+  //{% endpagesection -%}
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
   let processedPostMap = new Map();
