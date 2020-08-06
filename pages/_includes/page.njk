@@ -69,9 +69,9 @@
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
                   {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" %}
-                    {{ "today" | formatDate }}
+                    {{ "today" | formatDate2(true,tags) }}
                   {% else %}
-                    {{ publishdate | formatDate }}
+                    {{ publishdate | formatDate2(true,tags) }}
                   {% endif %}
                 </p>
               {% endif %}
@@ -86,6 +86,9 @@
             {{ content | safe  }}
             {%- pagesection page, "search" %}
             {% include "search.njk" %}
+            {% endpagesection -%}
+            {%- pagesection page, "guidance-languages" %}
+            {% include "../wordpress-posts/industry-guidance-in-other-languages-links-fragment.html" %}
             {% endpagesection -%}
           </div>
         </div>
