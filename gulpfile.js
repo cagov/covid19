@@ -50,33 +50,10 @@ const rollup = (done) => {
   });
 };
 
-// Initialize PurgeCSS, comparing against the whole site.
-const purgeCssForAll = purgecss({
-  content: [
-    'pages/**/*.njk',
-    'pages/**/*.html',
-    'pages/**/*.js'
-  ]
-});
-
-// Initialize PurgeCSS, comparing against the following files for the homepage.
-const purgeCssForHome = purgecss({
-  content: [
-    'pages/_includes/main.njk',
-    'pages/_includes/header.njk',
-    'pages/_includes/news-feed-home.html',
-    'pages/_includes/footer.njk',
-    'pages/**/*.js'
-  ]
-});
-
 const includesOutputFolder = 'pages/_includes';
 const buildOutputFolder = 'docs/css/build';
 
-/*
-// Uncomment as needed to test specific CSS builds.
-// This may replace the current css function, more to come.
-
+// Process scss files, dump output to temp/development.css.
 const scss = (done) => gulp.src('src/css/index.scss')
   .pipe(sass({
     includePaths: 'src/css'
@@ -88,6 +65,7 @@ const scss = (done) => gulp.src('src/css/index.scss')
     done();
   });
 
+// Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src('temp/development.css')
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
@@ -96,8 +74,20 @@ const devCSS = (done) => gulp.src('temp/development.css')
     done();
   });
 
+// Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src('temp/development.css')
-  .pipe(postcss([purgeCssForHome, cssnano]))
+  .pipe(postcss([
+    purgecss({
+      content: [
+        'pages/_includes/main.njk',
+        'pages/_includes/header.njk',
+        'pages/_includes/news-feed-home.html',
+        'pages/_includes/footer.njk',
+        'pages/**/*.js'
+      ]
+    }),
+    cssnano
+  ]))
   .pipe(rename('home.css'))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
@@ -106,8 +96,18 @@ const homeCSS = (done) => gulp.src('temp/development.css')
     done();
   });
 
+// Purge and minify scss output for use across the whole site.
 const builtCSS = (done) => gulp.src('temp/development.css')
-  .pipe(postcss([purgeCssForAll, cssnano]))
+  .pipe(postcss([
+    purgecss({
+      content: [
+        'pages/**/*.njk',
+        'pages/**/*.html',
+        'pages/**/*.js'
+      ]
+    }),
+    cssnano
+  ]))
   .pipe(rename('built.css'))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
@@ -121,52 +121,11 @@ const removeTemp = () => del([
   'temp'
 ]);
 
+// Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? devCSS : gulp.parallel(builtCSS, homeCSS);
 
+// Execute the full CSS build process.
 const css = gulp.series(scss, cssByEnv, removeTemp);
-*/
-
-// Build the site's CSS.
-const css = (done) => {
-  // First: we process the Sass files.
-  let stream = gulp.src('src/css/index.scss')
-    .pipe(sass({
-      includePaths: 'src/css'
-    }).on('error', sass.logError));
-
-  // If development environment, create one CSS file: development.css.
-  // Don't do any CSS purging.
-  if (process.env.NODE_ENV === 'development') {
-    stream = stream
-      .pipe(rename('development.css'))
-      .pipe(gulp.dest(buildOutputFolder))
-      .pipe(gulp.dest(includesOutputFolder))
-      .on('end', () => {
-        log('Generated: development.css.');
-        done();
-      });
-  // If not development environment, then create two CSS files: home.css and built.css.
-  // Assume production; do full purging on both files.
-  } else {
-    stream = stream
-      // Purge, minify, and save 'built.css'.
-      .pipe(postcss([purgeCssForAll, cssnano]))
-      .pipe(rename('built.css'))
-      .pipe(gulp.dest(buildOutputFolder))
-      .pipe(gulp.dest(includesOutputFolder))
-      // Purge even more for 'home.css'.
-      .pipe(postcss([purgeCssForHome, cssnano]))
-      .pipe(rename('home.css'))
-      .pipe(gulp.dest(buildOutputFolder))
-      .pipe(gulp.dest(includesOutputFolder))
-      .on('end', () => {
-        log('Generated: built.css, home.css.');
-        done();
-      });
-  }
-
-  return stream;
-};
 
 // Build JS, CSS, then the site, in that order.
 const build = gulp.series(rollup, css, eleventy);
