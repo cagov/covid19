@@ -83,7 +83,8 @@ const homeCSS = (done) => gulp.src('temp/development.css')
         'pages/_includes/header.njk',
         'pages/_includes/news-feed-home.html',
         'pages/_includes/footer.njk',
-        'pages/**/*.js'
+        'pages/**/*.js',
+        'pages/wordpress-posts/banner*.html'
       ]
     }),
     cssnano
