@@ -8,7 +8,7 @@ export default {
   input: 'src/js/es5.js',
   output: {
     file: 'docs/js/es5.js',
-    format: 'umd'
+    format: 'cjs'
   },
   moduleContext: {
     // whatwg-fetch angers Rollup due to ancient use of 'this'.
@@ -17,19 +17,32 @@ export default {
     [path.resolve('./node_modules/whatwg-fetch/fetch.js')]: 'window'
   },
   plugins: [
-    resolve(),
+    resolve({
+      browser: true
+    }),
     commonjs(),
     babel({
-      babelHelpers: 'bundled',
-      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+      exclude: ['node_modules/@babel/**', 'node_modules/core-js/**'],
       presets: [
         [
           '@babel/preset-env',
           {
             modules: false,
+            useBuiltIns: 'usage',
+            corejs: 3,
             targets: {
               browsers: '> 1%'
             }
+          }
+        ]
+      ],
+      plugins: [
+        '@babel/plugin-syntax-dynamic-import',
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            useESModules: true
           }
         ]
       ]
