@@ -1,3 +1,4 @@
+const fs = require('fs');
 const gulp = require('gulp');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
@@ -52,21 +53,33 @@ const rollup = (done) => {
 
 const includesOutputFolder = 'pages/_includes';
 const buildOutputFolder = 'docs/css/build';
+const tempOutputFolder = 'temp';
 
 // Process scss files, dump output to temp/development.css.
-const scss = (done) => gulp.src('src/css/index.scss')
-  .pipe(sass({
-    includePaths: 'src/css'
-  }).on('error', sass.logError))
-  .pipe(rename('development.css'))
-  .pipe(gulp.dest('temp'))
-  .on('end', () => {
-    log('Sass files compiled.');
-    done();
-  });
+const scss = (done) => {
+  // Because all our scss filenames begin with underscores, they are technically partials.
+  // If you're a stickler for the scss spec, then this is incorrect for _index.scss.
+  // And it makes gulp-sass angry.
+  // We're going to work around it for now by importing _index.scss into a temp file: shim.scss.
+  if (!fs.existsSync(`./${tempOutputFolder}`)) {
+    fs.mkdirSync(`./${tempOutputFolder}`);
+  }
+  fs.writeFileSync(`./${tempOutputFolder}/shim.scss`, "@import './index'");
+
+  return gulp.src(`${tempOutputFolder}/shim.scss`)
+    .pipe(sass({
+      includePaths: 'src/css'
+    }).on('error', sass.logError))
+    .pipe(rename('development.css'))
+    .pipe(gulp.dest(tempOutputFolder))
+    .on('end', () => {
+      log('Sass files compiled.');
+      done();
+    });
+};
 
 // Move scss output files into live usage, no further processing.
-const devCSS = (done) => gulp.src('temp/development.css')
+const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
   .on('end', () => {
@@ -75,7 +88,7 @@ const devCSS = (done) => gulp.src('temp/development.css')
   });
 
 // Purge and minify scss output for use on the homepage.
-const homeCSS = (done) => gulp.src('temp/development.css')
+const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
     purgecss({
       content: [
@@ -98,7 +111,7 @@ const homeCSS = (done) => gulp.src('temp/development.css')
   });
 
 // Purge and minify scss output for use across the whole site.
-const builtCSS = (done) => gulp.src('temp/development.css')
+const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
     purgecss({
       content: [
@@ -118,15 +131,15 @@ const builtCSS = (done) => gulp.src('temp/development.css')
   });
 
 // Clear out the temp folder.
-const removeTemp = () => del([
-  'temp'
+const emptyTemp = () => del([
+  `${tempOutputFolder}/**/*`
 ]);
 
 // Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? devCSS : gulp.parallel(builtCSS, homeCSS);
 
 // Execute the full CSS build process.
-const css = gulp.series(scss, cssByEnv, removeTemp);
+const css = gulp.series(scss, cssByEnv, emptyTemp);
 
 // Build JS, CSS, then the site, in that order.
 const build = gulp.series(rollup, css, eleventy);
