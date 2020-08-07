@@ -120,6 +120,7 @@
 	&-right {
 		margin-left: 0;
 	}
+	/*
 	&-search {
 		background: $blue;
 		border-radius: 2rem;
@@ -211,6 +212,7 @@
 			border-right: 1px solid $darkblue;
 			cursor: pointer;
 			transition: color .5s $slow-curve;
+			margin-bottom: .5rem;
 			@include phone {
 				@include screen-reader-text;
 			}
@@ -280,6 +282,8 @@
 			}
 		}
 	}
+	*/
+	/*
 	&-language {
 		background: transparent;
 		border: 0;
@@ -386,9 +390,11 @@
 			}
 		}
 	}
+	*/
 }
 .fixed.header {
 	box-shadow: $button-shadow-hover;
+	font-size: 1rem;
 	@include ie {
 		.logo-mark {
 			max-height: 3.5rem;

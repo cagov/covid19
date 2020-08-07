@@ -9,37 +9,6 @@ $desktop-large:     112.5em; //1800px
 $max-width:          93.75em; //1500px
 $max-width-text:     64em;    //1500px
 
-/* Colors */
-$blue: #003d9d;
-$darkblue: #1f2574;
-$lightblue: #92c5de;
-$lightestblue: #f2f5fc;
-$yellow: #ecca00;
-$orange: #ff8000;
-$black: #000;
-$white: #fff;
-$lightgray: #f0f0f0;
-
-$primary: $blue;
-$secondary: $orange;
-$text: $black;
-/*transitions*/
-$basic: all .2s ease-in-out;
-$bounce: all .6s cubic-bezier(.5,1.65,.4,.8);
-$bounce-curve: cubic-bezier(.5,1.65,.4,.8);
-
-$slow: all .5s cubic-bezier(.57,.2,.21,.89);
-$slow-curve: cubic-bezier(.57,.2,.21,.89);
-$veryslow: all 1s cubic-bezier(.57,.2,.21,.89);
-
-/*shaddows*/
-$shadow: 0 .5rem 1.25rem 0 rgba(0,0,0,.2);
-$shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
-
-$button-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.2);
-$button-shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
-$button-shadow-active: inset 0 .5rem 1rem 0 rgba(0,0,0,.3);
-
 @mixin small-phone {
   @media (max-width: #{$small-phone}) {
     @content;
@@ -80,6 +49,38 @@ $button-shadow-active: inset 0 .5rem 1rem 0 rgba(0,0,0,.3);
     @content;
   }
 }
+/* Colors */
+$blue: #003d9d;
+$darkblue: #1f2574;
+$lightblue: #92c5de;
+$lightestblue: #f2f5fc;
+$yellow: #ecca00;
+$orange: #ff8000;
+$black: #000;
+$white: #fff;
+$lightgray: #f0f0f0;
+
+$primary: $blue;
+$secondary: $orange;
+$text: $black;
+
+$headline: 'Montserrat', sans-serif;
+$body: 'Roboto', sans-serif;
+
+$basic: all .2s ease-in-out;
+$bounce: all .6s cubic-bezier(.5,1.65,.4,.8);
+$bounce-curve: cubic-bezier(.5,1.65,.4,.8);
+
+$slow: all .5s cubic-bezier(.57,.2,.21,.89);
+$slow-curve: cubic-bezier(.57,.2,.21,.89);
+$veryslow: all 1s cubic-bezier(.57,.2,.21,.89);
+
+$shadow: 0 .5rem 1.25rem 0 rgba(0,0,0,.2);
+$shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
+
+$button-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.2);
+$button-shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
+$button-shadow-active: inset 0 .5rem 1rem 0 rgba(0,0,0,.3);
 
 %wrap {
   width: 100%;
@@ -134,6 +135,119 @@ $button-shadow-active: inset 0 .5rem 1rem 0 rgba(0,0,0,.3);
     p {
 			margin-bottom: 1.8rem;
     }
+	}
+}
+%headline1 {
+  font-family: $headline;
+	font-size: 2rem;
+	@include tablet {
+		font-size: 2.2rem;
+	}
+	@include desktop {
+		font-size: 2.5rem;
+	}
+	@include md {
+		font-size: 2.8rem;
+	}
+	@include lg {
+		font-size: 3.2rem;
+	}
+}
+%headline2 {
+  font-family: $headline;
+	font-size: 1.5rem;
+	line-height: 1.1;
+	@include tablet {
+		font-size: 1.8rem;
+	}
+	@include desktop {
+		font-size: 2.1rem;
+	}
+	@include md {
+		font-size: 2.4rem;
+	}
+	@include lg {
+		font-size: 2.7rem;
+	}
+}
+%headline3 {
+  font-family: $headline;
+	font-size: 1.5rem;
+	@include tablet {
+		font-size: 1.6rem;
+	}
+	@include desktop {
+		font-size: 1.7rem;
+	}
+	@include md {
+		font-size: 1.9rem;
+	}
+	@include lg {
+		font-size: 2.3rem;
+	}
+}
+%headline4 {
+  font-family: $headline;
+	font-size: 1.25rem;
+	@include tablet {
+		font-size: 1.35rem;
+	}
+	@include desktop {
+		font-size: 1.45rem;
+	}
+	@include md {
+		font-size: 1.55rem;
+	}
+	@include lg {
+		font-size: 1.7rem;
+	}
+}
+%headline5 {
+  font-family: $headline;
+	font-size: 1rem;
+	@include tablet {
+		font-size: 1.1rem;
+	}
+	@include desktop {
+		font-size: 1.2rem;
+	}
+	@include md {
+		font-size: 1.3rem;
+	}
+	@include lg {
+		font-size: 1.4rem;
+	}
+}
+%headline6 {
+  font-family: $headline;
+	font-size: 1rem;
+	@include tablet {
+		font-size: 1.1rem;
+	}
+	@include desktop {
+		font-size: 1.15rem;
+	}
+	@include md {
+		font-size: 1.2rem;
+	}
+	@include lg {
+		font-size: 1.25rem;
+	}
+}
+%headline7 {
+  font-family: $headline;
+	font-size: .9rem;
+	@include tablet {
+		font-size: 1rem;
+	}
+	@include desktop {
+		font-size: .95rem;
+	}
+	@include md {
+		font-size: 1rem;
+	}
+	@include lg {
+		font-size: 1.1rem;
 	}
 }
 @mixin size($width, $height: $width) {
