@@ -5,19 +5,12 @@
 {% set homelinkpath = "/" + (tags | langRecord).pathpostfix %}
 {% set homeLink = "https://covid19.ca.gov" + homelinkpath %}
 
+<header class="header fixed" role="banner">
 
-<header>
-  <a class="skippy sr-only-focusable text-center" href="#main">
-    <span class="skippy-text">{{Terms[1].Text}}</span>
-  </a>
-  <cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey>
-  <script type="module">
-    {% include "survey.js" %}
-  </script>
-  <nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse pt-0 pb-0 pb-3">
-    <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">
+  <cagov-navoverlay data-json="/menu.json"></cagov-navoverlay>
 
-<a class="header-logo" href="/">
+	<div class="header-wrap">
+		<a class="header-logo" href="/">
 			<div class="header-logo-grid">
 				<div class="header-logo-mark">
 					<svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><title>California for All</title><g class="mark-ca"><path class="logo-mark-orange" d="M48.2,83l-13.2,28.6h25.2L48.2,83z M66.7,126.9H28.1l-6,13H0.2l48.7-99.8l44.6,99.8H72.1L66.7,126.9z"/><polygon class="logo-mark-orange" points="117,42.9 117,122.4 146.9,122.4 146.9,139.9 97.1,139.9 97.1,42.9"/><polygon class="logo-mark-orange" points="170.2,42.9 170.2,122.4 200,122.4 200,139.9 150.2,139.9 150.2,42.9"/></g>
@@ -30,101 +23,38 @@
 			</div>
 		</a>
 
-<ul class="utility-nav navbar-nav ml-sm-auto mobile">
-        
-        <li class="nav-item mr-0 pr-0">
-<div class="header-search" role="search">
-			<form class="header-search-form" action="{{homelinkpath}}search/">
-				<label class="header-search-label" for="header-search-site">Search</label>
-				<input name="q" id="header-search-site" class="header-search-field" type="search" placeholder="">
-				<button class="header-search-button" aria-label="Submit Search">
-					<svg class="header-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Submit Search</title><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
-						c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"/></svg>
-				</button>
-			</form>
-		</div>
-        </li>
-
-        <li class="nav-item">
-          <div class="dropdown">
-
-<button
-            class="translate dropdown-toggle border-0 rounded-50 ml-3"
-            type="button"
-            aria-expanded="false"
-            aria-haspopup="true"
-            data-toggle="dropdown"
-            id="dropdown-menu-button"
-          >
-              {{Terms[4].Text}}
-              <svg aria-hidden="true" class="header-language-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19"><path d="M0.7,2.2l1.5-1.4C2.7,0.2,3.2,0,3.9,0s1.2,0.2,1.7,0.7L15,10l9.4-9.3c0.5-0.5,1-0.7,1.8-0.7
-                c0.7,0,1.3,0.2,1.8,0.7l1.4,1.4C29.8,2.7,30,3.2,30,3.9s-0.2,1.3-0.7,1.8L16.7,18.2c-0.5,0.5-1.1,0.7-1.8,0.7s-1.3-0.2-1.8-0.7
-                L0.7,5.7C0.2,5.2,0,4.6,0,3.9S0.2,2.7,0.7,2.2z"></path></svg>
-            </button>
-
-
-            <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
-              {% for item in page | getAltPageRows %}
-                <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
-              {% endfor %}
-              <a class="dropdown-item" href="{{homelinkpath}}translate/">{{Terms[6].Text}}</a>
-            </div>
-          </div>
-        </li>
-
-      </ul>
+    <div class="header-search" role="search">
+      <form class="header-search-form" action="{{homelinkpath}}search/">
+        <label class="header-search-label" for="header-search-site">Search</label>
+        <input name="q" id="header-search-site" class="header-search-field" type="search" placeholder="">
+        <button class="header-search-button" aria-label="Submit Search">
+          <svg class="header-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Submit Search</title><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
+            c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"/></svg>
+        </button>
+      </form>
     </div>
-  </nav>
 
-<div class="container-fluid bg-secondary-covid">
-  <nav class="container navbar navbar-expand-md">
-  
-  <button class="navbar-toggler px-0 w-100" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <div class="navbar-brand d-sm-block d-md-none float-left ml-0 text-primary text-larger bold" href="#" style="">Menu</div><div class="ca-gov-icon-menu h1 text-primary text-right mr-0 float-right display-4"></div>
-  </button>
-  <div class="collapse navbar-collapse art-menu-full" id="navbarNavDropdown">
-    <ul class="navbar-nav flex-row text-primary text-larger justify-content-between top-nav">
-      {%- for section in menuData.sections -%}
-      {%- set sectionNameRecord = pageNames | find("lang-en", section.title) -%}
-      {%- set sectionTitle = sectionNameRecord[langwptag] | default(section.title) -%}
-      {%- if section.links -%}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" 
-            href="#"
-            type="button" 
-            aria-expanded="false" 
-            aria-haspopup="true" 
-            data-toggle="dropdown" 
-            id="dropdown-menu-button-{{loop.index}}">
-            {{sectionTitle}}
-          </a>
-          <div class="dropdown-menu" id="dropdown-{{loop.index}}" aria-labelledby="dropdown-menu-button-{{loop.index}}">
-            {%- for link in section.links -%}
-              {%- set href = link.href | default(homelinkpath+link.slug+"/#top")-%}
-              {%- if link.slug -%}
-                {%- set pageNameRecord = pageNames | find("slug", link.slug) -%}
-                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(link.slug)  -%}
-              {%- else -%}
-                {%- set pageNameRecord = pageNames | find("href", href) -%}
-                {%- set pageName = pageNameRecord[langwptag] | default(pageNameRecord["lang-en"]) | default(href) -%}
-              {%- endif -%}
-              <a class="dropdown-item" href="{{href}}">{{pageName}}</a>
-            {%- endfor -%}
-          </div>
-        </li>
-      {%- else -%}
-        <li class="nav-item">
-          {%- set href = section.href -%}
-          {%- if href === "/" -%}
-          {%- set href = homelinkpath -%}
-          {%- endif %}
-          <a class="nav-link" href="{{href}}">{{sectionTitle}}</a>
-        </li>
-      {%- endif -%}
-    {%- endfor -%}
-    </ul>
-  </div>
-</nav>
-</div>
+    <div class="dropdown">
+      <button
+        class="translate dropdown-toggle border-0 rounded-50 ml-3"
+        type="button"
+        aria-expanded="false"
+        aria-haspopup="true"
+        data-toggle="dropdown"
+        id="dropdown-menu-button"
+      >
+          {{Terms[4].Text}}
+          <svg aria-hidden="true" class="header-language-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19"><path d="M0.7,2.2l1.5-1.4C2.7,0.2,3.2,0,3.9,0s1.2,0.2,1.7,0.7L15,10l9.4-9.3c0.5-0.5,1-0.7,1.8-0.7
+            c0.7,0,1.3,0.2,1.8,0.7l1.4,1.4C29.8,2.7,30,3.2,30,3.9s-0.2,1.3-0.7,1.8L16.7,18.2c-0.5,0.5-1.1,0.7-1.8,0.7s-1.3-0.2-1.8-0.7
+            L0.7,5.7C0.2,5.2,0,4.6,0,3.9S0.2,2.7,0.7,2.2z"></path></svg>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
+          {% for item in page | getAltPageRows %}
+            <a class="dropdown-item" rel="alternate" lang="{{item.langcode}}" hreflang="{{item.langcode}}" href="{{item.url}}">{{item.langname}}</a>
+          {% endfor %}
+          <a class="dropdown-item" href="{{homelinkpath}}translate/">{{Terms[6].Text}}</a>
+        </div>
+      </div>
+	</div>
 
 </header>

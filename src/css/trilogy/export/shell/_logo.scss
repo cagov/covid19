@@ -1,0 +1,26 @@
+.logo {
+  &-mark {
+    width: 100%;
+    @include ie {
+      max-height: 5rem;
+    }
+    &-orange {
+      fill: $orange;
+      transition: fill .5s $slow-curve;
+    }
+    &-white {
+      fill: $white;
+      transition: fill .5s $slow-curve;
+    }
+  }
+  &:hover {
+    .logo {
+      &-orange {
+        fill: $white
+      }
+      &-white {
+        fill: $orange;
+      }
+    }
+  }
+}

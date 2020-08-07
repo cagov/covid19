@@ -8,3 +8,5 @@ import './feature-detect/webp.js';
 import '@cagov/pagerating';
 import './arrow/index.js';
 import './search/index.js';
+import './menu/index.js';
+import './search/index.js';

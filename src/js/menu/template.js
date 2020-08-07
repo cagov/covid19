@@ -48,8 +48,7 @@ export default function (data) {
   </nav>
   <div class="mobile-menu-close"></div>
 
-  <div class="header-wrap">
-
+  <div>
     <button class="menu-trigger open-menu" aria-label="Open Menu" aria-haspopup="true" aria-expanded="false" aria-owns="mainMenu" aria-controls="mainMenu">
       <div class="hamburger">
         <div class="hamburger-box">
@@ -58,6 +57,5 @@ export default function (data) {
       </div>
       <div class="menu-trigger-label menu-label">Menu</div>
     </button>
-
   </div>`;
 }

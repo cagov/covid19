@@ -1,0 +1,8 @@
+.basic-wrap {
+	text-align: left;
+	margin: 0 auto;
+	@extend %block-padding-small;
+	transition: $slow;
+	@extend %basic-text;
+	max-width: $tablet;
+}

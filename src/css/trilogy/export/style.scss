@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;500;700&display=swap');
+
+@import "global/globals";
+@import "global/normalize";
+@import "shell/header";
+@import "shell/logo";
+@import "shell/hamburger";
+@import "shell/expanded-menu";
+@import "shell/footer";
+@import "shell/social";
+@import "shell/button";
+@import "shell/slick";
+@import "shell/video-modal";
+@import "global/globals";
+@import "home/hero";
+@import "home/stats";
+@import "home/alert";
+@import "home/video";
+@import "home/info";
+@import "home/news";
+
+html {
+	position: relative;
+}
+body {
+	background-color: $darkblue;
+	font-family: $body;
+	color: $text;
+	text-align: center;
+	&.mobile-menu-active {
+		overflow: hidden;
+	}
+}
+.screen-reader {
+	@include screen-reader-text;
+}
+.skip-to-main {
+	background: $white;
+	@include fixed(left .5rem top .5rem);
+	z-index: 1000000;
+	padding: 1rem;
+	color: $darkblue;
+	text-transform: uppercase;
+	display: block;
+	transition: $slow;
+	transform: translateY(calc(-100% - .5rem));
+	border-radius: 2rem;
+	@include ie {
+		transform: translateY(-115%);
+	}
+	&:focus {
+		transform: translateY(0);
+		outline: 2px solid $darkblue;
+	}
+}
+
+a,
+link,
+button,
+input,
+select,
+textarea {
+	&:focus-within {
+		outline: 2px solid $yellow;
+	}
+	&:focus {
+		outline: 0;
+	}
+}
+
+.home-layers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
