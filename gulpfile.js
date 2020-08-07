@@ -43,8 +43,7 @@ const eleventy = (done) => {
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   }).on('close', () => {
-    browsersync.reload();
-    done();
+    reload(done);
   });
 };
 
@@ -64,9 +63,8 @@ const tempOutputFolder = 'temp';
 // Process scss files, dump output to temp/development.css.
 const scss = (done) => {
   // Because all our scss filenames begin with underscores, they are technically partials.
-  // If you're a stickler for the scss spec, then this is incorrect for _index.scss.
-  // And it makes gulp-sass angry.
-  // We're going to work around it for now by importing _index.scss into a temp file: shim.scss.
+  // This makes gulp-sass angry.
+  // We'll happy hack around this by importing _index.scss into a temp file: shim.scss.
   if (!fs.existsSync(`./${tempOutputFolder}`)) {
     fs.mkdirSync(`./${tempOutputFolder}`);
   }
