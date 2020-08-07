@@ -37,6 +37,133 @@ main {
 	}
   }
 
+
+  /* Header logo */
+
+  .header {
+	background: $darkblue;
+	width: 100%;
+	@include fixed(left 0 top 0);
+	z-index: 1000;
+	transition: .4s box-shadow $slow-curve;
+	&-wrap {
+		@extend %wrap;
+		display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+		position: relative;
+		@include desktop {
+			flex-wrap: nowrap;
+		}
+	}
+	&-logo {
+		margin: 0;
+		width: 100%;
+		order: 4;
+		@include phone {
+			background: #0d3892;
+		}
+		@include tablet {
+			background: transparent;
+			order: 0;
+			width: auto;
+		}
+		&-grid {
+			display: flex;
+	    flex-direction: row;
+	    flex-wrap: nowrap;
+	    align-items: center;
+		}
+		&-mark {
+			width: 6rem;
+			display: block;
+			background: $blue;
+			padding: .5rem .75rem;
+			box-shadow: $button-shadow;
+			transition: width .4s $slow-curve, background .4s $slow-curve;
+			overflow-y: hidden;
+			@include desktop {
+				width: 8rem;
+				padding: 1rem .75rem;
+			}
+		}
+		&-text {
+	    text-align: left;
+	    padding-left: .75rem;
+	    @include phone {
+	    }
+	    &-url {
+	      @extend %headline4;
+	      color: $orange;
+	      text-transform: uppercase;
+	      display: block;
+				transition: color .4s $slow-curve;
+	    }
+	    &-title {
+	      @extend %headline7;
+	      color: $white;
+	      white-space: nowrap;
+	      display: block;
+				transition: color .4s $slow-curve;
+	      @include phone {
+	        font-size: 1.2rem;
+	      }
+	    }
+	  }
+		&:hover {
+			.header-logo {
+				&-mark {
+					background: $white;
+		    }
+				&-text {
+					&-url {
+						color: $white;
+					}
+					&-title {
+						color: $orange;
+					}
+				}
+			}
+			.logo-mark {
+				&-orange {
+					fill: $darkblue
+				}
+				&-white {
+					fill: $orange;
+				}
+			}
+		}
+		&:focus {
+			.header-logo {
+				&-mark {
+					background: $white;
+					box-shadow: 0 0 0 4px $yellow, $shadow-hover;
+		    }
+				&-text {
+					&-url {
+						color: $white;
+					}
+					&-title {
+						color: $orange;
+					}
+				}
+			}
+			.logo-mark {
+				&-orange {
+					fill: $darkblue
+				}
+				&-white {
+					fill: $orange;
+				}
+			}
+		}
+	}
+	&-right {
+		margin-left: 0;
+	}
+}
+
 /* header Search form */
   
 .header-search {
