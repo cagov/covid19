@@ -27,6 +27,12 @@ const server = (done) => {
   done();
 };
 
+// Trigger a Browsersync refresh.
+const reload = (done) => {
+  browsersync.reload();
+  done();
+};
+
 // Empty out the deployment folder.
 const clean = () => del([
   'docs'
@@ -136,7 +142,7 @@ const emptyTemp = () => del([
 ]);
 
 // Switch CSS outputs based on environment variable.
-const cssByEnv = (process.env.NODE_ENV === 'development') ? devCSS : gulp.parallel(builtCSS, homeCSS);
+const cssByEnv = (process.env.NODE_ENV === 'development') ? gulp.series(devCSS, reload) : gulp.parallel(builtCSS, homeCSS);
 
 // Execute the full CSS build process.
 const css = gulp.series(scss, cssByEnv, emptyTemp);
@@ -146,19 +152,26 @@ const build = gulp.series(rollup, css, eleventy);
 
 // Watch files for changes, trigger rebuilds.
 const watcher = () => {
-  // Watch the following files for CSS-related changes.
-  gulp.watch([
-    // CSS files, of course.
-    './src/css/**/*',
-    // Templates too, in case we need a re-purge.
+  const cssWatchFiles = [
+    './src/css/**/*'
+  ];
+  const eleventyWatchFiles = [
     './pages/**/*',
-    // Do not watch translations because it was in .eleventyignore.
     '!./pages/translations/**/*',
-    // Do not watch CSS and JS _includes. We will trigger those rebuilds manually.
     '!./pages/_includes/*.(css|js)',
-    // Do not watch htmlmap.json because it was in .gitignore.
     '!./pages/_data/htmlmap.json'
-  ], gulp.series(css, eleventy));
+  ];
+
+  // Watch for CSS and Eleventy files based on environment.
+  if (process.env.NODE_ENV === 'development') {
+    // In dev, we watch, build, and refresh CSS and Eleventy separately. Much faster.
+    gulp.watch(cssWatchFiles, gulp.series(css));
+    gulp.watch(eleventyWatchFiles, gulp.series(eleventy));
+  } else {
+    // In prod, we must watch/rebuild CSS and Eleventy together.
+    // This covers both re-purging CSS (due to template changes) and CSS embed into templates.
+    gulp.watch([...cssWatchFiles, ...eleventyWatchFiles], gulp.series(css, eleventy));
+  }
 
   // Watch for changes to JS files.
   gulp.watch([
@@ -171,7 +184,7 @@ const watcher = () => {
   ], eleventy);
 };
 
-// Build the site before firing up the watcher, browsersync.
+// Build the site, then fire up the watcher and browsersync.
 const watch = gulp.series(build, gulp.parallel(watcher, server));
 
 // Nukes the deployment directory prior to build. Totally clean.
