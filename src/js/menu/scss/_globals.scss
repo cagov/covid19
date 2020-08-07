@@ -1,0 +1,310 @@
+$max-width:          81.25em; //1300px
+$small-phone:        20.5em;  //325px
+$tablet:             48em;    //768px
+$tablet-wide:        64em;    //1024px
+$desktop:            81.25em; //1300px
+$desktop-medium:     100em;   //1600px
+$desktop-large:     112.5em; //1800px
+$max-width:          93.75em; //1500px
+$max-width-text:     64em;    //1500px
+
+@mixin small-phone {
+  @media (max-width: #{$small-phone}) {
+    @content;
+  }
+}
+@mixin phone {
+  @media (max-width: #{$tablet-wide}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+@mixin tablet-wide {
+  @media (min-width: #{$tablet-wide}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: #{$desktop-medium}) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: #{$desktop-large}) {
+    @content;
+  }
+}
+@mixin ie {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+/* Colors */
+$blue: #003d9d;
+$darkblue: #1f2574;
+$lightblue: #92c5de;
+$lightestblue: #f2f5fc;
+$yellow: #ecca00;
+$orange: #ff8000;
+$black: #000;
+$white: #fff;
+$lightgray: #f0f0f0;
+
+$primary: $blue;
+$secondary: $orange;
+$text: $black;
+
+$headline: 'Montserrat', sans-serif;
+$body: 'Roboto', sans-serif;
+
+$basic: all .2s ease-in-out;
+$bounce: all .6s cubic-bezier(.5,1.65,.4,.8);
+$bounce-curve: cubic-bezier(.5,1.65,.4,.8);
+
+$slow: all .5s cubic-bezier(.57,.2,.21,.89);
+$slow-curve: cubic-bezier(.57,.2,.21,.89);
+$veryslow: all 1s cubic-bezier(.57,.2,.21,.89);
+
+$shadow: 0 .5rem 1.25rem 0 rgba(0,0,0,.2);
+$shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
+
+$button-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.2);
+$button-shadow-hover: 0 .5rem 1.5rem 0 rgba(0,0,0,.3);
+$button-shadow-active: inset 0 .5rem 1rem 0 rgba(0,0,0,.3);
+
+%wrap {
+  width: 100%;
+  max-width: $desktop;
+  margin: 0 auto;
+  position: relative;
+}
+
+%block-padding {
+	padding: 2.5rem 1.5rem;
+	@include tablet {
+		padding: 4rem 2rem;
+	}
+	@include desktop {
+		padding: 6rem 2rem;
+	}
+	@include md {
+		padding: 8rem 2rem;
+	}
+	@include lg {
+		padding: 10rem 2rem;
+	}
+}
+%basic-text {
+	line-height: 1.4;
+	font-size: 1.05rem;
+	text-align: left;
+  p {
+    margin-bottom: 1rem;
+    &last-of-type {
+      margin-bottom: 0;
+    }
+  }
+	@include tablet {
+		font-size: 1.2em;
+    p {
+			margin-bottom: 1.5rem;
+    }
+	}
+	@include desktop {
+		font-size: 1.3rem;
+    p {
+			margin-bottom: 1.4rem;
+    }
+	}
+	@include md {
+    p {
+			margin-bottom: 1.6rem;
+    }
+	}
+	@include lg {
+    p {
+			margin-bottom: 1.8rem;
+    }
+	}
+}
+%headline1 {
+  font-family: $headline;
+	font-size: 2rem;
+	@include tablet {
+		font-size: 2.2rem;
+	}
+	@include desktop {
+		font-size: 2.5rem;
+	}
+	@include md {
+		font-size: 2.8rem;
+	}
+	@include lg {
+		font-size: 3.2rem;
+	}
+}
+%headline2 {
+  font-family: $headline;
+	font-size: 1.5rem;
+	line-height: 1.1;
+	@include tablet {
+		font-size: 1.8rem;
+	}
+	@include desktop {
+		font-size: 2.1rem;
+	}
+	@include md {
+		font-size: 2.4rem;
+	}
+	@include lg {
+		font-size: 2.7rem;
+	}
+}
+%headline3 {
+  font-family: $headline;
+	font-size: 1.5rem;
+	@include tablet {
+		font-size: 1.6rem;
+	}
+	@include desktop {
+		font-size: 1.7rem;
+	}
+	@include md {
+		font-size: 1.9rem;
+	}
+	@include lg {
+		font-size: 2.3rem;
+	}
+}
+%headline4 {
+  font-family: $headline;
+	font-size: 1.25rem;
+	@include tablet {
+		font-size: 1.35rem;
+	}
+	@include desktop {
+		font-size: 1.45rem;
+	}
+	@include md {
+		font-size: 1.55rem;
+	}
+	@include lg {
+		font-size: 1.7rem;
+	}
+}
+%headline5 {
+  font-family: $headline;
+	font-size: 1rem;
+	@include tablet {
+		font-size: 1.1rem;
+	}
+	@include desktop {
+		font-size: 1.2rem;
+	}
+	@include md {
+		font-size: 1.3rem;
+	}
+	@include lg {
+		font-size: 1.4rem;
+	}
+}
+%headline6 {
+  font-family: $headline;
+	font-size: 1rem;
+	@include tablet {
+		font-size: 1.1rem;
+	}
+	@include desktop {
+		font-size: 1.15rem;
+	}
+	@include md {
+		font-size: 1.2rem;
+	}
+	@include lg {
+		font-size: 1.25rem;
+	}
+}
+%headline7 {
+  font-family: $headline;
+	font-size: .9rem;
+	@include tablet {
+		font-size: 1rem;
+	}
+	@include desktop {
+		font-size: .95rem;
+	}
+	@include md {
+		font-size: 1rem;
+	}
+	@include lg {
+		font-size: 1.1rem;
+	}
+}
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+@mixin aspect($x,$y) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+  	padding-top: $padding;
+}
+@mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+@mixin screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important;
+	&:focus {
+		background: $secondary;
+		color: $white;
+		clip: auto !important;
+		display: inline-block;
+		font-size: 1rem;
+		height: auto;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 100000;
+		line-height: normal;
+		padding: .5rem;
+		width: auto;
+	}
+}
+%clearfix {
+  &::before,
+  &::after {
+    display: table;
+    content: '';
+  }
+  &::after {
+    clear: both;
+  }
+}
+%slide-up {
+	transition: $veryslow;
+	opacity: 0;
+	transform: translateY(3rem);
+}
+%slide-up-reveal {
+	transition: $bounce;
+	opacity: 1;
+	transform: translateY(0);
+}
+@import "./positioning";
