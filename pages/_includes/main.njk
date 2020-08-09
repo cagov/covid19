@@ -8,6 +8,9 @@
 {% set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" %}
 {% set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))%}
 
+{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
+{% set Terms = JSON.Table3 %}
 
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
@@ -81,10 +84,10 @@
             <div class="h3 text-primary mt-n3 pt-2">
               <span class="ca-gov-icon-people h2 bold text-primary" aria-hidden="true" ></span> {{7|_statsdata_}}</div>
             </div>  
-          </div>     
+          </div>
           <div class="text-center pt-3 pb-3">
-            <p>{{FormattedUpdateText}}.</p> 
-            <p style="font-size:.8em;">Due to issues with the state’s electronic laboratory reporting system, these data represent an underreporting of actual positive cases in one single day.</p>
+            <p>{{FormattedUpdateText}}.</p>
+            <p class="text-disclaim">{{Terms[11].Text}}</p>
           </div>
           <div class="text-center pt-3 pb-3">
             <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="/roadmap-counties/#track-data">
