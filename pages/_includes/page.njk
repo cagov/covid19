@@ -34,6 +34,7 @@
     {% for item in page | getAltPageRows -%}
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
+
     {% if env.dev %}
       <link rel="stylesheet" type="text/css" href="/css/build/development.css">
     {% else %}
@@ -41,6 +42,7 @@
         {% include "built.css" %}
       </style>
     {% endif %}
+    
     <!-- WC polyfill for legacy Edge -->
     <script>
       (function () {
