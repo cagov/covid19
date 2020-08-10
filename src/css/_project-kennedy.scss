@@ -46,6 +46,7 @@ header {
 	&-wrap {
 		@extend %wrap;
 		display: flex;
+		padding-right: 4.375em; // added space for hamburger menu button
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -57,9 +58,6 @@ header {
 	&-logo {
 		width: 100%;
 		order: 4;
-		@include phone {
-			background: #0d3892;
-		}
 		@include tablet {
 			background: transparent;
 			order: 0;
@@ -652,4 +650,13 @@ header {
 	  51% {
 		  opacity: 1;
 	  }
+  }
+
+
+  /* haburger menu button to the right */
+
+  .fixed cagov-navoverlay .menu-trigger {
+	position: fixed;
+	top: 0;
+	right: 0px;
   }

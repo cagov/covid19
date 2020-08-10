@@ -15,8 +15,9 @@
 			flex-wrap: nowrap;
 		}
 	}
+	/*
 	&-logo {
-		margin: 0 0 0 64px; /* modified to support nav button outside header wrap */
+		margin: 0 0 0 64px; 
 		width: 100%;
 		order: 4;
 		@include phone {
@@ -117,6 +118,9 @@
 			}
 		}
 	}
+	*/
+
+	
 	&-right {
 		margin-left: 0;
 	}
