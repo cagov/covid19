@@ -660,3 +660,20 @@ header {
 	top: 0;
 	right: 0px;
   }
+  .fixed cagov-navoverlay.reveal-items .menu-trigger:focus {
+	background: #fff;
+  }
+
+  /* expanded menu search styles */
+  cagov-navoverlay .expanded-menu-search {
+	  margin-right:5em;
+  }
+
+  cagov-navoverlay .expanded-menu-search-field:focus {
+	  outline: none;
+	  color: #fff;
+  }
+  cagov-navoverlay .expanded-menu-search:hover .expanded-menu-search-field:focus {
+	outline: none;
+	color:$darkblue;
+}
