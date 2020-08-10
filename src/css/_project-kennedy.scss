@@ -5,10 +5,7 @@ header {
 	box-shadow: 0px 0px 15px 0px rgba(0, 21, 97, 0.5);
 }
 
-main {
-	display: block;
-  padding-top: 82px
-}
+
 
 /* Header logo, search and translate */
 
@@ -292,6 +289,7 @@ main {
 			}
 		}
 		&:focus {
+			outline: none;
 			@include placeholder {
 				color: $darkblue;
 			}
@@ -306,7 +304,7 @@ main {
 		padding: .5rem;
 		margin-right: .15rem;
 		position: relative;
-		top:-3px;
+		//top:-3px;
 		flex: 1 0 auto;
 		transition: transform .5s $bounce-curve;
 		&-svg {
@@ -324,6 +322,7 @@ main {
 		}
 		&:focus {
 			background: $blue;
+			outline: none;
 			.header-search-button {
 				&-svg {
 					fill: $white;;
@@ -486,8 +485,8 @@ main {
 @media (max-width: 768px) {
 
 	main {
-		padding-top: 237px
-	}
+		padding-top: 110px
+  }
 
 	.hero-text {
 
