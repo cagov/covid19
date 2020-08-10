@@ -1,0 +1,13 @@
+@import "global/globals";
+@import "home/hero";
+@import "home/stats";
+@import "home/alert";
+@import "home/video";
+@import "home/info";
+@import "home/news";
+
+.home-layers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

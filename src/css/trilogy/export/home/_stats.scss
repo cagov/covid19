@@ -1,0 +1,204 @@
+.hero-stats {
+	background: $darkblue;
+	padding: 2rem 1.5rem;
+	box-shadow: 0 0.5rem 1.5rem 0 rgba(0,0,0,.3);
+	align-self: flex-end;
+	@include tablet {
+		background: $blue;
+		padding: 2rem;
+		margin: 3rem auto 2rem;
+		width: 50%;
+		transition-delay: .9s;
+	}
+	@include tablet-wide {
+		padding: 2.25rem;
+		width: 40%;
+		margin: 3.5rem auto 2rem;
+	}
+	@include desktop {
+		padding: 3rem;
+		margin: 4rem auto 2rem;
+	}
+	&-headline {
+		font-family: $headline;
+		color: $white;
+		font-size: 2rem;
+		@include tablet {
+			font-size: 1.4rem;
+		}
+		@include tablet-wide {
+			font-size: 1.8rem;
+		}
+		@include desktop {
+			font-size: 2.4rem;
+		}
+	}
+	&-subheadline {
+		margin: .5rem auto 1rem;
+		color: $white;
+		font-weight: 300;
+		font-size: .85rem;
+		@include tablet {
+		}
+		@include desktop {
+			font-size: 1rem;
+		}
+	}
+	&-tabs {
+		list-style: none;
+		margin: 2rem auto 1rem;
+		padding: 0;
+		&-item {
+			padding: 0;
+			display: inline-block;
+			&.active {
+				.hero-stats-tabs-button {
+					background: $lightblue;
+					color: $darkblue;
+					cursor: auto;
+					&:focus, &:focus-within {
+						background: $white;
+						color: $darkblue;
+						box-shadow:  0 0 0 2px $yellow;
+					}
+				}
+			}
+		}
+		&-button {
+			border: 0;
+			background: transparent;
+			border-radius: 1.25rem;
+			padding: .5rem .75rem;
+			color: $white;
+			cursor: pointer;
+			box-shadow: 0 0 0 0 rgba(0,0,0,.0);
+			transition: color .3s $slow-curve, background .3s $slow-curve, box-shadow .3s $slow-curve;
+			@include tablet {
+				font-size: 85%;
+			}
+			@include desktop {
+				font-size: 1rem;
+			}
+			&:hover {
+				background: $darkblue;
+			}
+			&:active {
+				background: $orange;
+			}
+			&:focus, &:focus-within {
+				background: $white;
+				color: $darkblue;
+				box-shadow:  0 0 0 2px $yellow;
+			}
+		}
+	}
+	&-slider {
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		.slick-slide {
+			width: 100%;
+		}
+	}
+	&-row {
+		background-color: $darkblue;
+		padding: 1.5rem .1rem;
+		border-bottom: 1px solid $blue;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		text-align: left;
+		@include tablet {
+			align-items: center;
+			background-color: $blue;
+			border-bottom: 1px solid $darkblue;
+		}
+		@include tablet-wide {
+			flex-wrap: nowrap;
+		}
+		&-label {
+			width: 100%;
+			margin-bottom: .5rem;
+			@include tablet {
+				margin-top: 0;
+			}
+			@include tablet-wide {
+				width: 25%;
+			}
+			&-text {
+				background: $blue;
+				padding: .5rem .75rem;
+				font-size: .9rem;
+				border-radius: 1rem;
+				color: $lightestblue;
+				display: inline-block;
+				white-space: nowrap;
+				@include tablet {
+					background: $darkblue;
+				}
+			}
+		}
+		&-figure {
+			flex: 1 0 auto;
+			width: 55%;
+			font-size: 2rem;
+			@include tablet {
+				padding: 0 .75rem;
+				font-size: 1.9rem;
+			}
+			@include tablet-wide {
+				width: 40%;
+			}
+			@include desktop {
+				padding: 0 1rem;
+				font-size: 2.1rem;
+			}
+		}
+		&-details {
+			font-size: 1rem;
+			font-weight: 300;
+			line-height: 1.5;
+			width: 45%;
+			@include tablet {
+				font-size: 1.05rem;
+			}
+			@include tablet-wide {
+				width: 30%;
+				font-size: 1.05rem;
+			}
+			@include desktop {
+				font-size: 1.15rem;
+			}
+		}
+	}
+	&-footer {
+		margin-top: 1.5rem;
+		&-link {
+			text-transform: uppercase;
+			color: $lightestblue;
+			border-radius: 1.25rem;
+			padding: .5rem .75rem;
+			transition: background .3s $slow-curve;
+			font-size: .85rem;
+			@include tablet {
+				font-size: 85%;
+				white-space: nowrap;
+			}
+			@include tablet-wide {
+				padding: .5rem 1rem;
+				font-size: 1rem;
+			}
+			&:hover {
+				background: $blue;
+				@include tablet {
+					background: $darkblue;
+				}
+			}
+			&:focus {
+				background: $white;
+				color: $darkblue;
+				box-shadow:  0 0 0 2px $yellow;
+			}
+		}
+	}
+}

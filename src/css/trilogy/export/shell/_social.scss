@@ -1,0 +1,35 @@
+.social {
+	display: inline-block;
+	vertical-align: middle;
+	&-link {
+		background: $orange;
+		border-radius: 50%;
+		@include size(3rem);
+		display: inline-block;
+		padding: .75rem;
+		margin: 0 .25rem;
+		transition: fill .5s $bounce-curve, transform .5s $bounce-curve;
+		@include desktop {
+		}
+		&:hover {
+			background: $lightblue;
+			transform: scale(1.1);
+			.social-icon {
+				fill: $darkblue;
+			}
+		}
+		&:focus,
+		&:focus-within {
+			background: $white !important;
+			box-shadow:  0 0 0 2px $yellow;
+			.social-icon {
+				fill: $darkblue !important;
+			}
+		}
+	}
+	&-icon {
+		@include size(100%, 100%);
+		fill: $white;
+		transition: fill .5s $bounce-curve;
+	}
+}

@@ -1,0 +1,118 @@
+.hero {
+	position: relative;
+	color: $white;
+	width: 100%;
+	@include tablet {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-content: center;
+		align-items: flex-end;
+	}
+	@include desktop {
+	}
+	&-wrap {
+		@extend %wrap;
+		position: relative;
+		z-index: 500;
+		@include tablet {
+			display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	    align-content: flex-end;
+	    align-items: flex-start;
+			padding: 1rem 1rem 0;
+		}
+		@include desktop {
+			padding: 0;
+		}
+		@include ie {
+			margin: 0;
+		}
+	}
+	&-text {
+		display: flex;
+		text-align: left;
+		padding: 1.5rem;
+		min-height: 70vh;
+		align-items: flex-end;
+		align-self: flex-end;
+		@include tablet {
+			display: flex;
+			width: 50%;
+			min-height: auto;
+	    align-self: flex-end;
+		}
+		@include tablet-wide {
+			width: 60%;
+		}
+		&-align {
+			@include size(100%);
+			@include tablet {
+				height: auto;
+			}
+		}
+	}
+	&-headline {
+		@extend %headline1;
+		margin-bottom: .5rem;
+		text-align: left;
+		color: $white;
+		font-weight: 900;
+		&:hover {
+			.hero-headline {
+				&-background {
+					background-color: $white;
+					color: $darkblue;
+				}
+			}
+		}
+		&-link {
+			&:focus {
+				outline: 3px solid $yellow;
+				.hero-headline {
+					&-background {
+						color: $blue;
+					}
+				}
+			}
+		}
+		&-background {
+			background: $lightblue;
+			color: $darkblue;
+			padding: 0 .2em;
+	    line-height: 1.2;
+			transition: background .6s $slow-curve;
+	    -moz-box-decoration-break: clone;
+	    -webkit-box-decoration-break: clone;
+	    box-decoration-break: clone;
+		}
+	}
+	&-photo {
+		@include absolute(left 0 top 0);
+		@include size(100%);
+		z-index: 1;
+		@include ie {
+			height: auto !important;
+		}
+		&-pic {
+			@include size(100%, 70vh);
+			@include absolute(left 0 top 0);
+			object-fit: cover;
+			@include tablet {
+				@include size(100%);
+			}
+		}
+		&-description {
+			@include screen-reader-text;
+		}
+		&-fade {
+			@include size(100%, 10rem);
+			background: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 100%);
+			@include absolute(left 0 top 0);
+			z-index: 100;
+		}
+	}
+}

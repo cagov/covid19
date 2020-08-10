@@ -7,7 +7,7 @@ header {
 
 main {
 	display: block;
-  padding-top: 164px
+  padding-top: 82px
 }
 
 /* Header logo, search and translate */
@@ -58,7 +58,6 @@ main {
 		}
 	}
 	&-logo {
-		margin: 0;
 		width: 100%;
 		order: 4;
 		@include phone {
@@ -136,6 +135,7 @@ main {
 		}
 		&:focus {
 			.header-logo {
+				margin: 0 0 0 64px; /* modified to support nav button outside header wrap */
 				&-mark {
 					background: $white;
 					box-shadow: 0 0 0 4px $yellow, $shadow-hover;
@@ -202,7 +202,8 @@ main {
 		animation-iteration-count: 3;
 		.header-search {
 			&-label {
-				color: $darkblue
+				color: $darkblue;
+				margin-bottom: .5rem;
 			}
 			&-field {
 				color: $darkblue;					
@@ -258,6 +259,7 @@ main {
 		cursor: pointer;
 		transition: color .5s $slow-curve;
 		position: relative;
+		margin-bottom: .5rem;
 		top: 4px;
 		@include phone {
 			@include screen-reader-text;
