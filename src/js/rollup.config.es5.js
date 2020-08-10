@@ -1,8 +1,9 @@
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import buble from '@rollup/plugin-buble';
+// import babel from '@rollup/plugin-babel';
 
 export default {
   input: 'src/js/es5.js',
@@ -21,6 +22,11 @@ export default {
       browser: true
     }),
     commonjs(),
+    /*
+    // This babel config is functional.
+    // However, buble is 4x faster and the resulting file is half the size.
+    // Going with buble for now.
+
     babel({
       babelHelpers: 'runtime',
       exclude: ['node_modules/@babel/**', 'node_modules/core-js/**'],
@@ -47,6 +53,8 @@ export default {
         ]
       ]
     }),
+    */
+    buble(),
     terser()
   ]
 };
