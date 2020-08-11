@@ -31,5 +31,11 @@ class CAGOVOverlayNav extends window.HTMLElement {
       );
     }
   }
+  /*
+  When you click on a menu header on mobile need to:
+    document.querySelector('.athing').offsetHeight
+    after setting max-height to big number
+    but keep hidden with position:absolute and visibility hidden
+  */
 }
 window.customElements.define('cagov-navoverlay', CAGOVOverlayNav);
