@@ -4,7 +4,7 @@ export default function (data) {
     <div class="expanded-menu-grid">
 
       <div class="expanded-menu-search" role="search">
-        <form class="expanded-menu-search-form">
+        <form class="expanded-menu-search-form" action="/search/">
           <label class="expanded-menu-search-label" for="search-site">Search</label>
           <input id="search-site" class="expanded-menu-search-field" type="search" placeholder="What are you looking for?">
           <button class="expanded-menu-search-button" aria-label="Search the Website">

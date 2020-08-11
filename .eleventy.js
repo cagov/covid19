@@ -8,29 +8,9 @@ const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'))
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-
-function writeMenu(lang) {
-  let singleLangMenu = { "sections": [] };
-  menuData.sections.forEach(section => {
-    if(section.links) {
-      section.links.forEach(link => {
-        let linkData = getLinkInfo(link, 'lang-'+lang);
-        link.url = linkData.url;
-        link.name = linkData.name;
-      })
-      singleLangMenu.sections.push(section)
-    }
-  });
-  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
-}
-writeMenu('en');
-writeMenu('ar');
-writeMenu('es');
-writeMenu('ko');
-writeMenu('tl');
-writeMenu('vi');
-writeMenu('zh-hans');
-writeMenu('zh-hant');
+langData.languages.forEach(lang => {
+  writeMenu(lang.id);
+})
 
 let htmlmap = [];
 let htmlmapLocation = './docs/htmlmap.json';
@@ -470,4 +450,19 @@ function getLinkInfo(link, lang) {
     })
   }
   return linkData;
+}
+
+function writeMenu(lang) {
+  let singleLangMenu = { "sections": [] };
+  menuData.sections.forEach(section => {
+    if(section.links) {
+      section.links.forEach(link => {
+        let linkData = getLinkInfo(link, 'lang-'+lang);
+        link.url = linkData.url;
+        link.name = linkData.name;
+      })
+      singleLangMenu.sections.push(section)
+    }
+  });
+  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
