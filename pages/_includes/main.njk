@@ -286,39 +286,102 @@
 
 
 
+<!-- PEOPLE WANTS TO KNOW SECTION -->
+<faq-section>
+<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
+<div class="faq-twitter-wrap">
 
-
-  <section class="padded faq-twitter mt-5" role="region" aria-labelledby="want-to-know">
-    <h2 class="headline"><span class="headline-link" id="want-to-know">People want to know</span></h2>
-    <div class="faq-people">
-      {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
       {% set JSON = JSONraw | jsonparse %}
       {% set questionLinks1 = JSON.Table1 %}
       {% set questionLinks2 = JSON.Table2 %}
 
-      <div class="faq trigger reveal">
-        {% for item in questionLinks1 %}
-          <article class="faq-item trigger reveal">
-            <a class="faq-item-link" href="{{ item.url }}">
-              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
-              <cwds-arrow />
-            </a>
-          </article>
-        {% endfor %}
-      </div>
+
+
+	<div class="faq trigger">
+		<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
+{% for item in questionLinks1 %}
+		<article class="faq-item trigger">
     
-      <div class="faq trigger reveal">
-        {% for item in questionLinks2 %}
-          <article class="faq-item trigger reveal">
-            <a class="faq-item-link" href="{{ item.url }}">
-              <h3 class="faq-item-headline">{{ item.text | safe }}</h3>
-              <cwds-arrow />
-            </a>
-          </article>
-        {% endfor %}
-      </div>
-    </div>
-    </section>
+		<a class="faq-item-link" href="{{ item.url }}">
+			<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+
+			<figure class="faq-icon">
+				<span class="faq-icon-circle"></span>
+				<span class="faq-icon-arrow-wrapper">
+					<span class="faq-icon-arrow">
+						<span class="faq-icon-arrow-svg">
+							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+					<span class="faq-icon-arrow">
+						<span class="faq-icon-arrow-svg">
+							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+				</span>
+			</figure>
+		</a>
+   
+		</article>
+ {% endfor %}
+
+
+	<!--	<article class="faq-item trigger">
+    {% for item in questionLinks2 %}
+		<a class="faq-item-link" href="{{ item.url }}">
+			<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+			<figure class="faq-icon">
+				<span class="faq-icon-circle"></span>
+				<span class="faq-icon-arrow-wrapper">
+					<span class="faq-icon-arrow">
+						<span class="faq-icon-arrow-svg">
+							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+					<span class="faq-icon-arrow">
+						<span class="faq-icon-arrow-svg">
+							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+				</span>
+			</figure>
+		</a>
+    {% endfor %}
+		</article>
+-->
+		
+
+		<a class="button orange-button trigger" href="/">
+			<div class="button-label">More Questions</div>
+			<figure class="button-icon">
+				<span class="button-primary-circle"></span>
+				<span class="button-arrow-wrapper">
+					<span class="button-arrow">
+						<span class="button-inline-svg">
+							<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+					<span class="button-arrow">
+						<span class="button-inline-svg">
+							<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+						</span>
+					</span>
+				</span>
+			</figure>
+		</a>
+
+	</div>
+
+	<div class="twitter-feed trigger">
+		<a class="twitter-timeline" data-height="400" data-width="100%" href="https://twitter.com/CAPublicHealth?ref_src=twsrc%5Etfw">Tweets by CAPublicHealth</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+
+</div>
+</section>
+</faq-section>
+
+  
 
 
 
