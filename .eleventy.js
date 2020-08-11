@@ -6,6 +6,12 @@ const md5 = require('md5');
 const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
+let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
+langData.languages.forEach(lang => {
+  writeMenu(lang.id);
+})
+
 let htmlmap = [];
 let htmlmapLocation = './docs/htmlmap.json';
 if(fs.existsSync(htmlmapLocation)) {
@@ -367,9 +373,12 @@ module.exports = function(eleventyConfig) {
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
+  const getLangId = tags => 
+    getLangRecord(tags).id;
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('langId', getLangId);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
@@ -422,3 +431,38 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
 };
 
+function getLinkInfo(link, lang) {
+  let linkData = {};
+  if(link.slug) {
+    pageNames.forEach(page => {
+      if(page.slug === link.slug) {
+        linkData.url = `/${page.slug}/`;
+        linkData.name = page[lang];
+      }
+    })
+  }
+  if(link.href) {
+    pageNames.forEach(page => {
+      if(page.href === link.href) {
+        linkData.url = page.href;
+        linkData.name = page[lang];
+      }
+    })
+  }
+  return linkData;
+}
+
+function writeMenu(lang) {
+  let singleLangMenu = { "sections": [] };
+  menuData.sections.forEach(section => {
+    if(section.links) {
+      section.links.forEach(link => {
+        let linkData = getLinkInfo(link, 'lang-'+lang);
+        link.url = linkData.url;
+        link.name = linkData.name;
+      })
+      singleLangMenu.sections.push(section)
+    }
+  });
+  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
+}
