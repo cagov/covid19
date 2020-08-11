@@ -77,10 +77,6 @@ header {
 			box-shadow: $button-shadow;
 			transition: width .4s $slow-curve, background .4s $slow-curve;
 			overflow-y: hidden;
-			@include desktop {
-				width: 8rem;
-				padding: 1rem .75rem;
-			}
 		}
 		&-text {
 	    text-align: left;
