@@ -8,7 +8,9 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import applyAccordionListeners from './tracking-you/index.js';
+import loadTwitterFeed from './twitter/index.js';
 window.onload = (event) => {
   applyAccordionListeners();
+  loadTwitterFeed();
 }
 import './menu/index.js';
