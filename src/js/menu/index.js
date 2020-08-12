@@ -9,6 +9,7 @@ class CAGOVOverlayNav extends window.HTMLElement {
         this.innerHTML = navTemplate(data);
         this.querySelector(".open-menu").addEventListener('click', this.toggleMainMenu.bind(this));
         this.querySelector(".expanded-menu-close-mobile").addEventListener('click', this.toggleMainMenu.bind(this));
+        this.expansionListeners();
       });
   }
   toggleMainMenu(){
@@ -31,11 +32,15 @@ class CAGOVOverlayNav extends window.HTMLElement {
       );
     }
   }
-  /*
-  When you click on a menu header on mobile need to:
-    document.querySelector('.athing').offsetHeight
-    after setting max-height to big number
-    but keep hidden with position:absolute and visibility hidden
-  */
+  expansionListeners() {
+    this.querySelectorAll('.expanded-menu-section-header-arrow').forEach(menu => {
+      menu.addEventListener('click', function(event) {
+        if(window.innerWidth < 1024){
+          event.preventDefault();
+          this.closest('.expanded-menu-section').classList.toggle('expanded');
+        }
+      })
+    })
+  }
 }
 window.customElements.define('cagov-navoverlay', CAGOVOverlayNav);
