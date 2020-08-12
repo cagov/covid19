@@ -26,17 +26,45 @@ ga('tracker3.send', 'pageview');
 {% set HelpfulJSON = WasHelpfulJSONraw | jsonparse %}
 {% set WasHelpfulStrings = HelpfulJSON.Table1 %}
 
-<cwds-pagerating 
-  data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
-  data-question="{{WasHelpfulStrings[0].undefined}}"
-  data-yes="{{WasHelpfulStrings[1].undefined}}"
-  data-no="{{WasHelpfulStrings[2].undefined}}"
-  data-comment-prompt="{{WasHelpfulStrings[3].undefined}}"
-  data-thanks-feedback="{{WasHelpfulStrings[4].undefined}}"
-  data-thanks-comments="{{WasHelpfulStrings[5].undefined}}"
-  data-submit="{{WasHelpfulStrings[6].undefined}}"
-  data-required-field="{{WasHelpfulStrings[7].undefined}}"
-></cwds-pagerating>
+
+
+<pagerating-section>
+<div class="feedback-form">
+
+    <div class="feedback-form-grid">
+
+				<div class="feedback-form-grid-col">
+
+		          <div class="js-feedback-form">
+		            <label class="feedback-form-label" id="feedback-rating">Is this page useful?</label>
+		            <button class="feedback-form-button js-feedback-yes" id="feedback-yes" aria-labelledby="feedback-rating">Yes</button>
+		            <button class="feedback-form-button js-feedback-no" id="feedback-no" aria-labelledby="feedback-rating">No</button>
+		          </div>
+
+		          <div class="feedback-form-thanks js-feedback-thanks" role="alert">Thank you for your feedback!</div>
+
+	        </div>
+
+					<div class="feedback-form-grid-col">
+
+	          <div class="feedback-form-add">
+	            <label class="feedback-form-label" for="add-feedback">Additional comments:</label>
+							<div class="feedback-form-add-grid">
+		            <textarea name="add-feedback" class="js-add-feedback feedback-form-textarea" id="add-feedback" rows="1"></textarea>
+		            <div class="feedback-form-error feedback-error" role="alert">This field required</div>
+		            <button class="feedback-form-button js-feedback-submit" type="submit" id="feedback-submit">Submit</button>
+							</div>
+	          </div>
+	          <div class="feedback-form-thanks feedback-thanks-add" role="alert">Thank you for your comments!</div>
+
+				</div>
+
+		</div>
+
+</div>
+</pagerating-section>
+
+
 
 
 
