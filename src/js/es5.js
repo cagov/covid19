@@ -8,9 +8,8 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import applyAccordionListeners from './tracking-you/index.js';
-import loadTwitterFeed from './twitter/index.js';
+// twitter widget doesn't support IE11 so not including here
 window.onload = (event) => {
   applyAccordionListeners();
-  loadTwitterFeed();
 }
 import './menu/index.js';
