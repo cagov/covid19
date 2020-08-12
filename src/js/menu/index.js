@@ -34,10 +34,19 @@ class CAGOVOverlayNav extends window.HTMLElement {
   }
   expansionListeners() {
     this.querySelectorAll('.expanded-menu-section-header-arrow').forEach(menu => {
+      if(window.innerWidth < 1024){
+        let nearestMenu = menu.closest('.expanded-menu-section');
+        if(nearestMenu) {
+          nearestMenu.querySelector('.expanded-menu-dropdown').setAttribute('aria-hidden','true')
+          menu.closest('.expanded-menu-col').setAttribute('aria-expanded','false') 
+        }
+      }
       menu.addEventListener('click', function(event) {
         if(window.innerWidth < 1024){
           event.preventDefault();
           this.closest('.expanded-menu-section').classList.toggle('expanded');
+          this.closest('.expanded-menu-col').setAttribute('aria-expanded','true')
+          this.closest('.expanded-menu-section').querySelector('.expanded-menu-dropdown').setAttribute('aria-hidden','false')
         }
       })
     })
