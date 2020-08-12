@@ -429,6 +429,13 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
+  return {
+    templateFormats: ["html", "njk"],
+    dir: {
+      input: "pages",
+      output: "docs",
+    }
+  };
 };
 
 function getLinkInfo(link, lang) {
