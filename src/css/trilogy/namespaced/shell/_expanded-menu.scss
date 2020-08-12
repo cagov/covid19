@@ -414,6 +414,7 @@ cagov-navoverlay {
     &-svg {
       fill: $white;
       width: 1rem;
+      transform: rotate(180deg);
     }
   }
 }
