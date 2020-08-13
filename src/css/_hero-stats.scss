@@ -11,10 +11,10 @@ hero-stats {
 		justify-content: center;
 		align-content: center;
 		align-items: flex-end;
-		margin-top: 50px;
+		margin-top: 65px;
 	}
 	@include desktop {
-		margin-top: 50px;
+		margin-top: 65px;
 	}
 	&-wrap {
 		@extend %wrap;
