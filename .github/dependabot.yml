@@ -7,6 +7,7 @@ updates:
     # Look for `package.json` and `lock` files in the `root` directory
     directory: "/"
     target-branch: "dependabotprs"
+     milestone: 2
     # Check the npm registry for updates every day (weekdays)
     schedule:
       interval: "daily"

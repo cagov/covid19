@@ -9,8 +9,8 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 //import './what-open-where/index.js'
+import './video/index.js';
 import applyAccordionListeners from './tracking-you/index.js';
 window.onload = (event) => {
   applyAccordionListeners();
-}
-import './video/index.js';
+};
