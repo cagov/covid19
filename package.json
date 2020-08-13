@@ -81,7 +81,8 @@
     "new:gulp:build:js": "gulp rollup",
     "new:gulp:clean": "gulp clean",
     "new:gulp:deploy": "gulp deploy",
-    "new:gulp:local": "gulp watch"
+    "new:gulp:local": "gulp watch",
+    "new:build:js:all": "rollup --config src/js/rollup.config.all.js"
   },
   "repository": {
     "type": "git",
