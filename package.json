@@ -57,7 +57,8 @@
     "watch": "onchange 'src/**' -- npm run rebuild",
     "rebuild": "npm run build && touch pages/_includes/main.njk",
     "local": "npm run build && run-p watch start",
-    "compress:img": "cd src/build && node img.js"
+    "compress:img": "cd src/build && node img.js",
+    "new:build:js:all": "rollup --config src/js/rollup.config.all.js"
   },
   "repository": {
     "type": "git",
