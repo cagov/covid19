@@ -59,7 +59,7 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "npx @11ty/eleventy --serve --quiet",
-    "build": "npm run build:rollup && npm run build:ancient && webpack --mode production && cp ./docs/css/build/built.css ./pages/_includes/built.css",
+    "build": "npm run new:gulp:build",
     "build:rollup": "rollup --config src/js/rollup.config.js && npm run build:alerts && npm run build:survey && npm run build:telehealth && npm run build:plasma",
     "build:alerts": "rollup --config src/js/alerts/rollup.config.js",
     "build:survey": "rollup --config src/js/survey/rollup.config.js",
