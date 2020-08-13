@@ -4,7 +4,14 @@
 {% else %}
   {% set langIncludeFolder="../translated-posts/" %}
 {% endif %}
-{% set lastStatDate = 1|_statsdata_ + "-" + 2|_statsdata_ %}
+
+{% set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" %}
+{% set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))%}
+
+{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set JSON = JSONraw | jsonparse %}
+{% set Terms = JSON.Table3 %}
+
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -51,6 +58,7 @@
   <body>
     {% include "header.njk" %}
     <main id="main">
+<<<<<<< HEAD
 
 
 <hero-stats>
@@ -234,6 +242,13 @@
               <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
                 <path d="M43.3,25L0,50V0L43.3,25z"></path>
               </svg>
+=======
+      <div class="container-fluid jumbotron jumbo-img inverse-hyperlink mb-0 pt-5 pb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              {% include langIncludeFolder + "home-header" + langFilePostfix + ".html" %}
+>>>>>>> gulp-build-system
             </div>
             <img class="video-thumb-photo-img" src="/img/mask-thumb.jpg" alt="wear a mask">
           </figure>
@@ -270,6 +285,7 @@
 	</a>
 
           </div>
+<<<<<<< HEAD
 
 			</div>
 		</div>
@@ -377,6 +393,66 @@
 		
 	</div>
 
+=======
+        </div>
+        <div class="row card-deck pb-3 text-center pl-3">
+          <div class="card col-md bg-secondary-covid border-0">
+          <h3 class="pb-0 unbold h5 text-primary">{{varTotalCases}}</h3>
+            <div class="h3 text-primary mt-n3 pt-0">
+              <span class="ca-gov-icon-triangle-up h1 bold text-danger" aria-hidden="true" ></span> {{3|_statsdata_}} <span class="unbold small-text">(+{{4|_statsdata_}}{{varPercentIncrease}})</span>
+            </div>
+          </div>
+          <div class="card col-md bg-secondary-covid border-0">
+            <h3 class="pb-0 unbold h4 text-primary">{{varTotalDeaths}}</h3>
+            <div class="h3 text-primary mt-n3 pt-0">
+              <span class="ca-gov-icon-triangle-up h1 bold text-danger" aria-hidden="true" ></span>{{5|_statsdata_}} <span class="unbold small-text">(+{{6|_statsdata_}}{{varPercentIncrease}})</span>
+            </div>
+          </div>
+          <div class="card col-md bg-secondary-covid border-0">
+            <h3 class="pb-0 unbold h4 text-primary">{{varTestsReported}}</h3>
+            <div class="h3 text-primary mt-n3 pt-2">
+              <span class="ca-gov-icon-people h2 bold text-primary" aria-hidden="true" ></span> {{7|_statsdata_}}</div>
+            </div>  
+          </div>
+          <div class="text-center pt-3 pb-3">
+            <p>{{FormattedUpdateText}}.</p>
+            <p class="text-disclaim">{{Terms[11].Text}}</p>
+          </div>
+          <div class="text-center pt-3 pb-3">
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="/roadmap-counties/#track-data">
+              <div class="ca-gov-icon-map text-white h2 float-left mb-1 pr-1 pt-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varCountyMap}}</div>
+            </a>
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="https://update.covid19.ca.gov/">
+              <div class="ca-gov-icon-state text-white h2 float-left mb-1 pr-1 pt-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varStateSummary}}</div>
+            </a>
+            <a class="btn btn-outline-light py-md-0 mr-3 mb-3" hreflang="en" href="/data-and-tools/">
+              <div class="ca-gov-icon-pie-chart text-white h2 float-left mb-1 pr-1 pt-lg-1"></div>
+              <div class="lead text-white pt-sm-2 pt-md-2" style="overflow: auto; font-weight: 400;">{{varDataAndTools}}</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid pb-3 pt-3 bg-secondary-covid mb-3">
+    <div class="container">
+      <div class="col-md-12 row alert-left js-disclaimer ml-0 mb-0 pb-0 mt-0">
+        {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
+      </div>
+    </div>
+  </div>
+  {% include langIncludeFolder + "find-services"  + langFilePostfix + ".html" %}
+
+  <div class="container-fluid bg-primary text-white">
+    <div class="container pb-3 pt-3 text-white">
+        {% include langIncludeFolder + "cali-working" + langFilePostfix + ".html" %} 
+        </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> gulp-build-system
 </div>
 </section>
 </faq-section>
