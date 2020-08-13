@@ -18,6 +18,8 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "acorn": ">=7.4.0",
@@ -57,7 +59,8 @@
     "watch": "onchange 'src/**' -- npm run rebuild",
     "rebuild": "npm run build && touch pages/_includes/main.njk",
     "local": "npm run build && run-p watch start",
-    "compress:img": "cd src/build && node img.js"
+    "compress:img": "cd src/build && node img.js",
+    "new:build:js:ancient": "rollup --config src/js/rollup.config.es5.js"
   },
   "repository": {
     "type": "git",
