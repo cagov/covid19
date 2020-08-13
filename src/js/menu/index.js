@@ -53,3 +53,15 @@ class CAGOVOverlayNav extends window.HTMLElement {
   }
 }
 window.customElements.define('cagov-navoverlay', CAGOVOverlayNav);
+
+// Adding shaddow on scroll
+
+var mainNav = document.querySelector('.header');
+
+window.onscroll = function() {
+  windowScroll();
+};
+
+function windowScroll() {
+    mainNav.classList.toggle("box-shadow", mainNav.scrollTop > 50 || document.documentElement.scrollTop > 50);
+}
