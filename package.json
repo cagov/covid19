@@ -18,7 +18,12 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
+<<<<<<< HEAD
     "@fullhuman/postcss-purgecss": "^2.3.0",
+=======
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+>>>>>>> es5-rollup-file
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "acorn": ">=7.4.0",
@@ -77,7 +82,8 @@
     "new:gulp:clean": "gulp clean",
     "new:gulp:deploy": "gulp deploy",
     "new:gulp:local": "gulp watch",
-    "new:build:js:all": "rollup --config src/js/rollup.config.all.js"
+    "new:build:js:all": "rollup --config src/js/rollup.config.all.js",
+    "new:build:js:ancient": "rollup --config src/js/rollup.config.es5.js"
   },
   "repository": {
     "type": "git",
