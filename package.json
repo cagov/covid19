@@ -79,6 +79,7 @@
     "new:gulp:clean": "gulp clean",
     "new:gulp:deploy": "gulp deploy",
     "new:gulp:local": "gulp watch",
+    "new:gulp:local:dev": "cross-env NODE_ENV=development gulp watch",
     "new:build:js:all": "rollup --config src/js/rollup.config.all.js",
     "new:build:js:ancient": "rollup --config src/js/rollup.config.es5.js"
   },
