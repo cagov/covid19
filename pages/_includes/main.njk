@@ -102,17 +102,6 @@
 			<h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
 			<div class="hero-stats-subheadline">In California, Updated {{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }}</div>
 
-		<!--	Stats tabs, uncomment when Last 14 days data is available 
-    <ul class="hero-stats-tabs">
-				<li class="hero-stats-tabs-item slick-active">
-					<button aria-controls="cumulative-stats" class="hero-stats-tabs-button" role="button">Cumulative</button>
-				</li>
-				<li class="hero-stats-tabs-item">
-					<button aria-controls="fortnite-stats" class="hero-stats-tabs-button" role="button">Last 14 Days</button>
-				</li>
-			</ul>
-      -->
-
 			<div class="hero-stats-slider">
 
 				<div class="hero-stats-slide" aria-hidden="true" aria-labelledby="cumulative-stats">
@@ -146,48 +135,11 @@
 						
 						</div>
 					</div>
-
 				</div>
-
-<!-- last 14 days data
-				<div class="hero-stats-slide" aria-hidden="true" aria-labelledby="fortnite-stats">
-
-					<div class="hero-stats-row">
-						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Cases</span>
-						</div>
-						<div class="hero-stats-row-figure">{{3|_statsdata_}}</div>
-						<div class="hero-stats-row-details">
-							+{{4|_statsdata_}}%
-						</div>
-					</div>
-
-					<div class="hero-stats-row">
-						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Deaths</span>
-						</div>
-						<div class="hero-stats-row-figure">{{5|_statsdata_}}</div>
-						<div class="hero-stats-row-details">
-							+{{6|_statsdata_}}%
-						</div>
-					</div>
-
-					<div class="hero-stats-row">
-						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Tests</span>
-						</div>
-						<div class="hero-stats-row-figure">{{7|_statsdata_}}</div>
-						<div class="hero-stats-row-details">
-							
-						</div>
-					</div>
-
-				</div> 
-        -->
 
 			</div>
 			<div class="hero-stats-footer">
-				<a class="hero-stats-footer-link mt-2" "roadmap-counties/#track-data">County Data</a>
+				<a class="hero-stats-footer-link mt-2" href="/roadmap-counties/#track-data">County Data</a>
         <a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">State Data</a>
          <a class="hero-stats-footer-link mt-2" href="data-and-tools/">Data tools and resources</a>
 			</div>
@@ -197,7 +149,7 @@
 			<div class="hero-alert-align">
 				<svg class="hero-alert-icon" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448"><title>Alert!</title><path d="M256 343.75v-47.5c0-4.5-3.5-8.25-8-8.25h-48c-4.5 0-8 3.75-8 8.25v47.5c0 4.5 3.5 8.25 8 8.25h48c4.5 0 8-3.75 8-8.25zM255.5 250.25l4.5-114.75c0-1.5-0.75-3.5-2.5-4.75-1.5-1.25-3.75-2.75-6-2.75h-55c-2.25 0-4.5 1.5-6 2.75-1.75 1.25-2.5 3.75-2.5 5.25l4.25 114.25c0 3.25 3.75 5.75 8.5 5.75h46.25c4.5 0 8.25-2.5 8.5-5.75zM252 16.75l192 352c5.5 9.75 5.25 21.75-0.5 31.5s-16.25 15.75-27.5 15.75h-384c-11.25 0-21.75-6-27.5-15.75s-6-21.75-0.5-31.5l192-352c5.5-10.25 16.25-16.75 28-16.75s22.5 6.5 28 16.75z"></path></svg>
 				<div class="hero-alert-text">
-                    {% include "../wordpress-posts/banner" + langFilePostfix + ".html" %}
+          {% include langIncludeFolder + "new" + langFilePostfix + ".html" %}
         </div>
 			</div>
 			<div class="hero-alert-social">
