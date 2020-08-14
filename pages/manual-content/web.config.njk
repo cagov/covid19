@@ -54,7 +54,7 @@ eleventyExcludeFromCollections: true
         </rule>
         <rule name="AddTrailingSlash BeforeStaticRewrites" stopProcessing="true">
           <match url="(^[^.]*[^/]$)" />
-          <action type="Redirect" url="{UrlEncode:{R:1}}/" />
+          <action type="Redirect" url="{R:1}/" />
         </rule>
         <rule name="Static Rewrite Rule" stopProcessing="true">
           <match url=".*" />
