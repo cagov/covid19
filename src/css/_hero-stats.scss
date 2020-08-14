@@ -339,6 +339,7 @@ hero-stats {
 		box-shadow: $shadow-hover;
 		color: $black;
 		@include tablet {
+			width: 95%;
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
@@ -348,7 +349,7 @@ hero-stats {
 			top: 2rem;
 		}
 		@include desktop {
-	
+			width: 95%;
 		}
 		&-align {
 			padding: 2rem;
