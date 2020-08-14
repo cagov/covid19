@@ -49,10 +49,7 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
-  // Switch to the all-Rollup file after it's merged.
-  const command = ['rollup', '--config', 'src/js/rollup.config.all.js'];
-  //const command = ['npm', 'run', 'build:rollup'];
-  spawn('npx', command, {
+  spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', () => {
     done();
