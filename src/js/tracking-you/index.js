@@ -25,6 +25,8 @@ export default function applyAccordionListeners() {
   function reportGA(elementType,eventString) {
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', 'click', elementType, eventString);
+      ga('tracker2.send', 'event', 'click', elementType, eventString);
+      ga('tracker3.send', 'event', 'click', elementType, eventString);
       // gtag('event','click',{'event_category':elementType,'event_label':eventString});
     } else {
       setTimeout(function() {

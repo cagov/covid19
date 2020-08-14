@@ -1443,17 +1443,17 @@ button#dropdown-menu-button:focus {
 }
 
 .accordion-alpha-primary {
-  background-image: url(/img/plus-white.svg);
-  background-position: right 1.25rem center;
-  background-size: 1rem;
-  background-repeat: no-repeat;
+    background-image: url(../img/plus-white.svg);
+    background-position: right 1.25rem center;
+    background-size: 1rem;
+    background-repeat: no-repeat;
 }
 
 .accordion-alpha-primary.bg-primary-accordion.accordion-alpha-open {
-  background-image: url(/img/minus-white.svg);
-  background-position: right 1.25rem center;
-  background-size: 1rem;
-  background-repeat: no-repeat;
+    background-image: url(../img/minus-white.svg);
+    background-position: right 1.25rem center;
+    background-size: 1rem;
+    background-repeat: no-repeat;
 }
 
 .accordion-title {
@@ -1652,10 +1652,6 @@ input[type=text], textarea, input[type=tel], input[type=email], input[type=passw
 	outline: 0;
 }
 
-
-textarea, input, select, .ui-selectmenu-button, button {
-}
-
 address, dl {
 	font-style: normal;
 }
@@ -1815,3 +1811,8 @@ textarea {
   display: none;
 }
 
+.rounded-50 {border-radius: 50px;}
+ 
+font {
+  pointer-events: none;
+}

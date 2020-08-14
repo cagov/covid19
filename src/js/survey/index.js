@@ -1,4 +1,10 @@
 import surveyTemplate from './template.js'
+function randomString(length) {
+  let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let result = '';
+  for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+  return result;
+}
 
 class CWDSSurvey extends window.HTMLElement {
   connectedCallback () {
@@ -12,6 +18,9 @@ class CWDSSurvey extends window.HTMLElement {
         surveyPrompt = this.dataset.surveyPrompt
       }
       if(surveyUrl) { // We disable the pulse survey by removing the url from the langData config file
+        if(surveyUrl.indexOf('surveymonkey.com') > -1 && surveyUrl.indexOf('?source=') > -1) {
+          surveyUrl += `&src=${randomString(32)}`
+        }
         reportEvent('surveyDisplay');
         let html = surveyTemplate(surveyUrl, surveyPrompt);
         this.innerHTML = html;
@@ -54,7 +63,7 @@ function reportEvent(eventString) {
 }
 
 function reportGA(eventString) {
-  if(typeof(gtag) !== 'undefined') {
+  if(typeof(ga) !== 'undefined') {
     ga('send', 'event', 'click', 'survey', eventString);
   } else {
     setTimeout(function() {

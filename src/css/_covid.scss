@@ -114,6 +114,9 @@ h4 {
 .small-text {
 	font-size: .95rem;
 }
+.text-disclaim {
+  font-size:.8em;
+}
 
 .alphabar {
   background-color: #1D2574;
@@ -672,21 +675,21 @@ border: none;
 
 @media (min-width: 768px) {
   .jumbo-img {
-    background-image: url('/img/hero.jpg');
+    background-image: url('../img/StateCapitol_Blue.webp');
     background-size: cover;
     background-color: #1D2574;
     background-position-x: 75%;
   }
   .no-webp .jumbo-img {
-    background-image: url('/img/hero.jpg');
+    background-image: url('../img/StateCapitol_Blue.jpg');
   }
   .jumbo-img.county-img {
-    background-image: url('/img/CaliforniaCounties.webp');
+    background-image: url('../img/CaliforniaCounties.webp');
     background-size: cover;
     background-color: #1D2574;
   }
   .no-webp .jumbo-img.county-img {
-    background-image: url('/img/CaliforniaCounties.jpg');
+    background-image: url('../img/CaliforniaCounties.jpg');
   }
 	
   .top-nav .nav-item {
