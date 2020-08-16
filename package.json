@@ -49,7 +49,7 @@
     "rollup-plugin-terser": "^7.0.0"
   },
   "scripts": {
-    "dev": "NODE_ENV=development npm run start",
+    "dev": "cross-env NODE_ENV=development npm run start",
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
     "build": "gulp build",
