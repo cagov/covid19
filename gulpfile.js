@@ -102,7 +102,7 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/_includes/footer.njk',
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
-        'pages/@(translated|wordpress)-posts/new*.html'
+        'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
       ]
     }),
     cssnano
