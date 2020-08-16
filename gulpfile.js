@@ -4,6 +4,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
+const url = require('postcss-url');
 const cssnano = require('cssnano');
 const spawn = require('cross-spawn');
 const log = require('fancy-log');
@@ -84,6 +85,13 @@ const scss = (done) => {
 
 // Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
+  .pipe(postcss([
+    // Rebase asset URLs within CSS so they'll work better in dev.
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ])
+  ]))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
   .on('end', () => {
