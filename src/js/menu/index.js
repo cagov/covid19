@@ -54,14 +54,19 @@ class CAGOVOverlayNav extends window.HTMLElement {
 }
 window.customElements.define('cagov-navoverlay', CAGOVOverlayNav);
 
-// Adding shaddow on scroll
+// Adding shadow on scroll
 
-var mainNav = document.querySelector('.header');
+const mainNav = document.querySelector('.header');
+const scrollSpy = document.querySelector('.nav-scroll-spy');
 
-window.onscroll = function() {
-  windowScroll();
-};
+// Remove the box-shadow if the scrollSpy element is "visible". Otherwise add it.
+const observer = new window.IntersectionObserver((entries) => {
+  // entries[0] will just be the passed-in scrollSpy element.
+  if (entries[0].isIntersecting) {
+    mainNav.classList.remove('box-shadow');
+  } else {
+    mainNav.classList.add('box-shadow');
+  }
+});
 
-function windowScroll() {
-    mainNav.classList.toggle("box-shadow", mainNav.scrollTop > 50 || document.documentElement.scrollTop > 50);
-}
+observer.observe(scrollSpy);
