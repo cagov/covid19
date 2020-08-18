@@ -67,17 +67,29 @@
 
 		<div class="hero-text" role="region" aria-labelledby="hero-text">
 			<div class="hero-text-align">
-
+				{% set HomeHeroJSONraw %}{% include langIncludeFolder + "homepage-text" + tags | langFilePostfix + ".json" %}{% endset %}
+				{% set HomeHeroJSON = HomeHeroJSONraw | jsonparse %}
+				{% set HomeHeroText = HomeHeroJSON.Table1 %}
+				
 				<h1 class="hero-headline">
 					<a class="hero-headline-link" href="/symptoms-and-risks/">
 						<span class="hero-headline-background" id="hero-text">
-							Your actions save lives
+							{% for item in HomeHeroText %}
+								{% if item.section === "H1" %}
+									{{ item.value }}
+								{% endif %}
+							{% endfor %}
 						</span>
 					</a>
 				</h1>
 
 			<a class="hero-button button orange-button" href="/symptoms-and-risks/">
-				<div class="button-label">Keep California healthy. <br>Wear a mask, wash your hands, keep your distance.</div>
+				<div class="button-label">
+					<span>{% for item in HomeHeroText %}
+						{% if item.section === "p" %}
+							<p>{{ item.value }}</p>
+						{% endif %}
+					{% endfor %}</span></div>
 				<figure class="button-icon">
 					<span class="button-primary-circle"></span>
 					<span class="button-arrow-wrapper">
