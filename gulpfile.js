@@ -73,7 +73,9 @@ const scss = (done) => {
 
   return gulp.src(`${tempOutputFolder}/shim.scss`)
     .pipe(sass({
-      includePaths: 'src/css'
+      includePaths: [
+        'src/css'
+      ]
     }).on('error', sass.logError))
     .pipe(rename('development.css'))
     .pipe(gulp.dest(tempOutputFolder))
@@ -113,6 +115,10 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
       ]
     }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
     cssnano
   ]))
   .pipe(rename('home.css'))
@@ -133,6 +139,10 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.js'
       ]
     }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
     cssnano
   ]))
   .pipe(rename('built.css'))
