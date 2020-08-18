@@ -261,7 +261,9 @@
 <!-- PEOPLE WANTS TO KNOW SECTION -->
 <faq-section>
 <section class="faq-twitter" role="region" aria-labelledby="want-to-know">
-<div class="faq-twitter-wrap">
+	<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
+
+	<div class="faq-twitter-wrap">
 
 {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
@@ -269,19 +271,17 @@
 {% set questionLinks2 = JSON.Table2 %}
 
 	<div class="faq trigger">
-		<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
-{% for item in questionLinks1 %}
+		{% for item in questionLinks1 %}
 		<article class="faq-item trigger">    
 			<a class="faq-item-link" href="{{ item.url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
 				<cwds-arrow data-class-prefix="faq"></cwds-arrow>
 			</a>
 		</article>
- {% endfor %}
-
+ 		{% endfor %}
 	</div>
 
-	<div>
+	<div class="faq trigger">
 		{% for item in questionLinks2 %}
 		<article class="faq-item trigger">
 			<a class="faq-item-link" href="{{ item.url }}">
@@ -293,7 +293,7 @@
 	</div>
 
 </div>
-<div>
+<div class="t-center">
 	<a class="button orange-button trigger" href="/">
 		<div class="button-label">More Questions</div>
 		<figure class="button-icon">
