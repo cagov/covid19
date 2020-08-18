@@ -66,18 +66,18 @@
 	<div class="hero-wrap">
 
 		<div class="hero-text" role="region" aria-labelledby="hero-text">
-		<div class="hero-text-align">
+			<div class="hero-text-align">
 
-			<h1 class="hero-headline">
-				<a class="hero-headline-link" href="/">
-					<span href="/" class="hero-headline-background" id="hero-text">
-						We will get through this together.
-					</span>
-				</a>
-			</h1>
+				<h1 class="hero-headline">
+					<a class="hero-headline-link" href="/symptoms-and-risks/">
+						<span class="hero-headline-background" id="hero-text">
+							Your actions save lives
+						</span>
+					</a>
+				</h1>
 
-			<a class="hero-button button orange-button" href="/">
-				<div class="button-label">Learn How</div>
+			<a class="hero-button button orange-button" href="/symptoms-and-risks/">
+				<div class="button-label">Keep California healthy. <br>Wear a mask, wash your hands, keep your distance.</div>
 				<figure class="button-icon">
 					<span class="button-primary-circle"></span>
 					<span class="button-arrow-wrapper">
@@ -169,8 +169,8 @@
 
 	<div class="hero-photo" role="complementary" aria-labelledby="hero-background">
 		<div class="hero-photo-fade"></div>
-		<img class="hero-photo-pic" src="img/hero-mobile.jpg" srcset="img/hero-tablet.jpg 740w, img/hero.jpg 1300w" alt="Photo Description">
-		<div id="hero-background" class="hero-photo-description">Photo Description</div>
+		<img class="hero-photo-pic" src="img/hero-mobile.jpg" srcset="img/hero-tablet.jpg 740w, img/hero.jpg 1300w" alt="California State Capitol building">
+		<div id="hero-background" class="hero-photo-description">California State Capitol building</div>
 	</div>
 
 </section>
@@ -252,72 +252,58 @@
 <div class="faq-twitter-wrap">
 
 {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
-      {% set JSON = JSONraw | jsonparse %}
-      {% set questionLinks1 = JSON.Table1 %}
-      {% set questionLinks2 = JSON.Table2 %}
-
-
+{% set JSON = JSONraw | jsonparse %}
+{% set questionLinks1 = JSON.Table1 %}
+{% set questionLinks2 = JSON.Table2 %}
 
 	<div class="faq trigger">
 		<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
 {% for item in questionLinks1 %}
-		<article class="faq-item trigger">
-    
-		<a class="faq-item-link" href="{{ item.url }}">
-			<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-
-			<figure class="faq-icon">
-				<span class="faq-icon-circle"></span>
-				<span class="faq-icon-arrow-wrapper">
-					<span class="faq-icon-arrow">
-						<span class="faq-icon-arrow-svg">
-							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-						</span>
-					</span>
-					<span class="faq-icon-arrow">
-						<span class="faq-icon-arrow-svg">
-							<svg class="faq-icon-arrow-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-						</span>
-					</span>
-				</span>
-			</figure>
-		</a>
-   
+		<article class="faq-item trigger">    
+			<a class="faq-item-link" href="{{ item.url }}">
+				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+				<cwds-arrow data-class-prefix="faq"></cwds-arrow>
+			</a>
 		</article>
  {% endfor %}
 
-		<a class="button orange-button trigger" href="/">
-			<div class="button-label">More Questions</div>
-			<figure class="button-icon">
-				<span class="button-primary-circle"></span>
-				<span class="button-arrow-wrapper">
-					<span class="button-arrow">
-						<span class="button-inline-svg">
-							<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-						</span>
-					</span>
-					<span class="button-arrow">
-						<span class="button-inline-svg">
-							<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-						</span>
-					</span>
-				</span>
-			</figure>
-		</a>
-
 	</div>
 
-	<div class="twitter-feed trigger">
-		
+	<div>
+		{% for item in questionLinks2 %}
+		<article class="faq-item trigger">
+			<a class="faq-item-link" href="{{ item.url }}">
+				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+				<cwds-arrow data-class-prefix="faq"></cwds-arrow>
+			</a>	
+		</article>
+	{% endfor %}
 	</div>
 
 </div>
+<div>
+	<a class="button orange-button trigger" href="/">
+		<div class="button-label">More Questions</div>
+		<figure class="button-icon">
+			<span class="button-primary-circle"></span>
+			<span class="button-arrow-wrapper">
+				<span class="button-arrow">
+					<span class="button-inline-svg">
+						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+					</span>
+				</span>
+				<span class="button-arrow">
+					<span class="button-inline-svg">
+						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+					</span>
+				</span>
+			</span>
+		</figure>
+		<!-- classes of these primary ones are different from the icon arrows, need to review css before reusing web componen there -->
+	</a>
+</div>
 </section>
 </faq-section>
-
-  
-
-
 
   {% include "./news-feed-home.html" %}
 </main>
