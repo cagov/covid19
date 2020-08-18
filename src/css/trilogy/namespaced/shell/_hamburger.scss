@@ -56,7 +56,7 @@ cagov-navoverlay {
       }
       box-shadow: $button-shadow, 0 0 0 2px $darkblue;
       outline: 0 solid $darkblue;
-      transform: scale(1.1);
+     // transform: scale(1.1);
       .hamburger-inner {
         &,
         &:before,
@@ -141,8 +141,8 @@ cagov-navoverlay.display-menu {
       }
     }
     @include tablet {
-      transform: scale(1.5);
-      top: 2rem;
+     // transform: scale(1.5);
+    //  top: 2rem;
       background: $orange;
     }
     .hamburger-inner {
@@ -200,9 +200,7 @@ cagov-navoverlay.display-menu {
   &.reveal-items {
     @include tablet {
       .menu-trigger {
-        transform: scale(1.2);
-        margin-right:.3em;
-        margin-top: .3em;
+       
        
       }
     }
@@ -216,9 +214,7 @@ cagov-navoverlay.display-menu {
 		&.reveal-items {
 			@include tablet {
 				.menu-trigger {
-          transform: scale(1.2);
-          margin-right:.3em;
-          margin-top: .3em;
+         
 				}
 			}
 		}
