@@ -1,18 +1,19 @@
 cagov-navoverlay {
   .menu-trigger {
     background: $orange;
-    @include size(3rem);
-    margin: 0.5rem;
+    //@include size(3rem);
+    // margin: 0.5rem;
     border: 0;
-    border-radius: 50%;
-    padding: 0.75rem 0.75rem;
+    // border-radius: 50%;
+    // padding: 0.75rem 0.75rem;
+    padding: .5em 1em .5em 1em;
     font-family: $headline;
     transition: $slow;
     transform-origin: top left;
     display: inline-block;
     cursor: pointer;
     position: fixed;
-    top: 10px;
+    //top: 10px;
     transition: $slow;
     box-shadow: $button-shadow, 0 0 0 0 $orange;
     transform-origin: center center;
@@ -20,14 +21,15 @@ cagov-navoverlay {
       z-index: 2000;
     }
     @include tablet {
-      margin-right: 0.75rem;
+      // margin-right: 0.75rem;
       z-index: 2000000;
     }
     @include desktop {
-      margin-right: 1rem;
+      // margin-right: 1rem;
     }
     &-label {
-      @include screen-reader-text;
+      // @include screen-reader-text;
+      color:$darkblue;
     }
     &:hover {
       background: $yellow;
@@ -36,7 +38,7 @@ cagov-navoverlay {
         &,
         &:before,
         &:after {
-          background-color: $white;
+          background-color: $darkblue;
         }
         &:before,
         &:after {
@@ -45,16 +47,16 @@ cagov-navoverlay {
       }
     }
     &:focus-wthin {
-      background: $white;
-      outline: 2px solid $white;
+      background: $darkblue;
+      outline: 2px solid $darkblue;
     }
     &:focus {
       @include desktop {
-        background: $white;
+        background: $darkblue;
       }
       box-shadow: $button-shadow, 0 0 0 2px $darkblue;
       outline: 0 solid $darkblue;
-      transform: scale(1.1);
+     // transform: scale(1.1);
       .hamburger-inner {
         &,
         &:before,
@@ -93,7 +95,7 @@ cagov-navoverlay {
       &:before,
       &:after {
         height: 2px;
-        background-color: $white;
+        background-color: $darkblue;
         border-radius: 0;
         position: absolute;
         transition-property: transform, width, background-color;
@@ -139,8 +141,8 @@ cagov-navoverlay.display-menu {
       }
     }
     @include tablet {
-      transform: scale(1.5);
-      top: 2rem;
+     // transform: scale(1.5);
+    //  top: 2rem;
       background: $orange;
     }
     .hamburger-inner {
@@ -198,7 +200,8 @@ cagov-navoverlay.display-menu {
   &.reveal-items {
     @include tablet {
       .menu-trigger {
-        transform: scale(1.5);
+       
+       
       }
     }
   }
@@ -211,7 +214,7 @@ cagov-navoverlay.display-menu {
 		&.reveal-items {
 			@include tablet {
 				.menu-trigger {
-					transform: scale(1.5);
+         
 				}
 			}
 		}
