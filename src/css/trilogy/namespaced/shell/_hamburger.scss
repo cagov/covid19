@@ -25,6 +25,7 @@ cagov-navoverlay {
 
     @include tablet-wide { 
       position: relative !important;
+      z-index: 2000;
     }
  
     &-label {
