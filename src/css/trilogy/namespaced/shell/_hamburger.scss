@@ -57,6 +57,7 @@ cagov-navoverlay {
       }
       box-shadow: $button-shadow, 0 0 0 2px $darkblue;
       outline: 0 solid $darkblue;
+      background: $yellow;
      // transform: scale(1.1);
       .hamburger-inner {
         &,
@@ -129,6 +130,7 @@ cagov-navoverlay.display-menu {
     box-shadow: none;
     &:hover,
     &:focus {
+      background: $yellow;
       @include phone {
         background: $yellow;
         .hamburger-inner {
