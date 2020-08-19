@@ -51,6 +51,7 @@ hero-stats {
 		}
 		@include tablet-wide {
 			width: 60%;
+			margin-bottom: 100px; // added this space to make text visible before the fold
 		}
 		&-align {
 			@include size(100%);
@@ -149,6 +150,7 @@ hero-stats {
 		text-align: center;
 		color: $orange;
 		font-size: 2rem;
+		text-align: center;
 		@include tablet {
 			font-size: 1.4rem;
 		}
@@ -165,6 +167,7 @@ hero-stats {
 		text-align: center;
 		font-weight: 300;
 		font-size: .85rem;
+		text-align: center;
 		@include tablet {
 		}
 		@include desktop {
@@ -385,9 +388,6 @@ hero-stats {
 				top: .5rem;
 				align-self: flex-start;
 			}
-		}
-		&-text {
-	
 		}
 		&-headline {
 			color: $darkblue;
