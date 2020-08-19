@@ -82,28 +82,15 @@
 					</a>
 				</h1>
 
-			<a class="hero-button button orange-button" href="/symptoms-and-risks/">
+			<a class="hero-button button orange-button cpt-icon-parent" href="/symptoms-and-risks/">
 				<div class="button-label">
 					<span>{% for item in HomeHeroText %}
 						{% if item.section === "p" %}
 							<p>{{ item.value }}</p>
 						{% endif %}
 					{% endfor %}</span></div>
-				<figure class="button-icon">
-					<span class="button-primary-circle"></span>
-					<span class="button-arrow-wrapper">
-						<span class="button-arrow">
-							<span class="button-inline-svg">
-								<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-							</span>
-						</span>
-						<span class="button-arrow">
-							<span class="button-inline-svg">
-								<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-							</span>
-						</span>
-					</span>
-				</figure>
+					<cwds-arrow data-class-prefix="watch-video" data-class-list="cpt-icon-size-md cpt-icon-idle-lightblue cpt-icon-hover-white cpt-icon-focus-orange"></cwds-arrow>
+
 			</a>
 <!-- some spacer to make sure headline is above the fold-->
 		<div class="mb-lg-5 pt-lg-5 pb-lg-5"></div>
@@ -222,23 +209,10 @@
             <h4 class="font-size-2em color-purple font-weight-bold">Wear a Mask</h4>
             <p class="lead mt-4">Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.</p>
 
-						<a class="button trigger video-modal-open" ref="javascript:void(0);" data-video="1zDX9PXkotA">
+						<a class="button trigger video-modal-open cpt-icon-parent" ref="javascript:void(0);" data-video="1zDX9PXkotA">
 							<div class="button-label">Watch the Video</div>
-							<figure class="button-icon">
-								<span class="button-primary-circle"></span>
-								<span class="button-arrow-wrapper">
-									<span class="button-arrow">
-										<span class="button-inline-svg">
-											<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-										</span>
-									</span>
-									<span class="button-arrow">
-										<span class="button-inline-svg">
-											<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-										</span>
-									</span>
-								</span>
-							</figure>
+							<cwds-arrow data-class-prefix="watch-video" data-class-list="cpt-icon-size-md cpt-icon-idle-black cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
+
 						</a>
 
           </div>
@@ -275,7 +249,7 @@
 		<article class="faq-item trigger">    
 			<a class="faq-item-link cpt-icon-parent" href="{{ item.url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-active-indigo"></cwds-arrow>
+				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
 			</a>
 		</article>
  		{% endfor %}
@@ -286,7 +260,7 @@
 		<article class="faq-item trigger">
 			<a class="faq-item-link cpt-icon-parent" href="{{ item.url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-active-indigo"></cwds-arrow>
+				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
 			</a>	
 		</article>
 	{% endfor %}
@@ -294,23 +268,10 @@
 
 </div>
 <div class="t-center">
-	<a class="button orange-button trigger" href="/">
+	<a class="button orange-button trigger cpt-icon-parent" href="/">
 		<div class="button-label">More Questions</div>
-		<figure class="button-icon">
-			<span class="button-primary-circle"></span>
-			<span class="button-arrow-wrapper">
-				<span class="button-arrow">
-					<span class="button-inline-svg">
-						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-					</span>
-				</span>
-				<span class="button-arrow">
-					<span class="button-inline-svg">
-						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-					</span>
-				</span>
-			</span>
-		</figure>
+		<cwds-arrow data-class-prefix="watch-video" data-class-list="cpt-icon-size-md cpt-icon-idle-lightblue cpt-icon-hover-white cpt-icon-focus-orange"></cwds-arrow>
+
 		<!-- classes of these primary ones are different from the icon arrows, need to review css before reusing web componen there -->
 	</a>
 </div>
