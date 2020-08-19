@@ -25,7 +25,6 @@ faq-section {
 		&-headline {
 			@extend %headline3;
 			color: $orange;
-			border-bottom: 1px solid rgba($white, .1);
 			padding-bottom: 1.5rem;
 			padding-left: .75rem;
 			&-link {
