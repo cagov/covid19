@@ -99,6 +99,13 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
     done();
   });
 
+const purgecssExtractors = [
+  {
+    extractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
+    extensions: ['js']
+  }
+];
+
 // Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
@@ -112,7 +119,7 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/new*.html'
       ],
-      whitelistPatternsChildren: [/cpt-.+$/]
+      extractors: purgecssExtractors
     }),
     cssnano
   ]))
@@ -133,7 +140,7 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.html',
         'pages/**/*.js'
       ],
-      whitelistPatternsChildren: [/cpt-.+$/]
+      extractors: purgecssExtractors
     }),
     cssnano
   ]))
