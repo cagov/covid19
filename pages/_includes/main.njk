@@ -256,8 +256,10 @@
 <!-- PEOPLE WANTS TO KNOW SECTION -->
 <faq-section>
 <section class="faq-twitter" role="region" aria-labelledby="want-to-know">
+	<div class="header-wrap">
 	<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
-
+	</div>
+	
 	<div class="faq-twitter-wrap">
 
 {% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
