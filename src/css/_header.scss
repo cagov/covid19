@@ -85,9 +85,15 @@
     flex-wrap: wrap;
     align-items: center;
 		position: relative;
+		@include tablet-wide {
+			padding-right: 0; 
+		}
 		@include desktop {
 			flex-wrap: nowrap;
 		}
+
+
+
 	}
 	&-logo {
 		width: 100%;

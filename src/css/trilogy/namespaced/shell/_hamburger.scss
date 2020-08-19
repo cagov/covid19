@@ -3,6 +3,7 @@ cagov-navoverlay {
     background: $orange;
     //@include size(3rem);
     // margin: 0.5rem;
+    margin-left: 1em;
     border: 0;
     // border-radius: 50%;
     // padding: 0.75rem 0.75rem;
@@ -13,20 +14,19 @@ cagov-navoverlay {
     display: inline-block;
     cursor: pointer;
     position: fixed;
-    //top: 10px;
+    top: -2px;
+    right: 0;
     transition: $slow;
     box-shadow: $button-shadow, 0 0 0 0 $orange;
     transform-origin: center center;
     @include phone {
       z-index: 2000;
     }
-    @include tablet {
-      // margin-right: 0.75rem;
-      z-index: 2000000;
+
+    @include tablet-wide { 
+      position: relative !important;
     }
-    @include desktop {
-      // margin-right: 1rem;
-    }
+ 
     &-label {
       // @include screen-reader-text;
       color:$darkblue;
