@@ -1,13 +1,13 @@
 /*KENNEDY VARIABLES & MIXINGS:*/
-$max-width:          81.25em; //1300px
-$small-phone:        20.5em;  //325px
-$tablet:             48em;    //768px
-$tablet-wide:        64em;    //1024px
-$desktop:            81.25em; //1300px
-$desktop-medium:     100em;   //1600px
-$desktop-large:     112.5em; //1800px
-$max-width:          93.75em; //1500px
-$max-width-text:     64em;    //1500px
+$max-width:          81.25rem; //1300px
+$small-phone:        20.5rem;  //325px
+$tablet:             48rem;    //768px
+$tablet-wide:        64rem;    //1024px
+$desktop:            81.25rem; //1300px
+$desktop-medium:     100rem;   //1600px
+$desktop-large:     112.5rem; //1800px
+$max-width:          93.75rem; //1500px
+$max-width-text:     64rem;    //1500px
 
 @mixin small-phone {
   @media (max-width: #{$small-phone}) {
