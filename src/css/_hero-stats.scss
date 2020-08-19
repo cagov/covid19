@@ -146,7 +146,8 @@ hero-stats {
 	}
 	&-headline {
 		font-family: $headline;
-		color: $white;
+		text-align: center;
+		color: $orange;
 		font-size: 2rem;
 		@include tablet {
 			font-size: 1.4rem;
@@ -161,6 +162,7 @@ hero-stats {
 	&-subheadline {
 		margin: .5rem auto 1rem;
 		color: $white;
+		text-align: center;
 		font-weight: 300;
 		font-size: .85rem;
 		@include tablet {
@@ -298,6 +300,7 @@ hero-stats {
 	}
 	&-footer {
 		margin-top: 1.5rem;
+		text-align: center;
 		&-link {
 			text-transform: uppercase;
 			color: $lightestblue;
