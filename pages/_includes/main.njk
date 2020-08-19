@@ -60,7 +60,6 @@
     {% include "header.njk" %}
     <main id="main">
 
-
 <hero-stats>
    <section class="hero trigger">
 	<div class="hero-wrap">
@@ -111,8 +110,8 @@
 		</div>
 
 		<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
-			<h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
-			<div class="hero-stats-subheadline">In California, Updated {{ lastStatDate | formatDatePartsPlus1 }}, {{ 0|_statsdata_ }}</div>
+			<h2 class="hero-stats-headline" id="tracking-covid">{{varStatsHeader}}</h2>
+			<div class="hero-stats-subheadline">{{FormattedUpdateText}}</div>
 
 			<div class="hero-stats-slider">
 
@@ -120,7 +119,7 @@
 
 					<div class="hero-stats-row">
 						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Cases</span>
+							<span class="hero-stats-row-label-text">{{varTotalCases}}</span>
 						</div>
 						<div class="hero-stats-row-figure">{{3|_statsdata_}}</div>
 						<div class="hero-stats-row-details">
@@ -130,7 +129,7 @@
 
 					<div class="hero-stats-row">
 						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Deaths</span>
+							<span class="hero-stats-row-label-text">{{varTotalDeaths}}</span>
 						</div>
 						<div class="hero-stats-row-figure">{{5|_statsdata_}}</div>
 						<div class="hero-stats-row-details">
@@ -140,7 +139,7 @@
 
 					<div class="hero-stats-row">
 						<div class="hero-stats-row-label">
-							<span class="hero-stats-row-label-text">Tests</span>
+							<span class="hero-stats-row-label-text">{{varTestsReported}}</span>
 						</div>
 						<div class="hero-stats-row-figure">{{7|_statsdata_}}</div>
 						<div class="hero-stats-row-details">
@@ -151,9 +150,9 @@
 
 			</div>
 			<div class="hero-stats-footer">
-				<a class="hero-stats-footer-link mt-2" href="/roadmap-counties/#track-data">County Data</a>
-        <a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">State Data</a>
-         <a class="hero-stats-footer-link mt-2" href="data-and-tools/">Data tools and resources</a>
+				<a class="hero-stats-footer-link mt-2" href="/roadmap-counties/#track-data">{{varCountyMap}}</a>
+        <a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">{{varStateSummary}}</a>
+         <a class="hero-stats-footer-link mt-2" href="data-and-tools/">{{varDataAndTools}}</a>
 			</div>
 		</div>
 
@@ -219,27 +218,25 @@
           <div class="video-text pl-md-5 pt-3 pt-lg-0">
             <h4 class="font-size-2em color-purple font-weight-bold">Wear a Mask</h4>
             <p class="lead mt-4">Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.</p>
-      
 
-
-<a class="button trigger video-modal-open" ref="javascript:void(0);" data-video="1zDX9PXkotA">
-		<div class="button-label">Watch the Video</div>
-		<figure class="button-icon">
-			<span class="button-primary-circle"></span>
-			<span class="button-arrow-wrapper">
-				<span class="button-arrow">
-					<span class="button-inline-svg">
-						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-					</span>
-				</span>
-				<span class="button-arrow">
-					<span class="button-inline-svg">
-						<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
-					</span>
-				</span>
-			</span>
-		</figure>
-	</a>
+						<a class="button trigger video-modal-open" ref="javascript:void(0);" data-video="1zDX9PXkotA">
+							<div class="button-label">Watch the Video</div>
+							<figure class="button-icon">
+								<span class="button-primary-circle"></span>
+								<span class="button-arrow-wrapper">
+									<span class="button-arrow">
+										<span class="button-inline-svg">
+											<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+										</span>
+									</span>
+									<span class="button-arrow">
+										<span class="button-inline-svg">
+											<svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+										</span>
+									</span>
+								</span>
+							</figure>
+						</a>
 
           </div>
 
@@ -247,8 +244,6 @@
 		</div>
 
 	</div>
-
-	
 
 </div>
 </section>
