@@ -12,7 +12,7 @@
 @import './video';
 /* ^ this was some trilogy code which I grabbed and needs to be namespaced */
 
-@import './trilogy/hacked-trilogy';
+@import './trilogy/buttons';
 /* ^ this should go away and be replaced by namespaced, separated scss files for each component */
 
 /* globals needed for everything to compile */
