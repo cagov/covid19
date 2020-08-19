@@ -51,7 +51,7 @@ hero-stats {
 		}
 		@include tablet-wide {
 			width: 60%;
-			margin-bottom: 100px; // added this space to make text visible before the fold
+			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
 			@include size(100%);

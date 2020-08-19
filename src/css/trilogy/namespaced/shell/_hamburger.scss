@@ -125,7 +125,7 @@ cagov-navoverlay {
 }
 cagov-navoverlay.display-menu {
   .menu-trigger {
-    background: transparent;
+    //background: transparent;
     box-shadow: none;
     &:hover,
     &:focus {
@@ -136,7 +136,7 @@ cagov-navoverlay.display-menu {
           &:before,
           &:after {
             transition: $slow;
-            background-color: $white;
+            background-color: $darkblue;
           }
         }
       }
@@ -151,7 +151,7 @@ cagov-navoverlay.display-menu {
       &:before,
       &:after {
         transition: $slow;
-        background-color: $white;
+        background-color: $darkblue;
         @include tablet {
           background-color: $darkblue;
         }
