@@ -111,7 +111,8 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/new*.html'
-      ]
+      ],
+      whitelistPatternsChildren: [/cpt-.+$/]
     }),
     cssnano
   ]))
@@ -131,7 +132,8 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.njk',
         'pages/**/*.html',
         'pages/**/*.js'
-      ]
+      ],
+      whitelistPatternsChildren: [/cpt-.+$/]
     }),
     cssnano
   ]))

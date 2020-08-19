@@ -1,13 +1,13 @@
 
-.faq-icon-arrow,
-.faq-icon-circle {
+.cpt-faq-icon-arrow,
+.cpt-faq-icon-circle {
 	position: absolute;
 	transition: 1.2s cubic-bezier(0.15, 0.92, 0.14, 0.95);
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden
 }
 
-.faq-icon-circle {
+.cpt-faq-icon-circle {
 	width: 100%;
 	height: 100%;
 	border: 1px solid #ff8000;
@@ -19,7 +19,7 @@
 	left: 0
 }
 
-.faq-icon-arrow {
+.cpt-faq-icon-arrow {
 	left: 50%;
 	top: 50%;
 	width: 16px;
@@ -29,17 +29,17 @@
 }
 
 @media (min-width:112.5em) {
-	.faq-icon-arrow {
+	.cpt-faq-icon-arrow {
 		width: 0.75vw;
 		min-width: 0.75vw
 	}
 }
 
-.faq-icon-arrow:last-of-type {
+.cpt-faq-icon-arrow:last-of-type {
 	transform: translate(-275%, -50%)
 }
 
-.faq-icon-arrow-wrapper {
+.cpt-faq-icon-arrow-wrapper {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -50,14 +50,14 @@
 	overflow: hidden
 }
 
-.faq-icon-arrow-svg {
+.cpt-faq-icon-arrow-svg {
 	position: relative;
 	display: block;
 	width: 100%;
 	height: 1rem
 }
 
-.faq-icon-arrow-svg-art {
+.cpt-faq-icon-arrow-svg-art {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -69,7 +69,7 @@
 }
 
 
-.faq-icon {
+.cpt-faq-icon {
 	width: 40px;
 	height: 40px;
 	min-width: 40px;
@@ -84,7 +84,7 @@
 }
 
 @media (min-width:48em) {
-	.faq-icon {
+	.cpt-faq-icon {
 		width: 30px;
 		height: 30px;
 		min-width: 30px;
@@ -93,7 +93,7 @@
 }
 
 @media (min-width:81.25em) {
-	.faq-icon {
+	.cpt-faq-icon {
 		width: 35px;
 		height: 35px;
 		min-width: 35px;
@@ -102,7 +102,7 @@
 }
 
 @media (min-width:112.5em) {
-	.faq-icon {
+	.cpt-faq-icon {
 		width: 40px;
 		height: 40px;
 		min-width: 40px;
@@ -111,17 +111,39 @@
 }
 
 
-.faq-item-link:focus .faq-icon-circle {
+.faq-item-link:focus .cpt-faq-icon-circle {
 	background: #c7e1ef;
 	border-color: #1f2574;
 	transform: scale(1.2)
 }
 
-.faq-item-link:focus .faq-icon-arrow {
+.faq-item-link:focus .cpt-faq-icon-arrow {
 	transform: translate(275%, -50%)
 }
 
-.faq-item-link:focus .faq-icon-arrow:last-of-type {
+.faq-item-link:focus .cpt-faq-icon-arrow:last-of-type {
+	transform: translate(-50%, -50%)
+}
+
+.faq-item-link:focus .faq-icon {
+	color: #1f2574
+}
+
+.faq-item-link:hover .cpt-faq-icon {
+	color: #1f2574
+}
+
+.faq-item-link:hover .cpt-faq-icon-circle {
+	background: #fff;
+	border-color: #1f2574;
+	transform: scale(1.2)
+}
+
+.faq-item-link:hover .cpt-faq-icon-arrow {
+	transform: translate(275%, -50%)
+}
+
+.faq-item-link:hover .cpt-faq-icon-arrow:last-of-type {
 	transform: translate(-50%, -50%)
 }
 
