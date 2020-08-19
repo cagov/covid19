@@ -48,12 +48,12 @@ cagov-navoverlay {
       }
     }
     &:focus-wthin {
-      background: $darkblue;
+      background: $yellow;
       outline: 2px solid $darkblue;
     }
     &:focus {
       @include desktop {
-        background: $darkblue;
+        background: $yellow;
       }
       box-shadow: $button-shadow, 0 0 0 2px $darkblue;
       outline: 0 solid $darkblue;
@@ -130,7 +130,7 @@ cagov-navoverlay.display-menu {
     &:hover,
     &:focus {
       @include phone {
-        background: transparent;
+        background: $yellow;
         .hamburger-inner {
           &,
           &:before,
