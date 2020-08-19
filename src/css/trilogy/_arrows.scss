@@ -1,16 +1,14 @@
-
-.cpt-faq-icon-arrow,
-.cpt-faq-icon-circle {
+.cpt-icon-arrow,
+.cpt-icon-circle {
 	position: absolute;
 	transition: 1.2s cubic-bezier(0.15, 0.92, 0.14, 0.95);
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden
 }
 
-.cpt-faq-icon-circle {
+.cpt-icon-circle {
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ff8000;
 	border-radius: 100%;
 	overflow: hidden;
 	top: 0;
@@ -19,27 +17,17 @@
 	left: 0
 }
 
-.cpt-faq-icon-arrow {
+.cpt-icon-arrow {
 	left: 50%;
 	top: 50%;
-	width: 16px;
-	min-width: 16px;
-	height: 1rem;
 	transform: translate(-50%, -50%)
 }
 
-@media (min-width:112.5em) {
-	.cpt-faq-icon-arrow {
-		width: 0.75vw;
-		min-width: 0.75vw
-	}
-}
-
-.cpt-faq-icon-arrow:last-of-type {
+.cpt-icon-arrow:last-of-type {
 	transform: translate(-275%, -50%)
 }
 
-.cpt-faq-icon-arrow-wrapper {
+.cpt-icon-arrow-wrapper {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -50,14 +38,13 @@
 	overflow: hidden
 }
 
-.cpt-faq-icon-arrow-svg {
+.cpt-icon-arrow-svg {
 	position: relative;
 	display: block;
 	width: 100%;
-	height: 1rem
 }
 
-.cpt-faq-icon-arrow-svg-art {
+.cpt-icon-arrow-svg-art {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -68,83 +55,125 @@
 	display: block
 }
 
-
-.cpt-faq-icon {
-	width: 40px;
-	height: 40px;
-	min-width: 40px;
-	min-height: 40px;
+.cpt-icon {
 	margin-left: auto;
 	position: relative;
 	z-index: 100;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #ff8000
 }
 
-@media (min-width:48em) {
-	.cpt-faq-icon {
-		width: 30px;
-		height: 30px;
-		min-width: 30px;
-		min-height: 30px
+.cpt-icon-parent {
+	&:focus {
+		.cpt-icon-circle {
+			transform: scale(1.2)
+		}
+		.cpt-icon-arrow {
+			transform: translate(275%, -50%)
+		}
+		.cpt-icon-arrow:last-of-type {
+			transform: translate(-50%, -50%)
+		}
+	}
+	&:hover {
+		.cpt-icon-circle {
+			transform: scale(1.2)
+		}
+		.cpt-icon-arrow {
+			transform: translate(275%, -50%)
+		}
+		.cpt-icon-arrow:last-of-type {
+			transform: translate(-50%, -50%)
+		}
 	}
 }
 
-@media (min-width:81.25em) {
-	.cpt-faq-icon {
-		width: 35px;
-		height: 35px;
-		min-width: 35px;
-		min-height: 35px
-	}
+/* Sass mixins for responsive breakpoints. */
+@mixin view-sm {
+  @media (min-width:48em) { @content; }
+}
+@mixin view-md {
+  @media (min-width:81.25em) { @content; }
+}
+@mixin view-lg {
+  @media (min-width:112.5em) { @content; }
 }
 
-@media (min-width:112.5em) {
-	.cpt-faq-icon {
+/* Icon sizes go here. Not to be confused with viewport size mixins above. */
+.cpt-icon-size-sm {
+	.cpt-icon-arrow {
+		width: 16px;
+		min-width: 16px;
+		height: 1rem;
+		@include view-lg {
+			width: 0.75vw;
+			min-width: 0.75vw
+		}
+	}
+	.cpt-icon-arrow-svg {
+		height: 1rem
+	}
+	&.cpt-icon {
 		width: 40px;
 		height: 40px;
 		min-width: 40px;
-		min-height: 40px
+		min-height: 40px;
+		@include view-sm {
+			width: 30px;
+			height: 30px;
+			min-width: 30px;
+			min-height: 30px
+		}
+		@include view-md {
+			width: 35px;
+			height: 35px;
+			min-width: 35px;
+			min-height: 35px
+		}
+		@include view-lg {
+			width: 40px;
+			height: 40px;
+			min-width: 40px;
+			min-height: 40px
+		}
+	}	
+}
+
+/* Idle state colors go here */
+.cpt-icon-idle-orange {
+	.cpt-icon-circle {
+		border: 1px solid #ff8000;
+	}
+	&.cpt-icon {
+		color: #ff8000
 	}
 }
 
-
-.faq-item-link:focus .cpt-faq-icon-circle {
-	background: #c7e1ef;
-	border-color: #1f2574;
-	transform: scale(1.2)
-}
-
-.faq-item-link:focus .cpt-faq-icon-arrow {
-	transform: translate(275%, -50%)
-}
-
-.faq-item-link:focus .cpt-faq-icon-arrow:last-of-type {
-	transform: translate(-50%, -50%)
-}
-
-.faq-item-link:focus .faq-icon {
-	color: #1f2574
-}
-
-.faq-item-link:hover .cpt-faq-icon {
-	color: #1f2574
-}
-
-.faq-item-link:hover .cpt-faq-icon-circle {
-	background: #fff;
-	border-color: #1f2574;
-	transform: scale(1.2)
-}
-
-.faq-item-link:hover .cpt-faq-icon-arrow {
-	transform: translate(275%, -50%)
-}
-
-.faq-item-link:hover .cpt-faq-icon-arrow:last-of-type {
-	transform: translate(-50%, -50%)
+/* Active state colors go here. Add for both focus and hover. */
+.cpt-icon-parent {
+	&:focus {
+		.cpt-icon-active-indigo {
+			&.cpt-icon {
+				color: #1f2574
+			}
+			.cpt-icon-circle {
+				background: #c7e1ef;
+				border-color: #1f2574;
+			}
+		}
+	}
+	&:hover {
+		.cpt-icon-active-indigo {
+			&.cpt-icon {
+				color: #1f2574
+			}
+			.cpt-icon-circle {
+				background: #fff;
+				border-color: #1f2574;
+			}
+		}
+	}
 }
 
 
