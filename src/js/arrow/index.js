@@ -1,3 +1,11 @@
+/*
+  The classList supplied to the component should include at least the following four utility classes.
+  1. A size class. (ex: cpt-icon-size-sm)
+  2. An idle-state class. (example: cpt-icon-idle-orange)
+  3. An on-hover class. (example: cpt-icon-hover-darkblue)
+  4. An on-focus class. (example: cpt-icon-focus-darkblue)
+  Maybe consider providing a default set via Javascript here.
+*/
 class CWDSArrow extends window.HTMLElement {
   connectedCallback () {
     const { classPrefix, classList } = this.dataset;
