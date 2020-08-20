@@ -82,14 +82,14 @@
 					</a>
 				</h1>
 
-			<a class="hero-button button orange-button cpt-icon-parent" href="/symptoms-and-risks/">
+			<a class="hero-button button orange-button cwdsarrow-parent" href="/symptoms-and-risks/">
 				<div class="button-label">
 					<span>{% for item in HomeHeroText %}
 						{% if item.section === "p" %}
 							<p>{{ item.value }}</p>
 						{% endif %}
 					{% endfor %}</span></div>
-					<cwds-arrow data-class-prefix="hero" data-class-list="cpt-icon-size-md cpt-icon-idle-lightblue cpt-icon-hover-white cpt-icon-focus-orange"></cwds-arrow>
+					<cwds-arrow data-class-prefix="hero" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
 
 			</a>
 <!-- some spacer to make sure headline is above the fold-->
@@ -209,9 +209,9 @@
             <h4 class="font-size-2em color-purple font-weight-bold">Wear a Mask</h4>
             <p class="lead mt-4">Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.</p>
 
-						<a class="button trigger video-modal-open cpt-icon-parent" ref="javascript:void(0);" data-video="1zDX9PXkotA">
+						<a class="button trigger video-modal-open cwdsarrow-parent" ref="javascript:void(0);" data-video="1zDX9PXkotA">
 							<div class="button-label">Watch the Video</div>
-							<cwds-arrow data-class-prefix="watch-video" data-class-list="cpt-icon-size-md cpt-icon-idle-black cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
+							<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 
 						</a>
 
@@ -247,9 +247,9 @@
 	<div class="faq trigger">
 		{% for item in questionLinks1 %}
 		<article class="faq-item trigger">    
-			<a class="faq-item-link cpt-icon-parent" href="{{ item.url }}">
+			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
+				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 			</a>
 		</article>
  		{% endfor %}
@@ -258,9 +258,9 @@
 	<div class="faq trigger">
 		{% for item in questionLinks2 %}
 		<article class="faq-item trigger">
-			<a class="faq-item-link cpt-icon-parent" href="{{ item.url }}">
+			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cpt-icon-size-sm cpt-icon-idle-orange cpt-icon-hover-darkblue cpt-icon-focus-darkblue"></cwds-arrow>
+				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 			</a>	
 		</article>
 	{% endfor %}
@@ -268,9 +268,9 @@
 
 </div>
 <div class="t-center">
-	<a class="button orange-button trigger cpt-icon-parent" href="/">
+	<a class="button orange-button trigger cwdsarrow-parent" href="/">
 		<div class="button-label">More Questions</div>
-		<cwds-arrow data-class-prefix="more-questions" data-class-list="cpt-icon-size-md cpt-icon-idle-lightblue cpt-icon-hover-white cpt-icon-focus-orange"></cwds-arrow>
+		<cwds-arrow data-class-prefix="more-questions" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
 
 		<!-- classes of these primary ones are different from the icon arrows, need to review css before reusing web componen there -->
 	</a>
