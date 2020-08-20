@@ -13,7 +13,7 @@ langData.languages.forEach(lang => {
 })
 
 let htmlmap = [];
-let htmlmapLocation = './docs/htmlmap.json';
+let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
 }

@@ -174,9 +174,7 @@ const watcher = () => {
   const eleventyWatchFiles = [
     './pages/**/*',
     '!./pages/translations/**/*',
-    '!./pages/_buildoutput/*.*',
-    '!./pages/_includes/*.(css|js)',
-    '!./pages/_data/htmlmap.json'
+    '!./pages/_buildoutput/**/*'
   ];
 
   // Watch for CSS and Eleventy files based on environment.
