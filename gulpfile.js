@@ -57,7 +57,7 @@ const rollup = (done) => {
   });
 };
 
-const includesOutputFolder = 'pages/_includes';
+const includesOutputFolder = 'pages/_buildoutput';
 const buildOutputFolder = 'docs/css/build';
 const tempOutputFolder = 'temp';
 
