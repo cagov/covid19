@@ -138,7 +138,9 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       content: [
         'pages/**/*.njk',
         'pages/**/*.html',
-        'pages/**/*.js'
+        'pages/**/*.js',
+        'pages/wordpress-posts/banner*.html',
+        'pages/@(translated|wordpress)-posts/new*.html'
       ],
       extractors: purgecssExtractors
     }),
