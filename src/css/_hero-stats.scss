@@ -99,9 +99,6 @@ hero-stats {
 		@include absolute(left 0 top 0);
 		@include size(100%);
 		z-index: 1;
-		@include ie {
-			height: auto !important;
-		}
 		&-pic {
 			@include size(100%, 70vh);
 			@include absolute(left 0 top 0);
