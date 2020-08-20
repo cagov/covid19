@@ -155,9 +155,7 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   });
 
 // Clear out the temp folder.
-const emptyTemp = () => del([
-  `${tempOutputFolder}/**/*`
-]);
+const emptyTemp = () => del(tempOutputFolder);
 
 // Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? gulp.series(devCSS, reload) : gulp.parallel(builtCSS, homeCSS);
