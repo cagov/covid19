@@ -1,4 +1,28 @@
+.jumbo-img { 
+
+	background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('../img/hero.webp');
+	background-color: #1D2574;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: center 10%;
+	@include tablet {
+		background-size: cover;
+		background-position-x: 50%;
+	  }
+	@include tablet-wide {
+	background-size: cover;
+	background-position-x: 50%;
+	}
+	@include desktop {
+		background-size: cover;
+	  background-position-x: 50%;
+	}
+
+  
+  }
+
 hero-stats {
+
 /*HERO */
 .hero {
 	position: relative;

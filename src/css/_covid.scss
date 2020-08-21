@@ -670,16 +670,9 @@ border: none;
 	
 }
 
-//-----------end of Small breakpoint
-
 
 @media (min-width: 768px) {
-  .jumbo-img {
-    background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('../img/hero.webp');
-    background-size: cover;
-    background-color: #1D2574;
-    background-position-x: 50%;
-  }
+
   .no-webp .jumbo-img {
     background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('../img/hero.jpg');
   }
@@ -740,7 +733,6 @@ border: none;
 	.h4, h4 {
     font-size: 1.3rem;
 }
-	
 	.h3, h3 {
     font-size: 1.5rem;
 }
