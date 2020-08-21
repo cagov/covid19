@@ -48,6 +48,7 @@ pagerating-section {
 			cursor: pointer;
 			text-transform: uppercase;
 			margin: 0 0.25rem;
+			display: inline !important;
 
 			&:hover {
 				background:$yellow;
