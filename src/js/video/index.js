@@ -1,190 +1,67 @@
-/**
- *
- *
- * This all code from a vendor named trilogy
- *
- *
- *
- *
- * Video namespace
- */
+const modal = document.getElementById('video-modal');
+const video = document.getElementById('video-container');
+const openers = document.getElementsByClassName('video-modal-open');
+const closers = document.getElementsByClassName('video-modal-close');
 
-/**
- * Fired by YouTube when the API is ready.
- */
-window.onYouTubeIframeAPIReady = function () {
-  video.youtubeStatus = "loaded";
+// Embed is straight from YouTube's UI. One exception: added the '?autoplay=1' at end of src.
+const youtubeEmbed = `
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/1zDX9PXkotA?autoplay=1" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; encrypted-media; gyroscope" 
+  allowfullscreen>
+</iframe>
+`;
+
+// When modal pops up, add various listeners so user can close it.
+const addModalListeners = () => {
+  Array.from(closers).forEach(element => { element.addEventListener('click', toggleModal); });
+  modal.addEventListener('click', toggleModal);
+  document.addEventListener('keydown', escapeModal);
 };
 
-window.addEventListener
-  ? window.addEventListener("load", videoStuff, false)
-  : window.attachEvent && window.attachEvent("onload", videoStuff);
+// When modal is closed, undo addModalListeners. We don't need the listeners when the modal isn't open.
+const removeModalListeners = () => {
+  Array.from(closers).forEach(element => { element.removeEventListener('click', toggleModal); });
+  modal.removeEventListener('click', toggleModal);
+  document.removeEventListener('keydown', escapeModal);
+};
 
-function videoStuff() {
-  window.video = {
-    modal: document.getElementById("video-modal"), // The modal window container
-    openers: document.getElementsByClassName("video-modal-open"), // Elements that will open the modal
-    closers: document.getElementsByClassName("video-modal-close"), // Elements that will close the modal
-    players: {}, // Cache each player's data in case the user closes and reopens it
-    youtubeId: null, // The data-video attribute of the opener that was clicked
-    youtubeStatus: "notLoaded", // One of: "notLoaded", "loading", "loaded"
-  };
+// Close the modal when user presses escape key.
+const escapeModal = (event) => {
+  if (event.keyCode === 27) { closeModal(); }
+};
 
-  /**
-   * Closes the modal and pauses the video. Videos will resume where they left off if the user opens the modal again.
-   */
-  video.closeModal = function () {
-    var player = video.players[video.youtubeId];
+// Manipulate HTML to open the modal. Add listeners too.
+const openModal = () => {
+  modal.style.display = 'block';
+  document.body.classList.add('popup_visible');
+  video.innerHTML = youtubeEmbed;
+  addModalListeners();
+};
 
-    if (player && typeof player.pauseVideo === "function") {
-      player.pauseVideo();
-    }
+// Manipulate HTML to close the modal. Remove listeners.
+const closeModal = () => {
+  modal.style.display = 'none';
+  document.body.classList.remove('popup_visible');
+  video.innerHTML = '';
+  removeModalListeners();
+};
 
-    document.getElementsByTagName("HTML")[0].classList.remove("popup_visible");
-    if (document.getElementById("video-" + video.youtubeId)) {
-      document.getElementById("video-" + video.youtubeId).style.display =
-        "none";
-    }
-    if (video.modal) {
-      video.modal.style.display = "none";
-    }
-    video.youtubeId = null;
-  };
-
-  /**
-   * Initialize the YouTube API if it's not loaded, and wait.
-   */
-  video.initYouTube = function () {
-    if (video.youtubeStatus === "notLoaded") {
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-
-      var firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      video.youtubeStatus = "loading";
-      video.waitForYouTube();
-    }
-  };
-
-  function vidInterval() {
-    if (video.youtubeStatus === "loaded") {
-      clearInterval(video.interval);
-      video.play();
-    }
+// Open or close the modal depending upon modal's display property.
+// Seems redundant but the secret sauce here is the event.preventDefault().
+// We can put a fallback link into the open-the-modal link's href.
+// This fallback link will work in no-JS browsers. event.preventDefault() will otherwise block it.
+const toggleModal = (event) => {
+  event.preventDefault();
+  if (modal.style.display === 'none') {
+    openModal();
+  } else {
+    closeModal();
   }
-  /**
-   * The user requested a video. Send them here to wait until YouTube tells us it has loaded.
-   */
-  video.waitForYouTube = function () {
-    if(video.interval) {
-      clearInterval(video.interval);
-    }
-    video.interval = setInterval(vidInterval, 100);
-  };
+};
 
-  /**
-   * If the player exists, show it and play. Otherwise create a container and data structure for it and play.
-   */
-  video.play = function () {
-    var playerId = "video-" + video.youtubeId;
-    var player = document.getElementById(playerId);
-    var container = document.getElementById("video-container");
-
-    if (player) {
-      player.style.display = "block";
-    } else {
-      container.innerHTML += `<div id="${playerId}"></div>`;
-      video.modal.style.display = "block";
-    }
-
-    if (!video.players[video.youtubeId]) {
-      video.players[video.youtubeId] = new YT.Player(playerId, {
-        host: "https://www.youtube.com",
-        height: "390",
-        width: "640",
-        videoId: video.youtubeId,
-        events: {
-          onReady: video.playerReady,
-        },
-      });
-    } else {
-      if (player && video.players[video.youtubeId]) {
-        player.style.display = "block";
-        video.players[video.youtubeId].playVideo();
-      }
-    }
-  };
-
-  /**
-   * Play the video once it's ready
-   */
-  video.playerReady = function (e) {
-    e.target.playVideo();
-  };
-
-  /**
-   * Clicking outside the modal will close it.
-   */
-  window.onclick = function (e) {
-    if (e.target == video.modal) {
-      video.closeModal();
-    }
-  };
-
-  /**
-   * The escape key will close the video modal.
-   */
-  window.onkeydown = function (e) {
-    switch (e.keyCode) {
-      case 27: // Escape key
-        if (
-          document
-            .getElementsByTagName("HTML")[0]
-            .classList.contains("popup_visible")
-        ) {
-          video.closeModal();
-        }
-        break;
-    }
-  };
-
-  /**
-   * Any element with a .open-video-modal will open the modal.
-   */
-  for (let i = 0; i < video.openers.length; i++) {
-    video.openers[i].onclick = function (e) {
-      if (e.target.dataset && e.target.dataset.video) {
-        video.youtubeId = e.target.dataset.video;
-      } else {
-        video.youtubeId = e.target.closest("[data-video]").dataset.video;
-      }
-      if (video.youtubeId) {
-        switch (video.youtubeStatus) {
-          case "notLoaded":
-            video.initYouTube();
-            break;
-
-          case "loading":
-            video.waitForYouTube();
-            break;
-
-          case "loaded":
-            video.play();
-        }
-
-        document.getElementsByTagName("HTML")[0].classList.add("popup_visible");
-        if (video.modal) {
-          video.modal.style.display = "block";
-        }
-      }
-    };
-  }
-
-  /**
-   * Any element with a .video-close will close the modal.
-   */
-  for (let i = 0; i < video.closers.length; i++) {
-    video.closers[i].onclick = video.closeModal;
-  }
-}
+// Add listeners to various elements to open up the modal.
+Array.from(openers).forEach(element => { element.addEventListener('click', toggleModal); });
