@@ -110,11 +110,17 @@ news-section {
 		  display: block;
 		  color: $black;
 		}
-			&-headline {
+		&-headline {
 				@extend %headline5;
 				color: $blue;
 		  margin-bottom: .25rem;
 		  transition: color .3s $slow-curve;
+				@include tablet {
+				overflow-wrap: break-word;
+				}
+				@include desktop {
+					overflow-wrap:normal;
+				}
 			}
 			&-teaser {
 		  color: $black;
