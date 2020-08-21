@@ -173,6 +173,7 @@ const watcher = () => {
   ];
   const eleventyWatchFiles = [
     './pages/**/*',
+    './.eleventy.js',
     '!./pages/translations/**/*',
     '!./pages/_buildoutput/**/*'
   ];
