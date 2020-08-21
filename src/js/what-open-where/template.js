@@ -50,7 +50,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
     let nonAllowedActivities = [];
     let outdoorActivities = [];
     activityDetails.forEach(ac => {
-      if(ac.status == "N") {
+      if(ac.status === "N" || ac.status === "N14") {
         nonAllowedActivities.push(ac)
       } else {
         allowedActivities.push(ac)
@@ -84,7 +84,7 @@ function lookupSuccess(inputCounty, inputval, isZip) {
           <ul>
             ${nonAllowedActivities.sort(sortByActivity).map( (item) => {
               return `
-                <li>${item.activity}</li>
+                <li>${item.activity} ${(item.status === "N14") ? '(opens in 14 days)' : ''}</li>
               `
             }).join(' ')}
           </ul>
