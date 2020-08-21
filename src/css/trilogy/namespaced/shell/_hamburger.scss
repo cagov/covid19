@@ -13,7 +13,7 @@ cagov-navoverlay {
     transform-origin: top left;
     display: inline-block;
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     top: -2px;
     right: 0;
     transition: $slow;
