@@ -738,3 +738,9 @@ border: none;
 }
 }
 
+/* Create some space on the bottom before is this page usefull section */
+
+.jumbotron + .container {
+  padding-bottom:2.5rem
+}
+
