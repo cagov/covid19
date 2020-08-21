@@ -57,7 +57,7 @@ const rollup = (done) => {
   });
 };
 
-const includesOutputFolder = 'pages/_includes';
+const includesOutputFolder = 'pages/_buildoutput';
 const buildOutputFolder = 'docs/css/build';
 const tempOutputFolder = 'temp';
 
@@ -174,8 +174,7 @@ const watcher = () => {
   const eleventyWatchFiles = [
     './pages/**/*',
     '!./pages/translations/**/*',
-    '!./pages/_includes/*.(css|js)',
-    '!./pages/_data/htmlmap.json'
+    '!./pages/_buildoutput/**/*'
   ];
 
   // Watch for CSS and Eleventy files based on environment.
