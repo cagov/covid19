@@ -75,11 +75,11 @@ cagov-navoverlay {
         @include phone {
           .expanded-menu-dropdown {
             max-height: 100rem;
-            padding-top: 0.5rem;
+           // padding-top: 0.5rem;
           }
         }
         .expanded-menu-section-header-link {
-          color: $orange;
+          color: $white;
         }
         .expanded-menu-section-header-arrow-svg {
           transform: rotate(180deg);
@@ -105,6 +105,7 @@ cagov-navoverlay {
           font-size: 0.9rem;
           padding: 0.25rem;
           border-radius: 1.5rem;
+          
           @include tablet {
             font-size: 1rem;
             width: auto;
@@ -161,10 +162,13 @@ cagov-navoverlay {
         color: $white;
         font-weight: 700;
         padding: 0.5rem 0.25rem;
-        margin: 0.15rem 0;
+        margin: 0.15rem 0 0.15rem 2px;;
         display: table;
         transition: color 0.3s $slow-curve;
         border-radius: 1rem;
+        &:first-child {
+          margin-top: 0.7em;
+        }
         @include tablet {
           padding: .35rem .7rem;
           margin: 0 0 0 2px;
