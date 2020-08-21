@@ -52,7 +52,7 @@
       <link rel="stylesheet" type="text/css" href="/css/build/development.css">
     {% else %}
       <style>
-        {% include "home.css" %}
+        {% include "../_buildoutput/home.css" %}
       </style>
     {% endif %}
   </head>
@@ -290,7 +290,7 @@
 <div class="popup_background"></div>
 <!-- end video overlay -->
 <script type="module">
-  {% include "video.js" %}
+  {% include "../_buildoutput/video.js" %}
 </script>
 
 </body>

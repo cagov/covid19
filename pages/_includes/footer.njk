@@ -95,15 +95,15 @@ ga('tracker3.send', 'pageview');
 <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
 {% endpagesection -%}
 
-<script type="module">{% include "built.js" %}</script>
+<script type="module">{% include "../_buildoutput/built.js" %}</script>
 {%- pagesection page, "sign-up-for-county-alerts" %}
-<script type="module">{% include "alerts.js" %}</script>
+<script type="module">{% include "../_buildoutput/alerts.js" %}</script>
 {% endpagesection -%}
 {%- pagesection page, "telehealth" %}
-<script type="module">{% include "telehealth.js" %}</script>
+<script type="module">{% include "../_buildoutput/telehealth.js" %}</script>
 {% endpagesection -%}
 {%- pagesection page, "plasma" %}
-<script type="module">{% include "plasma.js" %}</script>
+<script type="module">{% include "../_buildoutput/plasma.js" %}</script>
 {% endpagesection -%}
 
 <script nomodule src="/js/es5.js"></script>
