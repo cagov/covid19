@@ -745,3 +745,14 @@ border: none;
   padding-bottom:2.5rem;
 }
 
+.jumbotron.jumbo-img .container {
+  @include phone {
+    padding-top:1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  @include tablet {
+    padding-top:2rem;
+    padding-bottom: 1.5rem;
+  }
+}
