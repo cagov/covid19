@@ -119,9 +119,9 @@ cagov-navoverlay {
             background: transparent;
           }
           &:focus {
-            background: $darkblue;
-            color: $yellow;
-            box-shadow: 0 0 0 2px $yellow;
+            //background: $darkblue;
+            color: $white;
+            box-shadow: 0 0 0 2px $white;
             padding-left: 0.5rem;
             @include tablet {
             }
@@ -155,6 +155,7 @@ cagov-navoverlay {
       @include tablet {
         display: block;
         max-height: none;
+        padding: 2px 0;
       }
       &-link {
         color: $white;
@@ -165,20 +166,21 @@ cagov-navoverlay {
         transition: color 0.3s $slow-curve;
         border-radius: 1rem;
         @include tablet {
-          padding: 0.35rem;
-          margin: 0;
+          padding: .35rem .7rem;
+          margin: 0 0 0 2px;
         }
         @include desktop {
-          padding: 0.35rem;
+          padding: .35rem .7rem;
         }
         &:hover,
         &:active {
           color: $yellow;
         }
         &:focus {
-          background: $yellow;
-          color: $darkblue;
-          box-shadow: 0 0 0 2px $darkblue;
+         // background: $yellow;
+         // color: $darkblue;
+          color: $white;
+          box-shadow: 0 0 0 2px $white;
           padding-left: 0.5rem;
         }
       }
