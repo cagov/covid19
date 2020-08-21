@@ -107,10 +107,13 @@
       width: 6rem;
       display: block;
       background: $blue;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem;
       box-shadow: $button-shadow;
       transition: width 0.4s $slow-curve, background 0.4s $slow-curve;
-      overflow-y: hidden;
+	  overflow-y: hidden;
+	  @include tablet {
+		padding: 0.5rem 0.75rem;
+	}
     }
     &-text {
       text-align: left;
@@ -122,7 +125,10 @@
         color: $orange;
         text-transform: uppercase;
         display: block;
-        transition: color 0.4s $slow-curve;
+		transition: color 0.4s $slow-curve;
+		@include phone {
+			font-size: 1.2rem;
+		  }
       }
       &-title {
         @extend %headline7;
@@ -131,7 +137,7 @@
         display: block;
         transition: color 0.4s $slow-curve;
         @include phone {
-          font-size: 1.2rem;
+          font-size: .9rem;
         }
       }
     }
@@ -201,7 +207,7 @@
   transition: background 0.5s $slow-curve;
   padding: 0;
   margin: 0.5rem 0.5rem 0.5rem 1em;
-  width: 55%;
+  width: 85%;
   order: 2;
   @include tablet {
     width: 13rem;
