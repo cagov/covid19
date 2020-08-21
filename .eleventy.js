@@ -14,7 +14,7 @@ langData.languages.forEach(lang => {
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
-if(fs.existsSync(htmlmapLocation)) {
+if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
 }
 
@@ -345,7 +345,9 @@ module.exports = function(eleventyConfig) {
             </div>`;
         }
         processedPostMap.set(outputPath,initialHTML);
-        fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
+        if(process.env.NODE_ENV === 'development') {
+          fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
+        }
         return dom.serialize();
       }
     }

@@ -95,31 +95,6 @@ hero-stats {
 	    box-decoration-break: clone;
 		}
 	}
-	&-photo {
-		@include absolute(left 0 top 0);
-		@include size(100%);
-		z-index: 1;
-		@include ie {
-			height: auto !important;
-		}
-		&-pic {
-			@include size(100%, 70vh);
-			@include absolute(left 0 top 0);
-			object-fit: cover;
-			@include tablet {
-				@include size(100%);
-			}
-		}
-		&-description {
-			@include screen-reader-text;
-		}
-		&-fade {
-			@include size(100%, 10rem);
-			background: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 100%);
-			@include absolute(left 0 top 0);
-			z-index: 100;
-		}
-	}
 }
 
 
