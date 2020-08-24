@@ -12,7 +12,7 @@
   </a>
   <cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey>
   <script type="module">
-    {% include "survey.js" %}
+    {% include "../_buildoutput/survey.js" %}
   </script>
   <nav id="top" class="navbar navbar-expand navbar-dark bd-navbar navbar-inverse px-0 pt-2 pb-3">
     <div class="container flex-wrap flex-lg-nowrap py-0 px-3 pr-0">

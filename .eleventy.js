@@ -7,8 +7,10 @@ const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'))
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
-if(fs.existsSync('pages/_data/htmlmap.json')) {
-  htmlmap = JSON.parse(fs.readFileSync('pages/_data/htmlmap.json','utf8'));
+
+let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
+if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
+  htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
 }
 
 //RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
@@ -338,7 +340,10 @@ module.exports = function(eleventyConfig) {
             </div>`;
         }
         processedPostMap.set(outputPath,initialHTML);
-        fs.writeFileSync('./pages/_data/htmlmap.json',JSON.stringify([...processedPostMap]),'utf8')
+        if(process.env.NODE_ENV === 'development') {
+          fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
+        }
+
         return dom.serialize();
       }
     }

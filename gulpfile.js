@@ -57,7 +57,7 @@ const rollup = (done) => {
   });
 };
 
-const includesOutputFolder = 'pages/_includes';
+const includesOutputFolder = 'pages/_buildoutput';
 const buildOutputFolder = 'docs/css/build';
 const tempOutputFolder = 'temp';
 
@@ -101,6 +101,13 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
     done();
   });
 
+const purgecssExtractors = [
+  {
+    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    extensions: ['js']
+  }
+];
+
 // Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
@@ -113,7 +120,8 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
-      ]
+      ],
+      extractors: purgecssExtractors
     }),
     url([
       { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
@@ -137,7 +145,8 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.njk',
         'pages/**/*.html',
         'pages/**/*.js'
-      ]
+      ],
+      extractors: purgecssExtractors
     }),
     url([
       { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
@@ -175,8 +184,7 @@ const watcher = () => {
   const eleventyWatchFiles = [
     './pages/**/*',
     '!./pages/translations/**/*',
-    '!./pages/_includes/*.(css|js)',
-    '!./pages/_data/htmlmap.json'
+    '!./pages/_buildoutput/**/*'
   ];
 
   // Watch for CSS and Eleventy files based on environment.
