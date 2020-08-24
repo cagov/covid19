@@ -6,11 +6,15 @@ const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
+const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
+
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(lang => {
   writeMenu(lang.id);
 })
+
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
@@ -356,53 +360,57 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
-    let localizeString = '--en.';
+    const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
+      const filesHost = 'https://files.covid19.ca.gov/';
       const dom = new JSDOM(html);
       const document = dom.window.document;
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
-          let englishUrl = image.src;
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                image.src = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
-        }
-        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
-          let englishUrl = link.href;
+      const lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
 
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                link.href = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
+      const domTargets = [];
+
+      //Scan the DOM for a files.covid19.ca.gov links
+      document.querySelectorAll(`img[src*='${filesHost}']`).forEach(domObject=>domTargets.push(({
+        type:'img',
+        domObject,
+        url:domObject.src
+      })));
+      document.querySelectorAll(`a[href*='${filesHost}']`).forEach(domObject=>domTargets.push(({
+        type:'a',
+        domObject,
+        url:domObject.href
+      })));
+
+      //Verify all files.covid19.ca.gov links in this dom
+      for(const domTarget of domTargets) {
+        if(filesSiteData.indexOf(domTarget.url)===-1) {
+          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget.url}`);
         }
-        return dom.serialize();  
-      }      
+      }
+
+      if(lang !== "en") {
+        for(const domTarget of domTargets) {
+          let englishUrl = domTarget.url;
+
+          if(englishUrl.includes(localizeString)) {
+            //attempt to translate
+
+            let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
+  
+            if(filesSiteData.indexOf(localizedUrl)>-1) {
+              if (domTarget.type==='img') {
+                domTarget.domObject.src = localizedUrl
+              } else {
+                domTarget.domObject.href = localizedUrl
+              }
+            } else {
+              //console.log('No translation found - ' + localizedUrl);
+            }
+          }
+        }
+
+        return dom.serialize();
+      }
     }
     return html;
   });
