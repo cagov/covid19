@@ -6,11 +6,17 @@ const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
+const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
+
+console.log(filesSiteData);
+
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(lang => {
   writeMenu(lang.id);
 })
+
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
