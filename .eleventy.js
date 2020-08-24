@@ -2,7 +2,6 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
-const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
@@ -362,56 +361,34 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
     const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
-      const filesHost = 'https://files.covid19.ca.gov/';
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-      const lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-
-      const domTargets = [];
+      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const lang = langData.languages.filter(x=>x.enabled&&x.hreflang===htmllang).concat(langData.languages[0])[0].id;
 
       //Scan the DOM for a files.covid19.ca.gov links
-      document.querySelectorAll(`img[src*='${filesHost}']`).forEach(domObject=>domTargets.push(({
-        type:'img',
-        domObject,
-        url:domObject.src
-      })));
-      document.querySelectorAll(`a[href*='${filesHost}']`).forEach(domObject=>domTargets.push(({
-        type:'a',
-        domObject,
-        url:domObject.href
-      })));
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
+        .map(r=> r.groups.URL);
 
-      //Verify all files.covid19.ca.gov links in this dom
       for(const domTarget of domTargets) {
-        if(filesSiteData.indexOf(domTarget.url)===-1) {
-          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget.url}`);
+        if(filesSiteData.indexOf(domTarget)===-1) {
+          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
         }
       }
-
       if(lang !== "en") {
-        for(const domTarget of domTargets) {
-          let englishUrl = domTarget.url;
-
+        for(const englishUrl of domTargets) {
           if(englishUrl.includes(localizeString)) {
             //attempt to translate
-
             let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
   
             if(filesSiteData.indexOf(localizedUrl)>-1) {
-              if (domTarget.type==='img') {
-                domTarget.domObject.src = localizedUrl
-              } else {
-                domTarget.domObject.href = localizedUrl
-              }
+              html = html.replace(new RegExp(englishUrl,'gm'),localizedUrl);
             } else {
               //console.log('No translation found - ' + localizedUrl);
             }
           }
         }
-
-        return dom.serialize();
-      }
+      }  
     }
+
     return html;
   });
 
