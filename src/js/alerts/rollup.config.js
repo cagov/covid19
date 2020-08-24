@@ -5,7 +5,7 @@ import { terser } from 'rollup-plugin-terser';
 export default {
   input: 'src/js/alerts/index.js',
   output: {
-    file: 'pages/_includes/alerts.js',
+    file: 'pages/_buildoutput/alerts.js',
     format: 'esm'
   },
   plugins: [resolve(), json(), terser()]
