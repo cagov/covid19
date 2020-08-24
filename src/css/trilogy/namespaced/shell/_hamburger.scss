@@ -1,4 +1,5 @@
 cagov-navoverlay {
+  order: 3;
   .menu-trigger {
     background: $orange;
     //@include size(3rem);
@@ -13,7 +14,7 @@ cagov-navoverlay {
     transform-origin: top left;
     display: inline-block;
     cursor: pointer;
-    position: absolute;
+    position: relative;
     top: -2px;
     right: 0;
     transition: $slow;
@@ -23,8 +24,7 @@ cagov-navoverlay {
       z-index: 2000;
     }
 
-    @include tablet-wide { 
-      position: relative !important;
+    @include tablet { 
       z-index: 2000;
     }
  

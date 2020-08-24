@@ -77,14 +77,10 @@
   &-wrap {
     @extend %wrap;
     display: flex;
-    padding-right: 5.5em; // added space for hamburger menu button
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    @include tablet-wide {
-      padding-right: 0;
-    }
     @include desktop {
       flex-wrap: nowrap;
     }
@@ -207,8 +203,11 @@
   transition: background 0.5s $slow-curve;
   padding: 0;
   margin: 0.5rem 0.5rem 0.5rem 1em;
-  width: 85%;
-  order: 2;
+order: 2;
+  margin-right: auto;
+  @include reg-phone {
+	width: 8rem;
+  }
   @include tablet {
     width: 13rem;
     padding: 0 0 0 0.25rem;
@@ -313,15 +312,26 @@
   }
   &-field {
     background: transparent;
-    padding: 0.75rem 0.5rem 0.75rem 1rem;
+    padding: 0.75rem 0rem 0.75rem 0.75rem;
     font-size: 1rem;
     border: 0;
-    width: 100%;
+    width: 90px;
     color: $white;
-    transition: $slow;
+	transition: $slow;
     @include tablet {
-      padding: 0.75rem 0.5rem 0.75rem 0.75;
-    }
+		padding: 0.75rem 0rem 0.75rem 0.75rem;
+		width: 100%;
+	  }
+    @include tablet-wide {
+	  padding: 0.75rem 0.5rem 0.75rem 0.35rem;
+	  width: 100%;
+	}
+	@include desktop {
+		padding: 0.75rem 0.5rem 0.75rem 0.35rem;
+		width: 100%;
+	  }
+
+
     @include placeholder {
       color: $white;
       transition: $slow;
@@ -392,8 +402,13 @@ button#dropdown-menu-button {
   transition-property: all;
   transition-timing-function: ease;
   transition-delay: 0s;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: .5rem .3rem;
   vertical-align: middle;
+  @include tablet {
+	padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+
+
 
   &:hover {
     background-color: transparent;

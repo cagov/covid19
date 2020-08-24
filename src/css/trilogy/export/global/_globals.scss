@@ -13,6 +13,12 @@ $max-width-text:     64rem;    //1500px
     @content;
   }
 }
+@mixin reg-phone {
+	@media (max-width: #{$tablet}) {
+	  @content;
+	}
+  }
+
 @mixin phone {
   @media (max-width: #{$tablet-wide}) {
     @content;

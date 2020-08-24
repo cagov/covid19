@@ -25,7 +25,7 @@
     <div class="header-search" role="search">
       <form class="header-search-form" action="{{homelinkpath}}search/">
         <label class="header-search-label" for="header-search-site">Search</label>
-        <input name="q" id="header-search-site" class="header-search-field" type="search" placeholder="">
+        <input name="q" id="header-search-site" class="header-search-field" type="search" placeholder="Search this site">
         <button class="header-search-button" aria-label="Submit Search">
           <svg class="header-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Submit Search</title><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
             c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"/></svg>
@@ -42,7 +42,7 @@
         data-toggle="dropdown"
         id="dropdown-menu-button"
       >
-          {{Terms[4].Text}}
+          <span id="dropdown-text">{{Terms[4].Text}}</span>
           <svg aria-hidden="true" class="header-language-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19"><path d="M0.7,2.2l1.5-1.4C2.7,0.2,3.2,0,3.9,0s1.2,0.2,1.7,0.7L15,10l9.4-9.3c0.5-0.5,1-0.7,1.8-0.7
             c0.7,0,1.3,0.2,1.8,0.7l1.4,1.4C29.8,2.7,30,3.2,30,3.9s-0.2,1.3-0.7,1.8L16.7,18.2c-0.5,0.5-1.1,0.7-1.8,0.7s-1.3-0.2-1.8-0.7
             L0.7,5.7C0.2,5.2,0,4.6,0,3.9S0.2,2.7,0.7,2.2z"></path></svg>
