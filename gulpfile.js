@@ -10,6 +10,7 @@ const spawn = require('cross-spawn');
 const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
+const request = require('request');
 
 // Initialize BrowserSync.
 const server = (done) => {
@@ -41,6 +42,13 @@ const clean = () => del([
 
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
+  //Donwload the files sitemap for 11ty to use
+  download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   }).on('close', () => {
@@ -205,6 +213,35 @@ const watch = gulp.series(build, gulp.parallel(watcher, server));
 
 // Nukes the deployment directory prior to build. Totally clean.
 const deploy = gulp.series(clean, build);
+
+// function to download a remove file and place it in a location
+const download = (url, dest, cb) => {
+  const file = fs.createWriteStream(dest);
+  const sendReq = request.get(url);
+
+  // verify response code
+  sendReq.on('response', response => {
+    if (response.statusCode !== 200) {
+      return cb(response.statusCode);
+    }
+
+    sendReq.pipe(file);
+  });
+
+  // close() is async, call cb after close completes
+  file.on('finish', () => file.close(cb));
+
+  // check for request errors
+  sendReq.on('error', err => {
+    fs.unlink(dest);
+    return cb(err.message);
+  });
+
+  file.on('error', err => { // Handle errors
+    fs.unlink(dest); // Delete the file async. (But we don't check the result)
+    return cb(err.message);
+  });
+};
 
 module.exports = {
   eleventy,
