@@ -10,9 +10,7 @@ const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap
 
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-langData.languages.forEach(lang => {
-  writeMenu(lang.id);
-})
+langData.languages.forEach(writeMenu);
 
 
 let htmlmap = [];
@@ -476,8 +474,8 @@ function getLinkInfo(link, lang) {
   if(link.slug) {
     pageNames.forEach(page => {
       if(page.slug === link.slug) {
-        linkData.url = `/${page.slug}/`;
-        linkData.name = page[lang];
+        linkData.url = `/${lang.pathpostfix}${page.slug}/`;
+        linkData.name = page[lang.wptag];
       }
     })
   }
@@ -485,7 +483,7 @@ function getLinkInfo(link, lang) {
     pageNames.forEach(page => {
       if(page.href === link.href) {
         linkData.url = page.href;
-        linkData.name = page[lang];
+        linkData.name = page[lang.wptag];
       }
     })
   }
@@ -497,12 +495,12 @@ function writeMenu(lang) {
   menuData.sections.forEach(section => {
     if(section.links) {
       section.links.forEach(link => {
-        let linkData = getLinkInfo(link, 'lang-'+lang);
+        let linkData = getLinkInfo(link, lang);
         link.url = linkData.url;
         link.name = linkData.name;
       })
       singleLangMenu.sections.push(section)
     }
   });
-  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
