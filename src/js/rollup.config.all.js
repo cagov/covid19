@@ -4,6 +4,7 @@ import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
 import survey from './survey/rollup.config';
 import telehealth from './telehealth/rollup.config';
+import whatopen from './what-open-where/rollup.config';
 
 // Combines all the Rollup files into one.
 export default [
@@ -12,5 +13,6 @@ export default [
   esm,
   plasma,
   survey,
-  telehealth
+  telehealth,
+  whatopen
 ];
