@@ -427,11 +427,17 @@ module.exports = function(eleventyConfig) {
     return langRecord['pulse-survey'];
   });
 
-  eleventyConfig.addFilter('publishdateorfiledate', page => 
-    (page.data
+  eleventyConfig.addFilter('publishdateorfiledate', page => {
+    let out = (page.data
       ? page.data.publishdate
-      : page.publishdate) 
-      || page.date.toISOString()
+      : page.publishdate)
+      || page.date.toISOString();
+
+    if(out==='today')
+      out = new Date().toISOString();
+    
+    return out;
+  }
   );
   
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
