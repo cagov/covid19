@@ -4,9 +4,6 @@ let menuData = JSON.parse(fs.readFileSync('../../../pages/_data/menuData.json', 
 let pageNames = JSON.parse(fs.readFileSync('../../../pages/_data/pageNames.json', 'utf8'));
 
 let singleLangMenu = { "sections": [] };
-
-
-
 menuData.sections.forEach(section => {
   if(section.links) {
     section.links.forEach(link => {
