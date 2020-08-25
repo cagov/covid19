@@ -475,7 +475,7 @@ function getLinkInfo(link, lang) {
     pageNames.forEach(page => {
       if(page.slug === link.slug) {
         linkData.url = `/${lang.pathpostfix}${page.slug}/`;
-        linkData.name = page[lang.wptag];
+        linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
       }
     })
   }
@@ -483,7 +483,7 @@ function getLinkInfo(link, lang) {
     pageNames.forEach(page => {
       if(page.href === link.href) {
         linkData.url = page.href;
-        linkData.name = page[lang.wptag];
+        linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
       }
     })
   }
