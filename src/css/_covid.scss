@@ -674,15 +674,15 @@ border: none;
 @media (min-width: 768px) {
 
   .no-webp .jumbo-img {
-    background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('../img/hero.jpg');
+    background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('/img/hero.jpg');
   }
   .jumbo-img.county-img {
-    background-image: url('../img/CaliforniaCounties.webp');
+    background-image: url('/img/CaliforniaCounties.webp');
     background-size: cover;
     background-color: #1D2574;
   }
   .no-webp .jumbo-img.county-img {
-    background-image: url('../img/CaliforniaCounties.jpg');
+    background-image: url('/img/CaliforniaCounties.jpg');
   }
 	
   .top-nav .nav-item {
