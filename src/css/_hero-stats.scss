@@ -141,8 +141,8 @@ hero-stats {
 		margin: 3.5rem auto 2rem;
 	}
 	@include desktop {
-		padding: 3rem;
-		margin: 4rem auto 2rem;
+		padding: 2.3rem 3rem 2.5rem 3rem;
+		margin: 5rem auto 2rem;
 	}
 	&-headline {
 		font-family: $headline;
@@ -231,7 +231,7 @@ hero-stats {
 	}
 	&-row {
 		background-color: $darkblue;
-		padding: 1.5rem .1rem;
+		padding: 1.15rem .1rem;
 		border-bottom: 1px solid $blue;
 		display: flex;
 		flex-wrap: wrap;
