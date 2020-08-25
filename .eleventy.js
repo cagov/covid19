@@ -16,10 +16,6 @@ langData.languages.forEach(lang => {
 
 
 let htmlmap = [];
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
