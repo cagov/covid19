@@ -471,23 +471,18 @@ module.exports = function(eleventyConfig) {
 
 function getLinkInfo(link, lang) {
   let linkData = {};
-  if(link.slug) {
-    pageNames.forEach(page => {
-      if(page.slug === link.slug) {
-        linkData.url = `/${lang.pathpostfix}${page.slug}/`;
-        linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
-      }
-    })
+  for(const page of pageNames) {
+    if(link.slug && page.slug === link.slug) {
+      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
+    }
+    if(link.href && page.href === link.href) {
+      linkData.url = page.href;
+    }
+    if (linkData.url) {
+      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
+      return linkData;
+    }
   }
-  if(link.href) {
-    pageNames.forEach(page => {
-      if(page.href === link.href) {
-        linkData.url = page.href;
-        linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
-      }
-    })
-  }
-  return linkData;
 }
 
 function writeMenu(lang) {
