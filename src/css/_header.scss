@@ -87,7 +87,8 @@
   }
   &-logo {
     width: 100%;
-    order: 4;
+	order: 4;
+	background: $blue;
     @include tablet {
       background: transparent;
       order: 0;
@@ -204,9 +205,9 @@
   padding: 0;
   margin: 0.5rem 0.5rem 0.5rem 1em;
 order: 2;
-  margin-right: auto;
+width: 37%;
   @include reg-phone {
-	width: 8rem;
+	width: 37%;
   }
   @include tablet {
     width: 13rem;
@@ -315,7 +316,7 @@ order: 2;
     padding: 0.75rem 0rem 0.75rem 0.75rem;
     font-size: 1rem;
     border: 0;
-    width: 90px;
+    width: 100%;
     color: $white;
 	transition: $slow;
     @include tablet {
@@ -389,6 +390,13 @@ order: 2;
 }
 
 /*translate*/
+header .dropdown {
+	margin-right: auto;
+	@include tablet {
+		margin-right: 0;
+	  }
+
+}
 .translate {
   position: relative;
   padding-right: 30px;
@@ -452,3 +460,5 @@ button#dropdown-menu-button {
 .nav-scroll-spy {
   height: 0;
 }
+
+#dropdown-text {pointer-events: none;}
