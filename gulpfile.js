@@ -95,13 +95,6 @@ const scss = (done) => {
 
 // Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
-  .pipe(postcss([
-    // Rebase asset URLs within CSS so they'll work better in dev.
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ])
-  ]))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
   .on('end', () => {
@@ -131,10 +124,6 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       ],
       extractors: purgecssExtractors
     }),
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ]),
     cssnano
   ]))
   .pipe(rename('home.css'))
@@ -158,10 +147,6 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       ],
       extractors: purgecssExtractors
     }),
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ]),
     cssnano
   ]))
   .pipe(rename('built.css'))
