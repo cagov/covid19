@@ -6,8 +6,8 @@ const closers = document.getElementsByClassName('video-modal-close');
 // Embed is straight from YouTube's UI. One exception: added the '?autoplay=1' at end of src.
 const youtubeEmbed = `
 <iframe 
-  width="560" 
-  height="315" 
+  width="100%" 
+  height="100%" 
   src="https://www.youtube.com/embed/1zDX9PXkotA?autoplay=1" 
   frameborder="0" 
   allow="accelerometer; autoplay; encrypted-media; gyroscope" 

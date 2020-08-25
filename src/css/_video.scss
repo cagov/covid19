@@ -84,15 +84,6 @@
   left: 50%;
   top: 50%;
   transform: scale(0.9) translateX(-50%) translateY(-50%);
-  @media (max-height: 551px) and (max-aspect-ratio: 2/1) {
-    width: 48rem
-  }
-  @media (max-height: 451px) and (max-aspect-ratio: 2/1) {
-    width: 36rem;
-  }
-  @media (max-height: 351px) and (max-aspect-ratio: 2/1) {
-    width: 24rem;
-  }
 }
 .video-modal-player {
   background: #000;
@@ -127,7 +118,7 @@
   color: #fff;
   transform: translateX(50%) translateY(-50%);
   transition: all 0.3s ease-in-out;
-  @media (min-height: 550px) {
+  @media (min-height: 700px) {
     top: 0;
   }
 }
