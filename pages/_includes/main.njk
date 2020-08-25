@@ -1,16 +1,16 @@
-{% set langFilePostfix = tags | langFilePostfix %}
-{% if langFilePostfix === "" %}
-  {% set langIncludeFolder="../wordpress-posts/" %}
-{% else %}
-  {% set langIncludeFolder="../translated-posts/" %}
-{% endif %}
+{%- set langFilePostfix = tags | langFilePostfix -%}
+{%- if langFilePostfix === "" -%}
+  {%- set langIncludeFolder="../wordpress-posts/" -%}
+{%- else -%}
+  {%- set langIncludeFolder="../translated-posts/" -%}
+{%- endif -%}
 
-{% set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" %}
-{% set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))%}
+{%- set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" -%}
+{%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))-%}
 
-{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
-{% set JSON = JSONraw | jsonparse %}
-{% set Terms = JSON.Table3 %}
+{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" -%}{%- endset -%}
+{%- set JSON = JSONraw | jsonparse -%}
+{%- set Terms = JSON.Table3 -%}
 
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
