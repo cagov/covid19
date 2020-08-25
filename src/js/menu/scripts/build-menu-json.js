@@ -2,7 +2,6 @@ const fs = require('fs');
 
 let menuData = JSON.parse(fs.readFileSync('../../../pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('../../../pages/_data/pageNames.json', 'utf8'));
-let langData = JSON.parse(fs.readFileSync('../../../pages/_data/langData.json', 'utf8'));
 
 let singleLangMenu = { "sections": [] };
 
@@ -11,7 +10,7 @@ let singleLangMenu = { "sections": [] };
 menuData.sections.forEach(section => {
   if(section.links) {
     section.links.forEach(link => {
-      let linkData = getLinkInfo(link, langData.languages[0]);
+      let linkData = getLinkInfo(link, 'lang-en');
       link.url = linkData.url;
       link.name = linkData.name;
     })
@@ -25,8 +24,8 @@ function getLinkInfo(link, lang) {
   if(link.slug) {
     pageNames.forEach(page => {
       if(page.slug === link.slug) {
-        linkData.url = `/${lang.pathpostfix}${page.slug}/`;
-        linkData.name = page[lang.wptag];
+        linkData.url = `/${page.slug}/`;
+        linkData.name = page[lang];
       }
     })
   }
@@ -34,7 +33,7 @@ function getLinkInfo(link, lang) {
     pageNames.forEach(page => {
       if(page.href === link.href) {
         linkData.url = page.href;
-        linkData.name = page[lang.wptag];
+        linkData.name = page[lang];
       }
     })
   }
