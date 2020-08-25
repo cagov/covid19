@@ -10,7 +10,10 @@ const spawn = require('cross-spawn');
 const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
+<<<<<<< HEAD
 const request = require('request');
+=======
+>>>>>>> master
 
 // Initialize BrowserSync.
 const server = (done) => {
@@ -42,6 +45,7 @@ const clean = () => del([
 
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
+<<<<<<< HEAD
   //Donwload the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
@@ -49,6 +53,8 @@ const eleventy = (done) => {
     }
   });
 
+=======
+>>>>>>> master
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   }).on('close', () => {
@@ -81,7 +87,9 @@ const scss = (done) => {
 
   return gulp.src(`${tempOutputFolder}/shim.scss`)
     .pipe(sass({
-      includePaths: 'src/css'
+      includePaths: [
+        'src/css'
+      ]
     }).on('error', sass.logError))
     .pipe(rename('development.css'))
     .pipe(gulp.dest(tempOutputFolder))
@@ -91,7 +99,7 @@ const scss = (done) => {
     });
 };
 
-// Move scss output files into live usage, no purging. For dev mode only.
+// Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
     // Rebase asset URLs within CSS so they'll work better in dev.
@@ -109,7 +117,11 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
 
 const purgecssExtractors = [
   {
+<<<<<<< HEAD
     extractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
+=======
+    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+>>>>>>> master
     extensions: ['js']
   }
 ];
@@ -125,10 +137,21 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/_includes/footer.njk',
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
+<<<<<<< HEAD
         'pages/@(translated|wordpress)-posts/new*.html'
       ],
       extractors: purgecssExtractors
     }),
+=======
+        'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
+      ],
+      extractors: purgecssExtractors
+    }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
+>>>>>>> master
     cssnano
   ]))
   .pipe(rename('home.css'))
@@ -146,12 +169,23 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       content: [
         'pages/**/*.njk',
         'pages/**/*.html',
+<<<<<<< HEAD
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/new*.html'
       ],
       extractors: purgecssExtractors
     }),
+=======
+        'pages/**/*.js'
+      ],
+      extractors: purgecssExtractors
+    }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
+>>>>>>> master
     cssnano
   ]))
   .pipe(rename('built.css'))
@@ -163,7 +197,13 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   });
 
 // Clear out the temp folder.
+<<<<<<< HEAD
 const emptyTemp = () => del(tempOutputFolder);
+=======
+const emptyTemp = () => del([
+  `${tempOutputFolder}/**/*`
+]);
+>>>>>>> master
 
 // Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? gulp.series(devCSS, reload) : gulp.parallel(builtCSS, homeCSS);
@@ -181,7 +221,10 @@ const watcher = () => {
   ];
   const eleventyWatchFiles = [
     './pages/**/*',
+<<<<<<< HEAD
     './.eleventy.js',
+=======
+>>>>>>> master
     '!./pages/translations/**/*',
     '!./pages/_buildoutput/**/*'
   ];
@@ -214,6 +257,7 @@ const watch = gulp.series(build, gulp.parallel(watcher, server));
 // Nukes the deployment directory prior to build. Totally clean.
 const deploy = gulp.series(clean, build);
 
+<<<<<<< HEAD
 // function to download a remove file and place it in a location
 const download = (url, dest, cb) => {
   const file = fs.createWriteStream(dest);
@@ -243,6 +287,8 @@ const download = (url, dest, cb) => {
   });
 };
 
+=======
+>>>>>>> master
 module.exports = {
   eleventy,
   rollup,
