@@ -48,15 +48,11 @@
     {% for item in page | getAltPageRows -%}
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
-    
-    {% set css %}
-    {% include "built.css" %}
-    {% endset %}
     {% if env.dev %}
       <link rel="stylesheet" type="text/css" href="/css/build/development.css">
     {% else %}
       <style>
-        {{css | cssmin | safe}}
+        {% include "../_buildoutput/home.css" %}
       </style>
     {% endif %}
   </head>

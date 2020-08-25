@@ -4,6 +4,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
+const url = require('postcss-url');
 const cssnano = require('cssnano');
 const spawn = require('cross-spawn');
 const log = require('fancy-log');
@@ -49,15 +50,14 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
-  const command = ['rollup', '--config', 'src/js/rollup.config.all.js'];
-  spawn('npx', command, {
+  spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', () => {
     done();
   });
 };
 
-const includesOutputFolder = 'pages/_includes';
+const includesOutputFolder = 'pages/_buildoutput';
 const buildOutputFolder = 'docs/css/build';
 const tempOutputFolder = 'temp';
 
@@ -73,7 +73,9 @@ const scss = (done) => {
 
   return gulp.src(`${tempOutputFolder}/shim.scss`)
     .pipe(sass({
-      includePaths: 'src/css'
+      includePaths: [
+        'src/css'
+      ]
     }).on('error', sass.logError))
     .pipe(rename('development.css'))
     .pipe(gulp.dest(tempOutputFolder))
@@ -85,12 +87,26 @@ const scss = (done) => {
 
 // Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
+  .pipe(postcss([
+    // Rebase asset URLs within CSS so they'll work better in dev.
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ])
+  ]))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
   .on('end', () => {
     log('Generated: development.css.');
     done();
   });
+
+const purgecssExtractors = [
+  {
+    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    extensions: ['js']
+  }
+];
 
 // Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
@@ -102,9 +118,15 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/_includes/news-feed-home.html',
         'pages/_includes/footer.njk',
         'pages/**/*.js',
-        'pages/wordpress-posts/banner*.html'
-      ]
+        'pages/wordpress-posts/banner*.html',
+        'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
+      ],
+      extractors: purgecssExtractors
     }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
     cssnano
   ]))
   .pipe(rename('home.css'))
@@ -123,8 +145,13 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/**/*.njk',
         'pages/**/*.html',
         'pages/**/*.js'
-      ]
+      ],
+      extractors: purgecssExtractors
     }),
+    url([
+      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
+      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
+    ]),
     cssnano
   ]))
   .pipe(rename('built.css'))
@@ -157,8 +184,7 @@ const watcher = () => {
   const eleventyWatchFiles = [
     './pages/**/*',
     '!./pages/translations/**/*',
-    '!./pages/_includes/*.(css|js)',
-    '!./pages/_data/htmlmap.json'
+    '!./pages/_buildoutput/**/*'
   ];
 
   // Watch for CSS and Eleventy files based on environment.
