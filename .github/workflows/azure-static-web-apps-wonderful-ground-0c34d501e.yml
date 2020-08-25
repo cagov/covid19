@@ -21,7 +21,7 @@ jobs:
         with:
           submodules: true
       - name: Build 11ty
-        uses: cagov/actions-eleventy@2.0
+        uses: cagov/actions-eleventy@2.1
         with:
           args: --formats=html,njk --input ./pages --output ./docs
       - name: Build And Deploy
