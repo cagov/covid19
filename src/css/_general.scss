@@ -1550,7 +1550,7 @@ button#dropdown-menu-button:focus {
 }
 
 .rounded-50 {
-  border-radius: 50px;
+  border-radius: 50px !important;
 }
 
 /* Font size */
@@ -1810,9 +1810,11 @@ textarea {
 [hidden] {
   display: none;
 }
-
-.rounded-50 {border-radius: 50px;}
  
 font {
   pointer-events: none;
 }
+
+.bg-transparent {background-color:transparent !important;}
+.text-small {font-size:.85rem !important;}
+.text-black {color:#000 !important;}
