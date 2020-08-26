@@ -1,19 +1,63 @@
+import Awesomplete from 'awesomplete-es6';
+
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
     let counties = this.dataset.counties;
     let activities = this.dataset.status;
+    let activityLabel = 'Activity';
+    if(this.dataset.activityLabel) {
+      activityLabel = this.dataset.activityLabel;
+    }
+    let title = 'Find the status for activities in your county';
+    if(this.dataset.title) {
+      title = this.dataset.title;
+    }
+    let countyLabel = 'County';
+    if(this.dataset.countyLabel) {
+      countyLabel = this.dataset.countyLabel;
+    }
 
     this.innerHTML = `
       <div class="reopening-fields">
-      <h2>Find the status for activities in your county</h2>
+      <h2>${title}</h2>
         <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="county">County</label>
-              <input type="text" class="form-control" id="county" name="county">
+              <label for="location-query">${countyLabel}</label>
+              <div class="awesomplete">
+                <div class="awesomplete">
+                  <input
+                    aria-expanded="false"
+                    aria-owns="awesomplete_list_1"
+                    autocomplete="off"
+                    class="form-control"
+                    data-list=""
+                    data-multiple=""
+                    id="location-query"
+                    role="combobox"
+                    type="text"
+                  />
+                  <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+                  <span
+                    class="visually-hidden"
+                    role="status"
+                    aria-live="assertive"
+                    aria-atomic="true"
+                    >Type 2 or more characters for results.</span
+                  >
+                </div>
+                <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+                <span
+                  class="visually-hidden"
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  role="status"
+                  >Type 2 or more characters for results.</span
+                >
+              </div>
             </div>
             <div class="form-group col-md-6">
-              <label for="activity">Activity</label>
+              <label for="activity">${activityLabel}</label>
               <input type="text" class="form-control" id="activity" name="activity">
             </div>
           </div>
