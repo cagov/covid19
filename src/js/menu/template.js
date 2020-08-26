@@ -1,10 +1,10 @@
-export default function (data) {
+export default function (data, search) {
   return `<nav class="expanded-menu" role="navigation" aria-label="Site Navigation" aria-hidden="true" id="main-menu" tabindex="-1">
 
     <div class="expanded-menu-grid">
 
       <div class="expanded-menu-search" role="search">
-        <form class="expanded-menu-search-form" action="/search/">
+        <form class="expanded-menu-search-form" action="${search}">
           <label class="expanded-menu-search-label" for="search-site">Search</label>
           <input id="search-site" class="expanded-menu-search-field" type="search" placeholder="What are you looking for?">
           <button class="expanded-menu-search-button" aria-label="Search the Website">
