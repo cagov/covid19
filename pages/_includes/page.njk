@@ -41,6 +41,7 @@
         {% include "../_buildoutput/built.css" %}
       </style>
     {% endif %}
+    
     <!-- WC polyfill for legacy Edge -->
     <script>
       (function () {
@@ -55,7 +56,7 @@
       })();
     </script>
   </head>
-  <body>
+  <body class="interior-page">
     {% include "header.njk" %}
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
@@ -69,7 +70,7 @@
               <h1>{{ title | safe }}</h1>
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
-                  {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" or page.fileSlug === "what-is-open-where" %}
+                  {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" %}
                     {{ "today" | formatDate2(true,tags) }}
                   {% else %}
                     {{ publishdate | formatDate2(true,tags) }}

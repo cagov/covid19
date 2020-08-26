@@ -8,4 +8,33 @@
 @import './accordion';
 @import './stepbystep';
 @import './rtl';
+
 @import './video';
+/* ^ this was some trilogy code which I grabbed and needs to be namespaced */
+
+@import './trilogy/buttons';
+/* ^ this should go away and be replaced by namespaced, separated scss files for each component */
+
+/* globals needed for everything to compile */
+@import './trilogy/export/global/normalize';
+@import './trilogy/export/global/globals';
+@import './trilogy/export/global/positioning';
+/* cagov-navoverlay component */
+@import './trilogy/namespaced/shell/hamburger';
+@import './trilogy/namespaced/shell/expanded-menu';
+/* grabbing header stuff here */
+// @import './trilogy/export/shell/logo';
+//@import './trilogy/export/shell/header';
+/* ^ these should all move into namespaced versions so they can be used anywhere safely */
+
+@import './header';
+@import './project-kennedy';
+/* ^ I think this can be slimmed down and removed as we rely more on the css directly */
+
+@import './hero-stats';
+@import './video-section';
+@import './faq-twitter-section';
+@import './news';
+@import './page-rating';
+@import './footer';
+@import './reopening';

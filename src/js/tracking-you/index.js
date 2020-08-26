@@ -54,10 +54,11 @@ export default function applyAccordionListeners() {
 
 
   function toggleBoolean(el,attr) {
-    if(el[attr] === "false") {
-      el[attr] = "true";
+    if(el.getAttribute(attr) === "false") {
+      el.setAttribute(attr,"true");
+    } else {
+      el.setAttribute(attr,"false");
     }
-    el[attr] = "false";
   }
 
   // navbar toggles
@@ -72,7 +73,6 @@ export default function applyAccordionListeners() {
   document.querySelectorAll('.dropdown-toggle').forEach(function(drop) {
     drop.addEventListener('click',function(event) {
       event.preventDefault();
-      // close all other menus...
       let target = document.querySelector('[aria-labelledby="'+this.id+'"]');
       target.classList.toggle('show')
       toggleBoolean(this,'aria-expanded')  
@@ -84,6 +84,10 @@ export default function applyAccordionListeners() {
     let openDropDowns = document.querySelectorAll('.dropdown-menu.show');
     openDropDowns.forEach(d => {
       if(d.parentNode !== event.target.parentNode) {
+        let openParent = d.closest('.dropdown');
+        if(openParent && openParent.querySelector('.dropdown-toggle[aria-expanded="true"]')) {
+          openParent.querySelector('.dropdown-toggle[aria-expanded="true"]').setAttribute('aria-expanded','false')
+        }
         d.classList.remove('show');
       }
     })

@@ -1,26 +1,30 @@
-
-<div class="container-fluid pt-3">
-  <div class="container pb-3">
-    <h2 id="news">{{varLatestNews}}</h2>
-    <div class="card-deck" lang="en-US">
-      {%- for i in range(0, 3) %}
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">
-            <small class="text-muted"
-              >{{ collections.covidGuidance[i].data.publishdate | formatDate }}
-            </small>
-          </p>
-          <div class="card-text">
-            <h3 class="lead"><a href="{{ collections.covidGuidance[i].data.url }}">{{ collections.covidGuidance[i].data.title | safe }}</a></h3>
-          </div>
-        </div>
+<news-section>
+  <section class="news trigger" role="region" aria-label="Latest news">
+    <div class="news-wrap">
+    
+      <h3 class="news-headline">{{varLatestNews}}</h3>
+      <div class="news-grid">
+        {%- for i in range(0, 3) %}
+          <article class="news-item trigger">
+            <a class="news-item-link" href="{{ collections.covidGuidance[i].data.url }}">
+              <!-- <figure class="news-item-photo">
+                <img class="news-item-photo-img" src="img/news-photo1.jpg" alt="Governor Newsom Signs Executive Order on Actions in Response to COVID-19  6.22.20">
+              </figure> -->
+              <time class="news-item-date" datetime="2020-07-01">{{ collections.covidGuidance[i].data.publishdate | formatDate }}</time>
+              <h3 class="news-item-headline">{{ collections.covidGuidance[i].data.title | safe }}</h3>
+              <!-- <div class="news-item-teaser">Governor Gavin Newsom today signed an executive order in response to the COVID-19 pandemic. The order extends a waiver that allows retailers to...</div> -->
+            </a>
+          </article>
+          {%- endfor -%}
+    
       </div>
-      {%- endfor -%}
-    </div>
-    <div class="container text-center">
-      <a href="latest-news/" class="action-link mt-4">{{varViewMoreNews}}</a>
-    </div>
-  </div>
-</div>
+    
+      <a class="button trigger cwdsarrow-parent" href="latest-news/">
+        <div class="button-label">{{varViewMoreNews}}</div>
+        <cwds-arrow data-class-prefix="more-news" data-class-list="cwdsarrow-size-md cwdsarrow-idle-blue cwdsarrow-hover-darkblue cwdsarrow-focus-orangeback"></cwds-arrow>
 
+      </a>
+    
+    </div>
+    </section>
+</news-section>

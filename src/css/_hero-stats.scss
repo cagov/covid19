@@ -1,0 +1,459 @@
+.jumbo-img { 
+
+	background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('/img/hero.webp');
+	background-color: #1D2574;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: center 10%;
+	@include tablet {
+		background-size: cover;
+		background-position-x: 50%;
+	  }
+	@include tablet-wide {
+	background-size: cover;
+	background-position-x: 50%;
+	}
+	@include desktop {
+		background-size: cover;
+	  background-position-x: 50%;
+	}
+
+  
+  }
+
+hero-stats {
+
+/*HERO */
+.hero {
+	position: relative;
+	color: $white;
+	width: 100%;
+	@include tablet {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-content: center;
+		align-items: flex-end;
+		margin-top: 65px;
+	}
+	@include desktop {
+		margin-top: 65px;
+	}
+	&-wrap {
+		@extend %wrap;
+		position: relative;
+		z-index: 500;
+		@include tablet {
+			display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	    align-content: flex-end;
+	    align-items: flex-start;
+			padding: 1rem 1rem 0;
+		}
+		@include desktop {
+			padding: 0;
+		}
+		@include ie {
+			margin: 0;
+		}
+	}
+	&-text {
+		display: flex;
+		text-align: left;
+		padding: 1.5rem;
+		min-height: 60vh;
+		align-items: flex-end;
+		align-self: flex-end;
+		@include tablet {
+			display: flex;
+			width: 50%;
+			min-height: auto;
+	    align-self: flex-end;
+		}
+		@include tablet-wide {
+			width: 60%;
+			margin-bottom: 1rem; // added this space to make text visible before the fold
+		}
+		&-align {
+			@include size(100%);
+			@include tablet {
+				height: auto;
+			}
+		}
+	}
+	&-headline {
+		@extend %headline1;
+		margin-bottom: .5rem;
+		text-align: left;
+		color: $white;
+		font-weight: 900;
+		&:hover {
+			.hero-headline {
+				&-background {
+					background-color: $white;
+					color: $darkblue;
+				}
+			}
+		}
+		&-link {
+			&:focus {
+				outline: 3px solid $yellow;
+				.hero-headline {
+					&-background {
+						color: $blue;
+					}
+				}
+			}
+		}
+		&-background {
+			background: $lightblue;
+			color: $darkblue;
+			padding: 0 .2em;
+	    line-height: 1.2;
+			transition: background .6s $slow-curve;
+	    -moz-box-decoration-break: clone;
+	    -webkit-box-decoration-break: clone;
+	    box-decoration-break: clone;
+		}
+	}
+}
+
+
+/* STATS */
+.hero-stats {
+	background: $darkblue;
+	padding: 2rem 1.5rem;
+	box-shadow: 0 0.5rem 1.5rem 0 rgba(0,0,0,.3);
+	align-self: flex-end;
+	@include tablet {
+		background: $blue;
+		padding: 2rem;
+		margin: 3rem auto 2rem;
+		width: 50%;
+		transition-delay: .9s;
+	}
+	@include tablet-wide {
+		padding: 2.25rem;
+		width: 40%;
+		margin: 3.5rem auto 2rem;
+	}
+	@include desktop {
+		padding: 2.3rem 3rem 2.5rem 3rem;
+		margin: 5rem auto 2rem;
+	}
+	&-headline {
+		font-family: $headline;
+		text-align: center;
+		color: $orange;
+		font-size: 2rem;
+		text-align: center;
+		@include tablet {
+			font-size: 1.4rem;
+		}
+		@include tablet-wide {
+			font-size: 1.8rem;
+		}
+		@include desktop {
+			font-size: 2.4rem;
+		}
+	}
+	&-subheadline {
+		margin: .5rem auto 1rem;
+		color: $white;
+		text-align: center;
+		font-weight: 300;
+		font-size: .85rem;
+		text-align: center;
+		@include tablet {
+		}
+		@include desktop {
+			font-size: 1rem;
+		}
+	}
+	&-tabs {
+		list-style: none;
+		margin: 2rem auto 1rem;
+		padding: 0;
+		&-item {
+			padding: 0;
+			display: inline-block;
+			&.active {
+				.hero-stats-tabs-button {
+					background: $lightblue;
+					color: $darkblue;
+					cursor: auto;
+					&:focus, &:focus-within {
+						background: $white;
+						color: $darkblue;
+						box-shadow:  0 0 0 2px $yellow;
+					}
+				}
+			}
+		}
+		&-button {
+			border: 0;
+			background: transparent;
+			border-radius: 1.25rem;
+			padding: .5rem .75rem;
+			color: $white;
+			cursor: pointer;
+			box-shadow: 0 0 0 0 rgba(0,0,0,.0);
+			transition: color .3s $slow-curve, background .3s $slow-curve, box-shadow .3s $slow-curve;
+			@include tablet {
+				font-size: 85%;
+			}
+			@include desktop {
+				font-size: 1rem;
+			}
+			&:hover {
+				background: $darkblue;
+			}
+			&:active {
+				background: $orange;
+			}
+			&:focus, &:focus-within {
+				background: $white;
+				color: $darkblue;
+				box-shadow:  0 0 0 2px $yellow;
+			}
+		}
+	}
+	&-slider {
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		.slick-slide {
+			width: 100%;
+		}
+	}
+	&-row {
+		background-color: $darkblue;
+		padding: 1.15rem .1rem;
+		border-bottom: 1px solid $blue;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		text-align: left;
+		@include tablet {
+			align-items: center;
+			background-color: $blue;
+			border-bottom: 1px solid $darkblue;
+		}
+		@include tablet-wide {
+			flex-wrap: nowrap;
+		}
+		&-label {
+			width: 100%;
+			margin-bottom: .5rem;
+			@include tablet {
+				margin-top: 0;
+			}
+			@include tablet-wide {
+				width: 25%;
+			}
+			&-text {
+				background: $blue;
+				padding: .5rem .75rem;
+				font-size: .9rem;
+				border-radius: 1rem;
+				color: $lightestblue;
+				display: inline-block;
+				white-space: nowrap;
+				@include tablet {
+					background: $darkblue;
+				}
+			}
+		}
+		&-figure {
+			flex: 1 0 auto;
+			width: 55%;
+			font-size: 2rem;
+			@include tablet {
+				padding: 0 .75rem;
+				font-size: 1.9rem;
+			}
+			@include tablet-wide {
+				width: 40%;
+			}
+			@include desktop {
+				padding: 0 1rem;
+				font-size: 2.1rem;
+			}
+		}
+		&-details {
+			font-size: 1rem;
+			font-weight: 300;
+			line-height: 1.5;
+			width: 45%;
+			@include tablet {
+				font-size: 1.05rem;
+			}
+			@include tablet-wide {
+				width: 30%;
+				font-size: 1.05rem;
+			}
+			@include desktop {
+				font-size: 1.15rem;
+			}
+		}
+	}
+	&-footer {
+		margin-top: 1.5rem;
+		text-align: center;
+		&-link {
+			text-transform: uppercase;
+			color: $lightestblue;
+			border-radius: 1.25rem;
+			padding: .5rem .75rem;
+			transition: background .3s $slow-curve;
+			font-size: .85rem;
+			display: inline-block;
+			margin-top: 1rem;
+			@include tablet {
+				font-size: 85%;
+				white-space: nowrap;
+			}
+			@include tablet-wide {
+				padding: .5rem 1rem;
+				font-size: 1rem;
+			}
+			&:hover {
+				background: $blue;
+				@include tablet {
+					background: $darkblue;
+				}
+			}
+			&:focus {
+				background: $white;
+				color: $darkblue;
+				box-shadow:  0 0 0 2px $yellow;
+			}
+		}
+	}
+}
+
+	/* ALERT */
+	.hero-alert {
+		background: $white;
+		border-bottom: .5rem solid $orange;
+		width: 100%;
+		text-align: left;
+		box-shadow: $shadow-hover;
+		color: $black;
+		@include tablet {
+			width: 95%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-content: center;
+			position: relative;
+			top: 2rem;
+		}
+		@include desktop {
+			width: 95%;
+		}
+		&-align {
+			padding: 2rem;
+			text-align: center;
+			@include tablet {
+				text-align: left;
+				display: flex;
+				align-items: center;
+				width: 50%;
+				padding: 1.5rem;
+			}
+			@include tablet-wide {
+				width: 60%;
+				padding: 2rem;
+			}
+			@include desktop {
+				padding: 2.5rem;
+			}
+		}
+		&-icon {
+			@include size(4rem);
+			fill: $darkblue;
+			display: block;
+			margin: 0 auto 1rem auto;
+			position: relative;
+			@include tablet {
+				@include size(3rem);
+				margin: 0 1rem 0 0;
+				flex: 1 0 auto;
+				top: .5rem;
+				align-self: flex-start;
+			}
+		}
+		&-headline {
+			color: $darkblue;
+			@extend %headline4;
+			line-height: 1.2;
+			margin-bottom: .25rem;
+			@include desktop {
+				margin-bottom: .5rem;
+			}
+		}
+		&-blurb {
+			line-height: 1.4;
+			a {
+				color: $blue;
+				transition: all .3s $bounce-curve;
+				position: relative;
+				box-shadow: inset 0 -.1rem 0 0 $darkblue;
+				&:hover {
+					color: $white;
+					box-shadow: inset 0 -1rem 0 0 $darkblue;
+				}
+				&:focus-within {
+					background: $white;
+					box-shadow: inset 0 0 0 0 $orange;
+					text-decoration: none;
+				}
+			}
+			p {
+				margin-bottom: 0;
+			}
+		}
+		&-social {
+			background: $white;
+			text-align: center;
+			padding: 2rem;
+			@include tablet {
+				width: 50%;
+				padding: 1.5rem;
+				display: flex;
+				align-items: center;
+			}
+			@include tablet-wide {
+				padding: 2rem;
+				width: 40%;
+			}
+			@include desktop {
+				padding: 3rem 2rem;
+			}
+			&-align {
+				width: 100%;
+			}
+			&-headline {
+				color: $darkblue;
+				@extend %headline5;
+				margin-bottom: 1rem;
+			}
+			.social-link {
+				background: $darkblue;
+				&:hover {
+					background: $blue;
+					.social-icon {
+						fill: $white;
+					}
+				}
+			}
+		}
+	}
+
+
+}

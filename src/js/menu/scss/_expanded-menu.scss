@@ -1,0 +1,419 @@
+cagov-navoverlay {
+  .expanded-menu {
+    background: $darkblue;
+    @include size(85vw, 100%);
+    @include fixed(top 0 right 0);
+    z-index: 1000;
+    transition: $slow;
+    transform: translateX(100%);
+    visibility: hidden;
+    overflow-y: scroll;
+    box-shadow: -0.5rem 0 1.5rem 0 rgba(0, 0, 0, 0.25);
+    @include tablet {
+      @include size(100%);
+      @include fixed(top 0 left 0);
+      background: $blue;
+      padding: 0;
+      opacity: 0;
+      padding: 1rem;
+      transform: translateX(0);
+    }
+    @include desktop {
+      padding: 2rem;
+    }
+    &-grid {
+      margin: 0 auto;
+      @include tablet {
+        width: $desktop;
+        max-width: 90%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+        align-items: stretch;
+      }
+      @include tablet {
+        width: 64em;
+      }
+    }
+    &-col {
+      margin: 0;
+      text-align: left;
+      @include tablet {
+        opacity: 0;
+        transform: translateY(3rem);
+        transition: $slow;
+        width: 25%;
+        padding: 0.5rem;
+      }
+    }
+    &-section {
+      background: $primary;
+      text-align: left;
+      padding: 1rem 1rem;
+      @include phone {
+        border-bottom: 1px solid $darkblue;
+      }
+      @include tablet {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 1rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      &.mobile-only {
+        @include tablet {
+          display: none;
+        }
+      }
+      &.expanded {
+        @include phone {
+          .expanded-menu-dropdown {
+            max-height: 100rem;
+            padding-top: 0.5rem;
+          }
+        }
+        .expanded-menu-section-header-link {
+          color: $orange;
+        }
+        .expanded-menu-section-header-arrow-svg {
+          transform: rotate(180deg);
+        }
+      }
+      &-header {
+        display: block;
+        position: relative;
+        color: $lightestblue;
+        @include tablet {
+          margin-bottom: 0rem;
+        }
+        &-link {
+          font-family: $headline;
+          color: $orange;
+          width: 100%;
+          text-transform: uppercase;
+          display: block;
+          text-align: left;
+          transition: $basic;
+          background: transparent;
+          border: none;
+          font-size: 0.9rem;
+          padding: 0.25rem;
+          border-radius: 1.5rem;
+          @include tablet {
+            font-size: 1rem;
+            width: auto;
+          }
+          @include desktop {
+            font-size: 1.1rem;
+          }
+          &:hover {
+            color: $white;
+          }
+          &:active {
+            background: transparent;
+          }
+          &:focus {
+            background: $darkblue;
+            color: $yellow;
+            box-shadow: 0 0 0 2px $yellow;
+            padding-left: 0.5rem;
+            @include tablet {
+            }
+          }
+          &.white {
+            color: $white;
+          }
+        }
+        &-arrow {
+          @include size(1rem, 1rem);
+          @include absolute(top 50% right 0.5rem);
+          transform: translateY(-50%);
+          display: block;
+          transition: $slow;
+          @include tablet {
+            display: none;
+          }
+          &-svg {
+            fill: $white;
+            width: 100%;
+            display: block;
+            transition: $bounce;
+          }
+        }
+      }
+    }
+    &-dropdown {
+      max-height: 0px;
+      overflow: hidden;
+      transition: max-height 0.5s $slow-curve;
+      @include tablet {
+        display: block;
+        max-height: none;
+      }
+      &-link {
+        color: $white;
+        font-weight: 700;
+        padding: 0.5rem 0.25rem;
+        margin: 0.15rem 0;
+        display: table;
+        transition: color 0.3s $slow-curve;
+        border-radius: 1rem;
+        @include tablet {
+          padding: 0.35rem;
+          margin: 0;
+        }
+        @include desktop {
+          padding: 0.35rem;
+        }
+        &:hover,
+        &:active {
+          color: $yellow;
+        }
+        &:focus {
+          background: $yellow;
+          color: $darkblue;
+          box-shadow: 0 0 0 2px $darkblue;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+    &-grouping {
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+    }
+    &-search {
+      background: $darkblue;
+      border-radius: 2rem;
+      transition: background 0.5s $slow-curve;
+      padding: 0;
+      width: 100%;
+      margin-bottom: 1rem;
+      display: none;
+      @include tablet {
+        display: block;
+        padding: 0 0 0 0.75rem;
+        margin-left: auto;
+        margin-bottom: 2rem;
+      }
+      @include desktop {
+        padding: 0.7rem 0.7rem 0.75rem 1.25rem;
+      }
+      @include lg {
+      }
+      @keyframes border-pulse {
+        from {
+          box-shadow: 0 0 0 0 $yellow;
+        }
+        50% {
+          box-shadow: 0 0 0 3px $yellow;
+        }
+        to {
+          box-shadow: 0 0 0 0 $yellow;
+        }
+      }
+      &.focused {
+        background: $white;
+        box-shadow: $button-shadow, 0 0 0 2px $yellow;
+        animation-name: border-pulse;
+        animation-duration: 1s;
+        animation-iteration-count: 3;
+        .expanded-menu-search {
+          &-label {
+            color: $darkblue;
+          }
+          &-field {
+            @include placeholder {
+              color: $darkblue;
+            }
+          }
+          &-button {
+            &-svg {
+              fill: $darkblue;
+            }
+          }
+        }
+      }
+      &:hover {
+        background: $white;
+        .expanded-menu-search {
+          &-label {
+            color: $darkblue;
+          }
+          &-field {
+            @include placeholder {
+              color: $darkblue;
+            }
+          }
+          &-button {
+            &-svg {
+              fill: $darkblue;
+            }
+          }
+        }
+      }
+      &-form {
+        background: transparent;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        transition: $slow;
+        cursor: pointer;
+        @include tablet {
+          background: transparent;
+        }
+        &:hover {
+        }
+      }
+      &-label {
+        color: $yellow;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        padding: 0.5rem 0.75rem 0.5rem 0;
+        border-right: 1px solid $darkblue;
+        cursor: pointer;
+        transition: color 0.5s $slow-curve;
+        @include phone {
+          @include screen-reader-text;
+        }
+        &:hover {
+          color: $blue;
+        }
+      }
+      &-field {
+        background: transparent;
+        padding: 0.75rem 0.5rem 0.75rem 1rem;
+        font-size: 1.1rem;
+        border: 0;
+        width: 100%;
+        color: $white;
+        transition: $slow;
+        @include tablet {
+          padding: 0.75rem 0.5rem 0.75rem 0.75;
+        }
+        @include placeholder {
+          color: $white;
+          transition: $slow;
+          @include phone {
+            color: $orange;
+          }
+        }
+        &:hover {
+          color: $blue;
+          @include placeholder {
+            color: $blue;
+          }
+        }
+        &:focus {
+          color: $darkblue;
+          @include placeholder {
+            color: $darkblue;
+          }
+        }
+      }
+      &-button {
+        @include size(2.5rem);
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        padding: 0.6rem 0.5rem 0.5rem;
+        margin-right: 0.15rem;
+        border-radius: 50%;
+        transition: transform 0.5s $bounce-curve;
+        &-svg {
+          width: 100%;
+          max-height: 2.5rem;
+          fill: $white;
+          transition: fill 0.3s $slow-curve;
+        }
+        &:hover {
+          .expanded-menu-search-button {
+            &-svg {
+              fill: $blue;
+            }
+          }
+        }
+        &:focus {
+          background: $blue;
+          .expanded-menu-search-button {
+            &-svg {
+              fill: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+  .mobile-menu-close {
+    @include size(100%, 100%);
+    @include fixed(top 0 left 0);
+    background: rgba($black, 0.7);
+    display: block;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $slow;
+  }
+}
+cagov-navoverlay.display-menu {
+  overflow: hidden;
+  .expanded-menu {
+    transform: translateX(0);
+    visibility: visible;
+    @include tablet {
+      @include size(100vw, 100vh);
+      opacity: 1;
+      visibility: visible;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &.reveal-items {
+    .expanded-menu {
+      &-col,
+      &-search {
+        @include tablet {
+          transition: all 0.6s $bounce-curve;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      &-col {
+        @include tablet {
+          &.section-get-help {
+            transition-delay: 0.15s !important;
+          }
+          &.section-health-info {
+            transition-delay: 0.3s !important;
+          }
+          &.section-working-living-safely {
+            transition-delay: 0.45s !important;
+          }
+          &.section-you-help {
+            transition-delay: 0.6s !important;
+          }
+        }
+      }
+    }
+  }
+  .mobile-menu-close {
+    opacity: 0.6;
+    visibility: visible;
+  }
+}
+cagov-navoverlay {
+  .expanded-menu-close-mobile {
+    &-svg {
+      fill: $white;
+      width: 1rem;
+    }
+  }
+}
