@@ -16,9 +16,9 @@ class CAGOVOverlayNav extends window.HTMLElement {
 
   toggleMainMenu () {
     if (this.querySelector('.hamburger').classList.contains('is-active')) {
-      this.closeMainMenu.bind(this)();
+      this.closeMainMenu();
     } else {
-      this.openMainMenu.bind(this)();
+      this.openMainMenu();
     }
   }
 
@@ -46,7 +46,8 @@ class CAGOVOverlayNav extends window.HTMLElement {
   }
 
   escapeMainMenu (event) {
-    if (event.keyCode === 27) { this.closeMainMenu.bind(this)(); }
+    // Close the menu if user presses escape key.
+    if (event.keyCode === 27) { this.closeMainMenu(); }
   }
 
   expansionListeners () {
