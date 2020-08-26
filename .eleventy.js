@@ -11,7 +11,7 @@ const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(writeTranslatedData);
-fs.writeFileSync('./docs/reopening-activities.json',JSON.stringify(fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json')),'utf8')
+fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
