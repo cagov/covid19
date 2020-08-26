@@ -73,7 +73,7 @@
   text-align: center;
 }
 .video-modal-content {
-  width: 90%;
+  width: 80%;
   max-width: 1200px;
   box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
   background: #003d9d;
@@ -89,6 +89,8 @@
   background: #000;
   position: relative;
   padding-top: 56.25%;
+  padding-right: 5rem;
+  padding-left: 5rem;
   z-index: 100;
 }
 .video-modal-player iframe,
@@ -102,7 +104,7 @@
 }
 .video-modal-close {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 0;
   z-index: 1000;
   display: block;
@@ -116,6 +118,9 @@
   color: #fff;
   transform: translateX(50%) translateY(-50%);
   transition: all 0.3s ease-in-out;
+  @media (min-height: 700px) {
+    top: 0;
+  }
 }
 .video-modal-close-svg {
   fill: #fff;
