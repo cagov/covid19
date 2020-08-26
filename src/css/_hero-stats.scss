@@ -261,7 +261,6 @@ hero-stats {
 				border-radius: 1rem;
 				color: $lightestblue;
 				display: inline-block;
-				white-space: nowrap;
 				@include tablet {
 					background: $darkblue;
 				}
