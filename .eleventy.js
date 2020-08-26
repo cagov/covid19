@@ -442,17 +442,15 @@ module.exports = function(eleventyConfig) {
       return [];
     }
 
-    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
-
-    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
-      //This is a root language page
-      engSlug='';
-    }
+    const engSlug = 
+      page.inputPath.includes('/manual-content/homepages/')
+      ? '' //This is a root language page
+      : page.fileSlug.replace(langPostfixRegExp,'');
   
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${x.pathpostfix}${(engSlug)}/`.replace(/\/\/$/,'/'),
+        url: `/${x.pathpostfix}${engSlug}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))

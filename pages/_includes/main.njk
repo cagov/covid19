@@ -1,16 +1,16 @@
-{% set langFilePostfix = tags | langFilePostfix %}
-{% if langFilePostfix === "" %}
-  {% set langIncludeFolder="../wordpress-posts/" %}
-{% else %}
-  {% set langIncludeFolder="../translated-posts/" %}
-{% endif %}
+{%- set langFilePostfix = tags | langFilePostfix -%}
+{%- if langFilePostfix === "" -%}
+  {%- set langIncludeFolder="../wordpress-posts/" -%}
+{%- else -%}
+  {%- set langIncludeFolder="../translated-posts/" -%}
+{%- endif -%}
 
-{% set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" %}
-{% set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))%}
+{%- set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" -%}
+{%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))-%}
 
-{% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
-{% set JSON = JSONraw | jsonparse %}
-{% set Terms = JSON.Table3 %}
+{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" -%}{%- endset -%}
+{%- set JSON = JSONraw | jsonparse -%}
+{%- set Terms = JSON.Table3 -%}
 
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
@@ -92,8 +92,6 @@
 					<cwds-arrow data-class-prefix="hero" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
 
 			</a>
-<!-- some spacer to make sure headline is above the fold-->
-		<div class="mb-lg-5 pt-lg-5 pb-lg-5"></div>
 		</div>
 		
 
@@ -145,7 +143,7 @@
 			</div>
 		</div>
 
-		<div class="hero-alert" role="alert" aria-labelledby="alert-headline">
+		<div class="hero-alert" role="alert" aria-label="Alerts section">
 			<div class="hero-alert-align">
 				<svg class="hero-alert-icon" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448"><title>Alert!</title><path d="M256 343.75v-47.5c0-4.5-3.5-8.25-8-8.25h-48c-4.5 0-8 3.75-8 8.25v47.5c0 4.5 3.5 8.25 8 8.25h48c4.5 0 8-3.75 8-8.25zM255.5 250.25l4.5-114.75c0-1.5-0.75-3.5-2.5-4.75-1.5-1.25-3.75-2.75-6-2.75h-55c-2.25 0-4.5 1.5-6 2.75-1.75 1.25-2.5 3.75-2.5 5.25l4.25 114.25c0 3.25 3.75 5.75 8.5 5.75h46.25c4.5 0 8.25-2.5 8.5-5.75zM252 16.75l192 352c5.5 9.75 5.25 21.75-0.5 31.5s-16.25 15.75-27.5 15.75h-384c-11.25 0-21.75-6-27.5-15.75s-6-21.75-0.5-31.5l192-352c5.5-10.25 16.25-16.75 28-16.75s22.5 6.5 28 16.75z"></path></svg>
 				<div class="hero-alert-text">
@@ -202,7 +200,7 @@
             <h4 class="font-size-2em color-purple font-weight-bold">Wear a Mask</h4>
             <p class="lead mt-4">Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.</p>
 
-						<a class="button trigger video-modal-open cwdsarrow-parent" ref="https://youtu.be/1zDX9PXkotA" data-video="1zDX9PXkotA">
+						<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/1zDX9PXkotA" data-video="1zDX9PXkotA">
 							<div class="button-label">Watch the Video</div>
 							<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 
