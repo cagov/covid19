@@ -1,0 +1,209 @@
+video-section {
+
+	.video {
+		background: $lightgray;
+		@extend %block-padding;
+		width: 100%;
+		order: 2;
+		@include tablet {
+			order: 1;
+			background: $white;
+		}
+		&-wrap {
+			@extend %wrap;
+			@include tablet {
+				padding-top: 2rem;
+			}
+			@include desktop {
+				padding-top: 0;
+			}
+		}
+		&-headline {
+			@extend %headline1;
+			color: $darkblue;
+			margin-bottom: .75rem;
+			@include tablet {
+				margin-bottom: 1.75rem;
+			}
+		@include desktop {
+				margin-bottom: 2.75rem;
+			}
+			&-link {
+				transition: $slow;
+				color: $darkblue;
+				padding: .5rem 1rem;
+				border-radius: 2.5rem;
+				&:hover {
+					color: $orange;
+				}
+				&:focus {
+					color: $blue;
+					box-shadow:  0 0 0 2px $yellow;
+				}
+			}
+		}
+		&-grid {
+			@include tablet {
+				display: flex;
+			}
+			&-col {
+				&:first-child {
+					margin-bottom: 2rem;
+				}
+				@include tablet {
+					width: 50%;
+					&:first-child {
+						margin-bottom: 0;
+						padding-right: 1rem;
+					}
+					&:last-child {
+						padding-left: 1rem;
+					}
+				}
+				@include desktop {
+					&:first-child {
+						padding-right: 1.5rem;
+					}
+					&:last-child {
+						padding-left: 1.5rem;
+					}
+				}
+			}
+			&-more {
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 2rem;
+				@include tablet {
+					margin-top: -.5rem;
+				}
+				@include desktop {
+					margin-top: -1rem;
+				}
+			}
+		}
+		&-item {
+			text-align: left;
+			&-link {
+				display: block;
+				&:hover {
+					.video-item {
+						&-photo {
+							box-shadow: $shadow-hover;
+							&-img {
+								opacity: 1;
+								@include size(110%);
+							}
+						}
+						&-play-button {
+							background: rgba($white, .8);
+							&-icon {
+								fill: $darkblue;
+							}
+						}
+						&-headline {
+							color: $orange;
+							&-small {
+								color: $orange;
+							}
+						}
+					}
+				}
+				&:focus {
+					.video-item {
+						&-photo {
+							box-shadow: 0 0 0 4px $yellow, $shadow-hover;
+							&-img {
+								opacity: 1;
+								@include size(110%);
+							}
+						}
+						&-play-button {
+							background: rgba($white, .8);
+							&-icon {
+								fill: $orange;
+							}
+						}
+						&-headline {
+							color: $orange;
+							&-small {
+								color: $orange;
+							}
+						}
+					}
+				}
+			}
+			&-small {
+				width: 50%;
+				padding: .5rem 0;
+				@include phone {
+					&:first-child, &:nth-child(3) {
+						padding: .5rem .5rem .5rem 0;
+					}
+					&:nth-child(2), &:nth-child(4) {
+						padding: .5rem 0 .5rem .5rem;
+					}
+				}
+				@include tablet {
+					padding: 1rem;
+				}
+				.video-item-play-button {
+					@include size(3.5rem);
+					padding: .85rem .8rem .75rem 1rem;
+				}
+			}
+			&-photo {
+		  background: $darkblue;
+				@include aspect(16,9);
+				position: relative;
+				margin-bottom: 1rem;
+		  overflow: hidden;
+				&-img {
+			opacity: .75;
+					@include size(100%);
+					@include absolute(left 50% top 0);
+			transform: translateX(-50%);
+			transition: 1s cubic-bezier(.15,.92,.14,.95);
+				}
+			}
+			&-play-button {
+				@include absolute(top 50% left 50%);
+				transform: translateX(-50%) translateY(-50%);;
+				background: rgba($white, .6);
+				z-index: 250;
+				@include size(5rem);
+				border-radius: 50%;
+				padding: 1.5rem 1.3rem 1.5rem 1.7rem;
+				margin: 0 auto 1rem;
+				transition: $slow;
+				&:hover {
+					background: rgba($white, 1);
+					box-shadow: $shadow-hover;
+				}
+				&-icon {
+					width: 100%;
+					max-height: 4rem;
+					fill: $blue;
+					transition: $slow;
+					position: relative;
+					left: .2rem;
+				}
+			}
+			&-headline {
+				@extend %headline4;
+				color: $blue;
+				transition: color .3s $slow-curve;
+			}
+			&-headline-small {
+				@extend %headline5;
+				color: $blue;
+				transition: color .3s $slow-curve;
+			}
+			&-teaser {
+				margin-top: .5rem;
+				line-height: 1.5;
+				color: $black;
+			}
+		}
+	}
+
+}

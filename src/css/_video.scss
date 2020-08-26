@@ -71,15 +71,12 @@
   top: 0px;
   left: 0px;
   text-align: center;
-  display: none;
 }
 .video-modal-content {
   width: 90%;
   max-width: 1200px;
   box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
   background: #003d9d;
-  opacity: 0;
-  visibility: hidden;
   display: block;
   transition: all 0.3s ease-in-out;
   transition-delay: 0.2s;

@@ -2,12 +2,20 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
-const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
-let htmlmap = [];
+const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
 
+let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
+langData.languages.forEach(lang => {
+  writeMenu(lang.id);
+})
+
+
+let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
@@ -343,7 +351,6 @@ module.exports = function(eleventyConfig) {
         if(process.env.NODE_ENV === 'development') {
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
-
         return dom.serialize();
       }
     }
@@ -352,54 +359,36 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
-    let localizeString = '--en.';
+    const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
-          let englishUrl = image.src;
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                image.src = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
-        }
-        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
-          let englishUrl = link.href;
+      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const lang = langData.languages.filter(x=>x.enabled&&x.hreflang===htmllang).concat(langData.languages[0])[0].id;
 
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                link.href = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
+      //Scan the DOM for a files.covid19.ca.gov links
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
+        .map(r=> r.groups.URL);
+
+      for(const domTarget of domTargets) {
+        if(filesSiteData.indexOf(domTarget)===-1) {
+          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
         }
-        return dom.serialize();  
-      }      
+      }
+      if(lang !== "en") {
+        for(const englishUrl of domTargets) {
+          if(englishUrl.includes(localizeString)) {
+            //attempt to translate
+            let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
+  
+            if(filesSiteData.indexOf(localizedUrl)>-1) {
+              html = html.replace(new RegExp(englishUrl,'gm'),localizedUrl);
+            } else {
+              //console.log('No translation found - ' + localizedUrl);
+            }
+          }
+        }
+      }  
     }
+
     return html;
   });
 
@@ -410,9 +399,12 @@ module.exports = function(eleventyConfig) {
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
+  const getLangId = tags => 
+    getLangRecord(tags).id;
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('langId', getLangId);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
@@ -427,11 +419,17 @@ module.exports = function(eleventyConfig) {
     return langRecord['pulse-survey'];
   });
 
-  eleventyConfig.addFilter('publishdateorfiledate', page => 
-    (page.data
+  eleventyConfig.addFilter('publishdateorfiledate', page => {
+    let out = (page.data
       ? page.data.publishdate
-      : page.publishdate) 
-      || page.date.toISOString()
+      : page.publishdate)
+      || page.date.toISOString();
+
+    if(out==='today')
+      out = new Date().toISOString();
+    
+    return out;
+  }
   );
   
   eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
@@ -462,6 +460,9 @@ module.exports = function(eleventyConfig) {
       ;
   });
 
+  // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
+  eleventyConfig.setUseGitIgnore(false);
+
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
   return {
     templateFormats: ["html", "njk"],
@@ -472,3 +473,38 @@ module.exports = function(eleventyConfig) {
   };
 };
 
+function getLinkInfo(link, lang) {
+  let linkData = {};
+  if(link.slug) {
+    pageNames.forEach(page => {
+      if(page.slug === link.slug) {
+        linkData.url = `/${page.slug}/`;
+        linkData.name = page[lang];
+      }
+    })
+  }
+  if(link.href) {
+    pageNames.forEach(page => {
+      if(page.href === link.href) {
+        linkData.url = page.href;
+        linkData.name = page[lang];
+      }
+    })
+  }
+  return linkData;
+}
+
+function writeMenu(lang) {
+  let singleLangMenu = { "sections": [] };
+  menuData.sections.forEach(section => {
+    if(section.links) {
+      section.links.forEach(link => {
+        let linkData = getLinkInfo(link, 'lang-'+lang);
+        link.url = linkData.url;
+        link.name = linkData.name;
+      })
+      singleLangMenu.sections.push(section)
+    }
+  });
+  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
+}

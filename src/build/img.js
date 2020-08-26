@@ -9,7 +9,7 @@ const move = require("move-concurrently");
 (async () => {
   const webpfiles = await imagemin(["../img/unoptimized/*.{jpg,png}"], {
     destination: "../img/optimized",
-    plugins: [imageminWebp({ quality: 50 })],
+    plugins: [imageminWebp({ quality: 87 })],
   });
 
   const backupfiles = await imagemin(["../img/unoptimized/*.{jpg,png}"], {

@@ -10,6 +10,7 @@ const spawn = require('cross-spawn');
 const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
+const request = require('request');
 
 // Initialize BrowserSync.
 const server = (done) => {
@@ -41,6 +42,13 @@ const clean = () => del([
 
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
+  //Donwload the files sitemap for 11ty to use
+  download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   }).on('close', () => {
@@ -87,13 +95,6 @@ const scss = (done) => {
 
 // Move scss output files into live usage, no further processing.
 const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
-  .pipe(postcss([
-    // Rebase asset URLs within CSS so they'll work better in dev.
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ])
-  ]))
   .pipe(gulp.dest(buildOutputFolder))
   .pipe(gulp.dest(includesOutputFolder))
   .on('end', () => {
@@ -103,7 +104,7 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
 
 const purgecssExtractors = [
   {
-    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    extractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
     extensions: ['js']
   }
 ];
@@ -123,10 +124,6 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       ],
       extractors: purgecssExtractors
     }),
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ]),
     cssnano
   ]))
   .pipe(rename('home.css'))
@@ -144,14 +141,12 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       content: [
         'pages/**/*.njk',
         'pages/**/*.html',
-        'pages/**/*.js'
+        'pages/**/*.js',
+        'pages/wordpress-posts/banner*.html',
+        'pages/@(translated|wordpress)-posts/new*.html'
       ],
       extractors: purgecssExtractors
     }),
-    url([
-      { filter: '**/fonts/*', url: (asset) => `/${asset.url}` },
-      { filter: '**/img/*', url: (asset) => asset.url.replace('../', '/') }
-    ]),
     cssnano
   ]))
   .pipe(rename('built.css'))
@@ -163,9 +158,7 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   });
 
 // Clear out the temp folder.
-const emptyTemp = () => del([
-  `${tempOutputFolder}/**/*`
-]);
+const emptyTemp = () => del(tempOutputFolder);
 
 // Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? gulp.series(devCSS, reload) : gulp.parallel(builtCSS, homeCSS);
@@ -183,6 +176,7 @@ const watcher = () => {
   ];
   const eleventyWatchFiles = [
     './pages/**/*',
+    './.eleventy.js',
     '!./pages/translations/**/*',
     '!./pages/_buildoutput/**/*'
   ];
@@ -214,6 +208,35 @@ const watch = gulp.series(build, gulp.parallel(watcher, server));
 
 // Nukes the deployment directory prior to build. Totally clean.
 const deploy = gulp.series(clean, build);
+
+// function to download a remove file and place it in a location
+const download = (url, dest, cb) => {
+  const file = fs.createWriteStream(dest);
+  const sendReq = request.get(url);
+
+  // verify response code
+  sendReq.on('response', response => {
+    if (response.statusCode !== 200) {
+      return cb(response.statusCode);
+    }
+
+    sendReq.pipe(file);
+  });
+
+  // close() is async, call cb after close completes
+  file.on('finish', () => file.close(cb));
+
+  // check for request errors
+  sendReq.on('error', err => {
+    fs.unlink(dest);
+    return cb(err.message);
+  });
+
+  file.on('error', err => { // Handle errors
+    fs.unlink(dest); // Delete the file async. (But we don't check the result)
+    return cb(err.message);
+  });
+};
 
 module.exports = {
   eleventy,

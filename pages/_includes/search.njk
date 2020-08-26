@@ -42,7 +42,7 @@
 	}
 	const urlq = urlParam('q')||'';
   const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
-  document.querySelector('input[name=q]').value = query;
+	document.querySelectorAll('input[name=q]').forEach(x=>x.value=query);
 </script> 
 
 <script>
