@@ -1,22 +1,21 @@
 <h2>Understanding the risk in your county</h2>
 <p> Every county in california gets a colored tier.<p>
-
+<!--RED-->
 <div class="row text-center mr-0 ml-0">
-
-    <div class="col-sm-4 pl-0 pr-0 alert-danger">
+    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
        <div class="card border-0 bg-transparent">
             <div class="card-header bg-white border-0">
               <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
             </div>
             <div class="card-body text-black">
-                 <button class="btn bg-danger rounded-50 text-white px-4">RED</button>
+                 <button class="btn bg-red-btn rounded-50 text-white px-4">RED</button>
               <p class="card-text text-small mt-3">
-              Some quick example text to build on the card title
+              Most non-essential indoor business operations are closed
               </p>
             </div>
       </div>
     </div>
-    <div class="col-sm-4 pl-0 pr-0 alert-danger">
+    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
        <div class="card border-0 bg-transparent">
             <div class="card-header bg-white border-0">
               <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
@@ -24,13 +23,12 @@
             <div class="card-body text-black">
                  <h5>10 or more</h5>
               <p class="card-text text-small mt-3">
-              Some quick example text to build on the card title
-              and make up the bulk of the card's content.
+              Daily new cases (per 100k)
               </p>
             </div>
       </div>
     </div>
-    <div class="col-sm-4 pl-0 pr-0 alert-danger">
+    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
        <div class="card border-0 bg-transparent">
             <div class="card-header bg-white border-0">
               <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
@@ -38,10 +36,116 @@
             <div class="card-body text-black">
                  <h5>8% less</h5>
               <p class="card-text text-small mt-3">
-              Some quick example
+              Positive tests
               </p>
             </div>
       </div>
     </div>
 
+</div>
+
+
+<!--~ORANGE -->
+<div class="row text-center mr-0 ml-0 mt-1">
+
+    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <button class="btn bg-orange-btn rounded-50 px-4">ORANGE</button>
+              <p class="card-text text-small mt-3">
+              Some non-essential indoor business operations are closed
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>6 - 9.9</h5>
+              <p class="card-text text-small mt-3">
+              Daily new cases (per 100k)
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>5 - 7.9%</h5>
+              <p class="card-text text-small mt-3">
+              Positive tests
+              </p>
+            </div>
+      </div>
+    </div>
+</div>
+
+<!--~YELLOW -->
+<div class="row text-center mr-0 ml-0 mt-1">
+
+    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <button class="btn bg-yellow-btn rounded-50 px-4">YELLOW</button>
+              <p class="card-text text-small mt-3">
+               Some non-essential indoor business operations are open with modifications
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>1 - 5.9</h5>
+              <p class="card-text text-small mt-3">
+              Daily new cases (per 100k)
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>2 - 4.9%</h5>
+              <p class="card-text text-small mt-3">
+              Positive tests
+              </p>
+            </div>
+      </div>
+    </div>
+</div>
+
+<!--~green -->
+<div class="row text-center mr-0 ml-0 mt-1">
+
+    <div class="col-sm-4 pl-0 pr-0 bg-green-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <button class="btn bg-green-btn rounded-50 px-4">GREEN</button>
+              <p class="card-text text-small mt-3">
+              Most non-essential indoor business operations are open with modifications
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-green-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>1 or less</h5>
+              <p class="card-text text-small mt-3">
+              Daily new cases (per 100k)
+              </p>
+            </div>
+      </div>
+    </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-green-alert">
+       <div class="card border-0 bg-transparent">
+            <div class="card-body text-black">
+                 <h5>2% or less</h5>
+              <p class="card-text text-small mt-3">
+              Positive tests
+              </p>
+            </div>
+      </div>
+    </div>
 </div>
