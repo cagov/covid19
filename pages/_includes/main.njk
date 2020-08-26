@@ -1,14 +1,10 @@
 {%- set langFilePostfix = tags | langFilePostfix -%}
-{%- if langFilePostfix === "" -%}
-  {%- set langIncludeFolder="../wordpress-posts/" -%}
-{%- else -%}
-  {%- set langIncludeFolder="../translated-posts/" -%}
-{%- endif -%}
+{%- set langIncludeFolder="../translated-posts/" if langFilePostfix else "../wordpress-posts/" -%}
 
 {%- set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" -%}
 {%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))-%}
 
-{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" -%}{%- endset -%}
+{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + langFilePostfix + ".json" -%}{%- endset -%}
 {%- set JSON = JSONraw | jsonparse -%}
 {%- set Terms = JSON.Table3 -%}
 
@@ -66,12 +62,12 @@
 
 		<div class="hero-text" role="region" aria-labelledby="hero-text">
 			<div class="hero-text-align">
-				{% set HomeHeroJSONraw %}{% include langIncludeFolder + "homepage-text" + tags | langFilePostfix + ".json" %}{% endset %}
+				{% set HomeHeroJSONraw %}{% include langIncludeFolder + "homepage-text" + langFilePostfix + ".json" %}{% endset %}
 				{% set HomeHeroJSON = HomeHeroJSONraw | jsonparse %}
 				{% set HomeHeroText = HomeHeroJSON.Table1 %}
 				
 				<h1 class="hero-headline">
-					<a class="hero-headline-link" href="/symptoms-and-risks/">
+					<a class="hero-headline-link" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
 						<span class="hero-headline-background" id="hero-text">
 							{% for item in HomeHeroText %}
 								{% if item.section === "H1" %}
@@ -82,7 +78,7 @@
 					</a>
 				</h1>
 
-			<a class="hero-button button orange-button cwdsarrow-parent" href="/symptoms-and-risks/">
+			<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
 				<div class="button-label">
 					<span>{% for item in HomeHeroText %}
 						{% if item.section === "p" %}
@@ -138,7 +134,7 @@
 
 			</div>
 			<div class="hero-stats-footer">
-				<a class="hero-stats-footer-link mt-2" href="/reopening-roadmap-new/">{{varCountyMap}}</a>
+				<a class="hero-stats-footer-link mt-2" href="{{ "reopening-roadmap-new/" | toTranslatedPath(tags) }}">{{varCountyMap}}</a>
         <a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">{{varStateSummary}}</a>
 			</div>
 		</div>
@@ -230,7 +226,7 @@
 
 	<div class="faq-twitter-wrap">
 
-{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set questionLinks1 = JSON.Table1 %}
 {% set questionLinks2 = JSON.Table2 %}
