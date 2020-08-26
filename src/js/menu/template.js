@@ -1,12 +1,12 @@
-export default function (data) {
+export default function (data, search) {
   return `<nav class="expanded-menu" role="navigation" aria-label="Site Navigation" aria-hidden="true" id="main-menu" tabindex="-1">
 
     <div class="expanded-menu-grid">
 
       <div class="expanded-menu-search" role="search">
-        <form class="expanded-menu-search-form" action="/search/">
+        <form class="expanded-menu-search-form" action="${search}">
           <label class="expanded-menu-search-label" for="search-site">Search</label>
-          <input id="search-site" class="expanded-menu-search-field" type="search" placeholder="What are you looking for?">
+          <input name="q" id="search-site" class="expanded-menu-search-field" type="search" placeholder="What are you looking for?">
           <button class="expanded-menu-search-button" aria-label="Search the Website">
             <svg class="expanded-menu-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
               c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"/></svg>

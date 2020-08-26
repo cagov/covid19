@@ -3,10 +3,11 @@ import navTemplate from './template.js'
 class CAGOVOverlayNav extends window.HTMLElement {
   connectedCallback () {
     this.menuContentFile = this.dataset.json;
+    const searchEndpoint = this.dataset.search;
     fetch(this.menuContentFile)
       .then(response => response.json())
       .then(data => {
-        this.innerHTML = navTemplate(data);
+        this.innerHTML = navTemplate(data, searchEndpoint);
         this.querySelector(".open-menu").addEventListener('click', this.toggleMainMenu.bind(this));
         this.querySelector(".expanded-menu-close-mobile").addEventListener('click', this.toggleMainMenu.bind(this));
         this.expansionListeners();
