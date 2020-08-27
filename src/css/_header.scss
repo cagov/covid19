@@ -435,6 +435,15 @@ width: 37%;
   }
 }
 
+// clear x from inut field
+#header-search-site::-ms-clear {  display: none; width : 0; height: 0; }
+#header-search-site::-ms-reveal {  display: none; width : 0; height: 0; }
+#header-search-site::-webkit-search-decoration,
+#header-search-site::-webkit-search-cancel-button,
+#header-search-site::-webkit-search-results-button,
+#header-search-site::-webkit-search-results-decoration { display: none; }
+
+
 /*translate*/
 header .dropdown {
 	margin-right: auto;
