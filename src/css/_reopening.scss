@@ -68,6 +68,7 @@ cagov-reopening {
     font-weight: 500;
     margin: 10px 0 20px 0;
     color: #000;
+    text-transform: uppercase;
   }
   .county-color-1 {
     background-color: rgba(230, 183, 53, .5);
@@ -97,6 +98,9 @@ cagov-reopening {
   }
   .mt-20 {
     margin-top: 20px;
+  }
+  .btn-primary {
+    text-transform: uppercase;
   }
 }
 .card-title .card-title {
