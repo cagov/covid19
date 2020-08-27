@@ -1,9 +1,12 @@
 cagov-reopening {
   .reopening-fields {
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     background-color: #f3f5fc;
     margin: 20px 0;
+    @include tablet {
+			padding: 50px;
+		}
 
     button[type="submit"] {
       display: block;

@@ -219,7 +219,6 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h3>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
-          <p class="mt-20">Last Updated ${new Date().toLocaleDateString()}</p>
         </div>`
       })
     })
