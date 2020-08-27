@@ -1,14 +1,10 @@
 {%- set langFilePostfix = tags | langFilePostfix -%}
-{%- if langFilePostfix === "" -%}
-  {%- set langIncludeFolder="../wordpress-posts/" -%}
-{%- else -%}
-  {%- set langIncludeFolder="../translated-posts/" -%}
-{%- endif -%}
+{%- set langIncludeFolder="../translated-posts/" if langFilePostfix else "../wordpress-posts/" -%}
 
 {%- set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" -%}
 {%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))-%}
 
-{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" -%}{%- endset -%}
+{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + langFilePostfix + ".json" -%}{%- endset -%}
 {%- set JSON = JSONraw | jsonparse -%}
 {%- set Terms = JSON.Table3 -%}
 
@@ -66,12 +62,12 @@
 
 		<div class="hero-text" role="region" aria-labelledby="hero-text">
 			<div class="hero-text-align">
-				{% set HomeHeroJSONraw %}{% include langIncludeFolder + "homepage-text" + tags | langFilePostfix + ".json" %}{% endset %}
+				{% set HomeHeroJSONraw %}{% include langIncludeFolder + "homepage-text" + langFilePostfix + ".json" %}{% endset %}
 				{% set HomeHeroJSON = HomeHeroJSONraw | jsonparse %}
 				{% set HomeHeroText = HomeHeroJSON.Table1 %}
 				
 				<h1 class="hero-headline">
-					<a class="hero-headline-link" href="/symptoms-and-risks/">
+					<a class="hero-headline-link" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
 						<span class="hero-headline-background" id="hero-text">
 							{% for item in HomeHeroText %}
 								{% if item.section === "H1" %}
@@ -82,7 +78,7 @@
 					</a>
 				</h1>
 
-			<a class="hero-button button orange-button cwdsarrow-parent" href="/symptoms-and-risks/">
+			<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
 				<div class="button-label">
 					<span>{% for item in HomeHeroText %}
 						{% if item.section === "p" %}
@@ -138,7 +134,7 @@
 
 			</div>
 			<div class="hero-stats-footer">
-				<a class="hero-stats-footer-link mt-2" href="/reopening-roadmap/">{{varCountyMap}}</a>
+				<a class="hero-stats-footer-link mt-2" href="{{ 'roadmap-counties/#track-data' | toTranslatedPath(tags) }}">{{varCountyMap}}</a>
         <a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">{{varStateSummary}}</a>
 			</div>
 		</div>
@@ -154,10 +150,10 @@
 				<div class="hero-alert-social-align">
 					<h3 class="hero-alert-social-headline">Check the Governor’s Updates</h3>
 					<nav class="social" role="navigation" aria-label="California Governor on on Social Media">
-						<a class="social-link" href="/" title="California Governor on Facebook"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Facebook</title><path d="M304 96h80V0h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96V256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z"></path></svg></a>
-						<a class="social-link" href="/" title="California Governor on Twitter"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Twitter</title><path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5C412 76.7 384.7 64 354.5 64c-58 0-105 47-105 105 0 8.2.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-.5-33.4-5.3-47.6-13.1v1.3c0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-.5-25.1-1.5C46.5 462.7 101.7 480 161 480c193.2 0 298.9-160.1 298.9-298.9 0-4.6-.1-9.1-.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path></svg></a>
-						<a class="social-link" href="/" title="California Governor on YouTube"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>California Governor on YouTube</title><path d="M314,355.4v60.3c0,12.9-3.7,19.1-11.1,19.1c-4.3,0-8.6-2-12.9-6.3v-86c4.3-4.3,8.6-6.3,12.9-6.3 C310.3,336.3,314,342.9,314,355.4z M410.6,355.7v13.1h-25.7v-13.1c0-12.9,4.3-19.4,12.9-19.4C406.3,336.3,410.6,342.9,410.6,355.7z M134.6,293.4h30.6v-26.9H76v26.9h30V456h28.6V293.4z M216.9,456h25.4V314.9h-25.4v108c-5.7,8-11.1,12-16.3,12c-3.4,0-5.4-2-6-6 c-0.3-0.9-0.3-4-0.3-10v-104h-25.4v111.7c0,10,0.9,16.6,2.3,20.9c2.3,7.1,8.3,10.6,16.6,10.6c9.1,0,18.9-5.7,29.1-17.4V456z M339.4,413.7v-56.3c0-13.1-0.6-22.6-2.6-28.3c-3.1-10.6-10.3-16-20.3-16c-9.4,0-18.3,5.1-26.6,15.4v-62h-25.4V456H290v-13.7 c8.6,10.6,17.4,15.7,26.6,15.7c10,0,17.1-5.4,20.3-15.7C338.9,436.3,339.4,426.9,339.4,413.7z M436,410.9v-3.7h-26 c0,10.3-0.3,16-0.6,17.4c-1.4,6.9-5.1,10.3-11.4,10.3c-8.9,0-13.1-6.6-13.1-19.7v-24.9H436v-29.4c0-15.1-2.6-26-7.7-33.1 c-7.4-9.7-17.4-14.6-30.3-14.6c-13.1,0-23.1,4.9-30.6,14.6c-5.4,7.1-8,18-8,33.1v49.4c0,15.1,2.9,26.3,8.3,33.1 c7.4,9.7,17.4,14.6,30.9,14.6c13.4,0,24-5.1,30.9-15.1c3.1-4.6,5.4-9.7,6-15.4C436,424.9,436,419.1,436,410.9z M262.3,150V90 c0-13.1-3.7-19.7-12.3-19.7c-8.3,0-12.3,6.6-12.3,19.7v60c0,13.1,4,20,12.3,20C258.6,170,262.3,163.1,262.3,150z M467.7,364.6 c0,32.9-0.3,68-7.4,100c-5.4,22.6-23.7,39.1-45.7,41.4c-52.6,6-105.7,6-158.6,6s-106,0-158.6-6c-22-2.3-40.6-18.9-45.7-41.4 c-7.4-32-7.4-67.1-7.4-100l0,0c0-33.1,0.3-68,7.4-100c5.4-22.6,23.7-39.1,46-41.7c52.3-5.7,105.4-5.7,158.3-5.7s106,0,158.6,5.7 c22,2.6,40.6,19.1,45.7,41.7C467.7,296.6,467.7,331.4,467.7,364.6z M182.6,0h29.1l-34.6,114v77.4h-28.6V114 c-2.6-14-8.3-34-17.4-60.6c-6.3-17.7-12.6-35.7-18.6-53.4h30.3l20.3,75.1L182.6,0z M288.3,95.1v50c0,15.1-2.6,26.6-8,33.7 c-7.1,9.7-17.1,14.6-30.3,14.6c-12.9,0-22.9-4.9-30-14.6c-5.4-7.4-8-18.6-8-33.7v-50c0-15.1,2.6-26.3,8-33.4	c7.1-9.7,17.1-14.6,30-14.6c13.1,0,23.1,4.9,30.3,14.6C285.7,68.9,288.3,80,288.3,95.1z M384,48.9v142.6h-26v-15.7 c-10.3,12-20,17.7-29.4,17.7c-8.3,0-14.3-3.4-16.9-10.6c-1.4-4.3-2.3-11.1-2.3-21.4V48.9h26v104.9c0,6,0,9.4,0.3,10	c0.6,4,2.6,6.3,6,6.3c5.1,0,10.6-4,16.3-12.3V48.9H384z"/></svg></a>
-						<a class="social-link" href="/" title="California Governor on Instagram"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Instagram</title><path d="M256 46.1c68.4 0 76.5.3 103.4 1.5 25 1.1 38.5 5.3 47.5 8.8 11.9 4.6 20.5 10.2 29.4 19.1 9 9 14.5 17.5 19.2 29.4 3.5 9 7.7 22.6 8.8 47.5 1.2 27 1.5 35.1 1.5 103.4s-.3 76.5-1.5 103.4c-1.1 25-5.3 38.5-8.8 47.5-4.6 11.9-10.2 20.5-19.1 29.4-9 9-17.5 14.5-29.4 19.2-9 3.5-22.6 7.7-47.5 8.8-27 1.2-35.1 1.5-103.4 1.5s-76.5-.3-103.4-1.5c-25-1.1-38.5-5.3-47.5-8.8-11.9-4.6-20.5-10.2-29.4-19.1-9-9-14.5-17.5-19.2-29.4-3.5-9-7.7-22.6-8.8-47.5-1.2-27-1.5-35.1-1.5-103.4s.3-76.5 1.5-103.4c1.1-25 5.3-38.5 8.8-47.5 4.6-11.9 10.2-20.5 19.1-29.4 9-9 17.5-14.5 29.4-19.2 9-3.5 22.6-7.7 47.5-8.8 26.9-1.2 35-1.5 103.4-1.5zM256 0c-69.5 0-78.2.3-105.5 1.5-27.2 1.2-45.9 5.6-62.1 11.9C71.5 20 57.2 28.7 43 43 28.7 57.2 20 71.5 13.4 88.3c-6.3 16.3-10.7 34.9-11.9 62.1C.3 177.8 0 186.5 0 256s.3 78.2 1.5 105.5c1.2 27.2 5.6 45.9 11.9 62.1C20 440.5 28.7 454.8 43 469c14.2 14.2 28.5 23 45.3 29.5 16.3 6.3 34.9 10.7 62.1 11.9 27.3 1.2 36 1.5 105.5 1.5s78.2-.3 105.5-1.5c27.2-1.2 45.9-5.6 62.1-11.9 16.8-6.5 31.1-15.3 45.3-29.5s23-28.5 29.5-45.3c6.3-16.3 10.7-34.9 11.9-62.1 1.2-27.3 1.5-36 1.5-105.5s-.3-78.2-1.5-105.5c-1.2-27.2-5.6-45.9-11.9-62.1-6.3-17-15-31.3-29.3-45.5-14.2-14.2-28.5-23-45.3-29.5-16.3-6.3-34.9-10.7-62.1-11.9C334.2.3 325.5 0 256 0z"></path><path d="M256 124.5c-72.6 0-131.5 58.9-131.5 131.5S183.4 387.5 256 387.5 387.5 328.6 387.5 256 328.6 124.5 256 124.5zm0 216.8c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3c47.1 0 85.3 38.2 85.3 85.3s-38.2 85.3-85.3 85.3zM423.4 119.3c0 16.955-13.745 30.7-30.7 30.7S362 136.255 362 119.3s13.745-30.7 30.7-30.7 30.7 13.745 30.7 30.7z"></path></svg></a>
+						<a class="social-link" href="https://www.facebook.com/CAgovernor" title="California Governor on Facebook"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Facebook</title><path d="M304 96h80V0h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96V256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z"></path></svg></a>
+						<a class="social-link" href="https://twitter.com/CAgovernor" title="California Governor on Twitter"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Twitter</title><path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5C412 76.7 384.7 64 354.5 64c-58 0-105 47-105 105 0 8.2.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-.5-33.4-5.3-47.6-13.1v1.3c0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-.5-25.1-1.5C46.5 462.7 101.7 480 161 480c193.2 0 298.9-160.1 298.9-298.9 0-4.6-.1-9.1-.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path></svg></a>
+						<a class="social-link" href="https://www.youtube.com/c/cagovernor" title="California Governor on YouTube"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>California Governor on YouTube</title><path d="M314,355.4v60.3c0,12.9-3.7,19.1-11.1,19.1c-4.3,0-8.6-2-12.9-6.3v-86c4.3-4.3,8.6-6.3,12.9-6.3 C310.3,336.3,314,342.9,314,355.4z M410.6,355.7v13.1h-25.7v-13.1c0-12.9,4.3-19.4,12.9-19.4C406.3,336.3,410.6,342.9,410.6,355.7z M134.6,293.4h30.6v-26.9H76v26.9h30V456h28.6V293.4z M216.9,456h25.4V314.9h-25.4v108c-5.7,8-11.1,12-16.3,12c-3.4,0-5.4-2-6-6 c-0.3-0.9-0.3-4-0.3-10v-104h-25.4v111.7c0,10,0.9,16.6,2.3,20.9c2.3,7.1,8.3,10.6,16.6,10.6c9.1,0,18.9-5.7,29.1-17.4V456z M339.4,413.7v-56.3c0-13.1-0.6-22.6-2.6-28.3c-3.1-10.6-10.3-16-20.3-16c-9.4,0-18.3,5.1-26.6,15.4v-62h-25.4V456H290v-13.7 c8.6,10.6,17.4,15.7,26.6,15.7c10,0,17.1-5.4,20.3-15.7C338.9,436.3,339.4,426.9,339.4,413.7z M436,410.9v-3.7h-26 c0,10.3-0.3,16-0.6,17.4c-1.4,6.9-5.1,10.3-11.4,10.3c-8.9,0-13.1-6.6-13.1-19.7v-24.9H436v-29.4c0-15.1-2.6-26-7.7-33.1 c-7.4-9.7-17.4-14.6-30.3-14.6c-13.1,0-23.1,4.9-30.6,14.6c-5.4,7.1-8,18-8,33.1v49.4c0,15.1,2.9,26.3,8.3,33.1 c7.4,9.7,17.4,14.6,30.9,14.6c13.4,0,24-5.1,30.9-15.1c3.1-4.6,5.4-9.7,6-15.4C436,424.9,436,419.1,436,410.9z M262.3,150V90 c0-13.1-3.7-19.7-12.3-19.7c-8.3,0-12.3,6.6-12.3,19.7v60c0,13.1,4,20,12.3,20C258.6,170,262.3,163.1,262.3,150z M467.7,364.6 c0,32.9-0.3,68-7.4,100c-5.4,22.6-23.7,39.1-45.7,41.4c-52.6,6-105.7,6-158.6,6s-106,0-158.6-6c-22-2.3-40.6-18.9-45.7-41.4 c-7.4-32-7.4-67.1-7.4-100l0,0c0-33.1,0.3-68,7.4-100c5.4-22.6,23.7-39.1,46-41.7c52.3-5.7,105.4-5.7,158.3-5.7s106,0,158.6,5.7 c22,2.6,40.6,19.1,45.7,41.7C467.7,296.6,467.7,331.4,467.7,364.6z M182.6,0h29.1l-34.6,114v77.4h-28.6V114 c-2.6-14-8.3-34-17.4-60.6c-6.3-17.7-12.6-35.7-18.6-53.4h30.3l20.3,75.1L182.6,0z M288.3,95.1v50c0,15.1-2.6,26.6-8,33.7 c-7.1,9.7-17.1,14.6-30.3,14.6c-12.9,0-22.9-4.9-30-14.6c-5.4-7.4-8-18.6-8-33.7v-50c0-15.1,2.6-26.3,8-33.4	c7.1-9.7,17.1-14.6,30-14.6c13.1,0,23.1,4.9,30.3,14.6C285.7,68.9,288.3,80,288.3,95.1z M384,48.9v142.6h-26v-15.7 c-10.3,12-20,17.7-29.4,17.7c-8.3,0-14.3-3.4-16.9-10.6c-1.4-4.3-2.3-11.1-2.3-21.4V48.9h26v104.9c0,6,0,9.4,0.3,10	c0.6,4,2.6,6.3,6,6.3c5.1,0,10.6-4,16.3-12.3V48.9H384z"/></svg></a>
+						<a class="social-link" href="https://www.instagram.com/cagovernor" title="California Governor on Instagram"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Instagram</title><path d="M256 46.1c68.4 0 76.5.3 103.4 1.5 25 1.1 38.5 5.3 47.5 8.8 11.9 4.6 20.5 10.2 29.4 19.1 9 9 14.5 17.5 19.2 29.4 3.5 9 7.7 22.6 8.8 47.5 1.2 27 1.5 35.1 1.5 103.4s-.3 76.5-1.5 103.4c-1.1 25-5.3 38.5-8.8 47.5-4.6 11.9-10.2 20.5-19.1 29.4-9 9-17.5 14.5-29.4 19.2-9 3.5-22.6 7.7-47.5 8.8-27 1.2-35.1 1.5-103.4 1.5s-76.5-.3-103.4-1.5c-25-1.1-38.5-5.3-47.5-8.8-11.9-4.6-20.5-10.2-29.4-19.1-9-9-14.5-17.5-19.2-29.4-3.5-9-7.7-22.6-8.8-47.5-1.2-27-1.5-35.1-1.5-103.4s.3-76.5 1.5-103.4c1.1-25 5.3-38.5 8.8-47.5 4.6-11.9 10.2-20.5 19.1-29.4 9-9 17.5-14.5 29.4-19.2 9-3.5 22.6-7.7 47.5-8.8 26.9-1.2 35-1.5 103.4-1.5zM256 0c-69.5 0-78.2.3-105.5 1.5-27.2 1.2-45.9 5.6-62.1 11.9C71.5 20 57.2 28.7 43 43 28.7 57.2 20 71.5 13.4 88.3c-6.3 16.3-10.7 34.9-11.9 62.1C.3 177.8 0 186.5 0 256s.3 78.2 1.5 105.5c1.2 27.2 5.6 45.9 11.9 62.1C20 440.5 28.7 454.8 43 469c14.2 14.2 28.5 23 45.3 29.5 16.3 6.3 34.9 10.7 62.1 11.9 27.3 1.2 36 1.5 105.5 1.5s78.2-.3 105.5-1.5c27.2-1.2 45.9-5.6 62.1-11.9 16.8-6.5 31.1-15.3 45.3-29.5s23-28.5 29.5-45.3c6.3-16.3 10.7-34.9 11.9-62.1 1.2-27.3 1.5-36 1.5-105.5s-.3-78.2-1.5-105.5c-1.2-27.2-5.6-45.9-11.9-62.1-6.3-17-15-31.3-29.3-45.5-14.2-14.2-28.5-23-45.3-29.5-16.3-6.3-34.9-10.7-62.1-11.9C334.2.3 325.5 0 256 0z"></path><path d="M256 124.5c-72.6 0-131.5 58.9-131.5 131.5S183.4 387.5 256 387.5 387.5 328.6 387.5 256 328.6 124.5 256 124.5zm0 216.8c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3c47.1 0 85.3 38.2 85.3 85.3s-38.2 85.3-85.3 85.3zM423.4 119.3c0 16.955-13.745 30.7-30.7 30.7S362 136.255 362 119.3s13.745-30.7 30.7-30.7 30.7 13.745 30.7 30.7z"></path></svg></a>
 					</nav>
 				</div>
 			</div>
@@ -175,7 +171,7 @@
 <section class="video trigger" role="region" aria-labelledby="video-resources">
 <div class="video-wrap">
 
-	<h3 class="video-headline text-center"><a class="video-headline-link" href="/" id="video-resources">Video Resources</a></h3>
+	<h3 class="video-headline text-center"><a class="video-headline-link" href="/" id="video-resources">{{varVideoTitle}}</a></h3>
 	<div class="video-grid">
 
 		<div class="video-grid-col">
@@ -197,11 +193,11 @@
 			<div class="video-grid-more">
 
           <div class="video-text pl-md-5 pt-3 pt-lg-0">
-            <h4 class="font-size-2em color-purple font-weight-bold">Wear a Mask</h4>
-            <p class="lead mt-4">Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.</p>
+            <h4 class="font-size-2em color-purple font-weight-bold">{{varVideoWearAMask}}</h4>
+            <p class="lead mt-4">{{varVideoP1}}</p>
 
 						<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/1zDX9PXkotA" data-video="1zDX9PXkotA">
-							<div class="button-label">Watch the Video</div>
+							<div class="button-label">{{varVideoWatchTheVideo}}</div>
 							<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 
 						</a>
@@ -225,12 +221,12 @@
 <faq-section>
 <section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 	<div class="header-wrap">
-	<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">People want to know</a></h4>
+	<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">{{varPeopleWantToKnowTitle}}</a></h4>
 	</div>
 
 	<div class="faq-twitter-wrap">
 
-{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + tags | langFilePostfix + ".json" %}{% endset %}
+{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + langFilePostfix + ".json" %}{% endset %}
 {% set JSON = JSONraw | jsonparse %}
 {% set questionLinks1 = JSON.Table1 %}
 {% set questionLinks2 = JSON.Table2 %}
@@ -257,14 +253,6 @@
 	{% endfor %}
 	</div>
 
-</div>
-<div class="t-center">
-	<a class="button orange-button trigger cwdsarrow-parent" href="/">
-		<div class="button-label">More Questions</div>
-		<cwds-arrow data-class-prefix="more-questions" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
-
-		<!-- classes of these primary ones are different from the icon arrows, need to review css before reusing web componen there -->
-	</a>
 </div>
 </section>
 </faq-section>

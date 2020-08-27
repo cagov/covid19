@@ -10,9 +10,10 @@ const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap
 
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-langData.languages.forEach(lang => {
-  writeMenu(lang.id);
-})
+langData.languages.forEach(writeTranslatedData);
+fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+// this is temporary, we need to get this data from an API:
+fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
 
 
 let htmlmap = [];
@@ -406,6 +407,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('langRecord', getLangRecord);
   eleventyConfig.addFilter('langId', getLangId);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
+  eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
@@ -473,36 +475,31 @@ module.exports = function(eleventyConfig) {
 
 function getLinkInfo(link, lang) {
   let linkData = {};
-  if(link.slug) {
-    pageNames.forEach(page => {
-      if(page.slug === link.slug) {
-        linkData.url = `/${page.slug}/`;
-        linkData.name = page[lang];
-      }
-    })
+  for(const page of pageNames) {
+    if(link.slug && page.slug === link.slug) {
+      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
+    }
+    if(link.href && page.href === link.href) {
+      linkData.url = page.href;
+    }
+    if (linkData.url) {
+      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
+      return linkData;
+    }
   }
-  if(link.href) {
-    pageNames.forEach(page => {
-      if(page.href === link.href) {
-        linkData.url = page.href;
-        linkData.name = page[lang];
-      }
-    })
-  }
-  return linkData;
 }
 
-function writeMenu(lang) {
+function writeTranslatedData(lang) {
   let singleLangMenu = { "sections": [] };
   menuData.sections.forEach(section => {
     if(section.links) {
       section.links.forEach(link => {
-        let linkData = getLinkInfo(link, 'lang-'+lang);
+        let linkData = getLinkInfo(link, lang);
         link.url = linkData.url;
         link.name = linkData.name;
       })
       singleLangMenu.sections.push(section)
     }
   });
-  fs.writeFileSync('./docs/menu--'+lang+'.json',JSON.stringify(singleLangMenu),'utf8')
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }

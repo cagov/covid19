@@ -2,7 +2,7 @@ import alerts from './alerts/rollup.config';
 import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
-import roadmap from './roadmap/rollup.config';
+import reopening from './roadmap/rollup.config';
 import survey from './survey/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import whatwhere from './what-open-where/rollup.config';
@@ -14,7 +14,7 @@ export default [
   es5,
   esm,
   plasma,
-  roadmap,
+  reopening,
   survey,
   telehealth,
   whatwhere,
