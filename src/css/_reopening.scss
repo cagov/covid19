@@ -47,7 +47,7 @@ cagov-reopening {
     border-radius: 30px;
     font-weight: 500;
     margin: 10px 0 20px 0;
-    color: #fff;
+    color: #000;
   }
   .county-color-1 {
     background-color: rgba(230, 183, 53, .5);
@@ -65,12 +65,14 @@ cagov-reopening {
     background-color: rgba(196, 61, 83, .5);
     .pill {
       background-color: #C43D53;
+      color: #fff;
     }
   }
   .county-color-4 {
     background-color: rgba(128, 47, 103, .5);
     .pill {
       background-color: #802F67;
+      color: #fff;
     }
   }
   .mt-20 {
