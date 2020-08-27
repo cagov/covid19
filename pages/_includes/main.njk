@@ -51,6 +51,7 @@
         {% include "../_buildoutput/home.css" %}
       </style>
     {% endif %}
+		<script>const videoID='{{varVideoID}}';</script>
   </head>
   <body>
     {% include "header.njk" %}
@@ -166,8 +167,8 @@
 	<div class="video-grid">
 
 		<div class="video-grid-col">
-			<article class="video-item transition-0_3 transform-scale-hover" data-video="qQNBSlWJhfU">
-				<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="1zDX9PXkotA" href="https://youtu.be/1zDX9PXkotA">
+			<article class="video-item transition-0_3 transform-scale-hover" data-video="{{ varVideoID }}">
+				<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{ varVideoID }}" href="https://youtu.be/{{ varVideoID }}">
           <figure class="video-thumb-photo">
             <div class="video-thumb-play-button">
               <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
@@ -187,7 +188,7 @@
             <h4 class="font-size-2em color-purple font-weight-bold">{{varVideoWearAMask}}</h4>
             <p class="lead mt-4">{{varVideoP1}}</p>
 
-						<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/1zDX9PXkotA" data-video="1zDX9PXkotA">
+						<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/{{ varVideoID }}" data-video="{{ varVideoID }}">
 							<div class="button-label">{{varVideoWatchTheVideo}}</div>
 							<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 
