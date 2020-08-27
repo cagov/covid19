@@ -77,7 +77,7 @@ class CAGovReopening extends window.HTMLElement {
 
           <button type="submit" class="btn btn-primary">Get latest status</button>
         </form>
-        <div class="card-holder"></div>
+        <div class="card-holder inactive"></div>
       </div>`;
     this.setupAutoComp('#location-query', 'county');
 
@@ -188,7 +188,6 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
-    console.log(this.statusdesc.Table1)
     this.cardHTML = '';
     let selectedCounties = this.countyStatuses;
     if(this.state['county']) {
@@ -226,6 +225,7 @@ class CAGovReopening extends window.HTMLElement {
       <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
     </div>`
     this.querySelector('.card-holder').innerHTML = this.cardHTML;
+    this.querySelector('.card-holder').style.classList.remove('inactive')
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
