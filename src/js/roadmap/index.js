@@ -186,7 +186,6 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
-    console.log(this.state)
     this.cardHTML = '';
     let selectedCounties = this.countyStatuses;
     if(this.state['county']) {
@@ -214,12 +213,16 @@ class CAGovReopening extends window.HTMLElement {
       })
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
+          <h3>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
-          <p>Last Updated ${new Date().toLocaleDateString()}</p>
+          <p class="mt-20">Last Updated ${new Date().toLocaleDateString()}</p>
         </div>`
       })
     })
+    // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
+    this.cardHTML += `<div style="display:none">
+      <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
+    </div>`
     this.querySelector('.card-holder').innerHTML = this.cardHTML;
   }
 }
