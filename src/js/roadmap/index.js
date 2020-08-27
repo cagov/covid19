@@ -219,13 +219,11 @@ class CAGovReopening extends window.HTMLElement {
         </div>`
       })
     })
-    this.querySelector('.card-holder').innerHTML = this.cardHTML;
-  }
-  saveTheClasses() {
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
-    let placeholder = `<div style="display:none">
+    this.cardHTML += `<div style="display:none">
       <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
     </div>`
+    this.querySelector('.card-holder').innerHTML = this.cardHTML;
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
