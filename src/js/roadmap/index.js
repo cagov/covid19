@@ -78,11 +78,7 @@ class CAGovReopening extends window.HTMLElement {
           <button type="submit" class="btn btn-primary">Get latest status</button>
         </form>
         <div class="card-holder"></div>
-      </div>
-      <h2>Understanding the risk in your county</h2>
-      <p> Every county in california gets a colored tier.<p>
-      <div class="reopening-matrix"></div>
-    `;
+      </div>`;
     this.setupAutoComp('#location-query', 'county');
 
     window.fetch('/countystatus.json')
@@ -95,7 +91,6 @@ class CAGovReopening extends window.HTMLElement {
     .then(response => response.json())
     .then(function(data) {
       this.statusdesc = data;
-      this.displayMatrix();
     }.bind(this));
 
     window.fetch('/reopening-activities.json')
@@ -192,54 +187,6 @@ class CAGovReopening extends window.HTMLElement {
     const aplete2 = new Awesomplete(fieldSelector, awesompleteSettings);
   }
 
-  displayMatrix() {
-    console.log('hi')
-    console.log(this.statusdesc.Table1)
-    document.querySelector('.reopening-matrix').innerHTML = `${this.statusdesc.Table1.map((riskLevel, iteration) => {
-      return `<div class="row text-center mr-0 ml-0">
-          <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-            <div class="card border-0 bg-transparent">
-                  ${iteration == 0 ? `<div class="card-header bg-white border-0">
-                    <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
-                  </div>` : ''}
-                  <div class="card-body text-black">
-                      <button class="btn bg-purple-btn rounded-50 text-white px-4">WIDESPREAD</button>
-                    <p class="card-text text-small mt-3">
-                    Most non-essential indoor business operations are closed ${iteration}
-                    </p>
-                  </div>
-            </div>
-          </div>
-          <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-            <div class="card border-0 bg-transparent">
-              ${iteration == 0 ? `<div class="card-header bg-white border-0">
-                    <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
-                  </div>` : ''}
-                  <div class="card-body text-black">
-                      <h5>10 or more</h5>
-                    <p class="card-text text-small mt-3">
-                    Daily new cases (per 100k)
-                    </p>
-                  </div>
-            </div>
-          </div>
-          <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-            <div class="card border-0 bg-transparent">
-              ${iteration == 0 ? `<div class="card-header bg-white border-0">
-                    <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
-                  </div>` : ''}
-                  <div class="card-body text-black">
-                      <h5>8% less</h5>
-                    <p class="card-text text-small mt-3">
-                    Positive tests
-                    </p>
-                  </div>
-            </div>
-          </div>
-      </div>`
-    }).join(' ')}`
-  }
-
   layoutCards() {
     console.log(this.statusdesc.Table1)
     this.cardHTML = '';
@@ -256,8 +203,8 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.County}</h2>
-        <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].Status}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}</p>
+        <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County risk level']}</div>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data</a></p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
