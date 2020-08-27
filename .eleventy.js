@@ -12,6 +12,9 @@ let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(writeTranslatedData);
 fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+// this is temporary, we need to get this data from an API:
+fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
+
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
