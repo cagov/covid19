@@ -1,28 +1,32 @@
 {
   "Table1": [
     {
-      "Status": "Minimal",
+      "County risk level": "Minimal",
+      "colorLabel": "Yellow",
       "description": "Most indoor business operations are open with modifications",
-      "criteria1": "1 or less",
-      "criteria2": "2% or less"
+      "New cases": "1 or less",
+      "Positive tests": "2% or less"
     },
     {
-      "Status": "Moderate",
+      "County risk level": "Moderate",
+      "colorLabel": "Orange",
       "description": "Some indoor business operations are open with modifications",
-      "criteria1": "1 – 5.9",
-      "criteria2": "2 – 5.9%"
+      "New cases": "1 – 5.9",
+      "Positive tests": "2 – 5.9%"
     },
     {
-      "Status": "Substantial",
+      "County risk level": "Substantial",
+      "colorLabel": "Red",
       "description": "Some non-essential indoor business operations are closed",
-      "criteria1": "6 – 9.9",
-      "criteria2": "5 – 7.9%"
+      "New cases": "6 – 9.9",
+      "Positive tests": "5 – 7.9%"
     },
     {
-      "Status": "Widespread",
+      "County risk level": "Widespread",
+      "colorLabel": "Purple",
       "description": "Most non-essential indoor business operations are closed",
-      "criteria1": "10 or more",
-      "criteria2": "8%"
+      "New cases": "10 or more",
+      "Positive tests": "8%"
     }
   ]
 }
