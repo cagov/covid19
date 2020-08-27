@@ -1,16 +1,10 @@
 {
   "Table1": [
     {
-      "Status": "Widespread",
-      "description": "Most non-essential indoor business operations are closed",
-      "criteria1": "10 or more",
-      "criteria2": "8%"
-    },
-    {
-      "Status": "Substantial",
-      "description": "Some non-essential indoor business operations are closed",
-      "criteria1": "6 – 9.9",
-      "criteria2": "5 – 7.9%"
+      "Status": "Minimal",
+      "description": "Most non-essential indoor business operations are open with modifications",
+      "criteria1": "1 or less",
+      "criteria2": "2% or less"
     },
     {
       "Status": "Moderate",
@@ -19,10 +13,16 @@
       "criteria2": "2 – 5.9%"
     },
     {
-      "Status": "Minimal",
-      "description": "Most non-essential indoor business operations are open with modifications",
-      "criteria1": "1 or less",
-      "criteria2": "2% or less"
+      "Status": "Substantial",
+      "description": "Some non-essential indoor business operations are closed",
+      "criteria1": "6 – 9.9",
+      "criteria2": "5 – 7.9%"
+    },
+    {
+      "Status": "Widespread",
+      "description": "Most non-essential indoor business operations are closed",
+      "criteria1": "10 or more",
+      "criteria2": "8%"
     }
   ]
 }
