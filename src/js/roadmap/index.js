@@ -86,10 +86,13 @@ class CAGovReopening extends window.HTMLElement {
     .then(response => response.json())
     .then(function(data) {
       this.countyStatuses = data;
-    }.bind(this))
-    .catch(() => {
-      //resetForm();
-    });
+    }.bind(this));
+
+    window.fetch('/countystatusdescriptors.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.statusdesc = data;
+    }.bind(this));
 
     window.fetch('/reopening-activities.json')
     .then(response => response.json())
@@ -186,6 +189,7 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
+    console.log(this.statusdesc.Table1)
     this.cardHTML = '';
     let selectedCounties = this.countyStatuses;
     if(this.state['county']) {
@@ -200,8 +204,8 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.County}</h2>
-        <div class="pill">Status ${item['Overall Status']}!</div>
-        <p>Status ${item['Overall Status']} description</p>
+        <div class="pill">${this.statusdesc.Table1[item['Overall Status'][0]]}</div>
+        <p>${this.statusdesc.Table1[item['Overall Status'][1]]}</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
