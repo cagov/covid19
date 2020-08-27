@@ -7,7 +7,6 @@
 @import './cagov-font';
 @import './accordion';
 @import './stepbystep';
-@import './rtl';
 
 @import './video';
 /* ^ this was some trilogy code which I grabbed and needs to be namespaced */
@@ -38,3 +37,7 @@
 @import './page-rating';
 @import './footer';
 @import './reopening';
+
+/* Overrides for non-English languages. */
+@import './multilingual';
+@import './rtl';
