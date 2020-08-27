@@ -86,10 +86,13 @@ class CAGovReopening extends window.HTMLElement {
     .then(response => response.json())
     .then(function(data) {
       this.countyStatuses = data;
-    }.bind(this))
-    .catch(() => {
-      //resetForm();
-    });
+    }.bind(this));
+
+    window.fetch('/statusdescriptors.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.statusdesc = data;
+    }.bind(this));
 
     window.fetch('/reopening-activities.json')
     .then(response => response.json())
@@ -200,8 +203,8 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.County}</h2>
-        <div class="pill">Status ${item['Overall Status']}!</div>
-        <p>Status ${item['Overall Status']} description</p>
+        <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].Status}</div>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
@@ -213,9 +216,9 @@ class CAGovReopening extends window.HTMLElement {
       })
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
+          <h3>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
-          <p>Last Updated ${new Date().toLocaleDateString()}</p>
+          <p class="mt-20">Last Updated ${new Date().toLocaleDateString()}</p>
         </div>`
       })
     })
