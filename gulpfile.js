@@ -122,7 +122,8 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
       ],
-      extractors: purgecssExtractors
+      extractors: purgecssExtractors,
+      whitelistPatternsChildren: [/lang$/]
     }),
     cssnano
   ]))
@@ -145,7 +146,8 @@ const builtCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/new*.html'
       ],
-      extractors: purgecssExtractors
+      extractors: purgecssExtractors,
+      whitelistPatternsChildren: [/lang$/]
     }),
     cssnano
   ]))

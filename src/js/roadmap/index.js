@@ -78,8 +78,7 @@ class CAGovReopening extends window.HTMLElement {
           <button type="submit" class="btn btn-primary">Get latest status</button>
         </form>
         <div class="card-holder"></div>
-      </div>
-    `;
+      </div>`;
     this.setupAutoComp('#location-query', 'county');
 
     window.fetch('/countystatus.json')
@@ -203,8 +202,8 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.County}</h2>
-        <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].Status}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}</p>
+        <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County risk level']}</div>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data</a></p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
@@ -218,7 +217,6 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h3>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
-          <p class="mt-20">Last Updated ${new Date().toLocaleDateString()}</p>
         </div>`
       })
     })

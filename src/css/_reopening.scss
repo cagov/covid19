@@ -1,9 +1,12 @@
 cagov-reopening {
   .reopening-fields {
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     background-color: #f3f5fc;
     margin: 20px 0;
+    @include tablet {
+			padding: 50px;
+		}
 
     button[type="submit"] {
       display: block;
@@ -28,6 +31,11 @@ cagov-reopening {
       padding: 0;
     }
   }
+  .card-holder {
+    margin: 0;
+    padding: 0 0 30px 0;
+    background: #fff;
+  }
   .card-county, .card-activity {
     padding: 30px;
   }
@@ -37,6 +45,18 @@ cagov-reopening {
   .card-activity {
     text-align: left;
     background-color: #fff;
+    padding: 30px 30px 0 30px;
+  }
+  .card-activity:after {
+    border-bottom: solid 1px;
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    margin: 30px 0 0 0;
+  }
+  .card-activity:last-of-type:after {
+    display: none;
   }
   .pill {
     display: inline-block;
@@ -44,7 +64,7 @@ cagov-reopening {
     border-radius: 30px;
     font-weight: 500;
     margin: 10px 0 20px 0;
-    color: #fff;
+    color: #000;
   }
   .county-color-1 {
     background-color: rgba(230, 183, 53, .5);
@@ -62,15 +82,23 @@ cagov-reopening {
     background-color: rgba(196, 61, 83, .5);
     .pill {
       background-color: #C43D53;
+      color: #fff;
     }
   }
   .county-color-4 {
     background-color: rgba(128, 47, 103, .5);
     .pill {
       background-color: #802F67;
+      color: #fff;
     }
   }
   .mt-20 {
     margin-top: 20px;
+  }
+}
+.card-title .card-title {
+  display: none;
+  @include tablet {
+    display: block;
   }
 }
