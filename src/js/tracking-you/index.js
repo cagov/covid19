@@ -111,7 +111,7 @@ export default function applyAccordionListeners() {
 
   // Give all analytics calls a chance to finish before following the link.
   // Note this generates a function for use by an event handler.
-  const linkHandler = (href, eventAction, eventLabel) => (event) => {
+  const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
     // Use event.returnValue in IE, otherwise event.preventDefault.
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 
@@ -120,7 +120,11 @@ export default function applyAccordionListeners() {
     window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel);
     window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, {
       // When this third call finishes, follow the link via hitCallback.
-      hitCallback: () => { document.location.href = href; }
+      hitCallback: () => {
+        if (follow) {
+          document.location.href = href;
+        }
+      }
     });
   };
 
@@ -142,7 +146,7 @@ export default function applyAccordionListeners() {
       // Report video clicks.
       const videoTitle = document.querySelector('.video-text h4').textContent;
       document.querySelectorAll('.video-modal-open').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoTitle));
+        link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoTitle, false));
       });
       // Report clicks on links in the menu.
       document.querySelectorAll('a.expanded-menu-dropdown-link, a.expanded-menu-section-header-link').forEach(link => {
