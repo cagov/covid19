@@ -1,178 +1,106 @@
-<h2>Understanding the risk in your county</h2>
-<p> Every county in California gets a colored tier.<p>
-<!--purple-->
+{%- set JSONraw %}
+{
+  "Table1": [
+    {
+      "[Header county risk level]": "County risk level",
+      "[Header new cases]": "New cases",
+      "[Header positive tests]": "Positive tests"
+    }
+  ],
+  "Table2": [
+    {
+      "_color_": "purple",
+      "_risk_button_text_": "WIDESPREAD",
+      "_risk_button_description_": "Most non-essential indoor business operations are closed",
+      "_new_cases_count_": "10 or more",
+      "_new_cases_description_": "Daily new cases (per 100k)",
+      "_positive_cases_count_": "8% less",
+      "_positive_cases_description_": "Positive tests"
+    },
+    {
+      "_color_": "red",
+      "_risk_button_text_": "SUBSTANTIAL",
+      "_risk_button_description_": "Some non-essential indoor business operations are closed",
+      "_new_cases_count_": "6 - 9.9",
+      "_new_cases_description_": "Daily new cases (per 100k)",
+      "_positive_cases_count_": "5 - 7.9%",
+      "_positive_cases_description_": "Positive tests"
+    },
+    {
+      "_color_": "orange",
+      "_risk_button_text_": "MODERATE",
+      "_risk_button_description_": "Some non-essential indoor business operations are open with modifications",
+      "_new_cases_count_": "1 - 5.9",
+      "_new_cases_description_": "Daily new cases (per 100k)",
+      "_positive_cases_count_": "2 - 4.9%",
+      "_positive_cases_description_": "Positive tests"
+    },
+    {
+      "_color_": "yellow",
+      "_risk_button_text_": "MINIMAL",
+      "_risk_button_description_": "Most non-essential indoor business operations are open with modifications",
+      "_new_cases_count_": "1 or less",
+      "_new_cases_description_": "Daily new cases (per 100k)",
+      "_positive_cases_count_": "2% or less",
+      "_positive_cases_description_": "Positive tests"
+    }
+  ]
+}
+{%- endset -%}
+{%- set JSON = JSONraw | jsonparse -%}
+{%- set Headers = JSON.Table1[0] -%}
+{%- set Rows = JSON.Table2 -%}
+
+
+
+{% for item in Rows %}
 <div class="row text-center mr-0 ml-0 matrix-row">
-    <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-       <div class="card border-0 bg-transparent">
-            <div class="card-header bg-white border-0">
-              <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
-            </div>
-            <div class="card-body text-black">
-                 <button class="btn bg-purple-btn rounded-50 text-white px-4">WIDESPREAD</button>
-              <p class="card-text text-small mt-3">
-              Most non-essential indoor business operations are closed
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-       <div class="card border-0 bg-transparent">
-            <div class="card-header bg-white border-0">
-              <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>10 or more</h5>
-              <p class="card-text text-small mt-3">
-              Daily new cases (per 100k)
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-purple-alert">
-       <div class="card border-0 bg-transparent">
-            <div class="card-header bg-white border-0">
-              <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>8% less</h5>
-              <p class="card-text text-small mt-3">
-              Positive tests
-              </p>
-            </div>
-      </div>
-    </div>
 
-</div>
-
-
-<!--~RED -->
-<div class="row text-center mr-0 ml-0 mt-1 matrix-row">
-
-    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
-       <div class="card border-0 bg-transparent">
-         <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
-            </div>
-            <div class="card-body text-black">
-                 <button class="btn bg-red-btn rounded-50 px-4 text-white">SUBSTANTIAL</button>
-              <p class="card-text text-small mt-3">
-              Some non-essential indoor business operations are closed
-              </p>
-            </div>
+  <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+    <div class="card border-0 bg-transparent">
+      {%- if loop.first %}
+      <div class="card-header bg-white border-0">
+        <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header county risk level]"]}}</h4>
+      </div>
+      {%- endif -%}
+      <div class="card-body text-black">
+        <button class="btn bg-{{item._color_}}-btn rounded-50 text-white px-4">{{item._risk_button_text_}}</button>
+        <p class="card-text text-small mt-3">
+          {{item._risk_button_description_}}
+        </p>
       </div>
     </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>6 - 9.9</h5>
-              <p class="card-text text-small mt-3">
-              Daily new cases (per 100k)
-              </p>
-            </div>
+  </div>
+
+  <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+    <div class="card border-0 bg-transparent">
+      {%- if loop.first %}
+      <div class="card-header bg-white border-0">
+        <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header new cases]"]}}</h4>
+      </div>
+      {%- endif -%}
+      <div class="card-body text-black">
+            <h5>{{item._new_cases_count_}}</h5>
+        <p class="card-text text-small mt-3">
+        {{item._new_cases_description_}}
+        </p>
       </div>
     </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-red-alert">
+  </div>
+    <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
        <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
-            </div>
+      {%- if loop.first %}
+        <div class="card-header bg-white border-0">
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header positive tests]"]}}</h4>
+        </div>
+      {%- endif -%}
             <div class="card-body text-black">
-                 <h5>5 - 7.9%</h5>
+                 <h5>{{item._positive_cases_count_}}</h5>
               <p class="card-text text-small mt-3">
-              Positive tests
+              {{item._positive_cases_description_}}
               </p>
             </div>
       </div>
     </div>
 </div>
-
-<!--~ORANGE -->
-<div class="row text-center mr-0 ml-0 mt-1 matrix-row">
-
-    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
-            </div>
-            <div class="card-body text-black">
-                 <button class="btn bg-orange-btn rounded-50 px-4">MODERATE</button>
-              <p class="card-text text-small mt-3">
-               Some non-essential indoor business operations are open with modifications
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>1 - 5.9</h5>
-              <p class="card-text text-small mt-3">
-              Daily new cases (per 100k)
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-orange-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>2 - 4.9%</h5>
-              <p class="card-text text-small mt-3">
-              Positive tests
-              </p>
-            </div>
-      </div>
-    </div>
-</div>
-
-<!--~YELLOW -->
-<div class="row text-center mr-0 ml-0 mt-1 matrix-row">
-
-    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">County risk level</h4>
-            </div>
-            <div class="card-body text-black">
-                 <button class="btn bg-yellow-btn rounded-50 px-4">MINIMAL</button>
-              <p class="card-text text-small mt-3">
-              Most non-essential indoor business operations are open with modifications
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">New cases</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>1 or less</h5>
-              <p class="card-text text-small mt-3">
-              Daily new cases (per 100k)
-              </p>
-            </div>
-      </div>
-    </div>
-    <div class="col-sm-4 pl-0 pr-0 bg-yellow-alert">
-       <div class="card border-0 bg-transparent">
-        <div class="card-header bg-white border-0 d-sm-none">
-              <h4 class="h5 card-title mb-0 pb-0">Positive tests</h4>
-            </div>
-            <div class="card-body text-black">
-                 <h5>2% or less</h5>
-              <p class="card-text text-small mt-3">
-              Positive tests
-              </p>
-            </div>
-      </div>
-    </div>
-</div>
+{% endfor %}
