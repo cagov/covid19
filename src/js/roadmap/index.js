@@ -18,7 +18,7 @@ class CAGovReopening extends window.HTMLElement {
       countyLabel = this.dataset.countyLabel;
     }
     let activityPlaceholder = 'Enter a business or activity';
-    let countyPlaceholder = 'Enter a ZIP code or county'
+    let countyPlaceholder = 'Enter county' // a ZIP code or 
     this.state = {};
 
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
