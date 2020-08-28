@@ -200,7 +200,7 @@ class CAGovReopening extends window.HTMLElement {
       }
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h3>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
+          <h3>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "closed" : "open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
         </div>`
       })
