@@ -1,0 +1,49 @@
+{
+  "Table1": [
+    {
+      "Nivel de riesgo del condado": "Mínimo",
+      "Color de la etiqueta": "Amarillo",
+      "Descripción": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Casos nuevos": "1&nbsp;% o menos",
+      "Pruebas positivas": "2&nbsp;% o menos"
+    },
+    {
+      "Nivel de riesgo del condado": "Moderado",
+      "Color de la etiqueta": "Naranja",
+      "Descripción": "Algunas operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Casos nuevos": "1 – 5.9",
+      "Pruebas positivas": "2 – 5.9&nbsp;%"
+    },
+    {
+      "Nivel de riesgo del condado": "Sustancial",
+      "Color de la etiqueta": "Rojo",
+      "Descripción": "Algunas operaciones comerciales en interiores no esenciales están cerradas.",
+      "Casos nuevos": "6 - 9.9",
+      "Pruebas positivas": "5 - 7.9&nbsp;%"
+    },
+    {
+      "Nivel de riesgo del condado": "Extendido",
+      "Color de la etiqueta": "Morado",
+      "Descripción": "La mayoría de las operaciones comerciales en interiores no esenciales están cerradas.",
+      "Casos nuevos": "10 o más",
+      "Pruebas positivas": "8&nbsp;%"
+    }
+  ],
+  "Table2": [
+    {
+      "Etiquetas": "Casos nuevos diarios (por cada 100 mil)"
+    },
+    {
+      "Etiquetas": "Pruebas positivas"
+    },
+    {
+      "Etiquetas": "Encuentre el estado para las actividades en su condado"
+    },
+    {
+      "Etiquetas": "Actividad"
+    },
+    {
+      "Etiquetas": "Condado"
+    }
+  ]
+}
