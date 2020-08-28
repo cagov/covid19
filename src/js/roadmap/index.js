@@ -16,11 +16,13 @@ class CAGovReopening extends window.HTMLElement {
     if(this.dataset.countyLabel) {
       countyLabel = this.dataset.countyLabel;
     }
+    let activityPlaceholder = 'Enter a business or activity';
+    let countyPlaceholder = 'Enter a ZIP code or county'
     this.state = {};
 
     this.innerHTML = `
       <div class="reopening-fields">
-      <h2>${title}</h2>
+      <h2 class="subtitle-color">${title}</h2>
         <form action="#" class="reopening-activities">
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -36,6 +38,7 @@ class CAGovReopening extends window.HTMLElement {
                   id="location-query"
                   role="combobox"
                   type="text"
+                  placeholder="${countyPlaceholder}"
                 />
                 <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
                 <span
@@ -68,6 +71,7 @@ class CAGovReopening extends window.HTMLElement {
                   id="activity-query"
                   role="combobox"
                   type="text"
+                  placeholder="${activityPlaceholder}"
                 />
                 <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
               </div>

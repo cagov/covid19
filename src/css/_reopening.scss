@@ -1,4 +1,13 @@
 cagov-reopening {
+  .subtitle-color {
+    color: #1F2574;
+  }
+  .reopening-activities {
+    margin-top: 20px;
+    label {
+      font-weight: bold;
+    }
+  }
   .reopening-fields {
     text-align: center;
     padding: 20px;
@@ -10,7 +19,10 @@ cagov-reopening {
 
     button[type="submit"] {
       display: block;
-      margin: 20px auto;
+      margin: 10px auto;
+      height: 50px;
+      font-size: 1.15rem;
+      padding: .5rem 1rem;
     }
   }
   .visually-hidden {
