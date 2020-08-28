@@ -1,0 +1,9 @@
+version: 2
+updates: 
+  - 
+    directory: "/"
+    milestone: 2
+    package-ecosystem: "npm"
+    schedule: 
+      interval: "daily"
+    target-branch: "dependabotprs"

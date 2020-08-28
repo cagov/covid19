@@ -2,10 +2,10 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
-module.exports = {
+export default {
   input: 'src/js/telehealth/index.js',
   output: {
-    file: 'pages/_includes/telehealth.js',
+    file: 'pages/_buildoutput/telehealth.js',
     format: 'esm'
   },
   plugins: [resolve(), json(), terser()]
