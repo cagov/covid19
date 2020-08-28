@@ -51,6 +51,7 @@ class CAGovReopening extends window.HTMLElement {
         aList.push(item['0'])
       })
       this.setupAutoCompActivity('#activity-query', 'activity', aList)
+      this.tableauStuff()
     }.bind(this))
     .catch(() => {
       //resetForm();
@@ -130,6 +131,14 @@ class CAGovReopening extends window.HTMLElement {
     });
   }
 
+  tableauStuff() {
+    var divElement = document.getElementById('viz1598633253507');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  }
   setupAutoCompActivity(fieldSelector, fieldName, aList) {
     let component = this;
     const awesompleteSettings = {
