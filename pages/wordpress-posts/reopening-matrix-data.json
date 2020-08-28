@@ -1,28 +1,28 @@
 {
   "Table1": [
     {
-      "County risk level": "Minimal",
+      "County tier": "Minimal",
       "colorLabel": "Yellow",
       "description": "Most indoor business operations are open with modifications",
       "New cases<br>(7 day average)": "Less than 1 daily new cases (per 100k) ",
       "Positive tests<br><strong>(7 day average)</strong>": "Less than 2%  positive tests"
     },
     {
-      "County risk level": "Moderate",
+      "County tier": "Moderate",
       "colorLabel": "Orange",
       "description": "Some indoor business operations are open with modifications",
       "New cases<br>(7 day average)": "1 – 3.9 daily new cases (per 100k)",
       "Positive tests<br><strong>(7 day average)</strong>": "2 – 4.9%<br>positive tests"
     },
     {
-      "County risk level": "Substantial",
+      "County tier": "Substantial",
       "colorLabel": "Red",
       "description": "Some non-essential indoor business operations are closed",
       "New cases<br>(7 day average)": "4-7 daily new cases (per 100k)",
       "Positive tests<br><strong>(7 day average)</strong>": "5 – 8%<br>positive tests"
     },
     {
-      "County risk level": "Widespread",
+      "County tier": "Widespread",
       "colorLabel": "Purple",
       "description": "Many non-essential indoor business operations are closed",
       "New cases<br>(7 day average)": "More than 7 <br>daily new cases (per 100k)",
