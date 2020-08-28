@@ -9,7 +9,7 @@ publishdate: "today"
     <div class="card-body pl-0" lang="en-US">
 		<h2 class="card-title lead" lang="en-US"><a href="{{ post.data.url }}" lang="en-US" hreflang="en-US">{{ post.data.title | safe }}</a></h2>
 		   <p class="card-text" lang="en-US"><small class="text-muted"><!--{{ post.fileSlug }} -->{{ post.data.publishdate | formatDate }} </small></p>
-      <div class="card-text" lang="en-US">{{ post.data.meta | truncate220 | safe}}</div>
+      <div class="card-text" lang="en-US">{{ post.data.meta | truncate220 | safe }}</div>
     </div>
   </div>
 
