@@ -51,11 +51,12 @@
 {%- set Headers = JSON.Table1[0] -%}
 {%- set Rows = JSON.Table2 -%}
 
+<!-- dynamic classnames are really cool but the purger cannot understand, hence this -->
+<div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn"></div>
 
 <div class="the-matrix d-none">
   {% for item in Rows %}
   <div class="row text-center mr-0 ml-0 matrix-row">
-
     <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
