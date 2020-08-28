@@ -218,7 +218,9 @@
 
 	<div class="faq-twitter-wrap">
 
-{% set JSONraw %}{% include "../wordpress-posts/people-want-to-know" + langFilePostfix + ".json" %}{% endset %}
+{% set JSONraw %}{% include langIncludeFolder+"people-want-to-know" + langFilePostfix + ".json" %}{% endset %}
+
+
 {% set JSON = JSONraw | jsonparse %}
 {% set questionLinks1 = JSON.Table1 %}
 {% set questionLinks2 = JSON.Table2 %}
