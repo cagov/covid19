@@ -195,6 +195,7 @@ class CAGovReopening extends window.HTMLElement {
           if(ac["0"] == this.state['activity']) {
             selectedActivities.push(ac);
           }
+          // TODO Consider removing these next two 'View all open/closed' blocks since we removed them from menu.
           if(this.state['activity'].toLowerCase() === 'view all open' && selectedActivities.length < 5) {
             if(ac[item['Overall Status']] != "Closed") {
               selectedActivities.push(ac);
