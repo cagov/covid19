@@ -26,12 +26,14 @@ class CAGovReopening extends window.HTMLElement {
     if(theMatrix) {
       this.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
     }
-    this.setupAutoComp('#location-query', 'county');
 
     window.fetch('/countystatus.json')
     .then(response => response.json())
     .then(function(data) {
       this.countyStatuses = data;
+      let aList = [];
+      this.countyStatuses.forEach(c => { aList.push(c.county) })
+      this.setupAutoComp('#location-query', 'county', aList);
     }.bind(this));
 
     window.fetch('/statusdescriptors.json')
@@ -72,7 +74,7 @@ class CAGovReopening extends window.HTMLElement {
     }.bind(this))
   }
 
-  setupAutoComp(fieldSelector, fieldName) {
+  setupAutoComp(fieldSelector, fieldName, aList) {
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
@@ -85,49 +87,15 @@ class CAGovReopening extends window.HTMLElement {
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;
-        let isZip = false;
-        if (finalval.match(/^\d+$/)) {
-          // we are dealing with a zip code
-          isZip = true;
-          let url = `https://api.alpha.ca.gov/countyfromzip/${finalval}`;
-          window.fetch(url)
-            .then(response => {
-              return response.json();
-            })
-            .then(myzip => {
-              component.state[fieldName] = myzip[0].county;
-              component.layoutCards();
-            })
-            .catch(() => {
-              // lookupFail();
-            });
-        } else {
-          component.state[fieldName] = finalval;
-          component.layoutCards();
-        }
-      }
+        this.input.value = finalval;        
+        component.state[fieldName] = finalval;
+        component.layoutCards();
+      },
+      list: aList
     };
-  
-    const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
+    
 
-    document.querySelector(fieldSelector).addEventListener('keyup', event => {
-      const skipKeys = [13, 9, 27, 38, 40]; // do not reset suggestion list if using arrow keys, enter, tab
-      if (event.target.value.length >= 2) {
-        if (skipKeys.indexOf(event.keyCode) === -1) {
-          let q = event.target.value;
-          const url = `https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=${q}`;
-          window.fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                aplete.list = data.match.map(x=>x);
-            })
-            .catch(() => {
-              //resetForm();
-            });       
-        }
-      }
-    });
+    const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
   }
 
   tableauStuff() {
