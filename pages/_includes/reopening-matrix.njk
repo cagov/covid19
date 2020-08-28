@@ -52,55 +52,56 @@
 {%- set Rows = JSON.Table2 -%}
 
 
+<div class="the-matrix d-none">
+  {% for item in Rows %}
+  <div class="row text-center mr-0 ml-0 matrix-row">
 
-{% for item in Rows %}
-<div class="row text-center mr-0 ml-0 matrix-row">
-
-  <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
-    <div class="card border-0 bg-transparent">
-      {%- if loop.first %}
-      <div class="card-header bg-white border-0">
-        <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header county risk level]"]}}</h4>
-      </div>
-      {%- endif -%}
-      <div class="card-body text-black">
-        <button class="btn bg-{{item._color_}}-btn rounded-50 text-white px-4">{{item._risk_button_text_}}</button>
-        <p class="card-text text-small mt-3">
-          {{item._risk_button_description_}}
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
-    <div class="card border-0 bg-transparent">
-      {%- if loop.first %}
-      <div class="card-header bg-white border-0">
-        <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header new cases]"]}}</h4>
-      </div>
-      {%- endif -%}
-      <div class="card-body text-black">
-            <h5>{{item._new_cases_count_}}</h5>
-        <p class="card-text text-small mt-3">
-        {{item._new_cases_description_}}
-        </p>
-      </div>
-    </div>
-  </div>
     <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
-       <div class="card border-0 bg-transparent">
-      {%- if loop.first %}
+      <div class="card border-0 bg-transparent">
+        {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header positive tests]"]}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header county risk level]"]}}</h4>
         </div>
-      {%- endif -%}
-            <div class="card-body text-black">
-                 <h5>{{item._positive_cases_count_}}</h5>
-              <p class="card-text text-small mt-3">
-              {{item._positive_cases_description_}}
-              </p>
-            </div>
+        {%- endif -%}
+        <div class="card-body text-black">
+          <button class="btn bg-{{item._color_}}-btn rounded-50 text-white px-4">{{item._risk_button_text_}}</button>
+          <p class="card-text text-small mt-3">
+            {{item._risk_button_description_}}
+          </p>
+        </div>
       </div>
     </div>
+
+    <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+      <div class="card border-0 bg-transparent">
+        {%- if loop.first %}
+        <div class="card-header bg-white border-0">
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header new cases]"]}}</h4>
+        </div>
+        {%- endif -%}
+        <div class="card-body text-black">
+              <h5>{{item._new_cases_count_}}</h5>
+          <p class="card-text text-small mt-3">
+          {{item._new_cases_description_}}
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+        <div class="card border-0 bg-transparent">
+        {%- if loop.first %}
+          <div class="card-header bg-white border-0">
+            <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header positive tests]"]}}</h4>
+          </div>
+        {%- endif -%}
+              <div class="card-body text-black">
+                  <h5>{{item._positive_cases_count_}}</h5>
+                <p class="card-text text-small mt-3">
+                {{item._positive_cases_description_}}
+                </p>
+              </div>
+        </div>
+      </div>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}
