@@ -61,5 +61,6 @@ export default function template(title, countyLabel, countyPlaceholder, activity
       <button type="submit" class="btn btn-primary">Get latest status</button>
     </form>
     <div class="card-holder"></div>
-  </div>`
+  </div>
+  <div class="matrix-holder"></div>`
 }

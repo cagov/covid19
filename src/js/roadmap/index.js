@@ -22,6 +22,10 @@ class CAGovReopening extends window.HTMLElement {
     this.state = {};
 
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
+    let theMatrix = document.querySelector('.the-matrix');
+    if(theMatrix) {
+      this.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
+    }
     this.setupAutoComp('#location-query', 'county');
 
     window.fetch('/countystatus.json')
@@ -76,8 +80,6 @@ class CAGovReopening extends window.HTMLElement {
         return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
       },  
       item: function (text, input) {
-        // document.querySelector('.invalid-feedback').style.display = 'none';
-        // document.querySelector('.reopening-fields').classList.remove('is-invalid');
         return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
       },
       replace: function (text) {
@@ -96,8 +98,6 @@ class CAGovReopening extends window.HTMLElement {
       if (event.target.value.length >= 2) {
         if (skipKeys.indexOf(event.keyCode) === -1) {
           let q = event.target.value;
-          window.lookup = q;
-          // todo: what is this for ^^^???
           const url = `https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=${q}`;
           window.fetch(url)
             .then(response => response.json())
@@ -117,6 +117,16 @@ class CAGovReopening extends window.HTMLElement {
     const awesompleteSettings = {
       autoFirst: true,
       minChars: 0,
+      maxItems: 99,
+      sort: function(a,b) {
+        if(a['0'] < b['0']) {
+          return -1;
+        }
+        if(a['0'] > b['0']) {
+          return 1;
+        }
+        return 0;
+      },
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
@@ -127,7 +137,10 @@ class CAGovReopening extends window.HTMLElement {
       list: aList
     };
 
-    const aplete2 = new Awesomplete(fieldSelector, awesompleteSettings);
+    window.aplete2 = new Awesomplete(fieldSelector, awesompleteSettings);
+    document.querySelector(fieldSelector).addEventListener('focus', function() {
+      window.aplete2.evaluate();
+    })
   }
 
   layoutCards() {
@@ -142,7 +155,6 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     let selectedActivities = this.allActivities;
-    console.log(this.allActivities)
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>

@@ -7,6 +7,10 @@ cagov-reopening {
     label {
       font-weight: bold;
     }
+    #awesomplete_list_2 {
+      max-height: 283px;
+      overflow: scroll;
+    }
   }
   /* bootstrap override */
   .form-row > [class*="col-"] {
@@ -125,5 +129,22 @@ cagov-reopening {
   display: none;
   @include tablet {
     display: block;
+  }
+}
+
+.matrix-holder {
+  margin-bottom: 30px;
+}
+
+.matrix-row {
+  margin-top: 10px;
+  .card-body {
+    padding: 1.2rem 0.45rem;
+  }
+  .card-header {
+    display: none;
+    @include tablet {
+      display: block;
+    }
   }
 }
