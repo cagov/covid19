@@ -187,7 +187,8 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County risk level']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data</a></p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data.</a></p>
+        <p>Check your county website for local restrictions</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
@@ -211,8 +212,9 @@ class CAGovReopening extends window.HTMLElement {
       }
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h3>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "closed" : "open"}</h3>
+          <h4>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "closed" : "open"}</h4>
           <p>${ac[item['Overall Status']]}</p>
+          <p><a href="/industry-guidance">View industry guidance</a></p>
         </div>`
       })
     })
