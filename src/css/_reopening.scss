@@ -1,0 +1,150 @@
+cagov-reopening {
+  .subtitle-color {
+    color: #1F2574;
+  }
+  .reopening-activities {
+    margin-top: 20px;
+    label {
+      font-weight: bold;
+    }
+    #awesomplete_list_2 {
+      max-height: 283px;
+      overflow: scroll;
+    }
+  }
+  /* bootstrap override */
+  .form-row > [class*="col-"] {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .reopening-fields {
+    text-align: center;
+    padding: 20px;
+    background-color: #f3f5fc;
+    margin: 20px 0;
+    @include tablet {
+			padding: 50px;
+		}
+
+    input {
+      font-size: 1.2rem;
+    }
+    button[type="submit"] {
+      display: block;
+      margin: 10px auto;
+      height: 50px;
+      font-size: 1.15rem;
+      padding: .5rem 1.3rem;
+      background-color: #003D9D;
+    }
+  }
+  .visually-hidden {
+    visibility: hidden;
+  }
+  .awesomplete {
+    ul {
+      text-align: left;
+      li:hover, li[aria-selected="true"] {
+        mark {
+          background: transparent;
+        }
+      }
+    }
+    mark {
+      background: transparent;
+      font-weight: bold;
+      padding: 0;
+    }
+  }
+  .card-content {
+    margin: 0;
+    padding: 0 0 30px 0;
+    background: #fff;
+  }
+  .card-county, .card-activity {
+    padding: 30px;
+  }
+  .card-county {
+    margin: 20px 0 0 0;
+  }
+  .card-activity {
+    text-align: left;
+    background-color: #fff;
+    padding: 30px 30px 0 30px;
+  }
+  .card-activity:after {
+    border-bottom: solid 1px;
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    margin: 30px 0 0 0;
+  }
+  .card-activity:last-of-type:after {
+    display: none;
+  }
+  .pill {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    margin: 10px 0 20px 0;
+    color: #000;
+    text-transform: uppercase;
+  }
+  .county-color-1 {
+    background-color: rgba(230, 183, 53, .5);
+    .pill {
+      background-color: #E6B735;
+    }
+  }
+  .county-color-2 {
+    background-color: rgba(217, 118, 65, .5);
+    .pill {
+      background-color: #D97641;
+    }
+  }
+  .county-color-3 {
+    background-color: rgba(196, 61, 83, .5);
+    .pill {
+      background-color: #C43D53;
+      color: #fff;
+    }
+  }
+  .county-color-4 {
+    background-color: rgba(128, 47, 103, .5);
+    .pill {
+      background-color: #802F67;
+      color: #fff;
+    }
+  }
+  .mt-20 {
+    margin-top: 20px;
+  }
+  .btn-primary {
+    text-transform: uppercase;
+  }
+}
+.card-title .card-title {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.matrix-holder {
+  margin-bottom: 30px;
+}
+
+.matrix-row {
+  margin-top: 10px;
+  .card-body {
+    padding: 1.2rem 0.45rem;
+  }
+  .card-header {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+}

@@ -2,12 +2,23 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
-const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
-let htmlmap = [];
+const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
 
+let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
+langData.languages.forEach(writeTranslatedData);
+fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+// this is temporary, we will get this data from an API:
+fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
+// this needs to be translated, need to get the translated version from translated page
+fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+
+
+let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
@@ -343,7 +354,6 @@ module.exports = function(eleventyConfig) {
         if(process.env.NODE_ENV === 'development') {
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
-
         return dom.serialize();
       }
     }
@@ -352,54 +362,36 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
-    let localizeString = '--en.';
+    const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
-          let englishUrl = image.src;
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                image.src = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
-        }
-        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
-          let englishUrl = link.href;
+      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const lang = langData.languages.filter(x=>x.enabled&&x.hreflang===htmllang).concat(langData.languages[0])[0].id;
 
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                link.href = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
+      //Scan the DOM for a files.covid19.ca.gov links
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
+        .map(r=> r.groups.URL);
+
+      for(const domTarget of domTargets) {
+        if(filesSiteData.indexOf(domTarget)===-1) {
+          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
         }
-        return dom.serialize();  
-      }      
+      }
+      if(lang !== "en") {
+        for(const englishUrl of domTargets) {
+          if(englishUrl.includes(localizeString)) {
+            //attempt to translate
+            let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
+  
+            if(filesSiteData.indexOf(localizedUrl)>-1) {
+              html = html.replace(new RegExp(englishUrl,'gm'),localizedUrl);
+            } else {
+              //console.log('No translation found - ' + localizedUrl);
+            }
+          }
+        }
+      }  
     }
+
     return html;
   });
 
@@ -410,10 +402,14 @@ module.exports = function(eleventyConfig) {
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
+  const getLangId = tags => 
+    getLangRecord(tags).id;
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('langId', getLangId);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
+  eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
@@ -450,23 +446,24 @@ module.exports = function(eleventyConfig) {
       return [];
     }
 
-    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
-
-    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
-      //This is a root language page
-      engSlug='';
-    }
+    const engSlug = 
+      page.inputPath.includes('/manual-content/homepages/')
+      ? '' //This is a root language page
+      : page.fileSlug.replace(langPostfixRegExp,'');
   
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${x.pathpostfix}${(engSlug)}/`.replace(/\/\/$/,'/'),
+        url: `/${x.pathpostfix}${engSlug}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))
       .filter(x=>x.url!==page.url)
       ;
   });
+
+  // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
+  eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
   return {
@@ -478,3 +475,33 @@ module.exports = function(eleventyConfig) {
   };
 };
 
+function getLinkInfo(link, lang) {
+  let linkData = {};
+  for(const page of pageNames) {
+    if(link.slug && page.slug === link.slug) {
+      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
+    }
+    if(link.href && page.href === link.href) {
+      linkData.url = page.href;
+    }
+    if (linkData.url) {
+      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
+      return linkData;
+    }
+  }
+}
+
+function writeTranslatedData(lang) {
+  let singleLangMenu = { "sections": [] };
+  menuData.sections.forEach(section => {
+    if(section.links) {
+      section.links.forEach(link => {
+        let linkData = getLinkInfo(link, lang);
+        link.url = linkData.url;
+        link.name = linkData.name;
+      })
+      singleLangMenu.sections.push(section)
+    }
+  });
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
+}

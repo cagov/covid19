@@ -1,0 +1,139 @@
+news-section {
+
+	.news {
+		background: $white;
+		@extend %block-padding;
+		width: 100%;
+		order: 3;
+		text-align: center;
+		@include tablet {
+			order: 3;
+		}
+		&-wrap {
+			@extend %wrap;
+		}
+		&-headline {
+			@extend %headline1;
+			color: $darkblue;
+			margin-bottom: 1rem;
+			@include desktop {
+				margin-bottom: 3rem;
+			}
+			&-link {
+				transition: $slow;
+				color: $darkblue;
+				padding: .5rem 1rem;
+				border-radius: 2.5rem;
+				&:hover {
+					color: $orange;
+				}
+				&:focus {
+					color: $blue;
+					box-shadow:  0 0 0 2px $yellow;
+				}
+			}
+		}
+		&-grid {
+			@include tablet {
+				display: flex;
+			}
+		}
+		&-item {
+			text-align: left;
+		padding: 1.25rem 0;
+		@include tablet {
+		  width: 33%;
+		  padding: .75rem;
+		}
+			@include desktop {
+		  padding: 1rem;
+		}
+		&-link {
+		  display: block;
+		  &:hover {
+			.news-item {
+			  &-photo {
+							box-shadow: $shadow;
+					  &-img {
+				  opacity: 1;
+						  @include size(110%);
+					  }
+				  }
+			  &-headline {
+				color: $orange;
+			  }
+			}
+		  }
+				&:focus {
+					.news-item {
+						&-photo {
+							box-shadow: 0 0 0 4px $yellow, $shadow-hover;
+							&-img {
+								opacity: 1;
+								@include size(110%);
+							}
+						}
+						&-play-button {
+							background: rgba($white, .8);
+							&-icon {
+								fill: $orange;
+							}
+						}
+						&-headline {
+							color: $orange;
+							&-small {
+								color: $orange;
+							}
+						}
+					}
+				}
+		}
+			&-photo {
+		  background: $darkblue;
+				@include aspect(16,9);
+				position: relative;
+				margin-bottom: 1rem;
+		  overflow: hidden;
+				transition: box-shadow .3s $bounce-curve;
+				&-img {
+			opacity: .75;
+					@include size(100%);
+					@include absolute(left 50% top 0);
+			transform: translateX(-50%);
+			transition: 1s cubic-bezier(.15,.92,.14,.95);
+				}
+			}
+		&-date {
+		  font-size: .85rem;
+		  text-transform: uppercase;
+		  margin-bottom: .25rem;
+		  display: block;
+		  color: $black;
+		}
+		&-headline {
+				@extend %headline5;
+				color: $blue;
+		  margin-bottom: .25rem;
+		  transition: color .3s $slow-curve;
+				@include tablet {
+				overflow-wrap: break-word;
+				}
+				@include desktop {
+					overflow-wrap:normal;
+				}
+			}
+			&-teaser {
+		  color: $black;
+				margin-top: .25rem;
+				line-height: 1.5;
+				@include tablet {
+					font-size: .8rem;
+				}
+				@include desktop {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+
+}

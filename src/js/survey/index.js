@@ -12,7 +12,7 @@ class CWDSSurvey extends window.HTMLElement {
     let seenSurvey = seenSurveyPrompt();
     let surveyUrl = this.dataset.pulseSurveyUrl;
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
-    if(!seenSurvey) {
+    if(!seenSurvey && 1==2) { // disabling the NPI survey because it doesn't work with the new fixed header, we can change its display method to slide out from under the header or something
       if(shouldDisplayNPI) {
         surveyUrl = this.dataset.npiSurveyUrl
         surveyPrompt = this.dataset.surveyPrompt

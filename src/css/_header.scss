@@ -1,0 +1,523 @@
+.header {
+  background: $darkblue;
+  width: 100%;
+  @include fixed(left 0 top 0);
+  z-index: 1000;
+  transition: 0.4s box-shadow $slow-curve;
+  &-wrap {
+    @extend %wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    @include desktop {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &-right {
+    margin-left: 0;
+  }
+}
+
+.box-shadow {
+  box-shadow: $button-shadow-hover;
+}
+
+.fixed.header {
+  font-size: 1rem;
+  @include ie {
+    .logo-mark {
+      max-height: 3.5rem;
+    }
+  }
+  &-logo {
+    &-mark {
+      width: 5rem;
+      @include tablet {
+        width: 6rem;
+      }
+    }
+  }
+}
+
+/*LOGO*/
+.logo {
+  &-mark {
+    width: 100%;
+    &-orange {
+      fill: $orange;
+      transition: fill 0.5s $slow-curve;
+    }
+    &-white {
+      fill: $white;
+      transition: fill 0.5s $slow-curve;
+    }
+  }
+  &:hover {
+    .logo {
+      &-orange {
+        fill: $white;
+      }
+      &-white {
+        fill: $orange;
+      }
+    }
+  }
+}
+
+/* Header logo */
+.header {
+  background: $darkblue;
+  width: 100%;
+  @include fixed(left 0 top 0);
+  z-index: 1000;
+  transition: 0.4s box-shadow $slow-curve;
+  &-wrap {
+    @extend %wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    @include desktop {
+      flex-wrap: nowrap;
+    }
+  }
+  &-logo {
+    width: 100%;
+	order: 4;
+	background: $blue;
+    @include tablet {
+      background: transparent;
+      order: 0;
+      width: auto;
+    }
+    &-grid {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    &-mark {
+      width: 6rem;
+      display: block;
+      background: $blue;
+      padding: 0.5rem;
+      box-shadow: $button-shadow;
+      transition: width 0.4s $slow-curve, background 0.4s $slow-curve;
+	  overflow-y: hidden;
+	  @include tablet {
+		padding: 0.5rem 0.75rem;
+	}
+    }
+    &-text {
+      text-align: left;
+      padding-left: 0.75rem;
+      @include phone {
+      }
+      &-url {
+        @extend %headline4;
+        color: $orange;
+        text-transform: uppercase;
+        display: block;
+		transition: color 0.4s $slow-curve;
+		@include phone {
+			font-size: 1.2rem;
+		  }
+      }
+      &-title {
+        @extend %headline7;
+        color: $white;
+        white-space: nowrap;
+        display: block;
+        transition: color 0.4s $slow-curve;
+        @include phone {
+          font-size: .9rem;
+        }
+      }
+    }
+    &:hover {
+      .header-logo {
+        &-mark {
+          background: $white;
+        }
+        &-text {
+          &-url {
+            color: $white;
+          }
+          &-title {
+            color: $orange;
+          }
+        }
+      }
+      .logo-mark {
+        &-orange {
+          fill: $darkblue;
+        }
+        &-white {
+          fill: $orange;
+        }
+      }
+    }
+    &:focus {
+      .header-logo {
+        margin: 0 0 0 64px; /* modified to support nav button outside header wrap */
+        &-mark {
+          background: $white;
+          box-shadow: 0 0 0 4px $yellow, $shadow-hover;
+        }
+        &-text {
+          &-url {
+            color: $white;
+          }
+          &-title {
+            color: $orange;
+          }
+        }
+      }
+      .logo-mark {
+        &-orange {
+          fill: $darkblue;
+        }
+        &-white {
+          fill: $orange;
+        }
+      }
+    }
+  }
+  &-right {
+    margin-left: 0;
+  }
+}
+
+body.interior-page {
+  font-weight: 300;
+}
+.interior-page a {
+  text-decoration: underline !important;
+  /* we have to sort out the styles that made this necessary, some homepage shenanigans */
+}
+
+.interior-page .header {
+	position: relative;
+}
+
+/* header Search form */
+
+.header-search {
+  background: $blue;
+  border-radius: 2rem;
+  transition: background 0.5s $slow-curve;
+  padding: 0;
+  margin: 0.5rem 0.5rem 0.5rem 1em;
+order: 2;
+width: 37%;
+  @include reg-phone {
+	width: 34%;
+  }
+  @include tablet {
+    width: 13rem;
+    padding: 0 0 0 0.25rem;
+    margin: 0;
+    order: 0;
+    margin-left: auto;
+  }
+  @include tablet-wide {
+    width: 22rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+    margin: 0.5rem 0.5rem 0.5rem auto;
+  }
+  @include desktop {
+    width: 25rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin: 0.5rem 0.5rem 0.5rem auto;
+  }
+  @keyframes border-pulse {
+    from {
+      box-shadow: 0 0 0 0 $yellow;
+    }
+    50% {
+      box-shadow: 0 0 0 3px $yellow;
+    }
+    to {
+      box-shadow: 0 0 0 0 $yellow;
+    }
+  }
+  &.focused {
+    background: $white;
+    box-shadow: $button-shadow, 0 0 0 2px $yellow;
+    animation-name: border-pulse;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+    .header-search {
+      &-label {
+        color: $darkblue;
+        margin-bottom: 0.5rem;
+      }
+      &-field {
+        color: $darkblue;
+        @include placeholder {
+          color: $darkblue;
+        }
+        &:-moz-placeholder { //Mozilla Firefox 4 to 18 
+          color:   $darkblue;
+          opacity:  1;
+       }
+       &::-moz-placeholder { //Mozilla Firefox 19+ 
+          color:   $darkblue;
+          opacity:  1;
+       }
+      }
+      &-button {
+        &-svg {
+          fill: $darkblue;
+        }
+      }
+    }
+  }
+  &:hover {
+    background: $white;
+    .header-search {
+      &-label {
+        color: $darkblue;
+      }
+      &-field {
+        @include placeholder {
+          color: $darkblue;
+        }
+        &:-moz-placeholder { //Mozilla Firefox 4 to 18 
+          color:   $darkblue;
+          opacity:  1;
+       }
+       &::-moz-placeholder { //Mozilla Firefox 19+ 
+          color:   $darkblue;
+          opacity:  1;
+       }
+      }
+      &-button {
+        &-svg {
+          fill: $darkblue;
+        }
+      }
+    }
+  }
+  &-form {
+    background: transparent;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: $slow;
+    position: relative;
+    cursor: pointer;
+    @include tablet {
+      background: transparent;
+    }
+    &:hover {
+    }
+  }
+  &-label {
+    color: $lightestblue;
+    text-transform: uppercase;
+    font-size: 95%;
+    padding: 0 0.75rem 0 0;
+    border-right: 1px solid $darkblue;
+    cursor: pointer;
+    transition: color 0.5s $slow-curve;
+    position: relative;
+    margin-bottom: 0.5rem;
+    top: 4px;
+    @include phone {
+      @include screen-reader-text;
+    }
+    &:hover {
+      color: $blue;
+    }
+  }
+  &-field {
+    background: transparent;
+    padding: 0.75rem 0rem 0.75rem 0.75rem;
+    font-size: 1rem;
+    border: 0;
+    width: 100%;
+    color: $white;
+	transition: $slow;
+    @include tablet {
+		padding: 0.75rem 0rem 0.75rem 0.75rem;
+		width: 100%;
+	  }
+    @include tablet-wide {
+	  padding: 0.75rem 0.5rem 0.75rem 0.35rem;
+	  width: 100%;
+	}
+	@include desktop {
+		padding: 0.75rem 0.5rem 0.75rem 0.35rem;
+		width: 100%;
+	  }
+
+    &:-moz-placeholder { //Mozilla Firefox 4 to 18 
+      color:   $white;
+      opacity:  1;
+   }
+   &::-moz-placeholder { //Mozilla Firefox 19+ 
+      color:   $white;
+      opacity:  1;
+   }
+    @include placeholder {
+      color: $white;
+      transition: $slow;
+      @include phone {
+        color: $orange;
+      }
+    }
+    &:hover {
+      @include placeholder {
+        color: $blue !important;
+      }
+      &:-moz-placeholder { //Mozilla Firefox 4 to 18 
+        color:   $blue !important;
+        opacity:  1;
+     }
+     &::-moz-placeholder { //Mozilla Firefox 19+ 
+        color:   $blue !important;
+        opacity:  1;
+     }
+    }
+    &:focus {
+      outline: none;
+      
+      @include placeholder {
+        color: $darkblue;
+      }
+      &:-moz-placeholder { //Mozilla Firefox 4 to 18 
+        color:   $darkblue;
+        opacity:  1;
+     }
+     &::-moz-placeholder { //Mozilla Firefox 19+ 
+        color:   $darkblue;
+        opacity:  1;
+     }
+    }
+  }
+  &-button {
+    @include size(2.25rem);
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 0.15rem;
+    position: absolute;
+    right:4px;
+    //top:-3px;
+    flex: 1 0 auto;
+    transition: transform 0.5s $bounce-curve;
+    &-svg {
+      width: 100%;
+      max-height: 2.5rem;
+      fill: $white;
+      transition: fill 0.3s $slow-curve;
+    }
+    &:hover {
+      .header-search-button {
+        &-svg {
+          fill: $blue;
+        }
+      }
+    }
+    &:focus {
+      background: $blue;
+      outline: none;
+      .header-search-button {
+        &-svg {
+          fill: $white;
+        }
+      }
+    }
+  }
+}
+
+// clear x from inut field
+#header-search-site::-ms-clear {  display: none; width : 0; height: 0; }
+#header-search-site::-ms-reveal {  display: none; width : 0; height: 0; }
+#header-search-site::-webkit-search-decoration,
+#header-search-site::-webkit-search-cancel-button,
+#header-search-site::-webkit-search-results-button,
+#header-search-site::-webkit-search-results-decoration { display: none; }
+
+
+/*translate*/
+header .dropdown {
+	margin-right: auto;
+	@include tablet {
+		margin-right: 0;
+	  }
+
+}
+.translate {
+  position: relative;
+  padding-right: 30px;
+}
+.translate::after {
+  display: none !important;
+}
+
+button#dropdown-menu-button {
+  transition-duration: 0.3s;
+  transition-property: all;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  padding: .5rem .3rem;
+  vertical-align: middle;
+  @include tablet {
+	padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+
+
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: #ecca00;
+  }
+
+  &:focus {
+    background-color: $white;
+    border-color: $white;
+    color: $darkblue;
+    outline: none;
+  }
+
+  &[aria-expanded="false"] .rotate {
+    right: 2px;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+    transition: all 0.2s ease !important;
+  }
+  &[aria-expanded="true"] .rotate {
+    transform: rotate(90deg) !important;
+    right: -5px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .utility-nav li {
+    margin-bottom: 10px !important;
+  }
+}
+
+.nav-scroll-spy {
+  height: 0;
+}
+
+#dropdown-text {pointer-events: none;}
