@@ -16,11 +16,13 @@ class CAGovReopening extends window.HTMLElement {
     if(this.dataset.countyLabel) {
       countyLabel = this.dataset.countyLabel;
     }
+    let activityPlaceholder = 'Enter a business or activity';
+    let countyPlaceholder = 'Enter a ZIP code or county'
     this.state = {};
 
     this.innerHTML = `
       <div class="reopening-fields">
-      <h2>${title}</h2>
+      <h2 class="subtitle-color">${title}</h2>
         <form action="#" class="reopening-activities">
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -36,6 +38,7 @@ class CAGovReopening extends window.HTMLElement {
                   id="location-query"
                   role="combobox"
                   type="text"
+                  placeholder="${countyPlaceholder}"
                 />
                 <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
                 <span
@@ -68,6 +71,7 @@ class CAGovReopening extends window.HTMLElement {
                   id="activity-query"
                   role="combobox"
                   type="text"
+                  placeholder="${activityPlaceholder}"
                 />
                 <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
               </div>
@@ -193,7 +197,7 @@ class CAGovReopening extends window.HTMLElement {
     if(this.state['county']) {
       selectedCounties = [];
       this.countyStatuses.forEach(item => {
-        if(item.County == this.state['county']) {
+        if(item.county == this.state['county']) {
           selectedCounties.push(item)
         }
       })
@@ -201,7 +205,7 @@ class CAGovReopening extends window.HTMLElement {
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
-        <h2>${item.County}</h2>
+        <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County risk level']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data</a></p>
       </div>`
@@ -215,7 +219,7 @@ class CAGovReopening extends window.HTMLElement {
       })
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h3>${ac["0"]} in ${item.County} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
+          <h3>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "Closed" : "Open"}</h3>
           <p>${ac[item['Overall Status']]}</p>
         </div>`
       })
@@ -224,8 +228,8 @@ class CAGovReopening extends window.HTMLElement {
     this.cardHTML += `<div style="display:none">
       <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
     </div>`
-    this.querySelector('.card-holder').innerHTML = this.cardHTML;
-    this.querySelector('.card-holder').style.classList.remove('inactive')
+    this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
+    this.querySelector('.card-holder').classList.remove('inactive');
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);

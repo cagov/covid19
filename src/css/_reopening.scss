@@ -1,4 +1,13 @@
 cagov-reopening {
+  .subtitle-color {
+    color: #1F2574;
+  }
+  .reopening-activities {
+    margin-top: 20px;
+    label {
+      font-weight: bold;
+    }
+  }
   .reopening-fields {
     text-align: center;
     padding: 20px;
@@ -10,7 +19,10 @@ cagov-reopening {
 
     button[type="submit"] {
       display: block;
-      margin: 20px auto;
+      margin: 10px auto;
+      height: 50px;
+      font-size: 1.15rem;
+      padding: .5rem 1rem;
     }
   }
   .visually-hidden {
@@ -31,10 +43,7 @@ cagov-reopening {
       padding: 0;
     }
   }
-  .card-holder.inactive {
-    background: transparent;
-  }
-  .card-holder {
+  .card-content {
     margin: 0;
     padding: 0 0 30px 0;
     background: #fff;
@@ -68,6 +77,7 @@ cagov-reopening {
     font-weight: 500;
     margin: 10px 0 20px 0;
     color: #000;
+    text-transform: uppercase;
   }
   .county-color-1 {
     background-color: rgba(230, 183, 53, .5);
@@ -97,6 +107,9 @@ cagov-reopening {
   }
   .mt-20 {
     margin-top: 20px;
+  }
+  .btn-primary {
+    text-transform: uppercase;
   }
 }
 .card-title .card-title {

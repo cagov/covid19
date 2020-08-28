@@ -4,11 +4,12 @@ const openers = document.getElementsByClassName('video-modal-open');
 const closers = document.getElementsByClassName('video-modal-close');
 
 // Embed is straight from YouTube's UI. One exception: added the '?autoplay=1' at end of src.
+// "videoID" needs to be a variable set on the page
 const youtubeEmbed = `
 <iframe 
   width="100%" 
   height="100%" 
-  src="https://www.youtube.com/embed/1zDX9PXkotA?autoplay=1" 
+  src="https://www.youtube.com/embed/${videoID}?autoplay=1" 
   frameborder="0" 
   allow="accelerometer; autoplay; encrypted-media; gyroscope" 
   allowfullscreen>
