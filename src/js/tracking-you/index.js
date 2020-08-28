@@ -28,7 +28,7 @@ export default function applyAccordionListeners() {
       elementType ==> eventAction
       eventString ==> eventLabel
   */
-  function reportGA(eventAction, eventLabel, hitCallback, eventCategory = 'click') {
+  function reportGA(eventAction, eventLabel, eventCategory = 'click') {
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
       ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
@@ -105,9 +105,9 @@ export default function applyAccordionListeners() {
     });  
   }
 
+
   /*
     Kennedy Project tracking stuff starts here.
-  */
 
   // Give all analytics calls a chance to finish before following the link.
   // Note this generates a function for use by an event handler.
@@ -182,4 +182,6 @@ export default function applyAccordionListeners() {
       link.addEventListener('click', linkHandler(link.href, 'roadmap-footer', annotateExternalLinks(link)));
     });
   }
+
+  */
 }
