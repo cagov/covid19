@@ -54,7 +54,7 @@
       })();
     </script>
   </head>
-  <body class="interior-page">
+  <body class="interior-page {%- pagesection page, 'safer-economy' %} safer-economy-page{% endpagesection %}">
     {% include "header.njk" %}
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
