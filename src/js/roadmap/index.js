@@ -45,8 +45,6 @@ class CAGovReopening extends window.HTMLElement {
     .then(function(data) {
       this.allActivities = data.Table1;
       let aList = []
-      //aList.push('View all closed')
-      //aList.push('View all open')
       data.Table1.forEach(item => {
         aList.push(item['0'])
       })
@@ -196,23 +194,11 @@ class CAGovReopening extends window.HTMLElement {
           if(ac["0"] == this.state['activity']) {
             selectedActivities.push(ac);
           }
-          // TODO Consider removing these next two 'View all open/closed' blocks since we removed them from menu.
-          if(this.state['activity'].toLowerCase() === 'view all open' && selectedActivities.length < 5) {
-            if(ac[item['Overall Status']] != "Closed") {
-              selectedActivities.push(ac);
-            }
-          }
-          if(this.state['activity'].toLowerCase() === 'view all closed' && selectedActivities.length < 5) {
-            console.log(ac[item['Overall Status']])
-            if(ac[item['Overall Status']] == "Closed") {
-              selectedActivities.push(ac);
-            }
-          }
         })
       }
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
-          <h4>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']] == "Closed" ? "closed" : "open"}</h4>
+          <h4>${ac["0"]} in ${item.county} are ${ac[item['Overall Status']].indexOf("Closed") == 0 ? "closed" : "open"}</h4>
           <p>${ac[item['Overall Status']]}</p>
           <p><a href="/industry-guidance">View industry guidance</a></p>
         </div>`
