@@ -18,7 +18,7 @@ class CAGovReopening extends window.HTMLElement {
       countyLabel = this.dataset.countyLabel;
     }
     let activityPlaceholder = 'Enter a business or activity';
-    let countyPlaceholder = 'Enter county' // a ZIP code or 
+    let countyPlaceholder = 'Enter a ZIP code or county'
     this.state = {};
 
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
@@ -86,8 +86,26 @@ class CAGovReopening extends window.HTMLElement {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
         this.input.value = finalval;
-        component.state[fieldName] = finalval;
-        component.layoutCards();
+        let isZip = false;
+        if (finalval.match(/^\d+$/)) {
+          // we are dealing with a zip code
+          isZip = true;
+          let url = `https://api.alpha.ca.gov/countyfromzip/${finalval}`;
+          window.fetch(url)
+            .then(response => {
+              return response.json();
+            })
+            .then(myzip => {
+              component.state[fieldName] = myzip[0].county;
+              component.layoutCards();
+            })
+            .catch(() => {
+              // lookupFail();
+            });
+        } else {
+          component.state[fieldName] = finalval;
+          component.layoutCards();
+        }
       }
     };
   
@@ -167,12 +185,12 @@ class CAGovReopening extends window.HTMLElement {
           if(ac["0"] == this.state['activity']) {
             selectedActivities.push(ac);
           }
-          if(this.state['activity'].toLowerCase() === 'view all open') {
+          if(this.state['activity'].toLowerCase() === 'view all open' && selectedActivities.length < 5) {
             if(ac[item['Overall Status']] != "Closed") {
               selectedActivities.push(ac);
             }
           }
-          if(this.state['activity'].toLowerCase() === 'view all closed') {
+          if(this.state['activity'].toLowerCase() === 'view all closed' && selectedActivities.length < 5) {
             console.log(ac[item['Overall Status']])
             if(ac[item['Overall Status']] == "Closed") {
               selectedActivities.push(ac);
