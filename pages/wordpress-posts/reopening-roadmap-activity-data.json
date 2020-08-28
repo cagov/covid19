@@ -1,166 +1,6 @@
 {
   "Table1": [
     {
-      "0": "Critical infrastructure",
-      "1": "Open&nbsp; with modifications",
-      "2": "Open&nbsp; with modifications",
-      "3": "Open&nbsp; with modifications",
-      "4": "Open&nbsp; with modifications",
-      "5": ""
-    },
-    {
-      "0": "Limited services",
-      "1": "Open&nbsp; with modifications",
-      "2": "Open&nbsp; with modifications",
-      "3": "Open&nbsp; with modifications",
-      "4": "Open&nbsp; with modifications",
-      "5": "<em>Examples: personal training, tanning salon, individual tutoring, dog grooming, landscape gardening</em>"
-    },
-    {
-      "0": "All retail<strong>&nbsp;</strong> (including critical infrastructure)",
-      "1": "Open&nbsp; with modifications",
-      "2": "Open&nbsp; with modifications",
-      "3": "Open&nbsp; with modifications,  max 50% Capacity",
-      "4": "Open&nbsp; with modifications, max 25% capacity",
-      "5": "<em>Risk profile matches shopping centers (malls)</em>"
-    },
-    {
-      "0": "Shopping centers (malls, destination centers, swap meets)",
-      "1": "Open&nbsp; with modifications",
-      "2": "Open indoors with modifications, closed common areas",
-      "3": "Open indoors&nbsp; with modifications, max 50% capacity,  closed common areas",
-      "4": "Open&nbsp; with modifications,  max 25% capacity,  closed common areas",
-      "5": "<em>Tie restrictions with all retail.</em>"
-    },
-    {
-      "0": "Hair salons and barbershops",
-      "1": "Open indoors&nbsp; with modifications",
-      "2": "Open indoors&nbsp; with modifications",
-      "3": "Open indoors&nbsp; with modifications",
-      "4": "Open indoors with modifications",
-      "5": "<br>"
-    },
-    {
-      "0": "Personal care services",
-      "1": "Open indoors&nbsp; with modifications",
-      "2": "Open indoors&nbsp; with modifications",
-      "3": "Open indoors&nbsp; with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Health risk profile aligns with hair salons</em>"
-    },
-    {
-      "0": "Museums, zoos, and aquariums<br>",
-      "1": "Open indoors with modifications",
-      "2": "Open indoors with modifications, indoor activities max 50% capacity",
-      "3": "Open indoors&nbsp; with modifications, indoor activities max 25% capacity",
-      "4": "Open outdoors only with modifications",
-      "5": "<br>"
-    },
-    {
-      "0": "Places of worship",
-      "1": "Open indoors&nbsp; with modifications, max 50%&nbsp;capacity",
-      "2": "Open indoors&nbsp; with modifications&nbsp; max 25% capacity&nbsp;",
-      "3": "Open indoors&nbsp; with modifications,  max 25% capacity",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Alternatively, capacity %-cap </em><strong><em>and </em></strong><em>numerical cap, </em><strong><em>and </em></strong><em>scaled attendance cap based on overall capacity. &nbsp;</em>"
-    },
-    {
-      "0": "Movie theaters",
-      "1": "Open indoors&nbsp; with modifications,  max 50%&nbsp;capacity",
-      "2": "Open indoors&nbsp; with modifications, max 25% capacity&nbsp;",
-      "3": "Open indoors&nbsp; with modifications, max 25% capacity",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Health risk profile aligns with places of worship.</em>"
-    },
-    {
-      "0": "Family entertainment centers",
-      "1": "Open indoors&nbsp; with modifications&nbsp; (roller and ice rinks, indoor playgrounds, etc.)&nbsp;",
-      "2": "Open limited indoors&nbsp;with modifications&nbsp; (bowling,  laser tag, etc.)",
-      "3": "Open outdoors only with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Phased introductions of activities/businesses subject to health risk profile (more to be added)</em>"
-    },
-    {
-      "0": "Offices",
-      "1": "Open indoors&nbsp; with modifications,  encourage working remotely",
-      "2": "Open indoors&nbsp; with modifications,  encourage working remotely",
-      "3": "Work remotely",
-      "4": "Work remotely",
-      "5": "<br>"
-    },
-    {
-      "0": "Gyms and fitness centers",
-      "1": "Open indoors&nbsp; with modifications, saunas spas steam rooms max 50% capacity",
-      "2": "Open indoors&nbsp; with modifications,  pools max 25% capacity",
-      "3": "Open outdoors only with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Masking possible;&nbsp;</em><br><em>Higher health risk profile than places of worship, therefore align attendance restrictions.</em><br>"
-    },
-    {
-      "0": "Hotels and lodging",
-      "1": "Open&nbsp; with modifications",
-      "2": "Open&nbsp; with modifications",
-      "3": "Open&nbsp; with modifications",
-      "4": "Open&nbsp; with modifications",
-      "5": "<br>"
-    },
-    {
-      "0": "Restaurants",
-      "1": "Open indoors&nbsp; with modifications",
-      "2": "Open indoors&nbsp; with modifications&nbsp;",
-      "3": "Open outdoors only with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Inability to wear face coverings</em>"
-    },
-    {
-      "0": "Wineries and tasting rooms",
-      "1": "Open indoors&nbsp; with modifications",
-      "2": "Open indoors&nbsp; with modifications",
-      "3": "Open outdoors only with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Health risk profile aligns with restaurants</em>"
-    },
-    {
-      "0": "Bars/breweries",
-      "1": "Open indoors with modifications, max 50% capacity, defined closing time",
-      "2": "Open outdoors only with modifications<br>",
-      "3": "Closed",
-      "4": "Closed",
-      "5": "<em>Closing time designed to limit nightclubs, duration of visit, and intoxication.&nbsp;</em>"
-    },
-    {
-      "0": "Cardrooms, racetracks, satellite wagering",
-      "1": "Open indoors&nbsp; with modifications, max 50% capacity",
-      "2": "Open outdoors only with modifications",
-      "3": "Open outdoors only with modifications",
-      "4": "Open outdoors only with modifications",
-      "5": "<em>Option to limit alcohol availability</em> <em>Some health risk profile alignment with places of worship</em>"
-    },
-    {
-      "0": "Convention centers and professional hosted events",
-      "1": "Open outdoors only with modifications, max TBD% capacity",
-      "2": "Closed",
-      "3": "Closed",
-      "4": "Closed",
-      "5": "<em>Health risk profile aligns with concerts/theme parks.&nbsp;</em><br><em>Needs guidance to be prepared</em>"
-    },
-    {
-      "0": "Theme parks and festivals",
-      "1": "Open outdoors only with modifications, max TBD% capacity",
-      "2": "Closed",
-      "3": "Closed",
-      "4": "Closed",
-      "5": "<em>Needs guidance to be prepared.</em><br><em>Health risk profile aligns with convention centers.</em>"
-    },
-    {
-      "0": "Professional sports",
-      "1": "Open outdoors only with live audiences&nbsp; and modifications, max 25% capacity",
-      "2": "Open without live audiences, with modifications<br>",
-      "3": "Open without live audiences, with modifications",
-      "4": "Open without live audiences, with modifications",
-      "5": "<em>Decide capacity restrictions. Aligns with live performances&nbsp;</em>"
-    },
-    {
       "0": "Appliance repair",
       "1": "Open&nbsp; with modifications",
       "2": "Open&nbsp; with modifications",
@@ -169,27 +9,339 @@
       "5": ""
     },
     {
+      "0": "Aquariums",
+      "1": "Open indoors with modifications",
+      "2": "Open indoors with modifications, indoor activities max 50% capacity",
+      "3": "Open indoors with modifications, indoor activities max 25% capacity",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
       "0": "Auto repair",
       "1": "Open&nbsp; with modifications",
       "2": "Open&nbsp; with modifications",
-      "3": "Open&nbsp; with modifications",
-      "4": "Open&nbsp; with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
       "5": ""
     },
     {
       "0": "Banks and credit unions",
       "1": "Open&nbsp; with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Bars",
+      "1": "Open indoors with modifications, max 50% capacity, defined closing time",
+      "2": "Open outdoors only with modifications",
+      "3": "Closed",
+      "4": "Closed",
+      "5": "<br>"
+    },
+    {
+      "0": "Body waxing",
+      "1": "Open indoors&nbsp; with modifications",
+      "2": "Open indoors&nbsp; with modifications",
+      "3": "Open indoors&nbsp; with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Bookstores",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications, max 50% capacity",
+      "4": "Open with modifications, max 25% capacity",
+      "5": "<br>"
+    },
+    {
+      "0": "Breweries",
+      "1": "Open indoors&nbsp; with modifications, max 50%&nbsp;capacity",
+      "2": "Open outdoors only with modifications",
+      "3": "Closed",
+      "4": "Closed",
+      "5": ""
+    },
+    {
+      "0": "Brewpubs",
+      "1": "Open indoors&nbsp; with modifications, max 50%&nbsp;capacity",
+      "2": "Open outdoors only with modifications",
+      "3": "Closed",
+      "4": "Closed",
+      "5": ""
+    },
+    {
+      "0": "Cardrooms",
+      "1": "Open indoors with modifications, max 50% capacity",
+      "2": "Open outdoors only with modifications",
+      "3": "Open outdoors only with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Carwashes",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Childcare",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": "<br>"
+    },
+    {
+      "0": "Clothing and shoe stores",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications, max 50% capacity",
+      "4": "Open with modifications, max 50% capacity",
+      "5": "<br>"
+    },
+    {
+      "0": "Concert venues",
+      "1": "Open outdoors only with modifications, max TBD% capacity",
+      "2": "Closed",
+      "3": "Closed",
+      "4": "Closed",
+      "5": "<br>"
+    },
+    {
+      "0": "Convenience stores",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Cultural ceremonies",
+      "1": "Open indoors with modifications, max 50% capacity",
+      "2": "Open indoors with modifications, max 25% capacity",
+      "3": "Open indoors with modifications, max 25% capacity",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Dance studios",
+      "1": "Open indoors with modifications, max 50% capacity",
+      "2": "Open indoors with modifications, max 25% capacity",
+      "3": "Open outdoors only with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Day camps",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Doctors and dentists",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Dog walkers",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Door-to-door sales and services",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": "<em>&nbsp;</em>"
+    },
+    {
+      "0": "Drive-in theaters",
+      "1": "Open outdoors only with modifications",
+      "2": "Open outdoors only with modifications",
+      "3": "Open outdoors only with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Dry cleaners",
+      "1": "Open&nbsp; with modifications",
       "2": "Open&nbsp; with modifications",
       "3": "Open&nbsp; with modifications",
       "4": "Open&nbsp; with modifications",
       "5": ""
     },
     {
-      "0": "Bars",
-      "1": "",
-      "2": "Open Outdoors with modifications",
+      "0": "Electricians",
+      "1": "Open&nbsp; with modifications",
+      "2": "Open&nbsp; with modifications",
+      "3": "Open&nbsp; with modifications",
+      "4": "Open&nbsp; with modifications",
+      "5": ""
+    },
+    {
+      "0": "Estheticians",
+      "1": "Open indoors with modifications",
+      "2": "Open indoors with modifications",
+      "3": "Open indoors with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Electrologists",
+      "1": "Open indoors with modifications",
+      "2": "Open indoors with modifications",
+      "3": "Open indoors with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Family entertainment centers",
+      "1": "Open indoors with modifications (roller and ice rinks, indoor playgrounds, etc.)",
+      "2": "Open limited indoors with modifications (bowling, laser tag, etc.)",
+      "3": "Open outdoors only with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Farmers markets",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Festivals",
+      "1": "Open outdoors only with modifications, max TBD% capacity",
+      "2": "Closed",
       "3": "Closed",
       "4": "Closed",
+      "5": ""
+    },
+    {
+      "0": "Fire stations",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Florists",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications, max 50% capacity",
+      "4": "Open with modifications, max 50% capacity",
+      "5": ""
+    },
+    {
+      "0": "Food banks",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Gas stations",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Government services",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Grocery stores",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications, max 50% capacity",
+      "4": "Open with modifications, max 50% capacity",
+      "5": ""
+    },
+    {
+      "0": "Gyms and fitness centers",
+      "1": "Open indoors with modifications, max 50% capacity",
+      "2": "Open indoors with modifications, max 25% capacity",
+      "3": "Open outdoors only with modifications",
+      "4": "Open outdoors only with modifications",
+      "5": ""
+    },
+    {
+      "0": "Hair salons and barbershops",
+      "1": "Open indoors with modifications",
+      "2": "Open indoors with modifications",
+      "3": "Open indoors with modifications",
+      "4": "Open indoors with modifications",
+      "5": ""
+    },
+    {
+      "0": "Handyperson/general contractor",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Higher education",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Home and furnishing stores",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications, max 50% capacity",
+      "4": "Open with modifications, max 50% capacity",
+      "5": ""
+    },
+    {
+      "0": "Hospitals and urgent care",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "Hotels and lodging (tourism and individual travel)",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
+      "5": ""
+    },
+    {
+      "0": "HVAC services",
+      "1": "Open with modifications",
+      "2": "Open with modifications",
+      "3": "Open with modifications",
+      "4": "Open with modifications",
       "5": ""
     }
   ]
