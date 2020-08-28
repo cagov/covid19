@@ -14,7 +14,7 @@
     <meta content="{{ title | safe }}" property="og:title">
     {% if page.fileSlug === "healthcorps" %}
       <meta content="https://covid19.ca.gov/img/Health-Corps-Website-Banner.jpg" property="og:image">
-    {% elseif page.fileSlug === "roadmap" or page.fileSlug === "industry-guidance" or page.fileSlug === "roadmap-counties" %}
+    {% elseif page.fileSlug === "roadmap" or page.fileSlug === "industry-guidance" or page.fileSlug === "roadmap-counties" or page.fileSlug === "safer-economy" %}
       <meta content="https://covid19.ca.gov/img/recovery-roadmap-share.jpg" property="og:image">
     {% else %}
       <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
@@ -70,7 +70,7 @@
               <h1>{{ title | safe }}</h1>
               {% if page.fileSlug !== "search" %}
                 <p class="small-text">{{Terms[5].Text}}
-                  {% if page.fileSlug === "roadmap-counties" or page.fileSlug === "data-and-tools" %}
+                  {% if page.fileSlug === "safer-economy" or page.fileSlug === "data-and-tools" %}
                     {{ "today" | formatDate2(true,tags) }}
                   {% else %}
                     {{ publishdate | formatDate2(true,tags) }}
@@ -92,7 +92,7 @@
             {%- pagesection page, "guidance-languages" %}
             {% include "../wordpress-posts/industry-guidance-in-other-languages-links-fragment.html" %}
             {% endpagesection -%}
-            {%- pagesection page, "roadmap-counties-new" %}
+            {%- pagesection page, "safer-economy" %}
             {% include "reopening-matrix.njk" %}
             {% endpagesection -%}
           </div>
