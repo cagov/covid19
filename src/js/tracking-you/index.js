@@ -22,15 +22,21 @@ export default function applyAccordionListeners() {
     }
   });
 
-  function reportGA(elementType,eventString) {
+  /*
+    Changed the parameter names here to better match GA docs and new requirements.
+    Old-to-new mappings:
+      elementType ==> eventAction
+      eventString ==> eventLabel
+  */
+  function reportGA(eventAction, eventLabel, eventCategory = 'click') {
     if(typeof(ga) !== 'undefined') {
-      ga('send', 'event', 'click', elementType, eventString);
-      ga('tracker2.send', 'event', 'click', elementType, eventString);
-      ga('tracker3.send', 'event', 'click', elementType, eventString);
+      ga('send', 'event', eventCategory, eventAction, eventLabel);
+      ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
+      ga('tracker3.send', 'event', eventCategory, eventAction, eventLabel);
       // gtag('event','click',{'event_category':elementType,'event_label':eventString});
     } else {
       setTimeout(function() {
-        reportGA(elementType,eventString)
+        reportGA(eventAction, eventLabel, eventCategory);
       }, 500);
     }
   }
@@ -98,4 +104,84 @@ export default function applyAccordionListeners() {
       ga('send', 'event', 'rating', 'helpful', evt.detail);
     });  
   }
+
+
+  /*
+    Kennedy Project tracking stuff starts here.
+
+  // Give all analytics calls a chance to finish before following the link.
+  // Note this generates a function for use by an event handler.
+  const linkHandler = (href, eventAction, eventLabel) => (event) => {
+    // Use event.returnValue in IE, otherwise event.preventDefault.
+    event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+
+    // Fire off reports to Google Analytics.
+    window.ga('send', 'event', 'click', eventAction, eventLabel);
+    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel);
+    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, {
+      // When this third call finishes, follow the link via hitCallback.
+      hitCallback: () => { document.location.href = href; }
+    });
+  };
+
+  // Add 'external' to front of any supplied links, when relevant.
+  const annotateExternalLinks = (link) => {
+    return (link.hostname === document.location.hostname) ? link.href : `external-${link.href}`;
+  };
+
+  // Add these events if we're on the homepage.
+  const homepages = ['/', '/tl/', '/es', '/ar/', '/ko/', '/vi/', '/zh-hans/', '/zh-hant/'];
+  if (homepages.indexOf(window.location.pathname) > -1) {
+    // Report video clicks.
+    const videoTitle = document.querySelector('.video-text h4').textContent;
+    document.querySelectorAll('.video-modal-open').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoTitle));
+    });
+    // Report clicks on links in the menu.
+    document.querySelectorAll('a.expanded-menu-dropdown-link, a.expanded-menu-section-header-link').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-menu', link.href));
+    });
+    // Report clicks on Want to Know section.
+    document.querySelectorAll('a.faq-item-link').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
+    });
+    // Report clicks on Latest News section.
+    document.querySelectorAll('a.news-item-link').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', annotateExternalLinks(link)));
+    });
+    // Report clicks on View More News link.
+    document.querySelectorAll('.news-wrap a.button').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', 'view more news'));
+    });
+    // Report clicks on footer links.
+    document.querySelectorAll('footer a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-footer', annotateExternalLinks(link)));
+    });
+    // Report clicks on Tracking Covid section.
+    document.querySelectorAll('.hero-stats a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-tracking covid', link.href));
+    });
+    // Report clicks on Hero Text section.
+    document.querySelectorAll('.hero-text a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-hero text', link.href));
+    });
+    // Report clicks on Alerts section.
+    document.querySelectorAll('.hero-alert a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'homepage-alerts section', annotateExternalLinks(link)));
+    });
+  }
+
+  // Add these events if we're on the Roadmap page.
+  if (window.location.pathname.indexOf('roadmap/') > -1) {
+    // Report clicks on roadmap links.
+    document.querySelectorAll('main a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'roadmap', annotateExternalLinks(link)));
+    });
+    // Report clicks on footer links.
+    document.querySelectorAll('footer a').forEach(link => {
+      link.addEventListener('click', linkHandler(link.href, 'roadmap-footer', annotateExternalLinks(link)));
+    });
+  }
+
+  */
 }

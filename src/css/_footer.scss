@@ -58,14 +58,24 @@ footer-section {
 				margin: 0 auto;
 				transition: color .3s $slow-curve;
 				border-radius: 1.5rem;
+// UNDERLINE
+				background-image: linear-gradient(to right, $lightblue 50%, transparent 50%);
+				background-repeat: repeat-x;
+				background-size: 3px 1px;
+				background-position: center bottom 15%;
+				background-origin: padding-box;
+				text-decoration: none !important;
+
 				@include tablet {
 					margin-left: 0;
 				}
 				&:hover {
 					color: $orange;
+					background-image: linear-gradient(to right, $orange 50%, transparent 50%);
 				}
 				&:focus {
 					color: $orange;
+					background-image: linear-gradient(to right, $orange 50%, transparent 50%);
 					box-shadow: 0 0 0 2px $yellow;
 				}
 			}
@@ -84,12 +94,23 @@ footer-section {
 				border-radius: 2.5rem;
 				display: inline-block;
 				transition: all .3s $slow-curve;
+
+				// UNDERLINE
+				background-image: linear-gradient(to right, $lightblue 50%, transparent 50%);
+				background-repeat: repeat-x;
+				background-size: 3px 1px;
+				background-position: center bottom 10%;
+				background-origin: padding-box;
+				text-decoration: none !important;
+
 				&:hover {
 					color: $orange;
+					background-image: linear-gradient(to right, $orange 50%, transparent 50%);
 				}
 				&:focus {
 					padding: .35rem .5rem;
 					box-shadow: 0 0 0 2px $yellow;
+					background-image: linear-gradient(to right, $orange 50%, transparent 50%);
 				}
 			}
 			&-hours {
@@ -157,16 +178,26 @@ footer-section {
 					line-height: 1;
 					border-radius: 1.5rem;
 					white-space: nowrap;
+									// UNDERLINE
+				background-image: linear-gradient(to right, $lightblue 50%, transparent 50%);
+				background-repeat: repeat-x;
+				background-size: 3px 1px;
+				background-position: center bottom 10%;
+				background-origin: padding-box;
+				text-decoration: none !important;
+
 					@include tablet {
 						margin: .25rem;
 						font-size: 1rem;
 					}
 					&:hover {
 						color: $orange;
+						background-image: linear-gradient(to right, $orange 50%, transparent 50%);
 					}
 					&:focus {
 						color: $orange;
 						box-shadow: 0 0 0 1px $yellow;
+						background-image: linear-gradient(to right, $yellow 50%, transparent 50%);
 					}
 				}
 			}
