@@ -130,11 +130,16 @@
       &-title {
         @extend %headline7;
         color: $white;
-        white-space: nowrap;
+        white-space: normal;
         display: block;
         transition: color 0.4s $slow-curve;
         @include phone {
           font-size: .9rem;
+          
+        }
+        @include tablet{
+          font-size: .9rem;
+          white-space: nowrap;
         }
       }
     }
