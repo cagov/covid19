@@ -1,0 +1,49 @@
+{
+  "Table1": [
+    {
+      "Nivel de condado": "Mínimo",
+      "Color de la etiqueta": "Amarillo",
+      "Descripción": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Nuevos casos<br>(promedio de 7 días)": "Menos de 1 caso nuevo diario (por cada 100 mil) ",
+      "Pruebas positivas<br><strong>(promedio de 7 días)</strong>": "Menos del 2&nbsp;% de pruebas positivas"
+    },
+    {
+      "Nivel de condado": "Moderado",
+      "Color de la etiqueta": "Naranja",
+      "Descripción": "Algunas operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Nuevos casos<br>(promedio de 7 días)": "De 1 a 3.9 casos nuevos diarios (por cada 100 mil)",
+      "Pruebas positivas<br><strong>(promedio de 7 días)</strong>": "De 2&nbsp;% a 4.9&nbsp;%<br> de pruebas positivas"
+    },
+    {
+      "Nivel de condado": "Sustancial",
+      "Color de la etiqueta": "Rojo",
+      "Descripción": "Algunas operaciones comerciales en interiores no esenciales están cerradas.",
+      "Nuevos casos<br>(promedio de 7 días)": "De 4 a 7 casos nuevos diarios (por cada 100 mil)",
+      "Pruebas positivas<br><strong>(promedio de 7 días)</strong>": "De 5&nbsp;% a 8&nbsp;%<br> de pruebas positivas"
+    },
+    {
+      "Nivel de condado": "Extendido",
+      "Color de la etiqueta": "Morado",
+      "Descripción": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas.",
+      "Nuevos casos<br>(promedio de 7 días)": "Más de 7 <br>casos nuevos diarios (por cada 100 mil)",
+      "Pruebas positivas<br><strong>(promedio de 7 días)</strong>": "Más del 8&nbsp;%<br>de pruebas positivas"
+    }
+  ],
+  "Table2": [
+    {
+      "Etiquetas": "Casos nuevos diarios (por cada 100 mil)"
+    },
+    {
+      "Etiquetas": "Pruebas positivas"
+    },
+    {
+      "Etiquetas": "Encuentre el estado de las actividades en su condado, a partir del 31 de agosto"
+    },
+    {
+      "Etiquetas": "Actividad"
+    },
+    {
+      "Etiquetas": "Condado"
+    }
+  ]
+}
