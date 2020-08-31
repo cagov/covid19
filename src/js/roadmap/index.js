@@ -19,6 +19,18 @@ class CAGovReopening extends window.HTMLElement {
     }
     let activityPlaceholder = 'Enter a business or activity';
     let countyPlaceholder = 'Enter county' // a ZIP code or 
+    this.countyRestrictionsAdvice = 'Check your county website for local restrictions';
+    if(this.dataset.countyRestrictionsAdvice) {
+      this.countyRestrictionsAdvice = this.dataset.countyRestrictionsAdvice;
+    }
+    this.industryGuidanceLinkText = 'View industry guidance';
+    if(this.dataset.industryGuidance) {
+      this.industryGuidanceLinkText = this.dataset.industryGuidance;
+    }
+    this.viewall = 'View all';
+    if(this.dataset.viewAll) {
+      this.viewall = this.dataset.viewAll;
+    }
     this.state = {};
 
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
@@ -47,6 +59,7 @@ class CAGovReopening extends window.HTMLElement {
     .then(function(data) {
       this.allActivities = data.Table1;
       let aList = []
+      aList.push(this.viewall);
       data.Table1.forEach(item => {
         aList.push(item['0'])
       })
@@ -127,12 +140,14 @@ class CAGovReopening extends window.HTMLElement {
         this.input.value = finalval;
         component.state[fieldName] = finalval;
         component.layoutCards();
+        document.querySelector(fieldSelector).blur();
       },
       list: aList
     };
 
     window.aplete2 = new Awesomplete(fieldSelector, awesompleteSettings);
     document.querySelector(fieldSelector).addEventListener('focus', function() {
+      this.value = '';
       window.aplete2.evaluate();
     })
   }
@@ -154,12 +169,12 @@ class CAGovReopening extends window.HTMLElement {
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data.</a></p>
-        <p>Check your county website for local restrictions</p>
+        <p>${this.countyRestrictionsAdvice}</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
         this.allActivities.forEach(ac => {
-          if(ac["0"] == this.state['activity']) {
+          if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
             selectedActivities.push(ac);
           }
         })
@@ -168,7 +183,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac[item['Overall Status']]}</p>
-          <p><a href="/industry-guidance">View industry guidance</a></p>
+          <p><a href="/industry-guidance">${this.industryGuidanceLinkText}</a></p>
         </div>`
       })
     })
@@ -178,6 +193,15 @@ class CAGovReopening extends window.HTMLElement {
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
+
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent('safer-economy-page-submission', {
+      detail: {
+        county: this.state.county,
+        activity: this.state.activity
+      }
+    });
+    window.dispatchEvent(event);
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);

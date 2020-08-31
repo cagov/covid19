@@ -237,5 +237,18 @@ export default function applyAccordionListeners() {
         link.addEventListener('click', linkHandler(link.href, 'roadmap-footer', annotateExternalLinks(link)));
       });
     }
+
+    // Add these events if we're on the Safer Economy page.
+    if (window.location.pathname.match(/\/safer-economy[/]?$/g)) {
+      // Track submissions to the safer-economy page form.
+      // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
+      window.addEventListener('safer-economy-page-submission', event => {
+        const eventAction = event.detail.county;
+        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
+        window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
+        window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);
+        window.ga('tracker3.send', 'event', 'activity-status', eventAction, eventLabel);
+      });
+    }
   }
 }
