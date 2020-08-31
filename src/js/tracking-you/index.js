@@ -177,7 +177,7 @@ export default function applyAccordionListeners() {
 
   // Report an error to GA.
   const trackError = (error, fieldsObj = {}) => {
-    window.ga('send', 'event', Object.assign({
+    window.ga('tracker3.send', 'event', Object.assign({
       eventCategory: 'javascript',
       eventAction: 'error',
       eventLabel: (error && error.stack) || '(not set)',
