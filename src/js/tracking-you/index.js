@@ -175,8 +175,32 @@ export default function applyAccordionListeners() {
     return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
   };
 
+  // Report an error to GA.
+  const trackError = (error, fieldsObj = {}) => {
+    window.ga('send', 'event', Object.assign({
+      eventCategory: 'javascript',
+      eventAction: 'error',
+      eventLabel: (error && error.stack) || '(not set)',
+      nonInteraction: true
+    }, fieldsObj));
+  };
+
+  const trackErrors = () => {
+    // Fetch and report errors that we caught before GA is ready.
+    const loadErrorEvents = (window.__e && window.__e.q) || [];
+    const fieldsObj = { eventAction: 'uncaught error' };
+    loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
+    // Add a new listener to track events in real-time, after we get through the backlog.
+    window.addEventListener('error', (event) => trackError(event.error, fieldsObj));
+  };
+
   // Don't load up these event listeners unless we've got Google Analytics on the page.
   if (window.ga && window.ga.create) {
+    // Add these events if we're public, not in local development scenarios.
+    if (window.location.hostname !== 'localhost') {
+      trackErrors();
+    }
+
     // Add these events if we're on the homepage.
     if (onHomePage(window.location.pathname)) {
       // Track how far the user has scrolled the homepage.
