@@ -1,32 +1,32 @@
 {
   "Table1": [
     {
-      "Antas ng panganib sa county": "Kaunti",
-      "colorLabel": "Dilaw",
-      "paglalarawan": "Nakabukas na, nang may mga modipikasyon, ang karamihan ng mga operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "Hindi hihigit sa o katumbas ng 1",
-      "Mga positibong pagsusuri": "Hindi hihigit sa o katumbas ng 2%"
+      "Kulay ng tier ng county": "Minimal",
+      "Paglalarawan": "Dilaw",
+      "ng label": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Mga bagong kaso<br>(7 araw na average)": "Wala pa sa 1 arawang bagong kaso (sa bawat 100k) ",
+      "Mga positibong pagsusuri<br><strong>(7 araw na average)</strong>": "Wala pa sa 2% positibong pagsusuri"
     },
     {
-      "Antas ng panganib sa county": "Katamtaman",
-      "colorLabel": "Orange",
-      "paglalarawan": "Nakabukas na, nang may mga modipikasyon, ang ilang operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "1 – 5.9",
-      "Mga positibong pagsusuri": "2 – 5.9%"
+      "Kulay ng tier ng county": "Moderate",
+      "Paglalarawan": "Orange",
+      "ng label": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Mga bagong kaso<br>(7 araw na average)": "1 – 3.9 na arawang bagong kaso (sa bawat 100k)",
+      "Mga positibong pagsusuri<br><strong>(7 araw na average)</strong>": "2 – 4.9%<br>positibong pagsusuri"
     },
     {
-      "Antas ng panganib sa county": "Marami",
-      "colorLabel": "Pula",
-      "paglalarawan": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "6 – 9.9",
-      "Mga positibong pagsusuri": "5 – 7.9%"
+      "Kulay ng tier ng county": "Substantial",
+      "Paglalarawan": "Pula",
+      "ng label": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
+      "Mga bagong kaso<br>(7 araw na average)": "4-7 arawang bagong kaso (sa bawat 100k)",
+      "Mga positibong pagsusuri<br><strong>(7 araw na average)</strong>": "5 – 8%<br>positibong pagsusuri"
     },
     {
-      "Antas ng panganib sa county": "Napakarami",
-      "colorLabel": "Purple",
-      "paglalarawan": "Sarado ang karamihan ng hindi mahahalagang operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "10 o higit pa",
-      "Mga positibong pagsusuri": "8%"
+      "Kulay ng tier ng county": "Widespread",
+      "Paglalarawan": "Purple",
+      "ng label": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo",
+      "Mga bagong kaso<br>(7 araw na average)": "Mahigit sa 7 <br>arawang bagong kaso (sa bawat 100k)",
+      "Mga positibong pagsusuri<br><strong>(7 araw na average)</strong>": "Mahigit sa 8%<br>positibong pagsusuri"
     }
   ],
   "Table2": [
@@ -37,7 +37,7 @@
       "mga label": "Mga positibong pagsusuri"
     },
     {
-      "mga label": "Hanapin ang status para sa mga aktibidad sa iyong county"
+      "mga label": "Hanapin ang status ng mga aktibidad sa iyong county, may bisa nang Ago. 31"
     },
     {
       "mga label": "Aktibidad"
