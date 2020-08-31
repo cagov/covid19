@@ -115,9 +115,7 @@ export default function applyAccordionListeners() {
     if (!wait) {
       fn(event);
       wait = true;
-      setTimeout(function () {
-        wait = false;
-      }, delay);
+      setTimeout(() => { wait = false; }, delay);
     }
   };
 
@@ -127,7 +125,7 @@ export default function applyAccordionListeners() {
   const scrollHits = [];
 
   // Generates an event listener to track scroll percentage.
-  // Use the 'throttle' function to ease performance.
+  // Run this within the 'throttle' function (above) to ease performance.
   const scrollHandler = (pagename) => () => {
     const viewportHeight = document.documentElement.clientHeight;
     const pageHeight = document.documentElement.scrollHeight;
@@ -143,7 +141,6 @@ export default function applyAccordionListeners() {
         window.ga('send', 'event', 'scroll', eventAction, eventLabel);
         window.ga('tracker2.send', 'event', 'scroll', eventAction, eventLabel);
         window.ga('tracker3.send', 'event', 'scroll', eventAction, eventLabel);
-        console.log(percentageScrolled);
       }
     });
   };
