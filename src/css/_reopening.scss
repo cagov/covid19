@@ -147,3 +147,28 @@ cagov-reopening {
     }
   }
 }
+
+/* Gross hacky CSS for launch day. Refactor later. */
+.safer-economy-page {
+  main {
+    & div.container-fluid:nth-of-type(1n) {
+      & h1, p {
+        text-align: center;
+      }
+      & .row {
+        justify-content: center !important;
+      }
+    }
+    & div.container:nth-of-type(2n) {
+      & p {
+        font-size: 1.25rem;
+      }
+      & .row {
+        justify-content: center !important;
+      }
+    }
+  }
+  h2 {
+    text-align: center;
+  }
+}

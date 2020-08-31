@@ -144,9 +144,9 @@ export default function applyAccordionListeners() {
     // Add these events if we're on the homepage.
     if (onHomePage(window.location.pathname)) {
       // Report video clicks.
-      const videoTitle = document.querySelector('.video-text h4').textContent;
+      const videoUrl = document.querySelector('a.video-modal-open').href;
       document.querySelectorAll('.video-modal-open').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoTitle, false));
+        link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoUrl, false));
       });
       // Report clicks on links in the menu.
       document.querySelectorAll('a.expanded-menu-dropdown-link, a.expanded-menu-section-header-link').forEach(link => {
@@ -156,6 +156,9 @@ export default function applyAccordionListeners() {
       document.querySelectorAll('a.faq-item-link').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
       });
+
+      /* These are duplicated by existing event trackers above. May want to bring them back later.
+
       // Report clicks on Latest News section.
       document.querySelectorAll('a.news-item-link').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', annotateExternalLinks(link)));
@@ -164,6 +167,9 @@ export default function applyAccordionListeners() {
       document.querySelectorAll('.news-wrap a.button').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', 'view more news'));
       });
+
+      */
+
       // Report clicks on footer links.
       document.querySelectorAll('footer a').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-footer', annotateExternalLinks(link)));
