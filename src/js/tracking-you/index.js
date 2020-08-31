@@ -102,15 +102,54 @@ export default function applyAccordionListeners() {
   if(document.querySelector("cwds-pagerating")) {
     document.querySelector("cwds-pagerating").addEventListener("ratedPage", (evt) => {
       ga('send', 'event', 'rating', 'helpful', evt.detail);
-    });  
+    });
   }
 
   /*
     Kennedy Project tracking stuff starts here.
   */
 
+  // Create a throttled event listener.
+  const throttle = (fn, delay) => (event) => {
+    let wait = false;
+    if (!wait) {
+      fn(event);
+      wait = true;
+      setTimeout(function () {
+        wait = false;
+      }, delay);
+    }
+  };
+
+  // Check for percentageScrolled at the following percentages.
+  const scrollTriggers = [25, 50, 75, 90];
+  // Record percentageScrolled upon hitting triggers, so we don't record these events again.
+  const scrollHits = [];
+
+  // Generates an event listener to track scroll percentage.
+  // Use the 'throttle' function to ease performance.
+  const scrollHandler = (pagename) => () => {
+    const viewportHeight = document.documentElement.clientHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const trackableHeight = pageHeight - viewportHeight;
+    const pixelsScrolled = window.pageYOffset;
+    const percentageScrolled = Math.floor((pixelsScrolled / trackableHeight) * 100);
+
+    scrollTriggers.forEach(trigger => {
+      if ((scrollHits.indexOf(trigger) === -1) && (percentageScrolled >= trigger)) {
+        scrollHits.push(trigger);
+        const eventAction = `scroll-${trigger}`;
+        const eventLabel = `scroll-${trigger}-${pagename}`;
+        window.ga('send', 'event', 'scroll', eventAction, eventLabel);
+        window.ga('tracker2.send', 'event', 'scroll', eventAction, eventLabel);
+        window.ga('tracker3.send', 'event', 'scroll', eventAction, eventLabel);
+        console.log(percentageScrolled);
+      }
+    });
+  };
+
   // Give all analytics calls a chance to finish before following the link.
-  // Note this generates a function for use by an event handler.
+  // Note this generates a function for use by an event listener.
   const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
     // Use event.returnValue in IE, otherwise event.preventDefault.
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
@@ -143,6 +182,8 @@ export default function applyAccordionListeners() {
   if (window.ga && window.ga.create) {
     // Add these events if we're on the homepage.
     if (onHomePage(window.location.pathname)) {
+      // Track how far the user has scrolled the homepage.
+      window.addEventListener('scroll', throttle(scrollHandler('homepage'), 1000));
       // Report video clicks.
       const videoUrl = document.querySelector('a.video-modal-open').href;
       document.querySelectorAll('.video-modal-open').forEach(link => {
