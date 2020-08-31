@@ -31,8 +31,8 @@ export default function (data, search) {
         return `<div class="expanded-menu-col section-${section.title.toLowerCase().replace(/ /g,'-')}">
           <div class="expanded-menu-section">
             <strong class="expanded-menu-section-header">
-              <a class="expanded-menu-section-header-link" href="/">${section.title}</a>
-              <span class="expanded-menu-section-header-arrow"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
+              <a class="expanded-menu-section-header-link js-expandable-mobile" href="#">${section.title}</a>
+              <span class="expanded-menu-section-header-arrow js-expandable-mobile"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
     l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
             </strong>
             <div class="expanded-menu-dropdown">
