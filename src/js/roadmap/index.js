@@ -178,6 +178,15 @@ class CAGovReopening extends window.HTMLElement {
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
+
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent('safer-economy-page-submission', {
+      detail: {
+        county: this.state.county,
+        activity: this.state.activity
+      }
+    });
+    window.dispatchEvent(event);
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
