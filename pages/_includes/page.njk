@@ -65,6 +65,8 @@
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
     {% set Terms = JSON.Table3 %}
+    <cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
+
     <main id="main">
       
       <div class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
