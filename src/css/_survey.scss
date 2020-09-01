@@ -1,19 +1,4 @@
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 cwds-survey {
-  /*   animation: 0.3s ease 0s 1 slideDown;
-  transition: transform 0.3s $slow-curve, height 0.3s $slow-curve;
-  &.putaway {  
-    transform: translateY(-100%);
-  }
-   */
   position: relative;
   display: block;
   z-index: 998;

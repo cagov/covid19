@@ -57,15 +57,12 @@ function applyListeners(target) {
   target.querySelector('.js-dismiss-survey').addEventListener('click',function(event) {
     event.preventDefault();
     reportEvent('dismissSurvey');
-    // Animate the dismissal, then make it disappear.
     const header = document.querySelector('.header');
     header.classList.remove('relative-position');
     header.classList.add('fixed-position');
     const hero = document.querySelector('.hero');
     hero.classList.add('hero-padding-top');
-    target.classList.add('putaway');
     target.style.display = 'none';
-    //setTimeout(() => { target.style.display = 'none'; }, 301);
   });
 }
 
