@@ -8,11 +8,12 @@
 }
 
 cwds-survey {
-  /* transition: transform 0.3s ease, height 0.3s ease;
-  animation: 0.3s ease 0s 1 slideDown; 
+  /*   animation: 0.3s ease 0s 1 slideDown;
+  transition: transform 0.3s $slow-curve, height 0.3s $slow-curve;
   &.putaway {  
     transform: translateY(-100%);
-  }*/
+  }
+   */
   position: relative;
   display: block;
   z-index: 998;
@@ -22,7 +23,6 @@ cwds-survey {
     background-color: white;
     padding: 0 0 1rem 0;
     border-bottom: 0.5rem solid #ff8000;
-    /* max-width: 48rem; */
     &-content {
       text-align: center;
       &-prompt {

@@ -32,6 +32,7 @@
   background: $darkblue;
   width: 100%;
   z-index: 1000;
+  /*transition: transform 0.3s, height 0.3s, 0.4s box-shadow $slow-curve;*/
   transition: 0.4s box-shadow $slow-curve;
   &.fixed-position {
     @include fixed(left 0 top 0);
