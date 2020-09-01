@@ -12,7 +12,7 @@ class CWDSSurvey extends window.HTMLElement {
     let seenSurvey = seenSurveyPrompt();
     let surveyUrl = this.dataset.pulseSurveyUrl;
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
-    if(!seenSurvey && 1==2) { // disabling the NPI survey because it doesn't work with the new fixed header, we can change its display method to slide out from under the header or something
+    if(!seenSurvey) {
       if(shouldDisplayNPI) {
         surveyUrl = this.dataset.npiSurveyUrl
         surveyPrompt = this.dataset.surveyPrompt
@@ -52,7 +52,9 @@ function applyListeners(target) {
   target.querySelector('.js-dismiss-survey').addEventListener('click',function(event) {
     event.preventDefault();
     reportEvent('dismissSurvey');
-    target.style.display = 'none';
+    // Animate the dismissal, then make it disappear.
+    target.classList.add('putaway');
+    setTimeout(() => { target.style.display = 'none'; }, 301);
   });
 }
 
