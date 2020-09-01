@@ -234,7 +234,7 @@
 	<div class="faq trigger">
 		{% for item in questionLinks1 %}
 		<article class="faq-item trigger">    
-			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
+			<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
 				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 			</a>
@@ -245,7 +245,7 @@
 	<div class="faq trigger">
 		{% for item in questionLinks2 %}
 		<article class="faq-item trigger">
-			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
+			<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
 				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
 				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
 			</a>	
