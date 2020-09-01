@@ -1,26 +1,3 @@
-.header {
-  background: $darkblue;
-  width: 100%;
-  @include fixed(left 0 top 0);
-  z-index: 1000;
-  transition: 0.4s box-shadow $slow-curve;
-  &-wrap {
-    @extend %wrap;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    @include desktop {
-      flex-wrap: nowrap;
-    }
-  }
-
-  &-right {
-    margin-left: 0;
-  }
-}
-
 .box-shadow {
   box-shadow: $button-shadow-hover;
 }
