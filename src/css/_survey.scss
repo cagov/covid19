@@ -8,43 +8,21 @@
 }
 
 cwds-survey {
-  transition: transform 0.3s ease, height 0.3s ease;
-  animation: 0.3s ease 0s 1 slideDown;
-  position: absolute;
-  z-index: 998;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 11rem;
-  @media (min-width: 22.3125rem) { top: 7.3rem; }
-  @include tablet { top: revert; }
+  /* transition: transform 0.3s ease, height 0.3s ease;
+  animation: 0.3s ease 0s 1 slideDown; 
   &.putaway {  
     transform: translateY(-100%);
-  }
+  }*/
+  position: relative;
+  display: block;
+  z-index: 998;
   .survey {
     width: 100%;
     margin: 0 auto;
     background-color: white;
     padding: 0 0 1rem 0;
     border-bottom: 0.5rem solid #ff8000;
-    box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
-    max-width: 48rem;
-    /* Position a shadow an top of the survey, so it looks like it's under the header. */
-    &::before {
-      content: "";
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 1rem;
-      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.8);
-      z-index: 999;
-      @include tablet {
-        top: -1.2rem;
-      }
-      @include desktop {
-        top: -0.75rem;
-      }
-    }
+    /* max-width: 48rem; */
     &-content {
       text-align: center;
       &-prompt {
@@ -53,11 +31,5 @@ cwds-survey {
         font-weight: 700;
       }
     }
-  }
-}
-
-body.interior-page cwds-survey .survey::before {
-  @include tablet {
-    top: -1.3rem;
   }
 }
