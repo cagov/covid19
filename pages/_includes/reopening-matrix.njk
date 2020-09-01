@@ -30,19 +30,32 @@
       "Positive Tests": "More than 8%"
     }
   ],
-    "Table2": [
-    {
-      "Header - county risk level": "County risk level",
-      "Header - new cases": "New cases",
-      "Header - positive tests": "Positive tests",
-      "Description - new cases": "Daily new cases (per 100k)",
-      "Description - positive cases": "Positive tests"
-    }
-  ]
+  "Table2": [
+      {
+        "_id": "Header - county risk level",
+        "text": "County risk level"
+      },
+      {
+        "_id": "Header - new cases",
+        "text": "New cases"
+      },
+      {
+        "_id": "Header - positive tests",
+        "text": "Positive tests"
+      },
+      {
+        "_id": "Description - new cases",
+        "text": "Daily new cases (per 100k)"
+      },
+      {
+        "_id": "Description - positive cases",
+        "text": "Positive tests"
+      }
+    ]
 }
 {%- endset -%}
 {%- set JSON = JSONraw | jsonparse -%}
-{%- set Headers = JSON.Table2[0] -%}
+{%- set Headers = JSON.Table2 | jsonpivot('_id','text') -%}
 {%- set Rows = JSON.Table1 -%}
 
 <!-- dynamic classnames are really cool but the purger cannot understand, hence this -->
