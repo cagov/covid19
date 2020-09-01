@@ -27,8 +27,30 @@ cwds-survey {
       text-align: center;
       &-prompt {
         font-size: 1.25rem;
-        margin: .5rem 0 .5rem 0;
+        margin: 1.5rem 0 .5rem 0;
         font-weight: 700;
+      }
+      &-go {
+        color: $darkblue;
+        background-color: $orange;
+        &:hover {
+          color: $darkblue !important;
+          background-color: $yellow;
+        }
+        button, button:hover {   
+          background-color: inherit;
+          color: inherit;
+        }
+      }
+      &-go, &-dismiss {
+        margin: .5rem .25rem;
+        transition: all 0.3s $slow-curve;
+      }
+      &-go button, &-dismiss {
+        font-size: 100%;
+        font-family: inherit;
+        border: 0;
+        padding: 0;
       }
     }
   }
