@@ -60,7 +60,7 @@
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-          <button class="btn bg-{{CssColor}}-btn rounded-50 text-white px-4">{{item['County tier'] | upper}}</button>
+          <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier']}}</div>
           <p class="card-text text-small mt-3">
             {{item['description']}}
           </p>
