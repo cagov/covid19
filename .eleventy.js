@@ -296,66 +296,98 @@ module.exports = function(eleventyConfig) {
   })
 
 
+  const oldAccordion = (html, outputPath) => {
+
+    const headerclass = 'wp-accordion';
+    const contentclass = 'wp-accordion-content';
+
+
+    let initialHTML = md5(html);
+    if(processedPostMap.get(outputPath)!==initialHTML) {
+      const dom = new JSDOM(html);
+      const document = dom.window.document;
+
+      for(const header of document.querySelectorAll(`.${headerclass}`)) {
+        //create the wrapper element and wrap it around the header
+        const cwdscontainer = document.createElement('cwds-accordion');
+        const container = document.createElement('div');
+        container.classList.add('card');
+        cwdscontainer.appendChild(container);
+
+        header.parentNode.insertBefore(cwdscontainer, header);
+        container.appendChild(header);
+
+        //remove the special wp class
+        header.classList.remove(headerclass);
+        if (header.classList.length===0) header.removeAttribute('class');
+
+        //create the card body section and add it to the container
+        const body = document.createElement('div');
+        body.className="card-body";
+        container.appendChild(body);
+
+        //Add all remaining content classes to the card body, they must be directly after the new container
+        let direct;
+        while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
+          body.appendChild(direct);
+
+          //remove custom class name
+          direct.classList.remove(contentclass);
+          if (direct.classList.length===0) direct.removeAttribute('class');
+        }
+
+        //apply required html around components
+        header.outerHTML=`
+          <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+            <div class="accordion-title">
+              ${header.outerHTML}
+            </div>
+          </button>`;
+
+        body.outerHTML = `
+          <div class="card-container" aria-hidden="true" style="height: 0px;">
+            ${body.outerHTML}
+          </div>`;
+      }
+      processedPostMap.set(outputPath,initialHTML);
+      if(process.env.NODE_ENV === 'development') {
+        fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
+      }
+      return dom.serialize();
+    }
+    return html;
+  }
 
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
     const contentclass = 'wp-accordion-content';
-
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
-      let initialHTML = md5(html);
-      if(processedPostMap.get(outputPath)!==initialHTML) {
-        const dom = new JSDOM(html);
-        const document = dom.window.document;
+      //return oldAccordion(html,outputPath);
+      const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
 
-        for(const header of document.querySelectorAll(`.${headerclass}`)) {
-          //create the wrapper element and wrap it around the header
-          const cwdscontainer = document.createElement('cwds-accordion');
-          const container = document.createElement('div');
-          container.classList.add('card');
-          cwdscontainer.appendChild(container);
+      const accordionTagIndexes = [...html.matchAll(classsearchexp)]
+        .map(r=> ({
+          tag: r.groups.tag,
+          class: r.groups.class,
+          index: r.index,
+          fulltag: r[0] }));
 
-          header.parentNode.insertBefore(cwdscontainer, header);
-          container.appendChild(header);
-
-          //remove the special wp class
-          header.classList.remove(headerclass);
-          if (header.classList.length===0) header.removeAttribute('class');
-
-          //create the card body section and add it to the container
-          const body = document.createElement('div');
-          body.className="card-body";
-          container.appendChild(body);
-
-          //Add all remaining content classes to the card body, they must be directly after the new container
-          let direct;
-          while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
-            body.appendChild(direct);
-
-            //remove custom class name
-            direct.classList.remove(contentclass);
-            if (direct.classList.length===0) direct.removeAttribute('class');
-          }
-
-          //apply required html around components
-          header.outerHTML=`
-            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-              <div class="accordion-title">
-                ${header.outerHTML}
-              </div>
-            </button>`;
-
-          body.outerHTML = `
-            <div class="card-container" aria-hidden="true" style="height: 0px;">
-              ${body.outerHTML}
-            </div>`;
-        }
-        processedPostMap.set(outputPath,initialHTML);
-        if(process.env.NODE_ENV === 'development') {
-          fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
-        }
-        return dom.serialize();
+      for (let i=0;i<accordionTagIndexes.length-1;i++) {
+        accordionTagIndexes[i].endindex = accordionTagIndexes[i+1].index-1;
       }
+      accordionTagIndexes[accordionTagIndexes.length-1].endindex = html.length;
+
+      const htmlsections = 
+        accordionTagIndexes.map(r=> 
+           [...html.substring(r.index,r.endindex).matchAll(new RegExp('<\/?'+r.tag+'\b','gm'))]
+        );
+        
+      let tagcount=0;
+      //figure out the actual end tag by comparing finding pairs of tags.
+
+
+      console.log('here-----'+htmlsections[htmlsections.length-1].length+'-----there\n\n\n');
     }
     return html;
   });
