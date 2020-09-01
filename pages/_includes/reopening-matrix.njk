@@ -2,103 +2,98 @@
 {
   "Table1": [
     {
-      "[Header county risk level]": "County risk level",
-      "[Header new cases]": "New cases",
-      "[Header positive tests]": "Positive tests"
+      "_colorLabel": "Yellow",
+      "County tier": "Minimal",
+      "description": "Most indoor business operations are open with modifications",
+      "New Cases": "Less than 1",
+      "Positive Tests": "Less than 2%"
+    },
+    {
+      "_colorLabel": "Orange",
+      "County tier": "Moderate",
+      "description": "Some indoor business operations are open with modifications",
+      "New Cases": "1 - 3.9",
+      "Positive Tests": "2 - 4.9%"
+    },
+    {
+      "_colorLabel": "Red",
+      "County tier": "Substantial",
+      "description": "Some non-essential indoor business operations are closed",
+      "New Cases": "4 - 7",
+      "Positive Tests": "5 - 8%"
+    },
+    {
+      "_colorLabel": "Purple",
+      "County tier": "Widespread",
+      "description": "Many non-essential indoor business operations are closed",
+      "New Cases": "More than 7",
+      "Positive Tests": "More than 8%"
     }
   ],
-  "Table2": [
+    "Table2": [
     {
-      "_color_": "purple",
-      "_risk_button_text_": "WIDESPREAD",
-      "_risk_button_description_": "Many non-essential indoor business operations are closed",
-      "_new_cases_count_": "More than 7",
-      "_new_cases_description_": "daily new cases (per 100k) ",
-      "_positive_cases_count_": "More than 8%",
-      "_positive_cases_description_": "Positive tests"
-    },
-    {
-      "_color_": "red",
-      "_risk_button_text_": "SUBSTANTIAL",
-      "_risk_button_description_": "Some non-essential indoor business operations are closed",
-      "_new_cases_count_": "4 - 7",
-      "_new_cases_description_": "daily new cases (per 100k) ",
-      "_positive_cases_count_": "5 - 8%",
-      "_positive_cases_description_": "Positive tests"
-    },
-    {
-      "_color_": "orange",
-      "_risk_button_text_": "MODERATE",
-      "_risk_button_description_": "Some indoor business operations are open with modifications",
-      "_new_cases_count_": "1 - 3.9",
-      "_new_cases_description_": "daily new cases (per 100k) ",
-      "_positive_cases_count_": "2 - 4.9%",
-      "_positive_cases_description_": "Positive tests"
-    },
-    {
-      "_color_": "yellow",
-      "_risk_button_text_": "MINIMAL",
-      "_risk_button_description_": "Most indoor business operations are open with modifications",
-      "_new_cases_count_": "Less than 1",
-      "_new_cases_description_": "daily new cases (per 100k) ",
-      "_positive_cases_count_": "Less than 2%",
-      "_positive_cases_description_": "Positive tests"
+      "Header - county risk level": "County risk level",
+      "Header - new cases": "New cases",
+      "Header - positive tests": "Positive tests",
+      "Description - new cases": "Daily new cases (per 100k)",
+      "Description - positive cases": "Positive tests"
     }
   ]
 }
 {%- endset -%}
 {%- set JSON = JSONraw | jsonparse -%}
-{%- set Headers = JSON.Table1[0] -%}
-{%- set Rows = JSON.Table2 -%}
+{%- set Headers = JSON.Table2[0] -%}
+{%- set Rows = JSON.Table1 -%}
 
 <!-- dynamic classnames are really cool but the purger cannot understand, hence this -->
 <div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn"></div>
 
 <div class="the-matrix d-none">
-  {% for item in Rows %}
+  {% for item in Rows -%}
+  {%- set CssColor = item['_colorLabel'] | lower -%}
   <div class="row text-center mr-0 ml-0 matrix-row">
-    <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+    <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header county risk level]"]}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - county risk level']}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-          <button class="btn bg-{{item._color_}}-btn rounded-50 text-white px-4">{{item._risk_button_text_}}</button>
+          <button class="btn bg-{{CssColor}}-btn rounded-50 text-white px-4">{{item['County tier'] | upper}}</button>
           <p class="card-text text-small mt-3">
-            {{item._risk_button_description_}}
+            {{item['description']}}
           </p>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+    <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header new cases]"]}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - new cases']}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-              <h5>{{item._new_cases_count_}}</h5>
+              <h5>{{item['New Cases']}}</h5>
           <p class="card-text text-small mt-3">
-          {{item._new_cases_description_}}
+          {{Headers['Description - new cases']}}
           </p>
         </div>
       </div>
     </div>
-      <div class="col-sm-4 pl-0 pr-0 bg-{{item._color_}}-alert">
+      <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
         <div class="card border-0 bg-transparent">
         {%- if loop.first %}
           <div class="card-header bg-white border-0">
-            <h4 class="h5 card-title mb-0 pb-0">{{Headers["[Header positive tests]"]}}</h4>
+            <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - positive tests']}}</h4>
           </div>
         {%- endif -%}
               <div class="card-body text-black">
-                  <h5>{{item._positive_cases_count_}}</h5>
+                  <h5>{{item['Positive Tests']}}</h5>
                 <p class="card-text text-small mt-3">
-                {{item._positive_cases_description_}}
+                {{Headers['Description - positive cases']}}
                 </p>
               </div>
         </div>
