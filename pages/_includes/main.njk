@@ -224,36 +224,22 @@
 
 	<div class="faq-twitter-wrap">
 
-{% set JSONraw %}{% include langIncludeFolder+"people-want-to-know" + langFilePostfix + ".json" %}{% endset %}
-
-
-{% set JSON = JSONraw | jsonparse %}
-{% set questionLinks1 = JSON.Table1 %}
-{% set questionLinks2 = JSON.Table2 %}
-
-	<div class="faq trigger">
-		{% for item in questionLinks1 %}
-		<article class="faq-item trigger">    
-			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
-				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
-			</a>
-		</article>
- 		{% endfor %}
+{%- set JSONraw %}{% include langIncludeFolder+"people-want-to-know" + langFilePostfix + ".json" %}{% endset -%}
+{%- set JSON = JSONraw | jsonparse -%}
+{%- set columns = [JSON.Table1, JSON.Table2] -%}
+{%- for column in columns %}
+		<div class="faq trigger">
+			{%- for item in column %}
+			<article class="faq-item trigger">    
+				<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
+					<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+					<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+				</a>
+			</article>
+			{%- endfor %}
+		</div>
+{%- endfor %}
 	</div>
-
-	<div class="faq trigger">
-		{% for item in questionLinks2 %}
-		<article class="faq-item trigger">
-			<a class="faq-item-link cwdsarrow-parent" href="{{ item.url }}">
-				<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
-			</a>	
-		</article>
-	{% endfor %}
-	</div>
-
-</div>
 </section>
 </faq-section>
 
