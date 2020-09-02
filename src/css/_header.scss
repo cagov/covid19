@@ -1,45 +1,5 @@
-.header {
-  background: $darkblue;
-  width: 100%;
-  @include fixed(left 0 top 0);
-  z-index: 1000;
-  transition: 0.4s box-shadow $slow-curve;
-  &-wrap {
-    @extend %wrap;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    @include desktop {
-      flex-wrap: nowrap;
-    }
-  }
-
-  &-right {
-    margin-left: 0;
-  }
-}
-
 .box-shadow {
   box-shadow: $button-shadow-hover;
-}
-
-.fixed.header {
-  font-size: 1rem;
-  @include ie {
-    .logo-mark {
-      max-height: 3.5rem;
-    }
-  }
-  &-logo {
-    &-mark {
-      width: 5rem;
-      @include tablet {
-        width: 6rem;
-      }
-    }
-  }
 }
 
 /*LOGO*/
@@ -71,9 +31,31 @@
 .header {
   background: $darkblue;
   width: 100%;
-  @include fixed(left 0 top 0);
   z-index: 1000;
+  /*transition: transform 0.3s, height 0.3s, 0.4s box-shadow $slow-curve;*/
   transition: 0.4s box-shadow $slow-curve;
+  &.fixed-position {
+    @include fixed(left 0 top 0);
+  }
+  &.relative-position {
+    position: relative;
+  }
+  &.fixed {
+    font-size: 1rem;
+    @include ie {
+      .logo-mark {
+        max-height: 3.5rem;
+      }
+    }
+    &-logo {
+      &-mark {
+        width: 5rem;
+        @include tablet {
+          width: 6rem;
+        }
+      }
+    }
+  }
   &-wrap {
     @extend %wrap;
     display: flex;

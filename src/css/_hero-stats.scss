@@ -28,6 +28,11 @@ hero-stats {
 	position: relative;
 	color: $white;
 	width: 100%;
+	&-padding-top {
+		@include tablet {
+			margin-top: 65px;
+		}
+	}
 	@include tablet {
 		display: flex;
 		flex-direction: row;
@@ -35,10 +40,6 @@ hero-stats {
 		justify-content: center;
 		align-content: center;
 		align-items: flex-end;
-		margin-top: 65px;
-	}
-	@include desktop {
-		margin-top: 65px;
 	}
 	&-wrap {
 		@extend %wrap;
