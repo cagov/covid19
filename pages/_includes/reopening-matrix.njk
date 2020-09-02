@@ -4,7 +4,7 @@
     {
       "[Header county risk level]": "County risk level",
       "[Header new cases]": "New cases",
-      "[Header positive tests]": "positive tests"
+      "[Header positive tests]": "Positive tests"
     }
   ],
   "Table2": [
@@ -15,7 +15,7 @@
       "_new_cases_count_": "More than 7",
       "_new_cases_description_": "daily new cases (per 100k) ",
       "_positive_cases_count_": "More than 8%",
-      "_positive_cases_description_": "positive tests"
+      "_positive_cases_description_": "Positive tests"
     },
     {
       "_color_": "red",
@@ -24,7 +24,7 @@
       "_new_cases_count_": "4 - 7",
       "_new_cases_description_": "daily new cases (per 100k) ",
       "_positive_cases_count_": "5 - 8%",
-      "_positive_cases_description_": "positive tests"
+      "_positive_cases_description_": "Positive tests"
     },
     {
       "_color_": "orange",
@@ -33,7 +33,7 @@
       "_new_cases_count_": "1 - 3.9",
       "_new_cases_description_": "daily new cases (per 100k) ",
       "_positive_cases_count_": "2 - 4.9%",
-      "_positive_cases_description_": "positive tests"
+      "_positive_cases_description_": "Positive tests"
     },
     {
       "_color_": "yellow",
@@ -42,7 +42,7 @@
       "_new_cases_count_": "Less than 1",
       "_new_cases_description_": "daily new cases (per 100k) ",
       "_positive_cases_count_": "Less than 2%",
-      "_positive_cases_description_": "positive tests"
+      "_positive_cases_description_": "Positive tests"
     }
   ]
 }
@@ -65,7 +65,7 @@
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-          <button class="btn bg-{{item._color_}}-btn rounded-50 text-white px-4">{{item._risk_button_text_}}</button>
+          <div class="btn-matrix bg-{{item._color_}}-btn">{{item._risk_button_text_}}</div>
           <p class="card-text text-small mt-3">
             {{item._risk_button_description_}}
           </p>

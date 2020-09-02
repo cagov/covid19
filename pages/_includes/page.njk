@@ -11,6 +11,9 @@
     {%- endif %}
     <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
 
+    <!-- Collect errors -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+
     <meta content="{{ title | safe }}" property="og:title">
     {% if page.fileSlug === "healthcorps" %}
       <meta content="https://covid19.ca.gov/img/Health-Corps-Website-Banner.jpg" property="og:image">
