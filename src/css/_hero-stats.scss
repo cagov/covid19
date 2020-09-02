@@ -123,6 +123,31 @@ hero-stats {
 	&-subhead {
 		color: $lightblue;
 	}
+	&-photo {
+		@include absolute(left 0 top 0);
+		@include size(100%);
+		z-index: -1;
+		@include ie {
+			height: auto !important;
+		}
+		&-pic {
+			@include size(100%, 70vh);
+			@include absolute(left 0 top 0);
+			object-fit: cover;
+			@include tablet {
+				@include size(100%);
+			}
+		}
+		&-description {
+			@include screen-reader-text;
+		}
+		&-fade {
+			@include size(100%, 10rem);
+			background: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 100%);
+			@include absolute(left 0 top 0);
+			z-index: 100;
+		}
+	}
 }
 
 
@@ -308,17 +333,23 @@ hero-stats {
 		text-align: center;
 		&-link {
 			text-transform: uppercase;
-			color: $lightestblue;
-			border-radius: 1.25rem;
-			padding: .5rem .75rem;
-			transition: background .3s $slow-curve;
-			font-size: .85rem;
-			display: inline-block;
-			margin-top: 1rem;
-			@include tablet {
-				font-size: 85%;
-				white-space: nowrap;
-			}
+				color: $lightestblue;
+				border-radius: 1.25rem;
+				border:1px solid;
+				padding: .65rem .75rem .5rem .75rem;
+				transition: background .3s $slow-curve;
+				font-size: .85rem;
+				display: inline-block;
+				margin-top: 1rem;
+				margin-left: .3rem;
+				margin-right: .3rem;
+				@include tablet {
+					font-size: 85%;
+					white-space: nowrap;
+				}
+				@include tablet-wide {
+					padding: .65rem 1em .5rem 1rem;
+					font-size: 1rem;}
 			@include tablet-wide {
 				padding: .5rem 1rem;
 				font-size: 1rem;
@@ -460,3 +491,13 @@ hero-stats {
 
 
 }
+.jumbo-img {
+	background-image: linear-gradient(180deg,$darkblue 0,rgba(31,37,116,0) 20%),url(/img/hero.jpg);
+	background-color:$darkblue;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center 10%;
+	@include tablet {
+		background-size: cover;
+	}
+} 
