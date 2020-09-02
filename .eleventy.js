@@ -404,10 +404,13 @@ module.exports = function(eleventyConfig) {
     getLangRecord(tags).hreflang;
   const getLangId = tags => 
     getLangRecord(tags).id;
+  const getLangIncludeFolder = tags =>
+    (getLangRecord(tags).id === 'en') ? '../wordpress-posts/' : '../translated-posts/';
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
   eleventyConfig.addFilter('langId', getLangId);
+  eleventyConfig.addFilter('langIncludeFolder', getLangIncludeFolder);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
