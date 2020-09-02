@@ -68,6 +68,7 @@
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
     {% set Terms = JSON.Table3 %}
+
     <main id="main">
       
       <div class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
