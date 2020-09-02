@@ -29,7 +29,7 @@ cwds-survey {
       }
       &-go, &-dismiss {
         margin: .5rem .25rem;
-        transition: all 0.3s $slow-curve;
+        transition: background 0.3s $slow-curve;
       }
       &-go button, &-dismiss {
         font-size: 100%;
