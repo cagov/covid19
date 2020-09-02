@@ -175,7 +175,7 @@ export default function applyAccordionListeners() {
     return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
   };
 
-  // Report an error to GA.
+  // Report a single error to GA.
   const trackError = (error, fieldsObj = {}) => {
     window.ga('tracker3.send', 'event', Object.assign({
       eventCategory: 'javascript',
@@ -185,8 +185,9 @@ export default function applyAccordionListeners() {
     }, fieldsObj));
   };
 
+  // Tracks and reports errors to GA.
   const trackErrors = () => {
-    // Fetch and report errors that we caught before GA is ready.
+    // Fetch and report errors that we catch before GA is ready.
     const loadErrorEvents = (window.__e && window.__e.q) || [];
     const fieldsObj = { eventAction: 'uncaught error' };
     loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
