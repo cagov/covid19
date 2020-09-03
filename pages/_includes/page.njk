@@ -11,6 +11,9 @@
     {%- endif %}
     <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
 
+    <!-- Collect errors -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+
     <meta content="{{ title | safe }}" property="og:title">
     {% if page.fileSlug === "healthcorps" %}
       <meta content="https://covid19.ca.gov/img/Health-Corps-Website-Banner.jpg" property="og:image">
@@ -65,6 +68,7 @@
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
     {% set Terms = JSON.Table3 %}
+
     <main id="main">
       
       <div class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">

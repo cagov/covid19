@@ -3,30 +3,34 @@
     {
       "County tier": "Minimal",
       "colorLabel": "Yellow",
+      "_Color label": "Yellow",
       "description": "Most indoor business operations are open with modifications",
-      "New cases<br>(7 day average)": "Less than 1 daily new cases (per 100k) ",
-      "Positive tests<br><strong>(7 day average)</strong>": "Less than 2%  positive tests"
+      "New cases": "Less than 1 Daily new cases (per 100k) ",
+      "Positive tests": "Less than 2%  positive tests"
     },
     {
       "County tier": "Moderate",
       "colorLabel": "Orange",
+      "_Color label": "Orange",
       "description": "Some indoor business operations are open with modifications",
-      "New cases<br>(7 day average)": "1 – 3.9 daily new cases (per 100k)",
-      "Positive tests<br><strong>(7 day average)</strong>": "2 – 4.9%<br>positive tests"
+      "New cases": "1 – 3.9 Daily new cases (per 100k)",
+      "Positive tests": "2 – 4.9%<br>positive tests"
     },
     {
       "County tier": "Substantial",
       "colorLabel": "Red",
+      "_Color label": "Red",
       "description": "Some non-essential indoor business operations are closed",
-      "New cases<br>(7 day average)": "4-7 daily new cases (per 100k)",
-      "Positive tests<br><strong>(7 day average)</strong>": "5 – 8%<br>positive tests"
+      "New cases": "4-7 Daily new cases (per 100k)",
+      "Positive tests": "5 – 8%<br>positive tests"
     },
     {
       "County tier": "Widespread",
       "colorLabel": "Purple",
+      "_Color label": "Purple",
       "description": "Many non-essential indoor business operations are closed",
-      "New cases<br>(7 day average)": "More than 7 <br>daily new cases (per 100k)",
-      "Positive tests<br><strong>(7 day average)</strong>": "More than 8%<br>positive tests"
+      "New cases": "More than 7 <br>Daily new cases (per 100k)",
+      "Positive tests": "More than 8%<br>positive tests"
     }
   ],
   "Table2": [
@@ -37,13 +41,19 @@
       "labels": "Positive tests"
     },
     {
-      "labels": "Find the status of activities in your county, effective Aug. 31"
+      "labels": "Find the status of activities in your county"
     },
     {
       "labels": "Activity"
     },
     {
       "labels": "County"
+    },
+    {
+      "labels": "County risk level"
+    },
+    {
+      "labels": "New cases"
     }
   ]
 }
