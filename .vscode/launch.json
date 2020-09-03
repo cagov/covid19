@@ -12,7 +12,9 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
           "run-script", "accordion_replacer"
-      ]
+      ],
+      "console": "internalConsole",
+      "outputCapture": "std"
     }
   ]
 }

@@ -1,4 +1,13 @@
-console.log('hello world');
+const fs = require('fs');
+
+const html = fs.readFileSync('accordion_replacer/sample_input.html','utf8');
+
+
+
+
+
+
+console.log(html);
 
 
 
