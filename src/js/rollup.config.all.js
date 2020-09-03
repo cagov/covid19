@@ -14,6 +14,6 @@ export default [
   reopening,
   telehealth,
   video,
-  // Only include these rollups in development mode.
+  // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
 ];
