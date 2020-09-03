@@ -1,3 +1,5 @@
+{% import "macros.njk" as macros %}
+
 {%- set langFilePostfix = tags | langFilePostfix -%}
 {%- set langIncludeFolder="../translated-posts/" if langFilePostfix else "../wordpress-posts/" -%}
 
@@ -273,9 +275,7 @@
 </div>
 <div class="popup_background"></div>
 <!-- end video overlay -->
-<script type="module">
-  {% include "../_buildoutput/video.js" %}
-</script>
+{{ macros.includeJavascriptByEnv('video', env.dev) }}
 
 </body>
 </html>
