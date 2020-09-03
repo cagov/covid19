@@ -188,22 +188,23 @@ const watcher = () => {
     '!./pages/translations/**/*',
     '!./pages/_buildoutput/**/*'
   ];
+  const jsWatchFiles = [
+    './src/js/**/*'
+  ];
 
   // Watch for CSS and Eleventy files based on environment.
   if (process.env.NODE_ENV === 'development') {
-    // In dev, we watch, build, and refresh CSS and Eleventy separately. Much faster.
+    // In dev, we watch, build, and refresh CSS, JS, and Eleventy separately. Much faster.
     gulp.watch(cssWatchFiles, gulp.series(css));
     gulp.watch(eleventyWatchFiles, gulp.series(eleventy));
+    gulp.watch(jsWatchFiles, gulp.series(rollup, reload));
   } else {
     // In prod, we must watch/rebuild CSS and Eleventy together.
     // This covers both re-purging CSS (due to template changes) and CSS embed into templates.
     gulp.watch([...cssWatchFiles, ...eleventyWatchFiles], gulp.series(css, eleventy));
+    // Same for JS.
+    gulp.watch([...jsWatchFiles, ...eleventyWatchFiles], gulp.series(rollup, eleventy));
   }
-
-  // Watch for changes to JS files.
-  gulp.watch([
-    './src/js/**/*'
-  ], gulp.series(rollup, eleventy));
 
   // Watch for changes to static asset files.
   gulp.watch([
