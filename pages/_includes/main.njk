@@ -1,9 +1,5 @@
 {%- set language = tags | langRecord -%}
-
-{%- set lastStatDate = 0|_statsdata_ + "-" + 1|_statsdata_ + "-" + 2|_statsdata_+"T18:00:00Z" -%}
-{%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",lastStatDate | formatDate2(true,tags)) | replace("[DataDate]",lastStatDate | formatDate2(false,tags,-1))-%}
-
-{%- set Terms = pubData[language.id].footerData -%}
+{%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags,-1))-%}
 
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
@@ -42,9 +38,8 @@
       <link rel="alternate" hreflang="{{item.langcode}}" href="https://covid19.ca.gov{{item.url}}">
     {%- endfor %}
 
-		{% if language.id == "vi" %}
-			<link rel="stylesheet" type="text/css" href="/fonts/vi.css">
-		{% endif %}
+
+		{% block specialLanguageCSS %}{% endblock %}
 		
     {% if env.dev %}
       <link rel="stylesheet" type="text/css" href="/css/build/development.css">
@@ -99,9 +94,9 @@
 						<div class="hero-stats-row-label">
 							<span class="hero-stats-row-label-text">{{varTotalCases}}</span>
 						</div>
-						<div class="hero-stats-row-figure">{{3|_statsdata_}}</div>
+						<div class="hero-stats-row-figure">{{ statsData.summary.totalCases }}</div>
 						<div class="hero-stats-row-details">
-							+{{4|_statsdata_}}% 
+							+{{ statsData.summary.totalCasesIncrease }}% 
 						</div>
 					</div>
 
@@ -109,9 +104,9 @@
 						<div class="hero-stats-row-label">
 							<span class="hero-stats-row-label-text">{{varTotalDeaths}}</span>
 						</div>
-						<div class="hero-stats-row-figure">{{5|_statsdata_}}</div>
+						<div class="hero-stats-row-figure">{{ statsData.summary.totalDeaths }}</div>
 						<div class="hero-stats-row-details">
-							+{{6|_statsdata_}}%
+							+{{ statsData.summary.totalDeathsIncrease }}%
 						</div>
 					</div>
 
@@ -119,7 +114,7 @@
 						<div class="hero-stats-row-label">
 							<span class="hero-stats-row-label-text">{{varTestsReported}}</span>
 						</div>
-						<div class="hero-stats-row-figure">{{7|_statsdata_}}</div>
+						<div class="hero-stats-row-figure">{{ statsData.summary.testsReported }}</div>
 						<div class="hero-stats-row-details">
 						
 						</div>
@@ -133,15 +128,13 @@
 			</div>
 		</div>
 
-		{% macro includeTranslatedFile(filename, fileext, language) %}
-			{% include language.includepath + filename + language.filepostfix + fileext %}
-		{% endmacro %}
+
 
 		<div class="hero-alert" role="alert" aria-label="Alerts section">
 			<div class="hero-alert-align">
 				<svg class="hero-alert-icon" xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448"><title>Alert!</title><path d="M256 343.75v-47.5c0-4.5-3.5-8.25-8-8.25h-48c-4.5 0-8 3.75-8 8.25v47.5c0 4.5 3.5 8.25 8 8.25h48c4.5 0 8-3.75 8-8.25zM255.5 250.25l4.5-114.75c0-1.5-0.75-3.5-2.5-4.75-1.5-1.25-3.75-2.75-6-2.75h-55c-2.25 0-4.5 1.5-6 2.75-1.75 1.25-2.5 3.75-2.5 5.25l4.25 114.25c0 3.25 3.75 5.75 8.5 5.75h46.25c4.5 0 8.25-2.5 8.5-5.75zM252 16.75l192 352c5.5 9.75 5.25 21.75-0.5 31.5s-16.25 15.75-27.5 15.75h-384c-11.25 0-21.75-6-27.5-15.75s-6-21.75-0.5-31.5l192-352c5.5-10.25 16.25-16.75 28-16.75s22.5 6.5 28 16.75z"></path></svg>
 				<div class="hero-alert-text">
-					{{ includeTranslatedFile("new", ".html", language) }}
+					{% include (language.includepath + "new" + language.filepostfix + ".html") %}
         </div>
 			</div>
 			<div class="hero-alert-social">
@@ -224,11 +217,9 @@
 
 	<div class="faq-twitter-wrap">
 
-{%- set peopleWantToKnow = pubData[language].peopleWantToKnow -%}
-{%- set columns = [peopleWantToKnow.Table1, peopleWantToKnow.Table2] -%}
-{%- for column in columns %}
+{%- for column, items in pubData[language.id].peopleWantToKnow %}
 		<div class="faq trigger">
-			{%- for item in column %}
+			{%- for item in items %}
 			<article class="faq-item trigger">    
 				<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
 					<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
