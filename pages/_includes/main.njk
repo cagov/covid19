@@ -54,14 +54,9 @@
 		{% if language == "vi" %}
 			<link rel="stylesheet" type="text/css" href="/fonts/vi.css">
 		{% endif %}
+
+		{{ macros.includeCSSByEnv("home", env.dev) }}
 		
-    {% if env.dev %}
-      <link rel="stylesheet" type="text/css" href="/css/build/development.css">
-    {% else %}
-      <style>
-        {% include "../_buildoutput/home.css" %}
-      </style>
-    {% endif %}
 		<script>const videoID='{{varVideoID}}';</script>
   </head>
   <body>

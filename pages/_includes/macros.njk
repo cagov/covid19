@@ -7,3 +7,13 @@
 		</script>
 	{% endif %}
 {% endmacro %}
+
+{% macro includeCSSByEnv(filename, dev) %}
+  {% if dev %}
+    <link rel="stylesheet" type="text/css" href="/css/build/development.css">
+  {% else %}
+    <style>
+      {% include "../_buildoutput/" + filename + ".css" %}
+    </style>
+  {% endif %}
+{% endmacro %}
