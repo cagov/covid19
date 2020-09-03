@@ -1,0 +1,9 @@
+{% macro includeJavascriptByEnv(filename, dev) %}
+	{% if dev %}
+		<script type="module" src="/js/{{filename}}.js"></script>
+	{% else %}
+		<script type="module">
+			{% include "../_buildoutput/" + filename + ".js" %}
+		</script>
+	{% endif %}
+{% endmacro %}
