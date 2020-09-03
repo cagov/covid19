@@ -1,5 +1,4 @@
-{%- set language = tags | langRecord -%}
-{%- set FormattedUpdateText = varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags,-1))-%}
+{% import "macros.njk" as macros %}
 
 <!DOCTYPE html>
 <html {{ tags | htmllangattributes | safe }}>
@@ -84,7 +83,7 @@
 
 		<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 			<h2 class="hero-stats-headline" id="tracking-covid">{{varStatsHeader}}</h2>
-			<div class="hero-stats-subheadline">{{FormattedUpdateText}}</div>
+			<div class="hero-stats-subheadline">{{ macros.formattedUpdateText(varUpdateText, statsData, tags) }}</div>
 
 			<div class="hero-stats-slider">
 

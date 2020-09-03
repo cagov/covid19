@@ -1,0 +1,3 @@
+{% macro formattedUpdateText(varUpdateText, statsData, tags) %}
+  {{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags,-1)) -}}
+{% endmacro %}

@@ -10,7 +10,7 @@ const data = {
     totalDeaths: caseStats.Table1[0]['5 – total deaths'],
     totalDeathsIncrease: caseStats.Table1[0]['6 – total deaths increase'],
     testsReported: caseStats.Table1[0]['7 - tests reported'],
-    lastStatsDate: caseStats.Table1[0]['0 – year'] + "-" + caseStats.Table1[0]['1 – month'] + "-" + caseStats.Table1[0]['2 – day'] +"T18:00:00Z"
+    lastStatsDate: caseStats.Table1[0]['0 – year'] + '-' + caseStats.Table1[0]['1 – month'] + '-' + caseStats.Table1[0]['2 – day'] + 'T18:00:00Z'
   }
 };
 

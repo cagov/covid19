@@ -4,7 +4,6 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
-const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
   .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
 
@@ -163,6 +162,19 @@ module.exports = function(eleventyConfig) {
   }
   );
 
+  // Provides translated URL path based on provided language.
+  // Omit the path parameter to get the homepage.
+  eleventyConfig.addShortcode('translatedPath', (languageRecord, path = '') => {
+    const root = (languageRecord.id === 'en') ? '/' : languageRecord.pathpostfix;
+    return root + path;
+  });
+  // Get the translated homepage URL path.
+  eleventyConfig.addShortcode('translatedHomePath', (languageRecord) => {
+    return (languageRecord.id === 'en') ? '/' : languageRecord.pathpostfix;
+  });
+
+
+
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
 
   // Format dates within templates.
@@ -254,10 +266,6 @@ module.exports = function(eleventyConfig) {
     }
     return textstring;
   });
-
-  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
-  //Usage...
-  //        {{0|_statsdata_}}
 
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
