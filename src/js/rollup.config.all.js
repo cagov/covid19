@@ -11,12 +11,13 @@ import video from './video/rollup.config';
 // Combines all the Rollup files into one.
 export default [
   alerts,
-  es5,
   esm,
   plasma,
   reopening,
   survey,
   telehealth,
   whatwhere,
-  video
+  video,
+  // Only include these rollups in development mode.
+  ...((process.env.NODE_ENV === 'development') ? [] : [es5])
 ];

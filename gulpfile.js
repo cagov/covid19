@@ -58,6 +58,9 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
+  if (process.env.NODE_ENV === 'development') {
+    log("Note: The es5.js file will not be built because you're running in development mode. Try *npm run start* if you need it.");
+  }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', () => {
