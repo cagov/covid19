@@ -42,10 +42,10 @@ const clean = () => del([
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
   if (process.env.NODE_ENV === 'development') {
-    log("Note: Building site in dev mode. Try *npm run start* if you need a full build.");
+    log('Note: Building site in dev mode. Try *npm run start* if you need a full build.');
   }
 
-  //Donwload the files sitemap for 11ty to use
+  // Donwload the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
       console.error(error);
@@ -62,7 +62,7 @@ const eleventy = (done) => {
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
   if (process.env.NODE_ENV === 'development') {
-    log("Note: The es5.js file will not be built because you're running in development mode. Try *npm run start* if you need it.");
+    log('Note: Building JS in dev mode. es5.js will not be included. Try *npm run start* if you need it for IE.');
   }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
@@ -110,7 +110,7 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
 
 const purgecssExtractors = [
   {
-    extractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
+    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     extensions: ['js']
   }
 ];
