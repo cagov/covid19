@@ -3,7 +3,6 @@ import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
 import reopening from './roadmap/rollup.config';
-import survey from './survey/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import whatwhere from './what-open-where/rollup.config';
 import video from './video/rollup.config';
@@ -14,7 +13,6 @@ export default [
   esm,
   plasma,
   reopening,
-  survey,
   telehealth,
   whatwhere,
   video,
