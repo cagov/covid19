@@ -4,7 +4,6 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
-const url = require('postcss-url');
 const cssnano = require('cssnano');
 const spawn = require('cross-spawn');
 const log = require('fancy-log');
@@ -42,6 +41,10 @@ const clean = () => del([
 
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
+  if (process.env.NODE_ENV === 'development') {
+    log("Note: Building site in dev mode. Try *npm run start* if you need a full build.");
+  }
+
   //Donwload the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
