@@ -110,7 +110,7 @@ const devCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
 
 const purgecssExtractors = [
   {
-    extractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    extractor: content => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
     extensions: ['js']
   }
 ];
