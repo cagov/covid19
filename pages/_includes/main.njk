@@ -13,6 +13,9 @@
 />
     <title>{{ title | safe }}</title>
 
+		<!-- Collect errors -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+
     <!-- combined social media meta -->
     <meta content="{{ title | safe }}" property="og:title"/>
     <meta
@@ -39,22 +42,20 @@
 
 
 		{% block specialLanguageCSS %}{% endblock %}
+
+		{{ macros.includeCSSByEnv("home", env.dev) }}
 		
-    {% if env.dev %}
-      <link rel="stylesheet" type="text/css" href="/css/build/development.css">
-    {% else %}
-      <style>
-        {% include "../_buildoutput/home.css" %}
-      </style>
-    {% endif %}
 		<script>const videoID='{{varVideoID}}';</script>
   </head>
   <body>
+		<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
+	
     {% include "header.njk" %}
+
     <main id="main">
 
 <hero-stats>
-   <section class="hero jumbo-img trigger">
+   <section class="hero trigger hero-padding-top">
 	<div class="hero-wrap">
 
 		<div class="hero-text" role="region" aria-labelledby="hero-text">
@@ -67,11 +68,12 @@
 					</a>
 				</h1>
 
-			<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
+				<h2 class="hero-subhead">{{ varHeroP2 }}</h2>
+
+			<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "safer-economy/" | toTranslatedPath(tags) }}">
 				<div class="button-label">
 					<span>
 						<p>{{ varHeroP1 }}</p>
-						<p>{{ varHeroP2 }}</p>
 					</span>
 				</div>
 					<cwds-arrow data-class-prefix="hero" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
@@ -148,7 +150,13 @@
 				</div>
 			</div>
 		</div>
+		
 
+	</div>
+	<div class="hero-photo" role="complementary" aria-labelledby="hero-background">
+			<div class="hero-photo-fade"></div>
+			<img class="hero-photo-pic" src="/img/hero.jpg" srcset="i/img/hero.jpg 740w, /img/hero.jpg 1300w" alt="Photo Description">
+		<div id="hero-background" class="hero-photo-description">Photo Description</div>
 	</div>
 
 </section>
@@ -249,9 +257,7 @@
 </div>
 <div class="popup_background"></div>
 <!-- end video overlay -->
-<script type="module">
-  {% include "../_buildoutput/video.js" %}
-</script>
+{{ macros.includeJavascriptByEnv('video', env.dev) }}
 
 </body>
 </html>

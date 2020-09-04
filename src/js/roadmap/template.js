@@ -1,5 +1,5 @@
 export default function template(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder) {
-  return `
+  return /*html*/`
   <div class="reopening-fields">
   <h2 class="subtitle-color">${title}</h2>
     <form action="#" class="reopening-activities">

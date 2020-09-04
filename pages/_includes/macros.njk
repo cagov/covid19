@@ -1,3 +1,23 @@
 {% macro formattedUpdateText(varUpdateText, statsData, tags) %}
   {{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags,-1)) -}}
 {% endmacro %}
+
+{% macro includeJavascriptByEnv(filename, dev) %}
+	{% if dev %}
+		<script type="module" src="/js/{{filename}}.js"></script>
+	{% else %}
+		<script type="module">
+			{% include "../_buildoutput/" + filename + ".js" %}
+		</script>
+	{% endif %}
+{% endmacro %}
+
+{% macro includeCSSByEnv(filename, dev) %}
+  {% if dev %}
+    <link rel="stylesheet" type="text/css" href="/css/build/development.css">
+  {% else %}
+    <style>
+      {% include "../_buildoutput/" + filename + ".css" %}
+    </style>
+  {% endif %}
+{% endmacro %}

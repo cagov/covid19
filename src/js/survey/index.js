@@ -12,7 +12,7 @@ class CWDSSurvey extends window.HTMLElement {
     let seenSurvey = seenSurveyPrompt();
     let surveyUrl = this.dataset.pulseSurveyUrl;
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
-    if(!seenSurvey && 1==2) { // disabling the NPI survey because it doesn't work with the new fixed header, we can change its display method to slide out from under the header or something
+    if(!seenSurvey) {
       if(shouldDisplayNPI) {
         surveyUrl = this.dataset.npiSurveyUrl
         surveyPrompt = this.dataset.surveyPrompt
@@ -23,6 +23,11 @@ class CWDSSurvey extends window.HTMLElement {
         }
         reportEvent('surveyDisplay');
         let html = surveyTemplate(surveyUrl, surveyPrompt);
+        const header = document.querySelector('.header');
+        header.classList.add('relative-position');
+        header.classList.remove('fixed-position');
+        const hero = document.querySelector('.hero');
+        hero.classList.remove('hero-padding-top');
         this.innerHTML = html;
         applyListeners(this);
       }
@@ -52,6 +57,11 @@ function applyListeners(target) {
   target.querySelector('.js-dismiss-survey').addEventListener('click',function(event) {
     event.preventDefault();
     reportEvent('dismissSurvey');
+    const header = document.querySelector('.header');
+    header.classList.remove('relative-position');
+    header.classList.add('fixed-position');
+    const hero = document.querySelector('.hero');
+    hero.classList.add('hero-padding-top');
     target.style.display = 'none';
   });
 }
