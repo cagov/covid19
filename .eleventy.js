@@ -1,5 +1,3 @@
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
