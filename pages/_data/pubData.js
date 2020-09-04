@@ -16,7 +16,19 @@ const files = [
   { slug: 'was-this-page-helpful', split: true }
 ];
 
-// Roll up all data files for all languages.
+/*
+  Roll up all data files for all languages.
+  Data structure will look like the following. Note Language IDs and camelCased filenames.
+  {
+    "en": {
+      "doDont": { ...file data... },
+      "footerData": { ...file data... },
+      ...more "en" files...
+    },
+    "es" { ...all "es" files... },
+    ...more languages...
+  }
+*/
 const data = languages.reduce((katamari, language) => {
   // Fetch all data files for this particular language.
   katamari[language.id] = files.reduce((tumbleweed, file) => {
