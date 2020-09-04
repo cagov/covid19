@@ -12,10 +12,10 @@ const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearche
 
 const getNextTag = (searchArea, tag) => 
   // ...like /<\/?h3\b[^>]*>/m
-   [...searchArea.matchAll(new RegExp('<(?<closer>/?)'+tag+'\\b[^>]*>','m'))]
+   [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
     .map(r=> ({
       index: r.index,
-      isCloseTag: r.groups.closer.length>0,
+      isCloseTag: r.groups.closeslash.length>0,
       fulltag: r[0] }))[0];
 
 
@@ -81,7 +81,22 @@ for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
       result = result.replace(bodyRow.html,'');
     }
 
-    result = result.replace(row.html,'[content goes here]');
+    let finalHTML = `
+<cwds-accordion>
+  <div class="card">
+    <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+      <div class="accordion-title">
+        ${headerHTML}
+      </div>
+    </button>
+    <div class="card-container" aria-hidden="true" style="height: 0px;">
+      ${bodyHTML}
+    </div>
+  </div>
+</cwds-accordion>
+`;
+
+    result = result.replace(row.html,finalHTML);
   } 
 }
 console.log(result);
