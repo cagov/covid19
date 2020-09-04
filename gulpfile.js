@@ -4,7 +4,6 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
-const url = require('postcss-url');
 const cssnano = require('cssnano');
 const spawn = require('cross-spawn');
 const log = require('fancy-log');
@@ -42,7 +41,11 @@ const clean = () => del([
 
 // Build the site with Eleventy, then refresh browsersync if available.
 const eleventy = (done) => {
-  //Donwload the files sitemap for 11ty to use
+  if (process.env.NODE_ENV === 'development') {
+    log('Note: Building site in dev mode. Try *npm run start* if you need a full build.');
+  }
+
+  // Donwload the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
       console.error(error);
@@ -58,6 +61,9 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
+  if (process.env.NODE_ENV === 'development') {
+    log('Note: Building JS in dev mode. es5.js will not be included. Try *npm run start* if you need it for IE.');
+  }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', () => {
@@ -182,22 +188,23 @@ const watcher = () => {
     '!./pages/translations/**/*',
     '!./pages/_buildoutput/**/*'
   ];
+  const jsWatchFiles = [
+    './src/js/**/*'
+  ];
 
   // Watch for CSS and Eleventy files based on environment.
   if (process.env.NODE_ENV === 'development') {
-    // In dev, we watch, build, and refresh CSS and Eleventy separately. Much faster.
+    // In dev, we watch, build, and refresh CSS, JS, and Eleventy separately. Much faster.
     gulp.watch(cssWatchFiles, gulp.series(css));
     gulp.watch(eleventyWatchFiles, gulp.series(eleventy));
+    gulp.watch(jsWatchFiles, gulp.series(rollup, reload));
   } else {
     // In prod, we must watch/rebuild CSS and Eleventy together.
     // This covers both re-purging CSS (due to template changes) and CSS embed into templates.
     gulp.watch([...cssWatchFiles, ...eleventyWatchFiles], gulp.series(css, eleventy));
+    // Same for JS.
+    gulp.watch([...jsWatchFiles, ...eleventyWatchFiles], gulp.series(rollup, eleventy));
   }
-
-  // Watch for changes to JS files.
-  gulp.watch([
-    './src/js/**/*'
-  ], gulp.series(rollup, eleventy));
 
   // Watch for changes to static asset files.
   gulp.watch([
