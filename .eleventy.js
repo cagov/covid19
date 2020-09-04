@@ -297,7 +297,9 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
-    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf('wp-accordion')>-1) {
+    const headerclass = 'wp-accordion';
+
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
       if(processedPostMap.get(outputPath)!==initialHTML) {
 
