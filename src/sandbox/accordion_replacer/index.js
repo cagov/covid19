@@ -91,11 +91,12 @@ ${headerHTML}
       </div>
     </button>
     <div class="card-container" aria-hidden="true" style="height: 0px;">
+      <div class="card-body">
 ${bodyHTML}
+      </div>
     </div>
   </div>
-</cwds-accordion>
-`;
+</cwds-accordion>`;
 
     //replace the header with the new merged content
     result = result.replace(row.html,finalHTML);

@@ -296,65 +296,120 @@ module.exports = function(eleventyConfig) {
   })
 
 
-
-
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
-    const headerclass = 'wp-accordion';
-    const contentclass = 'wp-accordion-content';
-
-    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf('wp-accordion')>-1) {
       let initialHTML = md5(html);
       if(processedPostMap.get(outputPath)!==initialHTML) {
-        const dom = new JSDOM(html);
-        const document = dom.window.document;
 
-        for(const header of document.querySelectorAll(`.${headerclass}`)) {
-          //create the wrapper element and wrap it around the header
-          const cwdscontainer = document.createElement('cwds-accordion');
-          const container = document.createElement('div');
-          container.classList.add('card');
-          cwdscontainer.appendChild(container);
-
-          header.parentNode.insertBefore(cwdscontainer, header);
-          container.appendChild(header);
-
-          //remove the special wp class
-          header.classList.remove(headerclass);
-          if (header.classList.length===0) header.removeAttribute('class');
-
-          //create the card body section and add it to the container
-          const body = document.createElement('div');
-          body.className="card-body";
-          container.appendChild(body);
-
-          //Add all remaining content classes to the card body, they must be directly after the new container
-          let direct;
-          while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
-            body.appendChild(direct);
-
-            //remove custom class name
-            direct.classList.remove(contentclass);
-            if (direct.classList.length===0) direct.removeAttribute('class');
+        const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+        const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
+          .map(r=> ({
+            tag: r.groups.tag,
+            class: r.groups.class,
+            index: r.index,
+            fulltag: r[0] }));
+        
+        
+        const getNextTag = (searchArea, tag) => 
+          // ...like /<\/?h3\b[^>]*>/m
+           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
+            .map(r=> ({
+              index: r.index,
+              isCloseTag: r.groups.closeslash.length>0,
+              fulltag: r[0] }))[0];
+        
+        
+        const getEndTag = (tag, html, startIndex) => {
+          let resultIndex = startIndex;
+          let startTagsActive = 0;
+          let loopsafe = 100;
+          let searchArea = html.substring(startIndex);
+        
+          while(--loopsafe>0) {
+            const nextTag = getNextTag(searchArea,tag);
+            if(!nextTag) throw `Can't find matching end tag - ${tag}`;
+            const resultOffset = nextTag.index+nextTag.fulltag.length;
+            resultIndex += resultOffset;
+            if(nextTag.isCloseTag) {
+              if(startTagsActive===0) {
+                nextTag.index = resultIndex;
+                return nextTag;
+              } else {
+                startTagsActive--;
+              }
+            } else {
+              //new open tag
+              startTagsActive++;
+            }
+            searchArea = searchArea.substring(resultOffset);
           }
-
-          //apply required html around components
-          header.outerHTML=`
-            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-              <div class="accordion-title">
-                ${header.outerHTML}
-              </div>
-            </button>`;
-
-          body.outerHTML = `
-            <div class="card-container" aria-hidden="true" style="height: 0px;">
-              ${body.outerHTML}
-            </div>`;
         }
+        
+        //Create a list of all accordion content in order
+        const accordionContent = getAccordionStartTags(html)
+          .map(nextTag=> ({
+            nextTag,
+            endTag:getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
+          }))
+          .map(tags=> ({
+              html: html.substring(tags.nextTag.index,tags.endTag.index),
+              header: tags.nextTag.class==='wp-accordion'
+          }));
+        
+        
+        let result = html;
+        //loop and build content
+        for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
+          const row = accordionContent[resultIndex];
+          if(row.header) {
+            const headerHTML = row.html
+              .replace(/wp-accordion/,'')
+              .replace(/ class=""/,'');
+        
+            let bodyHTML = '';
+            //fill the body
+            let bodyIndex = resultIndex+1;
+            while (bodyIndex<accordionContent.length&&!accordionContent[bodyIndex].header) {
+              const bodyRowHTML = accordionContent[bodyIndex].html;
+              bodyHTML += bodyRowHTML
+                .replace(/wp-accordion-content/,'')
+                .replace(/ class=""/,'')
+                + '\n';
+        
+              bodyIndex++;
+        
+              //remove this content tag from html
+              result = result.replace(bodyRowHTML,'');
+            }
+        
+            const finalHTML = 
+`<cwds-accordion>
+  <div class="card">
+    <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+      <div class="accordion-title">
+${headerHTML}
+      </div>
+    </button>
+    <div class="card-container" aria-hidden="true" style="height: 0px;">
+      <div class="card-body">
+${bodyHTML}
+      </div>
+    </div>
+  </div>
+</cwds-accordion>
+`;
+        
+            //replace the header with the new merged content
+            result = result.replace(row.html,finalHTML);
+          } //if(row.header)
+        } //for
+
+        //cache result
         processedPostMap.set(outputPath,initialHTML);
         if(process.env.NODE_ENV === 'development') {
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
-        return dom.serialize();
+        return result;
       }
     }
     return html;
