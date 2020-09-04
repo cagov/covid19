@@ -195,6 +195,27 @@ export default function applyAccordionListeners() {
     return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
   };
 
+  // Track searches from all pages.
+  document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
+    form.addEventListener('submit', event => {
+      // Use event.returnValue in IE, otherwise event.preventDefault.
+      event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+
+      const eventAction = window.location.pathname; // Originating page of the search.
+      const eventLabel = form.querySelector('input[name="q"]').value; // User's search query.
+
+      // Send info to Google Analytics.
+      window.ga('send', 'event', 'search', eventAction, eventLabel);
+      window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel);
+      window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, {
+        // When this third call finishes, submit the form.
+        hitCallback: () => {
+          form.submit();
+        }
+      });
+    });
+  });
+
   // Don't load up these event listeners unless we've got Google Analytics on the page.
   if (window.ga && window.ga.create) {
     // Add these events if we're public, not in local development scenarios.
