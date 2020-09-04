@@ -45,7 +45,7 @@ const getEndTag = (tag, html, startIndex) => {
   }
 }
 
-//Create a string list of all accordion content in order
+//Create a list of all accordion content in order
 const accordionContent = getAccordionStartTags(html)
   .map(nextTag=> ({
     nextTag,
@@ -62,43 +62,45 @@ let result = html;
 for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
   const row = accordionContent[resultIndex];
   if(row.header) {
-    let headerHTML = row.html;
-    headerHTML = headerHTML.replace(/wp-accordion/,'').replace(/ class=""/,'');
+    const headerHTML = row.html
+      .replace(/wp-accordion/,'')
+      .replace(/ class=""/,'');
 
     let bodyHTML = '';
     //fill the body
     let bodyIndex = resultIndex+1;
     while (bodyIndex<accordionContent.length&&!accordionContent[bodyIndex].header) {
-      const bodyRow = accordionContent[bodyIndex];
-      let bodyRowHTML = bodyRow.html;
-      bodyRowHTML = bodyRowHTML.replace(/wp-accordion-content/,'').replace(/ class=""/,'');
-      
-      bodyHTML += bodyRowHTML;
+      const bodyRowHTML = accordionContent[bodyIndex].html;
+      bodyHTML += bodyRowHTML
+        .replace(/wp-accordion-content/,'')
+        .replace(/ class=""/,'')
+        + '\n';
 
       bodyIndex++;
 
-      //remove this tag from html
-      result = result.replace(bodyRow.html,'');
+      //remove this content tag from html
+      result = result.replace(bodyRowHTML,'');
     }
 
-    let finalHTML = `
-<cwds-accordion>
+    const finalHTML = 
+`<cwds-accordion>
   <div class="card">
     <button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
-        ${headerHTML}
+${headerHTML}
       </div>
     </button>
     <div class="card-container" aria-hidden="true" style="height: 0px;">
-      ${bodyHTML}
+${bodyHTML}
     </div>
   </div>
 </cwds-accordion>
 `;
 
+    //replace the header with the new merged content
     result = result.replace(row.html,finalHTML);
-  } 
-}
+  } //if(row.header)
+} //for
 console.log(result);
 
 
