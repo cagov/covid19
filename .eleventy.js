@@ -382,7 +382,7 @@ module.exports = function(eleventyConfig) {
         
               //remove this content tag from html
               result = result.replace(bodyRowHTML,'');
-            }
+            } //while
         
             const finalHTML = 
 `<cwds-accordion>
