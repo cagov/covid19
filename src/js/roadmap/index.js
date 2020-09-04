@@ -199,7 +199,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac[item['Overall Status']]}</p>
-          <p>${ac["5"] ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+          <p>${ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })
