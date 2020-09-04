@@ -20,7 +20,7 @@ const getNextTag = (searchArea, tag) =>
 
 
 const getEndTag = (tag, html, startIndex) => {
-  let resultindex = startIndex;
+  let resultIndex = startIndex;
   let startTagsActive = 0;
   let loopsafe = 100;
   let searchArea = html.substring(startIndex);
@@ -29,10 +29,10 @@ const getEndTag = (tag, html, startIndex) => {
     const nextTag = getNextTag(searchArea,tag);
     if(!nextTag) throw `Can't find matching end tag - ${tag}`;
     const resultOffset = nextTag.index+nextTag.fulltag.length;
-    resultindex += resultOffset;
+    resultIndex += resultOffset;
     if(nextTag.isCloseTag) {
       if(startTagsActive===0) {
-        nextTag.index = resultindex;
+        nextTag.index = resultIndex;
         return nextTag;
       } else {
         startTagsActive--;
@@ -45,23 +45,46 @@ const getEndTag = (tag, html, startIndex) => {
   }
 }
 
-//grab the location of the next accordian tag in the html
-const accordionTags = getAccordionStartTags(html)
+//Create a string list of all accordion content in order
+const accordionContent = getAccordionStartTags(html)
   .map(nextTag=> ({
     nextTag,
     endTag:getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
   }))
-  .map(tags=> html.substring(tags.nextTag.index,tags.endTag.index));
+  .map(tags=> ({
+      html: html.substring(tags.nextTag.index,tags.endTag.index),
+      header: tags.nextTag.class==='wp-accordion'
+  }));
 
 
+let result = html;
+//loop and build content
+for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
+  const row = accordionContent[resultIndex];
+  if(row.header) {
+    let headerHTML = row.html;
+    headerHTML = headerHTML.replace(/wp-accordion/,'').replace(/ class=""/,'');
+
+    let bodyHTML = '';
+    //fill the body
+    let bodyIndex = resultIndex+1;
+    while (bodyIndex<accordionContent.length&&!accordionContent[bodyIndex].header) {
+      const bodyRow = accordionContent[bodyIndex];
+      let bodyRowHTML = bodyRow.html;
+      bodyRowHTML = bodyRowHTML.replace(/wp-accordion-content/,'').replace(/ class=""/,'');
+      
+      bodyHTML += bodyRowHTML;
+
+      bodyIndex++;
+
+      //remove this tag from html
+      result = result.replace(bodyRow.html,'');
+    }
+
+    result = result.replace(row.html,'[content goes here]');
+  } 
+}
+console.log(result);
 
 
-console.log(accordionTags)
-
-//let endTag = 
-
-
-
-
-//const fullResult = html.substring(nextTag.index,endTag.index);
-//console.log(fullResult);
+//console.log(accordionContent);
