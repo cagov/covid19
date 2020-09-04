@@ -1,3 +1,5 @@
+{% import "macros.njk" as macros %}
+
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-154336791-1', 'auto');
@@ -89,18 +91,32 @@ ga('tracker3.send', 'pageview');
 <a href="" class="list-group-item list-group-item-action guide active d-none"></a>
 {% endpagesection -%}
 
-<script type="module">{% include "../_buildoutput/built.js" %}</script>
+{% macro includeJavascriptByEnv(filename, dev) %}
+	{% if dev %}
+		<script type="module" src="/js/{{filename}}.js"></script>
+	{% else %}
+		<script type="module">
+			{% include "../_buildoutput/" + filename + ".js" %}
+		</script>
+	{% endif %}
+{% endmacro %}
+
+{{ macros.includeJavascriptByEnv('built', env.dev) }}
+
 {%- pagesection page, "sign-up-for-county-alerts" %}
-<script type="module">{% include "../_buildoutput/alerts.js" %}</script>
+	{{ macros.includeJavascriptByEnv('alerts', env.dev) }}
 {% endpagesection -%}
+
 {%- pagesection page, "telehealth" %}
-<script type="module">{% include "../_buildoutput/telehealth.js" %}</script>
+	{{ macros.includeJavascriptByEnv('telehealth', env.dev) }}
 {% endpagesection -%}
+
 {%- pagesection page, "plasma" %}
-<script type="module">{% include "../_buildoutput/plasma.js" %}</script>
+	{{ macros.includeJavascriptByEnv('plasma', env.dev) }}
 {% endpagesection -%}
+
 {%- pagesection page, "safer-economy" %}
-<script type="module">{% include "../_buildoutput/roadmap.js" %}</script>
+	{{ macros.includeJavascriptByEnv('roadmap', env.dev) }}
 {% endpagesection -%}
 {%- pagesection page, "what-is-open-where" %}
 <script type="module">{% include "../_buildoutput/what-open-where.js" %}</script>
