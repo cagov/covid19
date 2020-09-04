@@ -1,13 +1,13 @@
 const fs = require('fs');
 const html = fs.readFileSync('accordion_replacer/sample_input.html','utf8');
 
-const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/m;
-const getNextAccordionStartTag = searchArea => [...searchArea.matchAll(classsearchexp)]
+const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
   .map(r=> ({
     tag: r.groups.tag,
     class: r.groups.class,
     index: r.index,
-    fulltag: r[0] }))[0];
+    fulltag: r[0] }));
 
 
 const getNextTag = (searchArea, tag) => 
@@ -46,31 +46,22 @@ const getEndTag = (tag, html, startIndex) => {
 }
 
 //grab the location of the next accordian tag in the html
-let nextTag = getNextAccordionStartTag(html);
-let endTag = getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length);
-
-console.log(endTag);
-
-
-const fullResult = html.substring(nextTag.index,endTag.index);
-console.log(fullResult);
-
-/*
-for (let i=0;i<accordionTagIndexes.length-1;i++) {
-  accordionTagIndexes[i].endindex = accordionTagIndexes[i+1].index-1;
-}
-accordionTagIndexes[accordionTagIndexes.length-1].endindex = html.length;
-
-const htmlsections = 
-  accordionTagIndexes.map(r=> 
-      [...html.substring(r.index,r.endindex).matchAll(new RegExp('<\/?'+r.tag+'\b','gm'))]
-  );
-  
-let tagcount=0;
-//figure out the actual end tag by comparing finding pairs of tags.
-*/
-
-//console.log('here-----'+htmlsections[htmlsections.length-1].length+'-----there\n\n\n');
+const accordionTags = getAccordionStartTags(html)
+  .map(nextTag=> ({
+    nextTag,
+    endTag:getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
+  }))
+  .map(tags=> html.substring(tags.nextTag.index,tags.endTag.index));
 
 
-//console.log('final html - \n' + html);
+
+
+console.log(accordionTags)
+
+//let endTag = 
+
+
+
+
+//const fullResult = html.substring(nextTag.index,endTag.index);
+//console.log(fullResult);
