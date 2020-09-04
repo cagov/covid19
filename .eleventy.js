@@ -296,7 +296,7 @@ module.exports = function(eleventyConfig) {
   })
 
 
-  
+
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
