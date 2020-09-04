@@ -13,6 +13,10 @@ class CAGovReopening extends window.HTMLElement {
     if(this.dataset.title) {
       title = this.dataset.title;
     }
+    this.seeGuidanceText = 'See guidance for';
+    if(this.dataset.seeGuidanceText) {
+      this.seeGuidanceText = this.dataset.seeGuidanceText;
+    }
     let countyLabel = 'County';
     if(this.dataset.countyLabel) {
       countyLabel = this.dataset.countyLabel;
@@ -153,6 +157,18 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
+    let replaceAllInMap = function(str){
+      let mapObj = {
+        '&lt;': '<',
+        '&gt;': '>',
+        '’': '"',
+        '”': '"'
+      }
+      var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+      return str.replace(re, function(matched){
+        return mapObj[matched.toLowerCase()];
+      });
+    }
     this.cardHTML = '';
     let selectedCounties = this.countyStatuses;
     if(this.state['county']) {
@@ -183,7 +199,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac[item['Overall Status']]}</p>
-          <p><a href="/industry-guidance">${this.industryGuidanceLinkText}</a></p>
+          <p>${ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })
