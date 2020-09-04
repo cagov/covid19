@@ -169,12 +169,6 @@ export default function applyAccordionListeners() {
     return (link.hostname === document.location.hostname) ? link.href : `external-${link.href}`;
   };
 
-  // Check to see if we're on any of the available homepages.
-  const homepages = ['/', '/tl', '/es', '/ar', '/ko', '/vi', '/zh-hans', '/zh-hant'];
-  const onHomePage = (pathname) => {
-    return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
-  };
-
   // Report a single error to GA.
   const trackError = (error, fieldsObj = {}) => {
     window.ga('tracker3.send', 'event', Object.assign({
@@ -193,6 +187,12 @@ export default function applyAccordionListeners() {
     loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
     // Add a new listener to track events in real-time, after we get through the backlog.
     window.addEventListener('error', (event) => trackError(event.error, fieldsObj));
+  };
+
+  // Check to see if we're on any of the available homepages.
+  const homepages = ['/', '/tl', '/es', '/ar', '/ko', '/vi', '/zh-hans', '/zh-hant'];
+  const onHomePage = (pathname) => {
+    return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
   };
 
   // Don't load up these event listeners unless we've got Google Analytics on the page.
@@ -219,20 +219,6 @@ export default function applyAccordionListeners() {
       document.querySelectorAll('a.faq-item-link').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
       });
-
-      /* These are duplicated by existing event trackers above. May want to bring them back later.
-
-      // Report clicks on Latest News section.
-      document.querySelectorAll('a.news-item-link').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', annotateExternalLinks(link)));
-      });
-      // Report clicks on View More News link.
-      document.querySelectorAll('.news-wrap a.button').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', 'view more news'));
-      });
-
-      */
-
       // Report clicks on footer links.
       document.querySelectorAll('footer a').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-footer', annotateExternalLinks(link)));
