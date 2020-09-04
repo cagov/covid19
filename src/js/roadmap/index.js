@@ -13,9 +13,9 @@ class CAGovReopening extends window.HTMLElement {
     if(this.dataset.title) {
       title = this.dataset.title;
     }
-    let seeGuidanceText = 'See guidance for';
+    this.seeGuidanceText = 'See guidance for';
     if(this.dataset.seeGuidanceText) {
-      seeGuidanceText = this.dataset.seeGuidanceText;
+      this.seeGuidanceText = this.dataset.seeGuidanceText;
     }
     let countyLabel = 'County';
     if(this.dataset.countyLabel) {
@@ -199,7 +199,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac[item['Overall Status']]}</p>
-          <p>${seeGuidanceText} ${ac["5"] ? replaceAllInMap(ac["5"]) : ""}</p>
+          <p>${this.seeGuidanceText} ${ac["5"] ? replaceAllInMap(ac["5"]) : ""}</p>
         </div>`
       })
     })
