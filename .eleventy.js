@@ -296,6 +296,8 @@ module.exports = function(eleventyConfig) {
   })
 
 
+  
+
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
 
@@ -313,7 +315,6 @@ module.exports = function(eleventyConfig) {
         
         
         const getNextTag = (searchArea, tag) => 
-          // ...like /<\/?h3\b[^>]*>/m
            [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
             .map(r=> ({
               index: r.index,
