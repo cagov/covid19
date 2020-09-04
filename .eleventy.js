@@ -344,8 +344,8 @@ module.exports = function(eleventyConfig) {
               startTagsActive++;
             }
             searchArea = searchArea.substring(resultOffset);
-          }
-        }
+          } //while
+        } //getEndTag
         
         //Create a list of all accordion content in order
         const accordionContent = getAccordionStartTags(html)
