@@ -118,10 +118,6 @@ ga('tracker3.send', 'pageview');
 {%- pagesection page, "safer-economy" %}
 	{{ macros.includeJavascriptByEnv('roadmap', env.dev) }}
 {% endpagesection -%}
-{%- pagesection page, "what-is-open-where" %}
-<script type="module">{% include "../_buildoutput/what-open-where.js" %}</script>
-{% endpagesection -%}
-
 
 <script nomodule src="/js/es5.js"></script>
 
