@@ -160,19 +160,6 @@ module.exports = function(eleventyConfig) {
   }
   );
 
-  // Provides translated URL path based on provided language.
-  // Omit the path parameter to get the homepage.
-  eleventyConfig.addShortcode('translatedPath', (languageRecord, path = '') => {
-    const root = (languageRecord.id === 'en') ? '/' : languageRecord.pathpostfix;
-    return root + path;
-  });
-  // Get the translated homepage URL path.
-  eleventyConfig.addShortcode('translatedHomePath', (languageRecord) => {
-    return (languageRecord.id === 'en') ? '/' : languageRecord.pathpostfix;
-  });
-
-
-
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
 
   // Format dates within templates.
