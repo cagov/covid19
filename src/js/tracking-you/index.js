@@ -148,20 +148,10 @@ export default function applyAccordionListeners() {
   // Give all analytics calls a chance to finish before following the link.
   // Note this generates a function for use by an event listener.
   const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
-    // Use event.returnValue in IE, otherwise event.preventDefault.
-    event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-
     // Fire off reports to Google Analytics.
-    window.ga('send', 'event', 'click', eventAction, eventLabel);
-    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel);
-    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, {
-      // When this third call finishes, follow the link via hitCallback.
-      hitCallback: () => {
-        if (follow) {
-          document.location.href = href;
-        }
-      }
-    });
+    window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
   };
 
   // Add 'external' to front of any supplied links, when relevant.
@@ -200,21 +190,13 @@ export default function applyAccordionListeners() {
     // Track searches from all pages.
     document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
       form.addEventListener('submit', event => {
-        // Use event.returnValue in IE, otherwise event.preventDefault.
-        event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-
         const eventAction = window.location.pathname; // Originating page of the search.
         const eventLabel = form.querySelector('input[name="q"]').value; // User's search query.
 
         // Send info to Google Analytics.
-        window.ga('send', 'event', 'search', eventAction, eventLabel);
-        window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel);
-        window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, {
-          // When this third call finishes, submit the form.
-          hitCallback: () => {
-            form.submit();
-          }
-        });
+        window.ga('send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
       });
     });
 
