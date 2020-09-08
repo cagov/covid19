@@ -1,17 +1,31 @@
 const languages = require('./langData.json').languages;
 const camelCase = string => string.replace(/-([a-z])/g, g => g[1].toUpperCase());
 
-// Reusable function for checking for the existing keys
+const JSONPivot = (json, idprop, valueprop) => {
+  let result = {};
+  json.forEach(x=> result[x[idprop]]=x[valueprop]);
+  return result
+};
+
+// Reusable function for validating JSON
 const JSONValidator = (dataset,schema) => {
 // Sample Schema
 //  Table1: { require: ['text','_url'] }}
 
   for(const tablename of Object.keys(schema)) {
-    const tableschema = schema[tablename];
     const table = dataset[tablename];
     if(!table) return `${tablename} is missing.`;
+
+    const tableschema = schema[tablename];
+    if(tableschema.pivot) {
+      const idprop = tableschema.pivot[0];
+      const valueprop = tableschema.pivot[1];
+      table.forEach(r=>{table[r[idprop]]=r[valueprop]});
+    }
+    console.log(table);
+
     for(const colname of tableschema.require || [] )
-      if(table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}.`;
+      if(!table[colname] && table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}'.`;
   }
 }
 
@@ -35,8 +49,14 @@ const files = [
       require: ['colorLabel','_Color label','New cases','Positive tests','description','County tier']
     },
     Table3: {
-      require: ['_id','text']
-    }
+      pivot: ['_id','text'],
+      require: ['_id','text',
+        'Header – county risk level',
+        'Header – new cases',
+        'Header – positive tests',
+        'Description – new cases',
+        'Description – positive cases'
+    ]}
   }},
   { slug: 'reopening-roadmap-activity-data', split: true },
   { slug: 'was-this-page-helpful', split: true }
