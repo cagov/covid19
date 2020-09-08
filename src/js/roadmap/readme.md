@@ -16,3 +16,13 @@ npx csvtojson tiers.csv > tiers.json
 ```
 node flipit.js
 ```
+
+
+A temporary script was created to compare new tiers data. If we get new set of tiers csv and want to see if there is any change run:
+
+```
+npx csvtojson new-tiers-file.csv > newtiers.json
+node compare.js
+```
+
+And it will show how many counties changed tiers
