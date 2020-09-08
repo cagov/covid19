@@ -1,35 +1,6 @@
 const languages = require('./langData.json').languages;
 const camelCase = string => string.replace(/-([a-z])/g, g => g[1].toUpperCase());
 
-const JSONPivot = (json, idprop, valueprop) => {
-  let result = {};
-  json.forEach(x=> result[x[idprop]]=x[valueprop]);
-  return result
-};
-
-// Reusable function for validating JSON
-const JSONValidator = (dataset,schema) => {
-// Sample Schema
-//  Table1: { require: ['text','_url'] }}
-
-  for(const tablename of Object.keys(schema)) {
-    const table = dataset[tablename];
-    if(!table) return `${tablename} is missing.`;
-
-    const tableschema = schema[tablename];
-    if(tableschema.pivot) {
-      const idprop = tableschema.pivot[0];
-      const valueprop = tableschema.pivot[1];
-      table.forEach(r=>{table[r[idprop]]=r[valueprop]});
-    }
-    console.log(table);
-
-    for(const colname of tableschema.require || [] )
-      if(!table[colname] && table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}'.`;
-  }
-}
-
-
 // Pages with translations.
 // The 'slug' is the filename prefix.
 // The 'split' denotes whether...
@@ -61,6 +32,27 @@ const files = [
   { slug: 'reopening-roadmap-activity-data', split: true },
   { slug: 'was-this-page-helpful', split: true }
 ];
+
+// Reusable function for validating JSON
+const JSONValidator = (dataset,schema) => {
+  // Sample Schema
+  //  Table1: { require: ['_id','text'], pivot: ['_id','text'] }}
+  
+  for(const tablename of Object.keys(schema)) {
+    const table = dataset[tablename];
+    if(!table) return `${tablename} is missing.`;
+
+    const tableschema = schema[tablename];
+    if(tableschema.pivot) {
+      const idprop = tableschema.pivot[0];
+      const valueprop = tableschema.pivot[1];
+      table.forEach(r=>{table[r[idprop]]=r[valueprop]});
+    }
+
+    for(const colname of tableschema.require || [] )
+      if(!table[colname] && table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}'.`;
+  }
+}
 
 /*
   Roll up all data files for all languages.
