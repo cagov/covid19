@@ -148,31 +148,15 @@ export default function applyAccordionListeners() {
   // Give all analytics calls a chance to finish before following the link.
   // Note this generates a function for use by an event listener.
   const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
-    // Use event.returnValue in IE, otherwise event.preventDefault.
-    event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-
     // Fire off reports to Google Analytics.
-    window.ga('send', 'event', 'click', eventAction, eventLabel);
-    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel);
-    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, {
-      // When this third call finishes, follow the link via hitCallback.
-      hitCallback: () => {
-        if (follow) {
-          document.location.href = href;
-        }
-      }
-    });
+    window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
   };
 
   // Add 'external' to front of any supplied links, when relevant.
   const annotateExternalLinks = (link) => {
     return (link.hostname === document.location.hostname) ? link.href : `external-${link.href}`;
-  };
-
-  // Check to see if we're on any of the available homepages.
-  const homepages = ['/', '/tl', '/es', '/ar', '/ko', '/vi', '/zh-hans', '/zh-hant'];
-  const onHomePage = (pathname) => {
-    return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
   };
 
   // Report a single error to GA.
@@ -195,8 +179,27 @@ export default function applyAccordionListeners() {
     window.addEventListener('error', (event) => trackError(event.error, fieldsObj));
   };
 
+  // Check to see if we're on any of the available homepages.
+  const homepages = ['/', '/tl', '/es', '/ar', '/ko', '/vi', '/zh-hans', '/zh-hant'];
+  const onHomePage = (pathname) => {
+    return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
+  };
+
   // Don't load up these event listeners unless we've got Google Analytics on the page.
   if (window.ga && window.ga.create) {
+    // Track searches from all pages.
+    document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
+      form.addEventListener('submit', event => {
+        const eventAction = window.location.pathname; // Originating page of the search.
+        const eventLabel = form.querySelector('input[name="q"]').value; // User's search query.
+
+        // Send info to Google Analytics.
+        window.ga('send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+      });
+    });
+
     // Add these events if we're public, not in local development scenarios.
     if (window.location.hostname !== 'localhost') {
       trackErrors();
@@ -219,20 +222,6 @@ export default function applyAccordionListeners() {
       document.querySelectorAll('a.faq-item-link').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
       });
-
-      /* These are duplicated by existing event trackers above. May want to bring them back later.
-
-      // Report clicks on Latest News section.
-      document.querySelectorAll('a.news-item-link').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', annotateExternalLinks(link)));
-      });
-      // Report clicks on View More News link.
-      document.querySelectorAll('.news-wrap a.button').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-latest news', 'view more news'));
-      });
-
-      */
-
       // Report clicks on footer links.
       document.querySelectorAll('footer a').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-footer', annotateExternalLinks(link)));
