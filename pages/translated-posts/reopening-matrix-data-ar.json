@@ -1,59 +1,81 @@
 {
   "Table1": [
     {
-      "فئة المقاطعة": "أدنى حد",
-      "ملصق اللون": "أصفر",
-      "ـملصق اللون": "أصفر",
-      "وصف": "معظم العمليات التجارية الداخلية مفتوحة مع إجراء بعض التعديلات",
-      "حالات جديدة": "أقل من 1 الحالات الجديدة اليومية (لكل 100 ألف)  ",
-      "اختبارات إيجابية": "أقل من 2% اختبارات إيجابية"
+      "County tier": "Minimal",
+      "colorLabel": "Yellow",
+      "_Color label": "Yellow",
+      "New cases": "Less than 1",
+      "Positive tests": "Less than 2%",
+      "description": "Most indoor business operations are open with modifications"
     },
     {
-      "فئة المقاطعة": "متوسط",
-      "ملصق اللون": "برتقالي",
-      "ـملصق اللون": "برتقالي",
-      "وصف": "بعض العمليات التجارية الداخلية مفتوحة مع إجراء بعض التعديلات",
-      "حالات جديدة": "1 – 3.9 الحالات الجديدة اليومية (لكل 100 ألف)",
-      "اختبارات إيجابية": "2 – 4.9%<br>اختبارات إيجابية"
+      "County tier": "Moderate",
+      "colorLabel": "Orange",
+      "_Color label": "Orange",
+      "New cases": "1 – 3.9",
+      "Positive tests": "2 – 4.9%",
+      "description": "Some indoor business operations are open with modifications"
     },
     {
-      "فئة المقاطعة": "كبير",
-      "ملصق اللون": "أحمر",
-      "ـملصق اللون": "أحمر",
-      "وصف": "تم إغلاق بعض العمليات التجارية الداخلية غير الضرورية",
-      "حالات جديدة": "4-7 الحالات الجديدة اليومية (لكل 100 ألف)",
-      "اختبارات إيجابية": "5 -%8<br>اختبارات إيجابية"
+      "County tier": "Substantial",
+      "colorLabel": "Red",
+      "_Color label": "Red",
+      "New cases": "4-7",
+      "Positive tests": "5 – 8%",
+      "description": "Some non-essential indoor business operations are closed"
     },
     {
-      "فئة المقاطعة": "واسع الانتشار",
-      "ملصق اللون": "بنفسجي",
-      "ـملصق اللون": "بنفسجي",
-      "وصف": "تم إغلاق العديد من العمليات التجارية الداخلية غير الضرورية",
-      "حالات جديدة": "أكثر من 7 <br>حالات جديدة يوميًا (لكل 100 ألف)",
-      "اختبارات إيجابية": "أكثر من 8%<br>اختبارات إيجابية"
+      "County tier": "Widespread",
+      "colorLabel": "Purple",
+      "_Color label": "Purple",
+      "New cases": "More than 7",
+      "Positive tests": "More than 8%",
+      "description": "Many non-essential indoor business operations are closed"
     }
   ],
   "Table2": [
     {
-      "ملصقات": "الحالات الجديدة اليومية (لكل 100 ألف)"
+      "labels": "Daily new cases (per 100k)"
     },
     {
-      "ملصقات": "اختبارات إيجابية"
+      "labels": "Positive tests"
     },
     {
-      "ملصقات": "ابحث عن حالة الأنشطة في مقاطعتك"
+      "labels": "Find the status of activities in your county"
     },
     {
-      "ملصقات": "النشاط"
+      "labels": "Activity"
     },
     {
-      "ملصقات": "المقاطعة"
+      "labels": "County"
     },
     {
-      "ملصقات": "مستوى الخطر في المقاطعة"
+      "labels": "County risk level"
     },
     {
-      "ملصقات": "حالات جديدة"
+      "labels": "New cases"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Header – county risk level",
+      "text": "County risk level"
+    },
+    {
+      "_id": "Header – new cases",
+      "text": "New cases"
+    },
+    {
+      "_id": "Header – positive tests",
+      "text": "Positive tests"
+    },
+    {
+      "_id": "Description – new cases",
+      "text": "Daily new cases (per 100k)"
+    },
+    {
+      "_id": "Description – positive cases",
+      "text": "Positive tests"
     }
   ]
 }

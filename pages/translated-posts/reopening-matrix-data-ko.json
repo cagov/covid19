@@ -1,59 +1,81 @@
 {
   "Table1": [
     {
-      "카운티 단계": "약",
-      "색상표시": "노란색",
-      "_색상 표시": "노란색",
-      "설명": "대부분의 사업체는 변경 조치 이행 후 실내 운영 개시",
-      "신규 사례": "일일 신규 사례 발생 1건 이하(1십만명 당) ",
-      "양성 검사 결과": "양성 검사 결과 발생율 2% 이하"
+      "County tier": "Minimal",
+      "colorLabel": "Yellow",
+      "_Color label": "Yellow",
+      "New cases": "Less than 1",
+      "Positive tests": "Less than 2%",
+      "description": "Most indoor business operations are open with modifications"
     },
     {
-      "카운티 단계": "완화",
-      "색상표시": "오렌지색",
-      "_색상 표시": "오렌지색",
-      "설명": "일부 사업체는 변경 조치 이행 후 실내 운영 개시",
-      "신규 사례": "일일 신규 사례 발생 1 – 3.9건(1십만명 당)",
-      "양성 검사 결과": "양성 검사 결과 발생율<br>2 – 4.9%"
+      "County tier": "Moderate",
+      "colorLabel": "Orange",
+      "_Color label": "Orange",
+      "New cases": "1 – 3.9",
+      "Positive tests": "2 – 4.9%",
+      "description": "Some indoor business operations are open with modifications"
     },
     {
-      "카운티 단계": "상당",
-      "색상표시": "적색",
-      "_색상 표시": "적색",
-      "설명": "일부 비필수 사업체는 실내 운영 폐쇄",
-      "신규 사례": "일일 신규 사례 발생 4–7건(1십만명 당)",
-      "양성 검사 결과": "양성 검사 결과 발생율<br>5 – 8%"
+      "County tier": "Substantial",
+      "colorLabel": "Red",
+      "_Color label": "Red",
+      "New cases": "4-7",
+      "Positive tests": "5 – 8%",
+      "description": "Some non-essential indoor business operations are closed"
     },
     {
-      "카운티 단계": "광범위",
-      "색상표시": "자주색",
-      "_색상 표시": "자주색",
-      "설명": "다수의 비필수 사업체는 실내 운영 폐쇄",
-      "신규 사례": "일일 신규 사례 발생 <br>7건 이상(1십만명 당)",
-      "양성 검사 결과": "양성 검사 결과 발생율<br>8% 이상"
+      "County tier": "Widespread",
+      "colorLabel": "Purple",
+      "_Color label": "Purple",
+      "New cases": "More than 7",
+      "Positive tests": "More than 8%",
+      "description": "Many non-essential indoor business operations are closed"
     }
   ],
   "Table2": [
     {
-      "표시 항목": "일별 신규 사례"
+      "labels": "Daily new cases (per 100k)"
     },
     {
-      "표시 항목": "양성 검사 결과 발생율"
+      "labels": "Positive tests"
     },
     {
-      "표시 항목": "해당 카운티 내 활동 현황 파악"
+      "labels": "Find the status of activities in your county"
     },
     {
-      "표시 항목": "활동"
+      "labels": "Activity"
     },
     {
-      "표시 항목": "카운티"
+      "labels": "County"
     },
     {
-      "표시 항목": "카운티 위험도"
+      "labels": "County risk level"
     },
     {
-      "표시 항목": "신규 사례"
+      "labels": "New cases"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Header – county risk level",
+      "text": "County risk level"
+    },
+    {
+      "_id": "Header – new cases",
+      "text": "New cases"
+    },
+    {
+      "_id": "Header – positive tests",
+      "text": "Positive tests"
+    },
+    {
+      "_id": "Description – new cases",
+      "text": "Daily new cases (per 100k)"
+    },
+    {
+      "_id": "Description – positive cases",
+      "text": "Positive tests"
     }
   ]
 }

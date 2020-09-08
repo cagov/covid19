@@ -1,61 +1,5 @@
-{%- set JSONraw %}
-{
-  "Table1": [
-    {
-      "_colorLabel": "Yellow",
-      "County tier": "Minimal",
-      "description": "Most indoor business operations are open with modifications",
-      "New Cases": "Less than 1",
-      "Positive Tests": "Less than 2%"
-    },
-    {
-      "_colorLabel": "Orange",
-      "County tier": "Moderate",
-      "description": "Some indoor business operations are open with modifications",
-      "New Cases": "1 - 3.9",
-      "Positive Tests": "2 - 4.9%"
-    },
-    {
-      "_colorLabel": "Red",
-      "County tier": "Substantial",
-      "description": "Some non-essential indoor business operations are closed",
-      "New Cases": "4 - 7",
-      "Positive Tests": "5 - 8%"
-    },
-    {
-      "_colorLabel": "Purple",
-      "County tier": "Widespread",
-      "description": "Many non-essential indoor business operations are closed",
-      "New Cases": "More than 7",
-      "Positive Tests": "More than 8%"
-    }
-  ],
-  "Table2": [
-      {
-        "_id": "Header - county risk level",
-        "text": "County risk level"
-      },
-      {
-        "_id": "Header - new cases",
-        "text": "New cases"
-      },
-      {
-        "_id": "Header - positive tests",
-        "text": "Positive tests"
-      },
-      {
-        "_id": "Description - new cases",
-        "text": "Daily new cases (per 100k)"
-      },
-      {
-        "_id": "Description - positive cases",
-        "text": "Positive tests"
-      }
-    ]
-}
-{%- endset -%}
-{%- set JSON = JSONraw | jsonparse -%}
-{%- set Headers = JSON.Table2 | jsonpivot('_id','text') -%}
+{%- set JSON = pubData[language.id].reopeningMatrixData -%}
+{%- set Headers = JSON.Table3 | jsonpivot('_id','text') -%}
 {%- set Rows = JSON.Table1 -%}
 
 <!-- dynamic classnames are really cool but the purger cannot understand, hence this -->
@@ -63,13 +7,13 @@
 
 <div class="the-matrix d-none">
   {% for item in Rows | reverse -%}
-  {%- set CssColor = item['_colorLabel'] | lower -%}
+  {%- set CssColor = item['_Color label'] | lower -%}
   <div class="row text-center mr-0 ml-0 matrix-row">
     <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - county risk level']}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – county risk level']}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
@@ -85,13 +29,13 @@
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - new cases']}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – new cases']}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-              <h5>{{item['New Cases']}}</h5>
+              <h5>{{item['New cases']}}</h5>
           <p class="card-text text-small mt-3">
-          {{Headers['Description - new cases']}}
+          {{Headers['Description – new cases']}}
           </p>
         </div>
       </div>
@@ -100,13 +44,13 @@
         <div class="card border-0 bg-transparent">
         {%- if loop.first %}
           <div class="card-header bg-white border-0">
-            <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header - positive tests']}}</h4>
+            <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – positive tests']}}</h4>
           </div>
         {%- endif -%}
               <div class="card-body text-black">
-                  <h5>{{item['Positive Tests']}}</h5>
+                  <h5>{{item['Positive tests']}}</h5>
                 <p class="card-text text-small mt-3">
-                {{Headers['Description - positive cases']}}
+                {{Headers['Description – positive cases']}}
                 </p>
               </div>
         </div>
