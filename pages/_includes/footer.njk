@@ -11,31 +11,17 @@ ga('tracker3.send', 'pageview');
 </script>
 <script async defer src='https://www.google-analytics.com/analytics.js'></script>
 
-{%- set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset -%}
-{%- set JSON = JSONraw | jsonparse -%}
-{%- set FooterLinks1 = JSON.Table1 -%}
-{%- set FooterLinks2 = JSON.Table2 -%}
-{%- set Terms = JSON.Table3 -%}
-{%- set FooterLinks4 = JSON.Table4 -%}
-{%- set homelinkpath = "/" + (tags | langRecord).pathpostfix -%}
-
-{%- set langFilePostfix = tags | langFilePostfix -%}
-{%- set langIncludeFolder="../translated-posts/" if langFilePostfix else "../wordpress-posts/" -%}
-{%- set WasHelpfulJSONraw %}{% include langIncludeFolder + "was-this-page-helpful" + tags | langFilePostfix + ".json" %}{% endset -%}
-{%- set HelpfulJSON = WasHelpfulJSONraw | jsonparse -%}
-{%- set WasHelpfulStrings = HelpfulJSON.Table1 -%}
-
 <pagerating-section>
 	<cwds-pagerating 
 	data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
-	data-question="{{WasHelpfulStrings[0].undefined}}"
-	data-yes="{{WasHelpfulStrings[1].undefined}}"
-	data-no="{{WasHelpfulStrings[2].undefined}}"
-	data-comment-prompt="{{WasHelpfulStrings[3].undefined}}"
-	data-thanks-feedback="{{WasHelpfulStrings[4].undefined}}"
-	data-thanks-comments="{{WasHelpfulStrings[5].undefined}}"
-	data-submit="{{WasHelpfulStrings[6].undefined}}"
-	data-required-field="{{WasHelpfulStrings[7].undefined}}"
+	data-question="{{pubData[language.id].wasThisPageHelpful.Table1[0].undefined}}"
+	data-yes="{{pubData[language.id].wasThisPageHelpful.Table1[1].undefined}}"
+	data-no="{{pubData[language.id].wasThisPageHelpful.Table1[2].undefined}}"
+	data-comment-prompt="{{pubData[language.id].wasThisPageHelpful.Table1[3].undefined}}"
+	data-thanks-feedback="{{pubData[language.id].wasThisPageHelpful.Table1[4].undefined}}"
+	data-thanks-comments="{{pubData[language.id].wasThisPageHelpful.Table1[5].undefined}}"
+	data-submit="{{pubData[language.id].wasThisPageHelpful.Table1[6].undefined}}"
+	data-required-field="{{pubData[language.id].wasThisPageHelpful.Table1[7].undefined}}"
 	></cwds-pagerating>	
 </pagerating-section>
 
@@ -46,23 +32,23 @@ ga('tracker3.send', 'pageview');
 
 		<div class="footer-section-col footer-section-col-nav trigger">
 			<nav class="footer-section-nav" role="navigation" aria-label="Footer navigation">
-				{% for item in FooterLinks4 %}
+				{% for item in pubData[language.id].footerData.Table4 %}
 					<a class="footer-section-nav-link" href="{{ item.URL }}">{{ item.Name | safe }}</a>
 				{% endfor %}
 			</nav>
 		</div>
 
 		<div class="footer-section-col footer-section-col-logo trigger">
-			<a class="footer-section-logo" href="{{homelinkpath}}">
+			<a class="footer-section-logo" href="{{ '' | toTranslatedPath(tags) }}">
 				<svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><title>California for All</title><g class="mark-ca"><path class="logo-mark-orange" d="M48.2,83l-13.2,28.6h25.2L48.2,83z M66.7,126.9H28.1l-6,13H0.2l48.7-99.8l44.6,99.8H72.1L66.7,126.9z"/><polygon class="logo-mark-orange" points="117,42.9 117,122.4 146.9,122.4 146.9,139.9 97.1,139.9 97.1,42.9"/><polygon class="logo-mark-orange" points="170.2,42.9 170.2,122.4 200,122.4 200,139.9 150.2,139.9 150.2,42.9"/></g><g class="mark-all"><path class="logo-mark-white" d="M21,8.7c-2-2.2-4.3-3.3-7.1-3.3c-4.6,0-8.4,3.9-8.4,8.7c0,4.8,3.7,8.7,8.4,8.7c2.9,0,5.3-1.2,7.4-3.6l3.4,3.4 c-2.8,3.1-6.6,5.1-10.8,5.1C6.2,27.8,0,21.7,0,14.1C0,6.5,6.2,0.4,13.9,0.4c4.2,0,8.1,2,10.8,5.1L21,8.7z"/><path class="logo-mark-white" d="M37,11.8l-3.6,7.9h6.9L37,11.8z M42,23.9H31.4l-1.6,3.6h-6L37.1,0l12.3,27.5h-5.9L42,23.9z"/><polygon class="logo-mark-white" points="56.1,0.8 56.1,22.7 64.3,22.7 64.3,27.5 50.6,27.5 50.6,0.8"/><rect class="logo-mark-white" x="66" y="0.8" width="5.5" height="26.7"/><polygon class="logo-mark-orange" points="74.6,27.5 74.6,0.8 89.1,0.8 89.1,5.6 80.1,5.6 80.1,11.1 87.6,11.1 87.6,15.9 80.1,15.9 80.1,27.5"/><path class="logo-mark-orange" d="M95.1,14.1c0,4.8,3.7,8.7,8.4,8.7c4.6,0,8.4-3.9,8.4-8.7c0-4.8-3.8-8.7-8.4-8.7C98.8,5.4,95.1,9.3,95.1,14.1 M117.4,14.1c0,7.6-6.2,13.7-13.9,13.7c-7.7,0-13.9-6.1-13.9-13.7c0-7.6,6.2-13.7,13.9-13.7C111.2,0.4,117.4,6.5,117.4,14.1"/><path class="logo-mark-orange" d="M125.3,5.6v6.7h2.9c2.3,0,3.9-1.1,3.9-3.4c0-2.2-1.6-3.3-3.9-3.3H125.3z M125.3,16.8v10.6h-5.5V0.8h8.8 c4.9,0,9,3.1,9,8c0,3.1-1.7,5.7-4.2,7l5,11.6h-6L128,16.8H125.3z"/><polygon class="logo-mark-white" points="159.4,0.8 164.9,0.8 164.9,28.2 145.9,11.6 145.9,27.5 140.4,27.5 140.4,0 159.4,16.6"/><rect x="167.3" y="0.8" class="logo-mark-white" width="5.5" height="26.7"/><path class="logo-mark-white" d="M187.2,11.8l-3.6,7.9h6.9L187.2,11.8z M192.3,23.9h-10.6l-1.6,3.6h-6L187.4,0l12.3,27.5h-5.9L192.3,23.9z"/></g></svg>
 			</a>
 		</div>
 
 		<div class="footer-section-col footer-section-col-hotline trigger">
 			<div class="footer-section-hotline">
-				<div class="footer-section-hotline-label">{{Terms[7].Text | safe}}</div>
+				<div class="footer-section-hotline-label">{{pubData[language.id].footerData.Table3[7].Text | safe}}</div>
 				<a class="footer-section-hotline-number" href="tel:8334224255">1-833-422-4255</a>
-				<div class="footer-section-hotline-hours">{{Terms[8].Text | safe}}</div>
+				<div class="footer-section-hotline-hours">{{pubData[language.id].footerData.Table3[8].Text | safe}}</div>
 			</div>
 		</div>
 
@@ -75,11 +61,11 @@ ga('tracker3.send', 'pageview');
 
 	<div class="footer-section-utility trigger">
 		<nav class="footer-section-utility-nav" role="navigation" arial-label="Other State of California Resources">
-			{% for item in FooterLinks1 %}
+			{% for item in pubData[language.id].footerData.Table1 %}
 			<a class="footer-section-utility-nav-link" href="{{ item.URL }}">{{ item.Name | safe }}</a>
 			{% endfor %}
 		</nav>
-		<span class="footer-section-utility-official">{{Terms[0].Text | safe}}</span>
+		<span class="footer-section-utility-official">{{pubData[language.id].footerData.Table3[0].Text | safe}}</span>
 	</div>
           
 </footer>
