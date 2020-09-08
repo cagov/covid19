@@ -13,6 +13,10 @@ class CAGovReopening extends window.HTMLElement {
     if(this.dataset.title) {
       title = this.dataset.title;
     }
+    this.seeGuidanceText = 'See guidance for';
+    if(this.dataset.seeGuidanceText) {
+      this.seeGuidanceText = this.dataset.seeGuidanceText;
+    }
     let countyLabel = 'County';
     if(this.dataset.countyLabel) {
       countyLabel = this.dataset.countyLabel;
@@ -153,6 +157,18 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
+    let replaceAllInMap = function(str){
+      let mapObj = {
+        '&lt;': '<',
+        '&gt;': '>',
+        '’': '"',
+        '”': '"'
+      }
+      var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+      return str.replace(re, function(matched){
+        return mapObj[matched.toLowerCase()];
+      });
+    }
     this.cardHTML = '';
     let selectedCounties = this.countyStatuses;
     if(this.state['county']) {
@@ -162,6 +178,14 @@ class CAGovReopening extends window.HTMLElement {
           selectedCounties.push(item)
         }
       })
+    }
+    // if we are in one of these counties schools can reopen: 
+    let schoolOKList = ["Alpine", "Del Norte", "El Dorado", "Humboldt", "Lake", "Lassen", "Mariposa", "Modoc", "Mono", "Nevada", "Placer", "Plumas", "San Diego", "Shasta", "Siskiyou", "Trinity", "Tuolumne"];
+    let schoolShenanigans = function(county) {
+      if(schoolOKList.indexOf(county) > -1) {
+        return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
+      }
+      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.`;
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
@@ -182,8 +206,8 @@ class CAGovReopening extends window.HTMLElement {
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
-          <p>${ac[item['Overall Status']]}</p>
-          <p><a href="/industry-guidance">${this.industryGuidanceLinkText}</a></p>
+          <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
+          <p>${ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })

@@ -1,12 +1,9 @@
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
-const filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
-  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
+let filesSiteData = [];
 
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
@@ -300,61 +297,118 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
-    const contentclass = 'wp-accordion-content';
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
       if(processedPostMap.get(outputPath)!==initialHTML) {
-        const dom = new JSDOM(html);
-        const document = dom.window.document;
+        const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+        const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
+          .map(r=> ({
+            tag: r.groups.tag,
+            class: r.groups.class,
+            index: r.index,
+            fulltag: r[0] }));
+        
+        
+        const getNextTag = (searchArea, tag) => 
+           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
+            .map(r=> ({
+              index: r.index,
+              isCloseTag: r.groups.closeslash.length>0,
+              fulltag: r[0] }))[0];
+        
+        
+        const getEndTag = (tag, html, startIndex) => {
+          let resultIndex = startIndex;
+          let startTagsActive = 0;
+          let loopsafe = 100;
+          let searchArea = html.substring(startIndex);
+        
+          while(--loopsafe>0) {
+            const nextTag = getNextTag(searchArea,tag);
+            if(!nextTag) throw `Can't find matching end tag - ${tag}`;
+            const resultOffset = nextTag.index+nextTag.fulltag.length;
+            resultIndex += resultOffset;
+            if(nextTag.isCloseTag) {
+              if(startTagsActive===0) {
+                nextTag.index = resultIndex;
+                return nextTag;
+              } else {
+                startTagsActive--;
+              }
+            } else {
+              //new open tag
+              startTagsActive++;
+            }
+            searchArea = searchArea.substring(resultOffset);
+          } //while
+        } //getEndTag
+        
+        //Create a list of all accordion content in order
+        const accordionContent = getAccordionStartTags(html)
+          .map(nextTag=> ({
+            nextTag,
+            endTag:getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
+          }))
+          .map(tags=> ({
+              html: html.substring(tags.nextTag.index,tags.endTag.index),
+              header: tags.nextTag.class==='wp-accordion'
+          }));
+        
+        
+        let result = html;
+        //loop and build content
+        for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
+          const row = accordionContent[resultIndex];
+          if(row.header) {
+            const headerHTML = row.html
+              .replace(/wp-accordion/,'')
+              .replace(/ class=""/,'');
+        
+            let bodyHTML = '';
+            //fill the body
+            let bodyIndex = resultIndex+1;
+            while (bodyIndex<accordionContent.length&&!accordionContent[bodyIndex].header) {
+              const bodyRowHTML = accordionContent[bodyIndex].html;
+              bodyHTML += bodyRowHTML
+                .replace(/wp-accordion-content/,'')
+                .replace(/ class=""/,'')
+                + '\n';
+        
+              bodyIndex++;
+        
+              //remove this content tag from html
+              result = result.replace(bodyRowHTML,'');
+            } //while
+        
+            const finalHTML = 
+`<cwds-accordion>
+  <div class="card">
+    <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+      <div class="accordion-title">
+${headerHTML}
+      </div>
+    </button>
+    <div class="card-container" aria-hidden="true" style="height: 0px;">
+      <div class="card-body">
+${bodyHTML}
+      </div>
+    </div>
+  </div>
+</cwds-accordion>
+`;
+        
+            //replace the header with the new merged content
+            result = result.replace(row.html,finalHTML);
+          } //if(row.header)
+        } //for
 
-        for(const header of document.querySelectorAll(`.${headerclass}`)) {
-          //create the wrapper element and wrap it around the header
-          const cwdscontainer = document.createElement('cwds-accordion');
-          const container = document.createElement('div');
-          container.classList.add('card');
-          cwdscontainer.appendChild(container);
-
-          header.parentNode.insertBefore(cwdscontainer, header);
-          container.appendChild(header);
-
-          //remove the special wp class
-          header.classList.remove(headerclass);
-          if (header.classList.length===0) header.removeAttribute('class');
-
-          //create the card body section and add it to the container
-          const body = document.createElement('div');
-          body.className="card-body";
-          container.appendChild(body);
-
-          //Add all remaining content classes to the card body, they must be directly after the new container
-          let direct;
-          while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
-            body.appendChild(direct);
-
-            //remove custom class name
-            direct.classList.remove(contentclass);
-            if (direct.classList.length===0) direct.removeAttribute('class');
-          }
-
-          //apply required html around components
-          header.outerHTML=`
-            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-              <div class="accordion-title">
-                ${header.outerHTML}
-              </div>
-            </button>`;
-
-          body.outerHTML = `
-            <div class="card-container" aria-hidden="true" style="height: 0px;">
-              ${body.outerHTML}
-            </div>`;
-        }
+        //cache result
         processedPostMap.set(outputPath,initialHTML);
         if(process.env.NODE_ENV === 'development') {
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
-        return dom.serialize();
+        return result;
       }
     }
     return html;
@@ -370,6 +424,13 @@ module.exports = function(eleventyConfig) {
       //Scan the DOM for a files.covid19.ca.gov links
       const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
         .map(r=> r.groups.URL);
+
+      if(filesSiteData.length===0) {
+        //init filesitedata in this thread before it is used
+        filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
+      }
+
 
       for(const domTarget of domTargets) {
         if(filesSiteData.indexOf(domTarget)===-1) {

@@ -1,3 +1,5 @@
+{% import "macros.njk" as macros %}
+
 <!doctype html>
 <html {{ tags | htmllangattributes | safe }}>
   <head>
@@ -10,6 +12,9 @@
       <meta name="robots" content="noindex">
     {%- endif %}
     <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
+
+    <!-- Collect errors -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
     <meta content="{{ title | safe }}" property="og:title">
     {% if page.fileSlug === "healthcorps" %}
@@ -38,13 +43,7 @@
 			<link rel="stylesheet" type="text/css" href="/fonts/vi.css">
 		{% endif %}
 
-    {% if env.dev %}
-      <link rel="stylesheet" type="text/css" href="/css/build/development.css">
-    {% else %}
-      <style>
-        {% include "../_buildoutput/built.css" %}
-      </style>
-    {% endif %}
+    {{ macros.includeCSSByEnv("built", env.dev) }}
     
     <!-- WC polyfill for legacy Edge -->
     <script>
@@ -65,6 +64,7 @@
     {% set JSONraw %}{% include "../wordpress-posts/footer-data" + tags | langFilePostfix + ".json" %}{% endset %}
     {% set JSON = JSONraw | jsonparse %}
     {% set Terms = JSON.Table3 %}
+
     <main id="main">
       
       <div class="container-fluid jumbotron {% if page.fileSlug === "roadmap-counties" %}county-img{% endif %} inverse-hyperlink jumbo-img">
