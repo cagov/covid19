@@ -62,7 +62,7 @@
 <div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn"></div>
 
 <div class="the-matrix d-none">
-  {% for item in Rows -%}
+  {% for item in Rows | reverse -%}
   {%- set CssColor = item['_colorLabel'] | lower -%}
   <div class="row text-center mr-0 ml-0 matrix-row">
     <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
