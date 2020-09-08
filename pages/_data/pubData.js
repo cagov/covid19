@@ -2,23 +2,19 @@ const languages = require('./langData.json').languages;
 const camelCase = string => string.replace(/-([a-z])/g, g => g[1].toUpperCase());
 
 // Reusable function for checking for the existing keys
-const validateColumnExists = (dataset,tablename,...colnames) => {
-  const table = dataset[tablename];
-  if(!table) return `Table ${tablename} is missing.`;
-  for(const colname of colnames)
-    if(table.some(x=>!x[colname])) return `${tablename} is missing at least one '${colname}.`;
-  return null;
+const JSONValidator = (dataset,schema) => {
+// Sample Schema
+//  Table1: { require: ['text','_url'] }}
+
+  for(const tablename of Object.keys(schema)) {
+    const tableschema = schema[tablename];
+    const table = dataset[tablename];
+    if(!table) return `${tablename} is missing.`;
+    for(const colname of tableschema.require || [] )
+      if(table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}.`;
+  }
 }
 
-const validatePeopleWantToKnow = dataset => 
-  validateColumnExists(dataset,'Table1','text','_url') 
-  || validateColumnExists(dataset,'Table2','text','_url') 
-;
-
-const validateReopeningMatrixData = dataset => 
-  validateColumnExists(dataset,'Table1','colorLabel','_Color label','New cases','Positive tests','description','County tier')
-  || validateColumnExists(dataset,'Table3','_id','text')
-;
 
 // Pages with translations.
 // The 'slug' is the filename prefix.
@@ -29,8 +25,19 @@ const files = [
   { slug: 'do-dont', split: false },
   { slug: 'footer-data', split: false },
   { slug: 'homepage-text', split: true },
-  { slug: 'people-want-to-know', split: true, tableValidator: validatePeopleWantToKnow },
-  { slug: 'reopening-matrix-data', split: true, tableValidator: validateReopeningMatrixData },
+  { slug: 'people-want-to-know', split: true, tableSchema: {
+    Table1: {
+      require: ['text','_url']
+    }
+  }},
+  { slug: 'reopening-matrix-data', split: true, tableSchema: {
+    Table1: {
+      require: ['colorLabel','_Color label','New cases','Positive tests','description','County tier']
+    },
+    Table3: {
+      require: ['_id','text']
+    }
+  }},
   { slug: 'reopening-roadmap-activity-data', split: true },
   { slug: 'was-this-page-helpful', split: true }
 ];
@@ -55,8 +62,9 @@ const data = languages.reduce((katamari, language) => {
     const parentDir = (language.id === 'en') ? 'wordpress-posts' : nonEnglishDir;
     const path = `../${parentDir}/${file.slug}${language.filepostfix}.json`;
     const tableData = require(path);
-    if(file.tableValidator) {
-      var errorMessage = file.tableValidator(tableData);
+
+    if(file.tableSchema) {
+      var errorMessage = JSONValidator(tableData,file.tableSchema);
       if(errorMessage) {
         throw new Error(`${path}\n${errorMessage}`);
       }
