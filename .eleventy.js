@@ -252,10 +252,6 @@ module.exports = function(eleventyConfig) {
     return textstring;
   });
 
-  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
-  //Usage...
-  //        {{0|_statsdata_}}
-
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
       return content;
@@ -465,10 +461,13 @@ ${bodyHTML}
     getLangRecord(tags).hreflang;
   const getLangId = tags => 
     getLangRecord(tags).id;
+  const getLangIncludeFolder = tags =>
+    (getLangRecord(tags).id === 'en') ? '../wordpress-posts/' : '../translated-posts/';
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
   eleventyConfig.addFilter('langId', getLangId);
+  eleventyConfig.addFilter('langIncludeFolder', getLangIncludeFolder);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
