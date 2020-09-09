@@ -4,33 +4,33 @@
       "Cấp tại quận": "Tối thiểu",
       "colorLabel": "Màu vàng",
       "_Nhãn màu": "Màu vàng",
-      "mô tả": "Hầu hết các hoạt động kinh doanh trong nhà được mở cửa với điều chỉnh sửa đổi",
-      "Số ca mắc mới": "Chưa tới 1 Ca mắc mới trong ngày (mỗi 100k) ",
-      "Xét nghiệm dương tính": "Chưa tới 2% xét nghiệm dương tính"
+      "Số ca mắc mới": "Dưới 1",
+      "Xét nghiệm dương tính": "Dưới 2%",
+      "mô tả": "Hầu hết các hoạt động kinh doanh trong nhà đều được phép mở cửa với điều chỉnh sửa đổi"
     },
     {
       "Cấp tại quận": "Trung bình",
       "colorLabel": "Màu cam",
       "_Nhãn màu": "Màu cam",
-      "mô tả": "Một số hoạt động kinh doanh trong nhà với điều chỉnh sửa đổi",
-      "Số ca mắc mới": "1 – 3,9 Ca mắc mới trong ngày (mỗi 100k)",
-      "Xét nghiệm dương tính": "2 – 4,9%<br>xét nghiệm dương tính"
+      "Số ca mắc mới": "1 – 3.9",
+      "Xét nghiệm dương tính": "2 – 4.9%",
+      "mô tả": "Một số hoạt động kinh doanh trong nhà được phép mở cửa với điều chỉnh sửa đổi"
     },
     {
-      "Cấp tại quận": "Quan trọng",
+      "Cấp tại quận": "Nghiêm trọng",
       "colorLabel": "Màu đỏ",
       "_Nhãn màu": "Màu đỏ",
-      "mô tả": "Một số hoạt động kinh doanh không thiết yếu phải đóng cửa",
-      "Số ca mắc mới": "4-7 Ca mắc mới trong ngày (mỗi 100k)",
-      "Xét nghiệm dương tính": "5 – 8%<br>xét nghiệm dương tính"
+      "Số ca mắc mới": "4-7",
+      "Xét nghiệm dương tính": "5 – 8%",
+      "mô tả": "Một số hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa"
     },
     {
       "Cấp tại quận": "Lan rộng",
       "colorLabel": "Màu tím",
       "_Nhãn màu": "Màu tím",
-      "mô tả": "Nhiều hoạt động kinh doanh không thiết yếu phải đóng cửa",
-      "Số ca mắc mới": "Hơn 7 <br>Ca mắc mới trong ngày (mỗi 100k)",
-      "Xét nghiệm dương tính": "Hơn 8%<br>xét nghiệm dương tính"
+      "Số ca mắc mới": "Trên 7",
+      "Xét nghiệm dương tính": "Trên 8%",
+      "mô tả": "Nhiều hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa"
     }
   ],
   "Table2": [
@@ -54,6 +54,28 @@
     },
     {
       "nhãn": "Số ca mắc mới"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Tiêu đề – mức độ rủi ro của quận",
+      "văn bản": "Mức độ rủi ro của quận"
+    },
+    {
+      "_id": "Tiêu đề – số ca mắc mới",
+      "văn bản": "Số ca mắc mới"
+    },
+    {
+      "_id": "Tiêu đề – Xét nghiệm dương tính",
+      "văn bản": "Xét nghiệm dương tính"
+    },
+    {
+      "_id": "Mô tả – số ca mắc mới",
+      "văn bản": "Số ca mắc mới trong ngày (mỗi 100k)"
+    },
+    {
+      "_id": "Mô tả – số ca dương tính",
+      "văn bản": "Xét nghiệm dương tính"
     }
   ]
 }
