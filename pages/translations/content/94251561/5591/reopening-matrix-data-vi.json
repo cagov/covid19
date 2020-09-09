@@ -1,0 +1,81 @@
+{
+  "Table1": [
+    {
+      "Cấp tại quận": "Tối thiểu",
+      "colorLabel": "Màu vàng",
+      "_Nhãn màu": "Màu vàng",
+      "Số ca mắc mới": "Dưới 1",
+      "Xét nghiệm dương tính": "Dưới 2%",
+      "mô tả": "Hầu hết các hoạt động kinh doanh trong nhà đều được phép mở cửa với điều chỉnh sửa đổi"
+    },
+    {
+      "Cấp tại quận": "Trung bình",
+      "colorLabel": "Màu cam",
+      "_Nhãn màu": "Màu cam",
+      "Số ca mắc mới": "1 – 3.9",
+      "Xét nghiệm dương tính": "2 – 4.9%",
+      "mô tả": "Một số hoạt động kinh doanh trong nhà được phép mở cửa với điều chỉnh sửa đổi"
+    },
+    {
+      "Cấp tại quận": "Nghiêm trọng",
+      "colorLabel": "Màu đỏ",
+      "_Nhãn màu": "Màu đỏ",
+      "Số ca mắc mới": "4-7",
+      "Xét nghiệm dương tính": "5 – 8%",
+      "mô tả": "Một số hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa"
+    },
+    {
+      "Cấp tại quận": "Lan rộng",
+      "colorLabel": "Màu tím",
+      "_Nhãn màu": "Màu tím",
+      "Số ca mắc mới": "Trên 7",
+      "Xét nghiệm dương tính": "Trên 8%",
+      "mô tả": "Nhiều hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa"
+    }
+  ],
+  "Table2": [
+    {
+      "nhãn": "Số ca mắc mới trong ngày (mỗi 100k)"
+    },
+    {
+      "nhãn": "Xét nghiệm dương tính"
+    },
+    {
+      "nhãn": "Tìm trạng thái cho các hoạt động tại quận của quý vị"
+    },
+    {
+      "nhãn": "Hoạt động"
+    },
+    {
+      "nhãn": "Quận"
+    },
+    {
+      "nhãn": "Mức độ rủi ro của quận"
+    },
+    {
+      "nhãn": "Số ca mắc mới"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Tiêu đề – mức độ rủi ro của quận",
+      "văn bản": "Mức độ rủi ro của quận"
+    },
+    {
+      "_id": "Tiêu đề – số ca mắc mới",
+      "văn bản": "Số ca mắc mới"
+    },
+    {
+      "_id": "Tiêu đề – Xét nghiệm dương tính",
+      "văn bản": "Xét nghiệm dương tính"
+    },
+    {
+      "_id": "Mô tả – số ca mắc mới",
+      "văn bản": "Số ca mắc mới trong ngày (mỗi 100k)"
+    },
+    {
+      "_id": "Mô tả – số ca dương tính",
+      "văn bản": "Xét nghiệm dương tính"
+    }
+  ]
+}
