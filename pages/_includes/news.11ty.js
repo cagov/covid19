@@ -27,11 +27,7 @@ class News {
           day: "numeric",
           month: "long",
           year: "numeric",
-        })} at ${pressdate.toLocaleTimeString(locales, {
-          timeZone,
-          hour: "numeric",
-          minute: "numeric",
-        })} </small></p>
+        })}</small></p>
           <div class="card-text" lang="en-US">${
             item.data.meta.length > 221
               ? item.data.meta.slice(0, 220) + "..."
