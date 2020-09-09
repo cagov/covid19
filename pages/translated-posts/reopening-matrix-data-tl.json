@@ -4,33 +4,33 @@
       "County tier": "Kaunti",
       "colorLabel": "Dilaw",
       "_Color label": "Dilaw",
-      "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
-      "Mga bagong kaso": "Wala pa sa 1 Arawang bagong kaso (sa bawat 100k) ",
-      "Mga positibong pagsusuri": "Wala pa sa 2% positibong pagsusuri"
+      "Mga bagong kaso": "Wala pang 1",
+      "Mga positibong pagsusuri": "Wala pang 2%",
+      "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
     },
     {
-      "County tier": "Moderate",
+      "County tier": "Katamtaman",
       "colorLabel": "Orange",
       "_Color label": "Orange",
-      "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
-      "Mga bagong kaso": "1 – 3.9 na Arawang bagong kaso (sa bawat 100k)",
-      "Mga positibong pagsusuri": "2 – 4.9%<br>positibong pagsusuri"
+      "Mga bagong kaso": "1 – 3.9",
+      "Mga positibong pagsusuri": "2 – 4.9%",
+      "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
     },
     {
-      "County tier": "Substantial",
+      "County tier": "Marami",
       "colorLabel": "Pula",
       "_Color label": "Pula",
-      "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "4-7 Arawang bagong kaso (sa bawat 100k)",
-      "Mga positibong pagsusuri": "5 – 8%<br>positibong pagsusuri"
+      "Mga bagong kaso": "4-7",
+      "Mga positibong pagsusuri": "5 – 8%",
+      "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo"
     },
     {
-      "County tier": "Widespread",
+      "County tier": "Napakarami",
       "colorLabel": "Purple",
       "_Color label": "Purple",
-      "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo",
-      "Mga bagong kaso": "Mahigit sa 7 <br>Arawang bagong kaso (sa bawat 100k)",
-      "Mga positibong pagsusuri": "Mahigit sa 8%<br>positibong pagsusuri"
+      "Mga bagong kaso": "Mahigit 7",
+      "Mga positibong pagsusuri": "Mahigit 8%",
+      "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo"
     }
   ],
   "Table2": [
@@ -54,6 +54,28 @@
     },
     {
       "mga label": "Mga bagong kaso"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Header – antas ng panganib sa county",
+      "text": "Antas ng panganib sa county"
+    },
+    {
+      "_id": "Header – mga bagong kaso",
+      "text": "Mga bagong kaso"
+    },
+    {
+      "_id": "Header – mga positibong pagsusuri",
+      "text": "Mga positibong pagsusuri"
+    },
+    {
+      "_id": "Paglalarawan – mga bagong kaso",
+      "text": "Mga bagong kaso araw-araw (bawat 100k)"
+    },
+    {
+      "_id": "Paglalarawan – mga bagong kaso",
+      "text": "Mga positibong pagsusuri"
     }
   ]
 }
