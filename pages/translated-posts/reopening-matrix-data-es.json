@@ -3,34 +3,34 @@
     {
       "Nivel del condado": "Mínimo",
       "Color de la etiqueta": "Amarillo",
-      "_Descripción del color de la": "Amarillo",
-      "Descripción": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones.",
-      "Casos nuevos": "Menos de 1 caso nuevo diario (por cada 100 mil) ",
-      "Pruebas positivas": "Menos del 2&nbsp;% de pruebas positivas"
+      "_Color de la etiqueta": "Amarillo",
+      "Casos nuevos": "Menos de 1",
+      "Pruebas positivas": "Menos del 2&nbsp;%",
+      "Descripción": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones."
     },
     {
       "Nivel del condado": "Moderado",
       "Color de la etiqueta": "Naranja",
-      "_Descripción del color de la": "Naranja",
-      "Descripción": "Algunas operaciones comerciales en interiores están abiertas con modificaciones.",
-      "Casos nuevos": "De 1 a 3.9 casos nuevos diarios (por cada 100 mil)",
-      "Pruebas positivas": "De 2&nbsp;% a 4.9&nbsp;%<br> de pruebas positivas"
+      "_Color de la etiqueta": "Naranja",
+      "Casos nuevos": "De 1 a 3.9",
+      "Pruebas positivas": "De 2&nbsp;% a 4.9&nbsp;%",
+      "Descripción": "Algunas operaciones comerciales en interiores están abiertas con modificaciones."
     },
     {
       "Nivel del condado": "Sustancial",
       "Color de la etiqueta": "Rojo",
-      "_Descripción del color de la": "Rojo",
-      "Descripción": "Algunas operaciones comerciales en interiores no esenciales están cerradas.",
-      "Casos nuevos": "De 4 a 7 casos nuevos diarios (por cada 100 mil)",
-      "Pruebas positivas": "De 5&nbsp;% a 8&nbsp;%<br> de pruebas positivas"
+      "_Color de la etiqueta": "Rojo",
+      "Casos nuevos": "De 4 a 7",
+      "Pruebas positivas": "De 5&nbsp;% a 8&nbsp;%",
+      "Descripción": "Algunas operaciones comerciales en interiores no esenciales están cerradas."
     },
     {
       "Nivel del condado": "Extendido",
       "Color de la etiqueta": "Morado",
-      "_Descripción del color de la": "Morado",
-      "Descripción": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas.",
-      "Casos nuevos": "Más de 7 <br>casos nuevos diarios (por cada 100 mil)",
-      "Pruebas positivas": "Más del 8&nbsp;%<br>de pruebas positivas"
+      "_Color de la etiqueta": "Morado",
+      "Casos nuevos": "Más de 7",
+      "Pruebas positivas": "Más del 8&nbsp;%",
+      "Descripción": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas."
     }
   ],
   "Table2": [
@@ -54,6 +54,28 @@
     },
     {
       "Etiquetas": "Casos nuevos"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Encabezado: Nivel de riesgo del condado",
+      "texto": "Nivel de riesgo del condado"
+    },
+    {
+      "_id": "Encabezado: Casos nuevos",
+      "texto": "Casos nuevos"
+    },
+    {
+      "_id": "Encabezado: Pruebas positivas",
+      "texto": "Pruebas positivas"
+    },
+    {
+      "_id": "Descripción: Casos nuevos",
+      "texto": "Casos nuevos diarios (por cada 100 mil)"
+    },
+    {
+      "_id": "Descripción: Casos positivos",
+      "texto": "Pruebas positivas"
     }
   ]
 }
