@@ -1,0 +1,81 @@
+{
+  "Table1": [
+    {
+      "Nivel del condado": "Mínimo",
+      "Color de la etiqueta": "Amarillo",
+      "_Color de la etiqueta": "Amarillo",
+      "Casos nuevos": "Menos de 1",
+      "Pruebas positivas": "Menos del 2&nbsp;%",
+      "Descripción": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones."
+    },
+    {
+      "Nivel del condado": "Moderado",
+      "Color de la etiqueta": "Naranja",
+      "_Color de la etiqueta": "Naranja",
+      "Casos nuevos": "De 1 a 3.9",
+      "Pruebas positivas": "De 2&nbsp;% a 4.9&nbsp;%",
+      "Descripción": "Algunas operaciones comerciales en interiores están abiertas con modificaciones."
+    },
+    {
+      "Nivel del condado": "Sustancial",
+      "Color de la etiqueta": "Rojo",
+      "_Color de la etiqueta": "Rojo",
+      "Casos nuevos": "De 4 a 7",
+      "Pruebas positivas": "De 5&nbsp;% a 8&nbsp;%",
+      "Descripción": "Algunas operaciones comerciales en interiores no esenciales están cerradas."
+    },
+    {
+      "Nivel del condado": "Extendido",
+      "Color de la etiqueta": "Morado",
+      "_Color de la etiqueta": "Morado",
+      "Casos nuevos": "Más de 7",
+      "Pruebas positivas": "Más del 8&nbsp;%",
+      "Descripción": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas."
+    }
+  ],
+  "Table2": [
+    {
+      "Etiquetas": "Casos nuevos diarios (por cada 100 mil)"
+    },
+    {
+      "Etiquetas": "Pruebas positivas"
+    },
+    {
+      "Etiquetas": "Encuentre el estado de las actividades en su condado"
+    },
+    {
+      "Etiquetas": "Actividad"
+    },
+    {
+      "Etiquetas": "Condado"
+    },
+    {
+      "Etiquetas": "Nivel de riesgo del condado"
+    },
+    {
+      "Etiquetas": "Casos nuevos"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Encabezado: Nivel de riesgo del condado",
+      "texto": "Nivel de riesgo del condado"
+    },
+    {
+      "_id": "Encabezado: Casos nuevos",
+      "texto": "Casos nuevos"
+    },
+    {
+      "_id": "Encabezado: Pruebas positivas",
+      "texto": "Pruebas positivas"
+    },
+    {
+      "_id": "Descripción: Casos nuevos",
+      "texto": "Casos nuevos diarios (por cada 100 mil)"
+    },
+    {
+      "_id": "Descripción: Casos positivos",
+      "texto": "Pruebas positivas"
+    }
+  ]
+}
