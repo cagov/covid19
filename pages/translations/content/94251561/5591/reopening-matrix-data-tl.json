@@ -1,0 +1,81 @@
+{
+  "Table1": [
+    {
+      "County tier": "Kaunti",
+      "colorLabel": "Dilaw",
+      "_Color label": "Dilaw",
+      "Mga bagong kaso": "Wala pang 1",
+      "Mga positibong pagsusuri": "Wala pang 2%",
+      "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
+    },
+    {
+      "County tier": "Katamtaman",
+      "colorLabel": "Orange",
+      "_Color label": "Orange",
+      "Mga bagong kaso": "1 – 3.9",
+      "Mga positibong pagsusuri": "2 – 4.9%",
+      "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
+    },
+    {
+      "County tier": "Marami",
+      "colorLabel": "Pula",
+      "_Color label": "Pula",
+      "Mga bagong kaso": "4-7",
+      "Mga positibong pagsusuri": "5 – 8%",
+      "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo"
+    },
+    {
+      "County tier": "Napakarami",
+      "colorLabel": "Purple",
+      "_Color label": "Purple",
+      "Mga bagong kaso": "Mahigit 7",
+      "Mga positibong pagsusuri": "Mahigit 8%",
+      "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo"
+    }
+  ],
+  "Table2": [
+    {
+      "mga label": "Mga bagong kaso araw-araw (bawat 100k)"
+    },
+    {
+      "mga label": "Mga positibong pagsusuri"
+    },
+    {
+      "mga label": "Hanapin ang status ng mga aktibidad sa iyong county"
+    },
+    {
+      "mga label": "Aktibidad"
+    },
+    {
+      "mga label": "County"
+    },
+    {
+      "mga label": "Antas ng panganib sa county"
+    },
+    {
+      "mga label": "Mga bagong kaso"
+    }
+  ],
+  "Table3": [
+    {
+      "_id": "Header – antas ng panganib sa county",
+      "text": "Antas ng panganib sa county"
+    },
+    {
+      "_id": "Header – mga bagong kaso",
+      "text": "Mga bagong kaso"
+    },
+    {
+      "_id": "Header – mga positibong pagsusuri",
+      "text": "Mga positibong pagsusuri"
+    },
+    {
+      "_id": "Paglalarawan – mga bagong kaso",
+      "text": "Mga bagong kaso araw-araw (bawat 100k)"
+    },
+    {
+      "_id": "Paglalarawan – mga bagong kaso",
+      "text": "Mga positibong pagsusuri"
+    }
+  ]
+}
