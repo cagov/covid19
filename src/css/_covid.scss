@@ -377,12 +377,6 @@ li.list-group-item.alpha-footer {
 .footer a:hover,
 .footer a:visited {
   color: #000;
-  background-image: linear-gradient(to right, #1D2574 50%, transparent 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 1px;
-  background-position: center bottom 5%;
-  background-origin: padding-box;
-  text-decoration: none !important;
 }
 
 .alpha-footer .container .list-group {
@@ -444,16 +438,6 @@ a .card-title {
   justify-content: space-between;
   display: flex;
   padding-right: 2%;
-}
-
-.card-text a,
-a:visited {
-  background-image: linear-gradient(to right, #1D2574 50%, transparent 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 1px;
-  background-position: center bottom 5%;
-  background-origin: padding-box;
-  text-decoration: none !important;
 }
 
 .card-text a:hover {
