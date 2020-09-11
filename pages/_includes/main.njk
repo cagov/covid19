@@ -117,7 +117,7 @@
 	<video-section>
 		<section class="video trigger" role="region" aria-labelledby="video-resources">
 			<div class="video-wrap">
-				<h3 class="video-headline text-center"><a class="video-headline-link" href="/" id="video-resources">{{varVideoTitle}}</a></h3>
+				<h3 class="video-headline text-center"><span class="video-headline-link" id="video-resources">{{varVideoTitle}}</span></h3>
 				<div class="video-grid">
 					<div class="video-grid-col">
 						<article class="video-item transition-0_3 transform-scale-hover" data-video="{{ varVideoID }}">
@@ -155,7 +155,7 @@
 	<faq-section>
 		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 			<div class="header-wrap">
-				<h4 class="faq-headline"><a class="faq-headline-link" href="/" id="want-to-know">{{varPeopleWantToKnowTitle}}</a></h4>
+				<h4 class="faq-headline"><span class="faq-headline-link" id="want-to-know">{{varPeopleWantToKnowTitle}}</span></h4>
 			</div>
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
