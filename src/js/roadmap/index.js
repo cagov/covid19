@@ -23,9 +23,9 @@ class CAGovReopening extends window.HTMLElement {
     }
     let activityPlaceholder = 'Enter a business or activity';
     let countyPlaceholder = 'Enter county' // a ZIP code or 
-    this.countyRestrictionsAdvice = 'Check your county website for local restrictions';
-    if(this.dataset.countyRestrictionsAdvice) {
-      this.countyRestrictionsAdvice = this.dataset.countyRestrictionsAdvice;
+    this.countyRestrictionsAdvice = 'Counties can restrict further.';
+    if(this.dataset.countyRestrictions) {
+      this.countyRestrictions = this.dataset.countyRestrictions;
     }
     this.industryGuidanceLinkText = 'View industry guidance';
     if(this.dataset.industryGuidance) {
@@ -192,8 +192,8 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice}</p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
+        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
