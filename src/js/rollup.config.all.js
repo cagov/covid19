@@ -26,11 +26,11 @@ const getLastUpdatedFile = (directoryPath) => {
 
 // Combines all the Rollup files into one.
 export default [
-  ...((getLastUpdatedFile(__dirname + '/alerts/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/alerts.js'))) ? [alerts] : []),
-  ...((getLastUpdatedFile(__dirname + '/plasma/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/plasma.js'))) ? [plasma] : []),
-  ...((getLastUpdatedFile(__dirname + '/roadmap/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/roadmap.js'))) ? [reopening] : []),
-  ...((getLastUpdatedFile(__dirname + '/telehealth/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/telehealth.js'))) ? [telehealth] : []),
-  ...((getLastUpdatedFile(__dirname + '/video/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/video.js'))) ? [video] : []),
+  ...((process.env.NODE_ENV === 'development' && getLastUpdatedFile(__dirname + '/alerts/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/alerts.js'))) ? [alerts] : []),
+  ...((process.env.NODE_ENV === 'development' && getLastUpdatedFile(__dirname + '/plasma/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/plasma.js'))) ? [plasma] : []),
+  ...((process.env.NODE_ENV === 'development' && getLastUpdatedFile(__dirname + '/roadmap/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/roadmap.js'))) ? [reopening] : []),
+  ...((process.env.NODE_ENV === 'development' && getLastUpdatedFile(__dirname + '/telehealth/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/telehealth.js'))) ? [telehealth] : []),
+  ...((process.env.NODE_ENV === 'development' && getLastUpdatedFile(__dirname + '/video/') > getFileUpdatedDate(path.join(__dirname, '../../docs/js/video.js'))) ? [video] : []),
   esm,
   // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
