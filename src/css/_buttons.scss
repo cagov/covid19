@@ -185,8 +185,21 @@ button.card-header.accordion-alpha:focus {
   color: #000 !important;
 }
 
-.toggle-button {
+.toggle-links {
   a {
-    text-decoration: none;
+    text-decoration: none !important;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 0 20px;
+    background-color: #fff;
+  }
+  .toggle-active {
+    background-color: #1F2574;
+    color: #fff;
   }
 }
