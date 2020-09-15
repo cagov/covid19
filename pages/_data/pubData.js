@@ -49,25 +49,31 @@ const JSONValidator = (dataset,schema) => {
 }
 
 const applyPivots = (slug,dataset) => {
-  console.log(slug);
+  //console.log(slug);
   //todo: tableize
   if(slug==='reopening-matrix-data') {
-    console.log('pivot...');
+    //console.log('pivot...');
     const table = dataset.Table3;
-    console.log(table);
+    //console.log(table);
 
     if(table.length>1) {
       const singleRow = {};
       while(table.length){   
-        const row = table.pop();
+        const row = table.shift(); //remove and retrieve the first item off the array
         const keys = Object.keys(row);
-        singleRow[row[keys[0]]]=row[keys[1]];
+
+        let newName = row[keys[0]];
+        while (singleRow[newName]) {
+          newName+='_';
+        }
+
+        singleRow[newName]=row[keys[1]];
       }
       table.push(singleRow);
     }
 
 
-    console.log(table);
+    //console.log(table);
   }
 
 }
@@ -98,16 +104,16 @@ const restoreEnglishKeys = (nonEnglishData, englishData, slug) => {
       });
 
 
-//console.log(columnMap);
+console.log(columnMap);
       if(Object.keys(columnMap).length) {
-        //console.log(columnMap);
+        console.log(columnMap);
         nonEnglishTable.forEach(row => {
           Object.keys(columnMap).forEach(columnName => {
             const columnValue = row[columnName];
             row[columnMap[columnName]]=columnValue;
           });
         });
-        //console.log(nonEnglishTable);
+        console.log(nonEnglishTable);
       }
 
     }
