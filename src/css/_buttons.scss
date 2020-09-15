@@ -137,7 +137,6 @@ button.card-header.accordion-alpha:focus {
   background-color: #2d2d2d;
   border-color: #2d2d2d;
 }
-
 .btn-search {
   color: #1d2574 !important;
   background-color: #fff !important;
@@ -165,15 +164,10 @@ button.card-header.accordion-alpha:focus {
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-  background-color: transparent;
-  border-radius: 50px !important;
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  padding-right: 1.5rem !important;
-  padding-left: 1.5rem !important;
-  font-weight: 500;
+  font-size: 1.25rem;
+  display: inline-block;
+  padding: 0 20px;
+  background-color: #fff;
 }
 
 .btn-matrix.bg-purple-btn,
@@ -185,9 +179,9 @@ button.card-header.accordion-alpha:focus {
   color: #000 !important;
 }
 
-.toggle-links {
+.interior-page .toggle-links {
   a {
-    text-decoration: none !important;
+    text-decoration: none;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -199,7 +193,7 @@ button.card-header.accordion-alpha:focus {
     background-color: #fff;
   }
   .toggle-active {
-    background-color: #1F2574;
+    background-color: #1f2574;
     color: #fff;
   }
 }
