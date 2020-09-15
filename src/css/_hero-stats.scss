@@ -106,6 +106,7 @@ hero-stats {
 			}
 		}
 		&-link {
+			text-decoration: none;
 			&:focus {
 				outline: 3px solid $yellow;
 				.hero-headline {
@@ -339,23 +340,24 @@ hero-stats {
 		text-align: center;
 		&-link {
 			text-transform: uppercase;
-				color: $lightestblue;
-				border-radius: 1.25rem;
-				border:1px solid;
-				padding: .65rem .75rem .5rem .75rem;
-				transition: background .3s $slow-curve;
-				font-size: .85rem;
-				display: inline-block;
-				margin-top: 1rem;
-				margin-left: .3rem;
-				margin-right: .3rem;
-				@include tablet {
-					font-size: 85%;
-					white-space: nowrap;
-				}
-				@include tablet-wide {
-					padding: .65rem 1em .5rem 1rem;
-					font-size: 1rem;}
+			color: $lightestblue;
+			border-radius: 1.25rem;
+			border:1px solid;
+			padding: .65rem .75rem .5rem .75rem;
+			transition: background .3s $slow-curve;
+			font-size: .85rem;
+			display: inline-block;
+			margin-top: 1rem;
+			margin-left: .3rem;
+			margin-right: .3rem;
+			text-decoration: none;
+			@include tablet {
+				font-size: 85%;
+				white-space: nowrap;
+			}
+			@include tablet-wide {
+				padding: .65rem 1em .5rem 1rem;
+				font-size: 1rem;}
 			@include tablet-wide {
 				padding: .5rem 1rem;
 				font-size: 1rem;
