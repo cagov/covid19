@@ -49,13 +49,9 @@ const JSONValidator = (dataset,schema) => {
 }
 
 const applyPivots = (slug,dataset) => {
-  //console.log(slug);
   //todo: tableize
   if(slug==='reopening-matrix-data') {
-    //console.log('pivot...');
     const table = dataset.Table3;
-    //console.log(table);
-
     if(table.length>1) {
       const singleRow = {};
       while(table.length){   
@@ -64,36 +60,24 @@ const applyPivots = (slug,dataset) => {
 
         let newName = row[keys[0]];
         while (singleRow[newName]) {
-          newName+='_';
+          newName+='_'; //in case of duplicate column name
         }
-
         singleRow[newName]=row[keys[1]];
       }
       table.push(singleRow);
     }
-
-
-    //console.log(table);
   }
-
 }
 
-const restoreEnglishKeys = (nonEnglishData, englishData, slug) => {
-
-
+const restoreEnglishKeys = (nonEnglishData, englishData) => {
 //use the first row in each english table to make new keys for the non-english version
   const tableNames = Object.keys(englishData);
-  //console.log(tableNames);
   tableNames.forEach(tableName => {
-    const englishTable = englishData[tableName];
-    //console.log(tableName);
-    const nonEnglishTable = nonEnglishData[tableName];
-    if(englishTable&&englishTable.length&&nonEnglishTable&&nonEnglishTable.length) {
+    const englishTable = englishData[tableName] || [];
+    const nonEnglishTable = nonEnglishData[tableName] || [];
+    if(englishTable.length&&nonEnglishTable.length) {
       const englishColumnNames = Object.keys(englishTable[0]);
       const nonEnglishColumnNames = Object.keys(nonEnglishTable[0]);
-      console.log(slug + '-' + tableName);
-      //console.log(englishColumnNames);
-      //console.log(nonEnglishColumnNames);
 
       let columnMap = {};
       englishColumnNames.forEach((name,i) => {
@@ -104,22 +88,18 @@ const restoreEnglishKeys = (nonEnglishData, englishData, slug) => {
       });
 
 
-console.log(columnMap);
       if(Object.keys(columnMap).length) {
         console.log(columnMap);
         nonEnglishTable.forEach(row => {
           Object.keys(columnMap).forEach(columnName => {
-            const columnValue = row[columnName];
-            row[columnMap[columnName]]=columnValue;
+            row[columnMap[columnName]]=row[columnName];
+            delete row[columnName];
           });
         });
         console.log(nonEnglishTable);
       }
-
     }
-  })
-
-  //console.log(nonEnglishData);
+  });
 }
 
 /*
@@ -149,7 +129,7 @@ const data = languages.reduce((katamari, language) => {
     if(!isEnglish) {
       const englishData = require(englishPath);
       applyPivots(file.slug, englishData);
-      restoreEnglishKeys(tableData, englishData, file.slug);
+      restoreEnglishKeys(tableData, englishData);
     }
 
     if(file.tableSchema) {
