@@ -103,7 +103,7 @@
 
       <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
 
-      <div class="grid-layout-hd">
+      <div class="grid-layout-hd bg-ccc bd-ccc">
         <div class="grid-main bg-lightblue"><h3>California’s county risk levels</h3></div>
         <div class="grid-single single1">
           <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
@@ -137,10 +137,25 @@
   <div class="container py-2">
     <div class="row d-flex justify-content-md-center">
       <h2>Infections by group</h2>
+
+      <div>
+        <div class="grid-layout-hd toggle-links">
+          <div class="grid-single single1">
+            <a href="#" class="toggle-active js-toggle-group">Ethnicity</a>
+          </div>
+          <div class="grid-single single2">
+            <a href="#" class="js-toggle-group">Gender</a>
+          </div>
+          <div class="grid-single single3">
+            <a href="#" class="js-toggle-group">Age</a>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="row d-flex justify-content-md-center">
       
-      <div class='tableauPlaceholder' >
+      <div class="tableauPlaceholder js-toggle-group-target">
         <object class='tableauViz' width='100%' height='327px' style='display:none;'>
           <param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> 
           <param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Ethnicity' />
@@ -151,17 +166,36 @@
           <param name='showAppBanner' value='false' />
         </object>
       </div>
-<!--
-Gender
 
-<param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
-<param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Gender' /></object></div>
-
-Age
-
-<param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
-<param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Age' />
--->
+      <script>
+        let ethnicityEmbed = /*html*/`<object class='tableauViz' width='100%' height='327px' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> 
+          <param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Ethnicity' />
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='showAppBanner' value='false' />
+        </object>`;
+        let genderEmbed = /*html*/`<object class='tableauViz' width='100%' height='327px' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
+          <param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Gender' />
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='showAppBanner' value='false' />
+        </object>`;
+        let ageEmbed = /*html*/`<object class='tableauViz' width='100%' height='327px' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
+          <param name='name' value='COVID-19Webversion2020-09-14Alameda&#47;Age' />
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='showAppBanner' value='false' />
+        </object>`;
+      </script>
     </div>
   </div>
 </div>

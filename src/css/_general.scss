@@ -636,8 +636,6 @@ th {
   grid-row-gap: 1px;
   padding: 0;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  border: solid 1px #ccc;
-  background-color: #ccc;
 }
 .grid-main {
   grid-column:1/5;
@@ -1871,6 +1869,8 @@ font {
 .bg-orange-btn {background-color:#d97641 !important;}
 .bg-yellow-btn {background-color:#e6b735 !important;}
 .bg-green-btn {background-color:#3ae705 !important;}
+.bg-ccc { background-color: #ccc; }
+.bd-ccc { border: solid 1px #ccc; }
 
 .bg-lightblue {background-color: #f3f5fc !important;}
 .p-rel {position: relative !important;}
