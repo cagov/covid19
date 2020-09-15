@@ -20,8 +20,7 @@ const files = [
       require: ['colorLabel','_Color label','New cases','Positive tests','description','County tier']
     },
     Table3: {
-      pivot: ['_id','text'],
-      require: ['_id','text',
+      require: [
         'Header – county risk level',
         'Header – new cases',
         'Header – positive tests',
@@ -36,22 +35,85 @@ const files = [
 // Reusable function for validating JSON
 const JSONValidator = (dataset,schema) => {
   // Sample Schema
-  //  Table1: { require: ['_id','text'], pivot: ['_id','text'] }}
+  //  Table1: { require: ['_id','text'] }}
   
   for(const tablename of Object.keys(schema)) {
     const table = dataset[tablename];
     if(!table) return `${tablename} is missing.`;
 
     const tableschema = schema[tablename];
-    if(tableschema.pivot) {
-      const idprop = tableschema.pivot[0];
-      const valueprop = tableschema.pivot[1];
-      table.forEach(r=>{table[r[idprop]]=r[valueprop]});
-    }
 
     for(const colname of tableschema.require || [] )
       if(!table[colname] && table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}'.`;
   }
+}
+
+const applyPivots = (slug,dataset) => {
+  console.log(slug);
+  //todo: tableize
+  if(slug==='reopening-matrix-data') {
+    console.log('pivot...');
+    const table = dataset.Table3;
+    console.log(table);
+
+    if(table.length>1) {
+      const singleRow = {};
+      while(table.length){   
+        const row = table.pop();
+        const keys = Object.keys(row);
+        singleRow[row[keys[0]]]=row[keys[1]];
+      }
+      table.push(singleRow);
+    }
+
+
+    console.log(table);
+  }
+
+}
+
+const restoreEnglishKeys = (nonEnglishData, englishData, slug) => {
+
+
+//use the first row in each english table to make new keys for the non-english version
+  const tableNames = Object.keys(englishData);
+  //console.log(tableNames);
+  tableNames.forEach(tableName => {
+    const englishTable = englishData[tableName];
+    //console.log(tableName);
+    const nonEnglishTable = nonEnglishData[tableName];
+    if(englishTable&&englishTable.length&&nonEnglishTable&&nonEnglishTable.length) {
+      const englishColumnNames = Object.keys(englishTable[0]);
+      const nonEnglishColumnNames = Object.keys(nonEnglishTable[0]);
+      console.log(slug + '-' + tableName);
+      //console.log(englishColumnNames);
+      //console.log(nonEnglishColumnNames);
+
+      let columnMap = {};
+      englishColumnNames.forEach((name,i) => {
+        const nonEnglishName = nonEnglishColumnNames[i];
+        if(name!==nonEnglishName) {
+          columnMap[nonEnglishName] = name;
+        }
+      });
+
+
+//console.log(columnMap);
+      if(Object.keys(columnMap).length) {
+        //console.log(columnMap);
+        nonEnglishTable.forEach(row => {
+          Object.keys(columnMap).forEach(columnName => {
+            const columnValue = row[columnName];
+            row[columnMap[columnName]]=columnValue;
+          });
+        });
+        //console.log(nonEnglishTable);
+      }
+
+    }
+  })
+
+  //console.log(nonEnglishData);
 }
 
 /*
@@ -70,10 +132,19 @@ const JSONValidator = (dataset,schema) => {
 const data = languages.reduce((katamari, language) => {
   // Fetch all data files for this particular language.
   katamari[language.id] = files.reduce((tumbleweed, file) => {
+    const isEnglish = language.id === 'en';
     const nonEnglishDir = (file.split) ? 'translated-posts' : 'wordpress-posts';
-    const parentDir = (language.id === 'en') ? 'wordpress-posts' : nonEnglishDir;
-    const path = `../${parentDir}/${file.slug}${language.filepostfix}.json`;
+    const englishPath = `../wordpress-posts/${file.slug}.json`;
+    const path = isEnglish ? englishPath : `../${nonEnglishDir}/${file.slug}${language.filepostfix}.json`;
     const tableData = require(path);
+
+    applyPivots(file.slug,tableData);
+
+    if(!isEnglish) {
+      const englishData = require(englishPath);
+      applyPivots(file.slug, englishData);
+      restoreEnglishKeys(tableData, englishData, file.slug);
+    }
 
     if(file.tableSchema) {
       var errorMessage = JSONValidator(tableData,file.tableSchema);
