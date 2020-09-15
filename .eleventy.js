@@ -527,7 +527,7 @@ ${bodyHTML}
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
   return {
-    templateFormats: ["html", "njk"],
+    templateFormats: ["html", "njk", "11ty.js"],
     dir: {
       input: "pages",
       output: "docs",

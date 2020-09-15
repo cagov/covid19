@@ -23,9 +23,9 @@ class CAGovReopening extends window.HTMLElement {
     }
     let activityPlaceholder = 'Enter a business or activity';
     let countyPlaceholder = 'Enter county' // a ZIP code or 
-    this.countyRestrictionsAdvice = 'Check your county website for local restrictions';
-    if(this.dataset.countyRestrictionsAdvice) {
-      this.countyRestrictionsAdvice = this.dataset.countyRestrictionsAdvice;
+    this.countyRestrictionsAdvice = 'Counties can restrict further.';
+    if(this.dataset.countyRestrictions) {
+      this.countyRestrictions = this.dataset.countyRestrictions;
     }
     this.industryGuidanceLinkText = 'View industry guidance';
     if(this.dataset.industryGuidance) {
@@ -180,7 +180,7 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen: 
-    let schoolOKList = ["Alpine", "Del Norte", "El Dorado", "Humboldt", "Lake", "Lassen", "Mariposa", "Modoc", "Mono", "Nevada", "Placer", "Plumas", "San Diego", "Shasta", "Siskiyou", "Trinity", "Tuolumne"];
+    let schoolOKList = ["Alpine", "Calaveras", "Del Norte", "El Dorado", "Humboldt", "Lake", "Lassen", "Mariposa", "Modoc", "Mono", "Napa", "Nevada", "Placer", "Plumas", "San Diego", "San Francisco", "Shasta", "Sierra", "Siskiyou", "Trinity", "Tuolumne"];
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
@@ -192,8 +192,8 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description} <a href="#reopening-data">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice}</p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
+        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
