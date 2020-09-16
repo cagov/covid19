@@ -1,13 +1,21 @@
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 const fs = require('fs');
 const md5 = require('md5');
-const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
-let htmlmap = [];
+let filesSiteData = [];
 
+let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
+langData.languages.forEach(writeTranslatedData);
+fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+// this is temporary, we will get this data from an API:
+fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
+// this needs to be translated, need to get the translated version from translated page
+fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+
+
+let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
@@ -244,10 +252,6 @@ module.exports = function(eleventyConfig) {
     return textstring;
   });
 
-  eleventyConfig.addFilter('_statsdata_', index => Object.values(statsData)[index]);
-  //Usage...
-  //        {{0|_statsdata_}}
-
   const contentfrompage = (content, page, slug) => {
     if(page.fileSlug && slug && page.fileSlug.toLocaleLowerCase().startsWith(slug.toLocaleLowerCase())) {
       return content;
@@ -289,62 +293,118 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addTransform("findaccordions", function(html, outputPath) {
     const headerclass = 'wp-accordion';
-    const contentclass = 'wp-accordion-content';
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
       if(processedPostMap.get(outputPath)!==initialHTML) {
-        const dom = new JSDOM(html);
-        const document = dom.window.document;
+        const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+        const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
+          .map(r=> ({
+            tag: r.groups.tag,
+            class: r.groups.class,
+            index: r.index,
+            fulltag: r[0] }));
+        
+        
+        const getNextTag = (searchArea, tag) => 
+           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
+            .map(r=> ({
+              index: r.index,
+              isCloseTag: r.groups.closeslash.length>0,
+              fulltag: r[0] }))[0];
+        
+        
+        const getEndTag = (tag, html, startIndex) => {
+          let resultIndex = startIndex;
+          let startTagsActive = 0;
+          let loopsafe = 100;
+          let searchArea = html.substring(startIndex);
+        
+          while(--loopsafe>0) {
+            const nextTag = getNextTag(searchArea,tag);
+            if(!nextTag) throw `Can't find matching end tag - ${tag}`;
+            const resultOffset = nextTag.index+nextTag.fulltag.length;
+            resultIndex += resultOffset;
+            if(nextTag.isCloseTag) {
+              if(startTagsActive===0) {
+                nextTag.index = resultIndex;
+                return nextTag;
+              } else {
+                startTagsActive--;
+              }
+            } else {
+              //new open tag
+              startTagsActive++;
+            }
+            searchArea = searchArea.substring(resultOffset);
+          } //while
+        } //getEndTag
+        
+        //Create a list of all accordion content in order
+        const accordionContent = getAccordionStartTags(html)
+          .map(nextTag=> ({
+            nextTag,
+            endTag:getEndTag(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
+          }))
+          .map(tags=> ({
+              html: html.substring(tags.nextTag.index,tags.endTag.index),
+              header: tags.nextTag.class==='wp-accordion'
+          }));
+        
+        
+        let result = html;
+        //loop and build content
+        for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
+          const row = accordionContent[resultIndex];
+          if(row.header) {
+            const headerHTML = row.html
+              .replace(/wp-accordion/,'')
+              .replace(/ class=""/,'');
+        
+            let bodyHTML = '';
+            //fill the body
+            let bodyIndex = resultIndex+1;
+            while (bodyIndex<accordionContent.length&&!accordionContent[bodyIndex].header) {
+              const bodyRowHTML = accordionContent[bodyIndex].html;
+              bodyHTML += bodyRowHTML
+                .replace(/wp-accordion-content/,'')
+                .replace(/ class=""/,'')
+                + '\n';
+        
+              bodyIndex++;
+        
+              //remove this content tag from html
+              result = result.replace(bodyRowHTML,'');
+            } //while
+        
+            const finalHTML = 
+`<cwds-accordion>
+  <div class="card">
+    <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+      <div class="accordion-title">
+${headerHTML}
+      </div>
+    </button>
+    <div class="card-container" aria-hidden="true" style="height: 0px;">
+      <div class="card-body">
+${bodyHTML}
+      </div>
+    </div>
+  </div>
+</cwds-accordion>
+`;
+        
+            //replace the header with the new merged content
+            result = result.replace(row.html,finalHTML);
+          } //if(row.header)
+        } //for
 
-        for(const header of document.querySelectorAll(`.${headerclass}`)) {
-          //create the wrapper element and wrap it around the header
-          const cwdscontainer = document.createElement('cwds-accordion');
-          const container = document.createElement('div');
-          container.classList.add('card');
-          cwdscontainer.appendChild(container);
-
-          header.parentNode.insertBefore(cwdscontainer, header);
-          container.appendChild(header);
-
-          //remove the special wp class
-          header.classList.remove(headerclass);
-          if (header.classList.length===0) header.removeAttribute('class');
-
-          //create the card body section and add it to the container
-          const body = document.createElement('div');
-          body.className="card-body";
-          container.appendChild(body);
-
-          //Add all remaining content classes to the card body, they must be directly after the new container
-          let direct;
-          while (direct = document.querySelector(`cwds-accordion + .${contentclass}`)) {
-            body.appendChild(direct);
-
-            //remove custom class name
-            direct.classList.remove(contentclass);
-            if (direct.classList.length===0) direct.removeAttribute('class');
-          }
-
-          //apply required html around components
-          header.outerHTML=`
-            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-              <div class="accordion-title">
-                ${header.outerHTML}
-              </div>
-            </button>`;
-
-          body.outerHTML = `
-            <div class="card-container" aria-hidden="true" style="height: 0px;">
-              ${body.outerHTML}
-            </div>`;
-        }
+        //cache result
         processedPostMap.set(outputPath,initialHTML);
         if(process.env.NODE_ENV === 'development') {
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
-
-        return dom.serialize();
+        return result;
       }
     }
     return html;
@@ -352,54 +412,43 @@ module.exports = function(eleventyConfig) {
 
 
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
-    let localizeString = '--en.';
+    const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
-      const dom = new JSDOM(html);
-      const document = dom.window.document;
-      let lang = langData.languages.filter(x=>x.enabled&& document.querySelector('html').lang == x.hreflang).concat(langData.languages[0])[0].id;
-      if(lang !== "en") {
-        for(const image of document.querySelectorAll(`img[src*='${localizeString}']`)) {
-          let englishUrl = image.src;
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                image.src = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
-        }
-        for(const link of document.querySelectorAll(`a[href*='${localizeString}']`)) {
-          let englishUrl = link.href;
+      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const lang = langData.languages.filter(x=>x.enabled&&x.hreflang===htmllang).concat(langData.languages[0])[0].id;
 
-          let localizedUrl = englishUrl.replace('--en.',`--${lang.toLowerCase()}.`);
-          let localizedUri = localizedUrl.replace('https://files.covid19.ca.gov','');
-          await new Promise(resolve => {
-            fileChecker.get({
-              host: "files.covid19.ca.gov", 
-              port: 443, 
-              path: localizedUri,
-              method: "HEAD",
-              agent: false  // Create a new agent just for this one request
-            }, (res) => {
-              if(res.statusCode === 200) {
-                link.href = localizedUrl;
-              }
-              resolve('done')
-            });
-          });    
+      //Scan the DOM for a files.covid19.ca.gov links
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
+        .map(r=> r.groups.URL);
+
+      if(filesSiteData.length===0) {
+        //init filesitedata in this thread before it is used
+        filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml','utf8')
+  .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r=> r.groups.URL);
+      }
+
+
+      for(const domTarget of domTargets) {
+        if(filesSiteData.indexOf(domTarget)===-1) {
+          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
         }
-        return dom.serialize();  
-      }      
+      }
+      if(lang !== "en") {
+        for(const englishUrl of domTargets) {
+          if(englishUrl.includes(localizeString)) {
+            //attempt to translate
+            let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
+  
+            if(filesSiteData.indexOf(localizedUrl)>-1) {
+              html = html.replace(new RegExp(englishUrl,'gm'),localizedUrl);
+            } else {
+              //console.log('No translation found - ' + localizedUrl);
+            }
+          }
+        }
+      }  
     }
+
     return html;
   });
 
@@ -410,10 +459,17 @@ module.exports = function(eleventyConfig) {
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
   const getLangCode = tags => 
     getLangRecord(tags).hreflang;
+  const getLangId = tags => 
+    getLangRecord(tags).id;
+  const getLangIncludeFolder = tags =>
+    (getLangRecord(tags).id === 'en') ? '../wordpress-posts/' : '../translated-posts/';
 
   eleventyConfig.addFilter('lang', getLangCode);
   eleventyConfig.addFilter('langRecord', getLangRecord);
+  eleventyConfig.addFilter('langId', getLangId);
+  eleventyConfig.addFilter('langIncludeFolder', getLangIncludeFolder);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
+  eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
     const langRecord = getLangRecord(tags);
     return `lang="${langRecord.hreflang}" xml:lang="${langRecord.hreflang}"${(langRecord.rtl ? ` dir="rtl"` : "")}`;
@@ -450,17 +506,15 @@ module.exports = function(eleventyConfig) {
       return [];
     }
 
-    let engSlug = page.fileSlug.replace(langPostfixRegExp,'');
-
-    if(langData.languages.some(x=>engSlug===x.filepostfix.substring(1))) {
-      //This is a root language page
-      engSlug='';
-    }
+    const engSlug = 
+      page.inputPath.includes('/manual-content/homepages/')
+      ? '' //This is a root language page
+      : page.fileSlug.replace(langPostfixRegExp,'');
   
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${x.pathpostfix}${(engSlug)}/`.replace(/\/\/$/,'/'),
+        url: `/${x.pathpostfix}${engSlug}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))
@@ -468,9 +522,12 @@ module.exports = function(eleventyConfig) {
       ;
   });
 
+  // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
+  eleventyConfig.setUseGitIgnore(false);
+
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
   return {
-    templateFormats: ["html", "njk"],
+    templateFormats: ["html", "njk", "11ty.js"],
     dir: {
       input: "pages",
       output: "docs",
@@ -478,3 +535,33 @@ module.exports = function(eleventyConfig) {
   };
 };
 
+function getLinkInfo(link, lang) {
+  let linkData = {};
+  for(const page of pageNames) {
+    if(link.slug && page.slug === link.slug) {
+      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
+    }
+    if(link.href && page.href === link.href) {
+      linkData.url = page.href;
+    }
+    if (linkData.url) {
+      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
+      return linkData;
+    }
+  }
+}
+
+function writeTranslatedData(lang) {
+  let singleLangMenu = { "sections": [] };
+  menuData.sections.forEach(section => {
+    if(section.links) {
+      section.links.forEach(link => {
+        let linkData = getLinkInfo(link, lang);
+        link.url = linkData.url;
+        link.name = linkData.name;
+      })
+      singleLangMenu.sections.push(section)
+    }
+  });
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
+}

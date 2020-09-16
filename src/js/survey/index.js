@@ -23,6 +23,11 @@ class CWDSSurvey extends window.HTMLElement {
         }
         reportEvent('surveyDisplay');
         let html = surveyTemplate(surveyUrl, surveyPrompt);
+        const header = document.querySelector('.header');
+        header.classList.add('relative-position');
+        header.classList.remove('fixed-position');
+        const hero = document.querySelector('.hero');
+        hero.classList.remove('hero-padding-top');
         this.innerHTML = html;
         applyListeners(this);
       }
@@ -52,6 +57,11 @@ function applyListeners(target) {
   target.querySelector('.js-dismiss-survey').addEventListener('click',function(event) {
     event.preventDefault();
     reportEvent('dismissSurvey');
+    const header = document.querySelector('.header');
+    header.classList.remove('relative-position');
+    header.classList.add('fixed-position');
+    const hero = document.querySelector('.hero');
+    hero.classList.add('hero-padding-top');
     target.style.display = 'none';
   });
 }

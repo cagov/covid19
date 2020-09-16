@@ -1,0 +1,53 @@
+/*Media Queries*/
+@media (max-width: 768px) {
+	.hero-text {
+		min-height: 20vh;
+	}
+
+	header {
+		position: absolute;
+	}
+	.navbar {
+		padding-top: 5px;
+		padding-bottom: 0;
+	}
+	.navbar-toggler {
+		padding: 0;
+	}
+}
+
+.dropdown-toggle::after {
+	font-family: 'CaGov' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	font-size: larger;
+	content: "\33";
+	display: inline-block;
+	margin-left: 0;
+	vertical-align: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+.dropdown-menu {
+	margin-left: 20px;
+}
+
+  /* expanded menu search styles */
+  cagov-navoverlay .expanded-menu-search {
+	  margin-right:5em;
+  }
+
+  cagov-navoverlay .expanded-menu-search-field:focus {
+	  outline: none;
+	  color: #fff;
+  }
+  cagov-navoverlay .expanded-menu-search:hover .expanded-menu-search-field:focus {
+	outline: none;
+	color:$darkblue;
+}

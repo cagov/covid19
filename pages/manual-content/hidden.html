@@ -1,0 +1,140 @@
+<div class="focused"></div>
+<!--header scroll box-shaddow trilogy style-->
+<div class="box-shadow"></div>
+
+<!-- dropdown menu hidden classes -->
+<div class="dropdown-menu.show"></div>
+<div class="expanded"><div class="header-language-arrow"></div></div>
+
+<!-- youtube embed overlay player -->
+<div id="video-modal" class="video-modal" style="display: block;">
+  <div class="video-modal-content">
+    <button class="video-modal-close modal_close">
+      <svg class="video-modal-close-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path></svg>
+    </button>
+    <div class="video-modal-player" id="video-container"><iframe id="video-1zDX9PXkotA" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="390" src="https://www.youtube.com/embed/1zDX9PXkotA?enablejsapi=1&amp;origin=https%3A%2F%2Fstaging.covid19.ca.gov&amp;widgetid=1"></iframe></div>
+  </div>
+</div>
+
+<!-- is this page useful component -->
+<div class="container-fluid bg-primary ">
+  <div class="container text-white pt-3 pb-3">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="js-feedback-form">
+          <label id="feedback-rating">Is this page useful?</label>
+          <button class="ml-4 btn btn-sm btn-outline-light underline js-feedback-yes" id="feedback-yes" aria-labelledby="feedback-rating">Yes</button>
+          <button class="ml-4 btn btn-sm btn-outline-light underline js-feedback-no" id="feedback-no" aria-labelledby="feedback-rating">No</button>
+        </div>
+        <div class="js-feedback-thanks d-none" role="alert">Thank you for your feedback!</div>
+      </div>
+      <div class="col-md-7">
+        <div class="feedback-form-add">
+          <label for="add-feedback">Additional comments:</label>
+          <textarea name="add-feedback" class="w-90 js-add-feedback" id="add-feedback" rows="1"></textarea>
+          <div class="feedback-error d-none small-text mt-0 mb-3" role="alert">This field required</div>
+          <button class="btn d-none btn-outline-light js-feedback-submit" type="submit" id="feedback-submit">Submit</button>
+        </div>
+        <div class="feedback-thanks-add d-none" role="alert">Thank you for your comments!</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="header-search focused" role="search"></div>
+
+  <!-- nav -->
+  <cagov-navoverlay data-json="/menu.json" class="display-menu reveal-items">
+    <nav class="expanded-menu" role="navigation" aria-label="Site Navigation" aria-hidden="true" id="main-menu" tabindex="-1">
+
+    <div class="expanded-menu-grid">
+
+      <div class="expanded-menu-search" role="search">
+        <form class="expanded-menu-search-form">
+          <label class="expanded-menu-search-label" for="search-site">Search</label>
+          <input id="search-site" class="expanded-menu-search-field" type="search" placeholder="What are you looking for?">
+          <button class="expanded-menu-search-button" aria-label="Search the Website">
+            <svg class="expanded-menu-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
+              c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"></path></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="expanded-menu-section mobile-only">
+        <strong class="expanded-menu-section-header">
+          <a class="expanded-menu-section-header-link expanded-menu-close-mobile" href="#">
+            <svg class="expanded-menu-close-mobile-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18"><path d="M7.7,0.4L0.4,7.9c-0.6,0.6-0.6,1.5,0,2.1l7.3,7.5c0.6,0.6,1.5,0.6,2.1,0c0.6-0.6,0.6-1.5,0-2.1L5,10.5h10.6 c0.8,0,1.5-0.7,1.5-1.5c0-0.8-0.7-1.5-1.5-1.5H5l4.8-4.9c0.3-0.3,0.4-0.7,0.4-1.1c0-0.4-0.1-0.8-0.4-1.1C9.2-0.1,8.3-0.1,7.7,0.4z"></path></svg>
+          </a>
+        </strong>
+      </div>
+
+      <div class="expanded-menu-section mobile-only">
+        <strong class="expanded-menu-section-header">
+          <a class="expanded-menu-section-header-link white" href="/">Home</a>
+        </strong>
+      </div>
+      <div class="expanded-menu-col section-get-help">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <a class="expanded-menu-section-header-link" href="/">Get help</a>
+              <span class="expanded-menu-section-header-arrow"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
+    l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              <a class="expanded-menu-dropdown-link" href="/get-financial-help/">Financial help</a> <a class="expanded-menu-dropdown-link" href="/food-resources/">Food and food assistance</a> <a class="expanded-menu-dropdown-link" href="/workers/">Workers</a> <a class="expanded-menu-dropdown-link" href="/business-and-employers/">Businesses and employers</a> <a class="expanded-menu-dropdown-link" href="/guide-immigrant-californians/">Immigrant communities</a> <a class="expanded-menu-dropdown-link" href="/housing-and-homelessness/">Housing and homelessness</a> <a class="expanded-menu-dropdown-link" href="/resources-for-emotional-support-and-well-being/">Emotional support</a> <a class="expanded-menu-dropdown-link" href="/manage-stress-for-health/">Manage your stress</a> <a class="expanded-menu-dropdown-link" href="/childcare/">Childcare</a>
+            </div>
+          </div>
+        </div>
+         <div class="expanded-menu-col section-health-information">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <a class="expanded-menu-section-header-link" href="/">Health information</a>
+              <span class="expanded-menu-section-header-arrow"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
+    l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              <a class="expanded-menu-dropdown-link" href="/symptoms-and-risks/">Symptoms and risks</a> <a class="expanded-menu-dropdown-link" href="/testing-and-treatment/">Testing sites</a> <a class="expanded-menu-dropdown-link" href="/contact-tracing/">Contact tracing</a> <a class="expanded-menu-dropdown-link" href="/telehealth/">Telehealth</a> <a class="expanded-menu-dropdown-link" href="/healthcare/">Health care</a> <a class="expanded-menu-dropdown-link" href="/masks-and-ppe/">Masks</a> <a class="expanded-menu-dropdown-link" href="/hotline/">COVID-19 Hotline</a>
+            </div>
+          </div>
+        </div>
+         <div class="expanded-menu-col section-working-and-living-safely">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <a class="expanded-menu-section-header-link" href="/">Working and living safely</a>
+              <span class="expanded-menu-section-header-arrow"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
+    l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              <a class="expanded-menu-dropdown-link" href="/stay-home-except-for-essential-needs/#open">What's open</a> <a class="expanded-menu-dropdown-link" href="/stay-home-except-for-essential-needs/">Stay home Q&amp;A</a> <a class="expanded-menu-dropdown-link" href="/roadmap-counties/">County variance and map</a> <a class="expanded-menu-dropdown-link" href="/roadmap/">Reopening roadmap</a> <a class="expanded-menu-dropdown-link" href="/industry-guidance/">Industry guidance</a> <a class="expanded-menu-dropdown-link" href="/get-local-information/">Local info and alerts</a> <a class="expanded-menu-dropdown-link" href="/education/">Education</a> <a class="expanded-menu-dropdown-link" href="/care-in-senior-facilities/">Senior living</a> <a class="expanded-menu-dropdown-link" href="/public-recreation/">Public recreation</a> <a class="expanded-menu-dropdown-link" href="/contracts/">Contracts</a> <a class="expanded-menu-dropdown-link" href="/taxes/">Taxes</a> <a class="expanded-menu-dropdown-link" href="/hotel-rooms-for-california-healthcare-workers/">Hotels for health workers</a> <a class="expanded-menu-dropdown-link" href="/housing-for-agricultural-workers/">Housing for agricultural workers</a>
+            </div>
+          </div>
+        </div>
+         <div class="expanded-menu-col section-how-you-can-help">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <a class="expanded-menu-section-header-link" href="/">How you can help</a>
+              <span class="expanded-menu-section-header-arrow"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
+    l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              <a class="expanded-menu-dropdown-link" href="/discrimination/">Fighting discrimination</a> <a class="expanded-menu-dropdown-link" href="/plasma/">Plasma donation</a> <a class="expanded-menu-dropdown-link" href="/recovery-input/">Resilience roadmap survey</a> <a class="expanded-menu-dropdown-link" href="/healthcorps/">California Health Corps</a> <a class="expanded-menu-dropdown-link" href="https://state-of-california-agency.forms.fm/great-plates-delivered-food-provider-interest-form/forms/7917/">Great Plates provider form</a> <a class="expanded-menu-dropdown-link" href="https://toolkit.covid19.ca.gov/">Social media sharing</a> <a class="expanded-menu-dropdown-link" href="/more-ways-to-help/">More ways to help</a>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </nav>
+  <div class="mobile-menu-close"></div>
+
+  <div class="header-wrap">
+
+    <button class="menu-trigger open-menu" aria-label="Open Menu" aria-haspopup="true" aria-expanded="false" aria-owns="mainMenu" aria-controls="mainMenu">
+      <div class="hamburger">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
+      </div>
+      <div class="menu-trigger-label menu-label">Menu</div>
+    </button>
+
+  </div></cagov-navoverlay>
