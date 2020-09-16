@@ -89,14 +89,12 @@ const restoreEnglishKeys = (nonEnglishData, englishData) => {
 
 
       if(Object.keys(columnMap).length) {
-        console.log(columnMap);
         nonEnglishTable.forEach(row => {
           Object.keys(columnMap).forEach(columnName => {
             row[columnMap[columnName]]=row[columnName];
             delete row[columnName];
           });
         });
-        console.log(nonEnglishTable);
       }
     }
   });
