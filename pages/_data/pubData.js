@@ -20,6 +20,7 @@ const files = [
       require: ['colorLabel','_Color label','New cases','Positive tests','description','County tier']
     },
     Table3: {
+      pivot: true,
       require: [
         'Header – county risk level',
         'Header – new cases',
@@ -48,25 +49,31 @@ const JSONValidator = (dataset,schema) => {
   }
 }
 
-const applyPivots = (slug,dataset) => {
-  //todo: tableize
-  if(slug==='reopening-matrix-data') {
-    const table = dataset.Table3;
-    if(table.length>1) {
-      const singleRow = {};
-      while(table.length){   
-        const row = table.shift(); //remove and retrieve the first item off the array
-        const keys = Object.keys(row);
+const applyPivots = (file,dataset) => {
+  if(file.tableSchema) {
+    const tableNames = Object.keys(dataset);
+    tableNames.forEach(tableName => {
+      const tableSchema = file.tableSchema[tableName];
 
-        let newName = row[keys[0]];
-        while (singleRow[newName]) {
-          newName+='_'; //in case of duplicate column name
+      if(tableSchema&&tableSchema.pivot) {
+        const table = dataset[tableName];
+        if(table.length>1) {
+          const singleRow = {};
+          while(table.length){   
+            const row = table.shift(); //remove and retrieve the first item off the array
+            const keys = Object.keys(row);
+    
+            let newName = row[keys[0]];
+            while (singleRow[newName]) {
+              newName+='_'; //in case of duplicate column name
+            }
+            singleRow[newName]=row[keys[1]];
+          }
+          table.push(singleRow);
         }
-        singleRow[newName]=row[keys[1]];
       }
-      table.push(singleRow);
-    }
-  }
+    }); //forEach
+  } //if
 }
 
 const restoreEnglishKeys = (nonEnglishData, englishData) => {
@@ -89,9 +96,22 @@ const restoreEnglishKeys = (nonEnglishData, englishData) => {
 
 
       if(Object.keys(columnMap).length) {
-        nonEnglishTable.forEach(row => {
+        nonEnglishTable.forEach((row,i) => {
           Object.keys(columnMap).forEach(columnName => {
-            row[columnMap[columnName]]=row[columnName];
+            
+            const englishColumnName = columnMap[columnName];
+            //default to the translated value
+            row[englishColumnName]=row[columnName];
+
+            if (englishColumnName.startsWith('_')) {
+              //This column should never be translated
+              //Use the english value if the English table has a matching row.
+              const englishRow = englishTable[i];
+              if (englishRow) {
+                row[englishColumnName]=englishRow[englishColumnName] || row[englishColumnName];
+              }
+            }
+
             delete row[columnName];
           });
         });
@@ -122,11 +142,11 @@ const data = languages.reduce((katamari, language) => {
     const path = isEnglish ? englishPath : `../${nonEnglishDir}/${file.slug}${language.filepostfix}.json`;
     const tableData = require(path);
 
-    applyPivots(file.slug,tableData);
+    applyPivots(file,tableData);
 
     if(!isEnglish) {
       const englishData = require(englishPath);
-      applyPivots(file.slug, englishData);
+      applyPivots(file, englishData);
       restoreEnglishKeys(tableData, englishData);
     }
 
