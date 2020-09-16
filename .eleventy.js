@@ -453,11 +453,6 @@ ${bodyHTML}
   });
 
   eleventyConfig.addFilter('jsonparse', json => JSON.parse(json));
-  eleventyConfig.addFilter('jsonpivot', (json, idprop, valueprop) => {
-    let result = {};
-    json.forEach(x=> result[x[idprop]]=x[valueprop]);
-    return result
-  });
   eleventyConfig.addFilter('includes', (items,value) => (items || []).includes(value));
 
   const getLangRecord = tags =>
