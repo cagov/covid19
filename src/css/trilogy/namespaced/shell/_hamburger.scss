@@ -1,0 +1,226 @@
+cagov-navoverlay {
+  order: 3;
+  .menu-trigger {
+    background: $orange;
+    //@include size(3rem);
+    // margin: 0.5rem;
+    margin-left: 1em;
+    border: 0;
+    // border-radius: 50%;
+    // padding: 0.75rem 0.75rem;
+    padding: .5em 1em .5em 1em;
+    font-family: $headline;
+    transition: $slow;
+    transform-origin: top left;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    top: -2px;
+    right: 0;
+    transition: $slow;
+    box-shadow: $button-shadow, 0 0 0 0 $orange;
+    transform-origin: center center;
+    @include phone {
+      z-index: 2000;
+    }
+
+    @include tablet { 
+      z-index: 2000;
+    }
+ 
+    &-label {
+      // @include screen-reader-text;
+      color:$darkblue;
+    }
+    &:hover {
+      background: $yellow;
+      box-shadow: $button-shadow-hover;
+      .hamburger-inner {
+        &,
+        &:before,
+        &:after {
+          background-color: $darkblue;
+        }
+        &:before,
+        &:after {
+          width: 13px;
+        }
+      }
+    }
+    &:focus-wthin {
+      background: $yellow;
+      outline: 2px solid $darkblue;
+    }
+    &:focus {
+      @include desktop {
+        background: $yellow;
+      }
+      box-shadow: $button-shadow, 0 0 0 2px $darkblue;
+      outline: 0 solid $darkblue;
+      background: $yellow;
+     // transform: scale(1.1);
+      .hamburger-inner {
+        &,
+        &:before,
+        &:after {
+          background-color: $darkblue;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    padding: 0.15rem 0.15rem;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    position: relative;
+    transition: $basic;
+    vertical-align: middle;
+    z-index: 10000;
+    &-box {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      position: relative;
+    }
+    &-inner {
+      display: block;
+      top: 50%;
+      width: 20px;
+      margin-top: -1px;
+      transition-duration: 0.22s;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      &,
+      &:before,
+      &:after {
+        height: 2px;
+        background-color: $darkblue;
+        border-radius: 0;
+        position: absolute;
+        transition-property: transform, width, background-color;
+        transition-duration: 0.15s;
+        transition-timing-function: ease;
+      }
+      &:before,
+      &:after {
+        width: 20px;
+        content: "";
+        display: block;
+      }
+      &:before {
+        top: -6px;
+        transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in,
+          width 0.1s 0.12s ease-out;
+      }
+      &:after {
+        bottom: -6px;
+        transition: bottom 0.1s 0.25s ease-in,
+          transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+          width 0.1s 0.12s ease-out;
+      }
+    }
+  }
+}
+cagov-navoverlay.display-menu {
+  .menu-trigger {
+    //background: transparent;
+    box-shadow: none;
+    &:hover,
+    &:focus {
+      background: $yellow;
+      @include phone {
+        background: $yellow;
+        .hamburger-inner {
+          &,
+          &:before,
+          &:after {
+            transition: $slow;
+            background-color: $darkblue;
+          }
+        }
+      }
+    }
+    @include tablet {
+     // transform: scale(1.5);
+    //  top: 2rem;
+      background: $orange;
+    }
+    .hamburger-inner {
+      &,
+      &:before,
+      &:after {
+        transition: $slow;
+        background-color: $darkblue;
+        @include tablet {
+          background-color: $darkblue;
+        }
+      }
+    }
+    &:hover {
+      background: $orange;
+      .hamburger-inner {
+        &,
+        &:before,
+        &:after {
+          @include tablet {
+            background-color: $darkblue;
+          }
+        }
+      }
+    }
+  }
+  .hamburger {
+    &-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.12s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      width: 12px;
+      &,
+      &:before,
+      &:after {
+        width: 20px !important;
+        background-color: $darkblue;
+        @include tablet {
+          background-color: $darkblue;
+        }
+      }
+      &:before {
+        top: 0;
+        opacity: 0;
+        transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+      }
+      &:after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 0.1s ease-out,
+          transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+  }
+  &.reveal-items {
+    @include tablet {
+      .menu-trigger {
+       
+       
+      }
+    }
+  }
+}
+.fixed {
+	cagov-navoverlay {
+		.menu-trigger {
+			transition: $slow;
+		}
+		&.reveal-items {
+			@include tablet {
+				.menu-trigger {
+         
+				}
+			}
+		}
+	}
+}
+
