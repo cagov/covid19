@@ -25,7 +25,42 @@ togglers.forEach(toggle => {
     this.classList.add('toggle-active');
   })
 })
-// listen for toggle clicks
-// reset all active toggles
-// set active on clicked toggle
-// reset code to corresponding embed
+
+
+/*
+// This is example chart switching code Avra demonstrated:
+
+var containerDiv = document.getElementById("tableauViz");
+var url = "https://public.tableau.com/views/Refugees_test/Dashboard2?:language=en&:display_count=y&publish=yes&:toolbar=n&:origin=viz_share_link";
+var options = {
+  width: "1200px",
+  height: "900px",
+  "Continent": "",
+  onFirstInteractive: function () {
+    activeSheet = viz.getWorkbook().getActiveSheet().getWorksheets()[1];
+  }
+}
+var viz = new tableau.Viz(containerDiv, url, options);
+activeSheet.applyFilterAsync("Continent", continent, tableau.FilterUpdateType.REPLACE);
+
+These are parameters for the county charts:
+
+
+County
+
+Cases and Deaths
+
+<param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
+<param name='name' value='StateDashboard-CleanSources&#47;3_1County-Reported' />
+
+Hospitals
+
+<param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
+<param name='name' value='StateDashboard-CleanSources&#47;9_1CountyHosp' />
+
+Testing
+
+<param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' />  
+<param name='name' value='StateDashboard-CleanSources&#47;6_1CountyTesting' />
+
+*/
