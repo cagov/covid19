@@ -1,5 +1,5 @@
 {%- set JSON = pubData[language.id].reopeningMatrixData -%}
-{%- set Headers = JSON.Table3 | jsonpivot('_id','text') -%}
+{%- set Headers = JSON.Table3[0] -%}
 {%- set Rows = JSON.Table1 -%}
 
 <!-- dynamic classnames are really cool but the purger cannot understand, hence this -->
@@ -13,13 +13,13 @@
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – county risk level']}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – county risk level'] | safe}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
-          <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier']}}</div>
+          <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
           <p class="card-text text-small mt-3">
-            {{item['description']}}
+            {{item['description'] | safe}}
           </p>
         </div>
       </div>
@@ -29,13 +29,13 @@
       <div class="card border-0 bg-transparent">
         {%- if loop.first %}
         <div class="card-header bg-white border-0">
-          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – new cases']}}</h4>
+          <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – new cases'] | safe}}</h4>
         </div>
         {%- endif -%}
         <div class="card-body text-black">
               <h5>{{item['New cases']}}</h5>
           <p class="card-text text-small mt-3">
-          {{Headers['Description – new cases']}}
+          {{Headers['Description – new cases'] | safe}}
           </p>
         </div>
       </div>
@@ -44,13 +44,13 @@
         <div class="card border-0 bg-transparent">
         {%- if loop.first %}
           <div class="card-header bg-white border-0">
-            <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – positive tests']}}</h4>
+            <h4 class="h5 card-title mb-0 pb-0">{{Headers['Header – positive tests'] | safe}}</h4>
           </div>
         {%- endif -%}
               <div class="card-body text-black">
-                  <h5>{{item['Positive tests']}}</h5>
+                  <h5>{{item['Positive tests'] | safe}}</h5>
                 <p class="card-text text-small mt-3">
-                {{Headers['Description – positive cases']}}
+                {{ Headers['Description – positive cases'] | safe}}
                 </p>
               </div>
         </div>
