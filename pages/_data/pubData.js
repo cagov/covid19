@@ -49,35 +49,37 @@ const JSONValidator = (dataset,schema) => {
   }
 }
 
-const applyPivots = (file,dataset) => {
-  if(file.tableSchema) {
-    const tableNames = Object.keys(dataset);
-    tableNames.forEach(tableName => {
-      const tableSchema = file.tableSchema[tableName];
+// Pivots a table to a single row using the first column as the new row key and the 2nd column as data.
+// requires more than 1 row and more than one column to pivot.
+const pivotTable = table => {
+  if(table.length>1&&Object.keys(table[0]).length>1) {
+    const singleRow = {};
+    //pull all the rows out to make new columns
+    while(table.length){   
+      const row = table.shift(); //remove and retrieve the first item off the array
+      const keys = Object.keys(row);
 
-      if(tableSchema&&tableSchema.pivot) {
-        const table = dataset[tableName];
-        if(table.length>1) {
-          const singleRow = {};
-          while(table.length){   
-            const row = table.shift(); //remove and retrieve the first item off the array
-            const keys = Object.keys(row);
-    
-            let newName = row[keys[0]];
-            while (singleRow[newName]) {
-              newName+='_'; //in case of duplicate column name
-            }
-            singleRow[newName]=row[keys[1]];
-          }
-          table.push(singleRow);
-        }
+      let newName = row[keys[0]];
+      while (singleRow[newName]) {
+        newName+='_'; //in case of duplicate column name
       }
-    }); //forEach
-  } //if
+      singleRow[newName]=row[keys[1]];
+    }
+    table.push(singleRow);
+  }
 }
 
-const restoreEnglishKeys = (nonEnglishData, englishData) => {
+//Reads the tableSchema and applys pivots to tables that want it
+const applyPivots = (file,dataset) => {
+  if(file.tableSchema) {
+    Object.keys(file.tableSchema)
+      .filter(tableName => file.tableSchema[tableName].pivot)
+      .forEach(tableName => {pivotTable(dataset[tableName]);});
+  }
+}
+
 //use the first row in each english table to make new keys for the non-english version
+const restoreEnglishKeys = (nonEnglishData, englishData) => {
   const tableNames = Object.keys(englishData);
   tableNames.forEach(tableName => {
     const englishTable = englishData[tableName] || [];
