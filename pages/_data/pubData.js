@@ -1,5 +1,5 @@
 const languages = require('./langData.json').languages;
-const camelCase = string => string.replace(/-([a-z])/g, g => g[1].toUpperCase());
+const camelCase = (string) => string.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 
 // Pages with translations.
 // The 'slug' is the filename prefix.
