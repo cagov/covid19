@@ -92,7 +92,7 @@ const restoreEnglishKeys = (nonEnglishData, englishData) => {
       Object.keys(englishTable[0])
         .forEach((english,i) => {
           const nonEnglish = nonEnglishColumnNames[i];
-          if(english !== nonEnglish) {
+          if(english.startsWith('_') || english !== nonEnglish) {
             columnMaps.push({
               english,
               nonEnglish
@@ -116,7 +116,10 @@ const restoreEnglishKeys = (nonEnglishData, englishData) => {
             //default to the translated value
             row[cmap.english] = row[cmap.english] || row[cmap.nonEnglish];
 
-            delete row[cmap.nonEnglish];
+            if (cmap.english !== cmap.nonEnglish) {
+              //remove non-english rows.
+              delete row[cmap.nonEnglish];
+            }
           }); //forEach
         }); //forEach
       } //if
