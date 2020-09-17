@@ -19,7 +19,7 @@ const files = [
     Table1: {
       require: ['colorLabel','_Color label','New cases','Positive tests','description','County tier']
     },
-    Table3: {
+    Table2: {
       pivot: true,
       require: [
         'Header – county risk level',
