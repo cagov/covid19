@@ -80,44 +80,46 @@ const applyPivots = (file,dataset) => {
 
 //use the first row in each english table to make new keys for the non-english version
 const restoreEnglishKeys = (nonEnglishData, englishData) => {
-  const tableNames = Object.keys(englishData);
-  tableNames.forEach(tableName => {
+  //All tables by name
+  Object.keys(englishData).forEach(tableName => {
     const englishTable = englishData[tableName] || [];
     const nonEnglishTable = nonEnglishData[tableName] || [];
     if(englishTable.length&&nonEnglishTable.length) {
-      const englishColumnNames = Object.keys(englishTable[0]);
       const nonEnglishColumnNames = Object.keys(nonEnglishTable[0]);
 
-      let columnMap = {};
-      englishColumnNames.forEach((name,i) => {
-        const nonEnglishName = nonEnglishColumnNames[i];
-        if(name!==nonEnglishName) {
-          columnMap[nonEnglishName] = name;
-        }
-      });
+      //Create a map for non-english to english columns
+      const columnMaps = [];
+      Object.keys(englishTable[0])
+        .forEach((english,i) => {
+          const nonEnglish = nonEnglishColumnNames[i];
+          if(english !== nonEnglish) {
+            columnMaps.push({
+              english,
+              nonEnglish
+            });
+          }
+        });
 
-
-      if(Object.keys(columnMap).length) {
+      //fix the column keys on every row
+      if(columnMaps.length) {
         nonEnglishTable.forEach((row,i) => {
-          Object.keys(columnMap).forEach(columnName => {
-            
-            const englishColumnName = columnMap[columnName];
-            //default to the translated value
-            row[englishColumnName]=row[columnName];
-
-            if (englishColumnName.startsWith('_')) {
+          columnMaps.forEach(cmap => {
+            if (cmap.english.startsWith('_')) {
               //This column should never be translated
               //Use the english value if the English table has a matching row.
               const englishRow = englishTable[i];
               if (englishRow) {
-                row[englishColumnName]=englishRow[englishColumnName] || row[englishColumnName];
+                row[cmap.english] = englishRow[cmap.english];
               }
             }
 
-            delete row[columnName];
-          });
-        });
-      }
+            //default to the translated value
+            row[cmap.english] = row[cmap.english] || row[cmap.nonEnglish];
+
+            delete row[cmap.nonEnglish];
+          }); //forEach
+        }); //forEach
+      } //if
     }
   });
 }
