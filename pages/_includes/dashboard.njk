@@ -1,10 +1,25 @@
+{%-set _varStatDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags)-%}
+{%-set _varStatTotalCases_ = tableauCovidMetrics.TOTALCONFIRMED | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = tableauCovidMetrics.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalCasesTodayPct_ = (100*tableauCovidMetrics.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTotalDeaths_ = tableauCovidMetrics.NUMBERDIED | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = tableauCovidMetrics.NUMBERDIED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsLast_ = (tableauCovidMetrics.NUMBERDIED - tableauCovidMetrics.NUMBERDIED_DAILY) | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsChange_ = (100*tableauCovidMetrics.NUMBERDIED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTested_ = tableauCovidMetrics.TESTED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = tableauCovidMetrics.TESTED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTestedDailyPct_ = (100*tableauCovidMetrics.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStarPos_14DayAvg_ = (100*tableauCovidMetrics.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
+{%-set _varStatFullDate_ = tableauCovidMetrics.DATE | formatDate2(true, tags)-%}
+{%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags, -1)-%}
+
 <div class="bg-lightblue py-5">
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-md-12">
-      <h2 class="text-center color-purple">Update for September 3. 2020</h2>
-        <p>California now has 737,911 confirmed cases of COVID-19, resulting in 13,758 deaths. The number of COVID-related deaths increased by 0.2 percent from Sunday's total of 13,726. The number of COVID-19 diagnostic test results in California reached a total of 12,267,948, an increase of 109,656 tests since Sunday. The rate of positive tests over the last 14 days is 4.3 percent. </p>
-        </p>Updated September 8, 2020 at 11:00 a.m.  with data from September 7.</p>
+      <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
+        <p>California now has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}. The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent. </p>
+        </p>Updated {{_varStatFullDate_}}  with data from {{_varStatYesterdayDate_}}.</p>
       </div>
     </div>
 
@@ -13,27 +28,27 @@
         <div class="bg-purple rounded-lg py-2 text-center mt-3">
           <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Cases</div>
           
-            <div id="total-cases-number" class="text-white font-size-1-8em h2 my-2">632.667</div>
-            <div id="total-cases-today" class="text-white mt-2"><strong>186</strong> today</div>
-            <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> 0.7% daily increase</div>
+            <div id="total-cases-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalCases_}}</div>
+            <div id="total-cases-today" class="text-white mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> today</div>
+            <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalCasesTodayPct_}}% daily increase</div>
         </div>
       </div>
       <div class="col-md-3">
         <div class="bg-purple rounded-lg py-2 text-center mt-3">
           <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Deaths</div>
           
-            <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">11.667</div>
-            <div id="total-deaths-today" class="text-white mt-2"><strong>186</strong> today</div>
-            <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-down color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> 0.7% daily decrease</div>
+            <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalDeaths_}}</div>
+            <div id="total-deaths-today" class="text-white mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> today</div>
+            <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-down color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% daily decrease</div>
         </div>
       </div>
       <div class="col-md-3">
         <div class="bg-purple rounded-lg py-2 text-center mt-3">
           <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total People Tested</div>
           
-            <div id="total-tested-number" class="text-white font-size-1-8em h2 my-2">10,667.667</div>
-            <div id="total-tested-today" class="text-white mt-2"><strong>186</strong> today</div>
-            <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> 0.7% daily increase</div>
+            <div id="total-tested-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTested_}}</div>
+            <div id="total-tested-today" class="text-white mt-2"><strong>{{_varStatTestedDaily_}}</strong> today</div>
+            <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTestedDailyPct_}}% daily increase</div>
         </div>
       </div>
     </div>
