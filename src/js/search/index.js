@@ -31,11 +31,13 @@ if (matchMedia) {
    
    // media query change
    function WidthChange(mq) {
+      var oSearch = document.getElementById("header-search-site");
+      var oLanguage = document.querySelector('#dropdown-text');
    if (mq.matches) {
-     document.getElementById("header-search-site").placeholder = "Search this site";
-     document.querySelector('#dropdown-text').innerText = 'Select language';
+      oSearch.placeholder = oSearch.dataset.placeholderWide;
+      oLanguage.innerText = oLanguage.dataset.labelWide;
    } else {
-      document.querySelector('#dropdown-text').innerText = 'Language';
-      document.getElementById("header-search-site").placeholder = "SEARCH";
+      oLanguage.innerText = oLanguage.dataset.labelMobile;
+      oSearch.placeholder = oSearch.dataset.placeholderMobile;
    }
    }
