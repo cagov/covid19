@@ -71,7 +71,7 @@ const JSONValidator = (dataset,schema) => {
     const tableschema = schema[tablename];
 
     for(const colname of tableschema.require || [] )
-      if(!table[colname] && table.some(x=>!x[colname])) return JSON.stringify(table);  // `${tablename} is missing at least one required '${colname}'.`;
+      if(!table[colname] && table.some(x=>!x[colname])) return `${tablename} is missing at least one required '${colname}'.`;
   }
 }
 
