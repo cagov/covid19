@@ -27,7 +27,7 @@ window.fetch('/countystatus.json')
 function countySelected(county) {
   console.log('hi we have selected a county: '+county)
   //trigger the filter on all the county dashboards
-  let casesChartActiveSheet = casesChart.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let casesChartActiveSheet = casesChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
   let testingChartActiveSheet = testingChart.getWorkbook().getActiveSheet().getWorksheets()[1];
   let hospitalChartActiveSheet = hospitalChart.getWorkbook().getActiveSheet().getWorksheets()[1];
   document.querySelector('.js-toggle-county.county').innerHTML = county;
@@ -61,8 +61,8 @@ function displayChart(containerSelector,width,height,url) {
 }
 
 // these are county toggles and state toggles
-let casesChart = displayChart('#casesChart',1000,547,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-// statewide: "https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n"
+let casesChartCounty = displayChart('#casesChartCounty',1000,547,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+let casesChartState = displayChart('#casesChartState',1000,547,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
 
 let testingChart = displayChart('#testingChart',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
 // statewide: https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n

@@ -103,8 +103,19 @@
     <h3>Daily cases and deaths</h3>
   </div>
   <div class="row d-flex justify-content-md-center">
-    <div class='tableauPlaceholder' id="casesChart"></div>
+
+    <div class="toggle-group-container">
+      <div id="ethnicity-graph" class="toggle-group-element">
+        <div class='tableauPlaceholder' id="casesChartState"></div>
+      </div>
+      <div  id="age-graph" class="toggle-group-element">
+        <div class='tableauPlaceholder' id="casesChartCounty"></div>
+      </div>
+    </div>
   </div>
+
+
+
   <div class="row d-flex justify-content-md-center">
     <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
   </div>
