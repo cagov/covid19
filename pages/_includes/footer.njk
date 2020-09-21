@@ -47,9 +47,9 @@ ga('tracker3.send', 'pageview');
 
 		<div class="footer-section-col footer-section-col-hotline trigger">
 			<div class="footer-section-hotline">
-				<div class="footer-section-hotline-label">{{pubData[language.id].footerData.Table3[7].Text | safe}}</div>
+				<div class="footer-section-hotline-label">{{text.hotline_label}}</div>
 				<a class="footer-section-hotline-number" href="tel:8334224255">1-833-422-4255</a>
-				<div class="footer-section-hotline-hours">{{pubData[language.id].footerData.Table3[8].Text | safe}}</div>
+				<div class="footer-section-hotline-hours">{{text.hotline_hours | safe}}</div>
 			</div>
 		</div>
 
@@ -77,7 +77,7 @@ ga('tracker3.send', 'pageview');
 				<a class="footer-section-utility-nav-link" href="{{ item.URL }}">{{ item.Name | safe }}</a>
 				{% endfor %}
 			</nav>
-			<span class="footer-section-utility-official">{{pubData[language.id].footerData.Table3[0].Text | safe}}</span>
+			<span class="footer-section-utility-official">{{text.official_ca_website}}</span>
 		</div>
 		<a href="https://census.ca.gov">
 			<img src="https://files.covid19.ca.gov/img/census-logo.png" class="logo-census" />
