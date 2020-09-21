@@ -1,0 +1,28 @@
+/* added pos-rel to general */
+.autocomplete-inline {
+  input.form-control-lg {
+    min-width: 400px;
+  }
+  
+}
+.toggle-group-container {
+  width: 100%;
+  height: 327px;
+  position: relative;
+  .toggle-group-element {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+  }
+  #age-graph, #gender-graph, #ethnicity-graph {
+    display: none;
+  }
+}
+.tableauPlaceholder {
+  margin-bottom: 30px;
+}
+
+
+/* we need our own new button style with dark blue on tiffany blue */
+// border-radius: 20px;

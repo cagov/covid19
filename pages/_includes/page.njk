@@ -42,10 +42,11 @@
 {% block bodyClass %}interior-page {%- pagesection page, 'safer-economy' %} safer-economy-page{% endpagesection %}{% endblock%}
 
 {% block contentBlock %}
-  <div class="container-fluid jumbotron {% if page.fileSlug === 'roadmap-counties' %}county-img{% endif %} inverse-hyperlink jumbo-img">
+  <div class="container-fluid jumbotron {% if page.fileSlug === 'state-dashboard' %}mb-0{% endif %} inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
+
           <h1>{{ title | safe }}</h1>
           {% if page.fileSlug !== "search" %}
             <p class="small-text">{{pubData[language.id].footerData.Table3[5].Text}}
@@ -60,6 +61,9 @@
       </div>
     </div>
   </div>
+  {%- pagesection page, "state-dashboard" %}
+  {% include "dashboard.njk" %}
+  {% endpagesection -%}
 
   <div class="container">
     <div class="row">

@@ -1,0 +1,180 @@
+{%-set _varStatDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags)-%}
+{%-set _varStatTotalCases_ = tableauCovidMetrics.TOTALCONFIRMED | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = tableauCovidMetrics.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalCasesTodayPct_ = (100*tableauCovidMetrics.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTotalDeaths_ = tableauCovidMetrics.NUMBERDIED | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = tableauCovidMetrics.NUMBERDIED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsLast_ = (tableauCovidMetrics.NUMBERDIED - tableauCovidMetrics.NUMBERDIED_DAILY) | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsChange_ = (100*tableauCovidMetrics.NUMBERDIED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTested_ = tableauCovidMetrics.TESTED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = tableauCovidMetrics.TESTED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTestedDailyPct_ = (100*tableauCovidMetrics.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStarPos_14DayAvg_ = (100*tableauCovidMetrics.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
+{%-set _varStatFullDate_ = tableauCovidMetrics.DATE | formatDate2(true, tags)-%}
+{%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags, -1)-%}
+
+<div class="bg-lightblue py-5">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-md-12">
+      <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
+        <p>California now has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}. The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent. </p>
+        </p>Updated {{_varStatFullDate_}}  with data from {{_varStatYesterdayDate_}}.</p>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-md-center">
+      <div class="col-md-3">
+        <div class="bg-purple rounded-lg py-2 text-center mt-3">
+          <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Cases</div>
+          
+            <div id="total-cases-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalCases_}}</div>
+            <div id="total-cases-today" class="text-white mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> today</div>
+            <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalCasesTodayPct_}}% daily increase</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg-purple rounded-lg py-2 text-center mt-3">
+          <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Deaths</div>
+          
+            <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalDeaths_}}</div>
+            <div id="total-deaths-today" class="text-white mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> today</div>
+            <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-down color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% daily decrease</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg-purple rounded-lg py-2 text-center mt-3">
+          <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total People Tested</div>
+          
+            <div id="total-tested-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTested_}}</div>
+            <div id="total-tested-today" class="text-white mt-2"><strong>{{_varStatTestedDaily_}}</strong> today</div>
+            <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTestedDailyPct_}}% daily increase</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row d-flex justify-content-md-center">
+    <h2 class="color-purple">See the data statewide and in each county</h2>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <form class="form-inline">
+      <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
+        <label for="county" class="sr-only">County</label>
+        <div class="awesomplete">
+          <input
+            aria-expanded="false"
+            aria-owns="awesomplete_list_1"
+            autocomplete="off"
+            class="form-control form-control-lg"
+            data-list=""
+            data-multiple=""
+            id="location-query"
+            role="combobox"
+            type="text"
+            placeholder="Enter a county"
+          />
+          <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+        </div>
+        <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      </div>
+      <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
+    </form>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <div class="toggle-link-container">
+      <div class="grid-layout-hd toggle-links bg-ccc bd-ccc">
+        <a href="#" class="toggle-active js-toggle-county county">Alameda</a>
+        <a href="#" class="js-toggle-county statewide">Statewide</a>
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
+
+<div class="container py-2">
+  <div class="row d-flex justify-content-md-center">
+    <h3>Daily cases and deaths</h3>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <div class='tableauPlaceholder' id="casesChart"></div>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+
+    <h2>Testing for COVID-19</h2>
+    <p>The number of COVID-19 diagnostic test in California reached a total of 11,580,370, an increase of 109,674 tests since Monday. The rate of positive tests over the last 14 days is 5.1%. </p>
+
+    <div class='tableauPlaceholder' id="testingChart"></div>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <h2>Impact on hospitals and ICUs</h2>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+    <div class='tableauPlaceholder' id="hospitalChart"></div>
+  </div>
+  <div class="row d-flex justify-content-md-center">
+
+    <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
+
+    <div class="grid-layout-hd bg-ccc bd-ccc">
+      <div class="grid-main bg-lightblue"><h3>California’s county risk levels</h3></div>
+      <div class="grid-single single1">
+        <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
+      </div>
+      <div class="grid-single single2">
+        <div class="btn-matrix bg-red-btn">SUBSTANTIAL</div>
+      </div>
+      <div class="grid-single single3">
+        <div class="btn-matrix bg-orange-btn">MODERATE</div>
+      </div>
+      <div class="grid-single single4">
+        <div class="btn-matrix bg-yellow-btn">MINIMAL</div>
+      </div>
+    </div>
+
+    <div class="tableauPlaceholder" id="mapChartContainer"></div>
+  </div>
+</div>
+
+<div class="bg-lightblue py-5">
+  <div class="container py-2">
+    <div class="row d-flex justify-content-md-center">
+      <h2>Infections by group</h2>
+
+      <div class="toggle-link-container">
+        <div class="grid-layout-hd toggle-links bg-ccc bd-ccc">
+          <a href="#" class="toggle-active js-toggle-group ethnicity">Ethnicity</a>
+          <a href="#" class="js-toggle-group gender">Gender</a>
+          <a href="#" class="js-toggle-group age">Age</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="row d-flex justify-content-md-center">
+
+      <div class="toggle-group-container">
+        <div id="ethnicity-graph" class="toggle-group-element">
+          <div class="tableauPlaceholder" id="ethnicityGroupChartContainer">
+          </div>
+        </div>
+        <div  id="gender-graph" class="toggle-group-element">
+          <div class="tableauPlaceholder" id="genderGroupChartContainer">
+          </div>
+        </div>
+        <div  id="age-graph" class="toggle-group-element">
+          <div class="tableauPlaceholder" id="ageGroupChartContainer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
