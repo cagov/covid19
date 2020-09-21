@@ -49,7 +49,13 @@
           <a class="dropdown-item" href="{{ 'translate/' | toTranslatedPath(tags) }}">{{text.more}}</a>
         </div>
       </div>
-      <cagov-navoverlay data-json="/menu--{{ language.id }}.json" data-search="{{ 'search/' | toTranslatedPath(tags) }}"></cagov-navoverlay>
+      <cagov-navoverlay 
+        data-json="/menu--{{ language.id }}.json"
+        data-search="{{ 'search/' | toTranslatedPath(tags) }}"
+        data-label-home="{{text.home}}"
+        data-label-menu="{{text.menu}}"
+        data-label-search="{{text.search}}"
+        data-label-placeholder="{{text.what_are_you_looking_for}}"></cagov-navoverlay>
   </div>
 
 </header>
