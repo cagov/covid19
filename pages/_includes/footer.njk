@@ -1,4 +1,5 @@
 {% import "macros.njk" as macros %}
+{%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
 
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -14,14 +15,14 @@ ga('tracker3.send', 'pageview');
 <pagerating-section>
 	<cwds-pagerating 
 	data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
-	data-question="{{pubData[language.id].wasThisPageHelpful.Table1[0].undefined}}"
-	data-yes="{{pubData[language.id].wasThisPageHelpful.Table1[1].undefined}}"
-	data-no="{{pubData[language.id].wasThisPageHelpful.Table1[2].undefined}}"
-	data-comment-prompt="{{pubData[language.id].wasThisPageHelpful.Table1[3].undefined}}"
-	data-thanks-feedback="{{pubData[language.id].wasThisPageHelpful.Table1[4].undefined}}"
-	data-thanks-comments="{{pubData[language.id].wasThisPageHelpful.Table1[5].undefined}}"
-	data-submit="{{pubData[language.id].wasThisPageHelpful.Table1[6].undefined}}"
-	data-required-field="{{pubData[language.id].wasThisPageHelpful.Table1[7].undefined}}"
+	data-question="{{text.is_this_page_useful}}"
+	data-yes="{{text.answer_yes}}"
+	data-no="{{text.answer_no}}"
+	data-comment-prompt="{{text.additional_comments}}"
+	data-thanks-feedback="{{text.thank_you_for_your_feedback}}"
+	data-thanks-comments="{{text.thank_you_for_your_comments}}"
+	data-submit="{{text.submit}}"
+	data-required-field="{{text.this_field_required}}"
 	></cwds-pagerating>	
 </pagerating-section>
 

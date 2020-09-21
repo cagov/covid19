@@ -31,6 +31,7 @@ const files = [
         'this_field_required',
         'submit',
         'thank_you_for_your_comments',
+        'thank_you_for_your_feedback',
         'home'
       ]
     }
