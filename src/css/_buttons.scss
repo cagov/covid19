@@ -127,6 +127,16 @@ button:focus {
   box-shadow: none;
 }
 
+.btn-lightbg {
+  color: #1D2574;
+  background-color: #92C5DE;
+}
+
+.btn-bigger {
+  min-height: 3rem;
+  font-size: 1.25rem;
+}
+
 button.card-header.accordion-alpha:focus {
   outline: 2px solid #004abc;
 }
