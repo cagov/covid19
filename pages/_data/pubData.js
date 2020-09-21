@@ -9,7 +9,6 @@ const camelCase = (string) => string.replace(/-([a-z])/g, (g) => g[1].toUpperCas
 const files = [
   { slug: 'do-dont', split: false },
   { slug: 'footer-data', split: false },
-  { slug: 'homepage-text', split: true },
   { slug: 'common-page-labels', split: true, tableSchema: {
     Table1: {
       pivot: true,
