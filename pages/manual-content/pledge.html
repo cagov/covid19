@@ -1,0 +1,92 @@
+---
+layout: page.njk
+title: COVID19.CA.GOV Pledge
+meta: Official website for California Coronavirus (COVID-19) Response daily updates and resources. Stay home - save lives. Find information and services to help you and help others.
+author: State of California alpha.ca.gov team
+addtositemap: true
+---
+
+<style>
+  .submit-response {
+    margin: 150px 10px;
+  }
+  .mt-2 {
+    margin-top: 2rem;
+  }
+</style>
+
+<h2>Pledge for California!</h2>
+<h3>
+  Only together we can win the fight against COVID-19. Pledge to do your part to
+  protect yourself and those around you.
+</h3>
+
+<form class="js-submit-pledge" action="#">
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-family"
+      value="true"
+      id="pledgeFamily"
+    />
+    <label class="form-check-label" for="pledgeFamily"
+      >I pledge not to go to family get togethers to protect my family from
+      COVID-19.</label
+    >
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-mask"
+      value="true"
+      id="pledgeMask"
+    />
+    <label class="form-check-label" for="pledgeMask">
+      I pledge to wear a mask to protect my community from COVID-19.
+    </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      name="pledge-distance"
+      value="true"
+      id="pledgeDistance"
+    />
+    <label class="form-check-label" for="pledgeDistance">
+      I pledge to physically distance to protect myself from COVID-19 and my
+      community from COVID-19.
+    </label>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="zipcode">Zip code</label>
+      <input
+        style="width: 200px;"
+        class="form-control"
+        name="zipcode"
+        id="zipcode"
+        aria-describedby="zipHelp"
+        type="text"
+        pattern="[0-9]*"
+        maxlength="5"
+        placeholder="95814"
+        required
+      />
+      <small id="zipHelp" class="form-text text-muted"
+        >Tell us where you are from!</small
+      >
+    </div>  
+  </div>
+  <button type="submit" class="mt-2 btn btn-primary js-submit-button">Submit</button>
+</form>
+
+<div class="submit-response d-none" aria-role="live">
+  <h2>Thank you</h2>
+  <h3>
+    Your response has been recorded in the cloud ledger of the State of
+    California
+  </h3>
+</div>
