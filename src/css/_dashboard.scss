@@ -18,6 +18,9 @@
   #age-graph, #gender-graph, #ethnicity-graph {
     display: none;
   }
+  &.cases-group {
+    height: 600px;
+  }
 }
 .tableauPlaceholder {
   margin-bottom: 30px;
