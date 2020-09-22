@@ -45,7 +45,8 @@
   <div class="container-fluid jumbotron {% if page.fileSlug === 'state-dashboard' %}mb-0{% endif %} inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
-        <div class="col-lg-10 centerH">
+        <div class="col-lg-10 mx-auto">
+
           <h1>{{ title | safe }}</h1>
           {% if page.fileSlug !== "search" %}
             <p class="small-text">{{pubData[language.id].footerData.Table3[5].Text}}
@@ -66,7 +67,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-10 mx-auto">
         {{ content | safe  }}
         {%- pagesection page, "search" %}
         {% include "search.njk" %}

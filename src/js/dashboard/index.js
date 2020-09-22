@@ -27,9 +27,9 @@ window.fetch('/countystatus.json')
 function countySelected(county) {
   console.log('hi we have selected a county: '+county)
   //trigger the filter on all the county dashboards
-  let casesChartActiveSheet = casesChart.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let testingChartActiveSheet = testingChart.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let hospitalChartActiveSheet = hospitalChart.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let casesChartActiveSheet = casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let testingChartActiveSheet = testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let hospitalChartActiveSheet = hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
   document.querySelector('.js-toggle-county.county').innerHTML = county;
 
   function resetCounties() {
@@ -42,11 +42,7 @@ function countySelected(county) {
     }
   }
   resetCounties();
-  
-  // are we already showing a county?
-  // if not
-    // show the toggle
-    // hide the statewide dashboards
+  showCounties();
 }
 
 function displayChart(containerSelector,width,height,url) {
@@ -61,14 +57,14 @@ function displayChart(containerSelector,width,height,url) {
 }
 
 // these are county toggles and state toggles
-let casesChart = displayChart('#casesChart',1000,547,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-// statewide: "https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n"
+let casesChartCountyViz = displayChart('#casesChartCounty',1000,547,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+let casesChartStateViz = displayChart('#casesChartState',1000,547,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
 
-let testingChart = displayChart('#testingChart',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
-// statewide: https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n
+let testingChartCounty = displayChart('#testingChartCounty',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
+let testingChartState = displayChart('#testingChartState',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n')
 
-let hospitalChart = displayChart('#hospitalChart',1000,520,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
-// statewide: https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n
+let hospitalChartCounty = displayChart('#hospitalChartCounty',1000,520,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
+let hospitalChartState = displayChart('#hospitalChartState',1000,520,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
 
 
 // this chart does not toggle
@@ -110,25 +106,53 @@ groupTogglers.forEach(toggle => {
 
 function resetCountyToggles() {
   countyTogglers.forEach(toggle => {
-    toggle.classList.remove('toggle-active')  
+    toggle.classList.remove('toggle-active')
   });
-  // document.getElementById('gender-graph').style.display = 'none';
-  // document.getElementById('ethnicity-graph').style.display = 'none';
+  document.getElementById('cases-state-graph').style.display = 'none';
+  document.getElementById('cases-county-graph').style.display = 'none';
+  document.getElementById('testing-state-graph').style.display = 'none';
+  document.getElementById('testing-county-graph').style.display = 'none';
+  document.getElementById('hospital-state-graph').style.display = 'none';
+  document.getElementById('hospital-county-graph').style.display = 'none';
 }
 
 let countyTogglers = document.querySelectorAll('.js-toggle-county');
-// document.getElementById('ethnicity-graph').style.display = 'block';
+document.getElementById('cases-state-graph').style.display = 'block';
 countyTogglers.forEach(toggle => {
   toggle.addEventListener('click',function(event) {
     event.preventDefault();
     resetCountyToggles();
-    // if(this.classList.contains('gender')) {
-    //   document.getElementById('gender-graph').style.display = 'block';
-    // }
-    // if(this.classList.contains('ethnicity')) {
-    //   document.getElementById('ethnicity-graph').style.display = 'block';
-    // }
+    if(this.classList.contains('statewide')) {
+      document.getElementById('cases-state-graph').style.display = 'block';
+      document.getElementById('testing-state-graph').style.display = 'block';
+      document.getElementById('hospital-state-graph').style.display = 'block';
+    }
+    if(this.classList.contains('county')) {
+      document.getElementById('cases-county-graph').style.display = 'block';
+      document.getElementById('testing-county-graph').style.display = 'block';
+      document.getElementById('hospital-county-graph').style.display = 'block';
+    }
     this.classList.add('toggle-active');
   })
 })
+
+function showStateWides() {
+  resetCountyToggles();
+  document.querySelector('.js-toggle-county.statewide').classList.add('toggle-active');
+
+  document.getElementById('cases-state-graph').style.display = 'block';
+  document.getElementById('testing-state-graph').style.display = 'block';
+  document.getElementById('hospital-state-graph').style.display = 'block';
+}
+
+function showCounties() {
+  resetCountyToggles();
+  document.querySelector('.js-toggle-county.county').classList.add('toggle-active');
+
+  document.getElementById('cases-county-graph').style.display = 'block';
+  document.getElementById('testing-county-graph').style.display = 'block';
+  document.getElementById('hospital-county-graph').style.display = 'block';
+}
+
+showStateWides();
 
