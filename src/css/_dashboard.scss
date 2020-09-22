@@ -28,6 +28,18 @@
 @media (max-width: 900px) { 
   .toggle-group-container {
     width: 100%;
+    &.cases-group {
+      height: 930px;
+    }
+  }
+  .autocomplete-inline {
+    input.form-control-lg {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+  .form-inline {
+    justify-content: space-around;
   }
 }
 
