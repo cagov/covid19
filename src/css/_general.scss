@@ -1891,7 +1891,7 @@ font {
 .bg-ccc { background-color: #ccc; }
 .bd-ccc { border: solid 1px #ccc; }
 
-.bg-lightblue {background-color: #f3f5fc !important;}
+.bg-lightblue {background-color: $lightestblue !important;}
 .p-rel {position: relative !important;}
 .p-fix {position: fixed !important;}
 .p-abs {position: absolute !important;}
@@ -1907,3 +1907,7 @@ font {
 .bottom-5px {bottom:5px;}
 
 .pos-rel { position: relative; }
+
+.bd-lightblue {border: 2px solid $lightestblue !important;}
+.bd-blue {border: 1px solid $blue !important;}
+.bd-darkblue {border: 1px solid $darkblue !important;}
