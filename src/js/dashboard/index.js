@@ -56,24 +56,44 @@ function displayChart(containerSelector,width,height,url) {
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
 
+/* Mobile sizes
+Cases and Deaths	1000
+Hospitals	1000
+Testing	900
+Ethnicity	600
+Gender	300
+Age	500
+County Monitoring Map	500
+*/
+let topChartHeights1 = 547;
+let topChartHeights2 = 620;
+let topChartHeights3 = 520;
+let chartWidth = 1000;
+if(window.innerWidth < 700) {
+  topChartHeights1 = 900;
+  topChartHeights2 = 900;
+  topChartHeights3 = 900;
+  chartWidth = window.innerWidth - 80;
+}
+
 // these are county toggles and state toggles
-let casesChartCountyViz = displayChart('#casesChartCounty',1000,547,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-let casesChartStateViz = displayChart('#casesChartState',1000,547,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
+let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
 
-let testingChartCounty = displayChart('#testingChartCounty',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
-let testingChartState = displayChart('#testingChartState',1000,620,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n')
+let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
+let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n')
 
-let hospitalChartCounty = displayChart('#hospitalChartCounty',1000,520,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
-let hospitalChartState = displayChart('#hospitalChartState',1000,520,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
+let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights3,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
+let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights3,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
 
 
 // this chart does not toggle
 let mapChart = displayChart('#mapChartContainer', 700,747, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/11_1TierAssignmentMap?:origin=card_share_link&:embed=n');
 
 // these are their own toggle sets
-let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', 1000, 327, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_1Ethnicity?:origin=card_share_link&:embed=n')
-let genderGroupChart = displayChart('#genderGroupChartContainer', 1000, 327, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_2Gender?:origin=card_share_link&:embed=n')
-let ageGroupChart = displayChart('#ageGroupChartContainer', 1000, 327, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_3Age?:origin=card_share_link&:embed=n')
+let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_1Ethnicity?:origin=card_share_link&:embed=n')
+let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_2Gender?:origin=card_share_link&:embed=n')
+let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_3Age?:origin=card_share_link&:embed=n')
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
