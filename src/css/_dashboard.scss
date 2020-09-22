@@ -6,7 +6,7 @@
   
 }
 .toggle-group-container {
-  width: 100%;
+  width: 1000px;
   height: 600px;
   position: relative;
   .toggle-group-element {
@@ -24,4 +24,9 @@
 }
 .tableauPlaceholder {
   margin-bottom: 30px;
+}
+@media (max-width: 900px) { 
+  .toggle-group-container {
+    width: 100%;
+  }
 }

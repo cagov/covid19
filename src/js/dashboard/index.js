@@ -65,7 +65,7 @@ Gender	300
 Age	500
 County Monitoring Map	500
 */
-let topChartHeights1 = 547;
+let topChartHeights1 = 520;
 let topChartHeights2 = 620;
 let topChartHeights3 = 520;
 let chartWidth = 1000;
@@ -83,8 +83,8 @@ let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeig
 let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
 let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n')
 
-let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights3,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
-let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights3,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
+let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
+let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
 
 
 // this chart does not toggle
