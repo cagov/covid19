@@ -79,9 +79,11 @@ function displayChart(containerSelector,width,height,url) {
 
 let topChartHeights1 = 520;
 let chartWidth = 1000;
+let chartWidth2 = 700
 if(window.innerWidth < 700) {
   topChartHeights1 = 900;
   chartWidth = window.innerWidth - 80;
+  chartWidth2 = chartWidth;
 }
 
 // these are county toggles and state toggles
@@ -95,7 +97,7 @@ let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChar
 let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
 
 // this chart does not toggle
-let mapChart = displayChart('#mapChartContainer', 700,747, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/11_1TierAssignmentMap?:origin=card_share_link&:embed=n');
+let mapChart = displayChart('#mapChartContainer', chartWidth2,747, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/11_1TierAssignmentMap?:origin=card_share_link&:embed=n');
 
 // these are their own toggle sets
 let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_1Ethnicity?:origin=card_share_link&:embed=n')

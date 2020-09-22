@@ -655,6 +655,11 @@ th {
   .grid-layout-hd {
     width: 500px;
     grid-template-columns: 1fr;
+
+    &.toggle-links {
+      grid-template-columns: 1fr !important;
+      width: 100%;  
+    }
   }
   .grid-main {
     grid-column: 1/1;

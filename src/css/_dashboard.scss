@@ -29,6 +29,15 @@
   .toggle-group-container {
     width: 100%;
   }
+  .autocomplete-inline {
+    input.form-control-lg {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+  .form-inline {
+    justify-content: space-around;
+  }
 }
 
 .error-text {
