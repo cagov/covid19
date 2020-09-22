@@ -174,5 +174,6 @@ function showCounties() {
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
 
+// normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
 
