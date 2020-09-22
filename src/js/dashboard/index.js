@@ -21,11 +21,32 @@ window.fetch('/countystatus.json')
     },
     list: aList
   };
-  const aplete = new Awesomplete('#location-query', awesompleteSettings)
+  const aplete = new Awesomplete('#location-query', awesompleteSettings);
+  setupFormSubmitListener(aList);
 }.bind(this));
 
+function setupFormSubmitListener(aList) {
+  document.querySelector('#county-form').addEventListener('submit',function(event) {
+    event.preventDefault();
+    document.querySelector('#county-query-error').style.display = 'none';
+    // do I have a full county typed in here?
+    let typedInValue = document.querySelector('#location-query').value;
+    let foundCounty = '';
+    aList.forEach(county => {
+      if(county.toLowerCase() == typedInValue.toLowerCase()) {
+        foundCounty = county;
+      }
+    })
+    if(foundCounty) {
+      countySelected(foundCounty);
+    } else {
+      document.querySelector('#county-query-error').style.display = 'block';
+    }
+  }.bind(this))  
+}
+
 function countySelected(county) {
-  console.log('hi we have selected a county: '+county)
+  document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
   let casesChartActiveSheet = casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
   let testingChartActiveSheet = testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
@@ -56,23 +77,10 @@ function displayChart(containerSelector,width,height,url) {
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
 
-/* Mobile sizes
-Cases and Deaths	1000
-Hospitals	1000
-Testing	900
-Ethnicity	600
-Gender	300
-Age	500
-County Monitoring Map	500
-*/
 let topChartHeights1 = 520;
-let topChartHeights2 = 620;
-let topChartHeights3 = 520;
 let chartWidth = 1000;
 if(window.innerWidth < 700) {
   topChartHeights1 = 900;
-  topChartHeights2 = 900;
-  topChartHeights3 = 900;
   chartWidth = window.innerWidth - 80;
 }
 
@@ -85,7 +93,6 @@ let testingChartState = displayChart('#testingChartState',chartWidth,topChartHei
 
 let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
 let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
-
 
 // this chart does not toggle
 let mapChart = displayChart('#mapChartContainer', 700,747, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/11_1TierAssignmentMap?:origin=card_share_link&:embed=n');
@@ -123,7 +130,6 @@ groupTogglers.forEach(toggle => {
   })
 })
 
-
 function resetCountyToggles() {
   countyTogglers.forEach(toggle => {
     toggle.classList.remove('toggle-active')
@@ -143,14 +149,10 @@ countyTogglers.forEach(toggle => {
     event.preventDefault();
     resetCountyToggles();
     if(this.classList.contains('statewide')) {
-      document.getElementById('cases-state-graph').style.display = 'block';
-      document.getElementById('testing-state-graph').style.display = 'block';
-      document.getElementById('hospital-state-graph').style.display = 'block';
+      showStateWides();
     }
     if(this.classList.contains('county')) {
-      document.getElementById('cases-county-graph').style.display = 'block';
-      document.getElementById('testing-county-graph').style.display = 'block';
-      document.getElementById('hospital-county-graph').style.display = 'block';
+      showCounties();
     }
     this.classList.add('toggle-active');
   })
