@@ -77,7 +77,7 @@ if(window.innerWidth < 700) {
 }
 
 // these are county toggles and state toggles
-let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/Filter/3_1County-Reported?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/3_1County-Reported?:origin=card_share_link&:embed=n');
 let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
 
 let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
@@ -174,5 +174,6 @@ function showCounties() {
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
 
-showStateWides();
+// normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
+// showStateWides();
 
