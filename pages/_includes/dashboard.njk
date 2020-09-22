@@ -16,7 +16,7 @@
 <div class="bg-lightblue py-5">
   <div class="container py-2">
     <div class="row pb-4">
-      <div class="col-md-12">
+      <div class="col-md-10 mx-auto">
       <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
         <p>California now has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}. The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent. </p>
         </p>Updated {{_varStatFullDate_}}  with data from {{_varStatYesterdayDate_}}.</p>
@@ -57,6 +57,8 @@
 </div>
 
 <div class="container py-5">
+<div class="row">
+<div class="col-md-10 mx-auto">
   <div class="row d-flex justify-content-md-center">
     <h2 class="color-purple">See the data statewide and in each county</h2>
   </div>
@@ -86,11 +88,13 @@
   </div>
   <div class="row d-flex justify-content-md-center">
     <div class="toggle-link-container">
-      <div class="grid-layout-hd toggle-links bg-ccc bd-ccc">
+      <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
         <a href="#" class="js-toggle-county county">Alameda</a>
         <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
       </div>
     </div>
+  </div>  
+</div>
   </div>  
 </div>
 
@@ -99,6 +103,8 @@
 <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
 <div class="container py-2">
+<div class="row">
+<div class="col-md-10 mx-auto">
   <div class="row d-flex justify-content-md-center">
     <h3>Daily cases and deaths</h3>
   </div>
@@ -153,8 +159,8 @@
 
     <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
 
-    <div class="grid-layout-hd bg-ccc bd-ccc">
-      <div class="grid-main bg-lightblue"><h3>California’s county risk levels</h3></div>
+    <div class="grid-layout-hd bg-lightblue bd-lightblue">
+      <div class="grid-main bg-lightblue py-0"><h3 class="my-0">California’s county risk levels</h3></div>
       <div class="grid-single single1">
         <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
       </div>
@@ -172,6 +178,8 @@
     <div class="tableauPlaceholder" id="mapChartContainer"></div>
   </div>
 </div>
+  </div>
+</div>
 
 <div class="bg-lightblue py-5">
   <div class="container py-2">
@@ -179,7 +187,7 @@
       <h2>Infections by group</h2>
 
       <div class="toggle-link-container">
-        <div class="grid-layout-hd toggle-links bg-ccc bd-ccc">
+        <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
           <a href="#" class="toggle-active js-toggle-group ethnicity">Ethnicity</a>
           <a href="#" class="js-toggle-group gender">Gender</a>
           <a href="#" class="js-toggle-group age">Age</a>
