@@ -642,6 +642,25 @@ th {
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
 }
+.grid-main, .grid-single {
+  background-color: #fff;
+  padding: 20px;
+  margin:0;
+  text-align:center;
+}
+.grid-main {
+  padding: 20px 0 0 0;
+}
+@media (max-width: 900px) { 
+  .grid-layout-hd {
+    width: 500px;
+    grid-template-columns: 1fr;
+  }
+  .grid-main {
+    grid-column: 1/1;
+  }
+}
+/* IE stuff
 .single1 {
   grid-row:2;
   grid-column:1;
@@ -658,16 +677,7 @@ th {
   grid-row:2;
   grid-column:4;
 }
-.grid-main, .grid-single {
-  background-color: #fff;
-  padding: 20px;
-  margin:0;
-  text-align:center;
-}
-.grid-main {
-  padding: 20px 0 0 0;
-}
-
+*/
 .toggle-link-container {
   width: 100%;
   margin: 20px;
