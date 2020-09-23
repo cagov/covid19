@@ -81,7 +81,7 @@ function displayChart(containerSelector,width,height,url) {
 let topChartHeights1 = 600;
 let chartWidth = 1000;
 let chartWidth2 = 700;
-let countyMapChartHeight = 747;
+let countyMapChartHeight = 560;
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
