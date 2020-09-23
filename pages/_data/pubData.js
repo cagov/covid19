@@ -8,7 +8,6 @@ const camelCase = (string) => string.replace(/-([a-z])/g, (g) => g[1].toUpperCas
 // [2] Language files are split between wordpress- and translated-posts folders (true, files are split).
 const files = [
   { slug: 'do-dont', split: false },
-  { slug: 'footer-data', split: false },
   { slug: 'common-page-labels', split: true, tableSchema: {
     Table1: {
       pivot: true,
@@ -33,6 +32,12 @@ const files = [
         'thank_you_for_your_feedback',
         'home'
       ]
+    },
+    Table2: {
+      require: ['Name','_URL']
+    },
+    Table3: {
+      require: ['Name','_slug']
     }
   }},
   { slug: 'people-want-to-know', split: true, tableSchema: {
