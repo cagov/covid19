@@ -1,5 +1,6 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
+{%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
 
 {% block title %} 
   <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
@@ -48,7 +49,7 @@
         <div class="col-lg-10">
           <h1>{{ title | safe }}</h1>
           {% if page.fileSlug !== "search" %}
-            <p class="small-text">{{pubData[language.id].footerData.Table3[5].Text}}
+            <p class="small-text">{{text.last_updated}}
               {% if page.fileSlug === "safer-economy" or page.fileSlug === "data-and-tools" %}
                 {{ "today" | formatDate2(true,tags) }}
               {% else %}
