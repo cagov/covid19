@@ -10,7 +10,6 @@
 {%-set _varStatTestedDaily_ = tableauCovidMetrics.TESTED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTestedDailyPct_ = (100*tableauCovidMetrics.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
 {%-set _varStarPos_14DayAvg_ = (100*tableauCovidMetrics.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
-{%-set _varStatFullDate_ = tableauCovidMetrics.DATE | formatDate2(true, tags)-%}
 {%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags, -1)-%}
 
 <div class="bg-lightblue py-5">
@@ -19,7 +18,7 @@
       <div class="col-md-10 mx-auto">
       <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
         <p>California now has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}. The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent. </p>
-        </p>Updated {{_varStatFullDate_}}  with data from {{_varStatYesterdayDate_}}.</p>
+        </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
       </div>
     </div>
 
@@ -39,7 +38,7 @@
           
             <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalDeaths_}}</div>
             <div id="total-deaths-today" class="text-white mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> today</div>
-            <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-down color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% daily decrease</div>
+            <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% daily increase</div>
         </div>
       </div>
       <div class="col-md-3">
