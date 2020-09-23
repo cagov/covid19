@@ -56,10 +56,10 @@
 </div>
 
 <div class="container py-5">
-<div class="row">
+
 <div class="col-md-10 mx-auto">
   <div class="row d-flex justify-content-md-center">
-    <h2 class="color-purple">See the data statewide and in each county</h2>
+    <h2 class="text-center color-purple">See the data statewide and in each county</h2>
   </div>
   <div class="row d-flex justify-content-md-center">
     <form class="form-inline" id="county-form">
@@ -97,7 +97,6 @@
     </div>
   </div>  
 </div>
-  </div>  
 </div>
 
 
@@ -105,11 +104,9 @@
 <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
 <div class="container py-2">
-<div class="row">
-<div class="col-md-10 mx-auto">
-  <div class="row d-flex justify-content-md-center">
-    <h3>Daily cases and deaths</h3>
-  </div>
+  <div class="col-md-10 mx-auto">
+    <h3 class="text-center">Daily cases and deaths</h3>
+ 
   <div class="row d-flex justify-content-md-center">
 
     <div class="toggle-group-container cases-group">
@@ -127,9 +124,8 @@
   <div class="row d-flex justify-content-md-center">
     <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
   </div>
+    <h2 class="text-center color-purple">Testing for COVID-19</h2>
   <div class="row d-flex justify-content-md-center">
-
-    <h2>Testing for COVID-19</h2>
     <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
 
     <div class="toggle-group-container cases-group">
@@ -143,9 +139,7 @@
 
 
   </div>
-  <div class="row d-flex justify-content-md-center">
-    <h2>Impact on hospitals and ICUs</h2>
-  </div>
+  <h2 class="text-center color-purple">Impact on hospitals and ICUs</h2>
   <div class="row d-flex justify-content-md-center">
     <div class="toggle-group-container cases-group">
       <div  id="hospital-county-graph" class="toggle-group-element">
@@ -157,12 +151,10 @@
     </div>
 
   </div>
+  <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
   <div class="row d-flex justify-content-md-center">
-
-    <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
-
     <div class="grid-layout-hd bg-lightblue bd-lightblue">
-      <div class="grid-main bg-lightblue py-0"><h3 class="my-0">California’s county risk levels</h3></div>
+      <div class="grid-main bg-lightblue py-0"><h3 class="my-0 text-center">California’s county risk levels</h3></div>
       <div class="grid-single single1">
         <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
       </div>
@@ -179,21 +171,24 @@
 
     <div class="tableauPlaceholder" id="mapChartContainer"></div>
   </div>
-</div>
-  </div>
-  
-  <div class="text-center">
+
+<div class="text-center">
     <a class="button trigger cwdsarrow-parent hi-50" href="/safer-economy/">
       <div class="button-label">See what can be open in your county</div>
       <cwds-arrow data-class-prefix="more-news" data-class-list="cwdsarrow-size-md cwdsarrow-idle-blue cwdsarrow-hover-darkblue cwdsarrow-focus-orangeback"><figure class="cwdsarrow more-news-cwdsarrow cwdsarrow-size-md cwdsarrow-idle-blue cwdsarrow-hover-darkblue cwdsarrow-focus-orangeback" aria-hidden="true"></cwds-arrow>
     </a>
-  </div>
 </div>
+
+</div>
+</div>
+  
+  
 
 <div class="bg-lightblue py-5">
   <div class="container py-2">
+  <div class="col-md-10 mx-auto">
+  <h2 class="text-center color-purple">Infections by group</h2>
     <div class="row d-flex justify-content-md-center">
-      <h2>Infections by group</h2>
 
       <div class="toggle-link-container">
         <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
@@ -219,6 +214,7 @@
           <div class="tableauPlaceholder" id="ethnicityGroupChartContainer">
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
