@@ -64,6 +64,7 @@ function countySelected(county) {
   }
   resetCounties();
   showCounties();
+  document.querySelector('.js-toggle-county.county').style.display = 'block';
 }
 
 function displayChart(containerSelector,width,height,url) {
