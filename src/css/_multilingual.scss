@@ -11,3 +11,9 @@ html:not([lang='en-US']) {
 		}
   }
 }
+
+/* moving search button to the left for arabic */
+html[dir="rtl"] .header-search-button {
+	right: unset !important;
+	left: 4px !important;
+}

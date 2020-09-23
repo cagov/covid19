@@ -1,4 +1,5 @@
 {% import "macros.njk" as macros %}
+{%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
 
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -14,14 +15,14 @@ ga('tracker3.send', 'pageview');
 <pagerating-section>
 	<cwds-pagerating 
 	data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
-	data-question="{{pubData[language.id].wasThisPageHelpful.Table1[0].undefined}}"
-	data-yes="{{pubData[language.id].wasThisPageHelpful.Table1[1].undefined}}"
-	data-no="{{pubData[language.id].wasThisPageHelpful.Table1[2].undefined}}"
-	data-comment-prompt="{{pubData[language.id].wasThisPageHelpful.Table1[3].undefined}}"
-	data-thanks-feedback="{{pubData[language.id].wasThisPageHelpful.Table1[4].undefined}}"
-	data-thanks-comments="{{pubData[language.id].wasThisPageHelpful.Table1[5].undefined}}"
-	data-submit="{{pubData[language.id].wasThisPageHelpful.Table1[6].undefined}}"
-	data-required-field="{{pubData[language.id].wasThisPageHelpful.Table1[7].undefined}}"
+	data-question="{{text.is_this_page_useful}}"
+	data-yes="{{text.answer_yes}}"
+	data-no="{{text.answer_no}}"
+	data-comment-prompt="{{text.additional_comments}}"
+	data-thanks-feedback="{{text.thank_you_for_your_feedback}}"
+	data-thanks-comments="{{text.thank_you_for_your_comments}}"
+	data-submit="{{text.submit}}"
+	data-required-field="{{text.this_field_required}}"
 	></cwds-pagerating>	
 </pagerating-section>
 
@@ -46,9 +47,9 @@ ga('tracker3.send', 'pageview');
 
 		<div class="footer-section-col footer-section-col-hotline trigger">
 			<div class="footer-section-hotline">
-				<div class="footer-section-hotline-label">{{pubData[language.id].footerData.Table3[7].Text | safe}}</div>
+				<div class="footer-section-hotline-label">{{text.hotline_label}}</div>
 				<a class="footer-section-hotline-number" href="tel:8334224255">1-833-422-4255</a>
-				<div class="footer-section-hotline-hours">{{pubData[language.id].footerData.Table3[8].Text | safe}}</div>
+				<div class="footer-section-hotline-hours">{{text.hotline_hours | safe}}</div>
 			</div>
 		</div>
 
@@ -76,7 +77,7 @@ ga('tracker3.send', 'pageview');
 				<a class="footer-section-utility-nav-link" href="{{ item.URL }}">{{ item.Name | safe }}</a>
 				{% endfor %}
 			</nav>
-			<span class="footer-section-utility-official">{{pubData[language.id].footerData.Table3[0].Text | safe}}</span>
+			<span class="footer-section-utility-official">{{text.official_ca_website}}</span>
 		</div>
 		<a href="https://census.ca.gov">
 			<img src="https://files.covid19.ca.gov/img/census-logo.png" class="logo-census" alt="California Census 2020" />

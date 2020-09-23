@@ -9,7 +9,32 @@ const camelCase = (string) => string.replace(/-([a-z])/g, (g) => g[1].toUpperCas
 const files = [
   { slug: 'do-dont', split: false },
   { slug: 'footer-data', split: false },
-  { slug: 'homepage-text', split: true },
+  { slug: 'common-page-labels', split: true, tableSchema: {
+    Table1: {
+      pivot: true,
+      require: [
+        'california_for_all',
+        'your_actions_save_lives',
+        'search',
+        'search_this_site',
+        'submit_search',
+        'language',
+        'select_language',
+        'more',
+        'menu',
+        'what_are_you_looking_for',
+        'is_this_page_useful',
+        'answer_yes',
+        'answer_no',
+        'additional_comments',
+        'this_field_required',
+        'submit',
+        'thank_you_for_your_comments',
+        'thank_you_for_your_feedback',
+        'home'
+      ]
+    }
+  }},
   { slug: 'people-want-to-know', split: true, tableSchema: {
     Table1: {
       require: ['text','_url']
@@ -29,8 +54,7 @@ const files = [
         'Description – positive cases'
     ]}
   }},
-  { slug: 'reopening-roadmap-activity-data', split: true },
-  { slug: 'was-this-page-helpful', split: true }
+  { slug: 'reopening-roadmap-activity-data', split: true }
 ];
 
 // Reusable function for validating JSON
