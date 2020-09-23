@@ -206,6 +206,9 @@ button.card-header.accordion-alpha:focus {
     display: inline-block;
     padding: 0 20px;
     background-color: #fff;
+    &.d-none {
+      display: none;
+    }
   }
   .toggle-active {
     background-color: #1f2574;
