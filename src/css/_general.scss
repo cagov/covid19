@@ -1894,9 +1894,9 @@ font {
 .bg-yellow-btn {background-color:#e6b735 !important;}
 .bg-green-btn {background-color:#3ae705 !important;}
 .bg-ccc { background-color: #ccc; }
-.bd-ccc { border: solid 1px #ccc; }
-
 .bg-lightblue {background-color: $lightestblue !important;}
+.bg-darkblue {background-color: $darkblue !important;}
+
 .p-rel {position: relative !important;}
 .p-fix {position: fixed !important;}
 .p-abs {position: absolute !important;}
@@ -1919,3 +1919,4 @@ font {
 .bd-lightblue {border: 2px solid $lightestblue !important;}
 .bd-blue {border: 1px solid $blue !important;}
 .bd-darkblue {border: 1px solid $darkblue !important;}
+.bd-ccc { border: solid 1px #ccc; }
