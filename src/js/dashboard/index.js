@@ -77,7 +77,7 @@ function displayChart(containerSelector,width,height,url) {
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
 
-let topChartHeights1 = 520;
+let topChartHeights1 = 600;
 let chartWidth = 1000;
 let chartWidth2 = 700;
 let countyMapChartHeight = 747;
@@ -88,23 +88,24 @@ if(window.innerWidth < 700) {
   chartWidth2 = chartWidth;
 }
 
+
 // these are county toggles and state toggles
-let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/3_1County-Reported?:origin=card_share_link&:embed=n');
-let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/1_1State-Reported?:origin=card_share_link&:embed=n');
+let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
 
-let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/6_1CountyTesting?:origin=card_share_link&:embed=n')
-let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/5_1StateTesting?:origin=card_share_link&:embed=n')
+let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
+let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
 
-let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/9_1CountyHosp?:origin=card_share_link&:embed=n')
-let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/7_1StateHosp?:origin=card_share_link&:embed=n')
+let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
+let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
 // this chart does not toggle
-let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/11_1TierAssignmentMap?:origin=card_share_link&:embed=n');
+let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/StateDashboard_16008816705240/11_1TierAssignmentMap?:language=en&:display_count=y&:origin=viz_share_link');
 
 // these are their own toggle sets
-let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_1Ethnicity?:origin=card_share_link&:embed=n')
-let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_2Gender?:origin=card_share_link&:embed=n')
-let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://tableau.cdt.ca.gov/views/StateDashboard-CleanSources/12_3Age?:origin=card_share_link&:embed=n')
+let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
@@ -116,7 +117,6 @@ function resetGroupToggles() {
 }
 
 let groupTogglers = document.querySelectorAll('.js-toggle-group');
-document.getElementById('ethnicity-graph').style.display = 'block';
 groupTogglers.forEach(toggle => {
   toggle.addEventListener('click',function(event) {
     event.preventDefault();
