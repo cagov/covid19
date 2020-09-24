@@ -22,18 +22,24 @@
 .tableauPlaceholder {
   margin-bottom: 30px;
 }
+
+.todo-fix-this-wach-move {
+  position:relative;
+  top:-12em;
+}
 @media (max-width: 900px) { 
   .toggle-group-container {
     width: 100%;
-    &.cases-group {
-      height: 930px;
-    }
+    height: 930px;
   }
   .autocomplete-inline {
     input.form-control-lg {
       min-width: auto;
       width: 100%;
     }
+  }
+  .todo-fix-this-wach-move {
+    top: 0;
   }
   .form-inline {
     justify-content: space-around;
