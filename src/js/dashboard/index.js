@@ -105,8 +105,8 @@ let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeig
 
 // these are their own toggle sets
 let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
-let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+let genderGroupChart = ''; // we aren't loading this until they click
+let ageGroupChart = ''; // we aren't loading this until they click
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
@@ -124,12 +124,14 @@ groupTogglers.forEach(toggle => {
     resetGroupToggles();
     if(this.classList.contains('gender')) {
       document.getElementById('gender-graph').style.display = 'block';
+      genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
-      document.getElementById('age-graph').style.display = 'block';
+      document.getElementById('age-graph').style.display = 'block';      
+      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
-      document.getElementById('ethnicity-graph').style.display = 'block';
+      document.getElementById('ethnicity-graph').style.display = 'block';      
     }
     this.classList.add('toggle-active');
   })

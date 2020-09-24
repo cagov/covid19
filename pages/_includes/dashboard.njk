@@ -20,7 +20,7 @@
     <div class="row pb-4">
       <div class="col-md-10 mx-auto">
       <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
-        <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}.</p>
+        <p>California now has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from yesterday's total of {{_varStatTotalDeathsLast_}}. The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests since yesterday. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent. </p>
         </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
         <p class="small-text"><strong>Note:</strong> Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
       </div>
@@ -203,7 +203,7 @@
 </div>
 </div>
 
-<div class="bg-lightblue py-5" style="height:50em">
+<div class="bg-lightblue py-5">
 
   <div class="container py-2">
   <div class="col-md-10 mx-auto">
@@ -223,13 +223,13 @@
 
       <div class="toggle-group-container">
 
-        <div id="gender-graph" class="toggle-group-element">
+        <div id="gender-graph" class="toggle-group-element" style="display:none">
           <div id="genderGroupChartContainer">
             <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
             <div class="tableauPlaceholder"></div>
           </div>
         </div>
-        <div id="age-graph" class="toggle-group-element">
+        <div id="age-graph" class="toggle-group-element" style="display:none">
           <div id="ageGroupChartContainer">
             <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths.</p>
             <div class="tableauPlaceholder"></div>
@@ -240,7 +240,7 @@
             <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state.</p>
             <div class="tableauPlaceholder"></div>
           </div>
-          <p style="position:relative;top:-12em;">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
+          <p class="todo-fix-this-wach-move">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
         </div>
       </div>
       </div>
