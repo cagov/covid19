@@ -31,6 +31,9 @@
   .toggle-group-container {
     width: 100%;
     height: 930px;
+    &.cases-group {
+      height: 690px;
+    }
   }
   .autocomplete-inline {
     input.form-control-lg {
