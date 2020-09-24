@@ -85,7 +85,7 @@ let countyMapChartHeight = 560;
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
-  chartWidth = window.innerWidth;
+  chartWidth = window.innerWidth - 30;
   chartWidth2 = chartWidth;
 }
 
