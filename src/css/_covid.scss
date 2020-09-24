@@ -14,7 +14,8 @@
 
 .jumbotron {
 	background-color: #1D2574;
-	color: white;
+  color: white;
+  text-align: center;
 }
 
 h1 {
@@ -741,3 +742,14 @@ border: none;
     padding-bottom: 1.5rem;
   }
 }
+
+/* Center h1, h2 on reg. pages */
+.jumbotron.jumbo-img {
+  text-align: center;
+}
+
+.col-lg-10.mx-auto h2 {
+  color: darkblue;
+  text-align: center;
+}
+
