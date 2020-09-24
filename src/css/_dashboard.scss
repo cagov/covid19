@@ -54,3 +54,9 @@
   margin-top: -30px;
   color: #c00;
 }
+
+.toggle-links a:focus {
+  outline: 2px solid #0257d5 !important;
+  outline-offset: -2px;
+}
+
