@@ -104,9 +104,9 @@ let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartH
 let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/Planforreducingcovid-19/planforreducingcovid-19?:language=en&:display_count=y&:toolbar=n&:origin=viz_share_link');
 
 // these are their own toggle sets
-let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 348, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 348, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
-let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 348, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+let genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+let ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
