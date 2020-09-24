@@ -1,4 +1,4 @@
-{%-set _varStatDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags)-%}
+{%-set _varStatDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags, 1)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2020", "")-%}
 {%-set _varStatTotalCases_ = tableauCovidMetrics.TOTALCONFIRMED | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = tableauCovidMetrics.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
@@ -11,7 +11,7 @@
 {%-set _varStatTestedDaily_ = tableauCovidMetrics.TESTED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTestedDailyPct_ = (100*tableauCovidMetrics.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
 {%-set _varStarPos_14DayAvg_ = (100*tableauCovidMetrics.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
-{%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags, -1)-%}
+{%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = tableauCovidMetrics.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
 {%-set _varStatHospitalChange_ = (-1*tableauCovidMetrics.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varStatIcuTotal_ = tableauCovidMetrics.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
