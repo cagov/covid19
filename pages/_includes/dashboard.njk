@@ -61,7 +61,7 @@
     </div><!--END container-->
 </div><!--END LIGHT BLUE BG-->
 
-<div class="container py-5">
+<div class="container py-4">
     <div class="col-md-10 mx-auto">
         <h2 class="text-center color-purple">See the data statewide and in each county</h2>
         <div class="row d-flex justify-content-md-center">
@@ -103,7 +103,7 @@
         <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
 
-        <h3 class="text-center">Daily cases and deaths</h3>
+        <h3 class="text-center mt-4">Daily cases and deaths</h3>
         <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
  
         <div class="row d-flex justify-content-md-center">
@@ -123,7 +123,7 @@
         <div class="row d-flex justify-content-md-center">
             <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
         </div>
-        <h3 class="text-center">Testing for COVID-19</h3>
+        <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
         <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the previous day. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
 
         <div class="row d-flex justify-content-md-center">
@@ -207,8 +207,8 @@
 
 <div class="bg-lightblue py-5">
     <div class="container py-2">
-        <div class="col-md-10 mx-auto">
-            <h2 class="text-center color-purple">Infections by group</h2>
+    <h2 class="text-center color-orange">Infections by group</h2>
+        <div class="col-md-12 bg-white px-3 py-4">
             <div class="row d-flex justify-content-md-center">
 
                 <div class="toggle-link-container">
@@ -218,10 +218,9 @@
                     <a href="#" class="js-toggle-group age">Age</a>
                     </div>
                 </div>
-
             </div>
-            <div class="row d-flex justify-content-md-center">
-                <div class="toggle-group-container">
+            <div class="row">
+                <div class="toggle-group-container col-10 mx-auto">
 
                     <div id="gender-graph" class="toggle-group-element" style="display:none">
                         <div id="genderGroupChartContainer">
