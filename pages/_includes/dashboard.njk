@@ -61,7 +61,7 @@
     </div><!--END container-->
 </div><!--END LIGHT BLUE BG-->
 
-<div class="container py-5">
+<div class="container py-4">
     <div class="col-md-10 mx-auto">
         <h2 class="text-center color-purple">See the data statewide and in each county</h2>
         <div class="row d-flex justify-content-md-center">
@@ -103,7 +103,7 @@
         <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
 
-        <h3 class="text-center">Daily cases and deaths</h3>
+        <h3 class="text-center mt-4">Daily cases and deaths</h3>
         <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
  
         <div class="row d-flex justify-content-md-center">
@@ -123,7 +123,7 @@
         <div class="row d-flex justify-content-md-center">
             <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
         </div>
-        <h3 class="text-center">Testing for COVID-19</h3>
+        <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
         <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the previous day. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
 
         <div class="row d-flex justify-content-md-center">
@@ -139,7 +139,7 @@
 
 
         </div>
-        <h3 class="text-center">Impact on hospitals and ICUs</h3>
+        <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
         <p>
             The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, a decrease of {{_varStatHospitalChange_}} from the previous day.
             The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, a decrease of {{_varStatIcuChange_}} from the previous day.
@@ -159,25 +159,34 @@
         <div class="row d-flex justify-content-md-center">
 
             <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
-            <h3 class="has-text-align-center">Current tier assignments as of September 22, 2020</h3>
-            <p>All data and tier assignments are updated weekly every Tuesday.</p>
+            
+            
 
                 <div class="grid-layout-hd bg-lightblue bd-lightblue">
                     <div class="grid-main bg-lightblue py-0"><h3 class="my-0 text-center">California’s county risk levels</h3>
                     </div>
                     <div class="grid-single single1">
                         <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
+                        <p class="text-small mt-2 mb-0">Most non-essential indoor businees operations are closed</p>
                     </div>
                     <div class="grid-single single2">
                         <div class="btn-matrix bg-red-btn">SUBSTANTIAL</div>
+                        <p class="text-small mt-2 mb-0">Some indoor business operations are open with modifications</p>
+
+
                     </div>
                     <div class="grid-single single3">
                         <div class="btn-matrix bg-orange-btn">MODERATE</div>
+                        <p class="text-small mt-2 mb-0">Most non-essential indoor businees operations are closed</p>
                     </div>
                     <div class="grid-single single4">
                         <div class="btn-matrix bg-yellow-btn">MINIMAL</div>
+                        <p class="text-small mt-2 mb-0">Most indoor business operations are open with modifications</p>
                     </div>
                 </div>
+
+                <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of September 22, 2020</h3>
+                <p class="mt-0">All data and tier assignments are updated weekly every Tuesday.</p>
 
             <div class="tableauPlaceholder" id="mapChartContainer"></div>
         </div>
@@ -198,8 +207,8 @@
 
 <div class="bg-lightblue py-5">
     <div class="container py-2">
-        <div class="col-md-10 mx-auto">
-            <h2 class="text-center color-purple">Infections by group</h2>
+    <h2 class="text-center color-orange">Infections by group</h2>
+        <div class="col-md-12 bg-white px-3 py-4">
             <div class="row d-flex justify-content-md-center">
 
                 <div class="toggle-link-container">
@@ -209,10 +218,9 @@
                     <a href="#" class="js-toggle-group age">Age</a>
                     </div>
                 </div>
-
             </div>
-            <div class="row d-flex justify-content-md-center">
-                <div class="toggle-group-container">
+            <div class="row">
+                <div class="toggle-group-container col-10 mx-auto">
 
                     <div id="gender-graph" class="toggle-group-element" style="display:none">
                         <div id="genderGroupChartContainer">
@@ -237,6 +245,6 @@
                     </div>
                 </div>
             </div>
-        </div><!--END col-10-->
+        </div><!--END col-12-->
   </div><!--END CONTAINER-->
 </div><!--END BG lightblue-->
