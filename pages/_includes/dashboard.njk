@@ -13,9 +13,9 @@
 {%-set _varStarPos_14DayAvg_ = (100*tableauCovidMetrics.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = tableauCovidMetrics.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (tableauCovidMetrics.HOSPITALIZED_COVID_CONFIRMED_PATIENTS + tableauCovidMetrics.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (-1*tableauCovidMetrics.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = (-1*(tableauCovidMetrics.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY + tableauCovidMetrics.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY)) | formatNumber(tags)-%}
 {%-set _varStatIcuTotal_ = (tableauCovidMetrics.ICU_COVID_CONFIRMED_PATIENTS + tableauCovidMetrics.ICU_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (-1*tableauCovidMetrics.ICU_COVID_CONFIRMED_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = (-1*(tableauCovidMetrics.ICU_COVID_CONFIRMED_PATIENTS_DAILY + tableauCovidMetrics.ICU_SUSPECTED_COVID_PATIENTS_DAILY)) | formatNumber(tags)-%}
 
 <div class="bg-lightblue py-5">
     <div class="container py-2">
