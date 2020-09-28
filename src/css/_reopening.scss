@@ -92,27 +92,37 @@ cagov-reopening {
     color: #000;
     text-transform: uppercase;
   }
+
+  .county-color-1,   .county-color-2,   .county-color-3,  .county-color-4 {
+    padding: 20px 15px 25px 15px;
+    margin-bottom: 20px;
+  }
+
   .county-color-1 {
-    background-color: rgba(230, 183, 53, .5);
+    background-color:#FAF1D7;
+    border-bottom: 8px solid #E6B735;
     .pill {
       background-color: #E6B735;
     }
   }
   .county-color-2 {
-    background-color: rgba(217, 118, 65, .5);
+    background-color:#F7E4D9;
+    border-bottom: 8px solid #D97641;
     .pill {
       background-color: #D97641;
     }
   }
   .county-color-3 {
-    background-color: rgba(196, 61, 83, .5);
+    background-color:#F3D8DD;
+    border-bottom: 8px solid #C43D53;
     .pill {
       background-color: #C43D53;
       color: #fff;
     }
   }
   .county-color-4 {
-    background-color: rgba(128, 47, 103, .5);
+    background-color:#E6D5E1;
+    border-bottom: 8px solid #802F67;
     .pill {
       background-color: #802F67;
       color: #fff;
