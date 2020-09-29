@@ -79,7 +79,7 @@ function displayChart(containerSelector,width,height,url) {
 }
 
 let topChartHeights1 = 600;
-let chartWidth = 1000;
+let chartWidth = 900;
 let chartWidth2 = 700;
 let countyMapChartHeight = 560;
 if(window.innerWidth < 700) {

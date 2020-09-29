@@ -19,8 +19,16 @@
     height: 600px;
   }
 }
+
 .tableauPlaceholder {
   margin-bottom: 30px;
+  iframe {
+    margin: 0 auto;
+  }
+}
+
+.tableauPlaceholder + iframe {
+  margin: 0 auto;
 }
 
 .todo-fix-this-wach-move {
