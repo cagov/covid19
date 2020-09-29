@@ -180,7 +180,36 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen: 
-    let schoolOKList = ["Alpine", "Amador", "Calaveras", "Del Norte", "El Dorado", "Humboldt", "Lake", "Lassen", "Mariposa", "Modoc", "Mono", "Napa", "Nevada", "Orange", "Placer", "Plumas", "San Diego", "San Francisco", "Santa Clara", "Santa Cruz", "Shasta", "Sierra", "Siskiyou", "Trinity", "Tuolumne"];    
+    let schoolOKList = [
+      "Alpine",
+      "Amador",
+      "Calaveras",
+      "Del Norte",
+      "El Dorado",
+      "Humboldt",
+      "Inyo",
+      "Lake",
+      "Lassen",
+      "Marin",
+      "Mariposa",
+      "Modoc",
+      "Mono",
+      "Napa",
+      "Nevada",
+      "Orange",
+      "Placer",
+      "Plumas",
+      "San Diego",
+      "San Francisco",
+      "Santa Clara",
+      "Santa Cruz",
+      "Shasta",
+      "Sierra",
+      "Siskiyou",
+      "Tehama",
+      "Trinity",
+      "Tuolumne"
+    ];    
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
