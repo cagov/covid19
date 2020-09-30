@@ -93,7 +93,7 @@ if(window.innerWidth < 700) {
 else if (window.innerWidth > 700 && window.innerWidth < 992) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
-  chartWidth = 520;
+  chartWidth = 700;
   chartWidth2 = chartWidth;
 }
 /* big tablet */
