@@ -88,7 +88,18 @@ if(window.innerWidth < 700) {
   chartWidth = window.innerWidth - 30;
   chartWidth2 = chartWidth;
 }
-
+else if (window.innerWidth > 700 && window.innerWidth < 992) {
+  topChartHeights1 = 930;
+  countyMapChartHeight = 560;
+  chartWidth = 600;
+  chartWidth2 = chartWidth;
+}
+else if (window.innerWidth > 992 && window.innerWidth < 1200) {
+  topChartHeights1 = 600;
+  countyMapChartHeight = 560;
+  chartWidth = 800;
+  chartWidth2 = 700;
+}
 
 // these are county toggles and state toggles
 let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
