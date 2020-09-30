@@ -77,23 +77,26 @@ function displayChart(containerSelector,width,height,url) {
   }
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
-
+/* desctop */
 let topChartHeights1 = 600;
 let chartWidth = 900;
 let chartWidth2 = 700;
 let countyMapChartHeight = 560;
+/* phone */
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
   chartWidth = window.innerWidth - 30;
   chartWidth2 = chartWidth;
 }
+/* small tablet */
 else if (window.innerWidth > 700 && window.innerWidth < 992) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
-  chartWidth = 600;
+  chartWidth = 520;
   chartWidth2 = chartWidth;
 }
+/* big tablet */
 else if (window.innerWidth > 992 && window.innerWidth < 1200) {
   topChartHeights1 = 600;
   countyMapChartHeight = 560;
