@@ -181,13 +181,14 @@ countyTogglers.forEach(toggle => {
     if(this.classList.contains('county')) {
       showCounties();
     }
-    this.classList.add('toggle-active');
   })
 })
 
 function showStateWides() {
   resetCountyToggles();
-  document.querySelector('.js-toggle-county.statewide').classList.add('toggle-active');
+  document.querySelectorAll('.js-toggle-county.statewide').forEach(c => {
+    c.classList.add('toggle-active');
+  })
   document.getElementById('cases-state-graph').style.display = 'block';
   document.getElementById('testing-state-graph').style.display = 'block';
   document.getElementById('hospital-state-graph').style.display = 'block';
