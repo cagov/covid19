@@ -58,14 +58,17 @@ cagov-reopening {
   }
   .card-content {
     margin: 0;
-    padding: 0 0 30px 0;
+    padding: 15px 0 30px 0;
     background: #fff;
+  }
+  .county-container {
+    padding: 0 30px 0 30px;
   }
   .card-county, .card-activity {
     padding: 30px;
   }
   .card-county {
-    margin: 20px 0 0 0;
+    margin: 5px 0 0 0;
   }
   .card-activity {
     text-align: left;
