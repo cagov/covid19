@@ -79,7 +79,7 @@ function displayChart(containerSelector,width,height,url) {
 }
 
 let topChartHeights1 = 600;
-let chartWidth = 1000;
+let chartWidth = 900;
 let chartWidth2 = 700;
 let countyMapChartHeight = 560;
 if(window.innerWidth < 700) {
@@ -123,10 +123,12 @@ groupTogglers.forEach(toggle => {
     resetGroupToggles();
     if(this.classList.contains('gender')) {
       document.getElementById('gender-graph').style.display = 'block';
+      this.classList.add('toggle-active');
       genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
-      document.getElementById('age-graph').style.display = 'block';      
+      document.getElementById('age-graph').style.display = 'block'; 
+      this.classList.add('toggle-active');     
       ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
