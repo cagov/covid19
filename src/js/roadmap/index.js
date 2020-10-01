@@ -221,7 +221,7 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<h2 class="text-black mb-0">${item.county} County</h2><div class="county-container"><div class="card-county county-color-${item['Overall Status']}">
         
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
       </div></div><p class="mt-0">${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>`
       if(this.state['activity']) {
         selectedActivities = [];
