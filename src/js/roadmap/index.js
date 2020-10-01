@@ -218,12 +218,11 @@ class CAGovReopening extends window.HTMLElement {
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
-      this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
-        <h2>${item.county}</h2>
+      this.cardHTML += `<h2 class="text-black mb-0">${item.county} County</h2><div class="county-container"><div class="card-county county-color-${item['Overall Status']}">
+        
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>
-      </div>`
+      </div></div><p class="mt-0">${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>`
       if(this.state['activity']) {
         selectedActivities = [];
         this.allActivities.forEach(ac => {
@@ -242,7 +241,7 @@ class CAGovReopening extends window.HTMLElement {
     })
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
     this.cardHTML += `<div style="display:none">
-      <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
+      <div class="county-color-1 county-color-2 county-color-3 county-color-4 text-black"></div>
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
