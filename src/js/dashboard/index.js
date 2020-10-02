@@ -205,5 +205,13 @@ function showCounties() {
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
 
+
+document.getElementById("clearCounty").addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("location-query").value = '';
+  document.querySelector('#county-query-error').style.display = 'none !important';
+  showStateWides();
+  
+});
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
