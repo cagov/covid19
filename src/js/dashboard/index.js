@@ -110,8 +110,7 @@ else if (window.innerWidth > 992 && window.innerWidth < 1200) {
 }
 
 // these are county toggles and state toggles
-let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_test/5_1StateTesting?:language=en&:display_count=y&publish=yes&:origin=viz_share_link');
-// using a temporary url above for testing: 'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
 let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
 let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
@@ -206,13 +205,5 @@ function showCounties() {
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
 
-
-document.getElementById("clearCounty").addEventListener("click", function(e) {
-  e.preventDefault();
-  document.getElementById("location-query").value = '';
-  document.querySelector('#county-query-error').style.display = 'none !important';
-  showStateWides();
-  
-});
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
