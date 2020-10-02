@@ -257,3 +257,12 @@ class CAGovReopening extends window.HTMLElement {
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
+
+document.getElementById("clearLocation").addEventListener("click", function() {
+  document.getElementById("location-query").value = '';
+});
+
+document.getElementById("clearActivity").addEventListener("click", function() {
+  document.getElementById("activity-query").value = '';
+});
+
