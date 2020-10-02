@@ -199,11 +199,17 @@ body.interior-page {
   transition: background 0.5s $slow-curve;
   padding: 0;
   margin: 0.5rem 0.5rem 0.5rem 1em;
-order: 2;
-width: 37%;
+  order: 2;
+  width: 37%;
   @include reg-phone {
-	width: 34%;
+	  width: 34%;
   }
+  @include small-phone {
+    width: 25%;
+    .header-search-field::placeholder {
+      visibility: hidden;
+    }
+  }  
   @include tablet {
     width: 12.5rem;
     padding: 0 0 0 0.25rem;
