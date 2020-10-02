@@ -17,7 +17,7 @@ window.fetch('/countystatus.json')
       let before = this.input.value.match(/^.+,\s*|/)[0];
       let finalval = before + text;
       this.input.value = finalval;        
-      countySelected(finalval);
+      // countySelected(finalval);
     },
     list: aList
   };
@@ -51,7 +51,6 @@ function countySelected(county) {
   let casesChartActiveSheet = casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
   let testingChartActiveSheet = testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
   let hospitalChartActiveSheet = hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
-  document.querySelector('.js-toggle-county.county').innerHTML = county;
 
   function resetCounties() {
     if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
@@ -64,7 +63,13 @@ function countySelected(county) {
   }
   resetCounties();
   showCounties();
-  document.querySelector('.js-toggle-county.county').style.display = 'block';
+  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+    c.classList.remove('d-none');
+  })
+  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
+    c.innerHTML = county;
+    c.classList.remove('d-none');
+  });
 }
 
 function displayChart(containerSelector,width,height,url) {
@@ -109,7 +114,7 @@ let ageGroupChart = ''; // we aren't loading this until they click
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
-    toggle.classList.remove('toggle-active')  
+    toggle.classList.remove('toggle-active')
   });
   document.getElementById('gender-graph').style.display = 'none';
   document.getElementById('ethnicity-graph').style.display = 'none';
@@ -162,14 +167,14 @@ countyTogglers.forEach(toggle => {
     if(this.classList.contains('county')) {
       showCounties();
     }
-    this.classList.add('toggle-active');
   })
 })
 
 function showStateWides() {
   resetCountyToggles();
-  document.querySelector('.js-toggle-county.statewide').classList.add('toggle-active');
-
+  document.querySelectorAll('.js-toggle-county.statewide').forEach(c => {
+    c.classList.add('toggle-active');
+  })
   document.getElementById('cases-state-graph').style.display = 'block';
   document.getElementById('testing-state-graph').style.display = 'block';
   document.getElementById('hospital-state-graph').style.display = 'block';
@@ -177,7 +182,9 @@ function showStateWides() {
 
 function showCounties() {
   resetCountyToggles();
-  document.querySelector('.js-toggle-county.county').classList.add('toggle-active');
+  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
+    c.classList.add('toggle-active');
+  });
 
   document.getElementById('cases-county-graph').style.display = 'block';
   document.getElementById('testing-county-graph').style.display = 'block';
@@ -186,4 +193,3 @@ function showCounties() {
 
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
-
