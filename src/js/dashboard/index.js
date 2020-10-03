@@ -25,9 +25,13 @@ window.fetch('/countystatus.json')
   setupFormSubmitListener(aList);
 }.bind(this));
 
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
+    clearBtn.classList.remove('d-none');
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
     let typedInValue = document.querySelector('#location-query').value;
@@ -204,6 +208,43 @@ function showCounties() {
   document.getElementById('testing-county-graph').style.display = 'block';
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
+
+
+countyInput.addEventListener("focus", function() {
+  inputValue();
+ });
+
+ countyInput.addEventListener("input", function() {
+  inputValue();
+ });
+
+countyInput.addEventListener("blur", function() {
+   inputValue();
+});
+
+function inputValue() {
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+  if (countyInput && countyInput.value) {
+    clearBtn.classList.remove('d-none');
+  }
+  else {clearBtn.classList.add('d-none');}
+}
+
+clearBtn.addEventListener("blur", function(e) { 
+  inputValue();
+});
+
+clearBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("location-query").value = '';
+  showStateWides();
+  resetGroupToggles();
+  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+    c.classList.add('d-none');
+  });
+  //this.classList.add('d-none');
+});
 
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();

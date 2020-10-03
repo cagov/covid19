@@ -72,3 +72,7 @@
 #clearCounty {
   top: 12px;;
 }
+
+#clearCounty:focus {
+  outline: 2px solid $darkblue;
+}
