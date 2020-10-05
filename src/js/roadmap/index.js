@@ -106,7 +106,7 @@ class CAGovReopening extends window.HTMLElement {
         let finalval = before + text;
         this.input.value = finalval;        
         component.state[fieldName] = finalval;
-        component.layoutCards();
+        // component.layoutCards();
       },
       list: aList
     };
