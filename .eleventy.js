@@ -183,7 +183,7 @@ module.exports = function(eleventyConfig) {
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
     const locales = 'en-US';
-    const timeZone = 'America/Los_Angeles';
+    const timeZone = 'America/Los_Angeles';    
   if(datestring&&datestring.indexOf('Z') > -1) {
       const date = new Date(datestring);
       return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
@@ -206,11 +206,13 @@ module.exports = function(eleventyConfig) {
 
     if(datestring) {
       let targetdate =
-        datestring==='today'
-          ? new Date()
-          : datestring.indexOf('Z') > -1
-            ? new Date(datestring)
-            : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
+        (typeof datestring === 'object') //date without quotes
+        ? datestring 
+        : datestring==='today'
+            ? new Date()
+            : datestring.indexOf('Z') > -1
+              ? new Date(datestring)
+              : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
