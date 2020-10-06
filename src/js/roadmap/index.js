@@ -181,6 +181,7 @@ class CAGovReopening extends window.HTMLElement {
     }
     // if we are in one of these counties schools can reopen: 
     let schoolOKList = [
+      "Alameda",
       "Alpine",
       "Amador",
       "Calaveras",
@@ -199,14 +200,17 @@ class CAGovReopening extends window.HTMLElement {
       "Orange",
       "Placer",
       "Plumas",
+      "Riverside",
       "San Diego",
       "San Francisco",
+      "San Luis Obispo",
+      "San Mateo",
       "Santa Clara",
       "Santa Cruz",
       "Shasta",
       "Sierra",
       "Siskiyou",
-      "Tehama",
+      "Solano",
       "Trinity",
       "Tuolumne"
     ];    
