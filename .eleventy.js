@@ -206,11 +206,13 @@ module.exports = function(eleventyConfig) {
 
     if(datestring) {
       let targetdate =
-        datestring==='today'
-          ? new Date()
-          : datestring.indexOf('Z') > -1
-            ? new Date(datestring)
-            : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
+        (typeof datestring === 'object') //date without quotes
+        ? datestring 
+        : datestring==='today'
+            ? new Date()
+            : datestring.indexOf('Z') > -1
+              ? new Date(datestring)
+              : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
