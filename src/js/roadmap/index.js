@@ -63,7 +63,7 @@ class CAGovReopening extends window.HTMLElement {
     .then(function(data) {
       this.allActivities = data.Table1;
       let aList = []
-      aList.push(this.viewall);
+      // aList.push(this.viewall);
       data.Table1.forEach(item => {
         aList.push(item['0'])
       })
