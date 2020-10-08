@@ -1,0 +1,70 @@
+/* added pos-rel to general */
+.autocomplete-inline {
+  input.form-control-lg {
+    min-width: 400px;
+  }
+  
+}
+.toggle-group-container {
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  .toggle-group-element {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+  }
+  &.cases-group {
+    height: 600px;
+  }
+}
+.tableauPlaceholder {
+  margin-bottom: 30px;
+  iframe {
+    margin: 0 auto;
+  }
+}
+
+.tableauPlaceholder + iframe {
+  margin: 0 auto;
+}
+
+
+.todo-fix-this-wach-move {
+  position:relative;
+  top:-12em;
+}
+@media (max-width: 900px) { 
+  .toggle-group-container {
+    width: 100%;
+    height: 930px;
+    &.cases-group {
+      height: 690px;
+    }
+  }
+  .autocomplete-inline {
+    input.form-control-lg {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+  .todo-fix-this-wach-move {
+    top: 0;
+  }
+  .form-inline {
+    justify-content: space-around;
+  }
+}
+
+.error-text {
+  font-weight: bold;
+  margin-top: -30px;
+  color: #c00;
+}
+
+.toggle-links a:focus {
+  outline: 2px solid #0257d5 !important;
+  outline-offset: -2px;
+}
+

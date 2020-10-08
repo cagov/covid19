@@ -22,7 +22,7 @@ class CAGovReopening extends window.HTMLElement {
       countyLabel = this.dataset.countyLabel;
     }
     let activityPlaceholder = 'Enter a business or activity';
-    let countyPlaceholder = 'Enter county' // a ZIP code or 
+    let countyPlaceholder = 'Enter county' // a ZIP code or
     this.countyRestrictionsAdvice = 'Counties can restrict further.';
     if(this.dataset.countyRestrictions) {
       this.countyRestrictions = this.dataset.countyRestrictions;
@@ -63,7 +63,7 @@ class CAGovReopening extends window.HTMLElement {
     .then(function(data) {
       this.allActivities = data.Table1;
       let aList = []
-      aList.push(this.viewall);
+      // aList.push(this.viewall);
       data.Table1.forEach(item => {
         aList.push(item['0'])
       })
@@ -97,20 +97,20 @@ class CAGovReopening extends window.HTMLElement {
       autoFirst: true,
       filter: function (text, input) {
         return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
-      },  
+      },
       item: function (text, input) {
         return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
       },
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;        
+        this.input.value = finalval;
         component.state[fieldName] = finalval;
-        component.layoutCards();
+        // component.layoutCards();
       },
       list: aList
     };
-    
+
 
     const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
   }
@@ -179,8 +179,41 @@ class CAGovReopening extends window.HTMLElement {
         }
       })
     }
-    // if we are in one of these counties schools can reopen: 
-    let schoolOKList = ["Alpine", "Amador", "Calaveras", "Del Norte", "El Dorado", "Humboldt", "Lake", "Lassen", "Mariposa", "Modoc", "Mono", "Napa", "Nevada", "Orange", "Placer", "Plumas", "San Diego", "San Francisco", "Santa Clara", "Santa Cruz", "Shasta", "Sierra", "Siskiyou", "Trinity", "Tuolumne"];    
+    // if we are in one of these counties schools can reopen:
+    let schoolOKList = [
+      "Alameda",
+      "Alpine",
+      "Amador",
+      "Calaveras",
+      "Del Norte",
+      "El Dorado",
+      "Humboldt",
+      "Inyo",
+      "Lake",
+      "Lassen",
+      "Marin",
+      "Mariposa",
+      "Modoc",
+      "Mono",
+      "Napa",
+      "Nevada",
+      "Orange",
+      "Placer",
+      "Plumas",
+      "Riverside",
+      "San Diego",
+      "San Francisco",
+      "San Luis Obispo",
+      "San Mateo",
+      "Santa Clara",
+      "Santa Cruz",
+      "Shasta",
+      "Sierra",
+      "Siskiyou",
+      "Solano",
+      "Trinity",
+      "Tuolumne"
+    ];
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
@@ -193,7 +226,7 @@ class CAGovReopening extends window.HTMLElement {
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>
+        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];

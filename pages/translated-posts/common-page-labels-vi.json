@@ -2,95 +2,153 @@
   "Table1": [
     {
       "_id": "california_for_all",
-      "văn bản": "California cho Mọi Người"
+      "text": "California cho Mọi Người"
     },
     {
       "_id": "your_actions_save_lives",
-      "văn bản": "Hành Động của Quý Vị Sẽ Giúp Cứu Sống Mọi Người"
+      "text": "Hành Động của Quý Vị Sẽ Giúp Cứu Sống Mọi Người"
     },
     {
       "_id": "search",
-      "văn bản": "Tìm kiếm"
+      "text": "Tìm kiếm"
     },
     {
       "_id": "search_this_site",
-      "văn bản": "Tìm kiếm trên trang web này"
+      "text": "Tìm kiếm trên trang web này"
     },
     {
       "_id": "submit_search",
-      "văn bản": "Gửi Yêu Cầu Tìm Kiếm"
+      "text": "Gửi Yêu Cầu Tìm Kiếm"
     },
     {
       "_id": "language",
-      "văn bản": "Ngôn ngữ"
+      "text": "Ngôn ngữ"
     },
     {
       "_id": "select_language",
-      "văn bản": "Chọn ngôn ngữ"
+      "text": "Chọn ngôn ngữ"
     },
     {
       "_id": "more",
-      "văn bản": "Thêm ..."
+      "text": "Thêm ..."
     },
     {
       "_id": "menu",
-      "văn bản": "Menu"
+      "text": "Menu"
     },
     {
       "_id": "what_are_you_looking_for",
-      "văn bản": "Quý vị đang tìm gì?"
+      "text": "Quý vị đang tìm gì?"
     },
     {
       "_id": "is_this_page_useful",
-      "văn bản": "Trang này có hữu ích không?"
+      "text": "Trang này có hữu ích không?"
     },
     {
       "_id": "answer_yes",
-      "văn bản": "Có"
+      "text": "Có"
     },
     {
       "_id": "answer_no",
-      "văn bản": "Không"
+      "text": "Không"
     },
     {
       "_id": "additional_comments",
-      "văn bản": "Góp ý thêm:"
+      "text": "Góp ý thêm:"
     },
     {
       "_id": "this_field_required",
-      "văn bản": "Đây là trường bắt buộc"
+      "text": "Đây là trường bắt buộc"
     },
     {
       "_id": "submit",
-      "văn bản": "Gửi"
+      "text": "Gửi"
     },
     {
       "_id": "thank_you_for_your_comments",
-      "văn bản": "Cảm ơn quý vị đã góp ý!"
+      "text": "Cảm ơn quý vị đã góp ý!"
     },
     {
       "_id": "thank_you_for_your_feedback",
-      "văn bản": "Cảm ơn quý vị đã phản hồi!"
+      "text": "Cảm ơn quý vị đã phản hồi!"
     },
     {
       "_id": "home",
-      "văn bản": "Trang chủ"
+      "text": "Trang chủ"
     },
     {
       "_id": "official_ca_website",
-      "văn bản": "Trang Web Chính Thức của Chính Quyền Tiểu Bang California"
+      "text": "Trang Web Chính Thức của Chính Quyền Tiểu Bang California"
     },
     {
       "_id": "last_updated",
-      "văn bản": "Cập nhật mới nhất"
+      "text": "Cập nhật mới nhất"
     },
     {
       "_id": "hotline_label",
-      "văn bản": "Đường dây nóng báo cáo về dịch COVID-19"
+      "text": "Đường dây nóng báo cáo thông tin về đại dịch COVID-19"
     },
     {
       "_id": "hotline_hours",
-      "văn bản": "Thứ 2-Thứ 6 8 giờ sáng-8 giờ tối, Thứ 7-Chủ Nhật 8 giờ sáng-5 giờ chiều"
+      "text": "Thứ 2-Thứ 6 8 giờ sáng-8 giờ tối, Thứ 7-Chủ Nhật 8 giờ sáng-5 giờ chiều"
+    }
+  ],
+  "Table2": [
+    {
+      "Name": "Sở Y Tế Công Cộng",
+      "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
+    },
+    {
+      "Name": "Phòng Tin Tức của Thống Đốc",
+      "_URL": "https://www.gov.ca.gov/newsroom/"
+    },
+    {
+      "Name": "Khả Năng Tiếp Cận",
+      "_URL": "https://www.ca.gov/accessibility/"
+    },
+    {
+      "Name": "Chính Sách Bảo Mật",
+      "_URL": "https://www.ca.gov/privacy-policy/"
+    },
+    {
+      "Name": "Phản hồi",
+      "_URL": "https://www.surveymonkey.com/r/COVID19CAGOV"
+    },
+    {
+      "Name": "Đăng ký để biểu quyết",
+      "_URL": "https://registertovote.ca.gov"
+    }
+  ],
+  "Table3": [
+    {
+      "Name": "Hỏi & đáp về lệnh ở nhà",
+      "_slug": "stay-home-except-for-essential-needs"
+    },
+    {
+      "Name": "Kế Hoạch Chi Tiết Vì Một Nền Kinh Tế An Toàn Hơn",
+      "_slug": "safer-economy"
+    },
+    {
+      "Name": "Dịch vụ nào được phép mở cửa",
+      "_slug": "safer-economy"
+    },
+    {
+      "Name": "Hướng dẫn dành cho từng ngành nghề",
+      "_slug": "industry-guidance"
+    },
+    {
+      "Name": "Thông tin và cảnh báo tại địa phương",
+      "_slug": "get-local-information"
+    }
+  ],
+  "Table4": [
+    {
+      "TEST": "XÉT NGHIỆM",
+      "VALUE": "GIÁ TRỊ"
+    },
+    {
+      "TEST": "Tại sao không phải cái này",
+      "VALUE": "Đang Được Dịch"
     }
   ],
   "Table2": [

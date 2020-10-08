@@ -162,6 +162,24 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
 
+  //
+  eleventyConfig.addFilter('formatNumber', (number,tags,fractionDigits=3) => {
+    const roundscale = Math.pow(10,fractionDigits);    
+    return addSeperator(Number.isInteger(number) ? number : Math.round(Number.parseFloat(number)*roundscale)/roundscale)
+  }
+  );
+  function addSeperator(nStr){
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+  }
+
   // Format dates within templates.
   eleventyConfig.addFilter('formatDate', function(datestring) {
     const locales = 'en-US';
@@ -184,14 +202,17 @@ module.exports = function(eleventyConfig) {
   const formatDate = (datestring, withTime, tags, addDays) => {
     const locales = 'en-US';
     const timeZone = 'America/Los_Angeles';
-    
+    const thisYear = new Date().getUTCFullYear();
+
     if(datestring) {
       let targetdate =
-        datestring==='today'
-          ? new Date()
-          : datestring.indexOf('Z') > -1
-            ? new Date(datestring)
-            : new Date(`${new Date().getUTCFullYear()}-${datestring}T08:00:00.000Z`);
+        (typeof datestring === 'object') //date without quotes
+        ? datestring 
+        : datestring==='today'
+            ? new Date()
+            : datestring.indexOf('Z') > -1
+              ? new Date(datestring)
+              : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);

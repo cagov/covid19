@@ -2,95 +2,153 @@
   "Table1": [
     {
       "_id": "california_for_all",
-      "文本": "全民加州"
+      "text": "全民加州"
     },
     {
       "_id": "your_actions_save_lives",
-      "文本": "您的行动可拯救生命"
+      "text": "您的行动可拯救生命"
     },
     {
       "_id": "search",
-      "文本": "搜索"
+      "text": "搜索"
     },
     {
       "_id": "search_this_site",
-      "文本": "站内搜索"
+      "text": "站内搜索"
     },
     {
       "_id": "submit_search",
-      "文本": "提交搜索"
+      "text": "提交搜索"
     },
     {
       "_id": "language",
-      "文本": "语言"
+      "text": "语言"
     },
     {
       "_id": "select_language",
-      "文本": "选择语言"
+      "text": "选择语言"
     },
     {
       "_id": "more",
-      "文本": "更多…"
+      "text": "更多…"
     },
     {
       "_id": "menu",
-      "文本": "菜单"
+      "text": "菜单"
     },
     {
       "_id": "what_are_you_looking_for",
-      "文本": "您在查找什么？"
+      "text": "您在查找什么？"
     },
     {
       "_id": "is_this_page_useful",
-      "文本": "此页面是否有用？"
+      "text": "此页面是否有用？"
     },
     {
       "_id": "answer_yes",
-      "文本": "是"
+      "text": "是"
     },
     {
       "_id": "answer_no",
-      "文本": "否"
+      "text": "否"
     },
     {
       "_id": "additional_comments",
-      "文本": "其他意见："
+      "text": "其他意见："
     },
     {
       "_id": "this_field_required",
-      "文本": "此栏必填"
+      "text": "此栏必填"
     },
     {
       "_id": "submit",
-      "文本": "提交"
+      "text": "提交"
     },
     {
       "_id": "thank_you_for_your_comments",
-      "文本": "感谢您提出宝贵意见！"
+      "text": "感谢您提出宝贵意见！"
     },
     {
       "_id": "thank_you_for_your_feedback",
-      "文本": "感谢您提供反馈！"
+      "text": "感谢您提供反馈！"
     },
     {
       "_id": "home",
-      "文本": "主页"
+      "text": "主页"
     },
     {
       "_id": "official_ca_website",
-      "文本": "加州政府官方网站"
+      "text": "加州政府官方网站"
     },
     {
       "_id": "last_updated",
-      "文本": "最后更新时间"
+      "text": "最后更新时间"
     },
     {
       "_id": "hotline_label",
-      "文本": "COVID-19热线"
+      "text": "COVID-19热线"
     },
     {
       "_id": "hotline_hours",
-      "文本": "周一至周五，上午8点至晚上8点，周六至周日，上午8点至下午5点"
+      "text": "周一至周五，上午8点至晚上8点，周六至周日，上午8点至下午5点"
+    }
+  ],
+  "Table2": [
+    {
+      "Name": "公共卫生局",
+      "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
+    },
+    {
+      "Name": "州长编辑部",
+      "_URL": "https://www.gov.ca.gov/newsroom/"
+    },
+    {
+      "Name": "可访问性",
+      "_URL": "https://www.ca.gov/accessibility/"
+    },
+    {
+      "Name": "隐私政策",
+      "_URL": "https://www.ca.gov/privacy-policy/"
+    },
+    {
+      "Name": "反馈",
+      "_URL": "https://www.surveymonkey.com/r/COVID19CAGOV"
+    },
+    {
+      "Name": "登记投票",
+      "_URL": "https://registertovote.ca.gov"
+    }
+  ],
+  "Table3": [
+    {
+      "Name": "有关居家避疫的问题与解答",
+      "_slug": "stay-home-except-for-essential-needs"
+    },
+    {
+      "Name": "更安全的经济蓝图",
+      "_slug": "safer-economy"
+    },
+    {
+      "Name": "开放的行业",
+      "_slug": "safer-economy"
+    },
+    {
+      "Name": "行业指引",
+      "_slug": "industry-guidance"
+    },
+    {
+      "Name": "当地信息和警报",
+      "_slug": "get-local-information"
+    }
+  ],
+  "Table4": [
+    {
+      "TEST": "检测",
+      "VALUE": "值"
+    },
+    {
+      "TEST": "为何不是这个",
+      "VALUE": "翻译中"
     }
   ],
   "Table2": [

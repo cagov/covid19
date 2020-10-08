@@ -121,6 +121,10 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('roadmap', env.dev) }}
 {% endpagesection -%}
 
+{%- pagesection page, "state-dashboard" %}
+	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
+{% endpagesection -%}
+
 <script nomodule src="/js/es5.js"></script>
 
 {% include "googletranslate.njk" %}

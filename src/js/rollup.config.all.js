@@ -5,6 +5,7 @@ import plasma from './plasma/rollup.config';
 import reopening from './roadmap/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
+import dashboard from './dashboard/rollup.config';
 
 import fs from 'fs';
 import path from 'path';
@@ -25,7 +26,7 @@ const getLastUpdatedFile = (directoryPath) => {
 }
 function shouldIRebuild(directory,generatedFile) {
   if(process.env.NODE_ENV === 'development') {
-    if(getLastUpdatedFile(__dirname + directory) > getFileUpdatedDate(path.join(__dirname, generatedFile))) {
+    if(!fs.existsSync(path.join(__dirname, generatedFile)) || getLastUpdatedFile(__dirname + directory) > getFileUpdatedDate(path.join(__dirname, generatedFile))) {
       return true;
     } else {
       return false;
@@ -41,6 +42,7 @@ export default [
   ...(shouldIRebuild('/roadmap/', '../../docs/js/roadmap.js') ? [reopening] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
+  ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : []),
   esm,
   // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
