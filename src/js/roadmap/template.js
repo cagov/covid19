@@ -58,7 +58,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Get latest status</button>
+      <button type="submit" class="btn btn-primary">Get latest risk levels</button>
     </form>
     <div class="card-holder"></div>
   </div>
