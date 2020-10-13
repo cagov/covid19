@@ -184,9 +184,12 @@ class CAGovReopening extends window.HTMLElement {
       "Alameda",
       "Alpine",
       "Amador",
+      "Butte",
       "Calaveras",
+      "Contra Costa",
       "Del Norte",
       "El Dorado",
+      "Fresno",
       "Humboldt",
       "Inyo",
       "Lake",
@@ -201,18 +204,21 @@ class CAGovReopening extends window.HTMLElement {
       "Placer",
       "Plumas",
       "Riverside",
+      "Sacramento",
       "San Diego",
       "San Francisco",
+      "San Joaquin",
       "San Luis Obispo",
       "San Mateo",
+      "Santa Barbara",
       "Santa Clara",
       "Santa Cruz",
-      "Shasta",
       "Sierra",
       "Siskiyou",
       "Solano",
       "Trinity",
-      "Tuolumne"
+      "Tuolumne",
+      "Yolo"
     ];
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
