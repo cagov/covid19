@@ -285,7 +285,6 @@ activityInput.addEventListener("input", function() {
  });
 
  activityInput.addEventListener("blur", function() {
-   console.log("something changed")
   inputValueActivity();
  });
 
