@@ -19,6 +19,9 @@
 {%-set _varStatIcuChange_ = (data.ICU_COVID_CONFIRMED_PATIENTS_DAILY + data.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
+{%-set _varTierDate_ = 'October 13, 2020' -%}
+{%-set _varTierEndDate_ = 'October 3, 2020' -%}}
+
 
 <div class="bg-lightblue py-5">
     <div class="container py-2">
@@ -203,14 +206,14 @@
                     </div>
                 </div>
 
-                <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of October 6, 2020</h3>
+                <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of {{_varTierDate_}}</h3>
                 <p class="mt-0">All data and tier assignments are updated weekly every Tuesday.</p>
 
             <div class="tableauPlaceholder" id="mapChartContainer"></div>
         </div>
 
         <div class="text-center">
-        <p>All data and tier assignments are based on results from week ending September 26, 2020. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>.</p>
+        <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>.</p>
         </div>
   
         <div class="text-center">
