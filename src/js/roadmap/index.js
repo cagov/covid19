@@ -68,7 +68,7 @@ class CAGovReopening extends window.HTMLElement {
         aList.push(item['0'])
       })
       this.setupAutoCompActivity('#activity-query', 'activity', aList)
-      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder' id='viz1598633253507' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Planforreducingcovid-19&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /></object></div>`;
+      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder mx-auto' id='viz1598633253507' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Planforreducingcovid-19&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /></object></div>`;
       this.tableauStuff()
     }.bind(this))
     .catch(() => {
@@ -268,11 +268,55 @@ class CAGovReopening extends window.HTMLElement {
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
 
+
+var activityInput = document.getElementById("activity-query");
+var countyInput = document.getElementById("location-query");
+
+
+
+// Show clear btn only on input (County)
+countyInput.addEventListener("input", function() {
+  inputValueCounty();
+ });
+
+// Show clear btn only on input (Activity)
+activityInput.addEventListener("input", function() {
+  inputValueActivity();
+ });
+
+ activityInput.addEventListener("blur", function() {
+   console.log("something changed")
+  inputValueActivity();
+ });
+
+
+//Clear buttons click events
 document.getElementById("clearLocation").addEventListener("click", function() {
-  document.getElementById("location-query").value = '';
+  countyInput.value = '';
+  inputValueCounty();
 });
 
 document.getElementById("clearActivity").addEventListener("click", function() {
-  document.getElementById("activity-query").value = '';
+  activityInput.value = '';
+  inputValueActivity();
 });
 
+// Show clear btn only if there is value (County)
+function inputValueCounty() {
+  var countyInput = document.getElementById("location-query");
+  var clearCounty = document.getElementById("clearLocation");
+    if (countyInput && countyInput.value) {
+      clearCounty.classList.remove('d-none');
+    }
+    else {clearCounty.classList.add('d-none');}
+  }
+
+// Show clear btn only if there is value (Activity)
+function inputValueActivity() {
+  var activityInput = document.getElementById("activity-query");
+  var clearActivity = document.getElementById("clearActivity");
+    if (activityInput && activityInput.value) {
+      clearActivity.classList.remove('d-none');
+    }
+    else {clearActivity.classList.add('d-none');}
+  }
