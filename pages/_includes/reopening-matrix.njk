@@ -6,16 +6,17 @@
 <div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn ca-gov-icon-close-line underline"></div>
 
 <div class="the-matrix d-none">
-<div class="row text-center mr-0 ml-0 matrix-row">
-    <div class="col-sm-4 pl-0 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – county risk level"] | safe}}</h4></div>
-    <div class="col-sm-4 pl-0 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – new cases"] | safe}}</h4></div>
-    <div class="col-sm-4 pl-0 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – positive tests"] | safe}}</h4></div>
+<div class="row mr-0 ml-0 matrix-row">
+    <div class="col-sm-4 pl-2 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – county risk level"] | safe}}</h4></div>
+    <div class="col-sm-4 pl-2 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – new cases"] | safe}}*</h4><p class="text-small">7-day average of daily COVID-19 cases per 100K with 7-day lag, adjusted for number of tests performed
+</p></div>
+    <div class="col-sm-4 pl-2 d-none d-md-block"><h4 class="h5 card-title mb-0">{{Headers["Header – positive tests"] | safe}}**</h4><p class="text-small">7-day average of all COVID-19 tests performed that are positive</p></div>
   </div>
   {% for item in Rows | reverse -%}
   {%- set CssColor = item['_Color label'] | lower -%}
-  <div class="row text-center mr-0 ml-0 matrix-row">
-    <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
-      <div class="card border-0 bg-transparent">
+  <div class="row mr-0 ml-0 matrix-row">
+    <div class="col-sm-4 pl-0 pr-0 bd-right-white bg-{{CssColor}}-alert">
+      <div class="card border-0 bg-transparent pl-2">
         <div class="card-body text-black">
           <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
           <p class="card-text text-small mt-3">
@@ -25,8 +26,8 @@
       </div>
     </div>
 
-    <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
-      <div class="card border-0 bg-transparent">
+    <div class="col-sm-4 pl-0 bd-right-white pr-0 bg-{{CssColor}}-alert">
+      <div class="card border-0 bg-transparent pl-2">
         <div class="card-body text-black">
               <h5>{{item['New cases']}}</h5>
           <p class="card-text text-small mt-3">
@@ -36,7 +37,7 @@
       </div>
     </div>
       <div class="col-sm-4 pl-0 pr-0 bg-{{CssColor}}-alert">
-        <div class="card border-0 bg-transparent">
+        <div class="card border-0 bg-transparent pl-2">
               <div class="card-body text-black">
                   <h5>{{item['Positive tests'] | safe}}</h5>
                 <p class="card-text text-small mt-3">
