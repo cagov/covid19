@@ -105,14 +105,6 @@ cagov-navoverlay {
           font-size: 0.9rem;
           padding: 0.25rem;
           border-radius: 1.5rem;
-          
-          @include tablet {
-            font-size: 1rem;
-            width: auto;
-          }
-          @include desktop {
-            font-size: 1.1rem;
-          }
           &:hover {
             color: $white;
           }
@@ -129,6 +121,21 @@ cagov-navoverlay {
           }
           &.white {
             color: $white;
+          }
+          @include tablet {
+            cursor: default;
+            &:hover {
+              color: $orange;
+            }
+            &:focus {
+              color: $white;
+            }
+            text-decoration: inherit;
+            font-size: 1rem;
+            width: auto;
+          }
+          @include desktop {
+            font-size: 1.1rem;
           }
         }
         &-arrow {
