@@ -2,7 +2,6 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
-const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let filesSiteData = [];
 
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
@@ -26,6 +25,10 @@ const langPostfixRegExp = new RegExp(`(?:${langData.languages
   .map(x=>x.filepostfix)
   .filter(x=>x)
   .join('|')})$`);
+
+const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
+  ? '' //This is a root language page
+  : page.fileSlug.replace(langPostfixRegExp,'');
 
 module.exports = function(eleventyConfig) {
   //Copy static assets
@@ -489,6 +492,7 @@ ${bodyHTML}
   eleventyConfig.addFilter('langRecord', getLangRecord);
   eleventyConfig.addFilter('langId', getLangId);
   eleventyConfig.addFilter('langIncludeFolder', getLangIncludeFolder);
+  eleventyConfig.addFilter('engSlug', engSlug);
   eleventyConfig.addFilter('langFilePostfix', tags => getLangRecord(tags).filepostfix || "");
   eleventyConfig.addFilter('toTranslatedPath', (path,tags) => "/"+(getLangRecord(tags).pathpostfix || "") + path);
   eleventyConfig.addFilter('htmllangattributes', tags => {
@@ -527,15 +531,12 @@ ${bodyHTML}
       return [];
     }
 
-    const engSlug = 
-      page.inputPath.includes('/manual-content/homepages/')
-      ? '' //This is a root language page
-      : page.fileSlug.replace(langPostfixRegExp,'');
+    const slug = engSlug(page);
   
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${x.pathpostfix}${engSlug}/`.replace(/\/\/$/,'/'),
+        url: `/${x.pathpostfix}${slug}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))
