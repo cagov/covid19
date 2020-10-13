@@ -49,7 +49,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>{{ title | safe }}</h1>
           {% if page | engSlug !== "search" %}
-            <p class="small-text">{{text.last_updated}}
+            <p class="small-text">{{text.last_updated}}&nbsp;
               {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
