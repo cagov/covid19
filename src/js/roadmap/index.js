@@ -58,6 +58,12 @@ class CAGovReopening extends window.HTMLElement {
       this.statusdesc = data;
     }.bind(this));
 
+    window.fetch('/schools-may-reopen.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.schoolOKList = data;
+    }.bind(this));
+
     window.fetch('/reopening-activities.json')
     .then(response => response.json())
     .then(function(data) {
@@ -214,6 +220,11 @@ class CAGovReopening extends window.HTMLElement {
       "Trinity",
       "Tuolumne"
     ];
+    if(this.schoolOKList) {
+      console.log(schoolOKList)
+      schoolOKList = this.schoolOKList;
+      console.log(schoolOKList)
+    }
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
