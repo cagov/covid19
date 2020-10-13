@@ -47,15 +47,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-
           <h1>{{ title | safe }}</h1>
-          {% if page.fileSlug !== "search" %}
-            <p class="small-text">{{text.last_updated}}
-              {% if page.fileSlug === "safer-economy" or page.fileSlug === "data-and-tools" %}
+          {% if page | engSlug !== "search" %}
+            <p class="small-text">{{text.last_updated}}&nbsp;
+              {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
-              {% else %}
+              {%- elseif page | engSlug === "state-dashboard" -%}
+                {{ (tableauCovidMetrics[0].DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
+              {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
-              {% endif %}
+              {%- endif -%}
             </p>
           {% endif %}
         </div>

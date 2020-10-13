@@ -137,7 +137,7 @@ cagov-reopening {
 }
 
 .matrix-row {
-  margin-top: 10px;
+  margin-top: 0px;
   .card-body {
     padding: 1.2rem 0.45rem;
   }
@@ -171,5 +171,11 @@ cagov-reopening {
   }
   h2 {
     text-align: center;
+  }
+}
+
+@include tablet {
+  .bd-right-white {
+    border-right: solid 2px #fff !important;
   }
 }
