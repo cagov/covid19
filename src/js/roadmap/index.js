@@ -221,9 +221,7 @@ class CAGovReopening extends window.HTMLElement {
       "Tuolumne"
     ];
     if(this.schoolOKList) {
-      console.log(schoolOKList)
       schoolOKList = this.schoolOKList;
-      console.log(schoolOKList)
     }
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
