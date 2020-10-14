@@ -1,57 +1,57 @@
 {
   "Table1": [
     {
-      "Tier ng county": "Kaunti",
+      "County tier": "Kaunti",
       "colorLabel": "Dilaw",
-      "_Color label": "Dilaw",
-      "Mga bagong kaso": "Wala pang 1",
-      "Mga positibong pagsusuri": "Wala pang 2%",
+      "_Color label": "Yellow",
+      "New cases": "Wala pang 1",
+      "Positive tests": "Wala pang 2% at<br>Wala pang 2.2% ang sukatan ng equity sa kalusugan",
       "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
     },
     {
-      "Tier ng county": "Katamtaman",
+      "County tier": "Katamtaman",
       "colorLabel": "Orange",
       "_Color label": "Orange",
-      "Mga bagong kaso": "1 – 3.9",
-      "Mga positibong pagsusuri": "2 – 4.9%",
+      "New cases": "1 – 3.9",
+      "Positive tests": "2 – 4.9% at<br>2.2 – 5.2% ng sukatan ng equity sa kalusugan",
       "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon"
     },
     {
-      "Tier ng county": "Marami",
+      "County tier": "Marami",
       "colorLabel": "Pula",
-      "_Color label": "Pula",
-      "Mga bagong kaso": "4-7",
-      "Mga positibong pagsusuri": "5 – 8%",
+      "_Color label": "Red",
+      "New cases": "4-7",
+      "Positive tests": "5 – 8% and<br>5.3 – 8% ng sukatan ng equity sa kalusugan",
       "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo"
     },
     {
-      "Tier ng county": "Napakarami",
+      "County tier": "Napakarami",
       "colorLabel": "Purple",
       "_Color label": "Purple",
-      "Mga bagong kaso": "Mahigit 7",
-      "Mga positibong pagsusuri": "Mahigit 8%",
+      "New cases": "Mahigit 7",
+      "Positive tests": "Mahigit 8%",
       "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo"
     }
   ],
   "Table2": [
     {
-      "_id": "Header – antas ng panganib sa county",
+      "_id": "Header – county risk level",
       "text": "Antas ng panganib sa county"
     },
     {
-      "_id": "Header – mga bagong kaso",
-      "text": "Mga isinaayos na kaso"
+      "_id": "Header – new cases",
+      "text": "Na-adjust na rate ng kaso"
     },
     {
-      "_id": "Header – mga positibong pagsusuri",
-      "text": "Rate ng pagiging positibo"
+      "_id": "Header – positive tests",
+      "text": "Rate ng nagpopositibo"
     },
     {
-      "_id": "Paglalarawan – mga bagong kaso",
+      "_id": "Description – new cases",
       "text": "Mga bagong kaso araw-araw (bawat 100k)"
     },
     {
-      "_id": "Paglalarawan – mga bagong kaso",
+      "_id": "Description – positive cases",
       "text": "Mga positibong pagsusuri"
     }
   ]
