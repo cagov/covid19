@@ -226,8 +226,8 @@
     },
     {
       "0": "Centros de entretenimiento familiar",
-      "1": "Pueden abrir en interiores para actividades con mayor riesgo de proximidad y de mezclarse, con modificaciones<br>, máximo 50% de la capacidad<br>, salas de juegos,<br> pistas de patinaje sobre ruedas y hielo,<br> parques infantiles interiores",
-      "2": "Pueden abrir en interiores para actividades a distancia natural, con modificaciones<br>, máximo 25% de la capacidad<br>, boliches,<br> paredes para escalar",
+      "1": "Pueden abrir en interiores para actividades con mayor riesgo de proximidad y de mezclarse, con modificaciones<br>, máximo 50&nbsp;% de la capacidad<br>, salas de juegos,<br> pistas de patinaje sobre ruedas y hielo,<br> parques infantiles interiores",
+      "2": "Pueden abrir en interiores para actividades a distancia natural, con modificaciones<br>, máximo 25&nbsp;% de la capacidad<br>, boliches,<br> paredes para escalar,<br> salas de escape.",
       "3": "Pueden abrir en exteriores solo con modificaciones<br>, carreras de kart,<br> minigolf,<br> jaulas de bateo",
       "4": "Pueden abrir en exteriores solo con modificaciones<br>, carreras de kart,<br> minigolf,<br> jaulas de bateo",
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#movie-theaters-entertainment”>Cines y centros de entretenimiento familiar</a>"
@@ -247,6 +247,14 @@
       "3": "Cerrado",
       "4": "Cerrado",
       "5": ""
+    },
+    {
+      "0": "Producción de cine y televisión",
+      "1": "Pueden abrir con modificaciones.",
+      "2": "Pueden abrir con modificaciones.",
+      "3": "Pueden abrir con modificaciones.",
+      "4": "Pueden abrir con modificaciones.",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Producción de música, cine y televisión</a>"
     },
     {
       "0": "Estaciones de bomberos",
@@ -433,6 +441,14 @@
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#museums-zoos”>Museos, zoológicos y acuarios</a>"
     },
     {
+      "0": "Producción de música",
+      "1": "Pueden abrir con modificaciones.",
+      "2": "Pueden abrir con modificaciones.",
+      "3": "Pueden abrir con modificaciones.",
+      "4": "Pueden abrir con modificaciones.",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Producción de música, cine y televisión</a>"
+    },
+    {
       "0": "Salones de uñas",
       "1": "Pueden abrir en interiores con modificaciones.",
       "2": "Pueden abrir en interiores con modificaciones.",
@@ -510,7 +526,7 @@
       "2": "Pueden abrir con modificaciones.",
       "3": "Pueden abrir con modificaciones.",
       "4": "Pueden abrir con modificaciones.",
-      "5": ""
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Producción de música, cine y televisión</a>"
     },
     {
       "0": "Deportes profesionales",
@@ -601,12 +617,28 @@
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#hotels-guidance”>Hoteles y posadas</a>"
     },
     {
+      "0": "Parques de patinaje",
+      "1": "Pueden abrir con modificaciones.",
+      "2": "Pueden abrir con modificaciones.",
+      "3": "Pueden abrir con modificaciones.",
+      "4": "Pueden abrir con modificaciones.",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#campgrounds-outdoor-recreation”>Recreación al aire libre, incluidos campamentos y áreas de juego</a>"
+    },
+    {
       "0": "Servicios de cuidado de la piel",
       "1": "Pueden abrir en interiores con modificaciones.",
       "2": "Pueden abrir en interiores con modificaciones.",
       "3": "Pueden abrir en interiores con modificaciones.",
       "4": "Pueden abrir en exteriores solo con modificaciones.",
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#personal-care-services”> Servicios de cuidado personal</a>"
+    },
+    {
+      "0": "Reuniones privadas pequeñas",
+      "1": "Están permitidas en exteriores con modificaciones.<br> – Se requieren mascarillas y distanciamiento físico.<br> – No deben asistir más de tres diferentes hogares (incluido el del anfitrión).<br> – Las reuniones deben durar dos horas o menos.<br> – Las personas con síntomas no deben asistir.<br> – A las personas que tienen alto riesgo de contraer enfermedades graves se les recomienda encarecidamente no asistir.<br> – Cantar, gritar, corear o hacer ejercicio se desaconseja encarecidamente.",
+      "2": "Están permitidas en exteriores con modificaciones-<br> – Se requieren mascarillas y distanciamiento físico.<br> – No deben asistir más de tres diferentes hogares (incluido el del anfitrión).<br> – Las reuniones deben durar dos horas o menos.<br> – Las personas con síntomas no deben asistir.<br> – A las personas que tienen alto riesgo de contraer enfermedades graves se les recomienda encarecidamente no asistir.<br> – Cantar, gritar, corear o hacer ejercicio se desaconseja encarecidamente.",
+      "3": "Están permitidas en exteriores con modificaciones-<br> – Se requieren mascarillas y distanciamiento físico.<br> – No deben asistir más de tres diferentes hogares (incluido el del anfitrión).<br> – Las reuniones deben durar dos horas o menos.<br> – Las personas con síntomas no deben asistir.<br> – A las personas que tienen alto riesgo de contraer enfermedades graves se les recomienda encarecidamente no asistir.<br> – Cantar, gritar, corear o hacer ejercicio se desaconseja encarecidamente.",
+      "4": "Están permitidas en exteriores con modificaciones-<br> – Se requieren mascarillas y distanciamiento físico.<br> – No deben asistir más de tres diferentes hogares (incluido el del anfitrión).<br> – Las reuniones deben durar dos horas o menos.<br> – Las personas con síntomas no deben asistir.<br> – A las personas que tienen alto riesgo de contraer enfermedades graves se les recomienda encarecidamente no asistir.<br> – Cantar, gritar, corear o hacer ejercicio se desaconseja encarecidamente.",
+      "5": "<a href=”https://covid19.ca.gov/stay-home-except-for-essential-needs/#gatherings”>reuniones</a>"
     },
     {
       "0": "Tiendas de artículos deportivos",
