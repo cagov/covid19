@@ -227,7 +227,7 @@
     {
       "0": "Mga pampamilyang entertainment center",
       "1": "Puwedeng magbukas indoors para sa mga aktibidad na may malaking posibilidad ng proximity at pakikisalamuha sa iba, nang may mga modipikasyon<br>– 50% ang maximum na kapasidad <br>– Mga laro sa arcade <br>– Ice at roller skating<br>– Mga indoor na palaruan",
-      "2": "Puwedeng magbukas indoors para sa mga para sa natural na nakadistansyang aktibidad, nang may mga modipikasyon<br>– 25% ang maximum na kapasidad <br>– Mga bowling alley <br>– Climbing wall",
+      "2": "Puwedeng magbukas indoors para sa mga para sa natural na nakadistansyang aktibidad, nang may mga modipikasyon<br>– 25% ang maximum na kapasidad <br>– Mga bowling alley <br>– Mga climbing wall<br>– Mga escape room",
       "3": "Puwedeng magbukas nang outdoors lang nang may mga modipikasyon<br>– Kart racing <br>– Mini-golf <br>– Batting cages",
       "4": "Puwedeng magbukas nang outdoors lang nang may mga modipikasyon<br>– Kart racing <br>– Mini-golf <br>– Batting cages",
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#movie-theaters-entertainment”>Mga sinehan at pampamilyang entertainment center</a>"
@@ -247,6 +247,14 @@
       "3": "Sarado",
       "4": "Sarado",
       "5": ""
+    },
+    {
+      "0": "Produksyon ng pelikula at palabas sa TV",
+      "1": "Puwedeng magbukas nang may mga modipikasyon",
+      "2": "Puwedeng magbukas nang may mga modipikasyon",
+      "3": "Puwedeng magbukas nang may mga modipikasyon",
+      "4": "Puwedeng magbukas nang may mga modipikasyon",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Produksyon ng musika, pelikula, at palabas sa TV</a>"
     },
     {
       "0": "Mga bumbero",
@@ -433,6 +441,14 @@
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#museums-zoos”>Mga museo, zoo, at aquarium</a>"
     },
     {
+      "0": "Produksyon ng musika",
+      "1": "Puwedeng magbukas nang may mga modipikasyon",
+      "2": "Puwedeng magbukas nang may mga modipikasyon",
+      "3": "Puwedeng magbukas nang may mga modipikasyon",
+      "4": "Puwedeng magbukas nang may mga modipikasyon",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Produksyon ng musika, pelikula, at palabas sa TV</a>"
+    },
+    {
       "0": "Mga nail salon",
       "1": "Puwedeng magbukas indoors nang may mga modipikasyon",
       "2": "Puwedeng magbukas indoors nang may mga modipikasyon",
@@ -510,7 +526,7 @@
       "2": "Puwedeng magbukas nang may mga modipikasyon",
       "3": "Puwedeng magbukas nang may mga modipikasyon",
       "4": "Puwedeng magbukas nang may mga modipikasyon",
-      "5": ""
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#music-tv-film”>Produksyon ng musika, pelikula, at palabas sa TV</a>"
     },
     {
       "0": "Propesyonal na sports",
@@ -601,12 +617,28 @@
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#hotels-guidance”>Mga hotel at lodging</a>"
     },
     {
+      "0": "Mga Skatepark",
+      "1": "Puwedeng magbukas nang may mga modipikasyon",
+      "2": "Puwedeng magbukas nang may mga modipikasyon",
+      "3": "Puwedeng magbukas nang may mga modipikasyon",
+      "4": "Puwedeng magbukas nang may mga modipikasyon",
+      "5": "<a href=”https://covid19.ca.gov/industry-guidance/#campgrounds-outdoor-recreation”>Outdoor na libangan, kasama ang mga campground at playground</a>"
+    },
+    {
       "0": "Mga serbisyo para sa skin care",
       "1": "Puwedeng magbukas indoors nang may mga modipikasyon",
       "2": "Puwedeng magbukas indoors nang may mga modipikasyon",
       "3": "Puwedeng magbukas indoors nang may mga modipikasyon",
       "4": "Puwedeng magbukas nang outdoors lang nang may mga modipikasyon",
       "5": "<a href=”https://covid19.ca.gov/industry-guidance/#personal-care-services”>Mga serbisyo sa personal na pangangalaga</a>"
+    },
+    {
+      "0": "Ang mga maliit na pribadong pagtitipon",
+      "1": "Ay pinapayagan nang may mga modipikasyon<br>– Ipinag-aatas ang mga mask at physical distancing<br>– Hindi dapat lalampas sa 3 hiwalay na sambahayan ang pupunta (kasama ang sambahayan ng host)<br>– Ang mga pagtitipon ay dapat 2 hours o mas maikli pa<br>– Hindi dapat pumunta ang mga may sintomas<br>– Lubos na hinihikayat na huwag pumunta ang mga nasa mataas na panganib ng matinding karamdaman<br>– Lubos na hinihikayat ang hindi pagkanta, pagsigaw, paghimig, o pag-eehersisyo",
+      "2": "Ay pinapayagan nang may mga modipikasyon<br>– Ipinag-aatas ang mga mask at physical distancing<br>– Hindi dapat lalampas sa 3 hiwalay na sambahayan ang pupunta (kasama ang sambahayan ng host)<br>– Ang mga pagtitipon ay dapat 2 hours o mas maikli pa<br>– Hindi dapat pumunta ang mga may sintomas<br>– Lubos na hinihikayat na huwag pumunta ang mga nasa mataas na panganib ng matinding karamdaman<br>– Lubos na hinihikayat ang hindi pagkanta, pagsigaw, paghimig, o pag-eehersisyo",
+      "3": "Ay pinapayagan nang may mga modipikasyon<br>– Ipinag-aatas ang mga mask at physical distancing<br>– Hindi dapat lalampas sa 3 hiwalay na sambahayan ang pupunta (kasama ang sambahayan ng host)<br>– Ang mga pagtitipon ay dapat 2 hours o mas maikli pa<br>– Hindi dapat pumunta ang mga may sintomas<br>– Lubos na hinihikayat na huwag pumunta ang mga nasa mataas na panganib ng matinding karamdaman<br>– Lubos na hinihikayat ang hindi pagkanta, pagsigaw, paghimig, o pag-eehersisyo",
+      "4": "Ay pinapayagan nang may mga modipikasyon<br>–Ipinag-aatas ang mga mask at physical distancing<br>– Hindi dapat lalampas sa 3 hiwalay na sambahayan ang pupunta (kasama ang sambahayan ng host)<br>– Ang mga pagtitipon ay dapat 2 hours o mas maikli pa<br>– Hindi dapat pumunta ang mga may sintomas<br>– Lubos na hinihikayat na huwag pumunta ang mga nasa mataas na panganib ng matinding karamdaman<br>– Lubos na hinihikayat ang hindi pagkanta, pagsigaw, paghimig, o pag-eehersisyo",
+      "5": "<a href=”https://covid19.ca.gov/stay-home-except-for-essential-needs/#gatherings”>mga pagtitipon</a>"
     },
     {
       "0": "Mga tindahan ng sporting goods",
