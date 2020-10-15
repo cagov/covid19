@@ -240,7 +240,7 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
         <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
