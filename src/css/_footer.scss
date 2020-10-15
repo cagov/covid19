@@ -182,6 +182,42 @@ footer-section {
 				}
 			}
 		}
+		.ca-gov {
+			width: 75px;
+			margin-top: 1.25rem;
+			.logo-cagov {
+				svg {
+					.st0 {
+						transition: fill 0.5s $slow-curve;
+						transition: stroke 0.5s $slow-curve;
+						stroke: #ff8002;
+						fill: #ff8002;
+					}
+					.st1 {
+						transition: fill 0.5s $slow-curve;
+						transition: stroke 0.5s $slow-curve;
+						stroke: #fff;
+						fill: #fff;
+					}	
+				}
+				&:hover {
+					svg {
+						.st0 {
+							stroke: #fff;
+							fill: #fff;
+						}
+						.st1 {
+							stroke: #ff8002;
+							fill: #ff8002;
+						}	
+					}
+				}
+			}
+			
+		}
+		
+
+
 		.logo-flanked {
 			display: flex; 
 			justify-content: space-between; 
@@ -189,33 +225,7 @@ footer-section {
 			padding-top: 2rem;
 			flex-flow: column;
 			
-			.logo-cagov svg, .logo-census {
-				width: 100px;
-			}
-			.logo-cagov {
-				margin-bottom: 20px;
-			}
-			.logo-census {
-				margin-top: 20px;
-			}
-			@include tablet {
-				flex-flow: row;
-				align-items: center;
-				.logo-cagov svg, .logo-census {
-					margin-top: 0;
-					margin-bottom: 0;
-				}
-			}
-			svg {
-				.st0 {
-					stroke: #ff8002;
-					fill: #ff8002;
-				}
-				.st1 {
-					stroke: #fff;
-					fill: #fff;
-				}	
-			}
+			
 		}
 	}
 
