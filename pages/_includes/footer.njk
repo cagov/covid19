@@ -125,6 +125,11 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
 {% endpagesection -%}
 
+{%- pagesection page, "californias-commitment-to-health-equity" %}
+	<script src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
+	<script type="module" src="/js/equitydash.js"></script>
+{% endpagesection -%}
+
 <script nomodule src="/js/es5.js"></script>
 
 {% include "googletranslate.njk" %}
