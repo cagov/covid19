@@ -40,7 +40,7 @@ class CAGovReopening extends window.HTMLElement {
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
     let theMatrix = document.querySelector('.the-matrix');
     if(theMatrix) {
-      this.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
+      document.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
     }
 
     window.fetch('/countystatus.json')
