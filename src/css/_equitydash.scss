@@ -48,6 +48,11 @@ cagov-chart-d3-bar {
   }
 }
 
+cagov-chart-d3-lines {
+  .tick { font-size: .2rem; }
+  svg text { font-size: .2rem; }
+}
+
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
