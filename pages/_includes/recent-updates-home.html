@@ -6,17 +6,17 @@
     
       <h3 class="news-headline">Recent updates</h3>
       <div class="news-grid">
-        {% set JSON %}{% include "../wordpress-posts/recent-updates.json" %}{% endset %}
-        
-        {%- set Rows = JSON.Table1 -%}
-        {% for item in Rows | reverse -%}
+        {% set JSONgovraw %}{% include "../wordpress-posts/recentupdates.json" %}{% endset %}
+        {% set JSONgov = JSONgovraw | jsonparse %}
+        {%- set RowsGov = JSONgov.Table1 -%}
+        {% for item in RowsGov %}
           <article class="news-item trigger">
             <a class="news-item-link" href="{{item['Title URL']}}">
               <h3 class="news-item-headline">{{item["News title"]}}</h3></a>
               <p class="text-small">{{item['News content']}}</p>
               <a class="text-small recent-news-link" href="{{item['link URL']}}">{{item['Link text']}}</a>
           </article>
-          {%- endfor -%}
+        {% endfor %}
       </div>
     
     
