@@ -12,9 +12,11 @@ export default function template(inputval) {
                 </div>
             </div>
             <div class="row">
-                <div class="toggle-group-container col-10 mx-auto">
+                <div class="col-10 mx-auto">
                   <div class="chart-title">Case rate by median annual household income bracket</div>
-                  <div class="svg-holder"></div>
+                  <div class="svg-holder">
+                    <div class="bar-overlay">an empty tooltip</div>
+                  </div>
                 </div>
             </div>
         </div><!--END col-12-->

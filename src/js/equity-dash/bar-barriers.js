@@ -54,10 +54,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
     // where tf did tooltip reference go?
     // initial average bar is faked
-    // rewrite average bar
 
     this.innerHTML = template();
     document.querySelector('.svg-holder').appendChild(svg.node());
+    window.tooltip = this.querySelector('.bar-overlay')
+
     this.applyListeners(svg, x, y, height, margin, xAxis)
 
     /*
@@ -166,29 +167,27 @@ function writeBars(svg, data, x, y) {
       .attr("y", d => y(d.CASE_RATE_PER_100K))
       .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
       .attr("width", x.bandwidth())
-      .on("mouseover", function(event, d) {
+      .attr("id", (d, i) => "barid-"+i)
+      .on("mouseover", function(event, d, i) {
         d3.select(this).style("fill", "steelblue");
-        tooltip.style("top", (parseInt(this.getBoundingClientRect().y)-10)+"px").style("left",(parseInt(this.getBoundingClientRect().x)+10)+"px");
-        tooltip.html(`<div class="chart-tooltip">
-        <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
-      </div>`); 
-        tooltip.style("visibility", "visible");
-      })
-      .on("mousemove", function(){ 
-        return true; // tooltip.style("top", (parseInt(this.getBoundingClientRect().y)-10)+"px").style("left",(parseInt(this.getBoundingClientRect().x)+10)+"px");
+        console.log(window.tooltip)
+        console.log(this.getBoundingClientRect())
+        window.tooltip.style.top = "200px"
+        let barIdInt = this.id.replace('barid-','');
+        console.log('int: '+barIdInt)
+        let left = x(barIdInt)
+        console.log(left)
+        //console.log(x.bandwidth() * barIdInt)
+        window.tooltip.style.left = parseInt(left)+"px";
+        window.tooltip.innerHTML = `<div class="chart-tooltip">
+          <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
+        </div>`;
+        window.tooltip.style.visibility = "visible";
       })
       .on("mouseout", function(d) {
         d3.select(this).style("fill", "skyblue");
-        tooltip.style("visibility", "hidden");
+        window.tooltip.style.visibility = "hidden";
       });
-
-  let tooltip = d3.select('.svg-holder')
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-      .style("background", "#fff") // put these styles on a class
-      .text("an empty tooltip");
 }
 function rewriteBars(svg, data, x, y) {
   svg.selectAll(".barshere rect")

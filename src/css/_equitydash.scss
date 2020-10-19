@@ -46,6 +46,18 @@ cagov-chart-d3-bar {
     max-width: 720px;
     border-bottom: solid 1px;
   }
+  .bar-overlay {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+  @media (max-width: 900px) {
+    .toggle-links a {
+      width:100%;
+    }
+  }
 }
 
 cagov-chart-d3-lines {
