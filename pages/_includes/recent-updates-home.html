@@ -1,0 +1,24 @@
+
+
+<news-section>
+  <section class="news trigger" role="region" aria-label="Recent updates">
+    <div class="news-wrap">
+    
+      <h3 class="news-headline">Recent updates</h3>
+      <div class="news-grid">
+        {% set JSONgovraw %}{% include "../wordpress-posts/recentupdates.json" %}{% endset %}
+        {% set JSONgov = JSONgovraw | jsonparse %}
+        {%- set RowsGov = JSONgov.Table1 -%}
+        {% for item in RowsGov %}
+          <article class="news-item trigger">
+              <h3 class="h6 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
+              <p>{{item['News content']}}</p>
+              <p class="mt-2"><a class="recent-news-link" href="{{item['link URL']}}">{{item['Link text']}}</a></p>
+          </article>
+        {% endfor %}
+      </div>
+    
+    
+    </div>
+    </section>
+</news-section>
