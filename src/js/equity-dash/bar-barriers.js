@@ -28,9 +28,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       .padding(0.1)
 
     const svg = d3.create("svg")
-        .attr("viewBox", [0, 0, width, height]);
+        .attr("viewBox", [0, 0, width, height])
+        .attr("class","equity-bar-chart");
     
-    writeBars(svg, data, x, y);
+    writeBars(svg, data, x, y, width);
     writeBarLabels(svg, data, x, y);
     let xAxis = writeXAxis(data, height, margin, x);
 
@@ -155,7 +156,7 @@ function writeLegend(svg, legendLabels) {
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
 }
-function writeBars(svg, data, x, y) {
+function writeBars(svg, data, x, y, width) {
   svg.append("g")
     .attr("fill", "skyblue")
     .attr('class','barshere')
@@ -170,15 +171,15 @@ function writeBars(svg, data, x, y) {
       .attr("id", (d, i) => "barid-"+i)
       .on("mouseover", function(event, d, i) {
         d3.select(this).style("fill", "steelblue");
-        console.log(window.tooltip)
-        console.log(this.getBoundingClientRect())
-        window.tooltip.style.top = "200px"
+        // problem the svg is not the width in px in page as the viewbox width
+        window.tooltip.style.top = "50%";
         let barIdInt = this.id.replace('barid-','');
-        console.log('int: '+barIdInt)
-        let left = x(barIdInt)
-        console.log(left)
-        //console.log(x.bandwidth() * barIdInt)
-        window.tooltip.style.left = parseInt(left)+"px";
+        let svgLeft = x(barIdInt)
+        let percentLeft = svgLeft / width;
+        let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
+        let actualLeft = parseInt(percentLeft * elWidth) - 70;
+        // 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
+        window.tooltip.style.left = parseInt(actualLeft)+"px";
         window.tooltip.innerHTML = `<div class="chart-tooltip">
           <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
         </div>`;
