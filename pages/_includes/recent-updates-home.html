@@ -6,7 +6,7 @@
     
       <h3 class="news-headline">Recent updates</h3>
       <div class="news-grid">
-        {% set JSONgovraw %}{% include "../wordpress-posts/recentupdates.json" %}{% endset %}
+        {% set JSONgovraw %}{% include "../wordpress-posts/updates-section-homepage.json" %}{% endset %}
         {% set JSONgov = JSONgovraw | jsonparse %}
         {%- set RowsGov = JSONgov.Table1 -%}
         {% for item in RowsGov %}
