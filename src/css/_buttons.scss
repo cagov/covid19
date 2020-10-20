@@ -215,3 +215,27 @@ button.card-header.accordion-alpha:focus {
     color: #fff;
   }
 }
+
+button.clear {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  color: #1f2574;
+  font-weight: 300;
+  transition: all .3s ease;
+  span.ca-gov-icon-close-line {
+    transition: all .3s ease;
+    position: relative;
+  }
+  &:hover {
+    span.ca-gov-icon-close-line {
+      transform: scale(1.2);
+      display: inline-block;
+    }
+  }
+  &:focus {
+    outline: 2px solid #004abc;
+  }
+}
