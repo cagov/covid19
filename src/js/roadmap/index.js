@@ -202,6 +202,7 @@ class CAGovReopening extends window.HTMLElement {
       "Lassen",
       "Marin",
       "Mariposa",
+      "Merced",
       "Modoc",
       "Mono",
       "Napa",
@@ -224,7 +225,9 @@ class CAGovReopening extends window.HTMLElement {
       "Solano",
       "Trinity",
       "Tuolumne",
-      "Yolo"
+      "Ventura",
+      "Yolo",
+      "Yuba"
     ];
     if(this.schoolOKList) {
       schoolOKList = this.schoolOKList;
