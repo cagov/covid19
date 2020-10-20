@@ -58,14 +58,17 @@ cagov-reopening {
   }
   .card-content {
     margin: 0;
-    padding: 0 0 30px 0;
+    padding: 15px 0 30px 0;
     background: #fff;
+  }
+  .county-container {
+    padding: 0 30px 0 30px;
   }
   .card-county, .card-activity {
     padding: 30px;
   }
   .card-county {
-    margin: 20px 0 0 0;
+    margin: 5px 0 0 0;
   }
   .card-activity {
     text-align: left;
@@ -92,27 +95,37 @@ cagov-reopening {
     color: #000;
     text-transform: uppercase;
   }
+
+  .county-color-1,   .county-color-2,   .county-color-3,  .county-color-4 {
+    padding: 20px 15px 25px 15px;
+    margin-bottom: 20px;
+  }
+
   .county-color-1 {
-    background-color: rgba(230, 183, 53, .5);
+    background-color:#FAF1D7;
+    border-bottom: 8px solid #E6B735;
     .pill {
       background-color: #E6B735;
     }
   }
   .county-color-2 {
-    background-color: rgba(217, 118, 65, .5);
+    background-color:#F7E4D9;
+    border-bottom: 8px solid #D97641;
     .pill {
       background-color: #D97641;
     }
   }
   .county-color-3 {
-    background-color: rgba(196, 61, 83, .5);
+    background-color:#F3D8DD;
+    border-bottom: 8px solid #C43D53;
     .pill {
       background-color: #C43D53;
       color: #fff;
     }
   }
   .county-color-4 {
-    background-color: rgba(128, 47, 103, .5);
+    background-color:#E6D5E1;
+    border-bottom: 8px solid #802F67;
     .pill {
       background-color: #802F67;
       color: #fff;
@@ -138,9 +151,30 @@ cagov-reopening {
 
 .matrix-row {
   margin-top: 0px;
+  @include phone {
+    .card-body {
+      padding: 0rem 0.45rem .75rem 0.45rem;
+      text-align: center;
+      .btn-matrix {
+        margin-top: 1.5rem;
+        margin-bottom: .75rem;
+        font-size: 1.4rem;
+      }
+      h5 {
+        margin-bottom: .25rem;
+        font-size: 1.4rem;
+      }
+      p.card-text {
+        font-size: 1rem !important;
+        margin-top: 0 !important;
+      }
+    }
+  }
+  @include tablet {
   .card-body {
     padding: 1.2rem 0.45rem;
   }
+}
   .card-header {
     display: none;
     @include tablet {
@@ -171,6 +205,27 @@ cagov-reopening {
   }
   h2 {
     text-align: center;
+  }
+}
+
+button.clear {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  color: $darkblue;
+  font-weight: 300;
+  transition: all .3s ease;
+  span.ca-gov-icon-close-line {
+    transition: all .3s ease;
+    position: relative;
+  }
+  &:hover {
+    span.ca-gov-icon-close-line {
+      transform: scale(1.2);
+      display: inline-block;
+    }
   }
 }
 

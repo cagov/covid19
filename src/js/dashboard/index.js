@@ -25,9 +25,13 @@ window.fetch('/countystatus.json')
   setupFormSubmitListener(aList);
 }.bind(this));
 
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
+    clearBtn.classList.remove('d-none');
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
     let typedInValue = document.querySelector('#location-query').value;
@@ -82,18 +86,32 @@ function displayChart(containerSelector,width,height,url) {
   }
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
-
+/* desctop */
 let topChartHeights1 = 600;
 let chartWidth = 900;
 let chartWidth2 = 700;
 let countyMapChartHeight = 560;
+/* phone */
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
   chartWidth = window.innerWidth - 30;
   chartWidth2 = chartWidth;
 }
-
+/* small tablet */
+else if (window.innerWidth > 700 && window.innerWidth < 992) {
+  topChartHeights1 = 930;
+  countyMapChartHeight = 560;
+  chartWidth = 700;
+  chartWidth2 = chartWidth;
+}
+/* big tablet */
+else if (window.innerWidth > 992 && window.innerWidth < 1200) {
+  topChartHeights1 = 600;
+  countyMapChartHeight = 560;
+  chartWidth = 800;
+  chartWidth2 = 700;
+}
 
 // these are county toggles and state toggles
 let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
@@ -190,6 +208,43 @@ function showCounties() {
   document.getElementById('testing-county-graph').style.display = 'block';
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
+
+
+countyInput.addEventListener("focus", function() {
+  inputValue();
+ });
+
+ countyInput.addEventListener("input", function() {
+  inputValue();
+ });
+
+countyInput.addEventListener("blur", function() {
+   inputValue();
+});
+
+function inputValue() {
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+  if (countyInput && countyInput.value) {
+    clearBtn.classList.remove('d-none');
+  }
+  else {clearBtn.classList.add('d-none');}
+}
+
+clearBtn.addEventListener("blur", function(e) { 
+  inputValue();
+});
+
+clearBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("location-query").value = '';
+  showStateWides();
+  resetGroupToggles();
+  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+    c.classList.add('d-none');
+  });
+  //this.classList.add('d-none');
+});
 
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
