@@ -5,6 +5,7 @@
 {#- dynamic classnames are really cool but the purger cannot understand, hence this -#}
 <div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn text-700 bg-lightblue"></div>
 
+
 <div class="the-matrix d-none">
 <div class="row mr-0 ml-0 matrix-row">
     <div class="col-sm-3 pl-2 d-none d-md-block bd-right-black">
@@ -55,6 +56,19 @@
       </div>
     </div>
       <div class="col-sm-3 pl-0 pr-0 bd-right-white bg-{{CssColor}}-alert">
+<<<<<<< HEAD
+        <div class="card border-0 bg-transparent pl-2">
+              <div class="card-body text-black">
+                  <h5>{{item['Positive tests'] | safe}}</h5>
+                <p class="card-text text-small mt-3">
+                {{ Headers['Description – positive cases'] | safe}}
+                </p>
+              </div>
+        </div>
+      </div>
+      <div class="col-sm-3 pl-0 pr-0 bg-{{CssColor}}-alert">
+=======
+>>>>>>> kk-matrix-4col
         <div class="card border-0 bg-transparent pl-2">
               <div class="card-body text-black">
                   <h5>{{item['Positive tests'] | safe}}</h5>
@@ -67,7 +81,7 @@
       <div class="col-sm-3 pl-0 pr-0 bg-{{CssColor}}-alert">
         <div class="card border-0 bg-transparent pl-2">
               <div class="card-body text-black">
-                  <h5>{{item['Positive tests'] | safe}}</h5>
+                  <h5>{{item['Positive-heq'] | safe}}</h5>
                 <p class="card-text text-small mt-3">
                 {{ Headers['Description – positive cases'] | safe}}
                 </p>
