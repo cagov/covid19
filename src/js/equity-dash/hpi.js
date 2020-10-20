@@ -86,7 +86,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.append(() => tooltip.node);
     svg.append(() => tooltip2.node);
     
-    let legendLabels = ["Statewide test positivity", "Health equity metris (HPI quartile positivity rate)"];
+    let legendLabels = ["Statewide test positivity", "Health equity metric (HPI quartile positivity rate)"];
     let legendColors = ["#ffcf45","#0F368E"]
     let legend = svg.append('g')
         .attr('class', 'legend')

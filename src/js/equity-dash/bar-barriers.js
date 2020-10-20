@@ -28,9 +28,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       .padding(0.1)
 
     const svg = d3.create("svg")
-        .attr("viewBox", [0, 0, width, height]);
+        .attr("viewBox", [0, 0, width, height])
+        .attr("class","equity-bar-chart");
     
-    writeBars(svg, data, x, y);
+    writeBars(svg, data, x, y, width);
     writeBarLabels(svg, data, x, y);
     let xAxis = writeXAxis(data, height, margin, x);
 
@@ -54,10 +55,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
     // where tf did tooltip reference go?
     // initial average bar is faked
-    // rewrite average bar
 
     this.innerHTML = template();
     document.querySelector('.svg-holder').appendChild(svg.node());
+    window.tooltip = this.querySelector('.bar-overlay')
+
     this.applyListeners(svg, x, y, height, margin, xAxis)
 
     /*
@@ -154,7 +156,7 @@ function writeLegend(svg, legendLabels) {
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
 }
-function writeBars(svg, data, x, y) {
+function writeBars(svg, data, x, y, width) {
   svg.append("g")
     .attr("fill", "skyblue")
     .attr('class','barshere')
@@ -166,29 +168,27 @@ function writeBars(svg, data, x, y) {
       .attr("y", d => y(d.CASE_RATE_PER_100K))
       .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
       .attr("width", x.bandwidth())
-      .on("mouseover", function(event, d) {
+      .attr("id", (d, i) => "barid-"+i)
+      .on("mouseover", function(event, d, i) {
         d3.select(this).style("fill", "steelblue");
-        tooltip.style("top", (parseInt(this.getBoundingClientRect().y)-10)+"px").style("left",(parseInt(this.getBoundingClientRect().x)+10)+"px");
-        tooltip.html(`<div class="chart-tooltip">
-        <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
-      </div>`); 
-        tooltip.style("visibility", "visible");
-      })
-      .on("mousemove", function(){ 
-        return true; // tooltip.style("top", (parseInt(this.getBoundingClientRect().y)-10)+"px").style("left",(parseInt(this.getBoundingClientRect().x)+10)+"px");
+        // problem the svg is not the width in px in page as the viewbox width
+        window.tooltip.style.top = "50%";
+        let barIdInt = this.id.replace('barid-','');
+        let svgLeft = x(barIdInt)
+        let percentLeft = svgLeft / width;
+        let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
+        let actualLeft = parseInt(percentLeft * elWidth) - 70;
+        // 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
+        window.tooltip.style.left = parseInt(actualLeft)+"px";
+        window.tooltip.innerHTML = `<div class="chart-tooltip">
+          <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
+        </div>`;
+        window.tooltip.style.visibility = "visible";
       })
       .on("mouseout", function(d) {
         d3.select(this).style("fill", "skyblue");
-        tooltip.style("visibility", "hidden");
+        window.tooltip.style.visibility = "hidden";
       });
-
-  let tooltip = d3.select('.svg-holder')
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-      .style("background", "#fff") // put these styles on a class
-      .text("an empty tooltip");
 }
 function rewriteBars(svg, data, x, y) {
   svg.selectAll(".barshere rect")
