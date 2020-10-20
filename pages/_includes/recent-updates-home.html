@@ -11,8 +11,8 @@
         {%- set RowsGov = JSONgov.Table1 -%}
         {% for item in RowsGov %}
           <article class="news-item trigger">
-              <h3 class="h6 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
-              <p>{{item['News content']}}</p>
+              <h3 class="h4 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
+              <p class="text-300">{{item['News content']}}</p>
               <p class="mt-2"><a class="recent-news-link" href="{{item['link URL']}}">{{item['Link text']}}</a></p>
           </article>
         {% endfor %}
