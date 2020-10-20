@@ -40,6 +40,7 @@ news-section {
     &-item {
       text-align: left;
       padding: 1.25rem 0;
+      p {font-weight: 300;}
       @include tablet {
         width: 33%;
         padding: 0.75rem;

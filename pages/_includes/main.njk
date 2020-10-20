@@ -120,11 +120,44 @@
 		</section>
 	</hero-stats>
 
+
+
+
+
+	<!--RECENT UPDATES-->
+	{% include "./recent-updates-home.html" %}
+
+
+
+
+	<!-- PEOPLE WANTS TO KNOW SECTION -->
+	<faq-section>
+		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
+			
+			<h3 class="text-center color-orange font-size-2em">{{varPeopleWantToKnowTitle}}</h3>
+			<div class="faq-twitter-wrap">
+				{%- for column, items in pubData[language.id].peopleWantToKnow %}
+					<div class="faq trigger">
+						{%- for item in items %}
+						<article class="faq-item trigger">    
+							<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
+								<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
+								<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+							</a>
+						</article>
+						{%- endfor %}
+					</div>
+				{%- endfor %}
+			</div>
+		</section>
+	</faq-section>
+
+
 	<!-- begin video section -->
 	<video-section>
-		<section class="video trigger" role="region" aria-labelledby="video-resources">
+		<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
 			<div class="video-wrap">
-				<h3 class="video-headline text-center"><span class="video-headline-link" id="video-resources">{{varVideoTitle}}</span></h3>
+				<h3 class="video-headline text-center font-size-2em"><span  id="video-resources">{{varVideoTitle}}</span></h3>
 				<div class="video-grid">
 					<div class="video-grid-col">
 						<article class="video-item transition-0_3 transform-scale-hover" data-video="{{ varVideoID }}">
@@ -158,29 +191,8 @@
 	</video-section>
 	<!-- end video section -->
 
-	<!-- PEOPLE WANTS TO KNOW SECTION -->
-	<faq-section>
-		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
-			<div class="header-wrap">
-				<h4 class="faq-headline"><span class="faq-headline-link" id="want-to-know">{{varPeopleWantToKnowTitle}}</span></h4>
-			</div>
-			<div class="faq-twitter-wrap">
-				{%- for column, items in pubData[language.id].peopleWantToKnow %}
-					<div class="faq trigger">
-						{%- for item in items %}
-						<article class="faq-item trigger">    
-							<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
-								<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-								<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
-							</a>
-						</article>
-						{%- endfor %}
-					</div>
-				{%- endfor %}
-			</div>
-		</section>
-	</faq-section>
 
+<!--FROM GOV OFFICE UPDATES -->
   {% include "./news-feed-home.html" %}
 	<!-- end contentBlock -->
 {% endblock %}
