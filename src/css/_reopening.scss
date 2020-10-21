@@ -151,7 +151,8 @@ cagov-reopening {
 
 .matrix-row {
   margin-top: 0px;
-  @include phone {
+  // phone
+  @media (max-width: 767.98px) {
     .card {margin-bottom: 0;}
     .card-body {
       padding: 0 0 .75rem 0;
@@ -172,7 +173,8 @@ cagov-reopening {
       }
     }
   }
-  @include tablet {
+  // tablet and up
+  @media (min-width: 768px) { 
   .card-body {
     padding: 1.2rem 0.45rem;
     .matrix-h5 {
@@ -185,7 +187,8 @@ cagov-reopening {
 }
   .card-header {
     display: none;
-    @include tablet {
+    // tablet and up
+    @media (min-width: 768px) { 
       display: block;
     }
   }
@@ -237,7 +240,8 @@ button.clear {
   }
 }
 
-@include tablet {
+// tablet and up
+@media (min-width: 768px) { 
   .bd-right-white {
     border-right: solid 2px #fff !important;
   }
