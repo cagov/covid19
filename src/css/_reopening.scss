@@ -152,17 +152,19 @@ cagov-reopening {
 .matrix-row {
   margin-top: 0px;
   @include phone {
+    .card {margin-bottom: 0;}
     .card-body {
-      padding: 0rem 0.45rem .75rem 0.45rem;
-      text-align: center;
+      padding: 0 0 .75rem 0;
+      //text-align: center;
       .btn-matrix {
         margin-top: 1.5rem;
         margin-bottom: .75rem;
         font-size: 1.4rem;
       }
-      h5 {
-        margin-bottom: .25rem;
-        font-size: 1.4rem;
+      .matrix-h5 {
+        margin-bottom:0;
+        font-size: 1.2rem;
+        font-weight: 300;
       }
       p.card-text {
         font-size: 1rem !important;
@@ -173,6 +175,12 @@ cagov-reopening {
   @include tablet {
   .card-body {
     padding: 1.2rem 0.45rem;
+    .matrix-h5 {
+      font-size: 1.18rem !important;
+      font-weight: 700;
+      margin-bottom: .3rem;
+      line-height: 1.2;
+    }
   }
 }
   .card-header {
