@@ -246,3 +246,9 @@ button.clear {
     border-right: solid 2px #fff !important;
   }
 }
+
+// hiding empty cell text
+.matrix-row:nth-child(3) .col-md-3:nth-child(4) {
+  .card-body {display: none;}
+  .d-md-none {display: none;}
+}
