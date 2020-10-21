@@ -1960,7 +1960,7 @@ font {
 .text-800 {font-weight: 800 !important;}
 .text-900 {font-weight: 900 !important;}
 
-@include phone {
+@media (max-width: 767.98px) {
   .bd-0-mobile {border:none !important;}
   .bd-bottom-black-mobile {border-bottom:1px solid #000000 !important;}
   .bd-top-black-mobile {border-bottom:1px solid #000000 !important;}
