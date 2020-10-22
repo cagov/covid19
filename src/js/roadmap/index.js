@@ -74,7 +74,7 @@ class CAGovReopening extends window.HTMLElement {
         aList.push(item['0'])
       })
       this.setupAutoCompActivity('#activity-query', 'activity', aList)
-      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder mx-auto' id='viz1598633253507' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Planforreducingcovid-19&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /></object></div>`;
+      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder' style='width: 920px; height: 527px;'><object class='tableauViz' width='920' height='527' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='COVID-19PlanforreducingCOVID-19webpage_16031507318480&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>`;
       this.tableauStuff()
     }.bind(this))
     .catch(() => {
@@ -122,11 +122,12 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   tableauStuff() {
-    var divElement = document.getElementById('viz1598633253507');
+    var divElement = document.querySelector('.tableauPlaceholder');
     var vizElement = divElement.getElementsByTagName('object')[0];
     if ( divElement.offsetWidth > 800 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    // scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    scriptElement.src = 'https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js';
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
   }
   setupAutoCompActivity(fieldSelector, fieldName, aList) {
