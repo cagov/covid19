@@ -514,6 +514,9 @@ li,
 .color-orange-hover:hover, .color-orange-hover:focus {
     color: #ff8000 !important;
 }
+.color-white {
+  color: $white;
+}
 .color-purple {
     color: #1f2574 !important;
 }
@@ -525,6 +528,10 @@ li,
 }
 .color-secondary-hover:hover, .color-secondary-hover:focus  {
     color:#92c5de!important;
+}
+
+.bullet-orange li::marker {
+  color: #ff8000;
 }
 
 /* Pagination */
