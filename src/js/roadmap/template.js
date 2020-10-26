@@ -19,6 +19,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               type="text"
               placeholder="${countyPlaceholder}"
             />
+            <button class="clear d-none" id="clearLocation"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
             <span
               class="visually-hidden"
@@ -52,15 +53,15 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               type="text"
               placeholder="${activityPlaceholder}"
             />
+            <button class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
           </div>
           <ul hidden="" id="awesomplete-list-2" role="listbox"></ul>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Get latest status</button>
+      <button type="submit" class="btn btn-primary">Get latest risk levels</button>
     </form>
     <div class="card-holder"></div>
-  </div>
-  <div class="matrix-holder"></div>`
+  </div>`
 }
