@@ -12,7 +12,7 @@ video-section {
 		&-wrap {
 			@extend %wrap;
 			@include tablet {
-				padding-top: 2rem;
+				padding-top: 0;
 			}
 			@include desktop {
 				padding-top: 0;

@@ -1,58 +1,62 @@
 {
   "Table1": [
     {
-      "Cấp quận": "Tối thiểu",
-      "colorLabel": "M�&nbsp;u v�&nbsp;ng",
-      "_Nhãn m�&nbsp;u": "M�&nbsp;u v�&nbsp;ng",
-      "Số ca mắc mới": "Dưới 1",
-      "Xét nghiệm dương tính": "Dưới 2%",
-      "mô tả": "Hầu hết các hoạt động kinh doanh trong nh�&nbsp; đều được phép mở cửa với điều chỉnh sửa đổi"
+      "County tier": "Tối thiểu",
+      "colorLabel": "Màu vàng",
+      "_Color label": "Yellow",
+      "New cases": "Dưới 1",
+      "Positive tests": "Dưới 2%",
+      "description": "Hầu hết các hoạt động kinh doanh trong nhà đều được phép mở cửa với điều chỉnh sửa đổi",
+      "Positive-heq": "Dưới 2.2%"
     },
     {
-      "Cấp quận": "Trung bình",
-      "colorLabel": "M�&nbsp;u cam",
-      "_Nhãn m�&nbsp;u": "M�&nbsp;u cam",
-      "Số ca mắc mới": "1 – 3.9",
-      "Xét nghiệm dương tính": "2 – 4.9%",
-      "mô tả": "Một số hoạt động kinh doanh trong nh�&nbsp; được phép mở cửa với điều chỉnh sửa đổi"
+      "County tier": "Trung bình",
+      "colorLabel": "Màu cam",
+      "_Color label": "Orange",
+      "New cases": "1 – 3.9",
+      "Positive tests": "2 – 4.9% ",
+      "description": "Một số hoạt động kinh doanh trong nhà được phép mở cửa với điều chỉnh sửa đổi",
+      "Positive-heq": "2.2 – 5.2%"
     },
     {
-      "Cấp quận": "Nghiêm trọng",
-      "colorLabel": "M�&nbsp;u đỏ",
-      "_Nhãn m�&nbsp;u": "M�&nbsp;u đỏ",
-      "Số ca mắc mới": "4-7",
-      "Xét nghiệm dương tính": "5 – 8%",
-      "mô tả": "Một số hoạt động kinh doanh trong nh�&nbsp; không thiết yếu phải đóng cửa"
+      "County tier": "Nghiêm trọng",
+      "colorLabel": "Màu đỏ",
+      "_Color label": "Red",
+      "New cases": "4-7",
+      "Positive tests": "5 – 8%",
+      "description": "Một số hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa",
+      "Positive-heq": "5.3 – 8%"
     },
     {
-      "Cấp quận": "Lan rộng",
-      "colorLabel": "M�&nbsp;u tím",
-      "_Nhãn m�&nbsp;u": "M�&nbsp;u tím",
-      "Số ca mắc mới": "Trên 7",
-      "Xét nghiệm dương tính": "Trên 8%",
-      "mô tả": "Nhiều hoạt động kinh doanh trong nh�&nbsp; không thiết yếu phải đóng cửa"
+      "County tier": "Lan rộng",
+      "colorLabel": "Màu tím",
+      "_Color label": "Purple",
+      "New cases": "Trên 7",
+      "Positive tests": "Trên 8%",
+      "description": "Nhiều hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa",
+      "Positive-heq": ""
     }
   ],
   "Table2": [
     {
-      "_id": "Tiêu đề – mức độ rủi ro của quận",
-      "văn bản": "Mức độ rủi ro của quận"
+      "_id": "Header – county risk level",
+      "text": "Mức độ nguy cơ của quận"
     },
     {
-      "_id": "Tiêu đề – số ca mắc mới",
-      "văn bản": "Số ca được điều chỉnh"
+      "_id": "Header – new cases",
+      "text": "Tỷ lệ số ca được điều chỉnh"
     },
     {
-      "_id": "Tiêu đề – xét nghiệm dương tính",
-      "văn bản": "Tỷ lệ dương tính"
+      "_id": "Header – positive tests",
+      "text": "Tỷ lệ dương tính"
     },
     {
-      "_id": "Mô tả – số ca mắc mới",
-      "văn bản": "Số ca mắc mới trong ng�&nbsp;y (mỗi 100k)"
+      "_id": "Description – new cases",
+      "text": "Số ca mắc mới trong ngày (mỗi 100k)"
     },
     {
-      "_id": "Mô tả – số ca dương tính",
-      "văn bản": "Xét nghiệm dương tính"
+      "_id": "Description – positive cases",
+      "text": "Xét nghiệm dương tính"
     }
   ]
 }

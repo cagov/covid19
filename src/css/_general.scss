@@ -1921,7 +1921,31 @@ font {
 .pos-rel { position: relative; }
 
 .bd-lightblue {border: 2px solid $lightestblue !important;}
+.bd-right-black {border-right: 1px solid black !important;}
 .bd-blue {border: 1px solid $blue !important;}
 .bd-darkblue {border: 1px solid $darkblue !important;}
 .bd-ccc { border: solid 1px #ccc; }
+
 .has-text-align-center {text-align: center !important;}
+.text-300 {font-weight: 300 !important;}
+.text-400 {font-weight: 400 !important;}
+.text-500 {font-weight: 500 !important;}
+.text-600 {font-weight: 600 !important;}
+.text-700 {font-weight: 700 !important;}
+.text-800 {font-weight: 800 !important;}
+.text-900 {font-weight: 900 !important;}
+
+@media (max-width: 767.98px) {
+  .bd-0-mobile {border:none !important;}
+  .bd-bottom-black-mobile {border-bottom:1px solid #000000 !important;}
+  .bd-top-black-mobile {border-bottom:1px solid #000000 !important;}
+  .bd-bottom-white-mobile {border-bottom:1px solid #fff !important;}
+  .bd-top-white-mobile {border-bottom:1px solid #fff !important;}
+  .text-300 {font-weight: 300 !important;}
+.text-400-mobile {font-weight: 400 !important;}
+.text-500-mobile {font-weight: 500 !important;}
+.text-600-mobile {font-weight: 600 !important;}
+.text-700-mobile {font-weight: 700 !important;}
+.text-800-mobile {font-weight: 800 !important;}
+.text-900-mobile {font-weight: 900 !important;}
+}

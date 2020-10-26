@@ -40,7 +40,7 @@ class CAGovReopening extends window.HTMLElement {
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
     let theMatrix = document.querySelector('.the-matrix');
     if(theMatrix) {
-      this.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
+      document.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
     }
 
     window.fetch('/countystatus.json')
@@ -56,6 +56,12 @@ class CAGovReopening extends window.HTMLElement {
     .then(response => response.json())
     .then(function(data) {
       this.statusdesc = data;
+    }.bind(this));
+
+    window.fetch('/schools-may-reopen.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.schoolOKList = data;
     }.bind(this));
 
     window.fetch('/reopening-activities.json')
@@ -196,6 +202,7 @@ class CAGovReopening extends window.HTMLElement {
       "Lassen",
       "Marin",
       "Mariposa",
+      "Merced",
       "Modoc",
       "Mono",
       "Napa",
@@ -218,8 +225,13 @@ class CAGovReopening extends window.HTMLElement {
       "Solano",
       "Trinity",
       "Tuolumne",
-      "Yolo"
+      "Ventura",
+      "Yolo",
+      "Yuba"
     ];
+    if(this.schoolOKList) {
+      schoolOKList = this.schoolOKList;
+    }
     let schoolShenanigans = function(county) {
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
@@ -231,7 +243,7 @@ class CAGovReopening extends window.HTMLElement {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#reopening-data">Understand the data.</a></p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
         <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
@@ -268,3 +280,55 @@ class CAGovReopening extends window.HTMLElement {
   }
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
+
+// Show clear btn only if there is value (County)
+function inputValueCounty() {
+  var countyInput = document.getElementById("location-query");
+  var clearCounty = document.getElementById("clearLocation");
+    if (countyInput && countyInput.value) {
+      clearCounty.classList.remove('d-none');
+    }
+    else {clearCounty.classList.add('d-none');}
+  }
+
+
+  var activityInput = document.getElementById("activity-query");
+  var countyInput = document.getElementById("location-query");
+  
+  
+  
+  // Show clear btn only on input (County)
+  countyInput.addEventListener("input", function() {
+    inputValueCounty();
+   });
+  
+  // Show clear btn only on input (Activity)
+  activityInput.addEventListener("input", function() {
+    inputValueActivity();
+   });
+  
+   activityInput.addEventListener("blur", function() {
+     console.log("something changed")
+    inputValueActivity();
+   });
+
+//Clear buttons click events
+document.getElementById("clearLocation").addEventListener("click", function() {
+  countyInput.value = '';
+  inputValueCounty();
+});	
+
+document.getElementById("clearActivity").addEventListener("click", function() {
+  activityInput.value = '';
+  inputValueActivity();
+});	
+
+// Show clear btn only if there is value (Activity)
+function inputValueActivity() {
+  var activityInput = document.getElementById("activity-query");
+  var clearActivity = document.getElementById("clearActivity");
+    if (activityInput && activityInput.value) {
+      clearActivity.classList.remove('d-none');
+    }
+    else {clearActivity.classList.add('d-none');}
+  }

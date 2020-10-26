@@ -7,6 +7,10 @@ let filesSiteData = [];
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(writeTranslatedData);
+let schoolsArray = [];
+let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
+schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
+fs.writeFileSync('./docs/schools-may-reopen.json',JSON.stringify(schoolsArray),'utf8')
 fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
 // this is temporary, we will get this data from an API:
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
@@ -160,7 +164,7 @@ module.exports = function(eleventyConfig) {
       throw errorMessage;
     else
       return null;
-  }
+    }
   );
 
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
