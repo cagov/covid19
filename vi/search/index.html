@@ -235,7 +235,7 @@
 		}
 		history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
 		document.querySelector('#answersNow').innerHTML = "";
-		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/api/CovidAnswer?q=${query}&name=123`)
+		fetch(`https://fa-go-alph-covidqna-001.azurewebsites.net/CovidAnswer?q=${query}&name=123`)
 		.then(response => response.json())
 		.then(data => {
 			let answers = [...data[0].answers];
