@@ -19,8 +19,8 @@
 {%-set _varStatIcuChange_ = (data.ICU_COVID_CONFIRMED_PATIENTS_DAILY + data.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = 'October 20, 2020' -%}
-{%-set _varTierEndDate_ = 'October 10, 2020' -%}
+{%-set _varTierDate_ = 'October 27, 2020' -%}
+{%-set _varTierEndDate_ = 'October 17, 2020' -%}
 
 
 <div class="bg-lightblue py-5">
@@ -30,7 +30,7 @@
             <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
                 <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the prior day total of {{_varStatTotalDeathsLast_}}.</p>
                 </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-                <p class="small-text"><strong>Note:</strong> Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
+                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
             </div>
         </div>
 
@@ -263,7 +263,7 @@
                                 </p>
                             <div class="tableauPlaceholder"></div>
                         </div>
-                        <p class="todo-fix-this-wach-move">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
+                        <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
                     </div>
                 </div>
             </div>
