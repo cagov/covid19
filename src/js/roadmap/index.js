@@ -124,7 +124,10 @@ class CAGovReopening extends window.HTMLElement {
   tableauStuff() {
     var divElement = document.getElementById('viz1598633253507');
     var vizElement = divElement.getElementsByTagName('object')[0];
-    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';vizElement.style.height='547px';} 
+    else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
