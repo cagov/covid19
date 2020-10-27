@@ -110,7 +110,7 @@ else if (window.innerWidth > 992 && window.innerWidth < 1200) {
   topChartHeights1 = 600;
   countyMapChartHeight = 560;
   chartWidth = 800;
-  chartWidth2 = 700;
+  chartWidth2 = 920;
 }
 
 // these are county toggles and state toggles
