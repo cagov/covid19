@@ -89,28 +89,39 @@ function displayChart(containerSelector,width,height,url) {
 /* desctop */
 let topChartHeights1 = 600;
 let chartWidth = 900;
-let chartWidth2 = 700;
+let chartWidth2 = 900;
 let countyMapChartHeight = 560;
+
+// Map responsivness
+var divElement = document.querySelector('.col-lg-10');
+if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;} 
+  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900;} 
+  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 899) ) { chartWidth2 = 750;} 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;} 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 699) ) { chartWidth2 = 550; countyMapChartHeight = 660;} 
+  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 599) ) { chartWidth2 = 450; countyMapChartHeight = 660;} 
+  else { chartWidth2 = 500;countyMapChartHeight = 660;}
+
 /* phone */
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
   chartWidth = window.innerWidth - 30;
-  chartWidth2 = chartWidth;
+  //chartWidth2 = chartWidth;
 }
 /* small tablet */
-else if (window.innerWidth > 700 && window.innerWidth < 992) {
+else if (window.innerWidth > 700 && window.innerWidth < 918) {
   topChartHeights1 = 930;
   countyMapChartHeight = 560;
   chartWidth = 700;
-  chartWidth2 = chartWidth;
+ // chartWidth2 = chartW920idth;
 }
 /* big tablet */
-else if (window.innerWidth > 992 && window.innerWidth < 1200) {
+else if (window.innerWidth > 919 && window.innerWidth < 1200) {
   topChartHeights1 = 600;
   countyMapChartHeight = 560;
   chartWidth = 800;
-  chartWidth2 = 920;
+ // chartWidth2 = 920;
 }
 
 // these are county toggles and state toggles
@@ -123,7 +134,8 @@ let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartH
 let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
 // this chart does not toggle
-let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/Planforreducingcovid-19/planforreducingcovid-19?:language=en&:display_count=y&:toolbar=n&:origin=viz_share_link');
+let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, //'https://public.tableau.com/views/Planforreducingcovid-19/planforreducingcovid-19?:language=en&:display_count=y&:toolbar=n&:origin=viz_share_link');
+'https://tableau.cdt.ca.gov/views/COVID-19PlanforreducingCOVID-19webpage_16031507318480/planforreducingcovid-19?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
 
 // these are their own toggle sets
 let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
