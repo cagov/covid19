@@ -98,9 +98,9 @@ if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;}
   else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900;} 
   else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 899) ) { chartWidth2 = 750;} 
   else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 699) ) { chartWidth2 = 550; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 599) ) { chartWidth2 = 450; countyMapChartHeight = 660;} 
-  else { chartWidth2 = 500;countyMapChartHeight = 660;}
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 699) ) { chartWidth2 = 550; countyMapChartHeight = 760;} 
+  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 599) ) { chartWidth2 = 450; countyMapChartHeight = 760;} 
+  else { chartWidth2 = 500;countyMapChartHeight = 760;}
 
 /* phone */
 if(window.innerWidth < 700) {
@@ -138,7 +138,7 @@ let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeig
 'https://tableau.cdt.ca.gov/views/COVID-19PlanforreducingCOVID-19webpage_16031507318480/planforreducingcovid-19?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
 
 // these are their own toggle sets
-let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 400, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
 let genderGroupChart = ''; // we aren't loading this until they click
 let ageGroupChart = ''; // we aren't loading this until they click
 
