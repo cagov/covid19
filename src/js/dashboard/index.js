@@ -90,36 +90,37 @@ function displayChart(containerSelector,width,height,url) {
 let topChartHeights1 = 600;
 let chartWidth = 900;
 let chartWidth2 = 900;
-let countyMapChartHeight = 560;
+let chartWidth3 = 800;
+let countyMapChartHeight = 660;
 
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
-if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;} 
-  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900;} 
-  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 899) ) { chartWidth2 = 750;} 
-  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 699) ) { chartWidth2 = 550; countyMapChartHeight = 760;} 
-  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 599) ) { chartWidth2 = 450; countyMapChartHeight = 760;} 
-  else { chartWidth2 = 500;countyMapChartHeight = 760;}
+if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
+  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; chartWidth3 = 900; countyMapChartHeight = 560;} 
+  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 899) ) { chartWidth2 = 750; chartWidth3 = 750; countyMapChartHeight = 660;} 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;  chartWidth3 = 700;} 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 699) ) { chartWidth2 = 550; countyMapChartHeight = 660; chartWidth3 = 600;} 
+  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 599) ) { chartWidth2 = 450; countyMapChartHeight = 660; chartWidth3 = 450;} 
+  else { chartWidth2 = 500; countyMapChartHeight = 660; chartWidth3 = 450;}
 
 /* phone */
 if(window.innerWidth < 700) {
   topChartHeights1 = 930;
-  countyMapChartHeight = 560;
+  //countyMapChartHeight = 560;
   chartWidth = window.innerWidth - 30;
   //chartWidth2 = chartWidth;
 }
 /* small tablet */
 else if (window.innerWidth > 700 && window.innerWidth < 918) {
   topChartHeights1 = 930;
-  countyMapChartHeight = 560;
+  //countyMapChartHeight = 560;
   chartWidth = 700;
  // chartWidth2 = chartW920idth;
 }
 /* big tablet */
 else if (window.innerWidth > 919 && window.innerWidth < 1200) {
   topChartHeights1 = 600;
-  countyMapChartHeight = 560;
+  //countyMapChartHeight = 560;
   chartWidth = 800;
  // chartWidth2 = 920;
 }
@@ -138,7 +139,7 @@ let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeig
 'https://tableau.cdt.ca.gov/views/COVID-19PlanforreducingCOVID-19webpage_16031507318480/planforreducingcovid-19?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
 
 // these are their own toggle sets
-let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth, 400, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
 let genderGroupChart = ''; // we aren't loading this until they click
 let ageGroupChart = ''; // we aren't loading this until they click
 
@@ -159,12 +160,12 @@ groupTogglers.forEach(toggle => {
     if(this.classList.contains('gender')) {
       document.getElementById('gender-graph').style.display = 'block';
       this.classList.add('toggle-active');
-      genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+      genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
       document.getElementById('age-graph').style.display = 'block'; 
       this.classList.add('toggle-active');     
-      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
       document.getElementById('ethnicity-graph').style.display = 'block';      
