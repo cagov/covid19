@@ -43,7 +43,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return a.date > b.date
       }))
       .attr("fill","none")
-      .attr("stroke", "#ffcf45")
+      .attr("stroke", "#92C5DE")
       .attr("stroke-width", .5)
       .attr("d", line)
     
@@ -54,7 +54,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return a.date > b.date
       }))
       .attr("fill","none")
-      .attr("stroke", "#0F368E")
+      .attr("stroke", "#FFCF44")
       .attr("stroke-width", .5)
       .attr("d", line);
     
@@ -66,28 +66,31 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     
     svg
       .append("g")
-      .attr("fill", "none")
+      .attr("fill", "#F2F5FC") // should be a function that only does week start at this, otherwise fff
       .attr("pointer-events", "all")
       .selectAll("rect")
       .data(d3.pairs(data))
       .join("rect")
       .attr("x", ([a, b]) => x(new Date(a.date)))
       .attr("height", 100)
-      .attr("width", ([a, b]) => x(new Date(b.date)) - x(new Date(a.date)))
+      .attr("width", 0.5)
       .on("mouseover", (event, [a]) => {
         tooltip.show(a,1,x,y, data2)
         tooltip2.show(a,2,x,y, data2)
+        console.log(event.target)
+        event.target.setAttribute("fill","#003D9D")
       })
-      .on("mouseout", () => {
+      .on("mouseout", (event) => {
         tooltip.hide()
         tooltip2.hide()
+        event.target.setAttribute("fill","none")
       });
 
     svg.append(() => tooltip.node);
     svg.append(() => tooltip2.node);
     
-    let legendLabels = ["Statewide test positivity", "Health equity metric (HPI quartile positivity rate)"];
-    let legendColors = ["#ffcf45","#0F368E"]
+    let legendLabels = ["Statewide test positivity", "Health equity quartile positivity"];
+    let legendColors = ["#92C5DE","#FFCF44"]
     let legend = svg.append('g')
         .attr('class', 'legend')
         .attr('transform', `translate(0,6)`);
