@@ -4,8 +4,8 @@
       "County tier": "최소",
       "colorLabel": "노란색",
       "_Color label": "Yellow",
-      "New cases": "1 미만",
-      "Positive tests": "2% 미만",
+      "New cases": "1.0 미만",
+      "Positive tests": "2.0% 미만",
       "description": "대부분의 실내 업체는 변경 조치 이행 후 운영 개시",
       "Positive-heq": "2.2% 미만"
     },
@@ -13,8 +13,8 @@
       "County tier": "완화",
       "colorLabel": "오렌지색",
       "_Color label": "Orange",
-      "New cases": "1 – 3.9",
-      "Positive tests": "2 – 4.9% ",
+      "New cases": "1.0 – 3.9",
+      "Positive tests": "2.0 – 4.9% ",
       "description": "일부 실내 업체는 변경 조치 이행 후 운영 개시",
       "Positive-heq": "2.2 – 5.2%"
     },
@@ -22,18 +22,18 @@
       "County tier": "상당",
       "colorLabel": "적색",
       "_Color label": "Red",
-      "New cases": "4-7",
-      "Positive tests": "5 – 8%",
+      "New cases": "4.0 – 7.0",
+      "Positive tests": "5.0 – 8.0%",
       "description": "일부 비필수 실내 업체는 운영 폐쇄",
-      "Positive-heq": "5.3 – 8%"
+      "Positive-heq": "5.3 – 8.0%"
     },
     {
       "County tier": "광범위",
       "colorLabel": "자주색",
       "_Color label": "Purple",
-      "New cases": "7 이상",
-      "Positive tests": "8% 이상",
-      "description": "다수의 비필수 사업체는 실내 운영을 폐쇄합니다",
+      "New cases": "7.0 이상",
+      "Positive tests": "8.0% 이상",
+      "description": "다수의 비필수 실내 사업체는 운영 폐쇄",
       "Positive-heq": ""
     }
   ],
