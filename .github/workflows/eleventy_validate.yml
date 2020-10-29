@@ -1,7 +1,6 @@
-name: Eleventy Validate PR Master
+name: Eleventy PR Validation
 on:
   pull_request:
-    branches: [ master ]
 
 jobs:
   build:
