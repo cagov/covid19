@@ -299,6 +299,7 @@ learn-more-section {
 				position: relative;
 				z-index: 100;
 				margin-right: 1rem;
+				margin-bottom: 0 !important;
 				padding-top: 0;
 			}
 			&:hover {
@@ -408,5 +409,7 @@ learn-more-section {
 	.faq article:first-child .faq-item-link {
 		border-top: 1px solid $blue;
 	}
-
+	.cwdsarrow {
+		margin-bottom: 0 !important;
+	}
 }
