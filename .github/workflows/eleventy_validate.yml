@@ -1,0 +1,12 @@
+name: Eleventy Validate PR Master
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        uses: cagov/actions-eleventy@2.1
