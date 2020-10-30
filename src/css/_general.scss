@@ -529,9 +529,22 @@ li,
 .color-secondary-hover:hover, .color-secondary-hover:focus  {
     color:#92c5de!important;
 }
-
-.bullet-orange li::marker {
-  color: #ff8000;
+.bullet-orange li {
+  list-style: none;    
+  position: relative;
+  margin-bottom: .7rem;
+  &::before {
+    content: "";
+    background: #ff8000;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+    position:absolute;
+    top: 7px;
+    left: -30px;
+  }
 }
 
 /* Pagination */
