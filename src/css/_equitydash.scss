@@ -69,3 +69,11 @@ cagov-chart-d3-lines {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
+
+
+
+/* chart specific styles */
+cagov-chart-d3-lines .tick {
+  stroke: #ccc;
+  stroke-width: 0.1;
+}

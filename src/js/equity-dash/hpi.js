@@ -21,11 +21,11 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     }]
 
     let xAxis = g => g
-      .attr("transform", `translate(5,80)`)
+      .attr("transform", `translate(5,-90)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
-        .tickFormat(d3.timeFormat('%b %d'))  
-        .tickSize(1,1))
+        .tickFormat(d3.timeFormat('%b. %d'))  
+        .tickSize(180,0))
       .call(g => g.select(".domain").remove())
 
     let line = d3.line()
@@ -66,14 +66,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     
     svg
       .append("g")
-      .attr("fill", "#F2F5FC") // should be a function that only does week start at this, otherwise fff
+      .attr("fill", "none")
       .attr("pointer-events", "all")
       .selectAll("rect")
       .data(d3.pairs(data))
       .join("rect")
-      .attr("x", ([a, b]) => x(new Date(a.date)))
+      .attr("x", ([a, b]) => {
+        let val = x(new Date(a.date)) + 0.5
+        return val;
+      })
       .attr("height", 100)
       .attr("width", 0.5)
+      .attr("style","stroke-width:0.5;")
       .on("mouseover", (event, [a]) => {
         tooltip.show(a,1,x,y, data2)
         tooltip2.show(a,2,x,y, data2)
