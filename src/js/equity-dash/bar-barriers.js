@@ -1,4 +1,4 @@
-import data from './social-data-income.json';
+import dataincome from './social-data-income.json';
 import template from './template.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
@@ -6,7 +6,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
     let height = 500;
     let width = 842;
-    let margin = ({top: 30, right: 0, bottom: 30, left: 10})
+    let margin = ({top: 50, right: 0, bottom: 30, left: 10})
 
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
@@ -30,26 +30,26 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         return response.json();
       }));
     }).then(function (alldata) {
-      //let data = alldata[0];
+      //let dataincome = alldata[0];
       let datacrowding = alldata[1];
       let datahealthcare = alldata[2];
 
-      data.sort(sortedOrder).reverse()
-      datacrowding.sort(sortedOrder)
-      datahealthcare.sort(sortedOrder)
+      dataincome.sort(sortedOrder).reverse()
+      datacrowding.sort(sortedOrder).reverse()
+      datahealthcare.sort(sortedOrder).reverse()
   
       let y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.CASE_RATE_PER_100K)]).nice()
+        .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
         .range([height - margin.bottom, margin.top])
   
       let x = d3.scaleBand()
-        .domain(d3.range(data.length))
+        .domain(d3.range(dataincome.length))
         .range([margin.left, width - margin.right])
         .padding(0.1)
 
-      writeBars(this.svg, data, x, y, width);
-      writeBarLabels(this.svg, data, x, y);
-      let xAxis = writeXAxis(data, height, margin, x);
+      writeBars(this.svg, dataincome, x, y, width);
+      writeBarLabels(this.svg, dataincome, x, y);
+      let xAxis = writeXAxis(dataincome, height, margin, x);
   
       this.svg.append("g")
         .attr("class", "xaxis")
@@ -61,24 +61,24 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .style("stroke-dasharray", ("3, 3"));
       
       this.svg.append("text")
-        .text(`Statewide case rate ${parseFloat(data[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
+        .text(`Statewide case rate ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
         .attr("y", height / 2 - 5)
         .attr("x", width - 5)
         .attr('text-anchor','end')
         .attr('class','label');
         
-      writeLegend(this.svg, ["Cases per 100K people"]);
+      writeLegend(this.svg, ["Cases per 100K people"], width);
   
       this.innerHTML = template();
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       window.tooltip = this.querySelector('.bar-overlay')
   
-      this.applyListeners(this.svg, x, y, height, margin, xAxis)
+      this.applyListeners(this.svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare)
     }.bind(this));
       
   }
 
-  applyListeners(svg, x, y, height, margin, xAxis) {
+  applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
@@ -90,7 +90,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           rewriteBar(datacrowding, 'Case rate by crowding housing')
         }
         if(this.classList.contains('income')) {
-          rewriteBar(data, 'Case rate by median annual household income bracket')
+          rewriteBar(dataincome, 'Case rate by median annual household income bracket')
         }
         resetToggles();
         tog.classList.add('toggle-active')
@@ -122,17 +122,18 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 window.customElements.define('cagov-chart-d3-bar', CAGOVChartD3Bar);
 
 let labelMap = new Map();
-labelMap.set("$80k - $100k","$80k - $100k");
-labelMap.set("$100k - $120k","$100k - $120k");
-labelMap.set("$60k - $80k","$60k - $80k");
 labelMap.set("below $40K","0 - $40K");
-labelMap.set("$40k - $60k","$40k - $60k");
 labelMap.set("above $120K","$120K+");
 
 function writeXAxis(data, height, margin, x) {
   let xAxis = g => g
     .attr("transform", `translate(0,${height - margin.bottom + 5})`)
-    .call(d3.axisBottom(x).tickFormat(i => labelMap.get(data[i].SOCIAL_TIER)).tickSize(0))
+    .call(d3.axisBottom(x).tickFormat(i => {
+      if(labelMap.get(data[i].SOCIAL_TIER)) {
+        return labelMap.get(data[i].SOCIAL_TIER);
+      }
+      return data[i].SOCIAL_TIER;
+    }).tickSize(0))
     .style('font-weight','bold')
     .call(g => g.select(".domain").remove())
   return xAxis;
@@ -142,7 +143,7 @@ function rewriteLegend(svg, legendLabels) {
     .data(legendLabels)
     .text(legendLabels[0])
 }
-function writeLegend(svg, legendLabels) {
+function writeLegend(svg, legendLabels, width) {
   let legend = svg.append('g')
     .attr('class', 'legend');
   
@@ -150,7 +151,7 @@ function writeLegend(svg, legendLabels) {
     .data(legendLabels)
     .enter()
     .append('rect')
-    .attr('x', 20)
+    .attr('x', width - 150)
     .attr('y', 20)
     .attr('width', 12)
     .attr('height', 12)
@@ -161,7 +162,7 @@ function writeLegend(svg, legendLabels) {
     .enter()
     .append('text')
     .text(legendLabels[0])
-    .attr('x', 40)
+    .attr('x', width - 130)
     .attr('y', 20)
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
