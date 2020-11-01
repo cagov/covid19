@@ -1,7 +1,4 @@
-import data from './social-income.json';
-// import datacrowding from './test.json';
-import datacrowding from './social-crowding.json';
-import datahealthcare from './social-healthcare.json';
+import data from './social-data-income.json';
 import template from './template.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
@@ -14,67 +11,71 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
     }
-    data.sort(sortedOrder)
-    datacrowding.sort(sortedOrder)
-    datahealthcare.sort(sortedOrder)
 
-    let y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.CASE_RATE_PER_100K)]).nice()
-        .range([height - margin.bottom, margin.top])
-    
-    let x = d3.scaleBand()
-      .domain(d3.range(data.length))
-      .range([margin.left, width - margin.right])
-      .padding(0.1)
-
-    const svg = d3.create("svg")
+    this.svg = d3.create("svg")
         .attr("viewBox", [0, 0, width, height])
         .attr("class","equity-bar-chart");
     
-    writeBars(svg, data, x, y, width);
-    writeBarLabels(svg, data, x, y);
-    let xAxis = writeXAxis(data, height, margin, x);
-
-    svg.append("g")
-      .attr("class", "xaxis")
-      .call(xAxis);
-  
-    svg.append("path")
-      .attr("d", d3.line()([[0, height/2], [width, height/2]]))
-      .attr("stroke", "black")
-      .style("stroke-dasharray", ("3, 3"));
-    
-    svg.append("text")
-      .text(`state wide case rate ${parseFloat(data[0].STATE_CASE_RATE_PER_100K).toFixed(2)}%`)
-      .attr("y", height / 2 - 5)
-      .attr("x", width - 5)
-      .attr('text-anchor','end')
-      .attr('class','label');
-    
-    writeLegend(svg, ["Cases per 100,000 people"]);
-
-    // where tf did tooltip reference go?
-    // initial average bar is faked
-
-    this.innerHTML = template();
-    document.querySelector('.svg-holder').appendChild(svg.node());
-    window.tooltip = this.querySelector('.bar-overlay')
-
-    this.applyListeners(svg, x, y, height, margin, xAxis)
-
     /*
-    this.menuContentFile = this.dataset.json;
-    window.fetch(this.menuContentFile)
-      .then(response => response.json())
-      .then(data => {
-        this.innerHTML = navTemplate(data, this.dataset);
-        this.querySelector('.open-menu').addEventListener('click', this.toggleMainMenu.bind(this));
-        this.querySelector('.expanded-menu-close-mobile').addEventListener('click', this.toggleMainMenu.bind(this));
-        if (window.innerWidth < 1024) {
-          this.expansionListeners(); // everything is expanded by default on big screens
-        }
-      });
-      */
+     for env specific switches get data location from dataset attributes
+
+     window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-income.json"),
+    */
+    Promise.all([
+      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-crowding.json"),
+      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-crowding.json"),
+      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-insurance.json")
+    ]).then(function (responses) {
+      return Promise.all(responses.map(function (response) {
+        return response.json();
+      }));
+    }).then(function (alldata) {
+      //let data = alldata[0];
+      let datacrowding = alldata[1];
+      let datahealthcare = alldata[2];
+
+      data.sort(sortedOrder).reverse()
+      datacrowding.sort(sortedOrder)
+      datahealthcare.sort(sortedOrder)
+  
+      let y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.CASE_RATE_PER_100K)]).nice()
+        .range([height - margin.bottom, margin.top])
+  
+      let x = d3.scaleBand()
+        .domain(d3.range(data.length))
+        .range([margin.left, width - margin.right])
+        .padding(0.1)
+
+      writeBars(this.svg, data, x, y, width);
+      writeBarLabels(this.svg, data, x, y);
+      let xAxis = writeXAxis(data, height, margin, x);
+  
+      this.svg.append("g")
+        .attr("class", "xaxis")
+        .call(xAxis);
+    
+      this.svg.append("path")
+        .attr("d", d3.line()([[0, height/2], [width, height/2]]))
+        .attr("stroke", "#1F2574")
+        .style("stroke-dasharray", ("3, 3"));
+      
+      this.svg.append("text")
+        .text(`Statewide case rate ${parseFloat(data[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
+        .attr("y", height / 2 - 5)
+        .attr("x", width - 5)
+        .attr('text-anchor','end')
+        .attr('class','label');
+        
+      writeLegend(this.svg, ["Cases per 100K people"]);
+  
+      this.innerHTML = template();
+      this.querySelector('.svg-holder').appendChild(this.svg.node());
+      window.tooltip = this.querySelector('.bar-overlay')
+  
+      this.applyListeners(this.svg, x, y, height, margin, xAxis)
+    }.bind(this));
+      
   }
 
   applyListeners(svg, x, y, height, margin, xAxis) {
@@ -120,11 +121,20 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 }
 window.customElements.define('cagov-chart-d3-bar', CAGOVChartD3Bar);
 
+let labelMap = new Map();
+labelMap.set("$80k - $100k","$80k - $100k");
+labelMap.set("$100k - $120k","$100k - $120k");
+labelMap.set("$60k - $80k","$60k - $80k");
+labelMap.set("below $40K","0 - $40K");
+labelMap.set("$40k - $60k","$40k - $60k");
+labelMap.set("above $120K","$120K+");
+
 function writeXAxis(data, height, margin, x) {
   let xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).tickFormat(i => data[i].SOCIAL_TIER).tickSizeOuter(0))
+    .attr("transform", `translate(0,${height - margin.bottom + 5})`)
+    .call(d3.axisBottom(x).tickFormat(i => labelMap.get(data[i].SOCIAL_TIER)).tickSize(0))
     .style('font-weight','bold')
+    .call(g => g.select(".domain").remove())
   return xAxis;
 }
 function rewriteLegend(svg, legendLabels) {
@@ -170,7 +180,7 @@ function writeBars(svg, data, x, y, width) {
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
       .on("mouseover", function(event, d, i) {
-        d3.select(this).style("fill", "steelblue");
+        d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
         window.tooltip.style.top = "50%";
         let barIdInt = this.id.replace('barid-','');
@@ -181,7 +191,7 @@ function writeBars(svg, data, x, y, width) {
         // 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
         window.tooltip.style.left = parseInt(actualLeft)+"px";
         window.tooltip.innerHTML = `<div class="chart-tooltip">
-          <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(2)}</span> cases per 100,000 people</div>
+          <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week</div>
         </div>`;
         window.tooltip.style.visibility = "visible";
       })
