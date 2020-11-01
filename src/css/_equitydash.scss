@@ -74,8 +74,14 @@ cagov-chart-d3-lines {
   margin-left: calc(50% - 50vw);
 }
 
-// LEARN MORE SECTION
+/* chart specific styles */
+cagov-chart-d3-lines .tick {
+  stroke: #ccc;
+  stroke-width: 0.1;
+}
 
+
+// LEARN MORE SECTION
 learn-more-section {
   .faq-twitter {
     @extend %block-padding;
@@ -298,9 +304,4 @@ learn-more-section {
       color: $blue;
     }
   }
-}
-/* chart specific styles */
-cagov-chart-d3-lines .tick {
-  stroke: #ccc;
-  stroke-width: 0.1;
 }
