@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-02T05:15:47Z"
+publishdate: "2020-11-02T23:54:01Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -29,24 +29,86 @@ addtositemap: false
           </div>
       </div>
 
-      <div class="row d-flex justify-content-md-center pb-4">
-        <div class="col-md-2">
-          <div class="bg-purple rounded-lg py-2 text-center mt-3">
-          </div>
+
+<div class="row">
+<div class="col-lg-10 mx-auto">
+<div class="container">
+
+<div class="row d-flex row-eq-height justify-content-md-center pb-4">
+        <div class="col-md-3 bg-purple bd-20 py-2 text-center text-white">
+
+            <div id="eq1-positive" class="eq-text">Case rate for Latino people is <span class="eq-data">11% higher</span> than statewide</div>
+
+            <div  id="eq1-negative" class="eq-text d-none">Case rate for Latino people is <span class="eq-data">1% lower</span> than statewide</div>
+
+            <div id="eq1-same"class="eq-text d-none">Case rate for Latino people is the same as statewide average</div>
+                
+                <div class="eq-cases">
+                <p class="text-small">Cases per 100k people:</p> 
+                <p class="text-small"><strong>2,432</strong> Latino <br>
+                <strong>2,195</strong> statewide</p>
+                </div>
+
         </div>
-        <div class="col-md-2">
-          <div class="bg-purple rounded-lg py-2 text-center mt-3">
-          </div>
+
+        <div class="col-md-3 bg-purple bd-20 py-2 text-center text-white">
+
+            <div id="eq2-positive" class="eq-text eq-positive">Case rate for Pacific Islanders is <span class="eq-data">20% higher</span> than statewide</div>
+
+            <div  id="eq2-negative" class="eq-text d-none">Case rate for Pacific Islanders is <span class="eq-data">1% lower</span> than statewide</div>
+
+            <div id="eq2-same"class="eq-text d-none">Case rate for Pacific Islanders is the same as statewide average</div>
+
+            <div class="eq-cases">
+            <p class="text-small">Cases per 100k people:</p> 
+            <p class="text-small"><strong>2,432</strong> Latino <br>
+            <strong>2,195</strong> statewide</p>
+            </div>
+
         </div>
-        <div class="col-md-2">
-          <div class="bg-purple rounded-lg py-2 text-center mt-3">
-          </div>
+
+        <div class="col-md-3 bg-purple bd-20 py-2 text-center text-white">
+         
+
+                <div id="eq3-positive" class="eq-text eq-positive">Death rate for Black people is <span class="eq-data">20% higher</span> than statewide</div>
+
+                <div  id="eq3-negative" class="eq-text eq-negative d-none">Death rate for Black people is <span class="eq-data">1% lower</span> than statewide</div>
+
+                <div id="eq3-same"class="eq-text d-none">Death rate for Black people is the same as statewide average</div>
+
+
+                <div class="eq-cases">
+                <p class="text-small">Deaths per 100k people:</p> 
+                <p class="text-small"><strong>53</strong> Black <br>
+                <strong>43</strong> statewide</p>
+                </div>
         </div>
-        <div class="col-md-2">
-          <div class="bg-purple rounded-lg py-2 text-center mt-3">
-          </div>
+
+        <div class="col-md-3 bg-purple bd-20 py-2 text-center text-white">
+          
+
+            <div id="eq4-positive" class="eq-text">Case rate for households with median income <$40K is <span class="eq-data">20% higher</span> than statewide</div>
+
+            <div  id="eq4-negative" class="eq-text d-none">Case rate for households with median income <$40K is <span class="eq-data">1% lower</span> than statewide</div>
+
+            <div id="eq4-same"class="eq-text d-none">Case rate for households with median income <$40K is the same as statewide average</div>
+
+            <div class="eq-cases">
+            <p class="text-small">Cases per 100k people:
+            <strong>2,432</strong> Latino<br> <strong>2,195</strong> statewide</p> 
+            </div>
+
         </div>
       </div>
+
+
+</div>
+</div>
+</div>
+
+      
+
+      
 
       <div class="row pb-4">
         <div class="col-lg-10 mx-auto">
@@ -107,18 +169,28 @@ addtositemap: false
 
 
 
-<cagov-chart-d3-lines>
-  <svg>
-    <g class="tick">
-      <line></line>
-    </g>
-    <text></text>
-  </svg>
-</cagov-chart-d3-lines>
+<cagov-chart-d3-lines><svg><g class="tick"><line></line></g><text></text></svg></cagov-chart-d3-lines>
+
+
+
+<h3>Data completeness is critical to addressing inequity</h3>
+
+
+
+<p>We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity (SOGI) data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. Learn more about SOGI data collection.</p>
+
+
+
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+<cagov-chart-equity-missingness></cagov-chart-equity-missingness>
 
 
 
 <div class="special-note"><p>Data reporting keeps improving. Since January, the reporting on age and gender is up to  completeness! The same can be done for this data.</p></div>
+
+
+
+<p class="small-text">Note: Data shown is cumulative for the last 30 days and updated daily.</p>
 
 
 
