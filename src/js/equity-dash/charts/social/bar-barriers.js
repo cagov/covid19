@@ -1,4 +1,3 @@
-import dataincome from './social-data-income.json';
 import template from './template.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
@@ -22,7 +21,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-income.json"),
     */
     Promise.all([
-      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-crowding.json"),
+      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-income.json"),
       window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-crowding.json"),
       window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-insurance.json")
     ]).then(function (responses) {
@@ -30,7 +29,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         return response.json();
       }));
     }).then(function (alldata) {
-      //let dataincome = alldata[0];
+      let dataincome = alldata[0];
       let datacrowding = alldata[1];
       let datahealthcare = alldata[2];
 
