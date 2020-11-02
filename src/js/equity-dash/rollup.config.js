@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
+import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 
 const devOutputPath = 'docs/js/equitydash.js';
@@ -12,5 +13,12 @@ export default {
     file: outputPath,
     format: 'esm'
   },
-  plugins: [resolve(), json()]
+  plugins: [
+    resolve(), 
+    postcss({
+      extract: false,
+      modules: false,
+      use: ['sass'],
+    }),
+    json()]
 };
