@@ -44,7 +44,7 @@ export default [
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : []),
-  ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : []),
+  ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   esm,
   // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
