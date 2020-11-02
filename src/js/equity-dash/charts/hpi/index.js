@@ -70,7 +70,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
       .call(g => g.select(".domain").remove())
-
+      
     let line = d3.line()
       .x((d, i) => {
         return x(new Date(d.DATE));
