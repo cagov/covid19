@@ -72,7 +72,8 @@ class CAGovCountySearch extends window.HTMLElement {
     // Dispatch custom event so we can pick up and track this usage elsewhere.
     const event = new window.CustomEvent('county-selected', {
       detail: {
-        county: this.state.county
+        county: this.state.county,
+        statewide: false
       }
     });
     this.dispatchEvent(event);    
