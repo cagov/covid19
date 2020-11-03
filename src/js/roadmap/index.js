@@ -318,18 +318,18 @@ function inputValueCounty() {
   activityInput.addEventListener("blur", function() {
   console.log("something changed")
     inputValueActivity();
-  });
+   });
 
 //Clear buttons click events
 document.getElementById("clearLocation").addEventListener("click", function() {
   countyInput.value = '';
   inputValueCounty();
-});
+}); 
 
 document.getElementById("clearActivity").addEventListener("click", function() {
   activityInput.value = '';
   inputValueActivity();
-});
+}); 
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
