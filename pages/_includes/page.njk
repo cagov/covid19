@@ -53,7 +53,7 @@
               {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
-                {{ (tableauCovidMetrics[0].DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
+                {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}

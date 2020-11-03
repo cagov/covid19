@@ -4,33 +4,37 @@
       "County tier": "Mínimo",
       "colorLabel": "Amarillo",
       "_Color label": "Yellow",
-      "New cases": "Menos de 1",
-      "Positive tests": "Menos del 2% e<br>indicador de equidad de la salud menor del 2.2%",
-      "description": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones."
+      "New cases": "Menos de 1.0",
+      "Positive tests": "Menos del 2.0 %",
+      "description": "La mayoría de las operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Positive-heq": "Menos del 2.2 %"
     },
     {
       "County tier": "Moderado",
       "colorLabel": "Naranja",
       "_Color label": "Orange",
-      "New cases": "De 1 a 3.9",
-      "Positive tests": "Del 2% al 4.9% e<br>indicador de equidad de la salud del 2.2% al 5.2%",
-      "description": "Algunas operaciones comerciales en interiores están abiertas con modificaciones."
+      "New cases": "De 1.0 a 3.9",
+      "Positive tests": "Del 2.0 % al 4.9 % ",
+      "description": "Algunas operaciones comerciales en interiores están abiertas con modificaciones.",
+      "Positive-heq": "Del 2.2 % al 5.2 %"
     },
     {
       "County tier": "Sustancial",
       "colorLabel": "Rojo",
       "_Color label": "Red",
-      "New cases": "De 4 a 7",
-      "Positive tests": "Del 5% al 8% e<br>indicador de equidad de la salud del 5.3% al 8%",
-      "description": "Algunas operaciones comerciales en interiores no esenciales están cerradas."
+      "New cases": "De 4.0 a 7.0",
+      "Positive tests": "Del 5.0 % al 8.0 %",
+      "description": "Algunas operaciones comerciales en interiores no esenciales están cerradas.",
+      "Positive-heq": "Del 5.3 % al 8 %"
     },
     {
       "County tier": "Extendido",
       "colorLabel": "Morado",
       "_Color label": "Purple",
-      "New cases": "Más de 7",
-      "Positive tests": "Más del 8 %",
-      "description": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas."
+      "New cases": "Más de 7.0",
+      "Positive tests": "Mas del 8.0 %",
+      "description": "Muchas de las operaciones comerciales en interiores no esenciales están cerradas.",
+      "Positive-heq": ""
     }
   ],
   "Table2": [

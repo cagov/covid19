@@ -19,8 +19,8 @@
 {%-set _varStatIcuChange_ = (data.ICU_COVID_CONFIRMED_PATIENTS_DAILY + data.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = 'October 13, 2020' -%}
-{%-set _varTierEndDate_ = 'October 3, 2020' -%}
+{%-set _varTierDate_ = 'October 27, 2020' -%}
+{%-set _varTierEndDate_ = 'October 17, 2020' -%}
 
 
 <div class="bg-lightblue py-5">
@@ -28,9 +28,9 @@
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
             <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
-                <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the previous day's total of {{_varStatTotalDeathsLast_}}.</p>
+                <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the prior day total of {{_varStatTotalDeathsLast_}}.</p>
                 </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-                <p class="small-text"><strong>Note:</strong> Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
+                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 
                     <div id="total-cases-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalCases_}}</div>
                     <div id="total-cases-today" class="text-white mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> today</div>
-                    <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalCasesTodayPct_}}% daily increase</div>
+                    <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalCasesTodayPct_}}% increase from prior day total</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -50,7 +50,7 @@
                 
                     <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalDeaths_}}</div>
                     <div id="total-deaths-today" class="text-white mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> today</div>
-                    <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% daily increase</div>
+                    <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% increase from prior day total</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -59,7 +59,7 @@
                 
                     <div id="total-tested-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTested_}}</div>
                     <div id="total-tested-today" class="text-white mt-2"><strong>{{_varStatTestedDaily_}}</strong> today</div>
-                    <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTestedDailyPct_}}% daily increase</div>
+                    <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTestedDailyPct_}}% increase from prior day total</div>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the previous day. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
+        <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
 
         <div class="row d-flex justify-content-md-center">
         
@@ -162,8 +162,8 @@
             </div>
         </div>
         <p>
-            The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the previous day.
-            The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the previous day.
+            The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total.
+            The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.
         </p>
         <div class="row d-flex justify-content-md-center">
             <div class="toggle-group-container cases-group">
@@ -260,9 +260,10 @@
                             <p>
                         The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.
                                 </p>
+                                <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
                             <div class="tableauPlaceholder"></div>
                         </div>
-                        <p class="todo-fix-this-wach-move">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
+                        
                     </div>
                 </div>
             </div>
