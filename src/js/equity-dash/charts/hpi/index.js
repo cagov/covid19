@@ -16,7 +16,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       this.writeChart(alldata, this.svg);
 
       this.innerHTML = `<div class="svg-holder"></div>`;
-      document.querySelector('.svg-holder').appendChild(this.svg.node());
+      this.querySelector('.svg-holder').appendChild(this.svg.node());
     })
     
     let legendLabels = ["Statewide test positivity", "Health equity quartile positivity"];
