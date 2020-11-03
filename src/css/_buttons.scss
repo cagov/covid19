@@ -239,3 +239,25 @@ button.clear {
     outline: 2px solid #004abc;
   }
 }
+
+  .small-tab {
+    padding:.5rem .75rem .5rem .75rem;
+    border:1px solid #F2F5FC;
+    text-decoration:underline;
+    color:#1F2574;
+    background:#fff;
+    font-size:.95rem;
+    font-weight: 700 !important;
+    &:hover, &:focus {
+      text-decoration:none;
+      outline-offset: -2px;
+    }
+    &.active, &[aria-expanded="true"] {
+      color:#000;
+      text-decoration:none;
+      cursor: default;
+      &:focus {
+        outline: 2px solid #F2F5FC;
+      }
+    }
+  }
