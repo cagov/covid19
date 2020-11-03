@@ -20,7 +20,7 @@ export default class Tooltip {
     }
     this.node.removeAttribute("display");
     this.node.setAttribute("transform", `translate(${x(new Date(d.DATE))+0.7},${y(yVal)})`);
-    this.node.querySelector('text').innerHTML = `<tspan font-weight="bold">${yVal.toFixed(1)}%</tspan> test positivity`;
+    this.node.querySelector('text').innerHTML = `<tspan font-weight="bold">${(yVal * 100).toFixed(1)}%</tspan> test positivity`;
   }
   hide() {
     this.node.setAttribute("display", "none");

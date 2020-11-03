@@ -75,8 +75,8 @@ cagov-chart-d3-lines {
 }
 
 /* chart specific styles */
-cagov-chart-d3-lines .tick {
-  stroke: #F2F5FC;
+cagov-chart-d3-lines .tick line {
+  stroke: #ccc; /* F2F5FC */
   stroke-width: 0.1;
 }
 

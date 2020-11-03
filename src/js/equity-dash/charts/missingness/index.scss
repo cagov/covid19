@@ -1,0 +1,42 @@
+cagov-chart-equity-missingness {
+  position: relative;
+  
+  .bars {
+    font-weight: bold;
+    font-size: 12px;
+    text-anchor: unset;
+  }
+  .more-than-labels {
+    font-size: 10px;
+  }
+  .change-from-month-labels {
+    font-size: 10px;
+  }
+  .bar-label {
+    font-weight: bold;
+    font-size: 12px;
+    text-anchor: unset;
+  }
+  .label {
+    font-size: 12px;
+  }
+  .chart-tooltip {
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+  }
+  .highlight-data {
+    font-weight: bold;
+  }
+
+  .equity-tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    pointer-events: none;
+  }
+  .equity-tooltip--missingness {
+    min-width: 300px;
+  }
+}
