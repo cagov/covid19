@@ -1,4 +1,6 @@
 cagov-chart-equity-missingness {
+  position: relative;
+  
   .bars {
     font-weight: bold;
     font-size: 12px;
@@ -25,5 +27,16 @@ cagov-chart-equity-missingness {
   }
   .highlight-data {
     font-weight: bold;
+  }
+
+  .equity-tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    pointer-events: none;
+  }
+  .equity-tooltip--missingness {
+    min-width: 300px;
   }
 }

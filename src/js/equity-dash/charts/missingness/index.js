@@ -15,7 +15,13 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     }
 
     this.innerHTML = template();
-  
+
+    this.tooltip = d3
+      .select("cagov-chart-equity-missingness")
+      .append("div")
+      .attr("class", "equity-tooltip equity-tooltip--missingness")
+      .text("an empty tooltip");
+    
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
       .append("svg")
@@ -79,14 +85,14 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
         .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
   
-      drawBars(this.svg, x, this.y, stackedData, this.color, data)  
+      drawBars(this.svg, x, this.y, stackedData, this.color, data, this.tooltip)  
       
     }.bind(this));
   }
 }
 window.customElements.define('cagov-chart-equity-missingness', CAGOVEquityMissingness);
 
-function drawBars(svg, x, y, stackedData, color, data) {
+function drawBars(svg, x, y, stackedData, color, data, tooltip) {
 
   svg.selectAll("g").remove();
 
@@ -115,6 +121,8 @@ function drawBars(svg, x, y, stackedData, color, data) {
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
 
+      // tooltip.setAttribute("transform", `translate(${x(new Date(d.DATE))+0.7},${y(yVal)})`);
+
       tooltip.html(() => {
         if (d[0] == 0) {
           return `<div class="chart-tooltip">
@@ -140,25 +148,15 @@ function drawBars(svg, x, y, stackedData, color, data) {
 
       tooltip.style("visibility", "visible");
     })
-    .on("mousemove", function() {
+    /*.on("mousemove", function() {
       return tooltip
         .style("top", parseInt(this.getBoundingClientRect().y) - 10 + "px")
         .style("left", parseInt(this.getBoundingClientRect().x) + 10 + "px");
-    })
+    })*/
     .on("mouseout", function(d) {
       d3.select(this).transition();
       tooltip.style("visibility", "hidden");
     });
-
-  let tooltip = d3
-    .select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("background", "#fff")
-    .style("pointer-events", "none")
-    .text("an empty tooltip");
 
   //% change since previous month labels
   svg
