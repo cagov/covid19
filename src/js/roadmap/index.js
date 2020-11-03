@@ -313,12 +313,12 @@ function inputValueCounty() {
   // Show clear btn only on input (Activity)
   activityInput.addEventListener("input", function() {
     inputValueActivity();
-  });
-
-  activityInput.addEventListener("blur", function() {
-    console.log("something changed")
-    inputValueActivity();
    });
+  
+   activityInput.addEventListener("blur", function() {
+     console.log("something changed")
+     inputValueActivity();
+    });
 
 //Clear buttons click events
 document.getElementById("clearLocation").addEventListener("click", function() {
