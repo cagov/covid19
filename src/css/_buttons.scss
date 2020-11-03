@@ -250,9 +250,14 @@ button.clear {
     font-weight: 700 !important;
     &:hover, &:focus {
       text-decoration:none;
+      outline-offset: -2px;
     }
     &.active, &[aria-expanded="true"] {
       color:#000;
       text-decoration:none;
+      cursor: default;
+      &:focus {
+        outline: 2px solid #F2F5FC;
+      }
     }
   }
