@@ -130,7 +130,7 @@ class CAGovReopening extends window.HTMLElement {
     else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
   }
   setupAutoCompActivity(fieldSelector, fieldName, aList) {
     let component = this;
@@ -236,10 +236,14 @@ class CAGovReopening extends window.HTMLElement {
       schoolOKList = this.schoolOKList;
     }
     let schoolShenanigans = function(county) {
+      const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
+
       if(schoolOKList.indexOf(county) > -1) {
-        return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
+        return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.' + schoolFooter;
       }
-      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.`;
+      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.</p>
+      <p>Schools that have already re-opened while the county was in a less restrictive tier do not have to close. However, if a school had not already reopened for in-person instruction, it may not reopen until the county moves back to Tier 2 for 14 days.</p>`
+      + schoolFooter;
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
@@ -250,7 +254,7 @@ class CAGovReopening extends window.HTMLElement {
         <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
       </div>`
       if(this.state['activity']) {
-        selectedActivities = [];
+      selectedActivities = [];
         this.allActivities.forEach(ac => {
           if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
             selectedActivities.push(ac);
@@ -261,7 +265,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
-          <p>${ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+          <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })
@@ -295,36 +299,36 @@ function inputValueCounty() {
   }
 
 
-  var activityInput = document.getElementById("activity-query");
-  var countyInput = document.getElementById("location-query");
-  
-  
-  
-  // Show clear btn only on input (County)
-  countyInput.addEventListener("input", function() {
-    inputValueCounty();
-   });
-  
-  // Show clear btn only on input (Activity)
-  activityInput.addEventListener("input", function() {
-    inputValueActivity();
-   });
-  
-   activityInput.addEventListener("blur", function() {
-     console.log("something changed")
-    inputValueActivity();
-   });
+var activityInput = document.getElementById("activity-query");
+var countyInput = document.getElementById("location-query");
+
+
+
+// Show clear btn only on input (County)
+countyInput.addEventListener("input", function() {
+  inputValueCounty();
+ });
+
+// Show clear btn only on input (Activity)
+activityInput.addEventListener("input", function() {
+  inputValueActivity();
+ });
+
+ activityInput.addEventListener("blur", function() {
+  console.log("something changed")
+  inputValueActivity();
+ });
 
 //Clear buttons click events
 document.getElementById("clearLocation").addEventListener("click", function() {
   countyInput.value = '';
   inputValueCounty();
-});	
+});
 
 document.getElementById("clearActivity").addEventListener("click", function() {
   activityInput.value = '';
   inputValueActivity();
-});	
+});
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
