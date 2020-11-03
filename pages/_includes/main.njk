@@ -153,6 +153,34 @@
 	</faq-section>
 
 
+
+
+
+	<!-- FOR BUSINESSES SECTION -->
+<learn-more-section>
+<section class="faq-twitter pb-4">
+	<h3 class="text-center color-purple font-size-2em mb-3">For businesses</h3>
+	<div class="faq-twitter-wrap pb-5">
+	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+        {% set JSONgov = JSONgovraw | jsonparse %}
+        {%- set RowsGov = JSONgov.Table4 -%}
+        {% for item in RowsGov %}
+		<div class="faq trigger">
+			<article class="faq-item trigger">    
+				<a class="faq-item-link cwdsarrow-parent" href="{{item["URL"]}}">
+				<h4 class="faq-item-headline">
+					{{item["Link Title"]}}
+				</h4>
+				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+				</a>
+			</article>
+		</div>
+		 {% endfor %}
+	</div>
+</section>
+</learn-more-section>
+
+
 	<!-- begin video section -->
 	<video-section>
 		<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
