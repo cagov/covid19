@@ -243,7 +243,6 @@ class CAGovReopening extends window.HTMLElement {
         + schoolFooter;
       }
       return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.</p>
-      <p>Schools that have already re-opened while the county was in a less restrictive tier do not have to close. However, if a school had not already reopened for in-person instruction, it may not reopen until the county moves back to Tier 2 for 14 days.</p>
       <p>Note on exception: Schools that have already re-opened if the county was in a less restrictive tier do not have to close. However, if a school had not already reopened for in-person instruction, it may not reopen until the county moves back to the Substantial (Red) Tier for 14 days.</p>
       `
       + schoolFooter;
