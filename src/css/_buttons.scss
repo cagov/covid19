@@ -253,5 +253,6 @@ button.clear {
     }
     &.active, &[aria-expanded="true"] {
       color:#000;
+      text-decoration:none;
     }
   }
