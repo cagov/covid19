@@ -183,41 +183,45 @@
 
 	<!-- begin video section -->
 	<video-section>
-		<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
-			<div class="video-wrap">
-				<h3 class="video-headline text-center font-size-2em"><span  id="video-resources">{{varVideoTitle}}</span></h3>
-				<div class="video-grid">
-					<div class="video-grid-col">
-						<article class="video-item transition-0_3 transform-scale-hover" data-video="{{ varVideoID }}">
-							<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{ varVideoID }}" href="https://youtu.be/{{ varVideoID }}">
-								<figure class="video-thumb-photo">
-									<div class="video-thumb-play-button">
-										<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
-											<path d="M43.3,25L0,50V0L43.3,25z"></path>
-										</svg>
-									</div>
-									<img class="video-thumb-photo-img" src="https://files.covid19.ca.gov/img/homepage-video-thumb--en.jpg" alt="wear a mask">
-								</figure>
-							</a>
-						</article>
-					</div>
-					<div class="video-grid-col">
-						<div class="video-grid-more">
-								<div class="video-text pl-md-5 pt-3 pt-lg-0">
-									<h4 class="font-size-2em color-purple font-weight-bold">{{varVideoWearAMask}}</h4>
-									<p class="lead mt-4">{{varVideoP1}}</p>
-									<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/{{ varVideoID }}" data-video="{{ varVideoID }}">
-										<div class="button-label">{{varVideoWatchTheVideo}}</div>
-										<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
-									</a>
-								</div>
-						</div>
-					</div>
+
+	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
+		<div class="video-wrap text-center">
+
+			{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+			{% set JSONgov = JSONgovraw | jsonparse %}
+			{%- set RowsGov = JSONgov.Table5 -%}
+			{% for item in RowsGov %}
+			<div class="container">
+			<div class="row">
+			<div class="col-lg-8 mx-auto text-center">
+			<h3 class="video-headline font-size-2em mb-0 pb-2">{{item["Video Title"]}}</h3>
+			<p class="mb-3 text-300">{{item["Description"]}}</p>
+				<article class="video-item transition-0_3 transform-scale-hover mx-auto mt-3" data-video="{{item["VideoID"]}}">
+					<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{item["VideoID"]}}" href="https://{{item["VideoURL"]}}">
+						<figure class="video-thumb-photo">
+							<div class="video-thumb-play-button">
+								<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
+									<path d="M43.3,25L0,50V0L43.3,25z"></path>
+								</svg>
+							</div>
+							<img class="video-thumb-photo-img" src="https://{{item["ImageURL"]}}" alt="{{item["ImageALT"]}}">
+						</figure>
+					</a>
+				</article>
+
+				<a class="button trigger video-modal-open cwdsarrow-parent" href="https://{{item["VideoURL"]}}" data-video="{{item["VideoID"]}}">
+				<div class="button-label">{{item["ButtonText"]}}</div>
+				<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+				</a>
 				</div>
-			</div>
-		</section>
-	</video-section>
-	<!-- end video section -->
+				</div>
+				</div>
+				{% endfor %}
+				
+		</div>
+	</section>
+</video-section>
+<!-- end video section -->
 
 
 <!--FROM GOV OFFICE UPDATES -->
