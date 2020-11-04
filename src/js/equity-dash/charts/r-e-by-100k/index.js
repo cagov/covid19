@@ -28,8 +28,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
       .append("svg")
-      .attr("width", this.dimensions.width)
-      .attr("height", this.dimensions.height)
+      .attr("viewBox", [0, 0, this.dimensions.width, this.dimensions.height])
       .append("g")
       .attr(
         "transform",

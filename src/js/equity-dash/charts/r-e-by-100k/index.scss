@@ -1,9 +1,10 @@
 cagov-chart-re-100k {
   display: block;
   max-width: 420px;
-
+  min-width: 300px;
+  
   .svg-holder svg {
-    width: 420px;
+    width: 90%;
   }
 
   .bars {
