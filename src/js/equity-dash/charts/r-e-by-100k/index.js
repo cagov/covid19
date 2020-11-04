@@ -175,7 +175,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .append("text")
         .attr("class", "bars")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", d => x(200) + 95)
+        .attr("x", d => x(200) + 105)
         .attr("height", y.bandwidth())
         .text(d => parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1))
         .attr('text-anchor', 'end');
@@ -192,7 +192,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .append("text")
         .attr("class", "more-than-labels")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
-        .attr("x", d => x(200) + 50)
+        .attr("x", d => x(200) + 75)
         .attr("height", y.bandwidth())
 
         .html(d => {
@@ -217,7 +217,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
       enter
         .append("text")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
-        .attr("x", d => x(60) + 47)
+        .attr("x", d => x(90) + 70)
         .attr("height", y.bandwidth())
         .html(
           d =>
