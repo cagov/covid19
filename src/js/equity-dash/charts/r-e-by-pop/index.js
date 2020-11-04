@@ -13,7 +13,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
       }
     })
 
-    this.innerHTML = template('this is the chart title');
+    let description = "Compare the percentage of each race and ethnicity’s share of statewide cases to their percentage of California’s population."
+    this.chartTitle = "Cases relative to percentage of population in California"
+
+    this.innerHTML = template(this.chartTitle, description);
 
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
@@ -61,7 +64,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTitle(county) {
-    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+county
+    this.querySelector('.chart-title').innerHTML = this.chartTitle.replace('California', county);
   }
 
   render(url) {

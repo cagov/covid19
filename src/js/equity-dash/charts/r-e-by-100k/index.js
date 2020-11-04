@@ -14,7 +14,10 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       }
     })
 
-    this.innerHTML = template('this is the chart title');
+    this.chartTitle = 'Case rate per 100K by race and ethnicity group in California';
+    let description = 'Compare cases adjusted by population size across each race and ethnicity.';
+
+    this.innerHTML = template(this.chartTitle, description);
 
     this.tooltip = d3
       .select("cagov-chart-re-100k")
