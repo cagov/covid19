@@ -4,13 +4,13 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback () {
 
     this.dimensions = ({
-      height: 600,
-      width: 420,
+      height: 642,
+      width: 450,
       margin: {
         top: 20,
         right: 30,
         bottom: 20,
-        left: 30
+        left: 10
       }
     })
 

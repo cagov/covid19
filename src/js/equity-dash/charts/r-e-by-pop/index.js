@@ -3,13 +3,13 @@ import template from './template.js';
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback () {
     this.dimensions = ({
-      height: 700,
-      width: 600,
+      height: 650,
+      width: 450,
       margin: {
         top: 20,
         right: 30,
         bottom: 20,
-        left: 30
+        left: 10
       }
     })
 
