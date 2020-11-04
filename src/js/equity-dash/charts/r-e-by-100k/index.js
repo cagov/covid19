@@ -5,7 +5,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     this.dimensions = ({
       height: 600,
-      width: 600,
+      width: 420,
       margin: {
         top: 20,
         right: 30,
@@ -59,7 +59,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   }
 
   resetTitle(county) {
-    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+county
+    this.querySelector('.chart-title').innerHTML = this.chartTitle.replace('California', county);
   }
 
   render(url) {

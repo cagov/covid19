@@ -4,7 +4,14 @@
   margin-bottom: 1em;
 }
 
-cagov-chart-re-pop {
+cagov-chart-re-pop {  
+  display: block;
+  max-width: 420px;
+
+  .svg-holder svg {
+    width: 420px;
+  }
+
   .bars {
     font-weight: bold;
     font-size: 12px;
