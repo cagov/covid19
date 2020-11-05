@@ -165,11 +165,8 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> cases for 100K people of the same race and enthnicity</div>
       </div>`);
       tooltip.style("visibility", "visible");
-    })
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", parseInt(this.getBoundingClientRect().y) - 10 + "px")
-        .style("left", parseInt(this.getBoundingClientRect().x) + 10 + "px");
+      tooltip.style("left",'90px');
+      tooltip.style("top",`${event.offsetY + 100}px`)
     })
     .on("mouseout", function(d) {
       d3.select(this).transition();

@@ -142,9 +142,6 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
 
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
-
-      // alternate tooltip positioning method: tooltip.setAttribute("transform", `translate(${x(new Date(d.DATE))+0.7},${y(yVal)})`);
-
       tooltip.html(() => {
         if (d[0] == 0) {
           return `<div class="chart-tooltip">
@@ -167,13 +164,9 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         </div>`;
         }
       });
-
       tooltip.style("visibility", "visible");
-    })
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", parseInt(this.getBoundingClientRect().y) - 10 + "px")
-        .style("left", parseInt(this.getBoundingClientRect().x) + 10 + "px");
+      tooltip.style("left",'90px');
+      tooltip.style("top",`${event.offsetY + 100}px`)
     })
     .on("mouseout", function(d) {
       d3.select(this).transition();
