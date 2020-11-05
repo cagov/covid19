@@ -47,7 +47,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       .domain(this.subgroups)
       .range(['#FFCF44', '#F2F5FC'])
 
-    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
+    this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json';
+    this.retrieveData(this.dataUrl);
     this.listenForLocations();
     this.county = 'California'
     this.resetTitle()
@@ -58,7 +59,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
 
-      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
+      this.retrieveData(this.dataUrl);
       this.resetTitle(this.county)
     }.bind(this), false);
 
@@ -66,7 +68,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     metricFilter.addEventListener('filter-selected', function (e) {
       this.selectedMetricDescription = e.detail.clickedFilterText;
       this.selectedMetric = e.detail.filterKey;
-      this.render()
+      this.retrieveData(this.dataUrl);
       this.resetDescription()
       this.resetTitle()
     }.bind(this), false);
@@ -190,7 +192,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .append("text")
         .attr("class", "bars")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", d => x(200) + 105)
+        .attr("x", d => 415)
         .attr("height", y.bandwidth())
         .text(d => parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1))
         .attr('text-anchor', 'end');
@@ -207,7 +209,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .append("text")
         .attr("class", "more-than-labels")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
-        .attr("x", d => x(200) + 55)
+        .attr("x", d => 370)
         .attr("height", y.bandwidth())
 
         .html(d => {
@@ -232,7 +234,9 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
       enter
         .append("text")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
-        .attr("x", d => x(90) + 70)
+        .attr("x", d => {
+          return 220;
+        })
         .attr("height", y.bandwidth())
         .html(
           d =>
@@ -255,7 +259,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
       enter
         .append("svg")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 15)
-        .attr("x", d => x(1))
+        .attr("x", d => { return 3; })
         .html(d => {
           if (
             parseFloat(d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO * 100) > 0

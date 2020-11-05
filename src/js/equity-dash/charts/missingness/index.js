@@ -51,7 +51,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       .call(d3.axisLeft(this.y).tickSize(0))
       .call(g => g.selectAll(".domain").remove())
 
-    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json');
+    this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json';
+    this.retrieveData(this.dataUrl);
     this.listenForLocations();
     this.county = 'California';
     this.resetTitle()
@@ -61,8 +62,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-
-      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.dataUrl ='https://files.covid19.ca.gov/data/to-review/equitydash/missingness-'+this.county.toLowerCase().replace(/ /g,'')+'.json'
+      this.retrieveData(this.dataUrl);
       this.resetTitle()
     }.bind(this), false);
 
@@ -70,7 +71,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     metricFilter.addEventListener('filter-selected', function (e) {
       this.selectedMetricDescription = e.detail.clickedFilterText;
       this.selectedMetric = e.detail.filterKey;
-      this.render()
+      this.retrieveData(this.dataUrl);
       this.resetDescription()
       this.resetTitle()
     }.bind(this), false);
@@ -84,7 +85,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   render() {
     let data = [];
-    console.log(this.selectedMetric)
     let casesObj = this.alldata[this.selectedMetric].cases;
     casesObj.METRIC = 'cases';
     data.push(casesObj);
@@ -109,17 +109,17 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       d.MISSING = d.MISSING / d.TOTAL;
       d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
     })
-    console.log(data)
     data.sort(function(a, b) {
       return d3.descending(a.MISSING, b.MISSING);
     })
-    let stackedData = d3.stack().keys(this.subgroups)(data)      
-    let x = d3
+    let stackedData = d3.stack().keys(this.subgroups)(data)
+
+    this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
 
-    drawBars(this.svg, x, this.y, this.yAxis, stackedData, this.color, data, this.tooltip)  
+    drawBars(this.svg, this.x, this.y, this.yAxis, stackedData, this.color, data, this.tooltip)  
   }
 
   retrieveData(url) {
