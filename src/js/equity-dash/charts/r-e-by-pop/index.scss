@@ -8,6 +8,9 @@ cagov-chart-re-pop {
   display: block;
   min-width: 300px;
 
+  .chart-title::first-letter {
+    text-transform: capitalize;
+  }
   .svg-holder svg {
     width: 100%;
   }

@@ -13,10 +13,15 @@ class CAGOVEquityREPop extends window.HTMLElement {
       }
     })
 
-    let description = "Compare the percentage of each race and ethnicity’s share of statewide cases to their percentage of California’s population."
-    this.chartTitle = "Cases relative to percentage of population in California"
+    this.selectedMetric = 'cases';  
+    this.chartTitle = function(loc) {
+      return `${this.selectedMetric} relative to percentage of population in ${loc}`;
+    }
+    this.description = function (selectedMetric) {
+      return `Compare the percentage of each race and ethnicity’s share of statewide ${selectedMetric} to their percentage of California’s population.`;
+    }
 
-    this.innerHTML = template(this.chartTitle, description);
+    this.innerHTML = template(this.chartTitle('California'), this.description(this.selectedMetric));
 
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
@@ -47,9 +52,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
       .domain(this.subgroups1)
       .range(['#FFCF44', '#F2F5FC'])
 
-    this.render('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
+    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
     this.listenForLocations();
-    this.resetTitle('California')
+    this.county = 'California';
+    this.resetTitle()
   }
 
   listenForLocations() {
@@ -57,66 +63,85 @@ class CAGOVEquityREPop extends window.HTMLElement {
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
 
-      this.render('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       this.resetTitle(this.county)
+    }.bind(this), false);
+    
+    let metricFilter = document.querySelector('cagov-chart-filter-buttons.js-re-smalls')
+    metricFilter.addEventListener('filter-selected', function (e) {
+      this.selectedMetricDescription = e.detail.clickedFilterText;
+      this.selectedMetric = e.detail.filterKey;
+      if(this.alldata) {
+        this.render()
+        this.resetDescription()
+        this.resetTitle()
+      }
     }.bind(this), false);
   }
 
-  resetTitle(county) {
-    this.querySelector('.chart-title').innerHTML = this.chartTitle.replace('California', county);
+  resetTitle() {
+    this.querySelector('.chart-title').innerHTML = this.chartTitle(this.county);
   }
 
-  render(url) {
-    
+  resetDescription() {
+    this.querySelector('.chart-description').innerHTML = this.description(this.selectedMetricDescription);
+  }
+
+  render() {
+    let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
+    data.forEach(d => {
+      d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
+    })
+
+    data.sort(function(a, b) {
+      return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
+    })
+    // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
+    // don't know why the above never works, so keep hardcoding it
+    // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
+    let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
+
+    let stackedData1 = d3.stack().keys(this.subgroups1)(data)
+    let stackedData2 = d3.stack().keys(this.subgroups2)(data);
+
+    this.y = d3
+      .scaleBand()
+      .domain(groups)
+      .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
+      .padding([.5])     
+
+    let yAxis = g =>
+      g
+        .attr("class", "bar-label")
+        .attr("transform", "translate(4," + -30 + ")")
+        .call(d3.axisLeft(this.y).tickSize(0))
+        .call(g => g.selectAll(".domain").remove())
+
+    let x2 = d3
+      .scaleLinear()
+      .domain([0, d3.max(stackedData2, d => d3.max(d, d => d[1]))])
+      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    let x1 = d3
+      .scaleLinear()
+      .domain([0, d3.max(stackedData1, d => d3.max(d, d => d[1]))])
+      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    let xAxis = g =>
+      g
+        .attr("transform", "translate(0," + this.dimensions.width + ")")
+        .call(d3.axisBottom(x1).ticks(width / 50, "s"))
+        .remove()    
+
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip)
+  }
+
+  retrieveData(url) {
     window.fetch(url)
     .then(response => response.json())
     .then(function(alldata) {
-      let data = alldata.filter(item => (item.METRIC === "cases" && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
-      data.forEach(d => {
-        d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
-      })
-
-      data.sort(function(a, b) {
-        return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
-      })
-      // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
-      // don't know why the above never works, so keep hardcoding it
-      // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
-      let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
-  
-      let stackedData1 = d3.stack().keys(this.subgroups1)(data)
-      let stackedData2 = d3.stack().keys(this.subgroups2)(data);
-  
-      this.y = d3
-        .scaleBand()
-        .domain(groups)
-        .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
-        .padding([.5])     
-  
-      let yAxis = g =>
-        g
-          .attr("class", "bar-label")
-          .attr("transform", "translate(4," + -30 + ")")
-          .call(d3.axisLeft(this.y).tickSize(0))
-          .call(g => g.selectAll(".domain").remove())
-  
-      let x2 = d3
-        .scaleLinear()
-        .domain([0, d3.max(stackedData2, d => d3.max(d, d => d[1]))])
-        .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-  
-      let x1 = d3
-        .scaleLinear()
-        .domain([0, d3.max(stackedData1, d => d3.max(d, d => d[1]))])
-        .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-  
-      let xAxis = g =>
-        g
-          .attr("transform", "translate(0," + this.dimensions.width + ")")
-          .call(d3.axisBottom(x1).ticks(width / 50, "s"))
-          .remove()    
-  
-      drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip)        
+      this.alldata = alldata;
+      this.render();     
     }.bind(this));
 
   }

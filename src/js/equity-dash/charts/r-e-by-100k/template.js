@@ -5,7 +5,7 @@ export default function template(title, description) {
     <div class="bg-white py-4">
       <div class="mx-auto">
         <div class="chart-title">${title}</div>
-        <p class="small-text">${description}</p>
+        <p class="small-text chart-description">${description}</p>
         <div class="svg-holder"></div>
       </div>
     </div>

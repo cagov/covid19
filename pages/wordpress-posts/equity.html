@@ -155,11 +155,13 @@ addtositemap: false
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
 <!--SMALL TABS-->
-<div class="d-flex justify-content-center js-re-smalls">
-  <button class="small-tab active">Cases</button>
-  <button class="small-tab">Deaths</button>
-  <button class="small-tab">Testing</button>
-</div>
+<cagov-chart-filter-buttons class="js-re-smalls">
+  <div class="d-flex justify-content-center">
+    <button class="small-tab active" data-key="cases">Cases</button>
+    <button class="small-tab" data-key="deaths">Deaths</button>
+    <button class="small-tab" data-key="tests">Testing</button>
+  </div>
+</cagov-chart-filter-buttons>
 
 <div class="container">
   <div class="row">
@@ -207,6 +209,12 @@ addtositemap: false
 
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+<!--SMALL TABS-->
+<div class="d-flex justify-content-center js-missingness-smalls">
+    <button class="small-tab active" data-key="cases">Race and ethnicity</button>
+    <button class="small-tab" data-key="deaths">Sexual orientation</button>
+    <button class="small-tab" data-key="tests">Gender identity</button>
+  </div>  
 <cagov-chart-equity-missingness></cagov-chart-equity-missingness>
 
 
