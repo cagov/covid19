@@ -15,7 +15,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     }
 
     this.innerHTML = template();
-    this.filterKey = 'race_ethnicity';
+    this.selectedMetric = 'race_ethnicity';
 
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
@@ -84,13 +84,32 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   render() {
     let data = [];
-    data.push(this.alldata[this.filterKey].cases);
-    data.push(this.alldata[this.filterKey].deaths);
-    data.push(this.alldata[this.filterKey].tests);
+    console.log(this.selectedMetric)
+    let casesObj = this.alldata[this.selectedMetric].cases;
+    casesObj.METRIC = 'cases';
+    data.push(casesObj);
+    let deathsObj = this.alldata[this.selectedMetric].deaths;
+    deathsObj.METRIC = 'deaths'
+    data.push(deathsObj);
+    if(this.alldata[this.selectedMetric].tests) {
+      data.push(this.alldata[this.selectedMetric].tests);
+    } else {
+      let testsObj = {}
+      testsObj.METRIC = "tests";
+      testsObj.MISSING = 100;
+      testsObj.NOT_MISSING = 0;
+      testsObj.TOTAL = 100;
+      testsObj.PERCENT_COMPLETE = 0.0;
+      testsObj.PERCENT_COMPLETE_30_DAYS_PRIOR = 0.0;
+      testsObj.PERCENT_COMPLETE_30_DAYS_DIFF = 0.0;
+      data.push(testsObj);
+    }
+
     data.forEach(d => {
       d.MISSING = d.MISSING / d.TOTAL;
       d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
     })
+    console.log(data)
     data.sort(function(a, b) {
       return d3.descending(a.MISSING, b.MISSING);
     })
@@ -199,11 +218,10 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
           ) {
             return `<tspan class="highlight-data">0%</tspan>  change in cases sinice previous month`;
           } else {
-            return `<tspan class="highlight-data">${parseFloat(
-              (d.PERCENT_COMPLETE_30_DAYS_DIFF /
-                d.PERCENT_COMPLETE_30_DAYS_PRIOR) *
+            return `<tspan class="highlight-data">${(d.PERCENT_COMPLETE_30_DAYS_PRIOR != 0) ? parseFloat(
+              (d.PERCENT_COMPLETE_30_DAYS_DIFF) *
                 100
-            ).toFixed(1)}%</tspan> change in cases since previous month`;
+            ).toFixed(1) : "0"}%</tspan> change in cases since previous month`;
           }
         })
 

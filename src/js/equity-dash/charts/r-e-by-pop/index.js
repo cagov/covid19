@@ -39,7 +39,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       .attr("class", "equity-tooltip equity-tooltip--re100k")
       .text("an empty tooltip");
 
-      this.subgroups1 = ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"]
+    this.subgroups1 = ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"]
     this.subgroups2 = ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"]
     
     this.color2 = d3
