@@ -2,11 +2,14 @@ cagov-chart-equity-missingness {
   position: relative;
   display: block;
   margin: auto;
-  width: 80%;
+  width: 90%;
+  .svg-holder {
+    max-width: 600px;
+  }
 
   .bars {
     font-weight: bold;
-    font-size: 0.95;
+    font-size: 0.95rem;
     text-anchor: unset;
   }
   .more-than-labels {
@@ -17,11 +20,14 @@ cagov-chart-equity-missingness {
   }
   .bar-label {
     font-weight: bold;
-    font-size: 0.95;
+    font-size: 0.95rem;
     text-anchor: unset;
   }
+  .bar-label text::first-letter {
+    text-transform: capitalize;
+  }
   .label {
-    font-size: 0.95;
+    font-size: 0.95rem;
   }
   .chart-tooltip {
     padding: 10px;

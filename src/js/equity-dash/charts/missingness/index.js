@@ -15,6 +15,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     }
 
     this.innerHTML = template();
+    this.filterKey = 'race_ethnicity';
 
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
@@ -44,9 +45,16 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
       .padding([.6])
 
-    this.render('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json');
+    this.yAxis = g => g
+      .attr("class", "bar-label")
+      .attr("transform", "translate(5," + -30 + ")")
+      .call(d3.axisLeft(this.y).tickSize(0))
+      .call(g => g.selectAll(".domain").remove())
+
+    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json');
     this.listenForLocations();
-    this.resetTitle('California')
+    this.county = 'California';
+    this.resetTitle()
   }
 
   listenForLocations() {
@@ -54,44 +62,59 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
 
-      this.render('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
-      this.resetTitle(this.county)
+      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/missingness-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.resetTitle()
+    }.bind(this), false);
+
+    let metricFilter = document.querySelector('cagov-chart-filter-buttons.js-missingness-smalls')
+    metricFilter.addEventListener('filter-selected', function (e) {
+      this.selectedMetricDescription = e.detail.clickedFilterText;
+      this.selectedMetric = e.detail.filterKey;
+      this.render()
+      this.resetDescription()
+      this.resetTitle()
     }.bind(this), false);
   }
 
-  resetTitle(county) {
-    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+county
+  resetTitle() {
+    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+this.county
   }
 
-  render(url) {
+  resetDescription() {}
+
+  render() {
+    let data = [];
+    data.push(this.alldata[this.filterKey].cases);
+    data.push(this.alldata[this.filterKey].deaths);
+    data.push(this.alldata[this.filterKey].tests);
+    data.forEach(d => {
+      d.MISSING = d.MISSING / d.TOTAL;
+      d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
+    })
+    data.sort(function(a, b) {
+      return d3.descending(a.MISSING, b.MISSING);
+    })
+    let stackedData = d3.stack().keys(this.subgroups)(data)      
+    let x = d3
+      .scaleLinear()
+      .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
+      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    drawBars(this.svg, x, this.y, this.yAxis, stackedData, this.color, data, this.tooltip)  
+  }
+
+  retrieveData(url) {
     window.fetch(url)
     .then(response => response.json())
     .then(function(alldata) {
-      let data = []
-      data.push(alldata.race_ethnicity.cases);
-      data.push(alldata.race_ethnicity.deaths);
-      data.push(alldata.race_ethnicity.tests);
-      data.forEach(d => {
-        d.MISSING = d.MISSING / d.TOTAL;
-        d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
-      })
-      data.sort(function(a, b) {
-        return d3.descending(a.MISSING, b.MISSING);
-      })
-      let stackedData = d3.stack().keys(this.subgroups)(data)      
-      let x = d3
-        .scaleLinear()
-        .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
-        .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-  
-      drawBars(this.svg, x, this.y, stackedData, this.color, data, this.tooltip)  
-      
+      this.alldata = alldata;
+      this.render();
     }.bind(this));
   }
 }
 window.customElements.define('cagov-chart-equity-missingness', CAGOVEquityMissingness);
 
-function drawBars(svg, x, y, stackedData, color, data, tooltip) {
+function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
 
   svg.selectAll("g").remove();
 
@@ -170,7 +193,7 @@ function drawBars(svg, x, y, stackedData, color, data, tooltip) {
         .attr("y", d => {
           return y(d.METRIC) + 40
         })
-        .attr("x", d => x(0) + 225)
+        .attr("x", d => x(0) + 255)
         .attr("height", y.bandwidth())
 
         .html(d => {
@@ -193,6 +216,8 @@ function drawBars(svg, x, y, stackedData, color, data, tooltip) {
 
         .attr('text-anchor', 'end');
     });
+
+  svg.append("g").call(yAxis);
 
   //arrows
   svg
