@@ -13,9 +13,9 @@ class CAGovChartFilterButtons extends window.HTMLElement {
             clickedFilterText: clickedFilterText
           }
         });
-        this.dispatchEvent(emissionEvent);
         this.resetActive();
         event.target.classList.add('active')
+        this.dispatchEvent(emissionEvent); // this event fire is last because charts look at active class on filter to get new text
       }
     })
 
@@ -23,10 +23,12 @@ class CAGovChartFilterButtons extends window.HTMLElement {
     let statewideOnlyButton = this.querySelector("button[data-key='deaths']");
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
-      if(e.detail.statewide) {
-        statewideOnlyButton.style.display = 'block';
-      } else {
-        statewideOnlyButton.style.display = 'none';
+      if(statewideOnlyButton) {
+        if(e.detail.statewide) {
+          statewideOnlyButton.style.display = 'block';
+        } else {
+          statewideOnlyButton.style.display = 'none';
+        }
       }
     }.bind(this), false);
 

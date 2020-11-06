@@ -14,8 +14,16 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       }
     }
 
+    this.chartTitle = function() {
+      console.log('getting chart title')
+      let filterText = this.getFilterText();
+      console.log(filterText)
+      return `reporting by ${filterText.toLowerCase()} in ${this.county}`;
+    }
+
     this.innerHTML = template();
     this.selectedMetric = 'race_ethnicity';
+    this.metricFilter = document.querySelector('cagov-chart-filter-buttons.js-missingness-smalls');
 
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
@@ -67,8 +75,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       this.resetTitle()
     }.bind(this), false);
 
-    let metricFilter = document.querySelector('cagov-chart-filter-buttons.js-missingness-smalls')
-    metricFilter.addEventListener('filter-selected', function (e) {
+    this.metricFilter.addEventListener('filter-selected', function (e) {
       this.selectedMetricDescription = e.detail.clickedFilterText;
       this.selectedMetric = e.detail.filterKey;
       this.retrieveData(this.dataUrl);
@@ -78,7 +85,11 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 
   resetTitle() {
-    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+this.county
+    this.querySelector('.chart-title').innerHTML = this.chartTitle()
+  }
+
+  getFilterText() {
+    return this.metricFilter.querySelector('.active').textContent;
   }
 
   resetDescription() {}
