@@ -55,13 +55,14 @@ addtositemap: false
                         </div>
                     
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                    
-                            <div id="eq2-positive" class="eq-text mb-3">Case rate for Pacific Islanders is <span class="eq-data">99% higher</span> than statewide</div>
-                    
-                            <div id="eq2-negative" class="eq-text mb-3 d-none">Case rate for Pacific Islanders is <span class="eq-data">99% lower</span> than statewide</div>
-                    
-                            <div id="eq2-same" class="eq-text mb-3 d-none">Case rate for Pacific Islanders is the same as statewide average</div>
-                    
+                            {%- set value = 33 -%}
+                            {%- if value > 0 -%}
+                            <div class="eq-text mb-3">Case rate for Pacific Islanders is <span class="eq-data">{{value}}% higher</span> than statewide</div>
+                            {%- elif value < 0 -%}
+                            <div class="eq-text mb-3 d-none">Case rate for Pacific Islanders is <span class="eq-data">{{value | abs}}% lower</span> than statewide</div>
+                            {%- else -%}
+                            <div class="eq-text mb-3 d-none">Case rate for Pacific Islanders is the same as statewide average</div>
+                            {%- endif -%}
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100k people:</p> 
                                 <p class="text-xs mb-0"><strong>2,432</strong> Latino <br>
