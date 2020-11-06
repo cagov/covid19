@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Development Sample"
 meta: "testing &#8220;Quotes&#8221; in the excerpt &#038; other characters"
 author: "State of California"
-publishdate: "2020-11-06T19:48:12Z"
+publishdate: "2020-11-06T19:49:39Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -12,11 +12,11 @@ addtositemap: false
 
 
 
-{%- set value = -20 -%}
+<pre class="wp-block-code"><code>{%- set value = -20 -%}
 {%- if value > 0 -%}
-<div class="eq-text mb-3">Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide</div>
-{%- elif value < 0 -%}
-<div class="eq-text mb-3">Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide</div>
+&lt;div class="eq-text mb-3">Case rate for Latino people is &lt;span class="eq-data">{{value}}% higher&lt;/span> than statewide&lt;/div>
+{%- elif value &lt; 0 -%}
+&lt;div class="eq-text mb-3">Case rate for Latino people is &lt;span class="eq-data">{{value | abs}}% lower&lt;/span> than statewide&lt;/div>
 {%- else -%}
-<div class="eq-text mb-3">Case rate for Latino people is the same as statewide average</div>
-{%- endif -%}
+&lt;div class="eq-text mb-3">Case rate for Latino people is the same as statewide average&lt;/div>
+{%- endif -%}</code></pre>
