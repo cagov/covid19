@@ -40,11 +40,11 @@ addtositemap: false
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
                           {%- set value = -20 -%}
 
-                          <div class="eq-text mb-3 {{ "d-none" if value <= 0 }}">Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide</div>
+                          <div class="eq-text mb-3 {{ 'd-none' if value <= 0 }}">Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide</div>
                     
-                          <div class="eq-text mb-3 {{ "d-none" if value >= 0 }}">Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide</div>
+                          <div class="eq-text mb-3 {{ 'd-none' if value >= 0 }}">Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide</div>
                     
-                          <div class="eq-text mb-3 {{ "d-none" if value != 0 }}">Case rate for Latino people is the same as statewide average</div>
+                          <div class="eq-text mb-3 {{ 'd-none' if value != 0 }}">Case rate for Latino people is the same as statewide average</div>
 
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100k people:</p> 
