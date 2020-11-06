@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Development Sample"
 meta: "testing &#8220;Quotes&#8221; in the excerpt &#038; other characters"
 author: "State of California"
-publishdate: "2020-11-06T01:13:17Z"
+publishdate: "2020-11-06T02:01:41Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -20,11 +20,10 @@ addtositemap: false
 
 
 
-<div id="eq1-positive" class="eq-text mb-3">Case rate for Latino people is <span class="eq-data">{{_var_rate1_}}% higher</span> than statewide</div>
-                    
-                            <div id="eq1-negative" class="eq-text mb-3 d-none">Case rate for Latino people is <span class="eq-data">{{_var_rate2_}}% lower</span> than statewide</div>
-                    
-                            <div id="eq1-same" class="eq-text mb-3 d-none">Case rate for Latino people is the same as statewide average</div>
+{%- set value = -20 -%}
+<div class="eq-text mb-3 {{ "d-none" if value <= 0 }}">Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide</div>       
+<div class="eq-text mb-3 {{ "d-none" if value >= 0 }}&#8221;>Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide</div>
+<div class="eq-text mb-3 {{ "d-none" if value != 0 }}">Case rate for Latino people is the same as statewide average</div> (edited) 
 
 
 
