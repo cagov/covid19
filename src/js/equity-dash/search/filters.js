@@ -29,6 +29,11 @@ class CAGovChartFilterButtons extends window.HTMLElement {
         } else {
           statewideOnlyButton.style.display = 'none';
         }
+        // we were on the filter we are now hiding, reset to first
+        if(statewideOnlyButton.classList.contains('active')) {
+          statewideOnlyButton.classList.remove('active');
+          this.querySelector('button').classList.add('active'); // make ifrst one active instead
+        }
       }
     }.bind(this), false);
 

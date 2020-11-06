@@ -15,9 +15,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     }
 
     this.chartTitle = function() {
-      console.log('getting chart title')
       let filterText = this.getFilterText();
-      console.log(filterText)
       return `reporting by ${filterText.toLowerCase()} in ${this.county}`;
     }
 
@@ -147,6 +145,8 @@ window.customElements.define('cagov-chart-equity-missingness', CAGOVEquityMissin
 function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
 
   svg.selectAll("g").remove();
+  svg.selectAll("rect").remove();
+  svg.selectAll("text").remove();
 
   svg
     .append("g")

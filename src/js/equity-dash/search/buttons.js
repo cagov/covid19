@@ -16,24 +16,26 @@ class CAGovCountyButtons extends window.HTMLElement {
 
     this.addEventListener('click',function(event) {
       event.preventDefault();
-      let clickedCounty = event.target.textContent;
+      if(event.target.classList.contains('js-toggle-county')) {
+        let clickedCounty = event.target.textContent;
 
-      if(!event.target.classList.contains('toggle-active')) {
-        let emissionEvent = new window.CustomEvent('county-selected', {
-          detail: {
-            county: clickedCounty,
-            statewide: false
-          }
-        });
-        if(event.target.classList.contains('statewide')) {
-          emissionEvent = new window.CustomEvent('county-selected', {
+        if(!event.target.classList.contains('toggle-active')) {
+          let emissionEvent = new window.CustomEvent('county-selected', {
             detail: {
-              county: 'California',
-              statewide: true
+              county: clickedCounty,
+              statewide: false
             }
           });
+          if(event.target.classList.contains('statewide')) {
+            emissionEvent = new window.CustomEvent('county-selected', {
+              detail: {
+                county: 'California',
+                statewide: true
+              }
+            });
+          }
+          searchElement.dispatchEvent(emissionEvent);
         }
-        searchElement.dispatchEvent(emissionEvent);
       }
     })
 

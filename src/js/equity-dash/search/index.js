@@ -23,7 +23,7 @@ class CAGovCountySearch extends window.HTMLElement {
         event.preventDefault();
         document.querySelector('#county-query-error').style.display = 'none';
         // do I have a full county typed in here?
-        let typedInValue = document.querySelector('#location-query').value;
+        let typedInValue = document.querySelector('#location-query').value.trim();
         let foundCounty = '';
         if(typedInValue == '') {
           this.state['county'] = null;
@@ -33,6 +33,7 @@ class CAGovCountySearch extends window.HTMLElement {
             foundCounty = county;
           }
         })
+        console.log('found: '+foundCounty)
         if(foundCounty) {
           this.state['county'] = foundCounty;
           document.querySelector('#location-query').value = foundCounty;
@@ -55,9 +56,8 @@ class CAGovCountySearch extends window.HTMLElement {
       item: function (text, input) {
         return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
       },
-      replace: function (text) {
-        let before = this.input.value.match(/^.+,\s*|/)[0];
-        let finalval = before + text;
+      replace: function (selectedSuggestion) {
+        let finalval = selectedSuggestion.value;
         this.input.value = finalval;
         component.state[fieldName] = finalval;
         component.emitCounty();

@@ -58,7 +58,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-
+      this.selectedMetric = 'cases';
       this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
       this.retrieveData(this.dataUrl);
       this.resetTitle(this.county)
@@ -138,6 +138,8 @@ window.customElements.define('cagov-chart-re-100k', CAGOVEquityRE100K);
 
 function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
   svg.selectAll("g").remove();
+  svg.selectAll("rect").remove();
+  svg.selectAll("text").remove();
 
   svg
     .append("g")

@@ -62,9 +62,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-
+      this.selectedMetric = 'cases';
       this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
-      this.resetTitle(this.county)
+      this.resetTitle()
     }.bind(this), false);
     
     let metricFilter = document.querySelector('cagov-chart-filter-buttons.js-re-smalls')
@@ -80,6 +80,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTitle() {
+    console.log('resetting title '+this.county)
     this.querySelector('.chart-title').innerHTML = this.chartTitle(this.county);
   }
 
@@ -92,10 +93,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
     data.forEach(d => {
       d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
     })
-
+    console.log(data)
     data.sort(function(a, b) {
       return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
     })
+    console.log(data)
     // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
     // don't know why the above never works, so keep hardcoding it
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
@@ -131,7 +133,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       g
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
-        .remove()    
+        .remove()
 
     drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip)
   }
@@ -150,6 +152,8 @@ window.customElements.define('cagov-chart-re-pop', CAGOVEquityREPop);
 
 function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip) {
   svg.selectAll("g").remove();
+  svg.selectAll("rect").remove();
+  svg.selectAll("text").remove();
 
   //yellow  bars
   svg
