@@ -14,14 +14,22 @@ class CAGOVEquityREPop extends window.HTMLElement {
     })
 
     this.selectedMetric = 'cases';  
-    this.chartTitle = function(loc) {
-      return `${this.selectedMetric} relative to percentage of population in ${loc}`;
+    this.chartTitle = function() {
+      return `${this.selectedMetric} relative to percentage of population in ${this.county}`;
     }
-    this.description = function (selectedMetric) {
-      return `Compare the percentage of each race and ethnicity’s share of statewide ${selectedMetric} to their percentage of California’s population.`;
+    this.description = function () {
+      return `Compare the percentage of each race and ethnicity’s share of statewide ${this.selectedMetricDescription} to their percentage of ${this.county}’s population.`;
     }
-
-    this.innerHTML = template(this.chartTitle('California'), this.description(this.selectedMetric));
+    this.county = 'California';
+    this.legendString = function() {
+      if(this.county === 'California') {
+        return `of ${this.selectedMetric} statewide`;
+      }
+      return `of ${this.selectedMetric} in county`;
+    }
+    this.legendScope = this.legendString();
+    
+    this.innerHTML = template(this.chartTitle(), this.description());
 
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
@@ -55,6 +63,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
     this.listenForLocations();
     this.county = 'California';
+    this.legendScope = 'of cases statewide';
     this.resetTitle()
   }
 
@@ -62,6 +71,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
+      console.log(this.county)
+      this.legendScope = this.legendString();
       this.selectedMetric = 'cases';
       this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       this.resetTitle()
@@ -80,12 +91,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTitle() {
-    console.log('resetting title '+this.county)
-    this.querySelector('.chart-title').innerHTML = this.chartTitle(this.county);
+    this.querySelector('.chart-title').innerHTML = this.chartTitle();
   }
 
   resetDescription() {
-    this.querySelector('.chart-description').innerHTML = this.description(this.selectedMetricDescription);
+    this.querySelector('.chart-description').innerHTML = this.description();
   }
 
   render() {
@@ -135,7 +145,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
         .remove()
 
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip)
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendScope)
   }
 
   retrieveData(url) {
@@ -150,7 +160,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
 }
 window.customElements.define('cagov-chart-re-pop', CAGOVEquityREPop);
 
-function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip) {
+function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendScope) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -185,7 +195,7 @@ function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, col
         d.data.METRIC_TOTAL_PERCENTAGE
           ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
           : 0
-      }</span> of cases statewide</div>
+      }</span> ${legendScope}</div>
       </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -373,7 +383,7 @@ function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, col
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("% of cases statewide");
+    .text("% "+legendScope);
   svg
     .append("text")
     .attr("x", 190)

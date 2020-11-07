@@ -16,14 +16,14 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Case';
-    this.chartTitle = function(loc) {
-      return `${this.selectedMetricDescription} rate per 100K by race and ethnicity group in ${loc}`;
+    this.chartTitle = function() {
+      return `${this.selectedMetricDescription} rate per 100K by race and ethnicity group in ${this.county}`;
     }
     this.description = function (selectedMetricDescription) {
       return `Compare ${selectedMetricDescription} adjusted by population size across each race and ethnicity.`;
     }
-
-    this.innerHTML = template(this.chartTitle('California'), this.description(this.selectedMetricDescription));
+    this.county = 'California';
+    this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
 
     this.tooltip = d3
       .select("cagov-chart-re-100k")
@@ -75,7 +75,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   }
 
   resetTitle() {
-    this.querySelector('.chart-title').innerHTML = this.chartTitle(this.county);
+    this.querySelector('.chart-title').innerHTML = this.chartTitle();
   }
 
   resetDescription() {
