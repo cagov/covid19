@@ -261,3 +261,34 @@ button.clear {
       }
     }
   }
+
+  .large-tabs {
+    border: 1px solid #1f2574!important;
+    background-color: #1f2574!important;
+    display: flex!important;
+    justify-content: center!important;
+    .large-tab {
+      text-decoration: none;
+      font-family: Montserrat;
+      font-style: normal;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.15rem;
+      display: inline-block;
+      padding: 10px;
+      background-color: #fff;
+      color:#1F2574;
+      min-width: 200px;
+      margin: 0 1px 0 0;
+      border: none;
+      &:hover, &:focus {
+        background-color: #F2F5FC;
+      }
+      &.active, &[aria-expanded="true"] {
+        color:#fff;
+        background-color: #1F2574;
+        text-decoration:none;
+        cursor: default;
+      }
+    } 
+  }
