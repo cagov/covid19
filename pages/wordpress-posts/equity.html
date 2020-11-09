@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-03T21:54:20Z"
+publishdate: "2020-11-06T19:36:10Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -146,46 +146,7 @@ addtositemap: false
 
 
 
-<div class="bg-darkblue py-5 full-bleed">
-  <div class="container py-2">
-      <div class="row pb-4">
-          <div class="col-lg-10 mx-auto color-white">
-            <h2 class="text-center color-orange">Reopening equitably</h2>
-            <p>To ensure we build a California for All, counties must address COVID-19 health inequities in their economic reopening plans. Each week, state officials work with local health departments to measure case rates and positivity rates, as well as positivity rates in the county’s most disproportionately-impacted neighborhoods (health equity metric).</p>
-            <h3 class="color-white">As part of this broad effort, counties must:</h3>
-            <ul class="bullet-orange">
-              <li>Define their disproportionately impacted populations and measure COVID-19 metrics and response (contract tracing, isolation support, worker protections) in these populations</li>
-              <li>Show how they will use state funds to support disproportionately-impacted communities</li>
-              <li>Show that the health equity metric does not significantly lag behind its overall county positivity rate</li>
-            </ul>
-          </div>
-      </div>
-
-  </div><!--END container-->
-</div><!--END DARK BLUE BG-->
-
-
-
 <h2>See how communities are impacted in your county</h2>
-
-
-
-<cagov-county-search></cagov-county-search>
-
-<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
-
-<!--SMALL TABS-->
-<div class="d-flex justify-content-center js-re-smalls">
-  <button class="small-tab active">Cases</button>
-  <button class="small-tab">Deaths</button>
-  <button class="small-tab">Testing</button>
-</div>
-
-<div class="dual-charts">
-  <cagov-chart-re-100k></cagov-chart-re-100k>
-  <cagov-chart-re-pop></cagov-chart-re-pop>  
-</div>
-
 
 
 
@@ -194,6 +155,32 @@ addtositemap: false
 
 
 <p>Latino, Black, and Pacific Islander communities have been disproportionately affected by COVID-19. We have made some strides in addressing disparities within these communities, but we must do better.</p>
+
+
+
+<cagov-county-search></cagov-county-search>
+
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+
+<!--SMALL TABS-->
+<cagov-chart-filter-buttons class="js-re-smalls">
+  <div class="d-flex justify-content-center">
+    <button class="small-tab active" data-key="cases">Cases</button>
+    <button class="small-tab" data-key="deaths">Deaths</button>
+    <button class="small-tab" data-key="tests">Testing</button>
+  </div>
+</cagov-chart-filter-buttons>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <cagov-chart-re-pop></cagov-chart-re-pop>
+    </div>
+    <div class="col">
+      <cagov-chart-re-100k></cagov-chart-re-100k>
+    </div>
+  </div>
+</div>
 
 
 
@@ -222,6 +209,13 @@ addtositemap: false
 
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+<cagov-chart-filter-buttons class="js-missingness-smalls">
+  <div class="d-flex justify-content-center">
+    <button class="small-tab active" data-key="race_ethnicity">Race and ethnicity</button>
+    <button class="small-tab" data-key="sexual_orientation">Sexual orientation</button>
+    <button class="small-tab" data-key="gender_identity">Gender identity</button>
+  </div>
+</cagov-chart-filter-buttons>
 <cagov-chart-equity-missingness></cagov-chart-equity-missingness>
 
 
@@ -235,6 +229,22 @@ addtositemap: false
 
 
 <cagov-chart-d3-bar></cagov-chart-d3-bar>
+
+
+
+<div class="bg-lightblue full-bleed py-4">
+<div class="container">
+  <h3 class="text-center">Underlying health conditions</h3>
+  <p>Existing health problems can increase the severity of COVID-19. Examples include heart conditions, obesity, kidney disease, and diabetes, all of which are more common in communities of color.</p>
+  <p>A history of Adverse Childhood Experiences (ACEs) increases risk for chronic health conditions including heart disease, obesity, kidney disease, and diabetes and may increase the risk for severe COVID-19 illness.</p>
+
+  <ul>
+    <li>ACEs are experiences of abuse, neglect, and household challenges occurring by age 18 and are associated with long-term risk for poorer physical, mental, and behavioral health.</li>
+    <li>Exposure to prolonged ACEs, when experienced without protective buffering factors, can lead to changes to the biological stress response which can affect immune functioning (the toxic stress response).</li>
+    <li>Individuals with a history of ACEs may also be more sensitive to the effects of new stressors, such as those presented by the COVID-19 pandemic. See how to manage stress for health.</li>
+  </ul>
+</div>
+</div>
 
 
 

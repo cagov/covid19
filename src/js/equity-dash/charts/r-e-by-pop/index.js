@@ -3,23 +3,38 @@ import template from './template.js';
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback () {
     this.dimensions = ({
-      height: 700,
-      width: 600,
+      height: 650,
+      width: 450,
       margin: {
         top: 20,
         right: 30,
         bottom: 20,
-        left: 30
+        left: 10
       }
     })
 
-    this.innerHTML = template('this is the chart title');
+    this.selectedMetric = 'cases';  
+    this.chartTitle = function() {
+      return `${this.selectedMetric} relative to percentage of population in ${this.county}`;
+    }
+    this.description = function () {
+      return `Compare the percentage of each race and ethnicity’s share of statewide ${this.selectedMetricDescription} to their percentage of ${this.county}’s population.`;
+    }
+    this.county = 'California';
+    this.legendString = function() {
+      if(this.county === 'California') {
+        return `of ${this.selectedMetric} statewide`;
+      }
+      return `of ${this.selectedMetric} in county`;
+    }
+    this.legendScope = this.legendString();
+    
+    this.innerHTML = template(this.chartTitle(), this.description());
 
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
       .append("svg")
-      .attr("width", this.dimensions.width)
-      .attr("height", this.dimensions.height)
+      .attr("viewBox", [0, 0, this.dimensions.width, this.dimensions.height])
       .append("g")
       .attr(
         "transform",
@@ -32,7 +47,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       .attr("class", "equity-tooltip equity-tooltip--re100k")
       .text("an empty tooltip");
 
-      this.subgroups1 = ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"]
+    this.subgroups1 = ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"]
     this.subgroups2 = ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"]
     
     this.color2 = d3
@@ -45,84 +60,110 @@ class CAGOVEquityREPop extends window.HTMLElement {
       .domain(this.subgroups1)
       .range(['#FFCF44', '#F2F5FC'])
 
-    this.render('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
+    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
     this.listenForLocations();
-    this.resetTitle('California')
+    this.county = 'California';
+    this.legendScope = 'of cases statewide';
+    this.resetTitle()
   }
 
   listenForLocations() {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-
-      this.render('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
-      this.resetTitle(this.county)
+      console.log(this.county)
+      this.legendScope = this.legendString();
+      this.selectedMetric = 'cases';
+      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.resetTitle()
+    }.bind(this), false);
+    
+    let metricFilter = document.querySelector('cagov-chart-filter-buttons.js-re-smalls')
+    metricFilter.addEventListener('filter-selected', function (e) {
+      this.selectedMetricDescription = e.detail.clickedFilterText;
+      this.selectedMetric = e.detail.filterKey;
+      if(this.alldata) {
+        this.render()
+        this.resetDescription()
+        this.resetTitle()
+      }
     }.bind(this), false);
   }
 
-  resetTitle(county) {
-    this.querySelector('.chart-title').innerHTML = 'reporting by race and ethnicity in '+county
+  resetTitle() {
+    this.querySelector('.chart-title').innerHTML = this.chartTitle();
   }
 
-  render(url) {
-    
+  resetDescription() {
+    this.querySelector('.chart-description').innerHTML = this.description();
+  }
+
+  render() {
+    let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
+    data.forEach(d => {
+      d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
+    })
+    console.log(data)
+    data.sort(function(a, b) {
+      return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
+    })
+    console.log(data)
+    // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
+    // don't know why the above never works, so keep hardcoding it
+    // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
+    let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
+
+    let stackedData1 = d3.stack().keys(this.subgroups1)(data)
+    let stackedData2 = d3.stack().keys(this.subgroups2)(data);
+
+    this.y = d3
+      .scaleBand()
+      .domain(groups)
+      .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
+      .padding([.5])     
+
+    let yAxis = g =>
+      g
+        .attr("class", "bar-label")
+        .attr("transform", "translate(4," + -30 + ")")
+        .call(d3.axisLeft(this.y).tickSize(0))
+        .call(g => g.selectAll(".domain").remove())
+
+    let x2 = d3
+      .scaleLinear()
+      .domain([0, d3.max(stackedData2, d => d3.max(d, d => d[1]))])
+      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    let x1 = d3
+      .scaleLinear()
+      .domain([0, d3.max(stackedData1, d => d3.max(d, d => d[1]))])
+      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    let xAxis = g =>
+      g
+        .attr("transform", "translate(0," + this.dimensions.width + ")")
+        .call(d3.axisBottom(x1).ticks(width / 50, "s"))
+        .remove()
+
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendScope)
+  }
+
+  retrieveData(url) {
     window.fetch(url)
     .then(response => response.json())
     .then(function(alldata) {
-      let data = alldata.filter(item => (item.METRIC === "cases" && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
-      data.forEach(d => {
-        d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
-      })
-
-      data.sort(function(a, b) {
-        return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
-      })
-      // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
-      // don't know why the above never works, so keep hardcoding it
-      // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
-      let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
-  
-      let stackedData1 = d3.stack().keys(this.subgroups1)(data)
-      let stackedData2 = d3.stack().keys(this.subgroups2)(data);
-  
-      this.y = d3
-        .scaleBand()
-        .domain(groups)
-        .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
-        .padding([.5])     
-  
-      let yAxis = g =>
-        g
-          .attr("class", "bar-label")
-          .attr("transform", "translate(4," + -30 + ")")
-          .call(d3.axisLeft(this.y).tickSize(0))
-          .call(g => g.selectAll(".domain").remove())
-  
-      let x2 = d3
-        .scaleLinear()
-        .domain([0, d3.max(stackedData2, d => d3.max(d, d => d[1]))])
-        .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-  
-      let x1 = d3
-        .scaleLinear()
-        .domain([0, d3.max(stackedData1, d => d3.max(d, d => d[1]))])
-        .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-  
-      let xAxis = g =>
-        g
-          .attr("transform", "translate(0," + this.dimensions.width + ")")
-          .call(d3.axisBottom(x1).ticks(width / 50, "s"))
-          .remove()    
-  
-      drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip)        
+      this.alldata = alldata;
+      this.render();     
     }.bind(this));
 
   }
 }
 window.customElements.define('cagov-chart-re-pop', CAGOVEquityREPop);
 
-function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip) {
+function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendScope) {
   svg.selectAll("g").remove();
+  svg.selectAll("rect").remove();
+  svg.selectAll("text").remove();
 
   //yellow  bars
   svg
@@ -154,14 +195,11 @@ function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, col
         d.data.METRIC_TOTAL_PERCENTAGE
           ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
           : 0
-      }</span> of cases statewide</div>
+      }</span> ${legendScope}</div>
       </div>`);
       tooltip.style("visibility", "visible");
-    })
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", parseInt(this.getBoundingClientRect().y) - 10 + "px")
-        .style("left", parseInt(this.getBoundingClientRect().x) + 10 + "px");
+      tooltip.style("left",'90px');
+      tooltip.style("top",`${event.offsetY + 100}px`)
     })
     .on("mouseout", function(d) {
       d3.select(this).transition();
@@ -201,11 +239,8 @@ function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, col
       }</span> of cases statewide</div>
       </div>`);
       tooltip.style("visibility", "visible");
-    })
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", parseInt(this.getBoundingClientRect().y) - 10 + "px")
-        .style("left", parseInt(this.getBoundingClientRect().x) + 10 + "px");
+      tooltip.style("left",'90px');
+      tooltip.style("top",`${event.offsetY + 100}px`)
     })
     .on("mouseout", function(d) {
       d3.select(this).transition();
@@ -348,7 +383,7 @@ function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, col
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("% of cases statewide");
+    .text("% "+legendScope);
   svg
     .append("text")
     .attr("x", 190)
