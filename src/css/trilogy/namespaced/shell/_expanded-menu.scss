@@ -139,9 +139,9 @@ cagov-navoverlay {
             /* text-decoration: inherit; */
             width: auto;
           }
-          @include desktop {
+          /* @include desktop {
             font-size: 1.1rem;
-          }
+          } */
         }
         &-arrow {
           @include size(1rem, 1rem);
