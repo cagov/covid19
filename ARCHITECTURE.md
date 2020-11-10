@@ -14,7 +14,7 @@ This document
 
 ## Running the application as a developer
 `npm run dev`
-: Run a local version of the application.
+: Run a local version of the application. This skips transpilation for IE11.
 
 `npm run start`: 
 Create a static build of the site and then run `watch` mode. BrowserSync will check for file changes and then update the application.
