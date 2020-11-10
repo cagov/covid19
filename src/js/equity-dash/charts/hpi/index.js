@@ -16,7 +16,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       this.writeChart(alldata, this.svg);
 
       this.innerHTML = `<div class="svg-holder"></div>`;
-      document.querySelector('.svg-holder').appendChild(this.svg.node());
+      this.querySelector('.svg-holder').appendChild(this.svg.node());
     })
     
     let legendLabels = ["Statewide test positivity", "Health equity quartile positivity"];
@@ -34,9 +34,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-      console.log('hpi chart sees chosen county: '+e.detail.county)
-
-
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
@@ -70,7 +67,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
       .call(g => g.select(".domain").remove())
-
+      
     let line = d3.line()
       .x((d, i) => {
         return x(new Date(d.DATE));
@@ -174,7 +171,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .enter()
       .append('text')
       .text(function(d){
-        console.log(d)
         return d;
       })
       .attr('x', 25)

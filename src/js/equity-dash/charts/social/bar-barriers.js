@@ -12,8 +12,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     }
 
     this.svg = d3.create("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .attr("class","equity-bar-chart");
+      .attr("viewBox", [0, 0, width, height])
+      .attr("class","equity-bar-chart");
     
     /*
      for env specific switches get data location from dataset attributes

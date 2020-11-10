@@ -199,21 +199,28 @@ button.card-header.accordion-alpha:focus {
     text-decoration: none;
     font-family: Montserrat;
     font-style: normal;
-    font-weight: 600;
-    line-height: 3rem;
+    font-weight: 500;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     display: inline-block;
-    padding: 0 20px;
+    padding: 10px;
     background-color: #fff;
     &.d-none {
       display: none;
+    }
+    &:hover, &:focus {
+      background-color: #F2F5FC;
     }
   }
   .toggle-active {
     background-color: #1f2574;
     color: #fff;
+    cursor: default;
+    &:hover, &:focus {
+      background-color: #1f2574;
+    }
   }
+
 }
 
 button.clear {
@@ -260,4 +267,38 @@ button.clear {
         outline: 2px solid #F2F5FC;
       }
     }
+  }
+
+  .large-tabs {
+    border: 1px solid #1f2574!important;
+    background-color: #1f2574!important;
+    display: flex!important;
+    justify-content: center!important;
+    .large-tab {
+      text-decoration: none;
+      font-family: Montserrat;
+      font-style: normal;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.15rem;
+      display: inline-block;
+      padding: 10px;
+      background-color: #fff;
+      color:#1F2574;
+      min-width: 200px;
+      margin: 0 1px 0 0;
+      border: none;
+      &:hover, &:focus {
+        background-color: #F2F5FC;
+      }
+      &.active, &[aria-expanded="true"] {
+        color:#fff;
+        background-color: #1F2574;
+        text-decoration:none;
+        cursor: default;
+        &:hover, &:focus {
+          background-color: #1F2574;
+        }
+      }
+    } 
   }

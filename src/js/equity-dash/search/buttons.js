@@ -6,21 +6,47 @@ class CAGovCountyButtons extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
 
     searchElement.addEventListener('county-selected', function (e) {
-      this.county = e.detail.county;
-      console.log('chosen county: '+e.detail.county)
-      this.innerHTML = this.template();
-      // after writing template apply event listeners
-      // send event on searchElement when you toggle
+      if(e.detail.statewide) {
+        this.innerHTML = this.template(true);
+      } else {
+        this.county = e.detail.county;
+        this.innerHTML = this.template(false);
+      }
      }.bind(this), false);
+
+    this.addEventListener('click',function(event) {
+      event.preventDefault();
+      if(event.target.classList.contains('js-toggle-county')) {
+        let clickedCounty = event.target.textContent;
+
+        if(!event.target.classList.contains('toggle-active')) {
+          let emissionEvent = new window.CustomEvent('county-selected', {
+            detail: {
+              county: clickedCounty,
+              statewide: false
+            }
+          });
+          if(event.target.classList.contains('statewide')) {
+            emissionEvent = new window.CustomEvent('county-selected', {
+              detail: {
+                county: 'California',
+                statewide: true
+              }
+            });
+          }
+          searchElement.dispatchEvent(emissionEvent);
+        }
+      }
+    })
 
   }
 
-  template() {
+  template(isStatewide) {
     return /*html*/`<div class="row d-flex justify-content-md-center">
       <div class="toggle-link-container js-toggle-county-container">
         <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-          <a href="#" class="js-toggle-county county toggle-active">${this.county}</a>
-          <a href="#" class="js-toggle-county statewide">${this.resetText}</a>
+          <a href="#" class="js-toggle-county county ${!isStatewide ? 'toggle-active' : ''}">${this.county}</a>
+          <a href="#" class="js-toggle-county statewide ${isStatewide ? 'toggle-active' : ''}">${this.resetText}</a>
         </div>
       </div>
     </div>`
