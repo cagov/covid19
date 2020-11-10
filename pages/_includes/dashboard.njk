@@ -19,8 +19,8 @@
 {%-set _varStatIcuChange_ = (data.ICU_COVID_CONFIRMED_PATIENTS_DAILY + data.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = 'November 4, 2020' -%}
-{%-set _varTierEndDate_ = 'October 24, 2020' -%}
+{%-set _varTierDate_ = 'November 10, 2020' -%}
+{%-set _varTierEndDate_ = 'October 31, 2020' -%}
 
 
 <div class="bg-lightblue py-5">
@@ -30,7 +30,7 @@
             <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
                 <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the prior day total of {{_varStatTotalDeathsLast_}}.</p>
                 </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-                <p class="small-text">Note: Note the update for Sunday, Nov 8 is currently being compiled. The data below is data for Saturday, Nov 7. Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
+                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
             </div>
         </div>
 
@@ -87,7 +87,6 @@
                     type="text"
                     placeholder="Enter a county"
                 />
-                <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
                 <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
                 </div>
                 <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
@@ -208,7 +207,7 @@
                 </div>
 
                 <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of {{_varTierDate_}}</h3>
-                <p class="mt-0">All data and tier assignments are updated weekly every Tuesday <i>(due to Election Day, the Tuesday, November 3 update has been moved to Wednesday, November 4)</i>.</p>
+                <p class="mt-0">All data and tier assignments are updated weekly every Tuesday <i>(due to Election Day, the Tuesday, November 3 update has been moved to Wednesday, November 4).</i></p>
 
             <div class="tableauPlaceholder" id="mapChartContainer"></div>
         </div>
@@ -261,10 +260,10 @@
                             <p>
                         The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.
                                 </p>
-                                 <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
+                                <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
                             <div class="tableauPlaceholder"></div>
                         </div>
-                       
+                        
                     </div>
                 </div>
             </div>
