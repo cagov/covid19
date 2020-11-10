@@ -74,7 +74,7 @@ class CAGovReopening extends window.HTMLElement {
         aList.push(item['0'])
       })
       this.setupAutoCompActivity('#activity-query', 'activity', aList)
-      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder' style='width: 920px; height: 560px;'><object class='tableauViz' width='920' height='560' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='COVID-19PlanforreducingCOVID-19webpage_16031507318480&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>`;
+      document.querySelector('.reopening-tableau-embed').innerHTML = `<div class='tableauPlaceholder' id='viz1598633253507' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Planforreducingcovid-19&#47;planforreducingcovid-19' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Planforreducingcovid-19&#47;planforreducingcovid-19&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /></object></div>`;
       this.tableauStuff()
     }.bind(this))
     .catch(() => {
@@ -122,15 +122,14 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   tableauStuff() {
-    var divElement = document.querySelector('.tableauPlaceholder');
+    var divElement = document.getElementById('viz1598633253507');
     var vizElement = divElement.getElementsByTagName('object')[0];
-    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';} 
-    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';} 
-    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';} 
-    else { vizElement.style.width='100%';}
+    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';vizElement.style.height='547px';} 
+    else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
-    // scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    scriptElement.src = 'https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js';
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
   }
   setupAutoCompActivity(fieldSelector, fieldName, aList) {
@@ -190,49 +189,8 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen:
-    let schoolOKList = [
-      "Alameda",
-      "Alpine",
-      "Amador",
-      "Butte",
-      "Calaveras",
-      "Contra Costa",
-      "Del Norte",
-      "El Dorado",
-      "Fresno",
-      "Humboldt",
-      "Inyo",
-      "Lake",
-      "Lassen",
-      "Marin",
-      "Mariposa",
-      "Modoc",
-      "Mono",
-      "Napa",
-      "Nevada",
-      "Orange",
-      "Placer",
-      "Plumas",
-      "Riverside",
-      "Sacramento",
-      "San Diego",
-      "San Francisco",
-      "San Joaquin",
-      "San Luis Obispo",
-      "San Mateo",
-      "Santa Barbara",
-      "Santa Clara",
-      "Santa Cruz",
-      "Sierra",
-      "Siskiyou",
-      "Solano",
-      "Trinity",
-      "Tuolumne",
-      "Yolo"
-    ];
-    if(this.schoolOKList) {
-      schoolOKList = this.schoolOKList;
-    }
+    const schoolOKList = this.schoolOKList;
+
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
 
@@ -247,11 +205,12 @@ class CAGovReopening extends window.HTMLElement {
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
-      this.cardHTML += `<h2 class="text-black mb-0">${item.county} County</h2><div class="county-container"><div class="card-county county-color-${item['Overall Status']}">
-        
+      this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
+        <h2>${item.county}</h2>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
-      </div></div><p class="mt-0">${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>`
+        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
+      </div>`
       if(this.state['activity']) {
         selectedActivities = [];
         this.allActivities.forEach(ac => {
@@ -270,7 +229,7 @@ class CAGovReopening extends window.HTMLElement {
     })
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
     this.cardHTML += `<div style="display:none">
-      <div class="county-color-1 county-color-2 county-color-3 county-color-4 text-black"></div>
+      <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
@@ -287,38 +246,6 @@ class CAGovReopening extends window.HTMLElement {
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
 
-
-var activityInput = document.getElementById("activity-query");
-var countyInput = document.getElementById("location-query");
-
-
-
-// Show clear btn only on input (County)
-countyInput.addEventListener("input", function() {
-  inputValueCounty();
- });
-
-// Show clear btn only on input (Activity)
-activityInput.addEventListener("input", function() {
-  inputValueActivity();
- });
-
- activityInput.addEventListener("blur", function() {
-  inputValueActivity();
- });
-
-
-//Clear buttons click events
-document.getElementById("clearLocation").addEventListener("click", function() {
-  countyInput.value = '';
-  inputValueCounty();
-});
-
-document.getElementById("clearActivity").addEventListener("click", function() {
-  activityInput.value = '';
-  inputValueActivity();
-});
-
 // Show clear btn only if there is value (County)
 function inputValueCounty() {
   var countyInput = document.getElementById("location-query");
@@ -328,6 +255,38 @@ function inputValueCounty() {
     }
     else {clearCounty.classList.add('d-none');}
   }
+
+
+  var activityInput = document.getElementById("activity-query");
+  var countyInput = document.getElementById("location-query");
+  
+  
+  
+  // Show clear btn only on input (County)
+  countyInput.addEventListener("input", function() {
+    inputValueCounty();
+   });
+  
+  // Show clear btn only on input (Activity)
+  activityInput.addEventListener("input", function() {
+    inputValueActivity();
+   });
+  
+   activityInput.addEventListener("blur", function() {
+     console.log("something changed")
+    inputValueActivity();
+   });
+
+//Clear buttons click events
+document.getElementById("clearLocation").addEventListener("click", function() {
+  countyInput.value = '';
+  inputValueCounty();
+});	
+
+document.getElementById("clearActivity").addEventListener("click", function() {
+  activityInput.value = '';
+  inputValueActivity();
+});	
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
