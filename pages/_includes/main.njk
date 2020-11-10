@@ -134,7 +134,7 @@
 	<faq-section>
 		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 			
-			<h3 class="text-center color-orange font-size-2em">{{varPeopleWantToKnowTitle}}</h3>
+			<h2 class="text-center color-orange">{{varPeopleWantToKnowTitle}}</h2>
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
 					<div class="faq trigger">
@@ -159,7 +159,7 @@
 	<!-- FOR BUSINESSES SECTION -->
 <learn-more-section>
 <section class="faq-twitter pb-4">
-	<h3 class="text-center color-purple font-size-2em mb-3">For businesses</h3>
+	<h2 class="text-center color-purple mb-3">For businesses</h2>
 	<div class="faq-twitter-wrap pb-5">
 	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
         {% set JSONgov = JSONgovraw | jsonparse %}
@@ -194,14 +194,14 @@
 			<div class="container">
 			<div class="row">
 			<div class="col-lg-8 mx-auto text-center">
-			<h3 class="video-headline font-size-2em mb-0 pb-2">{{item["Video Title"]}}</h3>
+			<h2 class="color-purple mb-0 pb-2">{{item["Video Title"]}}</h2>
 			<p class="mb-3 text-300">{{item["Description"]}}</p>
 				<article class="video-item transition-0_3 transform-scale-hover mx-auto mt-3" data-video="{{item["VideoID"]}}">
 					<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{item["VideoID"]}}" href="https://{{item["VideoURL"]}}">
 						<figure class="video-thumb-photo">
 							<div class="video-thumb-play-button">
 								<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
-									<path d="M43.3,25L0,50V0L43.3,25z"></path>
+									<path class="st0" d="M0,45.9V4.4c0-3.3,2-4.2,4.9-2.5l32.9,19c4.7,2.6,4.8,5,0.6,7.5L5,47.6C1.7,49.6,0,48.5,0,45.9z"/>
 								</svg>
 							</div>
 							<img class="video-thumb-photo-img" src="https://{{item["ImageURL"]}}" alt="{{item["ImageALT"]}}">
