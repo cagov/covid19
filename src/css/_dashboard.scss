@@ -19,6 +19,7 @@
     height: 600px;
   }
 }
+
 .tableauPlaceholder {
   margin-bottom: 30px;
   iframe {
@@ -67,4 +68,11 @@
   outline: 2px solid #0257d5 !important;
   outline-offset: -2px;
 }
+ 
+#clearCounty {
+  top: 12px;;
+}
 
+#clearCounty:focus {
+  outline: 2px solid $darkblue;
+}

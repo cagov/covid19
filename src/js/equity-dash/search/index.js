@@ -81,3 +81,40 @@ class CAGovCountySearch extends window.HTMLElement {
 
 }
 window.customElements.define('cagov-county-search', CAGovCountySearch);
+
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+
+countyInput.addEventListener("focus", function() {
+  inputValue();
+ });
+
+ countyInput.addEventListener("input", function() {
+  inputValue();
+ });
+
+countyInput.addEventListener("blur", function() {
+   inputValue();
+});
+
+function inputValue() {
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+  if (countyInput && countyInput.value) {
+    clearBtn.classList.remove('d-none');
+  }
+  else {clearBtn.classList.add('d-none');}
+}
+
+clearBtn.addEventListener("blur", function(e) { 
+  inputValue();
+});
+
+clearBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("location-query").value = '';
+  //showStateWides();
+  //resetGroupToggles();
+ 
+  //this.classList.add('d-none');
+});

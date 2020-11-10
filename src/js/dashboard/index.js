@@ -25,9 +25,13 @@ window.fetch('/countystatus.json')
   setupFormSubmitListener(aList);
 }.bind(this));
 
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
+    clearBtn.classList.remove('d-none');
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
     let typedInValue = document.querySelector('#location-query').value;
@@ -82,12 +86,13 @@ function displayChart(containerSelector,width,height,url) {
   }
   return new tableau.Viz(chartContainer, chartURL, chartOptions);
 }
-
+/* desctop */
 let topChartHeights1 = 600;
 let chartWidth = 900;
 let chartWidth2 = 900;
 let chartWidth3 = 800;
 let countyMapChartHeight = 660;
+
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
 if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
@@ -120,7 +125,6 @@ else if (window.innerWidth > 919 && window.innerWidth < 1200) {
  // chartWidth2 = 920;
 }
 
-
 // these are county toggles and state toggles
 let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
 let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
@@ -131,7 +135,8 @@ let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartH
 let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
 // this chart does not toggle
-let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/Planforreducingcovid-19/planforreducingcovid-19?:language=en&:display_count=y&:toolbar=n&:origin=viz_share_link');
+let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, //'https://public.tableau.com/views/Planforreducingcovid-19/planforreducingcovid-19?:language=en&:display_count=y&:toolbar=n&:origin=viz_share_link');
+'https://tableau.cdt.ca.gov/views/COVID-19PlanforreducingCOVID-19webpage_16031507318480/planforreducingcovid-19?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
 
 // these are their own toggle sets
 let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
@@ -216,6 +221,43 @@ function showCounties() {
   document.getElementById('testing-county-graph').style.display = 'block';
   document.getElementById('hospital-county-graph').style.display = 'block';
 }
+
+
+countyInput.addEventListener("focus", function() {
+  inputValue();
+ });
+
+ countyInput.addEventListener("input", function() {
+  inputValue();
+ });
+
+countyInput.addEventListener("blur", function() {
+   inputValue();
+});
+
+function inputValue() {
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+  if (countyInput && countyInput.value) {
+    clearBtn.classList.remove('d-none');
+  }
+  else {clearBtn.classList.add('d-none');}
+}
+
+clearBtn.addEventListener("blur", function(e) { 
+  inputValue();
+});
+
+clearBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("location-query").value = '';
+  showStateWides();
+  resetGroupToggles();
+  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+    c.classList.add('d-none');
+  });
+  //this.classList.add('d-none');
+});
 
 // normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
 // showStateWides();
