@@ -24,17 +24,15 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
 
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
-      //.style("fill", "steelblue");
 
+      // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
       tooltip.html(`<div class="chart-tooltip">
-        <div >${d.data.DEMOGRAPHIC_SET_CATEGORY +
-          " people make up"}<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
-<span class="highlight-data"> ${
-        d.data.METRIC_TOTAL_PERCENTAGE
-          ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-          : 0
-      }</span> ${legendScope}</div>
-      </div>`);
+        <div >${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${
+          d.data.METRIC_TOTAL_PERCENTAGE
+            ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+            : 0
+          }</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+        </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
       tooltip.style("top",`${event.offsetY + 100}px`)
