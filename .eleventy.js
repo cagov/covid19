@@ -1,12 +1,20 @@
+// Write to file system.
 const fs = require('fs');
+// A JavaScript function for hashing messages with MD5.
 const md5 = require('md5');
+// Get metadata for building language docs.
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+// Get date display formats for different language interpretation.
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
-let filesSiteData = [];
 
+let filesSiteData = [];
+// Load menu data (Q: Where is this on the main site?)
 let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+// Page name overrides for different languages (?)
 let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
 langData.languages.forEach(writeTranslatedData);
+
+// Build data sets related to school reopenings.
 let schoolsArray = [];
 let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
 schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
@@ -17,23 +25,27 @@ fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/co
 // this needs to be translated, need to get the translated version from translated page
 fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
 
-
+// Read all html pages (where does this come from?)
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
+// If we are developing locally, and htmlmapLocation is updated, make a JSON object available.
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation,'utf8'));
 }
 
 //RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
+// @TODO Q: Why?
 const langPostfixRegExp = new RegExp(`(?:${langData.languages
   .map(x=>x.filepostfix)
   .filter(x=>x)
   .join('|')})$`);
 
+// @TODO Please explain. What determines manual content?
 const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   ? '' //This is a root language page
   : page.fileSlug.replace(langPostfixRegExp,'');
 
+// Eleventy configuration.
 module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
@@ -41,6 +53,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./src/js/maps": "js/maps" });
   eleventyConfig.addPassthroughCopy({ "./pages/rootcopy": "/" });
   //azure-pipelines-staging.yml
+  // ??
 
   //Process manual content folder
   eleventyConfig.addCollection("manualcontent", function(collection) {
@@ -70,7 +83,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("translatedposts", function(collection) {
     const FolderName = 'translated-posts';
     let output = [];
-    
+
     collection.getAll().forEach(item => {
       //fix all http/https links to covid sites
       replaceContent(item,/"http:\/\/covid19.ca.gov\//g,`"https://covid19.ca.gov/`);
@@ -89,6 +102,7 @@ module.exports = function(eleventyConfig) {
           }
 
           //update translated paths.
+          // @TODO What's happening here? 
           const langrecord = getLangRecord(item.data.tags);
           const getTranslatedPath = path =>
             path
@@ -99,7 +113,7 @@ module.exports = function(eleventyConfig) {
           if(!item.url.endsWith(langrecord.filepostfix+'/')) {
             console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
           }
-    
+
           replaceContent(item,/"https:\/\/covid19.ca.gov\//g,`"/${langrecord.pathpostfix}`);
 
           item.outputPath = getTranslatedPath(item.outputPath)
@@ -123,7 +137,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("wordpressposts", function(collection) {
     const FolderName = 'wordpress-posts';
     let output = [];
-    
+
     collection.getAll().forEach(item => {
         if(item.inputPath.includes(FolderName)) {
           let outputPath = item.outputPath.replace(`/${FolderName}`,'');
@@ -150,7 +164,7 @@ module.exports = function(eleventyConfig) {
 
     return output;
   });
-  
+
   eleventyConfig.addCollection("covidGuidance", function(collection) {
     let posts = [];
     collection.getAll().forEach( (item) => {
@@ -180,7 +194,7 @@ module.exports = function(eleventyConfig) {
 
   //
   eleventyConfig.addFilter('formatNumber', (number,tags,fractionDigits=3) => {
-    const roundscale = Math.pow(10,fractionDigits);    
+    const roundscale = Math.pow(10,fractionDigits);
     return addSeperator(Number.isInteger(number) ? number : Math.round(Number.parseFloat(number)*roundscale)/roundscale)
   }
   );
@@ -223,7 +237,7 @@ module.exports = function(eleventyConfig) {
     if(datestring) {
       let targetdate =
         (typeof datestring === 'object') //date without quotes
-        ? datestring 
+        ? datestring
         : datestring==='today'
             ? new Date()
             : datestring.indexOf('Z') > -1
@@ -250,7 +264,7 @@ module.exports = function(eleventyConfig) {
           .replace('[day]',dateDay)
           .replace('[year]',dateYear);
 
-        const timeformatstring = 
+        const timeformatstring =
           (dateAm
             ? formatRecord.timeam
             : formatRecord.timepm
@@ -270,7 +284,7 @@ module.exports = function(eleventyConfig) {
     }
     return datestring;
   }
-  
+
 
   eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
     return formatDate(datestring,null,null,adddays);
@@ -280,7 +294,7 @@ module.exports = function(eleventyConfig) {
     return formatDate(datestring,null,null,1);
   })
 
-  
+
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
@@ -297,15 +311,15 @@ module.exports = function(eleventyConfig) {
   }
 
   const getTranslatedValue = (pageObj, tags, field) => {
-    
+
     let langTag = getLangRecord(tags);
-    
+
     if(!pageObj)
       return "";
 
     if(pageObj[langTag.wptag] && pageObj[langTag.wptag][field]) {
       return pageObj[langTag.wptag][field];
-    } 
+    }
     //that page is missing for that lang, bring in the default
     return pageObj[getLangRecord([]).wptag][field];
   }
@@ -315,8 +329,8 @@ module.exports = function(eleventyConfig) {
 
   // return the translated url or title if appropriate
   eleventyConfig.addFilter('getTranslatedVal', getTranslatedValue);
-  
-  
+
+
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
 
@@ -341,22 +355,22 @@ module.exports = function(eleventyConfig) {
             class: r.groups.class,
             index: r.index,
             fulltag: r[0] }));
-        
-        
-        const getNextTag = (searchArea, tag) => 
+
+
+        const getNextTag = (searchArea, tag) =>
            [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','gm'))]
             .map(r=> ({
               index: r.index,
               isCloseTag: r.groups.closeslash.length>0,
               fulltag: r[0] }))[0];
-        
-        
+
+
         const getEndTag = (tag, html, startIndex) => {
           let resultIndex = startIndex;
           let startTagsActive = 0;
           let loopsafe = 100;
           let searchArea = html.substring(startIndex);
-        
+
           while(--loopsafe>0) {
             const nextTag = getNextTag(searchArea,tag);
             if(!nextTag) throw `Can't find matching end tag - ${tag}`;
@@ -376,7 +390,7 @@ module.exports = function(eleventyConfig) {
             searchArea = searchArea.substring(resultOffset);
           } //while
         } //getEndTag
-        
+
         //Create a list of all accordion content in order
         const accordionContent = getAccordionStartTags(html)
           .map(nextTag=> ({
@@ -387,8 +401,8 @@ module.exports = function(eleventyConfig) {
               html: html.substring(tags.nextTag.index,tags.endTag.index),
               header: tags.nextTag.class==='wp-accordion'
           }));
-        
-        
+
+
         let result = html;
         //loop and build content
         for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
@@ -397,7 +411,7 @@ module.exports = function(eleventyConfig) {
             const headerHTML = row.html
               .replace(/wp-accordion/,'')
               .replace(/ class=""/,'');
-        
+
             let bodyHTML = '';
             //fill the body
             let bodyIndex = resultIndex+1;
@@ -407,14 +421,14 @@ module.exports = function(eleventyConfig) {
                 .replace(/wp-accordion-content/,'')
                 .replace(/ class=""/,'')
                 + '\n';
-        
+
               bodyIndex++;
-        
+
               //remove this content tag from html
               result = result.replace(bodyRowHTML,'');
             } //while
-        
-            const finalHTML = 
+
+            const finalHTML =
 `<cwds-accordion>
   <div class="card">
     <button class="card-header accordion-alpha" type="button" aria-expanded="false">
@@ -430,7 +444,7 @@ ${bodyHTML}
   </div>
 </cwds-accordion>
 `;
-        
+
             //replace the header with the new merged content
             result = result.replace(row.html,finalHTML);
           } //if(row.header)
@@ -475,7 +489,7 @@ ${bodyHTML}
           if(englishUrl.includes(localizeString)) {
             //attempt to translate
             let localizedUrl = englishUrl.replace(localizeString,`--${lang.toLowerCase()}.`);
-  
+
             if(filesSiteData.indexOf(localizedUrl)>-1) {
               html = html.replace(new RegExp(englishUrl,'gm'),localizedUrl);
             } else {
@@ -483,7 +497,7 @@ ${bodyHTML}
             }
           }
         }
-      }  
+      }
     }
 
     return html;
@@ -494,9 +508,9 @@ ${bodyHTML}
 
   const getLangRecord = tags =>
     langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
-  const getLangCode = tags => 
+  const getLangCode = tags =>
     getLangRecord(tags).hreflang;
-  const getLangId = tags => 
+  const getLangId = tags =>
     getLangRecord(tags).id;
   const getLangIncludeFolder = tags =>
     (getLangRecord(tags).id === 'en') ? '../wordpress-posts/' : '../translated-posts/';
@@ -529,12 +543,12 @@ ${bodyHTML}
 
     if(out==='today')
       out = new Date().toISOString();
-    
+
     return out;
   }
   );
-  
-  eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) => 
+
+  eleventyConfig.addPairedShortcode("dothisifcontentexists", (content, contentcontent, match) =>
     contentcontent.match(match) ? content : "");
 
   // return alternate language pages
@@ -545,7 +559,7 @@ ${bodyHTML}
     }
 
     const slug = engSlug(page);
-  
+
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
