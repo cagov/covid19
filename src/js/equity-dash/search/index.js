@@ -104,7 +104,7 @@ class CAGovCountySearch extends window.HTMLElement {
       this.state['county'] = 'California';
       this.state.statewide = true;
       this.emitCounty();
-      e.target.classList.add('d-none');
+      clearBtn.classList.add('d-none');
     }.bind(this));
   }
 
