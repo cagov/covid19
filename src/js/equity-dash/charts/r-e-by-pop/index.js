@@ -24,12 +24,13 @@ class CAGOVEquityREPop extends window.HTMLElement {
     }
     this.county = 'California';
     this.legendString = function() {
+      console.log('returning ')
+      console.log(this.selectedMetricDescription.toLowerCase())
       if(this.county === 'California') {
-        return `of ${this.selectedMetric} statewide`;
+        return `of ${this.selectedMetricDescription.toLowerCase()} statewide`;
       }
-      return `of ${this.selectedMetric} in county`;
+      return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
     }
-    this.legendScope = this.legendString();
     
     this.innerHTML = template(this.chartTitle(), this.description());
 
@@ -65,7 +66,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
     this.listenForLocations();
     this.county = 'California';
-    this.legendScope = 'of cases statewide';
     this.resetTitle()
   }
 
@@ -73,8 +73,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-      this.legendScope = this.legendString();
-      this.selectedMetric = 'cases';
+      if(this.selectedMetric === "deaths") {
+        this.selectedMetric = "cases";
+      }
       this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       this.resetTitle()
     }.bind(this), false);
@@ -144,7 +145,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
         .remove()
 
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendScope)
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString())
   }
 
   retrieveData(url) {
