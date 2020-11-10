@@ -8,17 +8,19 @@ Eleventy is a static-site generator which
 * generates static HTML pages which are then pushed to a repository on Github.
 
 This document
+
 * describes how our configuration works
 * provides an overview of the application.
 
 ## Running the application as a developer
-`npm run dev` — Run a local version of the application.
-`npm run start` — Create a static build of the site and then run `watch` mode. BrowserSync will check for file changes and then update the application.
+`npm run dev`
+: Run a local version of the application.
+
+`npm run start`: 
+Create a static build of the site and then run `watch` mode. BrowserSync will check for file changes and then update the application.
 
 ## Overview of npm scripts
-Some notes on the package.json.
-Note: We could consider supporting .jsonc (JSON with comments) and move these comments to package.json, but that requires some special engineering support, that could be difficult to replicate across packages.
-
+Some notes on the `package.json` file.
 
 `dev`
 : Run a local version of the application in watch mode. Sets NODE_ENV to development, which enables some features for development mode only.
@@ -27,14 +29,13 @@ Note: We could consider supporting .jsonc (JSON with comments) and move these co
 : Creates a local build, runs BrowserSync and does not use NODE_ENV development, but will use your machine's NODE_ENV, which should be set to `production`.
 
 `serve`
-`npx @11ty/eleventy --serve --quiet`
 : Create a local http server 11ty build locally. (Q: Where this is used?)
 
 `build`
 : Run gulp build script, which builds JS, CSS, then the site, in that order.
 
 `build:css`
-: Executes the full CSS build process. Aggregates all sass partials from `src/css`. For home page css, a list of nunjucks templates is read and the run through postcss-purgecss. PurgeCSS `analyzes your content and your css files. Then it matches the selectors used in your files with the one in your content files. It removes unused selectors from your css, resulting in smaller css files.`
+: Executes the full CSS build process. Aggregates all sass partials from `src/css`. For home page css, a list of nunjucks templates is read and the run through postcss-purgecss. PurgeCSS "analyzes your content and your css files. Then it matches the selectors used in your files with the one in your content files. It removes unused selectors from your css, resulting in smaller css files."
 : If in development mode, writes this to development.css & reloads on changes.
 
 `build:site`
