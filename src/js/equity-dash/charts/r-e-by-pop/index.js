@@ -24,8 +24,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
     }
     this.county = 'California';
     this.legendString = function() {
-      console.log('returning ')
-      console.log(this.selectedMetricDescription.toLowerCase())
       if(this.county === 'California') {
         return `of ${this.selectedMetricDescription.toLowerCase()} statewide`;
       }
