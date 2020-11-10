@@ -45,38 +45,6 @@ Some notes on the `package.json` file.
 `build:js`
 : Build the site's javascript via Rollup, a package that bundles JavaScript modules.
 
-`build:js:ancient`
-`rollup --config src/js/rollup.config.es5.js`
-: Outputs old es5 code?
-
-`build:js:esm`
-`rollup --config src/js/rollup.config.js`
-: ES Modules?
-
-`build:js:alerts`
-`rollup --config src/js/alerts/rollup.config.js`
-: Used anywhere?
-
-`build:js:plasma`
-`rollup --config src/js/plasma/rollup.config.js`
-: Used anywhere?
-
-`build:js:survey`
-`rollup --config src/js/survey/rollup.config.js`
-: Used anywhere?
-
-`build:js:telehealth`
-`rollup --config src/js/telehealth/rollup.config.js`
-: Used anywhere?
-
-`build:js:whatwhere`
-`rollup --config src/js/what-open-where/rollup.config.js`
-: Used anywhere?
-
-`build:js:video`
-`rollup --config src/js/video/rollup.config.js`
-: Used anywhere?
-
 `watch`
 : Build the site, then fire up the watcher and browsersync.
 
