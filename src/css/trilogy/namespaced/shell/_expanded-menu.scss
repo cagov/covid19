@@ -1,4 +1,9 @@
 cagov-navoverlay {
+  a.expanded-menu-section-header-link {
+    /* jbum - this is to override the inherited text-decoration from .interior_page a */
+    text-decoration: none;
+  }
+
   .expanded-menu {
     background: $darkblue;
     @include size(85vw, 100%);
@@ -93,16 +98,17 @@ cagov-navoverlay {
           margin-bottom: 0rem;
         }
         &-link {
-          font-family: $headline;
+          font-family: $body;
+          font-weight: 700;
+          font-size: 1.5rem;
           color: $orange;
           width: 100%;
-          text-transform: uppercase;
+          text-transform: none;
           display: block;
           text-align: left;
           transition: $basic;
           background: transparent;
           border: none;
-          font-size: 0.9rem;
           padding: 0.25rem;
           border-radius: 1.5rem;
           &:hover {
@@ -113,7 +119,7 @@ cagov-navoverlay {
           }
           &:focus {
             //background: $darkblue;
-            color: $white;
+           color: $white;
             box-shadow: 0 0 0 2px $white;
             padding-left: 0.5rem;
             @include tablet {
@@ -130,8 +136,7 @@ cagov-navoverlay {
             &:focus {
               color: $white;
             }
-            text-decoration: inherit;
-            font-size: 1rem;
+            /* text-decoration: inherit; */
             width: auto;
           }
           @include desktop {
@@ -167,7 +172,9 @@ cagov-navoverlay {
       }
       &-link {
         color: $white;
-        font-weight: 700;
+        font-family: $body;
+        font-weight: 400;
+        font-size: 1.2rem;
         padding: 0.5rem 0.25rem;
         margin: 0.15rem 0 0.15rem 2px;;
         display: table;
@@ -177,12 +184,12 @@ cagov-navoverlay {
           margin-top: 0.7em;
         }
         @include tablet {
-          padding: .35rem .7rem;
+          padding: .35rem 0;
           margin: 0 0 0 2px;
           line-height: 1.1rem;
         }
         @include desktop {
-          padding: .35rem .7rem;
+          padding: .35rem 0;
         }
         &:hover,
         &:active {
