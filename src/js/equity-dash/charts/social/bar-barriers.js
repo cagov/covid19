@@ -79,17 +79,21 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare) {
     let toggles = this.querySelectorAll('.js-toggle-group');
+    let component = this;
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
         event.preventDefault();
         if(this.classList.contains('healthcare')) {
-          rewriteBar(datahealthcare, 'Case rate by access to healthcare')
+          rewriteBar(datahealthcare)
+          component.querySelector('.chart-title').innerHTML = 'Case rate by access to healthcare';
         }
         if(this.classList.contains('housing')) {
-          rewriteBar(datacrowding, 'Case rate by crowding housing')
+          rewriteBar(datacrowding)
+          component.querySelector('.chart-title').innerHTML = 'Case rate by crowding housing';
         }
         if(this.classList.contains('income')) {
-          rewriteBar(dataincome, 'Case rate by median annual household income bracket')
+          rewriteBar(dataincome)
+          component.querySelector('.chart-title').innerHTML = 'Case rate by median annual household income bracket';
         }
         resetToggles();
         tog.classList.add('toggle-active')
@@ -102,7 +106,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       });
     }
 
-    function rewriteBar(dataset, title) {
+    function rewriteBar(dataset) {
       y = d3.scaleLinear()
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
         .range([height - margin.bottom, margin.top])
@@ -112,8 +116,6 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       xAxis = writeXAxis(dataset, height, margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
-      
-      document.querySelector('.chart-title').innerHTML = title;
     }
 
   }

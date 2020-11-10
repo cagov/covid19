@@ -168,7 +168,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .attr("x", d => x(d[0]))
     .attr("y", d => y(d.data.METRIC))
     .attr("width", d => x(d[1]) - x(d[0]))
-    .attr("height", y.bandwidth() - 15)
+    .attr("height", "10px")
 
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
@@ -214,7 +214,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .append("text")
         .attr("class", "more-than-labels")
         .attr("y", d => {
-          return y(d.METRIC) + 40
+          return y(d.METRIC) + 25
         })
         .attr("x", d => x(0) + 255)
         .attr("height", y.bandwidth())
@@ -251,7 +251,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
       enter
         .append("svg")
 
-        .attr("y", d => y(d.METRIC) + 30)
+        .attr("y", d => y(d.METRIC) + 15)
         .attr("x", d => x(0))
         .html(d => {
           if (
