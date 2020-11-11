@@ -100,9 +100,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
 
   render() {
     let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
-    data.forEach(d => {
-      d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
-    })
     data.sort(function(a, b) {
       return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
     })
