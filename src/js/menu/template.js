@@ -14,13 +14,14 @@ export default function (data, dataset) {
         </form>
       </div>
 
+      <!--
       <div class="expanded-menu-section mobile-only">
         <strong class="expanded-menu-section-header">
           <a class="expanded-menu-section-header-link expanded-menu-close-mobile" href="#">
             <svg class="expanded-menu-close-mobile-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18"><path d="M7.7,0.4L0.4,7.9c-0.6,0.6-0.6,1.5,0,2.1l7.3,7.5c0.6,0.6,1.5,0.6,2.1,0c0.6-0.6,0.6-1.5,0-2.1L5,10.5h10.6 c0.8,0,1.5-0.7,1.5-1.5c0-0.8-0.7-1.5-1.5-1.5H5l4.8-4.9c0.3-0.3,0.4-0.7,0.4-1.1c0-0.4-0.1-0.8-0.4-1.1C9.2-0.1,8.3-0.1,7.7,0.4z"></path></svg>
           </a>
         </strong>
-      </div>
+      </div> -->
 
       <div class="expanded-menu-section mobile-only">
         <strong class="expanded-menu-section-header">
@@ -55,7 +56,7 @@ export default function (data, dataset) {
           <div class="hamburger-inner"></div>
         </div>
       </div>
-      <div class="menu-trigger-label menu-label" data-openlabel="${dataset.labelMenu}" data-closelabel="Close">${dataset.labelMenu}</div>
+      <div class="menu-trigger-label menu-label" data-openlabel="${dataset.labelMenu}" data-closelabel="${dataset.labelMenuClose}">${dataset.labelMenu}</div>
     </button>
   </div>`;
 }
