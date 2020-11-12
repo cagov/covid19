@@ -124,9 +124,9 @@ class CAGovReopening extends window.HTMLElement {
   tableauStuff() {
     var divElement = document.querySelector('.tableauPlaceholder');
     var vizElement = divElement.getElementsByTagName('object')[0];
-    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';vizElement.style.height='547px';} 
-    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';vizElement.style.height='547px';} 
-    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';vizElement.style.height='547px';} 
+    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';vizElement.style.height='547px';}
+    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';vizElement.style.height='547px';}
+    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';vizElement.style.height='547px';}
     else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
     // scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
@@ -190,49 +190,8 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen:
-    let schoolOKList = [
-      "Alameda",
-      "Alpine",
-      "Amador",
-      "Butte",
-      "Calaveras",
-      "Contra Costa",
-      "Del Norte",
-      "El Dorado",
-      "Fresno",
-      "Humboldt",
-      "Inyo",
-      "Lake",
-      "Lassen",
-      "Marin",
-      "Mariposa",
-      "Modoc",
-      "Mono",
-      "Napa",
-      "Nevada",
-      "Orange",
-      "Placer",
-      "Plumas",
-      "Riverside",
-      "Sacramento",
-      "San Diego",
-      "San Francisco",
-      "San Joaquin",
-      "San Luis Obispo",
-      "San Mateo",
-      "Santa Barbara",
-      "Santa Clara",
-      "Santa Cruz",
-      "Sierra",
-      "Siskiyou",
-      "Solano",
-      "Trinity",
-      "Tuolumne",
-      "Yolo"
-    ];
-    if(this.schoolOKList) {
-      schoolOKList = this.schoolOKList;
-    }
+    const schoolOKList = this.schoolOKList;
+
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
 
@@ -248,7 +207,7 @@ class CAGovReopening extends window.HTMLElement {
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
       this.cardHTML += `<h2 class="text-black mb-0">${item.county} County</h2><div class="county-container"><div class="card-county county-color-${item['Overall Status']}">
-        
+
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
       </div></div><p class="mt-0">${this.countyRestrictionsAdvice} Check your <a href="/get-local-information/#County-websites">county's website</a>.</p>`
