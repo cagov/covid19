@@ -60,7 +60,7 @@ We need to balance pregenerating a lean site with ease of authoring. We do this 
 
 ### Simplified web app architecture diagram
 
-<img src="src/img/webAppReferenceArchitecture.png">
+<img src="src/img/webAppReferenceArchitecture.png" />
 
 # Development	
 
