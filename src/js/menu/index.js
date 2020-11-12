@@ -27,6 +27,8 @@ class CAGOVOverlayNav extends window.HTMLElement {
     this.classList.add('display-menu');
     this.querySelector('.hamburger').classList.add('is-active');
     this.querySelector('.menu-trigger').classList.add('is-fixed');
+    var menLabel = this.querySelector('.menu-trigger-label');
+    menLabel.innerHTML = menLabel.getAttribute('data-closelabel');
     this.querySelector('#main-menu').setAttribute('aria-hidden', 'false');
     document.addEventListener('keydown', this.escapeMainMenu.bind(this));
     setTimeout(
@@ -43,6 +45,8 @@ class CAGOVOverlayNav extends window.HTMLElement {
     this.classList.remove('reveal-items');
     this.querySelector('.hamburger').classList.remove('is-active');
     this.querySelector('.menu-trigger').classList.remove('is-fixed');
+    var menLabel = this.querySelector('.menu-trigger-label');
+    menLabel.innerHTML =  menLabel.getAttribute('data-openlabel');
     // what should we apply aria-expanded to?
     this.querySelector('#main-menu').setAttribute('aria-hidden', 'true');
     document.removeEventListener('keydown', this.escapeMainMenu.bind(this));

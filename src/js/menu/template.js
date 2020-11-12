@@ -55,7 +55,7 @@ export default function (data, dataset) {
           <div class="hamburger-inner"></div>
         </div>
       </div>
-      <div class="menu-trigger-label menu-label">${dataset.labelMenu}</div>
+      <div class="menu-trigger-label menu-label" data-openlabel="${dataset.labelMenu}" data-closelabel="Close">${dataset.labelMenu}</div>
     </button>
   </div>`;
 }
