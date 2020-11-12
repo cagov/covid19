@@ -1,5 +1,6 @@
 const fs = require('fs');
 const md5 = require('md5');
+
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 let filesSiteData = [];
