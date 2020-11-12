@@ -82,9 +82,11 @@ cagov-navoverlay {
             max-height: 100rem;
            // padding-top: 0.5rem;
           }
-        }
-        .expanded-menu-section-header-link {
-          color: $white;
+          @media (max-width:48rem) {
+            .expanded-menu-section-header-link {
+              color: $white;
+            }
+          }
         }
         .expanded-menu-section-header-arrow-svg {
           transform: rotate(180deg);
@@ -119,23 +121,28 @@ cagov-navoverlay {
           }
           &:focus {
             //background: $darkblue;
-           color: $white;
+            /* jbum omit
+            color: $white;
             box-shadow: 0 0 0 2px $white;
             padding-left: 0.5rem;
             @include tablet {
             }
+            */
           }
+          
           &.white {
             color: $white;
           }
+          
           @include tablet {
             cursor: default;
             &:hover {
               color: $orange;
             }
+            /*
             &:focus {
               color: $white;
-            }
+            } */
             /* text-decoration: inherit; */
             width: auto;
           }
