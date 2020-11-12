@@ -8,10 +8,6 @@ tags: ["translate"]
 addtositemap: true
 ---
 
-<!--{%-set data = tableauCovidMetrics[0] -%}-->
-<!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}-->
-<!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->
-
 <p>California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities.</p>
 
 
@@ -45,6 +41,12 @@ addtositemap: true
 <p class="small-text">*Small counties (those with a population less than 106,000) may be subject to alternate case assessment measures for purposes of tier assignment.</br>
 **Health equity metric is not applied for small counties. The health equity metric is used to move to a less restrictive tier.</p>
 <p>&nbsp;</p>
+
+
+
+<!--{%-set data = tableauCovidMetrics[0] -%}-->
+<!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}-->
+<!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->
 
 
 
