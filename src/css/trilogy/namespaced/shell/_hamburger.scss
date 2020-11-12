@@ -15,6 +15,9 @@ cagov-navoverlay {
     display: inline-block;
     cursor: pointer;
     position: relative;
+    .is-fixed {
+      position: fixed;
+    }
     top: -2px;
     right: 0;
     transition: $slow;

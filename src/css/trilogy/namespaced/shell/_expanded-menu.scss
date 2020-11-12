@@ -111,7 +111,8 @@ cagov-navoverlay {
           transition: $basic;
           background: transparent;
           border: none;
-          padding: 0.25rem;
+          padding: 0.25rem; 
+          padding-right:2rem; /* arrow clearence for long text */
           border-radius: 1.5rem;
           &:hover {
             color: $white;
