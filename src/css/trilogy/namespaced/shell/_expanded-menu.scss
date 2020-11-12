@@ -175,7 +175,7 @@ cagov-navoverlay {
         font-family: $body;
         font-weight: 400;
         font-size: 1.2rem;
-        padding: 0.5rem 0.25rem;
+        padding: .5rem 0.25rem;
         margin: 0.15rem 0 0.15rem 2px;;
         display: table;
         transition: color 0.3s $slow-curve;
@@ -184,16 +184,19 @@ cagov-navoverlay {
           margin-top: 0.7em;
         }
         @include tablet {
-          padding: .35rem 0;
+          padding: 1rem 0;
           margin: 0 0 0 2px;
           line-height: 1.1rem;
         }
         @include desktop {
-          padding: .35rem 0;
+          padding: 1rem 0;
+        }
+        @include phone {
+          padding: 0.35rem 0;
         }
         &:hover,
         &:active {
-          color: $yellow;
+          color: $white;
         }
         &:focus {
          // background: $yellow;

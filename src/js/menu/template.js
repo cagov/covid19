@@ -24,7 +24,7 @@ export default function (data, dataset) {
 
       <div class="expanded-menu-section mobile-only">
         <strong class="expanded-menu-section-header">
-          <a class="expanded-menu-section-header-link white" href="/">${dataset.labelHome}</a>
+          <a class="expanded-menu-section-header-link" href="/">${dataset.labelHome}</a>
         </strong>
       </div>
       ${data.sections.map(section => {
