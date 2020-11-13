@@ -8,7 +8,7 @@ class CAGOVOverlayNav extends window.HTMLElement {
       .then(data => {
         this.innerHTML = navTemplate(data, this.dataset);
         this.querySelector('.open-menu').addEventListener('click', this.toggleMainMenu.bind(this));
-        this.querySelector('.expanded-menu-close-mobile').addEventListener('click', this.toggleMainMenu.bind(this));
+        // this.querySelector('.expanded-menu-close-mobile').addEventListener('click', this.toggleMainMenu.bind(this));
         if (window.innerWidth < 1024) {
           this.expansionListeners(); // everything is expanded by default on big screens
         }
