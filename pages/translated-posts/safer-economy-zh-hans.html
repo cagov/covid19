@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "更安全的经济蓝图"
 meta: " 加州已为减缓州内COVID-19疫情制定蓝图，并修改了放宽和加强各种活动的限制条件。了解您所在县的状态 加州各县根据各自的检测呈阳性率及经调整的患病率被归至某个等级。各县必须停留在某个等级至少3周 […]"
 author: "State of California"
-publishdate: "2020-11-10T19:20:38Z"
+publishdate: "2020-11-12T22:10:05Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -31,11 +31,7 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*可能会对小县（人口少于106,000人的县）采用其他病例评估措施，以进行等级划分。</br>**健康公平指标不适用于小县。健康公平指标是用于让某县移至限制性较低的等级。</p>
-<p> </p>
-
-
-
-<h3 class="has-text-align-center">当前等级划分（截至2020年11月10日）</h3>
+<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">当前等级划分（截至 {{_varTierDate_}}</h3>
 
 
 
@@ -43,7 +39,7 @@ addtositemap: true
 
 
 
-<p class="small-text">所有数据和等级划分的依据为2020年10月31日周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更的方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。</p>
+<p class="small-text">所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更的方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。</p>
 
 
 
