@@ -1,4 +1,6 @@
 name: 'JS Action'
+on:
+  push:
 description: 'Greet someone and record the time'
 inputs:
   who-to-greet:  # id of input
