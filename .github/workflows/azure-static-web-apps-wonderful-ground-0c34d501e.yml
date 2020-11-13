@@ -6,14 +6,9 @@ on:
       - staging	
     paths-ignore:	
       - 'pages/_data/wp/syncmanifest.json'	
-  pull_request:	
-    types: [opened, synchronize, reopened, closed]	
-    branches:	
-      - staging	
 
 jobs:	
   build_and_deploy_job:	
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')	
     runs-on: ubuntu-latest	
     name: Build and Deploy Job	
     steps:	
