@@ -17,9 +17,9 @@ jobs:
         with:
           node-version: 12.x
       - run: cd .github/workflows/JsAction
-      - run: npm install
+      - run: npm install --prefix ".github/workflows/JsAction"
       - run: cd .github/workflows/JsAction
-      - run: npm run build --if-present
+      - run: npm run build --if-present --prefix ".github/workflows/JsAction"
       - name: Hello world action step
         uses: ./.github/workflows/JsAction # Uses an action in the root directory
         id: hello
