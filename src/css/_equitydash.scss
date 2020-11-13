@@ -139,6 +139,7 @@ learn-more-section {
         border-bottom: 1px solid $darkblue;
         padding: 1.2rem 0.75rem;
         position: relative;
+        text-decoration: none;
         transition: background 0.3s $slow-curve;
 
         &:focus {
