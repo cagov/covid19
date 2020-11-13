@@ -10,12 +10,15 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: .github/workflows/JsAction
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - run: cd .github/workflows/JsAction
       - run: npm install
+      - run: cd .github/workflows/JsAction
       - run: npm run build --if-present
       - name: Hello world action step
         uses: ./.github/workflows/JsAction # Uses an action in the root directory
