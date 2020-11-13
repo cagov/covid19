@@ -5,9 +5,7 @@
   overflow: hidden;
 }
 .video-thumb-photo-img {
-  opacity: 0.75;
   width: 100%;
-  transition: .3s cubic-bezier(0.15, 0.92, 0.14, 0.95);
 }
 .video-thumb-play-button {
   position: absolute;
@@ -43,22 +41,6 @@
   }
 }
 
-.video-thumb-link:hover .video-thumb-photo {
-  box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
-}
-.video-thumb-link:hover .video-thumb-photo-img {
-  opacity: 1;
-  width: 110%;
-  height: 110%;
-}
-
-
-.video-thumb-link:focus .video-thumb-photo {
-  box-shadow: 0 0 0 4px #ecca00, 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
-}
-.video-thumb-link:focus .video-thumb-photo-img {
-  opacity: 1;
-}
 
 
 .video-modal {
