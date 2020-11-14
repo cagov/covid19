@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Blueprint para sa Mas Ligtas na Ekonomiya"
 meta: "Ang California ay may blueprint ang para mabawasan ang COVID-19 sa estado, na may mga nabagong pamantayan para sa pagpapaluwag at paghihigpit ng mga limitasyon sa mga aktibidad. ﻿Unawain ang status ng iyong county Ang bawat county sa California ay nakatalaga sa isang tier batay sa pagiging positibo nito sa mga pagsusuri at na-adjust nitong rate ng kaso. Sa minimum, ang mga county ay dapat manatili sa isang tier sa loob ng hindi bababa sa 3 […]"
 author: "State of California"
-publishdate: "2020-11-10T19:20:38Z"
+publishdate: "2020-11-12T22:10:05Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -31,11 +31,7 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*Puwedeng mapailalim ang maliliit na county (na wala pang 106,000 ang populasyon) sa ibang pag-iingat para sa pagtatasa ng kaso para sa mga layunin ng pagtatalaga ng tier.</br> **Hindi inilalapat ang sukatan ng equity sa kalusugan sa maliliit na county. Ginagamit ang sukatan ng equity sa kalusugan para makausad sa mas maluwag na tier.</p>
-<p> </p>
-
-
-
-<h3 class="has-text-align-center">Kasalukuyang pagtatalaga ng tier mula Nobyembre 10, 2020</h3>
+<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">Kasalukuyang pagtatalaga ng tier mula {{_varTierDate_}}</h3>
 
 
 
@@ -43,7 +39,7 @@ addtositemap: true
 
 
 
-<p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong Oktubre 31, 2020. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang dating datos ng county (<strong>California Blueprint Data Chart</strong>) sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">page ng gabay ng Departamento ng Pampublikong Kalusugan ng California</a>.</p>
+<p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang dating datos ng county (<strong>California Blueprint Data Chart</strong>) sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">page ng gabay ng Departamento ng Pampublikong Kalusugan ng California (California Department of Public Health)</a>.</p>
 
 
 
