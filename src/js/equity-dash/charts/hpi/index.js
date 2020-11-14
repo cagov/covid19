@@ -34,6 +34,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
+      console.log("Got County: " + this.county);
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
@@ -53,12 +54,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let data2 = alldata.county_positivity_low_hpi;
 
     let x = d3.scaleTime()
-      .domain([d3.min(data, d => new Date(d.DATE)), d3.max(data, d => new Date(d.DATE))])
-      .range([0,200]);
+      .domain([d3.min(data2, d => new Date(d.DATE)), d3.max(data, d => new Date(d.DATE))])
+      .range([10,200]);
 
     let y = d3.scaleLinear()
       .domain([0, d3.max(data2, d => d.METRIC_VALUE) * 1.5]) // using county_positivity_low_hpi because that has higher numbers
-      .range([100, 0])
+      .range([90, 0])
 
     let xAxis = g => g
       .attr("transform", `translate(5,-90)`)
@@ -66,6 +67,17 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
+      // .call(g => g)
+      .call(g => g.select(".domain").remove())
+
+    let yAxis = g => g
+      .attr("transform", `translate(10, 0)`)
+      .call(d3.axisLeft(y)
+        .ticks(4)
+        .tickFormat(d3.format(".0%"))
+        .tickSize(-200)
+      )
+      // .call(g => g)
       .call(g => g.select(".domain").remove())
       
     let line = d3.line()
@@ -78,6 +90,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
+    svg.selectAll(".tick").remove();
 
     svg
       .append("path")
@@ -105,6 +118,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("d", line);
     
     svg.append("g").call(xAxis);
+    svg.append("g").call(yAxis);
     
     //tooltip
     const tooltip = new Tooltip();
