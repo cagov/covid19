@@ -39,6 +39,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
       .then(alldata => {
+        // console.log("Writing Chart");
         this.writeChart(alldata, this.svg);
       })
         
@@ -50,6 +51,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeChart(alldata, svg) {
+    // console.log("Write Chart);
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
 
@@ -57,9 +59,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .domain([d3.min(data2, d => new Date(d.DATE)), d3.max(data, d => new Date(d.DATE))])
       .range([10,200]);
 
+    // let maxy = d.METRIC_VALUE) * 1.1
+    let max_y = d3.max(data2, d =>d.METRIC_VALUE) * 1.4;
+    console.log("Max Y = " + max_y);
     let y = d3.scaleLinear()
-      .domain([0, d3.max(data2, d => d.METRIC_VALUE) * 1.5]) // using county_positivity_low_hpi because that has higher numbers
-      .range([90, 0])
+      .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
+      .range([90, 2])
 
     let xAxis = g => g
       .attr("transform", `translate(5,-90)`)
@@ -69,12 +74,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .tickSize(180,0))
       // .call(g => g)
       .call(g => g.select(".domain").remove())
-
+  
+    let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); // Math.min(Math.floor(max_y*100),10);
+    let tick_fmt = d3.format(".0%");
+    
     let yAxis = g => g
       .attr("transform", `translate(10, 0)`)
       .call(d3.axisLeft(y)
-        .ticks(4)
-        .tickFormat(d3.format(".0%"))
+        .ticks(nbr_ticks)
+        .tickFormat(tick_fmt)
         .tickSize(-200)
       )
       // .call(g => g)
@@ -90,7 +98,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
-    svg.selectAll(".tick").remove();
+    svg.selectAll(".tick").remove(); // remove previous axes annotations
 
     svg
       .append("path")
