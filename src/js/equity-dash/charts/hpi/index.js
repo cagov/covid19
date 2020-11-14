@@ -34,7 +34,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-      console.log("Got County: " + this.county);
+      // console.log("Got County: " + this.county);
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
@@ -60,11 +60,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .range([10,200]);
 
     // let maxy = d.METRIC_VALUE) * 1.1
-    let max_y = d3.max(data2, d =>d.METRIC_VALUE) * 1.4;
-    console.log("Max Y = " + max_y);
+    // don't allow max_y to exceed 100%, since that would be silly
+    let max_y = Math.min(1,d3.max(data2, d => d.METRIC_VALUE) * 1.4);
+
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
-      .range([90, 2])
+      .range([90, 2]);
 
     let xAxis = g => g
       .attr("transform", `translate(5,-90)`)
@@ -73,7 +74,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
       // .call(g => g)
-      .call(g => g.select(".domain").remove())
+      .call(g => g.select(".domain").remove());
   
     let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); // Math.min(Math.floor(max_y*100),10);
     let tick_fmt = d3.format(".0%");
@@ -86,7 +87,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .tickSize(-200)
       )
       // .call(g => g)
-      .call(g => g.select(".domain").remove())
+      .call(g => g.select(".domain").remove());
       
     let line = d3.line()
       .x((d, i) => {
@@ -94,7 +95,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       })
       .y(d => {
         return y(d.METRIC_VALUE)
-      })
+      });
 
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
@@ -109,7 +110,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("stroke", "#92C5DE")
       .attr("stroke-width", .5)
       .attr("class","county_positivity_all_nopris")
-      .attr("d", line)
+      .attr("d", line);
 
     //call line chart county_positivity_low_hpi
     svg.selectAll(".county_positivity_low_hpi").remove();
