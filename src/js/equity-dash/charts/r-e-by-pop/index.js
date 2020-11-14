@@ -101,12 +101,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
   render() {
     let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
     data.sort(function(a, b) {
-      return d3.descending(a.SORT_METRIC, b.SORT_METRIC);
+      return d3.descending(a.METRIC_TOTAL_PERCENTAGE, b.METRIC_TOTAL_PERCENTAGE);
     })
-    // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
-    // don't know why the above never works, so keep hardcoding it
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
-    let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
+    // let groups = ["Latino", "Native Hawaiian and other Pacific Islander", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
+    let groups = data.map(item => item.DEMOGRAPHIC_SET_CATEGORY); // ["Native Hawaiian and other Pacific Islander", "Latino", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
 
     let stackedData1 = d3.stack().keys(this.subgroups1)(data)
     let stackedData2 = d3.stack().keys(this.subgroups2)(data);

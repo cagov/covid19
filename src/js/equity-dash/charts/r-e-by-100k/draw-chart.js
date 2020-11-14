@@ -1,7 +1,8 @@
-export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope) {
+export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, statewideRatePer100k) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
+  svg.selectAll("path").remove();
 
   svg
     .append("g")
@@ -146,28 +147,25 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
         });
     });
 
-  /*reference line for statewide rate
+  // reference line for statewide rate
   svg
     .append("path")
     .attr(
       "d",
       d3.line()([
-        [x(data[0].STATE_CASE_RATE_PER_100K), 30],
-        [x(data[0].STATE_CASE_RATE_PER_100K), 650]
+        [x(statewideRatePer100k), 30],
+        [x(statewideRatePer100k), 650]
       ])
     )
     .attr("stroke", "black")
     .style("stroke-dasharray", "3, 3")
     .style("stroke", "#1F2574");
-*/
+
   svg
     .append("g")
     .append("text")
-    .text(
-      "Statewide case rate: " +
-        parseFloat(data[0].STATE_CASE_RATE_PER_100K).toFixed(1)
-    )
-    .attr("x", x(data[0].STATE_CASE_RATE_PER_100K))
+    .text(`Statewide ${filterScope.toLowerCase()} rate: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
+    .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
     .attr('text-anchor', 'middle')
     .attr('class', 'label');

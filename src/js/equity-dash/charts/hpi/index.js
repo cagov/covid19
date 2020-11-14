@@ -34,12 +34,10 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
-      console.log("Got County: " + this.county);
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
       .then(alldata => {
-        // console.log("Writing Chart");
         this.writeChart(alldata, this.svg);
       })
         
@@ -51,7 +49,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeChart(alldata, svg) {
-    // console.log("Write Chart);
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
 
@@ -61,7 +58,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
     // let maxy = d.METRIC_VALUE) * 1.1
     let max_y = d3.max(data2, d =>d.METRIC_VALUE) * 1.4;
-    console.log("Max Y = " + max_y);
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
       .range([90, 2])
