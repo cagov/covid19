@@ -1,5 +1,6 @@
 import template from './template.js';
 import drawBars from './draw-chart.js';
+import termCheck from '../race-ethnicity-config.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback () {
@@ -16,12 +17,12 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     })
 
     this.selectedMetric = 'cases';
-    this.selectedMetricDescription = 'Case';
+    this.selectedMetricDescription = 'Cases';
     this.chartTitle = function() {
       return `${this.selectedMetricDescription} rate per 100K by race and ethnicity group in ${this.county}`;
     }
     this.description = function (selectedMetricDescription) {
-      return `Compare ${selectedMetricDescription} adjusted by population size across each race and ethnicity.`;
+      return `Compare ${selectedMetricDescription.toLowerCase()} adjusted by population size across each race and ethnicity.`;
     }
     this.county = 'California';
     this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
@@ -88,10 +89,16 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
   render() {
     let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
+    let displayDemoMap = termCheck();
+
     data.forEach(d => {
       d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = 0;
       if(d.METRIC_VALUE_PER_100K_30_DAYS_AGO) {
         d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
+      }
+      // we map the race/ethnicities in the db to the desired display values here
+      if(displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
+        d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY);
       }
     })
 
@@ -100,7 +107,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     })
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
-    let groups = data.map(item => item.DEMOGRAPHIC_SET_CATEGORY); // ["Native Hawaiian and other Pacific Islander", "Latino", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
+    let groups = data.map(item => item.DEMOGRAPHIC_SET_CATEGORY);
     
     let stackedData = d3.stack().keys(this.subgroups)(data)
 

@@ -23,7 +23,7 @@ cagov-chart-equity-missingness {
     font-size: 0.95rem;
     text-anchor: unset;
   }
-  .bar-label text::first-letter {
+  .bar-label .tick text {
     text-transform: capitalize;
   }
   .label {

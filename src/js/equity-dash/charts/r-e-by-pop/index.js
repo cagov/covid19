@@ -1,5 +1,6 @@
 import template from './template.js';
 import drawBars from './draw-chart.js';
+import termCheck from '../race-ethnicity-config.js';
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback () {
@@ -100,6 +101,13 @@ class CAGOVEquityREPop extends window.HTMLElement {
 
   render() {
     let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
+    // we map the race/ethnicities in the db to the desired display values here
+    let displayDemoMap = termCheck();
+    data.forEach(d => {
+      if(displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
+        d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY);
+      }
+    })
     data.sort(function(a, b) {
       return d3.descending(a.METRIC_TOTAL_PERCENTAGE, b.METRIC_TOTAL_PERCENTAGE);
     })

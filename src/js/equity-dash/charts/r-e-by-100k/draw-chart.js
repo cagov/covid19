@@ -29,7 +29,7 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
       tooltip.html(`<div class="chart-tooltip">
         <div ><span class="highlight-data">${
           d.data.DEMOGRAPHIC_SET_CATEGORY
-        }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> cases for 100K people of the same race and enthnicity</div>
+        }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> ${filterScope.toLowerCase()} for 100K people of the same race and enthnicity</div>
       </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -76,7 +76,7 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
         .append("text")
         .attr("class", "more-than-labels")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
-        .attr("x", d => 370)
+        .attr("x", d => 415)
         .attr("height", y.bandwidth())
 
         .html(d => {
@@ -164,7 +164,7 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
   svg
     .append("g")
     .append("text")
-    .text(`Statewide ${filterScope.toLowerCase()} rate: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
+    .text(`Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
     .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
     .attr('text-anchor', 'middle')
