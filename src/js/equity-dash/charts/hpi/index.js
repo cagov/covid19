@@ -1,3 +1,4 @@
+import Toolline from './hpi-tooltip.js';
 import Tooltip from './hpi-tooltip.js';
 
 class CAGOVChartD3Lines extends window.HTMLElement {
@@ -34,6 +35,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
+      // console.log("Got County: " + this.county);
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
@@ -48,28 +50,56 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     }.bind(this), false);
   }
 
+  /*
+  bisect = {
+    const bisectDate = d3.bisector(d => d.date).left;
+    return (data, date) => {
+      const i = bisectDate(data, date, 1);
+      const a = data[i - 1], b = data[i];
+      console.log("date = " + date+ " i= " + i);
+      return date - a.date > b.date - date ? b : a;
+    };
+  } */
+
+  bisect(data, date) {
+      const bisectDate = d3.bisector(d => new Date(d.DATE)).left;
+      // this is consistently failing and returning the default==1
+      const i = Math.min(data.length-1,bisectDate(data, date, 1));
+      const a = data[i - 1], b = data[i];
+      // console.log("date = " + date+ " i= " + i);
+      return date - new Date(a.DATE) > new Date(b.DATE) - date ? b : a;
+  }
+
   writeChart(alldata, svg) {
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
-
+    // console.log("Sample data ",data[1]);
+    // console.log("Sample data2 ",data2[1]);
+    let dimensions = ({width:200, height:100});
+    let margin = ({top: 2, right: 10, bottom: 10, left: 10});
+    let xbounds = ({'min':d3.min(data2, d => new Date(d.DATE)), 'max':d3.max(data, d => new Date(d.DATE))});
     let x = d3.scaleTime()
-      .domain([d3.min(data2, d => new Date(d.DATE)), d3.max(data, d => new Date(d.DATE))])
-      .range([10,200]);
+      .domain([xbounds.min, xbounds.max])
+      .range([margin.left,dimensions.width-margin.right]);
 
+    // console.log("min date: " + xbounds.min);
+    // console.log("max date: " + xbounds.max);
     // let maxy = d.METRIC_VALUE) * 1.1
-    let max_y = d3.max(data2, d =>d.METRIC_VALUE) * 1.4;
+    // don't allow max_y to exceed 100%, since that would be silly
+    let max_y = Math.min(1,d3.max(data2, d => d.METRIC_VALUE) * 1.4);
+
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
-      .range([90, 2])
+      .range([dimensions.height-margin.bottom, margin.top]);
 
     let xAxis = g => g
-      .attr("transform", `translate(5,-90)`)
+      .attr("transform", `translate(4,-90)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
       // .call(g => g)
-      .call(g => g.select(".domain").remove())
+      .call(g => g.select(".domain").remove());
   
     let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); // Math.min(Math.floor(max_y*100),10);
     let tick_fmt = d3.format(".0%");
@@ -79,10 +109,10 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .call(d3.axisLeft(y)
         .ticks(nbr_ticks)
         .tickFormat(tick_fmt)
-        .tickSize(-200)
+        .tickSize(-dimensions.width)
       )
       // .call(g => g)
-      .call(g => g.select(".domain").remove())
+      .call(g => g.select(".domain").remove());
       
     let line = d3.line()
       .x((d, i) => {
@@ -90,7 +120,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       })
       .y(d => {
         return y(d.METRIC_VALUE)
-      })
+      });
 
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
@@ -105,7 +135,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("stroke", "#92C5DE")
       .attr("stroke-width", .5)
       .attr("class","county_positivity_all_nopris")
-      .attr("d", line)
+      .attr("d", line);
 
     //call line chart county_positivity_low_hpi
     svg.selectAll(".county_positivity_low_hpi").remove();
@@ -125,10 +155,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.append("g").call(yAxis);
     
     //tooltip
-    const tooltip = new Tooltip();
-    const tooltip2 = new Tooltip();
+    const tooltip = new Tooltip(true,"Statewide test positivity");
+    const tooltip2 = new Tooltip(false,"Health equity quartile positivity");
     
-    svg
+    
+
+    /* svg
       .append("g")
       .attr("fill", "none")
       .attr("pointer-events", "all")
@@ -142,21 +174,48 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("height", 100)
       .attr("width", 0.5)
       .attr("style","stroke-width:0.5;")
-      .on("mouseover", (event, [a]) => {
-        tooltip.show(a,1,x,y, data2)
-        tooltip2.show(a,2,x,y, data2)
-        event.target.setAttribute("fill","#003D9D")
+     
+      // .on("mouseover", (event, [a]) => {
+      //   tooltip.show(a,1,x,y, data2)
+      //   tooltip2.show(a,2,x,y, data2)
+      //   event.target.setAttribute("fill","#003D9D")
+      // })
+      // .on("mouseout", (event) => {
+      //   tooltip.hide()
+      //   tooltip2.hide()
+      //   event.target.setAttribute("fill","none")
+      // })
+      
+      ; */
+    
+    svg
+      .on("mousemove", (event) => {
+        // console.log("move: " + event.offsetX);
+        // coords are container screen-coords, and need to be scaled/translated
+        // to x display bounds before passed to x.invert
+        var xy = d3.pointer(event);
+        // console.log("event: ",xy);
+        tooltip.show(this.bisect(data, x.invert(xy[0])),x,y);
+        tooltip2.show(this.bisect(data2, x.invert(xy[0])),x,y);
+        // tooltip.show(a,1,x,y, data2)
+        // tooltip2.show(a,2,x,y, data2)
+        // event.target.setAttribute("fill","#003D9D") // this shows the line
       })
-      .on("mouseout", (event) => {
-        tooltip.hide()
-        tooltip2.hide()
-        event.target.setAttribute("fill","none")
-      });
+      .on("mouseleave", (event) => {
+        // console.log("leave");
+        tooltip.hide();
+        tooltip2.hide();
+        // tooltip2.hide()
+        // event.target.setAttribute("fill","none") // this hides the vertical line
+      })
+    ;
+    
 
     svg.append(() => tooltip.node);
     svg.append(() => tooltip2.node);
 
   }
+
 
   rewriteLines(svg, data, x, y) {
     svg.selectAll(".barshere rect")
