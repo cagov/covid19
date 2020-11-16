@@ -124,7 +124,10 @@ class CAGovReopening extends window.HTMLElement {
   tableauStuff() {
     var divElement = document.getElementById('viz1598633253507');
     var vizElement = divElement.getElementsByTagName('object')[0];
-    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='700px';vizElement.style.height='547px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+    if ( divElement.offsetWidth > 921 ) { vizElement.style.width='920px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { vizElement.style.width='900px';vizElement.style.height='547px';} 
+    else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 899) ) { vizElement.style.width='700px';vizElement.style.height='547px';} 
+    else { vizElement.style.width='100%';vizElement.style.height='627px';}
     var scriptElement = document.createElement('script');
     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
@@ -186,57 +189,19 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen:
-    let schoolOKList = [
-      "Alameda",
-      "Alpine",
-      "Amador",
-      "Butte",
-      "Calaveras",
-      "Contra Costa",
-      "Del Norte",
-      "El Dorado",
-      "Fresno",
-      "Humboldt",
-      "Inyo",
-      "Lake",
-      "Lassen",
-      "Marin",
-      "Mariposa",
-      "Merced",
-      "Modoc",
-      "Mono",
-      "Napa",
-      "Nevada",
-      "Orange",
-      "Placer",
-      "Plumas",
-      "Riverside",
-      "Sacramento",
-      "San Diego",
-      "San Francisco",
-      "San Joaquin",
-      "San Luis Obispo",
-      "San Mateo",
-      "Santa Barbara",
-      "Santa Clara",
-      "Santa Cruz",
-      "Sierra",
-      "Siskiyou",
-      "Solano",
-      "Trinity",
-      "Tuolumne",
-      "Ventura",
-      "Yolo",
-      "Yuba"
-    ];
-    if(this.schoolOKList) {
-      schoolOKList = this.schoolOKList;
-    }
+    const schoolOKList = this.schoolOKList;
+
     let schoolShenanigans = function(county) {
+      const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
+
       if(schoolOKList.indexOf(county) > -1) {
         return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
+        + schoolFooter;
       }
-      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.`;
+      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.</p>
+      <p>Note on exception: Schools that have already re-opened if the county was in a less restrictive tier do not have to close. However, if a school had not already reopened for in-person instruction, it may not reopen until the county moves back to the Substantial (Red) Tier for 14 days.</p>
+      `
+      + schoolFooter;
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
@@ -258,7 +223,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
-          <p>${ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+          <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })
