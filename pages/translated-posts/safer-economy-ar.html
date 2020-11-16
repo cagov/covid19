@@ -3,12 +3,12 @@ layout: "page.njk"
 title: "برامج تخطيطية لاقتصاد أكثر أمانا"
 meta: "كاليفورنيا لديها مخطط للحد من انتشار كوفيد-19 في الولاية بمعايير منقحة لتخفيف وتشديد القيود على الأنشطة. افهم حالة مقاطعتك، إذ يتم تعيين كل مقاطعة في ولاية كاليفورنيا إلى فئةٍ ما بناءً على معدل الإصابات الإيجابية ومعدل الحالات المُعدّل. وعلى أقل تقدير، يجب على المقاطعات البقاء في فئة لمدة 3 […]"
 author: "State of California"
-publishdate: "2020-11-12T22:10:05Z"
+publishdate: "2020-11-13T23:21:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<p>كاليفورنيا لديها مخطط للحد من انتشار كوفيد-19 في الولاية بمعايير منقحة لتخفيف وتشديد القيود على الأنشطة.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center" id="county-status">افهم حالة مقاطعتك</h2>
+<p>كاليفورنيا لديها مخطط للحد من انتشار كوفيد-19 في الولاية بمعايير منقحة لتخفيف وتشديد القيود على الأنشطة.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">افهم حالة مقاطعتك</h2>
 
 
 
@@ -31,7 +31,7 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*قد تخضع المقاطعات الصغيرة (تلك التي يقل عدد سكانها عن 106,000 نسمة) لتدابير بديلة لتقييم الحالات لأغراض تحديد الفئة.</br> **لا يتم تطبيق مقياس العدالة الصحية على المقاطعات الصغيرة. ولا يُستخدم مقياس العدالة الصحية إلا للانتقال إلى فئة أقل تقييدًا.</p>
-<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">مهام الفئة الحالية اعتبارًا من {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">مهام الفئة الحالية اعتبارًا من {{_varTierDate_}}</h3>
 
 
 
