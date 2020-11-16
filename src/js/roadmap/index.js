@@ -189,52 +189,8 @@ class CAGovReopening extends window.HTMLElement {
       })
     }
     // if we are in one of these counties schools can reopen:
-    let schoolOKList = [
-      "Alameda",
-      "Alpine",
-      "Amador",
-      "Butte",
-      "Calaveras",
-      "Contra Costa",
-      "Del Norte",
-      "El Dorado",
-      "Fresno",
-      "Humboldt",
-      "Inyo",
-      "Lake",
-      "Lassen",
-      "Marin",
-      "Mariposa",
-      "Merced",
-      "Modoc",
-      "Mono",
-      "Napa",
-      "Nevada",
-      "Orange",
-      "Placer",
-      "Plumas",
-      "Riverside",
-      "Sacramento",
-      "San Diego",
-      "San Francisco",
-      "San Joaquin",
-      "San Luis Obispo",
-      "San Mateo",
-      "Santa Barbara",
-      "Santa Clara",
-      "Santa Cruz",
-      "Sierra",
-      "Siskiyou",
-      "Solano",
-      "Trinity",
-      "Tuolumne",
-      "Ventura",
-      "Yolo",
-      "Yuba"
-    ];
-    if(this.schoolOKList) {
-      schoolOKList = this.schoolOKList;
-    }
+    const schoolOKList = this.schoolOKList;
+
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
 
