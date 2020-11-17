@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-06T19:36:10Z"
+publishdate: "2020-11-17T17:38:21Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -17,6 +17,10 @@ addtositemap: false
 
 
 <p>State public health leaders cannot address COVID-19 health inequities alone. A healthy California for everyone requires partnership with the private sector, local government, and community partners at all levels.</p>
+
+
+
+<div class="mt-5"></div>
 
 
 
@@ -39,11 +43,26 @@ addtositemap: false
                     <div class="row d-flex row-eq-height justify-content-md-center pb-4">
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
                     
-                            <div id="eq1-positive" class="eq-text mb-3">Case rate for Latino people is <span class="eq-data">11% higher</span> than statewide</div>
-                    
-                            <div id="eq1-negative" class="eq-text mb-3 d-none">Case rate for Latino people is <span class="eq-data">1% lower</span> than statewide</div>
-                    
-                            <div id="eq1-same" class="eq-text mb-3 d-none">Case rate for Latino people is the same as statewide average</div>
+<!--{% set value = -20 %}-->
+<!--{% if value > 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide
+</div>
+
+<!--{% elif value < 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide
+</div>
+
+<!--{% else %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is the same as statewide average
+</div>
+
+<!--{% endif %}-->
                                 
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100k people:</p> 
@@ -131,13 +150,25 @@ addtositemap: false
       <div class="row pb-4">
           <div class="col-lg-10 mx-auto color-white">
             <h2 class="text-center color-orange">Reopening equitably</h2>
-            <p>To ensure we build a California for All, counties must address COVID-19 health inequities in their economic reopening plans. Each week, state officials work with local health departments to measure case rates and positivity rates, as well as positivity rates in the county’s most disproportionately-impacted neighborhoods (health equity metric).</p>
+            <p>California has taken action to begin addressing health equity. In the Central Valley, we’ve implemented several programs to help those most affected. These efforts included:</p>
+            <ul class="bullet-orange">
+              <li>Creating Housing for the Harvest to help farm workers self-isolate</li>
+              <li>Increasing mobile testing capacity</li>
+              <li>Translating resources into new languages to reach American Indians</li>
+              <li>Raising awareness of resources available to farm workers</li>
+            </ul>
+            <p>To ensure we build a California for All, counties must address COVID-19 health inequities in their economic reopening plans. Each week, state officials work with local health departments to measure overall county case rates and positivity rates, as well as positivity rates in the county’s most disproportionately-impacted neighborhoods (health equity metric).</p>
             <h3 class="color-white">As part of this broad effort, counties must:</h3>
             <ul class="bullet-orange">
               <li>Define their disproportionately impacted populations and measure COVID-19 metrics and response (contract tracing, isolation support, worker protections) in these populations</li>
               <li>Show how they will use state funds to support disproportionately-impacted communities</li>
               <li>Show that the health equity metric does not significantly lag behind its overall county positivity rate</li>
             </ul>
+<div class="mt-3 text-center">
+ <a href="#" class="link-arrow-white">
+            <div class="link-arrow-label">Learn more ABOUT WHAT YOU CAN DO</div><cagov-arrow>
+        </a>
+</div>
           </div>
       </div>
 
@@ -146,11 +177,11 @@ addtositemap: false
 
 
 
-<h2>See how communities are impacted in your county</h2>
+<h2 class="mt-5">See how communities are impacted in your county</h2>
 
 
 
-<h3>COVID-19 impact by race and ethnicity</h3>
+<h3 class="text-center">COVID-19 impact by race and ethnicity</h3>
 
 
 
@@ -184,7 +215,11 @@ addtositemap: false
 
 
 
-<h3>COVID-19 health equity metric</h3>
+<p class="text-small">Note<strong>:</strong> Data shown is cumulative since January 2020 and updated daily. Population estimates do not include &#8220;other&#8221; or &#8220;unknown&#8221; race and ethnicity categories, therefore their percentage of state population is not available. To see race and ethnicity data broken out by age groups, see the California Department of Public Health’s COVID-19 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank" rel="noopener noreferrer">Race and Ethnicity Data</a>. Numbers between 1 and 11 are shown as &#8220;&lt;11&#8221; to protect patient privacy.</p>
+
+
+
+<h3 class="text-center mt-5">COVID-19 health equity metric</h3>
 
 
 
@@ -196,15 +231,21 @@ addtositemap: false
 
 
 
+<div class="col-lg-10 mx-auto">
 <cagov-chart-d3-lines><svg><g class="tick"><line></line></g><text></text></svg></cagov-chart-d3-lines>
+</div>
 
 
 
-<h3>Data completeness is critical to addressing inequity</h3>
+<p class="text-small">Note<strong>:</strong> 7-day average of positivity rate with 7-day lag, for the tracts in Healthy Places Index (HPI) health equity quartile.</p>
 
 
 
-<p>We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity (SOGI) data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. Learn more about SOGI data collection.</p>
+<h3 class="text-center mt-5">Data completeness is critical to addressing inequity</h3>
+
+
+
+<p>We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity (SOGI) data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. View resources on how to improve reporting.</p>
 
 
 
@@ -220,11 +261,17 @@ addtositemap: false
 
 
 
-<div class="special-note"><p>Data reporting keeps improving. Since January, the reporting on age and gender is up to  completeness! The same can be done for this data.</p></div>
+<div class="col-lg-10 mx-auto">
+<div class="special-note mt-4 mb-3"><p>Data reporting keeps improving. Since January, the reporting on age and gender is up to  completeness! The same can be done for this data.</p></div>
+</div>
 
 
 
 <p class="small-text">Note: Data shown is cumulative for the last 30 days and updated daily.</p>
+
+
+
+<div class="mb-5 mt-2"></div>
 
 
 
