@@ -30,8 +30,8 @@ export default class Tooltip {
       this.node.querySelector('text.date').innerHTML = `<tspan>${tstr}</tspan>`;
     }
   }
-  
-  show2(d, set, x, y, data2) {
+  /*
+  show_old(d, set, x, y, data2) {
     let yVal = d.METRIC_VALUE;
     if(set == 2) {
       data2.forEach(item => {
@@ -40,11 +40,10 @@ export default class Tooltip {
         }
       })
     }
-  
     this.node.removeAttribute("display");
     this.node.setAttribute("transform", `translate(${x(new Date(d.DATE))+0.7},${y(yVal)})`);
     this.node.querySelector('text').innerHTML = `<tspan font-weight="bold">${(yVal * 100).toFixed(1)}%</tspan> test positivity`;
-  }
+  } */
   hide() {
     this.node.setAttribute("display", "none");
   }
