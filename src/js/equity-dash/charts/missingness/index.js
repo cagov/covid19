@@ -17,7 +17,11 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     this.chartTitle = function() {
       let filterText = this.getFilterText();
-      return `reporting by ${filterText.toLowerCase()} in ${this.county}`;
+      if (this.county !== 'California') {
+        return `Reporting by ${filterText.toLowerCase()} in ${this.county}`;
+      } else {
+        return `Reporting by ${filterText.toLowerCase()} in ${this.state}`;
+      }
     }
 
     this.innerHTML = template();
@@ -31,15 +35,15 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       .text("an empty tooltip");
     
     this.svg = d3
-      .select(this.querySelector('.svg-holder'))
-      .append("svg")
-      .attr("viewBox", [0, 0, this.dimensions.width, this.dimensions.height])
-      .append("g")
-      .attr(
-        "transform",
-        "translate(" + this.dimensions.margin.left + "," + this.dimensions.margin.top + ")"
-      );  
-
+    .select(this.querySelector('.svg-holder'))
+    .append("svg")
+    .attr("viewBox", [0, 0, this.dimensions.width, this.dimensions.height])
+    .append("g")
+    .attr(
+      "transform",
+      "translate(" + this.dimensions.margin.left + "," + this.dimensions.margin.top + ")"
+    )
+  
     this.subgroups = ["NOT_MISSING", "MISSING"];
     this.color = d3
       .scaleOrdinal()
@@ -50,6 +54,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
     this.county = 'California';
+    this.state = 'California';
     this.resetTitle()
   }
 
@@ -81,54 +86,134 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   resetDescription() {}
 
-  render() {
+  formatDataSet(dataSet) {
     let data = [];
     let casesObj = {};
-    if (this.alldata[this.selectedMetric].cases !== undefined) {
-      casesObj = this.alldata[this.selectedMetric].cases;
+    if (dataSet.cases !== undefined) {
+      casesObj = dataSet.cases;
       casesObj.METRIC = 'cases';
       data.push(casesObj);
     }
     let deathsObj = {};
-    if (this.alldata[this.selectedMetric].deaths !== undefined) {
-      deathsObj = this.alldata[this.selectedMetric].deaths;
+    if (dataSet.deaths !== undefined) {
+      deathsObj = dataSet.deaths;
       deathsObj.METRIC = 'deaths';
       data.push(deathsObj);
     }
     let testsObj = {};
-    if (this.alldata[this.selectedMetric].tests !== undefined) {
-      testsObj = this.alldata[this.selectedMetric].tests;
+    if (dataSet.tests !== undefined) {
+      testsObj = dataSet.tests;
       testsObj.METRIC = 'tests';
-      data.push(this.alldata[this.selectedMetric].tests);
+      data.push(dataSet.tests);
     }
-
     data.forEach(d => {
-      d.MISSING = d.MISSING / d.TOTAL;
-      d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
-    })
+      this.formatDataObject(d);
+    });
     data.sort(function(a, b) {
       return d3.descending(a.MISSING, b.MISSING);
+    });
+    return data;
+  }
+
+  /**
+   * Format the data object.
+   * Testing strategy: 
+   * We can pull in this formatData function into a unit test and pass 
+   * in some variations of mock data to ensure that null, NaN, 
+   * Infinity and other errors are not returned.
+   * This would also allow us to document the expected data object
+   * and provide a place to store examples of the data responses, 
+   * expected value ranges and required values.
+   * 
+     // Complete mock data example.
+      {
+      "COUNTY": "Alpine",
+      "METRIC": "tests",
+      "MISSING": 183,
+      "NOT_MISSING": 22,
+      "TOTAL": 205,
+      "PERCENT_COMPLETE": 0.107317073170732,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.21078431372549,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.103467240554758,
+      "REPORT_DATE": "2020-11-16"
+      }
+      
+      // Incomplete mock data example.
+      {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-11-16"
+      }
+  */
+  formatDataObject(d) {
+    if (d.PERCENT_COMPLETE === null) {
+      d.MISSING = 1;
+      d.NOT_MISSING = 0;
+    } else {
+      d.MISSING = d.MISSING / d.TOTAL;
+      d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
+      if (isNaN(d.MISSING)){
+        d.MISSING = 1
+      }
+      if (isNaN(d.NOT_MISSING)){
+        d.NOT_MISSING = 0
+      }
+    }
+  }
+
+  /**
+   * Sort domains by preferred display order.
+   * @param {} data 
+   */
+  getDomains(data) {
+    let unsortedDomains = data.map((group) => group.METRIC);
+    // Display order
+    let displayOrder = ['tests', 'cases', 'deaths'];
+    let domains = [];
+    displayOrder.map(key => {
+      let position = unsortedDomains.indexOf(key);
+      if (position >= 0) {
+        domains.push(key);
+      }
     })
-    let stackedData = d3.stack().keys(this.subgroups)(data)
+    return domains;
+  }
+
+  render() {
+    let data = this.formatDataSet(this.alldata[this.selectedMetric]);
+    let stackedData = d3.stack().keys(this.subgroups)(data);
+
+    let domains = this.getDomains(data); // Get list of data domains for this dataset.
+    
+    let heightAdjustment = 133.3;
+    let svgHeight = Math.round(heightAdjustment * (domains.length));
+
+    d3
+      .select(this.querySelector('.svg-holder svg'))
+      .attr("viewBox", [0, 0, this.dimensions.width, svgHeight]) // Reset height.
 
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
-
-    let domains = data.map((group) => group.METRIC);
+      // .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+      .range([0, this.dimensions.width])
+    
     this.y = d3
       .scaleBand()
       .domain(domains)
-      .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
-      .padding([.6])
+      .range([this.dimensions.margin.top, svgHeight - this.dimensions.margin.bottom]) // Spacing between bars.
+      .padding([.4])
 
-    let domainLabelYOffsets = [-55, -39, -30]; // Adjust label offset based on how many items are displayed.
-    let labelOffset = domainLabelYOffsets[domains.length - 1];
-
+    // let domainLabelYOffsets = [-46, -46, -46]; // Adjust label offset based on how many items are displayed.
+    // let labelOffset = domainLabelYOffsets[domains.length - 1];
+    let labelOffset = -45;
     this.yAxis = g => g
       .attr("class", "bar-label")
-      .attr("transform", "translate(5," + labelOffset + ")")
+      .attr("transform", "translate(5," + labelOffset + ")") // Relative positioning of label.
       .call(d3.axisLeft(this.y).tickSize(0))
       .call(g => g.selectAll(".domain").remove())
 
