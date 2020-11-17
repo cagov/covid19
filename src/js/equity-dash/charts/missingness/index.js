@@ -46,18 +46,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       .domain(this.subgroups)
       .range(['#92C5DE', '#FFCF44'])
 
-    this.y = d3
-      .scaleBand()
-      .domain(["tests", "cases", "deaths"])
-      .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
-      .padding([.6])
-
-    this.yAxis = g => g
-      .attr("class", "bar-label")
-      .attr("transform", "translate(5," + -30 + ")")
-      .call(d3.axisLeft(this.y).tickSize(0))
-      .call(g => g.selectAll(".domain").remove())
-
     this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json';
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
@@ -95,24 +83,23 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   render() {
     let data = [];
-    let casesObj = this.alldata[this.selectedMetric].cases;
-    casesObj.METRIC = 'cases';
-    data.push(casesObj);
-    let deathsObj = this.alldata[this.selectedMetric].deaths;
-    deathsObj.METRIC = 'deaths'
-    data.push(deathsObj);
-    if(this.alldata[this.selectedMetric].tests) {
+    let casesObj = {};
+    if (this.alldata[this.selectedMetric].cases !== undefined) {
+      casesObj = this.alldata[this.selectedMetric].cases;
+      casesObj.METRIC = 'cases';
+      data.push(casesObj);
+    }
+    let deathsObj = {};
+    if (this.alldata[this.selectedMetric].deaths !== undefined) {
+      deathsObj = this.alldata[this.selectedMetric].deaths;
+      deathsObj.METRIC = 'deaths';
+      data.push(deathsObj);
+    }
+    let testsObj = {};
+    if (this.alldata[this.selectedMetric].tests !== undefined) {
+      testsObj = this.alldata[this.selectedMetric].tests;
+      testsObj.METRIC = 'tests';
       data.push(this.alldata[this.selectedMetric].tests);
-    } else {
-      let testsObj = {}
-      testsObj.METRIC = "tests";
-      testsObj.MISSING = 100;
-      testsObj.NOT_MISSING = 0;
-      testsObj.TOTAL = 100;
-      testsObj.PERCENT_COMPLETE = 0.0;
-      testsObj.PERCENT_COMPLETE_30_DAYS_PRIOR = 0.0;
-      testsObj.PERCENT_COMPLETE_30_DAYS_DIFF = 0.0;
-      data.push(testsObj);
     }
 
     data.forEach(d => {
@@ -128,6 +115,22 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       .scaleLinear()
       .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
+
+    let domains = data.map((group) => group.METRIC);
+    this.y = d3
+      .scaleBand()
+      .domain(domains)
+      .range([this.dimensions.margin.top, this.dimensions.height - this.dimensions.margin.bottom])
+      .padding([.6])
+
+    let domainLabelYOffsets = [-55, -39, -30]; // Adjust label offset based on how many items are displayed.
+    let labelOffset = domainLabelYOffsets[domains.length - 1];
+
+    this.yAxis = g => g
+      .attr("class", "bar-label")
+      .attr("transform", "translate(5," + labelOffset + ")")
+      .call(d3.axisLeft(this.y).tickSize(0))
+      .call(g => g.selectAll(".domain").remove())
 
     drawBars(this.svg, this.x, this.y, this.yAxis, stackedData, this.color, data, this.tooltip)  
   }
