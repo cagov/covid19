@@ -31,7 +31,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.listenForLocations();
   }
 
-  listenForLocations() {
+  listenForLocations() { 
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
@@ -50,17 +50,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     }.bind(this), false);
   }
 
-  /*
-  bisect = {
-    const bisectDate = d3.bisector(d => d.date).left;
-    return (data, date) => {
-      const i = bisectDate(data, date, 1);
-      const a = data[i - 1], b = data[i];
-      console.log("date = " + date+ " i= " + i);
-      return date - a.date > b.date - date ? b : a;
-    };
-  } */
-
   bisect(data, date) {
       const bisectDate = d3.bisector(d => new Date(d.DATE)).left;
       // this is consistently failing and returning the default==1
@@ -70,28 +59,25 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       return date - new Date(a.DATE) > new Date(b.DATE) - date ? b : a;
   }
 
-  writeChart(alldata, svg, data1Legend) {
+  writeChart(alldata, svg, data1Legend) { 
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
-    console.log("Sample data ",data);
-    console.log("Sample data2 ",data2);
-    let nbr_data2_nans = data2.filter(function(d) { return null == d.METRIC_VALUE;}).length;
-    let missing_data2 = nbr_data2_nans == data2.length;
-    console.log("Nbr Nans: " + nbr_data2_nans + " Count: " + data2.length + " missing? " + missing_data2);
+    // console.log("Sample data ",data);
+    // console.log("Sample data2 ",data2);
+    let missing_data2 = data2.filter(d => null == d.METRIC_VALUE).length > 0;
 
     let legendLabels = [data1Legend, missing_data2? "missing equity data" : "Health equity quartile positivity"];
     this.rewriteLegend(this.svg, legendLabels);
 
     let dimensions = ({width:200, height:100});
     let margin = ({top: 2, right: 10, bottom: 10, left: 10});
-    let xbounds = ({'min':d3.min((missing_data2? data:data2), d => new Date(d.DATE)), 'max':d3.max(data, d => new Date(d.DATE))});
+    let xbounds = ({'min':d3.min((missing_data2? data:data2), d => new Date(d.DATE)), 
+                    'max':d3.max(data, d => new Date(d.DATE))});
+
     let x = d3.scaleTime()
       .domain([xbounds.min, xbounds.max])
       .range([margin.left,dimensions.width-margin.right]);
 
-    // console.log("min date: " + xbounds.min);
-    // console.log("max date: " + xbounds.max);
-    // let maxy = d.METRIC_VALUE) * 1.1
     // don't allow max_y to exceed 100%, since that would be silly
     let max_y = Math.min(1,d3.max((missing_data2? data : data2), d => d.METRIC_VALUE) * 1.4);
 
@@ -122,7 +108,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .call(g => g.select(".domain").remove());
       
     let line = d3.line()
-      /* .defined(d => !isNaN(d.value)) */
       .x((d, i) => {
         return x(new Date(d.DATE));
       })
@@ -133,21 +118,21 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
-
+    
     svg
       .append("path")
       .datum(data.sort(function(a,b) {
-        return a.DATA > b.DATE
+        return a.DATE > b.DATE
       }))
       .attr("fill","none")
       .attr("stroke", "#92C5DE")
       .attr("stroke-width", .5)
       .attr("class","county_positivity_all_nopris")
       .attr("d", line);
-
+     
     //call line chart county_positivity_low_hpi
     svg.selectAll(".county_positivity_low_hpi").remove();
-
+    
     if (!missing_data2) {
     svg
       .append("path")
@@ -168,36 +153,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     const tooltip = new Tooltip(true,"Statewide test positivity");
     const tooltip2 = new Tooltip(false,"Health equity quartile positivity");
     
-    
-
-    /* svg
-      .append("g")
-      .attr("fill", "none")
-      .attr("pointer-events", "all")
-      .selectAll("rect")
-      .data(d3.pairs(data))
-      .join("rect")
-      .attr("x", ([a, b]) => {
-        let val = x(new Date(a.DATE)) + 0.5
-        return val;
-      })
-      .attr("height", 100)
-      .attr("width", 0.5)
-      .attr("style","stroke-width:0.5;")
-     
-      // .on("mouseover", (event, [a]) => {
-      //   tooltip.show(a,1,x,y, data2)
-      //   tooltip2.show(a,2,x,y, data2)
-      //   event.target.setAttribute("fill","#003D9D")
-      // })
-      // .on("mouseout", (event) => {
-      //   tooltip.hide()
-      //   tooltip2.hide()
-      //   event.target.setAttribute("fill","none")
-      // })
-      
-      ; */
-    
     svg
       .on("mousemove", (event) => {
         // console.log("move: " + event.offsetX);
@@ -209,9 +164,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         if (!missing_data2) {
           tooltip2.show(this.bisect(data2, x.invert(xy[0])),x,y);
         }
-        // tooltip.show(a,1,x,y, data2)
-        // tooltip2.show(a,2,x,y, data2)
-        // event.target.setAttribute("fill","#003D9D") // this shows the line
       })
       .on("mouseleave", (event) => {
         // console.log("leave");
@@ -219,19 +171,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         if (!missing_data2) {
           tooltip2.hide();
         }
-        // tooltip2.hide()
-        // event.target.setAttribute("fill","none") // this hides the vertical line
       })
     ;
     
-
     svg.append(() => tooltip.node);
     if (!missing_data2) {
        svg.append(() => tooltip2.node);
-    }
-
+    } 
   }
-
 
   rewriteLines(svg, data, x, y) {
     svg.selectAll(".barshere rect")
@@ -239,7 +186,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .transition().duration(300)
       .attr("x", (d, i) => x(i))
       .attr("y", d => y(d.CASE_RATE_PER_100K))
-      .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
+      .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K));
+
   }
 
   writeLegendColors(legendColors, legend) {
@@ -256,8 +204,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr('fill', function(d, i){
         return d;
       });
-
   }
+
   writeLegendLabels(legendLabels, legend) {
     legend.selectAll('text')
       .data(legendLabels)
@@ -277,7 +225,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   rewriteLegend(svg, legendLabels) {
     svg.selectAll('.legend text')
       .data(legendLabels)
-      .text((d) => d)
+      .text((d) => d);
   }
 }
 window.customElements.define('cagov-chart-d3-lines', CAGOVChartD3Lines);
