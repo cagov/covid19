@@ -75,7 +75,6 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         })
         .attr("x", d => x(0) + 255)
         .attr("height", y.bandwidth())
-
         .html(d => {
           if (
             parseFloat(
@@ -92,7 +91,6 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
             ).toFixed(1) : "0"}%</tspan> change in cases since previous month`;
           }
         })
-
         .attr('text-anchor', 'end');
     });
 
@@ -149,7 +147,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
       enter
         .append("text")
         .attr("y", d => y(d.METRIC) - 5)
-        .attr("x", d => x(1))
+        .attr("x", d => x(1 - 0.05))
         .attr("height", y.bandwidth())
         .html(
           d => `<tspan class="highlight-data">
