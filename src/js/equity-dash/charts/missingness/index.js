@@ -74,8 +74,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       this.resetDescription()
       this.resetTitle()
     }.bind(this), false);
-
-    this.dataUrl ='https://files.covid19.ca.gov/data/to-review/equitydash/missingness-alpine.json'
   }
 
   resetTitle() {
