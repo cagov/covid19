@@ -90,7 +90,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .range([this.dims.height-this.dims.margin.bottom, this.dims.margin.top]);
 
     let xAxis = g => g
-      .attr("transform", `translate(3.2,-120)`)
+      .attr("transform", `translate(2.5,-120)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
