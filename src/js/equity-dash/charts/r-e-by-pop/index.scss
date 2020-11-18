@@ -11,8 +11,18 @@ cagov-chart-re-pop {
   .chart-title::first-letter {
     text-transform: capitalize;
   }
+
   .svg-holder svg {
     width: 100%;
+  }
+
+  .svg-holder-second {
+    border-top: solid 2px #000;
+    margin-top: 10px;
+    padding-top: 30px;
+    svg {
+      width: 100%;
+    }
   }
 
   .bars {

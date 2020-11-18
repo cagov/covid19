@@ -120,7 +120,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     let yAxis = g =>
       g
         .attr("class", "bar-label")
-        .attr("transform", "translate(5," + -25 + ")")
+        .attr("transform", "translate(5," + -32 + ")")
         .call(d3.axisLeft(this.y).tickSize(0))
         .call(g => g.selectAll(".domain").remove())  
 
