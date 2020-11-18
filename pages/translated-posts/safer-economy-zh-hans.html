@@ -31,7 +31,7 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*可能会对小县（人口少于106,000人的县）采用其他病例评估措施，以进行等级划分。</br>**健康公平指标不适用于小县。健康公平指标是用于让某县移至限制性较低的等级。</p>
-<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
 
 
 
