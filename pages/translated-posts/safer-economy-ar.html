@@ -31,7 +31,7 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*قد تخضع المقاطعات الصغيرة (تلك التي يقل عدد سكانها عن 106,000 نسمة) لتدابير بديلة لتقييم الحالات لأغراض تحديد الفئة.</br> **لا يتم تطبيق مقياس العدالة الصحية على المقاطعات الصغيرة. ولا يُستخدم مقياس العدالة الصحية إلا للانتقال إلى فئة أقل تقييدًا.</p>
-<p> </p>    <!--{%-set data = tableauCovidMetrics[0] -%}--> <!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">مهام الفئة الحالية اعتبارًا من {{_varTierDate_}}</h3>
+<p> </p>    <<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">مهام الفئة الحالية اعتبارًا من {{_varTierDate_}}</h3>
 
 
 
