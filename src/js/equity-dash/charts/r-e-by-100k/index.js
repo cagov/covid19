@@ -1,5 +1,6 @@
 import template from './template.js';
 import drawBars from './draw-chart.js';
+import termCheck from '../race-ethnicity-config.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback () {
@@ -16,12 +17,12 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     })
 
     this.selectedMetric = 'cases';
-    this.selectedMetricDescription = 'Case';
+    this.selectedMetricDescription = 'Cases';
     this.chartTitle = function() {
       return `${this.selectedMetricDescription} rate per 100K by race and ethnicity group in ${this.county}`;
     }
     this.description = function (selectedMetricDescription) {
-      return `Compare ${selectedMetricDescription} adjusted by population size across each race and ethnicity.`;
+      return `Compare ${selectedMetricDescription.toLowerCase()} adjusted by population size across each race and ethnicity.`;
     }
     this.county = 'California';
     this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
@@ -49,7 +50,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       .range(['#FFCF44', '#F2F5FC'])
 
     this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json';
-    this.retrieveData(this.dataUrl);
+    this.dataStatewideRateUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-combined.json';
+    this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
     this.county = 'California'
     this.resetTitle()
@@ -63,7 +65,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         this.selectedMetric = "cases";
       }
       this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
-      this.retrieveData(this.dataUrl);
+      this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
       this.resetTitle(this.county)
     }.bind(this), false);
 
@@ -71,7 +73,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     metricFilter.addEventListener('filter-selected', function (e) {
       this.selectedMetricDescription = e.detail.clickedFilterText;
       this.selectedMetric = e.detail.filterKey;
-      this.retrieveData(this.dataUrl);
+      this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
       this.resetDescription()
       this.resetTitle()
     }.bind(this), false);
@@ -87,18 +89,26 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
   render() {
     let data = this.alldata.filter(item => (item.METRIC === this.selectedMetric && item.DEMOGRAPHIC_SET_CATEGORY !== "Other" && item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"))
+    let displayDemoMap = termCheck();
+
     data.forEach(d => {
-      d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
+      d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = 0;
+      if(d.METRIC_VALUE_PER_100K_30_DAYS_AGO) {
+        d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO / d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
+      }
+      // we map the race/ethnicities in the db to the desired display values here
+      if(displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
+        d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY);
+      }
     })
 
     data.sort(function(a, b) {
       return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
     })
-    // let groups = d3.map(dataSorted, d => d.DEMOGRAPHIC_SET_CATEGORY).keys()
-    // don't know why the above never works, so keep hardcoding it
+    // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
-    let groups = ["Native Hawaiian and other Pacific Islander", "Latino", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
-
+    let groups = data.map(item => item.DEMOGRAPHIC_SET_CATEGORY);
+    
     let stackedData = d3.stack().keys(this.subgroups)(data)
 
     this.y = d3
@@ -110,7 +120,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     let yAxis = g =>
       g
         .attr("class", "bar-label")
-        .attr("transform", "translate(5," + -25 + ")")
+        .attr("transform", "translate(5," + -32 + ")")
         .call(d3.axisLeft(this.y).tickSize(0))
         .call(g => g.selectAll(".domain").remove())  
 
@@ -125,14 +135,21 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .call(d3.axisBottom(x).ticks(width / 50, "s"))
         .remove()      
 
-    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription)  
+    let statewideRatePer100k = this.combinedData[this.selectedMetric] ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K : null;
+    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k)  
   }
 
-  retrieveData(url) {
-    window.fetch(url)
-    .then(response => response.json())
-    .then(function(alldata) {
-      this.alldata = alldata;
+  retrieveData(url, statewideUrl) {
+    Promise.all([
+      window.fetch(url),
+      window.fetch(statewideUrl)
+    ]).then(function (responses) {
+      return Promise.all(responses.map(function (response) {
+        return response.json();
+      }));
+    }).then(function (requestData) {
+      this.alldata = requestData[0];
+      this.combinedData = requestData[1];
       this.render();
     }.bind(this));
   }

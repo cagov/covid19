@@ -7,6 +7,7 @@ export default function template(title, description) {
         <div class="chart-title">${title}</div>
         <p class="small-text chart-description">${description}</p>
         <div class="svg-holder"></div>
+        <div class="svg-holder-second"></div>
       </div>
     </div>
   </div><!--END BG lightblue-->`;

@@ -321,3 +321,29 @@ learn-more-section {
 }
 
 cagov-chart-d3-bar h2 {margin-top: 3rem;}
+
+@media (max-width: 900px) { 
+  .awesomplete {
+    display: inline-block;
+  }
+  .form-inline {
+    align-items: start;
+    margin: 0 auto;
+  }
+}
+
+.bg-darkblue a,
+.bg-darkblue a:focus {
+  color: #92C5DE; 
+  text-decoration: underline;
+}
+
+.bg-darkblue a:hover {
+  color: #92C5DE;
+  text-decoration: none;
+}
+
+.bg-darkblue a:visited {
+  color: #B797D8;
+  text-decoration: underline;
+}

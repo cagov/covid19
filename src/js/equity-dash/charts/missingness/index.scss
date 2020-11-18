@@ -3,8 +3,11 @@ cagov-chart-equity-missingness {
   display: block;
   margin: auto;
   width: 100%;
+  .chart-title {
+    max-width: 613px;
+  }
   .svg-holder {
-    max-width: 600px;
+    max-width: 613px;
   }
 
   .bars {
@@ -23,7 +26,7 @@ cagov-chart-equity-missingness {
     font-size: 0.95rem;
     text-anchor: unset;
   }
-  .bar-label text::first-letter {
+  .bar-label .tick text {
     text-transform: capitalize;
   }
   .label {
@@ -36,6 +39,7 @@ cagov-chart-equity-missingness {
   }
   .highlight-data {
     font-weight: bold;
+    padding-right: 2px;
   }
 
   .equity-tooltip {
@@ -47,5 +51,10 @@ cagov-chart-equity-missingness {
   }
   .equity-tooltip--missingness {
     min-width: 300px;
+  }
+  @media (max-width: 900px) { 
+    .mx-auto {
+      
+    }
   }
 }
