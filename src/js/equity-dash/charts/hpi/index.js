@@ -3,13 +3,16 @@ import Tooltip from './hpi-tooltip.js';
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback () {
+    this.dims = { width: 140, 
+                  height:70, 
+                  margin: { top: 2, 
+                            right: 10, 
+                            bottom: 10, 
+                            left: 12} 
+                };
+    this.svg = d3.create("svg").attr("viewBox", [0, 0, this.dims.width, this.dims.height]);
+    // this.svg.attr('font-size':'12px');
 
-    this.svg = d3.create("svg").attr("viewBox", [0, 0, 200, 100]);
-
-    let dims = [{
-      width: 200,
-      height: 100
-    }]
     
     window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-california.json')
     .then(response => response.json())
@@ -62,31 +65,32 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   writeChart(alldata, svg, data1Legend) { 
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
-    // console.log("Sample data ",data);
-    // console.log("Sample data2 ",data2);
+    // console.log("Overall Data ",data);
+    // console.log("Equity Data2 ",data2);
     let missing_data2 = data2.filter(d => null == d.METRIC_VALUE).length > 0;
 
     let legendLabels = [data1Legend, missing_data2? "missing equity data" : "Health equity quartile positivity"];
     this.rewriteLegend(this.svg, legendLabels);
 
-    let dimensions = ({width:200, height:100});
-    let margin = ({top: 2, right: 10, bottom: 10, left: 10});
+    console.log("dims",this.dims);
+
+    // let dimensions = ({width:200, height:100});
     let xbounds = ({'min':d3.min((missing_data2? data:data2), d => new Date(d.DATE)), 
                     'max':d3.max(data, d => new Date(d.DATE))});
 
     let x = d3.scaleTime()
       .domain([xbounds.min, xbounds.max])
-      .range([margin.left,dimensions.width-margin.right]);
+      .range([this.dims.margin.left,this.dims.width-this.dims.margin.right]);
 
     // don't allow max_y to exceed 100%, since that would be silly
     let max_y = Math.min(1,d3.max((missing_data2? data : data2), d => d.METRIC_VALUE) * 1.4);
 
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
-      .range([dimensions.height-margin.bottom, margin.top]);
+      .range([this.dims.height-this.dims.margin.bottom, this.dims.margin.top]);
 
     let xAxis = g => g
-      .attr("transform", `translate(4,-90)`)
+      .attr("transform", `translate(2.5,-120)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
@@ -102,7 +106,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .call(d3.axisLeft(y)
         .ticks(nbr_ticks)
         .tickFormat(tick_fmt)
-        .tickSize(-dimensions.width)
+        .tickSize(-this.dims.width)
       )
       // .call(g => g)
       .call(g => g.select(".domain").remove());
@@ -165,7 +169,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           tooltip2.show(this.bisect(data2, x.invert(xy[0])),x,y);
         }
       })
-      .on("mouseleave", (event) => {
+      .on("mouseleave touchend", (event) => {
         // console.log("leave");
         tooltip.hide();
         if (!missing_data2) {
