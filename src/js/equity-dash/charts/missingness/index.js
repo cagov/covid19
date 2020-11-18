@@ -5,13 +5,13 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback () {
 
     this.dimensions = {
-      height: 400,
-      width: 600,
+      height: 214,
+      width: 613,
       margin: {
-        top: 20,
-        right: 30,
+        top: 40,
+        right: 0,
         bottom: 20,
-        left: 30
+        left: 0
       }
     }
 
@@ -189,8 +189,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     let domains = this.getDomains(data); // Get list of data domains for this dataset.
     
-    let heightAdjustment = 133.3;
-    let svgHeight = Math.round(heightAdjustment * (domains.length));
+    let heightMultiplier = 100;
+    let svgHeight = heightMultiplier * domains.length;
 
     d3
       .select(this.querySelector('.svg-holder svg'))
@@ -199,18 +199,16 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, d => d3.max(d, d => d[1]))])
-      // .range([0, this.dimensions.width - this.dimensions.margin.right - 40])
       .range([0, this.dimensions.width])
     
     this.y = d3
       .scaleBand()
       .domain(domains)
       .range([this.dimensions.margin.top, svgHeight - this.dimensions.margin.bottom]) // Spacing between bars.
-      .padding([.4])
+      // .padding([.4])
 
-    // let domainLabelYOffsets = [-46, -46, -46]; // Adjust label offset based on how many items are displayed.
-    // let labelOffset = domainLabelYOffsets[domains.length - 1];
-    let labelOffset = -45;
+    let labelOffsets = [-52, -52, -57];
+    let labelOffset = domains.length <= 3 ? labelOffsets[domains.length - 1] : -57;
     this.yAxis = g => g
       .attr("class", "bar-label")
       .attr("transform", "translate(5," + labelOffset + ")") // Relative positioning of label.
