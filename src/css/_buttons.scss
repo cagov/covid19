@@ -212,6 +212,12 @@ button.card-header.accordion-alpha:focus {
       background-color: #F2F5FC;
     }
   }
+  a, a:visited {
+    color: #1d2574;
+  }
+  a.toggle-active, a:visited.toggle-active {
+    color: #fff;
+  }
   .toggle-active {
     background-color: #1f2574;
     color: #fff;
