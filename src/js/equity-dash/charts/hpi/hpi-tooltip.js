@@ -10,7 +10,7 @@ export default class Tooltip {
     (needs_anno? 
        `<rect x="0" width=0.25 y=0 height=200 fill="#003D9D" stroke=none opacity=0.5></rect>
         <rect x="-5.5" width="10" y="89.5" height="3.5" fill="white" opacity=0.5></rect>
-        <text class="date" y="62", x="-5.5"></text>` 
+        <text class="date" y="62", x="-4.75"></text>` 
       : '') + 
     `<g class="lineanno">
        <rect x="2" width="28" y="-5.5" height="3.5" fill="white" opacity=0.5></rect>

@@ -90,14 +90,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .range([this.dims.height-this.dims.margin.bottom, this.dims.margin.top]);
 
     let xAxis = g => g
-      .attr("transform", `translate(2.5,-120)`)
+      .attr("transform", `translate(3.2,-120)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
         .tickSize(180,0))
       // .call(g => g)
       .call(g => g.select(".domain").remove());
-  
+
     let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); // Math.min(Math.floor(max_y*100),10);
     let tick_fmt = d3.format(".0%");
     
@@ -106,7 +106,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .call(d3.axisLeft(y)
         .ticks(nbr_ticks)
         .tickFormat(tick_fmt)
-        .tickSize(-this.dims.width)
+        .tickSize(-this.dims.width,0)
       )
       // .call(g => g)
       .call(g => g.select(".domain").remove());
@@ -150,8 +150,11 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("d", line);
     }
     
-    svg.append("g").call(xAxis);
-    svg.append("g").call(yAxis);
+    let xg = svg.append("g").call(xAxis);
+    let yg = svg.append("g").call(yAxis);
+    // debugging
+    // xg.selectAll("line").style("stroke", "red");
+    // yg.selectAll("line").style("stroke", "green");
     
     //tooltip
     const tooltip = new Tooltip(true,"Statewide test positivity");
