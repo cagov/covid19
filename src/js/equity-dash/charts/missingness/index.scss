@@ -3,8 +3,11 @@ cagov-chart-equity-missingness {
   display: block;
   margin: auto;
   width: 100%;
+  .chart-title {
+    max-width: 613px;
+  }
   .svg-holder {
-    max-width: 600px;
+    max-width: 613px;
   }
 
   .bars {

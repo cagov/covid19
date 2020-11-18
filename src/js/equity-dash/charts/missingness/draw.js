@@ -146,8 +146,8 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .join(enter => {
       enter
         .append("text")
-        .attr("y", d => y(d.METRIC) - 5)
-        .attr("x", d => x(1 - 0.05))
+        .attr("y", d => y(d.METRIC) - 12)
+        .attr("x", d => x(1))
         .attr("height", y.bandwidth())
         .html(
           d => `<tspan class="highlight-data">
@@ -171,7 +171,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .attr("fill", "#92C5DE");
   svg
     .append("rect")
-    .attr("x", 110)
+    .attr("x", 115)
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
@@ -179,7 +179,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
 
   svg
     .append("text")
-    .attr("x", 25)
+    .attr("x", 20)
     .attr("y", -12)
     .style("font-family", "arial")
     .style("font-size", "12px")
@@ -187,7 +187,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .text("Data reported");
   svg
     .append("text")
-    .attr("x", 130)
+    .attr("x", 135)
     .attr("y", -12)
     .style("font-family", "arial")
     .style("font-size", "12px")
