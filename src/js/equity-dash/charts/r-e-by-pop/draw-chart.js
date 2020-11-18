@@ -3,8 +3,6 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  console.log(tooltip)
-  console.log(legendScope)
   //yellow  bars
   svg
     .append("g")
