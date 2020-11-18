@@ -200,8 +200,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
         .remove()
 
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString())
-    drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, this.legendString())
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString(), this.selectedMetric)
+    drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, this.legendString(), this.selectedMetric)
   }
 
   retrieveData(url) {
