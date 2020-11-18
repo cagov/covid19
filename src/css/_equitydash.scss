@@ -61,6 +61,7 @@ cagov-chart-d3-bar {
 }
 
 cagov-chart-d3-lines {
+  max-width: 613px;
   .tick {
     font-size: 0.2rem;
   }
@@ -293,8 +294,8 @@ learn-more-section {
   margin: 0 auto;
 
   p {
-    font-size: 0.85rem;
-
+    font-size: 0.95rem;
+    margin-bottom: 0;
     &::before {
       font-family: "CaGov" !important;
       content: "\e072";
@@ -346,4 +347,7 @@ cagov-chart-d3-bar h2 {margin-top: 3rem;}
 .bg-darkblue a:visited {
   color: #B797D8;
   text-decoration: underline;
+}
+.chart-data-label {
+  font-size: 0.95rem;
 }

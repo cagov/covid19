@@ -1,4 +1,4 @@
-export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendScope) {
+export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendScope, selectedMetric) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -72,7 +72,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
         d.data.METRIC_TOTAL_PERCENTAGE
           ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
           : 0
-      }</span> of cases statewide</div>
+      }</span> of ${selectedMetric} statewide</div>
       </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -147,11 +147,11 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
 
         .html(d => {
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
-            return `<tspan class="highlight-data">0%</tspan>  change in cases sinice previous month`;
+            return `<tspan class="highlight-data">0%</tspan>  change in ${selectedMetric} sinice previous month`;
           } else {
             return `<tspan class="highlight-data">${parseFloat(
               d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
-            ).toFixed(1)}%</tspan> change in cases since previous month`;
+            ).toFixed(1)}%</tspan> change in ${selectedMetric} since previous month`;
           }
         })
         .attr('text-anchor', 'end');

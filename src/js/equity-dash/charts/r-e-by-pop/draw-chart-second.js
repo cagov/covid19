@@ -1,4 +1,4 @@
-export default function drawSecondBars(svg, x1, x2, y, yAxis, stackedData1, color1, data, tooltip, legendScope) {
+export default function drawSecondBars(svg, x1, x2, y, yAxis, stackedData1, color1, data, tooltip, legendScope, selectedMetric) {
     svg.selectAll("g").remove();
     svg.selectAll("rect").remove();
     svg.selectAll("text").remove();
@@ -87,11 +87,11 @@ export default function drawSecondBars(svg, x1, x2, y, yAxis, stackedData1, colo
   
           .html(d => {
             if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
-              return `<tspan class="highlight-data">0%</tspan>  change in cases sinice previous month`;
+              return `<tspan class="highlight-data">0%</tspan>  change in ${selectedMetric} sinice previous month`;
             } else {
               return `<tspan class="highlight-data">${parseFloat(
                 d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
-              ).toFixed(1)}%</tspan> change in cases since previous month`;
+              ).toFixed(1)}%</tspan> change in ${selectedMetric} since previous month`;
             }
           })
           .attr('text-anchor', 'end');
