@@ -320,3 +320,12 @@ learn-more-section {
 }
 
 cagov-chart-d3-bar h2 {margin-top: 3rem;}
+
+@media (max-width: 900px) { 
+  .awesomplete {
+    display: inline-block;
+  }
+  .form-inline {
+    align-items: start;
+  }
+}
