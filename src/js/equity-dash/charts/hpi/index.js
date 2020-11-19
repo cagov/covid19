@@ -6,7 +6,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.dims = { width: 140, 
                   height:70, 
                   margin: { top: 2, 
-                            right: 10, 
+                            right: 1.5, 
                             bottom: 10, 
                             left: 12} 
                 };
