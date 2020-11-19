@@ -13,8 +13,9 @@ export default class Tooltip {
         <text class="date" y="62", x="-4.75"></text>`
       : '') + 
     `<g class="lineanno">
-       <rect x="2" width="28" y="-5.5" height="3.5" fill="white" opacity=0.5></rect>
-       <text class="label" y="-3", x="2"></text>
+       <!-- <rect x="2" width="28" y="-5.5" height="3.5" fill="white" opacity=0.5></rect> -->
+       <text class="label1" y="-1", x="2"></text>
+       <text class="label2" y="3", x="2"></text>
        <circle r="1" dx="3" fill="#0F368E"></circle>
      </g>`;
   }
@@ -29,13 +30,20 @@ export default class Tooltip {
     // console.log("Tran X: ",tranX);
     // 70 is halfway point of svg...
     if (tranX > midPoint) {
-      this.node.querySelector('text.label').setAttribute('text-anchor','end')
+      this.node.querySelector('text.label1').setAttribute('text-anchor','end')
+      this.node.querySelector('text.label2').setAttribute('text-anchor','end')
+      this.node.querySelector('text.label1').setAttribute('x','-2')
+      this.node.querySelector('text.label2').setAttribute('x','-2')
     } else {
-      this.node.querySelector('text.label').setAttribute('text-anchor','start')
+      this.node.querySelector('text.label1').setAttribute('text-anchor','start')
+      this.node.querySelector('text.label2').setAttribute('text-anchor','start')
+      this.node.querySelector('text.label1').setAttribute('x','2')
+      this.node.querySelector('text.label2').setAttribute('x','2')
     }
     this.node.setAttribute("transform", `translate(${tranX},0)`);
     this.node.querySelector(".lineanno").setAttribute("transform", `translate(0,${tranY})`);
-    this.node.querySelector('text.label').innerHTML = `<tspan font-weight="bold">${(yVal * 100).toFixed(1)}%</tspan> ${this.legend}`;
+    this.node.querySelector('text.label1').innerHTML = `<tspan font-weight="bold">${(yVal * 100).toFixed(1)}%</tspan>`;
+    this.node.querySelector('text.label2').innerHTML = `<tspan >${this.legend}</tspan>`;
     // date alignment debugging
     // if (this.needs_anno) {
     //   let tfmt = d3.timeFormat('%b. %d');
