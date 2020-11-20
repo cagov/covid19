@@ -5,10 +5,13 @@ class CAGovCountyButtons extends window.HTMLElement {
     
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
+      // console.log("County-selected event: " , e.detail);
       if(e.detail.statewide) {
         this.innerHTML = this.template(true);
       } else {
         this.county = e.detail.county;
+        // console.log("Inner HTML: " , this.template(false));
+
         this.innerHTML = this.template(false);
       }
      }.bind(this), false);

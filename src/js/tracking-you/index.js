@@ -283,12 +283,16 @@ export default function setupAnalytics() {
         // console.log("county selected! ",e.detail);
         reportGA('county-select', e.detail.county, 'activity-status');
       }.bind(this), false);
+      searchElement.addEventListener('county-search-typo', function(e) {
+        // console.log("got county thpo! ",e.detail);
+        reportGA('county-select-typo', e.detail.county, 'activity-status');
+      }.bind(this), false);
       
       document.querySelectorAll('.small-tab').forEach(btn => {
         btn.addEventListener('click', function (e) {
           let tabName = this.getAttribute('data-key');
           // console.log("Got tab click",tabName);
-          reportGA('equity-tab-select', tabName);
+          reportGA('tab-select', tabName); // equity-tab-select?  or tabName+":equity"?
 
         });
       });
