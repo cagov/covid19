@@ -5,10 +5,10 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback () {
     this.dims = { width: 140, 
                   height:70, 
-                  margin: { top: 2, 
+                  margin: { top: 8, 
                             right: 1.5, 
                             bottom: 10, 
-                            left: 12} 
+                            left: 10} 
                 };
     this.svg = d3.create("svg").attr("viewBox", [0, 0, this.dims.width, this.dims.height]);
     // this.svg.attr('font-size':'12px');
@@ -110,6 +110,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       )
       // .call(g => g)
       .call(g => g.select(".domain").remove());
+
+    let yAxisLabel = g => g
+      .append("text")             
+      .attr("transform",
+            "translate(" + (0) + " ," + 
+                           (this.dims.margin.top-1) + ")")
+      .style("text-anchor", "left")
+      .text("Test positivity");
       
     let line = d3.line()
       .x((d, i) => {
@@ -155,6 +163,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // debugging
     // xg.selectAll("line").style("stroke", "red");
     // yg.selectAll("line").style("stroke", "green");
+    svg.append("g").call(yAxisLabel);
     
     //tooltip
     const tooltip = new Tooltip(true,"Statewide test positivity");
@@ -202,11 +211,13 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .data(legendColors)
       .enter()
       .append('rect')
-      .attr('x', 10)
-      .attr('y', function(d, i){
-        return i * 6;
+      .attr('x', function(d, i){
+        return i * 53 + 33;
       })
-      .attr('width', 12)
+      .attr('y', function(d, i){
+        return 0; // i * 6;
+      })
+      .attr('width', 8)
       .attr('height', .5)
       .attr('fill', function(d, i){
         return d;
@@ -221,9 +232,11 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .text(function(d){
         return d;
       })
-      .attr('x', 25)
+      .attr('x', function(d,i) { 
+        return i * 53 + 43;
+      })
       .attr('y', function(d, i){
-        return i * 6 - 2;
+        return -1; // i * 6 - 2;
       })
       .attr('text-anchor', 'start')
       .attr('alignment-baseline', 'hanging');
