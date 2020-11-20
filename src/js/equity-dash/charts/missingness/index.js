@@ -150,19 +150,31 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       }
   */
   formatDataObject(d) {
-    if (d.PERCENT_COMPLETE === null) {
+    if (d.TOTAL === 0 && d.MISSING === 0) {
+      d.MISSING = 0;
+    } else if (d.TOTAL === 1 && d.MISSING === 0) {
+      d.MISSING = 0;
+    } else if ((d.TOTAL === 0 || d.TOTAL === null) && d.MISSING === 1) {
       d.MISSING = 1;
-      d.NOT_MISSING = 0;
     } else {
       d.MISSING = d.MISSING / d.TOTAL;
-      d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
       if (isNaN(d.MISSING)){
         d.MISSING = 1
       }
+    }
+
+    if (d.TOTAL === 0 && d.NOT_MISSING === 0) {
+      d.NOT_MISSING = 0;
+    } else if (d.TOTAL === 1 && d.NOT_MISSING === 0) {
+      d.NOT_MISSING = 0;
+    } else if ((d.TOTAL === 0 || d.TOTAL === null) && d.NOT_MISSING === 1) {
+      d.NOT_MISSING = 1;
+    } else {
+      d.NOT_MISSING = d.NOT_MISSING / d.TOTAL;
       if (isNaN(d.NOT_MISSING)){
         d.NOT_MISSING = 0
       }
-    }
+    }    
   }
 
   /**
