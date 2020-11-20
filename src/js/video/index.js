@@ -9,7 +9,7 @@ const youtubeEmbed = `
 <iframe 
   width="100%" 
   height="100%" 
-  src="https://www.youtube.com/embed/${videoID}?autoplay=1" 
+  src="https://www.youtube.com/embed/${document.querySelector('.video-item').dataset.video}?autoplay=1" 
   frameborder="0" 
   allow="accelerometer; autoplay; encrypted-media; gyroscope" 
   allowfullscreen>

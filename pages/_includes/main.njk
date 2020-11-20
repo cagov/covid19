@@ -13,10 +13,6 @@
 	{{ super() }}
 {% endblock %}
 
-{% block headJS %}
-	<script>const videoID='{{varVideoID}}';</script>
-{% endblock %}
-
 {% block preHeader %}
 	<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
 {% endblock %}
@@ -186,10 +182,10 @@
 	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
 		<div class="video-wrap text-center">
 
-			{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
-			{% set JSONgov = JSONgovraw | jsonparse %}
-			{%- set RowsGov = JSONgov.Table5 -%}
-			{% for item in RowsGov %}
+			{% set JSONVidraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+			{% set JSONVid = JSONVidraw | jsonparse %}
+			{%- set RowsVid = JSONVid.Table5 -%}
+			{% for item in RowsVid %}
 			<div class="container">
 			<div class="row">
 			<div class="col-lg-8 mx-auto text-center">
@@ -210,13 +206,15 @@
 
 				<a href="https://{{item["VideoURL"]}}" data-video="{{item["VideoID"]}}" class="link-arrow-blue video-modal-open trigger mt-4" data-video="{{item["VideoID"]}}">
 					<div class="link-arrow-label">{{item["ButtonText"]}}</div>
-					cagov-arrow></cagov-arrow>
+					<cagov-arrow></cagov-arrow>
 				</a>
 
 		
 				</div>
 				</div>
 				</div>
+
+				
 				{% endfor %}
 				
 		</div>
