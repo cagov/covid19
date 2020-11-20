@@ -344,7 +344,7 @@ module.exports = function(eleventyConfig) {
         
         
         const getNextTag = (searchArea, tag) => 
-           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','m'))]
+           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','gm'))]
             .map(r=> ({
               index: r.index,
               isCloseTag: r.groups.closeslash.length>0,

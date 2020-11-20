@@ -7,7 +7,7 @@ const data = {
     totalDeaths: caseStats[0]['NUMBERDIED'],
     totalDeathsIncrease: caseStats[0]['NUMBERDIED_DAILYPCTCHG'] * 100,
     testsReported: caseStats[0]['TESTED'],
-    lastStatsDate: caseStats[0]['DATE'] + 'T18:00:00Z'
+    lastStatsDate: caseStats[0]['DATE'] + 'T19:00:00Z'
   }
 };
 
