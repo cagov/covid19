@@ -7,6 +7,8 @@ publishdate: "2020-11-18T22:40:14Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
+<!--{% set data = equityTopBoxes[0] %}-->
+
 
 <p>All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
 
@@ -42,8 +44,8 @@ addtositemap: false
     
                     <div class="row d-flex row-eq-height justify-content-md-center pb-4">
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                    
-<!--{% set value = 54 %}-->
+
+<!--{% set value = data.case_rate_vs_statewide_percent_latino %}-->
 <!--{% if value > 0 %}-->
 
 <div class="eq-text mb-3">
@@ -53,7 +55,7 @@ addtositemap: false
 <!--{% elif value < 0 %}-->
 
 <div class="eq-text mb-3">
-  Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide
+  Case rate for Latino people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
 </div>
 
 <!--{% else %}-->
@@ -63,59 +65,92 @@ addtositemap: false
 </div>
 
 <!--{% endif %}-->
-                                
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>2,879.1</strong> Latino <br>
-                                <strong>1,871.4</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> Latino <br>
+                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
                             </div>
                     
                         </div>
                     
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                    
-                            <div id="eq2-positive" class="eq-text mb-3">Case rate for Pacific Islanders is <span class="eq-data">115% higher</span> than statewide</div>
-                    
-                            <div id="eq2-negative" class="eq-text mb-3 d-none">Case rate for Pacific Islanders is <span class="eq-data">1% lower</span> than statewide</div>
-                    
-                            <div id="eq2-same" class="eq-text mb-3 d-none">Case rate for Pacific Islanders is the same as statewide average</div>
-                    
+<!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
+<!--{% if value > 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Pacific Islanders is <span class="eq-data">{{value}}% higher</span> than statewide
+</div>
+
+<!--{% elif value < 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Pacific Islanders is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+</div>
+
+<!--{% else %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Pacific Islanders is the same as statewide average
+</div>
+
+<!--{% endif %}-->
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>4,024</strong> NHPI <br>
-                                <strong>1,871.4</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
+                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
                             </div>
                     
                         </div>
                     
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                        
-                    
-                                <div id="eq3-positive" class="eq-text mb-3 ">Death rate for Black people is <span class="eq-data">24% higher</span> than statewide</div>
-                    
-                                <div id="eq3-negative" class="eq-text mb-3 d-none">Death rate for Black people is <span class="eq-data">20% lower</span> than statewide</div>
-                    
-                                <div id="eq3-same" class="eq-text mb-3 d-none">Death rate for Black people is the same as statewide average</div>
-                    
-                    
+<!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
+<!--{% if value > 0 %}-->
+
+<div class="eq-text mb-3">
+  Death rate for Black people is <span class="eq-data">{{value}}% higher</span> than statewide
+</div>
+
+<!--{% elif value < 0 %}-->
+
+<div class="eq-text mb-3">
+  Death rate for Black people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+</div>
+
+<!--{% else %}-->
+
+<div class="eq-text mb-3">
+  Death rate for Black people is the same as statewide average
+</div>
+
+<!--{% endif %}-->
                                 <div class="eq-cases">
                                     <p class="text-xs">Deaths per 100K people:</p> 
-                                    <p class="text-xs mb-0"><strong>56.2</strong> Black <br>
-                                    <strong>45.5</strong> statewide</p>
+                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black}}</strong> Black <br>
+                                    <strong>{{data.death_rate_per_100k_statewide}}</strong> statewide</p>
                                 </div>
                         </div>
                     
                         <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white  d-flex flex-column">
-                        
-                    
-                            <div id="eq4-positive" class="eq-text mb-3">Case rate for households with median income &lt;$40K is <span class="eq-data">36% higher</span> than statewide
-                            </div>
-                    
-                            <div id="eq4-negative" class="eq-text mb-3 d-none">Case rate for households with median income &lt;$40K is <span class="eq-data">1% lower</span> than statewide
-                            </div>
-                    
-                            <div id="eq4-same" class="eq-text mb-3 d-none">Case rate for households with median income &lt;$40K is the same as statewide average
-                            </div>
+<!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
+<!--{% if value > 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for households with median income &lt;$40K is <span class="eq-data">{{value}}% higher</span> than statewide
+</div>
+
+<!--{% elif value < 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for households with median income &lt;$40K is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+</div>
+
+<!--{% else %}-->
+
+<div class="eq-text mb-3">
+  Case rate for households with median income &lt;$40K is the same as statewide average
+</div>
+
+<!--{% endif %}-->
                     <!--
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p>
