@@ -4,7 +4,6 @@ class CAGovCountyButtons extends window.HTMLElement {
     this.county = '';
     
     let searchElement = document.querySelector('cagov-county-search');
-
     searchElement.addEventListener('county-selected', function (e) {
       if(e.detail.statewide) {
         this.innerHTML = this.template(true);

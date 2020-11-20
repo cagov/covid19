@@ -72,7 +72,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let legendLabels = [data1Legend, missing_data2? "missing equity data" : "Health equity quartile positivity"];
     this.rewriteLegend(this.svg, legendLabels);
 
-    console.log("dims",this.dims);
+    // console.log("dims",this.dims);
 
     // let dimensions = ({width:200, height:100});
     let xbounds = ({'min':d3.min((missing_data2? data:data2), d => new Date(d.DATE)), 
