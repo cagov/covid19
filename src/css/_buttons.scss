@@ -308,3 +308,157 @@ button.clear {
       }
     } 
   }
+
+  /* Arrow links */
+  @mixin link-arrow {
+    font-size: 1.2rem;
+    font-family: Montserrat,sans-serif;
+    text-transform: uppercase;
+    text-decoration:none !important;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease;
+  }
+  .link-arrow-label {
+    margin-right:1em;
+  }
+  .link-arrow-icon {
+    width: 2.75rem;
+    height: 2.75rem; 
+    border-radius: 50%;
+    padding:0;
+    overflow:hidden;
+    transition: all .3s ease;
+    }
+  .link-arrow-icon-svg {
+    width: 60px;
+    height:100%;
+    position:relative;
+    transition: all .3s ease;
+    right:28px;
+  }
+  
+//blue arrow link
+  .link-arrow-blue {
+    @include link-arrow; 
+      color:#1F2574;
+      .link-arrow-icon {
+        border:2px solid #1F2574;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:#1F2574;
+      }
+      //link hover and focus state
+      &:hover, &:focus {
+        color:#003D9D;
+        .link-arrow-icon {
+          border-color:#003D9D;
+          .arrow1, .arrow2 {fill:#003D9D;}
+        }
+        .link-arrow-icon-svg {right:-10px;}
+      }
+      &:focus {outline: 2px solid #0257d5 !important;}
+    }
+
+    //white arrow link
+  .link-arrow-white {
+    @include link-arrow; 
+      color:#fff !important;
+      .link-arrow-icon {
+        border:2px solid #fff;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:#fff;
+      }
+      //link hover and focus state
+      &:hover, &:focus {
+        color:#FF8000 !important;        ;
+        .link-arrow-icon {
+          border-color:#FF8000; 
+          .arrow1, .arrow2 {fill:#FF8000;}
+        }
+        .link-arrow-icon-svg {right:-10px;}
+      }
+      &:focus {outline: 2px solid #fff !important;}
+    }
+    
+
+  //light blue  arrow link
+  .link-arrow-lightblue {
+    @include link-arrow; 
+      color:#92C5DE !important;
+      .link-arrow-icon {
+        border:2px solid #92C5DE;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:#92C5DE;
+      }
+      //link hover and focus state
+      &:hover, &:focus {
+        color:#FF8000 !important;        ;
+        .link-arrow-icon {
+          border-color:#FF8000; 
+          .arrow1, .arrow2 {fill:#FF8000;}
+        }
+        .link-arrow-icon-svg {right:-10px;}
+      }
+      &:focus {outline: 2px solid #fff !important;}
+    }
+
+/* Call to Action Buttons */
+@mixin action-button {
+  display: inline-block;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 0 transparent;
+  padding: 0.625rem 1.5rem;
+  line-height: 1.5;
+  border-radius:50px;
+  text-decoration: none !important;
+  transition: all .3s ease;
+}
+// dark blue button
+.button-blue {
+  @include action-button;
+  background-color: #1F2574;
+  color: #fff !important;
+  &:hover, &:focus {
+    background-color: #FF8000;
+    color: #1F2574 !important;
+  }
+  &:focus {outline: 2px solid #0257d5 !important;}
+}
+// white button
+.button-white {
+  @include action-button;
+  background-color: #fff;
+  color: #1F2574 !important;
+  &:hover, &:focus {
+    background-color: #FF8000;
+    color: #1F2574 !important;
+  }
+  &:focus {outline: 2px solid #fff !important;}
+}
+// light blue button
+.button-lightblue {
+  @include action-button;
+  background-color: #92C5DE;
+  color: #1F2574 !important;
+  &:hover, &:focus {
+    background-color: #FF8000;
+    color: #1F2574 !important;
+  }
+  &:focus {outline: 2px solid #0257d5 !important;}
+}
+
+.bd-4px {
+border-radius: 0.25rem !important;
+}

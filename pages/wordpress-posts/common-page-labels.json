@@ -37,6 +37,10 @@
       "text": "Menu"
     },
     {
+      "_id": "menu_close",
+      "text": "Close"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "What are you looking for?"
     },
@@ -125,7 +129,7 @@
   ],
   "Table3": [
     {
-      "Name": "Stay home Q&amp;A",
+      "Name": "About COVID-19 restrictions",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
@@ -143,6 +147,27 @@
     {
       "Name": "Local info and alerts",
       "_slug": "get-local-information"
+    }
+  ],
+  "Table4": [
+    {
+      "Link Title": "What is the guidance to safely open my business?",
+      "URL": "#"
+    },
+    {
+      "Link Title": "Where can I find assistance for my business?",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "Thank you",
+      "Description": "Thank you for doing everything you can to stop the spread of COVID-19 this holiday season.",
+      "VideoURL": "youtu.be/zoqlfZM_Nt4",
+      "VideoID": "zoqlfZM_Nt4",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou.jpg",
+      "ImageALT": "Thank you",
+      "ButtonText": "Watch video"
     }
   ]
 }
