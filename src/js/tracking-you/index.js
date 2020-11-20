@@ -292,7 +292,7 @@ export default function setupAnalytics() {
         btn.addEventListener('click', function (e) {
           let tabName = this.getAttribute('data-key');
           // console.log("Got tab click",tabName);
-          reportGA('equity-tab-select', tabName);
+          reportGA('tab-select', tabName); // equity-tab-select?  or tabName+":equity"?
 
         });
       });
