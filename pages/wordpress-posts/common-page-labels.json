@@ -37,6 +37,10 @@
       "text": "Menu"
     },
     {
+      "_id": "menu_close",
+      "text": "Close"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "What are you looking for?"
     },
@@ -95,6 +99,10 @@
   ],
   "Table2": [
     {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
+    {
       "Name": "Department of Public Health",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
     },
@@ -121,7 +129,7 @@
   ],
   "Table3": [
     {
-      "Name": "Stay home Q&amp;A",
+      "Name": "About COVID-19 restrictions",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
@@ -139,6 +147,27 @@
     {
       "Name": "Local info and alerts",
       "_slug": "get-local-information"
+    }
+  ],
+  "Table4": [
+    {
+      "Link Title": "What is the guidance to safely open my business?",
+      "URL": "#"
+    },
+    {
+      "Link Title": "Where can I find assistance for my business?",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "Wear a Mask",
+      "Description": "Even without symptoms, you can expose others to COVID-19. Wear a mask to slow the spread.",
+      "VideoURL": "youtu.be/1zDX9PXkotA",
+      "VideoID": "1zDX9PXkotA",
+      "ImageURL": "files.covid19.ca.gov/img/homepage-video-thumb--en.jpg",
+      "ImageALT": "Wear a mask",
+      "ButtonText": "Watch wear a mask video"
     }
   ]
 }
