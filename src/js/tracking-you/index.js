@@ -283,6 +283,10 @@ export default function setupAnalytics() {
         // console.log("county selected! ",e.detail);
         reportGA('county-select', e.detail.county, 'activity-status');
       }.bind(this), false);
+      searchElement.addEventListener('county-search-typo', function(e) {
+        // console.log("got county thpo! ",e.detail);
+        reportGA('county-select-typo', e.detail.county, 'activity-status');
+      }.bind(this), false);
       
       document.querySelectorAll('.small-tab').forEach(btn => {
         btn.addEventListener('click', function (e) {
