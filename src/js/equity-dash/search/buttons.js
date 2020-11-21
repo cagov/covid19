@@ -6,12 +6,14 @@ class CAGovCountyButtons extends window.HTMLElement {
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
       // console.log("County-selected event: " , e.detail);
-      if(e.detail.statewide) {
+      if (e.detail.reset) {
+        this.innerHTML = '';
+      }
+      else if(e.detail.statewide) {
         this.innerHTML = this.template(true);
       } else {
         this.county = e.detail.county;
         // console.log("Inner HTML: " , this.template(false));
-
         this.innerHTML = this.template(false);
       }
      }.bind(this), false);
@@ -25,14 +27,16 @@ class CAGovCountyButtons extends window.HTMLElement {
           let emissionEvent = new window.CustomEvent('county-selected', {
             detail: {
               county: clickedCounty,
-              statewide: false
+              statewide: false,
+              reset: false
             }
           });
           if(event.target.classList.contains('statewide')) {
             emissionEvent = new window.CustomEvent('county-selected', {
               detail: {
                 county: 'California',
-                statewide: true
+                statewide: true,
+                reset: false
               }
             });
           }
@@ -44,6 +48,7 @@ class CAGovCountyButtons extends window.HTMLElement {
   }
 
   template(isStatewide) {
+    // console.log("Template isStatewide=",isStatewide);
     return /*html*/`<div class="row d-flex justify-content-md-center">
       <div class="toggle-link-container js-toggle-county-container">
         <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">

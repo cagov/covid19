@@ -3,8 +3,9 @@ import templatize from './template.js';
 
 class CAGovCountySearch extends window.HTMLElement {
 
-  processCountySearchResult(typedInValue) {
+  processCountySearchInput(typedInValue) {
         let foundCounty = '';
+        // console.log("Search Input: ",typedInValue);
         if(typedInValue == '') {
           this.state['county'] = 'California';
           this.state.statewide = true;
@@ -55,7 +56,7 @@ class CAGovCountySearch extends window.HTMLElement {
         document.querySelector('#county-query-error').style.display = 'none';
         // do I have a full county typed in here?
         let typedInValue = document.querySelector('#location-query').value.trim();
-        this.processCountySearchResult(typedInValue);
+        this.processCountySearchInput(typedInValue);
       }.bind(this))  
     }.bind(this));
     
@@ -73,7 +74,7 @@ class CAGovCountySearch extends window.HTMLElement {
       },
       replace: function (selectedSuggestion) {
         let typedInValue = selectedSuggestion.value;
-        component.processCountySearchResult(typedInValue);
+        component.processCountySearchInput(typedInValue);
       },
       list: aList
     };
@@ -82,11 +83,14 @@ class CAGovCountySearch extends window.HTMLElement {
   }
 
   emitCounty() {
+    // jbum: If we get statewide: true, reset the dialog to as it appears on refresh
+    // console.log("Emit County",this.state);
     // Dispatch custom event so we can pick up and track this usage elsewhere.
     const event = new window.CustomEvent('county-selected', {
       detail: {
         county: this.state.county,
-        statewide: this.state.statewide
+        statewide: this.state.statewide,
+        reset: this.state.statewide
       }
     });
     // console.log("Emitting county-select",event.detail);
@@ -95,7 +99,8 @@ class CAGovCountySearch extends window.HTMLElement {
 
   emitCountyTypo(misspelling) {
     // Dispatch custom event so we can pick up and track this usage elsewhere.
-    const event = new window.CustomEvent('county-search-typo', {
+   // console.log("Emit County Typo");
+   const event = new window.CustomEvent('county-search-typo', {
       detail: {
         county: misspelling,
       }
@@ -121,6 +126,7 @@ class CAGovCountySearch extends window.HTMLElement {
 
     clearBtn.addEventListener("blur", inputValue);    
     clearBtn.addEventListener("click", function(e) {
+      // console.log("Clear Button Clicked");
       e.preventDefault();
       countyInput.value = '';
       this.state['county'] = 'California';
@@ -128,6 +134,7 @@ class CAGovCountySearch extends window.HTMLElement {
       // console.log("C emitting county",this.state);
       this.emitCounty();
       clearBtn.classList.add('d-none');
+      document.querySelector('#county-query-error').style.display = 'none';
     }.bind(this));
   }
 

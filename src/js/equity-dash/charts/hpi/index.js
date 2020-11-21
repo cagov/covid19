@@ -117,7 +117,9 @@ class CAGOVChartD3Lines extends window.HTMLElement {
             "translate(" + (0) + " ," + 
                            (this.dims.margin.top-1) + ")")
       .style("text-anchor", "left")
-      .text("Test positivity");
+      .text("Test positivity")
+      .attr("class","y-label")
+      ;
       
     let line = d3.line()
       .x((d, i) => {
@@ -130,6 +132,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     //call line chart county_positivity_all_nopris
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
+    svg.selectAll(".y-label").remove(); 
     
     svg
       .append("path")
