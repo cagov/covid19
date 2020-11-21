@@ -1,8 +1,8 @@
 export default function getTranslations(container) {
   let translationsObj = {};
-  let translateEls = container.querySelectorAll('li');
+  let translateEls = container.querySelectorAll('[data-label]');
   translateEls.forEach(item => {
-    translationsObj[item.classList] = item.innerHTML;
+    translationsObj[item.dataset.label] = item.innerHTML;
   })
   return translationsObj;
 }
