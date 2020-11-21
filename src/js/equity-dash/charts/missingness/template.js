@@ -28,7 +28,7 @@ export default function template(title) {
                     In <span data-replace="location">California</span>, <span data-replace="data-type">race and ethnicity</span> data for
                     <span data-replace="metric">tests</span> is
                     <span class="highlight-data">
-                      <span data-replace="highlight-data"></span>
+                      <span data-replace="highlight-data">  </span>
                     </span>
                     complete.
                     </div>

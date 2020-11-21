@@ -282,8 +282,10 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   render() {
     let data = this.formatDataSet(this.alldata[this.selectedMetric]);
     let stackedData = d3.stack().keys(this.chartSettings.subgroups)(data);
-
     let domains = this.getDomains(data); // Get list of data domains for this dataset.
+
+    this.translationsObj = this.getTranslations();
+    this.resetTitle();
 
     let heightMultiplier = this.chartSettings.heightMultiplier;
     let svgHeight = heightMultiplier * domains.length;
@@ -319,8 +321,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
-    this.translationsObj = this.getTranslations();
-    this.resetTitle();
+
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
       .append("div")
@@ -365,32 +366,14 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       }) => {
         let location = this.getLocation();
         let dataType = this.getFilterText().toLowerCase();
-        console.log('metric', metric);
-        console.log('highlightData', highlightData);
-        console.log('dataType', dataType);
-        console.log('location', location);
         let tooltipHTML = translations['chart-tooltip-complete'];
         if (!complete) {
           tooltipHTML = translations['chart-tooltip-missing'];
         }
-
         tooltipHTML = tooltipHTML.replace('<span data-replace="metric">tests</span>', `<span data-replace="metric">${metric}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
-        console.log(tooltipHTML);
-        // if (this.querySelector('equity-tooltip') !== null && this.querySelector('equity-tooltip[data-replace="metric"]') !== null) {
-        //   this.querySelector('equity-tooltip[data-replace="metric"]').innerHTML = metric;
-        //   this.querySelector('equity-tooltip[data-replace="highlight-data"]').innerHTML = highlightData;
-        //   this.querySelector('equity-tooltip[data-replace="location"]').innerHTML = location;
-        //   this.querySelector('equity-tooltip[data-replace="data-type"]').innerHTML = dataType;
-        //
-        //   // this.querySelector(".chart-title").innerHTML = this.translationsObj['tab-label'] ? this.translationsObj['tab-label'] : null;
-        //   // this.querySelector('.chart-title span[data-replace="metric-filter"]').innerHTML = this.getFilterText().toLowerCase();
-        //   // this.querySelector('.chart-title span[data-replace="location"]').innerHTML = this.getLocation();
-        //
-        // }
-        // console.log(tooltipHTML);
         return tooltipHTML;
       }
     return translations;

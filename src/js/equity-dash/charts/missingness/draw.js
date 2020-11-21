@@ -5,10 +5,33 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
+  // Add neutral background fill
   svg
     .append("g")
     .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
+    // Enter in the stack data = loop key per key = group per group.
+    .data(stackedData)
+    .enter()
+    .append("g")
+    .attr("fill", '#F2F5FC') // Neutral background color
+    .selectAll("rect")
+    .attr("width", "10px")
+    // Enter a second time = loop subgroup per subgroup to add all rectangles.
+    .data(d => {
+      return d;
+    })
+    .enter()
+    .append("rect")
+    .attr("x", d => x(d[0]))
+    .attr("y", d => y(d.data.METRIC))
+    .attr("width", d => x(1) - x(0))
+    .attr("height", "10px")
+
+
+  svg
+    .append("g")
+    .selectAll("g")
+    // Enter in the stack data = loop key per key = group per group.
     .data(stackedData)
     .enter()
     .append("g")
@@ -16,8 +39,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .selectAll("rect")
     .attr("width", "40px")
 
-
-    // enter a second time = loop subgroup per subgroup to add all rectangles
+    // Enter a second time = loop subgroup per subgroup to add all rectangles.
     .data(d => {
       return d;
     })
@@ -27,19 +49,6 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("y", d => y(d.data.METRIC))
     .attr("width", d => x(d[1]) - x(d[0]))
     .attr("height", "10px")
-
-    // enter a third time, add background fill
-    // .data(d => {
-    //   console.log('d', d);
-    //   return d;
-    // })
-    // .enter()
-    // .append("rect")
-    // .attr("fill", d => color('#000000'))
-    // .attr("x", d => x(d[0]))
-    // .attr("y", d => y(d.data.METRIC))
-    // .attr("width", d => x(1))
-    // .attr("height", "12px")
 
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
