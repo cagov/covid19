@@ -5,15 +5,6 @@ import getScreenDisplayType from '../../get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
-    // Set window object and resize event listener (ideally set at a higher level, can move up once this is working.)
-    getScreenDisplayType();
-
-    const handleResize = () => {
-      this.screenDisplayType = window.equitydash.displayType;
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
     // Settings and initial values
     this.chartDisplayOptions = {
       desktop: {
@@ -81,9 +72,13 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       },
     };
 
+    // Set window object and resize event listener (ideally set at a higher level, can move up once this is working.)
+    getScreenDisplayType();
+    this.screenDisplayType = window.equitydash.displayType;
+    this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    
     // Choose settings for current screen display.
     // Display content & layout dimensions
-    this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     this.innerHTML = template();
 
@@ -279,6 +274,44 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     return domains;
   }
 
+  getTranslations() {
+    let translations = getTranslations(this);
+
+    // This function is called when the chart title values are changed by user interaction.
+    // Intention is to accommodate different placement of values in sentence structure for translated content.
+    // Take translated template string, replace values into the span tags.
+    translations.chartTitle = ({
+      metricFilter = 'race_ethnicity',
+      location = 'California'
+    }) => {
+      let title = translations['tab-label'];
+      return title;
+    }
+
+    // Generate tooltip text, taking dynamic variable.
+    // This takes an HTML text string from the template.
+    // @TODO Accommodate different placement of values in sentence structure for translated content.
+    // Take translated template string, replace values into the span tags.
+    translations.chartTooltip = ({
+        metric = 'tests',
+        highlightData = 0,
+        complete = true,
+      }) => {
+        let location = this.getLocation();
+        let dataType = this.getFilterText().toLowerCase();
+        let tooltipHTML = translations['chart-tooltip-complete'];
+        if (!complete) {
+          tooltipHTML = translations['chart-tooltip-missing'];
+        }
+        tooltipHTML = tooltipHTML.replace('<span data-replace="metric">tests</span>', `<span data-replace="metric">${metric}</span>`);
+        tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
+        tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
+        tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
+        return tooltipHTML;
+      }
+    return translations;
+  }
+
   render() {
     let data = this.formatDataSet(this.alldata[this.selectedMetric]);
     let stackedData = d3.stack().keys(this.chartSettings.subgroups)(data);
@@ -321,7 +354,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
-
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
       .append("div")
@@ -339,44 +371,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       this.tooltip,
       this.translationsObj
     );
-  }
-
-  getTranslations() {
-    let translations = getTranslations(this);
-
-    // This function is called when the chart title values are changed by user interaction.
-    // Intention is to accommodate different placement of values in sentence structure for translated content.
-    // Take translated template string, replace values into the span tags.
-    translations.chartTitle = ({
-      metricFilter = 'race_ethnicity',
-      location = 'California'
-    }) => {
-      let title = translations['tab-label'];
-      return title;
-    }
-
-    // Generate tooltip text, taking dynamic variable.
-    // This takes an HTML text string from the template.
-    // @TODO Accommodate different placement of values in sentence structure for translated content.
-    // Take translated template string, replace values into the span tags.
-    translations.chartTooltip = ({
-        metric = 'tests',
-        highlightData = 0,
-        complete = true,
-      }) => {
-        let location = this.getLocation();
-        let dataType = this.getFilterText().toLowerCase();
-        let tooltipHTML = translations['chart-tooltip-complete'];
-        if (!complete) {
-          tooltipHTML = translations['chart-tooltip-missing'];
-        }
-        tooltipHTML = tooltipHTML.replace('<span data-replace="metric">tests</span>', `<span data-replace="metric">${metric}</span>`);
-        tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
-        tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
-        tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
-        return tooltipHTML;
-      }
-    return translations;
   }
 
   retrieveData(url) {
