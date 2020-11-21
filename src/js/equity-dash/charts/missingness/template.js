@@ -10,22 +10,22 @@ export default function template(title) {
             <div class="svg-holder">
               <!--Translatable values for charts. -->
               <div class="d-none">
-                <ul data-label-array="displayOrderValues">
-                  <li data-label-array="tests">Tests</li>
-                  <li data-label-array="cases">Cases</li>
-                  <li data-label-array="deaths">Deaths</li>
+                <ul data-group="displayOrder">
+                  <li data-item="tests">TEST TEST TEST Tests</li>
+                  <li data-item="cases">TEST TEST TEST Cases</li>
+                  <li data-item="deaths">TEST TEST TEST Deaths</li>
                 </ul>
 
                 <ul>
-                  <li data-label="data-missing">Data missing</li>
-                  <li data-label="data-reported">Data reported</li>
-                  <li data-label="reported">reported</li>
-                  <li data-label="missing">missing</li>
-                  <li data-label="empty-tooltip">an empty tooltip</li>
-                  <li data-label="percent-change-previous-month">change in cases since previous month</li>
+                  <li data-label="data-missing">TEST TEST TEST Data missing</li>
+                  <li data-label="data-reported">TEST TEST TEST Data reported</li>
+                  <li data-label="reported">TEST TEST TEST reported</li>
+                  <li data-label="missing">TEST TEST TEST missing</li>
+                  <li data-label="empty-tooltip">TEST TEST TEST an empty tooltip</li>
+                  <li data-label="percent-change-previous-month">TEST TEST TEST change in cases since previous month</li>
                   <li data-label="chart-tooltip">
                     <div>
-                    In California, race and ethnicity data for
+                    TEST TEST TEST In California, race and ethnicity data for
                     <span data-replace="metric"></span> is
                     <span class="highlight-data">
                       <span data-replace="highlight-data"></span>
@@ -33,7 +33,7 @@ export default function template(title) {
                     complete
                     </div>
                   </li>
-                  <li data-label="tab-label">Reporting by <span data-replace="metricFilter"></span> in <span data-replace="location"></span></li>
+                  <li data-label="tab-label">TEST TEST TEST Reporting by <span data-replace="metric-filter"></span> in <span data-replace="location"></span></li>
                 </ul>
               </div>
             </div>

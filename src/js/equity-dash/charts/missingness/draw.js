@@ -41,8 +41,8 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("width", d => x(1))
     .attr("height", "12px")
 
-
     .on("mouseover", function(event, d) {
+      console.log('moused');
       d3.select(this).transition();
       tooltip.html(() => {
         let percentNotMissing = d.data.NOT_MISSING
@@ -53,37 +53,29 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
           : 0;
 
         let metric = d.data.METRIC;
+        return translations.chartTooltip({
+          metric: 'cases',
+          highlightData: '10%',
+        });
 
-        if (d[0] == 0) {
-          return translations.chartTooltip({
-            metric: d.data.METRIC,
-            highlightData: d.data.NOT_MISSING
-              ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
-              : 0
-          });
-        //   return `<div class="chart-tooltip">
-        //   <div>In California, race and ethnicity data for ${
-        //     metric
-        //   } is <span class="highlight-data">${
-        //     percentNotMissing
-        //   }</span> complete </div>
-        // </div>`;
-        } else {
 
-          return translations.chartTooltip({
-            metric: d.data.METRIC,
-            highlightData: d.data.NOT_MISSING
-              ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
-              : 0
-          });
-        //   return `<div class="chart-tooltip">
-        //   <div>In California, race and ethnicity data for ${
-        //     metric
-        //   } is <span class="highlight-data">${
-        //     percentMissing
-        //   }</span> missing </div>
-        // </div>`;
-        }
+
+        // if (d[0] == 0) {
+        //   return translations.chartTooltip({
+        //     metric: d.data.METRIC,
+        //     highlightData: d.data.NOT_MISSING
+        //       ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
+        //       : 0
+        //   });
+        // } else {
+        //
+        //   return translations.chartTooltip({
+        //     metric: d.data.METRIC,
+        //     highlightData: d.data.NOT_MISSING
+        //       ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
+        //       : 0
+        //   });
+        // }
       });
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -117,12 +109,12 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
                 100
             ).toFixed(1) == 0.0
           ) {
-            return `<tspan class="highlight-data">0%</tspan>  ${translations.percentChangePreviousMonth}`;
+            return `<tspan class="highlight-data">0%</tspan>  ${translations['percent-change-previous-month']}`;
           } else {
             return `<tspan class="highlight-data">${(d.PERCENT_COMPLETE_30_DAYS_PRIOR != 0) ? parseFloat(
               (d.PERCENT_COMPLETE_30_DAYS_DIFF) *
                 100
-            ).toFixed(1) : "0"}%</tspan> ${translations.percentChangePreviousMonth}`;
+            ).toFixed(1) : "0"}%</tspan> ${translations['percent-change-previous-month']}`;
           }
         })
         .attr('text-anchor', 'end');
@@ -186,7 +178,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
           (d) => {
             let notMissing = parseFloat(d.NOT_MISSING * 100).toFixed(1);
             let missing = parseFloat(d.MISSING * 100).toFixed(1);
-            return `<tspan class="highlight-data">${notMissing}%</tspan> ${translations.reported} (<tspan class="highlight-data">${missing}%</tspan> ${translations.missing})`
+            return `<tspan class="highlight-data">${notMissing}%</tspan> ${translations['reported']} (<tspan class="highlight-data">${missing}%</tspan> ${translations['missing']})`
         })
         .attr('text-anchor', 'end');
     });
@@ -214,7 +206,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text(translations.dataReported);
+    .text(translations['data-reported']);
   svg
     .append("text")
     .attr("x", 135)
@@ -222,5 +214,5 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text(translations.dataMissing);
+    .text(translations['data-missing']);
 }
