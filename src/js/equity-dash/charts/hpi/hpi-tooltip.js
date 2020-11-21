@@ -8,7 +8,7 @@ export default class Tooltip {
     this.node.setAttribute("display", "none");
     this.node.innerHTML = 
     (needs_anno? 
-       `<rect x="0" width=0.25 y=0 height=200 fill="#003D9D" stroke=none opacity=0.5></rect>
+       `<rect x="0" width=0.25 y=10 height=52 fill="#003D9D" stroke=none opacity=0.5></rect>
         <rect x="-5.5" width="10" y="89.5" height="3.5" fill="white" opacity=0.5></rect>
         <text class="date" y="62", x="-4.75"></text>`
       : '') + 

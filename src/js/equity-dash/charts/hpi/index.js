@@ -1,3 +1,4 @@
+import { stackOffsetNone } from 'd3';
 import Toolline from './hpi-tooltip.js';
 import Tooltip from './hpi-tooltip.js';
 
@@ -67,15 +68,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let data2 = alldata.county_positivity_low_hpi;
     // console.log("Overall Data ",data);
     // console.log("Equity Data2 ",data2);
-    let missing_data2 = data2.filter(d => null == d.METRIC_VALUE).length > 0;
+    let missing_eq_data = data2.filter(d => null == d.METRIC_VALUE).length > 0;
 
-    let legendLabels = [data1Legend, missing_data2? "missing equity data" : "Health equity quartile positivity"];
+    let legendLabels = [data1Legend, missing_eq_data? "missing equity data" : "Health equity quartile positivity"];
     this.rewriteLegend(this.svg, legendLabels);
-
+    svg.selectAll(".legend").attr('visibility', missing_eq_data? 'hidden' : 'visible'); 
     // console.log("dims",this.dims);
 
     // let dimensions = ({width:200, height:100});
-    let xbounds = ({'min':d3.min((missing_data2? data:data2), d => new Date(d.DATE)), 
+    let xbounds = ({'min':d3.min((missing_eq_data? data:data2), d => new Date(d.DATE)), 
                     'max':d3.max(data, d => new Date(d.DATE))});
 
     let x = d3.scaleTime()
@@ -83,18 +84,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .range([this.dims.margin.left,this.dims.width-this.dims.margin.right]);
 
     // don't allow max_y to exceed 100%, since that would be silly
-    let max_y = Math.min(1,d3.max((missing_data2? data : data2), d => d.METRIC_VALUE) * 1.4);
+    let max_y = Math.min(1,d3.max((missing_eq_data? data : data2), d => d.METRIC_VALUE) * 1.4);
 
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
       .range([this.dims.height-this.dims.margin.bottom, this.dims.margin.top]);
 
     let xAxis = g => g
-      .attr("transform", `translate(2.5,-120)`)
+      .attr("transform", `translate(2.75,10)`)
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
-        .tickSize(180,0))
+        .tickSize(52))
       // .call(g => g)
       .call(g => g.select(".domain").remove());
 
@@ -120,6 +121,38 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .text("Test positivity")
       .attr("class","y-label")
       ;
+    let missingLabelText = "The health equity metric is not<br>applied to counties with a population<br>less than 106,000.";
+    let missingTextLines = missingLabelText.split('<br>')
+    let component = this;
+    // console.log("Text lines",missingTextLines);
+    let informativeBox = g => g
+      // .append("text")
+      .call (g => g
+        .append('rect')
+          .attr('class','shadow')
+          .attr('x',this.dims.width*0.25)
+          .attr('y',this.dims.height*.3)
+          .attr('width',this.dims.width*0.5)
+          .attr('height',this.dims.height*.3)
+          .attr('fill','white')
+          .attr('stroke','currentColor')
+          .attr('stroke-width','0.1')
+      )
+      .each( function(d) {
+        let gg = this;
+        missingTextLines.forEach(function(textLine, yIdx) {
+         d3.select(gg)
+            .append('text')
+            .attr("transform",
+                  "translate(" + (component.dims.width/2) + " ," + 
+                                (component.dims.height*.39 + yIdx*5) + ")")
+            .style("text-anchor", "middle")
+            .text(textLine);
+        })             
+      })             
+      .attr("class","informative-box")
+      //   .attrs({x:20, y:this.dims.height/3, width:this.dims.width/2, height: this.dims.height/3, fill:'#FFFF77'})
+      ;
       
     let line = d3.line()
       .x((d, i) => {
@@ -133,70 +166,81 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
     svg.selectAll(".y-label").remove(); 
+    svg.selectAll(".informative-box").remove(); 
     
-    svg
-      .append("path")
-      .datum(data.sort(function(a,b) {
-        return a.DATE > b.DATE
-      }))
-      .attr("fill","none")
-      .attr("stroke", "#92C5DE")
-      .attr("stroke-width", .5)
-      .attr("class","county_positivity_all_nopris")
-      .attr("d", line);
+    if (!missing_eq_data) {
+      svg
+        .append("path")
+        .datum(data.sort(function(a,b) {
+          return a.DATE > b.DATE
+        }))
+        .attr("fill","none")
+        .attr("stroke", "#92C5DE")
+        .attr("stroke-width", .5)
+        .attr("class","county_positivity_all_nopris")
+        .attr("d", line);
+    }
      
     //call line chart county_positivity_low_hpi
     svg.selectAll(".county_positivity_low_hpi").remove();
     
-    if (!missing_data2) {
-    svg
-      .append("path")
-      .datum(data2.sort(function(a,b) {
-        return a.DATE > b.DATE
-      }))
-      .attr("fill","none")
-      .attr("stroke", "#FFCF44")
-      .attr("stroke-width", .5)
-      .attr("class","county_positivity_low_hpi")
-      .attr("d", line);
+    if (!missing_eq_data) {
+      svg
+        .append("path")
+        .datum(data2.sort(function(a,b) {
+          return a.DATE > b.DATE
+        }))
+        .attr("fill","none")
+        .attr("stroke", "#FFCF44")
+        .attr("stroke-width", .5)
+        .attr("class","county_positivity_low_hpi")
+        .attr("d", line);
     }
     
     let xg = svg.append("g").call(xAxis);
     let yg = svg.append("g").call(yAxis);
-    // debugging
+    // debug ticks
     // xg.selectAll("line").style("stroke", "red");
     // yg.selectAll("line").style("stroke", "green");
     svg.append("g").call(yAxisLabel);
+    if (missing_eq_data) {
+      svg.append("g").call(informativeBox);
+    }
     
     //tooltip
-    const tooltip = new Tooltip(true,"Statewide test positivity");
-    const tooltip2 = new Tooltip(false,"Health equity quartile positivity");
-    
-    svg
-      .on("mousemove", (event) => {
-        // console.log("move: " + event.offsetX);
-        // coords are container screen-coords, and need to be scaled/translated
-        // to x display bounds before passed to x.invert
-        var xy = d3.pointer(event);
-        // console.log("event: ",xy);
-        tooltip.show(this.bisect(data, x.invert(xy[0])),x,y);
-        if (!missing_data2) {
-          tooltip2.show(this.bisect(data2, x.invert(xy[0])),x,y);
-        }
-      })
-      .on("mouseleave touchend", (event) => {
-        // console.log("leave");
-        tooltip.hide();
-        if (!missing_data2) {
-          tooltip2.hide();
-        }
-      })
-    ;
-    
-    svg.append(() => tooltip.node);
-    if (!missing_data2) {
-       svg.append(() => tooltip2.node);
-    } 
+    svg.on("mousemove",null);
+    svg.on("mouseleave touchend",null);
+
+    if (!missing_eq_data) {
+      const tooltip = new Tooltip(true,"Statewide test positivity");
+      const tooltip2 = new Tooltip(false,"Health equity quartile positivity");
+      
+      svg
+        .on("mousemove", (event) => {
+          // console.log("move: " + event.offsetX);
+          // coords are container screen-coords, and need to be scaled/translated
+          // to x display bounds before passed to x.invert
+          var xy = d3.pointer(event);
+          // console.log("event: ",xy);
+          tooltip.show(this.bisect(data, x.invert(xy[0])),x,y);
+          if (!missing_eq_data) {
+            tooltip2.show(this.bisect(data2, x.invert(xy[0])),x,y);
+          }
+        })
+        .on("mouseleave touchend", (event) => {
+          // console.log("leave");
+          tooltip.hide();
+          if (!missing_eq_data) {
+            tooltip2.hide();
+          }
+        })
+      ;
+      
+      svg.append(() => tooltip.node);
+      if (!missing_eq_data) {
+        svg.append(() => tooltip2.node);
+      } 
+    }
   }
 
   rewriteLines(svg, data, x, y) {
