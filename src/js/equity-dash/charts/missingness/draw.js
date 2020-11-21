@@ -29,53 +29,42 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("height", "10px")
 
     // enter a third time, add background fill
-    .data(d => {
-      console.log('d', d);
-      return d;
-    })
-    .enter()
-    .append("rect")
-    .attr("fill", d => color('#000000'))
-    .attr("x", d => x(d[0]))
-    .attr("y", d => y(d.data.METRIC))
-    .attr("width", d => x(1))
-    .attr("height", "12px")
+    // .data(d => {
+    //   console.log('d', d);
+    //   return d;
+    // })
+    // .enter()
+    // .append("rect")
+    // .attr("fill", d => color('#000000'))
+    // .attr("x", d => x(d[0]))
+    // .attr("y", d => y(d.data.METRIC))
+    // .attr("width", d => x(1))
+    // .attr("height", "12px")
 
     .on("mouseover", function(event, d) {
-      console.log('moused');
       d3.select(this).transition();
       tooltip.html(() => {
         let percentNotMissing = d.data.NOT_MISSING
           ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
           : 0;
+
         let percentMissing = d.data.MISSING
           ? parseFloat(d.data.MISSING * 100).toFixed(1) + "%"
           : 0;
 
-        let metric = d.data.METRIC;
-        return translations.chartTooltip({
-          metric: 'cases',
-          highlightData: '10%',
-        });
-
-
-
-        // if (d[0] == 0) {
-        //   return translations.chartTooltip({
-        //     metric: d.data.METRIC,
-        //     highlightData: d.data.NOT_MISSING
-        //       ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
-        //       : 0
-        //   });
-        // } else {
-        //
-        //   return translations.chartTooltip({
-        //     metric: d.data.METRIC,
-        //     highlightData: d.data.NOT_MISSING
-        //       ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
-        //       : 0
-        //   });
-        // }
+        if (d[0] == 0) {
+          return translations.chartTooltip({
+            metric: d.data.METRIC,
+            highlightData: percentNotMissing,
+            complete: true,
+          });
+        } else {
+          return translations.chartTooltip({
+            metric: d.data.METRIC,
+            highlightData: percentMissing,
+            complete: false,
+          });
+        }
       });
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
