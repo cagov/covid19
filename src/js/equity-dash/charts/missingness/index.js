@@ -1,5 +1,6 @@
 import template from "./template.js";
 import drawBars from "./draw.js";
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -332,11 +333,23 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   getScreenDisplayType() {
     console.log('getScreenDisplayType');
+
+    let windowSize = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+
     // Get window size, return based on breakpoint settings, then return mobile, tablet or desktop.
+    if (windowSize.width < 576) {
+      return 'mobile'
+    } else if (windowSize.width > 576 && windowSize.width <= 768) {
+      return 'tablet'
+    }
     return 'desktop';
   }
 
   getTranslations() {
+    this.translationsObj = getTranslations(this);
     // Get translations.
     // @TODO Add translations script from Aaron's branch.
     // Read template, replace object, using these default values if there is an error.

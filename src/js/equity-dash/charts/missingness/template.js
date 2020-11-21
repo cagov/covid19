@@ -10,13 +10,13 @@ export default function template(title) {
             <div class="svg-holder">
               <!--Translatable values for charts. -->
               <div class="d-none">
-                <ul data-label="displayOrderValues">
-                  <li data-label="tests">Tests</li>
-                  <li data-label="cases">Cases</li>
-                  <li data-label="deaths">Deaths</li>
+                <ul data-label-array="displayOrderValues">
+                  <li data-label-array="tests">Tests</li>
+                  <li data-label-array="cases">Cases</li>
+                  <li data-label-array="deaths">Deaths</li>
                 </ul>
 
-                <ul data-label="translatedStrings">
+                <ul>
                   <li data-label="data-missing">Data missing</li>
                   <li data-label="data-reported">Data reported</li>
                   <li data-label="reported">reported</li>
