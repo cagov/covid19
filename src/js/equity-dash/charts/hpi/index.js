@@ -1,4 +1,5 @@
-import { stackOffsetNone } from 'd3';
+// import { stackOffsetNone } from 'd3';
+// we are not yet importing d3 because we ran into some circular dependency issues and we can't get latest version to transpile properly so there are major IE problems. Importing it has to be tested against IE
 import Toolline from './hpi-tooltip.js';
 import Tooltip from './hpi-tooltip.js';
 

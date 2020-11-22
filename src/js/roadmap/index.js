@@ -250,13 +250,23 @@ window.customElements.define('cagov-reopening', CAGovReopening);
 var activityInput = document.getElementById("activity-query");
 var countyInput = document.getElementById("location-query");
 
-
-
+if(countyInput) {
 // Show clear btn only on input (County)
 countyInput.addEventListener("input", function() {
   inputValueCounty();
  });
+  //Clear buttons click events
+  document.getElementById("clearLocation").addEventListener("click", function() {
+    countyInput.value = '';
+    inputValueCounty();
+  });
 
+  document.getElementById("clearActivity").addEventListener("click", function() {
+    activityInput.value = '';
+    inputValueActivity();
+  });
+}
+if(activityInput) {
 // Show clear btn only on input (Activity)
 activityInput.addEventListener("input", function() {
   inputValueActivity();
@@ -265,18 +275,7 @@ activityInput.addEventListener("input", function() {
  activityInput.addEventListener("blur", function() {
   inputValueActivity();
  });
-
-
-//Clear buttons click events
-document.getElementById("clearLocation").addEventListener("click", function() {
-  countyInput.value = '';
-  inputValueCounty();
-});
-
-document.getElementById("clearActivity").addEventListener("click", function() {
-  activityInput.value = '';
-  inputValueActivity();
-});
+}
 
 // Show clear btn only if there is value (County)
 function inputValueCounty() {

@@ -8,10 +8,11 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
-// import './roadmap/index.js';
-// import './dashboard/index.js'; // these are conflicting with equity dash, major problems in IE in production
-
+import './roadmap/index.js';
+import './dashboard/index.js';
 import './equity-dash/index.js';
+import './equity-dash/charts/ie11.scss';
+
 import applyAccordionListeners from './tracking-you/index.js';
 // twitter widget doesn't support IE11 so not including here
 window.onload = (event) => {

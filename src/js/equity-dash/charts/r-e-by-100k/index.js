@@ -136,7 +136,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .remove()      
 
     let statewideRatePer100k = this.combinedData[this.selectedMetric] ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K : null;
-    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k)  
+    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k);
   }
 
   retrieveData(url, statewideUrl) {
