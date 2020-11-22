@@ -11,6 +11,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
                             bottom: 10, 
                             left: 10} 
                 };
+    // jbum: all text for line chart collected here...
+    this.textLabels = {
+      yAxisLabel:'Test positivity',
+      data1Legend:'Statewide positivity',
+      data1LegendHover:'Statewide positivity',
+      data1LegendSuffix:'test positivity', // appended to county name
+      data2Legend:'Health equity quartile positivity',
+      data2LegendHover:'Health equity quartile positivity',
+      missingDataCaption:'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
+      missingDataCaptionLineDelimiter:'<br>',
+    };
+
     this.svg = d3.create("svg").attr("viewBox", [0, 0, this.dims.width, this.dims.height]);
     // this.svg.attr('font-size':'12px');
 
@@ -18,13 +30,13 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-california.json')
     .then(response => response.json())
     .then(alldata => {
-      this.writeChart(alldata, this.svg, "Statewide test positivity");
+      this.writeChart(alldata, this.svg, this.textLabels.data1Legend);
 
       this.innerHTML = `<div class="svg-holder"></div>`;
       this.querySelector('.svg-holder').appendChild(this.svg.node());
     })
     
-    let legendLabels = ["Statewide test positivity", "Health equity quartile positivity"];
+    let legendLabels = [this.textLabels.data1Legend, this.textLabels.data2Legend];
     this.legendColors = ["#92C5DE","#FFCF44"]
     this.legend = this.svg.append('g')
         .attr('class', 'legend')
@@ -44,13 +56,9 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
       .then(alldata => {
-        this.writeChart(alldata, this.svg, this.county+" test positivity");
+        this.writeChart(alldata, this.svg, this.county+' '+this.textLabels.data1LegendSuffix);
       })
         
-      // let legendLabels = [this.county+" test positivity", "Health equity quartile positivity"];
-      //this.writeLegendLabels(legendLabels, this.legend)
-      // this.rewriteLegend(this.svg, legendLabels)
-  
     }.bind(this), false);
   }
 
@@ -64,13 +72,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeChart(alldata, svg, data1Legend) { 
+    let component = this;
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
     // console.log("Overall Data ",data);
     // console.log("Equity Data2 ",data2);
     let missing_eq_data = data2.filter(d => null == d.METRIC_VALUE).length > 0;
 
-    let legendLabels = [data1Legend, missing_eq_data? "missing equity data" : "Health equity quartile positivity"];
+    let legendLabels = [data1Legend, this.textLabels.data2Legend];
     this.rewriteLegend(this.svg, legendLabels);
     svg.selectAll(".legend").attr('visibility', missing_eq_data? 'hidden' : 'visible'); 
     // console.log("dims",this.dims);
@@ -88,25 +97,30 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let y = d3.scaleLinear()
       .domain([0, max_y]) // using county_positivity_low_hpi because that has higher numbers
       .range([this.dims.height-this.dims.margin.bottom, this.dims.margin.top]);
+    let xRange = x.range();
+    let yRange = y.range();
+    let chartWidth = xRange[1] - xRange[0];  // 128.5
+    let chartHeight = yRange[1] - yRange[0]; // -52
+    // console.log("Chart width", chartWidth, "height", chartHeight);
 
     let xAxis = g => g
-      .attr("transform", `translate(2.75,10)`)
+      .attr("transform", "translate(2.75," + this.dims.margin.bottom + ")")
       .call(d3.axisBottom(x)
         .ticks(d3.timeWeek.every(1))
         .tickFormat(d3.timeFormat('%b. %d'))  
-        .tickSize(52))
+        .tickSize(-chartHeight))
       // .call(g => g)
       .call(g => g.select(".domain").remove());
 
     let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); 
-    let tick_fmt = d3.format(".0%");
+    let y_tick_fmt = d3.format(".0%");
     
     let yAxis = g => g
-      .attr("transform", `translate(10, 0)`)
+      .attr("transform", "translate(" + this.dims.margin.left + ", 0)")
       .call(d3.axisLeft(y)
         .ticks(nbr_ticks)
-        .tickFormat(tick_fmt)
-        .tickSize(-this.dims.width,0)
+        .tickFormat(y_tick_fmt)
+        .tickSize(-chartWidth)
       )
       // .call(g => g)
       .call(g => g.select(".domain").remove());
@@ -117,12 +131,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
             "translate(" + (0) + " ," + 
                            (this.dims.margin.top-1) + ")")
       .style("text-anchor", "left")
-      .text("Test positivity")
+      .text(component.textLabels.yAxisLabel)
       .attr("class","y-label")
       ;
-    let missingLabelText = "The health equity metric is not<br>applied to counties with a population<br>less than 106,000.";
-    let missingTextLines = missingLabelText.split('<br>')
-    let component = this;
+    let missingLabelText = this.textLabels.missingDataCaption;
+    let missingTextLines = missingLabelText.split(this.textLabels.missingDataCaptionLineDelimiter)
+
     // console.log("Text lines",missingTextLines);
     let informativeBox = g => g
       // .append("text")
@@ -149,16 +163,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           .attr('stroke-width','0.1')
       )
       
-/*      .data(missingTextLines)
-        .enter()
-            .append('text')
-            .attr("transform",
-                  "translate(" + (component.dims.width/2) + " ," + 
-                                 function(d,i) { (component.dims.height*.39 + i*5)} + ")")
-            .style("text-anchor", "middle")
-            .text(function(d) { return d; })
-*/
-
       .each( function(d) {
         let gg = this;
         missingTextLines.forEach(function(textLine, yIdx) {
@@ -233,8 +237,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.on("mouseleave touchend",null);
 
     if (!missing_eq_data) {
-      const tooltip = new Tooltip(true,"Statewide test positivity");
-      const tooltip2 = new Tooltip(false,"Health equity quartile positivity");
+      const tooltip = new Tooltip(true,this.textLabels.data1LegendHover);
+      const tooltip2 = new Tooltip(false,this.textLabels.data2LegendHover);
       
       svg
         .on("mousemove", (event) => {
