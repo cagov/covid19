@@ -2,6 +2,7 @@ import template from './template.js';
 import drawBars from './draw-chart.js';
 import drawSecondBars from './draw-chart-second.js';
 import termCheck from '../race-ethnicity-config.js';
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback () {
@@ -27,6 +28,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       }
     })
 
+    this.translationsObj = getTranslations(this);
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
 

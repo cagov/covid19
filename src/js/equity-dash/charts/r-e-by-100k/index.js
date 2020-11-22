@@ -1,6 +1,7 @@
 import template from './template.js';
 import drawBars from './draw-chart.js';
 import termCheck from '../race-ethnicity-config.js';
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback () {
@@ -16,6 +17,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       }
     })
 
+    this.translationsObj = getTranslations(this);
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
     this.chartTitle = function() {
