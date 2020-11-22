@@ -75,7 +75,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".legend").attr('visibility', missing_eq_data? 'hidden' : 'visible'); 
     // console.log("dims",this.dims);
 
-    // let dimensions = ({width:200, height:100});
     let xbounds = ({'min':d3.min((missing_eq_data? data:data2), d => new Date(d.DATE)), 
                     'max':d3.max(data, d => new Date(d.DATE))});
 
@@ -99,7 +98,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       // .call(g => g)
       .call(g => g.select(".domain").remove());
 
-    let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); // Math.min(Math.floor(max_y*100),10);
+    let nbr_ticks = Math.min(10,1+Math.floor(max_y*100)); 
     let tick_fmt = d3.format(".0%");
     
     let yAxis = g => g
@@ -127,6 +126,17 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // console.log("Text lines",missingTextLines);
     let informativeBox = g => g
       // .append("text")
+      .attr("class","informative-box")
+      .call (g => g
+        .append('rect')
+          .attr('x',0)
+          .attr('y',0)
+          .attr('width',this.dims.width)
+          .attr('height',this.dims.height)
+          .attr('fill','white')
+          .attr('stroke','none')
+          .attr('opacity','0.5')
+      )
       .call (g => g
         .append('rect')
           .attr('class','shadow')
@@ -138,6 +148,17 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           .attr('stroke','currentColor')
           .attr('stroke-width','0.1')
       )
+      
+/*      .data(missingTextLines)
+        .enter()
+            .append('text')
+            .attr("transform",
+                  "translate(" + (component.dims.width/2) + " ," + 
+                                 function(d,i) { (component.dims.height*.39 + i*5)} + ")")
+            .style("text-anchor", "middle")
+            .text(function(d) { return d; })
+*/
+
       .each( function(d) {
         let gg = this;
         missingTextLines.forEach(function(textLine, yIdx) {
@@ -150,8 +171,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
             .text(textLine);
         })             
       })             
-      .attr("class","informative-box")
-      //   .attrs({x:20, y:this.dims.height/3, width:this.dims.width/2, height: this.dims.height/3, fill:'#FFFF77'})
       ;
       
     let line = d3.line()
@@ -203,7 +222,9 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // xg.selectAll("line").style("stroke", "red");
     // yg.selectAll("line").style("stroke", "green");
     svg.append("g").call(yAxisLabel);
-    if (missing_eq_data) {
+
+    let is_debugging_infobox = false;
+    if (missing_eq_data || is_debugging_infobox) {
       svg.append("g").call(informativeBox);
     }
     
