@@ -57,7 +57,9 @@ function writeBars(svg, data, x, y, width) {
       .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
-      .on("mouseover", function(event, d, i) {
+      .attr("tabindex", "0")
+      .attr("aria-label", "cases per 100K people. change since previous week")
+      .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
         window.tooltip.style.top = "50%";
@@ -72,8 +74,9 @@ function writeBars(svg, data, x, y, width) {
           <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week</div>
         </div>`;
         window.tooltip.style.visibility = "visible";
+       // window.tooltip.innerHTML.focus();
       })
-      .on("mouseout", function(d) {
+      .on("mouseout blur", function(d) {
         d3.select(this).style("fill", "skyblue");
         window.tooltip.style.visibility = "hidden";
       });
