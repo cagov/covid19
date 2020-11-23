@@ -1,0 +1,13 @@
+cagov-chart-d3-bar {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 100%;
+  
+  .chart-title {
+    max-width: 633px;
+  }
+  .svg-holder {
+    max-width: 633px;
+  }
+}

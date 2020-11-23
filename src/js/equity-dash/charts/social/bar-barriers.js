@@ -65,11 +65,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.svg.append("text")
         .text(`Statewide case rate ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
         .attr("y", height / 2 - 5)
-        .attr("x", width - 5)
-        .attr('text-anchor','end')
+        .attr("x", 38)
+        .attr('text-anchor','start')
         .attr('class','label');
         
-      writeLegend(this.svg, ["Cases per 100K people"], width);
+      writeLegend(this.svg, ["Cases per 100K people"], width - 5);
   
       this.innerHTML = template(this.translationsObj);
       this.classList.remove('d-none')
