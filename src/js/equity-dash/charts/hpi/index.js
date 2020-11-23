@@ -2,9 +2,18 @@
 // we are not yet importing d3 because we ran into some circular dependency issues and we can't get latest version to transpile properly so there are major IE problems. Importing it has to be tested against IE
 import Toolline from './hpi-tooltip.js';
 import Tooltip from './hpi-tooltip.js';
+// import template from "./template.js";
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback () {
+    this.translationsObj = this.getTranslations(this);
+    this.innerHTML = this.translationsObj; // not currently using a template...
+    this.classList.remove('d-none');
+    // console.log("tobj",this.translationsObj);
+    // console.log(this.translationsObj['y-axis-label']);
+
+
     this.dims = { width: 140, 
                   height:70, 
                   margin: { top: 8, 
@@ -14,12 +23,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
                 };
     // jbum: all text for line chart collected here...
     this.textLabels = {
-      yAxisLabel:'Test positivity',
-      data1Legend:'Statewide positivity',
-      data1LegendLocal:'placeholderForDynamicLocation test positivity', // appended to county name
-      data2Legend:'Health equity quartile positivity',
-      missingDataCaption:'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
-      missingDataCaptionLineDelimiter:'<br>',
+      yAxisLabel:         this.translationsObj['y-axis-label'], // Test positivity
+      data1Legend:        this.translationsObj['data1-legend'], // Statewide positivity
+      data1LegendLocal:   this.translationsObj['data1-legend-local'], // 'placeholderForDynamicLocation test positivity', // appended to county name
+      data2Legend:        this.translationsObj['data2-legend'], // 'Health equity quartile positivity',
+      missingDataCaption: this.translationsObj['missing-data-caption'], // 'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
+      missingDataCaptionLineDelimiter:this.translationsObj['missing-data-caption-line-delimiter'], // '<br>',
     };
 
     this.svg = d3.create("svg").attr("viewBox", [0, 0, this.dims.width, this.dims.height]);
@@ -319,5 +328,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .data(legendLabels)
       .text((d) => d);
   }
+
+  getTranslations() {
+    let translations = getTranslations(this);
+
+    return translations;
+  }
+
 }
 window.customElements.define('cagov-chart-d3-lines', CAGOVChartD3Lines);
