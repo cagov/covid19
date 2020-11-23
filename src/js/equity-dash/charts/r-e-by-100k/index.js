@@ -52,8 +52,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       .domain(this.subgroups)
       .range(['#FFCF44', '#F2F5FC'])
 
-    this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json';
-    this.dataStatewideRateUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-combined.json';
+    this.dataUrl = config.equityChartsDataLoc+'/equitydash/cumulative-california.json';
+    this.dataStatewideRateUrl = config.equityChartsDataLoc+'/equitydash/cumulative-combined.json';
     this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
     this.county = 'California'
@@ -67,7 +67,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       if(this.selectedMetric === "deaths") {
         this.selectedMetric = "cases";
       }
-      this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
+      this.dataUrl = config.equityChartsDataLoc+'/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
       this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
       this.resetTitle(this.county)
     }.bind(this), false);

@@ -16,7 +16,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       // Data
       subgroups: ["NOT_MISSING", "MISSING"],
       selectedMetric: "race_ethnicity",
-      dataUrl: "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json", // Overwritten by county.
+      dataUrl: config.equityChartsDataLoc+"/equitydash/missingness-california.json", // Overwritten by county.
       state: 'California',
       county: 'California',
       displayOrder: ["tests", "cases", "deaths"],
@@ -121,7 +121,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       function (e) {
         this.county = e.detail.county;
         this.dataUrl =
-          "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-" +
+        config.equityChartsDataLoc+"/equitydash/missingness-" +
           this.county.toLowerCase().replace(/ /g, "") +
           ".json";
         this.retrieveData(this.dataUrl);
