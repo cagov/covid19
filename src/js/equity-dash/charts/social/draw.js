@@ -58,7 +58,7 @@ function writeBars(svg, data, x, y, width) {
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
       .attr("tabindex", "0")
-      .attr("aria-label", "cases per 100K people. change since previous week")
+      .attr("aria-label", (d, i) => `${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week`)
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
