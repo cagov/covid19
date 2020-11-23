@@ -4,7 +4,6 @@ export default function getTranslations(container) {
   translateEls.forEach(item => {
     translationsObj[item.dataset.label] = item.innerHTML;
   })
-
   let translateElArrays = container.querySelectorAll('[data-group]');
   translateElArrays.forEach(group => {
     let groupKey = group.getAttribute('data-group');
@@ -19,7 +18,5 @@ export default function getTranslations(container) {
     }
 
   })
-
-  console.log('trans', translationsObj);
   return translationsObj;
 }

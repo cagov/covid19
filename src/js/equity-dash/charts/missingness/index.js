@@ -1,11 +1,10 @@
 import template from "./template.js";
 import drawBars from "./draw.js";
 import getTranslations from '../../get-strings-list.js';
-import getScreenDisplayType from '../../get-window-size.js';
+import getScreenDisplayType from './get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
-
     // Get translations.
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
@@ -13,9 +12,20 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.classList.remove('d-none');
 
     // Settings and initial values
-    this.chartDisplayOptions = {
+    this.chartOptions = {
+      // Data
+      subgroups: ["NOT_MISSING", "MISSING"],
+      selectedMetric: "race_ethnicity",
+      dataUrl: "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json", // Overwritten by county.
+      state: 'California',
+      county: 'California',
+      displayOrder: ["tests", "cases", "deaths"],
+      // Style
+      backgroundFill: '#F2F5FC',
+      chartColors: ["#92C5DE", "#FFCF44"],
+      // Breakpoints
       desktop: {
-        fontSize: 14, // Pass in as a calculation.
+        fontSize: 14,
         height: 214,
         width: 613,
         margin: {
@@ -24,19 +34,11 @@ class CAGOVEquityMissingness extends window.HTMLElement {
           bottom: 20,
           left: 0,
         },
-        labelOffsets: [-52, -52, -57],
-        backgroundFill: '#F2F5FC',
-        chartColors: ["#92C5DE", "#FFCF44"],
-        subgroups: ["NOT_MISSING", "MISSING"],
-        selectedMetric: "race_ethnicity",
-        dataUrl: "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json", // Overwritten by county.
-        state: 'California',
-        county: 'California',
         heightMultiplier: 100,
-        displayOrder: ["tests", "cases", "deaths"],
+        labelOffsets: [-52, -52, -57],
       },
       tablet: {
-        fontSize: 14, // @TODO Pass in as a calculation?
+        fontSize: 14,
         height: 214,
         width: 613,
         margin: {
@@ -45,55 +47,38 @@ class CAGOVEquityMissingness extends window.HTMLElement {
           bottom: 20,
           left: 0,
         },
-        labelOffsets: [-52, -52, -57],
-        backgroundFill: '#F2F5FC',
-        chartColors: ["#92C5DE", "#FFCF44"],
-        subgroups: ["NOT_MISSING", "MISSING"],
-        selectedMetric: "race_ethnicity",
-        dataUrl: "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json",
-        state: 'California',
-        county: 'California',
         heightMultiplier: 100,
-        displayOrder: ["tests", "cases", "deaths"],
+        labelOffsets: [-52, -52, -57],
       },
       mobile: {
-        fontSize: 12, // @TODO Pass in as a calculation?
+        fontSize: 12,
         height: 600,
-        width: 440, // @TODO Check value.
+        width: 440,
         margin: {
           top: 40,
           right: 0,
           bottom: 20,
           left: 0,
         },
-        labelOffsets: [-52, -52, -57],
-        backgroundFill: '#F2F5FC',
-        chartColors: ["#92C5DE", "#FFCF44"],
-        subgroups: ["NOT_MISSING", "MISSING"],
-        selectedMetric: "race_ethnicity",
-        dataUrl: "https://files.covid19.ca.gov/data/to-review/equitydash/missingness-california.json",
-        state: 'California',
-        county: 'California',
         heightMultiplier: 100,
-        displayOrder: ["tests", "cases", "deaths"],
+        labelOffsets: [-52, -52, -57],
       },
     };
 
     getScreenDisplayType(this);
-    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
-    this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     // Choose settings for current screen display.
     // Display content & layout dimensions
     const handleChartResize = () => {
       getScreenDisplayType(this);
-      this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
-      this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+      this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+      this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
     };
 
     // @TODO connect a debouncer
     window.addEventListener('resize', handleChartResize);
-
 
     this.metricFilter = document.querySelector(
       "cagov-chart-filter-buttons.js-missingness-smalls"
@@ -103,31 +88,30 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
       .append("svg")
-      .attr("viewBox", [0, 0, this.chartSettings.width, this.chartSettings.height])
+      .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
       .append("g")
       .attr(
         "transform",
         "translate(" +
-          this.chartSettings.margin.left +
+          this.chartBreakpointValues.margin.left +
           "," +
-          this.chartSettings.margin.top +
+          this.chartBreakpointValues.margin.top +
           ")"
       );
 
     this.color = d3
       .scaleOrdinal()
-      .domain(this.chartSettings.subgroups)
-      .range(this.chartSettings.chartColors);
+      .domain(this.chartOptions.subgroups)
+      .range(this.chartOptions.chartColors);
 
     // Set default values for data and labels
-    this.dataUrl = this.chartSettings.dataUrl;
-    this.county = this.chartSettings.county;
-    this.state = this.chartSettings.state;
-    this.selectedMetric = this.chartSettings.selectedMetric;
+    this.dataUrl = this.chartOptions.dataUrl;
+    this.county = this.chartOptions.county;
+    this.state = this.chartOptions.state;
+    this.selectedMetric = this.chartOptions.selectedMetric;
 
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
-
   }
 
   listenForLocations() {
@@ -277,7 +261,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   getDomains(data) {
     let unsortedDomains = data.map((group) => group.METRIC);
     // Display order
-    let displayOrder = this.chartSettings.displayOrder;
+    let displayOrder = this.chartOptions.displayOrder;
     let domains = [];
     displayOrder.map((key) => {
       let position = unsortedDomains.indexOf(key);
@@ -328,35 +312,35 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 
   drawSvg(data) {
-    let stackedData = d3.stack().keys(this.chartSettings.subgroups)(data);
+    let stackedData = d3.stack().keys(this.chartOptions.subgroups)(data);
     let domains = this.getDomains(data); // Get list of data domains for this dataset.
 
-    let heightMultiplier = this.chartSettings.heightMultiplier;
+    let heightMultiplier = this.chartBreakpointValues.heightMultiplier;
     let svgHeight = heightMultiplier * domains.length;
 
     d3.select(this.querySelector(".svg-holder svg")).attr("viewBox", [
       0,
       0,
-      this.chartSettings.width,
+      this.chartBreakpointValues.width,
       svgHeight,
     ]); // Reset height.
 
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
-      .range([0, this.chartSettings.width]);
+      .range([0, this.chartBreakpointValues.width]);
 
     this.y = d3
       .scaleBand()
       .domain(domains)
       .range([
-        this.chartSettings.margin.top,
-        svgHeight - this.chartSettings.margin.bottom,
+        this.chartBreakpointValues.margin.top,
+        svgHeight - this.chartBreakpointValues.margin.bottom,
       ]); // Spacing between bars.
     // .padding([.4])
 
-    let labelOffsets = this.chartSettings.labelOffsets;
-    let labelOffset = domains.length <= labelOffsets.length ? labelOffsets[domains.length - 1] : this.chartSettings.labelOffsets[0];
+    let labelOffsets = this.chartBreakpointValues.labelOffsets;
+    let labelOffset = domains.length <= labelOffsets.length ? labelOffsets[domains.length - 1] : this.chartBreakpointValues.labelOffsets[0];
 
     this.yAxis = (g) =>
       g
@@ -386,8 +370,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   render() {
     getScreenDisplayType(this);
-    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
-    this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     this.resetTitle();
     let data = this.formatDataSet(this.alldata[this.selectedMetric]);
