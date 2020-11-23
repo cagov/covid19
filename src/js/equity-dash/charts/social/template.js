@@ -21,7 +21,7 @@ export default function template(translationsObj) {
             </div>
         </div>
         <div class="row d-flex justify-content-md-center">
-          <p class="text-xs">${translationsObj.footnote}</p>
+          <p class="chart-data-label">${translationsObj.footnote}</p>
         </div>
     </div><!--END col-12-->
   </div><!--END CONTAINER-->
