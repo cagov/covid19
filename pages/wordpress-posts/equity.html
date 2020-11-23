@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-20T21:52:39Z"
+publishdate: "2020-11-23T04:36:12Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -256,10 +256,28 @@ addtositemap: false
 <div class="container">
   <div class="row">
     <div class="col">
-      <cagov-chart-re-pop></cagov-chart-re-pop>
+      <cagov-chart-re-pop class="d-none">
+        <ul>
+          <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitl--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--testing">Testing relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartDescription--cases">Compare the percentage of each race and ethnicity’s share of statewide cases to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartDescription--deaths">Compare the percentage of each race and ethnicity’s share of statewide deaths to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartDescription--testing">Compare the percentage of each race and ethnicity’s share of statewide tests to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartLineDiff">change since previous month</li>
+        </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
-      <cagov-chart-re-100k></cagov-chart-re-100k>
+      <cagov-chart-re-100k class="d-none"> 
+<ul>
+          <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--testing">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartDescription--cases">Compare cases adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartDescription--deaths">Compare deaths adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartDescription--testing">Compare tests adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartLineDiff">change since previous month</li>
+        </ul></cagov-chart-re-100k>
     </div>
   </div>
 </div>
@@ -326,7 +344,17 @@ addtositemap: false
 
 
 
-<cagov-chart-d3-bar></cagov-chart-d3-bar>
+<cagov-chart-d3-bar class="d-none"><ul>
+    <li data-label="sectionTitle">Factors that increase risk of infection and severe illness</li>
+    <li data-label="sectionDescription">Californians in crowded housing or transportation, and with less access to paid leave and other worker protections have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.</li>
+    <li data-label="chartTitleIncome">Case rate by median annual household income bracket</li>
+    <li data-label="chartTitleHousing">Case rate by crowding housing</li>
+    <li data-label="chartTitleHealthcare">Case rate by access to healthcare</li>
+    <li data-label="chartButtonIncome">Income</li>
+    <li data-label="chartButtonHousing">Crowded housing</li>
+    <li data-label="chartButtonHealthcare">Access to health insurance</li>
+    <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is cumulative for the last 7 days and updated daily</li>
+  </ul></cagov-chart-d3-bar>
 
 
 
