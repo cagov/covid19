@@ -5,6 +5,13 @@ import getScreenDisplayType from '../../get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
+
+    // Get translations.
+    // Use component function, which loads getTranslations and then appends that function with additional translation functions.
+    this.translationsObj = this.getTranslations(this);
+    this.innerHTML = template(this.translationsObj);
+    this.classList.remove('d-none');
+
     // Settings and initial values
     this.chartDisplayOptions = {
       desktop: {
@@ -29,7 +36,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         displayOrder: ["tests", "cases", "deaths"],
       },
       tablet: {
-        fontSize: 14, // Pass in as a calculation.
+        fontSize: 14, // @TODO Pass in as a calculation?
         height: 214,
         width: 613,
         margin: {
@@ -50,9 +57,9 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         displayOrder: ["tests", "cases", "deaths"],
       },
       mobile: {
-        fontSize: 14, // Pass in as a calculation.
+        fontSize: 12, // @TODO Pass in as a calculation?
         height: 600,
-        width: 400,
+        width: 440, // @TODO Check value.
         margin: {
           top: 40,
           right: 0,
@@ -72,20 +79,27 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       },
     };
 
-    // Set window object and resize event listener (ideally set at a higher level, can move up once this is working.)
-    getScreenDisplayType();
-    this.screenDisplayType = window.equitydash.displayType;
+    getScreenDisplayType(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
-    
+
     // Choose settings for current screen display.
     // Display content & layout dimensions
+    const handleChartResize = () => {
+      getScreenDisplayType(this);
+      this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
+      this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    };
 
-    this.innerHTML = template();
+    // @TODO connect a debouncer
+    window.addEventListener('resize', handleChartResize);
+
 
     this.metricFilter = document.querySelector(
       "cagov-chart-filter-buttons.js-missingness-smalls"
     );
 
+    // Build chart.
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
       .append("svg")
@@ -288,6 +302,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       return title;
     }
 
+
     // Generate tooltip text, taking dynamic variable.
     // This takes an HTML text string from the template.
     // @TODO Accommodate different placement of values in sentence structure for translated content.
@@ -312,13 +327,9 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     return translations;
   }
 
-  render() {
-    let data = this.formatDataSet(this.alldata[this.selectedMetric]);
+  drawSvg(data) {
     let stackedData = d3.stack().keys(this.chartSettings.subgroups)(data);
     let domains = this.getDomains(data); // Get list of data domains for this dataset.
-
-    this.translationsObj = this.getTranslations();
-    this.resetTitle();
 
     let heightMultiplier = this.chartSettings.heightMultiplier;
     let svgHeight = heightMultiplier * domains.length;
@@ -371,6 +382,16 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       this.tooltip,
       this.translationsObj
     );
+  }
+
+  render() {
+    getScreenDisplayType(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
+    this.chartSettings = this.chartDisplayOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+
+    this.resetTitle();
+    let data = this.formatDataSet(this.alldata[this.selectedMetric]);
+    this.drawSvg(data);
   }
 
   retrieveData(url) {
