@@ -301,7 +301,21 @@ addtositemap: false
 
 
 <div class="col-lg-10 mx-auto">
-<cagov-chart-d3-lines><svg><g class="tick"><line></line></g><text></text></svg></cagov-chart-d3-lines>
+<cagov-chart-d3-lines class="d-none">
+  <ul>
+    <div>
+      <ul>
+        <li data-label="y-axis-label">Test positivity</li>
+        <li data-label="data1-legend">Statewide positivity</li>
+        <li data-label="data1-legend-local">placeholderForDynamicLocation test positivity</li>
+        <li data-label="data2-legend">Health equity quartile positivity</li>
+        <li data-label="missing-data-caption">The health equity metric is not<br>applied to counties with a
+          population<br>less than 106,000.</li>
+        <li data-label="missing-data-caption-line-delimiter"><br></li>
+      </ul>
+    </div>
+  </ul>
+</cagov-chart-d3-lines>
 </div>
 
 
@@ -369,7 +383,6 @@ addtositemap: false
     </div>
   </ul>
 </cagov-chart-equity-missingness>
-
 
 
 <div class="mb-2 mt-2"></div>
