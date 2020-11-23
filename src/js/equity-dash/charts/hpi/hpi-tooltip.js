@@ -1,7 +1,7 @@
 export default class Tooltip {
-  constructor(needs_anno, legend) {
+  constructor(needs_anno) {
     this.needs_anno = needs_anno;
-    this.legend = legend;
+    // this.legend = legend; // no longer using this param
     this.node = document.createElementNS("http://www.w3.org/2000/svg","g")
     this.node.setAttribute("pointer-events","none")
     this.node.setAttribute("text-anchor","left")
