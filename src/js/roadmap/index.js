@@ -246,16 +246,6 @@ class CAGovReopening extends window.HTMLElement {
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
 
-// Show clear btn only if there is value (County)
-function inputValueCounty() {
-  var countyInput = document.getElementById("location-query");
-  var clearCounty = document.getElementById("clearLocation");
-    if (countyInput && countyInput.value) {
-      clearCounty.classList.remove('d-none');
-    }
-    else {clearCounty.classList.add('d-none');}
-  }
-
 var activityInput = document.getElementById("activity-query");
 var countyInput = document.getElementById("location-query");
 
@@ -290,18 +280,18 @@ activityInput.addEventListener("input", function() {
 function inputValueCounty() {
   var countyInput = document.getElementById("location-query");
   var clearCounty = document.getElementById("clearLocation");
-    if (countyInput && countyInput.value) {
-      clearCounty.classList.remove('d-none');
-    }
-    else {clearCounty.classList.add('d-none');}
+  if (countyInput && countyInput.value) {
+    clearCounty.classList.remove('d-none');
   }
+  else {clearCounty.classList.add('d-none');}
+}
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
   var activityInput = document.getElementById("activity-query");
   var clearActivity = document.getElementById("clearActivity");
-    if (activityInput && activityInput.value) {
-      clearActivity.classList.remove('d-none');
-    }
-    else {clearActivity.classList.add('d-none');}
+  if (activityInput && activityInput.value) {
+    clearActivity.classList.remove('d-none');
   }
+  else {clearActivity.classList.add('d-none');}
+}
