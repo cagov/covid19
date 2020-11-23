@@ -3,11 +3,23 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-20T21:52:39Z"
+publishdate: "2020-11-23T04:36:12Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
-<!--{% set data = equityTopBoxes[0] %}-->
+
+<!--{% set data = {
+    "cases_per_100k_statewide":1871.4,
+    "death_rate_per_100k_statewide":45.5,
+    "cases_per_100k_latino":2879.1,
+    "cases_per_100k_pacific_islanders": 4024,
+    "case_rate_vs_statewide_percent_latino":54,
+    "case_rate_vs_statewide_percent_pacific_islanders":115,
+    "case_rate_vs_statewide_percent_low_income":36,
+    "death_rate_vs_statewide_percent_black":24,
+    "death_rate_per_100k_black":56.2
+  } %}-->
+
 
 
 <p>All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
@@ -204,7 +216,7 @@ addtositemap: false
               <li>Show that the health equity metric does not significantly lag behind its overall county positivity rate</li>
             </ul>
 <div class="mt-3 text-center">
- <a href="#" class="link-arrow-white">
+ <a href="https://covid19.ca.gov/equity/#learn-more" class="link-arrow-white">
             <div class="link-arrow-label">Learn more ABOUT WHAT YOU CAN DO</div><cagov-arrow>
         </a>
 </div>
@@ -244,7 +256,7 @@ addtositemap: false
 <div class="container">
   <div class="row">
     <div class="col">
-      <cagov-chart-re-pop>
+      <cagov-chart-re-pop class="d-none">
         <ul>
           <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
           <li data-label="chartTitl--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
@@ -253,12 +265,11 @@ addtositemap: false
           <li data-label="chartDescription--deaths">Compare the percentage of each race and ethnicity’s share of statewide deaths to their percentage of placeholderForDynamicLocation’s population.</li>
           <li data-label="chartDescription--testing">Compare the percentage of each race and ethnicity’s share of statewide tests to their percentage of placeholderForDynamicLocation’s population.</li>
           <li data-label="chartLineDiff">change since previous month</li>
-        </ul>
-      </cagov-chart-re-pop>
+        </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
-      <cagov-chart-re-100k>
-        <ul>
+      <cagov-chart-re-100k class="d-none"> 
+<ul>
           <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--testing">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
@@ -266,15 +277,14 @@ addtositemap: false
           <li data-label="chartDescription--deaths">Compare deaths adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartDescription--testing">Compare tests adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartLineDiff">change since previous month</li>
-        </ul>
-      </cagov-chart-re-100k>
+        </ul></cagov-chart-re-100k>
     </div>
   </div>
 </div>
 
 
 
-<p class="chart-data-label text-center">Note: Data shown is cumulative since January 2020 and updated daily. Population estimates do not include &#8220;other&#8221; or &#8220;unknown&#8221; race and ethnicity categories, therefore their percentage of state population is not available. To see race and ethnicity data broken out by age groups, see the California Department of Public Health’s COVID-19 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank" rel="noopener noreferrer">Race and Ethnicity Data</a>. Numbers between 1 and 11 are shown as &#8220;&lt;11&#8221; to protect patient privacy.</p>
+<p class="chart-data-label">Note: Data shown is cumulative since January 2020 and updated daily. Population estimates do not include &#8220;other&#8221; or &#8220;unknown&#8221; race and ethnicity categories, therefore their percentage of state population is not available. To see race and ethnicity data broken out by age groups, see the California Department of Public Health’s COVID-19 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank" rel="noopener noreferrer">Race and Ethnicity Data</a>. Numbers between 1 and 11 are shown as &#8220;&lt;11&#8221; to protect patient privacy.</p>
 
 
 
@@ -320,13 +330,13 @@ addtositemap: false
 
 
 
+<p class="chart-data-label col-lg-10 mx-auto">Note: Data shown is cumulative for the last 30 days and updated daily.</p>
+
+
+
 <div class="col-lg-10 mx-auto">
 <div class="special-note mt-4 mb-3"><p>Data reporting keeps improving. Since January, the reporting on age and gender is up to  completeness. The same can be done for this data.</p></div>
 </div>
-
-
-
-<p class="chart-data-label col-lg-10 mx-auto">Note: Data shown is cumulative for the last 30 days and updated daily.</p>
 
 
 
@@ -334,8 +344,7 @@ addtositemap: false
 
 
 
-<cagov-chart-d3-bar class="d-none">
-  <ul>
+<cagov-chart-d3-bar class="d-none"><ul>
     <li data-label="sectionTitle">Factors that increase risk of infection and severe illness</li>
     <li data-label="sectionDescription">Californians in crowded housing or transportation, and with less access to paid leave and other worker protections have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.</li>
     <li data-label="chartTitleIncome">Case rate by median annual household income bracket</li>
@@ -345,8 +354,7 @@ addtositemap: false
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
     <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is cumulative for the last 7 days and updated daily</li>
-  </ul>
-</cagov-chart-d3-bar>
+  </ul></cagov-chart-d3-bar>
 
 
 
