@@ -33,6 +33,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
 
     this.chartTitle = function() {
+      // console.log("pop title key ",'chartTitle--'+this.selectedMetric);
       return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
     }
 
