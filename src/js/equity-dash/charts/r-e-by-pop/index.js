@@ -33,11 +33,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
 
     this.chartTitle = function() {
-      return `${this.selectedMetric} relative to percentage of population in ${this.county}`;
+      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
     }
 
     this.description = function () {
-      return `Compare the percentage of each race and ethnicity’s share of statewide ${this.selectedMetricDescription.toLowerCase()} to their percentage of ${this.county}’s population.`;
+      return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
     }
     this.county = 'California';
     this.legendString = function() {
@@ -48,6 +48,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     }
     
     this.innerHTML = template(this.chartTitle(), this.description());
+    this.classList.remove('d-none')
 
     this.svg = d3
       .select(this.querySelector('.svg-holder'))
@@ -202,8 +203,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
         .remove()
 
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString(), this.selectedMetric)
-    drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, this.legendString(), this.selectedMetric)
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString(), this.selectedMetric, this.translationsObj)
+    drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, this.legendString(), this.selectedMetric, this.translationsObj)
   }
 
   retrieveData(url) {

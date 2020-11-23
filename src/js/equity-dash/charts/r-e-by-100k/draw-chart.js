@@ -1,4 +1,4 @@
-export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, statewideRatePer100k) {
+export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, statewideRatePer100k, translationsObj) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -111,7 +111,7 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
             ${parseFloat(
               d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO * 100
             ).toFixed(1)}%</tspan>
-             change since previous month`
+            ${translationsObj.chartLineDiff}`
           }
         )
         .attr('text-anchor', 'end');
