@@ -1,5 +1,5 @@
 import css from './index.scss';
-// https://stackoverflow.com/questions/50404970/web-components-pass-data-to-and-from
+
 export default function template(translationsObj) {
   return /*html*/`<div class="py-2">
     <div class="container">
