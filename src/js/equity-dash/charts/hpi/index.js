@@ -35,7 +35,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // this.svg.attr('font-size':'12px');
 
     
-    window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-california.json')
+    window.fetch(config.equityChartsDataLoc+'/equitydash/healthequity-california.json')
     .then(response => response.json())
     .then(alldata => {
       this.writeChart(alldata, this.svg, this.textLabels.data1Legend);
@@ -62,7 +62,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       // console.log("Got County: " + this.county);
       let legendText = this.textLabels.data1LegendLocal.replace('placeholderForDynamicLocation',this.county);
 
-      window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      window.fetch(config.equityChartsDataLoc+'/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
       .then(alldata => {
         this.writeChart(alldata, this.svg, legendText);

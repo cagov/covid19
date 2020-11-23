@@ -18,15 +18,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       .attr("viewBox", [0, 0, width, height])
       .attr("class","equity-bar-chart");
     
-    /*
-     for env specific switches get data location from dataset attributes
-
-     window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-income.json"),
-    */
     Promise.all([
-      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-income.json"),
-      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-crowding.json"),
-      window.fetch("https://files.covid19.ca.gov/data/to-review/equitydash/social-data-insurance.json")
+      window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-income.json"),
+      window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-crowding.json"),
+      window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-insurance.json")
     ]).then(function (responses) {
       return Promise.all(responses.map(function (response) {
         return response.json();

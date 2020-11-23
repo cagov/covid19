@@ -33,12 +33,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
 
     this.chartTitle = function() {
-      // console.log("pop title key ",'chartTitle--'+this.selectedMetric);
-      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
+      let title = this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
+      return title;
     }
 
     this.description = function () {
-      return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
+      return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.county = 'California';
     this.legendString = function() {
@@ -90,7 +90,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       .domain(this.subgroups2)
       .range(['#92C5DE', '#F2F5FC'])
 
-    this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json');
+    this.retrieveData(config.equityChartsDataLoc+'/equitydash/cumulative-california.json');
     this.listenForLocations();
     this.county = 'California';
     this.resetTitle()
@@ -103,7 +103,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       if(this.selectedMetric === "deaths") {
         this.selectedMetric = "cases";
       }
-      this.retrieveData('https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
+      this.retrieveData(config.equityChartsDataLoc+'/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       this.resetTitle()
     }.bind(this), false);
     
