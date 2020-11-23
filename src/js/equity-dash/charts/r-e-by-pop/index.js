@@ -33,11 +33,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
 
     this.chartTitle = function() {
-      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
+      let title = this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
+      return title;
     }
 
     this.description = function () {
-      return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
+      return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.county = 'California';
     this.legendString = function() {
