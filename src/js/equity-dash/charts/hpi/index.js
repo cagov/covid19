@@ -16,10 +16,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.textLabels = {
       yAxisLabel:'Test positivity',
       data1Legend:'Statewide positivity',
-      data1LegendHover:'Statewide positivity',
-      data1LegendSuffix:'test positivity', // appended to county name
+      data1LegendLocal:'placeholderForDynamicLocation test positivity', // appended to county name
       data2Legend:'Health equity quartile positivity',
-      data2LegendHover:'Health equity quartile positivity',
       missingDataCaption:'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
       missingDataCaptionLineDelimiter:'<br>',
     };
@@ -53,11 +51,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     searchElement.addEventListener('county-selected', function (e) {
       this.county = e.detail.county;
       // console.log("Got County: " + this.county);
+      let legendText = this.textLabels.data1LegendLocal.replace('placeholderForDynamicLocation',this.county);
 
       window.fetch('https://files.covid19.ca.gov/data/to-review/equitydash/healthequity-'+this.county.toLowerCase().replace(/ /g,'')+'.json')
       .then(response => response.json())
       .then(alldata => {
-        this.writeChart(alldata, this.svg, this.county+' '+this.textLabels.data1LegendSuffix);
+        this.writeChart(alldata, this.svg, legendText);
       })
         
     }.bind(this), false);
@@ -238,8 +237,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.on("mouseleave touchend",null);
 
     if (!missing_eq_data) {
-      const tooltip = new Tooltip(true,this.textLabels.data1LegendHover);
-      const tooltip2 = new Tooltip(false,this.textLabels.data2LegendHover);
+      const tooltip = new Tooltip(true);
+      const tooltip2 = new Tooltip(false);
       
       svg
         .on("mousemove", (event) => {
