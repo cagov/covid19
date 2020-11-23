@@ -1,6 +1,7 @@
 import template from './template.js';
 import drawBars from './draw-chart.js';
 import termCheck from '../race-ethnicity-config.js';
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback () {
@@ -16,16 +17,18 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       }
     })
 
+    this.translationsObj = getTranslations(this);
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
     this.chartTitle = function() {
-      return `${this.selectedMetricDescription} rate per 100K by race and ethnicity group in ${this.county}`;
+      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
     }
     this.description = function (selectedMetricDescription) {
-      return `Compare ${selectedMetricDescription.toLowerCase()} adjusted by population size across each race and ethnicity.`;
+      return this.translationsObj['chartDescription--'+this.selectedMetric];
     }
     this.county = 'California';
     this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
+    this.classList.remove('d-none')
 
     this.tooltip = d3
       .select("cagov-chart-re-100k")
@@ -136,7 +139,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .remove()      
 
     let statewideRatePer100k = this.combinedData[this.selectedMetric] ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K : null;
-    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k)  
+    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k, this.translationsObj);
   }
 
   retrieveData(url, statewideUrl) {

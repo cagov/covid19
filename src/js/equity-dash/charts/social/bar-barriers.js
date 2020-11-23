@@ -1,5 +1,6 @@
 import template from './template.js';
 import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels} from './draw.js';
+import getTranslations from '../../get-strings-list.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
@@ -8,6 +9,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     let width = 842;
     let margin = ({top: 50, right: 0, bottom: 30, left: 10})
 
+    this.translationsObj = getTranslations(this);
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
     }
@@ -69,7 +71,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         
       writeLegend(this.svg, ["Cases per 100K people"], width);
   
-      this.innerHTML = template();
+      this.innerHTML = template(this.translationsObj);
+      this.classList.remove('d-none')
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       window.tooltip = this.querySelector('.bar-overlay')
   
@@ -86,15 +89,15 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         event.preventDefault();
         if(this.classList.contains('healthcare')) {
           rewriteBar(datahealthcare)
-          component.querySelector('.chart-title').innerHTML = 'Case rate by access to healthcare';
+          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHealthcare;
         }
         if(this.classList.contains('housing')) {
           rewriteBar(datacrowding)
-          component.querySelector('.chart-title').innerHTML = 'Case rate by crowding housing';
+          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHousing;
         }
         if(this.classList.contains('income')) {
           rewriteBar(dataincome)
-          component.querySelector('.chart-title').innerHTML = 'Case rate by median annual household income bracket';
+          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
         }
         resetToggles();
         tog.classList.add('toggle-active')

@@ -256,37 +256,45 @@ function inputValueCounty() {
     else {clearCounty.classList.add('d-none');}
   }
 
+var activityInput = document.getElementById("activity-query");
+var countyInput = document.getElementById("location-query");
 
-  var activityInput = document.getElementById("activity-query");
-  var countyInput = document.getElementById("location-query");
-  
-  
-  
-  // Show clear btn only on input (County)
-  countyInput.addEventListener("input", function() {
-    inputValueCounty();
-   });
-  
-  // Show clear btn only on input (Activity)
-  activityInput.addEventListener("input", function() {
-    inputValueActivity();
-   });
-  
-   activityInput.addEventListener("blur", function() {
-     console.log("something changed")
-    inputValueActivity();
-   });
-
-//Clear buttons click events
-document.getElementById("clearLocation").addEventListener("click", function() {
-  countyInput.value = '';
+if(countyInput) {
+// Show clear btn only on input (County)
+countyInput.addEventListener("input", function() {
   inputValueCounty();
-});	
+ });
+  //Clear buttons click events
+  document.getElementById("clearLocation").addEventListener("click", function() {
+    countyInput.value = '';
+    inputValueCounty();
+  });
 
-document.getElementById("clearActivity").addEventListener("click", function() {
-  activityInput.value = '';
+  document.getElementById("clearActivity").addEventListener("click", function() {
+    activityInput.value = '';
+    inputValueActivity();
+  });
+}
+if(activityInput) {
+// Show clear btn only on input (Activity)
+activityInput.addEventListener("input", function() {
   inputValueActivity();
-});	
+ });
+
+ activityInput.addEventListener("blur", function() {
+  inputValueActivity();
+ });
+}
+
+// Show clear btn only if there is value (County)
+function inputValueCounty() {
+  var countyInput = document.getElementById("location-query");
+  var clearCounty = document.getElementById("clearLocation");
+    if (countyInput && countyInput.value) {
+      clearCounty.classList.remove('d-none');
+    }
+    else {clearCounty.classList.add('d-none');}
+  }
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
