@@ -294,7 +294,7 @@ learn-more-section {
 
   p {
     font-size: 0.95rem;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     &::before {
       font-family: "CaGov" !important;
       content: "\e072";
@@ -322,7 +322,7 @@ learn-more-section {
 
 cagov-chart-d3-bar h2 {margin-top: 3rem;}
 
-@media (max-width: 900px) { 
+@media (max-width: 900px) {
   .awesomplete {
     display: inline-block;
   }
@@ -334,7 +334,7 @@ cagov-chart-d3-bar h2 {margin-top: 3rem;}
 
 .bg-darkblue a,
 .bg-darkblue a:focus {
-  color: #92C5DE; 
+  color: #92C5DE;
   text-decoration: underline;
 }
 

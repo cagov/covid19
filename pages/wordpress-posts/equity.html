@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
 title: "California’s commitment to health equity"
-meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good [&hellip;]"
+meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-23T04:36:12Z"
+publishdate: "2020-11-23T17:49:45Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -26,7 +26,7 @@ addtositemap: false
 
 
 
-<p>COVID-19 has highlighted existing inequities in health. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good for everyone, and California is committed to making it part of our reopening plan.</p>
+<p>COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good for everyone, and California is committed to making it part of our reopening plan.</p>
 
 
 
@@ -259,23 +259,23 @@ addtositemap: false
       <cagov-chart-re-pop class="d-none">
         <ul>
           <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
-          <li data-label="chartTitl--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
-          <li data-label="chartTitle--testing">Testing relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--tests">Testing relative to percentage of population in placeholderForDynamicLocation</li>
           <li data-label="chartDescription--cases">Compare the percentage of each race and ethnicity’s share of statewide cases to their percentage of placeholderForDynamicLocation’s population.</li>
           <li data-label="chartDescription--deaths">Compare the percentage of each race and ethnicity’s share of statewide deaths to their percentage of placeholderForDynamicLocation’s population.</li>
-          <li data-label="chartDescription--testing">Compare the percentage of each race and ethnicity’s share of statewide tests to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartDescription--tests">Compare the percentage of each race and ethnicity’s share of statewide tests to their percentage of placeholderForDynamicLocation’s population.</li>
           <li data-label="chartLineDiff">change since previous month</li>
         </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
-      <cagov-chart-re-100k class="d-none"> 
-<ul>
+      <cagov-chart-re-100k class="d-none">
+        <ul>
           <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
-          <li data-label="chartTitle--testing">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--tests">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartDescription--cases">Compare cases adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartDescription--deaths">Compare deaths adjusted by population size across each race and ethnicity.</li>
-          <li data-label="chartDescription--testing">Compare tests adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartDescription--tests">Compare tests adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartLineDiff">change since previous month</li>
         </ul></cagov-chart-re-100k>
     </div>
@@ -301,12 +301,26 @@ addtositemap: false
 
 
 <div class="col-lg-10 mx-auto">
-<cagov-chart-d3-lines><svg><g class="tick"><line></line></g><text></text></svg></cagov-chart-d3-lines>
+<cagov-chart-d3-lines class="d-none">
+  <ul>
+    <div>
+      <ul>
+        <li data-label="y-axis-label">Test positivity</li>
+        <li data-label="data1-legend">Statewide positivity</li>
+        <li data-label="data1-legend-local">placeholderForDynamicLocation test positivity</li>
+        <li data-label="data2-legend">Health equity quartile positivity</li>
+        <li data-label="missing-data-caption">The health equity metric is not<br>applied to counties with a
+          population<br>less than 106,000.</li>
+        <li data-label="missing-data-caption-line-delimiter"><br></li>
+      </ul>
+    </div>
+  </ul>
+</cagov-chart-d3-lines>
 </div>
 
 
 
-<p class="chart-data-label text-center">Note: 7-day average of positivity rate with 7-day lag, for the tracts in Healthy Places Index (HPI) health equity quartile.</p>
+<p class="chart-data-label">Note: 7-day average of positivity rate with 7-day lag, for the tracts in Healthy Places Index (HPI) health equity quartile. Health equity quartile positivity is defined as the positivity rate in the lowest 25% of Health Places Index census tracts in the county.</p>
 
 
 
@@ -326,21 +340,52 @@ addtositemap: false
     <button class="small-tab" data-key="gender_identity">Gender identity</button>
   </div>
 </cagov-chart-filter-buttons>
-<cagov-chart-equity-missingness></cagov-chart-equity-missingness>
+<cagov-chart-equity-missingness class="d-none">
+  <ul>
+    <div>
+      <ul>
+        <li data-label="title">Reporting by race and ethnicity in California</li>
+        <li data-label="special-note">Data reporting keeps improving. Since January, the reporting on age and gender is up to completeness. The same can be done for this data.</li>
+        <li data-label="footnote">Note: Data shown is cumulative for the last 30 days and updated daily.</li>
+        <li data-label="tab-label">Reporting by <span data-replace="metric-filter"></span> in <span data-replace="location"></span></li>
+        <li data-label="data-missing">Data missing</li>
+        <li data-label="data-reported">Data reported</li>
+        <li data-label="reported">reported</li>
+        <li data-label="missing">missing</li>
+        <li data-label="empty-tooltip">an empty tooltip</li>
+        <li data-label="percent-change-previous-month">change in cases since previous month</li>
+        <li data-label="chart-tooltip-complete">
+          <div>
+          In <span data-replace="location">California</span>, <span data-replace="data-type">race and ethnicity</span> data for
+          <span data-replace="metric">tests</span> is
+          <span class="highlight-data">
+            <span data-replace="highlight-data"></span>
+          </span>
+          complete.
+          </div>
+        </li>
+        <li data-label="chart-tooltip-missing">
+          <div>
+          In <span data-replace="location">California</span>, <span data-replace="data-type">race and ethnicity</span> data for
+          <span data-replace="metric">tests</span> is
+          <span class="highlight-data">
+            <span data-replace="highlight-data"></span>
+          </span>
+          missing.
+          </div>
+        </li>
+      </ul>
+      <ul data-group="displayOrder">
+        <li data-item="tests">Tests</li>
+        <li data-item="cases">Cases</li>
+        <li data-item="deaths">Deaths</li>
+      </ul>
+    </div>
+  </ul>
+</cagov-chart-equity-missingness>
 
 
-
-<p class="chart-data-label col-lg-10 mx-auto">Note: Data shown is cumulative for the last 30 days and updated daily.</p>
-
-
-
-<div class="col-lg-10 mx-auto">
-<div class="special-note mt-4 mb-3"><p>Data reporting keeps improving. Since January, the reporting on age and gender is up to  completeness. The same can be done for this data.</p></div>
-</div>
-
-
-
-<div class="mb-5 mt-2"></div>
+<div class="mb-2 mt-2"></div>
 
 
 
