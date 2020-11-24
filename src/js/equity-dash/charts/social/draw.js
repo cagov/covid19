@@ -88,6 +88,7 @@ function rewriteBars(svg, data, x, y) {
     .attr("x", (d, i) => x(i))
     .attr("y", d => y(d.CASE_RATE_PER_100K))
     .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
+    .attr("aria-label", (d, i) => `${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week`)
 }
 
 function writeBarLabels(svg, data, x, y) {
