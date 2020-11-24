@@ -13,10 +13,6 @@
 	{{ super() }}
 {% endblock %}
 
-{% block headJS %}
-	<script>const videoID='{{varVideoID}}';</script>
-{% endblock %}
-
 {% block preHeader %}
 	<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
 {% endblock %}
@@ -35,14 +31,13 @@
 							</a>
 						</h1>
 						<h2 class="hero-subhead">{{ varHeroP2 }}</h2>
-						<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "safer-economy/" | toTranslatedPath(tags) }}">
-							<div class="button-label">
-								<span>
-									<p>{{ varHeroP1 }}</p>
-								</span>
-							</div>
-							<cwds-arrow data-class-prefix="hero" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
+						
+						<a href="{{ "safer-economy/" | toTranslatedPath(tags) }}" class="link-arrow-lightblue justify-content-start">
+							<div class="link-arrow-label">{{ varHeroP1 }}</div>
+							<cagov-arrow></cagov-arrow>
 						</a>
+						
+						
 					</div>
 				</div>
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
@@ -134,7 +129,7 @@
 	<faq-section>
 		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 			
-			<h3 class="text-center color-orange font-size-2em">{{varPeopleWantToKnowTitle}}</h3>
+			<h2 class="text-center color-orange">{{varPeopleWantToKnowTitle}}</h2>
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
 					<div class="faq trigger">
