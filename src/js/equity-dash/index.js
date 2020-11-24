@@ -6,6 +6,6 @@ import './charts/hpi/index.js'
 import './charts/missingness/index.js'
 import './charts/r-e-by-100k/index.js'
 import './charts/r-e-by-pop/index.js'
-
+import './learnmore/index.js'
 console.log('config is:')
 console.log(config);
