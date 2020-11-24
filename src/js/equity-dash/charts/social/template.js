@@ -8,7 +8,7 @@ export default function template(translationsObj) {
     <div class="col-lg-12 bg-white px-3 py-4">
         <div class="row d-flex justify-content-md-center">
             <div class="inline-toggle-link-container">
-                <div class="toggle-links bg-darkblue bd-darkblue">
+                <div class="toggle-links large-tabs">
                   <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a><a href="#" class="js-toggle-group  housing">${translationsObj.chartButtonHousing}</a><a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHousing}</a>
                 </div>
             </div>
