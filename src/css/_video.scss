@@ -1,3 +1,8 @@
+.video-thumb-link {
+  display: block;
+  &:focus {outline: 2px solid $yellow;}
+}
+
 .video-thumb-photo {
   background: #003d9d;
   position: relative;
@@ -16,7 +21,7 @@
   z-index: 250;
   width: 5rem;
   height: 5rem;
-  border: 4px solid #FF8000;
+  border: 4px solid $orange;
   border-radius: 50%;
   padding: .9rem .5rem .5rem 1.2rem;
   margin: 0 auto 1rem;
@@ -27,20 +32,21 @@
 .video-thumb-play-button-icon {
   width: 100%;
   max-height: 4rem;
-  fill: #FF8000;
+  fill: $orange;
   //transition: fill 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89);
   position: relative;
   left: 0.2rem;
 }
 
 .video-thumb-play-button:hover {
- // box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
-  border-color: #003D9D;
+  border-color: $blue;
   .video-thumb-play-button-icon {
-    fill: #003D9D;
+    fill: $blue;
   }
 }
-
+.video-thumb-play-button:focus { 
+  outline: 2px solid $yellow;
+}
 
 
 .video-modal {
