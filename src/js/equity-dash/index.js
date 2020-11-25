@@ -1,5 +1,5 @@
 import './search/index.js'
-import './search/buttons.js'
+import './county-buttons/buttons.js'
 import './search/filters.js'
 import './charts/social/bar-barriers.js'
 import './charts/hpi/index.js'
