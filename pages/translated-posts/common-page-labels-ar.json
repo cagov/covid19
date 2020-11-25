@@ -37,6 +37,10 @@
       "text": "قائمة"
     },
     {
+      "_id": "menu_close",
+      "text": "إغلاق"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "عن ماذا تبحث؟"
     },
@@ -90,10 +94,14 @@
     },
     {
       "_id": "hotline_hours",
-      "text": "من الإثنين للجمعة 8 صباحًا-8 مساءً، السبت والأحد 8 صباحًا-5 مساءً"
+      "text": "من الإثنين للجمعة من 8 صباحًا إلى 8 مساءً، السبت والأحد من 8 صباحًا إلى 5 مساءً"
     }
   ],
   "Table2": [
+    {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
     {
       "Name": "إدارة الصحة العامة",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
@@ -121,11 +129,11 @@
   ],
   "Table3": [
     {
-      "Name": "ابقَ في المنزل أسئلة وأجوبة",
+      "Name": "بشأن قيود مرض كوفيد-19",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
-      "Name": "برنامج تخطيطي لاقتصاد أكثر أمانًا",
+      "Name": "مخطط لاقتصاد أكثر أمانًا",
       "_slug": "safer-economy"
     },
     {
@@ -143,12 +151,23 @@
   ],
   "Table4": [
     {
-      "TEST": "الاختبار",
-      "VALUE": "القيمة"
+      "Link Title": "بماذا ينص التوجيه الخاص بفتح نشاطي التجاري بشكل آمن؟",
+      "URL": "#"
     },
     {
-      "TEST": "لماذا ليس هذا",
-      "VALUE": "تجري ترجمته"
+      "Link Title": "أين يمكنني الحصول على مساعدة من أجل نشاطي التجاري ؟",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "شكرًا لك",
+      "Description": "شكرًا لك على بذل كل ما في وسعك لإيقاف انتشار كوفيد-19 في موسم العطلات هذا.",
+      "VideoURL": "youtu.be/8S5iiKx5dhc",
+      "VideoID": "8S5iiKx5dhc",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
+      "ImageALT": "شكرًا لك",
+      "ButtonText": "شاهد الفيديو"
     }
   ]
 }
