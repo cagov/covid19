@@ -1,18 +1,13 @@
 import templatize from './template.js';
 
 class LearnMoreLinks extends window.HTMLElement {
-    // console.log("learnmoredefined");
     connectedCallback() {
-        // console.log("Learn more callback",this);
         // process the list...
+        // todo: data-kind tags contain hints about link treatment (pdf, external, internal)
         let innerHTML = '';
         this.querySelectorAll('a').forEach(function(a,i) {
-            // console.log("A:",a);
-            let href = a.getAttribute('href');
-            let title = a.innerText;
-            innerHTML += templatize(href, title);
+            innerHTML += templatize(a.getAttribute('href'), a.innerText);
         });
-        this.classList.remove('d-none');
         this.innerHTML = innerHTML;
     }
 }
