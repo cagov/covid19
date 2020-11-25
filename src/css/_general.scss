@@ -599,7 +599,7 @@ a:hover,
 }
 
 :focus {
-  outline: 2px solid #004abc;
+  outline: 2px solid $yellow;
 }
 
 /* Action Link */
@@ -1282,7 +1282,7 @@ li.list-group-item.alpha-footer {
 }
 
 .list-group-item-action:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
   box-shadow: 0 0 0 0.2rem #fff;
 }
 
@@ -1383,7 +1383,7 @@ li.list-group-item.unstyled.no-border {
 }
 
 li .action-link:focus-within {
-  outline: 2px solid #004abc;
+  outline: 2px solid $yellow;
 }
 
 .bg-light {
@@ -1802,12 +1802,6 @@ pre {
   font-size: 1em;
 }
 
-a {
-	background-color: transparent;
-}
-a:focus {
-	outline: none;
-}
 
 abbr[title] {
   border-bottom: none;
@@ -1881,7 +1875,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 2px solid $yellow;
 }
 
 fieldset {
