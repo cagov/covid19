@@ -32,4 +32,4 @@ This component listens for events:
 
 ## Dependencies
 
-This does not direclty import and is not imported by any other components but it is designed to work with the <a href="../search/">cagov-county-search</a> component because it subscribes to events from and dispatches events to that component.
+This does not directly import and is not imported by any other components but it is designed to work with the <a href="../search/">cagov-county-search</a> component because it subscribes to events from and dispatches events to that component.
