@@ -7,7 +7,7 @@ class LearnMoreLinks extends window.HTMLElement {
         // process the list...
         let innerHTML = '';
         this.querySelectorAll('a').forEach(function(a,i) {
-            console.log("A:",a);
+            // console.log("A:",a);
             let href = a.getAttribute('href');
             let title = a.innerText;
             innerHTML += templatize(href, title);
