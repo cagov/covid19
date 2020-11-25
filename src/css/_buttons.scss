@@ -912,3 +912,111 @@ faq-section {
     }
   }
 }
+
+
+
+/* ARROW LIST : List links with arrows */
+@mixin list-link-arrow {
+  font-family: "Roboto",sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-decoration:none !important;
+  text-transform: none;
+  display:flex;
+  justify-content: left;
+  transition: none;
+  padding: 0.75rem;
+  border-bottom: 1px solid;
+  
+}
+.arrow-links {
+  padding-left: 0;
+  li {list-style: none;}
+  .link-arrow-label {
+    margin-right:auto;
+  }
+  .link-arrow-icon {
+    width: 1.85rem;
+    height: 1.85rem; 
+    border:1px solid;
+    border-radius: 50%;
+    padding:0;
+    overflow:hidden;
+    transition: all .3s ease;
+    margin-left: 1rem;
+    }
+  .link-arrow-icon-svg {
+    width: 42px;
+    height:100%;
+    position:relative;
+    transition: all .3s ease;
+    right:20px;
+  }
+} 
+
+//blue arrow list link
+.arrow-links {
+  li:first-child a.link-arrow-blue {
+    border-top: 1px solid $darkblue;
+  }
+  .link-arrow-blue {
+    @include list-link-arrow; 
+      color:$darkblue;
+      border-bottom-color:$darkblue;
+      
+      .link-arrow-icon {
+        border-color:$orange;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:$orange;
+      }
+      // link hover and focus state
+      &:hover, &:focus {
+        color:$blue;
+        background: $lightestblue;
+        .link-arrow-icon {
+          border-color:$orange;
+          .arrow1, .arrow2 {fill:$orange;}
+        }
+        .link-arrow-icon-svg {right:-7px;}
+      }
+      &:focus {outline: 2px solid $yellow !important;}
+    }
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+//white arrow list link
+.arrow-links {
+  li:first-child a.link-arrow-white {
+    border-top: 1px solid tint($darkblue, 20%);;
+  }
+  .link-arrow-white {
+    @include list-link-arrow; 
+      color:$white;
+      border-bottom-color: tint($darkblue, 20%);
+      
+      .link-arrow-icon {
+        border-color:$orange;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:$orange;
+      }
+      // link hover and focus state
+      &:hover, &:focus {
+        color:$white !important;
+        background: $blue;
+        .link-arrow-icon {
+          border-color:$orange;
+          .arrow1, .arrow2 {fill:$orange;}
+        }
+        .link-arrow-icon-svg {right:-7px;}
+      }
+      &:focus {outline: 2px solid $yellow !important;}
+    }
+}
+
