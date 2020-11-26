@@ -129,24 +129,25 @@
 	<faq-section>
 		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 			
-			<h2 class="text-center color-orange">{{varPeopleWantToKnowTitle}}</h2>
+			<h2 class="text-center color-orange mb-4">{{varPeopleWantToKnowTitle}}</h2>
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
 					<div class="faq trigger">
+						<ul class="arrow-links">
 						{%- for item in items %}
-						<article class="faq-item trigger">    
-							<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
-								<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-								<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+						<li>    
+							<a class="link-arrow-white" href="{{ item._url }}">
+								<div class="link-arrow-label">{{ item.text | safe }}</div>
+								<cagov-arrow></cagov-arrow>
 							</a>
-						</article>
+						</li>
 						{%- endfor %}
+						</ul>
 					</div>
 				{%- endfor %}
 			</div>
 		</section>
 	</faq-section>
-
 
 
 
@@ -161,14 +162,16 @@
         {%- set RowsGov = JSONgov.Table4 -%}
         {% for item in RowsGov %}
 		<div class="faq trigger">
-			<article class="faq-item trigger">    
-				<a class="faq-item-link cwdsarrow-parent" href="{{item["URL"]}}">
-				<h4 class="faq-item-headline">
+			<div class="arrow-links">
+			<article>    
+				<a class="link-arrow-blue" href="{{item["URL"]}}">
+				<div class="link-arrow-label">
 					{{item["Link Title"]}}
-				</h4>
-				<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+				</div>
+				<cagov-arrow></cagov-arrow>
 				</a>
 			</article>
+			</div>
 		</div>
 		 {% endfor %}
 	</div>
@@ -194,12 +197,12 @@
 				<article class="video-item mx-auto mt-3" data-video="{{item["VideoID"]}}">
 					<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{item["VideoID"]}}" href="https://{{item["VideoURL"]}}">
 						<figure class="video-thumb-photo">
-							<div class="video-thumb-play-button">
+							<div class="video-thumb-play-button" role="button" tabindex="0" aria-label="Watch {{item["Video Title"]}} video button">
 								<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
 									<path class="st0" d="M0,45.9V4.4c0-3.3,2-4.2,4.9-2.5l32.9,19c4.7,2.6,4.8,5,0.6,7.5L5,47.6C1.7,49.6,0,48.5,0,45.9z"/>
 								</svg>
 							</div>
-							<img class="video-thumb-photo-img" src="https://{{item["ImageURL"]}}" alt="{{item["ImageALT"]}}">
+							<img class="video-thumb-photo-img" src="https://{{item["ImageURL"]}}" alt="Watch {{item["ImageALT"]}} Video">
 						</figure>
 					</a>
 				</article>

@@ -957,7 +957,7 @@ faq-section {
 
 //blue arrow list link
 .arrow-links {
-  li:first-child a.link-arrow-blue {
+  li:first-child a.link-arrow-blue, article:first-child a.link-arrow-blue {
     border-top: 1px solid $darkblue;
   }
   .link-arrow-blue {
@@ -991,7 +991,7 @@ faq-section {
 }
 //white arrow list link
 .arrow-links {
-  li:first-child a.link-arrow-white {
+  li:first-child a.link-arrow-white, article:first-child a.link-arrow-white {
     border-top: 1px solid tint($darkblue, 20%);;
   }
   .link-arrow-white {
