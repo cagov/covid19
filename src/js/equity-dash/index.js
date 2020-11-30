@@ -1,8 +1,11 @@
 import './search/index.js'
-import './search/buttons.js'
+import './county-buttons/buttons.js'
 import './search/filters.js'
-import './charts/social/bar-barriers.js'
-import './charts/hpi/index.js'
-import './charts/missingness/index.js'
-import './charts/r-e-by-100k/index.js'
-import './charts/r-e-by-pop/index.js'
+import './charts/relative-percentage-by-100k/index.js'
+import './charts/relative-percentage-by-pop/index.js'
+import './charts/healthy-places-index/index.js'
+import './charts/data-completeness/index.js'
+import './charts/social-determinants/index.js'
+import './learn-more/index.js'
+// console.log('config is:')
+// console.log(config);

@@ -21,7 +21,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
     this.chartTitle = function() {
-      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation`', this.county);
+      return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.description = function (selectedMetricDescription) {
       return this.translationsObj['chartDescription--'+this.selectedMetric];
@@ -33,7 +33,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.tooltip = d3
       .select("cagov-chart-re-100k")
       .append("div")
-      .attr("class", "equity-tooltip equity-tooltip--re100k")
+      .attr("class", "chart-tooltip chart-tooltip--re100k")
       .text("an empty tooltip");
 
     this.svg = d3
@@ -52,8 +52,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       .domain(this.subgroups)
       .range(['#FFCF44', '#F2F5FC'])
 
-    this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-california.json';
-    this.dataStatewideRateUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-combined.json';
+    this.dataUrl = config.equityChartsDataLoc+'/equitydash/cumulative-california.json';
+    this.dataStatewideRateUrl = config.equityChartsDataLoc+'/equitydash/cumulative-combined.json';
     this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
     this.county = 'California'
@@ -67,7 +67,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       if(this.selectedMetric === "deaths") {
         this.selectedMetric = "cases";
       }
-      this.dataUrl = 'https://files.covid19.ca.gov/data/to-review/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
+      this.dataUrl = config.equityChartsDataLoc+'/equitydash/cumulative-'+this.county.toLowerCase().replace(/ /g,'')+'.json';
       this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
       this.resetTitle(this.county)
     }.bind(this), false);

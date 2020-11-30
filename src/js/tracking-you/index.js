@@ -296,12 +296,22 @@ export default function setupAnalytics() {
 
         });
       });
-      
-      /** section names aren't setup yet
-      document.querySelectorAll('.faq-item-link').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, '<section>-anchor', link.href, false));
+      document.querySelectorAll('a').forEach(link => {
+        // console.log("looking at link",link.href);
+        if (link.href.includes('/equity/#')) {
+          let section = link.href.substring(link.href.indexOf('#')+1);
+          let action = (section != ''? section : 'top') + '-anchor';
+          // console.log("setting up fqlink",section,action);
+          link.addEventListener('click', function(e) {
+            reportGA(action, link.href); // equity-tab-select?  or tabName+":equity"?
+          });
+        }
       });
-      **/
+      
+      // document.querySelectorAll('.faq-item-link').forEach(link => {
+      //   console.log("setting up fqlink",link.href)
+      //   link.addEventListener('click', linkHandler(link.href, 'learn-more-anchor', link.href, false));
+      // });
 
     }
   }

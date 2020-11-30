@@ -225,8 +225,14 @@ button.card-header.accordion-alpha:focus {
       background-color: $darkblue;
     }
   }
-
 }
+
+.grid-layout-hd.toggle-links {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  max-width: 420px;
+  margin: 0 auto;
+}
+
 
 button.clear {
   border: none;

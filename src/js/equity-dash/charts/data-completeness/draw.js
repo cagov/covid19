@@ -1,14 +1,37 @@
-export default 
-function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
+export default
+function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translations) {
 
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
+  // Add neutral background fill
   svg
     .append("g")
     .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
+    // Enter in the stack data = loop key per key = group per group.
+    .data(stackedData)
+    .enter()
+    .append("g")
+    .attr("fill", '#F2F5FC') // Neutral background color
+    .selectAll("rect")
+    .attr("width", "10px")
+    // Enter a second time = loop subgroup per subgroup to add all rectangles.
+    .data(d => {
+      return d;
+    })
+    .enter()
+    .append("rect")
+    .attr("x", d => x(d[0]))
+    .attr("y", d => y(d.data.METRIC))
+    .attr("width", d => x(1) - x(0))
+    .attr("height", "10px")
+
+
+  svg
+    .append("g")
+    .selectAll("g")
+    // Enter in the stack data = loop key per key = group per group.
     .data(stackedData)
     .enter()
     .append("g")
@@ -16,7 +39,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .selectAll("rect")
     .attr("width", "40px")
 
-    // enter a second time = loop subgroup per subgroup to add all rectangles
+    // Enter a second time = loop subgroup per subgroup to add all rectangles.
     .data(d => {
       return d;
     })
@@ -30,25 +53,26 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .on("mouseover", function(event, d) {
       d3.select(this).transition();
       tooltip.html(() => {
+        let percentNotMissing = d.data.NOT_MISSING
+          ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
+          : 0;
+
+        let percentMissing = d.data.MISSING
+          ? parseFloat(d.data.MISSING * 100).toFixed(1) + "%"
+          : 0;
+
         if (d[0] == 0) {
-          return `<div class="chart-tooltip">
-          <div >In California, race and ethnicity data for ${
-            d.data.METRIC
-          } is <span class="highlight-data">${
-            d.data.NOT_MISSING
-              ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
-              : 0
-          }</span> complete </div>
-        </div>`;
+          return translations.chartTooltip({
+            metric: d.data.METRIC,
+            highlightData: percentNotMissing,
+            complete: true,
+          });
         } else {
-          return `<div class="chart-tooltip"><div >In California, race and ethnicity data for ${
-            d.data.METRIC
-          } is <span class="highlight-data">${
-            d.data.MISSING
-              ? parseFloat(d.data.MISSING * 100).toFixed(1) + "%"
-              : 0
-          }</span> missing </div>
-        </div>`;
+          return translations.chartTooltip({
+            metric: d.data.METRIC,
+            highlightData: percentMissing,
+            complete: false,
+          });
         }
       });
       tooltip.style("visibility", "visible");
@@ -83,12 +107,12 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
                 100
             ).toFixed(1) == 0.0
           ) {
-            return `<tspan class="highlight-data">0%</tspan>  change in cases sinice previous month`;
+            return `<tspan class="highlight-data">0%</tspan>  ${translations['percent-change-previous-month']}`;
           } else {
             return `<tspan class="highlight-data">${(d.PERCENT_COMPLETE_30_DAYS_PRIOR != 0) ? parseFloat(
               (d.PERCENT_COMPLETE_30_DAYS_DIFF) *
                 100
-            ).toFixed(1) : "0"}%</tspan> change in cases since previous month`;
+            ).toFixed(1) : "0"}%</tspan> ${translations['percent-change-previous-month']}`;
           }
         })
         .attr('text-anchor', 'end');
@@ -105,7 +129,6 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .join(enter => {
       enter
         .append("svg")
-
         .attr("y", d => y(d.METRIC) + 15)
         .attr("x", d => x(0))
         .html(d => {
@@ -150,14 +173,11 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
         .attr("x", d => x(1))
         .attr("height", y.bandwidth())
         .html(
-          d => `<tspan class="highlight-data">
-            ${parseFloat(d.NOT_MISSING * 100).toFixed(
-              1
-            )}%</tspan> reported (<tspan class="highlight-data">${parseFloat(
-            d.MISSING * 100
-          ).toFixed(1)}%</tspan>
-             missing)`
-        )
+          (d) => {
+            let notMissing = parseFloat(d.NOT_MISSING * 100).toFixed(1);
+            let missing = parseFloat(d.MISSING * 100).toFixed(1);
+            return `<tspan class="highlight-data">${notMissing}%</tspan> ${translations['reported']} (<tspan class="highlight-data">${missing}%</tspan> ${translations['missing']})`
+        })
         .attr('text-anchor', 'end');
     });
 
@@ -168,6 +188,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
+    .attr('class', 'legend-label')
     .attr("fill", "#92C5DE");
   svg
     .append("rect")
@@ -181,16 +202,14 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip) {
     .append("text")
     .attr("x", 20)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("Data reported");
+    .attr("class", "legend-label")
+    .text(translations['data-reported']);
   svg
     .append("text")
     .attr("x", 135)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("Data missing");
+    .attr("class", "legend-label")
+    .text(translations['data-missing']);
 }
