@@ -9,7 +9,7 @@ export default function template(translationsObj) {
         <div class="row d-flex justify-content-md-center">
             <div class="inline-toggle-link-container">
                 <div class="toggle-links large-tabs">
-                  <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a><a href="#" class="js-toggle-group  housing">${translationsObj.chartButtonHousing}</a><a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHousing}</a>
+                  <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a><a href="#" class="js-toggle-group  housing">${translationsObj.chartButtonHousing}</a><a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHealthcare}</a>
                 </div>
             </div>
         </div>
