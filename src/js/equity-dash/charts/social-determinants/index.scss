@@ -1,7 +1,12 @@
 cagov-chart-d3-bar {
   // Override width
+  h2 {
+    margin-top: 3rem;
+  }
   .chart-title {
     max-width: 633px;
+    margin: 50px auto 20px;
+    border-bottom: solid 1px;
   }
   .svg-holder {
     max-width: 633px;
@@ -15,5 +20,10 @@ cagov-chart-d3-bar {
   }
   .bar-label tspan.bold {
     font-weight: bold;
+  }
+  @media (max-width: 768px) {
+    .chart-title {
+      margin: 50px 20px 20px 20px;
+    }
   }
 }

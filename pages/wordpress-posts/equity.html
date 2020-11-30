@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources. Committed to a California [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-24T20:13:37Z"
-tags: ["do-not-crawl","staging-only","translate"]
+publishdate: "2020-11-30T06:17:50Z"
+tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
@@ -22,19 +22,19 @@ addtositemap: false
 
 
 
-<p>All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
+<p class="emphasized">All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
 
 
 
-<p>COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources.</p>
+<p class="emphasized">COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources.</p>
 
 
 
-<p>Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good for everyone, and California is committed to making it part of our reopening plan.</p>
+<p class="emphasized">Committed to a California for All, the state is identifying communities most impacted and directing resources to address COVID-19 health inequities. Reducing COVID-19 risk in all communities is good for everyone, and California is committed to making it part of our reopening plan.</p>
 
 
 
-<p>State public health leaders cannot address COVID-19 health inequities alone. A healthy California for everyone requires partnership with the private sector, local government, and community partners at all levels.</p>
+<p class="emphasized">State public health leaders cannot address COVID-19 health inequities alone. A healthy California for everyone requires partnership with the private sector, local government, and community partners at all levels.</p>
 
 
 
@@ -264,7 +264,7 @@ addtositemap: false
 <div class="container">
   <div class="row">
     <div class="col">
-      <cagov-chart-re-pop class="d-none">
+      <cagov-chart-re-pop class="chart d-none">
         <ul>
           <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
           <li data-label="chartTitl--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
@@ -276,7 +276,7 @@ addtositemap: false
         </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
-      <cagov-chart-re-100k class="d-none"> 
+      <cagov-chart-re-100k class="chart d-none"> 
 <ul>
           <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
@@ -309,7 +309,7 @@ addtositemap: false
 
 
 <div class="col-lg-10 mx-auto">
-<cagov-chart-d3-lines class="d-none">
+<cagov-chart-d3-lines class="chart d-none">
   <ul>
     <div>
       <ul>
@@ -348,7 +348,7 @@ addtositemap: false
     <button class="small-tab" data-key="gender_identity">Gender identity</button>
   </div>
 </cagov-chart-filter-buttons>
-<cagov-chart-equity-missingness class="d-none">
+<cagov-chart-data-completeness class="chart d-none">
   <ul>
     <div>
       <ul>
@@ -390,7 +390,7 @@ addtositemap: false
       </ul>
     </div>
   </ul>
-</cagov-chart-equity-missingness>
+</cagov-chart-data-completeness>
 
 
 
@@ -398,7 +398,7 @@ addtositemap: false
 
 
 
-<cagov-chart-d3-bar class="d-none"><ul>
+<cagov-chart-d3-bar class="chart d-none"><ul>
     <li data-label="sectionTitle">Factors that increase risk of infection and severe illness</li>
     <li data-label="sectionDescription">Californians in crowded housing or transportation, and with less access to paid leave and other worker protections have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.</li>
     <li data-label="chartTitleIncome">Case rate by median annual household income bracket</li>
@@ -408,6 +408,8 @@ addtositemap: false
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
     <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is cumulative for the last 7 days and updated daily</li>
+   <li data-label="casesPer100KPeople">Cases per 100k people</li>
+   <li data-label="statewideCaseRate">Statewide case rate:</li>
   </ul></cagov-chart-d3-bar>
 
 
@@ -426,11 +428,13 @@ addtositemap: false
 </div>
 </div>
 
+
+
 <a name="learn-more"></a>
 <!--THIS IS LEARN MORE SECTION-->
 <div class="full-bleed">
   <div class="container py-2">
-  <learn-more-section>
+<learn-more-section class="learn-more-links>
     <h3 class="text-center color-purple font-size-2em my-4">Learn More</h3>
     <div class="faq-twitter-wrap pb-5">
       <div class="faq trigger">
@@ -456,5 +460,7 @@ addtositemap: false
   </learn-more-section>
   </div>
 </div>
+
+
 
 <p></p>

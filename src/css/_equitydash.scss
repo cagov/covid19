@@ -75,69 +75,6 @@ p.emphasized {
   margin-top: auto;
 }
 
-/* Chart overrides */
-// cagov-chart-d3-bar {
-// display: block;
-// margin: auto;
-// width: 90%;
-
-// .label,
-// .bold {
-//   font-weight: bold;
-// }
-// .label {
-//   font-weight: normal;
-// }
-// .chart-tooltip {
-//   padding: 10px;
-//   box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
-//   border: solid 1px #ccc;
-// }
-// .highlight-data {
-//   font-weight: bold;
-// }
-// .tick text {
-//   font-size: 1rem;
-// }
-// .svg-holder {
-//   position: relative;
-//   max-width: 720px;
-//   margin: 30px auto;
-// }
-
-
-// .bar-overlay {
-//   position: absolute;
-//   z-index: 10;
-//   visibility: hidden;
-//   background: #fff;
-//   width: 250px;
-// }
-// }
-
-// cagov-chart-d3-lines {
-//   max-width: 613px;
-// }
-
-cagov-chart-d3-bar {
-  h2 {
-    margin-top: 3rem;
-  }
-  .chart-title {
-    margin: 50px auto 20px;
-    // max-width: 720px;
-    border-bottom: solid 1px;
-  }
-  
-  @media (max-width: 768px) {
-    .chart-title {
-      margin: 50px 20px 20px 20px;
-    }
-  }
-
-
-}
-
 /* Learn more links */
 .learn-more-links {
   .faq-twitter {
