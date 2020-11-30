@@ -20,13 +20,13 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
+    this.county = 'California';
     this.chartTitle = function() {
       return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.description = function (selectedMetricDescription) {
       return this.translationsObj['chartDescription--'+this.selectedMetric];
     }
-    this.county = 'California';
     this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
     this.classList.remove('d-none')
 
