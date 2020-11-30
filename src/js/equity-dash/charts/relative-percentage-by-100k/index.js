@@ -33,7 +33,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.tooltip = d3
       .select("cagov-chart-re-100k")
       .append("div")
-      .attr("class", "equity-tooltip equity-tooltip--re100k")
+      .attr("class", "chart-tooltip chart-tooltip--re100k")
       .text("an empty tooltip");
 
     this.svg = d3

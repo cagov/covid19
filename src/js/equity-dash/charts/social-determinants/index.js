@@ -7,7 +7,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
     let height = 500;
     let width = 842;
-    let margin = ({top: 50, right: 0, bottom: 30, left: 10})
+    let margin = ({top: 88, right: 0, bottom: 30, left: 10})
 
     this.translationsObj = getTranslations(this);
     function sortedOrder(a,b) {
@@ -53,20 +53,22 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .call(xAxis);
     
       this.svg.append("path")
-        .attr("d", d3.line()([[0, height/2], [width, height/2]]))
+        .attr("d", d3.line()([[20, height/2], [width - 20, height/2]]))
         .attr("stroke", "#1F2574")
-        .style("stroke-dasharray", ("3, 3"));
+        .style("stroke-dasharray", ("5, 5"));
       
       this.svg.append("text")
-        .text(`Statewide case rate ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-        .attr("y", height / 2 - 5)
+        .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
+        .attr("y", height / 2 - 15)
         .attr("x", 38)
         .attr('text-anchor','start')
-        .attr('class','label');
+        .attr('fill', '#1F2574')
+        .attr('class','label bar-chart-label');
         
-      writeLegend(this.svg, ["Cases per 100K people"], width - 5);
-  
+
       this.innerHTML = template(this.translationsObj);
+      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], width - 5);
+  
       this.classList.remove('d-none')
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       window.tooltip = this.querySelector('.bar-overlay')

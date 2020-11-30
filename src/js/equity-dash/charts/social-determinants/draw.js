@@ -19,6 +19,7 @@ function rewriteLegend(svg, legendLabels) {
   svg.selectAll('.legend text')
     .data(legendLabels)
     .text(legendLabels[0])
+    .attr("text-anchor", "start")
 }
 function writeLegend(svg, legendLabels, width) {
   let legend = svg.append('g')
@@ -28,25 +29,27 @@ function writeLegend(svg, legendLabels, width) {
     .data(legendLabels)
     .enter()
     .append('rect')
-    .attr('x', width - 150)
-    .attr('y', 20)
-    .attr('width', 12)
-    .attr('height', 12)
-    .attr('fill', "skyblue");
+    .attr("x", 30)
+    .attr("y", 0)
+    .attr("width", 15)
+    .attr("height", 15)
+    .attr('fill', "#92C5DE");
 
   legend.selectAll('text')
     .data(legendLabels)
     .enter()
     .append('text')
     .text(legendLabels[0])
-    .attr('x', width - 130)
-    .attr('y', 20)
-    .attr('text-anchor', 'start')
-    .attr('alignment-baseline', 'hanging');
+    .attr('class', 'legend-label')
+    .attr('x', 50)
+    .attr('y', 0)
+    // .attr('text-anchor', 'start')
+    .attr('alignment-baseline', 'hanging')
+    ;
 }
 function writeBars(svg, data, x, y, width) {
   svg.append("g")
-    .attr("fill", "skyblue")
+    .attr("fill", "#92C5DE")
     .attr('class','barshere')
     .selectAll("rect")
     .data(data)
@@ -68,16 +71,22 @@ function writeBars(svg, data, x, y, width) {
         let percentLeft = svgLeft / width;
         let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
         let actualLeft = parseInt(percentLeft * elWidth) - 70;
-        // 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
+        // @TODO 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
         window.tooltip.style.left = parseInt(actualLeft)+"px";
+        
+        // @TODO Adapt from example from data completeness, add to translations.
         window.tooltip.innerHTML = `<div class="chart-tooltip">
-          <div class="chart-tooltip-desc"><span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week</div>
+          <div class="chart-tooltip-desc">
+          <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> 
+          cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% 
+          change since previous week
+          </div>
         </div>`;
         window.tooltip.style.visibility = "visible";
        // window.tooltip.innerHTML.focus();
       })
       .on("mouseout blur", function(d) {
-        d3.select(this).style("fill", "skyblue");
+        d3.select(this).style("fill", "#92C5DE");
         window.tooltip.style.visibility = "hidden";
       });
 }
@@ -105,8 +114,8 @@ function writeBarLabels(svg, data, x, y) {
         .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
         .attr("width", x.bandwidth() / 4)
         .html(d => {
-          return `<tspan class="bold" dx="0em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
-          <tspan dx="-1em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
+          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+          <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
         })
         .attr('text-anchor','middle')
     }
@@ -145,8 +154,8 @@ function rewriteBarLabels(svg, data, x, y) {
     .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
     .attr("width", x.bandwidth() / 4)
     .html(d => {
-      return `<tspan class="bold" dx="0em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
-      <tspan dx="-1em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
+      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+      <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
     })
     .attr('text-anchor','middle')
 

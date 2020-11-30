@@ -74,7 +74,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.tooltip = d3
       .select("cagov-chart-re-pop")
       .append("div")
-      .attr("class", "equity-tooltip equity-tooltip--re100k")
+      .attr("class", "chart-tooltip chart-tooltip--re100k")
       .text("an empty tooltip");
 
     this.subgroups1 = ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"]

@@ -1,89 +1,133 @@
-cagov-chart-d3-bar {
-  display: block;
-  margin: auto;
-  width: 90%;
-
-  .label,
-  .bold {
-    font-weight: bold;
-  }
-  .label {
-    font-weight: normal;
-  }
-  .chart-tooltip {
-    padding: 10px;
-    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
-    border: solid 1px #ccc;
-  }
-  .highlight-data {
-    font-weight: bold;
-  }
-  .tick text {
-    font-size: 1rem;
-  }
-  .svg-holder {
-    position: relative;
-    max-width: 720px;
-    margin: 30px auto;
-  }
-  .grid-layout-hd.toggle-links {
-    max-width: none;
-  }
-
-  .inline-toggle-link-container {
-    text-align: center;
-  }
-  .toggle-links a {
-    display: inline-block;
-    margin: 0 1px 0 0;
-    min-width: 220px;
-  }
-  .toggle-links a:last-child {
-    margin: 0;
-  }
-  .chart-title {
-    margin: 50px auto 20px;
-    max-width: 720px;
-    border-bottom: solid 1px;
-  }
-  .bar-overlay {
-    position: absolute;
-    z-index: 10;
-    visibility: hidden;
-    background: #fff;
-    width: 250px;
-  }
-  @media (max-width: 900px) {
-    .toggle-links a {
-      width: 100%;
-    }
-  }
-}
-
-cagov-chart-d3-lines {
-  max-width: 613px;
-  .tick {
-    font-size: 0.2rem;
-  }
-  svg text {
-    font-size: 0.2rem;
-  }
-}
-
+/* Layout overrides */
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
 
-/* chart specific styles */
-cagov-chart-d3-lines .tick line {
-  stroke: #ccc; /* F2F5FC */
-  stroke-width: 0.1;
+/* Typography overrides */
+p.emphasized {
+  font-size: 1.45rem;
 }
 
+/* Button overrides */
+.grid-layout-hd.toggle-links {
+  max-width: none;
+}
 
-// LEARN MORE SECTION
-learn-more-section {
+.toggle-links a {
+  display: inline-block;
+  margin: 0 1px 0 0;
+  min-width: 220px;
+}
+.toggle-links a:last-child {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .toggle-links a {
+    width: 100%;
+  }
+}
+
+/* Link overrides */
+.bg-darkblue a,
+.bg-darkblue a:focus {
+  color: #92c5de;
+  text-decoration: underline;
+}
+
+.bg-darkblue a:hover {
+  color: #92c5de;
+  text-decoration: none;
+}
+
+.bg-darkblue a:visited {
+  color: #b797d8;
+  text-decoration: underline;
+}
+
+/* Form input overrides */
+@media (max-width: 900px) {
+  .awesomplete {
+    display: inline-block;
+  }
+  .form-inline {
+    align-items: start;
+    margin: 0 auto;
+  }
+}
+
+/* Disparity data */
+.eq-data {
+  color: $orange !important;
+  font-weight: 700 !important;
+}
+.bd-20 {
+  border: 7px solid $lightestblue;
+  border-radius: 20px !important;
+}
+.eq-cases {
+  margin-top: auto;
+}
+
+/* Chart overrides */
+// cagov-chart-d3-bar {
+// display: block;
+// margin: auto;
+// width: 90%;
+
+// .label,
+// .bold {
+//   font-weight: bold;
+// }
+// .label {
+//   font-weight: normal;
+// }
+// .chart-tooltip {
+//   padding: 10px;
+//   box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+//   border: solid 1px #ccc;
+// }
+// .highlight-data {
+//   font-weight: bold;
+// }
+// .tick text {
+//   font-size: 1rem;
+// }
+// .svg-holder {
+//   position: relative;
+//   max-width: 720px;
+//   margin: 30px auto;
+// }
+
+
+// .bar-overlay {
+//   position: absolute;
+//   z-index: 10;
+//   visibility: hidden;
+//   background: #fff;
+//   width: 250px;
+// }
+// }
+
+// cagov-chart-d3-lines {
+//   max-width: 613px;
+// }
+
+cagov-chart-d3-bar {
+  h2 {
+    margin-top: 3rem;
+  }
+  .chart-title {
+    margin: 50px auto 20px;
+    // max-width: 720px;
+    border-bottom: solid 1px;
+  }
+  
+}
+
+/* Learn more links */
+.learn-more-links {
   .faq-twitter {
     @extend %block-padding;
     width: 100%;
@@ -283,70 +327,4 @@ learn-more-section {
   .cwdsarrow {
     margin-bottom: 0 !important;
   }
-}
-
-// Special Note
-.special-note {
-  background: $lightestblue;
-  padding: 1rem 1rem 1rem 3.5rem;
-  position: relative;
-  margin: 0 auto;
-
-  p {
-    font-size: 0.95rem;
-    margin-bottom: 0 !important;
-    &::before {
-      font-family: "CaGov" !important;
-      content: "\e072";
-      position: absolute;
-      left: 15px;
-      top: 10px;
-      font-size: 2rem;
-      color: $blue;
-    }
-  }
-}
-
-
-.eq-data {
-	color: $orange !important;
-	font-weight: 700 !important;
-}
-.bd-20 {
-	border: 7px solid $lightestblue;
-    border-radius: 20px !important;
-}
-.eq-cases {
-	margin-top: auto;
-}
-
-cagov-chart-d3-bar h2 {margin-top: 3rem;}
-
-@media (max-width: 900px) {
-  .awesomplete {
-    display: inline-block;
-  }
-  .form-inline {
-    align-items: start;
-    margin: 0 auto;
-  }
-}
-
-.bg-darkblue a,
-.bg-darkblue a:focus {
-  color: #92C5DE;
-  text-decoration: underline;
-}
-
-.bg-darkblue a:hover {
-  color: #92C5DE;
-  text-decoration: none;
-}
-
-.bg-darkblue a:visited {
-  color: #B797D8;
-  text-decoration: underline;
-}
-.chart-data-label {
-  font-size: 0.95rem;
 }

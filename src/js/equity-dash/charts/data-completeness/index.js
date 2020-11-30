@@ -352,7 +352,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.tooltip = d3
       .select("cagov-chart-equity-missingness")
       .append("div")
-      .attr("class", "equity-tooltip equity-tooltip--missingness")
+      .attr("class", "chart-tooltip chart-tooltip--missingness")
       .text(this.translationsObj['empty-tooltip']);
 
     drawBars(
