@@ -1,4 +1,4 @@
-export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, statewideRatePer100k, translationsObj) {
+export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, filterString, legendString, statewideRatePer100k, translationsObj) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -164,7 +164,7 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
   svg
     .append("g")
     .append("text")
-    .text(`Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
+    .text(filterString) // `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
     .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
     .attr('text-anchor', 'middle')
@@ -186,5 +186,5 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text(`${filterScope} per 100k people`);
+    .text(legendString);
 }
