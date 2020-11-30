@@ -194,29 +194,31 @@ class CAGOVEquityREPop extends window.HTMLElement {
     }
   }
 
+  getTitle() {
+    let title = this.translationsObj[
+      "chartTitle--" + this.selectedMetric
+    ];
+    console.log('title', title, this.getLocation());
+    title.replace('placeholderForDynamicLocation', this.getLocation());
+    return title;
+  }
+
   getDescription() {
     let description = this.translationsObj[
       "chartDescription--" + this.selectedMetric
     ];
+    console.log('description', description, this.getLocation());
+    description.replace('placeholderForDynamicLocation', this.getLocation());
     return description;
   }
 
   getLegendString() {
     let relativePercentage = null;
     if (this.county === "California") {
-      relativePercentage = this.translationsObj[
-        "relative-percentage-statewide"
-      ];
-
-      this.querySelector(
-        '.chart-title span[data-replace="metric-filter"]'
-      ).innerHTML = this.getFilterText().toLowerCase();
-      // return `of ${this.selectedMetricDescription.toLowerCase()} statewide`;
+      relativePercentage = this.translationsObj["relative-percentage-statewide"];
+      return relativePercentage.replace("", this.selectedMetricDescription.toLowerCase())
     }
     return this.translationsObj["relative-percentage-county"];
-    // return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
-
-    // return this.translationsObj["relative-percentage-statewide"];
   }
 
   // Jim's changes from merge to double check
@@ -251,24 +253,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTitle() {
-    this.querySelector(".chart-title").innerHTML = this.translationsObj[
-      "tab-label"
-    ]
-      ? this.translationsObj["tab-label"]
-      : null;
-    this.querySelector(
-      '.chart-title span[data-replace="metric-filter"]'
-    ).innerHTML = this.getFilterText().toLowerCase();
-    this.querySelector(
-      '.chart-title span[data-replace="location"]'
-    ).innerHTML = this.getLocation();
+    this.querySelector(".chart-title").innerHTML = this.getTitle();
   }
 
   resetDescription() {
     this.querySelector(".chart-description").innerHTML = this.getDescription();
-    this.querySelector(
-      '.chart-description span[data-replace="location"]'
-    ).innerHTML = this.getLocation();
   }
 
   resetTooltip() {
@@ -464,6 +453,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       selectedMetric: this.selectedMetric,
       legendScope: this.getLegendString(),
       translationsObj: this.translationsObj,
+      legendScopeStatewide: '% of statewide'
     });
     drawSecondBars({
       svg: this.svg,
@@ -480,7 +470,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       selectedMetric: this.selectedMetric,
       translationsObj: this.translationsObj,
       legendScope: this.getLegendString(),
-      legendScopeState: '% of statewide'
+      legendScopeStatewide: '% of statewide'
     });
   }
 }
