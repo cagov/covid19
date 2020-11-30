@@ -31,6 +31,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.selectedMetric = 'cases';
     this.selectedMetricDescription = 'Cases';
+    this.county = 'California';
 
     this.chartTitle = function() {
       let title = this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
@@ -40,7 +41,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.description = function () {
       return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
-    this.county = 'California';
     this.legendString = function() {
       if(this.county === 'California') {
         return `of ${this.selectedMetricDescription.toLowerCase()} statewide`;
