@@ -119,6 +119,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     // Text strings
     this.translationsObj = getTranslations(this);
     this.county = this.chartOptions.state; // Initial default county
+    this.state = this.chartOptions.state;
     this.selectedMetric = this.chartOptions.selectedMetric;
     this.selectedMetricDescription = this.chartOptions.selectedMetricDescription;
     this.innerHTML = template(this.translationsObj);
@@ -190,25 +191,26 @@ class CAGOVEquityREPop extends window.HTMLElement {
     if (this.county === "California") {
       return this.state;
     } else {
-      return this.county;
+      let countyLabel = this.translationsObj[
+        "county-label"
+      ];
+      return this.county + " " + countyLabel; // @TODO this pattern probably won't translate well
     }
   }
 
   getTitle() {
     let title = this.translationsObj[
-      "chartTitle--" + this.selectedMetric
+      "chartTitle--" + this.selectedMetric.toLowerCase()
     ];
-    console.log('title', title, this.getLocation());
-    title.replace('placeholderForDynamicLocation', this.getLocation());
+    title = title.replace('placeholderForDynamicLocation', this.getLocation());
     return title;
   }
 
   getDescription() {
     let description = this.translationsObj[
-      "chartDescription--" + this.selectedMetric
+      "chartDescription--" + this.selectedMetric.toLowerCase()
     ];
-    console.log('description', description, this.getLocation());
-    description.replace('placeholderForDynamicLocation', this.getLocation());
+    description = description.replace('placeholderForDynamicLocation', this.getLocation());
     return description;
   }
 
@@ -216,9 +218,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let relativePercentage = null;
     if (this.county === "California") {
       relativePercentage = this.translationsObj["relative-percentage-statewide"];
-      return relativePercentage.replace("", this.selectedMetricDescription.toLowerCase())
+      return relativePercentage;
     }
-    return this.translationsObj["relative-percentage-county"];
+    relativePercentage = this.translationsObj["relative-percentage-county"];
+    return relativePercentage;
   }
 
   // Jim's changes from merge to double check
@@ -231,6 +234,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   //   }
   //   return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
   // }
+
   // this.legendStrings = function() {
   //   let isStatewide = this.county === 'California';
   //   let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
@@ -238,8 +242,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
   //   return [this.translationsObj[key1], this.translationsObj[key2]];
   // }
 
-  getTooltipText() {
-    this.tooltip = d3
+  setupTooltip() {
+    return d3
       .select("cagov-chart-re-pop")
       .append("div")
       .attr("class", "chart-tooltip chart-tooltip--re100k")
@@ -438,6 +442,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
       this.render();     
     }.bind(this));
 
+
+        console.log('render translationsObj', this.translationsObj);
     drawBars({
       svg: this.svg,
       x1,
@@ -449,7 +455,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       color1: this.color1,
       color2: this.color2,
       data,
-      tooltip: this.tooltip,
+      tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
       legendScope: this.getLegendString(),
       translationsObj: this.translationsObj,
@@ -466,7 +472,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       color1: this.color1,
       color2: this.color2,
       data,
-      tooltip: this.tooltip,
+      tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
       translationsObj: this.translationsObj,
       legendScope: this.getLegendString(),

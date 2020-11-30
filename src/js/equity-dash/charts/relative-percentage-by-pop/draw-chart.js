@@ -14,11 +14,12 @@ export default function drawBars({
   selectedMetric,
   translationsObj,
 }) {
+
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  //yellow  bars
+  //yellow bars
   svg
     .append("g")
     .selectAll("g")
@@ -36,8 +37,9 @@ export default function drawBars({
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
-
-    .on("mouseover", function (event, d) {
+    .attr("tab-index", "0")
+    .on("mouseover, focus", function (event, d) {
+      console.log('hi');
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
@@ -77,8 +79,9 @@ export default function drawBars({
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
     .attr("width", (d) => x2(d[1]) - x2(d[0]))
     .attr("height", "10px")
-
-    .on("mouseover", function (event, d) {
+    .attr("tab-index", "0")
+    .on("mouseover, focus", function (event, d) {
+      console.log('hi');
       d3.select(this).transition();
       tooltip.html(`<div class="chart-tooltip">
         <div >${
@@ -228,16 +231,16 @@ export default function drawBars({
     .attr("x", 20)
     .attr("y", -12)
     .attr("class", "label-legend")
-    // .style("font-family", "arial")
-    // .style("font-size", "12px")
+    .style("font-family", "arial")
+    .style("font-size", "12px")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[0]); // "% "+legendScope
   svg
     .append("text")
     .attr("x", 190)
     .attr("y", -12)
-    // .style("font-family", "arial")
-    // .style("font-size", "12px")
+    .style("font-family", "arial")
+    .style("font-size", "12px")
     .attr("class", "label-legend")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[1]);
