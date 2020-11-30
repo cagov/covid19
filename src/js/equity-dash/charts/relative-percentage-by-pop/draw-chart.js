@@ -1,5 +1,5 @@
 export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendStrings, selectedMetric, translationsObj) {
-  console.log("Legend strings",legendStrings);
+  // console.log("Legend strings",legendStrings);
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
