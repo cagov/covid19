@@ -93,6 +93,22 @@ cagov-chart-d3-lines .tick line {
     font-size: 1rem;
   }
 
+  @media (max-width: 900px) {
+    .bar-chart-label.label {
+      font-size: 0.75rem;
+    }
+    .bar-label tspan {
+      font-size: 0.75rem;
+    }
+    .bar-chart-label.label {
+      font-size: 1rem;
+    }
+    .tick text {
+      font-size: 0.7rem;
+    }
+  }
+
+
   // social
   .inline-toggle-link-container {
     text-align: center;

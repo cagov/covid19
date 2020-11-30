@@ -27,6 +27,11 @@ p.emphasized {
   .toggle-links a {
     width: 100%;
   }
+  .inline-toggle-link-container {
+    .large-tabs.toggle-links {
+      display: block !important;
+    }
+  }
 }
 
 /* Link overrides */
@@ -124,6 +129,13 @@ cagov-chart-d3-bar {
     border-bottom: solid 1px;
   }
   
+  @media (max-width: 900px) {
+    .chart-title {
+      margin: 50px 20px 20px 20px;
+    }
+  }
+
+
 }
 
 /* Learn more links */

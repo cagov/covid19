@@ -1,6 +1,7 @@
 import template from './template.js';
 import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
+import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
@@ -9,13 +10,74 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     let width = 842;
     let margin = ({top: 88, right: 0, bottom: 30, left: 10})
 
+    this.chartOptions = {
+      // Data
+      // subgroups: ["NOT_MISSING", "MISSING"],
+      // selectedMetric: "race_ethnicity",
+      // dataUrl: config.equityChartsDataLoc+"/equitydash/missingness-california.json", // Overwritten by county.
+      // state: 'California',
+      // county: 'California',
+      // displayOrder: ["tests", "cases", "deaths"],
+      // // Style
+      // backgroundFill: '#F2F5FC',
+      // chartColors: ["#92C5DE", "#FFCF44"],
+      // Breakpoints
+      desktop: {
+        width: 842,
+        height: 500,
+        margin: {
+          top: 88, right: 0, bottom: 30, left: 10
+        },
+        sparkline: {
+          width: 25,
+          height: 15
+        }
+      },
+      tablet: {
+        width: 440,
+        height: 400,
+        margin: {
+          top: 88, right: 0, bottom: 30, left: 10
+        },
+        sparkline: {
+          width: 25,
+          height: 15
+        }
+      },
+      mobile: {
+        width: 440,
+        height: 400,
+        margin: {
+          top: 88, right: 0, bottom: 30, left: 10
+        },
+        sparkline: {
+          width: 15,
+          height: 15
+        }
+      },
+    };
+
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
+    this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+
+    // Choose settings for current screen display.
+    // Display content & layout dimensions
+    const handleChartResize = () => {
+      getScreenResizeCharts(this);
+      this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
+      this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    };
+
+    window.addEventListener('resize', handleChartResize);
+
     this.translationsObj = getTranslations(this);
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
     }
 
     this.svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
+      .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
       .attr("class","equity-bar-chart");
     
     Promise.all([
@@ -37,45 +99,43 @@ class CAGOVChartD3Bar extends window.HTMLElement {
   
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
-        .range([height - margin.bottom, margin.top])
+        .range([this.chartBreakpointValues.height - this.chartBreakpointValues.margin.bottom, this.chartBreakpointValues.margin.top])
   
       let x = d3.scaleBand()
         .domain(d3.range(dataincome.length))
-        .range([margin.left, width - margin.right])
+        .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right])
         .padding(0.1)
 
-      writeBars(this.svg, dataincome, x, y, width);
-      writeBarLabels(this.svg, dataincome, x, y);
-      let xAxis = writeXAxis(dataincome, height, margin, x);
+      writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width);
+      writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
+      let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
   
       this.svg.append("g")
         .attr("class", "xaxis")
         .call(xAxis);
     
       this.svg.append("path")
-        .attr("d", d3.line()([[20, height/2], [width - 20, height/2]]))
+        .attr("d", d3.line()([[20, this.chartBreakpointValues.height/2], [this.chartBreakpointValues.width - 20, this.chartBreakpointValues.height/2]]))
         .attr("stroke", "#1F2574")
         .style("stroke-dasharray", ("5, 5"));
       
       this.svg.append("text")
         .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-        .attr("y", height / 2 - 15)
+        .attr("y", this.chartBreakpointValues.height / 2 - 15)
         .attr("x", 38)
         .attr('text-anchor','start')
         .attr('fill', '#1F2574')
         .attr('class','label bar-chart-label');
-        
 
       this.innerHTML = template(this.translationsObj);
-      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], width - 5);
-  
-      this.classList.remove('d-none')
+      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5);
+
       this.querySelector('.svg-holder').appendChild(this.svg.node());
-      window.tooltip = this.querySelector('.bar-overlay')
-  
-      this.applyListeners(this.svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare)
+      window.tooltip = this.querySelector('.bar-overlay')  
+      this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare)
+      this.classList.remove('d-none')
     }.bind(this));
-      
+
   }
 
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare) {
@@ -110,11 +170,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     function rewriteBar(dataset) {
       y = d3.scaleLinear()
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
-        .range([height - margin.bottom, margin.top])
+        .range([this.chartBreakpointValues.height - this.chartBreakpointValues.margin.bottom, this.chartBreakpointValues.margin.top])
 
       rewriteBars(svg, dataset, x, y);
-      rewriteBarLabels(svg, dataset, x, y);
-      xAxis = writeXAxis(dataset, height, margin, x);
+      rewriteBarLabels(svg, dataset, x, y, this.chartBreakpointValues.sparkline);
+      xAxis = writeXAxis(dataset, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
     }

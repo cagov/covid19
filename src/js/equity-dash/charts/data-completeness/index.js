@@ -1,7 +1,7 @@
 import template from "./template.js";
 import drawBars from "./draw.js";
-import getTranslations from '../../get-strings-list.js';
-import getScreenDisplayType from './get-window-size.js';
+import getTranslations from './../../get-strings-list.js';
+import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -65,15 +65,15 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       },
     };
 
-    getScreenDisplayType(this);
-    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     // Choose settings for current screen display.
     // Display content & layout dimensions
     const handleChartResize = () => {
-      getScreenDisplayType(this);
-      this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+      getScreenResizeCharts(this);
+      this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
       this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
     };
 
@@ -369,8 +369,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 
   render() {
-    getScreenDisplayType(this);
-    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     this.resetTitle();
