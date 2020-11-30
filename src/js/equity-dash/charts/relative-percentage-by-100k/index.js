@@ -22,6 +22,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
     this.county = 'California';
     this.chartTitle = function() {
+      console.log("Getting chart title 100k metric=",this.selectedMetric);
       return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.description = function (selectedMetricDescription) {
