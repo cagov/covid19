@@ -188,6 +188,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
+    .attr('class', 'legend-label')
     .attr("fill", "#92C5DE");
   svg
     .append("rect")
@@ -201,16 +202,14 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .append("text")
     .attr("x", 20)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
     .attr("dy", "0.35em")
+    .attr("class", "legend-label")
     .text(translations['data-reported']);
   svg
     .append("text")
     .attr("x", 135)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
     .attr("dy", "0.35em")
+    .attr("class", "legend-label")
     .text(translations['data-missing']);
 }

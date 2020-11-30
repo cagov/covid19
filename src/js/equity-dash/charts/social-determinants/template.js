@@ -1,3 +1,4 @@
+// import chartCss from './../chart.scss';
 import css from './index.scss';
 
 export default function template(translationsObj) {
@@ -9,12 +10,14 @@ export default function template(translationsObj) {
         <div class="row d-flex justify-content-md-center">
             <div class="inline-toggle-link-container">
                 <div class="toggle-links large-tabs">
-                  <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a><a href="#" class="js-toggle-group  housing">${translationsObj.chartButtonHousing}</a><a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHealthcare}</a>
+                  <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a>
+                  <a href="#" class="js-toggle-group housing">${translationsObj.chartButtonHousing}</a>
+                  <a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHealthcare}</a>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-9 col-md-9 col-sm-12 mx-auto">
+          <div class="col-lg-7 col-md-9 col-sm-12 mx-auto px-0">
               <div class="chart-title">${translationsObj.chartTitleIncome}</div>
               <div class="svg-holder">
                 <div class="bar-overlay">an empty tooltip</div>

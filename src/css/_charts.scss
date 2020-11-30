@@ -1,0 +1,154 @@
+.chart-data-label {
+  font-size: 0.95rem;
+}
+
+
+.chart {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 100%;
+
+  .chart-title {
+    max-width: 613px;
+    // from by pop
+    border-bottom: solid 1px;
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+  }
+
+  // Origin from social
+  //   .chart-title {
+  //     margin: 50px auto 20px;
+  //     max-width: 720px;
+  //     border-bottom: solid 1px;
+  //   }
+
+  .chart-title::first-letter {
+    text-transform: capitalize;
+  }
+
+  // Special Note
+  .special-note {
+    background: $lightestblue;
+    padding: 1rem 1rem 1rem 3.5rem;
+    position: relative;
+    margin: 0 auto;
+
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 0 !important;
+      &::before {
+        font-family: "CaGov" !important;
+        content: "\e072";
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        font-size: 2rem;
+        color: $blue;
+      }
+    }
+  }
+
+  .svg-holder {
+    max-width: 613px;
+  }
+  .svg-holder svg {
+    width: 100%;
+  }
+
+  .bars {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-anchor: unset;
+    // text-anchor: end;
+  }
+  .more-than-labels {
+    font-size: 0.75rem;
+  }
+  .change-from-month-labels {
+    font-size: 0.75rem;
+    text-anchor: unset; // new
+  }
+  .bar-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-anchor: unset;
+  }
+  .bar-label .tick text {
+    text-transform: capitalize;
+  }
+  .tick text {
+    font-size: 0.85rem;
+  }
+
+  .legend-label {
+    font-size: 0.85rem;
+  }
+
+  .legend text {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .bar-chart-label.label {
+      font-size: 0.75rem;
+    }
+    .bar-label tspan {
+      font-size: 0.75rem;
+    }
+    .bar-chart-label.label {
+      font-size: 0.85rem;
+    }
+    .tick text {
+      font-size: 0.7rem;
+    }
+    .legend-label {
+      font-size: 0.85rem;
+    }
+  }
+
+  // social
+  .inline-toggle-link-container {
+    text-align: center;
+  }
+
+  .label {
+    font-size: 0.95rem;
+    // font-weight: bold; equitydash
+    // font-weight: normal;
+    // font-size: 0.95rem;
+    // color: #1f2574;
+  }
+  .highlight-data {
+    font-weight: bold;
+    padding-right: 2px; // not in cagov chart
+  }
+  .chart-tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    pointer-events: none;
+
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+  }
+
+  .chart-tooltip-narrow {
+    min-width: 100px;
+  }
+
+  .chart-tooltip-wide {
+    min-width: 300px;
+  }
+
+  .bar-overlay {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+}

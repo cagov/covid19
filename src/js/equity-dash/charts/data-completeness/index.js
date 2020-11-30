@@ -1,7 +1,7 @@
 import template from "./template.js";
 import drawBars from "./draw.js";
-import getTranslations from '../../get-strings-list.js';
-import getScreenDisplayType from './get-window-size.js';
+import getTranslations from './../../get-strings-list.js';
+import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -9,7 +9,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
     this.innerHTML = template(this.translationsObj);
-    this.classList.remove('d-none');
 
     // Settings and initial values
     this.chartOptions = {
@@ -65,15 +64,15 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       },
     };
 
-    getScreenDisplayType(this);
-    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     // Choose settings for current screen display.
     // Display content & layout dimensions
     const handleChartResize = () => {
-      getScreenDisplayType(this);
-      this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+      getScreenResizeCharts(this);
+      this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
       this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
     };
 
@@ -112,6 +111,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
+    this.querySelector('.d-none').classList.remove("d-none");
   }
 
   listenForLocations() {
@@ -350,9 +350,9 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         .call((g) => g.selectAll(".domain").remove());
 
     this.tooltip = d3
-      .select("cagov-chart-equity-missingness")
+      .select("cagov-chart-equity-data-completeness")
       .append("div")
-      .attr("class", "equity-tooltip equity-tooltip--missingness")
+      .attr("class", "chart-tooltip chart-tooltip--missingness")
       .text(this.translationsObj['empty-tooltip']);
 
     drawBars(
@@ -369,8 +369,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 
   render() {
-    getScreenDisplayType(this);
-    this.screenDisplayType = window.missingness ? window.missingness.displayType : 'desktop';
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
     this.resetTitle();
@@ -391,6 +391,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 }
 window.customElements.define(
-  "cagov-chart-equity-missingness",
+  "cagov-chart-equity-data-completeness",
   CAGOVEquityMissingness
 );

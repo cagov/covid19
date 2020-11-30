@@ -1,3 +1,5 @@
+import css from './index.scss';
+
 export default function template(href, title) {
   return /*html*/`
 <article class="faq-item trigger">    

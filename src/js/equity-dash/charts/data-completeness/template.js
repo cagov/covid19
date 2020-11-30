@@ -26,5 +26,5 @@ export default function template(translationsObj) {
         </div>
       </div><!--END col-12-->
     </div><!--END CONTAINER-->
-  </div><!--END BG lightblue-->`;
+  </div>`;
 }
