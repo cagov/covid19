@@ -151,7 +151,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
           } else {
             return `<tspan class="highlight-data">${parseFloat(
               d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
-            ).toFixed(1)}%</tspan> change since previous month`;
+            ).toFixed(1)}%</tspan> ${translationsObj.chartLineDiff}`;
           }
         })
         .attr('text-anchor', 'end');
