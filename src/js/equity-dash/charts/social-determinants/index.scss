@@ -7,27 +7,13 @@ cagov-chart-d3-bar {
     max-width: 633px;
   }
   .bar-chart-label.label {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .bar-label tspan {
     font-weight: 100;
-    font-size: 1.2rem;
+    font-size: 0.85rem;
   }
   .bar-label tspan.bold {
     font-weight: bold;
-  }
-  @media (max-width: 900px) {
-    .bar-chart-label.label {
-      font-size: 0.85rem;
-    }
-    .bar-label tspan {
-      font-size: 0.85rem;
-    }
-    .bar-chart-label.label {
-      font-size: 1rem;
-    }
-    // .tick text {
-    //   font-size: 0.85rem;
-    // }
   }
 }

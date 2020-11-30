@@ -2,11 +2,6 @@
   font-size: 0.95rem;
 }
 
-/* chart specific styles */
-cagov-chart-d3-lines .tick line {
-  stroke: #ccc; /* F2F5FC */
-  stroke-width: 0.1;
-}
 
 .chart {
   position: relative;
@@ -62,12 +57,6 @@ cagov-chart-d3-lines .tick line {
     width: 100%;
   }
 
-  .svg-holder {
-    // position: relative;
-    // max-width: 720px;
-    // margin: 30px auto;
-  }
-
   .bars {
     font-weight: bold;
     font-size: 0.95rem;
@@ -90,10 +79,18 @@ cagov-chart-d3-lines .tick line {
     text-transform: capitalize;
   }
   .tick text {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 
-  @media (max-width: 900px) {
+  .legend-label {
+    font-size: 0.85rem;
+  }
+
+  .legend text {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
     .bar-chart-label.label {
       font-size: 0.75rem;
     }
@@ -101,27 +98,20 @@ cagov-chart-d3-lines .tick line {
       font-size: 0.75rem;
     }
     .bar-chart-label.label {
-      font-size: 1rem;
+      font-size: 0.85rem;
     }
     .tick text {
       font-size: 0.7rem;
     }
+    .legend-label {
+      font-size: 0.85rem;
+    }
   }
-
 
   // social
   .inline-toggle-link-container {
     text-align: center;
   }
-
-  // Way too small!
-  // .tick {
-  //   font-size: 0.2rem;
-  // }
-  
-  // svg text {
-  //   font-size: 0.2rem;
-  // }
 
   .label {
     font-size: 0.95rem;

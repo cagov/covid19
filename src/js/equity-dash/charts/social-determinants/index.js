@@ -6,9 +6,9 @@ import getScreenResizeCharts from './../../get-window-size.js';
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
-    let height = 500;
-    let width = 842;
-    let margin = ({top: 88, right: 0, bottom: 30, left: 10})
+    // let height = 500;
+    // let width = 842;
+    // let margin = ({top: 88, right: 0, bottom: 30, left: 10})
 
     this.chartOptions = {
       // Data
@@ -23,14 +23,17 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // chartColors: ["#92C5DE", "#FFCF44"],
       // Breakpoints
       desktop: {
-        width: 842,
+        width: 613,
         height: 500,
         margin: {
           top: 88, right: 0, bottom: 30, left: 10
         },
         sparkline: {
-          width: 25,
-          height: 15
+          width: 15,
+          height: 20
+        },
+        legend: {
+          y: 2
         }
       },
       tablet: {
@@ -40,8 +43,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           top: 88, right: 0, bottom: 30, left: 10
         },
         sparkline: {
-          width: 25,
-          height: 15
+          width: 15,
+          height: 20
+        },
+        legend: {
+          y: 0
         }
       },
       mobile: {
@@ -52,7 +58,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         },
         sparkline: {
           width: 15,
-          height: 15
+          height: 20
+        },
+        legend: {
+          y: 2
         }
       },
     };
@@ -128,7 +137,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .attr('class','label bar-chart-label');
 
       this.innerHTML = template(this.translationsObj);
-      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5);
+      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       window.tooltip = this.querySelector('.bar-overlay')  
