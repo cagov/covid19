@@ -113,7 +113,9 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.writeLegendColors(this.chartOptions.chartColors, this.legend);
     this.writeLegendLabels(legendLabels, this.legend);
     this.listenForLocations();
-    this.querySelector('.d-none').classList.remove("d-none");
+    if (this.querySelector('.d-none') !== null) {
+      this.querySelector('.d-none').classList.remove("d-none");
+    }
   }
 
   listenForLocations() {

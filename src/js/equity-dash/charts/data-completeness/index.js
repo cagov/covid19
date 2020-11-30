@@ -111,7 +111,9 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
-    this.querySelector('.d-none').classList.remove("d-none");
+    if (this.querySelector('.d-none') !== null) {
+      this.querySelector('.d-none').classList.remove("d-none");
+    }
   }
 
   listenForLocations() {
