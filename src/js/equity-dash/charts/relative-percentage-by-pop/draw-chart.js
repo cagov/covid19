@@ -1,5 +1,19 @@
-export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendStrings, selectedMetric, translationsObj) {
-  // console.log("Legend strings",legendStrings);
+export default function drawBars({
+  svg,
+  x1,
+  x2,
+  y,
+  yAxis,
+  stackedData1,
+  stackedData2,
+  color1,
+  color2,
+  data,
+  tooltip,
+  legendStrings,
+  selectedMetric,
+  translationsObj,
+}) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -11,19 +25,19 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .data(stackedData1)
     .enter()
     .append("g")
-    .attr("fill", d => color1(d.key))
+    .attr("fill", (d) => color1(d.key))
     .selectAll("rect")
 
     // enter a second time = loop subgroup per subgroup to add yellow bars
-    .data(d => d)
+    .data((d) => d)
     .enter()
     .append("rect")
-    .attr("x", d => x1(d[0]))
-    .attr("y", d => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
-    .attr("width", d => x1(d[1]) - x1(d[0]))
+    .attr("x", (d) => x1(d[0]))
+    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
+    .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
 
-    .on("mouseover", function(event, d) {
+    .on("mouseover", function (event, d) {
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
@@ -35,10 +49,10 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
           }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
         </div>`);
       tooltip.style("visibility", "visible");
-      tooltip.style("left",'90px');
-      tooltip.style("top",`${event.offsetY + 100}px`)
+      tooltip.style("left", "90px");
+      tooltip.style("top", `${event.offsetY + 100}px`);
     })
-    .on("mouseout", function(d) {
+    .on("mouseout", function (d) {
       d3.select(this).transition();
       //.attr("fill", d => color(d.key));
       //.style("fill", "skyblue");
@@ -52,23 +66,24 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .data(stackedData2)
     .enter()
     .append("g")
-    .attr("fill", d => color2(d.key))
+    .attr("fill", (d) => color2(d.key))
     .selectAll("rect")
 
     // enter a second time = loop subgroup per subgroup to add blue bars
-    .data(d => d)
+    .data((d) => d)
     .enter()
     .append("rect")
-    .attr("x", d => x2(d[0]))
-    .attr("y", d => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
-    .attr("width", d => x2(d[1]) - x2(d[0]))
+    .attr("x", (d) => x2(d[0]))
+    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
+    .attr("width", (d) => x2(d[1]) - x2(d[0]))
     .attr("height", "10px")
 
-    .on("mouseover", function(event, d) {
+    .on("mouseover", function (event, d) {
       d3.select(this).transition();
       tooltip.html(`<div class="chart-tooltip">
-        <div >${d.data.DEMOGRAPHIC_SET_CATEGORY +
-          " people make up"}<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
+        <div >${
+          d.data.DEMOGRAPHIC_SET_CATEGORY + " people make up"
+        }<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
 <span class="highlight-data"> ${
         d.data.METRIC_TOTAL_PERCENTAGE
           ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
@@ -76,10 +91,10 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
       }</span> of ${selectedMetric} statewide</div>
       </div>`);
       tooltip.style("visibility", "visible");
-      tooltip.style("left",'90px');
-      tooltip.style("top",`${event.offsetY + 100}px`)
+      tooltip.style("left", "90px");
+      tooltip.style("top", `${event.offsetY + 100}px`);
     })
-    .on("mouseout", function(d) {
+    .on("mouseout", function (d) {
       d3.select(this).transition();
       //.attr("fill", d => color(d.key));
       //.style("fill", "skyblue");
@@ -96,19 +111,19 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .attr("class", "bars")
     .selectAll(".bars")
     .data(data)
-    .join(enter => {
+    .join((enter) => {
       enter
         .append("text")
         .attr("class", "bars")
-        .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", d => x1(100) + 5)
+        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
+        .attr("x", (d) => x1(100) + 5)
         .attr("height", y.bandwidth())
-        .text(d =>
+        .text((d) =>
           d.METRIC_TOTAL_PERCENTAGE
             ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
             : 0 + "%"
         )
-        .attr('text-anchor', 'end');
+        .attr("text-anchor", "end");
     });
 
   //end of bar labels blue
@@ -117,19 +132,19 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .attr("class", "bars")
     .selectAll(".bars")
     .data(data)
-    .join(enter => {
+    .join((enter) => {
       enter
         .append("text")
         .attr("class", "bars")
-        .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
-        .attr("x", d => x2(100) + 5)
+        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
+        .attr("x", (d) => x2(100) + 5)
         .attr("height", y.bandwidth())
-        .text(d =>
+        .text((d) =>
           d.POPULATION_PERCENTAGE
             ? parseFloat(d.POPULATION_PERCENTAGE).toFixed(1) + "%"
             : 0 + "%"
         )
-        .attr('text-anchor', 'end');
+        .attr("text-anchor", "end");
     });
 
   //% change since previous month labels
@@ -138,15 +153,15 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .attr("class", "change-from-month-labels")
     .selectAll(".change-from-month-labels")
     .data(data)
-    .join(enter => {
+    .join((enter) => {
       enter
         .append("text")
         .attr("class", "change-from-month-labels")
-        .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 47)
-        .attr("x", d => x2(1) + 20)
+        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 47)
+        .attr("x", (d) => x2(1) + 20)
         .attr("height", y.bandwidth())
 
-        .html(d => {
+        .html((d) => {
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
             return `<tspan class="highlight-data">0%</tspan> ${translationsObj.chartLineDiff}`;
           } else {
@@ -155,7 +170,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
             ).toFixed(1)}%</tspan> ${translationsObj.chartLineDiff}`;
           }
         })
-        .attr('text-anchor', 'end');
+        .attr("text-anchor", "end");
     });
 
   //arrows
@@ -164,14 +179,17 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .attr("class", "change-from-month-labels")
     .selectAll(".change-from-month-labels")
     .data(data)
-    .join(enter => {
+    .join((enter) => {
       enter
         .append("svg")
 
-        .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 35)
-        .attr("x", d => x2(1))
-        .html(d => {
-          if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO || Math.abs(d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) < 0.05) {
+        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 35)
+        .attr("x", (d) => x2(1))
+        .html((d) => {
+          if (
+            !d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO ||
+            Math.abs(d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) < 0.05
+          ) {
             return `<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.4155 8.8403L13.0689 12.013C12.8394 12.2306 12.4721 12.2234 12.2554 11.9949C12.0388 11.7663 12.0483 11.4018 12.2807 11.1815L14.5958 8.98667L1.0023 8.9417L0.784831 8.9417C0.629791 8.93708 0.495915 8.90016 0.388909 8.7873C0.284502 8.67717 0.227827 8.53225 0.231476 8.37719C0.2349 8.22757 0.297533 8.095 0.410888 7.98753C0.563911 7.84246 0.720296 7.81444 0.823716 7.81572L1.0023 7.816L14.6338 7.79526L12.449 5.49078C12.2324 5.26226 12.2419 4.89773 12.4743 4.67745C12.7038 4.45985 13.0712 4.46706 13.2878 4.69558L16.4409 8.02148C16.6573 8.25543 16.6478 8.62 16.4155 8.8403Z" fill="#1F2574"/>
 </svg>`;
@@ -189,7 +207,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
         });
     });
 
-  //legend
+  // Legend
   svg
     .append("rect")
     .attr("x", 0)
@@ -209,16 +227,18 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .append("text")
     .attr("x", 20)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
+    .attr("class", "label-legend")
+    // .style("font-family", "arial")
+    // .style("font-size", "12px")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[0]); // "% "+legendScope
   svg
     .append("text")
     .attr("x", 190)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
+    // .style("font-family", "arial")
+    // .style("font-size", "12px")
+    .attr("class", "label-legend")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[1]);
 }
