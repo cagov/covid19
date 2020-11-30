@@ -78,7 +78,7 @@ hero-stats {
 			display: flex;
 			width: 50%;
 			min-height: auto;
-	    align-self: flex-end;
+	    align-self: center;
 		}
 		@include tablet-wide {
 			width: 60%;
