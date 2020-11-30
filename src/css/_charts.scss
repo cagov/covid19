@@ -48,7 +48,7 @@
         position: absolute;
         left: 15px;
         top: 10px;
-        font-size: 2rem;
+        font-size: 2rem; // This is in a div, not a chart
         color: $blue;
       }
     }
@@ -57,21 +57,21 @@
   /* Text labels */
 
   .more-than-labels {
-    font-size: 0.75rem;
+    font-size: 0.75em;
   }
 
   .change-from-month-labels {
-    font-size: 0.75rem;
+    font-size: 0.75em;
     text-anchor: unset; // new
   }
 
   .label {
-    font-size: 0.95rem;
+    font-size: 0.95em;
   }
 
   .bar-label {
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 0.95em;
     text-anchor: unset;
   }
   
@@ -80,17 +80,37 @@
   }
 
   .tick text {
-    font-size: 0.85rem;
+    font-size: 0.85em;
   }
 
   .legend-label {
-    font-size: 0.85rem;
+    font-size: 0.85em;
   }
 
   .legend text {
-    font-size: 0.85rem;
+    font-size: 0.85em;
   }
 
+  /* Responsive text */
+  @media (max-width: 768px) {
+    .bar-chart-label.label {
+      font-size: 0.75em;
+    }
+    .bar-label tspan {
+      font-size: 0.75em;
+    }
+    .bar-chart-label.label {
+      font-size: 0.85em;
+    }
+    .tick text {
+      font-size: 0.7em;
+    }
+    .legend-label {
+      font-size: 0.85em;
+    }
+  }
+
+  /* Layouts */
   .inline-toggle-link-container {
     text-align: center;
   }
@@ -134,24 +154,5 @@
 
   .chart-tooltip-wide {
     min-width: 300px;
-  }
-
-  /* Responsive text */
-  @media (max-width: 768px) {
-    .bar-chart-label.label {
-      font-size: 0.75rem;
-    }
-    .bar-label tspan {
-      font-size: 0.75rem;
-    }
-    .bar-chart-label.label {
-      font-size: 0.85rem;
-    }
-    .tick text {
-      font-size: 0.7rem;
-    }
-    .legend-label {
-      font-size: 0.85rem;
-    }
   }
 }

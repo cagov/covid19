@@ -198,8 +198,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .append("text")
     .attr("x", 25)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
+    .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text(legendString);
 }

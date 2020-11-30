@@ -64,6 +64,8 @@ export default function drawBars({
       d3.select(this).transition();
       //.attr("fill", d => color(d.key));
       //.style("fill", "skyblue");
+      
+      // @TODO Hover off is too quick 
       tooltip.style("visibility", "hidden");
     });
 
@@ -237,7 +239,7 @@ export default function drawBars({
     .attr("fill", "#FFCF44");
   svg
     .append("rect")
-    .attr("x", 170)
+    .attr("x", 190)
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
@@ -247,18 +249,14 @@ export default function drawBars({
     .append("text")
     .attr("x", 20)
     .attr("y", -12)
-    .attr("class", "label-legend")
-    .style("font-family", "arial")
-    .style("font-size", "12px")
+    .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[0]); // "% "+legendScope
   svg
     .append("text")
-    .attr("x", 190)
+    .attr("x", 210)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
-    .attr("class", "label-legend")
+    .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[1]);
 }

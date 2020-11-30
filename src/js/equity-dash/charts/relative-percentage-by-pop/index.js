@@ -17,7 +17,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       state: "California",
       county: "California",
       // Style
-      chartColors: ["#92C5DE", "#FFCF44"],
+      chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"], 
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -167,12 +167,13 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.color1 = d3
       .scaleOrdinal()
       .domain(this.chartOptions.subgroups1)
-      .range(this.chartOptions.chartColors);
+      .range([this.chartOptions.chartColors[0], this.chartOptions.chartColors[2]]);
 
     this.color2 = d3
       .scaleOrdinal()
       .domain(this.chartOptions.subgroups2)
-      .range(this.chartOptions.chartColors);
+      .range([this.chartOptions.chartColors[1], this.chartOptions.chartColors[2]]);
+      // .range(this.chartOptions.chartColors);
 
     this.listenForLocations();
 
