@@ -20,7 +20,7 @@ export default function template(translationsObj) {
           <div class="col-lg-7 col-md-9 col-sm-12 mx-auto px-0">
               <div class="chart-title">${translationsObj.chartTitleIncome}</div>
               <div class="svg-holder">
-                <div class="bar-overlay">an empty tooltip</div>
+              <div class="chart-tooltip">an empty tooltip</div>
               </div>
             </div>
         </div>

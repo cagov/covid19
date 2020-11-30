@@ -115,7 +115,9 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right])
         .padding(0.1)
 
-      writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width);
+      this.innerHTML = template(this.translationsObj);
+      this.tooltip = this.querySelector('.chart-tooltip')  
+      writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
   
@@ -136,11 +138,9 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .attr('fill', '#1F2574')
         .attr('class','label bar-chart-label');
 
-      this.innerHTML = template(this.translationsObj);
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
       this.querySelector('.svg-holder').appendChild(this.svg.node());
-      window.tooltip = this.querySelector('.bar-overlay')  
       this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues)
       this.classList.remove('d-none')
     }.bind(this));

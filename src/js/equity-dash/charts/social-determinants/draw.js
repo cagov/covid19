@@ -46,7 +46,7 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
 }
-function writeBars(svg, data, x, y, width) {
+function writeBars(svg, data, x, y, width, tooltip) {
   svg.append("g")
     .attr("fill", "#92C5DE")
     .attr('class','barshere')
@@ -64,29 +64,26 @@ function writeBars(svg, data, x, y, width) {
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
-        window.tooltip.style.top = "50%";
+        tooltip.style.top = "50%";
         let barIdInt = this.id.replace('barid-','');
         let svgLeft = x(barIdInt)
         let percentLeft = svgLeft / width;
         let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
         let actualLeft = parseInt(percentLeft * elWidth) - 70;
         // @TODO 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
-        window.tooltip.style.left = parseInt(actualLeft)+"px";
+        tooltip.style.left = parseInt(actualLeft)+"px";
         
         // @TODO Adapt from example from data completeness, add to translations.
-        window.tooltip.innerHTML = `<div class="chart-tooltip">
-          <div class="chart-tooltip-desc">
+        tooltip.innerHTML = `<div class="chart-tooltip-desc">
           <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> 
           cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% 
           change since previous week
-          </div>
-        </div>`;
-        window.tooltip.style.visibility = "visible";
-       // window.tooltip.innerHTML.focus();
+          </div>`;
+        tooltip.style.visibility = "visible";
       })
       .on("mouseout blur", function(d) {
         d3.select(this).style("fill", "#92C5DE");
-        window.tooltip.style.visibility = "hidden";
+        tooltip.style.visibility = "hidden";
       });
 }
 function rewriteBars(svg, data, x, y) {
