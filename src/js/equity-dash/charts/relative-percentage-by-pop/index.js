@@ -34,6 +34,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.county = 'California';
 
     this.chartTitle = function() {
+      console.log("Getting chart title pop metric=",this.selectedMetric);
       let title = this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
       return title;
     }
@@ -44,8 +45,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.legendString = function() {
       if(this.county === 'California') {
         return `of ${this.selectedMetricDescription.toLowerCase()} statewide`;
-      }
+      } 
       return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
+    }
+
+    this.legendStrings = function() {
+      return [this.legendString(), this.translationsObj['chartLegend2--'+this.selectedMetric]];
     }
     
     this.innerHTML = template(this.chartTitle(), this.description());
@@ -204,7 +209,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
         .remove()
 
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendString(), this.selectedMetric, this.translationsObj)
+    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, this.legendStrings(), this.selectedMetric, this.translationsObj)
     drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, this.legendString(), this.selectedMetric, this.translationsObj)
   }
 
