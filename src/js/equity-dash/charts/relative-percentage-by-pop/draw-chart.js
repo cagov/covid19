@@ -45,7 +45,7 @@ export default function drawBars({
     </div>`)
     
     .on("mouseover focus", function (event, d) {
-      console.log('hi');
+
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"

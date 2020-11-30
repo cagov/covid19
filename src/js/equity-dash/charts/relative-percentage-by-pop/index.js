@@ -202,7 +202,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let title = this.translationsObj[
       "chartTitle--" + this.selectedMetric.toLowerCase()
     ];
-    title = title.replace('placeholderForDynamicLocation', this.getLocation());
+    if (title !== undefined) {
+      title = title.replace('placeholderForDynamicLocation', this.getLocation());
+    }
     return title;
   }
 
