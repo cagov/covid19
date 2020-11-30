@@ -99,7 +99,6 @@ export default function drawBars({
   </div>`)
 
     .on("mouseover focus", function (event, d) {
-      console.log('hi');
       d3.select(this).transition();
       tooltip.html(`<div class="chart-tooltip">
         <div >${

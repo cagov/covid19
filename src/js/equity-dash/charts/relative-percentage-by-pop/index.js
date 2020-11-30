@@ -130,7 +130,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.dimensions = this.chartBreakpointValues.chartSectionOne;
     this.dimensionsSecond = this.chartBreakpointValues.chartSectionTwo;
 
-    console.log("this.chartBreakpointValues", this.chartBreakpointValues);
     // SVG
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
@@ -226,6 +225,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return relativePercentage;
   }
 
+  getLegendStringStatewide() {
+    let relativePercentage = this.translationsObj["relative-percentage-state-population"];
+    return relativePercentage;
+  }
+
   // Jim's changes from merge to double check
   // this.description = function () {
   //   return this.translationsObj['chartDescription--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
@@ -248,7 +252,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return d3
       .select("cagov-chart-re-pop")
       .append("div")
-      .attr("class", "chart-tooltip chart-tooltip--re100k")
+      .attr("class", "tooltip-container tooltip-container--re100k")
       .text("an empty tooltip");
   }
 
@@ -444,8 +448,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
       this.render();     
     }.bind(this));
 
-
-        console.log('render translationsObj', this.translationsObj);
     drawBars({
       svg: this.svg,
       x1,
@@ -459,26 +461,26 @@ class CAGOVEquityREPop extends window.HTMLElement {
       data,
       tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
-      legendScope: this.getLegendString(),
       translationsObj: this.translationsObj,
-      legendScopeStatewide: '% of statewide'
+      legendScope: this.getLegendString(),
+      legendScopeStatewide: this.getLegendStringStatewide(),
     });
     drawSecondBars({
-      svg: this.svg,
+      svg: this.svgSecond,
       x1,
       x2,
-      y: this.y,
-      yAxis,
-      stackedData1,
-      stackedData2,
+      y: this.ySecond,
+      yAxis: yAxisSecond,
+      stackedData1: stackedData1Second,
+      stackedData2: null,
       color1: this.color1,
       color2: this.color2,
-      data,
+      data: secondData,
       tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
       translationsObj: this.translationsObj,
       legendScope: this.getLegendString(),
-      legendScopeStatewide: '% of statewide'
+      legendScopeStatewide: this.getLegendStringStatewide(),
     });
   }
 }

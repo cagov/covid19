@@ -15,6 +15,7 @@ export default function drawSecondBars({
   legendScope,
   legendScopeStatewide
 }) {
+  
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -38,12 +39,19 @@ export default function drawSecondBars({
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
 
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+    <div>${
+      d.data.DEMOGRAPHIC_SET_CATEGORY
+    } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+    </div>`)
+
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
       tooltip.html(`<div class="chart-tooltip">
-          <div >${
+          <div>${
             d.data.DEMOGRAPHIC_SET_CATEGORY
           } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
           </div>`);
