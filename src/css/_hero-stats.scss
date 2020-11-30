@@ -95,16 +95,8 @@ hero-stats {
 		@extend %headline1;
 		margin-bottom: .5rem;
 		text-align: left;
-		color: $white;
 		font-weight: 900;
-		&:hover {
-			.hero-headline {
-				&-background {
-					background-color: $white;
-					color: $darkblue;
-				}
-			}
-		}
+		
 		&-link {
 			text-decoration: none;
 			&:focus {
