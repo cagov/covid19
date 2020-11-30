@@ -11,8 +11,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.translationsObj = this.getTranslations(this);
     // this.innerHTML = this.translationsObj; // not currently using a template.
     this.innerHTML = template(this.translationsObj);
-    this.classList.remove("d-none");
-
+    
     // Settings and initial values
     this.chartOptions = {
       // Data
@@ -114,6 +113,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.writeLegendColors(this.chartOptions.chartColors, this.legend);
     this.writeLegendLabels(legendLabels, this.legend);
     this.listenForLocations();
+    this.querySelector('.d-none').classList.remove("d-none");
   }
 
   listenForLocations() {
@@ -406,7 +406,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 200 + 0;
       })
       .attr("y", function (d, i) {
-        return 0; // i * 6;
+        return 2; // i * 6;
       })
       .attr("width", 20)
       .attr("height", 3)
@@ -428,7 +428,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 200 + 25;
       })
       .attr("y", function (d, i) {
-        return -3; // i * 6 - 2;
+        return -1; // i * 6 - 2;
       })
       .attr("text-anchor", "start")
       .attr("alignment-baseline", "hanging");

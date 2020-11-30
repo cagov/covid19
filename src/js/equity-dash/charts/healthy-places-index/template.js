@@ -1,7 +1,7 @@
 import css from './index.scss';
 
 export default function template(translationsObj) {
-  return /*html*/`<div class="py-2">
+  return /*html*/`<div class="py-2 d-none">
     <div class="container">
       <div class="col-lg-12 bg-white py-4">
         <div class="row">

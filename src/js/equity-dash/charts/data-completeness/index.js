@@ -9,7 +9,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
     this.innerHTML = template(this.translationsObj);
-    this.classList.remove('d-none');
 
     // Settings and initial values
     this.chartOptions = {
@@ -112,6 +111,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
+    this.querySelector('.d-none').classList.remove("d-none");
   }
 
   listenForLocations() {
@@ -350,7 +350,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         .call((g) => g.selectAll(".domain").remove());
 
     this.tooltip = d3
-      .select("cagov-chart-equity-missingness")
+      .select("cagov-chart-equity-data-completeness")
       .append("div")
       .attr("class", "chart-tooltip chart-tooltip--missingness")
       .text(this.translationsObj['empty-tooltip']);
@@ -391,6 +391,6 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 }
 window.customElements.define(
-  "cagov-chart-equity-missingness",
+  "cagov-chart-equity-data-completeness",
   CAGOVEquityMissingness
 );
