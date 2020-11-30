@@ -141,13 +141,13 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       window.tooltip = this.querySelector('.bar-overlay')  
-      this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare)
+      this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues)
       this.classList.remove('d-none')
     }.bind(this));
 
   }
 
-  applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare) {
+  applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     let component = this;
     toggles.forEach(tog => {
@@ -179,11 +179,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     function rewriteBar(dataset) {
       y = d3.scaleLinear()
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
-        .range([this.chartBreakpointValues.height - this.chartBreakpointValues.margin.bottom, this.chartBreakpointValues.margin.top])
+        .range([chartBreakpointValues.height - chartBreakpointValues.margin.bottom, chartBreakpointValues.margin.top])
 
       rewriteBars(svg, dataset, x, y);
-      rewriteBarLabels(svg, dataset, x, y, this.chartBreakpointValues.sparkline);
-      xAxis = writeXAxis(dataset, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
+      rewriteBarLabels(svg, dataset, x, y, chartBreakpointValues.sparkline);
+      xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
     }
