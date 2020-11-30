@@ -37,8 +37,14 @@ export default function drawBars({
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
-    .attr("tab-index", "0")
-    .on("mouseover, focus", function (event, d) {
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+    <div>${
+      d.data.DEMOGRAPHIC_SET_CATEGORY
+    } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+    </div>`)
+    
+    .on("mouseover focus", function (event, d) {
       console.log('hi');
       d3.select(this).transition();
 
@@ -79,8 +85,20 @@ export default function drawBars({
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
     .attr("width", (d) => x2(d[1]) - x2(d[0]))
     .attr("height", "10px")
-    .attr("tab-index", "0")
-    .on("mouseover, focus", function (event, d) {
+
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+    <div >${
+      d.data.DEMOGRAPHIC_SET_CATEGORY + " people make up"
+    }<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
+<span class="highlight-data"> ${
+    d.data.METRIC_TOTAL_PERCENTAGE
+      ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+      : 0
+  }</span> of ${selectedMetric} statewide</div>
+  </div>`)
+
+    .on("mouseover focus", function (event, d) {
       console.log('hi');
       d3.select(this).transition();
       tooltip.html(`<div class="chart-tooltip">

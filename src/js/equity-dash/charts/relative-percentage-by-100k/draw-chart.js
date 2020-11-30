@@ -23,9 +23,15 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .attr("y", d => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", d => x(d[1]) - x(d[0]))
     .attr("height", "10px")
-    .attr("tab-index", "0")
 
-    .on("mouseover, focus", function(event, d) {
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+    <div ><span class="highlight-data">${
+      d.data.DEMOGRAPHIC_SET_CATEGORY
+    }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> ${filterScope.toLowerCase()} for 100K people of the same race and enthnicity</div>
+  </div>`)
+
+    .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
 
       tooltip.html(`<div class="chart-tooltip">

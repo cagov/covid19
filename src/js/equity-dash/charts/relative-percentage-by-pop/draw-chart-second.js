@@ -5,12 +5,15 @@ export default function drawSecondBars({
   y,
   yAxis,
   stackedData1,
+  stackedData2,
   color1,
+  color2,
   data,
   tooltip,
-  legendScope,
   selectedMetric,
   translationsObj,
+  legendScope,
+  legendScopeStatewide
 }) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
@@ -35,7 +38,7 @@ export default function drawSecondBars({
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
 
-    .on("mouseover", function (event, d) {
+    .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
