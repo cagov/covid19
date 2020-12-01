@@ -84,9 +84,10 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         .append("text")
         .attr("class", "bars")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", d => 400)
+        .attr("x", d => 380)
         .attr("height", y.bandwidth())
         .text(d => {
+          // @TODO ADD COMMA HANDLER HERE
           return (d.METRIC_VALUE_PER_100K ? parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1) : 0)
         })
         .attr('text-anchor', 'end');

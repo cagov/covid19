@@ -2,19 +2,104 @@ import template from "./template.js";
 import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
+import getScreenResizeCharts from "./../../get-window-size.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
-    this.dimensions = {
-      height: 642,
-      width: 450,
-      margin: {
-        top: 20,
-        right: 30,
-        bottom: 20,
-        left: 10,
-      },
+
+// Settings and initial values
+this.chartOptions = {
+  // Data
+  subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
+  subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
+  dataUrl:
+    config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
+  state: "California",
+  county: "California",
+  // Style
+  chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"],
+  selectedMetric: "cases",
+  selectedMetricDescription: "Cases",
+  // Breakpoints
+  desktop: {
+    height: 642,
+    width: 450,
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 10,
+    },
+  },
+  tablet: {
+    height: 642,
+    width: 450,
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 10,
+    },
+  },
+  mobile: {
+    height: 642,
+    width: 450,
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 10,
+    },
+  },
+  retina: {
+    height: 642,
+    width: 450,
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 10,
+    },
+  },
+};
+
+    // Resizing
+    getScreenResizeCharts(this);
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+
+    // Choose settings for current screen display.
+    // Display content & layout dimensions
+    const handleChartResize = () => {
+      getScreenResizeCharts(this);
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
     };
+
+    // @TODO connect a debouncer
+    window.addEventListener("resize", handleChartResize);
+
+
+    // this.dimensions = {
+    //   height: 642,
+    //   width: 450,
+    //   margin: {
+    //     top: 20,
+    //     right: 30,
+    //     bottom: 20,
+    //     left: 10,
+    //   },
+    // };
+
+    this.dimensions = this.chartBreakpointValues;
 
     this.translationsObj = getTranslations(this);
     this.selectedMetric = "cases";
@@ -102,6 +187,87 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.listenForLocations();
     this.county = "California";
     this.resetTitle();
+  }
+
+
+  getMissingDataBox(appliedSuppressionType) {
+    console.log("this", this);
+    let type = "appliedSuppressionTotal"; // @TODO connect to logic
+
+    // let messagesByType = {
+    //   appliedSuppressionNone: null,
+    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
+    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
+    // };
+
+    // let message = messagesByType[type];
+    // if (message !== null) {
+
+    // // Break message into individual lines, split lines out by br tag
+    // let missingTextLines = message.split(
+    //   this.translationsObj["missing-data-caption-line-delimiter"]
+    // );
+
+    // let messageBox = (g) =>
+    // g
+    //   // .append("text")
+    //   .attr("class", "informative-box")
+    //   .call((g) =>
+    //     g
+    //       .append("rect")
+    //       .attr("x", 0)
+    //       .attr("y", 0)
+    //       .attr("width", this.chartBreakpointValues.width)
+    //       .attr("height", this.chartBreakpointValues.height)
+    //       .attr("fill", "white")
+    //       .attr("stroke", "none")
+    //       .attr("opacity", "0.1")
+    //   )
+    //   .call((g) =>
+    //     g
+    //       .append("rect")
+    //       .attr("class", "shadow")
+    //       .attr("x", this.chartBreakpointValues.width * 0.25)
+    //       .attr("y", this.chartBreakpointValues.height * 0.3)
+    //       .attr("width", this.chartBreakpointValues.width * 0.5)
+    //       .attr("height", this.chartBreakpointValues.height * 0.3)
+    //       .attr("fill", "white")
+    //       .attr("stroke", "currentColor")
+    //       .attr("stroke-width", "2")
+    //   )
+
+    //   .each(function (d) {
+    //     let gg = this;
+    //     missingTextLines.forEach(function (textLine, yIdx) {
+    //       d3.select(gg)
+    //         .append("text")
+    //         // .attr(
+    //         //   "transform",
+    //         //   "translate(" +
+    //         //     component.dims.width / 2 +
+    //         //     " ," +
+    //         //     (component.dims.height * 0.39 + yIdx * 5) +
+    //         //     ")"
+    //         // )
+
+    //         .attr(
+    //           "transform",
+    //           "translate(" +
+    //             613 / 2 +
+    //             " ," +
+    //             (500 * 0.39 + yIdx * 5) +
+    //             ")"
+    //         )
+    //         .style("text-anchor", "middle")
+    //         .text(textLine);
+    //     });
+    //   });
+
+    // let messageBox = ()
+    // return messageBox;
+    // return null;
+    // }
+    return null;
   }
 
   listenForLocations() {
