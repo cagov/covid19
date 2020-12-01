@@ -41,20 +41,16 @@ export default function drawSecondBars({
 
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div>${
-      d.data.DEMOGRAPHIC_SET_CATEGORY
-    } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
-    </div>`)
+    <div>unused_caption2</div>`)
 
+     // jbum: event handlers appear to be unused
     .on("mouseover focus", function (event, d) {
+      console.log("Got focus");
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
       tooltip.html(`<div class="chart-tooltip">
-          <div>${
-            d.data.DEMOGRAPHIC_SET_CATEGORY
-          } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
-          </div>`);
+          <div>unused_caption1 </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
       tooltip.style("top", `${event.offsetY + 100}px`);
