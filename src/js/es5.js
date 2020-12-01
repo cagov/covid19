@@ -1,3 +1,4 @@
+import './config/staging.js';
 import '@webcomponents/webcomponentsjs';
 import 'whatwg-fetch';
 import './polyfills/endswith.js';

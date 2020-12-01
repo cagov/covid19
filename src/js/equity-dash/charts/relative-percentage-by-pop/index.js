@@ -278,14 +278,14 @@ class CAGOVEquityREPop extends window.HTMLElement {
   //   return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
   // }
 
-  legendStrings = function() {
+  legendStrings() {
     let isStatewide = this.county === 'California';
     let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
     let key2 = 'chartLegend2' + '--'+this.selectedMetric;
     return [this.translationsObj[key1], this.translationsObj[key2]];
   }
 
-  getToolTipCaption1 = function(d, legendString) {
+  getToolTipCaption1(d, legendString) {
     let templateStr = this.translationsObj['chartToolTip1-caption'];
     let caption = templateStr
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
@@ -295,7 +295,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return caption;
   }
 
-  getToolTipCaption2 = function(d, selectedMetric) {
+  getToolTipCaption2(d, selectedMetric) {
     let templateStr = this.translationsObj['chartToolTip2-caption'];
     let caption = templateStr
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
