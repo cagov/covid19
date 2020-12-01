@@ -39,7 +39,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       tablet: {
         fontSize: 14,
         height: 214,
-        width: 613,
+        width: 440,
         margin: {
           top: 40,
           right: 0,
