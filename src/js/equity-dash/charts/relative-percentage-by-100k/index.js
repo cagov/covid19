@@ -22,12 +22,26 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
     this.county = 'California';
     this.chartTitle = function() {
-      // console.log("Getting chart title 100k metric=",this.selectedMetric);
+      console.log("Getting chart title 100k metric=",this.selectedMetric);
       return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.description = function (selectedMetricDescription) {
       return this.translationsObj['chartDescription--'+this.selectedMetric];
     }
+    this.legendString = function() {
+      return this.translationsObj['chartLegend' + '--'+this.selectedMetric];
+    }
+    this.filterString = function(statewideRatePer100k) {
+      let isStatewide = this.county === 'California';
+      let key = 'chartFilterLegendPfx' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
+      let filterTxt = this.translationsObj[key] + parseFloat(statewideRatePer100k).toFixed(1);
+      // console.log("Filter key",key);
+      // console.log("Filter text",filterTxt);
+      filterTxt = filterTxt.replace('placeholderForDynamicLocation', this.county);
+      return filterTxt;
+    }
+// `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`
+
     this.innerHTML = template(this.chartTitle(), this.description(this.selectedMetricDescription));
     this.classList.remove('d-none')
 
@@ -138,9 +152,10 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(x).ticks(width / 50, "s"))
         .remove()      
-
     let statewideRatePer100k = this.combinedData[this.selectedMetric] ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K : null;
-    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, statewideRatePer100k, this.translationsObj);
+    let filterString = this.filterString(statewideRatePer100k);
+    console.log("Filter string",filterString);
+    drawBars(this, this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, filterString, this.legendString(), statewideRatePer100k, this.translationsObj);
   }
 
   retrieveData(url, statewideUrl) {
