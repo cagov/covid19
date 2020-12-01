@@ -12,6 +12,10 @@
   margin: auto;
   width: 100%;
 
+  &.d-none {
+    display: none;
+  }
+
   .svg-holder {
     max-width: 613px;
   }
