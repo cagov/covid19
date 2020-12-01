@@ -395,7 +395,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   checkAppliedDataSuppression(data) {
-    console.log(data);
+    // console.log(data);
     let suppressionAllocations = {
       None: 0,
       Total: 0,
@@ -410,7 +410,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     if (suppressionAllocations["Population"] === data.length) {
     }
 
-    console.log("suppressionAllocations", suppressionAllocations);
+    // console.log("suppressionAllocations", suppressionAllocations);
     // APPLIED_SUPPRESSION: "None"
     // COUNTY: "California"
     // DEMOGRAPHIC_SET: "race_ethnicity"
@@ -459,7 +459,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   getMissingDataBox(appliedSuppressionType) {
-    console.log("this", this);
+    // console.log("this", this);
     let type = "appliedSuppressionTotal"; // @TODO connect to logic
 
     // let messagesByType = {
