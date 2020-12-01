@@ -1,5 +1,5 @@
 import template from './template.js';
-import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels} from './draw.js';
+import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 
@@ -142,26 +142,32 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.svg.append("g")
         .attr("class", "xaxis")
         .call(xAxis);
-    
-      let yDottedLinePos = y(dataincome[0].STATE_CASE_RATE_PER_100K); // this.chartBreakpointValues.height/2
-      let yXAnchor = this.chartBreakpointValues.width - 18;
 
-      this.svg.append("path")
-        .attr("d", d3.line()([[20, yDottedLinePos], 
-                              [this.chartBreakpointValues.width - 20, yDottedLinePos]]))
-        .attr("stroke", "#1F2574")
-        .attr("opacity", 0.5)
-        .style("stroke-dasharray", ("5, 5"));
+      let yDValue = dataincome[0].STATE_CASE_RATE_PER_100K
+      this.yDValue = yDValue;
+
+      redrawYLine(this, y);
+
+      // let yDottedLinePos = y(yDValue); // this.chartBreakpointValues.height/2
+      // let yXAnchor = this.chartBreakpointValues.width - 18;
+
+      // this.svg.append("path")
+      //   .attr("d", d3.line()([[20, yDottedLinePos], 
+      //                         [this.chartBreakpointValues.width - 20, yDottedLinePos]]))
+      //   .attr("stroke", "#1F2574")
+      //   .attr("opacity", 0.5)
+      //   .style("stroke-dasharray", ("5, 5"))
+      //   .attr('class','label bar-chart-yline');
       
-      this.svg.append("text")
-        .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-        .attr("y", yDottedLinePos - 15)
-        // .attr("x", 38)
-        // .attr('text-anchor','start')
-        .attr("x", yXAnchor)
-        .attr('text-anchor','end')
-        .attr('fill', '#1F2574')
-        .attr('class','label bar-chart-label');
+      // this.svg.append("text")
+      //   .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
+      //   .attr("y", yDottedLinePos - 15)
+      //   // .attr("x", 38)
+      //   // .attr('text-anchor','start')
+      //   .attr("x", yXAnchor)
+      //   .attr('text-anchor','end')
+      //   .attr('fill', '#1F2574')
+      //   .attr('class','label bar-chart-label');
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -201,15 +207,15 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       tog.addEventListener('click',function(event) {
         event.preventDefault();
         if(this.classList.contains('healthcare')) {
-          rewriteBar(datahealthcare)
+          rewriteBar(component, datahealthcare)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHealthcare;
         }
         if(this.classList.contains('housing')) {
-          rewriteBar(datacrowding)
+          rewriteBar(component, datacrowding)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHousing;
         }
         if(this.classList.contains('income')) {
-          rewriteBar(dataincome)
+          rewriteBar(component, dataincome)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
         }
         resetToggles();
@@ -223,17 +229,20 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       });
     }
 
-    function rewriteBar(dataset) {
+    function rewriteBar(component, dataset) {
+      // console.log("Redraw Bar");
       y = d3.scaleLinear()
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
         .range([chartBreakpointValues.height - chartBreakpointValues.margin.bottom, chartBreakpointValues.margin.top])
 
-      rewriteBars(this, svg, dataset, x, y);
+      rewriteBars(component, svg, dataset, x, y);
       rewriteBarLabels(svg, dataset, x, y, chartBreakpointValues.sparkline);
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
+      redrawYLine(component, y);
     }
+
 
   }
 }
