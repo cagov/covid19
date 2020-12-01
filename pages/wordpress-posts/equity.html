@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources. Committed to a California [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-30T06:39:37Z"
+publishdate: "2020-12-01T16:33:06Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -265,7 +265,7 @@ addtositemap: false
   <div class="row">
     <div class="col">
       <cagov-chart-re-pop class="chart d-none">
-        <ul>
+             <ul>
           <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--tests">Testing relative to percentage of population in placeholderForDynamicLocation</li>
@@ -291,15 +291,15 @@ addtositemap: false
           <li data-label="applied-suppression-population">To protect people’s privacy, we’re not showing any data. This is because there are less than 20,000 people in this group.</li>
           <li data-label="missing-data-caption-line-delimiter"><br></li>
           <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> placeholder_LegendString
-          and <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> of California's population</li>
+          and <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> of California&#8217;s population</li>
           <li data-label="chartToolTip2-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span>
-          of California's population and <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> of
+          of California&#8217;s population and <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> of
           placeholder_SelectedMetric statewide</li>
         </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
       <cagov-chart-re-100k class="chart d-none"> 
-        <ul>
+    <ul>
           <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--tests">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
@@ -318,9 +318,74 @@ addtositemap: false
           <li data-label="chartFilterLegendPfxState--tests">Statewide tests per 100k: </li>
           <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span
             class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and
+          ethnicity.</li>
+        </ul></cagov-chart-re-100k>
+    </div>
+  </div>
+</div><cagov-county-search></cagov-county-search>
+
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+
+<!--SMALL TABS-->
+<cagov-chart-filter-buttons class="js-re-smalls">
+  <div class="d-flex justify-content-center">
+    <button class="small-tab active" data-key="cases">Cases</button>
+    <button class="small-tab" data-key="deaths">Deaths</button>
+    <button class="small-tab" data-key="tests">Testing</button>
+  </div>
+</cagov-chart-filter-buttons>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <cagov-chart-re-pop class="chart d-none">
+        <ul>
+          <li data-label="chartTitle--cases">Cases relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--deaths">Deaths relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--tests">Testing relative to percentage of population in placeholderForDynamicLocation</li>
+          <li data-label="chartDescription--cases">Compare the percentage of each race and ethnicity’s share of statewide cases to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartDescription--deaths">Compare the percentage of each race and ethnicity’s share of statewide deaths to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartDescription--tests">Compare the percentage of each race and ethnicity’s share of statewide tests to their percentage of placeholderForDynamicLocation’s population.</li>
+          <li data-label="chartLineDiff">change since previous month</li>
+          <li data-label="chartLegend1County--cases">of cases in county</li>
+          <li data-label="chartLegend1County--deaths">of deaths in county</li>
+          <li data-label="chartLegend1County--tests">of testing in county</li>
+          <li data-label="chartLegend1State--cases">of cases statewide</li>
+          <li data-label="chartLegend1State--deaths">of deaths statewide</li>
+          <li data-label="chartLegend1State--tests">of testing statewide</li>
+          <li data-label="chartLegend2--cases">of state population</li>
+          <li data-label="chartLegend2--deaths">of state population</li>
+          <li data-label="chartLegend2--tests">of state population</li>
+          <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> placeholder_LegendString
+          and <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> of California&#8217;s population</li>
+          <li data-label="chartToolTip2-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span>
+          of California&#8217;s population and <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> of
+          placeholder_SelectedMetric statewide</li>
+
+        </ul></cagov-chart-re-pop>
+    </div>
+    <div class="col">
+      <cagov-chart-re-100k class="chart d-none"> 
+<ul>
+          <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartTitle--tests">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
+          <li data-label="chartDescription--cases">Compare cases adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartDescription--deaths">Compare deaths adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartDescription--tests">Compare tests adjusted by population size across each race and ethnicity.</li>
+          <li data-label="chartLineDiff">change since previous month</li>
+          <li data-label="chartLegend--cases">Cases per 100k people</li>
+          <li data-label="chartLegend--deaths">Deaths per 100k people</li>
+          <li data-label="chartLegend--tests">Tests per 100k people</li>
+          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation cases per 100k: </li>
+          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation deaths per 100k: </li>
+          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation tests per 100k: </li>
+          <li data-label="chartFilterLegendPfxState--cases">Statewide cases per 100k: </li>
+          <li data-label="chartFilterLegendPfxState--deaths">Statewide deaths per 100k: </li>
+          <li data-label="chartFilterLegendPfxState--tests">Statewide tests per 100k: </li>
+          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and
           ethnicity</li>
-        </ul>
-      </cagov-chart-re-100k>
+        </ul></cagov-chart-re-100k>
     </div>
   </div>
 </div>
@@ -347,7 +412,7 @@ addtositemap: false
 <cagov-chart-d3-lines class="chart d-none">
   <ul>
     <div>
-      <ul>
+<ul>
         <li data-label="y-axis-label">Test positivity</li>
         <li data-label="data1-legend">Statewide positivity</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation test positivity</li>
@@ -356,8 +421,6 @@ addtositemap: false
           population<br>less than 106,000.</li>
         <li data-label="missing-data-caption-line-delimiter"><br></li>
       </ul>
-    </div>
-  </ul>
 </cagov-chart-d3-lines>
 </div>
 
@@ -434,7 +497,7 @@ addtositemap: false
 
 
 <cagov-chart-d3-bar class="chart d-none"><ul>
-    <li data-label="sectionTitle">Factors that increase risk of infection and severe illness</li>
+        <li data-label="sectionTitle">Factors that increase risk of infection and severe illness</li>
     <li data-label="sectionDescription">Californians in crowded housing or transportation, and with less access to paid leave and other worker protections have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.</li>
     <li data-label="chartTitleIncome">Case rate by median annual household income bracket</li>
     <li data-label="chartTitleHousing">Case rate by crowding housing</li>
