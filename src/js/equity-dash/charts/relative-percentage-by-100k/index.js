@@ -107,7 +107,7 @@ this.chartOptions = {
     this.county = "California";
     this.drawBars = drawBars;
     this.chartTitle = function () {
-      console.log("Getting chart title 100k metric=", this.selectedMetric);
+      // console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
         "placeholderForDynamicLocation",
         this.county

@@ -5,11 +5,11 @@ import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
+    console.log("Setting up CAGOVChartD3Bar");
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
     // let height = 500;
     // let width = 842;
     // let margin = ({top: 88, right: 0, bottom: 30, left: 10})
-
     this.chartOptions = {
       // Data
       // subgroups: ["NOT_MISSING", "MISSING"],
@@ -95,6 +95,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     window.addEventListener('resize', handleChartResize);
 
     this.translationsObj = getTranslations(this);
+
+
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
     }
@@ -102,6 +104,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     this.svg = d3.create("svg")
       .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
       .attr("class","equity-bar-chart");
+    
+
     
     Promise.all([
       window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-income.json"),
@@ -131,7 +135,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       this.innerHTML = template(this.translationsObj);
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
-      writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
+      writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
   
@@ -160,6 +164,28 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     }.bind(this));
 
   }
+
+  ariaLabel(d) {
+      // this is currently the same as the tooltip with span tags removed...
+      // placeholderCaseRate cases per 100K people. placeholderRateDiff30 change since previous week
+      // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
+      let templateStr = this.translationsObj['ariaBarLabel']
+      let label = templateStr
+                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
+                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+      return label;
+  }
+  tooltipCaption(d) {
+      // <span class="highlight-data">placeholderCaseRate</span> cases per 100K people. placeholderRateDiff30 change since previous week
+      // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
+      let templateStr = this.translationsObj['tooltipCaption']
+      let caption = templateStr
+                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
+                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+      return caption;
+  }
+
+
 
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
@@ -195,7 +221,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
         .range([chartBreakpointValues.height - chartBreakpointValues.margin.bottom, chartBreakpointValues.margin.top])
 
-      rewriteBars(svg, dataset, x, y);
+      rewriteBars(this, svg, dataset, x, y);
       rewriteBarLabels(svg, dataset, x, y, chartBreakpointValues.sparkline);
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")

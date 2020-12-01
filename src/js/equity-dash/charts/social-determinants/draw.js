@@ -46,7 +46,7 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
 }
-function writeBars(svg, data, x, y, width, tooltip) {
+function writeBars(component, svg, data, x, y, width, tooltip) {
   svg.append("g")
     .attr("fill", "#92C5DE")
     .attr('class','barshere')
@@ -60,7 +60,7 @@ function writeBars(svg, data, x, y, width, tooltip) {
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
       .attr("tabindex", "0")
-      .attr("aria-label", (d, i) => `${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week`)
+      .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
@@ -75,11 +75,7 @@ function writeBars(svg, data, x, y, width, tooltip) {
           // @TODO 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
 
             // @TODO Adapt from example from data completeness, add to translations.
-            tooltip.innerHTML = `<div class="chart-tooltip chart-tooltip-desc">
-            <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> 
-            cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% 
-            change since previous week
-            </div>`;
+            tooltip.innerHTML = `<div class="chart-tooltip chart-tooltip-desc">${component.tooltipCaption(d)}</div>`;
             tooltip.style.visibility = "visible";
         }
       })
@@ -90,14 +86,14 @@ function writeBars(svg, data, x, y, width, tooltip) {
         }
       });
 }
-function rewriteBars(svg, data, x, y) {
+function rewriteBars(component, svg, data, x, y) {
   svg.selectAll(".barshere rect")
     .data(data)
     .transition().duration(300)
     .attr("x", (d, i) => x(i))
     .attr("y", d => y(d.CASE_RATE_PER_100K))
     .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
-    .attr("aria-label", (d, i) => `${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week`)
+    .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
 }
 
 function writeBarLabels(svg, data, x, y, sparkline) {
