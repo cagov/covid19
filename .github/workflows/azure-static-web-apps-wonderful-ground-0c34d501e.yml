@@ -14,9 +14,9 @@ jobs:
         with:	
           submodules: true	
       - name: Build 11ty	
-        uses: cagov/actions-eleventy@2.1	
+        uses: cagov/actions-eleventy@3.0	
         with:	
-          args: --formats=html,njk --input ./pages --output ./docs	
+          args: build:staging && eleventy --formats=html,njk --input ./pages --output ./docs	
       - name: Build And Deploy	
         id: builddeploy	
         uses: Azure/static-web-apps-deploy@v0.0.1-preview	

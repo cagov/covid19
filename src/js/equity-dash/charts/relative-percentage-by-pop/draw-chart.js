@@ -1,4 +1,5 @@
-export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendScope, selectedMetric, translationsObj) {
+export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedData2, color1, color2, data, tooltip, legendStrings, selectedMetric, translationsObj) {
+  // console.log("Legend strings",legendStrings);
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -31,7 +32,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
           d.data.METRIC_TOTAL_PERCENTAGE
             ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
             : 0
-          }</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+          }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
         </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -151,7 +152,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
           } else {
             return `<tspan class="highlight-data">${parseFloat(
               d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
-            ).toFixed(1)}%</tspan> change since previous month`;
+            ).toFixed(1)}%</tspan> ${translationsObj.chartLineDiff}`;
           }
         })
         .attr('text-anchor', 'end');
@@ -211,7 +212,7 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("% "+legendScope);
+    .text('% ' + legendStrings[0]); // "% "+legendScope
   svg
     .append("text")
     .attr("x", 190)
@@ -219,5 +220,5 @@ export default function drawBars(svg, x1, x2, y, yAxis, stackedData1, stackedDat
     .style("font-family", "arial")
     .style("font-size", "12px")
     .attr("dy", "0.35em")
-    .text("% of state population");
+    .text('% ' + legendStrings[1]);
 }
