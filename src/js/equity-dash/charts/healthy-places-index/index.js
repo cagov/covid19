@@ -371,6 +371,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       const tooltip = new Tooltip(true);
       const tooltip2 = new Tooltip(false);
 
+      
       svg
         .on("mousemove", (event) => {
           // console.log("move: " + event.offsetX);

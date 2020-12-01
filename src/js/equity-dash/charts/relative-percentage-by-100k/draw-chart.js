@@ -41,9 +41,14 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .attr("height", "10px")
 
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >placeholder</div>
-  </div>`)
+    .attr("aria-label", (d, i) => {
+      let caption = component.toolTipCaption(
+        d.data.DEMOGRAPHIC_SET_CATEGORY, 
+        d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0,
+        filterScope.toLowerCase()
+        );
+      return `<div class="chart-tooltip"><div>${caption}</div></div>`
+    })
 
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();

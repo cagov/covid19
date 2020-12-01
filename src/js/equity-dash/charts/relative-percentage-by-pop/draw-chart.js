@@ -47,15 +47,18 @@ export default function drawBars({
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
     .attr("height", "10px")
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >placeholder</div>
-    </div>`)
+    .attr("aria-label", (d, i) => {
+      let caption = component.getToolTipCaption1(d, legendStrings[0]);
+      return `<div class="chart-tooltip">
+      <div>${caption}</div>
+      </div>`}
+    )
     
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
       let caption = component.getToolTipCaption1(d, legendStrings[0]);
-      tooltip.html(`<div class="chart-tooltip"><div >${caption}</div></div>`);
+      tooltip.html(`<div class="chart-tooltip"><div>${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
       tooltip.style("top", `${event.offsetY + 100}px`);

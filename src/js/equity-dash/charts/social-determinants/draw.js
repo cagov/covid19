@@ -64,26 +64,30 @@ function writeBars(svg, data, x, y, width, tooltip) {
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
-        tooltip.style.top = "50%";
-        let barIdInt = this.id.replace('barid-','');
-        let svgLeft = x(barIdInt)
-        let percentLeft = svgLeft / width;
-        let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
-        let actualLeft = parseInt(percentLeft * elWidth) - 70;
-        // @TODO 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
-        tooltip.style.left = parseInt(actualLeft)+"px";
-        
-        // @TODO Adapt from example from data completeness, add to translations.
-        tooltip.innerHTML = `<div class="chart-tooltip-desc">
-          <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> 
-          cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% 
-          change since previous week
-          </div>`;
-        tooltip.style.visibility = "visible";
+        if (tooltip !== null) { // @TODO Q: why is tooltip coming null
+          tooltip.style.top = "50%";
+          let barIdInt = this.id.replace('barid-','');
+          let svgLeft = x(barIdInt)
+          let percentLeft = svgLeft / width;
+          let elWidth = document.querySelector('.svg-holder .equity-bar-chart').getBoundingClientRect().width; 
+          let actualLeft = parseInt(percentLeft * elWidth) - 70;
+          tooltip.style.left = parseInt(actualLeft)+"px";
+          // @TODO 70 is quick approximation, could actually be subtract half width of tooltip - half width of bar
+
+            // @TODO Adapt from example from data completeness, add to translations.
+            tooltip.innerHTML = `<div class="chart-tooltip chart-tooltip-desc">
+            <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> 
+            cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% 
+            change since previous week
+            </div>`;
+            tooltip.style.visibility = "visible";
+        }
       })
       .on("mouseout blur", function(d) {
         d3.select(this).style("fill", "#92C5DE");
-        tooltip.style.visibility = "hidden";
+        if (tooltip !== null) { // @TODO Q: why is tooltip coming null
+          tooltip.style.visibility = "hidden";
+        }
       });
 }
 function rewriteBars(svg, data, x, y) {

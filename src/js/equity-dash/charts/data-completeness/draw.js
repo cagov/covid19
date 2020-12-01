@@ -50,7 +50,31 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("width", d => x(d[1]) - x(d[0]))
     .attr("height", "10px")
 
-    .on("mouseover", function(event, d) {
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => {
+      let percentNotMissing = d.data.NOT_MISSING
+        ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
+        : 0;
+
+      let percentMissing = d.data.MISSING
+        ? parseFloat(d.data.MISSING * 100).toFixed(1) + "%"
+        : 0;
+
+      if (d[0] == 0) {
+        return translations.chartTooltip({
+          metric: d.data.METRIC,
+          highlightData: percentNotMissing,
+          complete: true,
+        });
+      } else {
+        return translations.chartTooltip({
+          metric: d.data.METRIC,
+          highlightData: percentMissing,
+          complete: false,
+        });
+      }})
+
+    .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
       tooltip.html(() => {
         let percentNotMissing = d.data.NOT_MISSING

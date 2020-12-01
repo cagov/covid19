@@ -40,8 +40,8 @@ export default function drawSecondBars({
     .attr("height", "10px")
 
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div>unused_caption2</div>`)
+    // .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+    // <div>unused_caption2</div>`)
 
      // jbum: event handlers appear to be unused
     .on("mouseover focus", function (event, d) {
@@ -49,11 +49,12 @@ export default function drawSecondBars({
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
-      tooltip.html(`<div class="chart-tooltip">
-          <div>unused_caption1 </div>`);
-      tooltip.style("visibility", "visible");
-      tooltip.style("left", "90px");
-      tooltip.style("top", `${event.offsetY + 100}px`);
+      // @TODO Commented out so that we do not launch with incomplete code.
+      // tooltip.html(`<div class="chart-tooltip">
+      //     <div>unused_caption1 </div>`);
+      // tooltip.style("visibility", "visible");
+      // tooltip.style("left", "90px");
+      // tooltip.style("top", `${event.offsetY + 100}px`);
     })
     .on("mouseout", function (d) {
       d3.select(this).transition();

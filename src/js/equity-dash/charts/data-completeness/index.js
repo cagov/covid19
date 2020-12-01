@@ -321,7 +321,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
-        return tooltipHTML;
+        return `<div class="chart-tooltip"><div>${tooltipHTML}</div></div>`;
       }
     return translations;
   }
