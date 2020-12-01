@@ -53,6 +53,7 @@
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
     "build": "gulp build",
+    "build:staging": "cross-env NODE_ENV=staging npm run build",
     "build:css": "gulp css",
     "build:site": "gulp eleventy",
     "build:js": "gulp rollup",
