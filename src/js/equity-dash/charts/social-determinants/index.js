@@ -130,7 +130,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .padding(0.1)
 
       this.innerHTML = template(this.translationsObj);
-      this.tooltip = this.querySelector('.chart-tooltip')  
+      this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
