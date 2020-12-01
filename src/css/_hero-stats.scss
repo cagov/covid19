@@ -78,7 +78,7 @@ hero-stats {
 			display: flex;
 			width: 50%;
 			min-height: auto;
-	    align-self: flex-end;
+	    align-self: center;
 		}
 		@include tablet-wide {
 			width: 60%;
@@ -95,16 +95,8 @@ hero-stats {
 		@extend %headline1;
 		margin-bottom: .5rem;
 		text-align: left;
-		color: $white;
 		font-weight: 900;
-		&:hover {
-			.hero-headline {
-				&-background {
-					background-color: $white;
-					color: $darkblue;
-				}
-			}
-		}
+		
 		&-link {
 			text-decoration: none;
 			&:focus {
@@ -117,8 +109,8 @@ hero-stats {
 			}
 		}
 		&-background {
-			background: $lightblue;
-			color: $darkblue;
+			background: $white;
+			color: $blue;
 			padding: 0 .2em;
 	    line-height: 1.2;
 			transition: background .6s $slow-curve;
@@ -128,7 +120,8 @@ hero-stats {
 		}
 	}
 	&-subhead {
-		color: $lightblue;
+		color: $white;
+		font-weight: 700;
 	}
 	&-photo {
 		@include absolute(left 0 top 0);
@@ -431,7 +424,7 @@ hero-stats {
 			}
 		}
 		&-headline {
-			color: $darkblue;
+			color: $blue;
 			@extend %headline4;
 			line-height: 1.2;
 			margin-bottom: .25rem;
