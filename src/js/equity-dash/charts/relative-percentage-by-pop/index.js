@@ -17,7 +17,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       state: "California",
       county: "California",
       // Style
-      chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"], 
+      chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"],
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -167,13 +167,19 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.color1 = d3
       .scaleOrdinal()
       .domain(this.chartOptions.subgroups1)
-      .range([this.chartOptions.chartColors[0], this.chartOptions.chartColors[2]]);
+      .range([
+        this.chartOptions.chartColors[0],
+        this.chartOptions.chartColors[2],
+      ]);
 
     this.color2 = d3
       .scaleOrdinal()
       .domain(this.chartOptions.subgroups2)
-      .range([this.chartOptions.chartColors[1], this.chartOptions.chartColors[2]]);
-      // .range(this.chartOptions.chartColors);
+      .range([
+        this.chartOptions.chartColors[1],
+        this.chartOptions.chartColors[2],
+      ]);
+    // .range(this.chartOptions.chartColors);
 
     this.listenForLocations();
 
@@ -191,9 +197,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     if (this.county === "California") {
       return this.state;
     } else {
-      let countyLabel = this.translationsObj[
-        "county-label"
-      ];
+      let countyLabel = this.translationsObj["county-label"];
       return this.county + " " + countyLabel; // @TODO this pattern probably won't translate well
     }
   }
@@ -203,7 +207,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
       "chartTitle--" + this.selectedMetric.toLowerCase()
     ];
     if (title !== undefined) {
-      title = title.replace('placeholderForDynamicLocation', this.getLocation());
+      title = title.replace(
+        "placeholderForDynamicLocation",
+        this.getLocation()
+      );
     }
     return title;
   }
@@ -212,14 +219,19 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let description = this.translationsObj[
       "chartDescription--" + this.selectedMetric.toLowerCase()
     ];
-    description = description.replace('placeholderForDynamicLocation', this.getLocation());
+    description = description.replace(
+      "placeholderForDynamicLocation",
+      this.getLocation()
+    );
     return description;
   }
 
   getLegendString() {
     let relativePercentage = null;
     if (this.county === "California") {
-      relativePercentage = this.translationsObj["relative-percentage-statewide"];
+      relativePercentage = this.translationsObj[
+        "relative-percentage-statewide"
+      ];
       return relativePercentage;
     }
     relativePercentage = this.translationsObj["relative-percentage-county"];
@@ -227,7 +239,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   getLegendStringStatewide() {
-    let relativePercentage = this.translationsObj["relative-percentage-state-population"];
+    let relativePercentage = this.translationsObj[
+      "relative-percentage-state-population"
+    ];
     return relativePercentage;
   }
 
@@ -242,12 +256,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
   //   return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
   // }
 
-  // this.legendStrings = function() {
-  //   let isStatewide = this.county === 'California';
-  //   let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
-  //   let key2 = 'chartLegend2' + '--'+this.selectedMetric;
-  //   return [this.translationsObj[key1], this.translationsObj[key2]];
-  // }
+  legendStrings = function() {
+    let isStatewide = this.county === 'California';
+    let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
+    let key2 = 'chartLegend2' + '--'+this.selectedMetric;
+    return [this.translationsObj[key1], this.translationsObj[key2]];
+  }
 
   setupTooltip() {
     return d3
@@ -331,24 +345,22 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   checkAppliedDataSuppression(data) {
-    
     console.log(data);
     let suppressionAllocations = {
-      "None": 0,
-      "Total": 0,
-      "Population": 0
+      None: 0,
+      Total: 0,
+      Population: 0,
     };
 
     data.map((item) => {
-      suppressionAllocations[item.APPLIED_SUPPRESSION] = suppressionAllocations[item.APPLIED_SUPPRESSION] + 1
+      suppressionAllocations[item.APPLIED_SUPPRESSION] =
+        suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
     });
 
-    
     if (suppressionAllocations["Population"] === data.length) {
-
     }
-    
-    console.log('suppressionAllocations', suppressionAllocations);
+
+    console.log("suppressionAllocations", suppressionAllocations);
     // APPLIED_SUPPRESSION: "None"
     // COUNTY: "California"
     // DEMOGRAPHIC_SET: "race_ethnicity"
@@ -396,22 +408,23 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return data;
   }
 
-  getMissingDataBox() {
-    let type = 'appliedSuppressionTotal'; // @TODO connect to logic
-    
-    let messagesByType = {
-      appliedSuppressionNone: null,
-      appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
-      appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
-    };
+  getMissingDataBox(appliedSuppressionType) {
+    console.log("this", this);
+    let type = "appliedSuppressionTotal"; // @TODO connect to logic
 
-    let message = messagesByType[type];
-    if (message !== null) {
+    // let messagesByType = {
+    //   appliedSuppressionNone: null,
+    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
+    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
+    // };
 
-    // Break message into individual lines, split lines out by br tag
-    let missingTextLines = message.split(
-      this.translationsObj["missing-data-caption-line-delimiter"]
-    );
+    // let message = messagesByType[type];
+    // if (message !== null) {
+
+    // // Break message into individual lines, split lines out by br tag
+    // let missingTextLines = message.split(
+    //   this.translationsObj["missing-data-caption-line-delimiter"]
+    // );
 
     // let messageBox = (g) =>
     // g
@@ -468,10 +481,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
     //     });
     //   });
 
-      // let messageBox = ()
-      // return messageBox;
-      return null;
-    }
+    // let messageBox = ()
+    // return messageBox;
+    // return null;
+    // }
     return null;
   }
 
@@ -583,21 +596,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
       g
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(x1).ticks(width / 50, "s"))
-        .remove()
+        .remove();
     let legendStrings = this.legendStrings();
-    drawBars(this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, legendStrings, this.selectedMetric, this.translationsObj)
-    drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, legendStrings[0], this.selectedMetric, this.translationsObj)
-  }
 
-  retrieveData(url) {
-    window.fetch(url)
-    .then(response => response.json())
-    .then(function(alldata) {
-      this.alldata = alldata;
-      this.render();     
-    }.bind(this));
-
-    
+    // drawBars({this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, legendStrings, this.selectedMetric, this.translationsObj)
+    // drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, legendStrings[0], this.selectedMetric, this.translationsObj)
+    // }
 
     drawBars({
       svg: this.svg,
@@ -613,8 +617,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
       translationsObj: this.translationsObj,
-      legendScope: this.getLegendString(),
-      legendScopeStatewide: this.getLegendStringStatewide(),
+      legendStrings: legendStrings,
       messageBox,
     });
     drawSecondBars({
@@ -631,9 +634,20 @@ class CAGOVEquityREPop extends window.HTMLElement {
       tooltip: this.setupTooltip(),
       selectedMetric: this.selectedMetric,
       translationsObj: this.translationsObj,
-      legendScope: this.getLegendString(),
-      legendScopeStatewide: this.getLegendStringStatewide(),
+      legendStrings: legendStrings,
     });
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          this.alldata = alldata;
+          this.render();
+        }.bind(this)
+      );
   }
 }
 window.customElements.define("cagov-chart-re-pop", CAGOVEquityREPop);

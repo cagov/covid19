@@ -12,8 +12,8 @@ export default function drawSecondBars({
   tooltip,
   selectedMetric,
   translationsObj,
-  legendScope,
-  legendScopeStatewide
+  legendScope = ``,
+  legendScopeStatewide = ``,
 }) {
   
   svg.selectAll("g").remove();

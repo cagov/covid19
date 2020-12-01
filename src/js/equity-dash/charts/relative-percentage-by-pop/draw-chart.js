@@ -11,6 +11,7 @@ export default function drawBars({
   data,
   tooltip,
   legendStrings,
+  legendScope = ``,
   selectedMetric,
   translationsObj,
   messageBox
@@ -47,9 +48,11 @@ export default function drawBars({
     .attr("height", "10px")
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div>${
-      d.data.DEMOGRAPHIC_SET_CATEGORY
-    } people make up <span class="highlight-data"> ${d.data.METRIC_TOTAL_PERCENTAGE ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0}</span> ${legendScope} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+    <div >${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${
+      d.data.METRIC_TOTAL_PERCENTAGE
+        ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+        : 0
+      }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
     </div>`)
     
     .on("mouseover focus", function (event, d) {
@@ -259,7 +262,7 @@ export default function drawBars({
     .attr("y", -12)
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
-    .text('% ' + legendStrings[0]); // "% "+legendScope
+    .text('% ' + legendStrings[0]);
   svg
     .append("text")
     .attr("x", 210)
