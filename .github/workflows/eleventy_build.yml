@@ -16,9 +16,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         uses: cagov/actions-eleventy@3.1
-        with:	
+        with:
           build_task: build
-          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs	
+          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
