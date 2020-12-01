@@ -40,7 +40,7 @@ export default class Tooltip {
       // this.node.querySelector('text.label2').setAttribute('x','2')
     }
     this.node.setAttribute("transform", `translate(${tranX},0)`);
-    this.node.querySelector(".lineanno").setAttribute("transform", `translate(0,${tranY})`);
+    this.node.querySelector(".lineanno").setAttribute("transform", `translate(0,${tranY - 4 })`);
     this.node.querySelector('text.label1').innerHTML = `<tspan font-weight="bold">${(yVal * 100).toFixed(1)}%</tspan>`;
     // this.node.querySelector('text.label2').innerHTML = `<tspan >${this.legend}</tspan>`;
     // date alignment debugging

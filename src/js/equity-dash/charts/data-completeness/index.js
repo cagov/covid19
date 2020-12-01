@@ -39,7 +39,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       tablet: {
         fontSize: 14,
         height: 214,
-        width: 613,
+        width: 440,
         margin: {
           top: 40,
           right: 0,
@@ -53,6 +53,19 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         fontSize: 12,
         height: 600,
         width: 440,
+        margin: {
+          top: 40,
+          right: 0,
+          bottom: 20,
+          left: 0,
+        },
+        heightMultiplier: 100,
+        labelOffsets: [-52, -52, -57],
+      },
+      retina: {
+        fontSize: 12,
+        height: 600,
+        width: 320,
         margin: {
           top: 40,
           right: 0,
@@ -308,7 +321,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
-        return tooltipHTML;
+        return `<div class="chart-tooltip"><div>${tooltipHTML}</div></div>`;
       }
     return translations;
   }
@@ -354,7 +367,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.tooltip = d3
       .select("cagov-chart-equity-data-completeness")
       .append("div")
-      .attr("class", "chart-tooltip chart-tooltip--missingness")
+      .attr("class", "tooltip-container tooltip-container--missingness")
       .text(this.translationsObj['empty-tooltip']);
 
     drawBars(

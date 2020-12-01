@@ -41,7 +41,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       },
       mobile: {
         width: 440,
-        height: 355,
+        height: 600,
+        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        legendPosition: {
+          x: 150,
+          y: 18
+        }
+      },
+      retina: {
+        width: 320,
+        height: 600,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
           x: 150,
@@ -159,6 +168,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   writeChart(alldata, svg, data1Legend) {
     let component = this;
+
+    component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
     console.log("Overall Data ", data);
@@ -236,7 +247,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .append("text")
         .attr(
           "transform",
-          "translate(" + 0 + " ," + (this.chartBreakpointValues.margin.top - 1) + ")"
+          "translate(" + 0 + " ," + (this.chartBreakpointValues.margin.top - 10) + ")"
         )
         .style("text-anchor", "left")
         .text(component.textLabels.yAxisLabel)
@@ -360,6 +371,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       const tooltip = new Tooltip(true);
       const tooltip2 = new Tooltip(false);
 
+      
       svg
         .on("mousemove", (event) => {
           // console.log("move: " + event.offsetX);
@@ -405,10 +417,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .enter()
       .append("rect")
       .attr("x", function (d, i) {
-        return i * 200 + 0;
+        // return i * 200 + 0;
+        return 0;
       })
       .attr("y", function (d, i) {
-        return 2; // i * 6;
+        // return 2; // i * 6;
+        return i * 20  - 10;
       })
       .attr("width", 20)
       .attr("height", 3)
@@ -427,10 +441,12 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return d;
       })
       .attr("x", function (d, i) {
-        return i * 200 + 25;
+        // return i * 100 + 25;
+        return 25;
       })
       .attr("y", function (d, i) {
-        return -1; // i * 6 - 2;
+        // return -1; // i * 6 - 2;
+        return i * 20 - 10;
       })
       .attr("text-anchor", "start")
       .attr("alignment-baseline", "hanging");
@@ -445,7 +461,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   getTranslations() {
     let translations = getTranslations(this);
-
     return translations;
   }
 }

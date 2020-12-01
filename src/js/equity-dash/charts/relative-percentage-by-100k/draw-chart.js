@@ -1,5 +1,21 @@
-export default function drawBars(component, svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, filterString, legendString, statewideRatePer100k, translationsObj) {
-  console.log("Draw bars this.dimensions",component.dimensions);
+export default function drawBars(stackedData, data, statewideRatePer100k) {
+  // console.log("Draw bars this.dimensions",this.dimensions);
+  // using object context for most of the params
+
+  // jbum cutting down on explicit params by using component as scope
+  // otherwise we are going to end up with a zillion params for a method that really only applies to this one object
+  let component = this;
+  let svg = this.svg;
+  let x = this.x;
+  let y = this.y;
+  let yAxis = this.yAxis;
+  let color = this.color;
+  let tooltip = this.tooltip;
+  let filterScope = this.selectedMetricDescription;
+  let filterString = this.filterString(statewideRatePer100k);
+  let legendString = this.legendString();
+  let translationsObj = this.translationsObj;
+
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -24,14 +40,27 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .attr("width", d => x(d[1]) - x(d[0]))
     .attr("height", "10px")
 
-    .on("mouseover", function(event, d) {
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => {
+      let caption = component.toolTipCaption(
+        d.data.DEMOGRAPHIC_SET_CATEGORY, 
+        d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0,
+        filterScope.toLowerCase()
+        );
+      return `<div class="chart-tooltip"><div>${caption}</div></div>`
+    })
+
+    .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
 
-      tooltip.html(`<div class="chart-tooltip">
-        <div ><span class="highlight-data">${
-          d.data.DEMOGRAPHIC_SET_CATEGORY
-        }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> ${filterScope.toLowerCase()} for 100K people of the same race and enthnicity</div>
-      </div>`);
+      let caption = component.toolTipCaption(
+        d.data.DEMOGRAPHIC_SET_CATEGORY, 
+        d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0,
+        filterScope.toLowerCase()
+        );
+      // console.log("Caption",caption);
+      // <span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and ethnicity'
+      tooltip.html(`<div class="chart-tooltip"><div >${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
       tooltip.style("top",`${event.offsetY + 100}px`)
@@ -58,9 +87,10 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         .append("text")
         .attr("class", "bars")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", d => 415)
+        .attr("x", d => 380)
         .attr("height", y.bandwidth())
         .text(d => {
+          // @TODO ADD COMMA HANDLER HERE
           return (d.METRIC_VALUE_PER_100K ? parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1) : 0)
         })
         .attr('text-anchor', 'end');
@@ -103,7 +133,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         .append("text")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
         .attr("x", d => {
-          return 220;
+          return 250;
         })
         .attr("height", y.bandwidth())
         .html(
@@ -158,15 +188,16 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         [x(statewideRatePer100k), 650]
       ])
     )
-    .attr("stroke", "black")
-    .style("stroke-dasharray", "3, 3")
+    .attr("stroke", "#1F2574")
+    .attr("opacity", "0.25")
+    .style("stroke-dasharray", "5, 5")
     .style("stroke", "#1F2574");
 
   let xpos = x(statewideRatePer100k);
   let xalign = 'middle';
-  if (xpos < component.dimensions.width*.3) {
+  if (xpos < this.dimensions.width*.3) {
     xalign = 'start';
-  } else if (xpos > component.dimensions.width*.66) {
+  } else if (xpos > this.dimensions.width*.66) {
     xalign = 'end';
   }
   svg
@@ -176,7 +207,8 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
     .attr('text-anchor', xalign)
-    .attr('class', 'label');
+    .attr('fill', '#1F2574')
+    .attr('class', 'label bar-chart-label');
 
   //legend
   svg
@@ -191,8 +223,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .append("text")
     .attr("x", 25)
     .attr("y", -12)
-    .style("font-family", "arial")
-    .style("font-size", "12px")
+    .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text(legendString);
 }

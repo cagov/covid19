@@ -62,14 +62,15 @@ export default function getScreenResizeCharts() {
     let orientation = getOrientation();
 
     console.log('retina', isRetina, 'highDensity', highDensity, 'orientation', orientation);
-   
-
+  
     if (window.charts !== undefined) {
       if (windowSize.width <= 576) {
         window.charts.displayType = "mobile";
+        if (highDensity === true || isRetina === true) {
+          window.charts.displayType = "retina";
+        }
       } else if (windowSize.width > 576 && windowSize.width <= 768) {
         window.charts.displayType = "tablet";
-        return "tablet";
       } else {
         window.charts.displayType = "desktop";
       }

@@ -1,9 +1,11 @@
 /* Classes outside of charts, but intended for charts */
+
 .chart-data-label {
   font-size: 0.95rem;
 }
 
 /* Charts */
+
 .chart {
   position: relative;
   display: block;
@@ -22,8 +24,8 @@
     max-width: 613px;
     // from by pop
     border-bottom: solid 1px;
-    padding-bottom: 0.3em;
-    margin-bottom: 1em;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
   }
 
   .chart-title::first-letter {
@@ -46,7 +48,7 @@
         position: absolute;
         left: 15px;
         top: 10px;
-        font-size: 2rem;
+        font-size: 2rem; // This is in a div, not a chart
         color: $blue;
       }
     }
@@ -59,7 +61,7 @@
   }
 
   .change-from-month-labels {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     text-anchor: unset; // new
   }
 
@@ -71,6 +73,10 @@
     font-weight: bold;
     font-size: 0.95rem;
     text-anchor: unset;
+  }
+
+  .bar-chart-label.label {
+    font-weight: 100;
   }
   
   .bar-label .tick text {
@@ -89,15 +95,6 @@
     font-size: 0.85rem;
   }
 
-  .inline-toggle-link-container {
-    text-align: center;
-  }
-
-  .highlight-data {
-    font-weight: bold;
-    padding-right: 2px; // not in cagov chart
-  }
-
   .bars {
     font-weight: bold;
     font-size: 0.95rem;
@@ -105,7 +102,36 @@
     // text-anchor: end;
   }
 
-  .bar-overlay {
+  /* Responsive text */
+  @media (max-width: 768px) {
+    .bar-chart-label.label {
+      font-size: 0.75rem;
+      font-weight: 100;
+    }
+    .bar-label tspan {
+      font-size: 0.75rem;
+    }
+    .bar-chart-label.label {
+      font-size: 0.85rem;
+    }
+    .tick text {
+      font-size: 0.85rem;
+    }
+    .legend-label {
+      font-size: 0.85rem;
+    }
+    .bars {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Layouts */
+  .inline-toggle-link-container {
+    text-align: center;
+  }
+
+
+  .tooltip-container {
     position: absolute;
     z-index: 10;
     visibility: hidden;
@@ -114,15 +140,21 @@
   }
   
   .chart-tooltip {
-    position: absolute;
-    z-index: 10;
-    visibility: hidden;
-    background: #fff;
+    // position: absolute;
+    // z-index: 10;
+    // visibility: hidden;
+    // background: #fff;
     pointer-events: none;
 
     padding: 10px;
     box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
     border: solid 1px #ccc;
+    min-width: 100px;
+  }
+
+  .highlight-data {
+    font-weight: bold;
+    padding-right: 2px; // not in cagov chart
   }
 
   .chart-tooltip-narrow {
@@ -132,27 +164,4 @@
   .chart-tooltip-wide {
     min-width: 300px;
   }
-
-  /* Responsive text */
-  @media (max-width: 768px) {
-    .bar-chart-label.label {
-      font-size: 0.75rem;
-    }
-    .bar-label tspan {
-      font-size: 0.75rem;
-    }
-    .bar-chart-label.label {
-      font-size: 0.85rem;
-    }
-    .tick text {
-      font-size: 0.7rem;
-    }
-    .legend-label {
-      font-size: 0.85rem;
-    }
-  }
-}
-
-cagov-chart-d3-bar {
-
 }

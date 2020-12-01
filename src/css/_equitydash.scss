@@ -1,4 +1,4 @@
-/* Layout overrides */
+/* Layout overrides for Health Equity dashboard */
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -76,6 +76,7 @@ p.emphasized {
 }
 
 /* Learn more links */
+/* NOTE: This could live in the web component, but was in stylesheets. */
 .learn-more-links {
   .faq-twitter {
     @extend %block-padding;
