@@ -62,6 +62,19 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         heightMultiplier: 100,
         labelOffsets: [-52, -52, -57],
       },
+      retina: {
+        fontSize: 12,
+        height: 600,
+        width: 320,
+        margin: {
+          top: 40,
+          right: 0,
+          bottom: 20,
+          left: 0,
+        },
+        heightMultiplier: 100,
+        labelOffsets: [-52, -52, -57],
+      },
     };
 
     getScreenResizeCharts(this);

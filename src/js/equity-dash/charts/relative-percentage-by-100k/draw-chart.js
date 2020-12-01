@@ -65,7 +65,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         .append("text")
         .attr("class", "bars")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", d => 415)
+        .attr("x", d => 400)
         .attr("height", y.bandwidth())
         .text(d => {
           return (d.METRIC_VALUE_PER_100K ? parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1) : 0)
@@ -166,7 +166,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
       ])
     )
     .attr("stroke", "#1F2574")
-    .attr("opacity", "0.4")
+    .attr("opacity", "0.25")
     .style("stroke-dasharray", "5, 5")
     .style("stroke", "#1F2574");
 

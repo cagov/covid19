@@ -64,6 +64,20 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           y: 2
         }
       },
+      retina: {
+        width: 320,
+        height: 300,
+        margin: {
+          top: 40, right: 0, bottom: 30, left: 10
+        },
+        sparkline: {
+          width: 10,
+          height: 23
+        },
+        legend: {
+          y: 2
+        }
+      },
     };
 
     getScreenResizeCharts(this);

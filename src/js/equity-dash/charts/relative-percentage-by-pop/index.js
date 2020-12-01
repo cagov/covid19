@@ -87,6 +87,28 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
       },
+      retina: {
+        chartSectionOne: {
+          height: 700,
+          width: 320,
+          margin: {
+            top: 0,
+            right: 30,
+            bottom: 1,
+            left: 10,
+          },
+        },
+        chartSectionTwo: {
+          height: 212,
+          width: 320,
+          margin: {
+            top: 1,
+            right: 30,
+            bottom: 20,
+            left: 10,
+          },
+        },
+      },
     };
 
     // Resizing
