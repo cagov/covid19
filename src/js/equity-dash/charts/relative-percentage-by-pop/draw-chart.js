@@ -56,9 +56,7 @@ export default function drawBars({
     </div>`)
     
     .on("mouseover focus", function (event, d) {
-
       d3.select(this).transition();
-
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
       tooltip.html(`<div class="chart-tooltip">
         <div >${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${

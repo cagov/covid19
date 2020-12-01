@@ -68,9 +68,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
       mobile: {
         chartSectionOne: {
           height: 700,
-          width: 450,
+          width: 440,
           margin: {
-            top: 20,
+            top: 0,
             right: 30,
             bottom: 1,
             left: 10,
@@ -78,7 +78,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
         },
         chartSectionTwo: {
           height: 212,
-          width: 450,
+          width: 440,
           margin: {
             top: 1,
             right: 30,

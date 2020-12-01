@@ -91,6 +91,13 @@
     font-size: 0.85em;
   }
 
+  .bars {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-anchor: unset;
+    // text-anchor: end;
+  }
+
   /* Responsive text */
   @media (max-width: 768px) {
     .bar-chart-label.label {
@@ -103,9 +110,12 @@
       font-size: 0.85em;
     }
     .tick text {
-      font-size: 0.7em;
+      font-size: 0.85em;
     }
     .legend-label {
+      font-size: 0.85em;
+    }
+    .bars {
       font-size: 0.85em;
     }
   }
@@ -115,12 +125,7 @@
     text-align: center;
   }
 
-  .bars {
-    font-weight: bold;
-    font-size: 0.95rem;
-    text-anchor: unset;
-    // text-anchor: end;
-  }
+
 
   .tooltip-container {
     position: absolute;
