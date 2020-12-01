@@ -1,4 +1,5 @@
 export default function drawBars({
+  component,
   svg,
   x1,
   x2,
@@ -47,23 +48,14 @@ export default function drawBars({
     .attr("height", "10px")
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${
-      d.data.METRIC_TOTAL_PERCENTAGE
-        ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-        : 0
-      }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
+    <div >placeholder</div>
     </div>`)
     
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
-      tooltip.html(`<div class="chart-tooltip">
-        <div >${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${
-          d.data.METRIC_TOTAL_PERCENTAGE
-            ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-            : 0
-          }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population </div>
-        </div>`);
+      let caption = component.getToolTipCaption1(d, legendStrings[0]);
+      tooltip.html(`<div class="chart-tooltip"><div >${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
       tooltip.style("top", `${event.offsetY + 100}px`);
@@ -98,27 +90,13 @@ export default function drawBars({
 
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >${
-      d.data.DEMOGRAPHIC_SET_CATEGORY + " people make up"
-    }<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
-<span class="highlight-data"> ${
-    d.data.METRIC_TOTAL_PERCENTAGE
-      ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-      : 0
-  }</span> of ${selectedMetric} statewide</div>
-  </div>`)
+    <div >unused_caption1</div>`)
 
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
+      let caption2 = component.getToolTipCaption2(d, selectedMetric);
       tooltip.html(`<div class="chart-tooltip">
-        <div >${
-          d.data.DEMOGRAPHIC_SET_CATEGORY + " people make up"
-        }<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
-<span class="highlight-data"> ${
-        d.data.METRIC_TOTAL_PERCENTAGE
-          ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-          : 0
-      }</span> of ${selectedMetric} statewide</div>
+        <div >${caption2}</div>
       </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");

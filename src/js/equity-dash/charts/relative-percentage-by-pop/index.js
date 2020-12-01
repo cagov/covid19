@@ -263,6 +263,34 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return [this.translationsObj[key1], this.translationsObj[key2]];
   }
 
+  getToolTipCaption1 = function(d, legendString) {
+    let templateStr = this.translationsObj['chartToolTip1-caption'];
+    let caption = templateStr
+                    .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
+                    .replace('placeholder_METRIC_TOTAL_PERCENTAGE',d.data.METRIC_TOTAL_PERCENTAGE? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0)
+                    .replace('placeholder_LegendString',legendString)
+                    .replace('placeholder_POPULATION_PERCENTAGE',d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0);
+    return caption;
+  }
+
+  getToolTipCaption2 = function(d, selectedMetric) {
+    let templateStr = this.translationsObj['chartToolTip2-caption'];
+    let caption = templateStr
+                    .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
+                    .replace('placeholder_METRIC_TOTAL_PERCENTAGE',d.data.METRIC_TOTAL_PERCENTAGE? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0)
+                    .replace('placeholder_SelectedMetric',selectedMetric)
+                    .replace('placeholder_POPULATION_PERCENTAGE',d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0);
+    return caption;
+  }
+// placeholderDEMOGRAPHIC_SET_CATEGORY people make up<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span> of California's population and <span class="highlight-data"> placeholderMETRIC_TOTAL_PERCENTAGE</span> of placeholder_selectedMetric statewide
+// d.data.DEMOGRAPHIC_SET_CATEGORY + " people make up"
+//        }<span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population and 
+//<span class="highlight-data"> ${
+//        d.data.METRIC_TOTAL_PERCENTAGE
+//          ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+//          : 0
+//      }</span> of ${selectedMetric} statewide
+
   setupTooltip() {
     return d3
       .select("cagov-chart-re-pop")
@@ -601,9 +629,19 @@ class CAGOVEquityREPop extends window.HTMLElement {
 
     // drawBars({this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, legendStrings, this.selectedMetric, this.translationsObj)
     // drawSecondBars(this.svgSecond, x1, x2, this.ySecond, yAxisSecond, stackedData1Second, this.color1, secondData, this.tooltip, legendStrings[0], this.selectedMetric, this.translationsObj)
-    // }
 
+
+    // placeholderDEMO_CAT people make up <span class="highlight-data"> placeholderMETRIC_Percentage</span> placeholder_Legend0 and <span class="highlight-data"> placeholder_PopPct </span> of California's population
+
+    // ${d.data.DEMOGRAPHIC_SET_CATEGORY} people make up <span class="highlight-data"> ${
+    //      d.data.METRIC_TOTAL_PERCENTAGE
+    //        ? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+    //        : 0
+    //      }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population
+
+    
     drawBars({
+      component: this,
       svg: this.svg,
       x1,
       x2,

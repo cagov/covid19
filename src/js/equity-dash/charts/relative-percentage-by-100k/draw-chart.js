@@ -1,5 +1,5 @@
 export default function drawBars(stackedData, data, statewideRatePer100k) {
-  console.log("Draw bars this.dimensions",this.dimensions);
+  // console.log("Draw bars this.dimensions",this.dimensions);
   // using object context for most of the params
 
   // jbum cutting down on explicit params by using component as scope
@@ -42,9 +42,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
 
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div ><span class="highlight-data">${
-      d.data.DEMOGRAPHIC_SET_CATEGORY
-    }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> ${filterScope.toLowerCase()} for 100K people of the same race and enthnicity</div>
+    <div >placeholder</div>
   </div>`)
 
     .on("mouseover focus", function(event, d) {
