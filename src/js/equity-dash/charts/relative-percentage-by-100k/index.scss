@@ -17,9 +17,14 @@ cagov-chart-re-100k {
   //   font-size: 0.75rem;
   // }
 
-  // .change-from-month-labels {
-  //   font-size: 0.75rem;
-  // }
+  .change-from-month-labels {
+    font-size: 0.75em;
+    text-anchor: unset;
+  }
+
+  .bar-chart-label.label {
+    font-size: 0.85rem;
+  }
 
   // .bar-label {
   //   font-weight: bold;

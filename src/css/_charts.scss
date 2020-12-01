@@ -24,8 +24,8 @@
     max-width: 613px;
     // from by pop
     border-bottom: solid 1px;
-    padding-bottom: 0.3em;
-    margin-bottom: 1em;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
   }
 
   .chart-title::first-letter {
@@ -57,22 +57,26 @@
   /* Text labels */
 
   .more-than-labels {
-    font-size: 0.75em;
+    font-size: 0.75rem;
   }
 
   .change-from-month-labels {
-    font-size: 0.85em;
+    font-size: 0.85rem;
     text-anchor: unset; // new
   }
 
   .label {
-    font-size: 0.95em;
+    font-size: 0.95rem;
   }
 
   .bar-label {
     font-weight: bold;
-    font-size: 0.95em;
+    font-size: 0.95rem;
     text-anchor: unset;
+  }
+
+  .bar-chart-label.label {
+    font-weight: 100;
   }
   
   .bar-label .tick text {
@@ -80,15 +84,15 @@
   }
 
   .tick text {
-    font-size: 0.85em;
+    font-size: 0.85rem;
   }
 
   .legend-label {
-    font-size: 0.85em;
+    font-size: 0.85rem;
   }
 
   .legend text {
-    font-size: 0.85em;
+    font-size: 0.85rem;
   }
 
   .bars {
@@ -101,22 +105,23 @@
   /* Responsive text */
   @media (max-width: 768px) {
     .bar-chart-label.label {
-      font-size: 0.75em;
+      font-size: 0.75rem;
+      font-weight: 100;
     }
     .bar-label tspan {
-      font-size: 0.75em;
+      font-size: 0.75rem;
     }
     .bar-chart-label.label {
-      font-size: 0.85em;
+      font-size: 0.85rem;
     }
     .tick text {
-      font-size: 0.85em;
+      font-size: 0.85rem;
     }
     .legend-label {
-      font-size: 0.85em;
+      font-size: 0.85rem;
     }
     .bars {
-      font-size: 0.85em;
+      font-size: 0.85rem;
     }
   }
 
