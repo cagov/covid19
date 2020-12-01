@@ -20,6 +20,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.selectedMetric = "cases";
     this.selectedMetricDescription = "Cases";
     this.county = "California";
+    this.drawBars = drawBars;
     this.chartTitle = function () {
       console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
@@ -50,6 +51,15 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       );
       return filterTxt;
     };
+
+    this.toolTipCaption = function(a,b,c) {
+      let templateStr = this.translationsObj['chartToolTip-caption'];
+      let caption = templateStr
+                        .replace('placeholderDEMO_CAT', a)
+                        .replace('placeholderMETRIC_100K', b)
+                        .replace('placeholderFilterScope', c);
+      return caption;
+    }
     // `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`
 
     this.innerHTML = template(
@@ -182,44 +192,27 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       ])
       .padding([0.6]);
 
-    let yAxis = (g) =>
+    this.yAxis = (g) =>
       g
         .attr("class", "bar-label")
         .attr("transform", "translate(5," + -32 + ")")
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
-    let x = d3
+    this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
 
-    let xAxis = (g) =>
+    this.xAxis = (g) =>
       g
         .attr("transform", "translate(0," + this.dimensions.width + ")")
-        .call(d3.axisBottom(x).ticks(width / 50, "s"))
+        .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
     let statewideRatePer100k = this.combinedData[this.selectedMetric]
       ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
       : null;
-    let filterString = this.filterString(statewideRatePer100k);
-    console.log("Filter string", filterString);
-    drawBars(
-      this,
-      this.svg,
-      x,
-      this.y,
-      yAxis,
-      stackedData,
-      this.color,
-      data,
-      this.tooltip,
-      this.selectedMetricDescription,
-      filterString,
-      this.legendString(),
-      statewideRatePer100k,
-      this.translationsObj
-    );
+    this.drawBars(stackedData, data, statewideRatePer100k);
   }
 
   retrieveData(url, statewideUrl) {

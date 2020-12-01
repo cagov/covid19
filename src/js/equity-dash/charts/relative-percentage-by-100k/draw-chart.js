@@ -1,5 +1,21 @@
-export default function drawBars(component, svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, filterString, legendString, statewideRatePer100k, translationsObj) {
-  console.log("Draw bars this.dimensions",component.dimensions);
+export default function drawBars(stackedData, data, statewideRatePer100k) {
+  console.log("Draw bars this.dimensions",this.dimensions);
+  // using object context for most of the params
+
+  // jbum cutting down on explicit params by using component as scope
+  // otherwise we are going to end up with a zillion params for a method that really only applies to this one object
+  let component = this;
+  let svg = this.svg;
+  let x = this.x;
+  let y = this.y;
+  let yAxis = this.yAxis;
+  let color = this.color;
+  let tooltip = this.tooltip;
+  let filterScope = this.selectedMetricDescription;
+  let filterString = this.filterString(statewideRatePer100k);
+  let legendString = this.legendString();
+  let translationsObj = this.translationsObj;
+
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -34,11 +50,14 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
 
-      tooltip.html(`<div class="chart-tooltip">
-        <div ><span class="highlight-data">${
-          d.data.DEMOGRAPHIC_SET_CATEGORY
-        }</span> people have <span class="highlight-data">${d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0}</span> ${filterScope.toLowerCase()} for 100K people of the same race and enthnicity</div>
-      </div>`);
+      let caption = component.toolTipCaption(
+        d.data.DEMOGRAPHIC_SET_CATEGORY, 
+        d.data.METRIC_VALUE_PER_100K ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0) : 0,
+        filterScope.toLowerCase()
+        );
+      // console.log("Caption",caption);
+      // <span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and ethnicity'
+      tooltip.html(`<div class="chart-tooltip"><div >${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
       tooltip.style("top",`${event.offsetY + 100}px`)
@@ -172,9 +191,9 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
 
   let xpos = x(statewideRatePer100k);
   let xalign = 'middle';
-  if (xpos < component.dimensions.width*.3) {
+  if (xpos < this.dimensions.width*.3) {
     xalign = 'start';
-  } else if (xpos > component.dimensions.width*.66) {
+  } else if (xpos > this.dimensions.width*.66) {
     xalign = 'end';
   }
   svg

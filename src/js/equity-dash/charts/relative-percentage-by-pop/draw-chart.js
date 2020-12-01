@@ -16,7 +16,6 @@ export default function drawBars({
   translationsObj,
   messageBox
 }) {
-
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();

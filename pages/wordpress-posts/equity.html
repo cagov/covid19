@@ -290,11 +290,12 @@ addtositemap: false
           <li data-label="applied-suppression-total">To protect people’s privacy, we’re not showing any data. This is because there’s either too few cases or tests in this group.</li>
           <li data-label="applied-suppression-population">To protect people’s privacy, we’re not showing any data. This is because there are less than 20,000 people in this group.</li>
           <li data-label="missing-data-caption-line-delimiter"><br></li>
+ 
         </ul></cagov-chart-re-pop>
     </div>
     <div class="col">
       <cagov-chart-re-100k class="chart d-none"> 
-<ul>
+        <ul>
           <li data-label="chartTitle--cases">Cases rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--tests">Testing rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
@@ -311,7 +312,11 @@ addtositemap: false
           <li data-label="chartFilterLegendPfxState--cases">Statewide cases per 100k: </li>
           <li data-label="chartFilterLegendPfxState--deaths">Statewide deaths per 100k: </li>
           <li data-label="chartFilterLegendPfxState--tests">Statewide tests per 100k: </li>
-        </ul></cagov-chart-re-100k>
+          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span
+            class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and
+          ethnicity</li>
+        </ul>
+      </cagov-chart-re-100k>
     </div>
   </div>
 </div>
