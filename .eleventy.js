@@ -79,8 +79,13 @@ module.exports = function(eleventyConfig) {
       replaceContent(item,/"https:\/\/covid19.ca.gov\/img\//g,`"https://files.covid19.ca.gov/img/`);
 
         if(item.inputPath.includes(FolderName)) {
-          if(item.data.tags && item.data.tags.includes('translate')) {
+          if(item.data.layout) {
+              //for any layout pages in the translated posts folder
               const langRecordFromSlug = langData.languages.find(x=>x.filepostfix&&item.data.page.fileSlug.endsWith(x.filepostfix));
+
+              if(!item.data.tags) {
+                item.data.tags = [];
+              }
 
               if(langRecordFromSlug&&!item.data.tags.includes(langRecordFromSlug.wptag)) {
                 //Add a lang record tag if it is missing based on the file slug
