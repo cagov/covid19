@@ -1,4 +1,5 @@
-export default function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, filterString, legendString, statewideRatePer100k, translationsObj) {
+export default function drawBars(component, svg, x, y, yAxis, stackedData, color, data, tooltip, filterScope, filterString, legendString, statewideRatePer100k, translationsObj) {
+  console.log("Draw bars this.dimensions",component.dimensions);
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -161,13 +162,20 @@ export default function drawBars(svg, x, y, yAxis, stackedData, color, data, too
     .style("stroke-dasharray", "3, 3")
     .style("stroke", "#1F2574");
 
+  let xpos = x(statewideRatePer100k);
+  let xalign = 'middle';
+  if (xpos < component.dimensions.width*.3) {
+    xalign = 'start';
+  } else if (xpos > component.dimensions.width*.66) {
+    xalign = 'end';
+  }
   svg
     .append("g")
     .append("text")
     .text(filterString) // `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`)
     .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', xalign)
     .attr('class', 'label');
 
   //legend

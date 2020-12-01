@@ -22,7 +22,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.selectedMetricDescription = 'Cases';
     this.county = 'California';
     this.chartTitle = function() {
-      // console.log("Getting chart title 100k metric=",this.selectedMetric);
+      console.log("Getting chart title 100k metric=",this.selectedMetric);
       return this.translationsObj['chartTitle--'+this.selectedMetric].replace('placeholderForDynamicLocation', this.county);
     }
     this.description = function (selectedMetricDescription) {
@@ -155,7 +155,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     let statewideRatePer100k = this.combinedData[this.selectedMetric] ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K : null;
     let filterString = this.filterString(statewideRatePer100k);
     console.log("Filter string",filterString);
-    drawBars(this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, filterString, this.legendString(), statewideRatePer100k, this.translationsObj);
+    drawBars(this, this.svg, x, this.y, yAxis, stackedData, this.color, data, this.tooltip, this.selectedMetricDescription, filterString, this.legendString(), statewideRatePer100k, this.translationsObj);
   }
 
   retrieveData(url, statewideUrl) {
