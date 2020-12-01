@@ -110,7 +110,7 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         .append("text")
         .attr("y", d => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
         .attr("x", d => {
-          return 220;
+          return 250;
         })
         .attr("height", y.bandwidth())
         .html(
@@ -165,8 +165,9 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
         [x(statewideRatePer100k), 650]
       ])
     )
-    .attr("stroke", "black")
-    .style("stroke-dasharray", "3, 3")
+    .attr("stroke", "#1F2574")
+    .attr("opacity", "0.4")
+    .style("stroke-dasharray", "5, 5")
     .style("stroke", "#1F2574");
 
   let xpos = x(statewideRatePer100k);
@@ -183,7 +184,8 @@ export default function drawBars(component, svg, x, y, yAxis, stackedData, color
     .attr("x", x(statewideRatePer100k))
     .attr("y", 25)
     .attr('text-anchor', xalign)
-    .attr('class', 'label');
+    .attr('fill', '#1F2574')
+    .attr('class', 'label bar-chart-label');
 
   //legend
   svg
