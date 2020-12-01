@@ -159,6 +159,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   writeChart(alldata, svg, data1Legend) {
     let component = this;
+
+    component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
     console.log("Overall Data ", data);
