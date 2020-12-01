@@ -13,11 +13,19 @@ export default function drawBars({
   legendStrings,
   selectedMetric,
   translationsObj,
+  messageBox
 }) {
 
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
+
+  // svg.
+  //   append(messageBox);
+
+  if (messageBox !== null) {
+    svg.append("g").call(messageBox);
+  }
 
   //yellow bars
   svg

@@ -330,6 +330,151 @@ class CAGOVEquityREPop extends window.HTMLElement {
       );
   }
 
+  checkAppliedDataSuppression(data) {
+    
+    console.log(data);
+    let suppressionAllocations = {
+      "None": 0,
+      "Total": 0,
+      "Population": 0
+    };
+
+    data.map((item) => {
+      suppressionAllocations[item.APPLIED_SUPPRESSION] = suppressionAllocations[item.APPLIED_SUPPRESSION] + 1
+    });
+
+    
+    if (suppressionAllocations["Population"] === data.length) {
+
+    }
+    
+    console.log('suppressionAllocations', suppressionAllocations);
+    // APPLIED_SUPPRESSION: "None"
+    // COUNTY: "California"
+    // DEMOGRAPHIC_SET: "race_ethnicity"
+    // DEMOGRAPHIC_SET_CATEGORY: "Latino"
+    // LOWEST_VALUE: 196.440102732406
+    // METRIC: "cases"
+    // METRIC_TOTAL_DELTA: 50.257727920786
+    // METRIC_TOTAL_PERCENTAGE: 49.742272079214
+    // METRIC_TOTAL_PERCENTAGE_30_DAYS_AGO: 58.436053257361
+    // METRIC_VALUE: 95247
+    // METRIC_VALUE_30_DAYS_AGO: 50868
+    // METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO: -8.693781178147
+    // METRIC_VALUE_PER_100K: 609.58637893454
+    // METRIC_VALUE_PER_100K_30_DAYS_AGO: 325.558179508459
+    // METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO: 284.028199426081
+    // PCT_FROM_LOWEST_VALUE: 3.1031666673730505
+    // POPULATION_PERCENTAGE: 38.93641681012
+    // POPULATION_PERCENTAGE_DELTA: 61.06358318988
+    // SORT_METRIC: 1.27752567273436
+    // WORST_VALUE: 797.223716300351
+    // WORST_VALUE_DELTA: 187.63733736581105
+
+    // APPLIED_SUPPRESSION: "Population"
+    // COUNTY: "Nevada"
+    // DEMOGRAPHIC_SET: "race_ethnicity"
+    // DEMOGRAPHIC_SET_CATEGORY: "Latino"
+    // LOWEST_VALUE: 427.697810237235
+    // METRIC: "cases"
+    // METRIC_TOTAL_DELTA: 100
+    // METRIC_TOTAL_PERCENTAGE: null
+    // METRIC_TOTAL_PERCENTAGE_30_DAYS_AGO: null
+    // METRIC_VALUE: null
+    // METRIC_VALUE_30_DAYS_AGO: null
+    // METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO: null
+    // METRIC_VALUE_PER_100K: null
+    // METRIC_VALUE_PER_100K_30_DAYS_AGO: null
+    // METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO: null
+    // PCT_FROM_LOWEST_VALUE: 0
+    // POPULATION_PERCENTAGE: 12.098065039003
+    // POPULATION_PERCENTAGE_DELTA: 87.901934960997
+    // SORT_METRIC: 0
+    // WORST_VALUE: 427.697810237235
+    // WORST_VALUE_DELTA: 427.697810237235
+
+    return data;
+  }
+
+  getMissingDataBox() {
+    let type = 'appliedSuppressionTotal'; // @TODO connect to logic
+    
+    let messagesByType = {
+      appliedSuppressionNone: null,
+      appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
+      appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
+    };
+
+    let message = messagesByType[type];
+    if (message !== null) {
+
+    // Break message into individual lines, split lines out by br tag
+    let missingTextLines = message.split(
+      this.translationsObj["missing-data-caption-line-delimiter"]
+    );
+
+    // let messageBox = (g) =>
+    // g
+    //   // .append("text")
+    //   .attr("class", "informative-box")
+    //   .call((g) =>
+    //     g
+    //       .append("rect")
+    //       .attr("x", 0)
+    //       .attr("y", 0)
+    //       .attr("width", this.chartBreakpointValues.width)
+    //       .attr("height", this.chartBreakpointValues.height)
+    //       .attr("fill", "white")
+    //       .attr("stroke", "none")
+    //       .attr("opacity", "0.1")
+    //   )
+    //   .call((g) =>
+    //     g
+    //       .append("rect")
+    //       .attr("class", "shadow")
+    //       .attr("x", this.chartBreakpointValues.width * 0.25)
+    //       .attr("y", this.chartBreakpointValues.height * 0.3)
+    //       .attr("width", this.chartBreakpointValues.width * 0.5)
+    //       .attr("height", this.chartBreakpointValues.height * 0.3)
+    //       .attr("fill", "white")
+    //       .attr("stroke", "currentColor")
+    //       .attr("stroke-width", "2")
+    //   )
+
+    //   .each(function (d) {
+    //     let gg = this;
+    //     missingTextLines.forEach(function (textLine, yIdx) {
+    //       d3.select(gg)
+    //         .append("text")
+    //         // .attr(
+    //         //   "transform",
+    //         //   "translate(" +
+    //         //     component.dims.width / 2 +
+    //         //     " ," +
+    //         //     (component.dims.height * 0.39 + yIdx * 5) +
+    //         //     ")"
+    //         // )
+
+    //         .attr(
+    //           "transform",
+    //           "translate(" +
+    //             613 / 2 +
+    //             " ," +
+    //             (500 * 0.39 + yIdx * 5) +
+    //             ")"
+    //         )
+    //         .style("text-anchor", "middle")
+    //         .text(textLine);
+    //     });
+    //   });
+
+      // let messageBox = ()
+      // return messageBox;
+      return null;
+    }
+    return null;
+  }
+
   render() {
     let data = this.alldata.filter(
       (item) =>
@@ -382,6 +527,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let groups = data.map((item) => item.DEMOGRAPHIC_SET_CATEGORY); // ["Native Hawaiian and other Pacific Islander", "Latino", "American Indian", "African American", "Multi-Race", "White", "Asian American"]
     // Push second section data to end of data array.
     let groupsSecond = secondData.map((item) => item.DEMOGRAPHIC_SET_CATEGORY); // ["Other", "Unknown"]
+
+    let appliedSuppressionType = this.checkAppliedDataSuppression(data);
+    let messageBox = this.getMissingDataBox(appliedSuppressionType);
 
     let stackedData1 = d3.stack().keys(this.chartOptions.subgroups1)(data);
     let stackedData2 = d3.stack().keys(this.chartOptions.subgroups2)(data);
@@ -449,6 +597,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
       this.render();     
     }.bind(this));
 
+    
+
     drawBars({
       svg: this.svg,
       x1,
@@ -465,6 +615,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       translationsObj: this.translationsObj,
       legendScope: this.getLegendString(),
       legendScopeStatewide: this.getLegendStringStatewide(),
+      messageBox,
     });
     drawSecondBars({
       svg: this.svgSecond,
