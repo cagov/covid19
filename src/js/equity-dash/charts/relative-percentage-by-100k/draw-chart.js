@@ -200,6 +200,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
   } else if (xpos > this.dimensions.width*.66) {
     xalign = 'end';
   }
+  // console.log("Filter string",filterString,"align",xalign);
   svg
     .append("g")
     .append("text")

@@ -161,6 +161,38 @@ function rewriteBarLabels(svg, data, x, y, sparkline) {
 
 }
 
+function redrawYLine(component, y) {
+  // remove previous Y Line, if any
+  if (component.querySelector('.bar-chart-yline') !== null)
+    component.querySelector('.bar-chart-yline').remove();
+  if (component.querySelector('.bar-chart-label') !== null)
+    component.querySelector('.bar-chart-label').remove();
+
+  // add a new one
+  let yDottedLinePos = y(component.yDValue);
+  let yXAnchor = component.chartBreakpointValues.width - 18;
+  component.svg.append("path")
+    .attr("d", d3.line()([[20, yDottedLinePos], 
+                          [component.chartBreakpointValues.width - 20, yDottedLinePos]]))
+    .attr("stroke", "#1F2574")
+    .attr("opacity", 0.5)
+    .style("stroke-dasharray", ("5, 5"))
+    .attr('class','label bar-chart-yline');
+  
+  component.svg.append("text")
+    .text(`${component.translationsObj.statewideCaseRate} ${parseFloat(component.yDValue).toFixed(1)}`)
+    .attr("y", yDottedLinePos - 15)
+    // .attr("x", 38)
+    // .attr('text-anchor','start')
+    .attr("x", yXAnchor)
+    .attr('text-anchor','end')
+    .attr('fill', '#1F2574')
+    .attr('class','label bar-chart-label');
+
+}
+
+
+
 export {
   writeXAxis,
   rewriteLegend,
@@ -169,5 +201,6 @@ export {
   rewriteBars,
   writeBarLabels,
   writeSparklines,
-  rewriteBarLabels
+  rewriteBarLabels,
+  redrawYLine
 }
