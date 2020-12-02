@@ -1,8 +1,19 @@
 const langData = require('./langData.json');
 
-const getLangRecord = (tags) =>
-  langData.languages.filter(x=>x.enabled&&(tags || []).includes(x.wptag)).concat(langData.languages[0])[0];
+//The lang record is assumed from tags or filepostfix
+const getLangRecordFromData = data =>
+  langData.languages.filter(x=>
+    x.enabled
+    && 
+      (
+        (data.tags || []).includes(x.wptag)
+      ||
+        x.filepostfix&&data.page.fileSlug.endsWith(x.filepostfix)
+      )
+    )
+    .concat(langData.languages[0])[0];
 
 module.exports = {
-  language: data => getLangRecord(data.tags)
+  //This allows for pages to just refer to "language" as an object in all pages
+  language: data => getLangRecordFromData(data)
 };
