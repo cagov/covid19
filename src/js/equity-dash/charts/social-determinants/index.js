@@ -2,7 +2,7 @@ import template from './template.js';
 import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
-
+import reportGA from '../../../tracking-you';
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
     // console.log("Setting up CAGOVChartD3Bar");
@@ -198,26 +198,43 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       return caption;
   }
 
-
-
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     let component = this;
+    let tab_recs = [{nom:'healthcare',data:datahealthcare, tranHTML:component.translationsObj.chartTitleHealthcare},
+                    {nom:'housing',data:datacrowding, tranHTML:component.translationsObj.chartTitleHousing},
+                    {nom:'healthcare',data:dataincome, tranHTML:component.translationsObj.chartTitleIncome},
+                   ];
+
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
+
+        console.log("Got Social Toggle: ",this.classList);
         event.preventDefault();
-        if(this.classList.contains('healthcare')) {
+        tab_recs.forEach(tRec => {
+          // console.log("Checking ",tRec.nom,this.classList);
+          if(this.classList.contains(tRec.nom)) {
+           // console.log("Hit on ",tRec.nom);
+           const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
+            window.dispatchEvent(event);    
+            rewriteBar(component, tRec.data)
+            component.querySelector('.chart-title').innerHTML = tRec.tranHTML;
+          }
+        });
+        /* if(this.classList.contains('healthcare')) {
+          gen_tab_event('healthcare');
           rewriteBar(component, datahealthcare)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHealthcare;
         }
         if(this.classList.contains('housing')) {
+          gen_tab_event('healthcare');
           rewriteBar(component, datacrowding)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHousing;
         }
         if(this.classList.contains('income')) {
           rewriteBar(component, dataincome)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
-        }
+        } */
         resetToggles();
         tog.classList.add('toggle-active')
       })
