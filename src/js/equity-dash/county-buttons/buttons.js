@@ -23,7 +23,7 @@ class CAGovCountyButtons extends window.HTMLElement {
       if(event.target.classList.contains('js-toggle-county')) {
         let clickedCounty = event.target.textContent;
 
-        if(!event.target.classList.contains('toggle-active')) {
+        if(!event.target.classList.contains('active')) {
           let emissionEvent = new window.CustomEvent('county-selected', {
             detail: {
               county: clickedCounty,
@@ -47,15 +47,16 @@ class CAGovCountyButtons extends window.HTMLElement {
 
   }
 
+
+
+
   template(isStatewide) {
     // console.log("Template isStatewide=",isStatewide);
-    return /*html*/`<div class="row d-flex justify-content-md-center">
-      <div class="toggle-link-container js-toggle-county-container">
-        <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-          <a href="#" class="js-toggle-county county ${!isStatewide ? 'toggle-active' : ''}">${this.county}</a>
-          <a href="#" class="js-toggle-county statewide ${isStatewide ? 'toggle-active' : ''}">${this.resetText}</a>
+    return /*html*/`<div class="d-flex justify-content-center my-3">
+    <div class="text-center large-tabs">
+          <button class="large-tab js-toggle-county county ${!isStatewide ? 'active' : ''}">${this.county}</button>
+          <button class="large-tab js-toggle-county statewide ${isStatewide ? 'active' : ''}">${this.resetText}</button>
         </div>
-      </div>
     </div>`
   }
 }
