@@ -389,18 +389,30 @@ h6,
   font-weight: 700;
 }
 h1 {
+  font-size: 2.3rem;
   padding-bottom: 0.25rem;
+  color: #1f2574;
 }
+.h1 {font-size: 2.3rem; color: #1f2574;}
 
 h2 {
+  font-size: 2rem;
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
 }
+.h2 {font-size: 2rem;}
 
 h3 {
+  font-size: 1.5rem;
   padding-bottom: 1rem;
   padding-top: 0.75rem;
+  font-family: "Roboto", sans-serif !important;
 }
+.h3 {font-size: 1.5rem; font-family: "Roboto", sans-serif !important;}
+
+h4, .h4 {font-size: 1.4rem; font-family: "Roboto", sans-serif !important;}
+
+h5, .h5 {font-size: 0.8rem; }
 
 /* General */
 
@@ -587,7 +599,7 @@ a:hover,
 }
 
 :focus {
-  outline: 2px solid #004abc;
+  outline: 2px solid $yellow;
 }
 
 /* Action Link */
@@ -924,8 +936,8 @@ a.navbar-brand:visited {
   border: 0;
   border-left: 4px solid #ffc107;
   border-radius: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 
 .alert-info,
@@ -1080,7 +1092,6 @@ a.navbar-brand:visited {
 .jumbotron-reverse h1 {
     color: #000;
 }
-
 .jumbotron-reverse {
     background: #fff;
 }
@@ -1265,7 +1276,7 @@ li.list-group-item.alpha-footer {
 }
 
 .list-group-item-action:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
   box-shadow: 0 0 0 0.2rem #fff;
 }
 
@@ -1366,7 +1377,7 @@ li.list-group-item.unstyled.no-border {
 }
 
 li .action-link:focus-within {
-  outline: 2px solid #004abc;
+  outline: 2px solid $yellow;
 }
 
 .bg-light {
@@ -1785,12 +1796,6 @@ pre {
   font-size: 1em;
 }
 
-a {
-	background-color: transparent;
-}
-a:focus {
-	outline: none;
-}
 
 abbr[title] {
   border-bottom: none;
@@ -1864,7 +1869,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 2px solid $yellow;
 }
 
 fieldset {

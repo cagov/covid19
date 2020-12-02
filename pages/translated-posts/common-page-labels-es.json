@@ -37,6 +37,10 @@
       "text": "Menú"
     },
     {
+      "_id": "menu_close",
+      "text": "Cerrado"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "¿Qué está buscando?"
     },
@@ -95,6 +99,10 @@
   ],
   "Table2": [
     {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
+    {
       "Name": "Departamento de Salud Pública",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
     },
@@ -121,7 +129,7 @@
   ],
   "Table3": [
     {
-      "Name": "Preguntas y respuestas sobre permanecer en casa",
+      "Name": "Sobre las restricciones de la COVID-19",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
@@ -143,12 +151,23 @@
   ],
   "Table4": [
     {
-      "TEST": "PRUEBA",
-      "VALUE": "VALOR"
+      "Link Title": "¿Cuál es la guía para abrir mi negocio de manera segura?",
+      "URL": "#"
     },
     {
-      "TEST": "¿Por qué no es esto?",
-      "VALUE": "Está siendo traducido"
+      "Link Title": "¿Dónde puedo encontrar ayuda para mi negocio?",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "Gracias",
+      "Description": "Gracias por hacer todo lo posible para detener la propagación de la COVID-19 en esta temporada festiva.",
+      "VideoURL": "youtu.be/8S5iiKx5dhc",
+      "VideoID": "8S5iiKx5dhc",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
+      "ImageALT": "Gracias",
+      "ButtonText": "Vea el video"
     }
   ]
 }
