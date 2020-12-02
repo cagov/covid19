@@ -3,65 +3,68 @@ import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
+import getDisproportionateRatioSortValue from './../../get-disproportionality-ratio-sort-value.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
-
-// Settings and initial values
-this.chartOptions = {
-  // Data
-  subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
-  subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
-  dataUrl:
-    config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
-  state: "California",
-  county: "California",
-  // Style
-  chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"],
-  selectedMetric: "cases",
-  selectedMetricDescription: "Cases",
-  // Breakpoints
-  desktop: {
-    height: 642,
-    width: 450,
-    margin: {
-      top: 20,
-      right: 30,
-      bottom: 20,
-      left: 10,
-    },
-  },
-  tablet: {
-    height: 642,
-    width: 450,
-    margin: {
-      top: 20,
-      right: 30,
-      bottom: 20,
-      left: 10,
-    },
-  },
-  mobile: {
-    height: 642,
-    width: 450,
-    margin: {
-      top: 20,
-      right: 30,
-      bottom: 20,
-      left: 10,
-    },
-  },
-  retina: {
-    height: 642,
-    width: 450,
-    margin: {
-      top: 20,
-      right: 30,
-      bottom: 20,
-      left: 10,
-    },
-  },
-};
+    // Settings and initial values
+    this.chartOptions = {
+      // Data
+      subgroups: ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"],
+      // subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
+      // subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
+      dataUrl:
+        config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
+      dataStatewideRateUrl:
+        config.equityChartsDataLoc + "/equitydash/cumulative-combined.json", // Overwritten by county?
+      state: "California",
+      county: "California",
+      // Style
+      chartColors: ["#FFCF44", "#F2F5FC"], // ["#92C5DE", "#FFCF44", "#F2F5FC"],
+      selectedMetric: "cases",
+      selectedMetricDescription: "Cases",
+      // Breakpoints
+      desktop: {
+        height: 642,
+        width: 450,
+        margin: {
+          top: 20,
+          right: 30,
+          bottom: 20,
+          left: 10,
+        },
+      },
+      tablet: {
+        height: 642,
+        width: 450,
+        margin: {
+          top: 20,
+          right: 30,
+          bottom: 20,
+          left: 10,
+        },
+      },
+      mobile: {
+        height: 642,
+        width: 450,
+        margin: {
+          top: 20,
+          right: 30,
+          bottom: 20,
+          left: 10,
+        },
+      },
+      retina: {
+        height: 642,
+        width: 450,
+        margin: {
+          top: 20,
+          right: 30,
+          bottom: 20,
+          left: 10,
+        },
+      },
+    };
 
     // Resizing
     getScreenResizeCharts(this);
@@ -87,7 +90,6 @@ this.chartOptions = {
     // @TODO connect a debouncer
     window.addEventListener("resize", handleChartResize);
 
-
     // this.dimensions = {
     //   height: 642,
     //   width: 450,
@@ -107,10 +109,11 @@ this.chartOptions = {
     this.county = "California";
     this.drawBars = drawBars;
     this.chartTitle = function () {
+      let isStatewide = this.county === "California";
       // console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
         "placeholderForDynamicLocation",
-        this.county
+        isStatewide ? this.county : this.county + " County "
       );
     };
     this.description = function (selectedMetricDescription) {
@@ -132,25 +135,26 @@ this.chartOptions = {
       // console.log("Filter text",filterTxt);
       filterTxt = filterTxt.replace(
         "placeholderForDynamicLocation",
-        this.county
+        isStatewide ? this.county : this.county + " County "
       );
       return filterTxt;
     };
 
-    this.toolTipCaption = function(a,b,c) {
-      let templateStr = this.translationsObj['chartToolTip-caption'];
+    this.toolTipCaption = function (a, b, c) {
+      let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
-                        .replace('placeholderDEMO_CAT', a)
-                        .replace('placeholderMETRIC_100K', b)
-                        .replace('placeholderFilterScope', c);
+        .replace("placeholderDEMO_CAT", a)
+        .replace("placeholderMETRIC_100K", b)
+        .replace("placeholderFilterScope", c);
       return caption;
-    }
+    };
     // `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`
 
     this.innerHTML = template(
       this.chartTitle(),
       this.description(this.selectedMetricDescription)
     );
+
     this.classList.remove("d-none");
 
     this.tooltip = d3
@@ -173,6 +177,7 @@ this.chartOptions = {
           ")"
       );
 
+    // @TODO Connect to chartOptions
     this.subgroups = ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"];
     this.color = d3
       .scaleOrdinal()
@@ -183,91 +188,11 @@ this.chartOptions = {
       config.equityChartsDataLoc + "/equitydash/cumulative-california.json";
     this.dataStatewideRateUrl =
       config.equityChartsDataLoc + "/equitydash/cumulative-combined.json";
+
     this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
     this.county = "California";
     this.resetTitle();
-  }
-
-
-  getMissingDataBox(appliedSuppressionType) {
-    console.log("this", this);
-    let type = "appliedSuppressionTotal"; // @TODO connect to logic
-
-    // let messagesByType = {
-    //   appliedSuppressionNone: null,
-    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
-    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
-    // };
-
-    // let message = messagesByType[type];
-    // if (message !== null) {
-
-    // // Break message into individual lines, split lines out by br tag
-    // let missingTextLines = message.split(
-    //   this.translationsObj["missing-data-caption-line-delimiter"]
-    // );
-
-    // let messageBox = (g) =>
-    // g
-    //   // .append("text")
-    //   .attr("class", "informative-box")
-    //   .call((g) =>
-    //     g
-    //       .append("rect")
-    //       .attr("x", 0)
-    //       .attr("y", 0)
-    //       .attr("width", this.chartBreakpointValues.width)
-    //       .attr("height", this.chartBreakpointValues.height)
-    //       .attr("fill", "white")
-    //       .attr("stroke", "none")
-    //       .attr("opacity", "0.1")
-    //   )
-    //   .call((g) =>
-    //     g
-    //       .append("rect")
-    //       .attr("class", "shadow")
-    //       .attr("x", this.chartBreakpointValues.width * 0.25)
-    //       .attr("y", this.chartBreakpointValues.height * 0.3)
-    //       .attr("width", this.chartBreakpointValues.width * 0.5)
-    //       .attr("height", this.chartBreakpointValues.height * 0.3)
-    //       .attr("fill", "white")
-    //       .attr("stroke", "currentColor")
-    //       .attr("stroke-width", "2")
-    //   )
-
-    //   .each(function (d) {
-    //     let gg = this;
-    //     missingTextLines.forEach(function (textLine, yIdx) {
-    //       d3.select(gg)
-    //         .append("text")
-    //         // .attr(
-    //         //   "transform",
-    //         //   "translate(" +
-    //         //     component.dims.width / 2 +
-    //         //     " ," +
-    //         //     (component.dims.height * 0.39 + yIdx * 5) +
-    //         //     ")"
-    //         // )
-
-    //         .attr(
-    //           "transform",
-    //           "translate(" +
-    //             613 / 2 +
-    //             " ," +
-    //             (500 * 0.39 + yIdx * 5) +
-    //             ")"
-    //         )
-    //         .style("text-anchor", "middle")
-    //         .text(textLine);
-    //     });
-    //   });
-
-    // let messageBox = ()
-    // return messageBox;
-    // return null;
-    // }
-    return null;
   }
 
   listenForLocations() {
@@ -316,23 +241,97 @@ this.chartOptions = {
     );
   }
 
+  checkAppliedDataSuppression(data) {
+    let suppressionAllocations = {
+      None: 0,
+      Total: 0,
+      Population: 0,
+    };
+
+    let appliedSuppressionStatus = null;
+
+    data.map((item) => {
+      suppressionAllocations[item.APPLIED_SUPPRESSION] =
+        suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
+    });
+
+    if (suppressionAllocations["Population"] === data.length) {
+      appliedSuppressionStatus = 'applied-suppression-population';
+    } else if (suppressionAllocations["Total"] === data.length) {
+      appliedSuppressionStatus = 'applied-suppression-total';
+    }
+   
+    return {
+      status: appliedSuppressionStatus
+    }
+  }
+
+  getMessages(key) {
+    // Read messages from mark up.
+    // let messagesByType = {
+    //   appliedSuppressionNone: null,
+    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
+    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
+    // };
+
+    // Get the current message as requested for this type.
+    // let message = messagesByType[type];
+    return null;
+  }
+
+  getMessageBox(data) {
+    let suppressionStatus = this.checkAppliedDataSuppression(data);
+    let message = null;
+    if (suppressionStatus === null) {
+      // Do nothing
+    } else if (suppressionStatus === 'applied-suppression-total') {
+      // Generate a message box
+      message = this.getMessages('applied-suppression-total');
+    }
+
+    // @TODO Read the data, check all APPLIED_SUPPRESSION === "Total"
+
+    // If a message is found
+    // if (message !== null) {
+        // Get message box d3 constructor (or CSS box overlay?)
+        // Format message (break into lines) - with a utility function
+        // Generate message box to pass to d3 rendered.
+    // }
+    return null;
+  }
+
   render() {
+    // NOTE subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
+
+    // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata.filter(
       (item) =>
         item.METRIC === this.selectedMetric &&
         item.DEMOGRAPHIC_SET_CATEGORY !== "Other" &&
         item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"
     );
+
+    // Update term display strings
     let displayDemoMap = termCheck();
 
+    // Format data
     data.forEach((d) => {
+      // Set default value of 0 for per 100k change.
       d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = 0;
+
+      // If value found for metric rate 30 days ago
       if (d.METRIC_VALUE_PER_100K_30_DAYS_AGO) {
+        // Create new value that calculates the difference of change.
         d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO =
           d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO /
           d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
       }
-      // we map the race/ethnicities in the db to the desired display values here
+
+      // Run the sort ratio calculating logic. 
+      // If not valid, will return null.
+      d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
+
+      // Map the race/ethnicities in the db to the desired display values here.
       if (displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
           d.DEMOGRAPHIC_SET_CATEGORY
@@ -340,15 +339,28 @@ this.chartOptions = {
       }
     });
 
-    data.sort(function (a, b) {
-      return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
+    let sortableData = data.filter((d) => d.DISPROPORTIONALITY_RATIO !== null);
+    let nullSortData = data.filter((d) => d.DISPROPORTIONALITY_RATIO === null);
+
+    // Sort data with non-null 'disproportionality ratio' 
+    sortableData.sort(function (a, b) {
+      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
     });
+
+    // Push null data values to the end or the sorted array (@TODO double check order)
+    // Remap data object
+    data = sortableData.concat(nullSortData); 
+    
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
+
+    // Get list of groups (?)
     let groups = data.map((item) => item.DEMOGRAPHIC_SET_CATEGORY);
 
+    // Keys of data to use in chart.
     let stackedData = d3.stack().keys(this.subgroups)(data);
 
+    // Y position of bars.
     this.y = d3
       .scaleBand()
       .domain(groups)
@@ -358,6 +370,7 @@ this.chartOptions = {
       ])
       .padding([0.6]);
 
+    // Position for labels.
     this.yAxis = (g) =>
       g
         .attr("class", "bar-label")
@@ -365,19 +378,25 @@ this.chartOptions = {
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
+    // Calculate x margin (?)
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
 
+    // ?
     this.xAxis = (g) =>
       g
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
+    
+    // Is this for the line (is this the number value or the label?)
     let statewideRatePer100k = this.combinedData[this.selectedMetric]
       ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
       : null;
+    
+    // Render the chart
     this.drawBars(stackedData, data, statewideRatePer100k);
   }
 

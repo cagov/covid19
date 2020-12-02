@@ -20,14 +20,14 @@ export default function drawSecondBars({
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  //yellow bars, second section
+  // End of bar labels, METRIC total (yellow)
   svg
     .append("g")
     .selectAll("g")
     .data(stackedData1)
     .enter()
     .append("g")
-    .attr("fill", (d) => color1(d.key))
+    .attr("fill", (d) => color2(d.key))
     .selectAll("rect")
 
     // enter a second time = loop subgroup per subgroup to add yellow bars
@@ -67,7 +67,7 @@ export default function drawSecondBars({
 
   svg.append("g").call(yAxis);
 
-  //end of bar labels yellow
+  // End of bar labels, METRIC total (yellow)
   svg
     .append("g")
     .attr("class", "bars")
@@ -88,7 +88,7 @@ export default function drawSecondBars({
         .attr("text-anchor", "end");
     });
 
-  //% change since previous month labels
+  // % Change since previous month labels
   svg
     .append("g")
     .attr("class", "change-from-month-labels")
@@ -114,7 +114,7 @@ export default function drawSecondBars({
         .attr("text-anchor", "end");
     });
 
-  //arrows
+  // % Change from month arrows
   svg
     .append("g")
     .attr("class", "change-from-month-labels")
