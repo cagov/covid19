@@ -123,7 +123,7 @@ this.chartOptions = {
       let isStatewide = this.county === "California";
       let key =
         "chartFilterLegendPfx" +
-        (isStatewide ? "State" : "County") +
+        (isStatewide ? "State" : "State") + // change right-most one to County after we fix it...
         "--" +
         this.selectedMetric;
       let filterTxt =
@@ -365,9 +365,17 @@ this.chartOptions = {
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
+    let statewideRatePer100k = this.combinedData[this.selectedMetric]
+      ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
+      : null;
+    let max_xdomain = d3.max(stackedData, (d) => d3.max(d, (d) => d[1]));
+    if (statewideRatePer100k !== null) {
+      console.log("max xd",max_xdomain, statewideRatePer100k);
+      max_xdomain = Math.max(max_xdomain, statewideRatePer100k)
+    }
     this.x = d3
       .scaleLinear()
-      .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
+      .domain([0, max_xdomain])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
 
     this.xAxis = (g) =>
@@ -375,9 +383,6 @@ this.chartOptions = {
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
-    let statewideRatePer100k = this.combinedData[this.selectedMetric]
-      ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
-      : null;
     this.drawBars(stackedData, data, statewideRatePer100k);
   }
 
