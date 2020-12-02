@@ -143,16 +143,23 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .attr("class", "xaxis")
         .call(xAxis);
     
+      let yDottedLinePos = y(dataincome[0].STATE_CASE_RATE_PER_100K); // this.chartBreakpointValues.height/2
+      let yXAnchor = this.chartBreakpointValues.width - 18;
+
       this.svg.append("path")
-        .attr("d", d3.line()([[20, this.chartBreakpointValues.height/2], [this.chartBreakpointValues.width - 20, this.chartBreakpointValues.height/2]]))
+        .attr("d", d3.line()([[20, yDottedLinePos], 
+                              [this.chartBreakpointValues.width - 20, yDottedLinePos]]))
         .attr("stroke", "#1F2574")
+        .attr("opacity", 0.5)
         .style("stroke-dasharray", ("5, 5"));
       
       this.svg.append("text")
         .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-        .attr("y", this.chartBreakpointValues.height / 2 - 15)
-        .attr("x", 38)
-        .attr('text-anchor','start')
+        .attr("y", yDottedLinePos - 15)
+        // .attr("x", 38)
+        // .attr('text-anchor','start')
+        .attr("x", yXAnchor)
+        .attr('text-anchor','end')
         .attr('fill', '#1F2574')
         .attr('class','label bar-chart-label');
 
