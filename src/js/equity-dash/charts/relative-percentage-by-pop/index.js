@@ -248,24 +248,17 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return description;
   }
 
-  getLegendString() {
-    let relativePercentage = null;
-    if (this.county === "California") {
-      relativePercentage = this.translationsObj[
-        "relative-percentage-statewide"
-      ];
-      return relativePercentage;
-    }
-    relativePercentage = this.translationsObj["relative-percentage-county"];
-    return relativePercentage;
-  }
-
-  getLegendStringStatewide() {
-    let relativePercentage = this.translationsObj[
-      "relative-percentage-state-population"
-    ];
-    return relativePercentage;
-  }
+  // getLegendString() {
+  //   let relativePercentage = null;
+  //   if (this.county === "California") {
+  //     relativePercentage = this.translationsObj[
+  //       "relative-percentage-statewide"
+  //     ];
+  //     return relativePercentage;
+  //   }
+  //   relativePercentage = this.translationsObj["relative-percentage-county"];
+  //   return relativePercentage;
+  // }
 
   // Jim's changes from merge to double check
   // this.description = function () {
@@ -278,14 +271,15 @@ class CAGOVEquityREPop extends window.HTMLElement {
   //   return `of ${this.selectedMetricDescription.toLowerCase()} in county`;
   // }
 
-  legendStrings = function() {
+  legendStrings() {
     let isStatewide = this.county === 'California';
     let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
-    let key2 = 'chartLegend2' + '--'+this.selectedMetric;
+    let key2 = 'chartLegend2' + (isStatewide? 'State' : "County");
+    console
     return [this.translationsObj[key1], this.translationsObj[key2]];
   }
 
-  getToolTipCaption1 = function(d, legendString) {
+  getToolTipCaption1(d, legendString) {
     let templateStr = this.translationsObj['chartToolTip1-caption'];
     let caption = templateStr
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
@@ -295,7 +289,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return caption;
   }
 
-  getToolTipCaption2 = function(d, selectedMetric) {
+  getToolTipCaption2(d, selectedMetric) {
     let templateStr = this.translationsObj['chartToolTip2-caption'];
     let caption = templateStr
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
@@ -395,7 +389,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   checkAppliedDataSuppression(data) {
-    console.log(data);
+    // console.log(data);
     let suppressionAllocations = {
       None: 0,
       Total: 0,
@@ -410,7 +404,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     if (suppressionAllocations["Population"] === data.length) {
     }
 
-    console.log("suppressionAllocations", suppressionAllocations);
+    // console.log("suppressionAllocations", suppressionAllocations);
     // APPLIED_SUPPRESSION: "None"
     // COUNTY: "California"
     // DEMOGRAPHIC_SET: "race_ethnicity"
@@ -459,7 +453,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   getMissingDataBox(appliedSuppressionType) {
-    console.log("this", this);
+    // console.log("this", this);
     let type = "appliedSuppressionTotal"; // @TODO connect to logic
 
     // let messagesByType = {

@@ -1,15 +1,15 @@
 import template from './template.js';
-import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels} from './draw.js';
+import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
+    console.log("Setting up CAGOVChartD3Bar");
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
     // let height = 500;
     // let width = 842;
     // let margin = ({top: 88, right: 0, bottom: 30, left: 10})
-
     this.chartOptions = {
       // Data
       // subgroups: ["NOT_MISSING", "MISSING"],
@@ -95,6 +95,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     window.addEventListener('resize', handleChartResize);
 
     this.translationsObj = getTranslations(this);
+
+
     function sortedOrder(a,b) {
       return parseInt(a.SORT) - parseInt(b.SORT)
     }
@@ -102,6 +104,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     this.svg = d3.create("svg")
       .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
       .attr("class","equity-bar-chart");
+    
+
     
     Promise.all([
       window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-income.json"),
@@ -131,26 +135,39 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       this.innerHTML = template(this.translationsObj);
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
-      writeBars(this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
+      writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
   
       this.svg.append("g")
         .attr("class", "xaxis")
         .call(xAxis);
-    
-      this.svg.append("path")
-        .attr("d", d3.line()([[20, this.chartBreakpointValues.height/2], [this.chartBreakpointValues.width - 20, this.chartBreakpointValues.height/2]]))
-        .attr("stroke", "#1F2574")
-        .style("stroke-dasharray", ("5, 5"));
+
+      let yDValue = dataincome[0].STATE_CASE_RATE_PER_100K
+      this.yDValue = yDValue;
+
+      redrawYLine(this, y);
+
+      // let yDottedLinePos = y(yDValue); // this.chartBreakpointValues.height/2
+      // let yXAnchor = this.chartBreakpointValues.width - 18;
+
+      // this.svg.append("path")
+      //   .attr("d", d3.line()([[20, yDottedLinePos], 
+      //                         [this.chartBreakpointValues.width - 20, yDottedLinePos]]))
+      //   .attr("stroke", "#1F2574")
+      //   .attr("opacity", 0.5)
+      //   .style("stroke-dasharray", ("5, 5"))
+      //   .attr('class','label bar-chart-yline');
       
-      this.svg.append("text")
-        .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-        .attr("y", this.chartBreakpointValues.height / 2 - 15)
-        .attr("x", 38)
-        .attr('text-anchor','start')
-        .attr('fill', '#1F2574')
-        .attr('class','label bar-chart-label');
+      // this.svg.append("text")
+      //   .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
+      //   .attr("y", yDottedLinePos - 15)
+      //   // .attr("x", 38)
+      //   // .attr('text-anchor','start')
+      //   .attr("x", yXAnchor)
+      //   .attr('text-anchor','end')
+      //   .attr('fill', '#1F2574')
+      //   .attr('class','label bar-chart-label');
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -161,6 +178,28 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
   }
 
+  ariaLabel(d) {
+      // this is currently the same as the tooltip with span tags removed...
+      // placeholderCaseRate cases per 100K people. placeholderRateDiff30 change since previous week
+      // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
+      let templateStr = this.translationsObj['ariaBarLabel']
+      let label = templateStr
+                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
+                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+      return label;
+  }
+  tooltipCaption(d) {
+      // <span class="highlight-data">placeholderCaseRate</span> cases per 100K people. placeholderRateDiff30 change since previous week
+      // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
+      let templateStr = this.translationsObj['tooltipCaption']
+      let caption = templateStr
+                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
+                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+      return caption;
+  }
+
+
+
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     let component = this;
@@ -168,15 +207,15 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       tog.addEventListener('click',function(event) {
         event.preventDefault();
         if(this.classList.contains('healthcare')) {
-          rewriteBar(datahealthcare)
+          rewriteBar(component, datahealthcare)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHealthcare;
         }
         if(this.classList.contains('housing')) {
-          rewriteBar(datacrowding)
+          rewriteBar(component, datacrowding)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHousing;
         }
         if(this.classList.contains('income')) {
-          rewriteBar(dataincome)
+          rewriteBar(component, dataincome)
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
         }
         resetToggles();
@@ -190,17 +229,20 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       });
     }
 
-    function rewriteBar(dataset) {
+    function rewriteBar(component, dataset) {
+      // console.log("Redraw Bar");
       y = d3.scaleLinear()
         .domain([0, d3.max(dataset, d => d.CASE_RATE_PER_100K)]).nice()
         .range([chartBreakpointValues.height - chartBreakpointValues.margin.bottom, chartBreakpointValues.margin.top])
 
-      rewriteBars(svg, dataset, x, y);
+      rewriteBars(component, svg, dataset, x, y);
       rewriteBarLabels(svg, dataset, x, y, chartBreakpointValues.sparkline);
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
+      redrawYLine(component, y);
     }
+
 
   }
 }

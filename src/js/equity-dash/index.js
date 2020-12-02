@@ -7,5 +7,3 @@ import './charts/healthy-places-index/index.js'
 import './charts/data-completeness/index.js'
 import './charts/social-determinants/index.js'
 import './learn-more/index.js'
-// console.log('config is:')
-// console.log(config);
