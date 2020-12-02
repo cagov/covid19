@@ -83,6 +83,14 @@
     font-weight: 100;
     font-size: 0.7rem;
   }
+  .bar-label.bar-label-unknown {
+    color: #ccc;
+  }
+  
+  .chart-description {
+    min-height: 4rem;
+  }
+
   .bar-chart-label.label {
     font-weight: 100;
   }
