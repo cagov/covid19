@@ -219,13 +219,13 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
         }
         resetToggles();
-        tog.classList.add('toggle-active')
+        tog.classList.add('active')
       })
     })
 
     function resetToggles() {
       toggles.forEach(toggle => {
-        toggle.classList.remove('toggle-active')
+        toggle.classList.remove('active')
       });
     }
 
