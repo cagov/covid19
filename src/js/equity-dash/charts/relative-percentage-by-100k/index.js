@@ -6,7 +6,6 @@ import getScreenResizeCharts from "./../../get-window-size.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
- 
     // Settings and initial values
     this.chartOptions = {
       // Data
@@ -15,11 +14,12 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
       dataUrl:
         config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
-      dataStatewideRateUrl: config.equityChartsDataLoc + "/equitydash/cumulative-combined.json", // Overwritten by county?
+      dataStatewideRateUrl:
+        config.equityChartsDataLoc + "/equitydash/cumulative-combined.json", // Overwritten by county?
       state: "California",
       county: "California",
       // Style
-      chartColors: ['#FFCF44', '#F2F5FC'], // ["#92C5DE", "#FFCF44", "#F2F5FC"], 
+      chartColors: ["#FFCF44", "#F2F5FC"], // ["#92C5DE", "#FFCF44", "#F2F5FC"],
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -138,14 +138,14 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       return filterTxt;
     };
 
-    this.toolTipCaption = function(a,b,c) {
-      let templateStr = this.translationsObj['chartToolTip-caption'];
+    this.toolTipCaption = function (a, b, c) {
+      let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
-                        .replace('placeholderDEMO_CAT', a)
-                        .replace('placeholderMETRIC_100K', b)
-                        .replace('placeholderFilterScope', c);
+        .replace("placeholderDEMO_CAT", a)
+        .replace("placeholderMETRIC_100K", b)
+        .replace("placeholderFilterScope", c);
       return caption;
-    }
+    };
     // `Statewide ${filterScope.toLowerCase()} per 100K: ${parseFloat(statewideRatePer100k).toFixed(1)}`
 
     this.innerHTML = template(
@@ -239,7 +239,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     );
   }
 
-
   getMissingDataBox(appliedSuppressionType) {
     console.log("this", this);
     let type = "appliedSuppressionTotal"; // @TODO connect to logic
@@ -319,7 +318,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // }
     return null;
   }
-
 
   // Data samples:
   /*
@@ -423,10 +421,99 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
 
   */
 
-  render() {
+    // Formula notes.
 
-    //subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
+    // OPEN QUESTION: Tooltip... could it use this value & what would the label be?
+
+    // Decision is to make order based on ratio of rates to % of population.
+
+    // Ratio is % of population divided by % of cases. The list will be ordered from lowest to highest (or vice versa)
+    // Correc: Ratio is % of (KNOWN) population divided by % of cases. The list will be ordered from lowest to highest (or vice versa)
+
+    /*
+    It looks like this chart is sorting by % of cases/deaths/testing. 
     
+    The intention was to sort by the ratio of % of cases to % of population so that the most disproportionaly impacted R&Es appeared at the top of the list. 
+    
+    This is one of the primary reasons that we dynmacially sort the chart 
+    (the only way to visualize this was through order of list). 
+    
+    This is also reflected in the Figma design that we showed to stakeholders. 
+    
+    To make this more clear, we had also discussed showing the ratio as a metric in the tooltip but were unable to come up with a good label for it (the best we came up with was "disproportionality ratio"). 
+    
+    I realize this is not a perfect solution but I don't want to lose sight of the purpose of this chart which is to show disproportionate impact, not highest rates. 
+    
+    ...
+    
+    There's a little nuance to the METRIC_TOTAL_PERCENTAGE
+    It's % total among known race/ethnicity for non-unknown ones, 
+    and then % total for all cases/deaths/tests for the unknown category. 
+    
+    We did that to better align with the population references
+
+    % of non unknown.
+    --- EXAMPLE ---
+    820 cases per 100k NHPI
+    0.6% of state population
+    0.3% of cases
+
+    Ratio:
+    Total of KNOWN cases = 
+    Total Percentage Cases [Latino, White, Asian American, Black, Multi-Race, NHPI, AI/AN] - should equal 100 - Unknown cases %, Other cases %
+    (statewide example)
+    
+    Latino 49.9%
+    White 24.1%
+    Asian American 6.4%
+    Black 3.9%
+    Multi-Race 1.4%
+    NHPI 0.6%
+    AI/AN 0.4%
+
+    Total percentage = Cases / (Total cases - Unknown/Other cases) * 100
+      100% - (28.8 + 13.4) = 57.8
+
+    0.6% / 57.8 = 0.01038062283737 NHPI
+    49.9% / 57.8 = 0.863321799307958  LATINO
+
+    @TODO - (understand) 
+    The last part is that we know that Latinos are 86.3% of total known r/e cases, 
+    but 38.9% of the state population, so then do the ratio of those two quantites
+
+    I think that ratio shows how disparate the cases/deaths/tests are.  
+    If it's %total known cases / % pop, then the higher the more disparate, so higher on the sort
+    */
+   
+    /*
+     [1,2,3].reduce(function(acc, val) { return acc + val; }, 0)
+    */
+   
+   getSortRatio(d, data) {
+    let totalKnownPercentage = data.reduce((d) => d.SORT_RATIO_D3 !== null);
+    // Dataset conditional
+
+    let ratio = null;
+    if (d.POPULATION_PERCENTAGE !== null && 
+        d.METRIC_TOTAL_PERCENTAGE) {
+
+      ratio = d.POPULATION_PERCENTAGE / d.METRIC_TOTAL_PERCENTAGE;
+
+      // @TODO Check isNan
+      // @TODO Check Infinity
+
+      console.log(
+        "SORT_RATIO_D3:",
+        d.SORT_RATIO_D3,
+        d.DEMOGRAPHIC_SET_CATEGORY
+      );
+    }
+    return ratio;
+  };
+
+  render() {
+    //subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
+
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata.filter(
       (item) =>
@@ -453,15 +540,8 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
 
       // d.SORT_RATIO_D3 = null;
       d.SORT_RATIO_D3 = null; // Set to zero for testing.
-      if ( d.POPULATION_PERCENTAGE !== null && 
-            d.METRIC_TOTAL_PERCENTAGE ) {
-        d.SORT_RATIO_D3 = d.POPULATION_PERCENTAGE / d.METRIC_TOTAL_PERCENTAGE;
-        
-        // Check isNan
-        // Check Infinity
 
-        console.log('SORT_RATIO_D3:', d.SORT_RATIO_D3, d.DEMOGRAPHIC_SET_CATEGORY);
-      }
+      d.SORT_RATIO_D3 = this.getSortRatio(d, data);
 
       // Map the race/ethnicities in the db to the desired display values here.
       if (displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
@@ -469,117 +549,32 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
           d.DEMOGRAPHIC_SET_CATEGORY
         );
       }
-
-      //                      RT_RATIO_D3: 1.5443031621999332 African American
-      // equitydash.js:1644 SORT_RATIO_D3: 1.4414996860629796 American Indian
-      // equitydash.js:1644 SORT_RATIO_D3: 2.409802351101631 Asian American
-      // equitydash.js:1644 SORT_RATIO_D3: 0.780925852023464 Latino
-      // equitydash.js:1644 SORT_RATIO_D3: 1.5464927658005807 Multi-Race
-      // equitydash.js:1644 SORT_RATIO_D3: 0.5993252708151074 Native Hawaiian and other Pacific Islander
-      
-      // equitydash.js:1644 SORT_RATIO_D3: 2.409802351101631 Asian American
-      // equitydash.js:1644 SORT_RATIO_D3: 1.5464927658005807 Multi-Race
-      //                      RT_RATIO_D3: 1.5443031621999332 African American
-      // equitydash.js:1644 SORT_RATIO_D3: 1.4414996860629796 American Indian
-      // equitydash.js:1644 SORT_RATIO_D3: 0.780925852023464 Latino
-      // equitydash.js:1644 SORT_RATIO_D3: 0.5993252708151074 Native Hawaiian and other Pacific Islander
-      
-
-      // Q: Valid data example
     });
 
-    let sortedData = data.filter((d) => d.SORT_RATIO_D3 !== null); 
-    let nullSortData = data.filter((d) => d.SORT_RATIO_D3 === null); 
+    let sortableData = data.filter((d) => d.SORT_RATIO_D3 !== null);
+    let nullSortData = data.filter((d) => d.SORT_RATIO_D3 === null);
 
-    sortedData.sort(function (a, b) {
-      // @TODO This sort needs to be by ratio:
-      // FORMULA: ???
-
-      // Decision is to make order based on ratio of rates to % of population.
-
-      // Ratio is % of population divided by % of cases. The list will be ordered from lowest to highest (or vice versa)
-      // Correc: Ratio is % of (KNOWN) population divided by % of cases. The list will be ordered from lowest to highest (or vice versa)
-      
- /*
-    It looks like this chart is sorting by % of cases/deaths/testing. The intention was to sort by the ratio of % of cases to % of population so that the most disproportionaly impacted R&Es appeared at the top of the list. This is one of the primary reasons that we dynmacially sort the chart (the only way to visualize this was through order of list). As I recall, Avra had been working on that logic. This is also reflected in the Figma design that we showed to stakeholders. To make this more clear, we had also discussed showing the ratio as a metric in the tooltip but were unable to come up with a good label for it (the best we came up with was "disproportionality ratio"). I realize this is not a perfect solution but I don't want to lose sight of the purpose of this chart which is to show disproportionate impact, not highest rates. Note that State Dashboard visualizes this in a different way but also falls into the same trap of making "white" appear to be really bad when in reality it's not that bad from an equity perspective.*/
-
-
-    /* 
-    From Triston:
-
-    Forgot to circle back to your POPULATION_PERCENTAGE / METRIC_TOTAL_PERCENTAGE  question.  
-    That looks right to me based on what you're wanting to calculate.  
-    
-    There's a little nuance to the METRIC_TOTAL_PERCENTAGE  one, though:  
-    It's % total among known race/ethnicity for non-unknown ones, 
-    and then % total for all cases/deaths/tests for the unknown category. 
-    
-    We did that to better align with the population references, if that makes sense
-
-    % of non unknown.
-
-    820 cases per 100k NHPI
-    0.6% of state population
-    0.3% of cases
-
-    Ratio:
-    Total of KNOWN cases = 
-    Total Percentage Cases [Latino, White, Asian American, Black, Multi-Race, NHPI, AI/AN] - should equal 100 - Unknown cases %, Other cases %
-    (statewide example)
-    
-    Latino 49.9%
-    White 24.1%
-    Asian American 6.4%
-    Black 3.9%
-    Multi-Race 1.4%
-    NHPI 0.6%
-    AI/AN 0.4%
-
-    Total percentage = Cases / (Total cases - Unknown/Other cases) * 100
-      100% - (28.8 + 13.4) = 57.8
-
-    0.6% / 57.8 = 0.01038062283737 NHPI
-    49.9% / 57.8 = 0.863321799307958  LATINO
-
-
-
-
-
-
-
-    NO Total Percentage of Known Cases = 86.7%
-
-    NO 0.6% / 86.7 = 0.006920415 NHPI
-    NO 49.9% / 86.7 = 0.575547866  LATINO
-
-
-
-    100% - Unknown %?
-
-
-
-
-
-
-    */
-
-
+    sortableData.sort(function (a, b) {
       // return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
-      
       return d3.ascending(a.SORT_RATIO_D3, b.SORT_RATIO_D3);
     });
 
-    data = sortedData.concat(nullSortData);
-    console.log('data', data);
+    // Push null data values to the end or the sorted array (@TODO double check order)
+    // Remap data object
+    data = sortableData.concat(nullSortData); 
+    
+    console.log("final data", data);
 
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
 
-   
+    // Get list of groups (?)
     let groups = data.map((item) => item.DEMOGRAPHIC_SET_CATEGORY);
 
+    // Keys of data to use in chart.
     let stackedData = d3.stack().keys(this.subgroups)(data);
 
+    // Y position of bars.
     this.y = d3
       .scaleBand()
       .domain(groups)
@@ -589,6 +584,7 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
       ])
       .padding([0.6]);
 
+    // Position for labels.
     this.yAxis = (g) =>
       g
         .attr("class", "bar-label")
@@ -596,19 +592,25 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
+    // Calculate x margin (?)
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
 
+    // ?
     this.xAxis = (g) =>
       g
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
+    
+    // Is this for the line
     let statewideRatePer100k = this.combinedData[this.selectedMetric]
       ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
       : null;
+    
+    // Render the chart
     this.drawBars(stackedData, data, statewideRatePer100k);
   }
 
