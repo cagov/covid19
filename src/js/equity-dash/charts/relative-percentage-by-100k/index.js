@@ -463,6 +463,7 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
     Total Percentage Cases [Latino, White, Asian American, Black, Multi-Race, NHPI, AI/AN] - should equal 100 - Unknown cases %, Other cases %
     (statewide example)
     
+    % of state population
     Latino 49.9%
     White 24.1%
     Asian American 6.4%
@@ -471,8 +472,9 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
     NHPI 0.6%
     AI/AN 0.4%
 
-    Total percentage = Cases / (Total cases - Unknown/Other cases) * 100
-      100% - (28.8 + 13.4) = 57.8
+    Total percentage = Cases / (Total cases - Unknown/Other cases) 
+    
+    100% - (28.8 + 13.4) = 57.8
 
     0.6% / 57.8 = 0.01038062283737 NHPI
     49.9% / 57.8 = 0.863321799307958  LATINO
@@ -490,21 +492,67 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
     */
    
    getSortRatio(d, data) {
-    let totalKnownPercentage = data.reduce((d) => d.SORT_RATIO_D3 !== null);
+    // data is all data without Other or Unknown values.
+    let notKnownData = this.alldata.filter(
+      (item) =>
+        item.METRIC === this.selectedMetric &&
+        (item.DEMOGRAPHIC_SET_CATEGORY === "Other" ||
+        item.DEMOGRAPHIC_SET_CATEGORY === "Unknown")
+    );
+
+    let type = d.METRIC;
+
+    // Add up the totals for the demographic sets (i.e. not "Unknown" or "Other")
+    let totalPercentage = data.map((d) => {
+      // Check if total percentage isn't null, if it is, return zero
+      return d.METRIC_TOTAL_PERCENTAGE !== null ? d.METRIC_TOTAL_PERCENTAGE : 0
+      })
+      .reduce(function(acc, val) { return acc + val; }, 0);
+  
+    let totalNotKnownPercentage = notKnownData.map((d) => {
+      // Check if total percentage isn't null, if it is, return zero
+      return d.METRIC_TOTAL_PERCENTAGE !== null ? d.METRIC_TOTAL_PERCENTAGE : 0;
+    })
+      .reduce(function(acc, val) { return acc + val; }, 0);
+
+    // @TODO Check isNan or Infinity.
+    // @TODO And Math.round or decimal point fixing for display.
+    let totalKnownPercentage = 100 - totalNotKnownPercentage;
+
+    // console.log('totalPercentage', totalPercentage);
+    // console.log('totalKnownPercentage', totalKnownPercentage);
+    // console.log('notKnownData', totalNotKnownPercentage, notKnownData );
+
+    // if (type === 'Cases') {
+
+    // } else {
+      
+    // }
+
+    
     // Dataset conditional
 
     let ratio = null;
     if (d.POPULATION_PERCENTAGE !== null && 
         d.METRIC_TOTAL_PERCENTAGE) {
 
-      ratio = d.POPULATION_PERCENTAGE / d.METRIC_TOTAL_PERCENTAGE;
+      // ratio = d.POPULATION_PERCENTAGE / d.METRIC_TOTAL_PERCENTAGE;
+      
+      // Total percentage = Cases / (Total cases - Unknown/Other cases) * 100
 
+      // ratio = d.POPULATION_PERCENTAGE / totalNotKnownPercentage;
+      // if (d.DEMOGRAPHIC_SET_CATEGORY === 'Unknown' || 
+      //     d.DEMOGRAPHIC_SET_CATEGORY === 'Other') {
+      //   ratio = d.POPULATION_PERCENTAGE / totalPercentage;
+      // } else {
+        ratio = d.POPULATION_PERCENTAGE / totalKnownPercentage;
+      // }
       // @TODO Check isNan
       // @TODO Check Infinity
 
       console.log(
-        "SORT_RATIO_D3:",
-        d.SORT_RATIO_D3,
+        "DISPROPORTIONALITY_RATIO:",
+        ratio,
         d.DEMOGRAPHIC_SET_CATEGORY
       );
     }
@@ -512,7 +560,7 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
   };
 
   render() {
-    //subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
+    // NOTE subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
 
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata.filter(
@@ -522,7 +570,7 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
         item.DEMOGRAPHIC_SET_CATEGORY !== "Unknown"
     );
 
-    // Update term display
+    // Update term display strings
     let displayDemoMap = termCheck();
 
     // Format data
@@ -530,18 +578,17 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
       // Set default value of 0 for per 100k change.
       d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO = 0;
 
-      // If value found
+      // If value found for metric rate 30 days ago
       if (d.METRIC_VALUE_PER_100K_30_DAYS_AGO) {
-        // Create new value
+        // Create new value that calculates the difference of change.
         d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO =
           d.METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO /
           d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
       }
 
-      // d.SORT_RATIO_D3 = null;
-      d.SORT_RATIO_D3 = null; // Set to zero for testing.
-
-      d.SORT_RATIO_D3 = this.getSortRatio(d, data);
+      // Run the sort ratio calculating logic. 
+      // If not valid, will return null.
+      d.DISPROPORTIONALITY_RATIO = this.getSortRatio(d, data);
 
       // Map the race/ethnicities in the db to the desired display values here.
       if (displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
@@ -551,12 +598,21 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
       }
     });
 
-    let sortableData = data.filter((d) => d.SORT_RATIO_D3 !== null);
-    let nullSortData = data.filter((d) => d.SORT_RATIO_D3 === null);
+    let sortableData = data.filter((d) => d.DISPROPORTIONALITY_RATIO !== null);
+    let nullSortData = data.filter((d) => d.DISPROPORTIONALITY_RATIO === null);
 
+    // Sort data with non-null 'disproportionality ratio' 
     sortableData.sort(function (a, b) {
-      // return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
-      return d3.ascending(a.SORT_RATIO_D3, b.SORT_RATIO_D3);
+      
+      // DISPROPORTIONALITY_RATIO: 0.005854295416384384 Native Hawaiian and other Pacific Islander
+      // DISPROPORTIONALITY_RATIO: 0.008893787657945705 American Indian
+      // DISPROPORTIONALITY_RATIO: 0.03824773843841755 Multi-Race
+      // DISPROPORTIONALITY_RATIO: 0.10325008270638272 Black
+      // DISPROPORTIONALITY_RATIO: 0.26699018039115974 Asian American
+      // DISPROPORTIONALITY_RATIO: 0.6337516235173645 White
+      // DISPROPORTIONALITY_RATIO: 0.6739747623204189 Latino
+      
+      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
     });
 
     // Push null data values to the end or the sorted array (@TODO double check order)
