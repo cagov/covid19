@@ -61,7 +61,7 @@ export default function getScreenResizeCharts() {
     let highDensity = getIsHighDensity();
     let orientation = getOrientation();
 
-    console.log('retina', isRetina, 'highDensity', highDensity, 'orientation', orientation);
+    // console.log('retina', isRetina, 'highDensity', highDensity, 'orientation', orientation);
   
     if (window.charts !== undefined) {
       if (windowSize.width <= 576) {

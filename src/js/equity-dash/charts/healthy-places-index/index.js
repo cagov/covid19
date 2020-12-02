@@ -8,6 +8,7 @@ import getScreenResizeCharts from "./../../get-window-size.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
+    // console.log("Setting up CAGOVChartD3Lines");
     this.translationsObj = this.getTranslations(this);
     // this.innerHTML = this.translationsObj; // not currently using a template.
     this.innerHTML = template(this.translationsObj);
@@ -122,7 +123,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.writeLegendColors(this.chartOptions.chartColors, this.legend);
     this.writeLegendLabels(legendLabels, this.legend);
     this.listenForLocations();
-    if (this.querySelector('.d-none') !== null) {
+    this.classList.remove("d-none"); // this works
+    if (this.querySelector('.d-none') !== null) { // doesn't work
       this.querySelector('.d-none').classList.remove("d-none");
     }
   }
@@ -172,8 +174,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
-    console.log("Overall Data ", data);
-    console.log("Equity Data2 ", data2);
+    // console.log("Overall Data ", data);
+    // console.log("Equity Data2 ", data2);
     let missing_eq_data =
       data2.filter((d) => null == d.METRIC_VALUE).length > 0;
 
