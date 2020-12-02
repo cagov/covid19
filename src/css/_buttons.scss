@@ -1,6 +1,6 @@
 a.btn {
-  background: #0f1e6b;
-  color: #fff;
+  background: $blue;
+  color: $white;
   border: 50px;
   text-decoration: none;
   padding: 0.375rem 0.75rem;
@@ -10,35 +10,34 @@ a.btn {
 }
 
 a.btn-dark {
-  background: #000;
-  color: #fff;
-  border: 1px solid #000;
+  background:$black;
+  color: $white;
+  border: 1px solid$black;
   text-decoration: none;
 }
 
 a.btn-dark:hover {
-  color: #fff;
-  background-color: #004abc;
-  background: #004abc;
+  color: $white;
+  background-color: $blue;
+  background: $blue;
 }
 
 a.btn:hover {
-  color: #fff;
-  background-color: #004abc;
-  background: #004abc;
+  color: $white;
+  background-color: $blue;
+  background: $blue;
 }
 
-a.btn:visited,
-a:visited,
-a:hover {
-  color: #fff;
+a.btn:visited
+ {
+  color: $white;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #0f1e6b;
-  background: #0f1e6b;
-  border-color: #0f1e6b;
+  color: $white;
+  background-color: $darkblue;
+  background: $darkblue;
+  border-color: $darkblue;
 }
 
 .nav-item .dropdown .btn-light {
@@ -46,27 +45,27 @@ a:hover {
 }
 
 .btn-clear {
-  color: #fff;
+  color: $white;
   background: none;
 }
 
 .btn.btn-clear:hover,
 .btn.btn-clear:focus {
-  color: #fff;
+  color: $white;
   background: none;
-  border: solid 1px #fff;
+  border: solid 1px $white;
 }
 
 .btn-primary:hover {
-  background-color: #004abc;
-  border-color: #004abc;
-  color: #fff;
+  background-color: $blue;
+  border-color: $blue;
+  color: $white;
 }
 
 .btn-secondary:hover {
-  color: #fff;
-  background-color: #004abc;
-  border-color: #004abc;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
 }
 
 button.step-description {
@@ -80,22 +79,22 @@ button.step-description {
 
 .btn-bd-primary:hover,
 .btn-bd-primary:active {
-  color: #fff;
-  background-color: #000;
-  border-color: #000;
-  background: #000;
+  color: $white;
+  background-color:$black;
+  border-color:$black;
+  background:$black;
 }
 
 .search-btn {
-  border: 5px #015179 solid;
+  border: 5px $blue solid;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  background: #015179;
+  background: $blue;
 }
 
 .search-btn:hover {
-  border: 5px #343a40 solid;
-  background: #343a40;
+  border: 5px $darkblue solid;
+  background: $darkblue;
   box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
 }
 
@@ -105,31 +104,31 @@ button:focus {
 
 .btn:focus,
 .btn.focus {
-  color: #ffffff;
-  background-color: #0257d5;
-  border-color: #0257d5;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
   box-shadow: none;
 }
 
 .btn-light:focus,
 .btn-light.focus {
-  color: #ffffff;
-  background-color: #0257d5;
-  border-color: #0257d5;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
   box-shadow: none;
 }
 
 .btn-dark:focus,
 .btn-dark.focus {
-  color: #ffffff;
-  background-color: #0257d5;
-  border-color: #0257d5;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
   box-shadow: none;
 }
 
 .btn-lightbg {
-  color: #1D2574;
-  background-color: #92C5DE;
+  color: $darkblue;
+  background-color: $lightblue;
 }
 
 .btn-bigger {
@@ -138,28 +137,28 @@ button:focus {
 }
 
 button.card-header.accordion-alpha:focus {
-  outline: 2px solid #004abc;
+  outline: 2px solid $yellow;
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
-  color: #fff;
+  color: $white;
   background-color: #2d2d2d;
   border-color: #2d2d2d;
 }
 .btn-search {
-  color: #1d2574 !important;
-  background-color: #fff !important;
-  border-color: #fff !important;
+  color: $darkblue !important;
+  background-color: $white !important;
+  border-color: $white !important;
   position: relative;
   padding-right: 45px !important;
 }
 
 .btn-search:focus,
 .btn-search:hover {
-  color: #1d2574 !important;
-  background-color: #f2f5fc !important;
-  border-color: #0257d5 !important;
+  color: $darkblue !important;
+  background-color: $lightestblue !important;
+  border-color: $blue !important;
 }
 
 .btn-search span {
@@ -187,11 +186,11 @@ button.card-header.accordion-alpha:focus {
 
 .btn-matrix.bg-purple-btn,
 .btn-matrix.bg-red-btn {
-  color: #fff !important;
+  color: $white !important;
 }
 .btn-matrix.bg-orange-btn,
 .btn-matrix.bg-yellow-btn {
-  color: #000 !important;
+  color:$black !important;
 }
 
 .interior-page .toggle-links {
@@ -204,26 +203,26 @@ button.card-header.accordion-alpha:focus {
     font-size: 1.15rem;
     display: inline-block;
     padding: 10px;
-    background-color: #fff;
+    background-color: $white;
     &.d-none {
       display: none;
     }
     &:hover, &:focus {
-      background-color: #F2F5FC;
+      background-color: $lightestblue;
     }
   }
   a, a:visited {
-    color: #1d2574;
+    color: $darkblue;
   }
   a.toggle-active, a:visited.toggle-active {
-    color: #fff;
+    color: $white;
   }
   .toggle-active {
-    background-color: #1f2574;
-    color: #fff;
+    background-color: $darkblue;
+    color: $white;
     cursor: default;
     &:hover, &:focus {
-      background-color: #1f2574;
+      background-color: $darkblue;
     }
   }
 }
@@ -241,7 +240,7 @@ button.clear {
   position: absolute;
   right: 20px;
   top: 50px;
-  color: #1f2574;
+  color: $darkblue;
   font-weight: 300;
   transition: all .3s ease;
   span.ca-gov-icon-close-line {
@@ -255,35 +254,38 @@ button.clear {
     }
   }
   &:focus {
-    outline: 2px solid #004abc;
+    outline: 2px solid $yellow;
   }
 }
 
   .small-tab {
     padding:.5rem .75rem .5rem .75rem;
-    border:1px solid #F2F5FC;
+    border:1px solid $lightestblue;
     text-decoration:underline;
-    color:#1F2574;
-    background:#fff;
+    color:$darkblue;
+    background:$white;
     font-size:.95rem;
     font-weight: 700 !important;
     &:hover, &:focus {
       text-decoration:none;
       outline-offset: -2px;
     }
+    &:focus {
+      outline: 2px solid $yellow;
+    }
     &.active, &[aria-expanded="true"] {
-      color:#000;
+      color:$black;
       text-decoration:none;
       cursor: default;
       &:focus {
-        outline: 2px solid #F2F5FC;
+        outline: 2px solid $yellow;
       }
     }
   }
 
   .large-tabs {
-    border: 1px solid #1f2574!important;
-    background-color: #1f2574!important;
+    border: 1px solid $darkblue!important;
+    background-color: $darkblue!important;
     display: flex!important;
     justify-content: center!important;
     .large-tab {
@@ -295,21 +297,31 @@ button.clear {
       font-size: 1.15rem;
       display: inline-block;
       padding: 10px;
-      background-color: #fff;
-      color:#1F2574;
+      background-color: $white;
+      color:$darkblue;
       min-width: 200px;
       margin: 0 1px 0 0;
       border: none;
       &:hover, &:focus {
-        background-color: #F2F5FC;
+        background-color: $lightestblue;
       }
+      &:focus {
+        outline: 2px solid $yellow;
+      }
+      &:last-child {
+        margin-right: 0;}
       &.active, &[aria-expanded="true"] {
-        color:#fff;
-        background-color: #1F2574;
+        color:$white;
+        background-color: $darkblue;
         text-decoration:none;
+        pointer-events: none;
         cursor: default;
         &:hover, &:focus {
-          background-color: #1F2574;
+          background-color: $darkblue;
+          pointer-events: none;
+        }
+        &:focus {
+          outline: 2px solid $yellow;
         }
       }
     } 
@@ -348,71 +360,71 @@ button.clear {
 //blue arrow link
   .link-arrow-blue {
     @include link-arrow; 
-      color:#1F2574;
+      color:$darkblue;
       .link-arrow-icon {
-        border:2px solid #1F2574;
+        border:2px solid $darkblue;
       }
       .arrow1, .arrow2 {
         transition: all .3s ease;
-        fill:#1F2574;
+        fill:$darkblue;
       }
       //link hover and focus state
       &:hover, &:focus {
-        color:#003D9D;
+        color:$blue;
         .link-arrow-icon {
-          border-color:#003D9D;
-          .arrow1, .arrow2 {fill:#003D9D;}
+          border-color:$blue;
+          .arrow1, .arrow2 {fill:$blue;}
         }
         .link-arrow-icon-svg {right:-10px;}
       }
-      &:focus {outline: 2px solid #0257d5 !important;}
+      &:focus {outline: 2px solid $yellow !important;}
     }
 
     //white arrow link
   .link-arrow-white {
     @include link-arrow; 
-      color:#fff !important;
+      color:$white !important;
       .link-arrow-icon {
-        border:2px solid #fff;
+        border:2px solid $white;
       }
       .arrow1, .arrow2 {
         transition: all .3s ease;
-        fill:#fff;
+        fill:$white;
       }
       //link hover and focus state
       &:hover, &:focus {
-        color:#FF8000 !important;        ;
+        color:$orange !important;        ;
         .link-arrow-icon {
-          border-color:#FF8000; 
-          .arrow1, .arrow2 {fill:#FF8000;}
+          border-color:$orange; 
+          .arrow1, .arrow2 {fill:$orange;}
         }
         .link-arrow-icon-svg {right:-10px;}
       }
-      &:focus {outline: 2px solid #fff !important;}
+      &:focus {outline: 2px solid $yellow !important;}
     }
     
 
   //light blue  arrow link
   .link-arrow-lightblue {
     @include link-arrow; 
-      color:#92C5DE !important;
+      color:$lightblue !important;
       .link-arrow-icon {
-        border:2px solid #92C5DE;
+        border:2px solid $lightblue;
       }
       .arrow1, .arrow2 {
         transition: all .3s ease;
-        fill:#92C5DE;
+        fill:$lightblue;
       }
       //link hover and focus state
       &:hover, &:focus {
-        color:#FF8000 !important;        ;
+        color:$orange !important;        ;
         .link-arrow-icon {
-          border-color:#FF8000; 
-          .arrow1, .arrow2 {fill:#FF8000;}
+          border-color:$orange; 
+          .arrow1, .arrow2 {fill:$orange;}
         }
         .link-arrow-icon-svg {right:-10px;}
       }
-      &:focus {outline: 2px solid #fff !important;}
+      &:focus {outline: 2px solid $yellow !important;}
     }
 
 /* Call to Action Buttons */
@@ -434,37 +446,585 @@ button.clear {
 // dark blue button
 .button-blue {
   @include action-button;
-  background-color: #1F2574;
-  color: #fff !important;
+  background-color: $darkblue;
+  color: $white !important;
   &:hover, &:focus {
-    background-color: #FF8000;
-    color: #1F2574 !important;
+    background-color: $orange;
+    color: $darkblue !important;
   }
-  &:focus {outline: 2px solid #0257d5 !important;}
+  &:focus {outline: 2px solid $yellow !important;}
 }
 // white button
 .button-white {
   @include action-button;
-  background-color: #fff;
-  color: #1F2574 !important;
+  background-color: $white;
+  color: $darkblue !important;
   &:hover, &:focus {
-    background-color: #FF8000;
-    color: #1F2574 !important;
+    background-color: $orange;
+    color: $darkblue !important;
   }
-  &:focus {outline: 2px solid #fff !important;}
+  &:focus {outline: 2px solid $yellow !important;}
 }
 // light blue button
 .button-lightblue {
   @include action-button;
-  background-color: #92C5DE;
-  color: #1F2574 !important;
+  background-color: $lightblue;
+  color: $darkblue !important;
   &:hover, &:focus {
-    background-color: #FF8000;
-    color: #1F2574 !important;
+    background-color: $orange;
+    color: $darkblue !important;
   }
-  &:focus {outline: 2px solid #0257d5 !important;}
+  &:focus {outline: 2px solid $yellow !important;}
 }
 
 .bd-4px {
 border-radius: 0.25rem !important;
+}
+
+
+
+// LEARN MORE SECTION
+learn-more-section {
+  .faq-twitter {
+    @extend %block-padding;
+    width: 100%;
+    order: 1;
+    @include tablet {
+      order: 2;
+    }
+    &-wrap {
+      @extend %wrap;
+      @include tablet {
+        display: flex;
+        align-items: flex-start;
+      }
+    }
+  }
+  .faq {
+    text-align: left;
+    @include tablet {
+      width: 50%;
+      padding: 0 2rem 0 0;
+    }
+    &-headline {
+      @extend %headline3;
+      color: $darkblue;
+      padding-bottom: 1.5rem;
+      padding-left: 0.75rem;
+      &-link {
+        transition: $slow;
+        color: $darkblue;
+        padding: 0.5rem 0.25rem;
+        border-radius: 2.5rem;
+        &:hover {
+          color: $yellow;
+        }
+        &:focus {
+          color: $yellow;
+          box-shadow: 0 0 0 2px $orange;
+        }
+      }
+    }
+    .button {
+      @include tablet {
+        margin-left: 0.75rem;
+      }
+    }
+    cwds-arrow {
+      margin-left: auto;
+    }
+    &-item {
+      &-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $darkblue;
+        padding: 1.2rem 0.75rem;
+        position: relative;
+        text-decoration: none;
+        transition: background 0.3s $slow-curve;
+
+        &:focus {
+          background: $lightestblue;
+          box-shadow: 0 0 0 2px $yellow;
+          .faq {
+            &-icon {
+              color: $darkblue;
+              &-circle {
+                background: $white;
+                border-color: $darkblue;
+                transform: scale(1.2);
+              }
+              &-arrow {
+                transform: translate(275%, -50%);
+              }
+              &-arrow:last-of-type {
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+      }
+      &-headline {
+        @extend %headline5;
+        font-family: $body;
+        color: $darkblue;
+        position: relative;
+        z-index: 100;
+        margin-right: 1rem;
+        margin-bottom: 0 !important;
+        padding-top: 0;
+      }
+      &:hover {
+        .faq {
+          &-item {
+            &-link {
+              background: $lightestblue;
+            }
+          }
+          &-icon {
+            color: $darkblue;
+            &-circle {
+              background: $white;
+              border-color: $darkblue;
+              transform: scale(1.2);
+            }
+            &-arrow {
+              transform: translate(275%, -50%);
+            }
+            &-arrow:last-of-type {
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+    &-icon {
+      @include size(40px);
+      min-width: 40px;
+      min-height: 40px;
+      margin-left: auto;
+      position: relative;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $orange;
+      @include tablet {
+        @include size(30px);
+        min-width: 30px;
+        min-height: 30px;
+      }
+      @include desktop {
+        @include size(35px);
+        min-width: 35px;
+        min-height: 35px;
+      }
+      @include lg {
+        @include size(40px);
+        min-width: 40px;
+        min-height: 40px;
+      }
+      &-arrow,
+      &-circle {
+        position: absolute;
+        transition: 1.2s cubic-bezier(0.15, 0.92, 0.14, 0.95);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      &-circle {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $orange;
+        border-radius: 100%;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      &-arrow {
+        left: 50%;
+        top: 50%;
+        width: 16px;
+        min-width: 16px;
+        height: 1rem;
+        transform: translate(-50%, -50%);
+        @include lg {
+          width: 0.75vw;
+          min-width: 0.75vw;
+        }
+        &:last-of-type {
+          transform: translate(-275%, -50%);
+        }
+        &-wrapper {
+          @include absolute(left 0 right 0 top 0 bottom 0);
+          @include size(100%);
+          overflow: hidden;
+        }
+        &-svg {
+          position: relative;
+          display: block;
+          @include size(100%, 1rem);
+          &-art {
+            @include size(100%);
+            @include absolute(left 0 right 0 top 0 bottom 0);
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .t-center {
+    text-align: center;
+  }
+
+  .faq article:first-child .faq-item-link {
+    border-top: 1px solid $blue;
+  }
+  .cwdsarrow {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+// Dark blue questions
+faq-section {
+
+	.faq-twitter {
+		background: $darkblue;
+		@extend %block-padding;
+		width: 100%;
+		order: 1;
+		@include tablet {
+			order: 2;
+		}
+		&-wrap {
+			@extend %wrap;
+			@include tablet {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+	.faq {
+		text-align: left;
+		@include tablet {
+			width: 50%;
+			padding: 0 2rem 0 0;
+		}
+		&-headline {
+			@extend %headline3;
+			color: $orange;
+			padding-bottom: 1.5rem;
+			padding-left: .75rem;
+			&-link {
+				transition: $slow;
+				color: $orange;
+				padding: .5rem .25rem;
+				border-radius: 2.5rem;
+				&:hover {
+					color: $yellow;
+				}
+				&:focus {
+					color: $yellow;
+					box-shadow:  0 0 0 2px $orange;
+				}
+	
+			}
+		}
+		.button {
+			@include tablet {
+				margin-left: .75rem
+			}
+		}
+		cwds-arrow {
+			margin-left: auto;
+		}
+		&-item {
+			&-link {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				border-bottom: 1px solid rgba($white, .1);
+				padding: .75rem;
+				position: relative;
+				transition: background .3s $slow-curve;
+				&:focus {
+					background: $blue;
+					box-shadow:  0 0 0 2px $yellow;
+					.faq {
+						&-icon {
+							color: $darkblue;
+							&-circle {
+								background: $white;
+								border-color: $darkblue;
+								transform: scale(1.2)
+							}
+							&-arrow {
+								transform: translate(275%,-50%)
+							}
+							&-arrow:last-of-type {
+								transform: translate(-50%,-50%);
+							}
+						}
+					}
+				}
+			}
+			&-headline {
+				@extend %headline5;
+				font-family: $body;
+				color: $white;
+				position: relative;
+				z-index: 100;
+				margin-right: 1rem;
+			}
+			&:hover {
+				.faq {
+					&-item {
+						&-link {
+							background: $blue;
+						}
+					}
+					&-icon {
+						color: $darkblue;
+						&-circle {
+							background: $white;
+							border-color: $darkblue;
+							transform: scale(1.2)
+						}
+						&-arrow {
+							transform: translate(275%,-50%)
+						}
+						&-arrow:last-of-type {
+							transform: translate(-50%,-50%);
+						}
+					}
+				}
+			}
+		}
+		&-icon {
+			@include size(40px);
+			min-width: 40px;
+			min-height: 40px;
+			margin-left: auto;
+			position: relative;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: $orange;
+			@include tablet {
+				@include size(30px);
+				min-width:  30px;
+				min-height: 30px;
+			}
+			@include desktop {
+				@include size(35px);
+				min-width:  35px;
+				min-height: 35px;
+			}
+			@include lg {
+				@include size(40px);
+				min-width:  40px;
+				min-height: 40px;
+			}
+			&-arrow,
+			&-circle {
+				position: absolute;
+				transition: 1.2s cubic-bezier(.15,.92,.14,.95);
+				-webkit-backface-visibility :hidden;
+				backface-visibility: hidden
+			}
+			&-circle {
+				width: 100%;
+				height: 100%;
+				border: 1px solid $orange;
+				border-radius: 100%;
+				overflow: hidden;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0
+			}
+			&-arrow {
+				left: 50%;
+				top: 50%;
+				width: 16px;
+				min-width: 16px;
+				height: 1rem;
+				transform: translate(-50%, -50%);
+				@include lg {
+					width: .75vw;
+					min-width: .75vw;
+				}
+				&:last-of-type {
+					transform: translate(-275%, -50%);
+				}
+				&-wrapper {
+					@include absolute(left 0 right 0 top 0 bottom 0);
+					@include size(100%);
+					overflow: hidden;
+				}
+				&-svg {
+					position: relative;
+					display: block;
+					@include size(100%, 1rem);
+					&-art {
+						@include size(100%);
+						@include absolute(left 0 right 0 top 0 bottom 0);
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	.t-center {
+		text-align: center;
+	}
+	.twitter-feed {
+		padding: 2rem 0rem 0;
+		text-align: center;
+		color: $white;
+		@include tablet {
+			width: 50%;
+			padding: 0 0 0 2rem;
+		}
+		iframe {
+			width: 100%;
+		}
+	}
+
+}
+
+// Special Note
+.special-note {
+  background: $lightestblue;
+  padding: 1rem 1rem 1rem 3.5rem;
+  position: relative;
+  margin: 0 auto;
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    &::before {
+      font-family: "CaGov" !important;
+      content: "\e072";
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      font-size: 2rem;
+      color: $blue;
+    }
+  }
+}
+
+
+
+/* ARROW LIST : List links with arrows */
+@mixin list-link-arrow {
+  font-family: "Roboto",sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-decoration:none !important;
+  text-transform: none;
+  display:flex;
+  justify-content: left;
+  transition: none;
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid;
+  
+}
+.arrow-links {
+  padding-left: 0;
+  li {list-style: none;}
+  .link-arrow-label {
+    margin-right:auto;
+  }
+  .link-arrow-icon {
+    width: 2.75rem;
+    height: 2.75rem; 
+    border:2px solid;
+    border-radius: 50%;
+    padding:0;
+    overflow:hidden;
+    transition: all .3s ease;
+    margin-left: 1rem;
+    }
+  .link-arrow-icon-svg {
+    width: 60px;
+    height:100%;
+    position:relative;
+    transition: all .3s ease;
+    right:28px;
+  }
+} 
+
+
+
+
+//blue arrow list link
+.arrow-links {
+  li:first-child a.link-arrow-blue, article:first-child a.link-arrow-blue {
+    border-top: 1px solid $darkblue;
+  }
+  .link-arrow-blue {
+    @include list-link-arrow; 
+      color:$darkblue;
+      border-bottom-color:$darkblue;
+      
+      .link-arrow-icon {
+        border-color:$orange;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:$orange;
+      }
+      // link hover and focus state
+      &:hover, &:focus {
+        color:$blue;
+        background: $lightestblue;
+        .link-arrow-icon {
+          border-color:$orange;
+          .arrow1, .arrow2 {fill:$orange;}
+        }
+        .link-arrow-icon-svg {right:-10px;}
+      }
+      &:focus {outline: 2px solid $yellow !important;}
+    }
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+//white arrow list link
+.arrow-links {
+  li:first-child a.link-arrow-white, article:first-child a.link-arrow-white {
+    border-top: 1px solid tint($darkblue, 20%);;
+  }
+  .link-arrow-white {
+    @include list-link-arrow; 
+      color:$white;
+      border-bottom-color: tint($darkblue, 20%);
+      
+      .link-arrow-icon {
+        border-color:$orange;
+      }
+      .arrow1, .arrow2 {
+        transition: all .3s ease;
+        fill:$orange;
+      }
+      // link hover and focus state
+      &:hover, &:focus {
+        color:$white !important;
+        background: $blue;
+        .link-arrow-icon {
+          border-color:$orange;
+          .arrow1, .arrow2 {fill:$orange;}
+        }
+        .link-arrow-icon-svg {right:-10px;}
+      }
+      &:focus {outline: 2px solid $yellow !important;}
+    }
 }
