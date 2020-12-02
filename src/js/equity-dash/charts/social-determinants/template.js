@@ -7,14 +7,12 @@ export default function template(translationsObj) {
     <h2 class="text-center">${translationsObj.sectionTitle}</h2>
     <p>${translationsObj.sectionDescription}</p>
     <div class="col-lg-12 bg-white px-3 py-4">
-        <div class="row d-flex justify-content-md-center">
-            <div class="inline-toggle-link-container">
-                <div class="toggle-links large-tabs">
-                  <a href="#" class="toggle-active js-toggle-group income">${translationsObj.chartButtonIncome}</a>
-                  <a href="#" class="js-toggle-group housing">${translationsObj.chartButtonHousing}</a>
-                  <a href="#" class="js-toggle-group healthcare">${translationsObj.chartButtonHealthcare}</a>
-                </div>
-            </div>
+        <div class="d-flex justify-content-center mt-3">
+          <div class="large-tabs">
+              <button class="large-tab active js-toggle-group income">${translationsObj.chartButtonIncome}</button>
+              <button class="large-tab js-toggle-group housing">${translationsObj.chartButtonHousing}</button>
+              <button class="large-tab js-toggle-group healthcare">${translationsObj.chartButtonHealthcare}</button>
+          </div>
         </div>
         <div class="row">
           <div class="col-lg-7 col-md-9 col-sm-12 mx-auto px-0">
