@@ -248,24 +248,17 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return description;
   }
 
-  getLegendString() {
-    let relativePercentage = null;
-    if (this.county === "California") {
-      relativePercentage = this.translationsObj[
-        "relative-percentage-statewide"
-      ];
-      return relativePercentage;
-    }
-    relativePercentage = this.translationsObj["relative-percentage-county"];
-    return relativePercentage;
-  }
-
-  getLegendStringStatewide() {
-    let relativePercentage = this.translationsObj[
-      "relative-percentage-state-population"
-    ];
-    return relativePercentage;
-  }
+  // getLegendString() {
+  //   let relativePercentage = null;
+  //   if (this.county === "California") {
+  //     relativePercentage = this.translationsObj[
+  //       "relative-percentage-statewide"
+  //     ];
+  //     return relativePercentage;
+  //   }
+  //   relativePercentage = this.translationsObj["relative-percentage-county"];
+  //   return relativePercentage;
+  // }
 
   // Jim's changes from merge to double check
   // this.description = function () {
@@ -281,7 +274,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
   legendStrings = function() {
     let isStatewide = this.county === 'California';
     let key1 = 'chartLegend1' + (isStatewide? 'State' : "County") + '--'+this.selectedMetric;
-    let key2 = 'chartLegend2' + '--'+this.selectedMetric;
+    let key2 = 'chartLegend2' + (isStatewide? 'State' : "County");
+    console
     return [this.translationsObj[key1], this.translationsObj[key2]];
   }
 
