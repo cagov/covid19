@@ -125,16 +125,40 @@ export default function drawBars({
     .join((enter) => {
       enter
         .append("text")
-        .attr("class", "bars")
+        .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
         .attr("x", (d) => x1(100) + 5)
         .attr("height", y.bandwidth())
-        .text((d) =>
-          d.METRIC_TOTAL_PERCENTAGE
+        .text((d) => {
+          if (d.METRIC_TOTAL_PERCENTAGE !== null) {
+          return d.METRIC_TOTAL_PERCENTAGE
             ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
             : 0 + "%"
+          } else {
+            return d.APPLIED_SUPPRESSION;
+          }
+          }
         )
         .attr("text-anchor", "end");
+
+
+
+        // enter
+        // .append("text")
+        // .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
+        // .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
+        // .attr("x", (d) => x1(100) + 5)
+        // .attr("height", y.bandwidth())
+        // .text((d) => {
+        //   if (d.METRIC_TOTAL_PERCENTAGE !== null) {
+        //   d.METRIC_TOTAL_PERCENTAGE
+        //     ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+        //     : 0 + "%";
+        //   } else {
+        //     return 'MASKED'd.APPLIED_SUPPRESSION;
+        //   }
+        // }
+        // )
     });
 
   //end of bar labels blue

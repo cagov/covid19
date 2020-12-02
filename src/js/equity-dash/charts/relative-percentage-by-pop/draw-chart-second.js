@@ -27,7 +27,7 @@ export default function drawSecondBars({
     .data(stackedData1)
     .enter()
     .append("g")
-    .attr("fill", (d) => color1(d.key))
+    .attr("fill", (d) => color2(d.key))
     .selectAll("rect")
 
     // enter a second time = loop subgroup per subgroup to add yellow bars
