@@ -108,10 +108,11 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.county = "California";
     this.drawBars = drawBars;
     this.chartTitle = function () {
+      let isStatewide = this.county === "California";
       // console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
         "placeholderForDynamicLocation",
-        this.county
+        isStatewide ? this.county : this.county + " County "
       );
     };
     this.description = function (selectedMetricDescription) {
@@ -133,7 +134,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // console.log("Filter text",filterTxt);
       filterTxt = filterTxt.replace(
         "placeholderForDynamicLocation",
-        this.county
+        isStatewide ? this.county : this.county + " County "
       );
       return filterTxt;
     };
@@ -619,8 +620,6 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
     // Remap data object
     data = sortableData.concat(nullSortData); 
     
-    console.log("final data", data);
-
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
 
@@ -661,7 +660,7 @@ perc_diff_rate_per_100k_30_Prev	% change between rate_per_100k and rate_per_100k
         .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
     
-    // Is this for the line
+    // Is this for the line (is this the number value or the label?)
     let statewideRatePer100k = this.combinedData[this.selectedMetric]
       ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
       : null;

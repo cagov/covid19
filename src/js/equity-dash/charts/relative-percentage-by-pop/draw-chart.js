@@ -135,7 +135,8 @@ export default function drawBars({
             ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
             : 0 + "%"
           } else {
-            return d.APPLIED_SUPPRESSION;
+            return ``;
+            // return d.APPLIED_SUPPRESSION;
           }
           }
         )
