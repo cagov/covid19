@@ -8,19 +8,7 @@ tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
-<!--{% set data = {
-    "cases_per_100k_statewide":1871.4,
-    "death_rate_per_100k_statewide":45.5,
-    "cases_per_100k_latino":2879.1,
-    "cases_per_100k_pacific_islanders": 4024,
-    "case_rate_vs_statewide_percent_latino":54,
-    "case_rate_vs_statewide_percent_pacific_islanders":115,
-    "case_rate_vs_statewide_percent_low_income":36,
-    "death_rate_vs_statewide_percent_black":24,
-    "death_rate_per_100k_black":56.2
-  } %}-->
-
-
+<!--{% set data = equityTopBoxes[0] %}-->
 
 <p class="emphasized">All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
 
@@ -65,13 +53,13 @@ addtositemap: false
 <!--{% if value > 0 %}-->
 
 <div class="eq-text mb-3">
-  Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide
+  Case rate for Latino people is <span class="eq-data">{{value|formatNumber(tags,0)}}% higher</span> than statewide
 </div>
 
 <!--{% elif value < 0 %}-->
 
 <div class="eq-text mb-3">
-  Case rate for Latino people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+  Case rate for Latino people is <span class="eq-data">{{value|abs|formatNumber(tags,0)}}% lower</span> than statewide
 </div>
 
 <!--{% else %}-->
@@ -84,8 +72,8 @@ addtositemap: false
                                 
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> Latino <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags,1)}}</strong> Latino <br>
+                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags,1)}}</strong> statewide</p>
                             </div>
                     
                         </div>
@@ -95,13 +83,13 @@ addtositemap: false
 <!--{% if value > 0 %}-->
 
 <div class="eq-text mb-3">
-  Case rate for Pacific Islanders is <span class="eq-data">{{value}}% higher</span> than statewide
+  Case rate for Pacific Islanders is <span class="eq-data">{{value|formatNumber(tags,0)}}% higher</span> than statewide
 </div>
 
 <!--{% elif value < 0 %}-->
 
 <div class="eq-text mb-3">
-  Case rate for Pacific Islanders is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+  Case rate for Pacific Islanders is <span class="eq-data">{{value|abs|formatNumber(tags,0)}}% lower</span> than statewide
 </div>
 
 <!--{% else %}-->
@@ -113,8 +101,8 @@ addtositemap: false
 <!--{% endif %}-->
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags,1)}}</strong> NHPI <br>
+                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags,1)}}</strong> statewide</p>
                             </div>
                     
                         </div>
@@ -125,13 +113,13 @@ addtositemap: false
 <!--{% if value > 0 %}-->
 
 <div class="eq-text mb-3">
-  Death rate for Black people is <span class="eq-data">{{value}}% higher</span> than statewide
+  Death rate for Black people is <span class="eq-data">{{value|formatNumber(tags,0)}}% higher</span> than statewide
 </div>
 
 <!--{% elif value < 0 %}-->
 
 <div class="eq-text mb-3">
-  Death rate for Black people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
+  Death rate for Black people is <span class="eq-data">{{value|abs|formatNumber(tags,0)}}% lower</span> than statewide
 </div>
 
 <!--{% else %}-->
@@ -143,8 +131,8 @@ addtositemap: false
 <!--{% endif %}-->
                                 <div class="eq-cases">
                                     <p class="text-xs">Deaths per 100K people:</p> 
-                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black}}</strong> Black <br>
-                                    <strong>{{data.death_rate_per_100k_statewide}}</strong> statewide</p>
+                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black|formatNumber(tags,1)}}</strong> Black <br>
+                                    <strong>{{data.death_rate_per_100k_statewide|formatNumber(tags,1)}}</strong> statewide</p>
                                 </div>
                         </div>
                     
