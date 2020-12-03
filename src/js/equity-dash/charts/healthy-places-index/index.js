@@ -5,7 +5,7 @@ import Tooltip from "./tooltip.js";
 import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
-
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
     // console.log("Setting up CAGOVChartD3Lines");
@@ -265,7 +265,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
     svg.selectAll(".y-label").remove();
-    d3.selectAll(".tooltip-container--d3-lines").remove();
+    // d3.selectAll(".tooltip-container--d3-lines").remove();
 
     if (!missing_eq_data) {
       svg
@@ -308,22 +308,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.append("g").call(yAxisLabel);
 
     let is_debugging_infobox = false;
+    let boxClass = "chartOverlay-d3-lines";
     if (missing_eq_data || is_debugging_infobox) {
-      svg.style("opacity",.5);
-      // append informative box
-      d3
-      .select("cagov-chart-d3-lines")
-      .append("div")
-      .attr("class", "tooltip-container tooltip-container--d3-lines")
-      .style("visibility", "visible")
-      // 250 is current width of tooltip-container - need a better way of centering
-      .style("left", (this.chartBreakpointValues.width - 250)/2 + "px")
-      .style("top", "90px")
-      .append("div")
-      .attr("class", "chart-tooltip")
-      .text(this.textLabels.missingDataCaption)
+      chartOverlayBox(svg,                      
+                     "cagov-chart-d3-lines",     // class of chart
+                     boxClass,                   // class of box
+                     this.chartBreakpointValues, // dimensions dict (contains width,height)
+                     this.textLabels.missingDataCaption // caption
+                     )
     } else {
-      svg.style("opacity",1);
+      chartOverlayBoxClear(svg, boxClass);
     }
 
     //tooltip
