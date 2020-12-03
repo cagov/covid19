@@ -7,7 +7,7 @@ export default function template(translationsObj) {
     <h2 class="text-center">${translationsObj.sectionTitle}</h2>
     <p>${translationsObj.sectionDescription}</p>
     <div class="col-lg-12 bg-white px-3 py-4">
-        <div class="d-flex justify-content-center mt-3">
+        <div class="d-flex flex-column flex-md-row justify-content-center mt-3">
           <div class="large-tabs">
               <button class="large-tab active js-toggle-group income">${translationsObj.chartButtonIncome}</button>
               <button class="large-tab js-toggle-group housing">${translationsObj.chartButtonHousing}</button>
