@@ -4,15 +4,15 @@ import drawSecondBars from "./draw-chart-second.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
-import getDisproportionateRatioSortValue from './../../get-disproportionality-ratio-sort-value.js';
+import getDisproportionateRatioSortValue from './get-disproportionality-ratio-sort-value.js';
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback() {
     // Settings and initial values
     this.chartOptions = {
       // Data
-      subgroups2: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
       subgroups1: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
+      subgroups2: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
       dataUrl:
         config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
       state: "California",
@@ -470,10 +470,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
           d.DEMOGRAPHIC_SET_CATEGORY
         );
+      }
       // Run the sort ratio calculating logic. 
       // If not valid, will return null.
       d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
-      }
     });
 
     secondData.forEach((d) => {
@@ -481,10 +481,10 @@ class CAGOVEquityREPop extends window.HTMLElement {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
           d.DEMOGRAPHIC_SET_CATEGORY
         );
-        // Run the sort ratio calculating logic. 
-        // If not valid, will return null.
-        d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
       }
+      // Run the sort ratio calculating logic. 
+      // If not valid, will return null.
+      d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
     });
 
     let sortableData = data.filter((d) => d.DISPROPORTIONALITY_RATIO !== null);
@@ -492,7 +492,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
 
     // Sort data with non-null 'disproportionality ratio' 
     sortableData.sort(function (a, b) {
-      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
+      return d3.descending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
     });
 
     // Push null data values to the end or the sorted array (@TODO double check order)
