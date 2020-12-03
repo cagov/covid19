@@ -168,6 +168,29 @@
     min-width: 100px;
   }
 
+  .chart-overlaybox-container {
+    /* display:inline-block; */
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+  
+  .chart-overlaybox {
+    // position: absolute;
+    // z-index: 10;
+    // visibility: hidden;
+    // background: #fff;
+    pointer-events: none;
+
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+    min-width: 100px;
+  }
+
+
   .highlight-data {
     font-weight: bold;
     padding-right: 2px; // not in cagov chart
