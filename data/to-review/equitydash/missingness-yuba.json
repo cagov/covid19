@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Yuba",
+      "METRIC": "cases",
+      "MISSING": 142,
+      "NOT_MISSING": 636,
+      "TOTAL": 778,
+      "PERCENT_COMPLETE": 0.817480719794344,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.946666666666667,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.129185946872322,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Yuba",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Yuba",
+      "METRIC": "tests",
+      "MISSING": 3003,
+      "NOT_MISSING": 3771,
+      "TOTAL": 6774,
+      "PERCENT_COMPLETE": 0.556687333923826,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.436737184703011,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.119950149220816,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1,
+      "NOT_MISSING": 825,
+      "TOTAL": 826,
+      "PERCENT_COMPLETE": 0.998789346246973,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.001210653753027,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 541,
+      "NOT_MISSING": 285,
+      "TOTAL": 826,
+      "PERCENT_COMPLETE": 0.345036319612591,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.236115512848142,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
