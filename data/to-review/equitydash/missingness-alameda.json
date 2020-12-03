@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Alameda",
+      "METRIC": "cases",
+      "MISSING": 1215,
+      "NOT_MISSING": 4969,
+      "TOTAL": 6184,
+      "PERCENT_COMPLETE": 0.803525226390686,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.905682257441051,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.102157031050366,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Alameda",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 29,
+      "TOTAL": 29,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Alameda",
+      "METRIC": "tests",
+      "MISSING": 94070,
+      "NOT_MISSING": 129557,
+      "TOTAL": 223627,
+      "PERCENT_COMPLETE": 0.579344175792726,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.552926058493594,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0264181172991321,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 55,
+      "NOT_MISSING": 6692,
+      "TOTAL": 6747,
+      "PERCENT_COMPLETE": 0.991848228842449,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.004046680845564,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 30,
+      "TOTAL": 30,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 4802,
+      "NOT_MISSING": 1945,
+      "TOTAL": 6747,
+      "PERCENT_COMPLETE": 0.28827627093523,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.167388753695312,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 25,
+      "NOT_MISSING": 5,
+      "TOTAL": 30,
+      "PERCENT_COMPLETE": 0.166666666666667,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.055555555555556,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}

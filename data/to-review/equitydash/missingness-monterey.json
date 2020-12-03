@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Monterey",
+      "METRIC": "cases",
+      "MISSING": 1383,
+      "NOT_MISSING": 2745,
+      "TOTAL": 4128,
+      "PERCENT_COMPLETE": 0.664970930232558,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.90625,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.241279069767442,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Monterey",
+      "METRIC": "deaths",
+      "MISSING": 4,
+      "NOT_MISSING": 20,
+      "TOTAL": 24,
+      "PERCENT_COMPLETE": 0.833333333333333,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.166666666666667,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Monterey",
+      "METRIC": "tests",
+      "MISSING": 33322,
+      "NOT_MISSING": 22195,
+      "TOTAL": 55517,
+      "PERCENT_COMPLETE": 0.399787452492029,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.369904625762212,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0298828267298173,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2,
+      "NOT_MISSING": 4356,
+      "TOTAL": 4358,
+      "PERCENT_COMPLETE": 0.999541073887104,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.000458926112896,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 25,
+      "TOTAL": 25,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2852,
+      "NOT_MISSING": 1506,
+      "TOTAL": 4358,
+      "PERCENT_COMPLETE": 0.345571363010555,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.329653283972757,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 9,
+      "NOT_MISSING": 16,
+      "TOTAL": 25,
+      "PERCENT_COMPLETE": 0.64,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.265,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}

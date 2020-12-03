@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Amador",
+      "METRIC": "cases",
+      "MISSING": 68,
+      "NOT_MISSING": 141,
+      "TOTAL": 209,
+      "PERCENT_COMPLETE": 0.674641148325359,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.815789473684211,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.141148325358852,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Amador",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Amador",
+      "METRIC": "tests",
+      "MISSING": 5318,
+      "NOT_MISSING": 1756,
+      "TOTAL": 7074,
+      "PERCENT_COMPLETE": 0.248232965790218,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.201027811366385,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0472051544238332,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 0,
+      "NOT_MISSING": 224,
+      "TOTAL": 224,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 197,
+      "NOT_MISSING": 27,
+      "TOTAL": 224,
+      "PERCENT_COMPLETE": 0.120535714285714,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.279464285714286,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}

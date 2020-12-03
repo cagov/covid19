@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Madera",
+      "METRIC": "cases",
+      "MISSING": 586,
+      "NOT_MISSING": 637,
+      "TOTAL": 1223,
+      "PERCENT_COMPLETE": 0.52085036794767,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.646706586826347,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.125856218878678,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Madera",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Madera",
+      "METRIC": "tests",
+      "MISSING": 14076,
+      "NOT_MISSING": 6197,
+      "TOTAL": 20273,
+      "PERCENT_COMPLETE": 0.305677502096384,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.254303405572755,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0513740965236289,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 3,
+      "NOT_MISSING": 1316,
+      "TOTAL": 1319,
+      "PERCENT_COMPLETE": 0.997725549658832,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0001467907667,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1144,
+      "NOT_MISSING": 175,
+      "TOTAL": 1319,
+      "PERCENT_COMPLETE": 0.13267626990144,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.146047134353879,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 1,
+      "NOT_MISSING": 0,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}

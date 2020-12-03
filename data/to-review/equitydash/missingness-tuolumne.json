@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Tuolumne",
+      "METRIC": "cases",
+      "MISSING": 166,
+      "NOT_MISSING": 599,
+      "TOTAL": 765,
+      "PERCENT_COMPLETE": 0.783006535947712,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.831168831168831,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0481622952211187,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Tuolumne",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Tuolumne",
+      "METRIC": "tests",
+      "MISSING": 4918,
+      "NOT_MISSING": 4966,
+      "TOTAL": 9884,
+      "PERCENT_COMPLETE": 0.502428166734116,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.302546093064091,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.199882073670024,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 7,
+      "NOT_MISSING": 773,
+      "TOTAL": 780,
+      "PERCENT_COMPLETE": 0.991025641025641,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.008974358974359,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 705,
+      "NOT_MISSING": 75,
+      "TOTAL": 780,
+      "PERCENT_COMPLETE": 0.096153846153846,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.340465872156013,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 1,
+      "NOT_MISSING": 0,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.5,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}

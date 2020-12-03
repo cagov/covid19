@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Fresno",
+      "METRIC": "cases",
+      "MISSING": 1345,
+      "NOT_MISSING": 4895,
+      "TOTAL": 6240,
+      "PERCENT_COMPLETE": 0.784455128205128,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.843207855973813,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0587527277686853,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Fresno",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 24,
+      "TOTAL": 24,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Fresno",
+      "METRIC": "tests",
+      "MISSING": 48604,
+      "NOT_MISSING": 50349,
+      "TOTAL": 98953,
+      "PERCENT_COMPLETE": 0.508817317312259,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.440046395051194,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0687709222610648,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 23,
+      "NOT_MISSING": 6786,
+      "TOTAL": 6809,
+      "PERCENT_COMPLETE": 0.996622117785284,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.001579967795442,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 30,
+      "TOTAL": 30,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 5951,
+      "NOT_MISSING": 858,
+      "TOTAL": 6809,
+      "PERCENT_COMPLETE": 0.126009693053312,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.017415662129184,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 29,
+      "NOT_MISSING": 1,
+      "TOTAL": 30,
+      "PERCENT_COMPLETE": 0.033333333333333,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.047747747747748,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
