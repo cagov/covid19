@@ -5,7 +5,7 @@ import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
-    console.log("Setting up CAGOVChartD3Bar");
+    // console.log("Setting up CAGOVChartD3Bar");
     // stuff from observables: https://observablehq.com/@aaronhans/covid-19-case-rate-by-income-bracket-in-california
     // let height = 500;
     // let width = 842;
@@ -219,13 +219,13 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
         }
         resetToggles();
-        tog.classList.add('toggle-active')
+        tog.classList.add('active')
       })
     })
 
     function resetToggles() {
       toggles.forEach(toggle => {
-        toggle.classList.remove('toggle-active')
+        toggle.classList.remove('active')
       });
     }
 

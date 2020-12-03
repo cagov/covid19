@@ -5,6 +5,7 @@ import getScreenResizeCharts from './../../get-window-size.js';
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
+    // console.log("Setting up CAGOVEquityMissingness");
     // Get translations.
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
@@ -124,7 +125,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     this.listenForLocations();
-    if (this.querySelector('.d-none') !== null) {
+    this.classList.remove("d-none"); // this works
+    if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
       this.querySelector('.d-none').classList.remove("d-none");
     }
   }

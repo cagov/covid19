@@ -37,6 +37,10 @@
       "text": "Menu"
     },
     {
+      "_id": "menu_close",
+      "text": "Isara"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "Ano ang hinahanap mo?"
     },
@@ -95,6 +99,10 @@
   ],
   "Table2": [
     {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
+    {
       "Name": "Departamento ng Pampublikong Kalusugan",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
     },
@@ -121,11 +129,11 @@
   ],
   "Table3": [
     {
-      "Name": "Q&A sa Manatili sa bahay",
+      "Name": "Tungkol sa mga paghihigpit kaugnay ng COVID-19",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
-      "Name": "Blueprint para sa isang Mas Ligtas na Ekonomiya",
+      "Name": "Blueprint para sa Mas Ligtas na Ekonomiya",
       "_slug": "safer-economy"
     },
     {
@@ -143,12 +151,23 @@
   ],
   "Table4": [
     {
-      "TEST": "TEST",
-      "VALUE": "VALUE"
+      "Link Title": "Ano ang gabay para ligtas na makapagbukas ang aking negosyo?",
+      "URL": "#"
     },
     {
-      "TEST": "Why isn’t this",
-      "VALUE": "Being Translated"
+      "Link Title": "Saan ako makakahanap ng tulong para sa aking negosyo?",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "Salamat",
+      "Description": "Salamat sa paggawa ng lahat ng iyong makakaya para mapigilan ang pagkalat ng COVID-19 ngayong holiday.",
+      "VideoURL": "youtu.be/8S5iiKx5dhc",
+      "VideoID": "8S5iiKx5dhc",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
+      "ImageALT": "Salamat",
+      "ButtonText": "Panoorin ang video"
     }
   ]
 }
