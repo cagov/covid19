@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Del Norte",
+      "METRIC": "cases",
+      "MISSING": 106,
+      "NOT_MISSING": 88,
+      "TOTAL": 194,
+      "PERCENT_COMPLETE": 0.45360824742268,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.868421052631579,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.414812805208899,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Del Norte",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Del Norte",
+      "METRIC": "tests",
+      "MISSING": 5611,
+      "NOT_MISSING": 1352,
+      "TOTAL": 6963,
+      "PERCENT_COMPLETE": 0.19416917995117,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.302444570778852,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.108275390827681,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1,
+      "NOT_MISSING": 196,
+      "TOTAL": 197,
+      "PERCENT_COMPLETE": 0.99492385786802,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.00507614213198,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 191,
+      "NOT_MISSING": 6,
+      "TOTAL": 197,
+      "PERCENT_COMPLETE": 0.030456852791878,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.280654258319233,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
