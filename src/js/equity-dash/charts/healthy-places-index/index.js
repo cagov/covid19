@@ -211,10 +211,13 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let chartWidth = xRange[1] - xRange[0]; // 128.5
     let chartHeight = yRange[1] - yRange[0]; // -52
     // console.log("Chart width", chartWidth, "height", chartHeight);
+    
+    // jbum note: 14 is a magic number that aligns axis to the line and tooltips
+    // note the left margin is 30, so I'm not sure why it's so odd
 
     let xAxis = (g) =>
       g
-        .attr("transform", "translate(2.75," + this.chartBreakpointValues.margin.bottom + ")")
+        .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
