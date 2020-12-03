@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Sonoma",
+      "METRIC": "cases",
+      "MISSING": 411,
+      "NOT_MISSING": 2018,
+      "TOTAL": 2429,
+      "PERCENT_COMPLETE": 0.830794565664883,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.868266405484819,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0374718398199362,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Sonoma",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 14,
+      "TOTAL": 14,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Sonoma",
+      "METRIC": "tests",
+      "MISSING": 25352,
+      "NOT_MISSING": 35456,
+      "TOTAL": 60808,
+      "PERCENT_COMPLETE": 0.583081173529799,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.523766609782755,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0593145637470441,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 12,
+      "NOT_MISSING": 2757,
+      "TOTAL": 2769,
+      "PERCENT_COMPLETE": 0.99566630552546,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.000474553133488,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 13,
+      "TOTAL": 13,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2114,
+      "NOT_MISSING": 655,
+      "TOTAL": 2769,
+      "PERCENT_COMPLETE": 0.236547490068617,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.097750628599979,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 11,
+      "NOT_MISSING": 2,
+      "TOTAL": 13,
+      "PERCENT_COMPLETE": 0.153846153846154,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.036630036630036,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
