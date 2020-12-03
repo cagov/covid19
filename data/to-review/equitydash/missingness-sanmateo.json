@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "San Mateo",
+      "METRIC": "cases",
+      "MISSING": 749,
+      "NOT_MISSING": 2414,
+      "TOTAL": 3163,
+      "PERCENT_COMPLETE": 0.763199494151122,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.704945515507125,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0582539786439975,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "San Mateo",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "San Mateo",
+      "METRIC": "tests",
+      "MISSING": 47798,
+      "NOT_MISSING": 80799,
+      "TOTAL": 128597,
+      "PERCENT_COMPLETE": 0.62831170245029,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.59017972486005,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0381319775902401,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 4,
+      "NOT_MISSING": 3404,
+      "TOTAL": 3408,
+      "PERCENT_COMPLETE": 0.998826291079812,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.00051840092543,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 3396,
+      "NOT_MISSING": 12,
+      "TOTAL": 3408,
+      "PERCENT_COMPLETE": 0.003521126760563,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.003031953187012,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 1,
+      "NOT_MISSING": 0,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
