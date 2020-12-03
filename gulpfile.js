@@ -45,7 +45,23 @@ const eleventy = (done) => {
     log('Note: Building site in dev mode. Try *npm run start* if you need a full build.');
   }
 
-  // Donwload the files sitemap for 11ty to use
+//Special data location
+const defaultConfig = {
+  filesDataLoc: 'https://files.covid19.ca.gov/data/reviewed/'
+}
+const stagingConfig =  {
+  filesDataLoc: 'https://files.covid19.ca.gov/data/to-review/'
+}
+  
+const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
+  // Download equity dash top boxes
+  download(`${jsConfig.filesDataLoc}equitydash/equitytopboxdata.json`, './pages/_buildoutput/equitytopboxdata.json', error => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
+  // Download the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
       console.error(error);
@@ -220,6 +236,9 @@ const deploy = gulp.series(clean, build);
 
 // function to download a remove file and place it in a location
 const download = (url, dest, cb) => {
+  if(fs.existsSync(dest)) return; //skipping downloading of existing files
+
+  console.log(`downloading ${url}`);
   const file = fs.createWriteStream(dest);
   const sendReq = request.get(url);
 

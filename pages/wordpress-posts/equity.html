@@ -8,19 +8,7 @@ tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
-<!--{% set data = {
-    "cases_per_100k_statewide":1871.4,
-    "death_rate_per_100k_statewide":45.5,
-    "cases_per_100k_latino":2879.1,
-    "cases_per_100k_pacific_islanders": 4024,
-    "case_rate_vs_statewide_percent_latino":54,
-    "case_rate_vs_statewide_percent_pacific_islanders":115,
-    "case_rate_vs_statewide_percent_low_income":36,
-    "death_rate_vs_statewide_percent_black":24,
-    "death_rate_per_100k_black":56.2
-  } %}-->
-
-
+<!--{% set data = equityTopBoxes[0] %}-->
 
 <p class="emphasized">All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life.</p>
 
@@ -84,8 +72,8 @@ addtositemap: false
                                 
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> Latino <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino}}</strong> Latino <br>
+                                <strong>{{data.cases_per_100k_statewide}}</strong> statewide</p>
                             </div>
                     
                         </div>
@@ -113,8 +101,8 @@ addtositemap: false
 <!--{% endif %}-->
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders}}</strong> NHPI <br>
+                                <strong>{{data.cases_per_100k_statewide}}</strong> statewide</p>
                             </div>
                     
                         </div>
