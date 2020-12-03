@@ -1,4 +1,6 @@
-const data = require('../_buildoutput/equitytopboxdata.json');
+const data = require('../_buildoutput/equitytopboxdataV2.json');
+const demographics=data.Demographics;
+
 const output = [
   {
     "cases_per_100k_statewide":1871.4,
@@ -18,9 +20,9 @@ const roundNumber = (number, fractionDigits=3) => {
   return Math.round(Number.parseFloat(number)*roundscale)/roundscale;
 }
 
-const totalPopulation = data.reduce((a,c)=> c.POPULATION+a,0);
-const totalCases = data.reduce((a,c)=> c.CASES+a,0);
-const totalDeaths = data.reduce((a,c)=> c.DEATHS+a,0);
+const totalPopulation = demographics.reduce((a,c)=> c.POPULATION+a,0);
+const totalCases = demographics.reduce((a,c)=> c.CASES+a,0);
+const totalDeaths = demographics.reduce((a,c)=> c.DEATHS+a,0);
 const totalCaseRate = totalCases/totalPopulation*100000;
 const totalDeathRate = totalDeaths/totalPopulation*100000;
 
@@ -28,17 +30,19 @@ const totalDeathRate = totalDeaths/totalPopulation*100000;
 output[0].death_rate_per_100k_statewide = roundNumber(totalDeathRate,1);
 output[0].cases_per_100k_statewide = roundNumber(totalCaseRate,1);
 
-const raceLatino = data.find(x=>x.RACE_ETHNICITY==='Latino');
+const raceLatino = demographics.find(x=>x.RACE_ETHNICITY==='Latino');
 output[0].cases_per_100k_latino = roundNumber(raceLatino.CASE_RATE,1);
 output[0].case_rate_vs_statewide_percent_latino = roundNumber((raceLatino.CASE_RATE/totalCaseRate)*100-100,0);
 
-const raceNHPI = data.find(x=>x.RACE_ETHNICITY==='Native Hawaiian and other Pacific Islander');
+const raceNHPI = demographics.find(x=>x.RACE_ETHNICITY==='Native Hawaiian and other Pacific Islander');
 output[0].cases_per_100k_pacific_islanders = roundNumber(raceNHPI.CASE_RATE,1);
 output[0].case_rate_vs_statewide_percent_pacific_islanders = roundNumber((raceNHPI.CASE_RATE/totalCaseRate)*100-100,0);
 
-const raceBlack = data.find(x=>x.RACE_ETHNICITY==='African American');
+const raceBlack = demographics.find(x=>x.RACE_ETHNICITY==='African American');
 output[0].death_rate_per_100k_black = roundNumber(raceBlack.DEATH_RATE,1);
 output[0].death_rate_vs_statewide_percent_black = roundNumber((raceBlack.DEATH_RATE/totalDeathRate)*100-100,0);
+
+output[0].case_rate_vs_statewide_percent_low_income = roundNumber(data.LowIncome[0].STATE_CASE_RATE_PER_100K,0);
 
 module.exports = output;
 
