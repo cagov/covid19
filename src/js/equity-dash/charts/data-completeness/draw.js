@@ -138,7 +138,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         .attr("height", y.bandwidth())
         .html(d => {
           if (d.PERCENT_COMPLETE === null) {
-            return `<tspan>${translations['data-missing-applied-suppression-total']}</tspan>`
+            return `<tspan>${translations['data-missing-applied-suppression-total'] || ''}</tspan>`
           }
           if (
             parseFloat(
