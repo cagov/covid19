@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Tehama",
+      "METRIC": "cases",
+      "MISSING": 300,
+      "NOT_MISSING": 474,
+      "TOTAL": 774,
+      "PERCENT_COMPLETE": 0.612403100775194,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.835195530726257,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.222792429951063,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Tehama",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 2,
+      "TOTAL": 2,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Tehama",
+      "METRIC": "tests",
+      "MISSING": 3350,
+      "NOT_MISSING": 2420,
+      "TOTAL": 5770,
+      "PERCENT_COMPLETE": 0.419410745233969,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.262158213316635,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.157252531917333,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 4,
+      "NOT_MISSING": 807,
+      "TOTAL": 811,
+      "PERCENT_COMPLETE": 0.995067817509248,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.004932182490752,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 2,
+      "TOTAL": 2,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 695,
+      "NOT_MISSING": 116,
+      "TOTAL": 811,
+      "PERCENT_COMPLETE": 0.143033292231813,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.133802865960277,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 0,
+      "TOTAL": 2,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.5,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
