@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Ventura",
+      "METRIC": "cases",
+      "MISSING": 948,
+      "NOT_MISSING": 5161,
+      "TOTAL": 6109,
+      "PERCENT_COMPLETE": 0.844819119332133,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.773009599096556,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0718095202355774,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Ventura",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 12,
+      "TOTAL": 12,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Ventura",
+      "METRIC": "tests",
+      "MISSING": 33444,
+      "NOT_MISSING": 94685,
+      "TOTAL": 128129,
+      "PERCENT_COMPLETE": 0.738981807397232,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.648263603321572,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0907182040756608,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 20,
+      "NOT_MISSING": 6382,
+      "TOTAL": 6402,
+      "PERCENT_COMPLETE": 0.99687597625742,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.001889455841345,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 11,
+      "TOTAL": 11,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 6220,
+      "NOT_MISSING": 182,
+      "TOTAL": 6402,
+      "PERCENT_COMPLETE": 0.028428616057482,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.026509655547456,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 11,
+      "NOT_MISSING": 0,
+      "TOTAL": 11,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
