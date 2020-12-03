@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Stanislaus",
+      "METRIC": "cases",
+      "MISSING": 910,
+      "NOT_MISSING": 3405,
+      "TOTAL": 4315,
+      "PERCENT_COMPLETE": 0.789107763615295,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.899429386590585,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.110321622975289,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Stanislaus",
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 20,
+      "TOTAL": 22,
+      "PERCENT_COMPLETE": 0.909090909090909,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0909090909090909,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Stanislaus",
+      "METRIC": "tests",
+      "MISSING": 19632,
+      "NOT_MISSING": 29247,
+      "TOTAL": 48879,
+      "PERCENT_COMPLETE": 0.598355121831461,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.551090929860635,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0472641919708262,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 26,
+      "NOT_MISSING": 4528,
+      "TOTAL": 4554,
+      "PERCENT_COMPLETE": 0.994290733421168,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.002639427745371,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 24,
+      "TOTAL": 24,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2639,
+      "NOT_MISSING": 1915,
+      "TOTAL": 4554,
+      "PERCENT_COMPLETE": 0.420509442248573,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.219551954528096,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 17,
+      "NOT_MISSING": 7,
+      "TOTAL": 24,
+      "PERCENT_COMPLETE": 0.291666666666667,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.208333333333333,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
