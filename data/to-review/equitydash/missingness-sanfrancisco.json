@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "San Francisco",
+      "METRIC": "cases",
+      "MISSING": 304,
+      "NOT_MISSING": 2903,
+      "TOTAL": 3207,
+      "PERCENT_COMPLETE": 0.905207358902401,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.924513618677043,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0193062597746417,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "San Francisco",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 4,
+      "TOTAL": 4,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "San Francisco",
+      "METRIC": "tests",
+      "MISSING": 61229,
+      "NOT_MISSING": 137054,
+      "TOTAL": 198283,
+      "PERCENT_COMPLETE": 0.691203986221713,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.693454147789408,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0022501615676946,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 13,
+      "NOT_MISSING": 3491,
+      "TOTAL": 3504,
+      "PERCENT_COMPLETE": 0.9962899543379,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.000675919250181,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 4,
+      "TOTAL": 4,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2025,
+      "NOT_MISSING": 1479,
+      "TOTAL": 3504,
+      "PERCENT_COMPLETE": 0.42208904109589,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.295454818553233,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 3,
+      "NOT_MISSING": 1,
+      "TOTAL": 4,
+      "PERCENT_COMPLETE": 0.25,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.09,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
