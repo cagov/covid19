@@ -1,5 +1,5 @@
 import template from './template.js';
-import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
+import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import reportGA from '../../../tracking-you';
@@ -26,7 +26,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 613,
         height: 500,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
@@ -138,6 +138,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
+      writeXAxisLabel(this, this.svg, this.translationsObj.xAxisTitleHealthcare);
   
       this.svg.append("g")
         .attr("class", "xaxis")
@@ -201,9 +202,9 @@ class CAGOVChartD3Bar extends window.HTMLElement {
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     let component = this;
-    let tab_recs = [{nom:'healthcare',data:datahealthcare, tranHTML:component.translationsObj.chartTitleHealthcare},
-                    {nom:'housing',data:datacrowding, tranHTML:component.translationsObj.chartTitleHousing},
-                    {nom:'healthcare',data:dataincome, tranHTML:component.translationsObj.chartTitleIncome},
+    let tab_recs = [{nom:'healthcare',data:datahealthcare, tranHTML:component.translationsObj.chartTitleHealthcare, xAxisLabel:component.translationsObj.xAxisTitleHealthcare},
+                    {nom:'housing',data:datacrowding, tranHTML:component.translationsObj.chartTitleHousing, xAxisLabel:component.translationsObj.xAxisTitleHousing},
+                    {nom:'healthcare',data:dataincome, tranHTML:component.translationsObj.chartTitleIncome, xAxisLabel:component.translationsObj.xAxisTitleIncome},
                    ];
 
     toggles.forEach(tog => {
@@ -219,6 +220,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
             window.dispatchEvent(event);    
             rewriteBar(component, tRec.data)
             component.querySelector('.chart-title').innerHTML = tRec.tranHTML;
+            writeXAxisLabel(component, component.svg, tRec.xAxisLabel);
           }
         });
         /* if(this.classList.contains('healthcare')) {
