@@ -22,6 +22,7 @@ class CAGovCountyButtons extends window.HTMLElement {
       event.preventDefault();
       if(event.target.classList.contains('js-toggle-county')) {
         let clickedCounty = event.target.textContent;
+        console.log("Issuing county-selected for button");
 
         if(!event.target.classList.contains('active')) {
           let emissionEvent = new window.CustomEvent('county-selected', {
@@ -40,6 +41,8 @@ class CAGovCountyButtons extends window.HTMLElement {
               }
             });
           }
+          const event2 = new window.CustomEvent('tab-select',{detail:{tab_selected: emissionEvent.detail.county}});
+          window.dispatchEvent(event2);    
           searchElement.dispatchEvent(emissionEvent);
         }
       }
