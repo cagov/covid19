@@ -90,9 +90,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       data1LegendLocal: this.translationsObj["data1-legend-local"], // 'placeholderForDynamicLocation test positivity', // appended to county name
       data2Legend: this.translationsObj["data2-legend"], // 'Health equity quartile positivity',
       missingDataCaption: this.translationsObj["missing-data-caption"], // 'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
-      missingDataCaptionLineDelimiter: this.translationsObj[
-        "missing-data-caption-line-delimiter"
-      ], // '<br>',
     };
 
     this.svg = d3
@@ -254,57 +251,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .style("text-anchor", "left")
         .text(component.textLabels.yAxisLabel)
         .attr("class", "y-label");
-    let missingLabelText = this.textLabels.missingDataCaption;
-    let missingTextLines = missingLabelText.split(
-      this.textLabels.missingDataCaptionLineDelimiter
-    );
-
-    // console.log("Text lines",missingTextLines);
-    let informativeBox = (g) =>
-      g
-        // .append("text")
-        .attr("class", "informative-box")
-        .call((g) =>
-          g
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", this.chartBreakpointValues.width)
-            .attr("height", this.chartBreakpointValues.height)
-            .attr("fill", "white")
-            .attr("stroke", "none")
-            .attr("opacity", "0.1")
-        )
-        .call((g) =>
-          g
-            .append("rect")
-            .attr("class", "shadow")
-            .attr("x", this.chartBreakpointValues.width * 0.25)
-            .attr("y", this.chartBreakpointValues.height * 0.3)
-            .attr("width", this.chartBreakpointValues.width * 0.5)
-            .attr("height", this.chartBreakpointValues.height * 0.3)
-            .attr("fill", "white")
-            .attr("stroke", "currentColor")
-            .attr("stroke-width", "2")
-        )
-
-        .each(function (d) {
-          let gg = this;
-          missingTextLines.forEach(function (textLine, yIdx) {
-            d3.select(gg)
-              .append("text")
-              .attr(
-                "transform",
-                "translate(" +
-                  component.dims.width / 2 +
-                  " ," +
-                  (component.dims.height * 0.39 + yIdx * 5) +
-                  ")"
-              )
-              .style("text-anchor", "middle")
-              .text(textLine);
-          });
-        });
+    
     let line = d3
       .line()
       .x((d, i) => {
@@ -318,7 +265,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
     svg.selectAll(".y-label").remove();
-    svg.selectAll(".informative-box").remove();
+    d3.selectAll(".tooltip-container--d3-lines").remove();
 
     if (!missing_eq_data) {
       svg
@@ -362,7 +309,21 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
     let is_debugging_infobox = false;
     if (missing_eq_data || is_debugging_infobox) {
-      svg.append("g").call(informativeBox);
+      svg.style("opacity",.5);
+      // append informative box
+      d3
+      .select("cagov-chart-d3-lines")
+      .append("div")
+      .attr("class", "tooltip-container tooltip-container--d3-lines")
+      .style("visibility", "visible")
+      // 250 is current width of tooltip-container - need a better way of centering
+      .style("left", (this.chartBreakpointValues.width - 250)/2 + "px")
+      .style("top", "90px")
+      .append("div")
+      .attr("class", "chart-tooltip")
+      .text(this.textLabels.missingDataCaption)
+    } else {
+      svg.style("opacity",1);
     }
 
     //tooltip
