@@ -12,13 +12,14 @@ export default function setupAnalytics() {
 
   document.querySelectorAll('a').forEach((a) => {
     // look for and track offsite and pdf links
-    if(a.href.indexOf(window.location.hostname) > -1) {
+    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf('covid19.ca.gov') > -1) {
       if(a.href.indexOf('.pdf') > -1) {
         a.addEventListener('click',function() {
           reportGA('pdf', this.href.split(window.location.hostname)[1])
         });    
       }
     } else {
+      // console.log("Adding offsite link handler:",window.location.hostname,a.href);
       a.addEventListener('click',function() {
         reportGA('offsite', this.href)
       })
@@ -32,7 +33,7 @@ export default function setupAnalytics() {
       eventString ==> eventLabel
   */
   function reportGA(eventAction, eventLabel, eventCategory = 'click') {
-    // console.log("ReportGA",eventAction, eventLabel, eventCategory);
+    console.log("ReportGA", eventCategory, eventAction, eventLabel);
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
       ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
@@ -281,7 +282,11 @@ export default function setupAnalytics() {
       let searchElement = document.querySelector('cagov-county-search');
       searchElement.addEventListener('county-selected', function(e) {
         // console.log("county selected! ",e.detail);
-        reportGA('county-select', e.detail.county, 'activity-status');
+        if (e.detail.how == 'tab') {
+          reportGA('tab-select',e.detail.county, 'click');
+        } else {
+          reportGA('county-select', e.detail.county, 'activity-status');
+        }
       }.bind(this), false);
       searchElement.addEventListener('county-search-typo', function(e) {
         // console.log("got county thpo! ",e.detail);
@@ -296,23 +301,10 @@ export default function setupAnalytics() {
 
         });
       });
-      document.querySelectorAll('a').forEach(link => {
-        // console.log("looking at link",link.href);
-        if (link.href.includes('/equity/#')) {
-          let section = link.href.substring(link.href.indexOf('#')+1);
-          let action = (section != ''? section : 'top') + '-anchor';
-          // console.log("setting up fqlink",section,action);
-          link.addEventListener('click', function(e) {
-            reportGA(action, link.href); // equity-tab-select?  or tabName+":equity"?
-          });
-        }
-      });
-      
-      // document.querySelectorAll('.faq-item-link').forEach(link => {
-      //   console.log("setting up fqlink",link.href)
-      //   link.addEventListener('click', linkHandler(link.href, 'learn-more-anchor', link.href, false));
+      // window.addEventListener('tab-select', function(e) {
+      //   console.log("Tracking got tab-select",e.detail);
+      //   reportGA('tab-select',e.detail.tab_selected);
       // });
-
     }
   }
 }

@@ -20,12 +20,13 @@ class CAGovCountySearch extends window.HTMLElement {
           this.state['county'] = foundCounty;
           this.state.statewide = false;
           document.querySelector('#location-query').value = foundCounty;
-          // console.log("A emitting county:",this.state);
+          console.log("emitCounty via search:",foundCounty);
           this.emitCounty();
           document.querySelector('#county-query-error').style.display = 'none';
         } else {
           // generate failed search event...
           // console.log("county not found: ",typedInValue);
+          console.log("emitCounty via typo",typedInValue);
           this.emitCountyTypo(typedInValue);
           document.querySelector('#county-query-error').style.display = 'block';
         }
@@ -90,7 +91,8 @@ class CAGovCountySearch extends window.HTMLElement {
       detail: {
         county: this.state.county,
         statewide: this.state.statewide,
-        reset: this.state.statewide
+        reset: this.state.statewide,
+        how: 'emitCounty'
       }
     });
     // console.log("Emitting county-select",event.detail);
@@ -132,6 +134,7 @@ class CAGovCountySearch extends window.HTMLElement {
       this.state['county'] = 'California';
       this.state.statewide = true;
       // console.log("C emitting county",this.state);
+      console.log("Emit county via clearbutton");
       this.emitCounty();
       clearBtn.classList.add('d-none');
       document.querySelector('#county-query-error').style.display = 'none';
