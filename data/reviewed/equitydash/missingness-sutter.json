@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Sutter",
+      "METRIC": "cases",
+      "MISSING": 314,
+      "NOT_MISSING": 1343,
+      "TOTAL": 1657,
+      "PERCENT_COMPLETE": 0.810500905250453,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.938679245283019,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.128178340032566,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Sutter",
+      "METRIC": "deaths",
+      "MISSING": 1,
+      "NOT_MISSING": 5,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 0.833333333333333,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Sutter",
+      "METRIC": "tests",
+      "MISSING": 4485,
+      "NOT_MISSING": 6327,
+      "TOTAL": 10812,
+      "PERCENT_COMPLETE": 0.585183129855716,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.420296570898981,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.164886558956735,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 0,
+      "NOT_MISSING": 1699,
+      "TOTAL": 1699,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 6,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1460,
+      "NOT_MISSING": 239,
+      "TOTAL": 1699,
+      "PERCENT_COMPLETE": 0.140670982931136,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.239537350402197,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 0,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
