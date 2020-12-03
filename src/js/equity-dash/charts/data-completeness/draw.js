@@ -27,7 +27,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("width", d => x(1) - x(0))
     .attr("height", "10px")
 
-
+  // Render the bars with their connected tooltips.
   svg
     .append("g")
     .selectAll("g")
@@ -77,7 +77,13 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
       tooltip.html(() => {
-        let percentNotMissing = d.data.NOT_MISSING
+        // @TODO Handle if PERCENT_COMPLETE is null.
+        if (d.data.PERCENT_COMPLETE === null) {
+
+          return `<div>CHECKING NOT NOT COMMIT</div>`;
+
+        } else {
+          let percentNotMissing = d.data.NOT_MISSING
           ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
           : 0;
 
@@ -98,6 +104,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
             complete: false,
           });
         }
+        }
       });
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
@@ -108,7 +115,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
       tooltip.style("visibility", "hidden");
     });
 
-  //% change since previous month labels
+  // Percent change since previous month labels
   svg
     .append("g")
     .attr("class", "more-than-labels")
@@ -121,9 +128,18 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         .attr("y", d => {
           return y(d.METRIC) + 25
         })
-        .attr("x", d => x(0) + 255)
+        .attr("x", d => {
+          if (d.PERCENT_COMPLETE === null) {
+            return x(0) + 309;
+          } else {
+            return x(0) + 256;
+          }
+        })
         .attr("height", y.bandwidth())
         .html(d => {
+          if (d.PERCENT_COMPLETE === null) {
+            return `<tspan>${translations['data-missing-applied-suppression-total']}</tspan>`
+          }
           if (
             parseFloat(
               (d.PERCENT_COMPLETE_30_DAYS_DIFF /
@@ -144,7 +160,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
 
   svg.append("g").call(yAxis);
 
-  //arrows
+  // Change since previous month arrows
   svg
     .append("g")
     .attr("class", "more-than-labels")
@@ -156,6 +172,10 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         .attr("y", d => y(d.METRIC) + 15)
         .attr("x", d => x(0))
         .html(d => {
+          if (d.PERCENT_COMPLETE === null) {
+            return ``;
+          }
+          // Difference is greater than zero, point arrow up.
           if (
             parseFloat(
               (d.PERCENT_COMPLETE_30_DAYS_DIFF /
@@ -167,6 +187,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
   <path d="M17 0.581819V5.19326C17 5.50954 16.742 5.77116 16.4271 5.77116C16.1122 5.77116 15.8543 5.51344 15.8543 5.19326V2.00308L10.1901 7.93042C10.0839 8.03975 9.93972 8.09832 9.78419 8.09832C9.63244 8.09832 9.48828 8.03975 9.37826 7.93042L6.11944 4.64647L0.971201 9.8321C0.86118 9.94143 0.720802 10 0.565271 10C0.413518 10 0.26936 9.94143 0.15934 9.8321C0.0531121 9.72667 0 9.59001 0 9.43381C0 9.22295 0.0872582 9.09018 0.15934 9.01601L5.70966 3.42434C5.81968 3.315 5.96006 3.25643 6.11559 3.25643C6.26734 3.25643 6.4115 3.315 6.52152 3.42434L9.78035 6.70829L15.0158 1.1558H11.8403C11.5254 1.1558 11.2674 0.898078 11.2674 0.5779C11.2674 0.26162 11.5254 0 11.8403 0H16.4233C16.742 0.00390471 17 0.261621 17 0.581819H17Z" fill="#003D9D"/>
   </svg>`;
           } else if (
+            // Difference is greater than zero, point arrow down.
             parseFloat(
               (d.perc_total_diff_30_day_prev /
                 d.PERCENT_COMPLETE_30_DAYS_PRIOR) *
@@ -184,7 +205,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         });
     });
 
-  //% reported labels
+  // Percent reported and missing labels for each METRIC type
   svg
     .append("g")
     .attr("class", "change-from-month-labels")
@@ -198,14 +219,19 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         .attr("height", y.bandwidth())
         .html(
           (d) => {
-            let notMissing = parseFloat(d.NOT_MISSING * 100).toFixed(1);
-            let missing = parseFloat(d.MISSING * 100).toFixed(1);
-            return `<tspan class="highlight-data">${notMissing}%</tspan> ${translations['reported']} (<tspan class="highlight-data">${missing}%</tspan> ${translations['missing']})`
+            // No data for this county
+            if (d.PERCENT_COMPLETE === null) {
+              return null;
+            } else {
+              let notMissing = parseFloat(d.NOT_MISSING * 100).toFixed(1);
+              let missing = parseFloat(d.MISSING * 100).toFixed(1);
+              return `<tspan class="highlight-data">${notMissing}%</tspan> ${translations['reported']} (<tspan class="highlight-data">${missing}%</tspan> ${translations['missing']})`
+            }
         })
         .attr('text-anchor', 'end');
     });
 
-  //legend
+  // Legend (Data reported / Data missing)
   svg
     .append("rect")
     .attr("x", 0)
@@ -214,6 +240,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("height", 15)
     .attr('class', 'legend-label')
     .attr("fill", "#92C5DE");
+
   svg
     .append("rect")
     .attr("x", 115)
@@ -229,6 +256,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("dy", "0.35em")
     .attr("class", "legend-label")
     .text(translations['data-reported']);
+
   svg
     .append("text")
     .attr("x", 135)
