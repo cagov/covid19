@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "San Luis Obispo",
+      "METRIC": "cases",
+      "MISSING": 344,
+      "NOT_MISSING": 1474,
+      "TOTAL": 1818,
+      "PERCENT_COMPLETE": 0.810781078107811,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.96524064171123,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.154459563603419,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "San Luis Obispo",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 6,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "San Luis Obispo",
+      "METRIC": "tests",
+      "MISSING": 31544,
+      "NOT_MISSING": 14516,
+      "TOTAL": 46060,
+      "PERCENT_COMPLETE": 0.315154146765089,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.327946275012967,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0127921282478782,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 3,
+      "NOT_MISSING": 1990,
+      "TOTAL": 1993,
+      "PERCENT_COMPLETE": 0.998494731560462,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.001505268439538,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 7,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1972,
+      "NOT_MISSING": 21,
+      "TOTAL": 1993,
+      "PERCENT_COMPLETE": 0.010536879076769,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.003373476410094,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 1,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 0.142857142857143,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.142857142857143,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
