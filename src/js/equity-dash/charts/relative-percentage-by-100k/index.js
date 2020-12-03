@@ -3,7 +3,6 @@ import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
-import getDisproportionateRatioSortValue from './../../get-disproportionality-ratio-sort-value.js';
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -11,8 +10,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.chartOptions = {
       // Data
       subgroups: ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"],
-      // subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
-      // subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
       dataUrl:
         config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
       dataStatewideRateUrl:
@@ -20,7 +17,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       state: "California",
       county: "California",
       // Style
-      chartColors: ["#FFCF44", "#F2F5FC"], // ["#92C5DE", "#FFCF44", "#F2F5FC"],
+      chartColors: ["#FFCF44", "#F2F5FC"],
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -55,8 +52,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       retina: {
-        height: 642,
-        width: 450,
+        height: 700,
+        width: 320,
         margin: {
           top: 20,
           right: 30,
@@ -90,17 +87,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // @TODO connect a debouncer
     window.addEventListener("resize", handleChartResize);
 
-    // this.dimensions = {
-    //   height: 642,
-    //   width: 450,
-    //   margin: {
-    //     top: 20,
-    //     right: 30,
-    //     bottom: 20,
-    //     left: 10,
-    //   },
-    // };
-
     this.dimensions = this.chartBreakpointValues;
 
     this.translationsObj = getTranslations(this);
@@ -110,7 +96,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.drawBars = drawBars;
     this.chartTitle = function () {
       let isStatewide = this.county === "California";
-      // console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
         "placeholderForDynamicLocation",
         isStatewide ? this.county : this.county + " County "
@@ -178,20 +163,18 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       );
 
     // @TODO Connect to chartOptions
-    this.subgroups = ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"];
+    this.subgroups = this.chartOptions.subgroups;
     this.color = d3
       .scaleOrdinal()
       .domain(this.subgroups)
-      .range(["#FFCF44", "#F2F5FC"]);
+      .range(this.chartOptions.chartColors);
 
-    this.dataUrl =
-      config.equityChartsDataLoc + "/equitydash/cumulative-california.json";
-    this.dataStatewideRateUrl =
-      config.equityChartsDataLoc + "/equitydash/cumulative-combined.json";
+    this.dataUrl = this.chartOptions.dataUrl;
+    this.dataStatewideRateUrl = this.chartOptions.dataStatewideRateUrl;
 
     this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
-    this.county = "California";
+    this.county = this.chartOptions.state;
     this.resetTitle();
   }
 
@@ -327,10 +310,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
           d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
       }
 
-      // Run the sort ratio calculating logic. 
-      // If not valid, will return null.
-      d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
-
       // Map the race/ethnicities in the db to the desired display values here.
       if (displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
@@ -344,7 +323,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     // Sort data with non-null 'disproportionality ratio' 
     sortableData.sort(function (a, b) {
-      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
+      return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
     });
 
     // Push null data values to the end or the sorted array (@TODO double check order)
