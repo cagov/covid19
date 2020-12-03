@@ -52,6 +52,12 @@ class CAGovReopening extends window.HTMLElement {
       this.setupAutoComp('#location-query', 'county', aList);
     }.bind(this));
 
+    window.fetch('/countyregions.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.countyRegions = data;
+    }.bind(this));
+
     window.fetch('/statusdescriptors.json')
     .then(response => response.json())
     .then(function(data) {
@@ -207,6 +213,7 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
+        <h3>${(this.countyRegions) ? 'Region: '+this.countyRegions[item.county] : ''}</h3>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
         <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
@@ -273,7 +280,6 @@ function inputValueCounty() {
    });
   
    activityInput.addEventListener("blur", function() {
-     console.log("something changed")
     inputValueActivity();
    });
 

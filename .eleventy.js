@@ -16,6 +16,8 @@ fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wor
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
 // this needs to be translated, need to get the translated version from translated page
 fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+// county regions for stay home restrictions, hardcoded now, should come from snowflake soon
+fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
 
 
 let htmlmap = [];
