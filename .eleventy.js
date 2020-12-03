@@ -16,6 +16,8 @@ fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wor
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
 // this needs to be translated, need to get the translated version from translated page
 fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+// county regions for stay home restrictions, hardcoded now, should come from snowflake soon
+fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
 
 
 let htmlmap = [];
@@ -79,8 +81,13 @@ module.exports = function(eleventyConfig) {
       replaceContent(item,/"https:\/\/covid19.ca.gov\/img\//g,`"https://files.covid19.ca.gov/img/`);
 
         if(item.inputPath.includes(FolderName)) {
-          if(item.data.tags && item.data.tags.includes('translate')) {
+          if(item.data.layout) {
+              //for any layout pages in the translated posts folder
               const langRecordFromSlug = langData.languages.find(x=>x.filepostfix&&item.data.page.fileSlug.endsWith(x.filepostfix));
+
+              if(!item.data.tags) {
+                item.data.tags = [];
+              }
 
               if(langRecordFromSlug&&!item.data.tags.includes(langRecordFromSlug.wptag)) {
                 //Add a lang record tag if it is missing based on the file slug
