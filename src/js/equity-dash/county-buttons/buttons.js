@@ -29,7 +29,8 @@ class CAGovCountyButtons extends window.HTMLElement {
             detail: {
               county: clickedCounty,
               statewide: false,
-              reset: false
+              reset: false,
+              how: 'tab'
             }
           });
           if(event.target.classList.contains('statewide')) {
@@ -37,12 +38,13 @@ class CAGovCountyButtons extends window.HTMLElement {
               detail: {
                 county: 'California',
                 statewide: true,
-                reset: false
+                reset: false,
+                how: 'tab'
               }
             });
           }
-          const event2 = new window.CustomEvent('tab-select',{detail:{tab_selected: emissionEvent.detail.county}});
-          window.dispatchEvent(event2);    
+          // const event2 = new window.CustomEvent('tab-select',{detail:{tab_selected: emissionEvent.detail.county}});
+          // window.dispatchEvent(event2);    
           searchElement.dispatchEvent(emissionEvent);
         }
       }

@@ -282,7 +282,11 @@ export default function setupAnalytics() {
       let searchElement = document.querySelector('cagov-county-search');
       searchElement.addEventListener('county-selected', function(e) {
         // console.log("county selected! ",e.detail);
-        reportGA('county-select', e.detail.county, 'activity-status');
+        if (e.detail.how == 'tab') {
+          reportGA('tab-select',e.detail.county, 'click');
+        } else {
+          reportGA('county-select', e.detail.county, 'activity-status');
+        }
       }.bind(this), false);
       searchElement.addEventListener('county-search-typo', function(e) {
         // console.log("got county thpo! ",e.detail);
@@ -297,10 +301,10 @@ export default function setupAnalytics() {
 
         });
       });
-      window.addEventListener('tab-select', function(e) {
-        console.log("Tracking got tab-select",e.detail);
-        reportGA('tab-select',e.detail.tab_selected);
-      });
+      // window.addEventListener('tab-select', function(e) {
+      //   console.log("Tracking got tab-select",e.detail);
+      //   reportGA('tab-select',e.detail.tab_selected);
+      // });
     }
   }
 }

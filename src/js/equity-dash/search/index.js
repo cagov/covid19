@@ -91,7 +91,8 @@ class CAGovCountySearch extends window.HTMLElement {
       detail: {
         county: this.state.county,
         statewide: this.state.statewide,
-        reset: this.state.statewide
+        reset: this.state.statewide,
+        how: 'emitCounty'
       }
     });
     // console.log("Emitting county-select",event.detail);

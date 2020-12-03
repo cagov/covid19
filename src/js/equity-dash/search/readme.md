@@ -26,6 +26,7 @@ Event structure:
       county: this.state.county,
       statewide: this.state.statewide,
       reset: this.state.statewide
+      how: reason
     }
   });
 ```
