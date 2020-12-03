@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Napa",
+      "METRIC": "cases",
+      "MISSING": 286,
+      "NOT_MISSING": 784,
+      "TOTAL": 1070,
+      "PERCENT_COMPLETE": 0.732710280373832,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.936768149882904,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.204057869509072,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Napa",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 3,
+      "TOTAL": 3,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Napa",
+      "METRIC": "tests",
+      "MISSING": 17339,
+      "NOT_MISSING": 9501,
+      "TOTAL": 26840,
+      "PERCENT_COMPLETE": 0.353986587183309,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.320789602479743,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0331969847035652,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 10,
+      "NOT_MISSING": 1174,
+      "TOTAL": 1184,
+      "PERCENT_COMPLETE": 0.991554054054054,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.005636957181901,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 3,
+      "TOTAL": 3,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1019,
+      "NOT_MISSING": 165,
+      "TOTAL": 1184,
+      "PERCENT_COMPLETE": 0.139358108108108,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.051653127846948,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 3,
+      "NOT_MISSING": 0,
+      "TOTAL": 3,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
