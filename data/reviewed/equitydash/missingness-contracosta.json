@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "cases",
+      "MISSING": 654,
+      "NOT_MISSING": 4668,
+      "TOTAL": 5322,
+      "PERCENT_COMPLETE": 0.877113866967306,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.920634920634921,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0435210536676151,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 6,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "tests",
+      "MISSING": 53294,
+      "NOT_MISSING": 87856,
+      "TOTAL": 141150,
+      "PERCENT_COMPLETE": 0.622430038965639,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.56823015784171,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0541998811239289,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 19,
+      "NOT_MISSING": 5719,
+      "TOTAL": 5738,
+      "PERCENT_COMPLETE": 0.996688741721854,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.000139531952818,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 7,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 4839,
+      "NOT_MISSING": 899,
+      "TOTAL": 5738,
+      "PERCENT_COMPLETE": 0.156674799581736,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.110203315506619,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 5,
+      "NOT_MISSING": 2,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 0.285714285714286,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.226890756302521,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
