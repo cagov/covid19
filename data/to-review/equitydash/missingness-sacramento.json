@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Sacramento",
+      "METRIC": "cases",
+      "MISSING": 2582,
+      "NOT_MISSING": 9308,
+      "TOTAL": 11890,
+      "PERCENT_COMPLETE": 0.782842724978974,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.805812417437252,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0229696924582784,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Sacramento",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 66,
+      "TOTAL": 66,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.983870967741936,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0161290322580645,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Sacramento",
+      "METRIC": "tests",
+      "MISSING": 70141,
+      "NOT_MISSING": 91085,
+      "TOTAL": 161226,
+      "PERCENT_COMPLETE": 0.564952302978428,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.486477407662021,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0784748953164067,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 100,
+      "NOT_MISSING": 12437,
+      "TOTAL": 12537,
+      "PERCENT_COMPLETE": 0.992023610114062,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.002460670084504,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 81,
+      "TOTAL": 81,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 10906,
+      "NOT_MISSING": 1631,
+      "TOTAL": 12537,
+      "PERCENT_COMPLETE": 0.130094919039643,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.055233266288542,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 76,
+      "NOT_MISSING": 5,
+      "TOTAL": 81,
+      "PERCENT_COMPLETE": 0.061728395061728,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.061728395061728,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
