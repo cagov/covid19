@@ -4,20 +4,21 @@ import drawSecondBars from "./draw-chart-second.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
+import getDisproportionateRatioSortValue from './../../get-disproportionality-ratio-sort-value.js';
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback() {
     // Settings and initial values
     this.chartOptions = {
       // Data
-      subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
-      subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
+      subgroups2: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
+      subgroups1: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
       dataUrl:
         config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
       state: "California",
       county: "California",
       // Style
-      chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"],
+      chartColors: ["#92C5DE", "#FFCF44", "#F2F5FC"], // blue yellow gray
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -388,13 +389,15 @@ class CAGOVEquityREPop extends window.HTMLElement {
       );
   }
 
+
   checkAppliedDataSuppression(data) {
-    // console.log(data);
     let suppressionAllocations = {
       None: 0,
       Total: 0,
       Population: 0,
     };
+
+    let appliedSuppressionStatus = null;
 
     data.map((item) => {
       suppressionAllocations[item.APPLIED_SUPPRESSION] =
@@ -402,132 +405,46 @@ class CAGOVEquityREPop extends window.HTMLElement {
     });
 
     if (suppressionAllocations["Population"] === data.length) {
+      appliedSuppressionStatus = 'applied-suppression-population';
+    } else if (suppressionAllocations["Total"] === data.length) {
+      appliedSuppressionStatus = 'applied-suppression-total';
     }
-
-    // console.log("suppressionAllocations", suppressionAllocations);
-    // APPLIED_SUPPRESSION: "None"
-    // COUNTY: "California"
-    // DEMOGRAPHIC_SET: "race_ethnicity"
-    // DEMOGRAPHIC_SET_CATEGORY: "Latino"
-    // LOWEST_VALUE: 196.440102732406
-    // METRIC: "cases"
-    // METRIC_TOTAL_DELTA: 50.257727920786
-    // METRIC_TOTAL_PERCENTAGE: 49.742272079214
-    // METRIC_TOTAL_PERCENTAGE_30_DAYS_AGO: 58.436053257361
-    // METRIC_VALUE: 95247
-    // METRIC_VALUE_30_DAYS_AGO: 50868
-    // METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO: -8.693781178147
-    // METRIC_VALUE_PER_100K: 609.58637893454
-    // METRIC_VALUE_PER_100K_30_DAYS_AGO: 325.558179508459
-    // METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO: 284.028199426081
-    // PCT_FROM_LOWEST_VALUE: 3.1031666673730505
-    // POPULATION_PERCENTAGE: 38.93641681012
-    // POPULATION_PERCENTAGE_DELTA: 61.06358318988
-    // SORT_METRIC: 1.27752567273436
-    // WORST_VALUE: 797.223716300351
-    // WORST_VALUE_DELTA: 187.63733736581105
-
-    // APPLIED_SUPPRESSION: "Population"
-    // COUNTY: "Nevada"
-    // DEMOGRAPHIC_SET: "race_ethnicity"
-    // DEMOGRAPHIC_SET_CATEGORY: "Latino"
-    // LOWEST_VALUE: 427.697810237235
-    // METRIC: "cases"
-    // METRIC_TOTAL_DELTA: 100
-    // METRIC_TOTAL_PERCENTAGE: null
-    // METRIC_TOTAL_PERCENTAGE_30_DAYS_AGO: null
-    // METRIC_VALUE: null
-    // METRIC_VALUE_30_DAYS_AGO: null
-    // METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO: null
-    // METRIC_VALUE_PER_100K: null
-    // METRIC_VALUE_PER_100K_30_DAYS_AGO: null
-    // METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO: null
-    // PCT_FROM_LOWEST_VALUE: 0
-    // POPULATION_PERCENTAGE: 12.098065039003
-    // POPULATION_PERCENTAGE_DELTA: 87.901934960997
-    // SORT_METRIC: 0
-    // WORST_VALUE: 427.697810237235
-    // WORST_VALUE_DELTA: 427.697810237235
-
-    return data;
+   
+    return {
+      status: appliedSuppressionStatus
+    }
   }
 
-  getMissingDataBox(appliedSuppressionType) {
-    // console.log("this", this);
-    let type = "appliedSuppressionTotal"; // @TODO connect to logic
-
+  getMessages(key) {
+    // Read messages from mark up.
     // let messagesByType = {
     //   appliedSuppressionNone: null,
     //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
     //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
     // };
 
+    // Get the current message as requested for this type.
     // let message = messagesByType[type];
+    return null;
+  }
+
+  getMessageBox(data) {
+    let suppressionStatus = this.checkAppliedDataSuppression(data);
+    let message = null;
+    if (suppressionStatus === null) {
+      // Do nothing
+    } else if (suppressionStatus === 'applied-suppression-total') {
+      // Generate a message box
+      message = this.getMessages('applied-suppression-total');
+    }
+
+    // @TODO Read the data, check all APPLIED_SUPPRESSION === "Total"
+
+    // If a message is found
     // if (message !== null) {
-
-    // // Break message into individual lines, split lines out by br tag
-    // let missingTextLines = message.split(
-    //   this.translationsObj["missing-data-caption-line-delimiter"]
-    // );
-
-    // let messageBox = (g) =>
-    // g
-    //   // .append("text")
-    //   .attr("class", "informative-box")
-    //   .call((g) =>
-    //     g
-    //       .append("rect")
-    //       .attr("x", 0)
-    //       .attr("y", 0)
-    //       .attr("width", this.chartBreakpointValues.width)
-    //       .attr("height", this.chartBreakpointValues.height)
-    //       .attr("fill", "white")
-    //       .attr("stroke", "none")
-    //       .attr("opacity", "0.1")
-    //   )
-    //   .call((g) =>
-    //     g
-    //       .append("rect")
-    //       .attr("class", "shadow")
-    //       .attr("x", this.chartBreakpointValues.width * 0.25)
-    //       .attr("y", this.chartBreakpointValues.height * 0.3)
-    //       .attr("width", this.chartBreakpointValues.width * 0.5)
-    //       .attr("height", this.chartBreakpointValues.height * 0.3)
-    //       .attr("fill", "white")
-    //       .attr("stroke", "currentColor")
-    //       .attr("stroke-width", "2")
-    //   )
-
-    //   .each(function (d) {
-    //     let gg = this;
-    //     missingTextLines.forEach(function (textLine, yIdx) {
-    //       d3.select(gg)
-    //         .append("text")
-    //         // .attr(
-    //         //   "transform",
-    //         //   "translate(" +
-    //         //     component.dims.width / 2 +
-    //         //     " ," +
-    //         //     (component.dims.height * 0.39 + yIdx * 5) +
-    //         //     ")"
-    //         // )
-
-    //         .attr(
-    //           "transform",
-    //           "translate(" +
-    //             613 / 2 +
-    //             " ," +
-    //             (500 * 0.39 + yIdx * 5) +
-    //             ")"
-    //         )
-    //         .style("text-anchor", "middle")
-    //         .text(textLine);
-    //     });
-    //   });
-
-    // let messageBox = ()
-    // return messageBox;
-    // return null;
+        // Get message box d3 constructor (or CSS box overlay?)
+        // Format message (break into lines) - with a utility function
+        // Generate message box to pass to d3 rendered.
     // }
     return null;
   }
@@ -553,6 +470,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
           d.DEMOGRAPHIC_SET_CATEGORY
         );
+      // Run the sort ratio calculating logic. 
+      // If not valid, will return null.
+      d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
       }
     });
 
@@ -561,22 +481,49 @@ class CAGOVEquityREPop extends window.HTMLElement {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
           d.DEMOGRAPHIC_SET_CATEGORY
         );
+        // Run the sort ratio calculating logic. 
+        // If not valid, will return null.
+        d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
       }
     });
 
-    data.sort(function (a, b) {
-      return d3.descending(
-        a.METRIC_TOTAL_PERCENTAGE, // @TODO can abstract
-        b.METRIC_TOTAL_PERCENTAGE // @TODO can abstract
-      );
+    let sortableData = data.filter((d) => d.DISPROPORTIONALITY_RATIO !== null);
+    let nullSortData = data.filter((d) => d.DISPROPORTIONALITY_RATIO === null);
+
+    // Sort data with non-null 'disproportionality ratio' 
+    sortableData.sort(function (a, b) {
+      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
     });
 
-    secondData.sort(function (a, b) {
-      return d3.descending(
-        a.METRIC_TOTAL_PERCENTAGE, // @TODO can abstract
-        b.METRIC_TOTAL_PERCENTAGE // @TODO can abstract
-      );
+    // Push null data values to the end or the sorted array (@TODO double check order)
+    // Remap data object
+    data = sortableData.concat(nullSortData); 
+    
+    // data.sort(function (a, b) {
+    //   return d3.descending(
+    //     a.METRIC_TOTAL_PERCENTAGE, // @TODO can abstract
+    //     b.METRIC_TOTAL_PERCENTAGE // @TODO can abstract
+    //   );
+    // });
+    let sortableSecondData = secondData.filter((d) => d.DISPROPORTIONALITY_RATIO !== null);
+    let nullSortSecondData = secondData.filter((d) => d.DISPROPORTIONALITY_RATIO === null);
+
+    // Sort data with non-null 'disproportionality ratio' 
+    sortableSecondData.sort(function (a, b) {
+      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
     });
+
+    // Push null data values to the end or the sorted array (@TODO double check order)
+    // Remap data object
+    secondData = sortableSecondData.concat(nullSortSecondData); 
+
+    // secondData.sort(function (a, b) {
+    //   return d3.descending(
+    //     a.METRIC_TOTAL_PERCENTAGE, // @TODO can abstract
+    //     b.METRIC_TOTAL_PERCENTAGE // @TODO can abstract
+    //   );
+    // });
+
 
     // @TODO Pull into a data formatting method
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
@@ -585,12 +532,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
     // Push second section data to end of data array.
     let groupsSecond = secondData.map((item) => item.DEMOGRAPHIC_SET_CATEGORY); // ["Other", "Unknown"]
 
-    let appliedSuppressionType = this.checkAppliedDataSuppression(data);
-    let messageBox = this.getMissingDataBox(appliedSuppressionType);
+
+    let messageBox = this.getMessageBox(data);
 
     let stackedData1 = d3.stack().keys(this.chartOptions.subgroups1)(data);
     let stackedData2 = d3.stack().keys(this.chartOptions.subgroups2)(data);
-    let stackedData1Second = d3.stack().keys(this.chartOptions.subgroups1)(
+    let stackedData1Second = d3.stack().keys(this.chartOptions.subgroups2)(
       secondData
     );
 

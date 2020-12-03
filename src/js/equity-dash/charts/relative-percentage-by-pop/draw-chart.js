@@ -116,7 +116,7 @@ export default function drawBars({
 
   svg.append("g").call(yAxis);
 
-  //end of bar labels yellow
+  // End of bar labels, POPULATION_PERCENTAGE (blue)
   svg
     .append("g")
     .attr("class", "bars")
@@ -127,27 +127,6 @@ export default function drawBars({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x1(100) + 5)
-        .attr("height", y.bandwidth())
-        .text((d) =>
-          d.METRIC_TOTAL_PERCENTAGE
-            ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-            : 0 + "%"
-        )
-        .attr("text-anchor", "end");
-    });
-
-  //end of bar labels blue
-  svg
-    .append("g")
-    .attr("class", "bars")
-    .selectAll(".bars")
-    .data(data)
-    .join((enter) => {
-      enter
-        .append("text")
-        .attr("class", "bars")
-        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
         .attr("x", (d) => x2(100) + 5)
         .attr("height", y.bandwidth())
         .text((d) =>
@@ -158,7 +137,51 @@ export default function drawBars({
         .attr("text-anchor", "end");
     });
 
-  //% change since previous month labels
+  // End of bar labels, METRIC total (yellow)
+  svg
+    .append("g")
+    .attr("class", "bars")
+    .selectAll(".bars")
+    .data(data)
+    .join((enter) => {
+      enter
+        .append("text")
+        .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
+        .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
+        .attr("x", (d) => x1(100) + 5)
+        .attr("height", y.bandwidth())
+        .text((d) => {
+          if (d.METRIC_TOTAL_PERCENTAGE !== null) {
+          return d.METRIC_TOTAL_PERCENTAGE
+            ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+            : 0 + "%"
+          } else {
+            return ``;
+            // return d.APPLIED_SUPPRESSION;
+          }
+          }
+        )
+        .attr("text-anchor", "end");
+
+        // enter
+        // .append("text")
+        // .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
+        // .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
+        // .attr("x", (d) => x1(100) + 5)
+        // .attr("height", y.bandwidth())
+        // .text((d) => {
+        //   if (d.METRIC_TOTAL_PERCENTAGE !== null) {
+        //   d.METRIC_TOTAL_PERCENTAGE
+        //     ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
+        //     : 0 + "%";
+        //   } else {
+        //     return 'MASKED'd.APPLIED_SUPPRESSION;
+        //   }
+        // }
+        // )
+    });
+
+  // % Change since previous month labels
   svg
     .append("g")
     .attr("class", "change-from-month-labels")
@@ -184,7 +207,7 @@ export default function drawBars({
         .attr("text-anchor", "end");
     });
 
-  //arrows
+  // % Change from month arrows
   svg
     .append("g")
     .attr("class", "change-from-month-labels")
@@ -221,14 +244,16 @@ export default function drawBars({
   // Legend
   svg
     .append("rect")
-    .attr("x", 0)
+    .attr("x", 190)
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
     .attr("fill", "#FFCF44");
+    
+    
   svg
     .append("rect")
-    .attr("x", 190)
+    .attr("x", 0)
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
@@ -236,14 +261,14 @@ export default function drawBars({
 
   svg
     .append("text")
-    .attr("x", 20)
+    .attr("x", 210)
     .attr("y", -12)
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[0]);
   svg
     .append("text")
-    .attr("x", 210)
+    .attr("x", 20)
     .attr("y", -12)
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
