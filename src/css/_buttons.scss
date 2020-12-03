@@ -287,7 +287,11 @@ button.clear {
     border: 1px solid $darkblue!important;
     background-color: $darkblue!important;
     display: flex!important;
+    flex-direction: column;
     justify-content: center!important;
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
     .large-tab {
       text-decoration: none;
       font-family: Montserrat;
@@ -299,9 +303,13 @@ button.clear {
       padding: 10px;
       background-color: $white;
       color:$darkblue;
-      min-width: 200px;
-      margin: 0 1px 0 0;
+      width: 100%;
+      margin: 0 1px 1px 0;
       border: none;
+      @media (min-width: 768px) {
+        margin: 0 1px 0 0;
+        min-width: 200px;
+      }
       &:hover, &:focus {
         background-color: $lightestblue;
       }
@@ -309,7 +317,7 @@ button.clear {
         outline: 2px solid $yellow;
       }
       &:last-child {
-        margin-right: 0;}
+        margin-right: 0;margin-bottom: 0;}
       &.active, &[aria-expanded="true"] {
         color:$white;
         background-color: $darkblue;

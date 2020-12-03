@@ -52,7 +52,7 @@ class CAGovCountyButtons extends window.HTMLElement {
 
   template(isStatewide) {
     // console.log("Template isStatewide=",isStatewide);
-    return /*html*/`<div class="d-flex justify-content-center my-3">
+    return /*html*/`<div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="text-center large-tabs">
           <button class="large-tab js-toggle-county county ${!isStatewide ? 'active' : ''}">${this.county}</button>
           <button class="large-tab js-toggle-county statewide ${isStatewide ? 'active' : ''}">${this.resetText}</button>
