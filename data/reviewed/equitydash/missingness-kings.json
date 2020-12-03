@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Kings",
+      "METRIC": "cases",
+      "MISSING": 1730,
+      "NOT_MISSING": 941,
+      "TOTAL": 2671,
+      "PERCENT_COMPLETE": 0.352302508423811,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.4,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0476974915761887,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "COUNTY": "Kings",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 3,
+      "TOTAL": 3,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "tests": {
+      "COUNTY": "Kings",
+      "METRIC": "tests",
+      "MISSING": 32142,
+      "NOT_MISSING": 9073,
+      "TOTAL": 41215,
+      "PERCENT_COMPLETE": 0.220138299162926,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.210692494773222,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0094458043897043,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2,
+      "NOT_MISSING": 2756,
+      "TOTAL": 2758,
+      "PERCENT_COMPLETE": 0.999274836838289,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.000454082121308,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 4,
+      "TOTAL": 4,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-03"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2184,
+      "NOT_MISSING": 574,
+      "TOTAL": 2758,
+      "PERCENT_COMPLETE": 0.208121827411168,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.086689493343549,
+      "REPORT_DATE": "2020-12-03"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 2,
+      "TOTAL": 4,
+      "PERCENT_COMPLETE": 0.5,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.5,
+      "REPORT_DATE": "2020-12-03"
+    }
+  }
+}
