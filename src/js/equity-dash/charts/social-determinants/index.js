@@ -1,5 +1,5 @@
 import template from './template.js';
-import {writeXAxis, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
+import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 
@@ -26,7 +26,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 613,
         height: 500,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
@@ -138,6 +138,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
+      writeXAxisLabel(this, this.svg, this.translationsObj.xAxisTitleIncome);
   
       this.svg.append("g")
         .attr("class", "xaxis")
@@ -147,27 +148,6 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.yDValue = yDValue;
 
       redrawYLine(this, y);
-
-      // let yDottedLinePos = y(yDValue); // this.chartBreakpointValues.height/2
-      // let yXAnchor = this.chartBreakpointValues.width - 18;
-
-      // this.svg.append("path")
-      //   .attr("d", d3.line()([[20, yDottedLinePos], 
-      //                         [this.chartBreakpointValues.width - 20, yDottedLinePos]]))
-      //   .attr("stroke", "#1F2574")
-      //   .attr("opacity", 0.5)
-      //   .style("stroke-dasharray", ("5, 5"))
-      //   .attr('class','label bar-chart-yline');
-      
-      // this.svg.append("text")
-      //   .text(`${this.translationsObj.statewideCaseRate} ${parseFloat(dataincome[0].STATE_CASE_RATE_PER_100K).toFixed(1)}`)
-      //   .attr("y", yDottedLinePos - 15)
-      //   // .attr("x", 38)
-      //   // .attr('text-anchor','start')
-      //   .attr("x", yXAnchor)
-      //   .attr('text-anchor','end')
-      //   .attr('fill', '#1F2574')
-      //   .attr('class','label bar-chart-label');
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -198,26 +178,30 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       return caption;
   }
 
-
-
   applyListeners(svg, x, y, height, margin, xAxis, dataincome, datacrowding, datahealthcare, chartBreakpointValues) {
     let toggles = this.querySelectorAll('.js-toggle-group');
     let component = this;
+    let tab_recs = [{nom:'income',data:dataincome, tranHTML:component.translationsObj.chartTitleIncome, xAxisLabel:component.translationsObj.xAxisTitleIncome},
+                    {nom:'healthcare',data:datahealthcare, tranHTML:component.translationsObj.chartTitleHealthcare, xAxisLabel:component.translationsObj.xAxisTitleHealthcare},
+                    {nom:'housing',data:datacrowding, tranHTML:component.translationsObj.chartTitleHousing, xAxisLabel:component.translationsObj.xAxisTitleHousing},
+                   ];
+
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
+
+        console.log("Got Social Toggle: ",this.classList);
         event.preventDefault();
-        if(this.classList.contains('healthcare')) {
-          rewriteBar(component, datahealthcare)
-          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHealthcare;
-        }
-        if(this.classList.contains('housing')) {
-          rewriteBar(component, datacrowding)
-          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleHousing;
-        }
-        if(this.classList.contains('income')) {
-          rewriteBar(component, dataincome)
-          component.querySelector('.chart-title').innerHTML = component.translationsObj.chartTitleIncome;
-        }
+        tab_recs.forEach(tRec => {
+          // console.log("Checking ",tRec.nom,this.classList);
+          if(this.classList.contains(tRec.nom)) {
+           // console.log("Hit on ",tRec.nom);
+           const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
+            window.dispatchEvent(event);    
+            rewriteBar(component, tRec.data)
+            component.querySelector('.chart-title').innerHTML = tRec.tranHTML;
+            writeXAxisLabel(component, component.svg, tRec.xAxisLabel);
+          }
+        });
         resetToggles();
         tog.classList.add('active')
       })

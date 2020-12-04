@@ -95,10 +95,6 @@
     font-weight: 100;
   }
   
-  .bar-label .tick text {
-    text-transform: capitalize;
-  }
-
   .tick text {
     font-size: 0.85rem;
   }
@@ -116,6 +112,11 @@
     font-size: 0.95rem;
     text-anchor: unset;
     // text-anchor: end;
+  }
+
+  .xaxis-label {
+    font-weight: bold;
+    font-size: 0.95rem;
   }
 
   /* Responsive text */
@@ -167,6 +168,29 @@
     border: solid 1px #ccc;
     min-width: 100px;
   }
+
+  .chart-overlaybox-container {
+    /* display:inline-block; */
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+  
+  .chart-overlaybox {
+    // position: absolute;
+    // z-index: 10;
+    // visibility: hidden;
+    // background: #fff;
+    pointer-events: none;
+
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+    min-width: 100px;
+  }
+
 
   .highlight-data {
     font-weight: bold;

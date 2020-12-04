@@ -5,6 +5,7 @@ import Tooltip from "./tooltip.js";
 import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
@@ -90,9 +91,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       data1LegendLocal: this.translationsObj["data1-legend-local"], // 'placeholderForDynamicLocation test positivity', // appended to county name
       data2Legend: this.translationsObj["data2-legend"], // 'Health equity quartile positivity',
       missingDataCaption: this.translationsObj["missing-data-caption"], // 'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
-      missingDataCaptionLineDelimiter: this.translationsObj[
-        "missing-data-caption-line-delimiter"
-      ], // '<br>',
     };
 
     this.svg = d3
@@ -214,10 +212,13 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let chartWidth = xRange[1] - xRange[0]; // 128.5
     let chartHeight = yRange[1] - yRange[0]; // -52
     // console.log("Chart width", chartWidth, "height", chartHeight);
+    
+    // jbum note: 14 is a magic number that aligns axis to the line and tooltips
+    // note the left margin is 30, so I'm not sure why it's so odd
 
     let xAxis = (g) =>
       g
-        .attr("transform", "translate(2.75," + this.chartBreakpointValues.margin.bottom + ")")
+        .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
@@ -254,57 +255,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .style("text-anchor", "left")
         .text(component.textLabels.yAxisLabel)
         .attr("class", "y-label");
-    let missingLabelText = this.textLabels.missingDataCaption;
-    let missingTextLines = missingLabelText.split(
-      this.textLabels.missingDataCaptionLineDelimiter
-    );
-
-    // console.log("Text lines",missingTextLines);
-    let informativeBox = (g) =>
-      g
-        // .append("text")
-        .attr("class", "informative-box")
-        .call((g) =>
-          g
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", this.chartBreakpointValues.width)
-            .attr("height", this.chartBreakpointValues.height)
-            .attr("fill", "white")
-            .attr("stroke", "none")
-            .attr("opacity", "0.1")
-        )
-        .call((g) =>
-          g
-            .append("rect")
-            .attr("class", "shadow")
-            .attr("x", this.chartBreakpointValues.width * 0.25)
-            .attr("y", this.chartBreakpointValues.height * 0.3)
-            .attr("width", this.chartBreakpointValues.width * 0.5)
-            .attr("height", this.chartBreakpointValues.height * 0.3)
-            .attr("fill", "white")
-            .attr("stroke", "currentColor")
-            .attr("stroke-width", "2")
-        )
-
-        .each(function (d) {
-          let gg = this;
-          missingTextLines.forEach(function (textLine, yIdx) {
-            d3.select(gg)
-              .append("text")
-              .attr(
-                "transform",
-                "translate(" +
-                  component.dims.width / 2 +
-                  " ," +
-                  (component.dims.height * 0.39 + yIdx * 5) +
-                  ")"
-              )
-              .style("text-anchor", "middle")
-              .text(textLine);
-          });
-        });
+    
     let line = d3
       .line()
       .x((d, i) => {
@@ -318,7 +269,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".county_positivity_all_nopris").remove();
     svg.selectAll(".tick").remove(); // remove previous axes annotations
     svg.selectAll(".y-label").remove();
-    svg.selectAll(".informative-box").remove();
+    // d3.selectAll(".tooltip-container--d3-lines").remove();
 
     if (!missing_eq_data) {
       svg
@@ -361,8 +312,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.append("g").call(yAxisLabel);
 
     let is_debugging_infobox = false;
+    let boxClass = "chartOverlay-d3-lines";
     if (missing_eq_data || is_debugging_infobox) {
-      svg.append("g").call(informativeBox);
+      chartOverlayBox(svg,                      
+                     "cagov-chart-d3-lines",     // class of chart
+                     boxClass,                   // class of box
+                     this.chartBreakpointValues, // dimensions dict (contains width,height)
+                     this.textLabels.missingDataCaption // caption
+                     )
+    } else {
+      chartOverlayBoxClear(svg, boxClass);
     }
 
     //tooltip

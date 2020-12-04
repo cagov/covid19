@@ -3,7 +3,7 @@ import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
-import getDisproportionateRatioSortValue from './../../get-disproportionality-ratio-sort-value.js';
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -11,8 +11,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.chartOptions = {
       // Data
       subgroups: ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"],
-      // subgroups1: ["METRIC_TOTAL_PERCENTAGE", "METRIC_TOTAL_DELTA"],
-      // subgroups2: ["POPULATION_PERCENTAGE", "POPULATION_PERCENTAGE_DELTA"],
       dataUrl:
         config.equityChartsDataLoc + "/equitydash/cumulative-california.json", // Overwritten by county.
       dataStatewideRateUrl:
@@ -20,7 +18,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       state: "California",
       county: "California",
       // Style
-      chartColors: ["#FFCF44", "#F2F5FC"], // ["#92C5DE", "#FFCF44", "#F2F5FC"],
+      chartColors: ["#FFCF44", "#F2F5FC"],
       selectedMetric: "cases",
       selectedMetricDescription: "Cases",
       // Breakpoints
@@ -55,8 +53,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       retina: {
-        height: 642,
-        width: 450,
+        height: 700,
+        width: 320,
         margin: {
           top: 20,
           right: 30,
@@ -90,17 +88,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // @TODO connect a debouncer
     window.addEventListener("resize", handleChartResize);
 
-    // this.dimensions = {
-    //   height: 642,
-    //   width: 450,
-    //   margin: {
-    //     top: 20,
-    //     right: 30,
-    //     bottom: 20,
-    //     left: 10,
-    //   },
-    // };
-
     this.dimensions = this.chartBreakpointValues;
 
     this.translationsObj = getTranslations(this);
@@ -110,7 +97,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.drawBars = drawBars;
     this.chartTitle = function () {
       let isStatewide = this.county === "California";
-      // console.log("Getting chart title 100k metric=", this.selectedMetric);
       return this.translationsObj["chartTitle--" + this.selectedMetric].replace(
         "placeholderForDynamicLocation",
         isStatewide ? this.county : this.county + " County "
@@ -126,7 +112,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       let isStatewide = this.county === "California";
       let key =
         "chartFilterLegendPfx" +
-        (isStatewide ? "State" : "County") +
+        (isStatewide ? "State" : "State") + // change right-most one to County after we fix it...
         "--" +
         this.selectedMetric;
       let filterTxt =
@@ -178,20 +164,18 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       );
 
     // @TODO Connect to chartOptions
-    this.subgroups = ["METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"];
+    this.subgroups = this.chartOptions.subgroups;
     this.color = d3
       .scaleOrdinal()
       .domain(this.subgroups)
-      .range(["#FFCF44", "#F2F5FC"]);
+      .range(this.chartOptions.chartColors);
 
-    this.dataUrl =
-      config.equityChartsDataLoc + "/equitydash/cumulative-california.json";
-    this.dataStatewideRateUrl =
-      config.equityChartsDataLoc + "/equitydash/cumulative-combined.json";
+    this.dataUrl = this.chartOptions.dataUrl;
+    this.dataStatewideRateUrl = this.chartOptions.dataStatewideRateUrl;
 
     this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
     this.listenForLocations();
-    this.county = "California";
+    this.county = this.chartOptions.state;
     this.resetTitle();
   }
 
@@ -242,62 +226,30 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   }
 
   checkAppliedDataSuppression(data) {
+    let appliedSuppressionStatus = null;
+    let groups = data.map((item) => item.DEMOGRAPHIC_SET_CATEGORY);
+
     let suppressionAllocations = {
       None: 0,
       Total: 0,
       Population: 0,
+      CountySuppressed: false,
+      TotalSuppression: 0,
     };
 
-    let appliedSuppressionStatus = null;
-
     data.map((item) => {
-      suppressionAllocations[item.APPLIED_SUPPRESSION] =
-        suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
+      suppressionAllocations[item.APPLIED_SUPPRESSION] = suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
+      if (item.APPLIED_SUPPRESSION !== "None") {      
+        suppressionAllocations['TotalSuppression'] = suppressionAllocations['TotalSuppression'] + 1;
+      }
     });
 
-    if (suppressionAllocations["Population"] === data.length) {
-      appliedSuppressionStatus = 'applied-suppression-population';
-    } else if (suppressionAllocations["Total"] === data.length) {
+    if (groups.length === suppressionAllocations.TotalSuppression) {
+      suppressionAllocations.CountySuppressed = true;
       appliedSuppressionStatus = 'applied-suppression-total';
     }
-   
-    return {
-      status: appliedSuppressionStatus
-    }
-  }
-
-  getMessages(key) {
-    // Read messages from mark up.
-    // let messagesByType = {
-    //   appliedSuppressionNone: null,
-    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
-    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
-    // };
-
-    // Get the current message as requested for this type.
-    // let message = messagesByType[type];
-    return null;
-  }
-
-  getMessageBox(data) {
-    let suppressionStatus = this.checkAppliedDataSuppression(data);
-    let message = null;
-    if (suppressionStatus === null) {
-      // Do nothing
-    } else if (suppressionStatus === 'applied-suppression-total') {
-      // Generate a message box
-      message = this.getMessages('applied-suppression-total');
-    }
-
-    // @TODO Read the data, check all APPLIED_SUPPRESSION === "Total"
-
-    // If a message is found
-    // if (message !== null) {
-        // Get message box d3 constructor (or CSS box overlay?)
-        // Format message (break into lines) - with a utility function
-        // Generate message box to pass to d3 rendered.
-    // }
-    return null;
+    console.log(suppressionAllocations);
+    return appliedSuppressionStatus;
   }
 
   render() {
@@ -327,10 +279,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
           d.METRIC_VALUE_PER_100K_30_DAYS_AGO;
       }
 
-      // Run the sort ratio calculating logic. 
-      // If not valid, will return null.
-      d.DISPROPORTIONALITY_RATIO = getDisproportionateRatioSortValue(d, data, this);
-
       // Map the race/ethnicities in the db to the desired display values here.
       if (displayDemoMap.get(d.DEMOGRAPHIC_SET_CATEGORY)) {
         d.DEMOGRAPHIC_SET_CATEGORY = displayDemoMap.get(
@@ -344,13 +292,15 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     // Sort data with non-null 'disproportionality ratio' 
     sortableData.sort(function (a, b) {
-      return d3.ascending(a.DISPROPORTIONALITY_RATIO, b.DISPROPORTIONALITY_RATIO);
+      return d3.descending(a.METRIC_VALUE_PER_100K, b.METRIC_VALUE_PER_100K);
     });
 
     // Push null data values to the end or the sorted array (@TODO double check order)
     // Remap data object
     data = sortableData.concat(nullSortData); 
     
+
+    this.appliedSuppressionStatus = this.checkAppliedDataSuppression(data);
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
 
@@ -378,10 +328,17 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .call(d3.axisLeft(this.y).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
-    // Calculate x margin (?)
+    let statewideRatePer100k = this.combinedData[this.selectedMetric]
+      ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
+      : null;
+    let max_xdomain = d3.max(stackedData, (d) => d3.max(d, (d) => d[1]));
+    if (statewideRatePer100k !== null) {
+      console.log("max xd",max_xdomain, statewideRatePer100k);
+      max_xdomain = Math.max(max_xdomain, statewideRatePer100k)
+    }
     this.x = d3
       .scaleLinear()
-      .domain([0, d3.max(stackedData, (d) => d3.max(d, (d) => d[1]))])
+      .domain([0, max_xdomain])
       .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
 
     // ?
@@ -390,13 +347,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         .attr("transform", "translate(0," + this.dimensions.width + ")")
         .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
         .remove();
-    
-    // Is this for the line (is this the number value or the label?)
-    let statewideRatePer100k = this.combinedData[this.selectedMetric]
-      ? this.combinedData[this.selectedMetric].METRIC_VALUE_PER_100K
-      : null;
-    
-    // Render the chart
     this.drawBars(stackedData, data, statewideRatePer100k);
   }
 

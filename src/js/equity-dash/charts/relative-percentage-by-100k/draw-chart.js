@@ -1,3 +1,5 @@
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+
 export default function drawBars(stackedData, data, statewideRatePer100k) {
   // console.log("Draw bars this.dimensions",this.dimensions);
   // using object context for most of the params
@@ -15,6 +17,10 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
   let filterString = this.filterString(statewideRatePer100k);
   let legendString = this.legendString();
   let translationsObj = this.translationsObj;
+  let chartBreakpointValues = this.chartBreakpointValues;
+  let appliedSuppressionStatus = this.appliedSuppressionStatus;
+
+  console.log('100k', translationsObj, chartBreakpointValues, appliedSuppressionStatus);
 
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
@@ -87,6 +93,19 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     });
 
   // svg.append("g").call(xAxis);
+
+  let is_debugging_infobox = false;
+  let boxClass = "chartOverlay-cagov-chart-re-100k";
+  if (appliedSuppressionStatus !== null || is_debugging_infobox) {
+    chartOverlayBox(svg,                      
+                  "cagov-chart-re-100k",      // class of chart
+                  boxClass,                   // class of box
+                  chartBreakpointValues,      // dimensions dict (contains width,height)
+                  translationsObj[appliedSuppressionStatus] ? translationsObj[appliedSuppressionStatus] : '' // caption
+                  )
+  } else {
+    chartOverlayBoxClear(svg, boxClass);
+  }
 
   // Bar labels.
   svg
@@ -303,4 +322,5 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text(legendString);
+
 }

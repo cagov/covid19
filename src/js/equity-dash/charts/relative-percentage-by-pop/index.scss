@@ -17,12 +17,17 @@ cagov-chart-re-pop {
   // }
 
   .svg-holder-second {
-    border-top: solid 2px #000;
+    border-top: solid 1px #000;
     margin-top: 10px;
     padding-top: 30px;
     svg {
       width: 100%;
     }
+  }
+
+  .chart-overlaybox-container {
+    top: 23%;
+    left: 20%;
   }
 
   // .bars {

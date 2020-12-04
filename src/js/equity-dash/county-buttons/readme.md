@@ -16,7 +16,8 @@ Event structure:
     detail: {
       county: clickedCounty,
       statewide: false,
-      reset: false
+      reset: false,
+      how: reason
     }
   });
 ```

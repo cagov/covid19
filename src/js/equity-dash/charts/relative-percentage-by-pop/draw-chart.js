@@ -1,3 +1,5 @@
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+
 export default function drawBars({
   component,
   svg,
@@ -15,22 +17,17 @@ export default function drawBars({
   legendScope = ``,
   selectedMetric,
   translationsObj,
-  messageBox
+  appliedSuppressionStatus,
+  chartBreakpointValues
 }) {
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  // svg.
-  //   append(messageBox);
-
-  if (messageBox !== null) {
-    svg.append("g").call(messageBox);
-  }
-
   //yellow bars
   svg
     .append("g")
+    .attr('class', 'svg-first-section')
     .selectAll("g")
     .data(stackedData1)
     .enter()
@@ -273,4 +270,20 @@ export default function drawBars({
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[1]);
+
+
+  let is_debugging_infobox = false;
+  let boxClass = "chartOverlay-svg-first-section";
+
+  if ( appliedSuppressionStatus !== null || is_debugging_infobox) {
+    chartOverlayBox(svg,                      
+                    "cagov-chart-re-pop",       // class of chart
+                    boxClass,                   // class of box
+                    chartBreakpointValues,      // dimensions dict (contains width,height)
+                    translationsObj[appliedSuppressionStatus] ? translationsObj[appliedSuppressionStatus] : ''
+                    )
+    } else {
+      chartOverlayBoxClear(svg, boxClass);
+    }  
+
 }

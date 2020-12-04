@@ -22,13 +22,15 @@ class CAGovCountyButtons extends window.HTMLElement {
       event.preventDefault();
       if(event.target.classList.contains('js-toggle-county')) {
         let clickedCounty = event.target.textContent;
+        console.log("Issuing county-selected for button");
 
         if(!event.target.classList.contains('active')) {
           let emissionEvent = new window.CustomEvent('county-selected', {
             detail: {
               county: clickedCounty,
               statewide: false,
-              reset: false
+              reset: false,
+              how: 'tab'
             }
           });
           if(event.target.classList.contains('statewide')) {
@@ -36,10 +38,13 @@ class CAGovCountyButtons extends window.HTMLElement {
               detail: {
                 county: 'California',
                 statewide: true,
-                reset: false
+                reset: false,
+                how: 'tab'
               }
             });
           }
+          // const event2 = new window.CustomEvent('tab-select',{detail:{tab_selected: emissionEvent.detail.county}});
+          // window.dispatchEvent(event2);    
           searchElement.dispatchEvent(emissionEvent);
         }
       }
