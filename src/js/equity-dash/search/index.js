@@ -26,8 +26,8 @@ class CAGovCountySearch extends window.HTMLElement {
         } else {
           // generate failed search event...
           // console.log("county not found: ",typedInValue);
-          console.log("emitCounty via typo",typedInValue);
-          this.emitCountyTypo(typedInValue);
+          // console.log("emitCounty via typo",typedInValue);
+          // this.emitCountyTypo(typedInValue);
           document.querySelector('#county-query-error').style.display = 'block';
         }
   }
@@ -99,6 +99,7 @@ class CAGovCountySearch extends window.HTMLElement {
     this.dispatchEvent(event);    
   }
 
+  /*
   emitCountyTypo(misspelling) {
     // Dispatch custom event so we can pick up and track this usage elsewhere.
    // console.log("Emit County Typo");
@@ -109,6 +110,7 @@ class CAGovCountySearch extends window.HTMLElement {
     });
     this.dispatchEvent(event);    
   }
+  */
 
 
   addListeners() {

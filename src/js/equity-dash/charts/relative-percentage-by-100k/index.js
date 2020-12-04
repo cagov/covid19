@@ -248,7 +248,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       suppressionAllocations.CountySuppressed = true;
       appliedSuppressionStatus = 'applied-suppression-total';
     }
-    console.log(suppressionAllocations);
+    // console.log(suppressionAllocations);
     return appliedSuppressionStatus;
   }
 
@@ -333,7 +333,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       : null;
     let max_xdomain = d3.max(stackedData, (d) => d3.max(d, (d) => d[1]));
     if (statewideRatePer100k !== null) {
-      console.log("max xd",max_xdomain, statewideRatePer100k);
+      // console.log("max xd",max_xdomain, statewideRatePer100k);
       max_xdomain = Math.max(max_xdomain, statewideRatePer100k)
     }
     this.x = d3

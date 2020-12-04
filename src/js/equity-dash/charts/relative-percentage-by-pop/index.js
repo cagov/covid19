@@ -389,7 +389,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       suppressionAllocations.CountySuppressed = true;
       appliedSuppressionStatus = 'applied-suppression-total';
     }
-    console.log(suppressionAllocations);
+    // console.log(suppressionAllocations);
     return appliedSuppressionStatus;
   }
 
@@ -545,7 +545,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
     //        : 0
     //      }</span> ${legendStrings[0]} and <span class="highlight-data"> ${d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0}</span> of California's population
 
-    console.log( 'appliedSuppressionStatus',   this.appliedSuppressionStatus)
+    // console.log( 'appliedSuppressionStatus',   this.appliedSuppressionStatus)
     
     drawBars({
       component: this,

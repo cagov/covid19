@@ -290,10 +290,11 @@ export default function setupAnalytics() {
           reportGA('county-select', e.detail.county, 'activity-status');
         }
       }.bind(this), false);
-      searchElement.addEventListener('county-search-typo', function(e) {
+
+      /* searchElement.addEventListener('county-search-typo', function(e) {
         // console.log("got county thpo! ",e.detail);
         reportGA('county-select-typo', e.detail.county, 'activity-status');
-      }.bind(this), false);
+      }.bind(this), false); */
       
       document.querySelectorAll('.small-tab').forEach(btn => {
         btn.addEventListener('click', function (e) {
