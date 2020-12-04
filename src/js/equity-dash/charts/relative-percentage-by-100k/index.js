@@ -3,6 +3,7 @@ import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
+import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -225,62 +226,30 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   }
 
   checkAppliedDataSuppression(data) {
+    let appliedSuppressionStatus = null;
+    let groups = data.map((item) => item.DEMOGRAPHIC_SET_CATEGORY);
+
     let suppressionAllocations = {
       None: 0,
       Total: 0,
       Population: 0,
+      CountySuppressed: false,
+      TotalSuppression: 0,
     };
 
-    let appliedSuppressionStatus = null;
-
     data.map((item) => {
-      suppressionAllocations[item.APPLIED_SUPPRESSION] =
-        suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
+      suppressionAllocations[item.APPLIED_SUPPRESSION] = suppressionAllocations[item.APPLIED_SUPPRESSION] + 1;
+      if (item.APPLIED_SUPPRESSION !== "None") {      
+        suppressionAllocations['TotalSuppression'] = suppressionAllocations['TotalSuppression'] + 1;
+      }
     });
 
-    if (suppressionAllocations["Population"] === data.length) {
-      appliedSuppressionStatus = 'applied-suppression-population';
-    } else if (suppressionAllocations["Total"] === data.length) {
+    if (groups.length === suppressionAllocations.TotalSuppression) {
+      suppressionAllocations.CountySuppressed = true;
       appliedSuppressionStatus = 'applied-suppression-total';
     }
-   
-    return {
-      status: appliedSuppressionStatus
-    }
-  }
-
-  getMessages(key) {
-    // Read messages from mark up.
-    // let messagesByType = {
-    //   appliedSuppressionNone: null,
-    //   appliedSuppressionTotal: this.translationsObj["applied-suppression-total"],
-    //   appliedSuppressionPopulation: this.translationsObj["applied-suppression-population"],
-    // };
-
-    // Get the current message as requested for this type.
-    // let message = messagesByType[type];
-    return null;
-  }
-
-  getMessageBox(data) {
-    let suppressionStatus = this.checkAppliedDataSuppression(data);
-    let message = null;
-    if (suppressionStatus === null) {
-      // Do nothing
-    } else if (suppressionStatus === 'applied-suppression-total') {
-      // Generate a message box
-      message = this.getMessages('applied-suppression-total');
-    }
-
-    // @TODO Read the data, check all APPLIED_SUPPRESSION === "Total"
-
-    // If a message is found
-    // if (message !== null) {
-        // Get message box d3 constructor (or CSS box overlay?)
-        // Format message (break into lines) - with a utility function
-        // Generate message box to pass to d3 rendered.
-    // }
-    return null;
+    console.log(suppressionAllocations);
+    return appliedSuppressionStatus;
   }
 
   render() {
@@ -330,6 +299,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // Remap data object
     data = sortableData.concat(nullSortData); 
     
+
+    this.appliedSuppressionStatus = this.checkAppliedDataSuppression(data);
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
 
