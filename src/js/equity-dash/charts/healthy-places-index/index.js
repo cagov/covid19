@@ -6,6 +6,7 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
     // console.log("Setting up CAGOVChartD3Lines");

@@ -2,7 +2,7 @@ import template from './template.js';
 import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
-import reportGA from '../../../tracking-you';
+
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
     // console.log("Setting up CAGOVChartD3Bar");
