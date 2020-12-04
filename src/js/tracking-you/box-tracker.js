@@ -32,9 +32,9 @@ function isScrolledIntoView(elem)
 }
 
 export default function boxTracker(elementSelector,   // class of element we are tracking 
-                           eventName='chart-in-view', // event to trigger
                            labelOverride=null,        // unique name to use, if different than element selector
-                           minimumViewMS=3000)        // minimum time in view needed to trigger the event
+                           minimumViewMS=3000,        // minimum time in view needed to trigger the event
+                           eventName='chart-in-view') // event to trigger
 {
     if (bt_debugging)
         console.log("Setting up box tracker",elementSelector, minimumViewMS)
