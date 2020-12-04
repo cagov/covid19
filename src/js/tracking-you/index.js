@@ -296,6 +296,22 @@ export default function setupAnalytics() {
         reportGA('county-select-typo', e.detail.county, 'activity-status');
       }.bind(this), false); */
       
+      // Setting up trackers for big blue bar chart
+      let large_tab_classes = ['income','housing','healthcare'];
+      setTimeout(function() {
+        large_tab_classes.forEach(tlabel => {
+          let selector = "button.large-tab." + tlabel;
+          console.log("Setting up",selector);
+          document.querySelectorAll(selector).forEach(btn => {
+            console.log("Found",selector);
+            btn.addEventListener('click', function (e) {
+              reportGA('tab-select', tlabel);
+
+            });
+          });
+        });
+      }, 1000);
+
       document.querySelectorAll('.small-tab').forEach(btn => {
         btn.addEventListener('click', function (e) {
           let tabName = this.getAttribute('data-key');

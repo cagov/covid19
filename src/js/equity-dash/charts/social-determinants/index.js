@@ -189,7 +189,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
 
-        console.log("Got Social Toggle: ",this.classList);
+        // console.log("Got Social Toggle: ",this.classList);
         event.preventDefault();
         tab_recs.forEach(tRec => {
           // console.log("Checking ",tRec.nom,this.classList);
