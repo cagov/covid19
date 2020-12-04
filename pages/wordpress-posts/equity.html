@@ -3,21 +3,21 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources. Committed to a California [&hellip;]"
 author: "State of California"
-publishdate: "2020-12-04T23:31:06Z"
+publishdate: "2020-12-04T23:45:35Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
 <!--{% set data = {
-    "cases_per_100k_statewide":1871.4,
-    "death_rate_per_100k_statewide":45.5,
-    "cases_per_100k_latino":2879.1,
-    "cases_per_100k_pacific_islanders": 4024,
+    "cases_per_100K_statewide":1871.4,
+    "death_rate_per_100K_statewide":45.5,
+    "cases_per_100K_latino":2879.1,
+    "cases_per_100K_pacific_islanders": 4024,
     "case_rate_vs_statewide_percent_latino":54,
     "case_rate_vs_statewide_percent_pacific_islanders":115,
     "case_rate_vs_statewide_percent_low_income":36,
     "death_rate_vs_statewide_percent_black":24,
-    "death_rate_per_100k_black":56.2
+    "death_rate_per_100K_black":56.2
   } %}-->
 
 
@@ -84,8 +84,8 @@ addtositemap: false
                                 
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> Latino <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100K_latino|formatNumber(tags)}}</strong> Latino <br>
+                                <strong>{{data.cases_per_100K_statewide|formatNumber(tags)}}</strong> statewide</p>
                             </div>
                     
                         </div>
@@ -113,8 +113,8 @@ addtositemap: false
 <!--{% endif %}-->
                             <div class="eq-cases">
                                 <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
-                                <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> statewide</p>
+                                <p class="text-xs mb-0"><strong>{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
+                                <strong>{{data.cases_per_100K_statewide|formatNumber(tags)}}</strong> statewide</p>
                             </div>
                     
                         </div>
@@ -143,8 +143,8 @@ addtositemap: false
 <!--{% endif %}-->
                                 <div class="eq-cases">
                                     <p class="text-xs">Deaths per 100K people:</p> 
-                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black}}</strong> Black <br>
-                                    <strong>{{data.death_rate_per_100k_statewide}}</strong> statewide</p>
+                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100K_black}}</strong> Black <br>
+                                    <strong>{{data.death_rate_per_100K_statewide}}</strong> statewide</p>
                                 </div>
                         </div>
                     
@@ -294,7 +294,7 @@ addtositemap: false
       </cagov-chart-re-pop>
     </div>
     <div class="col">
-      <cagov-chart-re-100k class="chart d-none"> 
+      <cagov-chart-re-100K class="chart d-none"> 
         <ul>
           <li data-label="chartTitle--cases">Case rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Deaths rate per 100K by race and ethnicity group in placeholderForDynamicLocation</li>
@@ -303,22 +303,22 @@ addtositemap: false
           <li data-label="chartDescription--deaths">Compare deaths adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartDescription--tests">Compare tests adjusted by population size across each race and ethnicity.</li>
           <li data-label="chartLineDiff">change since previous month</li>
-          <li data-label="chartLegend--cases">Cases per 100k people</li>
-          <li data-label="chartLegend--deaths">Deaths per 100k people</li>
-          <li data-label="chartLegend--tests">Tests per 100k people</li>
-          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation cases per 100k: </li>
-          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation deaths per 100k: </li>
-          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation tests per 100k: </li>
-          <li data-label="chartFilterLegendPfxState--cases">Statewide cases per 100k: </li>
-          <li data-label="chartFilterLegendPfxState--deaths">Statewide deaths per 100k: </li>
-          <li data-label="chartFilterLegendPfxState--tests">Statewide tests per 100k: </li>
-          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and
+          <li data-label="chartLegend--cases">Cases per 100K people</li>
+          <li data-label="chartLegend--deaths">Deaths per 100K people</li>
+          <li data-label="chartLegend--tests">Tests per 100K people</li>
+          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation cases per 100K: </li>
+          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation deaths per 100K: </li>
+          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation tests per 100K: </li>
+          <li data-label="chartFilterLegendPfxState--cases">Statewide cases per 100K: </li>
+          <li data-label="chartFilterLegendPfxState--deaths">Statewide deaths per 100K: </li>
+          <li data-label="chartFilterLegendPfxState--tests">Statewide tests per 100K: </li>
+          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100K people of the same race and
           ethnicity.</li>
             <li data-label="applied-suppression-total">To protect people’s privacy, we’re not showing any data. This is because there’s either too few cases or tests in this group.</li>
             <li data-label="applied-suppression-population">To protect people’s privacy, we’re not showing any data. This is because there are less than 20,000 people in this group.</li>
             <li data-label="missing-data-caption-line-delimiter"><br></li>
         </ul>
-      </cagov-chart-re-100k>
+      </cagov-chart-re-100K>
     </div>
   </div>
 </div>
@@ -441,7 +441,7 @@ addtositemap: false
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
     <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is cumulative for the last 7 days and updated daily</li>
-   <li data-label="casesPer100KPeople">Cases per 100k people</li>
+   <li data-label="casesPer100KPeople">Cases per 100K people</li>
    <li data-label="statewideCaseRate">Statewide case rate:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate cases per 100K people. placeholderRateDiff30 change since previous week</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> cases per 100K people. placeholderRateDiff30 change since previous week</li>
