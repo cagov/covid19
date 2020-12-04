@@ -114,6 +114,11 @@
     // text-anchor: end;
   }
 
+  .xaxis-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+
   /* Responsive text */
   @media (max-width: 768px) {
     .bar-chart-label.label {

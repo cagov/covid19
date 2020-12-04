@@ -15,6 +15,20 @@ function writeXAxis(data, height, margin, x) {
     .call(g => g.select(".domain").remove())
   return xAxis;
 }
+function writeXAxisLabel(component, svg, label) {
+  svg.selectAll("g.x-label").remove()
+  svg.append("g")
+        .attr("class", "x-label")
+        .append("text")
+          .attr(
+            "transform",
+            "translate(" + (component.chartBreakpointValues.width/2) + " ," + (component.chartBreakpointValues.height-10) + ")"
+          )
+          .attr("class", "xaxis-label")
+          .style("text-anchor", "middle")
+          .text(label)
+}
+
 function rewriteLegend(svg, legendLabels) {
   svg.selectAll('.legend text')
     .data(legendLabels)
@@ -46,6 +60,7 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('text-anchor', 'start')
     .attr('alignment-baseline', 'hanging');
 }
+
 function writeBars(component, svg, data, x, y, width, tooltip) {
   svg.append("g")
     .attr("fill", "#92C5DE")
@@ -195,6 +210,7 @@ function redrawYLine(component, y) {
 
 export {
   writeXAxis,
+  writeXAxisLabel,
   rewriteLegend,
   writeLegend,
   writeBars,
