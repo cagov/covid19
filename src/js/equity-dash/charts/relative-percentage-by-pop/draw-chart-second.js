@@ -1,3 +1,5 @@
+import { chartOverlayFade, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+
 export default function drawSecondBars({
   svg,
   x1,
@@ -14,11 +16,26 @@ export default function drawSecondBars({
   translationsObj,
   legendScope = ``,
   legendScopeStatewide = ``,
+  appliedSuppressionStatus,
+  chartBreakpointValues
 }) {
   
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
+
+  let is_debugging_infobox = false;
+  let boxClass = "chartOverlay-svg-holder-second";
+
+  if ( appliedSuppressionStatus !== null || is_debugging_infobox) {
+    chartOverlayFade(svg,                      
+                    "cagov-chart-re-pop",       // class of chart
+                    boxClass,                   // class of box
+                    chartBreakpointValues,      // dimensions dict (contains width,height)
+                    )
+    } else {
+      chartOverlayBoxClear(svg, boxClass);
+    }  
 
   // End of bar labels, METRIC total (yellow)
   svg
