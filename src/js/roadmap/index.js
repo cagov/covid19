@@ -236,7 +236,8 @@ class CAGovReopening extends window.HTMLElement {
         if(this.regionsclosed && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) { // if this county is in a region which is closed we will show them the RSHO column values
           this.cardHTML += `<div class="card-activity">
             <h4>${ac["0"]}</h4>
-            <p>${ac["6"]}</p>
+            <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac["6"]}</p>
+            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
           </div>`
         } else {
           this.cardHTML += `<div class="card-activity">
@@ -266,53 +267,52 @@ class CAGovReopening extends window.HTMLElement {
 }
 window.customElements.define('cagov-reopening', CAGovReopening);
 
+var activityInput = document.getElementById("activity-query");
+var countyInput = document.getElementById("location-query");
+
+if(countyInput) {
+// Show clear btn only on input (County)
+countyInput.addEventListener("input", function() {
+  inputValueCounty();
+ });
+  //Clear buttons click events
+  document.getElementById("clearLocation").addEventListener("click", function() {
+    countyInput.value = '';
+    inputValueCounty();
+  });
+
+  document.getElementById("clearActivity").addEventListener("click", function() {
+    activityInput.value = '';
+    inputValueActivity();
+  });
+}
+if(activityInput) {
+// Show clear btn only on input (Activity)
+activityInput.addEventListener("input", function() {
+  inputValueActivity();
+ });
+
+ activityInput.addEventListener("blur", function() {
+  inputValueActivity();
+ });
+}
+
 // Show clear btn only if there is value (County)
 function inputValueCounty() {
   var countyInput = document.getElementById("location-query");
   var clearCounty = document.getElementById("clearLocation");
-    if (countyInput && countyInput.value) {
-      clearCounty.classList.remove('d-none');
-    }
-    else {clearCounty.classList.add('d-none');}
+  if (countyInput && countyInput.value) {
+    clearCounty.classList.remove('d-none');
   }
-
-
-  var activityInput = document.getElementById("activity-query");
-  var countyInput = document.getElementById("location-query");
-  
-  
-  
-  // Show clear btn only on input (County)
-  countyInput.addEventListener("input", function() {
-    inputValueCounty();
-   });
-  
-  // Show clear btn only on input (Activity)
-  activityInput.addEventListener("input", function() {
-    inputValueActivity();
-   });
-  
-   activityInput.addEventListener("blur", function() {
-    inputValueActivity();
-   });
-
-//Clear buttons click events
-document.getElementById("clearLocation").addEventListener("click", function() {
-  countyInput.value = '';
-  inputValueCounty();
-});	
-
-document.getElementById("clearActivity").addEventListener("click", function() {
-  activityInput.value = '';
-  inputValueActivity();
-});	
+  else {clearCounty.classList.add('d-none');}
+}
 
 // Show clear btn only if there is value (Activity)
 function inputValueActivity() {
   var activityInput = document.getElementById("activity-query");
   var clearActivity = document.getElementById("clearActivity");
-    if (activityInput && activityInput.value) {
-      clearActivity.classList.remove('d-none');
-    }
-    else {clearActivity.classList.add('d-none');}
+  if (activityInput && activityInput.value) {
+    clearActivity.classList.remove('d-none');
   }
+  else {clearActivity.classList.add('d-none');}
+}
