@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "San Benito",
+      "METRIC": "cases",
+      "MISSING": 114,
+      "NOT_MISSING": 348,
+      "TOTAL": 462,
+      "PERCENT_COMPLETE": 0.753246753246753,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.863636363636364,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.11038961038961,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "San Benito",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "San Benito",
+      "METRIC": "tests",
+      "MISSING": 3176,
+      "NOT_MISSING": 3732,
+      "TOTAL": 6908,
+      "PERCENT_COMPLETE": 0.540243196294152,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.398581560283688,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.141661636010464,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2,
+      "NOT_MISSING": 501,
+      "TOTAL": 503,
+      "PERCENT_COMPLETE": 0.996023856858847,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.003976143141153,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 487,
+      "NOT_MISSING": 16,
+      "TOTAL": 503,
+      "PERCENT_COMPLETE": 0.031809145129225,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.005227891907812,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
