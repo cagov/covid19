@@ -43,7 +43,9 @@ const raceBlack = demographics.find(x=>x.RACE_ETHNICITY==='African American');
 output[0].death_rate_per_100k_black = roundNumber(raceBlack.DEATH_RATE,1);
 output[0].death_rate_vs_statewide_percent_black = roundNumber((raceBlack.DEATH_RATE/totalDeathRate)*100-100,0);
 
-output[0].case_rate_vs_statewide_percent_low_income = roundNumber(data.LowIncome[0].RATE_DIFF_30_DAYS,0);
+let lowIncomeDiff = data.LowIncome[0].STATE_CASE_RATE_PER_100K - data.LowIncome[0].CASE_RATE_PER_100K;
+let lowIncomePercent = (Math.abs(lowIncomeDiff) / data.LowIncome[0].CASE_RATE_PER_100K) * 100;
+output[0].case_rate_vs_statewide_percent_low_income = roundNumber(lowIncomePercent,0);
 output[0].case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
 
 module.exports = output;
