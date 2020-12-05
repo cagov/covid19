@@ -2,14 +2,6 @@
   "county_positivity_all_nopris": [
     {
       "COUNTY": "Kings",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.022492401215806,
-      "METRIC_VALUE_30_DAYS_AGO": 0.029802301563883,
-      "METRIC_VALUE_DIFF": -0.007309900348078
-    },
-    {
-      "COUNTY": "Kings",
       "DATE": "2020-10-27",
       "METRIC": "county_positivity_all_nopris",
       "METRIC_VALUE": 0.026480637813212,
@@ -172,84 +164,84 @@
       "COUNTY": "Kings",
       "DATE": "2020-11-16",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.051870148200423,
+      "METRIC_VALUE": 0.052037396366202,
       "METRIC_VALUE_30_DAYS_AGO": 0.024975673045735,
-      "METRIC_VALUE_DIFF": 0.026894475154689
+      "METRIC_VALUE_DIFF": 0.027061723320468
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-17",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.051948051948052,
+      "METRIC_VALUE": 0.052105876477443,
       "METRIC_VALUE_30_DAYS_AGO": 0.026124338624339,
-      "METRIC_VALUE_DIFF": 0.025823713323713
+      "METRIC_VALUE_DIFF": 0.025981537853104
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-18",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.056018882769473,
+      "METRIC_VALUE": 0.056315872266793,
       "METRIC_VALUE_30_DAYS_AGO": 0.029583637691746,
-      "METRIC_VALUE_DIFF": 0.026435245077727
+      "METRIC_VALUE_DIFF": 0.026732234575047
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-19",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.057314756174794,
+      "METRIC_VALUE": 0.05761316872428,
       "METRIC_VALUE_30_DAYS_AGO": 0.027470431133155,
-      "METRIC_VALUE_DIFF": 0.029844325041639
+      "METRIC_VALUE_DIFF": 0.030142737591125
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-20",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.060939217841998,
+      "METRIC_VALUE": 0.06138147566719,
       "METRIC_VALUE_30_DAYS_AGO": 0.027237354085603,
-      "METRIC_VALUE_DIFF": 0.033701863756395
+      "METRIC_VALUE_DIFF": 0.034144121581587
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-21",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.062623800091422,
+      "METRIC_VALUE": 0.063052086506244,
       "METRIC_VALUE_30_DAYS_AGO": 0.025155065472088,
-      "METRIC_VALUE_DIFF": 0.037468734619333
+      "METRIC_VALUE_DIFF": 0.037897021034156
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-22",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.065233397143278,
+      "METRIC_VALUE": 0.065646158375037,
       "METRIC_VALUE_30_DAYS_AGO": 0.023041474654378,
-      "METRIC_VALUE_DIFF": 0.0421919224889
+      "METRIC_VALUE_DIFF": 0.042604683720659
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-23",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.068473380372033,
+      "METRIC_VALUE": 0.068727971803909,
       "METRIC_VALUE_30_DAYS_AGO": 0.023362948338269,
-      "METRIC_VALUE_DIFF": 0.045110432033764
+      "METRIC_VALUE_DIFF": 0.04536502346564
     },
     {
       "COUNTY": "Kings",
       "DATE": "2020-11-24",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.075837742504409,
+      "METRIC_VALUE": 0.076085215441294,
       "METRIC_VALUE_30_DAYS_AGO": 0.021957340025094,
-      "METRIC_VALUE_DIFF": 0.053880402479315
+      "METRIC_VALUE_DIFF": 0.0541278754162
+    },
+    {
+      "COUNTY": "Kings",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_all_nopris",
+      "METRIC_VALUE": 0.084383930072281,
+      "METRIC_VALUE_30_DAYS_AGO": 0.022492401215806,
+      "METRIC_VALUE_DIFF": 0.061891528856476
     }
   ],
   "county_positivity_low_hpi": [
-    {
-      "COUNTY": "Kings",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": 0.015089163237311,
-      "METRIC_VALUE_30_DAYS_AGO": 0.043939393939394,
-      "METRIC_VALUE_DIFF": -0.028850230702083
-    },
     {
       "COUNTY": "Kings",
       "DATE": "2020-10-27",
@@ -481,6 +473,14 @@
       "METRIC_VALUE": 0.070667957405615,
       "METRIC_VALUE_30_DAYS_AGO": 0.015449438202247,
       "METRIC_VALUE_DIFF": 0.055218519203368
+    },
+    {
+      "COUNTY": "Kings",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_low_hpi",
+      "METRIC_VALUE": 0.078512396694215,
+      "METRIC_VALUE_30_DAYS_AGO": 0.015089163237311,
+      "METRIC_VALUE_DIFF": 0.063423233456904
     }
   ]
 }
