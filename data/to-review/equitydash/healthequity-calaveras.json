@@ -2,14 +2,6 @@
   "county_positivity_all_nopris": [
     {
       "COUNTY": "Calaveras",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.015247776365947,
-      "METRIC_VALUE_30_DAYS_AGO": 0.0096,
-      "METRIC_VALUE_DIFF": 0.005647776365947
-    },
-    {
-      "COUNTY": "Calaveras",
       "DATE": "2020-10-27",
       "METRIC": "county_positivity_all_nopris",
       "METRIC_VALUE": 0.019774011299435,
@@ -239,17 +231,17 @@
       "METRIC_VALUE": 0.072916666666667,
       "METRIC_VALUE_30_DAYS_AGO": 0.014336917562724,
       "METRIC_VALUE_DIFF": 0.058579749103943
+    },
+    {
+      "COUNTY": "Calaveras",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_all_nopris",
+      "METRIC_VALUE": 0.066860465116279,
+      "METRIC_VALUE_30_DAYS_AGO": 0.015247776365947,
+      "METRIC_VALUE_DIFF": 0.051612688750332
     }
   ],
   "county_positivity_low_hpi": [
-    {
-      "COUNTY": "Calaveras",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": null,
-      "METRIC_VALUE_30_DAYS_AGO": null,
-      "METRIC_VALUE_DIFF": null
-    },
     {
       "COUNTY": "Calaveras",
       "DATE": "2020-10-27",
@@ -477,6 +469,14 @@
     {
       "COUNTY": "Calaveras",
       "DATE": "2020-11-24",
+      "METRIC": "county_positivity_low_hpi",
+      "METRIC_VALUE": null,
+      "METRIC_VALUE_30_DAYS_AGO": null,
+      "METRIC_VALUE_DIFF": null
+    },
+    {
+      "COUNTY": "Calaveras",
+      "DATE": "2020-11-25",
       "METRIC": "county_positivity_low_hpi",
       "METRIC_VALUE": null,
       "METRIC_VALUE_30_DAYS_AGO": null,
