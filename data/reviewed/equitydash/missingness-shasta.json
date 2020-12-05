@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Shasta",
+      "METRIC": "cases",
+      "MISSING": 1218,
+      "NOT_MISSING": 1364,
+      "TOTAL": 2582,
+      "PERCENT_COMPLETE": 0.528272656855151,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.72890625,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.200633593144849,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Shasta",
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 6,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 0.75,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.923076923076923,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.173076923076923,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Shasta",
+      "METRIC": "tests",
+      "MISSING": 14434,
+      "NOT_MISSING": 6510,
+      "TOTAL": 20944,
+      "PERCENT_COMPLETE": 0.310828877005348,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.198763825634353,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.112065051370995,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 37,
+      "NOT_MISSING": 2946,
+      "TOTAL": 2983,
+      "PERCENT_COMPLETE": 0.987596379483741,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.008973088783841,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 7,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2544,
+      "NOT_MISSING": 439,
+      "TOTAL": 2983,
+      "PERCENT_COMPLETE": 0.147167281260476,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.275645754760107,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 1,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 0.142857142857143,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.318681318681319,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
