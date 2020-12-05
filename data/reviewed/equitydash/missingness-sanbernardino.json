@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "San Bernardino",
+      "METRIC": "cases",
+      "MISSING": 11188,
+      "NOT_MISSING": 21673,
+      "TOTAL": 32861,
+      "PERCENT_COMPLETE": 0.659535619731597,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.792504169226718,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.132968549495122,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "San Bernardino",
+      "METRIC": "deaths",
+      "MISSING": 4,
+      "NOT_MISSING": 69,
+      "TOTAL": 73,
+      "PERCENT_COMPLETE": 0.945205479452055,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.986301369863014,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0410958904109589,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "San Bernardino",
+      "METRIC": "tests",
+      "MISSING": 169444,
+      "NOT_MISSING": 122962,
+      "TOTAL": 292406,
+      "PERCENT_COMPLETE": 0.420518046825305,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.407620011182406,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0128980356428981,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 220,
+      "NOT_MISSING": 34460,
+      "TOTAL": 34680,
+      "PERCENT_COMPLETE": 0.993656286043829,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.000770613454592,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 4,
+      "NOT_MISSING": 76,
+      "TOTAL": 80,
+      "PERCENT_COMPLETE": 0.95,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.05,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 26769,
+      "NOT_MISSING": 7911,
+      "TOTAL": 34680,
+      "PERCENT_COMPLETE": 0.228114186851211,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.088530806646838,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 70,
+      "NOT_MISSING": 10,
+      "TOTAL": 80,
+      "PERCENT_COMPLETE": 0.125,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.027777777777778,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
