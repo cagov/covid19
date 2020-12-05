@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Yolo",
+      "METRIC": "cases",
+      "MISSING": 446,
+      "NOT_MISSING": 1134,
+      "TOTAL": 1580,
+      "PERCENT_COMPLETE": 0.717721518987342,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.839928057553957,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.122206538566615,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Yolo",
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 13,
+      "TOTAL": 19,
+      "PERCENT_COMPLETE": 0.684210526315789,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.315789473684211,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Yolo",
+      "METRIC": "tests",
+      "MISSING": 8535,
+      "NOT_MISSING": 12093,
+      "TOTAL": 20628,
+      "PERCENT_COMPLETE": 0.586242001163467,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.494795435569162,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0914465655943049,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 6,
+      "NOT_MISSING": 1706,
+      "TOTAL": 1712,
+      "PERCENT_COMPLETE": 0.996495327102804,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.00075064625174,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 21,
+      "TOTAL": 21,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1297,
+      "NOT_MISSING": 415,
+      "TOTAL": 1712,
+      "PERCENT_COMPLETE": 0.242406542056075,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.076742394114138,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 18,
+      "NOT_MISSING": 3,
+      "TOTAL": 21,
+      "PERCENT_COMPLETE": 0.142857142857143,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.19047619047619,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
