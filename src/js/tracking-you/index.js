@@ -297,8 +297,8 @@ export default function setupAnalytics() {
       }.bind(this), false); */
       
       // Setting up trackers for big blue bar chart
-      let large_tab_classes = ['income','housing','healthcare'];
-      setTimeout(function() {
+      document.addEventListener('setup-sd-tab-tracking', function() {
+        let large_tab_classes = ['income','housing','healthcare'];
         large_tab_classes.forEach(tlabel => {
           let selector = "button.large-tab." + tlabel;
           console.log("Setting up",selector);
@@ -310,7 +310,7 @@ export default function setupAnalytics() {
             });
           });
         });
-      }, 1000);
+      });
 
       document.querySelectorAll('.small-tab').forEach(btn => {
         btn.addEventListener('click', function (e) {

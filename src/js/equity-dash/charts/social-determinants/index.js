@@ -154,6 +154,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues)
       this.classList.remove('d-none')
+
+      document.dispatchEvent(new window.CustomEvent('setup-sd-tab-tracking'));
+
+
     }.bind(this));
 
   }
@@ -195,7 +199,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           // console.log("Checking ",tRec.nom,this.classList);
           if(this.classList.contains(tRec.nom)) {
            // console.log("Hit on ",tRec.nom);
-           const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
+            const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
             window.dispatchEvent(event);    
             rewriteBar(component, tRec.data)
             component.querySelector('.chart-title').innerHTML = tRec.tranHTML;
