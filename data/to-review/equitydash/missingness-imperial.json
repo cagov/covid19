@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Imperial",
+      "METRIC": "cases",
+      "MISSING": 1128,
+      "NOT_MISSING": 1960,
+      "TOTAL": 3088,
+      "PERCENT_COMPLETE": 0.634715025906736,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.754325259515571,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.119610233608835,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Imperial",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 8,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Imperial",
+      "METRIC": "tests",
+      "MISSING": 17652,
+      "NOT_MISSING": 8343,
+      "TOTAL": 25995,
+      "PERCENT_COMPLETE": 0.320946335833814,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.219129089942487,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.101817245891327,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 6,
+      "NOT_MISSING": 3363,
+      "TOTAL": 3369,
+      "PERCENT_COMPLETE": 0.998219056099733,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.001909093000102,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 9,
+      "TOTAL": 9,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 2577,
+      "NOT_MISSING": 792,
+      "TOTAL": 3369,
+      "PERCENT_COMPLETE": 0.235084594835263,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.102817355612813,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 7,
+      "NOT_MISSING": 2,
+      "TOTAL": 9,
+      "PERCENT_COMPLETE": 0.222222222222222,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.022222222222222,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

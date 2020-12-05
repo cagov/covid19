@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Orange",
+      "METRIC": "cases",
+      "MISSING": 7944,
+      "NOT_MISSING": 12218,
+      "TOTAL": 20162,
+      "PERCENT_COMPLETE": 0.605991469100288,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.764830508474576,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.158839039374289,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Orange",
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 44,
+      "TOTAL": 46,
+      "PERCENT_COMPLETE": 0.956521739130435,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.980582524271845,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0240607851414099,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Orange",
+      "METRIC": "tests",
+      "MISSING": 190659,
+      "NOT_MISSING": 133285,
+      "TOTAL": 323944,
+      "PERCENT_COMPLETE": 0.411444570666535,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.364121322333353,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0473232483331821,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 159,
+      "NOT_MISSING": 21427,
+      "TOTAL": 21586,
+      "PERCENT_COMPLETE": 0.992634114703975,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.003143411389505,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 66,
+      "TOTAL": 66,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.010526315789474,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 14326,
+      "NOT_MISSING": 7260,
+      "TOTAL": 21586,
+      "PERCENT_COMPLETE": 0.336329102195868,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.169733953584245,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 53,
+      "NOT_MISSING": 13,
+      "TOTAL": 66,
+      "PERCENT_COMPLETE": 0.196969696969697,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.049601275917065,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

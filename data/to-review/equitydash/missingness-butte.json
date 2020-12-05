@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Butte",
+      "METRIC": "cases",
+      "MISSING": 426,
+      "NOT_MISSING": 601,
+      "TOTAL": 1027,
+      "PERCENT_COMPLETE": 0.585199610516066,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.801857585139319,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.216657974623253,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Butte",
+      "METRIC": "deaths",
+      "MISSING": 2,
+      "NOT_MISSING": 3,
+      "TOTAL": 5,
+      "PERCENT_COMPLETE": 0.6,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.4,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Butte",
+      "METRIC": "tests",
+      "MISSING": 15497,
+      "NOT_MISSING": 7762,
+      "TOTAL": 23259,
+      "PERCENT_COMPLETE": 0.333720280321596,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.172677245285035,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.161043035036561,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 7,
+      "NOT_MISSING": 1081,
+      "TOTAL": 1088,
+      "PERCENT_COMPLETE": 0.993566176470588,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.000232843137255,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 6,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 816,
+      "NOT_MISSING": 272,
+      "TOTAL": 1088,
+      "PERCENT_COMPLETE": 0.25,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.316666666666667,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 0,
+      "TOTAL": 6,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.571428571428571,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

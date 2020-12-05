@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Glenn",
+      "METRIC": "cases",
+      "MISSING": 57,
+      "NOT_MISSING": 221,
+      "TOTAL": 278,
+      "PERCENT_COMPLETE": 0.794964028776978,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.938775510204082,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.143811481427103,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Glenn",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 5,
+      "TOTAL": 5,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Glenn",
+      "METRIC": "tests",
+      "MISSING": 1217,
+      "NOT_MISSING": 1517,
+      "TOTAL": 2734,
+      "PERCENT_COMPLETE": 0.554864667154353,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.303061754021796,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.251802913132557,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 6,
+      "NOT_MISSING": 290,
+      "TOTAL": 296,
+      "PERCENT_COMPLETE": 0.97972972972973,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.02027027027027,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 8,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 171,
+      "NOT_MISSING": 125,
+      "TOTAL": 296,
+      "PERCENT_COMPLETE": 0.422297297297297,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.28477340977341,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 5,
+      "NOT_MISSING": 3,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 0.375,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

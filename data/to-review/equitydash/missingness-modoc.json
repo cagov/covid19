@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Modoc",
+      "METRIC": "cases",
+      "MISSING": 20,
+      "NOT_MISSING": 43,
+      "TOTAL": 63,
+      "PERCENT_COMPLETE": 0.682539682539683,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.32,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.362539682539683,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Modoc",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 0,
+      "TOTAL": 0,
+      "PERCENT_COMPLETE": null,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Modoc",
+      "METRIC": "tests",
+      "MISSING": 233,
+      "NOT_MISSING": 164,
+      "TOTAL": 397,
+      "PERCENT_COMPLETE": 0.413098236775819,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.2,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.213098236775819,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 0,
+      "NOT_MISSING": 67,
+      "TOTAL": 67,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 61,
+      "NOT_MISSING": 6,
+      "TOTAL": 67,
+      "PERCENT_COMPLETE": 0.08955223880597,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.005685856432125,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": null,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

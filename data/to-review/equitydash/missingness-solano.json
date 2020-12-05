@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Solano",
+      "METRIC": "cases",
+      "MISSING": 446,
+      "NOT_MISSING": 2324,
+      "TOTAL": 2770,
+      "PERCENT_COMPLETE": 0.83898916967509,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.908391608391608,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0694024387165182,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Solano",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Solano",
+      "METRIC": "tests",
+      "MISSING": 30004,
+      "NOT_MISSING": 28383,
+      "TOTAL": 58387,
+      "PERCENT_COMPLETE": 0.486118485279257,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.503936127387395,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0178176421081381,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 25,
+      "NOT_MISSING": 3063,
+      "TOTAL": 3088,
+      "PERCENT_COMPLETE": 0.99190414507772,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.007301573746744,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 1,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1862,
+      "NOT_MISSING": 1226,
+      "TOTAL": 3088,
+      "PERCENT_COMPLETE": 0.397020725388601,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.111319226954528,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 1,
+      "NOT_MISSING": 0,
+      "TOTAL": 1,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}

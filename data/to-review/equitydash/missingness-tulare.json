@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Tulare",
+      "METRIC": "cases",
+      "MISSING": 1127,
+      "NOT_MISSING": 2633,
+      "TOTAL": 3760,
+      "PERCENT_COMPLETE": 0.700265957446808,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.830926594464501,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.130660637017692,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Tulare",
+      "METRIC": "deaths",
+      "MISSING": 3,
+      "NOT_MISSING": 18,
+      "TOTAL": 21,
+      "PERCENT_COMPLETE": 0.857142857142857,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.947368421052632,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0902255639097744,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Tulare",
+      "METRIC": "tests",
+      "MISSING": 25201,
+      "NOT_MISSING": 20547,
+      "TOTAL": 45748,
+      "PERCENT_COMPLETE": 0.449134388388563,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.342808798646362,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.106325589742201,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 12,
+      "NOT_MISSING": 4042,
+      "TOTAL": 4054,
+      "PERCENT_COMPLETE": 0.997039960532807,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.000483259281434,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 27,
+      "TOTAL": 27,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 3599,
+      "NOT_MISSING": 455,
+      "TOTAL": 4054,
+      "PERCENT_COMPLETE": 0.112234829797731,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.123678482895767,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 27,
+      "NOT_MISSING": 0,
+      "TOTAL": 27,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.095238095238095,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
