@@ -55,7 +55,7 @@ const stagingConfig =  {
   
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
   // Download equity dash top boxes
-  download(`${jsConfig.filesDataLoc}equitydash/equitytopboxdataV2.json`, './pages/_buildoutput/equitytopboxdataV2.json', error => {
+  download(`${jsConfig.filesDataLoc}equitydash/equitytopboxdatav2.json`, './pages/_buildoutput/equitytopboxdataV2.json', error => {
     if (error) {
       console.error(error);
     }
