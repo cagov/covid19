@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "cases",
+      "MISSING": 661,
+      "NOT_MISSING": 4808,
+      "TOTAL": 5469,
+      "PERCENT_COMPLETE": 0.879136953739258,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.920137398024903,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0410004442856457,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 7,
+      "TOTAL": 7,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Contra Costa",
+      "METRIC": "tests",
+      "MISSING": 53211,
+      "NOT_MISSING": 88605,
+      "TOTAL": 141816,
+      "PERCENT_COMPLETE": 0.624788458283974,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.56964557669259,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0551428815913837,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 21,
+      "NOT_MISSING": 5966,
+      "TOTAL": 5987,
+      "PERCENT_COMPLETE": 0.996492400200434,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.000105769667462,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 8,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 5002,
+      "NOT_MISSING": 985,
+      "TOTAL": 5987,
+      "PERCENT_COMPLETE": 0.164523133455821,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.101962864737494,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 6,
+      "NOT_MISSING": 2,
+      "TOTAL": 8,
+      "PERCENT_COMPLETE": 0.25,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.25,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
