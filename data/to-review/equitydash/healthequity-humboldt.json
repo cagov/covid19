@@ -2,14 +2,6 @@
   "county_positivity_all_nopris": [
     {
       "COUNTY": "Humboldt",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.006905481225723,
-      "METRIC_VALUE_30_DAYS_AGO": 0.014830508474576,
-      "METRIC_VALUE_DIFF": -0.007925027248853
-    },
-    {
-      "COUNTY": "Humboldt",
       "DATE": "2020-10-27",
       "METRIC": "county_positivity_all_nopris",
       "METRIC_VALUE": 0.007404181184669,
@@ -236,20 +228,20 @@
       "COUNTY": "Humboldt",
       "DATE": "2020-11-24",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.032975268548589,
+      "METRIC_VALUE": 0.033208489388265,
       "METRIC_VALUE_30_DAYS_AGO": 0.006068487212831,
-      "METRIC_VALUE_DIFF": 0.026906781335758
+      "METRIC_VALUE_DIFF": 0.027140002175434
+    },
+    {
+      "COUNTY": "Humboldt",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_all_nopris",
+      "METRIC_VALUE": 0.033563925185755,
+      "METRIC_VALUE_30_DAYS_AGO": 0.006905481225723,
+      "METRIC_VALUE_DIFF": 0.026658443960032
     }
   ],
   "county_positivity_low_hpi": [
-    {
-      "COUNTY": "Humboldt",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": 0.002222222222222,
-      "METRIC_VALUE_30_DAYS_AGO": 0,
-      "METRIC_VALUE_DIFF": 0.002222222222222
-    },
     {
       "COUNTY": "Humboldt",
       "DATE": "2020-10-27",
@@ -478,9 +470,17 @@
       "COUNTY": "Humboldt",
       "DATE": "2020-11-24",
       "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": 0.037837837837838,
+      "METRIC_VALUE": 0.039136302294197,
       "METRIC_VALUE_30_DAYS_AGO": 0.002227171492205,
-      "METRIC_VALUE_DIFF": 0.035610666345633
+      "METRIC_VALUE_DIFF": 0.036909130801992
+    },
+    {
+      "COUNTY": "Humboldt",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_low_hpi",
+      "METRIC_VALUE": 0.032432432432432,
+      "METRIC_VALUE_30_DAYS_AGO": 0.002222222222222,
+      "METRIC_VALUE_DIFF": 0.03021021021021
     }
   ]
 }
