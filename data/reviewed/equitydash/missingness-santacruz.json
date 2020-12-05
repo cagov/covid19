@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Santa Cruz",
+      "METRIC": "cases",
+      "MISSING": 308,
+      "NOT_MISSING": 1414,
+      "TOTAL": 1722,
+      "PERCENT_COMPLETE": 0.821138211382114,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.905357142857143,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0842189314750291,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Santa Cruz",
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 3,
+      "TOTAL": 3,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.909090909090909,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0909090909090909,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Santa Cruz",
+      "METRIC": "tests",
+      "MISSING": 19123,
+      "NOT_MISSING": 18919,
+      "TOTAL": 38042,
+      "PERCENT_COMPLETE": 0.497318752957258,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.362445103009962,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.134873649947296,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 31,
+      "NOT_MISSING": 1829,
+      "TOTAL": 1860,
+      "PERCENT_COMPLETE": 0.983333333333333,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.010678642714571,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 11,
+      "TOTAL": 11,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 1197,
+      "NOT_MISSING": 663,
+      "TOTAL": 1860,
+      "PERCENT_COMPLETE": 0.356451612903226,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.15452643100895,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 11,
+      "NOT_MISSING": 0,
+      "TOTAL": 11,
+      "PERCENT_COMPLETE": 0,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.111111111111111,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
