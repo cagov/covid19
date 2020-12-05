@@ -154,6 +154,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues)
       this.classList.remove('d-none')
+
+      document.dispatchEvent(new window.CustomEvent('setup-sd-tab-tracking'));
+
+
     }.bind(this));
 
   }
@@ -189,13 +193,13 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     toggles.forEach(tog => {
       tog.addEventListener('click',function(event) {
 
-        console.log("Got Social Toggle: ",this.classList);
+        // console.log("Got Social Toggle: ",this.classList);
         event.preventDefault();
         tab_recs.forEach(tRec => {
           // console.log("Checking ",tRec.nom,this.classList);
           if(this.classList.contains(tRec.nom)) {
            // console.log("Hit on ",tRec.nom);
-           const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
+            const event = new window.CustomEvent('tab-select',{detail:{tab_selected: tRec.nom}});
             window.dispatchEvent(event);    
             rewriteBar(component, tRec.data)
             component.querySelector('.chart-title').innerHTML = tRec.tranHTML;
