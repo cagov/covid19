@@ -45,22 +45,6 @@ const eleventy = (done) => {
     log('Note: Building site in dev mode. Try *npm run start* if you need a full build.');
   }
 
-//Special data location
-const defaultConfig = {
-  filesDataLoc: 'https://files.covid19.ca.gov/data/reviewed/'
-}
-const stagingConfig =  {
-  filesDataLoc: 'https://files.covid19.ca.gov/data/to-review/'
-}
-  
-const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
-  // Download equity dash top boxes
-  download(`${jsConfig.filesDataLoc}equitydash/equitytopboxdataV2.json`, './pages/_buildoutput/equitytopboxdataV2.json', error => {
-    if (error) {
-      console.error(error);
-    }
-  });
-
   // Download the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {

@@ -20,7 +20,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
   let chartBreakpointValues = this.chartBreakpointValues;
   let appliedSuppressionStatus = this.appliedSuppressionStatus;
 
-  console.log('100k', translationsObj, chartBreakpointValues, appliedSuppressionStatus);
+  // console.log('100k', translationsObj, chartBreakpointValues, appliedSuppressionStatus);
 
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
