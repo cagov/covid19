@@ -58,6 +58,12 @@ class CAGovReopening extends window.HTMLElement {
       this.countyRegions = data;
     }.bind(this));
 
+    window.fetch('/regionsclosed.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.regionsclosed = data;
+    }.bind(this));
+
     window.fetch('/statusdescriptors.json')
     .then(response => response.json())
     .then(function(data) {
@@ -227,11 +233,18 @@ class CAGovReopening extends window.HTMLElement {
         })
       }
       selectedActivities.forEach(ac => {
-        this.cardHTML += `<div class="card-activity">
-          <h4>${ac["0"]}</h4>
-          <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
-          <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
-        </div>`
+        if(this.regionsclosed && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) { // if this county is in a region which is closed we will show them the RSHO column values
+          this.cardHTML += `<div class="card-activity">
+            <h4>${ac["0"]}</h4>
+            <p>${ac["6"]}</p>
+          </div>`
+        } else {
+          this.cardHTML += `<div class="card-activity">
+            <h4>${ac["0"]}</h4>
+            <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
+            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+          </div>`
+        }
       })
     })
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
