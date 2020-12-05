@@ -1,0 +1,77 @@
+{
+  "race_ethnicity": {
+    "cases": {
+      "COUNTY": "Riverside",
+      "METRIC": "cases",
+      "MISSING": 9172,
+      "NOT_MISSING": 12520,
+      "TOTAL": 21692,
+      "PERCENT_COMPLETE": 0.577171307394431,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.653932344466973,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0767610370725415,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "COUNTY": "Riverside",
+      "METRIC": "deaths",
+      "MISSING": 5,
+      "NOT_MISSING": 75,
+      "TOTAL": 80,
+      "PERCENT_COMPLETE": 0.9375,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.964705882352941,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0272058823529412,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "tests": {
+      "COUNTY": "Riverside",
+      "METRIC": "tests",
+      "MISSING": 147106,
+      "NOT_MISSING": 111969,
+      "TOTAL": 259075,
+      "PERCENT_COMPLETE": 0.432187590466081,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.340509629131276,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.0916779613348055,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "gender_identity": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 170,
+      "NOT_MISSING": 22819,
+      "TOTAL": 22989,
+      "PERCENT_COMPLETE": 0.992605158989082,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.001749501183599,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 0,
+      "NOT_MISSING": 80,
+      "TOTAL": 80,
+      "PERCENT_COMPLETE": 1,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.011627906976744,
+      "REPORT_DATE": "2020-12-04"
+    }
+  },
+  "sexual_orientation": {
+    "cases": {
+      "METRIC": "cases",
+      "MISSING": 19860,
+      "NOT_MISSING": 3129,
+      "TOTAL": 22989,
+      "PERCENT_COMPLETE": 0.136108573665666,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.260172143624571,
+      "REPORT_DATE": "2020-12-04"
+    },
+    "deaths": {
+      "METRIC": "deaths",
+      "MISSING": 61,
+      "NOT_MISSING": 19,
+      "TOTAL": 80,
+      "PERCENT_COMPLETE": 0.2375,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": 0.051453488372093,
+      "REPORT_DATE": "2020-12-04"
+    }
+  }
+}
