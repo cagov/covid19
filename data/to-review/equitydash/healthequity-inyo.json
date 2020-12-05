@@ -2,14 +2,6 @@
   "county_positivity_all_nopris": [
     {
       "COUNTY": "Inyo",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.04093567251462,
-      "METRIC_VALUE_30_DAYS_AGO": 0.005586592178771,
-      "METRIC_VALUE_DIFF": 0.035349080335849
-    },
-    {
-      "COUNTY": "Inyo",
       "DATE": "2020-10-27",
       "METRIC": "county_positivity_all_nopris",
       "METRIC_VALUE": 0.038356164383562,
@@ -239,17 +231,17 @@
       "METRIC_VALUE": 0.040106951871658,
       "METRIC_VALUE_30_DAYS_AGO": 0.041533546325879,
       "METRIC_VALUE_DIFF": -0.001426594454221
+    },
+    {
+      "COUNTY": "Inyo",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_all_nopris",
+      "METRIC_VALUE": 0.05775075987842,
+      "METRIC_VALUE_30_DAYS_AGO": 0.04093567251462,
+      "METRIC_VALUE_DIFF": 0.0168150873638
     }
   ],
   "county_positivity_low_hpi": [
-    {
-      "COUNTY": "Inyo",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": null,
-      "METRIC_VALUE_30_DAYS_AGO": null,
-      "METRIC_VALUE_DIFF": null
-    },
     {
       "COUNTY": "Inyo",
       "DATE": "2020-10-27",
@@ -477,6 +469,14 @@
     {
       "COUNTY": "Inyo",
       "DATE": "2020-11-24",
+      "METRIC": "county_positivity_low_hpi",
+      "METRIC_VALUE": null,
+      "METRIC_VALUE_30_DAYS_AGO": null,
+      "METRIC_VALUE_DIFF": null
+    },
+    {
+      "COUNTY": "Inyo",
+      "DATE": "2020-11-25",
       "METRIC": "county_positivity_low_hpi",
       "METRIC_VALUE": null,
       "METRIC_VALUE_30_DAYS_AGO": null,

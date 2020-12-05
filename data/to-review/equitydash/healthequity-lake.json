@@ -2,14 +2,6 @@
   "county_positivity_all_nopris": [
     {
       "COUNTY": "Lake",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.035250463821892,
-      "METRIC_VALUE_30_DAYS_AGO": 0.038929440389294,
-      "METRIC_VALUE_DIFF": -0.003678976567402
-    },
-    {
-      "COUNTY": "Lake",
       "DATE": "2020-10-27",
       "METRIC": "county_positivity_all_nopris",
       "METRIC_VALUE": 0.033065236818588,
@@ -52,73 +44,73 @@
       "COUNTY": "Lake",
       "DATE": "2020-11-01",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.033837934105076,
+      "METRIC_VALUE": 0.034605146406389,
       "METRIC_VALUE_30_DAYS_AGO": 0.038687973086627,
-      "METRIC_VALUE_DIFF": -0.004850038981552
+      "METRIC_VALUE_DIFF": -0.004082826680239
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-02",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.020774315391879,
+      "METRIC_VALUE": 0.021159153633855,
       "METRIC_VALUE_30_DAYS_AGO": 0.034217279726262,
-      "METRIC_VALUE_DIFF": -0.013442964334383
+      "METRIC_VALUE_DIFF": -0.013058126092407
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-03",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.019367991845056,
+      "METRIC_VALUE": 0.021442495126706,
       "METRIC_VALUE_30_DAYS_AGO": 0.034752389226759,
-      "METRIC_VALUE_DIFF": -0.015384397381703
+      "METRIC_VALUE_DIFF": -0.013309894100054
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-04",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.021,
+      "METRIC_VALUE": 0.022966507177034,
       "METRIC_VALUE_30_DAYS_AGO": 0.050538525269263,
-      "METRIC_VALUE_DIFF": -0.029538525269263
+      "METRIC_VALUE_DIFF": -0.027572018092229
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-05",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.026639344262295,
+      "METRIC_VALUE": 0.028403525954946,
       "METRIC_VALUE_30_DAYS_AGO": 0.044117647058824,
-      "METRIC_VALUE_DIFF": -0.017478302796529
+      "METRIC_VALUE_DIFF": -0.015714121103877
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-06",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.022128556375132,
+      "METRIC_VALUE": 0.024144869215292,
       "METRIC_VALUE_30_DAYS_AGO": 0.041633935585232,
-      "METRIC_VALUE_DIFF": -0.0195053792101
+      "METRIC_VALUE_DIFF": -0.01748906636994
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-07",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.024134312696747,
+      "METRIC_VALUE": 0.026052104208417,
       "METRIC_VALUE_30_DAYS_AGO": 0.039755351681957,
-      "METRIC_VALUE_DIFF": -0.01562103898521
+      "METRIC_VALUE_DIFF": -0.01370324747354
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-08",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.026104417670683,
+      "METRIC_VALUE": 0.027000964320154,
       "METRIC_VALUE_30_DAYS_AGO": 0.041897233201581,
-      "METRIC_VALUE_DIFF": -0.015792815530898
+      "METRIC_VALUE_DIFF": -0.014896268881427
     },
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-09",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.02729754322111,
+      "METRIC_VALUE": 0.028673835125448,
       "METRIC_VALUE_30_DAYS_AGO": 0.041302621127879,
-      "METRIC_VALUE_DIFF": -0.014005077906769
+      "METRIC_VALUE_DIFF": -0.012628786002431
     },
     {
       "COUNTY": "Lake",
@@ -236,20 +228,20 @@
       "COUNTY": "Lake",
       "DATE": "2020-11-24",
       "METRIC": "county_positivity_all_nopris",
-      "METRIC_VALUE": 0.065303804656445,
+      "METRIC_VALUE": 0.064772727272727,
       "METRIC_VALUE_30_DAYS_AGO": 0.024236983842011,
-      "METRIC_VALUE_DIFF": 0.041066820814434
+      "METRIC_VALUE_DIFF": 0.040535743430717
+    },
+    {
+      "COUNTY": "Lake",
+      "DATE": "2020-11-25",
+      "METRIC": "county_positivity_all_nopris",
+      "METRIC_VALUE": 0.060570071258907,
+      "METRIC_VALUE_30_DAYS_AGO": 0.035250463821892,
+      "METRIC_VALUE_DIFF": 0.025319607437015
     }
   ],
   "county_positivity_low_hpi": [
-    {
-      "COUNTY": "Lake",
-      "DATE": "2020-10-26",
-      "METRIC": "county_positivity_low_hpi",
-      "METRIC_VALUE": null,
-      "METRIC_VALUE_30_DAYS_AGO": null,
-      "METRIC_VALUE_DIFF": null
-    },
     {
       "COUNTY": "Lake",
       "DATE": "2020-10-27",
@@ -477,6 +469,14 @@
     {
       "COUNTY": "Lake",
       "DATE": "2020-11-24",
+      "METRIC": "county_positivity_low_hpi",
+      "METRIC_VALUE": null,
+      "METRIC_VALUE_30_DAYS_AGO": null,
+      "METRIC_VALUE_DIFF": null
+    },
+    {
+      "COUNTY": "Lake",
+      "DATE": "2020-11-25",
       "METRIC": "county_positivity_low_hpi",
       "METRIC_VALUE": null,
       "METRIC_VALUE_30_DAYS_AGO": null,

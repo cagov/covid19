@@ -3,13 +3,13 @@
     "cases": {
       "COUNTY": "Alpine",
       "METRIC": "cases",
-      "MISSING": 18,
-      "NOT_MISSING": 24,
-      "TOTAL": 42,
-      "PERCENT_COMPLETE": 0.571428571428571,
-      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.857142857142857,
-      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.285714285714286,
-      "REPORT_DATE": "2020-12-03"
+      "MISSING": 19,
+      "NOT_MISSING": 18,
+      "TOTAL": 37,
+      "PERCENT_COMPLETE": 0.486486486486487,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.923076923076923,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.436590436590437,
+      "REPORT_DATE": "2020-12-04"
     },
     "deaths": {
       "COUNTY": "Alpine",
@@ -20,29 +20,29 @@
       "PERCENT_COMPLETE": null,
       "PERCENT_COMPLETE_30_DAYS_PRIOR": null,
       "PERCENT_COMPLETE_30_DAYS_DIFF": null,
-      "REPORT_DATE": "2020-12-03"
+      "REPORT_DATE": "2020-12-04"
     },
     "tests": {
       "COUNTY": "Alpine",
       "METRIC": "tests",
-      "MISSING": 229,
-      "NOT_MISSING": 41,
-      "TOTAL": 270,
-      "PERCENT_COMPLETE": 0.151851851851852,
-      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.181818181818182,
-      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.02996632996633,
-      "REPORT_DATE": "2020-12-03"
+      "MISSING": 228,
+      "NOT_MISSING": 40,
+      "TOTAL": 268,
+      "PERCENT_COMPLETE": 0.149253731343284,
+      "PERCENT_COMPLETE_30_DAYS_PRIOR": 0.185185185185185,
+      "PERCENT_COMPLETE_30_DAYS_DIFF": -0.0359314538419016,
+      "REPORT_DATE": "2020-12-04"
     }
   },
   "gender_identity": {
     "cases": {
       "METRIC": "cases",
       "MISSING": 0,
-      "NOT_MISSING": 44,
-      "TOTAL": 44,
+      "NOT_MISSING": 43,
+      "TOTAL": 43,
       "PERCENT_COMPLETE": 1,
       "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
-      "REPORT_DATE": "2020-12-03"
+      "REPORT_DATE": "2020-12-04"
     },
     "deaths": {
       "METRIC": "deaths",
@@ -51,18 +51,18 @@
       "TOTAL": 0,
       "PERCENT_COMPLETE": null,
       "PERCENT_COMPLETE_30_DAYS_DIFF": null,
-      "REPORT_DATE": "2020-12-03"
+      "REPORT_DATE": "2020-12-04"
     }
   },
   "sexual_orientation": {
     "cases": {
       "METRIC": "cases",
-      "MISSING": 44,
+      "MISSING": 43,
       "NOT_MISSING": 0,
-      "TOTAL": 44,
+      "TOTAL": 43,
       "PERCENT_COMPLETE": 0,
       "PERCENT_COMPLETE_30_DAYS_DIFF": 0,
-      "REPORT_DATE": "2020-12-03"
+      "REPORT_DATE": "2020-12-04"
     },
     "deaths": {
       "METRIC": "deaths",
@@ -71,7 +71,7 @@
       "TOTAL": 0,
       "PERCENT_COMPLETE": null,
       "PERCENT_COMPLETE_30_DAYS_DIFF": null,
-      "REPORT_DATE": "2020-12-03"
+      "REPORT_DATE": "2020-12-04"
     }
   }
 }
