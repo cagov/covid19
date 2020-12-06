@@ -28,7 +28,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 200,
           y: 18
         }
       },
@@ -37,7 +37,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -46,7 +46,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 600,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -55,7 +55,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 600,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -393,6 +393,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeLegendLabels(legendLabels, legend) {
+    console.log("write legend width",this.chartBreakpointValues.width);
     legend
       .selectAll("text")
       .data(legendLabels)
