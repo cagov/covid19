@@ -300,7 +300,9 @@ export default function setupAnalytics() {
       document.addEventListener('setup-sd-tab-tracking', function() {
         for (let tlabel of ['income','housing','healthcare']) {
           const btn = document.querySelector("button.large-tab." + tlabel);
-          btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
+          if (btn != null) {
+            btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
+          }
         }
       });
 
