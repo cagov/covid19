@@ -298,18 +298,10 @@ export default function setupAnalytics() {
       
       // Setting up trackers for big blue bar chart
       document.addEventListener('setup-sd-tab-tracking', function() {
-        let large_tab_classes = ['income','housing','healthcare'];
-        large_tab_classes.forEach(tlabel => {
-          let selector = "button.large-tab." + tlabel;
-          console.log("Setting up",selector);
-          document.querySelectorAll(selector).forEach(btn => {
-            console.log("Found",selector);
-            btn.addEventListener('click', function (e) {
-              reportGA('tab-select', tlabel);
-
-            });
-          });
-        });
+        for (let tlabel of ['income','housing','healthcare']) {
+          const btn = document.querySelector("button.large-tab." + tlabel);
+          btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
+        }
       });
 
       document.querySelectorAll('.small-tab').forEach(btn => {

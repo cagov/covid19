@@ -8,20 +8,18 @@ generates a custom event which can be tracked
 ********************/
 
 let boxState = {};
-let bt_debugging = false;
+const bt_debugging = false;
 
 function isScrolledIntoView(elem)
 {
     const viewportHeight = document.documentElement.clientHeight;
-    var docViewTop = window.pageYOffset;
-    var docViewBottom = docViewTop + viewportHeight;
-
-    var elemRect = elem.getBoundingClientRect();
-    var elemHeight = elemRect.bottom - elemRect.top;
-    var elemTop = elemRect.top + window.scrollY;
-    var elemBottom = elemTop + elemHeight;
-
-    var elemMiddle = (elemTop + elemBottom) / 2;
+    const docViewTop = window.pageYOffset;
+    const docViewBottom = docViewTop + viewportHeight;
+    const elemRect = elem.getBoundingClientRect();
+    const elemHeight = elemRect.bottom - elemRect.top;
+    const elemTop = elemRect.top + window.scrollY;
+    const elemBottom = elemTop + elemHeight;
+    const elemMiddle = (elemTop + elemBottom) / 2;
 
     // console.log("se",docViewTop, docViewBottom, elemTop, elemBottom);
 
@@ -38,9 +36,9 @@ export default function boxTracker(elementSelector,   // class of element we are
 {
     if (bt_debugging)
         console.log("Setting up box tracker",elementSelector, minimumViewMS)
-    let label = labelOverride != null? labelOverride : elementSelector;
-    let tKey = elementSelector;
-    let elem = document.querySelector(elementSelector);
+    const label = labelOverride != null? labelOverride : elementSelector;
+    const tKey = elementSelector;
+    const elem = document.querySelector(elementSelector);
     if (elem == null || elem == undefined) {
         console.log("Element not found",elementSelector);
         return;
@@ -57,7 +55,7 @@ export default function boxTracker(elementSelector,   // class of element we are
         }
     };
 
-    let scrollHandler = function() {
+    const scrollHandler = () => {
         if (!boxState[tKey].triggered) {
             if (isScrolledIntoView(elem)) {
                 if (!boxState[tKey].inView) {
@@ -65,7 +63,7 @@ export default function boxTracker(elementSelector,   // class of element we are
                         console.log(label + " is in view");
                     boxState[tKey].inView = true;
                     // start timing
-                    boxState[tKey].lh = setTimeout(function() {
+                    boxState[tKey].lh = setTimeout(() => {
                         if (bt_debugging)
                             console.log(label + " chart-in-view triggered");
                         boxState[tKey].triggered = true;
