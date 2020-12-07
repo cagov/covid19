@@ -250,6 +250,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
       "placeholderForDynamicLocation",
       this.getLocation()
     );
+    // do it twice
+    description = description.replace(
+      "placeholderForDynamicLocation",
+      this.getLocation()
+    );
     return description;
   }
 
@@ -336,6 +341,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
             ".json"
         );
         this.resetTitle();
+        this.resetDescription();
       }.bind(this),
       false
     );
