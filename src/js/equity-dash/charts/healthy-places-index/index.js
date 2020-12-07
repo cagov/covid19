@@ -6,10 +6,10 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+import rtlOverride from "./../rtl-override.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
-    // console.log("Setting up CAGOVChartD3Lines");
     this.translationsObj = this.getTranslations(this);
     // this.innerHTML = this.translationsObj; // not currently using a template.
     this.innerHTML = template(this.translationsObj);
@@ -125,6 +125,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     if (this.querySelector('.d-none') !== null) { // doesn't work
       this.querySelector('.d-none').classList.remove("d-none");
     }
+
+    rtlOverride(this); // quick fix for arabic
   }
 
   listenForLocations() {
