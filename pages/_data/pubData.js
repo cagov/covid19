@@ -59,7 +59,15 @@ const files = [
         'Description – positive cases'
     ]}
   }},
-  { slug: 'reopening-roadmap-activity-data', split: true }
+  { slug: 'reopening-roadmap-activity-data', split: true },
+  { slug: 'menu-links', split: true, tableSchema: {
+    Table1: {
+      require: ['_section_index','label']
+    },
+    Table2: {
+      require: ['_section_index','label','_slug_or_url']}
+    } 
+  }
 ];
 
 // Reusable function for validating JSON
