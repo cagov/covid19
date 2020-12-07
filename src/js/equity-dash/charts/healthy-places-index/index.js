@@ -395,7 +395,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeLegendLabels(legendLabels, legend) {
-    console.log("write legend width",this.chartBreakpointValues.width);
+    // console.log("write legend width",this.chartBreakpointValues.width);
     legend
       .selectAll("text")
       .data(legendLabels)
