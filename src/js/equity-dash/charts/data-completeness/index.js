@@ -2,6 +2,7 @@ import template from "./template.js";
 import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
+import rtlOverride from "./../rtl-override.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -129,6 +130,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
       this.querySelector('.d-none').classList.remove("d-none");
     }
+
+    rtlOverride(this); // quick fix for arabic
   }
 
   listenForLocations() {
