@@ -3,13 +3,7 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 let filesSiteData = [];
-
-//let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
-//let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-//langData.languages.forEach(writeTranslatedData);
-
 langData.languages.forEach(writeMenuJson);
-
 
 let schoolsArray = [];
 let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
@@ -584,23 +578,24 @@ ${bodyHTML}
 
 function writeMenuJson(lang) {
   const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g,'')}menu-links${lang.filepostfix}.json`, 'utf8'));
-  const sections = menuLinksJson.Table1;
-  const links = menuLinksJson.Table2;
-  const singleLangMenu = { sections: [] };
-  sections.forEach(section => {
-    let sectionOutput = {title:section.label,links:[]};
-    let sectionLinks = links.filter(l=>l._section_index===section._section_index);
-    sectionLinks.forEach(link => {
-      sectionOutput.links.push({
-        url:(link._slug_or_url.startsWith('http')) ? link._slug_or_url : `/${lang.pathpostfix}${link._slug_or_url}/`,
-        name:link.label
+  const singleLangMenu = {
+    sections: menuLinksJson.Table1
+      .map(section => ({
+        title: section.label,
+        links:
+          menuLinksJson.Table2
+            .filter(l=>l._section_index===section._section_index)
+            .map(link => ({
+              url:
+                (link._slug_or_url.toLowerCase().startsWith('http')) 
+                ? link._slug_or_url //http full link
+                : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
+              name: link.label
+            })
+          )
       })
-    })
-    singleLangMenu.sections.push(sectionOutput)
-  });
-
-  singleLangMenu
-
+    )
+  };
 
   fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu,null,2),'utf8')
 }
