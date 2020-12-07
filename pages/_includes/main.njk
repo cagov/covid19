@@ -183,9 +183,9 @@
 	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
 		<div class="video-wrap text-center">
 
-			{% set JSONVidraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+			{% set JSONVidraw %}{% include "../wordpress-posts/video-section.json" %}{% endset %}
 			{% set JSONVid = JSONVidraw | jsonparse %}
-			{%- set RowsVid = JSONVid.Table5 -%}
+			{%- set RowsVid = JSONVid.Table1 -%}
 			{% for item in RowsVid %}
 			<div class="container">
 			<div class="row">
