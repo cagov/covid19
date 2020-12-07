@@ -597,5 +597,5 @@ function writeMenuJson(lang) {
     )
   };
 
-  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu,null,2),'utf8')
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
