@@ -243,7 +243,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
 
   svg
     .append("rect")
-    .attr("x", 115)
+    .attr("x", 135) // widened for spanish/tagalog
     .attr("y", -20)
     .attr("width", 15)
     .attr("height", 15)
@@ -259,7 +259,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
 
   svg
     .append("text")
-    .attr("x", 135)
+    .attr("x", 155) // widened for spanish/tagalog
     .attr("y", -12)
     .attr("dy", "0.35em")
     .attr("class", "legend-label")
