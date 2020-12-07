@@ -64,5 +64,5 @@ module.exports = function() {
 
 function compare(statewide,subset) {
   let diff = statewide - subset;
-  return (Math.abs(diff) / statewide) * 100;
+  return (diff / statewide) * 100;
 }
