@@ -4,9 +4,13 @@ const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'))
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 let filesSiteData = [];
 
-let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
-let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-langData.languages.forEach(writeTranslatedData);
+//let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
+//let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
+//langData.languages.forEach(writeTranslatedData);
+
+langData.languages.forEach(writeMenuJson);
+
+
 let schoolsArray = [];
 let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
 schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
@@ -578,33 +582,25 @@ ${bodyHTML}
   };
 };
 
-function getLinkInfo(link, lang) {
-  let linkData = {};
-  for(const page of pageNames) {
-    if(link.slug && page.slug === link.slug) {
-      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
-    }
-    if(link.href && page.href === link.href) {
-      linkData.url = page.href;
-    }
-    if (linkData.url) {
-      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
-      return linkData;
-    }
-  }
-}
-
-function writeTranslatedData(lang) {
-  let singleLangMenu = { "sections": [] };
-  menuData.sections.forEach(section => {
-    if(section.links) {
-      section.links.forEach(link => {
-        let linkData = getLinkInfo(link, lang);
-        link.url = linkData.url;
-        link.name = linkData.name;
+function writeMenuJson(lang) {
+  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g,'')}menu-links${lang.filepostfix}.json`, 'utf8'));
+  const sections = menuLinksJson.Table1;
+  const links = menuLinksJson.Table2;
+  const singleLangMenu = { sections: [] };
+  sections.forEach(section => {
+    let sectionOutput = {title:section.label,links:[]};
+    let sectionLinks = links.filter(l=>l._section_index===section._section_index);
+    sectionLinks.forEach(link => {
+      sectionOutput.links.push({
+        url:(link._slug_or_url.startsWith('http')) ? link._slug_or_url : `/${lang.pathpostfix}${link._slug_or_url}/`,
+        name:link.label
       })
-      singleLangMenu.sections.push(section)
-    }
+    })
+    singleLangMenu.sections.push(sectionOutput)
   });
-  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
+
+  singleLangMenu
+
+
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu,null,2),'utf8')
 }
