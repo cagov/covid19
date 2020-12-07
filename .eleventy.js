@@ -584,7 +584,7 @@ function writeMenuJson(lang) {
         title: section.label,
         links:
           menuLinksJson.Table2
-            .filter(l=>l._section_index===section._section_index)
+            .filter(l=>l._slug_or_url&&l.label&&l._section_index===section._section_index)
             .map(link => ({
               url:
                 (link._slug_or_url.toLowerCase().startsWith('http')) 
