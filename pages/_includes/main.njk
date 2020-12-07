@@ -187,6 +187,7 @@
 			{% set JSONVid = JSONVidraw | jsonparse %}
 			{%- set RowsVid = JSONVid.Table1 -%}
 			{% for item in RowsVid %}
+			{% if item.Active == "yes" %}
 			<div class="container">
 			<div class="row">
 			<div class="col-lg-8 mx-auto text-center">
@@ -215,7 +216,7 @@
 				</div>
 				</div>
 
-				
+				{% endif %}
 				{% endfor %}
 				
 		</div>
