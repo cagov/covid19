@@ -3,38 +3,15 @@ import templatize from './template.js';
 
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
-    let counties = this.dataset.counties;
-    let activities = this.dataset.status;
-    let activityLabel = 'Activity';
-    if(this.dataset.activityLabel) {
-      activityLabel = this.dataset.activityLabel;
-    }
-    let title = 'Find the status for activities in your county';
-    if(this.dataset.title) {
-      title = this.dataset.title;
-    }
-    this.seeGuidanceText = 'See guidance for';
-    if(this.dataset.seeGuidanceText) {
-      this.seeGuidanceText = this.dataset.seeGuidanceText;
-    }
-    let countyLabel = 'County';
-    if(this.dataset.countyLabel) {
-      countyLabel = this.dataset.countyLabel;
-    }
+    let activityLabel = this.dataset.activityLabel || 'Activity';
+    let title = this.dataset.title || 'Find the status for activities in your county';
+    this.seeGuidanceText = this.dataset.seeGuidanceText || 'See guidance for';
+    let countyLabel = this.dataset.countyLabel || 'County';
     let activityPlaceholder = 'Enter a business or activity';
     let countyPlaceholder = 'Enter county' // a ZIP code or
-    this.countyRestrictionsAdvice = 'Counties can restrict further.';
-    if(this.dataset.countyRestrictions) {
-      this.countyRestrictions = this.dataset.countyRestrictions;
-    }
-    this.industryGuidanceLinkText = 'View industry guidance';
-    if(this.dataset.industryGuidance) {
-      this.industryGuidanceLinkText = this.dataset.industryGuidance;
-    }
-    this.viewall = 'View all';
-    if(this.dataset.viewAll) {
-      this.viewall = this.dataset.viewAll;
-    }
+    this.countyRestrictionsAdvice = this.dataset.countyRestrictionsAdvice || 'Counties can restrict further.';
+    this.industryGuidanceLinkText = this.dataset.industryGuidanceLinkText || 'View industry guidance';
+    this.viewall = this.dataset.viewAll || 'View all';
     this.state = {};
 
     this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
