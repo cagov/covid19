@@ -63,7 +63,8 @@
     "deploy": "gulp deploy",
     "local": "npm run watch",
     "local:dev": "cross-env NODE_ENV=development npm run watch",
-    "compress:img": "cd src/build && node img.js"
+    "compress:img": "cd src/build && node img.js",
+    "test": "jest test/*.spec.js"
   },
   "repository": {
     "type": "git",
