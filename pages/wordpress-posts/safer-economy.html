@@ -1,12 +1,16 @@
 ---
 layout: "page.njk"
 title: "Blueprint for a Safer Economy"
-meta: "California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities. Understand your county&#8217;s status Every county in California is assigned to a tier based on its test positivity and adjusted case rate. In light of the recent, unprecedented surge in rate of increase of cases, [&hellip;]"
+meta: "New Regional Stay Home Order COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-16T19:12:53Z"
+publishdate: "2020-12-07T23:36:10Z"
 tags: ["translate"]
 addtositemap: true
 ---
+
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">New Regional Stay Home Order </h4><p>COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. Read more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#regional-stay-home-order" class="alert-link">Regional Stay Home Order</a>.</p></div>
+
+
 
 <p>California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities.</p>
 
@@ -52,9 +56,20 @@ addtositemap: true
 
 
 
-<!--{%-set data = tableauCovidMetrics[0] -%}-->
-<!--{%-set _varTierDate_ = data.TIER_DATE | formatDate2(false, tags) -%}-->
-<!--{%-set _varTierEndDate_ = data.TIER_ENDDATE | formatDate2(false, tags) -%}-->
+<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}-->
+<!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->
+
+
+
+<h3 class="has-text-align-center">Regional Stay Home Order</h3>
+
+
+
+<p>The State continues to record an unprecedented surge in the level of community spread of COVID-19. The Regional Stay Home Order, announced December 3, 2020, and a supplemental order, signed December 6, 2020, will go into effect at 11:59 PM the next day in regions with less than 15% intensive care unit (ICU) availability.</p>
+
+
+
+<p>Learn more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">actual ICU capacity</a> remaining in each region.</p>
 
 
 
@@ -62,7 +77,7 @@ addtositemap: true
 
 
 
-<p>Tier assignments may occur any day of the week and may occur more than once a week.</p>
+<p>Tier assignments may occur any day of the week and may occur more than once a week. Select a county to see what region it&#8217;s in.</p>
 
 
 
@@ -139,7 +154,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Wear a mask in public.</li><li>Wash your hands regularly.</li><li>Keep at least six feet of physical distance when in public.</li><li>Limit mixing with people you don’t live with.</li></ul>
+<ul class="wp-accordion-content"><li>Stay home except for essential services.</li><li>Wear a mask in public.</li><li>Wash your hands regularly.</li><li>Keep at least six feet of physical distance when in public.</li><li>Limit mixing with people you don’t live with.</li></ul>
 
 
 

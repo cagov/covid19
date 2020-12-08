@@ -37,6 +37,10 @@
       "text": "菜单"
     },
     {
+      "_id": "menu_close",
+      "text": "关闭"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "您在查找什么？"
     },
@@ -95,6 +99,10 @@
   ],
   "Table2": [
     {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
+    {
       "Name": "公共卫生局",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
     },
@@ -121,7 +129,7 @@
   ],
   "Table3": [
     {
-      "Name": "有关居家避疫的问题与解答",
+      "Name": "关于COVID-19限制",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
@@ -143,12 +151,23 @@
   ],
   "Table4": [
     {
-      "TEST": "检测",
-      "VALUE": "值"
+      "Link Title": "有哪些安全开放商业的指引？",
+      "URL": "#"
     },
     {
-      "TEST": "为何不是这个",
-      "VALUE": "翻译中"
+      "Link Title": "我可以在哪里为我的商业寻求援助？",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "感谢您",
+      "Description": "感谢您在此节日季为阻止COVID-19传播所做的一切努力。",
+      "VideoURL": "youtu.be/8S5iiKx5dhc",
+      "VideoID": "8S5iiKx5dhc",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
+      "ImageALT": "感谢您",
+      "ButtonText": "观看视频"
     }
   ]
 }

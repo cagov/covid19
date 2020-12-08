@@ -37,6 +37,10 @@
       "text": "Menu"
     },
     {
+      "_id": "menu_close",
+      "text": "Đóng cửa"
+    },
+    {
       "_id": "what_are_you_looking_for",
       "text": "Quý vị đang tìm gì?"
     },
@@ -95,6 +99,10 @@
   ],
   "Table2": [
     {
+      "Name": "CA.gov",
+      "_URL": "https://www.ca.gov"
+    },
+    {
       "Name": "Sở Y Tế Công Cộng",
       "_URL": "https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx"
     },
@@ -121,7 +129,7 @@
   ],
   "Table3": [
     {
-      "Name": "Hỏi & đáp về lệnh ở nhà",
+      "Name": "Giới thiệu về các hạn chế trong đại dịch COVID-19",
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
@@ -143,12 +151,23 @@
   ],
   "Table4": [
     {
-      "TEST": "XÉT NGHIỆM",
-      "VALUE": "GIÁ TRỊ"
+      "Link Title": "Hướng dẫn để mở cửa doanh nghiệp của tôi một cách an toàn là gì?",
+      "URL": "#"
     },
     {
-      "TEST": "Tại sao không phải cái này",
-      "VALUE": "Đang Được Dịch"
+      "Link Title": "Tôi có thể tìm trợ giúp cho doanh nghiệp của mình ở đâu?",
+      "URL": "#"
+    }
+  ],
+  "Table5": [
+    {
+      "Video Title": "Cảm ơn quý vị",
+      "Description": "Cảm ơn quý vị đã làm mọi thứ có thể để ngăn chặn sự lây lan của đại dịch COVID-19 trong mùa lễ này.",
+      "VideoURL": "youtu.be/8S5iiKx5dhc",
+      "VideoID": "8S5iiKx5dhc",
+      "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
+      "ImageALT": "Cảm ơn quý vị",
+      "ButtonText": "Xem video"
     }
   ]
 }
