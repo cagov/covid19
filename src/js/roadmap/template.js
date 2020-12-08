@@ -28,10 +28,11 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               aria-atomic="true"
               >Type 2 or more characters for results.</span
             >
+            <div id="location-error" style="visibility: hidden" class="mt-1 text-danger text-small text-left">County not found. Search by county name.</div>
           </div>
           <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
           <span
-            class="visually-hidden"
+            class="sr-only"
             aria-atomic="true"
             aria-live="assertive"
             role="status"
@@ -55,6 +56,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
             />
             <button class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
+            <div id="activity-error" style="visibility: hidden" class="mt-1 text-danger text-small text-left">Activity not found. Search a different term.</div>
           </div>
           <ul hidden="" id="awesomplete-list-2" role="listbox"></ul>
         </div>

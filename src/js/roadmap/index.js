@@ -87,6 +87,22 @@ class CAGovReopening extends window.HTMLElement {
       //resetForm();
     });
 
+    document.getElementById("location-query").addEventListener("input", function (event) {
+      this.changeLocationInput(event.target.value);
+    }.bind(this));
+
+    document.getElementById("clearLocation").addEventListener("click", function() {
+      this.changeLocationInput("");
+    }.bind(this));	
+
+    document.getElementById("activity-query").addEventListener("input", function (event) {
+      this.changeActivityInput(event.target.value);
+    }.bind(this));
+
+    document.getElementById("clearActivity").addEventListener("click", function() {
+      this.changeActivityInput("");
+    }.bind(this));	
+
     document.querySelector('.reopening-activities').addEventListener('submit',function(event) {
       event.preventDefault();
       if(document.querySelector('#location-query').value == '') {
@@ -103,6 +119,28 @@ class CAGovReopening extends window.HTMLElement {
     }.bind(this))
   }
 
+  changeLocationInput(value) {
+    document.getElementById("location-query").value = value;
+    this.state['county'] = value;
+    if (value) {
+      document.getElementById("clearLocation").classList.remove('d-none');
+    } else {
+      document.getElementById("clearLocation").classList.add('d-none');
+    }
+    document.getElementById("location-error").style.visibility = "hidden";
+  }
+
+  changeActivityInput(value) {
+    document.getElementById("activity-query").value = value;
+    this.state['activity'] = value;
+    if (value) {
+      document.getElementById("clearActivity").classList.remove('d-none');
+    } else {
+      document.getElementById("clearActivity").classList.add('d-none');
+    }
+    document.getElementById("activity-error").style.visibility = "hidden";
+  }
+
   setupAutoComp(fieldSelector, fieldName, aList) {
     let component = this;
     const awesompleteSettings = {
@@ -116,8 +154,7 @@ class CAGovReopening extends window.HTMLElement {
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;
-        component.state[fieldName] = finalval;
+        component.changeLocationInput(finalval);
         // component.layoutCards();
       },
       list: aList
@@ -156,10 +193,9 @@ class CAGovReopening extends window.HTMLElement {
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;
-        component.state[fieldName] = finalval;
-        component.layoutCards();
-        document.querySelector(fieldSelector).blur();
+        component.changeActivityInput(finalval);
+        // component.layoutCards();
+        // document.querySelector(fieldSelector).blur();
       },
       list: aList
     };
@@ -193,6 +229,9 @@ class CAGovReopening extends window.HTMLElement {
           selectedCounties.push(item)
         }
       })
+      if (selectedCounties.length === 0) {
+        document.getElementById("location-error").style.visibility = "visible";
+      }
     }
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
@@ -209,7 +248,21 @@ class CAGovReopening extends window.HTMLElement {
       `
       + schoolFooter;
     }
+
     let selectedActivities = this.allActivities;
+    console.log(this.state['activity']);
+    if(this.state['activity']) {
+      selectedActivities = [];
+      this.allActivities.forEach(ac => {
+        if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
+          selectedActivities.push(ac);
+        }
+      })
+      if (selectedActivities.length === 0) {
+        document.getElementById("activity-error").style.visibility = "visible";
+      }
+    }
+
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
@@ -218,14 +271,6 @@ class CAGovReopening extends window.HTMLElement {
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
         <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
       </div>`
-      if(this.state['activity']) {
-        selectedActivities = [];
-        this.allActivities.forEach(ac => {
-          if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
-            selectedActivities.push(ac);
-          }
-        })
-      }
       selectedActivities.forEach(ac => {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
@@ -251,55 +296,5 @@ class CAGovReopening extends window.HTMLElement {
     window.dispatchEvent(event);
   }
 }
+
 window.customElements.define('cagov-reopening', CAGovReopening);
-
-// Show clear btn only if there is value (County)
-function inputValueCounty() {
-  var countyInput = document.getElementById("location-query");
-  var clearCounty = document.getElementById("clearLocation");
-    if (countyInput && countyInput.value) {
-      clearCounty.classList.remove('d-none');
-    }
-    else {clearCounty.classList.add('d-none');}
-  }
-
-
-  var activityInput = document.getElementById("activity-query");
-  var countyInput = document.getElementById("location-query");
-  
-  
-  
-  // Show clear btn only on input (County)
-  countyInput.addEventListener("input", function() {
-    inputValueCounty();
-   });
-  
-  // Show clear btn only on input (Activity)
-  activityInput.addEventListener("input", function() {
-    inputValueActivity();
-   });
-  
-   activityInput.addEventListener("blur", function() {
-    inputValueActivity();
-   });
-
-//Clear buttons click events
-document.getElementById("clearLocation").addEventListener("click", function() {
-  countyInput.value = '';
-  inputValueCounty();
-});	
-
-document.getElementById("clearActivity").addEventListener("click", function() {
-  activityInput.value = '';
-  inputValueActivity();
-});	
-
-// Show clear btn only if there is value (Activity)
-function inputValueActivity() {
-  var activityInput = document.getElementById("activity-query");
-  var clearActivity = document.getElementById("clearActivity");
-    if (activityInput && activityInput.value) {
-      clearActivity.classList.remove('d-none');
-    }
-    else {clearActivity.classList.add('d-none');}
-  }
