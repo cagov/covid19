@@ -491,6 +491,79 @@ border-radius: 0.25rem !important;
 
 
 
+// LEARN MORE SECTION
+learn-more-section {
+  .faq-twitter {
+    @extend %block-padding;
+    width: 100%;
+    order: 1;
+    @include tablet {
+      order: 2;
+    }
+    &-wrap {
+      @extend %wrap;
+      @include tablet {
+        display: flex;
+        align-items: flex-start;
+      }
+    }
+  }
+  .faq {
+    text-align: left;
+    @include tablet {
+      width: 50%;
+      padding: 0 2rem 0 0;
+    }
+  }
+  .faq article:first-child .faq-item-link {
+    border-top: 1px solid $blue;
+  }
+}
+
+
+// Dark blue questions
+faq-section {
+
+	.faq-twitter {
+		background: $darkblue;
+		@extend %block-padding;
+		width: 100%;
+		order: 1;
+		@include tablet {
+			order: 2;
+		}
+		&-wrap {
+			@extend %wrap;
+			@include tablet {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+	.faq {
+		text-align: left;
+		@include tablet {
+			width: 50%;
+			padding: 0 2rem 0 0;
+		}
+	
+	}
+	.t-center {
+		text-align: center;
+	}
+	.twitter-feed {
+		padding: 2rem 0rem 0;
+		text-align: center;
+		color: $white;
+		@include tablet {
+			width: 50%;
+			padding: 0 0 0 2rem;
+		}
+	
+	}
+
+}
+
 // Special Note
 .special-note {
   background: $lightestblue;
