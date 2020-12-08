@@ -1,7 +1,7 @@
 name: Eleventy PR Validation
 on:
   pull_request:
-    branches: [ endtoendtesting ]
+    branches: [ task/CCG-829-e2e-test ]
 
 jobs:
   build:
