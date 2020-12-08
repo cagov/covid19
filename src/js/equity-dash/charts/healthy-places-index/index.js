@@ -217,15 +217,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     
     // jbum note: 14 is a magic number that aligns axis to the line and tooltips
     // note the left margin is 30, so I'm not sure why it's so odd
-
     let xAxis = (g) =>
+      let locale = document.documentElement.lang;
       g
         .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
             .ticks(d3.timeWeek.every(1))
-            .tickFormat(d3.timeFormat("%b. %d"))
+            // .tickFormat(d3.timeFormat("%b. %d"))  // d3 timeFormatDefaultLocale is currently breaking, so using a non-d3 method
+            .tickFormat(d => d.toLocaleString(locale, { month: "short", day: 'numeric' }))
             .tickSize(-chartHeight)
         )
         // .call(g => g)
