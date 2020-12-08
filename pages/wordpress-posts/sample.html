@@ -1,21 +1,47 @@
 ---
 layout: "page.njk"
 title: "Examples"
-meta: "H1 Heading H2 Heading H3 Heading H4 Heading H3 Heading Buttons Action buttons links link link link link UI buttons with .bd-4px class button button button button Link With arrow Arrow Arrow Arrow Arrow"
+meta: "H1 Heading H2 Heading H3 Heading H4 Heading H3 Heading Buttons Action buttons links UI buttons with .bd-4px class button button button button Buttons with icons Top Down Right Left Link with arrow Arrow Arrow Arrow Arrow Toggles Large Tabs Tab 1 Tab 1 Tab 1 Small tabs Tab 1 Tab 2 Tab 3 List [&hellip;]"
 author: "State of California"
-publishdate: "2020-11-13T00:46:09Z"
+publishdate: "2020-12-08T00:01:27Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
 <h1>H1 Heading</h1>
+
+
+
 <h2 class="text-left">H2 Heading</h2>
+
+
+
 <h3>H3 Heading</h3>
+
+
+
 <h4>H4 Heading</h4>
+
+
+
 <h5>H3 Heading</h5>
-<hr>
+
+
+
+<hr/>
+
+
+
 <h2>Buttons</h2>
-<h3>Action buttons links</h3>
+
+
+
+<h4>Action buttons links</h4>
+
+
+
+<div class="wp-block-group"><div class="wp-block-group__inner-container">
+<div class="wp-block-group"><div class="wp-block-group__inner-container">
 <div class="row py-5 text-center">
     <div class="col-md-3 bg-blue py-4">
         <a href="#" class="button-white">link</a>
@@ -30,8 +56,15 @@ addtositemap: false
         <a href="#" class="button-lightblue">link</a>
     </div>
 </div>
+</div></div>
+</div></div>
 
-<h3>UI buttons with .bd-4px class</h3>
+
+
+<h4>UI buttons with .bd-4px class</h4>
+
+
+
 <div class="row py-5 text-center">
     <div class="col-md-3 bg-blue py-4">
         <button class="button-white bd-4px">button</button>
@@ -46,7 +79,34 @@ addtositemap: false
         <button class="button-lightblue bd-4px">button</button>
     </div>
 </div>
-<h2>Link With arrow</h2>
+
+
+
+<h4>Buttons with icons</h4>
+
+
+
+<div class="row py-5 text-center">
+    <div class="col-md-3 bg-blue py-4">
+        <button class="button-white"><span class="ca-gov-icon-up" aria-hidden="true"></span> Top</button>
+    </div>
+<div class="col-md-3 py-4">
+        <button class="button-lightblue"><span class="ca-gov-icon-down" aria-hidden="true"></span> Down</button>
+    </div>
+<div class="col-md-3 bg-lightblue py-4">
+        <button class="button-blue"><span class="ca-gov-icon-right" aria-hidden="true"></span> Right</button>
+    </div>
+<div class="col-md-3 bg-purple py-4">
+        <button class="button-lightblue"><span class="ca-gov-icon-left" aria-hidden="true"></span> Left</button>
+    </div>
+</div>
+
+
+
+<h2>Link with arrow</h2>
+
+
+
 <div class="row py-5 text-center">
     <div class="col-md-3 bg-blue py-4">
         <a href="#" class="link-arrow-white">
@@ -73,4 +133,124 @@ addtositemap: false
 
 
 
-<p></p>
+<h2>Toggles</h2>
+
+
+
+<h4>Large Tabs</h4>
+
+
+
+<div class="d-flex justify-content-center">
+<div class="text-center large-tabs">
+<button class="large-tab active">Tab 1</button>
+<button class="large-tab">Tab 1</button>
+<button class="large-tab">Tab 1</button>
+</div>
+</div>
+
+
+
+<h4 class="mt-4">Small tabs</h4>
+
+
+
+<div class="d-flex justify-content-center">
+    <button class="small-tab active" data-key="key1">Tab 1</button>
+    <button class="small-tab" data-key="key2">Tab 2</button>
+    <button class="small-tab" data-key="key3">Tab 3</button>
+  </div>
+
+
+
+<h2>List links with arrows</h2>
+
+
+
+<p>Arrow list is unordered <code>ul</code> list with class <code>arrow-links</code>. Inside of the list items use <code>a</code> links with class <code>link-arrow-blue</code> on light background, or white <code>a</code> links with class <code>link-arrow-white</code> on dark backgrounds. See examples below:</p>
+
+
+
+<h4>Blue arrow list links</h4>
+
+
+
+<div class="container py-5">
+<div class="row">
+<div class="col-md-6">
+<ul class="arrow-links">
+<li>
+<a href="#" class="link-arrow-blue">
+<div class="link-arrow-label">On hover state, arrow animates horizontally inside of shape. Size of shape does not change.</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+<li>
+<a href="#" class="link-arrow-blue">
+<div class="link-arrow-label">Link 2</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-md-6">
+<ul class="arrow-links">
+<li>
+<a href="#" class="link-arrow-blue">
+<div class="link-arrow-label">Link 3</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+<li>
+<a href="#" class="link-arrow-blue">
+<div class="link-arrow-label">Link 4</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<h4>White arrow list links:</h4>
+
+
+
+<div class="container bg-purple py-5">
+<div class="row">
+<div class="col-md-6">
+<ul class="arrow-links">
+<li>
+<a href="#" class="link-arrow-white">
+<div class="link-arrow-label">Link 1</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+<li>
+<a href="#" class="link-arrow-white">
+<div class="link-arrow-label">Link 2</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-md-6">
+<ul class="arrow-links">
+<li>
+<a href="#" class="link-arrow-white">
+<div class="link-arrow-label">Link 3</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+<li>
+<a href="#" class="link-arrow-white">
+<div class="link-arrow-label">Link 4</div>
+<cagov-arrow></cagov-arrow>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
