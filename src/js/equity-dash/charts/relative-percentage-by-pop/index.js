@@ -5,7 +5,7 @@ import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import getDisproportionateRatioSortValue from './get-disproportionality-ratio-sort-value.js';
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../rtl-override.js";
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback() {

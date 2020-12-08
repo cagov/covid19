@@ -1,5 +1,6 @@
 import Awesomplete from 'awesomplete-es6';
 import templatize from './template.js';
+import rtlOverride from "./../rtl-override.js";
 
 class CAGovCountySearch extends window.HTMLElement {
 
@@ -60,7 +61,9 @@ class CAGovCountySearch extends window.HTMLElement {
         this.processCountySearchInput(typedInValue);
       }.bind(this))  
     }.bind(this));
-    
+
+    rtlOverride(this, 'div', 'ltr');
+
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
