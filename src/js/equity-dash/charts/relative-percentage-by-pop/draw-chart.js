@@ -45,7 +45,7 @@ export default function drawBars({
     .attr("height", "10px")
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
-      let caption = component.getToolTipCaption1(d, legendStrings[0]);
+      let caption = component.getToolTipCaption1(d, selectedMetric);
       return `<div class="chart-tooltip">
       <div>${caption}</div>
       </div>`}
@@ -54,7 +54,7 @@ export default function drawBars({
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
-      let caption = component.getToolTipCaption1(d, legendStrings[0]);
+      let caption = component.getToolTipCaption1(d, selectedMetric);
       tooltip.html(`<div class="chart-tooltip"><div>${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
@@ -94,7 +94,8 @@ export default function drawBars({
 
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
-      let caption2 = component.getToolTipCaption2(d, selectedMetric);
+      // switching to use same tooltip for both (it's less confusing)
+      let caption2 = component.getToolTipCaption1(d, selectedMetric);
       tooltip.html(`<div class="chart-tooltip">
         <div >${caption2}</div>
       </div>`);
