@@ -4,7 +4,7 @@ import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../rtl-override.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
