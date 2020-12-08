@@ -3,18 +3,10 @@ import templatize from './template.js';
 
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
-    let activityLabel = this.dataset.activityLabel || 'Activity';
-    let title = this.dataset.title || 'Find the status for activities in your county';
-    this.seeGuidanceText = this.dataset.seeGuidanceText || 'See guidance for';
-    let countyLabel = this.dataset.countyLabel || 'County';
-    let activityPlaceholder = 'Enter a business or activity';
-    let countyPlaceholder = 'Enter county' // a ZIP code or
-    this.countyRestrictionsAdvice = this.dataset.countyRestrictionsAdvice || 'Counties can restrict further.';
-    this.industryGuidanceLinkText = this.dataset.industryGuidanceLinkText || 'View industry guidance';
-    this.viewall = this.dataset.viewAll || 'View all';
+    this.json = JSON.parse(this.dataset.json);
     this.state = {};
 
-    this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
+    this.innerHTML = templatize(this.json);
     let theMatrix = document.querySelector('.the-matrix');
     if(theMatrix) {
       document.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
@@ -190,10 +182,10 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
-        <h3>${(this.countyRegions) ? 'Region: '+this.countyRegions[item.county] : ''}</h3>
+        <h3>${(this.countyRegions) ? this.json.regionLabel+this.countyRegions[item.county] : ''}</h3>
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">${this.json.understandTheData}</a></p>
+        <p>${this.json.countyRestrictionsAdvice} <a href="../get-local-information">${this.json.countyRestrictionsCountyWebsite}</a>.</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
@@ -207,7 +199,7 @@ class CAGovReopening extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
           <h4>${ac["0"]}</h4>
           <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
-          <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+          <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
         </div>`
       })
     })
