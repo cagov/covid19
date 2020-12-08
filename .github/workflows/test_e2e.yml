@@ -1,7 +1,7 @@
 name: Eleventy PR Validation
 on:
   pull_request:
-    branches: [ staging ]
+    branches: [ endtoendtesting ]
 
 jobs:
   build:
