@@ -13,10 +13,6 @@
 	{{ super() }}
 {% endblock %}
 
-{% block headJS %}
-	<script>const videoID='{{varVideoID}}';</script>
-{% endblock %}
-
 {% block preHeader %}
 	<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
 {% endblock %}
@@ -28,21 +24,18 @@
 				<div class="hero-text" role="region" aria-labelledby="hero-text">
 					<div class="hero-text-align">				
 						<h1 class="hero-headline">
-							<a class="hero-headline-link" href="{{ "symptoms-and-risks/" | toTranslatedPath(tags) }}">
 								<span class="hero-headline-background" id="hero-text">
 									{{varHeroTitle}}
 								</span>
-							</a>
 						</h1>
 						<h2 class="hero-subhead">{{ varHeroP2 }}</h2>
-						<a class="hero-button button orange-button cwdsarrow-parent" href="{{ "safer-economy/" | toTranslatedPath(tags) }}">
-							<div class="button-label">
-								<span>
-									<p>{{ varHeroP1 }}</p>
-								</span>
-							</div>
-							<cwds-arrow data-class-prefix="hero" data-class-list="cwdsarrow-size-md cwdsarrow-idle-lightblue cwdsarrow-hover-white cwdsarrow-focus-orange"></cwds-arrow>
+						
+						<a href="{{ "safer-economy/" | toTranslatedPath(tags) }}" class="link-arrow-lightblue justify-content-start">
+							<div class="link-arrow-label">{{ varHeroP1 }}</div>
+							<cagov-arrow></cagov-arrow>
 						</a>
+						
+						
 					</div>
 				</div>
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
@@ -82,7 +75,7 @@
 					</div>		
 					<div class="hero-stats-footer">
 						<a class="hero-stats-footer-link mt-2" href="{{ 'safer-economy/' | toTranslatedPath(tags) }}#county-status">{{varCountyMap}}</a>
-						<a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">{{varStateSummary}}</a>
+						<a class="hero-stats-footer-link mt-2" href="/state-dashboard/">{{varStateSummary}}</a>
 					</div>
 				</div>
 				<div class="hero-alert" role="alert" aria-label="Alerts section">
@@ -134,18 +127,20 @@
 	<faq-section>
 		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
 			
-			<h3 class="text-center color-orange font-size-2em">{{varPeopleWantToKnowTitle}}</h3>
+			<h2 class="text-center color-orange mb-4">{{varPeopleWantToKnowTitle}}</h2>
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
 					<div class="faq trigger">
+						<ul class="arrow-links">
 						{%- for item in items %}
-						<article class="faq-item trigger">    
-							<a class="faq-item-link cwdsarrow-parent" href="{{ item._url }}">
-								<h4 class="faq-item-headline">{{ item.text | safe }}</h4>
-								<cwds-arrow data-class-prefix="faq" data-class-list="cwdsarrow-size-sm cwdsarrow-idle-orange cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
+						<li>    
+							<a class="link-arrow-white" href="{{ item._url }}">
+								<div class="link-arrow-label">{{ item.text | safe }}</div>
+								<cagov-arrow></cagov-arrow>
 							</a>
-						</article>
+						</li>
 						{%- endfor %}
+						</ul>
 					</div>
 				{%- endfor %}
 			</div>
@@ -153,43 +148,80 @@
 	</faq-section>
 
 
-	<!-- begin video section -->
-	<video-section>
-		<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
-			<div class="video-wrap">
-				<h3 class="video-headline text-center font-size-2em"><span  id="video-resources">{{varVideoTitle}}</span></h3>
-				<div class="video-grid">
-					<div class="video-grid-col">
-						<article class="video-item transition-0_3 transform-scale-hover" data-video="{{ varVideoID }}">
-							<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{ varVideoID }}" href="https://youtu.be/{{ varVideoID }}">
-								<figure class="video-thumb-photo">
-									<div class="video-thumb-play-button">
-										<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
-											<path d="M43.3,25L0,50V0L43.3,25z"></path>
-										</svg>
-									</div>
-									<img class="video-thumb-photo-img" src="https://files.covid19.ca.gov/img/homepage-video-thumb--en.jpg" alt="wear a mask">
-								</figure>
-							</a>
-						</article>
-					</div>
-					<div class="video-grid-col">
-						<div class="video-grid-more">
-								<div class="video-text pl-md-5 pt-3 pt-lg-0">
-									<h4 class="font-size-2em color-purple font-weight-bold">{{varVideoWearAMask}}</h4>
-									<p class="lead mt-4">{{varVideoP1}}</p>
-									<a class="button trigger video-modal-open cwdsarrow-parent" href="https://youtu.be/{{ varVideoID }}" data-video="{{ varVideoID }}">
-										<div class="button-label">{{varVideoWatchTheVideo}}</div>
-										<cwds-arrow data-class-prefix="watch-video" data-class-list="cwdsarrow-size-md cwdsarrow-idle-black cwdsarrow-hover-darkblue cwdsarrow-focus-darkblue"></cwds-arrow>
-									</a>
-								</div>
-						</div>
-					</div>
+
+
+<!-- FOR BUSINESSES SECTION -->
+<learn-more-section>
+<section class="faq-twitter pb-4">
+	<h2 class="text-center color-purple mb-3">For businesses</h2>
+	<div class="faq-twitter-wrap pb-5">
+	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+        {% set JSONgov = JSONgovraw | jsonparse %}
+        {%- set RowsGov = JSONgov.Table4 -%}
+        {% for item in RowsGov %}
+		<div class="faq trigger">
+			<div class="arrow-links">
+			<article>    
+				<a class="link-arrow-blue" href="{{item["URL"]}}">
+				<div class="link-arrow-label">
+					{{item["Link Title"]}}
 				</div>
+				<cagov-arrow></cagov-arrow>
+				</a>
+			</article>
 			</div>
-		</section>
-	</video-section>
-	<!-- end video section -->
+		</div>
+		 {% endfor %}
+	</div>
+</section>
+</learn-more-section>
+
+
+<!-- begin video section -->
+	<video-section>
+
+	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
+		<div class="video-wrap text-center">
+
+			{% set JSONVidraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+			{% set JSONVid = JSONVidraw | jsonparse %}
+			{%- set RowsVid = JSONVid.Table5 -%}
+			{% for item in RowsVid %}
+			<div class="container">
+			<div class="row">
+			<div class="col-lg-8 mx-auto text-center">
+			<h2 class="color-purple mb-0 pb-2">{{item["Video Title"]}}</h2>
+			<p class="mb-3 text-300">{{item["Description"]}}</p>
+				<article class="video-item mx-auto mt-3" data-video="{{item["VideoID"]}}">
+					<a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{item["VideoID"]}}" href="https://{{item["VideoURL"]}}">
+						<figure class="video-thumb-photo">
+							<div class="video-thumb-play-button" role="button" tabindex="0" aria-label="Watch video">
+								<svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
+									<path class="st0" d="M0,45.9V4.4c0-3.3,2-4.2,4.9-2.5l32.9,19c4.7,2.6,4.8,5,0.6,7.5L5,47.6C1.7,49.6,0,48.5,0,45.9z"/>
+								</svg>
+							</div>
+							<img class="video-thumb-photo-img" src="https://{{item["ImageURL"]}}" alt="{{item["ImageALT"]}}">
+						</figure>
+					</a>
+				</article>
+
+				<a href="https://{{item["ButtonURL"]}}" class="link-arrow-blue mt-4">
+					<div class="link-arrow-label">{{item["ButtonText"]}}</div>
+					<cagov-arrow></cagov-arrow>
+				</a>
+
+		
+				</div>
+				</div>
+				</div>
+
+				
+				{% endfor %}
+				
+		</div>
+	</section>
+</video-section>
+<!-- end video section -->
 
 
 <!--FROM GOV OFFICE UPDATES -->

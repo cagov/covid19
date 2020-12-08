@@ -3,10 +3,8 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 let filesSiteData = [];
+langData.languages.forEach(writeMenuJson);
 
-let menuData = JSON.parse(fs.readFileSync('pages/_data/menuData.json', 'utf8'));
-let pageNames = JSON.parse(fs.readFileSync('pages/_data/pageNames.json', 'utf8'));
-langData.languages.forEach(writeTranslatedData);
 let schoolsArray = [];
 let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
 schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
@@ -16,6 +14,8 @@ fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wor
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
 // this needs to be translated, need to get the translated version from translated page
 fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+// county regions for stay home restrictions, hardcoded now, should come from snowflake soon
+fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
 
 
 let htmlmap = [];
@@ -79,8 +79,13 @@ module.exports = function(eleventyConfig) {
       replaceContent(item,/"https:\/\/covid19.ca.gov\/img\//g,`"https://files.covid19.ca.gov/img/`);
 
         if(item.inputPath.includes(FolderName)) {
-          if(item.data.tags && item.data.tags.includes('translate')) {
+          if(item.data.layout) {
+              //for any layout pages in the translated posts folder
               const langRecordFromSlug = langData.languages.find(x=>x.filepostfix&&item.data.page.fileSlug.endsWith(x.filepostfix));
+
+              if(!item.data.tags) {
+                item.data.tags = [];
+              }
 
               if(langRecordFromSlug&&!item.data.tags.includes(langRecordFromSlug.wptag)) {
                 //Add a lang record tag if it is missing based on the file slug
@@ -571,33 +576,26 @@ ${bodyHTML}
   };
 };
 
-function getLinkInfo(link, lang) {
-  let linkData = {};
-  for(const page of pageNames) {
-    if(link.slug && page.slug === link.slug) {
-      linkData.url = `/${lang.pathpostfix}${page.slug}/`;
-    }
-    if(link.href && page.href === link.href) {
-      linkData.url = page.href;
-    }
-    if (linkData.url) {
-      linkData.name = page[lang.wptag] || `(${page['lang-en']})`;
-      return linkData;
-    }
-  }
-}
-
-function writeTranslatedData(lang) {
-  let singleLangMenu = { "sections": [] };
-  menuData.sections.forEach(section => {
-    if(section.links) {
-      section.links.forEach(link => {
-        let linkData = getLinkInfo(link, lang);
-        link.url = linkData.url;
-        link.name = linkData.name;
+function writeMenuJson(lang) {
+  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g,'')}menu-links${lang.filepostfix}.json`, 'utf8'));
+  const singleLangMenu = {
+    sections: menuLinksJson.Table1
+      .map(section => ({
+        title: section.label,
+        links:
+          menuLinksJson.Table2
+            .filter(l=>l._slug_or_url&&l.label&&l._section_index===section._section_index)
+            .map(link => ({
+              url:
+                (link._slug_or_url.toLowerCase().startsWith('http')) 
+                ? link._slug_or_url //http full link
+                : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
+              name: link.label
+            })
+          )
       })
-      singleLangMenu.sections.push(section)
-    }
-  });
+    )
+  };
+
   fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
