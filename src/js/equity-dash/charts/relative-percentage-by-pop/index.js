@@ -5,6 +5,7 @@ import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import getDisproportionateRatioSortValue from './get-disproportionality-ratio-sort-value.js';
+import rtlOverride from "./../rtl-override.js";
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback() {
@@ -207,6 +208,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
     this.listenForLocations();
 
     this.classList.remove("d-none");
+    
+    rtlOverride(this);
+
   }
 
   updateTranslatedTextStrings() {
@@ -242,6 +246,11 @@ class CAGOVEquityREPop extends window.HTMLElement {
     let description = this.translationsObj[
       "chartDescription--" + this.selectedMetric.toLowerCase()
     ];
+    description = description.replace(
+      "placeholderForDynamicLocation",
+      this.getLocation()
+    );
+    // do it twice
     description = description.replace(
       "placeholderForDynamicLocation",
       this.getLocation()
@@ -332,6 +341,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
             ".json"
         );
         this.resetTitle();
+        this.resetDescription();
       }.bind(this),
       false
     );

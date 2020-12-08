@@ -2,6 +2,7 @@ import template from "./template.js";
 import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
+import rtlOverride from "./../rtl-override.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -9,6 +10,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // Get translations.
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
+    // console.log("trans objs",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
 
     // Settings and initial values
@@ -129,6 +131,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
       this.querySelector('.d-none').classList.remove("d-none");
     }
+
+    rtlOverride(this); // quick fix for arabic
   }
 
   listenForLocations() {
@@ -329,6 +333,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
   }
 
   drawSvg(data) {
+    // console.log("Chart data",data);
     let stackedData = d3.stack().keys(this.chartOptions.subgroups)(data);
     let domains = this.getDomains(data); // Get list of data domains for this dataset.
 
@@ -363,7 +368,9 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       g
         .attr("class", "bar-label")
         .attr("transform", "translate(5," + labelOffset + ")") // Relative positioning of label.
-        .call(d3.axisLeft(this.y).tickSize(0))
+        .call(d3.axisLeft(this.y)
+          .tickSize(0)
+          .tickFormat(i => this.translationsObj.displayOrder[i]))
         .call((g) => g.selectAll(".domain").remove());
 
     this.tooltip = d3

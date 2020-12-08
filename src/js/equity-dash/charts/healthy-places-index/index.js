@@ -6,10 +6,10 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+import rtlOverride from "./../rtl-override.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
-    // console.log("Setting up CAGOVChartD3Lines");
     this.translationsObj = this.getTranslations(this);
     // this.innerHTML = this.translationsObj; // not currently using a template.
     this.innerHTML = template(this.translationsObj);
@@ -28,7 +28,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 200,
           y: 18
         }
       },
@@ -37,7 +37,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -46,7 +46,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 600,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -55,7 +55,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 600,
         margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
         legendPosition: {
-          x: 150,
+          x: 160,
           y: 18
         }
       },
@@ -125,6 +125,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     if (this.querySelector('.d-none') !== null) { // doesn't work
       this.querySelector('.d-none').classList.remove("d-none");
     }
+
+    rtlOverride(this); // quick fix for arabic
   }
 
   listenForLocations() {
@@ -215,15 +217,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     
     // jbum note: 14 is a magic number that aligns axis to the line and tooltips
     // note the left margin is 30, so I'm not sure why it's so odd
-
     let xAxis = (g) =>
+      let locale = document.documentElement.lang;
       g
         .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
             .ticks(d3.timeWeek.every(1))
-            .tickFormat(d3.timeFormat("%b. %d"))
+            // .tickFormat(d3.timeFormat("%b. %d"))  // d3 timeFormatDefaultLocale is currently breaking, so using a non-d3 method
+            .tickFormat(d => d.toLocaleString(locale, { month: "short", day: 'numeric' }))
             .tickSize(-chartHeight)
         )
         // .call(g => g)
@@ -393,6 +396,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
   writeLegendLabels(legendLabels, legend) {
+    // console.log("write legend width",this.chartBreakpointValues.width);
     legend
       .selectAll("text")
       .data(legendLabels)
