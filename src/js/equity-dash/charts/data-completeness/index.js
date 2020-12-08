@@ -2,7 +2,7 @@ import template from "./template.js";
 import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../rtl-override.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
