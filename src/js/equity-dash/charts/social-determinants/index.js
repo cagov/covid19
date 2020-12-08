@@ -2,7 +2,7 @@ import template from './template.js';
 import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../rtl-override.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {

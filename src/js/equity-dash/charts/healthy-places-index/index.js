@@ -6,7 +6,7 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../rtl-override.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
@@ -218,7 +218,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // jbum note: 14 is a magic number that aligns axis to the line and tooltips
     // note the left margin is 30, so I'm not sure why it's so odd
     let xAxis = (g) =>
-      let locale = document.documentElement.lang;
       g
         .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
@@ -226,7 +225,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
             .axisBottom(x)
             .ticks(d3.timeWeek.every(1))
             // .tickFormat(d3.timeFormat("%b. %d"))  // d3 timeFormatDefaultLocale is currently breaking, so using a non-d3 method
-            .tickFormat(d => d.toLocaleString(locale, { month: "short", day: 'numeric' }))
+            .tickFormat(d => d.toLocaleString(document.documentElement.lang, { month: "short", day: 'numeric' }))
             .tickSize(-chartHeight)
         )
         // .call(g => g)
