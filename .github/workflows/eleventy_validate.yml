@@ -10,3 +10,12 @@ jobs:
       - uses: actions/checkout@master
       - name: Build
         uses: cagov/actions-eleventy@2.1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm test
+        run: |
+          npm test
+        env:
+          CI: true        
