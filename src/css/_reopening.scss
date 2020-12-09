@@ -17,6 +17,15 @@ cagov-reopening {
     padding-right: 10px;
     padding-left: 10px;
   }
+
+  .reopening-form-group {
+    padding-bottom: 1.5rem;
+
+    @include small-phone {
+      padding-bottom: 3rem;
+    }
+  }
+
   .reopening-fields {
     text-align: center;
     padding: 20px;
@@ -56,6 +65,20 @@ cagov-reopening {
       padding: 0;
     }
   }
+
+  .reopening-field-error {
+    position: absolute;
+    bottom: 1rem;
+
+    @include tablet {
+      bottom: 0;
+    }
+  }
+
+  .reopening-form-error {
+    margin-top: -1rem;
+  }
+
   .card-content {
     margin: 0;
     padding: 15px 0 30px 0;
