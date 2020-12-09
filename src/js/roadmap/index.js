@@ -121,7 +121,9 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   changeLocationInput(value) {
-    document.getElementById("location-query").value = value;
+    const $locationQuery = document.getElementById("location-query");
+    $locationQuery.value = value;
+    $locationQuery.setAttribute("aria-invalid", false);
     this.state['county'] = value;
     if (value) {
       document.getElementById("clearLocation").classList.remove('d-none');
@@ -133,7 +135,9 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   changeActivityInput(value) {
-    document.getElementById("activity-query").value = value;
+    const $activityQuery = document.getElementById("activity-query");
+    $activityQuery.value = value;
+    $activityQuery.setAttribute("aria-invalid", false);
     this.state['activity'] = value;
     if (value) {
       document.getElementById("clearActivity").classList.remove('d-none');
@@ -233,6 +237,7 @@ class CAGovReopening extends window.HTMLElement {
         }
       })
       if (selectedCounties.length === 0) {
+        document.getElementById("location-query").setAttribute("aria-invalid", true);
         document.getElementById("location-error").style.visibility = "visible";
       }
     }
@@ -261,6 +266,7 @@ class CAGovReopening extends window.HTMLElement {
         }
       })
       if (selectedActivities.length === 0) {
+        document.getElementById("activity-query").setAttribute("aria-invalid", true);
         document.getElementById("activity-error").style.visibility = "visible";
       }
     }
