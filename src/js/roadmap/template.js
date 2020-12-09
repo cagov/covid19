@@ -4,7 +4,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
   <h2 class="subtitle-color">${title}</h2>
     <form action="#" class="reopening-activities">
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 reopening-form-group">
           <label for="location-query">${countyLabel}</label>
           <div class="awesomplete">
             <input
@@ -19,7 +19,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               type="text"
               placeholder="${countyPlaceholder}"
             />
-            <button class="clear d-none" id="clearLocation"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+            <button type="button" class="clear d-none" id="clearLocation"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
             <span
               class="visually-hidden"
@@ -28,18 +28,11 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               aria-atomic="true"
               >Type 2 or more characters for results.</span
             >
-            <div id="location-error" style="visibility: hidden" class="mt-1 text-danger text-small text-left">County not found. Search by county name.</div>
+            <div id="location-error" style="visibility: hidden" class="field-error text-danger text-small text-left">County not found. Search by county name.</div>
           </div>
           <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
-          <span
-            class="sr-only"
-            aria-atomic="true"
-            aria-live="assertive"
-            role="status"
-            >Type 2 or more characters for results.</span
-          >
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 reopening-form-group">
           <label for="activity">${activityLabel}</label>
           <div class="awesomplete">
             <input
@@ -54,14 +47,14 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               type="text"
               placeholder="${activityPlaceholder}"
             />
-            <button class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
-            <div id="activity-error" style="visibility: hidden" class="mt-1 text-danger text-small text-left">Activity not found. Search a different term.</div>
+            <div id="activity-error" style="visibility: hidden" class="field-error text-danger text-small text-left">Activity not found. Search a different term.</div>
           </div>
           <ul hidden="" id="awesomplete-list-2" role="listbox"></ul>
         </div>
       </div>
-
+      <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">Please enter a county or activity</div>
       <button type="submit" class="btn btn-primary">Get latest risk levels</button>
     </form>
     <div class="card-holder"></div>

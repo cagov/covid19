@@ -93,7 +93,7 @@ class CAGovReopening extends window.HTMLElement {
 
     document.getElementById("clearLocation").addEventListener("click", function() {
       this.changeLocationInput("");
-    }.bind(this));	
+    }.bind(this));
 
     document.getElementById("activity-query").addEventListener("input", function (event) {
       this.changeActivityInput(event.target.value);
@@ -101,7 +101,7 @@ class CAGovReopening extends window.HTMLElement {
 
     document.getElementById("clearActivity").addEventListener("click", function() {
       this.changeActivityInput("");
-    }.bind(this));	
+    }.bind(this));
 
     document.querySelector('.reopening-activities').addEventListener('submit',function(event) {
       event.preventDefault();
@@ -113,6 +113,7 @@ class CAGovReopening extends window.HTMLElement {
       }
       if(!this.state['activity'] && !this.state['county']) {
         this.querySelector('.card-holder').innerHTML = '';
+        document.getElementById("reopening-error").style.visibility = "visible";
       } else {
         this.layoutCards();
       }
@@ -128,6 +129,7 @@ class CAGovReopening extends window.HTMLElement {
       document.getElementById("clearLocation").classList.add('d-none');
     }
     document.getElementById("location-error").style.visibility = "hidden";
+    document.getElementById("reopening-error").style.visibility = "hidden";
   }
 
   changeActivityInput(value) {
@@ -139,6 +141,7 @@ class CAGovReopening extends window.HTMLElement {
       document.getElementById("clearActivity").classList.add('d-none');
     }
     document.getElementById("activity-error").style.visibility = "hidden";
+    document.getElementById("reopening-error").style.visibility = "hidden";
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
@@ -250,7 +253,6 @@ class CAGovReopening extends window.HTMLElement {
     }
 
     let selectedActivities = this.allActivities;
-    console.log(this.state['activity']);
     if(this.state['activity']) {
       selectedActivities = [];
       this.allActivities.forEach(ac => {
