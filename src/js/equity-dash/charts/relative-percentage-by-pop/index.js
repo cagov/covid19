@@ -266,12 +266,14 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return [this.translationsObj[key1], this.translationsObj[key2]];
   }
 
-  getToolTipCaption1(d, legendString) {
+  getToolTipCaption1(d, selectedMetric) {
     let templateStr = this.translationsObj['chartToolTip1-caption'];
     let caption = templateStr
+                    .replace('placeholderForDynamicLocation',this.getLocation())
+                    .replace('placeholderForDynamicLocation',this.getLocation()) // needs a second one
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
                     .replace('placeholder_METRIC_TOTAL_PERCENTAGE',d.data.METRIC_TOTAL_PERCENTAGE? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0)
-                    .replace('placeholder_LegendString',legendString)
+                    .replace('placeholder_SelectedMetric',selectedMetric)
                     .replace('placeholder_POPULATION_PERCENTAGE',d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0);
     return caption;
   }
@@ -279,6 +281,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
   getToolTipCaption2(d, selectedMetric) {
     let templateStr = this.translationsObj['chartToolTip2-caption'];
     let caption = templateStr
+                    .replace('placeholderForDynamicLocation',this.getLocation())
+                    .replace('placeholderForDynamicLocation',this.getLocation()) // needs a second one
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
                     .replace('placeholder_METRIC_TOTAL_PERCENTAGE',d.data.METRIC_TOTAL_PERCENTAGE? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0)
                     .replace('placeholder_SelectedMetric',selectedMetric)
