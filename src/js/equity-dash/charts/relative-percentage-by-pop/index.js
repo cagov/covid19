@@ -268,12 +268,18 @@ class CAGOVEquityREPop extends window.HTMLElement {
 
   getToolTipCaption1(d, selectedMetric) {
     let templateStr = this.translationsObj['chartToolTip1-caption'];
+    const nomKey = 'chartMetricName--'+selectedMetric;
+    let metricNom = selectedMetric;
+    if (nomKey in this.translationsObj) {
+        metricNom = this.translationsObj[nomKey];
+    }
     let caption = templateStr
                     .replace('placeholderForDynamicLocation',this.getLocation())
                     .replace('placeholderForDynamicLocation',this.getLocation()) // needs a second one
                     .replace('placeholder_DEMOGRAPHIC_SET_CATEGORY',d.data.DEMOGRAPHIC_SET_CATEGORY)
                     .replace('placeholder_METRIC_TOTAL_PERCENTAGE',d.data.METRIC_TOTAL_PERCENTAGE? parseFloat(d.data.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%" : 0)
-                    .replace('placeholder_SelectedMetric',selectedMetric)
+                    .replace('placeholder_SelectedMetric',metricNom)
+                    .replace('placeholder_LegendString',metricNom) // backward compat
                     .replace('placeholder_POPULATION_PERCENTAGE',d.data.POPULATION_PERCENTAGE ? parseFloat(d.data.POPULATION_PERCENTAGE).toFixed(1) + "%" : 0);
     return caption;
   }
