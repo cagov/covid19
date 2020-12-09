@@ -59,6 +59,14 @@ const files = [
         'Description – positive cases'
     ]}
   }},
+  { slug: 'safer-economy-lang', split: true, tableSchema: {
+    Table1: {
+      pivot: true,
+      require: [
+        'title',
+        'activityLabel'
+    ]}
+  }},
   { slug: 'reopening-roadmap-activity-data', split: true },
   { slug: 'menu-links', split: true, tableSchema: {
     Table1: {
