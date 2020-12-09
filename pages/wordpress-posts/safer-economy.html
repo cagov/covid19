@@ -10,13 +10,11 @@ addtositemap: true
 
 <div class="alert alert-warning" role="alert"><h4 class="alert-heading">New Regional Stay Home Order </h4><p>COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. Read more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#regional-stay-home-order" class="alert-link">Regional Stay Home Order</a>.</p></div>
 
-
-
 <p>California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities.</p>
 
 
 
-<cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>
+<cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>
 
 
 
