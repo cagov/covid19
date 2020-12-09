@@ -215,6 +215,52 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent('safer-economy-page-submission', {
+      detail: {
+        county: this.state.county,
+        activity: this.state.activity
+      }
+    });
+    window.dispatchEvent(event);
+
+    let isError = false;
+
+    let selectedCounties = this.countyStatuses;
+    if(this.state['county']) {
+      selectedCounties = [];
+      this.countyStatuses.forEach(item => {
+        if(item.county == this.state['county']) {
+          selectedCounties.push(item)
+        }
+      })
+      if (selectedCounties.length === 0) {
+        document.getElementById("location-query").setAttribute("aria-invalid", true);
+        document.getElementById("location-error").style.visibility = "visible";
+        isError = true;
+      }
+    }
+    
+    let selectedActivities = this.allActivities;
+    if(this.state['activity']) {
+      selectedActivities = [];
+      this.allActivities.forEach(ac => {
+        if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
+          selectedActivities.push(ac);
+        }
+      })
+      if (selectedActivities.length === 0) {
+        document.getElementById("activity-query").setAttribute("aria-invalid", true);
+        document.getElementById("activity-error").style.visibility = "visible";
+        isError = true;
+      }
+    }
+
+    if (isError) {
+      this.querySelector('.card-holder').innerHTML = '';
+      return;
+    }
+
     let replaceAllInMap = function(str){
       let mapObj = {
         '&lt;': '<',
@@ -228,22 +274,9 @@ class CAGovReopening extends window.HTMLElement {
       });
     }
     this.cardHTML = '';
-    let selectedCounties = this.countyStatuses;
-    if(this.state['county']) {
-      selectedCounties = [];
-      this.countyStatuses.forEach(item => {
-        if(item.county == this.state['county']) {
-          selectedCounties.push(item)
-        }
-      })
-      if (selectedCounties.length === 0) {
-        document.getElementById("location-query").setAttribute("aria-invalid", true);
-        document.getElementById("location-error").style.visibility = "visible";
-      }
-    }
+
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
-
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
 
@@ -256,21 +289,6 @@ class CAGovReopening extends window.HTMLElement {
       `
       + schoolFooter;
     }
-
-    let selectedActivities = this.allActivities;
-    if(this.state['activity']) {
-      selectedActivities = [];
-      this.allActivities.forEach(ac => {
-        if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
-          selectedActivities.push(ac);
-        }
-      })
-      if (selectedActivities.length === 0) {
-        document.getElementById("activity-query").setAttribute("aria-invalid", true);
-        document.getElementById("activity-error").style.visibility = "visible";
-      }
-    }
-
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
@@ -293,15 +311,6 @@ class CAGovReopening extends window.HTMLElement {
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
-
-    // Dispatch custom event so we can pick up and track this usage elsewhere.
-    const event = new window.CustomEvent('safer-economy-page-submission', {
-      detail: {
-        county: this.state.county,
-        activity: this.state.activity
-      }
-    });
-    window.dispatchEvent(event);
   }
 }
 
