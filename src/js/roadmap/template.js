@@ -54,7 +54,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
           <ul hidden="" id="awesomplete-list-2" role="listbox"></ul>
         </div>
       </div>
-      <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">Please enter a county or activity</div>
+      <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">Please enter a county or an activity</div>
       <button type="submit" class="btn btn-primary">Get latest risk levels</button>
     </form>
     <div class="card-holder"></div>
