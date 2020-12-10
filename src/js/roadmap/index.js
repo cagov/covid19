@@ -3,41 +3,10 @@ import templatize from './template.js';
 
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
-    let counties = this.dataset.counties;
-    let activities = this.dataset.status;
-    let activityLabel = 'Activity';
-    if(this.dataset.activityLabel) {
-      activityLabel = this.dataset.activityLabel;
-    }
-    let title = 'Find the status for activities in your county';
-    if(this.dataset.title) {
-      title = this.dataset.title;
-    }
-    this.seeGuidanceText = 'See guidance for';
-    if(this.dataset.seeGuidanceText) {
-      this.seeGuidanceText = this.dataset.seeGuidanceText;
-    }
-    let countyLabel = 'County';
-    if(this.dataset.countyLabel) {
-      countyLabel = this.dataset.countyLabel;
-    }
-    let activityPlaceholder = 'Enter a business or activity';
-    let countyPlaceholder = 'Enter county' // a ZIP code or
-    this.countyRestrictionsAdvice = 'Counties can restrict further.';
-    if(this.dataset.countyRestrictions) {
-      this.countyRestrictions = this.dataset.countyRestrictions;
-    }
-    this.industryGuidanceLinkText = 'View industry guidance';
-    if(this.dataset.industryGuidance) {
-      this.industryGuidanceLinkText = this.dataset.industryGuidance;
-    }
-    this.viewall = 'View all';
-    if(this.dataset.viewAll) {
-      this.viewall = this.dataset.viewAll;
-    }
+    this.json = JSON.parse(this.dataset.json);
     this.state = {};
 
-    this.innerHTML = templatize(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder);
+    this.innerHTML = templatize(this.json);
     let theMatrix = document.querySelector('.the-matrix');
     if(theMatrix) {
       document.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
@@ -219,11 +188,11 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
-        ${(this.countyRegions) ? '<h3>Region: '+this.countyRegions[item.county]+'</h3>' : ''}
+        ${(this.countyRegions) ? '<h3>Region: '+this.json.regionLabel+this.countyRegions[item.county]+'</h3>' : ''}
         ${(this.regionsclosed && this.countyRegions && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) ? '<p>Under <a href="/stay-home-except-for-essential-needs/#regional-stay-home-order">Regional Stay Home Order</a></p>' : ''}
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
-        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">Understand the data.</a></p>
-        <p>${this.countyRestrictionsAdvice} Check your <a href="/get-local-information">county's website</a>.</p>
+        <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">${this.json.understandTheData}</a></p>
+        <p>${this.json.countyRestrictionsAdvice} <a href="../get-local-information">${this.json.countyRestrictionsCountyWebsite}</a>.</p>
       </div>`
       if(this.state['activity']) {
         selectedActivities = [];
@@ -238,13 +207,13 @@ class CAGovReopening extends window.HTMLElement {
           this.cardHTML += `<div class="card-activity">
             <h4>${ac["0"]}</h4>
             <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac["6"]}</p>
-            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
           </div>`
         } else {
           this.cardHTML += `<div class="card-activity">
             <h4>${ac["0"]}</h4>
             <p>${ac["0"] === "Schools" ? schoolShenanigans(item.county) : ac[item['Overall Status']]}</p>
-            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
           </div>`
         }
       })
