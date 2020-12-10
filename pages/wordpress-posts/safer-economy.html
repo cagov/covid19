@@ -1,14 +1,14 @@
 ---
 layout: "page.njk"
 title: "Blueprint for a Safer Economy"
-meta: "New Regional Stay Home Order COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, will prohibit gatherings of any size, close operations except for critical infrastructure and retail, and require 100% masking and physical distancing. Read more about the Regional Stay Home Order. California has a [&hellip;]"
+meta: "New Regional Stay Home Order COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. [&hellip;]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-09T20:17:58Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">New Regional Stay Home Order </h4><p>COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, will prohibit gatherings of any size, close operations except for critical infrastructure and retail, and require 100% masking and physical distancing. Read more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">Regional Stay Home Order</a>.</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">New Regional Stay Home Order </h4><p>COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. Read more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#regional-stay-home-order" class="alert-link">Regional Stay Home Order</a>.</p></div>
 
 
 
@@ -16,7 +16,7 @@ addtositemap: true
 
 
 
-<cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>
+<cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>
 
 
 
@@ -61,6 +61,18 @@ addtositemap: true
 
 
 
+<h3 class="has-text-align-center">Regional Stay Home Order</h3>
+
+
+
+<p>The State continues to record an unprecedented surge in the level of community spread of COVID-19. The Regional Stay Home Order, announced December 3, 2020, and a supplemental order, signed December 6, 2020, will go into effect at 11:59 PM the next day in regions with less than 15% intensive care unit (ICU) availability.</p>
+
+
+
+<p>Learn more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">actual ICU capacity</a> remaining in each region.</p>
+
+
+
 <h3 class="has-text-align-center" id="county-status">Current tier assignments as of {{_varTierDate_}}</h3>
 
 
@@ -69,8 +81,7 @@ addtositemap: true
 
 
 
-<a name="reopening-data"></a>
-<div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 
 
@@ -91,14 +102,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>Accommodate mask wearing at all times (for example, eating and drinking requires removing masks)</li><li>Allow physical distance between individuals from different households</li><li>Limit the number of people per square foot</li><li>Limit time that an individual is at the business or activity</li><li>Limit time of exposure</li><li>Limit mixing of people from different households</li><li>Limit amount of physical interactions of visitors/patrons</li><li>Increase airflow (such as operating outdoors or opening windows and doors)&nbsp;</li><li>Limit activities that are known to increase virus spread (like singing, shouting and heavy breathing)</li></ul>
-
-
-
-<h4 class="wp-accordion">Is there guidance for temporary structures used in outdoor business operations?</h4>
-
-
-
-<p class="wp-accordion-content">As it starts to get colder, restaurants and other businesses required to operate outdoors may wish to enclose outdoor temporary structures like tents and canopies to contain heat and avoid rain. Find out what qualifies as outdoor operations in the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">California Department of Public Health guidance for temporary structures</a>.</p>
 
 
 
@@ -150,7 +153,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Wear a mask in public.</li><li>Wash your hands regularly.</li><li>Keep at least six feet of physical distance when in public.</li><li>Limit mixing with people you don’t live with.</li></ul>
+<ul class="wp-accordion-content"><li>Stay home except for essential services.</li><li>Wear a mask in public.</li><li>Wash your hands regularly.</li><li>Keep at least six feet of physical distance when in public.</li><li>Limit mixing with people you don’t live with.</li></ul>
 
 
 

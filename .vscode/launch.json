@@ -5,13 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Sandbox - Accordion Replacer",
+      "name": "Sandbox - MISC",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceRoot}/src/sandbox",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
-          "run-script", "accordion_replacer"
+          "run-script", "sandbox_misc"
       ],
       "console": "internalConsole",
       "outputCapture": "std"
