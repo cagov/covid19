@@ -1,3 +1,7 @@
+/*
+ * Run test against this object with: npm run testdata
+*/
+
 const fetch = require('node-fetch')
 
 module.exports = function() {
