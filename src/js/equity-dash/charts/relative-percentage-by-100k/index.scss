@@ -1,0 +1,58 @@
+cagov-chart-re-100k {
+  // display: block;
+
+  // Half column layout
+  min-width: 300px;
+
+  // .svg-holder svg {
+  //   width: 100%;
+  // }
+
+  // .bars {
+  //   font-weight: bold;
+  //   font-size: 0.95rem;
+  //   text-anchor: end;
+  // }
+  // .more-than-labels {
+  //   font-size: 0.75rem;
+  // }
+
+  .change-from-month-labels {
+    font-size: 0.75em;
+    text-anchor: unset;
+  }
+
+  .bar-chart-label.label {
+    font-size: 0.85rem;
+  }
+
+  // .bar-label {
+  //   font-weight: bold;
+  //   font-size: 0.95rem;
+  //   text-anchor: unset;
+  // }
+  .label {
+    font-weight: normal;
+    // font-size: 0.95rem;
+    color: #1f2574;
+  }
+  // .chart-tooltip {
+  //   padding: 10px;
+  //   box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+  //   border: solid 1px #ccc;
+  // }
+  // .highlight-data {
+  //   font-weight: bold;
+  // }
+  // .chart-tooltip {
+  //   position: absolute;
+  //   z-index: 10;
+  //   visibility: hidden;
+  //   background: #fff;
+  //   pointer-events: none;
+  // }
+  .chart-tooltip--re100k {
+    min-width: 100px;
+  }
+}
+
