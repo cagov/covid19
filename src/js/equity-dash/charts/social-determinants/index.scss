@@ -1,0 +1,41 @@
+cagov-chart-d3-bar {
+  // Override width
+  h2 {
+    margin-top: 3rem;
+  }
+  .chart-title {
+    max-width: 633px;
+    margin: 50px auto 20px;
+    border-bottom: solid 1px;
+  }
+  .svg-holder {
+    max-width: 633px;
+  }
+  .bar-chart-label.label {
+    font-size: 1rem;
+  }
+  .bar-label tspan {
+    font-weight: 100;
+    font-size: 0.85rem;
+  }
+  .bar-label tspan.bold {
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .chart-title {
+      margin: 50px 20px 20px 20px;
+    }
+  }
+
+  @media (max-width: 440px) {
+    
+      .tick text {
+        font-size: 0.5rem !important;
+      }
+      .bar-label tspan {
+        font-size: 0.6rem !important;
+      }
+    
+  }
+}

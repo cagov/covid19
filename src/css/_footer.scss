@@ -1,7 +1,6 @@
 footer-section {
 
 	.footer-section {
-		padding-bottom: 1.25rem;
 		background: $darkblue;
 		@extend %block-padding;
 		color: $white;
@@ -183,26 +182,9 @@ footer-section {
 				}
 			}
 		}
-		.logo-flanked {
-			display: flex; 
-			justify-content: space-between; 
-			margin-top: 0;
-			padding-top: 2rem;
-			flex-flow: column;
-			
-			
-			@include tablet {
-				flex-flow: row;
-				align-items: center;
-				
-			}
-		
-		}
-
 		.ca-gov {
 			width: 75px;
 			margin-top: 1.25rem;
-			margin-bottom: 3rem;
 			.logo-cagov {
 				svg {
 					.st0 {
@@ -235,6 +217,16 @@ footer-section {
 		}
 		
 
+
+		.logo-flanked {
+			display: flex; 
+			justify-content: space-between; 
+			margin-top: 0;
+			padding-top: 2rem;
+			flex-flow: column;
+			
+			
+		}
 	}
 
 }

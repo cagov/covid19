@@ -1,11 +1,11 @@
-export default function template(title, countyLabel, countyPlaceholder, activityLabel, activityPlaceholder) {
+export default function template(json) {
   return /*html*/`
   <div class="reopening-fields">
-  <h2 class="subtitle-color">${title}</h2>
+  <h2 class="subtitle-color">${json.title}</h2>
     <form action="#" class="reopening-activities">
       <div class="form-row">
         <div class="form-group col-md-6 reopening-form-group">
-          <label for="location-query">${countyLabel}</label>
+          <label for="location-query">${json.countyLabel}</label>
           <div class="awesomplete">
             <input
               aria-expanded="false"
@@ -17,9 +17,9 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               id="location-query"
               role="combobox"
               type="text"
-              placeholder="${countyPlaceholder}"
+              placeholder="${json.countyPlaceholder}"
             />
-            <button type="button" class="clear d-none" id="clearLocation"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+            <button type="button" class="clear d-none" id="clearLocation"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
             <span
               class="visually-hidden"
@@ -33,7 +33,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
           <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
         </div>
         <div class="form-group col-md-6 reopening-form-group">
-          <label for="activity">${activityLabel}</label>
+          <label for="activity">${json.activityLabel}</label>
           <div class="awesomplete">
             <input
               aria-expanded="false"
@@ -45,9 +45,9 @@ export default function template(title, countyLabel, countyPlaceholder, activity
               id="activity-query"
               role="combobox"
               type="text"
-              placeholder="${activityPlaceholder}"
+              placeholder="${json.activityPlaceholder}"
             />
-            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
             <div id="activity-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">Activity not found. Search a different term.</div>
           </div>
@@ -55,7 +55,7 @@ export default function template(title, countyLabel, countyPlaceholder, activity
         </div>
       </div>
       <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">Please enter a county or an activity</div>
-      <button type="submit" class="btn btn-primary">Get latest risk levels</button>
+      <button type="submit" class="btn btn-primary">${json.buttonText}</button>
     </form>
     <div class="card-holder"></div>
   </div>`
