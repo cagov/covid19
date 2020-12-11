@@ -58,7 +58,7 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('x', 50)
     .attr('y', legendPositions.y)
     .attr('text-anchor', 'start')
-    .attr('alignment-baseline', 'hanging');
+    .attr('dominant-baseline', 'hanging');
 }
 
 function writeBars(component, svg, data, x, y, width, tooltip) {
