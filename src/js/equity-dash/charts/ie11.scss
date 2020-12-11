@@ -1,0 +1,34 @@
+cagov-chart-re-pop {  
+  .svg-holder svg {
+    height: 670px;
+    width: 430px;
+  }
+}
+cagov-chart-re-100k {  
+  .svg-holder svg {
+    height: 614px;
+    width: 430px;
+  }
+}
+cagov-chart-d3-lines {  
+  .svg-holder svg {
+    width: 737px;
+    height: 369px;
+  }
+}
+cagov-chart-equity-data-completeness {  
+  .svg-holder svg {
+    width: 613px;
+    height: 300px;
+  }
+}
+cagov-chart-d3-bar {  
+  .svg-holder svg {
+    width: 720px;
+    height: 428px;
+  }
+}
+
+svg .tick text {
+  text-anchor: start;
+}

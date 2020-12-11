@@ -7,7 +7,7 @@ import './arrow/index.js';
 import './arrow/arrow-icon.js';
 import './menu/index.js';
 import './search/index.js';
-import applyAccordionListeners from './tracking-you/index.js';
+import setupAnalytics from './tracking-you/index.js';
 window.onload = (event) => {
-  applyAccordionListeners();
+  setupAnalytics();
 };
