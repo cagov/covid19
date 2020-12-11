@@ -53,7 +53,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         d.data.METRIC_VALUE_PER_100K
           ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
           : 0,
-        filterScope.toLowerCase()
+        filterScope // .toLowerCase()
       );
       if (d.APPLIED_SUPPRESSION === "Population") {
         caption = ``
@@ -71,7 +71,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         d.data.METRIC_VALUE_PER_100K
           ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
           : 0,
-        filterScope.toLowerCase()
+        filterScope // .toLowerCase()
       );
       if (d.APPLIED_SUPPRESSION === "Population") {
         caption = ``

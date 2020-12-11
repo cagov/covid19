@@ -21,7 +21,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // Style
       chartColors: ["#FFCF44", "#F2F5FC"],
       selectedMetric: "cases",
-      selectedMetricDescription: "Cases",
+      selectedMetricDescription: "cases",
       // Breakpoints
       desktop: {
         height: 642,
@@ -93,7 +93,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     this.translationsObj = getTranslations(this);
     this.selectedMetric = "cases";
-    this.selectedMetricDescription = "Cases";
+    this.selectedMetricDescription = "cases";
     this.county = "California";
     this.drawBars = drawBars;
     this.chartTitle = function () {
@@ -208,7 +208,11 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     metricFilter.addEventListener(
       "filter-selected",
       function (e) {
-        this.selectedMetricDescription = e.detail.clickedFilterText;
+        this.selectedMetricDescription = e.detail.clickedFilterText.toLowerCase();
+        let metricKey = "chartMetricName--" + e.detail.filterKey;
+        if (metricKey in this.translationsObj) {
+          this.selectedMetricDescription = this.translationsObj[metricKey];
+        }
         this.selectedMetric = e.detail.filterKey;
         this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
         this.resetDescription();
