@@ -61,11 +61,10 @@ describe('what is open', () => {
     expect(listitems.length).toBeGreaterThan(1);
     await page.click('#awesomplete_list_1 li');
 
-    await page.type('#location-query', 'San Diego');
     await page.type('#activity-query', 'Schools');
     await page.waitForSelector('#awesomplete_list_2 li');
     await page.click('#awesomplete_list_2 li');
-
+    await page.click("#reopening-submit");
     await page.waitForSelector('.card-county');
 
     const counties = await page.$$eval('.card-county', counties => counties);
