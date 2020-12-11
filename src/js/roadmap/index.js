@@ -188,7 +188,7 @@ class CAGovReopening extends window.HTMLElement {
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
-        ${(this.countyRegions) ? '<h3>Region: '+this.json.regionLabel+this.countyRegions[item.county]+'</h3>' : ''}
+        ${(this.countyRegions) ? '<h3>'+this.json.regionLabel+' '+this.countyRegions[item.county]+'</h3>' : ''}
         ${(this.regionsclosed && this.countyRegions && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) ? '<p>Under <a href="/stay-home-except-for-essential-needs/#regional-stay-home-order">Regional Stay Home Order</a></p>' : ''}
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">${this.json.understandTheData}</a></p>

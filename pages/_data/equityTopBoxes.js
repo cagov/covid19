@@ -1,3 +1,7 @@
+/*
+ * Run test against this object with: npm run testdata
+*/
+
 const fetch = require('node-fetch')
 
 module.exports = function() {
@@ -52,7 +56,7 @@ module.exports = function() {
 
       const raceBlack = demographics.find(x=>x.RACE_ETHNICITY==='African American');
       output[0].death_rate_per_100K_black = roundNumber(raceBlack.DEATH_RATE,1);
-      output[0].death_rate_vs_statewide_percent_black = roundNumber((raceBlack.DEATH_RATE/totalDeathRate)*100-100,0);
+      output[0].death_rate_vs_statewide_percent_black = roundNumber(compare(totalDeathRate,raceBlack.DEATH_RATE),0);
 
       output[0].case_rate_vs_statewide_percent_low_income = roundNumber(compare(totalCaseRate,data.LowIncome[0].CASE_RATE_PER_100K),0);
       output[0].case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
@@ -63,6 +67,6 @@ module.exports = function() {
 };
 
 function compare(statewide,subset) {
-  let diff = statewide - subset;
+  let diff = subset - statewide; // the in page logic looks for positive increase in percnetage to display language: subset is x% higher than statewide
   return (diff / statewide) * 100;
 }
