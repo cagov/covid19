@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>California’s commitment to health equity</h1>
           
-            <p class="small-text">Last updated&nbsp;December 11, 2020 at 3:07 PM</p>
+            <p class="small-text">Last updated&nbsp;December 11, 2020 at 12:34 PM</p>
           
         </div>
       </div>
@@ -4132,7 +4132,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 20 - 10;
       })
       .attr("text-anchor", "start")
-      .attr("alignment-baseline", "hanging");
+      .attr("dominant-baseline", "hanging");
   }
 
   rewriteLegend(svg, legendLabels) {
@@ -4955,7 +4955,7 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('x', 50)
     .attr('y', legendPositions.y)
     .attr('text-anchor', 'start')
-    .attr('alignment-baseline', 'hanging');
+    .attr('dominant-baseline', 'hanging');
 }
 
 function writeBars(component, svg, data, x, y, width, tooltip) {
