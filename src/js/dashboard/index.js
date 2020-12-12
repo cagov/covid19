@@ -17,7 +17,7 @@ window.fetch('/countystatus.json')
       let before = this.input.value.match(/^.+,\s*|/)[0];
       let finalval = before + text;
       this.input.value = finalval;        
-      // countySelected(finalval);
+      countySelected(finalval);
     },
     list: aList
   };
@@ -31,6 +31,7 @@ var clearBtn = document.getElementById("clearCounty");
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
+    
     clearBtn.classList.remove('d-none');
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
@@ -52,9 +53,9 @@ function setupFormSubmitListener(aList) {
 function countySelected(county) {
   document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
-  let casesChartActiveSheet = casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let testingChartActiveSheet = testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let hospitalChartActiveSheet = hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+  let hospitalChartActiveSheet = window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
 
   function resetCounties() {
     if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
@@ -76,7 +77,7 @@ function countySelected(county) {
   });
 }
 
-function displayChart(containerSelector,width,height,url) {
+async function displayChart(containerSelector,width,height,url) {
   let chartContainer = document.querySelector(containerSelector);
   let chartActiveSheet = null;
   var chartURL = url;
@@ -84,7 +85,9 @@ function displayChart(containerSelector,width,height,url) {
     width: width+'px',
     height: height+'px'
   }
-  return new tableau.Viz(chartContainer, chartURL, chartOptions);
+
+  let chartViz = await new tableau.Viz(chartContainer, chartURL, chartOptions);
+  return chartViz;
 }
 /* desctop */
 let topChartHeights1 = 600;
@@ -125,24 +128,27 @@ else if (window.innerWidth > 919 && window.innerWidth < 1200) {
  // chartWidth2 = 920;
 }
 
-// these are county toggles and state toggles
-if(document.getElementById('casesChartState')) {
-  let casesChartStateViz = displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-  let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
-  let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
+async function setupCharts() {
+  // these are county toggles and state toggles
+  if(document.getElementById('casesChartState')) {
+    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
-  let casesChartCountyViz = displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-  let testingChartCounty = displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
-  let hospitalChartCounty = displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
 
-// this chart does not toggle
-let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link');
+    // this chart does not toggle
+    let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link');
 
-  // these are their own toggle sets
-  let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-  let genderGroupChart = ''; // we aren't loading this until they click
-  let ageGroupChart = ''; // we aren't loading this until they click
+    // these are their own toggle sets
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+    let genderGroupChart = ''; // we aren't loading this until they click
+    let ageGroupChart = ''; // we aren't loading this until they click
+  }
 }
+setupCharts();
 
 function resetGroupToggles() {
   groupTogglers.forEach(toggle => {
@@ -176,7 +182,7 @@ groupTogglers.forEach(toggle => {
 })
 
 function resetCountyToggles() {
-  countyTogglers.forEach(toggle => {
+  window.countyTogglers.forEach(toggle => {
     toggle.classList.remove('toggle-active')
   });
   document.getElementById('cases-state-graph').style.display = 'none';
@@ -190,8 +196,8 @@ function resetCountyToggles() {
 
 if(document.getElementById('cases-state-graph')) {
   document.getElementById('cases-state-graph').style.display = 'block';
-  let countyTogglers = document.querySelectorAll('.js-toggle-county');
-  countyTogglers.forEach(toggle => {
+  window.countyTogglers = document.querySelectorAll('.js-toggle-county');
+  window.countyTogglers.forEach(toggle => {
     toggle.addEventListener('click',function(event) {
       event.preventDefault();
       resetCountyToggles();
