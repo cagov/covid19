@@ -24,7 +24,7 @@ Content on the site must be true, complete, and current. This means that the web
 
 #### Inclusive.
 
-> See the <a href="https://docs.google.com/document/d/10Nz7sFJBlcOXNPhaw6ujjSFvv99xvid3kwBp58Up9Eo/edit#">full list for inclusivity considerations and common issues</a>
+> See the <a style="" href="https://docs.google.com/document/d/10Nz7sFJBlcOXNPhaw6ujjSFvv99xvid3kwBp58Up9Eo/edit#">full list for inclusivity considerations and common issues</a>
 
 ### Content style guide 
 
