@@ -413,7 +413,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 20 - 10;
       })
       .attr("text-anchor", "start")
-      .attr("alignment-baseline", "hanging");
+      .attr("dominant-baseline", "hanging");
   }
 
   rewriteLegend(svg, legendLabels) {
