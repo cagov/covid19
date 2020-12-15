@@ -1,7 +1,7 @@
 name: Add Commit Stamp
 on:
   check_run:
-
+    push:
 jobs:
   testvalidate:
     env:
