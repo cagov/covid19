@@ -1,6 +1,7 @@
 import '@cagov/step-list';
 import '@cagov/accordion';
-import '@cagov/pagerating';
+// import '@cagov/pagerating';
+import './pagerating/index.js';
 import './survey/index.js';
 import './feature-detect/webp.js';
 import './arrow/index.js';
