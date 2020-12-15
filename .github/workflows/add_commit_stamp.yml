@@ -1,12 +1,11 @@
 name: Add Commit Stamp
 on:
-  pull_request:
-    branches: [ master ]
+  check_run:
 
 jobs:
   testvalidate:
     env:
-      commitmsg: ${{ toJson(github) }}
+      commitmsg: ${{ github.event.head_commit.message }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
