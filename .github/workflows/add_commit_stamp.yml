@@ -4,14 +4,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  testvalidate:
+    env:
+      commitmsg: ${{ github.event.head_commit.message }}
     runs-on: ubuntu-18.04
     steps:
-      - name: set the head commit message as env
-        run: |
-          echo '::set-env name=commitmsg::${{ github.event.head_commit.message }}'
-
-      - uses: actions/checkout@master
+      - name: checkout
+        uses: actions/checkout@v2
       - name: get commit message
         run: |
-            echo Commit MSG = $commitmsg
+            echo Commit MSG = ${{ env.commitmsg }}
