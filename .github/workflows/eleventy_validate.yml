@@ -1,7 +1,7 @@
 name: Eleventy PR Validation
 on:
   pull_request:
-    branches: [ master, hellofastcharts, preproduction ]
+    branches: [ master, hellofastcharts, preproduction, dependabotprs ]
 
 jobs:
   build:
