@@ -1,0 +1,24 @@
+name: Eleventy PR Validation
+on:
+  pull_request:
+    branches: [ master, hellofastcharts, preproduction, dependabotprs ]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        uses: cagov/actions-eleventy@3.1
+        with:
+          build_task: build
+          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm test
+        run: |
+          npm test
+        env:
+          CI: true        
