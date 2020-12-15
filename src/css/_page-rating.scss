@@ -11,10 +11,7 @@ pagerating-section {
 		@include tablet {
 			&-grid {
 				display: inline-flex;
-				&-col:first-child {
-					padding-right: 2rem;
-					border-right: 2px solid rgba(255, 255, 255, 0.25);
-				}
+				
 				&-col:last-child {
 					padding-left: 2rem
 				}
