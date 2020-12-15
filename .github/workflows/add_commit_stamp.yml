@@ -6,7 +6,7 @@ on:
 jobs:
   testvalidate:
     env:
-      commitmsg: ${{ github.event.head_commit.message }}
+      commitmsg: ${{ toJson(github) }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
