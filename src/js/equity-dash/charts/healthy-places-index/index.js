@@ -174,6 +174,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
+
+    // console.log("got line data", data2);
+    let updateDate = data2[data2.length-1].DATE;
+    // using document since the footnote lies outside this element
+    document.querySelectorAll('span[data-replacement="d3-lines-report-date"]').forEach(elem => {
+      // console.log("Got date span");
+      elem.innerHTML = updateDate;
+    });
+
+
     // console.log("Overall Data ", data);
     // console.log("Equity Data2 ", data2);
     let missing_eq_data =
