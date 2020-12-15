@@ -1,0 +1,17 @@
+name: Add Commit Stamp
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set the head commit message as env
+        run: |
+          echo '::set-env name=commitmsg::${{ github.event.head_commit.message }}'
+
+      - uses: actions/checkout@master
+      - name: get commit message
+        run: |
+            echo Commit MSG = $commitmsg
