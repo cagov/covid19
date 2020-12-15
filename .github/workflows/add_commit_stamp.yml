@@ -5,12 +5,12 @@ on:
 
 jobs:
   testvalidate:
-    env:
-      commitmsg: ${{ github.event.head_commit.message }}
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        env:
+          message: ${{ github.event.head_commit.message }}
       - name: get commit message
         run: |
             echo Commit MSG = ${{ env.commitmsg }}
