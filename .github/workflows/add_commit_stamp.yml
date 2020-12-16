@@ -17,3 +17,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Save Context
+        uses: finnp/create-file-action@master
+        env:
+            FILE_NAME: "deploy-info.txt"
+            FILE_DATA: ${{ toJson(github) }}
