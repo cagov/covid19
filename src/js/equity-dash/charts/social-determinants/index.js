@@ -3,6 +3,7 @@ import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewr
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
+import reformatReadableDate from "../../readable-date.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
@@ -124,7 +125,9 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       dataincome.sort(sortedOrder).reverse()
       datacrowding.sort(sortedOrder).reverse()
       datahealthcare.sort(sortedOrder).reverse()
-  
+
+      let updateDate = reformatReadableDate( dataincome[0].DATE ); // localized readable date
+
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
         .range([this.chartBreakpointValues.height - this.chartBreakpointValues.margin.bottom, this.chartBreakpointValues.margin.top])
@@ -133,8 +136,13 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .domain(d3.range(dataincome.length))
         .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right])
         .padding(0.1)
-
       this.innerHTML = template(this.translationsObj);
+      // console.log("ran template", this.innerHTML);
+      this.querySelectorAll('span[data-replacement="d3-bar-report-date"]').forEach(elem => {
+        // console.log("Got date span");
+        elem.innerHTML = updateDate;
+      });
+
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
