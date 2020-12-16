@@ -1,5 +1,5 @@
 import Awesomplete from 'awesomplete-es6';
-
+ 
 window.fetch('/countystatus.json')
 .then(response => response.json())
 .then(function(data) {

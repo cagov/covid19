@@ -13,13 +13,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeAndNpmTool@1
+- task: DeleteFiles@1
+  name: Delete_Git_Folder
   inputs:
-    versionSpec: '10.x'
-
-- script: npm install
+    SourceFolder: '.git'
+    Contents: '*'
+    RemoveSourceFolder: true
 
 - task: ArchiveFiles@2
+  name: Create_Zip
   inputs:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false

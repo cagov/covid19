@@ -362,12 +362,14 @@ class CAGOVEquityREPop extends window.HTMLElement {
     metricFilter.addEventListener(
       "filter-selected",
       function (e) {
-        this.selectedMetricDescription = e.detail.clickedFilterText;
-        this.selectedMetric = e.detail.filterKey;
-        if (this.alldata) {
-          this.render();
-          this.resetDescription();
-          this.resetTitle();
+        if (e.detail.filterKey != undefined) {
+          this.selectedMetricDescription = e.detail.clickedFilterText;
+          this.selectedMetric = e.detail.filterKey;
+          if (this.alldata) {
+            this.render();
+            this.resetDescription();
+            this.resetTitle();
+          }
         }
       }.bind(this),
       false
