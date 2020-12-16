@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - 'pages/_data/wp/syncmanifest.json'
-      
 jobs:
   build_deploy:
     runs-on: ubuntu-18.04
@@ -25,3 +22,4 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./docs
           publish_branch: deploy_production
+          commit_message: ${{ github.event.head_commit.message }}
