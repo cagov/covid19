@@ -3,6 +3,7 @@ import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewr
 import getTranslations from '../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
+import reformatReadableDate from "../../readable-date.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
@@ -125,9 +126,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       datacrowding.sort(sortedOrder).reverse()
       datahealthcare.sort(sortedOrder).reverse()
 
-      let updateDate = dataincome[0].DATE; // localize?
-      // console.log("Update Date",updateDate);
-
+      let updateDate = reformatReadableDate( dataincome[0].DATE ); // localized readable date
 
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()

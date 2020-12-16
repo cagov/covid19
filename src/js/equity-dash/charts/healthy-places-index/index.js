@@ -7,6 +7,7 @@ import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 import rtlOverride from "./../../rtl-override.js";
+import reformatReadableDate from "../../readable-date.js";
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
@@ -175,8 +176,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
 
-    // console.log("got line data", data2);
-    let updateDate = data2[data2.length-1].DATE;
+    let updateDate =  reformatReadableDate( data2[data2.length-1].DATE );
     // using document since the footnote lies outside this element
     document.querySelectorAll('span[data-replacement="d3-lines-report-date"]').forEach(elem => {
       // console.log("Got date span");

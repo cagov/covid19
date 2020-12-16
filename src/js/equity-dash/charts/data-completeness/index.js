@@ -3,6 +3,7 @@ import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
+import reformatReadableDate from "../../readable-date.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -12,7 +13,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.translationsObj = this.getTranslations(this);
     // console.log("trans objs",this.translationsObj);
 
-    this.updateDate = "YY";
+    this.updateDate = "";
 
     this.innerHTML = template(this.translationsObj);
 
@@ -416,7 +417,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
     if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      this.updateDate = this.alldata[this.selectedMetric].cases.REPORT_DATE; // localize?
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE );
     } else {
       this.updateDate = 'Unknown';
     }
