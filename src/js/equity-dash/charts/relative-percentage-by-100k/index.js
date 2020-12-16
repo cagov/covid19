@@ -208,15 +208,18 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     metricFilter.addEventListener(
       "filter-selected",
       function (e) {
-        this.selectedMetricDescription = e.detail.clickedFilterText.toLowerCase();
-        let metricKey = "chartMetricName--" + e.detail.filterKey;
-        if (metricKey in this.translationsObj) {
-          this.selectedMetricDescription = this.translationsObj[metricKey];
+        if (e.detail.filterKey != undefined) {
+          // console.log("filter selected",e.detail.filterKey);
+          this.selectedMetricDescription = e.detail.clickedFilterText.toLowerCase();
+          let metricKey = "chartMetricName--" + e.detail.filterKey;
+          if (metricKey in this.translationsObj) {
+            this.selectedMetricDescription = this.translationsObj[metricKey];
+          }
+          this.selectedMetric = e.detail.filterKey;
+          this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
+          this.resetDescription();
+          this.resetTitle();
         }
-        this.selectedMetric = e.detail.filterKey;
-        this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
-        this.resetDescription();
-        this.resetTitle();
       }.bind(this),
       false
     );
