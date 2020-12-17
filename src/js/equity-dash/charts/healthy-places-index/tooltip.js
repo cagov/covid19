@@ -1,3 +1,5 @@
+import { parseSnowflakeDate } from "../../readable-date.js";
+
 export default class Tooltip {
   constructor(needs_anno) {
     this.needs_anno = needs_anno;
@@ -10,7 +12,7 @@ export default class Tooltip {
     (needs_anno? 
        `<rect x="0" width=0.25 y=10 height=52 fill="#003D9D" stroke=none opacity=0.5></rect>
         <rect x="-5.5" width="10" y="89.5" height="3.5" fill="white" opacity=0.5></rect>
-        <text class="date" y="62", x="-4.75"></text>`
+        <text class="date" y="62", x="0"></text>`
       : '') + 
     `<g class="lineanno">
        <!-- <rect x="2" width="28" y="-5.5" height="3.5" fill="white" opacity=0.5></rect> -->
@@ -22,7 +24,7 @@ export default class Tooltip {
     let yVal = d.METRIC_VALUE;
     // console.log("Showing: ",d);
     this.node.removeAttribute("display");
-    let tranX = x(new Date(d.DATE));
+    let tranX = x(parseSnowflakeDate(d.DATE));
     let tranY = y(yVal) + 4;
     let xRange = x.range();
     let midPoint = (xRange[0]+xRange[1])/2;
@@ -45,12 +47,14 @@ export default class Tooltip {
     this.node.querySelector(".lineanno").setAttribute("transform", `translate(0,${tranY - 4 })`);
     this.node.querySelector('text.label1').innerHTML = `<tspan font-weight="bold">${tipLabel}%</tspan>`;
     // this.node.querySelector('text.label2').innerHTML = `<tspan >${this.legend}</tspan>`;
+    /***** 
     // date alignment debugging
-    // if (this.needs_anno) {
-    //   let tfmt = d3.timeFormat('%b. %d');
-    //   let tstr = tfmt(new Date(d.DATE));
-    //   this.node.querySelector('text.date').innerHTML = `<tspan>${tstr}</tspan>`;
-    // }
+    if (this.needs_anno) {
+      let tfmt = d3.timeFormat('%b. %d');
+      let tstr = tfmt(parseSnowflakeDate(d.DATE));
+      this.node.querySelector('text.date').innerHTML = `<tspan>${tstr}</tspan>`;
+    }
+    *******/
   }
 
   hide() {

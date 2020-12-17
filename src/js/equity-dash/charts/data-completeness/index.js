@@ -3,7 +3,7 @@ import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
-import reformatReadableDate from "../../readable-date.js";
+import { reformatReadableDate } from "../../readable-date.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
