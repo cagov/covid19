@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>California’s commitment to health equity</h1>
           
-            <p class="small-text">Last updated&nbsp;December 15, 2020 at 6:39 PM</p>
+            <p class="small-text">Last updated&nbsp;December 15, 2020 at 6:57 PM</p>
           
         </div>
       </div>
@@ -3670,6 +3670,37 @@ class CAGOVEquityREPop extends window.HTMLElement {
 }
 window.customElements.define("cagov-chart-re-pop", CAGOVEquityREPop);
 
+// DATE UTILITIES for charts
+//
+// Use parseSnowflakeDate('YYYY-MM-DD') instead of new Date('YYYY-MM-DD') 
+// as the latter assumes GMT, which you probably don't want.
+// This function produces a local (Pacific) date.
+//
+function parseSnowflakeDate(dateStr) {
+    const tokens = dateStr.split('-');
+    const yyyy = +tokens[0];
+    const mm = +tokens[1];
+    const dd = +tokens[2];
+    return new Date(yyyy,mm-1,dd);
+}
+
+// Date converter for use on chart footnotes.
+// Converts a string (typically from Snowflake) 
+// in the form YYYY-MM-DD
+//
+// into a readable localized date, such as 
+//    December 12, 2020
+// or 
+//    12 de diciembre de 2020
+function reformatReadableDate(dateStr, // expects YYYY-MM-DD
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }) {
+    const theDate = parseSnowflakeDate(dateStr);
+    const readableDate = 
+         theDate.toLocaleString( document.documentElement.lang, fmt);
+    // console.log(dateStr + " --> " + readableDate);
+    return readableDate;
+}
+
 class Tooltip {
   constructor(needs_anno) {
     this.needs_anno = needs_anno;
@@ -3682,7 +3713,7 @@ class Tooltip {
     (needs_anno? 
        `<rect x="0" width=0.25 y=10 height=52 fill="#003D9D" stroke=none opacity=0.5></rect>
         <rect x="-5.5" width="10" y="89.5" height="3.5" fill="white" opacity=0.5></rect>
-        <text class="date" y="62", x="-4.75"></text>`
+        <text class="date" y="62", x="0"></text>`
       : '') + 
     `<g class="lineanno">
        <!-- <rect x="2" width="28" y="-5.5" height="3.5" fill="white" opacity=0.5></rect> -->
@@ -3694,7 +3725,7 @@ class Tooltip {
     let yVal = d.METRIC_VALUE;
     // console.log("Showing: ",d);
     this.node.removeAttribute("display");
-    let tranX = x(new Date(d.DATE));
+    let tranX = x(parseSnowflakeDate(d.DATE));
     let tranY = y(yVal) + 4;
     let xRange = x.range();
     let midPoint = (xRange[0]+xRange[1])/2;
@@ -3717,12 +3748,14 @@ class Tooltip {
     this.node.querySelector(".lineanno").setAttribute("transform", `translate(0,${tranY - 4 })`);
     this.node.querySelector('text.label1').innerHTML = `<tspan font-weight="bold">${tipLabel}%</tspan>`;
     // this.node.querySelector('text.label2').innerHTML = `<tspan >${this.legend}</tspan>`;
+    /***** 
     // date alignment debugging
-    // if (this.needs_anno) {
-    //   let tfmt = d3.timeFormat('%b. %d');
-    //   let tstr = tfmt(new Date(d.DATE));
-    //   this.node.querySelector('text.date').innerHTML = `<tspan>${tstr}</tspan>`;
-    // }
+    if (this.needs_anno) {
+      let tfmt = d3.timeFormat('%b. %d');
+      let tstr = tfmt(parseSnowflakeDate(d.DATE));
+      this.node.querySelector('text.date').innerHTML = `<tspan>${tstr}</tspan>`;
+    }
+    *******/
   }
 
   hide() {
@@ -3748,33 +3781,9 @@ function template$3(translationsObj) {
   </div>`;
 }
 
-// Date converter for use on chart footnotes.
-// Converts a string (typically from Snowflake) 
-// in the form YYYY-MM-DD
-// into a readable localized date, such as 
-//    December 12, 2020
-// or 
-//    12 de diciembre de 2020
-
-function reformatReadableDate(dateStr) {
-    // convert YYYY-MM-DD string to Date object
-    const tokens = dateStr.split('-');
-    if (tokens.length != 3) {
-        console.log("reformatReadableDate expecting YYYY-MM-DD, got " + dateStr);
-        return dateStr; // unknown format, use existing string
-    }
-    const yyyy = +tokens[0];
-    const mm = +tokens[1];
-    const dd = +tokens[2];
-    const theDate = new Date(yyyy,mm-1,dd);
-    const readableDate = 
-         theDate.toLocaleString( document.documentElement.lang, 
-         { month: "long", day: 'numeric', year:'numeric' });
-    // console.log(dateStr + " --> " + readableDate);
-    return readableDate;
-}
-
 // import { stackOffsetNone } from 'd3';
+
+
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
@@ -3783,6 +3792,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.innerHTML = template$3(this.translationsObj);
     
     // Settings and initial values
+    // let debugLatest = false;
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsDataLoc + "/equitydash/healthequity-california.json",  // Overwritten by county.
@@ -3794,7 +3804,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       desktop: {
         width: 613,
         height: 355,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 200,
           y: 18
@@ -3803,7 +3813,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       tablet: {
         width: 440,
         height: 355,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
@@ -3812,7 +3822,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       mobile: {
         width: 440,
         height: 600,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
@@ -3821,13 +3831,17 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       retina: {
         width: 320,
         height: 600,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
         }
       },
     };
+    // if (debugLatest) {
+    //   this.chartOptions.dataUrl = this.chartOptions.dataUrl.replace('reviewed','to-review');
+    //   console.log("Latest",this.chartOptions.dataUrl);
+    // }
 
     getScreenResizeCharts();
     this.screenDisplayType = window.charts
@@ -3927,14 +3941,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   // Related to the line that appears on hover
   bisect(data, date) {
-    const bisectDate = d3.bisector((d) => new Date(d.DATE)).left;
+    const bisectDate = d3.bisector((d) => parseSnowflakeDate(d.DATE)).left;
     // this is consistently failing and returning the default==1
     const i = Math.min(data.length - 1, bisectDate(data, date, 1));
     const a = data[i - 1],
       b = data[i];
     // console.log("date = " + date+ " i= " + i);
-    return date - new Date(a.DATE) > new Date(b.DATE) - date ? b : a;
+    return date - parseSnowflakeDate(a.DATE) > parseSnowflakeDate(b.DATE) - date ? b : a;
   }
+
 
   writeChart(alldata, svg, data1Legend) {
     let component = this;
@@ -3964,8 +3979,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // console.log("dims",this.chartBreakpointValues);
 
     let xbounds = {
-      min: d3.min(missing_eq_data ? data : data2, (d) => new Date(d.DATE)),
-      max: d3.max(data, (d) => new Date(d.DATE)),
+      min: d3.min(missing_eq_data ? data : data2, (d) => parseSnowflakeDate(d.DATE)),
+      max: d3.max(data, (d) => parseSnowflakeDate(d.DATE)),
     };
 
     let x = d3
@@ -3996,7 +4011,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // note the left margin is 30, so I'm not sure why it's so odd
     let xAxis = (g) =>
       g
-        .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
+        .attr("transform", "translate(0," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
@@ -4038,7 +4053,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let line = d3
       .line()
       .x((d, i) => {
-        return x(new Date(d.DATE));
+        return x(parseSnowflakeDate(d.DATE));
       })
       .y((d) => {
         return y(d.METRIC_VALUE);
