@@ -184,9 +184,9 @@ export default function drawBars({
 
         .html((d) => {
           if (d.APPLIED_SUPPRESSION === "Population")  {
-            return `${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}`;
-          } else if (d.APPLIED_SUPPRESSION === "Total")  {
             return `${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}`;
+          } else if (d.APPLIED_SUPPRESSION === "Total")  {
+            return `${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}`;
           }
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
             return `<tspan class="highlight-data">0%</tspan> ${translationsObj.chartLineDiff}`;
