@@ -24,7 +24,7 @@ export default function drawBars({
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  //yellow bars
+  // Yellow bars
   svg
     .append("g")
     .attr('class', 'svg-first-section')
@@ -69,7 +69,7 @@ export default function drawBars({
       tooltip.style("visibility", "hidden");
     });
 
-  //blue bars
+  // Blue bars
   svg
     .append("g")
     .selectAll("g")
@@ -160,23 +160,6 @@ export default function drawBars({
           }
         )
         .attr("text-anchor", "end");
-
-        // enter
-        // .append("text")
-        // .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
-        // .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        // .attr("x", (d) => x1(100) + 5)
-        // .attr("height", y.bandwidth())
-        // .text((d) => {
-        //   if (d.METRIC_TOTAL_PERCENTAGE !== null) {
-        //   d.METRIC_TOTAL_PERCENTAGE
-        //     ? parseFloat(d.METRIC_TOTAL_PERCENTAGE).toFixed(1) + "%"
-        //     : 0 + "%";
-        //   } else {
-        //     return 'MASKED'd.APPLIED_SUPPRESSION;
-        //   }
-        // }
-        // )
     });
 
   // % Change since previous month labels
@@ -190,13 +173,24 @@ export default function drawBars({
         .append("text")
         .attr("class", "change-from-month-labels")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 47)
-        .attr("x", (d) => x2(1) + 20)
+        .attr("x", (d) => {
+          if (d.APPLIED_SUPPRESSION === "Population" || d.APPLIED_SUPPRESSION === "Total")  {
+            return x2(1);
+          } else {
+            return x2(1) + 20
+          }
+        })
         .attr("height", y.bandwidth())
 
         .html((d) => {
+          if (d.APPLIED_SUPPRESSION === "Population")  {
+            return `${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}`;
+          } else if (d.APPLIED_SUPPRESSION === "Total")  {
+            return `${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}`;
+          }
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
             return `<tspan class="highlight-data">0%</tspan> ${translationsObj.chartLineDiff}`;
-          } else {
+          }else {
             return `<tspan class="highlight-data">${parseFloat(
               d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
             ).toFixed(1)}%</tspan> ${translationsObj.chartLineDiff}`;
@@ -218,6 +212,10 @@ export default function drawBars({
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 35)
         .attr("x", (d) => x2(1))
         .html((d) => {
+          if (d.APPLIED_SUPPRESSION === "Population" || d.APPLIED_SUPPRESSION === "Total")  {
+            return ``;
+          }
+
           if (
             !d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO ||
             Math.abs(d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) < 0.05
@@ -247,7 +245,6 @@ export default function drawBars({
     .attr("width", 15)
     .attr("height", 15)
     .attr("fill", "#FFCF44");
-    
     
   svg
     .append("rect")

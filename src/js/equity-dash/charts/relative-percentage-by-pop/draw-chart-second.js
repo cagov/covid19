@@ -116,10 +116,22 @@ export default function drawSecondBars({
         .append("text")
         .attr("class", "change-from-month-labels")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 27)
-        .attr("x", (d) => x2(1) + 20)
+        .attr("x", (d) => {
+          if (d.APPLIED_SUPPRESSION === "Population" || d.APPLIED_SUPPRESSION === "Total")  {
+            return x2(1);
+          } else {
+            return x2(1) + 20
+          }
+        })
         .attr("height", y.bandwidth())
 
         .html((d) => {
+          if (d.APPLIED_SUPPRESSION === "Population")  {
+            return `${translationsObj['data-missing-applied-suppression-total'] || ''}`;
+          } else if (d.APPLIED_SUPPRESSION === "Total")  {
+            return `${translationsObj['data-missing-applied-suppression-population'] || ''}`;
+          }
+
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
             return `<tspan class="highlight-data">0%</tspan> ${translationsObj.chartLineDiff}`;
           } else {
@@ -144,6 +156,10 @@ export default function drawSecondBars({
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 15)
         .attr("x", (d) => x2(1))
         .html((d) => {
+          if (d.APPLIED_SUPPRESSION === "Population" || d.APPLIED_SUPPRESSION === "Total")  {
+            return ``;
+          }
+          
           if (
             !d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO ||
             Math.abs(d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) < 0.05

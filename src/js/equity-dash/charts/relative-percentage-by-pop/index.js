@@ -267,6 +267,13 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   getToolTipCaption1(d, selectedMetric) {
+    console.log("Caption", d);
+    if (d.data.APPLIED_SUPPRESSION === "Total") {
+      return this.translationsObj['data-missing-applied-suppression-total' + "--" + this.selectedMetric.toLowerCase()] || '';
+    } else if (d.data.APPLIED_SUPPRESSION === "Population") {
+      return this.translationsObj['data-missing-applied-suppression-population'+ "--" + this.selectedMetric.toLowerCase()] || '';
+    }
+
     let templateStr = this.translationsObj['chartToolTip1-caption'];
     const nomKey = 'chartMetricName--'+selectedMetric;
     let metricNom = selectedMetric;
@@ -284,7 +291,14 @@ class CAGOVEquityREPop extends window.HTMLElement {
     return caption;
   }
 
+  // @TODO Is this used? Looks like it's not.
   getToolTipCaption2(d, selectedMetric) {
+    if (d.APPLIED_SUPPRESSION === "Total") {
+      return translationsObj['data-missing-applied-suppression-total'] || '';
+    } else if (d.APPLIED_SUPPRESSION === "Population") {
+      return translationsObj['data-missing-applied-suppression-population'] || '';
+    }
+
     let templateStr = this.translationsObj['chartToolTip2-caption'];
     let caption = templateStr
                     .replace('placeholderForDynamicLocation',this.getLocation())
@@ -327,6 +341,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTooltip() {
+    console.log("reset tooltip");
     // this.querySelector(".tooltip-***").innerHTML = this.getDescription();
   }
 
