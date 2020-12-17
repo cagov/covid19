@@ -18,7 +18,7 @@ export default function template(translationsObj) {
 
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <p class="chart-data-label col-lg-10 px-0">${translationsObj["footnote"]}</p>
+            <p class="chart-data-label col-lg-10 mx-auto">${translationsObj["footnote"]}</p>
           </div>
         </div>
 

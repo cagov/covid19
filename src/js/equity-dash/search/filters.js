@@ -5,17 +5,18 @@ class CAGovChartFilterButtons extends window.HTMLElement {
       event.preventDefault();
       let clickedFilterText = event.target.textContent;
       let clickedFilterKey = event.target.dataset.key;
-
-      if(!event.target.classList.contains('active')) {
-        let emissionEvent = new window.CustomEvent('filter-selected', {
-          detail: {
-            filterKey: clickedFilterKey,
-            clickedFilterText: clickedFilterText
-          }
-        });
-        this.resetActive();
-        event.target.classList.add('active')
-        this.dispatchEvent(emissionEvent); // this event fire is last because charts look at active class on filter to get new text
+      if (clickedFilterKey != undefined) {
+        if(!event.target.classList.contains('active')) {
+          let emissionEvent = new window.CustomEvent('filter-selected', {
+            detail: {
+              filterKey: clickedFilterKey,
+              clickedFilterText: clickedFilterText
+            }
+          });
+          this.resetActive();
+          event.target.classList.add('active')
+          this.dispatchEvent(emissionEvent); // this event fire is last because charts look at active class on filter to get new text
+        }
       }
     })
 

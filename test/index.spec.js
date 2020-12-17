@@ -59,16 +59,17 @@ describe('what is open', () => {
     await page.waitForSelector('#awesomplete_list_1 li');
     const listitems = await page.$$eval('#awesomplete_list_1 li', listitems => listitems);
     expect(listitems.length).toBeGreaterThan(1);
-    await page.click('#awesomplete_list_1 li');
+    // await page.click('#awesomplete_list_1 li');
 
-    await page.type('#activity-query', 'Schools');
-    await page.waitForSelector('#awesomplete_list_2 li');
-    await page.click('#awesomplete_list_2 li');
-    await page.click("#reopening-submit");
-    await page.waitForSelector('.card-county');
+    // await page.type('#location-query', 'San Diego');
+    // await page.type('#activity-query', 'Schools');
+    // await page.waitForSelector('#awesomplete_list_2 li');
+    // await page.click('#awesomplete_list_2 li');
+    // await page.click("#reopening-submit");
 
-    const counties = await page.$$eval('.card-county', counties => counties);
-    expect(counties.length).toBeGreaterThan(0);
+    // await page.waitForSelector('.card-county');
+    // const counties = await page.$$eval('.card-county', counties => counties);
+    // expect(counties.length).toBeGreaterThan(0);
   }, timeout);
 });
 

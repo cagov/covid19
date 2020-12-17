@@ -7,6 +7,9 @@ import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 import rtlOverride from "./../../rtl-override.js";
+import { reformatReadableDate, parseSnowflakeDate } from "../../readable-date.js";
+
+
 
 class CAGOVChartD3Lines extends window.HTMLElement {
   connectedCallback() {
@@ -15,6 +18,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.innerHTML = template(this.translationsObj);
     
     // Settings and initial values
+    // let debugLatest = false;
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsDataLoc + "/equitydash/healthequity-california.json",  // Overwritten by county.
@@ -26,7 +30,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       desktop: {
         width: 613,
         height: 355,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 200,
           y: 18
@@ -35,7 +39,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       tablet: {
         width: 440,
         height: 355,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
@@ -44,7 +48,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       mobile: {
         width: 440,
         height: 600,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
@@ -53,13 +57,17 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       retina: {
         width: 320,
         height: 600,
-        margin: { top: 30, right: 1.5, bottom: 40, left: 30 },
+        margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
           x: 160,
           y: 18
         }
       },
     };
+    // if (debugLatest) {
+    //   this.chartOptions.dataUrl = this.chartOptions.dataUrl.replace('reviewed','to-review');
+    //   console.log("Latest",this.chartOptions.dataUrl);
+    // }
 
     getScreenResizeCharts(this);
     this.screenDisplayType = window.charts
@@ -159,14 +167,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   // Related to the line that appears on hover
   bisect(data, date) {
-    const bisectDate = d3.bisector((d) => new Date(d.DATE)).left;
+    const bisectDate = d3.bisector((d) => parseSnowflakeDate(d.DATE)).left;
     // this is consistently failing and returning the default==1
     const i = Math.min(data.length - 1, bisectDate(data, date, 1));
     const a = data[i - 1],
       b = data[i];
     // console.log("date = " + date+ " i= " + i);
-    return date - new Date(a.DATE) > new Date(b.DATE) - date ? b : a;
+    return date - parseSnowflakeDate(a.DATE) > parseSnowflakeDate(b.DATE) - date ? b : a;
   }
+
 
   writeChart(alldata, svg, data1Legend) {
     let component = this;
@@ -174,6 +183,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
     let data2 = alldata.county_positivity_low_hpi;
+
+    let updateDate =  reformatReadableDate( data2[data2.length-1].DATE );
+    // using document since the footnote lies outside this element
+    document.querySelectorAll('span[data-replacement="d3-lines-report-date"]').forEach(elem => {
+      // console.log("Got date span");
+      elem.innerHTML = updateDate;
+    });
+
+
     // console.log("Overall Data ", data);
     // console.log("Equity Data2 ", data2);
     let missing_eq_data =
@@ -187,8 +205,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // console.log("dims",this.chartBreakpointValues);
 
     let xbounds = {
-      min: d3.min(missing_eq_data ? data : data2, (d) => new Date(d.DATE)),
-      max: d3.max(data, (d) => new Date(d.DATE)),
+      min: d3.min(missing_eq_data ? data : data2, (d) => parseSnowflakeDate(d.DATE)),
+      max: d3.max(data, (d) => parseSnowflakeDate(d.DATE)),
     };
 
     let x = d3
@@ -219,7 +237,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // note the left margin is 30, so I'm not sure why it's so odd
     let xAxis = (g) =>
       g
-        .attr("transform", "translate(14," + this.chartBreakpointValues.margin.bottom + ")" )
+        .attr("transform", "translate(0," + this.chartBreakpointValues.margin.bottom + ")" )
         .call(
           d3
             .axisBottom(x)
@@ -261,7 +279,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let line = d3
       .line()
       .x((d, i) => {
-        return x(new Date(d.DATE));
+        return x(parseSnowflakeDate(d.DATE));
       })
       .y((d) => {
         return y(d.METRIC_VALUE);

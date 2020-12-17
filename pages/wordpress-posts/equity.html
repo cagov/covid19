@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources. Committed to a California [&hellip;]"
 author: "State of California"
-publishdate: "2020-12-11T23:07:22Z"
+publishdate: "2020-12-16T23:19:29Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -48,126 +48,153 @@ addtositemap: false
             <div class="col-lg-10 mx-auto">
                 <div class="container">
     
-                    <div class="row d-flex row-eq-height justify-content-md-center pb-4">
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                    
-<!--{% set value = data.case_rate_vs_statewide_percent_latino %}-->
-<!--{% if value > 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide
-</div>
-
-<!--{% elif value < 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Latino people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
-</div>
-
-<!--{% else %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Latino people is the same as statewide average
-</div>
-
-<!--{% endif %}-->
-                                
-                            <div class="eq-cases">
-                                <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100K_latino|formatNumber(tags)}}</strong> Latino <br>
-                                <strong>{{data.cases_per_100K_statewide|formatNumber(tags)}}</strong> all ethnicities</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-<!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
-<!--{% if value > 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Pacific Islanders is <span class="eq-data">{{value}}% higher</span> than statewide
-</div>
-
-<!--{% elif value < 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Pacific Islanders is <span class="eq-data">{{value|abs}}% lower</span> than statewide
-</div>
-
-<!--{% else %}-->
-
-<div class="eq-text mb-3">
-  Case rate for Pacific Islanders is the same as statewide average
-</div>
-
-<!--{% endif %}-->
-                            <div class="eq-cases">
-                                <p class="text-xs">Cases per 100K people:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br>
-                                <strong>{{data.cases_per_100K_statewide|formatNumber(tags)}}</strong> all ethnicities</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-
-<!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
-<!--{% if value > 0 %}-->
-
-<div class="eq-text mb-3">
-  Death rate for Black people is <span class="eq-data">{{value}}% higher</span> than statewide
-</div>
-
-<!--{% elif value < 0 %}-->
-
-<div class="eq-text mb-3">
-  Death rate for Black people is <span class="eq-data">{{value|abs}}% lower</span> than statewide
-</div>
-
-<!--{% else %}-->
-
-<div class="eq-text mb-3">
-  Death rate for Black people is the same as statewide average
-</div>
-
-<!--{% endif %}-->
-                                <div class="eq-cases">
-                                    <p class="text-xs">Deaths per 100K people:</p> 
-                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100K_black}}</strong> Black <br>
-                                    <strong>{{data.death_rate_per_100K_statewide}}</strong> all ethnicities</p>
-                                </div>
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white  d-flex flex-column">
-<!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
-<!--{% if value > 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for communities with median income &lt;$40K is <span class="eq-data">{{value}}% higher</span> than statewide
-</div>
-
-<!--{% elif value < 0 %}-->
-
-<div class="eq-text mb-3">
-  Case rate for communities with median income &lt;$40K is <span class="eq-data">{{value|abs}}% lower</span> than statewide
-</div>
-
-<!--{% else %}-->
-
-<div class="eq-text mb-3">
-  Case rate for communities with median income &lt;$40K is the same as statewide average
-</div>
-
-<!--{% endif %}-->
-
-                            <div class="eq-cases">
-                              <p class="text-xs">Cases per 100K people:</p> 
-                              <p class="text-xs mb-0"><strong>{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</strong> income &lt;$40K <br>
-                              <strong>{{data.cases_per_100K_statewide|formatNumber(tags)}}</strong> all income brackets</p>
-                            </div>
-
-                        </div>
-                    </div>
+                          <cagov-equity-highlight-stats>
+            <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                  <!--{% set value = data.case_rate_vs_statewide_percent_latino %}-->
+                  <!--{% if value > 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Latino people is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_latino">{{value}}</span>% higher</span> than statewide
+                  </div>
+            
+                  <!--{% elif value < 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Latino people is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_latino">{{value|abs}}</span>% lower</span> than
+                    statewide
+                  </div>
+            
+                  <!--{% else %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Latino people is the same as statewide average
+                  </div>
+            
+                  <!--{% endif %}-->
+            
+                  <div class="eq-cases">
+                    <p class="text-xs">Cases per 100K people:</p>
+                    <p class="text-xs mb-0">
+                      <strong><span class="cases_per_100K_latino">{{data.cases_per_100K_latino|formatNumber(tags)}}</span></strong>
+                      Latino <br>
+                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      all ethnicities
+                    </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                  <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
+                  <!--{% if value > 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Pacific Islanders is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>% higher</span> than statewide
+                  </div>
+            
+                  <!--{% elif value < 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Pacific Islanders is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>% lower</span> than
+                    statewide
+                  </div>
+            
+                  <!--{% else %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for Pacific Islanders is the same as statewide
+                    average
+                  </div>
+            
+                  <!--{% endif %}-->
+                  <div class="eq-cases">
+                    <p class="text-xs">Cases per 100K people:</p>
+                    <p class="text-xs mb-0">
+                      <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</span></strong>
+                      NHPI <br>
+                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      all ethnicities
+                    </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                  <!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
+                  <!--{% if value > 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Death rate for Black people is
+                    <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>% higher</span> than statewide
+                  </div>
+            
+                  <!--{% elif value < 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Death rate for Black people is
+                    <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>% lower</span> than
+                    statewide
+                  </div>
+            
+                  <!--{% else %}-->
+            
+                  <div class="eq-text mb-3">
+                    Death rate for Black people is the same as statewide average
+                  </div>
+            
+                  <!--{% endif %}-->
+                  <div class="eq-cases">
+                    <p class="text-xs">Deaths per 100K people:</p>
+                    <p class="text-xs mb-0">
+                      <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black}}</span></strong> Black
+                      <br>
+                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide}}</span></strong> all
+                      ethnicities
+                    </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                  <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
+                  <!--{% if value > 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for communities with median income &lt;$40K is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% higher</span> than statewide
+                  </div>
+            
+                  <!--{% elif value < 0 %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for communities with median income &lt;$40K is
+                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% lower</span> than
+                    statewide
+                  </div>
+            
+                  <!--{% else %}-->
+            
+                  <div class="eq-text mb-3">
+                    Case rate for communities with median income &lt;$40K is the
+                    same as statewide average
+                  </div>
+            
+                  <!--{% endif %}-->
+            
+                  <div class="eq-cases">
+                    <p class="text-xs">Cases per 100K people:</p>
+                    <p class="text-xs mb-0">
+                      <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</span></strong>
+                      income &lt;$40K <br>
+                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      all income brackets
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </cagov-equity-highlight-stats>
     
     
                 </div><!--END cont-->
@@ -227,7 +254,7 @@ addtositemap: false
 
 
 
-<h2 class="mt-5">See how communities are impacted in your county</h2>
+<h2 class="mt-5" id="See-how-communities-are-impacted-in-your-county">See how communities are impacted in your county</h2>
 
 
 
@@ -351,7 +378,7 @@ addtositemap: false
 
 
 
-<p class="chart-data-label">Note: 7-day average of positivity rate with 7-day lag, for the tracts in Healthy Places Index (HPI) health equity quartile. Health equity quartile positivity is defined as the positivity rate in the lowest 25% of Healthy Places Index census tracts in the county.</p>
+<p class="chart-data-label">Note: Data shown is a 7-day average of positivity rate with a 7-day lag. Data shown is for the 7-day period ending <span data-replacement="d3-lines-report-date"></span>. Health equity quartile positivity is defined as the positivity rate in the lowest 25% of Healthy Places Index census tracts in the county.</p>
 
 
 
@@ -377,7 +404,7 @@ addtositemap: false
       <ul>
         <li data-label="title">Reporting by race and ethnicity in California</li>
         <li data-label="special-note">Data reporting keeps improving. Since January, the reporting on age and gender of cases is up to 99.2% completeness. The same can be done for this data.</li>
-        <li data-label="footnote">Note: Data shown is cumulative for the last 30 days and updated daily. Sexual orientation and gender identity are not collected for tests. Numbers between 1 and 10 are not shown to protect patient privacy.</li>
+        <li data-label="footnote">Note: Data shown is a cumulative 30-day total, updated on <span data-replacement="data-completeness-report-date"></span>. Sexual orientation and gender identity are not collected for tests. Numbers between 1 and 10 are not shown to protect patient privacy.</li>
         <li data-label="tab-label">Reporting by <span data-replace="metric-filter"></span> in <span data-replace="location"></span></li>
         <li data-label="data-missing">Data missing</li>
         <li data-label="data-reported">Data reported</li>
@@ -434,7 +461,7 @@ addtositemap: false
     <li data-label="chartButtonIncome">Income</li>
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
-    <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is cumulative for the last 7 days and updated daily.</li>
+    <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is a cumulative 7-day total with a 7-day lag, updated on <span data-replacement="d3-bar-report-date"></span>.</li>
    <li data-label="casesPer100KPeople">Cases per 100K people</li>
    <li data-label="statewideCaseRate">Statewide case rate:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate cases per 100K people. placeholderRateDiff30 change since previous week</li>
@@ -468,9 +495,9 @@ addtositemap: false
       <div class="col-lg-6">
         <ul class="arrow-links">
             <li>
-                <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">
+                <a class="link-arrow-blue" data-kind="pdf" href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/Equity%20Playbook_V1_12.1.2020_final.pdf">
                     <div class="link-arrow-label">
-                        Reopening plan that includes the health equity metric</div>
+                        County playbook to address COVID-19 inequity</div>
                     <cagov-arrow></cagov-arrow>
                 </a>
             </li>
@@ -502,9 +529,9 @@ addtositemap: false
       <div class="col-lg-6">
         <ul class="arrow-links">
             <li>
-                <a class="link-arrow-blue" data-kind="pdf" href="https://files.covid19.ca.gov/pdf/employer-playbook-for-safe-reopening--en.pdf">
+                <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">
                     <div class="link-arrow-label">
-                        Business guides to keep employees safe from COVID-19</div>
+                        Reopening plan that includes the health equity metric</div>
                     <cagov-arrow></cagov-arrow>
                 </a>
             </li>

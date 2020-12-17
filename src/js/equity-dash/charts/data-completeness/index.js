@@ -3,6 +3,7 @@ import drawBars from "./draw.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
+import { reformatReadableDate } from "../../readable-date.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -11,7 +12,12 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // Use component function, which loads getTranslations and then appends that function with additional translation functions.
     this.translationsObj = this.getTranslations(this);
     // console.log("trans objs",this.translationsObj);
+
+    this.updateDate = "";
+
     this.innerHTML = template(this.translationsObj);
+
+
 
     // Settings and initial values
     this.chartOptions = {
@@ -168,6 +174,13 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.querySelector(".chart-title").innerHTML = this.translationsObj['tab-label'] ? this.translationsObj['tab-label'] : null;
     this.querySelector('.chart-title span[data-replace="metric-filter"]').innerHTML = this.getFilterText().toLowerCase();
     this.querySelector('.chart-title span[data-replace="location"]').innerHTML = this.getLocation();
+  }
+
+  resetUpdateDate() {
+    this.querySelectorAll('span[data-replacement="data-completeness-report-date"]').forEach(elem => {
+      // console.log("Got completeness date span");
+      elem.innerHTML = this.updateDate;
+    });
   }
 
   getFilterText() {
@@ -400,6 +413,16 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.resetTitle();
     let data = this.formatDataSet(this.alldata[this.selectedMetric]);
     this.drawSvg(data);
+
+    // fetch date for footnote
+    // console.log("rendering",this.selectedMetric,this.alldata);
+    if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE );
+    } else {
+      this.updateDate = 'Unknown';
+    }
+    // console.log("Update Date",this.updateDate);
+    this.resetUpdateDate();
   }
 
   retrieveData(url) {
