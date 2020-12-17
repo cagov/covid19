@@ -28,7 +28,7 @@ export default function template(json) {
               aria-atomic="true"
               >Type 2 or more characters for results.</span
             >
-            <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">County not found. Search by county name.</div>
+            <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.countyNotFound}</div>
           </div>
           <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
         </div>
@@ -49,12 +49,12 @@ export default function template(json) {
             />
             <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
             <ul hidden="" role="listbox" id="awesomplete_list_2"></ul>
-            <div id="activity-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">Activity not found. Search a different term.</div>
+            <div id="activity-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.activityNotFound}</div>
           </div>
           <ul hidden="" id="awesomplete-list-2" role="listbox"></ul>
         </div>
       </div>
-      <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">Please enter a county or an activity</div>
+      <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">${json.emptySearchError}</div>
       <button type="submit" id="reopening-submit" class="btn btn-primary">${json.buttonText}</button>
     </form>
     <div class="card-holder"></div>
