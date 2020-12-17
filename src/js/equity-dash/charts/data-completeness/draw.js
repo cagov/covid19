@@ -80,7 +80,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         // @TODO Handle if PERCENT_COMPLETE is null.
         if (d.data.PERCENT_COMPLETE === null) {
 
-          return `<div>CHECKING NOT NOT COMMIT</div>`;
+          return ``; // Return nothing, no tooltip. 
 
         } else {
           let percentNotMissing = d.data.NOT_MISSING
