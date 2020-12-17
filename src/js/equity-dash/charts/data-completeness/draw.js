@@ -27,6 +27,20 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("width", d => x(1) - x(0))
     .attr("height", "10px")
 
+    // This is the logic for rendering the alternative message for the tooltip which can be placed here, except there is a lot of UX to also connect because this bar was not previously made to be interactive.
+    // if (d.data.PERCENT_COMPLETE === null) {
+    //   console.log("NULL");
+    //   let tooltipCheck = translations.chartTooltip({
+    //     metric: d.data.METRIC,
+    //     highlightData: percentMissing,
+    //     complete: false,
+    //     suppression: true,
+    //   });
+    //   console.log('tooltip check', tooltipCheck);
+    //   return tooltipCheck;
+    // }
+
+
   // Render the bars with their connected tooltips.
   svg
     .append("g")
@@ -77,11 +91,9 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
       tooltip.html(() => {
-        // @TODO Handle if PERCENT_COMPLETE is null.
         if (d.data.PERCENT_COMPLETE === null) {
-
-          return ``; // Return nothing, no tooltip. 
-
+          // Return nothing.
+          return ``;
         } else {
           let percentNotMissing = d.data.NOT_MISSING
           ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
