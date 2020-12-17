@@ -267,7 +267,6 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   getToolTipCaption1(d, selectedMetric) {
-    console.log("Caption", d);
     if (d.data.APPLIED_SUPPRESSION === "Total") {
       return this.translationsObj['data-missing-applied-suppression-total' + "--" + this.selectedMetric.toLowerCase()] || '';
     } else if (d.data.APPLIED_SUPPRESSION === "Population") {
