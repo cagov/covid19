@@ -127,9 +127,9 @@ export default function drawSecondBars({
 
         .html((d) => {
           if (d.APPLIED_SUPPRESSION === "Population")  {
-            return `${translationsObj['data-missing-applied-suppression-total'] || ''}`;
+            return `${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}`;
           } else if (d.APPLIED_SUPPRESSION === "Total")  {
-            return `${translationsObj['data-missing-applied-suppression-population'] || ''}`;
+            return `${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}`;
           }
 
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {

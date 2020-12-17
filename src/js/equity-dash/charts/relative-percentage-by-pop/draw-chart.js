@@ -184,13 +184,14 @@ export default function drawBars({
 
         .html((d) => {
           if (d.APPLIED_SUPPRESSION === "Population")  {
-            return `${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}`;
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
           } else if (d.APPLIED_SUPPRESSION === "Total")  {
-            return `${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}`;
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
           }
+
           if (!d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO) {
             return `<tspan class="highlight-data">0%</tspan> ${translationsObj.chartLineDiff}`;
-          }else {
+          } else {
             return `<tspan class="highlight-data">${parseFloat(
               d.METRIC_VALUE_PERCENTAGE_DELTA_FROM_30_DAYS_AGO
             ).toFixed(1)}%</tspan> ${translationsObj.chartLineDiff}`;
