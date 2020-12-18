@@ -8,16 +8,7 @@ pagerating-section {
 		@include desktop {
 			padding: 3rem
 		}
-		@include tablet {
-			&-grid {
-				display: inline-flex;
-				
-				&-col:last-child {
-					padding-left: 2rem
-				}
-			}
-
-		}
+	
 		&-label {
 			color: #fff;
 			// cursor: pointer;
@@ -75,9 +66,7 @@ pagerating-section {
 			padding: 1rem;
 			font-family: "Roboto", sans-serif;
 			color:$darkblue;
-			@include tablet {
-				width: 20rem;
-			}
+			
 			&:focus {
 				box-shadow: 0 0 0 2px $orange;
 			}
@@ -89,13 +78,12 @@ pagerating-section {
 		}
 
 		&-error {
-			position: absolute;
+			position: relative;
 			top: 100%;
 			left: 0;
-			background:$orange;
-			color: $darkblue;
-			padding: 0.5rem;
-			display: none
+			display: none;
+			font-weight: 300;
+			text-align: left;
 		}
 
 	} // end .feedback-form 
