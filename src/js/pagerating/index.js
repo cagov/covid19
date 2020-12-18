@@ -65,10 +65,18 @@ class CWDSPageRating extends window.HTMLElement {
       }));
     });
     this.querySelector('.js-feedback-submit').addEventListener('click', (event) => {
-      if((feedback.value.length !== 0) && (!feedback.value.length > 600)) {
-        this.querySelector('.feedback-form-add').style.display = 'none';
+
+if (feedback.value.length > 600) {
+  document.querySelector('.feedback-limit-error').style.display = 'block';
+}
+else if (feedback.value.length == 0) {
+  this.querySelector('.feedback-error').style.display = 'block';
+}
+else {
+  this.querySelector('.feedback-form-add').style.display = 'none';
         this.querySelector('.feedback-thanks-add').style.display = 'block';
         this.querySelector('.feedback-error').removeAttribute("style");
+        document.querySelector('.feedback-limit-error').removeAttribute("style");
 
         let postData = {};
         postData.url = window.location.href;
@@ -87,15 +95,11 @@ class CWDSPageRating extends window.HTMLElement {
         })
         .then(response => response.json())
         .then(data => console.log(data));
-
-      } else {
-        if (feedback.value.length > 600) {
-          document.querySelector('.feedback-limit-error').style.display = 'block';
-        }
-        else {
-          this.querySelector('.feedback-error').style.display = 'block';
-        }
-      }
+}
+      
+        
+       
+      
     });
 
   }
