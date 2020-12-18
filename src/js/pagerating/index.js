@@ -24,11 +24,23 @@ class CWDSPageRating extends window.HTMLElement {
     let feedback = this.querySelector(".js-add-feedback");
     feedback.addEventListener('keyup', function (event) {
       if(feedback.value.length > 15) {
-        feedback.setAttribute('rows', '2');
-      } else {
+        feedback.setAttribute('rows', '3');
+      }
+      else  {
         feedback.setAttribute('rows', '1');
       }
     });
+
+    feedback.addEventListener('keydown', function (event) {
+       if (feedback.value.length > 600)  {
+        document.querySelector('.feedback-limit-error').style.display = 'block';
+      }
+      else  {
+        document.querySelector('.feedback-limit-error').removeAttribute("style");
+      }
+    });
+
+
     feedback.addEventListener('blur', (event) => {
       if(feedback.value.length !== 0) {
         this.querySelector('.js-feedback-submit').style.display = 'block';
@@ -53,7 +65,7 @@ class CWDSPageRating extends window.HTMLElement {
       }));
     });
     this.querySelector('.js-feedback-submit').addEventListener('click', (event) => {
-      if(feedback.value.length !== 0) {
+      if((feedback.value.length !== 0) && (!feedback.value.length > 600)) {
         this.querySelector('.feedback-form-add').style.display = 'none';
         this.querySelector('.feedback-thanks-add').style.display = 'block';
         this.querySelector('.feedback-error').removeAttribute("style");
@@ -77,7 +89,12 @@ class CWDSPageRating extends window.HTMLElement {
         .then(data => console.log(data));
 
       } else {
-        this.querySelector('.feedback-error').style.display = 'block';
+        if (feedback.value.length > 600) {
+          document.querySelector('.feedback-limit-error').style.display = 'block';
+        }
+        else {
+          this.querySelector('.feedback-error').style.display = 'block';
+        }
       }
     });
 
