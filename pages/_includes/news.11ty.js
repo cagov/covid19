@@ -16,7 +16,7 @@ class News {
         return `<div class="card border-0 border-bottom rounded-0" lang="en-US">
         <div class="card-body pl-0" lang="en-US">
           <h2 class="card-title lead" lang="en-US">
-            <a href="${item.data.url}" lang="en-US" hreflang="en-US">${
+            <a href="${item.data.url}" lang="en-US" hreflang="en-US" rel="external">${
           item.data.title
         }</a>
           </h2>
