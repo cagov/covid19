@@ -19,9 +19,12 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
   let translationsObj = this.translationsObj;
   let chartBreakpointValues = this.chartBreakpointValues;
   let appliedSuppressionStatus = this.appliedSuppressionStatus;
+  let selectedMetric = this.selectedMetric;
 
   // console.log('100k', translationsObj, chartBreakpointValues, appliedSuppressionStatus);
 
+  console.log('selected', selectedMetric);
+  
   svg.selectAll("g").remove();
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
@@ -53,13 +56,16 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         d.data.METRIC_VALUE_PER_100K
           ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
           : 0,
-        filterScope // .toLowerCase()
+        filterScope,
+        d // .toLowerCase()
       );
-      if (d.APPLIED_SUPPRESSION === "Population") {
-        caption = ``
-      } else if (d.APPLIED_SUPPRESSION === "Total") {
-        caption = ``
+
+      if (d.data.APPLIED_SUPPRESSION === "Total") {
+        caption = translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || '';
+      } else if (d.data.APPLIED_SUPPRESSION === "Population") {
+        caption = translationsObj['data-missing-applied-suppression-population'+ "--" + selectedMetric.toLowerCase()] || '';
       }
+
       return `<div class="chart-tooltip"><div>${caption}</div></div>`;
     })
 
@@ -71,7 +77,8 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         d.data.METRIC_VALUE_PER_100K
           ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
           : 0,
-        filterScope // .toLowerCase()
+        filterScope,
+        d // .toLowerCase()
       );
       if (d.APPLIED_SUPPRESSION === "Population") {
         caption = ``

@@ -127,7 +127,13 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       return filterTxt;
     };
 
-    this.toolTipCaption = function (a, b, c) {
+    this.toolTipCaption = function (a, b, c, d) {
+      if (d.data.APPLIED_SUPPRESSION === "Total") {
+        return this.translationsObj['data-missing-applied-suppression-total' + "--" + this.selectedMetric.toLowerCase()] || '';
+      } else if (d.data.APPLIED_SUPPRESSION === "Population") {
+        return this.translationsObj['data-missing-applied-suppression-population'+ "--" + this.selectedMetric.toLowerCase()] || '';
+      }
+
       let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
         .replace("placeholderDEMO_CAT", a)
