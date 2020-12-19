@@ -62,6 +62,22 @@ class CAGovReopening extends window.HTMLElement {
       //resetForm();
     });
 
+    document.getElementById("location-query").addEventListener("input", function (event) {
+      this.changeLocationInput(event.target.value);
+    }.bind(this));
+
+    document.getElementById("clearLocation").addEventListener("click", function() {
+      this.changeLocationInput("");
+    }.bind(this));
+
+    document.getElementById("activity-query").addEventListener("input", function (event) {
+      this.changeActivityInput(event.target.value);
+    }.bind(this));
+
+    document.getElementById("clearActivity").addEventListener("click", function() {
+      this.changeActivityInput("");
+    }.bind(this));
+
     document.querySelector('.reopening-activities').addEventListener('submit',function(event) {
       event.preventDefault();
       if(document.querySelector('#location-query').value == '') {
@@ -72,10 +88,39 @@ class CAGovReopening extends window.HTMLElement {
       }
       if(!this.state['activity'] && !this.state['county']) {
         this.querySelector('.card-holder').innerHTML = '';
+        document.getElementById("reopening-error").style.visibility = "visible";
       } else {
         this.layoutCards();
       }
     }.bind(this))
+  }
+
+  changeLocationInput(value) {
+    const $locationQuery = document.getElementById("location-query");
+    $locationQuery.value = value;
+    $locationQuery.setAttribute("aria-invalid", false);
+    this.state['county'] = value;
+    if (value) {
+      document.getElementById("clearLocation").classList.remove('d-none');
+    } else {
+      document.getElementById("clearLocation").classList.add('d-none');
+    }
+    document.getElementById("location-error").style.visibility = "hidden";
+    document.getElementById("reopening-error").style.visibility = "hidden";
+  }
+
+  changeActivityInput(value) {
+    const $activityQuery = document.getElementById("activity-query");
+    $activityQuery.value = value;
+    $activityQuery.setAttribute("aria-invalid", false);
+    this.state['activity'] = value;
+    if (value) {
+      document.getElementById("clearActivity").classList.remove('d-none');
+    } else {
+      document.getElementById("clearActivity").classList.add('d-none');
+    }
+    document.getElementById("activity-error").style.visibility = "hidden";
+    document.getElementById("reopening-error").style.visibility = "hidden";
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
@@ -91,8 +136,7 @@ class CAGovReopening extends window.HTMLElement {
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;
-        component.state[fieldName] = finalval;
+        component.changeLocationInput(finalval);
         // component.layoutCards();
       },
       list: aList
@@ -131,10 +175,9 @@ class CAGovReopening extends window.HTMLElement {
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
         let finalval = before + text;
-        this.input.value = finalval;
-        component.state[fieldName] = finalval;
-        component.layoutCards();
-        document.querySelector(fieldSelector).blur();
+        component.changeActivityInput(finalval);
+        // component.layoutCards();
+        // document.querySelector(fieldSelector).blur();
       },
       list: aList
     };
@@ -147,6 +190,52 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   layoutCards() {
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent('safer-economy-page-submission', {
+      detail: {
+        county: this.state.county,
+        activity: this.state.activity
+      }
+    });
+    window.dispatchEvent(event);
+
+    let isError = false;
+
+    let selectedCounties = this.countyStatuses;
+    if(this.state['county']) {
+      selectedCounties = [];
+      this.countyStatuses.forEach(item => {
+        if(item.county == this.state['county']) {
+          selectedCounties.push(item)
+        }
+      })
+      if (selectedCounties.length === 0) {
+        document.getElementById("location-query").setAttribute("aria-invalid", true);
+        document.getElementById("location-error").style.visibility = "visible";
+        isError = true;
+      }
+    }
+    
+    let selectedActivities = this.allActivities;
+    if(this.state['activity']) {
+      selectedActivities = [];
+      this.allActivities.forEach(ac => {
+        if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
+          selectedActivities.push(ac);
+        }
+      })
+      if (selectedActivities.length === 0) {
+        document.getElementById("activity-query").setAttribute("aria-invalid", true);
+        document.getElementById("activity-error").style.visibility = "visible";
+        isError = true;
+      }
+    }
+
+    if (isError) {
+      this.querySelector('.card-holder').innerHTML = '';
+      return;
+    }
+
     let replaceAllInMap = function(str){
       let mapObj = {
         '&lt;': '<',
@@ -160,18 +249,9 @@ class CAGovReopening extends window.HTMLElement {
       });
     }
     this.cardHTML = '';
-    let selectedCounties = this.countyStatuses;
-    if(this.state['county']) {
-      selectedCounties = [];
-      this.countyStatuses.forEach(item => {
-        if(item.county == this.state['county']) {
-          selectedCounties.push(item)
-        }
-      })
-    }
+
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
-
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
 
@@ -184,7 +264,6 @@ class CAGovReopening extends window.HTMLElement {
       `
       + schoolFooter;
     }
-    let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
         <h2>${item.county}</h2>
@@ -194,14 +273,6 @@ class CAGovReopening extends window.HTMLElement {
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">${this.json.understandTheData}</a></p>
         <p>${this.json.countyRestrictionsAdvice} <a href="../get-local-information">${this.json.countyRestrictionsCountyWebsite}</a>.</p>
       </div>`
-      if(this.state['activity']) {
-        selectedActivities = [];
-        this.allActivities.forEach(ac => {
-          if(ac["0"] == this.state['activity'] || this.state['activity'] == this.viewall) {
-            selectedActivities.push(ac);
-          }
-        })
-      }
       selectedActivities.forEach(ac => {
         if(this.regionsclosed && this.countyRegions && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) { // if this county is in a region which is closed we will show them the RSHO column values
           this.cardHTML += `<div class="card-activity">
@@ -224,65 +295,7 @@ class CAGovReopening extends window.HTMLElement {
     </div>`
     this.querySelector('.card-holder').innerHTML = `<div class="card-content">${this.cardHTML}</div>`;
     this.querySelector('.card-holder').classList.remove('inactive');
-
-    // Dispatch custom event so we can pick up and track this usage elsewhere.
-    const event = new window.CustomEvent('safer-economy-page-submission', {
-      detail: {
-        county: this.state.county,
-        activity: this.state.activity
-      }
-    });
-    window.dispatchEvent(event);
   }
 }
+
 window.customElements.define('cagov-reopening', CAGovReopening);
-
-var activityInput = document.getElementById("activity-query");
-var countyInput = document.getElementById("location-query");
-
-if(countyInput) {
-// Show clear btn only on input (County)
-countyInput.addEventListener("input", function() {
-  inputValueCounty();
- });
-  //Clear buttons click events
-  document.getElementById("clearLocation").addEventListener("click", function() {
-    countyInput.value = '';
-    inputValueCounty();
-  });
-
-  document.getElementById("clearActivity").addEventListener("click", function() {
-    activityInput.value = '';
-    inputValueActivity();
-  });
-}
-if(activityInput) {
-// Show clear btn only on input (Activity)
-activityInput.addEventListener("input", function() {
-  inputValueActivity();
- });
-
- activityInput.addEventListener("blur", function() {
-  inputValueActivity();
- });
-}
-
-// Show clear btn only if there is value (County)
-function inputValueCounty() {
-  var countyInput = document.getElementById("location-query");
-  var clearCounty = document.getElementById("clearLocation");
-  if (countyInput && countyInput.value) {
-    clearCounty.classList.remove('d-none');
-  }
-  else {clearCounty.classList.add('d-none');}
-}
-
-// Show clear btn only if there is value (Activity)
-function inputValueActivity() {
-  var activityInput = document.getElementById("activity-query");
-  var clearActivity = document.getElementById("clearActivity");
-  if (activityInput && activityInput.value) {
-    clearActivity.classList.remove('d-none');
-  }
-  else {clearActivity.classList.add('d-none');}
-}
