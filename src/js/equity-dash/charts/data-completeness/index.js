@@ -329,17 +329,25 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         metric = 'tests',
         highlightData = 0,
         complete = true,
+        suppression = false,
       }) => {
         let location = this.getLocation();
         let dataType = this.getFilterText().toLowerCase();
         let tooltipHTML = translations['chart-tooltip-complete'];
+
+
         if (!complete) {
           tooltipHTML = translations['chart-tooltip-missing'];
         }
+
         tooltipHTML = tooltipHTML.replace('<span data-replace="metric">tests</span>', `<span data-replace="metric">${metric}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="highlight-data"></span>', `<span data-replace="highlight-data">${highlightData}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="location">California</span>', `<span data-replace="location">${location}</span>`);
         tooltipHTML = tooltipHTML.replace('<span data-replace="data-type">race and ethnicity</span>', `<span data-replace="data-type">${dataType}</span>`);
+
+        if (suppression) {
+          tooltipHTML = translations['data-missing-applied-suppression-total'];
+        }
         return `<div class="chart-tooltip"><div>${tooltipHTML}</div></div>`;
       }
     return translations;
