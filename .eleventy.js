@@ -16,7 +16,8 @@ fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/co
 fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
 // county regions for stay home restrictions, hardcoded now, should come from snowflake soon
 fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
-
+// county regions closed now for stay home restrictions
+fs.writeFileSync('./docs/regionsclosed.json',fs.readFileSync('pages/wordpress-posts/rsho.json','utf8'),'utf8')
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';

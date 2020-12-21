@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
 title: "更安全的经济蓝图"
-meta: "最新地区性居家避疫令 加州的COVID-19病例数持续以惊人的速度激增。该地区性居家避疫令发布于2020年12月3日，禁止进行任何规模的聚会、关闭除关键基础设施和零售以外的经营活动，并要求全民佩戴口罩及保持人际距离。请参阅有关该地区性居家避疫令的更多信息。加州已 […]"
+meta: "注释 今日的病例数包括今日呈报的41,081例病例，其为全州持续激增病例数的一部分。余下12,630例病例是来自前几日的病例。加州已为减缓州内COVID-19疫情制定蓝图，并修改了放宽和加强各种活动的限制条件。了解您所在县的状态 加州各县 […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">最新地区性居家避疫令 </h4><p>加州的COVID-19病例数持续以惊人的速度激增。该地区性居家避疫令发布于2020年12月3日，禁止进行任何规模的聚会、关闭除关键基础设施和零售以外的经营活动，并要求全民佩戴口罩及保持人际距离。请参阅有关该<a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">地区性居家避疫令</a>的更多信息。</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">注释</h4><p>今日的病例数包括今日呈报的41,081例病例，其为全州持续激增病例数的一部分。余下12,630例病例是来自前几日的病例。</p></div>
 
 
 
-<p>加州已为减缓州内COVID-19疫情制定蓝图，并修改了放宽和加强各种活动的限制条件。</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">了解您所在县的状态</h2>
+<p>加州已为减缓州内COVID-19疫情制定蓝图，并修改了放宽和加强各种活动的限制条件。</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">了解您所在县的状态</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*可能会对小县（人口少于106,000人的县）采用其他病例评估措施，以进行等级划分。</br>**健康公平指标不适用于小县。健康公平指标是用于让某县移至限制性较低的等级。</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">地区性居家避疫令：</h3>
 
 
 
-<p>等级划分可能会在一周内的任意一天进行，并且一周可能进行一次以上。选择一个县以查看其处于哪个区域。</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>加州的COVID-19社区传播记录持续激增。地区性居家避疫令发布于2020年12月3日，并于2020年12月6日签发补充命令，其将在加护病房 (ICU) 病床容纳量低于15%的地区的第二天晚上11:59生效。</p>
 
 
 
-<p class="small-text">所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH发布的更安全的经济蓝图架构</a>，了解等级划分及变更的方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。</p>
+<p>了解每个地区剩余的<a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">真实ICU容纳量</a>。</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
+
+
+
+<p>等级划分可能会在一周内的任意一天进行，并且一周可能进行一次以上。选择一个县以查看其处于哪个区域。</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH发布的更安全的经济蓝图架构</a>，了解等级划分及变更的方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。</p>
 
 
 
@@ -68,14 +80,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>是否可以做到一直佩戴面罩（例如吃的东西和饮水需要摘掉面罩）</li><li>是否可以保持个人和不同家庭成员之间的身体距离</li><li>是否可以限制在每平方英尺的人数</li><li>是否可以限制个人处于企业或者活动中的时间</li><li>是否可以限制暴露时长</li><li>是否可以限制不同家庭成员之间的人员混合</li><li>是否可以限制来访者/顾客的身体互动程度</li><li>是否可以增加空气流通（例如在户外运营或开门窗）</li><li>是否可以限制那些已知的能增加病毒传播风险的活动（例如唱歌、叫喊和深呼吸）</li></ul>
-
-
-
-<h4 class="wp-accordion">是否有针对户外营业用临时建筑物的指引？</h4>
-
-
-
-<p class="wp-accordion-content">随着天气愈发寒冷，需要在户外营业的餐厅和其他商业可能希望封闭户外临时建筑物（例如帐篷和雨棚），以保持温暖及避雨。请查阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">加州公共卫生局发布的临时建筑物指引</a>，了解符合资格的户外运营活动有哪些。</p>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>在公共场所佩戴口罩</li><li>经常洗手</li><li>在公共场所时，与他人保持六英尺的身体距离。</li><li>限制加入到不与您同住的人群中。</li></ul>
+<ul class="wp-accordion-content"><li>除必要需求外，请待在家中。</li><li>在公共场所佩戴口罩。</li><li>经常洗手</li><li>在公共场所时，与他人保持六英尺的身体距离。</li><li>限制加入到不与您同住的人群中。</li></ul>
 
 
 

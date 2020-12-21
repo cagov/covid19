@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
 title: "Plan para una economía más segura"
-meta: "Nueva orden regional para permanecer en casa La COVID-19 sigue aumentando a un ritmo alarmante en California. La orden regional de permanecer en casa, anunciada el 3 de diciembre de 2020, prohibirá las reuniones de cualquier tamaño, cerrará operaciones, excepto la infraestructura crítica y el comercio minorista, y exigirá un 100 % de uso de mascarilla y distanciamiento físico. Lea más sobre la orden regional de permanecer en casa. California tiene una […]"
+meta: "Nota Los conteos de casos de hoy incluyen 41,081 casos reportados hoy que son parte del aumento que seguimos viendo en todo el estado. Los 12,630 casos restantes son de días anteriores. California tiene un plan para abatir la COVID-19 en el estado con criterios actualizados para relajar o endurecer las restricciones a las actividades. Entienda la situación de su condado Todos los condados de […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Nueva orden regional de permanecer en casa </h4><p>La COVID-19 continúa aumentando a un ritmo alarmante en California. La orden regional de permanecer en casa, anunciada el 3 de diciembre de 2020, prohibirá las reuniones de cualquier tamaño, cerrará operaciones, excepto la infraestructura crítica y el comercio minorista, y exigirá un 100 % de uso de mascarilla y distanciamiento físico. Lea más sobre la <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">orden regional de permanecer en casa</a>.</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Nota</h4><p>Los conteos de casos de hoy incluyen 41,081 casos reportados hoy que son parte del aumento que seguimos viendo en todo el estado. Los 12,630 casos restantes son de días anteriores.</p></div>
 
 
 
-<p>California tiene un plan para abatir la COVID-19 en el estado con criterios actualizados para relajar o endurecer las restricciones a las actividades.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">Entienda la situación de su condado</h2>
+<p>California tiene un plan para abatir la COVID-19 en el estado con criterios actualizados para relajar o endurecer las restricciones a las actividades.</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">Entienda la situación de su condado</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*Los condados pequeños (aquellos con una población menor de 106,000) pueden estar sujetos a medidas de evaluación de casos alternativas para propósitos de asignación de niveles.</br> **El indicador de equidad de salud no se aplica a los condados pequeños. El indicador de equidad de la salud se usa para pasar a un nivel menos estricto.</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">Asignaciones de niveles actuales al {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">Orden regional de permanecer en casa</h3>
 
 
 
-<p>Las asignaciones de niveles pueden ocurrir cualquier día de la semana y pueden ocurrir más de una vez a la semana. Seleccione un condado para ver en qué región se encuentra.</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>El estado continúa registrando un aumento sin precedentes en el nivel de propagación comunitaria de la COVID-19. La orden regional de permanecer en casa, anunciada el 3 de diciembre de 2020 y una orden complementaria, firmada el 6 de diciembre de 2020, entrarán en vigor a las 11:59 p. m. del día siguiente, en las regiones con menos del 15 % de disponibilidad en las unidades de cuidados intensivos (ICU).</p>
 
 
 
-<p class="small-text">Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Consulte cómo se asignan y cambian los niveles, así como los datos históricos de los condados (<strong>Cuadro de datos del plan de California</strong>), en el <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">marco del Plan para una economía más segura del CDPH</a>.</p>
+<p>Obtenga más información sobre la <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">capacidad actual de las ICU</a> restante de cada región.</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">Asignaciones de niveles actuales al {{_varTierDate_}}</h3>
+
+
+
+<p>Las asignaciones de niveles pueden ocurrir cualquier día de la semana y pueden ocurrir más de una vez a la semana. Seleccione un condado para ver en qué región se encuentra.</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Consulte cómo se asignan y cambian los niveles, así como los datos históricos de los condados (<strong>Cuadro de datos del plan de California</strong>), en el <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">marco del Plan para una economía más segura del CDPH</a>.</p>
 
 
 
@@ -68,14 +80,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>Adaptar el uso de mascarillas en todo momento (por ejemplo, comer y beber requiere que se retiren las mascarillas)</li><li>Permitir el distanciamiento físico entre las personas de diferentes hogares</li><li>Limitar el número de personas por pie cuadrado</li><li>Limitar el tiempo que una persona está en un negocio o actividad</li><li>Limitar el tiempo de exposición</li><li>Limitar mezclar a las personas de diferentes hogares</li><li>Limitar la cantidad de interacciones físicas de los visitantes o dueños</li><li>Aumentar el flujo del aire (como operar al aire libre o abrir ventanas y puertas) </li><li>Limitar las actividades que se sabe que aumentan la transmisión del virus (como cantar, gritar y jadear)</li></ul>
-
-
-
-<h4 class="wp-accordion">¿Existe una guía para las estructuras temporales usadas en operaciones comerciales en exteriores?</h4>
-
-
-
-<p class="wp-accordion-content">A medida que comienza a hacer más frío, es posible que los restaurantes y otras empresas que deben operar al aire libre quieran anexar estructuras temporales al aire libre como carpas y marquesinas para contener el calor y resguardarse de la lluvia. Descubra qué califica como operaciones al aire libre en la <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">guía del Departamento de Salud Púbica de California para estructuras temporales</a>.</p>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Use mascarilla en público.</li><li>Lávese las manos frecuentemente.</li><li>Mantenga un distanciamiento físico de al menos seis pies cuando esté en público.</li><li>Limite estar con gente con la que no vive.</li></ul>
+<ul class="wp-accordion-content"><li>Permanezca en casa, excepto para servicios esenciales.</li><li>Use mascarilla en público.</li><li>Lávese las manos frecuentemente.</li><li>Mantenga un distanciamiento físico de al menos seis pies cuando esté en público.</li><li>Limite estar con gente con la que no vive.</li></ul>
 
 
 

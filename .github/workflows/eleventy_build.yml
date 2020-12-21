@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - 'pages/_data/wp/syncmanifest.json'
-      
 jobs:
   build_deploy:
     runs-on: ubuntu-18.04
@@ -15,10 +12,14 @@ jobs:
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
-        uses: cagov/actions-eleventy@2.1
+        uses: cagov/actions-eleventy@3.1
+        with:
+          build_task: build
+          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./docs
           publish_branch: deploy_production
+          commit_message: ${{ github.event.head_commit.message }}

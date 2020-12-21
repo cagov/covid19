@@ -183,10 +183,11 @@
 	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
 		<div class="video-wrap text-center">
 
-			{% set JSONVidraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
+			{% set JSONVidraw %}{% include "../wordpress-posts/video-section.json" %}{% endset %}
 			{% set JSONVid = JSONVidraw | jsonparse %}
-			{%- set RowsVid = JSONVid.Table5 -%}
+			{%- set RowsVid = JSONVid.Table1 -%}
 			{% for item in RowsVid %}
+			{% if item.Active == "yes" %}
 			<div class="container">
 			<div class="row">
 			<div class="col-lg-8 mx-auto text-center">
@@ -205,7 +206,7 @@
 					</a>
 				</article>
 
-				<a href="https://{{item["ButtonURL"]}}" class="link-arrow-blue mt-4">
+				<a href="https://{{item["ButtonURL"]}}" class="link-arrow-blue mt-4" data-video="{{item["VideoID"]}}">
 					<div class="link-arrow-label">{{item["ButtonText"]}}</div>
 					<cagov-arrow></cagov-arrow>
 				</a>
@@ -215,7 +216,7 @@
 				</div>
 				</div>
 
-				
+				{% endif %}
 				{% endfor %}
 				
 		</div>

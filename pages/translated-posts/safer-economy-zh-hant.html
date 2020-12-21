@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
 title: "更安全的經濟藍圖"
-meta: "最新地區性居家避疫令 加州的COVID-19病例數持續以驚人的速度激增。該地區性居家避疫令發佈於2020年12月3日，禁止進行任何規模的聚會、關閉除關鍵基礎設施和零售以外的經營活動，並要求全員佩戴口罩及保持人際距離。請參閱有關該地區性居家避疫令的更多資訊。加州制定了 […]"
+meta: "注釋 今日的病例數包含今日呈報的41,081例病例，其為全州持續激增病例數的一部分。餘下12,630例病例是來自前幾日的病例。加州制定了藍圖，以減緩州內的新型冠狀病毒疫情，並修訂了放寬和加強活動限制的標準。了解您所在縣的狀態 加州各縣 […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">最新地區性居家避疫令 </h4><p>加州的COVID-19病例數持續以驚人的速度激增。該地區性居家避疫令發佈於2020年12月3日，禁止進行任何規模的聚會、關閉除關鍵基礎設施和零售以外的經營活動，並要求全員佩戴口罩及保持人際距離。請參閱有關該<a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">地區性居家避疫令</a>的更多資訊。</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">注釋</h4><p>今日的病例數包含今日呈報的41,081例病例，其為全州持續激增病例數的一部分。餘下12,630例病例是來自前幾日的病例。</p></div>
 
 
 
-<p>加州制定了藍圖，以減緩州內的新型冠狀病毒疫情，並修訂了放寬和加強活動限制的標準。</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">了解您所在縣的狀態</h2>
+<p>加州制定了藍圖，以減緩州內的新型冠狀病毒疫情，並修訂了放寬和加強活動限制的標準。</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">了解您所在縣的狀態</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*可能會對小縣（人口少於106,000人的縣）採用其他病例評估措施，以進行等級劃分。</br>**健康公平指標不適用於小縣。健康公平指標是用於讓某縣移至限制性較低的等級。</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">當前等級劃分（截至 {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">地區性居家避疫令：</h3>
 
 
 
-<p>等級劃分可能會在一週內的任意一天進行，並且一週可能進行一次以上。選擇一個縣以查看其處於哪個地區。</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>加州COVID-19新型冠狀病毒社區擴散記錄持續激增。地區性居家避疫令發佈於2020年12月3日，並於2020年12月6日簽發補充命令，其將在加護病房 (Intensive Care Unit, ICU) 床位容量低於15%的地區的第二天晚上11:59生效。</p>
 
 
 
-<p class="small-text">所有數據和等級劃分的依據為{{_varTierEndDate_}}週末的結果。請參閱<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH發佈的更安全的經濟藍圖架構</a>，了解等級劃分及變更的方式，以及縣歷史數據（<strong>加州藍圖數據圖</strong>）。</p>
+<p>瞭解每個地區剩餘的<a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">實際ICU容量</a>。</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">當前等級劃分（截至 {{_varTierDate_}}</h3>
+
+
+
+<p>等級劃分可能會在一週內的任意一天進行，並且一週可能進行一次以上。選擇一個縣以查看其處於哪個地區。</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">所有數據和等級劃分的依據為{{_varTierEndDate_}}週末的結果。請參閱<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH發佈的更安全的經濟藍圖架構</a>，了解等級劃分及變更的方式，以及縣歷史數據（<strong>加州藍圖數據圖</strong>）。</p>
 
 
 
@@ -68,14 +80,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>任何時候都能依循佩戴口罩的要求（例如，飲食時需要摘下口罩）</li><li>允許不同家庭的個人保持人與人之間的距離</li><li>限制每平方英尺所容納的人數</li><li>限制個人在該企業或活動中的時間</li><li>限制接觸時間</li><li>限制來自不同家庭的人混合一起</li><li>限制訪客/服務員肢體互動的次數</li><li>增加空氣流通（例如於戶外運營或打開門窗） </li><li>限制已知會擴大病毒傳播範圍的活動（如唱歌、叫喊和大口呼吸）</li></ul>
-
-
-
-<h4 class="wp-accordion">是否有針對戶外營業用臨時建築物的指引？</h4>
-
-
-
-<p class="wp-accordion-content">隨著天氣愈發寒冷，需要在戶外營業的餐廳和其他商業可能希望封閉戶外臨時建築物（例如帳篷和雨棚），以保持溫暖及避雨。請查閱<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">加州公共衛生局發佈的臨時建築物指引</a>，了解符合資格的戶外營運有哪些。</p>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>在公共場所佩戴口罩。</li><li>經常洗手。</li><li>在公共場所時，至少要與人保持6英尺的距離。</li><li>限制與非同住者交往。</li></ul>
+<ul class="wp-accordion-content"><li>除基本需求外，請留在家中</li><li>在公共場所佩戴口罩。</li><li>經常洗手。</li><li>在公共場所時，至少要與人保持6英尺的距離。</li><li>限制與非同住者交往。</li></ul>
 
 
 

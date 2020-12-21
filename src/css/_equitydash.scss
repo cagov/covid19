@@ -1,0 +1,280 @@
+/* Layout overrides for Health Equity dashboard */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+/* Typography overrides */
+p.emphasized {
+  font-size: 1.45rem;
+}
+
+/* Button overrides */
+.grid-layout-hd.toggle-links {
+  max-width: none;
+}
+
+.toggle-links a {
+  display: inline-block;
+  margin: 0 1px 0 0;
+  min-width: 220px;
+}
+.toggle-links a:last-child {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .toggle-links a {
+    width: 100%;
+  }
+  .inline-toggle-link-container {
+    .large-tabs.toggle-links {
+      display: block !important;
+    }
+  }
+}
+
+/* Link overrides */
+.bg-darkblue a,
+.bg-darkblue a:focus {
+  color: #92c5de;
+  text-decoration: underline;
+}
+
+.bg-darkblue a:hover {
+  color: #92c5de;
+  text-decoration: none;
+}
+
+.bg-darkblue a:visited {
+  color: #b797d8;
+  text-decoration: underline;
+}
+
+/* Form input overrides */
+@media (max-width: 900px) {
+  .awesomplete {
+    display: inline-block;
+  }
+  .form-inline {
+    align-items: start;
+    margin: 0 auto;
+  }
+}
+
+/* Disparity data */
+.eq-data {
+  color: $orange !important;
+  font-weight: 700 !important;
+}
+.bd-20 {
+  border: 7px solid $lightestblue;
+  border-radius: 20px !important;
+}
+.eq-cases {
+  margin-top: auto;
+}
+
+/* Learn more links */
+/* NOTE: This could live in the web component, but was in stylesheets. */
+.learn-more-links {
+  .faq-twitter {
+    @extend %block-padding;
+    width: 100%;
+    order: 1;
+    @include tablet {
+      order: 2;
+    }
+    &-wrap {
+      @extend %wrap;
+      @include tablet {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .faq {
+    text-align: left;
+    @include tablet {
+      width: 50%;
+      padding: 0 2rem 0 0;
+    }
+    &-headline {
+      @extend %headline3;
+      color: $darkblue;
+      padding-bottom: 1.5rem;
+      padding-left: 0.75rem;
+      &-link {
+        transition: $slow;
+        color: $darkblue;
+        padding: 0.5rem 0.25rem;
+        border-radius: 2.5rem;
+        &:hover {
+          color: $yellow;
+        }
+        &:focus {
+          color: $yellow;
+          box-shadow: 0 0 0 2px $orange;
+        }
+      }
+    }
+    .button {
+      @include tablet {
+        margin-left: 0.75rem;
+      }
+    }
+    cwds-arrow {
+      margin-left: auto;
+    }
+    &-item {
+      &-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $darkblue;
+        padding: 1.2rem 0.75rem;
+        position: relative;
+        transition: background 0.3s $slow-curve;
+
+        &:focus {
+          background: $blue;
+          box-shadow: 0 0 0 2px $yellow;
+          .faq {
+            &-icon {
+              color: $darkblue;
+              &-circle {
+                background: $white;
+                border-color: $darkblue;
+                transform: scale(1.2);
+              }
+              &-arrow {
+                transform: translate(275%, -50%);
+              }
+              &-arrow:last-of-type {
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+      }
+      &-headline {
+        @extend %headline5;
+        font-family: $body;
+        color: $darkblue;
+        position: relative;
+        z-index: 100;
+        margin-right: 1rem;
+        margin-bottom: 0 !important;
+        padding-top: 0;
+      }
+      &:hover {
+        .faq {
+          &-item {
+            &-link {
+              background: $lightestblue;
+            }
+          }
+          &-icon {
+            color: $darkblue;
+            &-circle {
+              background: $white;
+              border-color: $darkblue;
+              transform: scale(1.2);
+            }
+            &-arrow {
+              transform: translate(275%, -50%);
+            }
+            &-arrow:last-of-type {
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+    &-icon {
+      @include size(40px);
+      min-width: 40px;
+      min-height: 40px;
+      margin-left: auto;
+      position: relative;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $orange;
+      @include tablet {
+        @include size(30px);
+        min-width: 30px;
+        min-height: 30px;
+      }
+      @include desktop {
+        @include size(35px);
+        min-width: 35px;
+        min-height: 35px;
+      }
+      @include lg {
+        @include size(40px);
+        min-width: 40px;
+        min-height: 40px;
+      }
+      &-arrow,
+      &-circle {
+        position: absolute;
+        transition: 1.2s cubic-bezier(0.15, 0.92, 0.14, 0.95);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      &-circle {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $orange;
+        border-radius: 100%;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      &-arrow {
+        left: 50%;
+        top: 50%;
+        width: 16px;
+        min-width: 16px;
+        height: 1rem;
+        transform: translate(-50%, -50%);
+        @include lg {
+          width: 0.75vw;
+          min-width: 0.75vw;
+        }
+        &:last-of-type {
+          transform: translate(-275%, -50%);
+        }
+        &-wrapper {
+          @include absolute(left 0 right 0 top 0 bottom 0);
+          @include size(100%);
+          overflow: hidden;
+        }
+        &-svg {
+          position: relative;
+          display: block;
+          @include size(100%, 1rem);
+          &-art {
+            @include size(100%);
+            @include absolute(left 0 right 0 top 0 bottom 0);
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .t-center {
+    text-align: center;
+  }
+
+  .faq article:first-child .faq-item-link {
+    border-top: 1px solid $blue;
+  }
+  .cwdsarrow {
+    margin-bottom: 0 !important;
+  }
+}

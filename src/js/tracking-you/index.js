@@ -1,4 +1,9 @@
-export default function applyAccordionListeners() {
+import boxTracker from "./box-tracker.js";
+
+export default function setupAnalytics() {
+
+  ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
+
   document.querySelectorAll('cwds-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('.accordion-title')) {
@@ -9,13 +14,14 @@ export default function applyAccordionListeners() {
 
   document.querySelectorAll('a').forEach((a) => {
     // look for and track offsite and pdf links
-    if(a.href.indexOf(window.location.hostname) > -1) {
+    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf('covid19.ca.gov') > -1) {
       if(a.href.indexOf('.pdf') > -1) {
         a.addEventListener('click',function() {
           reportGA('pdf', this.href.split(window.location.hostname)[1])
         });    
       }
     } else {
+      // console.log("Adding offsite link handler:",window.location.hostname,a.href);
       a.addEventListener('click',function() {
         reportGA('offsite', this.href)
       })
@@ -29,6 +35,7 @@ export default function applyAccordionListeners() {
       eventString ==> eventLabel
   */
   function reportGA(eventAction, eventLabel, eventCategory = 'click') {
+    console.log("ReportGA", eventCategory, eventAction, eventLabel);
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
       ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
@@ -138,9 +145,11 @@ export default function applyAccordionListeners() {
         scrollHits.push(trigger);
         const eventAction = `scroll-${trigger}`;
         const eventLabel = `scroll-${trigger}-${pagename}`;
-        window.ga('send', 'event', 'scroll', eventAction, eventLabel);
-        window.ga('tracker2.send', 'event', 'scroll', eventAction, eventLabel);
-        window.ga('tracker3.send', 'event', 'scroll', eventAction, eventLabel);
+        // console.log("Triggered scroll ",trigger,eventLabel);
+        reportGA(eventAction, eventLabel, 'scroll');
+        // window.ga('send', 'event', 'scroll', eventAction, eventLabel);
+        // window.ga('tracker2.send', 'event', 'scroll', eventAction, eventLabel);
+        // window.ga('tracker3.send', 'event', 'scroll', eventAction, eventLabel);
       }
     });
   };
@@ -149,9 +158,12 @@ export default function applyAccordionListeners() {
   // Note this generates a function for use by an event listener.
   const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
     // Fire off reports to Google Analytics.
-    window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
-    window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
-    window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    console.log("linkhandler",eventAction,eventLabel);
+    reportGA(eventAction, eventLabel);
+    // we are using beacon by default, if it's available
+    // window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    // window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
+    // window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
   };
 
   // Add 'external' to front of any supplied links, when relevant.
@@ -194,9 +206,10 @@ export default function applyAccordionListeners() {
         const eventLabel = form.querySelector('input[name="q"]').value; // User's search query.
 
         // Send info to Google Analytics.
-        window.ga('send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
-        window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
-        window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        reportGA(eventAction, eventLabel, 'search');
+        // window.ga('send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        // window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
+        // window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
       });
     });
 
@@ -259,10 +272,62 @@ export default function applyAccordionListeners() {
       window.addEventListener('safer-economy-page-submission', event => {
         const eventAction = event.detail.county;
         const eventLabel = event.detail.activity ? event.detail.activity : 'None';
-        window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
-        window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);
-        window.ga('tracker3.send', 'event', 'activity-status', eventAction, eventLabel);
+        reportGA(eventAction, eventLabel, 'activity-status');
+        // window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
+        // window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);
+        // window.ga('tracker3.send', 'event', 'activity-status', eventAction, eventLabel);
       });
+    }
+    if (window.location.pathname.match(/\/equity[/]?$/g)) {
+      window.addEventListener('scroll', throttle(scrollHandler('equity'), 1000));
+      
+      let searchElement = document.querySelector('cagov-county-search');
+      searchElement.addEventListener('county-selected', function(e) {
+        // console.log("county selected! ",e.detail);
+        if (e.detail.how == 'tab') {
+          reportGA('tab-select',e.detail.county, 'click');
+        } else {
+          reportGA('county-select', e.detail.county, 'activity-status');
+        }
+      }.bind(this), false);
+
+      /* searchElement.addEventListener('county-search-typo', function(e) {
+        // console.log("got county thpo! ",e.detail);
+        reportGA('county-select-typo', e.detail.county, 'activity-status');
+      }.bind(this), false); */
+      
+      // Setting up trackers for big blue bar chart
+      document.addEventListener('setup-sd-tab-tracking', function() {
+        for (let tlabel of ['income','housing','healthcare']) {
+          const btn = document.querySelector("button.large-tab." + tlabel);
+          if (btn != null) {
+            btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
+          }
+        }
+      });
+
+      document.querySelectorAll('.small-tab').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          let tabName = this.getAttribute('data-key');
+          // console.log("Got tab click",tabName);
+          reportGA('tab-select', tabName); // equity-tab-select?  or tabName+":equity"?
+
+        });
+      });
+      // this event generated by box-tracker
+      window.addEventListener('chart-in-view', function(e) {
+        reportGA('chart-in-view', e.detail.label, 'scroll');
+      });
+      boxTracker('cagov-chart-re-pop', 're-pop');
+      boxTracker('cagov-chart-re-100k', 're-100k');
+      boxTracker('cagov-chart-d3-lines', 'health-equity');
+      boxTracker('cagov-chart-equity-data-completeness', 'data-completeness');
+      boxTracker('cagov-chart-d3-bar', 'social-bar');
+
+      // window.addEventListener('tab-select', function(e) {
+      //   console.log("Tracking got tab-select",e.detail);
+      //   reportGA('tab-select',e.detail.tab_selected);
+      // });
     }
   }
 }

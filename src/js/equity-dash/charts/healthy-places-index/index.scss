@@ -1,0 +1,15 @@
+cagov-chart-d3-lines {
+  .tick line {
+    stroke: #ccc; /* F2F5FC */
+    stroke-width: 0.5;
+  }
+  .tick {
+    font-size: 0.2rem;
+  }
+  svg text {
+    font-size: 1rem;
+  }
+  text.label1 {
+    font-size: 0.85rem;
+  }
+}

@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
-title: "Blueprint para sa isang Mas Ligtas na Ekonomiya"
-meta: "Bagong Pangrehiyon na Kautusang Manatili sa Bahay Patuloy na tumataas ang bilang ng kaso ng COVID-19 sa mga nakakaalarmang antas sa California. Sa Pangrehiyon na Kautusang Manatili sa Bahay, na inanunsyo noong Disyembre, ipagbabawal ang mga pagtitipon gaano man ito kalaki o kaliit, isasarado ang mga pagpapatakbo maliban para sa mga klinikal na imprastraktura at retail, at ipag-aatas ang 100% pagsusuot ng mask at physical distancing. Magbasa pa tungkol sa Pangrehiyon na Kautusang Manatili sa Bahay. Ang California ay may […]"
+title: "Blueprint para sa Mas Ligtas na Ekonomiya"
+meta: "Tandaan Kasama sa bilang ng mga kaso ngayong araw ang 41,081 kasong naiulat sa araw na ito, na bahagi ng pagdami ng kaso na patuloy nating nakikita sa buong estado. Mula sa mga nakaraang araw ang natitirang 12,630 kaso. May bagong blueprint ang California para mabawasan ang COVID-19 sa estado, na may mga nabagong pamantayan para sa pagpapaluwag at paghihigpit ng mga limitasyon sa mga aktibidad. Unawain ang status ng iyong county Ang bawat county sa […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Bagong Pangrehiyon na Kautusang Manatili sa Bahay </h4><p>Patuloy na tumataas ang bilang ng kasi ng COVID-19 sa mga nakakabahalang antas sa California Sa Pangrehiyon na Kautusang Manatili sa Bahay, na inanunsyo noong Disyembre, ipagbabawal ang mga pagtitipon gaano man ito kalaki o kaliit, isasarado ang mga pagpapatakbo maliban para sa mga klinikal na imprastraktura at retail, at ipag-aatas ang 100% pagsusuot ng mask at physical distancing. Magbasa pa tungkol sa <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">Pangrehiyon na Kautusang Manatili sa Bahay</a>.</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Tandaan</h4><p>Kasama sa bilang ng mga kaso ngayong araw ang 41,081 kasong naiulat sa araw na ito, na bahagi ng pagdami ng kaso na patuloy nating nakikita sa buong estado. Mula sa mga nakaraang araw ang natitirang 12,630 kaso.</p></div>
 
 
 
-<p>May bagong blueprint ang California para mabawasan ang COVID-19 sa estado, na may mga nabagong pamantayan para sa pagpapaluwag at paghihigpit ng mga limitasyon sa mga aktibidad.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">Unawain ang status ng iyong county</h2>
+<p>May bagong blueprint ang California para mabawasan ang COVID-19 sa estado, na may mga nabagong pamantayan para sa pagpapaluwag at paghihigpit ng mga limitasyon sa mga aktibidad.</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">Unawain ang status ng iyong county</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*Puwedeng mapailalim ang maliliit na county (na wala pang 106,000 ang populasyon) sa ibang pag-iingat para sa pagtatasa ng kaso para sa mga layunin ng pagtatalaga ng tier.</br> **Hindi inilalapat ang sukatan ng equity sa kalusugan sa maliliit na county. Ginagamit ang sukatan ng equity sa kalusugan para makausad sa mas maluwag na tier.</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">Kasalukuyang pagtatalaga ng tier mula {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">Panrehiyong Utos na Manatili sa Bahay</h3>
 
 
 
-<p>Puwedeng ilabas ang mga pagtatalaga ng tier anumang araw sa linggo at puwedeng maglabas nito nang mahigit sa isang beses sa isang linggo. Pumili ng county para malaman kung saang rehiyon ito kabilang.</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>Patuloy na nagtatala ang Estado ng pagtaas ng bilang sa antas ng pagkalat ng COVID-19 sa komunidad na hindi pa naitatala noon. Ang Panrehiyong Utos na Manatili sa Bahay, na inanunsyo noong Disyembre 3, 2020, at ang isang karagdagang utos, na nilagdaan noong Disyembre 6, 2020, ay magkaroon ng bisa nang 11:59 PM kinabukasan sa mga rehiyong wala pang 15% ang availability ng intensive care unit (ICU).</p>
 
 
 
-<p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California o California Blueprint Data Chart</strong>), sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>.</p>
+<p>Matuto pa tungkol sa natitirang <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">aktwal na kapasidad ng ICU</a> sa bawat rehiyon.</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">Kasalukuyang pagtatalaga ng tier mula {{_varTierDate_}}</h3>
+
+
+
+<p>Puwedeng ilabas ang mga pagtatalaga ng tier anumang araw sa linggo at puwedeng maglabas nito nang mahigit sa isang beses sa isang linggo. Pumili ng county para malaman kung saang rehiyon ito kabilang.</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California o California Blueprint Data Chart</strong>), sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>.</p>
 
 
 
@@ -68,14 +80,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>Magsuot ng mask sa lahat ng pagkakataon (halimbawa, kailangang mag-alis ng mask kapag kumakain at umiinom)</li><li>Dumistansya sa mga indibidwal mula sa ibang sambahayan</li><li>Limitahan ang bilang ng mga tao bawat square foot</li><li>Limitahan ang oras na nasa negosyo o aktibidad ang isang indibidwal</li><li>Limitahan ang tagal ng pagkakalantad</li><li>Iwasang makisalamuha sa mga tao mula sa ibang sambahayan</li><li>Limitahan ang bilang ng mga pisikal na pakikipag-ugnayan ng mga bisita/patron</li><li>Dagdagan ang dumadaloy na hangin (kapag nagpapatakbo outdoors o nagbubukas ng mga bintana at pinto) </li><li>Limitahan ang mga aktibidad na natukoy nang nagpapabilis sa pagkalat ng virus (gaya ng pagkanta, pagsigaw, at malalim na paghinga)</li></ul>
-
-
-
-<h4 class="wp-accordion">May gabay ba para sa mga pansamantalang istraktura na ginagamit sa mga pagpapatakbo ng outdoor na negosyo?</h4>
-
-
-
-<p class="wp-accordion-content">Kasabay ng paglamig ng panahon, magagawa ng mga restaurant at iba pang negosyo na kinakailangang magpatakbo outdoors na sarhan ang mga outdoor na pansamantalang istruktura gaya ng mga tent at canopy para mapanatili ang init at maiwasan ang ulan. Alamin kung ano ang kwalipikado bilang outdoor na operasyon sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">gabay ng Departamento Pampublikong Kalusugan ng California (California Department of Public Health, CDPH) para sa mga pansamantalang imprastraktura</a>.</p>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Magsuot ng mask sa mga pampublikong lugar.</li><li>Regulas na maghugas ng kamay.</li><li>Magpanatili ng hindi bababa sa anim na talampakang layo sa mga tao kapag nasa pampublikong lugar.</li><li>Iwasang makisalamuha sa mga taong hindi mo kasama sa bahay.</li></ul>
+<ul class="wp-accordion-content"><li>Manatili sa bahay maliban kung para sa mahahalagang serbisyo.</li><li>Magsuot ng mask sa mga pampublikong lugar.</li><li>Regulas na maghugas ng kamay.</li><li>Magpanatili ng hindi bababa sa anim na talampakang layo sa mga tao kapag nasa pampublikong lugar.</li><li>Iwasang makisalamuha sa mga taong hindi mo kasama sa bahay.</li></ul>
 
 
 
