@@ -81,7 +81,7 @@ hero-stats {
 	    align-self: center;
 		}
 		@include tablet-wide {
-			width: 60%;
+			width: 50%;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
@@ -154,23 +154,23 @@ hero-stats {
 /* STATS */
 .hero-stats {
 	background: $darkblue;
-	padding: 2rem 1.5rem;
+	padding: 1rem 2rem;
 	box-shadow: 0 0.5rem 1.5rem 0 rgba(0,0,0,.3);
 	align-self: flex-end;
 	@include tablet {
-		background: $blue;
-		padding: 2rem;
+		background: $darkblue;
+		padding: 1rem 1.5rem;
 		margin: 3rem auto 2rem;
 		width: 50%;
 		transition-delay: .9s;
 	}
 	@include tablet-wide {
-		padding: 2.25rem;
-		width: 40%;
+		padding: 1rem 1.5rem;
+		width: 50%;
 		margin: 3.5rem auto 2rem;
 	}
 	@include desktop {
-		padding: 2.3rem 3rem 2.5rem 3rem;
+		padding: 1rem 1.5rem;
 		margin: 5rem auto 2rem;
 	}
 	&-headline {
@@ -304,7 +304,7 @@ hero-stats {
 				font-size: 1.9rem;
 			}
 			@include tablet-wide {
-				width: 40%;
+				width: 50%;
 			}
 			@include desktop {
 				padding: 0 1rem;
@@ -329,21 +329,19 @@ hero-stats {
 		}
 	}
 	&-footer {
-		margin-top: 1.5rem;
+		margin-top: 1rem;
 		text-align: center;
 		&-link {
-			text-transform: uppercase;
-			color: $lightestblue;
-			border-radius: 1.25rem;
-			border:1px solid;
+			color: $lightblue;
 			padding: .65rem .75rem .5rem .75rem;
-			transition: background .3s $slow-curve;
-			font-size: .85rem;
+			transition: all .3s $slow-curve;
+			font-size: 1.2rem;
+			font-weight: 300;
 			display: inline-block;
-			margin-top: 1rem;
-			margin-left: .3rem;
-			margin-right: .3rem;
+			margin-left: 2rem;
+			margin-right: 2rem;
 			text-decoration: none;
+
 			@include tablet {
 				font-size: 85%;
 				white-space: nowrap;
@@ -353,18 +351,10 @@ hero-stats {
 				font-size: 1rem;}
 			@include tablet-wide {
 				padding: .5rem 1rem;
-				font-size: 1rem;
+				font-size: 1.25rem;
 			}
 			&:hover {
-				background: $blue;
-				@include tablet {
-					background: $darkblue;
-				}
-			}
-			&:focus {
-				background: $white;
-				color: $darkblue;
-				box-shadow:  0 0 0 2px $yellow;
+				color: $orange;
 			}
 		}
 	}
@@ -402,7 +392,7 @@ hero-stats {
 				padding: 1.5rem;
 			}
 			@include tablet-wide {
-				width: 60%;
+				width: 50%;
 				padding: 2rem;
 			}
 			@include desktop {
@@ -465,7 +455,7 @@ hero-stats {
 			}
 			@include tablet-wide {
 				padding: 2rem;
-				width: 40%;
+				width: 50%;
 			}
 			@include desktop {
 				padding: 3rem 2rem;

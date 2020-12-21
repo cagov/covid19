@@ -1,3 +1,20 @@
+{%-set data = tableauCovidMetrics[0] -%}
+{%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
+{%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2020", "")-%}
+{%-set _varStatTotalCases_ = data.TOTALCONFIRMED | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = data.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalCasesTodayPct_ = (100*data.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTotalDeaths_ = data.NUMBERDIED | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = data.NUMBERDIED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsLast_ = (data.NUMBERDIED - data.NUMBERDIED_DAILY) | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsChange_ = (100*data.NUMBERDIED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStatTested_ = data.TESTED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = data.TESTED_DAILY | formatNumber(tags)-%}
+{%-set _varStatTestedDailyPct_ = (100*data.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
+{%-set _varStarPos_14DayAvg_ = (100*data.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
+{%-set _varStatYesterdayDate_ = data.DATE | formatDate2(false, tags)-%}
+
+
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
 
@@ -43,39 +60,51 @@
 					<div class="hero-stats-subheadline">
 						{{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags,+1)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags)) -}}
 					</div>
-					<div class="hero-stats-slider">
-						<div class="hero-stats-slide" aria-hidden="true" aria-labelledby="cumulative-stats">
-							<div class="hero-stats-row">
-								<div class="hero-stats-row-label">
-									<span class="hero-stats-row-label-text">{{varTotalCases}}</span>
-								</div>
-								<div class="hero-stats-row-figure">{{ statsData.summary.totalCases | formatNumber }}</div>
-								<div class="hero-stats-row-details">
-									+{{ statsData.summary.totalCasesIncrease | formatNumber(tags,1) }}% 
-								</div>
-							</div>
-							<div class="hero-stats-row">
-								<div class="hero-stats-row-label">
-									<span class="hero-stats-row-label-text">{{varTotalDeaths}}</span>
-								</div>
-								<div class="hero-stats-row-figure">{{ statsData.summary.totalDeaths | formatNumber }}</div>
-								<div class="hero-stats-row-details">
-									+{{ statsData.summary.totalDeathsIncrease | formatNumber(tags,1) }}%
-								</div>
-							</div>
-							<div class="hero-stats-row">
-								<div class="hero-stats-row-label">
-									<span class="hero-stats-row-label-text">{{varTestsReported}}</span>
-								</div>
-								<div class="hero-stats-row-figure">{{ statsData.summary.testsReported | formatNumber }}</div>
-								<div class="hero-stats-row-details">					
-								</div>
-							</div>
-						</div>
-					</div>		
+
+
+
+
+					 <div class="row d-flex justify-content-md-center">
+            <div class="col-md-4">
+                <div class="bg-blue rounded-lg py-2 text-center mt-3">
+                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
+                
+                    <div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">total</span></div>
+                    <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-cases-increase" class="text-white text-small my-2"> {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase <br>from prior day total</span></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-blue rounded-lg py-2 text-center mt-3">
+                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+                
+                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">total</span></div>
+                    <div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-deaths-increase" class="text-white text-small my-2"> {{_varStatTotalDeathsChange_}}% <span class="text-300">increase <br>from prior day total</span></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-blue rounded-lg py-2 text-center mt-3">
+                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+                
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-increase" class="text-white text-small my-2"> {{_varStatTestedDailyPct_}}% <span class="text-300">increase <br>from prior day total</span></div>
+                </div>
+            </div>
+        </div>
+
+
+<p class="text-center small-text text-300 mt-4">Note: Rates of cases, deaths and tests are based on a 7 day average.</p>
+
+
+
+						
 					<div class="hero-stats-footer">
-						<a class="hero-stats-footer-link mt-2" href="{{ 'safer-economy/' | toTranslatedPath(tags) }}#county-status">{{varCountyMap}}</a>
-						<a class="hero-stats-footer-link mt-2" href="https://update.covid19.ca.gov/">{{varStateSummary}}</a>
+						<a class="hero-stats-footer-link mt-2" href="/state-dashboard/"><span class="no-underline ca-gov-icon-state" aria-hidden="true"></span> <span class="underline"> <span class="underline">{{varStateSummary}}</span></a>
+
+						<a class="hero-stats-footer-link mt-2" href="{{ 'safer-economy/' | toTranslatedPath(tags) }}#county-status"><span class="no-underline ca-gov-icon-bar-chart" aria-hidden="true"></span> <span class="underline">{{varCountyMap}}</span></a>
+						
 					</div>
 				</div>
 				<div class="hero-alert" role="alert" aria-label="Alerts section">
