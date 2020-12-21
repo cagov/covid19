@@ -165,7 +165,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Cam kết đảm bảo sự công bằng sức khỏe của California</h1>
           
-            <p class="small-text">Cập nhật mới nhất&nbsp;20 tháng 12, 2020 lúc 10:06</p>
+            <p class="small-text">Cập nhật mới nhất&nbsp;20 tháng 12, 2020 lúc 10:13</p>
           
         </div>
       </div>
@@ -346,6 +346,7 @@
         <li data-label="data1-legend-local">placeholderForDynamicLocation xét nghiệm dương tính</li>
         <li data-label="data2-legend">Mức độ dương tính trong điểm tứ phân vị công bằng sức khỏe</li>
         <li data-label="missing-data-caption">Chỉ số công bằng sức khỏe không áp dụng cho các quận có dân số dưới 106.000.</li>
+        <li data-label="data-anomalies-caption">Due to reporting anomalies, we cannot display this data accurately.</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
@@ -3682,6 +3683,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       data1LegendLocal: this.translationsObj["data1-legend-local"], // 'placeholderForDynamicLocation test positivity', // appended to county name
       data2Legend: this.translationsObj["data2-legend"], // 'Health equity quartile positivity',
       missingDataCaption: this.translationsObj["missing-data-caption"], // 'The health equity metric is not<br>applied to counties with a population<br>less than 106,000.',
+      dataAnomaliesCaption: this.translationsObj["data-anomalies-caption"], // Due to reporting anomalies, we cannot display this data accurately.
     };
 
     this.svg = d3
@@ -3779,12 +3781,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     // console.log("Equity Data2 ", data2);
     let missing_eq_data =
       data2.filter((d) => null == d.METRIC_VALUE).length > 0;
+    let anomalies_data = data[0].COUNTY === "San Diego";
+    let using_data_overlay = (missing_eq_data || anomalies_data);
 
     let legendLabels = [data1Legend, this.textLabels.data2Legend];
     this.rewriteLegend(this.svg, legendLabels);
     svg
       .selectAll(".legend")
-      .attr("visibility", missing_eq_data ? "hidden" : "visible");
+      .attr("visibility", using_data_overlay ? "hidden" : "visible");
     // console.log("dims",this.chartBreakpointValues);
 
     let xbounds = {
@@ -3874,7 +3878,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.selectAll(".y-label").remove();
     // d3.selectAll(".tooltip-container--d3-lines").remove();
 
-    if (!missing_eq_data) {
+    if (!using_data_overlay) {
       svg
         .append("path")
         .datum(
@@ -3892,7 +3896,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     //call line chart county_positivity_low_hpi
     svg.selectAll(".county_positivity_low_hpi").remove();
 
-    if (!missing_eq_data) {
+    if (!using_data_overlay) {
       svg
         .append("path")
         .datum(
@@ -3915,14 +3919,22 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.append("g").call(yAxisLabel);
 
     let is_debugging_infobox = false;
+    let is_debugging_anomalies = false;
     let boxClass = "chartOverlay-d3-lines";
     if (missing_eq_data || is_debugging_infobox) {
       chartOverlayBox(svg,                      
-                     "cagov-chart-d3-lines",     // class of chart
-                     boxClass,                   // class of box
-                     this.chartBreakpointValues, // dimensions dict (contains width,height)
-                     this.textLabels.missingDataCaption // caption
-                     );
+            "cagov-chart-d3-lines",     // class of chart
+            boxClass,                   // class of box
+            this.chartBreakpointValues, // dimensions dict (contains width,height)
+            this.textLabels.missingDataCaption // caption
+            );
+    } else if (anomalies_data || is_debugging_anomalies) {
+      chartOverlayBox(svg,                      
+            "cagov-chart-d3-lines",     // class of chart
+            boxClass,                   // class of box
+            this.chartBreakpointValues, // dimensions dict (contains width,height)
+            this.textLabels.dataAnomaliesCaption // caption
+            );
     } else {
       chartOverlayBoxClear(svg, boxClass);
     }
@@ -3931,7 +3943,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.on("mousemove", null);
     svg.on("mouseleave touchend", null);
 
-    if (!missing_eq_data) {
+    if (!using_data_overlay) {
       const tooltip = new Tooltip(true);
       const tooltip2 = new Tooltip(false);
 
@@ -3944,20 +3956,20 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           var xy = d3.pointer(event);
           // console.log("event: ",xy);
           tooltip.show(this.bisect(data, x.invert(xy[0])), x, y);
-          if (!missing_eq_data) {
+          if (!using_data_overlay) {
             tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y);
           }
         })
         .on("mouseleave touchend", (event) => {
           // console.log("leave");
           tooltip.hide();
-          if (!missing_eq_data) {
+          if (!using_data_overlay) {
             tooltip2.hide();
           }
         });
 
       svg.append(() => tooltip.node);
-      if (!missing_eq_data) {
+      if (!using_data_overlay) {
         svg.append(() => tooltip2.node);
       }
     }
