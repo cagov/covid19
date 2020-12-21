@@ -1972,6 +1972,11 @@ font {
 .bd-darkblue {border: 1px solid $darkblue !important;}
 .bd-ccc { border: solid 1px #ccc; }
 
+.bd-col-white {border: 7px solid $white;}
+.bd-top-14-orange {border-top: 14px solid $orange;}
+.bd-top-14-yellow {border-top: 14px solid $yellow;}
+.bd-top-14-lightblue {border-top: 14px solid $lightblue;}
+
 .has-text-align-center {text-align: center !important;}
 .text-300 {font-weight: 300 !important;}
 .text-400 {font-weight: 400 !important;}
@@ -1994,4 +1999,9 @@ font {
 .text-700-mobile {font-weight: 700 !important;}
 .text-800-mobile {font-weight: 800 !important;}
 .text-900-mobile {font-weight: 900 !important;}
+}
+
+/* Typography overrides */
+.emphasized {
+  font-size: 1.45rem !important;
 }

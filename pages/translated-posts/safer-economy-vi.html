@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
 title: "Kế Hoạch Chi Tiết Vì Một Nền Kinh Tế An Toàn Hơn"
-meta: "Lệnh Ở Nhà trong Khu Vực Mới Ban Hành Đại dịch COVID-19 tiếp tục gia tăng đột biến ở tỷ lệ đáng báo động tại California. Lệnh Ở Nhà trong Khu Vực được công bố ngày 3 tháng 12 năm 2020 sẽ cấm tụ tập với số người bất kỳ, đóng cửa các hoạt động, ngoại trừ cơ sở hạ tầng và bán lẻ thiết yếu, đồng thời yêu cầu tất cả mọi người phải đeo khẩu trang và giữ khoảng cách. Đọc thêm về Lệnh Ở Nhà trong Khu Vực. California có […]"
+meta: "Ghi chú Tổng số ca mắc ngày hôm nay bao gồm cả 41.081 ca được báo cáo hôm nay, là tình trạng tăng cao đột ngột mà chúng ta tiếp tục chứng kiến trên toàn tiểu bang. 12,630 ca còn lại là từ những ngày trước. California có kế hoạch chi tiết để giảm bớt sự lây lan của đại dịch COVID-19 tại tiểu bang với các tiêu chí sửa đổi nhằm nới lỏng và thắt chặt các hạn chế hoạt động. Hiểu rõ trạng thái quận của quý vị Mỗi quận ở […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Lệnh Ở Nhà trong Khu Vực Mới Ban Hành </h4><p>Đại dịch COVID-19 tiếp tục gia tăng đột biến ở tỷ lệ đáng báo động tại California. Lệnh Ở Nhà trong Khu Vực được công bố ngày 3 tháng 12 năm 2020 sẽ cấm tụ tập với số người bất kỳ, đóng cửa các hoạt động, ngoại trừ cơ sở hạ tầng và bán lẻ thiết yếu, đồng thời yêu cầu tất cả mọi người phải đeo khẩu trang và giữ khoảng cách. Đọc thêm về <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">Lệnh Ở Nhà trong Khu Vực</a>.</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">Ghi chú</h4><p>Tổng số ca mắc ngày hôm nay bao gồm cả 41,081 ca được báo cáo hôm nay, là tình trạng tăng cao đột ngột mà chúng ta tiếp tục chứng kiến trên toàn tiểu bang. 12,630 ca còn lại là từ những ngày trước.</p></div>
 
 
 
-<p>California có kế hoạch chi tiết để giảm bớt sự lây lan của đại dịch COVID-19 tại tiểu bang với các tiêu chí sửa đổi nhằm nới lỏng và thắt chặt các hạn chế hoạt động.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">Hiểu rõ trạng thái quận của quý vị</h2>
+<p>California có kế hoạch chi tiết để giảm bớt sự lây lan của đại dịch COVID-19 tại tiểu bang với các tiêu chí sửa đổi nhằm nới lỏng và thắt chặt các hạn chế hoạt động.</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">Hiểu rõ trạng thái quận của quý vị</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*Các quận nhỏ (có quy mô dân số dưới 106,000 người) có thể thay đổi các biện pháp đánh giá ca bệnh vì mục đích chỉ định cấp.</br> **Chỉ số công bằng sức khỏe không được áp dụng tại các quận nhỏ. Chỉ số công bằng sức khỏe được sử dụng để chuyển sang cấp ít hạn chế hơn.</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">Chỉ định cấp quận hiện tại kể từ {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">Lệnh Ở Nhà Hạn Chế</h3>
 
 
 
-<p>Việc chỉ định cấp có thể được thực hiện vào bất kỳ ngày nào trong tuần và với tần suất nhiều lần một tuần. Chọn một quận để xem quận đó thuộc khu vực nào.</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>Tiểu Bang tiếp tục ghi nhận tình trạng tăng cao đột ngột chưa từng có về mức độ lây lan của đại dịch COVID-19 trong cộng đồng. Lệnh Ở Nhà trong Khu Vực được công bố ngày 3 tháng 12 năm 2020 và một lệnh bổ sung được ký ngày 6 tháng 12 năm 2020 sẽ có hiệu lực vào lúc 11:59 tối ngày tiếp theo tại những khu vực có dưới 15% đơn vị hồi sức tích cực (ICU) sẵn sàng phục vụ.</p>
 
 
 
-<p class="small-text">Toàn bộ dữ liệu và chỉ định cấp được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi cấp, cũng như dữ liệu trước đây của quận (<strong>Biểu Đồ Dữ Liệu Kế Hoạch Chi Tiết California</strong>), trong <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">khung Kế Hoạch Chi Tiết vì một Nền Kinh Tế An Toàn Hơn của CDPH</a>.</p>
+<p>Tìm hiểu thêm về <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">khả năng phục vụ thực tế của ICU</a> còn lại trong mỗi khu vực.</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">Chỉ định cấp quận hiện tại kể từ {{_varTierDate_}}</h3>
+
+
+
+<p>Việc chỉ định cấp có thể được thực hiện vào bất kỳ ngày nào trong tuần và với tần suất nhiều lần một tuần. Chọn một quận để xem quận đó thuộc khu vực nào.</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">Toàn bộ dữ liệu và chỉ định cấp được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi cấp, cũng như dữ liệu trước đây của quận (<strong>Biểu Đồ Dữ Liệu Kế Hoạch Chi Tiết California</strong>), trong <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">khung Kế Hoạch Chi Tiết vì một Nền Kinh Tế An Toàn Hơn của CDPH</a>.</p>
 
 
 
@@ -67,15 +79,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Luôn đeo khẩu trang không (ví dụ: ăn uống cần phải tháo khẩu trang)</li><li>Cho phép thực hiện giãn cách xã hội giữa các cá nhân thuộc những gia đình khác nhau không</li><li>Giới hạn số lượng người trong mỗi foot vuông không</li><li>Giới hạn thời gian cá nhân đó ở doanh nghiệp hoặc tham gia hoạt động không</li><li>Giới hạn thời gian tiếp xúc không</li><li>Giới hạn việc tụ tập những người thuộc các gia đình khác nhau không</li><li>Giới hạn số lượng tương tác thực tế với người ghé thăm/khách hàng không</li><li>Tăng lượng không khí lưu thông không (như mở cửa sổ và cửa chính hoặc hoạt động ở ngoài trời) </li><li>Giới hạn hoạt động đã biết là làm gia tăng sự lây lan của vi-rút (như hát, la hét và thở mạnh)</li></ul>
-
-
-
-<h4 class="wp-accordion">Có hướng dẫn cho công trình tạm được sử dụng trong các hoạt động kinh doanh ngoài trời không?</h4>
-
-
-
-<p class="wp-accordion-content">Khi thời tiết bắt đầu lạnh hơn, các nhà hàng và doanh nghiệp khác phải hoạt động ngoài trời có thể muốn khép kín các công trình tạm ngoài trời như rạp và mái che để giữ nhiệt và tránh mưa. Tìm hiểu những hoạt động nào đủ điều kiện là hoạt động ngoài trời trong <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">hướng dẫn của Sở Y Tế Công Cộng California đối với các công trình tạm</a></p>
+<ul class="wp-accordion-content"><li>Luôn đeo khẩu trang không (ví dụ: ăn uống cần phải tháo khẩu trang)</li><li>Cho phép thực hiện giãn cách xã hội giữa các cá nhân thuộc những gia đình khác nhau không</li><li>Giới hạn số lượng người trong mỗi foot vuông không</li><li>Giới hạn thời gian cá nhân đó ở doanh nghiệp hoặc tham gia hoạt động không</li><li>Giới hạn thời gian tiếp xúc không</li><li>Giới hạn việc tụ tập những người thuộc các gia đình khác nhau không</li><li>Giới hạn số lượng tương tác thực tế với người ghé thăm/khách hàng không</li><li>Tăng lượng không khí lưu thông không (như mở cửa sổ và cửa chính hoặc hoạt động ở ngoài trời) </li><li>Giới hạn hoạt động được biết đến là làm gia tăng sự lây lan của vi-rút (như hát, la hét và thở mạnh)</li></ul>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Đeo khẩu trang ở nơi công cộng.</li><li>Rửa tay thường xuyên.</li><li>Giữ khoảng cách vật lý ít nhất sáu foot khi ở nơi công cộng.</li><li>Hạn chế tụ tập với những người mà quý vị không sống cùng.</li></ul>
+<ul class="wp-accordion-content"><li>Ở nhà trừ khi cần ra ngoài vì các dịch vụ thiết yếu.</li><li>Đeo khẩu trang ở nơi công cộng.</li><li>Rửa tay thường xuyên.</li><li>Giữ khoảng cách vật lý ít nhất sáu foot khi ở nơi công cộng.</li><li>Hạn chế tụ tập với những người mà quý vị không sống cùng.</li></ul>
 
 
 

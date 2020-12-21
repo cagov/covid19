@@ -13,7 +13,7 @@ cagov-navoverlay {
     transform: translateX(100%);
     visibility: hidden;
     overflow-y: scroll;
-    box-shadow: -0.5rem 0 1.5rem 0 rgba(0, 0, 0, 0.25);
+    box-shadow: -0.5rem 0 1.2rem 0 rgba(0, 0, 0, 0.25);
     @include tablet {
       @include size(100%);
       @include fixed(top 0 left 0);
@@ -30,7 +30,7 @@ cagov-navoverlay {
       margin: 0 auto;
       @include tablet {
         width: $desktop;
-        max-width: 90%;
+        max-width: 100%;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -102,7 +102,7 @@ cagov-navoverlay {
         &-link {
           font-family: $body;
           font-weight: 700;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           color: $orange;
           width: 100%;
           text-transform: none;
@@ -111,9 +111,9 @@ cagov-navoverlay {
           transition: $basic;
           background: transparent;
           border: none;
-          padding: 0.25rem; 
+          padding: 0.25rem 0; 
           padding-right:2rem; /* arrow clearence for long text */
-          border-radius: 1.5rem;
+          border-radius: 1.2rem;
           &:hover {
             color: $white;
           }
@@ -192,15 +192,16 @@ cagov-navoverlay {
           margin-top: 0.7em;
         }
         @include tablet {
-          padding: 1rem 0;
-          margin: 0 0 0 2px;
-          line-height: 1.1rem;
+          padding: 0rem 0;
+          margin: .85rem 0 0 2px;
+          line-height: 1.3rem;
         }
         @include desktop {
-          padding: 1rem 0;
+          padding: 0rem 0;
+          line-height: 1.3rem;
         }
         @include phone {
-          padding: 0.35rem 0;
+          /* padding: 0.35rem 0; */
         }
         &:hover,
         &:active {
@@ -225,7 +226,7 @@ cagov-navoverlay {
       border-radius: 2rem;
       transition: background 0.5s $slow-curve;
       padding: 0;
-      width: 100%;
+      width: 80%;
       margin-bottom: 1rem;
       display: none;
       @include tablet {

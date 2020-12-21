@@ -1,0 +1,211 @@
+/* Classes outside of charts, but intended for charts */
+
+.chart-data-label {
+  font-size: 0.95rem;
+}
+
+/* Charts */
+
+.chart {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 100%;
+
+  &.d-none {
+    display: none;
+  }
+
+  .svg-holder {
+    max-width: 613px;
+  }
+
+  .svg-holder svg {
+    width: 100%;
+  }
+
+  .chart-title {
+    max-width: 613px;
+    // from by pop
+    border-bottom: solid 1px;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .chart-title::first-letter {
+    text-transform: capitalize;
+  }
+
+  // Special Note
+  .special-note {
+    background: $lightestblue;
+    padding: 1rem 1rem 1rem 3.5rem;
+    position: relative;
+    margin: 0 auto;
+
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 0 !important;
+      &::before {
+        font-family: "CaGov" !important;
+        content: "\e072";
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        font-size: 2rem; // This is in a div, not a chart
+        color: $blue;
+      }
+    }
+  }
+
+  /* Text labels */
+
+  .more-than-labels {
+    font-size: 0.75rem;
+  }
+
+  .change-from-month-labels {
+    font-size: 0.85rem;
+    text-anchor: unset; // new
+  }
+
+  .label {
+    font-size: 0.95rem;
+  }
+
+  .bar-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-anchor: unset;
+  }
+
+  .bars.bars-unknown {
+    font-weight: 100;
+    font-size: 0.7rem;
+  }
+  .bar-label.bar-label-unknown {
+    color: #ccc;
+  }
+  
+  .chart-description {
+    min-height: 4rem;
+  }
+
+  .bar-chart-label.label {
+    font-weight: 100;
+  }
+  
+  .tick text {
+    font-size: 0.85rem;
+  }
+
+  .legend-label {
+    font-size: 0.85rem;
+  }
+
+  .legend text {
+    font-size: 0.85rem;
+  }
+
+  text.y-label {
+    font-size: 0.85rem;
+  }
+
+  .bars {
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-anchor: unset;
+    // text-anchor: end;
+  }
+
+  .xaxis-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+
+  /* Responsive text */
+  @media (max-width: 768px) {
+    .bar-chart-label.label {
+      font-size: 0.75rem;
+      font-weight: 100;
+    }
+    .bar-label tspan {
+      font-size: 0.75rem;
+    }
+    .bar-chart-label.label {
+      font-size: 0.85rem;
+    }
+    .tick text {
+      font-size: 0.85rem;
+    }
+    .legend-label {
+      font-size: 0.85rem;
+    }
+    .bars {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Layouts */
+  .inline-toggle-link-container {
+    text-align: center;
+  }
+
+
+  .tooltip-container {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+  
+  .chart-tooltip {
+    // position: absolute;
+    // z-index: 10;
+    // visibility: hidden;
+    // background: #fff;
+    pointer-events: none;
+
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+    min-width: 100px;
+  }
+
+  .chart-overlaybox-container {
+    /* display:inline-block; */
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 250px;
+  }
+  
+  .chart-overlaybox {
+    // position: absolute;
+    // z-index: 10;
+    // visibility: hidden;
+    // background: #fff;
+    pointer-events: none;
+
+    padding: 10px;
+    box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+    border: solid 1px #ccc;
+    min-width: 100px;
+  }
+
+
+  .highlight-data {
+    font-weight: bold;
+    padding-right: 2px; // not in cagov chart
+  }
+
+  .chart-tooltip-narrow {
+    min-width: 100px;
+  }
+
+  .chart-tooltip-wide {
+    min-width: 300px;
+  }
+}

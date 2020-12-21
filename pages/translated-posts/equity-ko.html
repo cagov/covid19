@@ -148,7 +148,7 @@ addtositemap: false
             <li data-label="chartToolTip2-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY 계층이 차지하는 비중은 캘리포니아 인구의<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span> 및 placeholder_Selected주 전역 메트릭의 <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span>입니다</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
-          <li data-label="chartTitle--cases">placeholder역학 조사 지역 내 인종과 민족 별 100,000명 당 사례 건수</li>
+          <li data-label="chartTitle--cases">placeholderForDynamicLocation 조사 지역 내 인종과 민족 별 100,000명 당 사례 건수</li>
           <li data-label="chartTitle--deaths">placeholderForDynamicLocation 내 인종과 민족 별 1십만명 당 사망 건수</li>
           <li data-label="chartTitle--tests">placeholderForDynamicLocation 내 인종과 민족 별 1십만명 당 검사 건수</li>
           <li data-label="chartDescription--cases">각 인종과 민족을 대상으로 인구 규모로 조정한 사례 건수를 비교하십시오.</li>
@@ -158,13 +158,17 @@ addtositemap: false
           <li data-label="chartLegend--cases">100,000명 당 사례 건수</li>
           <li data-label="chartLegend--deaths">100,000명 당 사망 건수</li>
           <li data-label="chartLegend--tests">100,000명 당 검사 건수</li>
-          <li data-label="chartFilterLegendPfxCounty--cases">placeholder역학 조사 지역 내 100,000명 당 사례 건수: </li>
-          <li data-label="chartFilterLegendPfxCounty--deaths">placeholder역학 조사 지역 내 100,000명 당 사망 건수: </li>
-          <li data-label="chartFilterLegendPfxCounty--tests">placeholder역학 조사 지역 내 100,000명 당 검사 건수: </li>
+          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation 조사 지역 내 100,000명 당 사례 건수: </li>
+          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation 조사 지역 내 100,000명 당 사망 건수: </li>
+          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation 조사 지역 내 100,000명 당 검사 건수: </li>
           <li data-label="chartFilterLegendPfxState--cases">100,000명 당 주 전역 사례 건수: </li>
           <li data-label="chartFilterLegendPfxState--deaths">100,000명 당 주 전역 사망 건수: </li>
           <li data-label="chartFilterLegendPfxState--tests">100,000명 당 주 전역 검사 건수: </li>
           <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> 해당 계층의 경우 동일한 인종과 민족 100,000명에 대한 <span class="highlight-data">placeholderMETRIC_100K</span> placeholder필터링 범위가 있습니다.</li>
+          <li data-label="applied-suppression-total">개인 정보 보호를 위해 어떠한 데이터도 표시하지 않고 있습니다. 그 이유는 해당 그룹 내 사례 또는 검사 건수가 너무 적기 때문입니다.
+            </li>
+          <li data-label="applied-suppression-population">개인 정보 보호를 위해 어떠한 데이터도 표시하지 않고 있습니다. 그 이유는 해당 그룹 내 인원수가 20,000명 미만이기
+              때문입니다.</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
@@ -183,9 +187,10 @@ addtositemap: false
       <ul>
         <li data-label="y-axis-label">검사 양성 반응율</li>
         <li data-label="data1-legend">주 전역 양성 반응율</li>
-        <li data-label="data1-legend-local">placeholder역학 조사 지역 내 양성 반응율</li>
+        <li data-label="data1-legend-local">placeholderForDynamicLocation 조사 지역 내 양성 반응율</li>
         <li data-label="data2-legend">건강 형평성 사분위수 양성 반응율</li>
         <li data-label="missing-data-caption">건강 형평성 메트릭은 인구수가 106,000명 미만인 카운티에는 적용되지 않습니다.</li>
+        <li data-label="data-anomalies-caption">Due to reporting anomalies, we cannot display this data accurately.</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 

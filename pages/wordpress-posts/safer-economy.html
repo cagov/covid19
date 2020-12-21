@@ -1,22 +1,18 @@
 ---
 layout: "page.njk"
 title: "Blueprint for a Safer Economy"
-meta: "New Regional Stay Home Order COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. [&hellip;]"
+meta: "California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities. Understand your county&#8217;s status Every county in California is assigned to a tier based on its test positivity and adjusted case rate. In light of the recent, unprecedented surge in rate of increase of cases, [&hellip;]"
 author: "State of California"
-publishdate: "2020-12-07T23:36:10Z"
+publishdate: "2020-12-17T19:07:17Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">New Regional Stay Home Order </h4><p>COVID-19 continues to surge at alarming rates in California. The Regional Stay Home Order, announced December 3, 2020, adds restrictions in regions with less than 15% ICU bed capacity. It prohibits gatherings of any size, closes operations except for critical infrastructure and retail, and requires 100% masking and physical distancing. Read more about the <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#regional-stay-home-order" class="alert-link">Regional Stay Home Order</a>.</p></div>
-
-
 
 <p>California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities.</p>
 
 
 
-<cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>
+<cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>
 
 
 
@@ -81,8 +77,7 @@ addtositemap: true
 
 
 
-<a name="reopening-data"></a>
-<div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 
 

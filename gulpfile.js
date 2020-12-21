@@ -45,7 +45,7 @@ const eleventy = (done) => {
     log('Note: Building site in dev mode. Try *npm run start* if you need a full build.');
   }
 
-  // Donwload the files sitemap for 11ty to use
+  // Download the files sitemap for 11ty to use
   download('https://files.covid19.ca.gov/sitemap.xml', './pages/_buildoutput/fileSitemap.xml', error => {
     if (error) {
       console.error(error);
@@ -220,6 +220,9 @@ const deploy = gulp.series(clean, build);
 
 // function to download a remove file and place it in a location
 const download = (url, dest, cb) => {
+  if(fs.existsSync(dest)) return; //skipping downloading of existing files
+
+  console.log(`downloading ${url}`);
   const file = fs.createWriteStream(dest);
   const sendReq = request.get(url);
 

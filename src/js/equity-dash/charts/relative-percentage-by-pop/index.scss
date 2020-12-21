@@ -1,0 +1,79 @@
+// .chart-title {
+//   border-bottom: solid 1px;
+//   padding-bottom: 0.3em;
+//   margin-bottom: 1em;
+// }
+
+cagov-chart-re-pop {  
+  // display: block;
+  min-width: 300px;
+
+  // .chart-title::first-letter {
+  //   text-transform: capitalize;
+  // }
+
+  // .svg-holder svg {
+  //   width: 100%;
+  // }
+
+  .svg-holder-second {
+    border-top: solid 1px #000;
+    margin-top: 10px;
+    padding-top: 30px;
+    svg {
+      width: 100%;
+    }
+  }
+
+  .chart-overlaybox-container {
+    top: 23%;
+    left: 20%;
+  }
+
+  .withheld-label {
+    font-size: 0.85em;
+  }
+
+  // .bars {
+  //   font-weight: bold;
+  //   font-size: 0.95rem;
+  //   text-anchor: unset;
+  // }
+  // .more-than-labels {
+  //   font-size: 0.75rem;
+  // }
+
+  .change-from-month-labels {
+    font-size: 0.75em;
+    text-anchor: unset;
+  }
+
+  // .bar-label {
+  //   font-weight: bold;
+  //   font-size: 0.95rem;
+  //   text-anchor: unset;
+  // }
+
+  // .label {
+  //   font-size: 0.95rem;
+  // }
+
+  // .chart-tooltip {
+  //   padding: 10px;
+  //   box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4);
+  //   border: solid 1px #ccc;
+  // }
+  // .highlight-data {
+  //   font-weight: bold;
+  // }
+  // .chart-tooltip {
+  //   position: absolute;
+  //   z-index: 10;
+  //   visibility: hidden;
+  //   background: #fff;
+  //   pointer-events: none;
+  // }
+  .chart-tooltip--repop {
+    min-width: 100px;
+  }
+}

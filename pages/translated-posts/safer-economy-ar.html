@@ -1,18 +1,18 @@
 ---
 layout: "page.njk"
-title: "مخطط الاقتصاد الأكثر أمانًا"
-meta: "وفقًا للقرار الإقليمي الجديد للبقاء في المنزل بأن لا تزال موجة الإصابة بمرض كوفيد-19 مستمرة في الزيادة بمعدلات مثيرة للقلق في كاليفورنيا. أعلن القرار الإقليمي للبقاء في المنزل يوم 3 ديسمبر عام 2020 أنه سوف يحظر التجمعات أيًا كان عددها ويمنع أي نشاطات باستثناء الأعمال الأساسية الحيوية والبيع بالتجزئة شريطة الالتزام بارتداء أقنعة الوجه ومراعاة التباعد الجسدي أيضًا. يمكنك قراءة المزيد عن القرار الإقليمي للبقاء في المنزل. تخضع كاليفورنيا […]"
+title: "البرنامج التخطيطي لاقتصاد أكثر أمانًا"
+meta: " ملاحظة تشمل أعداد الحالات اليوم 41.081 حالة تم الإبلاغ عنها اليوم والتي هي جزء من الزيادة التي ما زلنا نشهدها على مستوى الولاية. أما الحالات المتبقية وعددها 12.630 حالة فهي من الأيام السابقة. وضعت كاليفورنيا مخططًا للحد من انتشار مرض كوفيد-19 في الولاية من خلال معايير منقحة تنظم تخفيف القيود المفروضة على الأنشطة وتشديدها. افهم حالة مقاطعتك كل مقاطعة في […]"
 author: "State of California"
-publishdate: "2020-12-03T21:15:38Z"
+publishdate: "2020-12-16T20:40:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="alert alert-warning" role="alert"><h4 class="alert-heading">القرار الإقليمي الجديد للبقاء في المنزل. </h4><p>لا تزال موجة الإصابة مرض كوفيد-19 مستمرة في الزيادة بمعدلات مثيرة للقلق في كاليفورنيا. أعلن القرار الإقليمي للبقاء في المنزل يوم 3 ديسمبر عام 2020 أنه سوف يحظر التجمعات أيًا كان عددها ويمنع أي نشاطات باستثناء الأعمال الأساسية الحيوية والبيع بالتجزئة شريطة الالتزام بارتداء أقنعة الوجه ومراعاة التباعد الجسدي أيضًا. اقرأ المزيد عن <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/" class="alert-link">القرار الإقليمي للبقاء في المنزل</a>.</p></div>
+<div class="alert alert-warning" role="alert"><h4 class="alert-heading">ملحوظة</h4><p>تشمل أعداد الحالات اليوم 41.081 حالة تم الإبلاغ عنها اليوم والتي هي جزء من الزيادة التي ما زلنا نشهدها على مستوى الولاية. أما الحالات المتبقية وعددها 12.630 حالة فهي من الأيام السابقة.</p></div>
 
 
 
-<p>وضعت كاليفورنيا مخططًا للحد من انتشار مرض كوفيد-19 في الولاية من خلال معايير منقحة تنظم تخفيف القيود المفروضة على الأنشطة وتشديدها.</p>    <cagov-reopening data-counties="data/reopening-counties.json" data-status="data/reopening-status.json" data-title="Find the status of activities in your county" data-county-restrictions-advice="Counties can restrict further. Check your local health department's website for local restrictions." data-industry-guidance-link-text="View industry guidance" data-view-all="View all" data-county-label="County"></cagov-reopening>    <h2 class="has-text-align-center">افهم حالة مقاطعتك</h2>
+<p>وضعت كاليفورنيا مخططًا للحد من انتشار مرض كوفيد-19 في الولاية من خلال معايير منقحة تنظم تخفيف القيود المفروضة على الأنشطة وتشديدها.</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">افهم حالة مقاطعتك</h2>
 
 
 
@@ -43,15 +43,27 @@ addtositemap: true
 <p> </p>
 <div class="matrix-holder"></div>
 <p class="small-text">*قد تخضع المقاطعات الصغيرة (تلك التي يقل عدد سكانها عن 106,000 نسمة) لتدابير بديلة لتقييم الحالات لأغراض تحديد الفئة.</br> **لا يتم تطبيق مقياس العدالة الصحية على المقاطعات الصغيرة. ولا يُستخدم مقياس العدالة الصحية إلا للانتقال إلى فئة أقل تقييدًا.</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center" id="county-status">تعيينات الفئات الحالية اعتبارًا من {{_varTierDate_}}</h3>
+<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">الأمر الإقليمي بالبقاء في المنزل:</h3>
 
 
 
-<p>قد تحدث تعيينات الفئات في أي يوم من الأسبوع وقد تحدث أكثر من مرة في الأسبوع. حدد مقاطعة لمعرفة المنطقة الموجودة بها.</p>    <a name="reopening-data"></a> <div class="reopening-tableau-embed"><!-- the tableau embed goes here --></div>
+<p>وما تزال الولاية تسجل ارتفاعًا غير مسبوق في مستوى انتشار كوفيد-19 داخل المجتمع المحلي. سيدخل كل من الأمر الإقليمي بالإقامة في المنزل -الذي تم الإعلان عنه في 3 ديسمبر 2020- والأمر التكميلي -والذي تم التوقيع عليه في 6 ديسمبر 2020- حيز التنفيذ في الساعة 11:59 مساءً من اليوم التالي في المناطق التي يتوفر بها أقل من 15٪ من وحدات العناية المركزة (ICU).</p>
 
 
 
-<p class="small-text">تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في{{_varTierEndDate_}}. اطلع على كيفية تعيين الفئات وتغييرها، وكذلك البيانات التاريخية للمقاطعات (<strong>الرسم البياني لمخطط كاليفورنيا</strong>)، على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">مخطط إدارة الصحة العامة بولاية كاليفورنيا (CDPH) لإطار عمل أكثر أمانًا للاقتصاد</a>.</p>
+<p>تعرف على المزيد حول <a href="https://covid19.ca.gov/stay-home-except-for-essential-needs/#icu-capacity">القدرة الاستيعابية الفعلية لوحدات الرعاية المركزة</a> المتبقية في كل منطقة.</p>
+
+
+
+<h3 class="has-text-align-center" id="county-status">مهام الفئة الحالية اعتبارًا من {{_varTierDate_}}</h3>
+
+
+
+<p>قد تحدث تعيينات الفئات في أي يوم من الأسبوع وقد تحدث أكثر من مرة في الأسبوع. حدد مقاطعة لمعرفة المنطقة الموجودة بها.</p>
+
+
+
+<div class="tableauPlaceholder" id="viz1607448868632" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1607448868632');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    <p class="small-text">تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في{{_varTierEndDate_}}. اطلع على كيفية تعيين الفئات وتغييرها، وكذلك البيانات التاريخية للمقاطعات (<strong>الرسم البياني لمخطط كاليفورنيا</strong>)، على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">مخطط إدارة الصحة العامة بولاية كاليفورنيا (CDPH) لإطار عمل أكثر أمانًا للاقتصاد</a>.</p>
 
 
 
@@ -68,14 +80,6 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>ملاءمة ارتداء القناع جميع الأوقات (على سبيل المثال، يتطلب الأكل والشرب إزالة الأقنعة)</li><li>ترك مسافة جسدية بين الأفراد من أسر مختلفة</li><li>حدد عدد الأشخاص لكل قدم مربع</li><li>حدد الوقت الذي يقضيه الفرد في العمل أو النشاط التجاري</li><li>الحد من وقت التعرض</li><li>الحد من اختلاط الأشخاص من أسر مختلفة</li><li>الحد من التفاعلات الجسدية للزوار/الزبائن</li><li>زيادة تدفق الهواء (مثل التشغيل والعمل في الهواء الطلق أو فتح النوافذ والأبواب) </li><li>الحد من الأنشطة المعروف عنها أنها تزيد من انتشار الفيروس (مثل الغناء والصراخ والتنفس بصعوبة)</li></ul>
-
-
-
-<h4 class="wp-accordion">هل توجد توجيهات للمنشآت المؤقتة المخصصة لعمليات مزاولة الأنشطة التجارية في الأماكن المفتوحة؟</h4>
-
-
-
-<p class="wp-accordion-content">عندما تبدأ زيادة برودة الجو، قد ترغب المطاعم وغيرها من الشركات التي يتعين عليها العمل في الأماكن المفتوحة في إحاطة المنشآت المؤقتة كالخيام والمظلات بسور لتوفير التدفئة وتفادي الأمطار. يمكنك معرفة ما يجعل الأعمال في الأماكن المفتوحة مسموحًا بها من خلال قراءة <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Use-of-Temporary-Structures-for-Outdoor-Business-Operations.aspx">الدليل الإرشادي لإدارة الصحة العامة بولاية كاليفورنيا (CDPH) المتعلق بالمنشآت المؤقتة</a>.</p>
 
 
 
@@ -127,7 +131,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>ارتدِ قناعًا في الأماكن العامة</li><li>اغسل يديك بانتظام.</li><li>حافظ على التباعد الجسدي مسافة ستة أقدام على الأقل عندما تكون في الأماكن العامة.</li><li>الحد من الاختلاط بالأشخاص الذين لا تعيش معهم.</li></ul>
+<ul class="wp-accordion-content"><li>التزم بالبقاء في المنزل باستثناء قضاء الخدمات الضرورية.</li><li>ارتدِ قناعًا في الأماكن العامة.</li><li>اغسل يديك بانتظام.</li><li>حافظ على التباعد الجسدي مسافة ستة أقدام على الأقل عندما تكون في الأماكن العامة.</li><li>الحد من الاختلاط بالأشخاص الذين لا تعيش معهم.</li></ul>
 
 
 
