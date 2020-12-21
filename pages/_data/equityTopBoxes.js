@@ -6,11 +6,12 @@ const fetch = require('node-fetch')
 
 module.exports = function() {
   let dataDomain = 'https://files.covid19.ca.gov/data/reviewed/';
+  // console.log(dataDomain+'equitydash/equitytopboxdatav2.json');
+
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
     dataDomain = 'https://files.covid19.ca.gov/data/to-review/';
   }
   return new Promise((resolve, reject) => {
-    
     fetch(dataDomain+'equitydash/equitytopboxdatav2.json')
     .then(res => res.json())
     .then(json => {
@@ -28,7 +29,9 @@ module.exports = function() {
           "case_rate_vs_statewide_percent_low_income":0,
           "case_rate_per_100K_low_income":0,
           "death_rate_vs_statewide_percent_black":0,
-          "death_rate_per_100K_black":0
+          "death_rate_per_100K_black":0,
+          "death_rate_vs_statewide_percent_latino":0,
+          "death_rate_per_100K_latino":0,
         }
       ];
 
@@ -49,6 +52,8 @@ module.exports = function() {
       const raceLatino = demographics.find(x=>x.RACE_ETHNICITY==='Latino');
       output[0].cases_per_100K_latino = roundNumber(raceLatino.CASE_RATE,1);
       output[0].case_rate_vs_statewide_percent_latino = roundNumber(compare(totalCaseRate,raceLatino.CASE_RATE),0);
+      output[0].death_rate_per_100K_latino = roundNumber(raceLatino.DEATH_RATE,1);
+      output[0].death_rate_vs_statewide_percent_latino = roundNumber(compare(totalDeathRate,raceLatino.DEATH_RATE),0);
 
       const raceNHPI = demographics.find(x=>x.RACE_ETHNICITY==='Native Hawaiian and other Pacific Islander');
       output[0].cases_per_100K_pacific_islanders = roundNumber(raceNHPI.CASE_RATE,1);
