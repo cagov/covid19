@@ -342,6 +342,7 @@ hero-stats {
 			margin-right: 2rem;
 			text-decoration: none;
 
+
 			@include tablet {
 				font-size: 85%;
 				white-space: nowrap;
@@ -355,6 +356,8 @@ hero-stats {
 			}
 			&:hover {
 				color: $orange;
+				.chart-icon-path {
+					fill:$orange;}
 			}
 		}
 	}
@@ -492,3 +495,8 @@ hero-stats {
 		background-size: cover;
 	}
 } 
+.chart-icon {width:25px;}
+.chart-icon-path {
+	fill:$lightblue;
+	transition: all .3s $slow-curve;
+}	
