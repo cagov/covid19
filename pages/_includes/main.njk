@@ -56,8 +56,8 @@
 					</div>
 				</div>
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
-					<h2 class="hero-stats-headline" id="tracking-covid">{{varStatsHeader}}</h2>
-					<div class="hero-stats-subheadline">
+					<h2 class="color-orange text-center" id="tracking-covid">{{varStatsHeader}}</h2>
+					<div class="text-sm text-center text-300">
 						{{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags,+1)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags)) -}}
 					</div>
 
@@ -65,13 +65,13 @@
 
 
 					 <div class="row d-flex justify-content-md-center">
-            <div class="col-md-4">
-                <div class="bg-blue rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
+            <div class="col-md-4 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
                 
                     <div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">total</span></div>
                     <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
-                    <div id="total-cases-increase" class="text-white text-small my-2">
+                    <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
 					<span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
@@ -91,13 +91,13 @@
 					 {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase <br>from prior day total</span></div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="bg-blue rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+            <div class="col-md-4 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
                 
                     <div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">total</span></div>
                     <div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
-                    <div id="total-deaths-increase" class="text-white text-small my-2">
+                    <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
 					<span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
@@ -117,13 +117,13 @@
 					 {{_varStatTotalDeathsChange_}}% <span class="text-300">increase <br>from prior day total</span></div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="bg-blue rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+            <div class="col-md-4 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
                 
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">total</span></div>
                     <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
-                    <div id="total-tested-increase" class="text-white text-small my-2">
+                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
 					<span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
@@ -144,10 +144,10 @@
                 </div>
             </div>
         </div>
-<p class="text-center small-text text-300 mt-4">Rates of cases and tests are based on a 7 day average with a 7 day lag.</p>
-<p class="text-center small-text text-300 mt-3">Rates of deaths are based on a 7 day average with a 21 day lag due to delays in reporting. 
+<p class="text-center text-sm text-300 mt-4">Rates of cases and tests are based on a 7 day average with a 7 day lag.</p>
+<p class="text-center text-sm text-300 mt-3">Rates of deaths are based on a 7 day average with a 21 day lag due to delays in reporting. 
 </p>
-<p class="text-center small-text text-300 mt-3">Directional change is from prior 7 day period.</p>
+<p class="text-center text-sm text-300 mt-3">Directional change is from prior 7 day period.</p>
 
 
 

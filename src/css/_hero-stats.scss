@@ -344,15 +344,13 @@ hero-stats {
 
 
 			@include tablet {
-				font-size: 85%;
 				white-space: nowrap;
 			}
 			@include tablet-wide {
 				padding: .65rem 1em .5rem 1rem;
-				font-size: 1rem;}
+				}
 			@include tablet-wide {
 				padding: .5rem 1rem;
-				font-size: 1.25rem;
 			}
 			&:hover {
 				color: $orange;
@@ -503,3 +501,12 @@ hero-stats {
 
 .chart-arrow svg {width:20px;}
 .chart-arrow-path {fill:$orange;}
+
+
+@media (max-width: 767.98px) {
+	.hero-wrap .px-10px {
+		padding-right: 15% !important;
+		padding-left: 15% !important;
+	}
+
+ }
