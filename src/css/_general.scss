@@ -1935,6 +1935,7 @@ font {
 }
 
 .bg-transparent {background-color:transparent !important;}
+.text-sm {font-size:.95rem !important;}
 .text-small {font-size:.85rem !important;}
 .text-xs {font-size:.75rem !important;}
 .text-black {color:#000 !important;}
@@ -1966,6 +1967,13 @@ font {
 .bottom-4px {bottom:4px;}
 .bottom-5px {bottom:5px;}
 
+.px-6px {padding-left: 6px !important; padding-right: 6px !important;}
+.px-7px {padding-left: 7px !important; padding-right: 7px !important;}
+.px-8px {padding-left: 8px !important; padding-right: 8px !important;}
+.px-9px {padding-left: 9px !important; padding-right: 9px !important;}
+.px-10px {padding-left: 10px !important; padding-right: 10px !important;}
+.px-12px {padding-left: 12px !important; padding-right: 12px !important;}
+
 .hi-50 {
   height: 50px;
 }
@@ -1985,6 +1993,11 @@ font {
 .bd-top-14-orange {border-top: 14px solid $orange;}
 .bd-top-14-yellow {border-top: 14px solid $yellow;}
 .bd-top-14-lightblue {border-top: 14px solid $lightblue;}
+
+.bd-rounded-5 {border-radius: 6px;}
+.bd-rounded-10 {border-radius: 10px;}
+.bd-rounded-15 {border-radius: 15px;}
+.bd-rounded-20 {border-radius: 15px;}
 
 .has-text-align-center {text-align: center !important;}
 .text-300 {font-weight: 300 !important;}
