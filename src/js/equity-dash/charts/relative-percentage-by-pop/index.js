@@ -340,7 +340,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
   }
 
   resetTooltip() {
-    console.log("reset tooltip");
+    // console.log("reset tooltip");
     // this.querySelector(".tooltip-***").innerHTML = this.getDescription();
   }
 
