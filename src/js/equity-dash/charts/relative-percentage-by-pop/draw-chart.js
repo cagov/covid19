@@ -58,7 +58,7 @@ export default function drawBars({
       tooltip.html(`<div class="chart-tooltip"><div>${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
-      tooltip.style("top", `${event.offsetY + 100}px`);
+      tooltip.style("top", `${event.layerY+10}px`);
     })
     .on("mouseout", function (d) {
       d3.select(this).transition();
@@ -101,7 +101,7 @@ export default function drawBars({
       </div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
-      tooltip.style("top", `${event.offsetY + 100}px`);
+      tooltip.style("top", `${event.layerY+10}px`);
     })
     .on("mouseout", function (d) {
       d3.select(this).transition();
