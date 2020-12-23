@@ -16,6 +16,11 @@ jobs:
         with:
           build_task: build
           build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
+      - name: Save Commit Context
+        uses: finnp/create-file-action@master
+        env:
+            FILE_NAME: "commit-info.json"
+            FILE_DATA: ${{ toJson(github.event.commits) }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
