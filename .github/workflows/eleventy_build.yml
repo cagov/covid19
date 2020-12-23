@@ -19,7 +19,7 @@ jobs:
       - name: Save Commit Context
         uses: finnp/create-file-action@master
         env:
-            FILE_NAME: "commit-info.json"
+            FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
