@@ -455,11 +455,11 @@ hero-stats {
 				align-items:flex-start;
 			}
 			@include tablet-wide {
-				padding: 2rem;
+				padding: 2.5rem;
 				width: 34%;
 			}
 			@include desktop {
-				padding: 3rem 2rem;
+				padding: 2.5rem 2rem;
 			}
 			&-align {
 				width: 100%;
