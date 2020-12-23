@@ -1,4 +1,4 @@
-console.log("purge test");
+console.log("purge test  #2");
 import './search/index.js'
 import './county-buttons/buttons.js'
 import './search/filters.js'
