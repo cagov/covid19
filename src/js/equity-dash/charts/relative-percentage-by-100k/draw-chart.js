@@ -30,7 +30,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
   svg.selectAll("text").remove();
   svg.selectAll("path").remove();
 
-  svg
+  let bar = svg
     .append("g")
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
@@ -42,13 +42,22 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
 
     // enter a second time = loop subgroup per subgroup to add all rectangles
     .data((d) => d)
-    .enter()
-    .append("rect")
+    .enter();
+  
+  bar.append("rect")
     .attr("x", (d) => x(d[0]))
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", (d) => x(d[1]) - x(d[0]))
-    .attr("height", "10px")
+    .attr("height", "10px");
 
+
+  // large transparent area for tooltip hover area
+  bar.append("rect")
+    .attr("x", (d) => x(d[0]))
+    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY)-10)
+    .attr("width", (d) => x(d[1]) - x(d[0]))
+    .attr("height", "30px")
+    .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
       let caption = component.toolTipCaption(
@@ -68,7 +77,6 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
 
       return `<div class="chart-tooltip"><div>${caption}</div></div>`;
     })
-
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
 
