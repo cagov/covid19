@@ -152,11 +152,11 @@
         <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
         <h3 class="text-center mt-4 mb-0">Daily cases and deaths</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -181,11 +181,11 @@
         </div>
 
         <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -204,11 +204,11 @@
         </div>
 
         <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -289,16 +289,14 @@
     <div class="container py-2">
     <h2 class="text-center color-orange">Infections by group</h2>
         <div class="col-lg-12 bg-white px-3 py-4">
-            <div class="row d-flex justify-content-md-center">
-
-                <div class="toggle-link-container">
-                    <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="toggle-active js-toggle-group ethnicity">Ethnicity</a>
-                    <a href="#" class="js-toggle-group gender">Gender</a>
-                    <a href="#" class="js-toggle-group age">Age</a>
+                <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+                    <div class="large-tabs">
+                        <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
+                        <button class="large-tab js-toggle-group gender">Gender</button>
+                        <button class="large-tab js-toggle-group age">Age</button>
                     </div>
                 </div>
-            </div>
+            
             <div class="row">
                 <div class="toggle-group-container col-10 mx-auto">
 

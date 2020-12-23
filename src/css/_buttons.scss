@@ -318,7 +318,7 @@ button.clear {
       }
       &:last-child {
         margin-right: 0;margin-bottom: 0;}
-      &.active, &[aria-expanded="true"] {
+      &.active, &[aria-expanded="true"], &.toggle-active {
         color:$white;
         background-color: $darkblue;
         text-decoration:none;
