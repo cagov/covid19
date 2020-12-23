@@ -24,52 +24,7 @@ export default function drawBars({
   svg.selectAll("rect").remove();
   svg.selectAll("text").remove();
 
-  // Yellow bars
-  svg
-    .append("g")
-    .attr('class', 'svg-first-section')
-    .selectAll("g")
-    .data(stackedData1)
-    .enter()
-    .append("g")
-    .attr("fill", (d) => color1(d.key))
-    .selectAll("rect")
-
-    // enter a second time = loop subgroup per subgroup to add yellow bars
-    .data((d) => d)
-    .enter()
-    .append("rect")
-    .attr("x", (d) => x1(d[0]))
-    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
-    .attr("width", (d) => x1(d[1]) - x1(d[0]))
-    .attr("height", "10px")
-    .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => {
-      let caption = component.getToolTipCaption1(d, selectedMetric);
-      return `<div class="chart-tooltip">
-      <div>${caption}</div>
-      </div>`}
-    )
-    
-    .on("mouseover focus", function (event, d) {
-      d3.select(this).transition();
-      // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
-      let caption = component.getToolTipCaption1(d, selectedMetric);
-      tooltip.html(`<div class="chart-tooltip"><div>${caption}</div></div>`);
-      tooltip.style("visibility", "visible");
-      tooltip.style("left", "90px");
-      tooltip.style("top", `${event.layerY+10}px`);
-    })
-    .on("mouseout", function (d) {
-      d3.select(this).transition();
-      //.attr("fill", d => color(d.key));
-      //.style("fill", "skyblue");
-      
-      // @TODO Hover off is too quick 
-      tooltip.style("visibility", "hidden");
-    });
-
-  // Blue bars
+  // Blue bars rendered first, to go under hover area
   svg
     .append("g")
     .selectAll("g")
@@ -91,14 +46,50 @@ export default function drawBars({
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => `<div class="chart-tooltip">
     <div >unused_caption1</div>`)
+    ;
 
+  // Yellow bars rendered second
+  let bar = svg
+    .append("g")
+    .attr('class', 'svg-first-section')
+    .selectAll("g")
+    .data(stackedData1)
+    .enter()
+    .append("g")
+    .attr("fill", (d) => color1(d.key))
+    .selectAll("rect")
+
+    // enter a second time = loop subgroup per subgroup to add yellow bars
+    .data((d) => d)
+    .enter();
+
+  bar .append("rect")
+    .attr("x", (d) => x1(d[0]))
+    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
+    .attr("width", (d) => x1(d[1]) - x1(d[0]))
+    .attr("height", "10px")
+    .attr("tabindex", "0")
+    .attr("aria-label", (d, i) => {
+      let caption = component.getToolTipCaption1(d, selectedMetric);
+      return `<div class="chart-tooltip">
+      <div>${caption}</div>
+      </div>`}
+    );
+
+  // transparent hover area for tooltip
+  bar.append("rect")
+    .attr("x", (d) => x1(d[0]))
+    .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY)-5)
+    .attr("width", (d) => x1(d[1]) - x1(d[0]))
+    .attr("height", "40px")
+    .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
+ 
     .on("mouseover focus", function (event, d) {
+      console.log("mo 1");
       d3.select(this).transition();
-      // switching to use same tooltip for both (it's less confusing)
-      let caption2 = component.getToolTipCaption1(d, selectedMetric);
-      tooltip.html(`<div class="chart-tooltip">
-        <div >${caption2}</div>
-      </div>`);
+      // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
+      let caption = component.getToolTipCaption1(d, selectedMetric);
+      tooltip.html(`<div class="chart-tooltip"><div>${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
       tooltip.style("top", `${event.layerY+10}px`);
@@ -107,8 +98,53 @@ export default function drawBars({
       d3.select(this).transition();
       //.attr("fill", d => color(d.key));
       //.style("fill", "skyblue");
+      
+      // @TODO Hover off is too quick 
       tooltip.style("visibility", "hidden");
     });
+
+  // Blue bars
+  // svg
+  //   .append("g")
+  //   .selectAll("g")
+  //   .data(stackedData2)
+  //   .enter()
+  //   .append("g")
+  //   .attr("fill", (d) => color2(d.key))
+  //   .selectAll("rect")
+
+  //   // enter a second time = loop subgroup per subgroup to add blue bars
+  //   .data((d) => d)
+  //   .enter()
+  //   .append("rect")
+  //   .attr("x", (d) => x2(d[0]))
+  //   .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
+  //   .attr("width", (d) => x2(d[1]) - x2(d[0]))
+  //   .attr("height", "10px")
+
+  //   .attr("tabindex", "0")
+  //   .attr("aria-label", (d, i) => `<div class="chart-tooltip">
+  //   <div >unused_caption1</div>`)
+  //   ;
+    // .on("mouseover focus", function (event, d) {
+    //   console.log("mo 2");
+    //   d3.select(this).transition();
+    //   // switching to use same tooltip for both (it's less confusing)
+    //   let caption2 = component.getToolTipCaption1(d, selectedMetric);
+    //   tooltip.html(`<div class="chart-tooltip">
+    //     <div >${caption2}</div>
+    //   </div>`);
+    //   tooltip.style("visibility", "visible");
+    //   tooltip.style("left", "90px");
+    //   tooltip.style("top", `${event.layerY+10}px`);
+    // })
+    // .on("mouseout", function (d) {
+    //   d3.select(this).transition();
+    //   //.attr("fill", d => color(d.key));
+    //   //.style("fill", "skyblue");
+    //   tooltip.style("visibility", "hidden");
+    // })
+
 
   // svg.append("g").call(xAxis);
 
