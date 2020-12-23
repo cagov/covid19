@@ -71,7 +71,7 @@ export default function drawSecondBars({
       //     <div>unused_caption1 </div>`);
       // tooltip.style("visibility", "visible");
       // tooltip.style("left", "90px");
-      // tooltip.style("top", `${event.offsetY + 100}px`);
+      // tooltip.style("top", `${event.layerY}px`);
     })
     .on("mouseout", function (d) {
       d3.select(this).transition();

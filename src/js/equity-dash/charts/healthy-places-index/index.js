@@ -207,11 +207,16 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .attr("visibility", using_data_overlay ? "hidden" : "visible");
     // console.log("dims",this.chartBreakpointValues);
 
+    let minDate = d3.min(missing_eq_data ? data : data2, (d) => parseSnowflakeDate(d.DATE));
+    minDate.setDate(minDate.getDate() - 1);
+    let maxDate = d3.max(data, (d) => parseSnowflakeDate(d.DATE));
+    maxDate.setDate(maxDate.getDate() + 1);
     let xbounds = {
-      min: d3.min(missing_eq_data ? data : data2, (d) => parseSnowflakeDate(d.DATE)),
-      max: d3.max(data, (d) => parseSnowflakeDate(d.DATE)),
+      min: minDate,
+      max: maxDate,
     };
 
+  
     let x = d3
       .scaleTime()
       .domain([xbounds.min, xbounds.max])

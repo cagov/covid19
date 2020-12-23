@@ -13,12 +13,24 @@
       "value": "Enter a business or activity"
     },
     {
+      "_id": "activityNotFound",
+      "value": "Activity not found. Search a different term."
+    },
+    {
       "_id": "countyLabel",
       "value": "County"
     },
     {
       "_id": "countyPlaceholder",
       "value": "Enter county"
+    },
+    {
+      "_id": "countyNotFound",
+      "value": "County not found. Search by county name."
+    },
+    {
+      "_id": "emptySearchError",
+      "value": "Please enter a county or an activity"
     },
     {
       "_id": "buttonText",

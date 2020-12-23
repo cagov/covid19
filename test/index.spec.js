@@ -65,9 +65,9 @@ describe('what is open', () => {
     // await page.type('#activity-query', 'Schools');
     // await page.waitForSelector('#awesomplete_list_2 li');
     // await page.click('#awesomplete_list_2 li');
+    // await page.click("#reopening-submit");
 
     // await page.waitForSelector('.card-county');
-
     // const counties = await page.$$eval('.card-county', counties => counties);
     // expect(counties.length).toBeGreaterThan(0);
   }, timeout);

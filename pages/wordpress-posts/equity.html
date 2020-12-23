@@ -50,36 +50,36 @@ addtositemap: true
                           <cagov-equity-highlight-stats>
             <div class="row d-flex row-eq-height justify-content-md-center pb-4">
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                  <!--{% set value = data.case_rate_vs_statewide_percent_latino %}-->
+                  <!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
                   <!--{% if value > 0 %}-->
             
                   <div class="eq-text mb-3">
-                    Case rate for Latino people is
-                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_latino">{{value}}</span>% higher</span> than statewide
+                    Death rate for Latino people is
+                    <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>% higher</span> than statewide
                   </div>
             
                   <!--{% elif value < 0 %}-->
             
                   <div class="eq-text mb-3">
-                    Case rate for Latino people is
-                    <span class="eq-data"><span class="case_rate_vs_statewide_percent_latino">{{value|abs}}</span>% lower</span> than
+                    Death rate for Latino people is
+                    <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>% lower</span> than
                     statewide
                   </div>
             
                   <!--{% else %}-->
             
                   <div class="eq-text mb-3">
-                    Case rate for Latino people is the same as statewide average
+                    Death rate for Latino people is the same as statewide average
                   </div>
             
                   <!--{% endif %}-->
             
                   <div class="eq-cases">
-                    <p class="text-xs">Cases per 100K people:</p>
+                    <p class="text-xs">Deaths per 100K people:</p>
                     <p class="text-xs mb-0">
-                      <strong><span class="cases_per_100K_latino">{{data.cases_per_100K_latino|formatNumber(tags)}}</span></strong>
+                      <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags)}}</span></strong> 
                       Latino <br>
-                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags)}}</span></strong>
                       all ethnicities
                     </p>
                   </div>

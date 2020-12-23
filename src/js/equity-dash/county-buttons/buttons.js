@@ -5,7 +5,7 @@ class CAGovCountyButtons extends window.HTMLElement {
     
     let searchElement = document.querySelector('cagov-county-search');
     searchElement.addEventListener('county-selected', function (e) {
-      // console.log("County-selected event: " , e.detail);
+      console.log("County-selected event: " , e.detail);
       if (e.detail.reset) {
         this.innerHTML = '';
       }
@@ -22,7 +22,7 @@ class CAGovCountyButtons extends window.HTMLElement {
       event.preventDefault();
       if(event.target.classList.contains('js-toggle-county')) {
         let clickedCounty = event.target.textContent;
-        console.log("Issuing county-selected for button");
+        // console.log("Issuing county-selected for button");
 
         if(!event.target.classList.contains('active')) {
           let emissionEvent = new window.CustomEvent('county-selected', {
