@@ -389,11 +389,11 @@ hero-stats {
 				text-align: left;
 				display: flex;
 				align-items: center;
-				width: 50%;
+				width: 60%;
 				padding: 1.5rem;
 			}
 			@include tablet-wide {
-				width: 50%;
+				width: 66%;
 				padding: 2rem;
 			}
 			@include desktop {
@@ -449,14 +449,14 @@ hero-stats {
 			text-align: center;
 			padding: 2rem;
 			@include tablet {
-				width: 50%;
+				width: 40%;
 				padding: 1.5rem;
 				display: flex;
-				align-items: center;
+				align-items:flex-start;
 			}
 			@include tablet-wide {
 				padding: 2rem;
-				width: 50%;
+				width: 34%;
 			}
 			@include desktop {
 				padding: 3rem 2rem;
