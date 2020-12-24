@@ -42,7 +42,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
 
 
   // Render the bars with their connected tooltips.
-  svg
+  let bar = svg
     .append("g")
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group.
@@ -57,13 +57,20 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .data(d => {
       return d;
     })
-    .enter()
-    .append("rect")
+    .enter();
+  bar.append("rect")
     .attr("x", d => x(d[0]))
     .attr("y", d => y(d.data.METRIC))
     .attr("width", d => x(d[1]) - x(d[0]))
-    .attr("height", "10px")
+    .attr("height", "10px");
 
+  // larger transparent overlay for tooltip hover
+  bar.append("rect")
+    .attr("x", d => x(d[0]))
+    .attr("y", d => y(d.data.METRIC)-10)
+    .attr("width", d => x(d[1]) - x(d[0]))
+    .attr("height", "30px")
+    .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
       let percentNotMissing = d.data.NOT_MISSING
@@ -120,7 +127,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
       });
       tooltip.style("visibility", "visible");
       tooltip.style("left",'90px');
-      tooltip.style("top",`${event.layerY+40}px`)
+      tooltip.style("top",`${event.layerY+60}px`)
     })
     .on("mouseout", function(d) {
       d3.select(this).transition();
