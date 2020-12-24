@@ -184,6 +184,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.listenForLocations();
     this.county = this.chartOptions.state;
     this.resetTitle();
+    this.resetDescription();
     rtlOverride(this);
 
   }
@@ -203,7 +204,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
           this.county.toLowerCase().replace(/ /g, "") +
           ".json";
         this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
-        this.resetTitle(this.county);
+        this.resetTitle();
+        this.resetDescription();
       }.bind(this),
       false
     );
