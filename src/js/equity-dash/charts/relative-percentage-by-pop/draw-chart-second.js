@@ -38,7 +38,7 @@ export default function drawSecondBars({
     }  
 
   // End of bar labels, METRIC total (yellow)
-  svg
+  let bars = svg
     .append("g")
     .selectAll("g")
     .data(stackedData1)
@@ -50,6 +50,7 @@ export default function drawSecondBars({
     // enter a second time = loop subgroup per subgroup to add yellow bars
     .data((d) => d)
     .enter()
+
     .append("rect")
     .attr("x", (d) => x1(d[0]))
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
@@ -62,7 +63,6 @@ export default function drawSecondBars({
 
      // jbum: event handlers appear to be unused
     .on("mouseover focus", function (event, d) {
-      console.log("Got focus");
       d3.select(this).transition();
 
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
@@ -79,6 +79,13 @@ export default function drawSecondBars({
       //.style("fill", "skyblue");
       tooltip.style("visibility", "hidden");
     });
+  // bars.append("rect")
+  //   .attr("x", (d) => x1(d[0]))
+  //   .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY)-5)
+  //   .attr("width", (d) => (x1(d[1]) - x1(d[0])/2))
+  //   .attr("height", "20px")
+  //   .attr("fill", "rgb(255,0,0,0.5)")
+  //   ;
 
   // svg.append("g").call(xAxis);
 
