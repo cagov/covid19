@@ -54,7 +54,7 @@ $blue: #003d9d;
 $darkblue: #1f2574;
 $lightblue: #92c5de;
 $lightestblue: #f2f5fc;
-$yellow: #ecca00;
+$yellow: #FFCF44;
 $orange: #ff8000;
 $black: #000;
 $white: #fff;
@@ -468,12 +468,12 @@ li,
       background: #003d9d !important;
   }
 .bg-yellow {
-    background-color: #ecca00 !important;
-    background: #ecca00 !important;
+    background-color: #FFCF44 !important;
+    background: #FFCF44 !important;
 }
 .bg-yellow-hover:hover, .bg-yellow-hover:focus  {
-    background-color: #ecca00 !important;
-    background: #ecca00 !important;
+    background-color: #FFCF44 !important;
+    background: #FFCF44 !important;
 }
 .bg-orange {
     background-color: #ff8000 !important;
@@ -515,10 +515,10 @@ li,
     color: #003d9d !important;
   }
 .color-yellow {
-    color: #ecca00 !important;
+    color: #FFCF44 !important;
 }
 .color-yellow-hover:hover, .color-yellow-hover:focus  {
-    color: #ecca00 !important;
+    color: #FFCF44 !important;
 }
 .color-orange {
     color: #ff8000 !important;
@@ -527,7 +527,12 @@ li,
     color: #ff8000 !important;
 }
 .color-white {
-  color: $white;
+  color: $white !important;
+}
+
+
+.color-white-hover:hover, .color-white-hover:focus {
+  color: $white !important;
 }
 .color-purple {
     color: #1f2574 !important;
@@ -1645,6 +1650,10 @@ button#dropdown-menu-button:focus {
   text-decoration: underline !important;
 }
 
+.no-underline {
+  text-decoration: none !important;
+}
+
 .rounded-50 {
   border-radius: 50px !important;
 }
@@ -1926,6 +1935,7 @@ font {
 }
 
 .bg-transparent {background-color:transparent !important;}
+.text-sm {font-size:.95rem !important;}
 .text-small {font-size:.85rem !important;}
 .text-xs {font-size:.75rem !important;}
 .text-black {color:#000 !important;}
@@ -1957,6 +1967,13 @@ font {
 .bottom-4px {bottom:4px;}
 .bottom-5px {bottom:5px;}
 
+.px-6px {padding-left: 6px !important; padding-right: 6px !important;}
+.px-7px {padding-left: 7px !important; padding-right: 7px !important;}
+.px-8px {padding-left: 8px !important; padding-right: 8px !important;}
+.px-9px {padding-left: 9px !important; padding-right: 9px !important;}
+.px-10px {padding-left: 10px !important; padding-right: 10px !important;}
+.px-12px {padding-left: 12px !important; padding-right: 12px !important;}
+
 .hi-50 {
   height: 50px;
 }
@@ -1976,6 +1993,11 @@ font {
 .bd-top-14-orange {border-top: 14px solid $orange;}
 .bd-top-14-yellow {border-top: 14px solid $yellow;}
 .bd-top-14-lightblue {border-top: 14px solid $lightblue;}
+
+.bd-rounded-5 {border-radius: 6px;}
+.bd-rounded-10 {border-radius: 10px;}
+.bd-rounded-15 {border-radius: 15px;}
+.bd-rounded-20 {border-radius: 15px;}
 
 .has-text-align-center {text-align: center !important;}
 .text-300 {font-weight: 300 !important;}
