@@ -26,3 +26,12 @@ steps:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
 - task: PublishBuildArtifacts@1
+- task: TriggerPipeline@1
+  inputs:
+    serviceConnection: 'covidtrigger'
+    project: 'CDT.GO.COVID19CAGOV.Website'
+    Pipeline: 'Build'
+    buildDefinition: 'New-Purge-CDT.GO.COVID19CAGOV.Website'
+    Branch: 'master'
+
+ 
