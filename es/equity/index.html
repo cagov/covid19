@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Compromiso de California con la equidad en la salud</h1>
           
-            <p class="small-text">Última actualización&nbsp;23 de diciembre de 2020 a las 11:26 a. m.</p>
+            <p class="small-text">Última actualización&nbsp;23 de diciembre de 2020 a las 11:30 a. m.</p>
           
         </div>
       </div>
@@ -2159,6 +2159,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.listenForLocations();
     this.county = this.chartOptions.state;
     this.resetTitle();
+    this.resetDescription();
     rtlOverride(this);
 
   }
@@ -2178,7 +2179,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
           this.county.toLowerCase().replace(/ /g, "") +
           ".json";
         this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
-        this.resetTitle(this.county);
+        this.resetTitle();
+        this.resetDescription();
       }.bind(this),
       false
     );

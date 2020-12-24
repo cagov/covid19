@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>التزام ولاية كاليفورنيا بالعدالة الصحية.</h1>
           
-            <p class="small-text">آخر التحديثات&nbsp;11:26 ص الساعة 23 ديسمبر 2020</p>
+            <p class="small-text">آخر التحديثات&nbsp;11:30 ص الساعة 23 ديسمبر 2020</p>
           
         </div>
       </div>
@@ -2159,6 +2159,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     this.listenForLocations();
     this.county = this.chartOptions.state;
     this.resetTitle();
+    this.resetDescription();
     rtlOverride(this);
 
   }
@@ -2178,7 +2179,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
           this.county.toLowerCase().replace(/ /g, "") +
           ".json";
         this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
-        this.resetTitle(this.county);
+        this.resetTitle();
+        this.resetDescription();
       }.bind(this),
       false
     );
