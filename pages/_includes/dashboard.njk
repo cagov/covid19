@@ -35,31 +35,91 @@
         </div>
 
         <div class="row d-flex justify-content-md-center">
-            <div class="col-md-3">
-                <div class="bg-purple rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Cases</div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
                 
-                    <div id="total-cases-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalCases_}}</div>
-                    <div id="total-cases-today" class="text-white mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> today</div>
-                    <div id="total-cases-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalCasesTodayPct_}}% increase from prior day total</div>
+                    <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span></div>
+                    <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                     <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase from prior day total</span>
+                     
+                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="bg-purple rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Deaths</div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
                 
-                    <div id="total-deaths-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTotalDeaths_}}</div>
-                    <div id="total-deaths-today" class="text-white mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> today</div>
-                    <div id="total-deaths-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTotalDeathsChange_}}% increase from prior day total</div>
+                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span></div>
+                    <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     {{_varStatTotalDeathsChange_}}% <span class="text-300">increase from prior day total</span>
+                    
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="bg-purple rounded-lg py-2 text-center mt-3">
-                <div class="text-small text-uppercase color-orange line-height-1-2 mt-1">Total Tests</div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
                 
-                    <div id="total-tested-number" class="text-white font-size-1-8em h2 my-2">{{_varStatTested_}}</div>
-                    <div id="total-tested-today" class="text-white mt-2"><strong>{{_varStatTestedDaily_}}</strong> today</div>
-                    <div id="total-tested-increase" class="text-white text-small mb-2"><span class="ca-gov-icon-arrow-fill-right-up color-secondary font-size-1-5em p-rel top-3px" aria-hidden="true"></span> {{_varStatTestedDailyPct_}}% increase from prior day total</div>
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     {{_varStatTestedDailyPct_}}% <span class="text-300">increase from prior day total</span>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,11 +162,11 @@
         <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 
         <h3 class="text-center mt-4 mb-0">Daily cases and deaths</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -131,11 +191,11 @@
         </div>
 
         <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -154,11 +214,11 @@
         </div>
 
         <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-link-container js-toggle-county-container d-none">
-                <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="js-toggle-county county d-none">Alameda</a>
-                    <a href="#" class="toggle-active js-toggle-county statewide">Statewide</a>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
                 </div>
             </div>
         </div>
@@ -239,14 +299,11 @@
     <div class="container py-2">
     <h2 class="text-center color-orange">Infections by group</h2>
         <div class="col-lg-12 bg-white px-3 py-4">
-            <div class="row d-flex justify-content-md-center">
-
-                <div class="toggle-link-container">
-                    <div class="grid-layout-hd toggle-links bg-darkblue bd-darkblue">
-                    <a href="#" class="toggle-active js-toggle-group ethnicity">Ethnicity</a>
-                    <a href="#" class="js-toggle-group gender">Gender</a>
-                    <a href="#" class="js-toggle-group age">Age</a>
-                    </div>
+             <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+                <div class="large-tabs">
+                    <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
+                    <button class="large-tab js-toggle-group gender">Gender</button>
+                    <button class="large-tab js-toggle-group age">Age</button>
                 </div>
             </div>
             <div class="row">
