@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>التزام ولاية كاليفورنيا بالعدالة الصحية.</h1>
           
-            <p class="small-text">آخر التحديثات&nbsp;1:24 م الساعة 27 ديسمبر 2020</p>
+            <p class="small-text">آخر التحديثات&nbsp;2:55 م الساعة 27 ديسمبر 2020</p>
           
         </div>
       </div>
@@ -4819,7 +4819,7 @@ window.customElements.define(
   CAGOVEquityMissingness
 );
 
-var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; } }\n\n@media (max-width: 440px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.5rem !important; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; } }\n";
+var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 440px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.65rem !important; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; } }\n";
 styleInject(css_248z$4);
 
 // import chartCss from './../chart.scss';
@@ -4861,7 +4861,7 @@ labelMap.set("above $120K","$120K+");
 
 function writeXAxis(data, height, margin, x) {
   let xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom + 5})`)
+    .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
         return labelMap.get(data[i].SOCIAL_TIER);
@@ -5090,24 +5090,24 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       tablet: {
-        width: 440,
-        height: 400,
+        width: 500, // 440 x 400
+        height: 450,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
           height: 20
         },
         legend: {
-          y: 0
+          y: 2
         }
       },
-      mobile: {
+      mobile: { // 440x400
         width: 440,
         height: 400,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
@@ -5118,10 +5118,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       retina: {
-        width: 320,
+        width: 330,
         height: 300,
         margin: {
-          top: 40, right: 0, bottom: 30, left: 10
+          top: 40, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 10,
