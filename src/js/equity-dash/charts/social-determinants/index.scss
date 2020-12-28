@@ -26,12 +26,15 @@ cagov-chart-d3-bar {
     .chart-title {
       margin: 50px 20px 20px 20px;
     }
-  }
+    .tick text {
+      font-size: 0.75rem !important;
+    }
+}
 
   @media (max-width: 440px) {
     
       .tick text {
-        font-size: 0.5rem !important;
+        font-size: 0.65rem !important;
       }
       .bar-label tspan {
         font-size: 0.6rem !important;
