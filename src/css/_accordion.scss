@@ -1,6 +1,7 @@
 /* accordion component specific classes */
 cwds-accordion .card {
   border-radius: 0 !important;
+  border: none;
 }
 
 cwds-accordion .card-container {
@@ -22,10 +23,6 @@ cwds-accordion .collapsed {
   display: block;
   overflow: hidden;
   visibility: hidden;
-}
-
-cwds-accordion .card-header .button {
-  color: #000;
 }
 
 cwds-accordion .card-header .button {
@@ -70,9 +67,6 @@ cwds-accordion button.card-header {
   border-bottom-color:$darkblue;
   border-radius: 0 !important;
 }
-cwds-accordion button.accordion-alpha-open {
-  border-bottom-color: $lightestblue;
-}
 
 cwds-accordion .accordion-alpha .plus-munus {
     font-family: CaGov!important;
@@ -91,10 +85,13 @@ cwds-accordion .accordion-alpha .plus-munus {
   }
 }
 
-cwds-accordion .accordion-alpha-open .plus-munus {
-  font-family: CaGov!important;
-  &:before {
-    content: "\4b";
+cwds-accordion .accordion-alpha-open {
+  border-bottom-color: $lightestblue;
+  .plus-munus {
+    font-family: CaGov!important;
+    &:before {
+      content: "\4b";
+    }
   }
 }
 
