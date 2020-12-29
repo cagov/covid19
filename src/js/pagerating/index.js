@@ -20,9 +20,28 @@ class CAGOVPageFeedback extends window.HTMLElement {
     let requiredField = this.dataset.requiredField
       ? this.dataset.requiredField
       : "This field is required";
-      let characterLimit = this.dataset.characterLimit
+    let characterLimit = this.dataset.characterLimit
       ? this.dataset.characterLimit
       : "You have reached your character limit."
+    let anythingToAdd = this.dataset.anythingToAdd
+      ? this.dataset.anythingToAdd
+      : "If you have anything to add,"
+    let positiveSurveyUrl = this.dataset.positiveSurveyUrl
+      ? this.dataset.positiveSurveyUrl
+      : "https://ethn.io/85017"
+    let takeTheSurvey = this.dataset.takeTheSurvey
+      ? this.dataset.takeTheSurvey
+      : "take the survey"
+    let anyOtherFeedback = this.dataset.anyOtherFeedback
+      ? this.dataset.anyOtherFeedback
+      : "If you have any other feedback about this website,"
+    let negativeSurveyUrl = this.dataset.negativeSurveyUrl
+      ? this.dataset.negativeSurveyUrl
+      : "https://ethn.io/77745"
+    let takeOurSurvey = this.dataset.takeOurSurvey
+      ? this.dataset.takeOurSurvey
+      : "take our survey"
+
     this.endpointUrl = this.dataset.endpointUrl;
     let html = ratingsTemplate(
       question,
@@ -33,7 +52,13 @@ class CAGOVPageFeedback extends window.HTMLElement {
       thanksComments,
       submit,
       requiredField,
-      characterLimit
+      characterLimit,
+      anythingToAdd,
+      positiveSurveyUrl,
+      takeTheSurvey,
+      anyOtherFeedback,
+      negativeSurveyUrl,
+      takeOurSurvey
     );
     this.innerHTML = html;
     this.applyListeners();

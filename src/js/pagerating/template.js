@@ -1,4 +1,4 @@
-export default function (question, yes, no, commentPrompt, thanksFeedback, thanksComments, submit, requiredField, characterLimit) {
+export default function (question, yes, no, commentPrompt, thanksFeedback, thanksComments, submit, requiredField, characterLimit, anythingToAdd, positiveSurveyUrl, takeTheSurvey, anyOtherFeedback, negativeSurveyUrl, takeOurSurvey) {
   return /*html*/`<div class="feedback-form">
     <div class="feedback-form-grid">
 				<div class="feedback-form-grid-col" id="yes-no">
@@ -8,7 +8,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
             <button class="button-lightestblue ml-3 js-feedback-no" id="feedback-no" aria-labelledby="feedback-rating">${no}</button>
           </div>
           <div class="feedback-form-thanks js-feedback-thanks" role="alert"><span class="font-size-1-5em bold mb-3">${thanksComments}</span>
-          <br><span class="text-300">If you have anything to add, <a href="https://ethn.io/85017" class="color-secondary color-secondary-hover">take the survey.</a></span></div>
+          <br><span class="text-300">${anythingToAdd} <a href="${positiveSurveyUrl}" class="color-secondary color-secondary-hover">${takeTheSurvey}.</a></span></div>
         </div>
         <div class="col-md-6 mx-auto d-none" id="feedback-form">
           <div class="feedback-form-add text-center">
@@ -22,7 +22,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
           </div>
           <div class="feedback-form-thanks feedback-thanks-add" role="alert">
             <span class="font-size-1-5em bold">${thanksFeedback}</span>
-            <p class="text-300  mt-3">If you have any other feedback about this website, <a href="https://ethn.io/77745" class="color-secondary color-secondary-hover">take our survey.</a></p>
+            <p class="text-300  mt-3">${anyOtherFeedback} <a href="${negativeSurveyUrl}" class="color-secondary color-secondary-hover">${takeOurSurvey}.</a></p>
           </div>
 				</div>
 		  </div>
