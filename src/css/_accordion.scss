@@ -1,5 +1,8 @@
 /* accordion component specific classes */
-    
+cwds-accordion .card {
+  border-radius: 0 !important;
+}
+
 cwds-accordion .card-container {
   height: 0px;
   display: block;
@@ -35,13 +38,18 @@ cwds-accordion .card-header .button {
 
 .accordion-title {
 	padding: .5rem;
-	padding-left: 1rem;
   font-family: "Montserrat", sans-serif;	
   font-weight: 700;
 	text-align: left;
 	font-size: 1.5rem;
 	margin-bottom: 0;
-	color:#000;
+  color:$darkblue;
+  margin-right: auto;
+  h4, h3, h2 {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    color:$darkblue;
+  }
 }
 
 .accordion h2 {
@@ -49,20 +57,43 @@ cwds-accordion .card-header .button {
   padding: 10px;
 }
 
-.accordion-alpha {
-	background-image: url(/img/plus.svg);
-    background-position: right 1.25rem center;
-    background-size: 1rem;
-    background-repeat: no-repeat;
+button.card-header {
+  display: flex;
+  justify-content: left;
+  align-items:center;
+  padding: 1rem .75rem;
+  background-color:$lightestblue;
+  background-clip: border-box;
+  border: 1px solid $lightestblue;
+  border-top-color: $darkblue;
+  border-bottom-color: $darkblue;
+  border-radius: 0 !important;
+}
+button.accordion-alpha-open {
+  border-bottom-color: $lightestblue;
 }
 
-.accordion-alpha-open {
-	background-image: url(/img/minus.svg);
-    background-position: right 1.25rem center;
-    background-size: 1rem;
-    background-repeat: no-repeat;
+.accordion-alpha .plus-munus {
+      font-family: CaGov!important;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 2px solid $orange;
+    border-radius: 50%;
+    padding: .3rem 0;
+    overflow: hidden;
+    transition: all .3s ease;
+    margin-left: 1rem;
+    color: $orange;
+    font-size: 1.6rem;
+  &:before {
+    content: "\4c";
+  }
 }
 
-
-
+.accordion-alpha-open .plus-munus {
+  font-family: CaGov!important;
+  &:before {
+    content: "\4b";
+  }
+}
 
