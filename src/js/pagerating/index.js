@@ -20,6 +20,9 @@ class CAGOVPageFeedback extends window.HTMLElement {
     let requiredField = this.dataset.requiredField
       ? this.dataset.requiredField
       : "This field is required";
+      let characterLimit = this.dataset.characterLimit
+      ? this.dataset.characterLimit
+      : "You have reached your character limit."
     this.endpointUrl = this.dataset.endpointUrl;
     let html = ratingsTemplate(
       question,
@@ -29,7 +32,8 @@ class CAGOVPageFeedback extends window.HTMLElement {
       thanksFeedback,
       thanksComments,
       submit,
-      requiredField
+      requiredField,
+      characterLimit
     );
     this.innerHTML = html;
     this.applyListeners();

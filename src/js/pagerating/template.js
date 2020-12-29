@@ -1,4 +1,4 @@
-export default function (question, yes, no, commentPrompt, thanksFeedback, thanksComments, submit, requiredField) {
+export default function (question, yes, no, commentPrompt, thanksFeedback, thanksComments, submit, requiredField, characterLimit) {
   return /*html*/`<div class="feedback-form">
     <div class="feedback-form-grid">
 				<div class="feedback-form-grid-col" id="yes-no">
@@ -7,7 +7,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
             <button class="button-lightestblue mr-2 js-feedback-yes" id="feedback-yes" aria-labelledby="feedback-rating">${yes}</button>
             <button class="button-lightestblue ml-3 js-feedback-no" id="feedback-no" aria-labelledby="feedback-rating">${no}</button>
           </div>
-          <div class="feedback-form-thanks js-feedback-thanks" role="alert"><span class="font-size-1-5em bold mb-3">${thanksComment}</span>
+          <div class="feedback-form-thanks js-feedback-thanks" role="alert"><span class="font-size-1-5em bold mb-3">${thanksComments}</span>
           <br><span class="text-300">If you have anything to add, <a href="https://ethn.io/85017" class="color-secondary color-secondary-hover">take the survey.</a></span></div>
         </div>
         <div class="col-md-6 mx-auto d-none" id="feedback-form">
@@ -16,7 +16,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
             <div class="feedback-form-add-grid d-block">
               <textarea name="add-feedback" class="js-add-feedback feedback-form-textarea" id="add-feedback" rows="1"></textarea>
               <div class="feedback-form-error feedback-error color-yellow" role="alert">${requiredField}</div>
-              <div class="feedback-form-error feedback-limit-error color-yellow" role="alert">You have reached your character limit.</div>
+              <div class="feedback-form-error feedback-limit-error color-yellow" role="alert">${characterLimit}</div>
             </div>
             <button class="button-lightestblue mt-4 mx-auto js-feedback-submit" type="submit" id="feedback-submit">${submit}</button>
           </div>
