@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>加州致力於實現健康公平</h1>
           
-            <p class="small-text">最近更新&nbsp;2020年12月28日, 上午10:51</p>
+            <p class="small-text">最近更新&nbsp;2020年12月28日, 上午10:57</p>
           
         </div>
       </div>
@@ -2926,7 +2926,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           height: 700,
           width: 440,
           margin: {
-            top: 0,
+            top: 20,
             right: 30,
             bottom: 1,
             left: 10,
@@ -2948,7 +2948,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           height: 700,
           width: 320,
           margin: {
-            top: 0,
+            top: 20,
             right: 30,
             bottom: 1,
             left: 10,
@@ -4817,7 +4817,7 @@ window.customElements.define(
   CAGOVEquityMissingness
 );
 
-var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 440px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.65rem !important; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; } }\n";
+var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.7rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 440px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.5rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n";
 styleInject(css_248z$4);
 
 // import chartCss from './../chart.scss';
@@ -5024,7 +5024,7 @@ function rewriteBarLabels(svg, data, x, y, sparkline) {
 
 }
 
-function redrawYLine(component, y) {
+function redrawYLine(component, y, dataset) {
   // remove previous Y Line, if any
   if (component.querySelector('.bar-chart-yline') !== null)
     component.querySelector('.bar-chart-yline').remove();
@@ -5033,10 +5033,19 @@ function redrawYLine(component, y) {
 
   // add a new one
   let yDottedLinePos = y(component.yDValue);
-  let yXAnchor = component.chartBreakpointValues.width - 18;
+  let yBar3 = y(dataset[2].CASE_RATE_PER_100K);
+  let yBar4 = y(dataset[3].CASE_RATE_PER_100K);
+  // use middle bar relationships to determine positioning (left/right alignment)
+  let leftAlign = Math.abs(yBar4-yDottedLinePos) < Math.abs(yBar3-yDottedLinePos);
+  let yXAnchor = component.chartBreakpointValues.width - (component.chartBreakpointValues.margin.right+10);
+  let yTextAnchor = 'end';
+  if (leftAlign) {
+    yXAnchor = component.chartBreakpointValues.margin.left+10;
+    yTextAnchor = 'begin';
+  }
   component.svg.append("path")
-    .attr("d", d3.line()([[20, yDottedLinePos], 
-                          [component.chartBreakpointValues.width - 20, yDottedLinePos]]))
+    .attr("d", d3.line()([[component.chartBreakpointValues.margin.left, yDottedLinePos], 
+                          [component.chartBreakpointValues.width - component.chartBreakpointValues.margin.right, yDottedLinePos]]))
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
     .style("stroke-dasharray", ("5, 5"))
@@ -5044,11 +5053,11 @@ function redrawYLine(component, y) {
   
   component.svg.append("text")
     .text(`${component.translationsObj.statewideCaseRate} ${parseFloat(component.yDValue).toFixed(1)}`)
-    .attr("y", yDottedLinePos - 15)
+    .attr("y", yDottedLinePos - 6)
     // .attr("x", 38)
     // .attr('text-anchor','start')
     .attr("x", yXAnchor)
-    .attr('text-anchor','end')
+    .attr('text-anchor', yTextAnchor)
     .attr('fill', '#1F2574')
     .attr('class','label bar-chart-label');
 
@@ -5091,7 +5100,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 500, // 440 x 400
         height: 450,
         margin: {
-          top: 88, right: 0, bottom: 50, left: 10
+          top: 88, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 15,
@@ -5105,7 +5114,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 440,
         height: 400,
         margin: {
-          top: 88, right: 0, bottom: 50, left: 10
+          top: 88, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 15,
@@ -5119,7 +5128,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 330,
         height: 300,
         margin: {
-          top: 40, right: 0, bottom: 50, left: 10
+          top: 40, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 10,
@@ -5205,7 +5214,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let yDValue = dataincome[0].STATE_CASE_RATE_PER_100K;
       this.yDValue = yDValue;
 
-      redrawYLine(this, y);
+      redrawYLine(this, y, dataincome);
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -5289,7 +5298,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
-      redrawYLine(component, y);
+      redrawYLine(component, y, dataset);
     }
 
 
