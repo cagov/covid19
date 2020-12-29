@@ -124,6 +124,7 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/_includes/header.njk',
         'pages/_includes/news-feed-home.html',
         'pages/_includes/footer.njk',
+        'pages/_includes/accordion.html',
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
         'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'

@@ -4,7 +4,7 @@ labelMap.set("above $120K","$120K+");
 
 function writeXAxis(data, height, margin, x) {
   let xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom + 5})`)
+    .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
         return labelMap.get(data[i].SOCIAL_TIER);

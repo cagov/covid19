@@ -4,7 +4,7 @@ import css from './index.scss';
 export default function template(translationsObj) {
   return /*html*/`<div class="py-2 bg-lightblue full-bleed">
     <div class="container">
-    <h2 class="text-center">${translationsObj.sectionTitle}</h2>
+    <h2 class="text-center" id="factors">${translationsObj.sectionTitle}</h2>
     <p>${translationsObj.sectionDescription}</p>
     <div class="col-lg-12 bg-white px-3 py-4">
         <div class="d-flex flex-column flex-md-row justify-content-center mt-3">

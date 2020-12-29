@@ -39,24 +39,24 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       tablet: {
-        width: 440,
-        height: 400,
+        width: 500, // 440 x 400
+        height: 450,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
           height: 20
         },
         legend: {
-          y: 0
+          y: 2
         }
       },
-      mobile: {
+      mobile: { // 440x400
         width: 440,
         height: 400,
         margin: {
-          top: 88, right: 0, bottom: 30, left: 10
+          top: 88, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 15,
@@ -67,10 +67,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       retina: {
-        width: 320,
+        width: 330,
         height: 300,
         margin: {
-          top: 40, right: 0, bottom: 30, left: 10
+          top: 40, right: 0, bottom: 50, left: 10
         },
         sparkline: {
           width: 10,
