@@ -42,7 +42,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 500, // 440 x 400
         height: 450,
         margin: {
-          top: 88, right: 0, bottom: 50, left: 10
+          top: 88, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 15,
@@ -56,7 +56,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 440,
         height: 400,
         margin: {
-          top: 88, right: 0, bottom: 50, left: 10
+          top: 88, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 15,
@@ -70,7 +70,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         width: 330,
         height: 300,
         margin: {
-          top: 40, right: 0, bottom: 50, left: 10
+          top: 40, right: 0, bottom: 40, left: 10
         },
         sparkline: {
           width: 10,
@@ -156,7 +156,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let yDValue = dataincome[0].STATE_CASE_RATE_PER_100K
       this.yDValue = yDValue;
 
-      redrawYLine(this, y);
+      redrawYLine(this, y, dataincome);
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -240,7 +240,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
-      redrawYLine(component, y);
+      redrawYLine(component, y, dataset);
     }
 
 
