@@ -484,9 +484,19 @@ button.clear {
   }
   &:focus {outline: 2px solid $yellow !important;}
 }
-
+// lighter blue button
+.button-lightestblue {
+  @include action-button;
+  background-color: $lightestblue;
+  color: $darkblue !important;
+  &:hover, &:focus {
+    background-color: $orange;
+    color: $darkblue !important;
+  }
+  &:focus {outline: 2px solid $yellow !important;}
+}
 .bd-4px {
-border-radius: 0.25rem !important;
+  border-radius: 0.25rem !important;
 }
 
 
