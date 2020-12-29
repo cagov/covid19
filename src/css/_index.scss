@@ -4,7 +4,6 @@
 @import './general';
 @import './covid';
 @import './cagov-font';
-@import './accordion';
 @import './stepbystep';
 
 @import './video';
@@ -24,6 +23,7 @@
 // @import './trilogy/export/shell/logo';
 //@import './trilogy/export/shell/header';
 /* ^ these should all move into namespaced versions so they can be used anywhere safely */
+@import './accordion';
 @import './buttons';
 @import './header';
 @import './project-kennedy';
