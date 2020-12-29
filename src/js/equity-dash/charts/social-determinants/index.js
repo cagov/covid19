@@ -156,7 +156,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let yDValue = dataincome[0].STATE_CASE_RATE_PER_100K
       this.yDValue = yDValue;
 
-      redrawYLine(this, y);
+      redrawYLine(this, y, dataincome);
 
       writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
@@ -240,7 +240,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
-      redrawYLine(component, y);
+      redrawYLine(component, y, dataset);
     }
 
 

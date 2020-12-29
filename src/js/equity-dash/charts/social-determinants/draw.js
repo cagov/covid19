@@ -176,7 +176,7 @@ function rewriteBarLabels(svg, data, x, y, sparkline) {
 
 }
 
-function redrawYLine(component, y) {
+function redrawYLine(component, y, dataset) {
   // remove previous Y Line, if any
   if (component.querySelector('.bar-chart-yline') !== null)
     component.querySelector('.bar-chart-yline').remove();
@@ -185,10 +185,19 @@ function redrawYLine(component, y) {
 
   // add a new one
   let yDottedLinePos = y(component.yDValue);
-  let yXAnchor = component.chartBreakpointValues.width - 18;
+  let yBar3 = y(dataset[2].CASE_RATE_PER_100K);
+  let yBar4 = y(dataset[3].CASE_RATE_PER_100K);
+  // use middle bar relationships to determine positioning (left/right alignment)
+  let leftAlign = Math.abs(yBar4-yDottedLinePos) < Math.abs(yBar3-yDottedLinePos);
+  let yXAnchor = component.chartBreakpointValues.width - (component.chartBreakpointValues.margin.right+10);
+  let yTextAnchor = 'end';
+  if (leftAlign) {
+    yXAnchor = component.chartBreakpointValues.margin.left+10;
+    yTextAnchor = 'begin';
+  }
   component.svg.append("path")
-    .attr("d", d3.line()([[20, yDottedLinePos], 
-                          [component.chartBreakpointValues.width - 20, yDottedLinePos]]))
+    .attr("d", d3.line()([[component.chartBreakpointValues.margin.left, yDottedLinePos], 
+                          [component.chartBreakpointValues.width - component.chartBreakpointValues.margin.right, yDottedLinePos]]))
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
     .style("stroke-dasharray", ("5, 5"))
@@ -196,11 +205,11 @@ function redrawYLine(component, y) {
   
   component.svg.append("text")
     .text(`${component.translationsObj.statewideCaseRate} ${parseFloat(component.yDValue).toFixed(1)}`)
-    .attr("y", yDottedLinePos - 15)
+    .attr("y", yDottedLinePos - 6)
     // .attr("x", 38)
     // .attr('text-anchor','start')
     .attr("x", yXAnchor)
-    .attr('text-anchor','end')
+    .attr('text-anchor', yTextAnchor)
     .attr('fill', '#1F2574')
     .attr('class','label bar-chart-label');
 
