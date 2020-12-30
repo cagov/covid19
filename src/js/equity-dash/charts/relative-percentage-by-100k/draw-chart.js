@@ -229,21 +229,27 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
         .append("text")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
         .attr("x", (d) => {
-          return 250;
+          return d.APPLIED_SUPPRESSION == "None"? 250 : 0;
         })
         .attr("height", y.bandwidth())
         .html((d) => {
-          if (d.APPLIED_SUPPRESSION === "None") {
+          if (d.APPLIED_SUPPRESSION === "Population") {
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
+          } else if (d.APPLIED_SUPPRESSION === "Total") {
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
+          } else if (d.APPLIED_SUPPRESSION === "None") {
             return `<tspan class="highlight-data">
             ${parseFloat(
               d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO * 100
             ).toFixed(1)}%</tspan>
             ${translationsObj.chartLineDiff}`;
           } else {
+            console.log("unexpected applied suppression",d.APPLIED_SUPPRESSION);
             return ``;
           }
         })
-        .attr("text-anchor", "end");
+        .attr("text-anchor", (d) => d.APPLIED_SUPPRESSION == "None"? "end" : "start");
+        // .attr("inline-size", chartBreakpointValues.width);
     });
 
   // Change from month arrows
