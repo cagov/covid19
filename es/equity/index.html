@@ -163,7 +163,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Compromiso de California con la equidad en la salud</h1>
           
-            <p class="small-text">Última actualización&nbsp;29 de diciembre de 2020 a las 2:28 p. m.</p>
+            <p class="small-text">Última actualización&nbsp;29 de diciembre de 2020 a las 3:43 p. m.</p>
           
         </div>
       </div>
@@ -1457,7 +1457,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "cagov-chart-re-100k {\n  min-width: 300px; }\n  cagov-chart-re-100k .change-from-month-labels {\n    font-size: 0.75em;\n    text-anchor: unset; }\n  cagov-chart-re-100k .bar-chart-label.label {\n    font-size: 0.85rem; }\n  cagov-chart-re-100k .label {\n    font-weight: normal;\n    color: #1f2574; }\n  cagov-chart-re-100k .chart-tooltip--re100k {\n    min-width: 100px; }\n";
+var css_248z = "cagov-chart-re-100k {\n  min-width: 300px; }\n  cagov-chart-re-100k .change-from-month-labels {\n    font-size: 0.75em;\n    text-anchor: unset; }\n  cagov-chart-re-100k .bar-chart-label.label {\n    font-size: 0.85rem; }\n  cagov-chart-re-100k .label {\n    font-weight: normal;\n    color: #1f2574; }\n  cagov-chart-re-100k .chart-tooltip--re100k {\n    min-width: 100px; }\n  cagov-chart-re-100k .withheld-label {\n    font-size: 0.85em; }\n";
 styleInject(css_248z);
 
 function template$1(title, description) {
@@ -1743,21 +1743,27 @@ function drawBars(stackedData, data, statewideRatePer100k) {
         .append("text")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 25)
         .attr("x", (d) => {
-          return 250;
+          return d.APPLIED_SUPPRESSION == "None"? 250 : 0;
         })
         .attr("height", y.bandwidth())
         .html((d) => {
-          if (d.APPLIED_SUPPRESSION === "None") {
+          if (d.APPLIED_SUPPRESSION === "Population") {
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-population' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
+          } else if (d.APPLIED_SUPPRESSION === "Total") {
+            return `<tspan class="withheld-label">${translationsObj['data-missing-applied-suppression-total' + "--" + selectedMetric.toLowerCase()] || ''}</tspan>`;
+          } else if (d.APPLIED_SUPPRESSION === "None") {
             return `<tspan class="highlight-data">
             ${parseFloat(
               d.METRIC_VALUE_PER_100K_CHANGE_30_DAYS_AGO * 100
             ).toFixed(1)}%</tspan>
             ${translationsObj.chartLineDiff}`;
           } else {
+            console.log("unexpected applied suppression",d.APPLIED_SUPPRESSION);
             return ``;
           }
         })
-        .attr("text-anchor", "end");
+        .attr("text-anchor", (d) => d.APPLIED_SUPPRESSION == "None"? "end" : "start");
+        // .attr("inline-size", chartBreakpointValues.width);
     });
 
   // Change from month arrows
@@ -2371,7 +2377,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 }
 window.customElements.define("cagov-chart-re-100k", CAGOVEquityRE100K);
 
-var css_248z$1 = "cagov-chart-re-pop {\n  min-width: 300px; }\n  cagov-chart-re-pop .svg-holder-second {\n    border-top: solid 1px #000;\n    margin-top: 10px;\n    padding-top: 30px; }\n    cagov-chart-re-pop .svg-holder-second svg {\n      width: 100%; }\n  cagov-chart-re-pop .chart-overlaybox-container {\n    top: 23%;\n    left: 20%; }\n  cagov-chart-re-pop .withheld-label {\n    font-size: 0.85em; }\n  cagov-chart-re-pop .change-from-month-labels {\n    font-size: 0.75em;\n    text-anchor: unset; }\n  cagov-chart-re-pop .chart-tooltip--repop {\n    min-width: 100px; }\n";
+var css_248z$1 = "cagov-chart-re-pop {\n  min-width: 300px; }\n  cagov-chart-re-pop .svg-holder-second {\n    border-top: solid 1px #000;\n    margin-top: 10px;\n    padding-top: 30px; }\n    cagov-chart-re-pop .svg-holder-second svg {\n      width: 100%; }\n  cagov-chart-re-pop .chart-overlaybox-container {\n    top: 23%;\n    left: 20%; }\n  cagov-chart-re-pop .change-from-month-labels {\n    font-size: 0.75em;\n    text-anchor: unset; }\n  cagov-chart-re-pop .withheld-label {\n    font-size: 0.85em; }\n  cagov-chart-re-pop .chart-tooltip--repop {\n    min-width: 100px; }\n";
 styleInject(css_248z$1);
 
 function template$2(translationsObj) {
