@@ -56,10 +56,10 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       },
       retina: {
         width: 320,
-        height: 600,
+        height: 450,
         margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
-          x: 160,
+          x: 100,
           y: 18
         }
       },

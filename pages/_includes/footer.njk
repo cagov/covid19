@@ -13,7 +13,7 @@ ga('tracker3.send', 'pageview');
 <script async defer src='https://www.google-analytics.com/analytics.js'></script>
 
 <pagerating-section>
-	<cwds-pagerating 
+	<cagov-pagefeedback 
 	data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
 	data-question="{{text.is_this_page_useful}}"
 	data-yes="{{text.answer_yes}}"
@@ -23,7 +23,15 @@ ga('tracker3.send', 'pageview');
 	data-thanks-comments="{{text.thank_you_for_your_comments}}"
 	data-submit="{{text.submit}}"
 	data-required-field="{{text.this_field_required}}"
-	></cwds-pagerating>	
+	data-characterLimit="{{text.character_limit}}"
+	data-anythingToAdd="{{text.anything_to_add}}"
+	data-positiveSurveyUrl="{{text.positive_survey_url}}"
+	data-takeTheSurvey="{{text.take_the_survey}}"
+	data-anyOtherFeedback="{{text.any_other_feedback}}"
+	data-negativeSurveyUrl="{{text.negative_survey_url}}"
+	data-takeOurSurvey="{{text.take_our_survey}}"
+
+	></cagov-pagefeedback>	
 </pagerating-section>
 
 <footer-section>

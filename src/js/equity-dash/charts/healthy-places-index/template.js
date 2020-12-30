@@ -5,7 +5,7 @@ export default function template(translationsObj) {
     <div class="container">
       <div class="col-lg-12 bg-white py-4">
         <div class="row">
-          <div class="col-lg-12 col-md-9 col-sm-12 mx-auto px-3">
+          <div class="col-lg-12 col-md-12 col-sm-12 mx-auto px-3">
             <div class="svg-holder">
             </div>
           </div>

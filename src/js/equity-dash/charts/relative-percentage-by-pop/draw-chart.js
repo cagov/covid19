@@ -228,15 +228,10 @@ export default function drawBars({
         });
     });
 
+  // stack legends if space is too tight
+  const stackLegends = chartBreakpointValues.chartSectionOne.width < 400;
+  const stackGapY = 24
   // Legend
-  svg
-    .append("rect")
-    .attr("x", 190)
-    .attr("y", -20)
-    .attr("width", 15)
-    .attr("height", 15)
-    .attr("fill", "#FFCF44");
-    
   svg
     .append("rect")
     .attr("x", 0)
@@ -246,12 +241,14 @@ export default function drawBars({
     .attr("fill", "#92C5DE");
 
   svg
-    .append("text")
-    .attr("x", 210)
-    .attr("y", -12)
-    .attr("class", "legend-label")
-    .attr("dy", "0.35em")
-    .text('% ' + legendStrings[0]);
+    .append("rect")
+    .attr("x", stackLegends? 0 : 190)
+    .attr("y", stackLegends? stackGapY-20 : -20)
+    .attr("width", 15)
+    .attr("height", 15)
+    .attr("fill", "#FFCF44");
+    
+
   svg
     .append("text")
     .attr("x", 20)
@@ -259,6 +256,14 @@ export default function drawBars({
     .attr("class", "legend-label")
     .attr("dy", "0.35em")
     .text('% ' + legendStrings[1]);
+
+    svg
+    .append("text")
+    .attr("x", stackLegends? 20 : 210)
+    .attr("y", stackLegends? stackGapY-12 : -12)
+    .attr("class", "legend-label")
+    .attr("dy", "0.35em")
+    .text('% ' + legendStrings[0]);
 
 
   let is_debugging_infobox = false;
