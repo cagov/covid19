@@ -53,7 +53,6 @@ class CAGovEquityHighlightStats extends window.HTMLElement {
       output.case_rate_vs_statewide_percent_low_income = roundNumber(compare(totalCaseRate,data.LowIncome[0].CASE_RATE_PER_100K),0);
       output.case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
 
-console.log('eh')
       this.replaceValues(output)
   }
 
