@@ -3,6 +3,7 @@ class CAGovEquityHighlightStats extends window.HTMLElement {
     window.fetch(config.equityChartsDataLoc+"/equitydash/equitytopboxdatav2.json")
       .then((response) => response.json())
       .then(function (data) {
+        console.log(data)
         this.processData(data);
       }.bind(this)
     );
@@ -38,7 +39,7 @@ class CAGovEquityHighlightStats extends window.HTMLElement {
       output.cases_per_100K_statewide = totalCaseRate
 
       const raceLatino = demographics.find(x=>x.RACE_ETHNICITY==='Latino');
-      output.cases_per_100K_latino = roundNumber(raceLatino.CASE_RATE,1);
+      output.death_rate_per_100K_latino = roundNumber(raceLatino.DEATH_RATE,1);
       output.case_rate_vs_statewide_percent_latino = roundNumber(compare(totalCaseRate,raceLatino.CASE_RATE),0);
 
       const raceNHPI = demographics.find(x=>x.RACE_ETHNICITY==='Native Hawaiian and other Pacific Islander');
@@ -52,12 +53,13 @@ class CAGovEquityHighlightStats extends window.HTMLElement {
       output.case_rate_vs_statewide_percent_low_income = roundNumber(compare(totalCaseRate,data.LowIncome[0].CASE_RATE_PER_100K),0);
       output.case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
 
+console.log('eh')
       this.replaceValues(output)
   }
 
   replaceValues(output) {
     this.querySelectorAll('.case_rate_vs_statewide_percent_latino').forEach(e => e.innerHTML = output.case_rate_vs_statewide_percent_latino)
-    this.querySelectorAll('.cases_per_100K_latino').forEach(e => e.innerHTML = output.cases_per_100K_latino.toLocaleString())
+    this.querySelectorAll('.death_rate_per_100K_latino').forEach(e => e.innerHTML = output.death_rate_per_100K_latino.toLocaleString())
     this.querySelectorAll('.cases_per_100K_statewide').forEach(e => e.innerHTML = output.cases_per_100K_statewide.toLocaleString())
     this.querySelectorAll('.case_rate_vs_statewide_percent_pacific_islanders').forEach(e => e.innerHTML = output.case_rate_vs_statewide_percent_pacific_islanders)
     this.querySelectorAll('.cases_per_100K_pacific_islanders').forEach(e => e.innerHTML = output.cases_per_100K_pacific_islanders.toLocaleString())
