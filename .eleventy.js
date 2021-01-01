@@ -224,7 +224,6 @@ module.exports = function(eleventyConfig) {
   const formatDate = (datestring, withTime, tags, addDays) => {
     const locales = 'en-US';
     const timeZone = 'America/Los_Angeles';
-    const thisYear = new Date().getUTCFullYear();
 
     if(datestring) {
       let targetdate =
