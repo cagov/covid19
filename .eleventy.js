@@ -231,7 +231,9 @@ module.exports = function(eleventyConfig) {
         ? datestring 
         : datestring==='today'
             ? new Date()
-            : new Date(datestring);
+            : datestring.indexOf('Z') > -1
+              ? new Date(datestring)
+              : new Date(`${datestring} PST`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
