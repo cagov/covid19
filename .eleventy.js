@@ -234,7 +234,7 @@ module.exports = function(eleventyConfig) {
             ? new Date()
             : datestring.indexOf('Z') > -1
               ? new Date(datestring)
-              : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
+              : new Date(`${thisYear}-${datestring.replace('2020-','').replace('2021-','')}T08:00:00.000Z`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
