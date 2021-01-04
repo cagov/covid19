@@ -224,7 +224,6 @@ module.exports = function(eleventyConfig) {
   const formatDate = (datestring, withTime, tags, addDays) => {
     const locales = 'en-US';
     const timeZone = 'America/Los_Angeles';
-    const thisYear = new Date().getUTCFullYear();
 
     if(datestring) {
       let targetdate =
@@ -234,11 +233,12 @@ module.exports = function(eleventyConfig) {
             ? new Date()
             : datestring.indexOf('Z') > -1
               ? new Date(datestring)
-              : new Date(`${thisYear}-${datestring.replace(thisYear+'-','')}T08:00:00.000Z`);
+              : new Date(`${datestring} PST`);
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
         }
+
 
         const langId = getLangRecord(tags).id;
         const formatRecord = dateFormats[langId.toLowerCase()];

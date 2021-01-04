@@ -7,6 +7,8 @@ const stagingConfig =  {
 }
 
 module.exports = function() {
+  console.log('hello world')
+  console.log(process.env.NODE_ENV)
   if(process.env.NODE_ENV=='staging') {
     return stagingConfig;
   }
