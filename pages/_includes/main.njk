@@ -1,6 +1,6 @@
 {%-set data = tableauCovidMetrics[0] -%}
 {%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2020", "")-%}
+{%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data.TOTALCONFIRMED | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTotalCasesTodayPct_ = (100*data.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}

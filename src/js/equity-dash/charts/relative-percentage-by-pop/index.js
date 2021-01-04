@@ -72,7 +72,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           height: 700,
           width: 440,
           margin: {
-            top: 0,
+            top: 20,
             right: 30,
             bottom: 1,
             left: 10,
@@ -94,7 +94,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           height: 700,
           width: 320,
           margin: {
-            top: 0,
+            top: 20,
             right: 30,
             bottom: 1,
             left: 10,
