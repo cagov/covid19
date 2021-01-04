@@ -2,6 +2,7 @@
 cwds-accordion .card {
   border-radius: 0 !important;
   border: none;
+  margin-bottom: 0;
 }
 
 cwds-accordion .card-container {
@@ -15,9 +16,6 @@ cwds-accordion .card-body .wp-block-table {
   overflow: scroll;
 }
 
-cwds-accordion .card-header {
-  cursor: pointer;
-}
 
 cwds-accordion .collapsed {
   display: block;
@@ -25,7 +23,7 @@ cwds-accordion .collapsed {
   visibility: hidden;
 }
 
-cwds-accordion .card-header .button {
+.card-header .button {
   color: #000;
 }
 
@@ -33,12 +31,10 @@ cwds-accordion .card-header .button {
   margin-bottom: 20px;
 }
 
-cwds-accordion .accordion-title {
-	padding: .5rem;
-  font-family: "Montserrat", sans-serif;	
-  font-weight: 700;
+.accordion-title {
+  padding: .5rem;
+  padding-left: 2rem !important;
 	text-align: left;
-	font-size: 1.5rem;
 	margin-bottom: 0;
   color:$darkblue;
   margin-right: auto;
@@ -46,29 +42,37 @@ cwds-accordion .accordion-title {
   h4, h3, h2 {
     padding: 0 !important;
     margin-bottom: 0 !important;
-    color:$darkblue;;
+    font-family: "Roboto", sans-serif;	
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    color:$darkblue;
+    text-indent: -1.95rem;
   }
 }
 
-cwds-accordion .accordion h2 {
+.accordion h2 {
   margin: 0;
   padding: 10px;
 }
 
-cwds-accordion button.card-header {
+button.card-header {
   display: flex;
   justify-content: left;
   align-items:center;
   padding: 1rem .75rem;
-  background-color:$lightestblue;
   background-clip: border-box;
-  border: 1px solid $lightestblue;
-  border-top-color:$darkblue;
-  border-bottom-color:$darkblue;
+  background-color:$white;
+  border:none;
+  border-bottom:1px solid $darkblue;
+  border-top:1px solid $darkblue;
   border-radius: 0 !important;
+  margin-top: -1px;
+  &:hover {
+    background-color:$lightestblue;
+  }
 }
 
-cwds-accordion .accordion-alpha .plus-munus {
+.accordion-alpha .plus-munus {
     font-family: CaGov!important;
     width: 2.75rem;
     height: 2.75rem;
@@ -85,8 +89,8 @@ cwds-accordion .accordion-alpha .plus-munus {
   }
 }
 
-cwds-accordion .accordion-alpha-open {
-  border-bottom-color: $lightestblue;
+.accordion-alpha-open {
+  border-bottom-color: $white !important;
   .plus-munus {
     font-family: CaGov!important;
     &:before {
