@@ -338,7 +338,6 @@ module.exports = function(eleventyConfig) {
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
-      if(processedPostMap.get(outputPath)!==initialHTML) {
         const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
         const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
           .map(r=> ({
@@ -447,7 +446,6 @@ ${bodyHTML}
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
         return result;
-      }
     }
     return html;
   });
