@@ -82,6 +82,7 @@ button.card-header {
     margin-left: 1rem;
     color: $orange;
     font-size: 1.6rem;
+    align-self: flex-start;
   &:before {
     content: "\4c";
   }
