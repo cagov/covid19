@@ -1,4 +1,4 @@
-console.log("Purge test #8 Jan 4 4pm");
+console.log("Purge test #10");
 import './search/index.js'
 import './county-buttons/buttons.js'
 import './search/filters.js'
