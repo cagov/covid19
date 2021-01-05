@@ -425,7 +425,7 @@ module.exports = function(eleventyConfig) {
     <button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
 ${headerHTML}
-      </div>
+      </div><div class="plus-munus"></div>
     </button>
     <div class="card-container" aria-hidden="true" style="height: 0px;">
       <div class="card-body">
