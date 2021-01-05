@@ -22,7 +22,7 @@ Because navigating this crisis requires public compliance with frequently-changi
 #### Trustworthy. 
 Content on the site must be true, complete, and current. This means that the web team must be able to update the content rapidly to fit changing circumstances, and approval must be iterative so that the site is never out-of-date. To maintain trust, it’s crucial that the site come across as an apolitical authority, not as a vehicle for political messaging.
 
-#### Inclusive.
+#### Inclusive
 
 > See the <a style="" href="https://docs.google.com/document/d/10Nz7sFJBlcOXNPhaw6ujjSFvv99xvid3kwBp58Up9Eo/edit#">full list for inclusivity considerations and common issues</a>
 
