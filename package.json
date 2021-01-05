@@ -4,18 +4,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@11ty/eleventy": "^0.11.1",
     "@cagov/accordion": "^1.0.6",
     "@cagov/lookup": "^1.0.2",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "awesomplete-es6": "^1.2.2",
-    "css-purge": "^3.1.8",
     "element-closest-polyfill": "^1.0.2",
     "url-search-params-polyfill": "^8.1.0",
     "whatwg-fetch": "^3.5.0"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@fullhuman/postcss-purgecss": "^2.3.0",
@@ -27,6 +26,7 @@
     "browser-sync": "^2.26.13",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
+    "css-purge": "^3.1.8",
     "cssnano": "^4.1.10",
     "del": "^6.0.0",
     "express": "^4.17.1",
@@ -55,7 +55,11 @@
     "tap": "^14.11.0",
     "tape": "^5.0.1"
   },
+  "resolutions": {
+    "axios": "^0.21.0"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "dev": "cross-env NODE_ENV=development npm run start",
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
