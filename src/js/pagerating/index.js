@@ -10,6 +10,9 @@ class CAGOVPageFeedback extends window.HTMLElement {
     let commentPrompt = this.dataset.commentPrompt
       ? this.dataset.commentPrompt
       : "What was the problem?";
+    this.positiveCommentPrompt = this.dataset.positiveCommentPrompt
+      ? this.dataset.positiveCommentPrompt
+      : "Great! What were you looking for today?";
     let thanksFeedback = this.dataset.thanksFeedback
       ? this.dataset.thanksFeedback
       : "Thank you for your feedback!";
@@ -99,6 +102,9 @@ class CAGOVPageFeedback extends window.HTMLElement {
     this.querySelector(".js-feedback-yes").addEventListener(
       "click",
       (event) => {
+        this.querySelector('.js-feedback-field-label').innerHTML = this.positiveCommentPrompt;
+        this.querySelector("#feedback-form").classList.remove("d-none");
+        this.querySelector("#yes-no").classList.add("d-none");
         this.querySelector(".js-feedback-form").style.display = "none";
         this.querySelector(".js-feedback-thanks").style.display = "block";
         this.wasHelpful = "yes";
