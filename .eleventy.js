@@ -338,7 +338,6 @@ module.exports = function(eleventyConfig) {
 
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
       let initialHTML = md5(html);
-      if(processedPostMap.get(outputPath)!==initialHTML) {
         const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
         const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
           .map(r=> ({
@@ -425,7 +424,7 @@ module.exports = function(eleventyConfig) {
     <button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
 ${headerHTML}
-      </div>
+      </div><div class="plus-munus"></div>
     </button>
     <div class="card-container" aria-hidden="true" style="height: 0px;">
       <div class="card-body">
@@ -447,7 +446,6 @@ ${bodyHTML}
           fs.writeFileSync(htmlmapLocation,JSON.stringify([...processedPostMap]),'utf8')
         }
         return result;
-      }
     }
     return html;
   });

@@ -1,5 +1,10 @@
 /* accordion component specific classes */
-    
+cwds-accordion .card {
+  border-radius: 0 !important;
+  border: none;
+  margin-bottom: 0;
+}
+
 cwds-accordion .card-container {
   height: 0px;
   display: block;
@@ -11,9 +16,6 @@ cwds-accordion .card-body .wp-block-table {
   overflow: scroll;
 }
 
-cwds-accordion .card-header {
-  cursor: pointer;
-}
 
 cwds-accordion .collapsed {
   display: block;
@@ -21,11 +23,7 @@ cwds-accordion .collapsed {
   visibility: hidden;
 }
 
-cwds-accordion .card-header .button {
-  color: #000;
-}
-
-cwds-accordion .card-header .button {
+.card-header .button {
   color: #000;
 }
 
@@ -34,14 +32,20 @@ cwds-accordion .card-header .button {
 }
 
 .accordion-title {
-	padding: .5rem;
-	padding-left: 1rem;
-  font-family: "Montserrat", sans-serif;	
-  font-weight: 700;
+  padding: .5rem;
 	text-align: left;
-	font-size: 1.5rem;
 	margin-bottom: 0;
-	color:#000;
+  color:$darkblue;
+  margin-right: auto;
+  width: 90%;
+  h4, h3, h2 {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    font-family: "Roboto", sans-serif;	
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    color:$darkblue;
+  }
 }
 
 .accordion h2 {
@@ -49,20 +53,47 @@ cwds-accordion .card-header .button {
   padding: 10px;
 }
 
-.accordion-alpha {
-	background-image: url(/img/plus.svg);
-    background-position: right 1.25rem center;
-    background-size: 1rem;
-    background-repeat: no-repeat;
+button.card-header {
+  display: flex;
+  justify-content: left;
+  align-items:center;
+  padding: 1rem .75rem;
+  background-clip: border-box;
+  background-color:$white;
+  border:none;
+  border-bottom:1px solid $darkblue;
+  border-top:1px solid $darkblue;
+  border-radius: 0 !important;
+  margin-top: -1px;
+  &:hover {
+    background-color:$lightestblue;
+  }
+}
+
+.accordion-alpha .plus-munus {
+    font-family: CaGov!important;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 2px solid $orange;
+    border-radius: 50%;
+    padding: .3rem 0;
+    overflow: hidden;
+    transition: all .3s ease;
+    margin-left: 1rem;
+    color: $orange;
+    font-size: 1.6rem;
+    align-self: flex-start;
+  &:before {
+    content: "\4c";
+  }
 }
 
 .accordion-alpha-open {
-	background-image: url(/img/minus.svg);
-    background-position: right 1.25rem center;
-    background-size: 1rem;
-    background-repeat: no-repeat;
+  border-bottom-color: $white !important;
+  .plus-munus {
+    font-family: CaGov!important;
+    &:before {
+      content: "\4b";
+    }
+  }
 }
-
-
-
-
