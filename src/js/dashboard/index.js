@@ -23,7 +23,7 @@ window.fetch('/countystatus.json')
   };
   const aplete = new Awesomplete('#location-query', awesompleteSettings);
   setupFormSubmitListener(aList);
-}.bind(this));
+});
 
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");
