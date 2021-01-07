@@ -30,7 +30,7 @@ hero-stats {
 	width: 100%;
 	&-padding-top {
 		@include tablet {
-			margin-top: 120px;
+			margin-top: 65px;
 		}
 		@media (max-width: 400px) {
 			margin-top: 120px;
