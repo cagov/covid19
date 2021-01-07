@@ -35,6 +35,9 @@ hero-stats {
 		@media (max-width: 400px) {
 			margin-top: 120px;
 		}
+		@media (max-device-width: 640px) {
+			margin-top: 120px;
+		}
 		@include small-phone {
 			margin-top: 135px;
 		}
