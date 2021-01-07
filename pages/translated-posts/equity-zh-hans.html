@@ -3,34 +3,24 @@ layout: "page.njk"
 title: "加州致力于实现健康公平"
 meta: "所有加州民众，不论其居住的地方、工作环境、社会支持或身份如何，都值得拥有健康的生活。COVID-19凸显出了现有的健康不公平问题。其中许多不公平问题是由于结构性种族主义导致的。其中一种形式便是医疗保健资源分配及获取的不公平。为努力建设全民加州 […]"
 author: "State of California"
-publishdate: "2020-12-03T22:53:03Z"
-tags: ["do-not-crawl","translate"]
-addtositemap: false
+publishdate: "2021-01-06T21:07:50Z"
+tags: ["translate"]
+addtositemap: true
 ---
 
-<!--{% set data = {
- "cases_per_100k_statewide":1871.4,
- "death_rate_per_100k_statewide":45.5,
- "cases_per_100k_latino":2879.1,
- "cases_per_100k_pacific_islanders": 4024,
- "case_rate_vs_statewide_percent_latino":54,
- "case_rate_vs_statewide_percent_pacific_islanders":115,
- "case_rate_vs_statewide_percent_low_income":36,
- "death_rate_vs_statewide_percent_black":24,
- "death_rate_per_100k_black":56.2
- } %}-->    <p class="emphasized">所有加州民众，不论其居住的地方、工作环境、社会支持或身份如何，都值得拥有健康的生活。</p>
+<!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">所有加州民众，不论其居住的地方、工作环境、社会支持或身份如何，都值得拥有健康的生活。 </p>
 
 
 
-<p class="emphasized">COVID-19凸显出了现有的健康不公平问题。其中许多不公平问题是由于结构性种族主义导致的。其中一种形式便是医疗保健资源分配及获取的不公平。</p>
+<p>COVID-19凸显出了现有的健康不公平问题。其中许多不公平问题是由于结构性种族主义导致的。其中一种形式便是医疗保健资源分配及获取的不公平。</p>
 
 
 
-<p class="emphasized">为努力建设全民加州 (California for All)，州府现正识别受影响最大的社区并引导资源，以解决COVID-19健康不公平问题。降低所有社区内的COVID-19风险有益于所有人，并且加州政府正努力将其纳入重新开放计划。</p>
+<p>为努力建设全民加州 (California for All)，州府现正识别受影响最大的社区并引导资源，以解决COVID-19健康不公平问题。降低所有社区内的COVID-19风险有益于所有人，并且加州政府正努力将其纳入重新开放计划。</p>
 
 
 
-<p class="emphasized">州公共卫生领导人无法独自解决COVID-19健康不公平问题。为全民打造健康的加州，需要与各个级别的私营行业、地方政府及社区合作伙伴携手合作。</p>
+<p>州公共卫生领导人无法独自解决COVID-19健康不公平问题。为全民打造健康的加州，需要与各个级别的私营行业、地方政府及社区合作伙伴携手合作。</p>
 
 
 
@@ -38,59 +28,51 @@ addtositemap: false
 
 
 
-<div class="bg-lightblue py-5 full-bleed">
+<div class="bg-lightblue py-5 full-bleed"> 
     <div class="container py-2">
         
         
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
-            <h2 class="text-center color-purple">本州多元化社区的差异十分严重</h2>
+            <h2 class="text-center color-purple" id="disparities-are-severe">本州多元化社区的差异十分严重</h2>
                 <p>COVID-19对加州的低收入人士、拉丁裔、黑人、太平洋岛民社区和必要工作者（例如医疗保健、杂货店和清洁服务工作者）造成了严重影响。</p>
             </div>
         </div><!--END row-->               <div class="row">
             <div class="col-lg-10 mx-auto">
-                <div class="container">
-    
-                    <div class="row d-flex row-eq-height justify-content-md-center pb-4">
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                      <!--{% set value = data.case_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">拉丁裔的患病率比全州高<span class="eq-data">{{value}}%</span> </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">拉丁裔的患病率比全州低<span class="eq-data">{{value|abs}}%</span> </div>  <!--{% else %}-->  <div class="eq-text mb-3">拉丁裔的患病率与全州平均患病率相同 </div>  <!--{% endif %}-->                                                              <div class="eq-cases">
-                                <p class="text-xs">每100K人中的病例数：</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> 拉丁裔 <br> <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> 全州</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column"> <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">太平洋岛民的患病率比全州高<span class="eq-data">{{value}}%</span> </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">太平洋岛民的患病率比全州低<span class="eq-data">{{value|abs}}%</span> </div>  <!--{% else %}-->  <div class="eq-text mb-3">太平洋岛民的患病率与全州平均患病率相同 </div>  <!--{% endif %}-->                             <div class="eq-cases">
-                                <p class="text-xs">每100K人中的病例数：</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> NHPI <br> <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> 全州</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">  <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">黑人的死亡率比全州高<span class="eq-data">{{value}}%</span> </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">黑人的死亡率比全州低<span class="eq-data">{{value|abs}}%</span> </div>  <!--{% else %}-->  <div class="eq-text mb-3">黑人的死亡率与全州平均死亡率相同 </div>  <!--{% endif %}-->                                 <div class="eq-cases">
-                                    <p class="text-xs">每100K人中的死亡数：</p> 
-                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black}}</strong> 黑人 <br> <strong>{{data.death_rate_per_100k_statewide}}</strong> 全州</p>
-                                </div>
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white  d-flex flex-column"> <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州高<span class="eq-data">{{value}}%</span> </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州低<span class="eq-data">{{value|abs}}%</span> </div>  <!--{% else %}-->  <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率与全州平均患病率相同 </div>  <!--{% endif %}--> <!--
- <div class="eq-cases">
- <p class="text-xs">Cases per 100K people:</p>
- <p class="text-xs mb-0"><strong>2,432</strong> Latino<br><strong>2,195</strong> statewide</p> 
- </div>
- -->                         </div>
-                    </div>
-    
-    
-                </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
+                <div class="container">                                <cagov-equity-highlight-stats>             <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率比全州高<span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率比全州低<span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率与全州平均死亡率相同                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                    <p class="text-xs">每100K人中的死亡数：</p>
+                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags)}}</span></strong>拉丁裔 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有族裔                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率比全州高<span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率比全州低<span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率与全州平均患病率相同                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                    <p class="text-xs">每100K人中的病例数：</p>
+                    <p class="text-xs mb-0"><strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</span></strong>NHPI <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有族裔                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">黑人的死亡率比全州高<span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">黑人的死亡率比全州低<span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">黑人的死亡率与全州平均死亡率相同                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                    <p class="text-xs">每100K人中的死亡数：</p>
+                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black}}</span></strong>黑人 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide}}</span></strong> 所有族裔                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州高<span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州低<span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率与全州平均患病率相同                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                    <p class="text-xs">每100K人中的病例数：</p>
+                    <p class="text-xs mb-0"><strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</span></strong>收入<$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有收入等级                     </p>
+                  </div>
+                </div>
+              </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
-                <p class="chart-data-label">注：患病率是指每100K人中的COVID-19累计病例数。死亡率是指每100K人中的COVID-19累计死亡数。</p>
+                <p class="chart-data-label">注：此数据自2020年1月呈报的首例COVID-19病例起开始累计。患病率是指每100K人中的COVID-19累计病例数。死亡率是指每100K人中的COVID-19累计死亡数。</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
   <div class="container py-2">
       <div class="row pb-4">
           <div class="col-lg-10 mx-auto color-white">
-            <h2 class="text-center color-orange">公平地重新开放</h2>
-            <h3 class="color-white">已采取的措施</h3>
+            <h2 class="text-center color-orange" id="reopening-equitably">公平地重新开放</h2>
+            <h3 class="color-white" id="what-weve-done">已采取的措施</h3>
             <p>加州政府已采取措施以开始解决健康公平问题。例如，我们在中央谷地实行了一项综合措施，以帮助受影响最严重的人士。其中包括：</p>
             <ul class="bullet-orange">
               <li>部署支持团队，联合公共卫生、社会服务、食物与农业、住房与社区开发、老龄化服务及商业机构</li>
@@ -102,7 +84,7 @@ addtositemap: false
               <li>培训拥有双重文化背景的双语接触者追踪员和病例调查员</li>
               <li>制定收获季住房 (Housing for the Harvest) 计划，帮助农场劳工进行自我隔离</li>
             </ul>
-            <h3 class="color-white">需采取的措施</h3>
+            <h3 class="color-white" id="need-to-do">需采取的措施</h3>
             <p>为确保打造全民加州，各县必须在其重新开放经济计划中解决COVID-19健康不公平问题。州府官员每周会与地方卫生局协作，计算总体的县患病率和检测呈阳性率，以及县内受影响最严重的社区的检测呈阳性率（<a href="#learn-more">健康公平指标</a>）。</p>
             <p>作为此广泛措施的一部分，各县必须：</p>
             <ul class="bullet-orange">
@@ -114,11 +96,11 @@ addtositemap: false
           </div>
       </div>
 
-  </div><!--END container--> </div><!--END DARK BLUE BG-->    <h2 class="mt-5">查看您所在的县内社区的受影响程度</h2>
+  </div><!--END container--> </div><!--END DARK BLUE BG-->    <h2 class="mt-5" id="community-impact">查看您所在的县内社区的受影响程度</h2>
 
 
 
-<h3 class="text-center">COVID-19影响（按种族和族裔划分）</h3>
+<h3 class="text-center" id="race-and-ethnicity">COVID-19影响（按种族和族裔划分）</h3>
 
 
 
@@ -129,76 +111,96 @@ addtositemap: false
             <li data-label="chartTitle--deaths">死亡数占placeholderForDynamicLocation人口的百分比</li>
             <li data-label="chartTitle--tests">检测数占placeholderForDynamicLocation人口的百分比</li>
             <li data-label="chartLegend1County--cases">占县内病例数的百分比</li>
-            <li data-label="chartLegend1County--deaths">占县内死亡数的百分比</li>
+            <li data-label="chartLegend1County--deaths">占县内COVID-19死亡数的百分比</li>
             <li data-label="chartLegend1County--tests">占县内检测数的百分比</li>
             <li data-label="chartLegend1State--cases">占全州病例数的百分比</li>
-            <li data-label="chartLegend1State--deaths">占全州死亡数的百分比</li>
+            <li data-label="chartLegend1State--deaths">占全州COVID-19死亡数的百分比</li>
             <li data-label="chartLegend1State--tests">占全州检测数的百分比</li>
             <li data-label="chartLegend2State">占全州人口的百分比</li>
             <li data-label="chartLegend2County">占全县人口的百分比</li>
-            <li data-label="chartDescription--cases">比较各种族和族裔在全州病例数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
-            <li data-label="chartDescription--deaths">比较各种族和族裔在全州死亡数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
-            <li data-label="chartDescription--tests">比较各种族和族裔在全州检测数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
+            <li data-label="chartDescription--cases">比较各种族和族裔在placeholderForDynamicLocation病例数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
+            <li data-label="chartDescription--deaths">比较各种族和族裔在placeholderForDynamicLocation COVID-19死亡数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
+            <li data-label="chartDescription--tests">比较各种族和族裔在placeholderForDynamicLocation检测数中所占的百分比及其在placeholderForDynamicLocation人口中所占的百分比。</li>
             <li data-label="chartLineDiff">自上个月以来的变化</li>
             <li data-label="county-label">县</li>
+            <li data-label="chartMetricName--tests">检测</li>
+            <li data-label="chartMetricName--cases">病例数</li>
+            <li data-label="chartMetricName--deaths">COVID-19死亡数</li>
             <li data-label="applied-suppression-total">为保护民众隐私，恕不显示任何数据。这是因为这一群体的病例数或检测数过少。</li>
             <li data-label="applied-suppression-population">为保护民众隐私，恕不显示任何数据。这是因为这一群体的人数少于20,000。</li>
             <li data-label="missing-data-caption-line-delimiter"><br></li>
-            <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> placeholder_LegendString and <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> of California’s population</li>
-            <li data-label="chartToolTip2-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span> of California’s population and <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> of placeholder_SelectedMetric statewide</li>
+            <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY people make up <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> of placeholder_SelectedMetric in placeholderForDynamicLocation and <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> of the placeholderForDynamicLocation population</li>
+<li data-label="data-missing-applied-suppression-total--tests">由于此群体的检测数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--tests">由于此群体的检测数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--cases">由于此群体的病例数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--deaths">由于此群体的死亡数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--tests">由于此群体的人数少于20,000，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--cases">由于此群体的人数少于20,000，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">由于此群体的人数少于20,000，因此数据不显示。</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
           <li data-label="chartTitle--cases">每100K人的患病率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
           <li data-label="chartTitle--deaths">每100K人的死亡率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
           <li data-label="chartTitle--tests">每100K人的检测率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
           <li data-label="chartDescription--cases">比较根据各种族和族裔的人口规模而调整的病例数。</li>
-          <li data-label="chartDescription--deaths">比较根据各种族和族裔的人口规模而调整的死亡数。</li>
+          <li data-label="chartDescription--deaths">比较根据各种族和族裔的人口规模而调整的COVID-19死亡数。</li>
           <li data-label="chartDescription--tests">比较根据各种族和族裔的人口规模而调整的检测数。</li>
           <li data-label="chartLineDiff">自上个月以来的变化</li>
-          <li data-label="chartLegend--cases">每100k人中的病例数</li>
-          <li data-label="chartLegend--deaths">每100k人中的死亡数</li>
-          <li data-label="chartLegend--tests">每100k人中的检测数</li>
-          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation每100k人中的病例数： </li>
-          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation每100k人中的死亡数： </li>
-          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation每100k人中的检测数： </li>
-          <li data-label="chartFilterLegendPfxState--cases">全州每100k人中的病例数： </li>
-          <li data-label="chartFilterLegendPfxState--deaths">全州每100k人中的死亡数： </li>
-          <li data-label="chartFilterLegendPfxState--tests">全州每100k人中的检测数： </li>
-          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope for 100k people of the same race and ethnicity.</li>
-          <li data-label="applied-suppression-total">为保护民众隐私，恕不显示任何数据。这是因为这一群体的病例数或检测数过少。</li>
-          <li data-label="applied-suppression-population">为保护民众隐私，恕不显示任何数据。这是因为这一群体的人数少于20,000。</li>
+          <li data-label="chartLegend--cases">每100K人中的病例数</li>
+          <li data-label="chartLegend--deaths">每100K人中的COVID-19死亡数</li>
+          <li data-label="chartLegend--tests">每100K人中的检测数</li>
+          <li data-label="chartMetricName--tests">检测数</li>
+          <li data-label="chartMetricName--cases">病例数</li>
+          <li data-label="chartMetricName--deaths">COVID-19死亡数</li>
+          <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation每100K人中的病例数： </li>
+          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation每100K人中的COVID-19死亡数： </li>
+          <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation每100K人中的检测数： </li>
+          <li data-label="chartFilterLegendPfxState--cases">全州每100K人中的病例数： </li>
+          <li data-label="chartFilterLegendPfxState--deaths">全州每100K人中的COVID-19死亡数： </li>
+          <li data-label="chartFilterLegendPfxState--tests">全州每100K人中的检测数： </li>
+          <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> people have <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope per 100K people of the same race and ethnicity.</li>
+            <li data-label="applied-suppression-total">为保护民众隐私，恕不显示任何数据。这是因为这一群体的病例数或检测数过少。</li>
+            <li data-label="applied-suppression-population">为保护民众隐私，恕不显示任何数据。这是因为这一群体的人数少于20,000。</li>
+            <li data-label="missing-data-caption-line-delimiter"><br></li>
+<li data-label="data-missing-applied-suppression-total--tests">由于此群体的检测数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--tests">由于此群体的检测数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--cases">由于此群体的病例数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-total--deaths">由于此群体的死亡数少于11，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--tests">由于此群体的人数少于20,000，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--cases">由于此群体的人数少于20,000，因此数据不显示。</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">由于此群体的人数少于20,000，因此数据不显示。</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
 
 
 
-<p class="chart-data-label">注：所示数据为过去30天的累积数据，每日更新一次。人口估算不包括”其他“或”未知“种族和族裔类别，因此其所占的州人口百分比无法获知。欲查看按年龄组划分的种族和族裔数据，请参阅加州公共卫生局发布的COVID-19<a rel="noopener noreferrer" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank">种族和族裔数据</a>。为保护患者隐私，在1和10之间的数量均显示为”<11“。</p>
+<p class="chart-data-label">注：所示数据为过去30天的累积数据，每周更新一次。人口估算不包括”其他“或”未知“种族和族裔类别，因此其所占的州人口百分比无法获知。欲查看按年龄组划分的种族和族裔数据，请参阅加州公共卫生局发布的COVID-19<a rel="noopener noreferrer" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank">种族和族裔数据</a>。为保护患者隐私，在1和10之间的数量均显示为”<11“。</p>
 
 
 
-<h3 class="text-center mt-5">COVID-19健康公平指标</h3>
+<h3 class="text-center mt-5" id="metric">COVID-19健康公平指标</h3>
 
 
 
-<p>健康公平指标会衡量受影响最严重社区的检测呈阳性率。这些社区作为人口普查区，根据<a href="#learn-more">健康地方指数</a>被识别为具有较不健康的社区环境，例如低收入中位数、教育完整性和医疗保健普及率较低。<a href="#learn-more">更安全的经济蓝图</a>可确保各县解决所有社区的COVID-19疫情。如要进一步开放，健康公平指标不能与县整体检测呈阳性率相差甚远。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
+<p>健康公平指标会衡量受影响最严重社区的检测呈阳性率。这些社区作为人口普查区，根据<a href="#learn-more">健康地方指数</a>被识别为具有较不健康的社区环境，例如低收入中位数、教育完整性和医疗保健普及率较低。<a href="#learn-more" aria-label="Blueprint for a Safer Economy, which you can reach through the Learn more section">更安全的经济蓝图</a>可确保各县解决所有社区的COVID-19疫情。如要进一步开放，健康公平指标不能与县整体检测呈阳性率相差甚远。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
       <ul>
         <li data-label="y-axis-label">检测呈阳性率</li>
         <li data-label="data1-legend">全州检测呈阳性率</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation检测呈阳性率</li>
         <li data-label="data2-legend">健康公平四分位检测呈阳性率</li>
         <li data-label="missing-data-caption">健康公平指标不适用于人口少于106,000的县。</li>
-        <li data-label="data-anomalies-caption">Due to reporting anomalies, we cannot display this data accurately.</li>
+        <li data-label="data-anomalies-caption">由于报告异常，我们无法准确显示此数据。</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
 
 
-<p class="chart-data-label">注：处于健康地方指数 (Healthy Places Index, HPI) 健康公平四分位数的地区，其7日平均检测呈阳性率有7天的滞后期。健康公平四分位数检测呈阳性率，是指县内健康地方指数人口普查区的检测呈阳性率为最低的25%。</p>
+<p class="chart-data-label">注：所示数据为7日平均检测呈阳性率，有7天的滞后期。所示数据为截至<span data-replacement="d3-lines-report-date"></span>的7日周期数据。健康公平四分位数检测呈阳性率，是指县内健康地方指数人口普查区的检测呈阳性率为最低的25%。健康公平指标不适用于人口少于106,000的县。 </p>
 
 
 
-<h3 class="text-center mt-5">数据完整性对于解决不公平问题而言至关重要</h3>
+<h3 class="text-center mt-5" id="data-completeness">数据完整性对于解决不公平问题而言至关重要</h3>
 
 
 
@@ -206,7 +208,8 @@ addtositemap: false
     <div>
       <ul>
         <li data-label="title">按加州内的种族和族裔进行报告</li>
-        <li data-label="footnote">注：所示数据为过去30天的累积数据，每日更新一次。不会在检测中收集性取向和性别认同信息。为保护患者隐私，在1和10之间的数量不会显示。</li>
+        <li data-label="special-note">数据报告持续在改善。自1月起，病例性别认同报告的完整度超过98%。其他类型的数据也可达到同样的完整度。</li>
+        <li data-label="footnote">注：所示数据为总共30天的累计数据，更新于<span data-replacement="data-completeness-report-date"></span>。不会在检测中收集性取向和性别认同信息。为保护患者隐私，在1和10之间的数量不会显示。</li>
         <li data-label="tab-label">由<span data-replace="metric-filter"></span>在<span data-replace="location"></span>报告</li>
         <li data-label="data-missing">数据缺失</li>
         <li data-label="data-reported">数据已上报</li>
@@ -229,7 +232,7 @@ addtositemap: false
       </ul>
     </div>
   </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul>
-    <li data-label="sectionTitle">增加感染及重症风险的因素</li>
+    <li data-label="sectionTitle" id="factors">增加感染及重症风险的因素</li>
     <li data-label="sectionDescription">住在拥挤的住房或乘坐公共交通工具的加州民众，以及不太容易获得带薪休假和其他员工保护措施的民众有较高的COVID-19感染风险。健康问题社会决定因素，例如食物无保障、没有医疗保险以及住房不稳定等，会增加预后不良的风险。这些健康问题社会决定因素通常是由结构性种族主义导致的。</li>
     <li data-label="chartTitleIncome">按年度家庭收入中位数范围划分的社区患病率</li>
     <li data-label="chartTitleHousing">按拥挤住房数量划分的社区患病率</li>
@@ -240,14 +243,14 @@ addtositemap: false
     <li data-label="chartButtonIncome">收入</li>
     <li data-label="chartButtonHousing">拥挤的住房</li>
     <li data-label="chartButtonHealthcare">获取医疗保险</li>
-    <li data-label="footnote">注：数据来自美国社区调查，属于全州性质。其并未反映个别县的数据。所示数据为过去7天的累积数据，每日更新一次</li>
-   <li data-label="casesPer100KPeople">每100k人中的病例数</li>
+    <li data-label="footnote">注：数据来自美国社区调查，属于全州性质。其并未反映个别县的数据。所示数据为总共7天的累计数据，有7天的滞后期，更新于<span data-replacement="d3-bar-report-date"></span>。</li>
+   <li data-label="casesPer100KPeople">每100K人中的病例数</li>
    <li data-label="statewideCaseRate">全州患病率：</li>
-   <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例数。placeholderRateDiff30 自上周以来的变化</li>
-   <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> 每100K人中的病例数。placeholderRateDiff30 自上周以来的变化</li>
+   <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例数。placeholderRateDiff30 自30天前以来的变化</li>
+   <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> 每100K人中的病例数。placeholderRateDiff30 自30天前以来的变化</li>
   </ul></cagov-chart-d3-bar>    <div class="bg-lightblue full-bleed py-4">
 <div class="container">
-  <h3 class="text-center">潜在的健康状况</h3>
+  <h3 class="text-center" id="underlying">潜在的健康状况</h3>
   <p>现有的健康问题会导致COVID-19症状加剧。示例包括心脏病、肥胖症、肾病及糖尿病，所有这些疾病较常见于有色人种社区。</p>
   <p>儿童期不良经历 (Adverse Childhood Experience, ACE) 会增加慢性疾病风险，包括心脏病、肥胖症、肾病及糖尿病，并且可能会增加COVID-19重症风险。</p>
 
@@ -263,24 +266,20 @@ addtositemap: false
     <div class="row pb-5">
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="#">                     <div class="link-arrow-label">解决COVID-19不公平问题的县府手册                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">                     <div class="link-arrow-label">包含健康公平指标的重新开放计划</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.lgbtqiahealtheducation.org/what-we-offer/technical-assistance/">                     <div class="link-arrow-label">提高COVID-19报告的完整性</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/Equity%20Playbook_V1_12.1.2020_final.pdf">                     <div class="link-arrow-label">解决COVID-19不公平问题的县府手册</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">                     <div class="link-arrow-label">提高种族和族裔数据的完整度</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
             <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/discrimination/">                     <div class="link-arrow-label">对抗歧视与污名化                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/manage-stress-for-health/">                     <div class="link-arrow-label">在COVID-19疫情期间管理压力                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
           </ul>
       </div>
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="https://files.covid19.ca.gov/pdf/employer-playbook-for-safe-reopening--en.pdf">                     <div class="link-arrow-label">用于防止员工罹患COVID-19的商业指引</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">                     <div class="link-arrow-label">包含健康公平指标的重新开放计划</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">                     <div class="link-arrow-label">提高性取向和性别认同数据的完整度</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
             <li>                 <a class="link-arrow-blue" data-kind="external" href="https://map.healthyplacesindex.org/">                     <div class="link-arrow-label">健康地方指数人口普查区地图                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-with-medical-conditions.html">                     <div class="link-arrow-label">基础疾病与COVID-19症状严重程度之间的联系                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/manage-stress-for-health/">                     <div class="link-arrow-label">在COVID-19疫情期间管理压力                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-with-medical-conditions.html">                     <div class="link-arrow-label">了解基础疾病与COVID-19之间的关系                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
         </ul>
       </div>
     </div>
   </div>
-</div>
-
-
-
-<p></p>
+</div>    <script type="text/javascript" language="javascript" src="//ethn.io/45907.js" async="true" charset="utf-8"></script>    <p></p>
