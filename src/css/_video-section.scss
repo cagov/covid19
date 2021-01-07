@@ -91,7 +91,6 @@ video-section {
 							box-shadow: $shadow-hover;
 							&-img {
 								opacity: 1;
-								@include size(110%);
 							}
 						}
 						&-play-button {
@@ -114,7 +113,6 @@ video-section {
 							box-shadow: 0 0 0 4px $yellow, $shadow-hover;
 							&-img {
 								opacity: 1;
-								@include size(110%);
 							}
 						}
 						&-play-button {

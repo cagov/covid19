@@ -42,8 +42,7 @@
                     <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span></div>
                     <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
-                    
-                     <span class="chart-arrow" arria-hidden="true">
+                    <span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
@@ -59,9 +58,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase from prior day total</span>
-                     
-                     </div>
+                     {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
             <div class="col-md-3 px-10px">
@@ -71,7 +68,6 @@
                     <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span></div>
                     <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
-                    
                     <span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
@@ -88,9 +84,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTotalDeathsChange_}}% <span class="text-300">increase from prior day total</span>
-                    
-                    </div>
+                     {{_varStatTotalDeathsChange_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
             <div class="col-md-3 px-10px">
@@ -100,7 +94,6 @@
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">total</span></div>
                     <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
-                    
                     <span class="chart-arrow" arria-hidden="true">
 					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
@@ -117,9 +110,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTestedDailyPct_}}% <span class="text-300">increase from prior day total</span>
-                    
-                    </div>
+                     {{_varStatTestedDailyPct_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
         </div>
@@ -147,7 +138,6 @@
                     type="text"
                     placeholder="Enter a county"
                 />
-                <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
                 <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
                 </div>
                 <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
@@ -311,13 +301,14 @@
     <div class="container py-2">
     <h2 class="text-center color-orange">Infections by group</h2>
         <div class="col-lg-12 bg-white px-3 py-4">
-             <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-                <div class="large-tabs">
-                    <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
-                    <button class="large-tab js-toggle-group gender">Gender</button>
-                    <button class="large-tab js-toggle-group age">Age</button>
+                <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+                    <div class="large-tabs">
+                        <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
+                        <button class="large-tab js-toggle-group gender">Gender</button>
+                        <button class="large-tab js-toggle-group age">Age</button>
+                    </div>
                 </div>
-            </div>
+            
             <div class="row">
                 <div class="toggle-group-container col-10 mx-auto">
 
@@ -338,13 +329,19 @@
                             <p>
                         The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.
                                 </p>
-                                 <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
+                                <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
                             <div class="tableauPlaceholder"></div>
                         </div>
-                       
+                        
                     </div>
                 </div>
             </div>
-        </div><!--END col-12-->
+        </div>
+        <div class="text-center pt-5 p-rel">
+            <a href="/equity/" class="link-arrow-blue mb-4 mt-3">
+            <div class="link-arrow-label">See more detailed data by group</div>
+            <cagov-arrow></cagov-arrow>
+            </a>  
+	</div><!--END col-12-->
   </div><!--END CONTAINER-->
 </div><!--END BG lightblue-->

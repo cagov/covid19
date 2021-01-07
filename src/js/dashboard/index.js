@@ -26,13 +26,15 @@ window.fetch('/countystatus.json')
 }.bind(this));
 
 var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
+let clearBtn = document.getElementById("clearCounty");
 
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
     
-    clearBtn.classList.remove('d-none');
+    if(clearBtn) {
+      clearBtn.classList.remove('d-none');
+    }
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
     let typedInValue = document.querySelector('#location-query').value;
@@ -236,7 +238,6 @@ if(countyInput) {
   countyInput.addEventListener("focus", function() {
     inputValue();
    });
-  
    countyInput.addEventListener("input", function() {
     inputValue();
    });
@@ -246,12 +247,14 @@ if(countyInput) {
 }
 
 function inputValue() {
-var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
-  if (countyInput && countyInput.value) {
-    clearBtn.classList.remove('d-none');
+  var countyInput = document.getElementById("location-query");
+  let clearBtn = document.getElementById("clearCounty");
+  if(clearBtn) {
+    if (countyInput && countyInput.value) {
+      clearBtn.classList.remove('d-none');
+    }
+    else {clearBtn.classList.add('d-none');}
   }
-  else {clearBtn.classList.add('d-none');}
 }
 
 if(clearBtn) {

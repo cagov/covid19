@@ -2,7 +2,7 @@
   <section class="news trigger" role="region" aria-label="Latest news">
     <div class="news-wrap">
     
-      <h2 class="color-purple">{{varLatestNews}}</h2>
+      <h2 class="color-purple">From the Governor's Office</h2>
       <div class="news-grid">
         {%- for i in range(0, 3) %}
           <article class="news-item trigger">
@@ -18,12 +18,11 @@
           {%- endfor -%}
     
       </div>
-      <a href="latest-news/" class="link-arrow-blue">
-        <div class="link-arrow-label">{{varViewMoreNews}}</div>
-        <cagov-arrow></cagov-arrow>
-      </a>
-     
     
+      <a href="latest-news/" class="link-arrow-blue mt-4">
+        <div class="link-arrow-label">{{varViewMoreNews}}</div><cagov-arrow></cagov-arrow>
+      </a>
+
     </div>
     </section>
 </news-section>

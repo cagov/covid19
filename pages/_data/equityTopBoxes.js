@@ -11,6 +11,7 @@ module.exports = function() {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
     dataDomain = 'https://files.covid19.ca.gov/data/to-review/';
   }
+  console.log('data domain is: '+dataDomain)
   return new Promise((resolve, reject) => {
     fetch(dataDomain+'equitydash/equitytopboxdatav2.json')
     .then(res => res.json())
@@ -65,6 +66,8 @@ module.exports = function() {
 
       output[0].case_rate_vs_statewide_percent_low_income = roundNumber(compare(totalCaseRate,data.LowIncome[0].CASE_RATE_PER_100K),0);
       output[0].case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
+
+      console.log(output)
 
       resolve(output);
     });
