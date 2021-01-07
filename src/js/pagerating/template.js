@@ -22,7 +22,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
           </div>
           <div class="feedback-form-thanks feedback-thanks-add" role="alert">
             <span class="font-size-1-5em bold">${thanksFeedback}</span>
-            <p class="text-300  mt-3">${anyOtherFeedback} <a href="${negativeSurveyUrl}?page=${window.location.toString()}" class="color-secondary color-secondary-hover">${takeOurSurvey}.</a></p>
+            <p class="text-300  mt-3">${anyOtherFeedback} <a href="${negativeSurveyUrl}?page=${window.location.toString()}" class="color-secondary color-secondary-hover js-feedback-survey-link">${takeOurSurvey}.</a></p>
           </div>
 				</div>
 		  </div>
