@@ -11,11 +11,10 @@ jobs:
       - uses: n1hility/cancel-previous-runs@v2
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build
-        uses: cagov/actions-eleventy@3.1
-        with:
-          build_task: build
-          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
+      - name: Build 11ty
+        run: |
+          npm install
+          npm run build
       - name: Save Commit Context
         uses: finnp/create-file-action@master
         env:
