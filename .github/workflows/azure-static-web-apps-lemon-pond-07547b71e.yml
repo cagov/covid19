@@ -21,7 +21,7 @@ jobs:
       - name: Build 11ty
         uses: cagov/actions-eleventy@3.1
         with:
-          entrypoint: : build
+          entrypoint: build
           args: --formats=html,njk --input=./pages --output=./docs
       - name: Build And Deploy
         id: builddeploy
