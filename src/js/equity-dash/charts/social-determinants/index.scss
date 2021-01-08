@@ -21,13 +21,18 @@ cagov-chart-d3-bar {
   .bar-label tspan.bold {
     font-weight: bold;
   }
+  .tick text {
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
 
   @media (max-width: 768px) {
     .chart-title {
       margin: 50px 20px 20px 20px;
     }
     .tick text {
-      font-size: 0.7rem !important;
+      font-size: 0.55rem !important;
+      font-weight: 500;
     }
     .xaxis-label {
       font-size: 0.75rem !important;
@@ -37,11 +42,11 @@ cagov-chart-d3-bar {
     }
 }
 
-  @media (max-width: 440px) {
+  @media (max-width: 520px) {
     
       .tick text {
         font-size: 0.5rem !important;
-        font-weight: 600;
+        font-weight: 500;
       }
       .bar-label tspan {
         font-size: 0.6rem !important;
