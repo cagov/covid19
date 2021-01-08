@@ -1,12 +1,42 @@
-{
-  "Table1": [
-    {
-      "_id": "testElement",
-      "value": "check your &lt;a href=”../get-local-information”&gt;county’s website&lt;/a&gt;."
-    },
-    {
-      "_id": "",
-      "value": ""
-    }
-  ]
-}
+---
+layout: "page.njk"
+title: "Development Sample"
+meta: "testing &#8220;Quotes&#8221; in the excerpt &#038; other characters"
+author: "State of California"
+publishdate: "2021-01-08T17:25:05Z"
+tags: ["do-not-crawl"]
+addtositemap: false
+---
+
+<p>This document will not be published.  Used to develop and troubleshoot WordPress integration.</p>
+
+
+
+<!--{% set value = -20 %}-->
+<!--{% if value > 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is <span class="eq-data">{{value}}% higher</span> than statewide
+</div>
+
+<!--{% elif value < 0 %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is <span class="eq-data">{{value | abs}}% lower</span> than statewide
+</div>
+
+<!--{% else %}-->
+
+<div class="eq-text mb-3">
+  Case rate for Latino people is the same as statewide average
+</div>
+
+<!--{% endif %}-->
+
+
+
+<figure class="wp-block-table"><table><thead><tr><th>_id</th><th>value</th></tr></thead><tbody><tr><td>testElement</td><td>check your &lt;a href=&#8221;../get-local-information&#8221;&gt;county&#8217;s website&lt;/a&gt;.</td></tr><tr><td></td><td></td></tr></tbody></table></figure>
+
+
+
+<p>add text</p>
