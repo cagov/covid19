@@ -8,59 +8,59 @@
 .navbar-inverse,
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  background: #1D2574;
+  background: $darkblue;
 }
 
 
 .jumbotron {
-	background-color: #1D2574;
-  color: white;
+	background-color: $darkblue;
+  color: $white;
   text-align: center;
 }
 
 h1 {
-	color: #1D2574;
+	color: $darkblue;
 }
 
 .jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron p, .jumbotron .lead  {
-	color: #fff;
+	color: $white;
 }
 
 
 
 a.btn {
-  background: #1D2574;
+  background:$darkblue;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1D2574;
-  background: #1D2574;
-  border-color: #1D2574;
+  color: $white;
+  background-color: $darkblue;
+  background: $darkblue;
+  border-color: $darkblue;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #0257d5;
-  border-color: #0257d5;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
 }
 
 a.btn:hover {
-  color: #fff;
-  background-color: #0257d5;
-  border-color: #0257d5;
+  color: $white;
+  background-color: $blue;
+  border-color: $blue;
 }
 
 .bd-navbar .navbar-nav .nav-link {
   font-size: 1.2rem;
   padding-right: 0.7rem;
-  color: #fff;
+  color: $white;
 }
 
 .bd-navbar .navbar-nav .nav-link.active,
 .bd-navbar .navbar-nav .nav-link:hover,
 .bd-navbar .navbar-nav .nav-link:focus {
-  color: #fff;
+  color: $white;
   text-decoration: underline !important;
 }
 
@@ -92,13 +92,6 @@ a.list-group-item {
   padding: 15px;
 }
 
-h2 {
-  padding-bottom: 10px;
-  /* border-left: 3px #1D2574 solid; 
-    border-bottom: 3px #1D2574 solid;
-    width: fit-content;
-    padding: .5rem .5rem .5rem 0rem;*/
-}
 
 ol,
 ul,
@@ -106,42 +99,30 @@ dl {
   line-height: 2rem;
 }
 
-h2,
-h3,
-h4 {
-  padding-top: 0.7rem;
-}
-
-.small-text {
-	font-size: .95rem !important;
-}
-.text-disclaim {
-  font-size:.8em;
-}
 
 .alphabar {
-  background-color: #1D2574;
-  background: #1D2574;
+  background-color: $darkblue;
+  background: $darkblue;
 }
 
 .text-primary {
-  color: #1D2574 !important;
+  color: $darkblue !important;
 }
 
 .text-white a {
-    color: white;
+    color: $white;
 }
 
 .text-primary a {
-    color: #1D2574;
+    color: $darkblue;
 }
 
 .text-white a.action-link {
-    color: #1e2673;
+    color: $darkblue;
 }
 
 .wrimagecard.wrimagecard-topimage a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $blue;
 }
 
 .wrimagecard-topimage_header,
@@ -150,7 +131,7 @@ h4 {
 }
 
 a.list-group-item.list-group-item-action {
-  color: #1D2574;
+  color: $darkblue;
 }
 
 .mobile-menu {
@@ -169,17 +150,17 @@ a.list-group-item.list-group-item-action {
 
 .navbar-brand a {
   text-decoration: none;
-  color: white;
+  color: $white;
 }
 
 .navbar-brand a:hover {
   text-decoration: none;
-  color: white;
+  color: $white;
 }
 
 .navbar-brand a:visited {
   text-decoration: none;
-  color: white;
+  color: $white;
 }
 
 .navbar .container,
@@ -193,7 +174,7 @@ a.list-group-item.list-group-item-action {
 }
 
 .top-nav .nav-link:focus, .top-nav .nav-link:hover {
-    background: #e2eeff;
+    background: $lighterblue;
     border-radius: .25rem;
 }
 
@@ -216,9 +197,9 @@ a.dropdown-item {
 }
 
 .list-group-item.list-group-item-action.guide.active {
-  background: #1D2574;
-  border-color: #1D2574;
-  color: #fff;
+  background: $darkblue;
+  border-color: $darkblue;
+  color: $white;
 }
 
 .list-group-item.list-group-item-action ul li a {
@@ -226,7 +207,7 @@ a.dropdown-item {
 }
 
 a.list-group-item.list-group-item-action.guide {
-  color: #1D2574;
+  color: $darkblue;
 }
 
 a.list-group-item.list-group-item-action {
@@ -234,23 +215,23 @@ a.list-group-item.list-group-item-action {
 }
 
 .alphabar a {
-  color: #fff;
+  color: $white;
 }
 
 .alphabar a:hover {
-  color: #fff;
+  color: $white;
 }
 
 .alphabar a:visited {
-  color: #fff;
+  color: $white;
 }
 
 .skippy {
   display: block;
   padding: 1em;
-  color: #fff !important;
+  color: $white!important;
   text-align: center;
-  background-color: #1D2574;
+  background-color: $darkblue;
 }
 .skippy-text {
   padding: 0.5em;
@@ -260,9 +241,9 @@ a.list-group-item.list-group-item-action {
 .skippy {
   display: block;
   padding: 1em;
-  color: #fff !important;
+  color: $white !important;
   text-align: center;
-  background-color: #1D2574;
+  background-color: $darkblue;
 }
 .skippy-text {
   padding: 0.5em;
@@ -303,12 +284,12 @@ a.list-group-item.list-group-item-action {
 
 
 .jumbotron a:focus {
-  outline: 2px solid #fff;
+  outline: 2px solid $white;
 }
 
 a .wrimagecard-topimage_header h3 {
   text-decoration: underline;
-  color: #1D2574;
+  color: $darkblue;
   font-size: 1.5rem;
 }
 
@@ -338,17 +319,13 @@ a:hover .wrimagecard-topimage_header h3 {
 }
 
 
-.bg-primary {
-  background-color: #1D2574;
-  background: #1D2574;
-}
 
 .bg-secondary-covid {
-    background-color: #92c5de;
+    background-color: $lightestblue;
 }
 
 .bg-secondary-covid-darker {
-    background-color: #dae0ef;
+    background-color: $lighterblue;
 }
 
 
@@ -356,11 +333,11 @@ a,
 a,
 a:hover,
 a:visited {
-  color: #1D2574;
+  color: $darkblue;
 }
 
 .wrimagecard p {
-  color: #000;
+  color: $black;
 }
 
 .list-group-flush .list-group-item {
@@ -377,7 +354,7 @@ li.list-group-item.alpha-footer {
 .footer a,
 .footer a:hover,
 .footer a:visited {
-  color: #000;
+  color: $black;
 }
 
 .alpha-footer .container .list-group {
@@ -385,52 +362,52 @@ li.list-group-item.alpha-footer {
 }
 
 p a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 ul a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 ol a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 .footer a:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 .navbar a:focus {
-  outline: 2px solid #fff;
+  outline: 2px solid $white;
 }
 
 .navbar a.nav-link:focus {
-    outline: 2px solid #0257d5;
+    outline: 2px solid $yellow;
 }
 
 a.nav-link.mr-0.pr-0:focus {
-    outline: 2px solid #fff;
+    outline: 2px solid $white;
 }
 
 .alphabar a:focus {
-  outline: 2px solid #fff;
+  outline: 2px solid $white;
 }
 
 .bg-primary a:focus {
-  outline: 2px dashed #ffffff;
+  outline: 2px dashed $white;
   text-decoration: underline;
 }
 
 a .card-title {
-  color: #1D2574;
+  color: $darkblue;
 }
 
 .action-link {
-  color: #1D2574;
+  color: $darkblue;
   border-radius: 50px;
   padding: .5rem 1.5rem;
 }
@@ -450,18 +427,18 @@ a .card-title {
 }
 
 input:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 button:focus {
-  outline: 2px solid #0257d5;
+  outline: 2px solid $yellow;
 }
 
 #mobile-icon {
   text-align: center;
   vertical-align: sub;
   font-size: 2rem;
-  color: #1D2574;
+  color: $darkblue;
 }
 
 .accordion-title {
@@ -477,7 +454,7 @@ button:focus {
 }
 
 .info-left {
-  border-left: 4px solid #0166ab;
+  border-left: 4px solid $blue;
   margin-left: 1rem;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
@@ -665,7 +642,7 @@ border: none;
   .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.webp');
     background-size: cover;
-    background-color: #1D2574;
+    background-color: $darkblue;
   }
   .no-webp .jumbo-img.county-img {
     background-image: url('/img/CaliforniaCounties.jpg');
@@ -749,7 +726,7 @@ border: none;
 }
 
 .col-lg-10.mx-auto h2 {
-  color: darkblue;
+  color: $darkblue;
   text-align: center;
 }
 

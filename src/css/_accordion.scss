@@ -40,6 +40,7 @@ cwds-accordion .collapsed {
   width: 90%;
   h4, h3, h2 {
     padding: 0 !important;
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
     font-family: "Roboto", sans-serif;	
     font-size: 1.5rem !important;
@@ -48,10 +49,6 @@ cwds-accordion .collapsed {
   }
 }
 
-.accordion h2 {
-  margin: 0;
-  padding: 10px;
-}
 
 button.card-header {
   display: flex;
