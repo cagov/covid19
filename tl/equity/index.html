@@ -162,7 +162,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Pangako ng California pagdating sa pagkakapantay-pantay sa kalusugan</h1>
           
-            <p class="small-text">Huling na-update&nbsp;Enero 7, 2021 sa 3:11 PM</p>
+            <p class="small-text">Huling na-update&nbsp;Enero 7, 2021 sa 4:01 PM</p>
           
         </div>
       </div>
@@ -4844,7 +4844,7 @@ window.customElements.define(
   CAGOVEquityMissingness
 );
 
-var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.7rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 440px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.5rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n";
+var css_248z$4 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\ncagov-chart-d3-bar .tick text {\n  font-size: 0.85rem;\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.55rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 520px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.5rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n";
 styleInject(css_248z$4);
 
 // import chartCss from './../chart.scss';
@@ -4884,19 +4884,24 @@ let labelMap = new Map();
 labelMap.set("below $40K","0 - $40K");
 labelMap.set("above $120K","$120K+");
 
+function fixRangeHyphens(label) {
+  return label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
+}
+
 function writeXAxis(data, height, margin, x) {
+  console.log("Write x axis",data);
   let xAxis = g => g
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
-        return labelMap.get(data[i].SOCIAL_TIER);
+        return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
       }
-      return data[i].SOCIAL_TIER;
+      return fixRangeHyphens(data[i].SOCIAL_TIER);
     }).tickSize(0))
-    .style('font-weight','bold')
     .call(g => g.select(".domain").remove());
   return xAxis;
 }
+
 function writeXAxisLabel(component, svg, label) {
   svg.selectAll("g.x-label").remove();
   svg.append("g")
