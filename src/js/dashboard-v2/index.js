@@ -97,7 +97,8 @@ let chartWidth3 = 800;
 let countyMapChartHeight = 660;
 
 // !! look at server - same way we are choosing data-source for equity...
-const tableauPrefix = "https://tableau.cdt.ca.gov";
+const tableauPrefix2 = "https://tableau.cdt.ca.gov/views/StateDashboardv2_0"; 
+// vs https://public.tableau.com/views/StateDashboard_16008816705240
 
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
@@ -142,14 +143,14 @@ async function setupCharts() {
     // window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
     // window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
     // window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
-    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,tableauPrefix2+'/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,tableauPrefix2+'/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,tableauPrefix2+'/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
 
 
-    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,tableauPrefix+'/views/StateDashboardv2_0/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
 
     // this chart does not toggle
     // unchanged for 2.0
@@ -157,7 +158,7 @@ async function setupCharts() {
 
     // these are their own toggle sets
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix+'/views/StateDashboardv2_0/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
     let ageGroupChart = ''; // we aren't loading this until they click
   }
@@ -189,7 +190,7 @@ groupTogglers.forEach(toggle => {
       document.getElementById('age-graph').style.display = 'block'; 
       this.classList.add('toggle-active');
       // ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
-      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix+'/views/StateDashboardv2_0/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
       document.getElementById('ethnicity-graph').style.display = 'block';      
