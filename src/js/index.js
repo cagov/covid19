@@ -2,6 +2,7 @@ import '@cagov/step-list';
 import '@cagov/accordion';
 import './pagerating/index.js';
 import './survey/index.js';
+import './survey-vaccine/index.js';
 import './feature-detect/webp.js';
 import './arrow/index.js';
 import './arrow/arrow-icon.js';

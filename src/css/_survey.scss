@@ -1,4 +1,4 @@
-cwds-survey {
+cwds-survey, cwds-vaccinesurvey {
   position: relative;
   display: block;
   z-index: 998;
@@ -13,7 +13,7 @@ cwds-survey {
       &-prompt {
         font-size: 1.25rem;
         margin: 1.5rem 0 .5rem 0;
-        font-weight: 700;
+        font-weight: 300;
       }
       &-go {
         color: $darkblue;
