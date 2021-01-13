@@ -83,7 +83,7 @@ for (let resultIndex=0;resultIndex<accordionContent.length;resultIndex++) {
     }
 
     const finalHTML = 
-`<cwds-accordion>
+`<cagov-accordion>
   <div class="card">
     <button class="card-header accordion-alpha" type="button" aria-expanded="false">
       <div class="accordion-title">
@@ -96,7 +96,7 @@ ${bodyHTML}
       </div>
     </div>
   </div>
-</cwds-accordion>`;
+</cagov-accordion>`;
 
     //replace the header with the new merged content
     result = result.replace(row.html,finalHTML);

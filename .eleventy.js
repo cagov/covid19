@@ -419,20 +419,20 @@ module.exports = function(eleventyConfig) {
           } //while
       
           const finalHTML = 
-            `<cwds-accordion>
+            `<cagov-accordion>
               <div class="card">
                 <button class="card-header accordion-alpha" type="button" aria-expanded="false">
                   <div class="accordion-title">
             ${headerHTML}
                   </div><div class="plus-munus"></div>
                 </button>
-                <div class="card-container" aria-hidden="true" style="height: 0px;">
+                <div class="card-container" aria-hidden="true">
                   <div class="card-body">
             ${bodyHTML}
                   </div>
                 </div>
               </div>
-            </cwds-accordion>
+            </cagov-accordion>
             `;
       
           //replace the header with the new merged content
