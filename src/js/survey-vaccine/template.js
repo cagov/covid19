@@ -1,9 +1,9 @@
 export default function (incomingUrl, incomingPrompt) {
-  let surveyUrl = 'https://www.surveymonkey.com/r/T2V3FMJ?source=covid';
+  let surveyUrl = 'https://www.surveymonkey.com/r/MMJR7CW?source=covid&src=' + window.location.toString();
   if(incomingUrl) {
     surveyUrl = incomingUrl;
   }
-  let surveyPrompt = 'Please take 2 minutes to complete our COVID-19 survey';
+  let surveyPrompt = 'Please take 5 minutes to complete our COVID-19 vaccines survey.';
   if(incomingPrompt) {
     surveyPrompt = incomingPrompt;
   }
