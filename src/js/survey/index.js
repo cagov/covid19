@@ -44,7 +44,7 @@ function seenSurveyPrompt() {
   return true;
 }
 function somePercent() { 
-  if(Math.random() < 0.1) { 
+  if(Math.random() < 0.2) { 
     return true; 
   }
   return false;
