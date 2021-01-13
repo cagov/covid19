@@ -3,34 +3,24 @@ layout: "page.njk"
 title: "Compromiso de California con la equidad en la salud"
 meta: " Todos los californianos, independientemente de su lugar de residencia, su entorno laboral, sus apoyos sociales o la manera como se identifican, merecen una vida saludable. La COVID-19 ha destacado las inequidades existentes en la salud. Muchas de estas desigualdades son el resultado del racismo estructural. Una de las formas que adopta es la inequidad en la distribución de recursos sanitarios y en el acceso a estos. Comprometido con una California […]"
 author: "State of California"
-publishdate: "2020-12-03T22:53:03Z"
-tags: ["do-not-crawl","translate"]
-addtositemap: false
+publishdate: "2021-01-08T00:19:54Z"
+tags: ["translate"]
+addtositemap: true
 ---
 
-<!--{% set data = {
- "cases_per_100k_statewide":1871.4,
- "death_rate_per_100k_statewide":45.5,
- "cases_per_100k_latino":2879.1,
- "cases_per_100k_pacific_islanders": 4024,
- "case_rate_vs_statewide_percent_latino":54,
- "case_rate_vs_statewide_percent_pacific_islanders":115,
- "case_rate_vs_statewide_percent_low_income":36,
- "death_rate_vs_statewide_percent_black":24,
- "death_rate_per_100k_black":56.2
- } %}-->    <p class="emphasized">Todos los californianos, independientemente de su lugar de residencia, su entorno laboral, sus apoyos sociales o la manera como se identifican, merecen una vida saludable.</p>
+<!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">Todos los californianos, independientemente de su lugar de residencia, su entorno laboral, sus apoyos sociales o la manera como se identifican, merecen una vida saludable. </p>
 
 
 
-<p class="emphasized">La COVID-19 ha destacado las inequidades existentes en la salud. Muchas de estas desigualdades son el resultado del racismo estructural. Una de las formas que adopta es la inequidad en la distribución de recursos sanitarios y en el acceso a estos.</p>
+<p>La COVID-19 ha destacado las inequidades existentes en la salud. Muchas de estas desigualdades son el resultado del racismo estructural. Una de las formas que adopta es la inequidad en la distribución de recursos sanitarios y en el acceso a estos.</p>
 
 
 
-<p class="emphasized">Comprometido con una California para todos, el estado está identificando las comunidades más afectadas y dirigiendo recursos para abordar las desigualdades en la salud con la COVID-19. Reducir el riesgo de la COVID-19 en todas las comunidades es bueno para todos y California se compromete a hacerlo parte de nuestro plan de reapertura.</p>
+<p>Comprometido con una California para todos, el estado está identificando las comunidades más afectadas y dirigiendo recursos para abordar las desigualdades en la salud con la COVID-19. Reducir el riesgo de la COVID-19 en todas las comunidades es bueno para todos y California se compromete a hacerlo parte de nuestro plan de reapertura.</p>
 
 
 
-<p class="emphasized">Los líderes estatales de salud pública no pueden abordar solos las inequidades en salud ante la COVID-19. Una California saludable para todos requiere una asociación con el sector privado, el gobierno local y los socios comunitarios en todos los niveles.</p>
+<p>Los líderes estatales de salud pública no pueden abordar solos las inequidades en salud ante la COVID-19. Una California saludable para todos requiere una asociación con el sector privado, el gobierno local y los socios comunitarios en todos los niveles.</p>
 
 
 
@@ -38,59 +28,51 @@ addtositemap: false
 
 
 
-<div class="bg-lightblue py-5 full-bleed">
+<div class="bg-lightblue py-5 full-bleed"> 
     <div class="container py-2">
         
         
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
-            <h2 class="text-center color-purple">Las disparidades en nuestras diversas comunidades son graves</h2>
+            <h2 class="text-center color-purple" id="disparities-are-severe">Las disparidades en nuestras diversas comunidades son graves</h2>
                 <p>La COVID-19 afecta de manera desproporcionada a las comunidades de bajos ingresos, de latinos, de negros y de isleños del Pacífico, así como a los trabajadores esenciales de California, como quienes trabajan en los sectores de atención médica, comestibles y servicios de limpieza.</p>
             </div>
         </div><!--END row-->               <div class="row">
             <div class="col-lg-10 mx-auto">
-                <div class="container">
-    
-                    <div class="row d-flex row-eq-height justify-content-md-center pb-4">
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                      <!--{% set value = data.case_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">   La tasa de casos para personas latinas es un <span class="eq-data">{{value}} % más alta</span> que a nivel estatal. </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">   La tasa de casos para personas latinas es un <span class="eq-data">{{value|abs}} % más baja</span> que a nivel estatal. </div>  <!--{% else %}-->  <div class="eq-text mb-3">   La tasa de casos para personas latinas es la misma que el promedio estatal. </div>  <!--{% endif %}-->                                                              <div class="eq-cases">
-                                <p class="text-xs">Casos por cada 100 mil personas:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_latino|formatNumber(tags)}}</strong> latinos <br> <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> a nivel estatal</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column"> <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">   La tasa de casos para los isleños del Pacífico es un <span class="eq-data">{{value}} % más alta</span> que a nivel estatal. </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">   La tasa de casos para los isleños del Pacífico es un <span class="eq-data">{{value|abs}} % más baja</span> que a nivel estatal. </div>  <!--{% else %}-->  <div class="eq-text mb-3">   La tasa de casos para los isleños del Pacífico es la misma que el promedio estatal. </div>  <!--{% endif %}-->                             <div class="eq-cases">
-                                <p class="text-xs">Casos por cada 100 mil personas:</p> 
-                                <p class="text-xs mb-0"><strong>{{data.cases_per_100k_pacific_islanders|formatNumber(tags)}}</strong> nativos de Hawái y otros isleños del Pacífico (Native Hawaiian and Other Pacific Islander, NHPI)<br> <strong>{{data.cases_per_100k_statewide|formatNumber(tags)}}</strong> a nivel estatal</p>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">  <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">   La tasa de mortalidad para personas afroamericanas es un <span class="eq-data">{{value}} % más alta</span> que a nivel estatal. </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">   La tasa de mortalidad para personas afroamericanas es un <span class="eq-data">{{value|abs}} % más baja</span> que a nivel estatal. </div>  <!--{% else %}-->  <div class="eq-text mb-3">   La tasa de mortalidad para personas afroamericanas es la misma que el promedio estatal. </div>  <!--{% endif %}-->                                 <div class="eq-cases">
-                                    <p class="text-xs">Decesos por cada 100 mil personas:</p> 
-                                    <p class="text-xs mb-0"><strong>{{data.death_rate_per_100k_black}}</strong> afroamericanos <br> <strong>{{data.death_rate_per_100k_statewide}}</strong> a nivel estatal</p>
-                                </div>
-                        </div>
-                    
-                        <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white  d-flex flex-column"> <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->  <div class="eq-text mb-3">   La tasa de casos en comunidades con ingresos medios menores de $40 mil es <span class="eq-data">{{value}} % más alta</span> que a nivel estatal. </div>  <!--{% elif value < 0 %}-->  <div class="eq-text mb-3">   La tasa de casos en comunidades con ingresos medios menores de $40 mil es <span class="eq-data">{{value|abs}} % más baja</span> que a nivel estatal. </div>  <!--{% else %}-->  <div class="eq-text mb-3">   La tasa de casos en comunidades con ingresos medios menores de $40 mil es la misma que el promedio estatal. </div>  <!--{% endif %}--> <!--
- <div class="eq-cases">
- <p class="text-xs">Cases per 100K people:</p>
- <p class="text-xs mb-0"><strong>2,432</strong> Latino<br><strong>2,195</strong> statewide</p> 
- </div>
- -->                         </div>
-                    </div>
-    
-    
-                </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
+                <div class="container">                                <cagov-equity-highlight-stats>             <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas latinas es un <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span> % más alta</span> que a nivel estatal.                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas latinas es un <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span> % más baja</span> que a nivel estatal.                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas latinas es la misma que el promedio estatal.                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                    <p class="text-xs">Decesos por cada 100 mil personas:</p>
+                    <p class="text-xs mb-0">                       <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags)}}</span></strong> Latino <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags)}}</span></strong> todas las etnias                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     La tasa de casos para los isleños del Pacífico es un <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span> % más alta</span> que a nivel estatal.                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     La tasa de casos para los isleños del Pacífico es un <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span> % más baja</span> que a nivel estatal.                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     La tasa de casos para los isleños del Pacífico es la misma que el promedio estatal.                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                    <p class="text-xs">Casos por cada 100 mil personas:</p>
+                    <p class="text-xs mb-0">                       <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</span></strong> Nativos de Hawái y otros isleños del Pacífico (Native Hawaiian and Other Pacific Islander, NHPI) <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> todas las etnias                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas afroamericanas es un <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span> % más alta</span> que a nivel estatal.                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas afroamericanas es un <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span> % más baja</span> que a nivel estatal.                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     La tasa de mortalidad para personas afroamericanas es la misma que el promedio estatal.                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                    <p class="text-xs">Decesos por cada 100 mil personas:</p>
+                    <p class="text-xs mb-0">                       <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black}}</span></strong> Afroamericanos <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide}}</span></strong> todas las etnias                     </p>
+                  </div>
+                </div>
+            
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     La tasa de casos en comunidades con ingresos medios menores de $40 mil es <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span> % más alta</span> que a nivel estatal.                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     La tasa de casos en comunidades con ingresos medios menores de $40 mil es <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span> % más baja</span> que a nivel estatal.                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     La tasa de casos en comunidades con ingresos medios menores de $40 mil es la misma que el promedio estatal.                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                    <p class="text-xs">Casos por cada 100 mil personas:</p>
+                    <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</span></strong> ingresos menores de $40 mil <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> todos los grupos de ingresos                     </p>
+                  </div>
+                </div>
+              </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
-                <p class="chart-data-label">Nota: La tasa de casos se define como los casos acumulados de COVID-19 por cada 100 mil habitantes. La tasa de mortalidad se define como las muertes acumuladas por COVID-19 por cada 100 mil habitantes.</p>
+                <p class="chart-data-label">Nota: Estos datos son acumulativos desde que se informó el primer caso de COVID-19 en enero de 2020. La tasa de casos se define como los casos acumulados de COVID-19 por cada 100 mil habitantes. La tasa de mortalidad se define como las muertes acumuladas por COVID-19 por cada 100 mil habitantes.</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
   <div class="container py-2">
       <div class="row pb-4">
           <div class="col-lg-10 mx-auto color-white">
-            <h2 class="text-center color-orange">Reapertura equitativa</h2>
-            <h3 class="color-white">Lo que hemos hecho</h3>
+            <h2 class="text-center color-orange" id="reopening-equitably">Reapertura equitativa</h2>
+            <h3 class="color-white" id="what-weve-done">Lo que hemos hecho</h3>
             <p>California ha tomado medidas para comenzar a abordar la equidad en la salud. Por ejemplo, en el Valle Central implementamos un enfoque integral para ayudar a los más afectados. Esto incluyó:</p>
             <ul class="bullet-orange">
               <li>despliegue de equipos de apoyo que unieran la salud pública; los servicios sociales; la alimentación y la agricultura; la vivienda y el desarrollo comunitario; las personas mayores, y las agencias comerciales</li>
@@ -102,7 +84,7 @@ addtositemap: false
               <li>capacitación de rastreadores de contactos e investigadores de casos bilingües y biculturales</li>
               <li>creación de viviendas para la cosecha para ayudar a los trabajadores agrícolas a aislarse</li>
             </ul>
-            <h3 class="color-white">Qué necesitamos hacer</h3>
+            <h3 class="color-white" id="need-to-do">Qué necesitamos hacer</h3>
             <p>Para asegurarnos de construir una California para Todos, los condados deben abordar las inequidades en la salud ante la COVID-19 en sus planes de reapertura económica. Cada semana, los funcionarios estatales trabajan con los departamentos de salud locales para medir las tasas generales de casos y las tasas de positividad de los condado, así como las tasas de positividad en los vecindarios de los condados afectados de manera más desproporcionada (<a href="#learn-more">indicador de equidad en la salud</a>).</p>
             <p>Como parte de este amplio esfuerzo, los condados deben:</p>
             <ul class="bullet-orange">
@@ -114,93 +96,111 @@ addtositemap: false
           </div>
       </div>
 
-  </div><!--END container--> </div><!--END DARK BLUE BG-->    <h2 class="mt-5">Consulte cómo se ven afectadas las comunidades en su condado</h2>
+  </div><!--END container--> </div><!--END DARK BLUE BG-->    <h2 class="mt-5" id="community-impact">Consulte cómo se ven afectadas las comunidades en su condado</h2>
 
 
 
-<h3 class="text-center">Impacto de la COVID-19 por raza y etnia</h3>
+<h3 class="text-center" id="race-and-ethnicity">Impacto de la COVID-19 por raza y etnia</h3>
 
 
 
-<p>Las comunidades latinas, afroamericanas y de las islas del Pacífico se han visto afectadas de manera desproporcionada por la COVID-19. Hemos logrado algunos avances para abordar las disparidades dentro de estas comunidades, pero debemos hacerlo mejor.</p>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <!--SMALL TABS--> <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">Casos</button> <button class="small-tab" data-key="deaths">Decesos</button> <button class="small-tab" data-key="tests">Pruebas de detección</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
+<p>Las comunidades latinas, afroamericanas y de las islas del Pacífico se han visto afectadas de manera desproporcionada por la COVID-19. Hemos logrado algunos avances para abordar las disparidades dentro de estas comunidades, pero debemos hacerlo mejor.</p>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <!--SMALL TABS ARE THE BEST --> <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">Casos</button> <button class="small-tab" data-key="deaths">Decesos</button> <button class="small-tab" data-key="tests">Pruebas de detección</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
   <div class="row">
       <div class="col">         <cagov-chart-re-pop class="chart d-none">           <ul>
             <li data-label="chartTitle--cases">Casos en relación con el porcentaje de población en placeholderForDynamicLocation</li>
             <li data-label="chartTitle--deaths">Muertes en relación con el porcentaje de población en placeholderForDynamicLocation</li>
             <li data-label="chartTitle--tests">Pruebas en relación con el porcentaje de población en placeholderForDynamicLocation</li>
             <li data-label="chartLegend1County--cases">de casos en el condado</li>
-            <li data-label="chartLegend1County--deaths">de decesos en el condado</li>
+            <li data-label="chartLegend1County--deaths">de decesos en el condado por COVID-19</li>
             <li data-label="chartLegend1County--tests">de pruebas en el condado</li>
             <li data-label="chartLegend1State--cases">de casos estatales</li>
-            <li data-label="chartLegend1State--deaths">de decesos estatales</li>
+            <li data-label="chartLegend1State--deaths">de decesos estatales por COVID-19</li>
             <li data-label="chartLegend1State--tests">de pruebas estatales</li>
             <li data-label="chartLegend2State">de población del estado</li>
             <li data-label="chartLegend2County">de población de condados</li>
-            <li data-label="chartDescription--cases">Compare el porcentaje de la proporción de casos a nivel estatal de cada raza y etnia con su porcentaje de placeholderForDynamicLocation.</li>
-            <li data-label="chartDescription--deaths">Compare el porcentaje de la proporción de mortalidad a nivel estatal de cada raza y etnia con su porcentaje de placeholderForDynamicLocation.</li>
-            <li data-label="chartDescription--tests">Compare el porcentaje de la proporción de pruebas a nivel estatal de cada raza y etnia con su porcentaje de placeholderForDynamicLocation.</li>
+            <li data-label="chartDescription--cases">Compare la proporción de casos de cada raza y etnia de placeholderForDynamicLocation con su porcentaje de población en placeholderForDynamicLocation.</li>
+            <li data-label="chartDescription--deaths">Compare la proporción de decesos por COVID-19 de cada raza y etnia de placeholderForDynamicLocation con su porcentaje de población en placeholderForDynamicLocation.</li>
+            <li data-label="chartDescription--tests">Compare la proporción de pruebas de cada raza y etnia de placeholderForDynamicLocation con su porcentaje de población en placeholderForDynamicLocation.</li>
             <li data-label="chartLineDiff">cambio desde el mes anterior</li>
             <li data-label="county-label">Condado</li>
+            <li data-label="chartMetricName--tests">pruebas</li>
+            <li data-label="chartMetricName--cases">casos</li>
+            <li data-label="chartMetricName--deaths">decesos por COVID-19</li>
             <li data-label="applied-suppression-total">Para proteger la privacidad de las personas, no mostramos ningún dato. Esto es porque hay muy pocos casos o pruebas en este grupo.</li>
             <li data-label="applied-suppression-population">Para proteger la privacidad de las personas, no mostramos ningún dato. Esto es porque en este grupo hay menos de 20,000 personas en este grupo.</li>
             <li data-label="missing-data-caption-line-delimiter"><br></li>
-            <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY personas conforman <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> placeholder_LegendString y <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> de la población de California</li>
-            <li data-label="chartToolTip2-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY personas conforman<span class="highlight-data"> placeholder_POPULATION_PERCENTAGE</span> de la población de California y <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> de placeholder_SelectedMetric a nivel estatal</li>
+            <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY personas conforman <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> de placeholder_SelectedMetric en placeholderForDynamicLocation y <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> de placeholderForDynamicLocation population</li>
+<li data-label="data-missing-applied-suppression-total--tests">No se muestran datos porque hay menos de 11 pruebas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--tests">No se muestran datos porque hay menos de 11 pruebas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--cases">No se muestran datos porque hay menos de 11 casos en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--deaths">No se muestran datos porque hay menos de 11 decesos en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--tests">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--cases">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
           <li data-label="chartTitle--cases">Tasa de casos por cada 100 mil por raza y grupo étnico en placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Tasa de mortalidad por cada 100 mil por raza y grupo étnico en placeholderForDynamicLocation</li>
           <li data-label="chartTitle--tests">Tasa de pruebas por cada 100 mil por raza y grupo étnico en placeholderForDynamicLocation</li>
           <li data-label="chartDescription--cases">Compare los casos ajustados por tamaño de la población en cada raza y etnia.</li>
-          <li data-label="chartDescription--deaths">Compare los decesos ajustados por tamaño de la población en cada raza y etnia.</li>
+          <li data-label="chartDescription--deaths">Compare los decesos por COVID-19 ajustados por tamaño de la población en cada raza y etnia.</li>
           <li data-label="chartDescription--tests">Compare las pruebas ajustadas por tamaño de la población en cada raza y etnia.</li>
           <li data-label="chartLineDiff">cambio desde el mes anterior</li>
-          <li data-label="chartLegend--cases">Casos por cada 100 mil personas</li>
-          <li data-label="chartLegend--deaths">Decesos por cada 100 mil personas</li>
+          <li data-label="chartLegend--cases">Casos por cada 100 mil personas:</li>
+          <li data-label="chartLegend--deaths">Decesos por COVID-19 por cada 100 mil personas</li>
           <li data-label="chartLegend--tests">Pruebas por cada 100 mil personas</li>
+          <li data-label="chartMetricName--tests">pruebas</li>
+          <li data-label="chartMetricName--cases">casos</li>
+          <li data-label="chartMetricName--deaths">decesos por COVID-19</li>
           <li data-label="chartFilterLegendPfxCounty--cases">placeholderForDynamicLocation casos por cada 100 mil: </li>
-          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation decesos por cada 100 mil: </li>
+          <li data-label="chartFilterLegendPfxCounty--deaths">placeholderForDynamicLocation decesos por COVID-19 por cada 100 mil: </li>
           <li data-label="chartFilterLegendPfxCounty--tests">placeholderForDynamicLocation pruebas por cada 100 mil: </li>
           <li data-label="chartFilterLegendPfxState--cases">Casos estatales por cada 100 mil: </li>
-          <li data-label="chartFilterLegendPfxState--deaths">Decesos estatales por cada 100 mil: </li>
+          <li data-label="chartFilterLegendPfxState--deaths">Decesos estatales por COVID-19 por cada 100 mil: </li>
           <li data-label="chartFilterLegendPfxState--tests">Pruebas estatales por cada 100 mil: </li>
           <li data-label="chartToolTip-caption"><span class="highlight-data">placeholderDEMO_CAT</span> personas tienen <span class="highlight-data">placeholderMETRIC_100K</span> placeholderFilterScope por cada 100 mil personas de la misma raza y grupo étnico.</li>
-          <li data-label="applied-suppression-total">Para proteger la privacidad de las personas, no mostramos ningún dato. Esto
-              es porque hay muy pocos casos o pruebas en este grupo.</li>
-          <li data-label="applied-suppression-population">Para proteger la privacidad de las personas, no mostramos ningún dato.
-              Esto es porque en este grupo hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="applied-suppression-total">Para proteger la privacidad de las personas, no mostramos ningún dato. Esto es porque hay muy pocos casos o pruebas en este grupo.</li>
+            <li data-label="applied-suppression-population">Para proteger la privacidad de las personas, no mostramos ningún dato. Esto es porque en este grupo hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="missing-data-caption-line-delimiter"><br></li>
+<li data-label="data-missing-applied-suppression-total--tests">No se muestran datos porque hay menos de 11 pruebas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--tests">No se muestran datos porque hay menos de 11 pruebas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--cases">No se muestran datos porque hay menos de 11 casos en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-total--deaths">No se muestran datos porque hay menos de 11 decesos en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--tests">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--cases">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">No se muestran datos porque hay menos de 20,000 personas en este grupo.</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
 
 
 
-<p class="chart-data-label">Nota: Los datos que se muestran son acumulativos de los últimos 30 días y se actualizan diariamente. Las estimaciones de población no incluyen las categorías de raza y etnia “otra” o “desconocida”; por lo tanto, no está disponible su porcentaje de población estatal. Para ver los datos de raza y etnia desglosados por grupos de edad, consulte los <a rel="noopener noreferrer" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank">datos de raza y etnia</a> de la COVID-19 del Departamento de Salud Pública de California. Los números entre 1 y 10 se muestran como “< 11” para proteger la privacidad de los pacientes.</p>
+<p class="chart-data-label">Nota: Los datos que se muestran son acumulativos de los últimos 30 días y se actualizan semanalmente. Las estimaciones de población no incluyen las categorías de raza y etnia “otra” o “desconocida”; por lo tanto, no está disponible su porcentaje de población estatal. Para ver los datos de raza y etnia desglosados por grupos de edad, consulte los <a rel="noopener noreferrer" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx" target="_blank">datos de raza y etnia</a> de la COVID-19 del Departamento de Salud Pública de California. Los números entre 1 y 10 se muestran como “< 11” para proteger la privacidad de los pacientes.</p>
 
 
 
-<h3 class="text-center mt-5">Indicador de equidad en salud de la COVID-19</h3>
+<h3 class="text-center mt-5" id="metric">Indicador de equidad en salud de la COVID-19</h3>
 
 
 
-<p>El indicador de equidad en salud mide la tasa de positividad en las comunidades afectadas de manera más desproporcionada. Estas comunidades se identifican en el <a href="#learn-more">índice de lugares saludables</a> como secciones censales que tienen condiciones comunitarias menos saludables, como ingresos medios bajos, educación completa y acceso a la atención médica. El <a href="#learn-more">Plan para una economía más segura</a> garantiza que los condados aborden la COVID-19 en todas las comunidades. Para abrir más, el indicador de equidad en salud no puede estar significativamente por detrás de las tasas generales de positividad del condado.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
+<p>El indicador de equidad en salud mide la tasa de positividad en las comunidades afectadas de manera más desproporcionada. Estas comunidades se identifican en el <a href="#learn-more">índice de lugares saludables</a> como secciones censales que tienen condiciones comunitarias menos saludables, como ingresos medios bajos, educación completa y acceso a la atención médica. El <a href="#learn-more" aria-label="Blueprint for a Safer Economy, which you can reach through the Learn more section">Plan para una economía más segura</a> garantiza que los condados aborden la COVID-19 en todas las comunidades. Para abrir más, el indicador de equidad en salud no puede caer significativamente por detrás de las tasas generales de positividad del condado.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
       <ul>
         <li data-label="y-axis-label">Positividad de las pruebas</li>
         <li data-label="data1-legend">Positividad estatal</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation positividad de las pruebas</li>
         <li data-label="data2-legend">Positividad del cuartil de equidad en salud</li>
         <li data-label="missing-data-caption">El indicador de equidad en salud no se aplica a condados con una población menor a 106,000.</li>
-        <li data-label="data-anomalies-caption">Due to reporting anomalies, we cannot display this data accurately.</li>
+        <li data-label="data-anomalies-caption">Debido a anomalías en los informes, no podemos mostrar estos datos con precisión.</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
 
 
-<p class="chart-data-label">Nota: Promedio de 7 días de tasa de positividad con un retraso de 7 días, para los segmentos del cuartil de equidad en salud del índice de lugares saludables (Healthy Places Index, HPI). La positividad del cuartil de equidad en salud se define como la tasa de positividad del 25 % más bajo de las secciones censales del índice de lugares saludables del condado.</p>
+<p class="chart-data-label">Nota: Los datos que se muestran son un promedio de 7 días de la tasa de positividad con un retraso de 7 días. Los datos que se muestran corresponden al periodo de 7 días que finaliza el <span data-replacement="d3-lines-report-date"></span>. La positividad del cuartil de equidad en salud se define como la tasa de positividad del 25 % más bajo de las secciones censales del índice de lugares saludables del condado. El indicador de equidad en salud no se aplica a condados con una población menor a 106,000. </p>
 
 
 
-<h3 class="text-center mt-5">La integridad de los datos es fundamental para abordar la inequidad</h3>
+<h3 class="text-center mt-5" id="data-completeness">La integridad de los datos es fundamental para abordar la inequidad</h3>
 
 
 
@@ -208,7 +208,8 @@ addtositemap: false
     <div>
       <ul>
         <li data-label="title">Informes por raza y etnia en California</li>
-        <li data-label="footnote">Nota: Los datos que se muestran son acumulativos de los últimos 30 días y se actualizan diariamente. La orientación sexual y la identidad de género no se recaban para las pruebas. Los números entre 1 y 10 no se muestran para proteger la privacidad de los pacientes.</li>
+        <li data-label="special-note">Los informes de datos siguen mejorando. Desde enero, el reporte sobre identidad de género para los casos está completo en más del 98 %. Se puede hacer lo mismo con otros tipos de datos.</li>
+        <li data-label="footnote">Nota: Los datos que se muestran son un total acumulativo de 30 días, actualizado el <span data-replacement="data-completeness-report-date"></span>. La orientación sexual y la identidad de género no se recaban para las pruebas. Los números entre 1 y 10 no se muestran para proteger la privacidad de los pacientes.</li>
         <li data-label="tab-label">Reportes por <span data-replace="metric-filter"></span> en <span data-replace="location"></span></li>
         <li data-label="data-missing">Datos faltantes</li>
         <li data-label="data-reported">Datos reportados</li>
@@ -231,7 +232,7 @@ addtositemap: false
       </ul>
     </div>
   </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul>
-    <li data-label="sectionTitle">Factores que aumentan el riesgo de infección y enfermedad grave</li>
+    <li data-label="sectionTitle" id="factors">Factores que aumentan el riesgo de infección y enfermedad grave</li>
     <li data-label="sectionDescription">Los californianos que se encuentran en viviendas o transporte abarrotados, y con menos acceso a licencias pagadas y otras protecciones para los trabajadores tienen un mayor riesgo de infección por COVID-19. Los determinantes sociales de la salud, como la inseguridad alimentaria, la falta de seguro médico y la inestabilidad de la vivienda pueden aumentar el riesgo de malos resultados. Estos determinantes sociales de la salud son a menudo el resultado del racismo estructural.</li>
     <li data-label="chartTitleIncome">Tasa de casos comunitarios por segmento medio de ingresos familiares anuales</li>
     <li data-label="chartTitleHousing">Tasa de casos comunitarios por cantidad de viviendas hacinadas</li>
@@ -242,14 +243,14 @@ addtositemap: false
     <li data-label="chartButtonIncome">Ingresos</li>
     <li data-label="chartButtonHousing">Hacinamiento</li>
     <li data-label="chartButtonHealthcare">Accesos a seguro de salud</li>
-    <li data-label="footnote">Nota: Los datos provienen de la Encuesta sobre la comunidad estadounidense y son de todo el estado. No refleja los condados individualmente. Los datos que se muestran son acumulativos de los últimos 7 días y se actualizan diariamente.</li>
-   <li data-label="casesPer100KPeople">Casos por cada 100 mil personas</li>
+    <li data-label="footnote">Nota: Los datos provienen de la Encuesta sobre la comunidad estadounidense y son de todo el estado. No refleja los condados individualmente. Los datos que se muestran son un total acumulativo de 7 días con un retraso de 7 días, actualizado el <span data-replacement="d3-bar-report-date"></span>.</li>
+   <li data-label="casesPer100KPeople">Casos por cada 100 mil personas:</li>
    <li data-label="statewideCaseRate">Tasa de casos en todo el estado:</li>
-   <li data-label="ariaBarLabel">placeholderCaseRate casos por cada 100 mil personas. placeholderRateDiff30 cambio desde la semana anterior</li>
-   <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> casos por cada 100 mil personas. placeholderRateDiff30 cambio desde la semana anterior</li>
+   <li data-label="ariaBarLabel">placeholderCaseRate casos por cada 100 mil personas. placeholderRateDiff30 cambio desde hace 30 días</li>
+   <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> casos por cada 100 mil personas. placeholderRateDiff30 cambio desde hace 30 días</li>
   </ul></cagov-chart-d3-bar>    <div class="bg-lightblue full-bleed py-4">
 <div class="container">
-  <h3 class="text-center">Condiciones subyacentes de salud</h3>
+  <h3 class="text-center" id="underlying">Condiciones subyacentes de salud</h3>
   <p>Los problemas de salud existentes pueden aumentar la gravedad de la COVID-19. Los ejemplos incluyen enfermedades cardiacas, obesidad, enfermedades renales y diabetes, todas las cuales son más comunes en las comunidades de color.</p>
   <p>Un historial de experiencias adversas en la infancia (Adverse Childhood Experiences, ACE) aumenta el riesgo de afecciones médicas crónicas que incluyen enfermedades cardiacas, obesidad, enfermedad renal y diabetes, y puede aumentar el riesgo de enfermedad grave por COVID-19.</p>
 
@@ -265,24 +266,20 @@ addtositemap: false
     <div class="row pb-5">
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="#">                     <div class="link-arrow-label">                         Manual para los condados para abordar la desigualdad ante la COVID-19                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">                     <div class="link-arrow-label">                         Plan de reapertura que incluye el indicador de equidad en salud</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.lgbtqiahealtheducation.org/what-we-offer/technical-assistance/">                     <div class="link-arrow-label">                         Mejorar la integridad de los informes de la COVID-19</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/Equity%20Playbook_V1_12.1.2020_final.pdf">                     <div class="link-arrow-label">                         Manual para los condados para abordar la desigualdad ante la COVID-19</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">                     <div class="link-arrow-label">                         Mejorar la integridad de los datos sobre raza y etnia.</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
             <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/discrimination/">                     <div class="link-arrow-label">                         Luche contra la discriminación y la estigmatización                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/manage-stress-for-health/">                     <div class="link-arrow-label">                         Maneje el estrés durante la COVID-19                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
           </ul>
       </div>
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="https://files.covid19.ca.gov/pdf/employer-playbook-for-safe-reopening--en.pdf">                     <div class="link-arrow-label">                         Guías comerciales para proteger a los empleados de la COVID-19</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/safer-economy/">                     <div class="link-arrow-label">                         Plan de reapertura que incluye el indicador de equidad en salud</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">                     <div class="link-arrow-label">                         Mejorar la integridad de los datos sobre orientación sexual e identidad de género</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
             <li>                 <a class="link-arrow-blue" data-kind="external" href="https://map.healthyplacesindex.org/">                     <div class="link-arrow-label">                         Mapa de segmentos censales del índice de lugares saludables                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-with-medical-conditions.html">                     <div class="link-arrow-label">                         Vínculo de las afecciones subyacentes con la gravedad de la COVID-19                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/manage-stress-for-health/">                     <div class="link-arrow-label">                         Maneje el estrés durante la COVID-19                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="external" href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-with-medical-conditions.html">                     <div class="link-arrow-label">                         Obtenga información sobre los vínculos entre las afecciones subyacentes y la COVID-19                     </div>                     <cagov-arrow></cagov-arrow> </a>             </li>
         </ul>
       </div>
     </div>
   </div>
-</div>
-
-
-
-<p></p>
+</div>    <script type="text/javascript" language="javascript" src="//ethn.io/45907.js" async="true" charset="utf-8"></script>    <p></p>

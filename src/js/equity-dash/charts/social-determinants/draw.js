@@ -2,19 +2,24 @@ let labelMap = new Map();
 labelMap.set("below $40K","0 - $40K");
 labelMap.set("above $120K","$120K+");
 
+function fixRangeHyphens(label) {
+  return label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
+}
+
 function writeXAxis(data, height, margin, x) {
+  console.log("Write x axis",data);
   let xAxis = g => g
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
-        return labelMap.get(data[i].SOCIAL_TIER);
+        return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
       }
-      return data[i].SOCIAL_TIER;
+      return fixRangeHyphens(data[i].SOCIAL_TIER);
     }).tickSize(0))
-    .style('font-weight','bold')
     .call(g => g.select(".domain").remove())
   return xAxis;
 }
+
 function writeXAxisLabel(component, svg, label) {
   svg.selectAll("g.x-label").remove()
   svg.append("g")

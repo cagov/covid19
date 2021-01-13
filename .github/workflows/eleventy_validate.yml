@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - name: Build
-        uses: cagov/actions-eleventy@3.1
-        with:
-          build_task: build
-          build_eleventy_args: --formats=html,njk --input ./pages --output ./docs
+      - name: Build 11ty
+        run: |
+          npm install
+          npm run build
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
