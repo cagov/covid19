@@ -4,7 +4,7 @@ import templatize from './template.js';
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
     this.json = JSON.parse(this.dataset.json);
-    this.schoolsText = JSON.parse(this.dataset.schools);
+    this.schoolsText = this.dataset.schools? JSON.parse(this.dataset.schools) : {};
     this.state = {};
 
     this.innerHTML = templatize(this.json);
