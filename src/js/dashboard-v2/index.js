@@ -158,7 +158,7 @@ async function setupCharts() {
 
     // these are their own toggle sets
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 561, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
     let ageGroupChart = ''; // we aren't loading this until they click
   }
@@ -184,13 +184,13 @@ groupTogglers.forEach(toggle => {
       this.classList.add('toggle-active');
       // genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
       // !! unchanged for 2.0
-      genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 561, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+      displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
       document.getElementById('age-graph').style.display = 'block'; 
       this.classList.add('toggle-active');
       // ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
-      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 561, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+      displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
       document.getElementById('ethnicity-graph').style.display = 'block';      
