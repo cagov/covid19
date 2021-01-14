@@ -4,6 +4,7 @@ import templatize from './template.js';
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
     this.json = JSON.parse(this.dataset.json);
+    this.schoolsText = JSON.parse(this.dataset.schools);
     this.state = {};
 
     this.innerHTML = templatize(this.json);
@@ -171,6 +172,9 @@ class CAGovReopening extends window.HTMLElement {
     }
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
+    const schoolStrings = this.schoolsText;
+    console.log('eh')
+    console.log(schoolStrings)
 
     let schoolShenanigans = function(county) {
       const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
