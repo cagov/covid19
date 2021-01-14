@@ -4,7 +4,7 @@ export default function setupAnalytics() {
 
   ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
 
-  document.querySelectorAll('cwds-accordion').forEach((acc) => {
+  document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('.accordion-title')) {
         reportGA('accordion', this.querySelector('.accordion-title').textContent.trim())

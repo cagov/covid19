@@ -1,23 +1,26 @@
 /* accordion component specific classes */
-cwds-accordion .card {
+cagov-accordion .card {
   border-radius: 0 !important;
   border: none;
   margin-bottom: 0;
 }
 
-cwds-accordion .card-container {
-  height: 0px;
+cagov-accordion .card-container {
   display: block;
   overflow: hidden;
   transition: height .3s;
 }
 
-cwds-accordion .card-body .wp-block-table {
+cagov-accordion.prog-enhanced .card-container {
+  height: 0px;
+}
+
+cagov-accordion .card-body .wp-block-table {
   overflow: scroll;
 }
 
 
-cwds-accordion .collapsed {
+cagov-accordion .collapsed {
   display: block;
   overflow: hidden;
   visibility: hidden;
@@ -67,7 +70,7 @@ button.card-header {
   }
 }
 
-.accordion-alpha .plus-munus {
+.prog-enhanced .accordion-alpha .plus-munus {
     font-family: CaGov!important;
     width: 2.75rem;
     height: 2.75rem;
@@ -85,7 +88,7 @@ button.card-header {
   }
 }
 
-.accordion-alpha-open {
+.prog-enhanced .accordion-alpha-open {
   border-bottom-color: $white !important;
   .plus-munus {
     font-family: CaGov!important;

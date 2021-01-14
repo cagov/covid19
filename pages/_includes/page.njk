@@ -24,27 +24,11 @@
   {{ super() }}
 {% endblock %}
 
-{% block headJS %}
-  <!-- WC polyfill for legacy Edge -->
-  <script>
-    (function () {
-      if (window.fetch && !window.customElements) {
-        var s = document.createElement("script");
-        s.type = "text/javascript",
-        s.src = "https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.14.3/document-register-element.js",
-        document
-          .head
-          .appendChild(s)
-      }
-    })();
-  </script>
-{% endblock %}
-
 {% block bodyClass %}interior-page {%- pagesection page, 'safer-economy' %} safer-economy-page{% endpagesection %}{% endblock%}
 
 {% block preHeader %}
 {%- pagesection page, "vaccines" %}
-	<cagov-vaccinesurvey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cagov-vaccinesurvey> 
+	<cagov-vaccinesurvey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cagov-vaccinesurvey> 		
 {% endpagesection -%}
 {% endblock %}
 
