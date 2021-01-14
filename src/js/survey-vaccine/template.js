@@ -10,9 +10,9 @@ export default function (incomingPrompt) {
   return `<div role="alert">
     <div class="survey">
       <div class="survey-content">
-        <p class="survey-content-prompt">${surveyPrompt}</p>        
-        <a href="${surveyUrl}" target="_new" class="action-link pt-2 pb-2 px-4 survey-content-go js-goto-survey"><span class="sr-only">Open survey </span><span aria-hidden="true">OK</span></a> 
-        <button class="action-link pt-2 pb-2 px-4 survey-content-dismiss js-dismiss-survey" type="button" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">Dismiss</span></button>
+        <p class="survey-content-prompt">${surveyPrompt}</p>
+        <a href="${surveyUrl}" target="_new" class="btn-link pt-2 pb-2 px-4 js-goto-survey"><span class="sr-only">Open survey </span><span aria-hidden="true">OK</span></a> 
+        <button class="action-link pt-2 pb-2 px-4 js-dismiss-survey" type="button" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">Dismiss</span></button>
       </div>
     </div>
   </div>`;
