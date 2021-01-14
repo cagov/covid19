@@ -2,10 +2,9 @@ import surveyTemplate from './template.js'
 
 class CWDSVacineSurvey extends window.HTMLElement {
   connectedCallback () {
-    let shouldDisplayNPI = somePercent();
     let seenSurvey = seenSurveyPrompt();
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
-    if(!seenSurvey) {
+    if(!seenSurvey && somePercent()) {
       surveyPrompt = this.dataset.surveyPrompt
       reportEvent('surveyDisplayVaccine');
       let html = surveyTemplate(surveyPrompt);
