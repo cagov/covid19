@@ -10,7 +10,6 @@ class CWDSVacineSurvey extends window.HTMLElement {
   connectedCallback () {
     let shouldDisplayNPI = somePercent();
     let seenSurvey = seenSurveyPrompt();
-    let surveyUrl = this.dataset.pulseSurveyUrl;
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
     if(!seenSurvey) {
       if(shouldDisplayNPI) {

@@ -1,8 +1,13 @@
-export default function (incomingUrl, incomingPrompt) {
-  let surveyUrl = 'https://www.surveymonkey.com/r/MMJR7CW?source=covid&src=' + window.location.toString();
-  if(incomingUrl) {
-    surveyUrl = incomingUrl;
-  }
+  export default function (incomingUrl, incomingPrompt) {
+    current = window.location.pathname;
+    if (current == '/') {
+      let surveyUrl = 'https://www.surveymonkey.com/r/YNZBVPZ?source=covid&src=' + window.location.toString();
+    } else {
+      let surveyUrl = 'https://www.surveymonkey.com/r/MMJR7CW?source=covid&src=' + window.location.toString();
+    }
+    if(incomingUrl) {
+      surveyUrl = incomingUrl;
+    }
   let surveyPrompt = 'Please take 5 minutes to complete our COVID-19 vaccines survey.';
   if(incomingPrompt) {
     surveyPrompt = incomingPrompt;

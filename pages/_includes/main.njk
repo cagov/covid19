@@ -31,6 +31,7 @@
 
 {% block preHeader %}
 	<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
+	<cagov-vaccinesurvey data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cagov-vaccinesurvey> 
 {% endblock %}
 
 {% block contentBlock %}
