@@ -175,6 +175,9 @@ class CAGovReopening extends window.HTMLElement {
     const schoolStrings = this.schoolsText;
 
     let schoolShenanigans = function(county) {
+      if(!schoolStrings) {
+        return "";
+      }
       if(schoolOKList.indexOf(county) > -1) {
         return schoolStrings.schools_may_reopen  + schoolStrings.schools_info;
       }
