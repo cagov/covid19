@@ -12,5 +12,5 @@ export default {
     file: outputPath,
     format: 'esm'
   },
-  plugins: [resolve(), json(), terser()]
+  plugins: [resolve(), json()]
 };

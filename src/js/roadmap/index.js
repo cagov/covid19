@@ -255,13 +255,13 @@ class CAGovReopening extends window.HTMLElement {
     const schoolOKList = this.schoolOKList;
     const schoolStrings = this.schoolsText;
     let schoolShenanigans = function(county) {
-      if(!schoolStrings) {
+      if(!schoolStrings.schools_may_reopen) {
         return "";
       }
       if(schoolOKList.indexOf(county) > -1) {
-        return schoolStrings.schools_may_reopen  + schoolStrings.schools_info;;
+        return `<p>${schoolStrings.schools_may_reopen}</p> <p>${schoolStrings.schools_info}`;
       }
-      return schoolStrings.schools_may_not_reopen + schoolStrings.schools_info;
+      return `<p>${schoolStrings.schools_may_not_reopen}</p> <p>${schoolStrings.schools_info}`;
     }
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
