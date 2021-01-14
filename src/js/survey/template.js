@@ -3,7 +3,7 @@ export default function (incomingUrl, incomingPrompt) {
   if(incomingUrl) {
     surveyUrl = incomingUrl;
   }
-  let surveyPrompt = 'Please take 2 minutes to complete our COVID-19 survey';
+  let surveyPrompt = 'Please take 5 minutes to complete our COVID-19 survey';
   if(incomingPrompt) {
     surveyPrompt = incomingPrompt;
   }
