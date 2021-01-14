@@ -4,7 +4,7 @@ import templatize from './template.js';
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
     this.json = JSON.parse(this.dataset.json);
-    this.schoolsText = JSON.parse(this.dataset.schools);
+    this.schoolsText = this.dataset.schools? JSON.parse(this.dataset.schools) : {};
     this.state = {};
 
     this.innerHTML = templatize(this.json);
@@ -173,15 +173,14 @@ class CAGovReopening extends window.HTMLElement {
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
     const schoolStrings = this.schoolsText;
-
     let schoolShenanigans = function(county) {
-      if(!schoolStrings) {
+      if(!schoolStrings.schools_may_reopen) {
         return "";
       }
       if(schoolOKList.indexOf(county) > -1) {
-        return schoolStrings.schools_may_reopen  + schoolStrings.schools_info;
+        return `<p>${schoolStrings.schools_may_reopen}</p> <p>${schoolStrings.schools_info}`;
       }
-      return schoolStrings.schools_may_not_reopen + schoolStrings.schools_info;
+      return `<p>${schoolStrings.schools_may_not_reopen}</p> <p>${schoolStrings.schools_info}`;
     }
     let selectedActivities = this.allActivities;
     selectedCounties.forEach(item => {
