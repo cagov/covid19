@@ -1,41 +1,26 @@
 import surveyTemplate from './template.js'
-function randomString(length) {
-  let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let result = '';
-  for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-  return result;
-}
 
 class CWDSVacineSurvey extends window.HTMLElement {
   connectedCallback () {
     let shouldDisplayNPI = somePercent();
     let seenSurvey = seenSurveyPrompt();
-    let surveyUrl = this.dataset.pulseSurveyUrl;
     let surveyPrompt = this.dataset.pulseSurveyPrompt;
     if(!seenSurvey) {
-      if(shouldDisplayNPI) {
-        surveyUrl = this.dataset.npiSurveyUrl
-        surveyPrompt = this.dataset.surveyPrompt
+      surveyPrompt = this.dataset.surveyPrompt
+      reportEvent('surveyDisplayVaccine');
+      let html = surveyTemplate(surveyPrompt);
+      const header = document.querySelector('.header');
+      header.classList.add('relative-position');
+      header.classList.remove('fixed-position');
+      const hero = document.querySelector('.hero');
+      if(hero) {
+        hero.classList.remove('hero-padding-top');
       }
-      if(surveyUrl) { // We disable the pulse survey by removing the url from the langData config file
-        if(surveyUrl.indexOf('surveymonkey.com') > -1 && surveyUrl.indexOf('?source=') > -1) {
-          surveyUrl += `&src=${randomString(32)}`
-        }
-        reportEvent('surveyDisplayVaccine');
-        let html = surveyTemplate(surveyUrl, surveyPrompt);
-        const header = document.querySelector('.header');
-        header.classList.add('relative-position');
-        header.classList.remove('fixed-position');
-        const hero = document.querySelector('.hero');
-        if(hero) {
-          hero.classList.remove('hero-padding-top');
-        }
-        this.innerHTML = html;
-        applyListeners(this);
-        setTimeout(function() {
-          window.scrollTo(0,0);
-        }, 100);
-      }
+      this.innerHTML = html;
+      applyListeners(this);
+      setTimeout(function() {
+        window.scrollTo(0,0);
+      }, 100);
     }
   }
 }
