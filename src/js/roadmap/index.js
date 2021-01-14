@@ -4,6 +4,7 @@ import templatize from './template.js';
 class CAGovReopening extends window.HTMLElement {
   connectedCallback () {
     this.json = JSON.parse(this.dataset.json);
+    this.schoolsText = JSON.parse(this.dataset.schools);
     this.state = {};
 
     this.innerHTML = templatize(this.json);
@@ -252,17 +253,15 @@ class CAGovReopening extends window.HTMLElement {
 
     // if we are in one of these counties schools can reopen:
     const schoolOKList = this.schoolOKList;
+    const schoolStrings = this.schoolsText;
     let schoolShenanigans = function(county) {
-      const schoolFooter = `<p>See <a href="https://covid19.ca.gov/industry-guidance/#schools-guidance">schools guidance</a>, <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">schools FAQ</a>, and <a href="https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf">cohorting FAQs</a>.`;
-
-      if(schoolOKList.indexOf(county) > -1) {
-        return 'Schools may reopen fully for in-person instruction. Local school officials will decide whether and when that will occur.'
-        + schoolFooter;
+      if(!schoolStrings) {
+        return "";
       }
-      return /*html*/`Schools may not reopen fully for in-person instruction until the county has been in the Substantial (Red) Tier for two weeks. Local school and health officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/In-Person-Elementary-Waiver-Process.aspx">may decide to open elementary schools</a>, and school officials <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx">may decide to conduct in-person instruction</a> for a limited set of students in small cohorts.</p>
-      <p>Note on exception: Schools that have already re-opened if the county was in a less restrictive tier do not have to close. However, if a school had not already reopened for in-person instruction, it may not reopen until the county moves back to the Substantial (Red) Tier for 14 days.</p>
-      `
-      + schoolFooter;
+      if(schoolOKList.indexOf(county) > -1) {
+        return schoolStrings.schools_may_reopen  + schoolStrings.schools_info;;
+      }
+      return schoolStrings.schools_may_not_reopen + schoolStrings.schools_info;
     }
     selectedCounties.forEach(item => {
       this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
