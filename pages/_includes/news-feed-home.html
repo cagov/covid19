@@ -2,7 +2,7 @@
   <section class="news trigger" role="region" aria-label="Latest news">
     <div class="news-wrap">
     
-      <h2 class="color-purple">{{varLatestNews}}</h2>
+      <h2 class="color-purple mt-0 mb-3">{{varLatestNews}}</h2>
       <div class="news-grid">
         {%- for i in range(0, 3) %}
           <article class="news-item trigger">
@@ -11,7 +11,7 @@
                 <img class="news-item-photo-img" src="img/news-photo1.jpg" alt="Governor Newsom Signs Executive Order on Actions in Response to COVID-19  6.22.20">
               </figure> -->
               <time class="news-item-date" datetime="2020-07-01">{{ collections.covidGuidance[i].data.publishdate | formatDate }}</time>
-              <h3 class="news-item-headline">{{ collections.covidGuidance[i].data.title | safe }}</h3>
+              <h3 class="news-item-headline mt-3">{{ collections.covidGuidance[i].data.title | safe }}</h3>
               <!-- <div class="news-item-teaser">Governor Gavin Newsom today signed an executive order in response to the COVID-19 pandemic. The order extends a waiver that allows retailers to...</div> -->
             </a>
           </article>
