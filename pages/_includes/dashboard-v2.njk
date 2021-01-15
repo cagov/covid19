@@ -1,9 +1,51 @@
-{%-set data = tableauCovidMetrics[0] -%}
-{%-set data2 = dailyStatsV2 -%}
+{# {%-set data = tableauCovidMetrics[0] -%} #}
+{%-set data2 = dailyStatsV2.data -%}
 
-{%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
+{#
+{%-set data = dailyStatsV2 -%}
+# How to translate V1 to V2
+old name
+data.DATE                                   ??
+data.TOTALCONFIRMED                         data2.cases.LATEST_TOTAL_CONFIRMED_CASES
+data.TOTALCONFIRMED_DAILY                   data2.cases.NEWLY_REPORTED_CASES
+# note: this is a ratio, not a percentage (we multiply it by 100 to make a percentage)
+                                            changed from ratio to percent
+data.TOTALCONFIRMED_DAILYPCTCHG             data2.cases.LATEST_PCT_CH_CASES_REPORTED_1_DAY
+(new)                                       data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS
+(new)                                       data2.cases.NEWLY_REPORTED_CASES_LAST_7_DAYS
+
+data.NUMBERDIED                             data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS
+data.NUMBERDIED_DAILY                       data2.deaths.NEWLY_REPORTED_DEATHS
+# not a percentage
+                                            changed from ratio to percent
+data.NUMBERDIED_DAILYPCTCHG                 data2.deaths.LATEST_PCT_CH_DEATHS_REPORTED_1_DAY
+(new)                                       data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS
+
+
+data.TESTED                                 data2.tests.LATEST_TOTAL_TESTS_PERFORMED
+# new field is a floating point running average
+data.TESTED_DAILY                           data2.tests.LATEST_CONFIDENT_AVG_TOTAL_TESTS_7_DAYS
+# not a percentage
+                                            changed from ratio to percent
+data.TESTED_DAILYPCTCHG                     data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY
+
+(new)
+
+
+data.POSITIVITY_14DAYAVG                   (does not exist)
+(new)                                      data.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS
+
+
+data.HOSPITALIZED_COVID_CONFIRMED_PATIENTS  (does not exist)
+data.HOSPITALIZED_SUSPECTED_COVID_PATIENTS  (does not exist)
+data.ICU_COVID_CONFIRMED_PATIENTS           (does not exist)
+data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)    
+
+#}
+
+{# {%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%}
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCases_ = data.TOTALCONFIRMED | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTotalCasesTodayPct_ = (100*data.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
 {%-set _varStatTotalDeaths_ = data.NUMBERDIED | formatNumber(tags)-%}
@@ -22,6 +64,38 @@
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%} #}
+
+
+
+{%-set _varStatDate_ = data2.cases.DATE | formatDate2(false, tags, 1)-%}
+{%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%}
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCasesTodayPct_ = (data2.cases.LATEST_PCT_CH_CASES_REPORTED_1_DAY) | formatNumber(tags,1)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+
+{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsLast_ = (data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS - data2.deaths.NEWLY_REPORTED_DEATHS) | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsChange_ = (data2.deaths.LATEST_PCT_CH_DEATHS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
+{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+
+
+
+{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = data2.tests.LATEST_CONFIDENT_AVG_TOTAL_TESTS_7_DAYS | formatNumber(tags)-%}
+{%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
+
+{%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
+{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS + data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
+{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY + data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY + data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
+{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
 
 <!-- state dash 2.0 comment in njk -->
@@ -32,7 +106,7 @@
             <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
                 <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the prior day total of {{_varStatTotalDeathsLast_}}.</p>
                 </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
+                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by episode date (the date the event is estimated to have taken place).</p>
             </div>
         </div>
 
@@ -61,7 +135,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase from prior day total</span>
+                     {{_varStatNewCasesPer100k_}} <span class="text-300">new cases per 100K</span>
                      
                      </div>
                 </div>
@@ -90,7 +164,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTotalDeathsChange_}}% <span class="text-300">increase from prior day total</span>
+                     {{_varStatNewDeathsPer100k_}} <span class="text-300">new deaths per 100K</span>
                     
                     </div>
                 </div>
@@ -119,7 +193,7 @@
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTestedDailyPct_}}% <span class="text-300">increase from prior day total</span>
+                     {{_varStatTestedDailyPct_}}% <span class="text-300">test positivity</span>
                     
                     </div>
                 </div>
@@ -201,7 +275,7 @@
                 </div>
             </div>
         </div>
-        <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 14 days is {{_varStarPos_14DayAvg_}} percent.  </p>
+        <p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 7 days is {{_varStarPos_7DayAvgPct_}}%.  </p>
 
         <div class="row d-flex justify-content-md-center">
         

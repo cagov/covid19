@@ -158,11 +158,20 @@ async function setupCharts() {
 
     // these are their own toggle sets
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+
+    // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 
+                              // 'https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+                              'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
     let ageGroupChart = ''; // we aren't loading this until they click
   }
 }
+
+
+
 setupCharts();
 
 function resetGroupToggles() {
