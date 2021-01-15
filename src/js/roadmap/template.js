@@ -1,7 +1,7 @@
 export default function template(json) {
   return /*html*/`
   <div class="reopening-fields">
-  <h2 class="subtitle-color mt-3">${json.title}</h2>
+  <h2 class="subtitle-color">${json.title}</h2>
     <form action="#" class="reopening-activities">
       <div class="form-row">
         <div class="form-group col-md-6 reopening-form-group">
