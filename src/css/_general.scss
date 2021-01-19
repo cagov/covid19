@@ -2275,3 +2275,25 @@ font {
   padding: 32px 40px 40px 32px;
   background-color: $lightestblue;
 }
+
+.external {
+&::after {
+  font-family: "CaGov";
+  content: "\e9ec";
+  font-size: .85rem;
+  display: inline-block;
+  padding-left: 3px;
+  text-decoration: none;
+  position: relative;
+  top: -3px;
+}
+}
+
+.link-icon {
+  font-size: .85rem;
+  position: relative;
+  top: -3px;
+  padding-left: 3px;
+  display: inline-block;
+  text-decoration: none;
+}
