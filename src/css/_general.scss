@@ -2289,6 +2289,8 @@ font {
 }
 }
 
+
+
 .link-icon {
   font-size: .85rem;
   position: relative;
@@ -2297,3 +2299,17 @@ font {
   display: inline-block;
   text-decoration: none;
 }
+
+.pdf-link {
+  &::before {
+    font-family: "CaGov";
+    content: "\e92e";
+    display: inline-block;
+    text-decoration: none;
+  }
+  }
+
+  .no-underline-icon {
+    display: inline-block;
+    text-decoration: none;
+  }
