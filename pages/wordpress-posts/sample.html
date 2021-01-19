@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Examples"
 meta: "Test Page"
 author: "State of California"
-publishdate: "2021-01-19T23:36:21Z"
+publishdate: "2021-01-19T23:58:35Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -261,7 +261,7 @@ addtositemap: false
 
 
 
-<p class="external">External Links are hyperlinks that point outside of current domain. To indicate&nbsp;<a rel="noreferrer noopener" class="external" href="#" target="_blank">external link</a>&nbsp;you can class <strong>external</strong> to your hyperlink, <strong>or</strong> if you familiar with HTML, in your HTML mode you can add span with &nbsp;<code>ca-gov-icon-external-link</code>&nbsp;icon class with a disclaimer for the screen reader users that this <a href="#" target="_blank" rel="noopener noreferrer">hyperlink <span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span><span class="sr-only">opens in new window</span></a> will open in the new window. See code example below:</p>
+<p>External Links are hyperlinks that point outside of current domain. To indicate&nbsp;<a rel="noreferrer noopener" class="external" href="#" target="_blank">external link</a>&nbsp;you can class <strong>external</strong> to your hyperlink, <strong>or</strong> if you familiar with HTML, in your HTML mode you can add span with &nbsp;<code>ca-gov-icon-external-link</code>&nbsp;icon class with a disclaimer for the screen reader users that this <a href="#" target="_blank" rel="noopener noreferrer">hyperlink <span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span><span class="sr-only">opens in new window</span></a> will open in the new window. See code example below:</p>
 
 
 
@@ -273,7 +273,7 @@ addtositemap: false
 
 
 
-<p>PDF links can be indicated by adding class  <strong>pdf-link</strong> to your hyperlink or you can added HTML markup with span that has class <code>ca-gov-icon-file-pdf</code> as well as disclaimer for the screen reader users that it&#8217;s a pdf file. If you don&#8217;t want your icon span to be underlined you can also add <strong>no-underline-icon</strong> class to it.</p>
+<p>PDF links can be indicated by simply adding class  <strong>pdf-link</strong> to your hyperlink or you can add HTML markup with a span that has class <code>ca-gov-icon-file-pdf</code> as well as <code>sr-only</code> span with a disclaimer for the screen reader users that it&#8217;s a pdf file. If you don&#8217;t want your icon span to be underlined make sure you add <strong>no-underline-icon</strong> class to it. Examples with both approaches are shown below. Sample code of the icon span approach is also provided below.</p>
 
 
 
@@ -281,7 +281,11 @@ addtositemap: false
 
 
 
-<p><a href="#"><span class="ca-gov-icon-file-pdf no-underline-icon" aria-hidden="true">Link with span pdf icon added to it <span class="sr-only">(this is a pdf file)</span></span></a></p>
+<p><a href="#"><span class="ca-gov-icon-file-pdf no-underline-icon" aria-hidden="true"></span>Link with span pdf icon added to it <span class="sr-only">(this is a pdf file)</span></a></p>
+
+
+
+<pre><span class="text-info">&lt;a href="#"&gt;</span><span class="text-success">&lt;span class="ca-gov-icon-file-pdf no-underline-icon" aria-hidden="true"&gt;&lt;/span&gt;</span><span class="text-info">anchor link &lt;span class="sr-only"&gt;(this is PDF file)&lt;/span&gt;&lt;/a&gt;</span></pre>
 
 
 
