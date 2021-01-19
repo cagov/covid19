@@ -54,7 +54,11 @@
     },
     {
       "_id": "activityNotFound",
-      "value": "Activity not found"
+      "value": "Activity or business not found"
+    },
+    {
+      "_id": "emptySearchError",
+      "value": "Please enter a county or an activity"
     }
   ]
 }
