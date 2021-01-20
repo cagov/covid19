@@ -96,9 +96,10 @@ let chartWidth2 = 900;
 let chartWidth3 = 800;
 let countyMapChartHeight = 660;
 
-// !! look at server - same way we are choosing data-source for equity...
-const tableauPrefix2 = "https://tableau.cdt.ca.gov/views/StateDashboardv2_0"; 
-// vs https://public.tableau.com/views/StateDashboard_16008816705240
+const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
+// sample https://public.tableau.com/views/COVID-19StateDashboardv2_0/5_1StateTesting-Epicurves?:language=en&:display_count=y&publish=yes&:origin=viz_share_link
+// OLD https://public.tableau.com/views/StateDashboard_16008816705240
+// DEV https://public.tableau.com/views/COVID-19StateDashboardv2_0
 
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
@@ -163,7 +164,7 @@ async function setupCharts() {
 
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 
-                              'https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+                                            tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
                               // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
     let ageGroupChart = ''; // we aren't loading this until they click
@@ -193,7 +194,7 @@ groupTogglers.forEach(toggle => {
       this.classList.add('toggle-active');
       // genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
       // !! unchanged for 2.0
-      displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+      displayChart('#genderGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
       document.getElementById('age-graph').style.display = 'block'; 

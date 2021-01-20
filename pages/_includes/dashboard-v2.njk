@@ -87,6 +87,11 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 {%-set _varStatTestedDaily_ = data2.tests.LATEST_CONFIDENT_AVG_TOTAL_TESTS_7_DAYS | formatNumber(tags,0)-%}
 {%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 
+{%-set _varStatVaccines_ = 0 | formatNumber(tags)-%}
+{%-set _varStatVaccinesDaily_ = 0 | formatNumber(tags,0)-%}
+{%-set _varStatVaccinesDailyPct_ = 0.0 | formatNumber(tags,1)-%}
+
+
 {%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS + data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -194,6 +199,35 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 						</svg>
 					</span> 
                      {{_varStatTestedDailyPct_}}% <span class="text-300">test positivity</span>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines</div>
+                
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     {{_varStatVaccinesDailyPct_}}% <span class="text-300">increase</span>
                     
                     </div>
                 </div>
