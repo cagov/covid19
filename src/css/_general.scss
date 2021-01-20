@@ -2301,12 +2301,33 @@ font {
 }
 
 .pdf-link {
-  &::before {
-    font-family: "CaGov";
-    content: "\e92e";
+  &::after {
+    font-family: "Roboto", sans-serif;
+    font-size: .6rem;
+    font-weight: 400;
+    content: "PDF";
     display: inline-block;
     text-decoration: none;
+    outline: 1px solid;
+    outline-offset: -2px;
+    padding: 1px 4px 0px 4px;
+    position: relative;
+    left: 3px;
+    top:-3px;
   }
+  }
+
+  .pdf-link-icon {
+    font-family: "Roboto", sans-serif;
+    font-size: .6rem;
+    font-weight: 400;
+    display: inline-block;
+    outline: 1px solid;
+    outline-offset: -2px;
+    padding: 1px 4px 0px 4px;
+    position: relative;
+    left: 3px;
+    top:-3px;
   }
 
   .no-underline-icon {
