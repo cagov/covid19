@@ -24,7 +24,7 @@ news-section {
         padding: 0.5rem 1rem;
         border-radius: 2.5rem;
         &:hover {
-          color: $orange;
+          color: $blue;
         }
         &:focus {
           color: $blue;
@@ -61,7 +61,7 @@ news-section {
               }
             }
             &-headline {
-              color: $orange;
+              color: $blue;
             }
           }
         }
@@ -81,9 +81,9 @@ news-section {
               }
             }
             &-headline {
-              color: $orange;
+              color: $blue;
               &-small {
-                color: $orange;
+                color: $blue;
               }
             }
           }
