@@ -6,6 +6,7 @@ import reopening from './roadmap/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
 import dashboard from './dashboard/rollup.config';
+import dashboard2 from './dashboard-v2/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 
 import fs from 'fs';
@@ -44,6 +45,7 @@ export default [
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : []),
+  ...(shouldIRebuild('/dashboard-v2/', '../../docs/js/dashboard-v2.js') ? [dashboard2] : []),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   esm,
   // Don't include ES5 file in dev mode.

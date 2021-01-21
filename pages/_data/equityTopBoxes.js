@@ -21,6 +21,8 @@ module.exports = function() {
       const demographics=data.Demographics;
       let output = [
         {
+          "lowincome_date":"",
+          "demographics_date":"",
           "cases_per_100K_statewide":0,
           "death_rate_per_100K_statewide":0,
           "cases_per_100K_latino":0,
@@ -67,7 +69,8 @@ module.exports = function() {
       output[0].case_rate_vs_statewide_percent_low_income = roundNumber(compare(totalCaseRate,data.LowIncome[0].CASE_RATE_PER_100K),0);
       output[0].case_rate_per_100K_low_income = roundNumber(data.LowIncome[0].CASE_RATE_PER_100K,0);
 
-      console.log(output)
+      output[0].lowincome_date = data.LowIncome[0].DATE;
+      output[0].demographics_date = raceLatino.REPORT_DATE;
 
       resolve(output);
     });

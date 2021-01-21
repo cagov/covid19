@@ -44,8 +44,11 @@
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
                 {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }}
+              {%- elseif page | engSlug === "v2-state-dashboard" -%}
+                {{ (dailyStatsV2.data.cases.DATE + "T19:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ "today" | formatDate2(true,tags,-1) }}
+                {{ (equityTopBoxes[0].lowincome_date + "T23:00:00Z") | formatDate2(true,tags,1) }}
+                {# {{ "today" | formatDate2(true,tags,-1) }} #}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}
@@ -57,6 +60,9 @@
   </div>
   {%- pagesection page, "state-dashboard" %}
   {% include "dashboard.njk" %}
+  {% endpagesection -%}
+  {%- pagesection page, "v2-state-dashboard" %}
+  {% include "dashboard-v2.njk" %}
   {% endpagesection -%}
 
   <div class="container">
