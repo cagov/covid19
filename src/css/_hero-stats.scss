@@ -22,12 +22,14 @@
   }
 
 hero-stats {
+	background-color: $darkblue;
 
 /*HERO */
 .hero {
 	position: relative;
 	color: $white;
 	width: 100%;
+	// 
 	&-padding-top {
 		@include tablet {
 			margin-top: 65px;
@@ -77,6 +79,7 @@ hero-stats {
 		min-height: 60vh;
 		align-items: flex-end;
 		align-self: flex-end;
+		// background-color: #1D2574;
 		@include tablet {
 			display: flex;
 			width: 50%;
