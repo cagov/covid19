@@ -35,7 +35,6 @@ export default function setupAnalytics() {
       eventString ==> eventLabel
   */
   function reportGA(eventAction, eventLabel, eventCategory = 'click') {
-    console.log("ReportGA", eventCategory, eventAction, eventLabel);
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
       ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
@@ -158,7 +157,6 @@ export default function setupAnalytics() {
   // Note this generates a function for use by an event listener.
   const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
     // Fire off reports to Google Analytics.
-    console.log("linkhandler",eventAction,eventLabel);
     reportGA(eventAction, eventLabel);
     // we are using beacon by default, if it's available
     // window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
@@ -228,11 +226,13 @@ export default function setupAnalytics() {
         link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoUrl, false));
       });
       // Report clicks on links in the menu.
-      document.querySelectorAll('a.expanded-menu-dropdown-link, a.expanded-menu-section-header-link').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-menu', link.href));
-      });
+      document.querySelector('cagov-navoverlay').addEventListener('click', function(event) {
+        if(event.target.classList.contains('js-event-hm-menu')) {
+          linkHandler(window.location.pathname, 'homepage-menu', event.target.textContent.trim());
+        }
+      })
       // Report clicks on Want to Know section.
-      document.querySelectorAll('a.faq-item-link').forEach(link => {
+      document.querySelectorAll('.js-event-hm-wtk').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
       });
       // Report clicks on footer links.
