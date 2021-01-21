@@ -86,6 +86,7 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
+{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 {%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
@@ -197,7 +198,7 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     {{_varStatTestedDailyPct_}}% <span class="text-300">test positivity</span>
+                     {{_varStatLatestPositivityPct_}}% <span class="text-300">test positivity</span>
                     
                     </div>
                 </div>
