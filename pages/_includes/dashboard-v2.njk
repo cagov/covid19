@@ -84,13 +84,12 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.LATEST_CONFIDENT_AVG_TOTAL_TESTS_7_DAYS | formatNumber(tags,0)-%}
+{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 
-{%-set _varStatVaccines_ = 0 | formatNumber(tags)-%}
-{%-set _varStatVaccinesDaily_ = 0 | formatNumber(tags,0)-%}
-{%-set _varStatVaccinesDailyPct_ = 0.0 | formatNumber(tags,1)-%}
-
+{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
+{%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
 
 {%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
