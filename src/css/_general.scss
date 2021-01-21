@@ -15,9 +15,9 @@ $max-width-text: 64rem; //1500px
   }
 }
 @mixin reg-phone {
-	@media (max-width: #{$tablet}) {
-	  @content;
-	}
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
 }
 @mixin phone {
   @media (max-width: #{$tablet-wide}) {
@@ -61,7 +61,7 @@ $lightblue: #92c5de;
 $lighterblue: #dae0ef;
 $lightestblue: #f2f5fc;
 $yellow: #ffcf44;
-$orange: #FF8000;
+$orange: #ff8000;
 $black: #000;
 $white: #fff;
 $lightgray: #f0f0f0;
@@ -327,7 +327,6 @@ $button-shadow-active: inset 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
 }
 /* End trilogy globals */
 
-
 /* trilogy positioning */
 @mixin position($position, $args: ()) {
   $offsets: top right bottom left;
@@ -567,9 +566,6 @@ textarea {
 }
 /* end trilogy normalize */
 
-
-
-
 body {
   color: $black;
   font-family: "Roboto", sans-serif;
@@ -603,25 +599,24 @@ h1 {
   font-size: 2.3rem;
   // padding-bottom: 0.25rem;
   color: $darkblue;
-  margin-top:3.45rem;
-  margin-bottom:2.18rem;
-
+  margin-top: 3.45rem;
+  margin-bottom: 2.18rem;
 }
 .h1 {
   font-size: 2.3rem;
   color: $darkblue;
-  margin-top:3.45rem;
-  margin-bottom:2.18rem;
+  margin-top: 3.45rem;
+  margin-bottom: 2.18rem;
 }
 
 h2 {
   font-size: 2rem;
-  margin-top:3rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 .h2 {
   font-size: 2rem;
-  margin-top:3rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
@@ -679,7 +674,9 @@ ul.list-unstyled li {
   padding-bottom: 1rem;
 }
 
-p {margin-bottom: 1.2rem;}
+p {
+  margin-bottom: 1.2rem;
+}
 
 p,
 li,
@@ -688,12 +685,17 @@ li,
 }
 
 /* Colors */
-.bg-purple, .bg-darkblue, .bg-primary {
+.bg-purple,
+.bg-darkblue,
+.bg-primary {
   background-color: $darkblue !important;
   background: $darkblue !important;
 }
 .bg-purple-hover:hover,
-.bg-purple-hover:focus, .bg-darkblue-hover:hover, .bg-darkblue-hover:focus, .bg-primary-hover:hover,
+.bg-purple-hover:focus,
+.bg-darkblue-hover:hover,
+.bg-darkblue-hover:focus,
+.bg-primary-hover:hover,
 .bg-primary-hover:focus {
   background-color: $darkblue !important;
   background: $darkblue !important;
@@ -738,24 +740,26 @@ li,
 .bg-lightblue {
   background-color: $lightestblue !important;
 }
-.bg-lightblue-hover:hover,.bg-lightblue-hover:focus {
-background-color: $lightestblue !important;
+.bg-lightblue-hover:hover,
+.bg-lightblue-hover:focus {
+  background-color: $lightestblue !important;
 }
 
 .centerH {
   margin: 0 auto;
 }
-.color-primary, .color-purple {
+.color-primary,
+.color-purple {
   color: $darkblue !important;
 }
 .color-primary-hover:hover,
-.color-primary-hover:focus, 
+.color-primary-hover:focus,
 .color-purple-hover:hover,
 .color-purple-hover:focus {
   color: $darkblue !important;
 }
 .bg-blue {
-  color: $blue!important;
+  color: $blue !important;
 }
 .bg-blue-hover:hover,
 .bg-blue-hover:focus {
@@ -784,16 +788,16 @@ background-color: $lightestblue !important;
   color: $white !important;
 }
 .color-secondary {
-  color: $lightblue  !important;
+  color: $lightblue !important;
 }
 .color-secondary-hover:hover,
 .color-secondary-hover:focus {
-  color: $lightblue  !important;
+  color: $lightblue !important;
 }
 .color-lightblue {
   color: $lightestblue !important;
 }
-.color-lightblue-hover:hover, 
+.color-lightblue-hover:hover,
 .color-lightblue-hover:focus {
   color: $lightestblue !important;
 }
@@ -1994,11 +1998,12 @@ button#dropdown-menu-button:focus {
   transform: scale3d(1.05, 1.05, 1.05);
 }
 
-
-
 /* normalize overrides to restore spacing */
 body.interior-page {
-  ul, ol, pre, figure {
+  ul,
+  ol,
+  pre,
+  figure {
     margin-bottom: 1rem;
   }
 }
@@ -2014,14 +2019,15 @@ font {
 .bg-transparent {
   background-color: transparent !important;
 }
-.text-sm, .small-text {
+.text-sm,
+.small-text {
   font-size: 0.95rem !important;
 }
 .text-small {
   font-size: 0.85rem !important;
 }
 .text-disclaim {
-  font-size:.8em;
+  font-size: 0.8em;
 }
 .text-xs {
   font-size: 0.75rem !important;
@@ -2062,8 +2068,6 @@ font {
 .bg-ccc {
   background-color: #ccc;
 }
-
-
 
 .p-rel {
   position: relative !important;
@@ -2258,20 +2262,77 @@ font {
 /* Typography overrides */
 .emphasized {
   font-size: 1.45rem !important;
-  margin-top:2.18rem;
-  margin-bottom:1.45rem;
+  margin-top: 2.18rem;
+  margin-bottom: 1.45rem;
 }
 
 .highlight {
-  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.14);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);
   border-bottom: 8px solid $orange;
   padding: 32px 40px 40px 40px;
   background-color: $white;
 }
 
 .highlight-lightblue {
-  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.14);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);
   border-left: 8px solid $orange;
   padding: 32px 40px 40px 32px;
   background-color: $lightestblue;
+}
+
+.external {
+  &::after {
+    font-family: "CaGov";
+    content: "\e9ec";
+    font-size: 0.85rem;
+    display: inline-block;
+    padding-left: 3px;
+    text-decoration: none;
+    position: relative;
+    top: -3px;
+  }
+}
+
+.link-icon {
+  font-size: 0.85rem;
+  position: relative;
+  top: -3px;
+  padding-left: 3px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.pdf-link {
+  &::after {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    content: "PDF";
+    display: inline-block;
+    text-decoration: none;
+    outline: 1px solid;
+    outline-offset: -2px;
+    padding: 1px 4px 0px 4px;
+    position: relative;
+    left: 3px;
+    top: -3px;
+  }
+}
+
+.pdf-link-icon {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  display: inline-block;
+  outline: 1px solid;
+  outline-offset: -2px;
+  padding: 1px 4px 0px 4px;
+  position: relative;
+  left: 3px;
+  top: -3px;
+}
+
+.no-underline-icon {
+  display: inline-block;
+  text-decoration: none;
 }
