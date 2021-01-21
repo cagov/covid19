@@ -46,7 +46,7 @@ cagov-accordion .collapsed {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     font-family: "Roboto", sans-serif;	
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
     font-weight: 700;
     color:$darkblue;
   }
@@ -71,16 +71,16 @@ button.card-header {
 
 .prog-enhanced .accordion-alpha .plus-munus {
     font-family: CaGov!important;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.125rem;
+    height: 2.125rem;
     border: 2px solid $orange;
     border-radius: 50%;
-    padding: .3rem 0;
+    padding:0.02rem 0;
     overflow: hidden;
     transition: all .3s ease;
     margin-left: 1rem;
     color: $orange;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     align-self: flex-start;
   &:before {
     content: "\4c";
