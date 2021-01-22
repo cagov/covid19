@@ -446,6 +446,128 @@ module.exports = function(eleventyConfig) {
   });
 
 
+
+  //Dark ACCORDIONS
+  eleventyConfig.addTransform("finddarkaccordions", function(html, outputPath) {
+    const headerclass = 'dark-accordion';
+
+    if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(headerclass)>-1) {
+      const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>dark-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+      const getAccordionDarkStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
+        .map(r=> ({
+          tag: r.groups.tag,
+          class: r.groups.class,
+          index: r.index,
+          fulltag: r[0] }));
+      
+      
+      const getNextTagDark = (searchArea, tag) => 
+          [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','gm'))]
+          .map(r=> ({
+            index: r.index,
+            isCloseTag: r.groups.closeslash.length>0,
+            fulltag: r[0] }))[0];
+      
+      
+      const getEndTagDark = (tag, html, startIndex) => {
+        let resultIndex = startIndex;
+        let startTagsActive = 0;
+        let loopsafe = 100;
+        let searchArea = html.substring(startIndex);
+      
+        while(--loopsafe>0) {
+          const nextTag = getNextTagDark(searchArea,tag);
+          if(!nextTag) throw `Can't find matching end tag - ${tag}`;
+          const resultOffset = nextTag.index+nextTag.fulltag.length;
+          resultIndex += resultOffset;
+          if(nextTag.isCloseTag) {
+            if(startTagsActive===0) {
+              nextTag.index = resultIndex;
+              return nextTag;
+            } else {
+              startTagsActive--;
+            }
+          } else {
+            //new open tag
+            startTagsActive++;
+          }
+          searchArea = searchArea.substring(resultOffset);
+        } //while
+      } //getEndTag
+      
+      //Create a list of all accordion content in order
+      const accordiondarkContent = getAccordionDarkStartTags(html)
+        .map(nextTag=> ({
+          nextTag,
+          endTag:getEndTagDark(nextTag.tag,html,nextTag.index+nextTag.fulltag.length)
+        }))
+        .map(tags=> ({
+            html: html.substring(tags.nextTag.index,tags.endTag.index),
+            header: tags.nextTag.class==='dark-accordion'
+        }));
+      
+      
+      let result = html;
+      //loop and build content
+      for (let resultIndex=0;resultIndex<accordiondarkContent.length;resultIndex++) {
+        const row = accordiondarkContent[resultIndex];
+        if(row.header) {
+          const headerdarkHTML = row.html
+            .replace(/dark-accordion/,'')
+            .replace(/ class=""/,'');
+      
+          let bodydarkHTML = '';
+          //fill the body
+          let bodydarkIndex = resultIndex+1;
+          while (bodydarkIndex<accordiondarkContent.length&&!accordiondarkContent[bodydarkIndex].header) {
+            const bodydarkRowHTML = accordiondarkContent[bodydarkIndex].html;
+            bodydarkHTML += bodydarkRowHTML
+              .replace(/dark-accordion-content/,'')
+              .replace(/ class=""/,'')
+              + '\n';
+      
+              bodydarkIndex++;
+      
+            //remove this content tag from html
+            result = result.replace(bodydarkRowHTML,'');
+          } //while
+      
+          const finaldarkHTML = 
+            `<div class="full-bleed bg-darkblue dark-accordion-bg">
+            <div class="container">
+            <div class="row">
+            <div class="col-lg-10 mx-auto">
+            <cagov-accordion class="dark-accordion">
+              <div class="card">
+                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                  <div class="accordion-title">
+            ${headerdarkHTML}
+                  </div><div class="plus-munus"></div>
+                </button>
+                <div class="card-container" aria-hidden="true">
+                  <div class="card-body">
+            ${bodydarkHTML}
+                  </div>
+                </div>
+              </div>
+            </cagov-dark-accordion>
+            </div>
+            </div>
+            </div>
+            </div>
+            `;
+      
+          //replace the header with the new merged content
+          result = result.replace(row.html,finaldarkHTML);
+        } //if(row.header)
+      } //for
+
+      return result;
+    }
+    return html;
+  });
+
+
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
     const localizeString = '--en.';
     if(outputPath&&outputPath.endsWith(".html")&&html.indexOf(localizeString)>-1) {
@@ -558,7 +680,7 @@ module.exports = function(eleventyConfig) {
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
   eleventyConfig.setUseGitIgnore(false);
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,findlinkstolocalize";
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize";
   return {
     htmlTemplateEngine: "njk",
     templateFormats: ["html", "njk", "11ty.js"],
