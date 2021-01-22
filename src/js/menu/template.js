@@ -13,33 +13,22 @@ export default function (data, dataset) {
           </button>
         </form>
       </div>
-
-      <!-- 
       <div class="expanded-menu-section mobile-only">
         <strong class="expanded-menu-section-header">
-          <a class="expanded-menu-section-header-link expanded-menu-close-mobile" href="#">
-             <svg class="expanded-menu-close-mobile-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18"><path d="M7.7,0.4L0.4,7.9c-0.6,0.6-0.6,1.5,0,2.1l7.3,7.5c0.6,0.6,1.5,0.6,2.1,0c0.6-0.6,0.6-1.5,0-2.1L5,10.5h10.6 c0.8,0,1.5-0.7,1.5-1.5c0-0.8-0.7-1.5-1.5-1.5H5l4.8-4.9c0.3-0.3,0.4-0.7,0.4-1.1c0-0.4-0.1-0.8-0.4-1.1C9.2-0.1,8.3-0.1,7.7,0.4z"></path></svg>
-          </a> 
-        </strong>
-      </div> 
-      -->
-
-      <div class="expanded-menu-section mobile-only">
-        <strong class="expanded-menu-section-header">
-          <a class="expanded-menu-section-header-link" href="/">${dataset.labelHome}</a>
+          <a class="expanded-menu-section-header-link js-event-hm-menu" href="/">${dataset.labelHome}</a>
         </strong>
       </div>
       ${data.sections.map(section => {
         return `<div class="expanded-menu-col section-${section.title.toLowerCase().replace(/ /g,'-')}">
           <div class="expanded-menu-section">
             <strong class="expanded-menu-section-header">
-              <a class="expanded-menu-section-header-link js-expandable-mobile" href="#">${section.title}</a>
+              <a class="expanded-menu-section-header-link js-expandable-mobile js-event-hm-menu" href="#">${section.title}</a>
               <span class="expanded-menu-section-header-arrow js-expandable-mobile"><svg class="expanded-menu-section-header-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16,5.1c0,0.4-0.1,0.7-0.4,0.9l-6.7,6.7C8.7,13,8.4,13.1,8,13.1c-0.4,0-0.7-0.1-0.9-0.4L0.4,6C0.1,5.8,0,5.5,0,5.1	c0-0.4,0.1-0.7,0.4-0.9l0.8-0.8C1.4,3.1,1.7,3,2.1,3C2.4,3,2.8,3.1,3,3.4l5,5l5-5C13.2,3.1,13.6,3,13.9,3c0.4,0,0.7,0.1,0.9,0.4
     l0.8,0.8C15.9,4.4,16,4.7,16,5.1z"></path></svg></span>
             </strong>
             <div class="expanded-menu-dropdown">
               ${section.links.map(link => {
-                return `<a class="expanded-menu-dropdown-link" href="${link.url}">${link.name}</a>`;
+                return `<a class="expanded-menu-dropdown-link js-event-hm-menu" href="${link.url}">${link.name}</a>`;
               }).join(' ')}
             </div>
           </div>
