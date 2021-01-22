@@ -1,5 +1,5 @@
 import Awesomplete from 'awesomplete-es6';
- 
+
 window.fetch('/countystatus.json')
 .then(response => response.json())
 .then(function(data) {
@@ -96,6 +96,11 @@ let chartWidth2 = 900;
 let chartWidth3 = 800;
 let countyMapChartHeight = 660;
 
+const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
+// sample https://public.tableau.com/views/COVID-19StateDashboardv2_0/5_1StateTesting-Epicurves?:language=en&:display_count=y&publish=yes&:origin=viz_share_link
+// OLD https://public.tableau.com/views/StateDashboard_16008816705240
+// DEV https://public.tableau.com/views/COVID-19StateDashboardv2_0
+
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
 if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
@@ -129,26 +134,45 @@ else if (window.innerWidth > 919 && window.innerWidth < 1200) {
 }
 
 async function setupCharts() {
-  console.log("Setting up 1.0 charts");
+  console.log("Setting up 2.0 charts");
+
   // these are county toggles and state toggles
   if(document.getElementById('casesChartState')) {
-    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
-    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    // window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    // let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    // let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    // window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    // window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    // window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,tableauPrefix2+'/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,tableauPrefix2+'/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,tableauPrefix2+'/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
 
-    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
-    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
+
+    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
 
     // this chart does not toggle
+    // unchanged for 2.0
     let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link');
 
     // these are their own toggle sets
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+
+    // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 
+                                            tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+                              // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
     let ageGroupChart = ''; // we aren't loading this until they click
   }
 }
+
+
+
 setupCharts();
 
 function resetGroupToggles() {
@@ -168,12 +192,15 @@ groupTogglers.forEach(toggle => {
     if(this.classList.contains('gender')) {
       document.getElementById('gender-graph').style.display = 'block';
       this.classList.add('toggle-active');
-      genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+      // genderGroupChart = displayChart('#genderGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+      // !! unchanged for 2.0
+      displayChart('#genderGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
       document.getElementById('age-graph').style.display = 'block'; 
-      this.classList.add('toggle-active');     
-      ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+      this.classList.add('toggle-active');
+      // ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+      displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
       document.getElementById('ethnicity-graph').style.display = 'block';      

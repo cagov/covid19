@@ -138,6 +138,9 @@ ga('tracker3.send', 'pageview');
 {%- pagesection page, "state-dashboard" %}
 	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
 {% endpagesection -%}
+{%- pagesection page, "v2-state-dashboard" %}
+	{{ macros.includeJavascriptByEnv('dashboard-v2', env.dev) }}
+{% endpagesection -%}
 
 {%- pagesection page, "equity" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
