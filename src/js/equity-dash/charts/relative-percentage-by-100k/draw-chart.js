@@ -63,7 +63,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       let caption = component.toolTipCaption(
         d.data.DEMOGRAPHIC_SET_CATEGORY,
         d.data.METRIC_VALUE_PER_100K
-          ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
+          ? d.data.METRIC_VALUE_PER_100K
           : 0,
         filterScope,
         d // .toLowerCase()
@@ -83,7 +83,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       let caption = component.toolTipCaption(
         d.data.DEMOGRAPHIC_SET_CATEGORY,
         d.data.METRIC_VALUE_PER_100K
-          ? parseFloat(d.data.METRIC_VALUE_PER_100K).toFixed(0)
+          ? d.data.METRIC_VALUE_PER_100K
           : 0,
         filterScope,
         d // .toLowerCase()
@@ -173,7 +173,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
             d.METRIC_VALUE_PER_100K !== null
           ) {
             return d.METRIC_VALUE_PER_100K
-              ? parseFloat(d.METRIC_VALUE_PER_100K).toFixed(1)
+              ? this.intFormatter.format(d.METRIC_VALUE_PER_100K)
               : 0;
           } else {
             if (d.APPLIED_SUPPRESSION === "Total") {
