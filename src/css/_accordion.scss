@@ -100,6 +100,8 @@ button.card-header {
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);
 }
+
+
 //Dark accordion
 .dark-accordion-bg {
   padding-top: 3rem;
@@ -116,6 +118,9 @@ button.card-header {
       background-color: $darkblue;
       border-bottom: 1px solid tint($darkblue, 20%);
       border-top: 1px solid tint($darkblue, 20%);
+      &.accordion-alpha-open {
+        border-bottom-color: $darkblue !important;
+      }
       &:hover, &:focus {
         background-color: $blue;
       }
