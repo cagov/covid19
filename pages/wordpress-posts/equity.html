@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. COVID-19 has highlighted existing inequities in health. Many of these inequities are the result of structural racism. One form this takes is the unequal distribution of and access to health care resources. Committed to a California [&hellip;]"
 author: "State of California"
-publishdate: "2021-01-12T22:59:04Z"
-tags: ["translate"]
+publishdate: "2021-01-25T22:23:05Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -78,9 +78,9 @@ addtositemap: true
                   <div class="eq-cases">
                     <p class="text-xs">Deaths per 100K people:</p>
                     <p class="text-xs mb-0">
-                      <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags)}}</span></strong> 
+                      <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags,0)}}</span></strong> 
                       Latino <br>
-                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
                       all ethnicities
                     </p>
                   </div>
@@ -114,9 +114,9 @@ addtositemap: true
                   <div class="eq-cases">
                     <p class="text-xs">Cases per 100K people:</p>
                     <p class="text-xs mb-0">
-                      <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</span></strong>
+                      <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags,0)}}</span></strong>
                       NHPI <br>
-                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
                       all ethnicities
                     </p>
                   </div>
@@ -149,9 +149,9 @@ addtositemap: true
                   <div class="eq-cases">
                     <p class="text-xs">Deaths per 100K people:</p>
                     <p class="text-xs mb-0">
-                      <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black}}</span></strong> Black
+                      <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black|formatNumber(tags,0)}}</span></strong> Black
                       <br>
-                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide}}</span></strong> all
+                      <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> all
                       ethnicities
                     </p>
                   </div>
@@ -186,9 +186,9 @@ addtositemap: true
                   <div class="eq-cases">
                     <p class="text-xs">Cases per 100K people:</p>
                     <p class="text-xs mb-0">
-                      <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</span></strong>
+                      <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong>
                       income &lt;$40K <br>
-                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong>
+                      <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
                       all income brackets
                     </p>
                   </div>
