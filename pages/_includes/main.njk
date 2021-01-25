@@ -59,7 +59,7 @@
 						
 					</div>
 				</div>
-				<div class="hero-stats bg-rounded-10" role="region" aria-labelledby="tracking-covid">
+				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
 						{{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags,+1)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags)) -}}
@@ -69,8 +69,8 @@
 
 
 					 <div class="row d-flex justify-content-md-center">
-            <div class="col-md-3 px-2">
-                <div class="py-2 px-1 text-center mt-3">
+            <div class="col-md-6 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3">
                 <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Cases</div>
                 
                     <div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">total</span></div>
@@ -95,8 +95,8 @@
 					 {{_varStatTotalCasesTodayPct_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
-            <div class="col-md-3 px-2">
-                <div class="py-2 px-1 text-center mt-3">
+            <div class="col-md-6 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3">
                 <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Deaths</div>
                 
                     <div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">total</span></div>
@@ -121,8 +121,8 @@
 					 {{_varStatTotalDeathsChange_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
-            <div class="col-md-3 px-2">
-                <div class="py-2 px-1 text-center mt-3">
+            <div class="col-md-6 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3">
                 <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Tests</div>
                 
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">total</span></div>
@@ -147,8 +147,8 @@
 					{{_varStatTestedDailyPct_}}% <span class="text-300">increase from prior day total</span></div>
                 </div>
             </div>
-            <div class="col-md-3 px-2">
-                <div class="py-2 px-1 text-center mt-3">
+            <div class="col-md-6 px-10px">
+                <div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3">
                 <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Vaccines</div>
                 
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">total</span></div>
