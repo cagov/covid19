@@ -82,7 +82,12 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       },
     };
 
-    getScreenResizeCharts(this);
+    this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
+                  {style:'decimal', 
+                   minimumFractionDigits:0,
+                   maximumFractionDigits:0});
+
+         getScreenResizeCharts(this);
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
@@ -145,7 +150,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
-      writeBarLabels(this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
+      writeBarLabels(this,this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
       let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
       writeXAxisLabel(this, this.svg, this.translationsObj.xAxisTitleIncome);
   
@@ -180,8 +185,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['ariaBarLabel']
       let label = templateStr
-                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
-                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+                    .replace('placeholderCaseRate', this.intFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return label;
   }
   tooltipCaption(d) {
@@ -189,8 +194,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['tooltipCaption']
       let caption = templateStr
-                    .replace('placeholderCaseRate',parseFloat(d.CASE_RATE_PER_100K).toFixed(1))
-                    .replace('placeholderRateDiff30',parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
+                    .replace('placeholderCaseRate', this.intFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return caption;
   }
 
@@ -236,7 +241,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .range([chartBreakpointValues.height - chartBreakpointValues.margin.bottom, chartBreakpointValues.margin.top])
 
       rewriteBars(component, svg, dataset, x, y);
-      rewriteBarLabels(svg, dataset, x, y, chartBreakpointValues.sparkline);
+      rewriteBarLabels(component, svg, dataset, x, y, chartBreakpointValues.sparkline);
       xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);

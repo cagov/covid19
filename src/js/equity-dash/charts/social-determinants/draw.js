@@ -116,7 +116,7 @@ function rewriteBars(component, svg, data, x, y) {
     .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
 }
 
-function writeBarLabels(svg, data, x, y, sparkline) {
+function writeBarLabels(component, svg, data, x, y, sparkline) {
   svg.append("g")
   .attr("class", "bar-label-group")
   .selectAll(".bar-label")
@@ -130,7 +130,7 @@ function writeBarLabels(svg, data, x, y, sparkline) {
         .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
         .attr("width", x.bandwidth() / 4)
         .html(d => {
-          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.intFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
           <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
         })
         .attr('text-anchor','middle')
@@ -163,14 +163,14 @@ function writeSparklines(svg, data, x, y, sparkline) {
       }
     )
 }
-function rewriteBarLabels(svg, data, x, y, sparkline) {
+function rewriteBarLabels(component, svg, data, x, y, sparkline) {
   svg.selectAll("text.bar-label")
     .data(data)
     .attr("x", (d, i) => x(i) + (x.bandwidth() / 2))
     .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
     .attr("width", x.bandwidth() / 4)
     .html(d => {
-      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.intFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
       <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
     })
     .attr('text-anchor','middle')
@@ -209,7 +209,7 @@ function redrawYLine(component, y, dataset) {
     .attr('class','label bar-chart-yline');
   
   component.svg.append("text")
-    .text(`${component.translationsObj.statewideCaseRate} ${parseFloat(component.yDValue).toFixed(1)}`)
+    .text(`${component.translationsObj.statewideCaseRate} ${component.intFormatter.format(component.yDValue)}`)
     .attr("y", yDottedLinePos - 6)
     // .attr("x", 38)
     // .attr('text-anchor','start')
