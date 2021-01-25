@@ -103,14 +103,33 @@ button.card-header {
 
 
 //Dark accordion
-.dark-accordion-bg {
+.dark-accordion-bg > .container.dark-accordion-first {
   padding-top: 3rem;
   margin-top: 3rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
-.dark-accordion-bg + .dark-accordion-bg {
-  padding-top: 0rem !important;
+.dark-accordion-bg > .container {
+  padding-top: 3rem;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+.dark-accordion-sibling > .container {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   margin-top: 0rem;
+  margin-bottom: 0rem;
 }
+.dark-accordion-sibling + .dark-accordion-bg > .container {
+  padding-top: 0rem;
+  margin-top: 0rem;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+
+
 .dark-accordion-bg {
   .card {
     background-color: $darkblue;
