@@ -1509,6 +1509,13 @@ label {
   padding: 20px 0;
 }
 
+.summary-boxes {
+}
+
+.summary-box {
+  height:90%; /* helps insure equal-height summary boxes */
+}
+
 /* fix bootstrap nav */
 li.active ul.nav.bd-sidenav {
   display: block;
@@ -2132,6 +2139,12 @@ font {
 .px-12px {
   padding-left: 12px !important;
   padding-right: 12px !important;
+}
+.ptop-10px {
+  padding-top: 10px !important;
+}
+.ptop-12px {
+  padding-top: 12px !important;
 }
 
 .hi-50 {

@@ -9,4 +9,3 @@ if(acc) {
     let firstChild = acc.firstElementChild;
     firstChild.classList.add("dark-accordion-first");
   }
-
