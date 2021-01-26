@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州致力于实现健康公平"
 meta: "所有加州民众，不论其居住的地方、工作环境、社会支持或身份如何，都值得拥有健康的生活。COVID-19凸显出了现有的健康不公平问题。其中许多不公平问题是由于结构性种族主义导致的。其中一种形式便是医疗保健资源分配及获取的不公平。为努力建设全民加州 […]"
 author: "State of California"
-publishdate: "2021-01-12T22:59:04Z"
+publishdate: "2021-01-25T22:45:13Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -42,25 +42,25 @@ addtositemap: true
                 <div class="container">                                <cagov-equity-highlight-stats>             <div class="row d-flex row-eq-height justify-content-md-center pb-4">
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率比全州高<span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率比全州低<span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">拉丁裔的死亡率与全州平均死亡率相同                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
                     <p class="text-xs">每100K人中的死亡数：</p>
-                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags)}}</span></strong>拉丁裔 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有族裔                     </p>
+                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags,0)}}</span></strong>拉丁裔 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> 所有族裔                     </p>
                   </div>
                 </div>
             
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率比全州高<span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率比全州低<span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">太平洋岛民的患病率与全州平均患病率相同                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
                     <p class="text-xs">每100K人中的病例数：</p>
-                    <p class="text-xs mb-0"><strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags)}}</span></strong>NHPI <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有族裔                     </p>
+                    <p class="text-xs mb-0"><strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags,0)}}</span></strong>NHPI <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> 所有族裔                     </p>
                   </div>
                 </div>
             
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">黑人的死亡率比全州高<span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">黑人的死亡率比全州低<span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">黑人的死亡率与全州平均死亡率相同                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
                     <p class="text-xs">每100K人中的死亡数：</p>
-                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black}}</span></strong>黑人 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide}}</span></strong> 所有族裔                     </p>
+                    <p class="text-xs mb-0"><strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black|formatNumber(tags,0)}}</span></strong>黑人 <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> 所有族裔                     </p>
                   </div>
                 </div>
             
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州高<span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>%</span>                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率比全州低<span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>%</span>                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">收入中位数少于$40K的社区的患病率与全州平均患病率相同                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
                     <p class="text-xs">每100K人中的病例数：</p>
-                    <p class="text-xs mb-0"><strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags)}}</span></strong>收入<$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags)}}</span></strong> 所有收入等级                     </p>
+                    <p class="text-xs mb-0"><strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong>收入<$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> 所有收入等级                     </p>
                   </div>
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
