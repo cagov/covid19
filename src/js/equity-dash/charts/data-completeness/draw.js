@@ -149,9 +149,9 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
         })
         .attr("x", d => {
           if (d.PERCENT_COMPLETE === null) {
-            return x(0) + 309;
+            return x(0) + 72;
           } else {
-            return x(0) + 256;
+            return x(0) + 19;
           }
         })
         .attr("height", y.bandwidth())
@@ -174,7 +174,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
             ).toFixed(1) : "0"}%</tspan> ${translations['percent-change-previous-month']}`;
           }
         })
-        .attr('text-anchor', 'end');
+        .attr('text-anchor', 'start');
     });
 
   svg.append("g").call(yAxis);
