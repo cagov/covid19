@@ -9,6 +9,9 @@ cagov-accordion .card-container {
   display: block;
   overflow: hidden;
   transition: height 0.3s;
+  &[aria-hidden="false"] {
+    border-bottom: 1px solid $darkblue;
+  }
 }
 
 cagov-accordion.prog-enhanced .card-container {
@@ -113,9 +116,6 @@ button.card-header {
   margin-top: 3rem;
   padding-bottom: 0;
   margin-bottom: 0;
-  .card-container {
-    border-bottom:none;
-  }
 }
 // stand alone
 .dark-accordion-bg > .container {
@@ -123,9 +123,6 @@ button.card-header {
   margin-top: 3rem;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
-  .card-container {
-    border-bottom: 1px solid tint($darkblue, 20%);
-  }
 }
 // siblings (in the middle)
 .dark-accordion-sibling > .container {
@@ -133,9 +130,6 @@ button.card-header {
   padding-bottom: 0rem;
   margin-top: 0rem;
   margin-bottom: 0rem;
-  .card-container {
-    border-bottom:none;
-  }
 }
 // last sibling (with many siblings)
 .dark-accordion-sibling + .dark-accordion-bg > .container {
@@ -143,9 +137,6 @@ button.card-header {
   margin-top: 0rem;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
-  .card-container {
-    border-bottom: 1px solid tint($darkblue, 20%);
-  }
 }
 
 
@@ -175,6 +166,9 @@ button.card-header {
 
     //dark accordion content
     .card-container {
+      &[aria-hidden="false"] {
+        border-bottom: 1px solid tint($darkblue, 20%);
+      }
       color: $white;
       h2, h3, h4, h5 {
         color: $white;
