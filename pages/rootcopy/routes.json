@@ -1,8 +1,8 @@
 {
   "routes": [
     {
-      "route": "/surveyguidance/",
-      "serve": "/survey/",
+      "route": "/survey/",
+      "serve": "/surveyguidance/",
       "statusCode": 301
     }
   ],
