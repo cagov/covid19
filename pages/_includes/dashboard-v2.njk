@@ -104,20 +104,19 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
 
 <!-- state dash 2.0 comment in njk -->
-<div class="bg-lightblue py-5">
+<div class="bg-lightblue">
     <div class="container py-2">
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
             <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
                 <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. The number of COVID-related deaths increased by {{_varStatTotalDeathsChange_}} percent from the prior day total of {{_varStatTotalDeathsLast_}}.</p>
                 </p>Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by episode date (the date the event is estimated to have taken place).</p>
             </div>
         </div>
 
-        <div class="row d-flex justify-content-md-center">
+        <div class="row d-flex justify-content-md-center summary-boxes">
             <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
                 <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
                 
                     <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span></div>
@@ -146,7 +145,7 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
                 </div>
             </div>
             <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
                 <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
                 
                     <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span></div>
@@ -175,7 +174,7 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
                 </div>
             </div>
             <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
                 <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
                 
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">total</span></div>
@@ -204,8 +203,8 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
                 </div>
             </div>
             <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
-                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines</div>
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
                 
                     <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">total</span></div>
                     <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">today</span></div>
@@ -234,8 +233,16 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
             </div>
         </div>
 
+        <div class="row pb-4 py-5">
+            <div class="col-lg-10 mx-auto">
+                <p class="small-text">Note: Rates of cases and tests are based on a 7-day average with a 7-day lag. Rates of deaths are based on a 7-day average with a 21-day lag due to delays in reporting. Directional change is compared to the prior 7-day period, with the exception of vaccines administered, which is based on prior day's value. Data is provided by the California Department of Public Health.</p>
+            </div>
+        </div>
+
     </div><!--END container-->
 </div><!--END LIGHT BLUE BG-->
+
+
 
 <div class="bg-darkblue py-5 full-bleed mb-5">
     <div class="container py-2">
@@ -318,7 +325,7 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
 
 
         <div class="row d-flex justify-content-md-center">
-            <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
+            <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health.</p>
         </div>
 
         <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
@@ -343,6 +350,12 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
             </div>
             </div>
         </div>
+
+        <div class="row d-flex justify-content-md-center">
+            <p class="small-text">Note: Testing date is the date the test was performed. Reported date is the date the event was reported to the California Department of Public Health. Positivity rate was previously reported as a 14-day average.</p>
+        </div>
+
+
 
         <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
         <div class="d-flex flex-column flex-md-row justify-content-center my-3">
@@ -438,13 +451,13 @@ data.ICU_SUSPECTED_COVID_PATIENTS           (does not exist)
     </div><!--END col-10-->
 </div><!--END CONTAINER -->
 
-<div class="bg-lightblue py-5">
+<div class="bg-lightblue">
     <div class="container py-2">
     <h2 class="text-center color-orange">Infections by group</h2>
         <div class="col-lg-12 bg-white px-3 py-4">
              <div class="d-flex flex-column flex-md-row justify-content-center my-3">
                 <div class="large-tabs">
-                    <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
+                    <button class="large-tab toggle-active js-toggle-group ethnicity">Race/Ethnicity</button>
                     <button class="large-tab js-toggle-group gender">Gender</button>
                     <button class="large-tab js-toggle-group age">Age</button>
                 </div>
