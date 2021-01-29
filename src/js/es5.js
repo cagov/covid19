@@ -10,7 +10,7 @@ import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
 import './roadmap/index.js';
-import './dashboard/index.js';
+// import './dashboard/index.js';
 import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 
