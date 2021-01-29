@@ -149,22 +149,24 @@
         <div class="col-lg-10 mx-auto">
           <h1>Tracking COVID-19 in California</h1>
           
-            <p class="small-text">Last updated&nbsp;January 29, 2021 at 11:00 AM
-                </p>
+            <p class="small-text">Last updated&nbsp;
+                January 29, 2021 at 11:00 AM</p>
           
         </div>
       </div>
     </div>
   </div>
-  <!-- state dash 1.0 comment in njk -->
+  
+
+<!-- state dash 2.0 comment in njk -->
 <div class="bg-lightblue py-5">
     <div class="container py-2">
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
             <h2 class="text-center color-purple">Update for January 29, 2021</h2>
-                <p>As of January 29, California has 3,205,947 confirmed cases of COVID-19, resulting in 39,578 deaths. The number of COVID-related deaths increased by 1.6 percent from the prior day total of 38,961.</p>
+                <p>As of January 29, California has 3,205,947 confirmed cases of COVID-19, resulting in 38,667 deaths. The number of COVID-related deaths increased by 1.6 percent from the prior day total of 38,070.</p>
                 </p>Updated January 29, 2021, with data from January 28, 2021.</p>
-                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
+                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. All-time series data is by episode date (the date the event is estimated to have taken place).</p>
             </div>
         </div>
 
@@ -178,7 +180,7 @@
                     <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
                     
                      <span class="chart-arrow" arria-hidden="true">
-					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -186,14 +188,14 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     0.6% <span class="text-300">increase from prior day total</span>
+                     53.7 <span class="text-300">new cases per 100K</span>
                      
                      </div>
                 </div>
@@ -202,12 +204,12 @@
                 <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
                 <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
                 
-                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>39,578</strong> <span class="text-300">total</span></div>
-                    <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>617</strong> <span class="text-300">today</span></div>
+                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>38,667</strong> <span class="text-300">total</span></div>
+                    <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>597</strong> <span class="text-300">today</span></div>
                     <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
                     
                     <span class="chart-arrow" arria-hidden="true">
-					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -215,14 +217,14 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     1.6% <span class="text-300">increase from prior day total</span>
+                     0.7 <span class="text-300">new deaths per 100K</span>
                     
                     </div>
                 </div>
@@ -231,12 +233,12 @@
                 <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
                 <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
                 
-                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>41,677,405</strong> <span class="text-300">total</span></div>
-                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>206,771</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>41,563,676</strong> <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>413,542</strong> <span class="text-300">today</span></div>
                     <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
                     
                     <span class="chart-arrow" arria-hidden="true">
-					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -244,14 +246,43 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
 							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 						</svg>
 					</span> 
-                     0.5% <span class="text-300">increase from prior day total</span>
+                     11% <span class="text-300">test positivity</span>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 py-2 text-center mt-3">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines</div>
+                
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>3,078,250</strong> <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>184,757</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     13.2% <span class="text-300">increase</span>
                     
                     </div>
                 </div>
@@ -262,24 +293,25 @@
 </div><!--END LIGHT BLUE BG-->
 
 <div class="bg-darkblue py-5 full-bleed mb-5">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange" id="vaccination">Vaccination data</h2>
-                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We're tracking the progress of vaccinating Californians across the state.</p>
+    <div class="container py-2">
+        <div class="row pb-4">
+            <div class="col-lg-10 mx-auto color-white">
+                <h2 class="text-center color-orange" id="reopening-equitably">Vaccination data</h2>
+                <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We're tracking the progress of vaccinating Californians across the state.</p>
 
-                        <div class="mt-3 text-center">
-                            <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">
-                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-                    </div>
+                <div class="mt-3 text-center">
+                    <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">
+                        <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
+                    </a>
                 </div>
 
-            </div><!--END container-->
+
+            </div>
         </div>
+
+    </div><!--END container-->
+</div>
+
 
 <div class="container py-4">
     <div class="col-lg-10 mx-auto">
@@ -287,12 +319,11 @@
         <div class="row d-flex justify-content-md-center">
             <form class="form-inline" id="county-form">
             <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
-                <label for="location-query" class="sr-only">County</label>
+                <label for="county" class="sr-only">County</label>
                 <div class="awesomplete">
                 <input
                     aria-expanded="false"
                     aria-owns="awesomplete_list_1"
-                    aria-controls="awesomplete_list_1"
                     autocomplete="off"
                     class="form-control form-control-lg"
                     data-list=""
@@ -303,8 +334,9 @@
                     placeholder="Enter a county"
                 />
                 <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+                <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
                 </div>
-                
+                <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
             </div>
             <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
             </form>
@@ -324,7 +356,7 @@
                 </div>
             </div>
         </div>
-        <p>California has 3,205,947 confirmed cases of COVID-19, resulting in 39,578 deaths.</p>
+        <p>California has 3,205,947 confirmed cases of COVID-19, resulting in 38,667 deaths.</p>
  
         <div class="row d-flex justify-content-md-center">
 
@@ -353,7 +385,7 @@
                 </div>
             </div>
         </div>
-        <p>The number of COVID-19 diagnostic test results in California reached a total of 41,677,405, an increase of 206,771 tests from the prior day total. The rate of positive tests over the last 14 days is 8.2 percent.  </p>
+        <p>The number of COVID-19 diagnostic test results in California reached a total of 41,563,676, an increase of 413,542 tests from the prior day total. The rate of positive tests over the last 7 days is 11%.  </p>
 
         <div class="row d-flex justify-content-md-center">
         
@@ -463,7 +495,7 @@
 
 <div class="bg-lightblue py-5">
     <div class="container py-2">
-    <h2 class="text-center color-primary">Infections by group</h2>
+    <h2 class="text-center color-orange">Infections by group</h2>
         <div class="col-lg-12 bg-white px-3 py-4">
              <div class="d-flex flex-column flex-md-row justify-content-center my-3">
                 <div class="large-tabs">
@@ -657,7 +689,7 @@ ga('tracker3.send', 'pageview');
 	
 	
 		<script type="module">
-			class t{constructor(t){let e={label:"Unknown data",value:"Unknown data"};"string"==typeof t?e={label:t,value:t}:Array.isArray(t)?e={label:t[0],value:t[1]}:"object"==typeof t&&("label"in t||"value"in t)&&(e=t),this.label=e.label||e.value,this.value=e.value,"userData"in e&&(this.userData=e.userData)}get length(){return this.label.length}toString(){return`${this.label}`}valueOf(){return this.toString()}}class e{constructor(t,i){e.all=[];const s=this;e.count=(e.count||0)+1,this.count=e.count,this.isOpened=!1,this.input=e.query(t),this.input.setAttribute("autocomplete","off"),this.input.setAttribute("aria-owns",`awesomplete_list_${this.count}`),this.input.setAttribute("role","combobox"),this.options=i||{},this.configure({minChars:2,maxItems:10,autoFirst:!1,data:e.DATA,filter:e.FILTER_CONTAINS,sort:!1!==i.sort&&e.SORT_BYLENGTH,container:e.CONTAINER,item:e.ITEM,replace:e.REPLACE,tabSelect:!1},i),this.index=-1,this.container=this.container(t),this.ul=e.create("ul",{hidden:"hidden",role:"listbox",id:`awesomplete_list_${this.count}`,inside:this.container}),this.status=e.create("span",{className:"visually-hidden",role:"status","aria-live":"assertive","aria-atomic":!0,inside:this.container,textContent:0!==this.minChars?`Type ${this.minChars} or more characters for results.`:"Begin typing for results."}),this.events={input:{input:this.evaluate.bind(this),blur:this.close.bind(this,{reason:"blur"}),keydown(t){const e=t.keyCode;s.opened&&(13===e&&s.selected?(t.preventDefault(),t.stopImmediatePropagation(),s.select()):9===e&&s.selected&&s.tabSelect?s.select():27===e?s.close({reason:"esc"}):38!==e&&40!==e||(t.preventDefault(),s[38===e?"previous":"next"]()))}},form:{submit:this.close.bind(this,{reason:"submit"})},ul:{mousedown(t){t.preventDefault()},click(t){let e=t.target;if(e!==this){for(;e&&!/li/i.test(e.nodeName);)e=e.parentNode;e&&0===t.button&&(t.preventDefault(),s.select(e,t.target))}}}},e.bind(this.input,this.events.input),e.bind(this.input.form,this.events.form),e.bind(this.ul,this.events.ul),this.input.hasAttribute("list")?(this.list=`#${this.input.getAttribute("list")}`,this.input.removeAttribute("list")):this.list=this.input.getAttribute("data-list")||i.list||[],e.all.push(this)}configure(t,e){Object.keys(t).forEach((i=>{const s=t[i],n=this.input.getAttribute(`data-${i.toLowerCase()}`);this[i]="number"==typeof s?parseInt(n,10):!1===s?null!==n:s instanceof Function?null:n,this[i]||0===this[i]||(this[i]=i in e?e[i]:s)}))}set list(t){if(Array.isArray(t))this.dataList=t;else if("string"==typeof t&&t.indexOf(",")>-1)this.dataList=t.split(/\s*,\s*/);else{const i=e.query(t);if(i&&i.children){const t=[],e=e=>{if(!e.disabled){const i=e.textContent.trim(),s=e.value||i,n=e.label||i;""!==s&&t.push({label:n,value:s})}};Array.prototype.slice.apply(i.children).forEach(e),this.dataList=t}}document.activeElement===this.input&&this.evaluate()}get list(){return this.dataList}get selected(){return this.index>-1}get opened(){return this.isOpened}close(t){this.opened&&(this.ul.setAttribute("hidden",""),this.isOpened=!1,this.index=-1,this.status.setAttribute("hidden",""),e.fire(this.input,"awesomplete-close",t||{}))}open(){this.ul.removeAttribute("hidden"),this.isOpened=!0,this.status.removeAttribute("hidden"),this.autoFirst&&-1===this.index&&this.goto(0),e.fire(this.input,"awesomplete-open")}destroy(){if(e.unbind(this.input,this.events.input),e.unbind(this.input.form,this.events.form),!this.options.container){const{parentNode:t}=this.container;t.insertBefore(this.input,this.container),t.removeChild(this.container)}this.input.removeAttribute("autocomplete"),this.input.removeAttribute("aria-autocomplete");const t=e.all.indexOf(this);-1!==t&&e.all.splice(t,1)}next(){const t=this.ul.children.length;let e=0;e=this.index<t-1?this.index+1:t?0:-1,this.goto(e)}previous(){const t=this.ul.children.length,e=this.index-1;this.goto(this.selected&&-1!==e?e:t-1)}goto(t){const i=this.ul.children;if(this.selected&&i[this.index].setAttribute("aria-selected","false"),this.index=t,t>-1&&i.length>0){i[t].setAttribute("aria-selected","true"),this.status.textContent=`${i[t].textContent}, list item ${t+1} of ${i.length}`,this.input.setAttribute("aria-activedescendant",`${this.ul.id}_item_${this.index}`),this.ul.scrollTop=i[t].offsetTop-this.ul.clientHeight+i[t].clientHeight;const s=this.suggestions[this.index];e.fire(this.input,"awesomplete-highlight",{selectedIndex:this.index,selectedText:`${s}`,selectedSuggestion:s})}}select(t,i){let s=t;if(t?this.index=e.siblingIndex(t):s=this.ul.children[this.index],s){const t=this.index,n=this.suggestions[t];e.fire(this.input,"awesomplete-select",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n,origin:i||s})&&(this.replace(n),this.close({reason:"select"}),e.fire(this.input,"awesomplete-selectcomplete",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n}))}}evaluate(){const e=this,{value:i}=this.input;if(i.length>=this.minChars&&this.dataList&&this.dataList.length>0){this.index=-1,this.ul.innerHTML="";const s=s=>new t(e.data(s,i)),n=t=>e.filter(t,i);this.suggestions=this.dataList.map(s).filter(n),!1!==this.sort&&(this.suggestions=this.suggestions.sort(this.sort)),this.suggestions=this.suggestions.slice(0,this.maxItems);const o=(t,s)=>{e.ul.appendChild(e.item(t,i,s))};this.suggestions.forEach(o),0===this.ul.children.length?(this.status.textContent="No results found",this.close({reason:"nomatches"})):(this.open(),this.status.textContent=`${this.ul.children.length} results found`)}else this.close({reason:"nomatches"}),this.status.textContent="No results found"}static FILTER_CONTAINS(t,i){return RegExp(e.regExpEscape(i.trim()),"i").test(t)}static FILTER_STARTSWITH(t,i){return RegExp(`^${e.regExpEscape(i.trim())}`,"i").test(t)}static SORT_BYLENGTH(t,e){return t.length!==e.length?t.length-e.length:t<e?-1:1}static CONTAINER(t){return e.create("div",{className:"awesomplete",around:t})}static ITEM(t,i,s){const n=""===i.trim()?t:`${t}`.replace(RegExp(e.regExpEscape(i.trim()),"gi"),"<mark>$&</mark>");return e.create("li",{innerHTML:n,"aria-selected":"false",id:`awesomplete_list_${this.count}_item_${s}`})}static REPLACE(t){this.input.value=t.value||t.label}static DATA(t){return t}static query(t,e){return"string"==typeof t?(e||document).querySelector(t):t||null}static queryAll(t,e){return Array.prototype.slice.call((e||document).querySelectorAll(t))}static create(t,i){const s=document.createElement(t);return Object.keys(i).forEach((t=>{const n=i[t];if("inside"===t)e.query(n).appendChild(s);else if("around"===t){const t=e.query(n);t.parentNode.insertBefore(s,t),s.appendChild(t),null!=t.getAttribute("autofocus")&&t.focus()}else t in s?s[t]=n:s.setAttribute(t,n)})),s}static bind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.addEventListener(e,s)}))};Object.keys(e).forEach(i)}}static unbind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.removeEventListener(e,s)}))};Object.keys(e).forEach(i)}}static fire(t,e,i){const s=document.createEvent("HTMLEvents"),n=t=>{s[t]=i[t]};return s.initEvent(e,!0,!0),"object"==typeof i&&Object.keys(i).forEach(n),t.dispatchEvent(s)}static regExpEscape(t){return t.replace(/[-\\^$*+?.()|[\]{}]/g,"\\$&")}static siblingIndex(t){let e=0,i=t;for(;i;)i=i.previousElementSibling,i&&(e+=1);return e}}window.fetch("/countystatus.json").then((t=>t.json())).then((function(t){let i=[];t.forEach((t=>{i.push(t.county)}));const o={autoFirst:!0,filter:function(t,i){return e.FILTER_CONTAINS(t,i.match(/[^,]*$/)[0])},item:function(t,i){return e.ITEM(t,i.match(/[^,]*$/)[0])},replace:function(t){let e=this.input.value.match(/^.+,\s*|/)[0]+t;this.input.value=e,n(e)},list:i};new e("#location-query",o);!function(t){document.querySelector("#county-form").addEventListener("submit",function(e){e.preventDefault(),s.classList.remove("d-none"),document.querySelector("#county-query-error").style.display="none";let i=document.querySelector("#location-query").value,o="";t.forEach((t=>{t.toLowerCase()==i.toLowerCase()&&(o=t)})),o?n(o):document.querySelector("#county-query-error").style.display="block"}.bind(this))}(i)}));var i=document.getElementById("location-query"),s=document.getElementById("clearCounty");function n(t){document.querySelector("#county-query-error").style.display="none";let e=window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1],i=window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1],s=window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];!function n(){e&&i&&s?(e.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),i.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),s.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE)):setTimeout(n,500)}(),m(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.remove("d-none")})),document.querySelectorAll(".js-toggle-county.county").forEach((e=>{e.innerHTML=t,e.classList.remove("d-none")}))}async function o(t,e,i,s){let n=document.querySelector(t);var o=s;let a={width:e+"px",height:i+"px"};return await new tableau.Viz(n,o,a)}let a=600,l=900,r=900,c=800,u=660;var h=document.querySelector(".col-lg-10");function d(){p.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("gender-graph").style.display="none",document.getElementById("ethnicity-graph").style.display="none",document.getElementById("age-graph").style.display="none"}h.offsetWidth>920?(r=910,u=560):h.offsetWidth>910&&h.offsetWidth<920?(r=900,c=900,u=560):h.offsetWidth>800&&h.offsetWidth<910?(r=750,c=750,u=660):h.offsetWidth>700&&h.offsetWidth<879?(r=650,u=660,c=700):h.offsetWidth>600&&h.offsetWidth<700?(r=550,u=660,c=600):h.offsetWidth>500&&h.offsetWidth<600?(r=450,u=660,c=450):(r=350,u=660,c=450),window.innerWidth<700?(a=930,l=window.innerWidth-30):window.innerWidth>700&&window.innerWidth<918?(a=930,l=700):window.innerWidth>919&&window.innerWidth<1200&&(a=600,l=800),async function(){if(console.log("Setting up 1.0 charts"),document.getElementById("casesChartState")){window.casesChartStateViz=await o("#casesChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link");o("#testingChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link"),o("#hospitalChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link");window.casesChartCountyViz=await o("#casesChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link"),window.testingChartCounty=await o("#testingChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link"),window.hospitalChartCounty=await o("#hospitalChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link");o("#mapChartContainer",r,u,"https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link"),o("#ethnicityGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link")}}();let p=document.querySelectorAll(".js-toggle-group");function g(){window.countyTogglers.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("cases-state-graph").style.display="none",document.getElementById("cases-county-graph").style.display="none",document.getElementById("testing-state-graph").style.display="none",document.getElementById("testing-county-graph").style.display="none",document.getElementById("hospital-state-graph").style.display="none",document.getElementById("hospital-county-graph").style.display="none"}function y(){g(),document.querySelectorAll(".js-toggle-county.statewide").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-state-graph").style.display="block",document.getElementById("testing-state-graph").style.display="block",document.getElementById("hospital-state-graph").style.display="block"}function m(){g(),document.querySelectorAll(".js-toggle-county.county").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-county-graph").style.display="block",document.getElementById("testing-county-graph").style.display="block",document.getElementById("hospital-county-graph").style.display="block"}function f(){var t=document.getElementById("location-query"),e=document.getElementById("clearCounty");t&&t.value?e.classList.remove("d-none"):e.classList.add("d-none")}p.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),d(),this.classList.contains("gender")&&(document.getElementById("gender-graph").style.display="block",this.classList.add("toggle-active"),genderGroupChart=o("#genderGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("age")&&(document.getElementById("age-graph").style.display="block",this.classList.add("toggle-active"),ageGroupChart=o("#ageGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("ethnicity")&&(document.getElementById("ethnicity-graph").style.display="block"),this.classList.add("toggle-active")}))})),document.getElementById("cases-state-graph")&&(document.getElementById("cases-state-graph").style.display="block",window.countyTogglers=document.querySelectorAll(".js-toggle-county"),window.countyTogglers.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),g(),this.classList.contains("statewide")&&y(),this.classList.contains("county")&&m()}))}))),i&&(i.addEventListener("focus",(function(){f()})),i.addEventListener("input",(function(){f()})),i.addEventListener("blur",(function(){f()}))),s&&(s.addEventListener("blur",(function(t){f()})),s.addEventListener("click",(function(t){t.preventDefault(),document.getElementById("location-query").value="",y(),d(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.add("d-none")}))})));
+			class t{constructor(t){let e={label:"Unknown data",value:"Unknown data"};"string"==typeof t?e={label:t,value:t}:Array.isArray(t)?e={label:t[0],value:t[1]}:"object"==typeof t&&("label"in t||"value"in t)&&(e=t),this.label=e.label||e.value,this.value=e.value,"userData"in e&&(this.userData=e.userData)}get length(){return this.label.length}toString(){return`${this.label}`}valueOf(){return this.toString()}}class e{constructor(t,i){e.all=[];const s=this;e.count=(e.count||0)+1,this.count=e.count,this.isOpened=!1,this.input=e.query(t),this.input.setAttribute("autocomplete","off"),this.input.setAttribute("aria-owns",`awesomplete_list_${this.count}`),this.input.setAttribute("role","combobox"),this.options=i||{},this.configure({minChars:2,maxItems:10,autoFirst:!1,data:e.DATA,filter:e.FILTER_CONTAINS,sort:!1!==i.sort&&e.SORT_BYLENGTH,container:e.CONTAINER,item:e.ITEM,replace:e.REPLACE,tabSelect:!1},i),this.index=-1,this.container=this.container(t),this.ul=e.create("ul",{hidden:"hidden",role:"listbox",id:`awesomplete_list_${this.count}`,inside:this.container}),this.status=e.create("span",{className:"visually-hidden",role:"status","aria-live":"assertive","aria-atomic":!0,inside:this.container,textContent:0!==this.minChars?`Type ${this.minChars} or more characters for results.`:"Begin typing for results."}),this.events={input:{input:this.evaluate.bind(this),blur:this.close.bind(this,{reason:"blur"}),keydown(t){const e=t.keyCode;s.opened&&(13===e&&s.selected?(t.preventDefault(),t.stopImmediatePropagation(),s.select()):9===e&&s.selected&&s.tabSelect?s.select():27===e?s.close({reason:"esc"}):38!==e&&40!==e||(t.preventDefault(),s[38===e?"previous":"next"]()))}},form:{submit:this.close.bind(this,{reason:"submit"})},ul:{mousedown(t){t.preventDefault()},click(t){let e=t.target;if(e!==this){for(;e&&!/li/i.test(e.nodeName);)e=e.parentNode;e&&0===t.button&&(t.preventDefault(),s.select(e,t.target))}}}},e.bind(this.input,this.events.input),e.bind(this.input.form,this.events.form),e.bind(this.ul,this.events.ul),this.input.hasAttribute("list")?(this.list=`#${this.input.getAttribute("list")}`,this.input.removeAttribute("list")):this.list=this.input.getAttribute("data-list")||i.list||[],e.all.push(this)}configure(t,e){Object.keys(t).forEach((i=>{const s=t[i],n=this.input.getAttribute(`data-${i.toLowerCase()}`);this[i]="number"==typeof s?parseInt(n,10):!1===s?null!==n:s instanceof Function?null:n,this[i]||0===this[i]||(this[i]=i in e?e[i]:s)}))}set list(t){if(Array.isArray(t))this.dataList=t;else if("string"==typeof t&&t.indexOf(",")>-1)this.dataList=t.split(/\s*,\s*/);else{const i=e.query(t);if(i&&i.children){const t=[],e=e=>{if(!e.disabled){const i=e.textContent.trim(),s=e.value||i,n=e.label||i;""!==s&&t.push({label:n,value:s})}};Array.prototype.slice.apply(i.children).forEach(e),this.dataList=t}}document.activeElement===this.input&&this.evaluate()}get list(){return this.dataList}get selected(){return this.index>-1}get opened(){return this.isOpened}close(t){this.opened&&(this.ul.setAttribute("hidden",""),this.isOpened=!1,this.index=-1,this.status.setAttribute("hidden",""),e.fire(this.input,"awesomplete-close",t||{}))}open(){this.ul.removeAttribute("hidden"),this.isOpened=!0,this.status.removeAttribute("hidden"),this.autoFirst&&-1===this.index&&this.goto(0),e.fire(this.input,"awesomplete-open")}destroy(){if(e.unbind(this.input,this.events.input),e.unbind(this.input.form,this.events.form),!this.options.container){const{parentNode:t}=this.container;t.insertBefore(this.input,this.container),t.removeChild(this.container)}this.input.removeAttribute("autocomplete"),this.input.removeAttribute("aria-autocomplete");const t=e.all.indexOf(this);-1!==t&&e.all.splice(t,1)}next(){const t=this.ul.children.length;let e=0;e=this.index<t-1?this.index+1:t?0:-1,this.goto(e)}previous(){const t=this.ul.children.length,e=this.index-1;this.goto(this.selected&&-1!==e?e:t-1)}goto(t){const i=this.ul.children;if(this.selected&&i[this.index].setAttribute("aria-selected","false"),this.index=t,t>-1&&i.length>0){i[t].setAttribute("aria-selected","true"),this.status.textContent=`${i[t].textContent}, list item ${t+1} of ${i.length}`,this.input.setAttribute("aria-activedescendant",`${this.ul.id}_item_${this.index}`),this.ul.scrollTop=i[t].offsetTop-this.ul.clientHeight+i[t].clientHeight;const s=this.suggestions[this.index];e.fire(this.input,"awesomplete-highlight",{selectedIndex:this.index,selectedText:`${s}`,selectedSuggestion:s})}}select(t,i){let s=t;if(t?this.index=e.siblingIndex(t):s=this.ul.children[this.index],s){const t=this.index,n=this.suggestions[t];e.fire(this.input,"awesomplete-select",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n,origin:i||s})&&(this.replace(n),this.close({reason:"select"}),e.fire(this.input,"awesomplete-selectcomplete",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n}))}}evaluate(){const e=this,{value:i}=this.input;if(i.length>=this.minChars&&this.dataList&&this.dataList.length>0){this.index=-1,this.ul.innerHTML="";const s=s=>new t(e.data(s,i)),n=t=>e.filter(t,i);this.suggestions=this.dataList.map(s).filter(n),!1!==this.sort&&(this.suggestions=this.suggestions.sort(this.sort)),this.suggestions=this.suggestions.slice(0,this.maxItems);const o=(t,s)=>{e.ul.appendChild(e.item(t,i,s))};this.suggestions.forEach(o),0===this.ul.children.length?(this.status.textContent="No results found",this.close({reason:"nomatches"})):(this.open(),this.status.textContent=`${this.ul.children.length} results found`)}else this.close({reason:"nomatches"}),this.status.textContent="No results found"}static FILTER_CONTAINS(t,i){return RegExp(e.regExpEscape(i.trim()),"i").test(t)}static FILTER_STARTSWITH(t,i){return RegExp(`^${e.regExpEscape(i.trim())}`,"i").test(t)}static SORT_BYLENGTH(t,e){return t.length!==e.length?t.length-e.length:t<e?-1:1}static CONTAINER(t){return e.create("div",{className:"awesomplete",around:t})}static ITEM(t,i,s){const n=""===i.trim()?t:`${t}`.replace(RegExp(e.regExpEscape(i.trim()),"gi"),"<mark>$&</mark>");return e.create("li",{innerHTML:n,"aria-selected":"false",id:`awesomplete_list_${this.count}_item_${s}`})}static REPLACE(t){this.input.value=t.value||t.label}static DATA(t){return t}static query(t,e){return"string"==typeof t?(e||document).querySelector(t):t||null}static queryAll(t,e){return Array.prototype.slice.call((e||document).querySelectorAll(t))}static create(t,i){const s=document.createElement(t);return Object.keys(i).forEach((t=>{const n=i[t];if("inside"===t)e.query(n).appendChild(s);else if("around"===t){const t=e.query(n);t.parentNode.insertBefore(s,t),s.appendChild(t),null!=t.getAttribute("autofocus")&&t.focus()}else t in s?s[t]=n:s.setAttribute(t,n)})),s}static bind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.addEventListener(e,s)}))};Object.keys(e).forEach(i)}}static unbind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.removeEventListener(e,s)}))};Object.keys(e).forEach(i)}}static fire(t,e,i){const s=document.createEvent("HTMLEvents"),n=t=>{s[t]=i[t]};return s.initEvent(e,!0,!0),"object"==typeof i&&Object.keys(i).forEach(n),t.dispatchEvent(s)}static regExpEscape(t){return t.replace(/[-\\^$*+?.()|[\]{}]/g,"\\$&")}static siblingIndex(t){let e=0,i=t;for(;i;)i=i.previousElementSibling,i&&(e+=1);return e}}window.fetch("/countystatus.json").then((t=>t.json())).then((function(t){let i=[];t.forEach((t=>{i.push(t.county)}));const o={autoFirst:!0,filter:function(t,i){return e.FILTER_CONTAINS(t,i.match(/[^,]*$/)[0])},item:function(t,i){return e.ITEM(t,i.match(/[^,]*$/)[0])},replace:function(t){let e=this.input.value.match(/^.+,\s*|/)[0]+t;this.input.value=e,n(e)},list:i};new e("#location-query",o);!function(t){document.querySelector("#county-form").addEventListener("submit",function(e){e.preventDefault(),s.classList.remove("d-none"),document.querySelector("#county-query-error").style.display="none";let i=document.querySelector("#location-query").value,o="";t.forEach((t=>{t.toLowerCase()==i.toLowerCase()&&(o=t)})),o?n(o):document.querySelector("#county-query-error").style.display="block"}.bind(this))}(i)}));var i=document.getElementById("location-query"),s=document.getElementById("clearCounty");function n(t){document.querySelector("#county-query-error").style.display="none";let e=window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1],i=window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1],s=window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];!function n(){e&&i&&s?(e.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),i.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),s.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE)):setTimeout(n,500)}(),f(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.remove("d-none")})),document.querySelectorAll(".js-toggle-county.county").forEach((e=>{e.innerHTML=t,e.classList.remove("d-none")}))}async function o(t,e,i,s){let n=document.querySelector(t);var o=s;let a={width:e+"px",height:i+"px"};return await new tableau.Viz(n,o,a)}let a=600,l=900,r=900,c=800,u=660;const h="https://public.tableau.com/views/COVID-19StateDashboardv2_0";var d=document.querySelector(".col-lg-10");function p(){g.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("gender-graph").style.display="none",document.getElementById("ethnicity-graph").style.display="none",document.getElementById("age-graph").style.display="none"}d.offsetWidth>920?(r=910,u=560):d.offsetWidth>910&&d.offsetWidth<920?(r=900,c=900,u=560):d.offsetWidth>800&&d.offsetWidth<910?(r=750,c=750,u=660):d.offsetWidth>700&&d.offsetWidth<879?(r=650,u=660,c=700):d.offsetWidth>600&&d.offsetWidth<700?(r=550,u=660,c=600):d.offsetWidth>500&&d.offsetWidth<600?(r=450,u=660,c=450):(r=350,u=660,c=450),window.innerWidth<700?(a=930,l=window.innerWidth-30):window.innerWidth>700&&window.innerWidth<918?(a=930,l=700):window.innerWidth>919&&window.innerWidth<1200&&(a=600,l=800),async function(){if(console.log("Setting up 2.0 charts"),document.getElementById("casesChartState")){window.casesChartStateViz=await o("#casesChartState",l,a,h+"/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");o("#testingChartState",l,a,h+"/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),o("#hospitalChartState",l,a,h+"/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");window.casesChartCountyViz=await o("#casesChartCounty",l,a,h+"/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),window.testingChartCounty=await o("#testingChartCounty",l,a,h+"/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),window.hospitalChartCounty=await o("#hospitalChartCounty",l,a,h+"/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");o("#mapChartContainer",r,u,"https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link"),o("#ethnicityGroupChartContainer",c,600,h+"/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link")}}();let g=document.querySelectorAll(".js-toggle-group");function y(){window.countyTogglers.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("cases-state-graph").style.display="none",document.getElementById("cases-county-graph").style.display="none",document.getElementById("testing-state-graph").style.display="none",document.getElementById("testing-county-graph").style.display="none",document.getElementById("hospital-state-graph").style.display="none",document.getElementById("hospital-county-graph").style.display="none"}function m(){y(),document.querySelectorAll(".js-toggle-county.statewide").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-state-graph").style.display="block",document.getElementById("testing-state-graph").style.display="block",document.getElementById("hospital-state-graph").style.display="block"}function f(){y(),document.querySelectorAll(".js-toggle-county.county").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-county-graph").style.display="block",document.getElementById("testing-county-graph").style.display="block",document.getElementById("hospital-county-graph").style.display="block"}function v(){var t=document.getElementById("location-query"),e=document.getElementById("clearCounty");t&&t.value?e.classList.remove("d-none"):e.classList.add("d-none")}g.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),p(),this.classList.contains("gender")&&(document.getElementById("gender-graph").style.display="block",this.classList.add("toggle-active"),o("#genderGroupChartContainer",c,600,h+"/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("age")&&(document.getElementById("age-graph").style.display="block",this.classList.add("toggle-active"),o("#ageGroupChartContainer",c,600,h+"/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link")),this.classList.contains("ethnicity")&&(document.getElementById("ethnicity-graph").style.display="block"),this.classList.add("toggle-active")}))})),document.getElementById("cases-state-graph")&&(document.getElementById("cases-state-graph").style.display="block",window.countyTogglers=document.querySelectorAll(".js-toggle-county"),window.countyTogglers.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),y(),this.classList.contains("statewide")&&m(),this.classList.contains("county")&&f()}))}))),i&&(i.addEventListener("focus",(function(){v()})),i.addEventListener("input",(function(){v()})),i.addEventListener("blur",(function(){v()}))),s&&(s.addEventListener("blur",(function(t){v()})),s.addEventListener("click",(function(t){t.preventDefault(),document.getElementById("location-query").value="",m(),p(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.add("d-none")}))})));
 
 		</script>
 	
