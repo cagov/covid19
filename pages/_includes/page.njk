@@ -45,6 +45,7 @@
               {%- elseif page | engSlug === "state-dashboard" -%}
                 {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "v2-state-dashboard" -%}
+                {# {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }} #}
                 {{ (dailyStatsV2.data.cases.DATE + "T19:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
                 {{ (equityTopBoxes[0].lowincome_date + "T23:00:00Z") | formatDate2(true,tags,1) }}
