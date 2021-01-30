@@ -23,7 +23,6 @@
 
 hero-stats {
 	background-color: $darkblue;
-
 /*HERO */
 .hero {
 	position: relative;
@@ -337,6 +336,12 @@ hero-stats {
 	&-footer {
 		margin-top: 1rem;
 		text-align: center;
+		&-slink {
+			color: $lightblue;
+			&:hover {
+				color: $orange;
+			}
+		}
 		&-link {
 			color: $lightblue;
 			padding: .65rem .75rem .5rem .75rem;
