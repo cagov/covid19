@@ -103,7 +103,7 @@ class CAGOVPageFeedback extends window.HTMLElement {
       "click",
       (event) => {
         this.querySelector('.js-feedback-field-label').innerHTML = this.positiveCommentPrompt;
-        this.querySelector('.js-feedback-survey-link').href = this.positiveSurveyUrl;
+        this.querySelector('.js-feedback-survey-link').href = `${this.positiveSurveyUrl}?page=${window.location.toString()}`;
         this.querySelector("#feedback-form").classList.remove("d-none");
         this.querySelector("#yes-no").classList.add("d-none");
         this.querySelector(".js-feedback-form").style.display = "none";

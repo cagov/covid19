@@ -105,8 +105,8 @@ export default function setupAnalytics() {
     })
   })
 
-  if(document.querySelector("cwds-pagerating")) {
-    document.querySelector("cwds-pagerating").addEventListener("ratedPage", (evt) => {
+  if(document.querySelector("cagov-pagefeedback")) {
+    document.querySelector("cagov-pagefeedback").addEventListener("ratedPage", (evt) => {
       ga('send', 'event', 'rating', 'helpful', evt.detail);
     });
   }
