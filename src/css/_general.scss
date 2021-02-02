@@ -758,6 +758,12 @@ li,
 .color-purple-hover:focus {
   color: $darkblue !important;
 }
+.color-blue {
+  color: $blue !important;
+}
+.color-blue-hover:hover, .color-blue-hover:focus {
+  color: $blue !important;
+}
 .bg-blue {
   color: $blue !important;
 }
