@@ -8,11 +8,12 @@ import { reformatReadableDate } from "../../readable-date.js";
 class CAGOVEquityVaccinesAge extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGOVEquityVaccinesAge");
-    this.translationsObj = this.getTranslations(this);
+    this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.chartOptions = {
       // Data
+      subgroups: ["NOT_MISSING", "MISSING"],
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
       state: 'California',
       // Style
@@ -73,11 +74,14 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
     };
 
+
     getScreenResizeCharts(this);
 
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
 
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
+    this.dimensions = this.chartBreakpointValues;
+
 
     const handleChartResize = () => {
         getScreenResizeCharts(this);
@@ -103,8 +107,10 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
 
     this.color = d3
       .scaleOrdinal()
-      .domain(this.chartOptions.subgroups)
+      .domain(["MIN","MAX"])
       .range(this.chartOptions.chartColors);
+
+
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -112,8 +118,10 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.state = this.chartOptions.state;
     this.selectedMetric = this.chartOptions.selectedMetric;
 
+
+
     this.retrieveData(this.dataUrl);
-    this.listenForLocations();
+    // this.listenForLocations();
     this.classList.remove("d-none"); // this works
     if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
       this.querySelector('.d-none').classList.remove("d-none");
@@ -122,10 +130,96 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
+  drawBars(data) {
+    let component = this;
+    let svg = this.svg;
+    let x = this.x;
+    let y = this.y;
+    svg.selectAll("g").remove();
+    svg.selectAll("rect").remove();
+    svg.selectAll("text").remove();
+    svg.selectAll("path").remove();
+
+    let bar = svg
+    .append("g")
+    .selectAll("g")
+    // Enter in the stack data = loop key per key = group per group
+    .data(stackedData)
+    .enter()
+    .append("g")
+    .attr("fill", (d) => color(d.key))
+    .selectAll("rect")
+
+    // enter a second time = loop subgroup per subgroup to add all rectangles
+    .data((d) => d)
+    .enter();
+    
+
+  }
+
+  render() {
+    // NOTE subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
+
+    // Exclude Other & Unknown categories from displaying for this chart.
+    let data = this.alldata;
+
+    // Filter and sort here...
+  
+    // Get list of groups (?)
+    let groups = data.map((item) => item.CATEGORY);
+
+    console.log("Groups",groups);
+    console.log("Data",data);
+  
+    // Y position of bars.
+    this.y = d3
+    .scaleBand()
+    .domain(groups)
+    .range([
+        this.dimensions.margin.top,
+        this.dimensions.height - this.dimensions.margin.bottom,
+    ])
+    .padding([0.6]);
+  
+      // Position for labels.
+      this.yAxis = (g) =>
+        g
+          .attr("class", "bar-label")
+          .attr("transform", "translate(5," + -32 + ")")
+          .call(d3.axisLeft(this.y).tickSize(0))
+          .call((g) => g.selectAll(".domain").remove());
+  
+      // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
+      this.x = d3
+        .scaleLinear()
+        // .domain([0, max_xdomain])
+        .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
+  
+      // ?
+      this.xAxis = (g) =>
+        g
+          .attr("transform", "translate(0," + this.dimensions.width + ")")
+          .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
+          .remove();
+      // this.drawBars(data);
+    }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          this.alldata = alldata;
+          this.render();
+        }.bind(this)
+      );
+  }
+
 
 }
 
 window.customElements.define(
-  "cagov-chart-ev-age",
+  "cagov-chart-ve-age",
   CAGOVEquityVaccinesAge
 );
