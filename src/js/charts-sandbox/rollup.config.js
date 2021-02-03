@@ -5,18 +5,20 @@ import { terser } from 'rollup-plugin-terser';
 
 const defaultConfig = {
   equityChartsDataLoc: 'https://files.covid19.ca.gov/data/reviewed/',
+  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/'
 }
 const stagingConfig =  {
   equityChartsDataLoc: 'https://files.covid19.ca.gov/data/to-review/',
+  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/'
 }
 
-const devOutputPath = 'docs/js/equitydash.js';
-const prodOutputPath = 'pages/_buildoutput/equitydash.js';
+const devOutputPath = 'docs/js/chartssandbox.js';
+const prodOutputPath = 'pages/_buildoutput/chartssandbox.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
 export default {
-  input: 'src/js/equity-dash/index.js',
+  input: 'src/js/charts-sandbox/index.js',
   output: {
     intro: 'const config = '+JSON.stringify(jsConfig),
     file: outputPath,
