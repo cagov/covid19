@@ -22,7 +22,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*50,
+        height: 60+bars*60,
         width: 555,
         margin: {
           top: 60,
@@ -35,7 +35,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*50,
+        height: 60+bars*60,
         width: 555,
         margin: {
           top: 60,

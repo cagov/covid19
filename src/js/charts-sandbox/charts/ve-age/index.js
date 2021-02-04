@@ -23,7 +23,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*50,
+        height: 60+bars*60,
         width: 555,
         margin: {
           top: 60,
@@ -36,7 +36,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*50,
+        height: 60+bars*60,
         width: 555,
         margin: {
           top: 60,
@@ -49,7 +49,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+bars*56,
         width: 440,
         margin: {
           top: 20,
