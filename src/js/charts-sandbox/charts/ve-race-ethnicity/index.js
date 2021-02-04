@@ -5,17 +5,19 @@ import rtlOverride from "./../../rtl-override.js";
 import { reformatReadableDate } from "../../readable-date.js";
 import renderChart from "../../simple-chart.js";
 
-class CAGOVEquityVaccinesAge extends window.HTMLElement {
+class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading x CAGOVEquityVaccinesAge");
+    console.log("Loading x CAGOVEquityVaccinesRaceEthnicity");
     this.translationsObj = getTranslations(this);
+    console.log("Loading CAGOVEquityVaccinesAge a");
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 5;
+    console.log("Loading CAGOVEquityVaccinesAge b");
+    let bars = 8;
     this.chartOptions = {
       // Data
       subgroups: ["NOT_MISSING", "MISSING"],
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_race_ethnicity_california.json", // Overwritten by county.
       state: 'California',
       // Style
       backgroundFill: '#F2F5FC',
@@ -75,6 +77,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
     };
 
+    console.log("AA");
     this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
                   {style:'decimal', 
                    minimumFractionDigits:0,
@@ -120,6 +123,9 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.state = this.chartOptions.state;
     this.selectedMetric = this.chartOptions.selectedMetric;
 
+    console.log("BB");
+
+
     this.retrieveData(this.dataUrl);
     // this.listenForLocations();
     this.classList.remove("d-none"); // this works
@@ -131,7 +137,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
   }
 
   getLegendText() {
-    return "Number of people who have received vaccinations"
+    return "Number of people in this age range who have received vaccinations"
   }
 
   ariaLabel(d) {
@@ -148,11 +154,13 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
 
 
   retrieveData(url) {
+    console.log("Retrieving data",url);
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
+          console.log("Got data",url);
           this.alldata = alldata;
           renderChart.call(this);
         }.bind(this)
@@ -163,6 +171,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-ve-age",
-  CAGOVEquityVaccinesAge
+  "cagov-chart-ve-race-ethnicity",
+  CAGOVEquityVaccinesRaceEthnicity
 );
