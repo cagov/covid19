@@ -1,23 +1,30 @@
----
-layout: "page.njk"
-title: "People want to know"
-meta: "Questions and links on homepage text _url What&#8217;s open in my county? safer-economy/ Where can I get a test? testing-and-treatment/ What are the symptoms and risks? symptoms-and-risks/ text _url How can I get vaccinated? vaccines/ Can I get financial help? get-financial-help/ What&#8217;s the plan to keep schools safe? schools/"
-author: "State of California"
-publishdate: "2021-02-04T00:08:13Z"
-tags: ["staging-only"]
-addtositemap: true
----
-
-<p>Questions and links on homepage</p>
-
-
-
-<figure class="wp-block-table"><table><thead><tr><th>text</th><th>_url</th></tr></thead><tbody><tr><td>What&#8217;s open in my county?</td><td>safer-economy/</td></tr><tr><td>Where can I get a test?</td><td>testing-and-treatment/</td></tr><tr><td>What are the symptoms and risks?</td><td>symptoms-and-risks/</td></tr></tbody></table></figure>
-
-
-
-<figure class="wp-block-table"><table><thead><tr><th>text</th><th>_url</th></tr></thead><tbody><tr><td>How can I get vaccinated?</td><td>vaccines/</td></tr><tr><td>Can I get financial help?</td><td>get-financial-help/</td></tr><tr><td>What&#8217;s the plan to keep schools safe?</td><td>schools/</td></tr></tbody></table></figure>
-
-
-
-<p></p>
+{
+  "Table1": [
+    {
+      "text": "What’s open in my county?",
+      "_url": "safer-economy/"
+    },
+    {
+      "text": "Where can I get a test?",
+      "_url": "testing-and-treatment/"
+    },
+    {
+      "text": "What are the symptoms and risks?",
+      "_url": "symptoms-and-risks/"
+    }
+  ],
+  "Table2": [
+    {
+      "text": "How can I get vaccinated?",
+      "_url": "vaccines/"
+    },
+    {
+      "text": "Can I get financial help?",
+      "_url": "get-financial-help/"
+    },
+    {
+      "text": "What’s the plan to keep schools safe?",
+      "_url": "schools/"
+    }
+  ]
+}
