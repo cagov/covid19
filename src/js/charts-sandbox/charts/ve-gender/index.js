@@ -5,17 +5,16 @@ import rtlOverride from "./../../rtl-override.js";
 import { reformatReadableDate } from "../../readable-date.js";
 import renderChart from "../../simple-chart.js";
 
-class CAGOVEquityVaccinesAge extends window.HTMLElement {
+class CAGOVEquityVaccinesGender extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading x CAGOVEquityVaccinesAge");
+    console.log("Loading x CAGOVEquityVaccinesGender");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 5;
+    let bars = 3;
     this.chartOptions = {
       // Data
-      subgroups: ["NOT_MISSING", "MISSING"],
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_gender_california.json", // Overwritten by county.
       state: 'California',
       // Style
       backgroundFill: '#F2F5FC',
@@ -163,6 +162,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-ve-age",
-  CAGOVEquityVaccinesAge
+  "cagov-chart-ve-gender",
+  CAGOVEquityVaccinesGender
 );
