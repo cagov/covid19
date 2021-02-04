@@ -6,6 +6,8 @@ import './survey-vaccine/index.js';
 import './feature-detect/webp.js';
 import './arrow/index.js';
 import './arrow/arrow-icon.js';
+import './arrow/plus-icon.js';
+import './arrow/minus-icon.js';
 import './menu/index.js';
 import './search/index.js';
 import './dark-accordion/extras.js';

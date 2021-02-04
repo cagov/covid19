@@ -424,7 +424,7 @@ module.exports = function(eleventyConfig) {
                 <button class="card-header accordion-alpha" type="button" aria-expanded="false">
                   <div class="accordion-title">
             ${headerHTML}
-                  </div><div class="plus-munus"></div>
+                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
                 </button>
                 <div class="card-container" aria-hidden="true">
                   <div class="card-body">
@@ -542,7 +542,7 @@ module.exports = function(eleventyConfig) {
                 <button class="card-header accordion-alpha" type="button" aria-expanded="false">
                   <div class="accordion-title">
             ${headerdarkHTML}
-                  </div><div class="plus-munus"></div>
+                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
                 </button>
                 <div class="card-container" aria-hidden="true">
                   <div class="card-body">
