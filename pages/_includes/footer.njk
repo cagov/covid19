@@ -146,7 +146,10 @@ ga('tracker3.send', 'pageview');
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('equitydash', env.dev) }}
 {% endpagesection -%}
-
+{%- pagesection page, "charts-sandbox" %}
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
+	{{ macros.includeJavascriptByEnv('chartssandbox', env.dev) }}
+{% endpagesection -%}
 
 <script nomodule src="https://d3js.org/d3.v5.min.js"></script><!-- lot of transpilation issues, using older d3 for ie -->
 <script nomodule src="/js/es5.js"></script>

@@ -321,7 +321,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // Remap data object
     data = sortableData.concat(nullSortData); 
     
-
     this.appliedSuppressionStatus = this.checkAppliedDataSuppression(data);
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
@@ -331,6 +330,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     // Keys of data to use in chart.
     let stackedData = d3.stack().keys(this.subgroups)(data);
+    console.log("stacked data",stackedData);
 
     // Y position of bars.
     this.y = d3

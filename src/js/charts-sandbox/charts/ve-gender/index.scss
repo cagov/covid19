@@ -1,0 +1,23 @@
+cagov-chart-ve-gender {
+    .bar-label .tick text {
+      text-transform: capitalize;
+    }
+    // .svg-holder svg {
+    //     width: 613px;
+    //     height: 300px;
+    //   }
+    .bar-label {
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+    .bar-cat {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .legend-caption {
+      font-weight: normal;
+      font-size: 0.75rem;
+    }
+    
+}
+  
