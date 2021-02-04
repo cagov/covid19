@@ -106,10 +106,17 @@ var divElement = document.querySelector('.col-lg-10');
 if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; chartWidth3 = 900; countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) { chartWidth2 = 750; chartWidth3 = 750; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;  chartWidth3 = 700;} 
-  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; chartWidth3 = 600;} 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;  chartWidth3 = 570;} 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; chartWidth3 = 470;} 
   else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; chartWidth3 = 450;} 
   else { chartWidth2 = 350; countyMapChartHeight = 660; chartWidth3 = 450;}
+
+// jbum overriding chartWidth3
+chartWidth3 = Math.min(Math.max(450, divElement.offsetWidth-32), 900);
+let chartHeight3 = Math.floor(3*chartWidth3/4);
+if (window.innerWidth <= 760) {
+  chartHeight3 = Math.floor(chartWidth3*3/2);  
+}
 
 /* phone */
 if(window.innerWidth < 700) {
@@ -163,7 +170,8 @@ async function setupCharts() {
     // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
 
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 
+    console.log("Chart width 3",chartWidth3);
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
                                             tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
                               // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
