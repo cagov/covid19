@@ -14,7 +14,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     let bars = 5;
     this.chartOptions = {
       // Data
-      subgroups: ["NOT_MISSING", "MISSING"],
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
       state: 'California',
       // Style

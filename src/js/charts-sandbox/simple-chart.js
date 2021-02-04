@@ -30,20 +30,16 @@ function writeBarCats(svg, data, x, y) {
     .attr("class", "bar-cat-group")
     .selectAll(".bar-cat")
     .data(data)
-    .join(
-      enter => {
-        enter
-          .append("text")
-          .attr("class", "bar-cat")
-          .attr("y", (d, i) => y(i))
-          .attr("x", d => x(0))
-          // .attr("width", x.bandwidth() / 4)
-          .html(d => {
-            return `<tspan dx="0em" dy="-0.5em">${d.CATEGORY}</tspan>`
-          })
-          .attr('text-anchor','start')
-      }
-    )
+    .enter()
+        .append("text")
+        .attr("class", "bar-cat")
+        .attr("y", (d, i) => y(i))
+        .attr("x", d => x(0))
+        // .attr("width", x.bandwidth() / 4)
+        .html(d => {
+        return `<tspan dx="0em" dy="-0.5em">${d.CATEGORY}</tspan>`
+        })
+        .attr('text-anchor','start')
 }
 
 function writeBarValues(svg, data, x, y) {
@@ -77,7 +73,7 @@ function writeBars(svg, data, x, y) {
       .selectAll("rect")
       .data(data)
       .enter()
-      .append("rect")
+        .append("rect")
         .attr("y", (d, i) => y(i))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
@@ -88,7 +84,7 @@ function writeBars(svg, data, x, y) {
       .selectAll("rect")
       .data(data)
       .enter()
-      .append("rect")
+        .append("rect")
         .attr("y", (d, i) => y(i))
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
@@ -111,13 +107,13 @@ function writeBars(svg, data, x, y) {
 export default function renderChart() {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
-
+    let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys()
     // Filter and sort here...
-  
+    // console.log("Categories",categories);
     // Y position of bars.
     this.y = d3
     .scaleBand()
-    .domain(d3.range(data.length))
+    .domain(categories)
     .range([
         this.dimensions.margin.top,
         this.dimensions.height - (this.dimensions.margin.bottom),
