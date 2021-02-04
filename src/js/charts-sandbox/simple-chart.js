@@ -23,9 +23,9 @@ function writeLegend(svg, data, x, y) {
       .attr("x", legendW*2)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
-  }
+}
 
-  function writeBarCats(svg, data, x, y) {
+function writeBarCats(svg, data, x, y) {
     svg.append("g")
     .attr("class", "bar-cat-group")
     .selectAll(".bar-cat")
@@ -34,7 +34,7 @@ function writeLegend(svg, data, x, y) {
       enter => {
         enter
           .append("text")
-          .attr("class", "bar-label")
+          .attr("class", "bar-cat")
           .attr("y", (d, i) => y(i))
           .attr("x", d => x(0))
           // .attr("width", x.bandwidth() / 4)
@@ -44,9 +44,9 @@ function writeLegend(svg, data, x, y) {
           .attr('text-anchor','start')
       }
     )
-  }
+}
 
-  function writeBarValues(svg, data, x, y) {
+function writeBarValues(svg, data, x, y) {
     let max_x_domain = x.domain()[1];
     svg.append("g")
     .attr("class", "bar-label-group")
@@ -67,9 +67,9 @@ function writeLegend(svg, data, x, y) {
           .attr('text-anchor','start')
       }
     )
-  }
+}
 
-  function writeBars(svg, data, x, y) {
+function writeBars(svg, data, x, y) {
     let max_x_domain = x.domain()[1];
     svg.append("g")
       .attr("fill", "#f2f5fc")
@@ -106,24 +106,14 @@ function writeLegend(svg, data, x, y) {
           //   tooltip.style.visibility = "hidden";
           // }
         });
-  }
-
-  function rerenderChart() {
 }
 
 export default function renderChart() {
-    console.log("Calling render");
-
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
 
     // Filter and sort here...
   
-    // Get list of groups (?)
-    console.log("Data",data);
-
-    console.log("Dimensions",this.dimensions);
-
     // Y position of bars.
     this.y = d3
     .scaleBand()
@@ -164,8 +154,5 @@ export default function renderChart() {
 
         // Write remaining stuff...
     this.classList.remove('d-none')
-
-    console.log("Chart Height", this.dimensions.height - (this.dimensions.margin.bottom+this.dimensions.margin.top));
-    console.log("Y Domain", data.length);
   }
 
