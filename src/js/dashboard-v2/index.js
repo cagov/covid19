@@ -114,7 +114,7 @@ if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 5
 // jbum overriding chartWidth3
 chartWidth3 = Math.min(Math.max(450, divElement.offsetWidth-32), 900);
 let chartHeight3 = Math.floor(3*chartWidth3/4);
-if (window.innerWidth <= 760) {
+if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
   chartHeight3 = Math.floor(chartWidth3*3/2);  
 }
 
@@ -171,6 +171,8 @@ async function setupCharts() {
 
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     console.log("Chart width 3",chartWidth3);
+    console.log("Chart height 3",chartHeight3);
+    console.log("Window width",window.innerWidth);
     let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
                                             tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
                               // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
