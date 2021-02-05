@@ -1,25 +1,17 @@
 {%-set data = tableauCovidMetrics[0] -%}
-{%-set dataYesterday = tableauCovidMetrics[1] -%}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data.TOTALCONFIRMED | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTotalCasesTodayPct_ = (100*data.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
-{%-set _varCasesTrend_ = 100*(data.TOTALCONFIRMED_DAILYPCTCHG - dataYesterday.TOTALCONFIRMED_DAILYPCTCHG) -%}
-
 {%-set _varStatTotalDeaths_ = data.NUMBERDIED | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data.NUMBERDIED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsLast_ = (data.NUMBERDIED - data.NUMBERDIED_DAILY) | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsChange_ = (100*data.NUMBERDIED_DAILYPCTCHG) | formatNumber(tags,1)-%}
-{%-set _varDeathsTrend_ = 100*(data.NUMBERDIED_DAILYPCTCHG - dataYesterday.NUMBERDIED_DAILYPCTCHG) -%}
-
 {%-set _varStatTested_ = data.TESTED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data.TESTED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTestedDailyPct_ = (100*data.TESTED_DAILYPCTCHG) | formatNumber(tags,1)-%}
-{%-set _varTestedTrend_ = 100*(data.TESTED_DAILYPCTCHG - dataYesterday.TESTED_DAILYPCTCHG) -%}
-
-
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 {%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
 {%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
@@ -33,13 +25,6 @@
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrendClassU_        = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_       = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varTestedTrendClassU_       = '' if _varTestedTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_        = '' if _varCasesTrend_  < 0 else "d-none" %}
-{%-set _varDeathsTrendClassD_       = '' if _varDeathsTrend_ < 0 else "d-none" %}
-{%-set _varTestedTrendClassD_       = '' if _varTestedTrend_ < 0 else "d-none" %}
 
 
 <!-- state dash 1.0 comment in njk -->
@@ -63,7 +48,7 @@
                     <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
                     <span class="chart-arrow" arria-hidden="true">
-					    <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -71,7 +56,7 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="{{ _varCasesTrendClassD_ }} arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
@@ -89,7 +74,7 @@
                     <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
                     <span class="chart-arrow" arria-hidden="true">
-					    <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -97,7 +82,7 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="{{ _varDeathsTrendClassD_ }} arrow-down3" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none arrow-down3" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
@@ -115,7 +100,7 @@
                     <div class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
                     <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
                     <span class="chart-arrow" arria-hidden="true">
-					    <svg class="{{ _varTestedTrendClassU_ }}" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+					<svg version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -123,7 +108,7 @@
 						</svg>
 
 						<!--negative arrow-->
-						<svg class="{{ _varTestedTrendClassD_ }} arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
 						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
