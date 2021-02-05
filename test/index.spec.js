@@ -37,6 +37,7 @@ beforeAll(async () => {
     args: [`--window-size=${width},${height}`]
   });
   page = await browser.newPage();
+  page.setDefaultNavigationTimeout(timeout);   // change timeout
   await page.setViewport({ width, height });
 });
 
