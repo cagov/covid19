@@ -4,6 +4,8 @@
  * @desc Basic smoke tests for alpha site
  */
 const puppeteer = require('puppeteer');
+const queryString = require('query-string');
+const waitForThisEvent = require('./tools/wait-for-events.js')
 
 const express = require('express');
 const app = express();
@@ -26,6 +28,7 @@ let browser;
 const hostname = `http://localhost:${port}`;
 const width = 1200;
 const height = 800;
+let GARequests = [];
 
 beforeAll(async () => {
   app.use('/', express.static('docs', {}));
@@ -39,15 +42,66 @@ beforeAll(async () => {
   page = await browser.newPage();
   page.setDefaultNavigationTimeout(timeout);   // change timeout
   await page.setViewport({ width, height });
+
+  await page.setRequestInterception(true);
+  page.on('request', req => {
+    const requestURL = req.url();
+    if (requestURL.indexOf("google-analytics.com/collect") > -1) { // want to let the initial /analytics.js request through but get all the subsequent event reqeusts
+      if(req._method === 'POST') {
+        const parsedData = queryString.parse(req._postData);
+        GARequests.push(parsedData);
+      }
+      req.abort();
+    } else {
+      req.continue()
+    }
+  });
 });
 
 describe('homepage', () => {
-  test('page has some links on it', async () => {
-    await page.goto(hostname);
-    await page.waitForSelector('.hero-headline');
+  test('feedback events are firing', async () => {
+    await page.goto(hostname, {
+      waitUntil: ['domcontentloaded', 'networkidle0']
+    });
 
-    const links = await page.$$eval('a', anchors => anchors);
-    expect(links.length).toBeGreaterThan(4);
+    // wait for the feedback buttons to be rendered, scroll down and click them
+    const feedbackButtons = await page.$$eval('cagov-pagefeedback .js-feedback-yes', feedbuttons => feedbuttons);
+    await page.evaluate(() => {
+      document.querySelector('.js-feedback-yes').scrollIntoView(false); // scroll pegged at bottom so header row doesn't obscure it
+    });
+    await page.evaluate(() => {
+      document.querySelector('.js-feedback-yes').click();
+    });
+
+    // make sure the GA event action is sent
+    let ratingResult = await waitForThisEvent(GARequests, 'ea', '^helpful', 1000)
+    expect(ratingResult).toStrictEqual('PASS');
+  }, timeout);
+});
+
+describe('homepage', () => {
+  test('menu events are firing', async () => {
+    await page.goto(hostname, {
+      waitUntil: ['domcontentloaded', 'networkidle0']
+    });
+
+    // wait for the feedback buttons to be rendered, scroll down and click them
+    const menuButton = await page.$$eval('cagov-navoverlay .hamburger', menubutton => menubutton);
+    await page.evaluate(() => {
+      document.querySelector('.hamburger').scrollIntoView();
+    });
+    await page.evaluate(() => {
+      document.querySelector('.open-menu').click();
+    });
+    await page.evaluate(() => {
+      document.querySelector('.js-event-hm-menu').scrollIntoView();
+    });
+    await page.evaluate(() => {
+      document.querySelector('.js-event-hm-menu').click();
+    });    
+    let homeClickResult = await waitForThisEvent(GARequests, 'ea', '^homepage-menu', 1000)
+    expect(homeClickResult).toStrictEqual('PASS');    
+    
   }, timeout);
 });
 
