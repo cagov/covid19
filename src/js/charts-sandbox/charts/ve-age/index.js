@@ -15,10 +15,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
-      state: 'California',
-      // Style
-      backgroundFill: '#F2F5FC',
-      chartColors: ["#92C5DE", "#FFCF44"],
       // Breakpoints
       desktop: {
         fontSize: 14,
@@ -30,8 +26,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
           bottom: 0,
           left: 0,
         },
-        // heightMultiplier: 100,
-        // labelOffsets: [-52, -52, -57],
       },
       tablet: {
         fontSize: 14,
@@ -43,8 +37,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
           bottom: 0,
           left: 0,
         },
-        // heightMultiplier: 100,
-        // labelOffsets: [-52, -52, -57],
       },
       mobile: {
         fontSize: 12,
@@ -56,8 +48,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
           bottom: 20,
           left: 0,
         },
-        // heightMultiplier: 100,
-        // labelOffsets: [-52, -52, -57],
       },
       retina: {
         fontSize: 12,
@@ -69,8 +59,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
           bottom: 20,
           left: 0,
         },
-        // heightMultiplier: 100,
-        // labelOffsets: [-52, -52, -57],
       },
     };
 
@@ -78,6 +66,11 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
                   {style:'decimal', 
                    minimumFractionDigits:0,
                    maximumFractionDigits:0});
+    this.pctFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
+                  {style:'percent', 
+                   minimumFractionDigits:0,
+                   maximumFractionDigits:1});
+
 
 
     getScreenResizeCharts(this);
@@ -106,18 +99,9 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
         "translate(0,0)"
       );
 
-    this.color = d3
-      .scaleOrdinal()
-      .domain(["MIN","MAX"])
-      .range(this.chartOptions.chartColors);
-
-
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
-    this.county = this.chartOptions.county;
-    this.state = this.chartOptions.state;
-    this.selectedMetric = this.chartOptions.selectedMetric;
 
     this.retrieveData(this.dataUrl);
     // this.listenForLocations();
@@ -130,18 +114,11 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
   }
 
   getLegendText() {
-    return "Number of people who have received vaccinations"
+    return ["% of vaccines administered", "% of state population"]
   }
 
   ariaLabel(d) {
-    // this is currently the same as the tooltip with span tags removed...
-    // placeholderCaseRate cases per 100K people. placeholderRateDiff30 change since previous week
-    // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
     let label = 'ARIA BAR LABEL';
-    // let templateStr = this.translationsObj['ariaBarLabel']
-    // let label = templateStr
-    //               .replace('placeholderCaseRate', this.intFormatter.format(d.CASE_RATE_PER_100K))
-    //               .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
     return label;
   }
 
@@ -157,7 +134,6 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
         }.bind(this)
       );
   }
-
 
 }
 

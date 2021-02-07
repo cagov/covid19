@@ -8,7 +8,7 @@ export default function template(translationsObj) {
 
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <div class="chart-title">Vaccinations by X Race and Ethnicity</div>
+            <div class="chart-title">Vaccinations by Race and Ethnicity</div>
             <div class="svg-holder">
             </div>
           </div>
