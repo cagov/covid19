@@ -1,4 +1,3 @@
-console.log("Purge test #10");
 import './search/index.js'
 import './county-buttons/buttons.js'
 import './search/filters.js'
