@@ -69,7 +69,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
                    minimumFractionDigits:0,
                    maximumFractionDigits:0});
 
-    // Resizing
+      // Resizing
     getScreenResizeCharts(this);
     this.screenDisplayType = window.charts
       ? window.charts.displayType
