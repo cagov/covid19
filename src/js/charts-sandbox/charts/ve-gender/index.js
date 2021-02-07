@@ -104,10 +104,10 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     // this.listenForLocations();
-    this.classList.remove("d-none"); // this works
-    if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
-      this.querySelector('.d-none').classList.remove("d-none");
-    }
+    // this.classList.remove("d-none"); // this works
+    // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
+    //   this.querySelector('.d-none').classList.remove("d-none");
+    // }
 
     rtlOverride(this); // quick fix for arabic
   }

@@ -162,6 +162,6 @@ export default function renderChart() {
     writeLegend.call(this, this.svg, data, this.x, this.y);
 
         // Write remaining stuff...
-    this.classList.remove('d-none')
+    // this.classList.remove('d-none')
   }
 

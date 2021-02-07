@@ -13,11 +13,21 @@ addtositemap: false
 
 
 <!-- charts -->
-<cagov-chart-ve-race-ethnicity>
-</cagov-chart-ve-race-ethnicity>
-<cagov-chart-ve-age>
-</cagov-chart-ve-age>
-<cagov-chart-ve-gender>
-</cagov-chart-ve-gender>
-<cagov-chart-ve-race-ethnicity-age>
-</cagov-chart-ve-race-ethnicity-age>
+<cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
+    </div>
+</cagov-chart-filter-buttons>
+  
+<div class="container">
+    <div class="row">
+        <cagov-chart-ve-race-ethnicity class="chart"></cagov-chart-ve-race-ethnicity>
+        <cagov-chart-ve-age class="chart d-hide"></cagov-chart-ve-age>
+        <cagov-chart-ve-gender class="chart d-hide"></cagov-chart-ve-gender>
+    </div>
+    <div class="row">
+       <cagov-chart-ve-race-ethnicity-age class="chart"></cagov-chart-ve-race-ethnicity-age>
+    </div>
+</div>

@@ -7,7 +7,7 @@ import renderChart from "../../simple-chart.js";
 
 class CAGOVEquityVaccinesAge extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading x CAGOVEquityVaccinesAge");
+    console.log("Loading CAGOVEquityVaccinesAge");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
@@ -104,13 +104,12 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
-    // this.listenForLocations();
-    this.classList.remove("d-none"); // this works
-    if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
-      this.querySelector('.d-none').classList.remove("d-none");
-    }
 
     rtlOverride(this); // quick fix for arabic
+
+  
+
+
   }
 
   getLegendText() {
