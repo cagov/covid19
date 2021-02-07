@@ -2,8 +2,12 @@ cagov-chart-ve-race-ethnicity-age {
     .bar-label .tick text {
       text-transform: capitalize;
     }
-    .bar-label {
-      font-weight: bold;
+    .bar-label-text {
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+    .bar-value-text {
+      font-weight: 400;
       font-size: 0.75rem;
     }
     .bar-cat {

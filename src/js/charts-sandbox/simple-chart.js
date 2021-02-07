@@ -138,11 +138,11 @@ export default function renderChart() {
       .range([this.dimensions.margin.left, this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)]);
 
     // ?
-    this.xAxis = (g) =>
-      g
-        .attr("transform", "translate(0," + this.dimensions.width + ")")
-        .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
-        .remove();
+    // this.xAxis = (g) =>
+    //   g
+    //     .attr("transform", "translate(0," + this.dimensions.width + ")")
+    //     .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
+    //     .remove();
     writeBars.call(this, this.svg, data, this.x, this.y);
     writeBarCats.call(this, this.svg, data, this.x, this.y);
     writeBarValues.call(this, this.svg, data, this.x, this.y);

@@ -27,8 +27,8 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         margin: {
           top: 100,
           right: 80,
-          bottom: 40,
-          left: 60,
+          bottom: 80,
+          left: 80,
         },
         // heightMultiplier: 100,
         // labelOffsets: [-52, -52, -57],
@@ -40,8 +40,8 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         margin: {
           top: 100,
           right: 80,
-          bottom: 40,
-          left: 60,
+          bottom: 80,
+          left: 80,
         },
         // heightMultiplier: 100,
         // labelOffsets: [-52, -52, -57],
@@ -54,7 +54,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 100,
           right: 80,
           bottom: 20,
-          left: 50,
+          left: 80,
         },
         // heightMultiplier: 100,
         // labelOffsets: [-52, -52, -57],
@@ -67,7 +67,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 100,
           right: 80,
           bottom: 20,
-          left: 50,
+          left: 80,
         },
         // heightMultiplier: 100,
         // labelOffsets: [-52, -52, -57],
@@ -173,7 +173,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       .attr('text-anchor','start');
   }
 
-  writeBarCats(svg, data, x, y) {
+  writeGroupCats(svg, data, x, y) {
       svg.append("g")
       .attr("class", "bar-cat-group")
       .selectAll(".bar-cat")
@@ -190,75 +190,83 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           .attr('text-anchor','start')
   }
 
-  writeBarValues(svg, data, x, y) {
-      let max_x_domain = x.domain()[1];
-      svg.append("g")
-      .attr("class", "bar-label-group")
-      .selectAll(".bar-label")
-      .data(data)
-      .join(
-        enter => {
-          enter
-            .append("text")
-            .attr("class", "bar-label")
-            .attr("y", (d, i) => y(i) + (y.bandwidth() / 2))
-            .attr("x", d => x(max_x_domain))
-            // .attr("width", x.bandwidth() / 4)
-            .html(d => {
-              return `<tspan dx="1.5em">${this.intFormatter.format(d.METRIC_VALUE)}</tspan>`
-            })
-            .attr('dominant-baseline','middle')
-            .attr('text-anchor','start')
-        }
-      )
-  }
-
   writeBars(svg, data, subcats, x, y, ySubgroup) {
-      let max_x_domain = x.domain()[1];
-      svg.append("g")
+    let max_x_domain = x.domain()[1];
+    console.log("left margin",this.dimensions.margin.left);
+    console.log("right margin",this.dimensions.margin.right);
+    console.log("width",this.dimensions.width);
+    console.log("Range 0 -> ",d3.max(data, d => d.METRIC_VALUE));
+    console.log("max_x_domain",max_x_domain);
+    console.log("x(0)",x(0));
+    console.log("x(max_x_domain)",x(max_x_domain));
+      let groups = svg.append("g")
         .selectAll("g")
         .data(data)
         .enter()
         .append("g")
-          .attr("transform", function(d, i) { return "translate(0," + y(d[0]) + ")"; })
+          .attr("transform", function(d, i) { return "translate(0, " + y(d[0]) + ")"; })
         .selectAll("g")
-        .data(function(d, i) { return d })
+        .data(d => subcats.map(  (key, i) => { return {key: key, value: d[i+1]}; } )  )
+        // at this point data is an array of key,value pairs
+        // .data(function(d, i) { console.log("d is ",d); return d })
         .enter()
-          .append("g")
+          .append("g");
+
+      groups.append("rect")
             .attr("fill", "#f2f5fc")
             .attr('class','barshere')
-            .selectAll("rect")
-            .data(data)
-            .enter()
-              .append("rect")
-              .attr("y", (d, i) => ySubgroup(subcats[i]))
-              .attr("x", d => x(0))
-              .attr("width", d => x(max_x_domain))
-              .attr("height", ySubgroup.bandwidth())
-          .append("g")
+            .attr("y", (d, i) => ySubgroup(d.key) )
+            .attr("x", d => x(0))
+            .attr("width", x(max_x_domain)-x(0))
+            // .attr("width", function(d) { console.log("D.v",d.value); return x(d.value)}) // max_x_domain
+            .attr("height", ySubgroup.bandwidth());
+          // .append("g")
+          //   .selectAll("rect")
+          //   // .data(data)
+          //   .enter()
+      groups.append("rect")
             .attr("fill", "#92C5DE")
             .attr('class','barshere')
-            .selectAll("rect")
-            .data(data)
-            .enter()
-              .append("rect")
-              .attr("y", (d, i) => ySubgroup(subcats[i]))
-              .attr("x", d => x(0))
-              .attr("width", d => x(d))
-              .attr("height", ySubgroup.bandwidth())
-              .attr("id", (d, i) => "barid-"+i)
-              .attr("tabindex", "0")
-              .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
-              .on("mouseover focus", function(event, d, i) {
-                d3.select(this).style("fill", "#003D9D");
-                // problem the svg is not the width in px in page as the viewbox width
-              })
-              .on("mouseout blur", function(d) {
-                d3.select(this).style("fill", "#92C5DE");
-                // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
-                //   tooltip.style.visibility = "hidden";
-                // }
-              });
+            .attr("y", (d, i) => ySubgroup(d.key))
+            .attr("x", d => x(0))
+            .attr("width", d => x(d.value)-x(0))
+            .attr("height", ySubgroup.bandwidth())
+            .attr("id", (d, i) => "barid-"+i)
+            .attr("tabindex", "0")
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
+            .on("mouseover focus", function(event, d, i) {
+              d3.select(this).style("fill", "#003D9D");
+              // problem the svg is not the width in px in page as the viewbox width
+            })
+            .on("mouseout blur", function(d) {
+              d3.select(this).style("fill", "#92C5DE");
+              // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
+              //   tooltip.style.visibility = "hidden";
+              // }
+            });
+      // bar values
+      groups.append("text")
+            .attr("class", "bar-value-text")
+            .attr("y", (d, i) => ySubgroup(d.key)+ySubgroup.bandwidth()/2)
+            .attr("x", d => x(max_x_domain))
+            // .attr("width", x.bandwidth() / 4)
+            .html(d => {
+              return `<tspan dx="1.5em">${this.intFormatter.format(d.value)}</tspan>`
+            })
+            .attr('dominant-baseline','middle')
+            .attr('text-anchor','start')
+      // bar labels
+      groups.append("text")
+            .attr("class", "bar-label-text")
+            .attr("y", (d, i) => ySubgroup(d.key)+ySubgroup.bandwidth()/2)
+            .attr("x", d => 0)
+            // .attr("width", x.bandwidth() / 4)
+            .html(d => {
+              return `<tspan>${ d.key }</tspan>`
+            })
+            .attr('dominant-baseline','middle')
+            .attr('text-anchor','start')
+
     }
 
   renderChart() {
@@ -278,9 +286,9 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       dlines[dlines.length-1].push(d.METRIC_VALUE);
     });
     // Filter and sort here...
-    console.log("Categories",categories);
-    console.log("Sub Categories",subcategories);
-    console.log("dLines",dlines);
+    // console.log("Categories",categories);
+    // console.log("Sub Categories",subcategories);
+    // console.log("dLines",dlines);
     // Y position of bars.
     this.y = d3
     .scaleBand()
@@ -312,17 +320,16 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
     this.x = d3
       .scaleLinear()
       .domain([0, d3.max(data, d => d.METRIC_VALUE)]).nice()
-      .range([this.dimensions.margin.left, this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)]);
+      .range([this.dimensions.margin.left, this.dimensions.width - this.dimensions.margin.right]);
 
-    // ?
-    this.xAxis = (g) =>
-      g
-        .attr("transform", "translate(0," + this.dimensions.width + ")")
-        .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
-        .remove();
+    // // ?
+    // this.xAxis = (g) =>
+    //   g
+    //     .attr("transform", "translate(0," + this.dimensions.width + ")")
+    //     .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
+    //     .remove();
     this.writeBars(this.svg, dlines, subcategories, this.x, this.y, this.ySubgroup);
-    this.writeBarCats(this.svg, categories, this.x, this.y);
-    // this.writeBarValues(this.svg, dlines, this.x, this.y);
+    this.writeGroupCats(this.svg, categories, this.x, this.y);
     this.writeLegend(this.svg, dlines, this.x, this.y, this.ySubgroup);
 
         // Write remaining stuff...
