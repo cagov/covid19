@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical.">
+    <meta name="description" content="All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Race and ethnicity Age Gender">
     <meta name="author" content="State of California">
      
   <title>Charts Sandbox - Coronavirus COVID-19 Response</title>
@@ -13,7 +13,7 @@
     <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
     <meta content="Charts Sandbox" property="og:title">
-    <meta content="All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical." property="og:description">
+    <meta content="All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Race and ethnicity Age Gender" property="og:description">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://www.google-analytics.com/">
@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Charts Sandbox</h1>
           
-            <p class="small-text">Last updated&nbsp;February 6, 2021 at 11:54 AM</p>
+            <p class="small-text">Last updated&nbsp;February 7, 2021 at 3:45 PM</p>
           
         </div>
       </div>
@@ -163,14 +163,29 @@
 
 
 <!-- charts -->
-<cagov-chart-ve-race-ethnicity>
-</cagov-chart-ve-race-ethnicity>
-<cagov-chart-ve-age>
-</cagov-chart-ve-age>
-<cagov-chart-ve-gender>
-</cagov-chart-ve-gender>
-<cagov-chart-ve-race-ethnicity-age>
-</cagov-chart-ve-race-ethnicity-age>
+<cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
+    </div>
+</cagov-chart-filter-buttons>
+  
+<div class="container">
+    <div class="row">
+        <cagov-chart-ve-race-ethnicity class="chart"></cagov-chart-ve-race-ethnicity>
+        <cagov-chart-ve-age class="chart d-hide"></cagov-chart-ve-age>
+        <cagov-chart-ve-gender class="chart d-hide"></cagov-chart-ve-gender>
+    </div>
+    <div class="row">
+       <cagov-chart-ve-race-ethnicity-age class="chart"></cagov-chart-ve-race-ethnicity-age>
+    </div>
+</div>
+
+
+
+
+<p></p>
 </div>
     </div>
   </div>
