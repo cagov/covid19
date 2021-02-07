@@ -6,7 +6,7 @@ import { reformatReadableDate } from "../../readable-date.js";
 
 class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading x CAGOVEquityVaccinesRaceEthnicityAge");
+    console.log("Loading CAGOVEquityVaccinesRaceEthnicityAge");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
@@ -102,10 +102,10 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl);
     // this.listenForLocations();
-    this.classList.remove("d-none"); // this works
-    if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
-      this.querySelector('.d-none').classList.remove("d-none");
-    }
+    // this.classList.remove("d-none"); // this works
+    // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
+    //   this.querySelector('.d-none').classList.remove("d-none");
+    // }
 
     rtlOverride(this); // quick fix for arabic
   }
@@ -231,7 +231,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       dlines[dlines.length-1].push(d.METRIC_VALUE);
     });
     this.databreakout = categories.map( cat => data.filter(rec => rec.CATEGORY == cat).map(rec => { return {CATEGORY:rec.SUBCAT,METRIC_VALUE:rec.METRIC_VALUE}  }));
-    console.log("cadats",this.databreakout);
+    // console.log("cadats",this.databreakout);
 
 
     categories.forEach((cat,ci) => {
@@ -266,7 +266,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
 
     this.writeLegend();
 
-    this.classList.remove('d-none')
+    // this.classList.remove('d-none')
   }
 
 
