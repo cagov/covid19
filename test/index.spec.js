@@ -5,7 +5,36 @@
  */
 const puppeteer = require('puppeteer');
 const queryString = require('query-string');
-const waitForThisEvent = require('./tools/wait-for-events.js')
+// const waitForThisEvent = require('./tools/wait-for-events.js')
+const pt = require('promise-timeout');
+const requestMatchRegex = require('./tools/analytics.js');
+
+function waitForThisEvent(testKey, testValue, timeout) {
+  return pt.timeout(waitForevents(), timeout)
+  .then(val => {
+    return val;
+  }).catch(err => {
+    if (err instanceof pt.TimeoutError) {
+      console.error('Timeout :-(');
+      return 'failure';
+    }
+  });
+
+  function waitForevents() {
+    return new Promise((resolve, reject) => {
+      function resultReview() {
+        console.log(GARequests.length)
+        result = requestMatchRegex(GARequests, testKey, testValue);
+        if(result === 'PASS') {
+          resolve(result)
+        } else {
+          setTimeout(resultReview, 200)
+        }
+      }
+      resultReview();
+    });
+  }
+}
 
 const express = require('express');
 const app = express();
@@ -77,7 +106,7 @@ describe('homepage', () => {
     });
 
     // make sure the GA event action is sent
-    let ratingResult = await waitForThisEvent(GARequests, 'ea', '^helpful', 5000)
+    let ratingResult = await waitForThisEvent('ea', '^helpful', 5000)
     expect(ratingResult).toStrictEqual('PASS');
   }, timeout);
 });
@@ -100,7 +129,7 @@ describe('homepage', () => {
       document.querySelector('.js-event-hm-menu').click();
     });
 
-    let homeClickResult = await waitForThisEvent(GARequests, 'el', '^homepage-menu', 5000)
+    let homeClickResult = await waitForThisEvent('ea', '^homepage-menu', 5000)
     expect(homeClickResult).toStrictEqual('PASS');    
     
   }, timeout);

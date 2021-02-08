@@ -23,11 +23,12 @@ module.exports = function waitForThisEvent(requestsObject, testKey, testValue, t
   function waitForevents() {
     return new Promise((resolve, reject) => {
       function resultReview() {
+        console.log(GARequests.length)
         result = requestMatchRegex(requestsObject, testKey, testValue);
         if(result === 'PASS') {
           resolve(result)
         } else {
-          setTimeout(() => resultReview, 100)
+          setTimeout(resultReview, 100)
         }
       }
       resultReview();
