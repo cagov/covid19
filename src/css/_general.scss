@@ -826,6 +826,28 @@ li,
   }
 }
 
+.fill-orange {
+  fill:$orange !important;
+}
+.fill-yellow {
+  fill:$yellow !important;
+}
+.fill-blue {
+  fill:$blue !important;
+}
+.fill-purple, .fill-primary {
+  fill:$darkblue !important;
+}
+.fill-lightblue {
+  fill:$lightblue !important;
+}
+.fill-lighterblue {
+  fill:$lighterblue !important;
+}
+.fill-lightestblue {
+  fill:$lightestblue !important;
+}
+
 /* Pagination */
 
 .pagination {
