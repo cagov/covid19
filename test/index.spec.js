@@ -25,7 +25,7 @@ function waitForThisEvent(testKey, testValue, timeout) {
         if(result === 'PASS') {
           resolve(result)
         } else {
-          setTimeout(() => resultReview, 100)
+          setTimeout(resultReview, 100)
         }
       }
       resultReview();
@@ -126,7 +126,7 @@ describe('homepage', () => {
       document.querySelector('.js-event-hm-menu').click();
     });
 
-    let homeClickResult = await waitForThisEvent('el', '^homepage-menu', 5000)
+    let homeClickResult = await waitForThisEvent('ea', '^homepage-menu', 5000)
     expect(homeClickResult).toStrictEqual('PASS');    
     
   }, timeout);
