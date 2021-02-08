@@ -228,7 +228,7 @@ export default function setupAnalytics() {
       // Report clicks on links in the menu.
       document.querySelector('cagov-navoverlay').addEventListener('click', function(event) {
         if(event.target.classList.contains('js-event-hm-menu')) {
-          reportGA('click', 'homepage-menu', event.target.textContent.trim());
+          reportGA('homepage-menu', event.target.textContent.trim(), 'click');
         }
       })
       // Report clicks on Want to Know section.
