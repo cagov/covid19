@@ -55,28 +55,26 @@ function countySelected(county) {
   document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
 
-  function resetCounties() {
+  function resetCounties(nom) {
     try {
-      let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
-      let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
-      let hospitalChartActiveSheet = window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+      let activeSheet = window[nom].getWorkbook().getActiveSheet().getWorksheets()[1];
       
-      if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
-        console.log("Tableau FilterUpdateType County",county);
-        casesChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-        testingChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-        hospitalChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+      if(activeSheet) {
+        console.log("Tableau Filtering",nom,county);
+        activeSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+        // showCounties();
       } else {
-        console.log("Counties not loaded yet - shouldn't happen");
-        setTimeout(resetCounties,500);
+        // console.log("Worksheet not loaded yet - shouldn't happen",nom);
+        setTimeout(resetCounties.bind(this,nom),500);
       }
     } catch(err) {
-      console.log("Charts not loaded yet");    
-      setTimeout(resetCounties,500);
+      // console.log("Worksheet not loaded yet",nom);    
+      setTimeout(resetCounties.bind(this,nom),500);
     }
-  
   }
-  resetCounties();
+  resetCounties("casesChartCountyViz");
+  resetCounties("testingChartCounty");
+  resetCounties("hospitalChartCounty");
   showCounties();
   document.querySelectorAll('.js-toggle-county-container').forEach(c => {
     c.classList.remove('d-none');
@@ -270,6 +268,7 @@ function showStateWides() {
 }
 
 function showCounties() {
+  console.log("showCounties()");
   resetCountyToggles();
   document.querySelectorAll('.js-toggle-county.county').forEach(c => {
     c.classList.add('toggle-active');
