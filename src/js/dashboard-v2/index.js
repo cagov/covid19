@@ -51,20 +51,30 @@ function setupFormSubmitListener(aList) {
 }
 
 function countySelected(county) {
+  console.log("County selected",county);
   document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
-  let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let hospitalChartActiveSheet = window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
 
   function resetCounties() {
-    if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
-      casesChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-      testingChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-      hospitalChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-    } else {
+    try {
+      let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
+      let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+      let hospitalChartActiveSheet = window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
+      
+      if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
+        console.log("Tableau FilterUpdateType County",county);
+        casesChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+        testingChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+        hospitalChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+      } else {
+        console.log("Counties not loaded yet - shouldn't happen");
+        setTimeout(resetCounties,500);
+      }
+    } catch(err) {
+      console.log("Charts not loaded yet");    
       setTimeout(resetCounties,500);
     }
+  
   }
   resetCounties();
   showCounties();
