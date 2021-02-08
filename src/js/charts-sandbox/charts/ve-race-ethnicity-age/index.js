@@ -26,7 +26,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 100,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       tablet: {
@@ -39,7 +39,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 100,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       mobile: {
@@ -52,7 +52,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 80,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       retina: {
@@ -65,7 +65,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 80,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
     };
@@ -161,6 +161,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       .enter()
         .append("g");
 
+    // light-colored background bar
     groups
         .append("rect")
         .attr("fill", "#f2f5fc")
@@ -168,6 +169,8 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain)-x(0))
         .attr("height", y.bandwidth());
+
+    // dark-colored background bar
     groups.append("g")
         .append("rect")
         .attr("fill", "#92C5DE")
@@ -189,6 +192,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           // }
         });
 
+      // value label at end of bar
       groups.append("text")
             .attr("class", "bar-value-text")
             .attr("y", (d, i) => y(d.CATEGORY)+y.bandwidth()/2)
@@ -199,6 +203,8 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
             })
             .attr('dominant-baseline','middle')
             .attr('text-anchor','start')
+
+      // age class label in front of bar
       groups.append("text")
             .attr("class", "bar-label-text")
             .attr("y", (d, i) => y(d.CATEGORY)+y.bandwidth()/2)
@@ -231,8 +237,19 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       dlines[dlines.length-1].push(d.METRIC_VALUE);
     });
     this.databreakout = categories.map( cat => data.filter(rec => rec.CATEGORY == cat).map(rec => { return {CATEGORY:rec.SUBCAT,METRIC_VALUE:rec.METRIC_VALUE}  }));
-    // console.log("cadats",this.databreakout);
 
+
+    let chartList = d3
+      .select('.re-race-ethnicity-age-chart-list')
+      .selectAll('div')
+      .data(categories)
+      .enter()
+        .append('div')
+        .attr('class','col-lg-6 col-md-6 col-sm-12 mx-auto px-0')
+        .html((cat,ci) => `
+        <div class="chart-subtitle">${cat}</div>
+        <div class="svg-holder-${ci}">
+        `);
 
     categories.forEach((cat,ci) => {
       let svg = d3
