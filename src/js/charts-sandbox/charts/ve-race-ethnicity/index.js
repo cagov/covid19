@@ -2,7 +2,6 @@ import template from "./template.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
-import { reformatReadableDate } from "../../readable-date.js";
 import renderChart from "../../simple-chart.js";
 
 class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {

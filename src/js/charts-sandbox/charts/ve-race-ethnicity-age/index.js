@@ -2,7 +2,6 @@ import template from "./template.js";
 import getTranslations from './../../get-strings-list.js';
 import getScreenResizeCharts from './../../get-window-size.js';
 import rtlOverride from "./../../rtl-override.js";
-import { reformatReadableDate } from "../../readable-date.js";
 
 class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
   connectedCallback() {
@@ -26,7 +25,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 100,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       tablet: {
@@ -39,7 +38,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 100,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       mobile: {
@@ -52,7 +51,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 80,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
       retina: {
@@ -65,7 +64,7 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
           top: 20,
           right: 80,
           bottom: 20,
-          left: 80,
+          left: 60,
         },
       },
     };
@@ -101,11 +100,6 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
-    // this.listenForLocations();
-    // this.classList.remove("d-none"); // this works
-    // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
-    //   this.querySelector('.d-none').classList.remove("d-none");
-    // }
 
     rtlOverride(this); // quick fix for arabic
   }
@@ -161,15 +155,21 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
       .enter()
         .append("g");
 
-    groups
+    // light-colored background bar
+    let g = groups.append('g')
+    g
         .append("rect")
+        .attr('class','bg-bar')
         .attr("fill", "#f2f5fc")
         .attr("y", d => y(d.CATEGORY))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain)-x(0))
         .attr("height", y.bandwidth());
-    groups.append("g")
+    
+    // dark-colored background bar
+    g
         .append("rect")
+        .attr('class','fg-bar')
         .attr("fill", "#92C5DE")
         .attr("y", d => y(d.CATEGORY))
         .attr("x", d => x(0))
@@ -177,18 +177,30 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         .attr("height", y.bandwidth())
         .attr("id", (d, i) => "barid-"+i)
         .attr("tabindex", "0")
-        .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
+        .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
+
+      // transparent bar for selections
+      g
+        .append("rect")
+        .attr('class','select-bar')
+        .attr("fill", "#00FF00")
+        .attr("fill-opacity", 0.0)
+        .attr("y", d => y(d.CATEGORY))
+        .attr("x", d => x(0))
+        .attr("width", d => x(max_x_domain)-x(0))
+        .attr("height", y.bandwidth())
         .on("mouseover focus", function(event, d, i) {
-          d3.select(this).style("fill", "#003D9D");
+          d3.select(this.parentNode).select('.fg-bar').style("fill", "#003D9D");
           // problem the svg is not the width in px in page as the viewbox width
         })
         .on("mouseout blur", function(d) {
-          d3.select(this).style("fill", "#92C5DE");
+          d3.select(this.parentNode).select('.fg-bar').style("fill", "#92C5DE");
           // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
           //   tooltip.style.visibility = "hidden";
           // }
         });
 
+      // value label at end of bar
       groups.append("text")
             .attr("class", "bar-value-text")
             .attr("y", (d, i) => y(d.CATEGORY)+y.bandwidth()/2)
@@ -199,6 +211,8 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
             })
             .attr('dominant-baseline','middle')
             .attr('text-anchor','start')
+
+      // age class label in front of bar
       groups.append("text")
             .attr("class", "bar-label-text")
             .attr("y", (d, i) => y(d.CATEGORY)+y.bandwidth()/2)
@@ -217,23 +231,34 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
     let data = this.alldata;
     let categories = [];
     let subcategories = [];
-    let dlines = [];
 
-
+    // Produce list of ordered Categories and Subcats
     data.forEach(d => {
       if (!subcategories.includes(d.SUBCAT)) {
         subcategories.push(d.SUBCAT);
       }
       if (!categories.includes(d.CATEGORY)) {
         categories.push(d.CATEGORY);
-        dlines.push([d.CATEGORY]);
       }
-      dlines[dlines.length-1].push(d.METRIC_VALUE);
     });
-    this.databreakout = categories.map( cat => data.filter(rec => rec.CATEGORY == cat).map(rec => { return {CATEGORY:rec.SUBCAT,METRIC_VALUE:rec.METRIC_VALUE}  }));
-    // console.log("cadats",this.databreakout);
+    this.databreakout = categories
+      .map( cat => data.filter(rec => rec.CATEGORY == cat)
+                        .map(rec => ({CATEGORY:rec.SUBCAT,METRIC_VALUE:rec.METRIC_VALUE}  )));
 
+    // produce container markup for each SVG in a col-6 w a label
+    let chartList = d3
+      .select('.re-race-ethnicity-age-chart-list')
+      .selectAll('div')
+      .data(categories)
+      .enter()
+        .append('div')
+        .attr('class','col-lg-6 col-md-6 col-sm-12 mx-auto px-0')
+        .html((cat,ci) => `
+        <div class="chart-subtitle">${cat}</div>
+        <div class="svg-holder-${ci}">
+        `);
 
+    // produce individual SVGs for each sub-chart
     categories.forEach((cat,ci) => {
       let svg = d3
       .select(this.querySelector(".svg-holder-"+ci))
@@ -265,8 +290,6 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
     });
 
     this.writeLegend();
-
-    // this.classList.remove('d-none')
   }
 
 
