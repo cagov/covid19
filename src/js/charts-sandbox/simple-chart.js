@@ -16,7 +16,7 @@ function writeLegend(svg, data, x, y) {
         .attr("height", legendW);
 
     group
-        .append("text")
+      .append("text")
       .text(legendText[0])
       .attr("class", "legend-caption")
       .attr("y", legendY+legendW/2.0)
@@ -56,6 +56,7 @@ function writeBars(svg, data, x, y) {
 
     groups
         .append("rect")
+        .attr("class","bg-bar")
         .attr("fill", "#f2f5fc")
         .attr("y", (d, i) => y(i))
         .attr("x", d => x(0))
@@ -64,20 +65,35 @@ function writeBars(svg, data, x, y) {
     
     groups
         .append("rect")
+        .attr("class","fg-bar")
         .attr("fill", "#92C5DE")
         .attr("y", (d, i) => y(i))
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
-        .attr("id", (d, i) => "barid-"+i)
+        .attr("id", (d, i) => "barid-"+i);
+
+    groups
+        .append("rect")
+        .attr("class","hot-bar")
+        .attr("fill", "#00ff00")
+        .attr("fill-opacity",0)
+        .attr("y", (d, i) => y(i))
+        .attr("x", d => x(0))
+        .attr("width", d => x(max_x_domain))
+        .attr("height", y.bandwidth())
         .attr("tabindex", "0")
         .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
         .on("mouseover focus", function(event, d, i) {
-          d3.select(this).style("fill", "#003D9D");
+          d3.select(this.parentNode).select('.fg-bar')
+          .transition().duration(200)
+          .style("fill", "#003D9D");
           // problem the svg is not the width in px in page as the viewbox width
         })
         .on("mouseout blur", function(d) {
-          d3.select(this).style("fill", "#92C5DE");
+          d3.select(this.parentNode).select('.fg-bar')
+          .transition().duration(200)
+          .style("fill", "#92C5DE");
           // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
           //   tooltip.style.visibility = "hidden";
           // }

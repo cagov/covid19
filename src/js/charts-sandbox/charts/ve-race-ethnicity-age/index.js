@@ -190,11 +190,15 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         .attr("width", d => x(max_x_domain)-x(0))
         .attr("height", y.bandwidth())
         .on("mouseover focus", function(event, d, i) {
-          d3.select(this.parentNode).select('.fg-bar').style("fill", "#003D9D");
+          d3.select(this.parentNode).select('.fg-bar')
+            .transition().duration(200)
+            .style("fill", "#003D9D");
           // problem the svg is not the width in px in page as the viewbox width
         })
         .on("mouseout blur", function(d) {
-          d3.select(this.parentNode).select('.fg-bar').style("fill", "#92C5DE");
+          d3.select(this.parentNode).select('.fg-bar')
+            .transition().duration(200)
+            .style("fill", "#92C5DE");
           // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
           //   tooltip.style.visibility = "hidden";
           // }
@@ -256,38 +260,34 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
         .html((cat,ci) => `
         <div class="chart-subtitle">${cat}</div>
         <div class="svg-holder-${ci}">
-        `);
-
-    // produce individual SVGs for each sub-chart
-    categories.forEach((cat,ci) => {
-      let svg = d3
-      .select(this.querySelector(".svg-holder-"+ci))
-      .append("svg")
-      .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
-      .append("g")
-      .attr(
-        "transform",
-        "translate(0,0)"
-      );
-
-      let y = d3
-      .scaleBand()
-      .domain(subcategories)
-      .range([
-          this.dimensions.margin.top,
-          this.dimensions.height - (this.dimensions.margin.bottom),
-      ])
-      .paddingInner(4/10)
-      .paddingOuter(0);
-  
-      let x = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, d => d.METRIC_VALUE)]).nice()
-        .range([this.dimensions.margin.left, this.dimensions.width - this.dimensions.margin.right]);
-  
-      this.writeBars(svg, this.databreakout[ci], x, y);
-  
-    });
+        `)
+      .each((t,ci) => {
+          let svg = d3.select(this.querySelector(".svg-holder-"+ci))
+          .append("svg")
+          .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
+          .append("g")
+          .attr(
+            "transform",
+            "translate(0,0)"
+          );
+    
+        let y = d3
+          .scaleBand()
+          .domain(subcategories)
+          .range([
+              this.dimensions.margin.top,
+              this.dimensions.height - (this.dimensions.margin.bottom),
+          ])
+          .paddingInner(4/10)
+          .paddingOuter(0);
+    
+        let x = d3
+          .scaleLinear()
+          .domain([0, d3.max(data, d => d.METRIC_VALUE)]).nice()
+          .range([this.dimensions.margin.left, this.dimensions.width - this.dimensions.margin.right]);
+    
+        this.writeBars(svg, this.databreakout[ci], x, y);
+      });  
 
     this.writeLegend();
   }
