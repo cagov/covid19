@@ -250,19 +250,21 @@ class CAGOVEquityVaccinesRaceEthnicityAge extends window.HTMLElement {
                         .map(rec => ({CATEGORY:rec.SUBCAT,METRIC_VALUE:rec.METRIC_VALUE}  )));
 
     // produce container markup for each SVG in a col-6 w a label
-    let chartList = d3
+    d3
       .select('.re-race-ethnicity-age-chart-list')
       .selectAll('div')
       .data(categories)
       .enter()
+        // col-6 div for two column display
         .append('div')
         .attr('class','col-lg-6 col-md-6 col-sm-12 mx-auto px-0')
-        .html((cat,ci) => `
-        <div class="chart-subtitle">${cat}</div>
-        <div class="svg-holder-${ci}">
-        `)
-      .each((t,ci) => {
-          let svg = d3.select(this.querySelector(".svg-holder-"+ci))
+        .attr('id',(cat,ci) => 'svg-container-'+ci)
+        .append('div')
+        .attr('class','chart-subtitle')
+        .text(cat => cat)
+      .each((cat,ci) => {
+        // charts inside the divs
+        let svg = d3.select(this.querySelector("#svg-container-"+ci))
           .append("svg")
           .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height])
           .append("g")
