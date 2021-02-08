@@ -42,15 +42,18 @@ beforeAll(async () => {
   page = await browser.newPage();
   page.setDefaultNavigationTimeout(timeout);   // change timeout
   await page.setViewport({ width, height });
-
   await page.setRequestInterception(true);
+  
   page.on('request', req => {
     const requestURL = req.url();
+    let parsedData;
     if (requestURL.indexOf("google-analytics.com/collect") > -1) { // want to let the initial /analytics.js request through but get all the subsequent event reqeusts
       if(req._method === 'POST') {
-        const parsedData = queryString.parse(req._postData);
-        GARequests.push(parsedData);
+        parsedData = queryString.parse(req._postData);
+      } else {
+        parsedData = queryString.parse(requestURL.split('?'));
       }
+      GARequests.push(parsedData);
       req.abort();
     } else {
       req.continue()
@@ -74,7 +77,7 @@ describe('homepage', () => {
     });
 
     // make sure the GA event action is sent
-    let ratingResult = await waitForThisEvent(GARequests, 'ea', '^helpful', 1000)
+    let ratingResult = await waitForThisEvent(GARequests, 'ea', '^helpful', 5000)
     expect(ratingResult).toStrictEqual('PASS');
   }, timeout);
 });
@@ -94,12 +97,10 @@ describe('homepage', () => {
       document.querySelector('.open-menu').click();
     });
     await page.evaluate(() => {
-      document.querySelector('.js-event-hm-menu').scrollIntoView();
-    });
-    await page.evaluate(() => {
       document.querySelector('.js-event-hm-menu').click();
-    });    
-    let homeClickResult = await waitForThisEvent(GARequests, 'ea', '^homepage-menu', 1000)
+    });
+
+    let homeClickResult = await waitForThisEvent(GARequests, 'el', '^homepage-menu', 5000)
     expect(homeClickResult).toStrictEqual('PASS');    
     
   }, timeout);
@@ -114,17 +115,6 @@ describe('what is open', () => {
     await page.waitForSelector('#awesomplete_list_1 li');
     const listitems = await page.$$eval('#awesomplete_list_1 li', listitems => listitems);
     expect(listitems.length).toBeGreaterThan(1);
-    // await page.click('#awesomplete_list_1 li');
-
-    // await page.type('#location-query', 'San Diego');
-    // await page.type('#activity-query', 'Schools');
-    // await page.waitForSelector('#awesomplete_list_2 li');
-    // await page.click('#awesomplete_list_2 li');
-    // await page.click("#reopening-submit");
-
-    // await page.waitForSelector('.card-county');
-    // const counties = await page.$$eval('.card-county', counties => counties);
-    // expect(counties.length).toBeGreaterThan(0);
   }, timeout);
 });
 
