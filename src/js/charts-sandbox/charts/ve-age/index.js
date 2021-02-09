@@ -10,14 +10,15 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 5;
+    this.nbr_bars = 5;
+    let bar_vspace = 60;
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -28,7 +29,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -39,23 +40,23 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*56,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 440,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
       retina: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 320,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
@@ -109,6 +110,10 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
   
 
 
+  }
+
+  getYOffset(ci) {
+    return 0;
   }
 
   getLegendText() {

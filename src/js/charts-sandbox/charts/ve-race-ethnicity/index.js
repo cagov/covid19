@@ -10,7 +10,9 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 9;
+    this.nbr_bars = 9;
+    this.bar_vspace = 60;
+    
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_race_ethnicity_california.json", // Overwritten by county.
@@ -18,32 +20,32 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*this.bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 0,
+          bottom: 20, // 20 added for divider
           left: 0,
         },
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*this.bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 0,
+          bottom: 20, // 20 added for divider
           left: 0,
         },
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(this.bar_vspace-2),
         width: 440,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -51,10 +53,10 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(this.bar_vspace-2),
         width: 320,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -111,6 +113,11 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
+  // offset bottom two bars so we can add divider
+  getYOffset(ci) {
+    return ci < 7? 0 : 20;
+  }
+
   getLegendText() {
     return ["% of vaccines administered", "% of state population"]
   }
@@ -118,6 +125,20 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
   ariaLabel(d) {
     let label = 'ARIA BAR LABEL';
     return label;
+  }
+
+  renderExtras(svg, data, x, y) {
+
+    let group = svg.append("g")
+    group
+      .append("rect")
+        .attr("fill", "#000000")
+        .attr("class", "divider")
+        .attr("y", y(6)+this.bar_vspace*7/12)
+        .attr("x", 0)
+        .attr("width", this.dimensions.width)
+        .attr("height", 0.75);
+
   }
 
 
@@ -128,7 +149,7 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       .then(
         function (alldata) {
           this.alldata = alldata;
-          renderChart.call(this);
+          renderChart.call(this, this.renderExtras);
         }.bind(this)
       );
   }
