@@ -15,6 +15,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsVEDataLoc+"gender/vaccines_by_gender_california.json", // Overwritten by county.
+      dataUrlCounty: config.equityChartsVEDataLoc+"gender/vaccines_by_gender_<county>.json",
       // Breakpoints
       desktop: {
         fontSize: 14,
@@ -103,7 +104,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
-    // this.listenForLocations();
+    this.listenForLocations();
     // this.classList.remove("d-none"); // this works
     // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
     //   this.querySelector('.d-none').classList.remove("d-none");
@@ -126,6 +127,21 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
     return label;
   }
 
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("X County selected",e.detail.county);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""))
+        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
+        this.retrieveData(searchURL);
+        // this.resetTitle();
+      }.bind(this),
+      false
+    );
+  }
 
   retrieveData(url) {
     window
