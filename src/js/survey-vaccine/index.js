@@ -33,7 +33,7 @@ function seenSurveyPrompt() {
   return true;
 }
 function somePercent() { 
-  if(Math.random() < 0.4) { 
+  if(Math.random() < 0.1) { 
     return true; 
   }
   return false;
