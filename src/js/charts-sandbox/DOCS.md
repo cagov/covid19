@@ -109,6 +109,10 @@ Race and ethnicity
 
 ## Vaccine Snowflake Warehouse
 
+CA_VACCINE.VW_TAB_INT_ALL
+USE CA_VACCINE;
+USE warehouse VWH_CA_VACCINE;
+
 * Is there a map of that pipeline that's clear for general transparency
 * ISSUE: Tons of misspelled dates, January
 * We don't know where the data comes from
@@ -116,6 +120,10 @@ Race and ethnicity
 ### Data Dictionary
 
 #### Table
+Warehouse: `VWH_CA_VACCINE`
+
+`CA_VACCINE.VW_TAB_INT_ALL`
+
 Field names
 `ADMIN_DATE` - Date vaccine was administered
 `VAX_LABEL` - Pfizer or Moderna in camelCase
@@ -123,7 +131,8 @@ Field names
 `RECIP_ID` - Number for 
 `VAX_EVENT_ID` - Number 
 `RECIP_DOB` - Date of Birth YYYY-MM-DD
-`RECIP_SEX` - Female or Male
+`RECIP_SEX` - Recipient Sex
+
 | Value | Label |
 | 1 | Male |
 | 2 | Unknown/undifferentiated |
@@ -143,26 +152,10 @@ Field names
 | 8 | Native Hawaiian or Other Pacific Islander |
 | 9 | Multiracial | 
 | 10 | Black or African American | 
-* Note we string replace the labels if needed for display purposes that may differ from database systems where information is entered & the label can't easily be updated.
+* Note we may string replace the labels if needed for display purposes that may differ from database systems where information is entered & the label can't easily be updated.
 
-`RECIP_ADDRESS_COUNTY` - 
-58 is expected
+`RECIP_ADDRESS_COUNTY` - Recipient Address (County)
 65 exist
-
-Full list
-
-
-
-`RECIP_ADDRESS_STATE`
-`RESPONSIBLE_ORG` - 
-`ADMIN_NAME`
-`ADMIN_ADDRESS_COUNTY` -
-
-CA_VACCINE.VW_TAB_INT_ALL
-1:26
-USE CA_VACCINE;
-USE warehouse VWH_CA_VACCINE;
-
 
 Extras
 Clark
@@ -172,6 +165,11 @@ Maricopa (az)
 Outside California
 Unknown 
 San Juan
+
+`RECIP_ADDRESS_STATE`
+`RESPONSIBLE_ORG` - 
+`ADMIN_NAME`
+`ADMIN_ADDRESS_COUNTY` -
 
 `ADMIN_ADDRESS_COUNTY`
 Unknown & Null
