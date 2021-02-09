@@ -14,7 +14,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
     let bar_vspace = 60;
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_gender_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"gender/vaccines_by_gender_california.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         fontSize: 14,
@@ -133,7 +133,8 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.alldata = alldata;
+          console.log("Gender data meta",alldata.meta);
+          this.alldata = alldata.data
           renderChart.call(this);
         }.bind(this)
       );

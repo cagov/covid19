@@ -14,7 +14,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     let bar_vspace = 60;
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"age/vaccines_by_age_california.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         fontSize: 14,
@@ -132,7 +132,8 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.alldata = alldata;
+          console.log("Age data meta",alldata.meta);
+          this.alldata = alldata.data;
           renderChart.call(this);
         }.bind(this)
       );

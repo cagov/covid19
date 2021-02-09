@@ -15,7 +15,7 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_race_ethnicity_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_california.json", // Overwritten by county.
       state: 'California',
       // Breakpoints
       desktop: {
@@ -148,7 +148,8 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.alldata = alldata;
+          console.log("Race/Eth data meta",alldata.meta);
+          this.alldata = alldata.data;
           renderChart.call(this, this.renderExtras);
         }.bind(this)
       );
