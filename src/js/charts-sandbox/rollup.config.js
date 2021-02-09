@@ -4,12 +4,12 @@ import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 
 const defaultConfig = {
-  equityChartsDataLoc: 'https://files.covid19.ca.gov/data/reviewed/',
-  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/'
+  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
+  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
 }
 const stagingConfig =  {
-  equityChartsDataLoc: 'https://files.covid19.ca.gov/data/to-review/',
-  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/'
+  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
+  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
 }
 
 const devOutputPath = 'docs/js/chartssandbox.js';
