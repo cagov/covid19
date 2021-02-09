@@ -5,7 +5,7 @@ sample_fields = {
     "REPORT_DATE":"02-03-2021"
 }
 
-default_start_population = 10000000
+default_start_population = 78668
 
 file_layouts = [
     {
@@ -14,7 +14,7 @@ file_layouts = [
         "start_population":default_start_population,
         "ranked":False,
         "percents":True,
-        "record_layout":["REGION","REPORT_DATE","CATEGORY","METRIC_VALUE","BASELINE_VALUE"],
+        "record_layout":["CATEGORY","METRIC_VALUE"],
     },
     {
         "filename":"vaccines_by_gender_california.json",
