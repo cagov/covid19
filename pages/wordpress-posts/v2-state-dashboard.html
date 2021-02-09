@@ -1,12 +1,13 @@
 ---
 layout: "page.njk"
 title: "Tracking COVID-19 in California"
-meta: ""
+meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-01-21T17:38:44Z"
+publishdate: "2021-02-09T22:52:04Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
+
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -61,7 +62,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
   %} 
 -->
-<!-- state dash 2.0 -->
+
+
+
 <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
@@ -240,31 +243,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="bg-darkblue py-5 full-bleed mb-5">
-  <div class="container py-2">
-    <div class="row pb-4">
-      <div class="col-lg-10 mx-auto color-white">
-        <h2 class="text-center color-orange" id="reopening-equitably">Vaccination data</h2>
-        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We're tracking the progress of
-          vaccinating Californians across the state.</p>
-
-        <div class="mt-3 text-center">
-          <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">
-            <div class="link-arrow-label">View vaccination data</div>
-            <cagov-arrow></cagov-arrow>
-          </a>
-        </div>
-
-
-      </div>
-    </div>
-
-  </div>
-  <!--END container-->
-</div>
-
-
 <h2 class="text-center color-purple">See the data statewide and in each county</h2>
+
+
+
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
     <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
@@ -288,7 +270,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 
+
+
+
 <h3 class="text-center mt-4 mb-0">Daily cases and deaths</h3>
+
+
+
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
     <div class="large-tabs">
@@ -297,8 +285,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 </div>
-<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}}
-  deaths.</p>
+
+
+
+<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
+
+
 
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
@@ -322,7 +314,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     attributed to COVID-19 were determined to not be associated with COVID-19.</p>
 </div>
 
+
+
 <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
+
+
+
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
     <div class="large-tabs">
@@ -331,9 +328,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 </div>
-<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an
-  increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 7
-  days is {{_varStarPos_7DayAvgPct_}}%. </p>
+
+
+
+<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 7 days is {{_varStarPos_7DayAvgPct_}}%.</p>
+
+
 
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
@@ -345,6 +345,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 </div>
+
+
 
 <div class="row d-flex justify-content-md-center">
   <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the
@@ -358,6 +360,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
+
+
+
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
     <div class="large-tabs">
@@ -366,13 +371,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 </div>
-<p>
-  The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of
-  {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day
-  total.
-  The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of
-  {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.
-</p>
+
+
+
+<p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
+
+
+
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
     <div id="hospital-county-graph" class="toggle-group-element">
@@ -385,12 +390,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 </div>
 
+
+
 <div class="bg-darkblue py-5 full-bleed mb-5">
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto color-white">
         <h2 class="text-center color-orange" id="reopening-equitably">More data and tools</h2>
-        <p>California has collected a wide range of data to inform its response to COVID-19. We've developed tools
+        <p>California has collected a wide range of data to inform its response to COVID-19. We&#8217;ve developed tools
           to process and analyze this data. These data and tools are available to the public.</p>
 
         <div class="mt-3 text-center">
@@ -407,6 +414,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
   <!--END container-->
 </div>
+
+
 
 <div class="row d-flex justify-content-md-center">
 
@@ -445,6 +454,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <div class="tableauPlaceholder" id="mapChartContainer"></div>
 </div>
 
+
+
 <div class="text-center text-small">
   <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are
     assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at
@@ -458,6 +469,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     includes an adjustment for the percentage of COVID-19 positive patients in ICU.</p>
 </div>
 
+
+
 <div class="text-center">
   <a href="/safer-economy/" class="link-arrow-blue">
     <div class="link-arrow-label">See what can be open in your county</div>
@@ -466,7 +479,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 </div>
 
 
-<div class="bg-lightblue">
+
+<div class="bg-lightblue full-bleed">
   <div class="container py-2">
     <h2 class="text-center color-orange">Infections by group</h2>
     <div class="col-lg-12 bg-white px-3 py-4">
