@@ -120,7 +120,7 @@ if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 5
   else { chartWidth2 = 350; countyMapChartHeight = 660; chartWidth3 = 450;}
 
 // jbum overriding chartWidth3
-chartWidth3 = Math.min(Math.max(450, divElement.offsetWidth-32), 900);
+chartWidth3 = Math.min(Math.max(450, divElement.offsetWidth-132), 900);
 let chartHeight3 = Math.floor(3*chartWidth3/4);
 if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
   chartHeight3 = Math.floor(chartWidth3*3/2);  
