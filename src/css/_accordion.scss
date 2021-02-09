@@ -93,7 +93,7 @@ button.card-header {
 
 .prog-enhanced .accordion-alpha-open {
   border-bottom-color: $white !important;
-  cagov-plus .accordion-icon {display: none;}
+  cagov-plus .accordion-icon {display: none !important;}
   cagov-minus .accordion-icon {display: block !important;}
 }
 @function tint($color, $percentage) {
