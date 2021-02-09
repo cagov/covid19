@@ -24,22 +24,23 @@ function writeLegend(svg, data, x, y) {
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
 
-    group
-      .append("rect")
-      .attr("fill", "#1f2574")
-      .attr("y", legendY-y.bandwidth()/2)
-      .attr("x", legend2X)
-      .attr("width", d => 4)
-      .attr("height", y.bandwidth()*2)
+    // // BULLET 1
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#1f2574")
+    //   .attr("y", legendY-y.bandwidth()/2)
+    //   .attr("x", legend2X)
+    //   .attr("width", d => 4)
+    //   .attr("height", y.bandwidth()*2)
 
-    group
-      .append("text")
-      .text(legendText[1])
-      .attr("class", "legend-caption")
-      .attr("y", legendY+legendW/2.0)
-      .attr("x", legend2X+15)
-      .attr('dominant-baseline','middle')
-      .attr('text-anchor','start');
+    // group
+    //   .append("text")
+    //   .text(legendText[1])
+    //   .attr("class", "legend-caption")
+    //   .attr("y", legendY+legendW/2.0)
+    //   .attr("x", legend2X+15)
+    //   .attr('dominant-baseline','middle')
+    //   .attr('text-anchor','start');
 
 
 
@@ -54,31 +55,34 @@ function writeBars(svg, data, x, y) {
       .enter()
         .append("g");
 
+    // light bg bar
     groups
         .append("rect")
         .attr("class","bg-bar")
         .attr("fill", "#f2f5fc")
-        .attr("y", (d, i) => y(i))
+        .attr("y", (d, i) => y(i)+this.getYOffset(i))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth());
     
+    // dark bg bar
     groups
         .append("rect")
         .attr("class","fg-bar")
         .attr("fill", "#92C5DE")
-        .attr("y", (d, i) => y(i))
+        .attr("y", (d, i) => y(i)+this.getYOffset(i))
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
         .attr("id", (d, i) => "barid-"+i);
 
+    // transparent hot bar
     groups
         .append("rect")
         .attr("class","hot-bar")
         .attr("fill", "#00ff00")
         .attr("fill-opacity",0)
-        .attr("y", (d, i) => y(i))
+        .attr("y", (d, i) => y(i)+this.getYOffset(i))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth())
@@ -99,20 +103,20 @@ function writeBars(svg, data, x, y) {
           // }
         });
 
-    groups
-        .append("rect")
-        .attr("fill", "#1f2574")
-        .attr("y", (d, i) => y(i)-y.bandwidth()/2)
-        .attr("x", d => x(d.BASELINE_VALUE)-2)
-        .attr("width", d => 4)
-        .attr("height", y.bandwidth()*2)
+    // // Bullet
+    // groups
+    //     .append("rect")
+    //     .attr("fill", "#1f2574")
+    //     .attr("y", (d, i) => y(i)-y.bandwidth()/2)
+    //     .attr("x", d => x(d.BASELINE_VALUE)-2)
+    //     .attr("width", d => 4)
+    //     .attr("height", y.bandwidth()*2)
 
-
-
+    // Bar Label
     groups
       .append("text")
       .attr("class", "bar-label")
-      .attr("y", (d, i) => y(i) + (y.bandwidth() / 2))
+      .attr("y", (d, i) => y(i)+this.getYOffset(i) + (y.bandwidth() / 2))
       .attr("x", d => x(max_x_domain))
       // .attr("width", x.bandwidth() / 4)
       .html(d => {
@@ -121,10 +125,11 @@ function writeBars(svg, data, x, y) {
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start')
 
+    // Bar Category
     groups
       .append("text")
       .attr("class", "bar-cat")
-      .attr("y", (d, i) => y(i))
+      .attr("y", (d, i) => y(i)+this.getYOffset(i))
       .attr("x", d => x(0))
       // .attr("width", x.bandwidth() / 4)
       .html(d => {
@@ -134,7 +139,7 @@ function writeBars(svg, data, x, y) {
 
 }
 
-export default function renderChart() {
+export default function renderChart(extrasFunc = null) {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys()
@@ -153,12 +158,12 @@ export default function renderChart() {
     .paddingOuter(0.5);
   
     // Position for labels.
-    this.yAxis = (g) =>
-      g
-        .attr("class", "bar-label")
-        .attr("transform", "translate(5," + -32 + ")")
-        .call(d3.axisLeft(this.y).tickSize(0))
-        .call((g) => g.selectAll(".domain").remove());
+    // this.yAxis = (g) =>
+    //   g
+    //     .attr("class", "bar-label")
+    //     .attr("transform", "translate(5," + -32 + ")")
+    //     .call(d3.axisLeft(this.y).tickSize(0))
+    //     .call((g) => g.selectAll(".domain").remove());
        
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
@@ -176,6 +181,10 @@ export default function renderChart() {
     //     .remove();
     writeBars.call(this, this.svg, data, this.x, this.y);
     writeLegend.call(this, this.svg, data, this.x, this.y);
+
+    if (extrasFunc) {
+      extrasFunc.call(this, this.svg, data, this.x, this.y);
+    }
 
         // Write remaining stuff...
     // this.classList.remove('d-none')

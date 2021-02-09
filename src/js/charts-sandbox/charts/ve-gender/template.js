@@ -7,7 +7,8 @@ export default function template(translationsObj) {
 
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <div class="chart-title">Vaccinations by Gender</div>
+            <div class="chart-title">% administered (people with at least 1 dose) by gender in California</div>
+            <div class="small-text">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</div>
             <div class="svg-holder">
             </div>
           </div>

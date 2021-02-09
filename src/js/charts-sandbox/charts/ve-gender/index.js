@@ -10,14 +10,15 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 3;
+    this.nbr_bars = 3;
+    let bar_vspace = 60;
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_gender_california.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -28,7 +29,7 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -39,10 +40,10 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 440,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -50,10 +51,10 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 320,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -110,6 +111,11 @@ class CAGOVEquityVaccinesGender extends window.HTMLElement {
 
     rtlOverride(this); // quick fix for arabic
   }
+
+  getYOffset(ci) {
+    return 0;
+  }
+
 
   getLegendText() {
     return ["% of vaccines administered", "% of state population"]
