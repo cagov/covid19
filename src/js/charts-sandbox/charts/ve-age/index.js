@@ -15,6 +15,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsVEDataLoc+"age/vaccines_by_age_california.json", // Overwritten by county.
+      dataUrlCounty: config.equityChartsVEDataLoc+"age/vaccines_by_age_<county>.json",
       // Breakpoints
       desktop: {
         fontSize: 14,
@@ -104,6 +105,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
+    this.listenForLocations();
 
     rtlOverride(this); // quick fix for arabic
 
@@ -125,6 +127,21 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     return label;
   }
 
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("X County selected",e.detail.filterKey);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""))
+        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
+        this.retrieveData(searchURL);
+        // this.resetTitle();
+      }.bind(this),
+      false
+    );
+  }
 
   retrieveData(url) {
     window

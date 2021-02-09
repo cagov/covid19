@@ -15,7 +15,8 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_california.json",
+      dataUrlCounty: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_<county>.json",
       state: 'California',
       // Breakpoints
       desktop: {
@@ -104,6 +105,8 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
+    this.listenForLocations();
+
     // this.listenForLocations();
     // this.classList.remove("d-none"); // this works
     // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
@@ -128,7 +131,6 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
-
     let group = svg.append("g")
     group
       .append("rect")
@@ -138,9 +140,36 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
         .attr("x", 0)
         .attr("width", this.dimensions.width)
         .attr("height", 0.75);
-
   }
 
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("X County selected",e.detail.filterKey);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""))
+        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
+        this.retrieveData(searchURL);
+        // this.resetTitle();
+      }.bind(this),
+      false
+    );
+
+    // this.metricFilter.addEventListener(
+    //   "filter-selected",
+    //   function (e) {
+    //     console.log("X Filter selected",e.detail.filterKey);
+    //     // this.selectedMetricDescription = e.detail.clickedFilterText;
+    //     // this.selectedMetric = e.detail.filterKey;
+    //     // this.retrieveData(this.dataUrl);
+    //     // this.resetDescription();
+    //     // this.resetTitle();
+    //   }.bind(this),
+    //   false
+    // );
+  }
 
   retrieveData(url) {
     window

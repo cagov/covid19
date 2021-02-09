@@ -173,12 +173,8 @@ export default function renderChart(extrasFunc = null) {
       .domain([0, 1])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
       .range([this.dimensions.margin.left, this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)]);
 
-    // ?
-    // this.xAxis = (g) =>
-    //   g
-    //     .attr("transform", "translate(0," + this.dimensions.width + ")")
-    //     .call(d3.axisBottom(this.x).ticks(width / 50, "s"))
-    //     .remove();
+    this.svg.selectAll("g").remove();
+
     writeBars.call(this, this.svg, data, this.x, this.y);
     writeLegend.call(this, this.svg, data, this.x, this.y);
 
