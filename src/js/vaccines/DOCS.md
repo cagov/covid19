@@ -200,16 +200,16 @@ High level overview of the data pipeline.
 
 ### Vaccine Snowflake Warehouse
 
-CA_VACCINE.VW_TAB_INT_ALL
+`CA_VACCINE.VW_TAB_INT_ALL
 USE CA_VACCINE;
-USE warehouse VWH_CA_VACCINE;
+USE warehouse VWH_CA_VACCINE;`
 
-* Is there a map of that pipeline that's clear for general transparency
+* Q: Is there a map of that pipeline that's clear for general transparency
 * ISSUE: Tons of misspelled dates, January
 * We don't know where the data comes from
 
 ### Data Dictionary
-(Is there one?)
+(@TODO Is there one?)
 
 #### Snowflake Queries
 
@@ -222,13 +222,25 @@ Warehouse: `VWH_CA_VACCINE`
 
 ##### Field names
 
-`ADMIN_DATE` - Date vaccine was administered
-`VAX_LABEL` - Pfizer or Moderna in camelCase
-`DOSE_NUM` - 1 or 2 (int) - Which dose they are receiving
-`RECIP_ID` - Number for 
-`VAX_EVENT_ID` - Number 
-`RECIP_DOB` - Date of Birth YYYY-MM-DD
-`RECIP_SEX` - Recipient Sex
+`ADMIN_DATE`
+: Date vaccine was administered
+
+`VAX_LABEL`
+: Pfizer or Moderna in camelCase
+
+`DOSE_NUM`
+: 1 or 2 (int) - Which dose they are receiving
+
+`RECIP_ID`
+: Number for 
+
+`VAX_EVENT_ID`
+: Number 
+`RECIP_DOB`
+: Date of Birth YYYY-MM-DD
+
+`RECIP_SEX`
+: Recipient Sex
 
 
 | Value | Label |
