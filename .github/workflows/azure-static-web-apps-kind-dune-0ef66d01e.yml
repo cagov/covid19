@@ -1,13 +1,14 @@
-name: State Dash 2.0 preview
+name: Vaccine Equity Preview
 # azure static web app: SWA-GO-COVID19-D-011-jbum-test
+# https://kind-dune-0ef66d01e.azurestaticapps.net
 on:
   push:
     branches:
-      - jbum_statedash2
+      - vaccines_equity
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - jbum_statedash2
+      - vaccines_equity
 
 jobs:
   build_and_deploy_job:
