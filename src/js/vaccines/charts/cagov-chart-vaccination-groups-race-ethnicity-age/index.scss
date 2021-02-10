@@ -1,0 +1,28 @@
+cagov-chart-vaccination-groups-age {
+    .bar-label .tick text {
+      text-transform: capitalize;
+    }
+    .bar-label-text {
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+    .bar-value-text {
+      font-weight: 400;
+      font-size: 0.75rem;
+    }
+    .bar-cat {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .legend-caption {
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+    .chart-subtitle {
+      font-weight: 400;
+      font-size: 0.75rem;
+    }
+}
+.d-none {
+  display:none;
+}

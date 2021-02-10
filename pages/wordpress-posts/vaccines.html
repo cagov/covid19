@@ -210,9 +210,54 @@ addtositemap: true
 
 
 <!-- begin tableau embed  2/6/2021 -->
-<div class="tableauPlaceholder" id="viz1612204276802" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https://public.tableau.com/"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19VaccineDashboardPublic/Vaccine"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1612204276802');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else { vizElement.style.width='100%';vizElement.style.height='850px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+TABLEAU MAP COMMENTED OUT TO SPEED UP DEVELOPMENT
+
+<!-- <div class="tableauPlaceholder" id="viz1612204276802" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https://public.tableau.com/"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19VaccineDashboardPublic/Vaccine"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1612204276802');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else { vizElement.style.width='100%';vizElement.style.height='850px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
 <!-- end tableau embed  -->
 
+
+<h2 id="california-vaccination-by-groups">Vaccination by groups</h2>
+
+<p>The distribution of vaccines by age, gender, and race and ethnicity are shown below. Data reflects cumulative information since XX XX, XXXX.</p>
+
+<!-- charts -->
+<cagov-county-search></cagov-county-search>
+
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+
+<cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
+    </div>
+</cagov-chart-filter-buttons>
+  
+<div class="container">
+    <div class="row">
+        <cagov-chart-vaccination-groups-race-ethnicity class="chart d-none">
+          <ul>
+            <li data-label="chartTitle--cases"></li>
+          </ul>
+        </cagov-chart-vaccination-groups-race-ethnicity>
+
+        <cagov-chart-vaccination-groups-age class="chart d-hide">
+
+        </cagov-chart-vaccination-groups-age>
+        
+        <cagov-chart-vaccination-groups-gender class="chart d-hide">
+
+        </cagov-chart-vaccination-groups-gender>
+    </div>
+    <!-- <div class="row">
+       <cagov-chart-vaccination-groups-race-ethnicity-age class="chart">
+         
+       </cagov-chart-vaccination-groups-race-ethnicity-age>
+    </div> -->
+</div>
+
+<a href="/equity">See more about how COVID affects groups throughout California</a>
 
 
 <h2 id="What-to-expect-after-vaccination">What to expect after vaccination</h2>
