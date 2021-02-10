@@ -25,7 +25,7 @@ function writeLegend(svg, data, x, y) {
 
     group
       .append("text")
-      .text(legendText[0])
+      .text(legendText[0]) // Legend label 
       .attr("class", "legend-caption")
       .attr("y", legendY+legendW/2.0)
       .attr("x", legendW*2)
@@ -33,7 +33,6 @@ function writeLegend(svg, data, x, y) {
       .attr('text-anchor','start');
 
     // Baseline indicator
-    // BULLET 1
     // group
     //   .append("rect")
     //   .attr("fill", "#1f2574")
