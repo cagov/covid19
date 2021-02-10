@@ -189,7 +189,7 @@ Most recent ones
 | -- | -- | -- | -- | -- |
 | Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | ![Chart](./assets/chart_gender.png) | -- |
 | Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
-| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_california.json) | -- | -- |
+| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | -- | -- |
 
 
 ### Notes on how the chart works
