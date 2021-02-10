@@ -142,7 +142,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       function (e) {
         console.log("X County selected",e.detail.filterKey);
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""));
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
       false
