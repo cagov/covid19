@@ -259,7 +259,8 @@ e.g. Percentage of people, by race, with at least 1 dose (one person counts, NOT
 CDPH team from the CAIRS system (where providers provide data).
 
 ### Update frequency
-@TODO How often is this updated?
+Page updated weekly.
+(Numbers run daily.)
 
 ### Who to contact if the data breaks?
 @TODO 
