@@ -134,15 +134,37 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   }
 
   getLegendText() {
-    return ["% of vaccines administered", "% of state population"];
+    return [this.translationsObj.legendLabelVaccines, this.translationsObj.legendLabelPopulation];
   }
 
-  getChartTitle(region) {
-    return `% administered (people with at least 1 dose) by race and ethnicity in ${region}`;
+  getChartTitle({
+    region = "California",
+    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
+    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
+  }) {
+
+    let isCounty = region === "California" ? false : true;
+
+    let replacedChartTitle = isCounty === false ? chartTitle : chartTitleCounty.replace("[REGION]", region + " County");
+
+    this.translationsObj.chartDisplayTitle = replacedChartTitle;
+
+    return replacedChartTitle;
   }
 
-  resetTitle(region) {
-    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
+  resetTitle({
+    region = "California",
+    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
+    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
+  }) {
+
+    this.translationsObj.chartDisplayTitle = this.getChartTitle({
+      region,
+      chartTitle: this.translationsObj.chartTitle,
+      chartTitleCounty: this.translationsObj.chartTitleCounty,
+    });
+
+    this.querySelector(".chart-title").innerHTML = this.translationsObj.chartDisplayTitle;
   }
 
   ariaLabel(d) {
@@ -188,7 +210,11 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           console.log("Race/Eth data meta", alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this, this.renderExtras);
-          this.resetTitle(regionName);
+          this.resetTitle({
+            region: regionName, 
+            chartTitle: this.translationsObj.chartTitle,
+            chartTitleCounty: this.translationsObj.chartCounty,
+          });
         }.bind(this)
       );
   }

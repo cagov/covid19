@@ -211,13 +211,13 @@ addtositemap: true
 
 <!-- begin tableau embed  2/6/2021 -->
 
-<div class="tableauPlaceholder" id="viz1612204276802" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https://public.tableau.com/"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19VaccineDashboardPublic/Vaccine"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1612204276802');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else { vizElement.style.width='100%';vizElement.style.height='850px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<!-- <div class="tableauPlaceholder" id="viz1612204276802" style="position: relative"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https://public.tableau.com/"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19VaccineDashboardPublic/Vaccine"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19VaccineDashboardPublic/Vaccine/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1612204276802');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='550px';} else { vizElement.style.width='100%';vizElement.style.height='850px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
 <!-- end tableau embed  -->
 
 
 <h2 id="california-vaccination-by-groups">Vaccination by groups</h2>
 
-<p>The distribution of vaccines by age, gender, and race and ethnicity are shown below. Data reflects cumulative information since XX XX, XXXX.</p>
+<p>The distribution of the first vaccine dose by race and ethnicity, age, and gender is shown below. Data shows the cumulative total administered and are updated daily.</p>
 
 <!-- charts -->
 <cagov-county-search></cagov-county-search>
@@ -236,35 +236,40 @@ addtositemap: true
     <div class="row">
         <cagov-chart-vaccination-groups-race-ethnicity class="chart">
           <ul>
-            <li data-label="chartTitle">% administered (people with at least 1 dose) by race and ethnicity in California</li>
-            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
           </ul>
         </cagov-chart-vaccination-groups-race-ethnicity>
 
         <cagov-chart-vaccination-groups-age class="chart d-hide">
           <ul>
-            <li data-label="chartTitle">% administered (people with at least 1 dose) by age in California</li>
-            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
-            <li data-label="legendLabel">% of vaccines administered</li>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
           </ul>
         </cagov-chart-vaccination-groups-age>
         
         <cagov-chart-vaccination-groups-gender class="chart d-hide">
-          <li data-label="chartTitle">% administered (people with at least 1 dose) by gender in California</li>
-          <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-          <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
+          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
+          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
+          <li data-label="legendLabelVaccines">% of vaccines administered</li>
+          <li data-label="legendLabelPopulation">% of state population</li>
         </cagov-chart-vaccination-groups-gender>
     </div>
-    <!-- <div class="row">
-       <cagov-chart-vaccination-groups-race-ethnicity-age class="chart">
-         
-       </cagov-chart-vaccination-groups-race-ethnicity-age>
-    </div> -->
 </div>
 
-<a href="/equity">See more about how COVID affects groups throughout California</a>
+
+<div class="row text-center">
+  <div class="col-md-3 bg-blue py-4">
+    <a href="/equity" class="link-arrow-white">
+      <div class="link-arrow-label">SEE DATA ON COVID-19’S IMPACT BY GROUP</div>
+      <cagov-arrow></cagov-arrow>
+    </a>
+  </div>
+</div>
 
 
 <h2 id="What-to-expect-after-vaccination">What to expect after vaccination</h2>
