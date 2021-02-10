@@ -222,24 +222,25 @@ Warehouse: `VWH_CA_VACCINE`
 
 ##### Field names
 
-`ADMIN_DATE`
+`ADMIN_DATE` 
 : Date vaccine was administered
 
-`VAX_LABEL`
-: Pfizer or Moderna in camelCase
+`VAX_LABEL` {string}
+: e.g. Pfizer or Moderna in camelCase
 
-`DOSE_NUM`
-: 1 or 2 (int) - Which dose they are receiving
+`DOSE_NUM` {int}
+: 1 or 2  - Which dose they are receiving
 
 `RECIP_ID`
-: Number for 
+: Number for recipient
 
 `VAX_EVENT_ID`
 : Number 
-`RECIP_DOB`
+
+`RECIP_DOB` {string}
 : Date of Birth YYYY-MM-DD
 
-`RECIP_SEX`
+`RECIP_SEX` {string}
 : Recipient Sex
 
 
