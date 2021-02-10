@@ -1,14 +1,14 @@
 /**
  * @name get review basic page interactivity
  *
- * @desc Basic smoke tests for alpha site
+ * @desc Basic smoke tests for covid19.ca.gov site
  */
 const puppeteer = require('puppeteer');
 const queryString = require('query-string');
 const pt = require('promise-timeout');
 const requestMatchRegex = require('./tools/analytics.js');
 function waitForThisEvent(testKey, testValue, timeout) {
-  return pt.timeout(waitForevents(), timeout)
+  return pt.timeout(waitForEvents(), timeout)
   .then(val => {
     return val;
   }).catch(err => {
@@ -18,7 +18,7 @@ function waitForThisEvent(testKey, testValue, timeout) {
     }
   });
 
-  function waitForevents() {
+  function waitForEvents() {
     return new Promise((resolve, reject) => {
       function resultReview() {
         result = requestMatchRegex(GARequests, testKey, testValue);
@@ -94,7 +94,7 @@ describe('homepage', () => {
     });
 
     // wait for the feedback buttons to be rendered, scroll down and click them
-    const feedbackButtons = await page.$$eval('cagov-pagefeedback .js-feedback-yes', feedbuttons => feedbuttons);
+    const feedbackButtons = await page.waitForSelector('cagov-pagefeedback .js-feedback-yes');
     await page.evaluate(() => {
       document.querySelector('.js-feedback-yes').scrollIntoView(false); // scroll pegged at bottom so header row doesn't obscure it
     });
@@ -115,7 +115,7 @@ describe('homepage', () => {
     });
 
     // wait for the feedback buttons to be rendered, scroll down and click them
-    const menuButton = await page.$$eval('cagov-navoverlay .hamburger', menubutton => menubutton);
+    const menuButton = await page.waitForSelector('cagov-navoverlay .hamburger');
     await page.evaluate(() => {
       document.querySelector('.hamburger').scrollIntoView();
     });
