@@ -193,7 +193,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
+          this.county.toLowerCase().replace(/ /g, "")
         );
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),

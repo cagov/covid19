@@ -157,7 +157,7 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       function (e) {
         console.log("Region selected",e.detail.filterKey);
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""));
         this.retrieveData(searchURL,e.detail.county);
       }.bind(this),
       false
