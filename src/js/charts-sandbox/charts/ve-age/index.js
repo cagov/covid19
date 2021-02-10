@@ -104,7 +104,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, "California");
     this.listenForLocations();
 
     rtlOverride(this); // quick fix for arabic
@@ -122,6 +122,14 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     return ["% of vaccines administered", "% of state population"]
   }
 
+  getChartTitle(region) {
+    return `% administered (people with at least 1 dose) by age in ${region}`;
+  }
+
+  resetTitle(region) {
+    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
+  }
+
   ariaLabel(d) {
     let label = 'ARIA BAR LABEL';
     return label;
@@ -134,16 +142,14 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       function (e) {
         console.log("X County selected",e.detail.filterKey);
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""))
-        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
-        this.retrieveData(searchURL);
-        // this.resetTitle();
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
       false
     );
   }
 
-  retrieveData(url) {
+  retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
@@ -152,6 +158,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
           console.log("Age data meta",alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this);
+          this.resetTitle(regionName);
         }.bind(this)
       );
   }
