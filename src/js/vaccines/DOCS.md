@@ -15,29 +15,9 @@
 
 ## Development
 
-### Branch
+### Working Branch
 
-Later in the day or early tomorrow make a branch (@CHACH)
-`vaccinations_groups` - Should contain any dynamic Javascript for Vaccines page, including the vaccines equity charts
-
-
-Subfolder - structure should match charts-sandbox
-Charts folder
-shared JS
-
-### Web components
-
-County search widget like the one on the Equity page
-
-#### Tabs
-
-1. `cagov-chart-vaccination-groups-race-ethnicity` - Race and ethnicity
-2. `cagov-chart-vaccination-groups-age` - Vaccine Equity by Age
-3. `cagov-chart-vaccination-groups-gender` - Vaccine Equity by Gender
-
-#### Commented out
-`cagov-chart-vaccination-groups-race-ethnicity-age` - Custom chart that has more complex data (2 criteria Race and Age together)
-* Responsive to two columns 
+`vaccination_groups` - Working branch
 
 ---
 
@@ -114,6 +94,58 @@ Code supports extra data points on each bar
 
 ## Data
 
+
+### Web component configuration
+
+`Wordpress page > Web component HTML markup with data labels and attributes > published via Wordpress API to covid19 11ty pages > registered web component > javascript > fetches data and data labels > loads into d3 draw function > d3 renders responsive SVG graphics`
+
+---
+
+## Design
+
+### Figma Files
+
+https://www.figma.com/file/LrzsOu8U5KcMAjJTQ1O3BG/covid19.ca.gov-screens?node-id=5631%3A149
+
+Most recent ones
+* https://cadotgov.slack.com/archives/C01HTTNKHBM/p1612824999495300 (has extra data points) 
+*   separating line bar is commented out
+
+### Which chart is which web component?
+
+@TODO add screenshots
+
+| Chart | Web component name | Data Source | Screenshot | Figma Frame |
+| -- | -- | -- | -- | -- |
+| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | ![Chart](./assets/chart_gender.png) | -- |
+| Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
+| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | -- | -- |
+
+
+### Notes on how the chart works
+
+* Pass data to simple chart
+* Draw indivdual ones
+* All drawn right away & toggle divs when switching tabs
+
+### Web components
+
+County search widget like the one on the Equity page
+
+#### Tabs
+
+1. `cagov-chart-vaccination-groups-race-ethnicity` - Race and ethnicity
+2. `cagov-chart-vaccination-groups-age` - Vaccine Equity by Age
+3. `cagov-chart-vaccination-groups-gender` - Vaccine Equity by Gender
+
+#### Commented out
+`cagov-chart-vaccination-groups-race-ethnicity-age` - Custom chart that has more complex data (2 criteria Race and Age together)
+* Responsive to two columns 
+
+---
+
+## Data 
+
 ### Vaccines by Race, Ethnicity and Age in California
 (SAMPLE DATA for initial development before we have the real data)
 https://github.com/cagov/covid-static/blob/master/data/chart-sandbox/vaccines_by_race_ethnicity_and_age_california.json
@@ -166,39 +198,7 @@ High level overview of the data pipeline.
 `CAIRS > CDPH > Snowflake Marketplace > SQL queries > Cron repo > Azure FaaS trigger requests > Write to covid-static > published to /data folder > Synced to files.covid19.ca.gov files server after 10 minutes  > JSON file > covid19 > Web component fetch request > /src/js/charts-sandbox/chart/*`
 
 
-### Web component configuration
-
-`Wordpress page > Web component HTML markup with data labels and attributes > published via Wordpress API to covid19 11ty pages > registered web component > javascript > fetches data and data labels > loads into d3 draw function > d3 renders responsive SVG graphics`
-
----
-
-## Design
-
-### Figma Files
-
-https://www.figma.com/file/LrzsOu8U5KcMAjJTQ1O3BG/covid19.ca.gov-screens?node-id=5631%3A149
-
-Most recent ones
-* https://cadotgov.slack.com/archives/C01HTTNKHBM/p1612824999495300 (has extra data points) 
-*   separating line bar is commented out
-
-### Which chart is which web component?
-
-@TODO add screenshots
-
-| Chart | Web component name | Data Source | Screenshot | Figma Frame |
-| -- | -- | -- | -- | -- |
-| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | ![Chart](./assets/chart_gender.png) | -- |
-| Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
-| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | -- | -- |
-
-
-### Notes on how the chart works
-Pass data to simple chart
-Draw indivdual ones
-All drawn right away & toggle divs when switching tabs
-
-## Vaccine Snowflake Warehouse
+### Vaccine Snowflake Warehouse
 
 CA_VACCINE.VW_TAB_INT_ALL
 USE CA_VACCINE;
