@@ -6,7 +6,7 @@ import renderChart from "../../simple-chart.js";
 
 class CAGovVaccinationGroupsGender extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading x CAGovVaccinationGroupsGender");
+    console.log("Loading CAGovVaccinationGroupsGender");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
@@ -114,7 +114,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, "California");
     this.listenForLocations();
     // this.classList.remove("d-none"); // this works
     // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
@@ -132,6 +132,14 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
     return ["% of vaccines administered", "% of state population"];
   }
 
+  getChartTitle(region) {
+    return `% administered (people with at least 1 dose) by gender in ${region}`;
+  }
+
+  resetTitle(region) {
+    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
+  }
+
   ariaLabel(d) {
     let label = "ARIA BAR LABEL";
     return label;
@@ -146,17 +154,15 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "")
+          this.county.toLowerCase().replace(/ /g, "_")
         );
-        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
-        this.retrieveData(searchURL);
-        // this.resetTitle();
+        this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
       false
     );
   }
 
-  retrieveData(url) {
+  retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
@@ -165,6 +171,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           console.log("Gender data meta", alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this);
+          this.resetTitle(regionName);
         }.bind(this)
       );
   }

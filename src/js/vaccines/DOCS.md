@@ -1,4 +1,4 @@
-# Vaccinations by groups, Development Cheat Sheet
+# Vaccination by groups, Development Cheat Sheet
 
 ## Links & Urls
 
@@ -115,11 +115,11 @@ Most recent ones
 
 @TODO add screenshots
 
-| Chart | Web component name | Data Source | Screenshot | Figma Frame |
+| Chart | Web component name | Data Source | Screenshot | Figma Frame | 
 | -- | -- | -- | -- | -- |
-| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | ![Chart](./assets/chart_gender.png) | -- |
+| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | ![Chart](./assets/chart_race_ethnicity.png) | -- |
 | Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
-| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | -- | -- |
+| Age | `cagov-chart-vaccination-groups-age` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | -- | -- | 
 
 
 ### Notes on how the chart works

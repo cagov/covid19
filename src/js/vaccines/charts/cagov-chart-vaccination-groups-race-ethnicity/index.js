@@ -6,7 +6,7 @@ import renderChart from "../../simple-chart.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGOVEquityVaccinesRaceEthnicity");
+    console.log("Loading CAGovVaccinationGroupsRaceEthnicity");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
