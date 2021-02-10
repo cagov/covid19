@@ -8,6 +8,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGOVEquityVaccinesAge");
     this.translationsObj = getTranslations(this);
+    console.log(this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 5;

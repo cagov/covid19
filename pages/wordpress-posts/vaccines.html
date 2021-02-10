@@ -236,18 +236,27 @@ TABLEAU MAP COMMENTED OUT TO SPEED UP DEVELOPMENT
   
 <div class="container">
     <div class="row">
-        <cagov-chart-vaccination-groups-race-ethnicity class="chart d-none">
+        <cagov-chart-vaccination-groups-race-ethnicity class="chart">
           <ul>
-            <li data-label="chartTitle--cases"></li>
+            <li data-label="chartTitle">% administered (people with at least 1 dose) by race and ethnicity in California</li>
+            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
+            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
           </ul>
         </cagov-chart-vaccination-groups-race-ethnicity>
 
         <cagov-chart-vaccination-groups-age class="chart d-hide">
-
+          <ul>
+            <li data-label="chartTitle">% administered (people with at least 1 dose) by age in California</li>
+            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
+            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
+            <li data-label="legendLabel">% of vaccines administered</li>
+          </ul>
         </cagov-chart-vaccination-groups-age>
         
         <cagov-chart-vaccination-groups-gender class="chart d-hide">
-
+          <li data-label="chartTitle">% administered (people with at least 1 dose) by gender in California</li>
+          <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
+          <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
         </cagov-chart-vaccination-groups-gender>
     </div>
     <!-- <div class="row">
