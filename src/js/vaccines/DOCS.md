@@ -133,9 +133,10 @@ https://github.com/cagov/covid-static/blob/master/data/vaccine-equity/race-ethni
 ### File URLS dataset
 
 #### For California
-https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json
-https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json
-https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_california.json
+
+* https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json
+* https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json
+* https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json
 
 #### Static file server location
 
