@@ -104,7 +104,7 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl,"California");
     this.listenForLocations();
 
     // this.listenForLocations();
@@ -123,6 +123,14 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
 
   getLegendText() {
     return ["% of vaccines administered", "% of state population"]
+  }
+
+  getChartTitle(region) {
+    return `% administered (people with at least 1 dose) by race and ethnicity in ${region}`;
+  }
+
+  resetTitle(region) {
+    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
   }
 
   ariaLabel(d) {
@@ -147,31 +155,16 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     searchElement.addEventListener(
       "county-selected",
       function (e) {
-        console.log("X County selected",e.detail.filterKey);
+        console.log("Region selected",e.detail.filterKey);
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, ""))
-        // let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",'california')
-        this.retrieveData(searchURL);
-        // this.resetTitle();
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        this.retrieveData(searchURL,e.detail.county);
       }.bind(this),
       false
     );
-
-    // this.metricFilter.addEventListener(
-    //   "filter-selected",
-    //   function (e) {
-    //     console.log("X Filter selected",e.detail.filterKey);
-    //     // this.selectedMetricDescription = e.detail.clickedFilterText;
-    //     // this.selectedMetric = e.detail.filterKey;
-    //     // this.retrieveData(this.dataUrl);
-    //     // this.resetDescription();
-    //     // this.resetTitle();
-    //   }.bind(this),
-    //   false
-    // );
   }
 
-  retrieveData(url) {
+  retrieveData(url,regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
@@ -180,6 +173,7 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
           console.log("Race/Eth data meta",alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this, this.renderExtras);
+          this.resetTitle(regionName);
         }.bind(this)
       );
   }
