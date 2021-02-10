@@ -1,9 +1,37 @@
 /**
  * @name get review basic page interactivity
  *
- * @desc Basic smoke tests for alpha site
+ * @desc Basic smoke tests for covid19.ca.gov site
  */
 const puppeteer = require('puppeteer');
+const queryString = require('query-string');
+const pt = require('promise-timeout');
+const requestMatchRegex = require('./tools/analytics.js');
+function waitForThisEvent(testKey, testValue, timeout) {
+  return pt.timeout(waitForEvents(), timeout)
+  .then(val => {
+    return val;
+  }).catch(err => {
+    if (err instanceof pt.TimeoutError) {
+      console.error('Timeout :-(');
+      return 'failure';
+    }
+  });
+
+  function waitForEvents() {
+    return new Promise((resolve, reject) => {
+      function resultReview() {
+        result = requestMatchRegex(GARequests, testKey, testValue);
+        if(result === 'PASS') {
+          resolve(result)
+        } else {
+          setTimeout(resultReview, 100)
+        }
+      }
+      resultReview();
+    });
+  }
+}
 
 const express = require('express');
 const app = express();
@@ -26,6 +54,7 @@ let browser;
 const hostname = `http://localhost:${port}`;
 const width = 1200;
 const height = 800;
+let GARequests = [];
 
 beforeAll(async () => {
   app.use('/', express.static('docs', {}));
@@ -39,15 +68,67 @@ beforeAll(async () => {
   page = await browser.newPage();
   page.setDefaultNavigationTimeout(timeout);   // change timeout
   await page.setViewport({ width, height });
+  await page.setRequestInterception(true);
+  
+  page.on('request', req => {
+    const requestURL = req.url();
+    let parsedData;
+    if (requestURL.indexOf("google-analytics.com/collect") > -1) { // want to let the initial /analytics.js request through but get all the subsequent event reqeusts
+      if(req._method === 'POST') {
+        parsedData = queryString.parse(req._postData);
+      } else {
+        parsedData = queryString.parse(requestURL.split('?'));
+      }
+      GARequests.push(parsedData);
+      req.abort();
+    } else {
+      req.continue()
+    }
+  });
 });
 
 describe('homepage', () => {
-  test('page has some links on it', async () => {
-    await page.goto(hostname);
-    await page.waitForSelector('.hero-headline');
+  test('feedback events are firing', async () => {
+    await page.goto(hostname, {
+      waitUntil: ['domcontentloaded', 'networkidle0']
+    });
 
-    const links = await page.$$eval('a', anchors => anchors);
-    expect(links.length).toBeGreaterThan(4);
+    // wait for the feedback buttons to be rendered, scroll down and click them
+    const feedbackButtons = await page.waitForSelector('cagov-pagefeedback .js-feedback-yes');
+    await page.evaluate(() => {
+      document.querySelector('.js-feedback-yes').scrollIntoView(false); // scroll pegged at bottom so header row doesn't obscure it
+    });
+    await page.evaluate(() => {
+      document.querySelector('.js-feedback-yes').click();
+    });
+
+    // make sure the GA event action is sent
+    let ratingResult = await waitForThisEvent('ea', '^helpful', 5000)
+    expect(ratingResult).toStrictEqual('PASS');
+  }, timeout);
+});
+
+describe('homepage', () => {
+  test('menu events are firing', async () => {
+    await page.goto(hostname, {
+      waitUntil: ['domcontentloaded', 'networkidle0']
+    });
+
+    // wait for the feedback buttons to be rendered, scroll down and click them
+    const menuButton = await page.waitForSelector('cagov-navoverlay .hamburger');
+    await page.evaluate(() => {
+      document.querySelector('.hamburger').scrollIntoView();
+    });
+    await page.evaluate(() => {
+      document.querySelector('.open-menu').click();
+    });
+    await page.evaluate(() => {
+      document.querySelector('.js-event-hm-menu').click();
+    });
+
+    let homeClickResult = await waitForThisEvent('ea', '^homepage-menu', 5000)
+    expect(homeClickResult).toStrictEqual('PASS');    
+    
   }, timeout);
 });
 
@@ -60,17 +141,6 @@ describe('what is open', () => {
     await page.waitForSelector('#awesomplete_list_1 li');
     const listitems = await page.$$eval('#awesomplete_list_1 li', listitems => listitems);
     expect(listitems.length).toBeGreaterThan(1);
-    // await page.click('#awesomplete_list_1 li');
-
-    // await page.type('#location-query', 'San Diego');
-    // await page.type('#activity-query', 'Schools');
-    // await page.waitForSelector('#awesomplete_list_2 li');
-    // await page.click('#awesomplete_list_2 li');
-    // await page.click("#reopening-submit");
-
-    // await page.waitForSelector('.card-county');
-    // const counties = await page.$$eval('.card-county', counties => counties);
-    // expect(counties.length).toBeGreaterThan(0);
   }, timeout);
 });
 
