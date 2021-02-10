@@ -29,9 +29,11 @@ shared JS
 
 County search widget like the one on the Equity page
 
-Tab 1. `cagov-chart-vaccination-groups-race-ethnicity` - Race and ethnicity
-Tab 2. `cagov-chart-vaccination-groups-age` - Vaccine Equity by Age
-Tab 3. `cagov-chart-vaccination-groups-gender` - Vaccine Equity by Gender
+#### Tabs
+
+1. `cagov-chart-vaccination-groups-race-ethnicity` - Race and ethnicity
+2. `cagov-chart-vaccination-groups-age` - Vaccine Equity by Age
+3. `cagov-chart-vaccination-groups-gender` - Vaccine Equity by Gender
 
 #### Commented out
 `cagov-chart-vaccination-groups-race-ethnicity-age` - Custom chart that has more complex data (2 criteria Race and Age together)
@@ -46,19 +48,18 @@ Will migrate snippet to staging when ready to launch.
 
 [Charts Sandbox](https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=8906&action=edit)
 
+Vaccines - we are editing the `/pages/wordpress_posts/vaccine.html` and will move to staging closer to launch.
+
 ### Content
-Category names pulled from Word press from sample charts 
+Vaccination group names are pulled from WordPress from sample charts.
 
 ### Translations
 Not yet scheduled
 
+
+### Code snippet example
+
 Code supports extra data points on each bar
-
-### Vaccine page
-Editing .html until ready to move code snippet to Wordpress & staging.
-`/pages/wordpress_posts/vaccine.html`
-
-In progress here as a reference / reminder.
 
 ```
 <!-- charts -->
@@ -80,7 +81,7 @@ In progress here as a reference / reminder.
           <ul>
             <li data-label="chartTitle">% administered (people with at least 1 dose) by race and ethnicity in California</li>
             <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
+            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
           </ul>
         </cagov-chart-vaccination-groups-race-ethnicity>
 
@@ -88,7 +89,7 @@ In progress here as a reference / reminder.
           <ul>
             <li data-label="chartTitle">% administered (people with at least 1 dose) by age in California</li>
             <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
+            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
             <li data-label="legendLabel">% of vaccines administered</li>
           </ul>
         </cagov-chart-vaccination-groups-age>
@@ -96,7 +97,7 @@ In progress here as a reference / reminder.
         <cagov-chart-vaccination-groups-gender class="chart d-hide">
           <li data-label="chartTitle">% administered (people with at least 1 dose) by gender in California</li>
           <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-          <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
+          <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
         </cagov-chart-vaccination-groups-gender>
     </div>
     <!-- <div class="row">
@@ -144,7 +145,7 @@ https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race
 `equityChartsVEDataLoc`
 : https://files.covid19.ca.gov/data/vaccine-equity/
 
-### `meta` (or `docs`)
+### `meta`
 The meta property in the data set can be updated with a structured version of the info from this file.
 We do this to help version these light static file APIs.
 
@@ -154,18 +155,18 @@ Not yet
 ### Data suppression policy
 TBD
 
-### Data Methodology &  Processing Notes
+### Data Methodology & Processing Notes
+TBD (if any)
 
 ### Data pipeline
 
-High level overview:
+High level overview of the data pipeline.
 
 `CAIRS > CDPH > Snowflake Marketplace > SQL queries > Cron repo > Azure FaaS trigger requests > Write to covid-static > published to /data folder > Synced to files.covid19.ca.gov files server after 10 minutes  > JSON file > covid19 > Web component fetch request > /src/js/charts-sandbox/chart/*`
 
 
 ### Web component configuration
 
-Quick reminder / Overview: 
 `Wordpress page > Web component HTML markup with data labels and attributes > published via Wordpress API to covid19 11ty pages > registered web component > javascript > fetches data and data labels > loads into d3 draw function > d3 renders responsive SVG graphics`
 
 ---
@@ -182,11 +183,14 @@ Most recent ones
 
 ### Which chart is which web component?
 
-Mapping
+@TODO add screenshots
 
-Race and ethnicity
+| Chart | Web component name | Data Source | Screenshot | Figma Frame |
+| -- | -- | -- | -- | -- |
+| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | ![Chart](./assets/chart_gender.png) | -- |
+| Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
+| Age | `cagov-chart-vaccination-groups-age` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_california.json) | -- | -- |
 
-3 tabs
 
 ### Notes on how the chart works
 Pass data to simple chart

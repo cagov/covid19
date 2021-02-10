@@ -10,13 +10,13 @@ import css from "./index.scss";
 
     <li data-label="chartTitle">% administered (people with at least 1 dose) by race and ethnicity in California</li>
     <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-    <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group.</li>
+    <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
 
  */
 export default function template({
   chartTitle = "% administered (people with at least 1 dose) by race and ethnicity in California",
   chartDescription = "Lorem ipsum dolar sit amet, consectetur adipiscing elit.",
-  chartDataLabel = "Note: Data shown is a cumulative total, updated daily. To protect patient privacy, values are not shown if there are less than 20,000 in a group."
+  chartDataLabel = "Note: Data shown is a cumulative total, updated daily."
 }) {
   return /*html*/ `
     <div class="py-2">
