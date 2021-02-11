@@ -51,7 +51,6 @@ function setupFormSubmitListener(aList) {
 }
 
 function countySelected(county) {
-  console.log("County selected",county);
   document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
 
@@ -150,8 +149,6 @@ else if (window.innerWidth > 919 && window.innerWidth < 1200) {
 }
 
 async function setupCharts() {
-  console.log("Setting up 2.0 charts");
-
   // these are county toggles and state toggles
   if(document.getElementById('casesChartState')) {
     // window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
@@ -179,9 +176,9 @@ async function setupCharts() {
     // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
 
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    console.log("Chart width 3",chartWidth3);
-    console.log("Chart height 3",chartHeight3);
-    console.log("Window width",window.innerWidth);
+    // console.log("Chart width 3",chartWidth3);
+    // console.log("Chart height 3",chartHeight3);
+    // console.log("Window width",window.innerWidth);
     let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
                                             tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
                               // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
@@ -269,7 +266,6 @@ function showStateWides() {
 }
 
 function showCounties() {
-  console.log("showCounties()");
   resetCountyToggles();
   document.querySelectorAll('.js-toggle-county.county').forEach(c => {
     c.classList.add('toggle-active');
