@@ -139,15 +139,16 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
-    let group = svg.append("g")
-    group
-      .append("rect")
-        .attr("fill", "#000000")
-        .attr("class", "divider")
-        .attr("y", y(6)+this.bar_vspace*7/12)
-        .attr("x", 0)
-        .attr("width", this.dimensions.width)
-        .attr("height", 0.75);
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g")
+    // group
+    //   .append("rect")
+    //     .attr("fill", "#000000")
+    //     .attr("class", "divider")
+    //     .attr("y", y(6)+this.bar_vspace*7/12)
+    //     .attr("x", 0)
+    //     .attr("width", this.dimensions.width)
+    //     .attr("height", 0.75);
   }
 
   listenForLocations() {

@@ -115,7 +115,7 @@ function writeBars(svg, data, x, y) {
           // }
         });
 
-    // // Bullet
+    // Baseline indicator
     // groups
     //     .append("rect")
     //     .attr("fill", "#1f2574")
