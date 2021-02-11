@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en-US" xml:lang="en-US">
+<html lang="vi" xml:lang="vi">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Since the beginning of the COVID-19 crisis, California has had to face facts and make hard decisions. To do so, we needed solid data. Governor Newsom signed Executive Order N-X-2020 to release government-run real-time COVID-19 data sources. This data is verified by our community of experts.">
+    <meta name="description" content="Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% người xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng{{_varStatVaccinesDailyPct_}}% #} […]">
     <meta name="author" content="State of California">
      
-  <title>Data and tools - Coronavirus COVID-19 Response</title>
+  <title>Theo dõi COVID-19 tại California - Coronavirus COVID-19 Response</title>
 
 
     <!-- Collect errors -->
     <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
-    <meta content="Data and tools" property="og:title">
-    <meta content="Since the beginning of the COVID-19 crisis, California has had to face facts and make hard decisions. To do so, we needed solid data. Governor Newsom signed Executive Order N-X-2020 to release government-run real-time COVID-19 data sources. This data is verified by our community of experts." property="og:description">
+    <meta content="Theo dõi COVID-19 tại California" property="og:title">
+    <meta content="Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% người xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng{{_varStatVaccinesDailyPct_}}% #} […]" property="og:description">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://www.google-analytics.com/">
-    <link href="https://covid19.ca.gov/data-and-tools/" rel="canonical">
+    <link href="https://covid19.ca.gov/vi/v2-state-dashboard/" rel="canonical">
 
     <link rel="manifest" href="/img/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="alternate" hreflang="es" href="https://covid19.ca.gov/es/data-and-tools/"><link rel="alternate" hreflang="tl" href="https://covid19.ca.gov/tl/data-and-tools/"><link rel="alternate" hreflang="ar" href="https://covid19.ca.gov/ar/data-and-tools/"><link rel="alternate" hreflang="ko" href="https://covid19.ca.gov/ko/data-and-tools/"><link rel="alternate" hreflang="vi" href="https://covid19.ca.gov/vi/data-and-tools/"><link rel="alternate" hreflang="zh-Hans" href="https://covid19.ca.gov/zh-hans/data-and-tools/"><link rel="alternate" hreflang="zh-Hant" href="https://covid19.ca.gov/zh-hant/data-and-tools/">
+    <link rel="alternate" hreflang="en" href="https://covid19.ca.gov/v2-state-dashboard/"><link rel="alternate" hreflang="es" href="https://covid19.ca.gov/es/v2-state-dashboard/"><link rel="alternate" hreflang="tl" href="https://covid19.ca.gov/tl/v2-state-dashboard/"><link rel="alternate" hreflang="ar" href="https://covid19.ca.gov/ar/v2-state-dashboard/"><link rel="alternate" hreflang="ko" href="https://covid19.ca.gov/ko/v2-state-dashboard/"><link rel="alternate" hreflang="zh-Hans" href="https://covid19.ca.gov/zh-hans/v2-state-dashboard/"><link rel="alternate" hreflang="zh-Hant" href="https://covid19.ca.gov/zh-hant/v2-state-dashboard/">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
@@ -36,10 +36,11 @@
 
     
   <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
+    <meta name="robots" content="noindex">
   
     <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
   
-  <meta property="og:url" content="https://covid19.ca.gov/data-and-tools/">
+  <meta property="og:url" content="https://covid19.ca.gov/vi/v2-state-dashboard/">
 
 
     
@@ -57,6 +58,8 @@
 
   
       
+        <link rel="stylesheet" type="text/css" href="/fonts/vi.css">
+      
     
 
     
@@ -70,23 +73,23 @@
 
   <div class="header-wrap">
     
-    <a class="header-logo" href="/">
+    <a class="header-logo" href="/vi/">
       <div class="header-logo-grid">
         <div class="header-logo-mark">
-          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><title>California for All</title><g class="mark-ca"><path class="logo-mark-orange" d="M48.2,83l-13.2,28.6h25.2L48.2,83z M66.7,126.9H28.1l-6,13H0.2l48.7-99.8l44.6,99.8H72.1L66.7,126.9z"/><polygon class="logo-mark-orange" points="117,42.9 117,122.4 146.9,122.4 146.9,139.9 97.1,139.9 97.1,42.9"/><polygon class="logo-mark-orange" points="170.2,42.9 170.2,122.4 200,122.4 200,139.9 150.2,139.9 150.2,42.9"/></g>
+          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><title>California cho Mọi Người</title><g class="mark-ca"><path class="logo-mark-orange" d="M48.2,83l-13.2,28.6h25.2L48.2,83z M66.7,126.9H28.1l-6,13H0.2l48.7-99.8l44.6,99.8H72.1L66.7,126.9z"/><polygon class="logo-mark-orange" points="117,42.9 117,122.4 146.9,122.4 146.9,139.9 97.1,139.9 97.1,42.9"/><polygon class="logo-mark-orange" points="170.2,42.9 170.2,122.4 200,122.4 200,139.9 150.2,139.9 150.2,42.9"/></g>
           <g class="mark-all"><path class="logo-mark-white" d="M21,8.7c-2-2.2-4.3-3.3-7.1-3.3c-4.6,0-8.4,3.9-8.4,8.7c0,4.8,3.7,8.7,8.4,8.7c2.9,0,5.3-1.2,7.4-3.6l3.4,3.4 c-2.8,3.1-6.6,5.1-10.8,5.1C6.2,27.8,0,21.7,0,14.1C0,6.5,6.2,0.4,13.9,0.4c4.2,0,8.1,2,10.8,5.1L21,8.7z"/><path class="logo-mark-white" d="M37,11.8l-3.6,7.9h6.9L37,11.8z M42,23.9H31.4l-1.6,3.6h-6L37.1,0l12.3,27.5h-5.9L42,23.9z"/><polygon class="logo-mark-white" points="56.1,0.8 56.1,22.7 64.3,22.7 64.3,27.5 50.6,27.5 50.6,0.8"/><rect class="logo-mark-white" x="66" y="0.8" width="5.5" height="26.7"/><polygon class="logo-mark-orange" points="74.6,27.5 74.6,0.8 89.1,0.8 89.1,5.6 80.1,5.6 80.1,11.1 87.6,11.1 87.6,15.9 80.1,15.9 80.1,27.5"/><path class="logo-mark-orange" d="M95.1,14.1c0,4.8,3.7,8.7,8.4,8.7c4.6,0,8.4-3.9,8.4-8.7c0-4.8-3.8-8.7-8.4-8.7C98.8,5.4,95.1,9.3,95.1,14.1 M117.4,14.1c0,7.6-6.2,13.7-13.9,13.7c-7.7,0-13.9-6.1-13.9-13.7c0-7.6,6.2-13.7,13.9-13.7C111.2,0.4,117.4,6.5,117.4,14.1"/><path class="logo-mark-orange" d="M125.3,5.6v6.7h2.9c2.3,0,3.9-1.1,3.9-3.4c0-2.2-1.6-3.3-3.9-3.3H125.3z M125.3,16.8v10.6h-5.5V0.8h8.8 c4.9,0,9,3.1,9,8c0,3.1-1.7,5.7-4.2,7l5,11.6h-6L128,16.8H125.3z"/><polygon class="logo-mark-white" points="159.4,0.8 164.9,0.8 164.9,28.2 145.9,11.6 145.9,27.5 140.4,27.5 140.4,0 159.4,16.6"/><rect x="167.3" y="0.8" class="logo-mark-white" width="5.5" height="26.7"/><path class="logo-mark-white" d="M187.2,11.8l-3.6,7.9h6.9L187.2,11.8z M192.3,23.9h-10.6l-1.6,3.6h-6L187.4,0l12.3,27.5h-5.9L192.3,23.9z"/></g></svg>
         </div>
         <div class="header-logo-text">
           <div class="header-logo-text-url">COVID19.CA.GOV</div>
-          <div class="header-logo-text-title">Your Actions Save Lives</div>
+          <div class="header-logo-text-title">Hành Động của Quý Vị Sẽ Giúp Cứu Sống Mọi Người</div>
         </div>
       </div>
     </a>
 
     <div class="header-search" role="search">
-      <form class="header-search-form" action="/search/">
-        <label class="header-search-label" for="header-search-site">Search</label>
-        <input name="q" id="header-search-site" class="header-search-field" type="search" data-placeholder-wide="Search this site" data-placeholder-mobile="Search">
+      <form class="header-search-form" action="/vi/search/">
+        <label class="header-search-label" for="header-search-site">Tìm kiếm</label>
+        <input name="q" id="header-search-site" class="header-search-field" type="search" data-placeholder-wide="Tìm kiếm trên trang web này" data-placeholder-mobile="Tìm kiếm">
         <button class="header-search-button" aria-label="Submit Search">
           <svg class="header-search-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title></title><path d="M13.8,8.5c0-3-2.4-5.4-5.4-5.4c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4C11.4,13.8,13.8,11.4,13.8,8.5z M20,18.5 c0,0.8-0.7,1.5-1.5,1.5c-0.4,0-0.8-0.2-1.1-0.5l-4.1-4.1c-1.4,1-3.1,1.5-4.8,1.5C3.8,16.9,0,13.1,0,8.5S3.8,0,8.5,0
             c4.7,0,8.5,3.8,8.5,8.5c0,1.7-0.5,3.4-1.5,4.8l4.1,4.1C19.8,17.7,20,18.1,20,18.5z"/></svg>
@@ -103,38 +106,38 @@
         data-toggle="dropdown"
         id="dropdown-menu-button"
       >
-          <span id="dropdown-text" data-label-wide="Select language" data-label-mobile="Language"></span>
+          <span id="dropdown-text" data-label-wide="Chọn ngôn ngữ" data-label-mobile="Ngôn ngữ"></span>
           <svg aria-hidden="true" class="header-language-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19"><path d="M0.7,2.2l1.5-1.4C2.7,0.2,3.2,0,3.9,0s1.2,0.2,1.7,0.7L15,10l9.4-9.3c0.5-0.5,1-0.7,1.8-0.7
             c0.7,0,1.3,0.2,1.8,0.7l1.4,1.4C29.8,2.7,30,3.2,30,3.9s-0.2,1.3-0.7,1.8L16.7,18.2c-0.5,0.5-1.1,0.7-1.8,0.7s-1.3-0.2-1.8-0.7
             L0.7,5.7C0.2,5.2,0,4.6,0,3.9S0.2,2.7,0.7,2.2z"></path></svg>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdown-menu-button">
           
-            <a class="dropdown-item" rel="alternate" lang="es" hreflang="es" href="/es/data-and-tools/">Español</a>
+            <a class="dropdown-item" rel="alternate" lang="en" hreflang="en" href="/v2-state-dashboard/">English</a>
           
-            <a class="dropdown-item" rel="alternate" lang="tl" hreflang="tl" href="/tl/data-and-tools/">Tagalog</a>
+            <a class="dropdown-item" rel="alternate" lang="es" hreflang="es" href="/es/v2-state-dashboard/">Español</a>
           
-            <a class="dropdown-item" rel="alternate" lang="ar" hreflang="ar" href="/ar/data-and-tools/">العربية</a>
+            <a class="dropdown-item" rel="alternate" lang="tl" hreflang="tl" href="/tl/v2-state-dashboard/">Tagalog</a>
           
-            <a class="dropdown-item" rel="alternate" lang="ko" hreflang="ko" href="/ko/data-and-tools/">한국어</a>
+            <a class="dropdown-item" rel="alternate" lang="ar" hreflang="ar" href="/ar/v2-state-dashboard/">العربية</a>
           
-            <a class="dropdown-item" rel="alternate" lang="vi" hreflang="vi" href="/vi/data-and-tools/">Tiếng Việt</a>
+            <a class="dropdown-item" rel="alternate" lang="ko" hreflang="ko" href="/ko/v2-state-dashboard/">한국어</a>
           
-            <a class="dropdown-item" rel="alternate" lang="zh-Hans" hreflang="zh-Hans" href="/zh-hans/data-and-tools/">中文</a>
+            <a class="dropdown-item" rel="alternate" lang="zh-Hans" hreflang="zh-Hans" href="/zh-hans/v2-state-dashboard/">中文</a>
           
-            <a class="dropdown-item" rel="alternate" lang="zh-Hant" hreflang="zh-Hant" href="/zh-hant/data-and-tools/">文言</a>
+            <a class="dropdown-item" rel="alternate" lang="zh-Hant" hreflang="zh-Hant" href="/zh-hant/v2-state-dashboard/">文言</a>
           
-          <a class="dropdown-item" href="/translate/">More …</a>
+          <a class="dropdown-item" href="/vi/translate/">Thêm ...</a>
         </div>
       </div>
       <cagov-navoverlay 
-        data-json="/menu--en.json"
-        data-search="/search/"
-        data-label-home="Home"
+        data-json="/menu--vi.json"
+        data-search="/vi/search/"
+        data-label-home="Trang Web Chính Thức của Chính Quyền Tiểu Bang California"
         data-label-menu="Menu"
-        data-label-menu-close="Close"
-        data-label-search="Search"
-        data-label-placeholder="What are you looking for?"></cagov-navoverlay>
+        data-label-menu-close="Đóng cửa"
+        data-label-search="Tìm kiếm"
+        data-label-placeholder="Quý vị đang tìm gì?"></cagov-navoverlay>
   </div>
 
 </header>
@@ -142,394 +145,690 @@
 
     <main id="main">
       
-  <div class="container-fluid jumbotron inverse-hyperlink jumbo-img">
+  <div class="container-fluid jumbotron mb-0 inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h1>Data and tools</h1>
+          <h1>Theo dõi COVID-19 tại California</h1>
           
-            <p class="small-text">Last updated&nbsp;February 11, 2021 at 9:10 AM</p>
+            <p class="small-text">Đường dây nóng báo cáo thông tin về đại dịch COVID-19&nbsp;
+                10 tháng 2, 2021 lúc 11:00</p>
           
         </div>
       </div>
     </div>
-  </div><div class="container">
+  </div>
+  
+
+<!-- state dash 2.0 comment in njk -->
+<div class="bg-lightblue">
+    <div class="container py-2">
+        <div class="row pb-4">
+            <div class="col-lg-10 mx-auto">
+            <h2 class="text-center color-purple">Update for 10 tháng 2, 2021</h2>
+                <p>As of 10 tháng 2, California has 3,362,981 confirmed cases of COVID-19, resulting in 44,425 deaths. The number of COVID-related deaths increased by 1.2 percent from the prior day total of 43,905.</p>
+                </p>Updated 10 tháng 2, 2021, with data from 9 tháng 2, 2021.</p>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-md-center summary-boxes">
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
+                
+                    <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>3,362,981</strong> <span class="text-300">total</span></div>
+                    <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>8,390</strong> <span class="text-300">today</span></div>
+                    <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                     <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     29.1 <span class="text-300">new cases per 100K</span>
+                     
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+                
+                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>44,425</strong> <span class="text-300">total</span></div>
+                    <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>520</strong> <span class="text-300">today</span></div>
+                    <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     0.4 <span class="text-300">new deaths per 100K</span>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+                
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>43,990,237</strong> <span class="text-300">total</span></div>
+                    <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>187,297</strong> <span class="text-300">today</span></div>
+                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+                    
+                    <span class="chart-arrow" arria-hidden="true">
+					<svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+						</svg>
+
+						<!--negative arrow-->
+						<svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+						</svg>
+					</span> 
+                     7.8% <span class="text-300">test positivity</span>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-10px">
+                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
+                
+                    <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>5,089,483</strong> <span class="text-300">total</span></div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-4 py-5">
+            <div class="col-lg-10 mx-auto">
+                <p class="small-text">Note: Rates of cases and tests are based on a 7-day average with a 7-day lag. Rates of deaths are based on a 7-day average with a 21-day lag due to delays in reporting. Directional change is compared to the prior 7-day period, with the exception of vaccines administered, which is based on prior day's value. Data is provided by the California Department of Public Health.</p>
+            </div>
+        </div>
+
+    </div><!--END container-->
+</div><!--END LIGHT BLUE BG-->
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
+    <div class="container py-2">
+        <div class="row pb-4">
+            <div class="col-lg-10 mx-auto color-white">
+                <h2 class="text-center color-orange" id="reopening-equitably">Vaccination data</h2>
+                <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We're tracking the progress of vaccinating Californians across the state.</p>
+
+                <div class="mt-3 text-center">
+                    <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">
+                        <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div><!--END container-->
+</div>
+
+
+<div class="container py-4">
+    <div class="col-lg-10 mx-auto">
+        <h2 class="text-center color-purple">See the data statewide and in each county</h2>
+        <div class="row d-flex justify-content-md-center">
+            <form class="form-inline" id="county-form">
+            <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
+                <label for="county" class="sr-only">County</label>
+                <div class="awesomplete">
+                <input
+                    aria-expanded="false"
+                    aria-owns="awesomplete_list_1"
+                    autocomplete="off"
+                    class="form-control form-control-lg"
+                    data-list=""
+                    data-multiple=""
+                    id="location-query"
+                    role="combobox"
+                    type="text"
+                    placeholder="Enter a county"
+                />
+                <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+                <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+                </div>
+                <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+            </div>
+            <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
+            </form>
+        </div>
+        <div class="row d-flex justify-content-md-center">
+            <span id="county-query-error" class="error-text d-none">County not found</span>
+        </div>
+
+        <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
+
+        <h3 class="text-center mt-4 mb-0">Daily cases and deaths</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+                </div>
+            </div>
+        </div>
+        <p>California has 3,362,981 confirmed cases of COVID-19, resulting in 44,425 deaths.</p>
+ 
+        <div class="row d-flex justify-content-md-center">
+
+            <div class="toggle-group-container cases-group">
+            <div  id="cases-county-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="casesChartCounty"></div>
+            </div>
+            <div id="cases-state-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="casesChartState"></div>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div class="row d-flex justify-content-md-center">
+            <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</p>
+        </div>
+
+        <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+                </div>
+            </div>
+        </div>
+        <p>The number of COVID-19 diagnostic test results in California reached a total of 43,990,237, an increase of 187,297 tests from the prior day total. The rate of positive tests over the last 7 days is 7.8%.  </p>
+
+        <div class="row d-flex justify-content-md-center">
+        
+            <div class="toggle-group-container cases-group">
+            <div  id="testing-county-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="testingChartCounty"></div>
+            </div>
+            <div id="testing-state-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="testingChartState"></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-md-center">
+            <p class="small-text">Note: Testing date is the date the test was performed. Reported date is the date the event was reported to the California Department of Public Health. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate was previously reported as a 14-day average.</p>
+        </div>
+
+
+
+        <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+            <div class="js-toggle-county-container d-none">
+                <div class="large-tabs">
+                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
+                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+                </div>
+            </div>
+        </div>
+        <p>
+            The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of 11,516, a decrease of 388 from the prior day total.
+            The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of 3,127, a decrease of 137 from the prior day total.
+        </p>
+        <div class="row d-flex justify-content-md-center">
+            <div class="toggle-group-container cases-group">
+            <div  id="hospital-county-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="hospitalChartCounty"></div>
+            </div>
+            <div id="hospital-state-graph" class="toggle-group-element">
+                <div class='tableauPlaceholder' id="hospitalChartState"></div>
+            </div>
+            </div>
+
+        </div>
+
+        <div class="bg-darkblue py-5 full-bleed mb-5">
+            <div class="container py-2">
+                <div class="row pb-4">
+                    <div class="col-lg-10 mx-auto color-white">
+                        <h2 class="text-center color-orange" id="reopening-equitably">More data and tools</h2>
+                        <p>California has collected a wide range of data to inform its response to COVID-19. We've developed tools to process and analyze this data. These data and tools are available to the public.</p>
+
+                        <div class="mt-3 text-center">
+                            <a href="/data-and-tools/" class="link-arrow-white">
+                                <div class="link-arrow-label">View all data and tools</div><cagov-arrow></cagov-arrow>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div><!--END container-->
+        </div>
+
+        <div class="row d-flex justify-content-md-center">
+
+            <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
+            
+            
+
+                <div class="grid-layout-hd bg-lightblue bd-lightblue">
+                    <div class="grid-main bg-lightblue py-0"><h3 class="my-0 text-center">California’s county risk levels</h3>
+                    </div>
+                    <div class="grid-single single1">
+                        <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
+                        <p class="text-small mt-2 mb-0">Many non-essential indoor business operations are closed</p>
+                    </div>
+                    <div class="grid-single single2">
+                        <div class="btn-matrix bg-red-btn">SUBSTANTIAL</div>
+                        <p class="text-small mt-2 mb-0">Some non-essential indoor business operations are closed</p>
+
+
+                    </div>
+                    <div class="grid-single single3">
+                        <div class="btn-matrix bg-orange-btn">MODERATE</div>
+                        <p class="text-small mt-2 mb-0">Some indoor business operations are open with modifications</p>
+                    </div>
+                    <div class="grid-single single4">
+                        <div class="btn-matrix bg-yellow-btn">MINIMAL</div>
+                        <p class="text-small mt-2 mb-0">Most indoor business operations are open with modifications</p>
+                    </div>
+                </div>
+
+                <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of 9 tháng 2, 2021</h3>
+                <p class="mt-0">Tier assignments may occur any day of the week and may occur more than once a week. Select a county to see what region it’s in.</p>
+
+            <div class="tableauPlaceholder" id="mapChartContainer"></div>
+        </div>
+
+        <div class="text-center text-small">
+        <p>All data and tier assignments are based on results from week ending 30 tháng 1, 2021. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>. The positivity rate in this map excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</p>
+        </div>
+  
+        <div class="text-center">
+
+            <a href="/safer-economy/" class="link-arrow-blue">
+            <div class="link-arrow-label">See what can be open in your county</div>
+            <cagov-arrow></cagov-arrow>
+            </a>
+        </div>
+    </div><!--END col-10-->
+</div><!--END CONTAINER -->
+
+<div class="bg-lightblue">
+    <div class="container py-2">
+    <h2 class="text-center color-orange">Infections by group</h2>
+        <div class="col-lg-12 bg-white px-3 py-4">
+             <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+                <div class="large-tabs">
+                    <button class="large-tab toggle-active js-toggle-group ethnicity">Race/Ethnicity</button>
+                    <button class="large-tab js-toggle-group gender">Gender</button>
+                    <button class="large-tab js-toggle-group age">Age</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="toggle-group-container col-10 mx-auto">
+
+                    <div id="gender-graph" class="toggle-group-element" style="display:none">
+                        <div id="genderGroupChartContainer">
+                            <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
+                            <div class="tableauPlaceholder"></div>
+                        </div>
+                    </div>
+                    <div id="age-graph" class="toggle-group-element" style="display:none">
+                        <div id="ageGroupChartContainer">
+                            <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths.</p>
+                            <div class="tableauPlaceholder"></div>
+                        </div>
+                    </div>
+                    <div id="ethnicity-graph" class="toggle-group-element">
+                        <div id="ethnicityGroupChartContainer">
+                            <p>
+                        The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.
+                                </p>
+                                 <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
+                            <div class="tableauPlaceholder"></div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-5 p-rel">
+            <a href="/equity/" class="link-arrow-blue mb-4 mt-3">
+            <div class="link-arrow-label">See more detailed data by group</div>
+            <cagov-arrow></cagov-arrow>
+            </a>  
+	</div><!--END col-12-->
+  </div><!--END CONTAINER-->
+</div><!--END BG lightblue-->
+
+  <div class="container">
     <div class="row">
       <div class="col-lg-10 mx-auto">
         
-<p>Since the beginning of the COVID-19 crisis, California has had to face facts and make hard decisions. Defeating COVID-19 will require collaboration between state government, local governments, research universities, technologists, citizen scientists, and other members of the public.&nbsp;</p>
-
-
-
-<p>California has collected a wide range of data to inform its response to COVID-19, and developed tools to help process and analyze that data. These data and tools are available for researchers, scientists, and technologists.</p>
-
-
-
-<p>They’re available as a downloadable set, and in new models and dashboards.</p>
-
-
-
-<h2>Data models</h2>
-
-
-
-<p>The California COVID-19 Assessment Tool (CalCat) is a model to inform state and local response. You can find nowcasts, forecasts, and scenarios.&nbsp; </p>
-
-
-
-<p>See the curve: <br><a href="https://calcat.covid19.ca.gov/">https://calcat.covid19.ca.gov</a></p>
-
-
-
-<h2>Data dashboards</h2>
-
-
-
-<h3>Statewide case statistics and demographics&nbsp;</h3>
-
-
-
-<p>This includes positive cases, deaths, and testing results.</p>
-
-
-
-<p><a href="https://public.tableau.com/views/COVID-19CasesDashboard_15931020425010/Cases?:embed=y&amp;:showVizHome=no"></a><a href="https://public.tableau.com/views/COVID-19CasesDashboard_15931020425010/Cases?:embed=y&amp;:showVizHome=no">View statewide data</a></p>
-
-
-
-<h3>The impact on hospitals in the state of California&nbsp;</h3>
-
-
-
-<p>This includes suspected and positive hospitalized patients by county, including ICU patients.</p>
-
-
-
-<p><a href="https://public.tableau.com/views/COVID-19HospitalsDashboard/Hospitals?:embed=y&amp;:showVizHome=no"></a><a href="https://public.tableau.com/views/COVID-19HospitalsDashboard/Hospitals?:embed=y&amp;:showVizHome=no">View hospital data</a></p>
-
-
-
-<h3>Personal Protection Equipment (PPE) distribution</h3>
-
-
-
-<p>Personal Protection Equipment (PPE) distributed by California Governor’s Logistics Task Force. PPE products include N-95 respirators, procedure masks, gowns, face shields and gloves.</p>
-
-
-
-<p><a href="https://public.tableau.com/views/COVID-19LogisticsDashboard/Logistics?:embed=y&amp;:showVizHome=no#2">View PPE distribution data</a></p>
-
-
-
-<h3>Bed surges</h3>
-
-
-
-<p>The ability to respond to patients that need beds in facilities such as hospitals, arenas, and other alternative care facilities.</p>
-
-
-
-<p><a href="https://public.tableau.com/views/COVID-19BedSurgeDashboard/BedSurge?:embed=y&amp;:showVizHome=no">View bed surge data</a></p>
-
-
-
-<h3>The impact on our homeless population</h3>
-
-
-
-<p>The impact of Project Roomkey and other measures to help homeless Californians. This includes room acquisition, room occupancy, and trailer distribution.</p>
-
-
-
-<p><a href="https://public.tableau.com/views/COVID-19HomelessImpactDashboard/HomelessImpact?:embed=y&amp;:showVizHome=no">View homeless data</a></p>
-
-
-
-<h2>Databases</h2>
-
-
-
-<p>The COVID-19 database is available for you in two ways:</p>
-
-
-
-<ol><li>Access the database directly from <a href="https://resources.snowflake.com/video/introduction-to-snowflake-data-marketplace">Snowflake Data Marketplace</a> in ready-to-query SQL format. If you are not a Snowflake customer, <a href="https://trial.snowflake.com/?SDM=sdm-ca.gov">sign up for a free trial account today</a>.</li><li>Access the data through the <a href="https://data.ca.gov/group/covid-19">California Open Data Portal</a>. </li></ol>
-
-
-
-<h2>Data dictionaries</h2>
-
-
-
-<p>The COVID-19 datasets contain the following information. Some of these data dictionaries map back to the data dashboards above.</p>
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>COVID-19 CASES DATA</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <p>Verified by the California Department of Public Health.</p>
-<p><strong>Note:</strong> Due to issues with the state&#8217;s electronic laboratory reporting system, these data represent an underreporting of actual positive cases in one single day.</p>
-<figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>COUNTY</td><td>String</td><td>County for which case statistics were reported.</td><td>Daily</td></tr><tr><td>TOTAL POSITIVE</td><td>Numeric</td><td>Cumulative number of laboratory-confirmed positive COVID-19 cases as reported by local health departments , beginning March 19, 2020.</td><td>Daily</td></tr><tr><td>NUMBER_DIED</td><td>Numeric</td><td>Cumulative number of COVID-related deaths as reported by local health department, beginning March 19, 2020. This determination is made by local health departments based on the cause of death reported on death certificates. It is expected that, to be counted, COVID is the cause of death or at least a contributing factor to the death. COVID-related deaths are also counted in &#8220;Positive Cases&#8221;.</td><td>Daily</td></tr><tr><td>New Cases</td><td>Numeric</td><td>Number of new lab-confirmed positive COVID-19 cases reported by local health departments each day.</td><td>Daily</td></tr><tr><td>New Deaths</td><td>Numeric</td><td>Number of new COVID-19 related deaths reported by local health departments to each day.</td><td>Daily</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>HOSPITALS DATA</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <p>Verified by the California Department of Public Health, in partnership with the California Hospitals Association.</p>
-<figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>County</td><td>String</td><td>The County where the hospital is located. None of the consolidated reporters had hospitals in different counties.</td><td>Never</td></tr><tr><td>Today&#8217;s Date</td><td>Numeric</td><td>Date for which counts were reported.</td><td>Daily.&nbsp;</td></tr><tr><td>Previous Day&#8217;s COVID Confirmed Patients</td><td>Numeric</td><td>The number of<strong> </strong>new patients<strong> </strong>admitted the previous calendar day to an inpatient bed who have laboratory-confirmed COVID. This field should not include all patients in the hospital the previous day but instead detail COVID counts among new admissions only. This includes all inpatients, and does not include patients in affiliated clinics, outpatient departments, emergency departments and overflow locations awaiting an inpatient bed. Additional clarification added on June 16, 2020.</td><td>Daily</td></tr><tr><td>Previous Day&#8217;s Suspected COVID Patients</td><td>Numeric</td><td>The number of symptomatic patients, with tests for COVID pending laboratory confirmation, admitted the previous calendar day to an inpatient bed. This field should not include all patients in the hospital the previous day but instead detail COVID counts among new admissions only. This includes all inpatients, and does not include patients in affiliated clinics, outpatient departments, emergency departments and overflow locations awaiting an inpatient bed. <strong>Patients should be included in this field if they are suspected COVID positive at the time of admission regardless of how their status may have changed by the time data are entered the following day. </strong>Additional clarification added on June 16, 2020.</td><td>Daily</td></tr><tr><td>Previous Day&#8217;s Conversions to COVID Confirmed</td><td>Numeric</td><td>The number of total patients in the facility (irrespective of when they were admitted) whose status changed to COVID confirmed positive on the previous calendar day. This will include any individual who, on the previous day, had laboratory results return to confirm a COVID diagnosis where previously their diagnosis was unconfirmed. Added to SmartSheet June 16, 2020.</td><td>Daily</td></tr><tr><td>Hospitalized COVID Confirmed Patients</td><td>Numeric</td><td>The number of patients hospitalized in an inpatient bed who have laboratory-confirmed COVID. This is not a cumulative number. This includes all inpatients (including those in ICUs and Medical/Surgical units), and does not include patients in affiliated clinics, outpatient departments, emergency departments and overflow locations awaiting an inpatient bed. As of April 21, 2020, COVID ED patients were removed from the Hospitalized COVID count and counted separately, see &#8220;ED/Overflow COVID Patients.&#8221;</td><td>Daily</td></tr><tr><td>Hospitalized Suspected COVID Patients</td><td>Numeric</td><td>The number of patients hospitalized in an inpatient bed without a laboratory-confirmed COVID diagnosis who, in accordance with CDC’s Interim Public Health Guidance for Evaluating Persons Under Investigation (PUIs), have signs and symptoms compatible with COVID (most patients with confirmed COVID have developed fever and/or symptoms of acute respiratory illness, such as cough, shortness of breath or myalgia/fatigue). This includes all inpatients (including those in ICUs and Medical/Surgical units), and does not include patients in affiliated clinics, outpatient departments, emergency departments and overflow locations awaiting an inpatient bed. As of April 21, 2020, Suspected COVID ED patients were removed from the Hospitalized Suspected COVID count and counted separately, see &#8220;ED/Overflow COVID Patients.&#8221;</td><td>Daily</td></tr><tr><td>Hospitalized COVID Patients</td><td>Numeric</td><td>The number of patients currently hospitalized in an inpatient bed who have suspected or confirmed COVID. Added to SmartSheet April 21, 2020.</td><td>Never &#8211; This is a calculated field.</td></tr><tr><td>All Hospital Beds</td><td>Numeric</td><td>The total number of beds in the facility, including all surge beds, inpatient and outpatient post-surgical beds, labor and delivery unit beds, and observation beds. This includes the total number of beds for which the hospital could provide staff and equipment and is not necessarily reflective of the beds that are staffed at the time the facility reports. This field does not include emergency department (ED) bays. Added to SmartSheet April 21, 2020.</td><td>Infrequently</td></tr><tr><td>ICU COVID Confirmed Patients</td><td>Numeric</td><td>The number of laboratory-confirmed positive COVID patients that are in the ICU at the hospital. This includes all ICU beds (NICU, PICU, and adult). Additional clarification added on June 16, 2020.</td><td>Daily</td></tr><tr><td>ICU Suspected COVID Patients</td><td>Numeric</td><td>The number of symptomatic patients, with tests for COVID pending laboratory confirmation, that are in the ICU at the hospital. This includes all ICU beds (NICU, PICU, and adult). Additional clarification added on June 16, 2020.</td><td>Daily</td></tr><tr><td>ICU Available Beds</td><td>Numeric</td><td>The number of ICU beds available at the hospital. This includes all ICU beds (NICU, PICU, and adult). Additional clarification added on June 16, 2020.</td><td>Never. This is a calculated field.</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>LOGISTICS DATA</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <p>Personal Protection Equipment (PPE) fulfilled by California Office of Emergency Services.</p>
-<figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>County</td><td>String</td><td>County requesting the product</td><td>Daily</td></tr><tr><td>Product Family</td><td>String</td><td>Summary level category of the product</td><td>Daily</td></tr><tr><td>Quantity Filled</td><td>Numeric</td><td>Quantity of product sent to a warehouse/agency for fulfillment</td><td>Daily</td></tr><tr><td>Shipping Zip/Postal Code</td><td>Numeric</td><td>Zip where facility is located that is receiving the shipped product.</td><td>Never</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>LAB TESTING DATA</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <p>Current state of test results reported.</p>
-<figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>TESTING</td><td>Numeric</td><td>Cumulative number of individuals tested for COVID-19 reported to CDPH</td><td>Daily</td></tr><tr><td>DATE</td><td>Date</td><td>Date reported</td><td>Daily</td></tr><tr><td>TESTED</td><td>Numeric</td><td>Cumulative number of tests reported as pending from large laboratories</td><td>Daily</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>CASE DEMOGRAPHICS ETHNICITY</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>race_ethnicity</td><td>String</td><td>Cumulative number of COVID confirmed cases as reported by local health departments</td><td>Daily</td></tr><tr><td>case_percentage</td><td>Float</td><td>Cumulative number of COVID-related deaths as reported by local health departments</td><td>Daily</td></tr><tr><td>death_percentage</td><td>Float</td><td>Ratio of deaths in relation to all deaths</td><td>Daily</td></tr><tr><td>percent_ca_population</td><td>Float</td><td>Ratio of State population</td><td>Daily</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>CASE DEMOGRAPHICS SEX</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>sex</td><td>String</td><td>Reported sex of individual</td><td>Daily</td></tr><tr><td>totalpositive2</td><td>Number</td><td>Cumulative number of COVID confirmed cases as reported by local health departments</td><td>Daily</td></tr><tr><td>date</td><td>Date</td><td>Reported date</td><td>Daily</td></tr><tr><td>case_percent</td><td>Float</td><td>Percent of total cases</td><td>Daily</td></tr><tr><td>deaths</td><td>Number</td><td>Cumulative number of COVID-related deaths as reported by local health departments</td><td>Daily</td></tr><tr><td>deaths_percent</td><td>Float</td><td>Percent of total deaths</td><td>Daily</td></tr><tr><td>ca_percent</td><td>Float</td><td>Percent of sex in relation to overall population</td><td>Daily</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>CASE DEMOGRAPHICS AGE</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>age_group</td><td>String</td><td>Reported age group of individual</td><td>Daily</td></tr><tr><td>totalpositive</td><td>Number</td><td>Cumulative number of COVID confirmed cases as reported by local health departments</td><td>Daily</td></tr><tr><td>date</td><td>Date</td><td>Reported date</td><td>Daily</td></tr><tr><td>case_percent</td><td>Float</td><td>Percent of total cases</td><td>Daily</td></tr><tr><td>deaths</td><td>Number</td><td>Cumulative number of COVID-related deaths as reported by local health departments</td><td>Daily</td></tr><tr><td>deaths_percent</td><td>Float</td><td>Percent of total deaths</td><td>Daily</td></tr><tr><td>ca_percent</td><td>Float</td><td>Percent of age_group in relation to overall population</td><td>Daily</td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>HOMELESS IMPACT</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>county</td><td>String</td><td>County</td><td>Daily</td></tr><tr><td>date</td><td>Date</td><td>Reporting date</td><td>Daily</td></tr><tr><td>rooms</td><td>Number</td><td>The point in time number of hotel/motel rooms a community has secured for individuals experiencing homelessness in need of isolation. These rooms are secured through an occupancy agreement or other type of arrangement with a Hotel/Motel owner</td><td>Daily</td></tr><tr><td>rooms_occupied</td><td>Number</td><td>The point in time number of rooms secured in which a Project Roomkey participant has moved into</td><td>Daily</td></tr><tr><td>trailers_requested</td><td>Number</td><td>Total number of Project Roomkey trailers the community has formally submitted a request for or has been designated to receive</td><td></td></tr><tr><td>trailers_delivered</td><td>Number</td><td>The total number of Project Roomkey trailers the community has received from the state (to be delivered and counted the community must also have necessary trailer supports in place)</td><td></td></tr><tr><td>donated_trailers_delivered</td><td>Number</td><td>Total number of donated Project Roomkey trailers delivered statewide</td><td></td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>BED SURGE</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <figure class="wp-block-table  table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>STATUS</td><td>String</td><td>The condition of the facility</td><td>Daily</td></tr><tr><td>TYPE_OF_FACILITY</td><td>String</td><td>The type of place that will be utilized to support the medical surge</td><td>Daily</td></tr><tr><td>COUNTY</td><td>String</td><td>County the facility resides in</td><td>Daily</td></tr><tr><td>BEDS_READY_TO_ACCEPT<br>_PATIENTS</td><td>Number</td><td>Number of beds assembled and ready for patients</td><td>Daily</td></tr><tr><td>PATIENTS_IN_BEDS</td><td>Number</td><td>Number of patients at the facility</td><td></td></tr><tr><td>TOTAL_BEDS</td><td>Number</td><td>Total number of beds expected to be ready to accept patients</td><td></td></tr><tr><td>DATE</td><td>Date</td><td>Date reported</td><td></td></tr></tbody></table></figure>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<h2>Questions and answers</h2>
-
-
-
-<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            <h4>Is there a dashboard that shows California’s progress in administering COVID-19 vaccine?</h4>
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            <p>Yes. You can <a href="https://covid19.ca.gov/vaccines/#California-vaccines-dashboard">find it on our Vaccines page</a>.</p>
-
-                  </div>
-                </div>
-              </div>
-            </cagov-accordion>
-            
-
-
-
-
-
-
-
-<h2>Contact</h2>
-
-
-
-<p>Email <a href="mailto:StateInfo@state.ca.gov">StateInfo@state.ca.gov</a> with any questions about these datasets.</p>
+<!--
+ 
+-->    <div class="bg-lightblue full-bleed mt-minus-4">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="text-center color-purple">Cập nhật cho 10 tháng 2, 2021</h2>
+        <p>Kể từ 10 tháng 2, California có 3,362,981 ca nhiễm COVID-19 được xác nhận, dẫn đến 44,425 ca tử vong.</p>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-md-center summary-boxes">
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Ca Mắc</div>
+
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>3,362,981</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>8,390</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="d-none" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 29.1 <span class="text-300">ca mới trên 100 nghìn người</span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Ca Tử Vong</div>
+
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>44,425</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>520</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="d-none" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 0.4 <span class="text-300">ca tử vong mới trên 100 nghìn người</span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Xét Nghiệm</div>
+
+          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>43,990,237</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>187,297</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="d-none" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 7.8% <span class="text-300">xét nghiệm dương tính</span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Đã Được Tiêm Vắc-xin</div>
+
+          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>5,089,483</strong> <span class="text-300">tổng</span>           </div>           
+        </div>
+      </div>
+    </div>
+
+    <div class="row pb-4 py-5">
+      <div class="col-lg-10 mx-auto">
+        <p class="small-text">Đã cập nhật 10 tháng 2, 2021, với dữ liệu từ 9 tháng 2, 2021.</p>
+
+        <p class="small-text">Lưu ý: Tỷ lệ ca mắc và xét nghiệm dương tính dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày. Tỷ lệ tử vong dựa trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ. Thay đổi theo hướng được so sánh với khoảng thời gian 7 ngày trước đó. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</p>
+      </div>
+    </div>
+
+  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <form class="form-inline" id="county-form">
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Quận</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Nhập một quận"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Xóa</span></button>         <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+      </div>
+      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+    </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Nhận dữ liệu quận</button>   </form>
 </div>
+<div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">Không tìm thấy quận</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+  </div>
+</div>
+
+
+
+<p>California có 3,362,981 ca nhiễm COVID-19 được xác nhận, dẫn đến 44,425 ca tử vong.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="cases-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartCounty"></div>
+    </div>
+    <div id="cases-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartState"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <p class="small-text">Lưu ý: Số liệu không thể hiện những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 lại không liên quan đến COVID-19.</p>
+</div>
+
+
+
+<h3 class="text-center mt-4 mb-0">Xét nghiệm COVID-19</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+  </div>
+</div>
+
+
+
+<p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 43,990,237, tăng 187,297 xét nghiệm so với tổng số của ngày trước đó. Tỷ lệ xét nghiệm dương tính trong 7 ngày qua là 7.8%.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="testing-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartCounty"></div>
+    </div>
+    <div id="testing-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartState"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <p class="small-text">Lưu ý: Ngày xét nghiệm là ngày tiến hành xét nghiệm. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Không có dữ liệu ngày báo cáo cho các xét nghiệm trước ngày 5 tháng 5 năm 2020. Tỷ lệ dương tính được tính bằng số xét nghiệm phân tử dương tính chia cho tổng số xét nghiệm phân tử đã thực hiện. Tỷ lệ dương tính bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Tỷ lệ dương tính đã được báo cáo trước đây là mức trung bình trong 14 ngày.</p>
+</div>
+
+
+
+<h3 class="text-center mb-0">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+  </div>
+</div>
+
+
+
+<p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 11,516, a decrease of 388 so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 3,127, a decrease of 137 so với tổng số của ngày trước đó.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="hospital-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
+    </div>
+    <div id="hospital-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartState"></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-lg-10 mx-auto color-white">
+        <h2 class="text-center color-orange" id="reopening-equitably">Thêm dữ liệu và công cụ</h2>
+        <p>California đã thu thập lượng lớn dữ liệu để có thông tin đầu vào cho việc ứng phó với đại dịch COVID-19. Chúng ta đã phát triển các công cụ để xử lý và phân tích dữ liệu này. Công chúng có thể sử dụng những dữ liệu và công cụ này.</p>
+
+        <div class="mt-3 text-center">           <a href="/data-and-tools/" class="link-arrow-white">             <div class="link-arrow-label">Xem tất cả dữ liệu và công cụ</div>             <cagov-arrow></cagov-arrow> </a>         </div>
+
+
+      </div>
+    </div>
+
+  </div>   <!--END container--> </div>
+
+
+
+<div class="row d-flex justify-content-md-center">
+
+  <h2 class="text-center color-purple">Dữ liệu này cho phép đưa ra các quyết định giúp cho California luôn khỏe mạnh và an toàn</h2>
+
+
+
+  <div class="grid-layout-hd bg-lightblue bd-lightblue">
+    <div class="grid-main bg-lightblue py-2">
+      <h3 class="my-0 text-center">Mức độ rủi ro cấp quận của California</h3>
+    </div>
+    <div class="grid-single single1">
+      <div class="btn-matrix bg-purple-btn">LAN RỘNG</div>
+      <p class="text-small mt-2 mb-0">Nhiều hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa</p>
+    </div>
+    <div class="grid-single single2">
+      <div class="btn-matrix bg-red-btn">NGHIÊM TRỌNG</div>
+      <p class="text-small mt-2 mb-0">Một số hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa</p>
+
+
+    </div>
+    <div class="grid-single single3">
+      <div class="btn-matrix bg-orange-btn">TRUNG BÌNH</div>
+      <p class="text-small mt-2 mb-0">Một số hoạt động kinh doanh trong nhà được phép mở cửa kèm theo điều chỉnh sửa đổi</p>
+    </div>
+    <div class="grid-single single4">
+      <div class="btn-matrix bg-yellow-btn">TỐI THIỂU</div>
+      <p class="text-small mt-2 mb-0">Hầu hết các hoạt động kinh doanh trong nhà đều được phép mở cửa kèm theo điều chỉnh sửa đổi</p>
+    </div>
+  </div>
+
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3">Chỉ định cấp quận hiện tại kể từ 9 tháng 2, 2021</h3>
+  <p class="mt-0">Việc chỉ định cấp có thể được thực hiện vào bất kỳ ngày nào trong tuần và với tần suất nhiều lần một tuần. Chọn một quận để xem quận đó thuộc khu vực nào.</p>
+
+  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
+</div>
+
+
+
+<div class="text-center text-small">
+  <p>Toàn bộ dữ liệu và chỉ định cấp quận được căn cứ theo kết quả từ tuần kết thúc vào 30 tháng 1, 2021. Xem cách chỉ định và thay đổi các cấp cùng dữ liệu lịch sử của quận (<strong>Bảng Dữ Liệu Kế Hoạch Chi Tiết California</strong>) trên <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">trang hướng dẫn của Sở Y Tế Công Cộng California</a>. Tỷ lệ ca mắc và tỷ lệ dương tính trong bản đồ này không bao gồm những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Sức chứa của ICU trong khu vực hiện được tính bằng tổng số giường ICU cho người lớn trong các bệnh viện có khoa cấp cứu và không bao gồm giường ICU cho trẻ sơ sinh hoặc trẻ nhỏ. Kể từ khi Lệnh Ở Nhà Trong Khu Vực kết thúc vào ngày 25 tháng 1 năm 2021, khả năng phục vụ trong khu vực của ICU không còn bao gồm việc điều chỉnh tỷ lệ bệnh nhân dương tính với COVID-19 trong ICU.</p>
+</div>
+
+
+
+<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">Xem những cơ sở kinh doanh/hoạt động nào được mở cửa tại quận của quý vị</div>     <cagov-arrow></cagov-arrow> </a> </div>
+
+
+
+<div class="bg-lightblue full-bleed">
+  <div class="container py-2">
+    <h2 class="text-center color-orange">Nhiễm bệnh theo nhóm</h2>
+    <div class="col-lg-12 bg-white px-3 py-4">
+      <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+        <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Chủng Tộc và Sắc Tộc</button> <button class="large-tab js-toggle-group gender">Giới Tính </button> <button class="large-tab js-toggle-group age">Tuổi</button>         </div>
+      </div>
+      <div class="row">
+        <div class="toggle-group-container col-10 mx-auto">
+
+          <div id="gender-graph" class="toggle-group-element" style="display:none">
+            <div id="genderGroupChartContainer">
+              <div style="width:80%" class="mx-auto">
+                <p>Sự phân bố các ca tử vong do được xác nhận nhiễm COVID-19 cho thấy sự chênh lệch về giới tính, trong đó nam giới có số ca tử vong quá cao so với tỷ lệ về dân số.</p>
+              </div>
+              <div class="tableauPlaceholder"></div>
+            </div>
+          </div>
+          <div id="age-graph" class="toggle-group-element" style="display:none">
+            <div id="ageGroupChartContainer">
+              <div style="width:80%" class="mx-auto">
+                <p>Sự phân bố các ca nhiễm COVID-19 được xác nhận và các ca tử vong cho thấy sự chênh lệch đáng kể giữa các nhóm tuổi tại California. Những người trong khoảng 18-49 tuổi có số ca mắc quá cao. Những người 65 tuổi trở lên có số ca tử vong quá cao.</p>
+              </div>
+              <div class="tableauPlaceholder"></div>
+            </div>
+          </div>
+          <div id="ethnicity-graph" class="toggle-group-element">
+            <div id="ethnicityGroupChartContainer">
+              <div style="width:80%" class="mx-auto">
+                <p>Sự phân bố các ca nhiễm COVID-19 cho thấy sự chênh lệch đáng kể về nhân khẩu học theo chủng tộc và sắc tộc nói chung tại California, trong đó các nhóm người gốc La-tinh và Người Bản Địa Hawaii/Người Dân Đảo Thái Bình Dương có số ca mắc quá cao so với số dân của họ trong tiểu bang. Đã có sẵn <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">dữ liệu bổ sung về chủng tộc và sắc tộc trong đại dịch COVID-19</a>. </p>
+                <p class="small-text">Lưu ý: Tổng các tỷ lệ phần trăm có thể bằng 100% do làm tròn.</p>
+              </div>
+              <div class="tableauPlaceholder"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Xem thêm dữ liệu chi tiết theo nhóm</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> </div>
     </div>
   </div>
   <!-- end contentBlock -->
@@ -550,22 +849,22 @@ ga('tracker3.send', 'pageview');
 <pagerating-section>
 	<cagov-pagefeedback 
 	data-endpoint-url="https://api.alpha.ca.gov/WasHelpful"
-	data-question="Did you find what you were looking for?"
-	data-yes="Yes"
-	data-no="No"
-	data-positive-comment-prompt="Great! What were you looking for today?"
-	data-comment-prompt="What was the problem?"
-	data-thanks-feedback="Thank you for your feedback!"
-	data-thanks-comments="Good!"
-	data-submit="Submit"
-	data-required-field="This field required"
-	data-characterLimit="You have reached your character limit."
-	data-anythingToAdd="If you have anything to add,"
-	data-positiveSurveyUrl="https://ethn.io/85017"
-	data-takeTheSurvey="take the survey"
-	data-anyOtherFeedback="If you have any other feedback about this website,"
-	data-negativeSurveyUrl="https://ethn.io/77745"
-	data-takeOurSurvey="take our survey"
+	data-question="Trang này có hữu ích không?"
+	data-yes="Có"
+	data-no="Không"
+	data-positive-comment-prompt="Đây là trường bắt buộc"
+	data-comment-prompt="Góp ý thêm:"
+	data-thanks-feedback="Trang chủ"
+	data-thanks-comments="Cảm ơn quý vị đã phản hồi!"
+	data-submit="Cảm ơn quý vị đã góp ý!"
+	data-required-field="Gửi"
+	data-characterLimit=""
+	data-anythingToAdd=""
+	data-positiveSurveyUrl=""
+	data-takeTheSurvey=""
+	data-anyOtherFeedback=""
+	data-negativeSurveyUrl=""
+	data-takeOurSurvey=""
 
 	></cagov-pagefeedback>	
 </pagerating-section>
@@ -578,30 +877,30 @@ ga('tracker3.send', 'pageview');
 		<div class="footer-section-col footer-section-col-nav trigger">
 			<nav class="footer-section-nav" role="navigation" aria-label="Footer navigation">
 				
-					<a class="footer-section-nav-link" href="/stay-home-except-for-essential-needs/">About COVID-19 restrictions</a>
+					<a class="footer-section-nav-link" href="/vi/stay-home-except-for-essential-needs/">Giới thiệu về các hạn chế trong đại dịch COVID-19</a>
 				
-					<a class="footer-section-nav-link" href="/safer-economy/">Blueprint for a Safer Economy</a>
+					<a class="footer-section-nav-link" href="/vi/safer-economy/">Kế Hoạch Chi Tiết Vì Một Nền Kinh Tế An Toàn Hơn</a>
 				
-					<a class="footer-section-nav-link" href="/vaccines/">Vaccines</a>
+					<a class="footer-section-nav-link" href="/vi/vaccines/">Dịch vụ nào được phép mở cửa</a>
 				
-					<a class="footer-section-nav-link" href="/industry-guidance/">Industry guidance</a>
+					<a class="footer-section-nav-link" href="/vi/industry-guidance/">Hướng dẫn dành cho từng ngành nghề</a>
 				
-					<a class="footer-section-nav-link" href="/get-local-information/">Local info and alerts</a>
+					<a class="footer-section-nav-link" href="/vi/get-local-information/">Thông tin và cảnh báo tại địa phương</a>
 				
 			</nav>
 		</div>
 
 		<div class="footer-section-col footer-section-col-logo trigger">
-			<a class="footer-section-logo" href="/">
+			<a class="footer-section-logo" href="/vi/">
 				<svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><title>California for All</title><g class="mark-ca"><path class="logo-mark-orange" d="M48.2,83l-13.2,28.6h25.2L48.2,83z M66.7,126.9H28.1l-6,13H0.2l48.7-99.8l44.6,99.8H72.1L66.7,126.9z"/><polygon class="logo-mark-orange" points="117,42.9 117,122.4 146.9,122.4 146.9,139.9 97.1,139.9 97.1,42.9"/><polygon class="logo-mark-orange" points="170.2,42.9 170.2,122.4 200,122.4 200,139.9 150.2,139.9 150.2,42.9"/></g><g class="mark-all"><path class="logo-mark-white" d="M21,8.7c-2-2.2-4.3-3.3-7.1-3.3c-4.6,0-8.4,3.9-8.4,8.7c0,4.8,3.7,8.7,8.4,8.7c2.9,0,5.3-1.2,7.4-3.6l3.4,3.4 c-2.8,3.1-6.6,5.1-10.8,5.1C6.2,27.8,0,21.7,0,14.1C0,6.5,6.2,0.4,13.9,0.4c4.2,0,8.1,2,10.8,5.1L21,8.7z"/><path class="logo-mark-white" d="M37,11.8l-3.6,7.9h6.9L37,11.8z M42,23.9H31.4l-1.6,3.6h-6L37.1,0l12.3,27.5h-5.9L42,23.9z"/><polygon class="logo-mark-white" points="56.1,0.8 56.1,22.7 64.3,22.7 64.3,27.5 50.6,27.5 50.6,0.8"/><rect class="logo-mark-white" x="66" y="0.8" width="5.5" height="26.7"/><polygon class="logo-mark-orange" points="74.6,27.5 74.6,0.8 89.1,0.8 89.1,5.6 80.1,5.6 80.1,11.1 87.6,11.1 87.6,15.9 80.1,15.9 80.1,27.5"/><path class="logo-mark-orange" d="M95.1,14.1c0,4.8,3.7,8.7,8.4,8.7c4.6,0,8.4-3.9,8.4-8.7c0-4.8-3.8-8.7-8.4-8.7C98.8,5.4,95.1,9.3,95.1,14.1 M117.4,14.1c0,7.6-6.2,13.7-13.9,13.7c-7.7,0-13.9-6.1-13.9-13.7c0-7.6,6.2-13.7,13.9-13.7C111.2,0.4,117.4,6.5,117.4,14.1"/><path class="logo-mark-orange" d="M125.3,5.6v6.7h2.9c2.3,0,3.9-1.1,3.9-3.4c0-2.2-1.6-3.3-3.9-3.3H125.3z M125.3,16.8v10.6h-5.5V0.8h8.8 c4.9,0,9,3.1,9,8c0,3.1-1.7,5.7-4.2,7l5,11.6h-6L128,16.8H125.3z"/><polygon class="logo-mark-white" points="159.4,0.8 164.9,0.8 164.9,28.2 145.9,11.6 145.9,27.5 140.4,27.5 140.4,0 159.4,16.6"/><rect x="167.3" y="0.8" class="logo-mark-white" width="5.5" height="26.7"/><path class="logo-mark-white" d="M187.2,11.8l-3.6,7.9h6.9L187.2,11.8z M192.3,23.9h-10.6l-1.6,3.6h-6L187.4,0l12.3,27.5h-5.9L192.3,23.9z"/></g></svg>
 			</a>
 		</div>
 
 		<div class="footer-section-col footer-section-col-hotline trigger">
 			<div class="footer-section-hotline">
-				<div class="footer-section-hotline-label">COVID-19 hotline</div>
+				<div class="footer-section-hotline-label">Thứ 2-Thứ 6 8 giờ sáng-8 giờ tối, Thứ 7-Chủ Nhật 8 giờ sáng-5 giờ chiều</div>
 				<a class="footer-section-hotline-number" href="tel:8334224255">1-833-422-4255</a>
-				<div class="footer-section-hotline-hours">M-F 8AM-8PM, Sa-Su 8AM-5PM</div>
+				<div class="footer-section-hotline-hours"></div>
 			</div>
 		</div>
 
@@ -620,20 +919,20 @@ ga('tracker3.send', 'pageview');
 				
 				<a class="footer-section-utility-nav-link" href="https://www.ca.gov">CA.gov</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">Department of Public Health</a>
+				<a class="footer-section-utility-nav-link" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx">Sở Y Tế Công Cộng</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://www.gov.ca.gov/newsroom/">Governor’s Newsroom</a>
+				<a class="footer-section-utility-nav-link" href="https://www.gov.ca.gov/newsroom/">Phòng Tin Tức của Thống Đốc</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://www.ca.gov/accessibility/">Accessibility</a>
+				<a class="footer-section-utility-nav-link" href="https://www.ca.gov/accessibility/">Khả Năng Tiếp Cận</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://www.ca.gov/privacy-policy/">Privacy Policy</a>
+				<a class="footer-section-utility-nav-link" href="https://www.ca.gov/privacy-policy/">Chính Sách Bảo Mật</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://www.surveymonkey.com/r/COVID19CAGOV">Feedback</a>
+				<a class="footer-section-utility-nav-link" href="https://www.surveymonkey.com/r/COVID19CAGOV">Phản hồi</a>
 				
-				<a class="footer-section-utility-nav-link" href="https://registertovote.ca.gov">Register to vote</a>
+				<a class="footer-section-utility-nav-link" href="https://registertovote.ca.gov">Đăng ký để biểu quyết</a>
 				
 			</nav>
-			<span class="footer-section-utility-official">Official California State Government Website</span>
+			<span class="footer-section-utility-official">Cập nhật mới nhất</span>
 		</div>
 		
 
@@ -664,6 +963,15 @@ ga('tracker3.send', 'pageview');
 
 		</script>
 	
+
+	
+	
+		<script type="module">
+			class t{constructor(t){let e={label:"Unknown data",value:"Unknown data"};"string"==typeof t?e={label:t,value:t}:Array.isArray(t)?e={label:t[0],value:t[1]}:"object"==typeof t&&("label"in t||"value"in t)&&(e=t),this.label=e.label||e.value,this.value=e.value,"userData"in e&&(this.userData=e.userData)}get length(){return this.label.length}toString(){return`${this.label}`}valueOf(){return this.toString()}}class e{constructor(t,i){e.all=[];const s=this;e.count=(e.count||0)+1,this.count=e.count,this.isOpened=!1,this.input=e.query(t),this.input.setAttribute("autocomplete","off"),this.input.setAttribute("aria-owns",`awesomplete_list_${this.count}`),this.input.setAttribute("role","combobox"),this.options=i||{},this.configure({minChars:2,maxItems:10,autoFirst:!1,data:e.DATA,filter:e.FILTER_CONTAINS,sort:!1!==i.sort&&e.SORT_BYLENGTH,container:e.CONTAINER,item:e.ITEM,replace:e.REPLACE,tabSelect:!1},i),this.index=-1,this.container=this.container(t),this.ul=e.create("ul",{hidden:"hidden",role:"listbox",id:`awesomplete_list_${this.count}`,inside:this.container}),this.status=e.create("span",{className:"visually-hidden",role:"status","aria-live":"assertive","aria-atomic":!0,inside:this.container,textContent:0!==this.minChars?`Type ${this.minChars} or more characters for results.`:"Begin typing for results."}),this.events={input:{input:this.evaluate.bind(this),blur:this.close.bind(this,{reason:"blur"}),keydown(t){const e=t.keyCode;s.opened&&(13===e&&s.selected?(t.preventDefault(),t.stopImmediatePropagation(),s.select()):9===e&&s.selected&&s.tabSelect?s.select():27===e?s.close({reason:"esc"}):38!==e&&40!==e||(t.preventDefault(),s[38===e?"previous":"next"]()))}},form:{submit:this.close.bind(this,{reason:"submit"})},ul:{mousedown(t){t.preventDefault()},click(t){let e=t.target;if(e!==this){for(;e&&!/li/i.test(e.nodeName);)e=e.parentNode;e&&0===t.button&&(t.preventDefault(),s.select(e,t.target))}}}},e.bind(this.input,this.events.input),e.bind(this.input.form,this.events.form),e.bind(this.ul,this.events.ul),this.input.hasAttribute("list")?(this.list=`#${this.input.getAttribute("list")}`,this.input.removeAttribute("list")):this.list=this.input.getAttribute("data-list")||i.list||[],e.all.push(this)}configure(t,e){Object.keys(t).forEach((i=>{const s=t[i],n=this.input.getAttribute(`data-${i.toLowerCase()}`);this[i]="number"==typeof s?parseInt(n,10):!1===s?null!==n:s instanceof Function?null:n,this[i]||0===this[i]||(this[i]=i in e?e[i]:s)}))}set list(t){if(Array.isArray(t))this.dataList=t;else if("string"==typeof t&&t.indexOf(",")>-1)this.dataList=t.split(/\s*,\s*/);else{const i=e.query(t);if(i&&i.children){const t=[],e=e=>{if(!e.disabled){const i=e.textContent.trim(),s=e.value||i,n=e.label||i;""!==s&&t.push({label:n,value:s})}};Array.prototype.slice.apply(i.children).forEach(e),this.dataList=t}}document.activeElement===this.input&&this.evaluate()}get list(){return this.dataList}get selected(){return this.index>-1}get opened(){return this.isOpened}close(t){this.opened&&(this.ul.setAttribute("hidden",""),this.isOpened=!1,this.index=-1,this.status.setAttribute("hidden",""),e.fire(this.input,"awesomplete-close",t||{}))}open(){this.ul.removeAttribute("hidden"),this.isOpened=!0,this.status.removeAttribute("hidden"),this.autoFirst&&-1===this.index&&this.goto(0),e.fire(this.input,"awesomplete-open")}destroy(){if(e.unbind(this.input,this.events.input),e.unbind(this.input.form,this.events.form),!this.options.container){const{parentNode:t}=this.container;t.insertBefore(this.input,this.container),t.removeChild(this.container)}this.input.removeAttribute("autocomplete"),this.input.removeAttribute("aria-autocomplete");const t=e.all.indexOf(this);-1!==t&&e.all.splice(t,1)}next(){const t=this.ul.children.length;let e=0;e=this.index<t-1?this.index+1:t?0:-1,this.goto(e)}previous(){const t=this.ul.children.length,e=this.index-1;this.goto(this.selected&&-1!==e?e:t-1)}goto(t){const i=this.ul.children;if(this.selected&&i[this.index].setAttribute("aria-selected","false"),this.index=t,t>-1&&i.length>0){i[t].setAttribute("aria-selected","true"),this.status.textContent=`${i[t].textContent}, list item ${t+1} of ${i.length}`,this.input.setAttribute("aria-activedescendant",`${this.ul.id}_item_${this.index}`),this.ul.scrollTop=i[t].offsetTop-this.ul.clientHeight+i[t].clientHeight;const s=this.suggestions[this.index];e.fire(this.input,"awesomplete-highlight",{selectedIndex:this.index,selectedText:`${s}`,selectedSuggestion:s})}}select(t,i){let s=t;if(t?this.index=e.siblingIndex(t):s=this.ul.children[this.index],s){const t=this.index,n=this.suggestions[t];e.fire(this.input,"awesomplete-select",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n,origin:i||s})&&(this.replace(n),this.close({reason:"select"}),e.fire(this.input,"awesomplete-selectcomplete",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n}))}}evaluate(){const e=this,{value:i}=this.input;if(i.length>=this.minChars&&this.dataList&&this.dataList.length>0){this.index=-1,this.ul.innerHTML="";const s=s=>new t(e.data(s,i)),n=t=>e.filter(t,i);this.suggestions=this.dataList.map(s).filter(n),!1!==this.sort&&(this.suggestions=this.suggestions.sort(this.sort)),this.suggestions=this.suggestions.slice(0,this.maxItems);const o=(t,s)=>{e.ul.appendChild(e.item(t,i,s))};this.suggestions.forEach(o),0===this.ul.children.length?(this.status.textContent="No results found",this.close({reason:"nomatches"})):(this.open(),this.status.textContent=`${this.ul.children.length} results found`)}else this.close({reason:"nomatches"}),this.status.textContent="No results found"}static FILTER_CONTAINS(t,i){return RegExp(e.regExpEscape(i.trim()),"i").test(t)}static FILTER_STARTSWITH(t,i){return RegExp(`^${e.regExpEscape(i.trim())}`,"i").test(t)}static SORT_BYLENGTH(t,e){return t.length!==e.length?t.length-e.length:t<e?-1:1}static CONTAINER(t){return e.create("div",{className:"awesomplete",around:t})}static ITEM(t,i,s){const n=""===i.trim()?t:`${t}`.replace(RegExp(e.regExpEscape(i.trim()),"gi"),"<mark>$&</mark>");return e.create("li",{innerHTML:n,"aria-selected":"false",id:`awesomplete_list_${this.count}_item_${s}`})}static REPLACE(t){this.input.value=t.value||t.label}static DATA(t){return t}static query(t,e){return"string"==typeof t?(e||document).querySelector(t):t||null}static queryAll(t,e){return Array.prototype.slice.call((e||document).querySelectorAll(t))}static create(t,i){const s=document.createElement(t);return Object.keys(i).forEach((t=>{const n=i[t];if("inside"===t)e.query(n).appendChild(s);else if("around"===t){const t=e.query(n);t.parentNode.insertBefore(s,t),s.appendChild(t),null!=t.getAttribute("autofocus")&&t.focus()}else t in s?s[t]=n:s.setAttribute(t,n)})),s}static bind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.addEventListener(e,s)}))};Object.keys(e).forEach(i)}}static unbind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.removeEventListener(e,s)}))};Object.keys(e).forEach(i)}}static fire(t,e,i){const s=document.createEvent("HTMLEvents"),n=t=>{s[t]=i[t]};return s.initEvent(e,!0,!0),"object"==typeof i&&Object.keys(i).forEach(n),t.dispatchEvent(s)}static regExpEscape(t){return t.replace(/[-\\^$*+?.()|[\]{}]/g,"\\$&")}static siblingIndex(t){let e=0,i=t;for(;i;)i=i.previousElementSibling,i&&(e+=1);return e}}window.fetch("/countystatus.json").then((t=>t.json())).then((function(t){let i=[];t.forEach((t=>{i.push(t.county)}));const o={autoFirst:!0,filter:function(t,i){return e.FILTER_CONTAINS(t,i.match(/[^,]*$/)[0])},item:function(t,i){return e.ITEM(t,i.match(/[^,]*$/)[0])},replace:function(t){let e=this.input.value.match(/^.+,\s*|/)[0]+t;this.input.value=e,n(e)},list:i};new e("#location-query",o);!function(t){document.querySelector("#county-form").addEventListener("submit",function(e){e.preventDefault(),s.classList.remove("d-none"),document.querySelector("#county-query-error").style.display="none";let i=document.querySelector("#location-query").value,o="";t.forEach((t=>{t.toLowerCase()==i.toLowerCase()&&(o=t)})),o?n(o):document.querySelector("#county-query-error").style.display="block"}.bind(this))}(i)}));var i=document.getElementById("location-query"),s=document.getElementById("clearCounty");function n(t){document.querySelector("#county-query-error").style.display="none";let e=window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1],i=window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1],s=window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];!function n(){e&&i&&s?(e.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),i.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),s.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE)):setTimeout(n,500)}(),f(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.remove("d-none")})),document.querySelectorAll(".js-toggle-county.county").forEach((e=>{e.innerHTML=t,e.classList.remove("d-none")}))}async function o(t,e,i,s){let n=document.querySelector(t);var o=s;let a={width:e+"px",height:i+"px"};return await new tableau.Viz(n,o,a)}let a=600,l=900,r=900,c=800,u=660;const h="https://public.tableau.com/views/COVID-19StateDashboardv2_0";var d=document.querySelector(".col-lg-10");function p(){g.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("gender-graph").style.display="none",document.getElementById("ethnicity-graph").style.display="none",document.getElementById("age-graph").style.display="none"}d.offsetWidth>920?(r=910,u=560):d.offsetWidth>910&&d.offsetWidth<920?(r=900,c=900,u=560):d.offsetWidth>800&&d.offsetWidth<910?(r=750,c=750,u=660):d.offsetWidth>700&&d.offsetWidth<879?(r=650,u=660,c=700):d.offsetWidth>600&&d.offsetWidth<700?(r=550,u=660,c=600):d.offsetWidth>500&&d.offsetWidth<600?(r=450,u=660,c=450):(r=350,u=660,c=450),window.innerWidth<700?(a=930,l=window.innerWidth-30):window.innerWidth>700&&window.innerWidth<918?(a=930,l=700):window.innerWidth>919&&window.innerWidth<1200&&(a=600,l=800),async function(){if(console.log("Setting up 2.0 charts"),document.getElementById("casesChartState")){window.casesChartStateViz=await o("#casesChartState",l,a,h+"/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");o("#testingChartState",l,a,h+"/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),o("#hospitalChartState",l,a,h+"/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");window.casesChartCountyViz=await o("#casesChartCounty",l,a,h+"/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),window.testingChartCounty=await o("#testingChartCounty",l,a,h+"/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"),window.hospitalChartCounty=await o("#hospitalChartCounty",l,a,h+"/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link");o("#mapChartContainer",r,u,"https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link"),o("#ethnicityGroupChartContainer",c,600,h+"/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link")}}();let g=document.querySelectorAll(".js-toggle-group");function y(){window.countyTogglers.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("cases-state-graph").style.display="none",document.getElementById("cases-county-graph").style.display="none",document.getElementById("testing-state-graph").style.display="none",document.getElementById("testing-county-graph").style.display="none",document.getElementById("hospital-state-graph").style.display="none",document.getElementById("hospital-county-graph").style.display="none"}function m(){y(),document.querySelectorAll(".js-toggle-county.statewide").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-state-graph").style.display="block",document.getElementById("testing-state-graph").style.display="block",document.getElementById("hospital-state-graph").style.display="block"}function f(){y(),document.querySelectorAll(".js-toggle-county.county").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-county-graph").style.display="block",document.getElementById("testing-county-graph").style.display="block",document.getElementById("hospital-county-graph").style.display="block"}function v(){var t=document.getElementById("location-query"),e=document.getElementById("clearCounty");t&&t.value?e.classList.remove("d-none"):e.classList.add("d-none")}g.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),p(),this.classList.contains("gender")&&(document.getElementById("gender-graph").style.display="block",this.classList.add("toggle-active"),o("#genderGroupChartContainer",c,600,h+"/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("age")&&(document.getElementById("age-graph").style.display="block",this.classList.add("toggle-active"),o("#ageGroupChartContainer",c,600,h+"/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link")),this.classList.contains("ethnicity")&&(document.getElementById("ethnicity-graph").style.display="block"),this.classList.add("toggle-active")}))})),document.getElementById("cases-state-graph")&&(document.getElementById("cases-state-graph").style.display="block",window.countyTogglers=document.querySelectorAll(".js-toggle-county"),window.countyTogglers.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),y(),this.classList.contains("statewide")&&m(),this.classList.contains("county")&&f()}))}))),i&&(i.addEventListener("focus",(function(){v()})),i.addEventListener("input",(function(){v()})),i.addEventListener("blur",(function(){v()}))),s&&(s.addEventListener("blur",(function(t){v()})),s.addEventListener("click",(function(t){t.preventDefault(),document.getElementById("location-query").value="",m(),p(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.add("d-none")}))})));
+
+		</script>
+	
+
 <script nomodule src="https://d3js.org/d3.v5.min.js"></script><!-- lot of transpilation issues, using older d3 for ie -->
 <script nomodule src="/js/es5.js"></script>
 
@@ -671,7 +979,7 @@ ga('tracker3.send', 'pageview');
   {	
     function googleTranslateElementInit() {	
       new google.translate.TranslateElement({	
-          pageLanguage: 'en-US',
+          pageLanguage: 'vi',
           layout: google.translate.TranslateElement.InlineLayout.VERTICAL	
          },	
         'google_translate_element'	
