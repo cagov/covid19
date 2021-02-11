@@ -53,20 +53,27 @@ function setupFormSubmitListener(aList) {
 function countySelected(county) {
   document.querySelector('#county-query-error').style.display = 'none';
   //trigger the filter on all the county dashboards
-  let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
-  let hospitalChartActiveSheet = window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
 
-  function resetCounties() {
-    if(casesChartActiveSheet && testingChartActiveSheet && hospitalChartActiveSheet) {
-      casesChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-      testingChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-      hospitalChartActiveSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-    } else {
-      setTimeout(resetCounties,500);
+  function resetCounties(nom) {
+    try {
+      let activeSheet = window[nom].getWorkbook().getActiveSheet().getWorksheets()[1];
+      
+      if(activeSheet) {
+        console.log("Tableau Filtering",nom,county);
+        activeSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+        // showCounties();
+      } else {
+        // console.log("Worksheet not loaded yet - shouldn't happen",nom);
+        setTimeout(resetCounties.bind(this,nom),500);
+      }
+    } catch(err) {
+      // console.log("Worksheet not loaded yet",nom);    
+      setTimeout(resetCounties.bind(this,nom),500);
     }
   }
-  resetCounties();
+  resetCounties("casesChartCountyViz");
+  resetCounties("testingChartCounty");
+  resetCounties("hospitalChartCounty");
   showCounties();
   document.querySelectorAll('.js-toggle-county-container').forEach(c => {
     c.classList.remove('d-none');
@@ -106,10 +113,18 @@ var divElement = document.querySelector('.col-lg-10');
 if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; chartWidth3 = 900; countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) { chartWidth2 = 750; chartWidth3 = 750; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;  chartWidth3 = 700;} 
-  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; chartWidth3 = 600;} 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660;  chartWidth3 = 570;} 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; chartWidth3 = 470;} 
   else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; chartWidth3 = 450;} 
   else { chartWidth2 = 350; countyMapChartHeight = 660; chartWidth3 = 450;}
+
+// jbum overriding chartWidth3
+chartWidth3 = Math.min(Math.max(275, divElement.offsetWidth-132), 900);
+
+let chartHeight3 = Math.floor(3*chartWidth3/4);
+if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
+  chartHeight3 = Math.floor(Math.max(450,chartWidth3)*3/2);
+}
 
 /* phone */
 if(window.innerWidth < 700) {
@@ -134,8 +149,6 @@ else if (window.innerWidth > 919 && window.innerWidth < 1200) {
 }
 
 async function setupCharts() {
-  console.log("Setting up 2.0 charts");
-
   // these are county toggles and state toggles
   if(document.getElementById('casesChartState')) {
     // window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
@@ -163,7 +176,10 @@ async function setupCharts() {
     // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
 
     // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 
+    // console.log("Chart width 3",chartWidth3);
+    // console.log("Chart height 3",chartHeight3);
+    // console.log("Window width",window.innerWidth);
+    let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
                                             tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
                               // 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     let genderGroupChart = ''; // we aren't loading this until they click
