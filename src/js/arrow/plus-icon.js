@@ -10,4 +10,4 @@ class PlusIcon extends window.HTMLElement {
     </svg></div>`;
   }
 }
-window.customElements.define('cagov-plus', PlusIcon); 
+window.customElements.define('cagov-plus', PlusIcon);
