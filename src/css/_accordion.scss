@@ -77,7 +77,6 @@ button.card-header {
 }
 
 .prog-enhanced .accordion-alpha .plus-munus {
-  font-family: CaGov !important;
   width: 2.125rem;
   height: 2.125rem;
   border: 2px solid $orange;
@@ -87,21 +86,15 @@ button.card-header {
   transition: all 0.3s ease;
   margin-left: 1rem;
   color: $orange;
-  font-size: 1.5rem;
   align-self: flex-start;
-  &:before {
-    content: "\4c";
-  }
+  cagov-plus .accordion-icon {display: block;}
+  cagov-minus .accordion-icon {display: none;}
 }
 
 .prog-enhanced .accordion-alpha-open {
   border-bottom-color: $white !important;
-  .plus-munus {
-    font-family: CaGov !important;
-    &:before {
-      content: "\4b";
-    }
-  }
+  cagov-plus .accordion-icon {display: none !important;}
+  cagov-minus .accordion-icon {display: block !important;}
 }
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);

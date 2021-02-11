@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-02-09T22:52:04Z"
-tags: ["do-not-crawl","staging-only"]
+publishdate: "2021-02-11T00:30:36Z"
+tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
 
@@ -89,23 +89,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
 
             <span class="chart-arrow" arria-hidden="true">
-              <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29"
-                style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
                             l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
                             l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-                            s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z" />
+                            s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
               </svg>
 
               <!--negative arrow-->
-              <svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29"
-                style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
                             l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
                             l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-                            s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z" />
+                            s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
               </svg>
             </span>
             {{_varStatNewCasesPer100k_}} <span class="text-300">new cases per 100K</span>
@@ -126,23 +122,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
 
             <span class="chart-arrow" arria-hidden="true">
-              <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29"
-                style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
                                 l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
                                 l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z" />
+                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
               </svg>
 
               <!--negative arrow-->
-              <svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down3"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 	    						l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 		    					l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-			    				s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z" />
+			    				s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
               </svg>
             </span>
             {{_varStatNewDeathsPer100k_}} <span class="text-300">new deaths per 100K</span>
@@ -163,23 +155,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
 
             <span class="chart-arrow" arria-hidden="true">
-              <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
                                 l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
                                 l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z" />
+                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
               </svg>
 
               <!--negative arrow-->
-              <svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z" />
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
               </svg>
             </span>
             {{_varStatLatestPositivityPct_}}% <span class="text-300">test positivity</span>
@@ -200,23 +188,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
 
             <span class="chart-arrow" arria-hidden="true">
-              <svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29"
-                style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
 							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
 							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z" />
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
               </svg>
 
               <!--negative arrow-->
-              <svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29"
-                style="enable-background:new 0 0 29 29;" xml:space="preserve">
+              <svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
 							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
 							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z" />
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
               </svg>
             </span>
             {{_varStatVaccinesDailyPct_}}% <span class="text-300">increase</span>
@@ -252,14 +236,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
       <label for="county" class="sr-only">County</label>
       <div class="awesomplete">
-        <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off"
-          class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox"
-          type="text" placeholder="Enter a county" />
+        <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Enter a county">
         <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span>
           <span class="underline">Clear</span></button>
-        <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+        <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
-      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
     </div>
     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
   </form>
@@ -269,7 +251,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 </div>
 
 <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-
 
 
 
@@ -295,10 +276,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
     <div id="cases-county-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="casesChartCounty"></div>
+      <div class="tableauPlaceholder" id="casesChartCounty"></div>
     </div>
     <div id="cases-state-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="casesChartState"></div>
+      <div class="tableauPlaceholder" id="casesChartState"></div>
     </div>
   </div>
 </div>
@@ -338,10 +319,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
     <div id="testing-county-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="testingChartCounty"></div>
+      <div class="tableauPlaceholder" id="testingChartCounty"></div>
     </div>
     <div id="testing-state-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="testingChartState"></div>
+      <div class="tableauPlaceholder" id="testingChartState"></div>
     </div>
   </div>
 </div>
@@ -349,12 +330,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the
-    event was reported to the California Department of Public Health. Reported date data is not available for
-    tests before May 5, 2020. Positivity rate is calculated as the number of positive molecular tests divided by
-    the total molecular tests performed. Positivity rate includes people in state and federal prisons, US
-    Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State
-    Hospitals facilities. Positivity rate was previously reported as a 14-day average.</p>
+  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. Positivity rate was previously reported as a 14-day average.</p>
 </div>
 
 
@@ -381,10 +357,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="row d-flex justify-content-md-center">
   <div class="toggle-group-container cases-group">
     <div id="hospital-county-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="hospitalChartCounty"></div>
+      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
     <div id="hospital-state-graph" class="toggle-group-element">
-      <div class='tableauPlaceholder' id="hospitalChartState"></div>
+      <div class="tableauPlaceholder" id="hospitalChartState"></div>
     </div>
   </div>
 
@@ -424,7 +400,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
-    <div class="grid-main bg-lightblue py-0">
+    <div class="grid-main bg-lightblue py-2">
       <h3 class="my-0 text-center">California’s county risk levels</h3>
     </div>
     <div class="grid-single single1">
@@ -451,7 +427,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <p class="mt-0">Tier assignments may occur any day of the week and may occur more than once a week. Select a
     county to see what region it’s in.</p>
 
-  <div class="tableauPlaceholder" id="mapChartContainer"></div>
+  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
 
 
@@ -459,8 +435,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="text-center text-small">
   <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are
     assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at
-    the <a
-      href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California
+    the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California
       Department of Public Health guidance page</a>. The case and positivity rate in this map excludes people in
     state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities,
     and Department of State Hospitals facilities. Regional ICU capacity is now calculated using the total number
@@ -471,7 +446,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="text-center">
+<div class="text-center mb-4">
   <a href="/safer-economy/" class="link-arrow-blue">
     <div class="link-arrow-label">See what can be open in your county</div>
     <cagov-arrow></cagov-arrow>
@@ -518,8 +493,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
               <div style="width:80%" class="mx-auto">
                 <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s
                   overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups
-                  having a disproportionate number of cases relative to their population in the state. Additional <a
-                    href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race
+                  having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race
                     and ethnicity data</a> is available.
                 </p>
                 <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
