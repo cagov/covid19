@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Data and tools"
 meta: "Since the beginning of the COVID-19 crisis, California has had to face facts and make hard decisions. To do so, we needed solid data. Governor Newsom signed Executive Order N-X-2020 to release government-run real-time COVID-19 data sources. This data is verified by our community of experts."
 author: "State of California"
-publishdate: "2021-02-08T19:22:05Z"
+publishdate: "2021-02-11T00:37:07Z"
 tags: ["staging-only"]
 addtositemap: true
 ---
@@ -33,6 +33,18 @@ addtositemap: true
 
 
 <h2 id="Data-dashboards">Data dashboards</h2>
+
+
+
+<h3>Vaccine administered by providers</h3>
+
+
+
+<p>See how providers like Local Health Jurisdictions (LHJs) and Multi-County Entities (MCEs) are tracking vaccines administration (by the county of provider).&nbsp;&nbsp;&nbsp;</p>
+
+
+
+<p><a href="https://tableau.cdt.ca.gov/#/views/VaccineProviderPerformanceDashboard/VaccineProviderPerformance?:iid=1">View vaccine provider dashboard</a></p>
 
 
 
@@ -125,6 +137,18 @@ addtositemap: true
 
 
 <p>The COVID-19 datasets contain the following information. Some of these data dictionaries map back to the data dashboards above.</p>
+
+
+
+<h3><strong>COVID-19 VACCINE PROVIDER DATA</strong></h3>
+
+
+
+<p>Verified by the California Department of Public Health.</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>Doses administered&nbsp;</td><td>Numeric</td><td>Total doses administered (source = State IIS). This is the information reported to official Immunization Information Systems (CAIR2, RIDE, SDIR)</td><td>Daily</td></tr><tr><td>Doses on Hand</td><td>Numeric</td><td>Total doses on hand (source = CDC VaccineFinder). This is self-reported daily data into VaccineFinder managed at the federal level by CDC.</td><td>Daily</td></tr><tr><td>Daily average (trailing)</td><td>Numeric</td><td>7 day rolling average of doses administered = (sum of doses administered 3 day ago to 10 days ago) divided by 7. Corrected for providers who have just begun administering based on&nbsp; date of administration..</td><td>Daily</td></tr><tr><td>Inventory Days on Hand</td><td>Numeric</td><td>Inventory days on hand. = Total On Hand / 7 day Rolling Avg Administered</td><td>Daily</td></tr></tbody></table></figure>
 
 
 
