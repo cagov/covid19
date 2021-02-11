@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
 title: "Charts Sandbox"
-meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Race and ethnicity Age Gender People with at least one dose of vaccine administered by race and ethnicity in California People with at least one dose of vaccine administered by race and ethnicity in [&hellip;]"
+meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Race and ethnicity Age Gender"
 author: "State of California"
-publishdate: "2021-02-10T23:57:02Z"
+publishdate: "2021-02-11T19:05:17Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -12,10 +12,13 @@ addtositemap: false
 
 
 
-<!-- charts -->
 <cagov-county-search></cagov-county-search>
 
+
+
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+
+
 
 <cagov-chart-sandbox-filter-buttons class="js-re-smalls">
     <div class="d-flex justify-content-center">
@@ -23,34 +26,18 @@ addtositemap: false
       <button class="small-tab" data-key="age">Age</button>
       <button class="small-tab" data-key="gender">Gender</button>
     </div>
-</cagov-chart-filter-buttons>
-  
+</cagov-chart-sandbox-filter-buttons>
+
+
+
 <div class="container">
     <div class="row">
-        <cagov-chart-vaccination-groups-race-ethnicity class="chart">
-          <ul>
-            <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
-            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
-            <li data-label="legendLabelVaccines">% of vaccines administered</li>
-            <li data-label="legendLabelPopulation">% of state population</li>
-          </ul>
-        </cagov-chart-vaccination-groups-race-ethnicity>
-
-        <cagov-chart-vaccination-groups-age class="chart d-hide">
-          <ul>
-            <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
-            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
-            <li data-label="legendLabelVaccines">% of vaccines administered</li>
-            <li data-label="legendLabelPopulation">% of state population</li>
-          </ul>
-        </cagov-chart-vaccination-groups-age>
-        
-        <cagov-chart-vaccination-groups-gender class="chart d-hide">
-          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
-          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
-          <li data-label="legendLabelVaccines">% of vaccines administered</li>
-          <li data-label="legendLabelPopulation">% of state population</li>
-        </cagov-chart-vaccination-groups-gender>
+        <cagov-chart-ve-race-ethnicity class="chart"></cagov-chart-ve-race-ethnicity>
+        <cagov-chart-ve-age class="chart d-hide"></cagov-chart-ve-age>
+        <cagov-chart-ve-gender class="chart d-hide"></cagov-chart-ve-gender>
+    </div>
+    <div class="row">
+       <cagov-chart-ve-race-ethnicity-age class="chart"></cagov-chart-ve-race-ethnicity-age>
     </div>
 </div>
 
