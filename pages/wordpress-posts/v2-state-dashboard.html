@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-02-11T00:30:36Z"
+publishdate: "2021-02-11T21:22:42Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -287,12 +287,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases
-    from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is
-    the date the event was reported to the California Department of Public Health. Cases includes people in state
-    and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and
-    Department of State Hospitals facilities. A negative number of reported deaths means that deaths previously
-    attributed to COVID-19 were determined to not be associated with COVID-19.</p>
+  <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</p>
 </div>
 
 
@@ -330,7 +325,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. Positivity rate was previously reported as a 14-day average.</p>
+  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. Positivity rate was previously reported as a 14-day average.</p>
 </div>
 
 
@@ -423,9 +418,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of {{_varTierDate_}}</h3>
-  <p class="mt-0">Tier assignments may occur any day of the week and may occur more than once a week. Select a
-    county to see what region it’s in.</p>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Current tier assignments as of {{_varTierDate_}}</h3>
+  <p class="mt-0">Tier assignments may occur any day of the week and may occur more than once a week. Select a county to see what region it’s in.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -433,15 +427,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="text-center text-small">
-  <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are
-    assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at
-    the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California
-      Department of Public Health guidance page</a>. The case and positivity rate in this map excludes people in
-    state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities,
-    and Department of State Hospitals facilities. Regional ICU capacity is now calculated using the total number
-    of adult ICU beds in hospitals with an emergency department and does not include neonatal or pediatric ICU
-    beds. Since the Regional Stay Home Order ended on January 25, 2021, the regional ICU capacity no longer
-    includes an adjustment for the percentage of COVID-19 positive patients in ICU.</p>
+  <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>. The case and positivity rate in this map excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are included in the charts above, which show different case and test positivity rates. Regional ICU capacity is now calculated using the total number of adult ICU beds in hospitals with an emergency department and does not include neonatal or pediatric ICU beds. Since the Regional Stay Home Order ended on January 25, 2021, the regional ICU capacity no longer includes an adjustment for the percentage of COVID-19 positive patients in ICU.</p>
 </div>
 
 
