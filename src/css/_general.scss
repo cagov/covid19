@@ -2377,3 +2377,32 @@ font {
   display: inline-block;
   text-decoration: none;
 }
+
+/* TOC */
+.toc {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  li {
+    color: $darkblue;
+    line-height: 1.5rem;
+    margin-top: .4rem;
+    margin-bottom: .6rem;
+    text-indent: -1.3rem;
+    padding-left: 10px;
+    &:before {
+      font-family: "CaGov";
+      content: "\e9f3";
+      position: relative;
+      top: 2px;
+      right: 7px;
+      }
+
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+    }
+    
+  }
+}
