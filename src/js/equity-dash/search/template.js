@@ -5,7 +5,11 @@ export default function template(countyLabel, countyPlaceholder) {
         <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
           <label for="location-query" class="sr-only">County</label>
           <div class="awesomplete">
+<<<<<<< HEAD
             <input aria-expanded="false" aria-owns="awesomplete_list_1" aria-controls="awesomplete_list_1"  autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Enter a county">
+=======
+            <input aria-expanded="false" aria-owns="awesomplete_list_1"  aria-controls="awesomplete_list_1"  autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Enter a county">
+>>>>>>> master
             <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
             <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true">Type 2 or more characters for results.</span>
           </div>
