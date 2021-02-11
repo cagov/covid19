@@ -27,33 +27,14 @@ addtositemap: false
   
 <div class="container">
     <div class="row">
-        <cagov-chart-vaccination-groups-race-ethnicity class="chart">
-          <ul>
-            <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
-            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
-            <li data-label="legendLabelVaccines">% of vaccines administered</li>
-            <li data-label="legendLabelPopulation">% of state population</li>
-          </ul>
-        </cagov-chart-vaccination-groups-race-ethnicity>
-
-        <cagov-chart-vaccination-groups-age class="chart d-hide">
-          <ul>
-            <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
-            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
-            <li data-label="legendLabelVaccines">% of vaccines administered</li>
-            <li data-label="legendLabelPopulation">% of state population</li>
-          </ul>
-        </cagov-chart-vaccination-groups-age>
-        
-        <cagov-chart-vaccination-groups-gender class="chart d-hide">
-          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
-          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
-          <li data-label="legendLabelVaccines">% of vaccines administered</li>
-          <li data-label="legendLabelPopulation">% of state population</li>
-        </cagov-chart-vaccination-groups-gender>
+        <cagov-chart-ve-race-ethnicity class="chart"></cagov-chart-ve-race-ethnicity>
+        <cagov-chart-ve-age class="chart d-hide"></cagov-chart-ve-age>
+        <cagov-chart-ve-gender class="chart d-hide"></cagov-chart-ve-gender>
+    </div>
+    <div class="row">
+       <cagov-chart-ve-race-ethnicity-age class="chart"></cagov-chart-ve-race-ethnicity-age>
     </div>
 </div>
-
 
 
 
