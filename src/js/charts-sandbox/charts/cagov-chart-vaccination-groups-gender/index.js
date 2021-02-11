@@ -4,50 +4,48 @@ import getScreenResizeCharts from "./../../get-window-size.js";
 import rtlOverride from "./../../rtl-override.js";
 import renderChart from "../../simple-chart.js";
 
-class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
+class CAGovVaccinationGroupsGender extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovVaccinationGroupsRaceEthnicity");
+    console.log("Loading CAGovVaccinationGroupsGender");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.nbr_bars = 9;
-    this.bar_vspace = 60;
-
+    this.nbr_bars = 3;
+    let bar_vspace = 60;
     this.chartOptions = {
       // Data
       dataUrl:
         config.equityChartsVEDataLoc +
-        "race-ethnicity/vaccines_by_race_ethnicity_california.json",
+        "gender/vaccines_by_gender_california.json", // Overwritten by county.
       dataUrlCounty:
         config.equityChartsVEDataLoc +
-        "race-ethnicity/vaccines_by_race_ethnicity_<county>.json",
-      state: "California",
+        "gender/vaccines_by_gender_<county>.json",
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60 + this.nbr_bars * this.bar_vspace,
+        height: 60 + this.nbr_bars * bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 20, // 20 added for divider
+          bottom: 0,
           left: 0,
         },
       },
       tablet: {
         fontSize: 14,
-        height: 60 + this.nbr_bars * this.bar_vspace,
+        height: 60 + this.nbr_bars * bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 20, // 20 added for divider
+          bottom: 0,
           left: 0,
         },
       },
       mobile: {
         fontSize: 12,
-        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        height: 60 + this.nbr_bars * (bar_vspace - 2),
         width: 440,
         margin: {
           top: 60,
@@ -58,7 +56,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        height: 60 + this.nbr_bars * (bar_vspace - 2),
         width: 320,
         margin: {
           top: 60,
@@ -118,8 +116,6 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
 
     this.retrieveData(this.dataUrl, "California");
     this.listenForLocations();
-
-    // this.listenForLocations();
     // this.classList.remove("d-none"); // this works
     // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
     //   this.querySelector('.d-none').classList.remove("d-none");
@@ -128,9 +124,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
-  // offset bottom two bars so we can add divider - temporarily turned off
   getYOffset(ci) {
-    // return ci < 7 ? 0 : 20;
     return 0;
   }
 
@@ -144,7 +138,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
   }) {
 
-    let isCounty = region === "California" ? false : true;
+    let isCounty = region !== "California" ? true : false;
 
     let replacedChartTitle = isCounty === false ? chartTitle : chartTitleCounty.replace("[REGION]", region + " County");
 
@@ -155,8 +149,8 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
 
   resetTitle({
     region = "California",
-    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
-    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
+    chartTitle = "People with at least one dose of vaccine administered by gender in California",
+    chartTitleCounty = "People with at least one dose of vaccine administered by gender in [REGION]",
   }) {
 
     this.translationsObj.chartDisplayTitle = this.getChartTitle({
@@ -173,25 +167,12 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     return label;
   }
 
-  renderExtras(svg, data, x, y) {
-    // horizontal divider turned off for now
-    // let group = svg.append("g");
-    // group
-    //   .append("rect")
-    //   .attr("fill", "#000000")
-    //   .attr("class", "divider")
-    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
-    //   .attr("x", 0)
-    //   .attr("width", this.dimensions.width)
-    //   .attr("height", 0.75);
-  }
-
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
       "county-selected",
       function (e) {
-        console.log("Region selected", e.detail.filterKey);
+        console.log("X County selected", e.detail.county);
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",
@@ -209,9 +190,9 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Race/Eth data meta", alldata.meta);
+          console.log("Gender data meta", alldata.meta);
           this.alldata = alldata.data;
-          renderChart.call(this, this.renderExtras);
+          renderChart.call(this);
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
@@ -223,6 +204,6 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-vaccination-groups-race-ethnicity",
-  CAGovVaccinationGroupsRaceEthnicity
+  "cagov-chart-vaccination-groups-gender",
+  CAGovVaccinationGroupsGender
 );

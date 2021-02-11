@@ -29,7 +29,7 @@ class CAGovChartSandboxFilterButtons extends window.HTMLElement {
           if (e.detail.filterKey != undefined) {
             let tabs = [ 'race-ethnicity','gender','age'];
             tabs.forEach(key => 
-                d3.selectAll('cagov-chart-ve-'+key).attr('class','chart' + (key == e.detail.filterKey? '' : ' d-hide'))
+                d3.selectAll('cagov-chart-vaccination-groups-'+key).attr('class','chart' + (key == e.detail.filterKey? '' : ' d-hide'))
             );
 
           }
