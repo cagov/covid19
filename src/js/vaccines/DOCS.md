@@ -44,52 +44,56 @@ Not yet scheduled
 Code supports extra data points on each bar
 
 ```
-<!-- charts -->
+<!-- Vaccination by Groups Charts -->
 <cagov-county-search></cagov-county-search>
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
-<cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+<cagov-chart-filter-buttons class="js-re-smalls">
     <div class="d-flex justify-content-center">
       <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
       <button class="small-tab" data-key="age">Age</button>
       <button class="small-tab" data-key="gender">Gender</button>
     </div>
 </cagov-chart-filter-buttons>
-  
+
 <div class="container">
     <div class="row">
         <cagov-chart-vaccination-groups-race-ethnicity class="chart">
           <ul>
-            <li data-label="chartTitle">% administered (people with at least 1 dose) by race and ethnicity in California</li>
-            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
           </ul>
         </cagov-chart-vaccination-groups-race-ethnicity>
 
         <cagov-chart-vaccination-groups-age class="chart d-hide">
           <ul>
-            <li data-label="chartTitle">% administered (people with at least 1 dose) by age in California</li>
-            <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-            <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
-            <li data-label="legendLabel">% of vaccines administered</li>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
           </ul>
         </cagov-chart-vaccination-groups-age>
         
         <cagov-chart-vaccination-groups-gender class="chart d-hide">
-          <li data-label="chartTitle">% administered (people with at least 1 dose) by gender in California</li>
-          <li data-label="chartDescription">Lorem ipsum dolar sit amet, consectetur adipiscing elit.</li>
-          <li data-label="chartDataLabel">Note: Data shown is a cumulative total, updated daily.</li>
+          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
+          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
+          <li data-label="legendLabelVaccines">% of vaccines administered</li>
+          <li data-label="legendLabelPopulation">% of state population</li>
         </cagov-chart-vaccination-groups-gender>
     </div>
-    <!-- <div class="row">
-       <cagov-chart-vaccination-groups-race-ethnicity-age class="chart">
-         
-       </cagov-chart-vaccination-groups-race-ethnicity-age>
-    </div> -->
+</div> 
+
+
+<div class="text-center mb-4">
+    <a href="/equity" class="link-arrow-blue">
+      <div class="link-arrow-label">SEE DATA ON COVID-19’S IMPACT BY GROUP</div>
+      <cagov-arrow></cagov-arrow>
+    </a>
 </div>
 
-<a href="/equity">See more about how COVID affects groups throughout California</a>
 ```
 
 ---
