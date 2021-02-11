@@ -128,9 +128,10 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
-  // offset bottom two bars so we can add divider
+  // offset bottom two bars so we can add divider - temporarily turned off
   getYOffset(ci) {
-    return ci < 7 ? 0 : 20;
+    // return ci < 7 ? 0 : 20;
+    return 0;
   }
 
   getLegendText() {
@@ -173,15 +174,16 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
-    let group = svg.append("g");
-    group
-      .append("rect")
-      .attr("fill", "#000000")
-      .attr("class", "divider")
-      .attr("y", y(6) + (this.bar_vspace * 7) / 12)
-      .attr("x", 0)
-      .attr("width", this.dimensions.width)
-      .attr("height", 0.75);
+    // horizontal divider turned off for now
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
   }
 
   listenForLocations() {
