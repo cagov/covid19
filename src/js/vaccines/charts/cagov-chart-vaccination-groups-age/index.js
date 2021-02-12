@@ -189,10 +189,10 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
         function (alldata) {
           console.log("Age data meta", alldata.meta);
           this.alldata = alldata.data;
-          // console.log("Age data", alldata.data);
-          // // "Unknown"
-          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          // this.alldata = croppedData;
+          console.log("Age data", alldata.data);
+          // "Unknown"
+          let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          this.alldata = croppedData;
 
 
           renderChart.call(this);
