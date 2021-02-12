@@ -24,11 +24,11 @@ export default function template({
           </div>
         </div>
 
-        <!--<div class="row">
-          <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <p class="chart-data-label col-lg-10 mx-auto">${chartDataLabel}</p>
-          </div>
-        </div>-->
+        ${chartDataLabel !== null ? `<div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
+          <p class="chart-data-label small-text col-lg-10 mx-auto">${chartDataLabel}</p>
+        </div>
+      </div>` : ""}
       </div><!--END col-12-->
     </div><!--END CONTAINER-->
   </div>`;
