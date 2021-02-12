@@ -27,7 +27,7 @@ function writeLegend(svg, data, x, y) {
       .append("text")
       .text(legendText[0]) // Legend label 
       .attr("class", "legend-caption")
-      .attr("y", legendY+legendW/2.0)
+      .attr("y", legendY+legendW/2.0 + 1)
       .attr("x", legendW*2)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
@@ -61,6 +61,8 @@ function writeLegend(svg, data, x, y) {
 function writeBars(svg, data, x, y) {
     let max_x_domain = x.domain()[1];
 
+    console.log("Write bars data=",data);
+
     let groups = svg.append("g")
       .selectAll("g")
       .data(data)
@@ -72,7 +74,7 @@ function writeBars(svg, data, x, y) {
         .append("rect")
         .attr("class","bg-bar")
         .attr("fill", "#f2f5fc")
-        .attr("y", (d, i) => y(i)+this.getYOffset(i))
+        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth());
@@ -82,7 +84,7 @@ function writeBars(svg, data, x, y) {
         .append("rect")
         .attr("class","fg-bar")
         .attr("fill", "#92C5DE")
-        .attr("y", (d, i) => y(i)+this.getYOffset(i))
+        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i) )
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
@@ -94,7 +96,7 @@ function writeBars(svg, data, x, y) {
         .attr("class","hot-bar")
         .attr("fill", "#00ff00")
         .attr("fill-opacity",0)
-        .attr("y", (d, i) => y(i)+this.getYOffset(i))
+        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth())
@@ -119,7 +121,7 @@ function writeBars(svg, data, x, y) {
     // groups
     //     .append("rect")
     //     .attr("fill", "#1f2574")
-    //     .attr("y", (d, i) => y(i)-y.bandwidth()/2)
+    //     .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
     //     .attr("x", d => x(d.BASELINE_VALUE)-2)
     //     .attr("width", d => 4)
     //     .attr("height", y.bandwidth()*2)
@@ -128,12 +130,13 @@ function writeBars(svg, data, x, y) {
     groups
       .append("text")
       .attr("class", "bar-label")
-      .attr("y", (d, i) => y(i)+this.getYOffset(i) + (y.bandwidth() / 2))
-      .attr("x", d => x(max_x_domain))
+      .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i) + (y.bandwidth() / 2))
+      .attr("x", d => x(max_x_domain)+12)
       // .attr("width", x.bandwidth() / 4)
-      .html(d => {
-        return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      })
+      .text(d => this.pctFormatter.format(d.METRIC_VALUE))
+      // .html(d => {
+      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
+      // })
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start')
 
@@ -141,12 +144,13 @@ function writeBars(svg, data, x, y) {
     groups
       .append("text")
       .attr("class", "bar-cat")
-      .attr("y", (d, i) => y(i)+this.getYOffset(i))
+      .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i)-8)
       .attr("x", d => x(0))
+      .text(d => d.CATEGORY)
       // .attr("width", x.bandwidth() / 4)
-      .html(d => {
-      return `<tspan dx="0em" dy="-0.5em">${d.CATEGORY}</tspan>`
-      })
+      // .html(d => {
+      // return `<tspan dx="0em" dy="-0.5em">${d.CATEGORY}</tspan>`
+      // })
       .attr('text-anchor','start')
 }
 
@@ -157,7 +161,10 @@ function writeBars(svg, data, x, y) {
 export default function renderChart(extrasFunc = null) {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
-    let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys()
+    // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
+    let categories = data.map((group) => group.CATEGORY);
+
+    // let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys();
 
     // Filter and sort here...
     // console.log("Categories",categories);
@@ -171,6 +178,8 @@ export default function renderChart(extrasFunc = null) {
     ])
     .paddingInner(5.0/6.0)
     .paddingOuter(0.5);
+
+    console.log("this.y",this.y);
   
     // Position for labels.
     // this.yAxis = (g) =>
