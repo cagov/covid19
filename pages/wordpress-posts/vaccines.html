@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Vaccines"
 meta: "Sign up for COVID-19 vaccination Get notified when it’s your turn to get the COVID-19 vaccine. If you&#8217;re near San Francisco, Los Angeles, or San Diego, you can also schedule your appointment. Sign up now COVID-19 vaccination is one of the most important tools to end the COVID-19 pandemic. The State is prioritizing vaccines for [&hellip;]"
 author: "State of California"
-publishdate: "2021-02-12T16:42:49Z"
+publishdate: "2021-02-12T17:36:49Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -266,7 +266,6 @@ addtositemap: true
 
 
 
-
 <!-- Vaccination by Groups Charts -->
 <cagov-county-search></cagov-county-search>
 
@@ -283,7 +282,7 @@ addtositemap: true
 <div class="container">
     <div class="row">
         <cagov-chart-vaccination-groups-race-ethnicity class="chart">
-          <ul>
+          <ul class="d-none">
             <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
             <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
             <li data-label="legendLabelVaccines">% of vaccines administered</li>
@@ -293,7 +292,7 @@ addtositemap: true
         </cagov-chart-vaccination-groups-race-ethnicity>
 
         <cagov-chart-vaccination-groups-age class="chart d-hide">
-          <ul>
+          <ul class="d-none">
             <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
             <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
             <li data-label="legendLabelVaccines">% of vaccines administered</li>
@@ -303,11 +302,13 @@ addtositemap: true
         </cagov-chart-vaccination-groups-age>
         
         <cagov-chart-vaccination-groups-gender class="chart d-hide">
-          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
-          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
-          <li data-label="legendLabelVaccines">% of vaccines administered</li>
-          <li data-label="legendLabelPopulation">% of state population</li>
-          <li data-label="chartDataLabel">Note: “Unknown/undifferentiated” includes those who declined to state, whose gender information is missing, or who identified as trans male, trans female or gender queer.</li>
+          <ul class="d-none">>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
+            <li data-label="chartDataLabel">Note: “Unknown/undifferentiated” includes those who declined to state, whose gender information is missing, or who identified as trans male, trans female or gender queer.</li>
+          </ul>
         </cagov-chart-vaccination-groups-gender>
     </div>
 </div> 
