@@ -194,6 +194,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;
 
+
           renderChart.call(this);
           this.resetTitle({
             region: regionName, 
