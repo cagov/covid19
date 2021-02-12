@@ -1,14 +1,14 @@
-name: Vaccination by groups preview
+name: Debugging Sandbox
 # azure static web app: SWA-GO-COVID19-D-011-jbum-test
 # Sandbox
 on:
   push:
     branches:
-      - vaccination_groups
+      - preproduction_debug
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - vaccination_groups
+      - preproduction_debug
 
 jobs:
   build_and_deploy_job:
