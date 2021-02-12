@@ -4,6 +4,18 @@ cagov-chart-vaccination-groups-race-ethnicity {
     width: 613px;
   }
 }
+cagov-chart-vaccination-groups-age {  
+  .svg-holder svg {
+    height: 362px;
+    width: 613px;
+  }
+}
+cagov-chart-vaccination-groups-gender {  
+  .svg-holder svg {
+    height: 302px;
+    width: 613px;
+  }
+}
 
 svg .tick text {
   text-anchor: start;
