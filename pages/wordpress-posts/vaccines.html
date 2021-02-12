@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Vaccines"
 meta: "Sign up for COVID-19 vaccination Get notified when it’s your turn to get the COVID-19 vaccine. If you&#8217;re near San Francisco, Los Angeles, or San Diego, you can also schedule your appointment. Sign up now COVID-19 vaccination is one of the most important tools to end the COVID-19 pandemic. The State is prioritizing vaccines for [&hellip;]"
 author: "State of California"
-publishdate: "2021-02-12T14:01:16Z"
+publishdate: "2021-02-12T16:42:49Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -258,6 +258,62 @@ addtositemap: true
 
 
 
+<h3>Vaccination by groups</h3>
+
+
+
+<p>The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Data shows the cumulative total administered and are updated daily.</p>
+
+
+
+
+<!-- Vaccination by Groups Charts -->
+<cagov-county-search></cagov-county-search>
+
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
+
+<cagov-chart-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
+    </div>
+</cagov-chart-filter-buttons>
+
+<div class="container">
+    <div class="row">
+        <cagov-chart-vaccination-groups-race-ethnicity class="chart">
+          <ul>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by race and ethnicity in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by race and ethnicity in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
+            <li data-label="chartDataLabel">Note: “Other” means those who don’t fall under any listed race or ethnicity.  “Unknown” includes those who declined to state or whose race and ethnicity information is missing.</li>
+          </ul>
+        </cagov-chart-vaccination-groups-race-ethnicity>
+
+        <cagov-chart-vaccination-groups-age class="chart d-hide">
+          <ul>
+            <li data-label="chartTitle">People with at least one dose of vaccine administered by age in California</li>
+            <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by age in [REGION]</li>
+            <li data-label="legendLabelVaccines">% of vaccines administered</li>
+            <li data-label="legendLabelPopulation">% of state population</li>
+            <li data-label="chartDataLabel"></li>
+          </ul>
+        </cagov-chart-vaccination-groups-age>
+        
+        <cagov-chart-vaccination-groups-gender class="chart d-hide">
+          <li data-label="chartTitle">People with at least one dose of vaccine administered by gender in California</li>
+          <li data-label="chartTitleCounty">People with at least one dose of vaccine administered by gender in [REGION]</li>
+          <li data-label="legendLabelVaccines">% of vaccines administered</li>
+          <li data-label="legendLabelPopulation">% of state population</li>
+          <li data-label="chartDataLabel">Note: “Unknown/undifferentiated” includes those who declined to state, whose gender information is missing, or who identified as trans male, trans female or gender queer.</li>
+        </cagov-chart-vaccination-groups-gender>
+    </div>
+</div> 
+
+
+
 <div class="bg-darkblue py-5 full-bleed mb-5">
     <div class="container py-2">
         <div class="row pb-4">
@@ -273,14 +329,6 @@ addtositemap: true
         </div>
     </div><!--END container-->
 </div>
-
-
-
-<h3>Vaccination by groups</h3>
-
-
-
-<p>The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Data shows the cumulative total administered and are updated daily.</p>
 
 
 
