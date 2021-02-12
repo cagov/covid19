@@ -165,7 +165,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
   }
 
   listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
+    let searchElement = document.querySelector("cagov-county-search-vaccines");
     searchElement.addEventListener(
       "county-selected",
       function (e) {

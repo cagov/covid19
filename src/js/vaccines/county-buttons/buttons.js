@@ -1,9 +1,9 @@
-class CAGovCountyButtons extends window.HTMLElement {
+class CAGovCountyButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     this.resetText = 'Statewide';
     this.county = '';
     
-    let searchElement = document.querySelector('cagov-county-search');
+    let searchElement = document.querySelector('cagov-county-search-vaccines');
     searchElement.addEventListener('county-selected', function (e) {
       console.log("County-selected event: " , e.detail);
       if (e.detail.reset) {
@@ -65,4 +65,4 @@ class CAGovCountyButtons extends window.HTMLElement {
     </div>`
   }
 }
-window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
+window.customElements.define('cagov-county-toggle-buttons-vaccines', CAGovCountyButtonsVaccines);

@@ -1,4 +1,4 @@
-class CAGovChartFilterButtons extends window.HTMLElement {
+class CAGovChartFilterButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     
     this.addEventListener('click',function(event) {
@@ -22,7 +22,7 @@ class CAGovChartFilterButtons extends window.HTMLElement {
 
     // listen for county events, hide deaths
     let statewideOnlyButton = this.querySelector("button[data-key='deaths']");
-    let searchElement = document.querySelector('cagov-county-search');
+    let searchElement = document.querySelector('cagov-county-search-vaccines');
     searchElement.addEventListener('county-selected', function (e) {
       if(statewideOnlyButton) {
         if(e.detail.statewide) {
@@ -50,4 +50,4 @@ class CAGovChartFilterButtons extends window.HTMLElement {
   }
 
 }
-window.customElements.define('cagov-chart-filter-buttons', CAGovChartFilterButtons);
+window.customElements.define('cagov-chart-filter-buttons-vaccines', CAGovChartFilterButtonsVaccines);

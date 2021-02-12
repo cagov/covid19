@@ -2,7 +2,7 @@ import Awesomplete from 'awesomplete-es6';
 import templatize from './template.js';
 import rtlOverride from "./../rtl-override.js";
 
-class CAGovCountySearch extends window.HTMLElement {
+class CAGovCountySearchVaccines extends window.HTMLElement {
 
   processCountySearchInput(typedInValue) {
         let foundCounty = '';
@@ -147,4 +147,4 @@ class CAGovCountySearch extends window.HTMLElement {
   }
 
 }
-window.customElements.define('cagov-county-search', CAGovCountySearch);
+window.customElements.define('cagov-county-search-vaccines', CAGovCountySearchVaccines);
