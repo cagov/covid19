@@ -210,7 +210,13 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .then(
         function (alldata) {
           console.log("Race/Eth data meta", alldata.meta);
+          // console.log("Race/Eth data data", alldata.data);
           this.alldata = alldata.data;
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
           renderChart.call(this, this.renderExtras);
           this.resetTitle({
             region: regionName, 
