@@ -46,7 +46,7 @@
     },
     {
       "_id": "is_this_page_useful",
-      "text": "此頁面是否有用？"
+      "text": "您是否找到您尋找的東西？"
     },
     {
       "_id": "answer_yes",
@@ -58,7 +58,11 @@
     },
     {
       "_id": "additional_comments",
-      "text": "其他意見："
+      "text": "有什麼問題？"
+    },
+    {
+      "_id": "good_what_were_you_looking_for",
+      "text": "太棒了！您今天在找什麼？"
     },
     {
       "_id": "this_field_required",
@@ -70,7 +74,7 @@
     },
     {
       "_id": "thank_you_for_your_comments",
-      "text": "感謝您提出寶貴意見！"
+      "text": "太好了！"
     },
     {
       "_id": "thank_you_for_your_feedback",
@@ -95,6 +99,82 @@
     {
       "_id": "hotline_hours",
       "text": "週一至週五上午8:00至下午8:00，週六至週日上午8:00至下午5:00"
+    },
+    {
+      "_id": "character_limit",
+      "text": "您已達到字符限制。"
+    },
+    {
+      "_id": "anything_to_add",
+      "text": "如果您有需要添加的任何內容，"
+    },
+    {
+      "_id": "positive_survey_url",
+      "text": "https://ethn.io/85017"
+    },
+    {
+      "_id": "take_the_survey",
+      "text": "填寫問卷調查"
+    },
+    {
+      "_id": "any_other_feedback",
+      "text": "如果您對該網站有其他回饋，"
+    },
+    {
+      "_id": "negative_survey_url",
+      "text": "https://ethn.io/77745"
+    },
+    {
+      "_id": "take_our_survey",
+      "text": "填寫我們的問卷調查"
+    },
+    {
+      "_id": "latest_news_title",
+      "text": "來自州長辦公室的新聞"
+    },
+    {
+      "_id": "var_latest_news",
+      "text": "來自州長辦公室"
+    },
+    {
+      "_id": "var_view_more_news",
+      "text": "查閱更多新聞"
+    },
+    {
+      "_id": "var_stats_header",
+      "text": "跟蹤COVID-19"
+    },
+    {
+      "_id": "var_county_map",
+      "text": "縣"
+    },
+    {
+      "_id": "var_state_summary",
+      "text": "州狀態面板"
+    },
+    {
+      "_id": "var_update_text",
+      "text": "在加州，從[DataDate]更新到[UpdatedDate] 的數據"
+    },
+    {
+      "_id": "var_hero_title",
+      "text": "您的行動可拯救生命"
+    },
+    {
+      "_id": "var_hero_p1",
+      "text": "查看您所在的縣開放的行業"
+    },
+    {
+      "_id": "var_hero_p2",
+      "text": "請佩戴口罩、洗淨雙手並與他人保持距離。"
+    },
+    {
+      "_id": "var_hero_alert_social",
+      "text": "查看州長的更新資訊"
+    },
+    {
+      "_id": "var_people_want_to_know_title",
+      "text": "民眾想要了解的資訊"
     }
   ],
   "Table2": [
@@ -137,8 +217,8 @@
       "_slug": "safer-economy"
     },
     {
-      "Name": "開放的行業",
-      "_slug": "safer-economy"
+      "Name": "疫苗",
+      "_slug": "vaccines"
     },
     {
       "Name": "行業指引",
@@ -151,12 +231,12 @@
   ],
   "Table4": [
     {
-      "Link Title": "有哪些安全開放商業的指引？",
-      "URL": "#"
+      "Link Title": "我的商業如何安全地開放？",
+      "URL": "https://covid19.ca.gov/industry-guidance/"
     },
     {
       "Link Title": "我可以在哪裡為我的商業尋求援助？",
-      "URL": "#"
+      "URL": "https://covid19.ca.gov/business-and-employers/"
     }
   ],
   "Table5": [
@@ -167,7 +247,15 @@
       "VideoID": "8S5iiKx5dhc",
       "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
       "ImageALT": "感謝您",
-      "ButtonText": "﻿觀看影片"
+      "ButtonText": "更多視訊訊息",
+      "ButtonURL": "toolkit.covid19.ca.gov"
+    }
+  ],
+  "Table6": [
+    {
+      "schools_may_reopen": "學校可能重新完全開放面授教學。當地的學校官員將決定是否以及何時重新開放。",
+      "schools_may_not_reopen": "若學校所在的縣處於「重度」（紅色）等級有5天時間，則學校可能重新完全開放面授教學。學校官員<a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx\">可能決定對一小部分學生以群組的方式進行面授教學</a>。<br><br>例外情況注意：如果所在縣處於限制較小的等級，已經重新開放的學校則不必關閉。但是，如果學校尚未重新開放面授教學，則在該縣連續5天回到嚴重（紅色）等級之前，它可能不會重新開放。",
+      "schools_info": "請參閱 <a href=\"https://schools.covid19.ca.gov/\">加州全民安全校園中心</a>、<a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf\">學校指引</a>以及<a href=\"https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf\">群組常見問題解答</a>。"
     }
   ]
 }
