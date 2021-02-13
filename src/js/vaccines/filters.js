@@ -1,4 +1,4 @@
-class CAGovChartFilterButtons extends window.HTMLElement {
+class CAGovChartFilterButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     
     this.addEventListener('click',function(event) {
@@ -21,7 +21,7 @@ class CAGovChartFilterButtons extends window.HTMLElement {
     });
 
     let metricFilter = document.querySelector(
-        "cagov-chart-filter-buttons.js-re-smalls"
+        "cagov-chart-filter-buttons-vaccines.js-re-smalls"
       );
       metricFilter.addEventListener(
         "filter-selected",
@@ -47,4 +47,4 @@ class CAGovChartFilterButtons extends window.HTMLElement {
   }
 
 }
-window.customElements.define('cagov-chart-filter-buttons', CAGovChartFilterButtons);
+window.customElements.define('cagov-chart-filter-buttons-vaccines', CAGovChartFilterButtonsVaccines);
