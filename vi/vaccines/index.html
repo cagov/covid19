@@ -2800,6 +2800,19 @@ function template$3(countyLabel, countyPlaceholder) {
     </div>`
 }
 
+/* temporary fix for charts that don't render well in RTL languages, 
+   such as arabic
+*/
+
+function rtlOverride$1(elem, divSelector='.svg-holder', desired_dir='ltr') {
+    let contDiv = elem.querySelector(divSelector);
+    if (contDiv != null) {
+      // temporary override for rtl languages (arabic)
+      // console.log("containing div found", contDiv);
+      contDiv.setAttribute('dir', desired_dir);
+    }
+}
+
 class CAGovCountySearch extends window.HTMLElement {
 
   processCountySearchInput(typedInValue) {
@@ -2858,7 +2871,7 @@ class CAGovCountySearch extends window.HTMLElement {
       }.bind(this));  
     }.bind(this));
 
-    rtlOverride(this, 'div', 'ltr');
+    rtlOverride$1(this, 'div', 'ltr');
 
   }
 
@@ -2945,7 +2958,7 @@ class CAGovCountySearch extends window.HTMLElement {
 }
 window.customElements.define('cagov-county-search', CAGovCountySearch);
 
-class CAGovCountyButtons extends window.HTMLElement {
+class CAGovCountyButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     this.resetText = 'Statewide';
     this.county = '';
@@ -3012,9 +3025,9 @@ class CAGovCountyButtons extends window.HTMLElement {
     </div>`
   }
 }
-window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
+window.customElements.define('cagov-county-toggle-buttons-vaccines', CAGovCountyButtonsVaccines);
 
-class CAGovChartFilterButtons extends window.HTMLElement {
+class CAGovChartFilterButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     
     this.addEventListener('click',function(event) {
@@ -3037,7 +3050,7 @@ class CAGovChartFilterButtons extends window.HTMLElement {
     });
 
     let metricFilter = document.querySelector(
-        "cagov-chart-filter-buttons.js-re-smalls"
+        "cagov-chart-filter-buttons-vaccines.js-re-smalls"
       );
       metricFilter.addEventListener(
         "filter-selected",
@@ -3063,7 +3076,7 @@ class CAGovChartFilterButtons extends window.HTMLElement {
   }
 
 }
-window.customElements.define('cagov-chart-filter-buttons', CAGovChartFilterButtons);
+window.customElements.define('cagov-chart-filter-buttons-vaccines', CAGovChartFilterButtonsVaccines);
 
 console.log("Loading vaccinations by group");
 
