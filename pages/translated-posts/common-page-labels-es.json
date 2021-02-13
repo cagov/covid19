@@ -58,11 +58,15 @@
     },
     {
       "_id": "additional_comments",
-      "text": "¿Cuál es el problema?"
+      "text": "¿Cual fue el problema?"
+    },
+    {
+      "_id": "good_what_were_you_looking_for",
+      "text": "¡Genial! ¿Qué estaba buscando hoy?"
     },
     {
       "_id": "this_field_required",
-      "text": "Genial! ¿Qué estaba buscando hoy?"
+      "text": "Este campo es obligatorio."
     },
     {
       "_id": "submit",
@@ -70,15 +74,15 @@
     },
     {
       "_id": "thank_you_for_your_comments",
-      "text": "¡Gracias!"
+      "text": "¡Bien!"
     },
     {
       "_id": "thank_you_for_your_feedback",
-      "text": "¡Gracias!"
+      "text": "¡Gracias por sus aportaciones!"
     },
     {
       "_id": "home",
-      "text": "Comentarios adicionales"
+      "text": "Inicio"
     },
     {
       "_id": "official_ca_website",
@@ -95,6 +99,82 @@
     {
       "_id": "hotline_hours",
       "text": "De lunes a viernes, de 8 a. m. a 8 p. m.; sábados y domingos, de 8 a. m. a 5 p. m."
+    },
+    {
+      "_id": "character_limit",
+      "text": "Ya alcanzó su límite de caracteres."
+    },
+    {
+      "_id": "anything_to_add",
+      "text": "Si tiene algo que agregar,"
+    },
+    {
+      "_id": "positive_survey_url",
+      "text": "https://ethn.io/85017"
+    },
+    {
+      "_id": "take_the_survey",
+      "text": "conteste la encuesta"
+    },
+    {
+      "_id": "any_other_feedback",
+      "text": "Si tiene algún otro comentario sobre este sitio web,"
+    },
+    {
+      "_id": "negative_survey_url",
+      "text": "https://ethn.io/77745"
+    },
+    {
+      "_id": "take_our_survey",
+      "text": "conteste nuestra encuesta"
+    },
+    {
+      "_id": "latest_news_title",
+      "text": "Noticias de la oficina del gobernador"
+    },
+    {
+      "_id": "var_latest_news",
+      "text": "De la oficina del gobernador"
+    },
+    {
+      "_id": "var_view_more_news",
+      "text": "Vea más noticias."
+    },
+    {
+      "_id": "var_stats_header",
+      "text": "Rastreo de la COVID-19"
+    },
+    {
+      "_id": "var_county_map",
+      "text": "Condado"
+    },
+    {
+      "_id": "var_state_summary",
+      "text": "Panel del estado"
+    },
+    {
+      "_id": "var_update_text",
+      "text": "En California, actualizado el [UpdatedDate] con datos del [DataDate]"
+    },
+    {
+      "_id": "var_hero_title",
+      "text": "Sus acciones salvan vidas"
+    },
+    {
+      "_id": "var_hero_p1",
+      "text": "Consulte qué abre en su condado."
+    },
+    {
+      "_id": "var_hero_p2",
+      "text": "Use mascarilla, lávese las manos y mantenga su distancia."
+    },
+    {
+      "_id": "var_hero_alert_social",
+      "text": "Consulte las actualizaciones del gobernador"
+    },
+    {
+      "_id": "var_people_want_to_know_title",
+      "text": "La gente quiere saber"
     }
   ],
   "Table2": [
@@ -137,8 +217,8 @@
       "_slug": "safer-economy"
     },
     {
-      "Name": "Qué está abierto",
-      "_slug": "safer-economy"
+      "Name": "Vacunas",
+      "_slug": "vaccines"
     },
     {
       "Name": "Guía para las industrias",
@@ -151,12 +231,12 @@
   ],
   "Table4": [
     {
-      "Link Title": "¿Cuál es la guía para abrir mi negocio de manera segura?",
-      "URL": "#"
+      "Link Title": "¿Cómo puedo abrir mi negocio de manera segura?",
+      "URL": "https://covid19.ca.gov/industry-guidance/"
     },
     {
       "Link Title": "¿Dónde puedo encontrar ayuda para mi negocio?",
-      "URL": "#"
+      "URL": "https://covid19.ca.gov/business-and-employers/"
     }
   ],
   "Table5": [
@@ -167,7 +247,15 @@
       "VideoID": "8S5iiKx5dhc",
       "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
       "ImageALT": "Gracias",
-      "ButtonText": "Vea el video"
+      "ButtonText": "Más mensajes en video",
+      "ButtonURL": "toolkit.covid19.ca.gov"
+    }
+  ],
+  "Table6": [
+    {
+      "schools_may_reopen": "Las escuelas pueden reabrir completamente para enseñanza en persona. Los funcionarios escolares locales decidirán si eso va a ocurrir y cuándo.",
+      "schools_may_not_reopen": "Es posible que las escuelas no vuelvan a abrir completamente para enseñanza en persona hasta que el condado haya estado en el nivel Sustancial (rojo) durante 5 días. Los funcionarios escolares <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx\">pueden decidir impartir enseñanza en persona</a> para un grupo limitado de estudiantes en cohortes pequeñas.<br><br>Nota sobre la excepción: Las escuelas que ya reabrieron debido a que el condado estaba en un nivel menos restrictivo no tienen que cerrar. Sin embargo, si una escuela aún no había reabierto para enseñanza en persona, no puede reabrir hasta que el condado vuelva al nivel Sustancial (rojo) durante 5 días consecutivos.",
+      "schools_info": "Consulte <a href=\"https://schools.covid19.ca.gov/\">Centro de Escuelas Seguras para Todos de California</a>, <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf\">la guía para escuelas</a> y las <a href=\"https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf\">preguntas frecuentes sobre la formación de cohortes</a>."
     }
   ]
 }
