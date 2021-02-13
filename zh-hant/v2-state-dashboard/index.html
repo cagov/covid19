@@ -241,9 +241,9 @@
 
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">縣</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="輸入縣"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>         <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">縣</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="輸入縣"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
-      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
     </div><button type="submit" class="btn btn-lightbg btn-bigger mb-2">獲取縣數據</button>   </form>
 </div>
 <div class="row d-flex justify-content-md-center"><span id="county-query-error" class="error-text d-none">未找到縣</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">每日病例數和死亡數</h3>
@@ -276,7 +276,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">注：相關人數並不代表真實的每日變化，因為這些結果包含來自昨天之前的病例數。發病日期是指預計出現病例的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。病例數包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的病例數。負的報告死亡人數表示先前被歸因於COVID-19的死亡病例，而後被確定與COVID-19無關。</p>
+  <p class="small-text">注：相關人數並不代表真實的每日變化，因為這些結果包含來自昨天之前的病例數。發病日期是指預計出現病例的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。病例數包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的病例數。這些團體不包括在藍圖等級分配計算中，其顯示不同的病例和檢測呈陽性速率。負的報告死亡人數表示先前被歸因於COVID-19的死亡病例，而後被確定與COVID-19無關。</p>
 </div>
 
 
@@ -311,7 +311,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">注：檢測日期是做檢測的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。報告的日期數據不適用於2020年5月5日之前的檢測。檢測呈陽性率的計算方法是陽性分子檢測的數量除以完成的總分子檢測數量。檢測呈陽性率包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的檢測呈陽性率。之前呈報的是14日平均檢測呈陽性率。</p>
+  <p class="small-text">注：檢測日期是做檢測的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。報告的日期數據不適用於2020年5月5日之前的檢測。檢測日期數據不包括州外和未知轄區檢測，總數可能與報告日期的數量不匹配。檢測呈陽性率的計算方法是陽性分子檢測的數量除以完成的總分子檢測數量。檢測呈陽性率包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的檢測呈陽性率。這些團體不包括在藍圖等級分配計算中，其顯示不同的病例和檢測呈陽性速率。之前呈報的是14日平均檢測呈陽性率。</p>
 </div>
 
 
@@ -393,7 +393,7 @@
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3">當前等級劃分（截至 2021年2月9日</h3>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">當前等級劃分（截至 2021年2月9日</h3>
   <p class="mt-0">等級劃分可能會在一週內的任意一天進行，並且一週可能進行一次以上。選擇一個縣以查看其處於哪個地區。</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
@@ -402,7 +402,7 @@
 
 
 <div class="text-center text-small">
-  <p>所有數據和等級劃分的依據為2021年1月30日週末的結果。請在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共衛生局指引頁面</a>查看等級劃分和變更的方式，以及縣歷史數據（<strong>加州藍圖數據圖</strong>）。此數據圖中的患病率及檢測呈陽性率的計算依據不包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的人數。目前計算地區ICU床位空置率使用的數據，來自於所有含急診科的醫院的總成人ICU床位數，而不包括新生兒和兒科ICU床位。自2021年1月25日地區性居家避疫令解除以來，不再因ICU中的COVID-19陽性患者佔比而對地區ICU床位空置率進行調整。</p>
+  <p>所有數據和等級劃分的依據為2021年1月30日週末的結果。請在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共衛生局指引頁面</a>查看等級劃分和變更的方式，以及縣歷史數據（<strong>加州藍圖數據圖</strong>）。此數據圖中的患病率及檢測呈陽性率的計算依據不包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的人數。這些團體包括在上述圖表中，其顯示不同病例和檢測呈陽性速率。目前計算地區ICU床位空置率使用的數據，來自於所有含急診科的醫院的總成人ICU床位數，而不包括新生兒和兒科ICU床位。自2021年1月25日地區性居家避疫令解除以來，不再因ICU中的COVID-19陽性患者佔比而對地區ICU床位空置率進行調整。</p>
 </div>
 
 
