@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi COVID-19 tại California"
 meta: "Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% người xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng{{_varStatVaccinesDailyPct_}}% #} […]"
 author: "State of California"
-publishdate: "2021-02-10T23:15:22Z"
+publishdate: "2021-02-11T21:22:42Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -127,7 +127,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             <span class="text-300">Tăng</span> </span> {{_varStatVaccinesDailyPct_}}%             </div> #}
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             <span class="text-300">Tăng</span> </span> {{_varStatVaccinesDailyPct_}}%            </div> #}
         </div>
       </div>
     </div>
@@ -146,9 +146,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Quận</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Nhập một quận"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Xóa</span></button>         <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Quận</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Nhập một quận"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Xóa</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
-      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
     </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Nhận dữ liệu quận</button>   </form>
 </div>
 <div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">Không tìm thấy quận</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>
@@ -181,7 +181,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">Lưu ý: Số liệu không thể hiện những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 lại không liên quan đến COVID-19.</p>
+  <p class="small-text">Lưu ý: Số liệu không thể hiện những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân  bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</p>
 </div>
 
 
@@ -216,7 +216,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">Lưu ý: Ngày xét nghiệm là ngày tiến hành xét nghiệm. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Không có dữ liệu ngày báo cáo cho các xét nghiệm trước ngày 5 tháng 5 năm 2020. Tỷ lệ dương tính được tính bằng số xét nghiệm phân tử dương tính chia cho tổng số xét nghiệm phân tử đã thực hiện. Tỷ lệ dương tính bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Tỷ lệ dương tính đã được báo cáo trước đây là mức trung bình trong 14 ngày.</p>
+  <p class="small-text">Lưu ý: Ngày xét nghiệm là ngày tiến hành xét nghiệm. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Không có dữ liệu ngày báo cáo cho các xét nghiệm trước ngày 5 tháng 5 năm 2020. Dữ liệu ngày xét nghiệm không bao gồm những xét nghiệm ngoài tiểu bang và khu vực thẩm quyền chưa biết, và tổng số có thể không khớp với các số lượng ngày báo cáo. Tỷ lệ dương tính được tính bằng số xét nghiệm phân tử dương tính chia cho tổng số xét nghiệm phân tử đã thực hiện. Tỷ lệ dương tính bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở  thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Tỷ lệ dương tính đã được báo cáo trước đây là mức trung bình trong 14 ngày.</p>
 </div>
 
 
@@ -298,7 +298,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3">Chỉ định cấp quận hiện tại kể từ {{_varTierDate_}}</h3>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Chỉ định cấp quận hiện tại kể từ {{_varTierDate_}}</h3>
   <p class="mt-0">Việc chỉ định cấp có thể được thực hiện vào bất kỳ ngày nào trong tuần và với tần suất nhiều lần một tuần. Chọn một quận để xem quận đó thuộc khu vực nào.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
@@ -307,7 +307,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="text-center text-small">
-  <p>Toàn bộ dữ liệu và chỉ định cấp quận được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi các cấp cùng dữ liệu lịch sử của quận (<strong>Bảng Dữ Liệu Kế Hoạch Chi Tiết California</strong>) trên <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">trang hướng dẫn của Sở Y Tế Công Cộng California</a>. Tỷ lệ ca mắc và tỷ lệ dương tính trong bản đồ này không bao gồm những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Sức chứa của ICU trong khu vực hiện được tính bằng tổng số giường ICU cho người lớn trong các bệnh viện có khoa cấp cứu và không bao gồm giường ICU cho trẻ sơ sinh hoặc trẻ nhỏ. Kể từ khi Lệnh Ở Nhà Trong Khu Vực kết thúc vào ngày 25 tháng 1 năm 2021, khả năng phục vụ trong khu vực của ICU không còn bao gồm việc điều chỉnh tỷ lệ bệnh nhân dương tính với COVID-19 trong ICU.</p>
+  <p>Toàn bộ dữ liệu và chỉ định cấp quận được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi các cấp cùng dữ liệu lịch sử của quận (<strong>Bảng Dữ Liệu Kế Hoạch Chi Tiết California</strong>) trên <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">trang hướng dẫn của Sở Y Tế Công Cộng California</a>. Tỷ lệ ca mắc và tỷ lệ dương tính trong bản đồ này không bao gồm những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được bao gồm trong các bảng ở trên, mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Sức chứa của ICU trong khu vực hiện được tính bằng tổng số giường ICU cho người lớn trong các bệnh viện có khoa cấp cứu và không bao gồm giường ICU cho trẻ sơ sinh hoặc trẻ nhỏ. Kể từ khi Lệnh Ở Nhà Trong Khu Vực kết thúc vào ngày 25 tháng 1 năm 2021, khả năng phục vụ trong khu vực của ICU không còn bao gồm việc điều chỉnh tỷ lệ bệnh nhân dương tính với COVID-19 trong ICU.</p>
 </div>
 
 
