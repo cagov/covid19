@@ -46,7 +46,7 @@
     },
     {
       "_id": "is_this_page_useful",
-      "text": "Nakatulong ba ang page na ito?"
+      "text": "Nakita mo ba ang hinahanap mo?"
     },
     {
       "_id": "answer_yes",
@@ -58,7 +58,11 @@
     },
     {
       "_id": "additional_comments",
-      "text": "Mga karagdagang komento:"
+      "text": "Ano ang naging problema?"
+    },
+    {
+      "_id": "good_what_were_you_looking_for",
+      "text": "Mahusay! Ano ang hinahanap mo ngayong araw?"
     },
     {
       "_id": "this_field_required",
@@ -70,7 +74,7 @@
     },
     {
       "_id": "thank_you_for_your_comments",
-      "text": "Salamat sa iyong mga komento!"
+      "text": "Mabuti naman!"
     },
     {
       "_id": "thank_you_for_your_feedback",
@@ -95,6 +99,82 @@
     {
       "_id": "hotline_hours",
       "text": "M-F 8AM-8PM, Sa-Su 8AM-5PM"
+    },
+    {
+      "_id": "character_limit",
+      "text": "Naabot mo na ang iyong limitasyon sa character."
+    },
+    {
+      "_id": "anything_to_add",
+      "text": "Kung may idaragdag ka pa,"
+    },
+    {
+      "_id": "positive_survey_url",
+      "text": "https://ethn.io/85017"
+    },
+    {
+      "_id": "take_the_survey",
+      "text": "sagutan ang survey"
+    },
+    {
+      "_id": "any_other_feedback",
+      "text": "Kung may iba ka pang feedback tungkol sa website na ito,"
+    },
+    {
+      "_id": "negative_survey_url",
+      "text": "https://ethn.io/77745"
+    },
+    {
+      "_id": "take_our_survey",
+      "text": "sagutan ang aming survey"
+    },
+    {
+      "_id": "latest_news_title",
+      "text": "Balita mula sa Tanggapan ng Gobernador"
+    },
+    {
+      "_id": "var_latest_news",
+      "text": "Mula sa Tanggapan ng Gobernador"
+    },
+    {
+      "_id": "var_view_more_news",
+      "text": "Tumingin ng higit pang balita"
+    },
+    {
+      "_id": "var_stats_header",
+      "text": "Pagsubaybay sa COVID-19"
+    },
+    {
+      "_id": "var_county_map",
+      "text": "County"
+    },
+    {
+      "_id": "var_state_summary",
+      "text": "Dashboard ng estado"
+    },
+    {
+      "_id": "var_update_text",
+      "text": "Sa California, Na-update noong [UpdatedDate] nang may data mula [DataDate]"
+    },
+    {
+      "_id": "var_hero_title",
+      "text": "Nakakasagip ng buhay ang iyong mga pagkilos"
+    },
+    {
+      "_id": "var_hero_p1",
+      "text": "Tingnan kung ano ang nakabukas sa iyong county"
+    },
+    {
+      "_id": "var_hero_p2",
+      "text": "Magsuot ng mask, hugasan ang iyong mga kamay, at patuloy na dumistansya sa iba."
+    },
+    {
+      "_id": "var_hero_alert_social",
+      "text": "Tingnan ang Mga Update ng Gobernador"
+    },
+    {
+      "_id": "var_people_want_to_know_title",
+      "text": "Ang gustong malaman ng mga tao"
     }
   ],
   "Table2": [
@@ -137,8 +217,8 @@
       "_slug": "safer-economy"
     },
     {
-      "Name": "Ano'ng nakabukas",
-      "_slug": "safer-economy"
+      "Name": "Mga bakuna",
+      "_slug": "vaccines"
     },
     {
       "Name": "Gabay sa industriya",
@@ -151,12 +231,12 @@
   ],
   "Table4": [
     {
-      "Link Title": "Ano ang gabay para ligtas na makapagbukas ang aking negosyo?",
-      "URL": "#"
+      "Link Title": "Paano ko ligtas na mabubuksan ang aking negosyo?",
+      "URL": "https://covid19.ca.gov/industry-guidance/"
     },
     {
       "Link Title": "Saan ako makakahanap ng tulong para sa aking negosyo?",
-      "URL": "#"
+      "URL": "https://covid19.ca.gov/business-and-employers/"
     }
   ],
   "Table5": [
@@ -167,7 +247,15 @@
       "VideoID": "8S5iiKx5dhc",
       "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
       "ImageALT": "Salamat",
-      "ButtonText": "Panoorin ang video"
+      "ButtonText": "Higit pang video message",
+      "ButtonURL": "toolkit.covid19.ca.gov"
+    }
+  ],
+  "Table6": [
+    {
+      "schools_may_reopen": "Puwedeng ganap na muling magbukas ang mga paaralan para sa personal na pagtuturo. Ang mga lokal na opisyal ng paaralan ang magpapasya kung kailan iyon mangyayari.",
+      "schools_may_not_reopen": "Hindi puwedeng ganap na muling magbukas ang mga paaralan para sa personal na pagtuturo hangga't wala pang 5 araw na nasa (pulang) tier na Marami ang kanilang county. <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx\">Puwedeng magpasya ang mga opisyal ng paaralan na magsagawa ng personal na pagtuturo</a> para sa limitadong hanay ng mga mag-aaral na nasa maliliit na cohort.<br><br>Paalala sa pagbubukod: Hindi kailangang magsara ng mga paaralang muli nang nakapagbukas kung nasa hindi masyadong mahigpit na tier ang county. Gayunpaman, kung hindi pa muling nakakapagbukas ang isang paaralan para sa personal na pagtuturo, hindi ito puwedeng muling magbukas hangga't hindi bumabalik ang county sa (pulang) tier na Marami sa loob ng 5 magkakasunod na araw.",
+      "schools_info": "Tingnan ang <a href=\"https://schools.covid19.ca.gov/\">Hub ng CA na Mga Ligtas na Paaralan para sa Lahat</a>, <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf\">gabay sa mga paaralan</a>, at <a href=\"https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf\">FAQ tungkol sa paggawa ng mga cohort</a>."
     }
   ]
 }

@@ -3,7 +3,7 @@ layout: "page.njk"
 title: " تتبع المخالطين للمصابين بكوفيد-19 في كاليفورنيا"
 meta: "تحديث يخص {{_varStatDate_}} اعتبارًا من {{_varStatDateNoYear_}}، وقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات. إجمالي حالات {{_varStatTotalCases_}} الإصابة {{_varStatTotalCasesToday_}} اليوم ⁦{{_varStatNewCasesPer100k_}}⁩ حالات جديدة لكل 100 ألف إجمالي {{_varStatTotalDeaths_}} الوفيات {{_varStatTotalDeathsToday_}} اليوم ⁦{{_varStatNewDeathsPer100k_}}⁩ حالات وفاة جديدة لكل 100 ألف إجمالي {{_varStatTested_}} الاختبارات {{_varStatTestedDaily_}} اليوم {{_varStatLatestPositivityPct_}}النسبة المئوية % للحالات التي ثبتت إيجابيتها إجمالي {{_varStatVaccines_}} اللقاحات المعطاة {# {{_varStatVaccinesDaily_}} اليوم {{_varStatVaccinesDailyPct_}}النسبة المئوية % للزيادة #} […]"
 author: "State of California"
-publishdate: "2021-02-10T23:15:22Z"
+publishdate: "2021-02-11T21:22:42Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -146,9 +146,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">المقاطعة</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="أدخل مقاطعة"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">أمحي</span></button>         <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">المقاطعة</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="أدخل مقاطعة"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">أمحي</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
-      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
     </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">احصل على بيانات المقاطعة</button>   </form>
 </div>
 <div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">المقاطعة ليست موجودة</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">الإصابات والوفيات اليومية</h3>
@@ -181,7 +181,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">ملاحظة: الأرقام لا تمثل تغيرات يومية حقيقية لأن هذه النتائج تشمل حالات من قبل أمس. تاريخ الحلقة هو التاريخ الذي يُقدَر أن الحدث قد وقع فيه. والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. تشمل الحالات الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية.  ويعني العدد السلبي للوفيات المبلغ عنها أن الوفيات التي كانت تُعزى في السابق إلى كوفيد-19 قد ثبت أنها لا ترتبط بكوفيد-19.</p>
+  <p class="small-text">ملاحظة: الأرقام لا تمثل تغيرات يومية حقيقية لأن هذه النتائج تشمل حالات من قبل أمس. تاريخ الحلقة هو التاريخ الذي يُقدَر أن الحدث قد وقع فيه. والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. تشمل الحالات الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وهذه المجموعات مستبعدة من حسابات تعيين الفئات في المخطط والتي تُظهر معدلات مختلفة لحالات الإصابة وإيجابية الاختبارات. ويعني العدد السلبي للوفيات المبلغ عنها أن الوفيات التي كانت تُعزى في السابق إلى كوفيد-19 قد ثبت أنها لا ترتبط بكوفيد-19.</p>
 </div>
 
 
@@ -216,7 +216,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">ملاحظة: تاريخ الاختبار هو التاريخ الذي تم فيه إجراء الاختبار. والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. بيانات التواريخ المُبلغ عنها لم تكن متاحة للاختبارات قبل 5 مايو 2020. يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية مقسومًا على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</p>
+  <p class="small-text">ملاحظة: تاريخ الاختبار هو التاريخ الذي تم فيه إجراء الاختبار. والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. بيانات التواريخ المُبلغ عنها لم تكن متاحة للاختبارات قبل 5 مايو 2020. وتستثني بيانات تاريخ الاختبار جميع الاختبارات من خارج الولاية وكذلك الاختبارات المجهولة التي تأتي من خارج نطاق سلطتها وقد لا تتطابق الأرقام الإجمالية مع أرقام تاريخ الإبلاغ. يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية مقسومًا على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وهذه المجموعات مستبعدة من حسابات تعيين الفئات في المخطط والتي تُظهر معدلات مختلفة لحالات الإصابة وإيجابية الاختبارات. وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</p>
 </div>
 
 
@@ -270,7 +270,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row d-flex justify-content-md-center">
 
-  <h2 class="text-center color-purple">وهذه البيانات هي التي تحرك القرارات التي تُبقي على صحة سكان كاليفورنيا وسلامتهم </h2>
+  <h2 class="text-center color-purple">وهذه البيانات هي التي تحرك القرارات التي تُبقي على صحة سكان كاليفورنيا وسلامتهم</h2>
 
 
 
@@ -298,7 +298,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3">تعيينات الفئات الحالية اعتبارًا من {{_varTierDate_}}</h3>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">تعيينات الفئات الحالية اعتبارًا من {{_varTierDate_}}</h3>
   <p class="mt-0">قد تحدث تعيينات الفئات في أي يوم من الأسبوع وقد تحدث أكثر من مرة في الأسبوع. حدد مقاطعة لمعرفة المنطقة الموجودة بها.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
@@ -307,7 +307,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="text-center text-small">
-  <p>تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في {{_varTierEndDate_}}. تعرف على كيفية تخصيص الفئات وتغييرها، بالإضافة إلى البيانات التاريخية للمقاطعة (<strong>الرسم البياني لمخطط كاليفورنيا</strong>) على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">صفحة توجيهات إدارة الصحة العامة في كاليفورنيا</a>. إن معدل الحالات الإيجابية في هذه الخريطة يستثني الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وتُحسب الآن سعة وحدات العناية المركزة الإقليمية باستخدام العدد الإجمالي لأسرة وحدات العناية المركزة للبالغين في المستشفيات التي بها قسم للطوارئ ولا تشمل أسرة العناية المركزة لحديثي الولادة أو الأطفال. منذ انتهاء العمل بالقرار الإقليمي بالبقاء في المنزل في 25 يناير 2021، لم تعد سعة وحدات العناية المركزة الإقليمية تتضمن تعديلاً للنسبة المئوية للمرضى المصابين بفيروس كوفيد-19 في وحدات العناية المركزة.</p>
+  <p>تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في {{_varTierEndDate_}}. تعرف على كيفية تخصيص الفئات وتغييرها، بالإضافة إلى البيانات التاريخية للمقاطعة (<strong>الرسم البياني لمخطط كاليفورنيا</strong>) على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">صفحة توجيهات إدارة الصحة العامة في كاليفورنيا</a>. إن معدل الحالات الإيجابية في هذه الخريطة يستثني الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وهذه المجموعات مدرجة في المخططات والروسوم البيانية المذكورة أعلاه والتي تُظهر تباينًا في معدلات الإصابة وإيجابية الحالات. وتُحسب الآن سعة وحدات العناية المركزة الإقليمية باستخدام العدد الإجمالي لأسرة وحدات العناية المركزة للبالغين في المستشفيات التي بها قسم للطوارئ ولا تشمل أسرة العناية المركزة لحديثي الولادة أو الأطفال. منذ انتهاء العمل بالقرار الإقليمي بالبقاء في المنزل في 25 يناير 2021، لم تعد سعة وحدات العناية المركزة الإقليمية تتضمن تعديلاً للنسبة المئوية للمرضى المصابين بفيروس كوفيد-19 في وحدات العناية المركزة.</p>
 </div>
 
 
