@@ -1,4 +1,4 @@
-class CAGovCountyButtons extends window.HTMLElement {
+class CAGovCountyButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
     this.resetText = 'Statewide';
     this.county = '';
@@ -65,4 +65,4 @@ class CAGovCountyButtons extends window.HTMLElement {
     </div>`
   }
 }
-window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
+window.customElements.define('cagov-county-toggle-buttons-vaccines', CAGovCountyButtonsVaccines);
