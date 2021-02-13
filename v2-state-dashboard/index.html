@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Latest reported cases, tests and county tier information">
+    <meta name="description" content="Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]">
     <meta name="author" content="State of California">
      
   <title>Tracking COVID-19 in California - Coronavirus COVID-19 Response</title>
@@ -13,7 +13,7 @@
     <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
     <meta content="Tracking COVID-19 in California" property="og:title">
-    <meta content="Latest reported cases, tests and county tier information" property="og:description">
+    <meta content="Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]" property="og:description">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://www.google-analytics.com/">
@@ -121,9 +121,9 @@
           
             <a class="dropdown-item" rel="alternate" lang="vi" hreflang="vi" href="/vi/v2-state-dashboard/">Tiếng Việt</a>
           
-            <a class="dropdown-item" rel="alternate" lang="zh-Hans" hreflang="zh-Hans" href="/zh-hans/v2-state-dashboard/">简体中文</a>
+            <a class="dropdown-item" rel="alternate" lang="zh-Hans" hreflang="zh-Hans" href="/zh-hans/v2-state-dashboard/">中文</a>
           
-            <a class="dropdown-item" rel="alternate" lang="zh-Hant" hreflang="zh-Hant" href="/zh-hant/v2-state-dashboard/">繁體中文</a>
+            <a class="dropdown-item" rel="alternate" lang="zh-Hant" hreflang="zh-Hant" href="/zh-hant/v2-state-dashboard/">文言</a>
           
           <a class="dropdown-item" href="/translate/">More …</a>
         </div>
@@ -281,7 +281,7 @@
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
 
-          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>NaN</strong>
+          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>5,511,429</strong>
             <span class="text-300">total</span>
           </div>
           
@@ -365,7 +365,7 @@
 
 
 
-<div class="row d-flex justify-content-md-center mt-2 pl-2">
+<div class="row d-flex justify-content-md-center">
   <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</p>
 </div>
 
@@ -403,7 +403,7 @@
 
 
 
-<div class="row d-flex justify-content-md-center mt-2 pl-2">
+<div class="row d-flex justify-content-md-center">
   <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. Positivity rate was previously reported as a 14-day average.</p>
 </div>
 
@@ -424,7 +424,7 @@
 
 
 
-<p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of 10,505, a decrease of 523 from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of 2,930, a decrease of 84 from the prior day total.</p>
+<p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of 9,998, a decrease of 496 from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of 2,808, a decrease of 122 from the prior day total.</p>
 
 
 
@@ -505,7 +505,7 @@
 
 
 
-<div class="pl-2 text-small">
+<div class="text-center text-small">
   <p>All data and tier assignments are based on results from week ending January 30, 2021. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>. The case and positivity rate in this map excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are included in the charts above, which show different case and test positivity rates. Regional ICU capacity is now calculated using the total number of adult ICU beds in hospitals with an emergency department and does not include neonatal or pediatric ICU beds. Since the Regional Stay Home Order ended on January 25, 2021, the regional ICU capacity no longer includes an adjustment for the percentage of COVID-19 positive patients in ICU.</p>
 </div>
 
