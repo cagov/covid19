@@ -49,13 +49,13 @@ Code supports extra data points on each bar
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
-<cagov-chart-filter-buttons class="js-re-smalls">
+<cagov-chart-filter-buttons-vaccines class="js-re-smalls">
     <div class="d-flex justify-content-center">
       <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
       <button class="small-tab" data-key="age">Age</button>
       <button class="small-tab" data-key="gender">Gender</button>
     </div>
-</cagov-chart-filter-buttons>
+</cagov-chart-filter-buttons-vaccines>
 
 <div class="container">
     <div class="row">
