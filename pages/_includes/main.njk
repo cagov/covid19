@@ -2,7 +2,7 @@
 {%-set dataYesterday = tableauCovidMetrics[1] -%}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set _varStatDate_ = data.DATE | formatDate2(false, tags, 1)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%}
+{# {%-set _varStatDateNoYear_ = _varStatDate_  | replace(", 2021", "")-%} #}
 {%-set _varStatTotalCases_ = data.TOTALCONFIRMED | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data.TOTALCONFIRMED_DAILY | formatNumber(tags)-%}
 {%-set _varStatTotalCasesTodayPct_ = (100*data.TOTALCONFIRMED_DAILYPCTCHG) | formatNumber(tags,1)-%}
@@ -10,7 +10,7 @@
 
 {%-set _varStatTotalDeaths_ = data.NUMBERDIED | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data.NUMBERDIED_DAILY | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsLast_ = (data.NUMBERDIED - data.NUMBERDIED_DAILY) | formatNumber(tags)-%}
+{# {%-set _varStatTotalDeathsLast_ = (data.NUMBERDIED - data.NUMBERDIED_DAILY) | formatNumber(tags)-%} #}
 {%-set _varStatTotalDeathsChange_ = (100*data.NUMBERDIED_DAILYPCTCHG) | formatNumber(tags,1)-%}
 {%-set _varDeathsTrend_ = 100*(data.NUMBERDIED_DAILYPCTCHG - dataYesterday.NUMBERDIED_DAILYPCTCHG) -%}
 
@@ -20,10 +20,10 @@
 {%-set _varTestedTrend_ = 100*(data.TESTED_DAILYPCTCHG - dataYesterday.TESTED_DAILYPCTCHG) -%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-{%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
-{%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
-{%-set _varStarPos_14DayAvg_ = (100*data.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%}
-{%-set _varStatYesterdayDate_ = data.DATE | formatDate2(false, tags)-%}
+{# {%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%} #}
+{# {%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%} #}
+{# {%-set _varStatPos_14DayAvg_ = (100*data.POSITIVITY_14DAYAVG) | formatNumber(tags,1) -%} #}
+{# {%-set _varStatYesterdayDate_ = data.DATE | formatDate2(false, tags)-%} #}
 
 {%-set _varCasesTrendClassU_        = '' if _varCasesTrend_ >= 0 else "d-none" %}
 {%-set _varDeathsTrendClassU_       = '' if _varDeathsTrend_ >= 0 else "d-none" %}
