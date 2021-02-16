@@ -42,11 +42,11 @@
     },
     {
       "_id": "what_are_you_looking_for",
-      "text": "Quý vị đang tìm gì?"
+      "text": "Quý vị đang tìm kiếm điều gì?"
     },
     {
       "_id": "is_this_page_useful",
-      "text": "Trang này có hữu ích không?"
+      "text": "Quý vị có tìm thấy điều mình đang tìm kiếm không?"
     },
     {
       "_id": "answer_yes",
@@ -58,11 +58,15 @@
     },
     {
       "_id": "additional_comments",
-      "text": "Góp ý thêm:"
+      "text": "Vấn đề đó là gì?"
+    },
+    {
+      "_id": "good_what_were_you_looking_for",
+      "text": "Tuyệt! Quý vị đang tìm kiếm điều gì hôm nay?"
     },
     {
       "_id": "this_field_required",
-      "text": "Đây là trường bắt buộc"
+      "text": "Mục này bắt buộc"
     },
     {
       "_id": "submit",
@@ -70,7 +74,7 @@
     },
     {
       "_id": "thank_you_for_your_comments",
-      "text": "Cảm ơn quý vị đã góp ý!"
+      "text": "Tốt!"
     },
     {
       "_id": "thank_you_for_your_feedback",
@@ -94,7 +98,83 @@
     },
     {
       "_id": "hotline_hours",
-      "text": "Thứ 2-Thứ 6 8 giờ sáng-8 giờ tối, Thứ 7-Chủ Nhật 8 giờ sáng-5 giờ chiều"
+      "text": "Thứ Hai-Thứ Sáu 8 giờ sáng-8 giờ tối, Thứ Bảy-Chủ Nhật 8 giờ sáng-5 giờ chiều"
+    },
+    {
+      "_id": "character_limit",
+      "text": "Quý vị đã đạt đến giới hạn ký tự."
+    },
+    {
+      "_id": "anything_to_add",
+      "text": "Nếu quý vị có điều gì cần bổ sung,"
+    },
+    {
+      "_id": "positive_survey_url",
+      "text": "https://ethn.io/85017"
+    },
+    {
+      "_id": "take_the_survey",
+      "text": "tiến hành khảo sát "
+    },
+    {
+      "_id": "any_other_feedback",
+      "text": "Nếu quý vị có phản hồi nào khác về trang mạng này,"
+    },
+    {
+      "_id": "negative_survey_url",
+      "text": "https://ethn.io/77745"
+    },
+    {
+      "_id": "take_our_survey",
+      "text": "tiến hành khảo sát"
+    },
+    {
+      "_id": "latest_news_title",
+      "text": "Tin Tức từ Văn Phòng Thống Đốc"
+    },
+    {
+      "_id": "var_latest_news",
+      "text": "Từ Văn Phòng Thống Đốc"
+    },
+    {
+      "_id": "var_view_more_news",
+      "text": "Xem thêm tin tức"
+    },
+    {
+      "_id": "var_stats_header",
+      "text": "Truy vết COVID-19"
+    },
+    {
+      "_id": "var_county_map",
+      "text": "Quận"
+    },
+    {
+      "_id": "var_state_summary",
+      "text": "Bảng tổng kết tiểu bang"
+    },
+    {
+      "_id": "var_update_text",
+      "text": "Tại California, Được cập nhật [UpdatedDate] với dữ liệu từ [DataDate]"
+    },
+    {
+      "_id": "var_hero_title",
+      "text": "Hành động của quý vị sẽ giúp cứu sống mọi người"
+    },
+    {
+      "_id": "var_hero_p1",
+      "text": "Xem nơi nào được mở cửa tại quận của quý vị"
+    },
+    {
+      "_id": "var_hero_p2",
+      "text": "Đeo khẩu trang, rửa tay và giữ khoảng cách."
+    },
+    {
+      "_id": "var_hero_alert_social",
+      "text": "Xem Thông Tin Cập Nhật của Thống Đốc"
+    },
+    {
+      "_id": "var_people_want_to_know_title",
+      "text": "Mọi người muốn biết"
     }
   ],
   "Table2": [
@@ -133,15 +213,15 @@
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
-      "Name": "Kế Hoạch Chi Tiết Vì Một Nền Kinh Tế An Toàn Hơn",
+      "Name": "Kế Hoạch Chi Tiết vì một Nền Kinh Tế An Toàn Hơn",
       "_slug": "safer-economy"
     },
     {
-      "Name": "Dịch vụ nào được phép mở cửa",
-      "_slug": "safer-economy"
+      "Name": "Vắc-xin",
+      "_slug": "vaccines"
     },
     {
-      "Name": "Hướng dẫn dành cho từng ngành nghề",
+      "Name": "Hướng dẫn cho từng ngành nghề",
       "_slug": "industry-guidance"
     },
     {
@@ -151,12 +231,12 @@
   ],
   "Table4": [
     {
-      "Link Title": "Hướng dẫn để mở cửa doanh nghiệp của tôi một cách an toàn là gì?",
-      "URL": "#"
+      "Link Title": "Tôi có thể mở cửa doanh nghiệp an toàn bằng cách nào?",
+      "URL": "https://covid19.ca.gov/industry-guidance/"
     },
     {
-      "Link Title": "Tôi có thể tìm trợ giúp cho doanh nghiệp của mình ở đâu?",
-      "URL": "#"
+      "Link Title": "Tôi có thể tìm sự trợ giúp cho doanh nghiệp của mình ở đâu?",
+      "URL": "https://covid19.ca.gov/business-and-employers/"
     }
   ],
   "Table5": [
@@ -167,7 +247,15 @@
       "VideoID": "8S5iiKx5dhc",
       "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
       "ImageALT": "Cảm ơn quý vị",
-      "ButtonText": "Xem video"
+      "ButtonText": "Thêm nhiều thông báo qua video",
+      "ButtonURL": "toolkit.covid19.ca.gov"
+    }
+  ],
+  "Table6": [
+    {
+      "schools_may_reopen": "Trường học có thể mở cửa lại hoàn toàn để giảng dạy trực tiếp. Các viên chức trường học địa phương sẽ quyết định điều đó có diễn ra hay không và khi nào.",
+      "schools_may_not_reopen": "Các trường học có thể không mở cửa trở lại hoàn toàn để giảng dạy trực tiếp cho đến khi quận đó đã ở bậc Quan Trọng (màu đỏ) trong 5 tuần. Các viên chức trường học <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx\">có thể quyết định tiến hành giảng dạy trực tiếp</a> cho tập hợp giới hạn các học sinh theo những nhóm nhỏ.<br><br>Lưu ý về ngoại lệ: Những trường học mà đã mở cửa trở lại nếu quận đó đã ở bậc ít hạn chế hơn thì không phải đóng cửa. Tuy nhiên, nếu một trường học đã không mở cửa trở lại để giảng dạy trực tiếp, trường đó có thể không được mở cửa trở lại cho đến khi quận đó trở lại bậc Quan Trọng (màu đỏ) trong 5 ngày liên tiếp.",
+      "schools_info": "Xem <a href=\"https://schools.covid19.ca.gov/\">Trung tâm Những Trường Học An Toàn cho Tất Cả tại CA </a>, <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf\">hướng dẫn cho trường học</a>, và <a href=\"https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf\">những Câu Hỏi Thường Gặp về chia nhóm</a>,"
     }
   ]
 }

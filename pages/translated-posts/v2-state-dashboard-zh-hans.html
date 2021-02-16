@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州COVID-19追踪"
 meta: "{{_varStatDate_}}的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。病例数 {{_varStatTotalCases_}} 总共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例数 死亡数 {{_varStatTotalDeaths_}} 总共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡数 检测数 {{_varStatTested_}} 总共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%检测呈阳性率 施打的疫苗数 {{_varStatVaccines_}} 总共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增长率#} […]"
 author: "State of California"
-publishdate: "2021-02-10T23:15:22Z"
+publishdate: "2021-02-11T21:22:42Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -146,9 +146,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">县</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="输入县"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>         <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">县</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="输入县"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
-      <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
     </div><button type="submit" class="btn btn-lightbg btn-bigger mb-2">获取县数据</button>   </form>
 </div>
 <div class="row d-flex justify-content-md-center"><span id="county-query-error" class="error-text d-none">未找到县</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">每日病例数和死亡数</h3>
@@ -181,7 +181,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">注：相关人数并不代表真实的每日变化，因为这些结果包含来自昨天之前的病例数。发病日期是指预计出现病例的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。病例数包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的病例数。负的报告死亡人数表示先前被归因于COVID-19的死亡病例，而后被确定与COVID-19无关。</p>
+  <p class="small-text">注：相关人数并不代表真实的每日变化，因为这些结果包含来自昨天之前的病例数。发病日期是指预计出现病例的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。病例数包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的病例数。这些团体不包括在蓝图等级分配计算中，其显示不同的病例和检测呈阳性速率。负的报告死亡人数表示先前被归因于COVID-19的死亡病例，而后被确定与COVID-19无关。</p>
 </div>
 
 
@@ -216,7 +216,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <p class="small-text">注：检测日期是做检测的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。报告的日期数据不适用于2020年5月5日之前的检测。检测呈阳性率的计算方法是阳性分子检测的数量除以完成的总分子检测数量。检测呈阳性率包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的检测呈阳性率。之前呈报的是14日平均检测呈阳性率。</p>
+  <p class="small-text">注：检测日期是做检测的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。报告的日期数据不适用于2020年5月5日之前的检测。检测日期数据不包括州外和未知辖区检测，总数可能与报告日期的数量不匹配。检测呈阳性率的计算方法是阳性分子检测的数量除以完成的总分子检测数量。检测呈阳性率包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的检测呈阳性率。这些团体不包括在蓝图等级分配计算中，其显示不同的病例和检测呈阳性速率。之前呈报的是14日平均检测呈阳性率。</p>
 </div>
 
 
@@ -298,7 +298,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3">当前等级划分（截至 {{_varTierDate_}}</h3>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
   <p class="mt-0">等级划分可能会在一周内的任意一天进行，并且一周可能进行一次以上。选择一个县以查看其处于哪个区域。</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
@@ -307,7 +307,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="text-center text-small">
-  <p>所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。此数据图中的患病率及检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。目前计算地区ICU床位空置率使用的数据，来自于所有含急诊科的医院的总成人ICU床位数，而不包括新生儿和儿科ICU床位。自2021年1月25日地区性居家避疫令解除以来，不再因ICU中的COVID-19阳性患者占比而对地区ICU床位空置率进行调整。</p>
+  <p>所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。此数据图中的患病率及检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。这些团体包括在上述图表中，其显示不同病例和检测呈阳性速率。目前计算地区ICU床位空置率使用的数据，来自于所有含急诊科的医院的总成人ICU床位数，而不包括新生儿和儿科ICU床位。自2021年1月25日地区性居家避疫令解除以来，不再因ICU中的COVID-19阳性患者占比而对地区ICU床位空置率进行调整。</p>
 </div>
 
 
