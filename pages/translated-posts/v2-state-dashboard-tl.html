@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
-title: "Pagsubaybay ng COVID-19 sa California"
-meta: "Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} kabuuan {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]"
+title: "Pagsubaybay sa COVID-19 sa California"
+meta: "Ang pinakabagong data sa mga kaso, pagkamatay, pagsusuri at mga tier ng county."
 author: "State of California"
-publishdate: "2021-02-11T21:22:42Z"
+publishdate: "2021-02-16T18:13:08Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -16,28 +16,21 @@ addtositemap: false
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesTodayPct_ = (data2.cases.LATEST_PCT_CH_CASES_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsLast_ = (data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS - data2.deaths.NEWLY_REPORTED_DEATHS) |
-formatNumber(tags)-%}
-{%-set _varStatTotalDeathsChange_ = (data2.deaths.LATEST_PCT_CH_DEATHS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-{%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
-{%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
 
-{%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -180,7 +173,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">Tala: Ang mga numero ay hindi kumakatawan sa tunay na pang-araw-araw na pagbabago dahil kasama sa mga resultang ang mga kaso sa nakaraang araw bago ang kahapon. Ang petsa ng episode ay ang pesta kung kailan tinatantyang naganap ang event. Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health. Kasama sa mga kaso ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Hindi kasama ang mga grupong ito sa mga pagkakalkula ng pagtatalaga ng tier sa Blueprint, nagpapakita ng iba't ibang rate ng kaso at rate ng pagiging positibo sa pagsusuri. Nangangahulugan ang isang negatibong numero ng mga naiulat na pagkamatay na ang mga pagkamatay na dating iniugnay sa COVID-19 ay natukoy na hindi nauugnay sa COVID-19.</p>
 </div>
 
@@ -198,7 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStarPos_7DayAvgPct_}}%.</p>
+<p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
@@ -215,7 +208,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">Tala: Ang petsa ng pagsusuri ay ang petsa kung kailan ibinigay ang pagsusuri. Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health. Hindi available ang datos ng petsa ng pag-uulat para sa mga pagsusuri bago ang Mayo 5, 2020. Hindi kasama sa data ng petsa ng pagsusuri ang mga pagsusuri sa labas ng estado at hindi alam na hurisdiksyon, at puwedeng hindi tumugma ang kabuuang bilang sa mga bilang ng petsa ng pag-uulat. Ang rate ng pagpopositibo ay kinakalkula bilang ang dami ng molecular test na na-divide sa kabuuan ng isinagawang molecular test. Kasama sa mga rate ng pagpopositibo ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Hindi kasama ang mga grupong ito sa mga pagkakalkula ng pagtatalaga ng tier sa Blueprint, nagpapakita ng iba't ibang rate ng kaso at rate ng pagiging positibo sa pagsusuri. Ang rate ng pagpopositibo ay naunang naiulat bilang 14 na araw na average.</p>
 </div>
 
@@ -306,7 +299,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="text-center text-small">
+<div class="pl-2 text-small">
   <p>Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang dating datos ng county (<strong>California Blueprint Data Chart</strong>) sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">page ng gabay ng California Department of Public Health</a>. Hindi kasama sa mga rate ng kaso at pagpopositibo sa mapang ito ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Kasama ang mga grupong ito sa mga chart sa itaas, na nagpapakita ng iba't ibang rate ng kaso at rate ng pagiging positibo sa pagsusuri. Ang panrehiyong kapasidad ng ICU ay kinakalkula na ngayon gamit ang kabuuang bilang ng mga pang-nasa hustong gulang na ICU bed sa mga ospital na may emergency department at hindi kinabibilangan ng mga neonatal o pediatric na ICU bed. Mula nang matapos ang Panrehiyong Utos na Manatili sa Bahay noong Enero 25, 2021, hindi na kasama sa panrehiyong kapasidad ng ICU ang porsyento ng mga pasyente sa ICU na positibo sa COVID-19.</p>
 </div>
 

@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
-title: "Seguimiento de la COVID-19 en California"
-meta: " Actualización para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por cada 100 mil Muertes {{_varStatTotalDeaths_}} en total {{_varStatTotalDeathsToday_}} hoy {{_varStatNewDeathsPer100k_}} nuevas muertes por cada 100 mil Pruebas {{_varStatTested_}} en total {{_varStatTestedDaily_}} hoy {{_varStatLatestPositivityPct_}} % de positividad de pruebas Vacunas administradas {{_varStatVaccines_}} en total {# {{_varStatVaccinesDaily_}} hoy {{_varStatVaccinesDailyPct_}} % de incremento #} […]"
+title: "Rastreo de la COVID-19 en California"
+meta: "Los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
 author: "State of California"
-publishdate: "2021-02-11T21:22:42Z"
+publishdate: "2021-02-16T18:13:08Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -16,28 +16,21 @@ addtositemap: false
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesTodayPct_ = (data2.cases.LATEST_PCT_CH_CASES_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsLast_ = (data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS - data2.deaths.NEWLY_REPORTED_DEATHS) |
-formatNumber(tags)-%}
-{%-set _varStatTotalDeathsChange_ = (data2.deaths.LATEST_PCT_CH_DEATHS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-{%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
-{%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
 
-{%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -180,7 +173,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">Nota: Los números no representan cambios reales de un día a otro, ya que estos resultados incluyen casos de antes de ayer. La fecha del episodio es la fecha estimada en que tuvo lugar el evento. La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California. Los casos incluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado. Estos grupos están excluidos de los cálculos para la asignación de niveles del plan, que muestran diferentes tasas de casos y de positividad de pruebas. Un número negativo de muertes reportadas significa que se determinó que muertes previamente atribuidas a la COVID-19 no estuvieron asociadas con la COVID-19.</p>
 </div>
 
@@ -198,7 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<p>El número de resultados de las pruebas de diagnóstico de COVID-19 en California alcanzó un total de {{_varStatTested_}}, un aumento de {{_varStatTestedDaily_}} pruebas con respecto al total del día anterior. La tasa de pruebas positivas en los últimos 7 días es del {{_varStarPos_7DayAvgPct_}} %.</p>
+<p>El número de resultados de las pruebas de diagnóstico de COVID-19 en California alcanzó un total de {{_varStatTested_}}, un aumento de {{_varStatTestedDaily_}} pruebas con respecto al total del día anterior. La tasa de pruebas positivas en los últimos 7 días es del {{_varStatPos_7DayAvgPct_}} %.</p>
 
 
 
@@ -215,7 +208,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">Nota: La fecha de la prueba es la fecha en la que se administró la prueba. La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California. Los datos de las fechas reportadas no están disponibles para las pruebas de antes del 5 de mayo de 2020. Los datos de la fecha de la prueba excluyen las pruebas de jurisdicciones desconocidas y fuera del estado, y es posible que los números totales no coincidan con los números de la fecha del informe. La tasa de positividad se calcula como el número de pruebas moleculares positivas dividido entre el total de pruebas moleculares realizadas. La tasa de positividad incluye a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado. Estos grupos están excluidos de los cálculos para la asignación de niveles del plan, que muestran diferentes tasas de casos y de positividad de pruebas. La tasa de positividad se reportaba anteriormente como un promedio de 14 días.</p>
 </div>
 
@@ -306,7 +299,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="text-center text-small">
+<div class="pl-2 text-small">
   <p>Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Vea cómo se asignan y cambian los niveles, así como los datos históricos del condado (<strong>Cuadro de datos del plan de California</strong>) en la <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">página de orientación del Departamento de Salud Pública de California</a>. Los casos y la tasa de positividad de este mapa excluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado. Estos grupos se incluyen en los cuadros anteriores, que muestran diferentes tasas de casos y de positividad de pruebas. La capacidad regional de las ICU ahora se calcula usando el número total de camas de las ICU para adultos de los hospitales con un departamento de emergencias y no incluye las camas de las ICU neonatales o pediátricas. Desde que se levantó la orden regional de permanecer en casa el 25 de enero de 2021, la capacidad regional de las ICU ya no incluye un ajuste para el porcentaje de pacientes positivos por COVID-19 de las ICU.</p>
 </div>
 
