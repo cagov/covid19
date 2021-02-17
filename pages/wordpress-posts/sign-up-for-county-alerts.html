@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Local Alerts"
 meta: "Sign up for local emergency alerts."
 author: "State of California"
-publishdate: "2020-11-26T01:47:43Z"
+publishdate: "2021-02-17T21:42:39Z"
 addtositemap: true
 ---
 
@@ -24,16 +24,8 @@ addtositemap: true
         </label>
         <div class="awesomplete">
           <div class="awesomplete">
-            <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="city-search form-control" data-list="" data-multiple="" id="location-query" role="combobox" type="text">
-            <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
-            <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true">
-              Type 2 or more characters for results.
-            </span>
+            <input aria-expanded="false" aria-owns="awesomplete_list_1" aria-controls="awesomplete_list_1" autocomplete="off" class="city-search form-control" data-list="" data-multiple="" id="location-query" role="combobox" type="text">
           </div>
-          <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
-          <span class="visually-hidden" aria-atomic="true" aria-live="assertive" role="status">
-            Type 2 or more characters for results.
-          </span>
         </div>
         <button class="btn btn-primary" type="submit">
           Find alerts
@@ -44,7 +36,7 @@ addtositemap: true
       </div>
     </form>
     <div class="js-county-alert" aria-live="polite">
-      <ul class="card-set"></ul>
+      <ul class="card-set" title="county alert list"></ul>
     </div>
   </div>
 </div>
