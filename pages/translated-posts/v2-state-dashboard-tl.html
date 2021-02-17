@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay sa COVID-19 sa California"
 meta: "Ang pinakabagong data sa mga kaso, pagkamatay, pagsusuri at mga tier ng county."
 author: "State of California"
-publishdate: "2021-02-13T00:12:44Z"
+publishdate: "2021-02-16T18:13:08Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -16,28 +16,21 @@ addtositemap: false
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesTodayPct_ = (data2.cases.LATEST_PCT_CH_CASES_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsLast_ = (data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS - data2.deaths.NEWLY_REPORTED_DEATHS) |
-formatNumber(tags)-%}
-{%-set _varStatTotalDeathsChange_ = (data2.deaths.LATEST_PCT_CH_DEATHS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatTestedDailyPct_ = (data2.tests.LATEST_PCT_CH_TOTAL_TESTS_REPORTED_1_DAY) | formatNumber(tags,1)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumber(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-{%-set _varStatVaccinesDaily_ = data2.vaccinations.DOSES_ADMINISTERED | formatNumber(tags,0)-%}
-{%-set _varStatVaccinesDailyPct_ = data2.vaccinations.PCT_INCREASE_FROM_PRIOR_DAY | formatNumber(tags,1)-%}
 
-{%-set _varStarPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -198,7 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStarPos_7DayAvgPct_}}%.</p>
+<p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
