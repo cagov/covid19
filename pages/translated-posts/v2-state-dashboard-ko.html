@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
-title: "캘리포니아 내 COVID-19 현황 추적"
-meta: " {{_varStatDate_}} 업데이트 {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} 합계 {{_varStatTotalCasesToday_}} 당일 {{_varStatNewCasesPer100k_}} 1십만명 당 신규 사례 건수 사망자 수 {{_varStatTotalDeaths_}} 합계 {{_varStatTotalDeathsToday_}} 당일 {{_varStatNewDeathsPer100k_}} 1십만명 당 신규 시망자 수 검사 건수 {{_varStatTested_}} 합계 {{_varStatTestedDaily_}} 당일 {{_varStatLatestPositivityPct_}}% 양성 반응률 백신 투여 건수 {{_varStatVaccines_}} 합계 {# {{_varStatVaccinesDaily_}} 당일 {{_varStatVaccinesDailyPct_}}% 증가 #} […]"
+title: "캘리포니아 내 COVID-19 추적 관리"
+meta: "사례 건수, 사망자 수, 검사 건수 및 카운티 단계에 관한 최신 데이터."
 author: "State of California"
-publishdate: "2021-02-11T21:22:42Z"
+publishdate: "2021-02-13T00:12:44Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -180,7 +180,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">주의: 해당 결과에 이전부터 어제까지의 사례 건수가 포함됨에 따라, 숫자는 정확한 전일 대비 변경 수치를 나타내지 않습니다. 발생 일자는 사례가 발생한 것으로 추정되는 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 사례 건수에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 보고된 사망자 수가 음수로 나타나면, 이전에 COVID-19에 의한 사망으로 집계된 사망자가 COVID-19와 연관성이 없는 것으로 판명된 경우에 해당합니다.</p>
 </div>
 
@@ -215,7 +215,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
   <p class="small-text">주의: 검사 일자는 검사가 실시된 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 보고 일자 데이터는 2020년 5월 5일 이전에 실시한 검사에 대해 제공되지 않습니다. 검사 일자 데이터는 타주 및 미확인 관할 지역에서 실시한 검사를 배제하며 총계가 보고일 수치와 일치하지 않을 수도 있습니다. 양성 반응률은 양성 반응을 나타낸 분자 검사 수를 전체 실시 분자 검사 수로 나누어 산출합니다. 양성 반응률에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 양성 반응률은 이전에 14일 평균으로 보고되었습니다.</p>
 </div>
 
@@ -306,7 +306,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="text-center text-small">
+<div class="pl-2 text-small">
   <p>모든 데이터 및 단계 배정은 {{_varTierEndDate_}}마감주의 결과에 근거합니다. 단계의 배정 및 변경 방법 뿐만 아니라 카운티의 과거 데이터(<strong>캘리포니아 청사진 데이터표(California Blueprint Data Chart)</strong>)는 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">캘리포니아 공중보건부(California Department of Public Health) 지침 페이지</a>에서 확인하십시오. 본 지도의 사례 및 양성 반응률에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 제외됩니다. 해당 그룹은 상기 차트에 포함되어 있으며 이로 인해 사례 발생률과 양성 반응률에서 차이가 나타나게 됩니다. 지역별 ICU 수용 능력은 이제 응급부서가 있는 병원 내 총 성인용 ICU 병상 수를 사용하여 산출되며 신생아나 소아용 ICU 병상은 이에 포함되지 않습니다. 지역별 자택 체류 명령이 2021년 1월 25일 자로 종료됨에 따라 지역별 ICU 수용 능력은 더 이상 ICU 내 COVID-19 양성 반응 백분율에 대한 조정분을 포함하지 않습니다.</p>
 </div>
 
