@@ -40,7 +40,7 @@ export default function (data, dataset) {
   <div class="mobile-menu-close"></div>
 
   <div>
-    <button class="menu-trigger open-menu" aria-label="Open Menu" aria-haspopup="true" aria-expanded="false" aria-owns="mainMenu" aria-controls="mainMenu">
+    <button class="menu-trigger open-menu" aria-label="${dataset.labelMenu}" aria-haspopup="true" aria-expanded="false" aria-owns="mainMenu" aria-controls="mainMenu">
       <div class="hamburger">
         <div class="hamburger-box">
           <div class="hamburger-inner"></div>
