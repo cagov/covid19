@@ -510,7 +510,7 @@ hero-stats {
 	transition: all .3s $slow-curve;
 }	
 
-.chart-arrow svg {width:20px;}
+.chart-arrow svg {width:20px; height:20px;}
 .chart-arrow-path {fill:$orange;}
 
 

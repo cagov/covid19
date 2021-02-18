@@ -4,17 +4,18 @@ import 'whatwg-fetch';
 import './polyfills/endswith.js';
 import '@cagov/accordion';
 import '@cagov/step-list';
+import './dashboard-v2/async-polyfill.js';
 import './alerts/index.js';
 import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
 import './roadmap/index.js';
-// import './dashboard/index.js';
 import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
+import './dashboard-v2/index.js';
 
 import applyAccordionListeners from './tracking-you/index.js';
 // twitter widget doesn't support IE11 so not including here
