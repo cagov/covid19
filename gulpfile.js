@@ -172,11 +172,20 @@ const emptyTemp = () => del(tempOutputFolder);
 // Switch CSS outputs based on environment variable.
 const cssByEnv = (process.env.NODE_ENV === 'development') ? gulp.series(devCSS, reload) : gulp.parallel(builtCSS, homeCSS);
 
+const jsCopy = (done) => gulp.src(`${includesOutputFolder}/*.js`)
+  .pipe(gulp.dest(buildOutputFolder))
+  .on('end', () => {
+    log('Copied: js files.');
+    done();
+  });
+
 // Execute the full CSS build process.
 const css = gulp.series(scss, cssByEnv, emptyTemp);
 
 // Build JS, CSS, then the site, in that order.
-const build = gulp.series(rollup, css, eleventy);
+const build = gulp.series(rollup, css, eleventy, jsCopy);
+
+// copy the js into browsable location for use by WordPress preview
 
 // Watch files for changes, trigger rebuilds.
 const watcher = () => {
