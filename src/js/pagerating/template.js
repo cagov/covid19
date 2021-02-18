@@ -3,9 +3,9 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
     <div class="feedback-form-grid">
 				<div class="feedback-form-grid-col" id="yes-no">
           <div class="js-feedback-form">
-            <h3 class="feedback-form-label mt-0 mb-3 font-size-1-5em" id="feedback-rating">${question}</h3>
-            <button class="button-lightestblue mr-2 js-feedback-yes" id="feedback-yes">${yes}</button>
-            <button class="button-lightestblue ml-3 js-feedback-no" id="feedback-no">${no}</button>
+          <h3 class="feedback-form-label mt-0 mb-3 font-size-1-5em" id="feedback-rating">${question}</h3>
+          <button class="button-lightestblue mr-2 js-feedback-yes" id="feedback-yes">${yes}</button>
+          <button class="button-lightestblue ml-3 js-feedback-no" id="feedback-no">${no}</button>
           </div>
           <div class="feedback-form-thanks js-feedback-thanks" role="alert"><span class="font-size-1-5em bold mb-3">${thanksComments}</span>
           <br><span class="text-300">${anythingToAdd} <a href="${positiveSurveyUrl}?page=${window.location.toString()}" class="color-secondary color-secondary-hover">${takeTheSurvey}.</a></span></div>
