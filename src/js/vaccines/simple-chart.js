@@ -164,6 +164,19 @@ export default function renderChart(extrasFunc = null) {
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
     let categories = data.map((group) => group.CATEGORY);
 
+    // Dynamically adjust chart height based on available bars
+    this.chartBreakpointValues.height = this.dimensions.margin.top + 60 * categories.length;
+    // console.log("New height",this.chartBreakpointValues.height);
+
+    d3.select(this.querySelector("svg"))
+      .attr("viewBox", [
+      0,
+      0,
+      this.chartBreakpointValues.width,
+      this.chartBreakpointValues.height,
+    ]);
+
+
     // let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys();
 
     // Filter and sort here...
