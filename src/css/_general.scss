@@ -1286,20 +1286,20 @@ a.navbar-brand:visited {
 }
 
 .card-body {
-  font-size: 18px;
+  // font-size: 18px;
   padding: 0.75rem 1.25rem;
 }
 
 .card .btn-link {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: $black;
   background-color: transparent;
 }
 
 .card p {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .wrimagecard {
@@ -1315,7 +1315,7 @@ a.navbar-brand:visited {
 
 .wrimagecard .fa {
   position: relative;
-  font-size: 70px;
+  font-size: 4.375rem;
 }
 
 .wrimagecard-topimage_header {
