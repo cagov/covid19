@@ -2,7 +2,7 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import rtlOverride from "./../../rtl-override.js";
-import renderChart from "../../simple-chart.js";
+import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsAge extends window.HTMLElement {
   connectedCallback() {
@@ -116,10 +116,6 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
     this.listenForLocations();
 
     rtlOverride(this); // quick fix for arabic
-  }
-
-  getYOffset(ci) {
-    return 0;
   }
 
   getLegendText() {
