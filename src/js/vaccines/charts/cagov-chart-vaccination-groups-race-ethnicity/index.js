@@ -2,7 +2,7 @@ import template from "./template.js";
 import getTranslations from "./../../get-strings-list.js";
 import getScreenResizeCharts from "./../../get-window-size.js";
 import rtlOverride from "./../../rtl-override.js";
-import renderChart from "../../simple-chart.js";
+import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   connectedCallback() {
@@ -126,12 +126,6 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     // }
 
     rtlOverride(this); // quick fix for arabic
-  }
-
-  // offset bottom two bars so we can add divider
-  getYOffset(ci) {
-    return ci < 7 ? 0 : 0; // Don't actually offset it, we aren't displaying the separator right now.
-    // return ci < 7 ? 0 : 20;
   }
 
   getLegendText() {
