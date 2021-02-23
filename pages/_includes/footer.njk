@@ -26,10 +26,10 @@ ga('tracker3.send', 'pageview');
 	data-required-field="{{text.this_field_required}}"
 	data-character-limit="{{text.character_limit}}"
 	data-anything-to-add="{{text.anything_to_add}}"
-	data-positive-survey-url="{{text.positive_survey_url}}"
+	data-positive-survey-url="{{ tags | feedbackSurveyUrl('feedback-survey-positive') | safe }}"
 	data-take-the-survey="{{text.take_the_survey}}"
 	data-any-other-feedback="{{text.any_other_feedback}}"
-	data-negative-survey-url="{{text.negative_survey_url}}"
+	data-negative-survey-url="{{ tags | feedbackSurveyUrl('feedback-survey-negative') | safe }}"
 	data-take-our-survey="{{text.take_our_survey}}"
 	></cagov-pagefeedback>	
 </pagerating-section>

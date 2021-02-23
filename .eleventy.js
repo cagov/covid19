@@ -639,6 +639,10 @@ module.exports = function(eleventyConfig) {
     const langRecord = getLangRecord(tags);
     return langRecord['pulse-survey'];
   });
+  eleventyConfig.addFilter('feedbackSurveyUrl', (tags, field) => {
+    const langRecord = getLangRecord(tags);
+    return langRecord[field];
+  });
 
   eleventyConfig.addFilter('publishdateorfiledate', page => {
     let out = (page.data
