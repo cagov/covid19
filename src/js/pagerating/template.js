@@ -3,7 +3,7 @@ export default function (question, yes, no, commentPrompt, thanksFeedback, thank
     <div class="feedback-form-grid">
 				<div class="feedback-form-grid-col" id="yes-no">
           <div class="js-feedback-form">
-          <h3 class="feedback-form-label mt-0 mb-3 font-size-1-5em" id="feedback-rating">${question}</h3>
+          <h3 role="region"class="feedback-form-label mt-0 mb-3 font-size-1-5em" id="feedback-rating" aria-label="${question} Select below:">${question}</h3>
           <button class="button-lightestblue mr-2 js-feedback-yes" id="feedback-yes">${yes}</button>
           <button class="button-lightestblue ml-3 js-feedback-no" id="feedback-no">${no}</button>
           </div>
