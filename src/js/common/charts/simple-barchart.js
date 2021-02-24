@@ -74,7 +74,7 @@ function writeBars(svg, data, x, y) {
         .append("rect")
         .attr("class","bg-bar")
         .attr("fill", "#f2f5fc")
-        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i))
+        .attr("y", (d, i) => y(d.CATEGORY))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth());
@@ -84,7 +84,7 @@ function writeBars(svg, data, x, y) {
         .append("rect")
         .attr("class","fg-bar")
         .attr("fill", "#92C5DE")
-        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i) )
+        .attr("y", (d, i) => y(d.CATEGORY))
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
@@ -96,7 +96,7 @@ function writeBars(svg, data, x, y) {
         .attr("class","hot-bar")
         .attr("fill", "#00ff00")
         .attr("fill-opacity",0)
-        .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i))
+        .attr("y", (d, i) => y(d.CATEGORY))
         .attr("x", d => x(0))
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth())
@@ -130,7 +130,7 @@ function writeBars(svg, data, x, y) {
     groups
       .append("text")
       .attr("class", "bar-label")
-      .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i) + (y.bandwidth() / 2))
+      .attr("y", (d, i) => y(d.CATEGORY) + (y.bandwidth() / 2))
       .attr("x", d => x(max_x_domain)+12)
       // .attr("width", x.bandwidth() / 4)
       .text(d => this.pctFormatter.format(d.METRIC_VALUE))
@@ -144,7 +144,7 @@ function writeBars(svg, data, x, y) {
     groups
       .append("text")
       .attr("class", "bar-cat")
-      .attr("y", (d, i) => y(d.CATEGORY)+this.getYOffset(i)-8)
+      .attr("y", (d, i) => y(d.CATEGORY)-8) // +this.getYOffset(i)
       .attr("x", d => x(0))
       .text(d => d.CATEGORY)
       // .attr("width", x.bandwidth() / 4)
@@ -165,15 +165,15 @@ export default function renderChart(extrasFunc = null) {
     let categories = data.map((group) => group.CATEGORY);
 
     // Dynamically adjust chart height based on available bars
-    this.chartBreakpointValues.height = this.dimensions.margin.top + 60 * categories.length;
+    this.dimensions.height = this.dimensions.margin.top + 60 * categories.length;
     // console.log("New height",this.chartBreakpointValues.height);
 
     d3.select(this.querySelector("svg"))
       .attr("viewBox", [
       0,
       0,
-      this.chartBreakpointValues.width,
-      this.chartBreakpointValues.height,
+      this.dimensions.width,
+      this.dimensions.height,
     ]);
 
 
