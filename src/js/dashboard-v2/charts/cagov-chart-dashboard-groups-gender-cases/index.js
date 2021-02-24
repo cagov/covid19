@@ -10,7 +10,7 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardGroupsGenderCases");
     this.translationsObj = getTranslations(this);
-    console.log("Translations obj",this.translationsObj);
+    // console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
