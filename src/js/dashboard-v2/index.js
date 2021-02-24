@@ -1,6 +1,10 @@
 import Awesomplete from 'awesomplete-es6';
-import './charts/cagov-chart-dashboard-groups-race-ethnicity-cases/index.js'
-import './charts/cagov-chart-dashboard-groups-race-ethnicity-deaths/index.js'
+import './charts/cagov-chart-dashboard-groups-race-ethnicity-cases/index.js';
+import './charts/cagov-chart-dashboard-groups-race-ethnicity-deaths/index.js';
+import './charts/cagov-chart-dashboard-groups-gender-cases/index.js';
+import './charts/cagov-chart-dashboard-groups-gender-deaths/index.js';
+import './charts/cagov-chart-dashboard-groups-age-cases/index.js';
+import './charts/cagov-chart-dashboard-groups-age-deaths/index.js';
 
 window.fetch('/countystatus.json')
 .then(response => response.json())

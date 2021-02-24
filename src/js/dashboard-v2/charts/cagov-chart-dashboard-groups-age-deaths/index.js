@@ -4,11 +4,11 @@ import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
-// cagov-chart-dashboard-groups-race-ethnicity-deaths
+// cagov-chart-dashboard-groups-age-deaths
 
-class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
+class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardGroupsRaceEthnicityDeaths");
+    console.log("Loading CAGovDashboardGroupsAgeDeaths");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
@@ -145,8 +145,8 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
-          this.alldata = alldata.data.by_race_and_ethnicity.deaths;
-          this.popdata = alldata.data.by_race_and_ethnicity.population;
+          this.alldata = alldata.data.by_age.deaths;
+          this.popdata = alldata.data.by_age.population;
           this.alldata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
           });
@@ -170,6 +170,6 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-groups-race-ethnicity-deaths",
-  CAGovDashboardGroupsRaceEthnicityDeaths
+  "cagov-chart-dashboard-groups-age-deaths",
+  CAGovDashboardGroupsAgeDeaths
 );

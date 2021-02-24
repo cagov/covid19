@@ -10,6 +10,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardGroupsRaceEthnicityCases");
     this.translationsObj = getTranslations(this);
+    console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
@@ -17,13 +18,13 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
 
     this.chartOptions = {
       // Data
-      dataUrl: "https://files.covid19.ca.gov/data/daily-stats-v2-temp.json",
+      dataUrl: config.chartsDataFile,
       desktop: {
         fontSize: 14,
         height: 60 + this.nbr_bars * this.bar_vspace,
         width: 400,
         margin: {
-          top: 60,
+          top: 0,
           right: 80,
           bottom: 20, // 20 added for divider
           left: 0,
@@ -34,7 +35,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
         height: 60 + this.nbr_bars * this.bar_vspace,
         width: 350,
         margin: {
-          top: 60,
+          top: 0,
           right: 80,
           bottom: 20, // 20 added for divider
           left: 0,
@@ -45,7 +46,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
         height: 60 + this.nbr_bars * (this.bar_vspace - 2),
         width: 440,
         margin: {
-          top: 60,
+          top: 0,
           right: 80,
           bottom: 20,
           left: 0,
@@ -56,7 +57,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
         height: 60 + this.nbr_bars * (this.bar_vspace - 2),
         width: 320,
         margin: {
-          top: 60,
+          top: 0,
           right: 80,
           bottom: 20,
           left: 0,
@@ -117,22 +118,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
   }
 
   getLegendText() {
-    return [this.translationsObj.legendLabelVaccines, this.translationsObj.legendLabelPopulation];
-  }
-
-  getChartTitle({
-    region = "California",
-    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
-    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
-  }) {
-
-    let isCounty = region === "California" ? false : true;
-
-    let replacedChartTitle = isCounty === false ? chartTitle : chartTitleCounty.replace("[REGION]", region + " County");
-
-    this.translationsObj.chartDisplayTitle = replacedChartTitle;
-
-    return replacedChartTitle;
+    return [];
   }
 
   ariaLabel(d) {
@@ -168,13 +154,12 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
           this.popdata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
           });
-          console.log("!! Race/Eth data", alldata);
 
           // "Unknown"
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras);
+          renderChart.call(this, this.renderExtras, this.popdata);
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
