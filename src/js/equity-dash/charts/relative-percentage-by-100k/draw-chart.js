@@ -98,7 +98,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       tooltip.html(`<div class="chart-tooltip"><div >${caption}</div></div>`);
       tooltip.style("visibility", "visible");
       tooltip.style("left", "90px");
-      tooltip.style("top", `${event.layerY+10}px`);
+      tooltip.style("top", `${event.offsetY+230}px`);
     })
     .on("mouseout", function (d) {
       d3.select(this).transition();
