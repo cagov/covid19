@@ -46,7 +46,7 @@ export default [
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : []),
-  ...(shouldIRebuild('/dashboard-v2/', '../../docs/js/dashboard-v2.js') ? [dashboard2] : []),
+  ...(shouldIRebuild('/dashboard-v2/', '../../docs/js/dashboard-v2.js') ? [dashboard2] : [dashboard2]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   esm,
