@@ -1,4 +1,4 @@
-// import css from "./index.scss";
+import css from "./index.scss";
 /**
  * Render bar chart for vaccinations group.
  * 
