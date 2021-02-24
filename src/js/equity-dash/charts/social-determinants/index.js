@@ -3,7 +3,7 @@ import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewr
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
-import { reformatReadableDate } from "../../readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
