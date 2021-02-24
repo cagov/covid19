@@ -153,6 +153,10 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
           this.popdata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
           });
+          this.alldata.push(this.alldata.splice(4,1)[0])
+          this.popdata.push(this.popdata.splice(4,1)[0])
+          this.alldata.push(this.alldata.splice(5,1)[0])
+          this.popdata.push(this.popdata.splice(5,1)[0])
 
           // "Unknown"
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
