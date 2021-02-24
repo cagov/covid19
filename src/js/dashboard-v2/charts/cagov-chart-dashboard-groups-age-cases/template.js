@@ -6,7 +6,7 @@ import css from "./index.scss";
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
 export default function template({
-  chartTitle = "Confirmed cases by race and ethnicity in California",
+  chartTitle = "Confirmed cases by age in California",
   chartDataLabel = null,
 }) {
   return /*html*/ `
