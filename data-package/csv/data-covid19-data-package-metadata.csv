@@ -1,0 +1,148 @@
+"title","name","version","intent","description","tags","groups","licenses","author","data_dictionary_type","data_dictionary","program_contact","public_access_level","topics","language","rights","homepage","data_standard","documentation_template","related_content","data_methodology","updated","edit_data_source_url","pages_where_the_data_is_used","contributors","metric","data_attributes","calculations_or_user_interface_manipulation","datasets"
+"Schools may reopen in these counties","schools-may-reopen","v1.0.0","","Which schools may reopen in which county. This WordPress data table provides two data sources. One for the counties
+","[""COVID-19"",""Schools""]","","","","","","","","[""COVID-19""]","[""English""]","","","","
+","","","2021-02-24T15:51:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=6422&action=edit","[""/safer-economy""]","","","","","schools-may-reopen"
+"County regions","countyregions","v1.0.0","","Used for Regional Stay at Home Order (RSHO). Assignments of RSHO to California counties.
+
+Used to be a spreadsheet, but now the data lives as JSON in github.
+","[""COVID-19"",""Regional Stay at Home Order""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://github.com/cagov/covid19/blob/master/pages/_data/countyRegion.json","[""/safer-economy""]","","","","","countyregions"
+"County status","countystatus","v1.0.0","
+","County Tier Status. Is updated weekly or as needed. A FaaS service runs with the script posted in ""Edit Data Source"" This script pulls data from Snowflake.","[""COVID-19"",""Blueprint for a Safer Economy Tiers""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","","[""/safer-economy""]","","","","","countystatus"
+"Reopening Roadmap, Activity Business Search Data","covid19-activity-business-search-data","v2.0.0","","What's Open autocomplete search data & tier modifications.
+","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrlChE4avLNtuyMM","[""/safer-economy""]","","","","","covid19-activity-business-search-data"
+"COVID-19 County Webpages","covid19-county-webpage","v2.0.0","","Data source for county COVID-19 webpages.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrPJo2WCnoD5arC8","[""/safer-economy""]","","","","","covid19-county-webpage"
+"COVID-19 State Industry Guidance Additional Resources","covid19-industry-guidance-additional-resources","v2.0.0","","Optional messages and additional links to files outside covid19.ca.gov guidance publishing system.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrmpEQbtjqx2LSQL","[""/safer-economy""]","","","","","covid19-industry-guidance-additional-resources"
+"COVID-19 Industry Guidance Categories","covid19-industry-guidance-categories","v2.0.0","","Industry Guidance categories and their publishing statuses. Used as a key for related guidance, file publishing and tracking.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrpfWbz1MSw2EPMU","[""/safer-economy""]","","","","","covid19-industry-guidance-categories"
+"covid19-industry-guidance-pdf-link","covid19-industry-guidance-pdf-links","v2.0.0","","Published State Guidance PDF files. Syncs from PDF History table after syncing with covid-static git log. covid-static git repo syncs to our static file server.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrrlz1gMTUNMX1iF","[""/safer-economy""]","","","","","covid19-industry-guidance-pdf-links"
+"covid19-language-keys","covid19-language-keys","v2.0.0","","Language & language codes used to tag state industry guidance.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://airtable.com/shrFOd5Vq9QWT1KZn","[""/safer-economy""]","","","","","covid19-language-keys"
+"Related Guidance Metadata","covid19-related-guidance-metadata","v2.0.0","","Any optional messaging for a state industry guidance category.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","
+","2021-02-24T15:51:00.000Z","https://airtable.com/shrVkx9roz0l0Cd1s","[""/safer-economy""]","","","","","covid19-related-guidance-metadata"
+"covid19-state-industry-guidance","covid19-state-industry-guidance","v2.0.0","Provide visibility, transparency and structured data for State Industry Guidance to make it easy for Californians to find the information they need to keep safe.
+","A dataset aggregated from State Industry Guidance tables managed and edited in Airtable.","[""COVID-19"",""State industry guidance"",""What's open search"",""Blueprint for a Safer Economy Tiers"",""Industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://github.com/cagov/storybook-ca-gov/tree/main/stories/web-components/cagov-reopening/data","[""/safer-economy""]","","","","","covid19-state-industry-guidance"
+"Regions Closed","regionsclosed","v1.0.0","","County regions currently closed for Regional Stay at Home Order restrictions.","[""COVID-19"",""Regional Stay at Home Order"",""Closures""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://github.com/cagov/covid19/blob/master/.eleventy.js","[""/safer-economy""]","","","","","regionsclosed"
+"Reopening Activities","reopening-activities","v1.0.0","","A file generated by the  11ty build process that moves the reopening-roadmap-activity-data from Wordpress table data to the local docs file to be available to the statically generated site.","[""COVID-19"",""Reopening Roadmap "",""Blueprint for a Safer Economy Tiers"",""What's open search"",""State industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://github.com/cagov/covid19/blob/master/.eleventy.js","[""/safer-economy""]","","","","","reopening-activities"
+"Reopening Matrix Data","reopening-matrix-data","v1.0.0","","This data is used to populate the matrix on this page...
+https://covid19.ca.gov/safer-economy/
+Every column without a ""_"" will be translated.","[""COVID-19"",""Reopening Roadmap "",""Blueprint for a Safer Economy Tiers""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=6422&action=edit","[""/safer-economy""]","","","","","reopening-matrix-data"
+"reopening-roadmap-activity-data","reopening-roadmap-activity-data","v1.0.0","","Data used for What's Open search. Associates autocomplete results with tier data.","[""COVID-19"",""Reopening Roadmap "",""Blueprint for a Safer Economy Tiers"",""What's open search"",""State industry guidance""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=5567&action=edit","[""/safer-economy""]","","","","","reopening-roadmap-activity-data"
+"rsho","rsho","v1.0.0","","Was used for Regional Stay at Home order.","[""COVID-19"",""Regional Stay at Home Order""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7402&action=edit","[""/safer-economy""]","","","","","rsho"
+"statusdescriptors","statusdescriptors","v1.0.0","","Tier status descriptors.","[""COVID-19"",""Blueprint for a Safer Economy Tiers"",""Web UI Labels""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://github.com/cagov/covid19/blob/master/.eleventy.js","[""/safer-economy""]","","","","","statusdescriptors"
+"safer-economy-lang","safer-economy-lang","v1.0.0","Provide translatable interface strings for reopening search tool.
+","This table is used to to get the text fields for the search box on Safer Economy. https://covid19.ca.gov/safer-economy/","[""COVID-19"",""Web UI Labels""]","","","","","","","","[""COVID-19""]","[""English""]","","","","","","","2021-02-24T15:51:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7535&action=edit","[""/safer-economy""]","","","","","safer-economy-lang"
+"daily-stats-v2","daily-stats-v2","v2.0.0","","","[""COVID-19"",""State Dashboard""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T15:51:00.000Z","","[""/""]","","","","","daily-stats-v2"
+"Summary - statewide","The disparities in our diverse communities are severe","v1.0.0","Show summary charts that make the main point of the page (if users stopped after seeing just those)","COVID-19 disproportionately affects California’s low income, Latino, Black, and Pacific Islander communities, as well as essential workers such as those in health care, grocery, and cleaning services.","[""COVID-19"",""State Dashboard""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T15:51:00.000Z","","[""/equity""]","","**R/E case rate, median income case rate, health equity metric**
+
+**Metric value = all %s**
+
+
+","- Case rate of Latino, black + NHPI
+- Case rate of median income <40K
+- Lowest 25% testing positivity
+
+","https://github.com/cagov/covid19/blob/master/pages/_data/equityTopBoxes.js","CasesAndDeathsByDemographic, CasesLowIncome"
+"% Missingness by Race and Ethnicity (R/E)","Data completeness is critical to addressing inequity: Reporting by race and ethnicitData completeness is critical to addressing inequityy in California","v1.0.0","“The disparities among race and ethnicity lines are so important and we don’t have the data to describe it”","We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. View resources on how to improve reporting.","[""COVID-19"",""Equity"",""Data completeness"",""Race and ethnicity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","**% Missing Race/Ethnicity Data** (Testing, Cases and Deaths) – by County 
+
+**Metric value = all %s**
+
+
+","Unknown data for Case, Deaths, and Testing
+","","MissingnessData"
+"% Missingness by Race and Ethnicity (R/E)","Data completeness is critical to addressing inequity: Reporting by race and ethnicitData completeness is critical to addressing inequityy in California","v1.0.0","“The disparities among race and ethnicity lines are so important and we don’t have the data to describe it”","We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. View resources on how to improve reporting.","[""COVID-19"",""Equity"",""Data completeness"",""Race and ethnicity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","**% Missing Race/Ethnicity Data** (Testing, Cases and Deaths) – by County 
+
+**Metric value = all %s**
+
+
+","Unknown data for Case, Deaths, and Testing
+","","MissingnessData"
+"% Missingness by Race and Ethnicity (R/E)","Data completeness is critical to addressing inequity: Reporting by race and ethnicitData completeness is critical to addressing inequityy in California","v1.0.0","“The disparities among race and ethnicity lines are so important and we don’t have the data to describe it”","We know a lot about the impact of COVID-19 on certain communities, but we can better invest our resources by increasing the collection of race, ethnicity, and sexual orientation and gender identity data. This data collection requires close cooperation with private sector partners, laboratories, and state and county officials. View resources on how to improve reporting.","[""COVID-19"",""Equity"",""Data completeness"",""Race and ethnicity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","**% Missing Race/Ethnicity Data** (Testing, Cases and Deaths) – by County 
+
+**Metric value = all %s**
+
+
+","Unknown data for Case, Deaths, and Testing
+","","MissingnessData"
+"Proportion by Race and Ethnicity (R/E)","COVID-19 impact by race and ethnicity: Cases, deaths and tests rate relative to percentage of population in California","v1.0.0","See how Latinx is only x% of population and yet y% of cases”","","[""COVID-19"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","**Proportion **(Testing, Cases, Deaths) – by County
+
+**Metric value = %**
+
+
+","- R/E of total cases, deaths, testing
+
+","","CumulativeData"
+"R/E Rate relative to population","COVID-19 impact by race and ethnicity: Cases, deaths and tests rate per 100K by race and ethnicity group in California","v1.0.0","“Despite not having complete data, the data we have does show there is a disproportionate impact on certain communities” e.g 6/10,000 Latinos have COVID “More evidence of above.","","[""COVID-19"",""Equity""]","","","","Developer notes","https://github.com/cagov/covid19/blob/master/src/js/equity-dash/charts/relative-percentage-by-pop/README.md","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","
+**Rate** – show the proportion of cases, testing, deaths by gender, age, and R/E in comparison to their percent of the total population 
+ 
+**Metric value = rate by 100K**
+","
+- % of Cases, deaths and testing of R/E / Population of R/E (\*100,000)
+
+","https://github.com/cagov/covid19/blob/master/src/js/equity-dash/charts/relative-percentage-by-pop/get-disproportionality-ratio-sort-value.js","CumulativeStatewideData"
+"Income","Factors that increase risk of infection and severe illness","v1.0.0","“This is more than about race”","Californians in crowded housing or transportation, and with less access to paid leave and other worker protections, have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.","[""COVID-19"",""Income"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","Case rate by median income 
+","
+- Median income
+
+","","SocialData, SocialData, SocialData"
+"Crowded housing ","Factors that increase risk of infection and severe illness","v1.0.0","“This is more than about race”","Californians in crowded housing or transportation, and with less access to paid leave and other worker protections, have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.","[""COVID-19"",""Crowded housing"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","Case rate by crowded housing 
+","Crowded housing
+","","SocialData"
+"Proportion by Race and Ethnicity (R/E)","COVID-19 impact by race and ethnicity: Cases, deaths and tests rate relative to percentage of population in California","v1.0.0","See how Latinx is only x% of population and yet y% of cases”","","[""COVID-19"",""Race and ethnicity"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","**Proportion **(Testing, Cases, Deaths) – by County
+
+**Metric value = %**
+
+
+","R/E of total population
+","","CumulativeData"
+"Access to health insurance","Factors that increase risk of infection and severe illness","v1.0.0","“This is more than about race”","Californians in crowded housing or transportation, and with less access to paid leave and other worker protections, have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.","[""COVID-19"",""Health insurance"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","Case rate by those that live without health insurance 
+","Health insurance access
+","","SocialData"
+"Equity metric - test positivity","COVID-19 health equity metric","v1.0.0","“This is so important that we use this to determine a county’s reopening” (so that everyone is brought along)","The health equity metric measures the positivity rate in the most disproportionately-impacted communities. These communities are identified in the Healthy Places Index as census tracts that have less healthy community conditions such as low median income, education completeness, and health care access. The Blueprint for a Safer Economy ensures that counties address COVID-19 in all communities. To open further, the health equity metric cannot significantly fall behind overall county positivity rates.
+
+","[""COVID-19"",""Health quartile positivity"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","Testing positivity in the lowest 25% of the healthy places HE index, by county
+","- Test positivity rate
+- Lowest 25% healthy HE index
+
+","","HealthEquityData"
+"SOGI % missingness","","v1.0.0","Also note that we don’t have SOGI information","","[""COVID-19"",""Sexual orientation and gender identity"",""Equity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:14:00.000Z","","[""/equity""]","","% Missing SOGI Data (Cases and Deaths) by County
+","Unknown data for Cases and Deaths for SO and GI
+","","MissingnessSOGIData"
+"Race/Ethnicity list","","v1.0.0","","","[""COVID-19"",""Equity"",""Race and ethnicity""]","","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","","[""/equity""]","","","- Black
+- American Indian or Alaska Native (AI/AN)
+- Asian American
+- Latino
+- Multi-Race
+- Native Hawaiian and other Pacific Islander (NHPI)
+- White
+- Other
+- Unknown
+
+","A script in covid19 github repository has a string override to adjust data display.",""
+"Vaccination by Groups: Race and Ethnicity","People with at least one dose of vaccine administered by race and ethnicity in California","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Race and ethnicity""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_race_ethnicity_california"
+"Vaccination by Groups: Age","People with at least one dose of vaccine administered by age in California","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Age""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_age_california"
+"Vaccination by Groups: Gender","People with at least one dose of vaccine administered by gender in California","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Gender""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_gender_california"
+"Vaccination by Groups: Race and Ethnicity, County","People with at least one dose of vaccine administered by race and ethnicity in [COUNTY]","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Race and ethnicity""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_race_ethnicity_{county}"
+"Vaccination by Groups: Age, County","People with at least one dose of vaccine administered by age in [COUNTY]","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Age""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_age_{county}"
+"Vaccination by Groups: Gender, County","People with at least one dose of vaccine administered by gender in [COUNTY]","v1.0.0","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","The distribution of first vaccine doses by race and ethnicity, age, and gender is shown below. Providing this information is voluntary and not required for vaccination. 
+
+Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents. Data shows the cumulative total administered and are updated daily.","[""Vaccinations"",""Equity"",""Gender""]","[""CDPH"",""ODI""]","","","","","","","[""COVID-19""]","","","","","","","","2021-02-24T21:13:00.000Z","https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=7006&action=edit","[""/vaccines""]","","","","","vaccines_by_gender_{county}"

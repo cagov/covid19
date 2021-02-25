@@ -23,6 +23,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "acorn": ">=8.0.4",
+    "airtable": "^0.10.1",
     "browser-sync": "^2.26.13",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
@@ -40,6 +41,7 @@
     "imagemin-pngquant": "^9.0.1",
     "imagemin-webp": "^6.0.0",
     "jest": "^26.6.3",
+    "json2csv": "^5.0.6",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
     "node-sass": "^5.0.0",
@@ -76,7 +78,8 @@
     "local:dev": "cross-env NODE_ENV=development npm run watch",
     "compress:img": "cd src/build && node img.js",
     "testdata": "tap test/11ty-data.js",
-    "test": "jest test/*.spec.js"
+    "test": "jest test/*.spec.js",
+    "build:data-package": "node -r dotenv/config ./data-package/scripts/get-data-package dotenv_config_path=.env/.env.local"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,86 @@
+{
+  "definitions": {
+    "category_metric_value_array": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 3,
+      "maxItems": 8,
+      "items": {
+        "additionalProperties": false,
+        "required": [
+          "CATEGORY",
+          "METRIC_VALUE"
+        ],
+        "properties": {
+          "CATEGORY": {
+            "type": "string",
+            "enum": [
+              "Female",
+              "Male",
+              "Unknown",
+              "0-17",
+              "18-49",
+              "50-64",
+              "65+",
+              "Missing",
+              "American Indian or Alaska Native",
+              "Asian",
+              "Black",
+              "Latino",
+              "Multi-Race",
+              "Native Hawaiian and other Pacific Islander",
+              "Other",
+              "White"
+            ]
+          },
+          "METRIC_VALUE": {
+            "type": "number",
+            "maximum": 100,
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "cases_deaths_population": {
+      "additionalProperties": false,
+      "required": [
+        "cases",
+        "deaths",
+        "population"
+      ],
+      "properties": {
+        "cases": {
+          "$ref": "#/definitions/category_metric_value_array"
+        },
+        "deaths": {
+          "$ref": "#/definitions/category_metric_value_array"
+        },
+        "population": {
+          "$ref": "#/definitions/category_metric_value_array"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "required": [
+        "by_age",
+        "by_gender",
+        "by_race_and_ethnicity"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "by_gender": {
+          "$ref": "#/definitions/cases_deaths_population"
+        },
+        "by_age": {
+          "$ref": "#/definitions/cases_deaths_population"
+        },
+        "by_race_and_ethnicity": {
+          "$ref": "#/definitions/cases_deaths_population"
+        }
+      }
+    }
+  }
+}
