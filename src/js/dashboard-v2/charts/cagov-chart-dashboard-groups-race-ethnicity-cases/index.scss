@@ -1,4 +1,4 @@
-cagov-chart-dashboard-groups-race-ethnicity-cases {
+cagov-chart-dashboard-groups-race-ethnicity-cases.chart {
     .bar-label .tick text {
       text-transform: capitalize;
     }
@@ -17,6 +17,7 @@ cagov-chart-dashboard-groups-race-ethnicity-cases {
     .chart-title {
       font-weight: 300;
       font-size: 1.0rem;
+      margin-bottom:0px;
     }
 }
 .d-hide {

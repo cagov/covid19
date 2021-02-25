@@ -23,7 +23,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
         height: 60 + this.nbr_bars * this.bar_vspace,
         width: 400,
         margin: {
-          top: 0,
+          top: 60,
           right: 80,
           bottom: 20, // 20 added for divider
           left: 0,
@@ -34,7 +34,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
         height: 60 + this.nbr_bars * this.bar_vspace,
         width: 350,
         margin: {
-          top: 0,
+          top: 60,
           right: 80,
           bottom: 20, // 20 added for divider
           left: 0,
@@ -45,7 +45,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
         height: 60 + this.nbr_bars * (this.bar_vspace - 2),
         width: 440,
         margin: {
-          top: 0,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -56,7 +56,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
         height: 60 + this.nbr_bars * (this.bar_vspace - 2),
         width: 320,
         margin: {
-          top: 0,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -117,7 +117,10 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
   }
 
   getLegendText() {
-    return [];
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
   }
 
   ariaLabel(d) {

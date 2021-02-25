@@ -5,7 +5,7 @@
  * @param {number} x 
  * @param {number} y 
  */
-function writeLegend(svg, data, x, y) {
+function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
     const legendText = this.getLegendText();
     if (legendText.length == 0) {
@@ -13,7 +13,7 @@ function writeLegend(svg, data, x, y) {
     }
     const legendW = y.bandwidth()*1.2;
     const legendY =  this.dimensions.margin.top/2;
-    const legend2X = this.dimensions.width/3;
+    const legend2X = this.dimensions.width/2;
 
     let group = svg.append("g");
 
@@ -37,22 +37,24 @@ function writeLegend(svg, data, x, y) {
       .attr('text-anchor','start');
 
     // Baseline indicator
-    // group
-    //   .append("rect")
-    //   .attr("fill", "#1f2574")
-    //   .attr("y", legendY-y.bandwidth()/2)
-    //   .attr("x", legend2X)
-    //   .attr("width", d => 4)
-    //   .attr("height", y.bandwidth()*2)
+    if (baselineData && legendText.length > 1) {
+      group
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", legendY-y.bandwidth()/2)
+        .attr("x", legend2X)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2)
 
-    // group
-    //   .append("text")
-    //   .text(legendText[1])
-    //   .attr("class", "legend-caption")
-    //   .attr("y", legendY+legendW/2.0)
-    //   .attr("x", legend2X+15)
-    //   .attr('dominant-baseline','middle')
-    //   .attr('text-anchor','start');
+      group
+        .append("text")
+        .text(legendText[1])
+        .attr("class", "legend-caption")
+        .attr("y", legendY+legendW/2.0)
+        .attr("x", legend2X+15)
+        .attr('dominant-baseline','middle')
+        .attr('text-anchor','start');
+    }
 }
 
 /**
@@ -219,7 +221,7 @@ export default function renderChart(extrasFunc = null, baselineData = null) {
     this.svg.selectAll("g").remove();
 
     writeBars.call(this, this.svg, data, this.x, this.y, baselineData);
-    writeLegend.call(this, this.svg, data, this.x, this.y);
+    writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {
       extrasFunc.call(this, this.svg, data, this.x, this.y);
