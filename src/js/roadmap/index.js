@@ -282,8 +282,8 @@ class CAGovReopening extends window.HTMLElement {
         } else {
           this.cardHTML += `<div class="card-activity">
             <h4>${ac["0"]}</h4>
-            <p>${ac["0"] === "Schools" ? ac[item['Overall Status']] : ac[item['Overall Status']]}</p>
-            <p>${ac["0"] === "Schools" ? "" : ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+            <p>${ac[item['Overall Status']]}</p>
+            <p>${ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
           </div>`
         }
       })
