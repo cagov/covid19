@@ -5,14 +5,18 @@
  * @param {number} x 
  * @param {number} y 
  */
-function writeLegend(svg, data, x, y) {
+function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
+    const legendText = this.getLegendText();
+    if (legendText.length == 0) {
+      return;
+    }
     const legendW = y.bandwidth()*1.2;
     const legendY =  this.dimensions.margin.top/2;
-    const legendText = this.getLegendText();
-    const legend2X = this.dimensions.width/3;
+    const legend2X = this.dimensions.width/2;
 
-    let group = svg.append("g")
+    let group = svg.append("g");
+
 
     group
       .append("rect")
@@ -33,22 +37,24 @@ function writeLegend(svg, data, x, y) {
       .attr('text-anchor','start');
 
     // Baseline indicator
-    // group
-    //   .append("rect")
-    //   .attr("fill", "#1f2574")
-    //   .attr("y", legendY-y.bandwidth()/2)
-    //   .attr("x", legend2X)
-    //   .attr("width", d => 4)
-    //   .attr("height", y.bandwidth()*2)
+    if (baselineData && legendText.length > 1) {
+      group
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", legendY-y.bandwidth()/2)
+        .attr("x", legend2X)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2)
 
-    // group
-    //   .append("text")
-    //   .text(legendText[1])
-    //   .attr("class", "legend-caption")
-    //   .attr("y", legendY+legendW/2.0)
-    //   .attr("x", legend2X+15)
-    //   .attr('dominant-baseline','middle')
-    //   .attr('text-anchor','start');
+      group
+        .append("text")
+        .text(legendText[1])
+        .attr("class", "legend-caption")
+        .attr("y", legendY+legendW/2.0)
+        .attr("x", legend2X+15)
+        .attr('dominant-baseline','middle')
+        .attr('text-anchor','start');
+    }
 }
 
 /**
@@ -58,10 +64,10 @@ function writeLegend(svg, data, x, y) {
  * @param {number} x 
  * @param {number} y 
  */
-function writeBars(svg, data, x, y) {
+function writeBars(svg, data, x, y, baselineData) {
     let max_x_domain = x.domain()[1];
 
-    console.log("Write bars data=",data);
+    // console.log("Write bars data=",data);
 
     let groups = svg.append("g")
       .selectAll("g")
@@ -118,13 +124,15 @@ function writeBars(svg, data, x, y) {
         });
 
     // Baseline indicator
-    // groups
-    //     .append("rect")
-    //     .attr("fill", "#1f2574")
-    //     .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
-    //     .attr("x", d => x(d.BASELINE_VALUE)-2)
-    //     .attr("width", d => 4)
-    //     .attr("height", y.bandwidth()*2)
+    if (baselineData) {
+    groups
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
+        .attr("x", (d,i) => x(baselineData[i].METRIC_VALUE)-2)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2);
+    }
 
     // Bar Label
     groups
@@ -158,7 +166,7 @@ function writeBars(svg, data, x, y) {
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
  */
-export default function renderChart(extrasFunc = null) {
+export default function renderChart(extrasFunc = null, baselineData = null) {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
@@ -192,7 +200,7 @@ export default function renderChart(extrasFunc = null) {
     .paddingInner(5.0/6.0)
     .paddingOuter(0.5);
 
-    console.log("this.y",this.y);
+    // console.log("this.y",this.y);
   
     // Position for labels.
     // this.yAxis = (g) =>
@@ -212,8 +220,8 @@ export default function renderChart(extrasFunc = null) {
 
     this.svg.selectAll("g").remove();
 
-    writeBars.call(this, this.svg, data, this.x, this.y);
-    writeLegend.call(this, this.svg, data, this.x, this.y);
+    writeBars.call(this, this.svg, data, this.x, this.y, baselineData);
+    writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {
       extrasFunc.call(this, this.svg, data, this.x, this.y);

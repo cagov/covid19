@@ -4,29 +4,24 @@ import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
-class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
+// cagov-chart-dashboard-groups-race-ethnicity-deaths
+
+class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovVaccinationGroupsRaceEthnicity");
+    console.log("Loading CAGovDashboardGroupsRaceEthnicityDeaths");
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.nbr_bars = 9;
+    this.nbr_bars = 8;
     this.bar_vspace = 60;
 
     this.chartOptions = {
       // Data
-      dataUrl:
-        config.equityChartsVEDataLoc +
-        "race-ethnicity/vaccines_by_race_ethnicity_california.json",
-      dataUrlCounty:
-        config.equityChartsVEDataLoc +
-        "race-ethnicity/vaccines_by_race_ethnicity_<county>.json",
-      state: "California",
-      // Breakpoints
+      dataUrl: config.chartsDataFile,
       desktop: {
         fontSize: 14,
         height: 60 + this.nbr_bars * this.bar_vspace,
-        width: 555,
+        width: 400,
         margin: {
           top: 60,
           right: 80,
@@ -37,7 +32,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       tablet: {
         fontSize: 14,
         height: 60 + this.nbr_bars * this.bar_vspace,
-        width: 555,
+        width: 350,
         margin: {
           top: 60,
           right: 80,
@@ -116,50 +111,16 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl, "California");
-    this.listenForLocations();
-
-    // this.listenForLocations();
-    // this.classList.remove("d-none"); // this works
-    // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
-    //   this.querySelector('.d-none').classList.remove("d-none");
-    // }
+    this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
   }
 
   getLegendText() {
-    return [this.translationsObj.legendLabelVaccines, this.translationsObj.legendLabelPopulation];
-  }
-
-  getChartTitle({
-    region = "California",
-    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
-    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
-  }) {
-
-    let isCounty = region === "California" ? false : true;
-
-    let replacedChartTitle = isCounty === false ? chartTitle : chartTitleCounty.replace("[REGION]", region + " County");
-
-    this.translationsObj.chartDisplayTitle = replacedChartTitle;
-
-    return replacedChartTitle;
-  }
-
-  resetTitle({
-    region = "California",
-    chartTitle = "People with at least one dose of vaccine administered by race and ethnicity in California",
-    chartTitleCounty = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
-  }) {
-
-    this.translationsObj.chartDisplayTitle = this.getChartTitle({
-      region,
-      chartTitle: this.translationsObj.chartTitle,
-      chartTitleCounty: this.translationsObj.chartTitleCounty,
-    });
-
-    this.querySelector(".chart-title").innerHTML = this.translationsObj.chartDisplayTitle;
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
   }
 
   ariaLabel(d) {
@@ -180,49 +141,42 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     //   .attr("height", 0.75);
   }
 
-  listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        console.log("Region selected", e.detail.filterKey);
-        this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
-  }
-
-  retrieveData(url, regionName) {
+  retrieveData(url) {
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
-          this.alldata = alldata.data;
+          this.alldata = alldata.data.by_race_and_ethnicity.deaths;
+          this.popdata = alldata.data.by_race_and_ethnicity.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+          this.alldata.push(this.alldata.splice(4,1)[0])
+          this.popdata.push(this.popdata.splice(4,1)[0])
+          this.alldata.push(this.alldata.splice(5,1)[0])
+          this.popdata.push(this.popdata.splice(5,1)[0])
 
           // "Unknown"
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras);
-          this.resetTitle({
-            region: regionName, 
-            chartTitle: this.translationsObj.chartTitle,
-            chartTitleCounty: this.translationsObj.chartCounty,
-          });
+          renderChart.call(this, this.renderExtras, this.popdata);
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
         }.bind(this)
       );
   }
 }
 
 window.customElements.define(
-  "cagov-chart-vaccination-groups-race-ethnicity",
-  CAGovVaccinationGroupsRaceEthnicity
+  "cagov-chart-dashboard-groups-race-ethnicity-deaths",
+  CAGovDashboardGroupsRaceEthnicityDeaths
 );
