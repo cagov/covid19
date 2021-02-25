@@ -25,7 +25,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
         margin: {
           top: 60,
           right: 80,
-          bottom: 20, // 20 added for divider
+          bottom: 0, // 20 added for divider
           left: 0,
         },
       },
@@ -36,7 +36,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
         margin: {
           top: 60,
           right: 80,
-          bottom: 20, // 20 added for divider
+          bottom: 0, // 20 added for divider
           left: 0,
         },
       },
@@ -47,7 +47,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
         margin: {
           top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
@@ -58,7 +58,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
         margin: {
           top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
