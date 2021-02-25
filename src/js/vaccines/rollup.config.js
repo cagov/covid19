@@ -9,7 +9,7 @@ const defaultConfig = {
 }
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
-  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity-temp/',
+  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity-temp-2/',
 }
 
 const devOutputPath = 'docs/js/vaccines.js';
