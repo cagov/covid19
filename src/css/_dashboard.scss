@@ -5,7 +5,10 @@
   }
   
 }
-.toggle-group-container {
+.toggle-group-container.d3-charts {
+  width: 1000px;
+}
+.toggle-group-container:not(.d3-charts) {
   width: 1000px;
   min-height: 650px;
   margin-bottom:50px;
@@ -17,7 +20,7 @@
     width: 100%;
   }
   &.cases-group {
-    min-height: 650px;
+   min-height: 650px;
   }
 }
 
