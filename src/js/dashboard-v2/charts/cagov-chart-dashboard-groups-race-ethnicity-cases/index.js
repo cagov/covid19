@@ -65,6 +65,12 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
       },
     };
 
+    this.labelTran = {
+      'American Indian or Alaska Native':'AI/AN',
+      'Asian':'Asian American',
+      'Native Hawaiian and other Pacific Islander':'NHPI',
+    };
+
     this.intFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
@@ -153,6 +159,9 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
           this.popdata = alldata.data.by_race_and_ethnicity.population;
           this.alldata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
           });
           this.popdata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
