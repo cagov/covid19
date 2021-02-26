@@ -470,7 +470,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <div class="toggle-group-container col-10 mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males
                   having a disproportionate number of deaths relative to their population.</p>
               </div>
@@ -495,11 +495,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-gender-deaths>               
                 </div> 
               </div>
+              <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across
                   California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over
                   have a disproportionate number of deaths.</p>
@@ -525,17 +526,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-age-deaths>               
                 </div> 
               </div>
+              <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s
                   overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups
                   having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race
                     and ethnicity data</a> is available.
                 </p>
-                <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
               </div>
               <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
@@ -558,6 +559,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
                 </div> 
               </div>
+              <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
 
           </div>
