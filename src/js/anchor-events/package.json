@@ -6,6 +6,10 @@
   "scripts": {
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cagov/Alpha/tree/staging/src/js/anchor-events"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
