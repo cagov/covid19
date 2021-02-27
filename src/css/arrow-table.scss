@@ -6,7 +6,7 @@
     padding: 2%;
     grid-template-columns: 1fr 1fr 1fr;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .grid-layout {
       grid-template-columns: 1fr;
     }
