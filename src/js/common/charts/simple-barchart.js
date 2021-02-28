@@ -64,8 +64,9 @@ function writeLegend(svg, data, x, y, baselineData) {
  * @param {number} x 
  * @param {number} y 
  */
-function writeBars(svg, data, x, y, baselineData) {
+function writeBars(svg, data, x, y, baselineData, tooltip) {
     let max_x_domain = x.domain()[1];
+    let component = this;
 
     // console.log("Write bars data=",data);
 
@@ -96,7 +97,7 @@ function writeBars(svg, data, x, y, baselineData) {
         .attr("height", y.bandwidth())
         .attr("id", (d, i) => "barid-"+i);
 
-    // transparent hot bar
+    // transparent hot bar (different if tooltip)
     groups
         .append("rect")
         .attr("class","hot-bar")
@@ -112,16 +113,27 @@ function writeBars(svg, data, x, y, baselineData) {
           d3.select(this.parentNode).select('.fg-bar')
           .transition().duration(200)
           .style("fill", "#003D9D");
-          // problem the svg is not the width in px in page as the viewbox width
+          if (tooltip) {
+              // set appropriate tooltip text, reveal tooltip at correct location
+              tooltip.html(component.getTooltip(d,baselineData))
+              tooltip.style("left",'20px');
+              // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+              // tooltip.style("top",`${event.layerY+60}px`)
+              tooltip.style("top",`${event.offsetY+120}px`)
+              tooltip.style("visibility", "visible");
+          }
         })
         .on("mouseout blur", function(d) {
           d3.select(this.parentNode).select('.fg-bar')
-          .transition().duration(200)
-          .style("fill", "#92C5DE");
-          // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
-          //   tooltip.style.visibility = "hidden";
-          // }
+            .transition().duration(200)
+            .style("fill", "#92C5DE");
+          if (tooltip) {
+            d3.select(this).transition();
+            tooltip.style("visibility", "hidden");
+          }
         });
+    
+
 
     // Baseline indicator
     if (baselineData) {
@@ -166,7 +178,7 @@ function writeBars(svg, data, x, y, baselineData) {
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
  */
-export default function renderChart(extrasFunc = null, baselineData = null) {
+export default function renderChart(extrasFunc = null, baselineData = null, tooltip = null) {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
@@ -220,7 +232,7 @@ export default function renderChart(extrasFunc = null, baselineData = null) {
 
     this.svg.selectAll("g").remove();
 
-    writeBars.call(this, this.svg, data, this.x, this.y, baselineData);
+    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip);
     writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {

@@ -109,12 +109,28 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
       .append("g")
       .attr("transform", "translate(0,0)");
 
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-age-cases")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartTooltip;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('<category>', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('<metric-value>', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('<metric-baseline-value>', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
   getLegendText() {
@@ -163,7 +179,7 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata);
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip);
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
