@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "View the latest data on cases, deaths, tests and county tiers."
 author: "State of California"
-publishdate: "2021-02-28T23:43:31Z"
+publishdate: "2021-03-01T22:52:22Z"
 tags: ["do-not-crawl","staging-only","translate"]
 addtositemap: false
 ---
@@ -482,11 +482,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed cases by gender in California</li>
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        <category> account for <metric-value> of confirmed <span class="highlight-data">cases</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-cases>                
                 </div>
@@ -496,11 +492,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed deaths by gender in California</li>
                       <li data-label="chartLegend1">% of confirmed deaths</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        <category> account for <metric-value> of confirmed <span class="highlight-data">deaths</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-deaths>               
                 </div> 
@@ -523,11 +515,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed cases by age in California</li>
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        The <category> age group accounts for <metric-value> of confirmed <span class="highlight-data">cases</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-age-cases>                
                 </div>
@@ -537,11 +525,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed deaths by age in California</li>
                       <li data-label="chartLegend1">% of confirmed deaths</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        The <category> age group accounts for <metric-value> of confirmed <span class="highlight-data">deaths</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-age-deaths>               
                 </div> 
@@ -566,11 +550,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed cases by race and ethnicity in California</li>
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        <category> people account for <metric-value> of confirmed <span class="highlight-data">cases</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                
                 </div>
@@ -580,11 +560,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Confirmed deaths by race and ethnicity in California</li>
                       <li data-label="chartLegend1">% of confirmed deaths</li>
                       <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartTooltip">
-                        <div>
-                        <category >people account for <metric-value> of confirmed <span class="highlight-data">deaths</span> and <metric-baseline-value> of the total California population.
-                        </div>
-                      </li>
+                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
                 </div> 
@@ -606,4 +582,3 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
   <!--END CONTAINER-->
 </div>
-<!--END BG lightblue-->
