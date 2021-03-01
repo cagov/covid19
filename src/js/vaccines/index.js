@@ -1,4 +1,5 @@
 console.log("Loading vaccinations by group");
+
 import './charts/cagov-chart-vaccination-groups-race-ethnicity/index.js'
 import './charts/cagov-chart-vaccination-groups-gender/index.js'
 import './charts/cagov-chart-vaccination-groups-age/index.js'
