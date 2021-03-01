@@ -124,13 +124,23 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
   }
 
   getTooltip(d,baselineData) {
-    let tooltipText = this.translationsObj.chartTooltip;
+    let tooltipText = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
-    tooltipText = tooltipText.replace('<category>', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
-    tooltipText = tooltipText.replace('<metric-value>', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('<metric-baseline-value>', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY+'s');
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
   }
 
   getLegendText() {
@@ -138,11 +148,6 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
       this.translationsObj.chartLegend1,
       this.translationsObj.chartLegend2,
     ];
-  }
-
-  ariaLabel(d) {
-    let label = "ARIA BAR LABEL";
-    return label;
   }
 
   renderExtras(svg, data, x, y) {
