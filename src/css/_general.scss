@@ -2371,6 +2371,7 @@ font {
   list-style: none;
   font-size: 1.2rem;
   font-weight: 700;
+  padding-left: 7px;
   li {
     color: $darkblue;
     line-height: 1.5rem;
@@ -2380,10 +2381,11 @@ font {
     padding-left: 10px;
     &:before {
       font-family: "CaGov";
-      content: "\e9f3";
+      content: "\35";
       position: relative;
-      top: 2px;
-      right: 7px;
+      font-size: 1.5rem;
+      top: 3px;
+      right: 4px;
       }
 
       a {
