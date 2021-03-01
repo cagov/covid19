@@ -192,11 +192,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
           this.alldata.push(this.alldata.splice(5,1)[0])
           this.popdata.push(this.popdata.splice(5,1)[0])
 
-          // "Unknown"
-          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          // this.alldata = croppedData;
-
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip);
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,

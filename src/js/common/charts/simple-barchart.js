@@ -64,7 +64,7 @@ function writeLegend(svg, data, x, y, baselineData) {
  * @param {number} x 
  * @param {number} y 
  */
-function writeBars(svg, data, x, y, baselineData, tooltip) {
+function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
     let max_x_domain = x.domain()[1];
     let component = this;
 
@@ -95,7 +95,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip) {
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
-        .attr("id", (d, i) => "barid-"+i);
+        .attr("id", (d, i) => rootID+'-'+i);
 
     // transparent hot bar (different if tooltip)
     groups
@@ -178,7 +178,8 @@ function writeBars(svg, data, x, y, baselineData, tooltip) {
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
  */
-export default function renderChart(extrasFunc = null, baselineData = null, tooltip = null) {
+
+ export default function renderChart(extrasFunc = null, baselineData = null, tooltip = null, rootID='barid') {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
@@ -232,7 +233,7 @@ export default function renderChart(extrasFunc = null, baselineData = null, tool
 
     this.svg.selectAll("g").remove();
 
-    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip);
+    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip, rootID);
     writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {

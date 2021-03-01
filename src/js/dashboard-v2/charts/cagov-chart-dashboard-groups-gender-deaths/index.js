@@ -177,7 +177,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip);
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-deaths');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
