@@ -7,7 +7,7 @@ export default function (incomingPrompt) {
   if(incomingPrompt) {
     surveyPrompt = incomingPrompt;
   }
-  return `<section role="region" aria-label="vaccine survey alert">
+  return `<section aria-label="vaccine survey alert">
   <div role="alert">
     <div class="survey">
       <div class="survey-content">
