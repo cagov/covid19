@@ -26,13 +26,16 @@ window.fetch('/countystatus.json')
 });
 
 var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
+let clearBtn = document.getElementById("clearCounty");
 
 function setupFormSubmitListener(aList) {
   document.querySelector('#county-form').addEventListener('submit',function(event) {
     event.preventDefault();
+    console.log("FormSubmitListener B");
     
-    clearBtn.classList.remove('d-none');
+    if (clearBtn) {
+      clearBtn.classList.remove('d-none');
+    }
     document.querySelector('#county-query-error').style.display = 'none';
     // do I have a full county typed in here?
     let typedInValue = document.querySelector('#location-query').value;
@@ -45,6 +48,7 @@ function setupFormSubmitListener(aList) {
     if(foundCounty) {
       countySelected(foundCounty);
     } else {
+      console.log("county not found B");
       document.querySelector('#county-query-error').style.display = 'block';
     }
   }.bind(this))  
@@ -52,6 +56,7 @@ function setupFormSubmitListener(aList) {
 
 function countySelected(county) {
   document.querySelector('#county-query-error').style.display = 'none';
+  console.log("county selected B");
   //trigger the filter on all the county dashboards
   let casesChartActiveSheet = window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1];
   let testingChartActiveSheet = window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];
@@ -239,6 +244,7 @@ if(countyInput) {
    });
   
    countyInput.addEventListener("input", function() {
+    console.log("Got County Input B");
     inputValue();
    });
   countyInput.addEventListener("blur", function() {
@@ -247,12 +253,16 @@ if(countyInput) {
 }
 
 function inputValue() {
-var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
-  if (countyInput && countyInput.value) {
-    clearBtn.classList.remove('d-none');
+  var countyInput = document.getElementById("location-query");
+  let clearBtn = document.getElementById("clearCounty");
+  console.log("Input Value B, clearBtn=",clearBtn);
+  if(clearBtn) {
+    if (countyInput && countyInput.value) {
+      clearBtn.classList.remove('d-none');
+    }
+      else {clearBtn.classList.add('d-none');
+    }
   }
-  else {clearBtn.classList.add('d-none');}
 }
 
 if(clearBtn) {

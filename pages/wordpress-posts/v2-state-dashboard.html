@@ -249,7 +249,16 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
       <label for="county" class="sr-only">County</label>
       <div class="awesomplete">
-        <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Enter a county">
+        <input aria-expanded="false" 
+            aria-owns="awesomplete_list_1"
+            aria-controls="awesomplete_list_1" 
+            autocomplete="off" 
+            class="form-control form-control-lg" 
+            data-list="" 
+            data-multiple="" 
+            id="location-query" 
+            type="text" 
+            placeholder="Enter a county">
         <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span>
           <span class="underline">Clear</span></button>
         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
