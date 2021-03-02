@@ -12,8 +12,8 @@ export default function (incomingPrompt) {
     <div class="survey">
       <div class="survey-content">
         <p class="survey-content-prompt">${surveyPrompt}</p>
-        <a href="${surveyUrl}" target="_new" class="btn-link pt-2 pb-2 px-4 js-goto-survey">OK</a> 
-        <button class="btn-link pt-2 pb-2 px-4 js-dismiss-survey" data-dismiss="alert">Dismiss</button>
+        <a href="${surveyUrl}" target="_new" class="btn-link pt-2 pb-2 px-4 js-goto-survey"><span class="sr-only">Open survey </span><span aria-hidden="true">OK</span></a> 
+        <button class="btn-link pt-2 pb-2 px-4 js-dismiss-survey" aria-label="Close" data-dismiss="alert"><span aria-hidden="true">Dismiss</span></button>
       </div>
     </div>
   </div>
