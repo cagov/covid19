@@ -2066,6 +2066,14 @@ font {
 .text-small {
   font-size: 0.85rem !important;
 }
+
+.caption {
+  font-size: 0.95rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.95rem;
+  font-style: italic;
+}
+
 .text-disclaim {
   font-size: 0.8em;
 }
@@ -2400,3 +2408,4 @@ font {
     }
   }
 }
+
