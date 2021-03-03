@@ -2,12 +2,12 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import { reformatReadableDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPEDose extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    console.log("Translations",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.barColor = '#1F2574';
@@ -267,12 +267,21 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
   }
 
   renderChart() {
-      console.log("Render Chart",this.dimensions);
       let data = this.alldata;
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
+
+      let footerDisplayText = this.translationsObj.footerText;
+      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
+        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
+      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
+        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+      // update the display date
+      this.translationsObj.footerDisplayDate = footerDisplayText;
+      d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
+
       let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO)
-      console.log("Max Y",max_y);
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
                         0,
@@ -297,8 +306,6 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
 
         this.svg.selectAll("g").remove();
 
-        console.log("yscale test",this.yScale(0.5))
-
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScale);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScale);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScale);
@@ -311,7 +318,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Chart meta", alldata);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
           this.renderChart.call(component);
