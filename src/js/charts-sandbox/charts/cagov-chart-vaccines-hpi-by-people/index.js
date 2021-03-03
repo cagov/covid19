@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "./../../../vaccines/get-strings-list.js";
-import getScreenResizeCharts from "./../../../vaccines/get-window-size.js";
-import rtlOverride from "./../../../vaccines/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 
 class CAGovVaccinesHPEPeople extends window.HTMLElement {
   connectedCallback() {
