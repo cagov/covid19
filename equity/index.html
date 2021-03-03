@@ -5253,7 +5253,7 @@ function writeBarLabels(component, svg, data, x, y, sparkline) {
         .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
         .attr("width", x.bandwidth() / 4)
         .html(d => {
-          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.intFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
+          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
           <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
         })
         .attr('text-anchor','middle');
