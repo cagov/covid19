@@ -1,6 +1,6 @@
 import Awesomplete from 'awesomplete-es6';
 import templatize from './template.js';
-import rtlOverride from "./../rtl-override.js";
+import rtlOverride from "./../../common/rtl-override.js";
 
 class CAGovCountySearch extends window.HTMLElement {
 
