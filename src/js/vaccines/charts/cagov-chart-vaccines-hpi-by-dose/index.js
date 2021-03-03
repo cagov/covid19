@@ -10,7 +10,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
     console.log("Translations",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.barColor = '#013d9c';
+    this.barColor = '#1F2574';
 
     this.nbr_bars = 4;
     this.chartOptions = {
