@@ -51,6 +51,7 @@ export default [
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/chartssandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
+  ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
   esm,
   // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
