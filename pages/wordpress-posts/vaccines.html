@@ -423,7 +423,39 @@ addtositemap: true
 <!-- end tableau embed  -->
 </div>
 
+<h3>Vaccination by California Healthy Places Index (HPI)</h3>
 
+<p>The California Healthy Places Index (HPI) is a tool to assist you in exploring local factors that predict life expectancy by comparing community conditions across the state.
+</p>
+
+
+<div class="container">
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-people class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccines by people</li>
+          <li data-label="chartDescription">Lorem ipsum chartDescription people sum</li>
+          <li data-label="legendLabel1">People 16+ partially vaccinated</li>
+          <li data-label="legendLabel2">People 16+ fully vaccinated</li>
+          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-people>
+  </div>
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-dose class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccines by Dose</li>
+          <li data-label="chartDescription">Lorem ipsum chartDescription dose sum</li>
+          <li data-label="legendLabel1">% administered by dose</li>
+          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-dose>
+  </div>
+</div>
 
 <h3>Vaccination by groups</h3>
 
