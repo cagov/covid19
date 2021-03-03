@@ -11,9 +11,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
-
     this.nbr_bars = 4;
-    this.bar_hspace = 120;
     this.chartOptions = {
       // Data
       dataUrl:
@@ -21,9 +19,10 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
         config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
+        bar_hspace: 120,
         fontSize: 14,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 120,
         margin: {
           top: 70,
           right: 10,
@@ -32,9 +31,10 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
         },
       },
       tablet: {
+        bar_hspace: 120,
         fontSize: 14,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 120,
         margin: {
           top: 70,
           right: 10,
@@ -43,9 +43,10 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
         },
       },
       mobile: {
+        bar_hspace: 90,
         fontSize: 12,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 90,
         margin: {
           top: 70,
           right: 10,
@@ -54,9 +55,10 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
         },
       },
       retina: {
+        bar_hspace: 90,
         fontSize: 12,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 90,
         margin: {
           top: 70,
           right: 10,
@@ -209,7 +211,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       .attr("y", (d, i) => yScale(0) + 20)
       .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
       // .attr("width", x.bandwidth() / 4)
-      .text(d => `HPI Quartile ${d.HPIQUARTILE}`)
+      .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
       // .html(d => {
       //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
       // })
@@ -229,7 +231,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
     const legendW = 12;
     const legendY =  this.dimensions.margin.top/3;
     const legendText = this.getLegendText();
-    const legend2X = this.dimensions.width*0.4;
+    const legend2X = this.dimensions.width/2;
 
     let group = svg.append("g")
 
@@ -334,7 +336,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       let data = this.alldata;
       let categories = data.map(rec => (rec.HPIQUARTILE));
       let subcategories = ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'];
-      this.dimensions.width = this.dimensions.margin.left+this.bar_hspace*categories.length + this.dimensions.margin.right;
+      this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
       let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO)
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -355,14 +357,14 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
             .domain(categories)
             .range([this.dimensions.margin.left,
                     this.dimensions.width-this.dimensions.margin.right])
-            .paddingInner(20.0/this.bar_hspace)
+            .paddingInner(1/6.0)
             .paddingOuter(0);
 
         this.xScaleInner = d3
             .scaleBand()
             .domain([0,1])
             .range([0, this.xScaleOuter.bandwidth()])
-            .paddingInner(0.172)
+            .paddingInner(3/19.0)
             .paddingOuter(0);
 
         this.svg.selectAll("g").remove();

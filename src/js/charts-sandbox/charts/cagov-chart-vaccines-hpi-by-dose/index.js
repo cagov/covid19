@@ -13,7 +13,6 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
     this.barColor = '#013d9c';
 
     this.nbr_bars = 4;
-    this.bar_hspace = 120;
     this.chartOptions = {
       // Data
       dataUrl:
@@ -21,9 +20,10 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
         config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
+        bar_hspace: 120,
         fontSize: 14,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 120,
         margin: {
           top: 70,
           right: 10,
@@ -32,9 +32,10 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
         },
       },
       tablet: {
+        bar_hspace: 120,
         fontSize: 14,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 120,
         margin: {
           top: 70,
           right: 10,
@@ -43,9 +44,10 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
         },
       },
       mobile: {
+        bar_hspace: 90,
         fontSize: 12,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 90,
         margin: {
           top: 70,
           right: 10,
@@ -54,9 +56,10 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
         },
       },
       retina: {
+        bar_hspace: 90,
         fontSize: 12,
         height: 400,
-        width: this.nbr_bars * this.bar_hspace,
+        width: this.nbr_bars * 90,
         margin: {
           top: 70,
           right: 10,
@@ -267,7 +270,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       console.log("Render Chart",this.dimensions);
       let data = this.alldata;
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
-      this.dimensions.width = this.dimensions.margin.left+this.bar_hspace*categories.length + this.dimensions.margin.right;
+      this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
       let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO)
       console.log("Max Y",max_y);
       d3.select(this.querySelector("svg"))
@@ -289,7 +292,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
             .domain(categories)
             .range([this.dimensions.margin.left,
                     this.dimensions.width-this.dimensions.margin.right])
-            .paddingInner(14.0/this.bar_hspace)
+            .paddingInner(7/60.0)
             .paddingOuter(0);
 
         this.svg.selectAll("g").remove();
