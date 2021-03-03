@@ -423,7 +423,41 @@ addtositemap: true
 <!-- end tableau embed  -->
 </div>
 
+<h3 class="pt-5">Vaccination by local health conditions</h3>
 
+<p>The Vaccine Equity Metric uses the Healthy Places Index (HPI) which measures community conditions that can impact health, such as income, education, and access to health care. The zip code areas get a score and are grouped into quartiles, ranging from those with the least healthy community conditions (Quartile 1) to those with the most healthy community conditions (Quartile 4).
+</p><p>
+  Data below show the progress of vaccination in each of the four Vaccine Equity Metric quartiles and is updated daily.
+</p>
+
+
+<div class="container">
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-people class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccines by people</li>
+          <li data-label="chartDescription">People partially and fully vaccinated in California</li>
+          <li data-label="legendLabel1">People 16+ partially vaccinated</li>
+          <li data-label="legendLabel2">People 16+ fully vaccinated</li>
+          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-people>
+  </div>
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-dose class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccines by Dose</li>
+          <li data-label="chartDescription">Doses administered in California</li>
+          <li data-label="legendLabel1">% of total doses administered</li>
+          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-dose>
+  </div>
+</div>
 
 <h3>Vaccination by groups</h3>
 
