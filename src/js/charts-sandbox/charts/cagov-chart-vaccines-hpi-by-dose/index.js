@@ -3,14 +3,14 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 
-class CAGovVaccinesHPEPeople extends window.HTMLElement {
+class CAGovVaccinesHPEDose extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
     console.log("Translations",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
+    this.barColor = '#013d9c';
 
     this.nbr_bars = 4;
     this.bar_hspace = 120;
@@ -122,7 +122,6 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
   getLegendText() {
     return [
       this.translationsObj.legendLabel1,
-      this.translationsObj.legendLabel2,
     ];
   }
 
@@ -137,69 +136,36 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
     return label;
   }
 
-  writeBars(svg, data, yScale, xScaleOuter, xScaleInner) {
+  writeBars(svg, data, yScale, xScale) {
     let groups = svg.append("g")
       .selectAll("g")
       .data(data)
-      .join("g")
-      .attr("transform", (d,i) => `translate(${xScaleOuter(i+1)},0)`);
+      .join("g");
 
+    groups
+        .append("rect")
+            .attr("class","main-bar")
+            .attr("fill", d=>this.barColor)
+            .attr("x", (d,i) => xScale(i))
+            .attr("y", d => yScale(d.COMBINED_DOSES_RATIO))
+            .attr("width", d => xScale.bandwidth())
+            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES_RATIO)));
 
-
-    // big bar
-    console.log("yscale 0",yScale(0));
-    console.log("yscale 0.5",yScale(0.5));
-    console.log("xscale 1",xScaleOuter(1));
-    console.log("xscale 2",xScaleOuter(2));
-    console.log("xscale bw",xScaleOuter.bandwidth());
-
-    let colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
-
-    let bars = groups
-        .selectAll("rect")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
-        .join("rect")
-            .attr("class","bg-bar")
-            .attr("fill", d=>this.colors[d.KEY])
-            .attr("x", (d,i) => xScaleInner(i))
-            .attr("y", d => yScale(d.D[d.KEY]))
-            .attr("width", d => xScaleInner.bandwidth())
-            .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])));
-
-            // .append("text")
-            // .attr("class", "bar-upper-label-1")
-            // .attr("y", (d, i) => yScale(d.D[d.KEY]) - 20)
-            // .attr("x", (d, i) => xScaleInner.bandwidth()/2)
-            // .text(d => `Upper Caption`)
-            // .attr('text-anchor','middle');
-
-    let barcaps1 = groups
-        .selectAll("g")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
-        .join("text")
+    groups
+        .append("text")
         .attr("class", "bar-upper-label-1")
-        .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
-        .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.D[d.KEY]))
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 18)
+        .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
+        .text(d => this.pctFormatter.format(d.COMBINED_DOSES_RATIO))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
-    let barcaps2 = groups
-        .selectAll("g")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
-        .join("text")
+
+    groups
+        .append("text")
         .attr("class", "bar-upper-label-2")
-        .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
-        .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 4)
+        .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
+        .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
         .attr('text-anchor','middle');
-
-    // barcaps.append("text")
-    // .attr("class", "bar-upper-label-2")
-    // .attr("y", (d, i) => yScale(d.D[d.KEY]) - 10)
-    // .attr("x", (d, i) => xScaleInner.bandwidth()/2)
-    // .text(d => `Lower Caption`)
-    // .attr('text-anchor','middle');
-
 
     
     // bottom caption
@@ -207,25 +173,13 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       .append("text")
       .attr("class", "bar-lower-label")
       .attr("y", (d, i) => yScale(0) + 20)
-      .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
+      .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
       // .attr("width", x.bandwidth() / 4)
       .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
-      // .attr('dominant-baseline','text-top')
       .attr('text-anchor','middle')
-
-
-
-    // top caption A
-    // top caption B
-
-
-
   }
 
-  writeLegend(svg, data, yScale, xScaleOuter, xScaleInner) {
+  writeLegend(svg, data, yScale, xScale) {
     const legendW = 12;
     const legendY =  this.dimensions.margin.top/3;
     const legendText = this.getLegendText();
@@ -235,7 +189,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.FIRST_DOSE_RATIO)
+        .attr("fill", this.barColor)
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
@@ -250,29 +204,9 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       .attr("x", legendW*1.5)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
-
-    group
-      .append("rect")
-        .attr("fill", this.colors.COMPLETED_DOSE_RATIO)
-        .attr("class", "legend-block")
-        .attr("y", legendY)
-        .attr("x", legend2X)
-        .attr("width", legendW)
-        .attr("height", legendW);
-
-    group
-      .append("text")
-      .text(legendText[1]) // Legend label 
-      .attr("class", "legend-caption")
-      .attr("y", legendY+legendW/2.0 + 1)
-      .attr("x", legend2X+legendW*1.5)
-      .attr('dominant-baseline','middle')
-      .attr('text-anchor','start');
-
-
   }
 
-  writeExtras(svg, data, yScale, xScaleOuter, xScaleInner) {
+  writeExtras(svg, data, yScale, xScale) {
     const bottomAnnotationY = this.dimensions.height-this.dimensions.margin.bottom*3.0/7.0;
     const legendY =  this.dimensions.margin.top/3;
     const legendText = this.getLegendText();
@@ -332,10 +266,10 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
   renderChart() {
       console.log("Render Chart",this.dimensions);
       let data = this.alldata;
-      let categories = data.map(rec => (rec.HPIQUARTILE));
-      let subcategories = ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'];
+      let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.bar_hspace*categories.length + this.dimensions.margin.right;
-      let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO)
+      let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO)
+      console.log("Max Y",max_y);
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
                         0,
@@ -350,28 +284,21 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
             .range([this.dimensions.height-this.dimensions.margin.bottom,
                     this.dimensions.margin.top]);
         
-        this.xScaleOuter = d3
+        this.xScale = d3
             .scaleBand()
             .domain(categories)
             .range([this.dimensions.margin.left,
                     this.dimensions.width-this.dimensions.margin.right])
-            .paddingInner(20.0/this.bar_hspace)
-            .paddingOuter(0);
-
-        this.xScaleInner = d3
-            .scaleBand()
-            .domain([0,1])
-            .range([0, this.xScaleOuter.bandwidth()])
-            .paddingInner(0.172)
+            .paddingInner(14.0/this.bar_hspace)
             .paddingOuter(0);
 
         this.svg.selectAll("g").remove();
 
         console.log("yscale test",this.yScale(0.5))
 
-        this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-        this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-        this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
+        this.writeBars.call(this, this.svg, data, this.yScale, this.xScale);
+        this.writeLegend.call(this, this.svg, data, this.yScale, this.xScale);
+        this.writeExtras.call(this, this.svg, data, this.yScale, this.xScale);
     }
 
   retrieveData(url) {
@@ -391,6 +318,6 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-vaccines-hpi-by-people",
-  CAGovVaccinesHPEPeople
+  "cagov-chart-vaccines-hpi-by-dose",
+  CAGovVaccinesHPEDose
 );
