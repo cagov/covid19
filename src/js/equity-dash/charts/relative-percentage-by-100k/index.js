@@ -1,10 +1,10 @@
 import template from "./template.js";
 import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
-import getTranslations from "../../get-strings-list.js";
-import getScreenResizeCharts from "./../../get-window-size.js";
+import getTranslations from "../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
-import rtlOverride from "./../../rtl-override.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {

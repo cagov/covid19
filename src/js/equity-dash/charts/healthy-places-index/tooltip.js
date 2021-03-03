@@ -1,4 +1,4 @@
-import { parseSnowflakeDate } from "../../readable-date.js";
+import { parseSnowflakeDate } from "../../../common/readable-date.js";
 
 export default class Tooltip {
   constructor(needs_anno) {
