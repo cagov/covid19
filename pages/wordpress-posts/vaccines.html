@@ -423,9 +423,11 @@ addtositemap: true
 <!-- end tableau embed  -->
 </div>
 
-<h3 class="pt-5">Vaccination by California Healthy Places Index (HPI)</h3>
+<h3 class="pt-5">Vaccination by local health conditions</h3>
 
-<p>The California Healthy Places Index (HPI) is a tool to assist you in exploring local factors that predict life expectancy by comparing community conditions across the state.
+<p>The Vaccine Equity Metric uses the Healthy Places Index (HPI) which measures community conditions that can impact health, such as income, education, and access to health care. The zip code areas get a score and are grouped into quartiles, ranging from those with the least healthy community conditions (Quartile 1) to those with the most healthy community conditions (Quartile 4).
+</p><p>
+  Data below show the progress of vaccination in each of the four Vaccine Equity Metric quartiles and is updated daily.
 </p>
 
 
@@ -434,7 +436,7 @@ addtositemap: true
       <cagov-chart-vaccines-hpi-by-people class="chart">
         <ul class="d-none">
           <li data-label="chartTitle">Vaccines by people</li>
-          <li data-label="chartDescription">Lorem ipsum chartDescription people sum</li>
+          <li data-label="chartDescription">People partially and fully vaccinated in California</li>
           <li data-label="legendLabel1">People 16+ partially vaccinated</li>
           <li data-label="legendLabel2">People 16+ fully vaccinated</li>
           <li data-label="barLabel">HPI Quartile {N}</li>
@@ -447,8 +449,8 @@ addtositemap: true
       <cagov-chart-vaccines-hpi-by-dose class="chart">
         <ul class="d-none">
           <li data-label="chartTitle">Vaccines by Dose</li>
-          <li data-label="chartDescription">Lorem ipsum chartDescription dose sum</li>
-          <li data-label="legendLabel1">% administered by dose</li>
+          <li data-label="chartDescription">Doses administered in California</li>
+          <li data-label="legendLabel1">% of total doses administered</li>
           <li data-label="barLabel">HPI Quartile {N}</li>
           <li data-label="annotationLeast">Least healthy community conditions</li>
           <li data-label="annotationMost">Most healthy community conditions</li>
