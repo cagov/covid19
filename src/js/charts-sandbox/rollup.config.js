@@ -14,8 +14,8 @@ const stagingConfig =  {
   chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
 }
 
-const devOutputPath = 'docs/js/charts-sandbox.js';
-const prodOutputPath = 'pages/_buildoutput/charts-sandbox.js';
+const devOutputPath = 'docs/js/chartssandbox.js';
+const prodOutputPath = 'pages/_buildoutput/chartssandbox.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
