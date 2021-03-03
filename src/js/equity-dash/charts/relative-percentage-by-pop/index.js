@@ -2,10 +2,10 @@ import template from "./template.js";
 import drawBars from "./draw-chart.js";
 import drawSecondBars from "./draw-chart-second.js";
 import termCheck from "../race-ethnicity-config.js";
-import getTranslations from "../../get-strings-list.js";
-import getScreenResizeCharts from "./../../get-window-size.js";
+import getTranslations from "../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import getDisproportionateRatioSortValue from './get-disproportionality-ratio-sort-value.js';
-import rtlOverride from "./../../rtl-override.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 
 class CAGOVEquityREPop extends window.HTMLElement {
   connectedCallback() {

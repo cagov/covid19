@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "./../../get-strings-list.js";
-import getScreenResizeCharts from "./../../get-window-size.js";
-import rtlOverride from "./../../rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
