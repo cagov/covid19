@@ -9,9 +9,9 @@ import css from "./index.scss";
  * @param {string} translationsObj.chartDescriptionCounty - Chart data label, for counties
  */
 export default function template({
-  chartTitle = "Default Display Title",
-  chartDescription = "Default chart description",
-  chartDataLabel = null,
+  chartTitle = "Vaccines by doses administered",
+  chartDescription = "",
+  footerDisplayText = "Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}"
 }) {
   return /*html*/ `
     <div class="py-2">
@@ -24,9 +24,9 @@ export default function template({
             <div class="svg-holder"></div>
           </div>
         </div>
-        ${chartDataLabel !== null ? `<div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-          <p class="chart-data-label small-text col-lg-10 mx-auto">${chartDataLabel}</p>
+        ${footerDisplayText !== null ? `<div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0 pt-2">
+          <p class="chart-data-label small-text col-lg-10 mx-auto">${footerDisplayText}</p>
         </div>
       </div>` : ""}
       </div><!--END col-12-->
