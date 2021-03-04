@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 
 class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
   connectedCallback() {
@@ -181,7 +181,7 @@ class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
       .attr("x", (d) => x(0))
       .attr("width", (d) => x(d.METRIC_VALUE) - x(0))
       .attr("height", y.bandwidth())
-      .attr("id", (d, i) => "ve-rea-" + i)
+      .attr("id", (d, i) => "barid-" + i)
       .attr("tabindex", "0")
       .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
 

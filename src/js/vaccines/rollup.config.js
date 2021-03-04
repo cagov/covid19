@@ -6,10 +6,12 @@ import { terser } from 'rollup-plugin-terser';
 const defaultConfig = {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
+  chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
 }
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
-  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity-temp-2/',
+  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
+  chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
 }
 
 const devOutputPath = 'docs/js/vaccines.js';

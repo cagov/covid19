@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
@@ -211,7 +211,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, null, null, 've-race-eth');
+          renderChart.call(this, this.renderExtras);
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,

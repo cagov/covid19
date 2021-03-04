@@ -1,8 +1,8 @@
 import template from "./template.js";
 import drawBars from "./draw.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from './../../../common/get-strings-list.js';
+import getScreenResizeCharts from './../../../common/get-window-size.js';
+import rtlOverride from "./../../../common/rtl-override.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {

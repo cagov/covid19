@@ -2,9 +2,9 @@ import template from "./template.js";
 import drawBars from "./draw-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -69,7 +69,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
                    minimumFractionDigits:0,
                    maximumFractionDigits:0});
 
-      // Resizing
+    // Resizing
     getScreenResizeCharts(this);
     this.screenDisplayType = window.charts
       ? window.charts.displayType
@@ -321,6 +321,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
     // Remap data object
     data = sortableData.concat(nullSortData); 
     
+
     this.appliedSuppressionStatus = this.checkAppliedDataSuppression(data);
     // ordering this array by the order they are in in data
     // need to inherit this as a mapping of all possible values to desired display values becuase these differ in some tables
@@ -330,7 +331,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
 
     // Keys of data to use in chart.
     let stackedData = d3.stack().keys(this.subgroups)(data);
-    console.log("stacked data",stackedData);
 
     // Y position of bars.
     this.y = d3

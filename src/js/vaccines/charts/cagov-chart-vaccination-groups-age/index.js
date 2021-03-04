@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsAge extends window.HTMLElement {
@@ -191,11 +191,11 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           this.alldata = croppedData;
 
 
-          renderChart.call(this,null,null,null,'ve-age');
+          renderChart.call(this);
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
-            chartTitleCounty: this.translationsObj.chartCounty
+            chartTitleCounty: this.translationsObj.chartCounty,
           });
         }.bind(this)
       );
