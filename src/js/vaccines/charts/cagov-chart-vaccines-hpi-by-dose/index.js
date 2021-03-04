@@ -3,9 +3,10 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { reformatReadableDate } from "./../../../common/readable-date.js";
 
-class CAGovVaccinesHPEDose extends window.HTMLElement {
+class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
@@ -136,7 +137,8 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
   }
 
   ariaLabel(d) {
-    let label = `${this.pctFormatter.format(d.COMBINED_DOSES_RATIO)} ${this.translationsObj.legendLabel1} in ${this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE)}`;
+    const barLabel = applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE});
+    let label = `${this.pctFormatter.format(d.COMBINED_DOSES_RATIO)} ${this.translationsObj.legendLabel1} in ${barLabel}`;
     return label;
   }
 
@@ -181,7 +183,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       .attr("y", (d, i) => yScale(0) + 20)
       .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
       // .attr("width", x.bandwidth() / 4)
-      .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
+      .text(d =>  applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE}))
       .attr('text-anchor','middle')
   }
 
@@ -274,13 +276,14 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
-      let footerDisplayText = this.translationsObj.footerText;
-      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
-        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
-      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
-        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+      let footerReplacementDict = {
+        'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+      };
+      let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+
       // update the display date
-      this.translationsObj.footerDisplayDate = footerDisplayText;
+      // this.translationsObj.footerDisplayDate = footerDisplayText;
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
 
@@ -332,5 +335,5 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
 
 window.customElements.define(
   "cagov-chart-vaccines-hpi-by-dose",
-  CAGovVaccinesHPEDose
+  CAGovVaccinesHPIDose
 );
