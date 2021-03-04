@@ -26,7 +26,7 @@ export default function template({
         </div>
         ${footerDisplayText !== null ? `<div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0 pt-2">
-          <p class="chart-data-label small-text col-lg-10 mx-auto">${footerDisplayText}</p>
+          <p class="chart-data-label small-text">${footerDisplayText}</p>
         </div>
       </div>` : ""}
       </div><!--END col-12-->
