@@ -6,7 +6,7 @@ import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { reformatReadableDate } from "./../../../common/readable-date.js";
 
-class CAGovVaccinesHPEDose extends window.HTMLElement {
+class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
@@ -277,8 +277,8 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
       let footerReplacementDict = {
-        'PUBLISHED_DATE':reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE':reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
@@ -335,5 +335,5 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
 
 window.customElements.define(
   "cagov-chart-vaccines-hpi-by-dose",
-  CAGovVaccinesHPEDose
+  CAGovVaccinesHPIDose
 );
