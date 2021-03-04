@@ -3,6 +3,7 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { reformatReadableDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPEPeople extends window.HTMLElement {
@@ -136,7 +137,8 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
   }
 
   ariaLabel(d) {
-    let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
+    let label = applySubstitutions(this.translationsObj.barLabel, {'N':d.D.HPIQUARTILE});
+    // let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
     if(d.KEY == "FIRST_DOSE_RATIO") {
       label += `${this.pctFormatter.format(d.D.FIRST_DOSE_RATIO)} ${this.translationsObj.legendLabel1}`;
     } else {
@@ -196,11 +198,8 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       .attr("class", "bar-lower-label")
       .attr("y", (d, i) => yScale(0) + 20)
       .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
-      .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
+      .text(d =>  applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE}))
       .attr('text-anchor','middle')
-
-
-
 
   }
 
@@ -313,13 +312,15 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE));
       let subcategories = ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'];
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
-      let footerDisplayText = this.translationsObj.footerText;
-      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
-        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
-      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
-        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+
+      let footerReplacementDict = {
+        'PUBLISHED_DATE':reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE':reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+      };
+      let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+
       // update the display date
-      this.translationsObj.footerDisplayDate = footerDisplayText;
+      // this.translationsObj.footerDisplayDate = footerDisplayText;
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
       let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO)
