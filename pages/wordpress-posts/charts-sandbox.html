@@ -12,22 +12,33 @@ addtositemap: false
 
 
 
-<cagov-county-search></cagov-county-search>
-
-
-
-<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
-
-
-
-<cagov-chart-sandbox-filter-buttons class="js-re-smalls">
-    <div class="d-flex justify-content-center">
-      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
-      <button class="small-tab" data-key="age">Age</button>
-      <button class="small-tab" data-key="gender">Gender</button>
+<div class="container">
+    <div class="row">
+        <cagov-chart-vaccines-hpi-by-people class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Vaccines by sand people</li>
+            <li data-label="chartDescription">Lorem ipsum chartDescription people sum</li>
+            <li data-label="legendLabel1">People 16+ partially vaccinated</li>
+            <li data-label="legendLabel2">People 16+ fully vaccinated</li>
+            <li data-label="barLabel">HPI Quartile {N}</li>
+            <li data-label="annotationLeast">Least healthy community conditions</li>
+            <li data-label="annotationMost">Most healthy community conditions</li>
+          </ul>
+        </cagov-chart-vaccines-hpi-by-people>
     </div>
-</cagov-chart-sandbox-filter-buttons>
-
+    <div class="row">
+        <cagov-chart-vaccines-hpi-by-dose class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Vaccines by Dose</li>
+            <li data-label="chartDescription">Lorem ipsum chartDescription dose sum</li>
+            <li data-label="legendLabel1">% administered by dose</li>
+            <li data-label="barLabel">HPI Quartile {N}</li>
+            <li data-label="annotationLeast">Least healthy community conditions</li>
+            <li data-label="annotationMost">Most healthy community conditions</li>
+          </ul>
+        </cagov-chart-vaccines-hpi-by-dose>
+    </div>
+</div>
 
 
 <!-- build trigger 2-11-2021 2:46pm -->
