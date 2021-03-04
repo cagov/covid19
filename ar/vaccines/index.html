@@ -1265,7 +1265,145 @@ ga('tracker3.send', 'pageview');
 	
 	
 		<script type="module">
-			const config = {"equityChartsSampleDataLoc":"https://files.covid19.ca.gov/data/chart-sandbox/","equityChartsVEDataLoc":"https://files.covid19.ca.gov/data/vaccine-equity/"}
+			const config = {"equityChartsSampleDataLoc":"https://files.covid19.ca.gov/data/chart-sandbox/","equityChartsVEDataLoc":"https://files.covid19.ca.gov/data/vaccine-equity/","chartsVHPIDataLoc":"https://files.covid19.ca.gov/data/vaccine-hpi/"}
+
+/* eslint-disable no-undefined,no-param-reassign,no-shadow */
+
+/**
+ * Throttle execution of a function. Especially useful for rate limiting
+ * execution of handlers on events like resize and scroll.
+ *
+ * @param  {number}    delay -          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {boolean}   [noTrailing] -   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
+ *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
+ *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
+ *                                    the internal counter is reset).
+ * @param  {Function}  callback -       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                    to `callback` when the throttled-function is executed.
+ * @param  {boolean}   [debounceMode] - If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
+ *                                    schedule `callback` to execute after `delay` ms.
+ *
+ * @returns {Function}  A new, throttled, function.
+ */
+function throttle (delay, noTrailing, callback, debounceMode) {
+  /*
+   * After wrapper has stopped being called, this timeout ensures that
+   * `callback` is executed at the proper times in `throttle` and `end`
+   * debounce modes.
+   */
+  var timeoutID;
+  var cancelled = false; // Keep track of the last time `callback` was executed.
+
+  var lastExec = 0; // Function to clear existing timeout
+
+  function clearExistingTimeout() {
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+    }
+  } // Function to cancel next exec
+
+
+  function cancel() {
+    clearExistingTimeout();
+    cancelled = true;
+  } // `noTrailing` defaults to falsy.
+
+
+  if (typeof noTrailing !== 'boolean') {
+    debounceMode = callback;
+    callback = noTrailing;
+    noTrailing = undefined;
+  }
+  /*
+   * The `wrapper` function encapsulates all of the throttling / debouncing
+   * functionality and when executed will limit the rate at which `callback`
+   * is executed.
+   */
+
+
+  function wrapper() {
+    for (var _len = arguments.length, arguments_ = new Array(_len), _key = 0; _key < _len; _key++) {
+      arguments_[_key] = arguments[_key];
+    }
+
+    var self = this;
+    var elapsed = Date.now() - lastExec;
+
+    if (cancelled) {
+      return;
+    } // Execute `callback` and update the `lastExec` timestamp.
+
+
+    function exec() {
+      lastExec = Date.now();
+      callback.apply(self, arguments_);
+    }
+    /*
+     * If `debounceMode` is true (at begin) this is used to clear the flag
+     * to allow future `callback` executions.
+     */
+
+
+    function clear() {
+      timeoutID = undefined;
+    }
+
+    if (debounceMode && !timeoutID) {
+      /*
+       * Since `wrapper` is being called for the first time and
+       * `debounceMode` is true (at begin), execute `callback`.
+       */
+      exec();
+    }
+
+    clearExistingTimeout();
+
+    if (debounceMode === undefined && elapsed > delay) {
+      /*
+       * In throttle mode, if `delay` time has been exceeded, execute
+       * `callback`.
+       */
+      exec();
+    } else if (noTrailing !== true) {
+      /*
+       * In trailing throttle mode, since `delay` time has not been
+       * exceeded, schedule `callback` to execute `delay` ms after most
+       * recent execution.
+       *
+       * If `debounceMode` is true (at begin), schedule `clear` to execute
+       * after `delay` ms.
+       *
+       * If `debounceMode` is false (at end), schedule `callback` to
+       * execute after `delay` ms.
+       */
+      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+    }
+  }
+
+  wrapper.cancel = cancel; // Return the wrapper function.
+
+  return wrapper;
+}
+
+/* eslint-disable no-undefined */
+/**
+ * Debounce execution of a function. Debouncing, unlike throttling,
+ * guarantees that a function is only executed a single time, either at the
+ * very beginning of a series of calls, or at the very end.
+ *
+ * @param  {number}   delay -         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {boolean}  [atBegin] -     Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+ *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+ *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+ * @param  {Function} callback -      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                  to `callback` when the debounced-function is executed.
+ *
+ * @returns {Function} A new, debounced function.
+ */
+
+function debounce (delay, atBegin, callback) {
+  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+}
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -1294,7 +1432,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "cagov-chart-vaccination-groups-race-ethnicity .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z = "cagov-chart-vaccines-hpi-by-people .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-people .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-people .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z);
 
 /**
@@ -1302,13 +1440,13 @@ styleInject(css_248z);
  * 
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDescription - Chart description
- * @param {string} translationsObj.chartDataLabel - Chart description
- * @param {string} translationsObj.chartDescriptionCountyFormatted - Chart data label, for counties, with strings replaced
+ * @param {string} translationsObj.chartDataLabel - Chart data label
+ * @param {string} translationsObj.chartDescriptionCounty - Chart data label, for counties
  */
 function template({
-  chartDisplayTitle = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
-  chartDescription = null,
-  chartDataLabel = null,
+  chartTitle = "Vaccines by number of people vaccindated",
+  chartDescription = "",
+  footerDisplayText = "Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}"
 }) {
   return /*html*/ `
     <div class="py-2">
@@ -1316,14 +1454,14 @@ function template({
       <div class="col-lg-12 bg-white py-4">
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <div class="chart-title">${chartDisplayTitle}</div>
-            <!--<div class="small-text">${chartDescription}</div> -->
+            <div class="chart-title">${chartTitle}</div>
+            <div class="small-text">${chartDescription}</div>
             <div class="svg-holder"></div>
           </div>
         </div>
-        ${chartDataLabel !== null ? `<div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-          <p class="chart-data-label small-text col-lg-10 mx-auto">${chartDataLabel}</p>
+        ${footerDisplayText !== null ? `<div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0 pt-2">
+          <p class="chart-data-label small-text">${footerDisplayText}</p>
         </div>
       </div>` : ""}
       </div><!--END col-12-->
@@ -1454,6 +1592,811 @@ function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
       // console.log("containing div found", contDiv);
       contDiv.setAttribute('dir', desired_dir);
     }
+}
+
+// DATE UTILITIES for charts
+//
+// Use parseSnowflakeDate('YYYY-MM-DD') instead of new Date('YYYY-MM-DD') 
+// as the latter assumes GMT, which you probably don't want.
+// This function produces a local (Pacific) date.
+//
+function parseSnowflakeDate(dateStr) {
+    const tokens = dateStr.split('-');
+    const yyyy = +tokens[0];
+    const mm = +tokens[1];
+    const dd = +tokens[2];
+    return new Date(yyyy,mm-1,dd);
+}
+
+// Date converter for use on chart footnotes.
+// Converts a string (typically from Snowflake) 
+// in the form YYYY-MM-DD
+//
+// into a readable localized date, such as 
+//    December 12, 2020
+// or 
+//    12 de diciembre de 2020
+function reformatReadableDate(dateStr, // expects YYYY-MM-DD
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }) {
+    const theDate = parseSnowflakeDate(dateStr);
+    const readableDate = 
+         theDate.toLocaleString( document.documentElement.lang, fmt);
+    // console.log(dateStr + " --> " + readableDate);
+    return readableDate;
+}
+
+class CAGovVaccinesHPEPeople extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovVaccinationGroupsAge");
+    this.translationsObj = getTranslations(this);
+    this.innerHTML = template(this.translationsObj);
+    // Settings and initial values
+    this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'};
+    this.nbr_bars = 4;
+    this.chartOptions = {
+      // Data
+      dataUrl:
+        // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
+        config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
+      // Breakpoints
+      desktop: {
+        bar_hspace: 120,
+        fontSize: 14,
+        height: 400,
+        width: this.nbr_bars * 120,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      tablet: {
+        bar_hspace: 120,
+        fontSize: 14,
+        height: 400,
+        width: this.nbr_bars * 120,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      mobile: {
+        bar_hspace: 90,
+        fontSize: 12,
+        height: 400,
+        width: this.nbr_bars * 90,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      retina: {
+        bar_hspace: 90,
+        fontSize: 12,
+        height: 400,
+        width: this.nbr_bars * 90,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", debounce(200, false, handleChartResize));
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+    // this.listenForLocations();
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.legendLabel1,
+      this.translationsObj.legendLabel2,
+    ];
+  }
+
+  getChartTitle({
+    chartTitle = "Temp Title",
+  }) {
+    return chartTitle;
+  }
+
+  ariaLabel(d) {
+    let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
+    if(d.KEY == "FIRST_DOSE_RATIO") {
+      label += `${this.pctFormatter.format(d.D.FIRST_DOSE_RATIO)} ${this.translationsObj.legendLabel1}`;
+    } else {
+      label += `${this.pctFormatter.format(d.D.COMPLETED_DOSE_RATIO)} ${this.translationsObj.legendLabel2}`;
+    }
+    
+    return label;
+  }
+
+  writeBars(svg, data, yScale, xScaleOuter, xScaleInner) {
+    let groups = svg.append("g")
+      .selectAll("g")
+      .data(data)
+      .join("g")
+      .attr("transform", (d,i) => `translate(${xScaleOuter(i+1)},0)`);
+
+    let bars = groups
+        .selectAll("rect")
+        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .join("rect")
+            .attr("class","bg-bar")
+            .attr("fill", d=>this.colors[d.KEY])
+            .attr("x", (d,i) => xScaleInner(i))
+            .attr("y", d => yScale(d.D[d.KEY]))
+            .attr("width", d => xScaleInner.bandwidth())
+            .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])))
+            .attr("tabindex", "0")
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
+
+    let barcaps1 = groups
+        .selectAll("g")
+        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .join("text")
+        .attr("class", "bar-upper-label-1")
+        .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
+        .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
+        .text(d => this.pctFormatter.format(d.D[d.KEY]))
+        .attr('text-anchor','middle');
+    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
+    let barcaps2 = groups
+        .selectAll("g")
+        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .join("text")
+        .attr("class", "bar-upper-label-2")
+        .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
+        .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
+        .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
+        .attr('text-anchor','middle');
+
+    // bottom caption
+    groups
+      .append("text")
+      .attr("class", "bar-lower-label")
+      .attr("y", (d, i) => yScale(0) + 20)
+      .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
+      .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
+      .attr('text-anchor','middle');
+
+
+
+
+  }
+
+  writeLegend(svg, data, yScale, xScaleOuter, xScaleInner) {
+    const legendW = 12;
+    const legendY =  this.dimensions.margin.top/3;
+    const legendText = this.getLegendText();
+    const legend2X = this.dimensions.width/2;
+
+    let group = svg.append("g");
+
+    group
+      .append("rect")
+        .attr("fill", this.colors.FIRST_DOSE_RATIO)
+        .attr("class", "legend-block")
+        .attr("y", legendY)
+        .attr("x", 0)
+        .attr("width", legendW)
+        .attr("height", legendW);
+
+    group
+      .append("text")
+      .text(legendText[0]) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", legendY+legendW/2.0 + 1)
+      .attr("x", legendW*1.5)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+
+    group
+      .append("rect")
+        .attr("fill", this.colors.COMPLETED_DOSE_RATIO)
+        .attr("class", "legend-block")
+        .attr("y", legendY)
+        .attr("x", legend2X)
+        .attr("width", legendW)
+        .attr("height", legendW);
+
+    group
+      .append("text")
+      .text(legendText[1]) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", legendY+legendW/2.0 + 1)
+      .attr("x", legend2X+legendW*1.5)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+
+
+  }
+
+  writeExtras(svg, data, yScale, xScaleOuter, xScaleInner) {
+    const bottomAnnotationY = this.dimensions.height-this.dimensions.margin.bottom*3.0/7.0;
+    const legendY =  this.dimensions.margin.top/3;
+    const legendText = this.getLegendText();
+    const legend2X = this.dimensions.width*0.4;
+
+    let group = svg.append("g");
+    let arrowSize = 3;
+
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", 0)
+        .attr("y1", bottomAnnotationY)
+        .attr("y2", bottomAnnotationY)
+        .attr("x2", this.dimensions.width)
+        .attr("stroke-width",1);
+
+
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", this.dimensions.width)
+        .attr("y1", bottomAnnotationY)
+        .attr("x2", this.dimensions.width-arrowSize)
+        .attr("y2", bottomAnnotationY-arrowSize)
+        .attr("stroke-width",1);
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", this.dimensions.width)
+        .attr("y1", bottomAnnotationY)
+        .attr("x2", this.dimensions.width-arrowSize)
+        .attr("y2", bottomAnnotationY+arrowSize)
+        .attr("stroke-width",1);
+
+
+    group
+      .append("text")
+      .text(this.translationsObj.annotationLeast) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", bottomAnnotationY+16)
+      .attr("x", 0)
+      .attr('text-anchor','start');
+
+    group
+      .append("text")
+      .text(this.translationsObj.annotationMost) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", bottomAnnotationY+16)
+      .attr("x", this.dimensions.width)
+      .attr('text-anchor','end');
+
+
+
+  }
+
+  renderChart() {
+      let data = this.alldata;
+      let categories = data.map(rec => (rec.HPIQUARTILE));
+      this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
+      let footerDisplayText = this.translationsObj.footerText;
+      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
+        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
+      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
+        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+      // update the display date
+      this.translationsObj.footerDisplayDate = footerDisplayText;
+      d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
+      let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO);
+      d3.select(this.querySelector("svg"))
+      .attr("viewBox", [
+                        0,
+                        0,
+                        this.dimensions.width,
+                        this.dimensions.height,
+                        ]);
+
+        this.yScale = d3
+            .scaleLinear()
+            .domain([0, max_y]).nice()
+            .range([this.dimensions.height-this.dimensions.margin.bottom,
+                    this.dimensions.margin.top]);
+        
+        this.xScaleOuter = d3
+            .scaleBand()
+            .domain(categories)
+            .range([this.dimensions.margin.left,
+                    this.dimensions.width-this.dimensions.margin.right])
+            .paddingInner(1/6.0)
+            .paddingOuter(0);
+
+        this.xScaleInner = d3
+            .scaleBand()
+            .domain([0,1])
+            .range([0, this.xScaleOuter.bandwidth()])
+            .paddingInner(3/19.0)
+            .paddingOuter(0);
+
+        this.svg.selectAll("g").remove();
+
+        this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
+        this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
+        this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
+    }
+
+  retrieveData(url) {
+    let component = this;
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          this.metadata = alldata.meta;
+          this.alldata = alldata.data;
+
+          this.renderChart.call(component);
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-vaccines-hpi-by-people",
+  CAGovVaccinesHPEPeople
+);
+
+var css_248z$1 = "cagov-chart-vaccines-hpi-by-dose .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-dose .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$1);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDescription - Chart description
+ * @param {string} translationsObj.chartDataLabel - Chart data label
+ * @param {string} translationsObj.chartDescriptionCounty - Chart data label, for counties
+ */
+function template$1({
+  chartTitle = "Vaccines by doses administered",
+  chartDescription = "",
+  footerDisplayText = "Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}"
+}) {
+  return /*html*/ `
+    <div class="py-2">
+    <div class="container">
+      <div class="col-lg-12 bg-white py-4">
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
+            <div class="chart-title">${chartTitle}</div>
+            <div class="small-text">${chartDescription}</div>
+            <div class="svg-holder"></div>
+          </div>
+        </div>
+        ${footerDisplayText !== null ? `<div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0 pt-2">
+          <p class="chart-data-label small-text">${footerDisplayText}</p>
+        </div>
+      </div>` : ""}
+      </div><!--END col-12-->
+    </div><!--END CONTAINER-->
+  </div>`;
+}
+
+class CAGovVaccinesHPEDose extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovVaccinationGroupsAge");
+    this.translationsObj = getTranslations(this);
+    this.innerHTML = template$1(this.translationsObj);
+    // Settings and initial values
+    this.barColor = '#1F2574';
+
+    this.nbr_bars = 4;
+    this.chartOptions = {
+      // Data
+      dataUrl:
+        // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
+        config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
+      // Breakpoints
+      desktop: {
+        bar_hspace: 120,
+        fontSize: 14,
+        height: 400,
+        width: this.nbr_bars * 120,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      tablet: {
+        bar_hspace: 120,
+        fontSize: 14,
+        height: 400,
+        width: this.nbr_bars * 120,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      mobile: {
+        bar_hspace: 90,
+        fontSize: 12,
+        height: 400,
+        width: this.nbr_bars * 90,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+      retina: {
+        bar_hspace: 90,
+        fontSize: 12,
+        height: 400,
+        width: this.nbr_bars * 90,
+        margin: {
+          top: 70,
+          right: 10,
+          bottom: 52,
+          left: 10,
+        },
+      },
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", debounce(200, false, handleChartResize));
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+    // this.listenForLocations();
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.legendLabel1,
+    ];
+  }
+
+  getChartTitle({
+    chartTitle = "Temp Title",
+  }) {
+    return chartTitle;
+  }
+
+  ariaLabel(d) {
+    let label = `${this.pctFormatter.format(d.COMBINED_DOSES_RATIO)} ${this.translationsObj.legendLabel1} in ${this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE)}`;
+    return label;
+  }
+
+  writeBars(svg, data, yScale, xScale) {
+    let groups = svg.append("g")
+      .selectAll("g")
+      .data(data)
+      .join("g");
+
+    groups
+        .append("rect")
+            .attr("class","main-bar")
+            .attr("fill", d=>this.barColor)
+            .attr("x", (d,i) => xScale(i))
+            .attr("y", d => yScale(d.COMBINED_DOSES_RATIO))
+            .attr("width", d => xScale.bandwidth())
+            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES_RATIO)))
+            .attr("tabindex", "0")
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
+
+    groups
+        .append("text")
+        .attr("class", "bar-upper-label-1")
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 18)
+        .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
+        .text(d => this.pctFormatter.format(d.COMBINED_DOSES_RATIO))
+        .attr('text-anchor','middle');
+
+    groups
+        .append("text")
+        .attr("class", "bar-upper-label-2")
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 4)
+        .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
+        .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
+        .attr('text-anchor','middle');
+
+    
+    // bottom caption
+    groups
+      .append("text")
+      .attr("class", "bar-lower-label")
+      .attr("y", (d, i) => yScale(0) + 20)
+      .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
+      // .attr("width", x.bandwidth() / 4)
+      .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
+      .attr('text-anchor','middle');
+  }
+
+  writeLegend(svg, data, yScale, xScale) {
+    const legendW = 12;
+    const legendY =  this.dimensions.margin.top/3;
+    const legendText = this.getLegendText();
+    const legend2X = this.dimensions.width*0.4;
+
+    let group = svg.append("g");
+
+    group
+      .append("rect")
+        .attr("fill", this.barColor)
+        .attr("class", "legend-block")
+        .attr("y", legendY)
+        .attr("x", 0)
+        .attr("width", legendW)
+        .attr("height", legendW);
+
+    group
+      .append("text")
+      .text(legendText[0]) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", legendY+legendW/2.0 + 1)
+      .attr("x", legendW*1.5)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+  }
+
+  writeExtras(svg, data, yScale, xScale) {
+    const bottomAnnotationY = this.dimensions.height-this.dimensions.margin.bottom*3.0/7.0;
+    const legendY =  this.dimensions.margin.top/3;
+    const legendText = this.getLegendText();
+    const legend2X = this.dimensions.width*0.4;
+
+    let group = svg.append("g");
+    let arrowSize = 3;
+
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", 0)
+        .attr("y1", bottomAnnotationY)
+        .attr("y2", bottomAnnotationY)
+        .attr("x2", this.dimensions.width)
+        .attr("stroke-width",1);
+
+
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", this.dimensions.width)
+        .attr("y1", bottomAnnotationY)
+        .attr("x2", this.dimensions.width-arrowSize)
+        .attr("y2", bottomAnnotationY-arrowSize)
+        .attr("stroke-width",1);
+    group
+        .append('line')
+        .attr("stroke", "#000000")
+        .attr("x1", this.dimensions.width)
+        .attr("y1", bottomAnnotationY)
+        .attr("x2", this.dimensions.width-arrowSize)
+        .attr("y2", bottomAnnotationY+arrowSize)
+        .attr("stroke-width",1);
+
+
+    group
+      .append("text")
+      .text(this.translationsObj.annotationLeast) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", bottomAnnotationY+16)
+      .attr("x", 0)
+      .attr('text-anchor','start');
+
+    group
+      .append("text")
+      .text(this.translationsObj.annotationMost) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", bottomAnnotationY+16)
+      .attr("x", this.dimensions.width)
+      .attr('text-anchor','end');
+
+
+
+  }
+
+  renderChart() {
+      let data = this.alldata;
+      let categories = data.map(rec => (rec.HPIQUARTILE-1));
+      this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
+
+      let footerDisplayText = this.translationsObj.footerText;
+      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
+        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
+      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
+        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+      // update the display date
+      this.translationsObj.footerDisplayDate = footerDisplayText;
+      d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
+
+      let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO);
+      d3.select(this.querySelector("svg"))
+      .attr("viewBox", [
+                        0,
+                        0,
+                        this.dimensions.width,
+                        this.dimensions.height,
+                        ]);
+
+        this.yScale = d3
+            .scaleLinear()
+            .domain([0, max_y]).nice()
+            .range([this.dimensions.height-this.dimensions.margin.bottom,
+                    this.dimensions.margin.top]);
+        
+        this.xScale = d3
+            .scaleBand()
+            .domain(categories)
+            .range([this.dimensions.margin.left,
+                    this.dimensions.width-this.dimensions.margin.right])
+            .paddingInner(7/60.0)
+            .paddingOuter(0);
+
+        this.svg.selectAll("g").remove();
+
+        this.writeBars.call(this, this.svg, data, this.yScale, this.xScale);
+        this.writeLegend.call(this, this.svg, data, this.yScale, this.xScale);
+        this.writeExtras.call(this, this.svg, data, this.yScale, this.xScale);
+    }
+
+  retrieveData(url) {
+    let component = this;
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          this.metadata = alldata.meta;
+          this.alldata = alldata.data;
+
+          this.renderChart.call(component);
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-vaccines-hpi-by-dose",
+  CAGovVaccinesHPEDose
+);
+
+var css_248z$2 = "cagov-chart-vaccination-groups-race-ethnicity .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$2);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDescription - Chart description
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ * @param {string} translationsObj.chartDescriptionCountyFormatted - Chart data label, for counties, with strings replaced
+ */
+function template$2({
+  chartDisplayTitle = "People with at least one dose of vaccine administered by race and ethnicity in [REGION]",
+  chartDescription = null,
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+    <div class="py-2">
+    <div class="container">
+      <div class="col-lg-12 bg-white py-4">
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
+            <div class="chart-title">${chartDisplayTitle}</div>
+            <!--<div class="small-text">${chartDescription}</div> -->
+            <div class="svg-holder"></div>
+          </div>
+        </div>
+        ${chartDataLabel !== null ? `<div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
+          <p class="chart-data-label small-text col-lg-10 mx-auto">${chartDataLabel}</p>
+        </div>
+      </div>` : ""}
+      </div><!--END col-12-->
+    </div><!--END CONTAINER-->
+  </div>`;
 }
 
 /**
@@ -1685,7 +2628,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsRaceEthnicity");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template$2(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 9;
     this.bar_vspace = 60;
@@ -1904,8 +2847,8 @@ window.customElements.define(
   CAGovVaccinationGroupsRaceEthnicity
 );
 
-var css_248z$1 = "cagov-chart-vaccination-groups-gender .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-gender .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-gender .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-gender .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$1);
+var css_248z$3 = "cagov-chart-vaccination-groups-gender .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-gender .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-gender .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-gender .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$3);
 
 /**
  * Render bar chart for vaccinations group.
@@ -1915,7 +2858,7 @@ styleInject(css_248z$1);
  * @param {string} translationsObj.chartDataLabel - Chart description
  * @param {string} translationsObj.chartDescriptionCounty - Chart data label, for counties
  */
-function template$1({
+function template$3({
   chartDisplayTitle = "People with at least one dose of vaccine administered by age in [REGION]",
   chartDescription = null,
   chartDataLabel = null,
@@ -1946,7 +2889,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsGender");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template$1(this.translationsObj);
+    this.innerHTML = template$3(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 3;
     let bar_vspace = 60;
@@ -2142,8 +3085,8 @@ window.customElements.define(
   CAGovVaccinationGroupsGender
 );
 
-var css_248z$2 = "cagov-chart-vaccination-groups-age .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-age .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-age .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-age .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$2);
+var css_248z$4 = "cagov-chart-vaccination-groups-age .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-age .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-age .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-age .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$4);
 
 /**
  * Render bar chart for vaccinations group.
@@ -2153,7 +3096,7 @@ styleInject(css_248z$2);
  * @param {string} translationsObj.chartDataLabel - Chart data label
  * @param {string} translationsObj.chartDescriptionCounty - Chart data label, for counties
  */
-function template$2({
+function template$4({
   chartDisplayTitle = "People with at least one dose of vaccine administered by gender in [REGION]",
   chartDescription = null,
   chartDataLabel = null,
@@ -2183,7 +3126,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template$2(this.translationsObj);
+    this.innerHTML = template$4(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 4;
     let bar_vspace = 60;
@@ -2929,7 +3872,7 @@ class Awesomplete {
     }
 }
 
-function template$3(countyLabel, countyPlaceholder) {
+function template$5(countyLabel, countyPlaceholder) {
   return /*html*/`
     <div class="row d-flex justify-content-md-center">
       <form class="form-inline" id="county-form">
@@ -2987,7 +3930,7 @@ class CAGovCountySearch extends window.HTMLElement {
     this.state = {};
     this.state.statewide = false;
 
-    this.innerHTML = template$3();
+    this.innerHTML = template$5();
     this.addListeners();
 
     window.fetch('/countystatus.json')
