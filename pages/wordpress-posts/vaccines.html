@@ -423,7 +423,47 @@ addtositemap: true
 <!-- end tableau embed  -->
 </div>
 
+<!-- HPI CHARTS -->
+<h3 class="pt-5">Vaccination and community health conditions (Vaccine Equity Metric)</h3>
 
+<p>This graph compares COVID-19 vaccinations among four different levels of community health. </p>
+
+<p>It uses Healthy Places Index (HPI) measures in a zip code area that can impact health, like income, education, and access to health care. Areas are then given a score, ranging from least healthy community conditions (Quartile 1) to most healthy community conditions (Quartile 4). The Vaccine Equity Metric also creates scores for areas that don’t have an HPI score.
+</p><p>
+  Data below show the progress of vaccination in each of the four quartiles. It is updated daily.
+</p>
+
+
+<div class="container">
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-people class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccinations by number of people vaccinated</li>
+          <li data-label="chartDescription">People partially and fully vaccinated in California</li>
+          <li data-label="legendLabel1">People 16+ partially vaccinated</li>
+          <li data-label="legendLabel2">People 16+ fully vaccinated</li>
+          <li data-label="barLabel">HPI Quartile {{N}}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+          <li data-label="footerText">Updated {{PUBLISHED_DATE}} with data from {{LATEST_ADMINISTERED_DATE}}.  "Partially vaccinated" represents individuals who have received at least one dose of the Pfizer or Moderna vaccine. "Fully vaccinated" represents individuals who have received two doses of the Pfizer or Moderna vaccine, or one dose of the Janssen vaccine. Percentage for number of people calculated as people vaccinated in a quartile divided by population of people 16 years of age and over in a quartile.</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-people>
+  </div>
+  <div class="row">
+      <cagov-chart-vaccines-hpi-by-dose class="chart">
+        <ul class="d-none">
+          <li data-label="chartTitle">Vaccinations by doses administered</li>
+          <li data-label="chartDescription">Number of vaccine doses given in California</li>
+          <li data-label="legendLabel1"> %of total and number of doses administered</li>
+          <li data-label="barLabel">HPI Quartile {{N}}</li>
+          <li data-label="annotationLeast">Least healthy community conditions</li>
+          <li data-label="annotationMost">Most healthy community conditions</li>
+          <li data-label="footerText">Updated {{PUBLISHED_DATE}} with data from {{LATEST_ADMINISTERED_DATE}}. Excludes doses without an HPI score, including out-of-state residents or records with missing zip codes. Percentage for doses calculated as doses administered in a quartile divided by total doses administered statewide.</li>
+        </ul>
+      </cagov-chart-vaccines-hpi-by-dose>
+  </div>
+</div>
+<!-- END HPI CHARTS -->
 
 <h3>Vaccination by groups</h3>
 
