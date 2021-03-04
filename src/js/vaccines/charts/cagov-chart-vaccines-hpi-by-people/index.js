@@ -1,3 +1,4 @@
+import { debounce } from 'throttle-debounce';
 import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
@@ -98,7 +99,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       ];
     };
 
-    window.addEventListener("resize", handleChartResize);
+    window.addEventListener("resize", debounce(200, false, handleChartResize));
 
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
@@ -135,7 +136,13 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
   }
 
   ariaLabel(d) {
-    let label = "ARIA BAR LABEL";
+    let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
+    if(d.KEY == "FIRST_DOSE_RATIO") {
+      label += `${this.pctFormatter.format(d.D.FIRST_DOSE_RATIO)} ${this.translationsObj.legendLabel1}`;
+    } else {
+      label += `${this.pctFormatter.format(d.D.COMPLETED_DOSE_RATIO)} ${this.translationsObj.legendLabel2}`;
+    }
+    
     return label;
   }
 
@@ -166,7 +173,9 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
             .attr("x", (d,i) => xScaleInner(i))
             .attr("y", d => yScale(d.D[d.KEY]))
             .attr("width", d => xScaleInner.bandwidth())
-            .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])));
+            .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])))
+            .attr("tabindex", "0")
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
 
             // .append("text")
             // .attr("class", "bar-upper-label-1")

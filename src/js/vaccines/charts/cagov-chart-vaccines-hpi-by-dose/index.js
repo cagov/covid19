@@ -1,3 +1,4 @@
+import { debounce } from 'throttle-debounce';
 import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
@@ -99,7 +100,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
       ];
     };
 
-    window.addEventListener("resize", handleChartResize);
+    window.addEventListener("resize", debounce(200, false, handleChartResize));
 
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
@@ -135,7 +136,7 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
   }
 
   ariaLabel(d) {
-    let label = "ARIA BAR LABEL";
+    let label = `${this.pctFormatter.format(d.COMBINED_DOSES_RATIO)} ${this.translationsObj.legendLabel1} in ${this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE)}`;
     return label;
   }
 
@@ -152,7 +153,9 @@ class CAGovVaccinesHPEDose extends window.HTMLElement {
             .attr("x", (d,i) => xScale(i))
             .attr("y", d => yScale(d.COMBINED_DOSES_RATIO))
             .attr("width", d => xScale.bandwidth())
-            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES_RATIO)));
+            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES_RATIO)))
+            .attr("tabindex", "0")
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
 
     groups
         .append("text")
