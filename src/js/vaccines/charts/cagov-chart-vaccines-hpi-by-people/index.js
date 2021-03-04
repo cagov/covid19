@@ -3,12 +3,12 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import { reformatReadableDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPEPeople extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    console.log("Translations",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
@@ -155,13 +155,6 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
 
 
 
-    // big bar
-    console.log("yscale 0",yScale(0));
-    console.log("yscale 0.5",yScale(0.5));
-    console.log("xscale 1",xScaleOuter(1));
-    console.log("xscale 2",xScaleOuter(2));
-    console.log("xscale bw",xScaleOuter.bandwidth());
-
     let colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
 
     let bars = groups
@@ -176,13 +169,6 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
             .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])))
             .attr("tabindex", "0")
             .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
-
-            // .append("text")
-            // .attr("class", "bar-upper-label-1")
-            // .attr("y", (d, i) => yScale(d.D[d.KEY]) - 20)
-            // .attr("x", (d, i) => xScaleInner.bandwidth()/2)
-            // .text(d => `Upper Caption`)
-            // .attr('text-anchor','middle');
 
     let barcaps1 = groups
         .selectAll("g")
@@ -204,33 +190,15 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
         .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
         .attr('text-anchor','middle');
 
-    // barcaps.append("text")
-    // .attr("class", "bar-upper-label-2")
-    // .attr("y", (d, i) => yScale(d.D[d.KEY]) - 10)
-    // .attr("x", (d, i) => xScaleInner.bandwidth()/2)
-    // .text(d => `Lower Caption`)
-    // .attr('text-anchor','middle');
-
-
-    
     // bottom caption
     groups
       .append("text")
       .attr("class", "bar-lower-label")
       .attr("y", (d, i) => yScale(0) + 20)
       .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
-      // .attr("width", x.bandwidth() / 4)
       .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
-      // .attr('dominant-baseline','text-top')
       .attr('text-anchor','middle')
 
-
-
-    // top caption A
-    // top caption B
 
 
 
@@ -341,11 +309,19 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
   }
 
   renderChart() {
-      console.log("Render Chart",this.dimensions);
       let data = this.alldata;
       let categories = data.map(rec => (rec.HPIQUARTILE));
       let subcategories = ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'];
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
+      let footerDisplayText = this.translationsObj.footerText;
+      footerDisplayText = footerDisplayText.replace('{PUBLISHED_DATE}', 
+        reformatReadableDate( this.metadata['PUBLISHED_DATE'] ));
+      footerDisplayText = footerDisplayText.replace('{LATEST_ADMINISTERED_DATE}', 
+        reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ));
+      // update the display date
+      this.translationsObj.footerDisplayDate = footerDisplayText;
+      d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
       let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO)
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -378,8 +354,6 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
 
         this.svg.selectAll("g").remove();
 
-        console.log("yscale test",this.yScale(0.5))
-
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
@@ -392,7 +366,7 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Chart meta", alldata);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
           this.renderChart.call(component);
