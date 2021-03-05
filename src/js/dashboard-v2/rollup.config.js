@@ -4,10 +4,10 @@ import postcss from 'rollup-plugin-postcss';
 
 
 const defaultConfig = {
-  chartsDataFile: 'https://files.covid19.ca.gov/data/daily-stats-v2.json',
+  chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
 }
 const stagingConfig =  {
-  chartsDataFile: 'https://files.covid19.ca.gov/data/daily-stats-v2-temp.json',
+  chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
 }
 
 const devOutputPath = 'docs/js/dashboard-v2.js';

@@ -65,6 +65,10 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
       },
     };
 
+    this.labelTran = {
+      'Unknown':'Unknown/undifferentiated',
+    };
+
     this.intFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
@@ -174,9 +178,15 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
           this.popdata = alldata.data.by_gender.population;
           this.alldata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
           });
           this.popdata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
           });
 
           // "Unknown"
