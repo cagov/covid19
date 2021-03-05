@@ -1,8 +1,8 @@
 import template from './template.js';
 import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from '../../../common/get-strings-list.js';
+import getScreenResizeCharts from './../../../common/get-window-size.js';
+import rtlOverride from "./../../../common/rtl-override.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {

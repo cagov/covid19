@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsAge extends window.HTMLElement {
@@ -183,9 +183,9 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Age data meta", alldata.meta);
+          // console.log("Age data meta", alldata.meta);
           this.alldata = alldata.data;
-          console.log("Age data", alldata.data);
+          // console.log("Age data", alldata.data);
           // "Unknown"
           let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;

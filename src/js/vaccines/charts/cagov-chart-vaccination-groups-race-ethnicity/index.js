@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
@@ -203,7 +203,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Race/Eth data meta", alldata.meta);
+          // console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
           this.alldata = alldata.data;
 

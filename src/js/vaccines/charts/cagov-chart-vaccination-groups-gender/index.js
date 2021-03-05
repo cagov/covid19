@@ -1,7 +1,7 @@
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
+import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 
 class CAGovVaccinationGroupsGender extends window.HTMLElement {
@@ -186,7 +186,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Gender data meta", alldata.meta);
+          // console.log("Gender data meta", alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this,null,null,null,'ve-gender');
           this.resetTitle({

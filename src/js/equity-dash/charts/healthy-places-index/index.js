@@ -3,12 +3,11 @@
 // import Toolline from './tooltip.js'; // Not used, delete?
 import Tooltip from "./tooltip.js";
 import template from "./template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
-import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
-
+import getTranslations from "./../../../common/get-strings-list.js";
+import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+import rtlOverride from "./../../../common/rtl-override.js";
+import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
 
 
 

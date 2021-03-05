@@ -1,0 +1,33 @@
+cagov-chart-vaccines-hpi-by-dose {
+    .bar-lower-label .tick text {
+      text-transform: capitalize;
+    }
+    .bar-lower-label {
+      font-weight: normal;
+      font-size: 0.75rem;
+    }
+    .bar-upper-label-1 {
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+    .bar-upper-label-2 {
+        font-weight: 300;
+        font-size: 0.75rem;
+    }
+    .bottom-annotation {
+        font-weight: 300;
+        font-size: 0.65rem;
+    }
+    .bar-cat {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .legend-caption {
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+  }
+.d-hide {
+  display: none;
+}
+

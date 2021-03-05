@@ -5,11 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "@cagov/accordion": "^2.0.0",
+    "@cagov/anchor-events": "^1.0.0",
     "@cagov/lookup": "^1.0.2",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "awesomplete-es6": "^1.2.2",
     "element-closest-polyfill": "^1.0.2",
+    "throttle-debounce": "^3.0.1",
     "url-search-params-polyfill": "^8.1.0",
     "whatwg-fetch": "^3.5.0"
   },
