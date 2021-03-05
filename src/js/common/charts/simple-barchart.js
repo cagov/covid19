@@ -61,7 +61,7 @@ function writeLegend(svg, data, x, y) {
 function writeBars(svg, data, x, y) {
     let max_x_domain = x.domain()[1];
 
-    console.log("Write bars data=",data);
+    // console.log("Write bars data=",data);
 
     let groups = svg.append("g")
       .selectAll("g")
@@ -192,7 +192,7 @@ export default function renderChart(extrasFunc = null) {
     .paddingInner(5.0/6.0)
     .paddingOuter(0.5);
 
-    console.log("this.y",this.y);
+    // console.log("this.y",this.y);
   
     // Position for labels.
     // this.yAxis = (g) =>
