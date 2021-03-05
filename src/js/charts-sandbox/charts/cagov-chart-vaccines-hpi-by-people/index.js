@@ -3,7 +3,7 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 
-class CAGovVaccinesHPEPeople extends window.HTMLElement {
+class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
@@ -394,5 +394,5 @@ class CAGovVaccinesHPEPeople extends window.HTMLElement {
 
 window.customElements.define(
   "cagov-chart-vaccines-hpi-by-people",
-  CAGovVaccinesHPEPeople
+  CAGovVaccinesHPIPeople
 );
