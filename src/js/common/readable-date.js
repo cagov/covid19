@@ -12,6 +12,24 @@ function parseSnowflakeDate(dateStr) {
     return new Date(yyyy,mm-1,dd);
 }
 
+// Return local date string in form YYYY-MM-DD adjusted for dayDelta (0 for today -1 for yesterday)
+//
+function getSnowflakeStyleDate(dayDelta) {
+    let date = new Date();
+    date.setDate(date.getDate() + dayDelta);
+    // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
+    let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 // Date converter for use on chart footnotes.
 // Converts a string (typically from Snowflake) 
 // in the form YYYY-MM-DD
@@ -30,4 +48,4 @@ function reformatReadableDate(dateStr, // expects YYYY-MM-DD
 }
 
 
-export {reformatReadableDate, parseSnowflakeDate};
+export {reformatReadableDate, getSnowflakeStyleDate, parseSnowflakeDate};

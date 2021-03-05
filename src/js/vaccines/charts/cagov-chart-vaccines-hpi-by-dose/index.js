@@ -4,7 +4,7 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { reformatReadableDate } from "./../../../common/readable-date.js";
+import { reformatReadableDate,getSnowflakeStyleDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
@@ -282,9 +282,17 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
+      const todayStr = getSnowflakeStyleDate(0);
+      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
+
+      if (adminDateStr == todayStr) {
+        const yesterdayStr = getSnowflakeStyleDate(-1);
+        adminDateStr = yesterdayStr;
+      }
+
       let footerReplacementDict = {
         'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
