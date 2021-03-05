@@ -1692,6 +1692,24 @@ function parseSnowflakeDate(dateStr) {
     return new Date(yyyy,mm-1,dd);
 }
 
+// Return local date string in form YYYY-MM-DD adjusted for dayDelta (0 for today -1 for yesterday)
+//
+function getSnowflakeStyleDate(dayDelta) {
+    let date = new Date();
+    date.setDate(date.getDate() + dayDelta);
+    // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
+    let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 // Date converter for use on chart footnotes.
 // Converts a string (typically from Snowflake) 
 // in the form YYYY-MM-DD
@@ -2011,9 +2029,17 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
+      const todayStr = getSnowflakeStyleDate(0);
+      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
+
+      if (adminDateStr == todayStr) {
+        const yesterdayStr = getSnowflakeStyleDate(-1);
+        adminDateStr = yesterdayStr;
+      }
+
       let footerReplacementDict = {
         'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
@@ -2392,9 +2418,17 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
+      const todayStr = getSnowflakeStyleDate(0);
+      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
+
+      if (adminDateStr == todayStr) {
+        const yesterdayStr = getSnowflakeStyleDate(-1);
+        adminDateStr = yesterdayStr;
+      }
+
       let footerReplacementDict = {
         'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
@@ -2554,7 +2588,7 @@ function writeLegend(svg, data, x, y) {
 function writeBars(svg, data, x, y) {
     let max_x_domain = x.domain()[1];
 
-    console.log("Write bars data=",data);
+    // console.log("Write bars data=",data);
 
     let groups = svg.append("g")
       .selectAll("g")
@@ -2685,7 +2719,7 @@ function renderChart(extrasFunc = null) {
     .paddingInner(5.0/6.0)
     .paddingOuter(0.5);
 
-    console.log("this.y",this.y);
+    // console.log("this.y",this.y);
   
     // Position for labels.
     // this.yAxis = (g) =>
@@ -2915,7 +2949,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Race/Eth data meta", alldata.meta);
+          // console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
           this.alldata = alldata.data;
 
@@ -3159,7 +3193,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Gender data meta", alldata.meta);
+          // console.log("Gender data meta", alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this);
           this.resetTitle({
@@ -3393,9 +3427,9 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Age data meta", alldata.meta);
+          // console.log("Age data meta", alldata.meta);
           this.alldata = alldata.data;
-          console.log("Age data", alldata.data);
+          // console.log("Age data", alldata.data);
           // "Unknown"
           let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;
