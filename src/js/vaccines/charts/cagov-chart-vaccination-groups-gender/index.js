@@ -186,7 +186,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Gender data meta", alldata.meta);
+          // console.log("Gender data meta", alldata.meta);
           this.alldata = alldata.data;
           renderChart.call(this);
           this.resetTitle({
