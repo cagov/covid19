@@ -1286,20 +1286,20 @@ a.navbar-brand:visited {
 }
 
 .card-body {
-  font-size: 18px;
+  // font-size: 18px;
   padding: 0.75rem 1.25rem;
 }
 
 .card .btn-link {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: $black;
   background-color: transparent;
 }
 
 .card p {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .wrimagecard {
@@ -1315,7 +1315,7 @@ a.navbar-brand:visited {
 
 .wrimagecard .fa {
   position: relative;
-  font-size: 70px;
+  font-size: 4.375rem;
 }
 
 .wrimagecard-topimage_header {
@@ -2061,6 +2061,14 @@ font {
 .text-small {
   font-size: 0.85rem !important;
 }
+
+.caption {
+  font-size: 0.95rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.95rem;
+  font-style: italic;
+}
+
 .text-disclaim {
   font-size: 0.8em;
 }
@@ -2321,19 +2329,6 @@ font {
   background-color: $lightestblue;
 }
 
-.external {
-  &::after {
-    font-family: "CaGov";
-    content: "\e9ec";
-    font-size: 0.85rem;
-    display: inline-block;
-    padding-left: 3px;
-    text-decoration: none;
-    position: relative;
-    top: -3px;
-  }
-}
-
 .link-icon {
   font-size: 0.85rem;
   position: relative;
@@ -2371,9 +2366,41 @@ font {
   position: relative;
   left: 3px;
   top: -3px;
+  line-height: .9rem;
 }
 
 .no-underline-icon {
   display: inline-block;
   text-decoration: none;
 }
+
+/* TOC */
+.toc {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-left: 7px;
+  li {
+    color: $darkblue;
+    line-height: 1.5rem;
+    margin-top: .4rem;
+    margin-bottom: .6rem;
+    text-indent: -1.3rem;
+    padding-left: 10px;
+    &:before {
+      font-family: "CaGov";
+      content: "\35";
+      position: relative;
+      font-size: 1.5rem;
+      top: 3px;
+      right: 4px;
+      }
+
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+    }
+  }
+}
+

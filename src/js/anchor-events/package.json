@@ -1,0 +1,27 @@
+{
+  "name": "@cagov/anchor-events",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cagov/Alpha/tree/staging/src/js/anchor-events"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cagov/accordion": "^2.0.0",
+    "@esm-bundle/chai": "^4.3.0",
+    "@open-wc/karma-esm": "^2.12.8",
+    "@open-wc/testing": "^2.5.32",
+    "@open-wc/testing-karma": "^3.2.32",
+    "@web/test-runner": "^0.12.15",
+    "deepmerge": "^4.2.2",
+    "karma": "^4.4.1",
+    "lit-html": "^1.1.2"
+  }
+}

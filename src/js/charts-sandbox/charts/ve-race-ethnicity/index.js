@@ -10,40 +10,43 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 9;
+    this.nbr_bars = 9;
+    this.bar_vspace = 60;
+    
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_race_ethnicity_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_california.json",
+      dataUrlCounty: config.equityChartsVEDataLoc+"race-ethnicity/vaccines_by_race_ethnicity_<county>.json",
       state: 'California',
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*this.bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 0,
+          bottom: 20, // 20 added for divider
           left: 0,
         },
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*this.bar_vspace,
         width: 555,
         margin: {
           top: 60,
           right: 80,
-          bottom: 0,
+          bottom: 20, // 20 added for divider
           left: 0,
         },
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(this.bar_vspace-2),
         width: 440,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -51,10 +54,10 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(this.bar_vspace-2),
         width: 320,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
           bottom: 20,
           left: 0,
@@ -101,7 +104,9 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl,"California");
+    this.listenForLocations();
+
     // this.listenForLocations();
     // this.classList.remove("d-none"); // this works
     // if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
@@ -111,8 +116,21 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
+  // offset bottom two bars so we can add divider
+  getYOffset(ci) {
+    return ci < 7? 0 : 20;
+  }
+
   getLegendText() {
     return ["% of vaccines administered", "% of state population"]
+  }
+
+  getChartTitle(region) {
+    return `% administered (people with at least 1 dose) by race and ethnicity in ${region}`;
+  }
+
+  resetTitle(region) {
+    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
   }
 
   ariaLabel(d) {
@@ -120,15 +138,42 @@ class CAGOVEquityVaccinesRaceEthnicity extends window.HTMLElement {
     return label;
   }
 
+  renderExtras(svg, data, x, y) {
+    let group = svg.append("g")
+    group
+      .append("rect")
+        .attr("fill", "#000000")
+        .attr("class", "divider")
+        .attr("y", y(6)+this.bar_vspace*7/12)
+        .attr("x", 0)
+        .attr("width", this.dimensions.width)
+        .attr("height", 0.75);
+  }
 
-  retrieveData(url) {
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("Region selected",e.detail.filterKey);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        this.retrieveData(searchURL,e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
+
+  retrieveData(url,regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.alldata = alldata;
-          renderChart.call(this);
+          console.log("Race/Eth data meta",alldata.meta);
+          this.alldata = alldata.data;
+          renderChart.call(this, this.renderExtras);
+          this.resetTitle(regionName);
         }.bind(this)
       );
   }

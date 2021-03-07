@@ -24,14 +24,13 @@ ga('tracker3.send', 'pageview');
 	data-thanks-comments="{{text.thank_you_for_your_comments}}"
 	data-submit="{{text.submit}}"
 	data-required-field="{{text.this_field_required}}"
-	data-characterLimit="{{text.character_limit}}"
-	data-anythingToAdd="{{text.anything_to_add}}"
-	data-positiveSurveyUrl="{{text.positive_survey_url}}"
-	data-takeTheSurvey="{{text.take_the_survey}}"
-	data-anyOtherFeedback="{{text.any_other_feedback}}"
-	data-negativeSurveyUrl="{{text.negative_survey_url}}"
-	data-takeOurSurvey="{{text.take_our_survey}}"
-
+	data-character-limit="{{text.character_limit}}"
+	data-anything-to-add="{{text.anything_to_add}}"
+	data-positive-survey-url="{{ tags | feedbackSurveyUrl('feedback-survey-positive') | safe }}"
+	data-take-the-survey="{{text.take_the_survey}}"
+	data-any-other-feedback="{{text.any_other_feedback}}"
+	data-negative-survey-url="{{ tags | feedbackSurveyUrl('feedback-survey-negative') | safe }}"
+	data-take-our-survey="{{text.take_our_survey}}"
 	></cagov-pagefeedback>	
 </pagerating-section>
 
@@ -138,7 +137,9 @@ ga('tracker3.send', 'pageview');
 {%- pagesection page, "state-dashboard" %}
 	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
 {% endpagesection -%}
+
 {%- pagesection page, "v2-state-dashboard" %}
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('dashboard-v2', env.dev) }}
 {% endpagesection -%}
 
@@ -146,6 +147,12 @@ ga('tracker3.send', 'pageview');
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('equitydash', env.dev) }}
 {% endpagesection -%}
+
+{%- pagesection page, "vaccines" %}
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
+	{{ macros.includeJavascriptByEnv('vaccines', env.dev) }}
+{% endpagesection -%}
+
 {%- pagesection page, "charts-sandbox" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('chartssandbox', env.dev) }}
@@ -153,5 +160,5 @@ ga('tracker3.send', 'pageview');
 
 <script nomodule src="https://d3js.org/d3.v5.min.js"></script><!-- lot of transpilation issues, using older d3 for ie -->
 <script nomodule src="/js/es5.js"></script>
-
+<cagov-anchor-events />
 {% include "googletranslate.njk" %}

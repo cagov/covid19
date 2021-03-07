@@ -5,12 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "@cagov/accordion": "^2.0.0",
+    "@cagov/anchor-events": "^1.0.0",
     "@cagov/lookup": "^1.0.2",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "awesomplete-es6": "^1.2.2",
     "element-closest-polyfill": "^1.0.2",
-    "julia": "^1.0.0",
+    "throttle-debounce": "^3.0.1",
     "url-search-params-polyfill": "^8.1.0",
     "whatwg-fetch": "^3.5.0"
   },
@@ -61,7 +62,7 @@
     "axios": "^0.21.1"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npx npm-force-resolutions@0.0.3",
     "dev": "cross-env NODE_ENV=development npm run start",
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",

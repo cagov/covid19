@@ -10,14 +10,16 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    let bars = 5;
+    this.nbr_bars = 5;
+    let bar_vspace = 60;
     this.chartOptions = {
       // Data
-      dataUrl: config.equityChartsSampleDataLoc+"vaccines_by_age_california.json", // Overwritten by county.
+      dataUrl: config.equityChartsVEDataLoc+"age/vaccines_by_age_california.json", // Overwritten by county.
+      dataUrlCounty: config.equityChartsVEDataLoc+"age/vaccines_by_age_<county>.json",
       // Breakpoints
       desktop: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -28,7 +30,7 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        height: 60+bars*60,
+        height: 60+this.nbr_bars*bar_vspace,
         width: 555,
         margin: {
           top: 60,
@@ -39,23 +41,23 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        height: 60+bars*56,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 440,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
       retina: {
         fontSize: 12,
-        height: 60+bars*50,
+        height: 60+this.nbr_bars*(bar_vspace-2),
         width: 320,
         margin: {
-          top: 20,
+          top: 60,
           right: 80,
-          bottom: 20,
+          bottom: 0,
           left: 0,
         },
       },
@@ -102,7 +104,8 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, "California");
+    this.listenForLocations();
 
     rtlOverride(this); // quick fix for arabic
 
@@ -111,8 +114,20 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
 
   }
 
+  getYOffset(ci) {
+    return 0;
+  }
+
   getLegendText() {
     return ["% of vaccines administered", "% of state population"]
+  }
+
+  getChartTitle(region) {
+    return `% administered (people with at least 1 dose) by age in ${region}`;
+  }
+
+  resetTitle(region) {
+    this.querySelector(".chart-title").innerHTML = this.getChartTitle(region);
   }
 
   ariaLabel(d) {
@@ -120,15 +135,30 @@ class CAGOVEquityVaccinesAge extends window.HTMLElement {
     return label;
   }
 
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("X County selected",e.detail.filterKey);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace("<county>",this.county.toLowerCase().replace(/ /g, "_"));
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
 
-  retrieveData(url) {
+  retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.alldata = alldata;
+          console.log("Age data meta",alldata.meta);
+          this.alldata = alldata.data;
           renderChart.call(this);
+          this.resetTitle(regionName);
         }.bind(this)
       );
   }

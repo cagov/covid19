@@ -46,7 +46,7 @@
     },
     {
       "_id": "is_this_page_useful",
-      "text": "هل هذه الصفحة مفيدة؟"
+      "text": "هل وجدت ما كنت تبحث عنه؟"
     },
     {
       "_id": "answer_yes",
@@ -58,7 +58,11 @@
     },
     {
       "_id": "additional_comments",
-      "text": "تعليقات إضافية:"
+      "text": "ماذا كانت المشكلة؟"
+    },
+    {
+      "_id": "good_what_were_you_looking_for",
+      "text": "عظيم! ما الذي كنت تبحث عنه اليوم؟"
     },
     {
       "_id": "this_field_required",
@@ -70,7 +74,7 @@
     },
     {
       "_id": "thank_you_for_your_comments",
-      "text": "شكرا لك على تعليقاتك!"
+      "text": "جيد!"
     },
     {
       "_id": "thank_you_for_your_feedback",
@@ -95,6 +99,82 @@
     {
       "_id": "hotline_hours",
       "text": "من الإثنين للجمعة من 8 صباحًا إلى 8 مساءً، السبت والأحد من 8 صباحًا إلى 5 مساءً"
+    },
+    {
+      "_id": "character_limit",
+      "text": "لقد وصلت إلى الحد الأقصى لعدد الأحرف الخاصة بك."
+    },
+    {
+      "_id": "anything_to_add",
+      "text": "إذا كان لديك أي شيء لتضيفه،"
+    },
+    {
+      "_id": "positive_survey_url",
+      "text": "https://ethn.io/85017"
+    },
+    {
+      "_id": "take_the_survey",
+      "text": "شارك في الاستطلاع"
+    },
+    {
+      "_id": "any_other_feedback",
+      "text": "إذا كان لديك أي ملاحظات تجاه هذا الموقع،"
+    },
+    {
+      "_id": "negative_survey_url",
+      "text": "https://ethn.io/77745"
+    },
+    {
+      "_id": "take_our_survey",
+      "text": "شارك في استطلاعنا"
+    },
+    {
+      "_id": "latest_news_title",
+      "text": "الأخبار الواردة من مكتب حاكم الولاية"
+    },
+    {
+      "_id": "var_latest_news",
+      "text": "من مكتب حاكم الولاية"
+    },
+    {
+      "_id": "var_view_more_news",
+      "text": "استعرض المزيد من الأخبار"
+    },
+    {
+      "_id": "var_stats_header",
+      "text": "تعقب مصابي كوفيد-19"
+    },
+    {
+      "_id": "var_county_map",
+      "text": "المقاطعة"
+    },
+    {
+      "_id": "var_state_summary",
+      "text": "لوحة بيانات الولاية"
+    },
+    {
+      "_id": "var_update_text",
+      "text": "في كاليفورنيا ، تم تحديث [تاريخ التحديث] ببيانات من [تاريخ البيانات]"
+    },
+    {
+      "_id": "var_hero_title",
+      "text": "أفعالك تنقذ الأرواح"
+    },
+    {
+      "_id": "var_hero_p1",
+      "text": "تعرف على الأماكن المفتوحة في مقاطعتك"
+    },
+    {
+      "_id": "var_hero_p2",
+      "text": "ارتدِ قناعًا واغسل يديك وحافظ على التباعد."
+    },
+    {
+      "_id": "var_hero_alert_social",
+      "text": "راجع المستجدات المعلنة من قبل حاكم الولاية"
+    },
+    {
+      "_id": "var_people_want_to_know_title",
+      "text": "الناس يريدون أن يعرفوا"
     }
   ],
   "Table2": [
@@ -133,12 +213,12 @@
       "_slug": "stay-home-except-for-essential-needs"
     },
     {
-      "Name": "مخطط لاقتصاد أكثر أمانًا",
+      "Name": "البرنامج التخطيطي لاقتصاد أكثر أمانًا",
       "_slug": "safer-economy"
     },
     {
-      "Name": "ما الأماكن المفتوحة",
-      "_slug": "safer-economy"
+      "Name": "اللقاحات",
+      "_slug": "vaccines"
     },
     {
       "Name": "التوجيهات الخاصة بمجال الصناعة",
@@ -151,12 +231,12 @@
   ],
   "Table4": [
     {
-      "Link Title": "بماذا ينص التوجيه الخاص بفتح نشاطي التجاري بشكل آمن؟",
-      "URL": "#"
+      "Link Title": "كيف يمكنني فتح شركتي بأمان؟",
+      "URL": "https://covid19.ca.gov/industry-guidance/"
     },
     {
-      "Link Title": "أين يمكنني الحصول على مساعدة من أجل نشاطي التجاري ؟",
-      "URL": "#"
+      "Link Title": "أين يمكنني الحصول على مساعدة من أجل نشاطي التجاري؟",
+      "URL": "https://covid19.ca.gov/business-and-employers/"
     }
   ],
   "Table5": [
@@ -167,7 +247,15 @@
       "VideoID": "8S5iiKx5dhc",
       "ImageURL": "files.covid19.ca.gov/img/thankyou2.jpg",
       "ImageALT": "شكرًا لك",
-      "ButtonText": "شاهد الفيديو"
+      "ButtonText": "المزيد من رسائل الفيديو",
+      "ButtonURL": "toolkit.covid19.ca.gov"
+    }
+  ],
+  "Table6": [
+    {
+      "schools_may_reopen": "ويمكن إعادة فتح المدارس بالكامل للتعليم بالحضور الشخصي للطلاب. وسيقرر مسؤولو المدارس المحلية ما إذا كان ذلك سيحدث ومتى سيحدث.",
+      "schools_may_not_reopen": "وقد لا يعاد فتح المدارس بكامل سعتها للتعلم بالحضور الشخصي للطلاب حتى تصبح مقاطعتهم في الفئة (الحمراء) الكبيرة لمدة 5 أيام. ويجوز لموظفي المدارس <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Schools-FAQ.aspx\">تقرير إجراء التعلم بالحضور الشخصي</a> لمجموعة محدودة من الطلاب في فِرق صغيرة.<br><br>ملاحظة حول الاستثناء: لا يتعين على المدارس التي أعادت فتح أبوابها بالفعل إذا كانت المقاطعة في فئة أقل تقييدًا أن تغلق أبوابها. ولكن إذا لم تكن المدرسة قد أعيد فتحها بالفعل لأغراض التعليم بالحضور الشخصي، فلا يجوز إعادة فتحها حتى تعود المقاطعة إلى الفئة الكبيرة (أحمر) لمدة 5 أيام متتالية.",
+      "schools_info": "انظر <a href=\"https://schools.covid19.ca.gov/\">مركز مدارس كاليفورنيا آمنة للجميع (California Safe Schools For All Hub)</a>، <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf\">التوجيهات الإرشادية للمدارس</a>، و <a href=\"https://files.covid19.ca.gov/pdf/guidance-schools-cohort-FAQ.pdf\">الأسئلة المتكررة عن الفِرق</a>."
     }
   ]
 }

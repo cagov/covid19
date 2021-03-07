@@ -1,0 +1,41 @@
+cagov-chart-vaccination-groups-race-ethnicity {  
+  .svg-holder svg {
+    height: 662px;
+    width: 613px;
+  }
+}
+
+cagov-chart-vaccination-groups-age {  
+  .svg-holder svg {
+    height: 362px;
+    width: 613px;
+  }
+}
+cagov-chart-vaccination-groups-gender {  
+  .svg-holder svg {
+    height: 302px;
+    width: 613px;
+  }
+}
+cagov-chart-vaccines-hpi-by-dose {
+  .svg-holder svg {
+    width: 600px;
+    height: 490px;
+  }
+}
+cagov-chart-vaccines-hpi-by-people {
+  .svg-holder svg {
+    width: 613px;
+    height: 490px;
+  }
+}
+cagov-chart-vaccines-hpi-by-dose {
+  .svg-holder svg {
+    width: 613px;
+    height: 490px;
+  }
+}
+
+svg .tick text {
+  text-anchor: start;
+}
