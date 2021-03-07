@@ -181,7 +181,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
         .text(d => this.pctFormatter.format(d.D[d.KEY]))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
+    let capFields = ['FIRST_DOSE_ONLY', 'COMPLETED_DOSE'];
     let barcaps2 = groups
         .selectAll("g")
         .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
@@ -371,12 +371,13 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   retrieveData(url) {
     let component = this;
     window
-      .fetch(url)
+      .fetch('https://raw.githubusercontent.com/cagov/covid-static/6ffecdaa4255240031f3cdfffab10ca577e870b7/data/vaccine-hpi/vaccine-hpi.json')
       .then((response) => response.json())
       .then(
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          console.log(alldata)
 
           this.renderChart.call(component);
         }.bind(this)

@@ -334,7 +334,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
   retrieveData(url) {
     let component = this;
     window
-      .fetch(url)
+      .fetch('https://raw.githubusercontent.com/cagov/covid-static/6ffecdaa4255240031f3cdfffab10ca577e870b7/data/vaccine-hpi/vaccine-hpi.json')
       .then((response) => response.json())
       .then(
         function (alldata) {
