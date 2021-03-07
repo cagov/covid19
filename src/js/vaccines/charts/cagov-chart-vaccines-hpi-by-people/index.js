@@ -4,7 +4,7 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { reformatReadableDate } from "./../../../common/readable-date.js";
+import { reformatReadableDate, getSnowflakeStyleDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
@@ -182,7 +182,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
         .text(d => this.pctFormatter.format(d.D[d.KEY]))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
+    let capFields = ['FIRST_DOSE_ONLY', 'COMPLETED_DOSE'];
     let barcaps2 = groups
         .selectAll("g")
         .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
@@ -314,9 +314,17 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       let subcategories = ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'];
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
+      const todayStr = getSnowflakeStyleDate(0);
+      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
+
+      if (adminDateStr == todayStr) {
+        const yesterdayStr = getSnowflakeStyleDate(-1);
+        adminDateStr = yesterdayStr;
+      }
+
       let footerReplacementDict = {
         'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
@@ -364,12 +372,13 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   retrieveData(url) {
     let component = this;
     window
-      .fetch(url)
+      .fetch('https://raw.githubusercontent.com/cagov/covid-static/6ffecdaa4255240031f3cdfffab10ca577e870b7/data/vaccine-hpi/vaccine-hpi.json')
       .then((response) => response.json())
       .then(
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          console.log(alldata)
 
           this.renderChart.call(component);
         }.bind(this)

@@ -203,7 +203,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          console.log("Race/Eth data meta", alldata.meta);
+          // console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
           this.alldata = alldata.data;
 
