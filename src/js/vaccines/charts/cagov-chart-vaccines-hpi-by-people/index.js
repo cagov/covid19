@@ -181,7 +181,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
         .text(d => this.pctFormatter.format(d.D[d.KEY]))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
+    let capFields = ['FIRST_DOSE_ONLY', 'COMPLETED_DOSE'];
     let barcaps2 = groups
         .selectAll("g")
         .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
