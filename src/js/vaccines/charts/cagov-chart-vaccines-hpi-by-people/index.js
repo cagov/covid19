@@ -10,7 +10,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    console.log("Translations People",this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}
@@ -182,7 +181,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
         .text(d => this.pctFormatter.format(d.D[d.KEY]))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE_ONLY', 'COMPLETED_DOSE'];
+    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
     let barcaps2 = groups
         .selectAll("g")
         .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
@@ -372,13 +371,12 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   retrieveData(url) {
     let component = this;
     window
-      .fetch('https://raw.githubusercontent.com/cagov/covid-static/988105d15e9c79fde46790e0c049e7a43a53f602/data/vaccine-hpi/vaccine-hpi.json')
+      .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
-          console.log(alldata)
 
           this.renderChart.call(component);
         }.bind(this)
