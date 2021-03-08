@@ -2061,6 +2061,12 @@ font {
 .text-small {
   font-size: 0.85rem !important;
 }
+.caption {
+  font-size: 0.95rem !important;
+  line-height: 1.5;
+  margin-bottom: 0.95rem;
+  font-style: italic;
+}
 .text-disclaim {
   font-size: 0.8em;
 }
@@ -2384,6 +2390,7 @@ font {
   list-style: none;
   font-size: 1.2rem;
   font-weight: 700;
+  padding-left: 7px;
   li {
     color: $darkblue;
     line-height: 1.5rem;
@@ -2393,10 +2400,11 @@ font {
     padding-left: 10px;
     &:before {
       font-family: "CaGov";
-      content: "\e9f3";
+      content: "\35";
       position: relative;
-      top: 2px;
-      right: 7px;
+      font-size: 1.5rem;
+      top: 3px;
+      right: 4px;
       }
 
       a {
