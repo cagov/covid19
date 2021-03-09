@@ -194,6 +194,7 @@ async function setupCharts() {
 setupCharts();
 
 function resetGroupToggles() {
+  console.log("Reset Group Toggles");
   groupTogglers.forEach(toggle => {
     toggle.classList.remove('toggle-active')
   });
@@ -307,7 +308,7 @@ if(clearBtn) {
     e.preventDefault();
     document.getElementById("location-query").value = '';
     showStateWides();
-    resetGroupToggles();
+    // resetGroupToggles();
     document.querySelectorAll('.js-toggle-county-container').forEach(c => {
       c.classList.add('d-none');
     });
