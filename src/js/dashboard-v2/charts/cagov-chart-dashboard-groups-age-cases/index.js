@@ -71,7 +71,7 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     );
     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 1 }
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
     );
 
     getScreenResizeCharts(this);
