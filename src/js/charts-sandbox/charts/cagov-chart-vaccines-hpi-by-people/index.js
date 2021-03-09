@@ -369,7 +369,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
         this.svg.selectAll("g").remove();
 
-        console.log("yscale test",this.yScale(0.5))
+        // console.log("yscale test",this.yScale(0.5))
 
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
