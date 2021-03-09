@@ -1,7 +1,8 @@
 // Adding pdf span to the links with class pdf
 var pdf = '<span class="pdf-link-icon no-underline-icon" aria-hidden="true">PDF</span><span class="sr-only"> (this is a pdf file)</span>';
 
-var pdflLink = document.querySelectorAll(".pdf");
+// selector is looking for links with pdf extension in the href
+var pdflLink = document.querySelectorAll("a[href*='.pdf']");
 for (var i=0; i < pdflLink.length; i++) {
   pdflLink[i].innerHTML+=pdf; // += concatenates to pdf links
 }
