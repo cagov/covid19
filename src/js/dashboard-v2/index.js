@@ -109,8 +109,7 @@ let chartWidth2 = 900;
 // let chartWidth3 = 800;
 let countyMapChartHeight = 660;
 
-// const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
-const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0TEST"; 
+const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
 // sample https://public.tableau.com/views/COVID-19StateDashboardv2_0/5_1StateTesting-Epicurves?:language=en&:display_count=y&publish=yes&:origin=viz_share_link
 // OLD https://public.tableau.com/views/StateDashboard_16008816705240
 // DEV https://public.tableau.com/views/COVID-19StateDashboardv2_0
@@ -195,6 +194,7 @@ async function setupCharts() {
 setupCharts();
 
 function resetGroupToggles() {
+  console.log("Reset Group Toggles");
   groupTogglers.forEach(toggle => {
     toggle.classList.remove('toggle-active')
   });
@@ -308,7 +308,7 @@ if(clearBtn) {
     e.preventDefault();
     document.getElementById("location-query").value = '';
     showStateWides();
-    resetGroupToggles();
+    // resetGroupToggles();
     document.querySelectorAll('.js-toggle-county-container').forEach(c => {
       c.classList.add('d-none');
     });
