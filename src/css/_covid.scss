@@ -705,7 +705,8 @@ border: none;
 
 .jumbotron + .container {
   padding-top:1.5rem;
-  padding-bottom:2.5rem;
+  /* this bottom padding causes an undesirable white band on v2-state-dashboard at bottom */
+  /* padding-bottom:2.5rem; */
 }
 
 .jumbotron.jumbo-img .container {
