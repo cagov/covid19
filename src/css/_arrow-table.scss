@@ -1,0 +1,48 @@
+.arrow-table {
+  .grid-layout {
+    display: grid;
+    grid-gap: 30px;
+    grid-row-gap: 15px;
+    padding: 2%;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: 768px) {
+    .grid-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .head {
+    background-color: #003d9d;
+    color: white;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .cell {
+    padding-top: 20px;
+  }
+  .arrow-right {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid #003d9d;
+  }
+  .arrow-right2 {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid white;
+  }
+}
