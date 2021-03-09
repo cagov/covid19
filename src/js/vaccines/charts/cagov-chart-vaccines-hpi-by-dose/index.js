@@ -4,7 +4,7 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { reformatReadableDate } from "./../../../common/readable-date.js";
+import { reformatReadableDate,getSnowflakeStyleDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
@@ -136,13 +136,13 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     return chartTitle;
   }
 
-  ariaLabel(d) {
+  ariaLabel(d, totalDosesAllQuartiles) {
     const barLabel = applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE});
-    let label = `${this.pctFormatter.format(d.COMBINED_DOSES_RATIO)} ${this.translationsObj.legendLabel1} in ${barLabel}`;
+    let label = `${this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles)} ${this.translationsObj.legendLabel1} in ${barLabel}`;
     return label;
   }
 
-  writeBars(svg, data, yScale, xScale) {
+  writeBars(svg, data, yScale, xScale, totalDosesAllQuartiles) {
     let groups = svg.append("g")
       .selectAll("g")
       .data(data)
@@ -153,24 +153,24 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
             .attr("class","main-bar")
             .attr("fill", d=>this.barColor)
             .attr("x", (d,i) => xScale(i))
-            .attr("y", d => yScale(d.COMBINED_DOSES_RATIO))
+            .attr("y", d => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles))
             .attr("width", d => xScale.bandwidth())
-            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES_RATIO)))
+            .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES/totalDosesAllQuartiles)))
             .attr("tabindex", "0")
-            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
+            .attr("aria-label", (d, i) => `${this.ariaLabel(d, totalDosesAllQuartiles)}`);
 
     groups
         .append("text")
         .attr("class", "bar-upper-label-1")
-        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 18)
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 18)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.COMBINED_DOSES_RATIO))
+        .text(d => this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles))
         .attr('text-anchor','middle');
 
     groups
         .append("text")
         .attr("class", "bar-upper-label-2")
-        .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 4)
+        .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 4)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
         .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
         .attr('text-anchor','middle');
@@ -273,12 +273,26 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
 
   renderChart() {
       let data = this.alldata;
+      let totalDosesAllQuartiles = 0;
+      data.forEach(d => {
+        console.log(d)
+        console.log(d.COMBINED_DOSES)
+        totalDosesAllQuartiles += d.COMBINED_DOSES;
+      })
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
+      const todayStr = getSnowflakeStyleDate(0);
+      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
+
+      if (adminDateStr == todayStr) {
+        const yesterdayStr = getSnowflakeStyleDate(-1);
+        adminDateStr = yesterdayStr;
+      }
+
       let footerReplacementDict = {
         'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( this.metadata['LATEST_ADMINISTERED_DATE'] ),
+        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
       };
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
@@ -311,8 +325,8 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
             .paddingOuter(0);
 
         this.svg.selectAll("g").remove();
-
-        this.writeBars.call(this, this.svg, data, this.yScale, this.xScale);
+    
+        this.writeBars.call(this, this.svg, data, this.yScale, this.xScale, totalDosesAllQuartiles);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScale);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScale);
     }
