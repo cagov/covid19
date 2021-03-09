@@ -6,6 +6,7 @@ export default function applySubstitutions(textString, substitutions) {
         const value = substitutions[key];
         textString = textString.replace('{{' + key + '}}', value);
         textString = textString.replace('{' + key + '}', value);
+        textString = textString.replace('(' + key + ')', value);
     }
     return textString;
 }
