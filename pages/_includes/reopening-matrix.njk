@@ -1,78 +1,112 @@
 {%- set JSON = pubData[language.id].reopeningMatrixData -%}
 {%- set DataTables = ["Table1", "Table3", "Table4"] -%}
-
-{%- set MatrixLabels = JSON.Table5 -%}
-{# {% set currentRiskLevel = MatrixLabels | where("Status", "Current") %} #}
-{% set currentRiskLevel = MatrixLabels[1] %}
-{% set currentTable = "Table1" %}
-
 {%- set Headers = JSON.Table2[0] -%}
 
+{%- set MatrixLabels = JSON.Table5 -%}
+
+{%- set currentTable = "Table1" -%}
+{%- set currentRiskLevel = MatrixLabels[0] -%}
+
+{% for riskLevel in MatrixLabels -%}
+  {% if riskLevel.Status !== "" %}
+    {# {% set currentTable = riskLevel.Table %} #}
+    {# {% set currentRiskLevel = riskLevel %} #}
+  {% endif %}
+{% endfor %}
 
 {#- dynamic classnames are really cool but the purger cannot understand, hence this -#}
 <div class="d-none bg-purple-alert bg-red-alert bg-orange-alert bg-yellow-alert bg-purple-btn bg-red-btn bg-orange-btn bg-yellow-btn text-700 bg-lightblue"></div>
 
 <div class="the-matrix d-none">
+  {% set accordionExpanded = "false" %}
   {% for DataTable in DataTables -%}
     {%- set Rows = JSON[DataTable] -%}
-    <h4 class="wp-accordion">Title 11</h4>
-    <div class="wp-accordion-content" aria-expanded="true">
-      <div class="row mr-0 ml-0">
-        {% for item in Rows | reverse -%}
-          {%- set CssColor = item['_Color label'] | lower -%}
-          <div class="col-md-3 pl-0 pr-0 bg-{{CssColor}}-alert">
-            <div class="card border-0 bg-transparent pl-2">
-              <div class="pt-3 card-body text-black text-center">
-                <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
+    {% set tableRiskLevel = MatrixLabels[loop.index - 1] %}
+    
+    {% if tableRiskLevel.Status !== "" %}
+      {% set accordionExpanded = "true" %}
+    {% endif %}
 
-                {% if item['New cases'] !== "" %}
-                  <p class="card-text text-small mt-3 text-left">
-                    <span aria-hidden="true">&#8226; </span>
-                    {{item['New cases']}}
-                  </p>
-                {% endif %}
-
-                {% if item['Positive tests'] !== "" %}
-                  <p class="card-text text-small mt-3 text-left">
-                    <span aria-hidden="true">&#8226; </span>
-                    {{item['Positive tests']}}
-                  </p>
-                {% endif %}
-
-                {% if item['Positive-heq'] !== ""  %}
-                  <p class="card-text text-small mt-3 text-left">
-                    <span aria-hidden="true">&#8226; </span>
-                    {{ item['Positive-heq']| safe}}
-                  </p>
-                {% endif %}
-              </div>
-            </div>
+    <cagov-accordion class="prog-enhanced">
+      <div class="card">
+        <button
+          class="card-header accordion-alpha"
+          type="button"
+          aria-expanded="{{accordionExpanded}}"
+        >
+          <div class="accordion-title">
+            <h4>
+              {% if tableRiskLevel.Status !== "" %}
+                {{ tableRiskLevel.Status + ":" | safe }}
+              {% endif %}
+              {{ tableRiskLevel.Title | safe }}
+            </h4>
           </div>
-        {% endfor %}
+          <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        </button>
+        <div class="card-container" aria-hidden="true" style="height: 0px;">
+          <div class="card-body">
+            <p>{{  tableRiskLevel.Description | safe }}</p>
+            <div class="row mr-0 ml-0">
+              {% for item in Rows | reverse -%}
+                {%- set CssColor = item['_Color label'] | lower -%}
+                <div class="col-md-3 pl-0 pr-0 bg-{{CssColor}}-alert">
+                  <div class="card border-0 bg-transparent pl-2">
+                    <div class="pt-3 card-body text-black text-center">
+                      <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
+
+                      {% if item['New cases'] !== "" %}
+                        <p class="card-text text-small mt-3 text-left">
+                          <span aria-hidden="true">&#8226; </span>
+                          {{item['New cases'] | safe }}
+                        </p>
+                      {% endif %}
+
+                      {% if item['Positive tests'] !== "" %}
+                        <p class="card-text text-small mt-3 text-left">
+                          <span aria-hidden="true">&#8226; </span>
+                          {{item['Positive tests'] | safe }}
+                        </p>
+                      {% endif %}
+
+                      {% if item['Positive-heq'] !== ""  %}
+                        <p class="card-text text-small mt-3 text-left">
+                          <span aria-hidden="true">&#8226; </span>
+                          {{ item['Positive-heq']| safe}}
+                        </p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <br/>
+            <p class="small-text">{{  tableRiskLevel.Footnote | safe }}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </cagov-accordion>
   {% endfor %}
 </div>
 
-
 <div class="the-matrix-descriptions d-none">
   {%- set Rows = JSON[currentTable] -%}
-    <div class="row mr-0 ml-0">
-      {% for item in Rows | reverse -%}
-        {%- set CssColor = item['_Color label'] | lower -%}
-        <div class="col-md-3 pl-0 pr-0">
-          <div class="card border-0 bg-transparent pl-2">
-            <div class="pt-3 card-body text-black text-center">
-              <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
+  <div class="row mr-0 ml-0">
+    {% for item in Rows | reverse -%}
+      {%- set CssColor = item['_Color label'] | lower -%}
+      <div class="col-md-3 pl-0 pr-0">
+        <div class="card border-0 bg-transparent pl-2">
+          <div class="pt-3 card-body text-black text-center">
+            <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
 
-              {% if item['description'] !== "" %}
-                <p class="card-text text-small mt-3 text-center">
-                  {{item['description']}}
-                </p>
-              {% endif %}
-            </div>
+            {% if item['description'] !== "" %}
+              <p class="card-text text-small mt-3 text-center">
+                {{item['description']}}
+              </p>
+            {% endif %}
           </div>
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
