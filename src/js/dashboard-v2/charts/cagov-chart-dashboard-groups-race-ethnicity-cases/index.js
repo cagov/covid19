@@ -3,6 +3,8 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
+import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-groups-race-ethnicity-cases
 
@@ -178,6 +180,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data.by_race_and_ethnicity.cases;
           this.popdata = alldata.data.by_race_and_ethnicity.population;
           this.alldata.forEach(rec => {
@@ -193,10 +196,22 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
             }
           });
           // splice multi-race and other to the end
-          this.alldata.push(this.alldata.splice(4,1)[0])
-          this.popdata.push(this.popdata.splice(4,1)[0])
-          this.alldata.push(this.alldata.splice(5,1)[0])
-          this.popdata.push(this.popdata.splice(5,1)[0])
+          this.alldata.push(this.alldata.splice(4,1)[0]);
+          this.popdata.push(this.popdata.splice(4,1)[0]);
+          this.alldata.push(this.alldata.splice(5,1)[0]);
+          this.popdata.push(this.popdata.splice(5,1)[0]);
+
+          let publishedDateStr = this.metadata['PUBLISHED_DATE'];
+          let publishedDate = parseSnowflakeDate(publishedDateStr);
+          let collectedDate = parseSnowflakeDate(publishedDateStr);
+          collectedDate.setDate(collectedDate.getDate() - 1);
+
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatJSDate(publishedDate),
+            'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+          d3.select(document.querySelector("#ethnicityGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
 
           renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
           // this.resetTitle({
