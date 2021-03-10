@@ -13,6 +13,12 @@ class CAGovReopening extends window.HTMLElement {
       document.querySelector('.matrix-holder').innerHTML = theMatrix.innerHTML;
     }
 
+    let theMatrixDescriptions = document.querySelector('.the-matrix-descriptions');
+
+    if(theMatrixDescriptions) {
+      document.querySelector('.matrix-county-risk-levels').innerHTML = theMatrixDescriptions.innerHTML;
+    }
+
     window.fetch('/countystatus.json')
     .then(response => response.json())
     .then(function(data) {
