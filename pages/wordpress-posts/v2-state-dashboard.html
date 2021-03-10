@@ -481,6 +481,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-cases>                
                 </div>
@@ -495,7 +496,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-gender-deaths>               
                 </div> 
               </div>
-              <p class="small-text">Note: Percentages may not add up to 100% due to rounding. “Unknown/undifferentiated” includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer or intersex.</p>
+             <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
@@ -514,6 +515,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-age-cases>                
                 </div>
@@ -528,7 +530,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-age-deaths>               
                 </div> 
               </div>
-              <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
+              <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
@@ -549,6 +551,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                
                 </div>
@@ -563,7 +566,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
                 </div> 
               </div>
-              <p class="small-text">Note: Percentages may not add up to 100% due to rounding.</p>
+              <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
             </div>
 
           </div>

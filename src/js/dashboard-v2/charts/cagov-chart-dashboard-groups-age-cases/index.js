@@ -3,6 +3,8 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
+import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-groups-age-cases
 
@@ -170,6 +172,7 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data.by_age.cases;
           this.popdata = alldata.data.by_age.population;
           this.alldata.forEach(rec => {
@@ -178,6 +181,18 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
           this.popdata.forEach(rec => {
             rec.METRIC_VALUE /= 100.0;
           });
+
+          let publishedDateStr = this.metadata['PUBLISHED_DATE'];
+          let publishedDate = parseSnowflakeDate(publishedDateStr);
+          let collectedDate = parseSnowflakeDate(publishedDateStr);
+          collectedDate.setDate(collectedDate.getDate() - 1);
+
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatJSDate(publishedDate),
+            'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+          d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
 
           // "Unknown"
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
