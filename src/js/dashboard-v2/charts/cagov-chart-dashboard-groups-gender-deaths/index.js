@@ -65,7 +65,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
     };
 
     this.labelTran = {
-      'Unknown':'Unknown/undifferentiated',
+      // 'Unknown':'Unknown/undifferentiated',
     };
 
     this.intFormatter = new Intl.NumberFormat(
