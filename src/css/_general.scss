@@ -2327,19 +2327,6 @@ font {
   background-color: $lightestblue;
 }
 
-.external {
-  &::after {
-    font-family: "CaGov";
-    content: "\e9ed";
-    font-size: 0.85rem;
-    display: inline-block;
-    padding-left: 3px;
-    text-decoration: none;
-    position: relative;
-    top: -3px;
-  }
-}
-
 .link-icon {
   font-size: 0.85rem;
   position: relative;
@@ -2361,7 +2348,7 @@ font {
     outline-offset: -2px;
     padding: 1px 4px 0px 4px;
     position: relative;
-    left: 3px;
+    left: 1px;
     top: -3px;
   }
 }
@@ -2375,7 +2362,7 @@ font {
   outline-offset: -2px;
   padding: 1px 4px 0px 4px;
   position: relative;
-  left: 3px;
+  left: 1px;
   top: -3px;
   line-height: .9rem;
 }
