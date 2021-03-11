@@ -277,3 +277,13 @@ button.clear {
 }
 
 .tableauPlaceholder {margin: 0 auto;}
+
+// table styles
+figure.table-gridded table {
+  font-size: 0.95rem !important;
+  td {
+    padding-bottom: 25px;
+    padding-top: 15px;
+    padding-right: 30px;
+  }
+}
