@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "View the latest data on cases, deaths, tests and county tiers."
 author: "State of California"
-publishdate: "2021-02-18T01:21:23Z"
-tags: ["do-not-crawl","translate"]
+publishdate: "2021-03-10T21:33:35Z"
+tags: ["do-not-crawl","staging-only","translate"]
 addtositemap: false
 ---
 
@@ -440,7 +440,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p>All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are assigned and change, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at the <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">California Department of Public Health guidance page</a>. The case and positivity rate in this map excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are included in the charts above, which show different case and test positivity rates. Regional ICU capacity is now calculated using the total number of adult ICU beds in hospitals with an emergency department and does not include neonatal or pediatric ICU beds. Since the Regional Stay Home Order ended on January 25, 2021, the regional ICU capacity no longer includes an adjustment for the percentage of COVID-19 positive patients in ICU.</p>
+  <p class="small-text">All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are assigned and changed, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH’s Blueprint for a Safer Economy framework</a>. Learn about regional ICU capacity at <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH’s ICU Data</a>.</p>
 </div>
 
 
@@ -451,6 +451,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <cagov-arrow></cagov-arrow>
   </a>
 </div>
+
+
 
 <div class="bg-lightblue full-bleed">
   <div class="container pt-4 pb-5">
@@ -465,12 +467,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
       <div class="row">
         <!-- newly added -->
-        <div class="toggle-group-container col-sm-12 col-lg-10 px-3 mx-auto d3-charts">
+        <div class="toggle-group-container col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males
-                  having a disproportionate number of deaths relative to their population.</p>
+                <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
               </div>
               <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
@@ -496,15 +498,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-gender-deaths>               
                 </div> 
               </div>
-             <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across
-                  California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over
-                  have a disproportionate number of deaths.</p>
+                <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths.</p>
               </div>
               <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
@@ -530,17 +530,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-age-deaths>               
                 </div> 
               </div>
-              <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s
-                  overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups
-                  having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race
-                    and ethnicity data</a> is available.
-                </p>
+                <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.</p>
               </div>
               <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
@@ -566,7 +562,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
                 </div> 
               </div>
-              <p class="small-text chart-footer-caption">Note: Percentages may not add up to 100% due to rounding.</p>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
 
           </div>
@@ -583,4 +579,3 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
   <!--END CONTAINER-->
 </div>
-<!--END BG lightblue-->
