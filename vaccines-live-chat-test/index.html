@@ -1916,11 +1916,23 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
         function (alldata) {
           // console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
-          // "Unknown"
-          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          // this.alldata = croppedData;
+          const todayStr = getSnowflakeStyleDate(0);
+          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
+    
+          if (adminDateStr == todayStr) {
+            const yesterdayStr = getSnowflakeStyleDate(-1);
+            adminDateStr = yesterdayStr;
+          }
+    
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
+          d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
           renderChart.call(this, this.renderExtras);
           this.resetTitle({
@@ -2158,8 +2170,28 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          // console.log("Gender data meta", alldata.meta);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
+
+          const todayStr = getSnowflakeStyleDate(0);
+          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
+    
+          if (adminDateStr == todayStr) {
+            const yesterdayStr = getSnowflakeStyleDate(-1);
+            adminDateStr = yesterdayStr;
+          }
+    
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
+    
+          // update the display date
+          // this.translationsObj.footerDisplayDate = footerDisplayText;
+          d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
+
           renderChart.call(this);
           this.resetTitle({
             region: regionName, 
@@ -2392,10 +2424,24 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          // console.log("Age data meta", alldata.meta);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
-          // console.log("Age data", alldata.data);
-          // "Unknown"
+
+          const todayStr = getSnowflakeStyleDate(0);
+          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
+    
+          if (adminDateStr == todayStr) {
+            const yesterdayStr = getSnowflakeStyleDate(-1);
+            adminDateStr = yesterdayStr;
+          }
+    
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
+          d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
           let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;
 
