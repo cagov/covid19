@@ -51,7 +51,7 @@
         </button>
         <div class="card-container" aria-hidden="{{accordionHide}}" style="height: 0px;">
           <div class="card-body">
-            <p>{{  tableRiskLevel.Description | safe }}</p>
+            <p class="pt-2">{{  tableRiskLevel.Description | safe }}</p>
             <div class="row mr-0 ml-0">
               {% for item in Rows | reverse -%}
                 {%- set CssColor = item['_Color label'] | lower -%}
@@ -62,21 +62,21 @@
                       <div class="btn-matrix mb-3 bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
 
                       {% if item['New cases'] !== "" %}
-                        <p class="card-text text-small mt-3 text-left">
+                        <p class="card-text text-small mt-3 text-left ml-1 mr-1">
                           <span aria-hidden="true">&#8226; </span>
                           {{item['New cases'] | safe }}
                         </p>
                       {% endif %}
 
                       {% if item['Positive tests'] !== "" %}
-                        <p class="card-text text-small mt-3 text-left">
+                        <p class="card-text text-small mt-3 text-left ml-1 mr-1">
                           <span aria-hidden="true">&#8226; </span>
                           {{item['Positive tests'] | safe }}
                         </p>
                       {% endif %}
 
                       {% if item['Positive-heq'] !== ""  %}
-                        <p class="card-text text-small mt-3 text-left">
+                        <p class="card-text text-small mt-3 text-left ml-1 mr-1">
                           <span aria-hidden="true">&#8226; </span>
                           {{ item['Positive-heq']| safe}}
                         </p>
@@ -87,7 +87,7 @@
               {% endfor %}
             </div>
             <br/>
-            <p class="small-text">{{  tableRiskLevel.Footnote | safe }}</p>
+            <p class="small-text pb-2">{{  tableRiskLevel.Footnote | safe }}</p>
           </div>
         </div>
       </div>

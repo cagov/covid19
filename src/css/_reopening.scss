@@ -317,9 +317,11 @@ button.clear {
 // table styles
 figure.table-gridded table {
   font-size: 0.95rem !important;
+  line-height: 1.4rem;
   td {
-    padding-bottom: 25px;
-    padding-top: 15px;
-    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 40px;
+    border-bottom: 1px solid #F2F5FC;
   }
 }
