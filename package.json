@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@cagov/accordion": "^2.0.0",
+    "@cagov/accordion": "^2.0.1",
     "@cagov/anchor-events": "^1.0.0",
-    "@cagov/lookup": "^1.0.2",
+    "@cagov/lookup": "^1.0.3",
     "@cagov/step-list": "^1.0.11",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "awesomplete-es6": "^1.2.2",
@@ -25,7 +25,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "acorn": ">=8.0.4",
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "cross-env": "^7.0.3",
     "cross-spawn": "^7.0.3",
     "css-purge": "^3.1.8",
@@ -59,7 +59,8 @@
     "tape": "^5.0.1"
   },
   "resolutions": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "pug": "^3.0.2"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions@0.0.3",
