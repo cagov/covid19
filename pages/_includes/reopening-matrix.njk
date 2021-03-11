@@ -42,7 +42,7 @@
           <div class="accordion-title">
             <h4>
               {% if tableRiskLevel.Status !== "" %}
-                {{ tableRiskLevel.Status + ":" | safe }}
+                <strong>{{ tableRiskLevel.Status + ":" | safe }}</strong>
               {% endif %}
               {{ tableRiskLevel.Title | safe }}
             </h4>
