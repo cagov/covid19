@@ -3,6 +3,8 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
+import { reformatReadableDate,getSnowflakeStyleDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
   connectedCallback() {
@@ -205,11 +207,23 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
         function (alldata) {
           // console.log("Race/Eth data meta", alldata.meta);
           // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
-          // "Unknown"
-          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          // this.alldata = croppedData;
+          const todayStr = getSnowflakeStyleDate(0);
+          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
+    
+          if (adminDateStr == todayStr) {
+            const yesterdayStr = getSnowflakeStyleDate(-1);
+            adminDateStr = yesterdayStr;
+          }
+    
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
+          d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
           renderChart.call(this, this.renderExtras);
           this.resetTitle({
