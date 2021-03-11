@@ -270,13 +270,15 @@ class CAGovReopening extends window.HTMLElement {
       return `<p>${schoolStrings.schools_may_not_reopen}</p> <p>${schoolStrings.schools_info}`;
     }
     selectedCounties.forEach(item => {
-      this.cardHTML += `<div class="card-county county-color-${item['Overall Status']}">
-        <h2>${item.county}</h2>
+      this.cardHTML += `<div class="card-county">
+        <h2>${item.county} County</h2>
         ${(this.countyRegions) ? '<h3>'+this.json.regionLabel+' '+this.countyRegions[item.county]+'</h3>' : ''}
         ${(this.regionsclosed && this.countyRegions && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) ? '<p>Under <a href="/stay-home-except-for-essential-needs/#regional-stay-home-order">Regional Stay Home Order</a></p>' : ''}
+        <div class="county-color-${item['Overall Status']}">
         <div class="pill">${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1]['County tier']}</div>
         <p>${this.statusdesc.Table1[parseInt(item['Overall Status']) - 1].description}. <a href="#county-status">${this.json.understandTheData}</a></p>
         <p>${this.json.countyRestrictionsAdvice} <a href="../get-local-information">${this.json.countyRestrictionsCountyWebsite}</a>.</p>
+        </div>
       </div>`
       selectedActivities.forEach(ac => {
         if(this.regionsclosed && this.countyRegions && this.regionsclosed.Table1.filter(r => r.region === this.countyRegions[item.county]).length > 0) { // if this county is in a region which is closed we will show them the RSHO column values
@@ -290,6 +292,7 @@ class CAGovReopening extends window.HTMLElement {
             <h4>${ac["0"]}</h4>
             <p>${ac[item['Overall Status']]}</p>
             <p>${ac["5"].indexOf('href') > -1 ? `${this.json.seeGuidanceText} ${replaceAllInMap(ac["5"])}` : ""}</p>
+            <span class="card-activity-separator"></span>
           </div>`
         }
       })

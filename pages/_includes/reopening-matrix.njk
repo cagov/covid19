@@ -19,12 +19,17 @@
 
 <div class="the-matrix d-none">
   {% set accordionExpanded = "false" %}
+  {% set accordionHide = "true" %}
   {% for DataTable in DataTables -%}
     {%- set Rows = JSON[DataTable] -%}
     {% set tableRiskLevel = MatrixLabels[loop.index - 1] %}
-    
-    {% if tableRiskLevel.Status !== "" %}
+
+    {% if tableRiskLevel.Status != "" %}
       {% set accordionExpanded = "true" %}
+      {% set accordionHide = "false" %}
+    {% else %}
+      {% set accordionExpanded = "false" %}
+      {% set accordionHide = "true" %}
     {% endif %}
 
     <cagov-accordion class="prog-enhanced">
@@ -44,7 +49,7 @@
           </div>
           <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         </button>
-        <div class="card-container" aria-hidden="true" style="height: 0px;">
+        <div class="card-container" aria-hidden="{{accordionHide}}" style="height: 0px;">
           <div class="card-body">
             <p>{{  tableRiskLevel.Description | safe }}</p>
             <div class="row mr-0 ml-0">

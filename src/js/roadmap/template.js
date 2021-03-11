@@ -1,6 +1,10 @@
 export default function template(json) {
   return /*html*/ `
+
   <div class="reopening-fields">
+    <div class="container py-2">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
 
   <h2 class="subtitle-color mt-3">${json.title}</h2>
     <form action="#" class="reopening-activities ">
@@ -57,5 +61,5 @@ export default function template(json) {
       <button type="submit" id="reopening-submit" class="btn btn-primary">${json.buttonText}</button>
     </form>
     <div class="card-holder"></div>
-  </div>`;
+  </div></div></div></div>`;
 }
