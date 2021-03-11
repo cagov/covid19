@@ -24,7 +24,7 @@
     {%- set Rows = JSON[DataTable] -%}
     {% set tableRiskLevel = MatrixLabels[loop.index - 1] %}
 
-    {% if tableRiskLevel.Status != "" %}
+    {% if tableRiskLevel.Status !== "" %}
       {% set accordionExpanded = "true" %}
       {% set accordionHide = "false" %}
     {% else %}
@@ -55,10 +55,11 @@
             <div class="row mr-0 ml-0">
               {% for item in Rows | reverse -%}
                 {%- set CssColor = item['_Color label'] | lower -%}
-                <div class="col-md-3 pl-0 pr-0 bg-{{CssColor}}-alert">
+                <div class="col-md-3 pt-3 pb-3 pl-0 pr-0 bg-{{CssColor}}-alert">
                   <div class="card border-0 bg-transparent pl-2">
-                    <div class="pt-3 card-body text-black text-center">
-                      <div class="btn-matrix bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
+                    <div class="card-body text-black text-center">
+
+                      <div class="btn-matrix mb-3 bg-{{CssColor}}-btn">{{item['County tier'] | safe}}</div>
 
                       {% if item['New cases'] !== "" %}
                         <p class="card-text text-small mt-3 text-left">
