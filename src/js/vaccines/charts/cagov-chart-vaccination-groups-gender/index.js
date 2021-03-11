@@ -3,6 +3,8 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
+import { reformatReadableDate,getSnowflakeStyleDate } from "./../../../common/readable-date.js";
 
 class CAGovVaccinationGroupsGender extends window.HTMLElement {
   connectedCallback() {
@@ -186,9 +188,29 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          // console.log("Gender data meta", alldata.meta);
+          this.metadata = alldata.meta;
           this.alldata = alldata.data;
-          renderChart.call(this,null,null,null,'ve-gender');
+
+          const todayStr = getSnowflakeStyleDate(0);
+          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
+    
+          if (adminDateStr == todayStr) {
+            const yesterdayStr = getSnowflakeStyleDate(-1);
+            adminDateStr = yesterdayStr;
+          }
+    
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
+            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
+    
+          // update the display date
+          // this.translationsObj.footerDisplayDate = footerDisplayText;
+          d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
+
+
+          renderChart.call(this);
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
