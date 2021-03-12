@@ -1,6 +1,24 @@
+.safer-economy-page {
+  .jumbotron + .container {
+    padding-top: 0;
+  }
+  .jumbotron {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .matrix-holder {
+    cagov-accordion {
+      .accordion-title h4 {
+        font-weight: 300;
+      }
+    }
+  }
+}
+
 cagov-reopening {
   .subtitle-color {
-    color: #1F2574;
+    color: #1f2574;
   }
   .reopening-activities {
     margin-top: 20px;
@@ -30,10 +48,11 @@ cagov-reopening {
     text-align: center;
     padding: 20px;
     background-color: #f3f5fc;
-    margin: 20px 0;
+    margin: 0 0 1.2% 0;
+
     @include tablet {
-			padding: 50px;
-		}
+      padding: 50px;
+    }
 
     input {
       font-size: 1.2rem;
@@ -43,8 +62,8 @@ cagov-reopening {
       margin: 10px auto;
       height: 50px;
       font-size: 1.15rem;
-      padding: .5rem 1.3rem;
-      background-color: #003D9D;
+      padding: 0.5rem 1.3rem;
+      background-color: #003d9d;
     }
   }
   .visually-hidden {
@@ -53,7 +72,8 @@ cagov-reopening {
   .awesomplete {
     ul {
       text-align: left;
-      li:hover, li[aria-selected="true"] {
+      li:hover,
+      li[aria-selected="true"] {
         mark {
           background: transparent;
         }
@@ -87,8 +107,9 @@ cagov-reopening {
   .county-container {
     padding: 0 30px 0 30px;
   }
-  .card-county, .card-activity {
-    padding: 30px;
+  .card-county,
+  .card-activity {
+    padding: 0 30px 30px 30px;
   }
   .card-county {
     margin: 5px 0 0 0;
@@ -98,17 +119,20 @@ cagov-reopening {
     background-color: #fff;
     padding: 30px 30px 0 30px;
   }
-  .card-activity:after {
-    border-bottom: solid 1px;
-    content: '';
+  .card-activity:not(:last-of-type) .card-activity-separator:after {
+    margin: 30px 0 0 0;
+    content: "";
     width: 100%;
     height: 3px;
     display: block;
-    margin: 30px 0 0 0;
+    border-bottom: solid 1px;
   }
-  .card-activity:last-of-type:after {
-    display: none;
+
+  .card-activity:last-of-type .card-activity-separator:after {
+    border-bottom: none;
+    margin: 0; 
   }
+
   .pill {
     display: inline-block;
     padding: 10px 25px;
@@ -119,38 +143,41 @@ cagov-reopening {
     text-transform: uppercase;
   }
 
-  .county-color-1,   .county-color-2,   .county-color-3,  .county-color-4 {
+  .county-color-1,
+  .county-color-2,
+  .county-color-3,
+  .county-color-4 {
     padding: 20px 15px 25px 15px;
     margin-bottom: 20px;
   }
 
   .county-color-1 {
-    background-color:#FAF1D7;
-    border-bottom: 8px solid #E6B735;
+    background-color: #faf1d7;
+    border-bottom: 8px solid #e6b735;
     .pill {
-      background-color: #E6B735;
+      background-color: #e6b735;
     }
   }
   .county-color-2 {
-    background-color:#F7E4D9;
-    border-bottom: 8px solid #D97641;
+    background-color: #f7e4d9;
+    border-bottom: 8px solid #d97641;
     .pill {
-      background-color: #D97641;
+      background-color: #d97641;
     }
   }
   .county-color-3 {
-    background-color:#F3D8DD;
-    border-bottom: 8px solid #C43D53;
+    background-color: #f3d8dd;
+    border-bottom: 8px solid #c43d53;
     .pill {
-      background-color: #C43D53;
+      background-color: #c43d53;
       color: #fff;
     }
   }
   .county-color-4 {
-    background-color:#E6D5E1;
-    border-bottom: 8px solid #802F67;
+    background-color: #e6d5e1;
+    border-bottom: 8px solid #802f67;
     .pill {
-      background-color: #802F67;
+      background-color: #802f67;
       color: #fff;
     }
   }
@@ -161,7 +188,7 @@ cagov-reopening {
     text-transform: uppercase;
   }
   form {
-    padding-bottom: 0rem;
+    padding-bottom: 2rem;
   }
 }
 .card-title .card-title {
@@ -179,17 +206,19 @@ cagov-reopening {
   margin-top: 0px;
   // phone
   @media (max-width: 767.98px) {
-    .card {margin-bottom: 0;}
+    .card {
+      margin-bottom: 0;
+    }
     .card-body {
-      padding: 0 0 .75rem 0;
+      padding: 0 0 0.75rem 0;
       //text-align: center;
       .btn-matrix {
         margin-top: 1.5rem;
-        margin-bottom: .75rem;
+        margin-bottom: 0.75rem;
         font-size: 1.4rem;
       }
       .matrix-h5 {
-        margin-bottom:0;
+        margin-bottom: 0;
         font-size: 1.2rem;
         font-weight: 300;
       }
@@ -200,21 +229,21 @@ cagov-reopening {
     }
   }
   // tablet and up
-  @media (min-width: 768px) { 
-  .card-body {
-    padding: 1.2rem 0.45rem;
-    .matrix-h5 {
-      font-size: 1.18rem !important;
-      font-weight: 700;
-      margin-bottom: .3rem;
-      line-height: 1.2;
+  @media (min-width: 768px) {
+    .card-body {
+      padding: 1.2rem 0.45rem;
+      .matrix-h5 {
+        font-size: 1.18rem !important;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        line-height: 1.2;
+      }
     }
   }
-}
   .card-header {
     display: none;
     // tablet and up
-    @media (min-width: 768px) { 
+    @media (min-width: 768px) {
       display: block;
     }
   }
@@ -224,7 +253,8 @@ cagov-reopening {
 .safer-economy-page {
   main {
     & div.container-fluid:nth-of-type(1n) {
-      & h1, p {
+      & h1,
+      p {
         text-align: center;
       }
       & .row {
@@ -234,9 +264,6 @@ cagov-reopening {
     & div.container:nth-of-type(2n) {
       & p {
         font-size: 1.25rem;
-      }
-      & .row {
-        justify-content: center !important;
       }
     }
   }
@@ -253,9 +280,9 @@ button.clear {
   top: 50px;
   color: $darkblue;
   font-weight: 300;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   span.ca-gov-icon-close-line {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     position: relative;
   }
   &:hover {
@@ -267,7 +294,7 @@ button.clear {
 }
 
 // tablet and up
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .bd-right-white {
     border-right: solid 2px #fff !important;
   }
@@ -275,11 +302,17 @@ button.clear {
 
 // hiding empty cell text
 .matrix-row:nth-child(3) .col-md-3:nth-child(4) {
-  .card-body {display: none;}
-  .d-md-none {display: none;}
+  .card-body {
+    display: none;
+  }
+  .d-md-none {
+    display: none;
+  }
 }
 
-.tableauPlaceholder {margin: 0 auto;}
+.tableauPlaceholder {
+  margin: 0 auto;
+}
 
 // table styles
 figure.table-gridded table {
