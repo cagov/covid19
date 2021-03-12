@@ -10,7 +10,7 @@
 }
 .toggle-group-container:not(.d3-charts) {
   width: 1000px;
-  min-height: 650px;
+  min-height: 520px;
   margin-bottom:50px;
   position: relative;
   .toggle-group-element {
@@ -19,8 +19,8 @@
     left: 0;
     width: 100%;
   }
-  &.cases-group {
-   min-height: 650px;
+  &.hospitals-group {
+   min-height: 550px;
   }
 }
 
