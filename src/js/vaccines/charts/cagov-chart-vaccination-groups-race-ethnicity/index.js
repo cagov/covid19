@@ -225,7 +225,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          renderChart.call(this, this.renderExtras);
+          renderChart.call(this, this.renderExtras, null, null, 've-race-eth');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
