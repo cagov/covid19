@@ -7,7 +7,8 @@ const defaultConfig = {
   chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
 }
 const stagingConfig =  {
-  chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/auto-2021-03-12-V2-Stats-Update-2021-03-12-09-21-12/data/infections-by-group/infections-by-group-california.json',
+  chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
+  // chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/5534d5f0744d8aa55fb7bf1879fbbdce14ee9cf8/data/infections-by-group/infections-by-group-california.json',
 }
 
 const devOutputPath = 'docs/js/dashboard-v2.js';
