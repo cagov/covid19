@@ -1,8 +1,13 @@
 export default function template(json) {
-  return /*html*/`
+  return /*html*/ `
+
   <div class="reopening-fields">
+    <div class="container py-2">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+
   <h2 class="subtitle-color mt-3">${json.title}</h2>
-    <form action="#" class="reopening-activities">
+    <form action="#" class="reopening-activities ">
       <div class="form-row">
         <div class="form-group col-md-6 reopening-form-group">
           <label for="location-query">${json.countyLabel}</label>
@@ -37,7 +42,7 @@ export default function template(json) {
             <input
               aria-expanded="false"
               aria-owns="awesomplete_list_2"
-              aria-controls="awesomplete_list_1"
+              aria-controls="awesomplete_list_2"
               autocomplete="off"
               class="form-control"
               data-list=""
@@ -47,7 +52,7 @@ export default function template(json) {
               type="text"
               placeholder="${json.activityPlaceholder}"
             />
-            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
+            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button> 
             <div id="activity-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.activityNotFound}</div>
           </div>
         </div>
@@ -59,6 +64,5 @@ export default function template(json) {
       <p class="small-text">Note: Tier assignments will be updated today, March 12, 2021, by 2:00 pm.</p>
     </form>
     <div class="card-holder"></div>
-  </div>
-  `
+  </div></div></div></div>`;
 }
