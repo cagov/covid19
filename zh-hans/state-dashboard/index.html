@@ -148,377 +148,14 @@
         <div class="col-lg-10 mx-auto">
           <h1>Tracking COVID-19 in California</h1>
           
-            <p class="small-text">最后更新时间&nbsp;2021年3月11日, 上午10:00</p>
+            <p class="small-text">最后更新时间&nbsp;
+                2021年3月12日, 上午10:00</p>
           
         </div>
       </div>
     </div>
   </div>
   
-
-
-<!-- state dash 1.0 comment in njk -->
-<div class="bg-lightblue py-5">
-    <div class="container py-2">
-    <div class="row pb-4">
-            <div class="highlight">
-                <h3 class="color-primary mt-0">Note for March 12, 2021</h3>
-                <p>Due to a scheduled update, today’s data will be updated by 3:00 pm instead of 10:00 am. Additionally, today’s count of administered doses is incomplete due to data processing latency. Complete counts will be updated in this dashboard as available this week.</p>
-            </div>
-        </div>
-        <div class="row pb-4">
-            <div class="col-lg-10 mx-auto">
-                <h2 class="text-center color-purple">Update for 2021年3月11日</h2>
-                <p>As of 2021年3月11日, California has 3,516,862 confirmed cases of COVID-19, resulting in 54,891 deaths. The number of COVID-related deaths increased by 0.5 percent from the prior day total of 54,621.</p>
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-md-center summary-boxes">
-            <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
-                
-                    <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>3,516,862</strong> <span class="text-300">total</span></div>
-                    <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>3,184</strong> <span class="text-300">today</span></div>
-                    <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
-                    <span class="chart-arrow" arria-hidden="true">
-					    <svg class="d-none" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-						</svg>
-
-						<!--negative arrow-->
-						<svg class=" arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-						</svg>
-					</span> 
-                     0.1% <span class="text-300">increase from prior day total</span></div>
-                </div>
-            </div>
-            <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
-                
-                    <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>54,891</strong> <span class="text-300">total</span></div>
-                    <div id="total-deaths-today"  class="text-white font-size-1-2em mt-2"><strong>270</strong> <span class="text-300">today</span></div>
-                    <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
-                    <span class="chart-arrow" arria-hidden="true">
-					    <svg class="" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-						</svg>
-
-						<!--negative arrow-->
-						<svg class="d-none arrow-down3" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-						</svg>
-					</span> 
-                     0.5% <span class="text-300">increase from prior day total</span></div>
-                </div>
-            </div>
-            <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
-                
-                    <div class="text-white font-size-1-2em my-2"><strong>50,316,151</strong> <span class="text-300">total</span></div>
-                    <div class="text-white font-size-1-2em mt-2"><strong>92,180</strong> <span class="text-300">today</span></div>
-                    <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
-                    <span class="chart-arrow" arria-hidden="true">
-					    <svg class="" version="1.1" class="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-						</svg>
-
-						<!--negative arrow-->
-						<svg class="d-none arrow-down3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-						<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-						</svg>
-					</span> 
-                     0.2% <span class="text-300">increase from prior day total</span></div>
-                </div>
-            </div>
-            <div class="col-md-3 px-10px">
-                <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-                <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
-                
-                    <div class="text-white font-size-1-2em my-4"><strong>11,169,839</strong> <span class="text-300">total</span></div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="row pb-4 py-5">
-            <div class="col-lg-10 mx-auto">
-                <p class="small-text">Updated 2021年3月11日, with data from 2021年3月10日.</p>
-
-                <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday. Arrows indicate whether the rate of growth is increasing or decreasing from prior day. All-time series data is by reported date (the date information was reported to the California Department of Public Health).</p>
-            </div>
-        </div>
-
-    </div><!--END container-->
-</div><!--END LIGHT BLUE BG-->
-
-<div class="bg-darkblue py-5 full-bleed mb-5">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange" id="vaccination">Vaccination data</h2>
-                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We're tracking the progress of vaccinating Californians across the state.</p>
-
-                        <div class="mt-3 text-center">
-                            <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">
-                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div><!--END container-->
-        </div>
-
-<div class="container py-4">
-    <div class="col-lg-10 mx-auto">
-        <h2 class="text-center color-purple">See the data statewide and in each county</h2>
-        <div class="row d-flex justify-content-md-center">
-            <form class="form-inline" id="county-form">
-            <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
-                <label for="location-query" class="sr-only">County</label>
-                <div class="awesomplete">
-                <input
-                 aria-expanded="false"
-                    aria-owns="awesomplete_list_1"
-                    aria-controls="awesomplete_list_1"
-                    autocomplete="off"
-                    class="form-control form-control-lg"
-                    data-list=""
-                    data-multiple=""
-                    id="location-query"
-                    type="text"
-                    placeholder="Enter a county"
-                />
-                </div>
-            </div>
-            <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
-            </form>
-        </div>
-        <div class="row d-flex justify-content-md-center">
-            <span id="county-query-error" class="error-text d-none">County not found</span>
-        </div>
-
-        <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-
-        <h3 class="text-center mt-4 mb-0">Daily cases and deaths</h3>
-        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-            <div class="js-toggle-county-container d-none">
-                <div class="large-tabs">
-                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
-                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
-                </div>
-            </div>
-        </div>
-        <p>California has 3,516,862 confirmed cases of COVID-19, resulting in 54,891 deaths.</p>
- 
-        <div class="row d-flex justify-content-md-center">
-
-            <div class="toggle-group-container cases-group">
-            <div  id="cases-county-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="casesChartCounty"></div>
-            </div>
-            <div id="cases-state-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="casesChartState"></div>
-            </div>
-            </div>
-        </div>
-
-
-
-        <div class="row d-flex justify-content-md-center">
-            <p class="small-text">Note: Numbers do not represent true day-over-day change as these results include cases from prior to yesterday.</p>
-        </div>
-
-        <h3 class="text-center mt-4 mb-0">Testing for COVID-19</h3>
-        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-            <div class="js-toggle-county-container d-none">
-                <div class="large-tabs">
-                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
-                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
-                </div>
-            </div>
-        </div>
-        <p>The number of COVID-19 diagnostic test results in California reached a total of 50,316,151, an increase of 92,180 tests from the prior day total. The rate of positive tests over the last 14 days is 2.3 percent.  </p>
-
-        <div class="row d-flex justify-content-md-center">
-        
-            <div class="toggle-group-container cases-group">
-            <div  id="testing-county-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="testingChartCounty"></div>
-            </div>
-            <div id="testing-state-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="testingChartState"></div>
-            </div>
-            </div>
-        </div>
-
-        <h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
-        <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-            <div class="js-toggle-county-container d-none">
-                <div class="large-tabs">
-                    <button class="large-tab js-toggle-county county d-none">Alameda</button>
-                    <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
-                </div>
-            </div>
-        </div>
-        <p>
-            The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of 3,958, a decrease of 161 from the prior day total.
-            The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of 1,031, a decrease of 33 from the prior day total.
-        </p>
-        <div class="row d-flex justify-content-md-center">
-            <div class="toggle-group-container cases-group">
-            <div  id="hospital-county-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="hospitalChartCounty"></div>
-            </div>
-            <div id="hospital-state-graph" class="toggle-group-element">
-                <div class='tableauPlaceholder' id="hospitalChartState"></div>
-            </div>
-            </div>
-
-        </div>
-
-        <div class="bg-darkblue py-5 full-bleed mb-5">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange" id="reopening-equitably">More data and tools</h2>
-                        <p>California has collected a wide range of data to inform its response to COVID-19. We've developed tools to process and analyze this data. These data and tools are available to the public.</p>
-
-                        <div class="mt-3 text-center">
-                            <a href="/data-and-tools/" class="link-arrow-white">
-                                <div class="link-arrow-label">View all data and tools</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div><!--END container-->
-        </div>
-
-        <div class="row d-flex justify-content-md-center">
-
-            <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
-            
-            
-
-                <div class="grid-layout-hd bg-lightblue bd-lightblue">
-                    <div class="grid-main bg-lightblue py-0"><h3 class="my-0 text-center">California’s county risk levels</h3>
-                    </div>
-                    <div class="grid-single single1">
-                        <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
-                        <p class="text-small mt-2 mb-0">Many non-essential indoor business operations are closed</p>
-                    </div>
-                    <div class="grid-single single2">
-                        <div class="btn-matrix bg-red-btn">SUBSTANTIAL</div>
-                        <p class="text-small mt-2 mb-0">Some non-essential indoor business operations are closed</p>
-
-
-                    </div>
-                    <div class="grid-single single3">
-                        <div class="btn-matrix bg-orange-btn">MODERATE</div>
-                        <p class="text-small mt-2 mb-0">Some indoor business operations are open with modifications</p>
-                    </div>
-                    <div class="grid-single single4">
-                        <div class="btn-matrix bg-yellow-btn">MINIMAL</div>
-                        <p class="text-small mt-2 mb-0">Most indoor business operations are open with modifications</p>
-                    </div>
-                </div>
-
-                <h3 class="has-text-align-center pb-0 mb-2 mt-3">Current tier assignments as of 2021年3月12日</h3>
-                <p class="mt-0">Tier assignments may occur any day of the week and may occur more than once a week. Select a county to see what region it’s in.</p>
-
-            <div class="tableauPlaceholder" id="mapChartContainer"></div>
-        </div>
-
-        <div class="text-center">
-        <p class="small-text">All data and tier assignments are based on results from week ending 2021年2月27日. See how tiers are assigned and changed, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH’s Blueprint for a Safer Economy framework</a>. Learn about regional ICU capacity at <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH’s ICU Data</a>.</p>
-        </div>
-  
-        <div class="text-center">
-
-            <a href="/safer-economy/" class="link-arrow-blue">
-            <div class="link-arrow-label">See what can be open in your county</div>
-            <cagov-arrow></cagov-arrow>
-            </a>
-        </div>
-    </div><!--END col-10-->
-</div><!--END CONTAINER -->
-
-<div class="bg-lightblue py-5">
-    <div class="container py-2">
-    <h2 class="text-center color-primary">Infections by group</h2>
-        <div class="col-lg-12 bg-white px-3 py-4">
-                <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-                    <div class="large-tabs">
-                        <button class="large-tab toggle-active js-toggle-group ethnicity">Ethnicity</button>
-                        <button class="large-tab js-toggle-group gender">Gender</button>
-                        <button class="large-tab js-toggle-group age">Age</button>
-                    </div>
-                </div>
-            
-            <div class="row">
-                <div class="toggle-group-container col-10 mx-auto">
-
-                    <div id="gender-graph" class="toggle-group-element" style="display:none">
-                        <div id="genderGroupChartContainer">
-                            <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
-                            <div class="tableauPlaceholder"></div>
-                        </div>
-                    </div>
-                    <div id="age-graph" class="toggle-group-element" style="display:none">
-                        <div id="ageGroupChartContainer">
-                            <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths.</p>
-                            <div class="tableauPlaceholder"></div>
-                        </div>
-                    </div>
-                    <div id="ethnicity-graph" class="toggle-group-element">
-                        <div id="ethnicityGroupChartContainer">
-                            <p>
-                        The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.
-                                </p>
-                                <p class="small-text">Note: Percentages may not add up to 100% due to rounding. Ethnicity is only available for a subset of the total number of deaths as reported by law enforcement.</p>
-                            <div class="tableauPlaceholder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center pt-5 p-rel">
-            <a href="/equity/" class="link-arrow-blue mb-4 mt-3">
-            <div class="link-arrow-label">See more detailed data by group</div>
-            <cagov-arrow></cagov-arrow>
-            </a>  
-	</div><!--END col-12-->
-  </div><!--END CONTAINER-->
-</div><!--END BG lightblue-->
-
   <div class="container">
     <div class="row">
       <div class="col-lg-10 mx-auto">
@@ -657,10 +294,2705 @@ ga('tracker3.send', 'pageview');
 		</script>
 	
 
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	
 	
 		<script type="module">
-			class t{constructor(t){let e={label:"Unknown data",value:"Unknown data"};"string"==typeof t?e={label:t,value:t}:Array.isArray(t)?e={label:t[0],value:t[1]}:"object"==typeof t&&("label"in t||"value"in t)&&(e=t),this.label=e.label||e.value,this.value=e.value,"userData"in e&&(this.userData=e.userData)}get length(){return this.label.length}toString(){return`${this.label}`}valueOf(){return this.toString()}}class e{constructor(t,i){e.all=[];const s=this;e.count=(e.count||0)+1,this.count=e.count,this.isOpened=!1,this.input=e.query(t),this.input.setAttribute("autocomplete","off"),this.input.setAttribute("aria-owns",`awesomplete_list_${this.count}`),this.input.setAttribute("role","combobox"),this.options=i||{},this.configure({minChars:2,maxItems:10,autoFirst:!1,data:e.DATA,filter:e.FILTER_CONTAINS,sort:!1!==i.sort&&e.SORT_BYLENGTH,container:e.CONTAINER,item:e.ITEM,replace:e.REPLACE,tabSelect:!1},i),this.index=-1,this.container=this.container(t),this.ul=e.create("ul",{hidden:"hidden",role:"listbox",id:`awesomplete_list_${this.count}`,inside:this.container}),this.status=e.create("span",{className:"visually-hidden",role:"status","aria-live":"assertive","aria-atomic":!0,inside:this.container,textContent:0!==this.minChars?`Type ${this.minChars} or more characters for results.`:"Begin typing for results."}),this.events={input:{input:this.evaluate.bind(this),blur:this.close.bind(this,{reason:"blur"}),keydown(t){const e=t.keyCode;s.opened&&(13===e&&s.selected?(t.preventDefault(),t.stopImmediatePropagation(),s.select()):9===e&&s.selected&&s.tabSelect?s.select():27===e?s.close({reason:"esc"}):38!==e&&40!==e||(t.preventDefault(),s[38===e?"previous":"next"]()))}},form:{submit:this.close.bind(this,{reason:"submit"})},ul:{mousedown(t){t.preventDefault()},click(t){let e=t.target;if(e!==this){for(;e&&!/li/i.test(e.nodeName);)e=e.parentNode;e&&0===t.button&&(t.preventDefault(),s.select(e,t.target))}}}},e.bind(this.input,this.events.input),e.bind(this.input.form,this.events.form),e.bind(this.ul,this.events.ul),this.input.hasAttribute("list")?(this.list=`#${this.input.getAttribute("list")}`,this.input.removeAttribute("list")):this.list=this.input.getAttribute("data-list")||i.list||[],e.all.push(this)}configure(t,e){Object.keys(t).forEach((i=>{const s=t[i],n=this.input.getAttribute(`data-${i.toLowerCase()}`);this[i]="number"==typeof s?parseInt(n,10):!1===s?null!==n:s instanceof Function?null:n,this[i]||0===this[i]||(this[i]=i in e?e[i]:s)}))}set list(t){if(Array.isArray(t))this.dataList=t;else if("string"==typeof t&&t.indexOf(",")>-1)this.dataList=t.split(/\s*,\s*/);else{const i=e.query(t);if(i&&i.children){const t=[],e=e=>{if(!e.disabled){const i=e.textContent.trim(),s=e.value||i,n=e.label||i;""!==s&&t.push({label:n,value:s})}};Array.prototype.slice.apply(i.children).forEach(e),this.dataList=t}}document.activeElement===this.input&&this.evaluate()}get list(){return this.dataList}get selected(){return this.index>-1}get opened(){return this.isOpened}close(t){this.opened&&(this.ul.setAttribute("hidden",""),this.isOpened=!1,this.index=-1,this.status.setAttribute("hidden",""),e.fire(this.input,"awesomplete-close",t||{}))}open(){this.ul.removeAttribute("hidden"),this.isOpened=!0,this.status.removeAttribute("hidden"),this.autoFirst&&-1===this.index&&this.goto(0),e.fire(this.input,"awesomplete-open")}destroy(){if(e.unbind(this.input,this.events.input),e.unbind(this.input.form,this.events.form),!this.options.container){const{parentNode:t}=this.container;t.insertBefore(this.input,this.container),t.removeChild(this.container)}this.input.removeAttribute("autocomplete"),this.input.removeAttribute("aria-autocomplete");const t=e.all.indexOf(this);-1!==t&&e.all.splice(t,1)}next(){const t=this.ul.children.length;let e=0;e=this.index<t-1?this.index+1:t?0:-1,this.goto(e)}previous(){const t=this.ul.children.length,e=this.index-1;this.goto(this.selected&&-1!==e?e:t-1)}goto(t){const i=this.ul.children;if(this.selected&&i[this.index].setAttribute("aria-selected","false"),this.index=t,t>-1&&i.length>0){i[t].setAttribute("aria-selected","true"),this.status.textContent=`${i[t].textContent}, list item ${t+1} of ${i.length}`,this.input.setAttribute("aria-activedescendant",`${this.ul.id}_item_${this.index}`),this.ul.scrollTop=i[t].offsetTop-this.ul.clientHeight+i[t].clientHeight;const s=this.suggestions[this.index];e.fire(this.input,"awesomplete-highlight",{selectedIndex:this.index,selectedText:`${s}`,selectedSuggestion:s})}}select(t,i){let s=t;if(t?this.index=e.siblingIndex(t):s=this.ul.children[this.index],s){const t=this.index,n=this.suggestions[t];e.fire(this.input,"awesomplete-select",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n,origin:i||s})&&(this.replace(n),this.close({reason:"select"}),e.fire(this.input,"awesomplete-selectcomplete",{selectedIndex:t,selectedText:`${n}`,selectedSuggestion:n}))}}evaluate(){const e=this,{value:i}=this.input;if(i.length>=this.minChars&&this.dataList&&this.dataList.length>0){this.index=-1,this.ul.innerHTML="";const s=s=>new t(e.data(s,i)),n=t=>e.filter(t,i);this.suggestions=this.dataList.map(s).filter(n),!1!==this.sort&&(this.suggestions=this.suggestions.sort(this.sort)),this.suggestions=this.suggestions.slice(0,this.maxItems);const o=(t,s)=>{e.ul.appendChild(e.item(t,i,s))};this.suggestions.forEach(o),0===this.ul.children.length?(this.status.textContent="No results found",this.close({reason:"nomatches"})):(this.open(),this.status.textContent=`${this.ul.children.length} results found`)}else this.close({reason:"nomatches"}),this.status.textContent="No results found"}static FILTER_CONTAINS(t,i){return RegExp(e.regExpEscape(i.trim()),"i").test(t)}static FILTER_STARTSWITH(t,i){return RegExp(`^${e.regExpEscape(i.trim())}`,"i").test(t)}static SORT_BYLENGTH(t,e){return t.length!==e.length?t.length-e.length:t<e?-1:1}static CONTAINER(t){return e.create("div",{className:"awesomplete",around:t})}static ITEM(t,i,s){const n=""===i.trim()?t:`${t}`.replace(RegExp(e.regExpEscape(i.trim()),"gi"),"<mark>$&</mark>");return e.create("li",{innerHTML:n,"aria-selected":"false",id:`awesomplete_list_${this.count}_item_${s}`})}static REPLACE(t){this.input.value=t.value||t.label}static DATA(t){return t}static query(t,e){return"string"==typeof t?(e||document).querySelector(t):t||null}static queryAll(t,e){return Array.prototype.slice.call((e||document).querySelectorAll(t))}static create(t,i){const s=document.createElement(t);return Object.keys(i).forEach((t=>{const n=i[t];if("inside"===t)e.query(n).appendChild(s);else if("around"===t){const t=e.query(n);t.parentNode.insertBefore(s,t),s.appendChild(t),null!=t.getAttribute("autofocus")&&t.focus()}else t in s?s[t]=n:s.setAttribute(t,n)})),s}static bind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.addEventListener(e,s)}))};Object.keys(e).forEach(i)}}static unbind(t,e){if(t){const i=i=>{const s=e[i];i.split(/\s+/).forEach((e=>{t.removeEventListener(e,s)}))};Object.keys(e).forEach(i)}}static fire(t,e,i){const s=document.createEvent("HTMLEvents"),n=t=>{s[t]=i[t]};return s.initEvent(e,!0,!0),"object"==typeof i&&Object.keys(i).forEach(n),t.dispatchEvent(s)}static regExpEscape(t){return t.replace(/[-\\^$*+?.()|[\]{}]/g,"\\$&")}static siblingIndex(t){let e=0,i=t;for(;i;)i=i.previousElementSibling,i&&(e+=1);return e}}window.fetch("/countystatus.json").then((t=>t.json())).then((function(t){let i=[];t.forEach((t=>{i.push(t.county)}));const o={autoFirst:!0,filter:function(t,i){return e.FILTER_CONTAINS(t,i.match(/[^,]*$/)[0])},item:function(t,i){return e.ITEM(t,i.match(/[^,]*$/)[0])},replace:function(t){let e=this.input.value.match(/^.+,\s*|/)[0]+t;this.input.value=e,n(e)},list:i};new e("#location-query",o);!function(t){document.querySelector("#county-form").addEventListener("submit",function(e){e.preventDefault(),s.classList.remove("d-none"),document.querySelector("#county-query-error").style.display="none";let i=document.querySelector("#location-query").value,o="";t.forEach((t=>{t.toLowerCase()==i.toLowerCase()&&(o=t)})),o?n(o):document.querySelector("#county-query-error").style.display="block"}.bind(this))}(i)}));var i=document.getElementById("location-query"),s=document.getElementById("clearCounty");function n(t){document.querySelector("#county-query-error").style.display="none";let e=window.casesChartCountyViz.getWorkbook().getActiveSheet().getWorksheets()[1],i=window.testingChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1],s=window.hospitalChartCounty.getWorkbook().getActiveSheet().getWorksheets()[1];!function n(){e&&i&&s?(e.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),i.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE),s.applyFilterAsync("County",t,tableau.FilterUpdateType.REPLACE)):setTimeout(n,500)}(),m(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.remove("d-none")})),document.querySelectorAll(".js-toggle-county.county").forEach((e=>{e.innerHTML=t,e.classList.remove("d-none")}))}async function o(t,e,i,s){let n=document.querySelector(t);var o=s;let a={width:e+"px",height:i+"px"};return await new tableau.Viz(n,o,a)}let a=600,l=900,r=900,c=800,u=660;var h=document.querySelector(".col-lg-10");function d(){p.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("gender-graph").style.display="none",document.getElementById("ethnicity-graph").style.display="none",document.getElementById("age-graph").style.display="none"}h.offsetWidth>920?(r=910,u=560):h.offsetWidth>910&&h.offsetWidth<920?(r=900,c=900,u=560):h.offsetWidth>800&&h.offsetWidth<910?(r=750,c=750,u=660):h.offsetWidth>700&&h.offsetWidth<879?(r=650,u=660,c=700):h.offsetWidth>600&&h.offsetWidth<700?(r=550,u=660,c=600):h.offsetWidth>500&&h.offsetWidth<600?(r=450,u=660,c=450):(r=350,u=660,c=450),window.innerWidth<700?(a=930,l=window.innerWidth-30):window.innerWidth>700&&window.innerWidth<918?(a=930,l=700):window.innerWidth>919&&window.innerWidth<1200&&(a=600,l=800),async function(){if(console.log("Setting up 1.0 charts"),document.getElementById("casesChartState")){window.casesChartStateViz=await o("#casesChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link");o("#testingChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link"),o("#hospitalChartState",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link");window.casesChartCountyViz=await o("#casesChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link"),window.testingChartCounty=await o("#testingChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link"),window.hospitalChartCounty=await o("#hospitalChartCounty",l,a,"https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link");o("#mapChartContainer",r,u,"https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link"),o("#ethnicityGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link")}}();let p=document.querySelectorAll(".js-toggle-group");function g(){window.countyTogglers.forEach((t=>{t.classList.remove("toggle-active")})),document.getElementById("cases-state-graph").style.display="none",document.getElementById("cases-county-graph").style.display="none",document.getElementById("testing-state-graph").style.display="none",document.getElementById("testing-county-graph").style.display="none",document.getElementById("hospital-state-graph").style.display="none",document.getElementById("hospital-county-graph").style.display="none"}function y(){g(),document.querySelectorAll(".js-toggle-county.statewide").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-state-graph").style.display="block",document.getElementById("testing-state-graph").style.display="block",document.getElementById("hospital-state-graph").style.display="block"}function m(){g(),document.querySelectorAll(".js-toggle-county.county").forEach((t=>{t.classList.add("toggle-active")})),document.getElementById("cases-county-graph").style.display="block",document.getElementById("testing-county-graph").style.display="block",document.getElementById("hospital-county-graph").style.display="block"}function f(){var t=document.getElementById("location-query"),e=document.getElementById("clearCounty");t&&t.value?e.classList.remove("d-none"):e.classList.add("d-none")}p.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),d(),this.classList.contains("gender")&&(document.getElementById("gender-graph").style.display="block",this.classList.add("toggle-active"),genderGroupChart=o("#genderGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("age")&&(document.getElementById("age-graph").style.display="block",this.classList.add("toggle-active"),ageGroupChart=o("#ageGroupChartContainer",c,600,"https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link")),this.classList.contains("ethnicity")&&(document.getElementById("ethnicity-graph").style.display="block"),this.classList.add("toggle-active")}))})),document.getElementById("cases-state-graph")&&(document.getElementById("cases-state-graph").style.display="block",window.countyTogglers=document.querySelectorAll(".js-toggle-county"),window.countyTogglers.forEach((t=>{t.addEventListener("click",(function(t){t.preventDefault(),g(),this.classList.contains("statewide")&&y(),this.classList.contains("county")&&m()}))}))),i&&(i.addEventListener("focus",(function(){f()})),i.addEventListener("input",(function(){f()})),i.addEventListener("blur",(function(){f()}))),s&&(s.addEventListener("blur",(function(t){f()})),s.addEventListener("click",(function(t){t.preventDefault(),document.getElementById("location-query").value="",y(),d(),document.querySelectorAll(".js-toggle-county-container").forEach((t=>{t.classList.add("d-none")}))})));
+			const config = {"chartsDataFile":"https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json"}
+
+/**
+ * Simple, lightweight, usable local autocomplete library for modern browsers
+ * Because there weren’t enough autocomplete scripts in the world?
+ * Because I’m completely insane and have NIH syndrome? Probably both. :P
+ * @author Lea Verou http://leaverou.github.io/awesomplete
+ * MIT license
+ */
+
+
+/** Class representing a single Suggesstion. */
+class Suggestion {
+    constructor(data) {
+        let o = { label: 'Unknown data', value: 'Unknown data' };
+        if (typeof data === 'string') {
+            o = { label: data, value: data };
+        } else if (Array.isArray(data)) {
+            o = { label: data[0], value: data[1] };
+        } else if (typeof data === 'object' && ('label' in data || 'value' in data)) {
+            o = data;
+        }
+
+        this.label = o.label || o.value;
+        this.value = o.value;
+
+        if ('userData' in o) {
+            this.userData = o.userData;
+        }
+    }
+
+    get length() {
+        return this.label.length;
+    }
+
+    toString() {
+        return `${this.label}`;
+    }
+
+    valueOf() {
+        return this.toString();
+    }
+}
+
+
+/** Class representing Awesomplete. */
+class Awesomplete {
+    constructor(input, o) {
+        Awesomplete.all = [];
+        const me = this;
+
+        // Keep track of number of instances for unique IDs
+        Awesomplete.count = (Awesomplete.count || 0) + 1;
+        this.count = Awesomplete.count;
+
+        // Setup
+        this.isOpened = false;
+
+        this.input = Awesomplete.query(input);
+        this.input.setAttribute('autocomplete', 'off');
+        this.input.setAttribute('aria-owns', `awesomplete_list_${this.count}`);
+        this.input.setAttribute('role', 'combobox');
+
+        // store constructor options in case we need to distinguish
+        // between default and customized behavior later on
+        if (o) {
+            this.options = o;
+        } else {
+            this.options = {};
+        }
+
+        this.configure({
+            minChars: 2,
+            maxItems: 10,
+            autoFirst: false,
+            data: Awesomplete.DATA,
+            filter: Awesomplete.FILTER_CONTAINS,
+            sort: o.sort === false ? false : Awesomplete.SORT_BYLENGTH,
+            container: Awesomplete.CONTAINER,
+            item: Awesomplete.ITEM,
+            replace: Awesomplete.REPLACE,
+            tabSelect: false,
+        }, o);
+
+        this.index = -1;
+
+        // Create necessary elements
+        this.container = this.container(input);
+
+        this.ul = Awesomplete.create('ul', {
+            hidden: 'hidden',
+            role: 'listbox',
+            id: `awesomplete_list_${this.count}`,
+            inside: this.container,
+        });
+
+        this.status = Awesomplete.create('span', {
+            className: 'visually-hidden',
+            role: 'status',
+            'aria-live': 'assertive',
+            'aria-atomic': true,
+            inside: this.container,
+            textContent: this.minChars !== 0 ? (`Type ${this.minChars} or more characters for results.`) : 'Begin typing for results.',
+        });
+
+        // Bind events
+        this.events = {
+            input: {
+                input: this.evaluate.bind(this),
+                blur: this.close.bind(this, { reason: 'blur' }),
+                keydown(evt) {
+                    const c = evt.keyCode;
+
+                    // If the dropdown `ul` is in view, then act on keydown for the following keys:
+                    // Enter / Esc / Up / Down
+                    if (me.opened) {
+                        if (c === 13 && me.selected) { // Enter
+                            evt.preventDefault();
+                            evt.stopImmediatePropagation();
+                            me.select();
+                        } else if (c === 9 && me.selected && me.tabSelect) {
+                            me.select();
+                        } else if (c === 27) { // Esc
+                            me.close({ reason: 'esc' });
+                        } else if (c === 38 || c === 40) { // Down/Up arrow
+                            evt.preventDefault();
+                            me[c === 38 ? 'previous' : 'next']();
+                        }
+                    }
+                },
+            },
+            form: {
+                submit: this.close.bind(this, { reason: 'submit' }),
+            },
+            ul: {
+                // Prevent the default mousedowm, which ensures the input is not blurred.
+                // The actual selection will happen on click. This also ensures dragging the
+                // cursor away from the list item will cancel the selection
+                mousedown(evt) {
+                    evt.preventDefault();
+                },
+
+                // The click event is fired even if the corresponding mousedown event has called
+                // preventDefault
+                click(evt) {
+                    let li = evt.target;
+
+                    if (li !== this) {
+                        while (li && !/li/i.test(li.nodeName)) {
+                            li = li.parentNode;
+                        }
+
+                        if (li && evt.button === 0) { // Only select on left click
+                            evt.preventDefault();
+                            me.select(li, evt.target);
+                        }
+                    }
+                },
+            },
+        };
+
+        Awesomplete.bind(this.input, this.events.input);
+        Awesomplete.bind(this.input.form, this.events.form);
+        Awesomplete.bind(this.ul, this.events.ul);
+
+        if (this.input.hasAttribute('list')) {
+            this.list = `#${this.input.getAttribute('list')}`;
+            this.input.removeAttribute('list');
+        } else {
+            this.list = this.input.getAttribute('data-list') || o.list || [];
+        }
+
+        Awesomplete.all.push(this);
+    }
+
+    configure(properties, o) {
+        const iterFn = (i) => {
+            const initial = properties[i];
+            const attrValue = this.input.getAttribute(`data-${i.toLowerCase()}`);
+
+            if (typeof initial === 'number') {
+                this[i] = parseInt(attrValue, 10);
+            } else if (initial === false) { // Boolean options must be false by default anyway
+                this[i] = attrValue !== null;
+            } else if (initial instanceof Function) {
+                this[i] = null;
+            } else {
+                this[i] = attrValue;
+            }
+
+            if (!this[i] && this[i] !== 0) {
+                this[i] = (i in o) ? o[i] : initial;
+            }
+        };
+        Object.keys(properties).forEach(iterFn);
+    }
+
+    set list(list) {
+        if (Array.isArray(list)) {
+            this.dataList = list;
+        } else if (typeof list === 'string' && list.indexOf(',') > -1) {
+            this.dataList = list.split(/\s*,\s*/);
+        } else { // Element or CSS selector
+            const queriedList = Awesomplete.query(list);
+
+            if (queriedList && queriedList.children) {
+                const items = [];
+                const iterFn = (el) => {
+                    if (!el.disabled) {
+                        const text = el.textContent.trim();
+                        const value = el.value || text;
+                        const label = el.label || text;
+                        if (value !== '') {
+                            items.push({ label, value });
+                        }
+                    }
+                };
+                Array.prototype.slice.apply(queriedList.children).forEach(iterFn);
+                this.dataList = items;
+            }
+        }
+
+        if (document.activeElement === this.input) {
+            this.evaluate();
+        }
+    }
+
+    get list() {
+        return this.dataList;
+    }
+
+    get selected() {
+        return this.index > -1;
+    }
+
+    get opened() {
+        return this.isOpened;
+    }
+
+    close(o) {
+        if (!this.opened) {
+            return;
+        }
+
+        this.ul.setAttribute('hidden', '');
+        this.isOpened = false;
+        this.index = -1;
+
+        this.status.setAttribute('hidden', '');
+
+        Awesomplete.fire(this.input, 'awesomplete-close', o || {});
+    }
+
+    open() {
+        this.ul.removeAttribute('hidden');
+        this.isOpened = true;
+
+        this.status.removeAttribute('hidden');
+
+        if (this.autoFirst && this.index === -1) {
+            this.goto(0);
+        }
+
+        Awesomplete.fire(this.input, 'awesomplete-open');
+    }
+
+    destroy() {
+        // remove events from the input and its form
+        Awesomplete.unbind(this.input, this.events.input);
+        Awesomplete.unbind(this.input.form, this.events.form);
+
+        // cleanup container if it was created by Awesomplete but leave it alone otherwise
+        if (!this.options.container) {
+            // move the input out of the awesomplete container and remove the container and
+            // its children
+            const { parentNode } = this.container;
+
+            parentNode.insertBefore(this.input, this.container);
+            parentNode.removeChild(this.container);
+        }
+
+        // remove autocomplete and aria-autocomplete attributes
+        this.input.removeAttribute('autocomplete');
+        this.input.removeAttribute('aria-autocomplete');
+
+        // remove this awesomeplete instance from the global array of instances
+        const indexOfAwesomplete = Awesomplete.all.indexOf(this);
+
+        if (indexOfAwesomplete !== -1) {
+            Awesomplete.all.splice(indexOfAwesomplete, 1);
+        }
+    }
+
+    next() {
+        const count = this.ul.children.length;
+        let index = 0;
+        if (this.index < count - 1) {
+            index = this.index + 1;
+        } else if (count) {
+            index = 0;
+        } else {
+            index = -1;
+        }
+        this.goto(index);
+    }
+
+    previous() {
+        const count = this.ul.children.length;
+        const pos = this.index - 1;
+
+        this.goto(this.selected && pos !== -1 ? pos : count - 1);
+    }
+
+    // Should not be used, highlights specific item without any checks!
+    goto(i) {
+        const lis = this.ul.children;
+
+        if (this.selected) {
+            lis[this.index].setAttribute('aria-selected', 'false');
+        }
+
+        this.index = i;
+
+        if (i > -1 && lis.length > 0) {
+            lis[i].setAttribute('aria-selected', 'true');
+
+            this.status.textContent = `${lis[i].textContent}, list item ${(i + 1)} of ${lis.length}`;
+
+            this.input.setAttribute('aria-activedescendant', `${this.ul.id}_item_${this.index}`);
+
+            // scroll to highlighted element in case parent's height is fixed
+            this.ul.scrollTop = lis[i].offsetTop - this.ul.clientHeight + lis[i].clientHeight;
+
+            const suggestion = this.suggestions[this.index];
+            Awesomplete.fire(this.input, 'awesomplete-highlight', {
+                selectedIndex: this.index,
+                selectedText: `${suggestion}`,
+                selectedSuggestion: suggestion,
+            });
+        }
+    }
+
+    select(selected, origin) {
+        let selectedItem = selected;
+        if (selected) {
+            this.index = Awesomplete.siblingIndex(selected);
+        } else {
+            selectedItem = this.ul.children[this.index];
+        }
+
+        if (selectedItem) {
+            const selectedIndex = this.index;
+            const suggestion = this.suggestions[selectedIndex];
+            const allowed = Awesomplete.fire(this.input, 'awesomplete-select', {
+                selectedIndex,
+                selectedText: `${suggestion}`,
+                selectedSuggestion: suggestion,
+                origin: origin || selectedItem,
+            });
+
+            if (allowed) {
+                this.replace(suggestion);
+                this.close({ reason: 'select' });
+                Awesomplete.fire(this.input, 'awesomplete-selectcomplete', {
+                    selectedIndex,
+                    selectedText: `${suggestion}`,
+                    selectedSuggestion: suggestion,
+                });
+            }
+        }
+    }
+
+    evaluate() {
+        const me = this;
+        const { value } = this.input;
+
+        if (value.length >= this.minChars && this.dataList && this.dataList.length > 0) {
+            this.index = -1;
+            // Populate list with options that match
+            this.ul.innerHTML = '';
+
+            const mapFn = item => new Suggestion(me.data(item, value));
+            const filterFn = item => me.filter(item, value);
+            this.suggestions = this.dataList
+                .map(mapFn)
+                .filter(filterFn);
+
+            if (this.sort !== false) {
+                this.suggestions = this.suggestions.sort(this.sort);
+            }
+
+            this.suggestions = this.suggestions.slice(0, this.maxItems);
+
+            const appendFn = (text, index) => {
+                me.ul.appendChild(me.item(text, value, index));
+            };
+            this.suggestions.forEach(appendFn);
+
+            if (this.ul.children.length === 0) {
+                this.status.textContent = 'No results found';
+
+                this.close({ reason: 'nomatches' });
+            } else {
+                this.open();
+
+                this.status.textContent = `${this.ul.children.length} results found`;
+            }
+        } else {
+            this.close({ reason: 'nomatches' });
+
+            this.status.textContent = 'No results found';
+        }
+    }
+
+
+    // Mark: Static methods/properties
+    static FILTER_CONTAINS(text, input) {
+        return RegExp(Awesomplete.regExpEscape(input.trim()), 'i').test(text);
+    }
+
+    static FILTER_STARTSWITH(text, input) {
+        return RegExp(`^${Awesomplete.regExpEscape(input.trim())}`, 'i').test(text);
+    }
+
+    static SORT_BYLENGTH(a, b) {
+        if (a.length !== b.length) {
+            return a.length - b.length;
+        }
+
+        return a < b ? -1 : 1;
+    }
+
+    static CONTAINER(input) {
+        return Awesomplete.create('div', {
+            className: 'awesomplete',
+            around: input,
+        });
+    }
+
+    static ITEM(text, input, itemId) {
+        const html = input.trim() === '' ? text : (`${text}`).replace(RegExp(Awesomplete.regExpEscape(input.trim()), 'gi'), '<mark>$&</mark>');
+        return Awesomplete.create('li', {
+            innerHTML: html,
+            'aria-selected': 'false',
+            id: `awesomplete_list_${this.count}_item_${itemId}`,
+        });
+    }
+
+    static REPLACE(text) {
+        this.input.value = text.value || text.label;
+    }
+
+    static DATA(item/* , input */) {
+        return item;
+    }
+
+
+    // Helpers
+    static query(expr, con) {
+        return typeof expr === 'string' ? (con || document).querySelector(expr) : expr || null;
+    }
+
+    static queryAll(expr, con) {
+        return Array.prototype.slice.call((con || document).querySelectorAll(expr));
+    }
+
+    static create(tag, o) {
+        const element = document.createElement(tag);
+        const iterFn = (i) => {
+            const val = o[i];
+
+            if (i === 'inside') {
+                Awesomplete.query(val).appendChild(element);
+            } else if (i === 'around') {
+                const ref = Awesomplete.query(val);
+                ref.parentNode.insertBefore(element, ref);
+                element.appendChild(ref);
+
+                if (ref.getAttribute('autofocus') != null) {
+                    ref.focus();
+                }
+            } else if (i in element) {
+                element[i] = val;
+            } else {
+                element.setAttribute(i, val);
+            }
+        };
+        Object.keys(o).forEach(iterFn);
+
+        return element;
+    }
+
+    static bind(element, o) {
+        if (element) {
+            const iterFn = (cKey) => {
+                const callback = o[cKey];
+                const eventIterFn = (event) => {
+                    element.addEventListener(event, callback);
+                };
+                cKey.split(/\s+/).forEach(eventIterFn);
+            };
+            Object.keys(o).forEach(iterFn);
+        }
+    }
+
+    static unbind(element, o) {
+        if (element) {
+            const iterFn = (cKey) => {
+                const callback = o[cKey];
+                const eventIterFn = (event) => {
+                    element.removeEventListener(event, callback);
+                };
+                cKey.split(/\s+/).forEach(eventIterFn);
+            };
+            Object.keys(o).forEach(iterFn);
+        }
+    }
+
+    static fire(target, type, properties) {
+        const evt = document.createEvent('HTMLEvents');
+        const iterFn = (j) => {
+            evt[j] = properties[j];
+        };
+        evt.initEvent(type, true, true);
+        if (typeof properties === 'object') {
+            Object.keys(properties).forEach(iterFn);
+        }
+
+        return target.dispatchEvent(evt);
+    }
+
+    static regExpEscape(s) {
+        return s.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+
+    static siblingIndex(el) {
+        let i = 0;
+        let testEl = el;
+        while (testEl) {
+            testEl = testEl.previousElementSibling;
+            if (testEl) {
+                i += 1;
+            }
+        }
+
+        return i;
+    }
+}
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = "cagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template({
+  chartTitle = "Confirmed cases by race and ethnicity in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+    <div class="py-2">
+      <div class="bg-white pt-2 pb-1">
+        <div class="mx-auto">
+            <div class="chart-title">${chartTitle}</div>
+            <div class="svg-holder"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function getTranslations(container) {
+  let translationsObj = {};
+  let translateEls = container.querySelectorAll('[data-label]');
+  translateEls.forEach(item => {
+    translationsObj[item.dataset.label] = item.innerHTML;
+  });
+  let translateElArrays = container.querySelectorAll('[data-group]');
+  translateElArrays.forEach(group => {
+    let groupKey = group.getAttribute('data-group');
+    let arrayItems = group.querySelectorAll('[data-item]');
+    if (groupKey !== null && arrayItems !== null) {
+      let groupItems = {};
+      arrayItems.forEach(item => {
+        let key = item.getAttribute('data-item');
+        groupItems[key] = item.innerHTML;
+      });
+      translationsObj[groupKey] = groupItems;
+    }
+
+  });
+  return translationsObj;
+}
+
+function getScreenResizeCharts() {
+  // Putting this in a special scope for just this component.
+  window.charts = {};
+  // Get window size, return based on breakpoint settings,
+  // Then return mobile, tablet or desktop.
+  const getIsHighDensity = () => {
+    return (
+      (window.matchMedia &&
+        (window.matchMedia(
+          "only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)"
+        ).matches ||
+          window.matchMedia(
+            "only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)"
+          ).matches)) ||
+      (window.devicePixelRatio && window.devicePixelRatio > 1.3)
+    );
+  };
+
+  const getIsRetina = () => {
+    return (
+      ((window.matchMedia &&
+        (window.matchMedia(
+          "only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx), only screen and (min-resolution: 75.6dpcm)"
+        ).matches ||
+          window.matchMedia(
+            "only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)"
+          ).matches)) ||
+        (window.devicePixelRatio && window.devicePixelRatio >= 2)) &&
+      /(iPad|iPhone|iPod)/g.test(navigator.userAgent)
+    );
+  };
+
+  const getOrientation = () => {
+    var orientation =
+      (screen.orientation || {}).type ||
+      screen.mozOrientation ||
+      screen.msOrientation;
+    if (orientation === "landscape-primary") {
+      return 'landscape';
+    } else if (orientation === "landscape-secondary") {
+      // Upside down
+      return 'landscape';
+    } else if (
+      orientation === "portrait-secondary" ||
+      orientation === "portrait-primary"
+    ) {
+      return 'portrait';
+    } else if (orientation === undefined) {
+      return null;
+    }
+    return null;
+  };
+
+  const getWindowSize = () => {
+    let windowSize = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+
+    let isRetina = getIsRetina();
+    let highDensity = getIsHighDensity();
+    let orientation = getOrientation();
+
+    // console.log('retina', isRetina, 'highDensity', highDensity, 'orientation', orientation);
+  
+    if (window.charts !== undefined) {
+      if (windowSize.width <= 576) {
+        window.charts.displayType = "mobile";
+        if (highDensity === true || isRetina === true) {
+          window.charts.displayType = "retina";
+        }
+      } else if (windowSize.width > 576 && windowSize.width <= 768) {
+        window.charts.displayType = "tablet";
+      } else {
+        window.charts.displayType = "desktop";
+      }
+    }
+  };
+
+  
+
+  const handleResize = () => {
+    getWindowSize();
+  };
+
+  window.addEventListener("resize", handleResize);
+  handleResize();
+}
+
+/* temporary fix for charts that don't render well in RTL languages, 
+   such as arabic
+*/
+
+function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
+    let contDiv = elem.querySelector(divSelector);
+    if (contDiv != null) {
+      // temporary override for rtl languages (arabic)
+      // console.log("containing div found", contDiv);
+      contDiv.setAttribute('dir', desired_dir);
+    }
+}
+
+/**
+ * Primary chart rendering function
+ * @param {object} svg 
+ * @param {object} data 
+ * @param {number} x 
+ * @param {number} y 
+ */
+function writeLegend(svg, data, x, y, baselineData) {
+    // Build legend.
+    const legendText = this.getLegendText();
+    if (legendText.length == 0) {
+      return;
+    }
+    const legendW = y.bandwidth()*1.2;
+    const legendY =  this.dimensions.margin.top/2;
+    const legend2X = this.dimensions.width/2;
+
+    let group = svg.append("g");
+
+
+    group
+      .append("rect")
+        .attr("fill", "#92C5DE")
+        .attr("class", "legend-block")
+        .attr("y", legendY)
+        .attr("x", 0)
+        .attr("width", legendW)
+        .attr("height", legendW);
+
+    group
+      .append("text")
+      .text(legendText[0]) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", legendY+legendW/2.0 + 1)
+      .attr("x", legendW*2)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+
+    // Baseline indicator
+    if (baselineData && legendText.length > 1) {
+      group
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", legendY-y.bandwidth()/2)
+        .attr("x", legend2X)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2);
+
+      group
+        .append("text")
+        .text(legendText[1])
+        .attr("class", "legend-caption")
+        .attr("y", legendY+legendW/2.0)
+        .attr("x", legend2X+15)
+        .attr('dominant-baseline','middle')
+        .attr('text-anchor','start');
+    }
+}
+
+/**
+ * Build data bars
+ * @param {object} svg 
+ * @param {object} data 
+ * @param {number} x 
+ * @param {number} y 
+ */
+function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
+    let max_x_domain = x.domain()[1];
+    let component = this;
+
+    // console.log("Write bars data=",data);
+
+    let groups = svg.append("g")
+      .selectAll("g")
+      .data(data)
+      .enter()
+        .append("g");
+
+    // light bg bar
+    groups
+        .append("rect")
+        .attr("class","bg-bar")
+        .attr("fill", "#f2f5fc")
+        .attr("y", (d, i) => y(d.CATEGORY))
+        .attr("x", d => x(0))
+        .attr("width", d => x(max_x_domain))
+        .attr("height", y.bandwidth());
+    
+    // dark bg bar
+    groups
+        .append("rect")
+        .attr("class","fg-bar")
+        .attr("fill", "#92C5DE")
+        .attr("y", (d, i) => y(d.CATEGORY))
+        .attr("x", d => x(0))
+        .attr("width", d => x(d.METRIC_VALUE))
+        .attr("height", y.bandwidth())
+        .attr("id", (d, i) => rootID+'-'+i);
+
+    // transparent hot bar (different if tooltip)
+    groups
+        .append("rect")
+        .attr("class","hot-bar")
+        .attr("fill", "#00ff00")
+        .attr("fill-opacity",0)
+        .attr("y", (d, i) => y(d.CATEGORY))
+        .attr("x", d => x(0))
+        .attr("width", d => x(max_x_domain))
+        .attr("height", y.bandwidth())
+        .attr("tabindex", "0")
+        .attr("aria-label", (d, i) => `${this.ariaLabel(d, baselineData)}`)
+        .on("mouseover focus", function(event, d, i) {
+          d3.select(this.parentNode).select('.fg-bar')
+          .transition().duration(200)
+          .style("fill", "#003D9D");
+          if (tooltip) {
+              // set appropriate tooltip text, reveal tooltip at correct location
+              tooltip.html(component.getTooltip(d,baselineData));
+              tooltip.style("left",'20px');
+              // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+              // tooltip.style("top",`${event.layerY+60}px`)
+              tooltip.style("top",`${event.offsetY+120}px`);
+              tooltip.style("visibility", "visible");
+          }
+        })
+        .on("mouseout blur", function(d) {
+          d3.select(this.parentNode).select('.fg-bar')
+            .transition().duration(200)
+            .style("fill", "#92C5DE");
+          if (tooltip) {
+            d3.select(this).transition();
+            tooltip.style("visibility", "hidden");
+          }
+        });
+    
+
+
+    // Baseline indicator
+    if (baselineData) {
+    groups
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
+        .attr("x", (d,i) => x(baselineData[i].METRIC_VALUE)-2)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2);
+    }
+
+    // Bar Label
+    groups
+      .append("text")
+      .attr("class", "bar-label")
+      .attr("y", (d, i) => y(d.CATEGORY) + (y.bandwidth() / 2))
+      .attr("x", d => x(max_x_domain)+12)
+      // .attr("width", x.bandwidth() / 4)
+      .text(d => this.pctFormatter.format(d.METRIC_VALUE))
+      // .html(d => {
+      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
+      // })
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+
+    // Bar Category
+    groups
+      .append("text")
+      .attr("class", "bar-cat")
+      .attr("y", (d, i) => y(d.CATEGORY)-8) // +this.getYOffset(i)
+      .attr("x", d => x(0))
+      .text(d => d.CATEGORY)
+      // .attr("width", x.bandwidth() / 4)
+      // .html(d => {
+      // return `<tspan dx="0em" dy="-0.5em">${d.CATEGORY}</tspan>`
+      // })
+      .attr('text-anchor','start');
+}
+
+/**
+ * Render categories.
+ * @param {*} extrasFunc @TODO what are the inputs?
+ */
+
+ function renderChart(extrasFunc = null, baselineData = null, tooltip = null, rootID='barid') {
+    // Exclude Other & Unknown categories from displaying for this chart.
+    let data = this.alldata;
+    // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
+    let categories = data.map((group) => group.CATEGORY);
+
+    // Dynamically adjust chart height based on available bars
+    this.dimensions.height = this.dimensions.margin.top + 60 * categories.length;
+    // console.log("New height",this.chartBreakpointValues.height);
+
+    d3.select(this.querySelector("svg"))
+      .attr("viewBox", [
+      0,
+      0,
+      this.dimensions.width,
+      this.dimensions.height,
+    ]);
+
+
+    // let categories = d3.map(data, function(d){return(d.CATEGORY)}).keys();
+
+    // Filter and sort here...
+    // console.log("Categories",categories);
+    // Y position of bars.
+    this.y = d3
+    .scaleBand()
+    .domain(categories)
+    .range([
+        this.dimensions.margin.top,
+        this.dimensions.height - (this.dimensions.margin.bottom),
+    ])
+    .paddingInner(5.0/6.0)
+    .paddingOuter(0.5);
+
+    // console.log("this.y",this.y);
+  
+    // Position for labels.
+    // this.yAxis = (g) =>
+    //   g
+    //     .attr("class", "bar-label")
+    //     .attr("transform", "translate(5," + -32 + ")")
+    //     .call(d3.axisLeft(this.y).tickSize(0))
+    //     .call((g) => g.selectAll(".domain").remove());
+       
+
+    // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
+    this.max_x_domain = 
+    this.x = d3
+      .scaleLinear()
+      .domain([0, 1])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+      .range([this.dimensions.margin.left, this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)]);
+
+    this.svg.selectAll("g").remove();
+
+    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip, rootID);
+    writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
+
+    if (extrasFunc) {
+      extrasFunc.call(this, this.svg, data, this.x, this.y);
+    }
+
+        // Write remaining stuff...
+    // this.classList.remove('d-none')
+  }
+
+// DATE UTILITIES for charts
+//
+// Use parseSnowflakeDate('YYYY-MM-DD') instead of new Date('YYYY-MM-DD') 
+// as the latter assumes GMT, which you probably don't want.
+// This function produces a local (Pacific) date.
+//
+function parseSnowflakeDate(dateStr) {
+    const tokens = dateStr.split('-');
+    const yyyy = +tokens[0];
+    const mm = +tokens[1];
+    const dd = +tokens[2];
+    return new Date(yyyy,mm-1,dd);
+}
+
+function reformatJSDate(theDate, // expects javascript date
+    fmt={ month: "long", day: 'numeric', year:'numeric' }) 
+{
+    const readableDate = 
+    theDate.toLocaleString( document.documentElement.lang, fmt);
+    // console.log(dateStr + " --> " + readableDate);
+    return readableDate;
+}
+
+/* Substitute strings in text using either  or {var}, case-sensitive
+*/
+
+function applySubstitutions(textString, substitutions) {
+    for (const key in substitutions) {
+        const value = substitutions[key];
+        textString = textString.replace(' + key + ', value);
+        textString = textString.replace('{' + key + '}', value);
+        textString = textString.replace('(' + key + ')', value);
+    }
+    return textString;
+}
+
+// cagov-chart-dashboard-groups-race-ethnicity-cases
+
+class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsRaceEthnicityCases");
+    this.translationsObj = getTranslations(this);
+    // console.log("Translations obj",this.translationsObj);
+    this.innerHTML = template(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.labelTran = {
+      'American Indian or Alaska Native':'AI/AN',
+      'Asian':'Asian American',
+      'Native Hawaiian and other Pacific Islander':'NHPI',
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-race-ethnicity-cases")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY);
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
+          this.alldata = alldata.data.by_race_and_ethnicity.cases;
+          this.popdata = alldata.data.by_race_and_ethnicity.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          // splice multi-race and other to the end
+          this.alldata.push(this.alldata.splice(4,1)[0]);
+          this.popdata.push(this.popdata.splice(4,1)[0]);
+          this.alldata.push(this.alldata.splice(5,1)[0]);
+          this.popdata.push(this.popdata.splice(5,1)[0]);
+
+          let publishedDateStr = this.metadata['PUBLISHED_DATE'];
+          let publishedDate = parseSnowflakeDate(publishedDateStr);
+          let collectedDate = parseSnowflakeDate(publishedDateStr);
+          collectedDate.setDate(collectedDate.getDate() - 1);
+
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatJSDate(publishedDate),
+            'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+          d3.select(document.querySelector("#ethnicityGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-race-ethnicity-cases",
+  CAGovDashboardGroupsRaceEthnicityCases
+);
+
+var css_248z$1 = "cagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$1);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template$1({
+  chartTitle = "Confirmed deaths by race and ethnicity in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+  <div class="py-2">
+    <div class="bg-white pt-2 pb-1">
+      <div class="mx-auto">
+        <div class="chart-title">${chartTitle}</div>
+        <div class="svg-holder"></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// cagov-chart-dashboard-groups-race-ethnicity-deaths
+
+class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsRaceEthnicityDeaths");
+    this.translationsObj = getTranslations(this);
+    this.innerHTML = template$1(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.labelTran = {
+      'American Indian or Alaska Native':'AI/AN',
+      'Asian':'Asian American',
+      'Native Hawaiian and other Pacific Islander':'NHPI',
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-race-ethnicity-deaths")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+      // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY);
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.alldata = alldata.data.by_race_and_ethnicity.deaths;
+          this.popdata = alldata.data.by_race_and_ethnicity.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          this.alldata.push(this.alldata.splice(4,1)[0]);
+          this.popdata.push(this.popdata.splice(4,1)[0]);
+          this.alldata.push(this.alldata.splice(5,1)[0]);
+          this.popdata.push(this.popdata.splice(5,1)[0]);
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-deaths');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-race-ethnicity-deaths",
+  CAGovDashboardGroupsRaceEthnicityDeaths
+);
+
+var css_248z$2 = "cagov-chart-dashboard-groups-gender-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$2);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template$2({
+  chartTitle = "Confirmed cases by gender in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+    <div class="py-2">
+      <div class="bg-white pt-2 pb-1">
+        <div class="mx-auto">
+            <div class="chart-title">${chartTitle}</div>
+            <div class="svg-holder"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// cagov-chart-dashboard-groups-gender-cases
+
+class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsGenderCases");
+    this.translationsObj = getTranslations(this);
+    // console.log("Translations obj",this.translationsObj);
+    this.innerHTML = template$2(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.labelTran = {
+      // 'Unknown':'Unknown/undifferentiated',
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+      this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-gender-cases")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY+'s');
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
+          this.alldata = alldata.data.by_gender.cases;
+          this.popdata = alldata.data.by_gender.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+
+          let publishedDateStr = this.metadata['PUBLISHED_DATE'];
+          let publishedDate = parseSnowflakeDate(publishedDateStr);
+          let collectedDate = parseSnowflakeDate(publishedDateStr);
+          collectedDate.setDate(collectedDate.getDate() - 1);
+
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatJSDate(publishedDate),
+            'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+          d3.select(document.querySelector("#genderGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-cases');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-gender-cases",
+  CAGovDashboardGroupsGenderCases
+);
+
+var css_248z$3 = "cagov-chart-dashboard-groups-gender-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$3);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template$3({
+  chartTitle = "Confirmed deaths by gender in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+  <div class="py-2">
+    <div class="bg-white pt-2 pb-1">
+      <div class="mx-auto">
+        <div class="chart-title">${chartTitle}</div>
+        <div class="svg-holder"></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// cagov-chart-dashboard-groups-gender-deaths
+
+class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsGenderDeaths");
+    this.translationsObj = getTranslations(this);
+    this.innerHTML = template$3(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.labelTran = {
+      // 'Unknown':'Unknown/undifferentiated',
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-gender-deaths")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY+'s');
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.alldata = alldata.data.by_gender.deaths;
+          this.popdata = alldata.data.by_gender.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+            if (rec.CATEGORY in this.labelTran) {
+              rec.CATEGORY = this.labelTran[rec.CATEGORY];
+            }
+          });
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-deaths');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-gender-deaths",
+  CAGovDashboardGroupsGenderDeaths
+);
+
+var css_248z$4 = "cagov-chart-dashboard-groups-age-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$4);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template$4({
+  chartTitle = "Confirmed cases by age in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+    <div class="py-2">
+      <div class="bg-white pt-2 pb-1">
+        <div class="mx-auto">
+            <div class="chart-title">${chartTitle}</div>
+            <div class="svg-holder"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// cagov-chart-dashboard-groups-age-cases
+
+class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsAgeCases");
+    this.translationsObj = getTranslations(this);
+    // console.log("Translations obj",this.translationsObj);
+    this.innerHTML = template$4(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-age-cases")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY);
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.metadata = alldata.meta;
+          this.alldata = alldata.data.by_age.cases;
+          this.popdata = alldata.data.by_age.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+
+          let publishedDateStr = this.metadata['PUBLISHED_DATE'];
+          let publishedDate = parseSnowflakeDate(publishedDateStr);
+          let collectedDate = parseSnowflakeDate(publishedDateStr);
+          collectedDate.setDate(collectedDate.getDate() - 1);
+
+          let footerReplacementDict = {
+            'PUBLISHED_DATE' : reformatJSDate(publishedDate),
+            'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
+          };
+          let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+          d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-cases');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-age-cases",
+  CAGovDashboardGroupsAgeCases
+);
+
+var css_248z$5 = "cagov-chart-dashboard-groups-age-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$5);
+
+/**
+ * Render bar chart for vaccinations group.
+ * 
+ * @param {string} translationsObj.chartTitle - Label for the chart
+ * @param {string} translationsObj.chartDataLabel - Chart description
+ */
+function template$5({
+  chartTitle = "Confirmed deaths by age in California",
+  chartDataLabel = null,
+}) {
+  return /*html*/ `
+  <div class="py-2">
+    <div class="bg-white pt-2 pb-1">
+      <div class="mx-auto">
+        <div class="chart-title">${chartTitle}</div>
+        <div class="svg-holder"></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// cagov-chart-dashboard-groups-age-deaths
+
+class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardGroupsAgeDeaths");
+    this.translationsObj = getTranslations(this);
+    this.innerHTML = template$5(this.translationsObj);
+    // Settings and initial values
+    this.nbr_bars = 8;
+    this.bar_vspace = 60;
+
+    this.chartOptions = {
+      // Data
+      dataUrl: config.chartsDataFile,
+      desktop: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 400,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      tablet: {
+        fontSize: 14,
+        height: 60 + this.nbr_bars * this.bar_vspace,
+        width: 350,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0, // 20 added for divider
+          left: 0,
+        },
+      },
+      mobile: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 440,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+      retina: {
+        fontSize: 12,
+        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
+        width: 320,
+        margin: {
+          top: 60,
+          right: 80,
+          bottom: 0,
+          left: 0,
+        },
+      },
+    };
+
+    this.intFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.pctFormatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = this.chartOptions[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = this.chartOptions[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select("cagov-chart-dashboard-groups-age-deaths")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+
+    // Set default values for data and labels
+    this.dataUrl = this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl);
+
+    rtlOverride(this); // quick fix for arabic
+  }
+
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = this.translationsObj.chartBarCaption;
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    caption = caption.replace('{category}', d.CATEGORY);
+    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
+    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    // console.log("Aria Label",caption);
+    return caption;
+  }
+
+  getLegendText() {
+    return [
+      this.translationsObj.chartLegend1,
+      this.translationsObj.chartLegend2,
+    ];
+  }
+
+  renderExtras(svg, data, x, y) {
+    // Not using this separator line that divides groups from unknown information
+    // let group = svg.append("g");
+    // group
+    //   .append("rect")
+    //   .attr("fill", "#000000")
+    //   .attr("class", "divider")
+    //   .attr("y", y(6) + (this.bar_vspace * 7) / 12)
+    //   .attr("x", 0)
+    //   .attr("width", this.dimensions.width)
+    //   .attr("height", 0.75);
+  }
+
+  retrieveData(url) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.alldata = alldata.data.by_age.deaths;
+          this.popdata = alldata.data.by_age.population;
+          this.alldata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+          this.popdata.forEach(rec => {
+            rec.METRIC_VALUE /= 100.0;
+          });
+
+          // "Unknown"
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
+
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-deaths');
+          // this.resetTitle({
+          //   region: regionName, 
+          //   chartTitle: this.translationsObj.chartTitle,
+          //   chartTitleCounty: this.translationsObj.chartCounty,
+          // });
+        }.bind(this)
+      );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-groups-age-deaths",
+  CAGovDashboardGroupsAgeDeaths
+);
+
+window.fetch('/countystatus.json')
+.then(response => response.json())
+.then(function(data) {
+  let aList = [];
+  data.forEach(c => { aList.push(c.county); });
+  const awesompleteSettings = {
+    autoFirst: true,
+    filter: function (text, input) {
+      return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+    },  
+    item: function (text, input) {
+      return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+    },
+    replace: function (text) {
+      let before = this.input.value.match(/^.+,\s*|/)[0];
+      let finalval = before + text;
+      this.input.value = finalval;        
+      countySelected(finalval);
+    },
+    list: aList
+  };
+  const aplete = new Awesomplete('#location-query', awesompleteSettings);
+  setupFormSubmitListener(aList);
+});
+
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+
+function setupFormSubmitListener(aList) {
+  document.querySelector('#county-form').addEventListener('submit',function(event) {
+    event.preventDefault();
+    
+    clearBtn.classList.remove('d-none');
+    document.querySelector('#county-query-error').style.display = 'none';
+    // do I have a full county typed in here?
+    let typedInValue = document.querySelector('#location-query').value;
+    let foundCounty = '';
+    aList.forEach(county => {
+      if(county.toLowerCase() == typedInValue.toLowerCase()) {
+        foundCounty = county;
+      }
+    });
+    if(foundCounty) {
+      countySelected(foundCounty);
+    } else {
+      document.querySelector('#county-query-error').style.display = 'block';
+    }
+  }.bind(this));  
+}
+
+function countySelected(county) {
+  document.querySelector('#county-query-error').style.display = 'none';
+  //trigger the filter on all the county dashboards
+
+  function resetCounties(nom) {
+    try {
+      let activeSheet = window[nom].getWorkbook().getActiveSheet().getWorksheets()[1];
+      
+      if(activeSheet) {
+        console.log("Tableau Filtering",nom,county);
+        activeSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
+        // showCounties();
+      } else {
+        // console.log("Worksheet not loaded yet - shouldn't happen",nom);
+        setTimeout(resetCounties.bind(this,nom),500);
+      }
+    } catch(err) {
+      // console.log("Worksheet not loaded yet",nom);    
+      setTimeout(resetCounties.bind(this,nom),500);
+    }
+  }
+  resetCounties("casesChartCountyViz");
+  resetCounties("testingChartCounty");
+  resetCounties("hospitalChartCounty");
+  showCounties();
+  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+    c.classList.remove('d-none');
+  });
+  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
+    c.innerHTML = county;
+    c.classList.remove('d-none');
+  });
+}
+
+async function displayChart(containerSelector,width,height,url) {
+  let chartContainer = document.querySelector(containerSelector);
+  var chartURL = url;
+  let chartOptions = {
+    width: width+'px',
+    height: height+'px'
+  };
+
+  let chartViz = await new tableau.Viz(chartContainer, chartURL, chartOptions);
+  return chartViz;
+}
+/* desctop */
+let topChartHeights1 = 600;
+let chartWidth = 900;
+let chartWidth2 = 900;
+// let chartWidth3 = 800;
+let countyMapChartHeight = 660;
+
+const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
+// sample https://public.tableau.com/views/COVID-19StateDashboardv2_0/5_1StateTesting-Epicurves?:language=en&:display_count=y&publish=yes&:origin=viz_share_link
+// OLD https://public.tableau.com/views/StateDashboard_16008816705240
+// DEV https://public.tableau.com/views/COVID-19StateDashboardv2_0
+
+// Map responsivness
+var divElement = document.querySelector('.col-lg-10');
+if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
+  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; countyMapChartHeight = 560;} 
+  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) { chartWidth2 = 750; countyMapChartHeight = 660;} 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660; } 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; } 
+  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; } 
+  else { chartWidth2 = 350; countyMapChartHeight = 660; }
+
+// jbum overriding chartWidth3
+// chartWidth3 = Math.min(Math.max(275, divElement.offsetWidth-132), 900);
+
+// let chartHeight3 = Math.floor(3*chartWidth3/4);
+// if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
+//   chartHeight3 = Math.floor(Math.max(450,chartWidth3)*3/2);
+// }
+
+/* phone */
+if(window.innerWidth < 700) {
+  topChartHeights1 = 930;
+  //countyMapChartHeight = 560;
+  chartWidth = window.innerWidth - 30;
+  //chartWidth2 = chartWidth;
+}
+/* small tablet */
+else if (window.innerWidth > 700 && window.innerWidth < 918) {
+  topChartHeights1 = 930;
+  //countyMapChartHeight = 560;
+  chartWidth = 700;
+ // chartWidth2 = chartW920idth;
+}
+/* big tablet */
+else if (window.innerWidth > 919 && window.innerWidth < 1200) {
+  topChartHeights1 = 600;
+  //countyMapChartHeight = 560;
+  chartWidth = 800;
+ // chartWidth2 = 920;
+}
+
+async function setupCharts() {
+  // these are county toggles and state toggles
+  if(document.getElementById('casesChartState')) {
+    // window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    // let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    // let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    // window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+    // window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
+    // window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
+    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,tableauPrefix2+'/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,tableauPrefix2+'/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,tableauPrefix2+'/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+
+
+    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
+
+    // this chart does not toggle
+    // unchanged for 2.0
+    let mapChart = displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link');
+
+    // these are their own toggle sets
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
+
+    // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
+    //                                         tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    // let genderGroupChart = ''; // we aren't loading this until they click
+    // let ageGroupChart = ''; // we aren't loading this until they click
+  }
+}
+
+
+
+setupCharts();
+
+function resetGroupToggles() {
+  console.log("Reset Group Toggles");
+  groupTogglers.forEach(toggle => {
+    toggle.classList.remove('toggle-active');
+  });
+  document.getElementById('gender-graph').style.display = 'none';
+  document.getElementById('ethnicity-graph').style.display = 'none';
+  document.getElementById('age-graph').style.display = 'none';
+}
+
+let groupTogglers = document.querySelectorAll('.js-toggle-group');
+groupTogglers.forEach(toggle => {
+  toggle.addEventListener('click',function(event) {
+    event.preventDefault();
+    resetGroupToggles();
+    if(this.classList.contains('gender')) {
+      document.getElementById('gender-graph').style.display = 'block';
+      this.classList.add('toggle-active');
+      // displayChart('#genderGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
+    }
+    if(this.classList.contains('age')) {
+      document.getElementById('age-graph').style.display = 'block'; 
+      this.classList.add('toggle-active');
+      // ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
+      // displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
+    }
+    if(this.classList.contains('ethnicity')) {
+      document.getElementById('ethnicity-graph').style.display = 'block';      
+    }
+    this.classList.add('toggle-active');
+  });
+});
+
+function resetCountyToggles() {
+  window.countyTogglers.forEach(toggle => {
+    toggle.classList.remove('toggle-active');
+  });
+  document.getElementById('cases-state-graph').style.display = 'none';
+  document.getElementById('cases-county-graph').style.display = 'none';
+  document.getElementById('testing-state-graph').style.display = 'none';
+  document.getElementById('testing-county-graph').style.display = 'none';
+  document.getElementById('hospital-state-graph').style.display = 'none';
+  document.getElementById('hospital-county-graph').style.display = 'none';
+}
+
+
+if(document.getElementById('cases-state-graph')) {
+  document.getElementById('cases-state-graph').style.display = 'block';
+  window.countyTogglers = document.querySelectorAll('.js-toggle-county');
+  window.countyTogglers.forEach(toggle => {
+    toggle.addEventListener('click',function(event) {
+      event.preventDefault();
+      resetCountyToggles();
+      if(this.classList.contains('statewide')) {
+        showStateWides();
+      }
+      if(this.classList.contains('county')) {
+        showCounties();
+      }
+    });
+  });
+}
+
+function showStateWides() {
+  resetCountyToggles();
+  document.querySelectorAll('.js-toggle-county.statewide').forEach(c => {
+    c.classList.add('toggle-active');
+  });
+  document.getElementById('cases-state-graph').style.display = 'block';
+  document.getElementById('testing-state-graph').style.display = 'block';
+  document.getElementById('hospital-state-graph').style.display = 'block';
+}
+
+function showCounties() {
+  resetCountyToggles();
+  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
+    c.classList.add('toggle-active');
+  });
+
+  document.getElementById('cases-county-graph').style.display = 'block';
+  document.getElementById('testing-county-graph').style.display = 'block';
+  document.getElementById('hospital-county-graph').style.display = 'block';
+}
+
+if(countyInput) {
+  countyInput.addEventListener("focus", function() {
+    inputValue();
+   });
+  
+   countyInput.addEventListener("input", function() {
+    inputValue();
+   });
+  countyInput.addEventListener("blur", function() {
+     inputValue();
+  });  
+}
+
+function inputValue() {
+var countyInput = document.getElementById("location-query");
+var clearBtn = document.getElementById("clearCounty");
+  if (countyInput && countyInput.value) {
+    clearBtn.classList.remove('d-none');
+  }
+  else {clearBtn.classList.add('d-none');}
+}
+
+if(clearBtn) {
+  clearBtn.addEventListener("blur", function(e) { 
+    inputValue();
+  });
+
+  clearBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("location-query").value = '';
+    showStateWides();
+    // resetGroupToggles();
+    document.querySelectorAll('.js-toggle-county-container').forEach(c => {
+      c.classList.add('d-none');
+    });
+    //this.classList.add('d-none');
+  });
+}
+// normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
+// showStateWides();
 
 		</script>
 	
