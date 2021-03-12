@@ -181,7 +181,7 @@ class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
       .attr("x", (d) => x(0))
       .attr("width", (d) => x(d.METRIC_VALUE) - x(0))
       .attr("height", y.bandwidth())
-      .attr("id", (d, i) => "barid-" + i)
+      .attr("id", (d, i) => "ve-rea-" + i)
       .attr("tabindex", "0")
       .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
 

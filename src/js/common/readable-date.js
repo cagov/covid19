@@ -30,6 +30,16 @@ function getSnowflakeStyleDate(dayDelta) {
     return [year, month, day].join('-');
 }
 
+function reformatJSDate(theDate, // expects javascript date
+    fmt={ month: "long", day: 'numeric', year:'numeric' }) 
+{
+    const readableDate = 
+    theDate.toLocaleString( document.documentElement.lang, fmt);
+    // console.log(dateStr + " --> " + readableDate);
+    return readableDate;
+}
+
+
 // Date converter for use on chart footnotes.
 // Converts a string (typically from Snowflake) 
 // in the form YYYY-MM-DD
@@ -41,11 +51,8 @@ function getSnowflakeStyleDate(dayDelta) {
 function reformatReadableDate(dateStr, // expects YYYY-MM-DD
                               fmt={ month: "long", day: 'numeric', year:'numeric' }) {
     const theDate = parseSnowflakeDate(dateStr);
-    const readableDate = 
-         theDate.toLocaleString( document.documentElement.lang, fmt);
-    // console.log(dateStr + " --> " + readableDate);
-    return readableDate;
+    return reformatJSDate(theDate, fmt);
 }
 
 
-export {reformatReadableDate, getSnowflakeStyleDate, parseSnowflakeDate};
+export {reformatReadableDate, getSnowflakeStyleDate, parseSnowflakeDate, reformatJSDate};
