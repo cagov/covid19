@@ -11,7 +11,7 @@ export default function template({
 }) {
   return /*html*/ `
   <div class="py-2">
-    <div class="bg-white py-4">
+    <div class="bg-white pt-2 pb-1">
       <div class="mx-auto">
         <div class="chart-title">${chartTitle}</div>
         <div class="svg-holder"></div>
