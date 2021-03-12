@@ -5,14 +5,18 @@
  * @param {number} x 
  * @param {number} y 
  */
-function writeLegend(svg, data, x, y) {
+function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
+    const legendText = this.getLegendText();
+    if (legendText.length == 0) {
+      return;
+    }
     const legendW = y.bandwidth()*1.2;
     const legendY =  this.dimensions.margin.top/2;
-    const legendText = this.getLegendText();
-    const legend2X = this.dimensions.width/3;
+    const legend2X = this.dimensions.width/2;
 
-    let group = svg.append("g")
+    let group = svg.append("g");
+
 
     group
       .append("rect")
@@ -33,22 +37,24 @@ function writeLegend(svg, data, x, y) {
       .attr('text-anchor','start');
 
     // Baseline indicator
-    // group
-    //   .append("rect")
-    //   .attr("fill", "#1f2574")
-    //   .attr("y", legendY-y.bandwidth()/2)
-    //   .attr("x", legend2X)
-    //   .attr("width", d => 4)
-    //   .attr("height", y.bandwidth()*2)
+    if (baselineData && legendText.length > 1) {
+      group
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", legendY-y.bandwidth()/2)
+        .attr("x", legend2X)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2)
 
-    // group
-    //   .append("text")
-    //   .text(legendText[1])
-    //   .attr("class", "legend-caption")
-    //   .attr("y", legendY+legendW/2.0)
-    //   .attr("x", legend2X+15)
-    //   .attr('dominant-baseline','middle')
-    //   .attr('text-anchor','start');
+      group
+        .append("text")
+        .text(legendText[1])
+        .attr("class", "legend-caption")
+        .attr("y", legendY+legendW/2.0)
+        .attr("x", legend2X+15)
+        .attr('dominant-baseline','middle')
+        .attr('text-anchor','start');
+    }
 }
 
 /**
@@ -58,8 +64,9 @@ function writeLegend(svg, data, x, y) {
  * @param {number} x 
  * @param {number} y 
  */
-function writeBars(svg, data, x, y) {
+function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
     let max_x_domain = x.domain()[1];
+    let component = this;
 
     // console.log("Write bars data=",data);
 
@@ -88,9 +95,9 @@ function writeBars(svg, data, x, y) {
         .attr("x", d => x(0))
         .attr("width", d => x(d.METRIC_VALUE))
         .attr("height", y.bandwidth())
-        .attr("id", (d, i) => "barid-"+i);
+        .attr("id", (d, i) => rootID+'-'+i);
 
-    // transparent hot bar
+    // transparent hot bar (different if tooltip)
     groups
         .append("rect")
         .attr("class","hot-bar")
@@ -101,30 +108,43 @@ function writeBars(svg, data, x, y) {
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth())
         .attr("tabindex", "0")
-        .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
+        .attr("aria-label", (d, i) => `${this.ariaLabel(d, baselineData)}`)
         .on("mouseover focus", function(event, d, i) {
           d3.select(this.parentNode).select('.fg-bar')
           .transition().duration(200)
           .style("fill", "#003D9D");
-          // problem the svg is not the width in px in page as the viewbox width
+          if (tooltip) {
+              // set appropriate tooltip text, reveal tooltip at correct location
+              tooltip.html(component.getTooltip(d,baselineData))
+              tooltip.style("left",'20px');
+              // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+              // tooltip.style("top",`${event.layerY+60}px`)
+              tooltip.style("top",`${event.offsetY+120}px`)
+              tooltip.style("visibility", "visible");
+          }
         })
         .on("mouseout blur", function(d) {
           d3.select(this.parentNode).select('.fg-bar')
-          .transition().duration(200)
-          .style("fill", "#92C5DE");
-          // if (tooltip !== null) { // @TODO Q: why is tooltip coming null
-          //   tooltip.style.visibility = "hidden";
-          // }
+            .transition().duration(200)
+            .style("fill", "#92C5DE");
+          if (tooltip) {
+            d3.select(this).transition();
+            tooltip.style("visibility", "hidden");
+          }
         });
+    
+
 
     // Baseline indicator
-    // groups
-    //     .append("rect")
-    //     .attr("fill", "#1f2574")
-    //     .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
-    //     .attr("x", d => x(d.BASELINE_VALUE)-2)
-    //     .attr("width", d => 4)
-    //     .attr("height", y.bandwidth()*2)
+    if (baselineData) {
+    groups
+        .append("rect")
+        .attr("fill", "#1f2574")
+        .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
+        .attr("x", (d,i) => x(baselineData[i].METRIC_VALUE)-2)
+        .attr("width", d => 4)
+        .attr("height", y.bandwidth()*2);
+    }
 
     // Bar Label
     groups
@@ -158,7 +178,8 @@ function writeBars(svg, data, x, y) {
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
  */
-export default function renderChart(extrasFunc = null) {
+
+ export default function renderChart(extrasFunc = null, baselineData = null, tooltip = null, rootID='barid') {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
@@ -212,8 +233,8 @@ export default function renderChart(extrasFunc = null) {
 
     this.svg.selectAll("g").remove();
 
-    writeBars.call(this, this.svg, data, this.x, this.y);
-    writeLegend.call(this, this.svg, data, this.x, this.y);
+    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip, rootID);
+    writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {
       extrasFunc.call(this, this.svg, data, this.x, this.y);
