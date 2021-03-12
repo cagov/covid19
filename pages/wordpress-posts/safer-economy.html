@@ -1,84 +1,51 @@
 ---
 layout: "page.njk"
 title: "Blueprint for a Safer Economy"
-meta: "California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities. Understand your county&#8217;s status Every county in California is assigned to a tier based on its positivity rate, adjusted case rate, and health equity metric. Counties must remain in a tier for at least 3 [&hellip;]"
+meta: "California’s blueprint for reopening has criteria for loosening and tightening restrictions on activities based on the level of spread of COVID-19. On this page: Current tier assignments Reopening safely for all communities Questions and answers Current tier assignments as of {{_varTierDate_}} Every county in California is assigned to a tier based on its positivity rate, [&hellip;]"
 author: "State of California"
-publishdate: "2021-03-09T19:40:51Z"
-tags: ["translate"]
+publishdate: "2021-03-12T21:26:40Z"
 addtositemap: true
 ---
 
-<p>California has a blueprint for reducing COVID-19 in the state with revised criteria for loosening and tightening restrictions on activities.</p>
+<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->
 
 
 
-<cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}"></cagov-reopening>
+<div class="full-bleed">
+  <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}"></cagov-reopening></div>
 
 
 
-<h2 class="has-text-align-center">Understand your county&#8217;s status</h2>
+<p>California’s blueprint for reopening has criteria for loosening and tightening restrictions on activities based on the level of spread of COVID-19.</p>
 
 
 
-<p>Every county in California is assigned to a tier based on its positivity rate, adjusted case rate, and health equity metric. Counties must remain in a tier for at least 3 weeks before moving to a less restrictive tier. Data is reviewed weekly and tiers are updated on Tuesdays. To move to a less restrictive tier, a county must meet the next tier’s criteria for two consecutive weeks. If a county’s metrics worsen for two consecutive weeks, it will be assigned a more restrictive tier. Read more about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">tier assignment rules</a>.</p>
+<p class="h3">On this page:</p>
 
 
 
-<h3 class="has-text-align-center">Reopening safely for all communities</h3>
+<ul class="toc"><li><strong><a href="#tier-assignments" data-type="internal" data-id="#tier-assignments">Current tier assignments</a></strong></li><li><strong><a href="#reopening-safely" data-type="internal" data-id="#reopening-safely">Reopening safely for all communities</a></strong></li><li><strong><a href="#blueprint-questions-and-answers" data-type="internal" data-id="#blueprint-questions-and-answers">Questions and answers</a></strong></li></ul>
 
 
 
-<p>COVID-19 has impacted some communities more than others. They face higher rates of infection and death. These include our Latino, Black, Pacific Islander, low income, and essential worker communities.</p>
+<h2 class="has-text-align-center" id="tier-assignments">Current tier assignments as of {{_varTierDate_}}</h2>
 
 
 
-<h4 class="has-text-align-left">Health equity metric</h4>
+<p>Every county in California is assigned to a tier based on its positivity rate, adjusted case rate, and health equity metric. Counties must remain in a tier for at least 3 weeks before moving to a less restrictive tier. Counties must meet the next tier’s criteria for two consecutive weeks to move to a less restrictive tier. If a county’s metrics worsen for two consecutive weeks, it will be assigned a more restrictive tier. Read more about&nbsp;<a rel="noreferrer noopener" target="_blank" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">tier assignment rules</a>.</p>
 
 
 
-<p>Counties must address COVID-19 in <strong>all</strong> communities to open further, including making sure the positivity rate in certain neighborhoods (health equity metric) does not significantly lag behind overall county positivity rates. These efforts need cross-sector and broad partnerships to succeed. The health equity metric is only used to decide whether a county can move to a less restrictive tier. Learn more about this <a rel="noreferrer noopener" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/CaliforniaHealthEquityMetric.aspx" target="_blank">focus on equity</a>.</p>
+<p>On March 12, 2021, California reached 2 million vaccination doses in the vaccine equity metric. New Blueprint tier assignments were announced and go into effect on March 14, 2021.</p>
 
 
 
-<h4 class="has-text-align-left">Vaccine equity metric</h4>
+<p><strong>California&#8217;s county risk levels</strong></p>
 
 
 
-<p>Ending the COVID-19 pandemic quickly and effectively requires vaccinating those most at risk. To do so, we’re setting aside 40% of vaccines to distribute to the hardest-hit communities. This approach will help lower the rate of community infection, hospitalizations, and deaths, as well as reduce potential new variants that might emerge with each new case. This is the most equitable and impactful way to distribute our still-limited vaccine supply to end this pandemic.</p>
-
-
-
-<p>We’ve set an immediate goal of reaching 2 million vaccine doses administered to the hardest-hit communities in the state, representing about 25% of eligible Californians. When these 2 million vaccine doses have been administered, the Blueprint for a Safer Economy tiers will be updated to allow for somewhat higher case rates. Learn more about these upcoming changes the CDPH’s <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">Blueprint for a Safer Economy framework</a>.</p>
-
-
-
-<p>&nbsp;</p>
-<div class="matrix-holder"></div>
-<p class="small-text">The positivity rate in the matrix above excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</br>
-*Small counties (those with a population less than 106,000) may be subject to alternate case assessment measures for purposes of tier assignment.</br>
-**Health equity metric is not applied for small counties. The health equity metric is used to move to a less restrictive tier.</p>
-<p>&nbsp;</p>
-
-
-
-<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}-->
-<!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->
-
-
-
-<h3 class="has-text-align-center">Regional Stay Home Order</h3>
-
-
-
-<p>The CA Department of Public Health ended the Regional Stay Home Order across California. This action came as projected ICU availability rose above 15%. Counties have returned to their assigned Blueprint tiers and are urged to continue safe practices, avoiding crowds and wearing a mask when leaving home.</p>
-
-
-
-<h3 class="has-text-align-center" id="county-status">Current tier assignments as of {{_varTierDate_}}</h3>
-
-
-
-<p>Data is reviewed weekly and tiers are updated on Tuesdays. At a minimum, counties must remain in a tier for at least 3 weeks before moving to a less restrictive tier. Counties must meet the next tier’s criteria for two consecutive weeks to move to a less restrictive tier.</p>
+<div class="matrix-county-risk-levels"></div>
 
 
 
@@ -90,15 +57,68 @@ addtositemap: true
 
 
 
+<h2 class="has-text-align-center" id="reopening-safely">Reopening safely for all communities</h2>
+
+
+
+<p>COVID-19 has impacted some communities more than others. Adults 65 and older, people with pre-existing health conditions, Latinos, Blacks, Pacific Islanders, people who are low-income, and our essential worker community all face higher rates of infection and death.</p>
+
+
+
+<h4><strong>Key indicators that determine reopening</strong></h4>
+
+
+
+<figure class="wp-block-table table-gridded"><table><tbody><tr><td><strong>Adjusted case rate</strong><br><strong>Daily new cases (per 100k)</strong></td><td>7-day average of daily COVID-19 cases per 100K with 7-day lag, adjusted for number of tests performed</td></tr><tr><td><strong>Positivity rate</strong></td><td>7-day average of all COVID-19 tests performed that are positive</td></tr><tr><td><strong>Health equity metric (Positivity rate for HPI quartile 1)</strong></td><td>7-day average of all COVID-19 tests performed that are positive for the lowest quartile, quartile 1, according to the Healthy Places Index</td></tr><tr><td><strong>Vaccines administered</strong></td><td>Number of vaccines doses administered statewide to people in the Health Places Index lowest quartile, quartile 1 (Vaccine Equity Metric)</td></tr></tbody></table></figure>
+
+
+
+<h3 class="has-text-align-left">Health equity metric</h3>
+
+
+
+<p>Counties must address COVID-19 in <strong>all</strong> communities to open further, including making sure the positivity rate in certain neighborhoods (health equity metric) does not significantly lag behind overall county positivity rates. These efforts need cross-sector and broad partnerships to succeed. The health equity metric is only used to decide whether a county can move to a less restrictive tier. Learn more about this <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/CaliforniaHealthEquityMetric.aspx">focus on equity</a>.</p>
+
+
+
+<h3 class="has-text-align-left">Vaccine equity metric</h3>
+
+
+
+<p>Forty percent (40%) of COVID-19 cases and deaths occur in California’s lowest <a href="https://covid19.ca.gov/vaccines/#California-vaccines-dashboard">Healthy Places Index quartile </a>(HPI). To end the pandemic, we’re setting aside forty percent (40%) of vaccines to distribute to in HPI quartile 1. This approach will help lower the rate of community infection, hospitalization, and death, as well as reduce potential new variants that might emerge.&nbsp;</p>
+
+
+
+<p>We’ve reached our immediate goal of reaching 2 million vaccine doses administered to the hardest-hit communities statewide (Vaccine Equity Metric), representing about twenty-five&nbsp;(25%) of eligible Californians. As a result, the Blueprint for a Safer Economy tiers have been updated to allow for somewhat higher case rates in the Substantial (red) tier. Learn more about these changes in CDPH’s <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">Blueprint for a Safer Economy framework</a>.</p>
+
+
+
+<h3>How to move between risk levels</h3>
+
+
+
+<p>There are two measures to determine how counties move through tiers: case rates and test positivity. We’ve been tracking these measures through regular progression and accelerated progression. To move to a higher tier with regular progression, a county must meet the case rate and test positivity thresholds for that tier for two consecutive weeks. Accelerated progression requires that test positivity and health equity metric are especially low with a declining case rate to move to a less restrictive tier. Read comprehensive detail about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">how counties can move through tiers</a>.</p>
+
+
+
+<p>&nbsp;</p>
+<div class="matrix-holder"></div>
+<p class="small-text">The positivity rate in the matrix above excludes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</br>
+*Small counties (those with a population less than 106,000) may be subject to alternate case assessment measures for purposes of tier assignment.<br>
+**Health equity metric is not applied for small counties. The health equity metric is used to move to a less restrictive tier.</p>
+<p>&nbsp;</p>
+
+
+
 <div class="mt-3 text-center">
  <a href="https://covid19.ca.gov/state-dashboard/" class="link-arrow-blue">
             <div class="link-arrow-label">EXPLORE MORE DATA</div><cagov-arrow>
-        </a>
+        </cagov-arrow></a>
 </div>
 
 
 
-<h2 class="has-text-align-center">Questions and answers</h2>
+<h2 class="has-text-align-center" id="blueprint-questions-and-answers">Questions and answers</h2>
 
 
 
@@ -114,22 +134,6 @@ addtositemap: true
 
 
 
-<h4 class="wp-accordion">What happened to the County Monitoring List?</h4>
-
-
-
-<p class="wp-accordion-content">On August 31, the Blueprint for a Safer Economy replaced the County Data Monitoring List for determining what business can and cannot open.</p>
-
-
-
-<p class="wp-accordion-content">So why change? We learned a lot over the first several months of the pandemic about COVID-19 and how it spreads. For example, we know how much safer outdoor activities are than indoor ones and that it’s critical everyone wears a mask to limit the spread of the disease. This blueprint incorporates what we’ve learned.</p>
-
-
-
-<p class="wp-accordion-content">The Blueprint for a Safer Economy is the next evolution of our response. We’ve revised the criteria and the time between changing tiers. We&#8217;ve made it easy for counties to see how changes affect the disease’s trajectory and for businesses and customers to plan ahead. And we’ve given Californians one place to look up whether a business or activity is allowed near them.</p>
-
-
-
 <h4 class="wp-accordion">What happens if my county’s case rate and positivity measures fall into two different tiers?</h4>
 
 
@@ -142,11 +146,11 @@ addtositemap: true
 
 
 
-<p class="wp-accordion-content">All K-6 grade schools are able to open for in-person instruction if the county case rate is below 25 per 100,000 and their plan for reopening is approved by county health officials or the State Safe Schools Team. All schools are able to open for in-person instruction if the county is in the red, orange or yellow tiers.  </p>
+<p class="wp-accordion-content">All K-6 grade schools are able to open for in-person instruction if the county case rate is below 25 per 100,000 and their plan for reopening is not found deficient by county health officials or the State Safe Schools Team. All schools are able to open for in-person instruction if the county is in the red, orange or yellow tiers.&nbsp; </p>
 
 
 
-<p class="wp-accordion-content">All public schools must offer in-person instruction under the <a href="http://cert1.mail-west.com/7Jyj7W/uzjanmc7rm/k36817Jgtmy/0gk2q/qvnq7Jddykx/817J/qo3iy3h2k1i56alg?_c=d%7Cze7pzanwmhlzgt%7C1865v1x2u3lv3bd&amp;_ce=1614969307.2f0bcbf94cf0f1ef3b6c085fb9534889">COVID-19 relief and school reopening relief package</a> for K-2 grades and students with high needs. Schools that do not offer in-person instruction for these groups by March 31, 2021 will lose 1 percent of eligible funds every day thereafter.&nbsp;</p>
+<p class="wp-accordion-content">All public schools must offer in-person instruction under the <a href="http://cert1.mail-west.com/7Jyj7W/uzjanmc7rm/k36817Jgtmy/0gk2q/qvnq7Jddykx/817J/qo3iy3h2k1i56alg?_c=d%7Cze7pzanwmhlzgt%7C1865v1x2u3lv3bd&amp;_ce=1614969307.2f0bcbf94cf0f1ef3b6c085fb9534889">COVID-19 relief and school reopening relief package</a> for K-2 grades and students with high needs by March 31, 2021. Schools that do not offer in-person instruction for these groups by that date will lose 1 percent of eligible funds every day thereafter.&nbsp;</p>
 
 
 
@@ -154,7 +158,7 @@ addtositemap: true
 
 
 
-<p class="wp-accordion-content">Learn more about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf">guidance for schools<span class="pdf-link-icon no-underline-icon" aria-hidden="true">PDF</span></a>.</p>
+<p class="wp-accordion-content">Learn more about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf">guidance for schools</a>.</p>
 
 
 
@@ -163,6 +167,11 @@ addtositemap: true
 
 
 <ul class="wp-accordion-content"><li>Stay home except for essential needs.</li><li>Wear a mask in public.</li><li>Wash your hands regularly.</li><li>Keep at least six feet of physical distance when in public.</li><li>Limit mixing with people you don’t live with.</li><li><a href="https://covid19.ca.gov/vaccines/">Get vaccinated</a>.</li></ul>
+
+
+
+<!-- Ethnio Activation Code -->
+<script type="text/javascript" language="javascript" src="//ethn.io/81005.js" async="true" charset="utf-8"></script>
 
 
 
