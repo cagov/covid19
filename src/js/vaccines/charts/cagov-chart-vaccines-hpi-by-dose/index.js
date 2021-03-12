@@ -10,7 +10,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    console.log("Translations Dose",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.barColor = '#1F2574';

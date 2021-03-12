@@ -10,7 +10,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
     this.translationsObj = getTranslations(this);
-    console.log("Translations People",this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
     this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'}

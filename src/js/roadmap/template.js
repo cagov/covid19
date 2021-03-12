@@ -59,6 +59,9 @@ export default function template(json) {
       </div>
       <div id="reopening-error" style="visibility: hidden" class="reopening-form-error mb-1 text-danger text-small text-center">${json.emptySearchError}</div>
       <button type="submit" id="reopening-submit" class="btn btn-primary">${json.buttonText}</button>
+      <br />
+      <br />
+      <p class="small-text">Note: Tier assignments will be updated today, March 12, 2021, by 2:00 pm.</p>
     </form>
     <div class="card-holder"></div>
   </div></div></div></div>`;
