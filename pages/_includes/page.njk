@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block contentBlock %}
-  <div class="container-fluid jumbotron{%- pagesection page, 'state-dashboard' %} mb-0{%- endpagesection %}{%- pagesection page, 'v2-state-dashboard' %} mb-0{%- endpagesection %} inverse-hyperlink jumbo-img">
+  <div class="container-fluid jumbotron{%- pagesection page, 'v1-state-dashboard' %} mb-0{%- endpagesection %}{%- pagesection page, 'state-dashboard' %} mb-0{%- endpagesection %} inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -42,9 +42,9 @@
             <p class="small-text">{{text.last_updated}}&nbsp;
               {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
-              {%- elseif page | engSlug === "state-dashboard" -%}
+              {%- elseif page | engSlug === "v1-state-dashboard" -%}
                 {{ (tableauCovidMetrics[0].DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
-              {%- elseif page | engSlug === "v2-state-dashboard" -%}
+              {%- elseif page | engSlug === "state-dashboard" -%}
                 {# {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }} #}
                 {{ (dailyStatsV2.data.cases.DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
@@ -59,10 +59,10 @@
       </div>
     </div>
   </div>
-  {%- pagesection page, "state-dashboard" %}
-  {% include "dashboard.njk" %}
+  {%- pagesection page, "v1-state-dashboard" %}
+  {% include "dashboard-v1.njk" %}
   {% endpagesection -%}
-  {%- pagesection page, "v2-state-dashboard" %}
+  {%- pagesection page, "state-dashboard" %}
   {% include "dashboard-v2.njk" %}
   {% endpagesection -%}
 
