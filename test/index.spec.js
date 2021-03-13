@@ -135,18 +135,6 @@ describe('homepage', () => {
   }, timeout);
 });
 
-describe('what is open', () => {
-  test('select county and industry works', async () => {
-    await page.goto(hostname + '/safer-economy/');
-    await page.waitForSelector('#location-query');
-    await page.type('#location-query', 'san');
-
-    await page.waitForSelector('#awesomplete_list_1 li');
-    const listitems = await page.$$eval('#awesomplete_list_1 li', listitems => listitems);
-    expect(listitems.length).toBeGreaterThan(1);
-  }, timeout);
-});
-
 afterAll(() => {
   browser.close();
   server.close();
