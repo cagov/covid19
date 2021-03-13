@@ -72,7 +72,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- varUpdateText | replace("[UpdatedDate]",statsData.summary.lastStatsDate | formatDate2(true,tags,+1)) | replace("[DataDate]",statsData.summary.lastStatsDate | formatDate2(false,tags)) -}}
+						{{- varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T18:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
 					</div>
 
 
