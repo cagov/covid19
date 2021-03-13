@@ -11,8 +11,10 @@ const defaultConfig = {
 
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
-  equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/a2a5129fa68344cec6cae1ce09a3c02666707e9b/data/vaccine-equity/',
-  chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/6d740b3d1a8cc39d7808f045baef6c7566846d5b/data/vaccine-hpi/',
+  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
+  chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
+  // equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/a2a5129fa68344cec6cae1ce09a3c02666707e9b/data/vaccine-equity/',
+  // chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/6d740b3d1a8cc39d7808f045baef6c7566846d5b/data/vaccine-hpi/',
   // https://raw.githubusercontent.com/cagov/covid-static/a2a5129fa68344cec6cae1ce09a3c02666707e9b/data/vaccine-equity/age/vaccines_by_age_alameda.json
   // https://raw.githubusercontent.com/cagov/covid-static/6d740b3d1a8cc39d7808f045baef6c7566846d5b/data/vaccine-hpi/vaccine-hpi.json
 }
