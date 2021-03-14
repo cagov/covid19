@@ -65,7 +65,7 @@
   {% include "dashboard-v2.njk" %}
   {% endpagesection -%}
 
-  <div class="container">
+  <div class="container{%- pagesection page, 'state-dashboard' %} pb-0{%- endpagesection %}">
     <div class="row">
       <div class="col-lg-10 mx-auto">
         {{ content | safe  }}
