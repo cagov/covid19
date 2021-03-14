@@ -47,7 +47,7 @@
               {%- elseif page | engSlug === "state-dashboard" -%}
                 {{ (dailyStatsV2.data.cases.DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ (equityTopBoxes[0].lowincome_date + "T22:00:00Z") | formatDate2(true,tags,1) }}
+                {{ (equityTopBoxes[0].lowincome_date + "T23:00:00Z") | formatDate2(true,tags,1) }}
                 {# {{ "today" | formatDate2(true,tags,-1) }} #}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
