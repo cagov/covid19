@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Pagsubaybay sa COVID-19 sa California</h1>
           
-            <p class="small-text">Huling na-update&nbsp;Pebrero 17, 2021 sa 5:21 PM</p>
+            <p class="small-text">Huling na-update&nbsp;Marso 12, 2021 sa 1:19 PM</p>
           
         </div>
       </div>
@@ -347,7 +347,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -416,7 +416,7 @@
 
 
 <div class="pl-2 text-small">
-  <p>Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong Pebrero 27, 2021. Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang dating datos ng county (<strong>California Blueprint Data Chart</strong>) sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">page ng gabay ng California Department of Public Health</a>. Hindi kasama sa mga rate ng kaso at pagpopositibo sa mapang ito ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Kasama ang mga grupong ito sa mga chart sa itaas, na nagpapakita ng iba't ibang rate ng kaso at rate ng pagiging positibo sa pagsusuri. Ang panrehiyong kapasidad ng ICU ay kinakalkula na ngayon gamit ang kabuuang bilang ng mga pang-nasa hustong gulang na ICU bed sa mga ospital na may emergency department at hindi kinabibilangan ng mga neonatal o pediatric na ICU bed. Mula nang matapos ang Panrehiyong Utos na Manatili sa Bahay noong Enero 25, 2021, hindi na kasama sa panrehiyong kapasidad ng ICU ang porsyento ng mga pasyente sa ICU na positibo sa COVID-19.</p>
+  <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong Pebrero 27, 2021. Alamin kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California</strong> sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>. Matuto pa tungkol sa kapasidad ng ICU sa rehiyon sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos sa ICU ng CDPH</a>.</p>
 </div>
 
 
@@ -425,46 +425,87 @@
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">Mga impeksyon ayon sa grupo</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Lahi at Etnisidad</button> <button class="large-tab js-toggle-group gender">Kasarian</button> <button class="large-tab js-toggle-group age">Edad</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>Ang distribusyon ng kumpirmadong pagkamatay dahil sa COVID-19 ay nagpapakita ng pagkakaiba-iba sa pagitan ng kasarian, kung saan ang mga lalaki ay may hindi pantay na dami ng mga pagkamatay na nauugnay sa kanilang populasyon.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong kaso ayon sa kasarian sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">{category} ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa kasarian sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong pagkamatay</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">{category} ang kabilang sa {metric-value} ng mga kumpirmadong pagkamatay at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">Dito ilalagay ang footerText</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>Ang distribusyon ng kumpirmadong pagkamatay dahil sa COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa lahat ng edad ng grupo ng California. Ang mga taong 18-49 na taong gulang ay may hindi pantay na dami ng mga kaso. Ang mga taong 65 taong gulang pataas ay may hindi pantay na dami ng mga pagkamatay.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong kaso ayon sa edad sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">Ang {category} na grupo ng edad ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa edad sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong pagkamatay</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">Ang {category} na grupo ng edad ang kabilang sa {metric-value} ng mga kumpirmadong pagkamatay at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">Dito ilalagay ang footerText</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>Ang distribusyon ng kumpirmadong kaso ng COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa pangkalahatang demograpiko sa lahi at etnisidad ng California, kung saan hindi pantay-pantay ang dami ng kaso ng mga grupong Latino and Native Hawaiian / Pacific Islander kaugnay ng kanilang populasyon sa estado. May available na karagdagang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos sa lahi at etnisidad kaugnay ng COVID-19</a>. </p>
-                <p class="small-text">Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</p>
+              <div class="mx-auto">
+                <p>Ang distribusyon ng kumpirmadong kaso ng COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa pangkalahatang demograpiko sa lahi at etnisidad ng California, kung saan hindi pantay-pantay ang dami ng kaso ng mga grupong Latino and Native Hawaiian / Pacific Islander kaugnay ng kanilang populasyon sa estado. May available na karagdagang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos sa lahi at etnisidad kaugnay ng COVID-19</a>.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong kaso ayon sa lahi at etnisidad sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">{category} tao ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa lahi at etnisidad sa California</li>
+                      <li data-label="chartLegend1">% ng mga kumpirmadong pagkamatay</li>
+                      <li data-label="chartLegend2">% ng populasyon ng estado</li>
+                      <li data-label="chartBarCaption">{category} tao ang kabilang sa {metric-value} ng mga kumpirmadong pagkamatay at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">Dito ilalagay ang footerText</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Tingnan ang mas detalyadong datos ayon sa grupo</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Tingnan ang mas detalyadong datos ayon sa grupo</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
+</div>
     </div>
   </div>
   <!-- end contentBlock -->
