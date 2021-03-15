@@ -148,7 +148,7 @@ export default function getCounties () {
     },
     {
       name: 'Yolo',
-      url: 'https://www.yolocounty.org/residents/emergency-alerts-health-alerts'
+      url: 'http://www.yolo-alert.org/'
     },
     {
       name: 'Madera',
