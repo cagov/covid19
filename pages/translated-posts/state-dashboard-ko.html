@@ -1,9 +1,408 @@
 ---
 layout: "page.njk"
-title: "Tracking COVID-19 in California"
-meta: ""
+title: "ìºë¦¬í¬ëì ë´ COVID-19 ì¶ì  ê´ë¦¬"
+meta: "ì¬ë¡ ê±´ì, ì¬ë§ì ì, ê²ì¬ ê±´ì ë° ì¹´ì´í° ë¨ê³ì ê´í ìµì  ë°ì´í°ë¥¼ íì¸íì­ìì¤."
 author: "State of California"
-publishdate: "today"
-tags: ["lang-ko"]
+publishdate: "2021-03-12T23:16:51Z"
+tags: ["translate"]
 addtositemap: true
 ---
+
+<!--
+{# {%-set data = tableauCovidMetrics[0] -%} #}
+{%-set data2 = dailyStatsV2.data -%}
+
+{%-set _varStatDate_ = data2.cases.DATE | formatDate2(false, tags, 1)-%}
+{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+
+{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
+formatNumber(tags,1)-%}
+
+{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
+formatNumber(tags,1)-%}
+
+{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
+{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
+data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
+{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
+formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
+data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
+data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
+{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
+
+{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
+{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
+{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
+{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
+{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
+{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
+{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
+ _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
+ %} 
+-->    <div class="bg-lightblue full-bleed mt-minus-4">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="text-center color-purple">ìë°ì´í¸ {{_varStatDate_}}</h2>
+        <p>{{_varStatDateNoYear_}} íì¬, ìºë¦¬í¬ëìì COVID-19 íì§ì ìë {{_varStatTotalCases_}} ëªì´ë©° ì´ë¡ ì¸í ì¬ë§ì ìë {{_varStatTotalDeaths_}} ëªìëë¤.</p>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-md-center summary-boxes">
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">ì¬ë¡ ê±´ì</div>
+
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">í©ê³</span>           </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">ë¹ì¼</span>           </div>
+          <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewCasesPer100k_}} <span class="text-300">1ì­ë§ëª ë¹ ì ê· ì¬ë¡ ê±´ì</span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">ì¬ë§ì ì</div>
+
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">í©ê³</span>           </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">ë¹ì¼</span>           </div>
+          <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewDeathsPer100k_}} <span class="text-300">1ì­ë§ëª ë¹ ì ê· ì¬ë§ì ì</span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">ê²ì¬ ê±´ì</div>
+
+          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">í©ê³</span>           </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">ë¹ì¼</span>           </div>
+          <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatLatestPositivityPct_}}% <span class="text-300">ìì± ë°ìë¥ </span>            </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">ë°±ì  í¬ì¬ ê±´ì</div>
+
+          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">í©ê³</span>           </div>           {# <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">ë¹ì¼</span>           </div>
+          <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+ l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+ l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+ s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+ l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+ l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatVaccinesDailyPct_}}% <span class="text-300">ì¦ê°</span>            </div> #}
+        </div>
+      </div>
+    </div>
+
+    <div class="row pb-4 py-5">
+      <div class="col-lg-10 mx-auto">
+        <p class="small-text">{{_varStatDate_}} ìë°ì´í¸, {{_varStatYesterdayDate_}} ì ë°ì´í° ì¬ì©.</p>
+
+        <p class="small-text">ì£¼ì: ì¬ë¡ ë°ìì¨ì 7ì¼ íê· ì ê¸°ì¤ì¼ë¡ íë©° 7ì¼ì ìì°¨ê° ììµëë¤. ì¬ë§ì¨ì 7ì¼ íê· ì ê¸°ì¤ì¼ë¡ íë©° ë³´ê³  ìì ì§ì°ì¼ë¡ ì¸í´ 21ì¼ ìì°¨ê° ììµëë¤. ìì± íì ì¨ì ìì°¨ ìì´ 7ì¼ íê· ì ê¸°ì¤ì¼ë¡ í©ëë¤. ì¶ì¸ ë³ê²½ì ì´ì  7ì¼ ê¸°ê°ê³¼ ë¹êµí©ëë¤. ë°ì´í°ë ìºë¦¬í¬ëìì£¼ ê³µì¤ë³´ê±´ë¶(California Department of Public Health)ìì ì ê³µí©ëë¤.</p>
+      </div>
+    </div>
+
+  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed mb-5">
+            <div class="container py-2">
+                <div class="row pb-4">
+                    <div class="col-lg-10 mx-auto color-white">
+                        <h2 class="text-center color-orange" id="vaccination">ë°±ì  ì ì¢ ê´ë ¨ ë°ì´í°</h2>
+                        <p>COVID-19 ë°±ì  ì ì¢ì íë°ë¯¹ ì¢ìì ìí ê°ì¥ ì¤ìí ìë¨ ì¤ì íëìëë¤. ì£¼ ì ì­ì ê±¸ì³ ìºë¦¬í¬ëì ì£¼ë¯¼ì ëí ë°±ì  ì ì¢ ì§í íí©ì ì¶ì íê³  ììµëë¤.</p>
+
+                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">ë°±ì  ì ì¢ ê´ë ¨ ë°ì´í° íì¸</div><cagov-arrow></cagov-arrow> </a>                         </div>
+
+
+                    </div>
+                </div>
+
+            </div><!--END container-->         </div>
+
+
+
+<h2 class="text-center color-purple">ì£¼ ì ì²´ ë° ì¹´ì´í° ë³ ë°ì´í° ì°¸ì¡°</h2>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <form class="form-inline" id="county-form">
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">ì¹´ì´í°</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="ì¹´ì´í° ìë ¥"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">ìë ¥ ì·¨ì</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
+      </div>
+      <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
+    </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">ì¹´ì´í° ë°ì´í° íì¸</button>   </form>
+</div>
+<div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">ì¹´ì´í° íì¸ ìë¨</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">ì¼ì¼ ì¬ë¡ ê±´ì ë° ì¬ë§ì ì</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">ì£¼ ì ì²´</button>     </div>
+  </div>
+</div>
+
+
+
+<p>ìºë¦¬í¬ëìì COVID-19 íì§ì ìë {{_varStatTotalCases_}} ëªì´ë©° ì´ë¡ ì¸í ì¬ë§ì ìë {{_varStatTotalDeaths_}} ëªìëë¤.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="cases-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartCounty"></div>
+    </div>
+    <div id="cases-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartState"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
+  <p class="small-text">ì£¼ì: í´ë¹ ê²°ê³¼ì ì´ì ë¶í° ì´ì ê¹ì§ì ì¬ë¡ ê±´ìê° í¬í¨ë¨ì ë°ë¼, ì«ìë ì íí ì ì¼ ëë¹ ë³ê²½ ìì¹ë¥¼ ëíë´ì§ ììµëë¤. ë°ì ì¼ìë ì¬ë¡ê° ë°ìí ê²ì¼ë¡ ì¶ì ëë ì¼ììëë¤. ë³´ê³  ì¼ìë ì¬ë¡ê° ìºë¦¬í¬ëì ê³µì¤ ë³´ê±´ë¶ì ë³´ê³ ë ì¼ììëë¤. ì¬ë¡ ê±´ììë ì£¼ ë° ì°ë°© êµëì, ë¯¸êµ­ ì´ë¯¼ ê´ì¸ ì§íêµ­(Immigration and Customs Enforcement) ìì¤, ë¯¸êµ­ ì°ë°© ë³´ìê´(US Marshal) êµ¬ê¸ ìì¤ ë° ì£¼ ë³ìë¶(Department of State Hospitals) ìì¤ ë´ í´ë¹ìê° í¬í¨ë©ëë¤. ì´ë¤ ì§ë¨ì ì²­ì¬ì§ ë¨ê³ë¥¼ ë°°ì íê¸° ìí ì°ì¶ ê³¼ì ìì ë°°ì ëë©°, ì´ë¡ ì¸í´ ì¬ë¡ ë°ì ê±´ìì ìì± ë°ìë¥ ìì ì°¨ì´ê° ëíëê² ë©ëë¤. ë³´ê³ ë ì¬ë§ì ìê° ììë¡ ëíëë©´, ì´ì ì COVID-19ì ìí ì¬ë§ì¼ë¡ ì§ê³ë ì¬ë§ìê° COVID-19ì ì°ê´ì±ì´ ìë ê²ì¼ë¡ íëªë ê²½ì°ì í´ë¹í©ëë¤.</p>
+</div>
+
+
+
+<h3 class="text-center mt-4 mb-0">COVID-19 ê²ì¬</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">ì£¼ ì ì²´</button>     </div>
+  </div>
+</div>
+
+
+
+<p>ìºë¦¬í¬ëì ë´ COVID-19 ì§ë¨ ê²ì¬ ê²°ê³¼ ìê° ì´ {{_varStatTested_}} ê±´ì ë¬íë©°, ì ì¼ ì´ê³ ëë¹ ì¦ê°ë {{_varStatTestedDaily_}} ê±´ìëë¤. ì§ë 7ì¼ ê° ìì± ë°ìë¥ ì {{_varStatPos_7DayAvgPct_}}%ìëë¤.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="testing-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartCounty"></div>
+    </div>
+    <div id="testing-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartState"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row d-flex justify-content-md-center mt-2 pl-2">
+  <p class="small-text">ì£¼ì: ê²ì¬ ì¼ìë ê²ì¬ê° ì¤ìë ì¼ììëë¤. ë³´ê³  ì¼ìë ì¬ë¡ê° ìºë¦¬í¬ëì ê³µì¤ ë³´ê±´ë¶ì ë³´ê³ ë ì¼ììëë¤. ë³´ê³  ì¼ì ë°ì´í°ë 2020ë 5ì 5ì¼ ì´ì ì ì¤ìí ê²ì¬ì ëí´ ì ê³µëì§ ììµëë¤. ê²ì¬ ì¼ì ë°ì´í°ë íì£¼ ë° ë¯¸íì¸ ê´í  ì§ì­ìì ì¤ìí ê²ì¬ë¥¼ ë°°ì íë©° ì´ê³ê° ë³´ê³ ì¼ ìì¹ì ì¼ì¹íì§ ìì ìë ììµëë¤. ìì± ë°ìë¥ ì ìì± ë°ìì ëíë¸ ë¶ì ê²ì¬ ìë¥¼ ì ì²´ ì¤ì ë¶ì ê²ì¬ ìë¡ ëëì´ ì°ì¶í©ëë¤. ìì± ë°ìë¥ ìë ì£¼ ë° ì°ë°© êµëì, ë¯¸êµ­ ì´ë¯¼ ê´ì¸ ì§íêµ­(Immigration and Customs Enforcement) ìì¤, ë¯¸êµ­ ì°ë°© ë³´ìê´(US Marshal) êµ¬ê¸ ìì¤ ë° ì£¼ ë³ìë¶(Department of State Hospitals) ìì¤ ë´ í´ë¹ìê° í¬í¨ë©ëë¤. ì´ë¤ ì§ë¨ì ì²­ì¬ì§ ë¨ê³ë¥¼ ë°°ì íê¸° ìí ì°ì¶ ê³¼ì ìì ë°°ì ëë©°, ì´ë¡ ì¸í´ ì¬ë¡ ë°ì ê±´ìì ìì± ë°ìë¥ ìì ì°¨ì´ê° ëíëê² ë©ëë¤. ìì± ë°ìë¥ ì ì´ì ì 14ì¼ íê· ì¼ë¡ ë³´ê³ ëììµëë¤.</p>
+</div>
+
+
+
+<h3 class="text-center mb-0">ë³ì ë° ì¤íìì¤(Intensive Care Unit, ICU)ì ë¯¸ì¹ë ìí¥</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">ì£¼ ì ì²´</button>     </div>
+  </div>
+</div>
+
+
+
+<p>ìºë¦¬í¬ëì ë´ COVID-19 íì§ì ë° ìì¬ìë¡ ì¸í ìì íììë ì´ {{_varStatHospitalTotal_}} ê±´ì ë¬íë©°, ì ì¼ ì´ê³ ëë¹ ì¦ê°ì {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} ëªìëë¤. ìºë¦¬í¬ëì ë´ COVID-19 íì§ì ë° ìì¬ìë¡ ì¸í ICU íììë ì´ {{_varStatIcuTotal_}} ê±´ì ë¬íë©°, ì ì¼ ì´ê³ ëë¹ ì¦ê°ì {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} ëªìëë¤.</p>
+
+
+
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container hospitals-group">
+    <div id="hospital-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
+    </div>
+    <div id="hospital-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartState"></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-lg-10 mx-auto color-white">
+        <h2 class="text-center color-orange" id="reopening-equitably">ì¶ê° ë°ì´í° ë° ëêµ¬</h2>
+        <p>ìºë¦¬í¬ëìë ë¤ìí ë°ì´í°ë¥¼ ìì§íì¬ COVID-19ì ëí ëì ì¡°ì¹ë¥¼ ìë¦¬ê³  ììµëë¤. ì´ ë°ì´í° ì²ë¦¬ì ë¶ìì ìí ëêµ¬ë¥¼ ê°ë°íììµëë¤. í´ë¹ ë°ì´í°ì ëêµ¬ë ì¼ë°ì¸ì ì´ì©ì´ ê°ë¥í©ëë¤.</p>
+
+        <div class="mt-3 text-center">           <a href="/data-and-tools/" class="link-arrow-white">             <div class="link-arrow-label">ì ì²´ ë°ì´í° ë° ëêµ¬ íì¸</div>             <cagov-arrow></cagov-arrow> </a>         </div>
+
+
+      </div>
+    </div>
+
+  </div>   <!--END container--> </div>
+
+
+
+<div class="row d-flex justify-content-md-center">
+
+  <h2 class="text-center color-purple">ì´ ë°ì´í°ì ê¸°ë°í ê²°ì  ë° ì´ë¥¼ íµí ìºë¦¬í¬ëìì ê±´ê°ê³¼ ìì  ë³´í¸</h2>
+
+
+
+  <div class="grid-layout-hd bg-lightblue bd-lightblue">
+    <div class="grid-main bg-lightblue py-2">
+      <h3 class="my-0 text-center">ìºë¦¬í¬ëìì ì¹´ì´í° ìí ìì¤</h3>
+    </div>
+    <div class="grid-single single1">
+      <div class="btn-matrix bg-purple-btn">ê´ë²ì</div>
+      <p class="text-small mt-2 mb-0">ë¤ìì ë¹íì ì¤ë´ ì¬ìì²´ë ì´ì íì</p>
+    </div>
+    <div class="grid-single single2">
+      <div class="btn-matrix bg-red-btn">ìë¹</div>
+      <p class="text-small mt-2 mb-0">ì¼ë¶ ë¹íì ì¤ë´ ìì²´ë ì´ì íì</p>
+
+
+    </div>
+    <div class="grid-single single3">
+      <div class="btn-matrix bg-orange-btn">ìí</div>
+      <p class="text-small mt-2 mb-0">ì¼ë¶ ì¤ë´ ìì²´ë ë³ê²½ ì¡°ì¹ ì´í í ì´ì ê°ì</p>
+    </div>
+    <div class="grid-single single4">
+      <div class="btn-matrix bg-yellow-btn">ìµì</div>
+      <p class="text-small mt-2 mb-0">ëë¶ë¶ì ì¤ë´ ìì²´ë ë³ê²½ ì¡°ì¹ ì´í í ì´ì ê°ì</p>
+    </div>
+  </div>
+
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">íì¬ ë¨ê³ ë°°ì  {{_varTierDate_}}</h3>
+  <p class="mt-0">ë¨ê³ ë°°ì ì´ ì£¼ ì¤ ì¸ì ë¼ë ì´ë£¨ì´ì§ ì ìì¼ë©° ì£¼ë³ë¡ 1í ì´ì ì´ë£¨ì´ì§ ìë ììµëë¤. í´ë¹ ì§ì­ì íì¸íë ¤ë©´ ì¹´ì´í°ë¥¼ ì ííì­ìì¤.</p>
+
+  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
+</div>
+
+
+
+<div class="pl-2 text-small">
+  <p class="small-text">ëª¨ë  ë°ì´í° ë° ë¨ê³ ë°°ì ì {{_varTierEndDate_}}ë§ê°ì£¼ì ê²°ê³¼ì ê·¼ê±°í©ëë¤. ë¨ê³ ë°°ì ê³¼ ë³ê²½ ë°©ë² ë¿ë§ ìëë¼ ì¹´ì´í°ì ê³¼ê±° ë°ì´í°(<strong>ìºë¦¬í¬ëì ì²­ì¬ì§ ë°ì´í° í</strong>)ì ê´í ì¬í­ì <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPHì ëì± ìì í ê²½ì ë¥¼ ìí ì²­ì¬ì§ ê¸°ë³¸ ì²´ê³</a>ìì íì¸íì­ìì¤. ì§ì­ë³ ICU ìì© ë¥ë ¥ì ê´í ì¬í­ì <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPHì ICU ë°ì´í°</a>ìì íì¸íì­ìì¤.</p>
+</div>
+
+
+
+<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">í´ë¹ ì¹´ì´í° ë´ ì´ì ê°ìê° ê°ë¥í ìê³ íì¸</div>     <cagov-arrow></cagov-arrow> </a> </div>
+
+
+
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
+    <h2 class="text-center color-orange">ì§ë¨ë³ ê°ì¼</h2>
+    <div class="col-lg-12 bg-white px-4 py-4">
+      <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+        <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">ì¸ì¢ ë° ë¯¼ì¡±</button> <button class="large-tab js-toggle-group gender">ì±ë³</button> <button class="large-tab js-toggle-group age">ì°ë ¹</button>         </div>
+      </div>
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
+          <div id="gender-graph" class="toggle-group-element" style="display:none">
+            <div id="genderGroupChartContainer">
+              <div class="mx-auto">
+                <p>COVID-19 íì§ ì¬ë§ì ë¶í¬ìì ì±ë³ ê° ê²©ì°¨ë¥¼ ë³´ìì¼ë©°, ë¨ì±ìê²ì ì ì²´ ì¸êµ¬ ëë¹ ë¶ê· íì ì¸ ì¬ë§ì ìê° ëíë¬ìµëë¤.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì±ë³ íì§ì</li>
+                      <li data-label="chartLegend1">íì§ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category}ë íì§ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} ë°ì´í° ê¸°ì¤ {PUBLISHED_DATE} ìë°ì´í¸. ì£¼ì: ë°±ë¶ì¨ì í©ì ë°ì¬ë¦¼ì¼ë¡ ì¸í´ 100%ê° ìë ìë ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì±ë³ ì¬ë§ íì¸ì</li>
+                      <li data-label="chartLegend1">ì¬ë§ íì¸ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category}ë ì¬ë§ íì¸ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
+              </div>
+              <p class="small-text chart-footer-caption">ê¼¬ë¦¬ë§ ë¬¸ì íìë</p>
+            </div>
+          </div>
+          <div id="age-graph" class="toggle-group-element" style="display:none">
+            <div id="ageGroupChartContainer">
+              <div class="mx-auto">
+                <p>COVID-19 íì§ ì¬ë¡ ê±´ì ë° ì¬ë§ì ë¶í¬ìì ìºë¦¬í¬ëìì ì°ë ¹ëì ê±¸ì³ ìë¯¸ìë ê²©ì°¨ë¥¼ ë³´ììµëë¤. 18-49ì¸ìì ë¶ê· íì ì¸ ì¬ë¡ ê±´ìê° ëíë¬ìµëë¤. 65ì¸ ì´ììì ë¶ê· íì ì¸ ì¬ë§ì ìê° ëíë¬ìµëë¤.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì°ë ¹ë³ íì§ì</li>
+                      <li data-label="chartLegend1">íì§ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category} ì°ë ¹ëë íì§ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} ë°ì´í° ê¸°ì¤ {PUBLISHED_DATE} ìë°ì´í¸. ì£¼ì: ë°±ë¶ì¨ì í©ì ë°ì¬ë¦¼ì¼ë¡ ì¸í´ 100%ê° ìë ìë ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì°ë ¹ë³ ì¬ë§ íì¸ì</li>
+                      <li data-label="chartLegend1">ì¬ë§ íì¸ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category} ì°ë ¹ëë ì¬ë§ íì¸ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
+              </div>
+              <p class="small-text chart-footer-caption">ê¼¬ë¦¬ë§ ë¬¸ì íìë</p>
+            </div>
+          </div>
+          <div id="ethnicity-graph" class="toggle-group-element">
+            <div id="ethnicityGroupChartContainer">
+              <div class="mx-auto">
+                <p>COVID-19 íì§ ì¬ë¡ ê±´ì ë¶í¬ìì ìºë¦¬í¬ëìì ì ì  ì¸ì¢ ë° ë¯¼ì¡± ì¸êµ¬ ë´ ìë¯¸ìë ê²©ì°¨ë¥¼ ë³´ìì¼ë©°, ë¼í´ê³ì íìì´ ìì£¼ë¯¼/ííì ì¬ ì£¼ë¯¼ìê²ì ì£¼ ì ì²´ ì¸êµ¬ ëë¹ ë¶ê· íì ì¸ ì¬ë¡ ê±´ìê° ëíë¬ìµëë¤. ì¶ê°ë¡ <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 ì¸ì¢ ë° ë¯¼ì¡± ê´ë ¨ ë°ì´í°</a>ê° ì ê³µë©ëë¤.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì¸ì¢ ë° ë¯¼ì¡±ë³ íì§ì</li>
+                      <li data-label="chartLegend1">íì§ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category} ì£¼ë¯¼ì íì§ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} ë°ì´í° ê¸°ì¤ {PUBLISHED_DATE} ìë°ì´í¸. ì£¼ì: ë°±ë¶ì¨ì í©ì ë°ì¬ë¦¼ì¼ë¡ ì¸í´ 100%ê° ìë ìë ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">ìºë¦¬í¬ëì ë´ ì¸ì¢ ë° ë¯¼ì¡±ë³ ì¬ë§ íì¸ì</li>
+                      <li data-label="chartLegend1">ì¬ë§ íì¸ì ëë¹ %</li>
+                      <li data-label="chartLegend2">ì£¼ ì¸êµ¬ ëë¹ %</li>
+                      <li data-label="chartBarCaption">{category} ì£¼ë¯¼ì ì¬ë§ íì¸ìì {metric-value} ë° ì ì²´ ìºë¦¬í¬ëì ì¸êµ¬ì {metric-baseline-value}ë¥¼ ì°¨ì§íê³  ììµëë¤.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
+              </div>
+              <p class="small-text chart-footer-caption">ê¼¬ë¦¬ë§ ë¬¸ì íìë</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">ì§ë¨ë³ ì¸ë¶ ë°ì´í° ì°¸ì¡°</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
