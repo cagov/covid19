@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
-title: "加州COVID-19追踪"
-meta: "查看有关病例数、死亡数、检测数及县等级的最新数据。"
+title: "å å·COVID-19è¿½è¸ª"
+meta: "æ¥çæå³çä¾æ°ãæ­»äº¡æ°ãæ£æµæ°åå¿ç­çº§çææ°æ°æ®ã"
 author: "State of California"
-publishdate: "2021-02-18T01:21:23Z"
+publishdate: "2021-03-12T21:19:55Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -58,78 +58,78 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto">
-        <h2 class="text-center color-purple">更新于 {{_varStatDate_}}</h2>
-        <p>截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
+        <h2 class="text-center color-purple">æ´æ°äº {{_varStatDate_}}</h2>
+        <p>æªè³{{_varStatDateNoYear_}}ï¼å å·å±æ{{_varStatTotalCases_}}ä¾COVID-19ç¡®è¯çä¾ï¼é æ{{_varStatTotalDeaths_}}äººæ­»äº¡ã</p>
       </div>
     </div>
 
     <div class="row d-flex justify-content-md-center summary-boxes">
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">病例数</div>
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">çä¾æ°</div>
 
-          <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">æ»å±</span>           </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">ä»æ¥</span>           </div>
           <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewCasesPer100k_}} <span class="text-300">每100K人中的新增病例数</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewCasesPer100k_}} <span class="text-300">æ¯100Käººä¸­çæ°å¢çä¾æ°</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">死亡数</div>
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">æ­»äº¡æ°</div>
 
-          <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">æ»å±</span>           </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">ä»æ¥</span>           </div>
           <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewDeathsPer100k_}} <span class="text-300">每100K人中的新增死亡数</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewDeathsPer100k_}} <span class="text-300">æ¯100Käººä¸­çæ°å¢æ­»äº¡æ°</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">检测数</div>
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">æ£æµæ°</div>
 
-          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">æ»å±</span>           </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">ä»æ¥</span>           </div>
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatLatestPositivityPct_}}%<span class="text-300">检测呈阳性率</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatLatestPositivityPct_}}%<span class="text-300">æ£æµåé³æ§ç</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">施打的疫苗数</div>
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">æ½æçç«èæ°</div>
 
-          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">总共</span>           </div>{# <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-tested-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">æ»å±</span>           </div>{# <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">ä»æ¥</span>           </div>
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg class="d-none" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatVaccinesDailyPct_}}%<span class="text-300">增长率</span>            </div> #}
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatVaccinesDailyPct_}}%<span class="text-300">å¢é¿ç</span>            </div> #}
         </div>
       </div>
     </div>
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">根据{{_varStatYesterdayDate_}}的数据在{{_varStatDate_}}更新。</p>
+        <p class="small-text">æ ¹æ®{{_varStatYesterdayDate_}}çæ°æ®å¨{{_varStatDate_}}æ´æ°ã</p>
 
-        <p class="small-text">注：患病率为7日平均数据，有7天的滞后期。死亡率为7日平均数据，有21天的滞后期，因为报告有延迟。检测呈阳性率为7日平均数据，无滞后期。定向变化与上一个7日周期做比较。数据由加州公共卫生局 (California Department of Public Health) 提供。</p>
+        <p class="small-text">æ³¨ï¼æ£ççä¸º7æ¥å¹³åæ°æ®ï¼æ7å¤©çæ»åæãæ­»äº¡çä¸º7æ¥å¹³åæ°æ®ï¼æ21å¤©çæ»åæï¼å ä¸ºæ¥åæå»¶è¿ãæ£æµåé³æ§çä¸º7æ¥å¹³åæ°æ®ï¼æ æ»åæãå®åååä¸ä¸ä¸ä¸ª7æ¥å¨æåæ¯è¾ãæ°æ®ç±å å·å¬å±å«çå± (California Department of Public Health) æä¾ã</p>
       </div>
     </div>
 
@@ -137,10 +137,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             <div class="container py-2">
                 <div class="row pb-4">
                     <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange" id="vaccination">疫苗接种数据</h2>
-                        <p>COVID-19疫苗是结束疫情的最重要的工具之一。本州正在追踪全加州民众的疫苗接种进度。</p>
+                        <h2 class="text-center color-orange" id="vaccination">ç«èæ¥ç§æ°æ®</h2>
+                        <p>COVID-19ç«èæ¯ç»æç«æçæéè¦çå·¥å·ä¹ä¸ãæ¬å·æ­£å¨è¿½è¸ªå¨å å·æ°ä¼çç«èæ¥ç§è¿åº¦ã</p>
 
-                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">查看疫苗接种数据</div><cagov-arrow></cagov-arrow> </a>                         </div>
+                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">æ¥çç«èæ¥ç§æ°æ®</div><cagov-arrow></cagov-arrow> </a>                         </div>
 
 
                     </div>
@@ -150,30 +150,30 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">查看全州及各县的数据</h2>
+<h2 class="text-center color-purple">æ¥çå¨å·ååå¿çæ°æ®</h2>
 
 
 
 <div class="row d-flex justify-content-md-center">
   <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">县</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="输入县"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
+    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">å¿</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="è¾å¥å¿"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">æ¸é¤</span></button>         <ul role="listbox" id="awesomplete_list_1" hidden=""></ul>
       </div>
       <ul id="awesomplete-list-1" role="listbox" hidden=""></ul>
-    </div><button type="submit" class="btn btn-lightbg btn-bigger mb-2">获取县数据</button>   </form>
+    </div><button type="submit" class="btn btn-lightbg btn-bigger mb-2">è·åå¿æ°æ®</button>   </form>
 </div>
-<div class="row d-flex justify-content-md-center"><span id="county-query-error" class="error-text d-none">未找到县</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">每日病例数和死亡数</h3>
+<div class="row d-flex justify-content-md-center"><span id="county-query-error" class="error-text d-none">æªæ¾å°å¿</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">æ¯æ¥çä¾æ°åæ­»äº¡æ°</h3>
 
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">å¨å·</button>     </div>
   </div>
 </div>
 
 
 
-<p>加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
+<p>å å·å±æ{{_varStatTotalCases_}}ä¾COVID-19ç¡®è¯çä¾ï¼é æ{{_varStatTotalDeaths_}}äººæ­»äº¡ã</p>
 
 
 
@@ -191,24 +191,24 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">注：相关人数并不代表真实的每日变化，因为这些结果包含来自昨天之前的病例数。发病日期是指预计出现病例的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。病例数包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的病例数。这些团体不包括在蓝图等级分配计算中，其显示不同的病例和检测呈阳性速率。负的报告死亡人数表示先前被归因于COVID-19的死亡病例，而后被确定与COVID-19无关。</p>
+  <p class="small-text">æ³¨ï¼ç¸å³äººæ°å¹¶ä¸ä»£è¡¨çå®çæ¯æ¥ååï¼å ä¸ºè¿äºç»æåå«æ¥èªæ¨å¤©ä¹åççä¾æ°ãåçæ¥ææ¯æé¢è®¡åºç°çä¾çæ¥æãåæ¥æ¥ææ¯æçä¾è¢«åæ¥ç»å å·å¬å±å«çå±çæ¥æãçä¾æ°åæ¬å·ç«åèé¦çç±ãç¾å½ç§»æ°åæµ·å³æ§æ³æºæãç¾å½æ³è­¦ç½²æçæåå·ç«å»é¢é¨é¨æºæä¸­ççä¾æ°ãè¿äºå¢ä½ä¸åæ¬å¨èå¾ç­çº§åéè®¡ç®ä¸­ï¼å¶æ¾ç¤ºä¸åççä¾åæ£æµåé³æ§éçãè´çæ¥åæ­»äº¡äººæ°è¡¨ç¤ºååè¢«å½å äºCOVID-19çæ­»äº¡çä¾ï¼èåè¢«ç¡®å®ä¸COVID-19æ å³ã</p>
 </div>
 
 
 
-<h3 class="text-center mt-4 mb-0">COVID-19检测</h3>
+<h3 class="text-center mt-4 mb-0">COVID-19æ£æµ</h3>
 
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">å¨å·</button>     </div>
   </div>
 </div>
 
 
 
-<p>加州的COVID-19诊断检测结果总数达到了{{_varStatTested_}}，较前一天的总数增加了{{_varStatTestedDaily_}}。过去7天的检测呈阳性率为{{_varStatPos_7DayAvgPct_}}%。</p>
+<p>å å·çCOVID-19è¯æ­æ£æµç»ææ»æ°è¾¾å°äº{{_varStatTested_}}ï¼è¾åä¸å¤©çæ»æ°å¢å äº{{_varStatTestedDaily_}}ãè¿å»7å¤©çæ£æµåé³æ§çä¸º{{_varStatPos_7DayAvgPct_}}%ã</p>
 
 
 
@@ -226,29 +226,29 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">注：检测日期是做检测的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。报告的日期数据不适用于2020年5月5日之前的检测。检测日期数据不包括州外和未知辖区检测，总数可能与报告日期的数量不匹配。检测呈阳性率的计算方法是阳性分子检测的数量除以完成的总分子检测数量。检测呈阳性率包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的检测呈阳性率。这些团体不包括在蓝图等级分配计算中，其显示不同的病例和检测呈阳性速率。之前呈报的是14日平均检测呈阳性率。</p>
+  <p class="small-text">æ³¨ï¼æ£æµæ¥ææ¯åæ£æµçæ¥æãåæ¥æ¥ææ¯æçä¾è¢«åæ¥ç»å å·å¬å±å«çå±çæ¥æãæ¥åçæ¥ææ°æ®ä¸éç¨äº2020å¹´5æ5æ¥ä¹åçæ£æµãæ£æµæ¥ææ°æ®ä¸åæ¬å·å¤åæªç¥è¾åºæ£æµï¼æ»æ°å¯è½ä¸æ¥åæ¥æçæ°éä¸å¹éãæ£æµåé³æ§ççè®¡ç®æ¹æ³æ¯é³æ§åå­æ£æµçæ°éé¤ä»¥å®æçæ»åå­æ£æµæ°éãæ£æµåé³æ§çåæ¬å·ç«åèé¦çç±ãç¾å½ç§»æ°åæµ·å³æ§æ³æºæãç¾å½æ³è­¦ç½²æçæåå·ç«å»é¢é¨é¨æºæä¸­çæ£æµåé³æ§çãè¿äºå¢ä½ä¸åæ¬å¨èå¾ç­çº§åéè®¡ç®ä¸­ï¼å¶æ¾ç¤ºä¸åççä¾åæ£æµåé³æ§éçãä¹ååæ¥çæ¯14æ¥å¹³åæ£æµåé³æ§çã</p>
 </div>
 
 
 
-<h3 class="text-center mb-0">对医院和加护病房 (Intensive Care Unit, ICU) 的影响</h3>
+<h3 class="text-center mb-0">å¯¹å»é¢åå æ¤çæ¿ (Intensive Care Unit, ICU) çå½±å</h3>
 
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
   <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">å¨å·</button>     </div>
   </div>
 </div>
 
 
 
-<p>在加州因确诊及疑似感染COVID-19而住院的人数总共达到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}来自前一天的总数。在加州因确诊及疑似感染COVID-19而进入ICU的人数总共达到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}来自前一天的总数。</p>
+<p>å¨å å·å ç¡®è¯åçä¼¼ææCOVID-19èä½é¢çäººæ°æ»å±è¾¾å°äº{{_varStatHospitalTotal_}}ï¼{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}æ¥èªåä¸å¤©çæ»æ°ãå¨å å·å ç¡®è¯åçä¼¼ææCOVID-19èè¿å¥ICUçäººæ°æ»å±è¾¾å°äº{{_varStatIcuTotal_}}ï¼{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}æ¥èªåä¸å¤©çæ»æ°ã</p>
 
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -265,10 +265,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto color-white">
-        <h2 class="text-center color-orange" id="reopening-equitably">更多数据与工具</h2>
-        <p>加州已经收集了大量数据，为应对COVID-19提供了信息。我们开发了工具以处理并分析这些数据。这些数据和工具可供公众使用。</p>
+        <h2 class="text-center color-orange" id="reopening-equitably">æ´å¤æ°æ®ä¸å·¥å·</h2>
+        <p>å å·å·²ç»æ¶éäºå¤§éæ°æ®ï¼ä¸ºåºå¯¹COVID-19æä¾äºä¿¡æ¯ãæä»¬å¼åäºå·¥å·ä»¥å¤çå¹¶åæè¿äºæ°æ®ãè¿äºæ°æ®åå·¥å·å¯ä¾å¬ä¼ä½¿ç¨ã</p>
 
-        <div class="mt-3 text-center">           <a href="/data-and-tools/" class="link-arrow-white">             <div class="link-arrow-label">查看所有数据和工具</div>             <cagov-arrow></cagov-arrow> </a>         </div>
+        <div class="mt-3 text-center">           <a href="/data-and-tools/" class="link-arrow-white">             <div class="link-arrow-label">æ¥çæææ°æ®åå·¥å·</div>             <cagov-arrow></cagov-arrow> </a>         </div>
 
 
       </div>
@@ -280,36 +280,36 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row d-flex justify-content-md-center">
 
-  <h2 class="text-center color-purple">这些数据推动了确保加州民众的健康和安全的决策</h2>
+  <h2 class="text-center color-purple">è¿äºæ°æ®æ¨å¨äºç¡®ä¿å å·æ°ä¼çå¥åº·åå®å¨çå³ç­</h2>
 
 
 
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
     <div class="grid-main bg-lightblue py-2">
-      <h3 class="my-0 text-center">加州的县风险等级</h3>
+      <h3 class="my-0 text-center">å å·çå¿é£é©ç­çº§</h3>
     </div>
     <div class="grid-single single1">
-      <div class="btn-matrix bg-purple-btn">广泛传播</div>
-      <p class="text-small mt-2 mb-0">关闭许多非必要的室内业务</p>
+      <div class="btn-matrix bg-purple-btn">å¹¿æ³ä¼ æ­</div>
+      <p class="text-small mt-2 mb-0">å³é­è®¸å¤éå¿è¦çå®¤åä¸å¡</p>
     </div>
     <div class="grid-single single2">
-      <div class="btn-matrix bg-red-btn">重度</div>
-      <p class="text-small mt-2 mb-0">关闭一些非必要的室内业务</p>
+      <div class="btn-matrix bg-red-btn">éåº¦</div>
+      <p class="text-small mt-2 mb-0">å³é­ä¸äºéå¿è¦çå®¤åä¸å¡</p>
 
 
     </div>
     <div class="grid-single single3">
-      <div class="btn-matrix bg-orange-btn">中度</div>
-      <p class="text-small mt-2 mb-0">一些室内业务可在经调整后开放</p>
+      <div class="btn-matrix bg-orange-btn">ä¸­åº¦</div>
+      <p class="text-small mt-2 mb-0">ä¸äºå®¤åä¸å¡å¯å¨ç»è°æ´åå¼æ¾</p>
     </div>
     <div class="grid-single single4">
-      <div class="btn-matrix bg-yellow-btn">最低</div>
-      <p class="text-small mt-2 mb-0">大部分室内业务可在经调整后开放</p>
+      <div class="btn-matrix bg-yellow-btn">æä½</div>
+      <p class="text-small mt-2 mb-0">å¤§é¨åå®¤åä¸å¡å¯å¨ç»è°æ´åå¼æ¾</p>
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
-  <p class="mt-0">等级划分可能会在一周内的任意一天进行，并且一周可能进行一次以上。选择一个县以查看其处于哪个区域。</p>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">å½åç­çº§ååï¼æªè³ {{_varTierDate_}}</h3>
+  <p class="mt-0">ç­çº§ååå¯è½ä¼å¨ä¸å¨åçä»»æä¸å¤©è¿è¡ï¼å¹¶ä¸ä¸å¨å¯è½è¿è¡ä¸æ¬¡ä»¥ä¸ãéæ©ä¸ä¸ªå¿ä»¥æ¥çå¶å¤äºåªä¸ªåºåã</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -317,52 +317,92 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p>所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。此数据图中的患病率及检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。这些团体包括在上述图表中，其显示不同病例和检测呈阳性速率。目前计算地区ICU床位空置率使用的数据，来自于所有含急诊科的医院的总成人ICU床位数，而不包括新生儿和儿科ICU床位。自2021年1月25日地区性居家避疫令解除以来，不再因ICU中的COVID-19阳性患者占比而对地区ICU床位空置率进行调整。</p>
+  <p class="small-text">æææ°æ®åç­çº§ååçä¾æ®ä¸º{{_varTierEndDate_}}å¨æ«çç»æãÂ è¯·åé<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPHåå¸çæ´å®å¨çç»æµèå¾æ¶æ</a>ï¼äºè§£ç­çº§ååååæ´æåµï¼ä»¥åå¿åå²æ°æ®ï¼<strong>å å·èå¾æ°æ®è¡¨</strong>ï¼ãè¯·åé<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPHçICUæ°æ®</a>ï¼äºè§£å°åºICUåºä½ç©ºç½®çã</p>
 </div>
 
 
 
-<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">查看您所在的县可以开放哪些行业</div>     <cagov-arrow></cagov-arrow> </a> </div>
+<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">æ¥çæ¨æå¨çå¿å¯ä»¥å¼æ¾åªäºè¡ä¸</div>     <cagov-arrow></cagov-arrow> </a> </div>
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
-    <h2 class="text-center color-orange">各群体的感染数</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
+    <h2 class="text-center color-orange">åç¾¤ä½çæææ°</h2>
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-        <div class="large-tabs"><button class="large-tab toggle-active js-toggle-group ethnicity">种族和族裔</button> <button class="large-tab js-toggle-group gender">性别</button> <button class="large-tab js-toggle-group age">年龄</button>         </div>
+        <div class="large-tabs"><button class="large-tab toggle-active js-toggle-group ethnicity">ç§æåæè£</button> <button class="large-tab js-toggle-group gender">æ§å«</button> <button class="large-tab js-toggle-group age">å¹´é¾</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>COVID-19确诊病例死亡人数的分布情况，显示了各性别的患病情况有差异，在患病人群中，有很大一部分死亡病例都是男性。</p>
+              <div class="mx-auto">
+                <p>COVID-19ç¡®è¯çä¾æ­»äº¡äººæ°çåå¸æåµï¼æ¾ç¤ºäºåæ§å«çæ£çæåµæå·®å¼ï¼å¨æ£çäººç¾¤ä¸­ï¼æå¾å¤§ä¸é¨åæ­»äº¡çä¾é½æ¯ç·æ§ã</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·ç¡®è¯çä¾æ°ï¼ææ§å«åç±»ï¼</li>
+                      <li data-label="chartLegend1">å ç¡®è¯çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}å ç¡®è¯çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                      <li data-label="footerText">ä½¿ç¨æ¥èª{MINUS_ONE_DATE}çæ°æ®æ´æ°{PUBLISHED_DATE}ãæ³¨ï¼ç±äºåèäºå¥çå³ç³»ï¼ç¾åæ¯å èµ·æ¥å¯è½ä¸ç­äº100%ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·æ­»äº¡çä¾æ°ï¼ææ§å«åç±»ï¼</li>
+                      <li data-label="chartLegend1">å æ­»äº¡çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}å æ­»äº¡çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">æ­¤å¤ä¸ºé¡µèææ¬</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>COVID-19确诊病例和死亡病例的分布情况，显示了加州各年龄组的患病情况有很大差异。18至49岁人士中的病例数相当多。65岁及以上人士中的死亡数相当多。</p>
+              <div class="mx-auto">
+                <p>COVID-19ç¡®è¯çä¾åæ­»äº¡çä¾çåå¸æåµï¼æ¾ç¤ºäºå å·åå¹´é¾ç»çæ£çæåµæå¾å¤§å·®å¼ã18è³49å²äººå£«ä¸­ççä¾æ°ç¸å½å¤ã65å²åä»¥ä¸äººå£«ä¸­çæ­»äº¡æ°ç¸å½å¤ã</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·ç¡®è¯çä¾æ°ï¼æå¹´é¾åç±»ï¼</li>
+                      <li data-label="chartLegend1">å ç¡®è¯çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}å¹´é¾æ®µå ç¡®è¯çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                      <li data-label="footerText">ä½¿ç¨æ¥èª{MINUS_ONE_DATE}çæ°æ®æ´æ°{PUBLISHED_DATE}ãæ³¨ï¼ç±äºåèäºå¥çå³ç³»ï¼ç¾åæ¯å èµ·æ¥å¯è½ä¸ç­äº100%ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·æ­»äº¡çä¾æ°ï¼æå¹´é¾åç±»ï¼</li>
+                      <li data-label="chartLegend1">å æ­»äº¡çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}å¹´é¾æ®µå æ­»äº¡çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">æ­¤å¤ä¸ºé¡µèææ¬</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>COVID-19确诊病例的分布情况，显示了加州所有种族和族裔人口的患病情况有很大差异，本州的拉丁裔和夏威夷原住民/太平洋岛民群体中有相当多的病例数。更多<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19种族和族裔数据</a>可供查阅。 </p>
-                <p class="small-text">注：由于四舍五入的关系，百分比加起来可能不等于100%。</p>
+              <div class="mx-auto">
+                <p>COVID-19ç¡®è¯çä¾çåå¸æåµï¼æ¾ç¤ºäºå å·ææç§æåæè£äººå£çæ£çæåµæå¾å¤§å·®å¼ï¼æ¬å·çæä¸è£åå¤å¨å¤·åä½æ°/å¤ªå¹³æ´å²æ°ç¾¤ä½ä¸­æç¸å½å¤ççä¾æ°ãæ´å¤<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19ç§æåæè£æ°æ®</a>å¯ä¾æ¥éã</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·ç¡®è¯çä¾æ°ï¼æç§æåæè£åç±»ï¼</li>
+                      <li data-label="chartLegend1">å ç¡®è¯çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}äººæ°å ç¡®è¯çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                      <li data-label="footerText">ä½¿ç¨æ¥èª{MINUS_ONE_DATE}çæ°æ®æ´æ°{PUBLISHED_DATE}ãæ³¨ï¼ç±äºåèäºå¥çå³ç³»ï¼ç¾åæ¯å èµ·æ¥å¯è½ä¸ç­äº100%ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">å å·æ­»äº¡çä¾æ°ï¼æç§æåæè£åç±»ï¼</li>
+                      <li data-label="chartLegend1">å æ­»äº¡çä¾æ°ç%</li>
+                      <li data-label="chartLegend2">å å¨å·äººå£ç%</li>
+                      <li data-label="chartBarCaption">{category}äººæ°å æ­»äº¡çä¾æ°ç{metric-value}åå å·æ»äººå£ç{metric-baseline-value}ã</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">æ­¤å¤ä¸ºé¡µèææ¬</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">查看各群体的更多详细数据</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> 
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">æ¥çåç¾¤ä½çæ´å¤è¯¦ç»æ°æ®</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
