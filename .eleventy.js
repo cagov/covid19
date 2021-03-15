@@ -233,12 +233,11 @@ module.exports = function(eleventyConfig) {
             ? new Date()
             : datestring.indexOf('Z') > -1
               ? new Date(datestring)
-              : new Date(`${datestring} PST`);
+              : new Date(`${datestring} PST`); // WILL ALWAYS BREAK - not valid javascript. your choices are Z (GMT) or '' (unreliable local time)
       if(targetdate) {
         if(addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
         }
-
 
         const langId = getLangRecord(tags).id;
         const formatRecord = dateFormats[langId.toLowerCase()];
