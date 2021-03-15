@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Consulte los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
 author: "State of California"
-publishdate: "2021-02-18T01:21:23Z"
+publishdate: "2021-03-12T21:19:55Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -140,7 +140,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                         <h2 class="text-center color-orange" id="vaccination">Fecha de vacunación</h2>
                         <p>La vacunación contra la COVID-19 es una de las herramientas más importantes para poner fin a la pandemia. Estamos siguiendo el progreso de la vacunación de los californianos en todo el estado.</p>
 
-                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">Consulte la fecha de vacunación</div><cagov-arrow></cagov-arrow> </a>                         </div>
+                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">Consulte los datos de la vacunación</div><cagov-arrow></cagov-arrow> </a>                         </div>
 
 
                     </div>
@@ -150,7 +150,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Vea los datos de todo el estado y de cada condado</h2>
+<h2 class="text-center color-purple">Vea los datos de todo el estado y de cada condado.</h2>
 
 
 
@@ -248,7 +248,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -317,7 +317,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p>Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Vea cómo se asignan y cambian los niveles, así como los datos históricos del condado (<strong>Cuadro de datos del plan de California</strong>) en la <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">página de orientación del Departamento de Salud Pública de California</a>. Los casos y la tasa de positividad de este mapa excluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado. Estos grupos se incluyen en los cuadros anteriores, que muestran diferentes tasas de casos y de positividad de pruebas. La capacidad regional de las ICU ahora se calcula usando el número total de camas de las ICU para adultos de los hospitales con un departamento de emergencias y no incluye las camas de las ICU neonatales o pediátricas. Desde que se levantó la orden regional de permanecer en casa el 25 de enero de 2021, la capacidad regional de las ICU ya no incluye un ajuste para el porcentaje de pacientes positivos por COVID-19 de las ICU.</p>
+  <p class="small-text">Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Consulte cómo se asignan y cambian los niveles, así como los datos históricos de los condados (<strong>Cuadro de datos del plan de California</strong>), en el <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">marco del Plan para una economía más segura del CDPH</a>. Obtenga más información sobre la capacidad de las ICU regionales en <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos de las ICU del CDPH</a>.</p>
 </div>
 
 
@@ -326,43 +326,83 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">Infecciones por grupo</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Raza y etnia</button> <button class="large-tab js-toggle-group gender">Género</button> <button class="large-tab js-toggle-group age">Edad</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>La distribución de las muertes confirmadas por COVID-19 revela una disparidad entre los géneros: los hombres tienen un número desproporcionado de muertes en relación con su población.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Casos confirmados por género en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">{category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Decesos confirmados por género en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados de decesos</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">{category} representa el {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>La distribución de casos confirmados y muertes por COVID-19 revela disparidades significativas entre los grupos de edad de California. Las personas de 18 a 49 años tienen un número desproporcionado de casos. Las personas de 65 años o más tienen un número desproporcionado de muertes.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Casos confirmados por edad en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Decesos confirmados por edad en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados de decesos</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>. </p>
-                <p class="small-text">Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</p>
+              <div class="mx-auto">
+                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Casos confirmados por raza y etnia en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">Las personas de {category} representan el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Decesos confirmados por raza y etnia en California</li>
+                      <li data-label="chartLegend1">% de casos confirmados de decesos</li>
+                      <li data-label="chartLegend2">% de población del estado</li>
+                      <li data-label="chartBarCaption">Las personas de {category} representan {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerText will go here</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> 
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>

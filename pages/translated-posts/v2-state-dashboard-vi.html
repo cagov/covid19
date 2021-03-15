@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình COVID-19 tại California"
 meta: "Xem dữ liệu mới nhất về các ca bệnh, ca tử vong, kết quả xét nghiệm và cấp quận."
 author: "State of California"
-publishdate: "2021-02-18T01:21:23Z"
+publishdate: "2021-03-12T21:19:55Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -248,7 +248,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -317,7 +317,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p>Toàn bộ dữ liệu và chỉ định cấp quận được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi các cấp cùng dữ liệu lịch sử của quận (<strong>Bảng Dữ Liệu Kế Hoạch Chi Tiết California</strong>) trên <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">trang hướng dẫn của Sở Y Tế Công Cộng California</a>. Tỷ lệ ca mắc và tỷ lệ dương tính trong bản đồ này không bao gồm những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được đưa vào các bảng ở trên, cho biết tỉ lệ xét nghiệm dương tính và ca khác. Sức chứa của ICU trong khu vực hiện được tính bằng tổng số giường ICU cho người lớn trong các bệnh viện có khoa cấp cứu và không bao gồm giường ICU cho trẻ sơ sinh hoặc trẻ nhỏ. Kể từ khi Lệnh Ở Nhà Trong Khu Vực kết thúc vào ngày 25 tháng 1 năm 2021, khả năng phục vụ trong khu vực của ICU không còn bao gồm việc điều chỉnh tỷ lệ bệnh nhân dương tính với COVID-19 trong ICU.</p>
+  <p class="small-text">Toàn bộ dữ liệu và chỉ định cấp được căn cứ theo kết quả từ tuần kết thúc vào {{_varTierEndDate_}}. Xem cách chỉ định và thay đổi các cấp, cũng như dữ liệu trước đây của quận (<strong>Biểu Đồ Dữ Liệu Kế Hoạch Chi Tiết California</strong>), trong <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">khung Kế Hoạch Chi Tiết vì một Nền Kinh Tế An Toàn Hơn của Sở Y Tế Công Cộng California (California Department of Public Health, CDPH)</a>. Tìm hiểu về khả năng phục vụ của ICU theo khu vực tại <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Dữ Liệu ICU của CDPH</a>.</p>
 </div>
 
 
@@ -326,43 +326,83 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">Nhiễm bệnh theo nhóm</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Chủng Tộc và Sắc Tộc</button> <button class="large-tab js-toggle-group gender">Giới Tính </button> <button class="large-tab js-toggle-group age">Tuổi</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>Sự phân bố các ca tử vong do được xác nhận nhiễm COVID-19 cho thấy sự chênh lệch về giới tính, trong đó nam giới có số ca tử vong quá cao so với tỷ lệ về dân số.</p>
+              <div class="mx-auto">
+                <p>Sự phân bố các ca tử vong được xác nhận do nhiễm COVID-19 cho thấy sự chênh lệch về giới tính, trong đó nam giới có tỷ lệ tử vong quá cao so với tỷ lệ về dân số.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca nhiễm được xác nhận theo giới tính ở California</li>
+                      <li data-label="chartLegend1">% các ca nhiễm được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">{category} chiếm {metric-value} ca nhiễm được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                      <li data-label="footerText">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {MINUS_ONE_DATE}. Lưu ý: Tổng các tỷ lệ phần trăm có thể không bằng 100% do làm tròn.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca tử vong được xác nhận theo giới tính ở California</li>
+                      <li data-label="chartLegend1">% các ca tử vong được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">{category} chiếm {metric-value} ca tử vong được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerNhập văn bản tại đây</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>Sự phân bố các ca nhiễm COVID-19 được xác nhận và các ca tử vong cho thấy sự chênh lệch đáng kể giữa các nhóm tuổi tại California. Những người trong khoảng 18-49 tuổi có số ca mắc quá cao. Những người 65 tuổi trở lên có số ca tử vong quá cao.</p>
+              <div class="mx-auto">
+                <p>Sự phân bố các ca nhiễm COVID-19 và các ca tử vong do nhiễm COVID-19 được xác nhận cho thấy sự chênh lệch đáng kể giữa các nhóm tuổi tại California. Những người trong khoảng 18-49 tuổi có số ca mắc quá cao. Những người 65 tuổi trở lên có số ca tử vong quá cao.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca nhiễm được xác nhận theo độ tuổi ở California</li>
+                      <li data-label="chartLegend1">% các ca nhiễm được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">Nhóm tuổi {category} chiếm {metric-value} ca nhiễm được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                      <li data-label="footerText">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {MINUS_ONE_DATE}. Lưu ý: Tổng các tỷ lệ phần trăm có thể không bằng 100% do làm tròn.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca tử vong được xác nhận theo độ tuổi ở California</li>
+                      <li data-label="chartLegend1">% các ca tử vong được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">Nhóm tuổi {category} chiếm {metric-value} ca tử vong được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerNhập văn bản tại đây</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>Sự phân bố các ca nhiễm COVID-19 cho thấy sự chênh lệch đáng kể về nhân khẩu học theo chủng tộc và sắc tộc nói chung tại California, trong đó các nhóm người gốc La-tinh và Người Bản Địa Hawaii/Người Dân Đảo Thái Bình Dương có số ca mắc quá cao so với số dân của họ trong tiểu bang. Đã có sẵn <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">dữ liệu bổ sung về chủng tộc và sắc tộc trong đại dịch COVID-19</a>. </p>
-                <p class="small-text">Lưu ý: Tổng các tỷ lệ phần trăm có thể bằng 100% do làm tròn.</p>
+              <div class="mx-auto">
+                <p>Sự phân bố các ca nhiễm COVID-19 cho thấy sự chênh lệch đáng kể về nhân khẩu học theo chủng tộc và sắc tộc nói chung tại California, trong đó các nhóm người gốc La-tinh và Người Bản Địa Hawaii/Người Dân Đảo Thái Bình Dương có số ca nhiễm quá cao so với số dân của họ trong tiểu bang. Đã có <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">dữ liệu bổ sung về chủng tộc và sắc tộc trong đại dịch COVID-19</a>.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca nhiễm được xác nhận theo chủng tộc và sắc tộc ở California</li>
+                      <li data-label="chartLegend1">% các ca nhiễm được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">Người {category} chiếm {metric-value} ca nhiễm được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                      <li data-label="footerText">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {MINUS_ONE_DATE}. Lưu ý: Tổng các tỷ lệ phần trăm có thể không bằng 100% do làm tròn.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">Các ca tử vong được xác nhận theo chủng tộc và sắc tộc ở California</li>
+                      <li data-label="chartLegend1">% các ca tử vong được xác nhận</li>
+                      <li data-label="chartLegend2">% dân số tiểu bang</li>
+                      <li data-label="chartBarCaption">Người {category} chiếm {metric-value} ca tử vong được xác nhận và {metric-baseline-value} trong tổng số dân California.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">footerNhập văn bản tại đây</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Xem thêm dữ liệu chi tiết theo nhóm</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> 
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Xem thêm dữ liệu chi tiết theo nhóm</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
