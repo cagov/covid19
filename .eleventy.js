@@ -425,7 +425,7 @@ module.exports = function(eleventyConfig) {
             ${headerHTML}
                   </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
                 </button>
-                <div class="card-container" aria-hidden="true">
+                <div class="card-container" aria-hidden="true" tabindex="-1">
                   <div class="card-body">
             ${bodyHTML}
                   </div>
