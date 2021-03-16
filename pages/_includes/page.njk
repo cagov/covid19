@@ -43,13 +43,11 @@
               {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "v1-state-dashboard" -%}
-                {{ (tableauCovidMetrics[0].DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
+                {{ (tableauCovidMetrics[0].DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
-                {# {{ (tableauCovidMetrics[0].DATE + "T19:00:00Z") | formatDate2(true,tags,1) }} #}
-                {{ (dailyStatsV2.data.cases.DATE + "T18:00:00Z") | formatDate2(true,tags,1) }}
+                {{ (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ (equityTopBoxes[0].lowincome_date + "T23:00:00Z") | formatDate2(true,tags,1) }}
-                {# {{ "today" | formatDate2(true,tags,-1) }} #}
+                {{ (equityTopBoxes[0].lowincome_date + "T22:00:00Z") | formatDate2(true,tags,1) }}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}

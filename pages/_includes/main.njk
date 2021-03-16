@@ -72,7 +72,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T18:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
+						{{- varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
 					</div>
 
 
@@ -168,8 +168,7 @@ formatNumber(tags,1)-%}
 						</div>
 					</div>
 					<div class="text-sm text-center text-300 ptop-12px">
-						Details about this data are available in the <a class="hero-stats-footer-slink" href="/state-dashboard/">state dashboard</a>.</br>
-						Today’s count of administered doses is incomplete due to data processing latency. Complete counts will be updated in this dashboard as available this week.
+						Details about this data are available in the <a class="hero-stats-footer-slink" href="/state-dashboard/">state dashboard</a>.
 					</div><!--
 <<p class="text-center text-sm text-300 mt-4">Rates of cases and tests are based on a 7 day average with a 7 day lag.</p>
 <p class="text-center text-sm text-300 mt-3">Rates of deaths are based on a 7 day average with a 21 day lag due to delays in reporting. 
