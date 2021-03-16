@@ -16,6 +16,14 @@
   }
 }
 
+html[dir=rtl] {
+  .full-bleed {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: calc(50% - 50vw);
+  }
+}
+
 cagov-reopening {
   .subtitle-color {
     color: #1f2574;
