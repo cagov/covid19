@@ -2054,24 +2054,6 @@ function parseSnowflakeDate(dateStr) {
     return new Date(yyyy,mm-1,dd);
 }
 
-// Return local date string in form YYYY-MM-DD adjusted for dayDelta (0 for today -1 for yesterday)
-//
-function getSnowflakeStyleDate(dayDelta) {
-    let date = new Date();
-    date.setDate(date.getDate() + dayDelta);
-    // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
-    let month = '' + (date.getMonth() + 1),
-    day = '' + date.getDate(),
-    year = date.getFullYear();
-
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [year, month, day].join('-');
-}
-
 function reformatJSDate(theDate, // expects javascript date
     fmt={ month: "long", day: 'numeric', year:'numeric' }) 
 {
@@ -2079,21 +2061,6 @@ function reformatJSDate(theDate, // expects javascript date
     theDate.toLocaleString( document.documentElement.lang, fmt);
     // console.log(dateStr + " --> " + readableDate);
     return readableDate;
-}
-
-
-// Date converter for use on chart footnotes.
-// Converts a string (typically from Snowflake) 
-// in the form YYYY-MM-DD
-//
-// into a readable localized date, such as 
-//    December 12, 2020
-// or 
-//    12 de diciembre de 2020
-function reformatReadableDate(dateStr, // expects YYYY-MM-DD
-                              fmt={ month: "long", day: 'numeric', year:'numeric' }) {
-    const theDate = parseSnowflakeDate(dateStr);
-    return reformatJSDate(theDate, fmt);
 }
 
 class CAGovVaccinesHPIPeople extends window.HTMLElement {
@@ -2398,18 +2365,16 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
-      const todayStr = getSnowflakeStyleDate(0);
-      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
-
-      if (adminDateStr == todayStr) {
-        const yesterdayStr = getSnowflakeStyleDate(-1);
-        adminDateStr = yesterdayStr;
+      let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
+      let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMINISTERED_DATE']);
+      if (publishedDate.getTime() == collectedDate.getTime()) {
+        collectedDate.setDate(collectedDate.getDate() - 1);            
       }
-
       let footerReplacementDict = {
-        'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+        'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+        'LATEST_ADMINISTERED_DATE' : reformatJSDate( collectedDate ),
       };
+
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
       // update the display date
@@ -2787,18 +2752,16 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
       this.dimensions.width = this.dimensions.margin.left+this.dimensions.bar_hspace*categories.length + this.dimensions.margin.right;
 
-      const todayStr = getSnowflakeStyleDate(0);
-      let adminDateStr = this.metadata['LATEST_ADMINISTERED_DATE'];
-
-      if (adminDateStr == todayStr) {
-        const yesterdayStr = getSnowflakeStyleDate(-1);
-        adminDateStr = yesterdayStr;
+      let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
+      let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMINISTERED_DATE']);
+      if (publishedDate.getTime() == collectedDate.getTime()) {
+        collectedDate.setDate(collectedDate.getDate() - 1);            
       }
-
       let footerReplacementDict = {
-        'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-        'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+        'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+        'LATEST_ADMINISTERED_DATE' : reformatJSDate( collectedDate ),
       };
+
       let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
 
       // update the display date
@@ -3344,18 +3307,16 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
-          const todayStr = getSnowflakeStyleDate(0);
-          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
-    
-          if (adminDateStr == todayStr) {
-            const yesterdayStr = getSnowflakeStyleDate(-1);
-            adminDateStr = yesterdayStr;
+          let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
+          let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMIN_DATE']);
+          if (publishedDate.getTime() == collectedDate.getTime()) {
+            collectedDate.setDate(collectedDate.getDate() - 1);            
           }
-    
           let footerReplacementDict = {
-            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+            'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+            'LATEST_ADMINISTERED_DATE' : reformatJSDate( collectedDate ),
           };
+
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
@@ -3598,18 +3559,16 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
-          const todayStr = getSnowflakeStyleDate(0);
-          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
-    
-          if (adminDateStr == todayStr) {
-            const yesterdayStr = getSnowflakeStyleDate(-1);
-            adminDateStr = yesterdayStr;
+          let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
+          let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMIN_DATE']);
+          if (publishedDate.getTime() == collectedDate.getTime()) {
+            collectedDate.setDate(collectedDate.getDate() - 1);            
           }
-    
           let footerReplacementDict = {
-            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+            'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+            'LATEST_ADMINISTERED_DATE' : reformatJSDate( collectedDate ),
           };
+
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
     
           // update the display date
@@ -3852,18 +3811,16 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
 
-          const todayStr = getSnowflakeStyleDate(0);
-          let adminDateStr = this.metadata['LATEST_ADMIN_DATE'];
-    
-          if (adminDateStr == todayStr) {
-            const yesterdayStr = getSnowflakeStyleDate(-1);
-            adminDateStr = yesterdayStr;
+          let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
+          let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMIN_DATE']);
+          if (publishedDate.getTime() == collectedDate.getTime()) {
+            collectedDate.setDate(collectedDate.getDate() - 1);            
           }
-    
           let footerReplacementDict = {
-            'PUBLISHED_DATE' : reformatReadableDate( this.metadata['PUBLISHED_DATE'] ),
-            'LATEST_ADMINISTERED_DATE' : reformatReadableDate( adminDateStr ),
+            'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+            'LATEST_ADMINISTERED_DATE' : reformatJSDate( collectedDate ),
           };
+
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
