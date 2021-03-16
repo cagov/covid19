@@ -1,65 +1,47 @@
 ---
 layout: "page.njk"
 title: "更安全的經濟藍圖"
-meta: " 加州制定了藍圖，以減緩州內的新型冠狀病毒疫情，並修訂了放寬和加強活動限制的標準。了解您所在縣的等級 加州各縣根據各自的檢測呈陽性率、經調整的患病率及健康公平指標被歸為某一等級。各縣必須停留在某個等級至少3週 […]"
+meta: " 基於新型冠狀病毒傳播等級，加州的重新開放藍圖設定了放寬和加強各種活動限制的條件。此頁面包含的內容：目前的等級劃分情況 安全地重新開放所有社區 問題與解答 當前的等級劃分情況（截至{{_varTierDate_}}） 加州所有縣基於其檢測呈陽性率被劃分至某個等級，[…]"
 author: "State of California"
-publishdate: "2021-03-09T19:40:51Z"
+publishdate: "2021-03-15T16:03:33Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<p>加州制定了藍圖，以減緩州內的新型冠狀病毒疫情，並修訂了放寬和加強活動限制的標準。</p>    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}"></cagov-reopening>    <h2 class="has-text-align-center">了解您所在縣的等級</h2>
+<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}"></cagov-reopening></div>
 
 
 
-<p>加州各縣根據各自的檢測呈陽性率、經調整的患病率及健康公平指標被歸為某一等級。各縣必須停留在某個等級至少3週，方可進入限制性較低的等級。每週審查一次數據，且每週二更新等級歸類。一個縣若希望進到限制性較低的等級，必須連續兩週達到下一個層級的標準。如果一個縣的指標連續兩週惡化，將被歸類到一個管制更嚴格的層級。詳情請參閱<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">等級劃分規則</a>。</p>
+<p>基於新型冠狀病毒傳播等級，加州的重新開放藍圖設定了放寬和加強各種活動限制的條件。</p>
 
 
 
-<h3 class="has-text-align-center">安全地重新開放所有社區</h3>
+<p class="h3">此頁面包含的內容：</p>
 
 
 
-<p>某些社區受到的COVID-19影響大於其他社區。這些社區的感染及死亡率更高。其中包括拉丁裔社區、黑人社區、太平洋島民社區、低收入社區以及必要工作者社區。</p>
+<ul class="toc"><li><strong><a href="#tier-assignments" data-type="internal" data-id="#tier-assignments">當前等級劃分</a></strong></li><li><strong><a href="#reopening-safely" data-type="internal" data-id="#reopening-safely">安全地重新開放所有社區</a></strong></li><li><strong><a href="#blueprint-questions-and-answers" data-type="internal" data-id="#blueprint-questions-and-answers">問題與解答</a></strong></li></ul>
 
 
 
-<h4 class="has-text-align-left">健康公平指標</h4>
+<h2 class="has-text-align-center" id="tier-assignments">當前等級劃分（截至 {{_varTierDate_}}</h2>
 
 
 
-<p>各縣必須先設法應對<strong>所有</strong>社區內的COVID-19疫情，方可進一步開放，應對措施包括確保某些社區的檢測呈陽性率（健康公平指標）不會與縣整體檢測呈陽性率相差甚遠。這些措施需要跨部門協作及各種合作方可成功實施。健康公平指標僅用於決定某縣是否可以移至限制性較低的等級。了解更多有關<a rel="noreferrer noopener" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/CaliforniaHealthEquityMetric.aspx" target="_blank">專注於公平</a>的資訊。</p>
+<p>加州各縣根據各自的檢測呈陽性率、經調整的患病率及健康公平指標被歸為某一等級。各縣必須停留在某個等級至少3週，方可進入限制性較低的等級。一個縣若希望進到限制性較低的等級，必須連續兩週達到下一個層級的標準。如果一個縣的指標連續兩週惡化，將被歸類到一個管制更嚴格的層級。詳情請參閱<a rel="noreferrer noopener" target="_blank" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">等級劃分規則</a>。</p>
 
 
 
-<h4 class="has-text-align-left">疫苗公平指標</h4>
+<p>截至2021年3月12日，加州在疫苗公平指標下已接種高達2百萬劑疫苗。新藍圖等級劃分情況已公佈，其生效日期為2021年3月14日。</p>
 
 
 
-<p>如要快速高效地結束COVID-19疫情，應要求最高危人群接種疫苗。為此，我們預留了40%的疫苗，準備分配給受疫情影響最嚴重的社區。此方法可幫助降低社區感染率、住院率及死亡率，以及減少新病毒變體伴隨新病例出現的概率。如要通過分配依舊有限的疫苗劑量來結束疫情， 此方法最為公平有效。</p>
+<p><strong>加州的縣風險等級</strong></p>
 
 
 
-<p>我們的近期目標是在本州受疫情影響最嚴重的社區接種2百萬劑疫苗，此類社區的居民大約佔加州符合資格民眾的25%。接種此2百萬劑疫苗後，更安全的經濟藍圖的等級將會更新，即其對應的確診率將有所調高。如需詳細了解等級的最新變化，請參閱CDPH的<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">更安全的經濟藍圖的框架</a>。</p>
-
-
-
-<p> </p>
-<div class="matrix-holder"></div>
-<p class="small-text">上方矩陣圖中的檢測呈陽性率的計算依據不包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的人數。</br>*可能會對小縣（人口少於106,000的縣）採取其他病例數評估措施，以進行等級劃分。</br>**健康公平指標不適用於小縣。健康公平指標是用於讓某縣移至限制性較低的等級。</p>
-<p> </p>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}--> <!--{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <h3 class="has-text-align-center">地區性居家避疫令</h3>
-
-
-
-<p>加州公共衛生局已解除加州內的地區性居家避疫令。此舉是因為ICU床位預測空置率已超過15%。各縣已回歸至所劃分的藍圖等級，並被督促繼續實行安全準則，要求民眾避免聚集以及在出門時佩戴口罩。</p>
-
-
-
-<h3 class="has-text-align-center" id="county-status">當前等級劃分（截至 {{_varTierDate_}}</h3>
-
-
-
-<p>每週審查一次數據，且每週二更新等級歸類。作為最低要求，各縣必須停留在某個等級至少3週，方可進入限制性較低的等級。一個縣若希望進到限制性較低的等級，必須連續兩週達到下一個層級的標準。</p>
+<div class="matrix-county-risk-levels"></div>
 
 
 
@@ -67,11 +49,75 @@ addtositemap: true
 
 
 
-<div class="mt-3 text-center">  <a href="https://covid19.ca.gov/state-dashboard/" class="link-arrow-blue">             <div class="link-arrow-label">查閱更多數據</div><cagov-arrow> </a> </div>
+<h2 class="has-text-align-center" id="reopening-safely">安全地重新開放所有社區</h2>
 
 
 
-<h2 class="has-text-align-center">問題與解答</h2>
+<p>某些社區受到的新型冠狀病毒影響大於其他社區。年滿65歲人士、有既往健康狀況的人士、拉丁裔人士、黑人、太平洋島民、低收入人士以及必要工作者社區皆面臨更高的感染率和死亡率。</p>
+
+
+
+<h4><strong>決定是否重新開放的關鍵指標</strong></h4>
+
+
+
+<figure class="wp-block-table table-gridded"><table><tbody><tr><td><strong>已調整的患病率</strong><br><strong>每日新增病例數（每10萬人）</strong></td><td>根據已實施的檢測次數進行調整後，每10萬人在7日內的新型冠狀病毒平均病例數（有7天的滯後時間）</td></tr><tr><td><strong>檢測呈陽性率</strong></td><td>在7日內進行的所有新型冠狀病毒檢測中，結果呈陽性的平均數</td></tr><tr><td><strong>健康地方指數（Healthy Places Index, HPI) （第1個四分位數社區的檢測呈陽性率）</strong></td><td>根據健康地方指數，7日內在最低四分位數（第1個四分位數）社區進行的所有新型冠狀病毒檢測中，結果呈陽性的平均數</td></tr><tr><td><strong>已接種疫苗數</strong></td><td>在全州內為處於健康地方指數中最低四分位數（第1個四分位數）社區的民眾接種的疫苗數（疫苗公平指標）</td></tr></tbody></table></figure>
+
+
+
+<h3 class="has-text-align-left">健康公平指標</h3>
+
+
+
+<p>各縣必須先設法應對<strong>所有</strong>社區內的COVID-19疫情，方可進一步開放，應對措施包括確保某些社區的檢測呈陽性率（健康公平指標）不會與縣整體檢測呈陽性率相差甚遠。這些措施需要跨部門協作及各種合作方可成功實施。健康公平指標僅用於決定某縣是否可以移至限制性較低的等級。了解更多有關<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/CaliforniaHealthEquityMetric.aspx">專注於公平</a>的資訊。</p>
+
+
+
+<h3 class="has-text-align-left">疫苗公平指標</h3>
+
+
+
+<p>40％的新型冠狀病毒感染及死亡發生在加州處於最低<a href="https://covid19.ca.gov/vaccines/#California-vaccines-dashboard">健康地方指數四分位數</a>(HPI)的社區。為結束疫情，我們將預留40％的疫苗，以分配給處於HPI第1個四分位數的社區。此方法將幫助減少社區感染率、住院率及死亡率，同時也將降低新變種出現的機率。 </p>
+
+
+
+<p>我們已實現近期目標，即為全州疫情最嚴重的社區接種2百萬劑疫苗（疫苗公平指標），此類社區的居民大約佔全州符合接種資格民眾的25％。因此，更安全的經濟藍圖中的等級已被更新，以允許重度（紅色）等級中有更高的患病率。如需詳細了解等級變化，請參閱CDPH的<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">更安全的經濟藍圖的框架</a>。</p>
+
+
+<p> </p>
+<div class="matrix-holder"></div>
+<p class="small-text">上方矩陣圖中的檢測呈陽性率的計算依據不包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的人數。</br>*可能會對小縣（人口少於106,000的縣）採取其他病例數評估措施，以進行等級劃分。<br>**健康公平指標不適用於小縣。健康公平指標是用於讓某縣移至限制性較低的等級。</p>
+<p> </p>
+
+
+
+<div class="mt-3 text-center">  <a href="https://covid19.ca.gov/state-dashboard/" class="link-arrow-blue">             <div class="link-arrow-label">查閱更多數據</div><cagov-arrow> </cagov-arrow></a> </div>
+
+
+
+<h3>如何改變風險等級</h3>
+
+
+<h2 class="has-text-align-center" id="blueprint-questions-and-answers">問題與解答</h2>
+
+
+
+<p>有兩組數據可以決定如何改變縣的等級：患病率及檢測呈陽性率。我們通過常規進程和加速進程追踪這兩組數據。如要通過常規進程進入更高等級，該縣必須連續兩周達到更高等級規定的患病率及檢測呈陽性率臨界線。按加速進程的要求，如果該縣檢測呈陽性率及健康公平指標特別低，並且患病率日益下降，則可進入限制更少的等級。如需了解所有詳情，請參閱<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">郡縣如何改變等級</a>。</p>
+
+
+
+<p> </p>
+<div class="matrix-holder"></div>
+<p class="small-text">上方矩陣圖中的檢測呈陽性率的計算依據不包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的人數。</br>*可能會對小縣（人口少於106,000的縣）採取其他病例數評估措施，以進行等級劃分。<br>**健康公平指標不適用於小縣。健康公平指標是用於讓某縣移至限制性較低的等級。</p>
+<p> </p>
+
+
+
+<div class="mt-3 text-center">  <a href="https://covid19.ca.gov/state-dashboard/" class="link-arrow-blue">             <div class="link-arrow-label">查閱更多數據</div><cagov-arrow> </cagov-arrow></a> </div>
+
+
+
+<h2 class="has-text-align-center" id="blueprint-questions-and-answers">問題與解答</h2>
 
 
 
@@ -87,22 +133,6 @@ addtositemap: true
 
 
 
-<h4 class="wp-accordion">縣監測名單目前情況如何？</h4>
-
-
-
-<p class="wp-accordion-content">在8月31日，更安全的經濟藍圖取代了縣數據監測名單，以確定哪些商業可以開放，而哪些商業不能開放。</p>
-
-
-
-<p class="wp-accordion-content">為何做此變更？在疫情流行的前幾個月中，我們對新型冠狀病毒及其傳播方式有了很多了解。例如，我們知道戶外活動比室內活動安全得多，而每個人都佩戴口罩以限制疾病的傳播非常重要。這張藍圖包含了我們所學到的知識。</p>
-
-
-
-<p class="wp-accordion-content">更安全的經濟藍圖是我們應對措施的下一進展。我們修改了變更等級的標準和時間。我們使各縣更方便查看變更如何影響疾病發展軌跡，並讓商業和顧客更容易提前做好規劃。我們還為加州民眾提供了查找工具，以查看其附近是否有獲准開放的商業或活動。</p>
-
-
-
 <h4 class="wp-accordion">如果我所在的縣的病例出現率和活躍度經評估歸入兩個不同的層級，該怎麼辦？</h4>
 
 
@@ -115,11 +145,11 @@ addtositemap: true
 
 
 
-<p class="wp-accordion-content">所有K-6學校均能開放面授課程，前提是其所在縣的患病率低於每100,000人25例，並且其重新開放的計劃得到了縣衛生官員或州立安全學校團體(State Safe Schools Team)的批准。所有學校均能開放面授課程，前提是其所在縣處在紅色、橙色或黃色等級。  </p>
+<p class="wp-accordion-content">所有K-6學校均能開放面授課程，前提是其所在縣的患病率低於每100,000人25例，並且縣衛生官員或州立安全學校團隊 (State Safe Schools Team) 未發現其重新開放計劃的不妥之處。所有學校均能開放面授課程，前提是其所在縣處在紅色、橙色或黃色等級。  </p>
 
 
 
-<p class="wp-accordion-content">根據針對K-2學生及高需求學生的<a href="http://cert1.mail-west.com/7Jyj7W/uzjanmc7rm/k36817Jgtmy/0gk2q/qvnq7Jddykx/817J/qo3iy3h2k1i56alg?_c=d%7Cze7pzanwmhlzgt%7C1865v1x2u3lv3bd&amp;_ce=1614969307.2f0bcbf94cf0f1ef3b6c085fb9534889">新型冠狀病毒救濟及學校重新開放救濟計劃</a>，所有公立學校必須提供面授課程。到2021年3月31日時，無法為這些學生群體提供面授課程的學校，此後每天都會失去1％的救濟資金。 </p>
+<p class="wp-accordion-content">根據針對K-2學生及高需求學生的<a href="http://cert1.mail-west.com/7Jyj7W/uzjanmc7rm/k36817Jgtmy/0gk2q/qvnq7Jddykx/817J/qo3iy3h2k1i56alg?_c=d%7Cze7pzanwmhlzgt%7C1865v1x2u3lv3bd&amp;_ce=1614969307.2f0bcbf94cf0f1ef3b6c085fb9534889">新型冠狀病毒救濟及學校重新開放救濟計劃</a>，截至2021年3月31日，所有公立學校必須提供面授課程。到2021年3月31日時，無法為這些學生群體提供面授課程的學校，此後每天都會失去1％的救濟資金。 </p>
 
 
 
@@ -127,7 +157,7 @@ addtositemap: true
 
 
 
-<p class="wp-accordion-content">詳細了解</span></a>PDF版<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf">學校指引<span class="pdf-link-icon no-underline-icon" aria-hidden="true">。</p>
+<p class="wp-accordion-content">詳細了解<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/COVID-19/Consolidated_Schools_Guidance.pdf">學校指引</a>。</p>
 
 
 
@@ -135,8 +165,4 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>除必要需求外，請待在家中。</li><li>在公共場所佩戴口罩。</li><li>經常洗手。</li><li>在公共場所時，至少要與人保持6英尺的距離。</li><li>限制與非同住人士的接觸。</li><li><a href="https://covid19.ca.gov/vaccines/">接種疫苗</a>。</li></ul>
-
-
-
-<p> </p>
+<ul class="wp-accordion-content"><li>除必要需求外，請待在家中。</li><li>在公共場所佩戴口罩。</li><li>經常洗手。</li><li>在公共場所時，至少要與人保持6英尺的距離。</li><li>限制與非同住人士的接觸。</li><li><a href="https://covid19.ca.gov/vaccines/">接種疫苗</a>。</li></ul>    <!-- Ethnio Activation Code --> <script type="text/javascript" language="javascript" src="//ethn.io/81005.js" async="true" charset="utf-8"></script>    <p> </p>
