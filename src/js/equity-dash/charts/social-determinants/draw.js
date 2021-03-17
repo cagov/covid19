@@ -170,7 +170,7 @@ function rewriteBarLabels(component, svg, data, x, y, sparkline) {
     .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
     .attr("width", x.bandwidth() / 4)
     .html(d => {
-      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.intFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
+      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.floatFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
       <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
     })
     .attr('text-anchor','middle')
@@ -209,7 +209,7 @@ function redrawYLine(component, y, dataset) {
     .attr('class','label bar-chart-yline');
   
   component.svg.append("text")
-    .text(`${component.translationsObj.statewideCaseRate} ${component.intFormatter.format(component.yDValue)}`)
+    .text(`${component.translationsObj.statewideCaseRate} ${component.floatFormatter.format(component.yDValue)}`)
     .attr("y", yDottedLinePos - 6)
     // .attr("x", 38)
     // .attr('text-anchor','start')
