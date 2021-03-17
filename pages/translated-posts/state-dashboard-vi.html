@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình COVID-19 tại California"
 meta: "Xem dữ liệu mới nhất về các ca bệnh, ca tử vong, kết quả xét nghiệm và cấp quận."
 author: "State of California"
-publishdate: "2021-03-12T23:16:51Z"
+publishdate: "2021-03-16T15:33:40Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -282,8 +282,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
   <h2 class="text-center color-purple">Dữ liệu này cho phép đưa ra các quyết định giúp cho California luôn khỏe mạnh và an toàn</h2>
 
-
-
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
     <div class="grid-main bg-lightblue py-2">
       <h3 class="my-0 text-center">Mức độ rủi ro cấp quận của California</h3>
@@ -295,8 +293,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="grid-single single2">
       <div class="btn-matrix bg-red-btn">NGHIÊM TRỌNG</div>
       <p class="text-small mt-2 mb-0">Một số hoạt động kinh doanh trong nhà không thiết yếu phải đóng cửa</p>
-
-
     </div>
     <div class="grid-single single3">
       <div class="btn-matrix bg-orange-btn">TRUNG BÌNH</div>
@@ -308,8 +304,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Chỉ định cấp quận hiện tại kể từ {{_varTierDate_}}</h3>
-  <p class="mt-0">Việc chỉ định cấp có thể được thực hiện vào bất kỳ ngày nào trong tuần và với tần suất nhiều lần một tuần. Chọn một quận để xem quận đó thuộc khu vực nào.</p>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Các chỉ định cấp hiện tại kể từ {{_varTierDate_}}</h3>
+  <p class="mt-0">Toàn bộ dữ liệu và chỉ định cấp được cập nhật vào Thứ Ba hàng tuần.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -322,7 +318,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">Xem những cơ sở kinh doanh/hoạt động nào được mở cửa tại quận của quý vị </div>     <cagov-arrow></cagov-arrow> </a> </div>
+<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">Xem những cơ sở kinh doanh/hoạt động nào được mở cửa tại quận của quý vị</div>     <cagov-arrow></cagov-arrow> </a> </div>
 
 
 
@@ -360,7 +356,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
-                <p>Sự phân bố các ca nhiễm COVID-19 được xác nhận và các ca tử vong cho thấy sự chênh lệch đáng kể giữa các nhóm tuổi tại California. Những người trong khoảng 18-49 tuổi có số ca mắc quá cao. Những người 65 tuổi trở lên có số ca tử vong quá cao.</p>
+                <p>Sự phân bố các ca nhiễm COVID-19 và các ca tử vong do nhiễm COVID-19 được xác nhận cho thấy sự chênh lệch đáng kể giữa các nhóm tuổi tại California. Những người trong khoảng 18-49 tuổi có số ca mắc quá cao. Những người 65 tuổi trở lên có số ca tử vong quá cao.</p>
               </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Các ca nhiễm được xác nhận theo độ tuổi ở California</li>

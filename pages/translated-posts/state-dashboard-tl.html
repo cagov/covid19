@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay sa COVID-19 sa California"
 meta: "Tingnan ang pinakabagong data sa mga kaso, pagkamatay, pagsusuri at mga tier ng county."
 author: "State of California"
-publishdate: "2021-03-12T23:16:51Z"
+publishdate: "2021-03-16T15:33:40Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -282,8 +282,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
   <h2 class="text-center color-purple">Ang datos na ito ay pinagbabatayan ng mga pasyang nagpapanatiling malusog at ligtas ng California</h2>
 
-
-
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
     <div class="grid-main bg-lightblue py-2">
       <h3 class="my-0 text-center">Mga antas ng panganib sa county ng California</h3>
@@ -295,8 +293,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="grid-single single2">
       <div class="btn-matrix bg-red-btn">MARAMI</div>
       <p class="text-small mt-2 mb-0">Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo</p>
-
-
     </div>
     <div class="grid-single single3">
       <div class="btn-matrix bg-orange-btn">KATAMTAMAN</div>
@@ -309,7 +305,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
 
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Kasalukuyang pagtatalaga ng tier mula {{_varTierDate_}}</h3>
-  <p class="mt-0">Puwedeng ilabas ang mga pagtatalaga ng tier anumang araw sa linggo at puwedeng maglabas nito nang mahigit sa isang beses sa isang linggo. Pumili ng county para malaman kung saang rehiyon ito kabilang.</p>
+  <p class="mt-0">Ang lahat ng datos at pagtatalaga ng tier ay ina-update tuwing Martes.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -317,7 +313,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}.  Tingnan kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California</strong> sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>. Matuto pa tungkol sa kapasidad ng ICU sa rehiyon sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos sa ICU ng CDPH</a>.</p>
+  <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Alamin kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California</strong> sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>. Matuto pa tungkol sa kapasidad ng ICU sa rehiyon sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos sa ICU ng CDPH</a>.</p>
 </div>
 
 
@@ -345,7 +341,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
                       <li data-label="chartLegend2">% ng populasyon ng estado</li>
                       <li data-label="chartBarCaption">{category} ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
-                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may data mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa kasarian sa California</li>
@@ -367,7 +363,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
                       <li data-label="chartLegend2">% ng populasyon ng estado</li>
                       <li data-label="chartBarCaption">Ang {category} na grupo ng edad ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
-                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may data mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa edad sa California</li>
@@ -389,7 +385,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% ng mga kumpirmadong kaso</li>
                       <li data-label="chartLegend2">% ng populasyon ng estado</li>
                       <li data-label="chartBarCaption">{category} tao ang kabilang sa {metric-value} ng mga kumpirmadong kaso at {metric-baseline-value} ng kabuuang populasyon ng California.</li>
-                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may data mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
+                      <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {MINUS_ONE_DATE}. Tala: Ang mga porsyento ay posibleng hindi magkaroon ng tumpak na kabuuan dahil sa pagra-round up.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Mga kumpirmadong pagkamatay ayon sa lahi at etnisidad sa California</li>

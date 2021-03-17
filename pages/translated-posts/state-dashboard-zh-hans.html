@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州COVID-19追踪"
 meta: "查看有关病例数、死亡数、检测数及县等级的最新数据。"
 author: "State of California"
-publishdate: "2021-03-12T23:16:51Z"
+publishdate: "2021-03-16T15:33:40Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -282,8 +282,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
   <h2 class="text-center color-purple">这些数据推动了确保加州民众的健康和安全的决策</h2>
 
-
-
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
     <div class="grid-main bg-lightblue py-2">
       <h3 class="my-0 text-center">加州的县风险等级</h3>
@@ -295,8 +293,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="grid-single single2">
       <div class="btn-matrix bg-red-btn">重度</div>
       <p class="text-small mt-2 mb-0">关闭一些非必要的室内业务</p>
-
-
     </div>
     <div class="grid-single single3">
       <div class="btn-matrix bg-orange-btn">中度</div>
@@ -308,8 +304,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">当前等级划分（截至 {{_varTierDate_}}</h3>
-  <p class="mt-0">等级划分可能会在一周内的任意一天进行，并且一周可能进行一次以上。选择一个县以查看其处于哪个区域。</p>
+  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">当前等级划分情况（截至 {{_varTierDate_}}</h3>
+  <p class="mt-0">所有数据和等级划分于每周二更新。</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -317,7 +313,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p class="small-text">所有数据和等级划分的依据为{{_varTierEndDate_}}周末的结果。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH发布的更安全的经济蓝图架构</a>，了解等级划分及变更情况，以及县历史数据（<strong>加州蓝图数据表</strong>）。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH的ICU数据</a>，了解地区ICU床位空置率。</p>
+  <p class="small-text">所有数据和等级划分的依据为周末的结果{{_varTierEndDate_}}。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH发布的更安全的经济蓝图架构</a>，了解等级划分及变更情况，以及县历史数据（<strong>加州蓝图数据表</strong>）。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH的ICU数据</a>，了解地区ICU床位空置率。</p>
 </div>
 
 

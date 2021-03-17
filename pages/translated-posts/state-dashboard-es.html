@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Consulte los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
 author: "State of California"
-publishdate: "2021-03-12T23:16:51Z"
+publishdate: "2021-03-16T15:33:40Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -282,8 +282,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
   <h2 class="text-center color-purple">Estos datos impulsan decisiones que mantienen a California saludable y segura</h2>
 
-
-
   <div class="grid-layout-hd bg-lightblue bd-lightblue">
     <div class="grid-main bg-lightblue py-2">
       <h3 class="my-0 text-center">Niveles de riesgo de los condados de California</h3>
@@ -295,8 +293,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="grid-single single2">
       <div class="btn-matrix bg-red-btn">SUSTANCIAL</div>
       <p class="text-small mt-2 mb-0">Algunas operaciones comerciales en interiores no esenciales están cerradas.</p>
-
-
     </div>
     <div class="grid-single single3">
       <div class="btn-matrix bg-orange-btn">MODERADO</div>
@@ -309,7 +305,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
 
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Asignaciones de niveles actuales al {{_varTierDate_}}</h3>
-  <p class="mt-0">Las asignaciones de niveles pueden ocurrir cualquier día de la semana y pueden ocurrir más de una vez a la semana. Seleccione un condado para ver en qué región se encuentra.</p>
+  <p class="mt-0">Todos los datos y asignaciones de niveles se actualizan semanalmente todos los martes.</p>
 
   <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
 </div>
@@ -366,14 +362,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Casos confirmados por edad en California</li>
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
-                      <li data-label="chartBarCaption">El grupo de edad de {categoría} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
                       <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por edad en California</li>
                       <li data-label="chartLegend1">% de casos confirmados de decesos</li>
                       <li data-label="chartLegend2">% de población del estado</li>
-                      <li data-label="chartBarCaption">El grupo de edad de {categoría} representa el {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
               <p class="small-text chart-footer-caption">footerText will go here</p>
@@ -395,7 +391,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartTitle">Decesos confirmados por raza y etnia en California</li>
                       <li data-label="chartLegend1">% de casos confirmados de decesos</li>
                       <li data-label="chartLegend2">% de población del estado</li>
-                      <li data-label="chartBarCaption">Las personas de {category} representa {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
+                      <li data-label="chartBarCaption">Las personas de {category} representan {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
               <p class="small-text chart-footer-caption">footerText will go here</p>
