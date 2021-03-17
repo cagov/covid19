@@ -192,8 +192,9 @@ function redrawYLine(component, y, dataset) {
   let yDottedLinePos = y(component.yDValue);
   let yBar3 = y(dataset[2].CASE_RATE_PER_100K);
   let yBar4 = y(dataset[3].CASE_RATE_PER_100K);
-  // use middle bar relationships to determine positioning (left/right alignment)
-  let leftAlign = Math.abs(yBar4-yDottedLinePos) < Math.abs(yBar3-yDottedLinePos);
+  // was using middle bar relationships to determine positioning (left/right alignment)
+  // now forcing right-alignment
+  let leftAlign = false; // Math.abs(yBar4-yDottedLinePos) < Math.abs(yBar3-yDottedLinePos);
   let yXAnchor = component.chartBreakpointValues.width - (component.chartBreakpointValues.margin.right+10);
   let yTextAnchor = 'end';
   if (leftAlign) {
