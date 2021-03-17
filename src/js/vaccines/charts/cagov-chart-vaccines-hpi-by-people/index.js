@@ -26,7 +26,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 120,
         margin: {
-          top: 70,
+          top: 90,
           right: 10,
           bottom: 52,
           left: 10,
@@ -38,7 +38,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 120,
         margin: {
-          top: 70,
+          top: 90,
           right: 10,
           bottom: 52,
           left: 10,
@@ -50,7 +50,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 90,
         margin: {
-          top: 70,
+          top: 90,
           right: 10,
           bottom: 52,
           left: 10,
@@ -62,7 +62,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 90,
         margin: {
-          top: 70,
+          top: 90,
           right: 10,
           bottom: 52,
           left: 10,
