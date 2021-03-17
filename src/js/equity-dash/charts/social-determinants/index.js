@@ -87,6 +87,11 @@ class CAGOVChartD3Bar extends window.HTMLElement {
                    minimumFractionDigits:0,
                    maximumFractionDigits:0});
 
+    this.floatFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
+                  {style:'decimal', 
+                   minimumFractionDigits:1,
+                   maximumFractionDigits:1});
+
          getScreenResizeCharts(this);
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
@@ -185,7 +190,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['ariaBarLabel']
       let label = templateStr
-                    .replace('placeholderCaseRate', this.intFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return label;
   }
@@ -194,7 +199,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['tooltipCaption']
       let caption = templateStr
-                    .replace('placeholderCaseRate', this.intFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return caption;
   }
