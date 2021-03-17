@@ -19,7 +19,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       // Data
       dataUrl:
         // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
-        config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
+        config.chartsVHPIDataLocDoses + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         bar_hspace: 120,
@@ -275,8 +275,8 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       let data = this.alldata;
       let totalDosesAllQuartiles = 0;
       data.forEach(d => {
-        console.log(d)
-        console.log(d.COMBINED_DOSES)
+        // console.log(d)
+        // console.log(d.COMBINED_DOSES)
         totalDosesAllQuartiles += d.COMBINED_DOSES;
       })
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
