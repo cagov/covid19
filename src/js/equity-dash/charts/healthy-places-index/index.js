@@ -365,8 +365,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     svg.on("mouseleave touchend", null);
 
     if (!using_data_overlay) {
-      const tooltip = new Tooltip(true);
-      const tooltip2 = new Tooltip(false);
+      const tooltip = new Tooltip(true, y);
+      const tooltip2 = new Tooltip(false, y);
 
       
       svg

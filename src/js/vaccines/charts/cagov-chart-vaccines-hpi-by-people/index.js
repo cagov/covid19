@@ -26,7 +26,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 120,
         margin: {
-          top: 70,
+          top: 60,
           right: 10,
           bottom: 52,
           left: 10,
@@ -38,7 +38,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 120,
         margin: {
-          top: 70,
+          top: 60,
           right: 10,
           bottom: 52,
           left: 10,
@@ -50,7 +50,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 90,
         margin: {
-          top: 70,
+          top: 60,
           right: 10,
           bottom: 52,
           left: 10,
@@ -62,7 +62,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         height: 400,
         width: this.nbr_bars * 90,
         margin: {
-          top: 70,
+          top: 60,
           right: 10,
           bottom: 52,
           left: 10,
@@ -329,7 +329,8 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       // this.translationsObj.footerDisplayDate = footerDisplayText;
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-      let max_y = d3.max(data, d => d.FIRST_DOSE_RATIO)
+      let max_y = d3.max(data, d => Math.max(d.FIRST_DOSE_RATIO,d.COMPLETED_DOSE_RATIO))
+
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
                         0,
