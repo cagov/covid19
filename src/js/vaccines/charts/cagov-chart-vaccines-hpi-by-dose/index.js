@@ -299,7 +299,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
 
-      let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO)
+      let max_y = d3.max(data, d => (d.COMBINED_DOSES / totalDosesAllQuartiles))
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
                         0,
@@ -338,6 +338,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          console.log("New HPI Dose Data",this.alldata);
 
           this.renderChart.call(component);
         }.bind(this)

@@ -9,9 +9,9 @@ const defaultConfig = {
   chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
 }
 const stagingConfig =  {
-  equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
-  equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
-  chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/15dc777432d5a886c97f62c2365af4ac19848d5e/data/vaccine-hpi/v2/',
+  equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
+  equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-equity/',
+  chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-hpi/v2/',
 }
 
 const devOutputPath = 'docs/js/chartssandbox.js';
