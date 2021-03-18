@@ -3,7 +3,7 @@ import css from './index.scss';
 
 export default function template(translationsObj) {
   return /*html*/`<div class="py-2 bg-lightblue full-bleed">
-    <div class="container">
+    <div class="container col-lg-9">
     <h2 class="text-center" id="factors">${translationsObj.sectionTitle}</h2>
     <p>${translationsObj.sectionDescription}</p>
     <div class="col-lg-12 bg-white px-3 py-4">

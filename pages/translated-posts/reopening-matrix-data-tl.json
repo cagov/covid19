@@ -4,35 +4,35 @@
       "County tier": "Kaunti",
       "colorLabel": "Dilaw",
       "_Color label": "Yellow",
-      "New cases": "Wala pang 1.0",
-      "Positive tests": "Wala pang 2.0%",
+      "New cases": "Wala pa sa 1.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Wala pa sa 2.0% positibong kaso sa buong county**",
       "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
-      "Positive-heq": "Wala pang 2.2%"
+      "Positive-heq": "Wala pa sa 2.2% positibong kaso para sa health equity quartile**"
     },
     {
       "County tier": "Katamtaman",
       "colorLabel": "Orange",
       "_Color label": "Orange",
-      "New cases": "1.0 – 3.9",
-      "Positive tests": "2.0 – 4.9% ",
+      "New cases": "1.0 – 3.9 na arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "2.0 – 4.9% positibong kaso sa buong county**",
       "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
-      "Positive-heq": "2.2 – 5.2%"
+      "Positive-heq": "Wala pa sa 5.3% positibong kaso para sa health equity quartile**"
     },
     {
       "County tier": "Marami",
       "colorLabel": "Pula",
       "_Color label": "Red",
-      "New cases": "4.0 – 7.0",
-      "Positive tests": "5.0 – 8.0%",
+      "New cases": "4.0 – 7.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "5.0 – 8.0% positibong kaso sa buong county**",
       "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
-      "Positive-heq": "5.3 – 8.0%"
+      "Positive-heq": "Wala pa sa 8.1% positibong kaso para sa health equity quartile**"
     },
     {
       "County tier": "Napakarami",
       "colorLabel": "Purple",
       "_Color label": "Purple",
-      "New cases": "Mahigit sa 7.0",
-      "Positive tests": "Mahigit sa 8.0%",
+      "New cases": "Mahigit sa 7.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Mahigit sa 8.0% positibong kaso sa buong county**",
       "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo",
       "Positive-heq": ""
     }
@@ -57,6 +57,105 @@
     {
       "_id": "Description – positive cases",
       "text": "Mga positibong pagsusuri"
+    }
+  ],
+  "Table3": [
+    {
+      "County tier": "Kaunti",
+      "colorLabel": "Dilaw",
+      "_Color label": "Yellow",
+      "New cases": "Wala pa sa 1.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Wala pa sa 2.0% positibong kaso sa buong county**",
+      "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Positive-heq": "Wala pa sa 2.2% positibong kaso para sa health equity quartile**"
+    },
+    {
+      "County tier": "Katamtaman",
+      "colorLabel": "Orange",
+      "_Color label": "Orange",
+      "New cases": "1.0 – 3.9 na arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "2.0 – 4.9% positibong kaso sa buong county**",
+      "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Positive-heq": "Wala pa sa 5.3% positibong kaso para sa health equity quartile**"
+    },
+    {
+      "County tier": "Marami",
+      "colorLabel": "Pula",
+      "_Color label": "Red",
+      "New cases": "4.0 – 10.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "5.0 – 8.0% positibong kaso sa buong county**",
+      "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
+      "Positive-heq": "Wala pa sa 8.1% positibong kaso para sa health equity quartile**"
+    },
+    {
+      "County tier": "Napakarami",
+      "colorLabel": "Purple",
+      "_Color label": "Purple",
+      "New cases": "Mahigit sa 10.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Mahigit sa 8.0% positibong kaso sa buong county**",
+      "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo",
+      "Positive-heq": ""
+    }
+  ],
+  "Table4": [
+    {
+      "County tier": "Kaunti",
+      "colorLabel": "Dilaw",
+      "_Color label": "Yellow",
+      "New cases": "Wala pa sa 2.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Wala pa sa 2.0% positibong kaso sa buong county**",
+      "description": "Bukas ang karamihan sa indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Positive-heq": "Wala pa sa 2.2% positibong kaso para sa health equity quartile**"
+    },
+    {
+      "County tier": "Katamtaman",
+      "colorLabel": "Orange",
+      "_Color label": "Orange",
+      "New cases": "2.0 – 5.9 na arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "2.0 – 4.9% positibong kaso sa buong county**",
+      "description": "Bukas ang ilang indoor na pagpapatakbo ng negosyo nang may mga modipikasyon",
+      "Positive-heq": "Wala pa sa 5.3% positibong kaso para sa health equity quartile**<br>"
+    },
+    {
+      "County tier": "Marami",
+      "colorLabel": "Pula",
+      "_Color label": "Red",
+      "New cases": "6.0 – 10.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "5.0 – 8.0% positibong kaso sa buong county**",
+      "description": "Sarado ang ilang hindi mahahalagang operasyon ng indoor na negosyo",
+      "Positive-heq": "Wala pa sa 8.1% positibong kaso para sa health equity quartile**"
+    },
+    {
+      "County tier": "Napakarami",
+      "colorLabel": "Purple",
+      "_Color label": "Purple",
+      "New cases": "Mahigit sa 10.0 arawang bagong kaso (sa bawat 100k)*",
+      "Positive tests": "Mahigit sa 8.0% positibong kaso sa buong county**",
+      "description": "Sarado ang maraming hindi mahahalagang operasyon ng indoor na negosyo",
+      "Positive-heq": ""
+    }
+  ],
+  "Table5": [
+    {
+      "Table": "Table1",
+      "Status": "",
+      "Title": "Noong nabakunahan ng CA ang<strong> mababa sa 2 milyong </strong>katao sa HPI quartile 1",
+      "Description": "Ang rate ng kaso, pagkapositibo sa test, at mga limitasyon sa sukatan ng health equity ay dapat na matugunan para mas makausad sa mas malawakang muling pagbubukas.",
+      "Footnote": "Kung kapwa ang pagkapositibo sa test at sukatan ng health equity ay mababa, at ang bumababa ang rate ng kaso pero hindi pa rin natutugunan ang hindi gaanong mahigpit na antas ng tier, maaari pa ring umusad ang isang county sa mas malawakang muling pagbubukas. Tingnan ang <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">mga panuntunan sa pinabilis na pag-usad</a>.&nbsp;"
+    },
+    {
+      "Table": "Table3",
+      "Status": "Kasalukuyan",
+      "Title": "Noong nabakunahan ng CA ang <strong>2 milyong</strong> katao sa HPI quartile 1",
+      "Description": "Ang rate ng kaso, pagkapositibo sa test, at mga limitasyon sa sukatan ng health equity ay dapat na matugunan para mas makausad sa malawak na muling pagbubukas.",
+      "Footnote": "Kung kapwa ang pagkapositibo sa test at sukatan ng health equity ay mababa, at ang bumababa ang rate ng kaso pero hindi pa rin natutugunan ang hindi gaanong mahigpit na antas ng tier, maaari pa ring umusad ang isang county sa mas malawakang muling pagbubukas. Tingnan ang <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">mga panuntunan sa pinabilis na pag-usad</a>.&nbsp;"
+    },
+    {
+      "Table": "Table4",
+      "Status": "",
+      "Title": "Noong nabakunahan ng CA ang mababa sa <strong>4 na milyong</strong> katao sa HPI quartile 1",
+      "Description": "Ang rate ng kaso, pagkapositibo sa test, at mga limitasyon sa sukatan ng health equity ay dapat na matugunan para mas makausad sa malawak na muling pagbubukas.",
+      "Footnote": "Kung kapwa ang pagkapositibo sa test at sukatan ng health equity ay mababa, at ang bumababa ang rate ng kaso pero hindi pa rin natutugunan ang hindi gaanong mahigpit na antas ng tier, maaari pa ring umusad ang isang county sa mas malawakang muling pagbubukas. Tingnan ang <a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">mga panuntunan sa pinabilis na pag-usad</a>.&nbsp;"
     }
   ]
 }
