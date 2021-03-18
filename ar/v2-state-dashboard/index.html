@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>تعقب المصابين بكوفيد-19 في كاليفورنيا</h1>
           
-            <p class="small-text">آخر التحديثات&nbsp;5:21 م الساعة 17 فبراير 2021</p>
+            <p class="small-text">آخر التحديثات&nbsp;1:19 م الساعة 12 مارس 2021</p>
           
         </div>
       </div>
@@ -347,7 +347,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -416,7 +416,7 @@
 
 
 <div class="pl-2 text-small">
-  <p>تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في 6 مارس 2021. تعرف على كيفية تخصيص الفئات وتغييرها، بالإضافة إلى البيانات التاريخية للمقاطعة (<strong>الرسم البياني لمخطط كاليفورنيا</strong>) على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">صفحة توجيهات إدارة الصحة العامة في كاليفورنيا</a>. إن معدل الحالات الإيجابية في هذه الخريطة يستثني الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. وهذه المجموعات مدرجة في المخططات والروسوم البيانية المذكورة أعلاه والتي تُظهر تباينًا في معدلات الإصابة وإيجابية الحالات. وتُحسب الآن سعة وحدات العناية المركزة الإقليمية باستخدام العدد الإجمالي لأسرة وحدات العناية المركزة للبالغين في المستشفيات التي بها قسم للطوارئ ولا تشمل أسرة العناية المركزة لحديثي الولادة أو الأطفال. منذ انتهاء العمل بالقرار الإقليمي بالبقاء في المنزل في 25 يناير 2021، لم تعد سعة وحدات العناية المركزة الإقليمية تتضمن تعديلاً للنسبة المئوية للمرضى المصابين بفيروس كوفيد-19 في وحدات العناية المركزة.</p>
+  <p class="small-text">تعتمد جميع البيانات وتعيينات الفئات على نتائج الأسبوع المنتهي في 6 مارس 2021. اطلع على كيفية تعيين الفئات وتغييرها، وكذلك البيانات التاريخية للمقاطعات (<strong>الرسم البياني لمخطط كاليفورنيا</strong>) على <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">مخطط إدارة الصحة العامة بولاية كاليفورنيا (CDPH) لإطار عمل أكثر أمانًا للاقتصاد</a>. تعرف على الطاقة الاستيعابية لوحدات العناية المركزة الإقليمية في <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">بيانات وحدات العناية المركزة الصادرة عن إدارة الصحة العامة بولاية كاليفورنيا</a>.</p>
 </div>
 
 
@@ -425,46 +425,87 @@
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">الإصابات حسب المجموعة</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">الجنس والعرق</button> <button class="large-tab js-toggle-group gender">النوع</button> <button class="large-tab js-toggle-group age">العمر</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>ويكشف توزيع وفيات كوفيد-19 المؤكدة عن وجود تفاوت بين الجنسين، حيث يكون للذكور عدد غير متناسب من الوفيات مقارنة بعدد السكان.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات مؤكدة حسب نوع الجنس في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">{category} حساب {metric-value} الحالات المؤكدة و {metric-baseline-value} حساب إجمالي سكان كاليفورنيا.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب نوع الجنس في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">{category} حساب {metric-value} حالات الوفاة المؤكدة و {metric-baseline-value} حساب إجمالي سكان كاليفورنيا.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">سيظهر النص التذييل هنا</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>يكشف توزيع حالات كوفيد-19 المؤكدة والوفيات عن وجود تباينات كبيرة بين الفئات العمرية في كاليفورنيا. فالفئات العمرية ما بين 18 و49 لديهم عدد غير متكافئ من حالات الإصابة. فالفئات العمرية من 65 فما فوق لديهم عدد غير متكافئ من الوفيات.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات مؤكدة حسب العمر في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">تمثل {category} الفئة العمرية {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب العمر في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">تمثل {category} الفئة العمرية {metric-value} لحالات الوفاة المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">سيظهر النص التذييل هنا</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>يكشف توزيع حالات كوفيد-19 المؤكدة عن تباينات كبيرة داخل التركيبة السكانية العرقية والإثنية العامة في كاليفورنيا، حيث يوجد عدد غير متناسب من حالات الإصابة بين مجموعات اللاتينيين وسكان هاواي الأصليين/سكان جزر المحيط الهادئ مقارنة بعدد هذه الشرائح السكانية في الولاية. وتتوفر المزيد من <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">البيانات العرقية والإثنية للمصابين بكوفيد-19</a>. </p>
-                <p class="small-text">ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب.</p>
+              <div class="mx-auto">
+                <p>يكشف توزيع حالات كوفيد-19 المؤكدة عن تباينات كبيرة داخل التركيبة السكانية العرقية والإثنية العامة في كاليفورنيا، حيث يوجد عدد غير متناسب من حالات الإصابة بين مجموعات اللاتينيين وسكان هاواي الأصليين/سكان جزر المحيط الهادئ مقارنة بعدد هذه الشرائح السكانية في الولاية. وتتوفر المزيد من <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">البيانات العرقية والإثنية للمصابين بكوفيد-19</a>.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات مؤكدة حسب الجنس والعرق في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">{category} يمثل السكان {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب الجنس والعرق في كاليفورنيا</li>
+                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
+                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
+                      <li data-label="chartBarCaption">{category} يمثل السكان {metric-value} لحالات الوفاة المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">سيظهر النص التذييل هنا</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">انظر المزيد من البيانات المفصلة حسب المجموعة</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">انظر المزيد من البيانات المفصلة حسب المجموعة</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
+</div>
     </div>
   </div>
   <!-- end contentBlock -->

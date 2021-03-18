@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>캘리포니아 내 COVID-19 추적 관리</h1>
           
-            <p class="small-text">최종 갱신 일자&nbsp;2021년 2월 17일 오후 5:21</p>
+            <p class="small-text">최종 갱신 일자&nbsp;2021년 3월 12일 오후 1:19</p>
           
         </div>
       </div>
@@ -347,7 +347,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -416,7 +416,7 @@
 
 
 <div class="pl-2 text-small">
-  <p>모든 데이터 및 단계 배정은 2021년 3월 6일마감주의 결과에 근거합니다. 단계의 배정 및 변경 방법 뿐만 아니라 카운티의 과거 데이터(<strong>캘리포니아 청사진 데이터표(California Blueprint Data Chart)</strong>)는 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">캘리포니아 공중보건부(California Department of Public Health) 지침 페이지</a>에서 확인하십시오. 본 지도의 사례 및 양성 반응률에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 제외됩니다. 해당 그룹은 상기 차트에 포함되어 있으며 이로 인해 사례 발생률과 양성 반응률에서 차이가 나타나게 됩니다. 지역별 ICU 수용 능력은 이제 응급부서가 있는 병원 내 총 성인용 ICU 병상 수를 사용하여 산출되며 신생아나 소아용 ICU 병상은 이에 포함되지 않습니다. 지역별 자택 체류 명령이 2021년 1월 25일 자로 종료됨에 따라 지역별 ICU 수용 능력은 더 이상 ICU 내 COVID-19 양성 반응 백분율에 대한 조정분을 포함하지 않습니다.</p>
+  <p class="small-text">모든 데이터 및 단계 배정은 2021년 3월 6일마감주의 결과에 근거합니다. 단계 배정과 변경 방법 뿐만 아니라 카운티의 과거 데이터(<strong>캘리포니아 청사진 데이터 표</strong>)에 관한 사항은 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH의 더욱 안전한 경제를 위한 청사진 기본 체계</a>에서 확인하십시오. 지역별 ICU 수용 능력에 관한 사항은 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH의 ICU 데이터</a>에서 확인하십시오.</p>
 </div>
 
 
@@ -425,46 +425,87 @@
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">집단별 감염</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">인종 및 민족</button> <button class="large-tab js-toggle-group gender">성별</button> <button class="large-tab js-toggle-group age">연령</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>COVID-19 확진 사망자 분포에서 성별 간 격차를 보였으며, 남성에게서 전체 인구 대비 불균형적인 사망자 수가 나타났습니다.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 성별 확진자</li>
+                      <li data-label="chartLegend1">확진자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category}는 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 성별 사망 확인자</li>
+                      <li data-label="chartLegend1">사망 확인자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category}는 사망 확인자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">꼬리말 문자 표시란</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>COVID-19 확진 사례 건수 및 사망자 분포에서 캘리포니아의 연령대에 걸쳐 의미있는 격차를 보였습니다. 18-49세에서 불균형적인 사례 건수가 나타났습니다. 65세 이상에서 불균형적인 사망자 수가 나타났습니다.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 연령별 확진자</li>
+                      <li data-label="chartLegend1">확진자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category} 연령대는 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 연령별 사망 확인자</li>
+                      <li data-label="chartLegend1">사망 확인자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category} 연령대는 사망 확인자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">꼬리말 문자 표시란</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>COVID-19 확진 사례 건수 분포에서 캘리포니아의 전제 인종 및 민족 인구 내 의미있는 격차를 보였으며, 라틴계와 하와이 원주민/태평양 섬 주민에게서 주 전체 인구 대비 불균형적인 사례 건수가 나타났습니다. 추가로 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 인종 및 민족 관련 데이터</a>가 제공됩니다. </p>
-                <p class="small-text">주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</p>
+              <div class="mx-auto">
+                <p>COVID-19 확진 사례 건수 분포에서 캘리포니아의 전제 인종 및 민족 인구 내 의미있는 격차를 보였으며, 라틴계와 하와이 원주민/태평양 섬 주민에게서 주 전체 인구 대비 불균형적인 사례 건수가 나타났습니다. 추가로 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 인종 및 민족 관련 데이터</a>가 제공됩니다.</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 인종 및 민족별 확진자</li>
+                      <li data-label="chartLegend1">확진자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category} 주민은 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">캘리포니아 내 인종 및 민족별 사망 확인자</li>
+                      <li data-label="chartLegend1">사망 확인자 대비 %</li>
+                      <li data-label="chartLegend2">주 인구 대비 %</li>
+                      <li data-label="chartBarCaption">{category} 주민은 사망 확인자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">꼬리말 문자 표시란</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">집단별 세부 데이터 참조</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">집단별 세부 데이터 참조</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
+</div>
     </div>
   </div>
   <!-- end contentBlock -->

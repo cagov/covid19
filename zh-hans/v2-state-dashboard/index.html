@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>加州COVID-19追踪</h1>
           
-            <p class="small-text">最后更新时间&nbsp;2021年2月17日, 下午5:21</p>
+            <p class="small-text">最后更新时间&nbsp;2021年3月12日, 下午1:19</p>
           
         </div>
       </div>
@@ -347,7 +347,7 @@
 
 
 <div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+  <div class="toggle-group-container cases-group hospitals-group">
     <div id="hospital-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
     </div>
@@ -416,7 +416,7 @@
 
 
 <div class="pl-2 text-small">
-  <p>所有数据和等级划分的依据为2021年3月6日周末的结果。请在<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">加州公共卫生局指引页面</a>查看等级划分和变更方式，以及县历史数据（<strong>加州蓝图数据图</strong>）。此数据图中的患病率及检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。这些团体包括在上述图表中，其显示不同病例和检测呈阳性速率。目前计算地区ICU床位空置率使用的数据，来自于所有含急诊科的医院的总成人ICU床位数，而不包括新生儿和儿科ICU床位。自2021年1月25日地区性居家避疫令解除以来，不再因ICU中的COVID-19阳性患者占比而对地区ICU床位空置率进行调整。</p>
+  <p class="small-text">所有数据和等级划分的依据为2021年3月6日周末的结果。 请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH发布的更安全的经济蓝图架构</a>，了解等级划分及变更情况，以及县历史数据（<strong>加州蓝图数据表</strong>）。请参阅<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH的ICU数据</a>，了解地区ICU床位空置率。</p>
 </div>
 
 
@@ -425,46 +425,87 @@
 
 
 
-<div class="bg-lightblue full-bleed">
-  <div class="container py-2">
+<div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-4 pb-5">
     <h2 class="text-center color-orange">各群体的感染数</h2>
-    <div class="col-lg-12 bg-white px-3 py-4">
+    <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs"><button class="large-tab toggle-active js-toggle-group ethnicity">种族和族裔</button> <button class="large-tab js-toggle-group gender">性别</button> <button class="large-tab js-toggle-group age">年龄</button>         </div>
       </div>
-      <div class="row">
-        <div class="toggle-group-container col-10 mx-auto">
-
+      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+ mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>COVID-19确诊病例死亡人数的分布情况，显示了各性别的患病情况有差异，在患病人群中，有很大一部分死亡病例都是男性。</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州确诊病例数（按性别分类）</li>
+                      <li data-label="chartLegend1">占确诊病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}占确诊病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                      <li data-label="footerText">使用来自{MINUS_ONE_DATE}的数据更新{PUBLISHED_DATE}。注：由于四舍五入的关系，百分比加起来可能不等于100%。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州死亡病例数（按性别分类）</li>
+                      <li data-label="chartLegend1">占死亡病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}占死亡病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">此处为页脚文本</p>
             </div>
           </div>
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
+              <div class="mx-auto">
                 <p>COVID-19确诊病例和死亡病例的分布情况，显示了加州各年龄组的患病情况有很大差异。18至49岁人士中的病例数相当多。65岁及以上人士中的死亡数相当多。</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州确诊病例数（按年龄分类）</li>
+                      <li data-label="chartLegend1">占确诊病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}年龄段占确诊病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                      <li data-label="footerText">使用来自{MINUS_ONE_DATE}的数据更新{PUBLISHED_DATE}。注：由于四舍五入的关系，百分比加起来可能不等于100%。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州死亡病例数（按年龄分类）</li>
+                      <li data-label="chartLegend1">占死亡病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}年龄段占死亡病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-age-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">此处为页脚文本</p>
             </div>
           </div>
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
-              <div style="width:80%" class="mx-auto">
-                <p>COVID-19确诊病例的分布情况，显示了加州所有种族和族裔人口的患病情况有很大差异，本州的拉丁裔和夏威夷原住民/太平洋岛民群体中有相当多的病例数。更多<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19种族和族裔数据</a>可供查阅。 </p>
-                <p class="small-text">注：由于四舍五入的关系，百分比加起来可能不等于100%。</p>
+              <div class="mx-auto">
+                <p>COVID-19确诊病例的分布情况，显示了加州所有种族和族裔人口的患病情况有很大差异，本州的拉丁裔和夏威夷原住民/太平洋岛民群体中有相当多的病例数。更多<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19种族和族裔数据</a>可供查阅。</p>
+              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州确诊病例数（按种族及族裔分类）</li>
+                      <li data-label="chartLegend1">占确诊病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}人数占确诊病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                      <li data-label="footerText">使用来自{MINUS_ONE_DATE}的数据更新{PUBLISHED_DATE}。注：由于四舍五入的关系，百分比加起来可能不等于100%。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
+                      <li data-label="chartTitle">加州死亡病例数（按种族及族裔分类）</li>
+                      <li data-label="chartLegend1">占死亡病例数的%</li>
+                      <li data-label="chartLegend2">占全州人口的%</li>
+                      <li data-label="chartBarCaption">{category}人数占死亡病例数的{metric-value}及加州总人口的{metric-baseline-value}。</li>
+                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
-              <div class="tableauPlaceholder"></div>
+              <p class="small-text chart-footer-caption">此处为页脚文本</p>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">查看各群体的更多详细数据</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div> <!--END BG lightblue--> </div>
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">查看各群体的更多详细数据</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
+</div>
     </div>
   </div>
   <!-- end contentBlock -->
