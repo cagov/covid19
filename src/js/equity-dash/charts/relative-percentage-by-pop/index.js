@@ -35,12 +35,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
-          height: 212,
+          height: 180,
           width: 450,
           margin: {
-            top: 1,
+            top: 4,
             right: 30,
-            bottom: 20,
+            bottom: 0,
             left: 10,
           },
         },
@@ -57,12 +57,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
-          height: 212,
+          height: 180,
           width: 450,
           margin: {
-            top: 1,
+            top: 4,
             right: 30,
-            bottom: 20,
+            bottom: 0,
             left: 10,
           },
         },
@@ -79,12 +79,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
-          height: 212,
+          height: 180,
           width: 440,
           margin: {
-            top: 1,
+            top: 4,
             right: 30,
-            bottom: 20,
+            bottom: 0,
             left: 10,
           },
         },
@@ -101,12 +101,12 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
-          height: 212,
+          height: 180,
           width: 320,
           margin: {
-            top: 1,
+            top: 4,
             right: 30,
-            bottom: 20,
+            bottom: 0,
             left: 10,
           },
         },
