@@ -376,7 +376,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
-          console.log("New HPI Data",this.alldata);
+          console.log("New HPI People Data",this.alldata);
 
           this.renderChart.call(component);
         }.bind(this)
