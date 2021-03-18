@@ -4,35 +4,35 @@
       "County tier": "最低",
       "colorLabel": "黄色",
       "_Color label": "Yellow",
-      "New cases": "小于1.0",
-      "Positive tests": "小于2.0%",
+      "New cases": "每日新增病例少于1.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率低于2.0%**",
       "description": "大部分室内业务可在经调整后开放",
-      "Positive-heq": "小于2.2%"
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于2.2%**"
     },
     {
       "County tier": "中度",
       "colorLabel": "橙色",
       "_Color label": "Orange",
-      "New cases": "1.0 – 3.9",
-      "Positive tests": "2.0 – 4.9% ",
+      "New cases": "每日新增病例为1.0– 3.9例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为2.0 – 4.9%**",
       "description": "一些室内业务可在经调整后开放",
-      "Positive-heq": "2.2 – 5.2%"
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于5.3%**"
     },
     {
       "County tier": "重度",
       "colorLabel": "红色",
       "_Color label": "Red",
-      "New cases": "4.0 – 7.0",
-      "Positive tests": "5.0 – 8.0%",
+      "New cases": "每日新增病例为4.0 – 7.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为5.0 – 8.0%**",
       "description": "关闭一些非必要的室内业务",
-      "Positive-heq": "5.3 – 8.0%"
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于8.1%**"
     },
     {
       "County tier": "广泛传播",
       "colorLabel": "紫色",
       "_Color label": "Purple",
-      "New cases": "大于7.0",
-      "Positive tests": "大于8.0%",
+      "New cases": "每日新增病例超过7.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率超过8.0%**",
       "description": "关闭许多非必要的室内业务",
       "Positive-heq": ""
     }
@@ -56,7 +56,106 @@
     },
     {
       "_id": "Description – positive cases",
-      "text": "检测呈阳性数"
+      "text": "检测呈阳性率"
+    }
+  ],
+  "Table3": [
+    {
+      "County tier": "最小",
+      "colorLabel": "黄色",
+      "_Color label": "Yellow",
+      "New cases": "每日新增病例少于1.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率低于2.0%**",
+      "description": "大部分室内业务可在经调整后开放",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于2.2%**"
+    },
+    {
+      "County tier": "中度",
+      "colorLabel": "橙色",
+      "_Color label": "Orange",
+      "New cases": "每日新增病例为1.0– 3.9例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为2.0 – 4.9%**",
+      "description": "一些室内业务可在经调整后开放",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于5.3%**"
+    },
+    {
+      "County tier": "重度",
+      "colorLabel": "红色",
+      "_Color label": "Red",
+      "New cases": "每日新增病例为4.0 – 10.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为5.0 – 8.0%**",
+      "description": "关闭一些非必要的室内业务",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于8.1%**"
+    },
+    {
+      "County tier": "广泛传播",
+      "colorLabel": "紫色",
+      "_Color label": "Purple",
+      "New cases": "每日新增病例超过10.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率超过8.0%**",
+      "description": "关闭许多非必要的室内业务",
+      "Positive-heq": ""
+    }
+  ],
+  "Table4": [
+    {
+      "County tier": "最低",
+      "colorLabel": "黄色",
+      "_Color label": "Yellow",
+      "New cases": "每日新增病例少于2.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率低于2.0%**",
+      "description": "大部分室内业务可在经调整后开放",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于2.2%**"
+    },
+    {
+      "County tier": "中度",
+      "colorLabel": "橙色",
+      "_Color label": "Orange",
+      "New cases": "每日新增病例为2.0 –5.9例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为2.0 – 4.9%**",
+      "description": "一些室内业务可在经调整后开放",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于5.3%**<br>"
+    },
+    {
+      "County tier": "重度",
+      "colorLabel": "红色",
+      "_Color label": "Red",
+      "New cases": "每日新增病例为6.0 – 10.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率为5.0 – 8.0%**",
+      "description": "关闭一些非必要的室内业务",
+      "Positive-heq": "健康公平四分位数社区的检测呈阳性率低于8.1%**"
+    },
+    {
+      "County tier": "广泛传播",
+      "colorLabel": "紫色",
+      "_Color label": "Purple",
+      "New cases": "每日新增病例超过10.0例（每100k人）*",
+      "Positive tests": "全县检测呈阳性率超过8.0%**",
+      "description": "关闭许多非必要的室内业务",
+      "Positive-heq": ""
+    }
+  ],
+  "Table5": [
+    {
+      "Table": "表格1",
+      "Status": "",
+      "Title": "加州处于健康地方指数 (Healthy Places Index, HPI) 第1个四分位数社区的接种人数<strong>少于2百万</strong>时",
+      "Description": "郡县必须达到患病率、检测呈阳性率，以及健康公平指标的临界值，才能进一步扩大重新开放的范围。",
+      "Footnote": "如果检测呈阳性率以及健康公平指标都特别低，并且患病率正在减少，即使尚未达到限制更少等级的要求，该县依旧可以进一步扩大重新开放的范围。请参阅<a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">加速进程的相关规则</a>。&nbsp;"
+    },
+    {
+      "Table": "表格3",
+      "Status": "当前",
+      "Title": "因为加州HPI第1个四分位数社区已接种<strong>2百万</strong>人",
+      "Description": "郡县必须达到患病率、检测呈阳性率，以及健康公平指标的临界值，才能进一步扩大重新开放的范围。",
+      "Footnote": "如果检测呈阳性率以及健康公平指标都特别低，并且患病率正在减少，即使尚未达到限制更少等级的要求，该县依旧可以进一步扩大重新开放的范围。请参阅<a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">加速进程的相关规则</a>。&nbsp;"
+    },
+    {
+      "Table": "表格4",
+      "Status": "",
+      "Title": "加州处于健康地方指数 (Healthy Places Index, HPI) 第1个四分位数社区已接种<strong>4百万</strong>人时",
+      "Description": "郡县必须达到患病率、检测呈阳性率，以及健康公平指标的临界值，才能进一步扩大重新开放的范围。",
+      "Footnote": "如果检测呈阳性率以及健康公平指标都特别低，并且患病率正在减少，即使尚未达到限制更少等级的要求，该县依旧可以进一步扩大重新开放的范围。请参阅<a href=\"https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx\">加速进程的相关规则</a>。&nbsp;"
     }
   ]
 }
