@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 const defaultConfig = {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
-  chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/',
+  chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/v2/',
 }
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
