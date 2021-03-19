@@ -1797,7 +1797,7 @@ ga('tracker3.send', 'pageview');
 	
 	
 		<script type="module">
-			const config = {"equityChartsSampleDataLoc":"https://files.covid19.ca.gov/data/chart-sandbox/","equityChartsVEDataLoc":"https://files.covid19.ca.gov/data/vaccine-equity/","chartsVHPIDataLoc":"https://files.covid19.ca.gov/data/vaccine-hpi/"}
+			const config = {"equityChartsSampleDataLoc":"https://files.covid19.ca.gov/data/chart-sandbox/","equityChartsVEDataLoc":"https://files.covid19.ca.gov/data/vaccine-equity/","chartsVHPIDataLocDoses":"https://files.covid19.ca.gov/data/vaccine-hpi/v2/","chartsVHPIDataLocPeople":"https://files.covid19.ca.gov/data/vaccine-hpi/v2/"}
 
 /* eslint-disable no-undefined,no-param-reassign,no-shadow */
 
@@ -2168,13 +2168,13 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.colors = {'FIRST_DOSE_RATIO':'#92c6df','COMPLETED_DOSE_RATIO':'#013d9c'};
+    this.colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'};
     this.nbr_bars = 4;
     this.chartOptions = {
       // Data
       dataUrl:
         // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
-        config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
+        config.chartsVHPIDataLocPeople + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         bar_hspace: 120,
@@ -2295,10 +2295,10 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
   ariaLabel(d) {
     let label = applySubstitutions(this.translationsObj.barLabel, {'N':d.D.HPIQUARTILE});
     // let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
-    if(d.KEY == "FIRST_DOSE_RATIO") {
-      label += `${this.pctFormatter.format(d.D.FIRST_DOSE_RATIO)} ${this.translationsObj.legendLabel1}`;
+    if(d.KEY == "PARTIALLY_VACCINATED_RATIO") {
+      label += `${this.pctFormatter.format(d.D.PARTIALLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel1}`;
     } else {
-      label += `${this.pctFormatter.format(d.D.COMPLETED_DOSE_RATIO)} ${this.translationsObj.legendLabel2}`;
+      label += `${this.pctFormatter.format(d.D.FULLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel2}`;
     }
     
     return label;
@@ -2313,7 +2313,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     let bars = groups
         .selectAll("rect")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("rect")
             .attr("class","bg-bar")
             .attr("fill", d=>this.colors[d.KEY])
@@ -2326,17 +2326,17 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     let barcaps1 = groups
         .selectAll("g")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("text")
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
         .text(d => this.pctFormatter.format(d.D[d.KEY]))
         .attr('text-anchor','middle');
-    let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
+    let capFields = ['PARTIALLY_VACCINATED', 'FULLY_VACCINATED'];
     let barcaps2 = groups
         .selectAll("g")
-        .data(d => ['FIRST_DOSE_RATIO','COMPLETED_DOSE_RATIO'].map( key => ({'KEY':key,'D':d})))
+        .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("text")
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
@@ -2365,7 +2365,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.FIRST_DOSE_RATIO)
+        .attr("fill", this.colors.PARTIALLY_VACCINATED_RATIO)
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
@@ -2383,7 +2383,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.COMPLETED_DOSE_RATIO)
+        .attr("fill", this.colors.FULLY_VACCINATED_RATIO)
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", legend2X)
@@ -2480,7 +2480,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       // this.translationsObj.footerDisplayDate = footerDisplayText;
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-      let max_y = d3.max(data, d => Math.max(d.FIRST_DOSE_RATIO,d.COMPLETED_DOSE_RATIO));
+      let max_y = d3.max(data, d => Math.max(d.PARTIALLY_VACCINATED_RATIO,d.FULLY_VACCINATED_RATIO));
 
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -2527,6 +2527,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          console.log("New HPI People Data",this.alldata);
 
           this.renderChart.call(component);
         }.bind(this)
@@ -2589,7 +2590,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       // Data
       dataUrl:
         // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
-        config.chartsVHPIDataLoc + "vaccine-hpi.json", // Overwritten by county.
+        config.chartsVHPIDataLocDoses + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
         bar_hspace: 120,
@@ -2845,8 +2846,8 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       let data = this.alldata;
       let totalDosesAllQuartiles = 0;
       data.forEach(d => {
-        console.log(d);
-        console.log(d.COMBINED_DOSES);
+        // console.log(d)
+        // console.log(d.COMBINED_DOSES)
         totalDosesAllQuartiles += d.COMBINED_DOSES;
       });
       let categories = data.map(rec => (rec.HPIQUARTILE-1));
@@ -2869,7 +2870,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
 
-      let max_y = d3.max(data, d => d.COMBINED_DOSES_RATIO);
+      let max_y = d3.max(data, d => (d.COMBINED_DOSES / totalDosesAllQuartiles));
       d3.select(this.querySelector("svg"))
       .attr("viewBox", [
                         0,
@@ -2908,6 +2909,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          console.log("New HPI Dose Data",this.alldata);
 
           this.renderChart.call(component);
         }.bind(this)
