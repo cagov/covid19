@@ -12,7 +12,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.barColor = '#1F2574';
 
     this.nbr_bars = 4;
     this.chartOptions = {
@@ -151,7 +150,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     groups
         .append("rect")
             .attr("class","main-bar")
-            .attr("fill", d=>this.barColor)
+            .attr("class",(d,i) => "main-bar-"+(i+1))
             .attr("x", (d,i) => xScale(i))
             .attr("y", d => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles))
             .attr("width", d => xScale.bandwidth())
@@ -197,7 +196,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.barColor)
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
