@@ -135,8 +135,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       dataincome.sort(sortedOrder).reverse()
       datacrowding.sort(sortedOrder).reverse()
       datahealthcare.sort(sortedOrder).reverse()
-
-      let updateDate = reformatReadableDate( dataincome[0].DATE ); // localized readable date
+      const ONE_DAY_LATER = 1;
+      let updateDate = reformatReadableDate( dataincome[0].DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER); // localized readable date
 
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
