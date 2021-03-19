@@ -425,7 +425,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
     if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE );
+      const ONE_DAY_LATER = 1;
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER);
     } else {
       this.updateDate = 'Unknown';
     }

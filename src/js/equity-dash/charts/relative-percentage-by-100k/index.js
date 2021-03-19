@@ -29,7 +29,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         margin: {
           top: 20,
           right: 30,
-          bottom: 20,
+          bottom: 10,
           left: 10,
         },
       },
@@ -39,7 +39,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         margin: {
           top: 20,
           right: 30,
-          bottom: 20,
+          bottom: 10,
           left: 10,
         },
       },
@@ -49,7 +49,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         margin: {
           top: 20,
           right: 30,
-          bottom: 20,
+          bottom: 10,
           left: 10,
         },
       },
@@ -59,7 +59,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         margin: {
           top: 20,
           right: 30,
-          bottom: 20,
+          bottom: 10,
           left: 10,
         },
       },
