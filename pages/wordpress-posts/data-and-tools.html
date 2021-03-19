@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Data and tools"
 meta: "Since the beginning of the COVID-19 crisis, California has had to face facts and make hard decisions. To do so, we needed solid data. Governor Newsom signed Executive Order N-X-2020 to release government-run real-time COVID-19 data sources. This data is verified by our community of experts."
 author: "State of California"
-publishdate: "2021-03-19T23:29:44Z"
+publishdate: "2021-03-19T23:43:41Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -80,7 +80,7 @@ addtositemap: true
 
 
 
-<p><a href="https://data.chhs.ca.gov/dataset/covid-19-outbreak-data">View COVID-19 data on Open Data Portal</a></p>
+<p><a class="external" href="https://data.chhs.ca.gov/dataset/covid-19-outbreak-data">View COVID-19 data on Open Data Portal</a></p>
 
 
 
@@ -221,6 +221,18 @@ addtositemap: true
 
 
 <figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>DESCRIPTION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>AGE_GROUP</td><td>String</td><td>Age categories of COVID-19 cases and deaths as reported by local health departments.</td><td>Daily</td></tr><tr><td>CASE_PERCENTAGE</td><td>Float</td><td>Percentage of COVID-19 cases within a defined age group.</td><td>Daily</td></tr><tr><td>DEATH_PERCENTAGE</td><td>Float</td><td>Percentage of COVID-19-associated deaths within a defined age group.&nbsp;</td><td>Daily</td></tr><tr><td>PERCENTAGE_CA<br>_POPULATION</td><td>Float</td><td>Ratio of State population within a defined age group.</td><td>Daily</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude"><strong>OVID-19 OUTBREAKS</strong></h3>
+
+
+
+<p class="wp-accordion-content">Verified by the California Department of Public Health.</p>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>COLUMN NAME</strong></td><td><strong>FORMAT</strong></td><td><strong>DEFINITION</strong></td><td><strong>UPDATE FREQUENCY</strong></td></tr><tr><td>JURISDICTION</td><td>Plain text</td><td>Jurisdiction where the outbreak occurred<br>Values include:California</td><td>Biweekly</td></tr><tr><td>INDUSTRYSECTOR</td><td>Plain text</td><td>Industry sector in which the outbreak occurred.<br>Values include:Industry Sectors, as classified in the US Census Bureau 2012 Industry Code List: https://www.census.gov/topics/<br>employmen<br>t/industry-occupation/guidance/code-lists.html. Each industry sector includes a number of individual industries.</td><td>Biweekly</td></tr><tr><td>INDIVIDUAL SETTING</td><td>Plain text</td><td>Individual industry in which the outbreak occurred.<br>Values include:Individual industries, as classified in the US Census Bureau 2012 Industry Code List: https://www.census.gov/topics<br>/employment/industry-occupation/guidance/code-lists.html. &#8220;</td><td>Biweekly</td></tr><tr><td>INDCODE</td><td>Number</td><td>Census industry code for the individual industry in which the outbreak occurred.<br>Values include:4-digit individual industry codes, as classified in the US Census Bureau 2012 Industry Code List: https://www.census.gov/topics<br>/employment/industry-occupation/guidance/code-lists.html. &#8220;</td><td>Biweekly</td></tr><tr><td>OUTBREAK_TOTAL</td><td>Number</td><td>Total number of confirmed COVID-19 outbreaks reported to the California Department of Public Health (CDPH) in the corresponding individual industry<br>Value:Positive numeric</td><td>Biweekly</td></tr><tr><td>CASE_TOTAL</td><td>Number</td><td>Total number of associated cases in reported outbreaks in the corresponding individual industry<br>Value:Positive numeric</td><td>Biweekly</td></tr><tr><td>OUTBREAK_NEW</td><td>Number</td><td>Number of new confirmed COVID-19 outbreaks reported in the past 30 days to the California Department of Public Health (CDPH) in the corresponding individual industry<br>Value:Positive numeric</td><td>Biweekly</td></tr><tr><td>CASE_NEW</td><td>Number</td><td>Number of associated cases for outbreaks reported in the past 30 days to CDPH in the corresponding individual industry<br>Value:Positive numeric</td><td>Biweekly</td></tr></tbody></table></figure>
 
 
 
