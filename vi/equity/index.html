@@ -3546,8 +3546,12 @@ function reformatJSDate(theDate, // expects javascript date
 // or 
 //    12 de diciembre de 2020
 function reformatReadableDate(dateStr, // expects YYYY-MM-DD
-                              fmt={ month: "long", day: 'numeric', year:'numeric' }) {
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }, dayDelta=0) {
+
     const theDate = parseSnowflakeDate(dateStr);
+    if (dayDelta != 0) {
+        theDate.setDate(theDate.getDate() + dayDelta);
+    }
     return reformatJSDate(theDate, fmt);
 }
 
@@ -4834,7 +4838,8 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
     if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE );
+      const ONE_DAY_LATER = 1;
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER);
     } else {
       this.updateDate = 'Unknown';
     }
@@ -5234,8 +5239,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       dataincome.sort(sortedOrder).reverse();
       datacrowding.sort(sortedOrder).reverse();
       datahealthcare.sort(sortedOrder).reverse();
-
-      let updateDate = reformatReadableDate( dataincome[0].DATE ); // localized readable date
+      const ONE_DAY_LATER = 1;
+      let updateDate = reformatReadableDate( dataincome[0].DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER); // localized readable date
 
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
