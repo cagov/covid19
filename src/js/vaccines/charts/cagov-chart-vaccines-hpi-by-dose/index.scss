@@ -26,7 +26,13 @@ cagov-chart-vaccines-hpi-by-dose {
       font-weight: 300;
       font-size: 0.75rem;
     }
-  }
+    .main-bar-1  { fill:#2772B3; }
+    .main-bar-2 { fill:#9FCAE0; }
+    .main-bar-3 { fill:#A7DAA2; }
+    .main-bar-4 { fill:#11873B; }
+    .legend-block  { fill:#000000; }
+
+}
 .d-hide {
   display: none;
 }
