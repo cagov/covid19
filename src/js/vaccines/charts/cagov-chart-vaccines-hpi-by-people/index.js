@@ -223,12 +223,12 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       const div2 = Math.ceil(words.length / 2) + 1;
       const line1 = words.splice(0,div2).join(' ');
       const line2 = words.join(' ');
-      const splitAdjust = 6;
+      const splitAdjust = 12;
       group
       .append("text")
       .text(line1) // Legend label 
       .attr("class", "legend-caption")
-      .attr("y", py-splitAdjust)
+      .attr("y", py)
       .attr("x", px)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
