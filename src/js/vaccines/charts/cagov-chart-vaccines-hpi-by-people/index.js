@@ -12,7 +12,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'}
     this.nbr_bars = 4;
     this.chartOptions = {
       // Data
@@ -110,8 +109,24 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         0,
         this.chartBreakpointValues.width,
         this.chartBreakpointValues.height,
-      ])
-      .append("g")
+      ]);
+
+    const patternSuffixes = ['1','2','3','4','L'];
+
+     this.svg.append("defs")
+       .selectAll("pattern")
+       .data(patternSuffixes)
+       .join("pattern")
+        .attr("id",d => 'hatch'+d)
+        .attr("x",0)
+        .attr("x",0)
+        .attr("width",4)
+        .attr("height",4)
+        .attr("patternUnits","userSpaceOnUse")
+        .append('path')
+          .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2');
+      
+     this.svg.append("g")
       .attr("transform", "translate(0,0)");
 
     // Set default values for data and labels
@@ -153,18 +168,15 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       .selectAll("g")
       .data(data)
       .join("g")
+      .attr("id",(d,i) => 'hpi-bar-group'+(i+1))
       .attr("transform", (d,i) => `translate(${xScaleOuter(i+1)},0)`);
-
-
-
-    let colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'}
 
     let bars = groups
         .selectAll("rect")
         .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("rect")
             .attr("class","bg-bar")
-            .attr("fill", d=>this.colors[d.KEY])
+            .attr("class",(d,i) => 'hpi-bar-'+(i+1))
             .attr("x", (d,i) => xScaleInner(i))
             .attr("y", d => yScale(d.D[d.KEY]))
             .attr("width", d => xScaleInner.bandwidth())
@@ -211,12 +223,12 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       const div2 = Math.ceil(words.length / 2) + 1;
       const line1 = words.splice(0,div2).join(' ');
       const line2 = words.join(' ');
-      const splitAdjust = 6;
+      const splitAdjust = 12;
       group
       .append("text")
       .text(line1) // Legend label 
       .attr("class", "legend-caption")
-      .attr("y", py-splitAdjust)
+      .attr("y", py)
       .attr("x", px)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
@@ -254,7 +266,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.PARTIALLY_VACCINATED_RATIO)
+        .attr('id','legend-box-1')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
@@ -274,7 +286,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.FULLY_VACCINATED_RATIO)
+        .attr('id','legend-box-2')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", legend2X)
@@ -448,7 +460,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-    }
+      }
 
   retrieveData(url) {
     let component = this;
