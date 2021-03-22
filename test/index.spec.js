@@ -35,12 +35,13 @@ function waitForThisEvent(testKey, testValue, timeout) {
 
 const express = require('express');
 const app = express();
-const port = 1338;
+const port = 8000; // 1338;
 const timeout = 60000; // from from 16000, also used for individual tests
 jest.setTimeout(timeout);
 let server;
 
 /*
+
 More info for writing tests:
 
 Ways to use expect with jest: https://jestjs.io/docs/en/expect
@@ -54,11 +55,16 @@ let browser;
 const hostname = `http://localhost:${port}`;
 const width = 1200;
 const height = 800;
+let devserver;
+const { spawn } = require('child_process');
+
 let GARequests = [];
 
 beforeAll(async () => {
-  app.use('/', express.static('docs', {}));
-  server = app.listen(port, () => console.log(`Example app listening on...\n${hostname}`));
+  devserver = spawn('npm', ['run', 'devserver']);
+
+  // app.use('/', express.static('docs', {}));
+  // server = app.listen(port, () => console.log(`Example app listening on...\n${hostname}`));
 
   browser = await puppeteer.launch({
     headless: true,
@@ -133,6 +139,13 @@ describe('homepage', () => {
 });
 
 afterAll(() => {
+  console.log('killing')
+  // Send SIGHUP to process.
+  devserver.kill();
+  console.log('killed')
+
   browser.close();
-  server.close();
+  // server.close();
+
+  
 });
