@@ -124,7 +124,7 @@ describe('homepage', () => {
       document.querySelector('.open-menu').click();
     });
     await page.evaluate(() => {
-      document.querySelector('.js-event-hm-menu--somethingiswrong').click();
+      document.querySelector('.js-event-hm-menu').click();
     });
 
     let homeClickResult = await waitForThisEvent('ea', '^homepage-menu', 5000)
@@ -139,6 +139,7 @@ afterAll(() => {
   devserver.stdin.pause();
   devserver.kill();
   console.log('killed')
+  // none of this works on the build server (wouldn't work on windows dev env either, just running jest with force exit)
 
   browser.close();
 });
