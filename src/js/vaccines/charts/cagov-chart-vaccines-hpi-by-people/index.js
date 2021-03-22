@@ -460,7 +460,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-    }
+      }
 
   retrieveData(url) {
     let component = this;
