@@ -2060,7 +2060,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$4 = "cagov-chart-vaccines-hpi-by-people .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-people .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-people .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z$4 = "cagov-chart-vaccines-hpi-by-people .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-people .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-people .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-people .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-people #hatch1 {\n  stroke: #2772B3;\n  stroke-width: 1.5; }\n\ncagov-chart-vaccines-hpi-by-people #hatch2 {\n  stroke: #9FCAE0;\n  stroke-width: 1.5; }\n\ncagov-chart-vaccines-hpi-by-people #hatch3 {\n  stroke: #A7DAA2;\n  stroke-width: 1.5; }\n\ncagov-chart-vaccines-hpi-by-people #hatch4 {\n  stroke: #11873B;\n  stroke-width: 1.5; }\n\ncagov-chart-vaccines-hpi-by-people #hatchL {\n  stroke: #000000;\n  stroke-width: 1.5; }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group1 .hpi-bar-1 {\n  fill: url(#hatch1); }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group1 .hpi-bar-2 {\n  fill: #2772B3; }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group2 .hpi-bar-1 {\n  fill: url(#hatch2); }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group2 .hpi-bar-2 {\n  fill: #9FCAE0; }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group3 .hpi-bar-1 {\n  fill: url(#hatch3); }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group3 .hpi-bar-2 {\n  fill: #A7DAA2; }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group4 .hpi-bar-1 {\n  fill: url(#hatch4); }\n\ncagov-chart-vaccines-hpi-by-people #hpi-bar-group4 .hpi-bar-2 {\n  fill: #11873B; }\n\ncagov-chart-vaccines-hpi-by-people #legend-box-1 {\n  fill: url(#hatchL); }\n\ncagov-chart-vaccines-hpi-by-people #legend-box-2 {\n  fill: #000000; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z$4);
 
 /**
@@ -2264,7 +2264,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template$5(this.translationsObj);
     // Settings and initial values
-    this.colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'};
     this.nbr_bars = 4;
     this.chartOptions = {
       // Data
@@ -2362,8 +2361,24 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         0,
         this.chartBreakpointValues.width,
         this.chartBreakpointValues.height,
-      ])
-      .append("g")
+      ]);
+
+    const patternSuffixes = ['1','2','3','4','L'];
+
+     this.svg.append("defs")
+       .selectAll("pattern")
+       .data(patternSuffixes)
+       .join("pattern")
+        .attr("id",d => 'hatch'+d)
+        .attr("x",0)
+        .attr("x",0)
+        .attr("width",4)
+        .attr("height",4)
+        .attr("patternUnits","userSpaceOnUse")
+        .append('path')
+          .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2');
+      
+     this.svg.append("g")
       .attr("transform", "translate(0,0)");
 
     // Set default values for data and labels
@@ -2405,6 +2420,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       .selectAll("g")
       .data(data)
       .join("g")
+      .attr("id",(d,i) => 'hpi-bar-group'+(i+1))
       .attr("transform", (d,i) => `translate(${xScaleOuter(i+1)},0)`);
 
     groups
@@ -2412,7 +2428,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("rect")
             .attr("class","bg-bar")
-            .attr("fill", d=>this.colors[d.KEY])
+            .attr("class",(d,i) => 'hpi-bar-'+(i+1))
             .attr("x", (d,i) => xScaleInner(i))
             .attr("y", d => yScale(d.D[d.KEY]))
             .attr("width", d => xScaleInner.bandwidth())
@@ -2459,12 +2475,12 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       const div2 = Math.ceil(words.length / 2) + 1;
       const line1 = words.splice(0,div2).join(' ');
       const line2 = words.join(' ');
-      const splitAdjust = 6;
+      const splitAdjust = 12;
       group
       .append("text")
       .text(line1) // Legend label 
       .attr("class", "legend-caption")
-      .attr("y", py-splitAdjust)
+      .attr("y", py)
       .attr("x", px)
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
@@ -2502,7 +2518,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.PARTIALLY_VACCINATED_RATIO)
+        .attr('id','legend-box-1')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
@@ -2522,7 +2538,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.colors.FULLY_VACCINATED_RATIO)
+        .attr('id','legend-box-2')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", legend2X)
@@ -2695,7 +2711,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-    }
+      }
 
   retrieveData(url) {
     let component = this;
@@ -2719,7 +2735,7 @@ window.customElements.define(
   CAGovVaccinesHPIPeople
 );
 
-var css_248z$3 = "cagov-chart-vaccines-hpi-by-dose .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-dose .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z$3 = "cagov-chart-vaccines-hpi-by-dose .bar-lower-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-lower-label {\n  font-weight: normal;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-1 {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-upper-label-2 {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bottom-annotation {\n  font-weight: 300;\n  font-size: 0.65rem; }\n\ncagov-chart-vaccines-hpi-by-dose .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccines-hpi-by-dose .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccines-hpi-by-dose .main-bar-1 {\n  fill: #2772B3; }\n\ncagov-chart-vaccines-hpi-by-dose .main-bar-2 {\n  fill: #9FCAE0; }\n\ncagov-chart-vaccines-hpi-by-dose .main-bar-3 {\n  fill: #A7DAA2; }\n\ncagov-chart-vaccines-hpi-by-dose .main-bar-4 {\n  fill: #11873B; }\n\ncagov-chart-vaccines-hpi-by-dose .legend-block {\n  fill: #000000; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z$3);
 
 /**
@@ -2762,7 +2778,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template$4(this.translationsObj);
     // Settings and initial values
-    this.barColor = '#1F2574';
 
     this.nbr_bars = 4;
     this.chartOptions = {
@@ -2901,7 +2916,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     groups
         .append("rect")
             .attr("class","main-bar")
-            .attr("fill", d=>this.barColor)
+            .attr("class",(d,i) => "main-bar-"+(i+1))
             .attr("x", (d,i) => xScale(i))
             .attr("y", d => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles))
             .attr("width", d => xScale.bandwidth())
@@ -2947,7 +2962,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
 
     group
       .append("rect")
-        .attr("fill", this.barColor)
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
