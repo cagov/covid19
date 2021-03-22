@@ -135,8 +135,10 @@ describe('homepage', () => {
 
 afterAll(() => {
   console.log('killing')
-  // Send SIGHUP to process.
+  // Send SIGTERM to process.
+  devserver.stdin.pause();
   devserver.kill();
+
   console.log('killed')
 
   browser.close();
