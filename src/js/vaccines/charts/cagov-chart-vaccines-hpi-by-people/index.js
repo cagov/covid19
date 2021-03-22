@@ -12,7 +12,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'}
     this.nbr_bars = 4;
     this.chartOptions = {
       // Data
@@ -110,8 +109,24 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         0,
         this.chartBreakpointValues.width,
         this.chartBreakpointValues.height,
-      ])
-      .append("g")
+      ]);
+
+    const patternSuffixes = ['1','2','3','4','L'];
+
+     this.svg.append("defs")
+       .selectAll("pattern")
+       .data(patternSuffixes)
+       .join("pattern")
+        .attr("id",d => 'hatch'+d)
+        .attr("x",0)
+        .attr("x",0)
+        .attr("width",4)
+        .attr("height",4)
+        .attr("patternUnits","userSpaceOnUse")
+        .append('path')
+          .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2');
+      
+     this.svg.append("g")
       .attr("transform", "translate(0,0)");
 
     // Set default values for data and labels
@@ -153,18 +168,15 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       .selectAll("g")
       .data(data)
       .join("g")
+      .attr("id",(d,i) => 'hpi-bar-group'+(i+1))
       .attr("transform", (d,i) => `translate(${xScaleOuter(i+1)},0)`);
-
-
-
-    let colors = {'PARTIALLY_VACCINATED_RATIO':'#92c6df','FULLY_VACCINATED_RATIO':'#013d9c'}
 
     let bars = groups
         .selectAll("rect")
         .data(d => ['PARTIALLY_VACCINATED_RATIO','FULLY_VACCINATED_RATIO'].map( key => ({'KEY':key,'D':d})))
         .join("rect")
             .attr("class","bg-bar")
-            .attr("fill", d=>this.colors[d.KEY])
+            .attr("class",(d,i) => 'hpi-bar-'+(i+1))
             .attr("x", (d,i) => xScaleInner(i))
             .attr("y", d => yScale(d.D[d.KEY]))
             .attr("width", d => xScaleInner.bandwidth())
@@ -203,51 +215,131 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
 
   }
 
+  writeLegendTextAt(group, caption, py, px) {
+    const longLegend = caption.length >= 40;
+
+    if (longLegend) {
+      const words = caption.split(' ');
+      const div2 = Math.ceil(words.length / 2) + 1;
+      const line1 = words.splice(0,div2).join(' ');
+      const line2 = words.join(' ');
+      const splitAdjust = 12;
+      group
+      .append("text")
+      .text(line1) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", py)
+      .attr("x", px)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+      group
+      .append("text")
+      .text(line2) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", py+splitAdjust)
+      .attr("x", px)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+
+    }
+    else {
+      group
+      .append("text")
+      .text(caption) // Legend label 
+      .attr("class", "legend-caption")
+      .attr("y", py)
+      .attr("x", px)
+      .attr('dominant-baseline','middle')
+      .attr('text-anchor','start');
+    }
+  }
+
   writeLegend(svg, data, yScale, xScaleOuter, xScaleInner) {
     const legendW = 12;
     const legendY =  this.dimensions.margin.top/3;
     const legendText = this.getLegendText();
     const legend2X = this.dimensions.width/2;
 
+
+
     let group = svg.append("g")
 
     group
       .append("rect")
-        .attr("fill", this.colors.PARTIALLY_VACCINATED_RATIO)
+        .attr('id','legend-box-1')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", 0)
         .attr("width", legendW)
         .attr("height", legendW);
 
-    group
-      .append("text")
-      .text(legendText[0]) // Legend label 
-      .attr("class", "legend-caption")
-      .attr("y", legendY+legendW/2.0 + 1)
-      .attr("x", legendW*1.5)
-      .attr('dominant-baseline','middle')
-      .attr('text-anchor','start');
+    this.writeLegendTextAt(group, legendText[0], legendY+legendW/2.0 + 1, legendW*1.5);
+
+    // group
+    //   .append("text")
+    //   .text(legendText[0]) // Legend label 
+    //   .attr("class", "legend-caption")
+    //   .attr("y", legendY+legendW/2.0 + 1)
+    //   .attr("x", legendW*1.5)
+    //   .attr('dominant-baseline','middle')
+    //   .attr('text-anchor','start');
 
     group
       .append("rect")
-        .attr("fill", this.colors.FULLY_VACCINATED_RATIO)
+        .attr('id','legend-box-2')
         .attr("class", "legend-block")
         .attr("y", legendY)
         .attr("x", legend2X)
         .attr("width", legendW)
         .attr("height", legendW);
 
-    group
+    this.writeLegendTextAt(group, legendText[1], legendY+legendW/2.0 + 1, legend2X+legendW*1.5);
+    // group
+    //   .append("text")
+    //   .text(legendText[1]) // Legend label 
+    //   .attr("class", "legend-caption")
+    //   .attr("y", legendY+legendW/2.0 + 1)
+    //   .attr("x", legend2X+legendW*1.5)
+    //   .attr('dominant-baseline','middle')
+    //   .attr('text-anchor','start');
+
+
+  }
+
+  writeExtraTextAt(group, caption, px, py, textAnchor) {
+
+    const longLegend = caption.length >= 45;
+    if (longLegend) {
+      const words = caption.split(' ');
+      const div2 = Math.ceil(words.length / 2) + 1;
+      const line1 = words.splice(0,div2).join(' ');
+      const line2 = words.join(' ');
+      const splitAdjust = 5;
+
+      group
       .append("text")
-      .text(legendText[1]) // Legend label 
-      .attr("class", "legend-caption")
-      .attr("y", legendY+legendW/2.0 + 1)
-      .attr("x", legend2X+legendW*1.5)
-      .attr('dominant-baseline','middle')
-      .attr('text-anchor','start');
+      .text(line1) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", py-splitAdjust)
+      .attr("x", px)
+      .attr('text-anchor',textAnchor);
+      group
+      .append("text")
+      .text(line2) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", py+splitAdjust)
+      .attr("x", px)
+      .attr('text-anchor',textAnchor);
 
-
+    } else {
+      group
+      .append("text")
+      .text(caption) // Legend label 
+      .attr("class", "bottom-annotation")
+      .attr("y", py)
+      .attr("x", px)
+      .attr('text-anchor',textAnchor);
+    }
   }
 
   writeExtras(svg, data, yScale, xScaleOuter, xScaleInner) {
@@ -286,22 +378,25 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("y2", bottomAnnotationY+arrowSize)
         .attr("stroke-width",1);
 
+    this.writeExtraTextAt(group, this.translationsObj.annotationLeast, 0, bottomAnnotationY+16, 'start');
 
-    group
-      .append("text")
-      .text(this.translationsObj.annotationLeast) // Legend label 
-      .attr("class", "bottom-annotation")
-      .attr("y", bottomAnnotationY+16)
-      .attr("x", 0)
-      .attr('text-anchor','start');
+    // group
+    //   .append("text")
+    //   .text(this.translationsObj.annotationLeast) // Legend label 
+    //   .attr("class", "bottom-annotation")
+    //   .attr("y", bottomAnnotationY+16)
+    //   .attr("x", 0)
+    //   .attr('text-anchor','start');
 
-    group
-      .append("text")
-      .text(this.translationsObj.annotationMost) // Legend label 
-      .attr("class", "bottom-annotation")
-      .attr("y", bottomAnnotationY+16)
-      .attr("x", this.dimensions.width)
-      .attr('text-anchor','end');
+    this.writeExtraTextAt(group, this.translationsObj.annotationMost, this.dimensions.width, bottomAnnotationY+16, 'end');
+
+    // group
+    //   .append("text")
+    //   .text(this.translationsObj.annotationMost) // Legend label 
+    //   .attr("class", "bottom-annotation")
+    //   .attr("y", bottomAnnotationY+16)
+    //   .attr("x", this.dimensions.width)
+    //   .attr('text-anchor','end');
 
 
 
@@ -365,7 +460,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         this.writeBars.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeLegend.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
         this.writeExtras.call(this, this.svg, data, this.yScale, this.xScaleOuter, this.xScaleInner);
-    }
+      }
 
   retrieveData(url) {
     let component = this;
