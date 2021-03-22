@@ -49,8 +49,12 @@ function reformatJSDate(theDate, // expects javascript date
 // or 
 //    12 de diciembre de 2020
 function reformatReadableDate(dateStr, // expects YYYY-MM-DD
-                              fmt={ month: "long", day: 'numeric', year:'numeric' }) {
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }, dayDelta=0) {
+
     const theDate = parseSnowflakeDate(dateStr);
+    if (dayDelta != 0) {
+        theDate.setDate(theDate.getDate() + dayDelta);
+    }
     return reformatJSDate(theDate, fmt);
 }
 
