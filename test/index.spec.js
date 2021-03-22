@@ -124,7 +124,7 @@ describe('homepage', () => {
       document.querySelector('.open-menu').click();
     });
     await page.evaluate(() => {
-      document.querySelector('.js-event-hm-menu').click();
+      document.querySelector('.js-event-hm-menu--somethingiswrong').click();
     });
 
     let homeClickResult = await waitForThisEvent('ea', '^homepage-menu', 5000)
@@ -135,14 +135,10 @@ describe('homepage', () => {
 
 afterAll(() => {
   console.log('killing')
-  // Send SIGTERM to process.
+  // Send SIGTERM to process, this works locally but not on the build server so using jest with forceExit there
   devserver.stdin.pause();
   devserver.kill();
-
   console.log('killed')
 
   browser.close();
-  // server.close();
-
-  
 });
