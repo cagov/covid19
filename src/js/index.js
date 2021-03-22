@@ -8,6 +8,7 @@ import './arrow/arrow-icon.js';
 import './arrow/plus-icon.js';
 import './arrow/minus-icon.js';
 import './links/index.js';
+import './gototop/index.js';
 import './menu/index.js';
 import './search/index.js';
 import './dark-accordion/extras.js';
