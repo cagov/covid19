@@ -376,6 +376,7 @@ button.clear {
         transition: all .3s ease;
         fill:$darkblue;
       }
+      .pdf-link-icon {display: none;}
       //link hover and focus state
       &:hover, &:focus {
         color:$blue;
@@ -399,6 +400,7 @@ button.clear {
         transition: all .3s ease;
         fill:$white;
       }
+      .pdf-link-icon {display: none;}
       //link hover and focus state
       &:hover, &:focus {
         color:$orange !important;        ;
@@ -423,6 +425,7 @@ button.clear {
         transition: all .3s ease;
         fill:$lightblue;
       }
+      .pdf-link-icon {display: none;}
       //link hover and focus state
       &:hover, &:focus {
         color:$orange !important;        ;
