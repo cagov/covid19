@@ -36,9 +36,7 @@ function waitForThisEvent(testKey, testValue, timeout) {
   }
 }
 
-const express = require('express');
-const app = express();
-const port = 8000; // 1338;
+const port = 8000;
 const timeout = 60000; // from from 16000, also used for individual tests
 jest.setTimeout(timeout);
 let server;
@@ -65,9 +63,6 @@ let GARequests = [];
 
 beforeAll(async () => {
   devserver = spawn('npm', ['run', 'devserver']);
-
-  // app.use('/', express.static('docs', {}));
-  // server = app.listen(port, () => console.log(`Example app listening on...\n${hostname}`));
 
   browser = await puppeteer.launch({
     headless: true,
@@ -143,12 +138,11 @@ describe('homepage', () => {
 
 afterAll(() => {
   console.log('killing')
-  // Send SIGHUP to process.
+  // Send SIGTERM to process
+  devserver.stdin.pause();
   devserver.kill();
   console.log('killed')
+  // none of this process kill is working in the git action build server (wouldn't work on windows dev env either, so running jest with force exit)
 
   browser.close();
-  // server.close();
-
-  
 });
