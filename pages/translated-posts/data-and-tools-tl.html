@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Mga datos at tool"
 meta: "Mula nang mag-umpisa ang krisis na dulot ng COVID-19, kinailangan ng California na harapin ang mga nangyayari at gumawa ng mahihirap na pasya. Para magawa ito, kinailangan namin ng maaasahang datos. Nilagdaan ni Gobernador Newsom ang Executive Order N-X-2020 para mailabas ang mga real-time na mapagkukunan ng datos para COVID-19 na pinapatakbo ng pamahalaan. Na-verify ng aming komunidad ng mga eksperto ang datos na ito."
 author: "State of California"
-publishdate: "2021-03-19T14:33:42Z"
+publishdate: "2021-03-20T01:56:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -72,6 +72,18 @@ addtositemap: true
 
 
 
+<h3>Mga outbreak ng COVID-19 </h3>
+
+
+
+<p>Makikita sa dataset na ito ang mga pambuong-estadong bilang ng mga outbreak ng COVID-19 at kaugnay na kaso, na nakakategorya ayon sa lugar, na iniulat sa Departamento ng Pampublikong Kalusugan ng California (California Department of Public Health, CDPH) mula noong Enero 1, 2021.</p>
+
+
+
+<p><a class="external" href="https://data.chhs.ca.gov/dataset/covid-19-outbreak-data">Tingnan ang datos ng COVID-19 sa Open Data Portal</a></p>
+
+
+
 <h3>Pamamahagi ng Personal na Pamprotektang Kagamitan (Personal Protection Equipment, PPE)</h3>
 
 
@@ -84,18 +96,6 @@ addtositemap: true
 
 
 
-<h3>Pagtaas ng bilang ng mga nangangailangan ng kama</h3>
-
-
-
-<p>Ang kakayahang tumugon sa mga pasyenteng nangangailangan ng mga kama sa mga pasilidad gaya ng mga ospital, arena, at iba pang alternatibong pasilidad para sa pangangalaga.</p>
-
-
-
-<p class="external"><a class="external" href="https://public.tableau.com/views/COVID-19BedSurgeDashboard/BedSurge?:embed=y&amp;:showVizHome=no">Tingnan ang dashboard sa pagtaas ng bilang ng mga nangangailangan ng kama</a></p>
-
-
-
 <h3>Ang epekto ng ating populasyon ng walang tirahan</h3>
 
 
@@ -105,6 +105,18 @@ addtositemap: true
 
 
 <p><a class="external" href="https://public.tableau.com/views/COVID-19HomelessImpactDashboard/HomelessImpact?:embed=y&amp;:showVizHome=no">Tingnan ang dashboard ng walang tirahan</a></p>
+
+
+
+<h3>Pagtaas ng bilang ng mga nangangailangan ng kama</h3>
+
+
+
+<p>Ang kakayahang tumugon sa mga pasyenteng nangangailangan ng mga kama sa mga pasilidad gaya ng mga ospital, arena, at iba pang alternatibong pasilidad para sa pangangalaga.</p>
+
+
+
+<p><a href="https://public.tableau.com/views/COVID-19BedSurgeDashboard/BedSurge?:embed=y&amp;:showVizHome=no">Tingnan ang dashboard sa pagtaas ng bilang ng mga nangangailangan ng kama</a></p>
 
 
 
@@ -209,6 +221,18 @@ addtositemap: true
 
 
 <figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>VARIABLE</strong></td><td><strong>FORMAT</strong></td><td><strong>PAGLALARAWAN</strong></td><td><strong>DALAS NG PAG-UPDATE</strong></td></tr><tr><td>EDAD_GRUPO</td><td>String</td><td>Mga kategorya ng edad ng mga kaso at pagkamatay dahil sa COVID-19 ayon sa inulat ng mga lokal na departamento ng kalusugan.</td><td>Araw-araw</td></tr><tr><td>KASO_PORSYENTO</td><td>Float</td><td>Porsyento ng mga kaso ng COVID-19 sa isang tinukoy na grupo ng edad.</td><td>Araw-araw</td></tr><tr><td>PAGKAMATAY_PORSYENTO</td><td>Float</td><td>Porsyento ng mga pagkamatay na nauugnay sa COVID-19 sa isang tinukoy na grupo ng edad. </td><td>Araw-araw</td></tr><tr><td>PORSYENTO_CA<br>_POPULASYON</td><td>Float</td><td>Ratio ng populasyon ng estado sa isang tinukoy na grupo ng edad.</td><td>Araw-araw</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude">M<strong>GA OUTBREAK NG COVID-19</strong></h3>
+
+
+
+<p class="wp-accordion-content">Na-verify ng Departamento ng Pampublikong Kalusugan ng California.</p>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>PANGALAN NG COLUMN</strong></td><td><strong>FORMAT</strong></td><td><strong>KAHULUGAN</strong></td><td><strong>DALAS NG PAG-UPDATE</strong></td></tr><tr><td>HURISDIKSYON</td><td>Plain na text</td><td>Hurisdiksyon kung saan nangyari ang outbreak<br>Kasama sa mga value ang:California</td><td>Bawat dalawang linggo</td></tr><tr><td>SEKTOR NG INDUSTRIYA</td><td>Plain na text</td><td>Sektor ng industriya kung saan nangyari ang outbreak.<br><br>Kasama sa mga value ang:<br>Mga Sektor ng Industriya, na inuri sa <a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">2012 Listahan ng Kodigo ng Industriya ng Kawanihan ng Census ng US</a>. Ang bawat sektor ng industriya ay may bilang ng mga indibidwal na industriya.</td><td>Bawat dalawang linggo</td></tr><tr><td>INDIBIDWAL NA LUGAR</td><td>Plain na text</td><td>Indibidwal na industriya kung saan nangyari ang outbreak.<br><br>Kasama sa mga value ang:<br>Mga indibidwal na industriya, na inuri sa <a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">2012 Listahan ng Kodigo ng Industriya ng Kawanihan ng Census ng US</a>.</td><td>Bawat dalawang linggo</td></tr><tr><td>INDCODE</td><td>Numero</td><td>Kodigo ng industriya ng census para sa indibidwal na industriya kung saan nangyari ang outbreak.<br><br>Kasama sa mga value ang:<br>Mga 4 na digit na kodigo ng indibidwal na industriya, na inuri sa <a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">2012 Listahan ng Kodigo ng Industriya ng Kawanihan ng Census ng US</a>.</td><td>Bawat dalawang linggo</td></tr><tr><td>OUTBREAK_TOTAL</td><td>Numero</td><td>Kabuuang bilang ng mga kumpirmadong outbreak ng COVID-19 na iniulat sa Departamento ng Pampublikong Kalusugan ng California (CDPH) sa kaukulang indibidwal na industriyay<br>Value:Positive numeric</td><td>Bawat dalawang linggo</td></tr><tr><td>CASE_TOTAL</td><td>Numero</td><td>Kabuuang bilang ng mga kaugnay na kaso na iniulat sa kaukulang indibidwal na industriya<br>Value:Positive numeric</td><td>Bawat dalawang linggo</td></tr><tr><td>OUTBREAK_NEW</td><td>Numero</td><td>Bilang ng mga bagong kumpirmadong outbreak ng COVID-19 na iniulat sa nakalipas na 30 araw sa Departamento ng Pampublikong Kalusugan ng California (CDPH) sa kaukulang indibidwal na industriyay<br>Value:Positive numeric</td><td>Bawat dalawang linggo</td></tr><tr><td>CASE_NEW</td><td>Numero</td><td>Bilang ng mga kaugnay na kaso para sa mga outbreak na iniulat sa nakalipas na 30 araw sa CDPH sa kaukulang indibidwal na industriya<br>Value:Positive numeric</td><td>Bawat dalawang linggo</td></tr></tbody></table></figure>
 
 
 
