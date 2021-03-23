@@ -78,3 +78,14 @@ window.onscroll = function(ev) {
     clearTimeout(timer);
   }
 };
+
+
+// Hiding back-to-top button on the homepage
+if (document.title.indexOf("COVID19.CA.GOV") != -1) {
+  var returnTopButton = document.querySelector(".return-top");
+  returnTopButton.style.display = 'none';
+  window.addEventListener("scroll", function() { 
+    var returnTopButton = document.querySelector(".return-top");
+    returnTopButton.style.dislpay = "none";
+  });
+}
