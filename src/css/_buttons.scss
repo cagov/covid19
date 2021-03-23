@@ -791,11 +791,12 @@ faq-section {
   position: fixed;
   z-index: 99999;
   right: 15px;
-  bottom: 50px;
+  bottom: -50px;
   opacity: 0;
   visibility: hidden;
   text-decoration: none;
   cursor: pointer;
+  transition:all .5s linear;
   // Icon
   &:before {
     content: "\e9f6";
@@ -807,5 +808,6 @@ faq-section {
     opacity: 1;
     visibility: visible;
     display: inline;
+    bottom:50px;
   }
 }
