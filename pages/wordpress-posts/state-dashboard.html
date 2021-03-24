@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "View the latest data on cases, deaths, tests and county tiers."
 author: "State of California"
-publishdate: "2021-03-24T16:58:48Z"
+publishdate: "2021-03-24T18:58:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -21,7 +21,7 @@ addtositemap: true
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberFixed(tags,1)-%}
+formatNumberFixed(tags,2)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
