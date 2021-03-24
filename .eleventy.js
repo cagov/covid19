@@ -190,6 +190,14 @@ module.exports = function(eleventyConfig) {
     return addSeperator(Number.isInteger(number) ? number : Math.round(Number.parseFloat(number)*roundscale)/roundscale)
   }
   );
+  eleventyConfig.addFilter('formatNumberFixed', (number,tags,fractionDigits=3) => {
+    let floatFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
+                  {style:'decimal', 
+                   minimumFractionDigits:fractionDigits,
+                   maximumFractionDigits:fractionDigits});
+    return floatFormatter.format(number);
+  }
+  );
   function addSeperator(nStr){
     nStr += '';
     x = nStr.split('.');
