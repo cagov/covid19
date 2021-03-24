@@ -2191,12 +2191,19 @@ font {
 .bd-lightblue {
   border: 2px solid $lightestblue !important;
 }
-.bd-right-black {
-  border-right: 1px solid black !important;
-}
+.bd-right-lightblue {border-right: 1px solid $lightestblue;}
+.bd-left-lightblue {border-left: 1px solid $lightestblue;}
+.bd-top-lightblue {border-top: 1px solid $lightestblue;}
+.bd-bottom-lightblue {border-bottom: 1px solid $lightestblue;}
+
 .bd-blue {
   border: 1px solid $blue !important;
 }
+.bd-right-blue {border-right: 1px solid $blue;}
+.bd-left-blue {border-left: 1px solid $blue;}
+.bd-top-blue {border-top: 1px solid $blue;}
+.bd-bottom-blue {border-bottom: 1px solid $blue;}
+
 .bd-right-black {
   border-right: 1px solid $black;
 }
@@ -2212,6 +2219,11 @@ font {
 .bd-darkblue {
   border: 1px solid $darkblue !important;
 }
+.bd-right-darkblue {border-right: 1px solid $darkblue;}
+.bd-left-darkblue {border-left: 1px solid $darkblue;}
+.bd-top-darkblue {border-top: 1px solid $darkblue;}
+.bd-bottom-darkblue {border-bottom: 1px solid $darkblue;}
+
 .bd-ccc {
   border: solid 1px #ccc;
 }
