@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "數據和工具"
 meta: "自COVID-19危機爆發開始，加州就不得不面對現實，做出艱難的決定。為此，我們需要確切的數據。州長Newsom簽署了行政指令N-X-2020 (Executive Order N-X-2020)，發佈由政府處理的即時COVID-19數據源。此數據由我們的專家群進行確認。"
 author: "State of California"
-publishdate: "2021-03-19T14:33:42Z"
+publishdate: "2021-03-20T01:56:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -72,6 +72,18 @@ addtositemap: true
 
 
 
+<h3>COVID-19疫情爆發案例數 </h3>
+
+
+
+<p>此數據集包含自2021年1月1日開始上報給加州公共衛生局(California Department of Public Health, CDPH)，並按不同情況分類的全州範圍內的COVID-19疫情爆發案例數和相關病例數。</p>
+
+
+
+<p><a class="external" href="https://data.chhs.ca.gov/dataset/covid-19-outbreak-data">在開放數據門戶網站查看COVID-19數據</a></p>
+
+
+
 <h3>個人防護裝備 (Personal Protection Equipment, PPE) 分發</h3>
 
 
@@ -84,18 +96,6 @@ addtositemap: true
 
 
 
-<h3>床位需求激增</h3>
-
-
-
-<p>機構（如醫院、運動場及其他替代照護機構）應對需要床位的患者之能力。</p>
-
-
-
-<p class="external"><a class="external" href="https://public.tableau.com/views/COVID-19BedSurgeDashboard/BedSurge?:embed=y&amp;:showVizHome=no">查看床位需求激增一覽表</a></p>
-
-
-
 <h3>對無家可歸者的影響</h3>
 
 
@@ -105,6 +105,18 @@ addtositemap: true
 
 
 <p><a class="external" href="https://public.tableau.com/views/COVID-19HomelessImpactDashboard/HomelessImpact?:embed=y&amp;:showVizHome=no">查看無家可歸者一覽表</a></p>
+
+
+
+<h3>床位需求激增</h3>
+
+
+
+<p>機構（如醫院、運動場及其他替代照護機構）應對需要床位的患者之能力。</p>
+
+
+
+<p><a href="https://public.tableau.com/views/COVID-19BedSurgeDashboard/BedSurge?:embed=y&amp;:showVizHome=no">查看床位需求激增一覽表</a></p>
 
 
 
@@ -209,6 +221,18 @@ addtositemap: true
 
 
 <figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>變量</strong></td><td><strong>格式</strong></td><td><strong>描述</strong></td><td><strong>更新頻率</strong></td></tr><tr><td>年齡_組</td><td>字串</td><td>地方衛生部門報告的COVID-19病例和死亡病例的年齡類別。</td><td>每日</td></tr><tr><td>病例_百分比</td><td>浮點數</td><td>在特定年齡組內COVID-19病例的百分比。</td><td>每日</td></tr><tr><td>死亡病例_百分比</td><td>浮點數</td><td>在特定年齡組內與COVID-19相關死亡病例的百分比。 </td><td>每日</td></tr><tr><td>百分比_加州<br>_人口</td><td>浮點數</td><td>在特定年齡組內的加州人口比率。</td><td>每日</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude"><strong>COVID-19疫情爆發案例數</strong></h3>
+
+
+
+<p class="wp-accordion-content">經加州公共衛生局核證。</p>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>豎列名稱</strong></td><td><strong>格式</strong></td><td><strong>定義</strong></td><td><strong>更新頻率</strong></td></tr><tr><td>轄區</td><td>純文本</td><td>曾爆發疫情的轄區<br>數值包括：加州</td><td>兩週一次</td></tr><tr><td>行業</td><td>純文本</td><td>曾爆發疫情的行業。<br><br>數值包括：<br>行業，按<a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">美國人口普查局 (US Census Bureau) 2012行業代碼清單</a>分類。每個行業都包含一些個體行業。</td><td>兩週一次</td></tr><tr><td>個體行業</td><td>純文本</td><td>曾爆發疫情的個體行業。<br><br>數值包括：<br>個體行業，按<a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">美國人口普查局 (US Census Bureau) 2012行業代碼清單</a>分類。</td><td>兩週一次</td></tr><tr><td>代碼</td><td>數值</td><td>曾爆發疫情的個體行業的普查行業代碼。<br><br>數值包括：<br>4位數字的個體行業代碼，按<a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">美國人口普查局 (US Census Bureau) 2012行業代碼清單</a>分類。</td><td>兩週一次</td></tr><tr><td>疫情爆發案例_總數</td><td>數值</td><td>相應個體行業中上報給加州公共衛生局的確認COVID-19疫情爆發的總數<br>數值：陽性案例數值</td><td>兩週一次</td></tr><tr><td>病例_總數</td><td>數值</td><td>相應個體行業中與呈報的疫情爆發案例相關的病例總<br>數數值：陽性病例數值</td><td>兩週一次</td></tr><tr><td>疫情爆發案例_新增</td><td>數值</td><td>相應個體行業在過去30天內上報給加州公共衛生局的新增確認COVID-19疫情爆發案例數<br>數值：陽性案例數值</td><td>兩週一次</td></tr><tr><td>病例_新增</td><td>數值</td><td>相應個體行業在過去30天內呈報給CDPH的相關病例數<br>數值：陽性病例數值</td><td>兩週一次</td></tr></tbody></table></figure>
 
 
 

@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay sa COVID-19 sa California"
 meta: "Tingnan ang pinakabagong data sa mga kaso, pagkamatay, pagsusuri at mga tier ng county."
 author: "State of California"
-publishdate: "2021-03-17T21:56:13Z"
+publishdate: "2021-03-24T18:58:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,21 +16,21 @@ addtositemap: true
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumber(tags,1)-%}
+formatNumberFixed(tags,2)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumber(tags,1)-%}
+formatNumberFixed(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -311,7 +311,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Alamin kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California</strong> sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>. Matuto pa tungkol sa kapasidad ng ICU sa rehiyon sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos sa ICU ng CDPH</a>.</p>
+  <p class="small-text">Nakabatay ang lahat ng datos at pagtatalaga ng tier sa mga resulta mula sa linggong natapos noong {{_varTierEndDate_}}. Alamin kung paano itinatalaga at binabago ang mga tier, pati na rin ang mga dating datos ng county (<strong>Chart ng Datos ng Blueprint ng California</strong> sa <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">framework ng Blueprint para sa Mas Ligtas na Ekonomiya ng CDPH</a>. Matuto pa tungkol sa kapasidad ng ICU sa rehiyon sa <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos sa ICU ng CDPH</a>.</p>
 </div>
 
 
@@ -376,7 +376,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
-                <p>Ang distribusyon ng kumpirmadong kaso ng COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa pangkalahatang demograpiko sa lahi at etnisidad ng California, kung saan hindi pantay-pantay ang dami ng kaso ng mga grupong Latino and Native Hawaiian / Pacific Islander kaugnay ng kanilang populasyon sa estado. May available na karagdagang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos sa lahi at etnisidad kaugnay ng COVID-19</a>.</p>
+                <p>Ang distribusyon ng kumpirmadong kaso ng COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa pangkalahatang demograpiko sa lahi at etnisidad ng California, kung saan hindi pantay-pantay ang dami ng kaso ng mga grupong Latino and Native Hawaiian / Pacific Islander kaugnay ng kanilang populasyon sa estado. May available na karagdagang <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos sa lahi at etnisidad kaugnay ng COVID-19</a>.</p>
               </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Mga kumpirmadong kaso ayon sa lahi at etnisidad sa California</li>

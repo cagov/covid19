@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Consulte los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
 author: "State of California"
-publishdate: "2021-03-17T21:56:13Z"
+publishdate: "2021-03-24T18:58:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,21 +16,21 @@ addtositemap: true
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumber(tags,1)-%}
+formatNumberFixed(tags,2)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumber(tags,1)-%}
+formatNumberFixed(tags,1)-%}
 
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumber(tags,1) -%}
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 {%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
@@ -311,7 +311,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="pl-2 text-small">
-  <p class="small-text">Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Consulte cómo se asignan y cambian los niveles, así como los datos históricos de los condados (<strong>Cuadro de datos del plan de California</strong>), en el <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">marco del Plan para una economía más segura del CDPH</a>. Obtenga más información sobre la capacidad de las ICU regionales en <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos de las ICU del CDPH</a>.</p>
+  <p class="small-text">Todos los datos y asignaciones de niveles se basan en los resultados de la semana que finalizó el {{_varTierEndDate_}}. Consulte cómo se asignan y cambian los niveles, así como los datos históricos de los condados (<strong>Cuadro de datos del plan de California</strong>), en el <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">marco del Plan para una economía más segura del CDPH</a>. Obtenga más información sobre la capacidad de las ICU regionales en <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">Datos de las ICU del CDPH</a>.</p>
 </div>
 
 
@@ -376,7 +376,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
-                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
+                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
               </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por raza y etnia en California</li>
