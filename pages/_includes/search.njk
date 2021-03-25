@@ -49,8 +49,6 @@
 	const myWebSearchStartingCallback = query => {
 		if(!query) return;
 
-		let test_intl = false;
-
 		let currentHost = `${window.location.protocol}//${window.location.hostname}`;
 		if(window.location.port !== '80') {
 			currentHost += `:${window.location.port}`;
@@ -60,6 +58,7 @@
 
 		let search_url = `https://fa-go-alph-covidqna-001.azurewebsites.net/CovidAnswer?q=${query}&name=123`;
 		let = my_language = document.documentElement.lang;
+		let test_intl = true;
 		if (test_intl) {
 			// replace search url
 			console.log("Test INTL Search");
@@ -68,27 +67,47 @@
 
 		// fetch(search_url)
 		fetch(search_url
-		              {# , {
+		              , {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json',
                           "Authorization": "EndpointKey c1b8855b-2919-47ec-9387-6d9cc64dcb41"
                         },
                         redirect: 'follow', 
-                        body: JSON.stringify({'question':q, 'top': 200})
-                      } #}
+                        body: JSON.stringify({'question':query, 'top': 200})
+                      }
 					  )
 		.then(response => response.json())
 		.then(data => {
-			let answers = [...data[0].answers];
-			console.log("Got Answers",answers);
+			console.log("Got data",data);
+
+			let answers = data.answers; // [...data[0].answers];
+			// console.log("Got Answers",answers);
 			if (my_language == 'en-US') {
 				// Eliminate all questions with a non-english source
+				console.log("Skipping non english");
 				const skip_pattern = /^https:\/\/covid19.ca.gov\/(es|ar|ko|tl|vi|zh-hans|zh-hant)\//;
                 answers = answers.filter( ans => !(ans.source.match(skip_pattern)));
-			} else if (my_language.match(/^(es|ar|ko|tl|vi|zh-hans|zh-hant)$/)) {
-				const match_pattern = eval(`/^https:\/\/covid19.ca.gov\/${my_language}\//`);
-                answers = answers.filter( ans => (ans.source.match(match_pattern)));
+			} else {
+				const supported_languages = {'es-ES':{search:/^https:\/\/covid19.ca.gov\/es\//},
+											'es':{search:/^https:\/\/covid19.ca.gov\/es\//},
+										'ar-AR':{search:/^https:\/\/covid19.ca.gov\/ar\//},
+										'ar':{search:/^https:\/\/covid19.ca.gov\/ar\//},
+										'ko':{search:/^https:\/\/covid19.ca.gov\/ko\//},
+										'tl':{search:/^https:\/\/covid19.ca.gov\/tl\//},
+										'vi':{search:/^https:\/\/covid19.ca.gov\/vi\//},
+										'zh-hans':{search:/^https:\/\/covid19.ca.gov\/zh-hans\//},
+										'zh-hant':{search:/^https:\/\/covid19.ca.gov\/zh-hant\//},
+										'zh-Hans':{search:/^https:\/\/covid19.ca.gov\/zh-hans\//},
+										'zh-Hant':{search:/^https:\/\/covid19.ca.gov\/zh-hant\//},
+										};
+				if (my_language in supported_languages) {
+					console.log("Skipping non ",my_language);
+					const match_pattern = supported_languages[my_language].search;
+					answers = answers.filter( ans => (ans.source.match(match_pattern)));
+				} else {
+				    console.log("Unknown language, showing everything", my_language);
+				}
 			}
 			if(answers[0].questions.length > 0) {
 				let html = `<h4>Quick answers</h4>
