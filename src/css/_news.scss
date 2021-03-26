@@ -1,4 +1,4 @@
-news-section {
+news-section, .featured-content {
   .news {
     background: $white;
     @extend %block-padding;
@@ -134,6 +134,19 @@ news-section {
           font-size: 1rem;
         }
       }
+    }
+  }
+  .featured-content-image {
+    border: solid 1px;
+    display: inline-block;
+  }
+  .featured-content-image img {
+    min-width: 390px;
+    min-height: 250px;
+    max-height: 250px;
+    @include phone {
+      min-width: auto;
+      max-width: 300px
     }
   }
 }
