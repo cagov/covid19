@@ -129,6 +129,7 @@ hero-stats {
 		font-weight: 700;
 	}
 	&-photo {
+		background: #0641a2;
 		@include absolute(left 0 top 0);
 		@include size(100%);
 		z-index: -1;
