@@ -349,8 +349,8 @@ hero-stats {
 			font-size: 1.2rem;
 			font-weight: 300;
 			display: inline-block;
-			margin-left: 2rem;
-			margin-right: 2rem;
+			margin-left: .5rem;
+			margin-right: .5rem;
 			text-decoration: none;
 
 
@@ -358,10 +358,10 @@ hero-stats {
 				white-space: nowrap;
 			}
 			@include tablet-wide {
-				padding: .65rem 1em .5rem 1rem;
+				padding: .65rem 0 .5rem 0;
 				}
 			@include tablet-wide {
-				padding: .5rem 1rem;
+				padding: .5rem 0rem;
 			}
 			&:hover {
 				color: $orange;
