@@ -46,7 +46,7 @@ news-section, .featured-content {
         padding: 0.75rem;
       }
       @include desktop {
-        padding: 1rem;
+        padding: 1rem 1rem 0 1rem;
       }
       &-link {
 				display: block;
@@ -143,7 +143,13 @@ news-section, .featured-content {
   }
   .featured-content-image img {
     width: 100%;
-    height: 250px;
-    object-fit: fill;
+    height: 240px;
+    object-fit: cover;
+    &.state-map {
+      width: auto;
+      margin: 0 auto;
+      display: block;
+      object-fit: contain;
+    }
   }
 }
