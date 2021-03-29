@@ -127,6 +127,7 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
         'pages/_includes/accordion.html',
         'pages/**/*.js',
         'pages/wordpress-posts/banner*.html',
+        'pages/wordpress-posts/homepage-featured.html',
         'pages/@(translated|wordpress)-posts/@(new|find-services|cali-working|home-header)*.html'
       ],
       extractors: purgecssExtractors,
