@@ -12,6 +12,7 @@ import './menu/index.js';
 import './search/index.js';
 import './dark-accordion/extras.js';
 import '@cagov/anchor-events';
+import '@cagov/go-to-top';
 import setupAnalytics from './tracking-you/index.js';
 
 window.onload = (event) => {
