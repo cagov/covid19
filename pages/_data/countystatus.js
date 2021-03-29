@@ -183,7 +183,12 @@ module.exports = function() {
       </g>
     </g>
   </svg>`;
-  fs.writeFileSync('./src/img/cali-counties-colors.svg',svgTemplate,'utf8');
+  fs.mkdir('./docs/img', { recursive: true }, (err) => {
+    if (err) throw err;
+  });
+  console.log('created dir')
+
+  fs.writeFileSync('./docs/img/cali-counties-colors.svg',svgTemplate,'utf8');
   return new Promise((resolve, reject) => {
     resolve(jsonFile);
   });
