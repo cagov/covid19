@@ -3,6 +3,8 @@ import '@webcomponents/webcomponentsjs';
 import 'whatwg-fetch';
 import './polyfills/endswith.js';
 import '@cagov/accordion';
+import '@cagov/go-to-top';
+// import '@cagov/anchor-events';
 import '@cagov/step-list';
 import './dashboard-v2/async-polyfill.js';
 import './alerts/index.js';
