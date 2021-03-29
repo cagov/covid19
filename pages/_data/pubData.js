@@ -38,6 +38,9 @@ const files = [
     },
     Table3: {
       require: ['Name','_slug']
+    },
+    Table4: {
+      require: ['Link Title','URL']
     }
   }},
   { slug: 'people-want-to-know', split: true, tableSchema: {
