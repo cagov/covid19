@@ -246,15 +246,10 @@ formatNumber(tags,1)-%}
 		</section>
 	</hero-stats>
 
-
-
-
+  {% include (language.includepath + "homepage-featured" + language.filepostfix + ".html") %}
 
 	<!--RECENT UPDATES-->
 	{% include "./recent-updates-home.html" %}
-
-
-
 
 	<!-- PEOPLE WANTS TO KNOW SECTION -->
 	<faq-section>
@@ -264,7 +259,7 @@ formatNumber(tags,1)-%}
 			<div class="faq-twitter-wrap">
 				{%- for column, items in pubData[language.id].peopleWantToKnow %}
 					<div class="faq trigger">
-						<ul class="arrow-links">
+						<ul class="arrow-links mb-0">
 						{%- for item in items %}
 						<li>    
 							<a class="link-arrow-white js-event-hm-wtk" href="{{ item._url }}">
@@ -285,9 +280,9 @@ formatNumber(tags,1)-%}
 
 	<!-- FOR BUSINESSES SECTION -->
 <learn-more-section>
-<section class="faq-twitter pb-4">
+<section class="faq-twitter">
 	<h2 class="text-center color-purple mt-0">For businesses</h2>
-	<div class="faq-twitter-wrap pb-5">
+	<div class="faq-twitter-wrap">
 	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
         {% set JSONgov = JSONgovraw | jsonparse %}
         {%- set RowsGov = JSONgov.Table4 -%}
