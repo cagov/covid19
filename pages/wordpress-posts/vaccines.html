@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Vaccines"
 meta: "Get vaccinated—it’s safe, effective, and free Appointments are available for people with a high chance of exposure, high-risk, and those 65 or older. Sign up at myturn.ca.gov or call (833) 422-4255 to find out if it’s your turn. If you’re eligible, you can schedule an appointment, or register to be notified when one is available. [&hellip;]"
 author: "State of California"
-publishdate: "2021-03-26T00:02:52Z"
+publishdate: "2021-03-30T23:13:43Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -462,15 +462,11 @@ addtositemap: true
 
 
 
-<p>Initially, vaccination was limited to healthcare workers and long-term care residents. Hence the data reflects those populations more than other California residents.</p>
-
-
-
-<p>The dashboards report vaccines administered by the county of residence. Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records. The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</p>
-
-
-
 <h3 id="Vaccine-administration-by-county-of-residence">Vaccine administration by county of residence</h3>
+
+
+
+<p>This dashboard reports vaccines administered by the county of residence. Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records. The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</p>
 
 
 
@@ -482,14 +478,32 @@ addtositemap: true
 
 
 
-<h3 class="pt-5">Vaccination and community health conditions (Vaccine Equity Metric)</h3>
+<h3>Vaccination and community health conditions (Vaccine Equity Metric)</h3>
 
-<p>This graph compares COVID-19 vaccinations among four different levels of community health. </p>
 
-<p>It uses the Public  Health Alliance of Southern California’s Healthy Places Index (HPI) measures in a zip code area that can impact health, like income, education, and access to health care. Areas are then given a score, ranging from least healthy community conditions (Quartile 1) to most healthy community conditions (Quartile 4). The Vaccine Equity Metric also creates scores for areas that don’t have an HPI score.
-</p><p>
-  Data below show the progress of vaccination in each of the four quartiles.
-</p>
+
+<p>These graphs compare COVID-19 vaccinations among four different levels of community health.</p>
+
+
+
+<p>The Vaccine Equity Metric combines the Public Health Alliance of Southern California’s Healthy Places Index (HPI) measure with CDPH-derived scores to estimate factors that impact health, like income, education, and access to health care. Zip codes range from less healthy community conditions in Quartile 1 to more healthy community conditions in Quartile 4.</p>
+
+
+
+<h4>Weekly percent of people vaccinated by quartile</h4>
+
+
+
+<div class="col-lg-10 mx-auto">
+<!-- Tableau embed for "Weekly percent of vaccinated people by HPI quartile"-->
+<div class="tableauPlaceholder" id="viz1617137811229" style="position: relative"><noscript><a href="#"><img alt="Vaccine Equity Metric Dashboard " src="https://public.tableau.com/static/images/CO/COVID-19VaccineEquityMetricQuartileDashboard/VaccineEquityMetricDashboard/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19VaccineEquityMetricQuartileDashboard/VaccineEquityMetricDashboard"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19VaccineEquityMetricQuartileDashboard/VaccineEquityMetricDashboard/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object></div>                <script type="text/javascript">                    var divElement = document.getElementById('viz1617137811229');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='500px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+<!-- end tableau embed -->
+<p class="small-text">Note: The Vaccine Equity Metric is for weekly vaccination allocation and reporting purposes only. CDPH-derived quartiles should not be considered as indicative of the HPI score for these zip codes. CDPH-derived quartiles were assigned to zip codes excluded from the HPI score produced by the Public Health Alliance of Southern California due to concerns with statistical reliability and validity in populations smaller than 1,500 or where more than 50% of the population resides in a group setting.</p>
+</div>
+
+
+
+<h4>Vaccinations by number and percent of people vaccinated in each quartile so far&nbsp;</h4>
 
 
 
@@ -501,7 +515,7 @@ addtositemap: true
           <li data-label="chartDescription">People partially and fully vaccinated in California</li>
           <li data-label="legendLabel1">People 16+ partially vaccinated</li>
           <li data-label="legendLabel2">People 16+ fully vaccinated</li>
-          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="barLabel">Quartile {N}</li>
           <li data-label="annotationLeast">Least healthy community conditions</li>
           <li data-label="annotationMost">Most healthy community conditions</li>
           <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}.  &#8220;Partially vaccinated&#8221; represents individuals who have received at least one dose of the Pfizer or Moderna vaccine. &#8220;Fully vaccinated&#8221; represents individuals who have received two doses of the Pfizer or Moderna vaccine, or one dose of the Janssen vaccine. Percentage for number of people calculated as people vaccinated in a quartile divided by population of people 16 years of age and over in a quartile.</li>
@@ -514,7 +528,7 @@ addtositemap: true
           <li data-label="chartTitle">Vaccinations by doses administered</li>
           <li data-label="chartDescription">Number of vaccine doses given in California</li>
           <li data-label="legendLabel1">% of total and number of doses administered</li>
-          <li data-label="barLabel">HPI Quartile {N}</li>
+          <li data-label="barLabel">Quartile {N}</li>
           <li data-label="annotationLeast">Least healthy community conditions</li>
           <li data-label="annotationMost">Most healthy community conditions</li>
           <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}. Excludes doses without an HPI score, including out-of-state residents or records with missing zip codes. Percentage for doses calculated as doses administered in a quartile divided by total doses administered statewide.</li>
@@ -711,7 +725,7 @@ addtositemap: true
 
 
 
-<ul class="wp-accordion-content"><li>Persons at risk of occupational exposure to coronavirus through their work in any role in the <a href="https://covid19.ca.gov/essential-workforce/#emergency-services"><strong>Emergency Services Sectors</strong> from the CA Essential Workforce</a> list.</li><li>Utility Workers (Electricity, gas, water, waste, roads/highways) that provide emergency support. </li><li>Disaster Service Workers (DSWs) if at risk of occupational exposure, once activated for emergency response, including those working in temporary non-congregate shelters.</li><li>COVID-19 vaccine clinic volunteers are eligible for vaccination if they complete at least one clinic shift and are approved by the clinic’s organizer.</li><li>Social Workers. Workers responding to abuse and neglect of children, elders and dependent adults, including all front-line social workers and other staff required to enter the home (including mobile home or tent) of the individual at risk.</li></ul>
+<ul class="wp-accordion-content"><li>Persons at risk of occupational exposure to coronavirus through their work in any role in the <a href="https://covid19.ca.gov/essential-workforce/#emergency-services"><strong>Emergency Services Sectors</strong> from the CA Essential Workforce</a> list.</li><li>Utility Workers (Electricity, gas, water, waste, roads/highways) that provide emergency support.&nbsp;</li><li>Disaster Service Workers (DSWs) if at risk of occupational exposure, once activated for emergency response, including those working in temporary non-congregate shelters.</li><li>COVID-19 vaccine clinic volunteers are eligible for vaccination if they complete at least one clinic shift and are approved by the clinic’s organizer.</li><li>Social Workers. Workers responding to abuse and neglect of children, elders and dependent adults, including all front-line social workers and other staff required to enter the home (including mobile home or tent) of the individual at risk.</li></ul>
 
 
 
