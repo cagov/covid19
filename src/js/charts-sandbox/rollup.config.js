@@ -7,13 +7,13 @@ const defaultConfig = {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
   chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/v2/',
-  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/state_dash_tables',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/state-dashboard/',
 }
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-equity/',
   chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-hpi/v2/',
-  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/state_dash_tables',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/state-dashboard/',
 }
 
 const devOutputPath = 'docs/js/charts-sandbox.js';
