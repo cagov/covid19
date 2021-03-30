@@ -6,65 +6,65 @@ import renderChart from "../common/histogram.js";
 import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
-// cagov-chart-dashboard-hospitalized-patients-hospitalized
-class CAGovDashboardHospitalizedPatientsHospitalized extends window.HTMLElement {
+// cagov-chart-dashboard-hospitalized-patients
+class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardHospitalizedPatientsHospitalized");
+    console.log("Loading CAGovDashboardHospitalizedPatients");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
 
     this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-hospitalized-patients-hospitalized',
+      chartName: 'cagov-chart-dashboard-hospitalized-patients',
       // Data
       dataUrl:
-        config.chartsStateDashTablesLoc + "/patients/california.json", // Overwritten by county.
+        config.chartsStateDashTablesLoc + "hospitalized-patients/california.json", // Overwritten by county.
       dataUrlCounty:
-        config.chartsStateDashTablesLoc + "/patients/<county>.json",
+        config.chartsStateDashTablesLoc + "hospitalized-patients/<county>.json",
 
       desktop: {
         fontSize: 14,
-        height: 60 + this.nbr_bars * this.bar_vspace,
         width: 400,
+        height: 300,
         margin: {
+          left: 50,
           top: 60,
-          right: 80,
-          bottom: 0, // 20 added for divider
-          left: 0,
+          right: 0,
+          bottom: 20, // 20 added for divider
         },
       },
       tablet: {
         fontSize: 14,
-        height: 60 + this.nbr_bars * this.bar_vspace,
-        width: 350,
+        width: 400,
+        height: 300,
         margin: {
+          left: 50,
           top: 60,
-          right: 80,
-          bottom: 0, // 20 added for divider
-          left: 0,
+          right: 0,
+          bottom: 20, // 20 added for divider
         },
       },
       mobile: {
         fontSize: 12,
-        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
-        width: 440,
+        width: 400,
+        height: 300,
         margin: {
+          left: 50,
           top: 60,
-          right: 80,
-          bottom: 0,
-          left: 0,
+          right: 0,
+          bottom: 20,
         },
       },
       retina: {
         fontSize: 12,
-        height: 60 + this.nbr_bars * (this.bar_vspace - 2),
-        width: 320,
+        width: 400,
+        height: 300,
         margin: {
+          left: 50,
           top: 60,
-          right: 80,
-          bottom: 0,
-          left: 0,
+          right: 0,
+          bottom: 20,
         },
       },
     };
@@ -186,13 +186,14 @@ class CAGovDashboardHospitalizedPatientsHospitalized extends window.HTMLElement 
 
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras});
+                                                'extras_func':this.renderExtras,
+                                                'time_series_key':'HOSPITALIZED_PATIENTS'});
         }.bind(this)
       );
   }
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-hospitalized-patients-hospitalized",
-  CAGovDashboardHospitalizedPatientsHospitalized
+  "cagov-chart-dashboard-hospitalized-patients",
+  CAGovDashboardHospitalizedPatients
 );
