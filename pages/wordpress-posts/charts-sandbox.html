@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
 title: "Charts Sandbox (test page)"
-meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Vaccines by people Lorem ipsum chartDescription people sum People 16+ partially vaccinated People 16+ fully vaccinated HPI Quartile {N} Least healthy community conditions Most healthy community conditions Vaccines by Dose Lorem ipsum chartDescription dose [&hellip;]"
+meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Confirmed cases in California {latest.HOSPITALIZED_PATIENTS.TOTAL} COVID-19 hospitalized patients {ABS_latest.CHANGE} more hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} increase {ABS_latest.CHANGE} fewer hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} decrease 14-day average Reported date: Total hospitalized COVID-19 patients: 14-day average of hospitalized patients: Confirmed [&hellip;]"
 author: "State of California"
-publishdate: "2021-03-04T14:43:29Z"
+publishdate: "2021-03-31T23:47:37Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -11,18 +11,24 @@ addtositemap: false
 <p>All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical.</p>
 
 
-<h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
+
+<!-- <cagov-county-search></cagov-county-search> testing -->
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">
-      <button class="large-tab js-toggle-county county d-none">Alameda</button>
-      <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+<!-- <cagov-county-toggle-buttons></cagov-county-toggle-buttons> -->
+
+
+
+<!-- <cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
     </div>
-  </div>
-</div>
+</cagov-chart-sandbox-filter-buttons> -->
+
+
 
 <div class="container">
 
@@ -194,6 +200,7 @@ addtositemap: false
 </div>
 
 </div>
+
 
 
 <p></p>
