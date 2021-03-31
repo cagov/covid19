@@ -76,11 +76,11 @@ function writeBars(svg, data, x, y, rootID='barid') {
     let component = this;
 
     // console.log("Write bars data=",data);
-    console.log("First Data",data[0]);
-    console.log("x(0)",x(0));
-    console.log("x(max)",x(max_x_domain-1));
-    console.log("y(0)",y(0));
-    console.log("y(max)",y(max_y_domain-1));
+    // console.log("First Data",data[0]);
+    // console.log("x(0)",x(0));
+    // console.log("x(max)",x(max_x_domain-1));
+    // console.log("y(0)",y(0));
+    // console.log("y(max)",y(max_y_domain-1));
 
     let groups = svg.append("g")
       .attr('style','fill:#deeaf6')
@@ -205,7 +205,7 @@ function writeBars(svg, data, x, y, rootID='barid') {
     // Filter and sort here...
     // console.log("Categories",categories);
     // Y position of bars.
-    console.log("max_x_domain", chartData.time_series[time_series_key].length);
+    // console.log("max_x_domain", chartData.time_series[time_series_key].length);
     this.x = d3
     .scaleLinear()
     .domain([0,chartData.time_series[time_series_key].length-1])
@@ -227,7 +227,7 @@ function writeBars(svg, data, x, y, rootID='barid') {
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
     let max_y_domain = d3.max(chartData.time_series[time_series_key], d=> d.VALUE);
-    console.log("max_y_domain", max_y_domain);
+    // console.log("max_y_domain", max_y_domain);
     this.y = d3
       .scaleLinear()
       .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()

@@ -25,7 +25,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 400,
+        width: 420,
         height: 300,
         margin: {
           left: 50,
@@ -36,7 +36,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        width: 400,
+        width: 420,
         height: 300,
         margin: {
           left: 50,
@@ -47,7 +47,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        width: 400,
+        width: 420,
         height: 300,
         margin: {
           left: 50,
@@ -58,7 +58,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        width: 400,
+        width: 420,
         height: 300,
         margin: {
           left: 50,
