@@ -16,8 +16,8 @@ export default function template({
         <div class="mx-auto">
             <div class="chart-title">${chartTitle}</div>
             <div class="chart-header">
-            <div class="header-line"><span class="big-num">2,623</span> COVID-19 hospitalized patients </div>
-            <div class="header-line"><span class="med-num">+24</span> more patients (0.9% increase) </div>
+            <div class="header-line"><span class="big-num">X,XXX</span> COVID-19 hospitalized patients </div>
+            <div class="header-line"><span class="med-num">+XX</span> more patients (X.X% increase) </div>
             </div>
             <div class="svg-holder"></div>
         </div>

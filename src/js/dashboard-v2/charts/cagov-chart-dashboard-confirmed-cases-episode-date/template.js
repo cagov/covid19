@@ -15,9 +15,9 @@ export default function template({
             <div class="chart-title">${chartTitle}</div>
             <!-- tabs go here -->
             <div class="chart-header">
-            <div class="header-line"><span class="big-num">3,568,426</span> total confirmed cases </div>
-            <div class="header-line"><span class="med-num">1,962</span> new cases (0.1% increase) </div>
-            <div class="header-line"><span class="med-num">4.6</span> cases per 100K (7-day average) </div>
+            <div class="header-line"><span class="big-num">X,XXX,XXX</span> total confirmed cases </div>
+            <div class="header-line"><span class="med-num">XXX</span> new cases (X.X% increase) </div>
+            <div class="header-line"><span class="med-num">X.X</span> cases per 100K (7-day average) </div>
             </div>
             <div class="svg-holder"></div>
         </div>
