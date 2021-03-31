@@ -481,6 +481,41 @@ button.clear {
   }
 }
 
+//light blue  arrow link
+.link-arrow-orange {
+  @include link-arrow;
+  color: $orange !important;
+  .link-arrow-icon {
+    border: 2px solid $orange;
+  }
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $orange;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $lightblue !important;
+    .link-arrow-icon {
+      border-color: $lightblue;
+      .arrow1,
+      .arrow2 {
+        fill: $lightblue;
+      }
+    }
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
+
 /* Call to Action Buttons */
 @mixin action-button {
   display: inline-block;
@@ -796,7 +831,7 @@ faq-section {
   visibility: hidden;
   text-decoration: none;
   cursor: pointer;
-  transition:all .5s linear;
+  transition: all 0.5s linear;
   // Icon
   &:before {
     content: "\e9f6";
@@ -808,6 +843,6 @@ faq-section {
     opacity: 1;
     visibility: visible;
     display: inline;
-    bottom:50px;
+    bottom: 50px;
   }
 }
