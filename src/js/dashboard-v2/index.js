@@ -1,4 +1,5 @@
 import Awesomplete from 'awesomplete-es6';
+// import css from "../common/chart.scss";
 import './charts/cagov-chart-dashboard-groups-race-ethnicity-cases/index.js';
 import './charts/cagov-chart-dashboard-groups-race-ethnicity-deaths/index.js';
 import './charts/cagov-chart-dashboard-groups-gender-cases/index.js';
