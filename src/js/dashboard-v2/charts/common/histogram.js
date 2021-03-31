@@ -51,8 +51,8 @@ function writePendingBlock(svg, data, x, y,
         break;
       }
     }
-    console.log("PENDING_DATE",pending_date);
-    console.log("Pending",nbr_pending);
+    // console.log("PENDING_DATE",pending_date);
+    // console.log("Pending",nbr_pending);
 
     xgroup.append('rect')
       .attr("x",x(nbr_pending))
@@ -160,7 +160,7 @@ function writeRightYAxis(svg, data, x, y,
   const tick_left_gap = 10;
   const tick_right_gap = 30;
 
-  console.log("Drawing Right Axis  max_y_domain",max_y_domain,rootID);
+  // console.log("Drawing Right Axis  max_y_domain",max_y_domain,rootID);
 
   for (let yi = 0; yi < max_y_domain; yi += y_div) {
     let y_caption = '';
@@ -230,7 +230,7 @@ function writeRightYAxis(svg, data, x, y,
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    console.log("Render Chart",time_series_key_bars, time_series_key_line, root_id);
+    // console.log("Render Chart",time_series_key_bars, time_series_key_line, root_id);
 
     // Filter and sort here...
     // console.log("Categories",categories);
