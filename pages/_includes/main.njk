@@ -77,7 +77,7 @@ formatNumber(tags,1)-%}
 					<div class="row d-flex justify-content-md-center">
 						<div class="col-md-6 px-10px">
 							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Cases</div>
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ varTotalCases }}</div>
 							
 								<div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">total</span></div>
 								<div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span></div>
@@ -104,7 +104,7 @@ formatNumber(tags,1)-%}
 						</div>
 						<div class="col-md-6 px-10px">
 							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Deaths</div>
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ varTotalDeaths }}</div>
 							
 								<div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">total</span></div>
 								<div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span></div>
@@ -131,7 +131,7 @@ formatNumber(tags,1)-%}
 						</div>
 						<div class="col-md-6 px-10px">
 							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Tests</div>
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ varTestsReported }}</div>
 							
 								<div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">total</span></div>
 								<div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span></div>
@@ -165,14 +165,7 @@ formatNumber(tags,1)-%}
 					</div>
 					<div class="text-sm text-center text-300 ptop-12px">
 						Details about this data are available in the <a class="hero-stats-footer-slink" href="/state-dashboard/">state dashboard</a>.
-					</div><!--
-<<p class="text-center text-sm text-300 mt-4">Rates of cases and tests are based on a 7 day average with a 7 day lag.</p>
-<p class="text-center text-sm text-300 mt-3">Rates of deaths are based on a 7 day average with a 21 day lag due to delays in reporting. 
-</p>
-<p class="text-center text-sm text-300 mt-3">Directional change is from prior 7 day period.</p>>
--->
-
-
+					</div>
 						
 					<div class="hero-stats-footer">
 						
