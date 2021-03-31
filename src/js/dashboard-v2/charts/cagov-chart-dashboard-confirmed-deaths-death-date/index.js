@@ -29,9 +29,9 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20, // 20 added for divider
+          top: 30,
+          right: 60,
+          bottom: 45, // 20 added for divider
         },
       },
       tablet: {
@@ -40,9 +40,9 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20, // 20 added for divider
+          top: 30,
+          right: 60,
+          bottom: 45, // 20 added for divider
         },
       },
       mobile: {
@@ -51,9 +51,9 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20,
+          top: 30,
+          right: 60,
+          bottom: 45,
         },
       },
       retina: {
@@ -62,9 +62,9 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20,
+          top: 30,
+          right: 60,
+          bottom: 45,
         },
       },
     };
@@ -196,6 +196,12 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
                                                 'left_y_div':0.5,
                                                 'right_y_div':200,
                                                 'root_id':'death-date',
+                                                'left_y_axis_legend':'Deaths per 100K',
+                                                'right_y_axis_legend':'Deaths',
+                                                'x_axis_legend':'Death date',
+                                                'line_legend':'7-day average',
+                                                'pending_date':this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.DEATH_UNCERTAINTY_PERIOD,
+                                                'pending_legend':'Pending',
                                               });
         }.bind(this)
       );

@@ -29,9 +29,9 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20, // 20 added for divider
+          top: 30,
+          right: 60,
+          bottom: 45, // 20 added for divider
         },
       },
       tablet: {
@@ -40,9 +40,9 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20, // 20 added for divider
+          top: 30,
+          right: 60,
+          bottom: 45, // 20 added for divider
         },
       },
       mobile: {
@@ -51,9 +51,9 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20,
+          top: 30,
+          right: 60,
+          bottom: 45,
         },
       },
       retina: {
@@ -62,9 +62,9 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
-          right: 50,
-          bottom: 20,
+          top: 30,
+          right: 60,
+          bottom: 45,
         },
       },
     };
@@ -187,7 +187,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         //   };
         //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
         //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
-
+        
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
@@ -196,6 +196,12 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'left_y_div':20,
                                                 'right_y_div':10000,
                                                 'root_id':'cases-ep',
+                                                'left_y_axis_legend':'Cases per 100K',
+                                                'right_y_axis_legend':'Cases',
+                                                'x_axis_legend':'Episode date',
+                                                'line_legend':'7-day average',
+                                                'pending_date':this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.EPISODE_UNCERTAINTY_PERIOD,
+                                                'pending_legend':'Pending',
                                               });
         }.bind(this)
       );

@@ -31,7 +31,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           left: 50,
           top: 60,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       tablet: {
@@ -42,7 +42,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           left: 50,
           top: 60,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       mobile: {
@@ -53,7 +53,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           left: 50,
           top: 60,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
       retina: {
@@ -64,7 +64,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           left: 50,
           top: 60,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
     };
