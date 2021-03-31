@@ -10,7 +10,7 @@ a.btn {
 }
 
 a.btn-dark {
-  background:$black;
+  background: $black;
   color: $white;
   border: 1px solid$black;
   text-decoration: none;
@@ -28,8 +28,7 @@ a.btn:hover {
   background: $blue;
 }
 
-a.btn:visited
- {
+a.btn:visited {
   color: $white;
 }
 
@@ -80,9 +79,9 @@ button.step-description {
 .btn-bd-primary:hover,
 .btn-bd-primary:active {
   color: $white;
-  background-color:$black;
-  border-color:$black;
-  background:$black;
+  background-color: $black;
+  border-color: $black;
+  background: $black;
 }
 
 .search-btn {
@@ -190,7 +189,7 @@ button.card-header.accordion-alpha:focus {
 }
 .btn-matrix.bg-orange-btn,
 .btn-matrix.bg-yellow-btn {
-  color:$black !important;
+  color: $black !important;
 }
 
 .interior-page .toggle-links {
@@ -207,21 +206,25 @@ button.card-header.accordion-alpha:focus {
     &.d-none {
       display: none;
     }
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $lightestblue;
     }
   }
-  a, a:visited {
+  a,
+  a:visited {
     color: $darkblue;
   }
-  a.toggle-active, a:visited.toggle-active {
+  a.toggle-active,
+  a:visited.toggle-active {
     color: $white;
   }
   .toggle-active {
     background-color: $darkblue;
     color: $white;
     cursor: default;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $darkblue;
     }
   }
@@ -233,7 +236,6 @@ button.card-header.accordion-alpha:focus {
   margin: 0 auto;
 }
 
-
 button.clear {
   border: none;
   background-color: transparent;
@@ -242,9 +244,9 @@ button.clear {
   top: 50px;
   color: $darkblue;
   font-weight: 300;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   span.ca-gov-icon-close-line {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     position: relative;
   }
   &:hover {
@@ -258,209 +260,260 @@ button.clear {
   }
 }
 
-  .small-tab {
-    padding:.5rem .75rem .5rem .75rem;
-    border:1px solid $lightestblue;
-    text-decoration:underline;
-    color:$darkblue;
-    background:$white;
-    font-size:.95rem;
-    font-weight: 700 !important;
-    &:hover, &:focus {
-      text-decoration:none;
-      outline-offset: -2px;
+.small-tab {
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  border: 1px solid $lightestblue;
+  text-decoration: underline;
+  color: $darkblue;
+  background: $white;
+  font-size: 0.95rem;
+  font-weight: 700 !important;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline-offset: -2px;
+  }
+  &:focus {
+    outline: 2px solid $yellow;
+  }
+  &.active,
+  &[aria-expanded="true"] {
+    color: $black;
+    text-decoration: none;
+    cursor: default;
+    &:focus {
+      outline: 2px solid $yellow;
+    }
+  }
+}
+
+.large-tabs {
+  border: 1px solid $darkblue !important;
+  background-color: $darkblue !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  .large-tab {
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.15rem;
+    display: inline-block;
+    padding: 10px;
+    background-color: $white;
+    color: $darkblue;
+    width: 100%;
+    margin: 0 1px 1px 0;
+    border: none;
+    @media (min-width: 768px) {
+      margin: 0 1px 0 0;
+      min-width: 200px;
+    }
+    &:hover,
+    &:focus {
+      background-color: $lightestblue;
     }
     &:focus {
       outline: 2px solid $yellow;
     }
-    &.active, &[aria-expanded="true"] {
-      color:$black;
-      text-decoration:none;
-      cursor: default;
-      &:focus {
-        outline: 2px solid $yellow;
-      }
+    &:last-child {
+      margin-right: 0;
+      margin-bottom: 0;
     }
-  }
-
-  .large-tabs {
-    border: 1px solid $darkblue!important;
-    background-color: $darkblue!important;
-    display: flex!important;
-    flex-direction: column;
-    justify-content: center!important;
-    @media (min-width: 768px) {
-      flex-direction: row;
-    }
-    .large-tab {
+    &.active,
+    &[aria-expanded="true"],
+    &.toggle-active {
+      color: $white;
+      background-color: $darkblue;
       text-decoration: none;
-      font-family: Montserrat;
-      font-style: normal;
-      text-align: center;
-      font-weight: 500;
-      font-size: 1.15rem;
-      display: inline-block;
-      padding: 10px;
-      background-color: $white;
-      color:$darkblue;
-      width: 100%;
-      margin: 0 1px 1px 0;
-      border: none;
-      @media (min-width: 768px) {
-        margin: 0 1px 0 0;
-        min-width: 200px;
-      }
-      &:hover, &:focus {
-        background-color: $lightestblue;
+      pointer-events: none;
+      cursor: default;
+      &:hover,
+      &:focus {
+        background-color: $darkblue;
+        pointer-events: none;
       }
       &:focus {
         outline: 2px solid $yellow;
       }
-      &:last-child {
-        margin-right: 0;margin-bottom: 0;}
-      &.active, &[aria-expanded="true"], &.toggle-active {
-        color:$white;
-        background-color: $darkblue;
-        text-decoration:none;
-        pointer-events: none;
-        cursor: default;
-        &:hover, &:focus {
-          background-color: $darkblue;
-          pointer-events: none;
-        }
-        &:focus {
-          outline: 2px solid $yellow;
-        } 
-      }
-    } 
-  }
-
-  /* Arrow links */
-  @mixin link-arrow {
-    font-size: 1.2rem;
-    font-family: Montserrat,sans-serif;
-    text-transform: uppercase;
-    text-decoration:none !important;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    transition: all .3s ease;
-  }
-  .link-arrow-label {
-    margin-right:1em;
-  }
-  .link-arrow-icon {
-    width: 2.75rem;
-    height: 2.75rem; 
-    border-radius: 50%;
-    padding:0;
-    overflow:hidden;
-    transition: all .3s ease;
     }
-  .link-arrow-icon-svg {
-    width: 60px;
-    height:100%;
-    position:relative;
-    transition: all .3s ease;
-    right:28px;
   }
-  
+}
+
+/* Arrow links */
+@mixin link-arrow {
+  font-size: 1.2rem;
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.link-arrow-label {
+  margin-right: 1em;
+}
+.link-arrow-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.link-arrow-icon-svg {
+  width: 60px;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  right: 28px;
+}
+
 //blue arrow link
-  .link-arrow-blue {
-    @include link-arrow; 
-      color:$darkblue;
-      .link-arrow-icon {
-        border:2px solid $darkblue;
-      }
-      .arrow1, .arrow2 {
-        transition: all .3s ease;
-        fill:$darkblue;
-      }
-      .pdf-link-icon {display: none;}
-      //link hover and focus state
-      &:hover, &:focus {
-        color:$blue;
-        .link-arrow-icon {
-          border-color:$blue;
-          .arrow1, .arrow2 {fill:$blue;}
-        }
-        .link-arrow-icon-svg {right:-10px;}
-      }
-      &:focus {outline: 2px solid $yellow !important;}
-    }
-
-    //white arrow link
-  .link-arrow-white {
-    @include link-arrow; 
-      color:$white !important;
-      .link-arrow-icon {
-        border:2px solid $white;
-      }
-      .arrow1, .arrow2 {
-        transition: all .3s ease;
-        fill:$white;
-      }
-      .pdf-link-icon {display: none;}
-      //link hover and focus state
-      &:hover, &:focus {
-        color:$orange !important;        ;
-        .link-arrow-icon {
-          border-color:$orange; 
-          .arrow1, .arrow2 {fill:$orange;}
-        }
-        .link-arrow-icon-svg {right:-10px;}
-      }
-      &:focus {outline: 2px solid $yellow !important;}
-    }
-    
-
-  //light blue  arrow link
-  .link-arrow-lightblue {
-    @include link-arrow; 
-    color:$lightblue !important;
-    .link-arrow-icon {
-      border:2px solid $lightblue;
-    }
-    .arrow1, .arrow2 {
-      transition: all .3s ease;
-      fill:$lightblue;
-    }
-    .pdf-link-icon {display: none;}
-    //link hover and focus state
-    &:hover, &:focus {
-      color:$orange !important;        ;
-      .link-arrow-icon {
-        border-color:$orange; 
-        .arrow1, .arrow2 {fill:$orange;}
-      }
-      .link-arrow-icon-svg {right:-10px;}
-    }
-    &:focus {outline: 2px solid $yellow !important;}
+.link-arrow-blue {
+  @include link-arrow;
+  color: $darkblue;
+  .link-arrow-icon {
+    border: 2px solid $darkblue;
   }
-
-  //light blue  arrow link
-  .link-arrow-orange {
-    @include link-arrow; 
-    color:$orange !important;
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $darkblue;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $blue;
     .link-arrow-icon {
-      border:2px solid $orange;
-    }
-    .arrow1, .arrow2 {
-      transition: all .3s ease;
-      fill:$orange;
-    }
-    .pdf-link-icon {display: none;}
-    //link hover and focus state
-    &:hover, &:focus {
-      color:$lightblue !important;        ;
-      .link-arrow-icon {
-        border-color:$lightblue; 
-        .arrow1, .arrow2 {fill:$lightblue;}
+      border-color: $blue;
+      .arrow1,
+      .arrow2 {
+        fill: $blue;
       }
-      .link-arrow-icon-svg {right:-10px;}
     }
-    &:focus {outline: 2px solid $yellow !important;}
-  }  
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
+
+//white arrow link
+.link-arrow-white {
+  @include link-arrow;
+  color: $white !important;
+  .link-arrow-icon {
+    border: 2px solid $white;
+  }
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $white;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $orange !important;
+    .link-arrow-icon {
+      border-color: $orange;
+      .arrow1,
+      .arrow2 {
+        fill: $orange;
+      }
+    }
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
+
+//light blue  arrow link
+.link-arrow-lightblue {
+  @include link-arrow;
+  color: $lightblue !important;
+  .link-arrow-icon {
+    border: 2px solid $lightblue;
+  }
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $lightblue;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $orange !important;
+    .link-arrow-icon {
+      border-color: $orange;
+      .arrow1,
+      .arrow2 {
+        fill: $orange;
+      }
+    }
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
+
+//light blue  arrow link
+.link-arrow-orange {
+  @include link-arrow;
+  color: $orange !important;
+  .link-arrow-icon {
+    border: 2px solid $orange;
+  }
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $orange;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $lightblue !important;
+    .link-arrow-icon {
+      border-color: $lightblue;
+      .arrow1,
+      .arrow2 {
+        fill: $lightblue;
+      }
+    }
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
 
 /* Call to Action Buttons */
 @mixin action-button {
@@ -474,59 +527,69 @@ button.clear {
   border: 0 transparent;
   padding: 0.625rem 1.5rem;
   line-height: 1.5;
-  border-radius:50px;
+  border-radius: 50px;
   text-decoration: none !important;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 // dark blue button
 .button-blue {
   @include action-button;
   background-color: $darkblue;
   color: $white !important;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $orange;
     color: $darkblue !important;
   }
-  &:focus {outline: 2px solid $yellow !important;}
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
 }
 // white button
 .button-white {
   @include action-button;
   background-color: $white;
   color: $darkblue !important;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $orange;
     color: $darkblue !important;
   }
-  &:focus {outline: 2px solid $yellow !important;}
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
 }
 // light blue button
 .button-lightblue {
   @include action-button;
   background-color: $lightblue;
   color: $darkblue !important;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $orange;
     color: $darkblue !important;
   }
-  &:focus {outline: 2px solid $yellow !important;}
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
 }
 // lighter blue button
 .button-lightestblue {
   @include action-button;
   background-color: $lightestblue;
   color: $darkblue !important;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $orange;
     color: $darkblue !important;
   }
-  &:focus {outline: 2px solid $yellow !important;}
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
 }
 .bd-4px {
   border-radius: 0.25rem !important;
 }
-
-
 
 // LEARN MORE SECTION
 learn-more-section {
@@ -557,48 +620,43 @@ learn-more-section {
   }
 }
 
-
 // Dark blue questions
 faq-section {
-
-	.faq-twitter {
-		background: $darkblue;
-		@extend %block-padding;
-		width: 100%;
-		order: 1;
-		@include tablet {
-			order: 2;
-		}
-		&-wrap {
-			@extend %wrap;
-			@include tablet {
-				display: flex;
-				align-items: center;
-			}
-		}
-	}
-	.faq {
-		text-align: left;
-		@include tablet {
-			width: 50%;
-			padding: 0 2rem 0 0;
-		}
-	
-	}
-	.t-center {
-		text-align: center;
-	}
-	.twitter-feed {
-		padding: 2rem 0rem 0;
-		text-align: center;
-		color: $white;
-		@include tablet {
-			width: 50%;
-			padding: 0 0 0 2rem;
-		}
-	
-	}
-
+  .faq-twitter {
+    background: $darkblue;
+    @extend %block-padding;
+    width: 100%;
+    order: 1;
+    @include tablet {
+      order: 2;
+    }
+    &-wrap {
+      @extend %wrap;
+      @include tablet {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .faq {
+    text-align: left;
+    @include tablet {
+      width: 50%;
+      padding: 0 2rem 0 0;
+    }
+  }
+  .t-center {
+    text-align: center;
+  }
+  .twitter-feed {
+    padding: 2rem 0rem 0;
+    text-align: center;
+    color: $white;
+    @include tablet {
+      width: 50%;
+      padding: 0 0 0 2rem;
+    }
+  }
 }
 
 // Special Note
@@ -623,80 +681,86 @@ faq-section {
   }
 }
 
-
-
 /* ARROW LIST : List links with arrows */
 @mixin list-link-arrow {
-  font-family: "Roboto",sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
-  text-decoration:none !important;
+  text-decoration: none !important;
   text-transform: none;
-  display:flex;
+  display: flex;
   justify-content: left;
   transition: none;
   padding: 1rem 0.75rem;
   border-bottom: 1px solid;
-  
 }
 .arrow-links {
   padding-left: 0;
-  li {list-style: none;}
+  li {
+    list-style: none;
+  }
   .link-arrow-label {
-    margin-right:auto;
+    margin-right: auto;
   }
   .link-arrow-icon {
     width: 2.75rem;
-    height: 2.75rem; 
-    border:2px solid;
+    height: 2.75rem;
+    border: 2px solid;
     border-radius: 50%;
-    padding:0;
-    overflow:hidden;
-    transition: all .3s ease;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
     margin-left: 1rem;
-    }
+  }
   .link-arrow-icon-svg {
     width: 60px;
-    height:100%;
-    position:relative;
-    transition: all .3s ease;
-    right:28px;
+    height: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+    right: 28px;
   }
-} 
-
-
-
+}
 
 //blue arrow list link
 .arrow-links {
-  li:first-child a.link-arrow-blue, article:first-child a.link-arrow-blue {
+  li:first-child a.link-arrow-blue,
+  article:first-child a.link-arrow-blue {
     border-top: 1px solid $darkblue;
   }
   .link-arrow-blue {
-    @include list-link-arrow; 
-      color:$darkblue;
-      border-bottom-color:$darkblue;
-      
-      .link-arrow-icon {
-        border-color:$orange;
-      }
-      .arrow1, .arrow2 {
-        transition: all .3s ease;
-        fill:$orange;
-      }
-      // link hover and focus state
-      &:hover, &:focus {
-        color:$blue;
-        background: $lightestblue;
-        .link-arrow-icon {
-          border-color:$orange;
-          .arrow1, .arrow2 {fill:$orange;}
-        }
-        .link-arrow-icon-svg {right:-10px;}
-      }
-      &:focus {outline: 2px solid $yellow !important;}
+    @include list-link-arrow;
+    color: $darkblue;
+    border-bottom-color: $darkblue;
+
+    .link-arrow-icon {
+      border-color: $orange;
     }
+    .arrow1,
+    .arrow2 {
+      transition: all 0.3s ease;
+      fill: $orange;
+    }
+    // link hover and focus state
+    &:hover,
+    &:focus {
+      color: $blue;
+      background: $lightestblue;
+      .link-arrow-icon {
+        border-color: $orange;
+        .arrow1,
+        .arrow2 {
+          fill: $orange;
+        }
+      }
+      .link-arrow-icon-svg {
+        right: -10px;
+      }
+    }
+    &:focus {
+      outline: 2px solid $yellow !important;
+    }
+  }
 }
 
 @function tint($color, $percentage) {
@@ -704,33 +768,43 @@ faq-section {
 }
 //white arrow list link
 .arrow-links {
-  li:first-child a.link-arrow-white, article:first-child a.link-arrow-white {
-    border-top: 1px solid tint($darkblue, 20%);;
+  li:first-child a.link-arrow-white,
+  article:first-child a.link-arrow-white {
+    border-top: 1px solid tint($darkblue, 20%);
   }
   .link-arrow-white {
-    @include list-link-arrow; 
-      color:$white;
-      border-bottom-color: tint($darkblue, 20%);
-      
-      .link-arrow-icon {
-        border-color:$orange;
-      }
-      .arrow1, .arrow2 {
-        transition: all .3s ease;
-        fill:$orange;
-      }
-      // link hover and focus state
-      &:hover, &:focus {
-        color:$white !important;
-        background: $blue;
-        .link-arrow-icon {
-          border-color:$orange;
-          .arrow1, .arrow2 {fill:$orange;}
-        }
-        .link-arrow-icon-svg {right:-10px;}
-      }
-      &:focus {outline: 2px solid $yellow !important;}
+    @include list-link-arrow;
+    color: $white;
+    border-bottom-color: tint($darkblue, 20%);
+
+    .link-arrow-icon {
+      border-color: $orange;
     }
+    .arrow1,
+    .arrow2 {
+      transition: all 0.3s ease;
+      fill: $orange;
+    }
+    // link hover and focus state
+    &:hover,
+    &:focus {
+      color: $white !important;
+      background: $blue;
+      .link-arrow-icon {
+        border-color: $orange;
+        .arrow1,
+        .arrow2 {
+          fill: $orange;
+        }
+      }
+      .link-arrow-icon-svg {
+        right: -10px;
+      }
+    }
+    &:focus {
+      outline: 2px solid $yellow !important;
+    }
+  }
 }
 
 .btn-link {
@@ -739,10 +813,10 @@ faq-section {
   font-weight: 300;
   color: $darkblue;
   text-decoration: underline;
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
   &:focus {
     outline: 2px solid $yellow;
   }
-} 
+}
