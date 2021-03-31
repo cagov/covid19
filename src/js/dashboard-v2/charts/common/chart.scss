@@ -1,3 +1,5 @@
+
+
 .chart {
     // .bar-label .tick text {
     //   text-transform: capitalize;
@@ -14,6 +16,27 @@
     //   font-weight: 300;
     //   font-size: 0.75rem;
     // }
+    .svg-holder  {
+        g.fg-bars {
+            fill:#deeaf6;
+        }
+        g.fg-line path {
+            fill:none; stroke:#555555; stroke-width: 2.0px;
+        }
+        g.date-axis {
+            line { stroke-width: 0.5px; stroke:black;}
+            text { font-weight:300; font-size: 0.8rem; color:black; text-anchor: middle; dominant-baseline:hanging;}
+        }
+        g.left-y-axis {
+            line { stroke-width: 0.5px; stroke:black; opacity:0.5;}
+            text { font-weight:300; font-size: 1.0rem; color:black; text-anchor: end; dominant-baseline:middle;}
+        }
+        g.right-y-axis {
+            line { stroke-width: 0.5px; stroke:#608cbd; }
+            text { font-weight:300; font-size: 1.0rem; fill:#608cbd; text-anchor:start; dominant-baseline:middle;}
+        }
+    }
+    
     .chart-title {
       font-weight: 400;
       font-size: 0.95rem;
