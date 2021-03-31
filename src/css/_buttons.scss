@@ -417,26 +417,50 @@ button.clear {
   //light blue  arrow link
   .link-arrow-lightblue {
     @include link-arrow; 
-      color:$lightblue !important;
-      .link-arrow-icon {
-        border:2px solid $lightblue;
-      }
-      .arrow1, .arrow2 {
-        transition: all .3s ease;
-        fill:$lightblue;
-      }
-      .pdf-link-icon {display: none;}
-      //link hover and focus state
-      &:hover, &:focus {
-        color:$orange !important;        ;
-        .link-arrow-icon {
-          border-color:$orange; 
-          .arrow1, .arrow2 {fill:$orange;}
-        }
-        .link-arrow-icon-svg {right:-10px;}
-      }
-      &:focus {outline: 2px solid $yellow !important;}
+    color:$lightblue !important;
+    .link-arrow-icon {
+      border:2px solid $lightblue;
     }
+    .arrow1, .arrow2 {
+      transition: all .3s ease;
+      fill:$lightblue;
+    }
+    .pdf-link-icon {display: none;}
+    //link hover and focus state
+    &:hover, &:focus {
+      color:$orange !important;        ;
+      .link-arrow-icon {
+        border-color:$orange; 
+        .arrow1, .arrow2 {fill:$orange;}
+      }
+      .link-arrow-icon-svg {right:-10px;}
+    }
+    &:focus {outline: 2px solid $yellow !important;}
+  }
+
+  //light blue  arrow link
+  .link-arrow-orange {
+    @include link-arrow; 
+    color:$orange !important;
+    .link-arrow-icon {
+      border:2px solid $orange;
+    }
+    .arrow1, .arrow2 {
+      transition: all .3s ease;
+      fill:$orange;
+    }
+    .pdf-link-icon {display: none;}
+    //link hover and focus state
+    &:hover, &:focus {
+      color:$lightblue !important;        ;
+      .link-arrow-icon {
+        border-color:$lightblue; 
+        .arrow1, .arrow2 {fill:$lightblue;}
+      }
+      .link-arrow-icon-svg {right:-10px;}
+    }
+    &:focus {outline: 2px solid $yellow !important;}
+  }  
 
 /* Call to Action Buttons */
 @mixin action-button {
