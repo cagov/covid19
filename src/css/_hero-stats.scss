@@ -101,27 +101,13 @@ hero-stats {
 		margin-bottom: .5rem;
 		text-align: left;
 		font-weight: 900;
+		color: #fff;
 		
 		&-link {
 			text-decoration: none;
 			&:focus {
 				outline: 3px solid $yellow;
-				.hero-headline {
-					&-background {
-						color: $blue;
-					}
-				}
 			}
-		}
-		&-background {
-			background: $white;
-			color: $blue;
-			padding: 0 .2em;
-	    line-height: 1.2;
-			transition: background .6s $slow-curve;
-	    -moz-box-decoration-break: clone;
-	    -webkit-box-decoration-break: clone;
-	    box-decoration-break: clone;
 		}
 	}
 	&-subhead {

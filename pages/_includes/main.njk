@@ -54,11 +54,7 @@ formatNumber(tags,1)-%}
 			<div class="hero-wrap">
 				<div class="hero-text" role="region" aria-labelledby="hero-text">
 					<div class="hero-text-align">				
-						<h1 class="hero-headline m-0 pb-3">
-								<span class="hero-headline-background" id="hero-text">
-									{{varHeroTitle}}
-								</span>
-						</h1>
+						<h1 class="hero-headline m-0 pb-3">{{varHeroTitle}}</h1>
 						<h2 class="hero-subhead m-0 pt-2 pb-3">{{ varHeroP2 }}</h2>
 						
 						<a href="{{ "vaccines/" | toTranslatedPath(tags) }}" class="link-arrow-lightblue justify-content-start">
@@ -285,15 +281,14 @@ formatNumber(tags,1)-%}
 
 
 
-	<!-- FOR BUSINESSES SECTION -->
+<!-- FOR BUSINESSES SECTION -->
 <learn-more-section>
 <section class="faq-twitter">
 	<h2 class="text-center color-purple mt-0">For businesses</h2>
 	<div class="faq-twitter-wrap">
 	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
-        {% set JSONgov = JSONgovraw | jsonparse %}
-        {%- set RowsGov = JSONgov.Table4 -%}
-        {% for item in RowsGov %}
+		{% set JSONgov = JSONgovraw | jsonparse %}
+		{%- for item in  pubData[language.id].commonPageLabels.Table4 %}
 		<div class="faq trigger">
 			<div class="arrow-links">
 			<article>    
