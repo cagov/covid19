@@ -30,7 +30,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         margin: {
           left: 50,
           top: 60,
-          right: 0,
+          right: 50,
           bottom: 20, // 20 added for divider
         },
       },
@@ -41,7 +41,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         margin: {
           left: 50,
           top: 60,
-          right: 0,
+          right: 50,
           bottom: 20, // 20 added for divider
         },
       },
@@ -52,7 +52,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         margin: {
           left: 50,
           top: 60,
-          right: 0,
+          right: 50,
           bottom: 20,
         },
       },
@@ -63,7 +63,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
         margin: {
           left: 50,
           top: 60,
-          right: 0,
+          right: 50,
           bottom: 20,
         },
       },
@@ -72,6 +72,10 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
     this.intFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    );
+    this.float1Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
     );
     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
@@ -189,6 +193,9 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'CONFIRMED_DEATHS_DEATH_DATE',
                                                 'time_series_key_line':'AVG_DEATH_RATE_PER_100K_7_DAYS',
+                                                'left_y_div':0.5,
+                                                'right_y_div':200,
+                                                'root_id':'death-date',
                                               });
         }.bind(this)
       );
