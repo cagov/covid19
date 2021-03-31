@@ -1,4 +1,4 @@
-cagov-chart-dashboard-hospitalized-patients.chart {
+.chart {
     // .bar-label .tick text {
     //   text-transform: capitalize;
     // }
@@ -16,8 +16,22 @@ cagov-chart-dashboard-hospitalized-patients.chart {
     // }
     .chart-title {
       font-weight: 400;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom:0px;
+    }
+    .chart-header {
+      font-weight: 300;
+      font-size: 1.0rem;
+    }
+    .chart-header .big-num {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #103083;
+    }
+    .chart-header .med-num {
+      font-weight: 400;
+      font-size: 1.0rem;
+      color: #103083;
     }
 }
 .d-hide {

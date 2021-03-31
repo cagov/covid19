@@ -6,26 +6,26 @@ import renderChart from "../common/histogram.js";
 import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
-// cagov-chart-dashboard-hospitalized-patients
-class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
+// cagov-chart-dashboard-confirmed-deaths-death-date
+class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardHospitalizedPatients");
+    console.log("Loading CAGovDashboardConfirmedDeathsDeathDate");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
 
     this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-hospitalized-patients',
+      chartName: 'cagov-chart-dashboard-confirmed-deaths-death-date',
       // Data
       dataUrl:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/california.json", // Overwritten by county.
+        config.chartsStateDashTablesLoc + "confirmed-deaths-death-date/california.json", // Overwritten by county.
       dataUrlCounty:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/<county>.json",
+        config.chartsStateDashTablesLoc + "confirmed-deaths-death-date/<county>.json",
 
       desktop: {
         fontSize: 14,
-        width: 420,
+        width: 400,
         height: 300,
         margin: {
           left: 50,
@@ -36,7 +36,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       tablet: {
         fontSize: 14,
-        width: 420,
+        width: 400,
         height: 300,
         margin: {
           left: 50,
@@ -47,7 +47,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       mobile: {
         fontSize: 12,
-        width: 420,
+        width: 400,
         height: 300,
         margin: {
           left: 50,
@@ -58,7 +58,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       },
       retina: {
         fontSize: 12,
-        width: 420,
+        width: 400,
         height: 300,
         margin: {
           left: 50,
@@ -187,9 +187,8 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'HOSPITALIZED_PATIENTS',
-                                                'time_series_key_line':'HOSPITALIZED_PATIENTS_14_DAY_AVG',
-                                                'line_date_offset':-7,
+                                                'time_series_key_bars':'CONFIRMED_DEATHS_DEATH_DATE',
+                                                'time_series_key_line':'AVG_DEATH_RATE_PER_100K_7_DAYS',
                                               });
         }.bind(this)
       );
@@ -197,6 +196,6 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-hospitalized-patients",
-  CAGovDashboardHospitalizedPatients
+  "cagov-chart-dashboard-confirmed-deaths-death-date",
+  CAGovDashboardConfirmedDeathsDeathDate
 );

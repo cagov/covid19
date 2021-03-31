@@ -6,22 +6,22 @@ import renderChart from "../common/histogram.js";
 import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
-// cagov-chart-dashboard-hospitalized-patients
-class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
+// cagov-chart-dashboard-icu-beds
+class CAGovDashboardICUBeds extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardHospitalizedPatients");
+    console.log("Loading CAGovDashboardICUBeds");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
 
     this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-hospitalized-patients',
+      chartName: 'cagov-chart-dashboard-icu-beds',
       // Data
       dataUrl:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/california.json", // Overwritten by county.
+        config.chartsStateDashTablesLoc + "icu-beds/california.json", // Overwritten by county.
       dataUrlCounty:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/<county>.json",
+        config.chartsStateDashTablesLoc + "icu-beds/<county>.json",
 
       desktop: {
         fontSize: 14,
@@ -187,9 +187,10 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'HOSPITALIZED_PATIENTS',
-                                                'time_series_key_line':'HOSPITALIZED_PATIENTS_14_DAY_AVG',
-                                                'line_date_offset':-7,
+                                                'time_series_key_bars':'ICU_BEDS',
+                                                'time_series_key_line':'ICU_BEDS',
+                                                'line_date_offset':0,
+                                                'root_id':'icu_beds',
                                               });
         }.bind(this)
       );
@@ -197,6 +198,6 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-hospitalized-patients",
-  CAGovDashboardHospitalizedPatients
+  "cagov-chart-dashboard-icu-beds",
+  CAGovDashboardICUBeds
 );
