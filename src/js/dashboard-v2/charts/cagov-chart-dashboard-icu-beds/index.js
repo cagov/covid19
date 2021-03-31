@@ -29,9 +29,9 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       tablet: {
@@ -40,9 +40,9 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       mobile: {
@@ -51,9 +51,9 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
       retina: {
@@ -62,9 +62,9 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
     };
@@ -193,6 +193,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
                                                 'root_id':'icu_beds',
                                                 'left_y_div':1000,
                                                 'right_y_div':0,
+                                                'x_axis_legend':'Reported date',
                                               });
         }.bind(this)
       );

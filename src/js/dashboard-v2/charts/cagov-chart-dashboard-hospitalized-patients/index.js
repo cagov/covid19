@@ -29,9 +29,9 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       tablet: {
@@ -40,9 +40,9 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20, // 20 added for divider
+          bottom: 45, // 20 added for divider
         },
       },
       mobile: {
@@ -51,9 +51,9 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
       retina: {
@@ -62,9 +62,9 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
         height: 300,
         margin: {
           left: 50,
-          top: 60,
+          top: 30,
           right: 0,
-          bottom: 20,
+          bottom: 45,
         },
       },
     };
@@ -193,6 +193,8 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
                                                 'left_y_div':5000,
                                                 'right_y_div':0,
                                                 'root_id':'hosp-p',
+                                                'x_axis_legend':'Reported date',
+                                                'line_legend':'14-day average',
                                               });
         }.bind(this)
       );
