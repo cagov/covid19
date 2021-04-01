@@ -2,7 +2,7 @@ import './config/staging.js';
 import '@webcomponents/webcomponentsjs';
 import 'whatwg-fetch';
 import './polyfills/endswith.js';
-// import '@cagov/accordion';
+// import '@cagov/accordion'; the expand/contract svgs aren't displaying properly in this browser
 import './dashboard-v2/async-polyfill.js';
 import './alerts/index.js';
 import './telehealth/index.js';
