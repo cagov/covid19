@@ -11,10 +11,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardTotalTestsTestingDate");
     this.translationsObj = getTranslations(this);
-    // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
-    // Settings and initial values
 
+    // Settings and initial values
     this.chartOptions = {
       chartName: 'cagov-chart-dashboard-total-tests-testing-date',
       // Data
@@ -77,23 +75,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
 
-    this.tooltip = d3
-      .select(this.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -140,7 +122,35 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
-          console.log("Testing",this.chartdata);
+
+          const repDict = {
+            total_tests_performed:this.intFormatter.format(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.total_tests_performed),
+            new_tests_reported:this.intFormatter.format(Math.abs(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported)),
+            new_tests_reported_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported_delta_1_day)),
+          };
+
+          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+
+          this.innerHTML = template(this.translationsObj);
+          this.svg = d3
+            .select(this.querySelector(".svg-holder"))
+            .append("svg")
+            .attr("viewBox", [
+              0,
+              0,
+              this.chartBreakpointValues.width,
+              this.chartBreakpointValues.height,
+            ])
+            .append("g")
+            .attr("transform", "translate(0,0)");
+      
+          this.tooltip = d3
+            .select(this.chartName)
+            .append("div")
+            .attr("class", "tooltip-container")
+            .text("Empty Tooltip");
+            
 
 
 

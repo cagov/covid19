@@ -34,7 +34,6 @@ addtositemap: false
             <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
             <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-            <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
@@ -56,16 +55,16 @@ addtositemap: false
     </div>
 
 
+  
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-total-tests-testing-date class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">Total tests in California</li>
              
-            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-            <li data-label="chartLegend2Increase"><span class="med-num"></span>{CHANGE}</span> more patients ({CHANGE_FACTOR} increase)</li>
-            <li data-label="chartLegend2Decrease"><span class="med-num"></span>{CHANGE}</span> fewer patients ({CHANGE_FACTOR} decrease)</li>
-            <li data-label="averageLabel">14-day average</li>
+            <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} decrease)</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
@@ -76,9 +75,9 @@ addtositemap: false
         <cagov-chart-dashboard-positivity-rate class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">Positivity rate in California</li>
-            <li data-label="chartLegend1">{latest.ICU_AVAILABLE_BEDS.TOTAL} ICU beds available</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} increase from prior day total</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} decrease from prior day total</li>
+            <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> test positivity (7-day rate)</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> increase from 7-days prior</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> decrease from 7-days prior</li>
             <li data-label="tooltipCaption">On {DATE} there was a total of {VALUE} available ICU beds.</li>
           </ul>
         </cagov-chart-dashboard-positivity-rate>               
@@ -101,7 +100,6 @@ addtositemap: false
             <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
             <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
-            <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
