@@ -5094,8 +5094,12 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
     if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      const ONE_DAY_LATER = 1;
-      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER);
+      const theDate = parseSnowflakeDate(this.alldata[this.selectedMetric].cases.REPORT_DATE);
+      let TUESDAY_ADJUSTMENT = 0;
+      if (theDate.getDay() < 2) {
+        TUESDAY_ADJUSTMENT = 2 - theDate.getDay();
+      }
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, TUESDAY_ADJUSTMENT);
     } else {
       this.updateDate = 'Unknown';
     }
