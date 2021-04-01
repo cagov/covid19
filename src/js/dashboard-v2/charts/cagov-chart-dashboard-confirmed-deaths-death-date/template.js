@@ -6,6 +6,9 @@
  */
 export default function template({
   chartTitle = "Confirmed cases by age in California",
+  post_chartLegend1 = "Chart Legend 1",
+  post_chartLegend2 = "Chart Legend 2",
+  post_chartLegend3 = "Chart Legend 3",
   chartDataLabel = null,
 }) {
   return /*html*/ `
@@ -14,9 +17,9 @@ export default function template({
         <div class="mx-auto">
             <div class="chart-title">${chartTitle}</div>
             <div class="chart-header">
-            <div class="header-line"><span class="big-num">X,XXX,XXX</span> total confirmed deaths </div>
-            <div class="header-line"><span class="med-num">XXX</span> new deaths (X.X% increase) </div>
-            <div class="header-line"><span class="med-num">X.X</span> deaths per 100K (7-day average) </div>
+            <div class="header-line">${post_chartLegend1}</div>
+            <div class="header-line">${post_chartLegend2}</div>
+            <div class="header-line">${post_chartLegend3}</div>
             </div>
             <div class="svg-holder"></div>
         </div>

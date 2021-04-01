@@ -62,7 +62,7 @@ function writePendingBlock(svg, data, x, y,
     xgroup.append('text')
       .text(pending_legend)
       .attr("x",x(0))
-      .attr("y",y(max_y_domain)-2);
+      .attr("y",y(max_y_domain)-4);
 }
 
 function writeDateAxis(svg, data, x, y, 
