@@ -11,10 +11,8 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardHospitalizedPatients");
     this.translationsObj = getTranslations(this);
-    // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
-    // Settings and initial values
 
+    // Settings and initial values
     this.chartOptions = {
       chartName: 'cagov-chart-dashboard-hospitalized-patients',
       // Data
@@ -25,47 +23,23 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 420,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 420, height: 300,
+        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
       },
       tablet: {
         fontSize: 14,
-        width: 420,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 420, height: 300,
+        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
       },
       mobile: {
         fontSize: 12,
-        width: 420,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 0,
-          bottom: 45,
-        },
+        width: 420, height: 300,
+        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
       },
       retina: {
         fontSize: 12,
-        width: 420,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 0,
-          bottom: 45,
-        },
+        width: 420, height: 300,
+        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
       },
     };
 
@@ -101,23 +75,6 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
-
-    this.tooltip = d3
-      .select(this.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -165,26 +122,35 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-        //   this.alldata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-        //   this.popdata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
+          const repDict = {
+            TOTAL:this.intFormatter.format(this.chartdata.latest.HOSPITALIZED_PATIENTS.TOTAL),
+            CHANGE:this.intFormatter.format(Math.abs(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE)),
+            CHANGE_FACTOR:this.pctFormatter.format(Math.abs(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE_FACTOR)),
+          };
 
-        //   let publishedDateStr = this.metadata['PUBLISHED_DATE'];
-        //   let publishedDate = parseSnowflakeDate(publishedDateStr);
-        //   let collectedDate = parseSnowflakeDate(publishedDateStr);
-        //   collectedDate.setDate(collectedDate.getDate() - 1);
+          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
 
-        //   let footerReplacementDict = {
-        //     'PUBLISHED_DATE' : reformatJSDate(publishedDate),
-        //     'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
-        //   };
-        //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
-        //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+          this.innerHTML = template(this.translationsObj);
 
-
+          this.svg = d3
+            .select(this.querySelector(".svg-holder"))
+            .append("svg")
+            .attr("viewBox", [
+              0,
+              0,
+              this.chartBreakpointValues.width,
+              this.chartBreakpointValues.height,
+            ])
+            .append("g")
+            .attr("transform", "translate(0,0)");
+      
+          this.tooltip = d3
+            .select(this.chartName)
+            .append("div")
+            .attr("class", "tooltip-container")
+            .text("Empty Tooltip");
+      
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'HOSPITALIZED_PATIENTS',

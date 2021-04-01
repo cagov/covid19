@@ -24,19 +24,19 @@
             fill:none; stroke:#555555; stroke-width: 2.0px;
         }
         g.pending-block {
-            fill:black; opacity:0.1;
-            text { font-weight:300; font-size: 0.8rem; color:black;  }
+            rect { fill:black; opacity:0.15; }
+            text { font-weight:300; font-size: 0.8rem; fill:#c5c5c5;  }
             text {  text-anchor: end; dominant-baseline:auto; }
         }
         g.date-axis {
             line { stroke-width: 0.5px; stroke:black;}
-            text { font-weight:300; font-size: 0.8rem; color:black;  }
+            text { font-weight:300; font-size: 0.8rem; fill:black;  }
             text { text-anchor: middle; dominant-baseline:hanging;}
             text.x-axis-legend { font-weight:300; text-anchor:end; dominant-baseline:auto;  }
         }
         g.left-y-axis {
             line { stroke-width: 0.5px; stroke:black; opacity:0.5;}
-            text { font-weight:400; font-size: 0.9rem; color:black;  } 
+            text { font-weight:400; font-size: 0.9rem; fill:black;  } 
             text { text-anchor: end; dominant-baseline:middle;}
             text.left-y-axis-legend { text-anchor:start; dominant-baseline:hanging;  }
         }
