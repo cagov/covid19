@@ -11,10 +11,8 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardPositivityRate");
     this.translationsObj = getTranslations(this);
-    // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
-    // Settings and initial values
 
+    // Settings and initial values
     this.chartOptions = {
       chartName: 'cagov-chart-dashboard-positivity-rate',
       // Data
@@ -49,7 +47,15 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
     );
-    this.pctFormatter = new Intl.NumberFormat(
+    this.float1Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+    this.float2Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+    );
+     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
     );
@@ -77,23 +83,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
-
-    this.tooltip = d3
-      .select(this.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -141,35 +130,45 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-        //   this.alldata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-        //   this.popdata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
+          const repDict = {
+            test_positivity_7_days:this.pctFormatter.format(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days),
+            test_positivity_7_days_delta_7_days:this.pctFormatter.format(Math.abs(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days_delta_7_days)),
+          };
 
-        //   let publishedDateStr = this.metadata['PUBLISHED_DATE'];
-        //   let publishedDate = parseSnowflakeDate(publishedDateStr);
-        //   let collectedDate = parseSnowflakeDate(publishedDateStr);
-        //   collectedDate.setDate(collectedDate.getDate() - 1);
-
-        //   let footerReplacementDict = {
-        //     'PUBLISHED_DATE' : reformatJSDate(publishedDate),
-        //     'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
-        //   };
-        //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
-        //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
 
 
-        renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
+          this.innerHTML = template(this.translationsObj);
+          this.svg = d3
+            .select(this.querySelector(".svg-holder"))
+            .append("svg")
+            .attr("viewBox", [
+              0,
+              0,
+              this.chartBreakpointValues.width,
+              this.chartBreakpointValues.height,
+            ])
+            .append("g")
+            .attr("transform", "translate(0,0)");
+      
+          this.tooltip = d3
+            .select(this.chartName)
+            .append("div")
+            .attr("class", "tooltip-container")
+            .text("Empty Tooltip");
+      
+
+          renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'TEST_POSITIVITY_RATE_7_DAYS',
+                                                'time_series_key_bars':'TOTAL_TESTS',
                                                 'time_series_key_line':'TEST_POSITIVITY_RATE_7_DAYS',
                                                 'line_date_offset':0,
-                                                'left_y_div':200,
+                                                'left_y_div':.05,
+                                                'left_y_fmt':'pct',
                                                 'right_y_div':100000,
-                                                'root_id':'tests-t',
-                                                'left_y_axis_legend':'Tests per 100K',
+                                                'root_id':'pos-rate',
+                                                'left_y_axis_legend':'Positivity Rate',
                                                 'right_y_axis_legend':'Tests',
                                                 'x_axis_legend':'Testing date',
                                                 'line_legend':'7-day average',
