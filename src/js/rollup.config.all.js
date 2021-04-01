@@ -3,6 +3,7 @@ import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
 import reopening from './roadmap/rollup.config';
+import reopeningAirtableV1 from './roadmap-airtable-v1/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
 import dashboard1 from './dashboard-v1/rollup.config';
@@ -44,6 +45,7 @@ export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
   ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
   ...(shouldIRebuild('/roadmap/', '../../docs/js/roadmap.js') ? [reopening] : []),
+  ...(shouldIRebuild('/roadmap-airtable-v1/', '../../docs/js/roadmap-airtable-v1.js') ? [reopeningAirtableV1] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard-v1/', '../../docs/js/dashboard-v1.js') ? [dashboard1] : []),

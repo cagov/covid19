@@ -10,6 +10,7 @@ let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-ma
 schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
 fs.writeFileSync('./docs/schools-may-reopen.json',JSON.stringify(schoolsArray),'utf8')
 fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+fs.writeFileSync('./docs/reopening-activities-airtable-v1.json',fs.readFileSync('./pages/wordpress-posts/whats-open-airtable-v1.json','utf8'),'utf8')
 // this is temporary, we will get this data from an API:
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
 // this needs to be translated, need to get the translated version from translated page
