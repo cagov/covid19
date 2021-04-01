@@ -3,7 +3,7 @@ import drawBars from "./draw.js";
 import getTranslations from './../../../common/get-strings-list.js';
 import getScreenResizeCharts from './../../../common/get-window-size.js';
 import rtlOverride from "./../../../common/rtl-override.js";
-import { reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -425,8 +425,12 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
     if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      const ONE_DAY_LATER = 1;
-      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER);
+      const theDate = parseSnowflakeDate(this.alldata[this.selectedMetric].cases.REPORT_DATE);
+      let TUESDAY_ADJUSTMENT = 0;
+      if (theDate.getDay() < 2) {
+        TUESDAY_ADJUSTMENT = 2 - theDate.getDay();
+      }
+      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, TUESDAY_ADJUSTMENT);
     } else {
       this.updateDate = 'Unknown';
     }
