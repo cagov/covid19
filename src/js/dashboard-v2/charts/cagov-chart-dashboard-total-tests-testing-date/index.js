@@ -25,47 +25,23 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       tablet: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       mobile: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       retina: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
     };
 
@@ -164,32 +140,24 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
+          console.log("Testing",this.chartdata);
 
-        //   this.alldata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-        //   this.popdata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-
-        //   let publishedDateStr = this.metadata['PUBLISHED_DATE'];
-        //   let publishedDate = parseSnowflakeDate(publishedDateStr);
-        //   let collectedDate = parseSnowflakeDate(publishedDateStr);
-        //   collectedDate.setDate(collectedDate.getDate() - 1);
-
-        //   let footerReplacementDict = {
-        //     'PUBLISHED_DATE' : reformatJSDate(publishedDate),
-        //     'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
-        //   };
-        //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
-        //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
 
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'HOSPITALIZED_PATIENTS',
-                                                'time_series_key_line':'HOSPITALIZED_PATIENTS_14_DAY_AVG',
+                                                'time_series_key_bars':'TOTAL_TESTS',
+                                                'time_series_key_line':'AVG_TEST_RATE_PER_100K_7_DAYS',
                                                 'line_date_offset':0,
+                                                'left_y_div':200,
+                                                'right_y_div':100000,
+                                                'root_id':'tests-t',
+                                                'left_y_axis_legend':'Tests per 100K',
+                                                'right_y_axis_legend':'Tests',
+                                                'x_axis_legend':'Testing date',
+                                                'line_legend':'7-day average',
+                                                'pending_date':this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.TESTING_UNCERTAINTY_PERIOD,
+                                                'pending_legend':'Pending',
                                               });
         }.bind(this)
       );
