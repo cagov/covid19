@@ -11,6 +11,18 @@ addtositemap: false
 <p>All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical.</p>
 
 
+<h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
+
+
+
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+  <div class="js-toggle-county-container d-none">
+    <div class="large-tabs">
+      <button class="large-tab js-toggle-county county d-none">Alameda</button>
+      <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+    </div>
+  </div>
+</div>
 
 <!-- <cagov-county-search></cagov-county-search> testing -->
 
@@ -61,6 +73,77 @@ addtositemap: false
       </div> 
     </div>
 
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-total-tests-testing-date class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Total tests in California</li>
+             
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
+            <li data-label="chartLegend2Increase"><span class="med-num"></span>{CHANGE}</span> more patients ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num"></span>{CHANGE}</span> fewer patients ({CHANGE_FACTOR} decrease)</li>
+            <li data-label="averageLabel">14-day average</li>
+            <li data-label="tooltipLegend1">Reported date:</li>
+            <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
+            <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
+          </ul>
+        </cagov-chart-dashboard-total-tests-testing-date>                
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-positivity-rate class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Positivity rate in California</li>
+            <li data-label="chartLegend1">{latest.ICU_AVAILABLE_BEDS.TOTAL} ICU beds available</li>
+            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} increase from prior day total</li>
+            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} decrease from prior day total</li>
+            <li data-label="tooltipCaption">On {DATE} there was a total of {VALUE} available ICU beds.</li>
+          </ul>
+        </cagov-chart-dashboard-positivity-rate>               
+      </div> 
+    </div>
+
+
+
+<div id="hospital-graph" class="toggle-group-element">
+  <div id="hospitalChartContainer">
+    <!-- <div class="mx-auto">
+      <p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
+    </div> -->
+    <!-- <div class="tableauPlaceholder"></div> -->
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-hospitalized-patients class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">COVID-19 hospitalized patients in California</li>
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
+            <li data-label="averageLabel">14-day average</li>
+            <li data-label="tooltipLegend1">Reported date:</li>
+            <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
+            <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
+          </ul>
+        </cagov-chart-dashboard-hospitalized-patients>                
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-icu-beds class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">ICU beds in California</li>
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds from prior day total ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds from prior day total ({CHANGE_FACTOR} decrease)</li>
+            <li data-label="tooltipCaption">On {DATE} there was a total of {VALUE} available ICU beds.</li>
+          </ul>
+        </cagov-chart-dashboard-icu-beds>               
+      </div> 
+    </div>
+    <p class="small-text chart-footer-caption">lambda footer text epsilon</p>
+  </div>
+
+</div>
+
+</div>
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
