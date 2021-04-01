@@ -2,9 +2,9 @@
   "Table1": [
     {
       "0": "Amusement parks",
-      "1": "Larger parks open with modifications<br>– 25% capacity<br>– Reservations or advanced tickets required",
-      "2": "Smaller parks open with modifications<br>– 25% capacity or 500 people, whichever is fewer<br>– Outdoor attractions only<br>– In-county visitors only<br>– Reservations or advance tickets required",
-      "3": "Closed",
+      "1": "Can open with modifications<br>– Max capacity 35%<br>– Indoor spaces max 25% capacity<br>– In-state visitors only",
+      "2": "Can open with modifications<br>– Max capacity 25%<br>– Indoor spaces max 25% capacity<br>– In-state visitors only",
+      "3": "Can open with modifications<br>– Max capacity 15%<br>– Small groups only, max 10 people or 3 households with no intergroup mixing<br>– Indoor spaces max 15% capacity<br>– No indoor dining<br>– In-state visitors only",
       "4": "Closed",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#theme-parks”&gt;Amusement parks and theme parks&lt;/a&gt;",
       "6": "Closed"
@@ -514,6 +514,15 @@
       "6": "Closed"
     },
     {
+      "0": "Live performances",
+      "1": "Can open outdoors only with modifications<br>– Max capacity 67%, including suites<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– Restricted concessions and dining",
+      "2": "Can open outdoors only with modifications<br>– Max capacity 33%, including suites<br>– Max capacity of 67% with negative test result or proof of full vaccination<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– Restricted concessions and dining",
+      "3": "Can open outdoors only with modifications<br>– Max capacity 20%<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– In-seat concessions, no concourse sales",
+      "4": "Can open outdoors only with modifications<br>– Max capacity 100 people<br>– Reserved seats only<br>– Advanced ticket sales only<br>– Regional attendees only (within 120 miles)<br>– No concessions or concourse sales",
+      "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#live-performances”&gt;Live events and performances&lt;/a&gt;",
+      "6": ""
+    },
+    {
       "0": "Massage therapy studios",
       "1": "Can open indoors with modifications",
       "2": "Can open indoors with modifications",
@@ -659,11 +668,11 @@
     },
     {
       "0": "Professional sports",
-      "1": "Can open with modifications<br>– Permanent venues with live audiences outdoors only<br>– Max 25% capacity<br>– Regional attendees only (within 120 miles)<br>– Reservations required<br>– Assigned seating only<br>– In-seat concessions only (no concourse sales)",
-      "2": "Can open with modifications<br>– Permanent venues with live audiences outdoors only<br>– Max 20% capacity<br>– Regional attendees only (within 120 miles)<br>– Reservations required<br>– Assigned seating only<br>– In-seat concessions only (no concourse sales)",
-      "3": "Can open with modifications<br>– No live audiences",
-      "4": "Can open with modifications<br>– No live audiences",
-      "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#pro-sports”&gt;Professional sports&lt;/a&gt;",
+      "1": "Can open outdoors only with modifications<br>– Max capacity 67%, including suites<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– Restricted concessions and dining",
+      "2": "Can open outdoors only with modifications<br>– Max capacity 33%, including suites<br>– Max capacity of 67% with negative test result or proof of full vaccination<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– Restricted concessions and dining",
+      "3": "Can open outdoors only with modifications<br>– Max capacity 20%<br>– Suite max capacity 25%<br>– In-state attendees only<br>– Advanced reservations only<br>– In-seat concessions, no concourse sales",
+      "4": "Can open outdoors only with modifications<br>– Max capacity 100 people<br>– Reserved seats only<br>– Regional attendees only (within 120 miles)<br>– No concessions or concourse sales",
+      "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#live-performances”&gt;Live events and performances&lt;/a&gt;",
       "6": "Can open with modifications<br>– No live audience"
     },
     {
