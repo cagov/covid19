@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Charts Sandbox (test page)"
 meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Confirmed cases in California {total_confirmed_cases} total confirmed cases {new_cases} new cases ({new_cases_delta_1_day} increase) {new_cases} new cases ({new_cases_delta_1_day} decrease) {cases_per_100k_7_days} cases per 100K (7-day average) 14-day average Reported date: Total hospitalized COVID-19 patients: 14-day average [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-01T05:56:56Z"
+publishdate: "2021-04-01T22:47:51Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -45,8 +45,8 @@ addtositemap: false
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
           </ul>
-        </cagov-chart-dashboard-confirmed-cases-episode->                
-      </div>
+                        
+      </cagov-chart-dashboard-confirmed-cases-episode-date></div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-confirmed-deaths-death-date class="chart">
           <ul class="d-none">
@@ -69,8 +69,8 @@ addtositemap: false
             <li data-label="chartTitle">Total tests in California</li>
              
             <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-            <li data-label="chartLegend2Increase"><span class="med-num"></span>{CHANGE}</span> more patients ({CHANGE_FACTOR} increase)</li>
-            <li data-label="chartLegend2Decrease"><span class="med-num"></span>{CHANGE}</span> fewer patients ({CHANGE_FACTOR} decrease)</li>
+            <li data-label="chartLegend2Increase"><span class="med-num"></span>{CHANGE} more patients ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num"></span>{CHANGE} fewer patients ({CHANGE_FACTOR} decrease)</li>
             <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
