@@ -12,7 +12,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     console.log("Loading CAGovDashboardConfirmedCasesEpisodeDate");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
     // Settings and initial values
 
     this.chartOptions = {
@@ -25,47 +24,23 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       tablet: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       mobile: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       retina: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
     };
 
@@ -105,23 +80,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
-
-    this.tooltip = d3
-      .select(this.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -168,6 +126,37 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
+          const repDict = {
+            total_confirmed_cases:this.intFormatter.format(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.total_confirmed_cases),
+            new_cases:this.intFormatter.format(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.new_cases),
+            new_cases_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.new_cases_delta_1_day)),
+            cases_per_100k_7_days:this.float1Formatter.format(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.cases_per_100k_7_days),
+          };
+
+          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
+
+          this.innerHTML = template(this.translationsObj);
+
+          this.svg = d3
+          .select(this.querySelector(".svg-holder"))
+          .append("svg")
+          .attr("viewBox", [
+            0,
+            0,
+            this.chartBreakpointValues.width,
+            this.chartBreakpointValues.height,
+          ])
+          .append("g")
+          .attr("transform", "translate(0,0)");
+    
+        this.tooltip = d3
+          .select(this.chartName)
+          .append("div")
+          .attr("class", "tooltip-container")
+          .text("Empty Tooltip");
+    
 
         //   this.alldata.forEach(rec => {
         //     rec.METRIC_VALUE /= 100.0;
