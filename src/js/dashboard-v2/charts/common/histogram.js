@@ -152,7 +152,7 @@ function writeLeftYAxis(svg, data, x, y,
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const max_x_domain = x.domain()[1];
-  console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
+  // console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
   const tick_left_gap = 10;
   let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
   for (let yi = 0; yi < max_y_domain; yi += y_div) {
