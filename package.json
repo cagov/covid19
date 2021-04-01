@@ -59,7 +59,6 @@
   },
   "scripts": {
     "devserver": "web-dev-server --root-dir docs/",
-    "preinstall": "npx npm-force-resolutions@0.0.3",
     "dev": "cross-env NODE_ENV=development npm run start",
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
