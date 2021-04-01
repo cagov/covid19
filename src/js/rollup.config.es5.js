@@ -36,7 +36,7 @@ export default {
           {
             modules: false,
             targets: {
-              browsers: '> 1%'
+              browsers: '> 0.5%'
             }
           }
         ]
