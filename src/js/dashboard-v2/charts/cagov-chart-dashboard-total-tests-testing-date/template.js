@@ -6,7 +6,8 @@
  */
 export default function template({
   chartTitle = "Confirmed cases by age in California",
-  chartDataLabel = null,
+  post_chartLegend1 = 'Legend 1',
+  post_chartLegend2 = 'Legend 2',
 }) {
   return /*html*/ `
     <div class="py-2">
@@ -14,8 +15,8 @@ export default function template({
         <div class="mx-auto">
             <div class="chart-title">${chartTitle}</div>
             <div class="chart-header">
-            <div class="header-line"><span class="big-num">3,568,426</span> total tests performed </div>
-            <div class="header-line"><span class="med-num">1,962</span> new tests reported (0.1% increase) </div>
+            <div class="header-line">${post_chartLegend1}</div>
+            <div class="header-line">${post_chartLegend2}</div>
             </div>
             <div class="svg-holder"></div>
         </div>
