@@ -1,6 +1,6 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { rootID='barid' }) {
+function writeLine(svg, data, x, y, { root_id='barid' }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
@@ -15,7 +15,7 @@ function writeLine(svg, data, x, y, { rootID='barid' }) {
         );
 }
 
- function writeBars(svg, data, x, y, { rootID='barid' }) {
+ function writeBars(svg, data, x, y, { root_id='barid' }) {
     let groups = svg.append("g")
       .attr("class","fg-bars")
       .selectAll("g")
@@ -30,14 +30,14 @@ function writeLine(svg, data, x, y, { rootID='barid' }) {
         .attr("y", d => y(d.VALUE))
         .attr("width", 2)
         .attr("height", d => (y(0) - y(d.VALUE)))
-        .attr("id", (d, i) => rootID+'-'+i);
+        .attr("id", (d, i) => root_id+'-'+i);
 }
 
 
 function writePendingBlock(svg, data, x, y,
   { pending_date=null,
     pending_legend=null,
-    rootID='barid'} ) {
+    root_id='barid'} ) {
     let xgroup = svg.append("g")
       .attr("class",'pending-block');
 
@@ -68,7 +68,7 @@ function writePendingBlock(svg, data, x, y,
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
     month_modulo=3,
-    rootID='barid'} ) {
+    root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 2;
@@ -103,30 +103,60 @@ function writeDateAxis(svg, data, x, y,
     .attr("x", this.dimensions.width)
     .attr("y", this.dimensions.height-4) // +this.getYOffset(i)
   }
+}
 
+// Formatter Factory
+function getFormatter(max_v,{hint='num',digits=0})
+{
+  if (hint == 'pct') {
+    const digits = max_v < .01? 2 : max_v < .1? 1 : 0;
+    const fmtr = new Intl.NumberFormat(
+        "us",  { style: "percent", minimumFractionDigits: digits, maximumFractionDigits: digits }    );
+        return fmtr.format;
+  } else {
+    // assume num
+    if (max_v < 1000) {
+      const digits = max_v < .1? 2 : max_v < 10? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return fmtr.format;
+    } else if (max_v < 1000000) {
+      const digits = max_v < 4000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000)+"K";
+      };
+    } else if (max_v < 1000000000) {
+      const digits = max_v < 4000000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000000)+"M";
+      };
+      
+    } else {
+      const digits = max_v < 4000000000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000)+"M";
+      };
+    }
+  }
 }
 
 function writeLeftYAxis(svg, data, x, y, 
                         { y_div=20, 
                           y_axis_legend=null,
-                          rootID='barid' }) {
+                          left_y_fmt='num',
+                          root_id='barid' }) {
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const max_x_domain = x.domain()[1];
+  console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
   const tick_left_gap = 10;
+  let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
   for (let yi = 0; yi < max_y_domain; yi += y_div) {
-    let y_caption = '';
-    if (max_y_domain < 10) {
-      y_caption = this.float1Formatter.format(yi);
-    } else if (max_y_domain < 1000) {
-      y_caption = this.intFormatter.format(yi);
-    } else if (max_y_domain < 1000000) {
-      y_caption = this.intFormatter.format(yi/1000) + "K";
-    } else {
-      y_caption = this.intFormatter.format(yi/1000000) + "M";
-    }
+    let y_caption = myFormatter(yi);
     let subg = ygroup.append("g")
       .attr('class','y-tick');
 
@@ -153,7 +183,8 @@ function writeLeftYAxis(svg, data, x, y,
 function writeRightYAxis(svg, data, x, y, 
                         { y_div=20, 
                           y_axis_legend=null,
-                          rootID='barid' }) {
+                          right_y_fmt='num',
+                          root_id='barid' }) {
   let ygroup = svg.append("g")
       .attr("class",'right-y-axis');
   const max_y_domain = y.domain()[1];
@@ -161,19 +192,12 @@ function writeRightYAxis(svg, data, x, y,
   const tick_left_gap = 10;
   const tick_right_gap = 24;
 
-  // console.log("Drawing Right Axis  max_y_domain",max_y_domain,rootID);
+  // console.log("Drawing Right Axis  max_y_domain",max_y_domain,root_id);
+  let myFormatter = getFormatter(max_y_domain, { hint:right_y_fmt });
 
   for (let yi = 0; yi < max_y_domain; yi += y_div) {
-    let y_caption = '';
-    if (max_y_domain < 10) {
-      y_caption = this.float1Formatter.format(yi);
-    } else if (max_y_domain < 1000) {
-      y_caption = this.intFormatter.format(yi);
-    } else if (max_y_domain < 1000000) {
-      y_caption = this.intFormatter.format(yi/1000) + "K";
-    } else {
-      y_caption = this.intFormatter.format(yi/1000000) + "M";
-    }
+    let y_caption = myFormatter(yi);
+
     let subg = ygroup.append("g")
       .attr('class','y-tick');
 
@@ -209,7 +233,9 @@ function writeRightYAxis(svg, data, x, y,
     time_series_key_line = null,
     line_date_offset = 0,
     left_y_div = 1000,
+    left_y_fmt = 'num',
     right_y_div = 0,
+    right_y_fmt = 'num',
     left_y_axis_legend = null,
     right_y_axis_legend = null,
     line_legend = null,
@@ -311,16 +337,16 @@ function writeRightYAxis(svg, data, x, y,
     // Write Y Axis, favoring line on left, bars on right
     if (time_series_key_line) {
       writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline,
-         {y_div:left_y_div, y_axis_legend: left_y_axis_legend, root_id:root_id});
+         {y_div:left_y_div, y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
       if (time_series_key_bars) {
         if (right_y_div) {
           writeRightYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
-              {y_div:right_y_div, y_axis_legend: right_y_axis_legend, root_id:root_id});
+              {y_div:right_y_div, y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
         }
       }
     } else if (time_series_key_bars) {
       writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
-          { y_div:left_y_div, y_axis_legend: left_y_axis_legend, root_id:root_id});
+          { y_div:left_y_div, y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
     }
 
     // writeLegend.call(this, this.svg, data, this.xbars, this.y, baselineData);

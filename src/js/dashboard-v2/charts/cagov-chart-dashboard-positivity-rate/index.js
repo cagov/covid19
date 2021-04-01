@@ -49,7 +49,15 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
     );
-    this.pctFormatter = new Intl.NumberFormat(
+    this.float1Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+    this.float2Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+    );
+     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
     );
@@ -163,13 +171,14 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'TEST_POSITIVITY_RATE_7_DAYS',
+                                                'time_series_key_bars':'TOTAL_TESTS',
                                                 'time_series_key_line':'TEST_POSITIVITY_RATE_7_DAYS',
                                                 'line_date_offset':0,
-                                                'left_y_div':200,
+                                                'left_y_div':.05,
+                                                'left_y_fmt':'pct',
                                                 'right_y_div':100000,
-                                                'root_id':'tests-t',
-                                                'left_y_axis_legend':'Tests per 100K',
+                                                'root_id':'pos-rate',
+                                                'left_y_axis_legend':'Positivity Rate',
                                                 'right_y_axis_legend':'Tests',
                                                 'x_axis_legend':'Testing date',
                                                 'line_legend':'7-day average',
