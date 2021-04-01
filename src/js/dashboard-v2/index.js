@@ -116,6 +116,7 @@ const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv
 
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
+if ( divElement) {
 if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; countyMapChartHeight = 560;} 
   else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) { chartWidth2 = 750; countyMapChartHeight = 660;} 
@@ -124,34 +125,35 @@ if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 5
   else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; } 
   else { chartWidth2 = 350; countyMapChartHeight = 660; }
 
-// jbum overriding chartWidth3
-// chartWidth3 = Math.min(Math.max(275, divElement.offsetWidth-132), 900);
+  // jbum overriding chartWidth3
+  // chartWidth3 = Math.min(Math.max(275, divElement.offsetWidth-132), 900);
 
-// let chartHeight3 = Math.floor(3*chartWidth3/4);
-// if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
-//   chartHeight3 = Math.floor(Math.max(450,chartWidth3)*3/2);
-// }
+  // let chartHeight3 = Math.floor(3*chartWidth3/4);
+  // if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
+  //   chartHeight3 = Math.floor(Math.max(450,chartWidth3)*3/2);
+  // }
 
-/* phone */
-if(window.innerWidth < 700) {
-  topChartHeights1 = 930;
-  //countyMapChartHeight = 560;
-  chartWidth = window.innerWidth - 30;
-  //chartWidth2 = chartWidth;
-}
-/* small tablet */
-else if (window.innerWidth > 700 && window.innerWidth < 918) {
-  topChartHeights1 = 930;
-  //countyMapChartHeight = 560;
-  chartWidth = 700;
- // chartWidth2 = chartW920idth;
-}
-/* big tablet */
-else if (window.innerWidth > 919 && window.innerWidth < 1200) {
-  topChartHeights1 = 600;
-  //countyMapChartHeight = 560;
-  chartWidth = 800;
- // chartWidth2 = 920;
+  /* phone */
+  if(window.innerWidth < 700) {
+    topChartHeights1 = 930;
+    //countyMapChartHeight = 560;
+    chartWidth = window.innerWidth - 30;
+    //chartWidth2 = chartWidth;
+  }
+  /* small tablet */
+  else if (window.innerWidth > 700 && window.innerWidth < 918) {
+    topChartHeights1 = 930;
+    //countyMapChartHeight = 560;
+    chartWidth = 700;
+  // chartWidth2 = chartW920idth;
+  }
+  /* big tablet */
+  else if (window.innerWidth > 919 && window.innerWidth < 1200) {
+    topChartHeights1 = 600;
+    //countyMapChartHeight = 560;
+    chartWidth = 800;
+  // chartWidth2 = 920;
+  }
 }
 
 async function setupCharts() {
