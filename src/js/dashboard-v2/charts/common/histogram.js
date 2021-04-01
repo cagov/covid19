@@ -67,6 +67,7 @@ function writePendingBlock(svg, data, x, y,
 
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
+    month_modulo=3,
     rootID='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
@@ -77,7 +78,7 @@ function writeDateAxis(svg, data, x, y,
   data.forEach((d,i) => {
     const ymd = d.DATE.split('-');
     const mon_idx = parseInt(ymd[1]);
-    if ((mon_idx-3) % 3 == 0) {
+    if (mon_idx % month_modulo == 0) {
       const day_idx = parseInt(ymd[2]);
       if (day_idx == 1) {
         const date_caption = mon_idx+'/1'; // ?? localize
@@ -158,7 +159,7 @@ function writeRightYAxis(svg, data, x, y,
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const tick_left_gap = 10;
-  const tick_right_gap = 30;
+  const tick_right_gap = 24;
 
   // console.log("Drawing Right Axis  max_y_domain",max_y_domain,rootID);
 
@@ -215,6 +216,7 @@ function writeRightYAxis(svg, data, x, y,
     x_axis_legend = null,
     pending_date = null,
     pending_legend = null,
+    month_modulo = 3,
     root_id = "barid" } )  {
     // // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
     // let categories = data.map((group) => group.CATEGORY);
@@ -301,10 +303,10 @@ function writeRightYAxis(svg, data, x, y,
 
     if (time_series_key_bars) {
       writeDateAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars,
-          {x_axis_legend:x_axis_legend, root_id:root_id} );
+          {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
     } else if (time_series_key_line) {
       writeDateAxis.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline,
-        {x_axis_legend:x_axis_legend, root_id:root_id} );
+        {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
     }
     // Write Y Axis, favoring line on left, bars on right
     if (time_series_key_line) {

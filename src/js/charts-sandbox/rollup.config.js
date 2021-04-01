@@ -7,17 +7,17 @@ const defaultConfig = {
   equityChartsSampleDataLoc: 'https://files.covid19.ca.gov/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://files.covid19.ca.gov/data/vaccine-equity/',
   chartsVHPIDataLoc: 'https://files.covid19.ca.gov/data/vaccine-hpi/v2/',
-  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/state-dashboard/',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-equity/',
   chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-hpi/v2/',
-  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/state-dashboard/',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
 }
 
-const devOutputPath = 'docs/js/chartssandbox.js';
-const prodOutputPath = 'pages/_buildoutput/chartssandbox.js';
+const devOutputPath = 'docs/js/charts-sandbox.js';
+const prodOutputPath = 'pages/_buildoutput/charts-sandbox.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 

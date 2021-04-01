@@ -161,6 +161,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
                                                 'root_id':'hosp-p',
                                                 'x_axis_legend':'Reported date',
                                                 'line_legend':'14-day average',
+                                                'month_modulo':2,
                                               });
         }.bind(this)
       );
