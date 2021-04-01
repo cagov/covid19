@@ -11,10 +11,8 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardConfirmedDeathsDeathDate");
     this.translationsObj = getTranslations(this);
-    // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
-    // Settings and initial values
 
+    // Settings and initial values
     this.chartOptions = {
       chartName: 'cagov-chart-dashboard-confirmed-deaths-death-date',
       // Data
@@ -25,47 +23,23 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,        height: 300,
+        margin: { left: 50, top: 30,  right: 60,  bottom: 45  },
       },
       tablet: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,        height: 300,
+        margin: { left: 50, top: 30,  right: 60,  bottom: 45  },
       },
       mobile: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45,
-        },
+        width: 400,        height: 300,
+        margin: { left: 50, top: 30,  right: 60,  bottom: 45  },
       },
       retina: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 30,
-          right: 60,
-          bottom: 45,
-        },
+        width: 400,        height: 300,
+        margin: { left: 50, top: 30,  right: 60,  bottom: 45  },
       },
     };
 
@@ -76,6 +50,10 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
     this.float1Formatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+    this.float2Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
     );
     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
@@ -105,23 +83,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
 
-    this.tooltip = d3
-      .select(this.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
@@ -169,25 +131,36 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-        //   this.alldata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-        //   this.popdata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
+          const repDict = {
+            total_confirmed_deaths:this.intFormatter.format(this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.total_confirmed_deaths),
+            new_deaths:this.intFormatter.format(this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.new_deaths),
+            new_deaths_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.new_deaths_delta_1_day)),
+            deaths_per_100k_7_days:this.float2Formatter.format(this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.deaths_per_100k_7_days),
+          };
 
-        //   let publishedDateStr = this.metadata['PUBLISHED_DATE'];
-        //   let publishedDate = parseSnowflakeDate(publishedDateStr);
-        //   let collectedDate = parseSnowflakeDate(publishedDateStr);
-        //   collectedDate.setDate(collectedDate.getDate() - 1);
+          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
 
-        //   let footerReplacementDict = {
-        //     'PUBLISHED_DATE' : reformatJSDate(publishedDate),
-        //     'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
-        //   };
-        //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
-        //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
-
+          // console.log("Translations obj",this.translationsObj);
+          this.innerHTML = template(this.translationsObj);
+          this.svg = d3
+            .select(this.querySelector(".svg-holder"))
+            .append("svg")
+            .attr("viewBox", [
+              0,
+              0,
+              this.chartBreakpointValues.width,
+              this.chartBreakpointValues.height,
+            ])
+            .append("g")
+            .attr("transform", "translate(0,0)");
+      
+          this.tooltip = d3
+            .select(this.chartName)
+            .append("div")
+            .attr("class", "tooltip-container")
+            .text("Empty Tooltip");
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,

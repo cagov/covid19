@@ -25,15 +25,15 @@ addtositemap: false
 </div>
 
 <div class="container">
-
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-confirmed-cases-episode-date class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">Confirmed cases in California</li>
-            <li data-label="chartLegend1">{latest.HOSPITALIZED_PATIENTS.TOTAL} COVID-19 hospitalized patients</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} more hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} increase</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} fewer hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} decrease</li>
+            <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
+            <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
             <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
@@ -45,9 +45,10 @@ addtositemap: false
         <cagov-chart-dashboard-confirmed-deaths-death-date class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">Confirmed deaths in California</li>
-            <li data-label="chartLegend1">{latest.ICU_AVAILABLE_BEDS.TOTAL} ICU beds available</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} increase from prior day total</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} decrease from prior day total</li>
+            <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} decrease)</li>
+            <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
             <li data-label="tooltipCaption">On {DATE} there was a total of {VALUE} available ICU beds.</li>
           </ul>
         </cagov-chart-dashboard-confirmed-deaths-death-date>               
@@ -60,9 +61,10 @@ addtositemap: false
         <cagov-chart-dashboard-total-tests-testing-date class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">Total tests in California</li>
-            <li data-label="chartLegend1">{latest.HOSPITALIZED_PATIENTS.TOTAL} COVID-19 hospitalized patients</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} more hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} increase</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} fewer hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} decrease</li>
+             
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
+            <li data-label="chartLegend2Increase"><span class="med-num"></span>{CHANGE}</span> more patients ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num"></span>{CHANGE}</span> fewer patients ({CHANGE_FACTOR} decrease)</li>
             <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
@@ -96,9 +98,9 @@ addtositemap: false
         <cagov-chart-dashboard-hospitalized-patients class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">COVID-19 hospitalized patients in California</li>
-            <li data-label="chartLegend1">{latest.HOSPITALIZED_PATIENTS.TOTAL} COVID-19 hospitalized patients</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} more hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} increase</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} fewer hospitalized patients {ABS_PCT_latest.CHANGE_FACTOR} decrease</li>
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
             <li data-label="averageLabel">14-day average</li>
             <li data-label="tooltipLegend1">Reported date:</li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
@@ -110,9 +112,9 @@ addtositemap: false
         <cagov-chart-dashboard-icu-beds class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">ICU beds in California</li>
-            <li data-label="chartLegend1">{latest.ICU_AVAILABLE_BEDS.TOTAL} ICU beds available</li>
-            <li data-label="chartLegend2Increase">{ABS_latest.CHANGE} increase from prior day total</li>
-            <li data-label="chartLegend2Decrease">{ABS_latest.CHANGE} decrease from prior day total</li>
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds from prior day total ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds from prior day total ({CHANGE_FACTOR} decrease)</li>
             <li data-label="tooltipCaption">On {DATE} there was a total of {VALUE} available ICU beds.</li>
           </ul>
         </cagov-chart-dashboard-icu-beds>               
