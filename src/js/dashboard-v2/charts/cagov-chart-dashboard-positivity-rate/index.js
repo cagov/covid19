@@ -25,47 +25,23 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
 
       desktop: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       tablet: {
         fontSize: 14,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45, // 20 added for divider
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       mobile: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
       retina: {
         fontSize: 12,
-        width: 400,
-        height: 300,
-        margin: {
-          left: 50,
-          top: 60,
-          right: 0,
-          bottom: 45,
-        },
+        width: 400,     height: 300,
+        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
     };
 
@@ -187,9 +163,18 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'HOSPITALIZED_PATIENTS',
-                                                'time_series_key_line':'HOSPITALIZED_PATIENTS_14_DAY_AVG',
+                                                'time_series_key_bars':'TEST_POSITIVITY_RATE_7_DAYS',
+                                                'time_series_key_line':'TEST_POSITIVITY_RATE_7_DAYS',
                                                 'line_date_offset':0,
+                                                'left_y_div':200,
+                                                'right_y_div':100000,
+                                                'root_id':'tests-t',
+                                                'left_y_axis_legend':'Tests per 100K',
+                                                'right_y_axis_legend':'Tests',
+                                                'x_axis_legend':'Testing date',
+                                                'line_legend':'7-day average',
+                                                'pending_date':this.chartdata.latest.POSITIVITY_RATE.TESTING_UNCERTAINTY_PERIOD,
+                                                'pending_legend':'Pending',
                                               });
         }.bind(this)
       );
