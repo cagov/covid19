@@ -34,11 +34,11 @@ addtositemap: false
             <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
             <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-            <li data-label="tooltipContent"><table class="tooltip-content">
-                                              <tr><td>Episode Date:</td><td>{DATE}</td></tr>
-                                              <tr><td>7-day average case rate per 100K:</td><td>{7DAY_AVERAGE}</td></tr>
-                                              <tr><td>Cases:</td><td>{CASES}</td></tr>
-                                            </table></li>
+            <li data-label="tooltipContent">
+                    Episode Date: <b>{DATE}</b><br>
+                    7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+                    Cases: <b>{CASES}</b>
+            </li>
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
           </ul>
@@ -52,11 +52,11 @@ addtositemap: false
             <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} decrease)</li>
             <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
-            <li data-label="tooltipContent"><table class="tooltip-content">
-              <tr><td>Death Date:</td><td>{DATE}</td></tr>
-              <tr><td>7-day average death rate per 100K:</td><td>{7DAY_AVERAGE}</td></tr>
-              <tr><td>Deaths:</td><td>{DEATHS}</td></tr>
-            </table></li>
+            <li data-label="tooltipContent">
+              Death Date: <b>{DATE}</b><br>
+              7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+              Deaths: <b>{DEATHS}</b>
+            </li>
           </ul>
         </cagov-chart-dashboard-confirmed-deaths-death-date>               
       </div> 
@@ -73,11 +73,11 @@ addtositemap: false
             <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
             <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} decrease)</li>
-            <li data-label="tooltipContent"><table class="tooltip-content">
-              <tr><td>Testing Date:</td><td>{DATE}</td></tr>
-              <tr><td>7-day average test rate per 100K:</td><td>{7DAY_AVERAGE}</td></tr>
-              <tr><td>Total Tests:</td><td>{TOTAL_TESTS}</td></tr>
-            </table></li>
+            <li data-label="tooltipContent">
+              Testing Date: <b>{DATE} </b><br>
+              7-day average test rate per 100K: <b>{7DAY_AVERAGE} </b><br>
+              Total Tests: <b>{TOTAL_TESTS} </b>
+            </li>
           </ul>
         </cagov-chart-dashboard-total-tests-testing-date>                
       </div>
@@ -88,11 +88,11 @@ addtositemap: false
             <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> test positivity (7-day rate)</li>
             <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> increase from 7-days prior</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> decrease from 7-days prior</li>
-            <li data-label="tooltipContent"><table class="tooltip-content">
-              <tr><td>Testing Date:</td><td>{DATE}</td></tr>
-              <tr><td>7-day positivity rate:</td><td>{7DAY_POSRATE}</td></tr>
-              <tr><td>Total Tests:</td><td>{TOTAL_TESTS}</td></tr>
-            </table></li>
+            <li data-label="tooltipContent">
+              Testing Date: <b>{DATE} </b><br>
+              7-day positivity rate: <b>{7DAY_POSRATE} </b><br>
+              Total Tests: <b>{TOTAL_TESTS} </b>
+            </li>
           </ul>
         </cagov-chart-dashboard-positivity-rate>               
       </div> 
@@ -114,11 +114,11 @@ addtositemap: false
             <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
             <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
-            <li data-label="tooltipContent"><table class="tooltip-content">
-              <tr><td>Reported Date:</td><td>{DATE}</td></tr>
-              <tr><td>Total hospitalized patients:</td><td>{TOTAL_HOSPITALIZED}</td></tr>
-              <tr><td>14-day average of hospitalized patients:</td><td>{14DAY_AVERAGE}</td></tr>
-            </table></li>
+            <li data-label="tooltipContent">
+              Reported Date: <b>{DATE} </b><br>
+              Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>
+              14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
+            </li>
           </ul>
         </cagov-chart-dashboard-hospitalized-patients>                
       </div>
@@ -129,7 +129,7 @@ addtositemap: false
             <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
             <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds from prior day total ({CHANGE_FACTOR} increase)</li>
             <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds from prior day total ({CHANGE_FACTOR} decrease)</li>
-            <li data-label="tooltipContent">On <strong>{DATE}</strong> there was a total of <strong>{VALUE}</strong> available ICU beds.</li>
+            <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
           </ul>
         </cagov-chart-dashboard-icu-beds>               
       </div> 
