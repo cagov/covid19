@@ -3,7 +3,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-positivity-rate
@@ -112,7 +112,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     const lineSeries = this.chartdata.time_series.TEST_POSITIVITY_RATE_7_DAYS;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
-      DATE:   lineSeries[di].DATE,
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
       '7DAY_POSRATE':this.pctFormatter.format(lineSeries[di].VALUE),
       TOTAL_TESTS:this.intFormatter.format(barSeries[di].VALUE),
     };

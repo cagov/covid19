@@ -3,7 +3,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-confirmed-cases-episode-date
@@ -109,7 +109,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     const lineSeries = this.chartdata.time_series.AVG_CASE_RATE_PER_100K_7_DAYS;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
-      DATE:   lineSeries[di].DATE,
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
       '7DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
       CASES:this.intFormatter.format(barSeries[di].VALUE),
     };
