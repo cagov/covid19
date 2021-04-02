@@ -254,9 +254,8 @@ function getDataIndexByX(data, xScale, xy)
           */
 
 
-function showTooltip(dataIndex, xy)
+function showTooltip(dataIndex, xy, dIndex, dRecord, xscale, yscale)
 {
-  // console.log("showTooltip",dataIndex,xy);
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
@@ -268,6 +267,15 @@ function showTooltip(dataIndex, xy)
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
 
+  this.svg.selectAll('g.tt-marker').remove();
+  this.svg
+    .append('g')
+    .attr('class','tt-marker')
+    .append('rect')
+    .attr("x",xscale(dIndex)-1)
+    .attr("y",yscale(dRecord.VALUE))
+    .attr("width",3)
+    .attr("height",yscale(0)-yscale(dRecord.VALUE));
 }
 
 function hideTooltip()
@@ -275,6 +283,7 @@ function hideTooltip()
   let tooltip = this.tooltip;
   // d3.select(this).transition().duration(200);
   this.tooltip.style("visibility", "hidden");
+  this.svg.selectAll('g.tt-marker').remove();
 }
 
 /**
@@ -416,7 +425,7 @@ function hideTooltip()
       let xy = d3.pointer(event);
       let dIndex = getDataIndexByX(chartData.time_series[time_series_key_bars], this.xbars, xy);
       if (dIndex != null) {
-        showTooltip.call(this, dIndex, xy);
+        showTooltip.call(this, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
       }
     })
     .on("mouseleave touchend blur", (event) => {
