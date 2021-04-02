@@ -1,28 +1,35 @@
 ---
 layout: "page.njk"
-title: "Charts Sandbox"
-meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Race and ethnicity Age Gender"
+title: "Charts Sandbox (test page)"
+meta: "All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical. Confirmed cases in California {total_confirmed_cases} total confirmed cases {new_cases} new cases ({new_cases_delta_1_day} increase) {new_cases} new cases ({new_cases_delta_1_day} decrease) {cases_per_100k_7_days} cases per 100K (7-day average) Episode Date: {DATE} 7-day average case rate per 100K: {7DAY_AVERAGE} [&hellip;]"
 author: "State of California"
-publishdate: "2021-02-17T22:19:49Z"
-tags: ["do-not-crawl"]
+publishdate: "2021-04-02T23:22:14Z"
+tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
 <p>All Californians—regardless of where they live, love sample charts. Here are a few to make your day a little more infographical.</p>
 
 
-<h3 class="text-center mb-0">Impact on hospitals and ICUs</h3>
+
+<!-- <cagov-county-search></cagov-county-search> testing -->
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">
-      <button class="large-tab js-toggle-county county d-none">Alameda</button>
-      <button class="large-tab toggle-active js-toggle-county statewide">Statewide</button>
+<!-- <cagov-county-toggle-buttons></cagov-county-toggle-buttons> -->
+
+
+
+<!-- <cagov-chart-sandbox-filter-buttons class="js-re-smalls">
+    <div class="d-flex justify-content-center">
+      <button class="small-tab active" data-key="race-ethnicity">Race and ethnicity</button>
+      <button class="small-tab" data-key="age">Age</button>
+      <button class="small-tab" data-key="gender">Gender</button>
     </div>
-  </div>
-</div>
+</cagov-chart-sandbox-filter-buttons> -->
+
+
+
 
 <div class="container">
     <div class="row">
@@ -139,18 +146,6 @@ addtositemap: false
 
 </div>
 
-</div>
-
-<!-- build trigger 2-11-2021 2:46pm -->
-<div class="container">
-    <div class="row">
-        <cagov-chart-ve-race-ethnicity class="chart"></cagov-chart-ve-race-ethnicity>
-        <cagov-chart-ve-age class="chart d-hide"></cagov-chart-ve-age>
-        <cagov-chart-ve-gender class="chart d-hide"></cagov-chart-ve-gender>
-    </div>
-    <div class="row">
-       <cagov-chart-ve-race-ethnicity-age class="chart"></cagov-chart-ve-race-ethnicity-age>
-    </div>
 </div>
 
 
