@@ -221,6 +221,62 @@ function writeRightYAxis(svg, data, x, y,
   }
 }
 
+// Convert 
+function getDataIndexByX(data, xScale, xy)
+{
+  let x = xy[0];
+  let xdi = xScale.invert(x);
+  if (xdi >= 0 && xdi <= xScale.domain()[1] ) {
+    return Math.round(xdi);
+  }
+  return null;
+}
+
+/**
+          if (tooltip) {
+              // set appropriate tooltip text, reveal tooltip at correct location
+              tooltip.html(component.getTooltip(d,baselineData))
+              tooltip.style("left",'20px');
+              // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+              // tooltip.style("top",`${event.layerY+60}px`)
+              tooltip.style("top",`${event.offsetY+120}px`)
+              tooltip.style("visibility", "visible");
+          }
+        })
+        .on("mouseout blur", function(d) {
+          d3.select(this.parentNode).select('.fg-bar')
+            .transition().duration(200)
+            .style("fill", "#92C5DE");
+          if (tooltip) {
+            d3.select(this).transition();
+            tooltip.style("visibility", "hidden");
+          } 
+          */
+
+
+function showTooltip(dataIndex, xy)
+{
+  // console.log("showTooltip",dataIndex,xy);
+  let tooltip = this.tooltip;
+  let content = this.getTooltipContent(dataIndex); 
+  tooltip.html(content);
+  tooltip.style("left",'20px');
+  // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+  // tooltip.style("top",`${event.layerY+60}px`)
+  tooltip.style("top",`${(this.dimensions.height+100)}px`);
+  // d3.select(this).transition();
+  tooltip.style("visibility", "visible");
+  // console.log("TOOLTIP",content,this.tooltip);
+
+}
+
+function hideTooltip()
+{
+  let tooltip = this.tooltip;
+  // d3.select(this).transition().duration(200);
+  this.tooltip.style("visibility", "hidden");
+}
+
 /**
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
@@ -354,5 +410,19 @@ function writeRightYAxis(svg, data, x, y,
     if (extras_func) {
       extras_func.call(this, this.svg, chartData);
     }
+
+    this.svg
+    .on("mousemove focus", (event) => {
+      let xy = d3.pointer(event);
+      let dIndex = getDataIndexByX(chartData.time_series[time_series_key_bars], this.xbars, xy);
+      if (dIndex != null) {
+        showTooltip.call(this, dIndex, xy);
+      }
+    })
+    .on("mouseleave touchend blur", (event) => {
+      hideTooltip.call(this);
+    });
+
+
   }
 

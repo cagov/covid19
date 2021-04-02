@@ -47,6 +47,14 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
     );
+    this.float1Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    );
+    this.float2Formatter = new Intl.NumberFormat(
+      "us", // forcing US to avoid mixed styles on translated pages
+      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+    );
     this.pctFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
       { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
@@ -85,19 +93,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
-  getTooltip(d,baselineData) {
-    let tooltipText = this.translationsObj.tooltipLegend1 + '<br/>' +
-                      this.translationsObj.tooltipLegend2 + '<br/>' +
-                      this.translationsObj.tooltipLegend3;
-                      
-    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
-    // !! replacements here for category, metric-value, metric-baseline-value
-    // tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    // tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    // tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
-    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
-  }
-
   ariaLabel(d, baselineData) {
     let caption = ''; // !!!
     return caption;
@@ -111,6 +106,18 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series.TOTAL_TESTS;
+    const lineSeries = this.chartdata.time_series.AVG_TEST_RATE_PER_100K_7_DAYS;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   lineSeries[di].DATE,
+      '7DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
+      TOTAL_TESTS:this.intFormatter.format(barSeries[di].VALUE),
+    };
+    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
   retrieveData(url) {
@@ -146,7 +153,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
             .attr("transform", "translate(0,0)");
       
           this.tooltip = d3
-            .select(this.chartName)
+            .select(this.chartOptions.chartName)
             .append("div")
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
