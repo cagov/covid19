@@ -3,7 +3,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-confirmed-cases-episode-date
@@ -89,19 +89,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
-  getTooltip(d,baselineData) {
-    let tooltipText = this.translationsObj.tooltipLegend1 + '<br/>' +
-                      this.translationsObj.tooltipLegend2 + '<br/>' +
-                      this.translationsObj.tooltipLegend3;
-                      
-    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
-    // !! replacements here for category, metric-value, metric-baseline-value
-    // tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    // tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    // tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
-    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
-  }
-
   ariaLabel(d, baselineData) {
     let caption = ''; // !!!
     return caption;
@@ -115,6 +102,18 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series.CONFIRMED_CASES_EPISODE_DATE;
+    const lineSeries = this.chartdata.time_series.AVG_CASE_RATE_PER_100K_7_DAYS;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   lineSeries[di].DATE,
+      '7DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
+      CASES:this.intFormatter.format(barSeries[di].VALUE),
+    };
+    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
   retrieveData(url) {
@@ -152,31 +151,12 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
           .attr("transform", "translate(0,0)");
     
         this.tooltip = d3
-          .select(this.chartName)
+          .select(this.chartOptions.chartName)
           .append("div")
           .attr("class", "tooltip-container")
           .text("Empty Tooltip");
-    
 
-        //   this.alldata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-        //   this.popdata.forEach(rec => {
-        //     rec.METRIC_VALUE /= 100.0;
-        //   });
-
-        //   let publishedDateStr = this.metadata['PUBLISHED_DATE'];
-        //   let publishedDate = parseSnowflakeDate(publishedDateStr);
-        //   let collectedDate = parseSnowflakeDate(publishedDateStr);
-        //   collectedDate.setDate(collectedDate.getDate() - 1);
-
-        //   let footerReplacementDict = {
-        //     'PUBLISHED_DATE' : reformatJSDate(publishedDate),
-        //     'MINUS_ONE_DATE' : reformatJSDate(collectedDate),
-        //   };
-        //   let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
-        //   d3.select(document.querySelector("#ageGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
-        
+        // console.log("Testing selection",d3.select(this.chartName));
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
@@ -192,6 +172,8 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'pending_date':this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.EPISODE_UNCERTAINTY_PERIOD,
                                                 'pending_legend':'Pending',
                                               });
+
+
         }.bind(this)
       );
   }

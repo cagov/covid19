@@ -92,19 +92,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
   }
 
-  getTooltip(d,baselineData) {
-    let tooltipText = this.translationsObj.tooltipLegend1 + '<br/>' +
-                      this.translationsObj.tooltipLegend2 + '<br/>' +
-                      this.translationsObj.tooltipLegend3;
-                      
-    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
-    // !! replacements here for category, metric-value, metric-baseline-value
-    // tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    // tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    // tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
-    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
-  }
-
   ariaLabel(d, baselineData) {
     let caption = ''; // !!!
     return caption;
@@ -118,6 +105,18 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
   }
 
   renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series.TOTAL_TESTS;
+    const lineSeries = this.chartdata.time_series.TEST_POSITIVITY_RATE_7_DAYS;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   lineSeries[di].DATE,
+      '7DAY_POSRATE':this.pctFormatter.format(lineSeries[di].VALUE),
+      TOTAL_TESTS:this.intFormatter.format(barSeries[di].VALUE),
+    };
+    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
   retrieveData(url) {
@@ -153,7 +152,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
             .attr("transform", "translate(0,0)");
       
           this.tooltip = d3
-            .select(this.chartName)
+            .select(this.chartOptions.chartName)
             .append("div")
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
