@@ -26,5 +26,7 @@ export default function template({
             <div class="svg-holder"></div>
         </div>
       </div>
-    </div>`;
+    </div>
+    <!-- <div class="tooltip-container"></div> -->
+    `;
 }
