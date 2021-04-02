@@ -78,6 +78,15 @@ const files = [
     Table2: {
       require: ['_section_index','label','_slug_or_url']}
     } 
+  },
+  { slug: 'homepage-labels', split: true, tableSchema: {
+    Table1: {
+      pivot: true,
+      require: [
+        'varLatestNews',
+        'varForBusinesses'
+      ]}
+    }
   }
 ];
 
