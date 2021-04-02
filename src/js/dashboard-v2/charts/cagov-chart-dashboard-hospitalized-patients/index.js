@@ -24,22 +24,22 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       desktop: {
         fontSize: 14,
         width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
+        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
       },
       tablet: {
         fontSize: 14,
         width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
+        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
       },
       mobile: {
         fontSize: 12,
         width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
+        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
       },
       retina: {
         fontSize: 12,
         width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 0, bottom: 45  },
+        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
       },
     };
 
