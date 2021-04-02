@@ -49,6 +49,10 @@
         text.line-legend {
             text { font-weight:300; font-size: 1.0rem; fill:black; text-anchor:middle; dominant-baseline:auto;}
         }
+        g.tt-marker {
+            fill:black;
+            opacity:0.5;
+        }
    }
     
     .chart-title {
