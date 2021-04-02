@@ -19,7 +19,7 @@ export default function template({
             <div class="chart-title">${chartTitle}</div>
             <!-- tabs go here -->
             <div class="chart-header">
-            <div class="header-line">${post_chartLegend1}</div>
+            <div class="header-line header-line1">${post_chartLegend1}</div>
             <div class="header-line">${post_chartLegend2}</div>
             <div class="header-line">${post_chartLegend3}</div>
             </div>

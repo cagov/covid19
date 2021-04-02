@@ -3,7 +3,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-hospitalized-patients
@@ -112,7 +112,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
     const lineSeries = this.chartdata.time_series.HOSPITALIZED_PATIENTS_14_DAY_AVG;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
-      DATE:   barSeries[di].DATE,
+      DATE:   reformatReadableDate(barSeries[di].DATE),
       '14DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
       TOTAL_HOSPITALIZED:this.intFormatter.format(barSeries[di].VALUE),
     };

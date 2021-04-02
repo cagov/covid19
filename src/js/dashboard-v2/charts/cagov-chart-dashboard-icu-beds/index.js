@@ -3,7 +3,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-icu-beds
@@ -111,7 +111,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     const lineSeries = this.chartdata.time_series.ICU_BEDS;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
-      DATE:   barSeries[di].DATE,
+      DATE:   reformatReadableDate(barSeries[di].DATE),
       VALUE:this.intFormatter.format(barSeries[di].VALUE),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);

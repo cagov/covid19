@@ -25,26 +25,26 @@
         }
         g.pending-block {
             rect { fill:black; opacity:0.15; }
-            text { font-weight:300; font-size: 0.8rem; fill:#c5c5c5;  }
+            text { font-weight:300; font-size: 0.8rem; fill:black;  }
             text {  text-anchor: end; dominant-baseline:auto; }
         }
         g.date-axis {
             line { stroke-width: 0.5px; stroke:black;}
-            text { font-weight:300; font-size: 0.8rem; fill:black;  }
+            text { font-weight:300; font-size: 0.75rem; fill:black;  }
             text { text-anchor: middle; dominant-baseline:hanging;}
             text.x-axis-legend { font-weight:300; text-anchor:end; dominant-baseline:auto;  }
         }
         g.left-y-axis {
             line { stroke-width: 0.5px; stroke:black; opacity:0.5;}
-            text { font-weight:400; font-size: 0.9rem; fill:black;  } 
+            text { font-weight:400; font-size: 0.75rem; fill:black;  } 
             text { text-anchor: end; dominant-baseline:middle;}
-            text.left-y-axis-legend { text-anchor:start; dominant-baseline:hanging;  }
+            text.left-y-axis-legend { font-weight:700; font-size: 0.95rem; text-anchor:start; dominant-baseline:hanging;  }
         }
         g.right-y-axis {
             line { stroke-width: 0.5px; stroke:#608cbd; }
-            text { font-weight:300; font-size: 0.9rem; fill:#608cbd; } 
+            text { font-weight:400; font-size: 0.75rem; fill:#1f2574; } 
             text { text-anchor:start; dominant-baseline:middle; }
-            text.right-y-axis-legend { text-anchor:end; dominant-baseline:hanging; }
+            text.right-y-axis-legend {  font-weight:700; font-size: 0.95rem; text-anchor:end; dominant-baseline:hanging; }
         }
         text.line-legend {
             text { font-weight:300; font-size: 1.0rem; fill:black; text-anchor:middle; dominant-baseline:auto;}
@@ -56,59 +56,63 @@
    }
     
     .chart-title {
-      font-weight: 400;
-      font-size: 0.95rem;
+      font-weight: 300;
+      font-size: 1.2rem;
       margin-bottom:0px;
     }
     .chart-header {
-      font-weight: 300;
-      font-size: 1.0rem;
-      margin-bottom:24px;
-    }
-    .chart-header .big-num {
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: #103083;
+        margin-bottom:24px;
+        font-weight: 300;
+        font-size: 0.95rem;
+      }
+    .chart-header .header-line1 {
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .chart-header .big-num {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #1F2574;
     }
     .chart-header .med-num {
-      font-weight: 400;
-      font-size: 1.0rem;
-      color: #103083;
+       font-weight: 400;
+       font-size: 1.0rem;
+       color:#1F2574;
     }
-    table.tooltip-content {
-        font-weight: 400;
+    div.tooltip-container {
+        font-weight: 300;
         font-size: 0.75rem;
+        line-height: 2.0;
         color:black;
-        tr td:first-child + td {
-            font-weight: 400;
-        }
-        tr td:first-child {
-            font-weight: 300;
-            width:70%;
-        }
+        text-align: center;
     }
-
+    // table.tooltip-content {
+    //     font-weight: 400;
+    //     font-size: 0.75rem;
+    //     color:black;
+    //     tr td:first-child + td {
+    //         font-weight: 400;
+    //     }
+    //     tr td:first-child {
+    //         font-weight: 300;
+    //         width:70%;
+    //     }
+    // }
     .tooltip-container {
         position: absolute;
         z-index: 10;
         visibility: hidden;
         background: #fff;
-        width:300px;
+        width:280px;
       }
       
     .tooltip-container {
-        // position: absolute;
-        // z-index: 10;
-        // visibility: hidden;
-        // background: #fff;
         pointer-events: none;
-    
         /* padding: 10px; */
         padding: 1rem 2rem;
         box-shadow: 0px 0px 5px 2px rgba(0,0,0,.14);
         /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */
         border: none;
-        font-size: 0.75rem;
       }
     
 
