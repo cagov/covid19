@@ -256,7 +256,6 @@ function getDataIndexByX(data, xScale, xy)
 
 function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
 {
-  console.log(event)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
