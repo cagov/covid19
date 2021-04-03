@@ -25,6 +25,8 @@ addtositemap: false
 </div>
 
 <div class="container">
+
+    <!-- TOP CHARTS --> 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-confirmed-cases-episode-date class="chart">
@@ -42,7 +44,7 @@ addtositemap: false
             <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
             <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
           </ul>
-        </cagov-chart-dashboard-confirmed-cases-episode->                
+        </cagov-chart-dashboard-confirmed-cases-episode-date>                
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-confirmed-deaths-death-date class="chart">
@@ -60,10 +62,44 @@ addtositemap: false
           </ul>
         </cagov-chart-dashboard-confirmed-deaths-death-date>               
       </div> 
+      <!-- TAB CHARTS (top) -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-confirmed-cases-reported-date class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Confirmed cases in California</li>
+            <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
+            <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
+            <li data-label="tooltipContent">
+                    Episode Date: <b>{DATE}</b><br>
+                    7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+                    Cases: <b>{CASES}</b>
+            </li>
+            <li data-label="tooltipLegend2">Total hospitalized COVID-19 patients:</li>
+            <li data-label="tooltipLegend3">14-day average of hospitalized patients:</li>
+          </ul>
+        </cagov-chart-dashboard-confirmed-cases-reported-date>                
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-confirmed-deaths-reported-date class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Confirmed deaths in California</li>
+            <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} decrease)</li>
+            <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
+            <li data-label="tooltipContent">
+              Death Date: <b>{DATE}</b><br>
+              7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+              Deaths: <b>{DEATHS}</b>
+            </li>
+          </ul>
+        </cagov-chart-dashboard-confirmed-deaths-reported-date>               
+      </div> 
     </div>
 
-
-  
+    <!-- MIDDLE CHARTS -->
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-total-tests-testing-date class="chart">
@@ -96,16 +132,26 @@ addtositemap: false
           </ul>
         </cagov-chart-dashboard-positivity-rate>               
       </div> 
+    <!--  TAB CHARTS (middle) -->
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-total-tests-reported-date class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">Total tests in California</li>
+             
+            <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} decrease)</li>
+            <li data-label="tooltipContent">
+              Testing Date: <b>{DATE} </b><br>
+              7-day average test rate per 100K: <b>{7DAY_AVERAGE} </b><br>
+              Total Tests: <b>{TOTAL_TESTS} </b>
+            </li>
+          </ul>
+        </cagov-chart-dashboard-total-tests-reported-date>                
+      </div>
     </div>
 
-
-
-<div id="hospital-graph" class="toggle-group-element">
-  <div id="hospitalChartContainer">
-    <!-- <div class="mx-auto">
-      <p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
-    </div> -->
-    <!-- <div class="tableauPlaceholder"></div> -->
+    <!-- bottom HOSPITAL charts -->
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-hospitalized-patients class="chart">
@@ -133,11 +179,23 @@ addtositemap: false
           </ul>
         </cagov-chart-dashboard-icu-beds>               
       </div> 
+      <!-- TAB CHART-->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <cagov-chart-dashboard-icu-patients class="chart">
+          <ul class="d-none">
+            <li data-label="chartTitle">COVID-19 ICU patients in California</li>
+            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 ICU patients</li>
+            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
+            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
+            <li data-label="tooltipContent">
+              Reported Date: <b>{DATE} </b><br>
+              Total ICU patients: <b>{TOTAL_ICU} </b><br>
+              14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
+            </li>
+          </ul>
+        </cagov-chart-dashboard-icu-patients>               
+      </div> 
     </div>
-    <p class="small-text chart-footer-caption">lambda footer text epsilon</p>
-  </div>
-
-</div>
 
 </div>
 
