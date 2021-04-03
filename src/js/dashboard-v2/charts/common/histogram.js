@@ -254,15 +254,16 @@ function getDataIndexByX(data, xScale, xy)
           */
 
 
-function showTooltip(dataIndex, xy, dIndex, dRecord, xscale, yscale)
+function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
 {
+  console.log(event)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",'20px');
+  tooltip.style("left",`${event.offsetX}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(this.dimensions.height+140)}px`);
+  tooltip.style("top",`${(event.offsetY+170)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
@@ -425,7 +426,7 @@ function hideTooltip()
       let xy = d3.pointer(event);
       let dIndex = getDataIndexByX(chartData.time_series[time_series_key_bars], this.xbars, xy);
       if (dIndex != null) {
-        showTooltip.call(this, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
+        showTooltip.call(this, event, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
       }
     })
     .on("mouseleave touchend blur", (event) => {
