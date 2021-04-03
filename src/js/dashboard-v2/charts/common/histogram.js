@@ -254,15 +254,15 @@ function getDataIndexByX(data, xScale, xy)
           */
 
 
-function showTooltip(dataIndex, xy, dIndex, dRecord, xscale, yscale)
+function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
 {
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",'20px');
+  tooltip.style("left",`${event.offsetX}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(this.dimensions.height+140)}px`);
+  tooltip.style("top",`${(event.offsetY+170)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
@@ -341,11 +341,12 @@ function hideTooltip()
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
-        .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
     }
     if (time_series_key_line) {
+      console.log("time_series_key_line",time_series_key_line,root_id);
       const LINE_OFFSET_X = line_date_offset;
       this.xline = d3
       .scaleLinear()
@@ -354,11 +355,12 @@ function hideTooltip()
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
+      console.log("time_series_key_line 2",time_series_key_line,root_id);
       let max_y_domain = d3.max(chartData.time_series[time_series_key_line], d=> d.VALUE);
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
-        .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
 
@@ -425,7 +427,7 @@ function hideTooltip()
       let xy = d3.pointer(event);
       let dIndex = getDataIndexByX(chartData.time_series[time_series_key_bars], this.xbars, xy);
       if (dIndex != null) {
-        showTooltip.call(this, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
+        showTooltip.call(this, event, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
       }
     })
     .on("mouseleave touchend blur", (event) => {
