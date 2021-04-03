@@ -341,11 +341,12 @@ function hideTooltip()
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
-        .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
     }
     if (time_series_key_line) {
+      console.log("time_series_key_line",time_series_key_line,root_id);
       const LINE_OFFSET_X = line_date_offset;
       this.xline = d3
       .scaleLinear()
@@ -354,11 +355,12 @@ function hideTooltip()
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
+      console.log("time_series_key_line 2",time_series_key_line,root_id);
       let max_y_domain = d3.max(chartData.time_series[time_series_key_line], d=> d.VALUE);
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
-        .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
 
