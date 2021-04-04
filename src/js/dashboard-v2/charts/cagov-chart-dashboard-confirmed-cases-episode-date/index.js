@@ -140,7 +140,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                                                 'line_legend':this.translationsObj.dayAverage,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
-                                                'pending_legend':'Pending',
+                                                'pending_legend':this.translationsObj.pending,
                                               });
 
 
