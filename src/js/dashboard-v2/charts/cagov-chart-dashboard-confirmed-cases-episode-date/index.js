@@ -134,8 +134,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':this.chartOptions.seriesField,
                                                 'time_series_key_line':this.chartOptions.seriesFieldAvg,
-                                                'left_y_div':20,
-                                                'right_y_div':10000,
                                                 'root_id':this.chartOptions.rootId,
                                                 'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],

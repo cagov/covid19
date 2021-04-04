@@ -143,10 +143,10 @@ function getFormatter(max_v,{hint='num',digits=0})
 }
 
 function writeLeftYAxis(svg, data, x, y, 
-                        { y_div=20, 
-                          y_axis_legend=null,
+                        { y_axis_legend=null,
                           left_y_fmt='num',
                           root_id='barid' }) {
+  const y_div = getAxisDiv(y);
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
   const max_y_domain = y.domain()[1];
@@ -181,10 +181,10 @@ function writeLeftYAxis(svg, data, x, y,
 }
 
 function writeRightYAxis(svg, data, x, y, 
-                        { y_div=20, 
-                          y_axis_legend=null,
+                        { y_axis_legend=null,
                           right_y_fmt='num',
                           root_id='barid' }) {
+  const y_div = getAxisDiv(y);
   let ygroup = svg.append("g")
       .attr("class",'right-y-axis');
   const max_y_domain = y.domain()[1];
@@ -286,6 +286,15 @@ function hideTooltip()
   this.svg.selectAll('g.tt-marker').remove();
 }
 
+function getAxisDiv(ascale) {
+  const max_y = ascale.domain()[1];
+  const log_y = Math.log10(max_y);
+  const round_log_y = Math.round(log_y);
+  const best_10 = Math.pow(10, Math.round(log_y));
+  const optimal_divs = log_y < round_log_y? (round_log_y-log_y < 0.25? 5 : 10) : (log_y-round_log_y) < 0.25? 5 : 2;
+  return best_10/optimal_divs;
+}
+
 /**
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
@@ -297,9 +306,7 @@ function hideTooltip()
     time_series_key_bars = null,
     time_series_key_line = null,
     line_date_offset = 0,
-    left_y_div = 1000,
     left_y_fmt = 'num',
-    right_y_div = 0,
     right_y_fmt = 'num',
     left_y_axis_legend = null,
     right_y_axis_legend = null,
@@ -404,16 +411,16 @@ function hideTooltip()
     // Write Y Axis, favoring line on left, bars on right
     if (time_series_key_line) {
       writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline,
-         {y_div:left_y_div, y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
+         {y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
       if (time_series_key_bars) {
-        if (right_y_div) {
+        if (right_y_axis_legend) {
           writeRightYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
-              {y_div:right_y_div, y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
+              { y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
         }
       }
     } else if (time_series_key_bars) {
       writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
-          { y_div:left_y_div, y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
+          { y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
     }
 
     // writeLegend.call(this, this.svg, data, this.xbars, this.y, baselineData);

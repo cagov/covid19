@@ -165,8 +165,6 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
                                                 'time_series_key_line':'ICU_BEDS',
                                                 'line_date_offset':0,
                                                 'root_id':'icu_beds',
-                                                'left_y_div':1000,
-                                                'right_y_div':0,
                                                 'x_axis_legend':'Reported date',
                                                 'month_modulo':2,
                                               });

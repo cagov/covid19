@@ -163,8 +163,6 @@ class CAGovDashboardConfirmedCasesReportedDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'CONFIRMED_CASES_REPORTED_DATE',
                                                 'time_series_key_line':'AVG_CASE_REPORT_RATE_PER_100K_7_DAYS',
-                                                'left_y_div':20,
-                                                'right_y_div':10000,
                                                 'root_id':'cases-rep',
                                                 'left_y_axis_legend':'Cases per 100K',
                                                 'right_y_axis_legend':'Cases',

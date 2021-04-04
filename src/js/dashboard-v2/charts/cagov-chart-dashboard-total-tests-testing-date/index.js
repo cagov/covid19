@@ -169,8 +169,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
                                                 'time_series_key_bars':'TOTAL_TESTS',
                                                 'time_series_key_line':'AVG_TEST_RATE_PER_100K_7_DAYS',
                                                 'line_date_offset':0,
-                                                'left_y_div':200,
-                                                'right_y_div':100000,
                                                 'root_id':'tests-t',
                                                 'left_y_axis_legend':'Tests per 100K',
                                                 'right_y_axis_legend':'Tests',
