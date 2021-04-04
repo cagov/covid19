@@ -116,7 +116,7 @@ class CAGovDashboardConfirmedCasesReportedDate extends window.HTMLElement {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
-  retrieveData(url) {
+  retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
@@ -135,7 +135,8 @@ class CAGovDashboardConfirmedCasesReportedDate extends window.HTMLElement {
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.CONFIRMED_CASES_REPORTED_DATE.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
-
+          this.translationsObj.currentLocation = regionName;
+          
           this.innerHTML = template(this.translationsObj);
 
           this.svg = d3

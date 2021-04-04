@@ -1,4 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 
@@ -31,6 +32,7 @@ export default {
               use: ['sass'],
             }),
             // terser()
+            json()
           ]
 };
 
