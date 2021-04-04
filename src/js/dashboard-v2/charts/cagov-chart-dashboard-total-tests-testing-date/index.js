@@ -175,7 +175,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
                                                 'x_axis_legend':'Testing date',
                                                 'line_legend':'7-day average',
                                                 'pending_date':this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.TESTING_UNCERTAINTY_PERIOD,
-                                                'pending_legend':'Pending',
+                                                'pending_legend':this.translationsObj.pending,
                                               });
         }.bind(this)
       );

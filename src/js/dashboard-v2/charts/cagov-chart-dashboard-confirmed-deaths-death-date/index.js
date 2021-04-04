@@ -174,7 +174,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
                                                 'x_axis_legend':'Death date',
                                                 'line_legend':'7-day average',
                                                 'pending_date':this.chartdata.latest.CONFIRMED_DEATHS_DEATH_DATE.DEATH_UNCERTAINTY_PERIOD,
-                                                'pending_legend':'Pending',
+                                                'pending_legend':this.translationsObj.pending,
                                               });
         }.bind(this)
       );
