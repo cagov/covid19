@@ -79,7 +79,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
 
   getTooltipContent(di) {
     const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
-    const lineSeries = this.chartdata.time_series.AVG_CASE_RATE_PER_100K_7_DAYS;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -137,10 +137,10 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'left_y_div':20,
                                                 'right_y_div':10000,
                                                 'root_id':this.chartOptions.rootId,
-                                                'left_y_axis_legend':'Cases per 100K',
-                                                'right_y_axis_legend':'Cases',
-                                                'x_axis_legend':'Episode date',
-                                                'line_legend':'7-day average',
+                                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                                                'line_legend':this.translationsObj.dayAverage,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
                                                 'pending_legend':'Pending',
                                               });
