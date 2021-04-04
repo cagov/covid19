@@ -84,7 +84,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, 'California');
 
     rtlOverride(this); // quick fix for arabic
 
@@ -137,7 +137,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.CONFIRMED_CASES_EPISODE_DATE.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
-          // this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
+          this.translationsObj.currentLocation = regionName;
 
           this.innerHTML = template(this.translationsObj);
 
