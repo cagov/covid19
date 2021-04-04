@@ -9,20 +9,22 @@ import './charts/cagov-chart-dashboard-groups-gender-deaths/index.js';
 import './charts/cagov-chart-dashboard-groups-age-cases/index.js';
 import './charts/cagov-chart-dashboard-groups-age-deaths/index.js';
 
+// small tab filter buttons
+import '../equity-dash/search/filters.js'
+
 // new top section charts
 import "./charts/cagov-chart-dashboard-confirmed-cases-episode-date/index.js"
 import "./charts/cagov-chart-dashboard-confirmed-deaths-death-date/index.js"
-
-import "./charts/cagov-chart-dashboard-confirmed-cases-reported-date/index.js"
-import "./charts/cagov-chart-dashboard-confirmed-deaths-reported-date/index.js"
-
 import "./charts/cagov-chart-dashboard-total-tests-testing-date/index.js"
 import "./charts/cagov-chart-dashboard-positivity-rate/index.js"
-import "./charts/cagov-chart-dashboard-total-tests-reported-date/index.js"
-
 import "./charts/cagov-chart-dashboard-hospitalized-patients/index.js"
 import "./charts/cagov-chart-dashboard-icu-beds/index.js"
-import "./charts/cagov-chart-dashboard-icu-patients/index.js"
+
+// going to access these with filter keys and swap out configs
+// import "./charts/cagov-chart-dashboard-total-tests-reported-date/index.js"
+// import "./charts/cagov-chart-dashboard-confirmed-cases-reported-date/index.js"
+// import "./charts/cagov-chart-dashboard-confirmed-deaths-reported-date/index.js"
+// import "./charts/cagov-chart-dashboard-icu-patients/index.js"
 
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");

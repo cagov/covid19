@@ -1,0 +1,64 @@
+{
+  "cases": {
+    "episode": {
+      "chartName": "cagov-chart-dashboard-confirmed-cases-episode-date",
+      "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
+      "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
+      "dataUrl": "confirmed-cases-episode-date/california.json",
+      "dataUrlCounty": "confirmed-cases-episode-date/<county>.json",
+      "rootId": "cases-ep"
+    },
+    "reported": {
+      "chartName": "cagov-chart-dashboard-confirmed-cases-reported-date",
+      "seriesField": "CONFIRMED_CASES_REPORTED_DATE",
+      "seriesFieldAvg": "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
+      "dataUrl": "confirmed-cases-reported-date/california.json",
+      "dataUrlCounty": "confirmed-cases-reported-date/<county>.json",
+      "rootId": "cases-rep"
+    }
+  },
+  "desktop": {
+    "fontSize": 14,
+    "width": 400,    
+    "height": 300,
+    "margin": {   
+      "left": 50,   
+      "top": 30,  
+      "right": 60,  
+      "bottom": 45
+    }
+  },
+  "tablet": {
+    "fontSize": 14,
+    "width": 400,     
+    "height": 300,
+    "margin": {   
+      "left": 50,   
+      "top": 30,  
+      "right": 60,  
+      "bottom": 45
+    }
+  },
+  "mobile": {
+    "fontSize": 12,
+    "width": 400,     
+    "height": 300,
+    "margin": {   
+      "left": 50,   
+      "top": 30,  
+      "right": 60,  
+      "bottom": 45
+    }
+  },
+  "retina": {
+    "fontSize": 12,
+    "width": 400,     
+    "height": 300,
+    "margin": {   
+      "left": 50,   
+      "top": 30,  
+      "right": 60,  
+      "bottom": 45
+    }
+  }
+}
