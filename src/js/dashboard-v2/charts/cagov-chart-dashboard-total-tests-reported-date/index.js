@@ -1,4 +1,4 @@
-import template from "./template.js";
+import template from "../cagov-chart-dashboard-icu-beds/template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -88,9 +88,11 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, 'California');
 
     rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
   }
 
   ariaLabel(d, baselineData) {
@@ -120,7 +122,7 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
-  retrieveData(url) {
+  retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json())
@@ -138,6 +140,7 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.TOTAL_TESTS_REPORTED_DATE.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.currentLocation = regionName;
 
           this.innerHTML = template(this.translationsObj);
           this.svg = d3
@@ -178,6 +181,23 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
                                               });
         }.bind(this)
       );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        console.log("X County selected", e.detail.filterKey);
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
   }
 }
 

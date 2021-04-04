@@ -5,18 +5,19 @@
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
 export default function template({
-  chartTitle = "Confirmed cases by age in California",
+  chartTitle = "chart title",
   post_chartLegend1 = "Chart Legend 1",
   post_chartLegend2 = "Chart Legend 2",
   post_chartLegend3 = "Chart Legend 3",
   chartDataLabel = null,
+  currentLocation = 'location'
 }) {
 
   return /*html*/ `
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
         <div class="mx-auto">
-            <div class="chart-title">${chartTitle}</div>
+            <div class="chart-title">${chartTitle} ${currentLocation}</div>
             <!-- tabs go here -->
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
