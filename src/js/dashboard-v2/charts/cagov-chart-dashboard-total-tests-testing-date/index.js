@@ -188,7 +188,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
     searchElement.addEventListener(
       "county-selected",
       function (e) {
-        console.log("X County selected", e.detail.filterKey);
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",

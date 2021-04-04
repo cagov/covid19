@@ -160,9 +160,6 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
             .append("div")
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
-            
-
-
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
@@ -188,7 +185,6 @@ class CAGovDashboardTotalTestsReportedDate extends window.HTMLElement {
     searchElement.addEventListener(
       "county-selected",
       function (e) {
-        console.log("X County selected", e.detail.filterKey);
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",

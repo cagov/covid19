@@ -89,6 +89,8 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     this.retrieveData(this.dataUrl, 'California');
 
     rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
   }
 
   ariaLabel(d, baselineData) {
@@ -136,7 +138,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;
-          
+
           this.innerHTML = template(this.translationsObj);
 
           this.svg = d3
@@ -170,6 +172,22 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
                                               });
         }.bind(this)
       );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
   }
 }
 
