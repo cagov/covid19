@@ -168,8 +168,6 @@ class CAGovDashboardConfirmedDeathsReportedDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'CONFIRMED_DEATHS_REPORTED_DATE',
                                                 'time_series_key_line':'AVG_DEATH_REPORT_RATE_PER_100K_7_DAYS',
-                                                'left_y_div':0.5,
-                                                'right_y_div':200,
                                                 'root_id':'deaths-reported-date',
                                                 'left_y_axis_legend':'Deaths per 100K',
                                                 'right_y_axis_legend':'Deaths',

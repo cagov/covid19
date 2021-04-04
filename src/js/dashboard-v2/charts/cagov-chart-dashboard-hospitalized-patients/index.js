@@ -166,8 +166,6 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
                                                 'time_series_key_bars':'HOSPITALIZED_PATIENTS',
                                                 'time_series_key_line':'HOSPITALIZED_PATIENTS_14_DAY_AVG',
                                                 'line_date_offset':-7,
-                                                'left_y_div':5000,
-                                                'right_y_div':0,
                                                 'root_id':'hosp-p',
                                                 'x_axis_legend':'Reported date',
                                                 'line_legend':'14-day average',
