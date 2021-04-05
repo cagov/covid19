@@ -201,11 +201,11 @@ function writeRightYAxis(svg, data, x, y,
     let subg = ygroup.append("g")
       .attr('class','y-tick');
 
-    subg.append('line')
-      .attr('x1', x(min_x_domain)+tick_left_gap)
-      .attr('y1', y(yi))
-      .attr('x2', x(min_x_domain)+tick_right_gap)
-      .attr('y2', y(yi));
+    // subg.append('line')
+    //   .attr('x1', x(min_x_domain)+tick_left_gap)
+    //   .attr('y1', y(yi))
+    //   .attr('x2', x(min_x_domain)+tick_right_gap)
+    //   .attr('y2', y(yi));
 
     subg.append('text')
       .text(y_caption)
