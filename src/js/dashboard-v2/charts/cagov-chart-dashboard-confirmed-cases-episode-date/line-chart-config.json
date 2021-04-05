@@ -23,7 +23,7 @@
       "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-death-date/california.json",
-      "dataUrlCounty": "confirmed-cases-episode-date/<county>.json",
+      "dataUrlCounty": "confirmed-deaths-death-date/<county>.json",
       "rootId": "death-date"
     },
     "reported": {

@@ -96,7 +96,6 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
   }
 
   retrieveData(url, regionName) {
-    console.log(url)
     window
       .fetch(url)
       .then((response) => response.json())
