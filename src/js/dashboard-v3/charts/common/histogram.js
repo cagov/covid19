@@ -29,7 +29,7 @@ function writeLine(svg, data, x, y, { root_id='barid' }) {
         .attr("x", (d,i) => x(i))
         .attr("y", d => y(d.VALUE))
         .attr("width", 2)
-        .attr("height", d => (y(0) - y(d.VALUE)))
+        .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
         .attr("id", (d, i) => root_id+'-'+i);
 }
 
