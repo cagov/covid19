@@ -1,4 +1,5 @@
 import template from "../cagov-chart-dashboard-icu-beds/template.js";
+import chartConfig from '../cagov-chart-dashboard-confirmed-cases-episode-date/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -11,37 +12,10 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardTotalTestsTestingDate");
     this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
 
-    // Settings and initial values
-    this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-total-tests-testing-date',
-      // Data
-      dataUrl:
-        config.chartsStateDashTablesLoc + "total-tests-testing-date/california.json", // Overwritten by county.
-      dataUrlCounty:
-        config.chartsStateDashTablesLoc + "total-tests-testing-date/<county>.json",
-
-      desktop: {
-        fontSize: 14,
-        width: 400,     height: 300,
-        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-      },
-      tablet: {
-        fontSize: 14,
-        width: 400,     height: 300,
-        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-      },
-      mobile: {
-        fontSize: 12,
-        width: 400,     height: 300,
-        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-      },
-      retina: {
-        fontSize: 12,
-        width: 400,     height: 300,
-        margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-      },
-    };
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
     this.intFormatter = new Intl.NumberFormat(
       "us", // forcing US to avoid mixed styles on translated pages
@@ -66,7 +40,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
       ? window.charts.displayType
       : "desktop";
 
-    this.chartBreakpointValues = this.chartOptions[
+    this.chartBreakpointValues = chartConfig[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
     ];
     this.dimensions = this.chartBreakpointValues;
@@ -83,10 +57,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-
-
     // Set default values for data and labels
-    this.dataUrl = this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl, 'California');
 
@@ -111,8 +83,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series.TOTAL_TESTS;
-    const lineSeries = this.chartdata.time_series.AVG_TEST_RATE_PER_100K_7_DAYS;
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -133,13 +105,13 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            total_tests_performed:this.intFormatter.format(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.total_tests_performed),
-            new_tests_reported:this.intFormatter.format(Math.abs(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported)),
-            new_tests_reported_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported_delta_1_day)),
+            total_tests_performed:this.intFormatter.format(this.chartdata.latest[this.chartOptions.seriesField].total_tests_performed),
+            new_tests_reported:this.intFormatter.format(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported)),
+            new_tests_reported_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day)),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;
 
           this.innerHTML = template(this.translationsObj);
@@ -166,16 +138,17 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
 
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'TOTAL_TESTS',
-                                                'time_series_key_line':'AVG_TEST_RATE_PER_100K_7_DAYS',
+                                                'time_series_key_bars':this.chartOptions.barsField,
+                                                'time_series_key_line':this.chartOptions.seriesFieldAvg,
                                                 'line_date_offset':0,
-                                                'root_id':'tests-t',
-                                                'left_y_axis_legend':'Tests per 100K',
-                                                'right_y_axis_legend':'Tests',
-                                                'x_axis_legend':'Testing date',
-                                                'line_legend':'7-day average',
-                                                'pending_date':this.chartdata.latest.TOTAL_TESTS_TESTING_DATE.TESTING_UNCERTAINTY_PERIOD,
-                                                'pending_legend':this.translationsObj.pending,
+                                                'root_id':this.chartOptions.rootId,
+                                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                                                'line_legend':this.translationsObj.dayAverage,
+                                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
+                                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].TESTING_UNCERTAINTY_PERIOD,
+                                                'pending_legend':this.translationsObj.pending
                                               });
         }.bind(this)
       );
@@ -187,10 +160,28 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
       "county-selected",
       function (e) {
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace(
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
           this.county.toLowerCase().replace(/ /g, "")
         );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-tests");
+    myFilter.addEventListener(
+      "filter-selected",
+      function (e) {
+        this.chartConfigFilter = e.detail.filterKey;
+        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+        // if I am in a county have to do county url replacement
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+        if(this.county && this.county !== 'California') {
+          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+            "<county>",
+            this.county.toLowerCase().replace(/ /g, "")
+          );
+        }
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
       false
