@@ -593,7 +593,7 @@ module.exports = function(eleventyConfig) {
 
       for(const domTarget of domTargets) {
         if(filesSiteData.indexOf(domTarget)===-1) {
-          console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
+          // console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
         }
       }
       if(lang !== "en") {
