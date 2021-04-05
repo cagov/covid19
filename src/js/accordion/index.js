@@ -42,13 +42,13 @@ export class CaGovAccordion extends window.HTMLElement {
       this.expandTarget.setAttribute('aria-hidden', 'true');
       this.querySelector('.card-header').classList.remove('accordion-alpha-open');
       this.activateButton.setAttribute('aria-expanded', 'false');
-      var allLinks = document.querySelectorAll(".card-container a");
-      var allbuttons = document.querySelectorAll(".card-container button");
+      var allLinks = document.querySelectorAll("cagov-accordion .card-container a");
+      var allbuttons = document.querySelectorAll("cagov-accordion .card-container button");
       for (var i=0; i < allLinks.length; i++) {
         allLinks[i].setAttribute('tabindex', '-1'); // tabindex to all links
       }
       for (var i=0; i < allbuttons.length; i++) {
-        allbuttons[i].setAttribute('tabindex', '-1'); // tabindex to all links
+        allbuttons[i].setAttribute('tabindex', '-1'); // tabindex to all buttons
       }
     }
     
@@ -60,13 +60,13 @@ export class CaGovAccordion extends window.HTMLElement {
       this.querySelector('.card-header').classList.add('accordion-alpha-open');
       this.querySelector('.card-container').classList.remove('collapsed');
       this.activateButton.setAttribute('aria-expanded', 'true');
-      var allLinks = document.querySelectorAll(".card-container a");
-      var allbuttons = document.querySelectorAll(".card-container button");
+      var allLinks = document.querySelectorAll("cagov-accordion .card-container a");
+      var allbuttons = document.querySelectorAll("cagov-accordion .card-container button");
       for (var i=0; i < allLinks.length; i++) {
         allLinks[i].removeAttribute("tabindex"); // remove tabindex from all the links
       }
       for (var i=0; i < allbuttons.length; i++) {
-        allbuttons[i].removeAttribute("tabindex"); // remove tabindex from all the links
+        allbuttons[i].removeAttribute("tabindex"); // remove tabindex from all the buttons
       }
     }
   }
@@ -75,13 +75,13 @@ export class CaGovAccordion extends window.HTMLElement {
 
 
 // making sure that all links inside of the accordion container are having tabindex -1
-var allLinks = document.querySelectorAll(".card-container a");
-var allbuttons = document.querySelectorAll(".card-container button");
+var allLinks = document.querySelectorAll("cagov-accordion .card-container a");
+var allbuttons = document.querySelectorAll("cagov-accordion .card-container button");
 for (var i=0; i < allLinks.length; i++) {
-  allLinks[i].setAttribute('tabindex', '-1'); // tabindex to all links
+  allLinks[i].setAttribute('tabindex', '-1'); 
 }
 
 for (var i=0; i < allbuttons.length; i++) {
-  allbuttons[i].setAttribute('tabindex', '-1'); // tabindex to all links
+  allbuttons[i].setAttribute('tabindex', '-1');
 }
   
