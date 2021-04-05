@@ -198,6 +198,21 @@ module.exports = function(eleventyConfig) {
     return floatFormatter.format(number);
   }
   );
+  eleventyConfig.addFilter('formatNumberSmall', (number,tags) => {
+    if (number < 0.005) {
+      fractionDigits = 3;
+    } else if (number < 0.05) {
+      fractionDigits = 2;
+    } else {
+      fractionDigits = 1;
+    }
+    let floatFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
+                  {style:'decimal', 
+                   minimumFractionDigits:fractionDigits,
+                   maximumFractionDigits:fractionDigits});
+    return floatFormatter.format(number);
+  }
+  );
   function addSeperator(nStr){
     nStr += '';
     x = nStr.split('.');

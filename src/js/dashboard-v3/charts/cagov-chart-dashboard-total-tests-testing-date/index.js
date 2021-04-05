@@ -6,6 +6,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-total-tests-testing-date
 class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
@@ -16,23 +17,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
     this.chartConfigKey = this.dataset.chartConfigKey;
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.float1Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-    this.float2Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -88,8 +72,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
-      TOTAL_TESTS:this.intFormatter.format(barSeries[di].VALUE),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -105,9 +89,9 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            total_tests_performed:this.intFormatter.format(this.chartdata.latest[this.chartOptions.seriesField].total_tests_performed),
-            new_tests_reported:this.intFormatter.format(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported)),
-            new_tests_reported_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day)),
+            total_tests_performed:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_tests_performed,{format:'integer'}),
+            new_tests_reported:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported),{format:'integer'}),
+            new_tests_reported_delta_1_day:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day),{format:'percent'}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);

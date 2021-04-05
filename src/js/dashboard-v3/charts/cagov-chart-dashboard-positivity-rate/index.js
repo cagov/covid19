@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-positivity-rate
 class CAGovDashboardPositivityRate extends window.HTMLElement {
@@ -42,23 +43,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
         margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.float1Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-    this.float2Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
-    );
-     this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -115,8 +99,8 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_POSRATE':this.pctFormatter.format(lineSeries[di].VALUE),
-      TOTAL_TESTS:this.intFormatter.format(barSeries[di].VALUE),
+      '7DAY_POSRATE':formatValue(lineSeries[di].VALUE,{format:'percent'}),
+      TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -132,8 +116,8 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            test_positivity_7_days:this.pctFormatter.format(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days),
-            test_positivity_7_days_delta_7_days:this.pctFormatter.format(Math.abs(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days_delta_7_days)),
+            test_positivity_7_days:formatValue(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days,{format:'percent'}),
+            test_positivity_7_days_delta_7_days:formatValue(Math.abs(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days_delta_7_days),{format:'percent'}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
