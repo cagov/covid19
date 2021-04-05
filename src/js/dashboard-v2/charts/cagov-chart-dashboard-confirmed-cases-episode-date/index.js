@@ -134,13 +134,15 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':this.chartOptions.seriesField,
                                                 'time_series_key_line':this.chartOptions.seriesFieldAvg,
+                                                'left_y_div':20,
+                                                'right_y_div':10000,
                                                 'root_id':this.chartOptions.rootId,
                                                 'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                                                 'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                                                 'line_legend':this.translationsObj.dayAverage,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
-                                                'pending_legend':this.translationsObj.pending,
+                                                'pending_legend':'Pending',
                                               });
 
 
