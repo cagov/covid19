@@ -15,12 +15,6 @@
       "dataUrl": "confirmed-cases-reported-date/california.json",
       "dataUrlCounty": "confirmed-cases-reported-date/<county>.json",
       "rootId": "cases-rep"
-    },
-    "fields": {
-      "total_confirmed":"total_confirmed_cases",
-      "new":"new_cases",
-      "new_delta_1_day":"new_cases_delta_1_day",
-      "per_100k_7_days":"cases_per_100k_7_days"
     }
   },
   "deaths": {
@@ -30,7 +24,7 @@
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-death-date/california.json",
       "dataUrlCounty": "confirmed-cases-episode-date/<county>.json",
-      "rootId": "cdeath-date"
+      "rootId": "death-date"
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths-reported-date",
@@ -39,12 +33,26 @@
       "dataUrl": "confirmed-deaths-reported-date/california.json",
       "dataUrlCounty": "confirmed-deaths-reported-date/<county>.json",
       "rootId": "deaths-reported-date"
+    }
+  },
+  "tests": {
+    "testing": {
+      "chartName": "cagov-chart-dashboard-total-tests-testing-date",
+      "seriesField": "TOTAL_TESTS_TESTING_DATE",
+      "barsField": "TOTAL_TESTS",
+      "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
+      "dataUrl": "total-tests-testing-date/california.json",
+      "dataUrlCounty": "total-tests-testing-date/<county>.json",
+      "rootId": "tests-t"
     },
-    "fields": {
-      "total_confirmed":"total_confirmed_deaths",
-      "new":"new_deaths",
-      "new_delta_1_day":"new_deaths_delta_1_day",
-      "per_100k_7_days":"deaths_per_100k_7_days"
+    "reported": {
+      "chartName": "cagov-chart-dashboard-total-tests-reported-date",
+      "seriesField": "TOTAL_TESTS_REPORTED_DATE",
+      "barsField": "REPORTED_TESTS",
+      "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
+      "dataUrl": "total-tests-reported-date/california.json",
+      "dataUrlCounty": "total-tests-reported-date/<county>.json",
+      "rootId": "tests-t"
     }
   },
   "desktop": {
