@@ -2297,6 +2297,71 @@ function reformatJSDate(theDate, // expects javascript date
     return readableDate;
 }
 
+// Generic Formatters
+
+let intFormatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+);
+let float1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let float2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let float3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+let pct0Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let pct3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+
+function formatValue(v, {format='number',min_decimals=1})
+{
+    // console.log("formatValue",v,format);
+    if (format == 'integer') {
+        return intFormatter.format(v);
+    } else if (format == 'percent') {
+        if (v < .00005) {
+            return pct3Formatter.format(v)
+        } else if (v < .0005) {
+            return pct2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return pct0Formatter.format(v)
+        } else {
+            return pct1Formatter.format(v)
+        }
+    } else { // number or float
+        if (v < .005) {
+            return float3Formatter.format(v)
+        } else if (v < .05) {
+            return float2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return intFormatter.format(v)
+        } else {
+            return float1Formatter.format(v)
+        }
+    }
+}
+
 class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovVaccinationGroupsAge");
@@ -2359,15 +2424,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts();
 
@@ -2446,9 +2502,9 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     let label = applySubstitutions(this.translationsObj.barLabel, {'N':d.D.HPIQUARTILE});
     // let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
     if(d.KEY == "PARTIALLY_VACCINATED_RATIO") {
-      label += `${this.pctFormatter.format(d.D.PARTIALLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel1}`;
+      label += `${formatValue(d.D.PARTIALLY_VACCINATED_RATIO,{format:'percent'})} ${this.translationsObj.legendLabel1}`;
     } else {
-      label += `${this.pctFormatter.format(d.D.FULLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel2}`;
+      label += `${formatValue(d.D.FULLY_VACCINATED_RATIO,{format:'percent'})} ${this.translationsObj.legendLabel2}`;
     }
     
     return label;
@@ -2482,7 +2538,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.D[d.KEY]))
+        .text(d => formatValue(d.D[d.KEY],{format:'percent'}))
         .attr('text-anchor','middle');
     let capFields = ['PARTIALLY_VACCINATED', 'FULLY_VACCINATED'];
     groups
@@ -2492,7 +2548,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
+        .text((d,i) => formatValue(d.D[capFields[i]],{format:'integer'}))
         .attr('text-anchor','middle');
 
     // bottom caption
@@ -2875,15 +2931,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -2942,7 +2989,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
 
   ariaLabel(d, totalDosesAllQuartiles) {
     const barLabel = applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE});
-    let label = `${this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles)} ${this.translationsObj.legendLabel1} in ${barLabel}`;
+    let label = `${formatValue(d.COMBINED_DOSES/totalDosesAllQuartiles,{format:'percent'})} ${this.translationsObj.legendLabel1} in ${barLabel}`;
     return label;
   }
 
@@ -2968,7 +3015,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 18)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles))
+        .text(d => formatValue(d.COMBINED_DOSES/totalDosesAllQuartiles,{format:'percent'}))
         .attr('text-anchor','middle');
 
     groups
@@ -2976,7 +3023,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 4)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
+        .text((d,i) => formatValue(d.COMBINED_DOSES,{format:'integer'}))
         .attr('text-anchor','middle');
 
     
@@ -3198,6 +3245,8 @@ function template$3({
  * @param {number} x 
  * @param {number} y 
  */
+
+
 function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
     const legendText = this.getLegendText();
@@ -3346,10 +3395,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
       .attr("y", (d, i) => y(d.CATEGORY) + (y.bandwidth() / 2))
       .attr("x", d => x(max_x_domain)+12)
       // .attr("width", x.bandwidth() / 4)
-      .text(d => this.pctFormatter.format(d.METRIC_VALUE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
+      .text(d => formatValue(d.METRIC_VALUE,{format:'percent'}))
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
 
@@ -3501,15 +3547,6 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts();
 
@@ -3771,15 +3808,6 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -4024,15 +4052,6 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -4158,8 +4177,8 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          this.alldata = croppedData;
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
 
 
           renderChart.call(this,null,null,null,'ve-age');

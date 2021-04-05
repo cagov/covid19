@@ -1519,6 +1519,71 @@ function chartOverlayBoxClear(svg, boxClass) {
     svg.style("opacity",1);
 }
 
+// Generic Formatters
+
+let intFormatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+);
+let float1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let float2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let float3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+let pct0Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let pct3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+
+function formatValue(v, {format='number',min_decimals=1})
+{
+    // console.log("formatValue",v,format);
+    if (format == 'integer') {
+        return intFormatter.format(v);
+    } else if (format == 'percent') {
+        if (v < .00005) {
+            return pct3Formatter.format(v)
+        } else if (v < .0005) {
+            return pct2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return pct0Formatter.format(v)
+        } else {
+            return pct1Formatter.format(v)
+        }
+    } else { // number or float
+        if (v < .005) {
+            return float3Formatter.format(v)
+        } else if (v < .05) {
+            return float2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return intFormatter.format(v)
+        } else {
+            return float1Formatter.format(v)
+        }
+    }
+}
+
 function drawBars$2(stackedData, data, statewideRatePer100k) {
   // console.log("Draw bars this.dimensions",this.dimensions);
   // using object context for most of the params
@@ -1692,7 +1757,7 @@ function drawBars$2(stackedData, data, statewideRatePer100k) {
             d.METRIC_VALUE_PER_100K !== null
           ) {
             return d.METRIC_VALUE_PER_100K
-              ? this.intFormatter.format(d.METRIC_VALUE_PER_100K)
+              ? formatValue(d.METRIC_VALUE_PER_100K,{format:'integer'})
               : 0;
           } else {
             if (d.APPLIED_SUPPRESSION === "Total") {
@@ -2058,11 +2123,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
     };
-    this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:0,
-                   maximumFractionDigits:0});
-
     // Resizing
     getScreenResizeCharts();
     this.screenDisplayType = window.charts
@@ -2115,7 +2175,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         "--" +
         this.selectedMetric;
       let filterTxt =
-        this.translationsObj[key] + this.intFormatter.format(statewideRatePer100k);
+        this.translationsObj[key] + formatValue(statewideRatePer100k,{format:'integer'});
       // console.log("Filter key",key);
       // console.log("Filter text",filterTxt);
       filterTxt = filterTxt.replace(
@@ -2135,7 +2195,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
         .replace("placeholderDEMO_CAT", a)
-        .replace("placeholderMETRIC_100K", this.intFormatter.format(b))
+        .replace("placeholderMETRIC_100K", formatValue(b,{format:'integer'}))
         .replace("placeholderFilterScope", c);
       return caption;
     };
@@ -5073,7 +5133,7 @@ function rewriteBarLabels(component, svg, data, x, y, sparkline) {
     .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
     .attr("width", x.bandwidth() / 4)
     .html(d => {
-      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${component.floatFormatter.format(d.CASE_RATE_PER_100K)}</tspan>
+      return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${formatValue(d.CASE_RATE_PER_100K)}</tspan>
       <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
     })
     .attr('text-anchor','middle');
@@ -5106,7 +5166,7 @@ function redrawYLine(component, y, dataset) {
     .attr('class','label bar-chart-yline');
   
   component.svg.append("text")
-    .text(`${component.translationsObj.statewideCaseRate} ${component.floatFormatter.format(component.yDValue)}`)
+    .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
     .attr("y", yDottedLinePos - 6)
     // .attr("x", 38)
     // .attr('text-anchor','start')
@@ -5194,17 +5254,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:0,
-                   maximumFractionDigits:0});
-
-    this.floatFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:1,
-                   maximumFractionDigits:1});
-
-         getScreenResizeCharts();
+    getScreenResizeCharts();
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
@@ -5302,7 +5352,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['ariaBarLabel'];
       let label = templateStr
-                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', formatValue(d.CASE_RATE_PER_100K,{format:'number',min_decimals:1}))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return label;
   }
@@ -5311,7 +5361,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['tooltipCaption'];
       let caption = templateStr
-                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', formatValue(d.CASE_RATE_PER_100K,{format:'number',min_decimals:1}))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return caption;
   }

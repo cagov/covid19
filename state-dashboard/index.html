@@ -1521,6 +1521,71 @@ function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
     }
 }
 
+// Generic Formatters
+
+let intFormatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+);
+let float1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let float2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let float3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "decimal", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+let pct0Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct1Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+);
+let pct2Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
+let pct3Formatter = new Intl.NumberFormat(
+    "us", // forcing US to avoid mixed styles on translated pages
+    { style: "percent", minimumFractionDigits: 3, maximumFractionDigits: 3 }
+);
+
+
+function formatValue(v, {format='number',min_decimals=1})
+{
+    // console.log("formatValue",v,format);
+    if (format == 'integer') {
+        return intFormatter.format(v);
+    } else if (format == 'percent') {
+        if (v < .00005) {
+            return pct3Formatter.format(v)
+        } else if (v < .0005) {
+            return pct2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return pct0Formatter.format(v)
+        } else {
+            return pct1Formatter.format(v)
+        }
+    } else { // number or float
+        if (v < .005) {
+            return float3Formatter.format(v)
+        } else if (v < .05) {
+            return float2Formatter.format(v)
+        } else if (min_decimals == 0) {
+            return intFormatter.format(v)
+        } else {
+            return float1Formatter.format(v)
+        }
+    }
+}
+
 /**
  * Primary chart rendering function
  * @param {object} svg 
@@ -1528,6 +1593,8 @@ function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
  * @param {number} x 
  * @param {number} y 
  */
+
+
 function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
     const legendText = this.getLegendText();
@@ -1676,10 +1743,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
       .attr("y", (d, i) => y(d.CATEGORY) + (y.bandwidth() / 2))
       .attr("x", d => x(max_x_domain)+12)
       // .attr("width", x.bandwidth() / 4)
-      .text(d => this.pctFormatter.format(d.METRIC_VALUE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
+      .text(d => formatValue(d.METRIC_VALUE,{format:'percent'}))
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start');
 
@@ -1870,15 +1934,6 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
       'Native Hawaiian and other Pacific Islander':'NHPI',
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -1934,8 +1989,8 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -1943,8 +1998,8 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY);
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
@@ -2116,15 +2171,6 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
       'Native Hawaiian and other Pacific Islander':'NHPI',
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -2179,8 +2225,8 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -2188,8 +2234,8 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY);
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
@@ -2349,15 +2395,6 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
       // 'Unknown':'Unknown/undifferentiated',
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -2412,8 +2449,8 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -2421,8 +2458,8 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY+'s');
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
@@ -2590,15 +2627,6 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
       // 'Unknown':'Unknown/undifferentiated',
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -2653,8 +2681,8 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}s</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -2662,8 +2690,8 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY+'s');
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
@@ -2815,15 +2843,6 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -2878,8 +2897,8 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -2887,8 +2906,8 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY);
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
@@ -3046,15 +3065,6 @@ class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts();
 
     this.screenDisplayType = window.charts
@@ -3110,8 +3120,8 @@ class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -3119,8 +3129,8 @@ class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY);
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }
