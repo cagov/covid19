@@ -13,13 +13,13 @@ const stagingConfig =  {
   chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
 }
 
-const devOutputPath = 'docs/js/dashboard-v2.js';
-const prodOutputPath = 'pages/_buildoutput/dashboard-v2.js';
+const devOutputPath = 'docs/js/dashboard-v3.js';
+const prodOutputPath = 'pages/_buildoutput/dashboard-v3.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
 export default {
-  input: 'src/js/dashboard-v2/index.js',
+  input: 'src/js/dashboard-v3/index.js',
   output: {
     intro: 'const config = '+JSON.stringify(jsConfig),
     file: outputPath,

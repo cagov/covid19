@@ -18,6 +18,7 @@ import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
 import './charts-sandbox/index.js';
 import './dashboard-v2/index.js';
+import './dashboard-v3/index.js';
 
 // import applyAccordionListeners from './tracking-you/index.js';
 // // twitter widget doesn't support IE11 so not including here
