@@ -7,6 +7,7 @@ import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
 import dashboard1 from './dashboard-v1/rollup.config';
 import dashboard2 from './dashboard-v2/rollup.config';
+import dashboard3 from './dashboard-v3/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
 import chartssandbox from './charts-sandbox/rollup.config';
@@ -48,6 +49,7 @@ export default [
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard-v1/', '../../docs/js/dashboard-v1.js') ? [dashboard1] : []),
   ...(shouldIRebuild('/dashboard-v2/', '../../docs/js/dashboard-v2.js') ? [dashboard2] : [dashboard2]),
+  ...(shouldIRebuild('/dashboard-v3/', '../../docs/js/dashboard-v3.js') ? [dashboard3] : [dashboard3]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
