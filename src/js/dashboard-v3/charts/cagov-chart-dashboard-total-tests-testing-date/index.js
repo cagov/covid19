@@ -67,9 +67,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
+    const barSeries = this.chartdata.time_series[this.chartOptions.barsField];
     const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
-    // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
       '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
