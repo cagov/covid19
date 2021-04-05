@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-05T21:51:56Z"
+publishdate: "2021-04-05T23:40:41Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -55,7 +55,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
   %} 
 -->
-
 
 
 
@@ -272,8 +271,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed cases in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li>
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
           <li data-label="tooltipContent">
                   Episode Date: <b>{DATE}</b><br>
@@ -300,8 +299,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed deaths in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li>
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
           <li data-label="tooltipContent">
             Death Date: <b>{DATE}</b><br>
@@ -315,7 +314,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-confirmed-deaths-death-date>               
+      </cagov-chart-dashboard-confirmed-deaths-death-date>              
     </div> 
   </div>
 
@@ -351,8 +350,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <ul class="d-none">
           <li data-label="chartTitle">Total tests in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> decrease)</li>
           <li data-label="tooltipContent">
             Testing Date: <b>{DATE} </b><br>
             7-day average test rate per 100K: <b>{7DAY_AVERAGE} </b><br>
@@ -365,7 +364,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-total-tests-testing-date>                
+      </cagov-chart-dashboard-total-tests-testing-date>               
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
       <cagov-chart-dashboard-positivity-rate class="chart">
@@ -381,7 +380,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           </li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-positivity-rate>               
+      </cagov-chart-dashboard-positivity-rate>                
     </div> 
   </div>
 
