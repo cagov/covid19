@@ -8,7 +8,6 @@ cagov-accordion .card {
 cagov-accordion .card-container {
   display: block;
   overflow: hidden;
-  transition: height 0.3s;
   &[aria-hidden="false"] {
     border-bottom: 1px solid $darkblue;
   }
@@ -16,6 +15,7 @@ cagov-accordion .card-container {
 
 cagov-accordion.prog-enhanced .card-container {
   height: 0px;
+  transition: height 0.3s ease;
 }
 
 cagov-accordion .collapsed {
