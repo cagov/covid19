@@ -149,7 +149,7 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'ICU_PATIENTS',
                                                 'time_series_key_line':'ICU_PATIENTS_14_DAY_AVG',
-                                                'line_date_offset':-7,
+                                                'line_date_offset':0,
                                                 'root_id':'hosp-p',
                                                 'x_axis_legend':'Reported date',
                                                 'line_legend':'14-day average',
