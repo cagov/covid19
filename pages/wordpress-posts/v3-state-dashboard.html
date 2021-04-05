@@ -255,10 +255,27 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
 
-
+<style type="text/css">
+.js-filter-cases, .js-filter-deaths {
+  position: absolute;
+  top: 57px;
+  display: block;
+  z-index: 5;
+  width: 94%;
+}
+.js-filter-cases .small-tab, .js-filter-deaths .small-tab {
+  width: 50%;
+}
+cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-chart-dashboard-confirmed-deaths-death-date.chart .chart-title {
+  margin-bottom: 50px;
+}
+.pos-rel {
+  position: relative;
+}
+</style>
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="col-lg-6 col-md-6 col-sm-12 pos-rel">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-cases">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="episode">Episode date</button>
@@ -286,7 +303,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         </ul>
       </cagov-chart-dashboard-confirmed-cases-episode-date>                
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="col-lg-6 col-md-6 col-sm-12 pos-rel">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-deaths">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="death">Death date</button>
@@ -338,12 +355,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-filter-buttons class="js-re-smalls js-filter-tests">
+      <!--<cagov-chart-filter-buttons class="js-re-smalls js-filter-tests">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="testing">Testing date</button>
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
-      </cagov-chart-filter-buttons>
+      </cagov-chart-filter-buttons>-->
       <cagov-chart-dashboard-total-tests-testing-date class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">
         <ul class="d-none">
           <li data-label="chartTitle">Total tests in</li>
