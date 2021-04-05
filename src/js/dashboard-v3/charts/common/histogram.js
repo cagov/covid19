@@ -262,7 +262,7 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
   tooltip.style("left",`${event.offsetX}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(event.offsetY+170)}px`);
+  tooltip.style("top",`${(event.offsetY+220)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
