@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-groups-age-cases
 
@@ -67,15 +68,6 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts(this);
 
     this.screenDisplayType = window.charts
@@ -130,8 +122,8 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     // !! replacements here for category, metric-value, metric-baseline-value
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
-    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${this.pctFormatter.format(d.METRIC_VALUE)}</span>`);
-    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${this.pctFormatter.format(bd[0].METRIC_VALUE)}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
     return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
   }
 
@@ -139,8 +131,8 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     let caption = this.translationsObj.chartBarCaption;
     let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
     caption = caption.replace('{category}', d.CATEGORY);
-    caption = caption.replace('{metric-value}', this.pctFormatter.format(d.METRIC_VALUE));
-    caption = caption.replace('{metric-baseline-value}', this.pctFormatter.format(bd[0].METRIC_VALUE));
+    caption = caption.replace('{metric-value}', formatValue(d.METRIC_VALUE,{format:'percent'}));
+    caption = caption.replace('{metric-baseline-value}', formatValue(bd[0].METRIC_VALUE,{format:'percent'}));
     // console.log("Aria Label",caption);
     return caption;
   }

@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-confirmed-deaths-reported-date
 class CAGovDashboardConfirmedDeathsReportedDate extends window.HTMLElement {
@@ -42,23 +43,6 @@ class CAGovDashboardConfirmedDeathsReportedDate extends window.HTMLElement {
         margin: { left: 50, top: 30,  right: 60,  bottom: 45  },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.float1Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-    this.float2Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -116,8 +100,8 @@ class CAGovDashboardConfirmedDeathsReportedDate extends window.HTMLElement {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
-      DEATHS:this.intFormatter.format(barSeries[di].VALUE),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      DEATHS:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -133,10 +117,10 @@ class CAGovDashboardConfirmedDeathsReportedDate extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            total_confirmed_deaths:this.intFormatter.format(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.total_confirmed_deaths),
-            new_deaths:this.intFormatter.format(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.new_deaths),
-            new_deaths_delta_1_day:this.pctFormatter.format(Math.abs(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.new_deaths_delta_1_day)),
-            deaths_per_100k_7_days:this.float2Formatter.format(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.deaths_per_100k_7_days),
+            total_confirmed_deaths:formatValue(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.total_confirmed_deaths,{format:'integer'}),
+            new_deaths:formatValue(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.new_deaths,{format:'integer'}),
+            new_deaths_delta_1_day:formatValue(Math.abs(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.new_deaths_delta_1_day),{format:'percent'}),
+            deaths_per_100k_7_days:formatValue(this.chartdata.latest.CONFIRMED_DEATHS_REPORTED_DATE.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
