@@ -5,6 +5,7 @@ import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate } from "./../../../common/readable-date.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
@@ -68,15 +69,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -155,9 +147,9 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     let label = applySubstitutions(this.translationsObj.barLabel, {'N':d.D.HPIQUARTILE});
     // let label = `${this.translationsObj.barLabel.replace('{N}',d.D.HPIQUARTILE)} `;
     if(d.KEY == "PARTIALLY_VACCINATED_RATIO") {
-      label += `${this.pctFormatter.format(d.D.PARTIALLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel1}`;
+      label += `${formatValue(d.D.PARTIALLY_VACCINATED_RATIO,{format:'percent'})} ${this.translationsObj.legendLabel1}`;
     } else {
-      label += `${this.pctFormatter.format(d.D.FULLY_VACCINATED_RATIO)} ${this.translationsObj.legendLabel2}`;
+      label += `${formatValue(d.D.FULLY_VACCINATED_RATIO,{format:'percent'})} ${this.translationsObj.legendLabel2}`;
     }
     
     return label;
@@ -191,7 +183,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.D[d.KEY]))
+        .text(d => formatValue(d.D[d.KEY],{format:'percent'}))
         .attr('text-anchor','middle');
     let capFields = ['PARTIALLY_VACCINATED', 'FULLY_VACCINATED'];
     let barcaps2 = groups
@@ -201,7 +193,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
+        .text((d,i) => formatValue(d.D[capFields[i]],{format:'integer'}))
         .attr('text-anchor','middle');
 
     // bottom caption

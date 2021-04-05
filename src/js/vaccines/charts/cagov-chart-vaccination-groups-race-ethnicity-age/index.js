@@ -2,6 +2,7 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
   connectedCallback() {
@@ -70,15 +71,6 @@ class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -221,9 +213,7 @@ class CAGovVaccinationGroupsRaceEthnicityAge extends window.HTMLElement {
       .attr("x", (d) => x(max_x_domain))
       // .attr("width", x.bandwidth() / 4)
       .html((d) => {
-        return `<tspan dx="1.0em">${this.intFormatter.format(
-          d.METRIC_VALUE
-        )}</tspan>`;
+        return `<tspan dx="1.0em">${formatValue(d.METRIC_VALUE,{format:'integer'})}</tspan>`;
       })
       .attr("dominant-baseline", "middle")
       .attr("text-anchor", "start");

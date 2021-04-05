@@ -2,6 +2,7 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
@@ -68,15 +69,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -159,7 +151,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 18)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.COMBINED_DOSES_RATIO))
+        .text(d => formatValue(d.COMBINED_DOSES_RATIO,{format:'percent'}))
         .attr('text-anchor','middle');
 
     groups
@@ -167,7 +159,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES_RATIO) - 4)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
+        .text((d,i) => formatValue(d.COMBINED_DOSES,{format:'integer'}))
         .attr('text-anchor','middle');
 
     
