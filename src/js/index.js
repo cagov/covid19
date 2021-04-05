@@ -1,4 +1,4 @@
-import '@cagov/accordion';
+import './accordion/index.js';
 import './pagerating/index.js';
 import './survey-vaccine/index.js';
 import './feature-detect/webp.js';
