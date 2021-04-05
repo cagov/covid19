@@ -2,6 +2,7 @@ import template from "./template.js";
 import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinesHPIPeople extends window.HTMLElement {
   connectedCallback() {
@@ -67,15 +68,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -182,7 +174,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 18)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.D[d.KEY]))
+        .text(d => formatValue(d.D[d.KEY],{format:'percent'}))
         .attr('text-anchor','middle');
     let capFields = ['FIRST_DOSE', 'COMPLETED_DOSE'];
     let barcaps2 = groups
@@ -192,7 +184,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.D[d.KEY]) - 4)
         .attr("x", (d, i) => xScaleInner(i)+xScaleInner.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.D[capFields[i]]))
+        .text((d,i) => formatValue(d.D[capFields[i]],{format:'integer'}))
         .attr('text-anchor','middle');
 
     // barcaps.append("text")
@@ -212,10 +204,6 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
       .attr("x", (d, i) => xScaleOuter.bandwidth()/2)
       // .attr("width", x.bandwidth() / 4)
       .text(d =>  this.translationsObj.barLabel.replace('{N}',d.HPIQUARTILE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
-      // .attr('dominant-baseline','text-top')
       .attr('text-anchor','middle')
 
 

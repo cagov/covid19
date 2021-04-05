@@ -5,6 +5,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 import rtlOverride from "./../../../common/rtl-override.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -64,11 +65,6 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
     };
-    this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:0,
-                   maximumFractionDigits:0});
-
     // Resizing
     getScreenResizeCharts(this);
     this.screenDisplayType = window.charts
@@ -121,7 +117,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         "--" +
         this.selectedMetric;
       let filterTxt =
-        this.translationsObj[key] + this.intFormatter.format(statewideRatePer100k);
+        this.translationsObj[key] + formatValue(statewideRatePer100k,{format:'integer'});
       // console.log("Filter key",key);
       // console.log("Filter text",filterTxt);
       filterTxt = filterTxt.replace(
@@ -141,7 +137,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
         .replace("placeholderDEMO_CAT", a)
-        .replace("placeholderMETRIC_100K", this.intFormatter.format(b))
+        .replace("placeholderMETRIC_100K", formatValue(b,{format:'integer'}))
         .replace("placeholderFilterScope", c);
       return caption;
     };

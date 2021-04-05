@@ -3,6 +3,7 @@ import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewr
 import getTranslations from '../../../common/get-strings-list.js';
 import getScreenResizeCharts from './../../../common/get-window-size.js';
 import rtlOverride from "./../../../common/rtl-override.js";
+import formatValue from "./../../../common/value-formatters.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
@@ -82,17 +83,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:0,
-                   maximumFractionDigits:0});
-
-    this.floatFormatter = new Intl.NumberFormat('us', // forcing US to avoid mixed styles on translated pages
-                  {style:'decimal', 
-                   minimumFractionDigits:1,
-                   maximumFractionDigits:1});
-
-         getScreenResizeCharts(this);
+    getScreenResizeCharts(this);
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
@@ -190,7 +181,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // ${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)} cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['ariaBarLabel']
       let label = templateStr
-                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', formatValue(d.CASE_RATE_PER_100K,{format:'number',min_decimals:1}))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return label;
   }
@@ -199,7 +190,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // <span class="highlight-data">${parseFloat(d.CASE_RATE_PER_100K).toFixed(1)}</span> cases per 100K people. ${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}% change since previous week
       let templateStr = this.translationsObj['tooltipCaption']
       let caption = templateStr
-                    .replace('placeholderCaseRate', this.floatFormatter.format(d.CASE_RATE_PER_100K))
+                    .replace('placeholderCaseRate', formatValue(d.CASE_RATE_PER_100K,{format:'number',min_decimals:1}))
                     .replace('placeholderRateDiff30', parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1) + '%');
       return caption;
   }

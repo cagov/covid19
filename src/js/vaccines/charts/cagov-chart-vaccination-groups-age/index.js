@@ -67,15 +67,6 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts(this);
 
     this.screenDisplayType = window.charts
@@ -201,8 +192,8 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
-          this.alldata = croppedData;
+          // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          // this.alldata = croppedData;
 
 
           renderChart.call(this,null,null,null,'ve-age');

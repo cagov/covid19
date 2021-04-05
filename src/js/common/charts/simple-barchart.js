@@ -5,6 +5,9 @@
  * @param {number} x 
  * @param {number} y 
  */
+import formatValue from "./../value-formatters.js";
+
+
 function writeLegend(svg, data, x, y, baselineData) {
     // Build legend.
     const legendText = this.getLegendText();
@@ -153,10 +156,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
       .attr("y", (d, i) => y(d.CATEGORY) + (y.bandwidth() / 2))
       .attr("x", d => x(max_x_domain)+12)
       // .attr("width", x.bandwidth() / 4)
-      .text(d => this.pctFormatter.format(d.METRIC_VALUE))
-      // .html(d => {
-      //   return `<tspan dx="1.5em">${this.pctFormatter.format(d.METRIC_VALUE)}</tspan>`
-      // })
+      .text(d => formatValue(d.METRIC_VALUE,{format:'percent'}))
       .attr('dominant-baseline','middle')
       .attr('text-anchor','start')
 
