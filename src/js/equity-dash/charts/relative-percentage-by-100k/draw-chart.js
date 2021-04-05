@@ -1,4 +1,5 @@
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 export default function drawBars(stackedData, data, statewideRatePer100k) {
   // console.log("Draw bars this.dimensions",this.dimensions);
@@ -173,7 +174,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
             d.METRIC_VALUE_PER_100K !== null
           ) {
             return d.METRIC_VALUE_PER_100K
-              ? this.intFormatter.format(d.METRIC_VALUE_PER_100K)
+              ? formatValue(d.METRIC_VALUE_PER_100K,{format:'integer'})
               : 0;
           } else {
             if (d.APPLIED_SUPPRESSION === "Total") {

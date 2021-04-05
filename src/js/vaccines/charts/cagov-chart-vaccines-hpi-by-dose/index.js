@@ -5,6 +5,7 @@ import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate } from "./../../../common/readable-date.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinesHPIDose extends window.HTMLElement {
   connectedCallback() {
@@ -70,15 +71,6 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
       },
     };
 
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-
     getScreenResizeCharts(this);
 
     this.screenDisplayType = window.charts
@@ -137,7 +129,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
 
   ariaLabel(d, totalDosesAllQuartiles) {
     const barLabel = applySubstitutions(this.translationsObj.barLabel, {'N':d.HPIQUARTILE});
-    let label = `${this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles)} ${this.translationsObj.legendLabel1} in ${barLabel}`;
+    let label = `${formatValue(d.COMBINED_DOSES/totalDosesAllQuartiles,{format:'percent'})} ${this.translationsObj.legendLabel1} in ${barLabel}`;
     return label;
   }
 
@@ -163,7 +155,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-1")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 18)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text(d => this.pctFormatter.format(d.COMBINED_DOSES/totalDosesAllQuartiles))
+        .text(d => formatValue(d.COMBINED_DOSES/totalDosesAllQuartiles,{format:'percent'}))
         .attr('text-anchor','middle');
 
     groups
@@ -171,7 +163,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         .attr("class", "bar-upper-label-2")
         .attr("y", (d, i) => yScale(d.COMBINED_DOSES/totalDosesAllQuartiles) - 4)
         .attr("x", (d, i) => xScale(i)+xScale.bandwidth()/2)
-        .text((d,i) => this.intFormatter.format(d.COMBINED_DOSES))
+        .text((d,i) => formatValue(d.COMBINED_DOSES,{format:'integer'}))
         .attr('text-anchor','middle');
 
     
