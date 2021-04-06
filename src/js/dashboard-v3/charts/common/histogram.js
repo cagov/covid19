@@ -286,6 +286,12 @@ function hideTooltip()
   this.svg.selectAll('g.tt-marker').remove();
 }
 
+/**
+ * This function produces a tick-division (similar to d3.scale.ticks()[1]) which optimizes for about 5 grid lines 
+ * (as opposed to D3's 10) with pretty divisions.
+ * @param {*} ascale 
+ * @returns 
+ */
 function getAxisDiv(ascale) {
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
