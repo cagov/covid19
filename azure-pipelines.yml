@@ -10,8 +10,7 @@ trigger:
 pr: none
 
 pool:
-  ReleaseAgent: AzureProdAse
-  Agent.Name: prod-ase01-jump
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: DeleteFiles@1
