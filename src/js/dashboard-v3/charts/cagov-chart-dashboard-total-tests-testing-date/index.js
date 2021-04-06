@@ -152,23 +152,25 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
       false
     );
     let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-tests");
-    myFilter.addEventListener(
-      "filter-selected",
-      function (e) {
-        this.chartConfigFilter = e.detail.filterKey;
-        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-        // if I am in a county have to do county url replacement
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-        if(this.county && this.county !== 'California') {
-          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-            "<county>",
-            this.county.toLowerCase().replace(/ /g, "")
-          );
-        }
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
+    if(myFilter) {
+      myFilter.addEventListener(
+        "filter-selected",
+        function (e) {
+          this.chartConfigFilter = e.detail.filterKey;
+          this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+          // if I am in a county have to do county url replacement
+          let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+          if(this.county && this.county !== 'California') {
+            searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+              "<county>",
+              this.county.toLowerCase().replace(/ /g, "")
+            );
+          }
+          this.retrieveData(searchURL, e.detail.county);
+        }.bind(this),
+        false
+      );
+    }
   }
 }
 
