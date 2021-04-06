@@ -169,7 +169,7 @@ ga('tracker3.send', 'pageview');
 <script nomodule src="/js/es5.js"></script>
 <cagov-anchor-events></cagov-anchor-events>
 {% if page.url != "/" %} <!-- Do not display go-to-top on homepage. -->
-	<cagov-go-to-top data-hide-after="{{var_go_to_top_duration}}" data-label="{{var_go_to_top_label}}"></cagov-go-to-top>
+	<cagov-go-to-top data-hide-after="{{text.var_go_to_top_duration}}" data-label="{{text.var_go_to_top_label}}"></cagov-go-to-top>
 {% endif %}
 
 {% include "googletranslate.njk" %}
