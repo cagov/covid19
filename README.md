@@ -24,7 +24,7 @@ Because navigating this crisis requires public compliance with frequently-changi
 ### Trustworthy 
 Content on the site must be true, complete, and current. This means that the web team must be able to update the content rapidly to fit changing circumstances, and approval must be iterative so that the site is never out-of-date. To maintain trust, it’s crucial that the site come across as an apolitical authority, not as a vehicle for political messaging.
 
-### Inclusive.
+### Inclusive
 We strive to consider the context in which Californians come to our site and how it may enable or prevent them from getting what they need, this includes language limitations. Our site is translated daily in 7 languages in addition to English: Spanish, Traditional Chinese, Simplified Chinese, Vietnamese, Korean, Tagalog, and Arabic. See the <a href="https://docs.google.com/document/d/10Nz7sFJBlcOXNPhaw6ujjSFvv99xvid3kwBp58Up9Eo/edit#">full list for inclusivity considerations and common issues</a>.
 
 ## Content style guide 
@@ -33,7 +33,7 @@ Read the <a href="https://handbook.digital.ca.gov/">California Design Handbook</
 ## Contact
 We are growing our team! Visit <a href="http://digital.ca.gov">digital.ca.gov</a> to see if there is an open opportunity that sparks your interest.
 
-For content requests or questions, email: covid19@alpha.ca.gov 
+For content requests or questions, email: <a href="mailto:covid19@alpha.ca.gov">covid19@alpha.ca.gov</a>. 
 
 ***
 
