@@ -69,7 +69,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
 					</div>
 
 
@@ -132,7 +132,7 @@ formatNumber(tags,1)-%}
 						</div>
 						<div class="col-md-6 px-10px">
 							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ varTestsReported }}</div>
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTestsReported }}</div>
 							
 								<div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">{{translatedLabels.varTotal}}</span></div>
 								<div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
@@ -165,7 +165,7 @@ formatNumber(tags,1)-%}
 						</div>
 					</div>
 					<div class="text-sm text-center text-300 ptop-12px">
-						Details about this data are available in the <a class="hero-stats-footer-slink" href="/state-dashboard/">state dashboard</a>.
+						{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="/state-dashboard/">{{translatedLabels.varStateDashboard}}</a>.
 					</div>
 						
 					<div class="hero-stats-footer">
