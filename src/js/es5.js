@@ -2,7 +2,7 @@ import './config/staging.js';
 import '@webcomponents/webcomponentsjs';
 import 'whatwg-fetch';
 import './polyfills/endswith.js';
-import '@cagov/accordion';
+// import '@cagov/accordion'; accordion indicator svgs are broken, disable accordions in IE until fixed
 import '@cagov/step-list';
 import './dashboard-v2/async-polyfill.js';
 import './alerts/index.js';
@@ -18,11 +18,11 @@ import './vaccines/charts/ie11.scss';
 import './charts-sandbox/index.js';
 import './dashboard-v2/index.js';
 
-import applyAccordionListeners from './tracking-you/index.js';
-// twitter widget doesn't support IE11 so not including here
-window.onload = (event) => {
-  applyAccordionListeners();
-};
+// import applyAccordionListeners from './tracking-you/index.js';
+// // twitter widget doesn't support IE11 so not including here
+// window.onload = (event) => {
+//   applyAccordionListeners();
+// };
 
 // This is an IE polyfill for CustomEvent.
 // Thank you, MDN. https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
