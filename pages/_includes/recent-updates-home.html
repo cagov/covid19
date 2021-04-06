@@ -6,9 +6,7 @@
     
       <h2 class="color-purple mt-0 mb-0">Recent updates</h2>
       <div class="news-grid">
-        {% set JSONgovraw %}
-        {% include (language.includepath + "updates-section-homepage" + language.filepostfix + ".json") %}
-        {% endset %}
+        {% set JSONgovraw %}{% include "../wordpress-posts/updates-section-homepage.json" %}{% endset %}
         {% set JSONgov = JSONgovraw | jsonparse %}
         {%- set RowsGov = JSONgov.Table1 -%}
         {% for item in RowsGov %}
