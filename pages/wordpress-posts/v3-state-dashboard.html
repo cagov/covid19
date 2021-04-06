@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-05T16:33:19Z"
-tags: ["staging-only"]
+publishdate: "2021-04-05T23:52:30Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -55,6 +55,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
   %} 
 -->
+
+
 
 <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -274,6 +276,24 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
 }
 </style>
 
+<style type="text/css">
+.js-filter-cases, .js-filter-deaths {
+  position: absolute;
+  top: 57px;
+  display: block;
+  z-index: 5;
+  width: 94%;
+}
+.js-filter-cases .small-tab, .js-filter-deaths .small-tab {
+  width: 50%;
+}
+cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-chart-dashboard-confirmed-deaths-death-date.chart .chart-title {
+  margin-bottom: 50px;
+}
+.pos-rel {
+  position: relative;
+}
+</style>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 pos-rel">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-cases">
@@ -329,7 +349,7 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
           <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-confirmed-deaths-death-date>               
+      </cagov-chart-dashboard-confirmed-deaths-death-date>              
     </div> 
   </div>
 
@@ -379,7 +399,7 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
           <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-total-tests-testing-date>                
+      </cagov-chart-dashboard-total-tests-testing-date>               
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
       <cagov-chart-dashboard-positivity-rate class="chart">
@@ -395,7 +415,7 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
           </li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-positivity-rate>               
+      </cagov-chart-dashboard-positivity-rate>                
     </div> 
   </div>
 
