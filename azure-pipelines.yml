@@ -10,8 +10,8 @@ trigger:
 pr: none
 
 pool:
- ReleaseAgent: AzureProdAse
- Agent.Name: prod-ase01-jump
+ name: Vmssagents-Acl-Virtual-network
+ Agent.Name: 'vmssagent000000'
 
 steps:
 - task: DeleteFiles@1
