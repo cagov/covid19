@@ -289,9 +289,10 @@ function hideTooltip()
 function getAxisDiv(ascale) {
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
-  const round_log_y = Math.round(log_y);
-  const best_10 = Math.pow(10, round_log_y);
-  const optimal_divs = log_y < round_log_y? (round_log_y-log_y < 0.25? 5 : 10) : (log_y-round_log_y) < 0.25? 5 : 2;
+  const floor_log_y = Math.floor(log_y);
+  const best_10 = Math.pow(10, floor_log_y);
+  const bucket = Math.floor((log_y - floor_log_y)*4);
+  const optimal_divs = [5,2,1,1/2][bucket];
   return best_10/optimal_divs;
 }
 
