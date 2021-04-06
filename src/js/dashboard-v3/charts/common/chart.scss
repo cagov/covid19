@@ -24,7 +24,7 @@
             fill:none; stroke:#555555; stroke-width: 2.0px;
         }
         g.pending-block {
-            rect { fill:black; opacity:0.15; }
+            rect { fill:black; opacity:0.05; }
             text { font-weight:300; font-size: 0.8rem; fill:black;  }
             text {  text-anchor: end; dominant-baseline:auto; }
         }
@@ -35,7 +35,7 @@
             text.x-axis-legend { font-weight:300; text-anchor:end; dominant-baseline:auto;  }
         }
         g.left-y-axis {
-            line { stroke-width: 0.5px; stroke:black; opacity:0.5;}
+            line { stroke-width: 0.5px; stroke:black; opacity:0.15;}
             text { font-weight:400; font-size: 0.75rem; fill:black;  } 
             text { text-anchor: end; dominant-baseline:middle;}
             text.left-y-axis-legend { font-weight:700; font-size: 0.95rem; text-anchor:start; dominant-baseline:hanging;  }

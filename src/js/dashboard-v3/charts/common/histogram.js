@@ -29,7 +29,7 @@ function writeLine(svg, data, x, y, { root_id='barid' }) {
         .attr("x", (d,i) => x(i))
         .attr("y", d => y(d.VALUE))
         .attr("width", 2)
-        .attr("height", d => (y(0) - y(d.VALUE)))
+        .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
         .attr("id", (d, i) => root_id+'-'+i);
 }
 
@@ -201,11 +201,11 @@ function writeRightYAxis(svg, data, x, y,
     let subg = ygroup.append("g")
       .attr('class','y-tick');
 
-    subg.append('line')
-      .attr('x1', x(min_x_domain)+tick_left_gap)
-      .attr('y1', y(yi))
-      .attr('x2', x(min_x_domain)+tick_right_gap)
-      .attr('y2', y(yi));
+    // subg.append('line')
+    //   .attr('x1', x(min_x_domain)+tick_left_gap)
+    //   .attr('y1', y(yi))
+    //   .attr('x2', x(min_x_domain)+tick_right_gap)
+    //   .attr('y2', y(yi));
 
     subg.append('text')
       .text(y_caption)
@@ -262,7 +262,7 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
   tooltip.style("left",`${event.offsetX}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(event.offsetY+170)}px`);
+  tooltip.style("top",`${(event.offsetY+220)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);

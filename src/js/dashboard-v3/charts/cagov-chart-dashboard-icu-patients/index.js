@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-icu-patients
 class CAGovDashboardICUPatients extends window.HTMLElement {
@@ -42,23 +43,6 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
         margin: { left: 50, top: 30,  right: 20, bottom: 45  },
       },
     };
-
-    this.intFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 0, maximumFractionDigits: 0 }
-    );
-    this.float1Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
-    this.float2Formatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 2 }
-    );
-    this.pctFormatter = new Intl.NumberFormat(
-      "us", // forcing US to avoid mixed styles on translated pages
-      { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
-    );
 
     getScreenResizeCharts(this);
 
@@ -115,8 +99,8 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
-      '14DAY_AVERAGE':this.float1Formatter.format(lineSeries[di].VALUE),
-      TOTAL_HOSPITALIZED:this.intFormatter.format(barSeries[di].VALUE),
+      '14DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      TOTAL_HOSPITALIZED:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -132,9 +116,9 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            TOTAL:this.intFormatter.format(this.chartdata.latest.ICU_PATIENTS.TOTAL),
-            CHANGE:this.intFormatter.format(Math.abs(this.chartdata.latest.ICU_PATIENTS.CHANGE)),
-            CHANGE_FACTOR:this.pctFormatter.format(Math.abs(this.chartdata.latest.ICU_PATIENTS.CHANGE_FACTOR)),
+            TOTAL:formatValue(this.chartdata.latest.ICU_PATIENTS.TOTAL,{format:'integer'}),
+            CHANGE:formatValue(Math.abs(this.chartdata.latest.ICU_PATIENTS.CHANGE),{format:'integer'}),
+            CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest.ICU_PATIENTS.CHANGE_FACTOR),{format:'percent'}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
@@ -165,7 +149,7 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':'ICU_PATIENTS',
                                                 'time_series_key_line':'ICU_PATIENTS_14_DAY_AVG',
-                                                'line_date_offset':-7,
+                                                'line_date_offset':0,
                                                 'root_id':'hosp-p',
                                                 'x_axis_legend':'Reported date',
                                                 'line_legend':'14-day average',

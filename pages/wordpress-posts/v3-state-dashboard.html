@@ -257,7 +257,24 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
 
-
+<style type="text/css">
+.js-filter-cases, .js-filter-deaths {
+  position: absolute;
+  top: 57px;
+  display: block;
+  z-index: 5;
+  width: 94%;
+}
+.js-filter-cases .small-tab, .js-filter-deaths .small-tab {
+  width: 50%;
+}
+cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-chart-dashboard-confirmed-deaths-death-date.chart .chart-title {
+  margin-bottom: 50px;
+}
+.pos-rel {
+  position: relative;
+}
+</style>
 
 <style type="text/css">
 .js-filter-cases, .js-filter-deaths {
@@ -428,8 +445,8 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
         <ul class="d-none">
           <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total (<span class="med-num">{CHANGE_FACTOR}</span> increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total (<span class="med-num">{CHANGE_FACTOR}</span> decrease)</li>
           <li data-label="tooltipContent">
             Reported Date: <b>{DATE} </b><br>
             Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>
@@ -443,8 +460,8 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
         <ul class="d-none">
           <li data-label="chartTitle">ICU beds in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds from prior day total (<span class="med-num">{CHANGE_FACTOR}</span> increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds from prior day total (<span class="med-num">{CHANGE_FACTOR}</span> decrease)</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
         </ul>
       </cagov-chart-dashboard-icu-beds>               
