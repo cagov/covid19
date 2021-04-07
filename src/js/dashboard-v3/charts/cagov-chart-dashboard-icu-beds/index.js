@@ -143,15 +143,14 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
       
-        renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'ICU_BEDS',
-                                                'time_series_key_line':'ICU_BEDS',
-                                                'line_date_offset':0,
-                                                'root_id':'icu_beds',
-                                                'x_axis_legend':'Reported date',
-                                                'month_modulo':2,
-                                              });
+        renderChart.call(this, {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series['ICU_BEDS'],
+                                'time_series_line':this.chartdata.time_series['ICU_BEDS'],
+                                'root_id':'icu_beds',
+                                'x_axis_legend':'Reported date',
+                                'month_modulo':2,
+                              });
         }.bind(this)
       );
   }

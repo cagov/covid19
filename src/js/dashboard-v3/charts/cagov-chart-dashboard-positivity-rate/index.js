@@ -119,8 +119,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           if (regionName == 'California') {
             this.statedata = alldata.data;
           } else if (this.statedata) {
-            // copy state data into county data
-            this.chartdata.time_series[this.chartOptions.stateFieldAvg] = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
             addStateLine = true;
           }
 
@@ -153,21 +151,20 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
             .text("Empty Tooltip");
       
 
-          renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'TOTAL_TESTS',
-                                                'time_series_key_line':'TEST_POSITIVITY_RATE_7_DAYS',
-                                                'line_date_offset':0,
-                                                'left_y_fmt':'pct',
-                                                'root_id':'pos-rate',
-                                                'left_y_axis_legend':'Positivity Rate',
-                                                'right_y_axis_legend':'Tests',
-                                                'x_axis_legend':'Testing date',
-                                                'line_legend':'7-day average',
-                                                'pending_date':this.chartdata.latest.POSITIVITY_RATE.TESTING_UNCERTAINTY_PERIOD,
-                                                'pending_legend':this.translationsObj.pending,
-                                                ...(addStateLine) && {'time_series_state_line':this.chartOptions.stateFieldAvg}
-                                              });
+          renderChart.call(this, {'tooltip_func':this.tooltip,
+                                  'extras_func':this.renderExtras,
+                                  'time_series_bars':this.chartdata.time_series['TOTAL_TESTS'],
+                                  'time_series_line':this.chartdata.time_series['TEST_POSITIVITY_RATE_7_DAYS'],
+                                  'left_y_fmt':'pct',
+                                  'root_id':'pos-rate',
+                                  'left_y_axis_legend':'Positivity Rate',
+                                  'right_y_axis_legend':'Tests',
+                                  'x_axis_legend':'Testing date',
+                                  'line_legend':'7-day average',
+                                  'pending_date':this.chartdata.latest.POSITIVITY_RATE.TESTING_UNCERTAINTY_PERIOD,
+                                  'pending_legend':this.translationsObj.pending,
+                                  ...(addStateLine) && {'time_series_state_line':this.statedata.time_series['TEST_POSITIVITY_RATE_7_DAYS']}
+                                });
         }.bind(this)
       );
   }

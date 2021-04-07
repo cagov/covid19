@@ -145,16 +145,15 @@ class CAGovDashboardICUPatients extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
       
-        renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'ICU_PATIENTS',
-                                                'time_series_key_line':'ICU_PATIENTS_14_DAY_AVG',
-                                                'line_date_offset':0,
-                                                'root_id':'hosp-p',
-                                                'x_axis_legend':'Reported date',
-                                                'line_legend':'14-day average',
-                                                'month_modulo':2,
-                                              });
+        renderChart.call(this, {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series['ICU_PATIENTS'],
+                                'time_series_line':this.chartdata.time_series['ICU_PATIENTS_14_DAY_AVG'],
+                                'root_id':'hosp-p',
+                                'x_axis_legend':'Reported date',
+                                'line_legend':'14-day average',
+                                'month_modulo':2,
+                              });
         }.bind(this)
       );
   }

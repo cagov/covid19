@@ -93,8 +93,6 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
           if (regionName == 'California') {
             this.statedata = alldata.data;
           } else if (this.statedata) {
-            // copy state data into county data
-            this.chartdata.time_series[this.chartOptions.stateFieldAvg] = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
             addStateLine = true;
           }
 
@@ -130,19 +128,19 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
 
-        renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras,
-                                                'time_series_key_bars':this.chartOptions.seriesField,
-                                                'time_series_key_line':this.chartOptions.seriesFieldAvg,
-                                                'root_id':this.chartOptions.rootId,
-                                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
-                                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
-                                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
-                                                'line_legend':this.translationsObj.dayAverage,
-                                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].DEATH_UNCERTAINTY_PERIOD,
-                                                'pending_legend':this.translationsObj.pending,
-                                                ...(addStateLine) && {'time_series_state_line':this.chartOptions.stateFieldAvg}
-                                              });
+        renderChart.call(this, {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
+                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                                'root_id':this.chartOptions.rootId,
+                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                                'line_legend':this.translationsObj.dayAverage,
+                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].DEATH_UNCERTAINTY_PERIOD,
+                                'pending_legend':this.translationsObj.pending,
+                                ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
+                              });
         }.bind(this)
       );
   }
