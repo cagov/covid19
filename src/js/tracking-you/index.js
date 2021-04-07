@@ -270,7 +270,7 @@ export default function setupAnalytics() {
       // Track submissions to the safer-economy page form.
       // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
       window.addEventListener('safer-economy-page-submission', event => {
-        const eventAction = event.detail.county;
+        const eventAction = event.detail.county ? event.detail.county : 'None';
         const eventLabel = event.detail.activity ? event.detail.activity : 'None';
         reportGA(eventAction, eventLabel, 'activity-status');
         // window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
