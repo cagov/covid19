@@ -1,4 +1,5 @@
-import template from "./template.js";
+import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
+import chartConfig from '../common/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -12,37 +13,11 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardHospitalizedPatients");
     this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
 
     // Settings and initial values
-    this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-hospitalized-patients',
-      // Data
-      dataUrl:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/california.json", // Overwritten by county.
-      dataUrlCounty:
-        config.chartsStateDashTablesLoc + "hospitalized-patients/<county>.json",
-
-      desktop: {
-        fontSize: 14,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      tablet: {
-        fontSize: 14,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      mobile: {
-        fontSize: 12,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      retina: {
-        fontSize: 12,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-    };
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
     getScreenResizeCharts(this);
 
@@ -50,7 +25,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       ? window.charts.displayType
       : "desktop";
 
-    this.chartBreakpointValues = this.chartOptions[
+    this.chartBreakpointValues = chartConfig[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
     ];
     this.dimensions = this.chartBreakpointValues;
@@ -67,9 +42,8 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
 
-
     // Set default values for data and labels
-    this.dataUrl = this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl, 'California');
 
@@ -94,8 +68,8 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series.HOSPITALIZED_PATIENTS;
-    const lineSeries = this.chartdata.time_series.HOSPITALIZED_PATIENTS_14_DAY_AVG;
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
@@ -116,13 +90,13 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
           this.chartdata = alldata.data;
 
           const repDict = {
-            TOTAL:formatValue(this.chartdata.latest.HOSPITALIZED_PATIENTS.TOTAL,{format:'integer'}),
-            CHANGE:formatValue(Math.abs(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE),{format:'integer'}),
-            CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE_FACTOR),{format:'percent'}),
+            TOTAL:formatValue(this.chartdata.latest[this.chartOptions.seriesField].TOTAL,{format:'integer'}),
+            CHANGE:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].CHANGE),{format:'integer'}),
+            CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].CHANGE_FACTOR),{format:'percent'}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.HOSPITALIZED_PATIENTS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;
           
           this.innerHTML = template(this.translationsObj);
@@ -147,9 +121,9 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       
         renderChart.call(this, {'tooltip_func':this.tooltip,
                                 'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series['HOSPITALIZED_PATIENTS'],
-                                'time_series_line':this.chartdata.time_series['HOSPITALIZED_PATIENTS_14_DAY_AVG'],
-                                'root_id':'hosp-p',
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
+                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                                'root_id':this.chartOptions.rootId,
                                 'x_axis_legend':'Reported date',
                                 'line_legend':'14-day average',
                                 'month_modulo':2,
@@ -164,10 +138,28 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
       "county-selected",
       function (e) {
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace(
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
           this.county.toLowerCase().replace(/ /g, "_")
         );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-patients");
+    myFilter.addEventListener(
+      "filter-selected",
+      function (e) {
+        this.chartConfigFilter = e.detail.filterKey;
+        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+        // if I am in a county have to do county url replacement
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+        if(this.county && this.county !== 'California') {
+          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+            "<county>",
+            this.county.toLowerCase().replace(/ /g, "")
+          );
+        }
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
       false
