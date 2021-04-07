@@ -9,4 +9,4 @@ import "../dashboard-v3/charts/cagov-chart-dashboard-positivity-rate/index.js"
 
 import "../dashboard-v3/charts/cagov-chart-dashboard-hospitalized-patients/index.js"
 import "../dashboard-v3/charts/cagov-chart-dashboard-icu-beds/index.js"
-import "../dashboard-v3/charts/cagov-chart-dashboard-icu-patients/index.js"
+
