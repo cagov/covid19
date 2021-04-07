@@ -67,7 +67,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.barsField];
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
     const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -95,14 +95,16 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
             addStateLine = true;
           }
 
+          let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
           const repDict = {
-            total_tests_performed:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_tests_performed,{format:'integer'}),
-            new_tests_reported:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported),{format:'integer'}),
-            new_tests_reported_delta_1_day:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day),{format:'percent'}),
+            total_tests_performed:formatValue(latestRec.total_tests_performed,{format:'integer'}),
+            new_tests_reported:formatValue(Math.abs(latestRec.new_tests_reported),{format:'integer'}),
+            new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;
 
           this.innerHTML = template(this.translationsObj);
@@ -126,15 +128,15 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
             
         renderChart.call(this, {'tooltip_func':this.tooltip,
                                 'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series[this.chartOptions.barsField],
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
                                 'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
                                 'root_id':this.chartOptions.rootId,
                                 'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                                 'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                                 'line_legend':this.translationsObj.dayAverage,
-                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
-                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].TESTING_UNCERTAINTY_PERIOD,
+                                // 'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
+                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
                                 'pending_legend':this.translationsObj.pending,
                                 ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
                               });

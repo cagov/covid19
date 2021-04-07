@@ -14,6 +14,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
+    console.log("!!!",this.chartConfigFilter, this.chartConfigKey);
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
     this.stateData = null;
@@ -94,16 +95,15 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
           } else if (this.statedata) {
             addStateLine = true;
           }
-
+          let latestRec = this.chartdata.latest[this.chartOptions.latestField];
           const repDict = {
-            total_confirmed_cases:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_confirmed_cases,{format:'integer'}),
-            new_cases:formatValue(this.chartdata.latest[this.chartOptions.seriesField].new_cases,{format:'integer'}),
-            new_cases_delta_1_day:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_cases_delta_1_day),{format:'percent'}),
-            cases_per_100k_7_days:formatValue(this.chartdata.latest[this.chartOptions.seriesField].cases_per_100k_7_days,{format:'number',min_decimals:1}),
+            total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
+            new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
+            new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
+            cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
           };
-
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
           this.translationsObj.currentLocation = regionName;
 
@@ -136,7 +136,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                                 'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                                 'line_legend':this.translationsObj.dayAverage,
-                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
+                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
                                 'pending_legend':'Pending',
                                 ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
                             });

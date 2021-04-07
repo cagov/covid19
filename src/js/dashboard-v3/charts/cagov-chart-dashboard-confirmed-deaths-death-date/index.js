@@ -15,7 +15,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-
+    console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
     // Settings and initial values
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
@@ -96,15 +96,17 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
             addStateLine = true;
           }
 
+          let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
           const repDict = {
-            total_confirmed_deaths:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_confirmed_deaths,{format:'integer'}),
-            new_deaths:formatValue(this.chartdata.latest[this.chartOptions.seriesField].new_deaths,{format:'integer'}),
-            new_deaths_delta_1_day:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_deaths_delta_1_day),{format:'percent'}),
-            deaths_per_100k_7_days:formatValue(this.chartdata.latest[this.chartOptions.seriesField].deaths_per_100k_7_days,{format:'number',min_decimals:1}),
+            total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
+            new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
+            new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
+            deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
           this.translationsObj.currentLocation = regionName;
 
@@ -137,7 +139,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                                 'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                                 'line_legend':this.translationsObj.dayAverage,
-                                'pending_date':this.chartdata.latest[this.chartOptions.seriesField].DEATH_UNCERTAINTY_PERIOD,
+                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD,
                                 'pending_legend':this.translationsObj.pending,
                                 ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
                               });

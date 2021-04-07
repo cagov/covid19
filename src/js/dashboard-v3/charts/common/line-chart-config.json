@@ -2,6 +2,7 @@
   "cases": {
     "episode": {
       "chartName": "cagov-chart-dashboard-confirmed-cases-episode-date",
+      "latestField": "CONFIRMED_CASES_EPISODE_DATE",
       "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
       "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases-episode-date/california.json",
@@ -10,6 +11,7 @@
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-cases-reported-date",
+      "latestField": "CONFIRMED_CASES_REPORTED_DATE",
       "seriesField": "CONFIRMED_CASES_REPORTED_DATE",
       "seriesFieldAvg": "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases-reported-date/california.json",
@@ -20,6 +22,7 @@
   "deaths": {
     "death": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths-death-date",
+      "latestField": "CONFIRMED_DEATHS_DEATH_DATE",
       "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-death-date/california.json",
@@ -28,6 +31,7 @@
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths-reported-date",
+      "latestField": "CONFIRMED_DEATHS_REPORTED_DATE",
       "seriesField": "CONFIRMED_DEATHS_REPORTED_DATE",
       "seriesFieldAvg": "AVG_DEATH_REPORT_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-reported-date/california.json",
@@ -38,21 +42,32 @@
   "tests": {
     "testing": {
       "chartName": "cagov-chart-dashboard-total-tests-testing-date",
-      "seriesField": "TOTAL_TESTS_TESTING_DATE",
-      "barsField": "TOTAL_TESTS",
+      "latestField": "TOTAL_TESTS_TESTING_DATE",
+      "seriesField": "TOTAL_TESTS",
       "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
       "dataUrl": "total-tests-testing-date/california.json",
       "dataUrlCounty": "total-tests-testing-date/<county>.json",
-      "rootId": "tests-t"
+      "rootId": "tests-tests"
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-total-tests-reported-date",
-      "seriesField": "TOTAL_TESTS_REPORTED_DATE",
-      "barsField": "REPORTED_TESTS",
+      "latestField": "TOTAL_TESTS_REPORTED_DATE",
+      "seriesField": "REPORTED_TESTS",
       "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
       "dataUrl": "total-tests-reported-date/california.json",
       "dataUrlCounty": "total-tests-reported-date/<county>.json",
-      "rootId": "tests-t"
+      "rootId": "tests-rep"
+    }
+  },
+  "positivity": {
+    "positivity": {
+      "chartName": "cagov-chart-dashboard-positivity-rate",
+      "latestField": "POSITIVITY_RATE",
+      "seriesField": "TOTAL_TESTS",
+      "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
+      "dataUrl": "positivity-rate/california.json",
+      "dataUrlCounty": "positivity-rate/<county>.json",
+      "rootId": "pos-rate"
     }
   },
   "desktop": {
