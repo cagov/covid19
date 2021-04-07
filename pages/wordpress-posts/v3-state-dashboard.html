@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-07T22:28:39Z"
+publishdate: "2021-04-07T22:32:12Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -267,7 +267,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
       </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-cases-episode-date class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
+      <cagov-chart-dashboard-confirmed-cases-episode-date class="chart filter-button-space" data-chart-config-filter="episode" data-chart-config-key="cases">
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed cases in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
@@ -295,7 +295,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
       </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-deaths-death-date class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
+      <cagov-chart-dashboard-confirmed-deaths-death-date class="chart filter-button-space" data-chart-config-filter="death" data-chart-config-key="deaths">
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed deaths in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
@@ -339,14 +339,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <!--<cagov-chart-filter-buttons class="js-re-smalls js-filter-tests">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+      <cagov-chart-filter-buttons class="js-re-smalls js-filter-tests">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="testing">Testing date</button>
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
-      </cagov-chart-filter-buttons>-->
-      <cagov-chart-dashboard-total-tests-testing-date class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">
+      </cagov-chart-filter-buttons>
+      <cagov-chart-dashboard-total-tests-testing-date class="chart filter-button-space" data-chart-config-filter="testing" data-chart-config-key="tests">
         <ul class="d-none">
           <li data-label="chartTitle">Total tests in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
@@ -366,8 +366,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         </ul>
       </cagov-chart-dashboard-total-tests-testing-date>               
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-positivity-rate class="chart">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+      <cagov-chart-dashboard-positivity-rate class="chart filter-button-space">
         <ul class="d-none">
           <li data-label="chartTitle">Positivity rate in</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> test positivity (7-day rate)</li>
@@ -405,8 +405,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-hospitalized-patients class="chart">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+      <cagov-chart-filter-buttons class="filter-buttons--statedash js-re-smalls js-filter-patients">
+        <div class="d-flex justify-content-center">
+          <button class="small-tab active" data-key="hospitalized">Hospitalized</button>
+          <button class="small-tab" data-key="icu">ICU</button>
+        </div>
+      </cagov-chart-filter-buttons>
+      <cagov-chart-dashboard-hospitalized-patients class="chart filter-button-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients">
         <ul class="d-none">
           <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
@@ -421,7 +427,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </cagov-chart-dashboard-hospitalized-patients>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-icu-beds class="chart">
+      <cagov-chart-dashboard-icu-beds class="chart filter-button-space">
         <ul class="d-none">
           <li data-label="chartTitle">ICU beds in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
