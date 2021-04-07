@@ -108,7 +108,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
   retrieveData(url, regionName) {
     window
       .fetch(url)
-      .then((response) => response.json())
+      .then((response) => response.json() )
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);

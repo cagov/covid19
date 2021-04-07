@@ -353,6 +353,9 @@ function getAxisDiv(ascale) {
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
       let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
@@ -372,6 +375,9 @@ function getAxisDiv(ascale) {
           this.dimensions.margin.left]);
       // console.log("time_series_line 2",time_series_line,root_id);
       let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
       if (time_series_state_line) {
         max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
       }
