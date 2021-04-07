@@ -35,7 +35,6 @@
   margin: 0 auto;
 }
 
-
 .todo-fix-this-wach-move {
   position:relative;
   top:-12em;
@@ -86,5 +85,18 @@
 		padding-right: 15% !important;
 		padding-left: 15% !important;
 	}
+}
 
- }
+.filter-buttons--statedash {
+  position: absolute;
+  top: 57px;
+  display: block;
+  z-index: 5;
+  width: 94%;
+  .small-tab {
+    width: 50%;
+  }
+}
+.chart.filter-button-space .chart-title {
+  margin-bottom: 50px;
+}
