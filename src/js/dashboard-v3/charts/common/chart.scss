@@ -23,6 +23,9 @@
         g.fg-line path {
             fill:none; stroke:#555555; stroke-width: 2.0px;
         }
+        g.fg-line.second-line path {
+            opacity:0.5;
+        }
         g.pending-block {
             rect { fill:black; opacity:0.05; }
             text { font-weight:300; font-size: 0.8rem; fill:black;  }

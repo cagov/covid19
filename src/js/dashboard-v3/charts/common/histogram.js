@@ -1,12 +1,12 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { root_id='barid' }) {
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
   let groups = svg.append("g")
-    .attr("class","fg-line")
+    .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
     .append('path')
     .datum(data)
       .attr("d", d3.line()
@@ -17,7 +17,7 @@ function writeLine(svg, data, x, y, { root_id='barid' }) {
 
  function writeBars(svg, data, x, y, { root_id='barid' }) {
     let groups = svg.append("g")
-      .attr("class","fg-bars")
+      .attr("class","fg-bars "+root_id)
       .selectAll("g")
       .data(data)
       .enter()
@@ -312,6 +312,7 @@ function getAxisDiv(ascale) {
     extras_func = null,
     time_series_key_bars = null,
     time_series_key_line = null,
+    time_series_state_line = null,
     line_date_offset = 0,
     left_y_fmt = 'num',
     right_y_fmt = 'num',
@@ -371,6 +372,9 @@ function getAxisDiv(ascale) {
           this.dimensions.margin.left]);
       console.log("time_series_key_line 2",time_series_key_line,root_id);
       let max_y_domain = d3.max(chartData.time_series[time_series_key_line], d=> d.VALUE);
+      if (time_series_state_line) {
+        max_y_domain = Math.max(max_y_domain, d3.max(chartData.time_series[time_series_state_line], d=> d.VALUE));
+      }
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
@@ -400,7 +404,11 @@ function getAxisDiv(ascale) {
     if (time_series_key_line) {
       writeLine.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline, 
         { line_legend:line_legend, root_id:root_id});
-      // line legend on right or left, depending on whether bar is provided
+    }
+    if (time_series_state_line) {
+      console.log("Adding extra line: ",time_series_state_line);
+      writeLine.call(this, this.svg, chartData.time_series[time_series_state_line], this.xline, this.yline, 
+        { root_id:'state-'+root_id, is_second_line:true});
     }
 
     if (pending_date && pending_legend) {

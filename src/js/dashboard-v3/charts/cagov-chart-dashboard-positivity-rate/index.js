@@ -115,6 +115,15 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
+          let addStateLine = false;
+          if (regionName == 'California') {
+            this.statedata = alldata.data;
+          } else if (this.statedata) {
+            // copy state data into county data
+            this.chartdata.time_series[this.chartOptions.stateFieldAvg] = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+            addStateLine = true;
+          }
+
           const repDict = {
             test_positivity_7_days:formatValue(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days,{format:'percent'}),
             test_positivity_7_days_delta_7_days:formatValue(Math.abs(this.chartdata.latest.POSITIVITY_RATE.test_positivity_7_days_delta_7_days),{format:'percent'}),
@@ -157,6 +166,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
                                                 'line_legend':'7-day average',
                                                 'pending_date':this.chartdata.latest.POSITIVITY_RATE.TESTING_UNCERTAINTY_PERIOD,
                                                 'pending_legend':this.translationsObj.pending,
+                                                ...(addStateLine) && {'time_series_state_line':this.chartOptions.stateFieldAvg}
                                               });
         }.bind(this)
       );

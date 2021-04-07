@@ -1,8 +1,8 @@
 import template from "./template.js";
-import chartConfig from './line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
+import chartConfig from '../common/line-chart-config.json';
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
@@ -16,6 +16,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
     this.chartConfigKey = this.dataset.chartConfigKey;
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.stateData = null;
 
     getScreenResizeCharts(this);
 
@@ -86,6 +87,16 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
+
+          let addStateLine = false;
+          if (regionName == 'California') {
+            this.statedata = alldata.data;
+          } else if (this.statedata) {
+            // copy state data into county data
+            this.chartdata.time_series[this.chartOptions.stateFieldAvg] = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+            addStateLine = true;
+          }
+
           const repDict = {
             total_confirmed_cases:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_confirmed_cases,{format:'integer'}),
             new_cases:formatValue(this.chartdata.latest[this.chartOptions.seriesField].new_cases,{format:'integer'}),
@@ -122,8 +133,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':this.chartOptions.seriesField,
                                                 'time_series_key_line':this.chartOptions.seriesFieldAvg,
-                                                'left_y_div':20,
-                                                'right_y_div':10000,
                                                 'root_id':this.chartOptions.rootId,
                                                 'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                                                 'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
@@ -131,8 +140,8 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
                                                 'line_legend':this.translationsObj.dayAverage,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
                                                 'pending_legend':'Pending',
-                                              });
-
+                                                ...(addStateLine) && {'time_series_state_line':this.chartOptions.stateFieldAvg}
+                                            });
 
         }.bind(this)
       );

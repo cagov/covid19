@@ -4,6 +4,7 @@
       "chartName": "cagov-chart-dashboard-confirmed-cases-episode-date",
       "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
       "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_CASE_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases-episode-date/california.json",
       "dataUrlCounty": "confirmed-cases-episode-date/<county>.json",
       "rootId": "cases-ep"
@@ -12,6 +13,7 @@
       "chartName": "cagov-chart-dashboard-confirmed-cases-reported-date",
       "seriesField": "CONFIRMED_CASES_REPORTED_DATE",
       "seriesFieldAvg": "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_CASE_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases-reported-date/california.json",
       "dataUrlCounty": "confirmed-cases-reported-date/<county>.json",
       "rootId": "cases-rep"
@@ -22,6 +24,7 @@
       "chartName": "cagov-chart-dashboard-confirmed-deaths-death-date",
       "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-death-date/california.json",
       "dataUrlCounty": "confirmed-deaths-death-date/<county>.json",
       "rootId": "death-date"
@@ -30,6 +33,7 @@
       "chartName": "cagov-chart-dashboard-confirmed-deaths-reported-date",
       "seriesField": "CONFIRMED_DEATHS_REPORTED_DATE",
       "seriesFieldAvg": "AVG_DEATH_REPORT_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths-reported-date/california.json",
       "dataUrlCounty": "confirmed-deaths-reported-date/<county>.json",
       "rootId": "deaths-reported-date"
@@ -41,6 +45,7 @@
       "seriesField": "TOTAL_TESTS_TESTING_DATE",
       "barsField": "TOTAL_TESTS",
       "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_TEST_RATE_PER_100K_7_DAYS",
       "dataUrl": "total-tests-testing-date/california.json",
       "dataUrlCounty": "total-tests-testing-date/<county>.json",
       "rootId": "tests-t"
@@ -50,6 +55,7 @@
       "seriesField": "TOTAL_TESTS_REPORTED_DATE",
       "barsField": "REPORTED_TESTS",
       "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
+      "stateFieldAvg": "STATE_AVG_TEST_RATE_PER_100K_7_DAYS",
       "dataUrl": "total-tests-reported-date/california.json",
       "dataUrlCounty": "total-tests-reported-date/<county>.json",
       "rootId": "tests-t"

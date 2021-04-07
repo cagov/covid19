@@ -1,8 +1,8 @@
 import template from "../cagov-chart-dashboard-icu-beds/template.js";
-import chartConfig from '../cagov-chart-dashboard-confirmed-cases-episode-date/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
+import chartConfig from '../common/line-chart-config.json';
 import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
@@ -87,6 +87,16 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
+
+          let addStateLine = false;
+          if (regionName == 'California') {
+            this.statedata = alldata.data;
+          } else if (this.statedata) {
+            // copy state data into county data
+            this.chartdata.time_series[this.chartOptions.stateFieldAvg] = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+            addStateLine = true;
+          }
+
           const repDict = {
             total_tests_performed:formatValue(this.chartdata.latest[this.chartOptions.seriesField].total_tests_performed,{format:'integer'}),
             new_tests_reported:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].new_tests_reported),{format:'integer'}),
@@ -116,9 +126,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
             
-
-
-
         renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
                                                 'extras_func':this.renderExtras,
                                                 'time_series_key_bars':this.chartOptions.barsField,
@@ -131,7 +138,8 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
                                                 'line_legend':this.translationsObj.dayAverage,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].EPISODE_UNCERTAINTY_PERIOD,
                                                 'pending_date':this.chartdata.latest[this.chartOptions.seriesField].TESTING_UNCERTAINTY_PERIOD,
-                                                'pending_legend':this.translationsObj.pending
+                                                'pending_legend':this.translationsObj.pending,
+                                                ...(addStateLine) && {'time_series_state_line':this.chartOptions.stateFieldAvg}
                                               });
         }.bind(this)
       );
