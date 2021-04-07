@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-05T23:52:30Z"
+publishdate: "2021-04-07T22:28:39Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -259,26 +259,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<style type="text/css">
-.js-filter-cases, .js-filter-deaths {
-  position: absolute;
-  top: 57px;
-  display: block;
-  z-index: 5;
-  width: 94%;
-}
-.js-filter-cases .small-tab, .js-filter-deaths .small-tab {
-  width: 50%;
-}
-cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-chart-dashboard-confirmed-deaths-death-date.chart .chart-title {
-  margin-bottom: 50px;
-}
-.pos-rel {
-  position: relative;
-}
-</style>
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 pos-rel">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-cases">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="episode">Episode date</button>
@@ -306,7 +288,7 @@ cagov-chart-dashboard-confirmed-cases-episode-date.chart .chart-title, cagov-cha
         </ul>
       </cagov-chart-dashboard-confirmed-cases-episode-date>                
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 pos-rel">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-deaths">
         <div class="d-flex justify-content-center">
           <button class="small-tab active" data-key="death">Death date</button>
