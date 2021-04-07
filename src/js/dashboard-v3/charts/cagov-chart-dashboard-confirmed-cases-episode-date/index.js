@@ -80,7 +80,6 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
   }
 
   retrieveData(url, regionName) {
-    console.log("Fetching",url);
     window
       .fetch(url)
       .then((response) => response.json())
@@ -154,7 +153,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         this.county = e.detail.county;
         let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "")
+          this.county.toLowerCase().replace(/ /g, "_")
         );
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),
@@ -171,7 +170,7 @@ class CAGovDashboardConfirmedCasesEpisodeDate extends window.HTMLElement {
         if(this.county && this.county !== 'California') {
           searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
             "<county>",
-            this.county.toLowerCase().replace(/ /g, "")
+            this.county.toLowerCase().replace(/ /g, "_")
           );
         }
         this.retrieveData(searchURL, e.detail.county);

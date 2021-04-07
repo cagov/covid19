@@ -65,6 +65,45 @@ function writePendingBlock(svg, data, x, y,
       .attr("y",y(max_y_domain)-4);
 }
 
+function writeCountyStateLegend(svg,x,y, {
+  county_legend = 'County',
+  state_legend = 'State',
+})
+{
+  let y_pos = this.dimensions.height - 6;
+  let x_pos = this.dimensions.margin.left;
+
+
+  let g = svg.append("g")
+    .attr("class","county-legend");
+
+  g.append('rect')
+    .attr('x',x_pos)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(county_legend)
+    .attr("x",x_pos + 36)
+    .attr("y",y_pos);
+
+  g = svg.append("g")
+    .attr("class","state-legend");
+
+  g.append('rect')
+    .attr('x',x_pos+85)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(state_legend)
+    .attr("x",x_pos+85 + 36)
+    .attr("y",y_pos);
+}
+
+
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
     month_modulo=3,
@@ -100,8 +139,8 @@ function writeDateAxis(svg, data, x, y,
     xgroup.append('text')
     .attr('class','x-axis-legend')
     .text(x_axis_legend)
-    .attr("x", this.dimensions.width)
-    .attr("y", this.dimensions.height-4) // +this.getYOffset(i)
+    .attr("x", x(0))
+    .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
   }
 }
 
@@ -414,6 +453,7 @@ function getAxisDiv(ascale) {
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
         { root_id:'state-'+root_id, is_second_line:true});
+      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
     }
 
     if (pending_date && pending_legend) {
