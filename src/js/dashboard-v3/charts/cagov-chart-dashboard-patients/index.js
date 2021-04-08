@@ -28,7 +28,9 @@ class CAGovDashboardPatients extends window.HTMLElement {
     this.chartBreakpointValues = chartConfig[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
     ];
+    this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
     this.dimensions = this.chartBreakpointValues;
+    this.dimensions.margin.right = 20;
 
     const handleChartResize = () => {
       getScreenResizeCharts(this);
@@ -170,7 +172,7 @@ class CAGovDashboardPatients extends window.HTMLElement {
         if(this.county && this.county !== 'California') {
           searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
             "<county>",
-            this.county.toLowerCase().replace(/ /g, "")
+            this.county.toLowerCase().replace(/ /g, "_")
           );
         }
         this.retrieveData(searchURL, this.regionName);

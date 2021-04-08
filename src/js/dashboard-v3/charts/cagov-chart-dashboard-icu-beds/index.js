@@ -53,7 +53,9 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     this.chartBreakpointValues = this.chartOptions[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
     ];
+    this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
     this.dimensions = this.chartBreakpointValues;
+    this.dimensions.margin.right = 20;
 
     const handleChartResize = () => {
       getScreenResizeCharts(this);
