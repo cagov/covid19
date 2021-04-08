@@ -14,7 +14,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    console.log("!!!",this.chartConfigFilter, this.chartConfigKey);
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
     this.stateData = null;
@@ -68,8 +67,8 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -130,8 +129,8 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
 
         let renderOptions = {'tooltip_func':this.tooltip,
                             'extras_func':this.renderExtras,
-                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                             'root_id':this.chartOptions.rootId,
                             'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                             'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
@@ -141,7 +140,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
                             'pending_legend':'Pending',
                             };
         if (addStateLine) {
-          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
         }
         renderChart.call(this, renderOptions);
 

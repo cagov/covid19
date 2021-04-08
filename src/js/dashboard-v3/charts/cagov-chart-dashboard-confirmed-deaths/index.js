@@ -68,8 +68,8 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg]
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -133,8 +133,8 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
 
         let renderOptions = {'tooltip_func':this.tooltip,
                             'extras_func':this.renderExtras,
-                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                             'root_id':this.chartOptions.rootId,
                             'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                             'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
@@ -144,7 +144,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
                             'pending_legend':this.translationsObj.pending,
                             };
         if (addStateLine) {
-          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
         }
 
         renderChart.call(this, renderOptions);
