@@ -1,4 +1,4 @@
-import template from "../cagov-chart-dashboard-icu-beds/template.js";
+import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -84,6 +84,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
@@ -173,7 +174,7 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
               this.county.toLowerCase().replace(/ /g, "_")
             );
           }
-          this.retrieveData(searchURL, e.detail.county);
+          this.retrieveData(searchURL, this.regionName);
         }.bind(this),
         false
       );

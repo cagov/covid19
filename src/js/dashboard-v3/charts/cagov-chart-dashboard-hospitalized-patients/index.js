@@ -1,4 +1,4 @@
-import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
+import template from "./template.js";
 import chartConfig from '../common/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
@@ -88,16 +88,29 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
+          this.regionName = regionName;
+
+          console.log("Setting up patients replacements",this.chartConfigFilter,this.chartConfigKey,regionName);
+
+          var latestRec = this.chartdata.latest[this.chartOptions.latestField];
 
           const repDict = {
-            TOTAL:formatValue(this.chartdata.latest[this.chartOptions.seriesField].TOTAL,{format:'integer'}),
-            CHANGE:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].CHANGE),{format:'integer'}),
-            CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest[this.chartOptions.seriesField].CHANGE_FACTOR),{format:'percent'}),
+            TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
+            CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
+            CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
           };
 
-          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest[this.chartOptions.seriesField].CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
-          this.translationsObj.currentLocation = regionName;
+          if (this.chartConfigFilter == 'icu') {
+            this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
+            this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
+            this.translationsObj.currentLocation = regionName;
+            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
+          } else {
+            this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+            this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+            this.translationsObj.currentLocation = regionName;
+            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+          }
           
           this.innerHTML = template(this.translationsObj);
 
@@ -160,7 +173,7 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
             this.county.toLowerCase().replace(/ /g, "")
           );
         }
-        this.retrieveData(searchURL, e.detail.county);
+        this.retrieveData(searchURL, this.regionName);
       }.bind(this),
       false
     );

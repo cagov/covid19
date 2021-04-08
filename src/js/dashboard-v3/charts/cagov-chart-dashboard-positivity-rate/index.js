@@ -1,4 +1,4 @@
-import template from "../cagov-chart-dashboard-icu-beds/template.js";
+import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";

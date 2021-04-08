@@ -415,9 +415,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       <cagov-chart-dashboard-hospitalized-patients class="chart filter-button-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients">
         <ul class="d-none">
           <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
+          <li data-label="chartTitleICU">COVID-19 ICU patients in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU patients</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="tooltipContent">
             Reported Date: <b>{DATE} </b><br>
             Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>

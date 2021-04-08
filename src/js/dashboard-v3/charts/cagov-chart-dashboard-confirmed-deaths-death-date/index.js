@@ -86,6 +86,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
@@ -175,7 +176,7 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
             this.county.toLowerCase().replace(/ /g, "_")
           );
         }
-        this.retrieveData(searchURL, e.detail.county);
+        this.retrieveData(searchURL, this.regionName);
       }.bind(this),
       false
     );
