@@ -8,7 +8,6 @@ cagov-accordion .card {
 cagov-accordion .card-container {
   display: block;
   overflow: hidden;
-  transition: height 0.3s;
   &[aria-hidden="false"] {
     border-bottom: 1px solid $darkblue;
   }
@@ -16,6 +15,7 @@ cagov-accordion .card-container {
 
 cagov-accordion.prog-enhanced .card-container {
   height: 0px;
+  transition: height 0.3s ease;
 }
 
 cagov-accordion .collapsed {
@@ -166,4 +166,12 @@ button.card-header {
     }
 
   }
+}
+
+// Fist sibling inside of dark container
+.bg-darkblue .dark-accordion-bg > .container.dark-accordion-first {
+  padding-top: 1rem;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
