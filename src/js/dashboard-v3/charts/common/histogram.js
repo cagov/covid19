@@ -332,13 +332,18 @@ function hideTooltip()
  * @returns 
  */
 function getAxisDiv(ascale) {
+  // return ascale.ticks()[1];
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
   const floor_log_y = Math.floor(log_y);
   const best_10 = Math.pow(10, floor_log_y);
-  const bucket = Math.floor((log_y - floor_log_y)*4);
-  const optimal_divs = [5,2,1,1/2][bucket];
-  return best_10/optimal_divs;
+  const log_diff = (log_y - floor_log_y);
+  if (log_diff < 0.176)     var optimal_div = 5; // 150/100
+  else if (log_diff < 0.477) var optimal_div = 2; // 300/100
+  else if (log_diff < 0.778) var optimal_div = 1; // 600/100
+  else                       var optimal_div = 0.5;
+  // const optimal_divs = [5,2,1,1/2][bucket];
+  return best_10/optimal_div;
 }
 
 /**
