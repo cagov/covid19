@@ -8,10 +8,10 @@ import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
 
-// cagov-chart-dashboard-hospitalized-patients
-class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
+// cagov-chart-dashboard-patients
+class CAGovDashboardPatients extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardHospitalizedPatients");
+    console.log("Loading CAGovDashboardPatients");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -181,6 +181,6 @@ class CAGovDashboardHospitalizedPatients extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-hospitalized-patients",
-  CAGovDashboardHospitalizedPatients
+  "cagov-chart-dashboard-patients",
+  CAGovDashboardPatients
 );

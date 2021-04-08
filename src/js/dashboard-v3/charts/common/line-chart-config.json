@@ -72,7 +72,7 @@
   },
   "patients": {
     "hospitalized": {
-      "chartName": "cagov-chart-dashboard-hospitalized-patients",
+      "chartName": "cagov-chart-dashboard-patients",
       "latestField": "HOSPITALIZED_PATIENTS",
       "seriesField": "HOSPITALIZED_PATIENTS",
       "seriesFieldAvg": "HOSPITALIZED_PATIENTS_14_DAY_AVG",
@@ -81,7 +81,7 @@
       "rootId": "hosp-p"
     },
     "icu": {
-      "chartName": "cagov-chart-dashboard-icu-patients",
+      "chartName": "cagov-chart-dashboard-patients",
       "latestField": "ICU_PATIENTS",
       "seriesField": "ICU_PATIENTS",
       "seriesFieldAvg": "ICU_PATIENTS_14_DAY_AVG",

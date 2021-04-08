@@ -113,7 +113,7 @@ addtositemap: false
     <!-- bottom HOSPITAL charts -->
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <cagov-chart-dashboard-hospitalized-patients class="chart">
+        <cagov-chart-dashboard-patients class="chart">
           <ul class="d-none">
             <li data-label="chartTitle">COVID-19 hospitalized patients in California</li>
             <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
@@ -125,7 +125,7 @@ addtositemap: false
               14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
             </li>
           </ul>
-        </cagov-chart-dashboard-hospitalized-patients>                
+        </cagov-chart-dashboard-patients>                
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <cagov-chart-dashboard-icu-beds class="chart">
@@ -137,22 +137,6 @@ addtositemap: false
             <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
           </ul>
         </cagov-chart-dashboard-icu-beds>               
-      </div> 
-      <!-- TAB CHART-->
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <cagov-chart-dashboard-icu-patients class="chart">
-          <ul class="d-none">
-            <li data-label="chartTitle">COVID-19 ICU patients in California</li>
-            <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 ICU patients</li>
-            <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
-            <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
-            <li data-label="tooltipContent">
-              Reported Date: <b>{DATE} </b><br>
-              Total ICU patients: <b>{TOTAL_ICU} </b><br>
-              14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
-            </li>
-          </ul>
-        </cagov-chart-dashboard-icu-patients>               
       </div> 
     </div>
 
