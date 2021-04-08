@@ -156,21 +156,24 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
       
-
-          renderChart.call(this, {'tooltip_func':this.tooltip,
-                                  'extras_func':this.renderExtras,
-                                  'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                                  'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
-                                  'left_y_fmt':'pct',
-                                  'root_id':'pos-rate',
-                                  'left_y_axis_legend':'Positivity Rate',
-                                  'right_y_axis_legend':'Tests',
-                                  'x_axis_legend':'Testing date',
-                                  'line_legend':'7-day average',
-                                  'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                                  'pending_legend':this.translationsObj.pending,
-                                  ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
-                                });
+          
+          let renderOptions = {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
+                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                                'left_y_fmt':'pct',
+                                'root_id':'pos-rate',
+                                'left_y_axis_legend':'Positivity Rate',
+                                'right_y_axis_legend':'Tests',
+                                'x_axis_legend':'Testing date',
+                                'line_legend':'7-day average',
+                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
+                                'pending_legend':this.translationsObj.pending,
+                              };
+          if (addStateLine) {
+            renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+          }
+          renderChart.call(this, renderOptions);
         }.bind(this)
       );
   }

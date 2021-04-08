@@ -126,21 +126,25 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
             .append("div")
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
-            
-        renderChart.call(this, {'tooltip_func':this.tooltip,
-                                'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
-                                'root_id':this.chartOptions.rootId,
-                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
-                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
-                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
-                                'line_legend':this.translationsObj.dayAverage,
-                                // 'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
-                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                                'pending_legend':this.translationsObj.pending,
-                                ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
-                              });
+
+        let renderOptions = {'tooltip_func':this.tooltip,
+                              'extras_func':this.renderExtras,
+                              'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
+                              'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                              'root_id':this.chartOptions.rootId,
+                              'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                              'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                              'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                              'line_legend':this.translationsObj.dayAverage,
+                              // 'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
+                              'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
+                              'pending_legend':this.translationsObj.pending,
+                            };
+        if (addStateLine) {
+          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg];
+        }
+           
+        renderChart.call(this, renderOptions);
         }.bind(this)
       );
   }
