@@ -1,12 +1,12 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { root_id='barid' }) {
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
   let groups = svg.append("g")
-    .attr("class","fg-line")
+    .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
     .append('path')
     .datum(data)
       .attr("d", d3.line()
@@ -17,7 +17,7 @@ function writeLine(svg, data, x, y, { root_id='barid' }) {
 
  function writeBars(svg, data, x, y, { root_id='barid' }) {
     let groups = svg.append("g")
-      .attr("class","fg-bars")
+      .attr("class","fg-bars "+root_id)
       .selectAll("g")
       .data(data)
       .enter()
@@ -65,6 +65,45 @@ function writePendingBlock(svg, data, x, y,
       .attr("y",y(max_y_domain)-4);
 }
 
+function writeCountyStateLegend(svg,x,y, {
+  county_legend = 'County',
+  state_legend = 'State',
+})
+{
+  let y_pos = this.dimensions.height - 6;
+  let x_pos = this.dimensions.margin.left;
+
+
+  let g = svg.append("g")
+    .attr("class","county-legend");
+
+  g.append('rect')
+    .attr('x',x_pos)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(county_legend)
+    .attr("x",x_pos + 36)
+    .attr("y",y_pos);
+
+  g = svg.append("g")
+    .attr("class","state-legend");
+
+  g.append('rect')
+    .attr('x',x_pos+85)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(state_legend)
+    .attr("x",x_pos+85 + 36)
+    .attr("y",y_pos);
+}
+
+
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
     month_modulo=3,
@@ -100,8 +139,8 @@ function writeDateAxis(svg, data, x, y,
     xgroup.append('text')
     .attr('class','x-axis-legend')
     .text(x_axis_legend)
-    .attr("x", this.dimensions.width)
-    .attr("y", this.dimensions.height-4) // +this.getYOffset(i)
+    .attr("x", x(0))
+    .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
   }
 }
 
@@ -286,12 +325,19 @@ function hideTooltip()
   this.svg.selectAll('g.tt-marker').remove();
 }
 
+/**
+ * This function produces a tick-division (similar to d3.scale.ticks()[1]) which optimizes for about 5 grid lines 
+ * (as opposed to D3's 10) with pretty divisions.
+ * @param {*} ascale 
+ * @returns 
+ */
 function getAxisDiv(ascale) {
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
-  const round_log_y = Math.round(log_y);
-  const best_10 = Math.pow(10, round_log_y);
-  const optimal_divs = log_y < round_log_y? (round_log_y-log_y < 0.25? 5 : 10) : (log_y-round_log_y) < 0.25? 5 : 2;
+  const floor_log_y = Math.floor(log_y);
+  const best_10 = Math.pow(10, floor_log_y);
+  const bucket = Math.floor((log_y - floor_log_y)*4);
+  const optimal_divs = [5,2,1,1/2][bucket];
   return best_10/optimal_divs;
 }
 
@@ -300,11 +346,12 @@ function getAxisDiv(ascale) {
  * @param {*} extrasFunc @TODO what are the inputs?
  */
 
- export default function renderChart(chartData, {
+ export default function renderChart({
     tooltip_func = null,
     extras_func = null,
-    time_series_key_bars = null,
-    time_series_key_line = null,
+    time_series_bars = null,
+    time_series_line = null,
+    time_series_state_line = null,
     line_date_offset = 0,
     left_y_fmt = 'num',
     right_y_fmt = 'num',
@@ -330,21 +377,24 @@ function getAxisDiv(ascale) {
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    // console.log("Render Chart",time_series_key_bars, time_series_key_line, root_id);
+    // console.log("Render Chart",time_series_bars, time_series_line, root_id);
 
     // Filter and sort here...
     // console.log("Categories",categories);
     // Y position of bars.
-    // console.log("max_x_domain", chartData.time_series[time_series_key].length);
-    if (time_series_key_bars) {
+    // console.log("max_x_domain", time_series_key.length);
+    if (time_series_bars) {
       this.xbars = d3
       .scaleLinear()
-      .domain([0,chartData.time_series[time_series_key_bars].length-1])
+      .domain([0,time_series_bars.length-1])
       .range([
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
-      let max_y_domain = d3.max(chartData.time_series[time_series_key_bars], d=> d.VALUE);
+      let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
@@ -352,18 +402,24 @@ function getAxisDiv(ascale) {
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
     }
-    if (time_series_key_line) {
-      console.log("time_series_key_line",time_series_key_line,root_id);
+    if (time_series_line) {
+      // console.log("time_series_line",time_series_line,root_id);
       const LINE_OFFSET_X = line_date_offset;
       this.xline = d3
       .scaleLinear()
-      .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+chartData.time_series[time_series_key_line].length-1])
+      .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+time_series_line.length-1])
       .range([
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
-      console.log("time_series_key_line 2",time_series_key_line,root_id);
-      let max_y_domain = d3.max(chartData.time_series[time_series_key_line], d=> d.VALUE);
+      // console.log("time_series_line 2",time_series_line,root_id);
+      let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
+      if (time_series_state_line) {
+        max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
+      }
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
@@ -385,56 +441,60 @@ function getAxisDiv(ascale) {
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
     this.svg.selectAll("g").remove();
 
-    if (time_series_key_bars) {
-      writeBars.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
+    if (time_series_bars) {
+      writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
         { root_id:root_id});
       // bar legend on left
     }
-    if (time_series_key_line) {
-      writeLine.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline, 
+    if (time_series_line) {
+      writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
         { line_legend:line_legend, root_id:root_id});
-      // line legend on right or left, depending on whether bar is provided
+    }
+    if (time_series_state_line) {
+      writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
+        { root_id:'state-'+root_id, is_second_line:true});
+      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
     }
 
     if (pending_date && pending_legend) {
-      writePendingBlock.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
+      writePendingBlock.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
             { root_id:root_id, pending_date:pending_date, pending_legend:pending_legend});
     }
 
-    if (time_series_key_bars) {
-      writeDateAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars,
+    if (time_series_bars) {
+      writeDateAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars,
           {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
-    } else if (time_series_key_line) {
-      writeDateAxis.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline,
+    } else if (time_series_line) {
+      writeDateAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
         {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
     }
     // Write Y Axis, favoring line on left, bars on right
-    if (time_series_key_line) {
-      writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_line], this.xline, this.yline,
+    if (time_series_line) {
+      writeLeftYAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
          {y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
-      if (time_series_key_bars) {
+      if (time_series_bars) {
         if (right_y_axis_legend) {
-          writeRightYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
+          writeRightYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
               { y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
         }
       }
-    } else if (time_series_key_bars) {
-      writeLeftYAxis.call(this, this.svg, chartData.time_series[time_series_key_bars], this.xbars, this.ybars, 
+    } else if (time_series_bars) {
+      writeLeftYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
           { y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
     }
 
     // writeLegend.call(this, this.svg, data, this.xbars, this.y, baselineData);
 
     if (extras_func) {
-      extras_func.call(this, this.svg, chartData);
+      extras_func.call(this, this.svg);
     }
 
     this.svg
     .on("mousemove focus", (event) => {
       let xy = d3.pointer(event);
-      let dIndex = getDataIndexByX(chartData.time_series[time_series_key_bars], this.xbars, xy);
+      let dIndex = getDataIndexByX(time_series_bars, this.xbars, xy);
       if (dIndex != null) {
-        showTooltip.call(this, event, dIndex, xy, dIndex, chartData.time_series[time_series_key_bars][dIndex], this.xbars, this.ybars);
+        showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
       }
     })
     .on("mouseleave touchend blur", (event) => {

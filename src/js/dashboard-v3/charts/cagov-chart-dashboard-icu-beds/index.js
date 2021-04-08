@@ -106,7 +106,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   retrieveData(url, regionName) {
     window
       .fetch(url)
-      .then((response) => response.json())
+      .then((response) => response.json() )
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
@@ -143,18 +143,17 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
       
-        renderChart.call(this, this.chartdata, {'tooltip_func':this.tooltip,
-                                                'extras_func':this.renderExtras,
-                                                'time_series_key_bars':'ICU_BEDS',
-                                                'time_series_key_line':'ICU_BEDS',
-                                                'line_date_offset':0,
-                                                'root_id':'icu_beds',
-                                                'x_axis_legend':'Reported date',
-                                                'month_modulo':2,
-                                              });
+        renderChart.call(this, {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series['ICU_BEDS'],
+                                'time_series_line':this.chartdata.time_series['ICU_BEDS'],
+                                'root_id':'icu_beds',
+                                'x_axis_legend':'Reported date',
+                                'month_modulo':2,
+                              });
         }.bind(this)
       );
-  }
+    }
 
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
@@ -164,7 +163,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
         this.county = e.detail.county;
         let searchURL = this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "")
+          this.county.toLowerCase().replace(/ /g, "_")
         );
         this.retrieveData(searchURL, e.detail.county);
       }.bind(this),

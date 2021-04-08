@@ -8,46 +8,16 @@ import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
 
-// cagov-chart-dashboard-positivity-rate
-class CAGovDashboardPositivityRate extends window.HTMLElement {
+// cagov-chart-dashboard-confirmed-deaths
+class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardPositivityRate");
+    console.log("Loading CAGovDashboardConfirmedDeaths");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    this.stateData = null;
-
+    console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
     // Settings and initial values
-    // this.chartOptions = {
-    //   chartName: 'cagov-chart-dashboard-positivity-rate',
-    //   // Data
-    //   dataUrl:
-    //     config.chartsStateDashTablesLoc + "positivity-rate/california.json", // Overwritten by county.
-    //   dataUrlCounty:
-    //     config.chartsStateDashTablesLoc + "positivity-rate/<county>.json",
-
-    //   desktop: {
-    //     fontSize: 14,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   tablet: {
-    //     fontSize: 14,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   mobile: {
-    //     fontSize: 12,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   retina: {
-    //     fontSize: 12,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    // };
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
     getScreenResizeCharts(this);
 
@@ -65,13 +35,12 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       this.screenDisplayType = window.charts
         ? window.charts.displayType
         : "desktop";
-      this.chartBreakpointValues = chartConfig[
+      this.chartBreakpointValues = this.chartOptions[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
     };
 
     window.addEventListener("resize", handleChartResize);
-
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
@@ -98,14 +67,14 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
   renderExtras(svg, data, x, y) {
   }
 
-  getTooltipContent(di) {    
+  getTooltipContent(di) {
     const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg]
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_POSRATE':formatValue(lineSeries[di].VALUE,{format:'percent'}),
-      TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      DEATHS:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -117,6 +86,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
@@ -128,15 +98,20 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           }
 
           let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
           const repDict = {
-            test_positivity_7_days:formatValue(latestRec.test_positivity_7_days,{format:'percent'}),
-            test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
+            total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
+            new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
+            new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
+            deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
           };
 
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+          this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
           this.translationsObj.currentLocation = regionName;
 
+          // console.log("Translations obj",this.translationsObj);
           this.innerHTML = template(this.translationsObj);
           this.svg = d3
             .select(this.querySelector(".svg-holder"))
@@ -155,22 +130,20 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
             .append("div")
             .attr("class", "tooltip-container")
             .text("Empty Tooltip");
-      
 
-          renderChart.call(this, {'tooltip_func':this.tooltip,
-                                  'extras_func':this.renderExtras,
-                                  'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                                  'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
-                                  'left_y_fmt':'pct',
-                                  'root_id':'pos-rate',
-                                  'left_y_axis_legend':'Positivity Rate',
-                                  'right_y_axis_legend':'Tests',
-                                  'x_axis_legend':'Testing date',
-                                  'line_legend':'7-day average',
-                                  'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                                  'pending_legend':this.translationsObj.pending,
-                                  ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
-                                });
+        renderChart.call(this, {'tooltip_func':this.tooltip,
+                                'extras_func':this.renderExtras,
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
+                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                                'root_id':this.chartOptions.rootId,
+                                'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                                'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                                'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                                'line_legend':this.translationsObj.dayAverage,
+                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD,
+                                'pending_legend':this.translationsObj.pending,
+                                ...(addStateLine) && {'time_series_state_line':this.statedata.time_series[this.chartOptions.seriesFieldAvg]}
+                              });
         }.bind(this)
       );
   }
@@ -189,10 +162,28 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       }.bind(this),
       false
     );
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
+    myFilter.addEventListener(
+      "filter-selected",
+      function (e) {
+        this.chartConfigFilter = e.detail.filterKey;
+        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+        // if I am in a county have to do county url replacement
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+        if(this.county && this.county !== 'California') {
+          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+            "<county>",
+            this.county.toLowerCase().replace(/ /g, "_")
+          );
+        }
+        this.retrieveData(searchURL, this.regionName);
+      }.bind(this),
+      false
+    );
   }
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-positivity-rate",
-  CAGovDashboardPositivityRate
+  "cagov-chart-dashboard-confirmed-deaths",
+  CAGovDashboardConfirmedDeaths
 );

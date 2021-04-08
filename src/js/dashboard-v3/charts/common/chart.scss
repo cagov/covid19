@@ -23,6 +23,9 @@
         g.fg-line path {
             fill:none; stroke:#555555; stroke-width: 2.0px;
         }
+        g.fg-line.second-line path {
+            opacity:0.5;
+        }
         g.pending-block {
             rect { fill:black; opacity:0.05; }
             text { font-weight:300; font-size: 0.8rem; fill:black;  }
@@ -32,7 +35,18 @@
             line { stroke-width: 0.5px; stroke:black;}
             text { font-weight:300; font-size: 0.75rem; fill:black;  }
             text { text-anchor: middle; dominant-baseline:hanging;}
-            text.x-axis-legend { font-weight:300; text-anchor:end; dominant-baseline:auto;  }
+            text.x-axis-legend { font-weight:300; text-anchor:end; dominant-baseline:middle;  }
+        }
+        g.county-legend {
+            rect { fill:black;}
+            text { font-weight:300; font-size: 0.75rem; fill:black;  }
+            text { text-anchor: left; dominant-baseline:middle;}
+
+        }
+        g.state-legend {
+            rect { fill:gray;}
+            text { font-weight:300; font-size: 0.75rem; fill:black;  }
+            text { text-anchor: left; dominant-baseline:middle;}
         }
         g.left-y-axis {
             line { stroke-width: 0.5px; stroke:black; opacity:0.15;}
