@@ -284,64 +284,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-  <!-- TOP CHARTS --> 
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-filter-buttons class="js-re-smalls js-filter-cases">
-        <div class="d-flex justify-content-center">
-          <button class="small-tab active" data-key="episode">Episode date</button>
-          <button class="small-tab" data-key="reported">Reported data</button>
-        </div>
-      </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
-        <ul class="d-none">
-          <li data-label="chartTitle">Confirmed cases in</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases ({new_cases_delta_1_day} decrease)</li>
-          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-          <li data-label="tooltipContent">
-                  Episode Date: <b>{DATE}</b><br>
-                  7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
-                  Cases: <b>{CASES}</b>
-          </li>
-          <li data-label="dayAverage">7-day average</li>
-          <li data-label="cases_leftYAxisLegend">Cases per 100K</li>
-          <li data-label="cases_rightYAxisLegend">Cases</li>
-          <li data-label="cases_episode_xAxisLegend">Episode date</li>
-          <li data-label="cases_reported_xAxisLegend">Reported date</li>
-          <li data-label="pending">Pending</li>
-        </ul>
-      </cagov-chart-dashboard-confirmed-cases>                
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="cases-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartCounty"></div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-filter-buttons class="js-re-smalls js-filter-deaths">
-        <div class="d-flex justify-content-center">
-          <button class="small-tab active" data-key="death">Death date</button>
-          <button class="small-tab" data-key="reported">Reported data</button>
-        </div>
-      </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
-        <ul class="d-none">
-          <li data-label="chartTitle">Confirmed deaths in</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths ({new_deaths_delta_1_day} decrease)</li>
-          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
-          <li data-label="tooltipContent">
-            Death Date: <b>{DATE}</b><br>
-            7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
-            Deaths: <b>{DEATHS}</b>
-          </li>
-          <li data-label="dayAverage">7-day average</li>
-          <li data-label="deaths_leftYAxisLegend">Deaths per 100K</li>
-          <li data-label="deaths_rightYAxisLegend">Deaths</li>
-          <li data-label="deaths_death_xAxisLegend">Death date</li>
-          <li data-label="deaths_reported_xAxisLegend">Reported date</li>
-          <li data-label="pending">Pending</li>
-        </ul>
-      </cagov-chart-dashboard-confirmed-deaths>               
-    </div> 
+    <div id="cases-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="casesChartState"></div>
+    </div>
   </div>
 </div>
 
@@ -372,34 +322,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-  <!-- MIDDLE CHARTS -->
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-filter-buttons class="js-re-smalls js-filter-tests">
-        <div class="d-flex justify-content-center">
-          <button class="small-tab active" data-key="testing">Testing date</button>
-          <button class="small-tab" data-key="reported">Reported data</button>
-        </div>
-      </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-total-tests class="chart"  data-chart-config-filter="testing" data-chart-config-key="tests">
-        <ul class="d-none">
-          <li data-label="chartTitle">Total tests in</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported ({new_tests_reported_delta_1_day} decrease)</li>
-          <li data-label="tooltipContent">
-            Testing Date: <b>{DATE} </b><br>
-            7-day average test rate per 100K: <b>{7DAY_AVERAGE} </b><br>
-            Total Tests: <b>{TOTAL_TESTS} </b>
-          </li>
-          <li data-label="dayAverage">7-day average</li>
-          <li data-label="tests_leftYAxisLegend">Tests per 100K</li>
-          <li data-label="tests_rightYAxisLegend">Tests</li>
-          <li data-label="tests_testing_xAxisLegend">Testing date</li>
-          <li data-label="tests_reported_xAxisLegend">Reported date</li>
-          <li data-label="pending">Pending</li>
-        </ul>
-      </cagov-chart-dashboard-total-tests>                
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container cases-group">
+    <div id="testing-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartCounty"></div>
+    </div>
+    <div id="testing-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="testingChartState"></div>
     </div>
   </div>
 </div>
@@ -431,22 +360,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-  <!-- bottom HOSPITAL charts -->
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-patients class="chart">
-        <ul class="d-none">
-          <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
-          <li data-label="tooltipContent">
-            Reported Date: <b>{DATE} </b><br>
-            Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>
-            14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
-          </li>
-        </ul>
-      </cagov-chart-dashboard-patients>                
+<div class="row d-flex justify-content-md-center">
+  <div class="toggle-group-container hospitals-group">
+    <div id="hospital-county-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
+    </div>
+    <div id="hospital-state-graph" class="toggle-group-element">
+      <div class="tableauPlaceholder" id="hospitalChartState"></div>
     </div>
   </div>
 
