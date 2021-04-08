@@ -1,7 +1,7 @@
 {
   "cases": {
     "episode": {
-      "chartName": "cagov-chart-dashboard-confirmed-cases-episode-date",
+      "chartName": "cagov-chart-dashboard-confirmed-cases",
       "latestField": "CONFIRMED_CASES",
       "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
       "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
@@ -10,7 +10,7 @@
       "rootId": "cases-ep"
     },
     "reported": {
-      "chartName": "cagov-chart-dashboard-confirmed-cases-reported-date",
+      "chartName": "cagov-chart-dashboard-confirmed-cases",
       "latestField": "CONFIRMED_CASES",
       "seriesField": "CONFIRMED_CASES_REPORTED_DATE",
       "seriesFieldAvg": "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
@@ -21,7 +21,7 @@
   },
   "deaths": {
     "death": {
-      "chartName": "cagov-chart-dashboard-confirmed-deaths-death-date",
+      "chartName": "cagov-chart-dashboard-confirmed-deaths",
       "latestField": "CONFIRMED_DEATHS",
       "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
@@ -30,7 +30,7 @@
       "rootId": "death-date"
     },
     "reported": {
-      "chartName": "cagov-chart-dashboard-confirmed-deaths-reported-date",
+      "chartName": "cagov-chart-dashboard-confirmed-deaths",
       "latestField": "CONFIRMED_DEATHS",
       "seriesField": "CONFIRMED_DEATHS_REPORTED_DATE",
       "seriesFieldAvg": "AVG_DEATH_REPORT_RATE_PER_100K_7_DAYS",
@@ -41,7 +41,7 @@
   },
   "tests": {
     "testing": {
-      "chartName": "cagov-chart-dashboard-total-tests-testing-date",
+      "chartName": "cagov-chart-dashboard-total-tests",
       "latestField": "TOTAL_TESTS",
       "seriesField": "TOTAL_TESTS",
       "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
@@ -50,7 +50,7 @@
       "rootId": "tests-tests"
     },
     "reported": {
-      "chartName": "cagov-chart-dashboard-total-tests-reported-date",
+      "chartName": "cagov-chart-dashboard-total-tests",
       "latestField": "TOTAL_TESTS",
       "seriesField": "REPORTED_TESTS",
       "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",

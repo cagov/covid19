@@ -1,4 +1,4 @@
-import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
+import template from "../cagov-chart-dashboard-confirmed-cases/template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -8,10 +8,10 @@ import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
 
-// cagov-chart-dashboard-confirmed-deaths-death-date
-class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
+// cagov-chart-dashboard-confirmed-deaths
+class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardConfirmedDeathsDeathDate");
+    console.log("Loading CAGovDashboardConfirmedDeaths");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -184,6 +184,6 @@ class CAGovDashboardConfirmedDeathsDeathDate extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-confirmed-deaths-death-date",
-  CAGovDashboardConfirmedDeathsDeathDate
+  "cagov-chart-dashboard-confirmed-deaths",
+  CAGovDashboardConfirmedDeaths
 );

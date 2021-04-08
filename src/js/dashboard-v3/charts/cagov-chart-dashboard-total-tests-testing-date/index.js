@@ -1,4 +1,4 @@
-import template from "../cagov-chart-dashboard-confirmed-cases-episode-date/template.js";
+import template from "../cagov-chart-dashboard-confirmed-cases/template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -8,10 +8,10 @@ import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
 
-// cagov-chart-dashboard-total-tests-testing-date
-class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
+// cagov-chart-dashboard-total-tests
+class CAGovDashboardTotalTests extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardTotalTestsTestingDate");
+    console.log("Loading CAGovDashboardTotalTests");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -183,6 +183,6 @@ class CAGovDashboardTotalTestsTestingDate extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-total-tests-testing-date",
-  CAGovDashboardTotalTestsTestingDate
+  "cagov-chart-dashboard-total-tests",
+  CAGovDashboardTotalTests
 );

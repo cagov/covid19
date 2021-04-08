@@ -263,7 +263,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
       </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-cases-episode-date class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
+      <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed cases in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
@@ -282,7 +282,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="cases_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-confirmed-cases-episode-date>                
+      </cagov-chart-dashboard-confirmed-cases>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
       <cagov-chart-filter-buttons class="js-re-smalls js-filter-deaths">
@@ -291,7 +291,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
       </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-confirmed-deaths-death-date class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
+      <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
         <ul class="d-none">
           <li data-label="chartTitle">Confirmed deaths in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
@@ -310,7 +310,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-confirmed-deaths-death-date>               
+      </cagov-chart-dashboard-confirmed-deaths>               
     </div> 
   </div>
 
@@ -344,7 +344,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <button class="small-tab" data-key="reported">Reported data</button>
         </div>
       </cagov-chart-filter-buttons>
-      <cagov-chart-dashboard-total-tests-testing-date class="chart"  data-chart-config-filter="testing" data-chart-config-key="tests">
+      <cagov-chart-dashboard-total-tests class="chart"  data-chart-config-filter="testing" data-chart-config-key="tests">
         <ul class="d-none">
           <li data-label="chartTitle">Total tests in</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
@@ -362,7 +362,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
         </ul>
-      </cagov-chart-dashboard-total-tests-testing-date>                
+      </cagov-chart-dashboard-total-tests>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
       <cagov-chart-dashboard-positivity-rate class="chart">
