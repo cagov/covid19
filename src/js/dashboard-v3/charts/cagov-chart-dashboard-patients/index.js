@@ -68,8 +68,8 @@ class CAGovDashboardPatients extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField];
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg];
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
@@ -134,8 +134,8 @@ class CAGovDashboardPatients extends window.HTMLElement {
       
         renderChart.call(this, {'tooltip_func':this.tooltip,
                                 'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField],
-                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg],
+                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                                 'root_id':this.chartOptions.rootId,
                                 'x_axis_legend':'Reported date',
                                 'line_legend':'14-day average',

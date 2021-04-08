@@ -377,12 +377,8 @@ function getAxisDiv(ascale) {
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    // console.log("Render Chart",time_series_bars, time_series_line, root_id);
+    console.log("Render Chart",root_id, time_series_bars, time_series_line);
 
-    // Filter and sort here...
-    // console.log("Categories",categories);
-    // Y position of bars.
-    // console.log("max_x_domain", time_series_key.length);
     if (time_series_bars) {
       this.xbars = d3
       .scaleLinear()

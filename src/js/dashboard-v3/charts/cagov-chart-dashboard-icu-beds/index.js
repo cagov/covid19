@@ -145,8 +145,8 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       
         renderChart.call(this, {'tooltip_func':this.tooltip,
                                 'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series['ICU_BEDS'],
-                                'time_series_line':this.chartdata.time_series['ICU_BEDS'],
+                                'time_series_bars':this.chartdata.time_series['ICU_BEDS'].VALUES,
+                                'time_series_line':this.chartdata.time_series['ICU_BEDS'].VALUES,
                                 'root_id':'icu_beds',
                                 'x_axis_legend':'Reported date',
                                 'month_modulo':2,
