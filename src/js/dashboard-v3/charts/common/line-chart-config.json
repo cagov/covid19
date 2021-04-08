@@ -42,20 +42,20 @@
   "tests": {
     "testing": {
       "chartName": "cagov-chart-dashboard-total-tests-testing-date",
-      "latestField": "TOTAL_TESTS_TESTING_DATE",
+      "latestField": "TOTAL_TESTS",
       "seriesField": "TOTAL_TESTS",
       "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
-      "dataUrl": "total-tests-testing-date/california.json",
-      "dataUrlCounty": "total-tests-testing-date/<county>.json",
+      "dataUrl": "total-tests/california.json",
+      "dataUrlCounty": "total-tests/<county>.json",
       "rootId": "tests-tests"
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-total-tests-reported-date",
-      "latestField": "TOTAL_TESTS_REPORTED_DATE",
+      "latestField": "TOTAL_TESTS",
       "seriesField": "REPORTED_TESTS",
       "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
-      "dataUrl": "total-tests-reported-date/california.json",
-      "dataUrlCounty": "total-tests-reported-date/<county>.json",
+      "dataUrl": "total-tests/california.json",
+      "dataUrlCounty": "total-tests/<county>.json",
       "rootId": "tests-rep"
     }
   },
