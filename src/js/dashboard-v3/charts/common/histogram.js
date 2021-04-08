@@ -154,7 +154,7 @@ function getFormatter(max_v,{hint='num',digits=0})
         return fmtr.format;
   } else {
     // assume num
-    if (max_v < 1000) {
+    if (max_v < 4000) {
       const digits = max_v < .1? 2 : max_v < 10? 1 : 0;
       const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
       return fmtr.format;
@@ -377,7 +377,7 @@ function getAxisDiv(ascale) {
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    console.log("Render Chart",root_id, time_series_bars, time_series_line);
+    // console.log("Render Chart",root_id, time_series_bars, time_series_line);
 
     if (time_series_bars) {
       this.xbars = d3

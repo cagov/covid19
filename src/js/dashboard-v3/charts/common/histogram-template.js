@@ -8,7 +8,7 @@ export default function template({
   chartTitle = "chart title",
   post_chartLegend1 = "Chart Legend 1",
   post_chartLegend2 = "Chart Legend 2",
-  post_chartLegend3 = "Chart Legend 3",
+  post_chartLegend3 = null,
   chartDataLabel = null,
   currentLocation = 'location'
 }) {
@@ -22,8 +22,11 @@ export default function template({
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
             <div class="header-line">${post_chartLegend2}</div>
-            <div class="header-line">${post_chartLegend3}</div>
-            </div>
+` +
+(post_chartLegend3?
+`            <div class="header-line">${post_chartLegend3}</div>
+` : '') +
+`            </div>
             <div class="svg-holder"></div>
         </div>
       </div>
