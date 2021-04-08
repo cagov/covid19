@@ -2415,3 +2415,10 @@ font {
   }
 }
 
+.wp-block-separator {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-top: 1px solid $black;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
