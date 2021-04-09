@@ -1,3 +1,4 @@
+import css from "./chart.scss";
 /**
  * Generic template for mixed line/bar charts on State Dashboard
  * 
@@ -13,8 +14,8 @@ export default function template({
   return /*html*/ `
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
-        <div class="mx-auto">
-            <div class="chart-title">${chartTitle} ${currentLocation}</div>
+        <div class="mx-auto chart-histogram">
+            <div class="chart-title">${post_chartTitle} ${currentLocation}</div>
             <!-- tabs go here -->
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
