@@ -332,13 +332,18 @@ function hideTooltip()
  * @returns 
  */
 function getAxisDiv(ascale) {
+  // return ascale.ticks()[1];
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
   const floor_log_y = Math.floor(log_y);
   const best_10 = Math.pow(10, floor_log_y);
-  const bucket = Math.floor((log_y - floor_log_y)*4);
-  const optimal_divs = [5,2,1,1/2][bucket];
-  return best_10/optimal_divs;
+  const log_diff = (log_y - floor_log_y);
+  if (log_diff < 0.176)     var optimal_div = 5; // 150/100
+  else if (log_diff < 0.477) var optimal_div = 2; // 300/100
+  else if (log_diff < 0.778) var optimal_div = 1; // 600/100
+  else                       var optimal_div = 0.5;
+  // const optimal_divs = [5,2,1,1/2][bucket];
+  return best_10/optimal_div;
 }
 
 /**
@@ -363,12 +368,8 @@ function getAxisDiv(ascale) {
     pending_legend = null,
     month_modulo = 3,
     root_id = "barid" } )  {
-    // // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
-    // let categories = data.map((group) => group.CATEGORY);
 
-    // // Dynamically adjust chart height based on available bars
-    // this.dimensions.height = this.dimensions.margin.top + 60 * categories.length;
-    // // console.log("New height",this.chartBreakpointValues.height);
+    console.log("renderChart",root_id);
 
     d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -377,7 +378,6 @@ function getAxisDiv(ascale) {
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    // console.log("Render Chart",root_id, time_series_bars, time_series_line);
 
     if (time_series_bars) {
       this.xbars = d3

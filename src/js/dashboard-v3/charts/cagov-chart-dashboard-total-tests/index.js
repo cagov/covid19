@@ -34,7 +34,7 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
       this.screenDisplayType = window.charts
         ? window.charts.displayType
         : "desktop";
-      this.chartBreakpointValues = this.chartOptions[
+      this.chartBreakpointValues = chartConfig[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
     };

@@ -24,6 +24,7 @@ class CAGovDashboardPatients extends window.HTMLElement {
     this.screenDisplayType = window.charts
       ? window.charts.displayType
       : "desktop";
+    console.log("this.screenDisplayType",this.screenDisplayType);
 
     this.chartBreakpointValues = chartConfig[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
@@ -37,7 +38,7 @@ class CAGovDashboardPatients extends window.HTMLElement {
       this.screenDisplayType = window.charts
         ? window.charts.displayType
         : "desktop";
-      this.chartBreakpointValues = this.chartOptions[
+      this.chartBreakpointValues = chartConfig[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
     };
