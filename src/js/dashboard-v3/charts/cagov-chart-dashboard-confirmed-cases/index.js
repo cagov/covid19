@@ -7,7 +7,6 @@ import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
-// import { render } from "node-sass";
 
 class CAGovDashboardConfirmedCases extends window.HTMLElement {
   connectedCallback() {
