@@ -125,7 +125,7 @@ class CAGovDashboardPatients extends window.HTMLElement {
       .attr("class", "tooltip-container")
       .text("Empty Tooltip");
 
-    renderOptions = {'tooltip_func':this.tooltip,
+    let renderOptions = {'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
                       'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
                       'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
