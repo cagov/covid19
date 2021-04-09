@@ -15,7 +15,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
+    // console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
     // Settings and initial values
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
@@ -35,7 +35,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       this.screenDisplayType = window.charts
         ? window.charts.displayType
         : "desktop";
-      this.chartBreakpointValues = this.chartOptions[
+      this.chartBreakpointValues = chartConfig[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
     };
@@ -113,17 +113,21 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
 
           // console.log("Translations obj",this.translationsObj);
           this.innerHTML = template(this.translationsObj);
-          this.svg = d3
-            .select(this.querySelector(".svg-holder"))
-            .append("svg")
-            .attr("viewBox", [
-              0,
-              0,
-              this.chartBreakpointValues.width,
-              this.chartBreakpointValues.height,
-            ])
-            .append("g")
-            .attr("transform", "translate(0,0)");
+          try {
+            this.svg = d3
+              .select(this.querySelector(".svg-holder"))
+              .append("svg")
+              .attr("viewBox", [
+                0,
+                0,
+                this.chartBreakpointValues.width,
+                this.chartBreakpointValues.height,
+              ])
+              .append("g")
+              .attr("transform", "translate(0,0)");
+          } catch (e) {
+            console.log("Error",e,this.chartBreakpointValues,this.screenDisplayType);
+          }
       
           this.tooltip = d3
             .select(this.chartOptions.chartName)

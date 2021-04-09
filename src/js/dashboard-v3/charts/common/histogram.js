@@ -368,12 +368,8 @@ function getAxisDiv(ascale) {
     pending_legend = null,
     month_modulo = 3,
     root_id = "barid" } )  {
-    // // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
-    // let categories = data.map((group) => group.CATEGORY);
 
-    // // Dynamically adjust chart height based on available bars
-    // this.dimensions.height = this.dimensions.margin.top + 60 * categories.length;
-    // // console.log("New height",this.chartBreakpointValues.height);
+    console.log("renderChart",root_id);
 
     d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -382,7 +378,6 @@ function getAxisDiv(ascale) {
       this.dimensions.width,
       this.dimensions.height,
     ]);
-    // console.log("Render Chart",root_id, time_series_bars, time_series_line);
 
     if (time_series_bars) {
       this.xbars = d3

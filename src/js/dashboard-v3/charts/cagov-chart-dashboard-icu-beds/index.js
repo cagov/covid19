@@ -95,8 +95,8 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series.ICU_BEDS;
-    const lineSeries = this.chartdata.time_series.ICU_BEDS;
+    const barSeries = this.chartdata.time_series.ICU_BEDS.VALUES;
+    const lineSeries = this.chartdata.time_series.ICU_BEDS.VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
