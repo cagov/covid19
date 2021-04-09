@@ -133,6 +133,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
             test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
           };
 
+          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;

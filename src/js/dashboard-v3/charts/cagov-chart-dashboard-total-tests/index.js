@@ -104,6 +104,7 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
             new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
           };
 
+          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.currentLocation = regionName;

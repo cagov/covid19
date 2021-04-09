@@ -106,6 +106,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
             deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
           };
 
+          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
           this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
           this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
           this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);

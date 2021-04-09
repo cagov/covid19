@@ -1,15 +1,12 @@
 /**
- * Render bar chart for vaccinations group.
+ * Generic template for mixed line/bar charts on State Dashboard
  * 
- * @param {string} translationsObj.chartTitle - Label for the chart
- * @param {string} translationsObj.chartDataLabel - Chart description
  */
 export default function template({
-  chartTitle = "chart title",
-  post_chartLegend1 = "Chart Legend 1",
-  post_chartLegend2 = "Chart Legend 2",
-  post_chartLegend3 = null,
-  chartDataLabel = null,
+  post_chartTitle = "chart title",
+  post_chartLegend1 = "Chart Legend 1", // expected
+  post_chartLegend2 = "Chart Legend 2", // expected
+  post_chartLegend3 = null, // only used if provided
   currentLocation = 'location'
 }) {
 
@@ -31,6 +28,5 @@ export default function template({
         </div>
       </div>
     </div>
-    <!-- <div class="tooltip-container"></div> -->
     `;
 }

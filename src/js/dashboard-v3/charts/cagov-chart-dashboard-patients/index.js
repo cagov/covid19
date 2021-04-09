@@ -1,4 +1,4 @@
-import template from "./template.js";
+import template from "./../common/histogram-template.js";
 import chartConfig from '../common/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
@@ -104,15 +104,15 @@ class CAGovDashboardPatients extends window.HTMLElement {
           };
 
           if (this.chartConfigFilter == 'icu') {
+            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
             this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
             this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
             this.translationsObj.currentLocation = regionName;
-            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
           } else {
+            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
             this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
             this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
             this.translationsObj.currentLocation = regionName;
-            this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
           }
           
           this.innerHTML = template(this.translationsObj);
