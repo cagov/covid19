@@ -110,6 +110,64 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
+  renderComponent(regionName) {
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    const repDict = {
+      test_positivity_7_days:formatValue(latestRec.test_positivity_7_days,{format:'percent'}),
+      test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
+    };
+
+    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template(this.translationsObj);
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+      this.tooltip = d3
+        .select(this.chartOptions.chartName)
+        .append("div")
+        .attr("class", "tooltip-container")
+        .text("Empty Tooltip");
+
+      
+      let renderOptions = {'tooltip_func':this.tooltip,
+                            'extras_func':this.renderExtras,
+                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                            'left_y_fmt':'pct',
+                            'root_id':'pos-rate',
+                            'left_y_axis_legend':'Positivity Rate',
+                            'right_y_axis_legend':'Tests',
+                            'x_axis_legend':'Testing date',
+                            'line_legend':'7-day average',
+                            'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
+                            'pending_legend':this.translationsObj.pending,
+                          };
+      if (addStateLine) {
+        renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+      }
+      renderChart.call(this, renderOptions);
+  }
+
   retrieveData(url, regionName) {
     window
       .fetch(url)
@@ -119,62 +177,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
-
-          let addStateLine = false;
-          if (regionName == 'California') {
-            this.statedata = alldata.data;
-          } else if (this.statedata) {
-            addStateLine = true;
-          }
-
-          let latestRec = this.chartdata.latest[this.chartOptions.latestField];
-          const repDict = {
-            test_positivity_7_days:formatValue(latestRec.test_positivity_7_days,{format:'percent'}),
-            test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
-          };
-
-          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
-          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
-          this.translationsObj.currentLocation = regionName;
-
-          this.innerHTML = template(this.translationsObj);
-          this.svg = d3
-            .select(this.querySelector(".svg-holder"))
-            .append("svg")
-            .attr("viewBox", [
-              0,
-              0,
-              this.chartBreakpointValues.width,
-              this.chartBreakpointValues.height,
-            ])
-            .append("g")
-            .attr("transform", "translate(0,0)");
-      
-          this.tooltip = d3
-            .select(this.chartOptions.chartName)
-            .append("div")
-            .attr("class", "tooltip-container")
-            .text("Empty Tooltip");
-      
-          
-          let renderOptions = {'tooltip_func':this.tooltip,
-                                'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
-                                'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
-                                'left_y_fmt':'pct',
-                                'root_id':'pos-rate',
-                                'left_y_axis_legend':'Positivity Rate',
-                                'right_y_axis_legend':'Tests',
-                                'x_axis_legend':'Testing date',
-                                'line_legend':'7-day average',
-                                'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                                'pending_legend':this.translationsObj.pending,
-                              };
-          if (addStateLine) {
-            renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-          }
-          renderChart.call(this, renderOptions);
+          this.renderComponent(regionName);
         }.bind(this)
       );
   }

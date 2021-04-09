@@ -7,6 +7,7 @@ import renderChart from "../common/histogram.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
+// import { render } from "node-sass";
 
 class CAGovDashboardConfirmedCases extends window.HTMLElement {
   connectedCallback() {
@@ -78,6 +79,64 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
+  renderComponent(regionName) {
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    const repDict = {
+      total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
+      new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
+      new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
+      cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
+    };
+    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template(this.translationsObj);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select(this.chartOptions.chartName)
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    let renderOptions = {'tooltip_func':this.tooltip,
+                        'extras_func':this.renderExtras,
+                        'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                        'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                        'root_id':this.chartOptions.rootId,
+                        'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                        'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'line_legend':this.translationsObj.dayAverage,
+                        'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
+                        'pending_legend':'Pending',
+                        };
+    if (addStateLine) {
+      renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    }
+    renderChart.call(this, renderOptions);
+  }
+
   retrieveData(url, regionName) {
     window
       .fetch(url)
@@ -89,61 +148,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-          let addStateLine = false;
-          if (regionName == 'California') {
-            this.statedata = alldata.data;
-          } else if (this.statedata) {
-            addStateLine = true;
-          }
-          let latestRec = this.chartdata.latest[this.chartOptions.latestField];
-          const repDict = {
-            total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
-            new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
-            new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
-            cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
-          };
-          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
-          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
-          this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
-          this.translationsObj.currentLocation = regionName;
-
-          this.innerHTML = template(this.translationsObj);
-
-          this.svg = d3
-          .select(this.querySelector(".svg-holder"))
-          .append("svg")
-          .attr("viewBox", [
-            0,
-            0,
-            this.chartBreakpointValues.width,
-            this.chartBreakpointValues.height,
-          ])
-          .append("g")
-          .attr("transform", "translate(0,0)");
-    
-        this.tooltip = d3
-          .select(this.chartOptions.chartName)
-          .append("div")
-          .attr("class", "tooltip-container")
-          .text("Empty Tooltip");
-
-        let renderOptions = {'tooltip_func':this.tooltip,
-                            'extras_func':this.renderExtras,
-                            'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
-                            'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
-                            'root_id':this.chartOptions.rootId,
-                            'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
-                            'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
-                            'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
-                            'line_legend':this.translationsObj.dayAverage,
-                            'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
-                            'pending_legend':'Pending',
-                            };
-        if (addStateLine) {
-          renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-        }
-        renderChart.call(this, renderOptions);
+          this.renderComponent(regionName);
 
         }.bind(this)
       );
@@ -177,7 +182,8 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
             this.county.toLowerCase().replace(/ /g, "_")
           );
         }
-        this.retrieveData(searchURL, this.regionName);
+        this.renderComponent(this.regionName);
+        // this.retrieveData(searchURL, this.regionName);
       }.bind(this),
       false
     );

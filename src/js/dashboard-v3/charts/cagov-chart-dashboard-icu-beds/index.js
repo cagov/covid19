@@ -105,55 +105,59 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
+  renderComponent(regionName) {
+    const repDict = {
+      TOTAL:formatValue(this.chartdata.latest.ICU_BEDS.TOTAL,{format:'integer'}),
+      CHANGE:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE),{format:'integer'}),
+      CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR),{format:'percent'}),
+    };
+
+    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template(this.translationsObj);
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg")
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+      this.tooltip = d3
+        .select(this.chartOptions.chartName)
+        .append("div")
+        .attr("class", "tooltip-container")
+        .text("Empty Tooltip");
+
+    renderOptions = { 'tooltip_func':this.tooltip,
+                      'extras_func':this.renderExtras,
+                      'time_series_bars':this.chartdata.time_series['ICU_BEDS'].VALUES,
+                      'time_series_line':this.chartdata.time_series['ICU_BEDS'].VALUES,
+                      'root_id':'icu_beds',
+                      'x_axis_legend':'Reported date',
+                      'month_modulo':2,
+                    };
+    renderChart.call(this, renderOptions);
+    
+  }
+
   retrieveData(url, regionName) {
     window
       .fetch(url)
       .then((response) => response.json() )
       .then(
         function (alldata) {
-          // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
-
-          const repDict = {
-            TOTAL:formatValue(this.chartdata.latest.ICU_BEDS.TOTAL,{format:'integer'}),
-            CHANGE:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE),{format:'integer'}),
-            CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR),{format:'percent'}),
-          };
-
-          this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
-          this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-          this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
-          this.translationsObj.currentLocation = regionName;
-
-          this.innerHTML = template(this.translationsObj);
-
-          this.svg = d3
-            .select(this.querySelector(".svg-holder"))
-            .append("svg")
-            .attr("viewBox", [
-              0,
-              0,
-              this.chartBreakpointValues.width,
-              this.chartBreakpointValues.height,
-            ])
-            .append("g")
-            .attr("transform", "translate(0,0)");
-      
-          this.tooltip = d3
-            .select(this.chartOptions.chartName)
-            .append("div")
-            .attr("class", "tooltip-container")
-            .text("Empty Tooltip");
-      
-        renderChart.call(this, {'tooltip_func':this.tooltip,
-                                'extras_func':this.renderExtras,
-                                'time_series_bars':this.chartdata.time_series['ICU_BEDS'].VALUES,
-                                'time_series_line':this.chartdata.time_series['ICU_BEDS'].VALUES,
-                                'root_id':'icu_beds',
-                                'x_axis_legend':'Reported date',
-                                'month_modulo':2,
-                              });
+          this.renderComponent(regionName);
         }.bind(this)
       );
     }
