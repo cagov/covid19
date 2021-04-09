@@ -1,4 +1,4 @@
-import css from "./chart.scss";
+import css from "./histogram.scss";
 /**
  * Generic template for mixed line/bar charts on State Dashboard
  * 
