@@ -260,6 +260,35 @@ function writeRightYAxis(svg, data, x, y,
   }
 }
 
+function writeDownloadButton({root_id='untitled'}) {
+  const xmlns = "http://www.w3.org/2000/xmlns/";
+  const xlinkns = "http://www.w3.org/1999/xlink";
+  const svgns = "http://www.w3.org/2000/svg";
+
+  function serialize(svg) {
+    svg = svg.cloneNode(true);   
+    const fragment = window.location.href + "#";
+    const walker = document.createTreeWalker(svg, NodeFilter.SHOW_ELEMENT);
+    while (walker.nextNode()) {
+      for (const attr of walker.currentNode.attributes) {
+        if (attr.value.includes(fragment)) {
+          attr.value = attr.value.replace(fragment, "#");
+        }
+      }
+    }
+    svg.setAttributeNS(xmlns, "xmlns", svgns);
+    svg.setAttributeNS(xmlns, "xmlns:xlink", xlinkns);
+    const serializer = new window.XMLSerializer;
+    const string = serializer.serializeToString(svg);
+    return new Blob([string] , {type: "image/svg+xml"});
+  };
+
+  let svgNode = d3.select(this.chartOptions.chartName+" svg").node();
+  d3.select(this.chartOptions.chartName + " a.dl-button")
+    .attr('download',root_id+".svg")
+    .attr('href',URL.createObjectURL(serialize(svgNode)));
+}
+
 // Convert 
 function getDataIndexByX(data, xScale, xy)
 {
@@ -423,16 +452,6 @@ function getAxisDiv(ascale) {
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
 
-    // console.log("this.y",this.y);
-  
-    // Position for labels.
-    // this.yAxis = (g) =>
-    //   g
-    //     .attr("class", "bar-label")
-    //     .attr("transform", "translate(5," + -32 + ")")
-    //     .call(d3.axisLeft(this.y).tickSize(0))
-    //     .call((g) => g.selectAll(".domain").remove());
-       
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
     this.svg.selectAll("g").remove();
@@ -484,6 +503,10 @@ function getAxisDiv(ascale) {
     if (extras_func) {
       extras_func.call(this, this.svg);
     }
+
+    writeDownloadButton.call(this,{root_id:root_id});
+
+
 
     this.svg
     .on("mousemove focus", (event) => {
