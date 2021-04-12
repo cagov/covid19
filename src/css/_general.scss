@@ -2424,3 +2424,9 @@ font {
   }
 }
 
+/* Fixing White space */
+.sr-only {
+  text-indent: -10000px;
+  height: unset !important;
+  width: unset !important;
+}
