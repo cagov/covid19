@@ -845,3 +845,7 @@ faq-section {
     bottom: 50px;
   }
 }
+
+a span.pdf-link-icon ~ span.ca-gov-icon-external-link {
+  display: none;
+}
