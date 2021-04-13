@@ -1,23 +1,21 @@
+import css from "./histogram.scss";
 /**
- * Render bar chart for vaccinations group.
+ * Generic template for mixed line/bar charts on State Dashboard
  * 
- * @param {string} translationsObj.chartTitle - Label for the chart
- * @param {string} translationsObj.chartDataLabel - Chart description
  */
 export default function template({
-  chartTitle = "chart title",
-  post_chartLegend1 = "Chart Legend 1",
-  post_chartLegend2 = "Chart Legend 2",
-  post_chartLegend3 = null,
-  chartDataLabel = null,
+  post_chartTitle = "chart title",
+  post_chartLegend1 = "Chart Legend 1", // expected
+  post_chartLegend2 = "Chart Legend 2", // expected
+  post_chartLegend3 = null, // only used if provided
   currentLocation = 'location'
 }) {
 
   return /*html*/ `
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
-        <div class="mx-auto">
-            <div class="chart-title">${chartTitle} ${currentLocation}</div>
+        <div class="mx-auto chart-histogram">
+            <div class="chart-title">${post_chartTitle} ${currentLocation}</div>
             <!-- tabs go here -->
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
@@ -28,9 +26,9 @@ export default function template({
 ` : '') +
 `            </div>
             <div class="svg-holder"></div>
+            <!-- <a class="dl-button" role="button">download</a> -->
         </div>
       </div>
     </div>
-    <!-- <div class="tooltip-container"></div> -->
     `;
 }

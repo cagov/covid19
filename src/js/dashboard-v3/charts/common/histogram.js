@@ -7,6 +7,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
 
   let groups = svg.append("g")
     .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
+    // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
     .append('path')
     .datum(data)
       .attr("d", d3.line()
@@ -18,6 +19,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
  function writeBars(svg, data, x, y, { root_id='barid' }) {
     let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
+      // .attr('style','fill:#deeaf6;')
       .selectAll("g")
       .data(data)
       .enter()
@@ -55,11 +57,13 @@ function writePendingBlock(svg, data, x, y,
     // console.log("Pending",nbr_pending);
 
     xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
       .attr("x",x(nbr_pending))
       .attr("y",y(max_y_domain))
       .attr("width",x(0) - x(nbr_pending))
       .attr("height",y(min_y_domain)-y(max_y_domain));
     xgroup.append('text')
+      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
       .text(pending_legend)
       .attr("x",x(0))
       .attr("y",y(max_y_domain)-4);
@@ -78,6 +82,7 @@ function writeCountyStateLegend(svg,x,y, {
     .attr("class","county-legend");
 
   g.append('rect')
+    // .attr('style','fill:black;')
     .attr('x',x_pos)
     .attr('y',y_pos)
     .attr('width',24)
@@ -85,6 +90,7 @@ function writeCountyStateLegend(svg,x,y, {
 
   g.append('text')
     .text(county_legend)
+    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
     .attr("x",x_pos + 36)
     .attr("y",y_pos);
 
@@ -92,6 +98,7 @@ function writeCountyStateLegend(svg,x,y, {
     .attr("class","state-legend");
 
   g.append('rect')
+    // .attr('style','fill:gray;')
     .attr('x',x_pos+85)
     .attr('y',y_pos)
     .attr('width',24)
@@ -99,6 +106,7 @@ function writeCountyStateLegend(svg,x,y, {
 
   g.append('text')
     .text(state_legend)
+    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
     .attr("x",x_pos+85 + 36)
     .attr("y",y_pos);
 }
@@ -111,8 +119,11 @@ function writeDateAxis(svg, data, x, y,
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 2;
+  const axisY = this.dimensions.height - this.dimensions.margin.bottom;
+
   let xgroup = svg.append("g")
-      .attr("class",'date-axis');
+      .attr("class",'date-axis')
+      // .attr('style','stroke-width: 0.5px; stroke:black;');
 
   data.forEach((d,i) => {
     const ymd = d.DATE.split('-');
@@ -125,19 +136,21 @@ function writeDateAxis(svg, data, x, y,
               .attr('class','x-tick');
         subg.append('line')
         .attr('x1', x(i))
-        .attr('y1', y(0)+tick_upper_gap)
+        .attr('y1', axisY+tick_upper_gap)
         .attr('x2', x(i))
-        .attr('y2',y(0)+tick_upper_gap+tick_height);
+        .attr('y2',axisY+tick_upper_gap+tick_height);
         subg.append('text')
          .text(date_caption)
+         // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
          .attr("x", x(i))
-         .attr("y", y(0)+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
+         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
       }
     }
   });
   if (x_axis_legend) {
     xgroup.append('text')
     .attr('class','x-axis-legend')
+    .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
     .text(x_axis_legend)
     .attr("x", x(0))
     .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
@@ -188,6 +201,7 @@ function writeLeftYAxis(svg, data, x, y,
   const y_div = getAxisDiv(y);
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
+
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const max_x_domain = x.domain()[1];
@@ -200,6 +214,7 @@ function writeLeftYAxis(svg, data, x, y,
       .attr('class','y-tick');
 
     subg.append('line')
+      .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.15;')
       .attr('x1', x(max_x_domain))
       .attr('y1', y(yi))
       .attr('x2', x(min_x_domain))
@@ -207,12 +222,14 @@ function writeLeftYAxis(svg, data, x, y,
 
     subg.append('text')
       .text(y_caption)
+      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
       .attr("x", x(max_x_domain)-tick_left_gap)
       .attr("y", y(yi)) // +this.getYOffset(i)
   }
   if (y_axis_legend) {
     ygroup.append('text')
     .attr('class','left-y-axis-legend')
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:black;text-anchor: start; dominant-baseline:hanging;')
     .text(y_axis_legend)
     .attr("x", 0)
     .attr("y", 0) // +this.getYOffset(i)
@@ -225,7 +242,11 @@ function writeRightYAxis(svg, data, x, y,
                           root_id='barid' }) {
   const y_div = getAxisDiv(y);
   let ygroup = svg.append("g")
-      .attr("class",'right-y-axis');
+      .attr("class",'right-y-axis')
+      .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
+
+
+
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const tick_left_gap = 10;
@@ -248,6 +269,7 @@ function writeRightYAxis(svg, data, x, y,
 
     subg.append('text')
       .text(y_caption)
+      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:#1f2574; text-anchor:start; dominant-baseline:middle; ')
       .attr("x", x(min_x_domain)+tick_right_gap)
       .attr("y", y(yi)) // +this.getYOffset(i)
   }
@@ -255,10 +277,42 @@ function writeRightYAxis(svg, data, x, y,
     ygroup.append('text')
     .attr('class','right-y-axis-legend')
     .text(y_axis_legend)
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:#1f2574; text-anchor:end; dominant-baseline:hanging; ')
     .attr("x", this.dimensions.width)
     .attr("y", 0) // +this.getYOffset(i)
   }
 }
+
+/** saved for future reference 
+function writeDownloadButton({root_id='untitled'}) {
+  const xmlns = "http://www.w3.org/2000/xmlns/";
+  const xlinkns = "http://www.w3.org/1999/xlink";
+  const svgns = "http://www.w3.org/2000/svg";
+
+  function serialize(svg) {
+    svg = svg.cloneNode(true);   
+    const fragment = window.location.href + "#";
+    const walker = document.createTreeWalker(svg, NodeFilter.SHOW_ELEMENT);
+    while (walker.nextNode()) {
+      for (const attr of walker.currentNode.attributes) {
+        if (attr.value.includes(fragment)) {
+          attr.value = attr.value.replace(fragment, "#");
+        }
+      }
+    }
+    svg.setAttributeNS(xmlns, "xmlns", svgns);
+    svg.setAttributeNS(xmlns, "xmlns:xlink", xlinkns);
+    const serializer = new window.XMLSerializer;
+    const string = serializer.serializeToString(svg);
+    return new Blob([string] , {type: "image/svg+xml"});
+  };
+
+  let svgNode = d3.select(this.chartOptions.chartName+" svg").node();
+  d3.select(this.chartOptions.chartName + " a.dl-button")
+    .attr('download',root_id+".svg")
+    .attr('href',URL.createObjectURL(serialize(svgNode)));
+}
+*/
 
 // Convert 
 function getDataIndexByX(data, xScale, xy)
@@ -270,28 +324,6 @@ function getDataIndexByX(data, xScale, xy)
   }
   return null;
 }
-
-/**
-          if (tooltip) {
-              // set appropriate tooltip text, reveal tooltip at correct location
-              tooltip.html(component.getTooltip(d,baselineData))
-              tooltip.style("left",'20px');
-              // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
-              // tooltip.style("top",`${event.layerY+60}px`)
-              tooltip.style("top",`${event.offsetY+120}px`)
-              tooltip.style("visibility", "visible");
-          }
-        })
-        .on("mouseout blur", function(d) {
-          d3.select(this.parentNode).select('.fg-bar')
-            .transition().duration(200)
-            .style("fill", "#92C5DE");
-          if (tooltip) {
-            d3.select(this).transition();
-            tooltip.style("visibility", "hidden");
-          } 
-          */
-
 
 function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
 {
@@ -370,6 +402,8 @@ function getAxisDiv(ascale) {
     root_id = "barid" } )  {
 
     console.log("renderChart",root_id);
+    // d3.select(this.querySelector("svg g"))
+    //   .attr('style','font-family:sans-serif;font-size:16px;');
 
     d3.select(this.querySelector("svg"))
       .attr("viewBox", [
@@ -387,6 +421,9 @@ function getAxisDiv(ascale) {
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
+      let min_y_domain = d3.min(time_series_bars, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
       let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
@@ -394,7 +431,7 @@ function getAxisDiv(ascale) {
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
-        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
     }
@@ -409,6 +446,9 @@ function getAxisDiv(ascale) {
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
       // console.log("time_series_line 2",time_series_line,root_id);
+      let min_y_domain = d3.min(time_series_line, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
       let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
@@ -419,20 +459,10 @@ function getAxisDiv(ascale) {
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
-        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
 
-    // console.log("this.y",this.y);
-  
-    // Position for labels.
-    // this.yAxis = (g) =>
-    //   g
-    //     .attr("class", "bar-label")
-    //     .attr("transform", "translate(5," + -32 + ")")
-    //     .call(d3.axisLeft(this.y).tickSize(0))
-    //     .call((g) => g.selectAll(".domain").remove());
-       
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
     this.svg.selectAll("g").remove();
@@ -484,6 +514,8 @@ function getAxisDiv(ascale) {
     if (extras_func) {
       extras_func.call(this, this.svg);
     }
+
+    // writeDownloadButton.call(this,{root_id:root_id});
 
     this.svg
     .on("mousemove focus", (event) => {
