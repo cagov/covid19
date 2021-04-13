@@ -80,6 +80,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
+    console.log("Render component deaths",this);
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
@@ -174,22 +175,31 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       }.bind(this),
       false
     );
+
+    let tabFilterHandler = function(e) {
+      this.chartConfigFilter = e.detail.filterKey;
+      if (this.chartConfigFilter != 'reported') {
+        this.chartConfigFilter = 'death';
+        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.add('active');
+        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.remove('active');
+      } else {
+        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.remove('active');
+        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.add('active');
+      }
+      this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+      this.renderComponent(this.regionName);
+    };
+
     let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
     myFilter.addEventListener(
       "filter-selected",
-      function (e) {
-        this.chartConfigFilter = e.detail.filterKey;
-        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-        // if I am in a county have to do county url replacement
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-        if(this.county && this.county !== 'California') {
-          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-            "<county>",
-            this.county.toLowerCase().replace(/ /g, "_")
-          );
-        }
-        this.renderComponent(this.regionName);
-      }.bind(this),
+      tabFilterHandler.bind(this),
+      false
+    );
+    let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
+    myFilter2.addEventListener(
+      "filter-selected",
+      tabFilterHandler.bind(this),
       false
     );
   }
