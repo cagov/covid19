@@ -26,7 +26,7 @@ export default function template({
 ` : '') +
 `            </div>
             <div class="svg-holder"></div>
-            <a class="btn btn-primary btn-sm" role="button">download</a>
+            <!-- <a class="dl-button" role="button">download</a> -->
         </div>
       </div>
     </div>
