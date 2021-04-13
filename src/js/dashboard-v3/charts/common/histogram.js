@@ -119,6 +119,8 @@ function writeDateAxis(svg, data, x, y,
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 2;
+  const axisY = this.dimensions.height - this.dimensions.margin.bottom;
+
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
       // .attr('style','stroke-width: 0.5px; stroke:black;');
@@ -134,14 +136,14 @@ function writeDateAxis(svg, data, x, y,
               .attr('class','x-tick');
         subg.append('line')
         .attr('x1', x(i))
-        .attr('y1', y(0)+tick_upper_gap)
+        .attr('y1', axisY+tick_upper_gap)
         .attr('x2', x(i))
-        .attr('y2',y(0)+tick_upper_gap+tick_height);
+        .attr('y2',axisY+tick_upper_gap+tick_height);
         subg.append('text')
          .text(date_caption)
          // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
          .attr("x", x(i))
-         .attr("y", y(0)+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
+         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
       }
     }
   });
@@ -419,6 +421,9 @@ function getAxisDiv(ascale) {
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
+      let min_y_domain = d3.min(time_series_bars, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
       let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
@@ -426,7 +431,7 @@ function getAxisDiv(ascale) {
       // console.log("max_y_domain", max_y_domain);
       this.ybars = d3
         .scaleLinear()
-        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
     }
@@ -441,6 +446,9 @@ function getAxisDiv(ascale) {
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
       // console.log("time_series_line 2",time_series_line,root_id);
+      let min_y_domain = d3.min(time_series_line, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
       let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
@@ -451,7 +459,7 @@ function getAxisDiv(ascale) {
       // console.log("max_y_domain", max_y_domain);
       this.yline = d3
         .scaleLinear()
-        .domain([0, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
 
