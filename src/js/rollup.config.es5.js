@@ -4,6 +4,7 @@ import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
+import json from '@rollup/plugin-json';
 
 export default {
   input: 'src/js/es5.js',
@@ -42,6 +43,7 @@ export default {
         ]
       ]
     }),
+    json(),
     terser()
   ]
 };
