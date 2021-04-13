@@ -79,6 +79,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
+    console.log("Render component cases");
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
@@ -167,23 +168,32 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       }.bind(this),
       false
     );
+
+    let tabFilterHandler = function(e) {
+      this.chartConfigFilter = e.detail.filterKey;
+      if (this.chartConfigFilter != 'reported') {
+        this.chartConfigFilter = 'episode';
+        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.add('active');
+        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.remove('active');
+      } else {
+        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
+        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
+      }
+      this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+      // if I am in a county have to do county url replacement
+      this.renderComponent(this.regionName);
+    };
+
     let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
     myFilter.addEventListener(
       "filter-selected",
-      function (e) {
-        this.chartConfigFilter = e.detail.filterKey;
-        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-        // if I am in a county have to do county url replacement
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-        if(this.county && this.county !== 'California') {
-          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-            "<county>",
-            this.county.toLowerCase().replace(/ /g, "_")
-          );
-        }
-        this.renderComponent(this.regionName);
-        // this.retrieveData(searchURL, this.regionName);
-      }.bind(this),
+      tabFilterHandler.bind(this),
+      false
+    );
+    let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
+    myFilter2.addEventListener(
+      "filter-selected",
+      tabFilterHandler.bind(this),
       false
     );
   }
