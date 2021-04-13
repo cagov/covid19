@@ -99,7 +99,7 @@ formatNumber(tags,1)-%}
 										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 									</svg>
 								</span> 
-								{{_varStatNewCasesPer100k_}} <span class="text-300">new cases per 100K</span>
+								{{_varStatNewCasesPer100k_}} <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
 								</div>
 							</div>
 						</div>
@@ -126,7 +126,7 @@ formatNumber(tags,1)-%}
 										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 									</svg>
 								</span> 
-								{{_varStatNewDeathsPer100k_}} <span class="text-300">new deaths per 100K</span>
+								{{_varStatNewDeathsPer100k_}} <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
 								</div>
 							</div>
 						</div>
@@ -153,13 +153,13 @@ formatNumber(tags,1)-%}
 										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
 									</svg>
 								</span> 
-								{{_varStatLatestPositivityPct_}}% <span class="text-300">test positivity</span>
+								{{_varStatLatestPositivityPct_}}% <span class="text-300">{{ translatedLabels.varTestPositivity }}</span>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-6 px-10px">
 							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Vaccines Administered</div>
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varVaccinesAdministered }}</div>
 								<div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span></div>
 							</div>
 						</div>
