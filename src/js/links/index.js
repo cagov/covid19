@@ -17,13 +17,13 @@ var ext = '<span class="ca-gov-icon-external-link link-icon" aria-hidden="true">
 var localurl = 'https://covid19.ca.gov';
 // Check if link is external function
 function link_is_external(link_element) {
-  return (link_element.host !== window.location.host || ocument.location.href.indexOf('https://covid19.ca.gov') === -1);
+  return (link_element.host !== window.location.host || document.location.href.indexOf('https://covid19.ca.gov') === -1 || document.location.href.indexOf('https://staging.ca.gov') === -1 || document.location.href.indexOf('https://localhost:8000') === -1);
 }
 
 // Looping thru all link inside of the internal pages main content body
 var externalLink = document.querySelectorAll(".container .row .col-lg-10 a");
 for (var i=0; i < externalLink.length; i++) {
   if (link_is_external(externalLink[i])) {
-  externalLink[i].innerHTML += ext; // += cconcatenates to external links
+  externalLink[i].innerHTML += ext; // += ccncatenates to external links
 }
 }
