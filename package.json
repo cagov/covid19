@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@cagov/accordion": "^2.0.8",
     "@cagov/anchor-events": "^1.0.0",
     "@cagov/go-to-top": "^1.0.8",
     "@cagov/lookup": "^1.0.3",
@@ -22,6 +21,7 @@
     "@11ty/eleventy": "^0.12.1",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.10",
+    "@cagov/accordion": "^2.0.8",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.0.0",
