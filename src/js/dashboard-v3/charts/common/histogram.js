@@ -16,7 +16,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
         );
 }
 
- function writeBars(svg, data, x, y, { root_id='barid' }) {
+ function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
     let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
       // .attr('style','fill:#deeaf6;')
@@ -25,14 +25,23 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
       .enter()
         .append("g");
     
-
-    groups
-        .append("rect")
-        .attr("x", (d,i) => x(i))
-        .attr("y", d => y(d.VALUE))
-        .attr("width", 2)
-        .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
-        .attr("id", (d, i) => root_id+'-'+i);
+    if (crop_floor) { // positive only
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", d => y(d.VALUE))
+          .attr("width", 2)
+          .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
+          .attr("id", (d, i) => root_id+'-'+i);
+    } else { // positive and negative rects
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", d => Math.min(y(0),y(d.VALUE)))
+          .attr("width", 2)
+          .attr("height", d => Math.abs(y(0) - y(d.VALUE)))
+          .attr("id", (d, i) => root_id+'-'+i);
+    }
 }
 
 
@@ -396,6 +405,7 @@ function getAxisDiv(ascale) {
     right_y_axis_legend = null,
     line_legend = null,
     x_axis_legend = null,
+    crop_floor = true,
     pending_date = null,
     pending_legend = null,
     month_modulo = 3,
@@ -405,13 +415,34 @@ function getAxisDiv(ascale) {
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
 
-    d3.select(this.querySelector("svg"))
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg");
+
+    // this.svg.selectAll("g").remove();
+    this.svg
       .attr("viewBox", [
-      0,
-      0,
-      this.dimensions.width,
-      this.dimensions.height,
-    ]);
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select(this.chartOptions.chartName)
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    // d3.select(this.querySelector("svg"))
+    //   .attr("viewBox", [
+    //     0,
+    //     0,
+    //     this.dimensions.width,
+    //     this.dimensions.height,
+    //   ]);
 
     if (time_series_bars) {
       this.xbars = d3
@@ -421,14 +452,15 @@ function getAxisDiv(ascale) {
           // reversed because data presents as reverse-chrono
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
-      let min_y_domain = d3.min(time_series_bars, d=> d.VALUE);
+      let min_y_domain = crop_floor? 0 : d3.min(time_series_bars, d=> d.VALUE);
       if (min_y_domain > 0)
         min_y_domain = 0;
       let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
       }
-      // console.log("max_y_domain", max_y_domain);
+
+      console.log("bar range", root_id, min_y_domain, max_y_domain);
       this.ybars = d3
         .scaleLinear()
         .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
@@ -446,13 +478,14 @@ function getAxisDiv(ascale) {
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
       // console.log("time_series_line 2",time_series_line,root_id);
-      let min_y_domain = d3.min(time_series_line, d=> d.VALUE);
+      let min_y_domain = crop_floor? 0 : d3.min(time_series_line, d=> d.VALUE);
       if (min_y_domain > 0)
         min_y_domain = 0;
       let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
       }
+      console.log("line range", root_id, min_y_domain, max_y_domain);
       if (time_series_state_line) {
         max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
       }
@@ -465,11 +498,10 @@ function getAxisDiv(ascale) {
 
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
-    this.svg.selectAll("g").remove();
 
     if (time_series_bars) {
       writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-        { root_id:root_id});
+        { root_id:root_id, crop_floot:crop_floor});
       // bar legend on left
     }
     if (time_series_line) {

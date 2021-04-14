@@ -100,23 +100,6 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
     this.translationsObj.currentLocation = regionName;
 
     this.innerHTML = template(this.translationsObj);
-    this.svg = d3
-      .select(this.querySelector(".svg-holder"))
-      .append("svg")
-      .attr("viewBox", [
-        0,
-        0,
-        this.chartBreakpointValues.width,
-        this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)");
-
-    this.tooltip = d3
-      .select(this.chartOptions.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,

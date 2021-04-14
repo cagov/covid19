@@ -105,27 +105,6 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
 
     // console.log("Translations obj",this.translationsObj);
     this.innerHTML = template(this.translationsObj);
-    try {
-      this.svg = d3
-        .select(this.querySelector(".svg-holder"))
-        .append("svg")
-        .attr("viewBox", [
-          0,
-          0,
-          this.chartBreakpointValues.width,
-          this.chartBreakpointValues.height,
-        ])
-        .append("g")
-        .attr("transform", "translate(0,0)");
-    } catch (e) {
-      console.log("Error",e,this.chartBreakpointValues,this.screenDisplayType);
-    }
-
-    this.tooltip = d3
-      .select(this.chartOptions.chartName)
-      .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
 
     let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
@@ -138,6 +117,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
                         'line_legend':this.translationsObj.dayAverage,
                         'pending_date':this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD,
                         'pending_legend':this.translationsObj.pending,
+                        'crop_floor': (regionName == 'California'),
                         };
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
