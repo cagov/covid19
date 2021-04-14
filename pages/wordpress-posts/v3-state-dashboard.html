@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-13T19:18:56Z"
-tags: ["staging-only","translate"]
+publishdate: "2021-04-14T22:04:45Z"
+tags: ["staging-only"]
 addtositemap: true
 ---
 
@@ -499,7 +499,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Current tier assignments as of {{_varTierDate_}}</h3>
   <p class="mt-0">All data and tier assignments are updated weekly every Tuesday.</p>
 
-  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
+    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">
+  <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript>
+  <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>
+  </div>
+  <script type="text/javascript">
+  var divElement = document.getElementById('viz1607448868632');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>
+
 </div>
 
 
