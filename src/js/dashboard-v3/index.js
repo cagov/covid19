@@ -59,7 +59,10 @@ window.onload = function() {
   document.getElementsByTagName('head')[0].appendChild(s);
   // I don't think IE supports click to interact so check for IE, then load this file
   // https://public.tableau.com/javascripts/api/tableau-2.min.js
-  // setupTableauChart();
+
+  s.addEventListener('load', () => {
+    setupTableauChart();
+  })
 }
 
 function resetGroupToggles() {
