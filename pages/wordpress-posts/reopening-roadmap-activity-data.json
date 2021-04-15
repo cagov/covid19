@@ -21,7 +21,7 @@
     {
       "0": "Aquariums",
       "1": "Can open indoors with modifications",
-      "2": "Can open indoors with modifications<br>– Indoor activities max 50% capacity",
+      "2": "Can open indoors with modifications<br>– Indoor activities max 50% capacity<br>– Capacity may increase to 75% if all guests show proof of negative test or full vaccination",
       "3": "Can open indoors with modifications<br>– Indoor activities max 25% capacity",
       "4": "Can open outdoors only with modifications",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#museums-zoos”&gt;Museums, zoos, and aquariums&lt;/a&gt;",
@@ -47,7 +47,7 @@
     },
     {
       "0": "Bars (where no meals provided)",
-      "1": "Can open indoors with modifications<br>– Max 25% capacity or 100 people, whichever is fewer",
+      "1": "Can open indoors with modifications<br>– Max 25% capacity or 100 people, whichever is fewer<br>– Capacity may increase to 37.5% if all guests show proof of negative test or full vaccination",
       "2": "Can open outdoors only with modifications",
       "3": "Closed",
       "4": "Closed",
@@ -83,8 +83,8 @@
     },
     {
       "0": "Breweries (where no meals provided)",
-      "1": "Can open indoors and outdoors with modifications<br>– Max 50% capacity, or 200 people, whichever is fewer",
-      "2": "Can open indoors and outdoors with modifications<br>– Max 25% capacity, or 100 people, whichever is fewer",
+      "1": "Can open indoors and outdoors with modifications<br>– Max 50% capacity, or 200 people, whichever is fewer<br>– Capacity may increase to 75% if all guests show proof of negative test or full vaccination",
+      "2": "Can open indoors and outdoors with modifications<br>– Max 25% capacity, or 100 people, whichever is fewer<br>– Capacity may increase to 37.5% if all guests show proof of negative test or full vaccination",
       "3": "Can open outdoors only with modifications<br>– Reservations required<br>– 90-minute time limit<br>– Seating/tables only<br>– Limited hours (services for on-site consumption closed by 8pm)",
       "4": "Can open outdoors only with modifications<br>– Reservations required<br>– 90-minute time limit<br>– Seating/tables only<br>– Limited hours (services for on-site consumption closed by 8pm)",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#restaurants”&gt;Restaurants, wineries, and bars&lt;/a&gt;",
@@ -101,8 +101,8 @@
     },
     {
       "0": "Cardrooms",
-      "1": "Can open indoors with modifications<br>– Max 50% capacity",
-      "2": "Can open indoors with modifications<br>– Max 25% capacity",
+      "1": "Can open indoors with modifications<br>– Max 50% capacity<br>– Capacity may increase to 75% if all guests show proof of negative test or full vaccination",
+      "2": "Can open indoors with modifications<br>– Max 25% capacity<br>– Capacity may increase to 37.5% if all guests show proof of negative test or full vaccination",
       "3": "Can open outdoors only with modifications",
       "4": "Can open outdoors only with modifications",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#cardrooms-racetracks”&gt;Cardrooms and racetracks&lt;/a&gt;",
@@ -152,6 +152,15 @@
       "4": "Closed",
       "5": "<br>",
       "6": "Closed"
+    },
+    {
+      "0": "Conferences",
+      "1": "Can open with modifications<br>– Tickets or guest list required<br>– Assigned seating<br>– No intermingling of multiple private events<br><br>Outdoor:<br>– Max capacity 200 people<br>– Max capacity 400 if all guests show proof of negative test or full vaccination<br><br>Indoor:<br>– Max capacity 200 if all guests show proof of negative test or full vaccination",
+      "2": "Can open with modifications<br>– Tickets or guest list required<br>– Assigned seating<br>– No intermingling of multiple private events <br><br>Outdoor:<br>– Max capacity 100 people<br>– Max capacity 300 if all guests show proof of negative test or full vaccination<br><br>Indoor:<br>– Max capacity 150 if all guests show proof of negative test or full vaccination",
+      "3": "Can open with modifications<br>– Tickets or guest list required<br>– Assigned seating<br>– No intermingling of multiple private events<br><br> Outdoor:<br>– Max capacity 50 people<br>– Max capacity 200 if all guests show proof of negative test or full vaccination <br><br>Indoor: <br>– Max capacity 100 if all guests show proof of negative test or full vaccination",
+      "4": "Can open outdoors only with modifications<br>– Tickets or guest list required<br>– Assigned seating<br>– No intermingling of multiple private events<br>– Max capacity 25 people<br>– Max capacity 100 if all guests show proof of negative test or full vaccination",
+      "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#private-events”&gt;Private events&lt;/a&gt;",
+      "6": ""
     },
     {
       "0": "Construction",
@@ -209,8 +218,8 @@
     },
     {
       "0": "Distilleries (where no meals provided)",
-      "1": "Can open indoors and outdoors with modifications<br>– Max 50% capacity, or 200 people, whichever is fewer",
-      "2": "Can open indoors and outdoors with modifications<br>– Max 25% capacity, or 100 people, whichever is fewer",
+      "1": "Can open indoors and outdoors with modifications<br>– Max 50% capacity, or 200 people, whichever is fewer<br>– Capacity may increase to 75% if all guests show proof of negative test or full vaccination",
+      "2": "Can open indoors and outdoors with modifications<br>– Max 25% capacity, or 100 people, whichever is fewer<br>– Capacity may increase to 37.5% if all guests show proof of negative test or full vaccination",
       "3": "Can open outdoors only with modifications<br>– Reservations required<br>– 90-minute time limit<br>– Seating/tables only<br>– Limited hours (services for on-site consumption closed by 8pm)",
       "4": "Can open outdoors only with modifications<br>– Reservations required<br>– 90-minute time limit<br>– Seating/tables only<br>– Limited hours (services for on-site consumption closed by 8pm)",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#restaurants”&gt;Restaurants, wineries, and bars&lt;/a&gt;",
@@ -287,6 +296,15 @@
       "4": "Can open indoors with modifications",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#personal-care-services”&gt;Personal care services&lt;/a&gt;",
       "6": "Closed"
+    },
+    {
+      "0": "Fairs",
+      "1": "Can open with modifications<br>– Max capacity 35%<br>– In-state visitors only",
+      "2": "Can open with modifications<br>– Max capacity 25%<br>– In-state visitors only",
+      "3": "Can open with modifications<br>– Max capacity 15%<br>– Small groups only, max 10 people or 3 households with no intergroup mixing<br>– No indoor dining<br>– In-state visitors only<br>– Online ticket purchases only",
+      "4": "Closed",
+      "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#theme-parks”&gt;Amusement parks and theme parks&lt;/a&gt;",
+      "6": ""
     },
     {
       "0": "Family entertainment centers",
@@ -389,8 +407,8 @@
     },
     {
       "0": "Gyms and fitness centers",
-      "1": "Can open indoors with modifications<br>– +Saunas<br>– +Spas<br>– +Steam rooms<br>– Max 50% capacity",
-      "2": "Can open indoors with modifications<br>– Max 25% capacity<br>– +Indoor pools",
+      "1": "Can open indoors with modifications<br>– +Saunas<br>– +Spas<br>– +Steam rooms<br>– Max 50% capacity<br>– Capacity may increase to 75% if all guests show proof of negative test or full vaccination",
+      "2": "Can open indoors with modifications<br>– Max 25% capacity<br>– +Indoor pools<br>– Capacity may increase to 37.5% if all guests show proof of negative test or full vaccination",
       "3": "Can open indoors with modifications<br>– Max 10% capacity<br>– +Climbing walls",
       "4": "Can open outdoors only with modifications",
       "5": "&lt;a href=”https://covid19.ca.gov/industry-guidance/#fitness-guidance”&gt;Gyms and fitness centers&lt;/a&gt;",
