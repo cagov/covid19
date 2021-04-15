@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Vaccination progress data"
 meta: "This page makes vaccination data transparent and accessible to all Californians. It is updated daily."
 author: "State of California"
-publishdate: "2021-04-09T00:24:48Z"
+publishdate: "2021-04-15T18:42:16Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -16,23 +16,27 @@ addtositemap: false
 
 
 
-<ul class="toc"><li><a href="#first-section">First section</a></li><li><a href="#second-section">Second section</a></li><li><a href="#third-section">Third section</a></li></ul>
+<ul class="toc"><li><a href="#overview">Vaccine administration overview</a></li><li><a href="#progress-by-group">Vaccination progress by group</a></li><li><a href="#fairly-across-groups">Vaccination fairly across groups</a></li><li><a href="#third-section">Third section</a></li></ul>
 
 
 
-<hr class="wp-block-separator" id="first-section"/>
+<hr class="wp-block-separator" id="overview"/>
 
 
 
-<h2>First section</h2>
+<h2>Vaccine administration overview</h2>
 
 
 
-<h3 id="Vaccine-administration-by-county-of-residence">Vaccine administration by county of residence</h3>
+<p>Here are all vaccinations administered in California, by county of residence. Statewide vaccines administered combine all the county numbers.</p>
 
 
 
-<p>This dashboard reports vaccines administered by the county of residence. Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records. The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</p>
+<p>The vaccine doses administered under the federal pharmacy program are not included in the statewide count. This program provides vaccines directly to the pharmacy and are counted as part of the overall doses delivered to the state.</p>
+
+
+
+<p>This is updated daily.</p>
 
 
 
@@ -44,15 +48,64 @@ addtositemap: false
 
 
 
-<p class="small-text">Note: Doses delivered include the CDC Long Term Care (LTC) Pharmacy Partnership Program, Federal Retail Pharmacy Partnership Program, Federal Dialysis Center Program, Federal Emergency Management Agency (FEMA) partner sites, and Health Resources and Services Administration (HRSA) partner sites. This does not include doses delivered to the following federal agencies: Indian Health Service, Veterans Health Administration, Department of Defense, and Federal Bureau of Prisons. The CDC LTC Pharmacy and Federal Retail Pharmacy Partnership Program doses are a subset of the doses delivered.</p>
+<ul class="small-text"><li>Doses delivered include the CDC Long Term Care (LTC) Pharmacy Partnership Program, Federal Retail Pharmacy Partnership Program, Federal Dialysis Center Program, Federal Emergency Management Agency (FEMA) partner sites, and Health Resources and Services Administration (HRSA) partner sites.</li><li>This does not include doses delivered to the following federal agencies: Indian Health Service, Veterans Health Administration, Department of Defense, and Federal Bureau of Prisons. The CDC LTC Pharmacy and Federal Retail Pharmacy Partnership Program doses are a subset of the doses delivered.</li><li>Partially-vaccinated people are those receiving only one dose of the Pfizer or Moderna vaccine. Fully-vaccinated people are those who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine.</li><li>Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records. The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</li></ul>
 
 
 
-<hr class="wp-block-separator" id="second-section"/>
+<hr class="wp-block-separator" id="progress-by-group"/>
 
 
 
-<h2>Second section</h2>
+<h2>Vaccinations progress by group</h2>
+
+
+
+<p>These charts show you cumulatively, since we began vaccinating, how much we’ve been able to vaccinate priority groups and communities hardest hit. You can see this information by multiple slices of the community &#8212; a) by HPI, b) by race/ethnicity, and c) by age, and to date and over time. These are updated weekly.</p>
+
+
+
+<p>The California Healthy Places Index (HPI), developed by the Public Health Alliance of Southern California, explores local factors that predict life expectancy and compares community conditions across the state. The HPI quartiles are the total state population divided into 25% segments based on conditions that shape health, like housing, transportation, education, and more.</p>
+
+
+
+<p>The Vaccine Equity Metric (VEM) combines HPI with CDPH-derived scores. Zip codes range from less healthy community conditions in Quartile 1 to more healthy community conditions in Quartile 4.</p>
+
+
+
+Placeholder for Vaccinated Status by VEM Quartile
+
+
+
+<p class="small-text">“Partially vaccinated” represents individuals who have received only one dose of the Pfizer or Moderna vaccine. “Fully vaccinated” represents individuals who have received two doses of the Pfizer or Moderna vaccine, or one dose of the Janssen vaccine. Percentage for number of people calculated as people vaccinated in a quartile divided by population of people 16 years of age and over in a quartile.</p>
+
+
+
+<h3>See vaccinations by ZIP Code</h3>
+
+
+
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-auto">
+      <img src="https://files.covid19.ca.gov/img/Asset1-1.png" alt="illustration of a contact tracer" style="width: 250px;">
+    </div>
+    <div class="col">
+      <p>This map shows the share of the population that has received COVID-19 vaccine by ZIP Code and the Vaccine Equity Metric quartiles. The percent of those who have received a partial or full series of COVID-19 vaccine out of the total eligible population in each ZIP Code are indicated by the grey shading with darker shades of grey indicating more coverage and lighter shades of grey indicating less coverage. The VEM quartiles are identified by the colors of the circles at the center of each ZIP Code.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<hr class="wp-block-separator" id="fairly-across-groups"/>
+
+
+
+<h2>Vaccinating fairly across groups</h2>
+
+
+
+<p>See how the state has distributed vaccines so far and over time by Vaccine Equity Metric, race and ethnicity, age, and gender. Providing this information is voluntary and not required for vaccination. These charts are updated weekly.</p>
 
 
 
@@ -74,42 +127,6 @@ addtositemap: false
 
 
 <p class="small-text">Note: The Vaccine Equity Metric is for weekly vaccination allocation and reporting purposes only. CDPH-derived quartiles should not be considered as indicative of the HPI score for these zip codes. CDPH-derived quartiles were assigned to zip codes excluded from the HPI score produced by the Public Health Alliance of Southern California due to concerns with statistical reliability and validity in populations smaller than 1,500 or where more than 50% of the population resides in a group setting.</p>
-
-
-
-<h4>Vaccinations by number and percent of people vaccinated in each quartile so far&nbsp;</h4>
-
-
-
-<div class="container">
-  <div class="row">
-      <cagov-chart-vaccines-hpi-by-people class="chart">
-        <ul class="d-none">
-          <li data-label="chartTitle">Vaccinations by number of people vaccinated</li>
-          <li data-label="chartDescription">People partially and fully vaccinated in California</li>
-          <li data-label="legendLabel1">People 16+ partially vaccinated</li>
-          <li data-label="legendLabel2">People 16+ fully vaccinated</li>
-          <li data-label="barLabel">Quartile {N}</li>
-          <li data-label="annotationLeast">Least healthy community conditions</li>
-          <li data-label="annotationMost">Most healthy community conditions</li>
-          <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}.  &#8220;Partially vaccinated&#8221; represents individuals who have received only one dose of the Pfizer or Moderna vaccine. &#8220;Fully vaccinated&#8221; represents individuals who have received two doses of the Pfizer or Moderna vaccine, or one dose of the Janssen vaccine. Percentage for number of people calculated as people vaccinated in a quartile divided by population of people 16 years of age and over in a quartile.</li>
-        </ul>
-      </cagov-chart-vaccines-hpi-by-people>
-  </div>
-  <div class="row">
-      <cagov-chart-vaccines-hpi-by-dose class="chart">
-        <ul class="d-none">
-          <li data-label="chartTitle">Vaccinations by doses administered</li>
-          <li data-label="chartDescription">Number of vaccine doses given in California</li>
-          <li data-label="legendLabel1">% of total and number of doses administered</li>
-          <li data-label="barLabel">Quartile {N}</li>
-          <li data-label="annotationLeast">Least healthy community conditions</li>
-          <li data-label="annotationMost">Most healthy community conditions</li>
-          <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}. Excludes doses without an HPI score, including out-of-state residents or records with missing zip codes. Percentage for doses calculated as doses administered in a quartile divided by total doses administered statewide.</li>
-        </ul>
-      </cagov-chart-vaccines-hpi-by-dose>
-  </div>
-</div>
 
 
 
