@@ -3,12 +3,12 @@ layout: "page.njk"
 title: "Vaccination progress data"
 meta: "This page makes vaccination data transparent and accessible to all Californians. It is updated daily."
 author: "State of California"
-publishdate: "2021-04-15T19:05:39Z"
+publishdate: "2021-04-15T20:19:18Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
 
-<p class="emphasized">These dashboards make vaccination data transparent and accessible to all Californians. They are updated daily.</p>
+<p class="emphasized">These dashboards make vaccination data transparent and accessible to all Californians.</p>
 
 
 
@@ -16,7 +16,7 @@ addtositemap: false
 
 
 
-<ul class="toc"><li><a href="#overview">Vaccine administration overview</a></li><li><a href="#progress-by-group">Vaccination progress by group</a></li><li><a href="#fairly-across-groups">Vaccination fairly across groups</a></li><li><a href="#questions-and-answers">Questions and answers</a></li></ul>
+<ul class="toc"><li><a href="#overview">Overview of vaccine administration</a></li><li><a href="#progress-by-group">Vaccination progress by group</a></li><li><a href="#fairly-across-groups">Vaccination fairly across groups</a></li><li><a href="#questions-and-answers">Questions and answers</a></li></ul>
 
 
 
@@ -24,7 +24,7 @@ addtositemap: false
 
 
 
-<h2>Vaccine administration overview</h2>
+<h2>Overview of vaccine administration</h2>
 
 
 
@@ -36,7 +36,7 @@ addtositemap: false
 
 
 
-<p>This is updated daily.</p>
+<p>This data is updated daily.</p>
 
 
 
@@ -109,11 +109,39 @@ Placeholder for Vaccinated Status by VEM Quartile
 
 
 
+<h3>Vaccinations by HPI quartile</h3>
+
+
+
+<p>See how the State is distributing vaccines to priority and hardest hit population to date and over time. These are updated weekly. This includes by Vaccine Equity Metric, race and ethnicity, age, and gender. Providing this information is voluntary and not required for vaccination.</p>
+
+
+
+<p>First, see how doses have been prioritized across HPI quartiles&#8211;and these markers defined how we reopened. So important that we tied it to reopening</p>
+
+
+
+<div class="row">
+    <cagov-chart-vaccines-hpi-by-dose class="chart">
+      <ul class="d-none">
+        <li data-label="chartTitle">Vaccinations by doses administered</li>
+        <li data-label="chartDescription">Number of vaccine doses given in California</li>
+        <li data-label="legendLabel1">% of total and number of doses administered</li>
+        <li data-label="barLabel">Quartile {N}</li>
+        <li data-label="annotationLeast">Least healthy community conditions</li>
+        <li data-label="annotationMost">Most healthy community conditions</li>
+        <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}. Excludes doses without an HPI score, including out-of-state residents or records with missing zip codes. Percentage for doses calculated as doses administered in a quartile divided by total doses administered statewide.</li>
+      </ul>
+    </cagov-chart-vaccines-hpi-by-dose>
+</div>
+
+
+
 <h3>Vaccinations over time</h3>
 
 
 
-<p>These graphs compare COVID-19 vaccinations among four different levels of community health.</p>
+<p>These graphs compare COVID-19 vaccinations among four different levels of community health. See how the State made efforts over time to distribute to different quartiles. You can see the progress made after 2 major policy and logistics changes in early March and mid March.</p>
 
 
 
