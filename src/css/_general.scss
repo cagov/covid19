@@ -2067,6 +2067,9 @@ font {
 .small-text {
   font-size: 0.95rem !important;
 }
+ul.small-text {
+  line-height: 1.5rem;
+}
 .text-small {
   font-size: 0.85rem !important;
 }
