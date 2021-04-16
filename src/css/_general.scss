@@ -2482,3 +2482,55 @@ font {
     }
   }
 }
+
+.list-can {
+  list-style: none;
+  padding: 0;
+    margin: 12px 0 10px 0;
+    line-height: 1.5;
+    li {
+      padding: 1rem .5rem 1rem 2.5rem;
+      margin: 0;
+      border-bottom: 1px solid $black;
+      &:first-child {border-top: 1px solid $black;}
+      &:before {
+        content: "\4e";
+        font-family: "CaGov";
+        height: 1rem;
+        width: 2.5rem;
+        margin-left: -2.5rem;
+        vertical-align: sub;
+        font-size: 1.5rem;
+        display: inline-block;
+        color:$darkblue;
+        position: relative;
+        top: -3px;
+    }
+  }
+}
+
+.list-should {
+  list-style: none;
+  padding: 0;
+    margin: 12px 0 10px 0;
+    line-height: 1.5;
+    li {
+      padding: 1rem .5rem 1rem 2.5rem;
+      margin: 0;
+      border-bottom: 1px solid $black;
+      &:first-child {border-top: 1px solid $black;}
+      &:before {
+        content: "\e94e";
+        font-family: "CaGov";
+        height: 1rem;
+        width: 2.5rem;
+        margin-left: -2.5rem;
+        vertical-align: sub;
+        font-size: 1.5rem;
+        display: inline-block;
+        color:$darkblue;
+        position: relative;
+        top: -3px;
+    }
+  }
+}
