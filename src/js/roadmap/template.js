@@ -36,7 +36,7 @@ export default function template(json) {
             <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.countyNotFound}</div>
 
 
-            <input
+          <!--  <input
               aria-expanded="false"
               aria-owns="awesomplete_list_3"
               aria-controls="awesomplete_list_3"
@@ -57,7 +57,7 @@ export default function template(json) {
               aria-atomic="true"
               >Type 2 or more characters for results.</span
             >
-            <div id="county-tier-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">County Tier Not Found</div>
+            <div id="county-tier-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">County Tier Not Found</div>-->
 
 
           </div>

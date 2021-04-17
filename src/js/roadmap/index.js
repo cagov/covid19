@@ -4,6 +4,44 @@ import templatize from "./template.js";
 class CAGovReopening extends window.HTMLElement {
   connectedCallback() {
     this.json = JSON.parse(this.dataset.json);
+
+    // @TODO add table data: this.dataset.json...countyTiers
+    this.countyTiers = [
+      {
+        id: "1 - Purple",
+        color: "Purple",
+        hexColor: "purple",
+        label: "Widespread (Purple)",
+        coverage: "Widespread",
+        value: 1,
+      },
+      {
+        id: "2 - Red",
+        color: "Red",
+        hexColor: "red",
+        label: "Severe (Red)",
+        coverage: "Severe",
+        value: 2,
+      },
+      {
+        id: "3 - Orange",
+        color: "Orange",
+        hexColor: "orange",
+        label: "Moderate (Orange)",
+        coverage: "Moderate",
+        value: 3,
+      },
+      {
+        id: "4 - Yellow",
+        color: "Yellow",
+        hexColor: "yellow",
+        label: "Minimal (Yellow)",
+        coverage: "Minimal",
+        value: 4,
+      },
+    ];
+
+
     this.schoolsText = this.dataset.schools
       ? JSON.parse(this.dataset.schools)
       : {};
@@ -31,14 +69,20 @@ class CAGovReopening extends window.HTMLElement {
       .then(
         function (data) {
           this.countyStatuses = data;
+          let countyTierAutocompleteList = [];
           let countyAutocompleteList = [];
+
+          this.countyTiers.forEach((c) => {
+            countyTierAutocompleteList.push(c.label);
+          });
+
           this.countyStatuses.forEach((c) => {
             countyAutocompleteList.push(c.county);
           });
           this.setupAutoComplete(
             "#location-query",
             "county",
-            countyAutocompleteList
+            countyTierAutocompleteList.concat(countyAutocompleteList)
           );
         }.bind(this)
       );
@@ -217,13 +261,18 @@ class CAGovReopening extends window.HTMLElement {
     document.getElementById("activity-error").style.visibility = "hidden";
     document.getElementById("reopening-error").style.visibility = "hidden";
   }
+
   setupAutoComplete(fieldSelector, fieldName, countyAutocompleteList) {
+    
+    console.log(countyAutocompleteList);
+
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
       minChars: 0,
-      maxItems: 99,
+      maxItems: 20,
       filter: function (text, input) {
+        console.log("auto text", text, text.length);
         return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
       },
       item: function (text, input) {
@@ -248,7 +297,14 @@ class CAGovReopening extends window.HTMLElement {
       fieldSelector,
       awesompleteSettings
     );
-    // window.makeAutocomplete = autocompleteCounty;
+  
+    document
+      .querySelector(fieldSelector)
+      .addEventListener("focus", function () {
+        // this.value = "";
+        window.autocompleteCounty.evaluate();
+      });
+    window.autocompleteCounty = autocompleteCounty;
   }
 
   setupAutoCompleteActivity(
