@@ -35,31 +35,6 @@ export default function template(json) {
             >
             <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.countyNotFound}</div>
 
-
-          <!--  <input
-              aria-expanded="false"
-              aria-owns="awesomplete_list_3"
-              aria-controls="awesomplete_list_3"
-              autocomplete="off"
-              class="form-control"
-              data-list=""
-              data-multiple=""
-              id="county-tier-query"
-              role="combobox"
-              type="text"
-              placeholder="County Tier ${json.countyPlaceholder}"
-            />
-            <button type="button" class="clear d-none" id="clearCountyTier"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
-            <span
-              class="visually-hidden"
-              role="status"
-              aria-live="assertive"
-              aria-atomic="true"
-              >Type 2 or more characters for results.</span
-            >
-            <div id="county-tier-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">County Tier Not Found</div>-->
-
-
           </div>
         </div>
         <div class="form-group col-md-6 reopening-form-group">

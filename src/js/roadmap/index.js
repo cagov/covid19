@@ -10,7 +10,7 @@ class CAGovReopening extends window.HTMLElement {
       {
         id: "1 - Purple",
         color: "Purple",
-        hexColor: "purple",
+        hexColor: 4,
         label: "Widespread (Purple)",
         coverage: "Widespread",
         value: 1,
@@ -18,7 +18,7 @@ class CAGovReopening extends window.HTMLElement {
       {
         id: "2 - Red",
         color: "Red",
-        hexColor: "red",
+        hexColor: 3,
         label: "Severe (Red)",
         coverage: "Severe",
         value: 2,
@@ -26,7 +26,7 @@ class CAGovReopening extends window.HTMLElement {
       {
         id: "3 - Orange",
         color: "Orange",
-        hexColor: "orange",
+        hexColor: 2,
         label: "Moderate (Orange)",
         coverage: "Moderate",
         value: 3,
@@ -34,13 +34,12 @@ class CAGovReopening extends window.HTMLElement {
       {
         id: "4 - Yellow",
         color: "Yellow",
-        hexColor: "yellow",
+        hexColor: 1,
         label: "Minimal (Yellow)",
         coverage: "Minimal",
         value: 4,
       },
     ];
-
 
     this.schoolsText = this.dataset.schools
       ? JSON.parse(this.dataset.schools)
@@ -73,7 +72,8 @@ class CAGovReopening extends window.HTMLElement {
           let countyAutocompleteList = [];
 
           this.countyTiers.forEach((c) => {
-            countyTierAutocompleteList.push(c.label);
+            // console.log("ct", c);
+            countyTierAutocompleteList.push(c);
           });
 
           this.countyStatuses.forEach((c) => {
@@ -146,7 +146,7 @@ class CAGovReopening extends window.HTMLElement {
             activityAutocompleteList.push(item["activity_search_autocomplete"]);
           });
 
-          console.log(activityAutocompleteList);
+          // console.log(activityAutocompleteList);
 
           this.setupAutoCompleteActivity(
             "#activity-query",
@@ -202,14 +202,8 @@ class CAGovReopening extends window.HTMLElement {
         if (document.querySelector("#activity-query").value == "") {
           this.state["activity"] = null;
         }
-        if (document.querySelector("#county-tier-query").value == "") {
-          this.state["countyTier"] = null;
-        }
-        if (
-          !this.state["activity"] &&
-          !this.state["county"] &&
-          !this.state["countyTier"]
-        ) {
+
+        if (!this.state["activity"] && !this.state["county"]) {
           this.querySelector(".card-holder").innerHTML = "";
           document.getElementById("reopening-error").style.visibility =
             "visible";
@@ -234,20 +228,6 @@ class CAGovReopening extends window.HTMLElement {
     document.getElementById("reopening-error").style.visibility = "hidden";
   }
 
-  changeCountyTierInput(value) {
-    const $countyTierQuery = document.getElementById("county-tier-query");
-    $countyTierQuery.value = value;
-    $countyTierQuery.setAttribute("aria-invalid", false);
-    this.state["countyTier"] = value;
-    if (value) {
-      document.getElementById("clearCountyTier").classList.remove("d-none");
-    } else {
-      document.getElementById("clearCountyTier").classList.add("d-none");
-    }
-    document.getElementById("county-tier-error").style.visibility = "hidden";
-    document.getElementById("reopening-error").style.visibility = "hidden";
-  }
-
   changeActivityInput(value) {
     const $activityQuery = document.getElementById("activity-query");
     $activityQuery.value = value;
@@ -263,20 +243,25 @@ class CAGovReopening extends window.HTMLElement {
   }
 
   setupAutoComplete(fieldSelector, fieldName, countyAutocompleteList) {
-    
-    console.log(countyAutocompleteList);
-
+    // console.log(countyAutocompleteList);
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
       minChars: 0,
       maxItems: 20,
       filter: function (text, input) {
-        console.log("auto text", text, text.length);
         return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
       },
       item: function (text, input) {
         return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+      },
+      data: function (item, input) {
+        // console.log(item);
+        if (item.value !== undefined) {
+          return { label: item.label, value: item.id };
+        } else {
+          return item;
+        }
       },
       replace: function (text) {
         let before = this.input.value.match(/^.+,\s*|/)[0];
@@ -297,7 +282,7 @@ class CAGovReopening extends window.HTMLElement {
       fieldSelector,
       awesompleteSettings
     );
-  
+
     document
       .querySelector(fieldSelector)
       .addEventListener("focus", function () {
@@ -318,10 +303,14 @@ class CAGovReopening extends window.HTMLElement {
       minChars: 0,
       maxItems: 20,
       sort: function (a, b) {
-        if (a["activity_search_autocomplete"] < b["activity_search_autocomplete"]) {
+        if (
+          a["activity_search_autocomplete"] < b["activity_search_autocomplete"]
+        ) {
           return -1;
         }
-        if (a["activity_search_autocomplete"] > b["activity_search_autocomplete"]) {
+        if (
+          a["activity_search_autocomplete"] > b["activity_search_autocomplete"]
+        ) {
           return 1;
         }
         return 0;
@@ -362,6 +351,8 @@ class CAGovReopening extends window.HTMLElement {
     let isError = false;
 
     let selectedCounties = this.countyStatuses;
+    let selectedCountyTiers = [];
+
     if (this.state["county"]) {
       selectedCounties = [];
       this.countyStatuses.forEach((item) => {
@@ -369,7 +360,14 @@ class CAGovReopening extends window.HTMLElement {
           selectedCounties.push(item);
         }
       });
-      if (selectedCounties.length === 0) {
+
+      this.countyTiers.forEach((item) => {
+        if (item.label == this.state["county"]) {
+          selectedCountyTiers.push(item);
+        }
+      });
+
+      if (selectedCounties.length === 0 && selectedCountyTiers === 0) {
         document
           .getElementById("location-query")
           .setAttribute("aria-invalid", true);
@@ -382,9 +380,10 @@ class CAGovReopening extends window.HTMLElement {
     if (this.state["activity"]) {
       selectedActivities = [];
       this.allActivities.forEach((selectedActivity) => {
-        console.log("selectedActivity", selectedActivity)
+        // console.log("selectedActivity", selectedActivity);
         if (
-          selectedActivity["activity_search_autocomplete"] == this.state["activity"] ||
+          selectedActivity["activity_search_autocomplete"] ==
+            this.state["activity"] ||
           this.state["activity"] == this.viewall
         ) {
           selectedActivities.push(selectedActivity);
@@ -430,17 +429,19 @@ class CAGovReopening extends window.HTMLElement {
       }
       return `<p>${schoolStrings.schools_may_not_reopen}</p> <p>${schoolStrings.schools_info}`;
     };
+
     selectedCounties.forEach((item) => {
       let tierStatusMap = {
-        "4": "1 - Purple",
-        "3": "2 – Red",
-        "2": "3 – Orange",
-        "1": "4 – Yellow",
-      }
+        4: "1 - Purple",
+        3: "2 – Red",
+        2: "3 – Orange",
+        1: "4 – Yellow",
+      };
 
-      
       let localTierStatus = tierStatusMap[item["Overall Status"]];
+
       console.log("county item", item);
+
       this.cardHTML += `<div class="card-county">
         <h2>${item.county} County</h2>
         ${
@@ -493,7 +494,9 @@ class CAGovReopening extends window.HTMLElement {
             <p>${selectedActivity["Guidance"]}</p>
             <p>${
               selectedActivity["5 – RSHO"].indexOf("href") > -1
-                ? `${this.json.seeGuidanceText} ${replaceAllInMap(selectedActivity["5 – RSHO"])}`
+                ? `${this.json.seeGuidanceText} ${replaceAllInMap(
+                    selectedActivity["5 – RSHO"]
+                  )}`
                 : ""
             }</p>
           </div>`;
@@ -503,7 +506,9 @@ class CAGovReopening extends window.HTMLElement {
             <p>${selectedActivity[localTierStatus]}</p>
             <p>${
               selectedActivity["5 – RSHO"].indexOf("href") > -1
-                ? `${this.json.seeGuidanceText} ${replaceAllInMap(selectedActivity["5 – RSHO"])}`
+                ? `${this.json.seeGuidanceText} ${replaceAllInMap(
+                    selectedActivity["5 – RSHO"]
+                  )}`
                 : ""
             }</p>
             <span class="card-activity-separator"></span>
@@ -511,6 +516,52 @@ class CAGovReopening extends window.HTMLElement {
         }
       });
     });
+
+    selectedCountyTiers.forEach((selectedTierItem) => {
+      let tierStatusMap = {
+        4: "1 - Purple",
+        3: "2 – Red",
+        2: "3 – Orange",
+        1: "4 – Yellow",
+      };
+
+      console.log("selectedTierItem", selectedTierItem);
+        this.cardHTML += `<div class="card-county">
+        <div class="county-color-${selectedTierItem.hexColor}">
+        <div class="pill">${
+          selectedTierItem.label
+        }</div>
+        </div>
+      </div>`;
+
+        selectedActivities.forEach((selectedActivity) => {
+          // console.log("selectedActivity", selectedTierItem.id, selectedTierItem, selectedActivity, selectedActivity[selectedTierItem.id]);
+
+          let tierActivity = "";
+          // console.log("tierActivity", selectedActivity, selectedTierItem.id);
+          // let tierActivity = selectedActivity[selectedTierItem.id]; // Not working, weird.
+
+     
+            for(let key in selectedActivity) {
+              if(selectedActivity.hasOwnProperty(key)) {
+                  var value = selectedActivity[key];
+                  console.log("key", key, "ti", selectedTierItem.id, key.charAt(0) == selectedTierItem.id.charAt(0));
+                  if (key.charAt(0) === selectedTierItem.id.charAt(0)) {
+                    tierActivity = value;
+                  }
+              }
+          }
+
+          this.cardHTML += `<div class="card-activity">
+            <h4>${selectedActivity["activity_search_autocomplete"]}</h4>
+            <p>${tierActivity}</p>
+            <span class="card-activity-separator"></span>
+          </div>`;
+         
+        });
+    
+    });
+
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
     this.cardHTML += `<div style="display:none">
       <div class="county-color-1 county-color-2 county-color-3 county-color-4"></div>
