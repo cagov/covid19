@@ -488,10 +488,10 @@ class CAGovReopening extends window.HTMLElement {
       console.log("selectedTierItem", selectedTierItem, this.statusdesc.Table1);
       this.cardHTML += `<div class="card-county">
         <h2>${selectedTierItem.label} Tier</h2>
-        <div class="county-color-${selectedTierItem.reverseValue}">
+        <div class="county-color-${Number(selectedTierItem.reverseValue)}">
         <div class="pill">${selectedTierItem.coverage}</div>
         <p>${
-          this.statusdesc.Table1[selectedTierItem.reverseValue]
+          this.statusdesc.Table1[Number(selectedTierItem.reverseValue) - 1]
             .description
         }. <a href="#county-status">${this.json.understandTheData}</a></p>
         <p>${
