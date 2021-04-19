@@ -7,7 +7,8 @@
       "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases/california.json",
       "dataUrlCounty": "confirmed-cases/<county>.json",
-      "rootId": "cases-ep"
+      "rootId": "cases-ep",
+      "filterKeys": ["episode","reported"]
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-cases-hc",
@@ -16,7 +17,8 @@
       "seriesFieldAvg": "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-cases/california.json",
       "dataUrlCounty": "confirmed-cases/<county>.json",
-      "rootId": "cases-rep"
+      "rootId": "cases-rep",
+      "filterKeys": ["episode","reported"]
     }
   },
   "deaths": {
@@ -27,7 +29,8 @@
       "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
       "dataUrl": "confirmed-deaths/california.json",
       "dataUrlCounty": "confirmed-deaths/<county>.json",
-      "rootId": "death-date"
+      "rootId": "death-date",
+      "filterKeys": ["death","reported"]
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths-hc",
@@ -47,7 +50,8 @@
       "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
       "dataUrl": "total-tests/california.json",
       "dataUrlCounty": "total-tests/<county>.json",
-      "rootId": "tests-tests"
+      "rootId": "tests-tests",
+      "filterKeys": ["testing","reported"]
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-total-tests",
@@ -78,7 +82,8 @@
       "seriesFieldAvg": "HOSPITALIZED_PATIENTS_14_DAY_AVG",
       "dataUrl": "patients/california.json",
       "dataUrlCounty": "patients/<county>.json",
-      "rootId": "hosp-p"
+      "rootId": "hosp-p",
+      "filterKeys": ["hospitalized","icu"]
     },
     "icu": {
       "chartName": "cagov-chart-dashboard-patients",

@@ -129,7 +129,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
 
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
       
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,

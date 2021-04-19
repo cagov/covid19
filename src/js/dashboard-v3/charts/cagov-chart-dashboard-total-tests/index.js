@@ -99,7 +99,8 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
 
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+    this.setupTabFilters();
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
@@ -138,20 +139,7 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
       );
   }
 
-  listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        this.county = e.detail.county;
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
+  setupTabFilters() {
     let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-tests");
     if(myFilter) {
       myFilter.addEventListener(
@@ -172,7 +160,23 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
         }.bind(this),
         false
       );
-    }
+    }    
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
   }
 }
 
