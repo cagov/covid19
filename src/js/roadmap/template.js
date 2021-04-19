@@ -34,7 +34,6 @@ export default function template(json) {
               >Type 2 or more characters for results.</span
             >
             <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.countyNotFound}</div>
-
           </div>
         </div>
         <div class="form-group col-md-6 reopening-form-group">
