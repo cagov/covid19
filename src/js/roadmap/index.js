@@ -407,8 +407,6 @@ class CAGovReopening extends window.HTMLElement {
 
       let localTierStatus = tierStatusMap[item["Overall Status"]];
 
-      console.log("county item", item);
-
       this.cardHTML += `<div class="card-county">
         <h2>${item.county} County</h2>
         ${
