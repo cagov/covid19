@@ -539,13 +539,13 @@ class CAGovReopening extends window.HTMLElement {
 
           let tierActivity = "";
           // console.log("tierActivity", selectedActivity, selectedTierItem.id);
-          // let tierActivity = selectedActivity[selectedTierItem.id]; // Not working, weird.
+          // let tierActivity = selectedActivity[selectedTierItem.id]; 
+          // ^ Not working, weird. keys should match, they have same source object.
 
      
             for(let key in selectedActivity) {
               if(selectedActivity.hasOwnProperty(key)) {
                   var value = selectedActivity[key];
-                  console.log("key", key, "ti", selectedTierItem.id, key.charAt(0) == selectedTierItem.id.charAt(0));
                   if (key.charAt(0) === selectedTierItem.id.charAt(0)) {
                     tierActivity = value;
                   }
