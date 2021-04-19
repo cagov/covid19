@@ -87,6 +87,11 @@ cagov-reopening-airtable {
           background: transparent;
         }
       }
+      li.separator {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(151, 151, 151);
+        margin-bottom: 10px;
+      }
     }
     mark {
       background: transparent;
@@ -95,10 +100,7 @@ cagov-reopening-airtable {
     }
   }
 
-  #awesomplete_list_1 li:nth-child(3)::after {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #000;
-  }
+
 
   .reopening-field-error {
     position: absolute;

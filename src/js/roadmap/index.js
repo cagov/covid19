@@ -5,6 +5,8 @@ class CAGovReopening extends window.HTMLElement {
   connectedCallback() {
     this.json = JSON.parse(this.dataset.json);
 
+    console.log("json", this.json);
+
     // @TODO add table data: this.dataset.json...countyTiers
     this.countyTiers = [
       {
@@ -525,41 +527,39 @@ class CAGovReopening extends window.HTMLElement {
         1: "4 – Yellow",
       };
 
-      console.log("selectedTierItem", selectedTierItem);
-        this.cardHTML += `<div class="card-county">
+      console.log("selectedTierItem", selectedTierItem, this.statusdesc.Table1);
+      this.cardHTML += `<div class="card-county">
         <div class="county-color-${selectedTierItem.hexColor}">
-        <div class="pill">${
-          selectedTierItem.label
-        }</div>
+        <div class="pill">${selectedTierItem.label}</div>
+        <p>${
+          this.statusdesc.Table1[selectedTierItem.value]
+            .description
+        }. <a href="#county-status">${this.json.understandTheData}</a></p>
+        <p>${
+          this.json.countyRestrictionsAdvice
+        } <a href="../get-local-information">${
+        this.json.countyRestrictionsCountyWebsite
+      }</a>.</p>
         </div>
       </div>`;
 
-        selectedActivities.forEach((selectedActivity) => {
-          // console.log("selectedActivity", selectedTierItem.id, selectedTierItem, selectedActivity, selectedActivity[selectedTierItem.id]);
-
-          let tierActivity = "";
-          // console.log("tierActivity", selectedActivity, selectedTierItem.id);
-          // let tierActivity = selectedActivity[selectedTierItem.id]; 
-          // ^ Not working, weird. keys should match, they have same source object.
-
-     
-            for(let key in selectedActivity) {
-              if(selectedActivity.hasOwnProperty(key)) {
-                  var value = selectedActivity[key];
-                  if (key.charAt(0) === selectedTierItem.id.charAt(0)) {
-                    tierActivity = value;
-                  }
-              }
+      selectedActivities.forEach((selectedActivity) => {
+        let tierActivity = "";
+        for (let key in selectedActivity) {
+          if (selectedActivity.hasOwnProperty(key)) {
+            var value = selectedActivity[key];
+            if (key.charAt(0) === selectedTierItem.id.charAt(0)) {
+              tierActivity = value;
+            }
           }
+        }
 
-          this.cardHTML += `<div class="card-activity">
+        this.cardHTML += `<div class="card-activity">
             <h4>${selectedActivity["activity_search_autocomplete"]}</h4>
             <p>${tierActivity}</p>
             <span class="card-activity-separator"></span>
           </div>`;
-         
-        });
-    
+      });
     });
 
     // These classes are used but created with variables so the purge cannot find them, they are carefully placed here where they will be noticed
