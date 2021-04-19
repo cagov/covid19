@@ -104,7 +104,9 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     this.translationsObj.currentLocation = regionName;
 
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this,this.chartOptions, this.translationsObj);
+
+    this.setupTabFilters();
 
     let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
@@ -141,21 +143,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       );
   }
 
-  listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        this.county = e.detail.county;
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
-
+  setupTabFilters() {
     let tabFilterHandler = function(e) {
       this.chartConfigFilter = e.detail.filterKey;
       if (this.chartConfigFilter != 'reported') {
@@ -176,10 +164,26 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       tabFilterHandler.bind(this),
       false
     );
-    let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
-    myFilter2.addEventListener(
-      "filter-selected",
-      tabFilterHandler.bind(this),
+    // let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
+    // myFilter2.addEventListener(
+    //   "filter-selected",
+    //   tabFilterHandler.bind(this),
+    //   false
+    // );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
       false
     );
   }

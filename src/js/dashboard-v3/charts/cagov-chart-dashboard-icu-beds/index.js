@@ -1,4 +1,5 @@
 import template from "./../common/histogram-template.js";
+import chartConfig from '../common/line-chart-config.json';
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
@@ -12,45 +13,20 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardICUBeds");
     this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
 
     // Settings and initial values
-    this.chartOptions = {
-      chartName: 'cagov-chart-dashboard-icu-beds',
-      // Data
-      dataUrl:
-        config.chartsStateDashTablesLoc + "icu-beds/california.json", // Overwritten by county.
-      dataUrlCounty:
-        config.chartsStateDashTablesLoc + "icu-beds/<county>.json",
-
-      desktop: {
-        fontSize: 14,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      tablet: {
-        fontSize: 14,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      mobile: {
-        fontSize: 12,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-      retina: {
-        fontSize: 12,
-        width: 420, height: 300,
-        margin: { left: 50, top: 30,  right: 20, bottom: 45  },
-      },
-    };
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
     getScreenResizeCharts(this);
 
     this.screenDisplayType = window.charts
       ? window.charts.displayType
       : "desktop";
+    // console.log("this.screenDisplayType",this.screenDisplayType);
 
-    this.chartBreakpointValues = this.chartOptions[
+    this.chartBreakpointValues = chartConfig[
       this.screenDisplayType ? this.screenDisplayType : "desktop"
     ];
     this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
@@ -62,7 +38,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       this.screenDisplayType = window.charts
         ? window.charts.displayType
         : "desktop";
-      this.chartBreakpointValues = this.chartOptions[
+      this.chartBreakpointValues = chartConfig[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
     };
@@ -70,7 +46,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     window.addEventListener("resize", handleChartResize);
 
     // Set default values for data and labels
-    this.dataUrl = this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl, 'California');
 
@@ -95,8 +71,8 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   }
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series.ICU_BEDS.VALUES;
-    const lineSeries = this.chartdata.time_series.ICU_BEDS.VALUES;
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
@@ -106,24 +82,27 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
+
+    var latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
     const repDict = {
-      TOTAL:formatValue(this.chartdata.latest.ICU_BEDS.TOTAL,{format:'integer'}),
-      CHANGE:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE),{format:'integer'}),
-      CHANGE_FACTOR:formatValue(Math.abs(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR),{format:'percent'}),
+      TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
+      CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
+      CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-    this.translationsObj.post_chartLegend2 = applySubstitutions(this.chartdata.latest.ICU_BEDS.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
 
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
     let renderOptions = { 'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
-                      'time_series_bars':this.chartdata.time_series['ICU_BEDS'].VALUES,
-                      'time_series_line':this.chartdata.time_series['ICU_BEDS'].VALUES,
-                      'root_id':'icu_beds',
+                      'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                      'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                      'root_id':this.chartOptions.rootId,
                       'x_axis_legend':'Reported date',
                       'month_modulo':2,
                     };

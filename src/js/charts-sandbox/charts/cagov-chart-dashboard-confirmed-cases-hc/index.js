@@ -154,7 +154,7 @@ class CAGovDashboardConfirmedCasesHC extends window.HTMLElement {
             year: '%Y'
           },
           title: {
-            text:'Episode Date',
+            text:this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
             align:'high',
             style:{color:'black','font-weight':300,'font-size':'0.75rem'},
           }
@@ -163,13 +163,13 @@ class CAGovDashboardConfirmedCasesHC extends window.HTMLElement {
               labels:{'style':{color:'#false'}},
               alignTicks:false,
               title: {
-                      text: 'Cases per 100k',
+                      text: this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                       // ceiling:100,
-                      align:'high',
-                      rotation:0,
-                      offset:-80,
-                      y:-32,
-                      style:{color:'black','font-weight':700,'font-size':'0.95rem'},
+                      // align:'high',
+                      // rotation:0,
+                      // offset:-80,
+                      // y:-32,
+                      // style:{color:'black','font-weight':700,'font-size':'0.95rem'},
                     }
               },
               {
@@ -179,12 +179,12 @@ class CAGovDashboardConfirmedCasesHC extends window.HTMLElement {
                 gridLineWidth:0,
                 allowDecimals:false,
                 title: {
-                    text: 'Cases',
-                    align:'high',
-                    rotation:0,
-                    offset:0,
-                    y:-32,
-                    style:{color:'#1f2574','font-weight':700,'font-size':'0.95rem'},
+                    text: this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                    // align:'high',
+                    // rotation:0,
+                    // offset:0,
+                    // y:-32,
+                    // style:{color:'#1f2574','font-weight':700,'font-size':'0.95rem'},
                   },
                  opposite:true,
                 }],
@@ -195,13 +195,15 @@ class CAGovDashboardConfirmedCasesHC extends window.HTMLElement {
               type: 'column',
               name: 'deaths',
               data: series2Data.reverse(),
+              animation:false,
           },
           {
-            yAxis: 0,
-            color:'#000000',
-            type: 'line',
-            name: '100k',
-            data: series1Data.reverse(),
+              yAxis: 0,
+              color:'#000000',
+              type: 'line',
+              name: '100k',
+              data: series1Data.reverse(),
+              animation:false,
         }],
         //   credits: {
         //     enabled: false

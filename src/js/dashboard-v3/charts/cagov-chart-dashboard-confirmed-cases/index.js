@@ -99,7 +99,9 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
     this.translationsObj.currentLocation = regionName;
 
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    this.setupTabFilters();
 
     let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
@@ -137,6 +139,36 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       );
   }
 
+  tabFilterHandler(e) {
+    this.chartConfigFilter = e.detail.filterKey;
+    if (this.chartConfigFilter != 'reported') {
+      this.chartConfigFilter = 'episode';
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.add('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.remove('active');
+    } else {
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
+    }
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    // if I am in a county have to do county url replacement
+    this.renderComponent(this.regionName);
+  }
+
+  setupTabFilters() {
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
+    myFilter.addEventListener(
+      "filter-selected",
+      this.tabFilterHandler.bind(this),
+      false
+    );
+    // let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
+    // myFilter2.addEventListener(
+    //   "filter-selected",
+    //   tabFilterHandler.bind(this),
+    //   false
+    // );
+  }
+
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -152,33 +184,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       false
     );
 
-    let tabFilterHandler = function(e) {
-      this.chartConfigFilter = e.detail.filterKey;
-      if (this.chartConfigFilter != 'reported') {
-        this.chartConfigFilter = 'episode';
-        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.add('active');
-        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.remove('active');
-      } else {
-        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
-        document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
-      }
-      this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-      // if I am in a county have to do county url replacement
-      this.renderComponent(this.regionName);
-    };
-
-    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
-    myFilter.addEventListener(
-      "filter-selected",
-      tabFilterHandler.bind(this),
-      false
-    );
-    let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
-    myFilter2.addEventListener(
-      "filter-selected",
-      tabFilterHandler.bind(this),
-      false
-    );
   }
 
   /*
