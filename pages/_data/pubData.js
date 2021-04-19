@@ -70,7 +70,7 @@ const files = [
         'activityLabel'
     ]},
     Table2: {
-      pivot: true,
+      pivot: false,
       require: [
         'id',
         'reverseValue',

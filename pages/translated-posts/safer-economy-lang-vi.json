@@ -60,5 +60,39 @@
       "_id": "emptySearchError",
       "value": "Vui lòng nhập tên quận hoặc hoạt động"
     }
+  ],
+  "Table2": [
+    {
+      "id": "1 – Purple",
+      "color": "Purple",
+      "reverseValue": "4",
+      "label": "Widespread (Purple) Tier",
+      "coverage": "Widespread",
+      "value": "1"
+    },
+    {
+      "id": "2 – Red",
+      "color": "Red",
+      "reverseValue": "3",
+      "label": "Severe (Red) Tier",
+      "coverage": "Severe",
+      "value": "2"
+    },
+    {
+      "id": "3 – Orange",
+      "color": "Orange",
+      "reverseValue": "2",
+      "label": "Moderate (Orange) Tier",
+      "coverage": "Moderate",
+      "value": "3"
+    },
+    {
+      "id": "4 – Yellow",
+      "color": "Yellow",
+      "reverseValue": "1",
+      "label": "Minimal (Yellow) Tier",
+      "coverage": "Minimal",
+      "value": "4"
+    }
   ]
 }
