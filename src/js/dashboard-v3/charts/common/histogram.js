@@ -167,6 +167,7 @@ function writeDateAxis(svg, data, x, y,
 }
 
 // Formatter Factory
+// supported formats: num/number, pct, integer
 function getFormatter(max_v,{hint='num',digits=0})
 {
   if (hint == 'pct') {
@@ -175,9 +176,9 @@ function getFormatter(max_v,{hint='num',digits=0})
         "us",  { style: "percent", minimumFractionDigits: digits, maximumFractionDigits: digits }    );
         return fmtr.format;
   } else {
-    // assume num
+    // assume num/number
     if (max_v < 4000) {
-      const digits = max_v < .1? 2 : max_v < 10? 1 : 0;
+      const digits = (hint == 'integer')? 0 : max_v < .1? 2 : max_v < 10? 1 : 0;
       const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
       return fmtr.format;
     } else if (max_v < 1000000) {
@@ -207,7 +208,7 @@ function writeLeftYAxis(svg, data, x, y,
                         { y_axis_legend=null,
                           left_y_fmt='num',
                           root_id='barid' }) {
-  const y_div = getAxisDiv(y);
+  const y_div = getAxisDiv(y,{'hint':left_y_fmt});
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
 
@@ -249,7 +250,7 @@ function writeRightYAxis(svg, data, x, y,
                         { y_axis_legend=null,
                           right_y_fmt='num',
                           root_id='barid' }) {
-  const y_div = getAxisDiv(y);
+  const y_div = getAxisDiv(y,{'hint':right_y_fmt});
   let ygroup = svg.append("g")
       .attr("class",'right-y-axis')
       .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
@@ -372,7 +373,7 @@ function hideTooltip()
  * @param {*} ascale 
  * @returns 
  */
-function getAxisDiv(ascale) {
+function getAxisDiv(ascale,{hint='num'}) {
   // return ascale.ticks()[1];
   const max_y = ascale.domain()[1];
   const log_y = Math.log10(max_y);
@@ -384,7 +385,11 @@ function getAxisDiv(ascale) {
   else if (log_diff < 0.778) var optimal_div = 1; // 600/100
   else                       var optimal_div = 0.5;
   // const optimal_divs = [5,2,1,1/2][bucket];
-  return best_10/optimal_div;
+  let result = best_10/optimal_div;
+  if (hint == 'integer' && result < 1) {
+    result = 1;
+  }
+  return result;
 }
 
 /**
@@ -460,7 +465,7 @@ function getAxisDiv(ascale) {
         max_y_domain = 1;
       }
 
-      console.log("bar range", root_id, min_y_domain, max_y_domain);
+      // console.log("bar range", root_id, min_y_domain, max_y_domain);
       this.ybars = d3
         .scaleLinear()
         .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
@@ -485,7 +490,7 @@ function getAxisDiv(ascale) {
       if (max_y_domain == 0) {
         max_y_domain = 1;
       }
-      console.log("line range", root_id, min_y_domain, max_y_domain);
+      // console.log("line range", root_id, min_y_domain, max_y_domain);
       if (time_series_state_line) {
         max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
       }

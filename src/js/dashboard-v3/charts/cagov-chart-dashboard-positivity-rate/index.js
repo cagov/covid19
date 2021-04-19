@@ -139,6 +139,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
                           'root_id':'pos-rate',
                           'left_y_axis_legend':'Positivity Rate',
                           'right_y_axis_legend':'Tests',
+                          'right_y_fmt':'integer',
                           'x_axis_legend':'Testing date',
                           'line_legend':'7-day average',
                           'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,

@@ -108,6 +108,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
                         'root_id':this.chartOptions.rootId,
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                        'right_y_fmt':'integer',
                         'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                         'line_legend':this.translationsObj.dayAverage,
                         'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
