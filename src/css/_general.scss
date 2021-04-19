@@ -2537,3 +2537,29 @@ ul.small-text {
     }
   }
 }
+
+a span.pdf-link-icon ~ span.ca-gov-icon-external-link {
+  display: none;
+}
+
+.toc li a > span.ca-gov-icon-external-link,
+img ~ span.ca-gov-icon-external-link,
+.link-arrow-white > span.ca-gov-icon-external-link,
+.link-arrow-blue > span.ca-gov-icon-external-link, 
+.link-arrow-lightblue > span.ca-gov-icon-external-link,
+.link-arrow-orange > span.ca-gov-icon-external-link,
+.button-white > span.ca-gov-icon-external-link, 
+.button-lightblue > span.ca-gov-icon-external-link,
+.button-blue > span.ca-gov-icon-external-link,
+.button-lightestblue > span.ca-gov-icon-external-link
+.btn > span.ca-gov-icon-external-link,
+.btn-dark > span.ca-gov-icon-external-link,
+.btn-primary > span.ca-gov-icon-external-link,
+.btn-clear > span.ca-gov-icon-external-link,
+.btn-secondary > span.ca-gov-icon-external-link,
+.btn-matrix > span.ca-gov-icon-external-link,
+.action-link > span.ca-gov-icon-external-link,
+.social-link > span.ca-gov-icon-external-link
+{
+  display: none;
+}
