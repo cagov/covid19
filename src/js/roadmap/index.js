@@ -4,44 +4,44 @@ import templatize from "./template.js";
 class CAGovReopening extends window.HTMLElement {
   connectedCallback() {
     this.json = JSON.parse(this.dataset.json);
-
-    console.log("json", this.json);
+    this.countyTiers = JSON.parse(this.dataset.countyTiers);
+    console.log("json", this.dataset);
 
     // @TODO add table data: this.dataset.json...countyTiers
-    this.countyTiers = [
-      {
-        id: "1 - Purple",
-        color: "Purple",
-        hexColor: 4,
-        label: "Widespread (Purple)",
-        coverage: "Widespread",
-        value: 1,
-      },
-      {
-        id: "2 - Red",
-        color: "Red",
-        hexColor: 3,
-        label: "Severe (Red)",
-        coverage: "Severe",
-        value: 2,
-      },
-      {
-        id: "3 - Orange",
-        color: "Orange",
-        hexColor: 2,
-        label: "Moderate (Orange)",
-        coverage: "Moderate",
-        value: 3,
-      },
-      {
-        id: "4 - Yellow",
-        color: "Yellow",
-        hexColor: 1,
-        label: "Minimal (Yellow)",
-        coverage: "Minimal",
-        value: 4,
-      },
-    ];
+    // this.countyTiers = [
+    //   {
+    //     id: "1 - Purple",
+    //     color: "Purple",
+    //     hexColor: 4,
+    //     label: "Widespread (Purple)",
+    //     coverage: "Widespread",
+    //     value: 1,
+    //   },
+    //   {
+    //     id: "2 - Red",
+    //     color: "Red",
+    //     hexColor: 3,
+    //     label: "Severe (Red)",
+    //     coverage: "Severe",
+    //     value: 2,
+    //   },
+    //   {
+    //     id: "3 - Orange",
+    //     color: "Orange",
+    //     hexColor: 2,
+    //     label: "Moderate (Orange)",
+    //     coverage: "Moderate",
+    //     value: 3,
+    //   },
+    //   {
+    //     id: "4 - Yellow",
+    //     color: "Yellow",
+    //     hexColor: 1,
+    //     label: "Minimal (Yellow)",
+    //     coverage: "Minimal",
+    //     value: 4,
+    //   },
+    // ];
 
     this.schoolsText = this.dataset.schools
       ? JSON.parse(this.dataset.schools)
