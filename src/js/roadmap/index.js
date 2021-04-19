@@ -7,42 +7,6 @@ class CAGovReopening extends window.HTMLElement {
     this.countyTiers = JSON.parse(this.dataset.countyTiers);
     console.log("json", this.dataset);
 
-    // @TODO add table data: this.dataset.json...countyTiers
-    // this.countyTiers = [
-    //   {
-    //     id: "1 - Purple",
-    //     color: "Purple",
-    //     hexColor: 4,
-    //     label: "Widespread (Purple)",
-    //     coverage: "Widespread",
-    //     value: 1,
-    //   },
-    //   {
-    //     id: "2 - Red",
-    //     color: "Red",
-    //     hexColor: 3,
-    //     label: "Severe (Red)",
-    //     coverage: "Severe",
-    //     value: 2,
-    //   },
-    //   {
-    //     id: "3 - Orange",
-    //     color: "Orange",
-    //     hexColor: 2,
-    //     label: "Moderate (Orange)",
-    //     coverage: "Moderate",
-    //     value: 3,
-    //   },
-    //   {
-    //     id: "4 - Yellow",
-    //     color: "Yellow",
-    //     hexColor: 1,
-    //     label: "Minimal (Yellow)",
-    //     coverage: "Minimal",
-    //     value: 4,
-    //   },
-    // ];
-
     this.schoolsText = this.dataset.schools
       ? JSON.parse(this.dataset.schools)
       : {};
@@ -73,10 +37,12 @@ class CAGovReopening extends window.HTMLElement {
           let countyTierAutocompleteList = [];
           let countyAutocompleteList = [];
 
-          this.countyTiers.forEach((c) => {
-            // console.log("ct", c);
-            countyTierAutocompleteList.push(c);
-          });
+          if (this.countyTiers !== undefined) {
+            this.countyTiers.forEach((c) => {
+              // console.log("ct", c);
+              countyTierAutocompleteList.push(c);
+            });
+          }
 
           this.countyStatuses.forEach((c) => {
             countyAutocompleteList.push(c.county);
@@ -131,6 +97,7 @@ class CAGovReopening extends window.HTMLElement {
       .then(
         function (data) {
           this.allActivities = data.Table1.map((item) => {
+            // Remap data structure to the new data structure we want but did not switch over to yet. This will help when we need to coordinate that crossover (at which point, we can remove this code.)
             return {
               activity_search_autocomplete: item[0],
               "1 – Purple": item[1],
@@ -147,8 +114,6 @@ class CAGovReopening extends window.HTMLElement {
           this.allActivities.forEach((item) => {
             activityAutocompleteList.push(item["activity_search_autocomplete"]);
           });
-
-          // console.log(activityAutocompleteList);
 
           this.setupAutoCompleteActivity(
             "#activity-query",
@@ -520,19 +485,13 @@ class CAGovReopening extends window.HTMLElement {
     });
 
     selectedCountyTiers.forEach((selectedTierItem) => {
-      let tierStatusMap = {
-        4: "1 - Purple",
-        3: "2 – Red",
-        2: "3 – Orange",
-        1: "4 – Yellow",
-      };
-
       console.log("selectedTierItem", selectedTierItem, this.statusdesc.Table1);
       this.cardHTML += `<div class="card-county">
-        <div class="county-color-${selectedTierItem.hexColor}">
-        <div class="pill">${selectedTierItem.label}</div>
+        <h2>${selectedTierItem.label} Tier</h2>
+        <div class="county-color-${selectedTierItem.reverseValue}">
+        <div class="pill">${selectedTierItem.coverage}</div>
         <p>${
-          this.statusdesc.Table1[selectedTierItem.value]
+          this.statusdesc.Table1[selectedTierItem.reverseValue]
             .description
         }. <a href="#county-status">${this.json.understandTheData}</a></p>
         <p>${
