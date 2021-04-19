@@ -95,6 +95,11 @@ cagov-reopening-airtable {
     }
   }
 
+  #awesomplete_list_1 li:nth-child(3)::after {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+  }
+
   .reopening-field-error {
     position: absolute;
     bottom: 1rem;
