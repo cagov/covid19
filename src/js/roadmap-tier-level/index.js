@@ -210,7 +210,6 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
   }
 
   setupAutoComplete(fieldSelector, fieldName, countyAutocompleteList) {
-    // console.log(countyAutocompleteList);
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
@@ -249,7 +248,9 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       fieldSelector,
       awesompleteSettings
     );
-
+    document
+    .querySelector('#awesomplete_list_1').setAttribute('aria-label', this.json.countyLabel);
+   
     let addAutocompleteSectionSeparator = this.addAutocompleteSectionSeparator;
     let countyTiers = this.countyTiers;
     document
@@ -269,17 +270,17 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
     window.autocompleteCounty = autocompleteCounty;
   }
 
-  addAutocompleteSectionSeparator(selector, countyTiers) {
-    let allListItems = document.querySelectorAll("#awesomplete_list_1 li");
+  addAutocompleteSectionSeparator(selector, countyTiers, separatorClass = "separator") {
+    let allListItems = document.querySelectorAll(selector);
     let countyTierList = countyTiers.map((tier) => tier.label);
     if (allListItems) {
       let reverseSortedList = Object.assign([], allListItems).reverse();
       let separated = false;
       reverseSortedList.map((item) => {
-        item.classList.remove("separator");
+        item.classList.remove(separatorClass);
         if (countyTierList.includes(item.innerText) && separated === false) {
           if (item !== null && reverseSortedList.length > 1) {
-            item.classList.add("separator");
+            item.classList.add(separatorClass);
             separated = true;
           }
         }
@@ -541,6 +542,13 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
         this.cardHTML += `<div class="card-activity">
             <h4>${selectedActivity["activity_search_autocomplete"]}</h4>
             <p>${tierActivity}</p>
+            <p>${
+              selectedActivity["5 – RSHO"].indexOf("href") > -1
+                ? `${this.json.seeGuidanceText} ${replaceAllInMap(
+                    selectedActivity["5 – RSHO"]
+                  )}`
+                : ""
+            }</p>
             <span class="card-activity-separator"></span>
           </div>`;
       });
