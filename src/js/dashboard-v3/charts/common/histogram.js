@@ -397,18 +397,19 @@ function getAxisDiv(ascale,{hint='num'}) {
 
 function drawLineLegend(svg, line_legend, line_data, xline, yline) {
   if (line_legend != null) {
-    let lsample = line_data[line_data.length/2];
+    let lsi = Math.floor(line_data.length*2/3);
+    let lsample = line_data[lsi];
     let g = this.svg.append('g')
       .attr('class','line-legend');
     g.append('text')
       .text(line_legend)
-      .attr("x",this.dimensions.width/2)
-      .attr("y",this.dimensions.height/2);
+      .attr("x",this.dimensions.width/3)
+      .attr("y",this.dimensions.height/4);
     g.append('line')
-      .attr('x1',this.dimensions.width/2)
-      .attr('y1',this.dimensions.height/2)
-      .attr('x2',xline(lsample))
-      .attr('y2',yline(lsample));
+      .attr('x1',this.dimensions.width/3)
+      .attr('y1',this.dimensions.height/4)
+      .attr('x2',xline(lsi))
+      .attr('y2',yline(lsample.VALUE));
   }
 }
 

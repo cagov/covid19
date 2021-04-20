@@ -158,6 +158,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
           this.renderComponent(regionName);
