@@ -138,6 +138,10 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('roadmap-airtable-v1', env.dev) }}
 {% endpagesection -%}
 
+{%- pagesection page, "safer-economy-tier-levels" %}
+	{{ macros.includeJavascriptByEnv('roadmap-tier-level', env.dev) }}
+{% endpagesection -%}
+
 {%- pagesection page, "v1-state-dashboard" %}
 	{{ macros.includeJavascriptByEnv('dashboard-v1', env.dev) }}
 {% endpagesection -%}
