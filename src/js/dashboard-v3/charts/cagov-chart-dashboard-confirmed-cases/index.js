@@ -139,7 +139,8 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       );
   }
 
-  tabFilterHandler(e) {
+  chartFilterSelectHandler(e) {
+    console.log("cases chartfilter");
     this.chartConfigFilter = e.detail.filterKey;
     if (this.chartConfigFilter != 'reported') {
       this.chartConfigFilter = 'episode';
@@ -149,9 +150,16 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
       document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
     }
+
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
     // if I am in a county have to do county url replacement
     this.renderComponent(this.regionName);
+  }
+
+  tabFilterHandler(e) {
+    this.chartFilterSelectHandler(e);
+    const event = new window.CustomEvent('cases-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
+    window.dispatchEvent(event);    
   }
 
   setupTabFilters() {
@@ -161,12 +169,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       this.tabFilterHandler.bind(this),
       false
     );
-    // let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
-    // myFilter2.addEventListener(
-    //   "filter-selected",
-    //   tabFilterHandler.bind(this),
-    //   false
-    // );
   }
 
   listenForLocations() {
@@ -184,6 +186,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       false
     );
 
+    window.addEventListener('deaths-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
   }
 
   /*

@@ -143,33 +143,35 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       );
   }
 
+  chartFilterSelectHandler(e) {
+    console.log("deaths chartfilter");
+    this.chartConfigFilter = e.detail.filterKey;
+    if (this.chartConfigFilter != 'reported') {
+      this.chartConfigFilter = 'death';
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.add('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.remove('active');
+    } else {
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.remove('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.add('active');
+    }
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.renderComponent(this.regionName);
+  }
+
+  tabFilterHandler(e) {
+    this.chartFilterSelectHandler(e);
+    const event = new window.CustomEvent('deaths-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
+    window.dispatchEvent(event);    
+  }
+
   setupTabFilters() {
-    let tabFilterHandler = function(e) {
-      this.chartConfigFilter = e.detail.filterKey;
-      if (this.chartConfigFilter != 'reported') {
-        this.chartConfigFilter = 'death';
-        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.add('active');
-        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.remove('active');
-      } else {
-        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.remove('active');
-        document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.add('active');
-      }
-      this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-      this.renderComponent(this.regionName);
-    };
 
     let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
     myFilter.addEventListener(
       "filter-selected",
-      tabFilterHandler.bind(this),
+      this.tabFilterHandler.bind(this),
       false
     );
-    // let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
-    // myFilter2.addEventListener(
-    //   "filter-selected",
-    //   tabFilterHandler.bind(this),
-    //   false
-    // );
   }
 
   listenForLocations() {
@@ -186,6 +188,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       }.bind(this),
       false
     );
+    window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
   }
 }
 
