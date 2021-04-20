@@ -1,18 +1,8 @@
----
-layout: "page.njk"
-title: "Pangako ng California pagdating sa pagkakapantay-pantay sa kalusugan"
-meta: "May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. Sa page na ito, makikita mo ang sumusunod:  Paano tinutugunan ng California ang kawalan ng pagkakapantay-pantay sa kalusugan Pangkalahatang-ideya ng hindi pagkakapantay-pantay sa ating mga diverse na komunidad Plano ng California para muling magbukas sa patas na paraan Tingnan ang datos sa kung paano naaapektuhan ang mga komunidad sa iyong county Tingnan kung paano […]"
-author: "State of California"
-publishdate: "2021-04-12T23:40:36Z"
-tags: ["translate"]
-addtositemap: true
----
-
-<!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. </p>
+--- layout: &quot;page.njk&quot; title: &quot;Pangako ng California pagdating sa pagkakapantay-pantay sa kalusugan&quot; meta: &quot;May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. Sa page na ito, makikita mo ang sumusunod:&nbsp; Paano tinutugunan ng California ang kawalan ng pagkakapantay-pantay sa kalusugan Pangkalahatang-ideya ng hindi pagkakapantay-pantay sa ating mga diverse na komunidad Plano ng California para muling magbukas sa patas na paraan Tingnan ang datos sa kung paano naaapektuhan ang mga komunidad sa iyong county Tingnan kung paano […]&quot; author: &quot;Estado ng California&quot; publishdate: &quot;2021-04-19T20:05:20Z&quot; tags: [&quot;translate&quot;] addtositemap: true --- <!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. </p>
 
 
 
-<p>Sa page na ito, makikita mo ang sumusunod: </p>
+<p>Sa page na ito, makikita mo ang sumusunod:&nbsp;</p>
 
 
 
@@ -70,9 +60,9 @@ addtositemap: true
                   </div>
                 </div>
             
-                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga komunidad na may median na kita na <$40K at ang average ng buong estado                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga komunidad na may median na kita na &lt;$40K kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga komunidad na may median na kita na &lt;$40K kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga komunidad na may median na kita na &lt;$40K at ang average ng buong estado                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
                     <p class="text-xs">Mga kaso sa bawat 100K tao:</p>
-                    <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> kita <$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng bracket ng kita                     </p>
+                    <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> kita &lt;$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng bracket ng kita                     </p>
                   </div>
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
@@ -152,7 +142,7 @@ addtositemap: true
             <li data-label="applied-suppression-population">Para protektahan ang privacy ng mga tao, hindi kami magpapakita ng anumang data. Ito ay dahil wala pang 20,000 tao ang nasa grupong ito.</li>
             <li data-label="missing-data-caption-line-delimiter"><br></li>
             <li data-label="chartToolTip1-caption">placeholder_DEMOGRAPHIC_SET_CATEGORY tao ang bumubuo sa <span class="highlight-data"> placeholder_METRIC_TOTAL_PERCENTAGE</span> ng placeholder_SelectedMetric sa placeholderForDynamicLocation at <span class="highlight-data"> placeholder_POPULATION_PERCENTAGE </span> ng populasyon ng placeholderForDynamicLocation</li>
-<li data-label="data-missing-applied-suppression-total--tests">Hindi ipinapakita ang datos dahil wala pang 11 ang mga pagsusuri sa grupong ito.</li>
+<li data-label="data-missing-applied-suppression-total--tests">Hindi ipinapakita ang data dahil wala pang 11 ang mga pagsusuri sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-total--tests">Hindi ipinapakita ang datos dahil wala pang 11 ang mga pagsusuri sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-total--cases">Hindi ipinapakita ang datos dahil wala pang 11 ang mga kaso sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-total--deaths">Hindi ipinapakita ang datos dahil wala pang 11 ang mga pagkamatay sa grupong ito.</li>
@@ -197,7 +187,7 @@ addtositemap: true
 
 
 
-<p class="chart-data-label">Tandaan: Cumulative at linggu-linggong ina-update ang datos na ipinapakita para sa nakalipas na 30 araw. Hindi kasama sa mga pagtataya sa populasyon ang kategoryang “iba pa” o “hindi alam” sa lahi at etnisidad, kaya naman hindi available ang porsyento ng mga ito sa populasyon ng estado. Para makita ang datos ng lahi at etnisidad nang nakapangkat ayon sa mga grupo ng edad, tingnan ang <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">Datos ng Lahi at Etnisidad</a> Kaugnay ng COVID-19 ng Departamento ng Pampublikong Kalusugan ng California. Ipinapakita ang mga numero mula 1 hanggang 10 bilang “<11” para maprotektahan ang privacy ng pasyente.</p>
+<p class="chart-data-label">Tandaan: Cumulative at linggu-linggong ina-update ang datos na ipinapakita para sa nakalipas na 30 araw. Hindi kasama sa mga pagtataya sa populasyon ang kategoryang “iba pa” o “hindi alam” sa lahi at etnisidad, kaya naman hindi available ang porsyento ng mga ito sa populasyon ng estado. Para makita ang datos ng lahi at etnisidad nang nakapangkat ayon sa mga grupo ng edad, tingnan ang <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">Datos ng Lahi at Etnisidad</a> Kaugnay ng COVID-19 ng Departamento ng Pampublikong Kalusugan ng California. Ipinapakita ang mga numero mula 1 hanggang 10 bilang “&lt;11” para maprotektahan ang privacy ng pasyente.</p>
 
 
 
@@ -285,7 +275,11 @@ addtositemap: true
 </div>
 </div>
 </div>
-</div>    <a name="learn-more"></a> <!--THIS IS LEARN MORE SECTION--> <div class="full-bleed">
+</div>
+
+
+
+<div id="learn-more"></div> <!--THIS IS LEARN MORE SECTION--> <div class="full-bleed">
   <div class="container py-2">
     <h2 class="text-center color-purple my-4">Matuto pa</h2>
     <div class="row pb-5">
