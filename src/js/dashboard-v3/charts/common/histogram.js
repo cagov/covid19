@@ -395,6 +395,23 @@ function getAxisDiv(ascale,{hint='num'}) {
   return result;
 }
 
+function drawLineLegend(svg, line_legend, line_data, xline, yline) {
+  if (line_legend != null) {
+    let lsample = line_data[line_data.length/2];
+    let g = this.svg.append('g')
+      .attr('class','line-legend');
+    g.append('text')
+      .text(line_legend)
+      .attr("x",this.dimensions.width/2)
+      .attr("y",this.dimensions.height/2);
+    g.append('line')
+      .attr('x1',this.dimensions.width/2)
+      .attr('y1',this.dimensions.height/2)
+      .attr('x2',xline(lsample))
+      .attr('y2',yline(lsample));
+  }
+}
+
 /**
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
@@ -502,7 +519,8 @@ function getAxisDiv(ascale,{hint='num'}) {
         .scaleLinear()
         .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
-      }
+
+    }
 
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
@@ -515,6 +533,9 @@ function getAxisDiv(ascale,{hint='num'}) {
     if (time_series_line) {
       writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
         { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
+      if (line_legend != null) {
+          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline);
+      }
     }
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 

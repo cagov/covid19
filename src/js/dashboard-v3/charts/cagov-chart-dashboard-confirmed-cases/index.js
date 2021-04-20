@@ -63,7 +63,9 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     // ];
   }
 
-  renderExtras(svg, data, x, y) {
+  renderExtras(svg) {
+    if (this.regionName == 'California') {
+    }
   }
 
   getTooltipContent(di) {
@@ -112,7 +114,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                         'right_y_fmt':'integer',
                         'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
-                        'line_legend':this.translationsObj.dayAverage,
+                        'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                         'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
                         'pending_legend':'Pending',
                         };
