@@ -322,6 +322,10 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       list: activityAutocompleteList,
     };
 
+    document
+    .querySelector('#awesomplete_list_2').setAttribute('aria-label', this.json.activityLabel);
+   
+
     window.autocompleteActivity = new Awesomplete(
       fieldSelector,
       awesompleteSettings
