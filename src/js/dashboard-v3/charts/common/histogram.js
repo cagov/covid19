@@ -1,6 +1,6 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
@@ -12,12 +12,15 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
     .datum(data)
       .attr("d", d3.line()
         .x(function(d,i) { return x(i) })
-        .y(function(d) { return y(d.VALUE) })
+        .y(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
         );
 }
 
  function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
-    let groups = svg.append("g")
+   if (!crop_floor) {
+     console.log("NOT CROP FLOOR");
+   }
+   let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
       // .attr('style','fill:#deeaf6;')
       .selectAll("g")
@@ -218,7 +221,7 @@ function writeLeftYAxis(svg, data, x, y,
   // console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
   const tick_left_gap = 10;
   let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
-  for (let yi = 0; yi < max_y_domain; yi += y_div) {
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
     let y_caption = myFormatter(yi);
     let subg = ygroup.append("g")
       .attr('class','y-tick');
@@ -265,7 +268,7 @@ function writeRightYAxis(svg, data, x, y,
   // console.log("Drawing Right Axis  max_y_domain",max_y_domain,root_id);
   let myFormatter = getFormatter(max_y_domain, { hint:right_y_fmt });
 
-  for (let yi = 0; yi < max_y_domain; yi += y_div) {
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
     let y_caption = myFormatter(yi);
 
     let subg = ygroup.append("g")
@@ -340,7 +343,8 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",`${event.offsetX}px`);
+  // console.log("X",event.offsetX);
+  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
   tooltip.style("top",`${(event.offsetY+220)}px`);
@@ -356,7 +360,7 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
     .attr("x",xscale(dIndex)-1)
     .attr("y",yscale(dRecord.VALUE))
     .attr("width",3)
-    .attr("height",yscale(0)-yscale(dRecord.VALUE));
+    .attr("height",Math.max(0,yscale(0)-yscale(dRecord.VALUE)));
 }
 
 function hideTooltip()
@@ -390,6 +394,35 @@ function getAxisDiv(ascale,{hint='num'}) {
     result = 1;
   }
   return result;
+}
+
+function drawLineLegend(svg, line_legend, line_data, xline, yline) {
+  if (line_legend != null) {
+    let lsi = Math.floor(line_data.length*2/3);
+    let lsample = line_data[lsi];
+    let x1 = this.dimensions.width/3;
+    let y1 = this.dimensions.height/4;
+    let x2 = xline(lsi);
+    let y2 = yline(lsample.VALUE);
+    let margin = 6;
+    // shorten line on each end by margin
+    let ang = Math.atan2(y2-y1,x2-x1);
+    x1 += Math.cos(ang)*margin;
+    y1 += Math.sin(ang)*margin;
+    x2 += Math.cos(ang+Math.PI)*margin;
+    y2 += Math.sin(ang+Math.PI)*margin;
+    let g = this.svg.append('g')
+      .attr('class','line-legend');
+    g.append('text')
+      .text(line_legend)
+      .attr("x",this.dimensions.width/3)
+      .attr("y",this.dimensions.height/4);
+    g.append('line')
+      .attr('x1',x1)
+      .attr('y1',y1)
+      .attr('x2',x2)
+      .attr('y2',y2);
+  }
 }
 
 /**
@@ -499,7 +532,8 @@ function getAxisDiv(ascale,{hint='num'}) {
         .scaleLinear()
         .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
-      }
+
+    }
 
 
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
@@ -511,11 +545,14 @@ function getAxisDiv(ascale,{hint='num'}) {
     }
     if (time_series_line) {
       writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
-        { line_legend:line_legend, root_id:root_id});
+        { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
+      if (line_legend != null) {
+          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline);
+      }
     }
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
-        { root_id:'state-'+root_id, is_second_line:true});
+        { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
       writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
     }
 

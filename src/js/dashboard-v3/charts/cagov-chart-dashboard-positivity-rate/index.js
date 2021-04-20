@@ -140,8 +140,8 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
                           'left_y_axis_legend':'Positivity Rate',
                           'right_y_axis_legend':'Tests',
                           'right_y_fmt':'integer',
-                          'x_axis_legend':'Testing date',
-                          'line_legend':'7-day average',
+                          'x_axis_legend':this.translationsObj.xAxisLegend,
+                          'line_legend':this.regionName == 'California'? this.translationsObj.dayRate : null,
                           'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
                           'pending_legend':this.translationsObj.pending,
                         };
@@ -158,6 +158,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
           this.renderComponent(regionName);

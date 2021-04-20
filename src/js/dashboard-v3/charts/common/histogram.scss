@@ -20,7 +20,7 @@
     }
     g.fg-line path {
       fill: none;
-      stroke: #555555;
+      stroke: black;
       stroke-width: 2px;
     }
     g.fg-line.second-line path {
@@ -144,6 +144,18 @@
     g.tt-marker {
       fill: black;
       opacity: 0.5;
+    }
+    g.line-legend {
+      text {
+        font-weight: 400;
+        font-size: 0.8rem;
+        text-anchor: middle;
+        dominant-baseline: auto;
+      }
+      line {
+        stroke-width: 0.25px;
+        stroke: black;
+      }
     }
   }
   .chart-title {

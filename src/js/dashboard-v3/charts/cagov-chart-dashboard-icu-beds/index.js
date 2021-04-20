@@ -129,7 +129,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       "county-selected",
       function (e) {
         this.county = e.detail.county;
-        let searchURL = this.chartOptions.dataUrlCounty.replace(
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
           this.county.toLowerCase().replace(/ /g, "_")
         );
