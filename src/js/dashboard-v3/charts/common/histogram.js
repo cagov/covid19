@@ -399,6 +399,17 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
   if (line_legend != null) {
     let lsi = Math.floor(line_data.length*2/3);
     let lsample = line_data[lsi];
+    let x1 = this.dimensions.width/3;
+    let y1 = this.dimensions.height/4;
+    let x2 = xline(lsi);
+    let y2 = yline(lsample.VALUE);
+    let margin = 6;
+    // shorten line on each end by margin
+    let ang = Math.atan2(y2-y1,x2-x1);
+    x1 += Math.cos(ang)*margin;
+    y1 += Math.sin(ang)*margin;
+    x2 += Math.cos(ang+Math.PI)*margin;
+    y2 += Math.sin(ang+Math.PI)*margin;
     let g = this.svg.append('g')
       .attr('class','line-legend');
     g.append('text')
@@ -406,10 +417,10 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
       .attr("x",this.dimensions.width/3)
       .attr("y",this.dimensions.height/4);
     g.append('line')
-      .attr('x1',this.dimensions.width/3)
-      .attr('y1',this.dimensions.height/4)
-      .attr('x2',xline(lsi))
-      .attr('y2',yline(lsample.VALUE));
+      .attr('x1',x1)
+      .attr('y1',y1)
+      .attr('x2',x2)
+      .attr('y2',y2);
   }
 }
 
