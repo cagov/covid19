@@ -1,6 +1,6 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
@@ -12,12 +12,15 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false }) {
     .datum(data)
       .attr("d", d3.line()
         .x(function(d,i) { return x(i) })
-        .y(function(d) { return y(d.VALUE) })
+        .y(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
         );
 }
 
  function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
-    let groups = svg.append("g")
+   if (!crop_floor) {
+     console.log("NOT CROP FLOOR");
+   }
+   let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
       // .attr('style','fill:#deeaf6;')
       .selectAll("g")
@@ -356,7 +359,7 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
     .attr("x",xscale(dIndex)-1)
     .attr("y",yscale(dRecord.VALUE))
     .attr("width",3)
-    .attr("height",yscale(0)-yscale(dRecord.VALUE));
+    .attr("height",Math.max(0,yscale(0)-yscale(dRecord.VALUE)));
 }
 
 function hideTooltip()
@@ -511,11 +514,11 @@ function getAxisDiv(ascale,{hint='num'}) {
     }
     if (time_series_line) {
       writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
-        { line_legend:line_legend, root_id:root_id});
+        { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
     }
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
-        { root_id:'state-'+root_id, is_second_line:true});
+        { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
       writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
     }
 
