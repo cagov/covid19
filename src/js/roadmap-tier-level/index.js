@@ -1,11 +1,11 @@
-import Awesomplete from "awesomplete-es6";
+import "awesomplete";
+// https://projects.verou.me/awesomplete/#download
 import templatize from "./template.js";
 
-class CAGovReopening extends window.HTMLElement {
+class CAGovReopeningTierLevel extends window.HTMLElement {
   connectedCallback() {
     this.json = JSON.parse(this.dataset.json);
     this.countyTiers = JSON.parse(this.dataset.countyTiers);
-    console.log("json", this.dataset);
 
     this.schoolsText = this.dataset.schools
       ? JSON.parse(this.dataset.schools)
@@ -39,7 +39,6 @@ class CAGovReopening extends window.HTMLElement {
 
           if (this.countyTiers !== undefined) {
             this.countyTiers.forEach((c) => {
-              // console.log("ct", c);
               countyTierAutocompleteList.push(c);
             });
           }
@@ -47,6 +46,7 @@ class CAGovReopening extends window.HTMLElement {
           this.countyStatuses.forEach((c) => {
             countyAutocompleteList.push(c.county);
           });
+
           this.setupAutoComplete(
             "#location-query",
             "county",
@@ -256,6 +256,31 @@ class CAGovReopening extends window.HTMLElement {
         // this.value = "";
         window.autocompleteCounty.evaluate();
       });
+
+      document
+      .querySelector(fieldSelector).addEventListener("input, focus", (event) => {
+        const inputText = event.target.value;
+        console.log(inputText);
+
+        // '#awesomplete_list_1 li')
+
+        let allListItems = document.querySelectorAll("#awesomplete_list_1 li");
+        console.log("allListItems", allListItems);
+
+        let countyTierList = this.countyTiers.map((tier) => tier.label);
+        console.log("countyTierList", countyTierList);
+        // if (allListItems)
+        // allListItems.map((item) => {
+        //    if (countyTierList.includes(item.innerText)) {
+        //      item.addClass('tier-item');
+        //    }
+        // });
+
+        // Process inputText as you want, e.g. make an API request.
+        // awesomplete.list = ["my"+inputText, "custom"+inputText, "list"+inputText];
+        window.autocompleteCounty.evaluate();
+      });
+
     window.autocompleteCounty = autocompleteCounty;
   }
 
@@ -551,4 +576,4 @@ class CAGovReopening extends window.HTMLElement {
   }
 }
 
-window.customElements.define("cagov-reopening-tier-level", CAGovReopening);
+window.customElements.define("cagov-reopening-tier-level", CAGovReopeningTierLevel);

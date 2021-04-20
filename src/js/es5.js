@@ -11,6 +11,7 @@ import './feature-detect/webp.js';
 import './menu/index.js';
 import './roadmap/index.js';
 import './roadmap-airtable-v1/index.js';
+import './roadmap-tier-level/index.js';
 import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
