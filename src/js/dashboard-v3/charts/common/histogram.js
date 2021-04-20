@@ -221,7 +221,7 @@ function writeLeftYAxis(svg, data, x, y,
   // console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
   const tick_left_gap = 10;
   let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
-  for (let yi = 0; yi < max_y_domain; yi += y_div) {
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
     let y_caption = myFormatter(yi);
     let subg = ygroup.append("g")
       .attr('class','y-tick');
@@ -268,7 +268,7 @@ function writeRightYAxis(svg, data, x, y,
   // console.log("Drawing Right Axis  max_y_domain",max_y_domain,root_id);
   let myFormatter = getFormatter(max_y_domain, { hint:right_y_fmt });
 
-  for (let yi = 0; yi < max_y_domain; yi += y_div) {
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
     let y_caption = myFormatter(yi);
 
     let subg = ygroup.append("g")
