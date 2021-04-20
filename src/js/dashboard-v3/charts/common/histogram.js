@@ -343,7 +343,8 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",`${event.offsetX}px`);
+  // console.log("X",event.offsetX);
+  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
   tooltip.style("top",`${(event.offsetY+220)}px`);
