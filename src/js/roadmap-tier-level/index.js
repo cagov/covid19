@@ -551,4 +551,4 @@ class CAGovReopening extends window.HTMLElement {
   }
 }
 
-window.customElements.define("cagov-reopening", CAGovReopening);
+window.customElements.define("cagov-reopening-tier-level", CAGovReopening);
