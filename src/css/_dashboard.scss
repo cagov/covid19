@@ -88,8 +88,10 @@
 }
 
 .filter-buttons--statedash {
-  position: absolute;
-  top: 57px;
+  // position: absolute;
+  // top: 57px;
+  height:50px;
+  padding-top:10px;
   display: block;
   z-index: 5;
   width: 94%;
@@ -98,5 +100,7 @@
   }
 }
 .chart.filter-button-space .chart-title {
-  margin-bottom: 50px;
+  @media (min-width: 767.98px) {
+    margin-bottom: 50px;
+  }
 }

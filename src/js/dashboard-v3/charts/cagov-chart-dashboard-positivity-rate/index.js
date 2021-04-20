@@ -129,7 +129,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
 
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
       
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
@@ -139,6 +139,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
                           'root_id':'pos-rate',
                           'left_y_axis_legend':'Positivity Rate',
                           'right_y_axis_legend':'Tests',
+                          'right_y_fmt':'integer',
                           'x_axis_legend':'Testing date',
                           'line_legend':'7-day average',
                           'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,

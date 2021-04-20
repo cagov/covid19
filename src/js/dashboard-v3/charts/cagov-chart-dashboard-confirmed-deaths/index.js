@@ -104,7 +104,9 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     this.translationsObj.currentLocation = regionName;
 
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template.call(this,this.chartOptions, this.translationsObj);
+
+    this.setupTabFilters();
 
     let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
@@ -113,11 +115,11 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
                         'root_id':this.chartOptions.rootId,
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                        'right_y_fmt':'integer',
                         'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                         'line_legend':this.translationsObj.dayAverage,
                         'pending_date':this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD,
                         'pending_legend':this.translationsObj.pending,
-                        'crop_floor': (regionName == 'California'),
                         };
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
@@ -141,21 +143,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       );
   }
 
-  listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        this.county = e.detail.county;
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
-
+  setupTabFilters() {
     let tabFilterHandler = function(e) {
       this.chartConfigFilter = e.detail.filterKey;
       if (this.chartConfigFilter != 'reported') {
@@ -176,10 +164,26 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       tabFilterHandler.bind(this),
       false
     );
-    let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
-    myFilter2.addEventListener(
-      "filter-selected",
-      tabFilterHandler.bind(this),
+    // let myFilter2 = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
+    // myFilter2.addEventListener(
+    //   "filter-selected",
+    //   tabFilterHandler.bind(this),
+    //   false
+    // );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
       false
     );
   }

@@ -36,32 +36,6 @@ if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 5
   else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; } 
   else { chartWidth2 = 350; countyMapChartHeight = 660; }
 
-async function setupTableauChart() {
-  if(document.getElementById('mapChartContainer')) {
-    let containerSelector = '#mapChartContainer';
-
-    let chartContainer = document.querySelector(containerSelector);
-    var chartURL = 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link';
-    let chartOptions = {
-      width: chartWidth2+'px',
-      height: countyMapChartHeight+'px'
-    }
-  
-    let chartViz = await new tableau.Viz(chartContainer, chartURL, chartOptions);
-    return chartViz;
-  
-  }
-}
-
-window.onload = function() {
-  let s = document.createElement('script');
-  s.src = 'https://public.tableau.com/javascripts/api/tableau-2.min.js';
-  document.getElementsByTagName('head')[0].appendChild(s);
-  // I don't think IE supports click to interact so check for IE, then load this file
-  // https://public.tableau.com/javascripts/api/tableau-2.min.js
-  // setupTableauChart();
-}
-
 function resetGroupToggles() {
   console.log("Reset Group Toggles");
   groupTogglers.forEach(toggle => {

@@ -68,6 +68,15 @@ const files = [
       require: [
         'title',
         'activityLabel'
+    ]},
+    Table2: {
+      pivot: false,
+      require: [
+        'id',
+        'reverseValue',
+        'value',
+        'label',
+        'coverage'
     ]}
   }},
   { slug: 'reopening-roadmap-activity-data', split: true },
