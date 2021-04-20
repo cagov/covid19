@@ -100,10 +100,10 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
             // Remap data structure to the new data structure we want but did not switch over to yet. This will help when we need to coordinate that crossover (at which point, we can remove this code.)
             return {
               activity_search_autocomplete: item[0],
-              "1 – Purple": item[1],
-              "2 – Red": item[2],
-              "3 – Orange": item[3],
-              "4 – Yellow": item[4],
+              "1 – Purple": item[4],
+              "2 – Red": item[3],
+              "3 – Orange": item[2],
+              "4 – Yellow": item[1],
               "5 – RSHO": item[5],
               Guidance: item[6],
             };
@@ -250,38 +250,41 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       awesompleteSettings
     );
 
+    let addAutocompleteSectionSeparator = this.addAutocompleteSectionSeparator;
+    let countyTiers = this.countyTiers;
     document
       .querySelector(fieldSelector)
       .addEventListener("focus", function () {
-        // this.value = "";
+        // this.value = "";      
         window.autocompleteCounty.evaluate();
+        addAutocompleteSectionSeparator("#awesomplete_list_1 li", countyTiers);
       });
 
-      document
-      .querySelector(fieldSelector).addEventListener("input, focus", (event) => {
-        const inputText = event.target.value;
-        console.log(inputText);
-
-        // '#awesomplete_list_1 li')
-
-        let allListItems = document.querySelectorAll("#awesomplete_list_1 li");
-        console.log("allListItems", allListItems);
-
-        let countyTierList = this.countyTiers.map((tier) => tier.label);
-        console.log("countyTierList", countyTierList);
-        // if (allListItems)
-        // allListItems.map((item) => {
-        //    if (countyTierList.includes(item.innerText)) {
-        //      item.addClass('tier-item');
-        //    }
-        // });
-
-        // Process inputText as you want, e.g. make an API request.
-        // awesomplete.list = ["my"+inputText, "custom"+inputText, "list"+inputText];
-        window.autocompleteCounty.evaluate();
-      });
+    document.querySelector(fieldSelector).addEventListener("input", (event) => {
+      const inputText = event.target.value;
+      window.autocompleteCounty.evaluate();
+      addAutocompleteSectionSeparator("#awesomplete_list_1 li", countyTiers);
+    });
 
     window.autocompleteCounty = autocompleteCounty;
+  }
+
+  addAutocompleteSectionSeparator(selector, countyTiers) {
+    let allListItems = document.querySelectorAll("#awesomplete_list_1 li");
+    let countyTierList = countyTiers.map((tier) => tier.label);
+    if (allListItems) {
+      let reverseSortedList = Object.assign([], allListItems).reverse();
+      let separated = false;
+      reverseSortedList.map((item) => {
+        item.classList.remove("separator");
+        if (countyTierList.includes(item.innerText) && separated === false) {
+          if (item !== null && reverseSortedList.length > 1) {
+            item.classList.add("separator");
+            separated = true;
+          }
+        }
+      });
+    }
   }
 
   setupAutoCompleteActivity(
@@ -470,7 +473,6 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
         </div>
       </div>`;
       selectedActivities.forEach((selectedActivity) => {
-        console.log("selectedActivity", selectedActivity);
         if (
           this.regionsclosed &&
           this.countyRegions &&
@@ -508,15 +510,15 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
     });
 
     selectedCountyTiers.forEach((selectedTierItem) => {
-      console.log("selectedTierItem", selectedTierItem, this.statusdesc.Table1);
       this.cardHTML += `<div class="card-county">
         <h2>${selectedTierItem.label} Tier</h2>
         <div class="county-color-${Number(selectedTierItem.reverseValue)}">
         <div class="pill">${selectedTierItem.coverage}</div>
-        <p>${
-          this.statusdesc.Table1[Number(selectedTierItem.reverseValue) - 1]
-            .description
-        }. <a href="#county-status">${this.json.understandTheData}</a></p>
+        <p>
+          ${
+            this.statusdesc.Table1[Number(selectedTierItem.reverseValue) - 1]
+              .description
+          }. <a href="#county-status">${this.json.understandTheData}</a></p>
         <p>${
           this.json.countyRestrictionsAdvice
         } <a href="../get-local-information">${
@@ -576,4 +578,7 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
   }
 }
 
-window.customElements.define("cagov-reopening-tier-level", CAGovReopeningTierLevel);
+window.customElements.define(
+  "cagov-reopening-tier-level",
+  CAGovReopeningTierLevel
+);
