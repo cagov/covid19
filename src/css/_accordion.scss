@@ -88,6 +88,23 @@ button.card-header {
   cagov-minus .accordion-icon {display: none;}
 }
 
+/* chart-drawer version overrides */
+.prog-enhanced.chart-drawer .accordion-alpha .plus-munus {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+.chart-drawer button.card-header {
+  border-bottom: none;
+  border-top: none;
+}
+.chart-drawer .card-container[aria-hidden="false"] {
+  border-bottom: none;
+}
+.chart-drawer .card {
+  padding: 1px;
+  border: 1px solid #ccc;
+}
+
 .prog-enhanced .accordion-alpha-open {
   border-bottom-color: $white !important;
   cagov-plus .accordion-icon {display: none !important;}

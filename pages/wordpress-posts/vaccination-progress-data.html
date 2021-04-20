@@ -40,16 +40,27 @@ addtositemap: true
 
 
 
-<div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
+<div class="row"><!-- this row is here so the chart footnote matches the chart width -->
+  <div class="col-lg-9 col-md-9 col-sm-12 mx-auto">
+    <!-- this is the cagov/covid-chart-drawer component which uses the accordion web component with an added class -->
+    <cagov-accordion class="prog-enhanced chart-drawer">
+      <div class="card">
+        <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+          <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+          <div class="accordion-title"> <!-- input text field -->
+            Chart information
+          </div>
+        </button>
+        <div class="card-container" aria-hidden="true">
+          <div class="card-body"> <!-- input any block field -->
+            <ul class="small-text"><li>Doses delivered include the CDC Long Term Care (LTC) Pharmacy Partnership Program, Federal Retail Pharmacy Partnership Program, Federal Dialysis Center Program, Federal Emergency Management Agency (FEMA) partner sites, and Health Resources and Services Administration partner sites.</li><li>This data does not include doses delivered to the following federal agencies: Indian Health Service, Veterans Health Administration, Department of Defense, and Federal Bureau of Prisons.</li><li>The statewide doses administered count includes doses provided through the CDC LTC Pharmacy and Federal Retail Pharmacy Partnership Program. These doses are a subset of the doses delivered.</li><li>Partially-vaccinated people are those receiving only one dose of the Pfizer or Moderna vaccine. Fully-vaccinated people are those who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine.</li><li>Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records.</li><li>The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</li></ul>
+          </div>
+        </div>
+      </div>
+    </cagov-accordion>
 
-
-
-<ul class="small-text"><li>Doses delivered include the CDC Long Term Care (LTC) Pharmacy Partnership Program, Federal Retail Pharmacy Partnership Program, Federal Dialysis Center Program, Federal Emergency Management Agency (FEMA) partner sites, and Health Resources and Services Administration partner sites.</li><li>This data does not include doses delivered to the following federal agencies: Indian Health Service, Veterans Health Administration, Department of Defense, and Federal Bureau of Prisons.</li><li>The statewide doses administered count includes doses provided through the CDC LTC Pharmacy and Federal Retail Pharmacy Partnership Program. These doses are a subset of the doses delivered.</li><li>Partially-vaccinated people are those receiving only one dose of the Pfizer or Moderna vaccine. Fully-vaccinated people are those who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine.</li><li>Where the county of residence was not reported, the county where vaccinated is used. This applies to less than 1% of vaccination records.</li><li>The sum of county-level vaccinations does not equal statewide total vaccinations because some out-of-state residents are vaccinated in California.</li></ul>
-
-
-
-</div></div>
+  </div>
+</div>
 
 
 
