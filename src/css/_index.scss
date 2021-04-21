@@ -37,3 +37,6 @@
 /* Overrides for non-English languages. */
 @import './multilingual';
 @import './rtl';
+
+/* staging only hack for wordpress preview */
+body { font-weight: 300; }
