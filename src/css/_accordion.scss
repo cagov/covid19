@@ -89,9 +89,14 @@ button.card-header {
 }
 
 /* chart-drawer version overrides */
+.prog-enhanced.chart-drawer  {
+  font-size: 0.95rem;
+}
 .prog-enhanced.chart-drawer .accordion-alpha .plus-munus {
   margin-left: 0;
   margin-right: 1rem;
+  height: 1.25rem;
+  width: 1.25rem;
 }
 .chart-drawer button.card-header {
   border-bottom: none;
@@ -102,7 +107,7 @@ button.card-header {
 }
 .chart-drawer .card {
   padding: 1px;
-  border: 1px solid #ccc;
+  border: 1px solid #F2F5FC;
 }
 
 .prog-enhanced .accordion-alpha-open {
