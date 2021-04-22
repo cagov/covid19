@@ -474,14 +474,6 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
       .attr("class", "tooltip-container")
       .text("Empty Tooltip");
 
-    // d3.select(this.querySelector("svg"))
-    //   .attr("viewBox", [
-    //     0,
-    //     0,
-    //     this.dimensions.width,
-    //     this.dimensions.height,
-    //   ]);
-
     if (time_series_bars) {
       this.xbars = d3
       .scaleLinear()
