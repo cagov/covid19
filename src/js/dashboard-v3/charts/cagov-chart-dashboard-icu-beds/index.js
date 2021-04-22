@@ -4,7 +4,7 @@ import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import renderChart from "../common/histogram.js";
-import { reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, getSnowflakeStyleDate, getSnowflakeStyleDateJS, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
 
@@ -111,16 +111,56 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   }
 
   retrieveData(url, regionName) {
-    window
-      .fetch(url)
-      .then((response) => response.json() )
-      .then(
-        function (alldata) {
-          this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
-          this.renderComponent(regionName);
-        }.bind(this)
-      );
+    if (regionName == 'Alpine') {
+      let alldata = {
+        "meta": {
+          "PUBLISHED_DATE": getSnowflakeStyleDate(0),
+          "coverage": regionName,
+        },
+        "data": {
+          "latest": {
+            "ICU_BEDS": {
+              "TOTAL": 0,
+              "CHANGE": 0,
+              "CHANGE_FACTOR": 0,
+              "POPULATION": 13354
+            },
+          },
+          "time_series": {
+            "ICU_BEDS": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+          }
+        }
+      };
+
+      let sdate = parseSnowflakeDate(alldata.data.time_series.ICU_BEDS.DATE_RANGE.MINIMUM);
+      let today = new Date();
+      while (+sdate < +today) {
+        alldata.data.time_series.ICU_BEDS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        sdate.setDate(sdate.getDate() + 1);
+      }
+
+      this.metadata = alldata.meta;
+      this.chartdata = alldata.data;
+      this.regionName = regionName;
+      this.renderComponent(regionName);
+    } else {
+      window
+        .fetch(url)
+        .then((response) => response.json() )
+        .then(
+          function (alldata) {
+            this.metadata = alldata.meta;
+            this.chartdata = alldata.data;
+            this.renderComponent(regionName);
+          }.bind(this)
+        );
+    }
     }
 
   listenForLocations() {

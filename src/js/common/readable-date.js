@@ -14,9 +14,8 @@ function parseSnowflakeDate(dateStr) {
 
 // Return local date string in form YYYY-MM-DD adjusted for dayDelta (0 for today -1 for yesterday)
 //
-function getSnowflakeStyleDate(dayDelta) {
-    let date = new Date();
-    date.setDate(date.getDate() + dayDelta);
+
+function getSnowflakeStyleDateJS(date) {
     // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
     let month = '' + (date.getMonth() + 1),
     day = '' + date.getDate(),
@@ -28,6 +27,13 @@ function getSnowflakeStyleDate(dayDelta) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+
+function getSnowflakeStyleDate(dayDelta) {
+    let date = new Date();
+    date.setDate(date.getDate() + dayDelta);
+    return getSnowflakeStyleDateJS(date);
 }
 
 function reformatJSDate(theDate, // expects javascript date
@@ -59,4 +65,4 @@ function reformatReadableDate(dateStr, // expects YYYY-MM-DD
 }
 
 
-export {reformatReadableDate, getSnowflakeStyleDate, parseSnowflakeDate, reformatJSDate};
+export {reformatReadableDate, getSnowflakeStyleDate, getSnowflakeStyleDateJS, parseSnowflakeDate, reformatJSDate};
