@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Xem dữ liệu mới nhất về các ca bệnh, ca tử vong, kết quả xét nghiệm và cấp quận.">
+    <meta name="description" content="Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng {{_varStatVaccinesDailyPct_}}% #} […]">
     <meta name="author" content="State of California">
      
-  <title>Theo dõi tình hình COVID-19 tại California - Coronavirus COVID-19 Response</title>
+  <title>Theo dõi COVID-19 tại California (v3) - Coronavirus COVID-19 Response</title>
 
 
     <!-- Collect errors -->
     <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
-    <meta content="Theo dõi tình hình COVID-19 tại California" property="og:title">
-    <meta content="Xem dữ liệu mới nhất về các ca bệnh, ca tử vong, kết quả xét nghiệm và cấp quận." property="og:description">
+    <meta content="Theo dõi COVID-19 tại California (v3)" property="og:title">
+    <meta content="Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng {{_varStatVaccinesDailyPct_}}% #} […]" property="og:description">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://www.google-analytics.com/">
@@ -36,6 +36,7 @@
 
     
   <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
+    <meta name="robots" content="noindex">
   
     <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
   
@@ -148,9 +149,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h1>Theo dõi tình hình COVID-19 tại California</h1>
+          <h1>Theo dõi COVID-19 tại California (v3)</h1>
           
-            <p class="small-text">Cập nhật mới nhất&nbsp;16 tháng 4, 2021 lúc 11:23</p>
+            <p class="small-text">Cập nhật mới nhất&nbsp;21 tháng 4, 2021 lúc 8:20</p>
           
         </div>
       </div>
@@ -165,8 +166,8 @@
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto">
-        <h2 class="text-center color-purple">Cập nhật cho 21 tháng 4, 2021</h2>
-        <p>Kể từ 21 tháng 4, California có 3,622,427 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,890 ca tử vong.</p>
+        <h2 class="text-center color-purple">Cập nhật cho 22 tháng 4, 2021</h2>
+        <p>Kể từ 22 tháng 4, California có 3,624,838 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,992 ca tử vong.</p>
       </div>
     </div>
 
@@ -175,38 +176,38 @@
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Ca Mắc</div>
 
-          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>3,622,427</strong> <span class="text-300">tổng</span>           </div>
-          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>2,126</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>3,624,838</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>2,411</strong> <span class="text-300">hôm nay</span>           </div>
           <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up1" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down1" class="" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 5.0 <span class="text-300">ca mới trên 100 nghìn người</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 4.9 <span class="text-300">ca mới trên 100 nghìn người</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Ca Tử Vong</div>
 
-          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>59,890</strong> <span class="text-300">tổng</span>           </div>
-          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>86</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>59,992</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>102</strong> <span class="text-300">hôm nay</span>           </div>
           <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up2" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down2" class="" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 0.10 <span class="text-300">ca tử vong mới trên 100 nghìn người</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> 0.09 <span class="text-300">ca tử vong mới trên 100 nghìn người</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Xét Nghiệm</div>
 
-          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>58,202,413</strong> <span class="text-300">tổng</span>           </div>
-          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>126,493</strong> <span class="text-300">hôm nay</span>           </div>
+          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>58,457,133</strong> <span class="text-300">tổng</span>           </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>254,720</strong> <span class="text-300">hôm nay</span>           </div>
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up3" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
@@ -220,20 +221,24 @@
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Đã Được Tiêm Vắc-xin</div>
 
-          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>26,454,819</strong> <span class="text-300">tổng</span>           </div>           
+          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>26,823,157</strong> <span class="text-300">tổng</span>           </div>           
         </div>
       </div>
     </div>
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">Đã cập nhật 21 tháng 4, 2021, với dữ liệu từ 20 tháng 4, 2021.</p>
+        <p class="small-text">Đã cập nhật 22 tháng 4, 2021, với dữ liệu từ 21 tháng 4, 2021.</p>
 
         <p class="small-text">Lưu ý: Tỷ lệ ca mắc được dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày. Tỷ lệ ca tử vong dựa được trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ. Các ca xét nghiệm có kết quả dương tính được dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Thay đổi theo hướng được so sánh với khoảng thời gian 7 ngày trước đó. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</p>
       </div>
     </div>
 
-  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed mb-5">
+  </div>   <!--END container--> </div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
             <div class="container py-2">
                 <div class="row pb-4">
                     <div class="col-lg-10 mx-auto color-white">
@@ -250,76 +255,84 @@
 
 
 
-<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>
+<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California có 3,624,838 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,992 ca tử vong.</p>
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Quận</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Nhập một quận"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Xóa</span></button>       </div>
-    </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Nhận dữ liệu quận</button>   </form>
-</div>
-<div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">Không tìm thấy quận</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+          <li data-label="chartTitle">Số ca mắc được xác nhận trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> tổng số ca mắc được xác nhận</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> ca mắc mới (tăng <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> ca mắc mới (giảm <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> ca mắc trên 100 nghìn người (mức trung bình trong 7 ngày)</li>
+          <li data-label="filterTabLabel1">Ngày theo từng giai đoạn</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">                   Ngày Theo Từng Giai Đoạn: <b>{DATE}</b><br> Tỉ lệ số ca mắc trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Mắc: <b>{CASES}</b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="cases_leftYAxisLegend">Số ca mắc trên 100 nghìn người</li>
+          <li data-label="cases_rightYAxisLegend">Ca Mắc</li>
+          <li data-label="cases_episode_xAxisLegend">Ngày theo từng giai đoạn</li>
+          <li data-label="cases_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+        </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+          <li data-label="chartTitle">Số ca tử vong được xác nhận trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> tổng số ca tử vong được xác nhận</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> ca tử vong mới (tăng <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> ca tử vong mới (giảm <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> số ca tử vong trên 100 nghìn người (mức trung bình 7 ngày)</li>
+          <li data-label="filterTabLabel1">Ngày tử vong</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">             Ngày Tử Vong: <b>{DATE}</b><br> Tỉ lệ tử vong trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Tử Vong: <b>{DEATHS}</b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="deaths_leftYAxisLegend">Số ca tử vong trên 100 nghìn người</li>
+          <li data-label="deaths_rightYAxisLegend">Ca Tử Vong</li>
+          <li data-label="deaths_death_xAxisLegend">Ngày tử vong</li>
+          <li data-label="deaths_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+        </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
-</div>
-
-
-
-<p>California có 3,622,427 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,890 ca tử vong.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="cases-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartCounty"></div>
-    </div>
-    <div id="cases-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">Lưu ý: Số liệu không thể hiện những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân  bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</p>
+  <p class="small-text">Lưu ý: Số liệu không thể hiện chính xác những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân  bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</p>
 </div>
 
 
 
-<h3 class="text-center mt-4 mb-0">Xét nghiệm COVID-19</h3>
+<h3 class="text-center mt-4 mb-0">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 58,457,133, tăng 254,720 xét nghiệm so với tổng số của ngày trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là 1.5%.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+          <li data-label="chartTitle">Tổng số xét nghiệm trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> tổng số xét nghiệm được thực hiện</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> số xét nghiệm mới được báo cáo (tăng <span class="med-num">{new_tests_reported_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> số xét nghiệm mới được báo cáo (giảm <span class="med-num">{new_tests_reported_delta_1_day}</span>)</li>
+          <li data-label="filterTabLabel1">Ngày xét nghiệm</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="tests_leftYAxisLegend">Số ca xét nghiệm trên 100 nghìn người</li>
+          <li data-label="tests_rightYAxisLegend">Xét Nghiệm</li>
+          <li data-label="tests_testing_xAxisLegend">Ngày xét nghiệm</li>
+          <li data-label="tests_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+        </ul>       </cagov-chart-dashboard-total-tests>                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+          <li data-label="chartTitle">Tỉ lệ số ca dương tính trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> tỉ lệ xét nghiệm dương tính (tỉ lệ trong 7 ngày)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> tăng so với 7 ngày trước đó</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> giảm so với 7 ngày trước</li>
+          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ dương tính trong 7 ngày: <b>{7DAY_POSRATE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="xAxisLegend">Ngày xét nghiệm</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="dayRate">Tỉ lệ trong 7 ngày</li>
+        </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
-</div>
-
-
-
-<p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 58,202,413, tăng 126,493 xét nghiệm so với tổng số của ngày trước đó. Tỷ lệ xét nghiệm dương tính trong 7 ngày qua là 1.5%.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="testing-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartCounty"></div>
-    </div>
-    <div id="testing-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -329,33 +342,32 @@
 
 
 
-<h3 class="text-center mb-0">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>
+<h3 class="text-center mb-0">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 2,098, a decrease of 18 so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 479, a decrease of 4 so với tổng số của ngày trước đó.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+          <li data-label="chartTitle">Số bệnh nhân nhập viện do mắc COVID-19 trong</li>
+          <li data-label="chartTitleICU">Số bệnh nhân ICU do mắc COVID-19 trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số bệnh nhân nhập viện do mắc COVID-19</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Số bệnh nhân ICU do mắc COVID-19</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="filterTabLabel1">Nhập viện</li>
+          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
+        </ul>       </cagov-chart-dashboard-patients>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+          <li data-label="chartTitle">Số giường tại ICU trong</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số giường tại ICU còn trống</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
+        </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
-</div>
-
-
-
-<p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 2,116, a decrease of 32 so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 483, an increase of 3 so với tổng số của ngày trước đó.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container hospitals-group">
-    <div id="hospital-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
-    </div>
-    <div id="hospital-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartState"></div>
-    </div>
-  </div>
-
-</div>
 
 
 
@@ -405,8 +417,14 @@
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Các chỉ định cấp hiện tại kể từ 20 tháng 4, 2021</h3>
   <p class="mt-0">Toàn bộ dữ liệu và chỉ định cấp được cập nhật vào Thứ Ba hàng tuần.</p>
 
-  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
-</div>
+    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">   <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript> <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>   </div>   <script type="text/javascript">
+  var divElement = document.getElementById('viz1607448868632');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>  </div>
 
 
 
