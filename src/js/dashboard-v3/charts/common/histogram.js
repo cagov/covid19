@@ -328,12 +328,25 @@ function writeDownloadButton({root_id='untitled'}) {
 */
 
 // Convert 
-function getDataIndexByX(data, xScale, xy)
+function getDataIndexByX(data, xScale, yScale, bardata, yLine, linedata, xy)
 {
   let x = xy[0];
+  let y = xy[1];
   let xdi = xScale.invert(x);
   if (xdi >= 0 && xdi <= xScale.domain()[1] ) {
-    return Math.round(xdi);
+    let ydi = yScale.invert(y);
+    if (ydi >= 0 && ydi <= yScale.domain()[1] ) {
+      let idi = Math.round(xdi);
+      let yp = yScale(bardata[idi].VALUE);
+      if (y >= yp-2) {
+        return idi;
+      }
+      let yp2 = yLine(linedata[idi].VALUE);
+      let yd = Math.abs(yp2-y);
+      if (yd < 6) {
+        return idi;
+      }
+    }
   }
   return null;
 }
@@ -586,9 +599,11 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
     this.svg
     .on("mousemove focus", (event) => {
       let xy = d3.pointer(event);
-      let dIndex = getDataIndexByX(time_series_bars, this.xbars, xy);
+      let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
       if (dIndex != null) {
         showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
+      } else {
+        hideTooltip.call(this);
       }
     })
     .on("mouseleave touchend blur", (event) => {

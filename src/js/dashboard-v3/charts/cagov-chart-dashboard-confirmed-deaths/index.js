@@ -89,7 +89,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     }
 
     let latestRec = this.chartdata.latest[this.chartOptions.latestField];
-    console.log("Deaths Increase",Math.abs(latestRec.new_deaths_delta_1_day),latestRec.new_deaths_delta_1_day);
+    // console.log("Deaths Increase",Math.abs(latestRec.new_deaths_delta_1_day),latestRec.new_deaths_delta_1_day);
     const repDict = {
       total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
