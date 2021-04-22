@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (v3)"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-22T20:14:22Z"
+publishdate: "2021-04-22T23:14:53Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -281,6 +281,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="cases_episode_xAxisLegend">Episode date</li>
           <li data-label="cases_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
+          <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
@@ -305,6 +306,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_death_xAxisLegend">Death date</li>
           <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
+          <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
       </cagov-chart-dashboard-confirmed-deaths>              
     </div> 
@@ -351,6 +353,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_testing_xAxisLegend">Testing date</li>
           <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
+          <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
       </cagov-chart-dashboard-total-tests>               
     </div>
@@ -369,6 +372,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Testing date</li>
           <li data-label="pending">Pending</li>
           <li data-label="dayRate">7-day rate</li>
+          <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
       </cagov-chart-dashboard-positivity-rate>                
     </div> 
@@ -401,11 +405,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
           <li data-label="chartTitleICU">COVID-19 ICU patients in</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior day total ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU patients</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior day total ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="filterTabLabel1">Hospitalized</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">
