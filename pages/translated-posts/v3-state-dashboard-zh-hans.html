@@ -1,11 +1,11 @@
 ---
 layout: "page.njk"
-title: "加州COVID-19追踪"
-meta: "查看有关病例数、死亡数、检测数及县等级的最新数据。"
+title: "加州COVID-19追踪)"
+meta: "{{_varStatDate_}}（v3的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。病例数 {{_varStatTotalCases_}} 总共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例数 死亡数 {{_varStatTotalDeaths_}} 总共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡数 检测数 {{_varStatTested_}} 总共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%检测呈阳性率 施打的疫苗数 {{_varStatVaccines_}} 总共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增长率#} […]"
 author: "State of California"
-publishdate: "2021-04-16T18:23:21Z"
-tags: ["translate"]
-addtositemap: true
+publishdate: "2021-04-21T15:20:22Z"
+tags: ["do-not-crawl","translate"]
+addtositemap: false
 ---
 
 <!--
@@ -133,7 +133,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
 
-  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed mb-5">
+  </div>   <!--END container--> </div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
             <div class="container py-2">
                 <div class="row pb-4">
                     <div class="col-lg-10 mx-auto color-white">
@@ -150,41 +154,44 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">查看全州及各县的数据</h2>
+<h2 class="text-center color-purple">查看全州及各县的数据</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">每日病例数和死亡数</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline"><label for="county" class="sr-only">县</label>       <div class="awesomplete"><input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="输入县"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">清除</span></button>       </div>
-    </div><button type="submit" class="btn btn-lightbg btn-bigger mb-2">获取县数据</button>   </form>
-</div>
-<div class="row d-flex justify-content-md-center"><span id="county-query-error" class="error-text d-none">未找到县</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">每日病例数和死亡数</h3>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+          <li data-label="chartTitle">确诊病例数</li>
+          <li data-label="chartLegend1">确诊病例总数<span class="big-num">{total_confirmed_cases}</span></li>
+          <li data-label="chartLegend2Increase">新增病例数<span class="med-num">{new_cases}</span> （增加<span class="med-num">{new_cases_delta_1_day}</span>）</li>
+          <li data-label="chartLegend2Decrease"> 新增病例数（<span class="med-num">{new_cases}</span>减少<span class="med-num">{new_cases_delta_1_day}</span>）</li>
+          <li data-label="chartLegend3">每100K人中的病例数<span class="med-num">{cases_per_100k_7_days}</span>（7日平均数）</li>
+          <li data-label="filterTabLabel1">事件日期</li>
+          <li data-label="filterTabLabel2">日期</li>
+          <li data-label="tooltipContent">事件日期： <b>{DATE}</b><br> 每100K人在7日内的平均患病率：<b>{7DAY_AVERAGE}</b><br> 病例数：<b>{CASES}</b>           </li>
+          <li data-label="dayAverage">7日平均数</li>
+          <li data-label="cases_leftYAxisLegend">每100K人中的新增病例数</li>
+          <li data-label="cases_rightYAxisLegend">病例数</li>
+          <li data-label="cases_episode_xAxisLegend">事件日期</li>
+          <li data-label="cases_reported_xAxisLegend">呈报日期</li>
+          <li data-label="pending">待定</li>
+        </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+          <li data-label="chartTitle">确认死亡数</li>
+          <li data-label="chartLegend1">确认死亡总数<span class="big-num">{total_confirmed_deaths}</span></li>
+          <li data-label="chartLegend2Increase"> 新增死亡数<span class="med-num">{new_deaths}</span>（增加<span class="med-num">{new_deaths_delta_1_day}</span>）</li>
+          <li data-label="chartLegend2Decrease">新增死亡数<span class="med-num">{new_deaths}</span>（减少<span class="med-num">{new_deaths_delta_1_day}</span>）</li>
+          <li data-label="chartLegend3">每100K人中的病例数<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均数）</li>
+          <li data-label="filterTabLabel1">死亡日期</li>
+          <li data-label="filterTabLabel2">呈报日期</li>
+          <li data-label="tooltipContent">死亡日期： <b>{DATE}</b><br> 每100K人在7日内的死亡率： <b>{7DAY_AVERAGE}</b><br> 死亡数：<b>{DEATHS}</b>           </li>
+          <li data-label="dayAverage">7日平均数</li>
+          <li data-label="deaths_leftYAxisLegend">每100K人中的死亡数</li>
+          <li data-label="deaths_rightYAxisLegend">死亡数</li>
+          <li data-label="deaths_death_xAxisLegend">死亡日期</li>
+          <li data-label="deaths_reported_xAxisLegend">呈报日期</li>
+          <li data-label="pending">待定</li>
+        </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
-</div>
-
-
-
-<p>加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="cases-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartCounty"></div>
-    </div>
-    <div id="cases-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -194,32 +201,37 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4 mb-0">COVID-19检测</h3>
+<h3 class="text-center mt-4 mb-0">COVID-19检测</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州的COVID-19诊断检测结果总数达到了{{_varStatTested_}}，较前一天的总数增加了{{_varStatTestedDaily_}}。过去7天的检测呈阳性率为{{_varStatPos_7DayAvgPct_}}%。</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+          <li data-label="chartTitle">检测总数</li>
+          <li data-label="chartLegend1">已进行的检测的总数<span class="big-num">{total_tests_performed}</span> </li>
+          <li data-label="chartLegend2Increase">新呈报的检测数<span class="med-num">{new_tests_reported}</span>（增加<span class="med-num">{new_tests_reported_delta_1_day}</span>）</li>
+          <li data-label="chartLegend2Decrease">新呈报的检测数<span class="med-num">{new_tests_reported}</span>（减少<span class="med-num">{new_tests_reported_delta_1_day}</span>）</li>
+          <li data-label="filterTabLabel1">检测日期</li>
+          <li data-label="filterTabLabel2">呈报日期</li>
+          <li data-label="tooltipContent">检测日期： <b>{DATE} </b><br> 每100K人在7日内的平均检测率：<b>{7DAY_AVERAGE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="dayAverage">7日平均数</li>
+          <li data-label="tests_leftYAxisLegend">每100K人中的检测数</li>
+          <li data-label="tests_rightYAxisLegend">检测数</li>
+          <li data-label="tests_testing_xAxisLegend">检测日期</li>
+          <li data-label="tests_reported_xAxisLegend">呈报日期</li>
+          <li data-label="pending">待定</li>
+        </ul>       </cagov-chart-dashboard-total-tests>                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+          <li data-label="chartTitle">检测结果呈阳性率</li>
+          <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span>检测结果呈阳性 （7日比率）</li>
+          <li data-label="chartLegend2Increase">此前7日内增加<span class="med-num">{test_positivity_7_days_delta_7_days}</span> </li>
+          <li data-label="chartLegend2Decrease">此前7日内减少<span class="med-num">{test_positivity_7_days_delta_7_days}</span> </li>
+          <li data-label="tooltipContent">检测日期： <b>{DATE} </b><br> 7日内检测结果呈阳性率： <b>{7DAY_POSRATE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="xAxisLegend">检测日期</li>
+          <li data-label="pending">待定</li>
+          <li data-label="dayRate">7日比率</li>
+        </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
-</div>
-
-
-
-<p>加州的COVID-19诊断检测结果总数达到了{{_varStatTested_}}，较前一天的总数增加了{{_varStatTestedDaily_}}。过去7天的检测呈阳性率为{{_varStatPos_7DayAvgPct_}}%。</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="testing-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartCounty"></div>
-    </div>
-    <div id="testing-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -229,33 +241,32 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mb-0">对医院和加护病房 (Intensive Care Unit, ICU) 的影响</h3>
+<h3 class="text-center mb-0">对医院和加护病房 (Intensive Care Unit, ICU) 的影响</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因确诊及疑似感染COVID-19而住院的人数总共达到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}来自前一天的总数。在加州因确诊及疑似感染COVID-19而进入ICU的人数总共达到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}来自前一天的总数。</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs"><button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">全州</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+          <li data-label="chartTitle">COVID-19住院患者</li>
+          <li data-label="chartTitleICU">COVID-19 ICU患者</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19住院患者</li>
+          <li data-label="chartLegend2Increase">比前一天患者总计多<span class="med-num">{CHANGE}</span> （增加{CHANGE_FACTOR} ）</li>
+          <li data-label="chartLegend2Decrease">比前一天患者总计少<span class="med-num">{CHANGE}</span> （减少{CHANGE_FACTOR} ）</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU患者</li>
+          <li data-label="chartLegend2IncreaseICU">比前一天患者总计多<span class="med-num">{CHANGE}</span> （增加{CHANGE_FACTOR} ）</li>
+          <li data-label="chartLegend2DecreaseICU">比前一天患者总计少<span class="med-num">{CHANGE}</span> （减少{CHANGE_FACTOR} ）</li>
+          <li data-label="filterTabLabel1">住院患者</li>
+          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="tooltipContent">呈报日期： <b>{DATE} </b><br> 住院患者总计：<b>{TOTAL_HOSPITALIZED} </b><br> 14日内住院患者的平均数：<b>{14DAY_AVERAGE} </b>           </li>
+        </ul>       </cagov-chart-dashboard-patients>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+          <li data-label="chartTitle">ICU病床</li>
+          <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>张ICU病床</li>
+          <li data-label="chartLegend2Increase">ICU病床比前一天总计多<span class="med-num">{CHANGE}</span> （增加{CHANGE_FACTOR} ）</li>
+          <li data-label="chartLegend2Decrease">ICU病床比前一天总计少<span class="med-num">{CHANGE}</span> （减少{CHANGE_FACTOR} ）</li>
+          <li data-label="tooltipContent">在<b>{DATE}</b>，总计有<b>{VALUE}</b>张空置的ICU病床。</li>
+        </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
-</div>
-
-
-
-<p>在加州因确诊及疑似感染COVID-19而住院的人数总共达到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}来自前一天的总数。在加州因确诊及疑似感染COVID-19而进入ICU的人数总共达到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}来自前一天的总数。</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container hospitals-group">
-    <div id="hospital-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
-    </div>
-    <div id="hospital-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartState"></div>
-    </div>
-  </div>
-
-</div>
 
 
 
@@ -305,8 +316,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">当前等级划分情况（截至 {{_varTierDate_}}</h3>
   <p class="mt-0">所有数据和等级划分于每周二更新。</p>
 
-  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
-</div>
+    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">   <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript> <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>   </div>   <script type="text/javascript">
+  var divElement = document.getElementById('viz1607448868632');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>  </div>
 
 
 
