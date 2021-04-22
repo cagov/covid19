@@ -22,8 +22,6 @@ export default function template(chartOptions, {
               <button class="small-tab ${active2}" data-key="${chartOptions.filterKeys[1]}">${filterTabLabel2}</button>
             </div>
           </cagov-chart-filter-buttons>`;
-  } else {
-    console.log("filterKeys not found in",chartOptions);
   }
 
   return /*html*/ `
