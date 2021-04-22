@@ -1,11 +1,11 @@
 ---
 layout: "page.njk"
-title: "Rastreo de la COVID-19 en California"
-meta: "Consulte los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
+title: "Seguimiento de la COVID-19 en California (v3)"
+meta: "Actualización para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por cada 100 mil Muertes {{_varStatTotalDeaths_}} en total {{_varStatTotalDeathsToday_}} hoy {{_varStatNewDeathsPer100k_}} nuevas muertes por cada 100 mil Pruebas {{_varStatTested_}} en total {{_varStatTestedDaily_}} hoy {{_varStatLatestPositivityPct_}} % de positividad de pruebas Vacunas administradas {{_varStatVaccines_}} en total {# {{_varStatVaccinesDaily_}} hoy {{_varStatVaccinesDailyPct_}} % de incremento #} […]"
 author: "State of California"
-publishdate: "2021-04-16T18:23:21Z"
-tags: ["translate"]
-addtositemap: true
+publishdate: "2021-04-21T15:20:22Z"
+tags: ["do-not-crawl","translate"]
+addtositemap: false
 ---
 
 <!--
@@ -133,7 +133,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
 
-  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed mb-5">
+  </div>   <!--END container--> </div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
             <div class="container py-2">
                 <div class="row pb-4">
                     <div class="col-lg-10 mx-auto color-white">
@@ -150,41 +154,44 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Vea los datos de todo el estado y de cada condado.</h2>
+<h2 class="text-center color-purple">Vea los datos de todo el estado y de cada condado.</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">Casos y muertes diarios</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes.</p>
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Condado</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Introduzca un condado"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Borrar</span></button>       </div>
-    </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Obtener los datos del condado</button>   </form>
-</div>
-<div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">Condado no encontrado</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">Casos y muertes diarios</h3>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide"> En todo el estado</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+          <li data-label="chartTitle">Casos confirmados en</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> casos totales confirmados</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> casos nuevos (incremento de <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> casos nuevos (reducción de <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> casos por cada 100 mil (promedio de 7 días)</li>
+          <li data-label="filterTabLabel1">Fecha del episodio</li>
+          <li data-label="filterTabLabel2">Fecha reportada</li>
+          <li data-label="tooltipContent">                   Fecha del episodio: <b>{DATE}</b><br> Tasa de casos promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE}</b><br> Casos: <b>{CASES}</b>           </li>
+          <li data-label="dayAverage">Promedio de 7 días</li>
+          <li data-label="cases_leftYAxisLegend">Casos por cada 100 mil</li>
+          <li data-label="cases_rightYAxisLegend">Casos</li>
+          <li data-label="cases_episode_xAxisLegend">Fecha del episodio</li>
+          <li data-label="cases_reported_xAxisLegend">Fecha reportada</li>
+          <li data-label="pending">Pendientes</li>
+        </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+          <li data-label="chartTitle">Decesos confirmados en</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> decesos totales confirmados</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> nuevos decesos (incremento de <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> nuevos decesos (reducción de <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> decesos por cada 100 mil (promedio de 7 días)</li>
+          <li data-label="filterTabLabel1">Fecha de deceso</li>
+          <li data-label="filterTabLabel2">Fecha reportada</li>
+          <li data-label="tooltipContent">             Fecha de deceso: <b>{DATE}</b><br> Tasa de casos promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE}</b><br> Decesos: <b>{DEATHS}</b>           </li>
+          <li data-label="dayAverage">Promedio de 7 días</li>
+          <li data-label="deaths_leftYAxisLegend">Decesos por cada 100 mil</li>
+          <li data-label="deaths_rightYAxisLegend">Muertes</li>
+          <li data-label="deaths_death_xAxisLegend">Fecha de deceso</li>
+          <li data-label="deaths_reported_xAxisLegend">Fecha reportada</li>
+          <li data-label="pending">Pendientes</li>
+        </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
-</div>
-
-
-
-<p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="cases-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartCounty"></div>
-    </div>
-    <div id="cases-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -194,32 +201,37 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4 mb-0">Pruebas para la COVID-19</h3>
+<h3 class="text-center mt-4 mb-0">Pruebas para la COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>El número de resultados de las pruebas de diagnóstico de COVID-19 en California alcanzó un total de {{_varStatTested_}}, un aumento de {{_varStatTestedDaily_}} pruebas con respecto al total del día anterior. La tasa de pruebas positivas en los últimos 7 días es del {{_varStatPos_7DayAvgPct_}} %.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide"> En todo el estado</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+          <li data-label="chartTitle">Pruebas totales en</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total de pruebas realizadas</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> pruebas nuevas reportadas (incremento de <span class="med-num">{new_tests_reported_delta_1_day}</span> )</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> pruebas nuevas reportadas (reducción de <span class="med-num">{new_tests_reported_delta_1_day}</span> )</li>
+          <li data-label="filterTabLabel1">Fecha de la prueba</li>
+          <li data-label="filterTabLabel2">Fecha reportada</li>
+          <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de pruebas promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE} </b><br> Pruebas totales: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="dayAverage">Promedio de 7 días</li>
+          <li data-label="tests_leftYAxisLegend">Pruebas por cada 100 mil</li>
+          <li data-label="tests_rightYAxisLegend">Pruebas</li>
+          <li data-label="tests_testing_xAxisLegend">Fecha de la prueba</li>
+          <li data-label="tests_reported_xAxisLegend">Fecha reportada</li>
+          <li data-label="pending">Pendientes</li>
+        </ul>       </cagov-chart-dashboard-total-tests>                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+          <li data-label="chartTitle">Tasa de positividad en</li>
+          <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> positividad de las pruebas (tasa de 7 días)</li>
+          <li data-label="chartLegend2Increase">Incremento de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
+          <li data-label="chartLegend2Decrease">Reducción de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
+          <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de positividad de 7 días: <b>{7DAY_POSRATE} </b><br> Pruebas totales: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="xAxisLegend">Fecha de la prueba</li>
+          <li data-label="pending">Pendientes</li>
+          <li data-label="dayRate">Tasa de 7 días</li>
+        </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
-</div>
-
-
-
-<p>El número de resultados de las pruebas de diagnóstico de COVID-19 en California alcanzó un total de {{_varStatTested_}}, un aumento de {{_varStatTestedDaily_}} pruebas con respecto al total del día anterior. La tasa de pruebas positivas en los últimos 7 días es del {{_varStatPos_7DayAvgPct_}} %.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="testing-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartCounty"></div>
-    </div>
-    <div id="testing-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -229,33 +241,32 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mb-0">Impacto en hospitales y unidades de cuidados intensivos (Intensive Care Unit, ICU)</h3>
+<h3 class="text-center mb-0">Impacto en hospitales y unidades de cuidados intensivos (Intensive Care Unit, ICU)</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>El número de hospitalizaciones debido a casos confirmados y sospechosos de COVID-19 en California alcanzó un total de {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} desde el total del día anterior. El número de pacientes de ICU debido a casos confirmados y sospechosos de COVID-19 en California alcanzó un total de {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} desde el total del día anterior.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide"> En todo el estado</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+          <li data-label="chartTitle">Pacientes hospitalizados con COVID-19 en</li>
+          <li data-label="chartTitleICU">Pacientes en ICU con COVID-19 en</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Pacientes hospitalizados con COVID-19</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> pacientes más con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> pacientes menos con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Pacientes en ICU con COVID-19</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> pacientes más con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> pacientes menos con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
+          <li data-label="filterTabLabel1">Hospitalizados</li>
+          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
+        </ul>       </cagov-chart-dashboard-patients>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+          <li data-label="chartTitle">Camas de ICU en</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> camas disponibles en ICU</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> camas más en ICU con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> camas menos en ICU con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
+          <li data-label="tooltipContent">El <b>{DATE}</b> había un total de <b>{VALUE}</b> camas disponibles en las ICU.</li>
+        </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
-</div>
-
-
-
-<p>El número de hospitalizaciones debido a casos confirmados y sospechosos de COVID-19 en California alcanzó un total de {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} desde el total del día anterior. El número de pacientes de ICU debido a casos confirmados y sospechosos de COVID-19 en California alcanzó un total de {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} desde el total del día anterior.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container hospitals-group">
-    <div id="hospital-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
-    </div>
-    <div id="hospital-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartState"></div>
-    </div>
-  </div>
-
-</div>
 
 
 
@@ -305,8 +316,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Asignaciones de niveles actuales al {{_varTierDate_}}</h3>
   <p class="mt-0">Todos los datos y asignaciones de niveles se actualizan semanalmente todos los martes.</p>
 
-  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
-</div>
+    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">   <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript> <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>   </div>   <script type="text/javascript">
+  var divElement = document.getElementById('viz1607448868632');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>  </div>
 
 
 
