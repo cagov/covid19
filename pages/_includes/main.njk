@@ -307,7 +307,7 @@ formatNumber(tags,1)-%}
 		<div class="faq trigger">
 			<div class="arrow-links">
 			<article>    
-				<a class="link-arrow-blue js-event-hm-wtk" href="{{item["URL"]}}">
+				<a class="link-arrow-blue js-event-hm-wtk" href="{{item["URL"] | replace('https://covid19.ca.gov/','')}}">
 				<div class="link-arrow-label">
 					{{item["Link Title"]}}
 				</div>
