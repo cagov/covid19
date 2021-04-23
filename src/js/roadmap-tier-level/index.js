@@ -388,9 +388,9 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
     // Dispatch custom event so we can pick up and track this usage elsewhere.
     const event = new window.CustomEvent("safer-economy-page-submission", {
       detail: {
-        county: selectedCounties[0] !== undefined ? selectedCounties[0].county : null,
+        county: selectedCounties[0] !== undefined && selectedCounties.length === 1 ? selectedCounties[0].county : null,
         activity: this.state["activity"],
-        countyTier: selectedCountyTiers[0] !== undefined ? selectedCountyTiers[0].label : null,
+        countyTier: selectedCountyTiers[0] !== undefined && selectedCountyTiers.length === 1 ? selectedCountyTiers[0].label : null,
       },
     });
 
