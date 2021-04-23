@@ -3,7 +3,7 @@ layout: "page.njk"
 title: " تتبع المخالطين للمصابين بكوفيد-19 في كاليفورنيا (الإصدار 3)"
 meta: "تحديث يخص {{_varStatDate_}} اعتبارًا من {{_varStatDateNoYear_}}، وقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات. إجمالي حالات {{_varStatTotalCases_}} الإصابة {{_varStatTotalCasesToday_}} اليوم ⁦{{_varStatNewCasesPer100k_}}⁩ حالات جديدة لكل 100 ألف إجمالي {{_varStatTotalDeaths_}} الوفيات {{_varStatTotalDeathsToday_}} اليوم ⁦{{_varStatNewDeathsPer100k_}}⁩ حالات وفاة جديدة لكل 100 ألف إجمالي {{_varStatTested_}} الاختبارات {{_varStatTestedDaily_}} اليوم {{_varStatLatestPositivityPct_}}النسبة المئوية % للحالات التي ثبتت إيجابيتها إجمالي {{_varStatVaccines_}} اللقاحات المعطاة {# {{_varStatVaccinesDaily_}} اليوم {{_varStatVaccinesDailyPct_}}النسبة المئوية % للزيادة #} […]"
 author: "State of California"
-publishdate: "2021-04-21T15:20:22Z"
+publishdate: "2021-04-22T20:14:22Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -154,7 +154,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">انظر البيانات على مستوى الولاية وفي كل مقاطعة</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">الإصابات والوفيات اليومية</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات.</p>
+<h2 class="text-center color-purple">انظر البيانات على مستوى الولاية وفي كل مقاطعة</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">الإصابات والوفيات اليومية</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات.</p>
 
 
 
@@ -201,7 +201,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4 mb-0">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، الزيادة في {{_varStatTestedDaily_}} الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩٪.</p>
+<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، الزيادة في {{_varStatTestedDaily_}} الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩٪.</p>
 
 
 
@@ -241,7 +241,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mb-0">التأثير على المستشفيات ووحدات العناية المركزة</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء مؤكدة أو مشتبه فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من مجموع اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة الذين يُعالجون من كوفيد-19 سواء كانت إصابتهم مؤكدة أو مشتبه فيها ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
+<h3 class="text-center">التأثير على المستشفيات ووحدات العناية المركزة</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء مؤكدة أو مشتبه فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من مجموع اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة الذين يُعالجون من كوفيد-19 سواء كانت إصابتهم مؤكدة أو مشتبه فيها ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
 
 
 
@@ -253,17 +253,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> المزيد من المرضى من إجمالي اليوم السابق ({CHANGE_FACTOR} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> عدد أقل من المرضى من إجمالي اليوم السابق ({CHANGE_FACTOR} ينخفض)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 في وحدات العناية المركزة</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> المزيد من المرضى من إجمالي اليوم السابق ({CHANGE_FACTOR} يزداد)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> عدد أقل من المرضى من إجمالي اليوم السابق ({CHANGE_FACTOR} ينخفض)</li>
-          <li data-label="filterTabLabel1">نزلاء المستشفى</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{التغير}</span> المزيد من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{التيغر}</span> عدد أقل من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
+          <li data-label="filterTabLabel1">نزلاء المستشفيات</li>
           <li data-label="filterTabLabel2">وحدات العناية المركزة</li>
           <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{DATE} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{TOTAL_HOSPITALIZED} </b><br> متوسط دخول المرضى المستشفيات في 14 يوم: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">أسرة العناية المركزة في</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> أسرة العناية المركزة المتوفرة</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> المزيد من أسرة العناية المركزة من إجمالي اليوم السابق ({CHANGE_FACTOR} يزداد)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> عدد أقل من أسرة العناية المركزة من إجمالي اليوم السابق ({CHANGE_FACTOR} ينخفض)</li>
+          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أَسرّة العناية المركزة المتوفرة</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> سريرًا من أسرة العناية المركزة المتوفرة.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
