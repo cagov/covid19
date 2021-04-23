@@ -246,7 +246,28 @@ formatNumber(tags,1)-%}
   {% include (language.includepath + "homepage-featured" + language.filepostfix + ".html") %}
 
 	<!--RECENT UPDATES-->
-	{% include "./recent-updates-home.html" %}
+<news-section>
+  <section class="news trigger bg-lightblue" role="region" aria-label="Recent updates">
+    <div class="news-wrap">
+    
+      <h2 class="color-purple mt-0 mb-0">{{translatedLabels.varRecentUpdatesTitle}}</h2>
+      <div class="news-grid">
+        {% set JSONgovraw %}
+        {% include (language.includepath + "updates-section-homepage" + language.filepostfix + ".json") %}
+        {% endset %}
+        {% set JSONgov = JSONgovraw | jsonparse %}
+        {%- set RowsGov = JSONgov.Table1 -%}
+        {% for item in RowsGov %}
+          <article class="news-item trigger">
+              <h3 class="h4 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
+              <p class="text-300">{{item['News content']}}</p>
+              <p class="mt-2 mb-0"><a class="recent-news-link" href="{{item['link URL']}}">{{item['Link text']}}</a></p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+    </section>
+</news-section>
 
 	<!-- PEOPLE WANTS TO KNOW SECTION -->
 	<faq-section>
