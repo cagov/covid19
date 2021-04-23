@@ -335,15 +335,6 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
   }
 
   layoutCards() {
-    // Dispatch custom event so we can pick up and track this usage elsewhere.
-    const event = new window.CustomEvent("safer-economy-page-submission", {
-      detail: {
-        county: this.state.county,
-        activity: this.state.activity,
-      },
-    });
-    window.dispatchEvent(event);
-
     let isError = false;
 
     let selectedCounties = this.countyStatuses;
@@ -393,6 +384,18 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
         isError = true;
       }
     }
+
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent("safer-economy-page-submission", {
+      detail: {
+        county: selectedCounties[0] !== undefined ? selectedCounties[0].county : null,
+        activity: this.state["activity"],
+        countyTier: selectedCountyTiers[0] !== undefined ? selectedCountyTiers[0].label : null,
+      },
+    });
+
+    console.log("event", event.detail);
+    window.dispatchEvent(event);
 
     if (isError) {
       this.querySelector(".card-holder").innerHTML = "";
