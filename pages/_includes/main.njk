@@ -261,7 +261,7 @@ formatNumber(tags,1)-%}
           <article class="news-item trigger">
               <h3 class="h4 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
               <p class="text-300">{{item['News content']}}</p>
-              <p class="mt-2 mb-0"><a class="recent-news-link" href="{{item['link URL']}}">{{item['Link text']}}</a></p>
+              <p class="mt-2 mb-0"><a class="recent-news-link" href="{{item['link URL'] | replace('https://covid19.ca.gov/','')}}">{{item['Link text']}}</a></p>
           </article>
         {% endfor %}
       </div>
