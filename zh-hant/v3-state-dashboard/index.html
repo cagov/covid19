@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>加州COVID-19追蹤)</h1>
           
-            <p class="small-text">最近更新&nbsp;2021年4月21日, 上午8:20</p>
+            <p class="small-text">最近更新&nbsp;2021年4月22日, 下午1:14</p>
           
         </div>
       </div>
@@ -253,7 +253,7 @@
 
 
 
-<h2 class="text-center color-purple">查看全州及各縣的數據</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">每日病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州共有3,624,838例COVID-19確診病例，造成59,992人死亡。</p>
+<h2 class="text-center color-purple">查看全州及各縣的數據</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">每日病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州共有3,624,838例COVID-19確診病例，造成59,992人死亡。</p>
 
 
 
@@ -276,7 +276,7 @@
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">確認死亡數</li>
-          <li data-label="chartLegend1">確認死亡總數<span class="big-num">{total_confirmed_deaths}</span> </li>
+          <li data-label="chartLegend1">確認死亡總數<span class="big-num">{total_confirmed_deaths}</span></li>
           <li data-label="chartLegend2Increase">新增死亡數<span class="med-num">{new_deaths} </span>（增加<span class="med-num">{new_deaths_delta_1_day}）</span></li>
           <li data-label="chartLegend2Decrease">新增死亡數<span class="med-num">{new_deaths} </span>（減少<span class="med-num">{new_deaths_delta_1_day}）</span></li>
           <li data-label="chartLegend3">每100K人中的死亡數<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均數）</li>
@@ -300,7 +300,7 @@
 
 
 
-<h3 class="text-center mt-4 mb-0">COVID-19檢測</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州的COVID-19診斷檢測結果數量總共達到了58,457,133，較前一天的總數增加了254,720。過去7天的檢測呈陽性率為1.5%。</p>
+<h3 class="text-center mt-4">COVID-19檢測</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州的COVID-19診斷檢測結果數量總共達到了58,457,133，較前一天的總數增加了254,720。過去7天的檢測呈陽性率為1.5%。</p>
 
 
 
@@ -340,7 +340,7 @@
 
 
 
-<h3 class="text-center mb-0">對醫院和加護病房 (Intensive Care Unit, ICU) 的影響</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診及疑似感染COVID-19而住院的人數總共達到了2,098，a decrease of 18來自前一天的總數。在加州因確診及疑似感染COVID-19而進入ICU的人數總共達到了479，a decrease of 4來自前一天的總數。</p>
+<h3 class="text-center">對醫院和加護病房 (Intensive Care Unit, ICU) 的影響</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診及疑似感染COVID-19而住院的人數總共達到了2,098，a decrease of 18來自前一天的總數。在加州因確診及疑似感染COVID-19而進入ICU的人數總共達到了479，a decrease of 4來自前一天的總數。</p>
 
 
 
@@ -351,19 +351,19 @@
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>COVID-19住院患者</li>
           <li data-label="chartLegend2Increase">比前一天患者總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
           <li data-label="chartLegend2Decrease">比前一天患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span>COVID-19 ICU患者</li>
-          <li data-label="chartLegend2IncreaseICU">比前一天患者總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2DecreaseICU">比前一天患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU患者</li>
+          <li data-label="chartLegend2IncreaseICU">比前一天住院患者總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2DecreaseICU">比前一天住院患者總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="filterTabLabel1">住院患者</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">ICU病床</li>
-          <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床</li>
-          <li data-label="chartLegend2Increase">ICU病床比前一天總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2Decrease">ICU病床比前一天總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張空置的ICU病床。</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>張ICU空置病床</li>
+          <li data-label="chartLegend2Increase">比前一天ICU空置病床總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2Decrease">比前一天ICU空置病床總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張ICU空置病床。</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 

@@ -151,7 +151,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Theo dõi COVID-19 tại California (v3)</h1>
           
-            <p class="small-text">Cập nhật mới nhất&nbsp;21 tháng 4, 2021 lúc 8:20</p>
+            <p class="small-text">Cập nhật mới nhất&nbsp;22 tháng 4, 2021 lúc 13:14</p>
           
         </div>
       </div>
@@ -255,7 +255,7 @@
 
 
 
-<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California có 3,624,838 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,992 ca tử vong.</p>
+<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Số ca mắc và ca tử vong hàng ngày</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California có 3,624,838 ca nhiễm COVID-19 được xác nhận, dẫn đến 59,992 ca tử vong.</p>
 
 
 
@@ -302,7 +302,7 @@
 
 
 
-<h3 class="text-center mt-4 mb-0">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 58,457,133, tăng 254,720 xét nghiệm so với tổng số của ngày trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là 1.5%.</p>
+<h3 class="text-center mt-4">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 58,457,133, tăng 254,720 xét nghiệm so với tổng số của ngày trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là 1.5%.</p>
 
 
 
@@ -342,7 +342,7 @@
 
 
 
-<h3 class="text-center mb-0">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 2,098, a decrease of 18 so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 479, a decrease of 4 so với tổng số của ngày trước đó.</p>
+<h3 class="text-center">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 2,098, a decrease of 18 so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là 479, a decrease of 4 so với tổng số của ngày trước đó.</p>
 
 
 
@@ -354,8 +354,8 @@
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Số bệnh nhân ICU do mắc COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Nhập viện</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
@@ -363,8 +363,8 @@
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">Số giường tại ICU trong</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số giường tại ICU còn trống</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU còn trống hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU còn trống hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>

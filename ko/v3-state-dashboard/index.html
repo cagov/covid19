@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>캘리포니아 내 COVID-19 현황 추적(v3)</h1>
           
-            <p class="small-text">최종 갱신 일자&nbsp;2021년 4월 21일 오전 8:20</p>
+            <p class="small-text">최종 갱신 일자&nbsp;2021년 4월 22일 오후 1:14</p>
           
         </div>
       </div>
@@ -253,7 +253,7 @@
 
 
 
-<h2 class="text-center color-purple">주 전체 및 카운티 별 데이터 참조</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">일일 사례 건수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아의 COVID-19 확진자 수는 3,624,838 명이며 이로 인한 사망자 수는 59,992 명입니다.</p>
+<h2 class="text-center color-purple">주 전체 및 카운티 별 데이터 참조</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">일일 사례 건수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아의 COVID-19 확진자 수는 3,624,838 명이며 이로 인한 사망자 수는 59,992 명입니다.</p>
 
 
 
@@ -300,7 +300,7 @@
 
 
 
-<h3 class="text-center mt-4 mb-0">COVID-19 검사</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아 내 COVID-19 진단 검사 결과 수가 총 58,457,133 건에 달하며, 전일 총계 대비 증가는 254,720 건입니다. 지난 7일 간 양성 반응률은 1.5%입니다.</p>
+<h3 class="text-center mt-4">COVID-19 검사</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아 내 COVID-19 진단 검사 결과 수가 총 58,457,133 건에 달하며, 전일 총계 대비 증가는 254,720 건입니다. 지난 7일 간 양성 반응률은 1.5%입니다.</p>
 
 
 
@@ -340,7 +340,7 @@
 
 
 
-<h3 class="text-center mb-0">병원 및 중환자실(Intensive Care Unit, ICU)에 미치는 영향</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아 내 COVID-19 확진자 및 의심자로 인한 입원 환자수는 총 2,098 건에 달하며, 전일 총계 대비 증감은 a decrease of 18 명입니다. 캘리포니아 내 COVID-19 확진자 및 의심자로 인한 ICU 환자수는 총 479 건에 달하며, 전일 총계 대비 증감은 a decrease of 4 명입니다.</p>
+<h3 class="text-center">병원 및 중환자실(Intensive Care Unit, ICU)에 미치는 영향</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아 내 COVID-19 확진자 및 의심자로 인한 입원 환자수는 총 2,098 건에 달하며, 전일 총계 대비 증감은 a decrease of 18 명입니다. 캘리포니아 내 COVID-19 확진자 및 의심자로 인한 ICU 환자수는 총 479 건에 달하며, 전일 총계 대비 증감은 a decrease of 4 명입니다.</p>
 
 
 
@@ -352,8 +352,8 @@
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 증가({CHANGE_FACTOR} 증가)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU 환자 수</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="filterTabLabel1">입원 환자</li>
           <li data-label="filterTabLabel2">ICU 환자</li>
           <li data-label="tooltipContent">             보고일: <b>{DATE} </b><br> 총 입원 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 14일 평균 입원 환자 수: <b>{14DAY_AVERAGE} </b>           </li>
@@ -361,8 +361,8 @@
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">ICU 병상</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> 사용 가능한 ICU 병상 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 병상 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 병상 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="tooltipContent"><b>{DATE}</b> 자로 사용 가능한 ICU 병상 수는 <b>{VALUE}</b>입니다.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>

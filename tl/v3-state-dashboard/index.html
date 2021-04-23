@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Pagsubaybay ng COVID-19 sa California (v3)</h1>
           
-            <p class="small-text">Huling na-update&nbsp;Abril 21, 2021 sa 8:20 AM</p>
+            <p class="small-text">Huling na-update&nbsp;Abril 22, 2021 sa 1:14 PM</p>
           
         </div>
       </div>
@@ -253,7 +253,7 @@
 
 
 
-<h2 class="text-center color-purple">Tingnan ang pambuong-estadong datos at sa bawat county</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">Mga arawang kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may 3,624,838 (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa 59,992 pagkamatay.</p>
+<h2 class="text-center color-purple">Tingnan ang pambuong-estadong datos at sa bawat county</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga arawang kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may 3,624,838 (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa 59,992 pagkamatay.</p>
 
 
 
@@ -300,7 +300,7 @@
 
 
 
-<h3 class="text-center mt-4 mb-0">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang 58,457,133, pagtaas na 254,720 na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay 1.5%.</p>
+<h3 class="text-center mt-4">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang 58,457,133, pagtaas na 254,720 na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay 1.5%.</p>
 
 
 
@@ -340,7 +340,7 @@
 
 
 
-<h3 class="text-center mb-0">Epekto sa mga ospital at ICU</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang 2,098, a decrease of 18 mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang 479, a decrease of 4 mula sa kabuuan ng naunang araw.</p>
+<h3 class="text-center">Epekto sa mga ospital at ICU</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang 2,098, a decrease of 18 mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang 479, a decrease of 4 mula sa kabuuan ng naunang araw.</p>
 
 
 
@@ -352,8 +352,8 @@
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> (na) pasyenteng nasa ICU dahil sa COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="filterTabLabel1">Nasa ospital</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
@@ -361,8 +361,8 @@
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">Mga kama sa ICU sa</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) na available na kama sa ICU</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
