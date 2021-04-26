@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi COVID-19 tại California (v3)"
 meta: "Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng {{_varStatVaccinesDailyPct_}}% #} […]"
 author: "State of California"
-publishdate: "2021-04-22T20:14:22Z"
+publishdate: "2021-04-22T23:14:53Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -174,6 +174,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="cases_episode_xAxisLegend">Ngày theo từng giai đoạn</li>
           <li data-label="cases_reported_xAxisLegend">Ngày báo cáo</li>
           <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">Số ca tử vong được xác nhận trong</li>
@@ -190,6 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_death_xAxisLegend">Ngày tử vong</li>
           <li data-label="deaths_reported_xAxisLegend">Ngày báo cáo</li>
           <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
 
@@ -220,6 +222,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_testing_xAxisLegend">Ngày xét nghiệm</li>
           <li data-label="tests_reported_xAxisLegend">Ngày báo cáo</li>
           <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
           <li data-label="chartTitle">Tỉ lệ số ca dương tính trong</li>
@@ -230,6 +233,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Ngày xét nghiệm</li>
           <li data-label="pending">Đang chờ xử lý</li>
           <li data-label="dayRate">Tỉ lệ trong 7 ngày</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
 
@@ -250,11 +254,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartTitle">Số bệnh nhân nhập viện do mắc COVID-19 trong</li>
           <li data-label="chartTitleICU">Số bệnh nhân ICU do mắc COVID-19 trong</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số bệnh nhân nhập viện do mắc COVID-19</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Số bệnh nhân ICU do mắc COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân ICU hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Nhập viện</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
