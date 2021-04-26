@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California (v3)"
 meta: "Update para sa {{_varStatDate_}} Mula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} kabuuan {{_varStatTotalDeathsToday_}} ngayong araw {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]"
 author: "State of California"
-publishdate: "2021-04-21T15:20:22Z"
+publishdate: "2021-04-22T23:14:53Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -154,7 +154,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Tingnan ang pambuong-estadong datos at sa bawat county</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4 mb-0">Mga arawang kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
+<h2 class="text-center color-purple">Tingnan ang pambuong-estadong datos at sa bawat county</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga arawang kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
 
 
 
@@ -174,6 +174,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="cases_episode_xAxisLegend">Petsa ng episode</li>
           <li data-label="cases_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">Mga kumpirmadong pagkamatay sa</li>
@@ -190,6 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_death_xAxisLegend">Petsa ng pagkamatay</li>
           <li data-label="deaths_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
 
@@ -201,7 +203,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4 mb-0">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStatPos_7DayAvgPct_}}%.</p>
+<h3 class="text-center mt-4">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang {{_varStatTested_}}, pagtaas na {{_varStatTestedDaily_}} na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
@@ -220,6 +222,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_testing_xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="tests_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
           <li data-label="chartTitle">Rate ng pagpopositibo sa</li>
@@ -230,6 +233,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="pending">Nakabinbin</li>
           <li data-label="dayRate">7 araw na rate</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
 
@@ -241,7 +245,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mb-0">Epekto sa mga ospital at ICU</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
+<h3 class="text-center">Epekto sa mga ospital at ICU</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
 
 
 
@@ -250,11 +254,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartTitle">Mga naospital na pasyente dahil sa COVID-19 sa</li>
           <li data-label="chartTitleICU">Mga pasyenteng nasa ICU dahil sa COVID-19 sa</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) naospital na pasyente dahil sa COVID-19</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> (na) pasyenteng nasa ICU dahil sa COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="filterTabLabel1">Nasa ospital</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
@@ -262,8 +266,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">Mga kama sa ICU sa</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) na available na kama sa ICU</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
