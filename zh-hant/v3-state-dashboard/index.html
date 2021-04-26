@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>加州COVID-19追蹤)</h1>
           
-            <p class="small-text">最近更新&nbsp;2021年4月22日, 下午1:14</p>
+            <p class="small-text">最近更新&nbsp;2021年4月22日, 下午4:14</p>
           
         </div>
       </div>
@@ -273,6 +273,7 @@
           <li data-label="cases_episode_xAxisLegend">事件日期</li>
           <li data-label="cases_reported_xAxisLegend">呈報日期</li>
           <li data-label="pending">待定</li>
+          <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">確認死亡數</li>
@@ -289,6 +290,7 @@
           <li data-label="deaths_death_xAxisLegend">死亡日期</li>
           <li data-label="deaths_reported_xAxisLegend">呈報日期</li>
           <li data-label="pending">待定</li>
+          <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
 
@@ -319,6 +321,7 @@
           <li data-label="tests_testing_xAxisLegend">檢測日期</li>
           <li data-label="tests_reported_xAxisLegend">呈報日期</li>
           <li data-label="pending">待定</li>
+          <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
           <li data-label="chartTitle">檢測呈陽性率</li>
@@ -329,6 +332,7 @@
           <li data-label="xAxisLegend">檢測日期</li>
           <li data-label="pending">待定</li>
           <li data-label="dayRate">7日比率</li>
+          <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
 
@@ -349,21 +353,21 @@
           <li data-label="chartTitle">COVID-19住院患者</li>
           <li data-label="chartTitleICU">COVID-19 ICU患者</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>COVID-19住院患者</li>
-          <li data-label="chartLegend2Increase">比前一天患者總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2Decrease">比前一天患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU患者</li>
-          <li data-label="chartLegend2IncreaseICU">比前一天住院患者總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2DecreaseICU">比前一天住院患者總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2Increase">比前一天住院患者總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2Decrease">比前一天住院患者總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span>COVID-19 ICU患者</li>
+          <li data-label="chartLegend2IncreaseICU">比前一天ICU患者總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2DecreaseICU">比前一天ICU患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="filterTabLabel1">住院患者</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">ICU病床</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>張ICU空置病床</li>
+          <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床</li>
           <li data-label="chartLegend2Increase">比前一天ICU空置病床總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
           <li data-label="chartLegend2Decrease">比前一天ICU空置病床總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張ICU空置病床。</li>
+          <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張空置的ICU病床。</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 

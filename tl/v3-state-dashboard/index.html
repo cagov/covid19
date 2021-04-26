@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Pagsubaybay ng COVID-19 sa California (v3)</h1>
           
-            <p class="small-text">Huling na-update&nbsp;Abril 22, 2021 sa 1:14 PM</p>
+            <p class="small-text">Huling na-update&nbsp;Abril 22, 2021 sa 4:14 PM</p>
           
         </div>
       </div>
@@ -273,6 +273,7 @@
           <li data-label="cases_episode_xAxisLegend">Petsa ng episode</li>
           <li data-label="cases_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">Mga kumpirmadong pagkamatay sa</li>
@@ -289,6 +290,7 @@
           <li data-label="deaths_death_xAxisLegend">Petsa ng pagkamatay</li>
           <li data-label="deaths_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
 
@@ -319,6 +321,7 @@
           <li data-label="tests_testing_xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="tests_reported_xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="pending">Nakabinbin</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
           <li data-label="chartTitle">Rate ng pagpopositibo sa</li>
@@ -329,6 +332,7 @@
           <li data-label="xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="pending">Nakabinbin</li>
           <li data-label="dayRate">7 araw na rate</li>
+          <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
 
@@ -349,11 +353,11 @@
           <li data-label="chartTitle">Mga naospital na pasyente dahil sa COVID-19 sa</li>
           <li data-label="chartTitleICU">Mga pasyenteng nasa ICU dahil sa COVID-19 sa</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) naospital na pasyente dahil sa COVID-19</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> (na) pasyenteng nasa ICU dahil sa COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="filterTabLabel1">Nasa ospital</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
