@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Tracking COVID-19 in California (v3)</h1>
           
-            <p class="small-text">Last updated&nbsp;April 22, 2021 at 4:14 PM</p>
+            <p class="small-text">Last updated&nbsp;April 26, 2021 at 12:53 PM</p>
           
         </div>
       </div>
@@ -452,6 +452,8 @@
             7-day positivity rate: <b>{7DAY_POSRATE} </b><br>
             Total Tests: <b>{TOTAL_TESTS} </b>
           </li>
+          <li data-label="leftYAxisLegend">Positivity rate</li>
+          <li data-label="rightYAxisLegend">Tests</li>
           <li data-label="xAxisLegend">Testing date</li>
           <li data-label="pending">Pending</li>
           <li data-label="dayRate">7-day rate</li>
@@ -495,6 +497,8 @@
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="filterTabLabel1">Hospitalized</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="xAxisLegend">Reported date</li>
+          <li data-label="dayAverage">14-day average</li>
           <li data-label="tooltipContent">
             Reported Date: <b>{DATE} </b><br>
             Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>
@@ -510,6 +514,7 @@
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="xAxisLegend">Reported date</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
         </ul>
       </cagov-chart-dashboard-icu-beds>               
