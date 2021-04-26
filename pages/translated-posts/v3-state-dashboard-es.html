@@ -230,6 +230,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase">Incremento de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
           <li data-label="chartLegend2Decrease">Reducción de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
           <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de positividad de 7 días: <b>{7DAY_POSRATE} </b><br> Pruebas totales: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">Tasa de positividad</li>
+          <li data-label="rightYAxisLegend">Pruebas</li>
           <li data-label="xAxisLegend">Fecha de la prueba</li>
           <li data-label="pending">Pendientes</li>
           <li data-label="dayRate">Tasa de 7 días</li>
@@ -261,13 +263,16 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> pacientes en ICU menos con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Hospitalizados</li>
           <li data-label="filterTabLabel2">ICU</li>
-          <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="xAxisLegend">Fecha reportada</li>
+          <li data-label="dayAverage">Promedio de 14 días</li>
+          <li data-label="tooltipContent">Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">Camas de ICU en</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> camas disponibles en ICU</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> camas disponibles más en ICU con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> camas disponibles menos en ICU con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
+          <li data-label="xAxisLegend">Fecha reportada</li>
           <li data-label="tooltipContent">El <b>{DATE}</b> había un total de <b>{VALUE}</b> camas disponibles en las ICU.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>

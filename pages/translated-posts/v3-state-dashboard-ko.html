@@ -230,6 +230,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> 이전 7일 대비 증가</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> 이전 7일 대비 감소</li>
           <li data-label="tooltipContent">             검사일: <b>{DATE} </b><br> 7일 양성 판정율: <b>{7DAY_POSRATE} </b><br> 총 검사 건수: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">Positivity rate</li>
+          <li data-label="rightYAxisLegend">검사 건수</li>
           <li data-label="xAxisLegend">검사일</li>
           <li data-label="pending">계류중</li>
           <li data-label="dayRate">7일 판정율</li>
@@ -261,6 +263,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 환자 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="filterTabLabel1">입원 환자</li>
           <li data-label="filterTabLabel2">ICU 환자</li>
+          <li data-label="xAxisLegend">보고일</li>
+          <li data-label="dayAverage">14일 평균</li>
           <li data-label="tooltipContent">             보고일: <b>{DATE} </b><br> 총 입원 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 14일 평균 입원 환자 수: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
@@ -268,6 +272,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> 사용 가능한 ICU 병상 수</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 증가({CHANGE_FACTOR} 증가)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="xAxisLegend">보고일</li>
           <li data-label="tooltipContent"><b>{DATE}</b> 자로 사용 가능한 ICU 병상 수는 <b>{VALUE}</b>입니다.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>

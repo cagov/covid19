@@ -113,8 +113,8 @@ class CAGovDashboardPatients extends window.HTMLElement {
                       'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
                       'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                       'root_id':this.chartOptions.rootId,
-                      'x_axis_legend':'Reported date',
-                      'line_legend':'14-day average',
+                      'x_axis_legend':this.translationsObj.xAxisLegend,
+                      'line_legend':this.translationsObj.dayAverage,
                       'month_modulo':2,
                     };
     renderChart.call(this, renderOptions);

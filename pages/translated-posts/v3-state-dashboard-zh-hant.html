@@ -230,6 +230,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase">此前7日內增加<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
           <li data-label="chartLegend2Decrease">此前7日內減少<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
           <li data-label="tooltipContent">檢測日期：<b>{DATE} </b><br> 7日內檢測結果呈陽性率：<b>{7DAY_POSRATE} </b><br> 檢測總數：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">Positivity Rate</li>
+          <li data-label="rightYAxisLegend">檢測數</li>
           <li data-label="xAxisLegend">檢測日期</li>
           <li data-label="pending">待定</li>
           <li data-label="dayRate">7日比率</li>
@@ -261,6 +263,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU">比前一天ICU患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="filterTabLabel1">住院患者</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="xAxisLegend">呈報日期</li>
+          <li data-label="dayAverage">14日平均數</li>
           <li data-label="tooltipContent">呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
@@ -268,6 +272,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床</li>
           <li data-label="chartLegend2Increase">比前一天ICU空置病床總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
           <li data-label="chartLegend2Decrease">比前一天ICU空置病床總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="xAxisLegend">呈報日期</li>
           <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張空置的ICU病床。</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
