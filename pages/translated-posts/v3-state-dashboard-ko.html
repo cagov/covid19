@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 현황 추적(v3)"
 meta: "업데이트 일자 {{_varStatDate_}} {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} 합계 {{_varStatTotalCasesToday_}} 당일 {{_varStatNewCasesPer100k_}} 1십만명 당 신규 사례 건수 사망자 수 {{_varStatTotalDeaths_}} 합계 {{_varStatTotalDeathsToday_}} 당일 {{_varStatNewDeathsPer100k_}} 1십만명 당 신규 시망자 수 검사 건수 {{_varStatTested_}} 합계 {{_varStatTestedDaily_}} 당일 {{_varStatLatestPositivityPct_}}% 양성 반응률 백신 투여 건수 {{_varStatVaccines_}} 합계 {# {{_varStatVaccinesDaily_}} 당일 {{_varStatVaccinesDailyPct_}}% 증가 #} […]"
 author: "State of California"
-publishdate: "2021-04-22T20:14:22Z"
+publishdate: "2021-04-22T23:14:53Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -174,6 +174,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="cases_episode_xAxisLegend">발생일</li>
           <li data-label="cases_reported_xAxisLegend">보고일</li>
           <li data-label="pending">계류중</li>
+          <li data-label="pending_caveat">최근 기간 중 미처리된 데이터</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
           <li data-label="chartTitle">확인 사망자 수</li>
@@ -190,6 +191,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="deaths_death_xAxisLegend">사망일</li>
           <li data-label="deaths_reported_xAxisLegend">보고일</li>
           <li data-label="pending">계류중</li>
+          <li data-label="pending_caveat">최근 기간 중 미처리된 데이터</li>
         </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
 
@@ -220,6 +222,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tests_testing_xAxisLegend">검사일</li>
           <li data-label="tests_reported_xAxisLegend">보고일</li>
           <li data-label="pending">계류중</li>
+          <li data-label="pending_caveat">최근 기간 중 미처리된 데이터</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
           <li data-label="chartTitle">양성 판정율</li>
@@ -230,6 +233,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">검사일</li>
           <li data-label="pending">계류중</li>
           <li data-label="dayRate">7일 판정율</li>
+          <li data-label="pending_caveat">최근 기간 중 미처리된 데이터</li>
         </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
 
@@ -250,11 +254,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartTitle">COVID-19 입원 환자 수</li>
           <li data-label="chartTitleICU">COVID-19 ICU 환자 수</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 입원 환자 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 환자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU 환자 수</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 환자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 환자 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="filterTabLabel1">입원 환자</li>
           <li data-label="filterTabLabel2">ICU 환자</li>
           <li data-label="tooltipContent">             보고일: <b>{DATE} </b><br> 총 입원 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 14일 평균 입원 환자 수: <b>{14DAY_AVERAGE} </b>           </li>
