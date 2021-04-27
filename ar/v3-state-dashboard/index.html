@@ -149,7 +149,7 @@
         <div class="col-lg-10 mx-auto">
           <h1> تتبع المخالطين للمصابين بكوفيد-19 في كاليفورنيا (الإصدار 3)</h1>
           
-            <p class="small-text">آخر التحديثات&nbsp;4:14 م الساعة 22 أبريل 2021</p>
+            <p class="small-text">آخر التحديثات&nbsp;12:53 م الساعة 26 أبريل 2021</p>
           
         </div>
       </div>
@@ -328,7 +328,9 @@
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> إيجابية الاختبارات (المعدل في 7 أيام)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> يزداد من قبل 7 أيام</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> ينخفض من قبل 7 أيام</li>
-          <li data-label="tooltipContent">             تاريخ إجراء الاختبار: <b>{DATE} </b><br> معدل إيجابية الاختبارات في 7 أيام: <b>{7DAY_POSRATE} </b><br> إجمالي الاختبارات التي أجريت: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="tooltipContent">             تاريخ إجراء الاختبار: <b>{التاريخ} </b><br> معدل إيجابية الاختبارات في 7 أيام: <b>{7DAY_POSRATE} </b><br> إجمالي الاختبارات التي أجريت: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">معدل إيجابية الاختبارات</li>
+          <li data-label="rightYAxisLegend">الاختبارات</li>
           <li data-label="xAxisLegend">تاريخ إجراء الاختبار</li>
           <li data-label="pending">قيد الانتظار</li>
           <li data-label="dayRate">معدل 7 أيام</li>
@@ -360,13 +362,16 @@
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{التغير}</span> عدد أقل من مرضى العناية المركزة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="filterTabLabel1">نزلاء المستشفيات</li>
           <li data-label="filterTabLabel2">وحدات العناية المركزة</li>
-          <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{DATE} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{TOTAL_HOSPITALIZED} </b><br> متوسط دخول المرضى المستشفيات في 14 يوم: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
+          <li data-label="dayAverage">متوسط 14 يوم</li>
+          <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يوم: <b>{متوسط_14 يوم} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitle">أسرة العناية المركزة في</li>
           <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أَسرّة العناية المركزة المتوفرة</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
+          <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
           <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> سريرًا من أسرة العناية المركزة المتوفرة.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>

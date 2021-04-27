@@ -151,7 +151,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Theo dõi COVID-19 tại California (v3)</h1>
           
-            <p class="small-text">Cập nhật mới nhất&nbsp;22 tháng 4, 2021 lúc 16:14</p>
+            <p class="small-text">Cập nhật mới nhất&nbsp;26 tháng 4, 2021 lúc 24:53</p>
           
         </div>
       </div>
@@ -330,7 +330,9 @@
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> tỉ lệ xét nghiệm dương tính (tỉ lệ trong 7 ngày)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> tăng so với 7 ngày trước đó</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> giảm so với 7 ngày trước</li>
-          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ dương tính trong 7 ngày: <b>{7DAY_POSRATE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm dương tính trong 7 ngày: <b>{7DAY_POSRATE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">Tỷ lệ xét nghiệm dương tính</li>
+          <li data-label="rightYAxisLegend">Xét Nghiệm</li>
           <li data-label="xAxisLegend">Ngày xét nghiệm</li>
           <li data-label="pending">Đang chờ xử lý</li>
           <li data-label="dayRate">Tỉ lệ trong 7 ngày</li>
@@ -362,6 +364,8 @@
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Nhập viện</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="xAxisLegend">Ngày báo cáo</li>
+          <li data-label="dayAverage">Mức trung bình 14 ngày</li>
           <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
@@ -369,6 +373,7 @@
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số giường tại ICU còn trống</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU còn trống hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU còn trống hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="xAxisLegend">Ngày báo cáo</li>
           <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
