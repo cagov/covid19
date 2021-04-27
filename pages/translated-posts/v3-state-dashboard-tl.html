@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California (v3)"
 meta: "Update para sa {{_varStatDate_}} Mula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} kabuuan {{_varStatTotalDeathsToday_}} ngayong araw {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]"
 author: "State of California"
-publishdate: "2021-04-22T23:14:53Z"
+publishdate: "2021-04-26T19:53:57Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -230,7 +230,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagtaas mula sa nakalipas na 7 araw</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagbaba mula sa nakalipas na 7 araw</li>
           <li data-label="tooltipContent">             Petsa ng Pagsusuri: <b>{DATE} </b><br> 7 araw na rate ng pagpopositibo: <b>{7DAY_POSRATE} </b><br> Kabuuang Bilang ng Mga Pagsusuri: <b>{TOTAL_TESTS} </b>           </li>
-          <li data-label="leftYAxisLegend">Rate ng pagpopositibo</li>
+          <li data-label="leftYAxisLegend">Rate ng nagpopositibo</li>
           <li data-label="rightYAxisLegend">Mga Pagsusuri</li>
           <li data-label="xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="pending">Nakabinbin</li>
@@ -264,7 +264,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="filterTabLabel1">Nasa ospital</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
+<<<<<<< HEAD
           <li data-label="dayAverage">14 araw na average</li>
+=======
+          <li data-label="dayAverage">14 na araw na average</li>
+>>>>>>> master
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">

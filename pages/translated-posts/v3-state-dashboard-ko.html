@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 현황 추적(v3)"
 meta: "업데이트 일자 {{_varStatDate_}} {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} 합계 {{_varStatTotalCasesToday_}} 당일 {{_varStatNewCasesPer100k_}} 1십만명 당 신규 사례 건수 사망자 수 {{_varStatTotalDeaths_}} 합계 {{_varStatTotalDeathsToday_}} 당일 {{_varStatNewDeathsPer100k_}} 1십만명 당 신규 시망자 수 검사 건수 {{_varStatTested_}} 합계 {{_varStatTestedDaily_}} 당일 {{_varStatLatestPositivityPct_}}% 양성 반응률 백신 투여 건수 {{_varStatVaccines_}} 합계 {# {{_varStatVaccinesDaily_}} 당일 {{_varStatVaccinesDailyPct_}}% 증가 #} […]"
 author: "State of California"
-publishdate: "2021-04-22T23:14:53Z"
+publishdate: "2021-04-26T19:53:57Z"
 tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
@@ -230,7 +230,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> 이전 7일 대비 증가</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> 이전 7일 대비 감소</li>
           <li data-label="tooltipContent">             검사일: <b>{DATE} </b><br> 7일 양성 판정율: <b>{7DAY_POSRATE} </b><br> 총 검사 건수: <b>{TOTAL_TESTS} </b>           </li>
-          <li data-label="leftYAxisLegend">Positivity rate</li>
+          <li data-label="leftYAxisLegend">양성 판정율</li>
           <li data-label="rightYAxisLegend">검사 건수</li>
           <li data-label="xAxisLegend">검사일</li>
           <li data-label="pending">계류중</li>
