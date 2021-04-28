@@ -15,8 +15,11 @@ import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
-import './charts-sandbox/index.js';
-import './dashboard-v2/index.js';
+import './dashboard-v3/charts/ie11.scss';
+// import './charts-sandbox/index.js';
+// import './dashboard-v2/index.js';
+import './dashboard-v3/index.js';
+import './dashboard-v3/charts/ie11.scss';
 
 // import applyAccordionListeners from './tracking-you/index.js';
 // // twitter widget doesn't support IE11 so not including here
@@ -36,3 +39,8 @@ import './dashboard-v2/index.js';
   }
   window.CustomEvent = CustomEvent;
 })();
+
+/* log10 polyfill from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log10 */
+Math.log10 = Math.log10 || function(x) {
+  return Math.log(x) * Math.LOG10E;
+};

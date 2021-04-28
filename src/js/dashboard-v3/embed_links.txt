@@ -1,0 +1,69 @@
+1.1 Chart (State cases/deaths)
+
+Embed code
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;1_1State-Epicurves' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+OLD
+    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
+
+
+3.1 Chart (County cases/deaths)
+Embed code
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+5.1 (State testing)
+Embed code
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;5_1StateTesting-Epicurves' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+6.1 (County testing)
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;6_1CountyTesting-Epicurves' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+7.1 State Hosp
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;7_1StateHosp' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+8.1 State ICU
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;8_1StateICU' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/8_1StateICU?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+9.1 County Hosp
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;9_1CountyHosp' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+10.1 County ICU
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 547px;'><object class='tableauViz' width='920' height='547' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;10_1CounntyICU' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/10_1CounntyICU?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+12.1 Ethnicity
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 327px;'><object class='tableauViz' width='920' height='327' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;12_1Ethnicity' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+12.2 Age
+Embed
+<script type='text/javascript' src='https://tableau.cdt.ca.gov/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 920px; height: 327px;'><object class='tableauViz' width='920' height='327' style='display:none;'><param name='host_url' value='https%3A%2F%2Ftableau.cdt.ca.gov%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StateDashboardv2_0&#47;12_3Age' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div>
+Link
+https://tableau.cdt.ca.gov/views/StateDashboardv2_0/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
+
+12.3 Gender (does not exist yet)

@@ -1,13 +1,16 @@
 import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 
 
 const defaultConfig = {
   chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
 }
 
 const devOutputPath = 'docs/js/dashboard-v2.js';
@@ -29,6 +32,7 @@ export default {
               use: ['sass'],
             }),
             // terser()
+            json()
           ]
 };
 
