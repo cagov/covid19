@@ -4,10 +4,23 @@ import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
+import json from '@rollup/plugin-json';
+
+const defaultConfig = {
+  chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
+}
+const stagingConfig =  {
+  chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
+}
+
+const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
 export default {
   input: 'src/js/es5.js',
   output: {
+    intro: 'const config = '+JSON.stringify(jsConfig),
     file: 'docs/js/es5.js',
     format: 'cjs'
   },
@@ -42,6 +55,7 @@ export default {
         ]
       ]
     }),
+    json(),
     terser()
   ]
 };

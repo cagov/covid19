@@ -1,0 +1,26 @@
+cagov-chart-dashboard-groups-race-ethnicity-deaths.chart {
+    .bar-label .tick text {
+      text-transform: capitalize;
+    }
+    .bar-label {
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+    .bar-cat {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .legend-caption {
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+    .chart-title {
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom:0px;
+    }
+}
+.d-hide {
+  display:none;
+}
+

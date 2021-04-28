@@ -19,7 +19,7 @@ let float3Formatter = new Intl.NumberFormat(
 
 let pct0Formatter = new Intl.NumberFormat(
     "us", // forcing US to avoid mixed styles on translated pages
-    { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 }
+    { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: 0 }
 );
 let pct1Formatter = new Intl.NumberFormat(
     "us", // forcing US to avoid mixed styles on translated pages
@@ -41,24 +41,28 @@ export default function formatValue(v, {format='number',min_decimals=1})
     if (format == 'integer') {
         return intFormatter.format(v);
     } else if (format == 'percent') {
-        if (v < .00005) {
-            return pct3Formatter.format(v)
+        if (v == 0) {
+            return pct0Formatter.format(v); // show integer for true zeros
+        } else if (v < .00005) {
+            return pct3Formatter.format(v);
         } else if (v < .0005) {
-            return pct2Formatter.format(v)
+            return pct2Formatter.format(v);
         } else if (min_decimals == 0) {
-            return pct0Formatter.format(v)
+            return pct0Formatter.format(v);
         } else {
-            return pct1Formatter.format(v)
+            return pct1Formatter.format(v);
         }
     } else { // number or float
-        if (v < .005) {
-            return float3Formatter.format(v)
+        if (v == 0) {
+            return intFormatter.format(v); // show integer for true zeros
+        } else if (v < .005) {
+            return float3Formatter.format(v);
         } else if (v < .05) {
-            return float2Formatter.format(v)
+            return float2Formatter.format(v);
         } else if (min_decimals == 0) {
-            return intFormatter.format(v)
+            return intFormatter.format(v);
         } else {
-            return float1Formatter.format(v)
+            return float1Formatter.format(v);
         }
     }
 }
