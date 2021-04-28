@@ -3,15 +3,12 @@ layout: "page.njk"
 title: "تعقب المصابين بكوفيد-19 في كاليفورنيا"
 meta: "استعرض أحدث البيانات عن الحالات والوفيات والاختبارات وفئات المقاطعات.⁦"
 author: "State of California"
-publishdate: "2021-04-26T16:35:10Z"
+publishdate: "2021-04-28T17:55:54Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-⁩<div class="highlight">
-<h2 class="h3 color-primary mt-0">مذكرة بشأن 26 أبريل 2021</h2>
-<p>عدد جرعات اللقاح التي يتم توزيعها وإعطائها اليوم غير مكتمل بسبب تأخر معالجة البيانات. ستُحدَّث الأعداد الكاملة في لوحة المعلومات بمجرد توفرها في وقت لاحق من هذا الأسبوع.</p>
-</div><p></p>    <!--
+⁩<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -178,8 +175,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+<div class="row d-flex justify-content-md-center"><!-- comment -->    <div class="toggle-group-container cases-group">
     <div id="cases-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="casesChartCounty"></div>
     </div>
