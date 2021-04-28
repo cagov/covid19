@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Blueprint for a Safer Economy"
 meta: "California’s blueprint for reopening has criteria for loosening and tightening restrictions on activities based on the level of spread of COVID-19. On this page: Current tier assignments Beyond the Blueprint Reopening safely for all communities Questions and answers Current tier assignments as of {{_varTierDate_}} Every county in California is assigned to a tier based on [&hellip;]"
 author: "State of California"
-publishdate: "2021-04-12T15:38:26Z"
-tags: ["translate"]
+publishdate: "2021-04-28T19:51:23Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -14,7 +14,7 @@ addtositemap: true
 
 
 <div class="full-bleed">
-  <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}"></cagov-reopening></div>
+  <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData['en'].saferEconomyLang.Table2 | dump | escape}}"></cagov-reopening></div>
 
 
 
