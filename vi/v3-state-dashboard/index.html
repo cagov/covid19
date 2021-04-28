@@ -3410,7 +3410,6 @@ function template(chartOptions, {
   post_chartLegend3 = null, // only used if provided
   filterTabLabel1 = 'Tab Label 1',
   filterTabLabel2 = 'Tab Label 2',
-  currentLocation = 'location'
 }) {
   let tabMarkup = '';
   if ('filterKeys' in chartOptions) {
@@ -3428,7 +3427,7 @@ function template(chartOptions, {
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
         <div class="mx-auto chart-histogram">
-            <div class="chart-title">${post_chartTitle} ${currentLocation}</div>
+            <div class="chart-title">${post_chartTitle}</div>
             ${tabMarkup}
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
@@ -4340,8 +4339,17 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
       new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
       cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
+      REGION:regionName,
     };
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
@@ -4361,9 +4369,11 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
                         'right_y_fmt':'integer',
                         'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
-                        'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
-                        'pending_legend':this.translationsObj.pending,
                         };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }
@@ -4541,9 +4551,16 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
       new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
       deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
+      REGION:regionName,
     };
-
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
@@ -4564,9 +4581,11 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
                         'right_y_fmt':'integer',
                         'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
-                        'pending_date':this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD,
-                        'pending_legend':this.translationsObj.pending,
                         };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }
@@ -4733,9 +4752,18 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
       total_tests_performed:formatValue(latestRec.total_tests_performed,{format:'integer'}),
       new_tests_reported:formatValue(Math.abs(latestRec.new_tests_reported),{format:'integer'}),
       new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
+      REGION:regionName,
     };
 
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
@@ -4753,10 +4781,11 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
                           'right_y_fmt':'integer',
                           'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                           'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
-                          // 'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
-                          'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                          'pending_legend':this.translationsObj.pending,
                         };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }
@@ -4946,9 +4975,18 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     const repDict = {
       test_positivity_7_days:formatValue(latestRec.test_positivity_7_days,{format:'percent'}),
       test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
+      REGION:regionName,
     };
-
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
@@ -5095,15 +5133,32 @@ class CAGovDashboardPatients extends window.HTMLElement {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
+      REGION:regionName,
     };
 
     if (this.chartConfigFilter == 'icu') {
-      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
+      if (!('chartTitleStateICU' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleStateICU, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCountyICU, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
       this.translationsObj.currentLocation = regionName;
     } else {
-      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+      if (!('chartTitleState' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
       this.translationsObj.currentLocation = regionName;
@@ -5334,9 +5389,17 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
+      REGION:regionName,
     };
-
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    }
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
