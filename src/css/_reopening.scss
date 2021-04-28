@@ -49,6 +49,10 @@ cagov-reopening-tier-level {
   .reopening-form-group {
     padding-bottom: 1.5rem;
 
+    label {
+      display:block
+    }
+
     @include small-phone {
       padding-bottom: 3rem;
     }
