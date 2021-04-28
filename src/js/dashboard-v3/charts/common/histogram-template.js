@@ -10,7 +10,6 @@ export default function template(chartOptions, {
   post_chartLegend3 = null, // only used if provided
   filterTabLabel1 = 'Tab Label 1',
   filterTabLabel2 = 'Tab Label 2',
-  currentLocation = 'location'
 }) {
   let tabMarkup = '';
   if ('filterKeys' in chartOptions) {
@@ -28,7 +27,7 @@ export default function template(chartOptions, {
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
         <div class="mx-auto chart-histogram">
-            <div class="chart-title">${post_chartTitle} ${currentLocation}</div>
+            <div class="chart-title">${post_chartTitle}</div>
             ${tabMarkup}
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
