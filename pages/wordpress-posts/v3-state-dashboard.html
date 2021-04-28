@@ -263,7 +263,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
         <ul class="d-none">
-          <li data-label="chartTitle">Confirmed cases in</li>
+          <li data-label="chartTitleState">Confirmed cases in California</li>
+          <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li>
@@ -288,7 +289,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
         <ul class="d-none">
-          <li data-label="chartTitle">Confirmed deaths in</li>
+          <li data-label="chartTitleState">Confirmed deaths in California</li>
+          <li data-label="chartTitleCounty">Confirmed deaths in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li>
@@ -336,7 +338,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">
         <ul class="d-none">
-          <li data-label="chartTitle">Total tests in</li>
+          <li data-label="chartTitleState">Total tests in California</li>
+          <li data-label="chartTitleCounty">Total tests in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> decrease)</li>
@@ -360,7 +363,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">
         <ul class="d-none">
-          <li data-label="chartTitle">Positivity rate in</li>
+          <li data-label="chartTitleState">Positivity rate in California</li>
+          <li data-label="chartTitleCounty">Positivity rate in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> test positivity (7-day rate)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> increase from 7-days prior</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> decrease from 7-days prior</li>
@@ -404,8 +408,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">
         <ul class="d-none">
-          <li data-label="chartTitle">COVID-19 hospitalized patients in</li>
-          <li data-label="chartTitleICU">COVID-19 ICU patients in</li>
+          <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
+          <li data-label="chartTitleCounty">COVID-19 hospitalized patients in {REGION} County</li>
+          <li data-label="chartTitleStateICU">COVID-19 ICU patients in California</li>
+          <li data-label="chartTitleCountyICU">COVID-19 ICU patients in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior day total ({CHANGE_FACTOR} decrease)</li>
@@ -427,7 +433,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="col-lg-6 col-md-6 col-sm-12">
       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">
         <ul class="d-none">
-          <li data-label="chartTitle">ICU beds in</li>
+          <li data-label="chartTitleState">ICU beds in California</li>
+          <li data-label="chartTitleCounty">ICU beds in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior day total ({CHANGE_FACTOR} decrease)</li>

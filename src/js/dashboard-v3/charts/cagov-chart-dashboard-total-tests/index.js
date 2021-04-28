@@ -98,9 +98,15 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
       total_tests_performed:formatValue(latestRec.total_tests_performed,{format:'integer'}),
       new_tests_reported:formatValue(Math.abs(latestRec.new_tests_reported),{format:'integer'}),
       new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
+      REGION:regionName,
     };
 
-    this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.currentLocation = regionName;
@@ -118,10 +124,11 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
                           'right_y_fmt':'integer',
                           'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
                           'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
-                          // 'pending_date':this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD,
-                          'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
-                          'pending_legend':this.translationsObj.pending,
                         };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
     if (addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }

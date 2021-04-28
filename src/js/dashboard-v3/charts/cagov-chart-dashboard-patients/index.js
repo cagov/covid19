@@ -91,15 +91,26 @@ class CAGovDashboardPatients extends window.HTMLElement {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
+      REGION:regionName,
     };
 
     if (this.chartConfigFilter == 'icu') {
-      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
+      if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleStateICU, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCountyICU, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
       this.translationsObj.currentLocation = regionName;
     } else {
-      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+      if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
       this.translationsObj.currentLocation = regionName;
