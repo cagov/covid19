@@ -101,7 +101,10 @@ class CAGovDashboardTotalTests extends window.HTMLElement {
       REGION:regionName,
     };
 
-    if (regionName == 'California') {
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
     } else {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);

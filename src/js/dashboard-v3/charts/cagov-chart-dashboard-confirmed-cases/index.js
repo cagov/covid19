@@ -102,7 +102,10 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
       REGION:regionName,
     };
-    if (regionName == 'California') {
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
     } else {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);

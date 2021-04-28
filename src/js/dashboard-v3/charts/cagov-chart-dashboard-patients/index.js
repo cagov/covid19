@@ -95,7 +95,10 @@ class CAGovDashboardPatients extends window.HTMLElement {
     };
 
     if (this.chartConfigFilter == 'icu') {
-      if (regionName == 'California') {
+      if (!('chartTitleStateICU' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleStateICU, repDict);
       } else {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCountyICU, repDict);
@@ -105,7 +108,10 @@ class CAGovDashboardPatients extends window.HTMLElement {
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
       this.translationsObj.currentLocation = regionName;
     } else {
-      if (regionName == 'California') {
+      if (!('chartTitleState' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
       } else {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
