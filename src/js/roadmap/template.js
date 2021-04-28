@@ -31,28 +31,37 @@ export default function template(json) {
               role="status"
               aria-live="assertive"
               aria-atomic="true"
-              >Type 2 or more characters for results.</span
+              >${json.countyTierPrompt}</span
             >
             <div id="location-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.countyNotFound}</div>
+
           </div>
         </div>
         <div class="form-group col-md-6 reopening-form-group">
           <label for="activity-query">${json.activityLabel}</label>
           <div class="awesomplete">
             <input
+              id="activity-query"
+              class="form-control"
+              type="text"
+              placeholder="${json.activityPlaceholder}"
+              autocomplete="off"
+              role="combobox"
               aria-expanded="false"
               aria-owns="awesomplete_list_2"
               aria-controls="awesomplete_list_2"
-              autocomplete="off"
-              class="form-control"
+              aria-autocomplete="list"
               data-list=""
               data-multiple=""
-              id="activity-query"
-              role="combobox"
-              type="text"
-              placeholder="${json.activityPlaceholder}"
             />
-            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button> 
+            <button type="button" class="clear d-none" id="clearActivity"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">${json.clearText}</span></button>
+            <span
+              class="visually-hidden"
+              role="status"
+              aria-live="assertive"
+              aria-atomic="true"
+              >${json.activityTierPrompt}</span
+            >
             <div id="activity-error" style="visibility: hidden" class="reopening-field-error text-danger text-small text-left">${json.activityNotFound}</div>
           </div>
         </div>
