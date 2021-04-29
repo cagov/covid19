@@ -4,6 +4,27 @@
 
 const fetch = require('node-fetch')
 
+function parseSnowflakeDate(dateStr) {
+  const tokens = dateStr.split('-')
+  const yyyy = +tokens[0];
+  const mm = +tokens[1];
+  const dd = +tokens[2];
+  return new Date(yyyy,mm-1,dd);
+}
+function getSnowflakeStyleDateJS(date) {
+  // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
+  let month = '' + (date.getMonth() + 1),
+  day = '' + date.getDate(),
+  year = date.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 module.exports = function() {
   let dataDomain = 'https://files.covid19.ca.gov/data/reviewed/';
   // console.log(dataDomain+'equitydash/equitytopboxdatav2.json');
@@ -70,7 +91,13 @@ module.exports = function() {
 
       output[0].lowincome_date = data.LowIncome[0].DATE;
       output[0].demographics_date = raceLatino.REPORT_DATE;
-
+      const theDate = parseSnowflakeDate(data.LowIncome[0].DATE);
+      let WEDNESDAY_ADJUSTMENT = 0;
+      if (theDate.getDay() < 2) {
+        WEDNESDAY_ADJUSTMENT = 2 - theDate.getDay();
+        theDate.setDate(theDate.getDate() + WEDNESDAY_ADJUSTMENT);
+      }
+      output[0].publish_date = getSnowflakeStyleDateJS(theDate);
       resolve(output);
     });
   });
