@@ -134,22 +134,18 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('roadmap', env.dev) }}
 {% endpagesection -%}
 
-{%- pagesection page, "safer-economy-industry-guidance" %}
-	{{ macros.includeJavascriptByEnv('roadmap-airtable-v1', env.dev) }}
-{% endpagesection -%}
-
-{%- pagesection page, "safer-economy-tier-levels" %}
-	{{ macros.includeJavascriptByEnv('roadmap-tier-level', env.dev) }}
-{% endpagesection -%}
-
 {%- pagesection page, "v1-state-dashboard" %}
 	{{ macros.includeJavascriptByEnv('dashboard-v1', env.dev) }}
 {% endpagesection -%}
-{%- pagesection page, "state-dashboard" %}
+{%- pagesection page, "v2-state-dashboard" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('dashboard-v2', env.dev) }}
 {% endpagesection -%}
 {%- pagesection page, "v3-state-dashboard" %}
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
+	{{ macros.includeJavascriptByEnv('dashboard-v3', env.dev) }}
+{% endpagesection -%}
+{%- pagesection page, "state-dashboard" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('dashboard-v3', env.dev) }}
 {% endpagesection -%}
@@ -168,12 +164,6 @@ ga('tracker3.send', 'pageview');
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('vaccines', env.dev) }}
 {% endpagesection -%}
-
-{%- pagesection page, "vaccination-progress-data" %}
-	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
-	{{ macros.includeJavascriptByEnv('vaccines', env.dev) }}
-{% endpagesection -%}
-
 {%- pagesection page, "charts-sandbox" %}
     <script src="https://code.highcharts.com/highcharts.js"></script>
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
@@ -182,9 +172,8 @@ ga('tracker3.send', 'pageview');
 
 <script nomodule src="https://d3js.org/d3.v5.min.js"></script><!-- lot of transpilation issues, using older d3 for ie -->
 <script nomodule src="/js/es5.js"></script>
-<cagov-anchor-events></cagov-anchor-events>
+<cagov-anchor-events />
 {% if page.url != "/" %} <!-- Do not display go-to-top on homepage. -->
 	<cagov-go-to-top data-hide-after="{{text.var_go_to_top_duration}}" data-label="{{text.var_go_to_top_label}}"></cagov-go-to-top>
 {% endif %}
-
 {% include "googletranslate.njk" %}
