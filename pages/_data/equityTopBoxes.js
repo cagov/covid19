@@ -4,6 +4,19 @@
 
 const fetch = require('node-fetch')
 
+function getSnowflakeStyleDateJS(date) {
+  let month = '' + (date.getMonth() + 1),
+  day = '' + date.getDate(),
+  year = date.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 module.exports = function() {
   let dataDomain = 'https://files.covid19.ca.gov/data/reviewed/';
   // console.log(dataDomain+'equitydash/equitytopboxdatav2.json');
@@ -71,6 +84,11 @@ module.exports = function() {
       output[0].lowincome_date = data.LowIncome[0].DATE;
       output[0].demographics_date = raceLatino.REPORT_DATE;
 
+      const theDate = new Date();
+      while (theDate.getDay() != 2) {
+        theDate.setDate(theDate.getDate() - 1);
+      }
+      output[0].publish_date = getSnowflakeStyleDateJS(theDate);
       resolve(output);
     });
   });

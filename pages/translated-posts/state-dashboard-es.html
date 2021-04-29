@@ -3,15 +3,12 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Consulte los datos más recientes sobre casos, muertes, pruebas y niveles de los condados."
 author: "State of California"
-publishdate: "2021-04-26T16:35:10Z"
+publishdate: "2021-04-28T17:55:54Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Nota del 26 de abril de 2021</h2>
-<p>El conteo actual de dosis administradas de vacunas está incompleto debido a la latencia del procesamiento de datos. Los conteos completos se actualizarán en este tablero una vez que estén disponibles conforme avance esta semana.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -178,8 +175,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
+<div class="row d-flex justify-content-md-center"><!-- comment -->    <div class="toggle-group-container cases-group">
     <div id="cases-county-graph" class="toggle-group-element">
       <div class="tableauPlaceholder" id="casesChartCounty"></div>
     </div>
