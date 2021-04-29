@@ -1187,6 +1187,253 @@ class Awesomplete {
     }
 }
 
+function template$7(countyLabel, countyPlaceholder) {
+  return /*html*/`
+    <div class="row d-flex justify-content-md-center">
+      <form class="form-inline" id="county-form">
+        <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">
+          <label for="location-query" class="sr-only">County</label>
+          <div class="awesomplete">
+            <input aria-expanded="false" aria-owns="awesomplete_list_1"  aria-controls="awesomplete_list_1"  autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Enter a county">
+            <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Clear</span></button>
+            <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true">Type 2 or more characters for results.</span>
+          </div>
+        </div>
+      <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Get county data</button>
+      </form>
+    </div>
+    <div class="row d-flex justify-content-md-center">
+      <span id="county-query-error" class="error-text d-none">County not found</span>
+    </div>`
+}
+
+/* temporary fix for charts that don't render well in RTL languages, 
+   such as arabic
+*/
+
+function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
+    let contDiv = elem.querySelector(divSelector);
+    if (contDiv != null) {
+      // temporary override for rtl languages (arabic)
+      // console.log("containing div found", contDiv);
+      contDiv.setAttribute('dir', desired_dir);
+    }
+}
+
+class CAGovCountySearch extends window.HTMLElement {
+
+  processCountySearchInput(typedInValue) {
+        let foundCounty = '';
+        // console.log("Search Input: ",typedInValue);
+        if(typedInValue == '') {
+          this.state['county'] = 'California';
+          this.state.statewide = true;
+        }
+        // console.log("Searching for ",typedInValue,"in",component.countyList);
+        this.countyList.forEach(county => {
+          if(county.toLowerCase() == typedInValue.toLowerCase()) {
+            foundCounty = county;
+          }
+        });
+        if(foundCounty) {
+          this.state['county'] = foundCounty;
+          this.state.statewide = false;
+          document.querySelector('#location-query').value = foundCounty;
+          console.log("emitCounty via search:",foundCounty);
+          this.emitCounty();
+          document.querySelector('#county-query-error').style.display = 'none';
+        } else {
+          // generate failed search event...
+          // console.log("county not found: ",typedInValue);
+          // console.log("emitCounty via typo",typedInValue);
+          // this.emitCountyTypo(typedInValue);
+          document.querySelector('#county-query-error').style.display = 'block';
+        }
+  }
+
+  connectedCallback () {
+    if(this.dataset.countyLabel) {
+      this.dataset.countyLabel;
+    }
+    this.state = {};
+    this.state.statewide = false;
+
+    this.innerHTML = template$7();
+    this.addListeners();
+
+    window.fetch('/countystatus.json')
+    .then(response => response.json())
+    .then(function(data) {
+      this.countyStatuses = data;
+      let aList = [];
+      this.countyStatuses.forEach(c => { aList.push(c.county); });
+      this.countyList = aList;
+      this.setupAutoComp('#location-query', 'county', aList);
+      document.querySelector('#county-form').addEventListener('submit',function(event) {
+        event.preventDefault();
+        document.querySelector('#county-query-error').style.display = 'none';
+        // do I have a full county typed in here?
+        let typedInValue = document.querySelector('#location-query').value.trim();
+        this.processCountySearchInput(typedInValue);
+      }.bind(this));  
+    }.bind(this));
+
+    rtlOverride(this, 'div', 'ltr');
+
+  }
+
+  setupAutoComp(fieldSelector, fieldName, aList) {
+    let component = this;
+    const awesompleteSettings = {
+      autoFirst: true,
+      filter: function (text, input) {
+        return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+      },
+      item: function (text, input) {
+        return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+      },
+      replace: function (selectedSuggestion) {
+        let typedInValue = selectedSuggestion.value;
+        component.processCountySearchInput(typedInValue);
+      },
+      list: aList
+    };
+
+    new Awesomplete(fieldSelector, awesompleteSettings);
+  }
+
+  emitCounty() {
+    // jbum: If we get statewide: true, reset the dialog to as it appears on refresh
+    // console.log("Emit County",this.state);
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+    const event = new window.CustomEvent('county-selected', {
+      detail: {
+        county: this.state.county,
+        statewide: this.state.statewide,
+        reset: this.state.statewide,
+        how: 'emitCounty'
+      }
+    });
+    // console.log("Emitting county-select",event.detail);
+    this.dispatchEvent(event);    
+  }
+
+  /*
+  emitCountyTypo(misspelling) {
+    // Dispatch custom event so we can pick up and track this usage elsewhere.
+   // console.log("Emit County Typo");
+   const event = new window.CustomEvent('county-search-typo', {
+      detail: {
+        county: misspelling,
+      }
+    });
+    this.dispatchEvent(event);    
+  }
+  */
+
+
+  addListeners() {
+    let countyInput = this.querySelector("#location-query");
+    let clearBtn = this.querySelector("#clearCounty");
+    countyInput.addEventListener("focus", inputValue);    
+    countyInput.addEventListener("input", inputValue);
+    countyInput.addEventListener("blur", inputValue);
+    
+    function inputValue() {
+      if (countyInput && countyInput.value) {
+        clearBtn.classList.remove('d-none');
+      } else {
+        clearBtn.classList.add('d-none');
+      }
+    }
+
+    clearBtn.addEventListener("blur", inputValue);    
+    clearBtn.addEventListener("click", function(e) {
+      // console.log("Clear Button Clicked");
+      e.preventDefault();
+      countyInput.value = '';
+      this.state['county'] = 'California';
+      this.state.statewide = true;
+      // console.log("C emitting county",this.state);
+      console.log("Emit county via clearbutton");
+      this.emitCounty();
+      clearBtn.classList.add('d-none');
+      document.querySelector('#county-query-error').style.display = 'none';
+    }.bind(this));
+  }
+
+}
+window.customElements.define('cagov-county-search', CAGovCountySearch);
+
+class CAGovCountyButtons extends window.HTMLElement {
+  connectedCallback () {
+    this.resetText = 'Statewide';
+    this.county = '';
+    
+    let searchElement = document.querySelector('cagov-county-search');
+    searchElement.addEventListener('county-selected', function (e) {
+      console.log("County-selected event: " , e.detail);
+      if (e.detail.reset) {
+        this.innerHTML = '';
+      }
+      else if(e.detail.statewide) {
+        this.innerHTML = this.template(true);
+      } else {
+        this.county = e.detail.county;
+        // console.log("Inner HTML: " , this.template(false));
+        this.innerHTML = this.template(false);
+      }
+     }.bind(this), false);
+
+    this.addEventListener('click',function(event) {
+      event.preventDefault();
+      if(event.target.classList.contains('js-toggle-county')) {
+        let clickedCounty = event.target.textContent;
+        // console.log("Issuing county-selected for button");
+
+        if(!event.target.classList.contains('active')) {
+          let emissionEvent = new window.CustomEvent('county-selected', {
+            detail: {
+              county: clickedCounty,
+              statewide: false,
+              reset: false,
+              how: 'tab'
+            }
+          });
+          if(event.target.classList.contains('statewide')) {
+            emissionEvent = new window.CustomEvent('county-selected', {
+              detail: {
+                county: 'California',
+                statewide: true,
+                reset: false,
+                how: 'tab'
+              }
+            });
+          }
+          // const event2 = new window.CustomEvent('tab-select',{detail:{tab_selected: emissionEvent.detail.county}});
+          // window.dispatchEvent(event2);    
+          searchElement.dispatchEvent(emissionEvent);
+        }
+      }
+    });
+
+  }
+
+
+
+
+  template(isStatewide) {
+    // console.log("Template isStatewide=",isStatewide);
+    return /*html*/`<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+    <div class="text-center large-tabs">
+          <button class="large-tab js-toggle-county county ${!isStatewide ? 'active' : ''}">${this.county}</button>
+          <button class="large-tab js-toggle-county statewide ${isStatewide ? 'active' : ''}">${this.resetText}</button>
+        </div>
+    </div>`
+  }
+}
+window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
+
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -1214,8 +1461,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$5 = "cagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$5);
+var css_248z$6 = "cagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$6);
 
 /**
  * Render bar chart for vaccinations group.
@@ -1223,7 +1470,7 @@ styleInject(css_248z$5);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template$5({
+function template$6({
   chartTitle = "Confirmed cases by race and ethnicity in California",
   chartDataLabel = null,
 }) {
@@ -1348,19 +1595,6 @@ function getScreenResizeCharts() {
 
   window.addEventListener("resize", handleResize);
   handleResize();
-}
-
-/* temporary fix for charts that don't render well in RTL languages, 
-   such as arabic
-*/
-
-function rtlOverride(elem, divSelector='.svg-holder', desired_dir='ltr') {
-    let contDiv = elem.querySelector(divSelector);
-    if (contDiv != null) {
-      // temporary override for rtl languages (arabic)
-      // console.log("containing div found", contDiv);
-      contDiv.setAttribute('dir', desired_dir);
-    }
 }
 
 // Generic Formatters
@@ -1500,7 +1734,7 @@ function writeLegend(svg, data, x, y, baselineData) {
  * @param {number} x 
  * @param {number} y 
  */
-function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
+function writeBars$1(svg, data, x, y, baselineData, tooltip, rootID='barid') {
     let max_x_domain = x.domain()[1];
     let component = this;
 
@@ -1612,7 +1846,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
  * @param {*} extrasFunc @TODO what are the inputs?
  */
 
- function renderChart(extrasFunc = null, baselineData = null, tooltip = null, rootID='barid') {
+ function renderChart$1(extrasFunc = null, baselineData = null, tooltip = null, rootID='barid') {
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata;
     // this statement produces an array of strings in IE11 and an array of numbers in modern browsers
@@ -1666,7 +1900,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
 
     this.svg.selectAll("g").remove();
 
-    writeBars.call(this, this.svg, data, this.x, this.y, baselineData, tooltip, rootID);
+    writeBars$1.call(this, this.svg, data, this.x, this.y, baselineData, tooltip, rootID);
     writeLegend.call(this, this.svg, data, this.x, this.y, baselineData);
 
     if (extrasFunc) {
@@ -1691,6 +1925,30 @@ function parseSnowflakeDate(dateStr) {
     return new Date(yyyy,mm-1,dd);
 }
 
+// Return local date string in form YYYY-MM-DD adjusted for dayDelta (0 for today -1 for yesterday)
+//
+
+function getSnowflakeStyleDateJS(date) {
+    // return date.toLocaleString( 'us', { year: "numeric", month: '2-digit', year:'2-digit' });
+    let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
+function getSnowflakeStyleDate(dayDelta) {
+    let date = new Date();
+    date.setDate(date.getDate() + dayDelta);
+    return getSnowflakeStyleDateJS(date);
+}
+
 function reformatJSDate(theDate, // expects javascript date
     fmt={ month: "long", day: 'numeric', year:'numeric' }) 
 {
@@ -1698,6 +1956,25 @@ function reformatJSDate(theDate, // expects javascript date
     theDate.toLocaleString( document.documentElement.lang, fmt);
     // console.log(dateStr + " --> " + readableDate);
     return readableDate;
+}
+
+
+// Date converter for use on chart footnotes.
+// Converts a string (typically from Snowflake) 
+// in the form YYYY-MM-DD
+//
+// into a readable localized date, such as 
+//    December 12, 2020
+// or 
+//    12 de diciembre de 2020
+function reformatReadableDate(dateStr, // expects YYYY-MM-DD
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }, dayDelta=0) {
+
+    const theDate = parseSnowflakeDate(dateStr);
+    if (dayDelta != 0) {
+        theDate.setDate(theDate.getDate() + dayDelta);
+    }
+    return reformatJSDate(theDate, fmt);
 }
 
 /* Substitute strings in text using either  or {var}, case-sensitive
@@ -1720,7 +1997,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
     console.log("Loading CAGovDashboardGroupsRaceEthnicityCases");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template$5(this.translationsObj);
+    this.innerHTML = template$6(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -1911,7 +2188,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
           d3.select(document.querySelector("#ethnicityGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -1927,8 +2204,8 @@ window.customElements.define(
   CAGovDashboardGroupsRaceEthnicityCases
 );
 
-var css_248z$4 = "cagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$4);
+var css_248z$5 = "cagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-race-ethnicity-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$5);
 
 /**
  * Render bar chart for vaccinations group.
@@ -1936,7 +2213,7 @@ styleInject(css_248z$4);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template$4({
+function template$5({
   chartTitle = "Confirmed deaths by race and ethnicity in California",
   chartDataLabel = null,
 }) {
@@ -1957,7 +2234,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardGroupsRaceEthnicityDeaths");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template$4(this.translationsObj);
+    this.innerHTML = template$5(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -2136,7 +2413,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-deaths');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-deaths');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -2152,8 +2429,8 @@ window.customElements.define(
   CAGovDashboardGroupsRaceEthnicityDeaths
 );
 
-var css_248z$3 = "cagov-chart-dashboard-groups-gender-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$3);
+var css_248z$4 = "cagov-chart-dashboard-groups-gender-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$4);
 
 /**
  * Render bar chart for vaccinations group.
@@ -2161,7 +2438,7 @@ styleInject(css_248z$3);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template$3({
+function template$4({
   chartTitle = "Confirmed cases by gender in California",
   chartDataLabel = null,
 }) {
@@ -2183,7 +2460,7 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
     console.log("Loading CAGovDashboardGroupsGenderCases");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template$3(this.translationsObj);
+    this.innerHTML = template$4(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -2369,7 +2646,7 @@ class CAGovDashboardGroupsGenderCases extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-cases');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-cases');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -2385,8 +2662,8 @@ window.customElements.define(
   CAGovDashboardGroupsGenderCases
 );
 
-var css_248z$2 = "cagov-chart-dashboard-groups-gender-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$2);
+var css_248z$3 = "cagov-chart-dashboard-groups-gender-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-gender-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$3);
 
 /**
  * Render bar chart for vaccinations group.
@@ -2394,7 +2671,7 @@ styleInject(css_248z$2);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template$2({
+function template$3({
   chartTitle = "Confirmed deaths by gender in California",
   chartDataLabel = null,
 }) {
@@ -2415,7 +2692,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardGroupsGenderDeaths");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template$2(this.translationsObj);
+    this.innerHTML = template$3(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -2588,7 +2865,7 @@ class CAGovDashboardGroupsGenderDeaths extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-deaths');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-gender-deaths');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -2604,8 +2881,8 @@ window.customElements.define(
   CAGovDashboardGroupsGenderDeaths
 );
 
-var css_248z$1 = "cagov-chart-dashboard-groups-age-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z$1);
+var css_248z$2 = "cagov-chart-dashboard-groups-age-cases.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-cases.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$2);
 
 /**
  * Render bar chart for vaccinations group.
@@ -2613,7 +2890,7 @@ styleInject(css_248z$1);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template$1({
+function template$2({
   chartTitle = "Confirmed cases by age in California",
   chartDataLabel = null,
 }) {
@@ -2635,7 +2912,7 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
     console.log("Loading CAGovDashboardGroupsAgeCases");
     this.translationsObj = getTranslations(this);
     // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template$1(this.translationsObj);
+    this.innerHTML = template$2(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -2811,7 +3088,7 @@ class CAGovDashboardGroupsAgeCases extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-cases');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-cases');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -2827,8 +3104,8 @@ window.customElements.define(
   CAGovDashboardGroupsAgeCases
 );
 
-var css_248z = "cagov-chart-dashboard-groups-age-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
-styleInject(css_248z);
+var css_248z$1 = "cagov-chart-dashboard-groups-age-deaths.chart .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-dashboard-groups-age-deaths.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z$1);
 
 /**
  * Render bar chart for vaccinations group.
@@ -2836,7 +3113,7 @@ styleInject(css_248z);
  * @param {string} translationsObj.chartTitle - Label for the chart
  * @param {string} translationsObj.chartDataLabel - Chart description
  */
-function template({
+function template$1({
   chartTitle = "Confirmed deaths by age in California",
   chartDataLabel = null,
 }) {
@@ -2857,7 +3134,7 @@ class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardGroupsAgeDeaths");
     this.translationsObj = getTranslations(this);
-    this.innerHTML = template(this.translationsObj);
+    this.innerHTML = template$1(this.translationsObj);
     // Settings and initial values
     this.nbr_bars = 8;
     this.bar_vspace = 60;
@@ -3021,7 +3298,7 @@ class CAGovDashboardGroupsAgeDeaths extends window.HTMLElement {
           // let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           // this.alldata = croppedData;
 
-          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-deaths');
+          renderChart$1.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-age-deaths');
           // this.resetTitle({
           //   region: regionName, 
           //   chartTitle: this.translationsObj.chartTitle,
@@ -3037,193 +3314,2169 @@ window.customElements.define(
   CAGovDashboardGroupsAgeDeaths
 );
 
-window.fetch('/countystatus.json')
-.then(response => response.json())
-.then(function(data) {
-  let aList = [];
-  data.forEach(c => { aList.push(c.county); });
-  const awesompleteSettings = {
-    autoFirst: true,
-    filter: function (text, input) {
-      return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
-    },  
-    item: function (text, input) {
-      return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
-    },
-    replace: function (text) {
-      let before = this.input.value.match(/^.+,\s*|/)[0];
-      let finalval = before + text;
-      this.input.value = finalval;        
-      countySelected(finalval);
-    },
-    list: aList
-  };
-  new Awesomplete('#location-query', awesompleteSettings);
-  setupFormSubmitListener(aList);
-});
-
-var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
-
-function setupFormSubmitListener(aList) {
-  document.querySelector('#county-form').addEventListener('submit',function(event) {
-    event.preventDefault();
+class CAGovChartFilterButtons extends window.HTMLElement {
+  connectedCallback () {
     
-    clearBtn.classList.remove('d-none');
-    document.querySelector('#county-query-error').style.display = 'none';
-    // do I have a full county typed in here?
-    let typedInValue = document.querySelector('#location-query').value;
-    let foundCounty = '';
-    aList.forEach(county => {
-      if(county.toLowerCase() == typedInValue.toLowerCase()) {
-        foundCounty = county;
+    this.addEventListener('click',function(event) {
+      event.preventDefault();
+      let clickedFilterText = event.target.textContent;
+      let clickedFilterKey = event.target.dataset.key;
+      if (clickedFilterKey != undefined) {
+        if(!event.target.classList.contains('active')) {
+          let emissionEvent = new window.CustomEvent('filter-selected', {
+            detail: {
+              filterKey: clickedFilterKey,
+              clickedFilterText: clickedFilterText
+            }
+          });
+          this.resetActive();
+          event.target.classList.add('active');
+          this.dispatchEvent(emissionEvent); // this event fire is last because charts look at active class on filter to get new text
+        }
       }
     });
-    if(foundCounty) {
-      countySelected(foundCounty);
-    } else {
-      document.querySelector('#county-query-error').style.display = 'block';
-    }
-  }.bind(this));  
+
+    // listen for county events, hide deaths
+    let statewideOnlyButton = this.querySelector("button[data-key='deaths']");
+    let searchElement = document.querySelector('cagov-county-search');
+    searchElement.addEventListener('county-selected', function (e) {
+      if(statewideOnlyButton) {
+        if(e.detail.statewide) {
+          statewideOnlyButton.style.display = 'block';
+        } else {
+          statewideOnlyButton.style.display = 'none';
+        }
+        // we were on the filter we are now hiding, reset to first
+        if(statewideOnlyButton.classList.contains('active')) {
+          statewideOnlyButton.classList.remove('active');
+          this.querySelector('button').classList.add('active'); // make ifrst one active instead
+        }
+      }
+    }.bind(this), false);
+
+  }
+
+  resetActive() {
+    let buttons = this.querySelectorAll('.small-tab');
+    buttons.forEach(b => {
+      if(b.classList.contains('active')) {
+        b.classList.remove('active');
+      }
+    });
+  }
+
+}
+window.customElements.define('cagov-chart-filter-buttons', CAGovChartFilterButtons);
+
+var css_248z = ".chart .svg-holder g.fg-bars {\n  fill: #deeaf6; }\n\n.chart .svg-holder g.fg-line path {\n  fill: none;\n  stroke: black;\n  stroke-width: 2px; }\n\n.chart .svg-holder g.fg-line.second-line path {\n  opacity: 0.5; }\n\n.chart .svg-holder g.pending-block rect {\n  fill: black;\n  opacity: 0.05; }\n\n.chart .svg-holder g.pending-block text {\n  font-weight: 300;\n  font-size: 0.8rem;\n  fill: black; }\n\n.chart .svg-holder g.pending-block text {\n  text-anchor: end;\n  dominant-baseline: auto; }\n\n.chart .svg-holder g.date-axis line {\n  stroke-width: 0.5px;\n  stroke: black; }\n\n.chart .svg-holder g.date-axis text {\n  font-weight: 300;\n  font-size: 0.75rem;\n  fill: black; }\n\n.chart .svg-holder g.date-axis text {\n  text-anchor: middle;\n  dominant-baseline: hanging; }\n\n.chart .svg-holder g.date-axis text.x-axis-legend {\n  font-weight: 300;\n  text-anchor: end;\n  dominant-baseline: middle; }\n\n.chart .svg-holder g.county-legend rect {\n  fill: black; }\n\n.chart .svg-holder g.county-legend text {\n  font-weight: 300;\n  font-size: 0.75rem;\n  fill: black; }\n\n.chart .svg-holder g.county-legend text {\n  text-anchor: left;\n  dominant-baseline: middle; }\n\n.chart .svg-holder g.state-legend rect {\n  fill: gray; }\n\n.chart .svg-holder g.state-legend text {\n  font-weight: 300;\n  font-size: 0.75rem;\n  fill: black; }\n\n.chart .svg-holder g.state-legend text {\n  text-anchor: left;\n  dominant-baseline: middle; }\n\n.chart .svg-holder g.left-y-axis line {\n  stroke-width: 0.5px;\n  stroke: black;\n  opacity: 0.15; }\n\n.chart .svg-holder g.left-y-axis text {\n  font-weight: 400;\n  font-size: 0.75rem;\n  fill: black; }\n\n.chart .svg-holder g.left-y-axis text {\n  text-anchor: end;\n  dominant-baseline: middle; }\n\n.chart .svg-holder g.left-y-axis text.left-y-axis-legend {\n  font-weight: 700;\n  font-size: 0.95rem;\n  text-anchor: start;\n  dominant-baseline: hanging; }\n\n.chart .svg-holder g.right-y-axis line {\n  stroke-width: 0.5px;\n  stroke: #608cbd; }\n\n.chart .svg-holder g.right-y-axis text {\n  font-weight: 400;\n  font-size: 0.75rem;\n  fill: #1f2574; }\n\n.chart .svg-holder g.right-y-axis text {\n  text-anchor: start;\n  dominant-baseline: middle; }\n\n.chart .svg-holder g.right-y-axis text.right-y-axis-legend {\n  font-weight: 700;\n  font-size: 0.95rem;\n  text-anchor: end;\n  dominant-baseline: hanging; }\n\n.chart .svg-holder text.line-legend text {\n  font-weight: 300;\n  font-size: 1rem;\n  fill: black;\n  text-anchor: middle;\n  dominant-baseline: auto; }\n\n.chart .svg-holder g.tt-marker {\n  fill: black;\n  opacity: 0.5; }\n\n.chart .svg-holder g.line-legend text {\n  font-weight: 400;\n  font-size: 0.8rem;\n  text-anchor: middle;\n  dominant-baseline: auto; }\n\n.chart .svg-holder g.line-legend line {\n  stroke-width: 0.25px;\n  stroke: black; }\n\n.chart .chart-title {\n  font-weight: 300;\n  font-size: 1.2rem;\n  margin-bottom: 0px; }\n\n.chart .chart-header {\n  margin-bottom: 24px;\n  font-weight: 300;\n  font-size: 0.95rem; }\n\n.chart .chart-header .header-line1 {\n  font-weight: 700;\n  font-size: 0.95rem; }\n\n.chart .chart-header .big-num {\n  font-weight: 700;\n  font-size: 1.2rem;\n  color: #1f2574; }\n\n.chart .chart-header .med-num {\n  font-weight: 400;\n  font-size: 1rem;\n  color: #1f2574; }\n\n.chart div.tooltip-container {\n  font-weight: 300;\n  font-size: 0.75rem;\n  line-height: 2;\n  color: black;\n  text-align: center; }\n\n.chart .tooltip-container {\n  position: absolute;\n  z-index: 10;\n  visibility: hidden;\n  background: #fff;\n  width: 280px; }\n\n.chart .tooltip-container {\n  pointer-events: none;\n  /* padding: 10px; */\n  padding: 1rem 2rem;\n  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);\n  /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */\n  border: none; }\n\n.chart .pending-caveat {\n  font-style: italic; }\n\n.chart a.dlbutton {\n  border-radius: 3px;\n  background-color: aqua;\n  color: blue;\n  font-weight: 300;\n  font-size: 0.5rem; }\n\n.d-hide {\n  display: none; }\n";
+styleInject(css_248z);
+
+/**
+ * Generic template for mixed line/bar charts on State Dashboard
+ * 
+ */
+function template(chartOptions, {
+  post_chartTitle = "chart title",
+  post_chartLegend1 = "Chart Legend 1", // expected
+  post_chartLegend2 = "Chart Legend 2", // expected
+  post_chartLegend3 = null, // only used if provided
+  filterTabLabel1 = 'Tab Label 1',
+  filterTabLabel2 = 'Tab Label 2',
+}) {
+  let tabMarkup = '';
+  if ('filterKeys' in chartOptions) {
+    let active1 = this.chartConfigFilter == chartOptions.filterKeys[0]? "active" : "";
+    let active2 = this.chartConfigFilter == chartOptions.filterKeys[1]? "active" : "";
+    tabMarkup = `<cagov-chart-filter-buttons class="filter-buttons--statedash js-re-smalls js-filter-${this.chartConfigKey}">
+            <div class="d-flex justify-content-center">
+              <button class="small-tab ${active1}" data-key="${chartOptions.filterKeys[0]}">${filterTabLabel1}</button>
+              <button class="small-tab ${active2}" data-key="${chartOptions.filterKeys[1]}">${filterTabLabel2}</button>
+            </div>
+          </cagov-chart-filter-buttons>`;
+  }
+
+  return /*html*/ `
+    <div class="py-2">
+      <div class="bg-white pt-2 pb-1">
+        <div class="mx-auto chart-histogram">
+            <div class="chart-title">${post_chartTitle}</div>
+            ${tabMarkup}
+            <div class="chart-header">
+            <div class="header-line header-line1">${post_chartLegend1}</div>
+            <div class="header-line">${post_chartLegend2}</div>
+` +
+(post_chartLegend3?
+`            <div class="header-line">${post_chartLegend3}</div>
+` : '') +
+`            </div>
+            <div class="svg-holder"></div>
+            <!-- <a class="dl-button" role="button">download</a> -->
+        </div>
+      </div>
+    </div>
+    `;
 }
 
-function countySelected(county) {
-  document.querySelector('#county-query-error').style.display = 'none';
-  //trigger the filter on all the county dashboards
+var cases = {
+	episode: {
+		chartName: "cagov-chart-dashboard-confirmed-cases",
+		latestField: "CONFIRMED_CASES",
+		seriesField: "CONFIRMED_CASES_EPISODE_DATE",
+		seriesFieldAvg: "AVG_CASE_RATE_PER_100K_7_DAYS",
+		dataUrl: "confirmed-cases/california.json",
+		dataUrlCounty: "confirmed-cases/<county>.json",
+		rootId: "cases-ep",
+		filterKeys: [
+			"episode",
+			"reported"
+		]
+	},
+	reported: {
+		chartName: "cagov-chart-dashboard-confirmed-cases",
+		latestField: "CONFIRMED_CASES",
+		seriesField: "CONFIRMED_CASES_REPORTED_DATE",
+		seriesFieldAvg: "AVG_CASE_REPORT_RATE_PER_100K_7_DAYS",
+		dataUrl: "confirmed-cases/california.json",
+		dataUrlCounty: "confirmed-cases/<county>.json",
+		rootId: "cases-rep",
+		filterKeys: [
+			"episode",
+			"reported"
+		]
+	}
+};
+var deaths = {
+	death: {
+		chartName: "cagov-chart-dashboard-confirmed-deaths",
+		latestField: "CONFIRMED_DEATHS",
+		seriesField: "CONFIRMED_DEATHS_DEATH_DATE",
+		seriesFieldAvg: "AVG_DEATH_RATE_PER_100K_7_DAYS",
+		dataUrl: "confirmed-deaths/california.json",
+		dataUrlCounty: "confirmed-deaths/<county>.json",
+		rootId: "death-date",
+		filterKeys: [
+			"death",
+			"reported"
+		]
+	},
+	reported: {
+		chartName: "cagov-chart-dashboard-confirmed-deaths",
+		latestField: "CONFIRMED_DEATHS",
+		seriesField: "CONFIRMED_DEATHS_REPORTED_DATE",
+		seriesFieldAvg: "AVG_DEATH_REPORT_RATE_PER_100K_7_DAYS",
+		dataUrl: "confirmed-deaths/california.json",
+		dataUrlCounty: "confirmed-deaths/<county>.json",
+		rootId: "deaths-reported-date",
+		filterKeys: [
+			"death",
+			"reported"
+		]
+	}
+};
+var tests = {
+	testing: {
+		chartName: "cagov-chart-dashboard-total-tests",
+		latestField: "TOTAL_TESTS",
+		seriesField: "TOTAL_TESTS",
+		seriesFieldAvg: "AVG_TEST_RATE_PER_100K_7_DAYS",
+		dataUrl: "total-tests/california.json",
+		dataUrlCounty: "total-tests/<county>.json",
+		rootId: "tests-tests",
+		filterKeys: [
+			"testing",
+			"reported"
+		]
+	},
+	reported: {
+		chartName: "cagov-chart-dashboard-total-tests",
+		latestField: "TOTAL_TESTS",
+		seriesField: "REPORTED_TESTS",
+		seriesFieldAvg: "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
+		dataUrl: "total-tests/california.json",
+		dataUrlCounty: "total-tests/<county>.json",
+		rootId: "tests-rep",
+		filterKeys: [
+			"testing",
+			"reported"
+		]
+	}
+};
+var positivity = {
+	positivity: {
+		chartName: "cagov-chart-dashboard-positivity-rate",
+		latestField: "POSITIVITY_RATE",
+		seriesField: "TOTAL_TESTS",
+		seriesFieldAvg: "TEST_POSITIVITY_RATE_7_DAYS",
+		dataUrl: "positivity-rate/california.json",
+		dataUrlCounty: "positivity-rate/<county>.json",
+		rootId: "pos-rate"
+	}
+};
+var patients = {
+	hospitalized: {
+		chartName: "cagov-chart-dashboard-patients",
+		latestField: "HOSPITALIZED_PATIENTS",
+		seriesField: "HOSPITALIZED_PATIENTS",
+		seriesFieldAvg: "HOSPITALIZED_PATIENTS_14_DAY_AVG",
+		dataUrl: "patients/california.json",
+		dataUrlCounty: "patients/<county>.json",
+		rootId: "hosp-p",
+		filterKeys: [
+			"hospitalized",
+			"icu"
+		]
+	},
+	icu: {
+		chartName: "cagov-chart-dashboard-patients",
+		latestField: "ICU_PATIENTS",
+		seriesField: "ICU_PATIENTS",
+		seriesFieldAvg: "ICU_PATIENTS_14_DAY_AVG",
+		dataUrl: "patients/california.json",
+		dataUrlCounty: "patients/<county>.json",
+		rootId: "hosp-p",
+		filterKeys: [
+			"hospitalized",
+			"icu"
+		]
+	}
+};
+var desktop = {
+	fontSize: 14,
+	width: 400,
+	height: 300,
+	margin: {
+		left: 50,
+		top: 30,
+		right: 60,
+		bottom: 45
+	}
+};
+var tablet = {
+	fontSize: 14,
+	width: 400,
+	height: 300,
+	margin: {
+		left: 50,
+		top: 30,
+		right: 60,
+		bottom: 45
+	}
+};
+var mobile = {
+	fontSize: 12,
+	width: 400,
+	height: 300,
+	margin: {
+		left: 50,
+		top: 30,
+		right: 60,
+		bottom: 45
+	}
+};
+var retina = {
+	fontSize: 12,
+	width: 400,
+	height: 300,
+	margin: {
+		left: 50,
+		top: 30,
+		right: 60,
+		bottom: 45
+	}
+};
+var chartConfig = {
+	cases: cases,
+	deaths: deaths,
+	tests: tests,
+	positivity: positivity,
+	patients: patients,
+	"icu-beds": {
+	"icu-beds": {
+		chartName: "cagov-chart-dashboard-icu-beds",
+		latestField: "ICU_BEDS",
+		seriesField: "ICU_BEDS",
+		seriesFieldAvg: "ICU_BEDS",
+		dataUrl: "icu-beds/california.json",
+		dataUrlCounty: "icu-beds/<county>.json",
+		rootId: "icu-beds"
+	}
+},
+	desktop: desktop,
+	tablet: tablet,
+	mobile: mobile,
+	retina: retina
+};
 
-  function resetCounties(nom) {
-    try {
-      let activeSheet = window[nom].getWorkbook().getActiveSheet().getWorksheets()[1];
-      
-      if(activeSheet) {
-        console.log("Tableau Filtering",nom,county);
-        activeSheet.applyFilterAsync("County", county, tableau.FilterUpdateType.REPLACE);
-        // showCounties();
-      } else {
-        // console.log("Worksheet not loaded yet - shouldn't happen",nom);
-        setTimeout(resetCounties.bind(this,nom),500);
+// generic histogram chart, as used on top of state dashboard
+
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
+  y.domain()[1];
+  x.domain()[1];
+
+  svg.append("g")
+    .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
+    // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    .append('path')
+    .datum(data)
+      .attr("d", d3.line()
+        .x(function(d,i) { return x(i) })
+        .y(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
+        );
+}
+
+ function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
+   if (!crop_floor) {
+     console.log("NOT CROP FLOOR");
+   }
+   let groups = svg.append("g")
+      .attr("class","fg-bars "+root_id)
+      // .attr('style','fill:#deeaf6;')
+      .selectAll("g")
+      .data(data)
+      .enter()
+        .append("g");
+    
+    if (crop_floor) { // positive only
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", d => y(d.VALUE))
+          .attr("width", 2)
+          .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
+          .attr("id", (d, i) => root_id+'-'+i);
+    } else { // positive and negative rects
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", d => Math.min(y(0),y(d.VALUE)))
+          .attr("width", 2)
+          .attr("height", d => Math.abs(y(0) - y(d.VALUE)))
+          .attr("id", (d, i) => root_id+'-'+i);
+    }
+}
+
+
+function writePendingBlock(svg, data, x, y,
+  { pending_date=null,
+    pending_legend=null,
+    root_id='barid'} ) {
+    let xgroup = svg.append("g")
+      .attr("class",'pending-block');
+
+    x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    let nbr_pending = 0;
+    for (let i = 0; i < data.length; ++i) {
+      nbr_pending += 1;
+      if (data[i].DATE == pending_date) {
+        break;
       }
-    } catch(err) {
-      // console.log("Worksheet not loaded yet",nom);    
-      setTimeout(resetCounties.bind(this,nom),500);
+    }
+    // console.log("PENDING_DATE",pending_date);
+    // console.log("Pending",nbr_pending);
+
+    xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
+      .attr("x",x(nbr_pending))
+      .attr("y",y(max_y_domain))
+      .attr("width",x(0) - x(nbr_pending))
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    xgroup.append('text')
+      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+      .text(pending_legend)
+      .attr("x",x(0))
+      .attr("y",y(max_y_domain)-4);
+}
+
+function writeCountyStateLegend(svg,x,y, {
+  county_legend = 'County',
+  state_legend = 'State',
+})
+{
+  let y_pos = this.dimensions.height - 6;
+  let x_pos = this.dimensions.margin.left;
+
+
+  let g = svg.append("g")
+    .attr("class","county-legend");
+
+  g.append('rect')
+    // .attr('style','fill:black;')
+    .attr('x',x_pos)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(county_legend)
+    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
+    .attr("x",x_pos + 36)
+    .attr("y",y_pos);
+
+  g = svg.append("g")
+    .attr("class","state-legend");
+
+  g.append('rect')
+    // .attr('style','fill:gray;')
+    .attr('x',x_pos+85)
+    .attr('y',y_pos)
+    .attr('width',24)
+    .attr('height',1);
+
+  g.append('text')
+    .text(state_legend)
+    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
+    .attr("x",x_pos+85 + 36)
+    .attr("y",y_pos);
+}
+
+
+function writeDateAxis(svg, data, x, y, 
+  { x_axis_legend=null,
+    month_modulo=3,
+    root_id='barid'} ) {
+  const tick_height = 4;
+  const tick_upper_gap = 1;
+  const tick_lower_gap = 2;
+  const axisY = this.dimensions.height - this.dimensions.margin.bottom;
+
+  let xgroup = svg.append("g")
+      .attr("class",'date-axis');
+      // .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  data.forEach((d,i) => {
+    const ymd = d.DATE.split('-');
+    const mon_idx = parseInt(ymd[1]);
+    if (mon_idx % month_modulo == 0) {
+      const day_idx = parseInt(ymd[2]);
+      if (day_idx == 1) {
+        const date_caption = mon_idx+'/1'; // ?? localize
+        let subg = xgroup.append("g")
+              .attr('class','x-tick');
+        subg.append('line')
+        .attr('x1', x(i))
+        .attr('y1', axisY+tick_upper_gap)
+        .attr('x2', x(i))
+        .attr('y2',axisY+tick_upper_gap+tick_height);
+        subg.append('text')
+         .text(date_caption)
+         // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
+         .attr("x", x(i))
+         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+      }
+    }
+  });
+  if (x_axis_legend) {
+    xgroup.append('text')
+    .attr('class','x-axis-legend')
+    .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
+    .text(x_axis_legend)
+    .attr("x", x(0))
+    .attr("y", this.dimensions.height-6); // +this.getYOffset(i)
+  }
+}
+
+// Formatter Factory
+// supported formats: num/number, pct, integer
+function getFormatter(max_v,{hint='num',digits=0})
+{
+  if (hint == 'pct') {
+    const digits = max_v < .01? 2 : max_v < .1? 1 : 0;
+    const fmtr = new Intl.NumberFormat(
+        "us",  { style: "percent", minimumFractionDigits: digits, maximumFractionDigits: digits }    );
+        return fmtr.format;
+  } else {
+    // assume num/number
+    if (max_v < 4000) {
+      const digits = (hint == 'integer')? 0 : max_v < .1? 2 : max_v < 10? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return fmtr.format;
+    } else if (max_v < 1000000) {
+      const digits = max_v < 4000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000)+"K";
+      };
+    } else if (max_v < 1000000000) {
+      const digits = max_v < 4000000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000000)+"M";
+      };
+      
+    } else {
+      const digits = max_v < 4000000000? 1 : 0;
+      const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
+      return function(v) {
+        return fmtr.format(v/1000)+"M";
+      };
     }
   }
-  resetCounties("casesChartCountyViz");
-  resetCounties("testingChartCounty");
-  resetCounties("hospitalChartCounty");
-  showCounties();
-  document.querySelectorAll('.js-toggle-county-container').forEach(c => {
-    c.classList.remove('d-none');
-  });
-  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
-    c.innerHTML = county;
-    c.classList.remove('d-none');
-  });
 }
 
-async function displayChart(containerSelector,width,height,url) {
-  let chartContainer = document.querySelector(containerSelector);
-  var chartURL = url;
-  let chartOptions = {
-    width: width+'px',
-    height: height+'px'
+function writeLeftYAxis(svg, data, x, y, 
+                        { y_axis_legend=null,
+                          left_y_fmt='num',
+                          root_id='barid' }) {
+  const y_div = getAxisDiv(y,{'hint':left_y_fmt});
+  let ygroup = svg.append("g")
+      .attr("class",'left-y-axis');
+
+  const max_y_domain = y.domain()[1];
+  const min_x_domain = x.domain()[0];
+  const max_x_domain = x.domain()[1];
+  // console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
+  const tick_left_gap = 10;
+  let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
+    let y_caption = myFormatter(yi);
+    let subg = ygroup.append("g")
+      .attr('class','y-tick');
+
+    subg.append('line')
+      .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.15;')
+      .attr('x1', x(max_x_domain))
+      .attr('y1', y(yi))
+      .attr('x2', x(min_x_domain))
+      .attr('y2', y(yi));
+
+    subg.append('text')
+      .text(y_caption)
+      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
+      .attr("x", x(max_x_domain)-tick_left_gap)
+      .attr("y", y(yi)); // +this.getYOffset(i)
+  }
+  if (y_axis_legend) {
+    ygroup.append('text')
+    .attr('class','left-y-axis-legend')
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:black;text-anchor: start; dominant-baseline:hanging;')
+    .text(y_axis_legend)
+    .attr("x", 0)
+    .attr("y", 0); // +this.getYOffset(i)
+  }
+}
+
+function writeRightYAxis(svg, data, x, y, 
+                        { y_axis_legend=null,
+                          right_y_fmt='num',
+                          root_id='barid' }) {
+  const y_div = getAxisDiv(y,{'hint':right_y_fmt});
+  let ygroup = svg.append("g")
+      .attr("class",'right-y-axis')
+      .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
+
+
+
+  const max_y_domain = y.domain()[1];
+  const min_x_domain = x.domain()[0];
+  const tick_right_gap = 24;
+
+  // console.log("Drawing Right Axis  max_y_domain",max_y_domain,root_id);
+  let myFormatter = getFormatter(max_y_domain, { hint:right_y_fmt });
+
+  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
+    let y_caption = myFormatter(yi);
+
+    let subg = ygroup.append("g")
+      .attr('class','y-tick');
+
+    // subg.append('line')
+    //   .attr('x1', x(min_x_domain)+tick_left_gap)
+    //   .attr('y1', y(yi))
+    //   .attr('x2', x(min_x_domain)+tick_right_gap)
+    //   .attr('y2', y(yi));
+
+    subg.append('text')
+      .text(y_caption)
+      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:#1f2574; text-anchor:start; dominant-baseline:middle; ')
+      .attr("x", x(min_x_domain)+tick_right_gap)
+      .attr("y", y(yi)); // +this.getYOffset(i)
+  }
+  if (y_axis_legend) {
+    ygroup.append('text')
+    .attr('class','right-y-axis-legend')
+    .text(y_axis_legend)
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:#1f2574; text-anchor:end; dominant-baseline:hanging; ')
+    .attr("x", this.dimensions.width)
+    .attr("y", 0); // +this.getYOffset(i)
+  }
+}
+
+/** saved for future reference 
+function writeDownloadButton({root_id='untitled'}) {
+  const xmlns = "http://www.w3.org/2000/xmlns/";
+  const xlinkns = "http://www.w3.org/1999/xlink";
+  const svgns = "http://www.w3.org/2000/svg";
+
+  function serialize(svg) {
+    svg = svg.cloneNode(true);   
+    const fragment = window.location.href + "#";
+    const walker = document.createTreeWalker(svg, NodeFilter.SHOW_ELEMENT);
+    while (walker.nextNode()) {
+      for (const attr of walker.currentNode.attributes) {
+        if (attr.value.includes(fragment)) {
+          attr.value = attr.value.replace(fragment, "#");
+        }
+      }
+    }
+    svg.setAttributeNS(xmlns, "xmlns", svgns);
+    svg.setAttributeNS(xmlns, "xmlns:xlink", xlinkns);
+    const serializer = new window.XMLSerializer;
+    const string = serializer.serializeToString(svg);
+    return new Blob([string] , {type: "image/svg+xml"});
   };
 
-  let chartViz = await new tableau.Viz(chartContainer, chartURL, chartOptions);
-  return chartViz;
+  let svgNode = d3.select(this.chartOptions.chartName+" svg").node();
+  d3.select(this.chartOptions.chartName + " a.dl-button")
+    .attr('download',root_id+".svg")
+    .attr('href',URL.createObjectURL(serialize(svgNode)));
 }
-/* desctop */
-let topChartHeights1 = 600;
-let chartWidth = 900;
-let chartWidth2 = 900;
-// let chartWidth3 = 800;
-let countyMapChartHeight = 660;
+*/
 
-const tableauPrefix2 = "https://public.tableau.com/views/COVID-19StateDashboardv2_0"; 
-// sample https://public.tableau.com/views/COVID-19StateDashboardv2_0/5_1StateTesting-Epicurves?:language=en&:display_count=y&publish=yes&:origin=viz_share_link
-// OLD https://public.tableau.com/views/StateDashboard_16008816705240
-// DEV https://public.tableau.com/views/COVID-19StateDashboardv2_0
+// Convert 
+function getDataIndexByX(data, xScale, yScale, bardata, yLine, linedata, xy)
+{
+  let x = xy[0];
+  let y = xy[1];
+  let xdi = xScale.invert(x);
+  if (xdi >= 0 && xdi <= xScale.domain()[1] ) {
+    let ydi = yScale.invert(y);
+    if (ydi >= 0 && ydi <= yScale.domain()[1] ) {
+      let idi = Math.round(xdi);
+      let yp = yScale(bardata[idi].VALUE);
+      if (y >= yp-2) {
+        return idi;
+      }
+      let yp2 = yLine(linedata[idi].VALUE);
+      let yd = Math.abs(yp2-y);
+      if (yd < 6) {
+        return idi;
+      }
+    }
+  }
+  return null;
+}
+
+function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
+{
+  let tooltip = this.tooltip;
+  let content = this.getTooltipContent(dataIndex); 
+  tooltip.html(content);
+  // console.log("X",event.offsetX);
+  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
+  // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
+  // tooltip.style("top",`${event.layerY+60}px`)
+  tooltip.style("top",`${(event.offsetY+220)}px`);
+  // d3.select(this).transition();
+  tooltip.style("visibility", "visible");
+  // console.log("TOOLTIP",content,this.tooltip);
+
+  this.svg.selectAll('g.tt-marker').remove();
+  this.svg
+    .append('g')
+    .attr('class','tt-marker')
+    .append('rect')
+    .attr("x",xscale(dIndex)-1)
+    .attr("y",yscale(dRecord.VALUE))
+    .attr("width",3)
+    .attr("height",Math.max(0,yscale(0)-yscale(dRecord.VALUE)));
+}
+
+function hideTooltip()
+{
+  this.tooltip;
+  // d3.select(this).transition().duration(200);
+  this.tooltip.style("visibility", "hidden");
+  this.svg.selectAll('g.tt-marker').remove();
+}
+
+/**
+ * This function produces a tick-division (similar to d3.scale.ticks()[1]) which optimizes for about 5 grid lines 
+ * (as opposed to D3's 10) with pretty divisions.
+ * @param {*} ascale 
+ * @returns 
+ */
+function getAxisDiv(ascale,{hint='num'}) {
+  // return ascale.ticks()[1];
+  const max_y = ascale.domain()[1];
+  const log_y = Math.log10(max_y);
+  const floor_log_y = Math.floor(log_y);
+  const best_10 = Math.pow(10, floor_log_y);
+  const log_diff = (log_y - floor_log_y);
+  if (log_diff < 0.176)     var optimal_div = 5; // 150/100
+  else if (log_diff < 0.477) var optimal_div = 2; // 300/100
+  else if (log_diff < 0.778) var optimal_div = 1; // 600/100
+  else                       var optimal_div = 0.5;
+  // const optimal_divs = [5,2,1,1/2][bucket];
+  let result = best_10/optimal_div;
+  if (hint == 'integer' && result < 1) {
+    result = 1;
+  }
+  return result;
+}
+
+function drawLineLegend(svg, line_legend, line_data, xline, yline) {
+  if (line_legend != null) {
+    let lsi = Math.floor(line_data.length*2/3);
+    let lsample = line_data[lsi];
+    let x1 = this.dimensions.width/3;
+    let y1 = this.dimensions.height/4;
+    let x2 = xline(lsi);
+    let y2 = yline(lsample.VALUE);
+    let margin = 6;
+    // shorten line on each end by margin
+    let ang = Math.atan2(y2-y1,x2-x1);
+    x1 += Math.cos(ang)*margin;
+    y1 += Math.sin(ang)*margin;
+    x2 += Math.cos(ang+Math.PI)*margin;
+    y2 += Math.sin(ang+Math.PI)*margin;
+    let g = this.svg.append('g')
+      .attr('class','line-legend');
+    g.append('text')
+      .text(line_legend)
+      .attr("x",this.dimensions.width/3)
+      .attr("y",this.dimensions.height/4);
+    g.append('line')
+      .attr('x1',x1)
+      .attr('y1',y1)
+      .attr('x2',x2)
+      .attr('y2',y2);
+  }
+}
+
+/**
+ * Render categories.
+ * @param {*} extrasFunc @TODO what are the inputs?
+ */
+
+ function renderChart({
+    tooltip_func = null,
+    extras_func = null,
+    time_series_bars = null,
+    time_series_line = null,
+    time_series_state_line = null,
+    line_date_offset = 0,
+    left_y_fmt = 'num',
+    right_y_fmt = 'num',
+    left_y_axis_legend = null,
+    right_y_axis_legend = null,
+    line_legend = null,
+    x_axis_legend = null,
+    crop_floor = true,
+    pending_date = null,
+    pending_legend = null,
+    month_modulo = 3,
+    root_id = "barid" } )  {
+
+    console.log("renderChart",root_id);
+    // d3.select(this.querySelector("svg g"))
+    //   .attr('style','font-family:sans-serif;font-size:16px;');
+
+    this.svg = d3
+      .select(this.querySelector(".svg-holder"))
+      .append("svg");
+
+    // this.svg.selectAll("g").remove();
+    this.svg
+      .attr("viewBox", [
+        0,
+        0,
+        this.chartBreakpointValues.width,
+        this.chartBreakpointValues.height,
+      ])
+      .append("g")
+      .attr("transform", "translate(0,0)");
+
+    this.tooltip = d3
+      .select(this.chartOptions.chartName)
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+    if (time_series_bars) {
+      this.xbars = d3
+      .scaleLinear()
+      .domain([0,time_series_bars.length-1])
+      .range([
+          // reversed because data presents as reverse-chrono
+          this.dimensions.width - this.dimensions.margin.right, 
+          this.dimensions.margin.left]);
+      let min_y_domain = crop_floor? 0 : d3.min(time_series_bars, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
+      let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
+
+      // console.log("bar range", root_id, min_y_domain, max_y_domain);
+      this.ybars = d3
+        .scaleLinear()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
+   
+    }
+    if (time_series_line) {
+      // console.log("time_series_line",time_series_line,root_id);
+      const LINE_OFFSET_X = line_date_offset;
+      this.xline = d3
+      .scaleLinear()
+      .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+time_series_line.length-1])
+      .range([
+          // reversed because data presents as reverse-chrono
+          this.dimensions.width - this.dimensions.margin.right, 
+          this.dimensions.margin.left]);
+      // console.log("time_series_line 2",time_series_line,root_id);
+      let min_y_domain = crop_floor? 0 : d3.min(time_series_line, d=> d.VALUE);
+      if (min_y_domain > 0)
+        min_y_domain = 0;
+      let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
+      if (max_y_domain == 0) {
+        max_y_domain = 1;
+      }
+      // console.log("line range", root_id, min_y_domain, max_y_domain);
+      if (time_series_state_line) {
+        max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
+      }
+      // console.log("max_y_domain", max_y_domain);
+      this.yline = d3
+        .scaleLinear()
+        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
+
+    }
+
+
+    // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
+
+    if (time_series_bars) {
+      writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
+        { root_id:root_id, crop_floot:crop_floor});
+      // bar legend on left
+    }
+    if (time_series_line) {
+      writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
+        { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
+      if (line_legend != null) {
+          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline);
+      }
+    }
+    if (time_series_state_line) {
+      writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
+        { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
+      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
+    }
+
+    if (pending_date && pending_legend) {
+      writePendingBlock.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
+            { root_id:root_id, pending_date:pending_date, pending_legend:pending_legend});
+    }
+
+    if (time_series_bars) {
+      writeDateAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars,
+          {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
+    } else if (time_series_line) {
+      writeDateAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
+        {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
+    }
+    // Write Y Axis, favoring line on left, bars on right
+    if (time_series_line) {
+      writeLeftYAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
+         {y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
+      if (time_series_bars) {
+        if (right_y_axis_legend) {
+          writeRightYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
+              { y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
+        }
+      }
+    } else if (time_series_bars) {
+      writeLeftYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
+          { y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
+    }
+
+    // writeLegend.call(this, this.svg, data, this.xbars, this.y, baselineData);
+
+    if (extras_func) {
+      extras_func.call(this, this.svg);
+    }
+
+    // writeDownloadButton.call(this,{root_id:root_id});
+
+    this.svg
+    .on("mousemove focus", (event) => {
+      let xy = d3.pointer(event);
+      let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
+      if (dIndex != null) {
+        showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
+      } else {
+        hideTooltip.call(this);
+      }
+    })
+    .on("mouseleave touchend blur", (event) => {
+      hideTooltip.call(this);
+    });
+
+
+  }
+
+class CAGovDashboardConfirmedCases extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardConfirmedCases");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.stateData = null;
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg) {
+    if (this.regionName == 'California') ;
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      CASES:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
+    let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD);
+    if (+datumDate >= +pendingDate) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
+    return caption;
+  }
+
+  renderComponent(regionName) {
+    console.log("Render component cases");
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    const repDict = {
+      total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
+      new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
+      new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
+      cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
+      REGION:regionName,
+    };
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_cases_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    this.setupTabFilters();
+
+    let renderOptions = {'tooltip_func':this.tooltip,
+                        'extras_func':this.renderExtras,
+                        'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                        'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                        'root_id':this.chartOptions.rootId,
+                        'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                        'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                        'right_y_fmt':'integer',
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
+                        };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
+    if (addStateLine) {
+      renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    }
+    renderChart.call(this, renderOptions);
+  }
+
+  retrieveData(url, regionName) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
+          this.metadata = alldata.meta;
+          this.chartdata = alldata.data;
+
+          this.renderComponent(regionName);
+
+        }.bind(this)
+      );
+  }
+
+  chartFilterSelectHandler(e) {
+    console.log("cases chartfilter");
+    this.chartConfigFilter = e.detail.filterKey;
+    if (this.chartConfigFilter != 'reported') {
+      this.chartConfigFilter = 'episode';
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.add('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.remove('active');
+    } else {
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
+    }
+
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    // if I am in a county have to do county url replacement
+    this.renderComponent(this.regionName);
+  }
+
+  tabFilterHandler(e) {
+    this.chartFilterSelectHandler(e);
+    const event = new window.CustomEvent('cases-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
+    window.dispatchEvent(event);    
+  }
+
+  setupTabFilters() {
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
+    myFilter.addEventListener(
+      "filter-selected",
+      this.tabFilterHandler.bind(this),
+      false
+    );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+
+    window.addEventListener('deaths-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
+  }
+
+  /*
+  still need some args passed to renderChart
+  */
+
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-confirmed-cases",
+  CAGovDashboardConfirmedCases
+);
+
+// cagov-chart-dashboard-confirmed-deaths
+class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardConfirmedDeaths");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+    // console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
+    // Settings and initial values
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      DEATHS:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
+    let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD);
+    if (+datumDate >= +pendingDate) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
+    return caption;
+  }
+
+  renderComponent(regionName) {
+    console.log("Render component deaths",this);
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    // console.log("Deaths Increase",Math.abs(latestRec.new_deaths_delta_1_day),latestRec.new_deaths_delta_1_day);
+    const repDict = {
+      total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
+      new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
+      new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
+      deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
+      REGION:regionName,
+    };
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    // console.log("Translations obj",this.translationsObj);
+    this.innerHTML = template.call(this,this.chartOptions, this.translationsObj);
+
+    this.setupTabFilters();
+
+    let renderOptions = {'tooltip_func':this.tooltip,
+                        'extras_func':this.renderExtras,
+                        'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                        'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                        'root_id':this.chartOptions.rootId,
+                        'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                        'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                        'right_y_fmt':'integer',
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
+                        };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
+    if (addStateLine) {
+      renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    }
+
+    renderChart.call(this, renderOptions);
+  }
+
+  retrieveData(url, regionName) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
+          this.metadata = alldata.meta;
+          this.chartdata = alldata.data;
+          this.renderComponent(regionName);
+        }.bind(this)
+      );
+  }
+
+  chartFilterSelectHandler(e) {
+    console.log("deaths chartfilter");
+    this.chartConfigFilter = e.detail.filterKey;
+    if (this.chartConfigFilter != 'reported') {
+      this.chartConfigFilter = 'death';
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.add('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.remove('active');
+    } else {
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.remove('active');
+      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.add('active');
+    }
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.renderComponent(this.regionName);
+  }
+
+  tabFilterHandler(e) {
+    this.chartFilterSelectHandler(e);
+    const event = new window.CustomEvent('deaths-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
+    window.dispatchEvent(event);    
+  }
+
+  setupTabFilters() {
+
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
+    myFilter.addEventListener(
+      "filter-selected",
+      this.tabFilterHandler.bind(this),
+      false
+    );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+    window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-confirmed-deaths",
+  CAGovDashboardConfirmedDeaths
+);
+
+// cagov-chart-dashboard-total-tests
+class CAGovDashboardTotalTests extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardTotalTests");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    const repDict = {
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
+    let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD);
+    if (+datumDate >= +pendingDate) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
+    return caption;
+  }
+
+  renderComponent(regionName) {
+
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
+    const repDict = {
+      total_tests_performed:formatValue(latestRec.total_tests_performed,{format:'integer'}),
+      new_tests_reported:formatValue(Math.abs(latestRec.new_tests_reported),{format:'integer'}),
+      new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
+      REGION:regionName,
+    };
+
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+    this.setupTabFilters();
+
+    let renderOptions = {'tooltip_func':this.tooltip,
+                          'extras_func':this.renderExtras,
+                          'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                          'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                          'root_id':this.chartOptions.rootId,
+                          'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
+                          'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
+                          'right_y_fmt':'integer',
+                          'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                          'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
+                        };
+    if (this.chartConfigFilter != 'reported') {
+      renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD;
+      renderOptions.pending_legend = this.translationsObj.pending;
+    }
+    if (addStateLine) {
+      renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    }
+      
+    renderChart.call(this, renderOptions);
+  }
+
+  retrieveData(url, regionName) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
+          this.metadata = alldata.meta;
+          this.chartdata = alldata.data;
+          this.renderComponent(regionName);
+
+        }.bind(this)
+      );
+  }
+
+  setupTabFilters() {
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-tests");
+    if(myFilter) {
+      myFilter.addEventListener(
+        "filter-selected",
+        function (e) {
+          this.chartConfigFilter = e.detail.filterKey;
+          this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+          // if I am in a county have to do county url replacement
+          config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+          if(this.county && this.county !== 'California') {
+            config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+              "<county>",
+              this.county.toLowerCase().replace(/ /g, "_")
+            );
+          }
+          this.renderComponent(this.regionName);
+          // this.retrieveData(searchURL, this.regionName);
+        }.bind(this),
+        false
+      );
+    }    
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-total-tests",
+  CAGovDashboardTotalTests
+);
+
+// cagov-chart-dashboard-positivity-rate
+class CAGovDashboardPositivityRate extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardPositivityRate");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.stateData = null;
+
+    // Settings and initial values
+    // this.chartOptions = {
+    //   chartName: 'cagov-chart-dashboard-positivity-rate',
+    //   // Data
+    //   dataUrl:
+    //     config.chartsStateDashTablesLoc + "positivity-rate/california.json", // Overwritten by county.
+    //   dataUrlCounty:
+    //     config.chartsStateDashTablesLoc + "positivity-rate/<county>.json",
+
+    //   desktop: {
+    //     fontSize: 14,
+    //     width: 400,     height: 300,
+    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
+    //   },
+    //   tablet: {
+    //     fontSize: 14,
+    //     width: 400,     height: 300,
+    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
+    //   },
+    //   mobile: {
+    //     fontSize: 12,
+    //     width: 400,     height: 300,
+    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
+    //   },
+    //   retina: {
+    //     fontSize: 12,
+    //     width: 400,     height: 300,
+    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
+    //   },
+    // };
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.dimensions = this.chartBreakpointValues;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {    
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   reformatReadableDate(lineSeries[di].DATE),
+      '7DAY_POSRATE':formatValue(lineSeries[di].VALUE,{format:'percent'}),
+      TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
+    let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD);
+    if (+datumDate >= +pendingDate) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
+    return caption;
+  }
+
+  renderComponent(regionName) {
+    let addStateLine = false;
+    if (regionName == 'California') {
+      this.statedata = this.chartdata;
+    } else if (this.statedata) {
+      addStateLine = true;
+    }
+
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    const repDict = {
+      test_positivity_7_days:formatValue(latestRec.test_positivity_7_days,{format:'percent'}),
+      test_positivity_7_days_delta_7_days:formatValue(Math.abs(latestRec.test_positivity_7_days_delta_7_days),{format:'percent'}),
+      REGION:regionName,
+    };
+    
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    } 
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.test_positivity_7_days_delta_7_days >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+      
+    let renderOptions = {'tooltip_func':this.tooltip,
+                          'extras_func':this.renderExtras,
+                          'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                          'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                          'left_y_fmt':'pct',
+                          'root_id':'pos-rate',
+                          'left_y_axis_legend':this.translationsObj.leftYAxisLegend,
+                          'right_y_axis_legend':this.translationsObj.rightYAxisLegend,
+                          'right_y_fmt':'integer',
+                          'x_axis_legend':this.translationsObj.xAxisLegend,
+                          'line_legend':this.regionName == 'California'? this.translationsObj.dayRate : null,
+                          'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
+                          'pending_legend':this.translationsObj.pending,
+                        };
+      if (addStateLine) {
+        renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+      }
+      renderChart.call(this, renderOptions);
+  }
+
+  retrieveData(url, regionName) {
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (alldata) {
+          // console.log("Race/Eth data data", alldata.data);
+          this.regionName = regionName;
+          this.metadata = alldata.meta;
+          this.chartdata = alldata.data;
+          this.renderComponent(regionName);
+        }.bind(this)
+      );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-positivity-rate",
+  CAGovDashboardPositivityRate
+);
+
+// cagov-chart-dashboard-patients
+class CAGovDashboardPatients extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardPatients");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+
+    // Settings and initial values
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+    // console.log("this.screenDisplayType",this.screenDisplayType);
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
+    this.dimensions = this.chartBreakpointValues;
+    this.dimensions.margin.right = 20;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   reformatReadableDate(barSeries[di].DATE),
+      '14DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      TOTAL_HOSPITALIZED:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+  }
+
+  renderComponent(regionName) {
+    console.log("Setting up patients replacements",this.chartConfigFilter,this.chartConfigKey,regionName);
+
+    var latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
+    const repDict = {
+      TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
+      CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
+      CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
+      REGION:regionName,
+    };
+
+    if (this.chartConfigFilter == 'icu') {
+      if (!('chartTitleStateICU' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleStateICU, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCountyICU, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
+      this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
+      this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
+      this.translationsObj.currentLocation = regionName;
+    } else {
+      if (!('chartTitleState' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+      }
+      // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+      this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+      this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+      this.translationsObj.currentLocation = regionName;
+    }
+    
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+    this.setupTabFilters();
+
+    let renderOptions = {'tooltip_func':this.tooltip,
+                      'extras_func':this.renderExtras,
+                      'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                      'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                      'root_id':this.chartOptions.rootId,
+                      'x_axis_legend':this.translationsObj.xAxisLegend,
+                      'line_legend':this.translationsObj.dayAverage,
+                      'month_modulo':2,
+                    };
+    renderChart.call(this, renderOptions);
+  }
+
+  retrieveData(url, regionName) {
+    if (regionName == 'Alpine') {
+      let alldata = {
+        "meta": {
+          "PUBLISHED_DATE": getSnowflakeStyleDate(0),
+          "coverage": regionName,
+        },
+        "data": {
+          "latest": {
+            "HOSPITALIZED_PATIENTS": {
+              "TOTAL": 0,
+              "CHANGE": 0,
+              "CHANGE_FACTOR": 0,
+              "POPULATION": 13354
+            },
+            "ICU_PATIENTS": {
+              "TOTAL": 0,
+              "CHANGE": 0,
+              "CHANGE_FACTOR": 0,
+              "POPULATION": 13354
+            }
+          },
+          "time_series": {
+            "HOSPITALIZED_PATIENTS": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+            "ICU_PATIENTS": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+            "HOSPITALIZED_PATIENTS_14_DAY_AVG": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+            "ICU_PATIENTS_14_DAY_AVG": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+          }
+        }
+      };
+
+      let sdate = parseSnowflakeDate(alldata.data.time_series.HOSPITALIZED_PATIENTS.DATE_RANGE.MINIMUM);
+      let today = new Date();
+      while (+sdate < +today) {
+        alldata.data.time_series.HOSPITALIZED_PATIENTS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        alldata.data.time_series.ICU_PATIENTS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        alldata.data.time_series.HOSPITALIZED_PATIENTS_14_DAY_AVG.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        alldata.data.time_series.ICU_PATIENTS_14_DAY_AVG.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        sdate.setDate(sdate.getDate() + 1);
+      }
+
+      this.metadata = alldata.meta;
+      this.chartdata = alldata.data;
+      this.regionName = regionName;
+      this.renderComponent(regionName);
+    } else {
+      window
+        .fetch(url)
+        .then((response) => response.json() )
+        .then(
+          function (alldata) {
+            // console.log("Race/Eth data data", alldata.data);
+            this.metadata = alldata.meta;
+            this.chartdata = alldata.data;
+            this.regionName = regionName;
+            this.renderComponent(regionName);
+          }.bind(this)
+        );
+    }
+  }
+
+  setupTabFilters() {
+    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-patients");
+    myFilter.addEventListener(
+      "filter-selected",
+      function (e) {
+        this.chartConfigFilter = e.detail.filterKey;
+        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+        // if I am in a county have to do county url replacement
+        config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+        if(this.county && this.county !== 'California') {
+          config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+            "<county>",
+            this.county.toLowerCase().replace(/ /g, "_")
+          );
+        }
+        this.renderComponent(this.regionName);
+        // this.retrieveData(searchURL, this.regionName);
+      }.bind(this),
+      false
+    );
+  }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-patients",
+  CAGovDashboardPatients
+);
+
+// cagov-chart-dashboard-icu-beds
+class CAGovDashboardICUBeds extends window.HTMLElement {
+  connectedCallback() {
+    console.log("Loading CAGovDashboardICUBeds");
+    this.translationsObj = getTranslations(this);
+    this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigKey = this.dataset.chartConfigKey;
+
+    // Settings and initial values
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+
+    getScreenResizeCharts();
+
+    this.screenDisplayType = window.charts
+      ? window.charts.displayType
+      : "desktop";
+    // console.log("this.screenDisplayType",this.screenDisplayType);
+
+    this.chartBreakpointValues = chartConfig[
+      this.screenDisplayType ? this.screenDisplayType : "desktop"
+    ];
+    this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
+    this.dimensions = this.chartBreakpointValues;
+    this.dimensions.margin.right = 20;
+
+    const handleChartResize = () => {
+      getScreenResizeCharts();
+      this.screenDisplayType = window.charts
+        ? window.charts.displayType
+        : "desktop";
+      this.chartBreakpointValues = chartConfig[
+        this.screenDisplayType ? this.screenDisplayType : "desktop"
+      ];
+    };
+
+    window.addEventListener("resize", handleChartResize);
+
+    // Set default values for data and labels
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+
+    this.retrieveData(this.dataUrl, 'California');
+
+    rtlOverride(this); // quick fix for arabic
+
+    this.listenForLocations();
+  }
+
+  ariaLabel(d, baselineData) {
+    let caption = ''; // !!!
+    return caption;
+  }
+
+  getLegendText() {
+    return [];
+    //   this.translationsObj.chartLegend1,
+    //   this.translationsObj.chartLegend2,
+    // ];
+  }
+
+  renderExtras(svg, data, x, y) {
+  }
+
+  getTooltipContent(di) {
+    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // console.log("getTooltipContent",di,lineSeries);
+    const repDict = {
+      DATE:   reformatReadableDate(barSeries[di].DATE),
+      VALUE:formatValue(barSeries[di].VALUE,{format:'integer'}),
+    };
+    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+  }
+
+  renderComponent(regionName) {
+
+    var latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
+    const repDict = {
+      TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
+      CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
+      CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
+      REGION:regionName,
+    };
+    if (!('chartTitleState' in this.translationsObj)) {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
+    }
+    else if (regionName == 'California') {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
+    } else {
+      this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
+    }
+    // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.currentLocation = regionName;
+
+    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    let renderOptions = { 'tooltip_func':this.tooltip,
+                      'extras_func':this.renderExtras,
+                      'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
+                      'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                      'root_id':this.chartOptions.rootId,
+                      'x_axis_legend':this.translationsObj.xAxisLegend,
+                      'month_modulo':2,
+                    };
+    renderChart.call(this, renderOptions);
+    
+  }
+
+  retrieveData(url, regionName) {
+    if (regionName == 'Alpine') {
+      let alldata = {
+        "meta": {
+          "PUBLISHED_DATE": getSnowflakeStyleDate(0),
+          "coverage": regionName,
+        },
+        "data": {
+          "latest": {
+            "ICU_BEDS": {
+              "TOTAL": 0,
+              "CHANGE": 0,
+              "CHANGE_FACTOR": 0,
+              "POPULATION": 13354
+            },
+          },
+          "time_series": {
+            "ICU_BEDS": {
+              "DATE_RANGE": {
+                "MINIMUM": "2020-03-30",
+                "MAXIMUM": getSnowflakeStyleDate(-1)
+              },
+             "VALUES": []
+            },
+          }
+        }
+      };
+
+      let sdate = parseSnowflakeDate(alldata.data.time_series.ICU_BEDS.DATE_RANGE.MINIMUM);
+      let today = new Date();
+      while (+sdate < +today) {
+        alldata.data.time_series.ICU_BEDS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+        sdate.setDate(sdate.getDate() + 1);
+      }
+
+      this.metadata = alldata.meta;
+      this.chartdata = alldata.data;
+      this.regionName = regionName;
+      this.renderComponent(regionName);
+    } else {
+      window
+        .fetch(url)
+        .then((response) => response.json() )
+        .then(
+          function (alldata) {
+            this.metadata = alldata.meta;
+            this.chartdata = alldata.data;
+            this.renderComponent(regionName);
+          }.bind(this)
+        );
+    }
+    }
+
+  listenForLocations() {
+    let searchElement = document.querySelector("cagov-county-search");
+    searchElement.addEventListener(
+      "county-selected",
+      function (e) {
+        this.county = e.detail.county;
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          this.county.toLowerCase().replace(/ /g, "_")
+        );
+        this.retrieveData(searchURL, e.detail.county);
+      }.bind(this),
+      false
+    );
+  }
+}
+
+window.customElements.define(
+  "cagov-chart-dashboard-icu-beds",
+  CAGovDashboardICUBeds
+);
+
+document.getElementById("location-query");
+document.getElementById("clearCounty");
 
 // Map responsivness
 var divElement = document.querySelector('.col-lg-10');
-if ( divElement) {
-if ( divElement.offsetWidth > 920 ) { chartWidth2 = 910;countyMapChartHeight = 560;} 
-  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) { chartWidth2 = 900; countyMapChartHeight = 560;} 
-  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) { chartWidth2 = 750; countyMapChartHeight = 660;} 
-  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) { chartWidth2 = 650; countyMapChartHeight = 660; } 
-  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) { chartWidth2 = 550; countyMapChartHeight = 660; } 
-  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) { chartWidth2 = 450; countyMapChartHeight = 660; } 
-  else { chartWidth2 = 350; countyMapChartHeight = 660; }
-
-  // jbum overriding chartWidth3
-  // chartWidth3 = Math.min(Math.max(275, divElement.offsetWidth-132), 900);
-
-  // let chartHeight3 = Math.floor(3*chartWidth3/4);
-  // if (chartWidth3 <= 600) { // mobile version has a different aspect ratio
-  //   chartHeight3 = Math.floor(Math.max(450,chartWidth3)*3/2);
-  // }
-
-  /* phone */
-  if(window.innerWidth < 700) {
-    topChartHeights1 = 930;
-    //countyMapChartHeight = 560;
-    chartWidth = window.innerWidth - 30;
-    //chartWidth2 = chartWidth;
-  }
-  /* small tablet */
-  else if (window.innerWidth > 700 && window.innerWidth < 918) {
-    topChartHeights1 = 930;
-    //countyMapChartHeight = 560;
-    chartWidth = 700;
-  // chartWidth2 = chartW920idth;
-  }
-  /* big tablet */
-  else if (window.innerWidth > 919 && window.innerWidth < 1200) {
-    topChartHeights1 = 600;
-    //countyMapChartHeight = 560;
-    chartWidth = 800;
-  // chartWidth2 = 920;
-  }
-}
-
-async function setupCharts() {
-  // these are county toggles and state toggles
-  if(document.getElementById('casesChartState')) {
-    // window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/1_1State-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-    // let testingChartState = displayChart('#testingChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/5_1StateTesting?:language=en&:display_count=y&:origin=viz_share_link')
-    // let hospitalChartState = displayChart('#hospitalChartState',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/7_1StateHosp?:language=en&:display_count=y&:origin=viz_share_link')
-    // window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/3_1County-Reported?:language=en&:display_count=y&:origin=viz_share_link');
-    // window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/6_1CountyTesting?:language=en&:display_count=y&:origin=viz_share_link')
-    // window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,'https://public.tableau.com/views/StateDashboard_16008816705240/9_1CountyHosp?:language=en&:display_count=y&:origin=viz_share_link')
-    window.casesChartStateViz = await displayChart('#casesChartState',chartWidth,topChartHeights1,tableauPrefix2+'/1_1State-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    displayChart('#testingChartState',chartWidth,topChartHeights1,tableauPrefix2+'/5_1StateTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    displayChart('#hospitalChartState',chartWidth,topChartHeights1,tableauPrefix2+'/7_1StateHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-
-
-    window.casesChartCountyViz = await displayChart('#casesChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/3_1County-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    window.testingChartCounty = await displayChart('#testingChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/6_1CountyTesting-Epicurves?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-    window.hospitalChartCounty = await displayChart('#hospitalChartCounty',chartWidth,topChartHeights1,tableauPrefix2+'/9_1CountyHosp?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link');
-
-    // this chart does not toggle
-    // unchanged for 2.0
-    displayChart('#mapChartContainer', chartWidth2,countyMapChartHeight, 'https://public.tableau.com/views/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19?:language=en&:display_count=y&:origin=viz_share_link');
-
-    // these are their own toggle sets
-    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_1Ethnicity?:language=en&:display_count=y&:origin=viz_share_link')
-
-    // https://tableau.cdt.ca.gov/views/StateDashboard/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link
-
-    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    // let ethnicityGroupChart = displayChart('#ethnicityGroupChartContainer', chartWidth3, chartHeight3, 
-    //                                         tableauPrefix2 + '/12_1Ethnicity?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
-    // let genderGroupChart = ''; // we aren't loading this until they click
-    // let ageGroupChart = ''; // we aren't loading this until they click
-  }
-}
-
-
-
-setupCharts();
+if ( divElement.offsetWidth > 920 ) ; 
+  else if ( (divElement.offsetWidth > 910) && (divElement.offsetWidth < 920)) ; 
+  else if ( (divElement.offsetWidth > 800) && (divElement.offsetWidth < 910) ) ; 
+  else if ( (divElement.offsetWidth > 700) && (divElement.offsetWidth < 879) ) ; 
+  else if ( (divElement.offsetWidth > 600) && (divElement.offsetWidth < 700) ) ; 
+  else if ( (divElement.offsetWidth > 500) && (divElement.offsetWidth < 600) ) ; 
+  else ;
 
 function resetGroupToggles() {
   console.log("Reset Group Toggles");
@@ -3243,13 +5496,10 @@ groupTogglers.forEach(toggle => {
     if(this.classList.contains('gender')) {
       document.getElementById('gender-graph').style.display = 'block';
       this.classList.add('toggle-active');
-      // displayChart('#genderGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_2Gender?:language=en&:display_count=y&:origin=viz_share_link')
     }
     if(this.classList.contains('age')) {
       document.getElementById('age-graph').style.display = 'block'; 
       this.classList.add('toggle-active');
-      // ageGroupChart = displayChart('#ageGroupChartContainer', chartWidth3, 600, 'https://public.tableau.com/views/StateDashboard_16008816705240/12_3Age?:language=en&:display_count=y&:origin=viz_share_link')
-      // displayChart('#ageGroupChartContainer', chartWidth3, 600, tableauPrefix2+'/12_3Age?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link')
     }
     if(this.classList.contains('ethnicity')) {
       document.getElementById('ethnicity-graph').style.display = 'block';      
@@ -3257,98 +5507,6 @@ groupTogglers.forEach(toggle => {
     this.classList.add('toggle-active');
   });
 });
-
-function resetCountyToggles() {
-  window.countyTogglers.forEach(toggle => {
-    toggle.classList.remove('toggle-active');
-  });
-  document.getElementById('cases-state-graph').style.display = 'none';
-  document.getElementById('cases-county-graph').style.display = 'none';
-  document.getElementById('testing-state-graph').style.display = 'none';
-  document.getElementById('testing-county-graph').style.display = 'none';
-  document.getElementById('hospital-state-graph').style.display = 'none';
-  document.getElementById('hospital-county-graph').style.display = 'none';
-}
-
-
-if(document.getElementById('cases-state-graph')) {
-  document.getElementById('cases-state-graph').style.display = 'block';
-  window.countyTogglers = document.querySelectorAll('.js-toggle-county');
-  window.countyTogglers.forEach(toggle => {
-    toggle.addEventListener('click',function(event) {
-      event.preventDefault();
-      resetCountyToggles();
-      if(this.classList.contains('statewide')) {
-        showStateWides();
-      }
-      if(this.classList.contains('county')) {
-        showCounties();
-      }
-    });
-  });
-}
-
-function showStateWides() {
-  resetCountyToggles();
-  document.querySelectorAll('.js-toggle-county.statewide').forEach(c => {
-    c.classList.add('toggle-active');
-  });
-  document.getElementById('cases-state-graph').style.display = 'block';
-  document.getElementById('testing-state-graph').style.display = 'block';
-  document.getElementById('hospital-state-graph').style.display = 'block';
-}
-
-function showCounties() {
-  resetCountyToggles();
-  document.querySelectorAll('.js-toggle-county.county').forEach(c => {
-    c.classList.add('toggle-active');
-  });
-
-  document.getElementById('cases-county-graph').style.display = 'block';
-  document.getElementById('testing-county-graph').style.display = 'block';
-  document.getElementById('hospital-county-graph').style.display = 'block';
-}
-
-if(countyInput) {
-  countyInput.addEventListener("focus", function() {
-    inputValue();
-   });
-  
-   countyInput.addEventListener("input", function() {
-    inputValue();
-   });
-  countyInput.addEventListener("blur", function() {
-     inputValue();
-  });  
-}
-
-function inputValue() {
-var countyInput = document.getElementById("location-query");
-var clearBtn = document.getElementById("clearCounty");
-  if (countyInput && countyInput.value) {
-    clearBtn.classList.remove('d-none');
-  }
-  else {clearBtn.classList.add('d-none');}
-}
-
-if(clearBtn) {
-  clearBtn.addEventListener("blur", function(e) { 
-    inputValue();
-  });
-
-  clearBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    document.getElementById("location-query").value = '';
-    showStateWides();
-    // resetGroupToggles();
-    document.querySelectorAll('.js-toggle-county-container').forEach(c => {
-      c.classList.add('d-none');
-    });
-    //this.classList.add('d-none');
-  });
-}
-// normally we would display none stuff we don't want to hide but this wreaks havoc with tableau's internal layout logic and we end up with mobile views even when we specifically pass it dimensions so we are avoiding displaying none on these for now
-// showStateWides();
 
 		</script>
 	
