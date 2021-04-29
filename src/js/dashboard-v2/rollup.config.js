@@ -10,7 +10,7 @@ const defaultConfig = {
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
-  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/master/data/dashboard/',
 }
 
 const devOutputPath = 'docs/js/dashboard-v2.js';
