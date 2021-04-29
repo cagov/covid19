@@ -408,10 +408,6 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       },
     });
 
-<<<<<<< HEAD
-    console.log("event", event.detail);
-=======
->>>>>>> master
     window.dispatchEvent(event);
 
     if (isError) {
