@@ -242,10 +242,10 @@ function writeLeftYAxis(svg, data, x, y,
   if (y_axis_legend) {
     ygroup.append('text')
     .attr('class','left-y-axis-legend')
-    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:black;text-anchor: start; dominant-baseline:hanging;')
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.75rem; fill:black;text-anchor: start; dominant-baseline:hanging;')
     .text(y_axis_legend)
     .attr("x", 0)
-    .attr("y", 0) // +this.getYOffset(i)
+    .attr("y", 4) // +this.getYOffset(i)
   }
 }
 
@@ -290,9 +290,9 @@ function writeRightYAxis(svg, data, x, y,
     ygroup.append('text')
     .attr('class','right-y-axis-legend')
     .text(y_axis_legend)
-    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.95rem; fill:#1f2574; text-anchor:end; dominant-baseline:hanging; ')
+    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.75rem; fill:#1f2574; text-anchor:end; dominant-baseline:hanging; ')
     .attr("x", this.dimensions.width)
-    .attr("y", 0) // +this.getYOffset(i)
+    .attr("y", 4) // +this.getYOffset(i)
   }
 }
 
