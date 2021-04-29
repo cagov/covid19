@@ -270,8 +270,11 @@ export default function setupAnalytics() {
       // Track submissions to the safer-economy page form.
       // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
       window.addEventListener('safer-economy-page-submission', event => {
-        const eventAction = event.detail.county ? event.detail.county : 'None';
-        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
+        let eventAction = event.detail.county ? event.detail.county : 'None';
+        // If countyTier is selected override county data.
+        if (event.detail.countyTier) {
+          eventAction = event.detail.countyTier;
+        }        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
         reportGA(eventAction, eventLabel, 'activity-status');
         // window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
         // window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);

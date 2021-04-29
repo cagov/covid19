@@ -278,12 +278,26 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       let separated = false;
       reverseSortedList.map((item) => {
         item.classList.remove(separatorClass);
+
+        if (!Array.prototype.includes) {
+          Object.defineProperty(Array.prototype, "includes", {
+            enumerable: false,
+            value: function(obj) {
+                var newArr = this.filter(function(el) {
+                  return el == obj;
+                });
+                return newArr.length > 0;
+              }
+          });
+        }
+
         if (countyTierList.includes(item.innerText) && separated === false) {
           if (item !== null && reverseSortedList.length > 1) {
             item.classList.add(separatorClass);
             separated = true;
           }
         }
+        
       });
     }
   }
@@ -394,7 +408,10 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       },
     });
 
+<<<<<<< HEAD
     console.log("event", event.detail);
+=======
+>>>>>>> master
     window.dispatchEvent(event);
 
     if (isError) {
