@@ -50,7 +50,11 @@ cagov-reopening-tier-level {
     padding-bottom: 1.5rem;
 
     label {
+<<<<<<< HEAD
       display:block
+=======
+      display:block;
+>>>>>>> master
     }
 
     @include small-phone {
@@ -97,6 +101,11 @@ cagov-reopening-tier-level {
         border-bottom: 1px solid rgb(151, 151, 151);
         margin-bottom: 10px;
       }
+    }
+    li.separator {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgb(151, 151, 151);
+      margin-bottom: 10px;
     }
     mark {
       background: transparent;
