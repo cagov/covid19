@@ -1,14 +1,17 @@
 ---
 layout: "page.njk"
-title: "Seguimiento de la COVID-19 en California"
-meta: "Actualización para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por cada 100 mil Muertes {{_varStatTotalDeaths_}} en total {{_varStatTotalDeathsToday_}} hoy {{_varStatNewDeathsPer100k_}} nuevas muertes por cada 100 mil Pruebas {{_varStatTested_}} en total {{_varStatTestedDaily_}} hoy {{_varStatLatestPositivityPct_}} % de positividad de pruebas Vacunas administradas {{_varStatVaccines_}} en total {# {{_varStatVaccinesDaily_}} hoy {{_varStatVaccinesDailyPct_}} % de incremento #} […]"
+title: "Rastreo de la COVID-19 en California"
+meta: "Nota del 29 de abril de 2021 El conteo de hoy de dosis de vacunas administradas está incompleto debido a un retraso en otros registros de inmunización. Los conteos completos se actualizarán en este tablero una vez que estén disponibles conforme avance esta semana. Actualizado para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Total de {{_varStatTotalCases_}} casos {{_varStatTotalCasesToday_}} […]"
 author: "State of California"
-publishdate: "2021-04-26T19:53:57Z"
-tags: ["do-not-crawl","translate"]
-addtositemap: false
+publishdate: "2021-04-29T21:50:03Z"
+tags: ["translate"]
+addtositemap: true
 ---
 
-<!--
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Nota del 29 de abril de 2021</h2>
+<p>El recuento actual de dosis de vacuna administradas está incompleto debido a un retraso de otros registros de inmunización. Los conteos completos se actualizarán en este tablero una vez que estén disponibles conforme avance esta semana.</p>
+</div><p></p>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -160,7 +163,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
-          <li data-label="chartTitle">Casos confirmados en</li>
+          <li data-label="chartTitleState">Casos confirmados en California</li>
+          <li data-label="chartTitleCounty">Casos confirmados en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> casos totales confirmados</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> casos nuevos (incremento de <span class="med-num">{new_cases_delta_1_day}</span>)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> casos nuevos (reducción de <span class="med-num">{new_cases_delta_1_day}</span>)</li>
@@ -177,7 +181,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
-          <li data-label="chartTitle">Decesos confirmados en</li>
+          <li data-label="chartTitleState">Decesos confirmados en California</li>
+          <li data-label="chartTitleCounty">Decesos confirmados en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> decesos totales confirmados</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> nuevos decesos (incremento de <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> nuevos decesos (reducción de <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
@@ -209,7 +214,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
-          <li data-label="chartTitle">Pruebas totales en</li>
+          <li data-label="chartTitleState">Pruebas totales en California</li>
+          <li data-label="chartTitleCounty">Pruebas totales en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total de pruebas realizadas</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> pruebas nuevas reportadas (incremento de <span class="med-num">{new_tests_reported_delta_1_day}</span> )</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> pruebas nuevas reportadas (reducción de <span class="med-num">{new_tests_reported_delta_1_day}</span> )</li>
@@ -225,7 +231,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
-          <li data-label="chartTitle">Tasa de positividad en</li>
+          <li data-label="chartTitleState">Tasa de positividad en California</li>
+          <li data-label="chartTitleCounty">Tasa de positividad en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> positividad de las pruebas (tasa de 7 días)</li>
           <li data-label="chartLegend2Increase">Incremento de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
           <li data-label="chartLegend2Decrease">Reducción de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
@@ -251,10 +258,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row">
+<div class="row pb-5">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
-          <li data-label="chartTitle">Pacientes hospitalizados con COVID-19 en</li>
-          <li data-label="chartTitleICU">Pacientes en ICU con COVID-19 en</li>
+          <li data-label="chartTitleState">Pacientes hospitalizados con COVID-19 en California</li>
+          <li data-label="chartTitleCounty">Pacientes hospitalizados con COVID-19 en el condado de {REGION}</li>
+          <li data-label="chartTitleStateICU">Pacientes en ICU con COVID-19 en California</li>
+          <li data-label="chartTitleCountyICU">Pacientes en ICU con COVID-19 en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> pacientes hospitalizados con COVID-19</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> pacientes hospitalizados más con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> pacientes hospitalizados menos con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
@@ -268,7 +277,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
-          <li data-label="chartTitle">Camas de ICU en</li>
+          <li data-label="chartTitleState">Camas de ICU en California</li>
+          <li data-label="chartTitleCounty">Camas de ICU en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> camas disponibles en ICU</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> camas disponibles más en ICU con respecto al total del día anterior (incremento de {CHANGE_FACTOR})</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> camas disponibles menos en ICU con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
