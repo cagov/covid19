@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Update para sa {{_varStatDate_}} Mula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} kabuuan {{_varStatTotalDeathsToday_}} ngayong araw {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]">
+    <meta name="description" content="Tala para sa Abril 29, 2021 Hindi kumpleto ang bilang ng naibigay na bakuna ngayong araw dahil sa pagkakaantala ng iba pang registry ng imunisasyon. Ia-update sa dashboard na ito ang mga kumpletong bilang kapag available na ang mga ito sa pagtatapos ng linggong ito. Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga Kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} […]">
     <meta name="author" content="State of California">
      
-  <title>Pagsubaybay ng COVID-19 sa California - Coronavirus COVID-19 Response</title>
+  <title>Pagsubaybay sa COVID-19 sa California - Coronavirus COVID-19 Response</title>
 
 
     <!-- Collect errors -->
     <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 
-    <meta content="Pagsubaybay ng COVID-19 sa California" property="og:title">
-    <meta content="Update para sa {{_varStatDate_}} Mula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} kabuuan {{_varStatTotalDeathsToday_}} ngayong araw {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]" property="og:description">
+    <meta content="Pagsubaybay sa COVID-19 sa California" property="og:title">
+    <meta content="Tala para sa Abril 29, 2021 Hindi kumpleto ang bilang ng naibigay na bakuna ngayong araw dahil sa pagkakaantala ng iba pang registry ng imunisasyon. Ia-update sa dashboard na ito ang mga kumpletong bilang kapag available na ang mga ito sa pagtatapos ng linggong ito. Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga Kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} […]" property="og:description">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://www.google-analytics.com/">
@@ -36,7 +36,6 @@
 
     
   <meta name="keywords" content="covid19, coronavirus, covid19, covid-19, california">
-    <meta name="robots" content="noindex">
   
     <meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
   
@@ -147,7 +146,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h1>Pagsubaybay ng COVID-19 sa California</h1>
+          <h1>Pagsubaybay sa COVID-19 sa California</h1>
           
             <p class="small-text">Huling na-update&nbsp;Abril 30, 2021 sa 10:00 AM</p>
           
@@ -158,7 +157,10 @@
     <div class="row">
       <div class="col-lg-10 mx-auto">
         
-<!--
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Tala para sa Abril 29, 2021</h2>
+<p>Hindi kumpleto ang bilang ng naibigay na bakuna ngayong araw dahil sa pagkakaantala ng iba pang registry ng imunisasyon. Ia-update sa dashboard na ito ang mga kumpletong bilang kapag available na ang mga ito sa pagtatapos ng linggong ito.</p>
+</div><p></p>    <!--
  
 -->    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -259,7 +261,8 @@
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
-          <li data-label="chartTitle">Mga kumpirmadong kaso sa</li>
+          <li data-label="chartTitleState">Mga kumpirmadong kaso sa California</li>
+          <li data-label="chartTitleCounty">Mga kumpirmadong kaso sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> (na) kumpirmadong kaso sa kabuuan</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> (na) bagong kaso (<span class="med-num">{new_cases_delta_1_day}</span> (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> (na) bagong kaso (<span class="med-num">{new_cases_delta_1_day}</span> (na) pagbaba)</li>
@@ -276,7 +279,8 @@
           <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
-          <li data-label="chartTitle">Mga kumpirmadong pagkamatay sa</li>
+          <li data-label="chartTitleState">Mga kumpirmadong pagkamatay sa California</li>
+          <li data-label="chartTitleCounty">Mga kumpirmadong pagkamatay sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> (na) kumpirmadong pagkamatay sa kabuuan</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> (na) bagong pagkamatay (<span class="med-num">{new_deaths_delta_1_day}</span> (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> (na) bagong pagkamatay (<span class="med-num">{new_deaths_delta_1_day}</span> (na) pagbaba)</li>
@@ -308,7 +312,8 @@
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
-          <li data-label="chartTitle">Kabuuang bilang ng mga pagsusuri sa</li>
+          <li data-label="chartTitleState">Kabuuang mga pagsusuri sa California</li>
+          <li data-label="chartTitleCounty">Kabuuang mga pagsusuri sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> (na) naisagawang pagsusuri sa kabuuan</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> (na) naisagawang bagong pagsusuri (<span class="med-num">{new_tests_reported_delta_1_day}</span> (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> (na) bagong naiulat na pagsusuri (<span class="med-num">{new_tests_reported_delta_1_day}</span> (na) pagbaba)</li>
@@ -324,7 +329,8 @@
           <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
-          <li data-label="chartTitle">Rate ng pagpopositibo sa</li>
+          <li data-label="chartTitleState">Rate ng pagpopositibo sa California</li>
+          <li data-label="chartTitleCounty">Rate ng pagpopositibo sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> (na) pagpopositibo sa pagsusuri (7 araw na rate)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagtaas mula sa nakalipas na 7 araw</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagbaba mula sa nakalipas na 7 araw</li>
@@ -350,10 +356,12 @@
 
 
 
-<div class="row">
+<div class="row pb-5">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
-          <li data-label="chartTitle">Mga naospital na pasyente dahil sa COVID-19 sa</li>
-          <li data-label="chartTitleICU">Mga pasyenteng nasa ICU dahil sa COVID-19 sa</li>
+          <li data-label="chartTitleState">Mga naospital na pasyente dahil sa COVID-19 sa California</li>
+          <li data-label="chartTitleCounty">Mga naospital na pasyente dahil sa COVID-19 sa {REGION} County</li>
+          <li data-label="chartTitleStateICU">Mga nasa ICU na pasyente dahil sa COVID-19 sa California</li>
+          <li data-label="chartTitleCountyICU">Mga nasa ICU na pasyente dahil sa COVID-19 sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) naospital na pasyente dahil sa COVID-19</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
@@ -367,7 +375,8 @@
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
-          <li data-label="chartTitle">Mga kama sa ICU sa</li>
+          <li data-label="chartTitleState">Mga kama sa ICU sa California</li>
+          <li data-label="chartTitleCounty">Mga kama sa ICU sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) na available na kama sa ICU</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
