@@ -1,14 +1,17 @@
 ---
 layout: "page.njk"
-title: "Theo dõi tình hình COVID-19 tại California"
-meta: "Xem dữ liệu mới nhất về các ca bệnh, ca tử vong, kết quả xét nghiệm và cấp quận."
+title: "Theo dõi COVID-19 tại California"
+meta: " Lưu ý vào ngày 29 tháng 4 năm 2021 Số lượng liều vắc-xin được tiêm ngày hôm nay chưa đầy đủ do sự chậm trễ từ các hệ thống thông tin chủng ngừa. Số liều đầy đủ sẽ được cập nhật trong bảng tổng kết này sau khi có dữ liệu vào cuối tuần này. Cập nhật cho {{_varStatDate_}}Kể từ{{_varStatDateNoYear_}} , California có {{_varStatTotalCases_}}ca nhiễm COVID-19 được xác nhận, dẫn đến{{_varStatTotalDeaths_}} ca tử vong. Tổng số ca nhiễm {{_varStatTotalCases_}} {{_varStatTotalCasesToday_}} […]"
 author: "State of California"
-publishdate: "2021-04-28T17:55:54Z"
+publishdate: "2021-04-29T21:50:03Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<!--
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Lưu ý vào ngày 29 tháng 4 năm 2021</h2>
+<p>Số lượng liều vắc-xin được tiêm ngày hôm nay chưa đầy đủ do sự chậm trễ từ các hệ thống thông tin chủng ngừa. Số liều đầy đủ sẽ được cập nhật trong bảng tổng kết này sau khi có dữ liệu vào cuối tuần này.</p>
+</div><p></p>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -133,14 +136,18 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
 
-  </div>   <!--END container--> </div> <!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed mb-5">
+  </div>   <!--END container--> </div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
             <div class="container py-2">
                 <div class="row pb-4">
                     <div class="col-lg-10 mx-auto color-white">
                         <h2 class="text-center color-orange" id="vaccination">Dữ liệu tiêm chủng</h2>
                         <p>Chủng ngừa COVID-19 là một trong những biện pháp quan trọng nhất giúp chấm dứt đại dịch. Chúng tôi sẽ theo dõi tiến trình tiêm chủng cho người dân California trên toàn tiểu bang.</p>
 
-                        <div class="mt-3 text-center">                             <a href="/vaccination-progress-data/" class="link-arrow-white">                                 <div class="link-arrow-label">Xem dữ liệu tiêm chủng</div><cagov-arrow></cagov-arrow> </a>                         </div>
+                        <div class="mt-3 text-center">                             <a href="/vaccines/#California-vaccines-dashboard" class="link-arrow-white">                                 <div class="link-arrow-label">Xem dữ liệu tiêm chủng</div><cagov-arrow></cagov-arrow> </a>                         </div>
 
 
                     </div>
@@ -150,75 +157,94 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>
+<h2 class="text-center color-purple">Xem dữ liệu trên toàn tiểu bang và ở mỗi quận</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Số ca mắc và ca tử vong hàng ngày</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong.</p>
 
 
 
-<div class="row d-flex justify-content-md-center">
-  <form class="form-inline" id="county-form">
-    <div class="form-group mx-sm-3 mb-2 pos-rel autocomplete-inline">       <label for="county" class="sr-only">Quận</label>       <div class="awesomplete">         <input aria-expanded="false" aria-owns="awesomplete_list_1" autocomplete="off" class="form-control form-control-lg" data-list="" data-multiple="" id="location-query" role="combobox" type="text" placeholder="Nhập một quận"> <button class="clear d-none" id="clearCounty"><span class="ca-gov-icon-close-line" aria-hidden="true"></span> <span class="underline">Xóa</span></button>       </div>
-    </div>     <button type="submit" class="btn btn-lightbg btn-bigger mb-2">Nhận dữ liệu quận</button>   </form>
-</div>
-<div class="row d-flex justify-content-md-center">   <span id="county-query-error" class="error-text d-none">Không tìm thấy quận</span> </div>  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>    <h3 class="text-center mt-4 mb-0">Số ca mắc và ca tử vong hàng ngày</h3>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+          <li data-label="chartTitleState">Confirmed cases in California</li>
+          <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> tổng số ca mắc được xác nhận</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> ca mắc mới (tăng <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> ca mắc mới (giảm <span class="med-num">{new_cases_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> ca mắc trên 100 nghìn người (mức trung bình trong 7 ngày)</li>
+          <li data-label="filterTabLabel1">Ngày theo từng giai đoạn</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">                   Ngày Theo Từng Giai Đoạn: <b>{DATE}</b><br> Tỉ lệ số ca mắc trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Mắc: <b>{CASES}</b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="cases_leftYAxisLegend">Số ca mắc trên 100 nghìn người</li>
+          <li data-label="cases_rightYAxisLegend">Ca Mắc</li>
+          <li data-label="cases_episode_xAxisLegend">Ngày theo từng giai đoạn</li>
+          <li data-label="cases_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
+        </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+          <li data-label="chartTitleState">Các ca tử vong được xác nhận ở California</li>
+          <li data-label="chartTitleCounty">Số ca tử vong được xác nhận ở Quận {REGION} </li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> tổng số ca tử vong được xác nhận</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> ca tử vong mới (tăng <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> ca tử vong mới (giảm <span class="med-num">{new_deaths_delta_1_day}</span>)</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> số ca tử vong trên 100 nghìn người (mức trung bình 7 ngày)</li>
+          <li data-label="filterTabLabel1">Ngày tử vong</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">             Ngày Tử Vong: <b>{DATE}</b><br> Tỉ lệ tử vong trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Tử Vong: <b>{DEATHS}</b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="deaths_leftYAxisLegend">Số ca tử vong trên 100 nghìn người</li>
+          <li data-label="deaths_rightYAxisLegend">Ca Tử Vong</li>
+          <li data-label="deaths_death_xAxisLegend">Ngày tử vong</li>
+          <li data-label="deaths_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
+        </ul>       </cagov-chart-dashboard-confirmed-deaths>                   </div> 
   </div>
-</div>
-
-
-
-<p>California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong.</p>
-
-
-
-<div class="row d-flex justify-content-md-center"><!-- comment -->    <div class="toggle-group-container cases-group">
-    <div id="cases-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartCounty"></div>
-    </div>
-    <div id="cases-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="casesChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">Lưu ý: Số liệu không thể hiện những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân  bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</p>
+  <p class="small-text">Lưu ý: Số liệu không thể hiện chính xác những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở thuộc Cơ Quan Thi Hành Luật Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Tư Pháp Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Những nhóm này được loại trừ khỏi những phần tính toán phân  bậc Kế Hoạch Chi Tiết mà cho thấy tỉ lệ xét nghiệm dương tính và ca khác. Số ca âm tính đã tử vong được báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</p>
 </div>
 
 
 
-<h3 class="text-center mt-4 mb-0">Xét nghiệm COVID-19</h3>
+<h3 class="text-center mt-4">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là {{_varStatTested_}}, tăng {{_varStatTestedDaily_}} xét nghiệm so với tổng số của ngày trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+          <li data-label="chartTitleState">Tổng số xét nghiệm ở California</li>
+          <li data-label="chartTitleCounty">Tổng số xét nghiệm ở Quận {REGION} </li>
+          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> tổng số xét nghiệm được thực hiện</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> số xét nghiệm mới được báo cáo (tăng <span class="med-num">{new_tests_reported_delta_1_day}</span>)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> số xét nghiệm mới được báo cáo (giảm <span class="med-num">{new_tests_reported_delta_1_day}</span>)</li>
+          <li data-label="filterTabLabel1">Ngày xét nghiệm</li>
+          <li data-label="filterTabLabel2">Ngày báo cáo</li>
+          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="tests_leftYAxisLegend">Số ca xét nghiệm trên 100 nghìn người</li>
+          <li data-label="tests_rightYAxisLegend">Xét Nghiệm</li>
+          <li data-label="tests_testing_xAxisLegend">Ngày xét nghiệm</li>
+          <li data-label="tests_reported_xAxisLegend">Ngày báo cáo</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
+        </ul>       </cagov-chart-dashboard-total-tests>                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+          <li data-label="chartTitleState">Tỉ lệ kết quả xét nghiệm dương tính ở California</li>
+          <li data-label="chartTitleCounty">Tỉ lệ kết quả xét nghiệm dương tính ở Quận {REGION}</li>
+          <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> tỉ lệ xét nghiệm dương tính (tỉ lệ trong 7 ngày)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> tăng so với 7 ngày trước đó</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> giảm so với 7 ngày trước</li>
+          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm dương tính trong 7 ngày: <b>{7DAY_POSRATE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="leftYAxisLegend">Tỷ lệ xét nghiệm dương tính</li>
+          <li data-label="rightYAxisLegend">Xét Nghiệm</li>
+          <li data-label="xAxisLegend">Ngày xét nghiệm</li>
+          <li data-label="pending">Đang chờ xử lý</li>
+          <li data-label="dayRate">Tỉ lệ trong 7 ngày</li>
+          <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
+        </ul>       </cagov-chart-dashboard-positivity-rate>                     </div> 
   </div>
-</div>
-
-
-
-<p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là {{_varStatTested_}}, tăng {{_varStatTestedDaily_}} xét nghiệm so với tổng số của ngày trước đó. Tỷ lệ xét nghiệm dương tính trong 7 ngày qua là {{_varStatPos_7DayAvgPct_}}%.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container cases-group">
-    <div id="testing-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartCounty"></div>
-    </div>
-    <div id="testing-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="testingChartState"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -228,33 +254,38 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mb-0">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>
+<h3 class="text-center">Ảnh hưởng đến bệnh viện và đơn vị điều trị hồi sức tích cực (Intensive Care Unit, ICU)</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-  <div class="js-toggle-county-container d-none">
-    <div class="large-tabs">       <button class="large-tab js-toggle-county county d-none">Alameda</button> <button class="large-tab toggle-active js-toggle-county statewide">Toàn tiểu bang</button>     </div>
+<div class="row pb-5">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+          <li data-label="chartTitleState">Số bệnh nhân nhập viện do mắc COVID-19 ở California</li>
+          <li data-label="chartTitleCounty">Số bệnh nhân nhập viện do mắc COVID-19 ở Quận {REGION}</li>
+          <li data-label="chartTitleStateICU">Số bệnh nhân ICU do mắc COVID-19 ở California</li>
+          <li data-label="chartTitleCountyICU">Số bệnh nhân ICU do mắc COVID-19 ở Quận {REGION} </li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số bệnh nhân nhập viện do mắc COVID-19</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Số bệnh nhân ICU do mắc COVID-19</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân ICU hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="filterTabLabel1">Nhập viện</li>
+          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="xAxisLegend">Ngày báo cáo</li>
+          <li data-label="dayAverage">Mức trung bình 14 ngày</li>
+          <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
+        </ul>       </cagov-chart-dashboard-patients>                     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+          <li data-label="chartTitleState">Số giường tại ICU ở California</li>
+          <li data-label="chartTitleCounty">Số giường tại ICU ở Quận {REGION} </li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> giường tại ICU còn trống</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU còn trống hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU còn trống hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="xAxisLegend">Ngày báo cáo</li>
+          <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
+        </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
-</div>
-
-
-
-<p>Tổng số ca nhập viện do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
-
-
-
-<div class="row d-flex justify-content-md-center">
-  <div class="toggle-group-container hospitals-group">
-    <div id="hospital-county-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartCounty"></div>
-    </div>
-    <div id="hospital-state-graph" class="toggle-group-element">
-      <div class="tableauPlaceholder" id="hospitalChartState"></div>
-    </div>
-  </div>
-
-</div>
 
 
 
@@ -304,8 +335,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Các chỉ định cấp hiện tại kể từ {{_varTierDate_}}</h3>
   <p class="mt-0">Toàn bộ dữ liệu và chỉ định cấp được cập nhật vào Thứ Ba hàng tuần.</p>
 
-  <div class="tableauPlaceholder mb-0" id="mapChartContainer"></div>
-</div>
+    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">   <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript> <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>   </div>   <script type="text/javascript">
+  var divElement = document.getElementById('viz1607448868632');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>  </div>
 
 
 
