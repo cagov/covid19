@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-05-01T16:17:44Z"
-tags: ["translate"]
+publishdate: "2021-05-03T20:50:58Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -207,7 +207,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Note: Case rate is based on a 7-day average with a 7-day lag. Rates of deaths is based on a 7-day average with a 21-day lag due to delays in reporting. Test positivity is based on a 7-day average with no lag. Directional change is compared to the prior 7-day period. Data is provided by the California Department of Public Health.</p>
+        <p class="small-text">Note: Case rate is based on a 7-day average with a 7-day lag. Rates of deaths is based on a 7-day average with a 21-day lag due to delays in reporting. Test positivity is based on a 7-day average with no lag. Directional change is compared to the prior 7-day period. Data is provided by the California Department of Public Health. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
       </div>
     </div>
 
@@ -317,7 +317,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</p>
+  <p class="small-text">Note: Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
 </div>
 
 
@@ -387,7 +387,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row d-flex justify-content-md-center mt-2 pl-2">
-  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. Positivity rate was previously reported as a 14-day average.</p>
+  <p class="small-text">Note: Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. Positivity rate was previously reported as a 14-day average. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
 </div>
 
 
@@ -562,7 +562,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-cases>                
                 </div>
@@ -626,7 +626,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                
                 </div>
