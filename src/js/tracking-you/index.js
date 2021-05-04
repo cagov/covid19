@@ -2,10 +2,8 @@ import boxTracker from "./box-tracker.js";
 
 export default function setupAnalytics() {
 
-  if(typeof(ga) !== 'undefined') {
-    ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
-  }
-  
+  ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
+
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('.accordion-title')) {
@@ -48,6 +46,24 @@ export default function setupAnalytics() {
       }, 500);
     }
   }
+
+  document.querySelectorAll('.show-all').forEach(btn => {
+    const isCloseButton = btn.classList.contains('d-none');
+    btn.addEventListener('click', () => {
+      let wait = 0;
+      document
+        .querySelectorAll(
+          `cwds-step-list .list-group-item-action${
+            isCloseButton ? '.list-open' : ':not(.list-open)'
+          }`
+        )
+        .forEach(lstitem => setTimeout(() => lstitem.click(), 50 * wait++));
+      document
+        .querySelectorAll('.show-all')
+        .forEach(y => y.classList.toggle('d-none'));
+    });
+  });
+
 
   function toggleBoolean(el,attr) {
     if(el.getAttribute(attr) === "false") {
@@ -254,35 +270,17 @@ export default function setupAnalytics() {
       // Track submissions to the safer-economy page form.
       // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
       window.addEventListener('safer-economy-page-submission', event => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9145792e70d7fbc87df91d0792be8ee7d2105a22
-        
-        let eventAction = event.detail.county ? event.detail.county : 'None';
-        
-        // If countyTier is selected override county data.
-        if (event.detail.countyTier) {
-          eventAction = event.detail.countyTier;
-        }
-        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
-<<<<<<< HEAD
-=======
         let eventAction = event.detail.county ? event.detail.county : 'None';
         // If countyTier is selected override county data.
         if (event.detail.countyTier) {
           eventAction = event.detail.countyTier;
         }        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
->>>>>>> master
-=======
->>>>>>> 9145792e70d7fbc87df91d0792be8ee7d2105a22
         reportGA(eventAction, eventLabel, 'activity-status');
-        window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
+        // window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
         // window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);
         // window.ga('tracker3.send', 'event', 'activity-status', eventAction, eventLabel);
       });
     }
-
     if (window.location.pathname.match(/\/equity[/]?$/g)) {
       window.addEventListener('scroll', throttle(scrollHandler('equity'), 1000));
       
