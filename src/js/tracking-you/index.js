@@ -255,6 +255,9 @@ export default function setupAnalytics() {
       // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
       window.addEventListener('safer-economy-page-submission', event => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9145792e70d7fbc87df91d0792be8ee7d2105a22
         
         let eventAction = event.detail.county ? event.detail.county : 'None';
         
@@ -263,6 +266,7 @@ export default function setupAnalytics() {
           eventAction = event.detail.countyTier;
         }
         const eventLabel = event.detail.activity ? event.detail.activity : 'None';
+<<<<<<< HEAD
 =======
         let eventAction = event.detail.county ? event.detail.county : 'None';
         // If countyTier is selected override county data.
@@ -270,6 +274,8 @@ export default function setupAnalytics() {
           eventAction = event.detail.countyTier;
         }        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
 >>>>>>> master
+=======
+>>>>>>> 9145792e70d7fbc87df91d0792be8ee7d2105a22
         reportGA(eventAction, eventLabel, 'activity-status');
         window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
         // window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);

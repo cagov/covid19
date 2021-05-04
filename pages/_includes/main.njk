@@ -327,12 +327,13 @@ formatNumber(tags,1)-%}
 
 	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
 		<div class="video-wrap text-center">
-
-			{% set JSONVidraw %}{% include "../wordpress-posts/video-section.json" %}{% endset %}
-			{% set JSONVid = JSONVidraw | jsonparse %}
+			{% set JSONVidraw -%}
+			{%- include (language.includepath + "video-section" + language.filepostfix + ".json") -%}
+			{%- endset -%}
+			{%- set JSONVid = JSONVidraw | jsonparse -%}
 			{%- set RowsVid = JSONVid.Table1 -%}
-			{% for item in RowsVid %}
-			{% if item.Active %}
+			{%- for item in RowsVid -%}
+			{%- if item.Active -%}
 			<div class="container">
 			<div class="row">
 			<div class="col-lg-8 mx-auto text-center">
@@ -356,14 +357,11 @@ formatNumber(tags,1)-%}
 					<cagov-arrow></cagov-arrow>
 				</a>
 
-		
-				</div>
-				</div>
-				</div>
-
-				{% endif %}
-				{% endfor %}
-				
+			</div>
+			</div>
+			</div>
+				{%- endif -%}
+				{%- endfor %}
 		</div>
 	</section>
 </video-section>

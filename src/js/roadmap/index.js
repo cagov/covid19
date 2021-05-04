@@ -409,9 +409,13 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
     });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log("event", event.detail);
 =======
 >>>>>>> master
+=======
+    console.log("event", event.detail);
+>>>>>>> 9145792e70d7fbc87df91d0792be8ee7d2105a22
     window.dispatchEvent(event);
 
     if (isError) {
