@@ -12,7 +12,7 @@ const defaultConfig = {
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
-  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/',
 }
 
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
