@@ -70,10 +70,11 @@ function writeLegend(component, svg, legendLabels, width, legendPositions) {
     .attr('dominant-baseline', 'hanging');
     // add statewide element here...
   let linePosY = 7.5;
+  let legendX = component.chartBreakpointValues.width/2;
   legend.append('line')
-    .attr("x1", 230)
+    .attr("x1", legendX)
     .attr("y1", linePosY)
-    .attr("x2", 245)
+    .attr("x2", legendX+15)
     .attr("y2", linePosY)
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
@@ -82,7 +83,7 @@ function writeLegend(component, svg, legendLabels, width, legendPositions) {
   legend.append('text')
     .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
     .attr('class', 'legend-label')
-    .attr("x", 250)
+    .attr("x", legendX+20)
     .attr("y", legendPositions.y)
     .attr('text-anchor', 'start')
     .attr('dominant-baseline', 'hanging');
