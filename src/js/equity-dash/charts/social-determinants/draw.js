@@ -8,22 +8,23 @@ function fixRangeHyphens(label) {
   return label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
 }
 
-function writeXAxis(data, height, margin, x) {
+function writeXAxis(component, data, height, margin, x) {
   console.log("Write x axis",data);
   let xAxis = g => g
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
         return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
+      } else {
+        return fixRangeHyphens(data[i].SOCIAL_TIER);
       }
-      return fixRangeHyphens(data[i].SOCIAL_TIER);
     }).tickSize(0))
-    .call(g => g.select(".domain").remove())
+    .call(g => g.select(".domain").remove());
   return xAxis;
 }
 
 function writeXAxisLabel(component, svg, label) {
-  svg.selectAll("g.x-label").remove()
+  svg.selectAll("g.x-label").remove();
   svg.append("g")
         .attr("class", "x-label")
         .append("text")
@@ -33,16 +34,17 @@ function writeXAxisLabel(component, svg, label) {
           )
           .attr("class", "xaxis-label")
           .style("text-anchor", "middle")
-          .text(label)
+          .text(label);
 }
 
-function rewriteLegend(svg, legendLabels) {
-  svg.selectAll('.legend text')
-    .data(legendLabels)
-    .text(legendLabels[0])
-    .attr("text-anchor", "start")
-}
-function writeLegend(svg, legendLabels, width, legendPositions) {
+// function rewriteLegend(svg, legendLabels) { // UNUSED
+//   svg.selectAll('.legend text')
+//     .data(legendLabels)
+//     .text(legendLabels[0])
+//     .attr("text-anchor", "start")
+// }
+
+function writeLegend(component, svg, legendLabels, width, legendPositions) {
   let legend = svg.append('g')
     .attr('class', 'legend');
   
@@ -66,6 +68,25 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('y', legendPositions.y)
     .attr('text-anchor', 'start')
     .attr('dominant-baseline', 'hanging');
+    // add statewide element here...
+  let linePosY = 7.5;
+  legend.append('line')
+    .attr("x1", 230)
+    .attr("y1", linePosY)
+    .attr("x2", 245)
+    .attr("y2", linePosY)
+    .attr("stroke", "#1F2574")
+    .attr("opacity", 0.5)
+    .style("stroke-dasharray", ("1, 1"))
+    .attr('class','label bar-chart-yline');
+  legend.append('text')
+    .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
+    .attr('class', 'legend-label')
+    .attr("x", 250)
+    .attr("y", legendPositions.y)
+    .attr('text-anchor', 'start')
+    .attr('dominant-baseline', 'hanging');
+ 
 }
 
 function writeBars(component, svg, data, x, y, width, tooltip) {
@@ -120,24 +141,24 @@ function rewriteBars(component, svg, data, x, y) {
 
 function writeBarLabels(component, svg, data, x, y, sparkline) {
   svg.append("g")
-  .attr("class", "bar-label-group")
-  .selectAll(".bar-label")
-  .data(data)
-  .join(
-    enter => {
-      enter
-        .append("text")
-        .attr("class", "bar-label")
-        .attr("x", (d, i) => x(i) + (x.bandwidth() / 2))
-        .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
-        .attr("width", x.bandwidth() / 4)
-        .html(d => {
-          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
-          <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
-        })
-        .attr('text-anchor','middle')
-    }
-  )
+    .attr("class", "bar-label-group")
+    .selectAll(".bar-label")
+    .data(data)
+    .join(
+      enter => {
+        enter
+          .append("text")
+          .attr("class", "bar-label")
+          .attr("x", (d, i) => x(i) + (x.bandwidth() / 2))
+          .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
+          .attr("width", x.bandwidth() / 4)
+          .html(d => {
+            return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+            <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`;
+          })
+          .attr('text-anchor','middle')
+      }
+    );
 
   writeSparklines(svg, data, x, y, sparkline);
 }
@@ -203,24 +224,26 @@ function redrawYLine(component, y, dataset) {
     yXAnchor = component.chartBreakpointValues.margin.left+10;
     yTextAnchor = 'begin';
   }
+  let dotLen = 1; // component.chartBreakpointValues.is_mobile? 1 : 5;
   component.svg.append("path")
     .attr("d", d3.line()([[component.chartBreakpointValues.margin.left, yDottedLinePos], 
                           [component.chartBreakpointValues.width - component.chartBreakpointValues.margin.right, yDottedLinePos]]))
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
-    .style("stroke-dasharray", ("5, 5"))
+    .style("stroke-dasharray", (`${dotLen},${dotLen}`))
     .attr('class','label bar-chart-yline');
-  
-  component.svg.append("text")
-    .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
-    .attr("y", yDottedLinePos - 6)
-    // .attr("x", 38)
-    // .attr('text-anchor','start')
-    .attr("x", yXAnchor)
-    .attr('text-anchor', yTextAnchor)
-    .attr('fill', '#1F2574')
-    .attr('class','label bar-chart-label');
-
+    
+  // if (!component.chartBreakpointValues.is_mobile) {
+  //   component.svg.append("text")
+  //     .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
+  //     .attr("y", yDottedLinePos - 6)
+  //     // .attr("x", 38)
+  //     // .attr('text-anchor','start')
+  //     .attr("x", yXAnchor)
+  //     .attr('text-anchor', yTextAnchor)
+  //     .attr('fill', '#1F2574')
+  //     .attr('class','label bar-chart-label');
+  // }
 }
 
 
@@ -228,7 +251,6 @@ function redrawYLine(component, y, dataset) {
 export {
   writeXAxis,
   writeXAxisLabel,
-  rewriteLegend,
   writeLegend,
   writeBars,
   rewriteBars,

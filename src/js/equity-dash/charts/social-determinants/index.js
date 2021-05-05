@@ -1,5 +1,5 @@
 import template from './template.js';
-import {writeXAxis, writeXAxisLabel, rewriteLegend, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
+import {writeXAxis, writeXAxisLabel, writeLegend, writeBars, rewriteBars, writeBarLabels, writeSparklines, rewriteBarLabels, redrawYLine} from './draw.js';
 import getTranslations from '../../../common/get-strings-list.js';
 import getScreenResizeCharts from './../../../common/get-window-size.js';
 import rtlOverride from "./../../../common/rtl-override.js";
@@ -26,6 +26,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // chartColors: ["#92C5DE", "#FFCF44"],
       // Breakpoints
       desktop: {
+        is_mobile: false,
         width: 613,
         height: 500,
         margin: {
@@ -40,6 +41,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       tablet: {
+        is_mobile: false,
         width: 500, // 440 x 400
         height: 450,
         margin: {
@@ -54,6 +56,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       mobile: { // 440x400
+        is_mobile: true,
         width: 440,
         height: 400,
         margin: {
@@ -68,14 +71,15 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       retina: {
-        width: 330,
+        is_mobile: true,
+        width: 440,
         height: 300,
         margin: {
           top: 40, right: 0, bottom: 40, left: 10
         },
         sparkline: {
-          width: 10,
-          height: 23
+          width: 15,
+          height: 20
         },
         legend: {
           y: 2
@@ -136,7 +140,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let x = d3.scaleBand()
         .domain(d3.range(dataincome.length))
         .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right])
-        .padding(0.1)
+        .padding(this.chartBreakpointValues.is_mobile? 0.02 : 0.1)
       this.innerHTML = template(this.translationsObj);
       // console.log("ran template", this.innerHTML);
       this.querySelectorAll('span[data-replacement="d3-bar-report-date"]').forEach(elem => {
@@ -147,7 +151,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this,this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
-      let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
+      let xAxis = writeXAxis(this, dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
       writeXAxisLabel(this, this.svg, this.translationsObj.xAxisTitleIncome);
   
       this.svg.append("g")
@@ -159,7 +163,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       redrawYLine(this, y, dataincome);
 
-      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
+      writeLegend(this, this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues)
@@ -238,7 +242,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       rewriteBars(component, svg, dataset, x, y);
       rewriteBarLabels(component, svg, dataset, x, y, chartBreakpointValues.sparkline);
-      xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
+      xAxis = writeXAxis(component, dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
       redrawYLine(component, y, dataset);
