@@ -2552,3 +2552,10 @@ ul.small-text {
       &:first-child {border-top: 1px solid $black;}      
   }
 }
+
+
+.blue-highlight {
+  background-color: $darkblue;
+  padding:2.5rem;
+  color: $white !important;
+}
