@@ -1,5 +1,5 @@
 import '@cagov/step-list';
-import './accordion/index.js';
+import '@cagov/accordion';
 import './pagerating/index.js';
 import './survey-vaccine/index.js';
 import './feature-detect/webp.js';
