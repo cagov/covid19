@@ -197,3 +197,10 @@ button.card-header {
   padding-bottom: 0;
   margin-bottom: 0;
 }
+
+// Search results accodions fix (mobile)
+@media only screen and (max-width: 767px) {
+  .accordion-alpha-open + .card-container {
+    height: 100% !important;
+  }
+}
