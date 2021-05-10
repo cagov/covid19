@@ -9,7 +9,6 @@ function fixRangeHyphens(label) {
 }
 
 function writeXAxis(component, data, height, margin, x) {
-  console.log("Write x axis",data);
   let xAxis = g => g
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
