@@ -2,7 +2,7 @@
   "Table1": [
     {
       "_id": "title",
-      "value": "ابحث عن حالة الأنشطة في مقاطعتك"
+      "value": "اعثر على ما قد يكون مفتوحا بالقرب منك"
     },
     {
       "_id": "activityLabel",
@@ -10,23 +10,23 @@
     },
     {
       "_id": "activityPlaceholder",
-      "value": "أدخل عمل أو نشاط"
+      "value": "أدخل عملاً أو نشاطًا"
     },
     {
       "_id": "countyLabel",
-      "value": "المقاطعة"
+      "value": "المقاطعة أو مستوى الفئة"
     },
     {
       "_id": "countyPlaceholder",
-      "value": "أدخل مقاطعة"
+      "value": "أدخل المقاطعة أو مستوى الفئة"
     },
     {
       "_id": "buttonText",
-      "value": "تعرف على أحدث مستويات المخاطر"
+      "value": "احصل على الحالة"
     },
     {
       "_id": "clearText",
-      "value": "أمحي"
+      "value": "امحي"
     },
     {
       "_id": "seeGuidanceText",
@@ -50,7 +50,7 @@
     },
     {
       "_id": "countyNotFound",
-      "value": "المقاطعة ليست موجودة"
+      "value": "المقاطعة أو مستوى الفئة غير موجود"
     },
     {
       "_id": "activityNotFound",
@@ -58,40 +58,48 @@
     },
     {
       "_id": "emptySearchError",
-      "value": "الرجاء إدخال مقاطعة أو نشاط"
+      "value": "الرجاء إدخال المقاطعة أو أو مستوى الفئة أو النشاط"
+    },
+    {
+      "_id": "countyTierInputPrompt",
+      "value": "اكتب حرفين أو أكثر لتحصل على نتائج."
+    },
+    {
+      "_id": "activityInputPrompt",
+      "value": "اكتب حرفين أو أكثر لتحصل على نتائج."
     }
   ],
   "Table2": [
     {
-      "id": "1 – Purple",
-      "color": "Purple",
+      "id": "1 - بنفسجي",
+      "color": "بنفسجي",
       "reverseValue": "4",
-      "label": "Widespread (purple)",
-      "coverage": "Widespread",
+      "label": "الفئة الواسعة الانتشار (البنفسجي)",
+      "coverage": "واسع الانتشار",
       "value": "1"
     },
     {
-      "id": "2 – Red",
-      "color": "Red",
+      "id": "2 - حمراء",
+      "color": "أحمر",
       "reverseValue": "3",
-      "label": "Substantial (red)",
-      "coverage": "Substantial",
+      "label": "الفئة الكبيرة (أحمر)",
+      "coverage": "كبير",
       "value": "2"
     },
     {
-      "id": "3 – Orange",
-      "color": "Orange",
+      "id": "3 - برتقالي",
+      "color": "برتقالي",
       "reverseValue": "2",
-      "label": "Moderate (orange)",
-      "coverage": "Moderate",
+      "label": "الفئة المتوسطة (برتقالي)",
+      "coverage": "متوسط",
       "value": "3"
     },
     {
-      "id": "4 – Yellow",
-      "color": "Yellow",
+      "id": "4 - صفراء",
+      "color": "أصفر",
       "reverseValue": "1",
-      "label": "Minimal (yellow)",
-      "coverage": "Minimal",
+      "label": "الفئة الأدنى (أصفر)",
+      "coverage": "أدنى حد",
       "value": "4"
     }
   ]
