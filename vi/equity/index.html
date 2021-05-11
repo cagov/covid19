@@ -1822,7 +1822,7 @@ function drawBars$2(stackedData, data, statewideRatePer100k) {
           }
         })
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", (d) => 380)
+        .attr("x", (d) => 385)
         .attr("height", y.bandwidth())
         .text((d) => {
           // @TODO ADD COMMA HANDLER HERE
@@ -2157,6 +2157,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       selectedMetricDescription: "cases",
       // Breakpoints
       desktop: {
+        is_single_col: false,
         height: 642,
         width: 450,
         margin: {
@@ -2167,6 +2168,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       tablet: {
+        is_single_col: true,
         height: 642,
         width: 450,
         margin: {
@@ -2177,6 +2179,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       mobile: {
+        is_single_col: true,
         height: 642,
         width: 450,
         margin: {
@@ -2187,8 +2190,9 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       retina: {
-        height: 700,
-        width: 320,
+        is_single_col: true,
+        height: 642,
+        width: 450,
         margin: {
           top: 20,
           right: 30,
@@ -2486,10 +2490,12 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // console.log("max xd",max_xdomain, statewideRatePer100k);
       max_xdomain = Math.max(max_xdomain, statewideRatePer100k);
     }
+
+    let barGap = this.dimensions.is_single_col? 60 : 40;
     this.x = d3
       .scaleLinear()
       .domain([0, max_xdomain])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
 
     // ?
     this.xAxis = (g) =>
@@ -2641,6 +2647,7 @@ function drawBars$1({
   svg.append("g").call(yAxis);
 
   // End of bar labels, POPULATION_PERCENTAGE (blue)
+  let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
     .attr("class", "bars")
@@ -2651,7 +2658,7 @@ function drawBars$1({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x2(100) + 5)
+        .attr("x", (d) => x2(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) =>
           d.POPULATION_PERCENTAGE
@@ -2672,7 +2679,7 @@ function drawBars$1({
         .append("text")
         .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
-        .attr("x", (d) => x1(100) + 5)
+        .attr("x", (d) => x1(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) => {
           if (d.METRIC_TOTAL_PERCENTAGE !== null) {
@@ -2819,6 +2826,7 @@ function drawBars$1({
 }
 
 function drawSecondBars({
+  component,
   svg,
   x1,
   x2,
@@ -2908,6 +2916,7 @@ function drawSecondBars({
   svg.append("g").call(yAxis);
 
   // End of bar labels, METRIC total (yellow)
+  let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
     .attr("class", "bars")
@@ -2918,7 +2927,7 @@ function drawSecondBars({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x1(100) + 5)
+        .attr("x", (d) => x1(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) =>
           d.METRIC_TOTAL_PERCENTAGE
@@ -3043,6 +3052,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       // Breakpoints
       desktop: {
         chartSectionOne: {
+          is_single_col: false,
           height: 700,
           width: 450,
           margin: {
@@ -3053,6 +3063,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: false,
           height: 180,
           width: 450,
           margin: {
@@ -3065,6 +3076,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       tablet: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
           width: 450,
           margin: {
@@ -3075,6 +3087,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
           width: 450,
           margin: {
@@ -3087,6 +3100,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       mobile: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
           width: 440,
           margin: {
@@ -3097,6 +3111,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
           width: 440,
           margin: {
@@ -3109,8 +3124,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       retina: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
-          width: 320,
+          width: 440,
           margin: {
             top: 20,
             right: 30,
@@ -3119,8 +3135,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
-          width: 320,
+          width: 440,
           margin: {
             top: 4,
             right: 30,
@@ -3569,15 +3586,17 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisLeft(this.ySecond).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
+    let barGap = this.dimensions.is_single_col? 60 : 40;
+
     let x1 = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData1, (d) => d3.max(d, (d) => d[1]))])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 40]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
 
     let x2 = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData2, (d) => d3.max(d, (d) => d[1]))])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 40]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
     let legendStrings = this.legendStrings();
 
     // drawBars({this.svg, x1, x2, this.y, yAxis, stackedData1, stackedData2, this.color1, this.color2, data, this.tooltip, legendStrings, this.selectedMetric, this.translationsObj)
@@ -3614,6 +3633,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       chartBreakpointValues: this.chartBreakpointValues,
     });
     drawSecondBars({
+      component: this,
       svg: this.svgSecond,
       x1,
       x2,
@@ -5002,7 +5022,7 @@ window.customElements.define(
   CAGOVEquityMissingness
 );
 
-var css_248z$1 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\ncagov-chart-d3-bar .tick text {\n  font-size: 0.85rem;\n  font-weight: bold; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.55rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 520px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.5rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n";
+var css_248z$1 = "cagov-chart-d3-bar h2 {\n  margin-top: 3rem; }\n\ncagov-chart-d3-bar .chart-title {\n  max-width: 633px;\n  margin: 50px auto 20px;\n  border-bottom: solid 1px; }\n\ncagov-chart-d3-bar .svg-holder {\n  max-width: 633px; }\n\ncagov-chart-d3-bar .bar-chart-label.label {\n  font-size: 1rem; }\n\ncagov-chart-d3-bar .bar-label tspan {\n  font-weight: 100;\n  font-size: 0.85rem; }\n\ncagov-chart-d3-bar .bar-label tspan.bold {\n  font-weight: bold; }\n\ncagov-chart-d3-bar .tick text {\n  font-size: 0.75rem;\n  font-weight: 600; }\n\n@media (max-width: 768px) {\n  cagov-chart-d3-bar .chart-title {\n    margin: 50px 20px 20px 20px; }\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.65rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n\n@media (max-width: 520px) {\n  cagov-chart-d3-bar .tick text {\n    font-size: 0.65rem !important;\n    font-weight: 500; }\n  cagov-chart-d3-bar .bar-label tspan {\n    font-size: 0.6rem !important; }\n  cagov-chart-d3-bar .xaxis-label {\n    font-size: 0.75rem !important;\n    font-weight: 600; }\n  cagov-chart-d3-bar .label.bar-chart-label {\n    font-size: 0.75rem !important; } }\n";
 styleInject(css_248z$1);
 
 // import chartCss from './../chart.scss';
@@ -5050,15 +5070,15 @@ function fixRangeHyphens(label) {
   return label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
 }
 
-function writeXAxis(data, height, margin, x) {
-  console.log("Write x axis",data);
+function writeXAxis(component, data, height, margin, x) {
   let xAxis = g => g
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
         return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
+      } else {
+        return fixRangeHyphens(data[i].SOCIAL_TIER);
       }
-      return fixRangeHyphens(data[i].SOCIAL_TIER);
     }).tickSize(0))
     .call(g => g.select(".domain").remove());
   return xAxis;
@@ -5077,7 +5097,15 @@ function writeXAxisLabel(component, svg, label) {
           .style("text-anchor", "middle")
           .text(label);
 }
-function writeLegend(svg, legendLabels, width, legendPositions) {
+
+// function rewriteLegend(svg, legendLabels) { // UNUSED
+//   svg.selectAll('.legend text')
+//     .data(legendLabels)
+//     .text(legendLabels[0])
+//     .attr("text-anchor", "start")
+// }
+
+function writeLegend(component, svg, legendLabels, width, legendPositions) {
   let legend = svg.append('g')
     .attr('class', 'legend');
   
@@ -5101,6 +5129,26 @@ function writeLegend(svg, legendLabels, width, legendPositions) {
     .attr('y', legendPositions.y)
     .attr('text-anchor', 'start')
     .attr('dominant-baseline', 'hanging');
+    // add statewide element here...
+  let linePosY = 7.5;
+  let legendX = component.chartBreakpointValues.width/2;
+  legend.append('line')
+    .attr("x1", legendX)
+    .attr("y1", linePosY)
+    .attr("x2", legendX+15)
+    .attr("y2", linePosY)
+    .attr("stroke", "#1F2574")
+    .attr("opacity", 0.5)
+    .style("stroke-dasharray", ("1, 1"))
+    .attr('class','label bar-chart-yline');
+  legend.append('text')
+    .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
+    .attr('class', 'legend-label')
+    .attr("x", legendX+20)
+    .attr("y", legendPositions.y)
+    .attr('text-anchor', 'start')
+    .attr('dominant-baseline', 'hanging');
+ 
 }
 
 function writeBars(component, svg, data, x, y, width, tooltip) {
@@ -5155,24 +5203,24 @@ function rewriteBars(component, svg, data, x, y) {
 
 function writeBarLabels(component, svg, data, x, y, sparkline) {
   svg.append("g")
-  .attr("class", "bar-label-group")
-  .selectAll(".bar-label")
-  .data(data)
-  .join(
-    enter => {
-      enter
-        .append("text")
-        .attr("class", "bar-label")
-        .attr("x", (d, i) => x(i) + (x.bandwidth() / 2))
-        .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
-        .attr("width", x.bandwidth() / 4)
-        .html(d => {
-          return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
-          <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`
-        })
-        .attr('text-anchor','middle');
-    }
-  );
+    .attr("class", "bar-label-group")
+    .selectAll(".bar-label")
+    .data(data)
+    .join(
+      enter => {
+        enter
+          .append("text")
+          .attr("class", "bar-label")
+          .attr("x", (d, i) => x(i) + (x.bandwidth() / 2))
+          .attr("y", d => y(d.CASE_RATE_PER_100K) - 5)
+          .attr("width", x.bandwidth() / 4)
+          .html(d => {
+            return `<tspan class="bold" dx="-1.25em" dy="-1.2em">${(d.CASE_RATE_PER_100K).toFixed(1)}</tspan>
+            <tspan dx="-1.5em" dy="1.2em">${parseFloat(d.RATE_DIFF_30_DAYS).toFixed(1)}%</tspan>`;
+          })
+          .attr('text-anchor','middle');
+      }
+    );
 
   writeSparklines(svg, data, x, y, sparkline);
 }
@@ -5229,26 +5277,27 @@ function redrawYLine(component, y, dataset) {
   let yDottedLinePos = y(component.yDValue);
   y(dataset[2].CASE_RATE_PER_100K);
   y(dataset[3].CASE_RATE_PER_100K);
-  let yXAnchor = component.chartBreakpointValues.width - (component.chartBreakpointValues.margin.right+10);
-  let yTextAnchor = 'end';
+  component.chartBreakpointValues.width - (component.chartBreakpointValues.margin.right+10);
+  let dotLen = 1; // component.chartBreakpointValues.is_mobile? 1 : 5;
   component.svg.append("path")
     .attr("d", d3.line()([[component.chartBreakpointValues.margin.left, yDottedLinePos], 
                           [component.chartBreakpointValues.width - component.chartBreakpointValues.margin.right, yDottedLinePos]]))
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
-    .style("stroke-dasharray", ("5, 5"))
+    .style("stroke-dasharray", (`${dotLen},${dotLen}`))
     .attr('class','label bar-chart-yline');
-  
-  component.svg.append("text")
-    .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
-    .attr("y", yDottedLinePos - 6)
-    // .attr("x", 38)
-    // .attr('text-anchor','start')
-    .attr("x", yXAnchor)
-    .attr('text-anchor', yTextAnchor)
-    .attr('fill', '#1F2574')
-    .attr('class','label bar-chart-label');
-
+    
+  // if (!component.chartBreakpointValues.is_mobile) {
+  //   component.svg.append("text")
+  //     .text(`${component.translationsObj.statewideCaseRate} ${formatValue(component.yDValue,{format:'number',min_decimals:1})}`)
+  //     .attr("y", yDottedLinePos - 6)
+  //     // .attr("x", 38)
+  //     // .attr('text-anchor','start')
+  //     .attr("x", yXAnchor)
+  //     .attr('text-anchor', yTextAnchor)
+  //     .attr('fill', '#1F2574')
+  //     .attr('class','label bar-chart-label');
+  // }
 }
 
 class CAGOVChartD3Bar extends window.HTMLElement {
@@ -5271,6 +5320,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       // chartColors: ["#92C5DE", "#FFCF44"],
       // Breakpoints
       desktop: {
+        is_mobile: false,
         width: 613,
         height: 500,
         margin: {
@@ -5285,6 +5335,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       tablet: {
+        is_mobile: false,
         width: 500, // 440 x 400
         height: 450,
         margin: {
@@ -5299,6 +5350,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       mobile: { // 440x400
+        is_mobile: true,
         width: 440,
         height: 400,
         margin: {
@@ -5313,14 +5365,15 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         }
       },
       retina: {
-        width: 330,
+        is_mobile: true,
+        width: 440,
         height: 300,
         margin: {
           top: 40, right: 0, bottom: 40, left: 10
         },
         sparkline: {
-          width: 10,
-          height: 23
+          width: 15,
+          height: 20
         },
         legend: {
           y: 2
@@ -5381,7 +5434,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let x = d3.scaleBand()
         .domain(d3.range(dataincome.length))
         .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right])
-        .padding(0.1);
+        .padding(this.chartBreakpointValues.is_mobile? 0.02 : 0.1);
       this.innerHTML = template$1(this.translationsObj);
       // console.log("ran template", this.innerHTML);
       this.querySelectorAll('span[data-replacement="d3-bar-report-date"]').forEach(elem => {
@@ -5392,7 +5445,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);
       writeBarLabels(this,this.svg, dataincome, x, y, this.chartBreakpointValues.sparkline);
-      let xAxis = writeXAxis(dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
+      let xAxis = writeXAxis(this, dataincome, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, x);
       writeXAxisLabel(this, this.svg, this.translationsObj.xAxisTitleIncome);
   
       this.svg.append("g")
@@ -5404,7 +5457,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       redrawYLine(this, y, dataincome);
 
-      writeLegend(this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
+      writeLegend(this, this.svg, [this.translationsObj.casesPer100KPeople], this.chartBreakpointValues.width - 5, this.chartBreakpointValues.legend);
 
       this.querySelector('.svg-holder').appendChild(this.svg.node());
       this.applyListeners(this.svg, x, y, this.chartBreakpointValues.height, this.chartBreakpointValues.margin, xAxis, dataincome, datacrowding, datahealthcare, this.chartBreakpointValues);
@@ -5483,7 +5536,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
 
       rewriteBars(component, svg, dataset, x, y);
       rewriteBarLabels(component, svg, dataset, x, y, chartBreakpointValues.sparkline);
-      xAxis = writeXAxis(dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
+      xAxis = writeXAxis(component, dataset, chartBreakpointValues.height, chartBreakpointValues.margin, x);
       svg.selectAll(".xaxis")
         .call(xAxis);
       redrawYLine(component, y, dataset);
