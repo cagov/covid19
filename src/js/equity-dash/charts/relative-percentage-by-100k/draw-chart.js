@@ -165,7 +165,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
           }
         })
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 9)
-        .attr("x", (d) => 380)
+        .attr("x", (d) => 385)
         .attr("height", y.bandwidth())
         .text((d) => {
           // @TODO ADD COMMA HANDLER HERE
