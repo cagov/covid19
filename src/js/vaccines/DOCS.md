@@ -144,19 +144,11 @@ County search widget like the one on the Equity page
 2. `cagov-chart-vaccination-groups-age` - Vaccine Equity by Age
 3. `cagov-chart-vaccination-groups-gender` - Vaccine Equity by Gender
 
-#### Commented out
-`cagov-chart-vaccination-groups-race-ethnicity-age` - Custom chart that has more complex data (2 criteria Race and Age together)
-* Responsive to two columns 
-
 ---
 
 ## Data 
 
-### Vaccines by Race, Ethnicity and Age in California
-(SAMPLE DATA for initial development before we have the real data)
-https://github.com/cagov/covid-static/blob/master/data/chart-sandbox/vaccines_by_race_ethnicity_and_age_california.json
-
-JSON Data Source Git code
+#### JSON Data Source Git code
 https://github.com/cagov/covid-static/tree/master/data/vaccine-equity
 
 #### Age dataset
@@ -177,9 +169,6 @@ https://github.com/cagov/covid-static/blob/master/data/vaccine-equity/race-ethni
 * https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json
 
 #### Static file server location
-
-`equityChartsSampleDataLoc`
-: https://files.covid19.ca.gov/data/chart-sandbox/
 
 `equityChartsVEDataLoc`
 : https://files.covid19.ca.gov/data/vaccine-equity/
