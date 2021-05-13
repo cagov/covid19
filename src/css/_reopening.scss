@@ -24,9 +24,7 @@ html[dir=rtl] {
   }
 }
 
-cagov-reopening,
-cagov-reopening-airtable,
-cagov-reopening-tier-level {
+cagov-reopening {
   .subtitle-color {
     color: #1f2574;
   }
@@ -92,11 +90,11 @@ cagov-reopening-tier-level {
           background: transparent;
         }
       }
-      li.separator {
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgb(151, 151, 151);
-        margin-bottom: 10px;
-      }
+    }
+    li.separator {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgb(151, 151, 151);
+      margin-bottom: 10px;
     }
     mark {
       background: transparent;
@@ -104,8 +102,6 @@ cagov-reopening-tier-level {
       padding: 0;
     }
   }
-
-
 
   .reopening-field-error {
     position: absolute;

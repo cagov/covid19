@@ -181,7 +181,6 @@ button.card-header.accordion-alpha:focus {
   padding-right: 1.5rem !important;
   padding-left: 1.5rem !important;
   font-weight: 500;
-  font-family: Montserrat, sans-serif;
 }
 
 .btn-matrix.bg-purple-btn,
@@ -480,6 +479,7 @@ button.clear {
     outline: 2px solid $yellow !important;
   }
 }
+
 //light blue  arrow link
 .link-arrow-orange {
   @include link-arrow;
@@ -818,31 +818,6 @@ faq-section {
   }
   &:focus {
     outline: 2px solid $yellow;
-  }
-}
-
-.return-top {
-  position: fixed;
-  z-index: 99999;
-  right: 15px;
-  bottom: -50px;
-  opacity: 0;
-  visibility: hidden;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.5s linear;
-  // Icon
-  &:before {
-    content: "\e9f6";
-    font-family: "CaGov";
-    padding-right: 5px;
-  }
-
-  &.is-visible {
-    opacity: 1;
-    visibility: visible;
-    display: inline;
-    bottom: 50px;
   }
 }
 

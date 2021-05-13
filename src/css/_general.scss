@@ -2067,11 +2067,11 @@ font {
 .small-text {
   font-size: 0.95rem !important;
 }
-ul.small-text {
-  line-height: 1.5rem;
-}
 .text-small {
   font-size: 0.85rem !important;
+}
+ul.small-text {
+  line-height: 1.5rem;
 }
 .caption {
   font-size: 0.95rem !important;
@@ -2079,7 +2079,6 @@ ul.small-text {
   margin-bottom: 0.95rem;
   // font-style: italic;
 }
-
 .text-disclaim {
   font-size: 0.8em;
 }
@@ -2200,6 +2199,7 @@ ul.small-text {
 .pos-rel {
   position: relative;
 }
+
 .bd-lightblue {
   border: 2px solid $lightestblue !important;
 }
