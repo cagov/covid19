@@ -105,6 +105,7 @@ export default function drawBars({
   svg.append("g").call(yAxis);
 
   // End of bar labels, POPULATION_PERCENTAGE (blue)
+  let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
     .attr("class", "bars")
@@ -115,7 +116,7 @@ export default function drawBars({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x2(100) + 5)
+        .attr("x", (d) => x2(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) =>
           d.POPULATION_PERCENTAGE
@@ -136,7 +137,7 @@ export default function drawBars({
         .append("text")
         .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
-        .attr("x", (d) => x1(100) + 5)
+        .attr("x", (d) => x1(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) => {
           if (d.METRIC_TOTAL_PERCENTAGE !== null) {

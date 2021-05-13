@@ -25,6 +25,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       // Breakpoints
       desktop: {
         chartSectionOne: {
+          is_single_col: false,
           height: 700,
           width: 450,
           margin: {
@@ -35,6 +36,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: false,
           height: 180,
           width: 450,
           margin: {
@@ -47,6 +49,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       tablet: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
           width: 450,
           margin: {
@@ -57,6 +60,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
           width: 450,
           margin: {
@@ -69,6 +73,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       mobile: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
           width: 440,
           margin: {
@@ -79,6 +84,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
           width: 440,
           margin: {
@@ -91,8 +97,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
       },
       retina: {
         chartSectionOne: {
+          is_single_col: true,
           height: 700,
-          width: 320,
+          width: 440,
           margin: {
             top: 20,
             right: 30,
@@ -101,8 +108,9 @@ class CAGOVEquityREPop extends window.HTMLElement {
           },
         },
         chartSectionTwo: {
+          is_single_col: true,
           height: 180,
-          width: 320,
+          width: 440,
           margin: {
             top: 4,
             right: 30,
@@ -552,15 +560,17 @@ class CAGOVEquityREPop extends window.HTMLElement {
         .call(d3.axisLeft(this.ySecond).tickSize(0))
         .call((g) => g.selectAll(".domain").remove());
 
+    let barGap = this.dimensions.is_single_col? 60 : 40;
+
     let x1 = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData1, (d) => d3.max(d, (d) => d[1]))])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 40]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
 
     let x2 = d3
       .scaleLinear()
       .domain([0, d3.max(stackedData2, (d) => d3.max(d, (d) => d[1]))])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 40]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
 
     let xAxis = (g) =>
       g
@@ -603,6 +613,7 @@ class CAGOVEquityREPop extends window.HTMLElement {
       chartBreakpointValues: this.chartBreakpointValues,
     });
     drawSecondBars({
+      component: this,
       svg: this.svgSecond,
       x1,
       x2,
