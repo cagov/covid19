@@ -1,15 +1,14 @@
 ---
 layout: "page.njk"
 title: "更安全的經濟藍圖"
-meta: " 2021年5月11日的通知 計劃於今日下午太平洋時間2:00至4:00進行維護，所以在此期間無法查看縣示意圖。我們將盡快恢復該示意圖。基於新型冠狀病毒傳播等級，加州的重新開放藍圖設定了放寬和加強各種活動限制的條件。此頁面 […]"
+meta: " 基於新型冠狀病毒傳播等級，加州的重新開放藍圖設定了放寬和加強各種活動限制的條件。此頁面包含的內容：目前的等級劃分情況 超越藍圖 安全地重新開放所有社區 問題與解答 當前的等級劃分情況（截至{{_varTierDate_}}） 加州所有縣被劃分至某個等級，[…]"
 author: "State of California"
-publishdate: "2021-05-11T19:46:00Z"
+publishdate: "2021-05-11T23:54:22Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight my-4">
-<h2 class="h3 color-primary mt-0">2021年5月11日的通知</h2><p>計劃於今日下午太平洋時間2:00至4:00進行維護，所以在此期間無法查看縣示意圖。我們將盡快恢復該示意圖。 </p></div>    <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+<!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData['en'].saferEconomyLang.Table2 | dump | escape}}"></cagov-reopening></div>
 
 
