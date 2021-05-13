@@ -196,11 +196,11 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           this.alldata = croppedData;
 
 
-          renderChart.call(this);
+          renderChart.call(this,null,null,null,'ve-age');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
-            chartTitleCounty: this.translationsObj.chartCounty,
+            chartTitleCounty: this.translationsObj.chartCounty
           });
         }.bind(this)
       );
