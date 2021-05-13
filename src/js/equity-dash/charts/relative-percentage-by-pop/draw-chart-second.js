@@ -1,6 +1,7 @@
 import { chartOverlayFade, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 
 export default function drawSecondBars({
+  component,
   svg,
   x1,
   x2,
@@ -92,6 +93,7 @@ export default function drawSecondBars({
   svg.append("g").call(yAxis);
 
   // End of bar labels, METRIC total (yellow)
+  let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
     .attr("class", "bars")
@@ -102,7 +104,7 @@ export default function drawSecondBars({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x1(100) + 5)
+        .attr("x", (d) => x1(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) =>
           d.METRIC_TOTAL_PERCENTAGE
