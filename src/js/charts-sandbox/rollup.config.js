@@ -13,7 +13,7 @@ const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-equity/',
   chartsVHPIDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/vaccine-hpi/v2/',
-  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/',
+  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/master/data/dashboard/',
 }
 
 const devOutputPath = 'docs/js/charts-sandbox.js';
