@@ -374,6 +374,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
         );
         this.resetTitle();
         this.resetDescription();
+        let countyEncoded = e.detail.county.toLowerCase().replace(' ','_');
+        document.location.replace( '#location-' + countyEncoded);
       }.bind(this),
       false
     );
