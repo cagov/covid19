@@ -206,11 +206,8 @@ function rewriteBarLabels(component, svg, data, x, y, sparkline) {
 
 function redrawYLine(component, y, dataset) {
   // remove previous Y Line, if any
-  if (component.querySelector('.bar-chart-yline') !== null) {
-    component.querySelectorAll('.bar-chart-yline').forEach(bar => {
-      bar.remove();
-    })
-  }
+  if (component.querySelector('.bar-chart-yline-full') !== null)
+    component.querySelector('.bar-chart-yline-full').remove()
   if (component.querySelector('.bar-chart-label') !== null)
     component.querySelector('.bar-chart-label').remove();
 
@@ -234,7 +231,7 @@ function redrawYLine(component, y, dataset) {
     .attr("stroke", "#1F2574")
     .attr("opacity", 0.5)
     .style("stroke-dasharray", (`${dotLen},${dotLen}`))
-    .attr('class','label bar-chart-yline');
+    .attr('class','label bar-chart-yline bar-chart-yline-full');
     
   // if (!component.chartBreakpointValues.is_mobile) {
   //   component.svg.append("text")
