@@ -1288,6 +1288,19 @@ class CAGovCountySearch extends window.HTMLElement {
         }
   }
 
+  handleURLPayload() {
+    // Support URL with #location-countyname
+    let curHREF = document.location.href;
+    if (curHREF.includes('#location-')) {
+      let loc = curHREF.split('#location-')[1].replace('_',' ').replace('-',' ');
+      let countyInput = document.querySelector("#location-query");
+      if (loc != 'california') {
+        console.log("Triggering county search",loc,countyInput);
+        this.processCountySearchInput(loc);
+      }
+    }
+  }
+
   connectedCallback () {
     if(this.dataset.countyLabel) {
       this.dataset.countyLabel;
@@ -1313,10 +1326,12 @@ class CAGovCountySearch extends window.HTMLElement {
         let typedInValue = document.querySelector('#location-query').value.trim();
         this.processCountySearchInput(typedInValue);
       }.bind(this));  
+      this.handleURLPayload();
     }.bind(this));
 
     rtlOverride(this, 'div', 'ltr');
 
+    
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
@@ -4444,11 +4459,13 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       "county-selected",
       function (e) {
         this.county = e.detail.county;
+        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
         let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
+          countyEncoded
         );
         this.retrieveData(searchURL, e.detail.county);
+        document.location.replace( '#location-' + countyEncoded);
       }.bind(this),
       false
     );

@@ -1510,6 +1510,19 @@ class CAGovCountySearch extends window.HTMLElement {
         }
   }
 
+  handleURLPayload() {
+    // Support URL with #location-countyname
+    let curHREF = document.location.href;
+    if (curHREF.includes('#location-')) {
+      let loc = curHREF.split('#location-')[1].replace('_',' ').replace('-',' ');
+      let countyInput = document.querySelector("#location-query");
+      if (loc != 'california') {
+        console.log("Triggering county search",loc,countyInput);
+        this.processCountySearchInput(loc);
+      }
+    }
+  }
+
   connectedCallback () {
     if(this.dataset.countyLabel) {
       this.dataset.countyLabel;
@@ -1535,10 +1548,12 @@ class CAGovCountySearch extends window.HTMLElement {
         let typedInValue = document.querySelector('#location-query').value.trim();
         this.processCountySearchInput(typedInValue);
       }.bind(this));  
+      this.handleURLPayload();
     }.bind(this));
 
     rtlOverride(this, 'div', 'ltr');
 
+    
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
@@ -3642,6 +3657,8 @@ class CAGOVEquityREPop extends window.HTMLElement {
         );
         this.resetTitle();
         this.resetDescription();
+        let countyEncoded = e.detail.county.toLowerCase().replace(' ','_');
+        document.location.replace( '#location-' + countyEncoded);
       }.bind(this),
       false
     );
