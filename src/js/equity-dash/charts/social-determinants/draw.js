@@ -205,9 +205,9 @@ function rewriteBarLabels(component, svg, data, x, y, sparkline) {
 }
 
 function redrawYLine(component, y, dataset) {
-  // remove previous Y Line, if any
+  // remove previous Y Line, if any -- use unique classname here, the legend uses .bar-chart-yline too
   if (component.querySelector('.bar-chart-yline-full') !== null)
-    component.querySelector('.bar-chart-yline-full').remove()
+    component.querySelector('.bar-chart-yline-full').remove();
   if (component.querySelector('.bar-chart-label') !== null)
     component.querySelector('.bar-chart-label').remove();
 
