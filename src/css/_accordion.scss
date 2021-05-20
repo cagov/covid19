@@ -181,9 +181,12 @@ button.card-header {
       &[aria-hidden="false"] {
         border-bottom: 1px solid tint($darkblue, 20%);
       }
-      color: $white;
+      color: $white !important;
       h2, h3, h4, h5 {
-        color: $white;
+        color: $white !important;
+      }
+      .card-body {
+        color: $white !important;
       }
     }
 
