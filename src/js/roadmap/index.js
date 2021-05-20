@@ -4,6 +4,7 @@ import templatize from "./template.js";
 
 class CAGovReopeningTierLevel extends window.HTMLElement {
   connectedCallback() {
+    console.log("roadmap this", this);
     this.json = JSON.parse(this.dataset.json);
     this.countyTiers = JSON.parse(this.dataset.countyTiers);
 
@@ -27,6 +28,10 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       document.querySelector(".matrix-county-risk-levels").innerHTML =
         theMatrixDescriptions.innerHTML;
     }
+
+    // let language = ""; 
+    console.log("this.dataset.language", this.dataset.language);
+    let language = this.dataset.language && this.dataset.language !== "en" ? `-${this.dataset.language}` : "";
 
     window
       .fetch("/countystatus.json")
@@ -74,7 +79,7 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       );
 
     window
-      .fetch("/statusdescriptors.json")
+      .fetch(`/statusdescriptors${language}.json`)
       .then((response) => response.json())
       .then(
         function (data) {
@@ -92,7 +97,7 @@ class CAGovReopeningTierLevel extends window.HTMLElement {
       );
 
     window
-      .fetch("/reopening-activities.json")
+      .fetch(`/reopening-activities${language}.json`)
       .then((response) => response.json())
       .then(
         function (data) {

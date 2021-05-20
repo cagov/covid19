@@ -9,8 +9,7 @@ addtositemap: true
 ---
 
 <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData['en'].saferEconomyLang.Table2 | dump | escape}}"></cagov-reopening></div>
-
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">     <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData[language.id].saferEconomyLang.Table2 | dump | escape}}" data-language="{{language.id}}"></cagov-reopening></div>
 
 
 <p>캘리포니아는 운영 재개를 위한 청사진을 통해 COVID-19의 확산 수준에 근거하여 활동 제한 조치에 대한 완화 및 강화 기준을 마련하였습니다.</p>

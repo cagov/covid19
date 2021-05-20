@@ -9,9 +9,7 @@ addtositemap: true
 ---
 
 <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData['en'].saferEconomyLang.Table2 | dump | escape}}"></cagov-reopening></div>
-
-
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData[language.id].saferEconomyLang.Table2 | dump | escape}}" data-language="{{language.id}}"></cagov-reopening></div>
 
 <p>El plan para reabrir de California tiene unos criterios para relajar o endurecer las restricciones a las actividades con base en los niveles de propagación de la COVID-19.</p>
 
