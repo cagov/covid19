@@ -192,7 +192,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
+          let croppedData = alldata.data;//.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;
 
 
