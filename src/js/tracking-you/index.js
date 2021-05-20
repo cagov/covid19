@@ -192,7 +192,7 @@ export default function setupAnalytics() {
     // const fieldsObj = { eventAction: 'uncaught error' };
     // loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
     // Add a new listener to track events in real-time, after we get through the backlog.
-    window.addEventListener('error', (event) => trackError(event.error, event.message));
+    window.addEventListener('error', (event) => trackError(event.error, event.message + " filename:" + event.filename + " lineno:" + event.lineno));
   };
 
   // Check to see if we're on any of the available homepages.
