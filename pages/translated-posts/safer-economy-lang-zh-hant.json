@@ -2,7 +2,7 @@
   "Table1": [
     {
       "_id": "title",
-      "value": "了解您所在縣的活動狀況"
+      "value": "查找您附近可能開放的商業或活動"
     },
     {
       "_id": "activityLabel",
@@ -10,19 +10,19 @@
     },
     {
       "_id": "activityPlaceholder",
-      "value": "輸入業務或活動"
+      "value": "輸入商業或活動"
     },
     {
       "_id": "countyLabel",
-      "value": "縣"
+      "value": "縣等級或級別"
     },
     {
       "_id": "countyPlaceholder",
-      "value": "輸入縣"
+      "value": "輸入縣等級或級別"
     },
     {
       "_id": "buttonText",
-      "value": "獲取最新的風險等級"
+      "value": "獲取狀態"
     },
     {
       "_id": "clearText",
@@ -50,7 +50,7 @@
     },
     {
       "_id": "countyNotFound",
-      "value": "未找到縣"
+      "value": "未找到縣等級或級別"
     },
     {
       "_id": "activityNotFound",
@@ -58,40 +58,48 @@
     },
     {
       "_id": "emptySearchError",
-      "value": "請輸入縣或活動"
+      "value": "請輸入縣等級、級別或活動"
+    },
+    {
+      "_id": "countyTierInputPrompt",
+      "value": "請輸入2個或多個字符以獲取結果。 "
+    },
+    {
+      "_id": "activityInputPrompt",
+      "value": "請輸入2個或多個字符以獲取結果。 "
     }
   ],
   "Table2": [
     {
-      "id": "1 – Purple",
-      "color": "Purple",
+      "id": "1 – 紫色",
+      "color": "紫色",
       "reverseValue": "4",
-      "label": "Widespread (Purple) Tier",
-      "coverage": "Widespread",
+      "label": "廣泛傳播（紫色）",
+      "coverage": "廣泛傳播",
       "value": "1"
     },
     {
-      "id": "2 – Red",
-      "color": "Red",
+      "id": "2 – 紅色",
+      "color": "紅色",
       "reverseValue": "3",
-      "label": "Severe (Red) Tier",
-      "coverage": "Severe",
+      "label": "重度（紅色）",
+      "coverage": "重度",
       "value": "2"
     },
     {
-      "id": "3 – Orange",
-      "color": "Orange",
+      "id": "3 – 橙色",
+      "color": "橙色",
       "reverseValue": "2",
-      "label": "Moderate (Orange) Tier",
-      "coverage": "Moderate",
+      "label": "中度（橙色）",
+      "coverage": "中度",
       "value": "3"
     },
     {
-      "id": "4 – Yellow",
-      "color": "Yellow",
+      "id": "4 – 黃色",
+      "color": "黃色",
       "reverseValue": "1",
-      "label": "Minimal (Yellow) Tier",
-      "coverage": "Minimal",
+      "label": "最低（黃色）",
+      "coverage": "最低",
       "value": "4"
     }
   ]

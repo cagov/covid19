@@ -20,7 +20,6 @@ fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpr
 fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
 // Add translated table data in appropriate translation folders.
 langData.languages.map((language) => {
-  console.log("lang", language);
     let languageKey = language.id.toLowerCase();
     if (languageKey !== "en") {
       fs.writeFileSync(`./docs/reopening-activities${language.filepostfix}.json`,fs.readFileSync(`./pages/translated-posts/reopening-roadmap-activity-data${language.filepostfix}.json`,'utf8'),'utf8');
