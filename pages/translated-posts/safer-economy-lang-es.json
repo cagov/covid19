@@ -2,7 +2,7 @@
   "Table1": [
     {
       "_id": "title",
-      "value": "Encuentre qué puede estar abierto cerca de usted"
+      "value": "Encuentre el estado para las actividades en su condado"
     },
     {
       "_id": "activityLabel",
@@ -14,15 +14,15 @@
     },
     {
       "_id": "countyLabel",
-      "value": "Condado o nivel"
+      "value": "Condado"
     },
     {
       "_id": "countyPlaceholder",
-      "value": "Introduzca un condado o un nivel"
+      "value": "Introduzca un condado"
     },
     {
       "_id": "buttonText",
-      "value": "Obtenga el estado"
+      "value": "Obtenga los niveles de riesgo más recientes"
     },
     {
       "_id": "clearText",
@@ -50,7 +50,7 @@
     },
     {
       "_id": "countyNotFound",
-      "value": "Condado o nivel no encontrado"
+      "value": "Condado no encontrado"
     },
     {
       "_id": "activityNotFound",
@@ -58,48 +58,40 @@
     },
     {
       "_id": "emptySearchError",
-      "value": "Introduzca un condado, un nivel o una actividad"
-    },
-    {
-      "_id": "countyTierInputPrompt",
-      "value": "Escriba dos o más caracteres para obtener resultados."
-    },
-    {
-      "_id": "activityInputPrompt",
-      "value": "Escriba dos o más caracteres para obtener resultados."
+      "value": "Escriba un condado o una actividad"
     }
   ],
   "Table2": [
     {
-      "id": "1 - Morado",
-      "color": "Morado",
+      "id": "1 – Purple",
+      "color": "Purple",
       "reverseValue": "4",
-      "label": "Extendido (morado)",
-      "coverage": "Extendido",
+      "label": "Widespread (Purple) Tier",
+      "coverage": "Widespread",
       "value": "1"
     },
     {
-      "id": "2 - Rojo",
-      "color": "Rojo",
+      "id": "2 – Red",
+      "color": "Red",
       "reverseValue": "3",
-      "label": "Sustancial (rojo)",
-      "coverage": "Sustancial",
+      "label": "Severe (Red) Tier",
+      "coverage": "Severe",
       "value": "2"
     },
     {
-      "id": "3 - Naranja",
-      "color": "Naranja",
+      "id": "3 – Orange",
+      "color": "Orange",
       "reverseValue": "2",
-      "label": "Moderado (naranja)",
-      "coverage": "Moderado",
+      "label": "Moderate (Orange) Tier",
+      "coverage": "Moderate",
       "value": "3"
     },
     {
-      "id": "4 - Amarillo",
-      "color": "Amarillo",
+      "id": "4 – Yellow",
+      "color": "Yellow",
       "reverseValue": "1",
-      "label": "Mínimo (amarillo)",
-      "coverage": "Mínimo",
+      "label": "Minimal (Yellow) Tier",
+      "coverage": "Minimal",
       "value": "4"
     }
   ]

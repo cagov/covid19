@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
-title: "캘리포니아 내 COVID-19 추적 관리"
-meta: "2021년 5월 17일자 주의 사항 당일 투여한 회분은 다른 면역 등록소에서의 데이터 접수 지연으로 인해 합산 처리가 완료되지 않았습니다. 이번 주 후반에 합산 자료가 제공되면 해당 내용을 본 대시보드에 업데이트하게 됩니다. {{_varStatDate_}} 업데이트 {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} […]"
+title: "캘리포니아 내 COVID-19 현황 추적"
+meta: " {{_varStatDate_}} 업데이트 {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} 합계 {{_varStatTotalCasesToday_}} 당일 {{_varStatNewCasesPer100k_}} 1십만명 당 신규 사례 건수 사망자 수 {{_varStatTotalDeaths_}} 합계 {{_varStatTotalDeathsToday_}} 당일 {{_varStatNewDeathsPer100k_}} 1십만명 당 신규 시망자 수 검사 건수 {{_varStatTested_}} 합계 {{_varStatTestedDaily_}} 당일 {{_varStatLatestPositivityPct_}}% 양성 반응률 백신 투여 건수 {{_varStatVaccines_}} 합계 {# {{_varStatVaccinesDaily_}} 당일 {{_varStatVaccinesDailyPct_}}% 증가 #} […]"
 author: "State of California"
-publishdate: "2021-05-17T16:31:22Z"
+publishdate: "2021-05-11T23:51:11Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2021년 5월 17일자 주의 사항</h2>
-<p>당일 투여한 회분은 기타 백신 등록소에서의 데이터 접수 지연으로 인해 합산 처리가 완료되지 않았습니다. 이번 주 후반에 합산 자료가 제공되면 해당 내용을 본 대시보드에 업데이트하게 됩니다.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 

@@ -3,13 +3,15 @@ layout: "page.njk"
 title: "更安全的经济蓝图"
 meta: " 基于COVID-19传播等级，加州的重新开放蓝图设定了放宽和加强各种活动限制的条件。此页面包含的内容：目前的等级划分情况 超越蓝图 安全地重新开放所有社区 问题与解答 当前的等级划分情况（截至{{_varTierDate_}}） 加州所有县被划分至某个等级，[…]"
 author: "State of California"
-publishdate: "2021-05-14T18:56:13Z"
+publishdate: "2021-05-11T23:54:22Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <!--{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">    <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData[language.id].saferEconomyLang.Table2 | dump | escape}}" data-language="{{language.id}}"></cagov-reopening></div>
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}-->    <div class="full-bleed">   <cagov-reopening data-json="{{pubData[language.id].saferEconomyLang.Table1[0] | dump | escape}}" data-schools="{{pubData['en'].commonPageLabels.Table6[0] | dump | escape}}" data-county-tiers="{{pubData['en'].saferEconomyLang.Table2 | dump | escape}}"></cagov-reopening></div>
+
+
 
 <p>基于COVID-19传播等级，加州的重新开放蓝图设定了放宽和加强各种活动限制的条件。</p>
 
@@ -55,7 +57,7 @@ addtositemap: true
 
 
 
-<p>如果满足以下条件，加州将于2021年6月15日在全州完全重新开放经济：</p>
+<p>如果满足以下条件，加州将于6月15日在全州完全重新开放经济：</p>
 
 
 
@@ -99,7 +101,7 @@ addtositemap: true
 
 
 
-<p>40％的COVID-19感染及死亡发生在加州处于健康地方指数(HPI)最低四分位数的社区。由南加州公共卫生联盟 (Public Health Alliance of Southern California) 研发的<a class="external" href="https://healthyplacesindex.org/">健康地方指数</a>，能帮助我们将低收入、教育程度及医疗保健普及率等社区状况视觉化。为结束疫情，我们优先为HPI第1个四分位数社区的居民分配疫苗。此方法将有助于降低社区感染率、住院率及死亡率。此方法也将有助于减少新变体出现的几率。您可以通过<a href="https://covid19.ca.gov/vaccines/#California-vaccines-dashboard">疫苗一览表</a>追踪HPI四分位数社区的疫苗接种进程。</p>
+<p>40％的COVID-19感染及死亡发生在加州处于健康地方指数(HPI)最低四分位数的社区。由南加州公共卫生联盟 (Public Health Alliance) 研发的<a class="external" href="https://healthyplacesindex.org/">健康地方指数</a>，能帮助我们将低收入、教育程度及医疗保健普及率等社区状况视觉化。为结束疫情，我们将预留百分之四十 (40%) 的疫苗，以分配给HPI第1个四分位数社区的居民。此方法将有助于降低社区感染率、住院率及死亡率。其也将有助于降低新变种病毒出现的几率。您可以通过<a href="https://covid19.ca.gov/vaccines/#California-vaccines-dashboard">疫苗一览表</a>追踪HPI四分位数社区的疫苗接种进程。</p>
 
 
 
@@ -117,7 +119,7 @@ addtositemap: true
 
 <p> </p>
 <div class="matrix-holder"></div>
-<p class="small-text">上方矩阵图中的检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。<br>*可能会对小县（人口少于106,000的县）采取其他病例数评估措施，以进行等级划分。<br>**健康公平指标不适用于小县。健康公平指标是用于让某县移至限制性较低的等级。</p>
+<p class="small-text">上方矩阵图中的检测呈阳性率的计算依据不包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的人数。</br>*可能会对小县（人口少于106,000的县）采取其他病例数评估措施，以进行等级划分。<br>**健康公平指标不适用于小县。健康公平指标是用于让某县移至限制性较低的等级。</p>
 <p> </p>
 
 

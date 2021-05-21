@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
-title: "在加州追踪COVID-19疫苗"
-meta: " 2021年5月17日的通知 由于从其他免疫登记处接收数据有延迟，今日的接种剂量数尚不完整。完整数据将在本周晚些时候于此一览表中更新。更新于 {{_varStatDate_}}截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。病例数 {{_varStatTotalCases_}} […]"
+title: "加州COVID-19追踪"
+meta: "{{_varStatDate_}}的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。病例数 {{_varStatTotalCases_}} 总共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例数 死亡数 {{_varStatTotalDeaths_}} 总共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡数 检测数 {{_varStatTested_}} 总共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%检测呈阳性率 施打的疫苗数 {{_varStatVaccines_}} 总共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增长率#} […]"
 author: "State of California"
-publishdate: "2021-05-17T16:31:22Z"
+publishdate: "2021-05-11T23:51:11Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2021年5月17日的通知</h2>
-<p>由于从其他免疫接种登记处接收数据有延迟，今日的接种剂量数尚不完整。完整数据将在本周晚些时候于此一览表中更新。</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 

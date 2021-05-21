@@ -2,7 +2,7 @@
   "Table1": [
     {
       "_id": "title",
-      "value": "Hãy tìm những ngành dịch vụ nào có thể mở cửa gần nơi quý vị sinh sống"
+      "value": "Tìm trạng thái cho các hoạt động tại quận của quý vị"
     },
     {
       "_id": "activityLabel",
@@ -14,15 +14,15 @@
     },
     {
       "_id": "countyLabel",
-      "value": "Mức độ theo quận hoặc cấp"
+      "value": "Quận"
     },
     {
       "_id": "countyPlaceholder",
-      "value": "Nhập một mức độ theo quận hoặc cấp"
+      "value": "Nhập quận"
     },
     {
       "_id": "buttonText",
-      "value": "Nhận trạng thái"
+      "value": "Nhận mức nguy cơ mới nhất"
     },
     {
       "_id": "clearText",
@@ -50,7 +50,7 @@
     },
     {
       "_id": "countyNotFound",
-      "value": "Không tìm thấy mức độ theo quận hoặc cấp"
+      "value": "Không tìm thấy quận"
     },
     {
       "_id": "activityNotFound",
@@ -58,48 +58,40 @@
     },
     {
       "_id": "emptySearchError",
-      "value": "Vui lòng nhập một mức độ theo quận, theo cấp hoặc hoạt động"
-    },
-    {
-      "_id": "countyTierInputPrompt",
-      "value": "Nhập 2 ký tự trở lên để biết kết quả."
-    },
-    {
-      "_id": "activityInputPrompt",
-      "value": "Nhập 2 ký tự trở lên để biết kết quả."
+      "value": "Vui lòng nhập tên quận hoặc hoạt động"
     }
   ],
   "Table2": [
     {
-      "id": "1 – Màu tím",
-      "color": "Màu tím",
+      "id": "1 – Purple",
+      "color": "Purple",
       "reverseValue": "4",
-      "label": "Lan rộng (màu tím)",
-      "coverage": "Lan rộng",
+      "label": "Widespread (Purple) Tier",
+      "coverage": "Widespread",
       "value": "1"
     },
     {
-      "id": "2 – Màu đỏ",
-      "color": "Màu đỏ",
+      "id": "2 – Red",
+      "color": "Red",
       "reverseValue": "3",
-      "label": "Nghiêm trọng (màu đỏ)",
-      "coverage": "Nghiêm trọng",
+      "label": "Severe (Red) Tier",
+      "coverage": "Severe",
       "value": "2"
     },
     {
-      "id": "3 – Màu cam",
-      "color": "Màu cam",
+      "id": "3 – Orange",
+      "color": "Orange",
       "reverseValue": "2",
-      "label": "Vừa phải (màu cam)",
-      "coverage": "Vừa phải",
+      "label": "Moderate (Orange) Tier",
+      "coverage": "Moderate",
       "value": "3"
     },
     {
-      "id": "4 – Màu vàng",
-      "color": "Màu vàng",
+      "id": "4 – Yellow",
+      "color": "Yellow",
       "reverseValue": "1",
-      "label": "Tối thiểu (màu vàng)",
-      "coverage": "Tối thiểu",
+      "label": "Minimal (Yellow) Tier",
+      "coverage": "Minimal",
       "value": "4"
     }
   ]
