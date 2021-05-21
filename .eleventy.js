@@ -9,16 +9,23 @@ let schoolsArray = [];
 let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
 schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
 fs.writeFileSync('./docs/schools-may-reopen.json',JSON.stringify(schoolsArray),'utf8')
-fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
-fs.writeFileSync('./docs/reopening-activities-airtable-v1.json',fs.readFileSync('./pages/wordpress-posts/whats-open-airtable-v1.json','utf8'),'utf8')
 // this is temporary, we will get this data from an API:
 fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
-// this needs to be translated, need to get the translated version from translated page
-fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
-// county regions for stay home restrictions, hardcoded now, should come from snowflake soon
 fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
 // county regions closed now for stay home restrictions
 fs.writeFileSync('./docs/regionsclosed.json',fs.readFileSync('pages/wordpress-posts/rsho.json','utf8'),'utf8')
+
+// Keep legacy file paths active and current.
+fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
+fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
+// Add translated table data in appropriate translation folders.
+langData.languages.map((language) => {
+    let languageKey = language.id.toLowerCase();
+    if (languageKey !== "en") {
+      fs.writeFileSync(`./docs/reopening-activities${language.filepostfix}.json`,fs.readFileSync(`./pages/translated-posts/reopening-roadmap-activity-data${language.filepostfix}.json`,'utf8'),'utf8');
+      fs.writeFileSync(`./docs/statusdescriptors${language.filepostfix}.json`,fs.readFileSync(`./pages/translated-posts/reopening-matrix-data${language.filepostfix}.json`,'utf8'),'utf8');
+    }
+});
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
@@ -469,7 +476,6 @@ module.exports = function(eleventyConfig) {
   });
 
 
-
   //Dark ACCORDIONS
   eleventyConfig.addTransform("finddarkaccordions", function(html, outputPath) {
     const headerclass = 'dark-accordion';
@@ -482,22 +488,22 @@ module.exports = function(eleventyConfig) {
           class: r.groups.class,
           index: r.index,
           fulltag: r[0] }));
-      
-      
+
+
       const getNextTagDark = (searchArea, tag) => 
           [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)'+tag+'\\b[^>]*>','gm'))]
           .map(r=> ({
             index: r.index,
             isCloseTag: r.groups.closeslash.length>0,
             fulltag: r[0] }))[0];
-      
-      
+
+
       const getEndTagDark = (tag, html, startIndex) => {
         let resultIndex = startIndex;
         let startTagsActive = 0;
         let loopsafe = 100;
         let searchArea = html.substring(startIndex);
-      
+
         while(--loopsafe>0) {
           const nextTag = getNextTagDark(searchArea,tag);
           if(!nextTag) throw `Can't find matching end tag - ${tag}`;
@@ -517,7 +523,7 @@ module.exports = function(eleventyConfig) {
           searchArea = searchArea.substring(resultOffset);
         } //while
       } //getEndTag
-      
+
       //Create a list of all accordion content in order
       const accordiondarkContent = getAccordionDarkStartTags(html)
         .map(nextTag=> ({
@@ -528,8 +534,8 @@ module.exports = function(eleventyConfig) {
             html: html.substring(tags.nextTag.index,tags.endTag.index),
             header: tags.nextTag.class==='dark-accordion'
         }));
-      
-      
+
+
       let result = html;
       //loop and build content
       for (let resultIndex=0;resultIndex<accordiondarkContent.length;resultIndex++) {
@@ -538,7 +544,7 @@ module.exports = function(eleventyConfig) {
           const headerdarkHTML = row.html
             .replace(/dark-accordion/,'')
             .replace(/ class=""/,'');
-      
+
           let bodydarkHTML = '';
           //fill the body
           let bodydarkIndex = resultIndex+1;
@@ -548,13 +554,13 @@ module.exports = function(eleventyConfig) {
               .replace(/dark-accordion-content/,'')
               .replace(/ class=""/,'')
               + '\n';
-      
+
               bodydarkIndex++;
-      
+
             //remove this content tag from html
             result = result.replace(bodydarkRowHTML,'');
           } //while
-      
+
           const finaldarkHTML = 
             `<div class="full-bleed bg-darkblue dark-accordion-bg">
             <div class="container">
@@ -579,7 +585,7 @@ module.exports = function(eleventyConfig) {
             </div>
             </div>
             `;
-      
+
           //replace the header with the new merged content
           result = result.replace(row.html,finaldarkHTML);
         } //if(row.header)
@@ -589,7 +595,6 @@ module.exports = function(eleventyConfig) {
     }
     return html;
   });
-
 
 
   eleventyConfig.addTransform("findlinkstolocalize", async function(html, outputPath) {
