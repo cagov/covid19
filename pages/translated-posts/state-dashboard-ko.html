@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
-title: "캘리포니아 내 COVID-19 추적 관리"
-meta: "2021년 5월 17일자 주의 사항 당일 투여한 회분은 다른 면역 등록소에서의 데이터 접수 지연으로 인해 합산 처리가 완료되지 않았습니다. 이번 주 후반에 합산 자료가 제공되면 해당 내용을 본 대시보드에 업데이트하게 됩니다. {{_varStatDate_}} 업데이트 {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} […]"
+title: "캘리포니아 내 COVID-19 현황 추적"
+meta: " {{_varStatDate_}} 업데이트 {{_varStatDateNoYear_}} 현재, 캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다. 사례 건수 {{_varStatTotalCases_}} 합계 {{_varStatTotalCasesToday_}} 당일 {{_varStatNewCasesPer100k_}} 1십만명 당 신규 사례 건수 사망자 수 {{_varStatTotalDeaths_}} 합계 {{_varStatTotalDeathsToday_}} 당일 {{_varStatNewDeathsPer100k_}} 1십만명 당 신규 시망자 수 검사 건수 {{_varStatTested_}} 합계 {{_varStatTestedDaily_}} 당일 {{_varStatLatestPositivityPct_}}% 양성 반응률 백신 투여 건수 {{_varStatVaccines_}} 합계 {# {{_varStatVaccinesDaily_}} 당일 {{_varStatVaccinesDailyPct_}}% 증가 #} […]"
 author: "State of California"
-publishdate: "2021-05-17T16:31:22Z"
+publishdate: "2021-05-20T17:42:56Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2021년 5월 17일자 주의 사항</h2>
-<p>당일 투여한 회분은 기타 백신 등록소에서의 데이터 접수 지연으로 인해 합산 처리가 완료되지 않았습니다. 이번 주 후반에 합산 자료가 제공되면 해당 내용을 본 대시보드에 업데이트하게 됩니다.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -203,7 +200,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">차트 정보</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">주의: 해당 결과에 이전부터 어제까지의 사례 건수가 포함됨에 따라, 숫자는 정확한 전일 대비 변경 수치를 나타내지 않습니다. 발생 일자는 사례가 발생한 것으로 추정되는 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 사례 건수에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 보고된 사망자 수가 음수로 나타나면, 이전에 COVID-19에 의한 사망으로 집계된 사망자가 COVID-19와 연관성이 없는 것으로 판명된 경우에 해당합니다. 본 차트 내 인구수 분모는 캘리포니아의 재정부의 2020년도 예상 인구수를 참조하였습니다.</p>
+<p class="small-text">해당 결과에 이전부터 어제까지의 사례 건수가 포함됨에 따라, 숫자는 정확한 전일 대비 변경 수치를 나타내지 않습니다. 발생 일자는 사례가 발생한 것으로 추정되는 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 사례 건수에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 보고된 사망자 수가 음수로 나타나면, 이전에 COVID-19에 의한 사망으로 집계된 사망자가 COVID-19와 연관성이 없는 것으로 판명된 경우에 해당합니다. 본 차트 내 인구수 분모는 캘리포니아의 재정부의 2020년도 예상 인구수를 참조하였습니다.</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -249,7 +246,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">차트 정보</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">주의: 검사 일자는 검사를 실시한 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 보고 일자 데이터는 2020년 5월 5일 이전에 실시한 검사에 대해 제공되지 않습니다. 검사 일자 데이터는 타주 및 미확인 관할 지역에서 실시한 검사를 배제하며 총계가 보고일 수치와 일치하지 않을 수도 있습니다. 양성 반응률은 양성 반응을 나타낸 분자 검사 수를 전체 실시 분자 검사 수로 나누어 산출합니다. 양성 반응률에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 양성 반응률은 이전에 14일 평균으로 보고되었습니다. 본 차트 내 인구수 분모는 캘리포니아의 재정부의 2020년도 예상 인구수를 참조하였습니다.</p>
+<p class="small-text">검사 일자는 검사를 실시한 일자입니다. 보고 일자는 사례가 캘리포니아 공중 보건부에 보고된 일자입니다. 보고 일자 데이터는 2020년 5월 5일 이전에 실시한 검사에 대해 제공되지 않습니다. 검사 일자 데이터는 타주 및 미확인 관할 지역에서 실시한 검사를 배제하며 총계가 보고일 수치와 일치하지 않을 수도 있습니다. 양성 반응률은 양성 반응을 나타낸 분자 검사 수를 전체 실시 분자 검사 수로 나누어 산출합니다. 양성 반응률에는 주 및 연방 교도소, 미국 이민 관세 집행국(Immigration and Customs Enforcement) 시설, 미국 연방 보안관(US Marshal) 구금 시설 및 주 병원부(Department of State Hospitals) 시설 내 해당자가 포함됩니다. 이들 집단은 청사진 단계를 배정하기 위한 산출 과정에서 배제되며, 이로 인해 사례 발생 건수와 양성 반응률에서 차이가 나타나게 됩니다. 양성 반응률은 이전에 14일 평균으로 보고되었습니다. 본 차트 내 인구수 분모는 캘리포니아의 재정부의 2020년도 예상 인구수를 참조하였습니다.</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -436,3 +433,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
     <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">집단별 세부 데이터 참조</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>
+
+
+
+<p></p>
