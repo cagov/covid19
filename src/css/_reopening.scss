@@ -1,6 +1,7 @@
 .safer-economy-page {
   .jumbotron + .container {
-    padding-top: 0;
+    padding-top: 35px;
+    padding-bottom: 10px;
   }
   .jumbotron {
     margin-bottom: 0;
@@ -14,6 +15,10 @@
       }
     }
   }
+}
+
+.highlight {
+  margin-bottom: 50px;
 }
 
 html[dir=rtl] {
