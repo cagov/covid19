@@ -26,7 +26,16 @@ export default function template(translationsObj) {
         </div>
         <div class="row d-flex justify-content-md-center">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto">
-            <p class="chart-data-label py-4 mx-auto">${translationsObj.footnote}</p>
+  
+            <div class="wp-block-cgb-block-chart-drawer js-qa-exclude"><cagov-accordion class="chart-drawer">
+            <div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+            <div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+          
+              <p class="chart-data-label py-4 mx-auto">${translationsObj.footnote}</p>
+  
+            </div></div></div>
+            </cagov-accordion></div>
+                
           </div>
         </div>
     </div><!--END col-12-->
