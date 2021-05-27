@@ -222,6 +222,13 @@ export default function setupAnalytics() {
       trackErrors();
     }
 
+    // universal event click trackers based on data attributes like: data-tracking-action="cta" data-tracking-label="$50 cards"
+    document.querySelectorAll('a[data-tracking-action="cta"]').forEach( el => {
+      el.addEventListener('click',function(e) {
+        reportGA('cta', this.dataset.trackingLabel, 'click');
+      })
+    })
+
     // Add these events if we're on the homepage.
     if (onHomePage(window.location.pathname)) {
       // Track how far the user has scrolled the homepage.
