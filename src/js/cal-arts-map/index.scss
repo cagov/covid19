@@ -1,0 +1,20 @@
+cagov-cal-arts-map {
+    .svg-container {
+        width:50%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    svg g#POIs { 
+        fill:#003D9D;
+        stroke:white;
+        stroke-width:1px;
+        stroke-linecap:round;
+    }
+    svg g.poi-marker:focus {
+        outline: none;
+    }
+    svg g#counties {
+        stroke:#2a3c8c;
+        fill:none;
+    }
+}
