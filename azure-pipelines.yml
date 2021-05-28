@@ -10,10 +10,14 @@ trigger:
 pr: none
 
 pool:
- ReleaseAgent: AzureProdAse
- Agent.Name: prod-ase01-jump
+ name: Vmssagents-Acl-Virtual-network
+ Agent.Name: 'vmssagent000000'
 
 steps:
+
+- checkout: self
+  
+  fetchDepth: 2
 - task: DeleteFiles@1
   name: Delete_Git_Folder
   inputs:
