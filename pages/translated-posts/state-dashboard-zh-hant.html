@@ -1,14 +1,17 @@
 ---
 layout: "page.njk"
-title: "加州COVID-19追蹤"
-meta: "{{_varStatDate_}}的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19確診病例，造成{{_varStatTotalDeaths_}}人死亡。病例數 {{_varStatTotalCases_}} 總共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例數 死亡數 {{_varStatTotalDeaths_}} 總共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡數 檢測數 {{_varStatTested_}} 總共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%檢測呈陽性率 施打的疫苗數 {{_varStatVaccines_}} 總共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增長率 #} […]"
+title: "在加州追踪COVID-19疫苗"
+meta: " 2021年5月27日的通知 由於從部分免疫接種登記處接收數據有延遲，今日的接種劑量數尚不完整。完整數據將在本週晚些時候更新。更新於 {{_varStatDate_}}截至{{_varStatDateNoYear_}}，加州{{_varStatTotalCases_}}共有例COVID-19確診病例，造成人死亡{{_varStatTotalDeaths_}}。今日病例{{_varStatTotalCases_}}總{{_varStatTotalCasesToday_}}數 […]"
 author: "State of California"
-publishdate: "2021-05-20T17:42:56Z"
+publishdate: "2021-05-27T19:05:43Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<!--
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">2021年5月27日的通知 </h2>
+<p>由於從部分免疫接種登記處接收數據有延遲，今日的接種劑量數尚不完整。完整數據將在本週晚些時候更新。</p>
+</div>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
