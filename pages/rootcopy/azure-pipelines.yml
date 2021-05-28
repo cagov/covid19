@@ -19,12 +19,9 @@ steps:
   
   fetchDepth: 2
 
-- task: Bash@3
+- task: CmdLine@2
   inputs:
-    targetType: 'inline'
-    script: |
-      apt-get update
-      apt-get install php7.0-zip 
+    script: 'sudo apt-get -y install zip'
 
 - task: DeleteFiles@1
   name: Delete_Git_Folder
