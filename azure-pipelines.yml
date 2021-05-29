@@ -10,7 +10,8 @@ trigger:
 pr: none
 
 pool:
- vmImage: 'windows-latest'
+ name: Default
+ Agent.Name: 'VM-CDT-PUB-JMP1-AGENT2'
 
 steps:
 
