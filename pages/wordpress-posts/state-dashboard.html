@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
 title: "Tracking COVID-19 in California"
-meta: "Note for May 29, 2021 Today&#8217;s death number reflects updates or corrections to records that may have reclassified some reported deaths as non-COVID related, and therefore resulted in a negative number. Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new [&hellip;]"
+meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-05-29T19:50:14Z"
+publishdate: "2021-05-30T19:24:13Z"
 addtositemap: true
 ---
 
@@ -54,13 +54,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
   %} 
 -->
-
-
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Note for May 29, 2021</h2>
-<p>Today&#8217;s death number reflects updates or corrections to records that may have reclassified some reported deaths as non-COVID related, and therefore resulted in a negative number.</p>
-</div>
 
 
 
