@@ -3,15 +3,26 @@ layout: "page.njk"
 title: "Vax for the Win"
 meta: "Vax for the Win California&#8217;s vaccine incentive program Get vaccinated, get rewarded Are you already vaccinated or about to be? Great! You’ll have a chance at winning $50,000 or a grand prize of $1.5 million! Not yet vaccinated against COVID-19? Listen up! Get vaccinated as soon as possible to be eligible for a $50 incentive [&hellip;]"
 author: "State of California"
-publishdate: "2021-05-28T21:44:41Z"
-tags: ["translate"]
+publishdate: "2021-06-01T16:47:24Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
 <style>
-    .header {padding-bottom: .5rem;}
-    .header-logo, .header-search, cagov-navoverlay {display: none !important;}
-    .dropdown {margin-left: auto !important;}
+    .header {
+        padding-bottom: .5rem;
+    }
+
+    .header-logo,
+    .header-search,
+    cagov-navoverlay {
+        display: none !important;
+    }
+
+    .dropdown {
+        margin-left: auto !important;
+    }
+
     .jumbotron {
         display: none !important;
     }
@@ -34,18 +45,93 @@ addtositemap: true
         font-size: 2.3rem !important;
     }
 
+    .countdown div {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 0px;
+        font-weight: 700;
+        line-height: 1.1;
+        border-left: 3px solid #fff;
+    }
+
+    .countdown-text {
+        font-size: 1rem;
+        font-weight: 400;
+    }
 </style>
 <div class="py-5 full-bleed">
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-4"><img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3" alt="Vax for the Win logo"></div>
+            <div class="col-md-4"><img src="https://files.covid19.ca.gov/img/4-color-map.png"
+                    class="img-fluid mx-auto mt-3" alt="Vax for the Win logo"></div>
             <div class="col-md-8">
                 <h1 class="h1 color-orange text-left mb-0 mt-3">Vax for the Win</h1>
-<h2 class="h2 mt-3 text-left color-orange text-300">California&#8217;s vaccine incentive program</h2>
+                <h2 class="h2 mt-3 text-left color-orange text-300">California&#8217;s vaccine incentive program</h2>
                 <h2 class="h2 color-darkblue text-left mt-3">Get vaccinated, get rewarded</h2>
-                <p class="lead">Are you already vaccinated or about to be? Great! You’ll have a chance at winning $50,000 or a grand prize of $1.5 million!</p>
-<p class="lead">Not yet vaccinated against COVID-19? Listen up! Get vaccinated  as soon as possible to be eligible for a $50 incentive card and other cash prizes. We want to thank you for helping us beat the pandemic in California!</p>
-            </div>
+                <p class="lead">Are you already vaccinated or about to be? Great! You’ll have a chance at winning
+                    $50,000 or a grand prize of $1.5 million!</p>
+                <p class="lead">Not yet vaccinated against COVID-19? Listen up! Get vaccinated as soon as possible to be
+                    eligible for a $50 incentive card and other cash prizes. We want to thank you for helping us beat
+                    the pandemic in California!</p>
+
+
+                <h3 class="h4 text-center mb-3 color-primary">June 21, 2015 Coundown</h3>
+
+
+
+                <div class="row countdown bg-lightblue">
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">
+                        <span class="countdown-text color-primary">days<br></span>
+                        <span id="days" class="color-primary"></span>
+                    </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">
+                        <span class="countdown-text color-primary">hrs<br></span>
+                        <span id="hours" class="color-primary"></span>
+                    </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">
+                        <span class="countdown-text color-primary">min<br></span>
+                        <span id="minutes" class="color-primary"></span>
+                    </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">
+                        <span class="countdown-text color-primary">sec<br></span>
+                        <span id="seconds" class="color-primary"></span>
+                    </div>
+                </div><!--end countdown-->
+
+                <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("June 15, 2021 00:00:00").getTime();
+
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
+
+                        // Get todays date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now an the count down date
+                        var distance = countDownDate - now;
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Output the result in the elements with id="days", id="hours" etc.
+                        document.getElementById("days").innerHTML = days;
+                        document.getElementById("hours").innerHTML = hours;
+                        document.getElementById("minutes").innerHTML = minutes;
+                        document.getElementById("seconds").innerHTML = seconds;
+
+                        // If the count down is over, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("days").innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                </script>
+
+            </div><!--end col-md-8-->
         </div><!--row-->
     </div><!--container-->
 </div><!--full bleed-->
@@ -76,7 +162,7 @@ addtositemap: true
 <div class="bg-white pt-5 pb-4 my-4 mb-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
                <h2 class="mt-0">$15 million in prizes</h2>
-<p>It&#8217;s our biggest “thank you” yet to Californians who have received their COVID-19 vaccine. Ten winners will be selected on June 15 to receive $1.5 million each — prizes totaling $15 million! All Californians who have had at least one COVID-19 dose will automatically be entered.</p>
+<p>It's our biggest “thank you” yet to Californians who have received their COVID-19 vaccine. Ten winners will be selected on June 15 to receive $1.5 million each — prizes totaling $15 million! All Californians who have had at least one COVID-19 dose will automatically be entered.</p>
 <p>You’re eligible to win $1.5 million if you:</p>
 <ul>
 <li>Live in California,</li>
@@ -95,7 +181,7 @@ addtositemap: true
 <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
 <h2 class="mt-0">$50,000 Fridays</h2>
-<p>But that&#8217;s not all. Everyone with at least one COVID-19 dose in the state of California will be automatically entered to win big on $50,000 Fridays! Thirty winners will take home $50,000. Fifteen people will win on Friday, June 4 and another 15 will win on Friday, June 11.</p>
+<p>But that's not all. Everyone with at least one COVID-19 dose in the state of California will be automatically entered to win big on $50,000 Fridays! Thirty winners will take home $50,000. Fifteen people will win on Friday, June 4 and another 15 will win on Friday, June 11.</p>
 <p>You’re eligible to win on $50,000 Fridays if you:</p>
 <ul>
 <li>Live in California,</li>
@@ -103,7 +189,7 @@ addtositemap: true
 <li>And have received at least a first dose of your COVID-19 vaccine.</li>
 </ul>
 <p>Prize money will be paid after the winner has completed their vaccination series. Incarcerated persons and persons living outside of California are not eligible. See <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Vax-Win-Terms.aspx">Terms and Conditions</a>.</p>
-<p><strong>Want your chance to join the winner&#8217;s circle?</strong></p>
+<p><strong>Want your chance to join the winner's circle?</strong></p>
 <a href="https://myturn.ca.gov/" class="link-arrow-blue text-center" data-tracking-action="cta" data-tracking-label="$50,000 Fridays">
                     <div class="link-arrow-label">FIND YOUR VACCINATION SITE</div>
                     <cagov-arrow></cagov-arrow>
@@ -113,12 +199,12 @@ addtositemap: true
         </div>
         <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
-<h2 class="mt-0">$50 cards &#8211; &#8220;You Call the Shot California&#8221;</h2>
+<h2 class="mt-0">$50 cards - "You Call the Shot California"</h2>
             <p>Not yet vaccinated? Now is your time. Starting on May 27, the first two million Californians to start and complete their COVID-19 vaccination will receive:</p>
              <ul>
                 <li>A $50 virtual card (which can be spent online, in-store where major debit cards are accepted, or added to a mobile wallet to be used to shop in-stores that accept mobile wallets),</li>
                 <li>Or a $50 grocery gift card from Kroger (which includes Ralphs, Food 4 Less and Foods Co.),</li>
-                <li>Or a $50 grocery gift card from Albertsons (which includes Safeway, Albertsons, Vons, Pavilions and Andronico&#8217;s Community Markets).</li>
+                <li>Or a $50 grocery gift card from Albertsons (which includes Safeway, Albertsons, Vons, Pavilions and Andronico's Community Markets).</li>
             </ul>
 <p>Available while supplies last.</p>
            <p>You’re eligible to receive a $50 card if you:</p>
@@ -208,7 +294,7 @@ addtositemap: true
 
 
 
-<p class="wp-accordion-content">No, Californians&#8217; personal health information will not be shared throughout any of these incentive programs. The Lottery will be assisting the programs but will not receive any personally identifiable information from eligible Californians – everything will be both random and anonymous.</p>
+<p class="wp-accordion-content">No, Californians' personal health information will not be shared throughout any of these incentive programs. The Lottery will be assisting the programs but will not receive any personally identifiable information from eligible Californians – everything will be both random and anonymous.</p>
 
 
 
@@ -224,7 +310,7 @@ addtositemap: true
 
 
 
-<h3>$50 cards &#8211; &#8220;You Call the Shot California&#8221;</h3>
+<h3>$50 cards - "You Call the Shot California"</h3>
 
 
 
@@ -308,7 +394,7 @@ addtositemap: true
 
 
 
-<ol class="wp-accordion-content"><li>Virtual Mastercard®: Not an ATM card so it cannot be cashed out. It can be redeemed online where Debit Mastercard® is accepted. This is a virtual incentive card and can be added to a phone mobile wallet.</li><li>Kroger (which includes Ralphs, Food 4 Less and Foods Co.): Printing the incentive card is recommended as not all grocery stores can scan the incentive card.</li><li>Albertsons (which includes Safeway, Albertsons, Vons, Pavilions, and Andronico&#8217;s Community Markets): Printing the incentive card is recommended as not all grocery stores can scan the incentive card.</li></ol>
+<ol class="wp-accordion-content"><li>Virtual Mastercard®: Not an ATM card so it cannot be cashed out. It can be redeemed online where Debit Mastercard® is accepted. This is a virtual incentive card and can be added to a phone mobile wallet.</li><li>Kroger (which includes Ralphs, Food 4 Less and Foods Co.): Printing the incentive card is recommended as not all grocery stores can scan the incentive card.</li><li>Albertsons (which includes Safeway, Albertsons, Vons, Pavilions, and Andronico's Community Markets): Printing the incentive card is recommended as not all grocery stores can scan the incentive card.</li></ol>
 
 
 
