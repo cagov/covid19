@@ -1,17 +1,28 @@
 ---
 layout: "page.njk"
 title: "Magpabakuna para Manalo"
-meta: "Magpabakuna para Manalo Ang programa ng incentive sa bakuna ng California Magpabakuna para magka-reward Nabakunahan na o magpapabakuna pa lang? Mahusay! Magkakaroon ka ng pagkakataong manalo ng $50,000 o ng grand prize na $1.5 milyon! Hindi pa nababakunahan laban sa COVID-19? Makinig! Magpabakuna sa lalong madaling panahon para maging kwalipikado sa $50 na incentive […]"
+meta: "Countdown para sa muling pagbubukas Hunyo 15 araw oras minuto segundo Magpabakuna para Manalo Ang programa ng incentive sa bakuna ng California Magpabakuna para magka-reward Nabakunahan na o magpapabakuna pa lang? Mahusay! Magkakaroon ka ng pagkakataong manalo ng $50,000 o ng grand prize na $1.5 milyon! Hindi pa nababakunahan laban sa COVID-19? Makinig! Magpabakuna […]"
 author: "State of California"
-publishdate: "2021-05-28T21:44:41Z"
+publishdate: "2021-06-02T20:40:48Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <style>
-    .header {padding-bottom: .5rem;}
-    .header-logo, .header-search, cagov-navoverlay {display: none !important;}
-    .dropdown {margin-left: auto !important;}
+    .header {
+        padding-bottom: .5rem;
+    }
+
+    .header-logo,
+    .header-search,
+    cagov-navoverlay {
+        display: none !important;
+    }
+
+    .dropdown {
+        margin-left: auto !important;
+    }
+
     .jumbotron {
         display: none !important;
     }
@@ -34,18 +45,67 @@ addtositemap: true
         font-size: 2.3rem !important;
     }
 
+    .countdown div {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 0px;
+        font-weight: 700;
+        line-height: 1.1;
+        border-left: 3px solid #fff;
+    }
+
+    .countdown-text {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .my-turn-logo {width:250px;}
 </style> <div class="py-5 full-bleed">
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-4"><img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3" alt="Logo ng Magpabakuna para Manalo"></div>
+            <div class="col-md-4 text-center">                 <img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3 my-turn-logo" alt="Logo ng Magpabakuna para Manalo"> <h3 class="h4 text-center mb-3 mt-2 color-primary text-300"><strong>Countdown para sa muling pagbubukas</strong></h3>
+                <div class="row ml-0 mr-0 countdown bg-lightblue">
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">araw<br></span> <span id="days" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">oras<br></span> <span id="hours" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">minuto<br></span> <span id="minutes" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">segundo<br></span> <span id="seconds" class="color-primary"></span>                     </div>
+                </div><!--end countdown--> </div>
             <div class="col-md-8">
                 <h1 class="h1 color-orange text-left mb-0 mt-3">Magpabakuna para Manalo</h1>
-<h2 class="h2 mt-3 text-left color-orange text-300">Programa ng incentive sa bakuna ng California</h2>
+                <h2 class="h2 mt-3 text-left color-orange text-300">Programa ng incentive sa bakuna ng California</h2>
                 <h2 class="h2 color-darkblue text-left mt-3">Magpabakuna para magka-reward</h2>
                 <p class="lead">Nabakunahan na o magpapabakuna pa lang? Mahusay! Magkakaroon ka ng pagkakataong manalo ng $50,000 o ng grand prize na $1.5 milyon!</p>
-<p class="lead">Hindi pa nababakunahan laban sa COVID-19? Makinig! Magpabakuna sa lalong madaling panahon para maging kwalipikado sa $50 na incentive card at iba pang cash na papremyo. Gusto ka naming pasalamatan para sa pagtulong sa aming pagtagumpayan ang pandemya sa California!</p>
-            </div>
-        </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
+                <p class="lead">Hindi pa nababakunahan laban sa COVID-19? Makinig! Magpabakuna sa lalong madaling panahon para maging kwalipikado sa $50 na incentive card at iba pang cash na papremyo. Gusto ka naming pasalamatan para sa pagtulong sa aming pagtagumpayan ang pandemya sa California!</p>                  <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("June 15, 2021 00:00:00").getTime();
+
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
+
+                        // Get todays date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now an the count down date
+                        var distance = countDownDate - now;
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Output the result in the elements with id="days", id="hours" etc.
+                        document.getElementById("days").innerHTML = days;
+                        document.getElementById("hours").innerHTML = hours;
+                        document.getElementById("minutes").innerHTML = minutes;
+                        document.getElementById("seconds").innerHTML = seconds;
+
+                        // If the count down is over, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("days").innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                </script>              </div><!--end col-md-8-->         </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
         <div class="container bg-darkblue bd-rounded-5">
             <div class="row">
                 <div class="col-md-4 text-center py-4">
@@ -77,7 +137,7 @@ addtositemap: true
 <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
 <h2 class="mt-0">$50,000 Fridays</h2>
-<p>Pero hindi lang 'yan. Ang lahat ng nakatanggap na ng hindi bababa sa isang dosis laban sa COVID-19 sa estado ng California ay awtomatikong maisasali para sa $50,000 Fridays! Tatlumpu ang mag-uuwi ng $50,000. Labinlimang tao ang mananalo sa Biyernes, Hunyo 4, at may 15 ulit na mananalo sa Biyernes, Hunyo 11.</p>
+<p>Pero, hindi lang iyan. Ang lahat ng nakatanggap na ng hindi bababa sa isang dosis laban sa COVID-19 sa estado ng California ay awtomatikong maisasali para sa $50,000 Fridays! Tatlumpu ang mag-uuwi ng $50,000. Labinlimang tao ang mananalo sa Biyernes, Hunyo 4, at may 15 ulit na mananalo sa Biyernes, Hunyo 11.</p>
 <p>Kwalipikado kang manalo sa $50,000 Fridays kung ikaw ay:</p>
 <ul>
 <li>Nakatira sa California,</li>
@@ -94,8 +154,8 @@ addtositemap: true
             <p>Hindi pa nababakunahan? Ngayon na ang pagkakataon mo. Simula sa Mayo 27, ang unang dalawang milyong Californian na magsisimula at makakakumpleto ng kanilang bakuna laban sa COVID-19 ay makakatanggap ng:</p>
              <ul>
                 <li>$50 na virtual na card (na puwedeng gastusin online, in-store kung saan tinatanggap ang mga pangunahing debit card, o idagdag sa isang mobile wallet na magagamit para mamili sa mga store na tumatanggap ng mga mobile wallet),</li>
-                <li>O $50 na gift card na pang-grocery mula sa Kroger (kasama ang Ralphs, Food 4 Less, at Foods Co.),</li>
-                <li>O $50 na gift card na pang-grocery mula sa Albertsons (kasama ang Safeway, Albertsons, Vons, Pavilions, at Andronico’s Community Markets).</li>
+                <li>O kaya, $50 na gift card na pang-grocery mula sa Kroger (kasama ang Ralphs, Food 4 Less, at Foods Co.),</li>
+                <li>O kaya, $50 na gift card na pang-grocery mula sa Albertsons (kasama ang Safeway, Albertsons, Vons, Pavilions, at Andronico's Community Markets).</li>
             </ul>
 <p>Available habang may supply.</p>
            <p>Kwalipikado kang makatanggap ng $50 na card kung ikaw ay:</p>
@@ -274,7 +334,7 @@ addtositemap: true
 
 
 
-<ol class="wp-accordion-content"><li>Virtual Mastercard®: Hindi ATM card kaya hindi ito puwedeng i-cash out. Puwede itong i-redeem online sa mga lugar na tumatanggap ng Debit Mastercard®. Isa itong virtual na incentive card, at puwede itong idagdag sa mobile wallet sa telepono.</li><li>Kroger (kasama ang Ralphs, Food 4 Less, at Foods Co.): Inirerekomendang i-print ang incentive card dahil hindi lahat ng grocery store ay may kakayahang i-scan ang incentive card.</li><li>Albertsons (kasama ang Safeway, Albertsons, Vons, Pavilions, at Andronico’s Community Markets): Inirerekomendang i-print ang incentive card dahil hindi lahat ng grocery store ay may kakayahang i-scan ang incentive card.</li></ol>
+<ol class="wp-accordion-content"><li>Virtual Mastercard®: Hindi ATM card kaya hindi ito puwedeng i-cash out. Puwede itong i-redeem online sa mga lugar na tumatanggap ng Debit Mastercard®. Isa itong virtual na incentive card, at puwede itong idagdag sa mobile wallet sa telepono.</li><li>Kroger (kasama ang Ralphs, Food 4 Less, at Foods Co.): Inirerekomendang i-print ang incentive card dahil hindi lahat ng grocery store ay may kakayahang i-scan ang incentive card.</li><li>Albertsons (kasama ang Safeway, Albertsons, Vons, Pavilions, at Andronico's Community Markets): Inirerekomendang i-print ang incentive card dahil hindi lahat ng grocery store ay may kakayahang i-scan ang incentive card.</li></ol>
 
 
 

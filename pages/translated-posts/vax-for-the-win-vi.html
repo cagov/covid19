@@ -1,17 +1,28 @@
 ---
 layout: "page.njk"
 title: "Vax for the Win"
-meta: "Tiêm vắc-xin để giành giải thưởng - chương trình khuyến khích tiêm vắc-xin của California Tiêm vắc-xin, giành giải thưởng Quý vị đã tiêm vắc-xin hoặc sắp tiêm vắc-xin? Tuyệt! Quý vị sẽ có cơ hội giành được $50,000 hoặc giải thưởng lớn $1.5 triệu! Quý vị chưa tiêm vắc-xin COVID-19? Nghe này! Hãy đi tiêm vắc-xin càng sớm càng tốt để đủ điều kiện nhận ưu đãi trị giá $50 […]"
+meta: "Đếm ngược đến thời điểm mở cửa trở lại ngày 15 tháng 6 ngày giờ phút giây Tiêm Vắc-xin Để Giành Giải Thưởng Chương trình khuyến khích tiêm vắc-xin của California Tiêm vắc-xin, giành giải thưởng Quý vị đã tiêm vắc-xin hoặc sắp tiêm vắc-xin? Tuyệt! Quý vị sẽ có cơ hội giành được $50,000 hoặc giải thưởng lớn $1.5 triệu! Quý vị chưa tiêm vắc-xin COVID-19? Nghe này! Tiêm vắc-xin càng sớm […]"
 author: "State of California"
-publishdate: "2021-05-28T21:44:41Z"
+publishdate: "2021-06-02T20:40:48Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <style>
-    .header {padding-bottom: .5rem;}
-    .header-logo, .header-search, cagov-navoverlay {display: none !important;}
-    .dropdown {margin-left: auto !important;}
+    .header {
+        padding-bottom: .5rem;
+    }
+
+    .header-logo,
+    .header-search,
+    cagov-navoverlay {
+        display: none !important;
+    }
+
+    .dropdown {
+        margin-left: auto !important;
+    }
+
     .jumbotron {
         display: none !important;
     }
@@ -34,18 +45,67 @@ addtositemap: true
         font-size: 2.3rem !important;
     }
 
+    .countdown div {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 0px;
+        font-weight: 700;
+        line-height: 1.1;
+        border-left: 3px solid #fff;
+    }
+
+    .countdown-text {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .my-turn-logo {width:250px;}
 </style> <div class="py-5 full-bleed">
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-4"><img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3" alt="Logo của chương trình Vax for the Win (Tiêm vắc-xin để giành giải thưởng)"></div>
+            <div class="col-md-4 text-center">                 <img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3 my-turn-logo" alt="Logo của chương trình Vax for the Win (Tiêm Vắc-xin Để Giành Giải Thưởng)"> <h3 class="h4 text-center mb-3 mt-2 color-primary text-300"><strong>Đếm ngược đến thời điểm mở cửa trở lại ngày 15 tháng 6</strong></h3>
+                <div class="row ml-0 mr-0 countdown bg-lightblue">
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">ngày<br></span> <span id="days" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">giờ<br></span> <span id="hours" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">phút<br></span> <span id="minutes" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4">                         <span class="countdown-text color-primary">giây<br></span> <span id="seconds" class="color-primary"></span>                     </div>
+                </div><!--end countdown--> </div>
             <div class="col-md-8">
-                <h1 class="h1 color-orange text-left mb-0 mt-3">Vax for the Win (Tiêm vắc-xin để giành giải thưởng)</h1>
-<h2 class="h2 mt-3 text-left color-orange text-300">Chương trình khuyến khích tiêm vắc-xin của California</h2>
+                <h1 class="h1 color-orange text-left mb-0 mt-3">Vax for the Win (Tiêm Vắc-xin Để Giành Giải Thưởng)</h1>
+                <h2 class="h2 mt-3 text-left color-orange text-300">Chương trình khuyến khích tiêm vắc-xin của California</h2>
                 <h2 class="h2 color-darkblue text-left mt-3">Tiêm vắc-xin, giành giải thưởng</h2>
                 <p class="lead">Quý vị đã tiêm vắc-xin hoặc sắp tiêm vắc-xin? Tuyệt! Quý vị sẽ có cơ hội giành được $50,000 hoặc giải thưởng lớn $1.5 triệu!</p>
-<p class="lead">Quý vị chưa tiêm vắc-xin COVID-19? Nghe này! Hãy đi tiêm vắc-xin càng sớm càng tốt để đủ điều kiện nhận thẻ quà tặng trị giá $50 và các phần thưởng bằng tiền mặt khác. Chúng tôi muốn cảm ơn quý vị vì đã giúp chúng tôi đánh bại đại dịch ở California!</p>
-            </div>
-        </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
+                <p class="lead">Quý vị chưa tiêm vắc-xin COVID-19? Nghe này! Hãy đi tiêm vắc-xin càng sớm càng tốt để đủ điều kiện nhận thẻ quà tặng trị giá $50 và các phần thưởng bằng tiền mặt khác. Chúng tôi muốn cảm ơn quý vị vì đã giúp chúng tôi đánh bại đại dịch ở California!</p>                  <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("June 15, 2021 00:00:00").getTime();
+
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
+
+                        // Get todays date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now an the count down date
+                        var distance = countDownDate - now;
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Output the result in the elements with id="days", id="hours" etc.
+                        document.getElementById("days").innerHTML = days;
+                        document.getElementById("hours").innerHTML = hours;
+                        document.getElementById("minutes").innerHTML = minutes;
+                        document.getElementById("seconds").innerHTML = seconds;
+
+                        // If the count down is over, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("days").innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                </script>              </div><!--end col-md-8-->         </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
         <div class="container bg-darkblue bd-rounded-5">
             <div class="row">
                 <div class="col-md-4 text-center py-4">
@@ -77,7 +137,7 @@ addtositemap: true
 <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
 <h2 class="mt-0">$50,000 các Thứ Sáu</h2>
-<p>Nhưng đó không phải là tất cả. Tất cả những người được tiêm ít nhất một liều vắc-xin COVID-19 ở tiểu bang California sẽ được tự động tham gia để giành giải thưởng lớn $50,000 vào các ngày thứ Sáu! Ba mươi người được chọn sẽ nhận được $50,000. Mười lăm người sẽ giành giải thưởng vào thứ Sáu, ngày 4 tháng 6 và 15 người khác sẽ giành giải thưởng vào thứ Sáu, ngày 11 tháng 6.</p>
+<p>Nhưng không chỉ thế. Tất cả những người được tiêm ít nhất một liều vắc-xin COVID-19 ở tiểu bang California sẽ được tự động tham gia để giành giải thưởng lớn $50,000 vào các ngày thứ Sáu! Ba mươi người được chọn sẽ nhận được $50,000. Mười lăm người sẽ giành giải thưởng vào thứ Sáu, ngày 4 tháng 6 và 15 người khác sẽ giành giải thưởng vào thứ Sáu, ngày 11 tháng 6.</p>
 <p>Quý vị đủ điều kiện để giành được $50,000 vào các ngày thứ Sáu nếu quý vị:</p>
 <ul>
 <li>Sống ở California,</li>
@@ -90,12 +150,12 @@ addtositemap: true
         </div>
         <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
-<h2 class="mt-0">Thẻ quà tặng trị giá $50 – “Hãy là Người Dân California Có Trách Nhiệm”</h2>
+<h2 class="mt-0">Thẻ quà tặng trị giá $50 - “Hãy là Người Dân California Có Trách Nhiệm”</h2>
             <p>Quý vị chưa tiêm vắc-xin? Hiện nay đã đến lượt quý vị. Bắt đầu từ ngày 27 tháng 5, hai triệu người dân California đầu tiên bắt đầu và hoàn thành việc tiêm chủng COVID-19 sẽ nhận được:</p>
              <ul>
                 <li>Một thẻ ảo trị giá $50 (có thể dùng để chi tiêu trực tuyến, tại cửa hàng chấp nhận thẻ ghi nợ hoặc cộng thêm tiền vào ví điện thoại di động để sử dụng khi mua sắm tại các cửa hàng chấp nhận thanh toán qua ví điện thoại di động),</li>
                 <li>Hoặc thẻ quà tặng mua hàng tạp hóa trị giá $50 từ Kroger (bao gồm Ralphs, Food 4 Less và Foods Co.),</li>
-                <li>Hoặc thẻ quà tặng mua hàng tạp hóa $50 từ Albertsons (bao gồm Safeway, Albertsons, Vons, Pavilions và Andronico’s Community Markets).</li>
+                <li>Hoặc thẻ quà tặng mua hàng tạp hóa $50 từ Albertsons (bao gồm Safeway, Albertsons, Vons, Pavilions và Andronico's Community Markets).</li>
             </ul>
 <p>Cung cấp cho đến khi hết nguồn cung.</p>
            <p>Quý vị đủ điều kiện nhận thẻ quà tặng trị giá $50 nếu quý vị:</p>
@@ -190,7 +250,7 @@ addtositemap: true
 
 
 
-<h3>Thẻ quà tặng trị giá $50 – “Hãy là Người Dân California Có Trách Nhiệm”</h3>
+<h3>Thẻ quà tặng trị giá $50 - “Hãy là Người Dân California Có Trách Nhiệm”</h3>
 
 
 
@@ -274,7 +334,7 @@ addtositemap: true
 
 
 
-<ol class="wp-accordion-content"><li>Thẻ ảo Mastercard®: Không phải thẻ ATM nên không thể rút tiền mặt. Thẻ này có thể được quy đổi trực tuyến khi Thẻ Ghi Nợ Mastercard® được chấp nhận. Đây là thẻ ưu đãi ảo và có thể được cộng tiền vào ví điện thoại di động.</li><li>Kroger (bao gồm Ralphs, Food 4 Less và Foods Co.): Quý vị nên in thẻ ưu đãi ra giấy vì không phải tất cả các cửa hàng tạp hóa đều có thể quét thẻ ưu đãi.</li><li>Albertsons (bao gồm Safeway, Albertsons, Vons, Pavilions và Andronico’s Community Markets): Quý vị nên in thẻ ưu đãi ra giấy vì không phải tất cả các cửa hàng tạp hóa đều có thể quét thẻ ưu đãi.</li></ol>
+<ol class="wp-accordion-content"><li>Thẻ ảo Mastercard®: Không phải thẻ ATM nên không thể rút tiền mặt. Thẻ này có thể được quy đổi trực tuyến khi Thẻ Ghi Nợ Mastercard® được chấp nhận. Đây là thẻ ưu đãi ảo và có thể được cộng tiền vào ví điện thoại di động.</li><li>Kroger (bao gồm Ralphs, Food 4 Less và Foods Co.): Quý vị nên in thẻ ưu đãi ra giấy vì không phải tất cả các cửa hàng tạp hóa đều có thể quét thẻ ưu đãi.</li><li>Albertsons (bao gồm Safeway, Albertsons, Vons, Pavilions và Andronico's Community Markets): Quý vị nên in thẻ ưu đãi ra giấy vì không phải tất cả các cửa hàng tạp hóa đều có thể quét thẻ ưu đãi.</li></ol>
 
 
 
