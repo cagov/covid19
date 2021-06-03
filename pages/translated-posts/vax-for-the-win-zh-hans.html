@@ -1,17 +1,28 @@
 ---
 layout: "page.njk"
 title: "接种疫苗以获奖金"
-meta: " 接种疫苗以获奖金 加州的疫苗激励计划 接种疫苗，获得奖励 您是否已接种疫苗或将要接种疫苗？太棒了！您将有机会赢得$50,000或$150万大奖！尚未接种COVID-19疫苗？请听好！请尽快接种疫苗以有资格获得$50激励 […]"
+meta: " 6月15日重新开放倒计时 小时 分钟 秒 接种疫苗以获奖金 加州的疫苗激励计划 接种疫苗，获得奖励 您是否已接种疫苗或将要接种疫苗？太棒了！您将有机会赢得$50,000或$150万大奖！尚未接种COVID-19疫苗？请听好！请尽快接种疫苗 […]"
 author: "State of California"
-publishdate: "2021-05-28T21:44:41Z"
+publishdate: "2021-06-02T20:40:48Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <style>
-    .header {padding-bottom: .5rem;}
-    .header-logo, .header-search, cagov-navoverlay {display: none !important;}
-    .dropdown {margin-left: auto !important;}
+    .header {
+        padding-bottom: .5rem;
+    }
+
+    .header-logo,
+    .header-search,
+    cagov-navoverlay {
+        display: none !important;
+    }
+
+    .dropdown {
+        margin-left: auto !important;
+    }
+
     .jumbotron {
         display: none !important;
     }
@@ -34,18 +45,67 @@ addtositemap: true
         font-size: 2.3rem !important;
     }
 
+    .countdown div {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-top: 0px;
+        font-weight: 700;
+        line-height: 1.1;
+        border-left: 3px solid #fff;
+    }
+
+    .countdown-text {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .my-turn-logo {width:250px;}
 </style> <div class="py-5 full-bleed">
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-4"><img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3" alt="接种疫苗以获奖金图标"></div>
+            <div class="col-md-4 text-center">                 <img src="https://files.covid19.ca.gov/img/4-color-map.png" class="img-fluid mx-auto mt-3 my-turn-logo" alt="接种疫苗以获奖金图标"> <h3 class="h4 text-center mb-3 mt-2 color-primary text-300"><strong>6月15日重新开放倒计时</strong></h3>
+                <div class="row ml-0 mr-0 countdown bg-lightblue">
+                    <div class="col-3 text-center pl-0 pr-0 pb-4"><span class="countdown-text color-primary">天数<br></span> <span id="days" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4"><span class="countdown-text color-primary">小时<br></span> <span id="hours" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4"><span class="countdown-text color-primary">分钟<br></span> <span id="minutes" class="color-primary"></span>                     </div>
+                    <div class="col-3 text-center pl-0 pr-0 pb-4"><span class="countdown-text color-primary">秒<br></span> <span id="seconds" class="color-primary"></span>                     </div>
+                </div><!--end countdown--> </div>
             <div class="col-md-8">
                 <h1 class="h1 color-orange text-left mb-0 mt-3">接种疫苗以获奖金</h1>
-<h2 class="h2 mt-3 text-left color-orange text-300">加州的疫苗激励计划</h2>
+                <h2 class="h2 mt-3 text-left color-orange text-300">加州的疫苗激励计划</h2>
                 <h2 class="h2 color-darkblue text-left mt-3">接种疫苗，获得奖励</h2>
                 <p class="lead">您是否已接种或将要接种疫苗？太棒了！您将有机会赢得$50,000或$150万大奖！</p>
-<p class="lead">尚未接种COVID-19疫苗？请听好！请尽快接种疫苗以有资格获得$50激励卡以及其他现金奖励。我们想要感谢您帮助我们抗击加州疫情。</p>
-            </div>
-        </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
+                <p class="lead">尚未接种COVID-19疫苗？请听好！请尽快接种疫苗以有资格获得$50激励卡以及其他现金奖励。我们想要感谢您帮助我们抗击加州疫情。</p>                  <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("June 15, 2021 00:00:00").getTime();
+
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
+
+                        // Get todays date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now an the count down date
+                        var distance = countDownDate - now;
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Output the result in the elements with id="days", id="hours" etc.
+                        document.getElementById("days").innerHTML = days;
+                        document.getElementById("hours").innerHTML = hours;
+                        document.getElementById("minutes").innerHTML = minutes;
+                        document.getElementById("seconds").innerHTML = seconds;
+
+                        // If the count down is over, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("days").innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                </script>              </div><!--end col-md-8-->         </div><!--row-->     </div><!--container--> </div><!--full bleed-->    <div class="bg-lightblue py-5 px-3 full-bleed">
         <div class="container bg-darkblue bd-rounded-5">
             <div class="row">
                 <div class="col-md-4 text-center py-4">
@@ -90,7 +150,7 @@ addtositemap: true
         </div>
         <div class="bg-white pt-5 pb-4 my-5 bd-rounded-5">
             <div class="col-md-10 mx-auto">
-<h2 class="mt-0">$50卡片 – “您在加州要求接种疫苗”</h2>
+<h2 class="mt-0">$50卡片 – “您在加州接种疫苗”</h2>
             <p>尚未接种疫苗？现在就是您接种疫苗的时间。自5月27日起，前两百万名开始并完成其疫苗接种的加州民众将会收到：</p>
              <ul>
                 <li>一张$50的虚拟卡（可以将其用于网上购物、在接受主要借记卡的实体店购物，或加入移动钱包，以用于在接受移动钱包的实体店购物），</li>
@@ -190,7 +250,7 @@ addtositemap: true
 
 
 
-<h3>$50卡片 – “您在加州要求接种疫苗”</h3>
+<h3>$50卡片 – “您在加州接种疫苗”</h3>
 
 
 
