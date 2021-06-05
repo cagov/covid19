@@ -8,6 +8,6 @@ import './charts/cagov-chart-vaccination-groups-age/index.js'
 
 // import './charts/cagov-chart-vaccination-groups-race-ethnicity-age/index.js'
 
-import '../equity-dash/search/index.js'
+import '../common/search/index.js'
 import './county-buttons/buttons.js'
 import './filters.js'

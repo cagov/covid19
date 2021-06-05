@@ -1,5 +1,5 @@
-import '../equity-dash/search/index.js';
-import '../equity-dash/county-buttons/buttons.js'
+import '../common/search/index.js';
+import '../common/county-buttons/buttons.js'
 
 // import css from "../common/chart.scss";
 import './charts/cagov-chart-dashboard-groups-race-ethnicity-cases/index.js';
@@ -10,7 +10,7 @@ import './charts/cagov-chart-dashboard-groups-age-cases/index.js';
 import './charts/cagov-chart-dashboard-groups-age-deaths/index.js';
 
 // small tab filter buttons
-import '../equity-dash/search/filters.js'
+import '../common/search/filters.js'
 
 // new top section charts
 import "./charts/cagov-chart-dashboard-confirmed-cases/index.js"
