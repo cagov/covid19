@@ -395,7 +395,7 @@
 <!-- Vaccination by Groups Charts -->
 <cagov-county-search></cagov-county-search>
 
-<cagov-county-toggle-buttons-vaccines></cagov-county-toggle-buttons-vaccines>
+<cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
 <cagov-chart-filter-buttons-vaccines class="js-re-smalls">
     <div class="d-flex justify-content-center">
@@ -3592,7 +3592,7 @@ class CAGovCountySearch extends window.HTMLElement {
 }
 window.customElements.define('cagov-county-search', CAGovCountySearch);
 
-class CAGovCountyButtonsVaccines extends window.HTMLElement {
+class CAGovCountyButtons extends window.HTMLElement {
   connectedCallback () {
     this.resetText = 'Statewide';
     this.county = '';
@@ -3659,7 +3659,7 @@ class CAGovCountyButtonsVaccines extends window.HTMLElement {
     </div>`
   }
 }
-window.customElements.define('cagov-county-toggle-buttons-vaccines', CAGovCountyButtonsVaccines);
+window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
 
 class CAGovChartFilterButtonsVaccines extends window.HTMLElement {
   connectedCallback () {

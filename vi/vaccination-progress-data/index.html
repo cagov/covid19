@@ -3504,7 +3504,7 @@ class CAGovCountySearch extends window.HTMLElement {
 }
 window.customElements.define('cagov-county-search', CAGovCountySearch);
 
-class CAGovCountyButtonsVaccines extends window.HTMLElement {
+class CAGovCountyButtons extends window.HTMLElement {
   connectedCallback () {
     this.resetText = 'Statewide';
     this.county = '';
@@ -3571,7 +3571,7 @@ class CAGovCountyButtonsVaccines extends window.HTMLElement {
     </div>`
   }
 }
-window.customElements.define('cagov-county-toggle-buttons-vaccines', CAGovCountyButtonsVaccines);
+window.customElements.define('cagov-county-toggle-buttons', CAGovCountyButtons);
 
 class CAGovChartFilterButtonsVaccines extends window.HTMLElement {
   connectedCallback () {
