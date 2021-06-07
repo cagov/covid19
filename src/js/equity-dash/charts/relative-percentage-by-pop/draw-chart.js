@@ -78,10 +78,10 @@ export default function drawBars({
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
       let caption = component.getToolTipCaption1(d, selectedMetric);
+      // remove tags and trim excess whitespace
       caption = caption.replace( /(<([^>]+)>)/ig, ' ');
       caption = caption.replace( /\s+/g, ' ');
-      caption = caption.replace( /^ /g, '');
-      caption = caption.replace( / $/g, '');
+      caption = caption.trim();
       // console.log("Set pop aria label",caption);
       return caption;
     })

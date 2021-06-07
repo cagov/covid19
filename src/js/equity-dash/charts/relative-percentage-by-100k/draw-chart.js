@@ -75,10 +75,10 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       } else if (d.data.APPLIED_SUPPRESSION === "Population") {
         caption = translationsObj['data-missing-applied-suppression-population'+ "--" + selectedMetric.toLowerCase()] || '';
       }
+      // remove tags and trim excess whitespace
       caption = caption.replace( /(<([^>]+)>)/ig, ' ');
       caption = caption.replace( /\s+/g, ' ');
-      caption = caption.replace( /^ /g, '');
-      caption = caption.replace( / $/g, '');
+      caption = caption.trim();
       // console.log("Set 100k aria-label",caption);
       return caption;
     })

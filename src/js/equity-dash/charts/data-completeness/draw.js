@@ -95,10 +95,10 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
           complete: false,
         });
       }
+      // remove tags and trim excess whitespace
       caption = caption.replace( /(<([^>]+)>)/ig, ' ');
       caption = caption.replace( /\s+/g, ' ');
-      caption = caption.replace( /^ /g, '');
-      caption = caption.replace( / $/g, '');
+      caption = caption.trim();
       return caption;
     })
 
