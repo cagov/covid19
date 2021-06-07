@@ -44,8 +44,7 @@ export default function drawBars({
     .attr("height", "10px")
 
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >unused_caption1</div>`)
+    .attr("aria-label", (d, i) => 'unused_caption1')
     ;
 
   // Yellow bars rendered second
@@ -79,10 +78,13 @@ export default function drawBars({
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
       let caption = component.getToolTipCaption1(d, selectedMetric);
-      return `<div class="chart-tooltip">
-      <div>${caption}</div>
-      </div>`}
-    )
+      // remove tags and trim excess whitespace
+      caption = caption.replace( /(<([^>]+)>)/ig, ' ');
+      caption = caption.replace( /\s+/g, ' ');
+      caption = caption.trim();
+      // console.log("Set pop aria label",caption);
+      return caption;
+    })
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
