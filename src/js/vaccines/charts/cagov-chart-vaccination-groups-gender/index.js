@@ -181,6 +181,13 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
         function (alldata) {
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          this.popdata = null;
+          if ('POP_METRIC_VALUE' in this.alldata[0]) {
+            console.log("Pop data found for gen chart");
+            this.popdata = this.alldata.map(row => {
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+            });
+          }
 
           let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
           let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMIN_DATE']);
@@ -199,7 +206,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
 
-          renderChart.call(this);
+          renderChart.call(this,null,this.popdata);
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,

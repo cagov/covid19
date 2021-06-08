@@ -200,6 +200,13 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
           this.alldata = alldata.data;
+          this.popdata = null;
+          if ('POP_METRIC_VALUE' in this.alldata[0]) {
+            console.log("Pop data found for eth chart");
+            this.popdata = this.alldata.map(row => {
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+            });
+          }
 
           let publishedDate = parseSnowflakeDate(this.metadata['PUBLISHED_DATE']);
           let collectedDate = parseSnowflakeDate(this.metadata['LATEST_ADMIN_DATE']);
@@ -214,7 +221,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          renderChart.call(this, this.renderExtras, null, null, 've-race-eth');
+          renderChart.call(this, this.renderExtras, this.popdata, null, 've-race-eth');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
