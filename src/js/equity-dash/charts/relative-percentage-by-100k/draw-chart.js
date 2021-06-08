@@ -75,8 +75,12 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       } else if (d.data.APPLIED_SUPPRESSION === "Population") {
         caption = translationsObj['data-missing-applied-suppression-population'+ "--" + selectedMetric.toLowerCase()] || '';
       }
-
-      return `<div class="chart-tooltip"><div>${caption}</div></div>`;
+      // remove tags and trim excess whitespace
+      caption = caption.replace( /(<([^>]+)>)/ig, ' ');
+      caption = caption.replace( /\s+/g, ' ');
+      caption = caption.trim();
+      // console.log("Set 100k aria-label",caption);
+      return caption;
     })
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
