@@ -1,6 +1,6 @@
 // dailyStatsV2
 //
-// Retrieves json file for use in dashboard-v2
+// Retrieves json file for use in dashboard-v3
 //
 const fetch = require('node-fetch')
 

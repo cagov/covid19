@@ -2,8 +2,9 @@ import './config/staging.js';
 import '@webcomponents/webcomponentsjs';
 import 'whatwg-fetch';
 import './polyfills/endswith.js';
-// import '@cagov/accordion'; the expand/contract svgs aren't displaying properly in this browser
-import './dashboard-v2/async-polyfill.js';
+// import '@cagov/accordion'; accordion indicator svgs are broken, disable accordions in IE until fixed
+import '@cagov/step-list';
+import './dashboard-v3/async-polyfill.js';
 import './alerts/index.js';
 import './telehealth/index.js';
 import './plasma/index.js';
@@ -18,7 +19,6 @@ import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
 import './dashboard-v3/charts/ie11.scss';
 // import './charts-sandbox/index.js';
-// import './dashboard-v2/index.js';
 import './dashboard-v3/index.js';
 import './dashboard-v3/charts/ie11.scss';
 

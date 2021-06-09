@@ -127,7 +127,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
     tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
     tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
     tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
-    return `<div class="chart-tooltip"><div>${tooltipText}</div></div>`;
+    return tooltipText;
   }
 
   ariaLabel(d, baselineData) {
