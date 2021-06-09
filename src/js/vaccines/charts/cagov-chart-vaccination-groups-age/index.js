@@ -14,6 +14,7 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
     // Settings and initial values
     this.nbr_bars = 4;
     let bar_vspace = 60;
+
     this.chartOptions = {
       // Data
       dataUrl:
@@ -194,9 +195,14 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
 
           let croppedData = alldata.data.filter(function(a){return a.CATEGORY !== 'Unknown'});
           this.alldata = croppedData;
-
-
-          renderChart.call(this,null,null,null,'ve-age');
+          this.popdata = null;
+          if ('POP_METRIC_VALUE' in this.alldata[0]) {
+            console.log("Pop data found for age chart");
+            this.popdata = this.alldata.map(row => {
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+            });
+          }
+          renderChart.call(this,null,this.popdata,null,'ve-age');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
