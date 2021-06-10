@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Vaccination progress data"
 meta: "This page makes vaccination data transparent and accessible to all Californians."
 author: "State of California"
-publishdate: "2021-06-10T16:52:53Z"
+publishdate: "2021-06-10T20:40:29Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -265,6 +265,9 @@ addtositemap: true
             <li data-label="legendLabelVaccines">% of vaccines administered</li>
             <li data-label="legendLabelPopulation">% of vaccine eligible population</li>
             <li data-label="chartDataLabel">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}. </li>
+            <li data-label="chartBarCaption">People who identified as {category} have received {metric-value} of the vaccines administered and make up {metric-baseline-value} of the vaccine-eligible population.</li>
+            <li data-label="chartBarCaptionOther">People whose race/ethinicity was reported as Other have received {metric-value} of the vaccines administered. Since “Other” is not an official classification from Census nor OMB, the size of the corresponding vaccine eligible population is undetermined.</li>
+            <li data-label="chartBarCaptionUnknown">People whose race or ethnicity is unknown have received {metric-value} of the vaccines administered. California does not assign this group a percentage of the vaccine-eligible population.</li>
           </ul>
         </cagov-chart-vaccination-groups-race-ethnicity>
 
@@ -275,6 +278,8 @@ addtositemap: true
             <li data-label="legendLabelVaccines">% of vaccines administered</li>
             <li data-label="legendLabelPopulation">% of vaccine eligible population</li>
             <li data-label="chartDataLabel">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}.</li>
+            <li data-label="chartBarCaption">The {category} age group has received {metric-value} of the vaccines administered and make up {metric-baseline-value} of the vaccine eligible population.</li>
+            <li data-label="chartBarCaptionOther">People whose age do not fall into any group have received have received {metric-value} of the vaccines administered. California does not assign this group a percentage of the vaccine-eligible population.</li>
           </ul>
         </cagov-chart-vaccination-groups-age>
         
@@ -285,6 +290,8 @@ addtositemap: true
             <li data-label="legendLabelVaccines">% of vaccines administered</li>
             <li data-label="legendLabelPopulation">% of vaccine eligible population</li>
             <li data-label="chartDataLabel">Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}. “Unknown/undifferentiated” includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer or intersex.</li>
+            <li data-label="chartBarCaption">{category} have received {metric-value} of the vaccines administered and make up {metric-baseline-value} of the vaccine eligible population.</li>
+            <li data-label="chartBarCaptionUnknown">People whose gender is unknown or undifferentiated (see who this includes in the chart information) have received {metric-value} of the vaccines administered. Since “Unknown/Undifferentiated” is not an official classification from Census nor OMB, the size of the corresponding vaccine eligible population is undetermined.</li>
           </ul>
         </cagov-chart-vaccination-groups-gender>
     </div>
