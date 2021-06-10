@@ -14,6 +14,28 @@ cagov-chart-vaccination-groups-gender {
       font-weight: 300;
       font-size: 0.75rem;
     }
+    div.tooltip-container {
+      font-weight: 300;
+      font-size: 0.75rem;
+      line-height: 2;
+      color: black;
+      text-align: center;
+    }
+    .tooltip-container {
+      position: absolute;
+      z-index: 10;
+      visibility: hidden;
+      background: #fff;
+      width: 280px;
+    }
+    .tooltip-container {
+      pointer-events: none;
+      /* padding: 10px; */
+      padding: 1rem 2rem;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);
+      /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */
+      border: none;
+    }
 }
 .d-hide {
   display:none;
