@@ -150,7 +150,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>Dữ liệu về tiến trình tiêm vắc-xin</h1>
           
-            <p class="small-text">Cập nhật mới nhất&nbsp;8 tháng 6, 2021 lúc 20:21</p>
+            <p class="small-text">Cập nhật mới nhất&nbsp;10 tháng 6, 2021 lúc 15:04</p>
           
         </div>
       </div>
@@ -337,17 +337,24 @@
             <li data-label="legendLabelVaccines">% đã được tiêm vắc-xin</li>
             <li data-label="legendLabelPopulation">% dân số đủ điều kiện tiêm vắc-xin</li>
             <li data-label="chartDataLabel">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {LATEST_ADMINISTERED_DATE}. </li>
+            <li data-label="chartBarCaption">Những người được xác định là {category} đã được tiêm {metric-value} vắc-xin và chiếm {metric-baseline-value} nhóm dân số đủ điều kiện tiêm vắc-xin.</li>
+            <li data-label="chartBarCaptionOther">Những người có chủng tộc/sắc tộc được báo cáo là {category} đã được tiêm {metric-value} vắc-xin. Vì tùy chọn Khác không phải là phân loại chính thức từ Điều Tra Dân Số hay Văn Phòng Quản Lý và Ngân Sách nên số dân đủ điều kiện tiêm vắc-xin tương ứng chưa được xác định.</li>
+            <li data-label="chartBarCaptionUnknown">Những người có chủng tộc hoặc sắc tộc là {category} đã được tiêm {metric-value} vắc-xin. California không chỉ định tỷ lệ phần trăm dân số đủ điều kiện tiêm vắc-xin cho nhóm này.</li>
           </ul>         </cagov-chart-vaccination-groups-race-ethnicity> <cagov-chart-vaccination-groups-age class="chart d-hide">           <ul class="d-none">
             <li data-label="chartTitle">Những người được tiêm ít nhất một liều vắc-xin theo độ tuổi ở California</li>
             <li data-label="chartTitleCounty">Những người được tiêm ít nhất một liều vắc-xin theo tuổi ở [REGION]</li>
             <li data-label="legendLabelVaccines">% đã được tiêm vắc-xin</li>
             <li data-label="legendLabelPopulation">% dân số đủ điều kiện tiêm vắc-xin</li>
             <li data-label="chartDataLabel">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {LATEST_ADMINISTERED_DATE}.</li>
+            <li data-label="chartBarCaption">Nhóm tuổi {category} đã được tiêm {metric-value} vắc-xin và chiếm {metric-baseline-value} nhóm dân số đủ điều kiện tiêm vắc-xin.</li>
+            <li data-label="chartBarCaptionOther">Những người có độ tuổi không thuộc bất kỳ nhóm nào đã được tiêm {metric-value} vắc-xin. California không chỉ định tỷ lệ phần trăm dân số đủ điều kiện tiêm vắc-xin cho nhóm này.</li>
           </ul>         </cagov-chart-vaccination-groups-age> <cagov-chart-vaccination-groups-gender class="chart d-hide">           <ul class="d-none">> <li data-label="chartTitle">Những người được tiêm ít nhất một liều vắc-xin theo giới tính ở California</li>
             <li data-label="chartTitleCounty">Những người được tiêm ít nhất một liều vắc-xin theo giới tính ở [REGION]</li>
             <li data-label="legendLabelVaccines">% đã được tiêm vắc-xin</li>
             <li data-label="legendLabelPopulation">% dân số đủ điều kiện tiêm vắc-xin</li>
             <li data-label="chartDataLabel">Đã cập nhật {PUBLISHED_DATE} với dữ liệu từ {LATEST_ADMINISTERED_DATE}. “Không xác định/không phân biệt” bao gồm những người từ chối tiết lộ, thiếu thông tin về giới tính hoặc những người tự xác định là người chuyển giới, phi nhị nguyên giới, người đồng tính hoặc liên giới tính.</li>
+            <li data-label="chartBarCaption">{category} đã được tiêm {metric-value} vắc-xin và chiếm {metric-baseline-value} nhóm dân số đủ điều kiện tiêm vắc-xin.</li>
+            <li data-label="chartBarCaptionUnknown">Những người có giới tính <b>không xác định</b> hoặc <b>không phân biệt</b> (xem những người nào được bao gồm trong thông tin biểu đồ) đã được tiêm {metric-value} vắc-xin. Vì tùy chọn Không xác định/Không phân biệt không phải là phân loại chính thức từ Điều Tra Dân Số hay Văn Phòng Quản Lý và Ngân Sách, nên số dân đủ điều kiện tiêm vắc-xin tương ứng chưa được xác định.</li>
           </ul>         </cagov-chart-vaccination-groups-gender>     </div>
 </div>
 
@@ -359,7 +366,7 @@
 
 
 <div class="wp-block-cgb-block-chart-drawer js-qa-exclude"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text js-qa-exclude"><li>“Khác” có nghĩa là những người không thuộc bất kỳ chủng tộc hoặc sắc tộc nào đã liệt kê. Chủng tộc và sắc tộc “không xác định” bao gồm những người đã từ chối tiết lộ hoặc thiếu thông tin về chủng tộc và sắc tộc.</li><li>Giới tính “không xác định/không phân biệt” bao gồm những người từ chối tiết lộ, thiếu thông tin về giới tính hoặc những người tự xác định là người chuyển giới, phi nhị nguyên giới, người đồng tính hoặc liên giới tính.</li><li>Nếu quận cư trú không được trình báo, sẽ dùng quận nơi tiêm vắc-xin.</li><li>Tỉ lệ phần trăm được tính là số người trong một nhóm đã tiêm ít nhất một liều chia cho tổng số người trên toàn tiểu bang đã tiêm ít nhất một liều, cho đến nay.</li></ul>
+<ul class="small-text js-qa-exclude"><li>“Khác” có nghĩa là những người không thuộc bất kỳ chủng tộc hoặc sắc tộc nào đã liệt kê. Chủng tộc và sắc tộc “không xác định” bao gồm những người đã từ chối tiết lộ hoặc thiếu thông tin về chủng tộc và sắc tộc.</li><li>Giới tính “không xác định/không phân biệt” bao gồm những người từ chối tiết lộ, thiếu thông tin về giới tính hoặc những người tự xác định là người chuyển giới, phi nhị nguyên giới, người đồng tính hoặc liên giới tính.</li><li>Nếu không trình báo quận cư trú thì sẽ tính cho quận tiêm vắc-xin.</li><li>Tỉ lệ phần trăm được tính là số người trong một nhóm đã tiêm ít nhất một liều chia cho tổng số người trên toàn tiểu bang đã tiêm ít nhất một liều, cho đến nay.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
