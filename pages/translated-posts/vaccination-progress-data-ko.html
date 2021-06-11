@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "백신 접종 진척 관련 데이터"
 meta: "이 정보를 통해 백신 데이터를 투명하게 관리하고 모든 캘리포니아 주민에게 제공합니다."
 author: "State of California"
-publishdate: "2021-06-09T03:21:59Z"
+publishdate: "2021-06-10T22:04:24Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -186,17 +186,24 @@ addtositemap: true
             <li data-label="legendLabelVaccines">투여한 백신 대비 %</li>
             <li data-label="legendLabelPopulation">백신 대상 집단 대비 %</li>
             <li data-label="chartDataLabel">{LATEST_ADMINISTERED_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. </li>
+            <li data-label="chartBarCaption">{category}로 파악된 사람은 {metric-value} 회분의 백신을 투여 받았으며 백신 접종 대상 집단에서 차지하는 비율은 {metric-baseline-value}입니다.</li>
+            <li data-label="chartBarCaptionOther">{category}로 보고된 인종/민족 해당자는 {metric-value} 회분의 백신을 투여 받았습니다. 기타는 인구 통계 또는 관리 예산국(Office of Management and Budget)의 공식적인 분류에 속해 있지 않으며, 이에 따라 해당 백신 접종 대상 인구는 그 규모가 미정인 상태입니다.</li>
+            <li data-label="chartBarCaptionUnknown">{category}에 속하는 인종이나 민족 해당자는 {metric-value} 회분의 백신을 투여 받았습니다. 캘리포니아는 이 집단을 백신 접종 대상 집단의 백분율로 배정하지 않고 있습니다.</li>
           </ul>         </cagov-chart-vaccination-groups-race-ethnicity> <cagov-chart-vaccination-groups-age class="chart d-hide">           <ul class="d-none">
             <li data-label="chartTitle">캘리포니아 내 연령대 별 최소 백신 1회분 투여자</li>
             <li data-label="chartTitleCounty">연령대 별 최소 1회 백신 투여자 [REGION]</li>
             <li data-label="legendLabelVaccines">투여한 백신 대비 %</li>
             <li data-label="legendLabelPopulation">백신 대상 집단 대비 %</li>
             <li data-label="chartDataLabel">{LATEST_ADMINISTERED_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트.</li>
+            <li data-label="chartBarCaption">{category} 연령 집단은 {metric-value} 회분의 백신을 투여 받았으며 백신 접종 대상 집단에서 차지하는 비율은 {metric-baseline-value}입니다.</li>
+            <li data-label="chartBarCaptionOther">그 어느 집단에도 속하지 않는 사람들은 {metric-value} 회분의 백신을 투여 받았습니다. 캘리포니아는 이 집단을 백신 접종 대상 집단의 백분율로 배정하지 않고 있습니다.</li>
           </ul>         </cagov-chart-vaccination-groups-age> <cagov-chart-vaccination-groups-gender class="chart d-hide">           <ul class="d-none">> <li data-label="chartTitle">캘리포니아 내 성별 최소 1회 백신 투여자</li>
             <li data-label="chartTitleCounty">성별 최소 1회 백신 투여자 [REGION]</li>
             <li data-label="legendLabelVaccines">투여한 백신 대비 %</li>
             <li data-label="legendLabelPopulation">백신 대상 집단 대비 %</li>
             <li data-label="chartDataLabel">{LATEST_ADMINISTERED_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. “미확인/미구분”은 진술을 거부하거나 성별 관련 정보가 누락되어 있거나 트렌스젠더, 성 논-바이너리, 젠더 퀴어, 또는 간성으로 확인하는 경우를 포함합니다.</li>
+            <li data-label="chartBarCaption">{category}은(는) {metric-value} 회분의 백신을 투여 받았으며 백신 접종 대상 집단에서 차지하는 비율은 {metric-baseline-value}입니다.</li>
+            <li data-label="chartBarCaptionUnknown">성별 <b>미확인자</b> 또는 <b>미구분자</b>(포함 대상자는 차트 정보를  참조)는 {metric-value} 회분의 백신을 투여 받았습니다. 미확인자/미구분자는 인구 통계 또는 관리 예산국(Office of Management and Budget)의 공식적인 분류에 속해 있지 않으며, 이에 따라 해당 백신 접종 대상 인구는 그 규모가 미정인 상태입니다.</li>
           </ul>         </cagov-chart-vaccination-groups-gender>     </div>
 </div>
 
