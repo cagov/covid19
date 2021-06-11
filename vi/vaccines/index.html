@@ -2825,7 +2825,7 @@ window.customElements.define(
   CAGovVaccinesHPIDose
 );
 
-var css_248z$2 = "cagov-chart-vaccination-groups-race-ethnicity .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z$2 = "cagov-chart-vaccination-groups-race-ethnicity .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-race-ethnicity div.tooltip-container {\n  font-weight: 300;\n  font-size: 0.75rem;\n  line-height: 2;\n  color: black;\n  text-align: center; }\n\ncagov-chart-vaccination-groups-race-ethnicity .tooltip-container {\n  position: absolute;\n  z-index: 10;\n  visibility: hidden;\n  background: #fff;\n  width: 280px; }\n\ncagov-chart-vaccination-groups-race-ethnicity .tooltip-container {\n  pointer-events: none;\n  /* padding: 10px; */\n  padding: 1rem 2rem;\n  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);\n  /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */\n  border: none; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z$2);
 
 /**
@@ -3006,6 +3006,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
     groups
         .append("rect")
         .attr("fill", "#1f2574")
+        .attr("fill-opacity",(d,i) => baselineData[i].METRIC_VALUE == -1? 0 : 1)
         .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
         .attr("x", (d,i) => x(baselineData[i].METRIC_VALUE)-2)
         .attr("width", d => 4)
@@ -3207,6 +3208,13 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
       .append("g")
       .attr("transform", "translate(0,0)");
 
+    this.tooltip = d3
+      .select("cagov-chart-vaccination-groups-race-ethnicity")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
+
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
@@ -3261,6 +3269,22 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     return label;
   }
 
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    if (d.CATEGORY == "Other") {
+      tooltipText = this.translationsObj.chartBarCaptionOther;
+    } else if (d.CATEGORY == "Unknown") {
+      tooltipText = this.translationsObj.chartBarCaptionUnknown;
+    }
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
+    return tooltipText;
+  }
+
+
   renderExtras(svg, data, x, y) {
     // Not using this separator line that divides groups from unknown information
     // let group = svg.append("g");
@@ -3305,7 +3329,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           if ('POP_METRIC_VALUE' in this.alldata[0]) {
             console.log("Pop data found for eth chart");
             this.popdata = this.alldata.map(row => {
-              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: (row.CATEGORY == "Other" || row.CATEGORY == "Unknown"? -1 : row.POP_METRIC_VALUE)};
             });
           }
 
@@ -3322,7 +3346,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           let footerDisplayText = applySubstitutions(this.translationsObj.chartDataLabel, footerReplacementDict);
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-          renderChart.call(this, this.renderExtras, this.popdata, null, 've-race-eth');
+          renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 've-race-eth');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
@@ -3338,7 +3362,7 @@ window.customElements.define(
   CAGovVaccinationGroupsRaceEthnicity
 );
 
-var css_248z$1 = "cagov-chart-vaccination-groups-gender .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-gender .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-gender .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-gender .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z$1 = "cagov-chart-vaccination-groups-gender .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-gender .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-gender .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-gender .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-gender div.tooltip-container {\n  font-weight: 300;\n  font-size: 0.75rem;\n  line-height: 2;\n  color: black;\n  text-align: center; }\n\ncagov-chart-vaccination-groups-gender .tooltip-container {\n  position: absolute;\n  z-index: 10;\n  visibility: hidden;\n  background: #fff;\n  width: 280px; }\n\ncagov-chart-vaccination-groups-gender .tooltip-container {\n  pointer-events: none;\n  /* padding: 10px; */\n  padding: 1rem 2rem;\n  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);\n  /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */\n  border: none; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z$1);
 
 /**
@@ -3474,6 +3498,12 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
       .append("g")
       .attr("transform", "translate(0,0)");
 
+    this.tooltip = d3
+      .select("cagov-chart-vaccination-groups-gender")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
@@ -3526,6 +3556,19 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
     return label;
   }
 
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    if (d.CATEGORY == "Unknown/undifferentiated") {
+      tooltipText = this.translationsObj.chartBarCaptionUnknown;
+    }
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
+    return tooltipText;
+  }
+
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -3555,7 +3598,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           if ('POP_METRIC_VALUE' in this.alldata[0]) {
             console.log("Pop data found for gen chart");
             this.popdata = this.alldata.map(row => {
-              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: (row.CATEGORY == "Unknown/undifferentiated"? -1 : row.POP_METRIC_VALUE)};
             });
           }
 
@@ -3575,8 +3618,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           // this.translationsObj.footerDisplayDate = footerDisplayText;
           d3.select(this.querySelector(".chart-data-label")).text(footerDisplayText);
 
-
-          renderChart.call(this,null,this.popdata);
+          renderChart.call(this,null,this.popdata,this.tooltip,'ve-gender');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
@@ -3592,7 +3634,7 @@ window.customElements.define(
   CAGovVaccinationGroupsGender
 );
 
-var css_248z = "cagov-chart-vaccination-groups-age .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-age .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-age .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-age .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\n.d-hide {\n  display: none; }\n";
+var css_248z = "cagov-chart-vaccination-groups-age .bar-label .tick text {\n  text-transform: capitalize; }\n\ncagov-chart-vaccination-groups-age .bar-label {\n  font-weight: bold;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-age .bar-cat {\n  font-weight: bold;\n  font-size: 0.95rem; }\n\ncagov-chart-vaccination-groups-age .legend-caption {\n  font-weight: 300;\n  font-size: 0.75rem; }\n\ncagov-chart-vaccination-groups-age div.tooltip-container {\n  font-weight: 300;\n  font-size: 0.75rem;\n  line-height: 2;\n  color: black;\n  text-align: center; }\n\ncagov-chart-vaccination-groups-age .tooltip-container {\n  position: absolute;\n  z-index: 10;\n  visibility: hidden;\n  background: #fff;\n  width: 280px; }\n\ncagov-chart-vaccination-groups-age .tooltip-container {\n  pointer-events: none;\n  /* padding: 10px; */\n  padding: 1rem 2rem;\n  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);\n  /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */\n  border: none; }\n\n.d-hide {\n  display: none; }\n";
 styleInject(css_248z);
 
 /**
@@ -3726,6 +3768,12 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       .append("g")
       .attr("transform", "translate(0,0)");
 
+    this.tooltip = d3
+      .select("cagov-chart-vaccination-groups-age")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
@@ -3777,6 +3825,19 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
     return label;
   }
 
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    if (d.CATEGORY == "Other") {
+      tooltipText = this.translationsObj.chartBarCaptionOther;
+    }
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
+    return tooltipText;
+  }
+
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -3822,10 +3883,10 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           if ('POP_METRIC_VALUE' in this.alldata[0]) {
             console.log("Pop data found for age chart");
             this.popdata = this.alldata.map(row => {
-              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: (row.CATEGORY == "Other" || row.CATEGORY == "Unknown"? -1 : row.POP_METRIC_VALUE)};
             });
           }
-          renderChart.call(this,null,this.popdata,null,'ve-age');
+          renderChart.call(this,null,this.popdata,this.tooltip,'ve-age');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
