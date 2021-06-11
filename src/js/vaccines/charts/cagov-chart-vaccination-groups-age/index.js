@@ -5,6 +5,7 @@ import rtlOverride from "./../../../common/rtl-override.js";
 import renderChart from "../../../common/charts/simple-barchart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate } from "./../../../common/readable-date.js";
+import formatValue from "./../../../common/value-formatters.js";
 
 class CAGovVaccinationGroupsAge extends window.HTMLElement {
   connectedCallback() {
@@ -103,6 +104,12 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
       .append("g")
       .attr("transform", "translate(0,0)");
 
+    this.tooltip = d3
+      .select("cagov-chart-vaccination-groups-age")
+      .append("div")
+      .attr("class", "tooltip-container")
+      .text("Empty Tooltip");
+
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
 
@@ -154,6 +161,19 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
     return label;
   }
 
+  getTooltip(d,baselineData) {
+    let tooltipText = this.translationsObj.chartBarCaption;
+    if (d.CATEGORY == "Other") {
+      tooltipText = this.translationsObj.chartBarCaptionOther;
+    }
+    let bd = baselineData.filter(bd => bd.CATEGORY == d.CATEGORY);
+    // !! replacements here for category, metric-value, metric-baseline-value
+    tooltipText = tooltipText.replace('{category}', `<span class='highlight-data'>${d.CATEGORY}</span>`);
+    tooltipText = tooltipText.replace('{metric-value}', `<span class='highlight-data'>${formatValue(d.METRIC_VALUE,{format:'percent'})}</span>`);
+    tooltipText = tooltipText.replace('{metric-baseline-value}', `<span class='highlight-data'>${formatValue(bd[0].METRIC_VALUE,{format:'percent'})}</span>`);
+    return tooltipText;
+  }
+
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -199,10 +219,10 @@ class CAGovVaccinationGroupsAge extends window.HTMLElement {
           if ('POP_METRIC_VALUE' in this.alldata[0]) {
             console.log("Pop data found for age chart");
             this.popdata = this.alldata.map(row => {
-              return {CATEGORY: row.CATEGORY, METRIC_VALUE: row.POP_METRIC_VALUE};
+              return {CATEGORY: row.CATEGORY, METRIC_VALUE: (row.CATEGORY == "Other" || row.CATEGORY == "Unknown"? -1 : row.POP_METRIC_VALUE)};
             });
           }
-          renderChart.call(this,null,this.popdata,null,'ve-age');
+          renderChart.call(this,null,this.popdata,this.tooltip,'ve-age');
           this.resetTitle({
             region: regionName, 
             chartTitle: this.translationsObj.chartTitle,
