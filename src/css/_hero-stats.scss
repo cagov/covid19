@@ -86,7 +86,7 @@ hero-stats {
 	    align-self: center;
 		}
 		@include tablet-wide {
-			width: 50%;
+			width: 33%;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
