@@ -374,6 +374,9 @@ hero-stats {
 		text-align: left;
 		box-shadow: $shadow-hover;
 		color: $black;
+		@media (max-width: 767.98px) {
+		 	margin-top: 4rem;
+		}
 		@include tablet {
 			width: 95%;
 			display: flex;
