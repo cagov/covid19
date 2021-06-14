@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Datos del avance en la vacunación"
 meta: "Esta página hace que los datos sobre la vacunación sean transparentes y accesibles para todos los californianos."
 author: "State of California"
-publishdate: "2021-06-09T03:21:59Z"
+publishdate: "2021-06-10T22:04:24Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -186,17 +186,24 @@ addtositemap: true
             <li data-label="legendLabelVaccines">% de vacunas administradas</li>
             <li data-label="legendLabelPopulation">% de población elegible vacunada</li>
             <li data-label="chartDataLabel">Se actualizó el {PUBLISHED_DATE} con datos del {LATEST_ADMINISTERED_DATE}. </li>
+            <li data-label="chartBarCaption">Las personas que se identifican como {category} han recibido {metric-value} de las vacunas administradas y constituyen el {metric-baseline-value} de la población elegible para la vacuna.</li>
+            <li data-label="chartBarCaptionOther">Las personas cuya raza/etnia se reportó como {category} han recibido {metric-value} de las vacunas administradas. Dado que Otro no es una clasificación oficial del censo ni de la Oficina de Administración y Presupuesto, el tamaño de la población elegible para la vacuna correspondiente es indeterminado.</li>
+            <li data-label="chartBarCaptionUnknown">Las personas cuya raza/etnia es {category} han recibido {metric-value} de las vacunas administradas. California no asigna a este grupo un porcentaje de la población elegible para la vacuna.</li>
           </ul>         </cagov-chart-vaccination-groups-race-ethnicity> <cagov-chart-vaccination-groups-age class="chart d-hide">           <ul class="d-none">
             <li data-label="chartTitle">Personas con al menos una dosis de la vacuna administrada por edad en California</li>
             <li data-label="chartTitleCounty">Personas con al menos una dosis de la vacuna administrada por edad en [REGION]</li>
             <li data-label="legendLabelVaccines">% de vacunas administradas</li>
             <li data-label="legendLabelPopulation">% de población elegible vacunada</li>
             <li data-label="chartDataLabel">Se actualizó el {PUBLISHED_DATE} con datos del {LATEST_ADMINISTERED_DATE}.</li>
+            <li data-label="chartBarCaption">El grupo de edad de {category} ha recibido {metric-value} de las vacunas administradas y constituye el {metric-baseline-value} de la población elegible para la vacuna.</li>
+            <li data-label="chartBarCaptionOther">Las personas cuyas edades no pertenecen a ningún grupo han recibido {metric-value} de las vacunas administradas. California no asigna a este grupo un porcentaje de la población elegible para la vacuna.</li>
           </ul>         </cagov-chart-vaccination-groups-age> <cagov-chart-vaccination-groups-gender class="chart d-hide">           <ul class="d-none">> <li data-label="chartTitle">Personas con al menos una dosis de la vacuna administrada por género en California</li>
             <li data-label="chartTitleCounty">Personas con al menos una dosis de la vacuna administrada por género en [REGION]</li>
             <li data-label="legendLabelVaccines">% de vacunas administradas</li>
             <li data-label="legendLabelPopulation">% de población elegible vacunada</li>
             <li data-label="chartDataLabel">Se actualizó el {PUBLISHED_DATE} con datos del {LATEST_ADMINISTERED_DATE}. “Desconocido o indiferenciado” incluye a aquellos que se negaron a declarar, cuya información de género falta o que se identifican como transgénero, género no binario, género queer o intersexual.</li>
+            <li data-label="chartBarCaption">{category} ha recibido {metric-value} de las vacunas administradas y constituye el {metric-baseline-value} de la población elegible para la vacuna.</li>
+            <li data-label="chartBarCaptionUnknown">Las personas cuyo género es <b>desconocido</b> o <b>indiferenciado</b> (vea a quién incluye esto en la información del cuadro) han recibido {metric-value} de las vacunas administradas. Dado que Desconocido o Indiferenciado no es una clasificación oficial del censo ni de la Oficina de Administración y Presupuesto, el tamaño de la población elegible para la vacuna correspondiente es indeterminado.</li>
           </ul>         </cagov-chart-vaccination-groups-gender>     </div>
 </div>
 
