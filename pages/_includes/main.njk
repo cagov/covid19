@@ -261,83 +261,6 @@ formatNumber(tags,1)-%}
 </hero-stats>
  <!-- END OF STATS -->
 
-	<!--RECENT UPDATES-->
-<news-section>
-  <section class="news trigger bg-lightblue" role="region" aria-label="Recent updates">
-    <div class="news-wrap">
-    
-      <h2 class="color-purple mt-0 mb-0">{{translatedLabels.varRecentUpdatesTitle}}</h2>
-      <div class="news-grid">
-        {% set JSONgovraw %}
-        {% include (language.includepath + "updates-section-homepage" + language.filepostfix + ".json") %}
-        {% endset %}
-        {% set JSONgov = JSONgovraw | jsonparse %}
-        {%- set RowsGov = JSONgov.Table1 -%}
-        {% for item in RowsGov %}
-          <article class="news-item trigger">
-              <h3 class="h4 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
-              <p class="text-300">{{item['News content']}}</p>
-              <p class="mt-2 mb-0"><a class="recent-news-link" href="{{item['link URL'] | replace('https://covid19.ca.gov/','')}}">{{item['Link text']}}</a></p>
-          </article>
-        {% endfor %}
-      </div>
-    </div>
-    </section>
-</news-section>
-
-	<!-- PEOPLE WANTS TO KNOW SECTION -->
-	<faq-section>
-		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
-			
-			<h2 class="text-center color-orange mt-0" id="want-to-know">{{translatedLabels.varPeopleWantToKnowTitle}}</h2>
-			<div class="faq-twitter-wrap">
-				{%- for column, items in pubData[language.id].peopleWantToKnow %}
-					<div class="faq trigger">
-						<ul class="arrow-links mb-0">
-						{%- for item in items %}
-						<li>    
-							<a class="link-arrow-white js-event-hm-wtk" href="{{ item._url }}">
-								<div class="link-arrow-label">{{ item.text | safe }}</div>
-								<cagov-arrow></cagov-arrow>
-							</a>
-						</li>
-						{%- endfor %}
-						</ul>
-					</div>
-				{%- endfor %}
-			</div>
-		</section>
-	</faq-section>
-
-
-
-
-<!-- FOR BUSINESSES SECTION -->
-<learn-more-section>
-<section class="faq-twitter">
-	<h2 class="text-center color-purple mt-0">{{translatedLabels.varForBusinesses}}</h2>
-	<div class="faq-twitter-wrap">
-	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
-		{% set JSONgov = JSONgovraw | jsonparse %}
-		{%- for item in  pubData[language.id].commonPageLabels.Table4 %}
-		<div class="faq trigger">
-			<div class="arrow-links">
-			<article>    
-				<a class="link-arrow-blue js-event-hm-wtk" href="{{item["URL"] | replace('https://covid19.ca.gov/','')}}">
-				<div class="link-arrow-label">
-					{{item["Link Title"]}}
-				</div>
-				<cagov-arrow></cagov-arrow>
-				</a>
-			</article>
-			</div>
-		</div>
-		 {% endfor %}
-	</div>
-</section>
-</learn-more-section>
-
-
 <!-- begin video section -->
 	<video-section>
 
@@ -384,8 +307,6 @@ formatNumber(tags,1)-%}
 <!-- end video section -->
 
 
-<!--FROM GOV OFFICE UPDATES -->
-  {% include "./news-feed-home.html" %}
 	<!-- end contentBlock -->
 {% endblock %}
 
