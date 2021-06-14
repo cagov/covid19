@@ -101,7 +101,7 @@ hero-stats {
 		margin-bottom: .5rem;
 		text-align: left;
 		font-weight: 900;
-		color: #1F2574;
+		color: $darkblue;
 		
 		&-link {
 			text-decoration: none;
@@ -111,7 +111,7 @@ hero-stats {
 		}
 	}
 	&-subhead {
-		color: #1F2574;
+		color: $darkblue;
 		font-weight: 700;
 	}
 	&-photo {
@@ -131,7 +131,7 @@ hero-stats {
 			@include screen-reader-text;
 		}
 		&-fade {
-			@include size(100%, 10rem);
+			@include size(100%, 0rem);
 			background: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 100%);
 			@include absolute(left 0 top 0);
 			z-index: 100;
