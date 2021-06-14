@@ -356,10 +356,25 @@ hero-stats {
 				.chart-icon-path {
 					fill:$orange;}
 			}
+			&:visited, &:link, &:active {
+				color: $lightblue;
+			}
 		}
 	}
 }
-
+// Note: The above link color designations don't work, these overrides were needed to fix
+a.hero-stats-footer-slink, a.hero-stats-footer-slink:visited {
+	color: $lightblue;
+}
+a.hero-stats-footer-slink:hover {
+	color: $orange;
+}
+a.hero-stats-footer-link:hover, a.hero-stats-footer-link:visited:hover {
+	color: $orange;
+}
+a.hero-stats-footer-link:visited {
+ 	color: $lightblue;
+}
 .hero-text-container {
 	width:95%;
 	text-align: left;
