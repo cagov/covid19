@@ -86,7 +86,7 @@ hero-stats {
 	    align-self: center;
 		}
 		@include tablet-wide {
-			width: 33%;
+			width: 50%;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
@@ -101,7 +101,7 @@ hero-stats {
 		margin-bottom: .5rem;
 		text-align: left;
 		font-weight: 900;
-		color: #fff;
+		color: #1F2574;
 		
 		&-link {
 			text-decoration: none;
@@ -111,7 +111,7 @@ hero-stats {
 		}
 	}
 	&-subhead {
-		color: $white;
+		color: #1F2574;
 		font-weight: 700;
 	}
 	&-photo {
@@ -360,6 +360,7 @@ hero-stats {
 .hero-text-container {
 	width:95%;
 	text-align: left;
+	min-height: 40vh;
 }
 
 	/* ALERT */
