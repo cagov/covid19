@@ -86,7 +86,7 @@ hero-stats {
 	    align-self: center;
 		}
 		@include tablet-wide {
-			width: 50%;
+			width: 33%;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
@@ -143,19 +143,20 @@ hero-stats {
 /* STATS */
 .hero-stats {
 	background: $darkblue;
+	color: white;
 	padding: 1rem 2rem;
-	box-shadow: 0 0.5rem 1.5rem 0 rgba(0,0,0,.3);
+	// box-shadow: 0 0.5rem 1.5rem 0 rgba(0,0,0,.3);
 	align-self: flex-end;
 	@include tablet {
 		background: $darkblue;
 		padding: 1rem 1.5rem;
 		margin: 3rem auto 2rem;
-		width: 50%;
+		width: 100%;
 		transition-delay: .9s;
 	}
 	@include tablet-wide {
 		padding: 1rem 1.5rem;
-		width: 50%;
+		width: 100%;
 		margin: 3.5rem auto 2rem;
 	}
 	@include desktop {
@@ -356,6 +357,11 @@ hero-stats {
 	}
 }
 
+.hero-text-container {
+	width:95%;
+	text-align: left;
+}
+
 	/* ALERT */
 	.hero-alert {
 		background: $white;
@@ -502,6 +508,14 @@ hero-stats {
 
 
 @media (max-width: 767.98px) {
+	.hero-wrap .px-10px {
+		padding-right: 15% !important;
+		padding-left: 15% !important;
+	}
+
+ }
+
+ @media (max-width: 767.98px) {
 	.hero-wrap .px-10px {
 		padding-right: 15% !important;
 		padding-left: 15% !important;
