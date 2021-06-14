@@ -21,6 +21,9 @@
   
   }
 
+
+
+
 hero-stats {
 	background-color: $darkblue;
 /*HERO */
@@ -76,8 +79,8 @@ hero-stats {
 		text-align: left;
 		padding: 1.5rem;
 		min-height: 60vh;
-		align-items: flex-end;
-		align-self: flex-end;
+		/* align-items: flex-end; */
+		/* align-self: flex-end; */
 		// background-color: #1D2574;
 		@include tablet {
 			display: flex;
@@ -379,13 +382,14 @@ hero-stats {
 			justify-content: center;
 			align-content: center;
 			position: relative;
-			top: 2rem;
+			top: 8rem;
 		}
 		@include desktop {
 			width: 95%;
 		}
 		&-align {
 			padding: 2rem;
+			padding-bottom:0;
 			text-align: center;
 			@include tablet {
 				text-align: left;
@@ -393,13 +397,16 @@ hero-stats {
 				align-items: center;
 				width: 60%;
 				padding: 1.5rem;
+				padding-bottom:0;
 			}
 			@include tablet-wide {
 				width: 66%;
 				padding: 2rem;
+				padding-bottom:0;
 			}
 			@include desktop {
 				padding: 2.5rem;
+				padding-bottom:0;
 			}
 		}
 		&-icon {
@@ -523,3 +530,28 @@ hero-stats {
 	}
 
  }
+
+section.featured-content {
+	@media (min-width: 767.98px) {
+		margin-top:100px;
+	}
+}
+/*
+.hero-photo {
+	width:100%;
+	background-image: url(/img/hero_v2.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center 10%;
+	@include tablet {
+		background-size: cover;
+	}
+} 
+*/
+
+img.hero-photo-pic {
+	content:url("/img/hero_v2_mobile.jpg");
+	@media (min-width: 767.98px) {
+		content:url("/img/hero_v2.jpg");
+	}
+}
