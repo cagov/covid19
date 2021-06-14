@@ -375,6 +375,41 @@ button.clear {
   right: 28px;
 }
 
+// med blue arrow link
+.link-arrow-medblue {
+  @include link-arrow;
+  color: $blue;
+  .link-arrow-icon {
+    border: 2px solid $darkblue;
+  }
+  .arrow1,
+  .arrow2 {
+    transition: all 0.3s ease;
+    fill: $blue;
+  }
+  .pdf-link-icon {
+    display: none;
+  }
+  //link hover and focus state
+  &:hover,
+  &:focus {
+    color: $orange;
+    .link-arrow-icon {
+      border-color: $orange;
+      .arrow1,
+      .arrow2 {
+        fill: $orange;
+      }
+    }
+    .link-arrow-icon-svg {
+      right: -10px;
+    }
+  }
+  &:focus {
+    outline: 2px solid $yellow !important;
+  }
+}
+
 //blue arrow link
 .link-arrow-blue {
   @include link-arrow;
