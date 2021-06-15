@@ -70,7 +70,10 @@ const rollup = (done) => {
   }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
-  }).on('close', () => {
+  }).on('close', code => {
+    if(code) {
+      throw new Error('Rollup Build Failed - Exit Code '+code);
+    }
     done();
   });
 };
