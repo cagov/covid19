@@ -54,7 +54,11 @@ const eleventy = (done) => {
 
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
-  }).on('close', () => {
+  })
+  .on('close', code => {
+    if(code) {
+      throw new Error('Eleventy Build Failed - Exit Code '+code);
+    }
     reload(done);
   });
 };
