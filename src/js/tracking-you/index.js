@@ -264,6 +264,10 @@ export default function setupAnalytics() {
       document.querySelectorAll('.hero-alert a').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-alerts section', annotateExternalLinks(link)));
       });
+      // Report clicks on featured-links
+      document.querySelectorAll('.featured-content a').forEach(link => {
+        link.addEventListener('click', linkHandler(link.href, 'homepage-middle links', link.href));
+      });
     }
 
     // Add these events if we're on the Roadmap page.

@@ -42,7 +42,11 @@ ga('tracker3.send', 'pageview');
 		<div class="footer-section-col footer-section-col-nav trigger">
 			<nav class="footer-section-nav" role="navigation" aria-label="Footer navigation">
 				{% for item in pubData[language.id].commonPageLabels.Table3 %}
+				   {% if item._slug.includes('http') %}
+					<a class="footer-section-nav-link" href="{{ item._slug }}">{{ item.Name | safe }}</a>
+				   {% else %}
 					<a class="footer-section-nav-link" href="{{ (item._slug +"/") | toTranslatedPath(tags) }}">{{ item.Name | safe }}</a>
+				   {% endif %}
 				{% endfor %}
 			</nav>
 		</div>
