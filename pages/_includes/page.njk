@@ -24,7 +24,7 @@
   {{ super() }}
 {% endblock %}
 
-{% block bodyClass %}interior-page {%- pagesection page, 'safer-economy' %} safer-economy-page{% endpagesection %}{% endblock%}
+{# {% block bodyClass %}interior-page {%- pagesection page, 'safer-economy' %} safer-economy-page{% endpagesection %}{% endblock%} #}
 
 {% block preHeader %}
 {%- pagesection page, "vaccines" %}
@@ -40,7 +40,7 @@
           <h1>{{ title | safe }}</h1>
           {% if page | engSlug !== "search" %}
             <p class="small-text">{{text.last_updated}}&nbsp;
-              {%- if page | engSlug === "safer-economy" or page | engSlug === "data-and-tools" -%}
+              {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "v1-state-dashboard" -%}
                 {{ (tableauCovidMetrics[0].DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
@@ -57,9 +57,6 @@
       </div>
     </div>
   </div>
-  {%- pagesection page, "v1-state-dashboard" %}
-  {% include "dashboard-v1.njk" %}
-  {% endpagesection -%}
 
   <div class="container{%- pagesection page, 'state-dashboard' %} pb-0{%- endpagesection %}">
     <div class="row">
@@ -68,9 +65,9 @@
         {%- pagesection page, "search" %}
         {% include "search.njk" %}
         {% endpagesection -%}
-        {%- pagesection page, "safer-economy" %}
+        {# {%- pagesection page, "safer-economy" %}
         {% include "reopening-matrix.njk" %}
-        {% endpagesection -%}
+        {% endpagesection -%} #}
       </div>
     </div>
   </div>
