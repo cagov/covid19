@@ -3,7 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
 author: "State of California"
-publishdate: "2021-06-13T12:46:56Z"
+publishdate: "2021-06-15T17:01:04Z"
+tags: ["translate"]
 addtositemap: true
 ---
 
@@ -316,7 +317,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
+<p class="small-text">Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday. Episode date is the date the event is estimated to have taken place. Reported date is the date the event was reported to the California Department of Public Health. Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -386,7 +387,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. These groups are excluded from the Blueprint tier assignment calculations, which show different case and test positivity rates. Positivity rate was previously reported as a 14-day average. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
+<p class="small-text">Testing date is the date the test was administered. Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020. Testing date data excludes out-of-state and unknown jurisdiction tests and total numbers may not match reporting date numbers. Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities. Positivity rate was previously reported as a 14-day average. The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -467,67 +468,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
   </div>
   <!--END container-->
-</div>
-
-
-
-<div class="row d-flex justify-content-md-center">
-
-  <h2 class="text-center color-purple">This data drives decisions that keep California healthy and safe</h2>
-
-  <div class="grid-layout-hd bg-lightblue bd-lightblue">
-    <div class="grid-main bg-lightblue py-2">
-      <h3 class="my-0 text-center">California’s county risk levels</h3>
-    </div>
-    <div class="grid-single single1">
-      <div class="btn-matrix bg-purple-btn">WIDESPREAD</div>
-      <p class="text-small mt-2 mb-0">Many non-essential indoor business operations are closed</p>
-    </div>
-    <div class="grid-single single2">
-      <div class="btn-matrix bg-red-btn">SUBSTANTIAL</div>
-      <p class="text-small mt-2 mb-0">Some non-essential indoor business operations are closed</p>
-    </div>
-    <div class="grid-single single3">
-      <div class="btn-matrix bg-orange-btn">MODERATE</div>
-      <p class="text-small mt-2 mb-0">Some indoor business operations are open with modifications</p>
-    </div>
-    <div class="grid-single single4">
-      <div class="btn-matrix bg-yellow-btn">MINIMAL</div>
-      <p class="text-small mt-2 mb-0">Most indoor business operations are open with modifications</p>
-    </div>
-  </div>
-
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">Current tier assignments as of {{_varTierDate_}}</h3>
-  <p class="mt-0">All data and tier assignments are updated weekly every Tuesday.</p>
-
-    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">
-  <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript>
-  <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>
-  </div>
-  <script type="text/javascript">
-  var divElement = document.getElementById('viz1607448868632');
-  var vizElement = divElement.getElementsByTagName('object')[0];
-  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
-  var scriptElement = document.createElement('script');
-  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-  vizElement.parentNode.insertBefore(scriptElement, vizElement);
-  </script>
-
-</div>
-
-
-
-<div class="pl-2 text-small">
-  <p class="small-text">All data and tier assignments are based on results from week ending {{_varTierEndDate_}}. See how tiers are assigned and changed, as well as county historical data (<strong>California Blueprint Data Chart</strong>) at <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH’s Blueprint for a Safer Economy framework</a>. Learn about regional ICU capacity at <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH’s ICU Data</a>.</p>
-</div>
-
-
-
-<div class="text-center mb-4">
-  <a href="/safer-economy/" class="link-arrow-blue">
-    <div class="link-arrow-label">See what can be open in your county</div>
-    <cagov-arrow></cagov-arrow>
-  </a>
 </div>
 
 
