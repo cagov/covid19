@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州COVID-19追蹤"
 meta: "{{_varStatDate_}}的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19確診病例，造成{{_varStatTotalDeaths_}}人死亡。病例數 {{_varStatTotalCases_}} 總共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例數 死亡數 {{_varStatTotalDeaths_}} 總共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡數 檢測數 {{_varStatTested_}} 總共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%檢測呈陽性率 施打的疫苗數 {{_varStatVaccines_}} 總共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增長率 #} […]"
 author: "State of California"
-publishdate: "2021-05-29T13:30:24Z"
+publishdate: "2021-06-15T17:01:04Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -200,7 +200,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">相關人數並不代表真實的每日變化，因為這些結果包含來自昨天之前的病例數。發病日期是指預計出現病例的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。病例數包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的病例數。這些團體不包括在藍圖等級分配計算中，其顯示不同的病例和檢測呈陽性速率。負的報告死亡人數表示先前被歸因於COVID-19的死亡病例，而後被確定與COVID-19無關。這些圖表所使用的人口分母來自加州財政部對2020年的人口預測。</p>
+<p class="small-text">相關人數並不代表真實的每日變化，因為這些結果包含來自昨天之前的病例數。發病日期是指預計出現病例的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。病例數包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的病例數。負的報告死亡人數表示先前被歸因於COVID-19的死亡病例，而後被確定與COVID-19無關。這些圖表所使用的人口分母來自加州財政部對2020年的人口預測。</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -246,12 +246,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">檢測日期是做檢測的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。報告的日期數據不適用於2020年5月5日之前的檢測。檢測日期數據不包括州外和未知轄區檢測，總數可能與報告日期的數量不匹配。檢測呈陽性率的計算方法是陽性分子檢測的數量除以完成的總分子檢測數量。檢測呈陽性率包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的檢測呈陽性率。這些團體不包括在藍圖等級分配計算中，其顯示不同的病例和檢測呈陽性速率。之前呈報的是14日平均檢測呈陽性率。這些圖表所使用的人口分母來自加州財政部對2020年的人口預測。</p>
+<p class="small-text">檢測日期是做檢測的日期。呈報日期是指病例被呈報給加州公共衛生局的日期。報告的日期數據不適用於2020年5月5日之前的檢測。檢測日期數據不包括州外和未知轄區檢測，總數可能與報告日期的數量不匹配。檢測呈陽性率的計算方法是陽性分子檢測的數量除以完成的總分子檢測數量。檢測呈陽性率包括州立和聯邦監獄、美國移民及海關執法機構、美國法警署拘留所及州立醫院部門機構中的檢測呈陽性率。之前呈報的是14日平均檢測呈陽性率。這些圖表所使用的人口分母來自加州財政部對2020年的人口預測。</p>
 </div></div></div></cagov-accordion></div>
 
 
 
-<h3 class="text-center">對醫院和加護病房 (Intensive Care Unit, ICU) 的影響</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診及疑似感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}來自前一天的總數。在加州因確診及疑似感染COVID-19而進入ICU的人數總共達到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}來自前一天的總數。</p>
+<h3 class="text-center">確診及疑似住院患者</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診及疑似感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}來自前一天的總數。在加州因確診及疑似感染COVID-19而進入ICU的人數總共達到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}來自前一天的總數。</p>
 
 
 
@@ -303,59 +303,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row d-flex justify-content-md-center">
-
-  <h2 class="text-center color-purple">這些數據推動了確保加州健康和安全的決策</h2>
-
-  <div class="grid-layout-hd bg-lightblue bd-lightblue">
-    <div class="grid-main bg-lightblue py-2">
-      <h3 class="my-0 text-center">加州的縣風險等級</h3>
-    </div>
-    <div class="grid-single single1">
-      <div class="btn-matrix bg-purple-btn">廣泛傳播</div>
-      <p class="text-small mt-2 mb-0">關閉多數非必要的室內業務</p>
-    </div>
-    <div class="grid-single single2">
-      <div class="btn-matrix bg-red-btn">重度</div>
-      <p class="text-small mt-2 mb-0">關閉一些非必要的室內業務</p>
-    </div>
-    <div class="grid-single single3">
-      <div class="btn-matrix bg-orange-btn">中度</div>
-      <p class="text-small mt-2 mb-0">部分室內業務在經調整後開放</p>
-    </div>
-    <div class="grid-single single4">
-      <div class="btn-matrix bg-yellow-btn">最低</div>
-      <p class="text-small mt-2 mb-0">大部分室內業務在經調整後開放</p>
-    </div>
-  </div>
-
-  <h3 class="has-text-align-center pb-0 mb-2 mt-3" id="county-status">當前等級劃分（截至 {{_varTierDate_}}</h3>
-  <p class="mt-0">所有數據和等級劃分於每週二更新。</p>
-
-    <div class="tableauPlaceholder" id="viz1607448868632" style="position: relative">   <noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1_rss.png" style="border: none"></a></noscript> <object class="tableauViz" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"> <param name="embed_code_version" value="3"> <param name="site_root" value=""><param name="name" value="COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/CO/COVID-19Planforreducingcovid-19wregionsmap/planforreducingcovid-19/1.png"> <param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en"><param name="filter" value="publish=yes"></object>   </div>   <script type="text/javascript">
-  var divElement = document.getElementById('viz1607448868632');
-  var vizElement = divElement.getElementsByTagName('object')[0];
-  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='700px';vizElement.style.maxWidth='920px';vizElement.style.width='100%';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='627px';}
-  var scriptElement = document.createElement('script');
-  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-  vizElement.parentNode.insertBefore(scriptElement, vizElement);
-  </script>  </div>
-
-
-
-<div class="pl-2 text-small">
-  <p class="small-text">所有數據和等級劃分的依據為{{_varTierEndDate_}}週末的結果。請參閱<a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx">CDPH發佈的更安全的經濟藍圖架構</a>，了解等級劃分及變更情況，以及縣歷史數據（<strong>加州藍圖數據表</strong>）。請參閱<a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Regional-Stay-at-Home-Order-Data-Projections.aspx">CDPH的ICU數據</a>，了解地區ICU床位空置率。</p>
-</div>
-
-
-
-<div class="text-center mb-4">   <a href="/safer-economy/" class="link-arrow-blue">     <div class="link-arrow-label">查看您所在的縣可以開放的行業</div>     <cagov-arrow></cagov-arrow> </a> </div>
-
-
-
 <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-4 pb-5">
-    <h2 class="text-center color-primary">各群體的感染數</h2>
+    <h2 class="text-center color-primary">各群體的感染情況</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs"><button class="large-tab toggle-active js-toggle-group ethnicity">種族和族裔</button> <button class="large-tab js-toggle-group gender">性別</button> <button class="large-tab js-toggle-group age">年齡</button>         </div>
