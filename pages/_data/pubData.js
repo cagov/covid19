@@ -92,7 +92,6 @@ const files = [
     Table1: {
       pivot: true,
       require: [
-        'varLatestNews',
         'varForBusinesses'
       ]}
     }
