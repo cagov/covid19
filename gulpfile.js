@@ -129,7 +129,6 @@ const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
       content: [
         'pages/_includes/main.njk',
         'pages/_includes/header.njk',
-        'pages/_includes/news-feed-home.html',
         'pages/_includes/footer.njk',
         'pages/_includes/accordion.html',
         'pages/**/*.js',
