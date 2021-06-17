@@ -76,7 +76,7 @@ const files = [
   //       'coverage'
   //   ]}
   // }},
-  { slug: 'reopening-roadmap-activity-data', split: true },
+  // { slug: 'reopening-roadmap-activity-data', split: true },
   { slug: 'menu-links', split: true, tableSchema: {
     Table1: {
       require: ['_section_index','label']
