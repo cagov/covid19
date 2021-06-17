@@ -27,6 +27,8 @@
 hero-stats {
 	background-color: $darkblue;
 /*HERO */
+
+
 .hero {
 	position: relative;
 	color: $white;
@@ -397,22 +399,28 @@ a.hero-stats-footer-link:visited {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: center;
-			align-content: center;
+			// justify-content: center;
+			// align-content: center;
 			position: relative;
 			top: 8rem;
 		}
+	
 		@include desktop {
 			width: 95%;
 		}
 		&-align {
 			padding: 2rem;
 			padding-bottom:0;
-			text-align: center;
+			.hero-alert-action {
+				@include phone {
+					width:100%;
+					text-align: center;
+			    }
+			}
 			@include tablet {
 				text-align: left;
 				display: flex;
-				align-items: center;
+				// align-items: center;
 				width: 60%;
 				padding: 1.5rem;
 				padding-bottom:0;
@@ -439,6 +447,9 @@ a.hero-stats-footer-link:visited {
 				flex: 1 0 auto;
 				top: .5rem;
 				align-self: flex-start;
+			}
+			@include phone {
+			 	display:none;
 			}
 		}
 		&-headline {
