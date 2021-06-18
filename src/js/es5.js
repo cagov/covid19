@@ -10,7 +10,6 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
-import './roadmap/index.js';
 import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
