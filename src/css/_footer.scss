@@ -134,10 +134,23 @@ footer-section {
 		.social {
 			margin: 1.5rem auto;
 			@include tablet {
-				margin: 1rem 0 1rem 0;
+				margin: -8rem 0 1.5rem 0;
 			}
 			@include desktop {
-				margin: -1.5rem 0 1.5rem 0;
+				margin: -10rem 0 1.5rem 0;
+			}
+			.non-mobile-only {
+				@include phone {
+					display:none;
+				}
+			}
+			.mobile-only {
+				@include desktop {
+					display:none;
+				}
+				@include tablet {
+					display:none;
+				}
 			}
 		}
 		&-utility {
