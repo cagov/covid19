@@ -5,9 +5,6 @@ const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','u
 let filesSiteData = [];
 langData.languages.forEach(writeMenuJson);
 
-// this is temporary, we will get this data from an API:
-fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
-
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
