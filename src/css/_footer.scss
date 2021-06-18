@@ -5,6 +5,18 @@ footer-section {
 		@extend %block-padding;
 		color: $white;
 		text-align: center;
+
+		.mobile-only {
+			visibility:collapse;
+			@include reg-phone {
+				visibility:visible;
+			}
+		}
+		.non-mobile-only {
+			@include reg-phone {
+				visibility:collapse;
+			}
+		}
 		&-grid {
 			display: flex;
 			flex-wrap: wrap;
@@ -133,25 +145,6 @@ footer-section {
 		}
 		.social {
 			margin: 1.5rem auto;
-			@include tablet {
-				margin: -8rem 0 1.5rem 0;
-			}
-			@include desktop {
-				margin: -10rem 0 1.5rem 0;
-			}
-			.non-mobile-only {
-				@include phone {
-					display:none;
-				}
-			}
-			.mobile-only {
-				@include desktop {
-					display:none;
-				}
-				@include tablet {
-					display:none;
-				}
-			}
 		}
 		&-utility {
 			margin-top: 1rem;
