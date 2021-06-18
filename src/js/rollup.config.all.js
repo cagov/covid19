@@ -2,7 +2,6 @@ import alerts from './alerts/rollup.config';
 import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
-import reopening from './roadmap/rollup.config';
 import reopeningAirtableV1 from './roadmap-airtable-v1/rollup.config';
 import reopeningTierLevel from './roadmap-tier-level/rollup.config';
 import telehealth from './telehealth/rollup.config';
@@ -44,7 +43,6 @@ function shouldIRebuild(directory,generatedFile) {
 export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
   ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
-  ...(shouldIRebuild('/roadmap/', '../../docs/js/roadmap.js') ? [reopening] : []),
   ...(shouldIRebuild('/roadmap-airtable-v1/', '../../docs/js/roadmap-airtable-v1.js') ? [reopeningAirtableV1] : []),
   ...(shouldIRebuild('/roadmap-tier-level/', '../../docs/js/roadmap-tier-level.js') ? [reopeningTierLevel] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),

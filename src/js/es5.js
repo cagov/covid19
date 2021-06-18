@@ -10,7 +10,6 @@ import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
-import './roadmap/index.js';
 import './roadmap-airtable-v1/index.js';
 import './roadmap-tier-level/index.js';
 import './equity-dash/index.js';
