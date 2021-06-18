@@ -31,7 +31,7 @@ export default {
               modules: false,
               use: ['sass'],
             }),
-            // terser()
+            terser(),
             json()
           ]
 };
