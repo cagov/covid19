@@ -8,12 +8,13 @@ footer-section {
 
 		.mobile-only {
 			visibility:collapse;
-			@include reg-phone {
+			@media (max-width: 768px) {
 				visibility:visible;
 			}
 		}
 		.non-mobile-only {
-			@include reg-phone {
+			visibility:visible;
+			@media (max-width: 768px) {
 				visibility:collapse;
 			}
 		}
