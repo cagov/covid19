@@ -578,16 +578,28 @@ section.featured-content {
 } 
 */
 
-img.hero-photo-pic, img.hero-photo-pic:before {
+img.hero-photo-pic {
 	content:url("/img/hero_v2_mobile.webp");
 	@media (min-width: 767.98px) {
 		content:url("/img/hero_v2_1600.webp");
 	}
 }
 
-.no-webp img.hero-photo-pic, .no-webp img.hero-photo-pic:before {
+.no-webp img.hero-photo-pic {
 	content:url("/img/hero_v2_mobile.jpg");
 	@media (min-width: 767.98px) {
 		content:url("/img/hero_v2.jpg");
+	}
+}
+
+// explicitly filtering for IE11
+@media all and (-ms-high-contrast:none) {
+	img.hero-photo-pic:before {
+		content:url("/img/hero_v2_mobile.jpg");
+		width:auto;
+		height:auto;
+		@media (min-width: 767.98px) {
+			content:url("/img/hero_v2.jpg");
+		}
 	}
 }
