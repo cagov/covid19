@@ -579,8 +579,6 @@ section.featured-content {
 */
 
 img.hero-photo-pic {
-	width:auto;
-	height:auto;
 	content:url("/img/hero_v2_mobile.webp");
 	@media (min-width: 767.98px) {
 		content:url("/img/hero_v2_1600.webp");
