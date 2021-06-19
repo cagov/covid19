@@ -591,13 +591,3 @@ img.hero-photo-pic {
 		content:url("/img/hero_v2.jpg");
 	}
 }
-
-// explicitly filtering for IE11
-@media all and (-ms-high-contrast:none) {
-	img.hero-photo-pic:after {
-		content:url("/img/hero_v2_mobile.jpg");
-		@media (min-width: 767.98px) {
-			content:url("/img/hero_v2.jpg");
-		}
-	}
-}
