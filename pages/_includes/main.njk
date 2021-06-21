@@ -98,7 +98,13 @@ formatNumber(tags,1)-%}
 			</div>
 			<div class="hero-photo" role="complementary" aria-labelledby="hero-background">
 				<div class="hero-photo-fade"></div>
-				<img class="hero-photo-pic" src="/img/hero_v2.jpg" alt="Photo Description">
+				<picture>
+					<source media="(max-width: 767px)" type="image/webp" srcset="/img/hero_v2_mobile.webp">
+					<source media="(max-width: 767px)" type="image/jpeg" srcset="/img/hero_v2_mobile.jpg">
+					<source media="(min-width: 768px)" type="image/webp" srcset="/img/hero_v2_1600.webp">
+					<source media="(min-width: 768px)" type="image/jpeg" srcset="/img/hero_v2_1600.jpg">
+					<img class="hero-photo-pic" src="/img/hero_v2_1600.jpg" alt="Beachgoers enjoy themselves">
+				</picture>
 				<div id="hero-background" class="hero-photo-description">Photo Description</div>
 			</div>
 		</section>
