@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block contentBlock %}
-  <div class="container-fluid jumbotron{%- pagesection page, 'v1-state-dashboard' %} mb-0{%- endpagesection %}{%- pagesection page, 'state-dashboard' %} mb-0{%- endpagesection %} inverse-hyperlink jumbo-img">
+  <div class="container-fluid jumbotron{%- pagesection page, 'state-dashboard' %} mb-0{%- endpagesection %} inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -42,9 +42,7 @@
             <p class="small-text">{{text.last_updated}}&nbsp;
               {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
-              {%- elseif page | engSlug === "v1-state-dashboard" -%}
-                {{ (tableauCovidMetrics[0].DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
-              {%- elseif page | engSlug === "state-dashboard" or page | engSlug === "v2-state-dashboard" or page | engSlug === "v3-state-dashboard" -%}
+              {%- elseif page | engSlug === "state-dashboard" -%}
                 {{ (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
               {%- elseif page | engSlug === "equity" -%}
                 {{ (equityTopBoxes[0].publish_date + "T17:00:00Z") | formatDate2(true,tags, 1) }}
