@@ -565,29 +565,3 @@ section.featured-content {
 		margin-top:100px;
 	}
 }
-/*
-.hero-photo {
-	width:100%;
-	background-image: url(/img/hero_v2.jpg);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center 10%;
-	@include tablet {
-		background-size: cover;
-	}
-} 
-*/
-
-img.hero-photo-pic {
-	content:url("/img/hero_v2_mobile.webp");
-	@media (min-width: 767.98px) {
-		content:url("/img/hero_v2_1600.webp");
-	}
-}
-
-.no-webp img.hero-photo-pic {
-	content:url("/img/hero_v2_mobile.jpg");
-	@media (min-width: 767.98px) {
-		content:url("/img/hero_v2.jpg");
-	}
-}
