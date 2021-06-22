@@ -74,7 +74,7 @@ module.exports = function() {
       output[0].cases_per_100K_pacific_islanders = roundNumber(raceNHPI.CASE_RATE,1);
       output[0].case_rate_vs_statewide_percent_pacific_islanders = roundNumber(compare(totalCaseRate,raceNHPI.CASE_RATE),0);
 
-      const raceBlack = demographics.find(x=>x.RACE_ETHNICITY==='African American');
+      const raceBlack = demographics.find(x=>x.RACE_ETHNICITY==='African American'||x.RACE_ETHNICITY==='Black');
       output[0].death_rate_per_100K_black = roundNumber(raceBlack.DEATH_RATE,1);
       output[0].death_rate_vs_statewide_percent_black = roundNumber(compare(totalDeathRate,raceBlack.DEATH_RATE),0);
 
