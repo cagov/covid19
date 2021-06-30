@@ -167,6 +167,33 @@ module.exports = function(eleventyConfig) {
       return null;
     }
   );
+  
+  /*
+  Return TRUE if we need to suppress the daily totals in the summary boxes (displaying hyphens instead of numbers).
+  This is currently extra conservative, we will remove some of these conditions when
+  we understand the likely scenarios better.  We hope we can just use the zero test and the day_delta test.
+   */
+  eleventyConfig.addFilter("suppressDailyTotals", (sumdata) => {
+    // Daily Tests (the highest of the three daily numbers) is zero?  The data wasn't counted
+    if (sumdata.data.tests.NEWLY_REPORTED_TESTS == 0) {
+      return true;
+    }
+    // Saturday or Sunday?
+    let publishWeekDay = new Date(sumdata.meta.PUBLISHED_DATE).getDay();
+    if (publishWeekDay >= 5) {
+      return true;
+    }
+    // State Holiday?
+    if (sumdata.meta.PUBLISHED_DATE == '2021-07-05' || sumdata.meta.PUBLISHED_DATE == '2021-09-06') {
+      return true;
+    }
+    // Difference between publish date and test-data collection date is > 1 day?
+    let day_delta = (new Date(sumdata.meta.PUBLISHED_DATE).getTime() - new Date(sumdata.data.tests.DATE).getTime()) / (1000 * 3600 * 24);
+    if (day_delta > 1) {
+      return true;
+    }
+    return false;
+  });
 
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
 
