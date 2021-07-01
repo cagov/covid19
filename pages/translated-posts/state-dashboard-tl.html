@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Backlog ng data ng kaso May ilang county na nag-uulat ng mga backlog na kaso dahil sa mga pagsisikap sa paglilinis ng data. Nag-iiba ang bilang ng mga backlog na kaso ayon sa county, at inaasahan ito hanggang Hulyo 2, 2021. Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso kada […]"
 author: "State of California"
-publishdate: "2021-06-28T15:54:12Z"
+publishdate: "2021-07-01T16:13:47Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -57,6 +57,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
  %} 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_ -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
 -->    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
