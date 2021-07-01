@@ -1,14 +1,6 @@
 {
   "Table1": [
     {
-      "_id": "varLatestNews",
-      "text": "來自州長辦公室"
-    },
-    {
-      "_id": "varViewMoreNews",
-      "text": "查閱更多新聞"
-    },
-    {
       "_id": "varStatsHeader",
       "text": "在加州追踪COVID-19"
     },
@@ -46,11 +38,11 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "接種疫苗以獲獎金"
+      "text": "接種疫苗"
     },
     {
       "_id": "varHeroP2",
-      "text": "在6月15日前接種疫苗您便有機會贏得$150萬！"
+      "text": "保證加州民眾的健康"
     },
     {
       "_id": "varHeroAlertSocial",
@@ -94,7 +86,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "此數據的詳情在"
+      "text": "由於在進行數據清理，部分縣正在報告積壓的案例數。積壓案例數因縣而異，預計將持續到2021年7月2日。此數據的詳情在"
     },
     {
       "_id": "varStateDashboard",
@@ -103,6 +95,14 @@
     {
       "_id": "varTesting",
       "text": "檢測更新"
+    },
+    {
+      "_id": "varUpdateText",
+      "text": "使用來自[DataDate]的數據更新[UpdatedDate]"
+    },
+    {
+      "_id": "varHeroImageAlt",
+      "text": "三位年輕女性在加州海灘上沐浴著陽光散步。"
     }
   ]
 }

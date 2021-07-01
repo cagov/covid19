@@ -1,14 +1,6 @@
 {
   "Table1": [
     {
-      "_id": "varLatestNews",
-      "text": "Mula sa Tanggapan ng Gobernador"
-    },
-    {
-      "_id": "varViewMoreNews",
-      "text": "Tumingin ng higit pang balita"
-    },
-    {
       "_id": "varStatsHeader",
       "text": "Pagsubaybay sa COVID-19 sa CA"
     },
@@ -46,11 +38,11 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Magpabakuna para manalo"
+      "text": "Magpabakuna"
     },
     {
       "_id": "varHeroP2",
-      "text": "Magpabakuna bago ang Hunyo 15 at magkaroon ng tsansang manalo ng $1.5 milyon!"
+      "text": "Panatilihing malusog ang California"
     },
     {
       "_id": "varHeroAlertSocial",
@@ -94,7 +86,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "Available ang mga detalye tungkol sa data na ito sa"
+      "text": "May ilang county na nag-uulat ng mga backlog na kaso dahil sa mga pagsisikap sa paglilinis ng data. Nag-iiba ang bilang ng mga backlog na kaso ayon sa county, at inaasahan ito hanggang Hulyo 2, 2021. Available ang mga detalye tungkol sa data na ito sa"
     },
     {
       "_id": "varStateDashboard",
@@ -103,6 +95,14 @@
     {
       "_id": "varTesting",
       "text": "update sa pagsusuri"
+    },
+    {
+      "_id": "varUpdateText",
+      "text": "Na-update noong [UpdatedDate] nang may data mula [DataDate]"
+    },
+    {
+      "_id": "varHeroImageAlt",
+      "text": "Tatlong babaeng naglalakad-lakad sa isang beach sa California habang mataas ang sikat ng araw."
     }
   ]
 }

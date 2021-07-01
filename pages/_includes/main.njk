@@ -29,6 +29,14 @@ formatNumber(tags,1)-%}
 {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
 {%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_  -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
+
+
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
 
@@ -56,7 +64,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-text-container">
 					<div class="hero-text mt-5" role="region" aria-labelledby="hero-text">
 						<div class="hero-text-align">				
-							<h1 class="hero-headline m-0 pb-3" id="hero-text">{{translatedLabels.varHeroTitle}}</h1>
+							<h1 class="hero-headline m-0" id="hero-text">{{translatedLabels.varHeroTitle}}</h1>
 							<h2 class="hero-subhead m-0 pt-2 pb-3">{{ translatedLabels.varHeroP2 }}</h2>
 							
 							<a href="{{ "vax-for-the-win/" }}" class="link-arrow-medblue justify-content-start">
@@ -98,8 +106,14 @@ formatNumber(tags,1)-%}
 			</div>
 			<div class="hero-photo" role="complementary" aria-labelledby="hero-background">
 				<div class="hero-photo-fade"></div>
-				<img class="hero-photo-pic" alt="Photo Description">
-				<div id="hero-background" class="hero-photo-description">Photo Description</div>
+				<picture>
+					<source media="(max-width: 767px)" type="image/webp" srcset="/img/hero_v2_mobile.webp">
+					<source media="(max-width: 767px)" type="image/jpeg" srcset="/img/hero_v2_mobile.jpg">
+					<source media="(min-width: 768px)" type="image/webp" srcset="/img/hero_v2_1600.webp">
+					<source media="(min-width: 768px)" type="image/jpeg" srcset="/img/hero_v2_1600.jpg">
+					<img class="hero-photo-pic" src="/img/hero_v2_1600.jpg" alt="{{translatedLabels.varHeroImageAlt}}">
+				</picture>
+				<div id="hero-background" class="hero-photo-description">{{translatedLabels.varHeroImageAlt}}</div>
 			</div>
 		</section>
 	</hero-stats>
@@ -116,7 +130,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(false,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
 					</div>
 
 

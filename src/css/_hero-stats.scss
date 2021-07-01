@@ -27,6 +27,8 @@
 hero-stats {
 	background-color: $darkblue;
 /*HERO */
+
+
 .hero {
 	position: relative;
 	color: $white;
@@ -118,7 +120,7 @@ hero-stats {
 		font-weight: 700;
 	}
 	&-photo {
-		background: #0641a2;
+		background: white;
 		@include absolute(left 0 top 0);
 		@include size(100%);
 		z-index: -1;
@@ -397,22 +399,28 @@ a.hero-stats-footer-link:visited {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: center;
-			align-content: center;
+			// justify-content: center;
+			// align-content: center;
 			position: relative;
 			top: 8rem;
 		}
+	
 		@include desktop {
 			width: 95%;
 		}
 		&-align {
 			padding: 2rem;
 			padding-bottom:0;
-			text-align: center;
+			.hero-alert-action {
+				@include phone {
+					width:100%;
+					text-align: center;
+			    }
+			}
 			@include tablet {
 				text-align: left;
 				display: flex;
-				align-items: center;
+				// align-items: center;
 				width: 60%;
 				padding: 1.5rem;
 				padding-bottom:0;
@@ -439,6 +447,9 @@ a.hero-stats-footer-link:visited {
 				flex: 1 0 auto;
 				top: .5rem;
 				align-self: flex-start;
+			}
+			@include phone {
+			 	display:none;
 			}
 		}
 		&-headline {
@@ -552,24 +563,5 @@ a.hero-stats-footer-link:visited {
 section.featured-content {
 	@media (min-width: 767.98px) {
 		margin-top:100px;
-	}
-}
-/*
-.hero-photo {
-	width:100%;
-	background-image: url(/img/hero_v2.jpg);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center 10%;
-	@include tablet {
-		background-size: cover;
-	}
-} 
-*/
-
-img.hero-photo-pic {
-	content:url("/img/hero_v2_mobile.jpg");
-	@media (min-width: 767.98px) {
-		content:url("/img/hero_v2.jpg");
 	}
 }

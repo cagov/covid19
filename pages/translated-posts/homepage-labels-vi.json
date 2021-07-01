@@ -1,14 +1,6 @@
 {
   "Table1": [
     {
-      "_id": "varLatestNews",
-      "text": "Từ Văn Phòng Thống Đốc"
-    },
-    {
-      "_id": "varViewMoreNews",
-      "text": "Xem thêm tin tức"
-    },
-    {
       "_id": "varStatsHeader",
       "text": "Truy vết COVID-19 tại CA"
     },
@@ -46,11 +38,11 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Tiêm vắc-xin để giành giải thưởng"
+      "text": "Tiêm vắc-xin"
     },
     {
       "_id": "varHeroP2",
-      "text": "Tiêm vắc-xin chậm nhất vào ngày 15 tháng 6 và quý vị có thể giành được $1.5 triệu!"
+      "text": "Duy trì sức khỏe cho người dân California"
     },
     {
       "_id": "varHeroAlertSocial",
@@ -94,7 +86,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "Thông tin chi tiết về dữ liệu này hiện có tại"
+      "text": "Một số quận sẽ báo cáo các ca tồn đọng với nỗ lực làm sạch dữ liệu. Số ca tồn đọng thay đổi theo quận và dự kiến kéo dài cho đến ngày 2 tháng 7 năm 2021. Thông tin chi tiết về dữ liệu này hiện có tại"
     },
     {
       "_id": "varStateDashboard",
@@ -102,7 +94,15 @@
     },
     {
       "_id": "varTesting",
-      "text": "cập nhật xét nghiệm"
+      "text": "thông tin cập nhật về xét nghiệm"
+    },
+    {
+      "_id": "varUpdateText",
+      "text": "Được cập nhật [UpdatedDate] dữ liệu từ [DataDate]"
+    },
+    {
+      "_id": "varHeroImageAlt",
+      "text": "Ba người phụ nữ trẻ vui vẻ đi dạo dưới bầu trời đầy nắng trên bãi biển California."
     }
   ]
 }

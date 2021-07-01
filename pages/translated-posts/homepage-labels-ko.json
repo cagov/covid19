@@ -1,14 +1,6 @@
 {
   "Table1": [
     {
-      "_id": "varLatestNews",
-      "text": "주 지사실 전언"
-    },
-    {
-      "_id": "varViewMoreNews",
-      "text": "추가 뉴스 확인"
-    },
-    {
       "_id": "varStatsHeader",
       "text": "캘리포니아 내 COVID-19 추적 관리"
     },
@@ -46,11 +38,11 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "백신을 접종받고 당첨 기회에 응모하세요"
+      "text": "백신 접종 받기"
     },
     {
       "_id": "varHeroP2",
-      "text": "6월 15일까지 백신을 접종받으면 $1백5십만에 당첨될 수 있습니다!"
+      "text": "캘리포니아를 건강하게 지키기"
     },
     {
       "_id": "varHeroAlertSocial",
@@ -94,7 +86,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "본 데이터애 관한 세부 내용은"
+      "text": "일부 카운티는 데이터 정리 작업으로 인해 처리가 지연된 사례를 보고하고 있습니다. 처리가 지연된 사례 건수는 카운티 별로 차이가 나며 이는 2021년 7월 2일까지 계속될 것으로 예상하고 있습니다. 본 데이터에 관한 세부 내용은"
     },
     {
       "_id": "varStateDashboard",
@@ -103,6 +95,14 @@
     {
       "_id": "varTesting",
       "text": "검사 관련 최신 내용"
+    },
+    {
+      "_id": "varUpdateText",
+      "text": "[DataDate] 일자 데이터로 [UpdatedDate] 업데이트"
+    },
+    {
+      "_id": "varHeroImageAlt",
+      "text": "맑은 날 캘리포니아 해변에서 즐겁게 걷는 3 명의 젊은 여성."
     }
   ]
 }
