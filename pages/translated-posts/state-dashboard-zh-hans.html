@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 案例数据积压 由于在进行数据清理，部分县正在报告积压的案例数。积压案例数因县而异，预计将持续到2021年7月2日。更新于 {{_varStatDate_}}截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19确诊病例，造成{{_varStatTotalDeaths_}}人死亡。案例总数{{_varStatTotalCases_}} 今日{{_varStatTotalCasesToday_}} 每{{_varStatNewCasesPer100k_}}[…]"
 author: "State of California"
-publishdate: "2021-06-28T15:54:12Z"
+publishdate: "2021-07-01T16:13:47Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -57,6 +57,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
  %} 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_ -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
 -->    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
