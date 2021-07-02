@@ -175,6 +175,7 @@ module.exports = function(eleventyConfig) {
    */
   eleventyConfig.addFilter("suppressDailyTotals", (sumdata) => {
     // Daily Tests (the highest of the three daily numbers) is zero?  The data wasn't counted
+    return false;
     if (sumdata.data.tests.NEWLY_REPORTED_TESTS == 0) {
       return true;
     }
