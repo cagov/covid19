@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Retraso en los datos de casos Algunos condados están reportando casos atrasados debido a los esfuerzos de limpieza de datos. El número de casos retrasados varía según el condado y esto se espera que suceda hasta el 2 de julio de 2021. Actualizado para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por […] en total "
 author: "State of California"
-publishdate: "2021-06-28T15:54:12Z"
+publishdate: "2021-07-01T16:13:47Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -57,6 +57,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
  %} 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_ -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
 -->    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">

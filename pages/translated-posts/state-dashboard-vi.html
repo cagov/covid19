@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình đại dịch COVID-19 tại California"
 meta: "Tồn đọng dữ liệu về số ca Một số quận sẽ báo cáo các ca tồn đọng với nỗ lực làm sạch dữ liệu. Số ca tồn đọng thay đổi theo quận và dự kiến kéo dài cho đến ngày 2 tháng 7 năm 2021. Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Số ca {{_varStatTotalCases_}} tổng số ca {{_varStatTotalCasesToday_}} ngày hôm nay {{_varStatNewCasesPer100k_}} số ca mắc mới trên […]"
 author: "State of California"
-publishdate: "2021-06-28T15:54:12Z"
+publishdate: "2021-07-01T16:13:47Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -57,6 +57,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
  %} 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_ -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
 -->    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
