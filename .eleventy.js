@@ -175,22 +175,26 @@ module.exports = function(eleventyConfig) {
    */
   eleventyConfig.addFilter("suppressDailyTotals", (sumdata) => {
     // Daily Tests (the highest of the three daily numbers) is zero?  The data wasn't counted
-    return false;
+    // return false;
     if (sumdata.data.tests.NEWLY_REPORTED_TESTS == 0) {
+      console.log("New tests are zero");
       return true;
     }
     // Saturday or Sunday?
-    let publishWeekDay = new Date(sumdata.meta.PUBLISHED_DATE).getDay();
-    if (publishWeekDay >= 5) {
+    let publishWeekDay = new Date(sumdata.meta.PUBLISHED_DATE).getUTCDay();
+    if (publishWeekDay == 0 || publishWeekDay == 6) {
+      console.log("weekend");
       return true;
     }
     // State Holiday?
     if (sumdata.meta.PUBLISHED_DATE == '2021-07-05' || sumdata.meta.PUBLISHED_DATE == '2021-09-06') {
+      console.log("holiday");
       return true;
     }
     // Difference between publish date and test-data collection date is > 1 day?
     let day_delta = (new Date(sumdata.meta.PUBLISHED_DATE).getTime() - new Date(sumdata.data.tests.DATE).getTime()) / (1000 * 3600 * 24);
     if (day_delta > 1) {
+      console.log("day delta > 1");
       return true;
     }
     return false;
