@@ -194,10 +194,10 @@ module.exports = function(eleventyConfig) {
     // Difference between publish date and test-data collection date is > 1 day?
     let day_delta = (new Date(sumdata.meta.PUBLISHED_DATE).getTime() - new Date(sumdata.data.tests.DATE).getTime()) / (1000 * 3600 * 24);
     if (day_delta > 1) {
-      console.log("day delta > 1");
+      // console.log("day delta > 1");
       return true;
     }
-    console.log("All state-dashboard tests pass");
+    // console.log("All state-dashboard tests pass");
     return false;
   });
 
