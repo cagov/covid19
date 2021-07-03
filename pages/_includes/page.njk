@@ -43,7 +43,7 @@
               {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
-                {{ (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,1) }}
+                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
                 {{ (equityTopBoxes[0].publish_date + "T17:00:00Z") | formatDate2(true,tags, 1) }}
               {%- else -%}

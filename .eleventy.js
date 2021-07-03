@@ -197,6 +197,7 @@ module.exports = function(eleventyConfig) {
       console.log("day delta > 1");
       return true;
     }
+    console.log("All state-dashboard tests pass");
     return false;
   });
 
