@@ -1,16 +1,16 @@
 ---
 layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
-meta: "Retraso en los datos de casos Algunos condados están reportando casos atrasados debido a los esfuerzos de limpieza de datos. El número de casos retrasados varía según el condado y esto se espera que suceda hasta el 2 de julio de 2021. Actualizado para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por […] en total "
+meta: "Nota de reporte de datos Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se reportan el primer día que sigue al fin de semana o día festivo. Los datos sobre las vacunas administradas se reportan diariamente. Actualizado para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos […]"
 author: "State of California"
-publishdate: "2021-07-01T16:13:47Z"
+publishdate: "2021-07-03T21:33:35Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <div class="highlight">
-<h2 class="h3 color-primary mt-0">Retraso en los datos de casos</h2>
-<p>Algunos condados están reportando casos atrasados debido a los esfuerzos de limpieza de datos. El número de casos retrasados varía según el condado y esto se espera que suceda hasta el 2 de julio de 2021.</p>
+<h2 class="h3 color-primary mt-0">Nota de reporte de datos</h2>
+<p>Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se reportan el primer día que sigue al fin de semana o día festivo. Los datos sobre las vacunas administradas se reportan diariamente.</p>
 </div><p></p>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -34,7 +34,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
+{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
 {%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |

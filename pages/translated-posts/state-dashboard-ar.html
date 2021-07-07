@@ -1,16 +1,16 @@
 ---
 layout: "page.njk"
 title: "تعقب مصابي كوفيد-19 في كاليفورنيا"
-meta: "تراكم بيانات الحالات تُبلغ بعض المقاطعات عن حالات متراكمة بسبب جهود تنقية البيانات. ويختلف عدد الحالات المتراكمة حسب المقاطعة، ويُتوقع ذلك حتى 2 يوليه 2021. تحديث لـ {{_varStatDate_}} اعتبارًا من {{_varStatDateNoYear_}}، لقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات. مجموع {{_varStatTotalCases_}} الحالات {{_varStatTotalCasesToday_}}اليوم ⁦{{_varStatNewCasesPer100k_}}⁩ حالات جديدة لكل […]"
+meta: "مذكرة الإبلاغ عن البيانات لا يتم الإبلاغ عن البيانات المتعلقة بعدد الحالات والوفيات والفحوصات في عطلات نهاية الأسبوع أو العطلات الرسمية. يتم الإبلاغ عن هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو العطلة. يتم الإبلاغ عن بيانات اللقاحات المعطاة يوميًا. تحديث لـ {{_varStatDate_}} اعتبارًا من {{_varStatDateNoYear_}}، لقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتج عنها {{_varStatTotalDeaths_}} وفيات. الحالات […]"
 author: "State of California"
-publishdate: "2021-07-01T16:13:47Z"
+publishdate: "2021-07-03T21:33:35Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
 <div class="highlight">
-<h2 class="h3 color-primary mt-0">تراكم بيانات الحالة</h2>
-<p>وتُبلغ بعض المقاطعات عن حالات متراكمة بسبب جهود تنقية البيانات. ويختلف عدد الحالات المتراكمة حسب المقاطعة، ويُتوقع ذلك حتى 2 يوليه 2021.</p>
+<h2 class="h3 color-primary mt-0">مذكرة الإبلاغ عن البيانات</h2>
+<p>لا يتم الإبلاغ عن البيانات المتعلقة بعدد الحالات والوفيات والفحوصات في عطلات نهاية الأسبوع أو العطلات الرسمية. يتم الإبلاغ عن هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو العطلة. يتم الإبلاغ عن بيانات اللقاحات المعطاة يوميًا.</p>
 </div><p></p>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -34,7 +34,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = data2.cases.DATE | formatDate2(false, tags)-%}
+{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
 {%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
