@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
-title: "在加州追踪COVID-19"
-meta: " 疫苗接種數據 由於數據處理需要一定等待時間，所以今日的疫苗接種數據尚不完整。待獲取相關數據後會立即更新此報告。更新於 {{_varStatDate_}}截至{{_varStatDateNoYear_}}，加州{{_varStatTotalCases_}}共有例COVID-19確診病例，造成人死亡{{_varStatTotalDeaths_}}。今日{{_varStatTotalCases_}}案例{{_varStatTotalCasesToday_}}總數{{_varStatNewCasesPer100k_}} 每10萬人中的新增案例 {{_varStatTotalDeaths_}}今日死亡[…]"
+title: "加州COVID-19追蹤"
+meta: "{{_varStatDate_}}的更新 截至{{_varStatDateNoYear_}}，加州共有{{_varStatTotalCases_}}例COVID-19確診病例，造成{{_varStatTotalDeaths_}}人死亡。病例數 {{_varStatTotalCases_}} 總共 {{_varStatTotalCasesToday_}} 今日 {{_varStatNewCasesPer100k_}} 每100K人中的新增病例數 死亡數 {{_varStatTotalDeaths_}} 總共 {{_varStatTotalDeathsToday_}} 今日 {{_varStatNewDeathsPer100k_}} 每100K人中的新增死亡數 檢測數 {{_varStatTested_}} 總共 {{_varStatTestedDaily_}} 今日 {{_varStatLatestPositivityPct_}}%檢測呈陽性率 施打的疫苗數 {{_varStatVaccines_}} 總共 {# {{_varStatVaccinesDaily_}} 今日 {{_varStatVaccinesDailyPct_}}%增長率 #} […]"
 author: "State of California"
-publishdate: "2021-07-13T20:55:44Z"
+publishdate: "2021-07-14T21:56:12Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">疫苗接種數據</h2>
-<p>由於數據處理需要一定等待時間，所以今日的疫苗接種數據尚不完整。待獲取相關數據後會立即更新此報告。</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
