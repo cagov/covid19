@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
 title: "Theo dõi COVID-19 tại California"
-meta: "Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau ngày cuối tuần hoặc ngày lễ. Dữ liệu về vắc xin đã tiêm được báo cáo hàng ngày. Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc […]"
+meta: "Cập nhật cho {{_varStatDate_}} Kể từ {{_varStatDateNoYear_}}, California có {{_varStatTotalCases_}} ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong. Ca Mắc {{_varStatTotalCases_}} tổng {{_varStatTotalCasesToday_}} hôm nay {{_varStatNewCasesPer100k_}} ca mới trên 100 nghìn người Ca Tử Vong {{_varStatTotalDeaths_}} tổng {{_varStatTotalDeathsToday_}} hôm nay {{_varStatNewDeathsPer100k_}} ca tử vong mới trên 100 nghìn người Xét Nghiệm {{_varStatTested_}} tổng {{_varStatTestedDaily_}} hôm nay {{_varStatLatestPositivityPct_}}% người xét nghiệm dương tính Đã Được Tiêm Vắc-xin {{_varStatVaccines_}} tổng {# {{_varStatVaccinesDaily_}} hôm nay tăng{{_varStatVaccinesDailyPct_}}% #} […]"
 author: "State of California"
-publishdate: "2021-07-03T21:33:35Z"
+publishdate: "2021-07-14T21:56:12Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Lưu ý khi báo cáo dữ liệu</h2>
-<p>Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau ngày cuối tuần hoặc ngày lễ. Dữ liệu về vắc xin đã tiêm được báo cáo hàng ngày.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -136,9 +133,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">Đã cập nhật {{_varStatDate_}}, với dữ liệu từ {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text">Đã cập nhật {{_varStatDate_}}, với dữ liệu từ  {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Lưu ý: Tỷ lệ ca mắc được dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày. Tỷ lệ ca tử vong dựa được trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ. Các ca xét nghiệm có kết quả dương tính được dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Thay đổi theo hướng được so sánh với khoảng thời gian 7 ngày trước đó. Dữ liệu do Sở Y Tế Công Cộng California cung cấp. Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</p>
+        <p class="small-text">Lưu ý: Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau ngày cuối tuần hoặc ngày lễ. Dữ liệu về vắc-xin đã tiêm được báo cáo hàng ngày. Tỷ lệ ca mắc được dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày. Tỷ lệ ca tử vong dựa được trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ. Các ca xét nghiệm có kết quả dương tính được dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Thay đổi theo hướng được so sánh với khoảng thời gian 7 ngày trước đó. Dữ liệu do Sở Y Tế Công Cộng California cung cấp. Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</p>
       </div>
     </div>
 

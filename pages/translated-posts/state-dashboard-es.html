@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
-title: "Rastreo de la COVID-19 en California"
-meta: "Nota de reporte de datos Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se reportan el primer día que sigue al fin de semana o día festivo. Los datos sobre las vacunas administradas se reportan diariamente. Actualizado para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos […]"
+title: "Seguimiento de la COVID-19 en California"
+meta: " Actualización para el {{_varStatDate_}} Al {{_varStatDateNoYear_}}, California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes. Casos {{_varStatTotalCases_}} en total {{_varStatTotalCasesToday_}} hoy {{_varStatNewCasesPer100k_}} casos nuevos por cada 100 mil Muertes {{_varStatTotalDeaths_}} en total {{_varStatTotalDeathsToday_}} hoy {{_varStatNewDeathsPer100k_}} nuevas muertes por cada 100 mil Pruebas {{_varStatTested_}} en total {{_varStatTestedDaily_}} hoy {{_varStatLatestPositivityPct_}} % de positividad de pruebas Vacunas administradas {{_varStatVaccines_}} en total {# {{_varStatVaccinesDaily_}} hoy {{_varStatVaccinesDailyPct_}} % de incremento #} […]"
 author: "State of California"
-publishdate: "2021-07-03T21:33:35Z"
+publishdate: "2021-07-14T21:56:12Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Nota de reporte de datos</h2>
-<p>Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se reportan el primer día que sigue al fin de semana o día festivo. Los datos sobre las vacunas administradas se reportan diariamente.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -138,7 +135,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Actualizado el {{_varStatDate_}}, con datos del {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Nota: La tasa de casos se basa en un promedio de 7 días con un retraso de 7 días. Las tasas de muertes se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte. La positividad de las pruebas se basa en un promedio de 7 días sin retraso. El cambio direccional se compara con el periodo anterior de 7 días. Datos proporcionados por el Departamento de Salud Pública de California. Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</p>
+        <p class="small-text">Nota: Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se reportan el primer día que sigue al fin de semana o día festivo. Los datos sobre las vacunas administradas se reportan diariamente. La tasa de casos se basa en un promedio de 7 días con un retraso de 7 días. Las tasas de muertes se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte. La positividad de las pruebas se basa en un promedio de 7 días sin retraso. El cambio direccional se compara con el periodo anterior de 7 días. Datos proporcionados por el Departamento de Salud Pública de California. Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</p>
       </div>
     </div>
 

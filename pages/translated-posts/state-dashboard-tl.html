@@ -1,17 +1,14 @@
 ---
 layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
-meta: "Tala sa pag-uulat ng data Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data sa ibinigay na bakuna. Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso […]"
+meta: "Update para sa {{_varStatDate_}} Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay. Mga kaso {{_varStatTotalCases_}} kabuuan {{_varStatTotalCasesToday_}} ngayong araw {{_varStatNewCasesPer100k_}} bagong kaso sa bawat 100K Mga Pagkamatay {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} kabuuan {{_varStatNewDeathsPer100k_}} mga bagong pagkamatay sa bawat 100K Mga Pagsusuri {{_varStatTested_}} kabuuan {{_varStatTestedDaily_}} ngayong araw {{_varStatLatestPositivityPct_}}% pagpopositibo sa pagsusuri Mga Naibigay na Bakuna {{_varStatVaccines_}} kabuuan {# {{_varStatVaccinesDaily_}} ngayong araw {{_varStatVaccinesDailyPct_}}% pagtaas #} […]"
 author: "State of California"
-publishdate: "2021-07-03T21:33:35Z"
+publishdate: "2021-07-14T21:56:12Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Tala sa pag-uulat ng data</h2>
-<p>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data sa ibinigay na bakuna.</p>
-</div><p></p>    <!--
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -136,9 +133,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">Na-update noong {{_varStatDate_}}, na may datos mula sa {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text">Na-update noong {{_varStatDate_}}, na may data mula sa {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Tala: Ang rate ng kaso ay batay sa 7 araw na average na may 7 araw na lag. Ang mga rate ng pagkamatay ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkaantala sa pag-uulat. Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang pagbabago sa direksyon ay inihahambing sa naunang 7 araw na panahon. Ang datos ay ibinibigay ng California Department of Public Health. Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyong ginamit sa mga kada 100K na rate.</p>
+        <p class="small-text">Tala: Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data sa ibinigay na bakuna. Ang rate ng kaso ay batay sa 7 araw na average na may 7 araw na lag. Ang mga rate ng pagkamatay ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkaantala sa pag-uulat. Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang pagbabago sa direksyon ay inihahambing sa naunang 7 araw na panahon. Ang datos ay ibinibigay ng California Department of Public Health. Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyong ginamit sa mga kada 100K na rate.</p>
       </div>
     </div>
 
