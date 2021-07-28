@@ -196,11 +196,13 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       "county-selected",
       function (e) {
         this.county = e.detail.county;
+        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
         let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
           "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
+          countyEncoded
         );
         this.retrieveData(searchURL, e.detail.county);
+        document.location.replace( '#location-' + countyEncoded);
       }.bind(this),
       false
     );

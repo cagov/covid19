@@ -143,6 +143,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
     groups
         .append("rect")
         .attr("fill", "#1f2574")
+        .attr("fill-opacity",(d,i) => baselineData[i].METRIC_VALUE == -1? 0 : 1)
         .attr("y", (d, i) => y(d.CATEGORY)-y.bandwidth()/2)
         .attr("x", (d,i) => x(baselineData[i].METRIC_VALUE)-2)
         .attr("width", d => 4)

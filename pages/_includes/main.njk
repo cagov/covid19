@@ -1,7 +1,7 @@
 {%-set dataYesterday = tableauCovidMetrics[1] -%}
 {%-set data2 = dailyStatsV2.data -%}
 
-{%-set _varStatDate_ = data2.cases.DATE | formatDate2(false, tags, 1)-%}
+{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
@@ -29,6 +29,14 @@ formatNumber(tags,1)-%}
 {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
 {%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_  -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
+
+
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
 
@@ -53,161 +61,22 @@ formatNumber(tags,1)-%}
 	<hero-stats>
 		<section class="hero trigger hero-padding-top">
 			<div class="hero-wrap">
-				<div class="hero-text" role="region" aria-labelledby="hero-text">
-					<div class="hero-text-align">				
-						<h1 class="hero-headline m-0 pb-3" id="hero-text">{{translatedLabels.varHeroTitle}}</h1>
-						<h2 class="hero-subhead m-0 pt-2 pb-3">{{ translatedLabels.varHeroP2 }}</h2>
-						
-						<a href="{{ "https://myturn.ca.gov/" }}" class="link-arrow-orange justify-content-start">
-							<div class="link-arrow-label">{{ translatedLabels.varHeroP1 }}</div>
-							<cagov-arrow></cagov-arrow>
-						</a>
-						
-						
+				<div class="hero-text-container">
+					<div class="hero-text mt-5" role="region" aria-labelledby="hero-text">
+						<div class="hero-text-align">				
+							<h1 class="hero-headline m-0" id="hero-text">{{translatedLabels.varHeroTitle}}</h1>
+							<h2 class="hero-subhead m-0 pt-2 pb-3">{{ translatedLabels.varHeroP2 }}</h2>
+							
+							<a href="{{ "/vaccines/" }}" class="link-arrow-medblue justify-content-start">
+								<div class="link-arrow-label">{{ translatedLabels.varHeroP1 }}</div>
+								<cagov-arrow></cagov-arrow>
+							</a>
+							
+							
+						</div>
 					</div>
 				</div>
-				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
-					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
-					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.data.cases.DATE + "T17:00:00Z") | formatDate2(true,tags,+1)) | replace("[DataDate]",dailyStatsV2.data.cases.DATE | formatDate2(false,tags)) -}}
-					</div>
 
-
-
-
-					<div class="row d-flex justify-content-md-center">
-						<div class="col-md-6 px-10px">
-							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTotalCases }}</div>
-							
-								<div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">{{translatedLabels.varTotal}}</span></div>
-								<div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
-								<div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
-								<span class="chart-arrow" arria-hidden="true">
-								    <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-									</svg>
-
-									<!--negative arrow-->
-									<svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-									</svg>
-								</span> 
-								{{_varStatNewCasesPer100k_}} <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 px-10px">
-							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTotalDeaths }}</div>
-							
-								<div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">{{translatedLabels.varTotal}}</span></div>
-								<div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
-								<div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
-								<span class="chart-arrow" arria-hidden="true">
-								    <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-									</svg>
-
-									<!--negative arrow-->
-									<svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-									</svg>
-								</span> 
-								{{_varStatNewDeathsPer100k_}} <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 px-10px">
-							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTestsReported }}</div>
-							
-								<div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">{{translatedLabels.varTotal}}</span></div>
-								<div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
-								<div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
-								<span class="chart-arrow" arria-hidden="true">
-								    <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
-										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
-										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
-										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
-									</svg>
-
-									<!--negative arrow-->
-									<svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
-									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
-										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
-										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
-										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
-									</svg>
-								</span> 
-								{{_varStatLatestPositivityPct_}}% <span class="text-300">{{ translatedLabels.varTestPositivity }}</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 px-10px">
-							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
-							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varVaccinesAdministered }}</div>
-								<div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span></div>
-							</div>
-						</div>
-					</div>
-					<div class="text-sm text-center text-300 ptop-12px">
-						{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="/state-dashboard/">{{translatedLabels.varStateDashboard}}</a>.
-					</div>
-						
-					<div class="hero-stats-footer">
-						
-
-
-
-<a class="hero-stats-footer-link mt-2" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">
-						<span class="no-underline " aria-hidden="true">
-
-						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
-<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
-	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
-	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
-</svg>
-</span> 
-						<span class="underline"> {{translatedLabels.varStateSummary}}</span></a>
-
-
-						<a class="hero-stats-footer-link mt-2" href="/vaccination-progress-data">
-						<span class="no-underline " aria-hidden="true">
-
-						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
-<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
-	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
-	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
-</svg>
-</span> 
-						<span class="underline"> <span class="underline">{{translatedLabels.varVaccination}}</span></a>
-
-						<a class="hero-stats-footer-link mt-2" href="{{ "equity/"  | toTranslatedPath(tags) }}"><span class="no-underline" aria-hidden="true">
-						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
-<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
-	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
-	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
-						</span> <span class="underline">{{translatedLabels.varHealthEquity}}</span></a>
-						
-					</div>
-				</div>
 				<div class="hero-alert" role="alert" aria-label="Alerts section">
 					<div class="hero-alert-align">
 						<svg class="hero-alert-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 355.86 393.02">
@@ -237,92 +106,177 @@ formatNumber(tags,1)-%}
 			</div>
 			<div class="hero-photo" role="complementary" aria-labelledby="hero-background">
 				<div class="hero-photo-fade"></div>
-				<img class="hero-photo-pic" src="/img/hero.jpg" alt="Photo Description">
-				<div id="hero-background" class="hero-photo-description">Photo Description</div>
+				<picture>
+					<source media="(max-width: 767px)" type="image/webp" srcset="/img/hero_v2_mobile.webp">
+					<source media="(max-width: 767px)" type="image/jpeg" srcset="/img/hero_v2_mobile.jpg">
+					<source media="(min-width: 768px)" type="image/webp" srcset="/img/hero_v2_1600.webp">
+					<source media="(min-width: 768px)" type="image/jpeg" srcset="/img/hero_v2_1600.jpg">
+					<img class="hero-photo-pic" src="/img/hero_v2_1600.jpg" alt="{{translatedLabels.varHeroImageAlt}}">
+				</picture>
+				<div id="hero-background" class="hero-photo-description">{{translatedLabels.varHeroImageAlt}}</div>
 			</div>
 		</section>
 	</hero-stats>
 
   {% include (language.includepath + "homepage-featured" + language.filepostfix + ".html") %}
 
-	<!--RECENT UPDATES-->
-<news-section>
-  <section class="news trigger bg-lightblue" role="region" aria-label="Recent updates">
-    <div class="news-wrap">
-    
-      <h2 class="color-purple mt-0 mb-0">{{translatedLabels.varRecentUpdatesTitle}}</h2>
-      <div class="news-grid">
-        {% set JSONgovraw %}
-        {% include (language.includepath + "updates-section-homepage" + language.filepostfix + ".json") %}
-        {% endset %}
-        {% set JSONgov = JSONgovraw | jsonparse %}
-        {%- set RowsGov = JSONgov.Table1 -%}
-        {% for item in RowsGov %}
-          <article class="news-item trigger">
-              <h3 class="h4 mb-0 pb-2 color-black">{{item["News title"]}}</h3>
-              <p class="text-300">{{item['News content']}}</p>
-              <p class="mt-2 mb-0"><a class="recent-news-link" href="{{item['link URL'] | replace('https://covid19.ca.gov/','')}}">{{item['Link text']}}</a></p>
-          </article>
-        {% endfor %}
-      </div>
-    </div>
-    </section>
-</news-section>
 
-	<!-- PEOPLE WANTS TO KNOW SECTION -->
-	<faq-section>
-		<section class="faq-twitter" role="region" aria-labelledby="want-to-know">
-			
-			<h2 class="text-center color-orange mt-0" id="want-to-know">{{translatedLabels.varPeopleWantToKnowTitle}}</h2>
-			<div class="faq-twitter-wrap">
-				{%- for column, items in pubData[language.id].peopleWantToKnow %}
-					<div class="faq trigger">
-						<ul class="arrow-links mb-0">
-						{%- for item in items %}
-						<li>    
-							<a class="link-arrow-white js-event-hm-wtk" href="{{ item._url }}">
-								<div class="link-arrow-label">{{ item.text | safe }}</div>
-								<cagov-arrow></cagov-arrow>
-							</a>
-						</li>
-						{%- endfor %}
-						</ul>
+  <!-- MOVED THE STATS -->
+<hero-stats>
+	<div class="bg-darkblue full-bleed mb-0">
+  <div class="container py-2">
+    <div class="row pb-4">
+
+				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
+					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
+					<div class="text-sm text-center text-300">
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(false,tags,0)) | replace("[DataDate]",dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false,tags,-1)) -}}
 					</div>
-				{%- endfor %}
-			</div>
-		</section>
-	</faq-section>
 
 
 
 
-<!-- FOR BUSINESSES SECTION -->
-<learn-more-section>
-<section class="faq-twitter">
-	<h2 class="text-center color-purple mt-0">{{translatedLabels.varForBusinesses}}</h2>
-	<div class="faq-twitter-wrap">
-	{% set JSONgovraw %}{% include "../wordpress-posts/common-page-labels.json" %}{% endset %}
-		{% set JSONgov = JSONgovraw | jsonparse %}
-		{%- for item in  pubData[language.id].commonPageLabels.Table4 %}
-		<div class="faq trigger">
-			<div class="arrow-links">
-			<article>    
-				<a class="link-arrow-blue js-event-hm-wtk" href="{{item["URL"] | replace('https://covid19.ca.gov/','')}}">
-				<div class="link-arrow-label">
-					{{item["Link Title"]}}
+					<div class="row d-flex justify-content-md-center">
+						<div class="col-md-3 px-10px">
+							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTotalCases }}</div>
+							
+								<div id="total-cases-number" class="text-white font-size-1-2em my-2">{{_varStatTotalCases_}} <span class="text-300">{{translatedLabels.varTotal}}</span></div>
+								<div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
+								<div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
+								<span class="chart-arrow" arria-hidden="true">
+								    <svg class="{{ _varCasesTrendClassU_ }}" version="1.1" id="arrow-up1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+									</svg>
+
+									<!--negative arrow-->
+									<svg class="{{ _varCasesTrendClassD_ }}" version="1.1" id="arrow-down1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+									</svg>
+								</span> 
+								{{_varStatNewCasesPer100k_}} <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 px-10px">
+							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTotalDeaths }}</div>
+							
+								<div id="total-deaths-number" class="text-white font-size-1-2em my-2">{{_varStatTotalDeaths_}} <span class="text-300">{{translatedLabels.varTotal}}</span></div>
+								<div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
+								<div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
+								<span class="chart-arrow" arria-hidden="true">
+								    <svg class="{{ _varDeathsTrendClassU_ }}" version="1.1" id="arrow-up2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+									</svg>
+
+									<!--negative arrow-->
+									<svg class="{{ _varDeathsTrendClassD_ }}" version="1.1" id="arrow-down2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+									</svg>
+								</span> 
+								{{_varStatNewDeathsPer100k_}} <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 px-10px">
+							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varTestsReported }}</div>
+							
+								<div id="total-tested-number" class="text-white font-size-1-2em my-2">{{_varStatTested_}}  <span class="text-300">{{translatedLabels.varTotal}}</span></div>
+								<div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">{{translatedLabels.varToday}}</span></div>
+								<div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+								<span class="chart-arrow" arria-hidden="true">
+								    <svg class="{{ _varPositivityTrendClassU_ }}" version="1.1" id="arrow-up3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+										l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+										l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+										s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"/>
+									</svg>
+
+									<!--negative arrow-->
+									<svg class="{{ _varPositivityTrendClassD_ }}" version="1.1" id="arrow-down3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+									<path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+										l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+										l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+										s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"/>
+									</svg>
+								</span> 
+								{{_varStatLatestPositivityPct_}}% <span class="text-300">{{ translatedLabels.varTestPositivity }}</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 px-10px">
+							<div class="bg-blue bd-rounded-10 py-2 px-3 text-center mt-3 summary-box">
+							<div class="h5 text-uppercase color-white line-height-1-2 mt-1">{{ translatedLabels.varVaccinesAdministered }}</div>
+								<div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="text-sm text-center text-300 ptop-12px">
+						{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="/state-dashboard/">{{translatedLabels.varStateDashboard}}</a>.
+					</div>
+						
+					<div class="hero-stats-footer">
+						
+
+
+
+					    <a class="hero-stats-footer-link mt-2" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">
+						<span class="no-underline " aria-hidden="true">
+
+						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
+</svg>
+</span> 
+						<span > {{translatedLabels.varStateSummary}}</span></a>
+
+
+						<a class="hero-stats-footer-link mt-2" href="/vaccination-progress-data">
+						<span class="no-underline " aria-hidden="true">
+
+						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
+</svg>
+</span> 
+						<span>{{translatedLabels.varVaccination}}</span></a>
+
+						<a class="hero-stats-footer-link mt-2" href="{{ "equity/"  | toTranslatedPath(tags) }}">
+						<span class="no-underline" aria-hidden="true">
+						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+	c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
+						</span> <span>{{translatedLabels.varHealthEquity}}</span></a>
+						
+					</div>
 				</div>
-				<cagov-arrow></cagov-arrow>
-				</a>
-			</article>
-			</div>
 		</div>
-		 {% endfor %}
 	</div>
-</section>
-</learn-more-section>
+</div>
+</hero-stats>
+ <!-- END OF STATS -->
 
-
-<!-- begin video section -->
+<!-- begin video section  -->
 	<video-section>
 
 	<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
@@ -368,8 +322,6 @@ formatNumber(tags,1)-%}
 <!-- end video section -->
 
 
-<!--FROM GOV OFFICE UPDATES -->
-  {% include "./news-feed-home.html" %}
 	<!-- end contentBlock -->
 {% endblock %}
 

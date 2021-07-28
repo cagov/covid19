@@ -25,6 +25,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       selectedMetricDescription: "cases",
       // Breakpoints
       desktop: {
+        is_single_col: false,
         height: 642,
         width: 450,
         margin: {
@@ -35,6 +36,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       tablet: {
+        is_single_col: true,
         height: 642,
         width: 450,
         margin: {
@@ -45,6 +47,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       mobile: {
+        is_single_col: true,
         height: 642,
         width: 450,
         margin: {
@@ -55,8 +58,9 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         },
       },
       retina: {
-        height: 700,
-        width: 320,
+        is_single_col: true,
+        height: 642,
+        width: 450,
         margin: {
           top: 20,
           right: 30,
@@ -354,10 +358,12 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // console.log("max xd",max_xdomain, statewideRatePer100k);
       max_xdomain = Math.max(max_xdomain, statewideRatePer100k)
     }
+
+    let barGap = this.dimensions.is_single_col? 60 : 40;
     this.x = d3
       .scaleLinear()
       .domain([0, max_xdomain])
-      .range([0, this.dimensions.width - this.dimensions.margin.right - 50]);
+      .range([0, this.dimensions.width - this.dimensions.margin.right - barGap]);
 
     // ?
     this.xAxis = (g) =>

@@ -170,23 +170,29 @@ export default function setupAnalytics() {
   };
 
   // Report a single error to GA.
-  const trackError = (error, fieldsObj = {}) => {
-    window.ga('tracker3.send', 'event', Object.assign({
-      eventCategory: 'javascript',
-      eventAction: 'error',
-      eventLabel: (error && error.stack) || '(not set)',
-      nonInteraction: true
-    }, fieldsObj));
+  const trackError = (error, errorMsg = {}) => {
+    // console.log("Tracking error");
+    const fieldsObj = { eventAction: 'uncaught error: ' + errorMsg };
+    window.ga('send', 'event', 'javascript', 'error', (error && error.stack) || '(not set)', fieldsObj);
+    // this syntax does not work
+    // window.ga('send', 'event', Object.assign({
+    //   eventCategory: 'javascript',
+    //   eventAction: 'error',
+    //   eventLabel: (error && error.stack) || '(not set)',
+    //   nonInteraction: true
+    // }, fieldsObj));
   };
 
   // Tracks and reports errors to GA.
   const trackErrors = () => {
     // Fetch and report errors that we catch before GA is ready.
-    const loadErrorEvents = (window.__e && window.__e.q) || [];
-    const fieldsObj = { eventAction: 'uncaught error' };
-    loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
+    // console.log("Tracking Errors Setup")
+    // // this is not currently being set up at loadtime
+    // const loadErrorEvents = (window.__e && window.__e.q) || [];
+    // const fieldsObj = { eventAction: 'uncaught error' };
+    // loadErrorEvents.forEach((event) => trackError(event.error, fieldsObj));
     // Add a new listener to track events in real-time, after we get through the backlog.
-    window.addEventListener('error', (event) => trackError(event.error, fieldsObj));
+    window.addEventListener('error', (event) => trackError(event.error, event.message + " filename:" + event.filename + " lineno:" + event.lineno));
   };
 
   // Check to see if we're on any of the available homepages.
@@ -215,6 +221,13 @@ export default function setupAnalytics() {
     if (window.location.hostname !== 'localhost') {
       trackErrors();
     }
+
+    // universal event click trackers based on data attributes like: data-tracking-action="cta" data-tracking-label="$50 cards"
+    document.querySelectorAll('a[data-tracking-action="cta"]').forEach( el => {
+      el.addEventListener('click',function(e) {
+        reportGA('cta', this.dataset.trackingLabel, 'click');
+      })
+    })
 
     // Add these events if we're on the homepage.
     if (onHomePage(window.location.pathname)) {
@@ -250,6 +263,10 @@ export default function setupAnalytics() {
       // Report clicks on Alerts section.
       document.querySelectorAll('.hero-alert a').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-alerts section', annotateExternalLinks(link)));
+      });
+      // Report clicks on featured-links
+      document.querySelectorAll('.featured-content a').forEach(link => {
+        link.addEventListener('click', linkHandler(link.href, 'homepage-middle links', link.href));
       });
     }
 

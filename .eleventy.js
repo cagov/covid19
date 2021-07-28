@@ -5,20 +5,6 @@ const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','u
 let filesSiteData = [];
 langData.languages.forEach(writeMenuJson);
 
-let schoolsArray = [];
-let schoolsList = JSON.parse(fs.readFileSync('./pages/wordpress-posts/schools-may-reopen-in-these-counties.json','utf8'));
-schoolsList.Table1.forEach(item => schoolsArray.push(item['undefined']))
-fs.writeFileSync('./docs/schools-may-reopen.json',JSON.stringify(schoolsArray),'utf8')
-fs.writeFileSync('./docs/reopening-activities.json',fs.readFileSync('./pages/wordpress-posts/reopening-roadmap-activity-data.json','utf8'),'utf8')
-// this is temporary, we will get this data from an API:
-fs.writeFileSync('./docs/countystatus.json',fs.readFileSync('./src/js/roadmap/countystatus.json','utf8'),'utf8')
-// this needs to be translated, need to get the translated version from translated page
-fs.writeFileSync('./docs/statusdescriptors.json',fs.readFileSync('./pages/wordpress-posts/reopening-matrix-data.json','utf8'),'utf8')
-// county regions for stay home restrictions, hardcoded now, should come from snowflake soon
-fs.writeFileSync('./docs/countyregions.json',fs.readFileSync('pages/_data/countyRegion.json','utf8'),'utf8')
-// county regions closed now for stay home restrictions
-fs.writeFileSync('./docs/regionsclosed.json',fs.readFileSync('pages/wordpress-posts/rsho.json','utf8'),'utf8')
-
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if(process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
@@ -181,6 +167,39 @@ module.exports = function(eleventyConfig) {
       return null;
     }
   );
+  
+  /*
+  Return TRUE if we need to suppress the daily totals in the summary boxes (displaying hyphens instead of numbers).
+  This is currently extra conservative, we will remove some of these conditions when
+  we understand the likely scenarios better.  We hope we can just use the zero test and the day_delta test.
+   */
+  eleventyConfig.addFilter("suppressDailyTotals", (sumdata) => {
+    // Daily Tests (the highest of the three daily numbers) is zero?  The data wasn't counted
+    // return false;
+    // if (sumdata.data.tests.NEWLY_REPORTED_TESTS == 0) {
+    //   console.log("New tests are zero");
+    //   return true;
+    // }
+    // // Saturday or Sunday?
+    // let publishWeekDay = new Date(sumdata.meta.PUBLISHED_DATE).getUTCDay();
+    // if (publishWeekDay == 0 || publishWeekDay == 6) {
+    //   console.log("weekend");
+    //   return true;
+    // }
+    // // State Holiday?
+    // if (sumdata.meta.PUBLISHED_DATE == '2021-07-05' || sumdata.meta.PUBLISHED_DATE == '2021-09-06') {
+    //   console.log("holiday");
+    //   return true;
+    // }
+    // Difference between publish date and test-data collection date is > 1 day?
+    let day_delta = (new Date(sumdata.meta.PUBLISHED_DATE).getTime() - new Date(sumdata.data.tests.DATE).getTime()) / (1000 * 3600 * 24);
+    if (day_delta > 1) {
+      // console.log("day delta > 1");
+      return true;
+    }
+    // console.log("All state-dashboard tests pass");
+    return false;
+  });
 
   eleventyConfig.addFilter('find', (array, field, value) => array.find(x=>x[field]===value));
 

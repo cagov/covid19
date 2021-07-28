@@ -2,11 +2,8 @@ import alerts from './alerts/rollup.config';
 import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
-import reopening from './roadmap/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
-import dashboard1 from './dashboard-v1/rollup.config';
-import dashboard2 from './dashboard-v2/rollup.config';
 import dashboard3 from './dashboard-v3/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
@@ -44,11 +41,8 @@ function shouldIRebuild(directory,generatedFile) {
 export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
   ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
-  ...(shouldIRebuild('/roadmap/', '../../docs/js/roadmap.js') ? [reopening] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
-  ...(shouldIRebuild('/dashboard-v1/', '../../docs/js/dashboard-v1.js') ? [dashboard1] : []),
-  ...(shouldIRebuild('/dashboard-v2/', '../../docs/js/dashboard-v2.js') ? [dashboard2] : [dashboard2]),
   ...(shouldIRebuild('/dashboard-v3/', '../../docs/js/dashboard-v3.js') ? [dashboard3] : [dashboard3]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),

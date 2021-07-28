@@ -13,9 +13,9 @@ export default function template({
   chartDataLabel = null,
 }) {
   return /*html*/ `
-    <div class="py-2">
+    <div class="pt-2">
     <div class="container">
-      <div class="col-lg-12 bg-white py-4">
+      <div class="col-lg-12 bg-white pt-4">
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
           <div class="chart-title">${chartDisplayTitle}</div>
@@ -26,7 +26,7 @@ export default function template({
 
         ${chartDataLabel !== null ? `<div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-          <p class="chart-data-label small-text mx-auto">${chartDataLabel}</p>
+          <p class="chart-data-label small-text mx-auto mb-2">${chartDataLabel}</p>
         </div>
       </div>` : ""}
       </div><!--END col-12-->

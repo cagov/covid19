@@ -44,8 +44,7 @@ export default function drawBars({
     .attr("height", "10px")
 
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => `<div class="chart-tooltip">
-    <div >unused_caption1</div>`)
+    .attr("aria-label", (d, i) => 'unused_caption1')
     ;
 
   // Yellow bars rendered second
@@ -79,10 +78,13 @@ export default function drawBars({
     .attr("tabindex", "0")
     .attr("aria-label", (d, i) => {
       let caption = component.getToolTipCaption1(d, selectedMetric);
-      return `<div class="chart-tooltip">
-      <div>${caption}</div>
-      </div>`}
-    )
+      // remove tags and trim excess whitespace
+      caption = caption.replace( /(<([^>]+)>)/ig, ' ');
+      caption = caption.replace( /\s+/g, ' ');
+      caption = caption.trim();
+      // console.log("Set pop aria label",caption);
+      return caption;
+    })
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
@@ -105,6 +107,7 @@ export default function drawBars({
   svg.append("g").call(yAxis);
 
   // End of bar labels, POPULATION_PERCENTAGE (blue)
+  let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
     .attr("class", "bars")
@@ -115,7 +118,7 @@ export default function drawBars({
         .append("text")
         .attr("class", "bars")
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 8)
-        .attr("x", (d) => x2(100) + 5)
+        .attr("x", (d) => x2(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) =>
           d.POPULATION_PERCENTAGE
@@ -136,7 +139,7 @@ export default function drawBars({
         .append("text")
         .attr("class", (d) => "bars" + ((d.METRIC_TOTAL_PERCENTAGE === null) ? " bars-unknown" : ""))
         .attr("y", (d) => y(d.DEMOGRAPHIC_SET_CATEGORY) + 28)
-        .attr("x", (d) => x1(100) + 5)
+        .attr("x", (d) => x1(100) + barGap)
         .attr("height", y.bandwidth())
         .text((d) => {
           if (d.METRIC_TOTAL_PERCENTAGE !== null) {

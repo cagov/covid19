@@ -4,20 +4,18 @@ import 'whatwg-fetch';
 import './polyfills/endswith.js';
 // import '@cagov/accordion'; accordion indicator svgs are broken, disable accordions in IE until fixed
 import '@cagov/step-list';
-import './dashboard-v2/async-polyfill.js';
+import './dashboard-v3/async-polyfill.js';
 import './alerts/index.js';
 import './telehealth/index.js';
 import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
-import './roadmap/index.js';
 import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
 import './dashboard-v3/charts/ie11.scss';
 // import './charts-sandbox/index.js';
-// import './dashboard-v2/index.js';
 import './dashboard-v3/index.js';
 import './dashboard-v3/charts/ie11.scss';
 

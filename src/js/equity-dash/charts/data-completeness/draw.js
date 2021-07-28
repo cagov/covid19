@@ -80,20 +80,27 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
       let percentMissing = d.data.MISSING
         ? parseFloat(d.data.MISSING * 100).toFixed(1) + "%"
         : 0;
+      let caption = '';
 
       if (d[0] == 0) {
-        return translations.chartTooltip({
+        caption = translations.chartTooltip({
           metric: d.data.METRIC,
           highlightData: percentNotMissing,
           complete: true,
         });
       } else {
-        return translations.chartTooltip({
+        caption = translations.chartTooltip({
           metric: d.data.METRIC,
           highlightData: percentMissing,
           complete: false,
         });
-      }})
+      }
+      // remove tags and trim excess whitespace
+      caption = caption.replace( /(<([^>]+)>)/ig, ' ');
+      caption = caption.replace( /\s+/g, ' ');
+      caption = caption.trim();
+      return caption;
+    })
 
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
