@@ -1,12 +1,24 @@
 ---
 layout: "page.njk"
 title: "Tracking COVID-19 in California"
-meta: "Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases per 100K Deaths {{_varStatTotalDeaths_}} total {{_varStatTotalDeathsToday_}} today {{_varStatNewDeathsPer100k_}} new deaths per 100K Tests {{_varStatTested_}} total {{_varStatTestedDaily_}} today {{_varStatLatestPositivityPct_}}% test positivity Vaccines Administered {{_varStatVaccines_}} total {# {{_varStatVaccinesDaily_}} today {{_varStatVaccinesDailyPct_}}% increase #} [&hellip;]"
+meta: "California is tracking data to understand the spread of COVID-19. On this page: Today&#8217;s update County and statewide data Vaccination data Cases and deaths by group More data and tools Update for {{_varStatDate_}} As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths. Cases {{_varStatTotalCases_}} total {{_varStatTotalCasesToday_}} today {{_varStatNewCasesPer100k_}} new cases [&hellip;]"
 author: "State of California"
-publishdate: "2021-07-14T21:56:12Z"
-tags: ["translate"]
+publishdate: "2021-07-29T19:42:49Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
+
+<p>California is tracking data to understand the spread of COVID-19.</p>
+
+
+
+<p>On this page:</p>
+
+
+
+<ul><li><a href="#todays-update">Today&#8217;s update</a></li><li><a href="#county-statewide">County and statewide data</a></li><li><a href="#vaccination">Vaccination data</a></li><li><a href="#group">Cases and deaths by group</a></li><li><a href="#more">More data and tools</a></li></ul>
+
+
 
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
@@ -68,7 +80,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto">
-        <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
+        <h2 class="text-center color-purple" id="todays update">Update for {{_varStatDate_}}</h2>
         <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19,
           resulting in {{_varStatTotalDeaths_}} deaths.</p>
       </div>
@@ -223,29 +235,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="bg-darkblue py-5 full-bleed mb-5">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange" id="vaccination">Vaccination data</h2>
-                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We’re tracking the progress of vaccinating Californians across the state.</p>
-
-                        <div class="mt-3 text-center">
-                            <a href="/vaccination-progress-data" class="link-arrow-white">
-                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div><!--END container-->
-        </div>
-
-
-
-<h2 class="text-center color-purple">See the data statewide and in each county</h2>
+<h2 class="text-center color-purple" id="county-statewide">County and statewide data</h2>
 
 
 
@@ -253,7 +243,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4">Daily cases and deaths</h3>
+<h3 class="text-center mt-4">Cases and deaths</h3>
 
 
 
@@ -454,33 +444,30 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="bg-darkblue py-5 full-bleed mb-5">
-  <div class="container py-2">
-    <div class="row pb-4">
-      <div class="col-lg-10 mx-auto color-white">
-        <h2 class="text-center color-orange" id="reopening-equitably">More data and tools</h2>
-        <p>California has collected a wide range of data to inform its response to COVID-19. We’ve developed tools
-          to process and analyze this data. These data and tools are available to the public.</p>
+            <div class="container py-2">
+                <div class="row pb-4">
+                    <div class="col-lg-10 mx-auto color-white">
+                        <h2 class="text-center color-orange" id="vaccination">Vaccination data</h2>
+                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We’re tracking the progress of vaccinating Californians across the state.</p>
 
-        <div class="mt-3 text-center">
-          <a href="/data-and-tools/" class="link-arrow-white">
-            <div class="link-arrow-label">View all data and tools</div>
-            <cagov-arrow></cagov-arrow>
-          </a>
+                        <div class="mt-3 text-center">
+                            <a href="/vaccination-progress-data" class="link-arrow-white">
+                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div><!--END container-->
         </div>
-
-
-      </div>
-    </div>
-
-  </div>
-  <!--END container-->
-</div>
 
 
 
 <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-4 pb-5">
-    <h2 class="text-center color-primary">Infections by group</h2>
+    <h2 class="text-center color-primary" id="group">Cases and deaths by group</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">
@@ -602,6 +589,31 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <!--END col-12-->
   </div>
   <!--END CONTAINER-->
+</div>
+
+
+
+<div class="bg-darkblue py-5 full-bleed mb-5">
+  <div class="container py-2">
+    <div class="row pb-4">
+      <div class="col-lg-10 mx-auto color-white">
+        <h2 class="text-center color-orange" id="more">More data and tools</h2>
+        <p>California has collected a wide range of data to inform its response to COVID-19. We’ve developed tools
+          to process and analyze this data. These data and tools are available to the public.</p>
+
+        <div class="mt-3 text-center">
+          <a href="/data-and-tools/" class="link-arrow-white">
+            <div class="link-arrow-label">View all data and tools</div>
+            <cagov-arrow></cagov-arrow>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+  <!--END container-->
 </div>
 
 
