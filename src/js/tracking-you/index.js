@@ -20,6 +20,11 @@ export default function setupAnalytics() {
           reportGA('pdf', this.href.split(window.location.hostname)[1])
         });    
       }
+      if(a.href.indexOf('#') > -1) {
+        a.addEventListener('click',function() {
+          reportGA('anchor', this.href.split(window.location.hostname)[1])
+        });    
+      }
     } else {
       // console.log("Adding offsite link handler:",window.location.hostname,a.href);
       a.addEventListener('click',function() {

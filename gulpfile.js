@@ -1,7 +1,8 @@
 const fs = require('fs');
 const gulp = require('gulp');
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
+// const sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('node-sass'));
 const postcss = require('gulp-postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const cssnano = require('cssnano');
