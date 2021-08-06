@@ -238,8 +238,32 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 </div>
 
 
+<!-- postvax chart starts here-->
+<hr class="wp-block-separator mt-0" id="postvax-charts"/>
 
-<hr class="wp-block-separator mt-0" id="county-statewide"/>
+<h2 class="text-center color-purple">Unvaccinated and vaccinated cases</h2>
+<p>From [dynamic date] to [dynamic date] there were [dynamic number] of cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccindation is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities.
+</p><p>
+<h3>Daily cases and deaths</h3>
+</p><p>
+(Tabs go here)
+</p>
+<cagov-chart-dashboard-postvax-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
+    <li data-label="cases_leftYAxisLegend1">Weekly cases per 100K</li>
+    <li data-label="cases_v_legendLabel">Vaccinated</li>
+    <li data-label="cases_u_legendLabel">Unvaccinated</li>
+  </ul>
+</cagov-chart-dashboard-postvax-cases>
+<div class="postvax-chart-footer">
+A vaccinated cases is one that occurs in a person who recieved two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. This chart shows [details about timeframe] to focus on [reason we focus]. [Additional data details]
+</div>
+
+
+<!-- postvax chart ends here-->
+
+<hr class="wp-block-separator" id="county-statewide"/>
 
 
 

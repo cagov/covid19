@@ -20,6 +20,9 @@ import "./charts/cagov-chart-dashboard-positivity-rate/index.js"
 import "./charts/cagov-chart-dashboard-patients/index.js"
 import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 
+// new postvax charts
+import "./charts/cagov-chart-dashboard-postvax-cases/index.js"
+
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");
 
