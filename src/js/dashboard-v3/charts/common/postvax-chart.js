@@ -1,172 +1,73 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
+function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
   let groups = svg.append("g")
-    .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
+    .attr("class","fg-line "+root_id+" "+line_id)
+    // .attr('style','stroke:'+color+';')
     // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
     .append('path')
     .datum(data)
       .attr("d", d3.line()
         .x(function(d,i) { return x(i) })
-        .y(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
+        .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
         );
 }
 
- function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
-   if (!crop_floor) {
-     console.log("NOT CROP FLOOR");
-   }
-   let groups = svg.append("g")
-      .attr("class","fg-bars "+root_id)
-      // .attr('style','fill:#deeaf6;')
-      .selectAll("g")
-      .data(data)
-      .enter()
-        .append("g");
-    
-    if (crop_floor) { // positive only
-      groups
-          .append("rect")
-          .attr("x", (d,i) => x(i))
-          .attr("y", d => y(d.VALUE))
-          .attr("width", 2)
-          .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
-          .attr("id", (d, i) => root_id+'-'+i);
-    } else { // positive and negative rects
-      groups
-          .append("rect")
-          .attr("x", (d,i) => x(i))
-          .attr("y", d => Math.min(y(0),y(d.VALUE)))
-          .attr("width", 2)
-          .attr("height", d => Math.abs(y(0) - y(d.VALUE)))
-          .attr("id", (d, i) => root_id+'-'+i);
-    }
-}
-
-
-function writePendingBlock(svg, data, x, y,
-  { pending_date=null,
-    pending_legend=null,
-    root_id='barid'} ) {
-    let xgroup = svg.append("g")
-      .attr("class",'pending-block');
-
-    const max_x_domain = x.domain()[1];
-    const min_y_domain = y.domain()[0];
-    const max_y_domain = y.domain()[1];
-    let nbr_pending = 0;
-    for (let i = 0; i < data.length; ++i) {
-      nbr_pending += 1
-      if (data[i].DATE == pending_date) {
-        break;
-      }
-    }
-    // console.log("PENDING_DATE",pending_date);
-    // console.log("Pending",nbr_pending);
-
-    xgroup.append('rect')
-      // .attr('style','fill:black;opacity:0.05;')
-      .attr("x",x(nbr_pending))
-      .attr("y",y(max_y_domain))
-      .attr("width",x(0) - x(nbr_pending))
-      .attr("height",y(min_y_domain)-y(max_y_domain));
-    xgroup.append('text')
-      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
-      .text(pending_legend)
-      .attr("x",x(0))
-      .attr("y",y(max_y_domain)-4);
-}
-
-function writeCountyStateLegend(svg,x,y, {
-  county_legend = 'County',
-  state_legend = 'State',
-})
-{
-  let y_pos = this.dimensions.height - 6;
-  let x_pos = this.dimensions.margin.left;
-
-
-  let g = svg.append("g")
-    .attr("class","county-legend");
-
-  g.append('rect')
-    // .attr('style','fill:black;')
-    .attr('x',x_pos)
-    .attr('y',y_pos)
-    .attr('width',24)
-    .attr('height',1);
-
-  g.append('text')
-    .text(county_legend)
-    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
-    .attr("x",x_pos + 36)
-    .attr("y",y_pos);
-
-  g = svg.append("g")
-    .attr("class","state-legend");
-
-  g.append('rect')
-    // .attr('style','fill:gray;')
-    .attr('x',x_pos+85)
-    .attr('y',y_pos)
-    .attr('width',24)
-    .attr('height',1);
-
-  g.append('text')
-    .text(state_legend)
-    // .attr('style','font-family:sans-serif; fill:black;font-weight:300; font-size: 0.75rem;text-anchor: left;dominant-baseline:middle;');
-    .attr("x",x_pos+85 + 36)
-    .attr("y",y_pos);
-}
-
-
-function writeDateAxis(svg, data, x, y, 
-  { x_axis_legend=null,
-    month_modulo=3,
+// Date Axis
+function writeXAxis(svg, data, date_fld, x, y, 
+  { week_modulo=3,
     root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
-  const tick_lower_gap = 2;
+  const tick_lower_gap = 12;
   const axisY = this.dimensions.height - this.dimensions.margin.bottom;
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
+  let last_mon_idx = 0;
+  let last_year_idx = 0;
   data.forEach((d,i) => {
-    const ymd = d.DATE.split('-');
+    const ymd = d[date_fld].split('-');
+    const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
-    if (mon_idx % month_modulo == 0) {
+    if (i % week_modulo == 0) {
       const day_idx = parseInt(ymd[2]);
-      if (day_idx == 1) {
-        const date_caption = mon_idx+'/1'; // ?? localize
-        let subg = xgroup.append("g")
-              .attr('class','x-tick');
-        subg.append('line')
-        .attr('x1', x(i))
-        .attr('y1', axisY+tick_upper_gap)
-        .attr('x2', x(i))
-        .attr('y2',axisY+tick_upper_gap+tick_height);
+      let subg = xgroup.append("g")
+            .attr('class','x-tick');
+      subg.append('line')
+      .attr('x1', x(i))
+      .attr('y1', axisY+tick_upper_gap)
+      .attr('x2', x(i))
+      .attr('y2',axisY+tick_upper_gap+tick_height)
+      .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
+      
+      if (i == 0 || i == data.length-1) {
+        const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
+        let text_anchor = (i == 0)? 'start' : 'end';
         subg.append('text')
-         .text(date_caption)
-         // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
-         .attr("x", x(i))
-         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
+          .text(date_caption)
+          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.8rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
+          .attr("x", x(i))
+          .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
       }
+      last_mon_idx = mon_idx;
+      last_year_idx = year_idx;
     }
   });
-  if (x_axis_legend) {
-    xgroup.append('text')
-    .attr('class','x-axis-legend')
-    .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
-    .text(x_axis_legend)
-    .attr("x", x(0))
-    .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
-  }
+  // if (x_axis_legend) {
+  //   xgroup.append('text')
+  //   .attr('class','x-axis-legend')
+  //   .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
+  //   .text(x_axis_legend)
+  //   .attr("x", this.dimensions.width - this.dimensions.margin.right)
+  //   .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
+  // }
 }
 
 // Formatter Factory
@@ -207,20 +108,19 @@ function getFormatter(max_v,{hint='num',digits=0})
   }
 }
 
-function writeLeftYAxis(svg, data, x, y, 
-                        { y_axis_legend=null,
-                          left_y_fmt='num',
+function writeYAxis(svg, x, y, 
+                        { y_fmt='num',
                           root_id='barid' }) {
-  const y_div = getAxisDiv(y,{'hint':left_y_fmt});
+  const y_div = getAxisDiv(y,{'hint':y_fmt});
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
 
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
   const max_x_domain = x.domain()[1];
-  // console.log("Left Axis",max_y_domain, root_id, left_y_fmt);
-  const tick_left_gap = 10;
-  let myFormatter = getFormatter(max_y_domain, { hint:left_y_fmt });
+  // console.log("Left Axis",max_y_domain, root_id, y_fmt);
+  const tick_gap = 10;
+  let myFormatter = getFormatter(max_y_domain, { hint:y_fmt });
   for (let yi = 0; yi <= max_y_domain; yi += y_div) {
     let y_caption = myFormatter(yi);
     let subg = ygroup.append("g")
@@ -235,97 +135,11 @@ function writeLeftYAxis(svg, data, x, y,
 
     subg.append('text')
       .text(y_caption)
-      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:black;text-anchor: end; dominant-baseline:middle;')
-      .attr("x", x(max_x_domain)-tick_left_gap)
+      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.95rem; fill:black;text-anchor: end; dominant-baseline:middle;')
+      .attr("x", x(min_x_domain)-tick_gap)
       .attr("y", y(yi)) // +this.getYOffset(i)
   }
-  if (y_axis_legend) {
-    ygroup.append('text')
-    .attr('class','left-y-axis-legend')
-    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.75rem; fill:black;text-anchor: start; dominant-baseline:hanging;')
-    .text(y_axis_legend)
-    .attr("x", 0)
-    .attr("y", 4) // +this.getYOffset(i)
-  }
 }
-
-function writeRightYAxis(svg, data, x, y, 
-                        { y_axis_legend=null,
-                          right_y_fmt='num',
-                          root_id='barid' }) {
-  const y_div = getAxisDiv(y,{'hint':right_y_fmt});
-  let ygroup = svg.append("g")
-      .attr("class",'right-y-axis')
-      .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
-
-
-
-  const max_y_domain = y.domain()[1];
-  const min_x_domain = x.domain()[0];
-  const tick_left_gap = 10;
-  const tick_right_gap = 24;
-
-  // console.log("Drawing Right Axis  max_y_domain",max_y_domain,root_id);
-  let myFormatter = getFormatter(max_y_domain, { hint:right_y_fmt });
-
-  for (let yi = 0; yi <= max_y_domain; yi += y_div) {
-    let y_caption = myFormatter(yi);
-
-    let subg = ygroup.append("g")
-      .attr('class','y-tick');
-
-    // subg.append('line')
-    //   .attr('x1', x(min_x_domain)+tick_left_gap)
-    //   .attr('y1', y(yi))
-    //   .attr('x2', x(min_x_domain)+tick_right_gap)
-    //   .attr('y2', y(yi));
-
-    subg.append('text')
-      .text(y_caption)
-      .attr('style','font-family:sans-serif; font-weight:400; font-size: 0.75rem; fill:#1f2574; text-anchor:start; dominant-baseline:middle; ')
-      .attr("x", x(min_x_domain)+tick_right_gap)
-      .attr("y", y(yi)) // +this.getYOffset(i)
-  }
-  if (y_axis_legend) {
-    ygroup.append('text')
-    .attr('class','right-y-axis-legend')
-    .text(y_axis_legend)
-    .attr('style','font-family:sans-serif; font-weight:700; font-size: 0.75rem; fill:#1f2574; text-anchor:end; dominant-baseline:hanging; ')
-    .attr("x", this.dimensions.width)
-    .attr("y", 4) // +this.getYOffset(i)
-  }
-}
-
-/** saved for future reference 
-function writeDownloadButton({root_id='untitled'}) {
-  const xmlns = "http://www.w3.org/2000/xmlns/";
-  const xlinkns = "http://www.w3.org/1999/xlink";
-  const svgns = "http://www.w3.org/2000/svg";
-
-  function serialize(svg) {
-    svg = svg.cloneNode(true);   
-    const fragment = window.location.href + "#";
-    const walker = document.createTreeWalker(svg, NodeFilter.SHOW_ELEMENT);
-    while (walker.nextNode()) {
-      for (const attr of walker.currentNode.attributes) {
-        if (attr.value.includes(fragment)) {
-          attr.value = attr.value.replace(fragment, "#");
-        }
-      }
-    }
-    svg.setAttributeNS(xmlns, "xmlns", svgns);
-    svg.setAttributeNS(xmlns, "xmlns:xlink", xlinkns);
-    const serializer = new window.XMLSerializer;
-    const string = serializer.serializeToString(svg);
-    return new Blob([string] , {type: "image/svg+xml"});
-  };
-
-  let svgNode = d3.select(this.chartOptions.chartName+" svg").node();
-  d3.select(this.chartOptions.chartName + " a.dl-button")
-    .attr('download',root_id+".svg")
-    .attr('href',URL.createObjectURL(serialize(svgNode)));
-}
-*/
 
 // Convert 
 function getDataIndexByX(data, xScale, yScale, bardata, yLine, linedata, xy)
@@ -409,35 +223,6 @@ function getAxisDiv(ascale,{hint='num'}) {
   return result;
 }
 
-function drawLineLegend(svg, line_legend, line_data, xline, yline) {
-  if (line_legend != null) {
-    let lsi = Math.floor(line_data.length*2/3);
-    let lsample = line_data[lsi];
-    let x1 = this.dimensions.width/3;
-    let y1 = this.dimensions.height/4;
-    let x2 = xline(lsi);
-    let y2 = yline(lsample.VALUE);
-    let margin = 6;
-    // shorten line on each end by margin
-    let ang = Math.atan2(y2-y1,x2-x1);
-    x1 += Math.cos(ang)*margin;
-    y1 += Math.sin(ang)*margin;
-    x2 += Math.cos(ang+Math.PI)*margin;
-    y2 += Math.sin(ang+Math.PI)*margin;
-    let g = this.svg.append('g')
-      .attr('class','line-legend');
-    g.append('text')
-      .text(line_legend)
-      .attr("x",this.dimensions.width/3)
-      .attr("y",this.dimensions.height/4);
-    g.append('line')
-      .attr('x1',x1)
-      .attr('y1',y1)
-      .attr('x2',x2)
-      .attr('y2',y2);
-  }
-}
-
 /**
  * Render categories.
  * @param {*} extrasFunc @TODO what are the inputs?
@@ -446,21 +231,16 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
  export default function renderChart({
     tooltip_func = null,
     extras_func = null,
-    time_series_bars = null,
-    time_series_line = null,
-    time_series_state_line = null,
+    chartdata = null,
+    series_fields = null,
+    series_colors = null,
+    series_legends = null,
+    x_axis_field = null,
     line_date_offset = 0,
-    left_y_fmt = 'num',
-    right_y_fmt = 'num',
-    left_y_axis_legend = null,
-    right_y_axis_legend = null,
-    line_legend = null,
-    x_axis_legend = null,
-    crop_floor = true,
-    pending_date = null,
-    pending_legend = null,
-    month_modulo = 3,
-    root_id = "barid" } )  {
+    weeks_to_show = 16,
+    y_fmt = 'num',
+    crop_floor = false,
+    root_id = "postvaxid" } )  {
 
     console.log("renderChart",root_id);
     // d3.select(this.querySelector("svg g"))
@@ -479,7 +259,8 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
         this.chartBreakpointValues.height,
       ])
       .append("g")
-      .attr("transform", "translate(0,0)");
+      .attr("transform", "translate(0,0)")
+      .attr("style", "fill:#CCCCCC;");
 
     this.tooltip = d3
       .select(this.chartOptions.chartName)
@@ -487,124 +268,53 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
       .attr("class", "tooltip-container")
       .text("Empty Tooltip");
 
-    if (time_series_bars) {
-      this.xbars = d3
-      .scaleLinear()
-      .domain([0,time_series_bars.length-1])
-      .range([
-          // reversed because data presents as reverse-chrono
-          this.dimensions.width - this.dimensions.margin.right, 
-          this.dimensions.margin.left]);
-      let min_y_domain = crop_floor? 0 : d3.min(time_series_bars, d=> d.VALUE);
-      if (min_y_domain > 0)
-        min_y_domain = 0;
-      let max_y_domain = d3.max(time_series_bars, d=> d.VALUE);
-      if (max_y_domain == 0) {
-        max_y_domain = 1;
-      }
+    // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
+    console.log("Chart data",chartdata);
+    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[0]]), d3.max(chartdata, r => r[series_fields[1]]));
+    let min_y_domain = 0;
+    console.log("Y Domain",min_y_domain, max_y_domain);
+    this.yline = d3
+    .scaleLinear()
+    .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+    .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
 
-      // console.log("bar range", root_id, min_y_domain, max_y_domain);
-      this.ybars = d3
-        .scaleLinear()
-        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
-        .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
-   
-    }
-    if (time_series_line) {
-      // console.log("time_series_line",time_series_line,root_id);
-      const LINE_OFFSET_X = line_date_offset;
-      this.xline = d3
-      .scaleLinear()
-      .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+time_series_line.length-1])
-      .range([
-          // reversed because data presents as reverse-chrono
-          this.dimensions.width - this.dimensions.margin.right, 
-          this.dimensions.margin.left]);
-      // console.log("time_series_line 2",time_series_line,root_id);
-      let min_y_domain = crop_floor? 0 : d3.min(time_series_line, d=> d.VALUE);
-      if (min_y_domain > 0)
-        min_y_domain = 0;
-      let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
-      if (max_y_domain == 0) {
-        max_y_domain = 1;
-      }
-      // console.log("line range", root_id, min_y_domain, max_y_domain);
-      if (time_series_state_line) {
-        max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
-      }
-      // console.log("max_y_domain", max_y_domain);
-      this.yline = d3
-        .scaleLinear()
-        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
-        .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
+    const LINE_OFFSET_X = line_date_offset;
+    this.xline = d3
+    .scaleLinear()
+    .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+chartdata.length-1])
+    .range([
+        this.dimensions.margin.left,
+        this.dimensions.width - this.dimensions.margin.right
+        ]);
 
-    }
-
-
+    writeLine.call(this, this.svg, chartdata, series_fields[0], this.xline, this.yline, 
+          { root_id:root_id+"_l1", line_id:'line_s1', crop_floor:crop_floor, color:series_colors[0]});
+    writeLine.call(this, this.svg, chartdata, series_fields[1], this.xline, this.yline, 
+            { root_id:root_id+"_l2", line_id:'line_s2', crop_floor:crop_floor, color:series_colors[1]});
+    
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
 
-    if (time_series_bars) {
-      writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-        { root_id:root_id, crop_floot:crop_floor});
-      // bar legend on left
-    }
-    if (time_series_line) {
-      writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
-        { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
-      if (line_legend != null) {
-          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline);
-      }
-    }
-    if (time_series_state_line) {
-      writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
-        { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
-      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
-    }
-
-    if (pending_date && pending_legend) {
-      writePendingBlock.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-            { root_id:root_id, pending_date:pending_date, pending_legend:pending_legend});
-    }
-
-    if (time_series_bars) {
-      writeDateAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars,
-          {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
-    } else if (time_series_line) {
-      writeDateAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
-        {x_axis_legend:x_axis_legend, month_modulo: month_modulo, root_id:root_id} );
-    }
     // Write Y Axis, favoring line on left, bars on right
-    if (time_series_line) {
-      writeLeftYAxis.call(this, this.svg, time_series_line, this.xline, this.yline,
-         {y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
-      if (time_series_bars) {
-        if (right_y_axis_legend) {
-          writeRightYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-              { y_axis_legend: right_y_axis_legend, right_y_fmt:right_y_fmt, root_id:root_id});
-        }
-      }
-    } else if (time_series_bars) {
-      writeLeftYAxis.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-          { y_axis_legend: left_y_axis_legend, left_y_fmt:left_y_fmt, root_id:root_id});
-    }
+    writeYAxis.call(this, this.svg, this.xline, this.yline,
+         {y_fmt:y_fmt, root_id:root_id});
+    writeXAxis.call(this, this.svg, chartdata, x_axis_field, this.xline, this.yline,
+      {week_modulo: 1, root_id:root_id} );
 
-    // writeLegend.call(this, this.svg, data, this.xbars, this.y, baselineData);
+    // writeLegends.call(this, this.svg, chartdata, series_legends, series_colors, this.xline, this.yline);
 
     if (extras_func) {
       extras_func.call(this, this.svg);
     }
 
-    // writeDownloadButton.call(this,{root_id:root_id});
-
     this.svg
     .on("mousemove focus", (event) => {
-      let xy = d3.pointer(event);
-      let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
-      if (dIndex != null) {
-        showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
-      } else {
-        hideTooltip.call(this);
-      }
+      // let xy = d3.pointer(event);
+      // let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
+      // if (dIndex != null) {
+      //   showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
+      // } else {
+      //   hideTooltip.call(this);
+      // }
     })
     .on("mouseleave touchend blur", (event) => {
       hideTooltip.call(this);

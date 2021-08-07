@@ -245,17 +245,42 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <p>From [dynamic date] to [dynamic date] there were [dynamic number] of cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccindation is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities.
 </p><p>
 <h3>Daily cases and deaths</h3>
-</p><p>
-(Tabs go here)
-</p>
-<cagov-chart-dashboard-postvax-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
+  <div class="d-flex flex-column flex-md-row justify-content-center my-3">
+    <div class="large-tabs">
+      <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
+      <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
+      <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
+    </div>
+  </div>
+<cagov-chart-dashboard-postvax-cases class="chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="cases_leftYAxisLegend1">Weekly cases per 100K</li>
-    <li data-label="cases_v_legendLabel">Vaccinated</li>
-    <li data-label="cases_u_legendLabel">Unvaccinated</li>
+    <li data-label="yaxis_legend">Weekly cases per 100K</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
   </ul>
 </cagov-chart-dashboard-postvax-cases>
+<cagov-chart-dashboard-postvax-hospitalizations class="chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
+    <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+  </ul>
+</cagov-chart-dashboard-postvax-hospitalizations>
+<cagov-chart-dashboard-postvax-deaths class="chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
+    <li data-label="yaxis_legend">Weekly deaths per million</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+  </ul>
+</cagov-chart-dashboard-postvax-deaths>
+
+
 <div class="postvax-chart-footer">
 A vaccinated cases is one that occurs in a person who recieved two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. This chart shows [details about timeframe] to focus on [reason we focus]. [Additional data details]
 </div>

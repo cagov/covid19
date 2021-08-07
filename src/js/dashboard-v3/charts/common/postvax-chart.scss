@@ -1,45 +1,15 @@
-.chart {
-  // .bar-label .tick text {
-  //   text-transform: capitalize;
-  // }
-  // .bar-label {
-  //   font-weight: bold;
-  //   font-size: 0.75rem;
-  // }
-  // .bar-cat {
-  //   font-weight: bold;
-  //   font-size: 0.95rem;
-  // }
-  // .legend-caption {
-  //   font-weight: 300;
-  //   font-size: 0.75rem;
-  // }
+.postvax-chart {
   .svg-holder {
-    g.fg-bars {
-      fill: #deeaf6;
-    }
     g.fg-line path {
       fill: none;
-      stroke: black;
+      stroke: #1f2574;
       stroke-width: 2px;
     }
-    g.fg-line.second-line path {
-      opacity: 0.5;
+    g.fg-line.line_s1 path {
+       stroke: #1f2574;
     }
-    g.pending-block {
-      rect {
-        fill: black;
-        opacity: 0.05;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.8rem;
-        fill: black;
-      }
-      text {
-        text-anchor: end;
-        dominant-baseline: auto;
-      }
+    g.fg-line.line_s2 path {
+       stroke: #dc4567;
     }
     g.date-axis {
       line {
@@ -61,34 +31,6 @@
         dominant-baseline: middle;
       }
     }
-    g.county-legend {
-      rect {
-        fill: black;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.75rem;
-        fill: black;
-      }
-      text {
-        text-anchor: left;
-        dominant-baseline: middle;
-      }
-    }
-    g.state-legend {
-      rect {
-        fill: gray;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.75rem;
-        fill: black;
-      }
-      text {
-        text-anchor: left;
-        dominant-baseline: middle;
-      }
-    }
     g.left-y-axis {
       line {
         stroke-width: 0.5px;
@@ -96,8 +38,8 @@
         opacity: 0.15;
       }
       text {
-        font-weight: 400;
-        font-size: 0.75rem;
+        font-weight: 300;
+        font-size: 0.95rem;
         fill: black;
       }
       text {
@@ -105,82 +47,36 @@
         dominant-baseline: middle;
       }
       text.left-y-axis-legend {
-        font-weight: 700;
-        font-size: 0.75rem;
-        text-anchor: start;
-        dominant-baseline: hanging;
-      }
-    }
-    g.right-y-axis {
-      line {
-        stroke-width: 0.5px;
-        stroke: #608cbd;
-      }
-      text {
-        font-weight: 400;
-        font-size: 0.75rem;
-        fill: #1f2574;
-      }
-      text {
-        text-anchor: start;
-        dominant-baseline: middle;
-      }
-      text.right-y-axis-legend {
-        font-weight: 700;
-        font-size: 0.75rem;
-        text-anchor: end;
-        dominant-baseline: hanging;
-      }
-    }
-    text.line-legend {
-      text {
         font-weight: 300;
-        font-size: 1rem;
-        fill: black;
-        text-anchor: middle;
-        dominant-baseline: auto;
-      }
-    }
-    g.tt-marker {
-      fill: black;
-      opacity: 0.5;
-    }
-    g.line-legend {
-      text {
-        font-weight: 400;
-        font-size: 0.8rem;
-        text-anchor: middle;
-        dominant-baseline: auto;
-      }
-      line {
-        stroke-width: 0.25px;
-        stroke: black;
+        font-size: 0.95rem;
+        text-anchor: start;
+        dominant-baseline: hanging;
       }
     }
   }
   .chart-title {
     font-weight: 300;
     font-size: 1.2rem;
-    margin-bottom: 0px;
+    margin-bottom: 2rem;
   }
-  .chart-header {
-    margin-bottom: 24px;
+  .y-axis-title {
     font-weight: 300;
     font-size: 0.95rem;
   }
-  .chart-header .header-line1 {
-    font-weight: 700;
+  span.chart-legend {
+    float:right;
+  }
+  .chart-legend {
+    font-weight: 300;
     font-size: 0.95rem;
   }
-  .chart-header .big-num {
-    font-weight: 700;
-    font-size: 1.2rem;
+  .chart-legend .series1-legend-line {
+    font-weight:800;
     color: #1f2574;
   }
-  .chart-header .med-num {
-    font-weight: 400;
-    font-size: 1rem;
-    color: #1f2574;
+  .chart-legend .series2-legend-line {
+    font-weight:800;
+    color: #dc4567;
   }
   div.tooltip-container {
     font-weight: 300;

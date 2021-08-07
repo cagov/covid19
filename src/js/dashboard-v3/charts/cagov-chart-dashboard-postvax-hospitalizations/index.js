@@ -6,9 +6,9 @@ import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
-class CAGovDashboardPostvaxCases extends window.HTMLElement {
+class CAGovDashboardPostvaxHospitalizations extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardPostvaxCases");
+    console.log("Loading CAGovDashboardPostvaxHospitalizations");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -78,7 +78,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'weeks_to_show':this.chartOptions.weeks_to_show,
                           'y_fmt':'number',
-                          'root_id':'postvax-cases'
+                          'root_id':'postvax-hospitalizations'
                         };
       renderChart.call(this, renderOptions);
   }
@@ -106,7 +106,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-postvax-cases",
-  CAGovDashboardPostvaxCases
+  "cagov-chart-dashboard-postvax-hospitalizations",
+  CAGovDashboardPostvaxHospitalizations
 );
 
