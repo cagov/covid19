@@ -242,9 +242,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <hr class="wp-block-separator mt-0" id="postvax-charts"/>
 
 <h2 class="text-center color-purple">Unvaccinated and vaccinated cases</h2>
-<p>From [dynamic date] to [dynamic date] there were [dynamic number] of cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccindation is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities.
-</p><p>
-<h3>Daily cases and deaths</h3>
+<div id="postvax-chart-intro">From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} of cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities.
+</div>
+<h3 class="text-center">Daily cases and deaths</h3>
   <div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="large-tabs">
       <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
@@ -252,7 +252,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
     </div>
   </div>
-<cagov-chart-dashboard-postvax-cases class="chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
+<cagov-chart-dashboard-postvax-cases class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
@@ -261,7 +261,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series2_legend">Unvaccinated</li>
   </ul>
 </cagov-chart-dashboard-postvax-cases>
-<cagov-chart-dashboard-postvax-hospitalizations class="chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations">
+<cagov-chart-dashboard-postvax-hospitalizations class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
@@ -270,7 +270,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series2_legend">Unvaccinated</li>
   </ul>
 </cagov-chart-dashboard-postvax-hospitalizations>
-<cagov-chart-dashboard-postvax-deaths class="chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
+<cagov-chart-dashboard-postvax-deaths class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths"  style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
@@ -281,7 +281,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 </cagov-chart-dashboard-postvax-deaths>
 
 
-<div class="postvax-chart-footer">
+<div id="postvax-chart-footer">
 A vaccinated cases is one that occurs in a person who recieved two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. This chart shows [details about timeframe] to focus on [reason we focus]. [Additional data details]
 </div>
 

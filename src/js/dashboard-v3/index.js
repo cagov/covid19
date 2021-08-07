@@ -69,5 +69,36 @@ groupTogglers.forEach(toggle => {
     }
     this.classList.add('toggle-active');
   })
-})
+});
+
+
+function resetPostvaxToggles() {
+  console.log("Reset Group Toggles");
+  groupTogglers2.forEach(toggle => {
+    toggle.classList.remove('toggle-active')
+  });
+  document.getElementById('postvax-cases-chart').style.display = 'none';
+  document.getElementById('postvax-hospitalizations-chart').style.display = 'none';
+  document.getElementById('postvax-deaths-chart').style.display = 'none';
+}
+
+let groupTogglers2 = document.querySelectorAll('.js-toggle-group-postvax');
+groupTogglers2.forEach(toggle => {
+  toggle.addEventListener('click',function(event) {
+    event.preventDefault();
+    resetPostvaxToggles();
+    if(this.classList.contains('cases')) {
+      document.getElementById('postvax-cases-chart').style.display = 'block';
+      this.classList.add('toggle-active');
+    }
+    if(this.classList.contains('hospitalizations')) {
+      document.getElementById('postvax-hospitalizations-chart').style.display = 'block'; 
+      this.classList.add('toggle-active');
+    }
+    if(this.classList.contains('deaths')) {
+      document.getElementById('postvax-deaths-chart').style.display = 'block';      
+    }
+    this.classList.add('toggle-active');
+  })
+});
 

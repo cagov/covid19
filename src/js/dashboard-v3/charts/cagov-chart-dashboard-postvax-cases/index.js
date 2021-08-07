@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 
 class CAGovDashboardPostvaxCases extends window.HTMLElement {
   connectedCallback() {
@@ -96,6 +97,24 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
           if (this.chartdata.length > this.chartOptions.weeks_to_show) {
             this.chartdata.splice(0, this.chartdata.length-this.chartOptions.weeks_to_show); 
           }
+          // parseSnowflakeDate(publishedDateStr)
+          let sumvax = 0;
+          let sumunvax = 0;
+          this.chartdata.forEach(r => {
+            sumvax += r.vcases;
+            sumunvax += r.ucases;
+          });
+          let last_record_idx = this.chartdata.length-1;
+          let headerReplacementDict = {
+            'POSTVAX_START_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[0].start_date)),
+            'POSTVAX_END_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[last_record_idx].end_date)),
+            'POSTVAX_UNVAX_RATIO' : Math.round(sumunvax / sumvax),
+          };
+          console.log("header replacement text",headerReplacementDict);
+          let headerDisplayText = document.querySelector('#postvax-chart-intro').innerHTML;
+          console.log("text to modify",headerDisplayText);
+          headerDisplayText = applySubstitutions(headerDisplayText, headerReplacementDict);
+          d3.select(document.querySelector("#postvax-chart-intro")).text(headerDisplayText);
 
           this.renderComponent();
 
