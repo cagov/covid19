@@ -5,6 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import getURLSearchParam from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
   connectedCallback() {
@@ -76,7 +77,6 @@ class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
                           'series_colors':this.chartOptions.series_colors,
                           'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
                           'x_axis_field':this.chartOptions.x_axis_field,
-                          'weeks_to_show':this.chartOptions.weeks_to_show,
                           'y_fmt':'number',
                           'root_id':'postvax-deaths'
                         };
@@ -93,8 +93,11 @@ class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-          if (this.chartdata.length > this.chartOptions.weeks_to_show) {
-            this.chartdata.splice(0, this.chartdata.length-this.chartOptions.weeks_to_show); 
+          let weeks_to_show = parseInt(getURLSearchParam('weeks', ''+this.chartOptions.weeks_to_show));
+          console.log("dynamic weeks to show",weeks_to_show);
+      
+          if (this.chartdata.length > weeks_to_show) {
+            this.chartdata.splice(0, this.chartdata.length-weeks_to_show); 
           }
 
           this.renderComponent();

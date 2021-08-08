@@ -6,6 +6,7 @@ import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import getURLSearchParam from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxCases extends window.HTMLElement {
   connectedCallback() {
@@ -70,6 +71,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     console.log("passing series1_field",this.chartOptions.series1_field);
+
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'chartdata':this.chartdata,
@@ -77,7 +79,6 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
                           'series_colors':this.chartOptions.series_colors,
                           'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
                           'x_axis_field':this.chartOptions.x_axis_field,
-                          'weeks_to_show':this.chartOptions.weeks_to_show,
                           'y_fmt':'number',
                           'root_id':'postvax-cases'
                         };
@@ -94,8 +95,11 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-          if (this.chartdata.length > this.chartOptions.weeks_to_show) {
-            this.chartdata.splice(0, this.chartdata.length-this.chartOptions.weeks_to_show); 
+          let weeks_to_show = parseInt(getURLSearchParam('weeks', ''+this.chartOptions.weeks_to_show));
+          console.log("dynamic weeks to show",weeks_to_show);
+      
+          if (this.chartdata.length > weeks_to_show) {
+            this.chartdata.splice(0, this.chartdata.length-weeks_to_show); 
           }
           // parseSnowflakeDate(publishedDateStr)
           let sumvax = 0;

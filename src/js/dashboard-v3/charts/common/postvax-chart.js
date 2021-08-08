@@ -237,7 +237,6 @@ function getAxisDiv(ascale,{hint='num'}) {
     series_legends = null,
     x_axis_field = null,
     line_date_offset = 0,
-    weeks_to_show = 16,
     y_fmt = 'num',
     crop_floor = false,
     root_id = "postvaxid" } )  {
