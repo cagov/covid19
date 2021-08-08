@@ -142,30 +142,18 @@ function writeYAxis(svg, x, y,
 }
 
 // Convert 
-function getDataIndexByX(data, xScale, yScale, bardata, yLine, linedata, xy)
+function getDataIndexByX(xScale, yScale, xy)
 {
   let x = xy[0];
   let y = xy[1];
   let xdi = xScale.invert(x);
   if (xdi >= 0 && xdi <= xScale.domain()[1] ) {
-    let ydi = yScale.invert(y);
-    if (ydi >= 0 && ydi <= yScale.domain()[1] ) {
-      let idi = Math.round(xdi);
-      let yp = yScale(bardata[idi].VALUE);
-      if (y >= yp-2) {
-        return idi;
-      }
-      let yp2 = yLine(linedata[idi].VALUE);
-      let yd = Math.abs(yp2-y);
-      if (yd < 6) {
-        return idi;
-      }
-    }
+    return Math.round(xdi);
   }
   return null;
 }
 
-function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
+function showTooltip(event, xy, dataIndex, xscale, yscale)
 {
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
@@ -174,20 +162,23 @@ function showTooltip(event, dataIndex, xy, dIndex, dRecord, xscale, yscale)
   tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(event.offsetY+220)}px`);
+  tooltip.style("top",`${(event.offsetY+120)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
 
   this.svg.selectAll('g.tt-marker').remove();
+  const line_start = this.dimensions.margin.top;
+  const line_height = (this.dimensions.height - this.dimensions.margin.bottom) - line_start;
+
   this.svg
     .append('g')
     .attr('class','tt-marker')
     .append('rect')
-    .attr("x",xscale(dIndex)-1)
-    .attr("y",yscale(dRecord.VALUE))
-    .attr("width",3)
-    .attr("height",Math.max(0,yscale(0)-yscale(dRecord.VALUE)));
+    .attr("x",xscale(dataIndex)-0.5)
+    .attr("y",line_start)
+    .attr("width",1)
+    .attr("height",line_height);
 }
 
 function hideTooltip()
@@ -268,10 +259,9 @@ function getAxisDiv(ascale,{hint='num'}) {
       .text("Empty Tooltip");
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
-    console.log("Chart data",chartdata);
+    // console.log("Chart data",chartdata);
     let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[0]]), d3.max(chartdata, r => r[series_fields[1]]));
     let min_y_domain = 0;
-    console.log("Y Domain",min_y_domain, max_y_domain);
     this.yline = d3
     .scaleLinear()
     .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
@@ -307,13 +297,13 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     this.svg
     .on("mousemove focus", (event) => {
-      // let xy = d3.pointer(event);
-      // let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
-      // if (dIndex != null) {
-      //   showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
-      // } else {
-      //   hideTooltip.call(this);
-      // }
+      let xy = d3.pointer(event);
+      let dIndex = getDataIndexByX(this.xline, this.yline, xy);
+      if (dIndex != null) {
+        showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
+      } else {
+        hideTooltip.call(this);
+      }
     })
     .on("mouseleave touchend blur", (event) => {
       hideTooltip.call(this);

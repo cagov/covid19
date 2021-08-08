@@ -5,6 +5,8 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
+import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
+import formatValue from "./../../../common/value-formatters.js";
 import getURLSearchParam from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
@@ -59,6 +61,17 @@ class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
   renderExtras(svg) {
   }
 
+  getTooltipContent(di) {    
+    const drec = this.chartdata[di];
+    const repDict = {
+      WEEKDATES:   reformatReadableDate(drec.start_date) + ' – ' + reformatReadableDate(drec.end_date),
+      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
+      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    return caption;
+  }
+
   renderComponent() {
     console.log("Rendering Post Vax Chart");
     const repDict = {}; // format numbers from data for substitutions...
@@ -69,7 +82,7 @@ class CAGovDashboardPostvaxDeaths extends window.HTMLElement {
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
-    console.log("passing series1_field",this.chartOptions.series1_field);
+
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'chartdata':this.chartdata,

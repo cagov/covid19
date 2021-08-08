@@ -5,7 +5,8 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from '../common/postvax-chart-config.json';
 import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
+import formatValue from "./../../../common/value-formatters.js";
 import getURLSearchParam from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxCases extends window.HTMLElement {
@@ -60,6 +61,18 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
   renderExtras(svg) {
   }
 
+  getTooltipContent(di) {    
+    const drec = this.chartdata[di];
+    const repDict = {
+      WEEKDATES:   reformatReadableDate(drec.start_date) + ' – ' + reformatReadableDate(drec.end_date),
+      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
+      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+    };
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    return caption;
+  }
+
+
   renderComponent() {
     console.log("Rendering Post Vax Chart");
     const repDict = {}; // format numbers from data for substitutions...
@@ -70,7 +83,6 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
-    console.log("passing series1_field",this.chartOptions.series1_field);
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
@@ -114,9 +126,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
             'POSTVAX_END_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[last_record_idx].end_date)),
             'POSTVAX_UNVAX_RATIO' : Math.round(sumunvax / sumvax),
           };
-          console.log("header replacement text",headerReplacementDict);
           let headerDisplayText = document.querySelector('#postvax-chart-intro').innerHTML;
-          console.log("text to modify",headerDisplayText);
           headerDisplayText = applySubstitutions(headerDisplayText, headerReplacementDict);
           d3.select(document.querySelector("#postvax-chart-intro")).text(headerDisplayText);
 

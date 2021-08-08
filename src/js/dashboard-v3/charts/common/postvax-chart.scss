@@ -53,6 +53,10 @@
         dominant-baseline: hanging;
       }
     }
+    g.tt-marker {
+      fill: black;
+      opacity: 0.15;
+    }
   }
   .chart-title {
     font-weight: 300;
