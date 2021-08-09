@@ -20,7 +20,8 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', c
 // Date Axis
 function writeXAxis(svg, data, date_fld, x, y, 
   { week_modulo=3,
-    root_id='barid'} ) {
+    root_id='barid',
+    chart_mode='weekly'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
@@ -38,14 +39,17 @@ function writeXAxis(svg, data, date_fld, x, y,
     const mon_idx = parseInt(ymd[1]);
     if (i % week_modulo == 0) {
       const day_idx = parseInt(ymd[2]);
+
       let subg = xgroup.append("g")
             .attr('class','x-tick');
-      subg.append('line')
-      .attr('x1', x(i))
-      .attr('y1', axisY+tick_upper_gap)
-      .attr('x2', x(i))
-      .attr('y2',axisY+tick_upper_gap+tick_height)
-      .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
+      if (chart_mode == 'weekly') {
+        subg.append('line')
+        .attr('x1', x(i))
+        .attr('y1', axisY+tick_upper_gap)
+        .attr('x2', x(i))
+        .attr('y2',axisY+tick_upper_gap+tick_height)
+        .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
+      }
       
       if (i == 0 || i == data.length-1) {
         const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
@@ -230,6 +234,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     line_date_offset = 0,
     y_fmt = 'num',
     crop_floor = false,
+    chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
 
     console.log("renderChart",root_id);
@@ -287,7 +292,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     writeYAxis.call(this, this.svg, this.xline, this.yline,
          {y_fmt:y_fmt, root_id:root_id});
     writeXAxis.call(this, this.svg, chartdata, x_axis_field, this.xline, this.yline,
-      {week_modulo: 1, root_id:root_id} );
+      {week_modulo: 1, root_id:root_id, chart_mode:chart_mode} );
 
     // writeLegends.call(this, this.svg, chartdata, series_legends, series_colors, this.xline, this.yline);
 

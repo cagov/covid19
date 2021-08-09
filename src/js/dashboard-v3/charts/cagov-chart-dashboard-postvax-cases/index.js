@@ -7,11 +7,14 @@ import renderChart from "../common/postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
-import getURLSearchParam from "../common/geturlparams.js";
+import { hasURLSearchparam, getURLSearchParam}  from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxCases extends window.HTMLElement {
   connectedCallback() {
     console.log("Loading CAGovDashboardPostvaxCases");
+
+    this.chartMode = getURLSearchParam('mode','weekly');
+
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -41,7 +44,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.postvaxChartsDataPath + this.chartOptions.dataUrl;
+    this.dataUrl = config.postvaxChartsDataPath + (this.chartMode == 'weekly'? this.chartOptions.dataUrlWeekly : this.chartOptions.dataUrlDaily);
 
     this.retrieveData(this.dataUrl);
 
@@ -78,7 +81,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
     const repDict = {}; // format numbers from data for substitutions...
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
     this.translationsObj.post_xaxis_legend = applySubstitutions(this.translationsObj.xaxis_legend, repDict);
-    this.translationsObj.post_yaxis_legend = applySubstitutions(this.translationsObj.yaxis_legend, repDict);
+    this.translationsObj.post_yaxis_legend = applySubstitutions(this.chartMode == 'weekly'? this.translationsObj.yaxis_legend : this.translationsObj.yaxis_legend_daily, repDict);
     this.translationsObj.post_series1_legend = applySubstitutions(this.translationsObj.series1_legend, repDict);
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
 
@@ -92,7 +95,8 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
                           'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
-                          'root_id':'postvax-cases'
+                          'root_id':'postvax-cases',
+                          'chart_mode':this.chartMode,
                         };
       renderChart.call(this, renderOptions);
   }
@@ -110,8 +114,15 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
           let weeks_to_show = parseInt(getURLSearchParam('weeks', ''+this.chartOptions.weeks_to_show));
           console.log("dynamic weeks to show",weeks_to_show);
       
-          if (this.chartdata.length > weeks_to_show) {
-            this.chartdata.splice(0, this.chartdata.length-weeks_to_show); 
+          if (this.chartMode == 'weekly') {
+            if (this.chartdata.length > weeks_to_show) {
+              this.chartdata.splice(0, this.chartdata.length-weeks_to_show); 
+            }
+          } else {
+            let days_to_show = weeks_to_show * 7;
+            if (this.chartdata.length > days_to_show) {
+              this.chartdata.splice(0, this.chartdata.length-days_to_show); 
+            }
           }
           // parseSnowflakeDate(publishedDateStr)
           let sumvax = 0;
