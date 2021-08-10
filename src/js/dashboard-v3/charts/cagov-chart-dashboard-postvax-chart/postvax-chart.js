@@ -188,7 +188,7 @@ function showTooltip(event, xy, dataIndex, xscale, yscale)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  // console.log("X",event.offsetX);
+  console.log("X",event.offsetX, `${(event.offsetY+120)}px`);
   tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
@@ -314,7 +314,6 @@ function getAxisDiv(ascale,{hint='num'}) {
     writeLine.call(this, this.svg, chartdata, series_fields[1], this.xline, this.yline, 
             { root_id:root_id+"_l2", line_id:'line_s2', crop_floor:crop_floor, color:series_colors[1]});
     
-    // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
     if (pending_weeks > 0) {
       let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
       writePendingBlock.call(this, this.svg, this.xline, this.yline,

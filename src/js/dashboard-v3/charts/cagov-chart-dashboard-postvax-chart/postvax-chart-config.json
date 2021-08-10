@@ -1,7 +1,7 @@
 {
   "cases": {
     "weeks": {
-      "chartName": "cagov-chart-dashboard-postvax-cases",
+      "chartName": "#postvax-cases-chart",
       "series_fields": ["vcases","ucases"],
       "series_colors": ["#1f2574", "#dc4567"],
       "x_axis_field":"end_date",
@@ -14,7 +14,7 @@
   },
   "hospitalizations": {
     "weeks": {
-      "chartName": "cagov-chart-dashboard-postvax-hospitalizations",
+      "chartName": "#postvax-hospitalizations-chart",
       "series_fields": ["vhosp","uhosp"],
       "series_colors": ["#1f2574", "#dc4567"],
       "x_axis_field":"end_date",
@@ -27,7 +27,7 @@
   },
   "deaths": {
     "weeks": {
-      "chartName": "cagov-chart-dashboard-postvax-deaths",
+      "chartName": "#postvax-deaths-chart",
       "series_fields": ["vdeaths","udeaths"],
       "series_colors": ["#1f2574", "#dc4567"],
       "x_axis_field":"end_date",
