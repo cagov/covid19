@@ -188,7 +188,6 @@ function showTooltip(event, xy, dataIndex, xscale, yscale)
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  console.log("X",event.offsetX, `${(event.offsetY+120)}px`);
   tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
@@ -255,7 +254,6 @@ function getAxisDiv(ascale,{hint='num'}) {
     chartdata = null,
     series_fields = null,
     series_colors = null,
-    series_legends = null,
     x_axis_field = null,
     line_date_offset = 0,
     y_fmt = 'num',
@@ -309,10 +307,11 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.dimensions.width - this.dimensions.margin.right
         ]);
 
-    writeLine.call(this, this.svg, chartdata, series_fields[0], this.xline, this.yline, 
-          { root_id:root_id+"_l1", line_id:'line_s1', crop_floor:crop_floor, color:series_colors[0]});
-    writeLine.call(this, this.svg, chartdata, series_fields[1], this.xline, this.yline, 
-            { root_id:root_id+"_l2", line_id:'line_s2', crop_floor:crop_floor, color:series_colors[1]});
+    series_fields.forEach((sf, i) => {
+      writeLine.call(this, this.svg, chartdata, sf, this.xline, this.yline, 
+        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
+    });
+
     
     if (pending_weeks > 0) {
       let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);

@@ -7,7 +7,7 @@ import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
-import { hasURLSearchparam, getURLSearchParam}  from "../common/geturlparams.js";
+import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js";
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
@@ -84,13 +84,19 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+    let series_fields = this.chartOptions.series_fields;
+    let series_colors = this.chartOptions.series_colors;
+    if (!hasURLSearchParam('3lines')) {
+      series_fields.splice(2,1);
+      series_colors.splice(2,1);
+    }
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'chartdata':this.chartdata,
-                          'series_fields':this.chartOptions.series_fields,
-                          'series_colors':this.chartOptions.series_colors,
-                          'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
+                          'series_fields':series_fields,
+                          'series_colors':series_colors,
+                          // 'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
                           'pending_legend':this.translationsObj.pending_legend,
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
