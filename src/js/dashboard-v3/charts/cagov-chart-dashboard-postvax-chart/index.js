@@ -1,9 +1,9 @@
-import template from "./../common/postvax-template.js";
+import template from "./postvax-template.js";
 import getTranslations from "../../../common/get-strings-list.js";
 import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
-import chartConfig from '../common/postvax-chart-config.json';
-import renderChart from "../common/postvax-chart.js";
+import chartConfig from './postvax-chart-config.json';
+import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
