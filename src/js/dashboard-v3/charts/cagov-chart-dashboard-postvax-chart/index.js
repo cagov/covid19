@@ -91,10 +91,12 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'series_fields':this.chartOptions.series_fields,
                           'series_colors':this.chartOptions.series_colors,
                           'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
+                          'pending_legend':this.translationsObj.pending_legend,
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
                           'root_id':this.chartOptions.root_id,
                           'chart_mode':this.chartMode,
+                          'pending_weeks':this.chartOptions.pending_weeks,
                         };
       renderChart.call(this, renderOptions);
   }

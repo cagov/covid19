@@ -8,19 +8,8 @@
       "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
       "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
       "weeks_to_show": 16,
-      "root_id": "postvax-cases"
-    }
-  },
-  "deaths": {
-    "weeks": {
-      "chartName": "cagov-chart-dashboard-postvax-deaths",
-      "series_fields": ["vdeaths","udeaths"],
-      "series_colors": ["#1f2574", "#dc4567"],
-      "x_axis_field":"end_date",
-      "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
-      "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
-      "weeks_to_show": 16,
-      "root_id": "postvax-deaths"
+      "root_id": "postvax-cases",
+      "pending_weeks":1
     }
   },
   "hospitalizations": {
@@ -32,7 +21,21 @@
       "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
       "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
       "weeks_to_show": 16,
-      "root_id": "postvax-hospitalizations"
+      "root_id": "postvax-hospitalizations",
+      "pending_weeks":2
+    }
+  },
+  "deaths": {
+    "weeks": {
+      "chartName": "cagov-chart-dashboard-postvax-deaths",
+      "series_fields": ["vdeaths","udeaths"],
+      "series_colors": ["#1f2574", "#dc4567"],
+      "x_axis_field":"end_date",
+      "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
+      "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
+      "weeks_to_show": 16,
+      "root_id": "postvax-deaths",
+      "pending_weeks":4
     }
   },
   "desktop": {

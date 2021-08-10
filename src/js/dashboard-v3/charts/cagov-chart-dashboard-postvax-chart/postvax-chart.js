@@ -145,6 +145,32 @@ function writeYAxis(svg, x, y,
   }
 }
 
+function writePendingBlock(svg, x, y,
+  { pending_units=0,
+    pending_legend=null,
+    root_id='pid'} ) {
+    let xgroup = svg.append("g")
+      .attr("class",'pending-block');
+
+    const max_x_domain = x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    
+    console.log("Pending",pending_units);
+
+    xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
+      .attr("x",x(max_x_domain-pending_units))
+      .attr("y",y(max_y_domain))
+      .attr("width",x(max_x_domain) - x(max_x_domain-pending_units))
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    xgroup.append('text')
+      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+      .text(pending_legend)
+      .attr("x",x(max_x_domain))
+      .attr("y",y(max_y_domain)-4);
+}
+
 // Convert 
 function getDataIndexByX(xScale, yScale, xy)
 {
@@ -233,6 +259,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     x_axis_field = null,
     line_date_offset = 0,
     y_fmt = 'num',
+    pending_weeks = 0,
+    pending_legend = '',
     crop_floor = false,
     chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
@@ -287,6 +315,13 @@ function getAxisDiv(ascale,{hint='num'}) {
             { root_id:root_id+"_l2", line_id:'line_s2', crop_floor:crop_floor, color:series_colors[1]});
     
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
+    if (pending_weeks > 0) {
+      let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
+      writePendingBlock.call(this, this.svg, this.xline, this.yline,
+            { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
+    }
+
+
 
     // Write Y Axis, favoring line on left, bars on right
     writeYAxis.call(this, this.svg, this.xline, this.yline,
