@@ -11,13 +11,11 @@ import { hasURLSearchparam, getURLSearchParam}  from "../common/geturlparams.js"
 
 class CAGovDashboardPostvaxHospitalizations extends window.HTMLElement {
   connectedCallback() {
-    console.log("Loading CAGovDashboardPostvaxHospitalizations");
-
     this.chartMode = getURLSearchParam('mode','weekly');
-
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
+    console.log("Loading Postvax Chart",this.chartConfigKey,this.chartConfigFilter);
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
@@ -94,7 +92,7 @@ class CAGovDashboardPostvaxHospitalizations extends window.HTMLElement {
                           'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
-                          'root_id':'postvax-hospitalizations',
+                          'root_id':this.chartOptions.root_id,
                           'chart_mode':this.chartMode,
                         };
       renderChart.call(this, renderOptions);

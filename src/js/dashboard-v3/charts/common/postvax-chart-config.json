@@ -8,8 +8,7 @@
       "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
       "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
       "weeks_to_show": 16,
-      "rootId": "cases-ep",
-      "filterKeys": ["episode","reported"]
+      "root_id": "postvax-cases"
     }
   },
   "deaths": {
@@ -21,8 +20,7 @@
       "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
       "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
       "weeks_to_show": 16,
-      "rootId": "death-date",
-      "filterKeys": ["death","reported"]
+      "root_id": "postvax-deaths"
     }
   },
   "hospitalizations": {
@@ -34,8 +32,7 @@
       "dataUrlWeekly": "vax_vs_unvax_weekly_summary_sample.json",
       "dataUrlDaily": "vax_vs_unvax_daily_avg_sample.json",
       "weeks_to_show": 16,
-      "rootId": "tests-tests",
-      "filterKeys": ["testing","reported"]
+      "root_id": "postvax-hospitalizations"
     }
   },
   "desktop": {

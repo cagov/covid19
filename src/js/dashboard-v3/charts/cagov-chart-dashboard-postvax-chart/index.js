@@ -9,7 +9,7 @@ import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchparam, getURLSearchParam}  from "../common/geturlparams.js";
 
-class CAGovDashboardPostvaxCases extends window.HTMLElement {
+class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
     this.chartMode = getURLSearchParam('mode','weekly');
     this.translationsObj = getTranslations(this);
@@ -150,7 +150,7 @@ class CAGovDashboardPostvaxCases extends window.HTMLElement {
 }
 
 window.customElements.define(
-  "cagov-chart-dashboard-postvax-cases",
-  CAGovDashboardPostvaxCases
+  "cagov-chart-dashboard-postvax-chart",
+  CAGovDashboardPostvaxChart
 );
 
