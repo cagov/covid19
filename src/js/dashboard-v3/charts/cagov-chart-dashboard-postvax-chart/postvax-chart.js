@@ -6,10 +6,13 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', c
   let component = this;
 
   let groups = svg.append("g")
-    .attr("class","fg-line "+root_id+" "+line_id)
+    .attr("class","fg-line "+root_id+" "+line_id);
+  if (line_id == "line_s3") {
+    groups.attr("stroke-dasharray","2 6");
+  }
     // .attr('style','stroke:'+color+';')
     // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
-    .append('path')
+   groups.append('path')
     .datum(data)
       .attr("d", d3.line()
         .x(function(d,i) { return x(i) })

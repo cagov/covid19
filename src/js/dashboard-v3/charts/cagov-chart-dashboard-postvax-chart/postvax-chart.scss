@@ -11,6 +11,9 @@
     g.fg-line.line_s2 path {
        stroke: #dc4567;
     }
+    g.fg-line.line_s3 path {
+      stroke-dasharray:"1 3";
+    }
     g.date-axis {
       line {
         stroke-width: 0.5px;
