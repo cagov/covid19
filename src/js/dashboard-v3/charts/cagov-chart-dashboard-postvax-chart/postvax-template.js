@@ -8,8 +8,14 @@ export default function template(chartOptions, {
   post_yaxis_legend = "y axis title",
   post_series1_legend = "Vaccinated", // expected
   post_series2_legend = "Unvaccinated", // expected
+  post_series3_legend = "Data pending", // expected
+  pending_mode = '',
   post_chartLegend3 = null, // only used if provided
 }) {
+  let legend_extra = '';
+  if (pending_mode == 'dotted' || pending_mode == 'dots') {
+    legend_extra = "&nbsp;&nbsp;&nbsp;<span class=\"series3-legend-line\">---</span> " + post_series3_legend;
+  }
 
   return /*html*/ `
     <div class="py-2">
@@ -17,7 +23,7 @@ export default function template(chartOptions, {
         <div class="mx-auto postvax-chart">
             <div class="chart-title">${post_chartTitle}</div>
             <div class="y-axis-title">${post_yaxis_legend}
-              <span class="chart-legend"><span class="series1-legend-line">⎯⎯⎯⎯</span> ${post_series1_legend}&nbsp;&nbsp;&nbsp;<span class="series2-legend-line">⎯⎯⎯⎯</span> ${post_series2_legend}</span>
+              <span class="chart-legend"><span class="series1-legend-line">⎯⎯⎯⎯</span> ${post_series1_legend}&nbsp;&nbsp;&nbsp;<span class="series2-legend-line">⎯⎯⎯⎯</span> ${post_series2_legend}${legend_extra}</span>
             </div>
             <div class="svg-holder"></div>
         </div>

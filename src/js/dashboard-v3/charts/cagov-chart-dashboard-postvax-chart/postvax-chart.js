@@ -1,23 +1,58 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true }) {
+function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true, pending_units=0, pending_mode='' }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
-  let groups = svg.append("g")
-    .attr("class","fg-line "+root_id+" "+line_id);
-  if (line_id == "line_s3") {
-    groups.attr("stroke-dasharray","2 6");
+  if (pending_mode == 'dots' || pending_mode == 'dotted') {
+    // divide data into two groups, and use dotted-line on second half
+    let line_data_offset = data.length - pending_units;
+    let d2 = [].concat(data); // shallow copy
+    let line_data2 = d2.splice(line_data_offset, pending_units);
+    let line_data1 = d2;
+    // line_data2 = [line_data1[line_data1.length-1]].concat(line_data2); // prepend end of line_data1
+    line_data1.push(line_data2[0]);
+    let groups1 = svg.append("g")
+      .attr("class","fg-line "+root_id+" "+line_id);
+    // first line
+      // .attr('style','stroke:'+color+';')
+      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    groups1.append('path')
+      .datum(line_data1)
+        .attr("d", d3.line()
+          .x(function(d,i) { return x(i) })
+          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
+          );
+    // second line
+    let groups2 = svg.append("g")
+      .attr("class","fg-line "+root_id+" "+line_id)
+      .attr("stroke-dasharray","2 2");
+    // first line
+      // .attr('style','stroke:'+color+';')
+      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    groups2.append('path')
+      .datum(line_data2)
+        .attr("d", d3.line()
+          .x(function(d,i) { return x(i+line_data_offset) })
+          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
+          );
+  } else {
+
+    let groups = svg.append("g")
+      .attr("class","fg-line "+root_id+" "+line_id);
+    if (line_id == "line_s3") {
+      groups.attr("stroke-dasharray","2 6");
+    }
+      // .attr('style','stroke:'+color+';')
+      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    groups.append('path')
+      .datum(data)
+        .attr("d", d3.line()
+          .x(function(d,i) { return x(i) })
+          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
+          );
   }
-    // .attr('style','stroke:'+color+';')
-    // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
-   groups.append('path')
-    .datum(data)
-      .attr("d", d3.line()
-        .x(function(d,i) { return x(i) })
-        .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
-        );
 }
 
 // Date Axis
@@ -262,6 +297,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     y_fmt = 'num',
     pending_weeks = 0,
     pending_legend = '',
+    pending_mode = 'gray',
     crop_floor = false,
     chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
@@ -310,16 +346,20 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.dimensions.width - this.dimensions.margin.right
         ]);
 
+    let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
+
     series_fields.forEach((sf, i) => {
       writeLine.call(this, this.svg, chartdata, sf, this.xline, this.yline, 
-        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
+        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i], pending_mode:pending_mode, pending_units:pending_units});
     });
 
     
     if (pending_weeks > 0) {
       let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-      writePendingBlock.call(this, this.svg, this.xline, this.yline,
-            { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
+      if (pending_mode != 'dotted') {
+        writePendingBlock.call(this, this.svg, this.xline, this.yline,
+              { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
+      }
     }
 
 

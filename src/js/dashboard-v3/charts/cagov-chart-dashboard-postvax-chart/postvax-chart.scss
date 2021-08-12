@@ -12,6 +12,9 @@
        stroke: #dc4567;
     }
     g.fg-line.line_s3 path {
+      stroke: #cccccc;
+   }
+   g.fg-line.line_s3 path {
       stroke-dasharray:"1 3";
     }
     g.date-axis {
@@ -100,6 +103,10 @@
   .chart-legend .series2-legend-line {
     font-weight:800;
     color: #dc4567;
+  }
+  .chart-legend .series3-legend-line {
+    font-weight:800;
+    color: black;
   }
   div.tooltip-container {
     font-weight: 300;

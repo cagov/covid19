@@ -11,7 +11,8 @@ import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js"
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
-    this.chartMode = getURLSearchParam('mode','daily');
+    this.chart_mode = getURLSearchParam('mode','daily');
+    this.pending_mode = getURLSearchParam('pending','dotted');
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -42,7 +43,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.postvaxChartsDataPath + (this.chartMode == 'weekly'? this.chartOptions.dataUrlWeekly : this.chartOptions.dataUrlDaily);
+    this.dataUrl = config.postvaxChartsDataPath + (this.chart_mode == 'weekly'? this.chartOptions.dataUrlWeekly : this.chartOptions.dataUrlDaily);
 
     this.retrieveData(this.dataUrl);
 
@@ -79,10 +80,11 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const repDict = {}; // format numbers from data for substitutions...
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
     this.translationsObj.post_xaxis_legend = applySubstitutions(this.translationsObj.xaxis_legend, repDict);
-    this.translationsObj.post_yaxis_legend = applySubstitutions(this.chartMode == 'weekly'? this.translationsObj.yaxis_legend : this.translationsObj.yaxis_legend_daily, repDict);
+    this.translationsObj.post_yaxis_legend = applySubstitutions(this.chart_mode == 'weekly'? this.translationsObj.yaxis_legend : this.translationsObj.yaxis_legend_daily, repDict);
     this.translationsObj.post_series1_legend = applySubstitutions(this.translationsObj.series1_legend, repDict);
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
-
+    this.translationsObj.post_series3_legend = applySubstitutions(this.translationsObj.series3_legend, repDict);
+    this.translationsObj.pending_mode = this.pending_mode;
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
@@ -101,7 +103,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
                           'root_id':this.chartOptions.root_id,
-                          'chart_mode':this.chartMode,
+                          'chart_mode':this.chart_mode,
+                          'pending_mode':this.pending_mode,
                           'pending_weeks':this.chartOptions.pending_weeks,
                         };
       renderChart.call(this, renderOptions);
@@ -120,7 +123,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           let weeks_to_show = parseInt(getURLSearchParam('weeks', ''+this.chartOptions.weeks_to_show));
           console.log("dynamic weeks to show",weeks_to_show);
       
-          if (this.chartMode == 'weekly') {
+          if (this.chart_mode == 'weekly') {
             if (this.chartdata.length > weeks_to_show) {
               this.chartdata.splice(0, this.chartdata.length-weeks_to_show); 
             }
