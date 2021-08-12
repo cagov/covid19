@@ -11,7 +11,7 @@ import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js"
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
-    this.chartMode = getURLSearchParam('mode','weekly');
+    this.chartMode = getURLSearchParam('mode','daily');
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
