@@ -138,15 +138,15 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
               sumvax += r.vcases;
               sumunvax += r.ucases;
             });
-            let last_record_idx = this.chartdata.length-1;
-            let headerReplacementDict = {
-              'POSTVAX_START_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[0].start_date)),
-              'POSTVAX_END_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[last_record_idx].end_date)),
-              'POSTVAX_UNVAX_RATIO' : Math.round(sumunvax / sumvax),
-            };
-            let headerDisplayText = document.querySelector('#postvax-chart-intro').innerHTML;
-            headerDisplayText = applySubstitutions(headerDisplayText, headerReplacementDict);
-            d3.select(document.querySelector("#postvax-chart-intro")).text(headerDisplayText);
+            // let last_record_idx = this.chartdata.length-1;
+            // let headerReplacementDict = {
+            //   'POSTVAX_START_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[0].start_date)),
+            //   'POSTVAX_END_DATE' : reformatJSDate(parseSnowflakeDate(this.chartdata[last_record_idx].end_date)),
+            //   'POSTVAX_UNVAX_RATIO' : Math.round(sumunvax / sumvax),
+            // };
+            // let headerDisplayText = document.querySelector('#postvax-chart-intro').innerHTML;
+            // headerDisplayText = applySubstitutions(headerDisplayText, headerReplacementDict);
+            // d3.select(document.querySelector("#postvax-chart-intro")).text(headerDisplayText);
           }
 
           this.renderComponent();
