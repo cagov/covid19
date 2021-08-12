@@ -12,7 +12,9 @@ import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js"
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
     this.chart_mode = getURLSearchParam('mode','daily');
-    this.pending_mode = getURLSearchParam('pending','dotted');
+    this.pending_mode = getURLSearchParam('pending','gray');
+    this.mode_3lines = hasURLSearchParam('3lines');
+
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
@@ -84,11 +86,13 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_series1_legend = applySubstitutions(this.translationsObj.series1_legend, repDict);
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
     this.translationsObj.post_series3_legend = applySubstitutions(this.translationsObj.series3_legend, repDict);
+    this.translationsObj.post_pending_legend = applySubstitutions(this.translationsObj.pending_legend, repDict);
     this.translationsObj.pending_mode = this.pending_mode;
+    this.translationsObj.mode_3lines = this.mode_3lines;
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
-    if (!hasURLSearchParam('3lines')) {
+    if (!this.mode_3lines) {
       series_fields.splice(2,1);
       series_colors.splice(2,1);
     }

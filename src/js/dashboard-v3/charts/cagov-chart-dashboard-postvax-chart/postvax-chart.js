@@ -5,14 +5,13 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', c
   let max_x_domain = x.domain()[1];
   let component = this;
 
-  if (pending_mode == 'dots' || pending_mode == 'dotted') {
+  if (pending_mode == 'dots' || pending_mode == 'dotted' || pending_mode == 'both') {
     // divide data into two groups, and use dotted-line on second half
-    let line_data_offset = data.length - pending_units;
-    let d2 = [].concat(data); // shallow copy
-    let line_data2 = d2.splice(line_data_offset, pending_units);
-    let line_data1 = d2;
+    let line_data_offset = data.length - pending_units - 1;
+    let line_data1 = [].concat(data).splice(0, line_data_offset+1);
+    // note: we start one-unit early so that  we can connect to the two segments
+    let line_data2 = [].concat(data).splice(line_data_offset, pending_units+1);
     // line_data2 = [line_data1[line_data1.length-1]].concat(line_data2); // prepend end of line_data1
-    line_data1.push(line_data2[0]);
     let groups1 = svg.append("g")
       .attr("class","fg-line "+root_id+" "+line_id);
     // first line
@@ -27,7 +26,7 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', c
     // second line
     let groups2 = svg.append("g")
       .attr("class","fg-line "+root_id+" "+line_id)
-      .attr("stroke-dasharray","2 2");
+      .attr("stroke-dasharray","0 3 3");
     // first line
       // .attr('style','stroke:'+color+';')
       // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
@@ -356,7 +355,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     
     if (pending_weeks > 0) {
       let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-      if (pending_mode != 'dotted') {
+      if (pending_mode != 'dotted' && pending_mode != 'dots') {
         writePendingBlock.call(this, this.svg, this.xline, this.yline,
               { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
       }

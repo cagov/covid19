@@ -106,7 +106,11 @@
   }
   .chart-legend .series3-legend-line {
     font-weight:800;
-    color: black;
+    color: #cccccc;
+  }
+  .chart-legend .pending-legend-line {
+    font-weight:800;
+    color: #000;
   }
   div.tooltip-container {
     font-weight: 300;

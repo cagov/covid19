@@ -8,13 +8,18 @@ export default function template(chartOptions, {
   post_yaxis_legend = "y axis title",
   post_series1_legend = "Vaccinated", // expected
   post_series2_legend = "Unvaccinated", // expected
-  post_series3_legend = "Data pending", // expected
+  post_series3_legend = "All cases", // expected
+  post_pending_legend = "Data pending", // expected
   pending_mode = '',
+  mode_3lines = false,
   post_chartLegend3 = null, // only used if provided
 }) {
   let legend_extra = '';
-  if (pending_mode == 'dotted' || pending_mode == 'dots') {
-    legend_extra = "&nbsp;&nbsp;&nbsp;<span class=\"series3-legend-line\">---</span> " + post_series3_legend;
+  if (mode_3lines) {
+    legend_extra += "&nbsp;&nbsp;&nbsp;<span class=\"series3-legend-line\">⎯⎯⎯⎯</span> " + post_series3_legend;    
+  }
+  if (pending_mode == 'dotted' || pending_mode == 'dots' || pending_mode == 'both') {
+    legend_extra += "&nbsp;&nbsp;&nbsp;<span class=\"pending-legend-line\">---</span> " + post_pending_legend;
   }
 
   return /*html*/ `
