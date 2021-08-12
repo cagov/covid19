@@ -18,9 +18,6 @@ export default function template(chartOptions, {
   if (mode_3lines) {
     legend_extra += "&nbsp;&nbsp;&nbsp;<span class=\"series3-legend-line\">⎯⎯⎯⎯</span> " + post_series3_legend;    
   }
-  if (pending_mode == 'dotted' || pending_mode == 'dots' || pending_mode == 'both') {
-    legend_extra += "&nbsp;&nbsp;&nbsp;<span class=\"pending-legend-line\">---</span> " + post_pending_legend;
-  }
 
   return /*html*/ `
     <div class="py-2">
@@ -28,7 +25,7 @@ export default function template(chartOptions, {
         <div class="mx-auto postvax-chart">
             <div class="chart-title">${post_chartTitle}</div>
             <div class="y-axis-title">${post_yaxis_legend}
-              <span class="chart-legend"><span class="series1-legend-line">⎯⎯⎯⎯</span> ${post_series1_legend}&nbsp;&nbsp;&nbsp;<span class="series2-legend-line">⎯⎯⎯⎯</span> ${post_series2_legend}${legend_extra}</span>
+              <span class="chart-legend"><span class="series1-legend-line">⎯⎯⎯⎯</span> ${post_series1_legend}&nbsp;&nbsp;&nbsp;<span class="series2-legend-line">⎯⎯⎯⎯</span> ${post_series2_legend}${legend_extra}&nbsp;&nbsp;&nbsp;<span class=\"pending-legend-line\"><img style="position:relative;top:-2px;" src="/img/pending_legend.png" /></span> ${post_pending_legend}</span>
             </div>
             <div class="svg-holder"></div>
         </div>

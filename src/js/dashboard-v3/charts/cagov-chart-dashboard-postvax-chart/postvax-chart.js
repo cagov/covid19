@@ -187,7 +187,7 @@ function writePendingBlock(svg, x, y,
     pending_legend=null,
     root_id='pid'} ) {
     let xgroup = svg.append("g")
-      .attr("class",'pending-block');
+      .attr("class",'pending-block-postvax');
 
     const max_x_domain = x.domain()[1];
     const min_y_domain = y.domain()[0];
@@ -196,16 +196,16 @@ function writePendingBlock(svg, x, y,
     console.log("Pending",pending_units);
 
     xgroup.append('rect')
-      // .attr('style','fill:black;opacity:0.05;')
+      .attr('style','fill: url(#'+root_id+'hatch1);')
       .attr("x",x(max_x_domain-pending_units))
       .attr("y",y(max_y_domain))
       .attr("width",x(max_x_domain) - x(max_x_domain-pending_units))
       .attr("height",y(min_y_domain)-y(max_y_domain));
-    xgroup.append('text')
-      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
-      .text(pending_legend)
-      .attr("x",x(max_x_domain))
-      .attr("y",y(max_y_domain)-4);
+    // xgroup.append('text')
+    //   // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+    //   .text(pending_legend)
+    //   .attr("x",x(max_x_domain))
+    //   .attr("y",y(max_y_domain)-4);
 }
 
 // Convert 
@@ -316,10 +316,33 @@ function getAxisDiv(ascale,{hint='num'}) {
         0,
         this.chartBreakpointValues.width,
         this.chartBreakpointValues.height,
-      ])
-      .append("g")
-      .attr("transform", "translate(0,0)")
-      .attr("style", "fill:#CCCCCC;");
+      ]);
+
+      const patternSuffixes = ['1'];
+      this.svg.append("defs")
+        .selectAll("pattern")
+        .data(patternSuffixes)
+        .join("pattern")
+         .attr("id",d => root_id+'hatch'+d)
+         .attr("x",0)
+         .attr("x",0)
+         .attr("width",4)
+         .attr("height",4)
+         .attr("style","stroke:#0AF; stroke-width:1")
+         .attr("patternUnits","userSpaceOnUse")
+         .append('path')
+           .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2');
+        //  .attr("width",8)
+        //  .attr("height",8)
+        //  .attr("style","stroke:#0AF; stroke-width:2")
+        //  .attr("patternUnits","userSpaceOnUse")
+        //  .append('path')
+        //    .attr('d', 'M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4');
+ 
+     this.svg.append("g")
+           .attr("transform", "translate(0,0)")
+           .attr("style", "fill:#CCCCCC;");
+     
 
     this.tooltip = d3
       .select(this.chartOptions.chartName)
