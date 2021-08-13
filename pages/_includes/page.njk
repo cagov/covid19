@@ -44,6 +44,8 @@
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif page | engSlug === "state-dashboard" -%}
                 {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
+              {%- elseif page | engSlug === "v4-state-dashboard" -%}
+                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "vaccination-progress-data" -%}
                 {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
