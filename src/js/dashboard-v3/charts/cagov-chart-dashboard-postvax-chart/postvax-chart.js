@@ -318,27 +318,36 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.chartBreakpointValues.height,
       ]);
 
-      const patternSuffixes = ['1'];
+// <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+//  <line x1="0" y1="0" x2="0" y2="10" style="stroke:black; stroke-width:1" />
+//  </pattern>
+
+  const patternSuffixes = ['1'];
       this.svg.append("defs")
         .selectAll("pattern")
         .data(patternSuffixes)
         .join("pattern")
          .attr("id",d => root_id+'hatch'+d)
-         .attr("x",0)
-         .attr("x",0)
-         .attr("width",4)
-         .attr("height",4)
-         .attr("style","stroke:#0AF; stroke-width:1")
          .attr("patternUnits","userSpaceOnUse")
-         .append('path')
-           .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2');
-        //  .attr("width",8)
-        //  .attr("height",8)
-        //  .attr("style","stroke:#0AF; stroke-width:2")
-        //  .attr("patternUnits","userSpaceOnUse")
+         .attr("style","stroke:#0AF; stroke-width:2")
+         .attr("x",0)
+         .attr("x",0)
+         .attr("width",3.75)
+         .attr("height",3.75)
+         .attr('patternTransform',"rotate(45 0 0)")
+         .append('line')
+          .attr('x1',0)
+          .attr('y1',0)
+          .attr('x2',0)
+          .attr('y2',10);
+
+        //  .attr("width",4)
+        //  .attr("height",4)
         //  .append('path')
-        //    .attr('d', 'M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4');
- 
+        //    .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
+      ;
+          
+
      this.svg.append("g")
            .attr("transform", "translate(0,0)")
            .attr("style", "fill:#CCCCCC;");
