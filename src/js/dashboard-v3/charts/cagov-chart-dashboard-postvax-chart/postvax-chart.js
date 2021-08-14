@@ -1,64 +1,27 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true, pending_units=0, pending_mode='' }) {
+function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
-  if (pending_mode == 'dots' || pending_mode == 'dotted' || pending_mode == 'both') {
-    // divide data into two groups, and use dotted-line on second half
-    let line_data_offset = data.length - pending_units - 1;
-    let line_data1 = [].concat(data).splice(0, line_data_offset+1);
-    // note: we start one-unit early so that  we can connect to the two segments
-    let line_data2 = [].concat(data).splice(line_data_offset, pending_units+1);
-    // line_data2 = [line_data1[line_data1.length-1]].concat(line_data2); // prepend end of line_data1
-    let groups1 = svg.append("g")
-      .attr("class","fg-line "+root_id+" "+line_id);
-    // first line
-      // .attr('style','stroke:'+color+';')
-      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
-    groups1.append('path')
-      .datum(line_data1)
-        .attr("d", d3.line()
-          .x(function(d,i) { return x(i) })
-          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
-          );
-    // second line
-    let groups2 = svg.append("g")
-      .attr("class","fg-line "+root_id+" "+line_id)
-      .attr("stroke-dasharray","0 3 3");
-    // first line
-      // .attr('style','stroke:'+color+';')
-      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
-    groups2.append('path')
-      .datum(line_data2)
-        .attr("d", d3.line()
-          .x(function(d,i) { return x(i+line_data_offset) })
-          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
-          );
-  } else {
-
-    let groups = svg.append("g")
-      .attr("class","fg-line "+root_id+" "+line_id);
-    if (line_id == "line_s3") {
-      groups.attr("stroke-dasharray","2 6");
-    }
-      // .attr('style','stroke:'+color+';')
-      // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
-    groups.append('path')
-      .datum(data)
-        .attr("d", d3.line()
-          .x(function(d,i) { return x(i) })
-          .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
-          );
+  let groups = svg.append("g")
+    .attr("class","fg-line "+root_id+" "+line_id);
+  if (line_id == "line_s3") {
+    groups.attr("stroke-dasharray","2 6");
   }
+  groups.append('path')
+    .datum(data)
+      .attr("d", d3.line()
+        .x(function(d,i) { return x(i) })
+        .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
+        );
 }
 
 // Date Axis
 function writeXAxis(svg, data, date_fld, x, y, 
   { week_modulo=3,
-    root_id='barid',
-    chart_mode='weekly'} ) {
+    root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
@@ -79,14 +42,14 @@ function writeXAxis(svg, data, date_fld, x, y,
 
       let subg = xgroup.append("g")
             .attr('class','x-tick');
-      if (chart_mode == 'weekly') {
-        subg.append('line')
-        .attr('x1', x(i))
-        .attr('y1', axisY+tick_upper_gap)
-        .attr('x2', x(i))
-        .attr('y2',axisY+tick_upper_gap+tick_height)
-        .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
-      }
+      // if (chart_mode == 'weekly') {
+      //   subg.append('line')
+      //   .attr('x1', x(i))
+      //   .attr('y1', axisY+tick_upper_gap)
+      //   .attr('x2', x(i))
+      //   .attr('y2',axisY+tick_upper_gap+tick_height)
+      //   .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
+      // }
       
       if (i == 0 || i == data.length-1) {
         const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
@@ -182,31 +145,7 @@ function writeYAxis(svg, x, y,
   }
 }
 
-function writePendingBlock(svg, x, y,
-  { pending_units=0,
-    pending_legend=null,
-    root_id='pid'} ) {
-    let xgroup = svg.append("g")
-      .attr("class",'pending-block-postvax');
 
-    const max_x_domain = x.domain()[1];
-    const min_y_domain = y.domain()[0];
-    const max_y_domain = y.domain()[1];
-    
-    console.log("Pending",pending_units);
-
-    xgroup.append('rect')
-      .attr('style','fill: url(#'+root_id+'hatch1);')
-      .attr("x",x(max_x_domain-pending_units))
-      .attr("y",y(max_y_domain))
-      .attr("width",x(max_x_domain) - x(max_x_domain-pending_units))
-      .attr("height",y(min_y_domain)-y(max_y_domain));
-    // xgroup.append('text')
-    //   // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
-    //   .text(pending_legend)
-    //   .attr("x",x(max_x_domain))
-    //   .attr("y",y(max_y_domain)-4);
-}
 
 // Convert 
 function getDataIndexByX(xScale, yScale, xy)
@@ -294,11 +233,11 @@ function getAxisDiv(ascale,{hint='num'}) {
     x_axis_field = null,
     line_date_offset = 0,
     y_fmt = 'num',
-    pending_weeks = 0,
-    pending_legend = '',
-    pending_mode = 'gray',
+    // pending_weeks = 0,
+    // pending_legend = '',
+    // pending_mode = 'gray',
     crop_floor = false,
-    chart_mode = 'weekly',
+    // chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
 
     console.log("renderChart",root_id);
@@ -318,34 +257,26 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.chartBreakpointValues.height,
       ]);
 
-// <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-//  <line x1="0" y1="0" x2="0" y2="10" style="stroke:black; stroke-width:1" />
-//  </pattern>
 
-  const patternSuffixes = ['1'];
-      this.svg.append("defs")
-        .selectAll("pattern")
-        .data(patternSuffixes)
-        .join("pattern")
-         .attr("id",d => root_id+'hatch'+d)
-         .attr("patternUnits","userSpaceOnUse")
-         .attr("style","stroke:#0AF; stroke-width:2")
-         .attr("x",0)
-         .attr("x",0)
-         .attr("width",3.75)
-         .attr("height",3.75)
-         .attr('patternTransform',"rotate(45 0 0)")
-         .append('line')
-          .attr('x1',0)
-          .attr('y1',0)
-          .attr('x2',0)
-          .attr('y2',10);
-
-        //  .attr("width",4)
-        //  .attr("height",4)
-        //  .append('path')
-        //    .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
-      ;
+  // const patternSuffixes = ['1'];
+  //     this.svg.append("defs")
+  //       .selectAll("pattern")
+  //       .data(patternSuffixes)
+  //       .join("pattern")
+  //        .attr("id",d => root_id+'hatch'+d)
+  //        .attr("patternUnits","userSpaceOnUse")
+  //        .attr("style","stroke:#0AF; stroke-width:2")
+  //        .attr("x",0)
+  //        .attr("x",0)
+  //        .attr("width",3.75)
+  //        .attr("height",3.75)
+  //        .attr('patternTransform',"rotate(45 0 0)")
+  //        .append('line')
+  //         .attr('x1',0)
+  //         .attr('y1',0)
+  //         .attr('x2',0)
+  //         .attr('y2',10);
+  //     ;
           
 
      this.svg.append("g")
@@ -377,21 +308,21 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.dimensions.width - this.dimensions.margin.right
         ]);
 
-    let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
+    // let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
 
     series_fields.forEach((sf, i) => {
       writeLine.call(this, this.svg, chartdata, sf, this.xline, this.yline, 
-        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i], pending_mode:pending_mode, pending_units:pending_units});
+        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
     });
 
     
-    if (pending_weeks > 0) {
-      let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-      if (pending_mode != 'dotted' && pending_mode != 'dots') {
-        writePendingBlock.call(this, this.svg, this.xline, this.yline,
-              { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
-      }
-    }
+    // if (pending_weeks > 0) {
+    //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
+    //   if (pending_mode != 'dotted' && pending_mode != 'dots') {
+    //     writePendingBlock.call(this, this.svg, this.xline, this.yline,
+    //           { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
+    //   }
+    // }
 
 
 
@@ -399,7 +330,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     writeYAxis.call(this, this.svg, this.xline, this.yline,
          {y_fmt:y_fmt, root_id:root_id});
     writeXAxis.call(this, this.svg, chartdata, x_axis_field, this.xline, this.yline,
-      {week_modulo: 1, root_id:root_id, chart_mode:chart_mode} );
+      {week_modulo: 1, root_id:root_id} );
 
     // writeLegends.call(this, this.svg, chartdata, series_legends, series_colors, this.xline, this.yline);
 
