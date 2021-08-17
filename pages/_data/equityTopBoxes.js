@@ -84,8 +84,9 @@ module.exports = function() {
       output[0].lowincome_date = data.LowIncome[0].DATE;
       output[0].demographics_date = raceLatino.REPORT_DATE;
 
+      // force to most recent wednesday
       const theDate = new Date();
-      while (theDate.getDay() != 2) {
+      while (theDate.getDay() != 3) {
         theDate.setDate(theDate.getDate() - 1);
       }
       output[0].publish_date = getSnowflakeStyleDateJS(theDate);
