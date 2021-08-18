@@ -13,7 +13,6 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
     // this.chart_mode = getURLSearchParam('mode','daily'); // no longer used
     // this.pending_mode = getURLSearchParam('pending','gray');
-    this.mode_3lines = hasURLSearchParam('3lines');
 
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
@@ -45,7 +44,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.postvaxChartsDataPath + this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
 
@@ -68,7 +67,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
   getTooltipContent(di) {    
     const drec = this.chartdata[di];
     const repDict = {
-      WEEKDATES:   reformatReadableDate(drec.start_date) + ' – ' + reformatReadableDate(drec.end_date),
+      WEEKDATE:   reformatReadableDate(drec.DATE),
       VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
       UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
     };
@@ -102,14 +101,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_series3_legend = applySubstitutions(this.translationsObj.series3_legend, repDict);
     this.translationsObj.post_pending_legend = applySubstitutions(this.translationsObj.pending_legend, repDict);
     this.translationsObj.pending_mode = this.pending_mode;
-    this.translationsObj.mode_3lines = this.mode_3lines;
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
-    if (!this.mode_3lines) {
-      series_fields.splice(2,1);
-      series_colors.splice(2,1);
-    }
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
@@ -147,6 +141,12 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           if (this.chartdata.length > days_to_show) {
             this.chartdata.splice(0, this.chartdata.length-days_to_show); 
           }
+
+          // Premult
+          this.chartdata.forEach(rec => {
+            rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
+            rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
+          });
 
           this.renderComponent();
 
