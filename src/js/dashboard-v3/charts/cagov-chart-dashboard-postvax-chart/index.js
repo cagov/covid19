@@ -44,7 +44,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLocPostvax + this.chartOptions.dataUrl;
 
     this.retrieveData(this.dataUrl);
 
@@ -78,18 +78,22 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
   renderComponent() {
     console.log("Rendering Post Vax Chart");
-    let sumvax = 0;
-    let sumunvax = 0;
-    let tempData = [...this.chartdata];
-    let sample_days = this.chartOptions.sample_days;
-    tempData.splice(tempData.length-sample_days,sample_days);
-    tempData.forEach(r => {
-      sumvax += r[this.chartOptions.series_fields[0]];
-      sumunvax += r[this.chartOptions.series_fields[1]];
-    });
-
+    // let sumvax = 0;
+    // let sumunvax = 0;
+    // let tempData = [...this.chartdata];
+    // let sample_days = this.chartOptions.sample_days;
+    let last_day = this.chartdata.length-1;
+    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    // tempData.splice(tempData.length-sample_days,sample_days);
+    // tempData.forEach(r => {
+    //   sumvax += r[this.chartOptions.series_fields[0]];
+    //   sumunvax += r[this.chartOptions.series_fields[1]];
+    // });
+    // const repDict = {
+    //   RATE_PERCENT:(Math.round(100*sumunvax / sumvax))+'%',
+    // };
     const repDict = {
-      RATE_PERCENT:(Math.round(100*sumunvax / sumvax))+'%',
+      RATE_PERCENT:(Math.round(100*last_ratio))+'%',
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);

@@ -7,12 +7,12 @@ import postcss from 'rollup-plugin-postcss';
 const defaultConfig = {
   chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
   chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
-  postvaxChartsDataPath: 'https://files.covid19.ca.gov/data/chart-sandbox/',
+  chartsStateDashTablesLocPostvax: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
   chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/',
-  postvaxChartsDataPath: 'https://files.covid19.ca.gov/data/chart-sandbox/',
+  chartsStateDashTablesLocPostvax: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 
 const devOutputPath = 'docs/js/dashboard-v3.js';
