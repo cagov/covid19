@@ -45,7 +45,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-
+    console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
@@ -64,37 +64,39 @@ class CAGovDashboardSparkline extends window.HTMLElement {
   renderExtras(svg, data, x, y) {
   }
 
-//   getTooltipContent(di) {    
-//     const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
-//     const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-//     // console.log("getTooltipContent",di,lineSeries);
-//     const repDict = {
-//       DATE:   reformatReadableDate(lineSeries[di].DATE),
-//       '7DAY_POSRATE':formatValue(lineSeries[di].VALUE,{format:'percent'}),
-//       TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
-//     };
-//     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
-//     let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
-//     let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD);
-//     if (+datumDate >= +pendingDate) {
-//       caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
-//     }
-//     return caption;
-//   }
-
   renderComponent() {
     let addStateLine = false;
     this.statedata = this.chartdata;
-    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+
+    console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_weeks = this.chartOptions.uncertainty_weeks;
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+    // clone in case they are the same
+    bar_series = JSON.parse(JSON.stringify(bar_series));
     let line_series = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // clone in case they are the same
+    line_series = JSON.parse(JSON.stringify(line_series));
+    // Produce 7 day averages
+    if (this.dataset.chartConfigKey == 'vaccines') {
+      let avg_records = [];
+      line_series.forEach((rec,i) => {
+          let sum = 0;
+          for (let j = i; j < i+7; ++j) {
+            sum += j < line_series.length? line_series[j].VALUE : 0;
+          }
+          avg_records.push({DATE:rec.DATE,VALUE:sum/7.0});
+      });
+      line_series = avg_records;
+      console.log("AVERAGE RECORDS: ",line_series);
+    }
+
     bar_series = bar_series.splice(uncertainty_weeks*7, display_weeks*7);
     line_series = line_series.splice(uncertainty_weeks*7, display_weeks*7);
-
+    console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
+    console.log("Line Series",this.dataset.chartConfigFilter,line_series);
     let renderOptions = {
                           'extras_func':this.renderExtras,
                           'time_series_bars':bar_series,
@@ -102,7 +104,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
                           'left_y_fmt':'pct',
                           'root_id':'pos-rate',
                           'right_y_fmt':'integer',
-                          'pending_date':this.chartdata.latest[this.chartOptions.latestField].TESTING_UNCERTAINTY_PERIOD,
                         };
       if (addStateLine) {
         renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;

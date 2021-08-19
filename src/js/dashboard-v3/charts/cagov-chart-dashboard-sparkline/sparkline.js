@@ -311,19 +311,19 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
   
       // writeDownloadButton.call(this,{root_id:root_id});
   
-      this.svg
-      .on("mousemove focus", (event) => {
-        // let xy = d3.pointer(event);
-        // let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
-        // if (dIndex != null) {
-        //   showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
-        // } else {
-        //   hideTooltip.call(this);
-        // }
-      })
-      .on("mouseleave touchend blur", (event) => {
-        hideTooltip.call(this);
-      });
+      // this.svg
+      // .on("mousemove focus", (event) => {
+      //   // let xy = d3.pointer(event);
+      //   // let dIndex = getDataIndexByX(time_series_bars, this.xbars, this.ybars, time_series_bars, this.yline, time_series_line, xy);
+      //   // if (dIndex != null) {
+      //   //   showTooltip.call(this, event, dIndex, xy, dIndex, time_series_bars[dIndex], this.xbars, this.ybars);
+      //   // } else {
+      //   //   hideTooltip.call(this);
+      //   // }
+      // })
+      // .on("mouseleave touchend blur", (event) => {
+      //   hideTooltip.call(this);
+      // });
   
   
     }
