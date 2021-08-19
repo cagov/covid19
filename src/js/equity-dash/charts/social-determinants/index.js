@@ -224,7 +224,7 @@ class CAGOVChartD3Bar extends window.HTMLElement {
           }
         });
         resetToggles();
-        tog.classList.add('active')
+        tog.classList.add('active');
       })
     })
 
