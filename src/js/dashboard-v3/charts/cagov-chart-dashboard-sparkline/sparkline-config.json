@@ -1,0 +1,100 @@
+
+{
+    "cases": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-confirmed-cases",
+        "latestField": "CONFIRMED_CASES",
+        "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
+        "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
+        "dataUrl": "confirmed-cases/california.json",
+        "rootId": "cases-ep",
+        "filterKeys": ["episode","reported"],
+        "display_weeks": 12,
+        "uncertainty_weeks": 1  
+      }
+    },
+    "deaths": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-confirmed-deaths",
+        "latestField": "CONFIRMED_DEATHS",
+        "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
+        "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
+        "dataUrl": "confirmed-deaths/california.json",
+        "rootId": "death-date",
+        "filterKeys": ["death","reported"],
+        "display_weeks": 12,
+        "uncertainty_weeks": 3      
+      }
+    },
+    "tests": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-total-tests",
+        "latestField": "TOTAL_TESTS",
+        "seriesField": "TOTAL_TESTS",
+        "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
+        "dataUrl": "total-tests/california.json",
+        "rootId": "tests-tests",
+        "filterKeys": ["testing","reported"],
+        "display_weeks": 12,
+        "uncertainty_weeks": 1
+      }
+    },
+    "vaccines": {
+        "sparkline": {
+          "note": "THIS DATA DOES NOT EXIST YET",
+          "chartName": "cagov-chart-dashboard-total-tests",
+          "latestField": "TOTAL_TESTS",
+          "seriesField": "TOTAL_TESTS",
+          "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
+          "dataUrl": "total-tests/california.json",
+          "rootId": "tests-vaccines",
+          "filterKeys": ["testing","reported"],
+          "display_weeks": 12,
+          "uncertainty_weeks": 1
+        }
+    },
+    "desktop": {
+      "fontSize": 14,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 0,   
+        "top": 0,  
+        "right": 0,  
+        "bottom": 0
+      }
+    },
+    "tablet": {
+      "fontSize": 14,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 0,   
+        "top": 0,  
+        "right": 0,  
+        "bottom": 0
+      }
+    },
+    "mobile": {
+      "fontSize": 12,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 0,   
+        "top": 0,  
+        "right": 0,  
+        "bottom": 0
+      }
+    },
+    "retina": {
+      "fontSize": 12,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 0,   
+        "top": 0,  
+        "right": 0,  
+        "bottom": 0
+      }
+    }
+  }
