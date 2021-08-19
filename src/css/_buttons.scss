@@ -297,6 +297,8 @@ button.clear {
     flex-direction: row;
   }
   .large-tab {
+    pointer-events: unset !important; // work-around for Safari 14
+    cursor: pointer; // work-around for Safari 14
     text-decoration: none;
     font-family: Montserrat;
     font-style: normal;
@@ -328,8 +330,8 @@ button.clear {
     &.active,
     &[aria-expanded="true"],
     &.toggle-active {
-      color: $white;
       background-color: $darkblue;
+      color: $white;
       text-decoration: none;
       pointer-events: none;
       cursor: default;
