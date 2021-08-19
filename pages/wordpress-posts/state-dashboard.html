@@ -23,6 +23,7 @@ addtositemap: true
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
 
 {%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
@@ -72,7 +73,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
+
+{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+
+
 -->
+
+
 
 
 
@@ -102,7 +109,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             <strong>???.??</strong> <span class="text-300">daily avg</span>
           </div>
           <div class="text-white text-xs mt-2 mb-2">
-            <span class="text-300">??.?% of population fully vaccinated</span>
+            <span class="text-300">{{_varFullyVaxedPercent_}}% of population fully vaccinated</span>
           </div>
           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
           <div class="text-white text-xs mt-1 mb-3">
