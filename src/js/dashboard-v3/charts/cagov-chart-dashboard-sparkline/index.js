@@ -69,7 +69,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     this.statedata = this.chartdata;
 
     console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
-
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_weeks = this.chartOptions.uncertainty_weeks;
@@ -84,6 +83,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     line_series = line_series.splice(uncertainty_weeks*7, display_weeks*7);
     console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
     console.log("Line Series",this.dataset.chartConfigFilter,line_series);
+    console.log("Last average",this.dataset.chartConfigKey,line_series[0].DATE,line_series[0].VALUE);
     let renderOptions = {
                           'extras_func':this.renderExtras,
                           'time_series_bars':bar_series,

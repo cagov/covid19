@@ -24,17 +24,22 @@ addtositemap: true
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData -%}
+{%-set datadeaths = deathsSummaryData -%}
+
 
 {%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
+{%-set _varCasesDailyAverage_ = datacases.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumberFixed(tags,2)-%}
+{%-set _varDeathsDailyAverage_ = datadeaths.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
@@ -75,6 +80,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- endif -%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varDosesDailyAverage_ = datavax.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 
 -->
@@ -106,7 +112,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             <span class="text-300">total</span>
           </div>
           <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2">
-            <strong>???.??</strong> <span class="text-300">daily avg</span>
+            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">daily avg</span>
           </div>
           <div class="text-white text-xs mt-2 mb-2">
             <span class="text-300">{{_varFullyVaxedPercent_}}% of population fully vaccinated</span>
@@ -125,7 +131,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
           </div>
           <div id="total-cases-today" class="text-white font-size-1-2em mt-2">
-            <strong>?</strong> <span class="text-300">daily avg</span>
+            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg</span>
           </div>
           <div class="text-white text-xs mt-2 mb-2">
             {{_varStatNewCasesPer100k_}} <span class="text-300">new cases (per 100k)</span>
@@ -144,7 +150,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span>
           </div>
           <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">
-            <strong>?</strong> <span class="text-300">daily avg</span>
+            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">daily avg</span>
           </div>
           <div class="text-white text-xs mt-2 mb-2">
             {{_varStatNewDeathsPer100k_}} <span class="text-300">new deaths (per 100k)</span>
@@ -159,9 +165,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
           <div id="total-deaths-number" class="text-white font-size-1-2em my-2">
-            <strong>&nbsp;</strong> <span class="text-300">&nbsp;</span>
+            &nbsp; <!-- <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">test positivity</span> -->
           </div>
-          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-0">
             <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">test positivity</span>
           </div>
           <div class="text-white text-xs mt-2 mb-2">
