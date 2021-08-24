@@ -25,9 +25,12 @@ class CAGovDashboardSparkline extends window.HTMLElement {
       ? window.charts.displayType
       : "desktop";
 
-    this.chartBreakpointValues = chartConfig[
-      this.screenDisplayType ? this.screenDisplayType : "desktop"
-    ];
+    // console.log("Displaying sparkline",window.charts,this.screenDisplayType);
+    // if (this.screenDisplayType == "desktop" && window.innerWidth < 992) {
+    //   console.log("FORCING TABLET");
+    //   this.screenDisplayType = "tablet";
+    // }
+    this.chartBreakpointValues = chartConfig[this.screenDisplayType];
     this.dimensions = this.chartBreakpointValues;
 
     const handleChartResize = () => {
