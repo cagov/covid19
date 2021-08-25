@@ -30,7 +30,7 @@
   "deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
-      "series_fields": ["BREAKTHROUGH_DEATH_RATE","UNVAX_DEATH_RATE"],
+      "series_fields": ["BREAKTHROUGH_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
       "series_colors": ["#1f2574", "#dc4567"],
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",
