@@ -276,10 +276,10 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
           max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
         }
         // console.log("max_y_domain", max_y_domain);
-        this.yline = d3
-          .scaleLinear()
-          .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
-          .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
+        // this.yline = d3
+        //   .scaleLinear()
+        //   .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+        //   .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
   
       }
   
@@ -292,13 +292,13 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
         // bar legend on left
       }
       if (time_series_line) {
-        writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
+        writeLine.call(this, this.svg, time_series_line, this.xline, this.ybars, 
           { root_id:root_id, crop_floot:crop_floor});
       }
-      if (time_series_state_line) {
-        writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
-          { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
-      }
+      // if (time_series_state_line) {
+      //   writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
+      //     { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
+      // }
   
     //   if (pending_date) {
     //     writePendingBlock.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 

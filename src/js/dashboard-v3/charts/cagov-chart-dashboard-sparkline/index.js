@@ -78,10 +78,20 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
     // clone in case they are the same
     bar_series = JSON.parse(JSON.stringify(bar_series));
-    let line_series = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-    // clone in case they are the same
-    line_series = JSON.parse(JSON.stringify(line_series));
+    // let line_series = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    // // clone in case they are the same
+    // line_series = JSON.parse(JSON.stringify(bar_series));
 
+    // COMPUTE MANUAL AVERAGE
+    let line_series = [];
+    bar_series.forEach((rec,i) => {
+        let sum = 0;
+        for (let j = i; j < i+7; ++j) {
+          sum += j < bar_series.length? bar_series[j].VALUE : 0;
+        }
+        line_series.push({DATE:rec.DATE,VALUE:sum/7.0});
+    });
+  
     bar_series = bar_series.splice(uncertainty_weeks*7, display_weeks*7);
     line_series = line_series.splice(uncertainty_weeks*7, display_weeks*7);
     console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
