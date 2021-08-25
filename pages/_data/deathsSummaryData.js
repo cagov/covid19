@@ -32,7 +32,7 @@ module.exports = function() {
                 break;
             }
         }
-        console.log("SUMMED DEATHS", sumDeathsCount, summed_days);
+        // console.log("SUMMED DEATHS", sumDeathsCount, summed_days);
         let output = 
             {
                 DEATHS_DAILY_AVERAGE: sumDeathsCount / summed_days

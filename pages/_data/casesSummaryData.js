@@ -32,7 +32,7 @@ module.exports = function() {
                 break;
             }
         }
-        console.log("SUMMED CASES", sumCasesCount, summed_days);
+        // console.log("SUMMED CASES", sumCasesCount, summed_days);
         let output = 
             {
                 CASES_DAILY_AVERAGE: sumCasesCount / summed_days

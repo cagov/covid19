@@ -30,7 +30,7 @@ module.exports = function() {
                 break;
             }
         }
-        console.log("SUMMED VACCINE DOSES",summedDosesCount, summed_days, vaxList.length);
+        // console.log("SUMMED VACCINE DOSES",summedDosesCount, summed_days, vaxList.length);
         output.data.DOSES_DAILY_AVERAGE = summedDosesCount / summed_days;
         resolve(output);
     });
