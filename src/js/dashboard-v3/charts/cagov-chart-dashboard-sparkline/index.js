@@ -44,7 +44,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
 
     // Set default values for data and labels
-    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
+    this.dataUrl = config.chartsStateDashTablesLocSparkline + this.chartOptions.dataUrl;
     console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
@@ -79,19 +79,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     let line_series = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // clone in case they are the same
     line_series = JSON.parse(JSON.stringify(line_series));
-    // Produce 7 day averages
-    if (this.dataset.chartConfigKey == 'vaccines') {
-      let avg_records = [];
-      line_series.forEach((rec,i) => {
-          let sum = 0;
-          for (let j = i; j < i+7; ++j) {
-            sum += j < line_series.length? line_series[j].VALUE : 0;
-          }
-          avg_records.push({DATE:rec.DATE,VALUE:sum/7.0});
-      });
-      line_series = avg_records;
-      console.log("AVERAGE RECORDS: ",line_series);
-    }
 
     bar_series = bar_series.splice(uncertainty_weeks*7, display_weeks*7);
     line_series = line_series.splice(uncertainty_weeks*7, display_weeks*7);
