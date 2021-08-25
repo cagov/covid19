@@ -15,7 +15,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
           .y(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
           );
 }
-  
+
 function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
