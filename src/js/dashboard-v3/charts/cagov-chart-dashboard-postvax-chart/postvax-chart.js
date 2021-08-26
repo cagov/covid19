@@ -56,7 +56,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         let text_anchor = (i == 0)? 'start' : 'end';
         subg.append('text')
           .text(date_caption)
-          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.8rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
+          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
           .attr("x", x(i))
           .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
       }
@@ -139,7 +139,7 @@ function writeYAxis(svg, x, y,
 
     subg.append('text')
       .text(y_caption)
-      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.95rem; fill:black;text-anchor: end; dominant-baseline:middle;')
+      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: end; dominant-baseline:middle;')
       .attr("x", x(min_x_domain)-tick_gap)
       .attr("y", y(yi)) // +this.getYOffset(i)
   }

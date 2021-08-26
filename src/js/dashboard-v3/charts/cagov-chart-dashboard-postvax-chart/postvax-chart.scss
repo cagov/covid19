@@ -1,4 +1,17 @@
+cagov-chart-dashboard-postvax-chart {
+  .chart-title {
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .chart-title.noborder {
+    border:none;
+    margin-bottom: 2rem;
+  }
+}
+
 .postvax-chart {
+  max-width: 615px;
   .svg-holder {
     g.fg-line path {
       fill: none;
@@ -24,7 +37,7 @@
       }
       text {
         font-weight: 300;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         fill: black;
       }
       text {
@@ -45,7 +58,7 @@
       }
       text {
         font-weight: 300;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         fill: black;
       }
       text {
@@ -54,7 +67,7 @@
       }
       text.left-y-axis-legend {
         font-weight: 300;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         text-anchor: start;
         dominant-baseline: hanging;
       }
@@ -71,7 +84,7 @@
       }
       text {
         font-weight: 300;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         fill: black;
       }
       text {
@@ -80,21 +93,16 @@
       }
     }
   }
-  .chart-title {
-    font-weight: 300;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
   .y-axis-title {
     font-weight: 300;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   span.chart-legend {
     float:right;
   }
   .chart-legend {
     font-weight: 300;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   .chart-legend .series1-legend-line {
     font-weight:800;
