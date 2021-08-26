@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V4)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-08-13T23:27:37Z"
+publishdate: "2021-08-26T21:24:52Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -21,6 +21,7 @@ addtositemap: false
 
 
 <!--
+{# forcing a staging-build 8/17 2:09pm  #}
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
 
@@ -76,7 +77,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<hr class="wp-block-separator mb-4" id="todays-update"/>
+<hr class="wp-block-separator has-text-color has-background has-white-background-color has-white-color noborder mb-4" id="todays-update"/>
 
 
 
@@ -85,8 +86,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto">
         <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
-        <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19,
-          resulting in {{_varStatTotalDeaths_}} deaths.</p>
+        <p>To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
+          and {{_varStatTotalDeaths_}} deaths.</p>
       </div>
     </div>
 
@@ -239,7 +240,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<hr class="wp-block-separator mt-0" id="postvax-status"/>
+<hr class="wp-block-separator has-text-color has-background has-white-background-color has-white-color noborder mt-0" id="postvax-status"/>
 
 
 
@@ -253,20 +254,21 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+<!-- omitting tabs for now - jbum -->
+<!-- <div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="large-tabs">
       <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
       <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
       <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
     </div>
-  </div>
+  </div> -->
 
 
 
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartHeaderText">Most new cases are among the unvaccinated with {RATE_PERCENT} higher case rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartHeaderText">Most new cases are among the unvaccinated, with {RATE_PERCENT} higher case rates among the unvaccinated than those who are fully vaccinated.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -287,7 +289,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartHeaderText">Most new hospitalizations are among the unvaccinated with {RATE_PERCENT} higher hospitalization rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartHeaderText">Most new hospitalizations are among the unvaccinated, with {RATE_PERCENT} higher hospitalization rates among the unvaccinated than those who are fully vaccinated.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -308,7 +310,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartHeaderText">Most new deaths are among the unvaccinated with {RATE_PERCENT} higher death rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartHeaderText">Most new deaths are among the unvaccinated, with {RATE_PERCENT} higher death rates among the unvaccinated than those who are fully vaccinated.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -725,11 +727,3 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
   <!--END container-->
 </div>
-
-
-
-<p></p>
-
-
-
-<p></p>
