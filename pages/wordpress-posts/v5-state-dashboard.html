@@ -23,17 +23,22 @@ addtositemap: false
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData -%}
+{%-set datadeaths = deathsSummaryData -%}
 
 {%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
+{%-set _varCasesDailyAverage_ = datacases.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumberFixed(tags,2)-%}
+{%-set _varDeathsDailyAverage_ = datadeaths.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
@@ -72,6 +77,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
+
+{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varDosesDailyAverage_ = datavax.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
 -->
 
 
