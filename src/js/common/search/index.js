@@ -66,7 +66,6 @@ class CAGovCountySearch extends window.HTMLElement {
       document.querySelector('#county-query-error').style.display = 'none';
       // do I have a full county typed in here?
       let typedInValue = document.querySelector('#location-query').value.trim();
-      console.log("Triggering county search #2");
       myThis.processCountySearchInput(typedInValue);
     });
     this.handleURLPayload();
