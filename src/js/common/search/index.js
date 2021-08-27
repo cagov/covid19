@@ -60,12 +60,14 @@ class CAGovCountySearch extends window.HTMLElement {
 
     this.countyList = ["Alameda","Alpine","Amador","Butte","Calaveras","Colusa","Contra Costa","Del Norte","El Dorado","Fresno","Glenn","Humboldt","Imperial","Inyo","Kern","Kings","Lake","Lassen","Los Angeles","Madera","Marin","Mariposa","Mendocino","Merced","Modoc","Mono","Monterey","Napa","Nevada","Orange","Placer","Plumas","Riverside","Sacramento","San Benito","San Bernardino","San Diego","San Francisco","San Joaquin","San Luis Obispo","San Mateo","Santa Barbara","Santa Clara","Santa Cruz","Shasta","Sierra","Siskiyou","Solano","Sonoma","Stanislaus","Sutter","Tehama","Trinity","Tulare","Tuolumne","Ventura","Yolo","Yuba"];
     this.setupAutoComp('#location-query', 'county', this.countyList);
+    let myThis = this;
     document.querySelector('#county-form').addEventListener('submit',function(event) {
       event.preventDefault();
       document.querySelector('#county-query-error').style.display = 'none';
       // do I have a full county typed in here?
       let typedInValue = document.querySelector('#location-query').value.trim();
-      this.processCountySearchInput(typedInValue);
+      console.log("Triggering county search #2");
+      myThis.processCountySearchInput(typedInValue);
     });
     this.handleURLPayload();
 
