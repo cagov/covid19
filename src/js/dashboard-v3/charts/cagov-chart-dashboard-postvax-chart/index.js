@@ -93,7 +93,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     //   RATE_PERCENT:(Math.round(100*sumunvax / sumvax))+'%',
     // };
     const repDict = {
-      RATE_PERCENT:(Math.round(100*last_ratio))+'%',
+      RATE_PERCENT:formatValue(last_ratio,{format:'percent',min_decimals:0}), // (Math.round(100*last_ratio))+'%',
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
