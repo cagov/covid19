@@ -3,7 +3,7 @@ import { parseSnowflakeDate } from "../../../common/readable-date.js";
 export default class Tooltip {
   constructor(needs_anno, yScale) {
     let yRange = yScale.range();
-    console.log("Range",yRange);
+    // console.log("Range",yRange);
     this.needs_anno = needs_anno;
     // this.legend = legend; // no longer using this param
     this.node = document.createElementNS("http://www.w3.org/2000/svg","g")
