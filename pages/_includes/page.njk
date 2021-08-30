@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block contentBlock %}
-  <div class="container-fluid jumbotron{%- pagesection page, 'state-dashboard' %} mb-0{%- endpagesection %} inverse-hyperlink jumbo-img">
+  <div class="container-fluid jumbotron inverse-hyperlink jumbo-img">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="container{%- pagesection page, 'state-dashboard' %} pb-0{%- endpagesection %}">
+  <div class="container{%- pagesection page, 'state-dashboard' %} blue-bottom{%- endpagesection %}{%- pagesection page, 'v4-state-dashboard' %} blue-bottom{%- endpagesection %}{%- pagesection page, 'v5-state-dashboard' %} blue-bottom{%- endpagesection %}">
     <div class="row">
       <div class="col-lg-10 mx-auto">
         {{ content | safe  }}
