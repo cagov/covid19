@@ -61,8 +61,12 @@ export default function formatValue(v, {format='number',min_decimals=1})
             return float2Formatter.format(v);
         } else if (min_decimals == 0) {
             return intFormatter.format(v);
-        } else {
+        } else if (min_decimals == 1) {
             return float1Formatter.format(v);
+        } else if (min_decimals == 2) {
+            return float2Formatter.format(v);
+        } else {
+            return float3Formatter.format(v);
         }
     }
 }

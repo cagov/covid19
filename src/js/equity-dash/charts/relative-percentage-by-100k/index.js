@@ -141,7 +141,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       let templateStr = this.translationsObj["chartToolTip-caption"];
       let caption = templateStr
         .replace("placeholderDEMO_CAT", a)
-        .replace("placeholderMETRIC_100K", formatValue(b,{format:'integer'}))
+        .replace("placeholderMETRIC_100K", formatValue(b,{format:'number',min_decimals:this.decimal_display_places}))
         .replace("placeholderFilterScope", c);
       return caption;
     };
@@ -358,6 +358,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
       // console.log("max xd",max_xdomain, statewideRatePer100k);
       max_xdomain = Math.max(max_xdomain, statewideRatePer100k)
     }
+    this.decimal_display_places = max_xdomain >= 20? 0 : max_xdomain >= 2? 1 : 2;
 
     let barGap = this.dimensions.is_single_col? 60 : 40;
     this.x = d3
