@@ -707,6 +707,10 @@ border: none;
   padding-top:1.5rem;
   padding-bottom:2.5rem;
 }
+.jumbotron + .container.blue-bottom {
+  padding-bottom:0;
+  margin-bottom:0;
+}
 
 .jumbotron.jumbo-img .container {
   @include phone {

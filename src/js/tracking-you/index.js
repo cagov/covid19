@@ -13,8 +13,8 @@ export default function setupAnalytics() {
   });
 
   document.querySelectorAll('a').forEach((a) => {
-    // look for and track offsite and pdf links
-    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf('covid19.ca.gov') > -1) {
+    // look for and track anchor and pdf links
+    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf('covid19.ca.gov') > -1) { // do this because pdfs are on linked subdomains
       if(a.href.indexOf('.pdf') > -1) {
         a.addEventListener('click',function() {
           reportGA('pdf', this.href.split(window.location.hostname)[1])
@@ -25,11 +25,16 @@ export default function setupAnalytics() {
           reportGA('anchor', this.href.split(window.location.hostname)[1])
         });    
       }
-    } else {
-      // console.log("Adding offsite link handler:",window.location.hostname,a.href);
-      a.addEventListener('click',function() {
-        reportGA('offsite', this.href)
-      })
+    }
+    // look for offsite links
+    if(a.href.indexOf(window.location.origin) === -1 && a.href.indexOf('http') > -1) { // we are looking at a different protocol + hostname, ignoring tel: links
+      if(a.href.indexOf('.pdf') === -1) {
+        // we want to track links to subdomains like toolkit.covid19.ca.gov
+        // but we don't want to record clicks to files.covid19.ca.gov/my.pdf as offsite links because we record those as pdf clicks above
+        a.addEventListener('click',function() {
+          reportGA('offsite', this.href)
+        })          
+      }
     }
   });
 

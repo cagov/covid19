@@ -145,14 +145,10 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('roadmap', env.dev) }}
 {% endpagesection -%} #}
 
-{%- pagesection page, "v3-state-dashboard" %}
+{%- pagesectionincludes page, "state-dashboard" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('dashboard-v3', env.dev) }}
-{% endpagesection -%}
-{%- pagesection page, "state-dashboard" %}
-	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
-	{{ macros.includeJavascriptByEnv('dashboard-v3', env.dev) }}
-{% endpagesection -%}
+{% endpagesectionincludes -%}
 
 {%- pagesection page, "equity" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->

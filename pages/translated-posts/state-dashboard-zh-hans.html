@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 加州正在追踪县数据及州数据以了解COVID-19的传播情况。"
 author: "State of California"
-publishdate: "2021-08-11T16:32:46Z"
+publishdate: "2021-09-02T17:00:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2021年8月11日的通知</h2>
-<p>今天报告的死亡数为负数，部分原因是Santa Clara县因数据清理而报告的死亡人数为 -417。</p>
-</div><p></p>
-
-
 
 <p class="emphasized">加州正在追踪数据以了解COVID-19的传播情况。</p>
 
@@ -89,30 +82,30 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">病例数</div>
 
-          <div id="total-cases-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalCases_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-cases-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">总共</span>           </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">今日</span>           </div>
           <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up1" class="{{ _varCasesTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down1" class="{{ _varCasesTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewCasesPer100k_}} <span class="text-300">每100K人中的新增病例数</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewCasesPer100k_}} <span class="text-300">每100K人中的新增病例数</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">死亡数</div>
 
-          <div id="total-deaths-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">总共</span>           </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">今日</span>           </div>
           <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up2" class="{{ _varDeathsTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down2" class="{{ _varDeathsTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatNewDeathsPer100k_}} <span class="text-300">每100K人中的新增死亡数</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewDeathsPer100k_}} <span class="text-300">每100K人中的新增死亡数</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
@@ -120,28 +113,28 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">检测数</div>
 
           <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">总共</span>           </div>
-          <div id="total-tested-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">今日</span>           </div>
           <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up3" class="{{ _varPositivityTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down3" class="{{ _varPositivityTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatLatestPositivityPct_}}%<span class="text-300">检测呈阳性率</span>            </div>
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatLatestPositivityPct_}}%<span class="text-300">检测呈阳性率</span>            </div>
         </div>
       </div>
       <div class="col-md-3 px-10px">
         <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
           <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">施打的疫苗数</div>
 
-          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">总共</span>           </div>{# <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2"><strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">今日</span>           </div>
+          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">总共</span>           </div>           {# <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">今日</span>           </div>
           <div id="total-vaccines-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
  l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
  l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
  s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down4" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
  l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
  l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg></span> {{_varStatVaccinesDailyPct_}}%<span class="text-300">增长率</span>            </div> #}
+ s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatVaccinesDailyPct_}}%<span class="text-300">增长率</span>            </div> #}
         </div>
       </div>
     </div>
@@ -168,7 +161,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3">每100K人中的病例数<span class="med-num">{cases_per_100k_7_days}</span>（7日平均数）</li>
           <li data-label="filterTabLabel1">事件日期</li>
           <li data-label="filterTabLabel2">日期</li>
-          <li data-label="tooltipContent">事件日期： <b>{DATE}</b><br> 每100K人在7日内的平均患病率：<b>{7DAY_AVERAGE}</b><br> 病例数：<b>{CASES}</b>           </li>
+          <li data-label="tooltipContent">                   事件日期： <b>{DATE}</b><br> 每100K人在7日内的平均患病率：<b>{7DAY_AVERAGE}</b><br> 病例数：<b>{CASES}</b>           </li>
           <li data-label="dayAverage">7日平均数</li>
           <li data-label="cases_leftYAxisLegend">每100K人中的新增病例数</li>
           <li data-label="cases_rightYAxisLegend">病例数</li>
@@ -186,7 +179,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3">每100K人中的病例数<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均数）</li>
           <li data-label="filterTabLabel1">死亡日期</li>
           <li data-label="filterTabLabel2">呈报日期</li>
-          <li data-label="tooltipContent">死亡日期： <b>{DATE}</b><br> 每100K人在7日内的死亡率： <b>{7DAY_AVERAGE}</b><br> 死亡数：<b>{DEATHS}</b>           </li>
+          <li data-label="tooltipContent">             死亡日期： <b>{DATE}</b><br> 每100K人在7日内的死亡率： <b>{7DAY_AVERAGE}</b><br> 死亡数：<b>{DEATHS}</b>           </li>
           <li data-label="dayAverage">7日平均数</li>
           <li data-label="deaths_leftYAxisLegend">每100K人中的死亡数</li>
           <li data-label="deaths_rightYAxisLegend">死亡数</li>
@@ -218,7 +211,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease">新呈报的检测数<span class="med-num">{new_tests_reported}</span>（减少<span class="med-num">{new_tests_reported_delta_1_day}</span>）</li>
           <li data-label="filterTabLabel1">检测日期</li>
           <li data-label="filterTabLabel2">呈报日期</li>
-          <li data-label="tooltipContent">检测日期： <b>{DATE} </b><br> 每100K人在7日内的平均检测率：<b>{7DAY_AVERAGE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="tooltipContent">             检测日期： <b>{DATE} </b><br> 每100K人在7日内的平均检测率：<b>{7DAY_AVERAGE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
           <li data-label="dayAverage">7日平均数</li>
           <li data-label="tests_leftYAxisLegend">每100K人中的检测数</li>
           <li data-label="tests_rightYAxisLegend">检测数</li>
@@ -233,7 +226,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span>检测结果呈阳性 （7日比率）</li>
           <li data-label="chartLegend2Increase">此前7日内增加<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
           <li data-label="chartLegend2Decrease">此前7日内减少<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
-          <li data-label="tooltipContent">检测日期： <b>{DATE} </b><br> 7日内检测结果呈阳性率： <b>{7DAY_POSRATE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="tooltipContent">             检测日期： <b>{DATE} </b><br> 7日内检测结果呈阳性率： <b>{7DAY_POSRATE} </b><br> 检测总数：<b>{TOTAL_TESTS} </b>           </li>
           <li data-label="leftYAxisLegend">检测结果呈阳性率</li>
           <li data-label="rightYAxisLegend">检测数</li>
           <li data-label="xAxisLegend">检测日期</li>
@@ -271,7 +264,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="xAxisLegend">呈报日期</li>
           <li data-label="dayAverage">14日平均数</li>
-          <li data-label="tooltipContent">呈报日期： <b>{DATE} </b><br> 住院患者总计：<b>{TOTAL_HOSPITALIZED} </b><br> 14日内住院患者的平均数：<b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContent">             呈报日期： <b>{DATE} </b><br> 住院患者总计：<b>{TOTAL_HOSPITALIZED} </b><br> 14日内住院患者的平均数：<b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
           <li data-label="chartTitleState">加州ICU病床数</li>
@@ -300,7 +293,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <h2 class="text-center color-primary">按族裔、性别及年龄分类的病例数及死亡数</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-        <div class="large-tabs"><button class="large-tab toggle-active js-toggle-group ethnicity">种族和族裔</button> <button class="large-tab js-toggle-group gender">性别</button> <button class="large-tab js-toggle-group age">年龄</button>         </div>
+        <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">种族和族裔</button> <button class="large-tab js-toggle-group gender">性别</button> <button class="large-tab js-toggle-group age">年龄</button>         </div>
       </div>
       <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
@@ -385,7 +378,3 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
   </div>   <!--END container--> </div>
-
-
-
-<p></p>

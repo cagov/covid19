@@ -20,6 +20,9 @@ import "./charts/cagov-chart-dashboard-positivity-rate/index.js"
 import "./charts/cagov-chart-dashboard-patients/index.js"
 import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 
+// sparklines
+import "./charts/cagov-chart-dashboard-sparkline/index.js"
+
 // new postvax charts
 import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
 

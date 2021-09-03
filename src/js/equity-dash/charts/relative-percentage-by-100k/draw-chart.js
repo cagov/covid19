@@ -178,7 +178,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
             d.METRIC_VALUE_PER_100K !== null
           ) {
             return d.METRIC_VALUE_PER_100K
-              ? formatValue(d.METRIC_VALUE_PER_100K,{format:'integer'})
+              ? formatValue(d.METRIC_VALUE_PER_100K,{format:'number',min_decimals:this.decimal_display_places})
               : 0;
           } else {
             if (d.APPLIED_SUPPRESSION === "Total") {
