@@ -1,0 +1,44 @@
+---
+layout: "page.njk"
+title: "State Dashboard Standalone Sparklines"
+meta: "Vaccines Cases Deaths Tests"
+author: "State of California"
+publishdate: "2021-09-07T22:50:35Z"
+tags: ["do-not-crawl"]
+addtositemap: false
+---
+
+<!--
+{%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData -%}
+{%-set datadeaths = deathsSummaryData -%}
+-->
+
+
+
+Vaccines
+<div>
+  <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
+</div>
+
+
+
+Cases
+<div>
+   <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline>
+</div>
+
+
+
+Deaths
+<div>
+   <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline>
+</div>
+
+
+
+Tests
+<div>
+    <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline>
+</div>
