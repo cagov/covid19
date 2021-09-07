@@ -9,7 +9,6 @@
       "days_to_show": 120,
       "root_id": "postvax-cases",
       "pending_days":7,
-      "sample_days":1,
       "pre_mult":1
     }
   },
@@ -23,7 +22,6 @@
       "days_to_show": 120,
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
-      "sample_days":14,
       "pre_mult":10
     }
   },
@@ -37,7 +35,6 @@
       "days_to_show": 120,
       "root_id": "postvax-deaths",
       "pending_days":21,
-      "sample_days":14,
       "pre_mult":10
     }
   },
