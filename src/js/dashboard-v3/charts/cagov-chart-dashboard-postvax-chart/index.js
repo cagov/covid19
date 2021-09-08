@@ -84,6 +84,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let sample_days = this.chartOptions.sample_days;
     let last_day = this.chartdata.length-1;
     let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    let end_impact_date = this.chartdata[last_day].DATE;
+    let begin_impact_date = this.chartdata[last_day-6].DATE;
     // tempData.splice(tempData.length-sample_days,sample_days);
     // tempData.forEach(r => {
     //   sumvax += r[this.chartOptions.series_fields[0]];
@@ -93,11 +95,14 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     //   RATE_PERCENT:(Math.round(100*sumunvax / sumvax))+'%',
     // };
     const repDict = {
-      RATE_PERCENT:formatValue(last_ratio,{format:'percent',min_decimals:0}), // (Math.round(100*last_ratio))+'%',
+      BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
+      END_IMPACT_DATE: reformatReadableDate(end_impact_date),
+      RATE_RATIO:formatValue(last_ratio,{format:'integer'}),
+      RATE_PERCENT:formatValue(last_ratio,{format:'integer'}), // (Math.round(100*last_ratio))+'%',
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
-    this.translationsObj.post_chartHeaderText = applySubstitutions(this.translationsObj.chartHeaderText, repDict);
+    this.translationsObj.post_chartImpactStatement = applySubstitutions(this.translationsObj.chartImpactStatement, repDict);
     this.translationsObj.post_xaxis_legend = applySubstitutions(this.translationsObj.xaxis_legend, repDict);
     this.translationsObj.post_yaxis_legend = applySubstitutions(this.translationsObj.yaxis_legend_daily, repDict);
     this.translationsObj.post_series1_legend = applySubstitutions(this.translationsObj.series1_legend, repDict);
