@@ -97,8 +97,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const repDict = {
       BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
       END_IMPACT_DATE: reformatReadableDate(end_impact_date),
-      RATE_RATIO:formatValue(last_ratio,{format:'integer'}),
-      RATE_PERCENT:formatValue(last_ratio,{format:'integer'}), // (Math.round(100*last_ratio))+'%',
+      RATE_RATIO:formatValue(last_ratio,{format:'number'}),
+      RATE_PERCENT:formatValue(last_ratio,{format:'number'}), // (Math.round(100*last_ratio))+'%',
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);

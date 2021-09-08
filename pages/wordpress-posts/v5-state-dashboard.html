@@ -214,15 +214,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     </div>
   </div>
 
-  <!-- Cases statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people were {RATE_RATIO} times less likely to get COVID-19 than unvaccinated people.
-  Hospitalizations statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people are {RATE_RATIO} times less likely to be hospitalized with COVID-19 than unvaccinated people.
-  Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people were {RATE_RATIO} times less likely to die from COVID-19 than unvaccinated people. -->
-  
-
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people were {RATE_RATIO} times less likely to get COVID-19 than unvaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to get COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -244,7 +239,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people are {RATE_RATIO} times less likely to be hospitalized with COVID-19 than unvaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people are {RATE_RATIO} times more likely to be hospitalized with COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -265,7 +260,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, fully vaccinated people were {RATE_RATIO} times less likely to die from COVID-19 than unvaccinated people.</li>
+    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to die from COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
