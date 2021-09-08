@@ -15,6 +15,13 @@ jobs:
         run: |
           npm install
           npm run build
+          npm run devserver:background
+      - name: Sleep for 3s so server starts
+        uses: juliangruber/sleep-action@v1
+        with:
+          time: 3s
+      - name: Write sparkline svgs
+        run: |
           npm run sparklines
       - name: Save Commit Context
         uses: finnp/create-file-action@master

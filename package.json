@@ -79,7 +79,7 @@
     "compress:img": "cd src/build && node img.js",
     "sass:sparklines": "sass src/js/dashboard-v3/charts/cagov-chart-dashboard-sparkline/sparklines-partial.scss src/img/generated/sparkline.css",
     "svg:sparklines": "node puppeteer.js",
-    "sparklines": "npm-run-all sass:sparklines devserver:background svg:sparklines",
+    "sparklines": "npm-run-all sass:sparklines svg:sparklines",
     "testdata": "tap test/11ty-data.js",
     "test": "jest test/*.spec.js --forceExit"
   },
