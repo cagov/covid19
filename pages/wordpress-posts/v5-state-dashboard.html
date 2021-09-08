@@ -80,7 +80,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- endif -%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
 
