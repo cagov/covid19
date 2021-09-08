@@ -1,0 +1,64 @@
+/* Colorscheme root variables */
+:root {
+    /* Theme colors */
+    --primary-color: #003D9D;
+    --primary-dark-color: #1F2574;
+    --primary-light-color: #92C5DE;
+    --primary-lightest-color: #CCDBF2;
+    --primary-hover-color: #1F2574;
+    // --primary-active-color: #4A1106;
+    // --primary-focused-color: #4A1106;
+    // --primary-disabled-color: #4A1106;
+    --secondary-color: #FF8000;
+    --secondary-dark-color: #e67300;
+    --secondary-light-color: #ff9933;
+    --secondary-lightest-color: #fff2e5;
+    --secondary-hover-color: #e67300;
+    // --secondary-active-color: #4A1106;
+    // --secondary-focused-color: #4A1106;
+    // --secondary-disabled-color: #4A1106;
+    --highlight-color: #FFCF44;
+    --highlight-color-300: #FFF2D5;
+  
+    --standout-color: #1F2574;
+    --standout-hover-color: #1a1f60; 
+    --logo-font: 'Public Sans';
+
+     // Container widths
+  --w-lg: 1176px;
+  --w-lg: 1176px;
+  --w-md: 960px;
+  --w-sm: 720px;
+  --w-xs: 540px;
+
+  // Page container widths
+  --w-page-content: 876px;
+
+  // Padding elements
+  --spacing-base: 8px;
+  --padding-sm: calc(--spacing-base * 2); // 16px
+  --padding-md: calc(--spacing-base * 3); // 24px
+  --padding-lg: calc(--spacing-base * 4); // 32px
+
+  // Margin elements
+  /* haven't seen these used yet, they seem very large */
+  --margin-sm: calc(--spacing-base * 6); // 48px
+  --margin-md: calc(--spacing-base * 8); // 64px
+  --margin-lg: calc(--spacing-base * 12); // 96px
+  --margin-xl: calc(--spacing-base * 24); // 96px
+
+
+  // Font 
+  --site-font: "Public Sans",sans-serif;
+
+  // Font sizes
+  --body-text: 1.125rem;
+  --lead-text: 1.5rem;
+  --small-text: 1rem;
+
+  // Font weights
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+  }
+  
