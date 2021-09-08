@@ -8,11 +8,16 @@ on:
 jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
+
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
+      - name: Use Node.js 14.17.5
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.17.5
       - name: Build 11ty
         run: |
           npm install
