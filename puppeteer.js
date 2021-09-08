@@ -4,7 +4,7 @@ const fs = require('fs');
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:8001/state-dashboard-sparklines/', {
+  await page.goto('http://localhost:8000/state-dashboard-sparklines/', {
     waitUntil: 'networkidle2',
   });  
   
