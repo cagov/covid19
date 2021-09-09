@@ -1,2 +1,2 @@
 // sparklines
-import "../dashboard-v3/charts/cagov-chart-dashboard-sparkline/index.js"
+import "../dashboard/charts/cagov-chart-dashboard-sparkline/index.js"
