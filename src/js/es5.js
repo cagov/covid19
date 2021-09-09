@@ -4,7 +4,7 @@ import 'whatwg-fetch';
 import './polyfills/endswith.js';
 // import '@cagov/accordion'; accordion indicator svgs are broken, disable accordions in IE until fixed
 import '@cagov/step-list';
-import './dashboard-v3/async-polyfill.js';
+import './dashboard/async-polyfill.js';
 import './alerts/index.js';
 import './telehealth/index.js';
 import './plasma/index.js';
@@ -14,10 +14,10 @@ import './equity-dash/index.js';
 import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
-import './dashboard-v3/charts/ie11.scss';
+import './dashboard/charts/ie11.scss';
 // import './charts-sandbox/index.js';
-import './dashboard-v3/index.js';
-import './dashboard-v3/charts/ie11.scss';
+import './dashboard/index.js';
+import './dashboard/charts/ie11.scss';
 
 // import applyAccordionListeners from './tracking-you/index.js';
 // // twitter widget doesn't support IE11 so not including here
