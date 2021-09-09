@@ -6,7 +6,7 @@ import reopeningAirtableV1 from './roadmap-airtable-v1/rollup.config';
 import reopeningTierLevel from './roadmap-tier-level/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
-import dashboard3 from './dashboard-v3/rollup.config';
+import dashboard3 from './dashboard/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
 import chartssandbox from './charts-sandbox/rollup.config';
@@ -47,7 +47,7 @@ export default [
   ...(shouldIRebuild('/roadmap-tier-level/', '../../docs/js/roadmap-tier-level.js') ? [reopeningTierLevel] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
-  ...(shouldIRebuild('/dashboard-v3/', '../../docs/js/dashboard-v3.js') ? [dashboard3] : [dashboard3]),
+  ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard3] : [dashboard3]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/chartssandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
