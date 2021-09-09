@@ -449,10 +449,7 @@ header .dropdown {
 	  }
 
 }
-.translate {
-  position: relative;
-  padding-right: 30px;
-}
+
 .translate::after {
   display: none !important;
 }
@@ -462,26 +459,18 @@ button#dropdown-menu-button {
   transition-property: all;
   transition-timing-function: ease;
   transition-delay: 0s;
-  padding: .5rem .3rem;
-  vertical-align: middle;
-  @include tablet {
-	padding: 0.5rem 1rem 0.5rem 1rem;
-  }
-
-
+  margin-top: 0;
+  padding-left: 0.5rem;
 
   &:hover {
-    background-color: transparent;
-    border-color: transparent;
-    color: #ecca00;
+    text-decoration: none;
   }
 
-  &:focus {
-    background-color: $white;
-    border-color: $white;
-    color: $darkblue;
-    outline: none;
+  svg {
+    width: 10px;
+    fill: #000;
   }
+
 
   &[aria-expanded="false"] .rotate {
     right: 2px;

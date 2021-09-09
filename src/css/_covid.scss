@@ -1,7 +1,7 @@
 .navbar-brand {
   background-size: 30%;
   padding-left: 40px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -11,25 +11,26 @@
   background: $darkblue;
 }
 
-
 .jumbotron {
-	background-color: $darkblue;
+  background-color: $darkblue;
   color: $white;
   text-align: center;
 }
 
 h1 {
-	color: $darkblue;
+  color: $darkblue;
 }
 
-.jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron p, .jumbotron .lead  {
-	color: $white;
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron p,
+.jumbotron .lead {
+  color: $white;
 }
-
-
 
 a.btn {
-  background:$darkblue;
+  background: $darkblue;
 }
 
 .btn-primary {
@@ -65,12 +66,12 @@ a.btn:hover {
 }
 
 .bold {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 700;
 }
 
 .unbold {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -92,13 +93,11 @@ a.list-group-item {
   padding: 15px;
 }
 
-
 ol,
 ul,
 dl {
   line-height: 2rem;
 }
-
 
 .alphabar {
   background-color: $darkblue;
@@ -110,15 +109,15 @@ dl {
 }
 
 .text-white a {
-    color: $white;
+  color: $white;
 }
 
 .text-primary a {
-    color: $darkblue;
+  color: $darkblue;
 }
 
 .text-white a.action-link {
-    color: $darkblue;
+  color: $darkblue;
 }
 
 .wrimagecard.wrimagecard-topimage a:focus {
@@ -169,28 +168,28 @@ a.list-group-item.list-group-item-action {
 }
 
 .top-nav {
-    font-size: 1.3rem!important;
-	width: 100%;
+  font-size: 1.3rem !important;
+  width: 100%;
 }
 
-.top-nav .nav-link:focus, .top-nav .nav-link:hover {
-    background: $lighterblue;
-    border-radius: .25rem;
+.top-nav .nav-link:focus,
+.top-nav .nav-link:hover {
+  background: $lighterblue;
+  border-radius: 0.25rem;
 }
 
 a.dropdown-item {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .navbar-nav .dropdown-menu {
-    position: absolute;
+  position: absolute;
 }
 
 .show {
-	text-decoration: none!important;
-	float:none!important;
+  text-decoration: none !important;
+  float: none !important;
 }
-
 
 .border-bold {
   border-width: 2px;
@@ -211,7 +210,7 @@ a.list-group-item.list-group-item-action.guide {
 }
 
 a.list-group-item.list-group-item-action {
-	border-bottom: solid 1px;
+  border-bottom: solid 1px;
 }
 
 .alphabar a {
@@ -229,7 +228,7 @@ a.list-group-item.list-group-item-action {
 .skippy {
   display: block;
   padding: 1em;
-  color: $white!important;
+  color: $white !important;
   text-align: center;
   background-color: $darkblue;
 }
@@ -282,7 +281,6 @@ a.list-group-item.list-group-item-action {
   max-width: 130px;
 }
 
-
 .jumbotron a:focus {
   outline: 2px solid $white;
 }
@@ -318,16 +316,13 @@ a:hover .wrimagecard-topimage_header h3 {
   border-radius: 3px;
 }
 
-
-
 .bg-secondary-covid {
-    background-color: $lightestblue;
+  background-color: $lightestblue;
 }
 
 .bg-secondary-covid-darker {
-    background-color: $lighterblue;
+  background-color: $lighterblue;
 }
-
 
 a,
 a,
@@ -346,9 +341,9 @@ a:visited {
 }
 
 li.list-group-item.alpha-footer {
-    padding-right: 1rem;
-    padding-left: 0;
-	text-indent: inherit;
+  padding-right: 1rem;
+  padding-left: 0;
+  text-indent: inherit;
 }
 
 .footer a,
@@ -386,11 +381,11 @@ a:focus {
 }
 
 .navbar a.nav-link:focus {
-    outline: 2px solid $yellow;
+  outline: 2px solid $yellow;
 }
 
 a.nav-link.mr-0.pr-0:focus {
-    outline: 2px solid $white;
+  outline: 2px solid $white;
 }
 
 .alphabar a:focus {
@@ -409,7 +404,7 @@ a .card-title {
 .action-link {
   color: $darkblue;
   border-radius: 50px;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .card-header-multi {
@@ -460,70 +455,67 @@ button:focus {
   margin-top: 1.5rem;
 }
 
-
 a.list-group-item.list-group-item-action {
-    font-size: 1.15rem;
-}
-	
-.aside { 
-	 padding-bottom: 0!important;
- }
-	
-.wrimagecard-topimage_header {
-    min-height: 14.5rem;
+  font-size: 1.15rem;
 }
 
- .accordion-title {
-	 padding-left: 0!important;
-	}
-	
+.aside {
+  padding-bottom: 0 !important;
+}
+
+.wrimagecard-topimage_header {
+  min-height: 14.5rem;
+}
+
+.accordion-title {
+  padding-left: 0 !important;
+}
+
 .nav-item {
-padding-right: .5rem;
-  margin-right: .2rem; /* temporarily shrunk to accommodate globe translate button */
+  padding-right: 0.5rem;
+  margin-right: 0.2rem; /* temporarily shrunk to accommodate globe translate button */
 }
 
 .alphabar-link {
-	padding-right: .7rem;
-	margin-right: .5rem;
-	font-size: 1rem;
-	line-height: 2rem;
+  padding-right: 0.7rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  line-height: 2rem;
 }
 
 a.card {
-    text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 a:visited.card {
-    text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 .text-larger {
-	font-size: 1.4rem!important;
+  font-size: 1.4rem !important;
 }
- .top-nav li.nav-item a {
-    text-decoration: none;
-} 
+.top-nav li.nav-item a {
+  text-decoration: none;
+}
 
 .navbar-light .navbar-toggler {
-    color: rgb(0, 61, 157);
-    border-color: rgb(0, 61, 157);
-    padding: .1rem .75rem;
-	border: 2px;
+  color: rgb(0, 61, 157);
+  border-color: rgb(0, 61, 157);
+  padding: 0.1rem 0.75rem;
+  border: 2px;
 }
 
 .navbar-light .navbar-nav .nav-link {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-background: transparent;
-border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
 }
 
 .align-super {
-	vertical-align: super!important;
+  vertical-align: super !important;
 }
-
-
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -539,8 +531,8 @@ border: none;
     display: block;
   }
   .navbar {
-	  padding-left: 0;
-   }
+    padding-left: 0;
+  }
 
   .navbar-nav.mobile {
     display: contents;
@@ -558,7 +550,7 @@ border: none;
   }
 
   .wrimagecard-topimage_header.text-center {
-        min-height: auto!important;
+    min-height: auto !important;
   }
 
   .sticky-wrapper {
@@ -573,9 +565,8 @@ border: none;
   .d-sm-block {
     display: inline !important;
   }
-	
 
-  cagov-accordion .card .card-container .card-body  {
+  cagov-accordion .card .card-container .card-body {
     padding: 0 !important;
   }
 
@@ -583,13 +574,13 @@ border: none;
     padding: 0 !important;
   }
 
-  cagov-accordion .card .card-container .card-body .list-group  {
+  cagov-accordion .card .card-container .card-body .list-group {
     padding: 0 !important;
     margin: 0 !important;
     margin-left: 0 !important;
   }
 
-  cagov-accordion a.list-group-item.list-group-item-action.guide:last-child  {
+  cagov-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0 !important;
   }
 
@@ -597,10 +588,10 @@ border: none;
     padding-bottom: 0 !important;
   }
 
-  cagov-accordion a.list-group-item.list-group-item-action.guide:last-child  {
+  cagov-accordion a.list-group-item.list-group-item-action.guide:last-child {
     border-radius: 0 !important;
   }
-	
+
   #side-nav {
     margin-left: 0 !important;
     width: 100%;
@@ -609,79 +600,66 @@ border: none;
   #nav-card {
     border-radius: 0 !important;
   }
-	
+
   .card-body {
-	padding: .75rem 1.25rem;
+    padding: 0.75rem 1.25rem;
   }
-	
-   #body-nav {
-    padding: 0!important;
+
+  #body-nav {
+    padding: 0 !important;
   }
-	
+
   .text-center-mobile {
-	text-align: center!important;
-}
-	
+    text-align: center !important;
+  }
+
   .navbar-brand {
     padding-top: 3%;
-	padding-bottom: 0;
-}
-	
+    padding-bottom: 0;
+  }
+
   .alphabar {
     position: relative;
+  }
 }
-	
-}
-
 
 @media (min-width: 768px) {
-
   .no-webp .jumbo-img {
-    background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%),url('/img/hero.jpg');
+    background-image: linear-gradient(to bottom, $darkblue 0%, rgba($darkblue, 0) 20%), url("/img/hero.jpg");
   }
   .jumbo-img.county-img {
-    background-image: url('/img/CaliforniaCounties.webp');
+    background-image: url("/img/CaliforniaCounties.webp");
     background-size: cover;
     background-color: $darkblue;
   }
   .no-webp .jumbo-img.county-img {
-    background-image: url('/img/CaliforniaCounties.jpg');
+    background-image: url("/img/CaliforniaCounties.jpg");
   }
-	
+
   .top-nav .nav-item {
     font-size: 1.2rem;
-}
-	
+  }
+
   .navbar-expand-md .navbar-nav {
     flex-wrap: wrap;
-}
-	
+  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-	
-		
- .top-nav .nav-item {
+  .top-nav .nav-item {
     font-size: 1.1rem;
   }
-	
-#dropdown-4 {
-    left: -30%;
-}
-	
-	
-}
 
+  #dropdown-4 {
+    left: -30%;
+  }
+}
 
 @media (max-width: 992px) {
-
- .navbar-nav.mobile {
-    margin-left: 0!important;
+  .navbar-nav.mobile {
+    margin-left: 0 !important;
   }
-	
 }
-
-
 
 @media only screen and (min-width: 992px) {
   .aside {
@@ -693,33 +671,35 @@ border: none;
 }
 
 @media (min-width: 1200px) {
-	.h4, h4 {
+  .h4,
+  h4 {
     font-size: 1.3rem;
-}
-	.h3, h3 {
+  }
+  .h3,
+  h3 {
     font-size: 1.5rem;
-}
+  }
 }
 
 /* Create some space on the bottom before is this page usefull section */
 
 .jumbotron + .container {
-  padding-top:1.5rem;
-  padding-bottom:2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
 }
 .jumbotron + .container.blue-bottom {
-  padding-bottom:0;
-  margin-bottom:0;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .jumbotron.jumbo-img .container {
   @include phone {
-    padding-top:1.5rem;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 
   @include tablet {
-    padding-top:2rem;
+    padding-top: 2rem;
     padding-bottom: 1.5rem;
   }
 }
@@ -732,4 +712,84 @@ border: none;
 .col-lg-10.mx-auto h2 {
   color: $darkblue;
   text-align: center;
+}
+
+/* DESIGN SYSTEM OVERRIDES */
+
+/* Branding overrides */
+@media (min-width: 768px) {
+  .branding .container {
+    padding: 10px 10px 5px 10px !important;
+  }
+}
+
+.branding .logo {
+  margin-right: 20px !important;
+}
+.branding .branding-logo .logo-text .logo-state {
+  font-size: 1.125rem !important;
+  text-transform: unset !important;
+  font-family: "Public Sans", sans-serif !important;
+}
+
+.branding .branding-logo .logo-text .logo-dept {
+  font-family: "Public Sans" !important;
+  font-size: 2.3125rem !important;
+  font-weight: 700 !important;
+}
+
+.branding .search-container .site-search .search-submit:hover {
+  background-color: var(--primary-color, #003d9d) !important;
+}
+
+.branding .search-container .site-search .search-submit svg {
+  position: relative;
+  top: -3px !important;
+}
+
+@media (max-width: 768px) {
+  .branding .menu-trigger {
+    border: none !important;
+    background: none !important;
+  }
+  .branding .hamburger-inner:before,
+  .branding .hamburger-inner:after {
+    background: var(--primary-dark-color, #1f2574);
+  }
+}
+
+/* menu overrides */
+@media (min-width: 768px) {
+  header {
+    z-index: 999 !important;
+    background: #fff !important;
+  }
+
+  hero-stats .hero-padding-top {
+    margin-top: 0 !important;
+  }
+}
+
+cagov-navoverlay .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+cagov-navoverlay .expanded-menu-section-header-link {
+  background: unset !important;
+  &:focus {
+    outline: 2px solid var(--highlight-color, #FFCF44);
+  }
+}
+
+cagov-navoverlay .expanded-menu-dropdown-link:hover {
+  text-decoration: none !important;
+}
+
+cagov-navoverlay .expanded-menu-section.expanded .expanded-menu-dropdown {
+  padding-top: 0 !important;
+}
+
+cagov-navoverlay .expanded-menu-section-header-arrow svg path {
+  fill: var(--primary-dark-color, #1f2574);
 }

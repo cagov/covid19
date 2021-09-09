@@ -6,6 +6,11 @@
   "dependencies": {
     "@cagov/accordion": "^2.0.11",
     "@cagov/anchor-events": "^1.0.0",
+    "@cagov/ds-base-css": "^1.0.1",
+    "@cagov/ds-branding": "^1.0.2",
+    "@cagov/ds-dropdown-menu": "^1.0.9",
+    "@cagov/ds-skip-to-content": "^1.0.0",
+    "@cagov/ds-statewide-header": "^1.0.5",
     "@cagov/go-to-top": "^1.0.8",
     "@cagov/lookup": "^1.0.3",
     "@cagov/pagerating": "^2.0.0",
@@ -55,14 +60,12 @@
     "rollup": "^2.55.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.39.0",
     "sinon": "^11.1.2",
     "tap": "^15.0.9",
     "tape": "^5.3.0"
   },
   "scripts": {
     "devserver": "web-dev-server --root-dir docs/",
-    "devserver:background": "web-dev-server --root-dir docs/ &",
     "dev": "cross-env NODE_ENV=development npm run start",
     "start": "npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
@@ -77,9 +80,6 @@
     "local": "npm run watch",
     "local:dev": "cross-env NODE_ENV=development npm run watch",
     "compress:img": "cd src/build && node img.js",
-    "sass:sparklines": "sass src/js/dashboard-v3/charts/cagov-chart-dashboard-sparkline/sparklines-partial.scss src/img/generated/sparkline.css",
-    "svg:sparklines": "node puppeteer.js",
-    "sparklines": "npm-run-all sass:sparklines svg:sparklines",
     "testdata": "tap test/11ty-data.js",
     "test": "jest test/*.spec.js --forceExit"
   },

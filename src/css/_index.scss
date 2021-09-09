@@ -1,8 +1,14 @@
 @import './bootstrap/all';
 @import './fonts';
+// Site Colors
+@import './colorschemes/covid.scss'; /* theme colors */
+
 @import './awesomeplete';
 @import './general';
 @import './covid';
+
+// @import '../../node_modules/@cagov/ds-base-css/src/_core.scss'; // unthemed base css
+
 @import './cagov-font';
 @import './stepbystep';
 
@@ -12,14 +18,21 @@
 @import './trilogy/buttons';
 
 /* cagov-navoverlay component */
-@import './trilogy/namespaced/shell/hamburger';
-@import './trilogy/namespaced/shell/expanded-menu';
+//@import './trilogy/namespaced/shell/hamburger';
+//@import './trilogy/namespaced/shell/expanded-menu';
+
+/* Design System components */
+@import '../../node_modules/@cagov/ds-skip-to-content/src/index.scss'; // skip-to-content
+@import '../../node_modules/@cagov/ds-statewide-header/src/index.scss'; // statewide header
+@import '../../node_modules/@cagov/ds-branding/src/index.scss'; // now imported from npm module
+@import '../../node_modules/@cagov/ds-dropdown-menu/src/index.scss'; // now imported from npm module
+
 
 /* ^ these should all move into namespaced versions so they can be used anywhere safely */
 @import './accordion';
 @import './buttons';
-@import './header';
-@import './project-kennedy';
+@import './header'; 
+// @import './project-kennedy';
 /* ^ I think this can be slimmed down and removed as we rely more on the css directly */
 
 @import './hero-stats';
@@ -37,3 +50,4 @@
 /* Overrides for non-English languages. */
 @import './multilingual';
 @import './rtl';
+

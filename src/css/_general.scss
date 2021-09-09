@@ -72,7 +72,7 @@ $secondary: $orange;
 $text: $black;
 
 $headline: "Montserrat", sans-serif;
-$body: "Roboto", sans-serif;
+$body: "Public Sans", sans-serif;
 
 $basic: all 0.2s ease-in-out;
 $bounce: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
@@ -568,7 +568,7 @@ textarea {
 
 body {
   color: $black;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
   font-size: 1.2rem;
 }
@@ -624,13 +624,13 @@ h3 {
   font-size: 1.5rem;
   margin-top: 2.25rem;
   margin-bottom: 1.1875rem;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Public Sans", sans-serif !important;
 }
 .h3 {
   margin-top: 2.25rem;
   margin-bottom: 1.1875rem;
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Public Sans", sans-serif !important;
 }
 
 h4,
@@ -638,7 +638,7 @@ h4,
   margin-top: 2rem;
   margin-bottom: 1.15rem;
   font-size: 1.4rem;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Public Sans", sans-serif !important;
 }
 
 h5,
@@ -655,7 +655,7 @@ img {
 
 sup {
   font-size: normal !important;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 300;
 }
 
@@ -1025,7 +1025,7 @@ th {
 
 strong,
 .bold {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 700;
 }
 
@@ -1233,7 +1233,7 @@ a.navbar-brand:visited {
   border: 0;
   border-left: 4px solid $yellow;
   border-radius: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 300;
 }
 
@@ -1298,7 +1298,7 @@ a.navbar-brand:visited {
 }
 
 .card .btn-link {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
   font-size: 1.125rem;
   color: $black;
@@ -1499,7 +1499,7 @@ label {
   margin-right: 0.5rem;
 }
 .btn {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
 }
 .btn-dark,
@@ -1514,7 +1514,7 @@ label {
 }
 
 .btn {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -1720,7 +1720,7 @@ li .action-link:focus-within {
   border-top: 2px #ccc solid;
   padding-top: 1rem;
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 700;
 }
 
@@ -1759,7 +1759,7 @@ li .action-link:focus-within {
   color: $white;
   z-index: 10;
   font-size: 1.2rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -1800,23 +1800,6 @@ label.custom-control-label {
 
 .list-group input[type="checkbox"] {
   margin-right: -20px;
-}
-
-button#dropdown-menu-button {
-  border: 1px solid $lightgray;
-  background: $darkblue;
-  color: white;
-}
-button#dropdown-menu-button:hover {
-  background-color: $blue;
-  border-color: $blue;
-}
-
-button#dropdown-menu-button:focus {
-  outline: 2px solid $white;
-  background-color: $blue;
-  border-color: $blue;
-  box-shadow: none;
 }
 
 .bg-gradient {
@@ -2373,7 +2356,7 @@ ul.small-text {
 
 .pdf-link {
   &::after {
-    font-family: "Roboto", sans-serif;
+    font-family: "Public Sans", sans-serif;
     font-size: 0.6rem;
     font-weight: 400;
     content: "PDF";
@@ -2389,7 +2372,7 @@ ul.small-text {
 }
 
 .pdf-link-icon {
-  font-family: "Roboto", sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-size: 0.6rem;
   font-weight: 400;
   display: inline-block;
