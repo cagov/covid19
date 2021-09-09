@@ -4,9 +4,6 @@ import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './sparkline-config.json';
 import renderChart from "./sparkline.js";
-// import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
-// import applySubstitutions from "./../../../common/apply-substitutions.js";
-// import formatValue from "./../../../common/value-formatters.js";
 
 // cagov-chart-dashboard-positivity-rate
 class CAGovDashboardSparkline extends window.HTMLElement {

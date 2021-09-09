@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V5 sparklines)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-03T21:23:52Z"
+publishdate: "2021-09-09T16:40:22Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -21,6 +21,7 @@ addtositemap: false
 
 
 <!--
+
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
@@ -79,7 +80,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- endif -%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
 
@@ -218,7 +219,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartHeaderText">Most new cases are among the unvaccinated with {RATE_PERCENT} higher case rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to get COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -239,7 +240,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartHeaderText">Most new hospitalizations are among the unvaccinated with {RATE_PERCENT} higher hospitalization rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people are {RATE_RATIO} times more likely to be hospitalized with COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -260,7 +261,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartHeaderText">Most new deaths are among the unvaccinated with {RATE_PERCENT} higher death rates among the unvaccinated than those who are fully vaccinated.</li>
+    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to die from COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>

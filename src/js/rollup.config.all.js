@@ -4,7 +4,7 @@ import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
-import dashboard3 from './dashboard-v3/rollup.config';
+import dashboard3 from './dashboard/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
 import chartssandbox from './charts-sandbox/rollup.config';
@@ -43,7 +43,7 @@ export default [
   ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
-  ...(shouldIRebuild('/dashboard-v3/', '../../docs/js/dashboard-v3.js') ? [dashboard3] : [dashboard3]),
+  ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard3] : [dashboard3]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
