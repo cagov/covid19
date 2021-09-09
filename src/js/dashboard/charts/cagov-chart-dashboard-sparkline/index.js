@@ -71,7 +71,30 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
-    let uncertainty_weeks = this.chartOptions.uncertainty_weeks;
+    let uncertainty_days = this.chartOptions.uncertainty_days_override;
+
+    // if uncertainty_days is 0 AND uncertainty_latest_field is not a null string
+    if (uncertainty_days == 0 && this.chartOptions.uncertainty_latest_field != "") {
+      const pending_date = this.chartdata.latest[this.chartOptions.uncertainty_latest_field][this.chartOptions.uncertainty_date_field];
+      const data_to_walk = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
+      uncertainty_days = 0;
+      for (let i = 0; i < data_to_walk.length; ++i) {
+        uncertainty_days += 1
+        if (data_to_walk[i].DATE == pending_date) {
+          break;
+        }
+      }
+      // sanity check
+      if (uncertainty_days > 28) {
+        console.log("Problem calcuating uncertainty period",this.dataset.chartConfigKey,this.chartdata)
+        uncertainty_days = 7;
+      } else {
+        console.log("Calculated uncertainty period",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
+      }
+    } else {
+      console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
+    }
+
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
     // clone in case they are the same
     bar_series = JSON.parse(JSON.stringify(bar_series));
@@ -89,11 +112,11 @@ class CAGovDashboardSparkline extends window.HTMLElement {
         line_series.push({DATE:rec.DATE,VALUE:sum/7.0});
     });
   
-    bar_series = bar_series.splice(uncertainty_weeks*7, display_weeks*7);
-    line_series = line_series.splice(uncertainty_weeks*7, display_weeks*7);
-    console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
-    console.log("Line Series",this.dataset.chartConfigFilter,line_series);
-    console.log("Last average",this.dataset.chartConfigKey,line_series[0].DATE,line_series[0].VALUE);
+    bar_series = bar_series.splice(uncertainty_days, display_weeks*7);
+    line_series = line_series.splice(uncertainty_days, display_weeks*7);
+    // console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
+    // console.log("Line Series",this.dataset.chartConfigFilter,line_series);
+    // console.log("Last average",this.dataset.chartConfigKey,line_series[0].DATE,line_series[0].VALUE);
     let renderOptions = {
                           'extras_func':this.renderExtras,
                           'time_series_bars':bar_series,
