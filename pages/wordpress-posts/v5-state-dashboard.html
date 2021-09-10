@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V5 sparklines)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-10T22:15:26Z"
+publishdate: "2021-09-10T23:05:18Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -38,7 +38,7 @@ addtositemap: false
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberFixed(tags,2)-%}
+formatNumberFixed(tags,1)-%}
 {%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
