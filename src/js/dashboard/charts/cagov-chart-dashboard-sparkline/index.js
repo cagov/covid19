@@ -104,13 +104,18 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
     // COMPUTE MANUAL AVERAGE
     let line_series = [];
-    bar_series.forEach((rec,i) => {
-        let sum = 0;
-        for (let j = i; j < i+7; ++j) {
-          sum += j < bar_series.length? bar_series[j].VALUE : 0;
-        }
-        line_series.push({DATE:rec.DATE,VALUE:sum/7.0});
-    });
+    if (('no_average' in this.chartOptions) && this.chartOptions.no_average) {
+      console.log("Skipping averaging for ",this.dataset.chartConfigKey);
+      line_series = JSON.parse(JSON.stringify(bar_series));
+    } else {
+      bar_series.forEach((rec,i) => {
+          let sum = 0;
+          for (let j = i; j < i+7; ++j) {
+            sum += j < bar_series.length? bar_series[j].VALUE : 0;
+          }
+          line_series.push({DATE:rec.DATE,VALUE:sum/7.0});
+      });
+    }
   
     bar_series = bar_series.splice(uncertainty_days, display_weeks*7);
     line_series = line_series.splice(uncertainty_days, display_weeks*7);
