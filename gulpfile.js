@@ -126,7 +126,6 @@ const purgecssExtractors = [
 // Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
-    cssvariables(),
     purgecss({
       content: [
         'pages/_includes/main.njk',
