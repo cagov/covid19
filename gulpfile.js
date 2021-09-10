@@ -66,7 +66,7 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
     log('Note: Building JS in dev mode. es5.js will not be included. Try *npm run start* if you need it for IE.');
   }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
