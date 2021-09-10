@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<title>chart svg export demo</title>
+<style>
+  svg { max-width: 400px; }
+</style>
+<link href="https://staging.covid19.ca.gov/img/generated/sparkline.css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Sparkline retrieval demo</h1>
+
+<h2>cases</h2>
+<div class="sparkline-cases"></div>
+
+<h2>deaths</h2>
+<div class="sparkline-deaths"></div>
+
+<h2>tests</h2>
+<div class="sparkline-tests"></div>
+
+<h2>vaccinations</h2>
+<div class="sparkline-vax"></div>
+
+
+<script>
+function getSVG(file,selector) {
+  fetch(file).then(function(response) {
+    return response.text().then(function(text) {
+      document.querySelector(selector).innerHTML = text;
+    });
+  });
+}
+
+let host = 'https://staging.covid19.ca.gov';
+getSVG(host+'/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
+getSVG(host+'/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths')
+getSVG(host+'/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests')
+getSVG(host+'/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax')
+</script>
+</body>
+</html>
