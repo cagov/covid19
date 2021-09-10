@@ -11,7 +11,6 @@ const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
 const request = require('request');
-const cssvariables = require("postcss-css-variables");
 
 // Initialize BrowserSync.
 const server = (done) => {
