@@ -54,5 +54,5 @@ export default [
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
   esm,
   // Don't include ES5 file in dev mode.
-  ...((process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') ? [] : [es5])
+  ...((process.env.NODE_ENV === 'development') ? [] : [es5])
 ];

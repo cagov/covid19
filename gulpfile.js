@@ -11,6 +11,7 @@ const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
 const request = require('request');
+const cssvariables = require("postcss-css-variables");
 
 // Initialize BrowserSync.
 const server = (done) => {
@@ -66,7 +67,7 @@ const eleventy = (done) => {
 
 // Build the site's javascript via Rollup.
 const rollup = (done) => {
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
+  if (process.env.NODE_ENV === 'development') {
     log('Note: Building JS in dev mode. es5.js will not be included. Try *npm run start* if you need it for IE.');
   }
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
@@ -126,6 +127,7 @@ const purgecssExtractors = [
 // Purge and minify scss output for use on the homepage.
 const homeCSS = (done) => gulp.src(`${tempOutputFolder}/development.css`)
   .pipe(postcss([
+    cssvariables(),
     purgecss({
       content: [
         'pages/_includes/main.njk',
