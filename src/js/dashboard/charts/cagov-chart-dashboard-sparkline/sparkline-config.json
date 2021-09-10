@@ -8,7 +8,9 @@
         "dataUrl": "confirmed-cases/california.json",
         "rootId": "cases-ep",
         "display_weeks": 8,
-        "uncertainty_weeks": 1  
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "CONFIRMED_CASES",
+        "uncertainty_date_field": "EPISODE_UNCERTAINTY_PERIOD"
       }
     },
     "deaths": {
@@ -19,18 +21,23 @@
         "dataUrl": "confirmed-deaths/california.json",
         "rootId": "death-date",
         "display_weeks": 8,
-        "uncertainty_weeks": 3      
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "CONFIRMED_DEATHS",
+        "uncertainty_date_field": "DEATH_UNCERTAINTY_PERIOD"
       }
     },
     "tests": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
-        "seriesField": "TOTAL_TESTS",
-        "seriesFieldAvg": "AVG_TEST_RATE_PER_100K_7_DAYS",
-        "dataUrl": "total-tests/california.json",
+        "seriesField": "TEST_POSITIVITY_RATE_7_DAYS",
+        "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
+        "dataUrl": "positivity-rate/california.json",
         "rootId": "tests-tests",
         "display_weeks": 8,
-        "uncertainty_weeks": 1
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "POSITIVITY_RATE",
+        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD",
+        "no_average":true
       }
     },
     "vaccines": {
@@ -42,8 +49,10 @@
           "dataUrl": "vaccines/sparkline.json",
           "rootId": "tests-vaccines",
           "display_weeks": 8,
-          "uncertainty_weeks": 1
-        }
+          "uncertainty_days_override": 7,
+          "uncertainty_latest_field": "",
+          "uncertainty_date_field": ""
+          }
     },
     "desktop": {
       "fontSize": 14,
