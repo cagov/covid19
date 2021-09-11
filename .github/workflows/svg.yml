@@ -1,0 +1,37 @@
+name: Eleventy Build Master
+on:
+  push:
+    branches:
+      - puppeteer-svg-gen
+jobs:
+  build_deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: n1hility/cancel-previous-runs@v2
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build 11ty
+        run: |
+          npm install
+          npm run build
+          npm run devserver:background
+      - name: Sleep for 3s so server starts
+        uses: juliangruber/sleep-action@v1
+        with:
+          time: 3s
+      - name: Write sparkline svgs
+        run: |
+          npm run sparklines
+      - name: Save Commit Context
+        uses: finnp/create-file-action@master
+        env:
+            FILE_NAME: "./docs/commit-info.json"
+            FILE_DATA: ${{ toJson(github.event.commits) }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./docs
+          publish_branch: deploy_production
+          commit_message: ${{ github.event.head_commit.message }}
