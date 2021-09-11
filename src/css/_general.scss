@@ -1545,10 +1545,11 @@ label {
 }
 
 .summary-boxes {
+  gap: 20px 0;
 }
 
 .summary-box {
-  height:90%; /* helps insure equal-height summary boxes */
+  height:100%; /* helps insure equal-height summary boxes */
 }
 
 /* fix bootstrap nav */
