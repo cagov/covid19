@@ -1,7 +1,9 @@
 const fs = require('fs');
+const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 let filesSiteData = [];
+langData.languages.forEach(writeMenuJson);
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
@@ -721,8 +723,7 @@ module.exports = function(eleventyConfig) {
       .map(x=>({
         url: `/${x.pathpostfix}${slug}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
-        langname:x.name,
-        linkhighlight:x.linkhighlight
+        langname:x.name
         }))
       .filter(x=>x.url!==page.url)
       ;
@@ -741,3 +742,27 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
+
+function writeMenuJson(lang) {
+  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g,'')}menu-links${lang.filepostfix}.json`, 'utf8'));
+  const singleLangMenu = {
+    sections: menuLinksJson.Table1
+      .map(section => ({
+        title: section.label,
+        links:
+          menuLinksJson.Table2
+            .filter(l=>l._slug_or_url&&l.label&&l._section_index===section._section_index)
+            .map(link => ({
+              url:
+                (link._slug_or_url.toLowerCase().startsWith('http')) 
+                ? link._slug_or_url //http full link
+                : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
+              name: link.label
+            })
+          )
+      })
+    )
+  };
+
+  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
+}
