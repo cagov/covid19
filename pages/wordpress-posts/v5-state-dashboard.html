@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V5 sparklines)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-11T03:02:37Z"
+publishdate: "2021-09-13T18:40:03Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -16,7 +16,7 @@ addtositemap: false
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#vaccination">Vaccination data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">More data and tools</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated cases</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">More data and tools</a></strong></li></ul>
 
 
 
@@ -203,7 +203,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Note: Case rate and daily avg. is based on a 7-day average with a 7-day lag. Death rate and daily avg. is based on a 7-day average with a 21-day lag due to delays in reporting. Test positivity and daily avg. is based on a 7-day average with no lag. Data is provided by the California Department of Public Health. The denominator for the percentage of population fully vaccinated reflects the population eligible for vaccination. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</p>
+        <p class="small-text">Note: The denominator for the percentage of population vaccinated reflects the population eligible for vaccination. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
       </div>
     </div>
 
@@ -217,7 +217,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Unvaccinated and vaccinated data</h2>
+<h2 class="text-center color-purple">Unvaccinated and vaccinated cases</h2>
 
 
 
@@ -303,8 +303,24 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div id="postvax-chart-footer">
-<p class="small-text">A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data.</p>
+<p class="small-text">A vaccinated case is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data.</p>
 </div>
+
+
+
+<h3>Vaccines administered data</h3>
+
+
+
+<p>We’re tracking the progress of vaccinating Californians across the state.</p>
+
+
+
+                        <div class="mt-3 text-center">
+                            <a href="/vaccination-progress-data" class="link-arrow-blue">
+                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
+                            </a>
+                        </div>
 
 
 
@@ -517,32 +533,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </cagov-chart-dashboard-icu-beds>               
     </div> 
   </div>
-
-
-
-<hr class="wp-block-separator mb-0" id="vaccination"/>
-
-
-
-<div class="bg-darkblue py-5 full-bleed">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange">Vaccination data</h2>
-                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We’re tracking the progress of vaccinating Californians across the state.</p>
-
-                        <div class="mt-3 text-center">
-                            <a href="/vaccination-progress-data" class="link-arrow-white">
-                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div><!--END container-->
-        </div>
 
 
 
