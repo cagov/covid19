@@ -81,7 +81,7 @@ class CAGovDashboardConfirmedDeathsHC extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
-    console.log("Render component deaths");
+    console.log("Render component deaths",this);
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
