@@ -123,6 +123,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     // console.log("Line Series",this.dataset.chartConfigFilter,line_series);
     // console.log("Last average",this.dataset.chartConfigKey,line_series[0].DATE,line_series[0].VALUE);
     let renderOptions = {
+                          'chart_style':this.chartOptions.chart_style,
                           'extras_func':this.renderExtras,
                           'time_series_bars':bar_series,
                           'time_series_line':line_series,

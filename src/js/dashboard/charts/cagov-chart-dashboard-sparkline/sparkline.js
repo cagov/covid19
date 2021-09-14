@@ -16,7 +16,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
           );
 }
 
-function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
+function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal" }) {
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
     }
@@ -33,7 +33,7 @@ function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
           .append("rect")
           .attr("x", (d,i) => x(i))
           .attr("y", d => y(d.VALUE))
-          .attr("width", 2)
+          .attr("width", chart_style=="solid"? 4 : 2)
           .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
           .attr("id", (d, i) => root_id+'-'+i);
     } else { // positive and negative rects
@@ -156,6 +156,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
   
  
 export default function renderChart({
+  chart_style = "normal",
   extras_func = null,
   time_series_bars = null,
   time_series_line = null,
@@ -243,9 +244,9 @@ export default function renderChart({
 
   // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
 
-  if (time_series_bars) {
+  if (time_series_bars && chart_style != "no_bars") {
     writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-      { root_id:root_id, crop_floot:crop_floor});
+      { root_id:root_id, crop_floot:crop_floor, chart_style:chart_style});
     // bar legend on left
   }
   if (time_series_line) {

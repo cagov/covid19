@@ -6,10 +6,11 @@ import reopeningAirtableV1 from './roadmap-airtable-v1/rollup.config';
 import reopeningTierLevel from './roadmap-tier-level/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
-import dashboard3 from './dashboard/rollup.config';
+import dashboard from './dashboard/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
 import chartssandbox from './charts-sandbox/rollup.config';
+import sparklines from './state-dashboard-sparklines/rollup.config';
 
 import fs from 'fs';
 import path from 'path';
@@ -47,11 +48,12 @@ export default [
   ...(shouldIRebuild('/roadmap-tier-level/', '../../docs/js/roadmap-tier-level.js') ? [reopeningTierLevel] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
-  ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard3] : [dashboard3]),
+  ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : [dashboard]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/chartssandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
+  ...(shouldIRebuild('/state-dashboard-sparklines/', '../../docs/js/state-dashboard-sparklines.js') ? [sparklines] : [sparklines]),
   esm,
   // Don't include ES5 file in dev mode.
   ...((process.env.NODE_ENV === 'development') ? [] : [es5])
