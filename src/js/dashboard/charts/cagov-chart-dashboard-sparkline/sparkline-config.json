@@ -3,6 +3,7 @@
     "cases": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "normal",
         "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
         "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
         "dataUrl": "confirmed-cases/california.json",
@@ -16,6 +17,7 @@
     "deaths": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "normal",
         "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
         "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
         "dataUrl": "confirmed-deaths/california.json",
@@ -29,6 +31,7 @@
     "tests": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "solid",
         "seriesField": "TEST_POSITIVITY_RATE_7_DAYS",
         "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
         "dataUrl": "positivity-rate/california.json",
@@ -42,8 +45,8 @@
     },
     "vaccines": {
         "sparkline": {
-          "note": "THIS DATA DOES NOT EXIST YET",
           "chartName": "cagov-chart-dashboard-sparkline",
+          "chart_style": "normal",
           "seriesField": "VACCINE_DOSES",
           "seriesFieldAvg": "VACCINE_DOSES_7DAYAVG",
           "dataUrl": "vaccines/sparkline.json",
