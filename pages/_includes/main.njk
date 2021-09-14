@@ -157,7 +157,8 @@ formatNumber(tags,1)-%}
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
+									<div class="sparkline-cases"></div>
+									{# <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline> #}
 									<div class="text-white text-xs mt-1">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -350,3 +351,19 @@ formatNumber(tags,1)-%}
 	{{ macros.includeJavascriptByEnv('video', env.dev) }}
 
 {% endblock %}
+
+
+<script>
+function getSVG(file,selector) {
+  fetch(file).then(function(response) {
+    return response.text().then(function(text) {
+      document.querySelector(selector).innerHTML = text;
+    });
+  });
+}
+
+getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
+getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
+getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
+getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
+</script>
