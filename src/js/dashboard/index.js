@@ -21,10 +21,27 @@ import "./charts/cagov-chart-dashboard-patients/index.js"
 import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 
 // sparklines
-import "./charts/cagov-chart-dashboard-sparkline/index.js"
+// import "./charts/cagov-chart-dashboard-sparkline/index.js"
 
 // new postvax charts
 import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
+
+// load sparklines
+let svg_path = 'https://files.covid19.ca.gov';
+function getSVG(file,selector) {
+  fetch(svg_path + file).then(function(response) {
+    return response.text().then(function(text) {
+      let targetEl = document.querySelector(selector);
+      if(targetEl) {
+        targetEl.innerHTML = text;
+      }
+    });
+  });
+}
+getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
+getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
+getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
+getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
 
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");
