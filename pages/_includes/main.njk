@@ -290,14 +290,14 @@ formatNumber(tags,1)-%}
 </div>
 </hero-stats>
 <script>
+let svg_path = 'https://files.covid19.ca.gov';
 function getSVG(file,selector) {
-  fetch(file).then(function(response) {
+  fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {
       document.querySelector(selector).innerHTML = text;
     });
   });
 }
-
 getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
 getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
 getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
