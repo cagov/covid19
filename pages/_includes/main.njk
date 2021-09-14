@@ -131,6 +131,9 @@ formatNumber(tags,1)-%}
 
 
   <!-- MOVED THE STATS -->
+	  <style>
+    {% include "../../docs/img/generated/sparkline.css" %}
+  </style>
 <hero-stats>
 	<div class="bg-darkblue full-bleed mb-0">
   <div class="container py-2">
@@ -286,6 +289,20 @@ formatNumber(tags,1)-%}
 	</div>
 </div>
 </hero-stats>
+<script>
+function getSVG(file,selector) {
+  fetch(file).then(function(response) {
+    return response.text().then(function(text) {
+      document.querySelector(selector).innerHTML = text;
+    });
+  });
+}
+
+getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
+getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
+getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
+getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
+</script>
  <!-- END OF STATS -->
 
 <!-- begin video section  -->
@@ -354,19 +371,3 @@ formatNumber(tags,1)-%}
 	{{ macros.includeJavascriptByEnv('video', env.dev) }}
 
 {% endblock %}
-
-
-<script>
-function getSVG(file,selector) {
-  fetch(file).then(function(response) {
-    return response.text().then(function(text) {
-      document.querySelector(selector).innerHTML = text;
-    });
-  });
-}
-
-getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
-getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
-getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
-getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
-</script>
