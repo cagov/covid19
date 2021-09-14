@@ -148,7 +148,7 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 1 -->
 						<div class="col-md-3 px-10px">
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Vaccines Administered</div>
 								<div id="total-vaccines-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong>
 								<span class="text-300">{{translatedLabels.varTotal}}</span>
 								</div>
@@ -160,7 +160,7 @@ formatNumber(tags,1)-%}
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto">
-   								    <div class="sparkline-vax"></div>
+   								    <div class="sparkline-vax svg-holder"></div>
 									<div class="text-white text-xs mt-1">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -172,7 +172,7 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 2 -->
 						<div class="col-md-3 px-10px">
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Cases</div>
 
 								<div id="total-cases-number" class="text-white font-size-1-2em my-2">
 								<strong>{{_varStatTotalCases_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span>
@@ -185,7 +185,7 @@ formatNumber(tags,1)-%}
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<div class="sparkline-cases"></div>
+									<div class="sparkline-cases svg-holder"></div>
 									<div class="text-white text-xs mt-1 ">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -196,7 +196,7 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 3 -->
 						<div class="col-md-3 px-10px">
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Deaths</div>
 
 								<div id="total-deaths-number" class="text-white font-size-1-2em my-2">
 								<strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span>
@@ -210,7 +210,7 @@ formatNumber(tags,1)-%}
 
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<div class="sparkline-deaths"></div>
+									<div class="sparkline-deaths svg-holder"></div>
 									<div class="text-white text-xs mt-1">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -221,7 +221,7 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 4 -->
 						<div class="col-md-3 px-10px">
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1">Tests</div>
 								<div id="total-tests-number" class="text-white font-size-1-2em my-2">
 								<span class="text-300">&nbsp;</span>
 								</div>
@@ -233,7 +233,7 @@ formatNumber(tags,1)-%}
 								</div> #}
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<div class="sparkline-tests"></div>
+									<div class="sparkline-tests svg-holder"></div>
 									<div class="text-white text-xs mt-1 ">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
