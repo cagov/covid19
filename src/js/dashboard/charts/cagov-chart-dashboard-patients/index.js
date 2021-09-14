@@ -83,7 +83,7 @@ class CAGovDashboardPatients extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
-    // console.log("Setting up patients replacements",this.chartConfigFilter,this.chartConfigKey,regionName);
+    console.log("Setting up patients replacements",this.chartConfigFilter,this.chartConfigKey,regionName);
 
     var latestRec = this.chartdata.latest[this.chartOptions.latestField];
 
