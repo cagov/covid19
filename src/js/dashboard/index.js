@@ -31,7 +31,10 @@ let svg_path = 'https://files.covid19.ca.gov';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {
-      document.querySelector(selector).innerHTML = text;
+      let targetEl = document.querySelector(selector);
+      if(targetEl) {
+        targetEl.innerHTML = text;
+      }
     });
   });
 }
