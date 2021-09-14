@@ -294,7 +294,7 @@
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated September 13, 2021, with data from September 12, 2021.</p>
 
-        <p class="small-text">Note: The denominator for the percentage of population vaccinated reflects the population eligible for vaccination. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
+        <p class="small-text">Note: The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
       </div>
     </div>
 
@@ -333,7 +333,7 @@
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to get COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -354,7 +354,7 @@
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people are {RATE_RATIO} times more likely to be hospitalized with COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -375,7 +375,7 @@
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were {RATE_RATIO} times more likely to die from COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -407,7 +407,7 @@
 
 
 
-                        <div class="mt-3 text-center">
+<div class="mt-3 text-center">
                             <a href="/vaccination-progress-data" class="link-arrow-blue">
                                 <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
                             </a>
