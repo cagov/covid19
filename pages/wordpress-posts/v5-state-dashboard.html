@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V5 sparklines)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-13T23:55:38Z"
+publishdate: "2021-09-14T18:23:21Z"
 tags: ["do-not-crawl"]
 addtositemap: false
 ---
@@ -87,6 +87,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+
+<style>
+  <!-- {% include "../../docs/img/generated/sparkline.css" %} -->
+</style>
+
+
+
 <hr class="wp-block-separator noborder mb-4" id="todays-update"/>
 
 
@@ -118,7 +125,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
+           <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -143,7 +150,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline>
+           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -168,7 +175,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
          <!--Chart and Label -->
          <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline>
+           <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -189,7 +196,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline>
+           <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300">Past 8 weeks</span>
            </div>
