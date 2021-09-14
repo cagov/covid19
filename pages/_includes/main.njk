@@ -157,7 +157,7 @@ formatNumber(tags,1)-%}
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<div class="sparkline-cases"></div>
+   								    <div class="sparkline-vax"></div>
 									{# <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline> #}
 									<div class="text-white text-xs mt-1">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
@@ -183,10 +183,11 @@ formatNumber(tags,1)-%}
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto">
-								<cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline>
-								<div class="text-white text-xs mt-1 ">
-									<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
-								</div>
+									<div class="sparkline-cases"></div>
+									{# <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline> #}
+									<div class="text-white text-xs mt-1 ">
+										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+									</div>
 								</div>
 								<!--End Chart and Label -->
 							</div>
@@ -208,7 +209,8 @@ formatNumber(tags,1)-%}
 
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline>
+									<div class="sparkline-deaths"></div>
+									{# <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline> #}
 									<div class="text-white text-xs mt-1">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -231,7 +233,8 @@ formatNumber(tags,1)-%}
 								</div> #}
 								<!--Chart and Label -->
 								<div class="mt-auto">
-									<cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline>
+									<div class="sparkline-tests"></div>
+									{# <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline> #}
 									<div class="text-white text-xs mt-1 ">
 										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
