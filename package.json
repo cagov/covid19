@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@cagov/11ty-serverless-preview-mode": "^1.0.4",
     "@cagov/accordion": "^2.0.11",
     "@cagov/anchor-events": "^1.0.0",
     "@cagov/go-to-top": "^1.0.8",
@@ -20,7 +21,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0-canary.44",
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
     "@fullhuman/postcss-purgecss": "^4.0.3",
@@ -80,7 +81,9 @@
     "sass:sparklines": "sass src/js/dashboard/charts/cagov-chart-dashboard-sparkline/sparklines-partial.scss src/img/generated/sparkline.css",
     "sparklines": "node puppeteer.js",
     "testdata": "tap test/11ty-data.js",
-    "test": "jest test/*.spec.js --forceExit"
+    "test": "jest test/*.spec.js --forceExit",
+    "debug:11ty": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "build:11ty": "npx @11ty/eleventy"
   },
   "repository": {
     "type": "git",

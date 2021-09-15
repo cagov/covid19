@@ -15,6 +15,16 @@
       ],
       "console": "internalConsole",
       "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug DIRECT previewMode",
+      "program": "previewMode/debug",
+      "cwd": "${workspaceRoot}",
+      "outputCapture": "std",
+      "autoAttachChildProcesses": true,
+      "console": "internalConsole"
     }
   ]
 }

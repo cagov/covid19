@@ -103,7 +103,8 @@ module.exports = function(eleventyConfig) {
           if(!item.data.title) {
             //No title means fragment
             // console.log(`Skipping fragment ${item.inputPath}`)
-            item.outputPath = false;
+            //TODO: Figure out a way to supress rendering of fragments
+            //item.outputPath = false;
           }
         };
     });
@@ -129,12 +130,12 @@ module.exports = function(eleventyConfig) {
             if(!item.data.title) {
               //No title means fragment
               // console.log(`Skipping fragment ${item.inputPath}`)
-              item.outputPath = false;
+              //item.outputPath = false;
             }
           } else {
             //Turn this page off since we already have a translation
             output.push(item);
-            item.outputPath = false;
+            //item.outputPath = false;
             // console.log(`Skipping traslated page ${item.inputPath}`)
           }
         };
@@ -731,6 +732,11 @@ module.exports = function(eleventyConfig) {
 
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
   eleventyConfig.setUseGitIgnore(false);
+
+  const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
+  addPreviewModeToEleventy(eleventyConfig);
+
+  //eleventyConfig.addLayoutAlias('page', 'pages/_includes/page.njk');
 
   eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize";
   return {
