@@ -22,7 +22,7 @@ export default class Tooltip {
        <circle r="3" dx="3" fill="#0F368E"></circle>
      </g>`;
   } // <!-- <text class="label2" y="3", x="2"></text> -->
-  show(d,x,y) {
+  show(d,x,y, data1Isgreater) {
     let yVal = d.METRIC_VALUE;
     // console.log("Showing: ",d);
     this.node.removeAttribute("display");
@@ -34,15 +34,18 @@ export default class Tooltip {
     // 70 is halfway point of svg...
     if (tranX > midPoint) {
       this.node.querySelector('text.label1').setAttribute('text-anchor','end')
-      // this.node.querySelector('text.label2').setAttribute('text-anchor','end')
       this.node.querySelector('text.label1').setAttribute('x','-4')
-      // this.node.querySelector('text.label2').setAttribute('x','-2')
     } else {
       this.node.querySelector('text.label1').setAttribute('text-anchor','start')
-      // this.node.querySelector('text.label2').setAttribute('text-anchor','start')
       this.node.querySelector('text.label1').setAttribute('x','4')
-      // this.node.querySelector('text.label2').setAttribute('x','2')
     }
+
+    if (data1Isgreater) {
+      console.log('true')
+    } else {
+      console.log('false')
+    }
+
     let tipLabel = (yVal * 100).toFixed(1);
     this.node.setAttribute("transform", `translate(${tranX},0)`);
     this.node.setAttribute("aria-label", tipLabel);

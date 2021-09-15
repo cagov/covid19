@@ -375,10 +375,14 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           // coords are container screen-coords, and need to be scaled/translated
           // to x display bounds before passed to x.invert
           var xy = d3.pointer(event);
+
+          let data1Isgreater = this.doMath(data, data2, x, y, xy);
+          
+
           // console.log("event: ",xy);
-          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y);
+          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y, data1Isgreater );
           if (!using_data_overlay) {
-            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y);
+            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y, data1Isgreater);
           }
         })
         .on("mouseleave touchend", (event) => {
@@ -461,5 +465,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let translations = getTranslations(this);
     return translations;
   }
+
+  // @todo Rename this function.
+  doMath(data, data2, x, y, xy) {
+    
+      let value1 = this.bisect(data, x.invert(xy[0]))
+      let value2 = this.bisect(data2, x.invert(xy[0]))
+
+      let newy1 = y(value1.METRIC_VALUE) + 4
+      let newy2 = y(value2.METRIC_VALUE) + 4
+
+      return (newy1 > newy2);
+
+    };
 }
 window.customElements.define("cagov-chart-d3-lines", CAGOVChartD3Lines);
