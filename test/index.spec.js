@@ -136,6 +136,25 @@ describe('homepage', () => {
   }, timeout);
 });
 
+
+describe('charts', () => {
+  test('pregeneration is working', async () => {
+    await page.goto(hostname+'/state-dashboard-sparklines/', {
+      waitUntil: ['domcontentloaded', 'networkidle0']
+    });
+
+    // wait for all the sparklines to render their internal svgs
+    const sparklineVax = await page.waitForSelector("cagov-chart-dashboard-sparkline[data-chart-config-key='vaccines'] svg");
+    const sparklineCases = await page.waitForSelector("cagov-chart-dashboard-sparkline[data-chart-config-key='cases'] svg");
+    const sparklineDeaths = await page.waitForSelector("cagov-chart-dashboard-sparkline[data-chart-config-key='deaths'] svg");  
+    const sparklineTests = await page.waitForSelector("cagov-chart-dashboard-sparkline[data-chart-config-key='tests'] svg");
+
+    // if we get here the charts have rendered
+    expect('PASS').toStrictEqual('PASS');    
+    
+  }, timeout);
+});
+
 afterAll(() => {
   console.log('killing')
   // Send SIGTERM to process
