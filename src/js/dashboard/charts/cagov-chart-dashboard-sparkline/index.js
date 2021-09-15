@@ -45,7 +45,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLocSparkline + this.chartOptions.dataUrl;
-    console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
+    // console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
@@ -65,10 +65,9 @@ class CAGovDashboardSparkline extends window.HTMLElement {
   }
 
   renderComponent() {
-    let addStateLine = false;
     this.statedata = this.chartdata;
 
-    console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
+    // console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_days = this.chartOptions.uncertainty_days_override;
@@ -88,11 +87,9 @@ class CAGovDashboardSparkline extends window.HTMLElement {
       if (uncertainty_days > 28) {
         console.log("Problem calcuating uncertainty period",this.dataset.chartConfigKey,this.chartdata)
         uncertainty_days = 7;
-      } else {
-        console.log("Calculated uncertainty period",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
       }
     } else {
-      console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
+      // console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
     }
 
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
@@ -128,12 +125,10 @@ class CAGovDashboardSparkline extends window.HTMLElement {
                           'time_series_bars':bar_series,
                           'time_series_line':line_series,
                           'left_y_fmt':'pct',
-                          'root_id':'pos-rate',
+                          'root_id':this.chartOptions.rootId,
                           'right_y_fmt':'integer',
                         };
-      if (addStateLine) {
-        renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-      }
+      console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
       renderChart.call(this, renderOptions);
   }
 
