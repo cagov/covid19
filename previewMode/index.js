@@ -6,5 +6,5 @@ const { azureFunctionHandler } = require("@cagov/11ty-serverless-preview-mode");
  * @param {{req:{headers:*,query:*},res:{statusCode:number;body:string;headers?:*};done:function}} context Azure Function context
  */
 module.exports = async function (context) {
-  await azureFunctionHandler(context, "https://digital.ca.gov");
+  await azureFunctionHandler(context, "https://covid19.ca.gov");
 }
