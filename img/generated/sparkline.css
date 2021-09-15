@@ -10,7 +10,11 @@ g.fg-line path {
   stroke: #92c5de;
   stroke-width: 2px;
 }
-
+g.fg-region path {
+  fill: #00183f;
+  stroke: none;
+  opacity:0.5;
+}
 g.fg-line.second-line path {
   opacity: 0.5;
 }
