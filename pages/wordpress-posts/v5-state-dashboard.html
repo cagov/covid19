@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California (V5 sparklines)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-14T18:23:21Z"
-tags: ["do-not-crawl"]
+publishdate: "2021-09-14T21:53:35Z"
+tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
 
@@ -21,7 +21,6 @@ addtositemap: false
 
 
 <!--
-
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
@@ -84,10 +83,6 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-<style>
-  <!-- {% include "../../docs/img/generated/sparkline.css" %} -->
-</style>
-
 
 
 
@@ -116,7 +111,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <!-- Blue Summary Box 1 -->
      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Vaccines Administered</div>
+         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong>
            <span class="text-300">total</span>
          </div>
@@ -128,7 +123,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-           <div class="sparkline-vax svg-holder"></div>
+           <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -140,7 +135,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    <!-- Blue Summary Box 2 -->
     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Cases</div>
+         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em my-2">
            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
@@ -153,7 +148,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-          <div class="sparkline-cases svg-holder"></div>
+           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -164,7 +159,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <!-- Blue Summary Box 3 -->
      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Deaths</div>
+         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">
            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span>
@@ -178,7 +173,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
          <!--Chart and Label -->
          <div class="mt-auto">
-           <div class="sparkline-deaths svg-holder"></div>
+           <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">
              <span class="text-300">Past 8 weeks</span>
            </div>
@@ -189,19 +184,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    <!-- Blue Summary Box 4 -->
     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Tests</div>
-         <div id="total-tests-number" class="text-white font-size-1-2em my-2">
-          <span class="text-300">&nbsp;</span>
-        </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mt-2">
+         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+         {# Total deaths. #}
+         <div id="total-tested-today" class="text-white font-size-1-2em mt-0">
            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">test positivity</span>
          </div>
-         <!-- <div class="text-white text-xs mt-2 mb-2">
+         <div class="text-white text-xs mt-2 mb-2">
            <span class="text-300">&nbsp;</span>
-         </div> -->
+         </div>
          <!--Chart and Label -->
          <div class="mt-auto">
-           <div class="sparkline-tests svg-holder"></div>
+           <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300">Past 8 weeks</span>
            </div>
