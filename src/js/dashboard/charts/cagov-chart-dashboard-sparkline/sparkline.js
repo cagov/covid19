@@ -16,6 +16,26 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
           );
 }
 
+function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
+  let max_y_domain = y.domain()[1];
+  let max_x_domain = x.domain()[1];
+  let component = this;
+
+  let groups = svg.append("g")
+    .attr("class","fg-region")
+    // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    .append('path')
+    .datum(data)
+      .attr("class","area")
+      .attr("d", d3.area()
+        .x(function(d,i) { return x(i) })
+        .y0(y(0))
+        .y1(function(d) { return y(crop_floor? Math.max(0,d.VALUE) : d.VALUE) })
+      );
+      
+}
+
+
 function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal" }) {
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
@@ -167,11 +187,8 @@ export default function renderChart({
   crop_floor = true,
   pending_date = null,
   month_modulo = 3,
-  root_id = "barid" } )  {
-
-  console.log("renderChart",root_id);
-  // d3.select(this.querySelector("svg g"))
-  //   .attr('style','font-family:sans-serif;font-size:16px;');
+  root_id = "barid" } )  
+{
 
   this.svg = d3
     .select(this.querySelector(".svg-holder"))
@@ -241,15 +258,20 @@ export default function renderChart({
     }
   }
 
-
   // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
 
-  if (time_series_bars && chart_style != "no_bars") {
+  if (time_series_bars && chart_style != "no-bars" && chart_style != "solid-region") {
     writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
       { root_id:root_id, crop_floot:crop_floor, chart_style:chart_style});
     // bar legend on left
   }
   if (time_series_line) {
+    if (chart_style == "solid-region") {
+      writeRegion.call(this, this.svg, time_series_line, this.xline, this.ybars, 
+        { root_id:root_id, crop_floot:crop_floor});
+    }
+
+
     writeLine.call(this, this.svg, time_series_line, this.xline, this.ybars, 
       { root_id:root_id, crop_floot:crop_floor});
   }

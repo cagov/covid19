@@ -31,7 +31,7 @@
     "tests": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
-        "chart_style": "solid",
+        "chart_style": "solid-region",
         "seriesField": "TEST_POSITIVITY_RATE_7_DAYS",
         "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
         "dataUrl": "positivity-rate/california.json",
