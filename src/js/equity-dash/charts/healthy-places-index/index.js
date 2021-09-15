@@ -112,7 +112,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       )
       .then((response) => response.json())
       .then((alldata) => {
-        this.writeChart(alldata, this.svg, this.textLabels.data1Legend);
+        this.writeChart(alldata, this.svg, this.textLabels.data1Legend, this.textLabels.data2Legend);
         // this.innerHTML = `<div class="svg-holder"></div>`;
         this.querySelector(".svg-holder").appendChild(this.svg.node());
       });
@@ -178,7 +178,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
 
-  writeChart(alldata, svg, data1Legend) {
+  writeChart(alldata, svg, data1Legend, data2Legend) {
     let component = this;
 
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
@@ -368,22 +368,21 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       const tooltip = new Tooltip(true, y);
       const tooltip2 = new Tooltip(false, y);
 
-      
+      // Handle mouse events.
       svg
         .on("mousemove", (event) => {
           // console.log("move: " + event.offsetX);
           // coords are container screen-coords, and need to be scaled/translated
           // to x display bounds before passed to x.invert
           var xy = d3.pointer(event);
-
           let data1Isgreater = this.doMath(data, data2, x, y, xy);
           
-
           // console.log("event: ",xy);
-          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y, data1Isgreater );
+          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y, data1Isgreater, data1Legend );
           if (!using_data_overlay) {
-            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y, data1Isgreater);
-          }
+            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y, !data1Isgreater, data2Legend);
+          }        
+        
         })
         .on("mouseleave touchend", (event) => {
           // console.log("leave");
