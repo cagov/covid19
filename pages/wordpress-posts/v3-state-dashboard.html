@@ -1,10 +1,10 @@
 ---
 layout: "page.njk"
-title: "Tracking COVID-19 in California (V5 sparklines)"
+title: "Tracking COVID-19 in California (V3)"
 meta: "California is tracking county and statewide data to understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-13T23:55:38Z"
-tags: ["do-not-crawl"]
+publishdate: "2021-09-15T16:39:34Z"
+tags: ["do-not-crawl","translate"]
 addtositemap: false
 ---
 
@@ -12,34 +12,28 @@ addtositemap: false
 
 
 
-<p>On this page you’ll find:</p>
+<p>On this page you&#8217;ll find:</p>
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated cases</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">More data and tools</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#todays-update">Today&#8217;s update</a></strong></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#vaccination">Vaccination data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">More data and tools</a></strong></li></ul>
 
 
 
 <!--
-
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
 
 {%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
+formatNumberFixed(tags,2)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
@@ -78,132 +72,164 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
 -->
 
 
 
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>
+<hr class="wp-block-separator mb-4" id="todays-update"/>
 
 
 
 <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
-      <div class="col-lg-10 mx-auto justify-content-md-center">
+      <div class="col-lg-10 mx-auto">
         <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
-        <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
-          and {{_varStatTotalDeaths_}} deaths.</div>
+        <p>As of {{_varStatDateNoYear_}}, California has {{_varStatTotalCases_}} confirmed cases of COVID-19,
+          resulting in {{_varStatTotalDeaths_}} deaths.</p>
       </div>
     </div>
 
-<!----- Begin Summary Boxes -->
-<div class="row d-flex justify-content-md-center summary-boxes">
-  <!-- Blue Summary Box 1 -->
-     <div class="col-md-3 px-10px">
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
-         <div id="total-vaccines-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatVaccines_}}</strong>
-           <span class="text-300">total</span>
-         </div>
-         <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2">
-           <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
-         </div>
-         <div class="text-white text-xs mt-2 mb-2">
-           <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
-         </div>
-         <!--Chart and Label -->
-         <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
-           <div class="text-white text-xs mt-1">
-             <span class="text-300">Past 8 weeks</span>
-           </div>
-         </div>
-         <!--End Chart and Label -->
-       </div>
-     </div>
+    <div class="row d-flex justify-content-md-center summary-boxes">
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
 
-   <!-- Blue Summary Box 2 -->
-    <div class="col-md-3 px-10px">
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Cases</div>
+          <div id="total-cases-number" class="text-white font-size-1-2em my-2">
+            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
+          </div>
+          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">
+            <strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">today</span>
+          </div>
+          <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">
 
-         <div id="total-cases-number" class="text-white font-size-1-2em my-2">
-           <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
-         </div>
-         <div id="total-cases-today" class="text-white font-size-1-2em mt-2">
-           <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
-         </div>
-         <div class="text-white text-xs mt-2 mb-2">
-           <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
-         </div>
-         <!--Chart and Label -->
-         <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline>
-           <div class="text-white text-xs mt-1 ">
-             <span class="text-300">Past 8 weeks</span>
-           </div>
-         </div>
-         <!--End Chart and Label -->
-       </div>
-     </div>
-  <!-- Blue Summary Box 3 -->
-     <div class="col-md-3 px-10px">
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+            <span class="chart-arrow" arria-hidden="true">
+              <svg id="arrow-up1" class="{{ _varCasesTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+                            l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+                            l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+                            s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
+              </svg>
 
-         <div id="total-deaths-number" class="text-white font-size-1-2em my-2">
-           <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span>
-         </div>
-         <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">
-           <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
-         </div>
-         <div class="text-white text-xs mt-2 mb-2">
-           <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
-         </div>
+              <!--negative arrow-->
+              <svg id="arrow-down1" class="{{ _varCasesTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+                            l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+                            l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+                            s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
+              </svg>
+            </span>
+            {{_varStatNewCasesPer100k_}} <span class="text-300">new cases per 100K</span>
 
-         <!--Chart and Label -->
-         <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline>
-           <div class="text-white text-xs mt-1">
-             <span class="text-300">Past 8 weeks</span>
-           </div>
-         </div>
-         <!--End Chart and Label -->
-       </div>
-     </div>
-   <!-- Blue Summary Box 4 -->
-    <div class="col-md-3 px-10px">
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
-         {# Total deaths. #}
-         <div id="total-tested-today" class="text-white font-size-1-2em mt-0">
-           <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">test positivity</span>
-         </div>
-         <div class="text-white text-xs mt-2 mb-2">
-           <span class="text-300">&nbsp;</span>
-         </div>
-         <!--Chart and Label -->
-         <div class="mt-auto">
-           <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline>
-           <div class="text-white text-xs mt-1 ">
-             <span class="text-300">Past 8 weeks</span>
-           </div>
-         <!--End Chart and Label -->
-         </div>
-       </div>
-     </div>
-   </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Deaths</div>
+
+          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">
+            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span>
+          </div>
+          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">
+            <strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">today</span>
+          </div>
+          <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">
+
+            <span class="chart-arrow" arria-hidden="true">
+              <svg id="arrow-up2" class="{{ _varDeathsTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+                                l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+                                l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
+              </svg>
+
+              <!--negative arrow-->
+              <svg id="arrow-down2" class="{{ _varDeathsTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+	    						l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+		    					l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+			    				s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
+              </svg>
+            </span>
+            {{_varStatNewDeathsPer100k_}} <span class="text-300">new deaths per 100K</span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Tests</div>
+
+          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong>
+            <span class="text-300">total</span>
+          </div>
+          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">
+            <strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">today</span>
+          </div>
+          <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">
+
+            <span class="chart-arrow" arria-hidden="true">
+              <svg id="arrow-up3" class="{{ _varPositivityTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+                                l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+                                l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+                                s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
+              </svg>
+
+              <!--negative arrow-->
+              <svg id="arrow-down3" class="{{ _varPositivityTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
+              </svg>
+            </span>
+            {{_varStatLatestPositivityPct_}}% <span class="text-300">test positivity</span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 px-10px">
+        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
+          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Vaccines Administered</div>
+
+          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong>
+            <span class="text-300">total</span>
+          </div>
+          {# <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2">
+            <strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">today</span>
+          </div>
+          <div id="total-vaccines-increase" class="text-white text-xs line-height-1-5 my-2">
+
+            <span class="chart-arrow" arria-hidden="true">
+              <svg id="arrow-up4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
+							l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
+							l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
+							s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>
+              </svg>
+
+              <!--negative arrow-->
+              <svg id="arrow-down4" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
+							l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
+							l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
+							s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>
+              </svg>
+            </span>
+            {{_varStatVaccinesDailyPct_}}% <span class="text-300">increase</span>
+
+          </div> #}
+        </div>
+      </div>
+    </div>
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Note: The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
+        <p class="small-text">Note: Case rate is based on a 7-day average with a 7-day lag. Rates of deaths is based on a 7-day average with a 21-day lag due to delays in reporting. Test positivity is based on a 7-day average with no lag. Directional change is compared to the prior 7-day period. Data is provided by the California Department of Public Health. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</p>
       </div>
     </div>
 
@@ -213,118 +239,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<hr class="wp-block-separator noborder mt-0" id="postvax-status"/>
-
-
-
-<h2 class="text-center color-purple">Unvaccinated and vaccinated cases</h2>
-
-
-
-<div id="postvax-chart-intro">Vaccines prevent serious illness, save lives, and reduce further spread of COVID-19. As more people are vaccinated, the virus is less likely to spread, mutate, and potentially become even more dangerous. Vaccines will help put an end to the pandemic.
-<!--  From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
-</div>
-
-
-
-<!-- omitting tabs for now...
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">
-      <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
-      <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
-      <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
-    </div>
-  </div>
--->
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
-    <li data-label="yaxis_legend">Weekly cases per 100K</li>
-    <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
-      Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
-    <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
-    <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
-      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
-    <li data-label="yaxis_legend">Weekly deaths per million</li>
-    <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
-      Vaccinated deaths per million: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<div id="postvax-chart-footer">
-<p class="small-text">A vaccinated case is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data.</p>
-</div>
-
-
-
-<h3>Vaccines administered data</h3>
-
-
-
-<p>We’re tracking the progress of vaccinating Californians across the state.</p>
-
-
-
-<div class="mt-3 text-center">
-                            <a href="/vaccination-progress-data" class="link-arrow-blue">
-                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
-                            </a>
-                        </div>
-
-
-
-<hr class="wp-block-separator" id="county-statewide"/>
+<hr class="wp-block-separator mt-0" id="county-statewide"/>
 
 
 
@@ -536,6 +451,32 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<hr class="wp-block-separator mb-0" id="vaccination"/>
+
+
+
+<div class="bg-darkblue py-5 full-bleed">
+            <div class="container py-2">
+                <div class="row pb-4">
+                    <div class="col-lg-10 mx-auto color-white">
+                        <h2 class="text-center color-orange">Vaccination data</h2>
+                        <p>COVID-19 vaccination is one of the most important tools to end the pandemic. We’re tracking the progress of vaccinating Californians across the state.</p>
+
+                        <div class="mt-3 text-center">
+                            <a href="/vaccination-progress-data" class="link-arrow-white">
+                                <div class="link-arrow-label">View vaccination data</div><cagov-arrow></cagov-arrow>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div><!--END container-->
+        </div>
+
+
+
 <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>
 
 
@@ -691,7 +632,3 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   </div>
   <!--END container-->
 </div>
-
-
-
-<p></p>

@@ -4,3 +4,10 @@ cagov-chart-dashboard-confirmed-cases, cagov-chart-dashboard-confirmed-deaths, c
 		height: 334px;
   }
 }
+
+cagov-chart-dashboard-postvax-chart  {
+  .svg-holder svg {
+    width: 615px;
+		height: 400px;
+  }
+}

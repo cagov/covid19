@@ -1,10 +1,13 @@
 g.fg-bars {
-  fill: #1f2574;
+  fill: #00183f;
+}
+div.sparkline-tests g.fg-bars {
+  opacity: 0.7;
 }
 
 g.fg-line path {
   fill: none;
-  stroke: #96cce3;
+  stroke: #92c5de;
   stroke-width: 2px;
 }
 
@@ -135,5 +138,4 @@ g.line-legend line {
   stroke-width: 0.25px;
   stroke: black;
 }
-
 /*# sourceMappingURL=sparkline.css.map */
