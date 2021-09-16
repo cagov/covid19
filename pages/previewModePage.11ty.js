@@ -28,7 +28,7 @@ class previewModePageClass {
         const jsonData = await getPostJsonFromWordpress(itemData, wordPressSettings);
         
         itemData.title = jsonData.title.rendered;
-        itemData.publishdate = jsonData.date.split('T')[0]; //new Date(jsonData.modified_gmt)
+        itemData.publishdate = jsonData.modified.split('T')[0]; //new Date(jsonData.modified_gmt)
         itemData.meta = jsonData.excerpt.rendered;
 
         return jsonData.content.rendered;
