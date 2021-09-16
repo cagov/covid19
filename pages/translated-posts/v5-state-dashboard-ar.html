@@ -1,11 +1,11 @@
 ---
 layout: "page.njk"
-title: "تعقب كوفيد-19 في كاليفورنيا"
-meta: " تقوم كاليفورنيا بتعقب البيانات على مستوى الولاية وفي المقاطعة لفهم انتشار كوفيد-19.⁦"
+title: "تعقب كوفيد-19 في كاليفورنيا خطوط المؤشرات (V5 sparklines)"
+meta: " تقوم ولاية كاليفورنيا بتعقب البيانات على مستوى الولاية وفي المقاطعة لفهم انتشار كوفيد-19.⁦"
 author: "State of California"
-publishdate: "2021-09-15T19:11:20Z"
-tags: ["translate"]
-addtositemap: true
+publishdate: "2021-09-15T02:24:21Z"
+tags: ["do-not-crawl","translate"]
+addtositemap: false
 ---
 
 ⁩<p class="emphasized">تقوم كاليفورنيا بتعقب البيانات لفهم انتشار كوفيد-19.</p>
@@ -92,8 +92,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1">اللقاحات المعطاة</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">إجمالي</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
-         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}النسبة المئوية %</strong> للسكان الذين تم تطعيمهم</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
-           <div class="sparkline-vax"></div>
+         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}النسبة المئوية %</strong> للسكان الذين تم تطعيمهم</span>          </div>          <!--Chart and Label -->          <div class="mt-auto">
+           <div class="sparkline-vax svg-holder"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">الـ 8 أسابيع الماضية</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
@@ -102,8 +102,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">إجمالي</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">الحالات الجديدة (لكل 100 ألف)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
-          <div class="sparkline-cases"></div>
+         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">الحالات الجديدة (لكل 100 ألف)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto">
+          <div class="sparkline-cases svg-holder"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">الـ 8 أسابيع الماضية</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
@@ -112,8 +112,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">إجمالي</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">الوفيات الجديدة (لكل 100 ألف شخص)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
-           <div class="sparkline-deaths"></div>
+         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">الوفيات الجديدة (لكل 100 ألف شخص)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto">
+           <div class="sparkline-deaths svg-holder"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">الـ 8 أسابيع الماضية</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
@@ -124,8 +124,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         </div>
         <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}النسبة المئوية %</strong> <span class="text-300">لإيجابية الاختبار</span>          </div>          <!-- <div class="text-white text-xs mb-2">
  <span class="text-300">&nbsp;</span>
- </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
-           <div class="sparkline-tests"></div>
+ </div> --> <!--Chart and Label -->          <div class="mt-auto">
+           <div class="sparkline-tests svg-holder"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">الـ 8 أسابيع الماضية</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
      </div>
