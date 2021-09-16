@@ -734,14 +734,14 @@ module.exports = function(eleventyConfig) {
   });
 
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
-  //eleventyConfig.setUseGitIgnore(false);
+  eleventyConfig.setUseGitIgnore(false);
 
   const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
   addPreviewModeToEleventy(eleventyConfig);
 
   //eleventyConfig.addLayoutAlias('page', 'pages/_includes/page.njk');
 
-  //eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize"; //do we need this?
+  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize"; //do we need this?
   return {
     htmlTemplateEngine: "njk",
     templateFormats: ["html", "njk", "11ty.js"],
@@ -773,5 +773,6 @@ function writeMenuJson(lang) {
     )
   };
 
+  //TODO: Disable this for serverless only
   //fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
