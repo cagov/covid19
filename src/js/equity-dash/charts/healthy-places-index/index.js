@@ -32,8 +32,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
-          x: 200,
-          y: 18
+          x: 300,
+          y: 10
         }
       },
       tablet: {
@@ -246,6 +246,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let xAxis = (g) =>
       g
         .attr("transform", "translate(0," + this.chartBreakpointValues.margin.bottom + ")" )
+        .attr("font-weight", "bold" )
         .call(
           d3
             .axisBottom(x)
@@ -263,6 +264,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let yAxis = (g) =>
       g
         .attr("transform", "translate(" + this.chartBreakpointValues.margin.left + ", 0)")
+        .attr("font-weight", "bold" )
         .call(
           d3
             .axisLeft(y)
@@ -281,6 +283,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           "translate(" + 0 + " ," + (this.chartBreakpointValues.margin.top - 10) + ")"
         )
         .style("text-anchor", "left")
+        .attr("font-weight", "bold")
         .text(component.textLabels.yAxisLabel)
         .attr("class", "y-label");
     
@@ -450,6 +453,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 20 - 10;
       })
       .attr("text-anchor", "start")
+      .attr("font-weight", "bold")
       .attr("dominant-baseline", "hanging");
   }
 

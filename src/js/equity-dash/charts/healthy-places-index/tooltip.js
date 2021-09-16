@@ -55,15 +55,12 @@ export default class Tooltip {
     const text = this.node.querySelector('text.label1');
     text.setAttribute('x', (tranX > midPoint) ? 0  : 10);
     text.innerHTML = `<tspan font-weight="bold">${tipNumber}%</tspan>&nbsp;<tspan>${label.toLowerCase()}</tspan>`;
-    // text.setAttribute("transform", `translate(0,${adjustY})`);
-    // text.setAttribute("transform", `translate(0,${tranY - 4 })`);
     text.setAttribute("transform", `translate(0,${tranY + adjustY })`);
 
     // .tip rect
     const rectangle = this.node.querySelector(".tip rect");
     rectangle.setAttribute("width", rectangleWidth);
     rectangle.setAttribute('x',(tranX > midPoint) ? -(rectangleWidth) + 10 : -10);
-    // rectangle.setAttribute("transform", `translate(0,${adjustY})`);
     rectangle.setAttribute("transform", `translate(0,${tranY + adjustY})`);
 
     // .tip circle
