@@ -15,21 +15,6 @@ addtositemap: false
 {%-set datadeaths = deathsSummaryData -%}
 -->
 
-<style>
-   /* this is a circular reference. and may cause issues */
-   {% include "../../docs/img/generated/sparkline.css" %}
-   div.chart-prev-div {
-      width:440px;
-      background-color: #003d9d;
-      padding: 0 10%;
-   }
-</style>
-
-
-
-<h1>Live renders of charts using current data.</h1>
-
-
 
 
 <style>
@@ -52,25 +37,23 @@ Vaccines
   <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="vaccines"></cagov-chart-dashboard-sparkline>
 </div>
 
-<br/>
+
 
 Cases
 <div class="chart-prev-div">
    <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="cases"></cagov-chart-dashboard-sparkline>
 </div>
 
-<br/>
+
 
 Deaths
 <div class="chart-prev-div">
    <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="deaths"></cagov-chart-dashboard-sparkline>
 </div>
 
-<br/>
+
 
 Tests
 <div class="chart-prev-div">
     <cagov-chart-dashboard-sparkline class="chart" data-chart-config-filter="sparkline" data-chart-config-key="tests"></cagov-chart-dashboard-sparkline>
 </div>
-
-<br/>
