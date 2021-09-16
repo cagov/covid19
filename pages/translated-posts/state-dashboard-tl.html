@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Sinusubaybayan ng California ang data ng county at buong estado para maunawaan ang pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2021-09-13T16:35:10Z"
+publishdate: "2021-09-15T19:11:20Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,20 +16,25 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#vaccination">Data sa pagbabakuna</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Higit pang data at tool</a></strong></li></ul>    <!--
+<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Mga hindi pa nababakunahan at nabakunahan nang kaso</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Higit pang data at tool</a></strong></li></ul>    <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData.data -%}
+{%-set datadeaths = deathsSummaryData.data -%}
 
 {%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
 {%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberFixed(tags,2)-%}
+formatNumberSmall(tags)-%}
+{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
@@ -68,86 +73,132 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
---> <hr class="wp-block-separator mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+
+{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+--> <style>
+  <!-- {% include "../../docs/img/generated/sparkline.css" %} -->
+</style> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
-      <div class="col-lg-10 mx-auto">
+      <div class="col-lg-10 mx-auto justify-content-md-center">
         <h2 class="text-center color-purple">Update para sa {{_varStatDate_}}</h2>
-        <p>Simula {{_varStatDateNoYear_}}, ang California ay may {{_varStatTotalCases_}} kumpirmadong kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
+        <div class="text-center">Sa kasalukuyan, {{_varStatTotalCases_}} ang kumpirmadong kaso ng COVID-19 at {{_varStatTotalDeaths_}} ang kumpirmadong pagkamatay sa California sa kabuuan.</div>
       </div>
-    </div>
+    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
+       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Mga Naibigay na Bakuna</div>
+         <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">kabuuan</span>          </div>
+         <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
+         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> ng nabakunahan nang populasyon</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+           <div class="sparkline-vax"></div>
+           <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+         </div>          <!--End Chart and Label -->        </div>
+     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
+       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Mga kaso</div>
 
-    <div class="row d-flex justify-content-md-center summary-boxes">
-      <div class="col-md-3 px-10px">
-        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Mga Kaso</div>
+         <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">kabuuan</span>          </div>
+         <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
+         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">mga bagong kaso (bawat 100K)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+          <div class="sparkline-cases"></div>
+           <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+         </div>          <!--End Chart and Label -->        </div>
+     </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
+       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Mga Pagkamatay</div>
 
-          <div id="total-cases-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">kabuuan</span>           </div>
-          <div id="total-cases-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalCasesToday_}}</strong> <span class="text-300">ngayong araw</span>           </div>
-          <div id="total-cases-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up1" class="{{ _varCasesTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
- l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
- l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
- s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down1" class="{{ _varCasesTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
- l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
- l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewCasesPer100k_}} <span class="text-300">mga bagong kaso sa bawat 100k</span>            </div>
+         <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">kabuuan</span>          </div>
+         <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
+         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">mga bagong pagkamatay (bawat 100K)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+           <div class="sparkline-deaths"></div>
+           <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+         </div>          <!--End Chart and Label -->        </div>
+     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
+       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Mga Pagsusuri</div>
+         <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
+          <span class="text-300"> </span>
         </div>
-      </div>
-      <div class="col-md-3 px-10px">
-        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Mga Pagkamatay</div>
-
-          <div id="total-deaths-number" class="text-white font-size-1-2em my-2">             <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">kabuuan</span>           </div>
-          <div id="total-deaths-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTotalDeathsToday_}}</strong> <span class="text-300">ngayong araw</span>           </div>
-          <div id="total-deaths-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up2" class="{{ _varDeathsTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
- l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
- l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
- s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down2" class="{{ _varDeathsTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
- l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
- l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatNewDeathsPer100k_}} <span class="text-300">mga pagkamatay sa bawat 100k</span>            </div>
-        </div>
-      </div>
-      <div class="col-md-3 px-10px">
-        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Mga Pagsusuri</div>
-
-          <div id="total-tested-number" class="text-white font-size-1-2em my-2"><strong>{{_varStatTested_}}</strong> <span class="text-300">kabuuan</span>           </div>
-          <div id="total-tested-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatTestedDaily_}}</strong> <span class="text-300">ngayong araw</span>           </div>
-          <div id="total-tested-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up3" class="{{ _varPositivityTrendClassU_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
- l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
- l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
- s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down3" class="{{ _varPositivityTrendClassD_ }}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
- l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
- l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatLatestPositivityPct_}}% <span class="text-300">pagpopositibo sa pagsusuri</span>            </div>
-        </div>
-      </div>
-      <div class="col-md-3 px-10px">
-        <div class="bg-purple bd-rounded-10 px-6px py-2 text-center mt-3 summary-box">
-          <div class="h5 text-uppercase color-orange line-height-1-2 mt-1">Mga Naibigay na Bakuna</div>
-
-          <div id="total-vaccines-number" class="text-white font-size-1-2em my-4"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">kabuuan</span>           </div>           {# <div id="total-vaccines-today" class="text-white font-size-1-2em mt-2">             <strong>{{_varStatVaccinesDaily_}}</strong> <span class="text-300">ngayong araw</span>           </div>
-          <div id="total-vaccines-increase" class="text-white text-xs line-height-1-5 my-2">              <span class="chart-arrow" arria-hidden="true">               <svg id="arrow-up4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,7.27c0-0.62-0.5-1.13-1.13-1.13h-7.64c-0.62,0-1.13,0.5-1.13,1.13s0.5,1.13,1.13,1.13h5.05l-8.16,8.25
- l-4.89-4.89c-0.44-0.44-1.15-0.44-1.59,0L0.9,20.6c-0.44,0.44-0.44,1.15,0,1.59c0.22,0.22,0.51,0.33,0.8,0.33s0.58-0.11,0.8-0.33
- l8.05-8.05l4.89,4.89c0.21,0.21,0.5,0.33,0.8,0.33c0,0,0,0,0,0c0.3,0,0.59-0.12,0.8-0.33l8.82-8.91v4.68c0,0.62,0.5,1.13,1.13,1.13
- s1.13-0.5,1.13-1.13V7.38c0-0.02,0-0.04,0-0.06C28.11,7.3,28.11,7.28,28.11,7.27z"></path>               </svg>                <!--negative arrow-->               <svg id="arrow-down4" class="d-none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">                 <path class="chart-arrow-path" d="M28.11,21.4c0,0.62-0.5,1.13-1.13,1.13h-7.64c-0.62,0-1.13-0.5-1.13-1.13s0.5-1.13,1.13-1.13h5.05l-8.16-8.25
- l-4.89,4.89c-0.44,0.44-1.15,0.44-1.59,0L0.9,8.07c-0.44-0.44-0.44-1.15,0-1.59c0.22-0.22,0.51-0.33,0.8-0.33s0.58,0.11,0.8,0.33
- l8.05,8.05l4.89-4.89c0.21-0.21,0.5-0.33,0.8-0.33c0,0,0,0,0,0c0.3,0,0.59,0.12,0.8,0.33l8.82,8.91v-4.68c0-0.62,0.5-1.13,1.13-1.13
- s1.13,0.5,1.13,1.13v7.42c0,0.02,0,0.04,0,0.06C28.11,21.36,28.11,21.38,28.11,21.4z"></path>               </svg>             </span> {{_varStatVaccinesDailyPct_}}% <span class="text-300">pagtaas</span>            </div> #}
-        </div>
-      </div>
-    </div>
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">pagpopositibo sa pagsusuri</span>          </div>          <!-- <div class="text-white text-xs mb-2">
+ <span class="text-300">&nbsp;</span>
+ </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+           <div class="sparkline-tests"></div>
+           <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>          <!--End Chart and Label -->          </div>
+       </div>
+     </div>
+   </div>
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">Na-update noong {{_varStatDate_}}, na may datos mula sa {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text">Na-update noong {{_varStatDate_}}, na may data mula sa {{_varStatYesterdayDate_}}.</p>
 
-        <p class="small-text">Tala: Ang rate ng kaso ay batay sa 7 araw na average na may 7 araw na lag. Ang mga rate ng pagkamatay ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkaantala sa pag-uulat. Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang pagbabago sa direksyon ay inihahambing sa naunang 7 araw na panahon. Ang datos ay ibinibigay ng California Department of Public Health. Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</p>
+        <p class="small-text">Tandaan: Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna. Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag. Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat. Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate. Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</p>
       </div>
     </div>
 
-  </div>   <!--END container--> </div>    <hr class="wp-block-separator mt-0" id="county-statewide"/>    <h2 class="text-center color-purple">Data ng county at buong estado</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
+  </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Mga hindi pa nababakunahan at nabakunahan nang kaso</h2>
+
+
+
+<div id="postvax-chart-intro">Sa tulong ng mga bakuna, naiiwasan ang malalang karamdaman, nakakasagip ng mga buhay, at napipigilan ang pagkalat ng COVID-19. Kapag mas maraming tao ang nagpabakuna, liliit ang posibilidad na kumalat, mag-mutate, at maging mas mapanganib ang virus. Makakatulong ang mga bakuna na wakasan ang pandemya. <!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. --> </div>    <!-- omitting tabs for now...
+<div class="d-flex flex-column flex-md-row justify-content-center my-3">
+ <div class="large-tabs">
+ <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
+ <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
+ <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
+ </div>
+ </div>
+--> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
+    <li data-label="chartTitleState">Mga kaso ng COVID-19 sa nakalipas na apat na buwan</li>
+    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na mahawahan ng COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="yaxis_legend">Mga lingguhang kaso sa bawat 100K</li>
+    <li data-label="yaxis_legend_daily">Mga kaso sa bawat 100K (7 araw na tumatakbong average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Nabakunahan</li>
+    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
+    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="pending_legend">Nakabinbin ang data</li>
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga hindi pa nababakunahang kaso sa bawat 100K: <b>{UCOUNT}</b><br> Mga nabakunahang kaso sa bawat 100K: <b>{VCOUNT}</b><br>     </li>  
+  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
+    <li data-label="chartTitleState">Mga pagpapaospital na dulot ng COVID-19 sa nakalipas na apat na buwan</li>
+    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na maospital dahil sa COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="yaxis_legend">Mga lingguhang pagpapaospital sa bawat milyon</li>
+    <li data-label="yaxis_legend_daily">Mga pagpapaospital sa bawat milyon (7 araw na tumatakbong average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Nabakunahan</li>
+    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
+    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="pending_legend">Nakabinbin ang data</li>
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagpapaospital ng mga hindi pa nababakunahan sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagpapaospital ng nabakunahan na sa bawat milyon: <b>{VCOUNT}</b><br>     </li>  
+  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
+    <li data-label="chartTitleState">Mga pagkamatay na dulot ng COVID-19 sa nakalipas na apat na buwan</li>
+    <li data-label="chartImpactStatement">Pahayag ng mga pagkamatay: Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na mamatay dahil sa COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="yaxis_legend">Mga lingguhang pagkamatay sa bawat milyon</li>
+    <li data-label="yaxis_legend_daily">Mga pagkamatay sa bawat milyon (7 araw na tumatakbong average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Nabakunahan</li>
+    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
+    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="pending_legend">Nakabinbin ang data</li>
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga hindi pa nababakunahang pagkamatay sa bawat milyon: <b>{UCOUNT}</b><br> Mga nabakunahan nang pagkamatay sa bawat milyon: <b>{VCOUNT}</b><br>     </li>  
+  </ul> </cagov-chart-dashboard-postvax-chart>    <div id="postvax-chart-footer">
+<p class="small-text">Ang nabakunahang kaso ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Janssen hindi bababa sa dalawang linggo bago siya magpositibo sa COVID-19. Ang hindi pa nababakunahang kaso ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19. Ginagamit ng chart na ito ang data mula sa mga taong may edad na 16 na taon pataas na nakolekta sa nakalipas na 120 araw. Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</p>
+</div>
+
+
+
+<h3>Data ng mga naibigay na bakuna</h3>
+
+
+
+<p>Sinusubaybayan namin ang progreso ng pagbabakuna ng mga Californian sa buong estado.</p>
+
+
+
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Tingnan ang data sa pagbabakuna</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Data ng county at buong estado</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
 
 
 
@@ -275,20 +326,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
-  </div>    <hr class="wp-block-separator mb-0" id="vaccination"/>    <div class="bg-darkblue py-5 full-bleed">
-            <div class="container py-2">
-                <div class="row pb-4">
-                    <div class="col-lg-10 mx-auto color-white">
-                        <h2 class="text-center color-orange">Data sa pagbabakuna</h2>
-                        <p>Ang pagpapabakuna laban sa COVID-19 ay isa sa pinakamahahalagang instrumento para mawakasan ang pandemya. Sinusubaybayan namin ang progreso ng pagbabakuna ng mga Californian sa buong estado.</p>
-
-                        <div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-white">                                 <div class="link-arrow-label">Tingnan ang data sa pagbabakuna</div><cagov-arrow></cagov-arrow> </a>                         </div>
-
-
-                    </div>
-                </div>
-
-            </div><!--END container-->         </div>    <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+  </div>    <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-4 pb-5">
     <h2 class="text-center color-primary">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
@@ -378,3 +416,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </div>
     </div>
   </div>   <!--END container--> </div>
+
+
+
+<p></p>
