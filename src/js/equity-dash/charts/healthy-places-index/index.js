@@ -32,8 +32,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         height: 355,
         margin: { top: 30, right: 20, bottom: 40, left: 30 },
         legendPosition: {
-          x: 200,
-          y: 18
+          x: 300,
+          y: 10
         }
       },
       tablet: {
@@ -112,7 +112,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       )
       .then((response) => response.json())
       .then((alldata) => {
-        this.writeChart(alldata, this.svg, this.textLabels.data1Legend);
+        this.writeChart(alldata, this.svg, this.textLabels.data1Legend, this.textLabels.data2Legend);
         // this.innerHTML = `<div class="svg-holder"></div>`;
         this.querySelector(".svg-holder").appendChild(this.svg.node());
       });
@@ -149,6 +149,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           "placeholderForDynamicLocation",
           this.county
         );
+        let legendText2 = this.textLabels.data2Legend;
 
         window
           .fetch(
@@ -159,7 +160,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           )
           .then((response) => response.json())
           .then((alldata) => {
-            this.writeChart(alldata, this.svg, legendText);
+            this.writeChart(alldata, this.svg, legendText, legendText2);
           });
       }.bind(this),
       false
@@ -178,7 +179,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
   }
 
 
-  writeChart(alldata, svg, data1Legend) {
+  writeChart(alldata, svg, data1Legend, data2Legend) {
     let component = this;
 
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
@@ -191,7 +192,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       // console.log("Got date span");
       elem.innerHTML = updateDate;
     });
-
 
     // console.log("Overall Data ", data);
     // console.log("Equity Data2 ", data2);
@@ -246,6 +246,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let xAxis = (g) =>
       g
         .attr("transform", "translate(0," + this.chartBreakpointValues.margin.bottom + ")" )
+        .attr("font-weight", "bold" )
         .call(
           d3
             .axisBottom(x)
@@ -263,6 +264,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let yAxis = (g) =>
       g
         .attr("transform", "translate(" + this.chartBreakpointValues.margin.left + ", 0)")
+        .attr("font-weight", "bold" )
         .call(
           d3
             .axisLeft(y)
@@ -281,6 +283,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           "translate(" + 0 + " ," + (this.chartBreakpointValues.margin.top - 10) + ")"
         )
         .style("text-anchor", "left")
+        .attr("font-weight", "bold")
         .text(component.textLabels.yAxisLabel)
         .attr("class", "y-label");
     
@@ -368,18 +371,21 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       const tooltip = new Tooltip(true, y);
       const tooltip2 = new Tooltip(false, y);
 
-      
+      // Handle mouse events.
       svg
         .on("mousemove", (event) => {
           // console.log("move: " + event.offsetX);
           // coords are container screen-coords, and need to be scaled/translated
           // to x display bounds before passed to x.invert
           var xy = d3.pointer(event);
+          let data1Isgreater = this.doMath(data, data2, x, y, xy);
+          
           // console.log("event: ",xy);
-          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y);
+          tooltip.show(this.bisect(data, x.invert(xy[0])), x, y, data1Isgreater, data1Legend );
           if (!using_data_overlay) {
-            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y);
-          }
+            tooltip2.show(this.bisect(data2, x.invert(xy[0])), x, y, !data1Isgreater, data2Legend);
+          }        
+        
         })
         .on("mouseleave touchend", (event) => {
           // console.log("leave");
@@ -447,6 +453,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         return i * 20 - 10;
       })
       .attr("text-anchor", "start")
+      .attr("font-weight", "bold")
       .attr("dominant-baseline", "hanging");
   }
 
@@ -461,5 +468,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let translations = getTranslations(this);
     return translations;
   }
+
+  // @todo Rename this function.
+  doMath(data, data2, x, y, xy) {
+    
+      let value1 = this.bisect(data, x.invert(xy[0]))
+      let value2 = this.bisect(data2, x.invert(xy[0]))
+
+      let newy1 = y(value1.METRIC_VALUE) + 4
+      let newy2 = y(value2.METRIC_VALUE) + 4
+
+      return (newy1 > newy2);
+
+    };
 }
 window.customElements.define("cagov-chart-d3-lines", CAGOVChartD3Lines);
