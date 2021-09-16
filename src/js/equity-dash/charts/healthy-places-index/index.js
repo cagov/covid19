@@ -149,6 +149,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           "placeholderForDynamicLocation",
           this.county
         );
+        let legendText2 = this.textLabels.data2Legend;
 
         window
           .fetch(
@@ -159,7 +160,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
           )
           .then((response) => response.json())
           .then((alldata) => {
-            this.writeChart(alldata, this.svg, legendText);
+            this.writeChart(alldata, this.svg, legendText, legendText2);
           });
       }.bind(this),
       false
@@ -191,7 +192,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       // console.log("Got date span");
       elem.innerHTML = updateDate;
     });
-
 
     // console.log("Overall Data ", data);
     // console.log("Equity Data2 ", data2);

@@ -54,7 +54,7 @@ export default class Tooltip {
     // .tip text
     const text = this.node.querySelector('text.label1');
     text.setAttribute('x', (tranX > midPoint) ? 0  : 10);
-    text.innerHTML = `<tspan font-weight="bold">${tipNumber}%</tspan>&nbsp;<tspan>${label.toLowerCase()}</tspan>`;
+    text.innerHTML = `<tspan font-weight="bold">${tipNumber}%</tspan>&nbsp;<tspan>${label}</tspan>`;
     text.setAttribute("transform", `translate(0,${tranY + adjustY })`);
 
     // .tip rect
