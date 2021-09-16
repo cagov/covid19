@@ -21,7 +21,7 @@ export default class Tooltip {
     `<g class="tip">
       <rect height="38" y="-25"></rect> 
       <text class="label1" x="0"></text>
-      <circle r="3" dx="3" fill="#0F368E"></circle>
+      <circle r="3" dx="3" x="-4" transform=translate(-5,130)></circle>
     </g>
     `;
   } 
@@ -40,9 +40,6 @@ export default class Tooltip {
     let tipNumber = (yVal * 100).toFixed(1);
     // Change the y position of the tool tip based on its relative value.
     let adjustY =  (lineIsOnTop) ? 45 : -45;
-    
-    // @todo - Get dynamically from text width.
-    const rectangleWidth = 240;
 
     // .tip
     const tip = this.node;
@@ -59,8 +56,10 @@ export default class Tooltip {
 
     // .tip rect
     const rectangle = this.node.querySelector(".tip rect");
+    // Get rectangle width dynamically from text width.
+    const rectangleWidth = text.getBBox().width + 20;
     rectangle.setAttribute("width", rectangleWidth);
-    rectangle.setAttribute('x',(tranX > midPoint) ? -(rectangleWidth) + 10 : -10);
+    rectangle.setAttribute('x',(tranX > midPoint) ? -(rectangleWidth) + 10 : 0 );
     rectangle.setAttribute("transform", `translate(0,${tranY + adjustY})`);
 
     // .tip circle
