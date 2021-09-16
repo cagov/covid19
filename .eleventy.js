@@ -21,6 +21,9 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   ? '' //This is a root language page
   : page.fileSlug.replace(langPostfixRegExp,'');
 
+/**
+ * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
+ */
 module.exports = function(eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
@@ -738,7 +741,7 @@ module.exports = function(eleventyConfig) {
 
   //eleventyConfig.addLayoutAlias('page', 'pages/_includes/page.njk');
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize";
+  //eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize"; //do we need this?
   return {
     htmlTemplateEngine: "njk",
     templateFormats: ["html", "njk", "11ty.js"],
