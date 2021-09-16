@@ -7,6 +7,7 @@
         "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
         "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
         "dataUrl": "confirmed-cases/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
         "rootId": "cases-ep",
         "display_weeks": 8,
         "uncertainty_days_override": 0,
@@ -21,6 +22,7 @@
         "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
         "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
         "dataUrl": "confirmed-deaths/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
         "rootId": "death-date",
         "display_weeks": 8,
         "uncertainty_days_override": 0,
@@ -31,16 +33,16 @@
     "tests": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
-        "chart_style": "solid-region",
-        "seriesField": "TEST_POSITIVITY_RATE_7_DAYS",
+        "chart_style": "normal",
+        "seriesField": "DAILY_TEST_POSITIVITY_RATE",
         "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
         "dataUrl": "positivity-rate/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
         "rootId": "tests-tests",
         "display_weeks": 8,
         "uncertainty_days_override": 0,
         "uncertainty_latest_field": "POSITIVITY_RATE",
-        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD",
-        "no_average":true
+        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD"
       }
     },
     "vaccines": {
@@ -50,6 +52,7 @@
           "seriesField": "VACCINE_DOSES",
           "seriesFieldAvg": "VACCINE_DOSES_7DAYAVG",
           "dataUrl": "vaccines/sparkline.json",
+          "dataPathVar": "chartsStateDashTablesLocSparklineVaccines",
           "rootId": "tests-vaccines",
           "display_weeks": 8,
           "uncertainty_days_override": 7,
