@@ -734,7 +734,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
-  eleventyConfig.setUseGitIgnore(false);
+  //eleventyConfig.setUseGitIgnore(false);
 
   const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
   addPreviewModeToEleventy(eleventyConfig);
@@ -773,5 +773,5 @@ function writeMenuJson(lang) {
     )
   };
 
-  fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
+  //fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
 }
