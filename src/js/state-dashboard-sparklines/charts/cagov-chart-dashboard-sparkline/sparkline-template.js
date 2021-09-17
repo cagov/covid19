@@ -4,7 +4,7 @@ import css from "./sparkline.scss";
  * 
  */
 export default function template(chartOptions, {
-  post_chartTitle = "chart title",
+  post_chartTitle = "chart title",   /* Unused, but left in for future use */
 }) {
 
   return /*html*/ `
