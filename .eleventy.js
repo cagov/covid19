@@ -3,7 +3,6 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
 let filesSiteData = [];
-langData.languages.forEach(writeMenuJson);
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
@@ -140,7 +139,7 @@ module.exports = function (eleventyConfig) {
           output.push(item);
           //console.log(`Skipping traslated page ${item.inputPath} for ${FolderName}`)
           item.template.isDryRun = true;
-          
+
         }
       };
     });
@@ -764,28 +763,3 @@ module.exports = function (eleventyConfig) {
     }
   };
 };
-
-function writeMenuJson(lang) {
-  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g, '')}menu-links${lang.filepostfix}.json`, 'utf8'));
-  const singleLangMenu = {
-    sections: menuLinksJson.Table1
-      .map(section => ({
-        title: section.label,
-        links:
-          menuLinksJson.Table2
-            .filter(l => l._slug_or_url && l.label && l._section_index === section._section_index)
-            .map(link => ({
-              url:
-                (link._slug_or_url.toLowerCase().startsWith('http'))
-                  ? link._slug_or_url //http full link
-                  : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
-              name: link.label
-            })
-            )
-      })
-      )
-  };
-
-  //TODO: Disable this for serverless only
-  //fs.writeFileSync('./docs/menu--'+lang.id+'.json',JSON.stringify(singleLangMenu),'utf8')
-}
