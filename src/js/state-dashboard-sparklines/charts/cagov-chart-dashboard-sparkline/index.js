@@ -22,11 +22,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
       ? window.charts.displayType
       : "desktop";
 
-    // console.log("Displaying sparkline",window.charts,this.screenDisplayType);
-    // if (this.screenDisplayType == "desktop" && window.innerWidth < 992) {
-    //   console.log("FORCING TABLET");
-    //   this.screenDisplayType = "tablet";
-    // }
     this.chartBreakpointValues = chartConfig[this.screenDisplayType];
     this.dimensions = this.chartBreakpointValues;
 
@@ -69,12 +64,10 @@ class CAGovDashboardSparkline extends window.HTMLElement {
   renderComponent() {
     this.statedata = this.chartdata;
 
-    // console.log("Loading sparkline chart",this.dataset.chartConfigKey,this.chartdata);
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_days = this.chartOptions.uncertainty_days_override;
 
-    // if uncertainty_days is 0 AND uncertainty_latest_field is not a null string
     if (uncertainty_days == 0 && this.chartOptions.uncertainty_latest_field != "") {
       const pending_date = this.chartdata.latest[this.chartOptions.uncertainty_latest_field][this.chartOptions.uncertainty_date_field];
       const data_to_walk = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
@@ -97,9 +90,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
     // clone in case they are the same
     bar_series = JSON.parse(JSON.stringify(bar_series));
-    // let line_series = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
-    // // clone in case they are the same
-    // line_series = JSON.parse(JSON.stringify(bar_series));
 
     // COMPUTE MANUAL AVERAGE
     let line_series = [];
