@@ -458,9 +458,6 @@ header .dropdown {
 }
 
 button#dropdown-menu-button {
-  border: 1px solid $lightgray;
-  background: $darkblue;
-  color: white;
   transition-duration: 0.3s;
   transition-property: all;
   transition-timing-function: ease;
@@ -473,15 +470,13 @@ button#dropdown-menu-button {
 
 
 
-  &:hover { 
+  &:hover {
     background-color: transparent;
     border-color: transparent;
     color: #ecca00;
   }
 
   &:focus {
-    outline: 2px solid $white;
-    box-shadow: none;  
     background-color: $white;
     border-color: $white;
     color: $darkblue;

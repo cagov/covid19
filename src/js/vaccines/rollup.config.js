@@ -9,7 +9,6 @@ const defaultConfig = {
   chartsVHPIDataLocDoses: 'https://files.covid19.ca.gov/data/vaccine-hpi/v2/',
   chartsVHPIDataLocPeople: 'https://files.covid19.ca.gov/data/vaccine-hpi/v2/',
 }
-
 const stagingConfig =  {
   equityChartsSampleDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/chart-sandbox/',
   equityChartsVEDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/7cf5fc39e0bfc91658c7f9bd5ac985178fee43f8/data/vaccine-equity/',
@@ -21,7 +20,6 @@ const devOutputPath = 'docs/js/vaccines.js';
 const prodOutputPath = 'pages/_buildoutput/vaccines.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
-// console.log("!!!!! NODE_ENV",process.env.NODE_ENV);
 
 export default {
   input: 'src/js/vaccines/index.js',

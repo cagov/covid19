@@ -8,6 +8,7 @@ import "../dashboard/charts/cagov-chart-dashboard-confirmed-cases/index.js"
 
 // test version of deaths chart using HighCharts
 import "./charts/cagov-chart-dashboard-confirmed-cases-hc/index.js"
+// import "./charts/cagov-chart-dashboard-confirmed-deaths/index.js"
 
 import "../dashboard/charts/cagov-chart-dashboard-total-tests/index.js"
 import "../dashboard/charts/cagov-chart-dashboard-positivity-rate/index.js"

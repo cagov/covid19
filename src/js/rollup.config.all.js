@@ -2,8 +2,6 @@ import alerts from './alerts/rollup.config';
 import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import plasma from './plasma/rollup.config';
-import reopeningAirtableV1 from './roadmap-airtable-v1/rollup.config';
-import reopeningTierLevel from './roadmap-tier-level/rollup.config';
 import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
 import dashboard from './dashboard/rollup.config';
@@ -44,13 +42,10 @@ function shouldIRebuild(directory,generatedFile) {
 export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
   ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
-  ...(shouldIRebuild('/roadmap-airtable-v1/', '../../docs/js/roadmap-airtable-v1.js') ? [reopeningAirtableV1] : []),
-  ...(shouldIRebuild('/roadmap-tier-level/', '../../docs/js/roadmap-tier-level.js') ? [reopeningTierLevel] : []),
   ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : [dashboard]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
-  ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/chartssandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/state-dashboard-sparklines/', '../../docs/js/state-dashboard-sparklines.js') ? [sparklines] : [sparklines]),

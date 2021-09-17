@@ -18,6 +18,3 @@ import setupAnalytics from './tracking-you/index.js';
 window.onload = (event) => {
   setupAnalytics();
 };
-
-
-
