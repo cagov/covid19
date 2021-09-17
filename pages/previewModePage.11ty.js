@@ -29,7 +29,7 @@ class previewModePageClass {
         
         itemData.title = jsonData.title.rendered;
         itemData.publishdate = jsonData.modified.split('T')[0]; //new Date(jsonData.modified_gmt)
-        itemData.meta = jsonData.excerpt.rendered;
+        itemData.meta = jsonData.excerpt.rendered.replace(/<p>/g,'').replace(/<\/p>/g,'');
 
         return jsonData.content.rendered;
     }
