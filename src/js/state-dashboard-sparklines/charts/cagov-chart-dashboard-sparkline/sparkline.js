@@ -1,5 +1,13 @@
 // Generic histogram chart, as used on top of state dashboard
 
+/**
+ * Write Line element
+ * @param {*} svg     the svg
+ * @param {*} data    the data
+ * @param {*} x       the x scale
+ * @param {*} y       the y scale
+ * @param {*} options  rendering options 
+ */
 function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
     let max_y_domain = y.domain()[1];
     let max_x_domain = x.domain()[1];
@@ -16,6 +24,14 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
           );
 }
 
+/**
+ * Write Region element (same as line, but fills the area underneath)
+ * @param {*} svg     the svg
+ * @param {*} data    the data
+ * @param {*} x       the x scale
+ * @param {*} y       the y scale
+ * @param {*} options  rendering options 
+ */
 function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
@@ -35,7 +51,14 @@ function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, c
       
 }
 
-
+/**
+ * Write bars
+ * @param {*} svg     the svg
+ * @param {*} data    the data
+ * @param {*} x       the x scale
+ * @param {*} y       the y scale
+ * @param {*} options  rendering options 
+ */
 function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal" }) {
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
@@ -67,7 +90,10 @@ function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_sty
     }
 }
   
- 
+/**
+ * Chart renderer
+ * Accepts a dictionary containing rendering options
+ */
 export default function renderChart({
   chart_style = "normal",
   extras_func = null,

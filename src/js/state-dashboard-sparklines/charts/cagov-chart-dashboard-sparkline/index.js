@@ -58,6 +58,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     return [];
   }
 
+  // Unused callback, just in case
   renderExtras(svg, data, x, y) {
   }
 
@@ -68,6 +69,8 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_days = this.chartOptions.uncertainty_days_override;
 
+    // WORK OUT HOW MUCH RECENT DATA TO CHOP OFF (typically 7 days, but not always)
+    //
     if (uncertainty_days == 0 && this.chartOptions.uncertainty_latest_field != "") {
       const pending_date = this.chartdata.latest[this.chartOptions.uncertainty_latest_field][this.chartOptions.uncertainty_date_field];
       const data_to_walk = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
@@ -108,9 +111,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
   
     bar_series = bar_series.splice(uncertainty_days, display_weeks*7);
     line_series = line_series.splice(uncertainty_days, display_weeks*7);
-    // console.log("Bar Series",this.dataset.chartConfigFilter,bar_series);
-    // console.log("Line Series",this.dataset.chartConfigFilter,line_series);
-    // console.log("Last average",this.dataset.chartConfigKey,line_series[0].DATE,line_series[0].VALUE);
+
     let renderOptions = {
                           'chart_style':this.chartOptions.chart_style,
                           'extras_func':this.renderExtras,
