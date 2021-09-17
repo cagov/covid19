@@ -13,8 +13,6 @@ const browsersync = require('browser-sync').create();
 const request = require('request');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 
-langData.languages.forEach(writeMenuJson);
-
 // Initialize BrowserSync.
 const server = (done) => {
   browsersync.init({
@@ -55,6 +53,8 @@ const eleventy = (done) => {
       console.error(error);
     }
   });
+
+  langData.languages.forEach(writeMenuJson);
 
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
