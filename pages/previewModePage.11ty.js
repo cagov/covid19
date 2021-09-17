@@ -15,7 +15,7 @@ class previewModePageClass {
             layout: "page", //Or whatever layout the preview page should have
             tags: ["do-not-crawl"], //Or whatever tags the preview page should have,
             author: "State of California",
-            addtositemap: true,
+            addtositemap: false,
             ...addPreviewModeDataElements()
         };
     }
