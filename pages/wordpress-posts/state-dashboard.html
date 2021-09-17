@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-17T16:31:11Z"
-tags: ["translate"]
+publishdate: "2021-09-17T16:46:46Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -209,14 +209,18 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-
-        <p class="small-text">Note: The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination. The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities. The graph portrays the average number of vaccines administered daily, based on a 7-day average of doses administered 3-10 days prior. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
       </div>
     </div>
 
   </div>
   <!--END container-->
 </div>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Data notes</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+<p class="small-text">The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination. The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities. The graph portrays the average number of vaccines administered daily, based on a 7-day average of doses administered 3-10 days prior. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
+</div></div></div></cagov-accordion></div>
 
 
 
