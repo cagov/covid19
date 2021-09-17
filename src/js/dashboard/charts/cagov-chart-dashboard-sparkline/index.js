@@ -44,7 +44,9 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
 
     // Set default values for data and labels
-    this.dataUrl = config.chartsStateDashTablesLocSparkline + this.chartOptions.dataUrl;
+    console.log("Reading data file",this.chartOptions.dataPathVar, config);
+
+    this.dataUrl = config[this.chartOptions.dataPathVar] + this.chartOptions.dataUrl;
     // console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
