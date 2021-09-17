@@ -1,3 +1,3 @@
 // sparklines
 // console.log("HELLO");
-import "../dashboard/charts/cagov-chart-dashboard-sparkline/index.js"
+import "./charts/cagov-chart-dashboard-sparkline/index.js"
