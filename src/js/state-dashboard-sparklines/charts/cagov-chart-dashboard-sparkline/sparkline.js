@@ -60,6 +60,7 @@ function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, c
  * @param {*} options  rendering options 
  */
 function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal" }) {
+  let bar_width = chart_style=="solid"? 4 : 2;
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
     }
@@ -74,9 +75,9 @@ function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_sty
     if (crop_floor) { // positive only
       groups
           .append("rect")
-          .attr("x", (d,i) => x(i))
+          .attr("x", (d,i) => x(i)-bar_width/2)
           .attr("y", d => y(d.VALUE))
-          .attr("width", chart_style=="solid"? 4 : 2)
+          .attr("width", bar_width)
           .attr("height", d => Math.max(y(0) - y(d.VALUE),0))
           .attr("id", (d, i) => root_id+'-'+i);
     } else { // positive and negative rects
