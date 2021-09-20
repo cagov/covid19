@@ -4,6 +4,7 @@ import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './sparkline-config.json';
 import renderChart from "./sparkline.js";
+import { getSnowflakeStyleDate } from "../../../common/readable-date.js";
 
 // cagov-chart-dashboard-positivity-rate
 class CAGovDashboardSparkline extends window.HTMLElement {
@@ -12,7 +13,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    this.stateData = null;
 
     console.log("Loading CAGovDashboardSparkline", this.chartConfigFilter, this.chartConfigKey);
 
@@ -39,7 +39,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
 
     // Set default values for data and labels
-    console.log("Reading data file",this.chartOptions.dataPathVar, config);
+    // console.log("Reading data file",this.chartOptions.dataPathVar, config);
 
     this.dataUrl = config[this.chartOptions.dataPathVar] + this.chartOptions.dataUrl;
     // console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
@@ -63,8 +63,6 @@ class CAGovDashboardSparkline extends window.HTMLElement {
   }
 
   renderComponent() {
-    this.statedata = this.chartdata;
-
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let display_weeks = this.chartOptions.display_weeks;
     let uncertainty_days = this.chartOptions.uncertainty_days_override;
@@ -120,6 +118,8 @@ class CAGovDashboardSparkline extends window.HTMLElement {
                           'left_y_fmt':'pct',
                           'root_id':this.chartOptions.rootId,
                           'right_y_fmt':'integer',
+                          'published_date': this.metadata.PUBLISHED_DATE,
+                          'render_date': getSnowflakeStyleDate(0),
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
       renderChart.call(this, renderOptions);
