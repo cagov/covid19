@@ -2,6 +2,11 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
+const { addPreviewModeToEleventy, getPostJsonFromWordpress} = require("@cagov/11ty-serverless-preview-mode");
+const wordPressSettings = {
+  wordPressSite: "https://as-go-covid19-d-001.azurewebsites.net", //Wordpress endpoint
+  //previewWordPressTagSlug: 'preview-mode' // optional filter for digest list of preview in Wordpress
+}
 let filesSiteData = [];
 
 let htmlmap = [];
@@ -25,6 +30,37 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
  */
 module.exports = function (eleventyConfig) {
+  addPreviewModeToEleventy(eleventyConfig);
+
+  eleventyConfig.addCollection("myserverless", async function (collection) {
+    const output = [];
+
+for(const item of collection.items) {
+      const itemData = item.data;
+      if (!item.outputPath && itemData.eleventy && itemData.eleventy.serverless) {
+        console.log('serverless');
+        item.template.frontMatter.content = 'My Content = Dynamic TEST+{{7}}'  //jsonData.content.rendered;
+
+        const jsonData = await getPostJsonFromWordpress(itemData, wordPressSettings);
+        
+        itemData.title = jsonData.title.rendered;
+        itemData.publishdate = jsonData.modified.split('T')[0]; //new Date(jsonData.modified_gmt)
+        itemData.meta = jsonData.excerpt.rendered.replace(/<p>/g,'').replace(/<\/p>/g,'');
+
+        item.template.frontMatter.content = jsonData.content.rendered;
+
+        output.push(item);
+
+      } else {
+        console.log('not serverless');
+      }
+    }
+
+    return output;
+  });
+
+
+
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
@@ -751,11 +787,9 @@ module.exports = function (eleventyConfig) {
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
   eleventyConfig.setUseGitIgnore(false);
 
-  const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
-  addPreviewModeToEleventy(eleventyConfig);
-
   return {
     htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
     templateFormats: ["html", "njk", "11ty.js"],
     dir: {
       input: "pages",
