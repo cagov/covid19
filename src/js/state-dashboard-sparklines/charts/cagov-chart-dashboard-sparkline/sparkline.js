@@ -105,12 +105,16 @@ export default function renderChart({
   time_series_state_line = null,
   line_date_offset = 0,
   crop_floor = true,
+  published_date = "YYYY-MM-DD",
+  render_date = "YYYY-MM-DD",
   root_id = "barid" } )  
 {
 
   this.svg = d3
     .select(this.querySelector(".svg-holder"))
     .append("svg");
+
+  this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date)
 
   // this.svg.selectAll("g").remove();
   this.svg
