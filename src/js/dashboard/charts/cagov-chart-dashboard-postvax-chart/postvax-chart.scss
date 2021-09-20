@@ -100,25 +100,21 @@ cagov-chart-dashboard-postvax-chart {
   span.chart-legend {
     float:right;
   }
-  .chart-legend {
-    font-weight: 300;
-    font-size: 0.85rem;
+  svg.legend-line {
+    width:24px;
+    height:15px;
   }
-  .chart-legend .series1-legend-line {
-    font-weight:800;
-    color: #1f2574;
+  svg.legend-line path {
+    stroke-width: 3;
   }
-  .chart-legend .series2-legend-line {
-    font-weight:800;
-    color: #dc4567;
+  svg.series2-legend-line path {
+    stroke: #dc4567;
   }
-  .chart-legend .series3-legend-line {
-    font-weight:800;
-    color: #cccccc;
+  svg.series1-legend-line path {
+    stroke: #1f2574;
   }
-  .chart-legend .pending-legend-line {
-    font-weight:800;
-    color: #000;
+  svg.series3-legend-line path {
+    stroke: #cccccc;
   }
   div.tooltip-container {
     font-weight: 300;

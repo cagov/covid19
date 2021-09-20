@@ -1,6 +1,6 @@
 import Awesomplete from 'awesomplete-es6';
-import templatize from './template.js';
 import rtlOverride from "./../../common/rtl-override.js";
+import templatize from './template.js';
 
 class CAGovCountySearch extends window.HTMLElement {
 
@@ -36,7 +36,7 @@ class CAGovCountySearch extends window.HTMLElement {
   handleURLPayload() {
     // Support URL with #location-countyname
     let curHREF = document.location.href;
-    if (curHREF.includes('#location-')) {
+    if (curHREF.indexOf('#location-') != -1) {
       let loc = curHREF.split('#location-')[1].replace('_',' ').replace('-',' ');
       let countyInput = document.querySelector("#location-query");
       if (loc != 'california') {
