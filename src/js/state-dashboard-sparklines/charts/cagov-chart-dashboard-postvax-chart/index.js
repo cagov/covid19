@@ -126,6 +126,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'root_id':this.chartOptions.root_id,
                           'published_date': this.metadata.PUBLISHED_DATE,
                           'render_date': getSnowflakeStyleDate(0),
+                          'chart_options': this.chartOptions,
 
                           // 'chart_mode':this.chart_mode,
                           // 'pending_mode':this.pending_mode,
