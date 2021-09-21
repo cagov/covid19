@@ -1,14 +1,17 @@
 // generic histogram chart, as used on top of state dashboard
 
-function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', color='black', crop_floor=true }) {
+function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',line_idx=1, color='black', crop_floor=true,chart_options=null }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
 
   let groups = svg.append("g")
-    .attr("class","fg-line "+root_id+" "+line_id);
+    .attr("class","fg-line "+root_id+" "+line_id)
+    .attr("stroke",chart_options['line_'+(line_idx)+'_color'])
+    .attr("stroke-width",chart_options.stroke_width+"px")
+    .attr("fill","none");
   if (line_id == "line_s3") {
-    groups.attr("stroke-dasharray","2 6");
+    groups.attr("stroke-dasharray","1 3");
   }
   groups.append('path')
     .datum(data)
@@ -29,7 +32,7 @@ function writeXAxis(svg, data, date_fld, x, y,
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
-      // .attr('style','stroke-width: 0.5px; stroke:black;');
+      .attr('style','stroke-width: 0.5px; stroke:black;');
 
   let last_mon_idx = 0;
   let last_year_idx = 0;
@@ -236,7 +239,9 @@ function getAxisDiv(ascale,{hint='num'}) {
     published_date = "YYYY-MM-DD",
     render_date = "YYYY-MM-DD",
     crop_floor = false,
-    root_id = "postvaxid" } )  {
+    root_id = "postvaxid",
+    chart_options = {},
+   } )  {
 
     console.log("renderChart",root_id);
     // d3.select(this.querySelector("svg g"))
@@ -313,7 +318,8 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     series_fields.forEach((sf, i) => {
       writeLine.call(this, this.svg, chartdata, sf, this.xline, this.yline, 
-        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
+        { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), line_idx:(i+1), 
+          crop_floor:crop_floor, color:series_colors[i], chart_options:chart_options});
     });
 
     
@@ -339,19 +345,19 @@ function getAxisDiv(ascale,{hint='num'}) {
       extras_func.call(this, this.svg);
     }
 
-    this.svg
-    .on("mousemove focus", (event) => {
-      let xy = d3.pointer(event);
-      let dIndex = getDataIndexByX(this.xline, this.yline, xy);
-      if (dIndex != null) {
-        showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
-      } else {
-        hideTooltip.call(this);
-      }
-    })
-    .on("mouseleave touchend blur", (event) => {
-      hideTooltip.call(this);
-    });
+    // this.svg
+    // .on("mousemove focus", (event) => {
+    //   let xy = d3.pointer(event);
+    //   let dIndex = getDataIndexByX(this.xline, this.yline, xy);
+    //   if (dIndex != null) {
+    //     showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
+    //   } else {
+    //     hideTooltip.call(this);
+    //   }
+    // })
+    // .on("mouseleave touchend blur", (event) => {
+    //   hideTooltip.call(this);
+    // });
 
 
   }
