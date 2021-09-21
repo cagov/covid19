@@ -7,7 +7,6 @@ import video from './video/rollup.config';
 import dashboard from './dashboard/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
-import chartssandbox from './charts-sandbox/rollup.config';
 import sparklines from './state-dashboard-sparklines/rollup.config';
 
 import fs from 'fs';
@@ -47,7 +46,6 @@ export default [
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : [dashboard]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
-  ...(shouldIRebuild('/charts-sandbox/', '../../docs/js/charts-sandbox.js') ? [chartssandbox] : [chartssandbox]),
   ...(shouldIRebuild('/state-dashboard-sparklines/', '../../docs/js/state-dashboard-sparklines.js') ? [sparklines] : [sparklines]),
   esm,
   // Don't include ES5 file in dev mode.
