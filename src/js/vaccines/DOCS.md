@@ -6,13 +6,6 @@
 : https://kind-dune-0ef66d01e.azurestaticapps.net/vaccines
 
 
-[Staging, Charts Sandbox](https://staging.covid19.ca.gov/charts-sandbox)
-: https://staging.covid19.ca.gov/charts-sandbox
-
-[Sandbox, Charts Sandbox](https://kind-dune-0ef66d01e.azurestaticapps.net/charts-sandbox)
-: https://kind-dune-0ef66d01e.azurestaticapps.net/charts-sandbox
-
-
 ---
 
 ## Development
@@ -27,8 +20,6 @@
 Will migrate snippet to staging when ready to launch.
 
 ## Edit markup
-
-[Charts Sandbox](https://as-go-covid19-d-001.azurewebsites.net/wp-admin/post.php?post=8906&action=edit)
 
 Vaccines - we are editing the `/pages/wordpress_posts/vaccine.html` and will move to staging closer to launch.
 
@@ -190,7 +181,7 @@ TBD (if any)
 
 High level overview of the data pipeline.
 
-`CAIRS > CDPH > Snowflake Marketplace > SQL queries > Cron repo > Azure FaaS trigger requests > Write to covid-static > published to /data folder > Synced to files.covid19.ca.gov files server after 10 minutes  > JSON file > covid19 > Web component fetch request > /src/js/charts-sandbox/chart/*`
+`CAIRS > CDPH > Snowflake Marketplace > SQL queries > Cron repo > Azure FaaS trigger requests > Write to covid-static > published to /data folder > Synced to files.covid19.ca.gov files server after 10 minutes  > JSON file > covid19 > Web component fetch request > /src/js/state-dashboard/chart/*`
 
 
 ### Vaccine Snowflake Warehouse

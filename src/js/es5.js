@@ -15,7 +15,6 @@ import './equity-dash/charts/ie11.scss';
 import './vaccines/index.js';
 import './vaccines/charts/ie11.scss';
 import './dashboard/charts/ie11.scss';
-// import './charts-sandbox/index.js';
 import './dashboard/index.js';
 import './dashboard/charts/ie11.scss';
 
