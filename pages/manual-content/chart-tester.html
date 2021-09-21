@@ -3,7 +3,16 @@
 <head>
 <title>chart svg export demo</title>
 <style>
-  svg { max-width: 400px; }
+ .sparkline-chart svg { 
+    max-width: 400px; 
+    background-color: #003d9d;
+    margin-bottom:2rem;
+    padding: 20px 20px;
+}
+ .postvax-chart svg { 
+   max-width: 650px;
+   margin-bottom:2rem;
+}
 </style>
   <style>
     {% include "../../docs/img/generated/sparkline.css" %}
@@ -13,17 +22,28 @@
 
 <h1>Sparkline retrieval demo</h1>
 
+<h2>vaccinations</h2>
+<div class="sparkline-vax  sparkline-chart"></div>
+
 <h2>cases</h2>
-<div class="sparkline-cases"></div>
+<div class="sparkline-cases  sparkline-chart"></div>
 
 <h2>deaths</h2>
-<div class="sparkline-deaths"></div>
+<div class="sparkline-deaths sparkline-chart"></div>
 
 <h2>tests</h2>
-<div class="sparkline-tests"></div>
+<div class="sparkline-tests sparkline-chart"></div>
 
-<h2>vaccinations</h2>
-<div class="sparkline-vax"></div>
+<hr>
+
+<h2>postvax cases</h2>
+<div class="postvax-cases postvax-chart"></div>
+
+<h2>postvax deaths</h2>
+<div class="postvax-deaths postvax-chart"></div>
+
+<h2>postvax hospitalizations</h2>
+<div class="postvax-hospitalizations postvax-chart"></div>
 
 
 <script>
@@ -35,10 +55,16 @@ function getSVG(file,selector) {
   });
 }
 
+getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-vaccines.svg?random='+Math.random(),'.sparkline-vax');
 getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-cases.svg?random='+Math.random(),'.sparkline-cases');
-getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-deaths.svg?random='+Math.random(),'.sparkline-deaths')
-getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-tests.svg?random='+Math.random(),'.sparkline-tests')
-getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-vaccines.svg?random='+Math.random(),'.sparkline-vax')
+getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-deaths.svg?random='+Math.random(),'.sparkline-deaths');
+getSVG('https://files.covid19.ca.gov/img/generated/sparklines/sparkline-tests.svg?random='+Math.random(),'.sparkline-tests');
+
+getSVG('https://files.covid19.ca.gov/img/generated/postvax/postvax-cases.svg?random='+Math.random(),'.postvax-cases');
+getSVG('https://files.covid19.ca.gov/img/generated/postvax/postvax-deaths.svg?random='+Math.random(),'.postvax-deaths');
+getSVG('https://files.covid19.ca.gov/img/generated/postvax/postvax-hospitalizations.svg?random='+Math.random(),'.postvax-hospitalizations');
+
+
 </script>
 </body>
 </html>
