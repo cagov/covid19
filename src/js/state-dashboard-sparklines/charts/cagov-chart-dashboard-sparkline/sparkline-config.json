@@ -13,7 +13,10 @@
         "display_weeks": 8,
         "uncertainty_days_override": 0,
         "uncertainty_latest_field": "CONFIRMED_CASES",
-        "uncertainty_date_field": "EPISODE_UNCERTAINTY_PERIOD"
+        "uncertainty_date_field": "EPISODE_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
       }
     },
     "deaths": {
@@ -29,7 +32,10 @@
         "display_weeks": 8,
         "uncertainty_days_override": 0,
         "uncertainty_latest_field": "CONFIRMED_DEATHS",
-        "uncertainty_date_field": "DEATH_UNCERTAINTY_PERIOD"
+        "uncertainty_date_field": "DEATH_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
       }
     },
     "tests": {
@@ -45,7 +51,10 @@
         "display_weeks": 8,
         "uncertainty_days_override": 0,
         "uncertainty_latest_field": "POSITIVITY_RATE",
-        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD"
+        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
       }
     },
     "vaccines": {
@@ -61,8 +70,11 @@
           "display_weeks": 8,
           "uncertainty_days_override": 7,
           "uncertainty_latest_field": "",
-          "uncertainty_date_field": ""
-          }
+          "uncertainty_date_field": "",
+          "bar_color":"#00183f",
+          "line_color":"#92c5de",
+          "stroke_width":2
+        }
     },
     "desktop": {
       "fontSize": 14,
