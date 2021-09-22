@@ -123,6 +123,7 @@ export default function renderChart({
     .append("svg");
 
   this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date)
+          .attr('xmlns','http://www.w3.org/2000/svg');
 
   // this.svg.selectAll("g").remove();
   this.svg
