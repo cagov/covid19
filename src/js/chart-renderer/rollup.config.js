@@ -18,13 +18,13 @@ const stagingConfig =  {
   chartsStateDashTablesLocPostvax: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 
-const devOutputPath = 'docs/js/chart_renderer.js';
-const prodOutputPath = 'pages/_buildoutput/chart_renderer.js';
+const devOutputPath = 'docs/js/chart-renderer.js';
+const prodOutputPath = 'pages/_buildoutput/chart-renderer.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
 export default {
-  input: 'src/js/chart_renderer/index.js',
+  input: 'src/js/chart-renderer/index.js',
   output: {
     intro: 'const config = '+JSON.stringify(jsConfig),
     file: outputPath,

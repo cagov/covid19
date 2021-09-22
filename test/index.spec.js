@@ -136,7 +136,7 @@ describe('homepage', () => {
 
 describe('charts', () => {
   test('pregeneration is working', async () => {
-    await page.goto(hostname+'/chart_renderer/', {
+    await page.goto(hostname+'/chart-renderer/', {
       waitUntil: ['domcontentloaded', 'networkidle0']
     });
 
