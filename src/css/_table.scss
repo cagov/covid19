@@ -1,0 +1,19 @@
+.wp-block-table {
+  table {
+    border: 1px solid #ededef;
+    margin: 0 0 15px;
+    text-align: left;
+  }
+  th {
+    font-weight: bold;
+  }
+  td,
+  th {
+    border: 1px solid #ededef;
+    padding: 6px 24px;
+  }
+
+  ul {
+    margin-bottom: 0 !important; // !important is needed to override aggressive styles coming from body.interior-page
+  }
+}
