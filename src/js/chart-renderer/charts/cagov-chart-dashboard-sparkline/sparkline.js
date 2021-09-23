@@ -8,13 +8,17 @@
  * @param {*} y       the y scale
  * @param {*} options  rendering options 
  */
-function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
+function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true,chart_options=null }) {
     let max_y_domain = y.domain()[1];
     let max_x_domain = x.domain()[1];
     let component = this;
   
     let groups = svg.append("g")
       .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
+      .attr('fill',"none")
+      .attr('stroke',chart_options.line_color)
+      .attr('stroke-width',chart_options.stroke_width)
+      .attr('stroke-linecap','round')
       // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
       .append('path')
       .attr('stroke-linecap','round')
@@ -34,7 +38,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
  * @param {*} y       the y scale
  * @param {*} options  rendering options 
  */
-function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true }) {
+function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, crop_floor=true, chart_options=null }) {
   let max_y_domain = y.domain()[1];
   let max_x_domain = x.domain()[1];
   let component = this;
@@ -42,6 +46,7 @@ function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, c
   let groups = svg.append("g")
     .attr("class","fg-region")
     // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
+    .attr('stroke',"none")
     .append('path')
     .datum(data)
       .attr("class","area")
@@ -61,18 +66,21 @@ function writeRegion(svg, data, x, y, { root_id='barid', is_second_line=false, c
  * @param {*} y       the y scale
  * @param {*} options  rendering options 
  */
-function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal" }) {
+function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true,chart_style="normal", chart_options=null }) {
   let bar_width = chart_style=="solid"? 4 : 2;
     if (!crop_floor) {
       console.log("NOT CROP FLOOR");
     }
     let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
+      .attr('fill',chart_options.bar_color)
+      .attr('stroke',"none")
       // .attr('style','fill:#deeaf6;')
       .selectAll("g")
       .data(data)
       .enter()
-        .append("g");
+        .append("g")
+        ;
     
     if (crop_floor) { // positive only
       groups
@@ -107,7 +115,9 @@ export default function renderChart({
   crop_floor = true,
   published_date = "YYYY-MM-DD",
   render_date = "YYYY-MM-DD",
-  root_id = "barid" } )  
+  root_id = "barid",
+  chart_options = {bar_color:'#FF0000',line_color:'#00FF00',stroke_width:10},
+ } )  
 {
 
   this.svg = d3
@@ -115,6 +125,7 @@ export default function renderChart({
     .append("svg");
 
   this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date)
+          .attr('xmlns','http://www.w3.org/2000/svg');
 
   // this.svg.selectAll("g").remove();
   this.svg
@@ -178,16 +189,16 @@ export default function renderChart({
 
   if (time_series_bars && chart_style != "no-bars" && chart_style != "solid-region") {
     writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-      { root_id:root_id, crop_floot:crop_floor, chart_style:chart_style});
+      { root_id:root_id, crop_floot:crop_floor, chart_style:chart_style, chart_options:chart_options});
   }
   if (time_series_line) {
     if (chart_style == "solid-region") {
       writeRegion.call(this, this.svg, time_series_line, this.xline, this.ybars, 
-        { root_id:root_id, crop_floot:crop_floor});
+        { root_id:root_id, crop_floot:crop_floor, chart_options:chart_options});
     }
 
     writeLine.call(this, this.svg, time_series_line, this.xline, this.ybars, 
-      { root_id:root_id, crop_floot:crop_floor});
+      { root_id:root_id, crop_floot:crop_floor, chart_options:chart_options});
   }
 
   if (extras_func) {
