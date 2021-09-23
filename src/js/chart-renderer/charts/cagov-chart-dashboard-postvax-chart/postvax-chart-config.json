@@ -26,7 +26,11 @@
       "days_to_show": 120,
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
-      "pre_mult":10
+      "pre_mult":10,
+      "stroke_width":2,
+      "line_1_color":"#1f2574",
+      "line_2_color":"#dc4567",
+      "line_3_color":"#cccccc"
     }
   },
   "deaths": {
@@ -39,7 +43,11 @@
       "days_to_show": 120,
       "root_id": "postvax-deaths",
       "pending_days":21,
-      "pre_mult":10
+      "pre_mult":10,
+      "stroke_width":2,
+      "line_1_color":"#1f2574",
+      "line_2_color":"#dc4567",
+      "line_3_color":"#cccccc"
     }
   },
   "desktop": {
