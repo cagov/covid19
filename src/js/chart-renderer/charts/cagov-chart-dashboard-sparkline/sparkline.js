@@ -21,8 +21,6 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
       .attr('stroke-linecap','round')
       // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
       .append('path')
-      .attr('stroke-linecap','round')
-      .attr('stroke-linejoin','round')
       .datum(data)
         .attr("d", d3.line()
           .x(function(d,i) { return x(i) })
