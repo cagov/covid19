@@ -167,7 +167,7 @@
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗病例数及已接种疫苗病例数 </strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">更多数据与工具</a></strong></li></ul>    <!--
+<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗数据及已接种疫苗数据</strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">更多数据与工具</a></strong></li></ul>    <!--
 --> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row pb-4">
@@ -177,16 +177,16 @@
       </div>
     </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">施打的疫苗数</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">施打的疫苗数</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>49,280,271</strong> <span class="text-300">总共</span>          </div>
-         <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>69,975</strong> <span class="text-300">日平均数</span> </div>
+         <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>68,841</strong> <span class="text-300">日平均数</span> </div>
          <div class="text-white text-xs mb-2">            <span class="text-300"><strong>78.4%</strong>的人口已接种疫苗</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">过去8周</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">病例数</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">病例数</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>4,482,881</strong> <span class="text-300">总共</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>6,713</strong> <span class="text-300">日平均数</span> </div>
@@ -196,7 +196,7 @@
          </div>          <!--End Chart and Label -->        </div>
      </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">死亡数</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">死亡数</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>68,517</strong> <span class="text-300">总共</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>102</strong> <span class="text-300">日平均数</span> </div>
@@ -206,7 +206,7 @@
          </div>          <!--End Chart and Label -->        </div>
      </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">检测数</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">检测数</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
@@ -227,19 +227,19 @@
       </div>
     </div>
 
-  </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">未接种疫苗病例数及已接种疫苗病例数</h2>
+  </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">未接种疫苗数据及已接种疫苗数据</h2>
 
 
 
-<div id="postvax-chart-intro">接种疫苗可以预防患上重病、拯救生命并且进一步减少COVID-19传播。随着越来越多人接种疫苗，病毒不太可能传播、变异，以及造成更大的危险。疫苗可以帮助结束疫情。 <!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. --> </div>    <!-- omitting tabs for now...
+<div id="postvax-chart-intro">接种疫苗可以预防患上重病、拯救生命并且进一步减少COVID-19传播。随着越来越多人接种疫苗，病毒不太可能传播、变异，以及造成更大的危险。疫苗可以帮助结束疫情。 <!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. --> </div>
+
+
+
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
- <div class="large-tabs">
- <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
+    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例数</button> <!-- omitting hospitalizations tab for now...
  <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
- <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
- </div>
- </div>
---> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
+--> <button class="large-tab js-toggle-group-postvax deaths">死亡数</button>     </div>
+  </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月的COVID-19病例数</li>
     <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士感染COVID-19的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
     <li data-label="yaxis_legend">每10万人中的周病例数</li>
@@ -263,7 +263,7 @@
     <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的住院人数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的住院人数：<b>{VCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月内的COVID-19死亡人数</li>
-    <li data-label="chartImpactStatement">死亡数声明：从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士因COVID-19死亡的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
+    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士死于COVID-19的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
     <li data-label="yaxis_legend">每100万人中的周死亡数</li>
     <li data-label="yaxis_legend_daily">每100万人中的死亡数（7日滑动平均数）</li>
     <li data-label="xaxis_legend"></li>
@@ -273,7 +273,7 @@
     <li data-label="pending_legend">等待数据</li>
     <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的死亡数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的死亡数：<b>{VCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">图表信息</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">已接种疫苗病例指接种两剂Pfizer或Moderna疫苗或一剂Janssen疫苗的人士，在接种完疫苗至少两周后，COVID-19检测结果呈阳性。未接种疫苗病例指未接种COVID-19疫苗人士患病。此图表使用在过去120天内从16岁及以上人士中收集的数据。我们剔除了部分最近的、不完整的数据，以准确反映数据走向。加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例</a>的信息。</p>
+<p class="small-text">已接种疫苗病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Janssen疫苗的人士，在接种完疫苗至少两周后，COVID-19检测结果呈阳性。未接种疫苗病例或死亡指未接种COVID-19疫苗人士患病或死亡。此图表使用在过去120天内从16岁及以上人士中收集的数据。我们剔除了部分最近的、不完整的数据，以准确反映数据走向。加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例</a>的信息。</p>
 </div></div></div></cagov-accordion></div>
 
 
