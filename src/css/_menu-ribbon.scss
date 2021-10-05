@@ -1,0 +1,57 @@
+cagov-menu-ribbon {
+  .menu-ribbon--wrapper {
+    @media (max-width: 1024px) {
+      display: none;
+    }
+
+    background-color: white;
+    display: block;
+  }
+
+  nav {
+    margin: 0 auto;
+    max-width: 81.25rem;
+    position: relative;
+    width: 100%;
+    padding-left: -12px;
+  }
+
+  .menu-ribbon--primary {
+    position: relative;
+    height: 64px;
+    padding: 12px;
+
+    &:hover {
+      .menu-ribbon--secondary {
+        // @todo change to visually-hidden.
+        display: block;
+      }
+    }
+  }
+
+  .menu-ribbon--secondary {
+    background-color: white;
+    // @todo change to visually-hidden.
+    display: none;
+    min-width: 308px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    vertical-align: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+
+    a {
+      display: inline-block;
+      padding: 12px;
+      width: 100%;
+    }
+  }
+
+  a:link {
+    color: #1f2574;
+    text-decoration: none;
+    font-size: 19/16rem;
+    font-weight: 400;
+  }
+}
