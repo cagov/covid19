@@ -9,18 +9,17 @@ export default function menuRibbonTemplate(data, dataset) {
         <a class="" href="/">${dataset.labelHome}</a>
       </div>
 
-      <!--begin links -->
+      <!-- Primary -->
       ${data.sections.map(section => `
-        <div class="${classesPrimary} section-${section.title.toLowerCase().replace(/ /g, '-')}">
-          <label>${section.title}</label>
+        <div class="${classesPrimary}">
           <div class="menu-ribbon--toggle">
-            <svg width="11" height="7"
-                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="#FF8000"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
-                        /></svg>
+            <label>${section.title}</label>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19"><path d="M0.7,2.2l1.5-1.4C2.7,0.2,3.2,0,3.9,0s1.2,0.2,1.7,0.7L15,10l9.4-9.3c0.5-0.5,1-0.7,1.8-0.7
+            c0.7,0,1.3,0.2,1.8,0.7l1.4,1.4C29.8,2.7,30,3.2,30,3.9s-0.2,1.3-0.7,1.8L16.7,18.2c-0.5,0.5-1.1,0.7-1.8,0.7s-1.3-0.2-1.8-0.7
+            L0.7,5.7C0.2,5.2,0,4.6,0,3.9S0.2,2.7,0.7,2.2z"></path></svg>
           </div>
+
+          <!-- Secondary -->
           <div class="${classesSecondary}">
             ${section.links.map(link => `<a href="${link.url}">${link.name}</a>`).join(' ')}
           </div>

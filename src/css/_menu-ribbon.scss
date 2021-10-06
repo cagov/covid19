@@ -22,41 +22,67 @@ cagov-menu-ribbon {
     padding: 12px;
 
     &:hover {
-      .menu-ribbon--secondary {
-        // @todo change to visually-hidden.
-        display: block;
-      }
-    }
-  }
-
-  .menu-ribbon--secondary {
-    background-color: white;
-    // @todo change to visually-hidden.
-    display: none;
-    min-width: 308px;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    vertical-align: center;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-    z-index: 20;
-
-    a {
-      color: #1f2574;
-      display: inline-block;
-      padding: 12px;
-      text-decoration: none;
-      width: 100%;
+      opacity: 1;
+      visibility: visible;
     }
   }
 
   label {
     color: $darkblue;
+    font-weight: 300;
     margin: 0;
     padding: 0;
   }
 
+  .menu-ribbon--secondary {
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    left: 0;
+    min-width: 308px;
+    opacity: 0;
+    position: absolute;
+    top: 60px;
+    transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
+    vertical-align: center;
+    visibility: hidden;
+    z-index: 20;
+
+    &.js-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    a {
+      text-decoration: none; // Duplicated a declaration to override .interior-page.
+    }
+  }
+
+  a {
+    color: #1f2574;
+    display: inline-block;
+    font-weight: 300;
+    padding: 12px;
+    width: 100%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .menu-ribbon--toggle {
-    padding: 8px;
+    // See also .header-language-arrow in _arrows.scss.
+    svg {
+      fill: #ff8000;
+      width: 0.75rem;
+      max-height: 1rem;
+      margin-left: 0.25rem;
+      transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
+    }
+
+    &.js-open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
   }
 }
