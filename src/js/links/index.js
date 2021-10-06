@@ -21,7 +21,7 @@ var externalLink = document.querySelectorAll(".container .row .col-lg-10 a");
 for (var i = 0; i < externalLink.length; i++) {
   var anchorLink = externalLink[i].href.indexOf("#") > -1;
   var localHost = externalLink[i].href.indexOf("localhost") > -1;
-  var localUrl = externalLink[i].href.indexOf("covid19.ca.gov") > -1;
+  var localUrl = externalLink[i].href.indexOf("covid19.ca.gov/") > -1;
   var localEmail = externalLink[i].href.indexOf("@") > -1;
   if (link_is_external(externalLink[i]) && !localUrl && !localHost && !anchorLink && !localEmail) {
     externalLink[i].innerHTML += ext; // += concatenates to external links

@@ -18,7 +18,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ master ]
   schedule:
-    # wednesday 8:20pm GMT (1:20pm PDT)
+    # wednesday 8:45pm GMT (1:45pm PDT)
     #        ┌───────────── minute (0 - 59)
     #        │  ┌───────────── hour (0 - 23)
     #        │  │ ┌───────────── day of the month (1 - 31)
@@ -28,7 +28,7 @@ on:
     #        │  │ │ │ │
     #        │  │ │ │ │
     #        *  * * * *
-    - cron: '20 20 * * WED'
+    - cron: '45 20 * * WED'
 
 jobs:
   analyze:
