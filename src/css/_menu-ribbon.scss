@@ -1,11 +1,11 @@
 cagov-menu-ribbon {
   .menu-ribbon--wrapper {
-    @media (max-width: 1024px) {
-      display: none;
-    }
-
     background-color: white;
-    display: block;
+    display: none;
+
+    @include tablet-wide {
+      display: block;
+    }
   }
 
   nav {
@@ -42,16 +42,21 @@ cagov-menu-ribbon {
     z-index: 20;
 
     a {
+      color: #1f2574;
       display: inline-block;
       padding: 12px;
+      text-decoration: none;
       width: 100%;
     }
   }
 
-  a:link {
-    color: #1f2574;
-    text-decoration: none;
-    font-size: 19/16rem;
-    font-weight: 400;
+  label {
+    color: $darkblue;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-ribbon--toggle {
+    padding: 8px;
   }
 }
