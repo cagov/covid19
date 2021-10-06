@@ -8,7 +8,8 @@ cagov-menu-ribbon {
     }
   }
 
-  nav {
+  // <nav>
+  .menu-ribbon--nav {
     margin: 0 auto;
     max-width: 81.25rem;
     position: relative;
@@ -27,7 +28,14 @@ cagov-menu-ribbon {
     }
   }
 
-  label {
+  // <button>
+  .menu-ribbon--button {
+    appearance: none;
+    -webkit-appearance: value;
+    -moz-appearance: value;
+    appearance: value;
+    background: none;
+    border: 0;
     color: $darkblue;
     font-weight: 300;
     margin: 0;
@@ -37,17 +45,18 @@ cagov-menu-ribbon {
   .menu-ribbon--secondary {
     background-color: white;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    display: none;
     left: 0;
     min-width: 308px;
     opacity: 0;
     position: absolute;
     top: 60px;
     transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
-    vertical-align: center;
     visibility: hidden;
     z-index: 20;
 
     &.js-open {
+      display: block;
       opacity: 1;
       visibility: visible;
     }
@@ -61,7 +70,7 @@ cagov-menu-ribbon {
     color: #1f2574;
     display: inline-block;
     font-weight: 300;
-    padding: 12px;
+    padding: 12px 16px;
     width: 100%;
 
     &:hover {
@@ -84,5 +93,18 @@ cagov-menu-ribbon {
         transform: rotate(180deg);
       }
     }
+  }
+}
+
+// Hax.
+body.interior-page cagov-menu-ribbon {
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
   }
 }

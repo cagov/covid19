@@ -19,18 +19,22 @@ class CAGOVMenuRibbon extends window.HTMLElement {
     const menus = this.querySelectorAll('.menu-ribbon--primary');
 
     menus.forEach((menu) => {
-      const trigger = menu.querySelector('.menu-ribbon--toggle');
-      const content = menu.querySelector('.menu-ribbon--secondary');
-      trigger.addEventListener('click', () => {
-        this.toggleMenu(trigger, content);
+      const elements = {
+        trigger: menu.querySelector('.menu-ribbon--toggle'),
+        content: menu.querySelector('.menu-ribbon--secondary'),
+        button: menu.querySelector('button'),
+      };
+
+      elements.trigger.addEventListener('click', () => {
+        this.toggleMenu(elements);
       });
 
       menu.addEventListener('mouseenter', () => {
-        this.openMenu(trigger, content);
+        this.openMenu(elements);
       });
 
       menu.addEventListener('mouseleave', () => {
-        this.closeMenu(trigger, content);
+        this.closeMenu(elements);
       });
     });
   }
@@ -38,32 +42,33 @@ class CAGOVMenuRibbon extends window.HTMLElement {
   /**
    * Toggle between open and closed.
    *
-   * @param   {Element}  trigger  The arrow up/down.
-   * @param   {Element}  content  The menu body.
+   * @param {Array}  elements  An array of elements.
    *
    */
-  toggleMenu(trigger, content) {
-    if (content.classList.contains('open')) {
-      this.closeMenu(trigger, content);
+  toggleMenu(elements) {
+    if (elements.content.classList.contains('open')) {
+      this.closeMenu(elements);
     } else {
-      this.openMenu(trigger, content);
+      this.openMenu(elements);
     }
   }
 
   /**
    * @see this.toggleMenu().
    */
-  openMenu(trigger, content) {
-    content.classList.add('js-open');
-    trigger.classList.add('js-open');
+  openMenu(elements) {
+    elements.content.classList.add('js-open');
+    elements.trigger.classList.add('js-open');
+    elements.button.setAttribute('aria-expanded', 'true');
   }
 
   /**
    * @see this.toggleMenu().
    */
-  closeMenu(trigger, content) {
-    content.classList.remove('js-open');
-    trigger.classList.remove('js-open');
+  closeMenu(elements) {
+    elements.content.classList.remove('js-open');
+    elements.trigger.classList.remove('js-open');
+    elements.button.setAttribute('aria-expanded', 'false');
   }
 }
 
