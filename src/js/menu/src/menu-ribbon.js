@@ -25,11 +25,11 @@ class CAGOVMenuRibbon extends window.HTMLElement {
         this.toggleMenu(trigger, content);
       });
 
-      menu.addEventListener('mouseover', () => {
+      menu.addEventListener('mouseenter', () => {
         this.openMenu(trigger, content);
       });
 
-      menu.addEventListener('mouseout', () => {
+      menu.addEventListener('mouseleave', () => {
         this.closeMenu(trigger, content);
       });
     });
