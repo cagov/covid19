@@ -2,7 +2,8 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
-const { addPreviewModeToEleventy, getPostJsonFromWordpress } = require("@cagov/11ty-serverless-preview-mode");
+const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
+/** @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettings} */
 const wordPressSettings = {
   wordPressSite: "https://as-go-covid19-d-001.azurewebsites.net", //Wordpress endpoint
   //previewWordPressTagSlug: 'preview-mode' // optional filter for digest list of preview in Wordpress
@@ -27,33 +28,27 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   : page.fileSlug.replace(langPostfixRegExp, '');
 
 /**
+ * @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettingCallback}
+ */
+ const itemSetterCallback = (item, jsonData) => {
+  //Customize for your templates
+  item.data.layout = 'page.njk';
+  item.data.tags = ['do-not-crawl'];
+  item.data.addtositemap = false;
+  item.data.title = jsonData.title.rendered;
+  item.data.publishdate = jsonData.date.split('T')[0]; //new Date(jsonData.modified_gmt)
+  item.data.meta = jsonData.excerpt.rendered.replace(/<p>/g, '').replace(/<\/p>/g, '');
+
+  item.data.author = 'State of California'
+
+  item.template.frontMatter.content += jsonData.content.rendered;
+}
+
+/**
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
  */
 module.exports = function (eleventyConfig) {
-  addPreviewModeToEleventy(eleventyConfig);
-
-  eleventyConfig.addCollection("myserverless", async function (collection) {
-    const output = [];
-
-    for (const item of collection.items) {
-      const itemData = item.data;
-      if (!item.outputPath && itemData.eleventy && itemData.eleventy.serverless) {
-        const jsonData = await getPostJsonFromWordpress(itemData, wordPressSettings);
-
-        itemData.title = jsonData.title.rendered;
-        itemData.publishdate = jsonData.modified.split('T')[0]; //new Date(jsonData.modified_gmt)
-        itemData.meta = jsonData.excerpt.rendered.replace(/<p>/g, '').replace(/<\/p>/g, '');
-
-        item.template.frontMatter.content = jsonData.content.rendered;
-
-        output.push(item);
-      }
-    }
-
-    return output;
-  });
-
-
+  addPreviewModeToEleventy(eleventyConfig, itemSetterCallback, wordPressSettings);
 
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
