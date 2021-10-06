@@ -28,7 +28,8 @@ const indexCode = require('./index');
 (async () => {
   //let req = {headers:{'x-original-url': "/MyFile.png"}, query:{}};
   //let req = {headers:{'x-original-url': "/"}, query:{}};
-  let req = { params: {}, query: { postid: '14128' } };
+  //let req = { params: {}, query: { postid: '14128' } };
+  let req = { params: {}, query: { postslug: 'state-dashboard' } };
   //let req = {params:{}, query:{postid:'59'}};
 
 
