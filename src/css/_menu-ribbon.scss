@@ -31,11 +31,13 @@ cagov-menu-ribbon {
     position: relative;
     padding-right: 24px;
 
-    &:hover .menu-ribbon--secondary {
-      @include active-secondary-menu {
-        svg {
-          @include active-svg;
-        }
+    &.js-open,
+    &:hover {
+      .menu-ribbon--secondary {
+        @include active-secondary-menu;
+      }
+      svg {
+        @include active-svg;
       }
     }
   }
@@ -56,12 +58,6 @@ cagov-menu-ribbon {
 
     &:focus {
       outline: 2px solid #ffcf44;
-    }
-
-    &.js-open {
-      svg {
-        @include active-svg;
-      }
     }
   }
 
@@ -89,10 +85,6 @@ cagov-menu-ribbon {
     transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
     visibility: hidden;
     z-index: 20;
-
-    &.js-open {
-      @include active-secondary-menu;
-    }
 
     a {
       text-decoration: none; // Duplicated a declaration to override .interior-page.

@@ -22,7 +22,7 @@ class CAGOVMenuRibbon extends window.HTMLElement {
     menus.forEach((menu) => {
       const elements = {
         button: menu.querySelector('.menu-ribbon--button'),
-        content: menu.querySelector('.menu-ribbon--secondary'),
+        parent: menu,
       };
 
       elements.button.addEventListener('click', () => {
@@ -33,7 +33,7 @@ class CAGOVMenuRibbon extends window.HTMLElement {
         this.openMenu(elements);
       });
 
-      menu.addEventListener('mouseleave', () => {
+      elements.button.addEventListener('mouseleave', () => {
         this.closeMenu(elements);
       });
     });
@@ -59,18 +59,16 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    * @see this.toggleMenu().
    */
   openMenu(elements) {
-    elements.content.classList.add(this.openClass);
+    elements.parent.classList.add(this.openClass);
     elements.button.setAttribute('aria-expanded', 'true');
-    elements.button.classList.add(this.openClass);
   }
 
   /**
    * @see this.toggleMenu().
    */
   closeMenu(elements) {
-    elements.content.classList.remove(this.openClass);
+    elements.parent.classList.remove(this.openClass);
     elements.button.setAttribute('aria-expanded', 'false');
-    elements.button.classList.remove(this.openClass);
   }
 }
 
