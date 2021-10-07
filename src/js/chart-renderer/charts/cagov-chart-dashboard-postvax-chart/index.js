@@ -145,6 +145,20 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
+          if ('earliest_date' in this.chartOptions) {
+            let number_to_clip = 0;
+            for (let i = 0; i < this.chartdata.length; i++) {
+              if (this.chartdata[i].DATE != this.chartOptions.earliest_date) {
+                number_to_clip += 1;
+              } else {
+                break;
+              }
+            }
+            if (number_to_clip > 0) {
+              this.chartdata.splice(0, number_to_clip); 
+            }
+          }
+
           let days_to_show = this.chartOptions.days_to_show; 
           // parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
           console.log("days to show",days_to_show);
