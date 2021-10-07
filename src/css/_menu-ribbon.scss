@@ -1,4 +1,14 @@
 cagov-menu-ribbon {
+  @mixin active-secondary-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @mixin active-svg {
+    transform: rotate(180deg);
+  }
+
   .menu-ribbon--wrapper {
     background-color: white;
     display: none;
@@ -19,12 +29,14 @@ cagov-menu-ribbon {
 
   .menu-ribbon--primary {
     position: relative;
-    height: 64px;
-    padding: 12px;
+    padding-right: 24px;
 
-    &:hover {
-      opacity: 1;
-      visibility: visible;
+    &:hover .menu-ribbon--secondary {
+      @include active-secondary-menu {
+        svg {
+          @include active-svg;
+        }
+      }
     }
   }
 
@@ -38,17 +50,40 @@ cagov-menu-ribbon {
     border: 0;
     color: $darkblue;
     font-weight: 300;
+    height: 64px;
     margin: 0;
-    padding: 0;
+    padding: 0 12px;
+
+    &:focus {
+      outline: 2px solid #ffcf44;
+    }
+
+    &.js-open {
+      svg {
+        @include active-svg;
+      }
+    }
   }
 
+  // See also .header-language-arrow in _arrows.scss.
+  svg {
+    fill: $orange;
+    width: 0.75rem;
+    max-height: 1rem;
+    margin-left: 0.25rem;
+    transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
+  }
+
+  // <ul>
   .menu-ribbon--secondary {
     background-color: white;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
     display: none;
     left: 0;
+    margin: 0;
     min-width: 308px;
     opacity: 0;
+    padding: 0;
     position: absolute;
     top: 60px;
     transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
@@ -56,14 +91,16 @@ cagov-menu-ribbon {
     z-index: 20;
 
     &.js-open {
-      display: block;
-      opacity: 1;
-      visibility: visible;
+      @include active-secondary-menu;
     }
 
     a {
       text-decoration: none; // Duplicated a declaration to override .interior-page.
     }
+  }
+
+  li {
+    list-style: none;
   }
 
   a {
@@ -76,35 +113,5 @@ cagov-menu-ribbon {
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  .menu-ribbon--toggle {
-    // See also .header-language-arrow in _arrows.scss.
-    svg {
-      fill: #ff8000;
-      width: 0.75rem;
-      max-height: 1rem;
-      margin-left: 0.25rem;
-      transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
-    }
-
-    &.js-open {
-      svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
-}
-
-// Hax.
-body.interior-page cagov-menu-ribbon {
-  ul,
-  li {
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    list-style: none;
   }
 }
