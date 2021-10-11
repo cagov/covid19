@@ -78,7 +78,9 @@
     "local:dev": "cross-env NODE_ENV=development npm run watch",
     "compress:img": "cd src/build && node img.js",
     "testdata": "tap test/11ty-data.js",
-    "test": "jest test/*.spec.js --forceExit"
+    "test": "jest test/*.spec.js --forceExit",
+    "debug:11ty": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "build:11ty": "npx @11ty/eleventy"
   },
   "repository": {
     "type": "git",
