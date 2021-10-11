@@ -16,12 +16,15 @@ cagov-menu-ribbon {
     @include tablet-wide {
       display: block;
     }
+
+    .interior-page & {
+      background-color: transparent;
+    }
   }
 
   // <nav>
   .menu-ribbon--nav {
-    margin: 0 auto;
-    max-width: 81.25rem;
+    @include wrap;
     position: relative;
     width: 100%;
     padding-left: -12px;
@@ -31,8 +34,7 @@ cagov-menu-ribbon {
     position: relative;
     padding-right: 24px;
 
-    &.js-open,
-    &:hover {
+    &.js-open {
       .menu-ribbon--secondary {
         @include active-secondary-menu;
       }
@@ -58,6 +60,14 @@ cagov-menu-ribbon {
 
     &:focus {
       outline: 2px solid #ffcf44;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .interior-page & {
+      color: $white;
     }
   }
 

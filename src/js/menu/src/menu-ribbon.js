@@ -29,12 +29,10 @@ class CAGOVMenuRibbon extends window.HTMLElement {
         this.toggleMenu(elements);
       });
 
-      elements.button.addEventListener('mouseenter', () => {
-        this.openMenu(elements);
-      });
-
-      elements.button.addEventListener('mouseleave', () => {
-        this.closeMenu(elements);
+      elements.button.addEventListener('keydown', (event) => {
+        if (event.keyCode === 27) {
+          this.closeMenu(elements);
+        }
       });
     });
   }
@@ -46,9 +44,9 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    *
    */
   toggleMenu(elements) {
-    const hasOpenClass = elements.button.classList.contains('js-open');
+    const menuHasOpenClass = elements.parent.classList.contains('js-open');
 
-    if (hasOpenClass) {
+    if (menuHasOpenClass) {
       this.closeMenu(elements);
     } else {
       this.openMenu(elements);
@@ -59,6 +57,12 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    * @see this.toggleMenu().
    */
   openMenu(elements) {
+    const anyMenuHasOpenClass = this.querySelectorAll(`.${this.openClass}`);
+
+    // Close any menus that are open.
+    if (anyMenuHasOpenClass.length > 0) {
+      anyMenuHasOpenClass.forEach((item) => { item.classList.remove(this.openClass); });
+    }
     elements.parent.classList.add(this.openClass);
     elements.button.setAttribute('aria-expanded', 'true');
   }
