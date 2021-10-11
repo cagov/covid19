@@ -95,7 +95,7 @@ module.exports = function (eleventyConfig) {
           console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
         }
 
-        replaceContent(item, /"https:\/\/covid19.ca.gov\//g, `"/${langrecord.pathpostfix}`);
+        replaceContent(item, /"https:\/\/covid19\.ca\.gov\//g, `"/${langrecord.pathpostfix}`);
 
         item.outputPath = getTranslatedPath(item.outputPath)
         translatedPaths.push(item.outputPath);
@@ -139,7 +139,6 @@ module.exports = function (eleventyConfig) {
           output.push(item);
           //console.log(`Skipping traslated page ${item.inputPath} for ${FolderName}`)
           item.template.isDryRun = true;
-
         }
       };
     });
@@ -391,273 +390,273 @@ module.exports = function (eleventyConfig) {
 
 
 
-  const findaccordions = async function (html) {
-    const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
-    const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
-      .map(r => ({
-        tag: r.groups.tag,
-        class: r.groups.class,
-        index: r.index,
-        fulltag: r[0]
-      }));
-
-
-    const getNextTag = (searchArea, tag) =>
-      [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)' + tag + '\\b[^>]*>', 'gm'))]
+    const findaccordions = async function (html) {
+      const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+      const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
+          tag: r.groups.tag,
+          class: r.groups.class,
           index: r.index,
-          isCloseTag: r.groups.closeslash.length > 0,
           fulltag: r[0]
-        }))[0];
+        }));
 
 
-    const getEndTag = (tag, html, startIndex) => {
-      let resultIndex = startIndex;
-      let startTagsActive = 0;
-      let loopsafe = 100;
-      let searchArea = html.substring(startIndex);
+      const getNextTag = (searchArea, tag) =>
+        [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)' + tag + '\\b[^>]*>', 'gm'))]
+          .map(r => ({
+            index: r.index,
+            isCloseTag: r.groups.closeslash.length > 0,
+            fulltag: r[0]
+          }))[0];
 
-      while (--loopsafe > 0) {
-        const nextTag = getNextTag(searchArea, tag);
-        if (!nextTag) throw `Can't find matching end tag - ${tag}`;
-        const resultOffset = nextTag.index + nextTag.fulltag.length;
-        resultIndex += resultOffset;
-        if (nextTag.isCloseTag) {
-          if (startTagsActive === 0) {
-            nextTag.index = resultIndex;
-            return nextTag;
+
+      const getEndTag = (tag, html, startIndex) => {
+        let resultIndex = startIndex;
+        let startTagsActive = 0;
+        let loopsafe = 100;
+        let searchArea = html.substring(startIndex);
+
+        while (--loopsafe > 0) {
+          const nextTag = getNextTag(searchArea, tag);
+          if (!nextTag) throw `Can't find matching end tag - ${tag}`;
+          const resultOffset = nextTag.index + nextTag.fulltag.length;
+          resultIndex += resultOffset;
+          if (nextTag.isCloseTag) {
+            if (startTagsActive === 0) {
+              nextTag.index = resultIndex;
+              return nextTag;
+            } else {
+              startTagsActive--;
+            }
           } else {
-            startTagsActive--;
+            //new open tag
+            startTagsActive++;
           }
-        } else {
-          //new open tag
-          startTagsActive++;
-        }
-        searchArea = searchArea.substring(resultOffset);
-      } //while
-    } //getEndTag
-
-    //Create a list of all accordion content in order
-    const accordionContent = getAccordionStartTags(html)
-      .map(nextTag => ({
-        nextTag,
-        endTag: getEndTag(nextTag.tag, html, nextTag.index + nextTag.fulltag.length)
-      }))
-      .map(tags => ({
-        html: html.substring(tags.nextTag.index, tags.endTag.index),
-        header: tags.nextTag.class === 'wp-accordion'
-      }));
-
-
-    let result = html;
-    //loop and build content
-    for (let resultIndex = 0; resultIndex < accordionContent.length; resultIndex++) {
-      const row = accordionContent[resultIndex];
-      if (row.header) {
-        const headerHTML = row.html
-          .replace(/wp-accordion/, '')
-          .replace(/ class=""/, '');
-
-        let bodyHTML = '';
-        //fill the body
-        let bodyIndex = resultIndex + 1;
-        while (bodyIndex < accordionContent.length && !accordionContent[bodyIndex].header) {
-          const bodyRowHTML = accordionContent[bodyIndex].html;
-          bodyHTML += bodyRowHTML
-            .replace(/wp-accordion-content/, '')
-            .replace(/ class=""/, '')
-            + '\n';
-
-          bodyIndex++;
-
-          //remove this content tag from html
-          result = result.replace(bodyRowHTML, '');
+          searchArea = searchArea.substring(resultOffset);
         } //while
+      } //getEndTag
 
-        const finalHTML =
-          `<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodyHTML}
+      //Create a list of all accordion content in order
+      const accordionContent = getAccordionStartTags(html)
+        .map(nextTag => ({
+          nextTag,
+          endTag: getEndTag(nextTag.tag, html, nextTag.index + nextTag.fulltag.length)
+        }))
+        .map(tags => ({
+          html: html.substring(tags.nextTag.index, tags.endTag.index),
+          header: tags.nextTag.class === 'wp-accordion'
+        }));
+
+
+      let result = html;
+      //loop and build content
+      for (let resultIndex = 0; resultIndex < accordionContent.length; resultIndex++) {
+        const row = accordionContent[resultIndex];
+        if (row.header) {
+          const headerHTML = row.html
+            .replace(/wp-accordion/, '')
+            .replace(/ class=""/, '');
+
+          let bodyHTML = '';
+          //fill the body
+          let bodyIndex = resultIndex + 1;
+          while (bodyIndex < accordionContent.length && !accordionContent[bodyIndex].header) {
+            const bodyRowHTML = accordionContent[bodyIndex].html;
+            bodyHTML += bodyRowHTML
+              .replace(/wp-accordion-content/, '')
+              .replace(/ class=""/, '')
+              + '\n';
+
+            bodyIndex++;
+
+            //remove this content tag from html
+            result = result.replace(bodyRowHTML, '');
+          } //while
+
+          const finalHTML =
+            `<cagov-accordion>
+                <div class="card">
+                  <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                    <div class="accordion-title">
+              ${headerHTML}
+                    </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+                  </button>
+                  <div class="card-container" aria-hidden="true">
+                    <div class="card-body">
+              ${bodyHTML}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </cagov-accordion>
-            `;
+              </cagov-accordion>
+              `;
 
-        //replace the header with the new merged content
-        result = result.replace(row.html, finalHTML);
-      } //if(row.header)
-    } //for
+          //replace the header with the new merged content
+          result = result.replace(row.html, finalHTML);
+        } //if(row.header)
+      } //for
 
-    return result;
-  }
-
-
-  //Dark ACCORDIONS
-  const finddarkaccordions = async function (html) {
-    const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>dark-accordion(?:-content)?)[^"]*"[^>]*>/gm;
-    const getAccordionDarkStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
-      .map(r => ({
-        tag: r.groups.tag,
-        class: r.groups.class,
-        index: r.index,
-        fulltag: r[0]
-      }));
+      return result;
+    }
 
 
-    const getNextTagDark = (searchArea, tag) =>
-      [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)' + tag + '\\b[^>]*>', 'gm'))]
+    //Dark ACCORDIONS
+    const finddarkaccordions = async function (html) {
+      const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>dark-accordion(?:-content)?)[^"]*"[^>]*>/gm;
+      const getAccordionDarkStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
+          tag: r.groups.tag,
+          class: r.groups.class,
           index: r.index,
-          isCloseTag: r.groups.closeslash.length > 0,
           fulltag: r[0]
-        }))[0];
+        }));
 
 
-    const getEndTagDark = (tag, html, startIndex) => {
-      let resultIndex = startIndex;
-      let startTagsActive = 0;
-      let loopsafe = 100;
-      let searchArea = html.substring(startIndex);
+      const getNextTagDark = (searchArea, tag) =>
+        [...searchArea.matchAll(new RegExp('<(?<closeslash>/?)' + tag + '\\b[^>]*>', 'gm'))]
+          .map(r => ({
+            index: r.index,
+            isCloseTag: r.groups.closeslash.length > 0,
+            fulltag: r[0]
+          }))[0];
 
-      while (--loopsafe > 0) {
-        const nextTag = getNextTagDark(searchArea, tag);
-        if (!nextTag) throw `Can't find matching end tag - ${tag}`;
-        const resultOffset = nextTag.index + nextTag.fulltag.length;
-        resultIndex += resultOffset;
-        if (nextTag.isCloseTag) {
-          if (startTagsActive === 0) {
-            nextTag.index = resultIndex;
-            return nextTag;
+
+      const getEndTagDark = (tag, html, startIndex) => {
+        let resultIndex = startIndex;
+        let startTagsActive = 0;
+        let loopsafe = 100;
+        let searchArea = html.substring(startIndex);
+
+        while (--loopsafe > 0) {
+          const nextTag = getNextTagDark(searchArea, tag);
+          if (!nextTag) throw `Can't find matching end tag - ${tag}`;
+          const resultOffset = nextTag.index + nextTag.fulltag.length;
+          resultIndex += resultOffset;
+          if (nextTag.isCloseTag) {
+            if (startTagsActive === 0) {
+              nextTag.index = resultIndex;
+              return nextTag;
+            } else {
+              startTagsActive--;
+            }
           } else {
-            startTagsActive--;
+            //new open tag
+            startTagsActive++;
           }
-        } else {
-          //new open tag
-          startTagsActive++;
-        }
-        searchArea = searchArea.substring(resultOffset);
-      } //while
-    } //getEndTag
-
-    //Create a list of all accordion content in order
-    const accordiondarkContent = getAccordionDarkStartTags(html)
-      .map(nextTag => ({
-        nextTag,
-        endTag: getEndTagDark(nextTag.tag, html, nextTag.index + nextTag.fulltag.length)
-      }))
-      .map(tags => ({
-        html: html.substring(tags.nextTag.index, tags.endTag.index),
-        header: tags.nextTag.class === 'dark-accordion'
-      }));
-
-
-    let result = html;
-    //loop and build content
-    for (let resultIndex = 0; resultIndex < accordiondarkContent.length; resultIndex++) {
-      const row = accordiondarkContent[resultIndex];
-      if (row.header) {
-        const headerdarkHTML = row.html
-          .replace(/dark-accordion/, '')
-          .replace(/ class=""/, '');
-
-        let bodydarkHTML = '';
-        //fill the body
-        let bodydarkIndex = resultIndex + 1;
-        while (bodydarkIndex < accordiondarkContent.length && !accordiondarkContent[bodydarkIndex].header) {
-          const bodydarkRowHTML = accordiondarkContent[bodydarkIndex].html;
-          bodydarkHTML += bodydarkRowHTML
-            .replace(/dark-accordion-content/, '')
-            .replace(/ class=""/, '')
-            + '\n';
-
-          bodydarkIndex++;
-
-          //remove this content tag from html
-          result = result.replace(bodydarkRowHTML, '');
+          searchArea = searchArea.substring(resultOffset);
         } //while
+      } //getEndTag
 
-        const finaldarkHTML =
-          `<div class="full-bleed bg-darkblue dark-accordion-bg">
-            <div class="container">
-            <div class="row">
-            <div class="col-lg-10 mx-auto">
-            <cagov-accordion class="dark-accordion">
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerdarkHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodydarkHTML}
+      //Create a list of all accordion content in order
+      const accordiondarkContent = getAccordionDarkStartTags(html)
+        .map(nextTag => ({
+          nextTag,
+          endTag: getEndTagDark(nextTag.tag, html, nextTag.index + nextTag.fulltag.length)
+        }))
+        .map(tags => ({
+          html: html.substring(tags.nextTag.index, tags.endTag.index),
+          header: tags.nextTag.class === 'dark-accordion'
+        }));
+
+
+      let result = html;
+      //loop and build content
+      for (let resultIndex = 0; resultIndex < accordiondarkContent.length; resultIndex++) {
+        const row = accordiondarkContent[resultIndex];
+        if (row.header) {
+          const headerdarkHTML = row.html
+            .replace(/dark-accordion/, '')
+            .replace(/ class=""/, '');
+
+          let bodydarkHTML = '';
+          //fill the body
+          let bodydarkIndex = resultIndex + 1;
+          while (bodydarkIndex < accordiondarkContent.length && !accordiondarkContent[bodydarkIndex].header) {
+            const bodydarkRowHTML = accordiondarkContent[bodydarkIndex].html;
+            bodydarkHTML += bodydarkRowHTML
+              .replace(/dark-accordion-content/, '')
+              .replace(/ class=""/, '')
+              + '\n';
+
+            bodydarkIndex++;
+
+            //remove this content tag from html
+            result = result.replace(bodydarkRowHTML, '');
+          } //while
+
+          const finaldarkHTML =
+            `<div class="full-bleed bg-darkblue dark-accordion-bg">
+              <div class="container">
+              <div class="row">
+              <div class="col-lg-10 mx-auto">
+              <cagov-accordion class="dark-accordion">
+                <div class="card">
+                  <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                    <div class="accordion-title">
+              ${headerdarkHTML}
+                    </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+                  </button>
+                  <div class="card-container" aria-hidden="true">
+                    <div class="card-body">
+              ${bodydarkHTML}
+                    </div>
                   </div>
                 </div>
+              </cagov-dark-accordion>
               </div>
-            </cagov-dark-accordion>
-            </div>
-            </div>
-            </div>
-            </div>
-            `;
+              </div>
+              </div>
+              </div>
+              `;
 
-        //replace the header with the new merged content
-        result = result.replace(row.html, finaldarkHTML);
-      } //if(row.header)
-    } //for
+          //replace the header with the new merged content
+          result = result.replace(row.html, finaldarkHTML);
+        } //if(row.header)
+      } //for
 
-    return result;
-  }
-
-
-
-
-  const findlinkstolocalize = async function (html) {
-
-    const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
-    const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
-
-    //Scan the DOM for a files.covid19.ca.gov links
-    const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
-      .map(r => r.groups.URL);
-
-    if (filesSiteData.length === 0) {
-      //init filesitedata in this thread before it is used
-      filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml', 'utf8')
-        .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r => r.groups.URL);
+      return result;
     }
 
 
-    for (const domTarget of domTargets) {
-      if (filesSiteData.indexOf(domTarget) === -1) {
-        // console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
+
+
+    const findlinkstolocalize = async function (html) {
+
+      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
+
+      //Scan the DOM for a files.covid19.ca.gov links
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files\.covid19\.ca\.gov\/[^"]*)"/gm))
+        .map(r => r.groups.URL);
+
+      if (filesSiteData.length === 0) {
+        //init filesitedata in this thread before it is used
+        filesSiteData = Array.from(fs.readFileSync('pages/_buildoutput/fileSitemap.xml', 'utf8')
+          .matchAll(/<loc>\s*(?<URL>.+)\s*<\/loc>/g)).map(r => r.groups.URL);
       }
-    }
-    if (lang !== "en") {
-      for (const englishUrl of domTargets) {
-        if (englishUrl.includes(localizeString)) {
-          //attempt to translate
-          let localizedUrl = englishUrl.replace(localizeString, `--${lang.toLowerCase()}.`);
 
-          if (filesSiteData.indexOf(localizedUrl) > -1) {
-            html = html.replace(new RegExp(englishUrl, 'gm'), localizedUrl);
-          } else {
-            //console.log('No translation found - ' + localizedUrl);
+
+      for (const domTarget of domTargets) {
+        if (filesSiteData.indexOf(domTarget) === -1) {
+          // console.log(`Broken File Link - \n - ${outputPath} \n - ${domTarget}`);
+        }
+      }
+      if (lang !== "en") {
+        for (const englishUrl of domTargets) {
+          if (englishUrl.includes(localizeString)) {
+            //attempt to translate
+            let localizedUrl = englishUrl.replace(localizeString, `--${lang.toLowerCase()}.`);
+
+            if (filesSiteData.indexOf(localizedUrl) > -1) {
+              html = html.replace(new RegExp(englishUrl, 'gm'), localizedUrl);
+            } else {
+              //console.log('No translation found - ' + localizedUrl);
+            }
           }
         }
       }
-    }
 
-    return html;
-  }
+      return html;
+    }
 
   eleventyConfig.addTransform("customTransforms", async function (html, outputPath) {
     //outputPath === false means serverless templates
