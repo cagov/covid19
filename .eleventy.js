@@ -390,7 +390,7 @@ module.exports = function (eleventyConfig) {
 
 
 
-    const findaccordions = async function (html) {
+  const findaccordions = async function (html) {
       const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
       const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
@@ -475,20 +475,20 @@ module.exports = function (eleventyConfig) {
 
           const finalHTML =
             `<cagov-accordion>
-                <div class="card">
-                  <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                    <div class="accordion-title">
-              ${headerHTML}
-                    </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                  </button>
-                  <div class="card-container" aria-hidden="true">
-                    <div class="card-body">
-              ${bodyHTML}
-                    </div>
+              <div class="card">
+                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                  <div class="accordion-title">
+            ${headerHTML}
+                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+                </button>
+                <div class="card-container" aria-hidden="true">
+                  <div class="card-body">
+            ${bodyHTML}
                   </div>
                 </div>
-              </cagov-accordion>
-              `;
+              </div>
+            </cagov-accordion>
+            `;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finalHTML);
@@ -499,8 +499,8 @@ module.exports = function (eleventyConfig) {
     }
 
 
-    //Dark ACCORDIONS
-    const finddarkaccordions = async function (html) {
+  //Dark ACCORDIONS
+  const finddarkaccordions = async function (html) {
       const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>dark-accordion(?:-content)?)[^"]*"[^>]*>/gm;
       const getAccordionDarkStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
@@ -585,28 +585,28 @@ module.exports = function (eleventyConfig) {
 
           const finaldarkHTML =
             `<div class="full-bleed bg-darkblue dark-accordion-bg">
-              <div class="container">
-              <div class="row">
-              <div class="col-lg-10 mx-auto">
-              <cagov-accordion class="dark-accordion">
-                <div class="card">
-                  <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                    <div class="accordion-title">
-              ${headerdarkHTML}
-                    </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                  </button>
-                  <div class="card-container" aria-hidden="true">
-                    <div class="card-body">
-              ${bodydarkHTML}
-                    </div>
+            <div class="container">
+            <div class="row">
+            <div class="col-lg-10 mx-auto">
+            <cagov-accordion class="dark-accordion">
+              <div class="card">
+                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+                  <div class="accordion-title">
+            ${headerdarkHTML}
+                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+                </button>
+                <div class="card-container" aria-hidden="true">
+                  <div class="card-body">
+            ${bodydarkHTML}
                   </div>
                 </div>
-              </cagov-dark-accordion>
               </div>
-              </div>
-              </div>
-              </div>
-              `;
+            </cagov-dark-accordion>
+            </div>
+            </div>
+            </div>
+            </div>
+            `;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finaldarkHTML);
