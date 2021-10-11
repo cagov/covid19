@@ -9,6 +9,7 @@ let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if (process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation, 'utf8'));
 }
+const localizeString = '--en.';
 
 //RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
 const langPostfixRegExp = new RegExp(`(?:${langData.languages
