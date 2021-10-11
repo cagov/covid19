@@ -11,6 +11,7 @@ const log = require('fancy-log');
 const del = require('del');
 const browsersync = require('browser-sync').create();
 const request = require('request');
+const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 
 // Initialize BrowserSync.
 const server = (done) => {
@@ -53,15 +54,17 @@ const eleventy = (done) => {
     }
   });
 
+  langData.languages.forEach(writeMenuJson);
+
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   })
-  .on('close', code => {
-    if(code) {
-      throw new Error('Eleventy Build Failed - Exit Code '+code);
-    }
-    reload(done);
-  });
+    .on('close', code => {
+      if(code) {
+        throw new Error('Eleventy Build Failed - Exit Code '+code);
+      }
+      reload(done);
+    });
 };
 
 // Build the site's javascript via Rollup.
@@ -258,6 +261,31 @@ const download = (url, dest, cb) => {
     return cb(err.message);
   });
 };
+
+function writeMenuJson(lang) {
+  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g, '')}menu-links${lang.filepostfix}.json`, 'utf8'));
+  const singleLangMenu = {
+    sections: menuLinksJson.Table1
+      .map(section => ({
+        title: section.label,
+        links:
+          menuLinksJson.Table2
+            .filter(l => l._slug_or_url && l.label && l._section_index === section._section_index)
+            .map(link => ({
+              url:
+                (link._slug_or_url.toLowerCase().startsWith('http'))
+                  ? link._slug_or_url //http full link
+                  : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
+              name: link.label
+            })
+            )
+      })
+      )
+  };
+  const outputFileName = './docs/menu--' + lang.id + '.json';
+  console.log(`writing ${outputFileName}`);
+  fs.writeFileSync(outputFileName, JSON.stringify(singleLangMenu), 'utf8');
+}
 
 module.exports = {
   eleventy,
