@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-09-20T21:49:58Z"
+publishdate: "2021-10-06T20:57:59Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -12,11 +12,11 @@ addtositemap: true
 
 
 
-<p>On this page you’ll find:</p>
+<p class="h3">On this page you’ll find:</p>
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated cases</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">More data and tools</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
 
 
 
@@ -80,7 +80,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
 {%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.time_series.VACCINE_DOSES.DOSES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
 
@@ -105,7 +105,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <!-- Blue Summary Box 1 -->
      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Vaccines Administered</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Vaccines Administered</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
            <span class="text-300">total</span>
          </div>
@@ -129,7 +129,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    <!-- Blue Summary Box 2 -->
     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Cases</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Cases</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">
            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
@@ -153,7 +153,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <!-- Blue Summary Box 3 -->
      <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Deaths</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Deaths</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">
            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">total</span>
@@ -178,7 +178,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    <!-- Blue Summary Box 4 -->
     <div class="col-md-3 px-10px">
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1">Tests</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Tests</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300">&nbsp;</span>
         </div>
@@ -203,9 +203,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
-
-        <p class="small-text">Note: The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination. The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities. The graph portrays the average number of vaccines administered daily, based on a 7-day average of doses administered 3-10 days prior. Case rate and daily avg. are based on a 7-day average with a 7-day lag. Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting. The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020. Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</p>
       </div>
+      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Data notes</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+         <ul><li>Data on cases, deaths, and testing is not reported on weekends or state holidays. This data is reported on the first day following the weekend or holiday. Data on vaccines administered is reported daily.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+      </div></div></div></cagov-accordion></div>
     </div>
 
   </div>
@@ -218,7 +219,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h2 class="text-center color-purple">Unvaccinated and vaccinated cases</h2>
+<h2 class="text-center color-purple">Unvaccinated and vaccinated data</h2>
 
 
 
@@ -228,15 +229,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<!-- omitting tabs for now...
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="large-tabs">
       <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
+<!-- omitting hospitalizations tab for now...
       <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
+-->
       <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
     </div>
   </div>
--->
 
 
 
@@ -285,7 +286,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">Deaths statement: From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
@@ -304,7 +305,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">A vaccinated case is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data. The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases</a>.</p>
+<p class="small-text">A vaccinated case or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case or death is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data. The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases</a>.</p>
 </div></div></div></cagov-accordion></div>
 
 
@@ -673,25 +674,46 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="bg-darkblue py-5 full-bleed mb-0">
-  <div class="container py-2">
-    <div class="row pb-4">
-      <div class="col-lg-10 mx-auto color-white">
-        <h2 class="text-center color-orange">More data and tools</h2>
-        <p>California has collected a wide range of data to inform its response to COVID-19. We’ve developed tools
-          to process and analyze this data. These data and tools are available to the public.</p>
-
-        <div class="mt-3 text-center">
-          <a href="/data-and-tools/" class="link-arrow-white">
-            <div class="link-arrow-label">View all data and tools</div>
-            <cagov-arrow></cagov-arrow>
-          </a>
+<div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
+    <div class="container pt-5 pb-5">
+        <h2>Explore more data</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/vaccination-progress-data/">Vaccination data</a></h3>
+                                <p class="card-text">State and county data about vaccination, including by race and ethnicity and age</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/equity">Health equity data</a></h3> 
+                                <p class="card-text">How COVID-19 has affected different communities across the state</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">Data and tools</a></h3>             
+                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->
+            </div>
+            <!--col-10-->
         </div>
-      </div>
+        <!--row-->
     </div>
-  </div>
-  <!--END container-->
+    <!--container-->
 </div>
+<!--full bleed-->
+<br id="dos-and-donts-for-daily-life">
 
 
 

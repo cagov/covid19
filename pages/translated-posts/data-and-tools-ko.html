@@ -1,9 +1,9 @@
 ---
 layout: "page.njk"
-title: "데이터 및 도구"
-meta: "COVID-19 사태가 시작된 이후 캘리포니아는 사실을 직면하여 어려운 결정을 내려야 했습니다. 이를 위해서 주 정부에서는 확실한 데이터를 필요로 했습니다. Newsom 주지사는 행정 명령 N-X-2020에 서명하여 주정부에서 운영하는 실시간 COVID-19 데이터 자료를공개하였습니다. 이 데이터는 전문가 그룹에 의한 확인 과정을 거칩니다."
+title: "자료 및 도구"
+meta: "캘리포니아는 다양한 데이터를 수집하여 COVID-19에 대한 대응 조치를 알리고 있습니다."
 author: "State of California"
-publishdate: "2021-08-11T23:18:54Z"
+publishdate: "2021-10-08T20:45:20Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,7 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#Data-models">데이터 모델</a></strong></li><li><strong><a href="#Data-dashboards">데이터 대시보드</a></strong></li><li><strong><a href="#Databases">데이터베이스</a></strong></li><li><strong><a href="#Data-dictionaries">데이터 사전</a></strong></li><li><strong><a href="#Contact-info">문의처 안내</a></strong></li><li><strong><a href="#Questions-and-answers">질문 및 답변</a></strong></li></ul>    <hr class="wp-block-separator" id="Data-models"/>    <h2>데이터 모델</h2>
+<ul class="toc"><li><strong><a href="#Data-models">데이터 모델</a></strong></li><li><strong><a href="#Data-dashboards">데이터 대시보드</a></strong></li><li><strong><a href="#Databases">데이터베이스</a></strong></li><li><strong><a href="#Data-dictionaries">데이터 사전</a></strong></li><li><strong><a href="#Contact-info">문의처</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    <hr class="wp-block-separator" id="Data-models"/>    <h2>데이터 모델</h2>
 
 
 
@@ -156,6 +156,14 @@ addtositemap: true
 
 
 
+<h3 class="wp-accordion js-qa-exclude" id="COVID-19-post-vaccination-infection-data">COVID-19 백신 접종 후 감염 관련 데이터</h3>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>변수</strong></td><td><strong>형식</strong></td><td><strong>설명</strong></td><td><strong>갱신 주기</strong></td></tr><tr><td>일자</td><td>일자</td><td>보고 기간 </td><td>주별</td></tr><tr><td>지역</td><td>평문</td><td>거주 주</td><td>주별</td></tr><tr><td>지역_유형</td><td>평문</td><td>거주 지역의 지리적 유형</td><td>주별</td></tr><tr><td>백신 미접종_사례건수</td><td>숫자</td><td>실험실에서 확인한 COVID-19 확진자 중 16세 이상으로서 제공된 일자 상으로 증상 일자가 있으며 COVID-19 백신 접종 기록이 없는 총 확진자수. 백신 접종을 일부 완료한 것으로 간주되는 경우는 백신미접종 사례에 포함되지 않습니다. "증상 일자"에 대한 정의는 다음 중 가장 빠른 일자(확인 가능한 경우)입니다: 접수일, 진단일, 증상 발현일, 검체 채취일 또는 사망일.</td><td>주별</td></tr><tr><td>백신접종완료_사례건수</td><td>숫자</td><td>실험실에서 확인한 COVID-19 확진자 중 16세 이상으로서 제공된 일자 상으로 증상 일자가 있으며 COVID-19 연속 백신 접종(2회 연속 접종 백신의 두번째 접종을 받은 후 14일 경과 또는 1회 접종 백신을 맞은 후 14일 경과)을 완료한 총 확진자수. 백신 접종을 일부 완료한 것으로 간주되는 경우는 백신접종 사례에 포함되지 않습니다. "증상 일자"에 대한 정의는 다음 중 가장 빠른 일자(확인 가능한 경우)입니다: 접수일, 진단일, 증상 발현일, 검체 채취일 또는 사망일.</td><td>주별</td></tr><tr><td>백신미접종_사망자수</td><td>숫자</td><td>실험실에서 확인한 COVID-19 사망자 중 16세 이상으로서 제공된 일자 상으로 사망 일자가 있으며 COVID-19 백신 접종 기록이 없는 총 사망자수. 백신 접종을 일부 완료한 것으로 간주되는 경우는 백신미접종 사망자수에 포함되지 않습니다.</td><td>주별</td></tr><tr><td>백신접종완료_사망자수</td><td>숫자</td><td>실험실에서 확인한 COVID-19 사망자 중 16세 이상으로서 제공된 일자 상으로 사망 일자가 있으며 COVID-19 연속 백신 접종(2회 연속 접종 백신의 두번째 접종을 받은 후 14일 경과 또는 1회 접종 백신을 맞은 후 14일 경과)을 완료한 총 사망자수. 백신 접종을 일부 완료한 것으로 간주되는 경우는 백신접종 사망자수에 포함되지 않습니다.</td><td>주별</td></tr><tr><td>인구_백신미접종</td><td>숫자</td><td>캘리포니아 재정부(Department of Finance, DOF) 2020년도16세 이상 인구 추계.  이 숫자는 COVID-19 백신을 한번도 맞지 않은 경우만을 포함하며, 해당 경우는 전체 인구 추계에서 백신 접종 완료자수 및 백신 부분 접종자수를 제하여 계산합니다.</td><td>주별</td></tr><tr><td>인구_백신접종자</td><td>숫자</td><td>캘리포니아 면역 등록소의 정보에 따른 16세 이상의 백신 접종 완료자수. 이 숫자는 백신 접종 완료자만을 포함하며, 해당 완료자에 대한 정의는 2회 연속 접종 백신의 두번째 접종을 받은 후 14일 경과 또는 1회 접종 백신을 맞은 후 14일 경과한 경우입니다.</td><td>주별</td></tr><tr><td>백신미접종_CASES_십만명_당</td><td>숫자</td><td>100,000명당 백신미접종자에서의 사례 발생율(16세 이상에 한함). 발생율은 특정일의 이전 7일 평균 사례 건수를 해당일의 백신 미접종 인구 추계로 나눈 후 100,000을 곱하여 계산합니다.</td><td>주별</td></tr><tr><td>백신접종_CASES_10만명_당</td><td>숫자</td><td>100,000명당 백신접종자에서의 사례 발생율(16세 이상에 한함). 발생율은 특정일의 이전 7일 평균 사례 건수를 해당일의 백신접종 완료 인구 추계로 나눈 후 100,000을 곱하여 계산합니다.</td><td>주별</td></tr><tr><td>백신미접종_DEATHS_십만명_당</td><td>숫자</td><td>100,000명당 백신 미접종자에서의 사망율(16세 이상에 한함). 발생율은 특정일의 이전 7일 평균 사망자수를 해당일의 백신 미접종 인구 추계로 나눈 후 100,000을 곱하여 계산합니다.</td><td>주별</td></tr><tr><td>백신접종_DEATHS_10만명_당</td><td>숫자</td><td>100,000명당 백신 접종자에서의 사망율(16세 이상에 한함). 발생율은 특정일의 이전 7일 평균 사망자수를 해당일의 백신 접종 인구 추계로 나눈 후 100,000을 곱하여 계산합니다.</td><td>주별</td></tr></tbody></table></figure>
+
+
+
 <h3 class="wp-accordion js-qa-exclude" id="HOSPITALS-DATA">병원 데이터</h3>
 
 
@@ -168,7 +176,7 @@ addtositemap: true
 
 
 
-<h3 class="wp-accordion js-qa-exclude" id="LOGISTICS-DATA">물류 데이터</h3>
+<h3 class="wp-accordion js-qa-exclude" id="LOGISTICS-DATA">물류 관련 데이터</h3>
 
 
 
@@ -192,7 +200,7 @@ addtositemap: true
 
 
 
-<h3 class="wp-accordion js-qa-exclude" id="CASE-DEMOGRAPHICS-RACE-AND-ETHNICITY">사례 인구통계학 인종 및 민족</h3>
+<h3 class="wp-accordion js-qa-exclude" id="CASE-DEMOGRAPHICS-RACE-AND-ETHNICITY">사례 인구통계 인종 및 민족</h3>
 
 
 
@@ -224,7 +232,7 @@ addtositemap: true
 
 
 
-<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>열 이름</strong></td><td><strong>형식</strong></td><td><strong>정의</strong></td><td><strong>갱신 주기</strong></td></tr><tr><td>관할지</td><td>평문</td><td>집단 발병이 발생한 관할지<br>포함 수치:캘리포니아</td><td>격주</td></tr><tr><td>산업부문</td><td>평문</td><td>집단 발병이 발생한 산업 부문.<br><br>포함 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 산업 부문</a>. 산업 부문 별로 다수의 개별 산업을 포함합니다.</td><td>격주</td></tr><tr><td>개별 환경</td><td>평문</td><td>집단 발병이 발생한 개별 산업.<br><br>포함된 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 개별 산업</a>.</td><td>격주</td></tr><tr><td>산코드</td><td>숫자</td><td>집단 발병이 발생한 개별 산업에 대한 인구 조사 산업 코드.<br><br>포함된 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 4자리 개별 산업 코드</a>.</td><td>격주</td></tr><tr><td>집단발병_합계</td><td>숫자</td><td>해당 개별 산업 내 캘리포니아 공중보건부(California Department of Public Health, CDPH)로 보고된 COVID-19 집단 발병 확진자 합계<br>수치: 양수</td><td>격주</td></tr><tr><td>사례_합계</td><td>숫자</td><td>해당 개별 산업 내 보고된 집단 발병과의 연관 사례 합계<br>수치:양수</td><td>격주</td></tr><tr><td>집단발병_신규</td><td>숫자</td><td>지난 30일동안 해당 개별 산업 내 캘리포니아공중보건부(California Department of Public Health, CDPH)로 보고된 COVID-19 집단 발병 신규확진자수<br>수치: 양수</td><td>격주</td></tr><tr><td>사례_신규</td><td>숫자</td><td>해당 개별 산업 내 CDPH로 지난 30일 내에 보고된 집단 발병과의 연관 사례 수<br>수치:양수</td><td>격주</td></tr></tbody></table></figure>
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>변수</strong></td><td><strong>형식</strong></td><td><strong>정의</strong></td><td><strong>갱신 주기</strong></td></tr><tr><td>관할지</td><td>평문</td><td>집단 발병이 발생한 관할지<br>포함 수치:캘리포니아</td><td>격주</td></tr><tr><td>산업부문</td><td>평문</td><td>집단 발병이 발생한 산업 부문.<br><br>포함 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 산업 부문</a>. 산업 부문 별로 다수의 개별 산업을 포함합니다.</td><td>격주</td></tr><tr><td>개별 환경</td><td>평문</td><td>집단 발병이 발생한 개별 산업.<br><br>포함된 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 개별 산업</a>.</td><td>격주</td></tr><tr><td>산코드</td><td>숫자</td><td>집단 발병이 발생한 개별 산업에 대한 인구 조사 산업 코드.<br><br>포함된 수치:<a class="external" href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">미국 인구 조사국(Census Bureau) 2012년도 산업 코드 목록<br> 분류에 따른 4자리 개별 산업 코드</a>.</td><td>격주</td></tr><tr><td>집단발병_합계</td><td>숫자</td><td>해당 개별 산업 내 캘리포니아 공중보건부(California Department of Public Health, CDPH)로 보고된 COVID-19 집단 발병 확진자 합계<br>수치: 양수</td><td>격주</td></tr><tr><td>사례_합계</td><td>숫자</td><td>해당 개별 산업 내 보고된 집단 발병과의 연관 사례 합계<br>수치:양수</td><td>격주</td></tr><tr><td>집단발병_신규</td><td>숫자</td><td>지난 30일동안 해당 개별 산업 내 캘리포니아공중보건부(California Department of Public Health, CDPH)로 보고된 COVID-19 집단 발병 신규확진자수<br>수치: 양수</td><td>격주</td></tr><tr><td>사례_신규</td><td>숫자</td><td>해당 개별 산업 내 CDPH로 지난 30일 내에 보고된 집단 발병과의 연관 사례 수<br>수치:양수</td><td>격주</td></tr></tbody></table></figure>
 
 
 
@@ -240,16 +248,38 @@ addtositemap: true
 
 
 
-<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>변수</strong></td><td><strong>형식</strong></td><td><strong>설명</strong></td><td><strong>갱신 주기</strong></td></tr><tr><td>현황</td><td>문자열</td><td>시설 상태</td><td>일별</td></tr><tr><td>유형_OF_시설</td><td>문자열</td><td>의학 용도의 수요 급증을 지원하기 위해 사용될 장소 유형</td><td>일별</td></tr><tr><td>카운티</td><td>문자열</td><td>시설 소재 카운티</td><td>일별</td></tr><tr><td>환자_READY_수용<br>_병상</td><td>숫자</td><td>환자를 위해 확보하여 준비된 병상 수</td><td>일별</td></tr><tr><td>환자_IN_병상</td><td>숫자</td><td>시설 내 환자 수</td><td></td></tr><tr><td>총_병상</td><td>숫자</td><td>환자 수용 준비를 갖춘 것으로 예상되는 총 병상 수</td><td></td></tr><tr><td>일자</td><td>일자</td><td>보고일</td><td></td></tr></tbody></table></figure>    <hr class="wp-block-separator" id="Contact-info"/>    <h2>문의처 안내</h2>
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>변수</strong></td><td><strong>형식</strong></td><td><strong>설명</strong></td><td><strong>갱신 주기</strong></td></tr><tr><td>현황</td><td>문자열</td><td>시설 상태</td><td>일별</td></tr><tr><td>유형_OF_시설</td><td>문자열</td><td>의학 용도의 수요 급증을 지원하기 위해 사용될 장소 유형</td><td>일별</td></tr><tr><td>카운티</td><td>문자열</td><td>시설 소재 카운티</td><td>일별</td></tr><tr><td>환자_READY_수용<br>_병상</td><td>숫자</td><td>환자를 위해 확보하여 준비된 병상 수</td><td>일별</td></tr><tr><td>환자_IN_병상</td><td>숫자</td><td>시설 내 환자 수</td><td></td></tr><tr><td>총_병상</td><td>숫자</td><td>환자 수용 준비를 갖춘 것으로 예상되는 총 병상 수</td><td></td></tr><tr><td>일자</td><td>일자</td><td>보고일</td><td></td></tr></tbody></table></figure>    <hr class="wp-block-separator" id="Contact-info"/>    <h2>문의처</h2>
 
 
 
-<p>본 데이터 세트에 관해 궁금한 점이 있으면 <a href="mailto:StateInfo@state.ca.gov">StateInfo@state.ca.gov</a>로 이메일을 보내십시오.</p>    <hr class="wp-block-separator" id="Questions-and-answers"/>    <h2>질문 및 응답</h2>
-
-
-
-<h3 class="wp-accordion">캘리포니아가 COVID-19 백신 투여에 있어 진전을 보이고 있다는 점을 나타내는 대시보드가 있습니까?</h3>
-
-
-
-<p class="wp-accordion-content">그렇습니다. <a href="https://covid19.ca.gov/vaccination-progress-data">백신 접종 진행 관련 데이터 페이지에서 확인</a>할 수 있습니다.</p>
+<p>본 데이터 세트에 관해 궁금한 점이 있으면 <a href="mailto:StateInfo@state.ca.gov">StateInfo@state.ca.gov</a>로 이메일을 보내십시오.</p>    <hr class="wp-block-separator mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
+    <div class="container pt-5 pb-5">
+        <h2>추가 자료 확인</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/state-dashboard">주 관련 데이터</a></h3>
+                                <p class="card-text">백신접종 진척도, 성별 및 연령별을 포함하는 주 차원 및 카운티의 사례 건수, 사망자, 입원환자, 및 검사자</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/vaccination-progress-data/">백신 접종 관련 데이터</a></h3>
+                                <p class="card-text">인종, 민족 및 연령별 데이터를 포함하는 주 및 카운티의 백신 접종 관련 데이터</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/equity">건강 형평성 자료</a></h3>             
+                                <p class="card-text">주 전역에 걸쳐 COVID-19가 여러 지역사회에 끼친 피해</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> <br id="dos-and-donts-for-daily-life">    <p></p>

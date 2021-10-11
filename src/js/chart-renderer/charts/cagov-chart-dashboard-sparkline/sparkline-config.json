@@ -1,0 +1,123 @@
+
+{
+    "cases": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "normal",
+        "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
+        "comment_avg": "The below average field is unused",
+        "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
+        "dataUrl": "confirmed-cases/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
+        "rootId": "cases-ep",
+        "display_weeks": 8,
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "CONFIRMED_CASES",
+        "uncertainty_date_field": "EPISODE_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
+      }
+    },
+    "deaths": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "normal",
+        "seriesField": "CONFIRMED_DEATHS_DEATH_DATE",
+        "comment_avg": "The below average field is unused",
+        "seriesFieldAvg": "AVG_DEATH_RATE_PER_100K_7_DAYS",
+        "dataUrl": "confirmed-deaths/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
+        "rootId": "death-date",
+        "display_weeks": 8,
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "CONFIRMED_DEATHS",
+        "uncertainty_date_field": "DEATH_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
+      }
+    },
+    "tests": {
+      "sparkline": {
+        "chartName": "cagov-chart-dashboard-sparkline",
+        "chart_style": "normal",
+        "seriesField": "DAILY_TEST_POSITIVITY_RATE",
+        "comment_avg": "The below average field is unused",
+        "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
+        "dataUrl": "positivity-rate/california.json",
+        "dataPathVar": "chartsStateDashTablesLoc",
+        "rootId": "tests-tests",
+        "display_weeks": 8,
+        "uncertainty_days_override": 0,
+        "uncertainty_latest_field": "POSITIVITY_RATE",
+        "uncertainty_date_field": "TESTING_UNCERTAINTY_PERIOD",
+        "bar_color":"#00183f",
+        "line_color":"#92c5de",
+        "stroke_width":2
+      }
+    },
+    "vaccines": {
+        "sparkline": {
+          "chartName": "cagov-chart-dashboard-sparkline",
+          "chart_style": "normal",
+          "seriesField": "VACCINE_DOSES",
+          "comment_avg": "The below average field is unused",
+          "seriesFieldAvg": "VACCINE_DOSES_7DAYAVG",
+          "dataUrl": "vaccines/sparkline.json",
+          "dataPathVar": "chartsStateDashTablesLocSparklineVaccines",
+          "rootId": "tests-vaccines",
+          "display_weeks": 8,
+          "uncertainty_days_override": 7,
+          "uncertainty_latest_field": "",
+          "uncertainty_date_field": "",
+          "bar_color":"#00183f",
+          "line_color":"#92c5de",
+          "stroke_width":2
+        }
+    },
+    "desktop": {
+      "fontSize": 14,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 2,   
+        "top": 0,  
+        "right": 2,  
+        "bottom": 0
+      }
+    },
+    "tablet": {
+      "fontSize": 14,
+      "width": 200,    
+      "height": 100,
+      "margin": {   
+        "left": 2,   
+        "top": 0,  
+        "right": 2,  
+        "bottom": 0
+      }
+    },
+    "mobile": {
+      "fontSize": 12,
+      "width": 260,    
+      "height": 100,
+      "margin": {   
+        "left": 2,   
+        "top": 0,  
+        "right": 2,  
+        "bottom": 0
+      }
+    },
+    "retina": {
+      "fontSize": 12,
+      "width": 260,    
+      "height": 100,
+      "margin": {   
+        "left": 2,   
+        "top": 0,  
+        "right": 2,  
+        "bottom": 0
+      }
+    }
+  }
