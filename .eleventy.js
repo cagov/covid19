@@ -3,11 +3,7 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
 const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
-/** @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettings} */
-const wordPressSettings = {
-  wordPressSite: "https://as-go-covid19-d-001.azurewebsites.net", //Wordpress endpoint
-  //previewWordPressTagSlug: 'preview-mode' // optional filter for digest list of preview in Wordpress
-}
+
 let filesSiteData = [];
 
 let htmlmap = [];
@@ -48,7 +44,7 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
  */
 module.exports = function (eleventyConfig) {
-  addPreviewModeToEleventy(eleventyConfig, itemSetterCallback, wordPressSettings);
+  addPreviewModeToEleventy(eleventyConfig, itemSetterCallback);
 
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
