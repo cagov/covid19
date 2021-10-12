@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-10-12T16:44:03Z"
-tags: ["translate"]
+publishdate: "2021-10-12T17:30:54Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -206,7 +206,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Data notes</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-         <ul><li>Data on cases, deaths, and testing is not reported on weekends or state holidays. This data is reported on the first day following the weekend or holiday. Data on vaccines administered is reported daily.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+        
       </div></div></div></cagov-accordion></div>
     </div>
 
@@ -233,9 +233,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="large-tabs">
       <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
-<!-- omitting hospitalizations tab for now...
       <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
--->
       <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
     </div>
   </div>
@@ -305,9 +303,21 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">A vaccinated case or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case or death is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data. The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases</a>.</p>
-</div></div></div></cagov-accordion></div>
+<div class="wp-block-cgb-block-chart-drawer">
+  <cagov-accordion class="chart-drawer">
+    <div class="card">
+      <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+        <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">Chart information</div>
+      </button>
+      <div class="card-container" aria-hidden="true">
+        <div class="card-body">
+<p class="small-text">A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data. The date range for hospitalization data begins on July 24, 2021, as a result of enhanced reporting by hospitals. The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</p>
+        </div>
+      </div>
+    </div>
+  </cagov-accordion>
+</div>
 
 
 
