@@ -3,13 +3,13 @@ const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
 let filesSiteData = [];
-langData.languages.forEach(writeMenuJson);
 
 let htmlmap = [];
 let htmlmapLocation = './pages/_buildoutput/htmlmap.json';
 if (process.env.NODE_ENV === 'development' && fs.existsSync(htmlmapLocation)) {
   htmlmap = JSON.parse(fs.readFileSync(htmlmapLocation, 'utf8'));
 }
+const localizeString = '--en.';
 
 //RegExp for removing language suffixes - /(?:-es|-tl|-ar|-ko|-vi|-zh-hans|-zh-hant)$/
 const langPostfixRegExp = new RegExp(`(?:${langData.languages
@@ -21,6 +21,9 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   ? '' //This is a root language page
   : page.fileSlug.replace(langPostfixRegExp, '');
 
+/**
+ * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
+ */
 module.exports = function (eleventyConfig) {
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
@@ -92,7 +95,7 @@ module.exports = function (eleventyConfig) {
           console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
         }
 
-        replaceContent(item, /"https:\/\/covid19.ca.gov\//g, `"/${langrecord.pathpostfix}`);
+        replaceContent(item, /"https:\/\/covid19\.ca\.gov\//g, `"/${langrecord.pathpostfix}`);
 
         item.outputPath = getTranslatedPath(item.outputPath)
         translatedPaths.push(item.outputPath);
@@ -102,8 +105,8 @@ module.exports = function (eleventyConfig) {
 
         if (!item.data.title) {
           //No title means fragment
-          // console.log(`Skipping fragment ${item.inputPath}`)
-          item.outputPath = false;
+          //console.log(`Skipping fragment ${item.inputPath} for ${FolderName}`)
+          item.template.isDryRun = true;
         }
       };
     });
@@ -128,14 +131,14 @@ module.exports = function (eleventyConfig) {
 
           if (!item.data.title) {
             //No title means fragment
-            // console.log(`Skipping fragment ${item.inputPath}`)
-            item.outputPath = false;
+            //console.log(`Skipping fragment ${item.inputPath} for ${FolderName}`)
+            item.template.isDryRun = true;
           }
         } else {
           //Turn this page off since we already have a translation
           output.push(item);
-          item.outputPath = false;
-          // console.log(`Skipping traslated page ${item.inputPath}`)
+          //console.log(`Skipping traslated page ${item.inputPath} for ${FolderName}`)
+          item.template.isDryRun = true;
         }
       };
     });
@@ -387,10 +390,7 @@ module.exports = function (eleventyConfig) {
 
 
 
-  eleventyConfig.addTransform("findaccordions", function (html, outputPath) {
-    const headerclass = 'wp-accordion';
-
-    if (outputPath && outputPath.endsWith(".html") && html.indexOf(headerclass) > -1) {
+  const findaccordions = async function (html) {
       const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>wp-accordion(?:-content)?)[^"]*"[^>]*>/gm;
       const getAccordionStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
@@ -497,15 +497,10 @@ module.exports = function (eleventyConfig) {
 
       return result;
     }
-    return html;
-  });
 
 
   //Dark ACCORDIONS
-  eleventyConfig.addTransform("finddarkaccordions", function (html, outputPath) {
-    const headerclass = 'dark-accordion';
-
-    if (outputPath && outputPath.endsWith(".html") && html.indexOf(headerclass) > -1) {
+  const finddarkaccordions = async function (html) {
       const classsearchexp = /<(?<tag>\w+)\s+[^>]*(?<class>dark-accordion(?:-content)?)[^"]*"[^>]*>/gm;
       const getAccordionDarkStartTags = searchArea => [...searchArea.matchAll(classsearchexp)]
         .map(r => ({
@@ -620,13 +615,12 @@ module.exports = function (eleventyConfig) {
 
       return result;
     }
-    return html;
-  });
 
 
-  eleventyConfig.addTransform("findlinkstolocalize", async function (html, outputPath) {
-    const localizeString = '--en.';
-    if (outputPath && outputPath.endsWith(".html") && html.indexOf(localizeString) > -1) {
+
+
+    const findlinkstolocalize = async function (html) {
+
       const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
       const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
 
@@ -659,6 +653,22 @@ module.exports = function (eleventyConfig) {
             }
           }
         }
+      }
+
+      return html;
+    }
+
+  eleventyConfig.addTransform("customTransforms", async function (html, outputPath) {
+    //outputPath === false means serverless templates
+    if ((!outputPath || outputPath.endsWith(".html"))) {
+      if (html.indexOf('wp-accordion') > -1) {
+        html = await findaccordions(html);
+      }
+      if (html.indexOf('dark-accordion') > -1) {
+        html = await finddarkaccordions(html);
+      }
+      if (html.indexOf(localizeString) > -1) {
+        html = await findlinkstolocalize(html);
       }
     }
 
@@ -740,9 +750,9 @@ module.exports = function (eleventyConfig) {
   // Ignores the .gitignore file, so 11ty will trigger rebuilds on ignored, built css/js.
   eleventyConfig.setUseGitIgnore(false);
 
-  eleventyConfig.htmlTemplateEngine = "njk,findaccordions,finddarkaccordions,findlinkstolocalize";
   return {
     htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
     templateFormats: ["html", "njk", "11ty.js"],
     dir: {
       input: "pages",
@@ -750,27 +760,3 @@ module.exports = function (eleventyConfig) {
     }
   };
 };
-
-function writeMenuJson(lang) {
-  const menuLinksJson = JSON.parse(fs.readFileSync(`pages${lang.includepath.replace(/\./g, '')}menu-links${lang.filepostfix}.json`, 'utf8'));
-  const singleLangMenu = {
-    sections: menuLinksJson.Table1
-      .map(section => ({
-        title: section.label,
-        links:
-          menuLinksJson.Table2
-            .filter(l => l._slug_or_url && l.label && l._section_index === section._section_index)
-            .map(link => ({
-              url:
-                (link._slug_or_url.toLowerCase().startsWith('http'))
-                  ? link._slug_or_url //http full link
-                  : `/${lang.pathpostfix}${link._slug_or_url}/`, // slug or relative link
-              name: link.label
-            })
-            )
-      })
-      )
-  };
-
-  fs.writeFileSync('./docs/menu--' + lang.id + '.json', JSON.stringify(singleLangMenu), 'utf8')
-}
