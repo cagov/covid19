@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "sandbox"
 meta: "California is tracking data to understand the spread of COVID-19. On this page you’ll find: Today’s update Unvaccinated and vaccinated data County and statewide data Cases and deaths by ethnicity, gender, and age Explore more data Update for {{_varStatDate_}} To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 casesand {{_varStatTotalDeaths_}} deaths. &nbsp; Vaccines Administered [&hellip;]"
 author: "State of California"
-publishdate: "2021-10-13T19:57:19Z"
+publishdate: "2021-10-13T20:02:04Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -17,6 +17,72 @@ addtositemap: false
 
 
 <ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
+
+
+
+<!--
+{# {%-set data = tableauCovidMetrics[0] -%}  #}
+{%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData.data -%}
+{%-set datadeaths = deathsSummaryData.data -%}
+
+{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
+{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
+formatNumberSmall(tags)-%}
+{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
+formatNumberFixed(tags,1)-%}
+
+{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+
+{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
+{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
+{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
+data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
+{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
+formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
+data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
+data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
+{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
+{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
+
+{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
+{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
+{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
+{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
+{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
+{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
+{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
+  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
+  %} 
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_  -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
+
+{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+-->
 
 
 
@@ -154,33 +220,83 @@ addtositemap: false
 
 
 
-<ul class="d-none"><li data-label="chartTitleState">COVID-19 cases over the last four months</li><li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li><li data-label="yaxis_legend">Weekly cases per 100K</li><li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li><li data-label="xaxis_legend">&nbsp;</li><li data-label="series1_legend">Vaccinated</li><li data-label="series2_legend">Unvaccinated</li><li data-label="series3_legend">All cases</li><li data-label="pending_legend">Data pending</li><li data-label="tooltipContent">Week ending: <b>{WEEKDATE}</b><br>Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>Vaccinated cases per 100K: <b>{VCOUNT}</b></li></ul>
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
+    <li data-label="yaxis_legend">Weekly cases per 100K</li>
+    <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series3_legend">All cases</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
+      Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
 
 
 
-<ul class="d-none"><li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li><li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li><li data-label="yaxis_legend">Weekly hospitalizations per million</li><li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li><li data-label="xaxis_legend">&nbsp;</li><li data-label="series1_legend">Vaccinated</li><li data-label="series2_legend">Unvaccinated</li><li data-label="series3_legend">All cases</li><li data-label="pending_legend">Data pending</li><li data-label="tooltipContent">Week ending: <b>{WEEKDATE}</b><br>Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>Vaccinated hospitalizations per million: <b>{VCOUNT}</b></li></ul>
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
+    <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
+    <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series3_legend">All cases</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
+      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
 
 
 
-<ul class="d-none"><li data-label="chartTitleState">COVID-19 deaths over the last four months</li><li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li><li data-label="yaxis_legend">Weekly deaths per million</li><li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li><li data-label="xaxis_legend">&nbsp;</li><li data-label="series1_legend">Vaccinated</li><li data-label="series2_legend">Unvaccinated</li><li data-label="series3_legend">All cases</li><li data-label="pending_legend">Data pending</li><li data-label="tooltipContent">Week ending: <b>{WEEKDATE}</b><br>Unvaccinated deaths per million: <b>{UCOUNT}</b><br>Vaccinated deaths per million: <b>{VCOUNT}</b></li></ul>
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
+    <li data-label="yaxis_legend">Weekly deaths per million</li>
+    <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series3_legend">All cases</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
+      Vaccinated deaths per million: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer">
-<p>&nbsp;</p>
-<div class="card">
-<p>&nbsp;</p>
-<div class="plus-munus">&nbsp;</div>
-<div class="accordion-title">Chart information</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<div class="card-container" aria-hidden="true">
-<div class="card-body">
+  <cagov-accordion class="chart-drawer">
+    <div class="card">
+      <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+        <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">Chart information</div>
+      </button>
+      <div class="card-container" aria-hidden="true">
+        <div class="card-body">
 <p class="small-text">A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least two weeks before they tested positive for COVID-19. An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine. This chart uses data from people 16 and older collected over the last 120 days. We exclude some recent, incomplete data to accurately reflect trends in the data. The date range for hospitalization data begins on July 24, 2021, as a result of enhanced reporting by hospitals. The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</p>
-</div>
-</div>
-</div>
-<p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </cagov-accordion>
 </div>
 
 
