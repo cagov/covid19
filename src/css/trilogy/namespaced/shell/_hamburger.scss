@@ -30,10 +30,6 @@ cagov-navoverlay {
     @include tablet { 
       z-index: 2000;
     }
-
-    @include tablet-wide {
-      display: none;
-    }
  
     &-label {
       // @include screen-reader-text;
