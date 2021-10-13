@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "sandbox"
 meta: "California is tracking data to understand the spread of COVID-19. On this page you’ll find: Today’s update Unvaccinated and vaccinated data County and statewide data Cases and deaths by ethnicity, gender, and age Explore more data Update for {{_varStatDate_}} To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases and {{_varStatTotalDeaths_}} deaths. Vaccines Administered [&hellip;]"
 author: "State of California"
-publishdate: "2021-10-13T20:42:41Z"
+publishdate: "2021-10-13T21:38:51Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -205,7 +205,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer">
+      <div class="wp-block-cgb-block-chart-drawer">
+        <cagov-accordion class="chart-drawer">
           <div class="card">
             <button class="card-header accordion-alpha" type="button" aria-expanded="false">
               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
@@ -218,7 +219,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             </div>
           </div>
         </cagov-accordion>
-</div>
+      </div>
     </div>
 
   </div>
