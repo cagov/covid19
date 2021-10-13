@@ -47,9 +47,6 @@ hero-stats {
 		@include small-phone {
 			margin-top: 135px;
 		}
-		@include tablet-wide {
-        	margin-top: 129px;
-		}
 	}
 	@include tablet {
 		display: flex;

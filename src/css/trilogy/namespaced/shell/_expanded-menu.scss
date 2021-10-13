@@ -23,9 +23,6 @@ cagov-navoverlay {
       padding: 1rem;
       transform: translateX(0);
     }
-    @include tablet-wide {
-      display: none;
-    }
     @include desktop {
       padding: 2rem;
     }
@@ -397,9 +394,6 @@ cagov-navoverlay {
     opacity: 0;
     visibility: hidden;
     transition: $slow;
-    @include tablet-wide {
-      display: none;
-    }
   }
 }
 cagov-navoverlay.display-menu {
