@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 縣及全州數據以幫助民眾了解COVID-19的傳播情況。"
 author: "State of California"
-publishdate: "2021-10-12T16:44:03Z"
+publishdate: "2021-10-13T22:08:10Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -134,9 +134,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <p class="small-text">根據{{_varStatYesterdayDate_}}的數據在{{_varStatDate_}}更新。</p>
         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">疫苗接種來源數據</a>及 <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數、死亡數及檢測數來源數據</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">數據説明</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-         <ul><li>週末或國家假日期間沒有報告病例數、死亡數以及檢測數。將在週末或假日結束後的第一天報告此類數據。每天都會報告接種疫苗數。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>患病率及日平均數為7日平均數據，有7天的滯後期。</li><li>死亡率及日平均數為7日平均數據，有21天的滯後期，因為報告有延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
-      </div></div></div></cagov-accordion></div>
+      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+              <div class="accordion-title">數據説明</div>             </button>             <div class="card-container" aria-hidden="true">
+              <div class="card-body">
+                <ul><li>週末或國家假日期間沒有報告病例數、死亡數以及檢測數。將在週末或假日結束後的第一天報告此類數據。每天都會報告接種疫苗數。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>患病率及日平均數為7日平均數據，有7天的滯後期。</li><li>死亡率及日平均數為7日平均數據，有21天的滯後期，因為報告有延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
+              </div>
+            </div>
+          </div>         </cagov-accordion>       </div>
     </div>
 
   </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">未接種疫苗數據及已接種疫苗數據</h2>
@@ -148,9 +152,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例數</button> <!-- omitting hospitalizations tab for now...
- <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
---> <button class="large-tab js-toggle-group-postvax deaths">死亡數</button>     </div>
+    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例數</button><button class="large-tab js-toggle-group-postvax hospitalizations">住院病例數</button><button class="large-tab js-toggle-group-postvax deaths">死亡數</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">過去四個月的COVID-19病例數</li>
     <li data-label="chartImpactStatement">從{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，與已完全接種疫苗人士相比，未接種疫苗人士感染COVID-19的機率要<strong>高{RATE_RATIO}倍</strong>。</li>
@@ -184,9 +186,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series3_legend">所有病例數</li>
     <li data-label="pending_legend">等待數據</li>
     <li data-label="tooltipContent">       一週結束日：<b>{WEEKDATE}</b><br>每100萬人中未接種疫苗人士的死亡數：<b>{UCOUNT}</b><br>每100萬人中已接種疫苗人士的死亡數：<b>{VCOUNT}  </b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">已接種疫苗病例或死亡是指接種兩劑Pfizer或Moderna疫苗或一劑Janssen疫苗的人士，在接種完疫苗至少兩週後，COVID-19檢測結果呈陽性。未接種疫苗病例或死亡是指未接種COVID-19疫苗人士患病或死亡。此圖表使用在過去120天內從16歲及以上人士中收集的數據。我們剔除了部分最近的、不完整的數據，以準確反映數據走向。加州公共衛生局有更多關於<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接種疫苗病例</a>的資訊。</p>
-</div></div></div></cagov-accordion></div>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">圖表資訊</div>       </button>       <div class="card-container" aria-hidden="true">
+        <div class="card-body">
+<p class="small-text">已接種疫苗病例、住院病例數或死亡病例是指接種兩劑Pfizer或Moderna疫苗或一劑Janssen疫苗的人士，在接種完疫苗至少2週後，COVID-19檢測結果呈陽性。未接種疫苗病例、住院病例或死亡病例是指未接種COVID-19疫苗人士患病或死亡。此圖表使用在過去120天內從16歲及以上人士中收集的數據。我們剔除了部分最近的、不完整的數據，以準確反映數據走向。作為各醫院加強報告的結果，住院數據的日期從2021年7月24日開始。加州公共衛生局有更多關於<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接種疫苗病例、住院病例及死亡病例</a>的資訊。</p>
+        </div>
+      </div>
+    </div>   </cagov-accordion> </div>
 
 
 
