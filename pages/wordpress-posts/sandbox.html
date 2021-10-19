@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "sandbox"
 meta: "California is tracking data to understand the spread of COVID-19. On this page you’ll find: Today’s update Unvaccinated and vaccinated data County and statewide data Cases and deaths by ethnicity, gender, and age Explore more data Update for {{_varStatDate_}} To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases and {{_varStatTotalDeaths_}} deaths. Vaccines Administered [&hellip;]"
 author: "State of California"
-publishdate: "2021-10-13T21:57:14Z"
+publishdate: "2021-10-19T21:18:12Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -205,25 +205,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer">
-        <cagov-accordion class="chart-drawer">
-          <div class="card">
-            <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-              <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-              <div class="accordion-title">Data notes</div>
-            </button>
-            <div class="card-container" aria-hidden="true">
-              <div class="card-body">
-                <ul><li>Data on cases, deaths, and testing is not reported on weekends or state holidays. This data is reported on the first day following the weekend or holiday. Data on vaccines administered is reported daily.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
-              </div>
-            </div>
-          </div>
-        </cagov-accordion>
-      </div>
+      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Data notes</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+         <ul><li>Data on cases, deaths, and testing is not reported on weekends or state holidays. This data is reported on the first day following the weekend or holiday. Data on vaccines administered is reported daily.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+      </div></div></div></cagov-accordion></div>
     </div>
 
   </div>
-  <!--END container-->
+  <!--END container--> 
 </div>
 
 
