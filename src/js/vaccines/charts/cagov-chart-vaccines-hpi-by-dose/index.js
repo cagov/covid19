@@ -64,7 +64,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         width: this.nbr_bars * 90,
         margin: {
           top: 70,
-          right: ,
+          right: 10,
           bottom: 52,
           left: 0,
         },
