@@ -71,8 +71,8 @@
   }
   &-logo {
     width: 100%;
-	order: 4;
-	background: $blue;
+    order: 4;
+    background: $blue;
     @include tablet {
       background: transparent;
       order: 0;
@@ -200,18 +200,17 @@ body.interior-page {
   border-radius: 2rem;
   transition: background 0.5s $slow-curve;
   padding: 0;
-  margin: 0.5rem 0.5rem 0.5rem 1em;
+  margin: .5rem 16px .5rem auto;
   order: 2;
-  width: 37%;
-  @include reg-phone {
-	  width: 25%;
-  }
+  width: calc(100% - 232px);
+  max-width: 12.5rem;
   @include small-phone {
     .header-search-field::placeholder {
       visibility: hidden;
     }
   }  
   @include tablet {
+    max-width: none;
     width: 12.5rem;
     padding: 0 0 0 0.25rem;
     margin: 0;
@@ -308,8 +307,6 @@ body.interior-page {
     cursor: pointer;
     @include tablet {
       background: transparent;
-    }
-    &:hover {
     }
   }
   &-label {
@@ -444,11 +441,11 @@ body.interior-page {
 
 /*translate*/
 header .dropdown {
-	margin-right: auto;
-	@include tablet {
-		margin-right: 0;
-	  }
+  width: 117px;
 
+  @include tablet {
+    width: auto;
+  }
 }
 .translate {
   position: relative;
