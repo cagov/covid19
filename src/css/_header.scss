@@ -30,10 +30,12 @@
 /* Header logo */
 .header {
   background: $darkblue;
+  min-height: 67px;
   width: 100%;
   z-index: 1000;
   /*transition: transform 0.3s, height 0.3s, 0.4s box-shadow $slow-curve;*/
   transition: 0.4s box-shadow $slow-curve;
+
   &.fixed-position {
     @include fixed(left 0 top 0);
   }
@@ -202,10 +204,9 @@ body.interior-page {
   order: 2;
   width: 37%;
   @include reg-phone {
-	  width: 34%;
+	  width: 25%;
   }
   @include small-phone {
-    width: 25%;
     .header-search-field::placeholder {
       visibility: hidden;
     }
