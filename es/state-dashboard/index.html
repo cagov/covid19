@@ -276,7 +276,11 @@
     <li data-label="series3_legend">Todos los casos</li>
     <li data-label="pending_legend">Datos pendientes</li>
     <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Muertes de no vacunados por cada millón: <b>{UCOUNT}</b><br> Muertes de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en vacunados y no vacunados</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Información del cuadro</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
 <p class="small-text">Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió dos dosis de las vacunas de Pfizer o Moderna, o la vacuna de Janssen al menos dos semanas antes de dar positivo por COVID-19. Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19. Este cuadro usa datos de personas mayores de 16 años recopilados durante los últimos 120 días. Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos. El rango de fechas para los datos de hospitalización comienza el 24 de julio de 2021, como resultado de la mejora de los reportes hechos por los hospitales. El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</p>
@@ -403,7 +407,7 @@
 
 
 
-<div class="row pb-5">
+<div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
           <li data-label="chartTitleState">Pacientes hospitalizados con COVID-19 en California</li>
           <li data-label="chartTitleCounty">Pacientes hospitalizados con COVID-19 en el condado de {REGION}</li>
@@ -434,8 +438,8 @@
 
 
 
-<p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-4 pb-5">
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Casos y muertes por etnia, sexo y edad</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
