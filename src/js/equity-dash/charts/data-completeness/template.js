@@ -23,7 +23,7 @@ export default function template(translationsObj) {
             <div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
             <div class="accordion-title js-qa-exclude">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 
-              <p class="chart-data-label">${translationsObj["footnote"]}</p>
+              <p class="small-text">${translationsObj["footnote"]}</p>
 
             </div></div></div></cagov-accordion></div>
   
