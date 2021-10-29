@@ -65,8 +65,10 @@ module.exports = function (eleventyConfig) {
       //fix all http/https links to covid sites
       replaceContent(item, /"http:\/\/covid19.ca.gov\//g, `"https://covid19.ca.gov/`);
       replaceContent(item, /"http:\/\/files.covid19.ca.gov\//g, `"https://files.covid19.ca.gov/`);
-      replaceContent(item, /"https:\/\/covid19.ca.gov\/pdf\//g, `"https://files.covid19.ca.gov/pdf/`);
-      replaceContent(item, /"https:\/\/covid19.ca.gov\/img\//g, `"https://files.covid19.ca.gov/img/`);
+      replaceContent(item, /"https:\/\/covid19.ca.gov\/pdf\//g, `"https://static.covid19.ca.gov/pdf/`);
+      replaceContent(item, /"https:\/\/covid19.ca.gov\/img\//g, `"https://static.covid19.ca.gov/img/`);
+      replaceContent(item, /"https:\/\/files.ca.gov\/pdf\//g, `"https://static.covid19.ca.gov/pdf/`);
+      replaceContent(item, /"https:\/\/files.ca.gov\/img\//g, `"https://static.covid19.ca.gov/img/`);
 
       if (item.inputPath.includes(FolderName)) {
         if (item.data.layout) {
