@@ -33,8 +33,16 @@ hero-stats {
 	position: relative;
 	color: $white;
 	width: 100%;
-	// 
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: flex-end;
+ 
 	&-padding-top {
+		margin-top: 120px;
+
 		@include tablet {
 			margin-top: 65px;
 		}
@@ -47,15 +55,11 @@ hero-stats {
 		@include small-phone {
 			margin-top: 135px;
 		}
+		@include tablet-wide {
+        	margin-top: 129px;
+		}
 	}
-	@include tablet {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-content: center;
-		align-items: flex-end;
-	}
+
 	&-wrap {
 		@extend %wrap;
 		position: relative;
@@ -81,14 +85,16 @@ hero-stats {
 		text-align: left;
 		padding: 1.5rem;
 		min-height: 60vh;
-		/* align-items: flex-end; */
-		/* align-self: flex-end; */
-		// background-color: #1D2574;
+		display: flex;
+		width: 100%;
+		min-height: auto;
+	    align-self: center;
+
 		@include tablet {
 			display: flex;
 			width: 50%;
 			min-height: auto;
-	    align-self: center;
+	    	align-self: center;
 		}
 		@include tablet-wide {
 			width: 50%;
