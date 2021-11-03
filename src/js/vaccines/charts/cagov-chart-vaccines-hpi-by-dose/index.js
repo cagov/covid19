@@ -18,7 +18,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl:
-        // https://data.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
+        // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
         config.chartsVHPIDataLocDoses + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {

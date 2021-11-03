@@ -27,7 +27,7 @@ import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
 
 // load sparklines
-let svg_path = 'https://static.covid19.ca.gov';
+let svg_path = 'https://files.covid19.ca.gov';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {

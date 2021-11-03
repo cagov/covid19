@@ -1,9 +1,9 @@
 const defaultConfig = {
-  equityChartsDataHome: 'https://data.covid19.ca.gov/data/'
+  equityChartsDataHome: 'https://files.covid19.ca.gov/data/'
 }
 
 const stagingConfig =  {
-  equityChartsDataHome: 'https://data.covid19.ca.gov/data/to-review/'
+  equityChartsDataHome: 'https://files.covid19.ca.gov/data/to-review/'
 }
 
 module.exports = function() {
