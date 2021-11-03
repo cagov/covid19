@@ -4,10 +4,10 @@ import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 
 const defaultConfig = {
-  equityChartsDataLoc: 'https://files.covid19.ca.gov/data/reviewed'
+  equityChartsDataLoc: 'https://data.covid19.ca.gov/data/reviewed'
 }
 const stagingConfig =  {
-  equityChartsDataLoc: 'https://files.covid19.ca.gov/data/to-review'
+  equityChartsDataLoc: 'https://data.covid19.ca.gov/data/to-review'
 }
 
 const devOutputPath = 'docs/js/equitydash.js';
