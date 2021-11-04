@@ -329,7 +329,7 @@
 
 
 
-<p class="small-text mb-4"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Các ca liên quan đến tỷ lệ phần trăm dân số và tỷ lệ ca trên 100 nghìn người theo dữ liệu nguồn về nhóm chủng tộc và sắc tộc</a></p>
+<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Các ca liên quan đến tỷ lệ phần trăm dân số và tỷ lệ ca trên 100 nghìn người theo dữ liệu nguồn về nhóm chủng tộc và sắc tộc</a></p>
 
 
 
@@ -344,7 +344,7 @@
 
 
 <p>Chỉ số công bằng sức khỏe đo lường tỷ lệ xét nghiệm dương tính trong các cộng đồng bị ảnh hưởng nặng nề nhất. Trong <a href="https://map.healthyplacesindex.org/">Chỉ Số Địa Điểm Khỏe Mạnh</a> do Liên Minh Y Tế Công Cộng Nam California phát triển, các cộng đồng này được định nghĩa là những khu vực điều tra dân số có điều kiện cộng đồng kém khỏe mạnh hơn như mức thu nhập trung bình, trình độ học vấn và khả năng tiếp cận dịch vụ chăm sóc sức khỏe đều ở mức thấp.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="y-axis-label">Kết quả xét nghiệm dương tính</li>
         <li data-label="data1-legend">Mức độ dương tính trên toàn tiểu bang</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation xét nghiệm dương tính</li>
@@ -356,9 +356,7 @@
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Dữ liệu được hiển thị là tỷ lệ số ca dương tính trong trung bình 7 ngày với thời gian trễ là 7 ngày. Dữ liệu được hiển thị là khoảng thời gian 7 ngày kết thúc vào <span data-replacement="d3-lines-report-date"></span>. Tỷ lệ xét nghiệm dương tính của điểm tứ phân vị công bằng sức khỏe được định nghĩa là tỷ lệ xét nghiệm dương tính trong 25% thấp nhất của các khu vực điều tra dân số của Chỉ Số Địa Điểm Khỏe Mạnh trong quận. Chỉ số công bằng sức khỏe không áp dụng cho các quận có dân số dưới 106,000.</p>
-</div></div></div></cagov-accordion></div>
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
 
 
 
@@ -368,7 +366,7 @@
 
 <p>Chúng ta biết nhiều về ảnh hưởng của đại dịch COVID-19 đối với một số cộng đồng nhất định nhưng chúng ta có thể đầu tư hiệu quả hơn các nguồn lực của mình bằng cách thu thập nhiều hơn dữ liệu về chủng tộc, sắc tộc, khuynh hướng tình dục và bản dạng giới. Công tác thu thập dữ liệu này đòi hỏi sự hợp tác chặt chẽ với các đối tác thuộc khu vực tư nhân, phòng thí nghiệm và viên chức của tiểu bang và quận. Xem các nguồn thông tin về cách cải thiện báo cáo vấn đề <a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">chủng tộc và sắc tộc</a> cũng như <a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">khuynh hướng tình dục và bản dạng giới</a>.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">Chủng tộc và sắc tộc</button> <button class="small-tab" data-key="sexual_orientation">Khuynh hướng tình dục</button> <button class="small-tab" data-key="gender_identity">Bản dạng giới</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none">   <ul>
     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="title">Báo cáo theo chủng tộc và sắc tộc ở California</li>
         <li data-label="footnote">Lưu ý: Dữ liệu được hiển thị là tổng số 30 ngày tích lũy, được cập nhật vào <span data-replacement="data-completeness-report-date"></span>. Không thu thập dữ liệu về xu hướng tình dục và bản dạng giới cho các xét nghiệm. Các số từ 1 đến 10 không được hiển thị để bảo vệ quyền riêng tư của bệnh nhân.</li>
         <li data-label="tab-label">Báo cáo bởi <span data-replace="metric-filter"></span> trong <span data-replace="location"></span></li>
@@ -392,7 +390,7 @@
         <li data-item="deaths">Ca tử vong</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul>
+  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">Các yếu tố làm tăng nguy cơ lây nhiễm và mắc bệnh nặng</li>
     <li data-label="sectionDescription">Người dân California có tình trạng nhà ở đông đúc hoặc sử dụng phương tiện đi lại đông đúc và ít được nghỉ phép có lương và ít được hưởng các biện pháp bảo vệ người lao động khác có nguy cơ nhiễm COVID-19 cao hơn. Các yếu tố xã hội quyết định đến sức khỏe như mất an ninh lương thực, không có bảo hiểm y tế và nhà ở không ổn định có thể làm tăng nguy cơ dẫn đến kết quả xấu. Những yếu tố xã hội quyết định đến sức khỏe thường là kết quả của sự phân biệt chủng tộc có hệ thống.</li>
     <li data-label="chartTitleIncome">Tỷ lệ ca mắc trong cộng đồng theo khung thu nhập trung bình hàng năm của hộ gia đình</li>
