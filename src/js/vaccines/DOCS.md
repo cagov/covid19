@@ -114,9 +114,9 @@ Most recent ones
 
 | Chart | Web component name | Data Source | Screenshot | Figma Frame | 
 | -- | -- | -- | -- | -- |
-| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Race and ethnicity data](https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | ![Chart](./assets/chart_race_ethnicity.png) | -- |
-| Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
-| Age | `cagov-chart-vaccination-groups-age` | [Age data](https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | -- | -- | 
+| Race and ethnicity | `cagov-chart-vaccination-groups-race-ethnicity` | [Race and ethnicity data](https://data.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json) | ![Chart](./assets/chart_race_ethnicity.png) | -- |
+| Gender | `cagov-chart-vaccination-groups-gender` | [Gender data](https://data.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json) | -- | -- |
+| Age | `cagov-chart-vaccination-groups-age` | [Age data](https://data.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json) | -- | -- | 
 
 
 ### Notes on how the chart works
@@ -155,14 +155,14 @@ https://github.com/cagov/covid-static/blob/master/data/vaccine-equity/race-ethni
 
 #### For California
 
-* https://files.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json
-* https://files.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json
-* https://files.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json
+* https://data.covid19.ca.gov/data/vaccine-equity/age/vaccines_by_age_california.json
+* https://data.covid19.ca.gov/data/vaccine-equity/gender/vaccines_by_gender_california.json
+* https://data.covid19.ca.gov/data/vaccine-equity/race-ethnicity/vaccines_by_race_ethnicity_california.json
 
 #### Static file server location
 
 `equityChartsVEDataLoc`
-: https://files.covid19.ca.gov/data/vaccine-equity/
+: https://data.covid19.ca.gov/data/vaccine-equity/
 
 ### `meta`
 The meta property in the data set can be updated with a structured version of the info from this file.
