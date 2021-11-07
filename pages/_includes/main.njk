@@ -138,7 +138,7 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(false,tags,0)) | replace("[DataDate]",dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false,tags,-1)) -}}
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(false,tags,0)) | replace("[DataDate]",dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false,tags,-1)) -}}
 					</div>
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
