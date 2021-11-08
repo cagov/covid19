@@ -7,3 +7,7 @@ updates:
     schedule: 
       interval: "daily"
     target-branch: "dependabotprs"
+    ignore:
+      - dependency-name: "node-fetch"
+        update-types: ["version-update:semver-major"]
+
