@@ -270,9 +270,7 @@ module.exports = function (eleventyConfig) {
           ? datestring
           : datestring === 'today'
             ? new Date()
-            : datestring.indexOf('Z') > -1
-              ? new Date(datestring)
-              : new Date(`${datestring} PST`); // WILL ALWAYS BREAK - not valid javascript. your choices are Z (GMT) or '' (unreliable local time)
+            : new Date(datestring);
       if (targetdate) {
         if (addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
