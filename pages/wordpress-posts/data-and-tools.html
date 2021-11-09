@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Data and tools"
 meta: "California has collected a wide range of data to inform its response to COVID-19."
 author: "State of California"
-publishdate: "2021-10-27T16:58:13Z"
-tags: ["translate"]
+publishdate: "2021-11-09T17:19:03Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -88,7 +88,23 @@ addtositemap: true
 
 
 
-<h3 id="The-impact-on-hospitals-in-the-state-of-California">The impact on hospitals in the state of California&nbsp;</h3>
+<h3>Equity data</h3>
+
+
+
+<p>This includes:</p>
+
+
+
+<ul><li>Cases, deaths, and tests by race and ethnicity</li><li>Health equity metric test positivity</li><li>Demographic data completeness</li><li>Community case rates by income, crowded housing levels, and access to health insurance</li></ul>
+
+
+
+<p><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">View equity data on Open Data Portal</a></p>
+
+
+
+<h3 id="The-impact-on-hospitals-in-the-state-of-California">The impact on hospitals in the state of California</h3>
 
 
 
@@ -197,6 +213,38 @@ addtositemap: true
 
 
 <figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>Variable</strong></td><td><strong>Format</strong></td><td><strong>Description</strong></td><td><strong>Update frequency</strong></td></tr><tr><td>DATE</td><td>Date</td><td>Reporting time period</td><td>Weekly</td></tr><tr><td>UNVACCINATED_CASES_PER_100K</td><td>Numeric</td><td>Rate of cases among the unvaccinated per 100,000 persons (limited to persons age 16+). Rates are calculated by dividing the prior 7-day averages of case counts for a given day by the estimated unvaccinated population for that given day, multiplied by 100,000.</td><td>Weekly</td></tr><tr><td>VACCINATED_CASES_PER_100K</td><td>Numeric</td><td>Rate of cases among the vaccinated per 100,000 persons (limited to persons age 16+). Rates are calculated by dividing prior 7-day averages of case counts for a given day by the estimated vaccinated population for that given day, multiplied by 100,000.</td><td>Weekly</td></tr><tr><td>UNVACCINATED_DEATHS_PER_1MIL</td><td>Numeric</td><td>Rate of deaths among the unvaccinated per 1,000,000 persons (limited to persons age 16+). Rates are calculated by dividing the prior 7-day averages of number of deaths on a given day by the estimated unvaccinated population for that given day, multiplied by 1,000,000.</td><td>Weekly</td></tr><tr><td>VACCINATED_DEATHS_PER_1MIL</td><td>Numeric</td><td>Rate of deaths among the vaccinated per 1,000,000 persons (limited to persons age 16+). Rates are calculated by dividing prior 7-day averages of number of deaths on a given day by the estimated vaccinated population for that given day, multiplied by 1,000,000.</td><td>Weekly</td></tr><tr><td>UNVACCINATED_HOSP_PER_1MIL</td><td>Numeric</td><td>Rate of hospitalization among the unvaccinated per 1,000,000 persons (limited to persons age 16+). Rates are calculated by dividing the prior 7-day averages of number of hospitalized persons on a given day by the estimated unvaccinated population for that given day, multiplied by 1,000,000.</td><td>Weekly</td></tr><tr><td>VACCINATED_HOSP_PER_1MIL</td><td>Numeric</td><td>Rate of hospitalization among the vaccinated per 1,000,000 persons (limited to persons age 16+). Rates are calculated by dividing prior 7-day averages of number of hospitalized persons on a given day by the estimated vaccinated population for that given day, multiplied by 1,000,000.</td><td>Weekly</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude" id="COVID-19-impact-by-race-and-ethnicity-data">COVID-19 impact by race and ethnicity</h3>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>Variable</strong></td><td><strong>Format</strong></td><td><strong>Description</strong></td><td><strong>Update frequency</strong></td></tr><tr><td>COUNTY</td><td>Categorical</td><td>Specifies county or state</td><td>Weekly</td></tr><tr><td>DEMOGRAPHIC_SET</td><td>Categorical</td><td>Specifies demographic category</td><td>Weekly</td></tr><tr><td>DEMOGRAPHIC_SET_CATEGORY</td><td>Categorical</td><td>Sub-category of specific demographic category</td><td>Weekly</td></tr><tr><td>METRIC</td><td>Categorical</td><td>Specifies if related counts are for cases, deaths, or tests</td><td>Weekly</td></tr><tr><td>METRIC_VALUE</td><td>Numeric</td><td>Number of records in the previous 30 days (cases based on episode date, deaths based on date of death, and tests based on specimen collection) for the specified metric. Suppression is applied based on county population or total counts</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_PER_100K</td><td>Numeric</td><td>30-day case, death, or testing rate per 100,000 population</td><td>Weekly</td></tr><tr><td>APPLIED_SUPPRESSION</td><td>Categorical</td><td>Reason for suppression: Population, PopMinusTot, Total, None</td><td>Weekly</td></tr><tr><td>POPULATION_PERCENTAGE</td><td>Numeric</td><td>Percent of county/state population in specified demographic category</td><td>Weekly</td></tr><tr><td>METRIC_TOTAL_PERCENTAGE</td><td>Numeric</td><td>Percent of county/state case, death, or test total that demographic category accounts for previous 30 days</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_30_DAYS_AGO</td><td>Numeric</td><td>Number of records in the previous 31-60 days (cases based on episode date, deaths based on date of death, and tests based on specimen collection) for the specified metric; suppression is applied based on county population or total counts</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_PER_100K_30_DAYS_AGO</td><td>Numeric</td><td>30-day case, death, or testing rate for previous 31-60 days per 100,000 population; equivalent to total/population multiplied by 100,000</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_PER_100K_DELTA_FROM_30_DAYS_AGO</td><td>Numeric</td><td>Difference between most recent 30-day rate and the previous 30 day rate</td><td>Weekly</td></tr><tr><td>METRIC_TOTAL_PERCENTAGE_30_DAYS_AGO</td><td>Numeric</td><td>Percent of county/state case, death, or test total that demographic category accounts for in the previous 31-60 day period</td><td>Weekly</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude" id="health-equity-metric-data">Health equity metric data</h3>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>Variable</strong></td><td><strong>Format</strong></td><td><strong>Description</strong></td><td><strong>Update frequency</strong></td></tr><tr><td>COUNTY</td><td>Categorical</td><td>Specifies county or state</td><td>Weekly</td></tr><tr><td>DATE</td><td>Date</td><td>Date. Includes 30 previous dates after 9 day lag (2 day data processing delay + 7 day to account for reporting delay)</td><td>Weekly</td></tr><tr><td>METRIC</td><td>Categorical</td><td>Specifies metric: county_positivity_all_nopris,  county_positivity_low_hpi</td><td>Weekly</td></tr><tr><td>METRIC_VALUE</td><td>Numeric</td><td>Value associated with the metric specified in &#8220;name&#8221; column. county_positivity_all_nopris: the total number of positive polymerase chain reaction (PCR) tests for COVID-19 over a 7-day period (based on specimen collected date) divided by the total number of PCR tests conducted, excluding tests for persons out of state or with unknown county of residence and tests associated with prison, ICE, US Marshal, or Department of State Hospitals facilities.  This number is multiplied by 100 to get a percentage.  Each date represents the positivity of the previous 7-day period. county_positivity_low_hpi: Test positivity over a 7-day period (based on specimen collected date) for the tracts in Healthy Places Index quartile 1 in a given county, excluding tests associated with prison, ICE, US Marshal, or Department of State Hospitals facilities.</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_30_DAYS_AGO</td><td>Numeric</td><td>Metric value for the date 30 days prior to the specified date</td><td>Weekly</td></tr><tr><td>METRIC_VALUE_DIFF</td><td>Numeric</td><td>Difference between specified date&#8217;s calculation and 30 days prior</td><td>Weekly</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude" id="reporting-completeness-data">Reporting completeness data</h3>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>Variable</strong></td><td><strong>Format</strong></td><td><strong>Description</strong></td><td><strong>Update frequency</strong></td></tr><tr><td>COUNTY</td><td>Categorical</td><td>Specifies county or state</td><td>Weekly</td></tr><tr><td>SOGI_CATEGORY</td><td>Categorical</td><td>Specifies which type of data is being assessed (gender_identity, race_ethnicity, or sexual_orientation)</td><td>Weekly</td></tr><tr><td>METRIC</td><td>Categorical</td><td>Specifies if related counts are for cases, deaths, or tests</td><td>Weekly</td></tr><tr><td>MISSING</td><td>Numeric</td><td>Number of records with date (cases based on episode date, deaths based on date of death, and tests based on specimen collection) in the previous 30 days that have unknown or missing information for specified category</td><td>Weekly</td></tr><tr><td>NOT_MISSING</td><td>Numeric</td><td>Number of records with date (cases based on episode date, deaths based on date of death, and tests based on specimen collection) in the previous 30 days that are not missing information for specified category</td><td>Weekly</td></tr><tr><td>TOTAL</td><td>Numeric</td><td>Total number of records with date (cases based on episode date, deaths based on date of death, and tests based on specimen collection) in the previous 30 days. Equivalent to Missing + Not_Missing</td><td>Weekly</td></tr><tr><td>PERCENT_COMPLETE</td><td>Numeric</td><td>Percent of records in the previous 30 days that are not missing information. Equivalent to Not_Missing/Total*100</td><td>Weekly</td></tr><tr><td>PERCENT_COMPLETE_30_DAYS_PRIOR</td><td>Numeric</td><td>Percent of records in the previous 31-60 days that are not missing information</td><td>Weekly</td></tr><tr><td>PERCENT_COMPLETE_30_DAYS_DIFF</td><td>Numeric</td><td>Difference in completeness between records from the previous 30 days versus previous 31-60 days. Equivalent to Perc_Complete &#8211; Perc_Complete_30_Prior</td><td>Weekly</td></tr><tr><td>REPORT_DATE</td><td>Date</td><td>Date on which the data was calculated</td><td>Weekly</td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-accordion js-qa-exclude" id="risk-factors-data">Risk factors data</h3>
+
+
+
+<figure class="wp-block-table wp-accordion-content table tools"><table><tbody><tr><td><strong>Variable</strong></td><td><strong>Format</strong></td><td><strong>Description</strong></td><td><strong>Update frequency</strong></td></tr><tr><td>DATE</td><td>Date</td><td>Date on which the data was calculated</td><td>Weekly</td></tr><tr><td>SOCIAL_DET</td><td>Categorical</td><td>Specifies social determinant of health variable: income, income_cumulative, crowding, insurance</td><td>Weekly</td></tr><tr><td>SOCIAL_TIER</td><td>Categorical</td><td>Specifies sub-category of Social_Det category.Example for income: above $120K, $80-100K, $60-80K, $40-60K, etc.</td><td>Weekly</td></tr><tr><td>SORT</td><td>Numeric</td><td>Numeric rank for social tier</td><td>Weekly</td></tr><tr><td>CASES_7DAYAVG_7DAYSAGO</td><td>Numeric</td><td>Average number of cases per day for previous 7 days (except for income_cumulative which represents whole pandemic)</td><td>Weekly</td></tr><tr><td>POPULATION</td><td>Numeric</td><td>Total population using 2017 population data</td><td>Weekly</td></tr><tr><td>CASE_RATE_PER_100K</td><td>Numeric</td><td>Case rate per 100,000 population</td><td>Weekly</td></tr><tr><td>CASE_RATE_PER_100K_30_DAYS_AGO</td><td>Numeric</td><td>Case rate for the date 30 days prior</td><td>Weekly</td></tr><tr><td>RATE_DIFF_30_DAYS</td><td>Numeric</td><td>Difference between current case rate and 30 days prior</td><td>Weekly</td></tr></tbody></table></figure>
 
 
 
