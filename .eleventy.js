@@ -270,7 +270,10 @@ module.exports = function (eleventyConfig) {
           ? datestring
           : datestring === 'today'
             ? new Date()
-            : new Date(datestring);
+            // : new Date(datestring) 
+            : datestring.length <= 10
+                ? new Date(datestring +"T00:00:00") // insures pacific/GMT dates line-up
+                : new Date(datestring);
       if (targetdate) {
         if (addDays) {
           targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
