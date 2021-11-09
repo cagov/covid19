@@ -5,10 +5,10 @@ import postcss from 'rollup-plugin-postcss';
 
 
 const defaultConfig = {
-  chartsDataFile: 'https://data.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
-  chartsStateDashTablesLoc: 'https://data.covid19.ca.gov/data/dashboard/',
-  chartsStateDashTablesLocSparklineVaccines: 'https://data.covid19.ca.gov/data/dashboard/',
-  chartsStateDashTablesLocPostvax: 'https://data.covid19.ca.gov/data/dashboard/',
+  chartsDataFile: 'https://files.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://files.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLocSparklineVaccines: 'https://files.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLocPostvax: 'https://files.covid19.ca.gov/data/dashboard/',
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
