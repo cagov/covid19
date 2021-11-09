@@ -2,6 +2,7 @@
 import css from './index.scss';
 
 export default function template(translationsObj) {
+  let dataSrc = ('data-source' in translationsObj)? translationsObj["data-source"] : "";
   return /*html*/`<div class="py-2 bg-lightblue full-bleed px-4">
     <div class="container">
     <div class="row">
@@ -28,7 +29,7 @@ export default function template(translationsObj) {
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto">
 
             <div class="mt-4">
-            ${translationsObj["data-source"]}
+              ${dataSrc}
             </div>
   
             <div class="wp-block-cgb-block-chart-drawer js-qa-exclude"><cagov-accordion class="chart-drawer">

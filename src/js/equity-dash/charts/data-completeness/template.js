@@ -4,6 +4,8 @@ export default function template(translationsObj) {
   // inhibit special note if it is missing (as it currently is for some translations)
   const inhibitNote = ('special-note' in translationsObj)? 
                       '' : 'style="display:none;"' ;
+  const dataSrc = ('data-source' in translationsObj)? translationsObj["data-source"] : "";
+
   return /*html*/`<div class="py-2">
     <div class="container">
       <div class="col-lg-12 bg-white py-4">
@@ -20,7 +22,7 @@ export default function template(translationsObj) {
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
 
           <div class="mt-2">
-            ${translationsObj["data-source"]}
+            ${dataSrc}
           </div>
 
             <div class="wp-block-cgb-block-chart-drawer js-qa-exclude"><cagov-accordion class="chart-drawer">
