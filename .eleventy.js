@@ -256,20 +256,6 @@ module.exports = function (eleventyConfig) {
   }
 
   // Format dates within templates.
-  eleventyConfig.addFilter('formatDate', function (datestring) {
-    const locales = 'en-US';
-    const timeZone = 'America/Los_Angeles';
-    if (datestring && datestring.indexOf('Z') > -1) {
-      const date = new Date(datestring);
-      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
-    } else if (datestring === 'today') {
-      const date = new Date();
-      return `${date.toLocaleDateString(locales, { timeZone, day: 'numeric', month: 'long', year: 'numeric' })} at ${date.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: 'numeric' })}`;
-    } else {
-      return datestring;
-    }
-  });
-
   eleventyConfig.addFilter('formatDate2', function (datestring, withTime, tags, addDays) {
     return formatDate(datestring, withTime, tags, addDays);
   });
@@ -328,17 +314,6 @@ module.exports = function (eleventyConfig) {
     }
     return datestring;
   }
-
-
-  eleventyConfig.addFilter('formatDateParts', function (datestring, adddays) {
-    return formatDate(datestring, null, null, adddays);
-  })
-
-  eleventyConfig.addFilter('formatDatePartsPlus1', function (datestring) {
-    return formatDate(datestring, null, null, 1);
-  })
-
-
 
   eleventyConfig.addFilter('truncate220', function (textstring) {
     if (!textstring || textstring.length < 221) {
