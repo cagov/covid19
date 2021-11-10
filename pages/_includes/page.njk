@@ -47,7 +47,7 @@
               {%- elseif page | engSlug === "vaccination-progress-data" -%}
                 {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ (equityTopBoxes[0].publish_date + "T17:00:00Z") | formatDate2(true,tags, 0) }}
+                {{ (equityTopBoxes[0].publish_date + "T17:00:00Z") | formatDate2(true,tags, -7) }}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}
