@@ -237,7 +237,8 @@
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
-                <p class="chart-data-label">Lưu ý: Dữ liệu này được tích lũy kể từ ca mắc COVID-19 đầu tiên được báo cáo vào tháng 1 năm 2020. Tỷ lệ ca mắc được định nghĩa là số ca mắc COVID-19 cộng dồn trên 100K người. Tỷ lệ tử vong được định nghĩa là số ca tử vong COVID-19 cộng dồn trên 100K người.</p>
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Dữ liệu nguồn về tỷ lệ ca mắc và tỷ lệ tử vong</a></p>
+                <p class="chart-data-label">Lưu ý: Dữ liệu này được cộng dồn kể từ ca mắc COVID-19 đầu tiên được báo cáo vào tháng 1 năm 2020. Tỷ lệ ca mắc được định nghĩa là số ca mắc COVID-19 cộng dồn trên 100K người. Tỷ lệ tử vong được định nghĩa là số ca tử vong COVID-19 cộng dồn trên 100K người.</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
   <div class="container py-2">
@@ -329,7 +330,7 @@
 
 
 
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Các ca liên quan đến tỷ lệ phần trăm dân số và tỷ lệ ca trên 100 nghìn người theo dữ liệu nguồn về nhóm chủng tộc và sắc tộc</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Các ca mắc, ca tử vong và xét nghiệm liên quan đến tỷ lệ phần trăm dân số và tỷ lệ ca mắc, tử vong và xét nghiệm trên 100 nghìn người theo dữ liệu nguồn về nhóm chủng tộc và sắc tộc</a></p>
 
 
 
@@ -356,7 +357,11 @@
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Dữ liệu nguồn về chỉ số công bằng sức khỏe</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">Dữ liệu được hiển thị là tỷ lệ số ca dương tính trong trung bình 7 ngày với thời gian trễ là 7 ngày. Dữ liệu được hiển thị là khoảng thời gian 7 ngày kết thúc vào. Tỷ lệ xét nghiệm dương tính của điểm tứ phân vị công bằng sức khỏe được định nghĩa là tỷ lệ xét nghiệm dương tính trong 25% thấp nhất của các khu vực điều tra dân số của Chỉ Số Địa Điểm Khỏe Mạnh trong quận. Chỉ số công bằng sức khỏe không áp dụng cho các quận có dân số dưới 106,000.</div></div></div></cagov-accordion></div></div>
 
 
 
@@ -369,6 +374,8 @@
       <ul class="small-text">
         <li data-label="title">Báo cáo theo chủng tộc và sắc tộc ở California</li>
         <li data-label="footnote">Lưu ý: Dữ liệu được hiển thị là tổng số 30 ngày tích lũy, được cập nhật vào <span data-replacement="data-completeness-report-date"></span>. Không thu thập dữ liệu về xu hướng tình dục và bản dạng giới cho các xét nghiệm. Các số từ 1 đến 10 không được hiển thị để bảo vệ quyền riêng tư của bệnh nhân.</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Báo cáo theo dữ liệu nguồn về chủng tộc và sắc tộc, khuynh hướng tính dục và bản dạng giới</a></p></li>
+
         <li data-label="tab-label">Báo cáo bởi <span data-replace="metric-filter"></span> trong <span data-replace="location"></span></li>
         <li data-label="data-missing">Thiếu dữ liệu</li>
         <li data-label="data-reported">Dữ liệu đã báo cáo</li>
@@ -390,7 +397,11 @@
         <li data-item="deaths">Ca tử vong</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">Các yếu tố làm tăng nguy cơ lây nhiễm và mắc bệnh nặng</li>
     <li data-label="sectionDescription">Người dân California có tình trạng nhà ở đông đúc hoặc sử dụng phương tiện đi lại đông đúc và ít được nghỉ phép có lương và ít được hưởng các biện pháp bảo vệ người lao động khác có nguy cơ nhiễm COVID-19 cao hơn. Các yếu tố xã hội quyết định đến sức khỏe như mất an ninh lương thực, không có bảo hiểm y tế và nhà ở không ổn định có thể làm tăng nguy cơ dẫn đến kết quả xấu. Những yếu tố xã hội quyết định đến sức khỏe thường là kết quả của sự phân biệt chủng tộc có hệ thống.</li>
     <li data-label="chartTitleIncome">Tỷ lệ ca mắc trong cộng đồng theo khung thu nhập trung bình hàng năm của hộ gia đình</li>
@@ -402,7 +413,8 @@
     <li data-label="chartButtonIncome">Thu nhập</li>
     <li data-label="chartButtonHousing">Nhà ở đông người</li>
     <li data-label="chartButtonHealthcare">Khả năng tiếp cận bảo hiểm y tế</li>
-    <li data-label="footnote">Lưu ý: Dữ liệu từ Khảo Sát Cộng Đồng Hoa Kỳ và tính trên toàn tiểu bang. Dữ liệu này không phản ánh tình hình của từng quận. Dữ liệu được hiển thị là tổng số 7 ngày tích lũy, được cập nhật vào <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="footnote">Lưu ý: Dữ liệu từ Khảo Sát Cộng Đồng Hoa Kỳ và tính trên toàn tiểu bang. Dữ liệu này không phản ánh tình hình của từng quận. Dữ liệu được hiển thị là tổng số 7 ngày cộng dồn, được cập nhật vào <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Tỷ lệ ca mắc trong cộng đồng theo thu nhập, mức độ nhà ở đông người và khả năng tiếp cận dữ liệu nguồn bảo hiểm y tế</a></p><li>
    <li data-label="casesPer100KPeople">Số ca mắc trên 100K người</li>
    <li data-label="statewideCaseRate">Tỷ lệ ca mắc trên toàn tiểu bang:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate ca mắc trên 100K người. placeholderRateDiff30 thay đổi từ 30 ngày trước</li>

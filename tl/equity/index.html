@@ -235,6 +235,7 @@
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng rate ng kaso at pagkamatay</a></p>
                 <p class="chart-data-label">Tandaan: Cumulative ang data na ito mula sa unang kaso ng COVID-19 na naiulat noong Enero 2020. Inilalarawan ang rate ng kaso bilang cumulative na bilang ng mga kaso ng COVID-19 sa bawat 100K populasyon. Inilalarawan ang rate ng pagkamatay bilang cumulative na bilang ng mga pagkamatay kaugnay ng COVID-19 sa bawat 100K.</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
@@ -327,7 +328,7 @@
 
 
 
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng Mga kaso kaugnay ng porsyento ng populasyon at rate ng kaso kada 100K ayon sa lahi at etnisidad</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng mga kaso, pagkamatay, at pagsusuri kaugnay ng porsyento ng populasyon at rate ng kaso, pagkamatay, at pagsusuri sa kada 100K ayon sa lahi at etnisidad</a></p>
 
 
 
@@ -354,7 +355,11 @@
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng sukatan ng pagkakapantay-pantay sa kalusugan</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">Ang ipinapakitang datos ay 7 araw na average ng rate ng pagiging positibo, na may lag na 7 araw. Ang ipinapakitang datos ay para sa 7 araw na nagtatapos sa . Inilalarawan ang pagiging positihbo ng quartile ng pagkakapantay-pantay sa kalusugan bilang rate ng pagiging positibo sa pinakamababang 25% ng mga tract ng census ng Index ng Mga Lugar na Malayo sa Sakit sa county. Ang sukatan sa equity sa kalusugan ay hindi nalalapat sa mga county na may populasyong wala pang 106,000.</div></div></div></cagov-accordion></div></div>
 
 
 
@@ -367,6 +372,8 @@
       <ul class="small-text">
         <li data-label="title">Pag-uulat ayon sa lahi at etnisidad sa California</li>
         <li data-label="footnote">Tandaan: Ang ipinapakitang datos ay cumulative na 30 araw sa kabuuan, na na-update noong <span data-replacement="data-completeness-report-date"></span>. Hindi kinokolekta sa mga pagsusuri ang sekswal na oryentasyon at pagkakakilanlan sa kasarian. Hindi ipinapakita ang mga numero mula 1 hanggang 10 para maprotektahan ang privacy ng pasyente.</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng pag-uulat ayon sa lahi at etnisidad, sekswal na oryentasyon, at pagkakakilanlan ng kasarian</a></p></li>
+
         <li data-label="tab-label">Pag-uulat ayon sa <span data-replace="metric-filter"></span> sa <span data-replace="location"></span></li>
         <li data-label="data-missing">Nawawalang datos</li>
         <li data-label="data-reported">Iniulat na datos</li>
@@ -388,7 +395,11 @@
         <li data-item="deaths">Mga Pagkamatay</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">Mga salik na nagpapalaki sa posibilidad na magkaroon ng hawahan at malalang sakit</li>
     <li data-label="sectionDescription">Ang mga Californian na nasa siksikang pabahay o transportasyon, na may mas kaunting access sa bayad na leave at iba pang proteksyon sa manggagagawa ay may mas malaking posibilidad na mahawahan ng COVID-19. Puwedeng mapalaki ng mga panlipunang determinant ng kalusugan, gaya ng insurance sa kalusugan at hindi pagiging stable ng pabahay, ang posibilidad na magkaroon ng mga hindi magandang resulta. Kadalasan, resulta ng structural racism ang mga panlipunang determinant na ito ng kalusugan.</li>
     <li data-label="chartTitleIncome">Rate ng kaso sa komunidad ayon sa median na bracket ng taunang sambahayang kita</li>
@@ -401,6 +412,7 @@
     <li data-label="chartButtonHousing">Siksikang pabahay</li>
     <li data-label="chartButtonHealthcare">Access sa insurance sa kalusugan</li>
     <li data-label="footnote">Tandaan: Nagmumula sa Survey sa Komunidad ng Mga Amerikano at pambuong-estado ang datos. Hindi ito nakakaapekto sa mga indibidwal na county. Ang ipinapakitang datos ay cumulative na 7 araw sa kabuuan, na may lag na 7 araw, na na-update noong <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng rate ng kaso sa komunidad ayon sa kita, crowded housing, at access sa insurance sa kalusugan</a></p><li>
    <li data-label="casesPer100KPeople">Mga kaso sa bawat 100K tao</li>
    <li data-label="statewideCaseRate">Rate ng kaso sa buong estado:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate kaso sa bawat 100K tao. placeholderRateDiff30 pagbabago mula sa nakalipas na 30 araw</li>

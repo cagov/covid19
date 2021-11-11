@@ -235,6 +235,7 @@
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">患病率及死亡率源數據</a></p>
                 <p class="chart-data-label">注：此數據自2020年1月呈報的首例COVID-19病例起開始累計。患病率是指每100K人中的COVID-19累計病例數。死亡率是指每100K人中的COVID-19累計死亡數。</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
@@ -327,7 +328,7 @@
 
 
 
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按種族和族裔群體來源數據分類的病例佔人口百分比和每10萬人的患病率</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按種族和族裔群體來源數據分類的病例數、死亡數及檢測數佔人口百分比和每10萬人的患病率、死亡率及檢測率</a></p>
 
 
 
@@ -354,7 +355,11 @@
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">健康公平指標源數據</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">所示數據為7日平均檢測呈陽性率，有7天的滯後期。所示數據為截至的7日週期數據。健康公平四分位數檢測呈陽性率，是指縣內健康地方指數人口普查區的檢測呈陽性率為最低的25%。健康公平指標不適用於人口少於106,000的縣。</div></div></div></cagov-accordion></div></div>
 
 
 
@@ -367,6 +372,8 @@
       <ul class="small-text">
         <li data-label="title">加州按種族和族裔分類的報告</li>
         <li data-label="footnote">注：所示數據為總共30天的累計數據，更新於<span data-replacement="data-completeness-report-date"></span>。不會在檢測中收集性取向和性別認同資訊。為保護患者隱私，在1和10之間的數量不會顯示。</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按種族及族裔、性取向以及性別認同源數據報告</a></p></li>
+
         <li data-label="tab-label">由<span data-replace="metric-filter"></span>在<span data-replace="location"></span>報告</li>
         <li data-label="data-missing">數據缺失</li>
         <li data-label="data-reported">數據已上報</li>
@@ -388,7 +395,11 @@
         <li data-item="deaths">死亡數</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">增加感染及重症風險的因素</li>
     <li data-label="sectionDescription">住在擁擠的住房或乘坐公共交通工具的加州民眾，以及享有較少帶薪休假和其他員工保護措施的民眾有較高的COVID-19感染風險。健康問題社會決定因素，例如食物無保障、沒有醫療保險以及住房不穩定等，會增加預後不良的風險。這些健康問題社會決定因素通常是由結構性種族主義導致的。</li>
     <li data-label="chartTitleIncome">按年度家庭收入中位數範圍劃分的社區患病率</li>
@@ -401,6 +412,7 @@
     <li data-label="chartButtonHousing">擁擠的住房</li>
     <li data-label="chartButtonHealthcare">獲取醫療保險</li>
     <li data-label="footnote">注：數據來自美國社區調查，屬於全州性質。其並未反映個別縣的數據。所示數據為總共7天的累計數據，有7天的滯後期，更新於<span data-replacement="d3-bar-report-date"></span>。</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按收入、住房擁擠程度以及健康保險獲得機會源數據分類的社區患病率</a></p><li>
    <li data-label="casesPer100KPeople">每100K人中的病例數</li>
    <li data-label="statewideCaseRate">全州患病率：</li>
    <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例數。placeholderRateDiff30 自30天前以來的變化</li>

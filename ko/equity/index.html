@@ -235,6 +235,7 @@
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">사례 및 사망률 관련 원천 데이터</a></p>
                 <p class="chart-data-label">주의: 본 데이터는 2020년 1월에 첫 COVID-19 확진자가 보고된 이후의 누적 수치입니다. 사례율은 인구 1십만명 당 누적 COVID-19 사례 건수를 말합니다. 사망율은 인구 1십만명 당 COVID-19로 인한 누적 사망 건수를 말합니다.</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
@@ -327,7 +328,7 @@
 
 
 
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">인구 비중 대비 사례 건수 및 인종과 민족별 1십만명 당 사례 발생율 관련 원천 데이터</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">인구 비중 대비 사례 건수, 사망자수와 검사 건수 및 인종과 민족별 1십만명 당 사례, 사망자, 검사율 관련 원천 데이터</a></p>
 
 
 
@@ -354,11 +355,15 @@
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">차트 정보</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">건강 형평성 메트릭스 관련 원천 데이터</a></p>
 
 
 
-<h3 class="text-center mt-5" id="data-completeness">데이터의 완성도는 불형평성을 해결하는데 매우 중요합니다</h3>
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">차트 정보</div></button><div class="card-container" aria-hidden="true"><div class="card-body">표시되는 데이터는 이전 7일을 기준으로 한 7일 평균 양성 반응율입니다. 표시 데이터는 7일 기간의 마지막 날을 기준으로 합니다 . 건강 형평성 사분위수 양성 판정율은 카운티 내 건강한 장소 인덱스의 하위 25% 내 양성 판정율을 말합니다. 건강 형평성 메트릭은 인구수가 106,000명 미만인 카운티에는 적용되지 않습니다.</div></div></div></cagov-accordion></div></div>
+
+
+
+<h3 class="text-center mt-5" id="data-completeness">데이터의 완성도는 불형평성 문제에 대처하는데 매우 중요합니다</h3>
 
 
 
@@ -367,6 +372,8 @@
       <ul class="small-text">
         <li data-label="title">캘리포니아 내 인종 및 민족 별 보고 내용</li>
         <li data-label="footnote">주의: 표시되는 데이터는 30일 누적 합계이며 업데이트됩니다 <span data-replacement="data-completeness-report-date"></span>. 성적 취향 및 성 정체성은 검사에서 수집하지 않습니다. 환자의 개인 정보 보호를 위해 1과 10 사이의 숫자는 표시하지 않습니다.</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">인종과 민족, 성적 취향 및 성별 인식 관련 원천 데이터</a></p></li>
+
         <li data-label="tab-label">다음 사항<span data-replace="metric-filter"></span> 별<span data-replace="location"></span> 보고 내용</li>
         <li data-label="data-missing">누락 데이터</li>
         <li data-label="data-reported">보고일</li>
@@ -388,7 +395,11 @@
         <li data-item="deaths">사망</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">감염과 중증에 걸릴 위험도를 증가시키는 요인</li>
     <li data-label="sectionDescription">집단 주택 또는 대중 교통을 이용하거나 유급 휴가 사용이 제한적인 캘리포니아 주민들은 COVID-19에 감염될 위험이 더 높습니다. 불확실한 음식 확보 , 건강 보험 미비 및 불안정한 주택 상황 등의 사회적 건강 결정 요인으로 인해 좋지 못한 결과로 이어질 위험이 커질 수 있습니다. 이러한 건강 관련 사회적 결정 요인은 많은 경우 구조적인 인종별 차이에 기인합니다.</li>
     <li data-label="chartTitleIncome">중위 연간 세대 소득 구간 별 계층 사례율</li>
@@ -401,6 +412,7 @@
     <li data-label="chartButtonHousing">집단 주택</li>
     <li data-label="chartButtonHealthcare">건강 보험 접근성</li>
     <li data-label="footnote">주의: 데이터는 미국 지역 사회 설문 조사(American Community Survey)에서 제공하며 주 전역을 대상으로 합니다. 개별 카운티를 반영하지는 않습니다. 표시되는 데이터는 이전 7일을 기준으로 한 7일 누적 합계이며 업데이트됩니다 <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">소득, 과밀 주택 및 건강 보험 가입 여부 별 지역 사회 내 사례 발생률 관련 원천 데이터</a></p><li>
    <li data-label="casesPer100KPeople">100,000명 당 사례 건수</li>
    <li data-label="statewideCaseRate">주 전역에서의 사례율:</li>
    <li data-label="ariaBarLabel">100,000명 당 사례 건수 placeholderCaseRate. 30일 전 대비 증감 placeholderRateDiff30</li>
