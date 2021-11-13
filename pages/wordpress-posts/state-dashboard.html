@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-11-12T19:07:59Z"
+publishdate: "2021-11-13T00:30:42Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -82,6 +82,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
@@ -119,7 +120,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
-           <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+           <div>
+             <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+           </div>
+           <div>
+            <span class="text-300">(5+ with at least one dose)</span>
+           </div>
          </div>
          <!--Chart and Label -->
          <div class="mt-auto px-2">
@@ -144,7 +150,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
-           <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+           <div>
+             <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+           </div><div>&nbsp;</div>
          </div>
          <!--Chart and Label -->
          <div class="mt-auto px-2">
@@ -168,7 +176,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
-           <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
+           <div>
+             <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span><div>&nbsp;</div>
+          </div>
          </div>
 
          <!--Chart and Label -->
