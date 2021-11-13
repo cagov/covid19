@@ -119,7 +119,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
-           <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+           <div>
+             <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+           </div>
+           <div>
+            <span class="text-300">(5+ with at least one dose)</span>
+           </div>
          </div>
          <!--Chart and Label -->
          <div class="mt-auto px-2">
