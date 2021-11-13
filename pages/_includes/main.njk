@@ -153,7 +153,12 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> {{ translatedLabels.varOfPopulationVaccinated }}</span>
+									<div>
+										<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+									</div>
+									<div>
+										<span class="text-300">(5+ with at least one dose)</span>
+									</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -178,7 +183,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -202,7 +209,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 
 								<!--Chart and Label -->
