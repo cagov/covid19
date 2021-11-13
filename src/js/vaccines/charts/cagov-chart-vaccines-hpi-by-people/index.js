@@ -17,7 +17,7 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl:
-        // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
+        // https://data.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
         config.chartsVHPIDataLocPeople + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
