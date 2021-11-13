@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-11-12T19:07:59Z"
+publishdate: "2021-11-13T00:35:10Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -82,6 +82,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
 
 {%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
