@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "التزام ولاية كاليفورنيا بالعدالة الصحية"
 meta: "سلط كوفيد-19 الضوء على التفاوت الحالي في تقديم الرعاية الصحية. تقوم كاليفورنيا بتحديد المجتمعات الأكثر تأثرًا.⁦"
 author: "State of California"
-publishdate: "2021-11-03T21:07:13Z"
+publishdate: "2021-11-09T19:36:55Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -72,11 +72,12 @@ addtositemap: true
             
                 <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     يبلغ معدل الحالات للمجتمعات ذات الدخول المتوسطة < 40 ألف دولار أمريكي <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% أعلى من</span> كل أنحاء الولاية                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     يبلغ معدل الحالات للأسر ذات الدخول المتوسطة < 40 ألف دولار أمريكي <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% أعلى من</span> كل أنحاء الولاية                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     سجل معدل الحالات للمجتمعات ذات الدخول المتوسطة < 40 ألف دولار أمريكي المعدل ذاته المسجل في كل أنحاء الولاية                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
                     <p class="text-xs">الحالات لكل 100 ألف نسمة:</p>
-                    <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> الدخل < 40 دولار <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> جميع شرائح الدخل                     </p>
+                    <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> الدخل < 40 دولارًا <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> جميع شرائح الدخل                     </p>
                   </div>
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">البيانات المصدرية لمعدل حالات الإصابة والوفيات</a></p>
                 <p class="chart-data-label">ملاحظة: هذه البيانات تراكمية منذ الإبلاغ عن أول حالة إصابة بفيروس كوفيد-19 في يناير 2020. معدل الحالات يُقصد به الحالات التراكمية لكوفيد-19 لكل 100 ألف نسمة. وأما معدل الوفيات يُقصد به الوفيات التراكمية لكوفيد-19 لكل 100 ألف نسمة.</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
@@ -162,14 +163,14 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-total--deaths">لا تعرض البيانات لأن هناك أقل من 11 حالة وفاة في هذه المجموعة.</li>
             <li data-label="data-missing-applied-suppression-population--tests">لا تعرض البيانات لأن هناك أقل من 20.000 فردًا شخص في هذه المجموعة.</li>
             <li data-label="data-missing-applied-suppression-population--cases">لا تعرض البيانات لأن هناك أقل من 20.000 فردًا شخص في هذه المجموعة.</li>
-            <li data-label="data-missing-applied-suppression-population--deaths">لا تعرض البيانات لأن هناك أقل من 20.000 شخص في هذه المجموعة.</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">لا تُعرض البيانات لأن هناك أقل من 20000 شخص في هذه الفئة.</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
 
 
 
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">الحالات المتعلقة بالنسبة المئوية للسكان ومعدل حالات الإصابة لكل 100 ألف حسب البيانات المصدرية للمجموعات والجنس والعرق</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">حالات الإصابة والوفيات والاختبارات المتعلقة بالنسبة المئوية للسكان ومعدل حالات الإصابة والوفيات والاختبارات لكل 100 ألف حسب البيانات المصدرية للفئات العرقية والجنس</a></p>
 
 
 
@@ -196,7 +197,11 @@ addtositemap: true
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body"></div></div></div></cagov-accordion></div></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">البيانات المصدرية لمقياس العدالة الصحية</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">البيانات المعروضة هي متوسط 7 أيام لمعدل الحالات الإيجابية مع تأخر 7 أيام. البيانات المعروضة هي لحين انتهاء فترة 7 أيام. إيجابية الربع الإحصائي للعدالة الصحية يُقصد به معدل الحالات الإيجابية في أقل من 25% من مناطق التعداد لمؤشر الأماكن الصحية في المقاطعة. لا يستخدم مقياس العدالة الصحية في البلدان التي يقل سكانها عن 106.000 نسمة.</div></div></div></cagov-accordion></div></div>
 
 
 
@@ -208,7 +213,9 @@ addtositemap: true
     <div>
       <ul class="small-text">
         <li data-label="title">رفع التقارير على أساس الجنس والعرق في كاليفورنيا</li>
-        <li data-label="footnote">ملاحظة: البيانات المعروضة هي إجمالي تراكمي لمدة 30 يومًا ويتم تحديثها في <span data-replacement="data-completeness-report-date"></span>. لا يندرج ضمن الاختبارات التوجه الجنسي والهوية الجنسية لا تعرض الأعداد ما بين 1 إلى 10 لحماية خصوصية المرضى.</li>
+        <li data-label="footnote">ملاحظة: البيانات المعروضة هي إجمالي تراكمي لمدة 30 يومًا ويتم تحديثها في <span data-replacement="data-completeness-report-date"></span>. لا يندرج ضمن الاختبارات التوجه الجنسي والهوية الجنسية لا تُعرض الأعداد ما بين 1 إلى 10 لحماية خصوصية المرضى.</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">الإبلاغ حسب البيانات المصدرية للجنس والعرق والميل الجنسي والهوية الجنسانية</a></p></li>
+
         <li data-label="tab-label">رفع التقارير بحسب <span data-replace="metric-filter"></span> في <span data-replace="location"></span></li>
         <li data-label="data-missing">البيانات المفقودة</li>
         <li data-label="data-reported">البيانات المرفوع بها تقارير</li>
@@ -230,7 +237,11 @@ addtositemap: true
         <li data-item="deaths">الوفيات</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">العوامل التي تزيد من خطر العدوى والمرض الشديد</li>
     <li data-label="sectionDescription">تزيد احتمالية تعرض سكان كاليفورنيا لخطر الإصابة بكوفيد-19 حيث إنهم يعيشون في مساكن مزدحمة، ويستخدمون وسائل نقل مزدحمة، وتقل فرصة حصولهم على إجازة مدفوعة الأجر فضلًا عن وسائل حماية العمال. ويمكن للمحددات الاجتماعية للصحة، مثل انعدام الأمن الغذائي ونقص التأمين الصحي وانعدام الاستقرار السكني، أن تزيد من مخاطر النتائج السيئة. وغالبًا ما تكون هذه المحددات الاجتماعية للصحة ناجمة عن العنصرية الهيكلية.</li>
     <li data-label="chartTitleIncome">معدل الحالات في المجتمع بحسب شريحة متوسط الدخل السنوي للأسرة</li>
@@ -242,8 +253,9 @@ addtositemap: true
     <li data-label="chartButtonIncome">الدخل</li>
     <li data-label="chartButtonHousing">المساكن المزدحمة</li>
     <li data-label="chartButtonHealthcare">الحصول على التأمين الصحي</li>
-    <li data-label="footnote">ملاحظة: تأتي البيانات من استطلاع المجتمع الأمريكي، وتشمل جميع أرجاء الولاية. ولا تشير إلى مقاطعات فردية. البيانات المعروضة هي إجمالي تراكمي لمدة 7 أيام تأخير ويتم تحديثها في <span data-replacement="d3-bar-report-date"></span>.</li>
-   <li data-label="casesPer100KPeople">الحالات لكل 100 ألف نسمة</li>
+    <li data-label="footnote">ملاحظة: تأتي البيانات من استطلاع المجتمع الأمريكي، وتشمل جميع أرجاء الولاية. ولا تشير إلى مقاطعات فردية. البيانات المعروضة هي الإجمالي التراكمي لفترة 7 أيام تأخير ويتم تحديثها في <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">معدل حالات الإصابة داخل المجتمع حسب البيانات المصدرية للدخل والسكن المزدحم والحصول على التأمين الصحي</a></p><li>
+   <li data-label="casesPer100KPeople">حالات الإصابة لكل 100 ألف نسمة</li>
    <li data-label="statewideCaseRate">معدل الحالات على مستوى الولاية:</li>
    <li data-label="ariaBarLabel">حالات placeholderCaseRate لكل 100 ألف شخص. حدوث تغيير في placeholderRateDiff30 منذ 30 يومًا</li>
    <li data-label="tooltipCaption">حالات<span class="highlight-data">placeholderCaseRate</span> لكل 100 ألف شخص. حدوث تغيير في placeholderRateDiff30 منذ 30 يومًا</li>

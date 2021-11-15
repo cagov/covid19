@@ -143,7 +143,7 @@ formatNumber(tags,1)-%}
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
 						<!-- Blue Summary Box 1 -->						
-						<div class="col-md-3 px-10px">							
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varVaccinesAdministered }}</div>
 								<div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
@@ -153,7 +153,12 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> {{ translatedLabels.varOfPopulationVaccinated }}</span>
+									<div>
+										<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+									</div>
+									<div>
+										<span class="text-300">(5+ with at least one dose)</span>
+									</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -167,7 +172,7 @@ formatNumber(tags,1)-%}
 						</div>
 
 						<!-- Blue Summary Box 2 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalCases }}</div>
 
@@ -178,7 +183,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -191,7 +198,7 @@ formatNumber(tags,1)-%}
 							</div>
 						</div>
 						<!-- Blue Summary Box 3 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalDeaths }}</div>
 
@@ -202,7 +209,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 
 								<!--Chart and Label -->
@@ -216,7 +225,7 @@ formatNumber(tags,1)-%}
 							</div>
 						</div>
 						<!-- Blue Summary Box 4 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTestsReported }}</div>
 								<div id="total-tests-number" class="text-white font-size-1-2em mb-2">
