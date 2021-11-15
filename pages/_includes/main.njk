@@ -34,6 +34,7 @@ formatNumber(tags,1)-%}
 {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
 {%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 
+
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
@@ -252,7 +253,7 @@ formatNumber(tags,1)-%}
 
 				
 				<div class="text-sm text-center text-300 ptop-24px">
-							{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="/state-dashboard/">{{translatedLabels.varStateDashboard}}</a>.
+							{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">{{translatedLabels.varStateDashboard}}</a>.
 				</div>
 						
 				<div class="hero-stats-footer">
@@ -267,7 +268,7 @@ formatNumber(tags,1)-%}
 </svg></span><span class="ml-2">{{translatedLabels.varStateSummary}}</span></a>
 
 
-						<a class="hero-stats-footer-link mt-2" href="/vaccination-progress-data">
+						<a class="hero-stats-footer-link mt-2" href="{{ "vaccination-progress-data/"  | toTranslatedPath(tags) }}">
 						<span class="no-underline " aria-hidden="true">
 
 						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
