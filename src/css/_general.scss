@@ -2581,3 +2581,14 @@ ul.small-text {
   padding:2.5rem;
   color: $white !important;
 }
+
+// Remove the appearance of a border on hr#more. 
+#more {
+  border-top: 0;
+  height: 0;
+}
+
+// Eleminate white space from empty <p> created by WordPress. 
+main > .container > .row > .col-lg-10 > p:last-of-type:empty {
+  margin: 0;
+}
