@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình đại dịch COVID-19 tại California"
 meta: "Dữ liệu của quận và toàn tiểu bang để giúp mọi người hiểu rõ tốc độ lây lan của đại dịch COVID-19."
 author: "State of California"
-publishdate: "2021-11-12T19:07:59Z"
+publishdate: "2021-11-15T23:08:38Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -92,36 +92,43 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <h2 class="text-center color-purple">Cập nhật cho {{_varStatDate_}}</h2>
         <div class="text-center">Cho đến nay, California đã xác nhận tổng số {{_varStatTotalCases_}} ca mắc và {{_varStatTotalDeaths_}} ca tử vong do bệnh COVID-19.</div>
       </div>
-    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
+    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Đã Tiêm Vắc-xin</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>            </div>
+           <div>             <span class="text-300">(từ 5 tuổi trở lên với ít nhất một liều)</span>            </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">8 tuần qua</span>            </div>
+           <div class="text-white text-xs mt-1">              <span class="text-300">Trong 8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
+     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Ca Mắc</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">số ca mới (trên 100 nghìn người)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">số ca mới (trên 100 nghìn người)</span>            </div><div> </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
+     </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Ca Tử Vong</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">số ca tử vong mới (trên 100 nghìn người)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">số ca tử vong mới (trên 100 nghìn người)</span>            </div><div> </div>
+         </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
+     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Xét Nghiệm</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
