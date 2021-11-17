@@ -4,8 +4,12 @@ let labelMap = new Map();
 labelMap.set("below $40K","0 - $40K");
 labelMap.set("above $120K","$120K+");
 
-function fixRangeHyphens(label) {
-  return label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
+function fixRangeHyphensAndCapitalizeK(label) {
+  let lab = label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
+  if (lab.endsWith("k")) {
+    lab = lab.toUpperCase();
+  }
+  return lab;
 }
 
 function writeXAxis(component, data, height, margin, x) {
@@ -13,9 +17,9 @@ function writeXAxis(component, data, height, margin, x) {
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
-        return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
+        return fixRangeHyphensAndCapitalizeK(labelMap.get(data[i].SOCIAL_TIER));
       } else {
-        return fixRangeHyphens(data[i].SOCIAL_TIER);
+        return fixRangeHyphensAndCapitalizeK(data[i].SOCIAL_TIER);
       }
     }).tickSize(0))
     .call(g => g.select(".domain").remove());
