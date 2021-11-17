@@ -18,11 +18,11 @@ function getSnowflakeStyleDateJS(date) {
 }
 
 module.exports = function() {
-  let dataDomain = 'https://files.covid19.ca.gov/data/reviewed/';
+  let dataDomain = 'https://data.covid19.ca.gov/data/reviewed/';
   // console.log(dataDomain+'equitydash/equitytopboxdatav2.json');
 
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
-    dataDomain = 'https://files.covid19.ca.gov/data/to-review/';
+    dataDomain = 'https://data.covid19.ca.gov/data/to-review/';
   }
   return new Promise((resolve, reject) => {
     fetch(dataDomain+'equitydash/equitytopboxdatav2.json')
