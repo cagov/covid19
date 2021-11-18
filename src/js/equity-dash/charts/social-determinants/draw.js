@@ -1,14 +1,15 @@
 import formatValue from "./../../../common/value-formatters.js";
 
 let labelMap = new Map();
-labelMap.set("below $40K","0 - $40K");
+labelMap.set("below $40K","$0 - $40K");
+labelMap.set("$40k - $60k","$40K - $60K")
+labelMap.set("$60k - $80k","$60K - $80K")
+labelMap.set("$80k - $100k","$80K - $100K")
+labelMap.set("$100k - $120k","$100K - $120K")
 labelMap.set("above $120K","$120K+");
 
-function fixRangeHyphensAndCapitalizeK(label) {
+function fixRangeHyphens(label) {
   let lab = label.replace(" - ","–"); // use n-dashes instead of space-hyphen-space
-  if (lab.endsWith("k")) {
-    lab = lab.toUpperCase();
-  }
   return lab;
 }
 
@@ -17,9 +18,9 @@ function writeXAxis(component, data, height, margin, x) {
     .attr("transform", `translate(0,${height - (margin.bottom - 5)})`)
     .call(d3.axisBottom(x).tickFormat(i => {
       if(labelMap.get(data[i].SOCIAL_TIER)) {
-        return fixRangeHyphensAndCapitalizeK(labelMap.get(data[i].SOCIAL_TIER));
+        return fixRangeHyphens(labelMap.get(data[i].SOCIAL_TIER));
       } else {
-        return fixRangeHyphensAndCapitalizeK(data[i].SOCIAL_TIER);
+        return fixRangeHyphens(data[i].SOCIAL_TIER);
       }
     }).tickSize(0))
     .call(g => g.select(".domain").remove());
