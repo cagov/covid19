@@ -98,6 +98,46 @@ function getFormatter(max_v,{hint='num',digits=0})
   }
 }
 
+// https://stackoverflow.com/questions/68918152/svg-legend-for-multi-line-chart-d3-v6
+
+function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
+{
+  let legend = svg.append("g")
+          .attr('id','variant-lgend')
+          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;');
+
+  let cells = [];
+  let xPos = 0;
+  let lineWidth = 10;
+  let lineMargin = 6;
+
+  labels.forEach((label, i) => {
+    console.log("Drawing label", label);
+    let lg = legend.append("g")
+                .attr('id', 'legend_'+i)
+                .attr('transform', `translate(${xPos})`);
+    let line = lg.append('line')
+      .attr('style',`stroke-width: 2px; stroke:${colors[i]};`)  // 
+      .attr('x1', 0)
+      .attr('y1', 22)
+      .attr('x2', lineWidth)
+      .attr('y2', 22);
+
+    let txt = lg.append('text')
+      .text(label)
+      .attr("y", 24)
+      .attr("x", lineWidth+lineMargin)
+      ;
+
+    let box = document.querySelector('#variant-lgend #legend_'+i);
+    xPos += box.getBBox().width + 16;
+
+  });
+  let legEl = document.querySelector('#variant-lgend');
+  let legWidth = legEl.getBBox().width;
+  legend.attr('transform',`translate(${this.dimensions.width - legWidth})`);
+}
+
 function writeYAxis(svg, x, y, 
                         { y_fmt='num',
                           root_id='barid' }) {
@@ -222,6 +262,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     root_id = "variantchart",
     //              alpha      beta      delta     gamma      lambda     mu        other
     series_colors = ['#181b4a','#641c4f','#c32b3e','#ff592a','#ffb026','#ffd800','#d3d3d3'],
+    series_labels = ["Alpha", "Beta", "Delta", "Gamma", "Lambda", "Mu", "Other"],
     chart_options = {},
    } )  {
 
@@ -245,28 +286,6 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.chartBreakpointValues.width,
         this.chartBreakpointValues.height,
       ]);
-
-
-  // const patternSuffixes = ['1'];
-  //     this.svg.append("defs")
-  //       .selectAll("pattern")
-  //       .data(patternSuffixes)
-  //       .join("pattern")
-  //        .attr("id",d => root_id+'hatch'+d)
-  //        .attr("patternUnits","userSpaceOnUse")
-  //        .attr("style","stroke:#0AF; stroke-width:2")
-  //        .attr("x",0)
-  //        .attr("x",0)
-  //        .attr("width",3.75)
-  //        .attr("height",3.75)
-  //        .attr('patternTransform',"rotate(45 0 0)")
-  //        .append('line')
-  //         .attr('x1',0)
-  //         .attr('y1',0)
-  //         .attr('x2',0)
-  //         .attr('y2',10);
-  //     ;
-          
 
      this.svg.append("g")
            .attr("transform", "translate(0,0)")
@@ -305,6 +324,11 @@ function getAxisDiv(ascale,{hint='num'}) {
           crop_floor:false, color:series_colors[i], chart_options:chart_options});
     });
 
+    writeLegend.call(this, this.svg, this.xline, this.yline, 
+                {colors:series_colors, 
+                 labels:series_labels, 
+                 chart_options:chart_options});
+
     
     // if (pending_weeks > 0) {
     //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
@@ -324,8 +348,6 @@ function getAxisDiv(ascale,{hint='num'}) {
     console.log("Writing X Axis");
     writeXAxis.call(this, this.svg, line_series_array[0], x_axis_field, this.xline, this.yline,
       {week_modulo: 1, root_id:root_id} );
-
-    // writeLegends.call(this, this.svg, chartdata, series_legends, series_colors, this.xline, this.yline);
 
     if (extras_func) {
       extras_func.call(this, this.svg);
