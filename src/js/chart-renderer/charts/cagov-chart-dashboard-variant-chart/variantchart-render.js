@@ -112,7 +112,7 @@ function writeYAxis(svg, x, y,
   const tick_gap = 10;
   let myFormatter = getFormatter(max_y_domain, { hint:y_fmt });
   for (let yi = 0; yi <= max_y_domain; yi += y_div) {
-    let y_caption = myFormatter(yi);
+    let y_caption = myFormatter(yi) + '%';
     let subg = ygroup.append("g")
       .attr('class','y-tick');
 
@@ -220,8 +220,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     published_date = "YYYY-MM-DD",
     render_date = "YYYY-MM-DD",
     root_id = "variantchart",
-    //              alpha      beta      delta     lambda     gamma mu other
-    series_colors = ['#4173b3','#b6423f','#8eb04a','#715696','#3ea0bd','#f48737','#d8d8d8'],
+    //              alpha      beta      delta     gamma      lambda     mu        other
+    series_colors = ['#181b4a','#641c4f','#c32b3e','#ff592a','#ffb026','#ffd800','#d3d3d3'],
     chart_options = {},
    } )  {
 
