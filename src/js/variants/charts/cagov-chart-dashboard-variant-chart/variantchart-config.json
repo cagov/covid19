@@ -1,0 +1,58 @@
+
+{
+    "variants": {
+      "chart": {
+        "chart_style": "normal",
+        "stroke_width": 2, 
+        "root_id": "variants-seq",
+        "x_axis_field":"DATE",
+        "series_colors":["#181b4a","#641c4f","#c32b3e","#ff592a","#ffb026","#ffd800","#d3d3d3"],
+        "starting_date":"2021-2-1",
+        "uncertainty_days": 1
+      }
+    },
+    "desktop": {
+      "fontSize": 14,
+      "width": 615,    
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "tablet": {
+      "fontSize": 14,
+      "width": 400,     
+      "height": 300,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "mobile": {
+      "fontSize": 12,
+      "width": 400,     
+      "height": 300,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "retina": {
+      "fontSize": 12,
+      "width": 400,     
+      "height": 300,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 2,  
+        "bottom": 45
+      }
+    }
+  }
