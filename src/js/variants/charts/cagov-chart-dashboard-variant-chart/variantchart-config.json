@@ -2,21 +2,13 @@
 {
     "variants": {
       "chart": {
-        "chartName": "cagov-chart-dashboard-sparkline",
         "chart_style": "normal",
-        "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
-        "comment_avg": "The below average field is unused",
-        "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
-        "dataUrl": "confirmed-cases/california.json",
-        "dataPathVar": "chartsStateDashTablesLoc",
-        "rootId": "cases-ep",
+        "stroke_width": 2, 
+        "root_id": "variants-seq",
         "x_axis_field":"DATE",
-        "uncertainty_days_override": 0,
-        "uncertainty_latest_field": "CONFIRMED_CASES",
-        "uncertainty_date_field": "EPISODE_UNCERTAINTY_PERIOD",
-        "bar_color":"#00183f",
-        "line_color":"#92c5de",
-        "stroke_width":2
+        "series_colors":["#181b4a","#641c4f","#c32b3e","#ff592a","#ffb026","#ffd800","#d3d3d3"],
+        "starting_date":"2021-2-1",
+        "uncertainty_days": 1
       }
     },
     "desktop": {

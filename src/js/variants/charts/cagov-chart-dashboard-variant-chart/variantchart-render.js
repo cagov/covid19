@@ -1,4 +1,5 @@
 // generic histogram chart, as used on top of state dashboard
+import { parseSnowflakeDate} from "../../../common/readable-date.js";
 
 function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',line_idx=1, color='black', crop_floor=true,chart_options=null }) {
   let max_y_domain = y.domain()[1];
@@ -43,15 +44,15 @@ function writeXAxis(svg, data, date_fld, x, y,
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
       
-    if (i == 0 || i == data.length-1) {
+    if (day_idx == 15) {
+      const middate = parseSnowflakeDate(d[date_fld]);
+      const monthStr = middate.toLocaleString('default', { month: 'short' });
       let subg = xgroup.append("g")
         .attr('class','x-tick');
-      console.log("WRITING DATES");
-      const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
-      let text_anchor = (i == 0)? 'start' : 'end';
+      let text_anchor = 'middle';
       subg.append('text')
-        .text(date_caption)
-        .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
+        .text(monthStr)
+        .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:middle; dominant-baseline:hanging;')
         .attr("x", x(i))
         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
     }
@@ -104,7 +105,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
 {
   let legend = svg.append("g")
           .attr('id','variant-lgend')
-          .attr('style','stroke-width: 2px; font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;');
+          .attr('style','stroke-width: ' + chart_options.stroke_width+"px;" + 'font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;');
 
   let cells = [];
   let xPos = 0;
@@ -143,7 +144,8 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
 
 function writeYAxis(svg, x, y, 
                         { y_fmt='num',
-                          root_id='barid' }) {
+                          root_id='barid',
+                          y_axis_legend='' }) {
   const y_div = getAxisDiv(y,{'hint':y_fmt});
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis');
@@ -172,6 +174,16 @@ function writeYAxis(svg, x, y,
       .attr("x", x(min_x_domain)-tick_gap)
       .attr("y", y(yi)) // +this.getYOffset(i)
   }
+  // y-axis-legend
+  let yLegendG = svg.append("g");
+  y_axis_legend.split('<br>').forEach((legend_line, yi) => {
+    yLegendG.append('text')
+      .text(legend_line)
+      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;')
+      .attr("x",0)
+      .attr("y",12+12*yi);
+  });
+
 }
 
 
@@ -256,16 +268,17 @@ function getAxisDiv(ascale,{hint='num'}) {
  export default function renderChart({
     chart_style = 'normal',
     line_series_array = [],
-    chart_labels = [],
     y_fmt = 'number',
     x_axis_field = null,
+    y_axis_legend = '',
     extras_func = null,
     published_date = "YYYY-MM-DD",
     render_date = "YYYY-MM-DD",
     root_id = "variantchart",
+    // ['#181b4a','#641c4f','#c32b3e','#ff592a','#ffb026','#ffd800','#d3d3d3'],
+    series_colors = [], 
     //              alpha      beta      delta     gamma      lambda     mu        other
-    series_colors = ['#181b4a','#641c4f','#c32b3e','#ff592a','#ffb026','#ffd800','#d3d3d3'],
-    series_labels = ["Alpha", "Beta", "Delta", "Gamma", "Lambda", "Mu", "Other"],
+    series_labels = [],
     chart_options = {},
    } )  {
 
@@ -346,7 +359,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     // Write Y Axis, favoring line on left, bars on right
     console.log("Writing Y Axis");
     writeYAxis.call(this, this.svg, this.xline, this.yline,
-         {y_fmt:y_fmt, root_id:root_id});
+         {y_fmt:y_fmt, root_id:root_id, y_axis_legend: y_axis_legend});
 
     console.log("Writing X Axis");
     writeXAxis.call(this, this.svg, line_series_array[0], x_axis_field, this.xline, this.yline,
