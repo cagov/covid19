@@ -84,17 +84,21 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
         line_series_array.push(line_series);
     });
 
+    console.log("Rendering variants chart",this.translationsObj);
+
     let renderOptions = {
                           'chart_style':this.chartOptions.chart_style,
                           'extras_func':this.renderExtras,
-                          'chart_labels':this.chartlabels,
                           'line_series_array':line_series_array,
                           'x_axis_field':this.chartOptions.x_axis_field,
+                          'y_axis_legend':this.translationsObj.y_axis_legend,
                           'y_fmt':'number',
-                          'root_id':this.chartOptions.rootId,
+                          'root_id':this.chartOptions.root_id,
                           'published_date': getSnowflakeStyleDate(0),
                           'render_date': getSnowflakeStyleDate(0),
                           'chart_options': this.chartOptions,
+                          'series_labels': this.chartlabels,
+                          'series_colors': this.chartOptions.series_colors,
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
       renderChart.call(this, renderOptions);
@@ -103,6 +107,22 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   retrieveData(url) {
       this.chartdata = vchart_vdata;
       this.chartlabels = vchart_variants;
+
+      let nbr_to_chop = 0;
+      this.chartdata.forEach((rec, i) => {
+        if (rec[0] == this.chartOptions.starting_date) {
+          nbr_to_chop = i+1;
+        }
+      });
+
+      if (nbr_to_chop) {
+        this.chartdata.splice(0,nbr_to_chop);
+      }
+      if (this.chartOptions.uncertainty_days) {
+        this.chartdata.splice(this.chartdata.length-this.chartOptions.uncertainty_days,this.chartOptions.uncertainty_days); 
+      }
+
+
       this.renderComponent();
 
 //     window
