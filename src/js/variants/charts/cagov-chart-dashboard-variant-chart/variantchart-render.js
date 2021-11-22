@@ -104,20 +104,22 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
 {
   let legend = svg.append("g")
           .attr('id','variant-lgend')
-          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;');
+          .attr('style','stroke-width: 2px; font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;');
 
   let cells = [];
   let xPos = 0;
   let lineWidth = 10;
   let lineMargin = 6;
+  let legendGap = 12;
+
 
   labels.forEach((label, i) => {
-    console.log("Drawing label", label);
+    // console.log("Drawing label", label);
     let lg = legend.append("g")
                 .attr('id', 'legend_'+i)
                 .attr('transform', `translate(${xPos})`);
     let line = lg.append('line')
-      .attr('style',`stroke-width: 2px; stroke:${colors[i]};`)  // 
+      .attr('style',`stroke:${colors[i]};`)  // 
       .attr('x1', 0)
       .attr('y1', 22)
       .attr('x2', lineWidth)
@@ -130,9 +132,10 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       ;
 
     let box = document.querySelector('#variant-lgend #legend_'+i);
-    xPos += box.getBBox().width + 16;
+    xPos += box.getBBox().width + legendGap;
 
   });
+  // Right-justify the whole thing...
   let legEl = document.querySelector('#variant-lgend');
   let legWidth = legEl.getBBox().width;
   legend.attr('transform',`translate(${this.dimensions.width - legWidth})`);
