@@ -295,7 +295,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     chart_options = {},
    } )  {
 
-    console.log("renderChart",root_id, line_series_array[0][line_series_array[0].length-1]);
+    console.log("renderChart",root_id);
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
 
@@ -342,9 +342,6 @@ function getAxisDiv(ascale,{hint='num'}) {
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
     // pad to 28 days
     let padDays = Math.max(0, 28 - lastDateJ.getDate());
-
-    console.log("Last Date",lastDateSnowFlake);
-    console.log("Pad Days",padDays);
 
     this.xline = d3
     .scaleLinear()
