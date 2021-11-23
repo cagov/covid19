@@ -43,18 +43,31 @@ function writeXAxis(svg, data, date_fld, x, y,
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
-      
+    if (day_idx == 1) {
+      let subj = xgroup.append("g")
+        .append('line')
+        .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
+        .attr('x1', x(i))
+        .attr('y1', y(0))
+        .attr('x2', x(i))
+        .attr('y2', y(0)+10);
+
+        if (x(i) < this.dimensions.width-40)
+        {
+          const sdate = parseSnowflakeDate(d[date_fld]);
+          const monthStr = sdate.toLocaleString('default', { month: 'short' });
+          let subg = xgroup.append("g")
+            .attr('class','x-tick');
+          let text_anchor = 'middle';
+          subg.append('text')
+            .text(monthStr)
+            .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+            .attr("x", x(i))
+            .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+        }
+  
+    }
     if (day_idx == 15) {
-      const middate = parseSnowflakeDate(d[date_fld]);
-      const monthStr = middate.toLocaleString('default', { month: 'short' });
-      let subg = xgroup.append("g")
-        .attr('class','x-tick');
-      let text_anchor = 'middle';
-      subg.append('text')
-        .text(monthStr)
-        .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:middle; dominant-baseline:hanging;')
-        .attr("x", x(i))
-        .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
     }
   });
   console.log("writeXAxis C");
@@ -139,7 +152,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   // Right-justify the whole thing...
   let legEl = document.querySelector('#variant-lgend');
   let legWidth = legEl.getBBox().width;
-  legend.attr('transform',`translate(${this.dimensions.width - legWidth})`);
+  legend.attr('transform',`translate(${this.dimensions.width - this.dimensions.margin.right - legWidth})`);
 }
 
 function writeYAxis(svg, x, y, 
