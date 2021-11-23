@@ -27,8 +27,11 @@ addtositemap: true
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
-{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
+{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
+{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
+{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
+
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
@@ -48,7 +51,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
+
 {%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
 data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
 {%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
@@ -94,7 +97,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
   <div class="container py-2">
     <div class="row pb-4">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">Update for {{_varStatDate_}}</h2>
+        <h2 class="text-center color-purple">Update for {{_varStatDateNoTime_}}</h2>
         <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
           and {{_varStatTotalDeaths_}} deaths.</div>
       </div>
@@ -211,7 +214,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
-        <p class="small-text">Updated {{_varStatDate_}}, with data from {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text">Updated {{_varStatDateAccurate_}}, with data from {{_varStatDateYesterday_}}.</p>
         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">

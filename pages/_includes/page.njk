@@ -49,11 +49,11 @@
               {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif (page | engSlug).includes("state-dashboard") -%}
-                {{ (stateDashboardUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) }}
+                {{ (stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "vaccination-progress-data" -%}
-                {{ (stateDashboardUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) }}
+                {{ (stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ (equityDashboardUpdateTime.PUBLISH_DATE) | formatDate2(true,tags, 0) }}
+                {{ (equityDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags, 0) }}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}
