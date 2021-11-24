@@ -5,8 +5,10 @@ import getScreenResizeCharts from "../../../common/get-window-size.js";
 import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './variantchart-config.json';
 import renderChart from "./variantchart-render.js";
-import { getSnowflakeStyleDate } from "../../../common/readable-date.js";
+import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
 import { vchart_variants, vchart_vdata } from "./variantchart-data.js";
+import formatValue from "./../../../common/value-formatters.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 // cagov-chart-dashboard-positivity-rate
 class CAGovDashboardVariantChart extends window.HTMLElement {
@@ -64,6 +66,19 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   renderExtras(svg, data, x, y) {
   }
 
+  getTooltipContent(di) {    
+    const repDict = {
+       WEEKDATE:   reformatReadableDate(this.line_series_array[0][di].DATE),
+    }
+    this.chartlabels.forEach(  (lab, i) => {
+      repDict['LABEL_'+i] = lab;
+      repDict['VALUE_'+i] = formatValue(this.line_series_array[i][di].VALUE/100.0,{format:'percent'});
+    });
+    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    return caption;
+  }
+
+
   renderComponent() {
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
@@ -83,8 +98,9 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
         });
         line_series_array.push(line_series);
     });
+    this.line_series_array = line_series_array;
 
-    console.log("Rendering variants chart",this.translationsObj);
+    console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
     let renderOptions = {
                           'chart_style':this.chartOptions.chart_style,
