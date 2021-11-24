@@ -1,111 +1,13 @@
-/***
-cagov-chart-dashboard-variant-chart {
-  .chart-title {
-    font-weight: 300;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-  .chart-title.noborder {
-    border:none;
-    margin-bottom: 2rem;
-  }
-}
-
 #variant-chart {
-  max-width: 615px;
-  .svg-holder {
-    g.date-axis {
-      line {
-        stroke-width: 0.5px;
-        stroke: black;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.85rem;
-        fill: black;
-      }
-      text {
-        text-anchor: middle;
-        dominant-baseline: hanging;
-      }
-      text.x-axis-legend {
-        font-weight: 300;
-        text-anchor: end;
-        dominant-baseline: middle;
-      }
-    }
-    g.left-y-axis {
-      line {
-        stroke-width: 0.5px;
-        stroke: black;
-        opacity: 0.15;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.85rem;
-        fill: black;
-      }
-      text {
-        text-anchor: end;
-        dominant-baseline: middle;
-      }
-      text.left-y-axis-legend {
-        font-weight: 300;
-        font-size: 0.85rem;
-        text-anchor: start;
-        dominant-baseline: hanging;
-      }
-    }
-    g.tt-marker {
-      fill: black;
-      opacity: 0.15;
-    }
-    
-    g.pending-block-postvax {
-      rect {
-        // fill: url(#diagonal-stripe-1) #F00;
-        opacity: 0.4;
-      }
-      text {
-        font-weight: 300;
-        font-size: 0.85rem;
-        fill: black;
-      }
-      text {
-        text-anchor: end;
-        dominant-baseline: auto;
-      }
-    }
-  }
-  .y-axis-title {
-    font-weight: 300;
-    font-size: 0.85rem;
-  }
-  span.chart-legend {
-    float:right;
-  }
-  svg.legend-line {
-    width:24px;
-    height:15px;
-  }
-  svg.legend-line path {
-    stroke-width: 3;
-  }
-  svg.series2-legend-line path {
-    stroke: #dc4567;
-  }
-  svg.series1-legend-line path {
-    stroke: #1f2574;
-  }
-  svg.series3-legend-line path {
-    stroke: #cccccc;
-  }
   div.tooltip-container {
     font-weight: 300;
     font-size: 0.75rem;
-    line-height: 2;
     color: black;
-    text-align: center;
+    text-align: left;
+  }
+
+  div.tooltip-container td.tt-value {
+    font-weight: 600;
   }
 
   .tooltip-container {
@@ -122,27 +24,13 @@ cagov-chart-dashboard-variant-chart {
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);
     border: none;
   }
-  .pending-caveat {
-    font-style:italic;
-  }
-
-  a.dlbutton {
-    border-radius: 3px;
-    background-color: aqua;
-    color: blue;
-    font-weight: 300;
-    font-size: 0.5rem;
+  g.tt-marker {
+    fill: black;
+    opacity: 0.15;
   }
 }
-
-.diagonal-stripe-1 { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg=="); background-repeat: repeat; }
 
 .d-hide {
   display: none;
 }
 
-div.chart-prev-div {
-  width:700px;
-  margin-bottom:2rem;
-}
-***/
