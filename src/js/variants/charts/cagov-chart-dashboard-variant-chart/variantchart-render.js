@@ -213,15 +213,19 @@ function getDataIndexByX(xScale, yScale, xy)
   return null;
 }
 
+function getTooltipContent(dataIndex) {
+
+}
+
 function showTooltip(event, xy, dataIndex, xscale, yscale)
 {
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
+  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX+20)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(event.offsetY+120)}px`);
+  tooltip.style("top",`${(event.offsetY+20)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
@@ -324,8 +328,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     this.tooltip = d3
       .select(this.chartOptions.chartName)
       .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
+        .attr("class", "tooltip-container")
+        .text("Empty Tooltip");
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
     // console.log("Chart data",chartdata);
@@ -388,19 +392,19 @@ function getAxisDiv(ascale,{hint='num'}) {
       extras_func.call(this, this.svg);
     }
 
-    // this.svg
-    // .on("mousemove focus", (event) => {
-    //   let xy = d3.pointer(event);
-    //   let dIndex = getDataIndexByX(this.xline, this.yline, xy);
-    //   if (dIndex != null) {
-    //     showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
-    //   } else {
-    //     hideTooltip.call(this);
-    //   }
-    // })
-    // .on("mouseleave touchend blur", (event) => {
-    //   hideTooltip.call(this);
-    // });
+    this.svg
+    .on("mousemove focus", (event) => {
+       let xy = d3.pointer(event);
+       let dIndex = getDataIndexByX(this.xline, this.yline, xy);
+       if (dIndex != null) {
+         showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
+       } else {
+         hideTooltip.call(this);
+       }
+     })
+     .on("mouseleave touchend blur", (event) => {
+       hideTooltip.call(this);
+    });
 
 
   }
