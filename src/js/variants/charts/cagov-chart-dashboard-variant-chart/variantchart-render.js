@@ -43,18 +43,31 @@ function writeXAxis(svg, data, date_fld, x, y,
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
-      
+    if (day_idx == 1) {
+      let subj = xgroup.append("g")
+        .append('line')
+        .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
+        .attr('x1', x(i))
+        .attr('y1', y(0))
+        .attr('x2', x(i))
+        .attr('y2', y(0)+10);
+
+        if (x(i) < this.dimensions.width-40)
+        {
+          const sdate = parseSnowflakeDate(d[date_fld]);
+          const monthStr = sdate.toLocaleString('default', { month: 'short' });
+          let subg = xgroup.append("g")
+            .attr('class','x-tick');
+          let text_anchor = 'middle';
+          subg.append('text')
+            .text(monthStr)
+            .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+            .attr("x", x(i))
+            .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+        }
+  
+    }
     if (day_idx == 15) {
-      const middate = parseSnowflakeDate(d[date_fld]);
-      const monthStr = middate.toLocaleString('default', { month: 'short' });
-      let subg = xgroup.append("g")
-        .attr('class','x-tick');
-      let text_anchor = 'middle';
-      subg.append('text')
-        .text(monthStr)
-        .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:middle; dominant-baseline:hanging;')
-        .attr("x", x(i))
-        .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
     }
   });
   console.log("writeXAxis C");
@@ -139,7 +152,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   // Right-justify the whole thing...
   let legEl = document.querySelector('#variant-lgend');
   let legWidth = legEl.getBBox().width;
-  legend.attr('transform',`translate(${this.dimensions.width - legWidth})`);
+  legend.attr('transform',`translate(${this.dimensions.width - this.dimensions.margin.right - legWidth})`);
 }
 
 function writeYAxis(svg, x, y, 
@@ -200,15 +213,19 @@ function getDataIndexByX(xScale, yScale, xy)
   return null;
 }
 
+function getTooltipContent(dataIndex) {
+
+}
+
 function showTooltip(event, xy, dataIndex, xscale, yscale)
 {
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
   tooltip.html(content);
-  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX)}px`);
+  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX+20)}px`);
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
-  tooltip.style("top",`${(event.offsetY+120)}px`);
+  tooltip.style("top",`${(event.offsetY+20)}px`);
   // d3.select(this).transition();
   tooltip.style("visibility", "visible");
   // console.log("TOOLTIP",content,this.tooltip);
@@ -311,8 +328,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     this.tooltip = d3
       .select(this.chartOptions.chartName)
       .append("div")
-      .attr("class", "tooltip-container")
-      .text("Empty Tooltip");
+        .attr("class", "tooltip-container")
+        .text("Empty Tooltip");
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
     // console.log("Chart data",chartdata);
@@ -323,10 +340,16 @@ function getAxisDiv(ascale,{hint='num'}) {
     .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
     .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
 
-    const LINE_OFFSET_X = 0;
+
+    // Determine additional days to add...
+    const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
+    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
+    // pad to 28 days
+    let padDays = Math.max(0, 28 - lastDateJ.getDate());
+
     this.xline = d3
     .scaleLinear()
-    .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+line_series_array[0].length-1])
+    .domain([0,padDays + line_series_array[0].length-1])
     .range([
         this.dimensions.margin.left,
         this.dimensions.width - this.dimensions.margin.right
@@ -369,19 +392,19 @@ function getAxisDiv(ascale,{hint='num'}) {
       extras_func.call(this, this.svg);
     }
 
-    // this.svg
-    // .on("mousemove focus", (event) => {
-    //   let xy = d3.pointer(event);
-    //   let dIndex = getDataIndexByX(this.xline, this.yline, xy);
-    //   if (dIndex != null) {
-    //     showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
-    //   } else {
-    //     hideTooltip.call(this);
-    //   }
-    // })
-    // .on("mouseleave touchend blur", (event) => {
-    //   hideTooltip.call(this);
-    // });
+    this.svg
+    .on("mousemove focus", (event) => {
+       let xy = d3.pointer(event);
+       let dIndex = getDataIndexByX(this.xline, this.yline, xy);
+       if (dIndex != null) {
+         showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
+       } else {
+         hideTooltip.call(this);
+       }
+     })
+     .on("mouseleave touchend blur", (event) => {
+       hideTooltip.call(this);
+    });
 
 
   }
