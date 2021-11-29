@@ -145,7 +145,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
   }
 
   cropData(timeRange) {
-    console.log("Cropping data",timeRange);
     const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
     const daysToKeepAry = [-1,31*6,90];
     const daysToKeep = daysToKeepAry[timeRange];
@@ -236,7 +235,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     timeElement.addEventListener(
       "timerange-selected",
       function (e) {
-        console.log("Got Timerange Click for Chart",e);
         this.timerange = e.detail.timerange;
         let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
         let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
