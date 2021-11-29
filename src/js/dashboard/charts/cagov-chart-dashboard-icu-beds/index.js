@@ -15,6 +15,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
+    this.county = 'California';
 
     // Settings and initial values
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
@@ -53,6 +54,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
 
     this.listenForLocations();
+    this.listenForTimeRange();
   }
 
   ariaLabel(d, baselineData) {
@@ -118,6 +120,21 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     
   }
 
+  cropData(timeRange) {
+    console.log("Cropping icu-beds data",timeRange);
+    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
+    const daysToKeepAry = [-1,31*6,90];
+    const daysToKeep = daysToKeepAry[timeRange];
+    if (daysToKeep > 0) {
+      keys.forEach( (key) => {
+        const chartSeries = this.chartdata.time_series[key];
+        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
+        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
+        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
+      });
+    }
+  }
+
   retrieveData(url, regionName) {
     if (regionName == 'Alpine') {
       let alldata = {
@@ -156,6 +173,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       this.metadata = alldata.meta;
       this.chartdata = alldata.data;
       this.regionName = regionName;
+      this.cropData(this.timerange);
       this.renderComponent(regionName);
     } else {
       window
@@ -186,6 +204,26 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       false
     );
   }
+
+
+  listenForTimeRange() {
+    let timeElement = document.querySelector("cagov-timerange-buttons");
+    timeElement.addEventListener(
+      "timerange-selected",
+      function (e) {
+        this.timerange = e.detail.timerange;
+        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
+        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
+          "<county>",
+          countyEncoded
+        );
+        this.retrieveData(searchURL, this.county);
+      }.bind(this),
+      false
+    );
+  }
+
+
 }
 
 window.customElements.define(
