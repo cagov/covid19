@@ -1,5 +1,6 @@
 import '../common/search/index.js';
 import '../common/county-buttons/buttons.js'
+import '../common/timerange-buttons/buttons.js'
 
 // import css from "../common/chart.scss";
 import './charts/cagov-chart-dashboard-groups-race-ethnicity-cases/index.js';
