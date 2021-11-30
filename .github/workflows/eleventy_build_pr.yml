@@ -37,6 +37,10 @@ jobs:
           mkdir dist
           npm install
           DOMAIN=${URLSAFE_BRANCH_NAME}.pr.covid19.ca.gov npm run build
+      - name: Write robots.txt
+        run: |
+          echo 'User-agent: *' > docs/robots.txt
+          echo 'Disallow: /' >> docs/robots.txt
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
