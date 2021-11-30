@@ -35,12 +35,8 @@ jobs:
       - name: Build 11ty
         run: |
           mkdir dist
-          npm ci --production
+          npm install
           DOMAIN=${URLSAFE_BRANCH_NAME}.pr.covid19.ca.gov npm run build
-      - name: Write robots.txt
-        run: |
-          echo 'User-agent: *' > docs/robots.txt
-          echo 'Disallow: /' >> docs/robots.txt
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -55,7 +51,7 @@ jobs:
       - name: Invalidate CloudFront cache
         uses: chetan/invalidate-cloudfront-action@v1.3
         env:
-          DISTRIBUTION: 'E2EGQV7PEACS1R'
+          DISTRIBUTION: 'E3JRVVFYGDA1AM'
           PATHS: '/*'
           AWS_REGION: 'us-west-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
