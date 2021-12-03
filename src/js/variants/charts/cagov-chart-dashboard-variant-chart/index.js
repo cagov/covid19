@@ -121,8 +121,32 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   retrieveData(url) {
-      this.chartdata = vchart_vdata;
+      let uchartdata = vchart_vdata;
       this.chartlabels = vchart_variants;
+
+      // Do averaging here...
+      let avg_series = [];
+      for (let ri = 6; ri < uchartdata.length; ++ri) {
+        const inrow = uchartdata[ri];
+        let outrow = [];
+        outrow.push(inrow[0]); // date
+        let sums = [];
+        for (let ci = 0; ci < inrow.length-1; ++ci) {
+          sums.push(0);
+        }
+        for (let dj = 0; dj < 7; ++dj) {
+          for (let ci = 0; ci < inrow.length-1; ++ci) {
+            sums[ci] += uchartdata[ri-dj][ci+1];
+          }
+        }
+        for (let ci = 0; ci < inrow.length-1; ++ci) {
+          outrow.push(sums[ci] / 7.0);
+        }
+        avg_series.push(outrow);
+      }
+
+      this.chartdata = avg_series;
+
 
       let nbr_to_chop = 0;
       this.chartdata.forEach((rec, i) => {
