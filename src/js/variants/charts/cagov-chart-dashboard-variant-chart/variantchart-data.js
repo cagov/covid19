@@ -1,4 +1,6 @@
 const vchart_variants =  ['Alpha', 'Beta', 'Delta', 'Gamma', 'Lambda', 'Mu', 'Omicron', 'Other'] ;
+
+// This is unaveraged data prepared using python_utils/convert_variants_data.py
 const vchart_vdata = [
 ['2021-01-01', 0, 0, 0, 0, 0, 0, 0, 100] ,
 ['2021-01-02', 0, 0, 0, 0, 0, 0, 0, 100] ,
