@@ -59,12 +59,12 @@ const eleventy = (done) => {
   spawn('npx', ['@11ty/eleventy', '--quiet'], {
     stdio: 'inherit'
   })
-    .on('close', code => {
-      if (code) {
-        throw new Error('Eleventy Build Failed - Exit Code ' + code);
-      }
-      reload(done);
-    });
+  .on('close', code => {
+    if(code) {
+      throw new Error('Eleventy Build Failed - Exit Code '+code);
+    }
+    reload(done);
+  });
 };
 
 // Build the site's javascript via Rollup.
@@ -75,8 +75,8 @@ const rollup = (done) => {
   spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', code => {
-    if (code) {
-      throw new Error('Rollup Build Failed - Exit Code ' + code);
+    if(code) {
+      throw new Error('Rollup Build Failed - Exit Code '+code);
     }
     done();
   });
@@ -232,7 +232,7 @@ const deploy = gulp.series(clean, build);
 
 // function to download a remove file and place it in a location
 const download = (url, dest, cb) => {
-  if (fs.existsSync(dest)) return; //skipping downloading of existing files
+  if(fs.existsSync(dest)) return; //skipping downloading of existing files
 
   console.log(`downloading ${url}`);
   const file = fs.createWriteStream(dest);

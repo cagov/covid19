@@ -27,7 +27,7 @@ import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
 
 // load sparklines
-let svg_path = 'https://files.covid19.ca.gov';
+let svg_path = 'https://static.covid19.ca.gov/img/generated/sparklines/';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {
@@ -38,10 +38,10 @@ function getSVG(file,selector) {
     });
   });
 }
-getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
-getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
-getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
-getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
+getSVG('sparkline-cases.svg','.sparkline-cases');
+getSVG('sparkline-tests.svg','.sparkline-tests');
+getSVG('sparkline-deaths.svg','.sparkline-deaths');
+getSVG('sparkline-vaccines.svg','.sparkline-vax');
 
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");

@@ -8,11 +8,18 @@
     "build:scss": "node-sass-chokidar --source-map true scss/_index.scss -o dist",
     "start": "es-dev-server --app-index dist/index.html --node-resolve --watch --open"
   },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@open-wc/eslint-config": "^4.3.0",
     "es-dev-server": "^1.57.2",
+    "eslint": "^7.32.0",
     "node-sass-chokidar": "^1.5.0"
   }
 }

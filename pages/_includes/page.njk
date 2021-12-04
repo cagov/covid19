@@ -2,7 +2,14 @@
 {% import "macros.njk" as macros %}
 {%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
 
-{% block title %} 
+{% set pagesWithBlueBottom = ['state-dashboard', 'equity', 'vaccination-progress-data', 'data-and-tools'] %}
+{%- if page.fileSlug in pagesWithBlueBottom %}
+  {% set containerClasses = "container blue-bottom" %}
+{% else %}
+  {% set containerClasses = "container" %}
+{%- endif %}
+
+{% block title %}
   <title>{{ title | safe }} - Coronavirus COVID-19 Response</title>
 {% endblock %}
 
@@ -43,11 +50,11 @@
               {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif (page | engSlug).includes("state-dashboard") -%}
-                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
+                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "vaccination-progress-data" -%}
-                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(true,tags,0) }}
+                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
-                {{ (equityTopBoxes[0].publish_date + "T17:00:00Z") | formatDate2(true,tags, 0) }}
+                {{ (equityTopBoxes[0].publish_date + "T18:00:00Z") | formatDate2(true,tags, 0) }}
               {%- else -%}
                 {{ publishdate | formatDate2(true,tags) }}
               {%- endif -%}
@@ -57,8 +64,7 @@
       </div>
     </div>
   </div>
-
-  <div class="container {%- pagesectionincludes page, 'state-dashboard' %} blue-bottom{%- endpagesectionincludes %}">
+  <div class="{{ containerClasses }}">
     <div class="row">
       <div class="col-lg-10 mx-auto">
         {{ content | safe  }}

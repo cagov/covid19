@@ -32,7 +32,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 0,
-          left: 0,
+          left: 4,
         },
       },
       tablet: {
@@ -43,7 +43,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 0,
-          left: 0,
+          left: 4,
         },
       },
       mobile: {
@@ -54,7 +54,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20,
-          left: 0,
+          left: 4,
         },
       },
       retina: {
@@ -65,7 +65,7 @@ class CAGovVaccinationGroupsGender extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20,
-          left: 0,
+          left: 4,
         },
       },
     };

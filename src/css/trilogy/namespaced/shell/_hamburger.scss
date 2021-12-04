@@ -2,12 +2,8 @@ cagov-navoverlay {
   order: 3;
   .menu-trigger {
     background: $orange;
-    //@include size(3rem);
-    // margin: 0.5rem;
-    margin-left: 1em;
     border: 0;
-    // border-radius: 50%;
-    // padding: 0.75rem 0.75rem;
+    height: 67px;
     padding: .5em 1em .5em 1em;
     font-family: $headline;
     transition: $slow;
@@ -18,7 +14,7 @@ cagov-navoverlay {
     .is-fixed {
       position: fixed;
     }
-    top: -2px;
+    top: 0;
     right: 0;
     transition: $slow;
     box-shadow: $button-shadow, 0 0 0 0 $orange;
@@ -29,6 +25,10 @@ cagov-navoverlay {
 
     @include tablet { 
       z-index: 2000;
+    }
+
+    @include tablet-wide {
+      display: none;
     }
  
     &-label {
@@ -58,7 +58,6 @@ cagov-navoverlay {
       @include desktop {
         background: $yellow;
       }
-      box-shadow: $button-shadow, 0 0 0 2px $darkblue;
       outline: 0 solid $darkblue;
       background: $yellow;
      // transform: scale(1.1);

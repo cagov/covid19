@@ -34,6 +34,7 @@ formatNumber(tags,1)-%}
 {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
 {%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 
+
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
@@ -76,7 +77,7 @@ formatNumber(tags,1)-%}
 							<h1 class="hero-headline m-0" id="hero-text">{{translatedLabels.varHeroTitle}}</h1>
 							<h2 class="hero-subhead m-0 pt-2 pb-3">{{ translatedLabels.varHeroP2 }}</h2>
 							
-							<a href="{{ "/vaccines/" }}" class="link-arrow-medblue justify-content-start">
+							<a href="https://myturn.ca.gov/" class="link-arrow-medblue justify-content-start">
 								<div class="link-arrow-label">{{ translatedLabels.varHeroP1 }}</div>
 								<cagov-arrow></cagov-arrow>
 							</a>
@@ -138,12 +139,12 @@ formatNumber(tags,1)-%}
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.meta.PUBLISHED_DATE + "T17:00:00Z") | formatDate2(false,tags,0)) | replace("[DataDate]",dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false,tags,-1)) -}}
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(false,tags,0)) | replace("[DataDate]",dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false,tags,-1)) -}}
 					</div>
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
 						<!-- Blue Summary Box 1 -->						
-						<div class="col-md-3 px-10px">							
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varVaccinesAdministered }}</div>
 								<div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
@@ -153,7 +154,12 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> {{ translatedLabels.varOfPopulationVaccinated }}</span>
+									<div>
+										<span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> of population vaccinated</span>
+									</div>
+									<div>
+										<span class="text-300">(5+ with at least one dose)</span>
+									</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -167,7 +173,7 @@ formatNumber(tags,1)-%}
 						</div>
 
 						<!-- Blue Summary Box 2 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalCases }}</div>
 
@@ -178,7 +184,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewCasesPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
@@ -191,7 +199,7 @@ formatNumber(tags,1)-%}
 							</div>
 						</div>
 						<!-- Blue Summary Box 3 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalDeaths }}</div>
 
@@ -202,7 +210,9 @@ formatNumber(tags,1)-%}
 								<strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
-								<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">{{ translatedLabels.varNewDeathsPer100 }}</span>
+									<div>
+										<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
+									</div><div>&nbsp;</div>
 								</div>
 
 								<!--Chart and Label -->
@@ -216,7 +226,7 @@ formatNumber(tags,1)-%}
 							</div>
 						</div>
 						<!-- Blue Summary Box 4 -->
-						<div class="col-md-3 px-10px">
+						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
 								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTestsReported }}</div>
 								<div id="total-tests-number" class="text-white font-size-1-2em mb-2">
@@ -243,7 +253,7 @@ formatNumber(tags,1)-%}
 
 				
 				<div class="text-sm text-center text-300 ptop-24px">
-							{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="/state-dashboard/">{{translatedLabels.varStateDashboard}}</a>.
+							{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">{{translatedLabels.varStateDashboard}}</a>.
 				</div>
 						
 				<div class="hero-stats-footer">
@@ -258,7 +268,7 @@ formatNumber(tags,1)-%}
 </svg></span><span class="ml-2">{{translatedLabels.varStateSummary}}</span></a>
 
 
-						<a class="hero-stats-footer-link mt-2" href="/vaccination-progress-data">
+						<a class="hero-stats-footer-link mt-2" href="{{ "vaccination-progress-data/"  | toTranslatedPath(tags) }}">
 						<span class="no-underline " aria-hidden="true">
 
 						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -283,7 +293,7 @@ formatNumber(tags,1)-%}
 </div>
 </hero-stats>
 <script>
-let svg_path = 'https://files.covid19.ca.gov';
+let svg_path = 'https://static.covid19.ca.gov/img/generated/sparklines/';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {
@@ -291,10 +301,10 @@ function getSVG(file,selector) {
     });
   });
 }
-getSVG('/img/generated/sparklines/sparkline-cases.svg','.sparkline-cases');
-getSVG('/img/generated/sparklines/sparkline-tests.svg','.sparkline-tests');
-getSVG('/img/generated/sparklines/sparkline-deaths.svg','.sparkline-deaths');
-getSVG('/img/generated/sparklines/sparkline-vaccines.svg','.sparkline-vax');
+getSVG('sparkline-cases.svg','.sparkline-cases');
+getSVG('sparkline-tests.svg','.sparkline-tests');
+getSVG('sparkline-deaths.svg','.sparkline-deaths');
+getSVG('sparkline-vaccines.svg','.sparkline-vax');
 </script>
  <!-- END OF STATS -->
 

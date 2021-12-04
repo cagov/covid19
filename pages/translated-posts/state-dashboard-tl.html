@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2021-10-06T20:57:59Z"
+publishdate: "2021-12-03T00:40:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -85,36 +85,43 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <h2 class="text-center color-purple">Update para sa {{_varStatDate_}}</h2>
         <div class="text-center">Sa kasalukuyan, {{_varStatTotalCases_}} ang kumpirmadong kaso ng COVID-19 at {{_varStatTotalDeaths_}} ang kumpirmadong pagkamatay sa California sa kabuuan.</div>
       </div>
-    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
+    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Naibigay na Bakuna</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">kabuuan</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
-         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> ng nabakunahan nang populasyon</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> ng nabakunahan nang populasyon</span>            </div>
+           <div>             <span class="text-300">(5+ na may kahit iisang dosis lang)</span>            </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
+     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga kaso</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">kabuuan</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">mga bagong kaso (bawat 100K)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">mga bagong kaso (bawat 100K)</span>            </div><div> </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
+     </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Pagkamatay</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">kabuuan</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">mga bagong pagkamatay (bawat 100K)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">mga bagong pagkamatay (bawat 100K)</span>            </div><div> </div>
+         </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
+     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Pagsusuri</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
@@ -132,10 +139,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Na-update noong {{_varStatDate_}}, na may data mula sa {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Source data ng mga naibigay nang bakuna</a> at <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">source data ng mga kaso, pagkamatay, at pagsusuri</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Mga tala sa data</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-         <ul><li>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data tungkol sa mga ibinibigay na bakuna.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
-      </div></div></div></cagov-accordion></div>
+      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+              <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
+              <div class="card-body">
+                <ul><li>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data tungkol sa mga ibinibigay na bakuna.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
+              </div>
+            </div>
+          </div>         </cagov-accordion>       </div>
     </div>
 
   </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Data ng mga hindi pa nababakunahan at nabakunahan na</h2>
@@ -147,9 +159,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Mga Kaso</button> <!-- omitting hospitalizations tab for now...
- <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
---> <button class="large-tab js-toggle-group-postvax deaths">Mga Pagkamatay</button>     </div>
+    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Mga Kaso</button> <button class="large-tab js-toggle-group-postvax hospitalizations">Pagpapaospital</button> <button class="large-tab js-toggle-group-postvax deaths">Pagkamatay</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">Mga kaso ng COVID-19 sa nakalipas na apat na buwan</li>
     <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na mahawahan ng COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
@@ -183,9 +193,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series3_legend">Lahat ng kaso</li>
     <li data-label="pending_legend">Nakabinbin ang data</li>
     <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga hindi pa nababakunahang pagkamatay sa bawat milyon: <b>{UCOUNT}</b><br> Mga nabakunahan nang pagkamatay sa bawat milyon: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Ang nabakunahang kaso o pagkamatay ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Janssen hindi bababa sa dalawang linggo bago siya magpositibo sa COVID-19. Ang hindi pa nababakunahang kaso o pagkamatay ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19. Ginagamit ng chart na ito ang data mula sa mga taong may edad na 16 na taon pataas na nakolekta sa nakalipas na 120 araw. Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data. Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga nabakunahang kaso</a>.</p>
-</div></div></div></cagov-accordion></div>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Pinagmulan ng datos ng mga kasong nabakunahan at hindi pa nababakunahan, pagpapaospital, at pagkamatay</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">Impormasyon sa chart</div>       </button>       <div class="card-container" aria-hidden="true">
+        <div class="card-body">
+<ul class="small-text"><li>Ang kasong nabakunahan, naospital, o namatay ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Janssen hindi bababa sa 2 linggo bago siya magpositibo sa COVID-19.</li><li>Ang kasong hindi pa nababakunahan, naospital, namatay ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19.</li><li>Ginagamit ng chart na ito ang data mula sa mga taong may edad na 12 taon pataas na nakolekta sa nakalipas na 120 araw.</li><li>Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</li><li>Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga kasong nabakunahan, naospital, at namatay</a>.</li></ul>
+        </div>
+      </div>
+    </div>   </cagov-accordion> </div>
 
 
 
@@ -242,8 +260,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng mga kumpirmadong kaso at pagkamatay</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Ang mga numero ay hindi kumakatawan sa tunay na pang-araw-araw na pagbabago dahil kasama sa mga resultang ang mga kaso sa nakaraang araw bago ang kahapon. Ang petsa ng episode ay ang pesta kung kailan tinatantyang naganap ang event. Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health. Kasama sa mga kaso ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Nangangahulugan ang isang negatibong numero ng mga naiulat na pagkamatay na ang mga pagkamatay na dating iniugnay sa COVID-19 ay natukoy na hindi nauugnay sa COVID-19. Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</p>
+<ul class="small-text"><li>Ang mga numero ay hindi kumakatawan sa tunay na pang-araw-araw na pagbabago dahil kasama sa mga resultang ang mga kaso sa nakaraang araw bago ang kahapon.</li><li>Ang petsa ng episode ay ang pesta kung kailan tinatantyang naganap ang event.</li><li>Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health.</li><li>Kasama sa mga kaso ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Nangangahulugan ang isang negatibong numero ng mga naiulat na pagkamatay na ang mga pagkamatay na dating iniugnay sa COVID-19 ay natukoy na hindi nauugnay sa COVID-19.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -288,8 +310,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng kabuuang bilang ng mga pagsusuri at rate ng pagpopositibo</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Ang petsa ng pagsusuri ay ang petsa kung kailan ibinigay ang pagsusuri. Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health. Hindi available ang datos ng petsa ng pag-uulat para sa mga pagsusuri bago ang Mayo 5, 2020. Hindi kasama sa data ng petsa ng pagsusuri ang mga pagsusuri sa labas ng estado at hindi alam na hurisdiksyon, at puwedeng hindi tumugma ang kabuuang bilang sa mga bilang ng petsa ng pag-uulat. Ang rate ng pagpopositibo ay kinakalkula bilang ang dami ng molecular test na na-divide sa kabuuan ng isinagawang molecular test. Kasama sa mga rate ng pagpopositibo ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals. Ang rate ng pagpopositibo ay naunang naiulat bilang 14 na araw na average. Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</p>
+<ul class="small-text"><li>Ang petsa ng pagsusuri ay ang petsa kung kailan ibinigay ang pagsusuri.</li><li>Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health. Hindi available ang datos ng petsa ng pag-uulat para sa mga pagsusuri bago ang Mayo 5, 2020.</li><li>Hindi kasama sa data ng petsa ng pagsusuri ang mga pagsusuri sa labas ng estado at hindi alam na hurisdiksyon, at puwedeng hindi tumugma ang kabuuang bilang sa mga bilang ng petsa ng pag-uulat.</li><li>Ang rate ng pagpopositibo ay kinakalkula bilang ang dami ng molecular test na na-divide sa kabuuan ng isinagawang molecular test. Kasama sa mga rate ng pagpopositibo ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals.</li><li>Ang rate ng pagpopositibo ay naunang naiulat bilang 14 na araw na average.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -298,7 +324,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row pb-5">
+<div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
           <li data-label="chartTitleState">Mga naospital na pasyente dahil sa COVID-19 sa California</li>
           <li data-label="chartTitleCounty">Mga naospital na pasyente dahil sa COVID-19 sa {REGION} County</li>
@@ -325,8 +351,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
-  </div>    <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-4 pb-5">
+  </div>
+
+
+
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Source data ng mga naospital na pasyente dahil sa COVID-19 at ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
@@ -398,8 +428,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
               <p class="small-text chart-footer-caption">Dito ilalagay ang footerText</p>
+              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng mga kumpirmadong kaso at pagkamatay ayon sa lahi at etnisidad, kasarian, at edad</a></p>
             </div>
-
           </div>
         </div>
       </div>
@@ -434,4 +464,4 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> <br id="dos-and-donts-for-daily-life">    <p></p>
+                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>

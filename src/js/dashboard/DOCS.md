@@ -46,7 +46,7 @@ Note: This will change names when the site goes public (from v2-state-dashboard 
 
 ### Cases box, Deaths Box, Testing Box, Vaccines box, and various paragraph text throughout the page
 
-https://files.covid19.ca.gov/data/daily-stats-v2.json
+https://data.covid19.ca.gov/data/daily-stats-v2.json
 
 Which is a copy of
 

@@ -5,7 +5,7 @@
 const fetch = require('node-fetch')
 
 module.exports = function() {
-  let dataDomain = 'https://files.covid19.ca.gov/data/dashboard/';
+  let dataDomain = 'https://data.covid19.ca.gov/data/dashboard/';
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
     dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/';
   }

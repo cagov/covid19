@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 县及全州数据以帮助民众了解COVID-19的传播情况。"
 author: "State of California"
-publishdate: "2021-10-06T20:57:59Z"
+publishdate: "2021-12-03T00:40:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -85,36 +85,43 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <h2 class="text-center color-purple">更新于 {{_varStatDate_}}</h2>
         <div class="text-center">到目前为止，加州已确认{{_varStatTotalCases_}}COVID-19病例总数及{{_varStatTotalDeaths_}}死亡总数</div>
       </div>
-    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
+    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">施打的疫苗数</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">总共</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">日平均数</span> </div>
-         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong>的人口已接种疫苗</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong>的人口已接种疫苗</span>            </div>
+           <div>             <span class="text-300">（至少已接种一剂疫苗的年满5岁人士）</span>            </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">过去8周</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
+     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">病例数</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">总共</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">日平均数</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">新增病例数（每10万人）</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">新增病例数（每10万人）</span>            </div><div> </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">过去8周</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
+     </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">死亡数</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">总共</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">日平均数</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">新增死亡数（每10万人）</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">新增死亡数（每10万人）</span>            </div><div> </div>
+         </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">过去8周</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
+     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">检测数</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
@@ -132,10 +139,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">根据{{_varStatYesterdayDate_}}的数据在{{_varStatDate_}}更新。</p>
+        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">疫苗接种来源数据</a>及<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例数、死亡数及检测数来源数据</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">数据说明</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-         <ul><li>周末或国家假日期间没有报告病例数、死亡数以及检测数。将在周末或假日结束后的第一天报告此类数据。每天都会报告接种疫苗数。</li> <li>已接种疫苗的人数百分比等于已完全接种疫苗及部分接种疫苗的人数除以符合疫苗接种资格的人数。</li><li>将持续更新已接种疫苗人口的百分比，因为全州正在继续核对疫苗数据。此百分比可能与地方卫生辖区和联邦机构报告的数据有所不同。</li><li>患病率及日平均数基于7日平均数据，有7天的滞后期。</li><li>死亡率及日平均数基于7日平均数据，有21天的滞后期，因为报告有延迟。</li><li>每10万人比率所使用的人口分母来自加州财政部对2020年的人口预测。</li><li>检测呈阳性率为7日平均数据，无滞后期。数据由加州公共卫生局 (California Department of Public Health) 提供。</li></ul> 
-      </div></div></div></cagov-accordion></div>
+      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+              <div class="accordion-title">数据说明</div>             </button>             <div class="card-container" aria-hidden="true">
+              <div class="card-body">
+                <ul><li>周末或国家假日期间没有报告病例数、死亡数以及检测数。将在周末或假日结束后的第一天报告此类数据。每天都会报告接种疫苗数。</li> <li>已接种疫苗的人数百分比等于已完全接种疫苗及部分接种疫苗的人数除以符合疫苗接种资格的人数。</li><li>将持续更新已接种疫苗人口的百分比，因为全州正在继续核对疫苗数据。此百分比可能与地方卫生辖区和联邦机构报告的数据有所不同。</li><li>患病率及日平均数基于7日平均数据，有7天的滞后期。</li><li>死亡率及日平均数基于7日平均数据，有21天的滞后期，因为报告有延迟。</li><li>每10万人比率所使用的人口分母来自加州财政部对2020年的人口预测。</li><li>检测呈阳性率为7日平均数据，无滞后期。数据由加州公共卫生局 (California Department of Public Health) 提供。</li></ul> 
+              </div>
+            </div>
+          </div>         </cagov-accordion>       </div>
     </div>
 
   </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">未接种疫苗数据及已接种疫苗数据</h2>
@@ -147,9 +159,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例数</button> <!-- omitting hospitalizations tab for now...
- <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
---> <button class="large-tab js-toggle-group-postvax deaths">死亡数</button>     </div>
+    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例数</button><button class="large-tab js-toggle-group-postvax hospitalizations">住院病例数</button><button class="large-tab js-toggle-group-postvax deaths">死亡数</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月的COVID-19病例数</li>
     <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士感染COVID-19的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
@@ -183,9 +193,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series3_legend">所有病例数</li>
     <li data-label="pending_legend">等待数据</li>
     <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的死亡数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的死亡数：<b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">图表信息</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">已接种疫苗病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Janssen疫苗的人士，在接种完疫苗至少两周后，COVID-19检测结果呈阳性。未接种疫苗病例或死亡指未接种COVID-19疫苗人士患病或死亡。此图表使用在过去120天内从16岁及以上人士中收集的数据。我们剔除了部分最近的、不完整的数据，以准确反映数据走向。加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例</a>的信息。</p>
-</div></div></div></cagov-accordion></div>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">未接种疫苗及已接种疫苗病例、住院病例及死亡病例来源数据</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">图表信息</div>       </button>       <div class="card-container" aria-hidden="true">
+        <div class="card-body">
+<ul class="small-text"><li>已接种疫苗病例、住院病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Janssen疫苗的人士，在接种完疫苗至少2周后，COVID-19检测结果呈阳性。</li><li>未接种疫苗病例、住院病例或死亡病例指未接种COVID-19疫苗人士患病或死亡。</li><li>此图表使用在过去120天内从12岁及以上人士中收集的数据。</li><li>我们剔除了部分最近的、不完整的数据，以准确反映数据走向。</li><li>加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例、住院病例及死亡病例</a>的信息。</li></ul>
+        </div>
+      </div>
+    </div>   </cagov-accordion> </div>
 
 
 
@@ -242,8 +260,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">确诊病例数及死亡数来源数据</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">图表信息</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">相关人数并不代表真实的每日变化，因为这些结果包含来自昨天之前的病例数。发病日期是指预计出现病例的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。病例数包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的病例数。负的报告死亡人数表示先前被归因于COVID-19的死亡病例，而后被确定与COVID-19无关。这些图表所使用的人口分母来自加州财政部对2020年的人口预测。</p>
+<ul class="small-text"><li>相关人数并不代表真实的每日变化，因为这些结果包含来自昨天之前的病例数。</li><li>发病日期是指预计出现病例的日期。</li><li>呈报日期是指病例被呈报给加州公共卫生局的日期。</li><li>病例数包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的病例数。负的报告死亡人数表示先前被归因于COVID-19的死亡病例，而后被确定与COVID-19无关。</li><li>这些图表所使用的人口分母来自加州财政部对2020年的人口预测。</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -288,8 +310,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">总检测数及检测结果呈阳性率来源数据</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">图表信息</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">检测日期是做检测的日期。呈报日期是指病例被呈报给加州公共卫生局的日期。报告的日期数据不适用于2020年5月5日之前的检测。检测日期数据不包括州外和未知辖区检测，总数可能与报告日期的数量不匹配。检测呈阳性率的计算方法是阳性分子检测的数量除以完成的总分子检测数量。检测呈阳性率包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的检测呈阳性率。之前报告的阳性率为14天平均值。这些图表所使用的人口分母来自加州财政部对2020年的人口预测。</p>
+<ul class="small-text"><li>检测日期是做检测的日期。</li><li>呈报日期是指病例被呈报给加州公共卫生局的日期。报告的日期数据不适用于2020年5月5日之前的检测。</li><li>检测日期数据不包括州外和未知辖区检测，总数可能与报告日期的数量不匹配。</li><li>检测呈阳性率的计算方法是阳性分子检测的数量除以完成的总分子检测数量。检测呈阳性率包括州立和联邦监狱、美国移民及海关执法机构、美国法警署拘留所及州立医院部门机构中的检测呈阳性率。</li><li>之前报告的阳性率为14天平均值。</li><li>这些图表所使用的人口分母来自加州财政部对2020年的人口预测。</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -298,7 +324,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row pb-5">
+<div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
           <li data-label="chartTitleState">加州COVID-19住院患者</li>
           <li data-label="chartTitleCounty">{REGION}县的COVID-19住院患者</li>
@@ -325,8 +351,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">呈报日期</li>
           <li data-label="tooltipContent">在<b>{DATE}</b>，总计有<b>{VALUE}</b>张空置的ICU病床。</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
-  </div>    <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-4 pb-5">
+  </div>
+
+
+
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19住院患者及ICU来源数据</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">按族裔、性别及年龄分类的病例数及死亡数</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
@@ -398,8 +428,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
               <p class="small-text chart-footer-caption">此处为页脚文本</p>
+              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按种族及族裔、性别及年龄来源数据分类的确诊病例数及死亡数</a></p>
             </div>
-
           </div>
         </div>
       </div>
@@ -434,4 +464,4 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> <br id="dos-and-donts-for-daily-life">    <p></p>
+                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>

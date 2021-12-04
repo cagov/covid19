@@ -13,7 +13,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.innerHTML = template(this.translationsObj);
     // Settings and initial values
-    this.nbr_bars = 9;
+    this.nbr_bars = 10;
     this.bar_vspace = 60;
 
     this.chartOptions = {
@@ -34,7 +34,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20, // 20 added for divider
-          left: 0,
+          left: 4,
         },
       },
       tablet: {
@@ -45,7 +45,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20, // 20 added for divider
-          left: 0,
+          left: 4,
         },
       },
       mobile: {
@@ -56,7 +56,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20,
-          left: 0,
+          left: 4,
         },
       },
       retina: {
@@ -67,7 +67,7 @@ class CAGovVaccinationGroupsRaceEthnicity extends window.HTMLElement {
           top: 60,
           right: 80,
           bottom: 20,
-          left: 0,
+          left: 4,
         },
       },
     };

@@ -18,7 +18,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl:
-        // https://files.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
+        // https://data.covid19.ca.gov/data/vaccine-hpi/vaccine-hpi.json
         config.chartsVHPIDataLocDoses + "vaccine-hpi.json", // Overwritten by county.
       // Breakpoints
       desktop: {
@@ -28,9 +28,9 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         width: this.nbr_bars * 120,
         margin: {
           top: 70,
-          right: 10,
+          right: 0,
           bottom: 52,
-          left: 10,
+          left: 0,
         },
       },
       tablet: {
@@ -40,9 +40,9 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
         width: this.nbr_bars * 120,
         margin: {
           top: 70,
-          right: 10,
+          right: 0,
           bottom: 52,
-          left: 10,
+          left: 0,
         },
       },
       mobile: {
@@ -66,7 +66,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
           top: 70,
           right: 10,
           bottom: 52,
-          left: 10,
+          left: 0,
         },
       },
     };
@@ -134,7 +134,7 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
   }
 
   writeBars(svg, data, yScale, xScale, totalDosesAllQuartiles) {
-    let groups = svg.append("g")
+   let groups = svg.append("g")
       .selectAll("g")
       .data(data)
       .join("g");

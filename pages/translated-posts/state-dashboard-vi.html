@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình đại dịch COVID-19 tại California"
 meta: "Dữ liệu của quận và toàn tiểu bang để giúp mọi người hiểu rõ tốc độ lây lan của COVID-19."
 author: "State of California"
-publishdate: "2021-10-06T20:57:59Z"
+publishdate: "2021-12-03T00:40:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -85,36 +85,43 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         <h2 class="text-center color-purple">Cập nhật cho {{_varStatDate_}}</h2>
         <div class="text-center">Cho đến nay, California đã xác nhận tổng số {{_varStatTotalCases_}} ca mắc và {{_varStatTotalDeaths_}} ca tử vong do bệnh COVID-19.</div>
       </div>
-    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->      <div class="col-md-3 px-10px">
+    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Đã Tiêm Vắc-xin</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>            </div>
+           <div>             <span class="text-300">(từ 5 tuổi trở lên với ít nhất một liều)</span>            </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">8 tuần qua</span>            </div>
+           <div class="text-white text-xs mt-1">              <span class="text-300">Trong 8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-3 px-10px">
+     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Ca Mắc</div>
 
          <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">số ca mới (trên 100 nghìn người)</span>          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">số ca mới (trên 100 nghìn người)</span>            </div><div> </div>
+         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>   <!-- Blue Summary Box 3 -->      <div class="col-md-3 px-10px">
+     </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Ca Tử Vong</div>
 
          <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
-         <div class="text-white text-xs mb-2">            <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">số ca tử vong mới (trên 100 nghìn người)</span>          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+         <div class="text-white text-xs mb-2">
+           <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">số ca tử vong mới (trên 100 nghìn người)</span>            </div><div> </div>
+         </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300">8 tuần qua</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
-     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-3 px-10px">
+     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Xét Nghiệm</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
@@ -132,10 +139,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">
         <p class="small-text">Đã cập nhật {{_varStatDate_}}, với dữ liệu từ {{_varStatYesterdayDate_}}.</p>
+        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Dữ liệu nguồn tiêm vắc-xin</a> và <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">dữ liệu nguồn về ca mắc, ca tử vong và người được xét nghiệm</a></p>
       </div>
-      <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Ghi chú dữ liệu</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-         <ul><li>Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau cuối tuần hoặc ngày lễ. Dữ liệu về vắc-xin đã tiêm được báo cáo hàng ngày.</li> <li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin được tính bằng cách lấy số dân đã tiêm một liều hoặc đủ liều vắc-xin chia cho số dân đủ điều kiện tiêm vắc-xin.</li><li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin sẽ được cập nhật liên tục nhờ công tác điều chỉnh hồ sơ vắc-xin trên toàn tiểu bang đang được thực hiện. Tỷ lệ phần trăm này có thể khác với dữ liệu được báo cáo bởi các cơ quan y tế có thẩm quyền của địa phương và các tổ chức liên bang.</li><li>Tỷ lệ ca mắc và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày.</li><li>Tỷ lệ tử vong và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ.</li><li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li><li>Các ca xét nghiệm có kết quả dương tính dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</li></ul> 
-      </div></div></div></cagov-accordion></div>
+      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+              <div class="accordion-title">Ghi chú dữ liệu</div>             </button>             <div class="card-container" aria-hidden="true">
+              <div class="card-body">
+                <ul><li>Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau cuối tuần hoặc ngày lễ. Dữ liệu về vắc-xin đã tiêm được báo cáo hàng ngày.</li> <li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin được tính bằng cách lấy số dân đã tiêm một liều hoặc đủ liều vắc-xin chia cho số dân đủ điều kiện tiêm vắc-xin.</li><li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin sẽ được cập nhật liên tục nhờ công tác điều chỉnh hồ sơ vắc-xin trên toàn tiểu bang đang được thực hiện. Tỷ lệ phần trăm này có thể khác với dữ liệu được báo cáo bởi các cơ quan y tế có thẩm quyền của địa phương và các tổ chức liên bang.</li><li>Tỷ lệ ca mắc và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày.</li><li>Tỷ lệ tử vong và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ.</li><li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li><li>Các ca xét nghiệm có kết quả dương tính dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</li></ul> 
+              </div>
+            </div>
+          </div>         </cagov-accordion>       </div>
     </div>
 
   </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Các dữ liệu về ca đã tiêm vắc-xin và chưa tiêm vắc-xin</h2>
@@ -147,9 +159,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Số ca mắc</button> <!-- omitting hospitalizations tab for now...
- <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
---> <button class="large-tab js-toggle-group-postvax deaths">Số ca tử vong</button>     </div>
+    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Ca mắc</button> <button class="large-tab js-toggle-group-postvax hospitalizations">Ca nhập viện</button> <button class="large-tab js-toggle-group-postvax deaths">Ca tử vong</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">Các ca COVID-19 trong bốn tháng qua</li>
     <li data-label="chartImpactStatement">Từ {BEGIN_IMPACT_DATE} đến {END_IMPACT_DATE}, người chưa tiêm vắc-xin có nguy cơ mắc COVID-19 cao hơn <strong>{RATE_RATIO} lần</strong> so với người đã tiêm vắc-xin đầy đủ.</li>
@@ -183,9 +193,17 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
     <li data-label="series3_legend">Tất cả ca mắc</li>
     <li data-label="pending_legend">Dữ liệu đang chờ xử lý</li>
     <li data-label="tooltipContent">       Tuần kết thúc: <b>{WEEKDATE}</b><br> Số ca tử vong chưa tiêm vắc xin trên một triệu người: <b>{UCOUNT}</b><br> Số ca tử vong đã tiêm vắc-xin trên một triệu người: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Ca mắc hoặc tử vong đã tiêm vắc-xin là ca mắc hoặc tử vong xảy ra ở người đã tiêm hai liều vắc-xin Pfizer hoặc Moderna hoặc một liều Janssen ít nhất hai tuần trước khi người đó có kết quả xét nghiệm dương tính với COVID-19. Ca mắc hoặc tử vong chưa tiêm vắc-xin là ca mắc hoặc tử vong xảy ra ở người chưa tiêm vắc-xin COVID-19. Biểu đồ này sử dụng dữ liệu của những người từ 16 tuổi trở lên được thu thập trong 120 ngày qua. Chúng tôi loại trừ một số dữ liệu không đầy đủ gần đây để phản ánh chính xác các xu hướng trong dữ liệu. Sở Y Tế Công Cộng Tiểu Bang California có thông tin chi tiết về <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">số ca được tiêm vắc-xin</a>.</p>
-</div></div></div></cagov-accordion></div>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Dữ liệu nguồn về số ca chưa được tiêm vắc-xin và đã được tiêm, số ca nhập viện và ca tử vong</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">Thông tin biểu đồ</div>       </button>       <div class="card-container" aria-hidden="true">
+        <div class="card-body">
+<ul class="small-text"><li>Ca mắc, ca nhập viện hoặc tử vong đã tiêm vắc-xin là ca mắc hoặc tử vong xảy ra ở người đã tiêm hai liều vắc-xin Pfizer hoặc Moderna hoặc một liều Janssen ít nhất 2 tuần trước khi người đó có kết quả xét nghiệm dương tính với COVID-19.</li><li>Ca mắc, ca nhập viện hoặc tử vong chưa tiêm vắc-xin là ca mắc hoặc tử vong xảy ra ở người chưa tiêm vắc-xin COVID-19.</li><li>Biểu đồ này sử dụng dữ liệu của những người từ 12 tuổi trở lên được thu thập trong 120 ngày qua.</li><li>Chúng tôi loại trừ một số dữ liệu không đầy đủ gần đây để phản ánh chính xác các xu hướng trong dữ liệu.</li><li>Sở Y Tế Công Cộng Tiểu Bang California có thông tin chi tiết về <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">số ca mắc, ca nhập viện hoặc tử vong được tiêm vắc-xin</a>.</li></ul>
+        </div>
+      </div>
+    </div>   </cagov-accordion> </div>
 
 
 
@@ -242,8 +260,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Dữ liệu nguồn về các ca mắc và ca tử vong được xác nhận</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Số liệu không thể hiện chính xác những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua. Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Số ca âm tính đã tử vong theo báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19. Các mẫu số dân số trong các biểu đồ này nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</p>
+<ul class="small-text"><li>Số liệu không thể hiện chính xác những thay đổi thực tế hàng ngày vì những kết quả này bao gồm các ca mắc từ trước cho đến ngày hôm qua.</li><li>Ngày sự kiện là ngày dự kiến sẽ diễn ra sự kiện.</li><li>Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California.</li><li>Số ca mắc bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Số ca âm tính đã tử vong theo báo cáo có nghĩa là những ca tử vong mà trước đó được cho là do COVID-19 được xác định là không liên quan đến COVID-19.</li><li>Các mẫu số dân số trong các biểu đồ này nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -288,8 +310,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Tổng số ca xét nghiệm và dữ liệu nguồn về tỷ lệ dương tính</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Ngày xét nghiệm là ngày tiến hành xét nghiệm. Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Không có dữ liệu ngày báo cáo cho các xét nghiệm trước ngày 5 tháng 5 năm 2020. Dữ liệu ngày xét nghiệm không bao gồm những xét nghiệm ngoài tiểu bang và khu vực thẩm quyền chưa biết, và tổng số có thể không khớp với các số lượng ngày báo cáo. Tỷ lệ dương tính được tính bằng số xét nghiệm phân tử dương tính chia cho tổng số xét nghiệm phân tử đã thực hiện. Tỷ lệ dương tính bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang. Tỷ lệ dương tính đã được báo cáo trước đây là mức trung bình trong 14 ngày. Các mẫu số dân số trong các biểu đồ này nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</p>
+<ul class="small-text"><li>Ngày xét nghiệm là ngày tiến hành xét nghiệm.</li><li>Ngày báo cáo là ngày sự kiện được báo cáo cho Sở Y Tế Công Cộng California. Không có dữ liệu ngày báo cáo cho các xét nghiệm trước ngày 5 tháng 5 năm 2020.</li><li>Dữ liệu ngày xét nghiệm không bao gồm những xét nghiệm ngoài tiểu bang và khu vực thẩm quyền chưa biết, và tổng số có thể không khớp với các số lượng ngày báo cáo.</li><li>Tỷ lệ dương tính được tính bằng số xét nghiệm phân tử dương tính chia cho tổng số xét nghiệm phân tử đã thực hiện. Tỷ lệ dương tính bao gồm cả những người ở trong nhà tù của tiểu bang và liên bang, các cơ sở Thực Thi Di Trú và Hải Quan Hoa Kỳ, các cơ sở giam giữ của Cảnh Sát Hoa Kỳ và các cơ sở của Sở Quản Lý Bệnh Viện Tiểu Bang.</li><li>Tỷ lệ dương tính đã được báo cáo trước đây là mức trung bình trong 14 ngày.</li><li>Các mẫu số dân số trong các biểu đồ này nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -298,7 +324,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<div class="row pb-5">
+<div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
           <li data-label="chartTitleState">Số bệnh nhân nhập viện do mắc COVID-19 ở California</li>
           <li data-label="chartTitleCounty">Số bệnh nhân nhập viện do mắc COVID-19 ở Quận {REGION}</li>
@@ -325,8 +351,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="xAxisLegend">Ngày báo cáo</li>
           <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
-  </div>    <hr class="wp-block-separator mt-0 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-4 pb-5">
+  </div>
+
+
+
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Dữ liệu nguồn về số bệnh nhân nhập viện do mắc COVID-19 và dữ liệu nguồn ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+  <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Số ca mắc và số ca tử vong theo sắc tộc, giới tính và tuổi</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
@@ -398,8 +428,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths>                                </div> 
               </div>
               <p class="small-text chart-footer-caption">footerNhập văn bản tại đây</p>
+              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Dữ liệu nguồn về các ca mắc và ca tử vong được xác nhận theo chủng tộc và sắc tộc, giới tính và độ tuổi</a></p>
             </div>
-
           </div>
         </div>
       </div>
@@ -434,4 +464,4 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> <br id="dos-and-donts-for-daily-life">    <p></p>
+                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>

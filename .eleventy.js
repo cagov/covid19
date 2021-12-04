@@ -2,8 +2,6 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
-const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
-
 let filesSiteData = [];
 
 let htmlmap = [];
@@ -23,10 +21,11 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   ? '' //This is a root language page
   : page.fileSlug.replace(langPostfixRegExp, '');
 
+const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
 /**
- * @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettingCallback}
- */
- const itemSetterCallback = (item, jsonData) => {
+* @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettingCallback}
+*/
+const itemSetterCallback = (item, jsonData) => {
   //Customize for your templates
   item.data.layout = 'page.njk';
   item.data.tags = ['do-not-crawl'];
@@ -45,7 +44,6 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
  */
 module.exports = function (eleventyConfig) {
   addPreviewModeToEleventy(eleventyConfig, itemSetterCallback);
-
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });
@@ -89,6 +87,10 @@ module.exports = function (eleventyConfig) {
       replaceContent(item, /"https:\/\/covid19.ca.gov\/pdf\//g, `"https://files.covid19.ca.gov/pdf/`);
       replaceContent(item, /"https:\/\/covid19.ca.gov\/img\//g, `"https://files.covid19.ca.gov/img/`);
 
+      //retrieve files newly hosted on S3
+      replaceContent(item, /"https:\/\/files.ca.gov\/img\//g, `"https://static.covid19.ca.gov/img/`);
+      replaceContent(item, /"https:\/\/files.ca.gov\/data\//g, `"https://data.covid19.ca.gov/data/`);
+
       if (item.inputPath.includes(FolderName)) {
         if (item.data.layout) {
           //for any layout pages in the translated posts folder
@@ -116,7 +118,7 @@ module.exports = function (eleventyConfig) {
           console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
         }
 
-        replaceContent(item, /"https:\/\/covid19.ca.gov\//g, `"/${langrecord.pathpostfix}`);
+        replaceContent(item, /"https:\/\/covid19\.ca\.gov\//g, `"/${langrecord.pathpostfix}`);
 
         item.outputPath = getTranslatedPath(item.outputPath)
         translatedPaths.push(item.outputPath);
@@ -160,7 +162,6 @@ module.exports = function (eleventyConfig) {
           output.push(item);
           //console.log(`Skipping traslated page ${item.inputPath} for ${FolderName}`)
           item.template.isDryRun = true;
-
         }
       };
     });
@@ -647,7 +648,7 @@ module.exports = function (eleventyConfig) {
     const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
 
     //Scan the DOM for a files.covid19.ca.gov links
-    const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files.covid19.ca.gov\/[^"]*)"/gm))
+    const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/(files|static)\.covid19\.ca\.gov\/[^"]*)"/gm))
       .map(r => r.groups.URL);
 
     if (filesSiteData.length === 0) {

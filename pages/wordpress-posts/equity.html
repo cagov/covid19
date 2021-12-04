@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "COVID-19 has highlighted existing inequities in health. California is identifying communities most impacted."
 author: "State of California"
-publishdate: "2021-10-06T20:17:45Z"
+publishdate: "2021-12-03T23:57:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -219,6 +219,7 @@ addtositemap: true
   
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Case and death rate source data</a></p>
                 <p class="chart-data-label">Note: This data is cumulative since the first COVID-19 case was reported in January 2020. Case rate is defined as cumulative COVID-19 cases per 100K population. Death rate is defined as cumulative COVID-19 deaths per 100K.</p>
             </div>
         </div><!--END row-->
@@ -262,7 +263,7 @@ addtositemap: true
 
 
 
-<p>Latino, Black, and Pacific Islander communities have been disproportionately affected by COVID-19. We have made some strides in addressing disparities within these communities, but we must do better.</p>
+<p>Latino, Black, and Pacific Islander communities have been disproportionately affected by COVID-19. We have made some strides in addressing disparities within these communities, but we must do better. This data reflects the last 30 days.</p>
 
 
 
@@ -356,8 +357,12 @@ addtositemap: true
 
 
 
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases, deaths, and tests relative to percentage of population and case, death, and test rate per 100K by race and ethnicity group source data</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Data shown is reflective of the last 30 days and updated weekly. Population estimates do not include &#8220;other&#8221; or &#8220;unknown&#8221; race and ethnicity categories, therefore their percentage of state population is not available. To see race and ethnicity data broken out by age groups, see the California Department of Public Health’s <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 Race and Ethnicity Data</a>. Numbers between 1 and 11 are shown as “&lt;11” to protect patient privacy.</li><li>“Other” race and ethnicity means those who don’t fall under any listed race or ethnicity. “Unknown” race and ethnicity includes those who declined to state or whose race and ethnicity information is missing.</li></ul>
+<ul class="small-text"><li>Data shown is updated weekly. Population estimates do not include &#8220;other&#8221; or &#8220;unknown&#8221; race and ethnicity categories, therefore their percentage of state population is not available. To see cumulative race and ethnicity data broken out by age groups, see the California Department of Public Health’s <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 Race and Ethnicity Data</a>. Numbers between 1 and 11 are shown as “&lt;11” to protect patient privacy.</li><li>“Other” race and ethnicity means those who don’t fall under any listed race or ethnicity. “Unknown” race and ethnicity includes those who declined to state or whose race and ethnicity information is missing.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -377,7 +382,7 @@ addtositemap: true
 <div class="col-lg-10 mx-auto">
 <cagov-chart-d3-lines class="chart d-none">
     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="y-axis-label">Test positivity</li>
         <li data-label="data1-legend">Statewide positivity</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation test positivity</li>
@@ -391,9 +396,11 @@ addtositemap: true
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">Data shown is a 7-day average of positivity rate with a 7-day lag. Data shown is for the 7-day period ending <span data-replacement="d3-lines-report-date"></span>. Health equity quartile positivity is defined as the positivity rate in the lowest 25% of Healthy Places Index census tracts in the county. The health equity metric is not applied to counties with a population less than 106,000.</p>
-</div></div></div></cagov-accordion></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Health equity metric source data</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body"><ul><li>Data shown is a 7-day average of positivity rate with a 7-day lag.</li><li>Data shown is for the 7-day period ending <span data-replacement="d3-lines-report-date"></span>.</li><li>Health equity quartile positivity is defined as the positivity rate in the lowest 25% of Healthy Places Index census tracts in the county.</li><li>The health equity metric is not applied to counties with a population less than 106,000.</li</ul></div></div></div></cagov-accordion></div></div>
 
 
 
@@ -416,9 +423,11 @@ addtositemap: true
 <cagov-chart-equity-data-completeness class="chart d-none">
   <ul>
     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="title">Reporting by race and ethnicity in California</li>
-        <li data-label="footnote">Note: Data shown is a cumulative 30-day total, updated on <span data-replacement="data-completeness-report-date"></span>. Sexual orientation and gender identity are not collected for tests. Numbers between 1 and 10 are not shown to protect patient privacy.</li>
+        <li data-label="footnote"><ul><li>Data shown is a cumulative 30-day total, updated on <span data-replacement="data-completeness-report-date"></span>.</li><li>Sexual orientation and gender identity are not collected for tests.</li><li>Numbers between 1 and 10 are not shown to protect patient privacy.</li></ul></li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Reporting by race and ethnicity, sexual orientation, and gender identity source data</a></p></li>
+
         <li data-label="tab-label">Reporting by <span data-replace="metric-filter"></span> in <span data-replace="location"></span></li>
         <li data-label="data-missing">Data missing</li>
         <li data-label="data-reported">Data reported</li>
@@ -459,11 +468,15 @@ addtositemap: true
 
 
 
+<p class="small-text"></p>
+
+
+
 <div class="mb-2 mt-2"></div>
 
 
 
-<cagov-chart-d3-bar class="chart d-none"><ul>
+<cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">Factors that increase risk of infection and severe illness</li>
     <li data-label="sectionDescription">Californians in crowded housing or transportation, and with less access to paid leave and other worker protections, have a higher risk of infection of COVID-19. Social determinants of health, such as food insecurity, lack of health insurance, and housing instability can increase the risk of poor outcomes. These social determinants of health are often the result of structural racism.</li>
     <li data-label="chartTitleIncome">Community case rate by median annual household income bracket</li>
@@ -475,7 +488,8 @@ addtositemap: true
     <li data-label="chartButtonIncome">Income</li>
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
-    <li data-label="footnote">Note: Data comes from the American Community Survey and is statewide. It does not reflect individual counties. Data shown is a cumulative 7-day total with a 7-day lag, updated on <span data-replacement="d3-bar-report-date"></span>.</li>
+    <li data-label="footnote"><ul><li>Data comes from the American Community Survey and is statewide. It does not reflect individual counties.</li><li>Data shown is a cumulative 7-day total with a 7-day lag, updated on <span data-replacement="d3-bar-report-date"></span>.</li></ul></li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Community case rate by income, crowded housing, and access to health insurance source data</a></p><li>
    <li data-label="casesPer100KPeople">Cases per 100K people</li>
    <li data-label="statewideCaseRate">Statewide case rate:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate cases per 100K people. placeholderRateDiff30 change from 30 days ago</li>
@@ -580,13 +594,3 @@ addtositemap: true
     <!--container-->
 </div>
 <!--full bleed-->
-<br id="dos-and-donts-for-daily-life">
-
-
-
-<!-- Ethnio Activation Code -->
-<script type="text/javascript" language="javascript" src="//ethn.io/81005.js" async="true" charset="utf-8"></script>
-
-
-
-<p></p>

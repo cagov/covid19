@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州致力於健康公平"
 meta: "COVID-19凸顯出了現有的健康不公平問題。加州正在確認最受影響的社區。"
 author: "State of California"
-publishdate: "2021-10-06T20:17:45Z"
+publishdate: "2021-11-18T19:39:44Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -77,6 +77,7 @@ addtositemap: true
                 </div>
               </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">患病率及死亡率源數據</a></p>
                 <p class="chart-data-label">注：此數據自2020年1月呈報的首例COVID-19病例起開始累計。患病率是指每100K人中的COVID-19累計病例數。死亡率是指每100K人中的COVID-19累計死亡數。</p>
             </div>
         </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
@@ -98,7 +99,7 @@ addtositemap: true
 
 
 
-<p>拉丁裔、黑人及太平洋島民社區受到了COVID-19的嚴重影響。雖然我們在解決這些社區內的差異方面小有成效，但必須做得更好。</p>    <!--SMALL TABS ARE THE BEST --> <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">病例數</button> <button class="small-tab" data-key="deaths">死亡數</button> <button class="small-tab" data-key="tests">檢測數</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
+<p>拉丁裔、黑人及太平洋島民社區受到了COVID-19的嚴重影響。雖然我們在解決這些社區內的差異方面小有成效，但必須做得更好。此為過去30天的數據。</p>    <!--SMALL TABS ARE THE BEST --> <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">病例數</button> <button class="small-tab" data-key="deaths">死亡數</button> <button class="small-tab" data-key="tests">檢測數</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
   <div class="row">
       <div class="col">         <cagov-chart-re-pop class="chart d-none">           <ul>
             <li data-label="chartTitle--cases">病例數佔placeholderForDynamicLocation人口的百分比</li>
@@ -169,8 +170,12 @@ addtositemap: true
 
 
 
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按種族和族裔群體來源數據分類的病例數、死亡數及檢測數佔人口百分比和每10萬人的患病率、死亡率及檢測率</a></p>
+
+
+
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>所示數據為過去30天的數據，每週更新一次。人口估算不包括「其他」或「未知」種族和族裔類別，因此其所佔的州人口百分比無法獲知。如需查看按年齡組劃分的種族和族裔數據，請參閱加州公共衛生局發佈的COVID-19<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">種族和族裔數據</a>。為保護患者隱私，在1和11之間的數量均顯示為「<11」。</li><li>「其他」代表不屬於列出的任何種族或族裔的人士。「未知」種族及族裔包括拒絕提供或缺失種族和族裔資訊的人士。</li></ul>
+<ul class="small-text"><li>所示數據每週更新一次。人口估算不包括「其他」或「未知」種族和族裔類別，因此其所佔的州人口百分比無法獲知。如需查看按年齡組劃分的種族和族裔累積數據，請參閱加州公共衛生局發佈的COVID-19<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">種族和族裔數據</a>。為保護患者隱私，在1和11之間的數量均顯示為「<11」。</li><li>「其他」代表不屬於列出的任何種族或族裔的人士。「未知」種族及族裔包括拒絕提供或缺失種族和族裔資訊的人士。</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -180,7 +185,7 @@ addtositemap: true
 
 
 <p>健康公平指標會衡量受影響最嚴重社區的檢測呈陽性率。<a href="https://map.healthyplacesindex.org/">健康地方指數</a>（由南加州公共衛生聯盟研發）將這些社區作為具有較不健康社區環境（例如收入中位數低、教育完整性低和醫療保健普及率低）的人口普查區。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="y-axis-label">檢測呈陽性率</li>
         <li data-label="data1-legend">全州檢測呈陽性率</li>
         <li data-label="data1-legend-local">placeholderForDynamicLocation檢測呈陽性率</li>
@@ -192,9 +197,11 @@ addtositemap: true
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<p class="small-text">所示數據為7日平均檢測呈陽性率，有7天的滯後期。所示數據為截至<span data-replacement="d3-lines-report-date"></span>的7日週期數據。健康公平四分位數檢測呈陽性率，是指縣內健康地方指數人口普查區的檢測呈陽性率為最低的25%。健康公平指標不適用於人口少於106,000的縣。</p>
-</div></div></div></cagov-accordion></div>
+<p class="small-text col-lg-10 mx-auto"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">健康公平指標源數據</a></p>
+
+
+
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">所示數據為7日平均檢測呈陽性率，有7天的滯後期。所示數據為截至的7日週期數據。健康公平四分位數檢測呈陽性率，是指縣內健康地方指數人口普查區的檢測呈陽性率為最低的25%。健康公平指標不適用於人口少於106,000的縣。</div></div></div></cagov-accordion></div></div>
 
 
 
@@ -204,9 +211,11 @@ addtositemap: true
 
 <p>我們對於部分社區受到的COVID-19影響了解甚多，但我們可以透過收集更多的種族、族裔、性取向及性別認同數據，來更好地投入資源。進行此數據收集工作，需要與私營行業合作夥伴、實驗室及州府和縣府官員密切合作。查看關於如何改進<a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">種族和族裔</a>、<a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">性取向及性別認同</a>報告的資源。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">種族和族裔</button> <button class="small-tab" data-key="sexual_orientation">性取向</button> <button class="small-tab" data-key="gender_identity">性別認同</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none">   <ul>
     <div>
-      <ul>
+      <ul class="small-text">
         <li data-label="title">加州按種族和族裔分類的報告</li>
         <li data-label="footnote">注：所示數據為總共30天的累計數據，更新於<span data-replacement="data-completeness-report-date"></span>。不會在檢測中收集性取向和性別認同資訊。為保護患者隱私，在1和10之間的數量不會顯示。</li>
+        <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按種族及族裔、性取向以及性別認同源數據報告</a></p></li>
+
         <li data-label="tab-label">由<span data-replace="metric-filter"></span>在<span data-replace="location"></span>報告</li>
         <li data-label="data-missing">數據缺失</li>
         <li data-label="data-reported">數據已上報</li>
@@ -228,7 +237,11 @@ addtositemap: true
         <li data-item="deaths">死亡數</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul>
+  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
+
+
+
+<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">增加感染及重症風險的因素</li>
     <li data-label="sectionDescription">住在擁擠的住房或乘坐公共交通工具的加州民眾，以及享有較少帶薪休假和其他員工保護措施的民眾有較高的COVID-19感染風險。健康問題社會決定因素，例如食物無保障、沒有醫療保險以及住房不穩定等，會增加預後不良的風險。這些健康問題社會決定因素通常是由結構性種族主義導致的。</li>
     <li data-label="chartTitleIncome">按年度家庭收入中位數範圍劃分的社區患病率</li>
@@ -241,6 +254,7 @@ addtositemap: true
     <li data-label="chartButtonHousing">擁擠的住房</li>
     <li data-label="chartButtonHealthcare">獲取醫療保險</li>
     <li data-label="footnote">注：數據來自美國社區調查，屬於全州性質。其並未反映個別縣的數據。所示數據為總共7天的累計數據，有7天的滯後期，更新於<span data-replacement="d3-bar-report-date"></span>。</li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按收入、住房擁擠程度以及健康保險獲得機會源數據分類的社區患病率</a></p><li>
    <li data-label="casesPer100KPeople">每100K人中的病例數</li>
    <li data-label="statewideCaseRate">全州患病率：</li>
    <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例數。placeholderRateDiff30 自30天前以來的變化</li>
@@ -310,4 +324,4 @@ addtositemap: true
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> <br id="dos-and-donts-for-daily-life"> <!-- Ethnio Activation Code --> <script type="text/javascript" language="javascript" src="//ethn.io/81005.js" async="true" charset="utf-8"></script>    <p></p>
+                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> 

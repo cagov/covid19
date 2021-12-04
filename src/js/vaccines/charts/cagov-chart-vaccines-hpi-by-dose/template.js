@@ -14,24 +14,16 @@ export default function template({
   footerDisplayText = "Updated {PUBLISHED_DATE} with data from {LATEST_ADMINISTERED_DATE}"
 }) {
   return /*html*/ `
-    <div class="pt-2">
-    <div class="container">
-      <div class="col-lg-12 bg-white pt-4">
-        <div class="row">
-          <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
-            <div class="chart-title">${chartTitle}</div>
-            <div class="small-text">${chartDescription}</div>
-            <div class="svg-holder"></div>
-          </div>
-        </div>
-        ${footerDisplayText !== null ? `<div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0 pt-2">
-          <p class="chart-data-label small-text mb-2">${footerDisplayText}</p>
-        </div>
-      </div>` : ""}
-      </div><!--END col-12-->
-    </div><!--END CONTAINER-->
-  </div>`;
+    <div class="col-lg-10 mx-auto pt-2">
+      <div class="bg-white pt-4">
+        <div class="chart-title">${chartTitle}</div>
+        <div class="small-text">${chartDescription}</div>
+        <div class="svg-holder"></div>
+      </div>
+      ${footerDisplayText !== null ? `
+        <p class="chart-data-label small-text mb-2">${footerDisplayText}</p>
+      ` : ""}
+    </div>`;
 }
 
 

@@ -5,7 +5,10 @@
 }
 
 .cagov-grid, .cagov-grid .block-editor-block-list__layout {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  @include tablet {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 .cagov-stack * + * {
@@ -22,11 +25,18 @@
   border-bottom: 0.3rem solid $darkblue;
   border-bottom: 0.3rem solid var(--primary-color, $darkblue);
   border-radius: 0.3rem;
-  min-width: 300px;
   min-height: 50px;
   margin-top: 0;
   display: flex;
   justify-content: space-between;
+
+  @include reg-phone {
+    width: 100%;
+  }
+
+  @include tablet {
+    min-width: 300px;
+  }
 }
 
 .cagov-card .card-text {

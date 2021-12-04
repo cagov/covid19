@@ -17,7 +17,7 @@ $max-width-text: 64rem; //1500px
 @mixin reg-phone {
   @media (max-width: #{$tablet}) {
     @content;
-  }
+ }
 }
 @mixin phone {
   @media (max-width: #{$tablet-wide}) {
@@ -89,6 +89,7 @@ $button-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
 $button-shadow-hover: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.3);
 $button-shadow-active: inset 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
 
+// Extends should be deprecated. See mixin.
 %wrap {
   width: 100%;
   max-width: $desktop;
@@ -304,6 +305,12 @@ $button-shadow-active: inset 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
     padding: 0.5rem;
     width: auto;
   }
+}
+@mixin wrap {
+  width: 100%;
+  max-width: $desktop;
+  margin: 0 auto;
+  position: relative;
 }
 %clearfix {
   &::before,
@@ -2573,4 +2580,15 @@ ul.small-text {
   background-color: $darkblue;
   padding:2.5rem;
   color: $white !important;
+}
+
+// Remove the appearance of a border on hr#more. 
+#more {
+  border-top: 0;
+  height: 0;
+}
+
+// Eleminate white space from empty <p> created by WordPress. 
+main > .container > .row > .col-lg-10 > p:last-of-type:empty {
+  margin: 0;
 }
