@@ -69,7 +69,6 @@ module.exports = function (eleventyConfig) {
       replaceContent(item, /"https:\/\/covid19.ca.gov\/img\//g, `"https://files.covid19.ca.gov/img/`);
 
       //retrieve files newly hosted on S3
-      replaceContent(item, /"https:\/\/files.ca.gov\/img\//g, `"https://static.covid19.ca.gov/img/`);
       replaceContent(item, /"https:\/\/files.ca.gov\/data\//g, `"https://data.covid19.ca.gov/data/`);
 
       if (item.inputPath.includes(FolderName)) {
