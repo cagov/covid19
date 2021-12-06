@@ -213,10 +213,6 @@ function getDataIndexByX(xScale, yScale, xy)
   return null;
 }
 
-function getTooltipContent(dataIndex) {
-
-}
-
 function showTooltip(event, xy, dataIndex, xscale, yscale)
 {
   let tooltip = this.tooltip;
