@@ -67,6 +67,13 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   getTooltipContent(di) {    
+    // console.log("di",di);
+    if (di >= this.line_series_array[0].length) {
+      di = this.line_series_array[0].length - 1;
+    }
+    if (di < 0) {
+      di = 0;
+    }
     const repDict = {
        WEEKDATE:   reformatReadableDate(this.line_series_array[0][di].DATE),
     }
