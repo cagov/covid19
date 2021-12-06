@@ -69,7 +69,6 @@ module.exports = function (eleventyConfig) {
       replaceContent(item, /"https:\/\/covid19.ca.gov\/img\//g, `"https://files.covid19.ca.gov/img/`);
 
       //retrieve files newly hosted on S3
-      replaceContent(item, /"https:\/\/files.ca.gov\/img\//g, `"https://static.covid19.ca.gov/img/`);
       replaceContent(item, /"https:\/\/files.ca.gov\/data\//g, `"https://data.covid19.ca.gov/data/`);
 
       if (item.inputPath.includes(FolderName)) {
@@ -629,7 +628,7 @@ module.exports = function (eleventyConfig) {
       const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
 
       //Scan the DOM for a files.covid19.ca.gov links
-      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/files\.covid19\.ca\.gov\/[^"]*)"/gm))
+      const domTargets = Array.from(html.matchAll(/"(?<URL>https:\/\/(files|static)\.covid19\.ca\.gov\/[^"]*)"/gm))
         .map(r => r.groups.URL);
 
       if (filesSiteData.length === 0) {
