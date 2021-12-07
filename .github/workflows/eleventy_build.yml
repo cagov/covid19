@@ -21,6 +21,15 @@ jobs:
             FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
 
+      # Deploy to this branch that Azure workflow watches for changes and deploys to Azure production
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./docs
+          publish_branch: deploy_production
+          commit_message: ${{ github.event.head_commit.message }}
+
       # Push built site files to S3 production bucket    
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
