@@ -11,20 +11,16 @@
       "cwd": "${workspaceRoot}/src/sandbox",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
-        "run-script",
-        "sandbox_misc"
+          "run-script", "sandbox_misc"
       ],
       "console": "internalConsole",
       "outputCapture": "std"
-    },
-    {
+    }
+    ,{
       "type": "node",
       "request": "launch",
       "name": "Debug redirects",
       "program": "fromTable.js",
-      "args": [
-        "3"
-      ],
       "cwd": "${workspaceRoot}/src/redirects",
       "outputCapture": "std"
     },
