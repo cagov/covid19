@@ -1,13 +1,13 @@
-name: Eleventy Build Master
+name: Eleventy Build Preproduction
 on:
   push:
     branches:
-      - master
+      - preproduction
 jobs:
   build_deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: n1hility/cancel-previous-runs@v2
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -21,22 +21,13 @@ jobs:
             FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
 
-      # Deploy to this branch that Azure workflow watches for changes and deploys to Azure production
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./docs
-          publish_branch: deploy_production
-          commit_message: ${{ github.event.head_commit.message }}
-
       # Push built site files to S3 production bucket    
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: 'covid19.ca.gov'
+          AWS_S3_BUCKET: 'preproduction.covid19.ca.gov'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
@@ -46,9 +37,8 @@ jobs:
       - name: invalidate
         uses: chetan/invalidate-cloudfront-action@v1.3
         env:
-          DISTRIBUTION: 'EUZDM53N8V5KD'
+          DISTRIBUTION: 'E1MPH2GJ794W3D'
           PATHS: '/*'
           AWS_REGION: 'us-west-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
-
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
