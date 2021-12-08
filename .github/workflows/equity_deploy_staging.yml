@@ -3,8 +3,8 @@ name: auto-equity-staging-build
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    # intended to run around 1:40pm on Wednesday
-    - cron:  '40 21 * * Wed'
+    # intended to run around 1:40pm on Tuesday
+    - cron:  '40 21 * * Tue'
 
 # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
