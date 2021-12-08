@@ -6,7 +6,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './variantchart-config.json';
 import renderChart from "./variantchart-render.js";
 import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
-import vchart_vdata from "./variantchart-data.json";
+// import vchart_vdata from "./variantchart-data.json";
 import formatValue from "./../../../common/value-formatters.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
@@ -46,7 +46,6 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     // console.log("Reading data file",this.chartOptions.dataPathVar, config);
 
     this.dataUrl = config[this.chartOptions.dataPathVar] + this.chartOptions.dataUrl;
-    // console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
@@ -118,66 +117,39 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   retrieveData(url) {
-      let uchartdata = vchart_vdata;
-      this.chartdata = vchart_vdata.data;
-      this.chartlabels = vchart_vdata.meta.VARIANTS;
+    console.log("FETCHING",url);
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (vchart_vdata) {
+          this.chartdata = vchart_vdata.data;
+          this.chartlabels = vchart_vdata.meta.VARIANTS;
+    
+          // Splice for dates
+          const tsKeys = Object.keys(this.chartdata.time_series);
+          tsKeys.forEach((tseriesnom) => {
+            let tseries = this.chartdata.time_series[tseriesnom].VALUES;
+            let nbr_to_chop = 0;
+            tseries.forEach((rec, i) => {
+              if (rec.DATE == this.chartOptions.starting_date) {
+                nbr_to_chop = i+1;
+              }
+            });
+            if (nbr_to_chop) {
+              tseries.splice(0,nbr_to_chop);
+            }
+            if (this.chartOptions.uncertainty_days) {
+              tseries.splice(tseries.length-this.chartOptions.uncertainty_days,this.chartOptions.uncertainty_days); 
+            }
+          });
+    
+          this.renderComponent();
 
-      // Do averaging here...
-      // let avg_series = [];
-      // for (let ri = 6; ri < uchartdata.length; ++ri) {
-      //   const inrow = uchartdata[ri];
-      //   let outrow = [];
-      //   outrow.push(inrow[0]); // date
-      //   let sums = [];
-      //   for (let ci = 0; ci < inrow.length-1; ++ci) {
-      //     sums.push(0);
-      //   }
-      //   for (let dj = 0; dj < 7; ++dj) {
-      //     for (let ci = 0; ci < inrow.length-1; ++ci) {
-      //       sums[ci] += uchartdata[ri-dj][ci+1];
-      //     }
-      //   }
-      //   for (let ci = 0; ci < inrow.length-1; ++ci) {
-      //     outrow.push(sums[ci] / 7.0);
-      //   }
-      //   avg_series.push(outrow);
-      // }
 
-      // this.chartdata = avg_series;
-
-      // Splice for dates
-      const tsKeys = Object.keys(this.chartdata.time_series);
-      tsKeys.forEach((tseriesnom) => {
-        let tseries = this.chartdata.time_series[tseriesnom].VALUES;
-        let nbr_to_chop = 0;
-        tseries.forEach((rec, i) => {
-          if (rec.DATE == this.chartOptions.starting_date) {
-            nbr_to_chop = i+1;
-          }
-        });
-        if (nbr_to_chop) {
-          tseries.splice(0,nbr_to_chop);
-        }
-        if (this.chartOptions.uncertainty_days) {
-          tseries.splice(tseries.length-this.chartOptions.uncertainty_days,this.chartOptions.uncertainty_days); 
-        }
-      });
-
-      this.renderComponent();
-
-//     window
-//       .fetch(url)
-//       .then((response) => response.json())
-//       .then(
-//         function (alldata) {
-//           // console.log("Race/Eth data data", alldata.data);
-//           this.metadata = alldata.meta;
-//           this.chartdata = alldata.data;
-//           this.renderComponent();
-//         }.bind(this)
-//       );
-//   }
-  
+        }.bind(this)
+      );
+ 
   }
 }
 
