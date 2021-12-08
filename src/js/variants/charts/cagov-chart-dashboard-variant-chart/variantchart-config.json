@@ -3,6 +3,8 @@
     "variants": {
       "chart": {
         "chartName": "cagov-chart-dashboard-variant-chart",
+        "dataUrl": "california.json",
+        "dataPathVar": "chartsVariantsLoc",
         "chart_style": "normal",
         "stroke_width": 2, 
         "root_id": "variants-seq",

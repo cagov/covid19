@@ -6,9 +6,11 @@ import postcss from 'rollup-plugin-postcss';
 
 const defaultConfig = {
   chartsStateDashTablesLoc: 'https://data.covid19.ca.gov/data/dashboard/',
+  chartsVariantsLoc: 'https://data.covid19.ca.gov/data/variants/',
 }
 const stagingConfig =  {
   chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/',
+  chartsVariantsLoc: 'https://data.covid19.ca.gov/data/variants/',
 }
 
 const devOutputPath = 'docs/js/variants.js';
