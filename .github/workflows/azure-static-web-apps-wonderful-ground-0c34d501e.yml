@@ -18,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: staging
           submodules: true
       - name: Use Node.js 14.17.5
         uses: actions/setup-node@v1
