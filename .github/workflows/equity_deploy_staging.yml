@@ -17,3 +17,5 @@ jobs:
       - run: echo 'Hello world!'  
   rebuild-equity:
     uses: cagov/covid19/.github/workflows/azure-static-web-apps-wonderful-ground-0c34d501e.yml@staging
+    secrets:
+          AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GROUND_0C34D501E: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GROUND_0C34D501E }}

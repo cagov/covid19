@@ -9,7 +9,9 @@ on:
   workflow_dispatch:
   # Allows you to call this workflow from another workflow -- see equity_deploy_staging.yml
   workflow_call:
-
+    secrets:
+          AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GROUND_0C34D501E:
+            required: true
 jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
