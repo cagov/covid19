@@ -7,14 +7,15 @@ import renderChart from "../common/histogram.js";
 import { parseSnowflakeDate, reformatReadableDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
+import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
-class CAGovDashboardConfirmedCases extends window.HTMLElement {
+class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
   connectedCallback() {
     console.log("Loading CAGovDashboardConfirmedCases");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    this.timerange = 0;
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.county = 'California';
 
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
@@ -31,17 +32,7 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     ];
     this.dimensions = this.chartBreakpointValues;
 
-    const handleChartResize = () => {
-      getScreenResizeCharts(this);
-      this.screenDisplayType = window.charts
-        ? window.charts.displayType
-        : "desktop";
-      this.chartBreakpointValues = chartConfig[
-        this.screenDisplayType ? this.screenDisplayType : "desktop"
-      ];
-    };
-
-    window.addEventListener("resize", handleChartResize);
+    window.addEventListener("resize", this.handleChartResize);
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
@@ -51,24 +42,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
 
     this.listenForLocations();
-    this.listenForTimeRange();
-  }
-
-  ariaLabel(d, baselineData) {
-    let caption = ''; // !!!
-    return caption;
-  }
-
-  getLegendText() {
-    return [];
-    //   this.translationsObj.chartLegend1,
-    //   this.translationsObj.chartLegend2,
-    // ];
-  }
-
-  renderExtras(svg) {
-    if (this.regionName == 'California') {
-    }
   }
 
   getTooltipContent(di) {
@@ -91,6 +64,9 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
 
   renderComponent(regionName) {
     console.log("Render component cases");
+
+    this.cropData(this.chartConfigTimerange);
+
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
@@ -144,72 +120,6 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
     renderChart.call(this, renderOptions);
   }
 
-  cropData(timeRange) {
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
-    const daysToKeepAry = [-1,31*6,90];
-    const daysToKeep = daysToKeepAry[timeRange];
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = this.chartdata.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
-  }
-
-  retrieveData(url, regionName) {
-    window
-      .fetch(url)
-      .then((response) => response.json())
-      .then(
-        function (alldata) {
-          // console.log("Race/Eth data data", alldata.data);
-          this.regionName = regionName;
-          this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
-
-          // chop data based on this.timerange
-          this.cropData(this.timerange);
-
-          this.renderComponent(regionName);
-
-        }.bind(this)
-      );
-  }
-
-  chartFilterSelectHandler(e) {
-    console.log("cases chartfilter");
-    this.chartConfigFilter = e.detail.filterKey;
-    if (this.chartConfigFilter != 'reported') {
-      this.chartConfigFilter = 'episode';
-      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.add('active');
-      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.remove('active');
-    } else {
-      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="episode"]').classList.remove('active');
-      document.querySelector('cagov-chart-filter-buttons.js-filter-cases .small-tab[data-key="reported"]').classList.add('active');
-    }
-
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
-    this.renderComponent(this.regionName);
-  }
-
-  tabFilterHandler(e) {
-    this.chartFilterSelectHandler(e);
-    const event = new window.CustomEvent('cases-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
-    window.dispatchEvent(event);    
-  }
-
-  setupTabFilters() {
-    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-cases");
-    myFilter.addEventListener(
-      "filter-selected",
-      this.tabFilterHandler.bind(this),
-      false
-    );
-  }
-
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -227,24 +137,8 @@ class CAGovDashboardConfirmedCases extends window.HTMLElement {
       false
     );
 
+    // insures cases/deaths stay in sync
     window.addEventListener('deaths-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
-  }
-
-  listenForTimeRange() {
-    let timeElement = document.querySelector("cagov-timerange-buttons");
-    timeElement.addEventListener(
-      "timerange-selected",
-      function (e) {
-        this.timerange = e.detail.timerange;
-        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          countyEncoded
-        );
-        this.retrieveData(searchURL, this.county);
-      }.bind(this),
-      false
-    );
   }
 
   /*

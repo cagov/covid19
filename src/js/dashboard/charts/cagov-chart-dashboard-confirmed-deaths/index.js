@@ -7,18 +7,19 @@ import renderChart from "../common/histogram.js";
 import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
+import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
 // cagov-chart-dashboard-confirmed-deaths
-class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
+class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
   connectedCallback() {
     console.log("Loading CAGovDashboardConfirmedDeaths");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    // console.log("!!?",this.chartConfigFilter, this.chartConfigKey);
-    // Settings and initial values
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.county = 'California';
+
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
 
     getScreenResizeCharts(this);
 
@@ -31,17 +32,7 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     ];
     this.dimensions = this.chartBreakpointValues;
 
-    const handleChartResize = () => {
-      getScreenResizeCharts(this);
-      this.screenDisplayType = window.charts
-        ? window.charts.displayType
-        : "desktop";
-      this.chartBreakpointValues = chartConfig[
-        this.screenDisplayType ? this.screenDisplayType : "desktop"
-      ];
-    };
-
-    window.addEventListener("resize", handleChartResize);
+    window.addEventListener("resize", this.handleChartResize);
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
@@ -51,22 +42,6 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
 
     this.listenForLocations();
-    this.listenForTimeRange();
-  }
-
-  ariaLabel(d, baselineData) {
-    let caption = ''; // !!!
-    return caption;
-  }
-
-  getLegendText() {
-    return [];
-    //   this.translationsObj.chartLegend1,
-    //   this.translationsObj.chartLegend2,
-    // ];
-  }
-
-  renderExtras(svg, data, x, y) {
   }
 
   getTooltipContent(di) {
@@ -89,6 +64,9 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
 
   renderComponent(regionName) {
     console.log("Render component deaths",this);
+
+    this.cropData(this.chartConfigTimerange);
+
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
@@ -97,7 +75,6 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     }
 
     let latestRec = this.chartdata.latest[this.chartOptions.latestField];
-    // console.log("Deaths Increase",Math.abs(latestRec.new_deaths_delta_1_day),latestRec.new_deaths_delta_1_day);
     const repDict = {
       total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
@@ -145,68 +122,6 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
     renderChart.call(this, renderOptions);
   }
 
-
-  cropData(timeRange) {
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
-    const daysToKeepAry = [-1,31*6,90];
-    const daysToKeep = daysToKeepAry[timeRange];
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = this.chartdata.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
-  }
-
-  retrieveData(url, regionName) {
-    window
-      .fetch(url)
-      .then((response) => response.json())
-      .then(
-        function (alldata) {
-          // console.log("Race/Eth data data", alldata.data);
-          this.regionName = regionName;
-          this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
-          this.cropData(this.timerange);
-          this.renderComponent(regionName);
-        }.bind(this)
-      );
-  }
-
-  chartFilterSelectHandler(e) {
-    console.log("deaths chartfilter");
-    this.chartConfigFilter = e.detail.filterKey;
-    if (this.chartConfigFilter != 'reported') {
-      this.chartConfigFilter = 'death';
-      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.add('active');
-      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.remove('active');
-    } else {
-      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="death"]').classList.remove('active');
-      document.querySelector('cagov-chart-filter-buttons.js-filter-deaths .small-tab[data-key="reported"]').classList.add('active');
-    }
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    this.renderComponent(this.regionName);
-  }
-
-  tabFilterHandler(e) {
-    this.chartFilterSelectHandler(e);
-    const event = new window.CustomEvent('deaths-chart-filter-select',{detail:{filterKey: this.chartConfigFilter}});
-    window.dispatchEvent(event);    
-  }
-
-  setupTabFilters() {
-
-    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-deaths");
-    myFilter.addEventListener(
-      "filter-selected",
-      this.tabFilterHandler.bind(this),
-      false
-    );
-  }
-
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -221,29 +136,10 @@ class CAGovDashboardConfirmedDeaths extends window.HTMLElement {
       }.bind(this),
       false
     );
+
+    // insures cases/deaths stay in sync
     window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
   }
-
-
-
-  listenForTimeRange() {
-    let timeElement = document.querySelector("cagov-timerange-buttons");
-    timeElement.addEventListener(
-      "timerange-selected",
-      function (e) {
-        this.timerange = e.detail.timerange;
-        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          countyEncoded
-        );
-        this.retrieveData(searchURL, this.county);
-      }.bind(this),
-      false
-    );
-  }
-
-
 
 }
 
