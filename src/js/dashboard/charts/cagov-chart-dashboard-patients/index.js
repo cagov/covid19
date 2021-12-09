@@ -61,7 +61,7 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
   }
 
   renderComponent(regionName) {
-    console.log("Render component patients");
+    console.log("RENDER component patients");
 
     this.cropData(this.chartConfigTimerange);
 
@@ -73,6 +73,7 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
       REGION:regionName,
     };
+    console.log("RENDER component patients A");
 
     if (this.chartConfigFilter == 'icu') {
       if (!('chartTitleStateICU' in this.translationsObj)) {
@@ -101,8 +102,12 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
       this.translationsObj.currentLocation = regionName;
     }
-    
+    console.log("RENDER component patients B");
+
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    console.log("RENDER component patients C");
+
     this.setupTabFilters();
 
     let renderOptions = {'tooltip_func':this.tooltip,
@@ -115,31 +120,6 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
                       'month_modulo':2,
                     };
     renderChart.call(this, renderOptions);
-  }
-
-
-
-
-  setupTabFilters() {
-    let myFilter = document.querySelector("cagov-chart-filter-buttons.js-filter-patients");
-    myFilter.addEventListener(
-      "filter-selected",
-      function (e) {
-        this.chartConfigFilter = e.detail.filterKey;
-        this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-        // if I am in a county have to do county url replacement
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-        if(this.county && this.county !== 'California') {
-          searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-            "<county>",
-            this.county.toLowerCase().replace(/ /g, "_")
-          );
-        }
-        this.renderComponent(this.regionName);
-        // this.retrieveData(searchURL, this.regionName);
-      }.bind(this),
-      false
-    );
   }
 
   listenForLocations() {

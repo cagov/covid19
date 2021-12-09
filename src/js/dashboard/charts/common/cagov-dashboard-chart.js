@@ -78,7 +78,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     console.log(this.chartConfigKey,"set filterKey to",this.chartConfigFilter);
     chartConfig[this.chartConfigKey].filterKeys.forEach( (loopKey) => {
         if (loopKey == this.chartConfigFilter) {
-            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="reported"]`).classList.add('active');
+            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.add('active');
         } else {
             document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.remove('active');
         }
@@ -111,6 +111,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
   }
 
   setupTabFilters() {
+    console.log("SETTING up setupTabFilters for "+this.chartConfigKey);
     if (chartConfig[this.chartConfigKey].filterKeys.length > 1) {
         let myFilter = document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey}`);
         myFilter.addEventListener(
@@ -120,6 +121,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
         );
     }
 
+    console.log("SETTING up timerangefilterhandler for "+this.chartConfigKey);
     let myTimeFilter = document.querySelector(`cagov-timerange-buttons.js-filter-${this.chartConfigKey}`);
     myTimeFilter.addEventListener(
       "timerange-selected",
