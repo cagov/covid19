@@ -7,48 +7,20 @@ import renderChart from "../common/histogram.js";
 import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
+import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
 // cagov-chart-dashboard-positivity-rate
-class CAGovDashboardPositivityRate extends window.HTMLElement {
+class CAGovDashboardPositivityRate extends CAGovDashboardChart {
   connectedCallback() {
     console.log("Loading CAGovDashboardPositivityRate");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    this.stateData = null;
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.county = 'California';
 
-    // Settings and initial values
-    // this.chartOptions = {
-    //   chartName: 'cagov-chart-dashboard-positivity-rate',
-    //   // Data
-    //   dataUrl:
-    //     config.chartsStateDashTablesLoc + "positivity-rate/california.json", // Overwritten by county.
-    //   dataUrlCounty:
-    //     config.chartsStateDashTablesLoc + "positivity-rate/<county>.json",
-
-    //   desktop: {
-    //     fontSize: 14,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   tablet: {
-    //     fontSize: 14,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   mobile: {
-    //     fontSize: 12,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    //   retina: {
-    //     fontSize: 12,
-    //     width: 400,     height: 300,
-    //     margin: {   left: 50,   top: 30,  right: 60,  bottom: 45 },
-    //   },
-    // };
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.stateData = null;
 
     getScreenResizeCharts(this);
 
@@ -61,18 +33,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     ];
     this.dimensions = this.chartBreakpointValues;
 
-    const handleChartResize = () => {
-      getScreenResizeCharts(this);
-      this.screenDisplayType = window.charts
-        ? window.charts.displayType
-        : "desktop";
-      this.chartBreakpointValues = chartConfig[
-        this.screenDisplayType ? this.screenDisplayType : "desktop"
-      ];
-    };
-
-    window.addEventListener("resize", handleChartResize);
-
+    window.addEventListener("resize", this.handleChartResize);
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
@@ -82,22 +43,7 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
 
     this.listenForLocations();
-    this.listenForTimeRange();
-  }
-
-  ariaLabel(d, baselineData) {
-    let caption = ''; // !!!
-    return caption;
-  }
-
-  getLegendText() {
-    return [];
-    //   this.translationsObj.chartLegend1,
-    //   this.translationsObj.chartLegend2,
-    // ];
-  }
-
-  renderExtras(svg, data, x, y) {
+    // this.listenForTimeRange();
   }
 
   getTooltipContent(di) {    
@@ -119,6 +65,10 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
+    console.log("Render positivity rate");
+
+    this.cropData(this.chartConfigTimerange);
+
     let addStateLine = false;
     if (regionName == 'California') {
       this.statedata = this.chartdata;
@@ -147,7 +97,9 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
     this.translationsObj.currentLocation = regionName;
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
-      
+
+    this.setupTabFilters();
+
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
@@ -168,38 +120,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
       renderChart.call(this, renderOptions);
   }
 
-  cropData(timeRange) {
-    console.log("Cropping test-positivity data",timeRange);
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
-    const daysToKeepAry = [-1,31*6,90];
-    const daysToKeep = daysToKeepAry[timeRange];
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = this.chartdata.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
-  }
-
-
-  retrieveData(url, regionName) {
-    window
-      .fetch(url)
-      .then((response) => response.json())
-      .then(
-        function (alldata) {
-          // console.log("Race/Eth data data", alldata.data);
-          this.regionName = regionName;
-          this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
-          this.cropData(this.timerange);
-          this.renderComponent(regionName);
-        }.bind(this)
-      );
-  }
-
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
     searchElement.addEventListener(
@@ -211,23 +131,6 @@ class CAGovDashboardPositivityRate extends window.HTMLElement {
           this.county.toLowerCase().replace(/ /g, "_")
         );
         this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
-  }
-
-  listenForTimeRange() {
-    let timeElement = document.querySelector("cagov-timerange-buttons");
-    timeElement.addEventListener(
-      "timerange-selected",
-      function (e) {
-        this.timerange = e.detail.timerange;
-        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          countyEncoded
-        );
-        this.retrieveData(searchURL, this.county);
       }.bind(this),
       false
     );

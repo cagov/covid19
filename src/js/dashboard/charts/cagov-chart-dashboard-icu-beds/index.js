@@ -7,14 +7,16 @@ import renderChart from "../common/histogram.js";
 import { reformatReadableDate, getSnowflakeStyleDate, getSnowflakeStyleDateJS, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
+import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
 // cagov-chart-dashboard-icu-beds
-class CAGovDashboardICUBeds extends window.HTMLElement {
+class CAGovDashboardICUBeds extends CAGovDashboardChart {
   connectedCallback() {
     console.log("Loading CAGovDashboardICUBeds");
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.county = 'California';
 
     // Settings and initial values
@@ -34,17 +36,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     this.dimensions = this.chartBreakpointValues;
     this.dimensions.margin.right = 20;
 
-    const handleChartResize = () => {
-      getScreenResizeCharts(this);
-      this.screenDisplayType = window.charts
-        ? window.charts.displayType
-        : "desktop";
-      this.chartBreakpointValues = chartConfig[
-        this.screenDisplayType ? this.screenDisplayType : "desktop"
-      ];
-    };
-
-    window.addEventListener("resize", handleChartResize);
+    window.addEventListener("resize", this.handleChartResize);
 
     // Set default values for data and labels
     this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
@@ -54,22 +46,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     rtlOverride(this); // quick fix for arabic
 
     this.listenForLocations();
-    this.listenForTimeRange();
-  }
-
-  ariaLabel(d, baselineData) {
-    let caption = ''; // !!!
-    return caption;
-  }
-
-  getLegendText() {
-    return [];
-    //   this.translationsObj.chartLegend1,
-    //   this.translationsObj.chartLegend2,
-    // ];
-  }
-
-  renderExtras(svg, data, x, y) {
+    // this.listenForTimeRange();
   }
 
   getTooltipContent(di) {
@@ -84,6 +61,7 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
   }
 
   renderComponent(regionName) {
+    this.cropData(this.chartConfigTimerange);
 
     var latestRec = this.chartdata.latest[this.chartOptions.latestField];
 
@@ -108,6 +86,8 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
+    this.setupTabFilters();
+
     let renderOptions = { 'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
                       'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
@@ -119,75 +99,6 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
     renderChart.call(this, renderOptions);
     
   }
-
-  cropData(timeRange) {
-    console.log("Cropping icu-beds data",timeRange);
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
-    const daysToKeepAry = [-1,31*6,90];
-    const daysToKeep = daysToKeepAry[timeRange];
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = this.chartdata.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
-  }
-
-  retrieveData(url, regionName) {
-    if (regionName == 'Alpine') {
-      let alldata = {
-        "meta": {
-          "PUBLISHED_DATE": getSnowflakeStyleDate(0),
-          "coverage": regionName,
-        },
-        "data": {
-          "latest": {
-            "ICU_BEDS": {
-              "TOTAL": 0,
-              "CHANGE": 0,
-              "CHANGE_FACTOR": 0,
-              "POPULATION": 13354
-            },
-          },
-          "time_series": {
-            "ICU_BEDS": {
-              "DATE_RANGE": {
-                "MINIMUM": "2020-03-30",
-                "MAXIMUM": getSnowflakeStyleDate(-1)
-              },
-             "VALUES": []
-            },
-          }
-        }
-      };
-
-      let sdate = parseSnowflakeDate(alldata.data.time_series.ICU_BEDS.DATE_RANGE.MINIMUM);
-      let today = new Date();
-      while (+sdate < +today) {
-        alldata.data.time_series.ICU_BEDS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
-        sdate.setDate(sdate.getDate() + 1);
-      }
-
-      this.metadata = alldata.meta;
-      this.chartdata = alldata.data;
-      this.regionName = regionName;
-      this.cropData(this.timerange);
-      this.renderComponent(regionName);
-    } else {
-      window
-        .fetch(url)
-        .then((response) => response.json() )
-        .then(
-          function (alldata) {
-            this.metadata = alldata.meta;
-            this.chartdata = alldata.data;
-            this.renderComponent(regionName);
-          }.bind(this)
-        );
-    }
-    }
 
   listenForLocations() {
     let searchElement = document.querySelector("cagov-county-search");
@@ -204,25 +115,6 @@ class CAGovDashboardICUBeds extends window.HTMLElement {
       false
     );
   }
-
-
-  listenForTimeRange() {
-    let timeElement = document.querySelector("cagov-timerange-buttons");
-    timeElement.addEventListener(
-      "timerange-selected",
-      function (e) {
-        this.timerange = e.detail.timerange;
-        let countyEncoded = this.county.toLowerCase().replace(/ /g, "_");
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          countyEncoded
-        );
-        this.retrieveData(searchURL, this.county);
-      }.bind(this),
-      false
-    );
-  }
-
 
 }
 
