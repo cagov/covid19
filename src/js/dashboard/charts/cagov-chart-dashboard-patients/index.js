@@ -1,9 +1,3 @@
-import template from "./../common/histogram-template.js";
-import chartConfig from '../common/line-chart-config.json';
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
-import renderChart from "../common/histogram.js";
 import { reformatReadableDate, getSnowflakeStyleDate, getSnowflakeStyleDateJS, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
@@ -11,42 +5,6 @@ import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
 // cagov-chart-dashboard-patients
 class CAGovDashboardPatients extends CAGovDashboardChart {
-  connectedCallback() {
-    console.log("Loading CAGovDashboardPatients");
-    this.translationsObj = getTranslations(this);
-    this.chartConfigFilter = this.dataset.chartConfigFilter;
-    this.chartConfigKey = this.dataset.chartConfigKey;
-    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
-    this.county = 'California';
-
-    // Settings and initial values
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-
-    getScreenResizeCharts(this);
-
-    this.screenDisplayType = window.charts
-      ? window.charts.displayType
-      : "desktop";
-    // console.log("this.screenDisplayType",this.screenDisplayType);
-
-    this.chartBreakpointValues = chartConfig[
-      this.screenDisplayType ? this.screenDisplayType : "desktop"
-    ];
-    this.chartBreakpointValues = JSON.parse(JSON.stringify(this.chartBreakpointValues));
-    this.dimensions = this.chartBreakpointValues;
-    this.dimensions.margin.right = 20;
-
-    window.addEventListener("resize", this.handleChartResize);
-
-    // Set default values for data and labels
-    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-
-    this.retrieveData(this.dataUrl, 'California');
-
-    rtlOverride(this); // quick fix for arabic
-
-    this.listenForLocations();
-  }
 
   getTooltipContent(di) {
     const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
@@ -60,21 +18,14 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
 
-  renderComponent(regionName) {
-    console.log("RENDER component patients");
-
-    this.cropData(this.chartConfigTimerange);
-
-    var latestRec = this.chartdata.latest[this.chartOptions.latestField];
-
+  setupPostTranslations(regionName) {
+    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
     const repDict = {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
       REGION:regionName,
     };
-    console.log("RENDER component patients A");
-
     if (this.chartConfigFilter == 'icu') {
       if (!('chartTitleStateICU' in this.translationsObj)) {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict) + " " + regionName;
@@ -102,15 +53,11 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
       this.translationsObj.currentLocation = regionName;
     }
-    console.log("RENDER component patients B");
+    return repDict;
+  }
 
-    this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
-
-    console.log("RENDER component patients C");
-
-    this.setupTabFilters();
-
-    let renderOptions = {'tooltip_func':this.tooltip,
+  setupRenderOptions() {
+    const renderOptions = {'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
                       'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
                       'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
@@ -119,25 +66,9 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
                       'line_legend':this.translationsObj.dayAverage,
                       'month_modulo':2,
                     };
-    renderChart.call(this, renderOptions);
-  }
 
-  listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        this.county = e.detail.county;
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
+    return renderOptions;
   }
-
 
 }
 
