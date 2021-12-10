@@ -11,7 +11,8 @@
       "rootId": "cases-ep",
       "filterKeys": ["episode","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-cases",
@@ -23,7 +24,8 @@
       "rootId": "cases-rep",
       "filterKeys": ["episode","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "deaths": {
@@ -38,7 +40,8 @@
       "rootId": "death-date",
       "filterKeys": ["death","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths",
@@ -50,7 +53,8 @@
       "rootId": "deaths-reported-date",
       "filterKeys": ["death","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "tests": {
@@ -65,7 +69,8 @@
       "rootId": "tests-tests",
       "filterKeys": ["testing","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-total-tests",
@@ -77,7 +82,8 @@
       "rootId": "tests-rep",
       "filterKeys": ["testing","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "positivity": {
@@ -91,7 +97,8 @@
       "dataUrlCounty": "positivity-rate/<county>.json",
       "rootId": "pos-rate",
       "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "patients": {
@@ -106,7 +113,8 @@
       "rootId": "hosp-p",
       "filterKeys": ["hospitalized","icu"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "rightMarginOverride": 20
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     },
     "icu": {
       "chartName": "cagov-chart-dashboard-patients",
@@ -118,7 +126,8 @@
       "rootId": "hosp-p",
       "filterKeys": ["hospitalized","icu"],
       "timeKeys": ["all-time","months-6","days-90"],
-      "rightMarginOverride": 20
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     }
   },
   "icu-beds": {
@@ -132,7 +141,8 @@
       "dataUrlCounty": "icu-beds/<county>.json",
       "rootId": "icu-beds",
       "timeKeys": ["all-time","months-6","days-90"],
-      "rightMarginOverride": 20
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     }
   },
   "desktop": {

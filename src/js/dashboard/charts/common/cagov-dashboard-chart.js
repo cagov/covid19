@@ -218,6 +218,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     this.setupTabFilters();
 
     const renderOptions = this.setupRenderOptions();
+    renderOptions.lineAndBarsSameScale = this.chartOptions.lineAndBarsSameScale;
 
     renderChart.call(this, renderOptions);
   }
