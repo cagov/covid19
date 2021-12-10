@@ -115,7 +115,9 @@ export default class CAGovDashboardChart extends window.HTMLElement {
         // console.log("resetting to default filter key")
         this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
     }
-    // console.log(this.chartConfigKey,"set filterKey to",this.chartConfigFilter);
+
+    // resetting the active states can go away if we stop having cross-traffic between charts... (clicked groups already provide correct feedback)
+    // this is only needed when clicking on a different chart sends an event to this chart.
     chartConfig[this.chartConfigKey].filterKeys.forEach( (loopKey) => {
         if (loopKey == this.chartConfigFilter) {
             document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.add('active');
