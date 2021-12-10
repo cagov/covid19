@@ -6,8 +6,8 @@ import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
 
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    const barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
@@ -16,7 +16,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
     };
     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
     let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
-    let pendingDate = parseSnowflakeDate(this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD);
+    let pendingDate = parseSnowflakeDate(this.chartData.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD);
     if (+datumDate >= +pendingDate) {
       caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
     }
@@ -24,7 +24,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
   }
 
   setupPostTranslations(regionName) {
-    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    let latestRec = this.chartData.latest[this.chartOptions.latestField];
 
     const repDict = {
       total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
@@ -54,8 +54,8 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
   setupRenderOptions() {
      let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
-                        'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
-                        'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                        'time_series_bars':this.chartData.time_series[this.chartOptions.seriesField].VALUES,
+                        'time_series_line':this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                         'root_id':this.chartOptions.rootId,
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
@@ -64,11 +64,11 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                         };
       if (this.chartConfigFilter != 'reported') {
-        renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD;
+        renderOptions.pending_date = this.chartData.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD;
         renderOptions.pending_legend = this.translationsObj.pending;
       }
       if (this.addStateLine) {
-        renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+        renderOptions.time_series_state_line = this.stateData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
       }
     return renderOptions;
   }

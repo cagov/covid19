@@ -7,8 +7,8 @@ import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 class CAGovDashboardICUBeds extends CAGovDashboardChart {
   
   getTooltipContent(di) {
-    const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
-    const lineSeries = this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    const barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
+    const lineSeries = this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
@@ -18,7 +18,7 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
   }
 
   setupPostTranslations(regionName) {
-    let latestRec = this.chartdata.latest[this.chartOptions.latestField];
+    let latestRec = this.chartData.latest[this.chartOptions.latestField];
     const repDict = {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
@@ -43,8 +43,8 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
   setupRenderOptions() {
     let renderOptions = { 'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
-                      'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
-                      'time_series_line':this.chartdata.time_series[this.chartOptions.seriesFieldAvg].VALUES,
+                      'time_series_bars':this.chartData.time_series[this.chartOptions.seriesField].VALUES,
+                      'time_series_line':this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                       'root_id':this.chartOptions.rootId,
                       'x_axis_legend':this.translationsObj.xAxisLegend,
                       'month_modulo':2,
