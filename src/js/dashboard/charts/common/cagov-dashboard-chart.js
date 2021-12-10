@@ -17,6 +17,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     
         this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
         this.stateData = null;
+        this.uncroppedStateData = null;
     
         getScreenResizeCharts(this);
     
@@ -71,25 +72,6 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     ];
   }
 
-  cropData(timerangeKey) {
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
-    const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
-
-    let daysToKeep = -1;
-    const tokens = timerangeKey.split('-');
-    if (tokens[0] in unitSizeDict) {
-      daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
-    }
-    this.chartdata = JSON.parse(JSON.stringify(this.uncroppedChartData)); // deep copy
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = this.chartdata.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
-  }  
 
   retrieveData(url, regionName) {
     // console.log("Retrieving " + this.chartConfigKey);
@@ -98,12 +80,16 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          this.regionName = regionName;
-          this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
-          this.uncroppedChartData = alldata.data;
-
-          this.renderComponent(regionName);
+            this.regionName = regionName;
+            this.metadata = alldata.meta;
+            this.chartData = alldata.data;
+            this.uncroppedChartData = alldata.data;
+            if ('usesStateData' in this.chartOptions) {
+                if (regionName == 'California') {
+                    this.uncroppedStateData = alldata.data;
+                }
+            }
+            this.renderComponent(regionName);
         }.bind(this)
       );
   }
@@ -115,7 +101,9 @@ export default class CAGovDashboardChart extends window.HTMLElement {
         // console.log("resetting to default filter key")
         this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
     }
-    // console.log(this.chartConfigKey,"set filterKey to",this.chartConfigFilter);
+
+    // resetting the active states can go away if we stop having cross-traffic between charts... (clicked groups already provide correct feedback)
+    // this is only needed when clicking on a different chart sends an event to this chart.
     chartConfig[this.chartConfigKey].filterKeys.forEach( (loopKey) => {
         if (loopKey == this.chartConfigFilter) {
             document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.add('active');
@@ -189,16 +177,36 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     );
   }
 
+  cropData(timerangeKey, uncroppedChartData) {
+    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
+    const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
+
+    let daysToKeep = -1;
+    const tokens = timerangeKey.split('-');
+    if (tokens[0] in unitSizeDict) {
+      daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
+    }
+    let chartData = JSON.parse(JSON.stringify(uncroppedChartData)); // deep copy
+    if (daysToKeep > 0) {
+      keys.forEach( (key) => {
+        const chartSeries = chartData.time_series[key];
+        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
+        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
+        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
+      });
+    }
+    return chartData;
+  }  
+
   renderComponent(regionName) {
     // console.log("Render component",this.chartConfigKey);
 
-    this.cropData(this.chartConfigTimerange);
+    this.chartData = this.cropData(this.chartConfigTimerange, this.uncroppedChartData);
 
     this.addStateLine = false;
     if ('usesStateData' in this.chartOptions) {
-        if (regionName == 'California') {
-            this.statedata = this.chartdata;
-        } else if (this.statedata) {
+        if (regionName != 'California') {
+            this.stateData = this.cropData(this.chartConfigTimerange, this.uncroppedStateData);
             this.addStateLine = true;
         }
     }
