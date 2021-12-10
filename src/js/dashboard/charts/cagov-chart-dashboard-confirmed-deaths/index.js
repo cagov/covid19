@@ -1,9 +1,3 @@
-import template from "./../common/histogram-template.js";
-import getTranslations from "../../../common/get-strings-list.js";
-import getScreenResizeCharts from "../../../common/get-window-size.js";
-import rtlOverride from "../../../common/rtl-override.js";
-import chartConfig from '../common/line-chart-config.json';
-import renderChart from "../common/histogram.js";
 import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import formatValue from "./../../../common/value-formatters.js";
@@ -11,38 +5,7 @@ import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 
 // cagov-chart-dashboard-confirmed-deaths
 class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
-  connectedCallback() {
-    console.log("Loading CAGovDashboardConfirmedDeaths");
-    this.translationsObj = getTranslations(this);
-    this.chartConfigFilter = this.dataset.chartConfigFilter;
-    this.chartConfigKey = this.dataset.chartConfigKey;
-    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
-    this.county = 'California';
-
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-
-    getScreenResizeCharts(this);
-
-    this.screenDisplayType = window.charts
-      ? window.charts.displayType
-      : "desktop";
-
-    this.chartBreakpointValues = chartConfig[
-      this.screenDisplayType ? this.screenDisplayType : "desktop"
-    ];
-    this.dimensions = this.chartBreakpointValues;
-
-    window.addEventListener("resize", this.handleChartResize);
-
-    // Set default values for data and labels
-    this.dataUrl = config.chartsStateDashTablesLoc + this.chartOptions.dataUrl;
-
-    this.retrieveData(this.dataUrl, 'California');
-
-    rtlOverride(this); // quick fix for arabic
-
-    this.listenForLocations();
-  }
+ 
 
   getTooltipContent(di) {
     const barSeries = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
@@ -62,18 +25,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     return caption;
   }
 
-  renderComponent(regionName) {
-    console.log("Render component deaths",this);
-
-    this.cropData(this.chartConfigTimerange);
-
-    let addStateLine = false;
-    if (regionName == 'California') {
-      this.statedata = this.chartdata;
-    } else if (this.statedata) {
-      addStateLine = true;
-    }
-
+  setupPostTranslations(regionName) {
     let latestRec = this.chartdata.latest[this.chartOptions.latestField];
     const repDict = {
       total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
@@ -94,12 +46,10 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
     this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
     this.translationsObj.currentLocation = regionName;
+    return repDict;
+  }
 
-    // console.log("Translations obj",this.translationsObj);
-    this.innerHTML = template.call(this,this.chartOptions, this.translationsObj);
-
-    this.setupTabFilters();
-
+  setupRenderOptions() {
     let renderOptions = {'tooltip_func':this.tooltip,
                         'extras_func':this.renderExtras,
                         'time_series_bars':this.chartdata.time_series[this.chartOptions.seriesField].VALUES,
@@ -115,28 +65,14 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
       renderOptions.pending_date = this.chartdata.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD;
       renderOptions.pending_legend = this.translationsObj.pending;
     }
-    if (addStateLine) {
+    if (this.addStateLine) {
       renderOptions.time_series_state_line = this.statedata.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }
-
-    renderChart.call(this, renderOptions);
+    return renderOptions;
   }
 
   listenForLocations() {
-    let searchElement = document.querySelector("cagov-county-search");
-    searchElement.addEventListener(
-      "county-selected",
-      function (e) {
-        this.county = e.detail.county;
-        let searchURL = config.chartsStateDashTablesLoc + this.chartOptions.dataUrlCounty.replace(
-          "<county>",
-          this.county.toLowerCase().replace(/ /g, "_")
-        );
-        this.retrieveData(searchURL, e.detail.county);
-      }.bind(this),
-      false
-    );
-
+    CAGovDashboardChart.prototype.listenForLocations.call(this);
     // insures cases/deaths stay in sync
     window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
   }
