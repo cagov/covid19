@@ -80,11 +80,11 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
   }
 
 
-  listenForLocations() {
-    CAGovDashboardChart.prototype.listenForLocations.call(this);
-    // insures cases/deaths stay in sync
-    window.addEventListener('deaths-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
-  }
+  // listenForLocations() {
+  //   CAGovDashboardChart.prototype.listenForLocations.call(this);
+  //   // insures cases/deaths stay in sync
+  //   window.addEventListener('deaths-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
+  // }
 }
 
 window.customElements.define(

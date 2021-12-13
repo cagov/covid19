@@ -129,8 +129,9 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
   tabFilterHandler(e) {
     this.chartFilterSelectHandler(e);
-    const event = new window.CustomEvent(`${this.chartConfigKey}-chart-filter-select`,{detail:{filterKey: this.chartConfigFilter}});
-    window.dispatchEvent(event);    
+    // originally used to enable charts to listen to events from other charts for cross-synchronization
+    // const event = new window.CustomEvent(`${this.chartConfigKey}-chart-filter-select`,{detail:{filterKey: this.chartConfigFilter}});
+    // window.dispatchEvent(event);    
   }
 
 
