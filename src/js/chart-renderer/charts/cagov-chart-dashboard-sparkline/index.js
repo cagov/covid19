@@ -84,6 +84,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
         console.log("Problem calcuating uncertainty period",this.dataset.chartConfigKey,this.chartdata)
         uncertainty_days = 7;
       }
+      console.log(`Uncertainty days for for ${this.dataset.chartConfigKey} is ${uncertainty_days} ${pending_date}`);
     } else {
       // console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
     }
