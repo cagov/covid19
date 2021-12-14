@@ -6,7 +6,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './variantchart-config.json';
 import renderChart from "./variantchart-render.js";
 import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
-import { vchart_variants, vchart_vdata } from "./variantchart-data.js";
+// import vchart_vdata from "./variantchart-data.json";
 import formatValue from "./../../../common/value-formatters.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 
@@ -46,7 +46,6 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     // console.log("Reading data file",this.chartOptions.dataPathVar, config);
 
     this.dataUrl = config[this.chartOptions.dataPathVar] + this.chartOptions.dataUrl;
-    // console.log("Loading sparkline json",this.dataset.chartConfigKey,this.dataUrl);
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
@@ -67,6 +66,13 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   getTooltipContent(di) {    
+    // console.log("di",di);
+    if (di >= this.line_series_array[0].length) {
+      di = this.line_series_array[0].length - 1;
+    }
+    if (di < 0) {
+      di = 0;
+    }
     const repDict = {
        WEEKDATE:   reformatReadableDate(this.line_series_array[0][di].DATE),
     }
@@ -85,18 +91,8 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     let line_series_array = [];
 
     this.chartlabels.forEach((label, i) => {
-        console.log("Compute Line Series for ",label, i);
-        let line_series = [];
-        this.chartdata.forEach((rec, j) => {
-            if (j >= 6) {
-                let sum = 0;
-                for (let k = 0; k < 7; ++k) {
-                  sum += this.chartdata[j-k][1+i];
-                }
-                line_series.push({DATE:rec[0],VALUE:sum/7.0})
-            }
-        });
-        line_series_array.push(line_series);
+        let tseries_name = label + "_Percentage-Average";
+        line_series_array.push(this.chartdata.time_series[tseries_name].VALUES);
     });
     this.line_series_array = line_series_array;
 
@@ -121,39 +117,39 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   retrieveData(url) {
-      this.chartdata = vchart_vdata;
-      this.chartlabels = vchart_variants;
+    console.log("FETCHING",url);
+    window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
+        function (vchart_vdata) {
+          this.chartdata = vchart_vdata.data;
+          this.chartlabels = vchart_vdata.meta.VARIANTS;
+    
+          // Splice for dates
+          const tsKeys = Object.keys(this.chartdata.time_series);
+          tsKeys.forEach((tseriesnom) => {
+            let tseries = this.chartdata.time_series[tseriesnom].VALUES;
+            let nbr_to_chop = 0;
+            tseries.forEach((rec, i) => {
+              if (rec.DATE == this.chartOptions.starting_date) {
+                nbr_to_chop = i+1;
+              }
+            });
+            if (nbr_to_chop) {
+              tseries.splice(0,nbr_to_chop);
+            }
+            if (this.chartOptions.uncertainty_days) {
+              tseries.splice(tseries.length-this.chartOptions.uncertainty_days,this.chartOptions.uncertainty_days); 
+            }
+          });
+    
+          this.renderComponent();
 
-      let nbr_to_chop = 0;
-      this.chartdata.forEach((rec, i) => {
-        if (rec[0] == this.chartOptions.starting_date) {
-          nbr_to_chop = i+1;
-        }
-      });
 
-      if (nbr_to_chop) {
-        this.chartdata.splice(0,nbr_to_chop);
-      }
-      if (this.chartOptions.uncertainty_days) {
-        this.chartdata.splice(this.chartdata.length-this.chartOptions.uncertainty_days,this.chartOptions.uncertainty_days); 
-      }
-
-
-      this.renderComponent();
-
-//     window
-//       .fetch(url)
-//       .then((response) => response.json())
-//       .then(
-//         function (alldata) {
-//           // console.log("Race/Eth data data", alldata.data);
-//           this.metadata = alldata.meta;
-//           this.chartdata = alldata.data;
-//           this.renderComponent();
-//         }.bind(this)
-//       );
-//   }
-  
+        }.bind(this)
+      );
+ 
   }
 }
 

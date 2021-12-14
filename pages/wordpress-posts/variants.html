@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-11-24T01:27:46Z"
+publishdate: "2021-12-03T20:30:37Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -20,7 +20,11 @@ addtositemap: false
 
 
 
-<h2 id="normal-part-of-viruses">Variants are a normal part of viruses</h2>
+<hr class="wp-block-separator" id="normal-part-of-viruses"/>
+
+
+
+<h2>Variants are a normal part of viruses</h2>
 
 
 
@@ -32,7 +36,11 @@ addtositemap: false
 
 
 
-<h2 id="tracking">Variants we’re tracking</h2>
+<hr class="wp-block-separator" id="tracking"/>
+
+
+
+<h2>Variants we’re tracking</h2>
 
 
 
@@ -48,7 +56,7 @@ addtositemap: false
 
 
 
-<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Delta</td><td><ul><li>200% increased transmission</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr></tbody></table></figure>
+<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Delta</td><td><ul><li>200% increased transmission compared to other variants</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Omicron</td><td>The California Department of Public Health is working with the CDC to gather information about the Omicron variant.</td></tr></tbody></table></figure>
 
 
 
@@ -64,7 +72,7 @@ addtositemap: false
 
 
 
-<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Alpha</td><td><ul><li>50% increased transmission</li><li>Potential increased disease severity and risk of death</li><li>Minimal impact on antibody treatment effectiveness</li></ul></td></tr><tr><td>Beta</td><td><ul><li>50% increased transmission</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Gamma</td><td><ul><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Epsilon</td><td><ul><li>20% increased transmission</li><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Eta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Iota</td><td><ul><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Kappa</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Zeta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Mu</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr></tbody></table></figure>
+<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Alpha</td><td><ul><li>Increased transmission</li><li>Potential increased disease severity and risk of death</li><li>Minimal impact on antibody treatment effectiveness</li></ul></td></tr><tr><td>Beta</td><td><ul><li>Increased transmission</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Gamma</td><td><ul><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Epsilon</td><td><ul><li>Increased transmission</li><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Eta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Iota</td><td><ul><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Kappa</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Zeta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Mu</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr></tbody></table></figure>
 
 
 
@@ -72,30 +80,38 @@ addtositemap: false
 
 
 
-<h2 id="vaccine-effectiveness">Vaccine effectiveness against variants</h2>
+<hr class="wp-block-separator" id="vaccine-effectiveness"/>
 
 
 
-<p>We are working to better understand how these variants respond to vaccination. Vaccines provide valuable protection against variants circulating in California.</p>
+<h2>Vaccine effectiveness against variants</h2>
 
 
 
-<p>COVID-19 vaccines are effective against variants of the virus currently circulating in the United States, including the Delta variant. We are closely following evolving information about the ability of COVID-19 vaccines to protect against variants.</p>
+<p>COVID-19 vaccines are effective against variants of the virus currently circulating in the United States, including the Delta variant. We are:</p>
 
 
 
-<h2 id="in-california">Variants in California</h2>
+<ul><li>Closely tracking the effectiveness of COVID-19 vaccines in California</li><li>Following evolving information about the ability of COVID-19 vaccines to protect against variants</li></ul>
 
 
 
-<p>We genetically sequence a sample of positive COVID-19 tests to determine which variant they are. This helps us understand which variants are circulating in California.</p>
+<hr class="wp-block-separator" id="in-california"/>
+
+
+
+<h2>Variants in California</h2>
+
+
+
+<p>We <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequence</a> a sample of positive COVID-19 tests to determine which variant they are. This helps us understand which variants are circulating in California.</p>
 
 
 
 <div class="chart-prev-div">
     <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
        <ul class="d-none">
-         <li data-label="y_axis_legend">% of specimens<br>sequenced</li>
+         <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
          <li data-label="tooltipContent">
             <table>
                 <tr><td class="tt-label">Week ending:</td><td class="tt-value">{WEEKDATE}</td></tr>
@@ -106,6 +122,7 @@ addtositemap: false
                 <tr><td class="tt-label">{LABEL_4}</td><td class="tt-value">{VALUE_4}</td></tr>
                 <tr><td class="tt-label">{LABEL_5}</td><td class="tt-value">{VALUE_5}</td></tr>
                 <tr><td class="tt-label">{LABEL_6}</td><td class="tt-value">{VALUE_6}</td></tr>
+                <tr><td class="tt-label">{LABEL_7}</td><td class="tt-value">{VALUE_7}</td></tr>
             </table>
           </li>  
        </ul>
@@ -115,5 +132,5 @@ addtositemap: false
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>We sample at least 10% of all positive tests to create a confident projection of variant distribution in California.</li><li>We update this data Thursdays by noon.</li></ul>
+<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>The California Department of Public Health works with many partners to achieve a goal of sequencing at least 10% of all positive tests. This creates a confident projection of variant distribution in California.</li><li>We update this data Thursdays by noon.</li></ul>
 </div></div></div></cagov-accordion></div>
