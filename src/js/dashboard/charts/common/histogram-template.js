@@ -41,11 +41,40 @@ export default function template(chartOptions, {
           </cagov-chart-filter-buttons>`;
   }
 
-  return /*html*/ `
+  // Create select and options.
+  // console.log('%c BEGIN SELECT', 'color: purple');
+
+  // Collect values in arrays.
+  const timeValues = [timeTabLabel1, timeTabLabel2, timeTabLabel3];
+  const optionsValues = [filterTabLabel1, filterTabLabel2];
+
+  // Set empty strings.
+  let allSelectMarkup = '';
+  let select = '';
+
+  // Loop through options to create select tag.
+  for (const optionLabel of optionsValues) {
+    let optionsMarkup = '';
+    const allOptions = [optionLabel, ...timeValues];
+    for (const option of allOptions) {
+      optionsMarkup += `<option value>${option}</option>`;
+    }
+    select += `<select>
+        ${optionsMarkup}
+      </select>`;
+  }
+
+  // Final select markup.
+  allSelectMarkup = select + allSelectMarkup;
+  // console.log('%c END SELECT', 'color: purple');
+
+  // Return template.
+  return /* html */ `
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
         <div class="mx-auto chart-histogram">
             <div class="chart-title">${post_chartTitle}</div>
+            ${allSelectMarkup}
             ${tabMarkup}
             ${timeMarkup}
             <div class="chart-header">
