@@ -43,11 +43,12 @@ export default function template(chartOptions, {
 
   // Create select and options.
   // console.log('%c BEGIN SELECT', 'color: purple');
-
-  // Group values in arrays.
+  // Group values into arrays.
+  const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3] : [];
+  const filterLabels = 'filterKeys' in chartOptions ? [filterTabLabel1, filterTabLabel2] : [];
   const filters = {
-    0: [filterTabLabel1, filterTabLabel2],
-    1: [timeTabLabel1, timeTabLabel2, timeTabLabel3],
+    filterLabels,
+    timeLabels,
   };
   const filterValues = Object.values(filters);
 
@@ -56,11 +57,20 @@ export default function template(chartOptions, {
   let allSelectMarkup = '';
 
   // Loop through options to create select tag.
-  filterValues.forEach((labels) => {
+  filterValues.forEach((labels, filtersIndex) => {
     let optionsMarkup = '';
+    let optionValues = '';
 
+    if (filtersIndex === 1 && 'timeKeys' in chartOptions) {
+      optionValues = chartOptions.timeKeys;
+    } else if (filtersIndex === 0 && 'filterKeys' in chartOptions) {
+      optionValues = chartOptions.filterKeys;
+    }
+
+    let i = 0;
     labels.forEach((label) => {
-      optionsMarkup += `<option value="d">${label}</option>`;
+      optionsMarkup += `<option value="${optionValues[i]}">${label}</option>`;
+      i += 1;
     });
     select += `<select>
         ${optionsMarkup}
