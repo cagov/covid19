@@ -1,4 +1,20 @@
-import css from "./histogram.scss";
+import css from './histogram.scss';
+
+// Function to create select and options.
+const createSelect = (labels, optionValues) => {
+  let optionsMarkup = '';
+
+  let i = 0;
+  labels.forEach((label) => {
+    optionsMarkup += `<option value="${optionValues[i]}">${label}</option>`;
+    i += 1;
+  });
+
+  return `<select>
+        ${optionsMarkup}
+      </select>`;
+};
+
 /**
  * Generic template for mixed line/bar charts on State Dashboard
  * 
@@ -41,7 +57,6 @@ export default function template(chartOptions, {
           </cagov-chart-filter-buttons>`;
   }
 
-  // Create select and options.
   // console.log('%c BEGIN SELECT', 'color: purple');
   // Group values into arrays.
   const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3] : [];
@@ -58,23 +73,23 @@ export default function template(chartOptions, {
 
   // Loop through options to create select tag.
   filterValues.forEach((labels, filtersIndex) => {
-    let optionsMarkup = '';
     let optionValues = '';
+    let renderSelect = false;
 
+    // Only render the select if the associated keys exist.
     if (filtersIndex === 1 && 'timeKeys' in chartOptions) {
       optionValues = chartOptions.timeKeys;
-    } else if (filtersIndex === 0 && 'filterKeys' in chartOptions) {
-      optionValues = chartOptions.filterKeys;
+      renderSelect = true;
     }
 
-    let i = 0;
-    labels.forEach((label) => {
-      optionsMarkup += `<option value="${optionValues[i]}">${label}</option>`;
-      i += 1;
-    });
-    select += `<select>
-        ${optionsMarkup}
-      </select>`;
+    if (filtersIndex === 0 && 'filterKeys' in chartOptions) {
+      optionValues = chartOptions.filterKeys;
+      renderSelect = true;
+    }
+
+    if (renderSelect === true) {
+      select += createSelect(labels, optionValues);
+    }
   });
 
   // Final select markup.
