@@ -16,8 +16,7 @@ const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
   chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/',
   chartsStateDashTablesLocSparklineVaccines: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardVaccines_Sparkline_Staging/data/dashboard/',
-  // chartsStateDashTablesLocPostvax: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardPostvax_Staging/data/dashboard/',
-  chartsStateDashTablesLocPostvax: 'https://data.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLocPostvax: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardPostvax_Staging/data/dashboard/',
 }
 
 const devOutputPath = 'docs/js/chart-renderer.js';
