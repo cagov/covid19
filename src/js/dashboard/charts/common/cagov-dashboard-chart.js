@@ -118,6 +118,24 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     this.renderComponent(this.regionName);
   }
 
+    // 12-2021 dropdown filters.
+  chartFilterNewSelectHandler(e) {
+    // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);    
+    
+    // Set the chart's filter to match the value of the selected option.
+    this.chartConfigFilter = e.target.value;
+    
+    // If the selected option doesn't exist, set chart to use default filter.
+    if (!(e.target.value in chartConfig[this.chartConfigKey])) {
+      // console.log("resetting to default filter key")
+      this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
+    }
+
+
+    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    // if I am in a county have to do county url replacement
+    this.renderComponent(this.regionName);
+  }
 
   chartTimerangeSelectHandler(e) {
     // console.log(this.chartConfigKey,"charttimerange", e.detail.timerangeKey);
@@ -158,6 +176,20 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       this.timerangeFilterHandler.bind(this),
       false
     );
+  }
+
+  // 12-2021 dropdown filters.
+  setupSelectFilters() {
+    // console.log(`%c Chartname ${this.chartConfigKey}`, 'color: blue');
+    if (chartConfig[this.chartConfigKey].filterKeys.length > 1) {
+      let myFilter = document.querySelector(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
+
+      myFilter.addEventListener(
+        "change",
+        this.chartFilterNewSelectHandler.bind(this),
+        false
+        );
+    }
   }
 
   locationHandler(e) {
@@ -218,6 +250,9 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
     this.setupTabFilters();
+
+    // 12-2021 dropdown filters.
+    this.setupSelectFilters();
 
     const renderOptions = this.setupRenderOptions();
     renderOptions.lineAndBarsSameScale = this.chartOptions.lineAndBarsSameScale;
