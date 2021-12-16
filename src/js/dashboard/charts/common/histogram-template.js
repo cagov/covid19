@@ -1,7 +1,7 @@
 import css from './histogram.scss';
 
 // Function to create select and options.
-const createSelect = (labels, optionValues) => {
+const createSelect = (labels, optionValues, configKey) => {
   let optionsMarkup = '';
 
   let i = 0;
@@ -10,9 +10,14 @@ const createSelect = (labels, optionValues) => {
     i += 1;
   });
 
-  return `<select>
+  // @todo a11y: Each select should have a label with a for attribute. 
+  return `
+    <cagov-chart-filter-select class="js-filter-${configKey}">
+      <select>
         ${optionsMarkup}
-      </select>`;
+      </select>
+    </cagov-chart-filter-select>
+`;
 };
 
 /**
@@ -88,7 +93,7 @@ export default function template(chartOptions, {
     }
 
     if (renderSelect === true) {
-      select += createSelect(labels, optionValues);
+      select += createSelect(labels, optionValues, this.chartConfigKey);
     }
   });
 
