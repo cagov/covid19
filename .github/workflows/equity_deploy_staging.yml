@@ -16,4 +16,4 @@ jobs:
     steps:
       - run: echo 'Hello world!'  
   rebuild-equity:
-    uses: cagov/covid19/.github/workflows/azure-static-web-apps-wonderful-ground-0c34d501e.yml@staging
+    uses: cagov/covid19/.github/workflows/staging_aws.yml@master
