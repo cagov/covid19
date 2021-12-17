@@ -3,6 +3,40 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:staging": "cross-env NODE_ENV=staging npm run build",
+    "build:css": "gulp css",
+    "build:site": "gulp eleventy",
+    "build:js": "gulp rollup",
+    "debug:11ty": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "deploy": "gulp deploy",
+    "deploy:redirects": "node src/redirects/fromTable.js",
+    "clean": "gulp clean",
+    "compress:img": "cd src/build && node img.js",
+    "dev": "cross-env NODE_ENV=development npm run start",
+    "devserver": "web-dev-server --root-dir docs/",
+    "local": "npm run watch",
+    "local:dev": "cross-env NODE_ENV=development npm run watch",
+    "serve": "npx @11ty/eleventy --serve --quiet",
+    "start": "npm run watch",
+    "testdata": "tap test/11ty-data.js",
+    "test": "npx playwright test index.spec.mjs",
+    "test:setup": "npx playwright install-deps chromium && npx playwright install",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagov/covid19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cagov/covid19/issues"
+  },
+  "homepage": "https://github.com/cagov/covid19#readme",
   "dependencies": {
     "@cagov/accordion": "^2.0.11",
     "@cagov/anchor-events": "^1.0.0",
@@ -61,39 +95,5 @@
     "sinon": "^12.0.1",
     "tap": "^15.1.5",
     "tape": "^5.3.2"
-  },
-  "scripts": {
-    "devserver": "web-dev-server --root-dir docs/",
-    "devserver:background": "web-dev-server --root-dir docs/ &",
-    "dev": "cross-env NODE_ENV=development npm run start",
-    "start": "npm run watch",
-    "serve": "npx @11ty/eleventy --serve --quiet",
-    "build": "gulp build",
-    "build:staging": "cross-env NODE_ENV=staging npm run build",
-    "build:css": "gulp css",
-    "build:site": "gulp eleventy",
-    "build:js": "gulp rollup",
-    "watch": "gulp watch",
-    "clean": "gulp clean",
-    "deploy": "gulp deploy",
-    "local": "npm run watch",
-    "local:dev": "cross-env NODE_ENV=development npm run watch",
-    "compress:img": "cd src/build && node img.js",
-    "testdata": "tap test/11ty-data.js",
-    "test": "npx playwright test index.spec.mjs",
-    "test:setup": "npx playwright install-deps chromium && npx playwright install",
-    "debug:11ty": "DEBUG=Eleventy* npx @11ty/eleventy",
-    "build:11ty": "npx @11ty/eleventy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cagov/covid19.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cagov/covid19/issues"
-  },
-  "homepage": "https://github.com/cagov/covid19#readme"
+  }
 }

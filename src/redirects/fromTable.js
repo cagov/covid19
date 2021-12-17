@@ -5,20 +5,6 @@ const s3 = new AWS.S3();
 const Bucket = 'covid19.ca.gov';
 const redirectJson = require('../../pages/wordpress-posts/page-redirect-table.json');
 
-if (!s3.config.credentials) {
-    //Use this for local dev with a awe_config.json file
-    s3.config.loadFromPath('../../aws_config.json');
-    //AWS config file in root should look like this...
-    //
-    //{
-    //    "credentials": {
-    //        "accessKeyId": "<YOUR_ACCESS_KEY_ID>",
-    //        "secretAccessKey": "<YOUR_SECRET_ACCESS_KEY>"
-    //    },
-    //    "region": "us-west-1"
-    //}
-}
-
 //Remove leading slashes, and anything that ends in slash will get a /index.html added
 
 const s3Input = redirectJson.Table1.map(redirect => ({
