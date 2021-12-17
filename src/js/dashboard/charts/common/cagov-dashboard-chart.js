@@ -95,29 +95,6 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       );
   }
 
-  chartFilterSelectHandler(e) {
-    // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);
-    this.chartConfigFilter = e.detail.filterKey;
-    if (!(e.detail.filterKey in chartConfig[this.chartConfigKey])) {
-        // console.log("resetting to default filter key")
-        this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
-    }
-
-    // resetting the active states can go away if we stop having cross-traffic between charts... (clicked groups already provide correct feedback)
-    // this is only needed when clicking on a different chart sends an event to this chart.
-    chartConfig[this.chartConfigKey].filterKeys.forEach( (loopKey) => {
-        if (loopKey == this.chartConfigFilter) {
-            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.add('active');
-        } else {
-            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.remove('active');
-        }
-    });
-
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
-    this.renderComponent(this.regionName);
-  }
-
   // 12-2021 dropdown filters.
   chartFilterNewSelectHandler(e) {
     // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);    
@@ -138,57 +115,16 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     this.renderComponent(this.regionName);
   }
 
-  chartTimerangeSelectHandler(e) {
-    // console.log(this.chartConfigKey,"charttimerange", e.detail.timerangeKey);
-    this.chartConfigTimerange = e.detail.timerangeKey;
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
-    this.renderComponent(this.regionName);
-  }
-
-  tabFilterHandler(e) {
-    this.chartFilterSelectHandler(e);
-    // originally used to enable charts to listen to events from other charts for cross-synchronization
-    // const event = new window.CustomEvent(`${this.chartConfigKey}-chart-filter-select`,{detail:{filterKey: this.chartConfigFilter}});
-    // window.dispatchEvent(event);    
-  }
-
-
-  timerangeFilterHandler(e) {
-    // console.log(this.chartConfigKey,"timerangeFilterHandler", e.detail.timerangeKey);
-    this.chartTimerangeSelectHandler(e);
-  }
-
-  setupTabFilters() {
-    // console.log("SETTING up setupTabFilters for "+this.chartConfigKey);
-    if (chartConfig[this.chartConfigKey].filterKeys.length > 1) {
-        let myFilter = document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey}`);
-        myFilter.addEventListener(
-        "filter-selected",
-        this.tabFilterHandler.bind(this),
-        false
-        );
-    }
-
-    // console.log("SETTING up timerangefilterhandler for "+this.chartConfigKey);
-    let myTimeFilter = document.querySelector(`cagov-timerange-buttons.js-filter-${this.chartConfigKey}`);
-    myTimeFilter.addEventListener(
-      "timerange-selected",
-      this.timerangeFilterHandler.bind(this),
-      false
-    );
-  }
-
-  // 12-2021 dropdown filters.
+  // 12-2021 Adding dropdown filters.
   // Bind function top filters. 
   setupSelectFilters() {
-    let selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
 
     selectFilters.forEach(selectFitler => {
       selectFitler.addEventListener(
         "change",
         this.chartFilterNewSelectHandler.bind(this),
-        false
+        false,
         );
     })
   }
@@ -250,9 +186,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
-    this.setupTabFilters();
-
-    // 12-2021 dropdown filters.
+    // 12-2021 Adding dropdown filters.
     this.setupSelectFilters();
 
     const renderOptions = this.setupRenderOptions();

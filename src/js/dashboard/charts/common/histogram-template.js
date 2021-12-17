@@ -36,32 +36,6 @@ export default function template(chartOptions, {
   timeTabLabel2 = 'Tab Label 2',
   timeTabLabel3 = 'Tab Label 3',
 }) {
-  let tabMarkup = '';
-  if ('filterKeys' in chartOptions) {
-    let active1 = this.chartConfigFilter == chartOptions.filterKeys[0]? "active" : "";
-    let active2 = this.chartConfigFilter == chartOptions.filterKeys[1]? "active" : "";
-    tabMarkup = `<cagov-chart-filter-buttons class="filter-buttons--statedash js-re-smalls js-filter-${this.chartConfigKey}">
-            <div class="d-flex justify-content-center">
-              <button class="small-tab ${active1}" data-key="${chartOptions.filterKeys[0]}">${filterTabLabel1}</button>
-              <button class="small-tab ${active2}" data-key="${chartOptions.filterKeys[1]}">${filterTabLabel2}</button>
-            </div>
-          </cagov-chart-filter-buttons>`;
-  }
-  let timeMarkup = '';
-  if ('timeKeys' in chartOptions) {
-    const configTimeRange = this.chartConfigTimerange == undefined? 'all-time' : this.chartConfigTimerange;
-    let active1 = configTimeRange == chartOptions.timeKeys[0]? "active" : "";
-    let active2 = configTimeRange == chartOptions.timeKeys[1]? "active" : "";
-    let active3 = configTimeRange == chartOptions.timeKeys[2]? "active" : "";
-    timeMarkup = `<cagov-timerange-buttons class="time-buttons--statedash js-re-smalls js-filter-${this.chartConfigKey}">
-            <div class="d-flex justify-content-center">
-              <button class="small-tab ${active1}" data-key="${chartOptions.timeKeys[0]}">${timeTabLabel1}</button>
-              <button class="small-tab ${active2}" data-key="${chartOptions.timeKeys[1]}">${timeTabLabel2}</button>
-              <button class="small-tab ${active3}" data-key="${chartOptions.timeKeys[2]}">${timeTabLabel3}</button>
-            </div>
-          </cagov-chart-filter-buttons>`;
-  }
-
   // console.log('%c BEGIN SELECT', 'color: purple');
   // Group values into arrays.
   const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3] : [];
@@ -108,8 +82,6 @@ export default function template(chartOptions, {
         <div class="mx-auto chart-histogram">
             <div class="chart-title">${post_chartTitle}</div>
             ${allSelectMarkup}
-            ${tabMarkup}
-            ${timeMarkup}
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
             <div class="header-line">${post_chartLegend2}</div>
