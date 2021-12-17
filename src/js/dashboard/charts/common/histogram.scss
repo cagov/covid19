@@ -245,11 +245,12 @@ cagov-chart-filter-select {
     color: #1f2574;
     font-size: 15.2px;
     font-weight: bold;
+    margin-bottom: 20px;
     margin-right: 10px;
     padding: 10px 30px 10px 10px;
     text-decoration: underline;
     &:focus-visible {
-      border: 2px solid #ffcf44;
+      border: 1px solid #ffcf44;
       outline: none;
     }
   }
