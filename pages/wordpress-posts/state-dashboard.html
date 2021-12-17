@@ -385,10 +385,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
 
 
-
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">
+<!-- 1 Cases and Deaths - Confirmed Cases -->
+      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Confirmed cases in California</li>
           <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
@@ -416,8 +416,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         </ul>
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">>
+   <!-- 2 Cases and Deaths - Confirmed Deaths -->
+      <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">>
         <ul class="d-none">
           <li data-label="chartTitleState">Confirmed deaths in California</li>
           <li data-label="chartTitleCounty">Confirmed deaths in {REGION} County</li>
@@ -470,9 +472,11 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
+
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">>
+   <!-- 3 Testing for COVID-19 - Total tests in California -->
+      <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">>
         <ul class="d-none">
           <li data-label="chartTitleState">Total tests in California</li>
           <li data-label="chartTitleCounty">Total tests in {REGION} County</li>
@@ -499,8 +503,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
         </ul>
       </cagov-chart-dashboard-total-tests>               
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">>
+   <!-- 4 Testing for COVID-19 - Positivity rate in California -->
+      <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">>
         <ul class="d-none">
           <li data-label="chartTitleState">Positivity rate in California</li>
           <li data-label="chartTitleCounty">Positivity rate in {REGION} County</li>
@@ -551,7 +557,9 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">>
+        <!-- 5 Confirmed and suspected hospitalizations - COVID-19 hospitalized patients in California -->
+
+      <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">>
         <ul class="d-none">
           <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
           <li data-label="chartTitleCounty">COVID-19 hospitalized patients in {REGION} County</li>
@@ -579,7 +587,8 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </cagov-chart-dashboard-patients>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">>
+          <!-- 6 Confirmed and suspected hospitalizations - ICU beds in California -->
+    <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">>
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
           <li data-label="chartTitleCounty">ICU beds in {REGION} County</li>
