@@ -280,10 +280,23 @@
 	myWebSearchStartingCallback(query)
 </script>
 <script>
+	String.prototype.hashCode = function() {
+		var hash = 0, i, chr;
+		if (this.length === 0) return hash;
+		for (i = 0; i < this.length; i++) {
+			chr   = this.charCodeAt(i);
+			hash  = ((hash << 5) - hash) + chr;
+			hash |= 0; // Convert to 32bit integer
+		}
+		return hash;
+	};
+
+	const rejectList = [-877200434, 3154295];
+
 	const popularQueryiesCallback = data => {
 		document.querySelector('#queries').innerHTML += data.popularQueries
 			.map(x=>x.query)
-			.filter(x=>(x.match(/\S+/g).length<=4 && !x.match(/fuck/i)))
+			.filter(x=>(x.match(/\S+/g).length<=4 && !rejectList.includes(x.hashCode())))
 			.map(x=>
 				`<a rel="nofollow" class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
 			).join('');
