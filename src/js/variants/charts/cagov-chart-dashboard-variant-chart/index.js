@@ -46,6 +46,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     // console.log("Reading data file",this.chartOptions.dataPathVar, config);
 
     this.dataUrl = config[this.chartOptions.dataPathVar] + this.chartOptions.dataUrl;
+    // console.log("CONFIG", this.dataUrl, config);
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
@@ -90,13 +91,16 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
     let line_series_array = [];
 
+    // console.log("KEYS");
+    // console.log(Object.keys(this.chartdata.time_series));
+
     this.chartlabels.forEach((label, i) => {
-        let tseries_name = label + "_Percentage-Average";
+        let tseries_name = label + "_Percentage,-7-day average";
         line_series_array.push(this.chartdata.time_series[tseries_name].VALUES);
     });
     this.line_series_array = line_series_array;
 
-    console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
+    // console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
     let renderOptions = {
                           'chart_style':this.chartOptions.chart_style,
