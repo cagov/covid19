@@ -118,13 +118,14 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     this.renderComponent(this.regionName);
   }
 
-    // 12-2021 dropdown filters.
+  // 12-2021 dropdown filters.
   chartFilterNewSelectHandler(e) {
     // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);    
     
     // Set the chart's filter to match the value of the selected option.
     this.chartConfigFilter = e.target.value;
-    
+    this.chartConfigTimerange = e.target.value;
+
     // If the selected option doesn't exist, set chart to use default filter.
     if (!(e.target.value in chartConfig[this.chartConfigKey])) {
       // console.log("resetting to default filter key")
@@ -179,17 +180,17 @@ export default class CAGovDashboardChart extends window.HTMLElement {
   }
 
   // 12-2021 dropdown filters.
+  // Bind function top filters. 
   setupSelectFilters() {
-    // console.log(`%c Chartname ${this.chartConfigKey}`, 'color: blue');
-    if (chartConfig[this.chartConfigKey].filterKeys.length > 1) {
-      let myFilter = document.querySelector(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
+    let selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
 
-      myFilter.addEventListener(
+    selectFilters.forEach(selectFitler => {
+      selectFitler.addEventListener(
         "change",
         this.chartFilterNewSelectHandler.bind(this),
         false
         );
-    }
+    })
   }
 
   locationHandler(e) {
