@@ -27,7 +27,7 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
 // Date Axis
 function writeXAxis(svg, data, date_fld, x, y, 
   { root_id='barid'} ) {
-  console.log("writeXAxis A");
+  // console.log("writeXAxis A");
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
@@ -37,7 +37,7 @@ function writeXAxis(svg, data, date_fld, x, y,
       .attr("class",'date-axis')
       .attr('style','stroke-width: 0.5px; stroke:black;');
 
-  console.log("writeXAxis B",data);
+  // console.log("writeXAxis B",data);
   data.forEach((d,i) => {
     const ymd = d[date_fld].split('-');
     const year_idx = parseInt(ymd[0]);
@@ -70,7 +70,7 @@ function writeXAxis(svg, data, date_fld, x, y,
     if (day_idx == 15) {
     }
   });
-  console.log("writeXAxis C");
+  // console.log("writeXAxis C");
 
 }
 
@@ -376,11 +376,11 @@ function getAxisDiv(ascale,{hint='num'}) {
 
 
     // Write Y Axis, favoring line on left, bars on right
-    console.log("Writing Y Axis");
+    // console.log("Writing Y Axis");
     writeYAxis.call(this, this.svg, this.xline, this.yline,
          {y_fmt:y_fmt, root_id:root_id, y_axis_legend: y_axis_legend});
 
-    console.log("Writing X Axis");
+    // console.log("Writing X Axis");
     writeXAxis.call(this, this.svg, line_series_array[0], x_axis_field, this.xline, this.yline,
       {week_modulo: 1, root_id:root_id} );
 
