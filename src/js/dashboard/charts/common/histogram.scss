@@ -233,3 +233,17 @@
 .d-hide {
   display: none;
 }
+
+cagov-chart-filter-select {
+  select {
+    background-image: none;
+    border-color: black;
+    border-radius: 0;
+    color: #1f2574;
+    font-size: 15.2px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px;
+    text-decoration: underline;
+  }
+}
