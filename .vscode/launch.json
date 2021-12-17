@@ -16,5 +16,13 @@
       "console": "internalConsole",
       "outputCapture": "std"
     }
+    ,{
+      "type": "node",
+      "request": "launch",
+      "name": "Debug redirects",
+      "program": "fromTable.js",
+      "cwd": "${workspaceRoot}/src/redirects",
+      "outputCapture": "std"
+    },
   ]
 }

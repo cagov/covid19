@@ -64,6 +64,11 @@ jobs:
           dest: 's3://covid19.ca.gov/fonts'
           flags: --recursive --cache-control max-age=15552000
 
+      # Create all the redirects on S3, only do this on production we don't want this set of redirects in all environments
+      - name: Deploy redirects
+        run: |
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} npm run deploy:redirects
+
       # Invalidate Cloudfront production distribution
       - name: invalidate
         uses: chetan/invalidate-cloudfront-action@v1.3
