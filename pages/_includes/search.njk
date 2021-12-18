@@ -116,12 +116,22 @@
 		return hash;
 	};
 
-	const rejectList = [-877200434, 3154295];
+	const rejectList = [
+	3154295, -891899646, 3446907, -1263686556,
+	-519573749, 32245991, -1045620280, 3083181, 
+	105116, 3059156, -717313205, -20842805,
+	3529280, 3441177];
+
+	isRejected = function(phrase) {
+		return phrase.split(' ').filter(wrd=>(rejectList.includes(wrd.hashCode()))).length > 0;
+	};
 
 	const popularQueryiesCallback = data => {
+		let pqs = 
 		document.querySelector('#queries').innerHTML += data.popularQueries
+			.filter(x=>(x.num > 1))
 			.map(x=>x.query)
-			.filter(x=>(x.match(/\S+/g).length<=4 && !rejectList.includes(x.hashCode())))
+			.filter(x=>(x.match(/\S+/g).length<=4 && !isRejected(x)))
 			.map(x=>
 				`<a rel="nofollow" class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
 			).join('');
