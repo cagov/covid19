@@ -318,7 +318,7 @@
 
 	const isRejected = function(phrase) {
 		return phrase.match(/\S+/g).length > 4 || 
-		       phrase.split(' ').filter(wrd=>(rejectList.includes(wrd.hashCode()))).length > 0;
+    	       phrase.split(' ').find(wrd=>(rejectList.includes(wrd.hashCode()))) != undefined;
 	};
 
 	const popularQueryiesCallback = data => {
