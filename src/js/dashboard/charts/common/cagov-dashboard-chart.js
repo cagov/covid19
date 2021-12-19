@@ -72,8 +72,6 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     ];
   }
 
-
-
   retrieveData(url, regionName) {
     // console.log("Retrieving " + this.chartConfigKey);
     window
@@ -95,35 +93,27 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       );
   }
 
-  // 12-2021 dropdown filters.
-  chartFilterNewSelectHandler(e) {
-    // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);    
-    
-    // Set the chart's filter to match the value of the selected option.
-    this.chartConfigFilter = e.target.value;
-    this.chartConfigTimerange = e.target.value;
+  // Get select values and send them to the chart for rendering.
+  chartFilterSelectsHandler(selectFilters, e) {
 
-    // If the selected option doesn't exist, set chart to use default filter.
-    if (!(e.target.value in chartConfig[this.chartConfigKey])) {
-      // console.log("resetting to default filter key")
-      this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
-    }
-
-
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
+    selectFilters.forEach(select => {
+      if (select.dataset.type === 'time') {
+        this.chartConfigTimerange = select.value;
+      } else if(select.dataset.type === 'filter') {
+        this.chartConfigFilter = select.value;
+      }
+    })
     this.renderComponent(this.regionName);
   }
 
-  // 12-2021 Adding dropdown filters.
-  // Bind function top filters. 
+  // Add event listener to select filters. 
   setupSelectFilters() {
-    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey}`);
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
 
     selectFilters.forEach(selectFitler => {
       selectFitler.addEventListener(
         "change",
-        this.chartFilterNewSelectHandler.bind(this),
+        this.chartFilterSelectsHandler.bind(this, selectFilters),
         false,
         );
     })
