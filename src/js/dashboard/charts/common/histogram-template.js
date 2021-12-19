@@ -1,12 +1,20 @@
 import css from './histogram.scss';
 
 // Function to create select and options.
-const createSelect = (labels, optionValues, configKey, configFilter) => {
+const createSelect = (
+  labels,
+  optionValues,
+  configKey,
+  configFilter,
+  timerange,
+  selectType
+) => {
   let optionsMarkup = '';
 
   let i = 0;
   labels.forEach((label) => {
-    let optionAttribute = (optionValues[i] == configFilter) ? 'selected = "selected"' : '';
+    const optionAttribute = (optionValues[i] == configFilter || optionValues[i] == timerange) ? 'selected = "selected"' : '';
+
     optionsMarkup += `<option role="option" ${optionAttribute} value="${optionValues[i]}">${label}</option>`;
     i += 1;
   });
@@ -14,7 +22,7 @@ const createSelect = (labels, optionValues, configKey, configFilter) => {
   // @todo a11y: Each select should have a label with a for attribute. 
   return `
     <cagov-chart-filter-select class="js-filter-${configKey}">
-      <select>
+      <select data-type="${selectType}">
         ${optionsMarkup}
       </select>
     </cagov-chart-filter-select>
@@ -58,16 +66,23 @@ export default function template(chartOptions, {
     // Only render the select if the associated keys exist.
     if (filtersIndex === 1 && 'timeKeys' in chartOptions) {
       optionValues = chartOptions.timeKeys;
-      renderSelect = true;
+      renderSelect = [true, 'time'];
     }
 
     if (filtersIndex === 0 && 'filterKeys' in chartOptions) {
       optionValues = chartOptions.filterKeys;
-      renderSelect = true;
+      renderSelect = [true, 'filter'];
     }
 
-    if (renderSelect === true) {
-      select += createSelect(labels, optionValues, this.chartConfigKey, this.chartConfigFilter);
+    if (renderSelect[0] === true) {
+      select += createSelect(
+        labels,
+        optionValues,
+        this.chartConfigKey,
+        this.chartConfigFilter,
+        this.chartConfigTimerange,
+        renderSelect[1]
+      );
     }
   });
 
