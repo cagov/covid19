@@ -93,30 +93,39 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       );
   }
 
-  // Get select values and send them to the chart for rendering.
+  /**
+   * Get select values and send them to the chart for rendering.
+   *
+   * @param   {NodeList}  selectFilters  List of select tags on the chart.
+   * @param   {Event}  e  Event. (function breaks without it even though it isn't used.)
+   *
+   */
   chartFilterSelectsHandler(selectFilters, e) {
-
-    selectFilters.forEach(select => {
-      if (select.dataset.type === 'time') {
-        this.chartConfigTimerange = select.value;
-      } else if(select.dataset.type === 'filter') {
-        this.chartConfigFilter = select.value;
+    selectFilters.forEach((select) => {
+      switch (select.dataset.type) {
+        case 'time':
+          this.chartConfigTimerange = select.value;
+          break;
+        case 'filter':
+          this.chartConfigFilter = select.value;
+          break;
+        default:
       }
-    })
+    });
     this.renderComponent(this.regionName);
   }
 
-  // Add event listener to select filters. 
+  // Add event listener to select filters.
   setupSelectFilters() {
     const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
 
-    selectFilters.forEach(selectFitler => {
+    selectFilters.forEach((selectFitler) => {
       selectFitler.addEventListener(
-        "change",
+        'change',
         this.chartFilterSelectsHandler.bind(this, selectFilters),
         false,
-        );
-    })
+      );
+    });
   }
 
   locationHandler(e) {
@@ -176,7 +185,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
-    // 12-2021 Adding dropdown filters.
+    // Create dropdown filters.
     this.setupSelectFilters();
 
     const renderOptions = this.setupRenderOptions();

@@ -1,25 +1,32 @@
 import css from './histogram.scss';
 
-// Function to create select and options.
+/**
+ * Build each select.
+ *
+ * @return  string  Temlate markup.
+ */
 const createSelect = (
   labels,
   optionValues,
   configKey,
   configFilter,
   timerange,
-  selectType
+  selectType,
 ) => {
+  // Set initial string.
   let optionsMarkup = '';
 
+  // Loop through options to populate select element.
   let i = 0;
   labels.forEach((label) => {
-    const optionAttribute = (optionValues[i] == configFilter || optionValues[i] == timerange) ? 'selected = "selected"' : '';
-
+    // Set 'selected' attribute based on current chart config.
+    const optionAttribute = (optionValues[i] === configFilter || optionValues[i] === timerange) ? 'selected = "selected"' : '';
+    // Contatenate options.
     optionsMarkup += `<option role="option" ${optionAttribute} value="${optionValues[i]}">${label}</option>`;
     i += 1;
   });
 
-  // @todo a11y: Each select should have a label with a for attribute. 
+  // @todo a11y: Each select should have a label with a for="" attribute.
   return `
     <cagov-chart-filter-select class="js-filter-${configKey}">
       <select data-type="${selectType}">
@@ -31,7 +38,7 @@ const createSelect = (
 
 /**
  * Generic template for mixed line/bar charts on State Dashboard
- * 
+ *
  */
 export default function template(chartOptions, {
   post_chartTitle = "chart title",
@@ -74,6 +81,7 @@ export default function template(chartOptions, {
       renderSelect = [true, 'filter'];
     }
 
+    // Send values to the createSelect() function.
     if (renderSelect[0] === true) {
       select += createSelect(
         labels,
@@ -81,7 +89,7 @@ export default function template(chartOptions, {
         this.chartConfigKey,
         this.chartConfigFilter,
         this.chartConfigTimerange,
-        renderSelect[1]
+        renderSelect[1],
       );
     }
   });
