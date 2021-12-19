@@ -95,7 +95,7 @@ export default function template(chartOptions, {
     <div class="py-2">
       <div class="bg-white pt-2 pb-1">
         <div class="mx-auto chart-histogram">
-            <div class="chart-title">${post_chartTitle}</div>
+            <div class="chart-title"><span>${post_chartTitle}</span></div> 
             ${allSelectMarkup}
             <div class="chart-header">
             <div class="header-line header-line1">${post_chartLegend1}</div>
