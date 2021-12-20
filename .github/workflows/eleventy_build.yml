@@ -20,6 +20,8 @@ jobs:
         env:
             FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
+
+      # Deploy to this branch that Azure workflow watches for changes and deploys to Azure production
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -27,3 +29,53 @@ jobs:
           publish_dir: ./docs
           publish_branch: deploy_production
           commit_message: ${{ github.event.head_commit.message }}
+
+      # Push built site files to S3 production bucket    
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: 'covid19.ca.gov'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
+          SOURCE_DIR: ./docs # only move built directory
+
+      # Reset the cache-control headers on static assets on production S3 bucket
+      - name: Reset cache-control on static files
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: 'us-west-1'   # optional: defaults to us-east-1
+          source: './docs/fonts'
+          dest: 's3://covid19.ca.gov/fonts'
+          flags: --recursive --cache-control max-age=15552000
+
+      # Reset the cache-control headers on static assets on production S3 bucket
+      - name: Reset cache-control on static files
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: 'us-west-1'   # optional: defaults to us-east-1
+          source: './docs/img'
+          dest: 's3://covid19.ca.gov/fonts'
+          flags: --recursive --cache-control max-age=15552000
+
+      # Create all the redirects on S3, only do this on production we don't want this set of redirects in all environments
+      - name: Deploy redirects
+        run: |
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} npm run deploy:redirects
+
+      # Invalidate Cloudfront production distribution
+      - name: invalidate
+        uses: chetan/invalidate-cloudfront-action@v1.3
+        env:
+          DISTRIBUTION: 'EUZDM53N8V5KD'
+          PATHS: '/*'
+          AWS_REGION: 'us-west-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
+
