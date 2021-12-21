@@ -6,8 +6,6 @@ import './polyfills/endswith.js';
 import '@cagov/step-list';
 import './dashboard/async-polyfill.js';
 import './alerts/index.js';
-import './telehealth/index.js';
-import './plasma/index.js';
 import './feature-detect/webp.js';
 import './menu/index.js';
 import './equity-dash/index.js';
