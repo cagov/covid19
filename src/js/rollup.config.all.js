@@ -1,8 +1,6 @@
 import alerts from './alerts/rollup.config';
 import es5 from './rollup.config.es5';
 import esm from './rollup.config';
-import plasma from './plasma/rollup.config';
-import telehealth from './telehealth/rollup.config';
 import video from './video/rollup.config';
 import dashboard from './dashboard/rollup.config';
 import equitydash from './equity-dash/rollup.config';
@@ -41,8 +39,6 @@ function shouldIRebuild(directory,generatedFile) {
 // Combines all the Rollup files into one.
 export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
-  ...(shouldIRebuild('/plasma/', '../../docs/js/plasma.js') ? [plasma] : []),
-  ...(shouldIRebuild('/telehealth/', '../../docs/js/telehealth.js') ? [telehealth] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : [dashboard]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
