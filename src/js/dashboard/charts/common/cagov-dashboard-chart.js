@@ -190,6 +190,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
     const renderOptions = this.setupRenderOptions();
     renderOptions.lineAndBarsSameScale = this.chartOptions.lineAndBarsSameScale;
+    renderOptions.month_modulo = this.chartConfigTimerange == 'all-time'? 3 : 1;
 
     renderChart.call(this, renderOptions);
   }
