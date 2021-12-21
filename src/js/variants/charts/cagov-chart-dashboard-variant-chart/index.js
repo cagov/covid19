@@ -114,7 +114,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'render_date': getSnowflakeStyleDate(0),
                           'chart_options': this.chartOptions,
                           'series_labels': this.chartlabels,
-                          'series_colors': this.chartOptions.series_colors,
+                          'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
       renderChart.call(this, renderOptions);
