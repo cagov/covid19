@@ -26,6 +26,16 @@ jobs:
         run: |
           npm install
           npm run build
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm test
+        run: |
+          npm run test:setup
+          npm test
+        env:
+          CI: true        
 
       # Push built site files to S3 production bucket    
       - name: Deploy to S3

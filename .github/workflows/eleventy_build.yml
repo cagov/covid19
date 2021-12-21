@@ -20,6 +20,16 @@ jobs:
         env:
             FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm test
+        run: |
+          npm run test:setup
+          npm test
+        env:
+          CI: true        
 
       # Deploy to this branch that Azure workflow watches for changes and deploys to Azure production
       - name: Deploy
