@@ -71,11 +71,11 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     return renderOptions;
   }
 
-  listenForLocations() {
-    CAGovDashboardChart.prototype.listenForLocations.call(this);
-    // insures cases/deaths stay in sync
-    window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
-  }
+  // listenForLocations() {
+  //   CAGovDashboardChart.prototype.listenForLocations.call(this);
+  //   // insures cases/deaths stay in sync
+  //   window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
+  // }
 
 }
 

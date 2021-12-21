@@ -53,6 +53,52 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
     return renderOptions;
   }
 
+  retrieveData(url, regionName) {
+    if (regionName == 'Alpine') {
+        let alldata = {
+          "meta": {
+            "PUBLISHED_DATE": getSnowflakeStyleDate(0),
+            "coverage": regionName,
+          },
+          "data": {
+            "latest": {
+              "ICU_BEDS": {
+                "TOTAL": 0,
+                "CHANGE": 0,
+                "CHANGE_FACTOR": 0,
+                "POPULATION": 13354
+              },
+            },
+            "time_series": {
+              "ICU_BEDS": {
+                "DATE_RANGE": {
+                  "MINIMUM": "2020-03-30",
+                  "MAXIMUM": getSnowflakeStyleDate(-1)
+                },
+               "VALUES": []
+              },
+            }
+          }
+        };
+        let sdate = parseSnowflakeDate(alldata.data.time_series.ICU_BEDS.DATE_RANGE.MINIMUM);
+        let today = new Date();
+        while (+sdate < +today) {
+          alldata.data.time_series.ICU_BEDS.VALUES.push({DATE:getSnowflakeStyleDateJS(sdate),VALUE:0});
+          sdate.setDate(sdate.getDate() + 1);
+        }
+        alldata.data.time_series.ICU_BEDS.VALUES.reverse();
+        this.regionName = regionName;
+        this.metadata = alldata.meta;
+        this.chartdata = alldata.data;
+        this.uncroppedChartData = alldata.data;
+        this.renderComponent(regionName);
+
+    }
+    else {
+      CAGovDashboardChart.prototype.retrieveData.call(this, url, regionName);
+    }
+  }
+
 }
 
 window.customElements.define(

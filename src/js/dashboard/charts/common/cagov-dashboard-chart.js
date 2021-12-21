@@ -72,7 +72,6 @@ export default class CAGovDashboardChart extends window.HTMLElement {
     ];
   }
 
-
   retrieveData(url, regionName) {
     // console.log("Retrieving " + this.chartConfigKey);
     window
@@ -94,68 +93,39 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       );
   }
 
-  chartFilterSelectHandler(e) {
-    // console.log(this.chartConfigKey,"chartFilterSelectHandler",e.detail.filterKey);
-    this.chartConfigFilter = e.detail.filterKey;
-    if (!(e.detail.filterKey in chartConfig[this.chartConfigKey])) {
-        // console.log("resetting to default filter key")
-        this.chartConfigFilter = chartConfig[this.chartConfigKey].filterKeys[0];
-    }
-
-    // resetting the active states can go away if we stop having cross-traffic between charts... (clicked groups already provide correct feedback)
-    // this is only needed when clicking on a different chart sends an event to this chart.
-    chartConfig[this.chartConfigKey].filterKeys.forEach( (loopKey) => {
-        if (loopKey == this.chartConfigFilter) {
-            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.add('active');
-        } else {
-            document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey} .small-tab[data-key="${loopKey}"]`).classList.remove('active');
-        }
+  /**
+   * Get select values and send them to the chart for rendering.
+   *
+   * @param   {NodeList}  selectFilters  List of select tags on the chart.
+   * @param   {Event}  e  Event. (function breaks without it even though it isn't used.)
+   *
+   */
+  chartFilterSelectsHandler(selectFilters, e) {
+    selectFilters.forEach((select) => {
+      switch (select.dataset.type) {
+        case 'time':
+          this.chartConfigTimerange = select.value;
+          break;
+        case 'filter':
+          this.chartConfigFilter = select.value;
+          break;
+        default:
+      }
     });
-
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
     this.renderComponent(this.regionName);
   }
 
+  // Add event listener to select filters.
+  setupSelectFilters() {
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
 
-  chartTimerangeSelectHandler(e) {
-    // console.log(this.chartConfigKey,"charttimerange", e.detail.timerangeKey);
-    this.chartConfigTimerange = e.detail.timerangeKey;
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-    // if I am in a county have to do county url replacement
-    this.renderComponent(this.regionName);
-  }
-
-  tabFilterHandler(e) {
-    this.chartFilterSelectHandler(e);
-    const event = new window.CustomEvent(`${this.chartConfigKey}-chart-filter-select`,{detail:{filterKey: this.chartConfigFilter}});
-    window.dispatchEvent(event);    
-  }
-
-
-  timerangeFilterHandler(e) {
-    // console.log(this.chartConfigKey,"timerangeFilterHandler", e.detail.timerangeKey);
-    this.chartTimerangeSelectHandler(e);
-  }
-
-  setupTabFilters() {
-    // console.log("SETTING up setupTabFilters for "+this.chartConfigKey);
-    if (chartConfig[this.chartConfigKey].filterKeys.length > 1) {
-        let myFilter = document.querySelector(`cagov-chart-filter-buttons.js-filter-${this.chartConfigKey}`);
-        myFilter.addEventListener(
-        "filter-selected",
-        this.tabFilterHandler.bind(this),
-        false
-        );
-    }
-
-    // console.log("SETTING up timerangefilterhandler for "+this.chartConfigKey);
-    let myTimeFilter = document.querySelector(`cagov-timerange-buttons.js-filter-${this.chartConfigKey}`);
-    myTimeFilter.addEventListener(
-      "timerange-selected",
-      this.timerangeFilterHandler.bind(this),
-      false
-    );
+    selectFilters.forEach((selectFitler) => {
+      selectFitler.addEventListener(
+        'change',
+        this.chartFilterSelectsHandler.bind(this, selectFilters),
+        false,
+      );
+    });
   }
 
   locationHandler(e) {
@@ -215,7 +185,8 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
-    this.setupTabFilters();
+    // Create dropdown filters.
+    this.setupSelectFilters();
 
     const renderOptions = this.setupRenderOptions();
     renderOptions.lineAndBarsSameScale = this.chartOptions.lineAndBarsSameScale;
