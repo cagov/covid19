@@ -42,3 +42,24 @@
   display: none;
 }
 
+cagov-chart-filter-select {
+  select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: no-repeat right 10px top 50% url(/img/arrow-orange.svg);
+    border-color: black;
+    border-radius: 0;
+    color: #1f2574;
+    font-size: 15.2px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 10px 30px 10px 10px;
+    text-decoration: underline;
+    &:focus-visible {
+      border: 1px solid #ffcf44;
+      outline: none;
+    }
+  }
+}

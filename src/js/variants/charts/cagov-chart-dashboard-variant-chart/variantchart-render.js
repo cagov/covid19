@@ -135,30 +135,81 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let lineWidth = 10;
   let lineMargin = 6;
   let legendGap = 12;
+  let twoline_mode = this.dimensions.width < 700;
 
+  if (twoline_mode) {
+    const labels2 = labels.splice(5);
+    const labels1 = labels.splice(0,5);
+    console.log("LABELS",labels1,labels2);
+    labels1.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+i)
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22)
+        .attr('x2', lineWidth)
+        .attr('y2', 22);
 
-  labels.forEach((label, i) => {
-    // console.log("Drawing label", label);
-    let lg = legend.append("g")
-                .attr('id', 'legend_'+i)
-                .attr('transform', `translate(${xPos})`);
-    let line = lg.append('line')
-      .attr('style',`stroke:${colors[i]};`)  // 
-      .attr('x1', 0)
-      .attr('y1', 22)
-      .attr('x2', lineWidth)
-      .attr('y2', 22);
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24)
+        .attr("x", lineWidth+lineMargin)
+        ;
 
-    let txt = lg.append('text')
-      .text(label)
-      .attr("y", 24)
-      .attr("x", lineWidth+lineMargin)
-      ;
+      let box = document.querySelector('#variant-lgend #legend_'+i);
+      xPos += box.getBBox().width + legendGap;
+    });
+    let yOffset = 12;
+    let xIdxOffset = 5;
+    xPos = 0;
+    labels2.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+(i+xIdxOffset))
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22+yOffset)
+        .attr('x2', lineWidth)
+        .attr('y2', 22+yOffset);
 
-    let box = document.querySelector('#variant-lgend #legend_'+i);
-    xPos += box.getBBox().width + legendGap;
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24+yOffset)
+        .attr("x", lineWidth+lineMargin)
+        ;
 
-  });
+      let box = document.querySelector('#variant-lgend #legend_'+(i+xIdxOffset));
+      xPos += box.getBBox().width + legendGap;
+    });
+  } else {
+    labels.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+i)
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22)
+        .attr('x2', lineWidth)
+        .attr('y2', 22);
+
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24)
+        .attr("x", lineWidth+lineMargin)
+        ;
+
+      let box = document.querySelector('#variant-lgend #legend_'+i);
+      xPos += box.getBBox().width + legendGap;
+
+    });
+  }
   // Right-justify the whole thing...
   let legEl = document.querySelector('#variant-lgend');
   let legWidth = legEl.getBBox().width;
