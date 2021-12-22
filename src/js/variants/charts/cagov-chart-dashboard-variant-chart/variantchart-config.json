@@ -9,10 +9,23 @@
         "stroke_width": 2, 
         "root_id": "variants-seq",
         "x_axis_field":"DATE",
-        "series_colors8":["#1F2574","#72267C","#C23371",          "#DC4567","#F96E55","#FFCF44","#327314","#888888"],
-        "series_colors9":["#1F2574","#72267C","#C23371","AE2C76", "#DC4567","#F96E55","#FFCF44","#327314","#888888"],
+        "chart_labels": [
+          "Alpha",
+          "Beta",
+          "Gamma",
+          "Delta",
+          "Epsilon",
+          "Lambda",
+          "Mu",
+          "Omicron",
+          "Other"
+        ],
+        "labels":"         alpha    beta       gamma     delta    epsilon   lambda     mu       omicron   other", 
+        "series_colors8":["#1F2574","#72267C","#DC4567","#C23371",          "#F96E55","#FFCF44","#32CC14","#888888"],
+        "series_c_old_9":["#1F2574","#72267C","#DC4567","#C23371","#AE2C76","#F96E55","#FFCF44","#32CC14","#888888"],
+        "series_colors9":["#c32398","#305906","#601718","#3c67dc","#c39823","#2f0659","#004847","#3cdc67","#888888"],
         "starting_date":"2021-1-25",
-        "uncertainty_days": 1,
+        "uncertainty_days": 0,
         "unused_field": 0
       }
     },

@@ -87,12 +87,25 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
 
   renderComponent() {
+    // collect dates here...
+    const chart_publish_date = this.chartmeta.PUBLISHED_DATE;
+    const chart_report_date = this.chartmeta.REPORT_DATE; // unused
+    const sampleSeries = this.chartdata.time_series.Alpha_Cases.VALUES;
+    const chart_last_date = sampleSeries[sampleSeries.length-1].DATE;
+    const repDict = {
+      CHART_PUBLISH_DATE: reformatReadableDate(chart_publish_date),
+      CHART_LAST_DATE: reformatReadableDate(chart_last_date),
+    };
+
+    this.translationsObj.post_chart_update_statement = applySubstitutions(this.translationsObj.chart_update_statement, repDict);
+
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
     let line_series_array = [];
 
     // console.log("KEYS");
     // console.log(Object.keys(this.chartdata.time_series));
+
 
     this.chartlabels.forEach((label, i) => {
         let tseries_name = label + "_Percentage,-7-day average";
@@ -117,6 +130,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
+      console.log("SERIES COLORS LENGTH", this.chartlabels.length);
       renderChart.call(this, renderOptions);
   }
 
@@ -128,7 +142,8 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
       .then(
         function (vchart_vdata) {
           this.chartdata = vchart_vdata.data;
-          this.chartlabels = vchart_vdata.meta.VARIANTS;
+          this.chartmeta = vchart_vdata.meta;
+          this.chartlabels = this.chartOptions.chart_labels; // vchart_vdata.meta.VARIANTS;
     
           // Splice for dates
           const tsKeys = Object.keys(this.chartdata.time_series);
