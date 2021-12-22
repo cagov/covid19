@@ -25,7 +25,7 @@ jobs:
       - name: Build 11ty
         run: |
           npm install
-          npm run build
+          npm run build:staging
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
