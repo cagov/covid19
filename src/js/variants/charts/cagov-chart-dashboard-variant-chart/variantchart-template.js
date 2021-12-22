@@ -5,9 +5,11 @@ import css from "./variantchart.scss";
  */
 export default function template(chartOptions, {
   post_chartTitle = "chart title",   /* Unused, but left in for future use */
+  post_chart_update_statement = ""
 }) {
 
   return /*html*/ `
-            <div class="svg-holder"></div>
+  <p>${post_chart_update_statement}</p>
+  <div class="svg-holder"></div>
     `;
 }
