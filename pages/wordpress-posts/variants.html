@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-12-03T20:30:37Z"
+publishdate: "2021-12-22T00:32:16Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -12,87 +12,11 @@ addtositemap: false
 
 
 
-<p>On this page you&#8217;ll find:</p>
+<p class="h3">On this page:</p>
 
 
 
-<ul class="toc"><li><strong><a href="#normal-part-of-viruses">Variants are a normal part of viruses</a></strong></li><li><strong><a href="#tracking">Variants we’re tracking</a></strong></li><li><strong><a href="#vaccine-effectiveness">Vaccine effectiveness against variants</a></strong></li><li><strong><a href="#in-california">Variants in California</a></strong></li></ul>
-
-
-
-<hr class="wp-block-separator" id="normal-part-of-viruses"/>
-
-
-
-<h2>Variants are a normal part of viruses</h2>
-
-
-
-<p>Viruses change through mutations that create new strains of virus over time. This is a normal process that happens with most viruses. We call these strains variants.</p>
-
-
-
-<p>Some variants rise and then disappear. Other variants become common. Most variants do not have a meaningful impact.</p>
-
-
-
-<hr class="wp-block-separator" id="tracking"/>
-
-
-
-<h2>Variants we’re tracking</h2>
-
-
-
-<h3>Variants of concern</h3>
-
-
-
-<p>Variants of concern are likely to have one or more of the following features:</p>
-
-
-
-<ul><li>More contagious</li><li>Likely to cause more severe symptoms</li><li>Resistant to treatment</li><li>More resistant to vaccines</li></ul>
-
-
-
-<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Delta</td><td><ul><li>200% increased transmission compared to other variants</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Omicron</td><td>The California Department of Public Health is working with the CDC to gather information about the Omicron variant.</td></tr></tbody></table></figure>
-
-
-
-<h3>Variants being monitored</h3>
-
-
-
-<p>Variants being monitored are seen at low levels or no longer detected. They do not pose a significant or immediate risk to the public. They are likely to have one or more of the following features:</p>
-
-
-
-<ul><li>Potential or known effect on treatment</li><li>More severe symptoms</li><li>Increased transmission</li></ul>
-
-
-
-<figure class="wp-block-table aligncenter"><table><thead><tr><th>Variant</th><th>Known differences</th></tr></thead><tbody><tr><td>Alpha</td><td><ul><li>Increased transmission</li><li>Potential increased disease severity and risk of death</li><li>Minimal impact on antibody treatment effectiveness</li></ul></td></tr><tr><td>Beta</td><td><ul><li>Increased transmission</li><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Gamma</td><td><ul><li>Reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Epsilon</td><td><ul><li>Increased transmission</li><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Eta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Iota</td><td><ul><li>Significantly reduced antibody treatment effectiveness</li></ul></td></tr><tr><td>Kappa</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Zeta</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr><tr><td>Mu</td><td><ul><li>Moderately decreased antibody treatment effectiveness</li></ul></td></tr></tbody></table></figure>
-
-
-
-<p>California follows the CDC’s <a href="https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/variant-surveillance/variant-info.html">variant classifications and definitions</a>.</p>
-
-
-
-<hr class="wp-block-separator" id="vaccine-effectiveness"/>
-
-
-
-<h2>Vaccine effectiveness against variants</h2>
-
-
-
-<p>COVID-19 vaccines are effective against variants of the virus currently circulating in the United States, including the Delta variant. We are:</p>
-
-
-
-<ul><li>Closely tracking the effectiveness of COVID-19 vaccines in California</li><li>Following evolving information about the ability of COVID-19 vaccines to protect against variants</li></ul>
+<ul class="toc"><li><strong><a href="#in-california">Variants in California</a></strong></li><li><strong><a href="http://more">Explore more data</a></strong></li></ul>
 
 
 
@@ -107,11 +31,11 @@ addtositemap: false
 <p>We <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequence</a> a sample of positive COVID-19 tests to determine which variant they are. This helps us understand which variants are circulating in California.</p>
 
 
-
 <div class="chart-prev-div">
-    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
+    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants" data-chart-config-timerange="all-time">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
+         <li data-label="chart_update_statement">The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</li>
          <li data-label="tooltipContent">
             <table>
                 <tr><td class="tt-label">Week ending:</td><td class="tt-value">{WEEKDATE}</td></tr>
@@ -123,8 +47,12 @@ addtositemap: false
                 <tr><td class="tt-label">{LABEL_5}</td><td class="tt-value">{VALUE_5}</td></tr>
                 <tr><td class="tt-label">{LABEL_6}</td><td class="tt-value">{VALUE_6}</td></tr>
                 <tr><td class="tt-label">{LABEL_7}</td><td class="tt-value">{VALUE_7}</td></tr>
+                <tr><td class="tt-label">{LABEL_8}</td><td class="tt-value">{VALUE_8}</td></tr>
             </table>
           </li>  
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
        </ul>
      </cagov-chart-dashboard-variant-chart>
  </div>
@@ -132,5 +60,69 @@ addtositemap: false
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>The California Department of Public Health works with many partners to achieve a goal of sequencing at least 10% of all positive tests. This creates a confident projection of variant distribution in California.</li><li>We update this data Thursdays by noon.</li></ul>
+<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>The California Department of Public Health works with many partners to achieve a goal of sequencing at least 10% of all positive tests. This creates a confident projection of variant distribution in California.</li><li>We update this data on Wednesdays.</li></ul>
 </div></div></div></cagov-accordion></div>
+
+
+
+<p class="mt-4">The California Department of Public Health has <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID-Variants.aspx">more information and data about variants</a>.</p>
+
+
+
+<hr class="wp-block-separator" id="more"/>
+
+
+
+<div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
+    <div class="container pt-5 pb-5">
+        <h2>Explore more data</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/state-dashboard">State data</a></h3>
+                                <p class="card-text">Statewide and county cases, deaths, hospitalizations, and tests, including by vaccination status, gender, and age</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/vaccination-progress-data/">Vaccination data</a></h3>
+                                <p class="card-text">State and county data about vaccination, including by race and ethnicity and age</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/equity">Health equity data</a></h3>             
+                                <p class="card-text">How COVID-19 has affected different communities across the state</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Data and tools</a></h3>
+                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 2-->
+            </div>
+            <!--col-10-->
+        </div>
+        <!--row-->
+    </div>
+    <!--container-->
+</div>
+<!--full bleed-->
+
+
+
+<p></p>
