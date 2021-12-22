@@ -130,6 +130,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
+      console.log("SERIES COLORS LENGTH", this.chartlabels.length);
       renderChart.call(this, renderOptions);
   }
 
