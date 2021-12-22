@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-12-22T00:32:16Z"
+publishdate: "2021-12-22T20:06:10Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -32,14 +32,11 @@ addtositemap: false
 
 
 
-<p>The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</p>
-
-
-
 <div class="chart-prev-div">
     <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
+         <li data-label="chart_update_statement">The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</li>
          <li data-label="tooltipContent">
             <table>
                 <tr><td class="tt-label">Week ending:</td><td class="tt-value">{WEEKDATE}</td></tr>
