@@ -116,6 +116,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     // console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
     let renderOptions = {
+                          'chart_options':this.chartOptions,
                           'chart_style':this.chartOptions.chart_style,
                           'extras_func':this.renderExtras,
                           'line_series_array':line_series_array,

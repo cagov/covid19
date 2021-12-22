@@ -16,10 +16,20 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
   // if (line_id == "line_s3") {
   //   groups.attr("stroke-dasharray","1 3");
   // }
+
+  let nbr_zeros = 0;
+  if (chart_options['skip_zeros']) {
+    for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
+      nbr_zeros += 1;
+    }
+    console.log("SKIP ZEROS", nbr_zeros);
+  }
+  const dataslice = data.slice(nbr_zeros);
+
   groups.append('path')
-    .datum(data)
+    .datum(dataslice)
       .attr("d", d3.line()
-        .x(function(d,i) { return x(i) })
+        .x(function(d,i) { return x(i+nbr_zeros) })
         .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
         );
 }
