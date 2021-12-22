@@ -143,7 +143,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
         function (vchart_vdata) {
           this.chartdata = vchart_vdata.data;
           this.chartmeta = vchart_vdata.meta;
-          this.chartlabels = vchart_vdata.meta.VARIANTS;
+          this.chartlabels = this.chartOptions.chart_labels; // vchart_vdata.meta.VARIANTS;
     
           // Splice for dates
           const tsKeys = Object.keys(this.chartdata.time_series);
