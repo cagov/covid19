@@ -32,7 +32,7 @@ addtositemap: false
 
 
 <div class="chart-prev-div">
-    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
+    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants" data-chart-config-timerange="all-time">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
          <li data-label="chart_update_statement">The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</li>
@@ -50,6 +50,9 @@ addtositemap: false
                 <tr><td class="tt-label">{LABEL_8}</td><td class="tt-value">{VALUE_8}</td></tr>
             </table>
           </li>  
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
        </ul>
      </cagov-chart-dashboard-variant-chart>
  </div>
