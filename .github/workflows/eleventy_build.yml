@@ -20,6 +20,16 @@ jobs:
         env:
             FILE_NAME: "./docs/commit-info.json"
             FILE_DATA: ${{ toJson(github.event.commits) }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm test
+        run: |
+          npm run test:setup
+          npm test
+        env:
+          CI: true        
 
       # Deploy to this branch that Azure workflow watches for changes and deploys to Azure production
       - name: Deploy
@@ -41,6 +51,33 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
           SOURCE_DIR: ./docs # only move built directory
+
+      # Reset the cache-control headers on static assets on production S3 bucket
+      - name: Reset cache-control on static files
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: 'us-west-1'   # optional: defaults to us-east-1
+          source: './docs/fonts'
+          dest: 's3://covid19.ca.gov/fonts'
+          flags: --recursive --cache-control max-age=15552000
+
+      # Reset the cache-control headers on static assets on production S3 bucket
+      - name: Reset cache-control on static files
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: 'us-west-1'   # optional: defaults to us-east-1
+          source: './docs/img'
+          dest: 's3://covid19.ca.gov/fonts'
+          flags: --recursive --cache-control max-age=15552000
+
+      # Create all the redirects on S3, only do this on production we don't want this set of redirects in all environments
+      - name: Deploy redirects
+        run: |
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} npm run deploy:redirects
 
       # Invalidate Cloudfront production distribution
       - name: invalidate
