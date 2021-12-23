@@ -18,12 +18,16 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
   // }
 
   let nbr_zeros = 0;
+  let nbr_tail_zeros = 0;
   if (chart_options['skip_zeros']) {
     for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
       nbr_zeros += 1;
     }
+    // for (let i = data.length-1; i > nbr_zeros && data[i][fld] == 0; --i) {
+    //   nbr_tail_zeros += 1;
+    // }
   }
-  const dataslice = data.slice(nbr_zeros);
+  const dataslice = data.slice(nbr_zeros, data.length - nbr_tail_zeros);
 
   groups.append('path')
     .datum(dataslice)
@@ -137,9 +141,8 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let twoline_mode = this.dimensions.width < 700;
 
   if (twoline_mode) {
-    const tempLabels = JSON.parse(JSON.stringify(labels));
-    const labels2 = tempLabels.splice(5);
-    const labels1 = tempLabels.splice(0,5);
+    const labels2 = labels.slice(5);
+    const labels1 = labels.slice(0,5);
     // console.log("LABELS",labels1,labels2);
     labels1.forEach((label, i) => {
       // console.log("Drawing label", label);
