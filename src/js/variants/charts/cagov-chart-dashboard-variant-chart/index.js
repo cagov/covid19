@@ -98,6 +98,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     const repDict = {
       CHART_PUBLISH_DATE: reformatReadableDate(chart_publish_date),
       CHART_LAST_DATE: reformatReadableDate(chart_last_date),
+      CHART_REPORT_DATE: reformatReadableDate(chart_report_date),
     };
 
     this.translationsObj.post_chart_update_statement = applySubstitutions(this.translationsObj.chart_update_statement, repDict);

@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-12-22T00:32:16Z"
-tags: ["do-not-crawl","staging-only"]
+publishdate: "2021-12-23T18:12:32Z"
+tags: ["do-not-crawl","staging-only","translate"]
 addtositemap: false
 ---
 
@@ -28,14 +28,19 @@ addtositemap: false
 
 
 
-<p>We <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequence</a> a sample of positive COVID-19 tests to determine which variant they are. This helps us understand which variants are circulating in California.</p>
+<p>California <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequences</a> a sample of positive COVID-19 tests to determine their variant. Knowing what variants are circulating in California informs public health and clinical action.</p>
+
+
+
+<p>This chart shows the sample of sequenced positive tests where the variant was identified. Sequencing can only be done at specialized labs. It generally occurs several days or more after a test is identified as are positive for COVID-19.  Not all positive COVID-19 tests are genetically sequenced.</p>
+
 
 
 <div class="chart-prev-div">
-    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants" data-chart-config-timerange="all-time">
+    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
-         <li data-label="chart_update_statement">The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</li>
+         <li data-label="chart_update_statement">Variant data is updated weekly. The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_REPORT_DATE}. It does not represent real-time data. The California Department of Public Health has <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID-Variants.aspx">more information and data about variants</a>.</li>
          <li data-label="tooltipContent">
             <table>
                 <tr><td class="tt-label">Week ending:</td><td class="tt-value">{WEEKDATE}</td></tr>
@@ -50,9 +55,6 @@ addtositemap: false
                 <tr><td class="tt-label">{LABEL_8}</td><td class="tt-value">{VALUE_8}</td></tr>
             </table>
           </li>  
-          <li data-label="timeTabLabel1">All time</li>
-          <li data-label="timeTabLabel2">6 months</li>
-          <li data-label="timeTabLabel3">90 days</li>
        </ul>
      </cagov-chart-dashboard-variant-chart>
  </div>
@@ -60,12 +62,8 @@ addtositemap: false
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>The California Department of Public Health works with many partners to achieve a goal of sequencing at least 10% of all positive tests. This creates a confident projection of variant distribution in California.</li><li>We update this data on Wednesdays.</li></ul>
+<ul><li>These percentages are based on a sampling of positive COVID-19 tests. They do not represent the total number of infections in California.</li><li>This does not represent all sequences completed to date.</li><li>The California Department of Public Health works with many partners to achieve a goal of sequencing at least 10% of all positive tests. This creates a confident projection of variant distribution in California.</li><li>We update this data on Thursdays.</li></ul>
 </div></div></div></cagov-accordion></div>
-
-
-
-<p class="mt-4">The California Department of Public Health has <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID-Variants.aspx">more information and data about variants</a>.</p>
 
 
 
