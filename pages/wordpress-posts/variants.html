@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-12-22T00:32:16Z"
+publishdate: "2021-12-23T02:25:55Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -28,14 +28,19 @@ addtositemap: false
 
 
 
-<p>We <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequence</a> a sample of positive COVID-19 tests to determine which variant they are. This helps us understand which variants are circulating in California.</p>
+<p>California <a href="https://testing.covid19.ca.gov/covidnet/">genetically sequences</a> a sample of positive COVID-19 tests to determine their variant. Knowing what variants are circulating in California informs public health and clinical action.</p>
+
+
+
+<p>This chart shows the sample of sequenced positive tests where the variant was identified. Sequencing can only be done at specialized labs, and generally occurs several days or more after initial tests are positive for COVID-19.  Not all positive COVID-19 tests are genetically sequenced.</p>
+
 
 
 <div class="chart-prev-div">
     <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
-         <li data-label="chart_update_statement">The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}.</li>
+         <li data-label="chart_update_statement">Variant data is updated weekly. The chart was updated on {CHART_PUBLISH_DATE}, with data as of {CHART_LAST_DATE}. It does not represent real-time data.  For more information see <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID-Variants.aspx">Tracking Variants</a> on the CDPH website.</li>
          <li data-label="tooltipContent">
             <table>
                 <tr><td class="tt-label">Week ending:</td><td class="tt-value">{WEEKDATE}</td></tr>
