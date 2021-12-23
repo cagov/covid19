@@ -22,7 +22,6 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
     for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
       nbr_zeros += 1;
     }
-    console.log("SKIP ZEROS", nbr_zeros);
   }
   const dataslice = data.slice(nbr_zeros);
 
@@ -138,9 +137,10 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let twoline_mode = this.dimensions.width < 700;
 
   if (twoline_mode) {
-    const labels2 = labels.splice(5);
-    const labels1 = labels.splice(0,5);
-    console.log("LABELS",labels1,labels2);
+    const tempLabels = JSON.parse(JSON.stringify(labels));
+    const labels2 = tempLabels.splice(5);
+    const labels1 = tempLabels.splice(0,5);
+    // console.log("LABELS",labels1,labels2);
     labels1.forEach((label, i) => {
       // console.log("Drawing label", label);
       let lg = legend.append("g")
@@ -356,7 +356,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     chart_options = {},
    } )  {
 
-    console.log("renderChart",root_id);
+    // console.log("renderChart",root_id, line_series_array);
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
 

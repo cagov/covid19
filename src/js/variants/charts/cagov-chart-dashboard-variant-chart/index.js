@@ -90,7 +90,6 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   renderComponent() {
     this.chartData = this.cropData(this.chartConfigTimerange, this.uncroppedChartData);
 
-
     // collect dates here...
     const chart_publish_date = this.chartmeta.PUBLISHED_DATE;
     const chart_report_date = this.chartmeta.REPORT_DATE; // unused
@@ -109,17 +108,11 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
     let line_series_array = [];
 
-    // console.log("KEYS");
-    // console.log(Object.keys(this.chartData.time_series));
-
-
     this.chartlabels.forEach((label, i) => {
         let tseries_name = label + "_Percentage,-7-day average";
         line_series_array.push(this.chartData.time_series[tseries_name].VALUES);
     });
     this.line_series_array = line_series_array;
-
-    // console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
     let renderOptions = {
                           'chart_options':this.chartOptions,
@@ -136,8 +129,6 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'series_labels': this.chartlabels,
                           'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
                         };
-      console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
-      console.log("SERIES COLORS LENGTH", this.chartlabels.length);
       renderChart.call(this, renderOptions);
   }
 
@@ -157,7 +148,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   }
 
   cropData(timerangeKey, uncroppedChartData) {
-    console.log("Would crop data",timerangeKey, uncroppedChartData);
+    // console.log("Would crop data",timerangeKey, uncroppedChartData);
 
     const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
 
@@ -176,6 +167,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
         // chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
       });
     }
+    // console.log("Done Cropping", chartData);
     return chartData; 
 
 
@@ -199,7 +191,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
 
   retrieveData(url) {
-    console.log("FETCHING",url);
+    // console.log("FETCHING",url);
     window
       .fetch(url)
       .then((response) => response.json())
@@ -210,7 +202,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
           this.chartmeta = vchart_vdata.meta;
           this.chartlabels = this.chartOptions.chart_labels; // vchart_vdata.meta.VARIANTS;
    
-          console.log("UNCROPPED DATA", this.uncroppedChartData);
+          // console.log("UNCROPPED DATA", this.uncroppedChartData);
           // Splice for dates
           const tsKeys = Object.keys(this.chartData.time_series);
           tsKeys.forEach((tseriesnom) => {
