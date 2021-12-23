@@ -16,10 +16,23 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
   // if (line_id == "line_s3") {
   //   groups.attr("stroke-dasharray","1 3");
   // }
+
+  let nbr_zeros = 0;
+  let nbr_tail_zeros = 0;
+  if (chart_options['skip_zeros']) {
+    for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
+      nbr_zeros += 1;
+    }
+    // for (let i = data.length-1; i > nbr_zeros && data[i][fld] == 0; --i) {
+    //   nbr_tail_zeros += 1;
+    // }
+  }
+  const dataslice = data.slice(nbr_zeros, data.length - nbr_tail_zeros);
+
   groups.append('path')
-    .datum(data)
+    .datum(dataslice)
       .attr("d", d3.line()
-        .x(function(d,i) { return x(i) })
+        .x(function(d,i) { return x(i+nbr_zeros) })
         .y(function(d) { return y(crop_floor? Math.max(0,d[fld]) : d[fld]) })
         );
 }
@@ -125,30 +138,81 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let lineWidth = 10;
   let lineMargin = 6;
   let legendGap = 12;
+  let twoline_mode = this.dimensions.width < 700;
 
+  if (twoline_mode) {
+    const labels2 = labels.slice(5);
+    const labels1 = labels.slice(0,5);
+    // console.log("LABELS",labels1,labels2);
+    labels1.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+i)
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22)
+        .attr('x2', lineWidth)
+        .attr('y2', 22);
 
-  labels.forEach((label, i) => {
-    // console.log("Drawing label", label);
-    let lg = legend.append("g")
-                .attr('id', 'legend_'+i)
-                .attr('transform', `translate(${xPos})`);
-    let line = lg.append('line')
-      .attr('style',`stroke:${colors[i]};`)  // 
-      .attr('x1', 0)
-      .attr('y1', 22)
-      .attr('x2', lineWidth)
-      .attr('y2', 22);
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24)
+        .attr("x", lineWidth+lineMargin)
+        ;
 
-    let txt = lg.append('text')
-      .text(label)
-      .attr("y", 24)
-      .attr("x", lineWidth+lineMargin)
-      ;
+      let box = document.querySelector('#variant-lgend #legend_'+i);
+      xPos += box.getBBox().width + legendGap;
+    });
+    let yOffset = 12;
+    let xIdxOffset = 5;
+    xPos = 0;
+    labels2.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+(i+xIdxOffset))
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22+yOffset)
+        .attr('x2', lineWidth)
+        .attr('y2', 22+yOffset);
 
-    let box = document.querySelector('#variant-lgend #legend_'+i);
-    xPos += box.getBBox().width + legendGap;
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24+yOffset)
+        .attr("x", lineWidth+lineMargin)
+        ;
 
-  });
+      let box = document.querySelector('#variant-lgend #legend_'+(i+xIdxOffset));
+      xPos += box.getBBox().width + legendGap;
+    });
+  } else {
+    labels.forEach((label, i) => {
+      // console.log("Drawing label", label);
+      let lg = legend.append("g")
+                  .attr('id', 'legend_'+i)
+                  .attr('transform', `translate(${xPos})`);
+      let line = lg.append('line')
+        .attr('style',`stroke:${colors[i]};`)  // 
+        .attr('x1', 0)
+        .attr('y1', 22)
+        .attr('x2', lineWidth)
+        .attr('y2', 22);
+
+      let txt = lg.append('text')
+        .text(label)
+        .attr("y", 24)
+        .attr("x", lineWidth+lineMargin)
+        ;
+
+      let box = document.querySelector('#variant-lgend #legend_'+i);
+      xPos += box.getBBox().width + legendGap;
+
+    });
+  }
   // Right-justify the whole thing...
   let legEl = document.querySelector('#variant-lgend');
   let legWidth = legEl.getBBox().width;
@@ -295,7 +359,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     chart_options = {},
    } )  {
 
-    console.log("renderChart",root_id);
+    // console.log("renderChart",root_id, line_series_array);
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
 
