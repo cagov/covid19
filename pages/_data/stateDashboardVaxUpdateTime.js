@@ -5,7 +5,7 @@
 const fetch = require('node-fetch')
 
 module.exports = function() {
-  let dataDomain = 'https://data.covid19.ca.gov/';
+  let dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/main/';
     return new Promise((resolve, reject) => {
     fetch(dataDomain+'data/status/last_vax_update.json')
     .then(res => res.json())
@@ -14,5 +14,3 @@ module.exports = function() {
     });
   });
 };
-
-
