@@ -66,25 +66,26 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
   renderExtras(svg, data, x, y) {
   }
 
-  getTooltipContent(di) {    
-    // console.log("di",di);
-    if (di >= this.line_series_array[0].length) {
-      di = this.line_series_array[0].length - 1;
+  getTooltipContent(last_date_idx) {    
+    if (last_date_idx >= this.line_series_array[0].length) {
+      last_date_idx = this.line_series_array[0].length - 1;
     }
-    if (di < 0) {
-      di = 0;
+    if (last_date_idx < 0) {
+      last_date_idx = 0;
     }
-    const repDict = {
-       WEEKDATE:   reformatReadableDate(this.line_series_array[0][di].DATE),
-    }
-    this.chartlabels.forEach(  (lab, i) => {
-      repDict['LABEL_'+i] = lab;
-      repDict['VALUE_'+i] = formatValue(this.line_series_array[i][di].VALUE/100.0,{format:'percent'});
-    });
-    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
-    return caption;
-  }
 
+    let caption = '<table>';
+    let date_label = this.translationsObj.tooltip_date_label;
+    let date_value = reformatReadableDate(this.line_series_array[0][last_date_idx].DATE);
+    caption += `  <tr><td class="tt-label">${date_label}:</td><td class="tt-value">${date_value}</td></tr>`;
+    this.chartlabels.forEach(  (lab, i) => {
+      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'percent'});
+      caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
+    });
+    caption += '</table>';
+
+   return caption;
+  }
 
   renderComponent() {
     // collect dates here...
