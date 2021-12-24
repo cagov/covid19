@@ -139,7 +139,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let lineMargin = 6;
   let legendGap = 12;
   let twoline_mode = this.dimensions.width < 700;
-
+  // console.log("drawing legend, width =",this.dimensions.width);
   if (twoline_mode) {
     const labels2 = labels.slice(5);
     const labels1 = labels.slice(0,5);
