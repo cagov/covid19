@@ -17,6 +17,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
     this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
+    this.dataLoaded = false;
 
     console.log("Loading CAGovDashboardSparkline", this.chartConfigFilter, this.chartConfigKey);
 
@@ -30,6 +31,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     this.dimensions = this.chartBreakpointValues;
 
     const handleChartResize = () => {
+      // console.log("Handle chart resize");
       getScreenResizeCharts(this);
       this.screenDisplayType = window.charts
         ? window.charts.displayType
@@ -37,6 +39,10 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
       this.chartBreakpointValues = chartConfig[
         this.screenDisplayType ? this.screenDisplayType : "desktop"
       ];
+      this.dimensions = this.chartBreakpointValues;
+      if (this.dataLoaded) {
+        this.renderComponent();
+      }
     };
 
     window.addEventListener("resize", handleChartResize);
@@ -132,8 +138,8 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'series_labels': this.chartlabels,
                           'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
                         };
-      console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
-      console.log("SERIES COLORS LENGTH", this.chartlabels.length);
+      // console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
+      // console.log("SERIES COLORS LENGTH", this.chartlabels.length);
       renderChart.call(this, renderOptions);
   }
 
@@ -147,6 +153,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
           this.chartdata = vchart_vdata.data;
           this.chartmeta = vchart_vdata.meta;
           this.chartlabels = this.chartOptions.chart_labels; // vchart_vdata.meta.VARIANTS;
+          this.dataLoaded = true;
     
           // Splice for dates
           const tsKeys = Object.keys(this.chartdata.time_series);
