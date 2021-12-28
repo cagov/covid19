@@ -1,0 +1,77 @@
+
+{
+    "variants": {
+      "chart": {
+        "chartName": "cagov-chart-dashboard-variant-chart",
+        "dataUrl": "california.json",
+        "dataPathVar": "chartsVariantsLoc",
+        "chart_style": "normal",
+        "stroke_width": 2, 
+        "root_id": "variants-seq",
+        "x_axis_field":"DATE",
+        "chart_labels": [
+          "Alpha",
+          "Beta",
+          "Gamma",
+          "Delta",
+          "Epsilon",
+          "Lambda",
+          "Mu",
+          "Omicron",
+          "Other"
+        ],
+        "labels":"         alpha    beta       gamma     delta    epsilon   lambda     mu       omicron   other", 
+        "series_colors8":["#1F2574","#72267C","#DC4567","#C23371",          "#F96E55","#FFCF44","#32CC14","#888888"],
+        "series_c_old_9":["#1F2574","#72267C","#DC4567","#C23371","#AE2C76","#F96E55","#FFCF44","#32CC14","#888888"],
+        "series_colors9":["#c32398","#305906","#601718","#3c67dc","#c39823","#2f0659","#004847","#3cdc67","#888888"],
+        "starting_date":"2021-1-25",
+        "uncertainty_days": 0,
+        "unused_field": 0,
+        "skip_zeros": true
+      }
+    },
+    "desktop": {
+      "fontSize": 14,
+      "width": 740,    
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 0,  
+        "bottom": 45
+      }
+    },
+    "tablet": {
+      "fontSize": 14,
+      "width": 515,     
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 0,  
+        "bottom": 45
+      }
+    },
+    "mobile": {
+      "fontSize": 14,
+      "width": 415,     
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 0,  
+        "bottom": 45
+      }
+    },
+    "retina": {
+      "fontSize": 14,
+      "width": 415,     
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 45,  
+        "right": 0,  
+        "bottom": 45
+      }
+    }
+  }
