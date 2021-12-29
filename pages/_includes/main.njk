@@ -149,9 +149,24 @@ formatNumber(tags,1)-%}
     <div class="row pb-4">
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
+
+        {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
+        {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
+        {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
+        {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", _varStatDateRounded_) | replace("[DataDate]",_varStatDateYesterday_) -}}
+						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", _varStatDateLaterAccurate_) | replace("[DataDate]",_varCommonDateReport_) -}}
 					</div>
+
+		{%- else -%}
+					<div class="text-sm text-center text-300">
+						{{- translatedLabels.varUpdateTextVax | replace("[UpdatedDateVax]", _varVaxDateAccurate_) | replace("[DataDateVax]",_varVaxDateReport_) -}}
+					</div>
+					<div class="text-sm text-center text-300">
+						{{- translatedLabels.varUpdateTextCaes | replace("[UpdatedDateCases]", _varCasesDateAccurate_) | replace("[DataDateCases]",_varCasesDateReport_) -}}
+					</div>
+		{%- endif -%}
+
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
 						<!-- Blue Summary Box 1 -->						

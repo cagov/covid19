@@ -323,8 +323,22 @@ module.exports = function (eleventyConfig) {
       }
     }
     return datestring;
-  }
+  }  
 
+  eleventyConfig.addFilter("dateDeltaHours", function(dmy, dateStringA, dateStringB) { 
+    const aDate = new Date(dateStringA);
+    const bDate = new Date(dateStringB);
+    const diffTime = Math.abs(aDate - bDate);
+    const diffHours = diffTime / (1000 * 60 * 60);
+    console.log("Date Delta: " + diffHours);
+    return diffHours;
+  });
+
+  eleventyConfig.addFilter("latestDate", function(dmy, dateStringA, dateStringB) { 
+    const aDate = new Date(dateStringA);
+    const bDate = new Date(dateStringB);
+    return aDate > bDate? dateStringA : dateStringB;
+  });
 
   eleventyConfig.addFilter('formatDateParts', function (datestring, adddays) {
     return formatDate(datestring, null, null, adddays);

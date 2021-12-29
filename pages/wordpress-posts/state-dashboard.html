@@ -221,16 +221,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">
+      <div class="col-lg-10 mx-auto">        
 <!--
-        {%- if _varCasesDateRounded_ == _varVaxDateRounded_ and _varCasesDateReport_ == _varVaxDateReport_ -%}
+        {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
+        {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
+        {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
+        {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
-<p class="small-text">Updated {{_varCasesDateRounded_}}, with data from {{_varCasesDateReport_}}.</p>
+<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}.</p>
 <!--
         {%- else -%}
 -->
-  <p class="small-text">Vaccines Administered updated {{_varVaxDateRounded_}}, with data from {{_varVaxDateReport_}}.
-  <br>Cases, Deaths, and Tests updated {{_varCasesDateRounded_}}, with data from {{_varCasesDateReport_}}.</p>
+  <p class="small-text">Vaccines Administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
+  <br>Cases, Deaths, and Tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
         {%- endif -%}
 -->
