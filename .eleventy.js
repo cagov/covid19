@@ -330,7 +330,6 @@ module.exports = function (eleventyConfig) {
     const bDate = new Date(dateStringB);
     const diffTime = Math.abs(aDate - bDate);
     const diffHours = diffTime / (1000 * 60 * 60);
-    console.log("Date Delta: " + diffHours);
     return diffHours;
   });
 
