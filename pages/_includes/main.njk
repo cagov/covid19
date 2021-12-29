@@ -154,18 +154,16 @@ formatNumber(tags,1)-%}
         {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
         {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
-		HELLO!!
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", _varStatDateLaterAccurate_) | replace("[DataDate]",_varCommonDateReport_) -}}
 					</div>
 
 		{%- else -%}
-		HELLO2!!
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextVax | replace("[VaxUpdatedDate]", _varVaxDateAccurate_) | replace("[VaxDataDate]",_varVaxDateReport_) -}}
 					</div>
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateTextCaes | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
+						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
 					</div>
 		{%- endif -%}
 
