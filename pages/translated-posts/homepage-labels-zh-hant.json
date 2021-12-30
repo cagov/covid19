@@ -102,7 +102,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "此數據的詳情在"
+      "text": "今天的疫苗接種數據已延遲。我們將會在獲得數據後更新此頁。此類數據的詳情在"
     },
     {
       "_id": "varStateDashboard",
@@ -119,6 +119,14 @@
     {
       "_id": "varHeroImageAlt",
       "text": "三位年輕女性在加州海灘上沐浴著陽光散步。"
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "使用 [VaxDataDate] 的數據更新 [VaxUpdatedDate] 的疫苗接種數"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "使用 [CasesDataDate] 的數據更新 [CasesUpdatedDate] 的病例數、死亡數及檢測數"
     }
   ]
 }
