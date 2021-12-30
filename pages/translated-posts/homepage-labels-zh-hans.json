@@ -98,11 +98,11 @@
     },
     {
       "_id": "varTestPositivity",
-      "text": "检测呈阳性率"
+      "text": "检测结果呈阳性率"
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "此数据的详情在"
+      "text": "今天的疫苗接种数据已延迟。我们将会在获得数据后更新此页。此数据的详情在"
     },
     {
       "_id": "varStateDashboard",
@@ -119,6 +119,14 @@
     {
       "_id": "varHeroImageAlt",
       "text": "三位年轻女性在加州海滩上沐浴着阳光散步。"
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "使用 [VaxDataDate] 的数据更新 [VaxUpdatedDate] 的疫苗接种数"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "使用 [CasesDataDate] 的数据更新 [CasesUpdatedDate] 的病例数、死亡数及检测数"
     }
   ]
 }
