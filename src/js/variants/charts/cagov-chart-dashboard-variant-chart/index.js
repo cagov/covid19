@@ -116,10 +116,30 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
 
     this.chartlabels.forEach((label, i) => {
-        let tseries_name = label + "_Percentage,-7-day average";
+        let tseries_name = label + this.chartOptions.tseries_suffix;
         line_series_array.push(this.chartdata.time_series[tseries_name].VALUES);
     });
+    if (this.chartOptions.normalize) {
+      console.log("Normalizing");
+      line_series_array = JSON.parse(JSON.stringify(line_series_array)); // clone it
+      const nbrRecords = line_series_array[0].length;
+      const nbrLines = line_series_array.length;
+      for (let i = 0; i < nbrRecords; ++i) { 
+        let sum = 0;
+        for (let j = 0; j < nbrLines; ++j) {
+          sum += line_series_array[j][i].VALUE;
+        }
+        if (sum > 0) {
+          let norm_scale = 100.0/sum;
+          for (let j = 0; j < nbrLines; ++j) {
+            sum += line_series_array[j][i].VALUE *= norm_scale;
+          }
+        }
+      }
+
+    }
     this.line_series_array = line_series_array;
+
 
     // console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
@@ -136,7 +156,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
                           'render_date': getSnowflakeStyleDate(0),
                           'chart_options': this.chartOptions,
                           'series_labels': this.chartlabels,
-                          'series_colors': this.chartlabels.length == 8? this.chartOptions.series_colors8 : this.chartOptions.series_colors9,
+                          'series_colors': this.chartOptions.series_colors,
                         };
       // console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
       // console.log("SERIES COLORS LENGTH", this.chartlabels.length);
