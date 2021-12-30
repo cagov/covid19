@@ -102,7 +102,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "본 데이터애 관한 세부 내용은"
+      "text": "금일의 백신 투여 데이터는 처리가 지연되었습니다. 해당 데이터가 제공될 경우 본 페이지를 업데이트할 예정입니다. 본 데이터에 관한 세부 내용은"
     },
     {
       "_id": "varStateDashboard",
@@ -118,7 +118,15 @@
     },
     {
       "_id": "varHeroImageAlt",
-      "text": "맑은 날 캘리포니아 해변에서 즐겁게 걷는 3 명의 젊은 여성."
+      "text": "맑은 날 캘리포니아 해변에서 즐겁게 걷는 세 명의 젊은 여성."
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "[VaxUpdatedDate]자로 [VaxDataDate]가 제공한 데이터로 업데이트된 백신 투여 데이터"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "[CasesUpdatedDate]자로 [CasesDataDate]가 제공한 데이터로 업데이트된 확진 건수, 사망자수 및 검사 건수"
     }
   ]
 }
