@@ -1,5 +1,9 @@
 name: Staging deploy - AWS
 on:
+  schedule:
+    # run around 1:40pm on Tuesday
+    - cron:  '40 21 * * Tue'
+
   push:
     branches:
       - staging
@@ -28,23 +32,19 @@ jobs:
           npm run build
 
       # Push built site files to S3 production bucket    
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@v0.5.1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          args: --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: 'staging.covid19.ca.gov'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
-          SOURCE_DIR: ./docs # only move built directory
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-1
 
-      # Invalidate Cloudfront production distribution
-      - name: invalidate
-        uses: chetan/invalidate-cloudfront-action@v1.3
-        env:
-          DISTRIBUTION: 'E17SNE7QRMFCI3'
-          PATHS: '/*'
-          AWS_REGION: 'us-west-1'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
+      # Push built site files to S3 production bucket   
+      - name: Deploy to S3
+        run: aws s3 sync --follow-symlinks --delete ./docs s3://staging.covid19.ca.gov
+
+      #
+      # Invalidate Cloudfront production distribution (everything under data)
+      - name: invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id E17SNE7QRMFCI3 --paths "/*"
+

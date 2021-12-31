@@ -42,7 +42,7 @@
     },
     {
       "_id": "varVaccination",
-      "text": "Vaccination progress"
+      "text": "Vaccination data"
     },
     {
       "_id": "varHealthEquity",
@@ -54,7 +54,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Get vaccinated"
+      "text": "Get your booster"
     },
     {
       "_id": "varHeroP2",
@@ -119,6 +119,14 @@
     {
       "_id": "varHeroImageAlt",
       "text": "Three young women enjoy a sunny walk on a California beach."
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "Vaccines administered updated [VaxUpdatedDate] with data from [VaxDataDate]"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "Cases, deaths, and tests updated [CasesUpdatedDate] with data from [CasesDataDate]"
     }
   ]
 }

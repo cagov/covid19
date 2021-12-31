@@ -42,7 +42,7 @@
     },
     {
       "_id": "varVaccination",
-      "text": "Tiến trình tiêm vắc-xin"
+      "text": "Dữ liệu tiêm chủng"
     },
     {
       "_id": "varHealthEquity",
@@ -54,7 +54,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Tiêm vắc-xin"
+      "text": "Hãy tiêm mũi nhắc lại của quý vị"
     },
     {
       "_id": "varHeroP2",
@@ -102,7 +102,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "Thông tin chi tiết về dữ liệu này hiện có tại"
+      "text": "Dữ liệu vắc xin đã tiêm hôm nay bị trì hoãn. Chúng tôi sẽ cập nhật trang này khi có dữ liệu. Thông tin chi tiết về dữ liệu này hiện có tại"
     },
     {
       "_id": "varStateDashboard",
@@ -119,6 +119,14 @@
     {
       "_id": "varHeroImageAlt",
       "text": "Ba người phụ nữ trẻ vui vẻ đi dạo dưới bầu trời đầy nắng trên bãi biển California."
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "Các vắc-xin đã tiêm được cập nhật [VaxUpdatedDate] với dữ liệu từ [VaxDataDate]"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "Cập nhật số ca mắc, số ca tử vong và số ca xét nghiệm [CasesUpdatedDate] với dữ liệu từ [CasesDataDate]"
     }
   ]
 }

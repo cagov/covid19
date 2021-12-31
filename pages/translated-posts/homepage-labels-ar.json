@@ -42,7 +42,7 @@
     },
     {
       "_id": "varVaccination",
-      "text": "تقدم التطعيم"
+      "text": "بيانات التطعيم"
     },
     {
       "_id": "varHealthEquity",
@@ -54,7 +54,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "الحصول على التطعيم"
+      "text": "احصل على جرعتك المعززة"
     },
     {
       "_id": "varHeroP2",
@@ -102,7 +102,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "وتتوفر تفاصيل عن هذه البيانات في"
+      "text": "تتأخر بيانات اللقاحات التي تم إعطاؤها اليوم. سنقوم بتحديث هذه الصفحة عندما تتاح البيانات. وتتوفر تفاصيل عن هذه البيانات في"
     },
     {
       "_id": "varStateDashboard",
@@ -119,6 +119,14 @@
     {
       "_id": "varHeroImageAlt",
       "text": "ثلاث شابات يستمتعن بنزهة مشمسة على شاطئ كاليفورنيا."
+    },
+    {
+      "_id": "varUpdateTextVax",
+      "text": "اللقاحات التي تم إعطاؤها محدثة [VaxUpdatedDate] ببيانات من [VaxUpdatedDate]"
+    },
+    {
+      "_id": "varUpdateTextCases",
+      "text": "الحالات والوفيات والاختبارات محدثة [CasesUpdatedDate] ببيانات من [CasesUpdatedDate]"
     }
   ]
 }

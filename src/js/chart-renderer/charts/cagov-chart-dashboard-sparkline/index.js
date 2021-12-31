@@ -69,7 +69,7 @@ class CAGovDashboardSparkline extends window.HTMLElement {
 
     // WORK OUT HOW MUCH RECENT DATA TO CHOP OFF (typically 7 days, but not always)
     //
-    if (uncertainty_days == 0 && this.chartOptions.uncertainty_latest_field != "") {
+    if (uncertainty_days == -1 && this.chartOptions.uncertainty_latest_field != "") {
       const pending_date = this.chartdata.latest[this.chartOptions.uncertainty_latest_field][this.chartOptions.uncertainty_date_field];
       const data_to_walk = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
       uncertainty_days = 0;
@@ -86,8 +86,9 @@ class CAGovDashboardSparkline extends window.HTMLElement {
       }
       console.log(`Uncertainty days for for ${this.dataset.chartConfigKey} is ${uncertainty_days} ${pending_date}`);
     } else {
-      // console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
+      console.log("Overriding uncertainty_days",uncertainty_days,this.dataset.chartConfigKey,this.chartdata);
     }
+    uncertainty_days = Math.max(0, uncertainty_days);
 
     let bar_series = this.chartdata.time_series[this.chartOptions.seriesField].VALUES;
     // clone in case they are the same
