@@ -108,6 +108,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
           break;
         case 'filter':
           this.chartConfigFilter = select.value;
+          this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
           break;
         default:
       }
