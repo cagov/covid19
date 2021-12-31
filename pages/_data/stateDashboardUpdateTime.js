@@ -11,8 +11,10 @@ module.exports = function() {
     .then(res => res.json())
     .then(json => {
         resolve(json);
+    }).catch((error) => {
+      reject({"error": error})
     });
   });
 };
-
+  
 
