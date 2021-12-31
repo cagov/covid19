@@ -444,7 +444,6 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
  */
 
  export default function renderChart({
-    tooltip_func = null,
     extras_func = null,
     time_series_bars = null,
     time_series_line = null,
@@ -460,6 +459,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
     pending_date = null,
     pending_legend = null,
     month_modulo = 3,
+    lineAndBarsSameScale = false,
     root_id = "barid" } )  {
 
     console.log("renderChart",root_id);
@@ -521,15 +521,17 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
           this.dimensions.width - this.dimensions.margin.right, 
           this.dimensions.margin.left]);
       // console.log("time_series_line 2",time_series_line,root_id);
-      let min_y_domain = crop_floor? 0 : d3.min(time_series_line, d=> d.VALUE);
+      let scale_series = lineAndBarsSameScale? time_series_bars : time_series_line;
+
+      let min_y_domain = crop_floor? 0 : d3.min(scale_series, d=> d.VALUE);
       if (min_y_domain > 0)
         min_y_domain = 0;
-      let max_y_domain = d3.max(time_series_line, d=> d.VALUE);
+      let max_y_domain = d3.max(scale_series, d=> d.VALUE);
       if (max_y_domain == 0) {
         max_y_domain = 1;
       }
       // console.log("line range", root_id, min_y_domain, max_y_domain);
-      if (time_series_state_line) {
+      if (time_series_state_line && !lineAndBarsSameScale) {
         max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
       }
       // console.log("max_y_domain", max_y_domain);

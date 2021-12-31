@@ -1,5 +1,6 @@
 {
   "cases": {
+    "filterKeys": ["episode","reported"],
     "episode": {
       "chartName": "cagov-chart-dashboard-confirmed-cases",
       "latestField": "CONFIRMED_CASES",
@@ -8,7 +9,10 @@
       "dataUrl": "confirmed-cases/california.json",
       "dataUrlCounty": "confirmed-cases/<county>.json",
       "rootId": "cases-ep",
-      "filterKeys": ["episode","reported"]
+      "filterKeys": ["episode","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-cases",
@@ -18,10 +22,14 @@
       "dataUrl": "confirmed-cases/california.json",
       "dataUrlCounty": "confirmed-cases/<county>.json",
       "rootId": "cases-rep",
-      "filterKeys": ["episode","reported"]
+      "filterKeys": ["episode","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "deaths": {
+    "filterKeys": ["death","reported"],
     "death": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths",
       "latestField": "CONFIRMED_DEATHS",
@@ -30,7 +38,10 @@
       "dataUrl": "confirmed-deaths/california.json",
       "dataUrlCounty": "confirmed-deaths/<county>.json",
       "rootId": "death-date",
-      "filterKeys": ["death","reported"]
+      "filterKeys": ["death","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-confirmed-deaths",
@@ -40,10 +51,14 @@
       "dataUrl": "confirmed-deaths/california.json",
       "dataUrlCounty": "confirmed-deaths/<county>.json",
       "rootId": "deaths-reported-date",
-      "filterKeys": ["death","reported"]
+      "filterKeys": ["death","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "tests": {
+    "filterKeys": ["testing","reported"],
     "testing": {
       "chartName": "cagov-chart-dashboard-total-tests",
       "latestField": "TOTAL_TESTS",
@@ -52,7 +67,10 @@
       "dataUrl": "total-tests/california.json",
       "dataUrlCounty": "total-tests/<county>.json",
       "rootId": "tests-tests",
-      "filterKeys": ["testing","reported"]
+      "filterKeys": ["testing","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     },
     "reported": {
       "chartName": "cagov-chart-dashboard-total-tests",
@@ -62,10 +80,14 @@
       "dataUrl": "total-tests/california.json",
       "dataUrlCounty": "total-tests/<county>.json",
       "rootId": "tests-rep",
-      "filterKeys": ["testing","reported"]
+      "filterKeys": ["testing","reported"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "positivity": {
+    "filterKeys": ["positivity"],
     "positivity": {
       "chartName": "cagov-chart-dashboard-positivity-rate",
       "latestField": "POSITIVITY_RATE",
@@ -73,10 +95,14 @@
       "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
       "dataUrl": "positivity-rate/california.json",
       "dataUrlCounty": "positivity-rate/<county>.json",
-      "rootId": "pos-rate"
+      "rootId": "pos-rate",
+      "timeKeys": ["all-time","months-6","days-90"],
+      "usesStateData": true,
+      "lineAndBarsSameScale":false
     }
   },
   "patients": {
+    "filterKeys": ["hospitalized","icu"],
     "hospitalized": {
       "chartName": "cagov-chart-dashboard-patients",
       "latestField": "HOSPITALIZED_PATIENTS",
@@ -85,7 +111,10 @@
       "dataUrl": "patients/california.json",
       "dataUrlCounty": "patients/<county>.json",
       "rootId": "hosp-p",
-      "filterKeys": ["hospitalized","icu"]
+      "filterKeys": ["hospitalized","icu"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     },
     "icu": {
       "chartName": "cagov-chart-dashboard-patients",
@@ -95,10 +124,14 @@
       "dataUrl": "patients/california.json",
       "dataUrlCounty": "patients/<county>.json",
       "rootId": "hosp-p",
-      "filterKeys": ["hospitalized","icu"]
+      "filterKeys": ["hospitalized","icu"],
+      "timeKeys": ["all-time","months-6","days-90"],
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     }
   },
   "icu-beds": {
+    "filterKeys": ["icu-beds"],
     "icu-beds": {
       "chartName": "cagov-chart-dashboard-icu-beds",
       "latestField": "ICU_BEDS",
@@ -106,7 +139,10 @@
       "seriesFieldAvg": "ICU_BEDS",
       "dataUrl": "icu-beds/california.json",
       "dataUrlCounty": "icu-beds/<county>.json",
-      "rootId": "icu-beds"
+      "rootId": "icu-beds",
+      "timeKeys": ["all-time","months-6","days-90"],
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     }
   },
   "desktop": {

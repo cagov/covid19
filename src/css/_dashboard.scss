@@ -104,3 +104,16 @@
     margin-bottom: 50px;
   }
 }
+
+.chart.filter-select-space .chart-title {
+  margin-bottom: 20px;
+  
+  span {
+    @media (min-width: 768px) and (max-width: 995px) {
+      display: table-cell;
+      height: 60px;
+      vertical-align: bottom;
+      width: 100%;
+    }
+  }
+}
