@@ -484,7 +484,8 @@
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">
+      <!-- 1 Cases and Deaths - Confirmed Cases -->
+      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Confirmed cases in California</li>
           <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
@@ -494,6 +495,9 @@
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
           <li data-label="filterTabLabel1">Episode date</li>
           <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
           <li data-label="tooltipContent">
                   Date: <b>{DATE}</b><br>
                   7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
@@ -510,7 +514,8 @@
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">
+      <!-- 2 Cases and Deaths - Confirmed Deaths -->
+      <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">Confirmed deaths in California</li>
           <li data-label="chartTitleCounty">Confirmed deaths in {REGION} County</li>
@@ -520,6 +525,9 @@
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
           <li data-label="filterTabLabel1">Death date</li>
           <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
           <li data-label="tooltipContent">
             Date: <b>{DATE}</b><br>
             7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
@@ -563,7 +571,8 @@
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">
+      <!-- 3 Testing for COVID-19 - Total tests in California -->
+      <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">Total tests in California</li>
           <li data-label="chartTitleCounty">Total tests in {REGION} County</li>
@@ -572,6 +581,9 @@
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> decrease)</li>
           <li data-label="filterTabLabel1">Testing date</li>
           <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
           <li data-label="tooltipContent">
             Date: <b>{DATE} </b><br>
             7-day average test rate per 100K: <b>{7DAY_AVERAGE} </b><br>
@@ -588,13 +600,17 @@
       </cagov-chart-dashboard-total-tests>               
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">
+      <!-- 4 Testing for COVID-19 - Positivity rate in California -->
+      <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">Positivity rate in California</li>
           <li data-label="chartTitleCounty">Positivity rate in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> test positivity (7-day rate)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> increase from 7-days prior</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> decrease from 7-days prior</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
           <li data-label="tooltipContent">
             Testing Date: <b>{DATE} </b><br>
             7-day positivity rate: <b>{7DAY_POSRATE} </b><br>
@@ -637,7 +653,8 @@
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">
+      <!-- 5 Confirmed and suspected hospitalizations - COVID-19 hospitalized patients in California -->
+      <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
           <li data-label="chartTitleCounty">COVID-19 hospitalized patients in {REGION} County</li>
@@ -651,6 +668,9 @@
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="filterTabLabel1">Hospitalized</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
           <li data-label="xAxisLegend">Reported date</li>
           <li data-label="dayAverage">14-day average</li>
           <li data-label="tooltipContent">
@@ -662,7 +682,8 @@
       </cagov-chart-dashboard-patients>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">
+      <!-- 6 Confirmed and suspected hospitalizations - ICU beds in California -->
+      <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
           <li data-label="chartTitleCounty">ICU beds in {REGION} County</li>
@@ -671,6 +692,9 @@
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="xAxisLegend">Reported date</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
+          <li data-label="timeTabLabel1">All time</li>
+          <li data-label="timeTabLabel2">6 months</li>
+          <li data-label="timeTabLabel3">90 days</li>
         </ul>
       </cagov-chart-dashboard-icu-beds>               
     </div> 
