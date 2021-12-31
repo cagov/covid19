@@ -1,7 +1,6 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
 {%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
-
 {% set pagesWithBlueBottom = ['state-dashboard', 'equity', 'vaccination-progress-data', 'data-and-tools'] %}
 {%- if page.fileSlug in pagesWithBlueBottom %}
   {% set containerClasses = "container blue-bottom" %}
@@ -50,9 +49,9 @@
               {%- if page | engSlug === "data-and-tools" -%}
                 {{ "today" | formatDate2(true,tags) }}
               {%- elseif (page | engSlug).includes("state-dashboard") -%}
-                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(true,tags,0) }}
+                {{ (stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "vaccination-progress-data" -%}
-                {{ (dailyStatsV2.meta.PUBLISHED_DATE + "T18:00:00Z") | formatDate2(true,tags,0) }}
+                {{ (stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags,0) }}
               {%- elseif page | engSlug === "equity" -%}
                 {{ (equityDashboardUpdateTime.ROUNDED_PUBLISH_DATE) | formatDate2(true,tags, 0) }}
               {%- else -%}
