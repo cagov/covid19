@@ -51,10 +51,10 @@ jobs:
         run: aws s3 sync --follow-symlinks --delete ./docs s3://covid19.ca.gov
 
       - name: Reset cache-control on static fonts
-        run: aws s3 sync --recursive --cache-control max-age=15552000 ./docs/fonts s3://covid19.ca.gov/fonts
+        run: aws s3 sync --cache-control max-age=15552000 ./docs/fonts s3://covid19.ca.gov/fonts
 
       - name: Reset cache-control on static img
-        run: aws s3 sync --recursive --cache-control max-age=15552000 ./docs/img s3://covid19.ca.gov/img
+        run: aws s3 sync --cache-control max-age=15552000 ./docs/img s3://covid19.ca.gov/img
 
       # Push built site files to S3 production bucket    
       # - name: Deploy to S3
