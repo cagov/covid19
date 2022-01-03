@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-12-31T23:56:06Z"
-tags: ["translate"]
+publishdate: "2022-01-03T21:15:31Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -568,7 +568,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">Confirmed and suspected hospitalizations</h3>
+<h3 class="text-center">Confirmed hospitalizations</h3>
 
 
 
@@ -576,13 +576,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
+<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <!-- 5 Confirmed and suspected hospitalizations - COVID-19 hospitalized patients in California -->
+      <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
       <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
@@ -611,7 +611,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </cagov-chart-dashboard-patients>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <!-- 6 Confirmed and suspected hospitalizations - ICU beds in California -->
+      <!-- 6 Confirmed hospitalizations - ICU beds in California -->
       <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
