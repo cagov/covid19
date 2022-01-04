@@ -23,9 +23,12 @@ jobs:
         with:
           ref: staging
           submodules: true
+
       - uses: n1hility/cancel-previous-runs@v2
-        with: 
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: staging_aws.yml
+
       - name: Build 11ty
         run: |
           npm install
