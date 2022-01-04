@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "تعقب كوفيد-19 في كاليفورنيا"
 meta: "تساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19.⁦"
 author: "State of California"
-publishdate: "2021-12-16T20:38:02Z"
+publishdate: "2021-12-31T23:56:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,75 +16,11 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    <!--
-{# {%-set data = tableauCovidMetrics[0] -%} #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
-formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
- _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
- %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_ -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
---> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +&#xa;data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |&#xa;formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +&#xa;data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +&#xa;data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
-    <div class="row pb-4">
+    <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">تحديث بخصوص {{_varStatDate_}}</h2>
-        <div class="text-center">وحتى تاريخه، أكدت ولاية كاليفورنيا إجمالي {{_varStatTotalCases_}}حالات الإصابة بكوفيد-19{{_varStatTotalDeaths_}}والوفيات.</div>
-      </div>
+        <h2 class="text-center color-purple">تحديث بخصوص {{_varStatDateNoTime_}}</h2>         <!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases&#xa; and {{_varStatTotalDeaths_}} deaths.</div> -->       </div>
     </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">اللقاحات المعطاة</div>
@@ -127,9 +63,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}النسبة المئوية %</strong> <span class="text-300">لإيجابية الاختبار</span>          </div>          <!-- <div class="text-white text-xs mb-2">
- <span class="text-300">&nbsp;</span>
- </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}النسبة المئوية %</strong> <span class="text-300">لإيجابية الاختبار</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">الـ 8 أسابيع الماضية</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
@@ -137,9 +71,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">
-        <p class="small-text">محدثة {{_varStatDate_}}، ببيانات من {{_varStatYesterdayDate_}}.</p>
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الإصابة والوفيات والفحوصات</a></p>
+      <div class="col-lg-10 mx-auto">         <!--&#xa; {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}&#xa; {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}&#xa; {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}&#xa; {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}&#xa;--> <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}.</p> <!--&#xa; {%- else -%}&#xa;-->   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الإصابة وحالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> <!--&#xa; {%- endif -%}&#xa;-->         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الإصابة والوفيات والفحوصات</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
@@ -220,7 +152,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 1 Cases and Deaths - Confirmed Cases --> <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">حالات مؤكدة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">الحالات المؤكدة في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{إجمالي_confirmed_الحالات}</span> إجمالي الحالات المؤكدة</li>
@@ -229,7 +161,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> الحالات لكل 100 ألف (متوسط 7 أيام)</li>
           <li data-label="filterTabLabel1">تاريخ الحلقة</li>
           <li data-label="filterTabLabel2">تاريخ الإبلاغ</li>
-          <li data-label="tooltipContent">                   تاريخ الحلقة: <b>{DATE}</b><br> الحالات لكل 100 ألف (متوسط 7 أيام): <b>{7DAY_AVERAGE}</b><br> الحالات: <b>{CASES}</b>           </li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="tooltipContent">                   التاريخ: <b>{DATE}</b><br> الحالات لكل 100 ألف (متوسط 7 أيام): <b>{7DAY_AVERAGE}</b><br> الحالات: <b>{CASES}</b>           </li>
           <li data-label="dayAverage">متوسط 7 أيام</li>
           <li data-label="cases_leftYAxisLegend">الحالات لكل 100 ألف</li>
           <li data-label="cases_rightYAxisLegend">الحالات</li>
@@ -238,7 +173,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">قيد الانتظار</li>
           <li data-label="pending_caveat">البيانات غير مكتملة إلى أحدث التواريخ</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 2 Cases and Deaths - Confirmed Deaths --> <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">حالات الوفاة المؤكدة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">الحالات الوفاة المؤكدة في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{إجمالي_confirmed_الوفيات}</span> إجمالي حالات الوفاة المؤكدة</li>
@@ -247,7 +182,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> حالات الوفاة لكل 100 ألف (متوسط 7 أيام)</li>
           <li data-label="filterTabLabel1">تاريخ الوفاة</li>
           <li data-label="filterTabLabel2">تاريخ الإبلاغ</li>
-          <li data-label="tooltipContent">             تاريخ الوفاة: <b>{DATE}</b><br> معدل الوفيات في متوسط 7 أيام لكل 100 ألف: <b>{7DAY_AVERAGE}</b><br> الوفيات: <b>{DEATHS}</b>           </li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="tooltipContent">             التاريخ: <b>{DATE}</b><br> معدل الوفيات في متوسط 7 أيام لكل 100 ألف: <b>{7DAY_AVERAGE}</b><br> الوفيات: <b>{DEATHS}</b>           </li>
           <li data-label="dayAverage">متوسط 7 أيام</li>
           <li data-label="deaths_leftYAxisLegend">الوفيات لكل 100 ألف شخص</li>
           <li data-label="deaths_rightYAxisLegend">الوفيات</li>
@@ -270,12 +208,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، الزيادة في {{_varStatTestedDaily_}} الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩٪.</p>
+<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، الزيادة في {{_varStatTestedDaily_}} الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩٪.</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 3 Testing for COVID-19 - Total tests in California --> <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">إجمالي الاختبارات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">إجمالي الاختبارات في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> إجمالي الاختبارات التي أجريت</li>
@@ -283,7 +221,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> الاختبارات الجديدة المبلغ عنها (<span class="med-num">{new_tests_reported_delta_1_day}</span> تنخفض)</li>
           <li data-label="filterTabLabel1">تاريخ إجراء الاختبار</li>
           <li data-label="filterTabLabel2">تاريخ الإبلاغ</li>
-          <li data-label="tooltipContent">             تاريخ إجراء الاختبار: <b>{DATE} </b><br> معدل إجراء الاختبار في متوسط 7 أيام لكل 100 ألف: <b>{7DAY_AVERAGE} </b><br> إجمالي الاختبارات: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="tooltipContent">             التاريخ: <b>{DATE} </b><br> معدل إجراء الاختبار في متوسط 7 أيام لكل 100 ألف: <b>{7DAY_AVERAGE} </b><br> إجمالي الاختبارات: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="dayAverage">متوسط 7 أيام</li>
           <li data-label="tests_leftYAxisLegend">الاختبارات لكل 100 ألف شخص</li>
           <li data-label="tests_rightYAxisLegend">الاختبارات</li>
@@ -292,13 +233,16 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">قيد الانتظار</li>
           <li data-label="pending_caveat">البيانات غير مكتملة إلى أحدث التواريخ</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 4 Testing for COVID-19 - Positivity rate in California --> <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">معدل إيجابية الاختبارات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">معدل إيجابية الاختبارات في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> إيجابية الاختبارات (المعدل في 7 أيام)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> يزداد من قبل 7 أيام</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> ينخفض من قبل 7 أيام</li>
-          <li data-label="tooltipContent">             تاريخ إجراء الاختبار: <b>{التاريخ} </b><br> معدل إيجابية الاختبارات في 7 أيام: <b>{7DAY_POSRATE} </b><br> إجمالي الاختبارات التي أجريت: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="tooltipContent">             تاريخ إجراء الاختبار: <b>{التاريخ} </b><br> معدل إيجابية الاختبارات في 7 أيام: <b>{7DAY_POSRATE} </b><br> إجمالي الاختبارات التي أُجريت: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="leftYAxisLegend">معدل إيجابية الاختبارات</li>
           <li data-label="rightYAxisLegend">الاختبارات</li>
           <li data-label="xAxisLegend">تاريخ إجراء الاختبار</li>
@@ -320,13 +264,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">دخول الحالات المؤكدة والمشتبه فيها إلى المستشفيات</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء مؤكدة أو مشتبه فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة الذين يُعالجون من كوفيد-19 سواء كانت إصابتهم مؤكدة أو مشتبه فيها ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
+<h3 class="text-center">دخول الحالات المؤكدة والمشتبه فيها إلى المستشفيات</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء مؤكدة أو مشتبه فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة الذين يعالَجون من كوفيد-19 سواء كانت إصابتهم مؤكدة أو مشتبهًا فيها ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
-          <li data-label="chartTitleState">مرضى كوفيد -19 المحتجزين بالمستشفيات في كاليفورنيا</li>
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 5 Confirmed and suspected hospitalizations - COVID-19 hospitalized patients in California --> <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
+          <li data-label="chartTitleState">مرضى كوفيد-19 المحتجزين بالمستشفيات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">مرضى كوفيد -19 المحتجزين بالمستشفيات في {منطقة} المقاطعة</li>
           <li data-label="chartTitleStateICU">مرضى كوفيد-19 في وحدات العناية المركزة بكاليفورنيا</li>
           <li data-label="chartTitleCountyICU">مرضى كوفيد-19 في وحدات العناية المركزة في {منطقة} المقاطعة</li>
@@ -338,18 +282,24 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{التغير}</span> عدد أقل من مرضى العناية المركزة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="filterTabLabel1">نزلاء المستشفيات</li>
           <li data-label="filterTabLabel2">وحدات العناية المركزة</li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
           <li data-label="dayAverage">متوسط 14 يوم</li>
-          <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يوم: <b>{متوسط_14 يوم} </b>           </li>
+          <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يومًا: <b>{متوسط_14 يومًا} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
-          <li data-label="chartTitleState">أسرة العناية المركزة في كاليفورنيا</li>
+    <div class="col-lg-6 col-md-6 col-sm-12">       <!-- 6 Confirmed and suspected hospitalizations - ICU beds in California --> <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
+          <li data-label="chartTitleState">أَسِرّة العناية المركزة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">أسرة العناية المركزة في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أَسرّة العناية المركزة المتوفرة</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
           <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> من أَسِرّة العناية المركزة المتوفرة.</li>
+          <li data-label="timeTabLabel1">كل الوقت</li>
+          <li data-label="timeTabLabel2">6 أشهر</li>
+          <li data-label="timeTabLabel3">90 يومًا</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 
