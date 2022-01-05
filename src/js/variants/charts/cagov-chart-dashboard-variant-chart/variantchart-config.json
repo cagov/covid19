@@ -29,6 +29,8 @@
         "uncertainty_days": 0,
         "unused_field": 0,
         "skip_zeros": true,
+        "timeKeys": ["all-time","months-6","days-90"],
+        "pending_days": 3,
         "omit_other": true,
         "normalize": true
       }
@@ -50,7 +52,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }
@@ -61,7 +63,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }
@@ -72,7 +74,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }

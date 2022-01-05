@@ -23,9 +23,6 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
     for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
       nbr_zeros += 1;
     }
-    // for (let i = data.length-1; i > nbr_zeros && data[i][fld] == 0; --i) {
-    //   nbr_tail_zeros += 1;
-    // }
   }
   const dataslice = data.slice(nbr_zeros, data.length - nbr_tail_zeros);
 
@@ -140,6 +137,8 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let legendGap = 12;
   let twoline_mode = this.dimensions.width < 700;
   // console.log("drawing legend, width =",this.dimensions.width);
+  const legendTop  = 12;
+  const lineOfst = -2;
   if (twoline_mode) {
     const cutIndex = chart_options.omit_other? 4 : 5;
     const labels2 = labels.slice(cutIndex);
@@ -153,13 +152,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -177,13 +176,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22+yOffset)
+        .attr('y1', legendTop+lineOfst+yOffset)
         .attr('x2', lineWidth)
-        .attr('y2', 22+yOffset);
+        .attr('y2', legendTop+lineOfst+yOffset);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24+yOffset)
+        .attr("y", legendTop+yOffset)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -199,13 +198,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -264,7 +263,32 @@ function writeYAxis(svg, x, y,
 
 }
 
+function writePendingBlock(svg, x, y,
+  { pending_days=0,
+    pending_legend='',
+    root_id='barid'} ) {
 
+    const max_x_domain = x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    const left_edge = x(max_x_domain + 0.5 - pending_days);
+    const right_edge = x(max_x_domain);
+
+    let xgroup = svg.append("g")
+      .attr("class",'pending-block');
+
+    xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
+      .attr("x",left_edge)
+      .attr("y",y(max_y_domain))
+      .attr("width",right_edge - left_edge)
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    xgroup.append('text')
+      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+      .text(pending_legend)
+      .attr("x",x(max_x_domain))
+      .attr("y",y(max_y_domain)-4);
+}
 
 // Convert 
 function getDataIndexByX(xScale, yScale, xy)
@@ -358,6 +382,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     //              alpha      beta      delta     gamma      lambda     mu        other
     series_labels = [],
     chart_options = {},
+    pending_days = 0,
+    pending_label = 'Pending',
    } )  {
 
     // console.log("renderChart",root_id, line_series_array);
@@ -430,14 +456,10 @@ function getAxisDiv(ascale,{hint='num'}) {
                  chart_options:chart_options});
 
     
-    // if (pending_weeks > 0) {
-    //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-    //   if (pending_mode != 'dotted' && pending_mode != 'dots') {
-    //     writePendingBlock.call(this, this.svg, this.xline, this.yline,
-    //           { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
-    //   }
-    // }
-
+    if (pending_days > 0) {
+      writePendingBlock.call(this, this.svg, this.xline, this.yline, 
+            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label});
+    }
 
 
     // Write Y Axis, favoring line on left, bars on right
