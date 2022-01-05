@@ -90,7 +90,9 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
       caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
     });
     caption += '</table>';
-
+    if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_days) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
    return caption;
   }
 
