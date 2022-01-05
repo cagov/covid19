@@ -137,6 +137,8 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let legendGap = 12;
   let twoline_mode = this.dimensions.width < 700;
   // console.log("drawing legend, width =",this.dimensions.width);
+  const legendTop  = 12;
+  const lineOfst = -2;
   if (twoline_mode) {
     const cutIndex = chart_options.omit_other? 4 : 5;
     const labels2 = labels.slice(cutIndex);
@@ -150,13 +152,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -174,13 +176,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22+yOffset)
+        .attr('y1', legendTop+lineOfst+yOffset)
         .attr('x2', lineWidth)
-        .attr('y2', 22+yOffset);
+        .attr('y2', legendTop+lineOfst+yOffset);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24+yOffset)
+        .attr("y", legendTop+yOffset)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -196,13 +198,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
