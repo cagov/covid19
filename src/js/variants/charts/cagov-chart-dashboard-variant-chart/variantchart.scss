@@ -36,6 +36,24 @@
     fill: black;
     opacity: 0.15;
   }
+
+  g.pending-block {
+    rect {
+      fill: black;
+      opacity: 0.05;
+    }
+    text {
+      font-weight: 300;
+      font-size: 0.8rem;
+      fill: black;
+      opacity: 0.5;
+    }
+    text {
+      text-anchor: end;
+      dominant-baseline: auto;
+    }
+  }
+
 }
 
 .d-hide {
