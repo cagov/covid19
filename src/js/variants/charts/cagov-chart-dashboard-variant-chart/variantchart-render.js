@@ -23,9 +23,6 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
     for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
       nbr_zeros += 1;
     }
-    // for (let i = data.length-1; i > nbr_zeros && data[i][fld] == 0; --i) {
-    //   nbr_tail_zeros += 1;
-    // }
   }
   const dataslice = data.slice(nbr_zeros, data.length - nbr_tail_zeros);
 
@@ -264,7 +261,32 @@ function writeYAxis(svg, x, y,
 
 }
 
+function writePendingBlock(svg, x, y,
+  { pending_days=0,
+    pending_legend='',
+    root_id='barid'} ) {
 
+    const max_x_domain = x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    const left_edge = x(max_x_domain + 0.5 - pending_days);
+    const right_edge = x(max_x_domain);
+
+    let xgroup = svg.append("g")
+      .attr("class",'pending-block');
+
+    xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
+      .attr("x",left_edge)
+      .attr("y",y(max_y_domain))
+      .attr("width",right_edge - left_edge)
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    xgroup.append('text')
+      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+      .text(pending_legend)
+      .attr("x",x(max_x_domain))
+      .attr("y",y(max_y_domain)-4);
+}
 
 // Convert 
 function getDataIndexByX(xScale, yScale, xy)
@@ -358,6 +380,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     //              alpha      beta      delta     gamma      lambda     mu        other
     series_labels = [],
     chart_options = {},
+    pending_days = 0,
+    pending_label = 'Pending',
    } )  {
 
     // console.log("renderChart",root_id, line_series_array);
@@ -430,14 +454,10 @@ function getAxisDiv(ascale,{hint='num'}) {
                  chart_options:chart_options});
 
     
-    // if (pending_weeks > 0) {
-    //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-    //   if (pending_mode != 'dotted' && pending_mode != 'dots') {
-    //     writePendingBlock.call(this, this.svg, this.xline, this.yline,
-    //           { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
-    //   }
-    // }
-
+    if (pending_days > 0) {
+      writePendingBlock.call(this, this.svg, this.xline, this.yline, 
+            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label});
+    }
 
 
     // Write Y Axis, favoring line on left, bars on right
