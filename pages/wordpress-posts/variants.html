@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Variants"
 meta: "California is tracking COVID-19 variants to control the spread of the disease."
 author: "State of California"
-publishdate: "2021-12-30T23:14:06Z"
+publishdate: "2022-01-05T17:48:19Z"
 tags: ["do-not-crawl","staging-only","translate"]
 addtositemap: false
 ---
@@ -37,11 +37,14 @@ addtositemap: false
 
 
 <div class="chart-prev-div">
-    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants">
+    <cagov-chart-dashboard-variant-chart class="chart" id="variant-chart" data-chart-config-filter="chart" data-chart-config-key="variants" data-chart-config-timerange="all-time">
        <ul class="d-none">
          <li data-label="y_axis_legend">% of sequenced<br>specimens</li>
          <li data-label="chart_update_statement">Variant data is updated weekly. The chart has data on specimens collected through {CHART_LAST_DATE} and was updated on {CHART_PUBLISH_DATE}. The California Department of Public Health has <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID-Variants.aspx">more information and data about variants</a>.</li>
          <li data-label="tooltip_date_label">Week ending</li>
+        <li data-label="timeTabLabel1">All time</li>
+        <li data-label="timeTabLabel2">6 months</li>
+        <li data-label="timeTabLabel3">90 days</li>
        </ul>
      </cagov-chart-dashboard-variant-chart>
  </div>
