@@ -166,15 +166,14 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       xPos += box.getBBox().width + legendGap;
     });
     let yOffset = 12;
-    let xIdxOffset = 5;
     xPos = 0;
     labels2.forEach((label, i) => {
       // console.log("Drawing label", label);
       let lg = legend.append("g")
-                  .attr('id', 'legend_'+(i+xIdxOffset))
+                  .attr('id', 'legend_'+(i+cutIndex))
                   .attr('transform', `translate(${xPos})`);
       let line = lg.append('line')
-        .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
+        .attr('style',`stroke:${colors[i+cutIndex]};`)  // 
         .attr('x1', 0)
         .attr('y1', legendTop+lineOfst+yOffset)
         .attr('x2', lineWidth)
@@ -186,7 +185,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
         .attr("x", lineWidth+lineMargin)
         ;
 
-      let box = document.querySelector('#variant-lgend #legend_'+(i+xIdxOffset));
+      let box = document.querySelector('#variant-lgend #legend_'+(i+cutIndex));
       xPos += box.getBBox().width + legendGap;
     });
   } else {
