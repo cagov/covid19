@@ -3,10 +3,17 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2021-12-16T20:38:02Z"
+publishdate: "2022-01-06T23:14:41Z"
 tags: ["translate"]
 addtositemap: true
 ---
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Paalala para sa Enero 6, 2022</h2>
+<p>Dahil sa error sa pagproseso ng data, hindi naisama sa update ngayong araw ang ilang naiulat na kaso at ang data ng mga kaso at pagkamatay sa county at buong estado. Ang kabuuang bilang ng kaso at pagkamatay para sa estado at ilang county na naiuulat ay pagtatantya. Dahil diyan, nagkaroon ng negatibong bilang ng mga bagong kaso at pagkamatay ang ilang county kumpara kahapon. Ang mga hindi naitalang kaso at pagkamatay ay isasama sa ulat kinabukasn.</p>
+</div><p></p>
+
+
 
 <p class="emphasized">Sinusubaybayan ng California ang data para maunawaan ang pagkalat ng COVID-19.</p>
 
@@ -16,78 +23,14 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>    <!--
-{# {%-set data = tableauCovidMetrics[0] -%} #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
-formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
- _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
- %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_ -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
---> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
-    <div class="row pb-4">
+    <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">Update para sa {{_varStatDate_}}</h2>
-        <div class="text-center">Sa kasalukuyan, {{_varStatTotalCases_}} ang kumpirmadong kaso ng COVID-19 at {{_varStatTotalDeaths_}} ang kumpirmadong pagkamatay sa California sa kabuuan.</div>
-      </div>
+        <h2 class="text-center color-purple">Update para sa {{_varStatDateNoTime_}}</h2>         <!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases&#xa; and {{_varStatTotalDeaths_}} deaths.</div> -->       </div>
     </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Naibigay na Bakuna</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Naibigay nang Bakuna</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">kabuuan</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span> </div>
          <div class="text-white text-xs mb-2">
@@ -127,9 +70,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">pagpopositibo sa pagsusuri</span>          </div>          <!-- <div class="text-white text-xs mb-2">
- <span class="text-300">&nbsp;</span>
- </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">pagpopositibo sa pagsusuri</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
@@ -137,14 +78,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">
-        <p class="small-text">Na-update noong {{_varStatDate_}}, na may data mula sa {{_varStatYesterdayDate_}}.</p>
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Source data ng mga naibigay nang bakuna</a> at <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">source data ng mga kaso, pagkamatay, at pagsusuri</a></p>
+      <div class="col-lg-10 mx-auto">         <!--&#xa; {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}&#xa; {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}&#xa; {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}&#xa; {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}&#xa;--> <p class="small-text">Na-update noong {{_varStatDateLaterAccurate_}}, na may data mula sa {{_varCommonDateReport_}}.</p> <!--&#xa; {%- else -%}&#xa;-->   <p class="small-text">Na-update ang mga naibigay nang bakuna noong {{_varVaxDateAccurate_}}, na may data mula sa {{_varVaxDateReport_}}.   <br>Na-update ang mga kaso, pagkamatay, at pagsusuri noong {{_varCasesDateAccurate_}}, na may data mula sa {{_varCasesDateReport_}}.</p> <!--&#xa; {%- endif -%}&#xa;-->         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Source data ng mga naibigay nang bakuna</a> at <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">source data ng mga kaso, pagkamatay, at pagsusuri</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Iniuulat ang data na ito sa unang araw pagkatapos ng weekend o holiday. Iniuulat araw-araw ang data tungkol sa mga ibinibigay na bakuna.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
+                <ul><li>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Pinoproseso ang data na ito sa unang araw kasunod ng weekend o holiday, at ina-update ito rito sa susunod na araw. Iniuulat araw-araw ang data tungkol sa mga ibinibigay na bakuna.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -220,7 +159,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 1 Cases and Deaths - Confirmed Cases --> <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">Mga kumpirmadong kaso sa California</li>
           <li data-label="chartTitleCounty">Mga kumpirmadong kaso sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> (na) kumpirmadong kaso sa kabuuan</li>
@@ -229,7 +168,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> (na) kaso sa bawat 100K (7 araw na average)</li>
           <li data-label="filterTabLabel1">Petsa ng episode</li>
           <li data-label="filterTabLabel2">Petsa ng pag-uulat</li>
-          <li data-label="tooltipContent">                   Petsa ng Episode: <b>{DATE}</b><br> 7 araw na average na rate ng kaso sa bawat 100K: <b>{7DAY_AVERAGE}</b><br> Mga kaso: <b>{CASES}</b>           </li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
+          <li data-label="tooltipContent">                   Petsa: <b>{DATE}</b><br> 7 araw na average na rate ng kaso sa bawat 100K: <b>{7DAY_AVERAGE}</b><br> Mga kaso: <b>{CASES}</b>           </li>
           <li data-label="dayAverage">7 araw na average</li>
           <li data-label="cases_leftYAxisLegend">Mga kaso sa bawat 100K</li>
           <li data-label="cases_rightYAxisLegend">Mga kaso</li>
@@ -238,7 +180,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">Nakabinbin</li>
           <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 2 Cases and Deaths - Confirmed Deaths --> <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Mga kumpirmadong pagkamatay sa California</li>
           <li data-label="chartTitleCounty">Mga kumpirmadong pagkamatay sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> (na) kumpirmadong pagkamatay sa kabuuan</li>
@@ -247,7 +189,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> (na) pagkamatay sa bawat 100K (7 araw na average)</li>
           <li data-label="filterTabLabel1">Petsa ng pagkamatay</li>
           <li data-label="filterTabLabel2">Petsa ng pag-uulat</li>
-          <li data-label="tooltipContent">             Petsa ng Pagkamatay: <b>{DATE}</b><br> 7 araw na average na rate ng pagkamatay sa bawat 100K: <b>{7DAY_AVERAGE}</b><br> Mga pagkamatay: <b>{DEATHS}</b>           </li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
+          <li data-label="tooltipContent">             Petsa: <b>{DATE}</b><br> 7 araw na average na rate ng pagkamatay sa bawat 100K: <b>{7DAY_AVERAGE}</b><br> Mga pagkamatay: <b>{DEATHS}</b>           </li>
           <li data-label="dayAverage">7 araw na average</li>
           <li data-label="deaths_leftYAxisLegend">Mga pagkamatay sa bawat 100K</li>
           <li data-label="deaths_rightYAxisLegend">Mga Pagkamatay</li>
@@ -275,7 +220,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 3 Testing for COVID-19 - Total tests in California --> <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Kabuuang mga pagsusuri sa California</li>
           <li data-label="chartTitleCounty">Kabuuang mga pagsusuri sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> (na) naisagawang pagsusuri sa kabuuan</li>
@@ -283,7 +228,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> (na) bagong naiulat na pagsusuri (<span class="med-num">{new_tests_reported_delta_1_day}</span> (na) pagbaba)</li>
           <li data-label="filterTabLabel1">Petsa ng pagsusuri</li>
           <li data-label="filterTabLabel2">Petsa ng pag-uulat</li>
-          <li data-label="tooltipContent">             Petsa ng Pagsusuri: <b>{DATE} </b><br> 7 araw na average na rate ng pagsusuri sa bawat 100K: <b>{7DAY_AVERAGE} </b><br> Kabuuang Bilang ng Mga Pagsusuri: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
+          <li data-label="tooltipContent">             Petsa: <b>{DATE} </b><br> 7 araw na average na rate ng pagsusuri sa bawat 100K: <b>{7DAY_AVERAGE} </b><br> Kabuuang Bilang ng Mga Pagsusuri: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="dayAverage">7 araw na average</li>
           <li data-label="tests_leftYAxisLegend">Mga pagsusuri sa bawat 100K</li>
           <li data-label="tests_rightYAxisLegend">Mga Pagsusuri</li>
@@ -292,12 +240,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">Nakabinbin</li>
           <li data-label="pending_caveat">Hindi kumpleto ang data para sa mga kamakailang petsa</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 4 Testing for COVID-19 - Positivity rate in California --> <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Rate ng pagpopositibo sa California</li>
           <li data-label="chartTitleCounty">Rate ng pagpopositibo sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> (na) pagpopositibo sa pagsusuri (7 araw na rate)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagtaas mula sa nakalipas na 7 araw</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> (na) pagbaba mula sa nakalipas na 7 araw</li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
           <li data-label="tooltipContent">             Petsa ng Pagsusuri: <b>{DATE} </b><br> 7 araw na rate ng pagpopositibo: <b>{7DAY_POSRATE} </b><br> Kabuuang Bilang ng Mga Pagsusuri: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="leftYAxisLegend">Rate ng nagpopositibo</li>
           <li data-label="rightYAxisLegend">Mga Pagsusuri</li>
@@ -320,12 +271,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">Mga kumpirmado at pinaghihinalaang pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmado at pinaghihinalaang kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
+<h3 class="text-center">Mga Pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang dami ng mga pagpapaospital dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California --> <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Mga naospital na pasyente dahil sa COVID-19 sa California</li>
           <li data-label="chartTitleCounty">Mga naospital na pasyente dahil sa COVID-19 sa {REGION} County</li>
           <li data-label="chartTitleStateICU">Mga nasa ICU na pasyente dahil sa COVID-19 sa California</li>
@@ -338,11 +289,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="filterTabLabel1">Nasa ospital</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="dayAverage">14 na araw na average</li>
           <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12">       <!-- 6 Confirmed hospitalizations - ICU beds in California --> <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Mga kama sa ICU sa California</li>
           <li data-label="chartTitleCounty">Mga kama sa ICU sa {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) na available na kama sa ICU</li>
@@ -350,12 +304,21 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
+          <li data-label="timeTabLabel1">Lahat ng oras</li>
+          <li data-label="timeTabLabel2">6 na buwan</li>
+          <li data-label="timeTabLabel3">90 araw</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Source data ng mga naospital na pasyente dahil sa COVID-19 at ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Source data ng mga naospital na pasyente dahil sa COVID-19 at ICU</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+<ul class="small-text"><li>Available ang data ng pasyenteng pinaghihinalaang may COVID-19 sa source data ng mga pasyenteng nasa ospital at ICU. Simula Enero 5, 2022, kasama na sa mga chart na ito ang mga pasyente lang na nasa ospital at ICU na kumpirmadong may COVID-19.</li><li>Ang higit pang detalye tungkol sa mga pasyenteng nasa ospital at ICU, kasama ang mga pasyenteng pinaghihinalaang may COVID-19, ay available sa <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">dashboard ng pagpapaospital</a>.</li></ul>
+</div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
@@ -451,17 +414,26 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/equity">Data pagkakapantay-pantay sa kalusugan</a></h3> 
-                                <p class="card-text">Paano naapektuhan ng COVID-19 ang iba't ibang komunidad sa buong estado</p>
+                                <h3 class="h4 card-title mt-2"><a href="/variants">Mga variant</a></h3> 
+                                <p class="card-text">Data tungkol sa kung aling mga variant ang mayroon sa California, kasama ang Delta at Omicron</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">Data at mga tool</a></h3>             
+                                <h3 class="h4 card-title mt-2"><a href="/equity">Data pagkakapantay-pantay sa kalusugan</a></h3>             
+                                <p class="card-text">Paano naapektuhan ng COVID-19 ang iba't ibang komunidad sa buong estado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->                 <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Data at mga tool</a></h3>
                                 <p class="card-text">Mga detalyadong modelo, dashboard, database, at impormasyon tungkol sa data sa pag-uulat ng COVID-19 ng California</p>
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
+                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
