@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình đại dịch COVID-19 tại California"
 meta: "Dữ liệu của quận và toàn tiểu bang để giúp mọi người hiểu rõ tốc độ lây lan của COVID-19."
 author: "State of California"
-publishdate: "2021-12-16T20:38:02Z"
+publishdate: "2022-01-07T19:06:18Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,75 +16,11 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Thông tin cập nhật của ngày hôm nay</a></strong></li><li><a href="#postvax-status"><strong>Các dữ liệu về ca đã tiêm vắc-xin và chưa tiêm vắc-xin</strong></a></li><li><strong><a href="#county-statewide">Dữ liệu của quận và toàn tiểu bang</a></strong></li><li><strong><a href="#ethnicity-gender-age">Số ca mắc và số ca tử vong theo sắc tộc, giới tính và tuổi</a></strong></li><li><strong><a href="#more">Tìm hiểu thêm dữ liệu</a></strong></li></ul>    <!--
-{# {%-set data = tableauCovidMetrics[0] -%} #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
-formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
- _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
- %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_ -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
---> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">Thông tin cập nhật của ngày hôm nay</a></strong></li><li><a href="#postvax-status"><strong>Các dữ liệu về ca đã tiêm vắc-xin và chưa tiêm vắc-xin</strong></a></li><li><strong><a href="#county-statewide">Dữ liệu của quận và toàn tiểu bang</a></strong></li><li><strong><a href="#ethnicity-gender-age">Số ca mắc và số ca tử vong theo sắc tộc, giới tính và tuổi</a></strong></li><li><strong><a href="#more">Tìm hiểu thêm dữ liệu</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
-    <div class="row pb-4">
+    <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">Cập nhật cho {{_varStatDate_}}</h2>
-        <div class="text-center">Cho đến nay, California đã xác nhận tổng số {{_varStatTotalCases_}} ca mắc và {{_varStatTotalDeaths_}} ca tử vong do bệnh COVID-19.</div>
-      </div>
+        <h2 class="text-center color-purple">Cập nhật cho {{_varStatDateNoTime_}}</h2>         <!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases&#xa; and {{_varStatTotalDeaths_}} deaths.</div> -->       </div>
     </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Đã Tiêm Vắc-xin</div>
@@ -127,9 +63,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">xét nghiệm có kết quả dương tính</span>          </div>          <!-- <div class="text-white text-xs mb-2">
- <span class="text-300">&nbsp;</span>
- </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">xét nghiệm có kết quả dương tính</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">8 tuần qua</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
@@ -137,14 +71,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">
-        <p class="small-text">Đã cập nhật {{_varStatDate_}}, với dữ liệu từ {{_varStatYesterdayDate_}}.</p>
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Dữ liệu nguồn tiêm vắc-xin</a> và <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">dữ liệu nguồn về ca mắc, ca tử vong và người được xét nghiệm</a></p>
+      <div class="col-lg-10 mx-auto">         <!--&#xa; {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}&#xa; {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}&#xa; {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}&#xa; {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}&#xa;--> <p class="small-text">Đã cập nhật {{_varStatDateLaterAccurate_}}, với dữ liệu từ {{_varCommonDateReport_}}.</p> <!--&#xa; {%- else -%}&#xa;-->   <p class="small-text">Các vắc-xin đã tiêm được cập nhật {{_varVaxDateAccurate_}}, với dữ liệu từ {{_varVaxDateReport_}}.   <br>Số ca mắc, ca tử vong và số người được cập nhật {{_varCasesDateAccurate_}}, với dữ liệu từ {{_varCasesDateReport_}}.</p> <!--&#xa; {%- endif -%}&#xa;-->         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Dữ liệu nguồn tiêm vắc-xin</a> và <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">dữ liệu nguồn về ca mắc, ca tử vong và người được xét nghiệm</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Ghi chú dữ liệu</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được báo cáo vào ngày đầu tiên sau cuối tuần hoặc ngày lễ. Dữ liệu về vắc-xin đã tiêm được báo cáo hàng ngày.</li> <li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin được tính bằng cách lấy số dân đã tiêm một liều hoặc đủ liều vắc-xin chia cho số dân đủ điều kiện tiêm vắc-xin.</li><li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin sẽ được cập nhật liên tục nhờ công tác điều chỉnh hồ sơ vắc-xin trên toàn tiểu bang đang được thực hiện. Tỷ lệ phần trăm này có thể khác với dữ liệu được báo cáo bởi các cơ quan y tế có thẩm quyền của địa phương và các tổ chức liên bang.</li><li>Tỷ lệ ca mắc và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày.</li><li>Tỷ lệ tử vong và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ.</li><li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li><li>Các ca xét nghiệm có kết quả dương tính dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</li></ul> 
+                <ul><li>Dữ liệu về các ca mắc, tử vong và xét nghiệm không được báo cáo vào cuối tuần hoặc ngày lễ của tiểu bang. Dữ liệu này được xử lý vào ngày đầu tiên sau cuối tuần hoặc ngày lễ và được cập nhật tại đây vào ngày tiếp theo. Dữ liệu về vắc-xin đã tiêm được báo cáo hàng ngày.</li> <li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin được tính bằng cách lấy số dân đã tiêm một liều hoặc đủ liều vắc-xin chia cho số dân đủ điều kiện tiêm vắc-xin.</li><li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin sẽ được cập nhật liên tục nhờ công tác điều chỉnh hồ sơ vắc-xin trên toàn tiểu bang đang được thực hiện. Tỷ lệ phần trăm này có thể khác với dữ liệu được báo cáo bởi các cơ quan y tế có thẩm quyền của địa phương và các tổ chức liên bang.</li><li>Tỷ lệ ca mắc và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 7 ngày.</li><li>Tỷ lệ tử vong và mức trung bình hàng ngày dựa trên mức trung bình 7 ngày với thời gian trễ là 21 ngày do báo cáo chậm trễ.</li><li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li><li>Các ca xét nghiệm có kết quả dương tính dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -220,7 +152,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 1 Cases and Deaths - Confirmed Cases --> <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">Số ca nhiễm được xác nhận ở California</li>
           <li data-label="chartTitleCounty">Số ca nhiễm được xác nhận ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> tổng số ca nhiễm được xác nhận</li>
@@ -229,7 +161,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> ca mắc trên 100 nghìn người (mức trung bình trong 7 ngày)</li>
           <li data-label="filterTabLabel1">Ngày theo từng giai đoạn</li>
           <li data-label="filterTabLabel2">Ngày báo cáo</li>
-          <li data-label="tooltipContent">                   Ngày Theo Từng Giai Đoạn: <b>{DATE}</b><br> Tỉ lệ số ca mắc trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Mắc: <b>{CASES}</b>           </li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
+          <li data-label="tooltipContent">                   Ngày: <b>{DATE}</b><br> Tỉ lệ số ca mắc trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Mắc: <b>{CASES}</b>           </li>
           <li data-label="dayAverage">Mức trung bình 7 ngày</li>
           <li data-label="cases_leftYAxisLegend">Số ca mắc trên 100 nghìn người</li>
           <li data-label="cases_rightYAxisLegend">Ca Mắc</li>
@@ -238,7 +173,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">Đang chờ xử lý</li>
           <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 2 Cases and Deaths - Confirmed Deaths --> <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Các ca tử vong được xác nhận ở California</li>
           <li data-label="chartTitleCounty">Số ca tử vong được xác nhận ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> tổng số ca tử vong được xác nhận</li>
@@ -247,7 +182,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> số ca tử vong trên 100 nghìn người (mức trung bình 7 ngày)</li>
           <li data-label="filterTabLabel1">Ngày tử vong</li>
           <li data-label="filterTabLabel2">Ngày báo cáo</li>
-          <li data-label="tooltipContent">             Ngày Tử Vong: <b>{DATE}</b><br> Tỉ lệ tử vong trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Tử Vong: <b>{DEATHS}</b>           </li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
+          <li data-label="tooltipContent">             Ngày: <b>{DATE}</b><br> Tỉ lệ tử vong trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE}</b><br> Ca Tử Vong: <b>{DEATHS}</b>           </li>
           <li data-label="dayAverage">Mức trung bình 7 ngày</li>
           <li data-label="deaths_leftYAxisLegend">Số ca tử vong trên 100 nghìn người</li>
           <li data-label="deaths_rightYAxisLegend">Ca Tử Vong</li>
@@ -275,7 +213,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 3 Testing for COVID-19 - Total tests in California --> <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Tổng số xét nghiệm ở California</li>
           <li data-label="chartTitleCounty">Tổng số xét nghiệm ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> tổng số xét nghiệm được thực hiện</li>
@@ -283,7 +221,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> số xét nghiệm mới được báo cáo (giảm <span class="med-num">{new_tests_reported_delta_1_day}</span>)</li>
           <li data-label="filterTabLabel1">Ngày xét nghiệm</li>
           <li data-label="filterTabLabel2">Ngày báo cáo</li>
-          <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
+          <li data-label="tooltipContent">             Ngày: <b>{DATE} </b><br> Tỉ lệ xét nghiệm trung bình 7 ngày trên 100 nghìn người: <b>{7DAY_AVERAGE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="dayAverage">Mức trung bình 7 ngày</li>
           <li data-label="tests_leftYAxisLegend">Số ca xét nghiệm trên 100 nghìn người</li>
           <li data-label="tests_rightYAxisLegend">Xét Nghiệm</li>
@@ -292,12 +233,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">Đang chờ xử lý</li>
           <li data-label="pending_caveat">Dữ liệu không đầy đủ trong những ngày gần đây</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 4 Testing for COVID-19 - Positivity rate in California --> <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Tỉ lệ kết quả xét nghiệm dương tính ở California</li>
           <li data-label="chartTitleCounty">Tỉ lệ kết quả xét nghiệm dương tính ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> tỉ lệ xét nghiệm dương tính (tỉ lệ trong 7 ngày)</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> tăng so với 7 ngày trước đó</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{test_positivity_7_days_delta_7_days}</span> giảm so với 7 ngày trước</li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
           <li data-label="tooltipContent">             Ngày Xét Nghiệm: <b>{DATE} </b><br> Tỉ lệ xét nghiệm dương tính trong 7 ngày: <b>{7DAY_POSRATE} </b><br> Tổng Số Xét Nghiệm: <b>{TOTAL_TESTS} </b>           </li>
           <li data-label="leftYAxisLegend">Tỷ lệ xét nghiệm dương tính</li>
           <li data-label="rightYAxisLegend">Xét Nghiệm</li>
@@ -320,12 +264,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">Số ca nhập viện đã xác nhận và đang nghi ngờ</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số ca bệnh của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận và đang nghi ngờ tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
+<h3 class="text-center">Nhập viện</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Tổng số ca nhập viện do nhiễm COVID-19 đã xác nhận tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số ca bệnh của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California --> <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Số bệnh nhân nhập viện do mắc COVID-19 ở California</li>
           <li data-label="chartTitleCounty">Số bệnh nhân nhập viện do mắc COVID-19 ở Quận {REGION}</li>
           <li data-label="chartTitleStateICU">Số bệnh nhân ICU do mắc COVID-19 ở California</li>
@@ -338,11 +282,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Nhập viện</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
           <li data-label="xAxisLegend">Ngày báo cáo</li>
           <li data-label="dayAverage">Mức trung bình 14 ngày</li>
           <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12">       <!-- 6 Confirmed hospitalizations - ICU beds in California --> <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Số giường tại ICU ở California</li>
           <li data-label="chartTitleCounty">Số giường tại ICU ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> giường tại ICU còn trống</li>
@@ -350,12 +297,21 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU còn trống hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
           <li data-label="xAxisLegend">Ngày báo cáo</li>
           <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
+          <li data-label="timeTabLabel1">Mọi lúc</li>
+          <li data-label="timeTabLabel2">6 tháng</li>
+          <li data-label="timeTabLabel3">90 ngày</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Dữ liệu nguồn về số bệnh nhân nhập viện do mắc COVID-19 và dữ liệu nguồn ICU</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Dữ liệu nguồn về số bệnh nhân nhập viện do mắc COVID-19 và dữ liệu nguồn ICU</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Thông tin biểu đồ</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+<ul class="small-text"><li>Dữ liệu bệnh nhân nghi mắc COVID-19 có sẵn trong dữ liệu nguồn ICU và dữ liệu bệnh nhân nhập viện. Kể từ ngày 5 tháng 1 năm 2022, các biểu đồ này chỉ bao gồm các bệnh nhân ICU và bệnh nhân nhập viện được xác nhận mắc COVID-19.</li><li>Các thông tin chi tiết về bệnh nhân nhập viện và bệnh nhân ICU, bao gồm các bệnh nhân nghi mắc COVID-19, có sẵn trong <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">trang tổng quan nhập viện</a>.</li></ul>
+</div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Số ca mắc và số ca tử vong theo sắc tộc, giới tính và tuổi</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
@@ -451,17 +407,26 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/equity">Dữ liệu công bằng sức khỏe</a></h3> 
-                                <p class="card-text">COVID-19 đã ảnh hưởng như thế nào đến các cộng đồng khác nhau trên toàn tiểu bang</p>
+                                <h3 class="h4 card-title mt-2"><a href="/variants">Các biến thể</a></h3> 
+                                <p class="card-text">Dữ liệu về các biến thể tại California, bao gồm Delta và Omicron</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">Dữ liệu và công cụ</a></h3>             
+                                <h3 class="h4 card-title mt-2"><a href="/equity">Dữ liệu công bằng sức khỏe</a></h3>             
+                                <p class="card-text">COVID-19 đã ảnh hưởng như thế nào đến các cộng đồng khác nhau trên toàn tiểu bang</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->                 <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Dữ liệu và công cụ</a></h3>
                                 <p class="card-text">Mô hình chuyên sâu, trang tổng quan, cơ sở dữ liệu và thông tin về báo cáo dữ liệu COVID-19 của California</p>
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
+                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
