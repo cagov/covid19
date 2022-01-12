@@ -4,13 +4,11 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 
 
-const data_location = 'https://raw.githubusercontent.com/cagov/covid-static/master/'
-
 const defaultConfig = {
-  chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/infections-by-group/infections-by-group-california.json',
-  chartsStateDashTablesLoc: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
-  chartsStateDashTablesLocSparklineVaccines: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
-  chartsStateDashTablesLocPostvax: 'https://raw.githubusercontent.com/cagov/covid-static/master/data/dashboard/',
+  chartsDataFile: 'https://data.covid19.ca.gov/data/infections-by-group/infections-by-group-california.json',
+  chartsStateDashTablesLoc: 'https://data.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLocSparklineVaccines: 'https://data.covid19.ca.gov/data/dashboard/',
+  chartsStateDashTablesLocPostvax: 'https://data.covid19.ca.gov/data/dashboard/',
 }
 const stagingConfig =  {
   chartsDataFile: 'https://raw.githubusercontent.com/cagov/covid-static/staging/data/infections-by-group/infections-by-group-california.json',
