@@ -24,7 +24,7 @@ function writeXAxis(svg, data, date_fld, x, y,
     root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
-  const tick_lower_gap = 12;
+  const tick_lower_gap = 2;
   const axisY = this.dimensions.height - this.dimensions.margin.bottom;
 
   let xgroup = svg.append("g")
