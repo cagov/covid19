@@ -1,5 +1,5 @@
 {
-  "cases": {
+  "postvax-cases": {
     "weeks": {
       "chartName": "#postvax-cases-chart",
       "series_fields": ["BREAKTHROUGH_CASE_RATE","UNVAX_CASE_RATE"],
@@ -9,10 +9,11 @@
       "days_to_show": 120,
       "root_id": "postvax-cases",
       "pending_days":7,
-      "pre_mult":1
+      "pre_mult":1,
+      "timeKeys": ["all-time","months-6","days-120","days-90"]
     }
   },
-  "hospitalizations": {
+  "postvax-hospitalizations": {
     "weeks": {
       "chartName": "#postvax-hospitalizations-chart",
       "series_fields": ["BREAKTHROUGH_HOSP_RATE","UNVAX_HOSP_RATE"],
@@ -23,10 +24,11 @@
       "earliest_date": "2021-07-24",
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
-      "pre_mult":10
+      "pre_mult":10,
+      "timeKeys": ["all-time","months-6","days-120","days-90"]
     }
   },
-  "deaths": {
+  "postvax-deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
       "series_fields": ["BREAKTHROUGH_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
@@ -36,7 +38,8 @@
       "days_to_show": 120,
       "root_id": "postvax-deaths",
       "pending_days":21,
-      "pre_mult":10
+      "pre_mult":10,
+      "timeKeys": ["all-time","months-6","days-120","days-90"]
     }
   },
   "desktop": {

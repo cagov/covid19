@@ -1,5 +1,5 @@
 {
-  "cases": {
+  "postvax-cases": {
     "weeks": {
       "chartName": "#postvax-cases-chart",
       "series_fields": ["BREAKTHROUGH_CASE_RATE","UNVAX_CASE_RATE"],
@@ -16,7 +16,7 @@
       "line_3_color":"#cccccc"
     }
   },
-  "hospitalizations": {
+  "postvax-hospitalizations": {
     "weeks": {
       "chartName": "#postvax-hospitalizations-chart",
       "series_fields": ["BREAKTHROUGH_HOSP_RATE","UNVAX_HOSP_RATE"],
@@ -34,7 +34,7 @@
       "line_3_color":"#cccccc"
     }
   },
-  "deaths": {
+  "postvax-deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
       "series_fields": ["BREAKTHROUGH_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
