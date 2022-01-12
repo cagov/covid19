@@ -31,38 +31,52 @@ function writeXAxis(svg, data, date_fld, x, y,
       .attr("class",'date-axis')
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
+  
   let last_mon_idx = 0;
   let last_year_idx = 0;
+  let month_modulo = data.length > 366? 3 : 1;
+
   data.forEach((d,i) => {
     const ymd = d[date_fld].split('-');
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
-    if (i % week_modulo == 0) {
-      const day_idx = parseInt(ymd[2]);
 
-      let subg = xgroup.append("g")
-            .attr('class','x-tick');
-      // if (chart_mode == 'weekly') {
-      //   subg.append('line')
-      //   .attr('x1', x(i))
-      //   .attr('y1', axisY+tick_upper_gap)
-      //   .attr('x2', x(i))
-      //   .attr('y2',axisY+tick_upper_gap+tick_height)
-      //   .attr('style','stroke-width: 0.5px; stroke:black; opacity:0.5;');
-      // }
-      
-      if (i == 0 || i == data.length-1) {
-        const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
-        let text_anchor = (i == 0)? 'start' : 'end';
+    if (mon_idx % month_modulo == 0) {
+      const day_idx = parseInt(ymd[2]);
+      if (day_idx == 1) {
+        const date_caption = mon_idx+'/1'; // ?? localize
+        let subg = xgroup.append("g")
+              .attr('class','x-tick');
+        subg.append('line')
+        .attr('x1', x(i))
+        .attr('y1', axisY+tick_upper_gap)
+        .attr('x2', x(i))
+        .attr('y2',axisY+tick_upper_gap+tick_height);
         subg.append('text')
-          .text(date_caption)
-          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
-          .attr("x", x(i))
-          .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+         .text(date_caption)
+         // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
+         .attr("x", x(i))
+         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
       }
-      last_mon_idx = mon_idx;
-      last_year_idx = year_idx;
     }
+
+    // if (i % week_modulo == 0) {
+    //   const day_idx = parseInt(ymd[2]);
+
+    //   let subg = xgroup.append("g")
+    //         .attr('class','x-tick');
+    //   if (i == 0 || i == data.length-1) {
+    //     const date_caption = mon_idx+'/'+day_idx + '/'+year_idx; // ?? localize
+    //     let text_anchor = (i == 0)? 'start' : 'end';
+    //     subg.append('text')
+    //       .text(date_caption)
+    //       .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: '+text_anchor+'; dominant-baseline:hanging;')
+    //       .attr("x", x(i))
+    //       .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+    //   }
+    //   last_mon_idx = mon_idx;
+    //   last_year_idx = year_idx;
+    // }
   });
   // if (x_axis_legend) {
   //   xgroup.append('text')
