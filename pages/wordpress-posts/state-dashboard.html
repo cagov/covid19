@@ -283,7 +283,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-timerange="days-120" data-chart-config-key="postvax-cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
     <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
@@ -293,6 +293,10 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series1_legend">Vaccinated</li>
     <li data-label="series2_legend">Unvaccinated</li>
     <li data-label="series3_legend">All cases</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">6 months</li>
+    <li data-label="timeTabLabel3">120 days</li>
+    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
@@ -304,7 +308,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="postvax-hospitalizations" data-chart-config-timerange="days-120" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
     <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
@@ -314,6 +318,10 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series1_legend">Vaccinated</li>
     <li data-label="series2_legend">Unvaccinated</li>
     <li data-label="series3_legend">All cases</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">6 months</li>
+    <li data-label="timeTabLabel3">120 days</li>
+    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
@@ -325,7 +333,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="postvax-deaths" data-chart-config-timerange="days-120" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
     <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
@@ -335,6 +343,10 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series1_legend">Vaccinated</li>
     <li data-label="series2_legend">Unvaccinated</li>
     <li data-label="series3_legend">All cases</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">6 months</li>
+    <li data-label="timeTabLabel3">120 days</li>
+    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>

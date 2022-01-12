@@ -16,6 +16,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.chartConfigKey = this.dataset.chartConfigKey;
     console.log("Loading Postvax Chart",this.chartConfigKey,this.chartConfigFilter);
 
@@ -65,7 +66,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
   }
 
   getTooltipContent(di) {    
-    const drec = this.chartdata[di];
+    const drec = this.chartData[di];
     const repDict = {
       WEEKDATE:   reformatReadableDate(drec.DATE),
       VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
@@ -75,17 +76,89 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     return caption;
   }
 
+  chartFilterSelectsHandler(selectFilters, e) {
+    console.log("SELECT HANDLER",selectFilters,e);
+    selectFilters.forEach((select) => {
+      switch (select.dataset.type) {
+        case 'time':
+          this.chartConfigTimerange = select.value;
+          break;
+        // case 'filter':
+        //   this.chartConfigFilter = select.value;
+        //   break;
+        // default:
+      }
+    });
+    this.renderComponent();
+  }
+
+  cropData(timerangeKey, uncroppedChartData) {
+    console.log("Cropping data",timerangeKey);
+    let chartData = JSON.parse(JSON.stringify(uncroppedChartData));;
+    const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
+
+    let daysToKeep = -1;
+    const tokens = timerangeKey.split('-');
+    if (tokens[0] in unitSizeDict) {
+      daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
+    }
+
+
+    if ('earliest_date' in this.chartOptions) {
+      let number_to_clip = 0;
+      for (let i = 0; i < chartData.length; i++) {
+        if (chartData[i].DATE != this.chartOptions.earliest_date) {
+          number_to_clip += 1;
+        } else {
+          break;
+        }
+      }
+      if (number_to_clip > 0) {
+        chartData.splice(0, number_to_clip); 
+      }
+    }
+    console.log("DAYS TO KEEP",daysToKeep);
+
+    let pending_days = this.chartOptions.pending_days;
+    chartData.splice(chartData.length-pending_days,pending_days);
+
+    if (daysToKeep > 0 && chartData.length > daysToKeep) {
+      chartData.splice(0, chartData.length-daysToKeep); 
+    }
+    console.log("RESULTANT LENGTH",chartData.length);
+
+    return chartData;
+  }
+
+  // Add event listener to select filters.
+  setupSelectFilters() {
+    console.log("Setting up postvax select key =",this.chartConfigKey);
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
+
+    selectFilters.forEach((selectFitler) => {
+      selectFitler.addEventListener(
+        'change',
+        this.chartFilterSelectsHandler.bind(this, selectFilters),
+        false,
+      );
+    });
+  }
+  
+
 
   renderComponent() {
     console.log("Rendering Post Vax Chart");
+
+    this.chartData = this.cropData(this.chartConfigTimerange, this.uncroppedChartData);
+
     // let sumvax = 0;
     // let sumunvax = 0;
-    // let tempData = [...this.chartdata];
+    // let tempData = [...this.chartData];
     // let sample_days = this.chartOptions.sample_days;
-    let last_day = this.chartdata.length-1;
-    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
-    let end_impact_date = this.chartdata[last_day].DATE;
-    let begin_impact_date = this.chartdata[last_day-6].DATE;
+    let last_day = this.chartData.length-1;
+    let last_ratio = this.chartData[last_day][this.chartOptions.series_fields[1]] / this.chartData[last_day][this.chartOptions.series_fields[0]];
+    let end_impact_date = this.chartData[last_day].DATE;
+    let begin_impact_date = this.chartData[last_day-6].DATE;
     // tempData.splice(tempData.length-sample_days,sample_days);
     // tempData.forEach(r => {
     //   sumvax += r[this.chartOptions.series_fields[0]];
@@ -110,13 +183,18 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_series3_legend = applySubstitutions(this.translationsObj.series3_legend, repDict);
     this.translationsObj.post_pending_legend = applySubstitutions(this.translationsObj.pending_legend, repDict);
     this.translationsObj.pending_mode = this.pending_mode;
+
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    this.setupSelectFilters();
+
+
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
 
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
-                          'chartdata':this.chartdata,
+                          'chartdata':this.chartData,
                           'series_fields':series_fields,
                           'series_colors':series_colors,
                           // 'series_legends':[this.translationsObj.series1_legend, this.translationsObj.series2_legend],
@@ -139,34 +217,12 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
           this.metadata = alldata.meta;
-          this.chartdata = alldata.data;
+          this.chartData = alldata.data;
+          this.uncroppedChartData = alldata.data;
 
-          if ('earliest_date' in this.chartOptions) {
-            let number_to_clip = 0;
-            for (let i = 0; i < this.chartdata.length; i++) {
-              if (this.chartdata[i].DATE != this.chartOptions.earliest_date) {
-                number_to_clip += 1;
-              } else {
-                break;
-              }
-            }
-            if (number_to_clip > 0) {
-              this.chartdata.splice(0, number_to_clip); 
-            }
-          }
-
-          let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
-          console.log("days to show",days_to_show);
-
-          let pending_days = this.chartOptions.pending_days;
-          this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
-
-          if (this.chartdata.length > days_to_show) {
-            this.chartdata.splice(0, this.chartdata.length-days_to_show); 
-          }
 
           // Premult
-          this.chartdata.forEach(rec => {
+          this.chartData.forEach(rec => {
             rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
             rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
           });
