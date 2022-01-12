@@ -62,7 +62,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width-40)
+        if (x(i) < this.dimensions.width-20)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthStr = sdate.toLocaleString('default', { month: 'short' });
@@ -265,13 +265,15 @@ function writeYAxis(svg, x, y,
 function writePendingBlock(svg, x, y,
   { pending_days=0,
     pending_legend='',
-    root_id='barid'} ) {
+    padDays=0,
+    root_id='barid',
+  } ) {
 
     const max_x_domain = x.domain()[1];
     const min_y_domain = y.domain()[0];
     const max_y_domain = y.domain()[1];
-    const left_edge = x(max_x_domain + 0.5 - pending_days);
-    const right_edge = x(max_x_domain);
+    const left_edge = x(max_x_domain-padDays + 0.5 - pending_days);
+    const right_edge = x(max_x_domain-padDays);
 
     let xgroup = svg.append("g")
       .attr("class",'pending-block');
@@ -430,8 +432,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     // Determine additional days to add...
     const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-    // pad to 28 days
-    let padDays = Math.max(0, 28 - lastDateJ.getDate());
+    // pad to 21 days
+    let padDays = Math.max(0, 21 - lastDateJ.getDate());
 
     this.xline = d3
     .scaleLinear()
@@ -452,12 +454,16 @@ function getAxisDiv(ascale,{hint='num'}) {
     writeLegend.call(this, this.svg, this.xline, this.yline, 
                 {colors:series_colors, 
                  labels:series_labels, 
-                 chart_options:chart_options});
+                 chart_options:chart_options,
+                 padDays: padDays
+                });
 
     
     if (pending_days > 0) {
       writePendingBlock.call(this, this.svg, this.xline, this.yline, 
-            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label});
+            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label,
+              padDays: padDays
+            });
     }
 
 
