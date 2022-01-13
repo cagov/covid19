@@ -181,7 +181,7 @@ function getFormatter(max_v,{hint='num',digits=0})
   } else {
     // assume num/number
     if (max_v < 4000) {
-      const digits = (hint == 'integer')? 0 : max_v < .1? 2 : max_v < 10? 1 : 0;
+      const digits = (hint == 'integer')? 0 : max_v < .3? 2 : max_v < 10? 1 : 0;
       const fmtr = new Intl.NumberFormat( "us", { style: "decimal", minimumFractionDigits: digits, maximumFractionDigits: digits } );
       return fmtr.format;
     } else if (max_v < 1000000) {
