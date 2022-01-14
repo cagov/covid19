@@ -6,5 +6,8 @@ export default function template(translationsObj) {
       <div class="svg-holder">
       </div>
     </div>
+
+    <p class="chart-data-label small-text mt-2 mb-2">${translationsObj.footerText}</p>
+
   </div>`;
 }

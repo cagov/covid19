@@ -3,7 +3,8 @@ import drawBars from "./draw.js";
 import getTranslations from './../../../common/get-strings-list.js';
 import getScreenResizeCharts from './../../../common/get-window-size.js';
 import rtlOverride from "./../../../common/rtl-override.js";
-import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 class CAGOVEquityMissingness extends window.HTMLElement {
   connectedCallback() {
@@ -13,7 +14,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.translationsObj = this.getTranslations(this);
     // console.log("trans objs",this.translationsObj);
 
-    this.updateDate = "";
+    // this.updateDate = "";
 
     this.innerHTML = template(this.translationsObj);
 
@@ -25,6 +26,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       subgroups: ["NOT_MISSING", "MISSING"],
       selectedMetric: "race_ethnicity",
       dataUrl: config.equityChartsDataLoc+"/equitydash/missingness-california.json", // Overwritten by county.
+      statusUrl: config.statusLoc+"/last_equity_update.json", // Overwritten by county.
       state: 'California',
       county: 'California',
       displayOrder: ["tests", "cases", "deaths"],
@@ -127,11 +129,12 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     // Set default values for data and labels
     this.dataUrl = this.chartOptions.dataUrl;
+    this.statusUrl = this.chartOptions.statusUrl;
     this.county = this.chartOptions.county;
     this.state = this.chartOptions.state;
     this.selectedMetric = this.chartOptions.selectedMetric;
 
-    this.retrieveData(this.dataUrl);
+    this.retrieveData(this.dataUrl, this.statusUrl);
     this.listenForLocations();
     this.classList.remove("d-none"); // this works
     if (this.querySelector('.d-none') !== null) { // this didn't seem to be working...
@@ -151,7 +154,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
         config.equityChartsDataLoc+"/equitydash/missingness-" +
           this.county.toLowerCase().replace(/ /g, "") +
           ".json";
-        this.retrieveData(this.dataUrl);
+        this.retrieveData(this.dataUrl, this.statusUrl);
         this.resetTitle();
       }.bind(this),
       false
@@ -162,7 +165,7 @@ class CAGOVEquityMissingness extends window.HTMLElement {
       function (e) {
         this.selectedMetricDescription = e.detail.clickedFilterText;
         this.selectedMetric = e.detail.filterKey;
-        this.retrieveData(this.dataUrl);
+        this.retrieveData(this.dataUrl, this.statusUrl);
         this.resetDescription();
         this.resetTitle();
       }.bind(this),
@@ -176,12 +179,12 @@ class CAGOVEquityMissingness extends window.HTMLElement {
     this.querySelector('.chart-title span[data-replace="location"]').innerHTML = this.getLocation();
   }
 
-  resetUpdateDate() {
-    this.querySelectorAll('span[data-replacement="data-completeness-report-date"]').forEach(elem => {
-      // console.log("Got completeness date span");
-      elem.innerHTML = this.updateDate;
-    });
-  }
+  // resetUpdateDate() {
+  //   this.querySelectorAll('span[data-replacement="data-completeness-report-date"]').forEach(elem => {
+  //     // console.log("Got completeness date span");
+  //     elem.innerHTML = this.updateDate;
+  //   });
+  // }
 
   getFilterText() {
     return this.metricFilter.querySelector(".active").textContent;
@@ -415,6 +418,20 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   render() {
     getScreenResizeCharts(this);
+
+    // date processing...
+    let publishedDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10)); // !! Fetch correct date here...
+    let reportDate = parseSnowflakeDate(this.alldata[this.selectedMetric].cases.REPORT_DATE);
+
+    let footerReplacementDict = {
+      'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+      'REPORT_DATE' : reformatJSDate( reportDate ),
+    };
+    const post_footerText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+    d3.select(this.querySelector(".chart-data-label")).text(post_footerText);
+
+
+
     this.screenDisplayType = window.charts ? window.charts.displayType : 'desktop';
     this.chartBreakpointValues = this.chartOptions[this.screenDisplayType ? this.screenDisplayType : 'desktop'];
 
@@ -424,32 +441,37 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
     // fetch date for footnote
     // console.log("rendering",this.selectedMetric,this.alldata);
-    if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
-      const theDate = parseSnowflakeDate(this.alldata[this.selectedMetric].cases.REPORT_DATE);
-      let TUESDAY_ADJUSTMENT = 0;
-      if (theDate.getDay() < 2) {
-        TUESDAY_ADJUSTMENT = 2 - theDate.getDay();
-      }
-      this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, TUESDAY_ADJUSTMENT);
-    } else {
-      this.updateDate = 'Unknown';
-    }
+    // if (this.selectedMetric in this.alldata && 'cases' in this.alldata[this.selectedMetric]) {
+    //   const theDate = parseSnowflakeDate(this.alldata[this.selectedMetric].cases.REPORT_DATE);
+    //   let TUESDAY_ADJUSTMENT = 0;
+    //   if (theDate.getDay() < 2) {
+    //     TUESDAY_ADJUSTMENT = 2 - theDate.getDay();
+    //   }
+    //   //this.updateDate = reformatReadableDate( this.alldata[this.selectedMetric].cases.REPORT_DATE , { month: "long", day: 'numeric', year:'numeric' }, TUESDAY_ADJUSTMENT);
+    // } else {
+    //   this.updateDate = 'Unknown';
+    // }
     // console.log("Update Date",this.updateDate);
-    this.resetUpdateDate();
+    // this.resetUpdateDate();
   }
 
-  retrieveData(url) {
-    window
-      .fetch(url)
-      .then((response) => response.json())
-      .then(
-        function (alldata) {
-          this.alldata = alldata;
-          this.render();
-        }.bind(this)
-      );
+  retrieveData(dataUrl, statusUrl) {
+
+    Promise.all([
+      window.fetch(dataUrl),
+      window.fetch(statusUrl)
+    ]).then(function (responses) {
+      return Promise.all(responses.map(function (response) {
+        return response.json();
+      }));
+    }).then(function (bothdata) {
+      this.alldata = bothdata[0];
+      this.statusdata = bothdata[1];
+      this.render();
+    }.bind(this) );
   }
 }
+
 window.customElements.define(
   "cagov-chart-equity-data-completeness",
   CAGOVEquityMissingness
