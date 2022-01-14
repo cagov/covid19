@@ -7,7 +7,8 @@ import getTranslations from "./../../../common/get-strings-list.js";
 import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 import rtlOverride from "./../../../common/rtl-override.js";
-import { reformatReadableDate, parseSnowflakeDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 
 
@@ -22,6 +23,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     this.chartOptions = {
       // Data
       dataUrl: config.equityChartsDataLoc + "/equitydash/healthequity-california.json",  // Overwritten by county.
+      statusUrl: config.statusLoc+"/last_equity_update.json", // Overwritten by county.
       // state: "California",
       // county: "California",
       // Style
@@ -106,13 +108,18 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .create("svg")
       .attr("viewBox", [0, 0, this.chartBreakpointValues.width, this.chartBreakpointValues.height]);
 
-    window
-      .fetch(
-        this.chartOptions.dataUrl
-      )
-      .then((response) => response.json())
-      .then((alldata) => {
-        this.writeChart(alldata, this.svg, this.textLabels.data1Legend, this.textLabels.data2Legend);
+      Promise.all([
+        window.fetch(this.chartOptions.dataUrl),
+        window.fetch(this.chartOptions.statusUrl)
+      ])
+      .then(function (responses) {
+        return Promise.all(responses.map(function (response) {
+          return response.json();
+        }));
+      }).then((bothdata) => {
+        this.alldata = bothdata[0];
+        this.statusdata = bothdata[1];
+        this.writeChart(this.alldata, this.svg, this.textLabels.data1Legend, this.textLabels.data2Legend);
         // this.innerHTML = `<div class="svg-holder"></div>`;
         this.querySelector(".svg-holder").appendChild(this.svg.node());
       });
@@ -181,6 +188,20 @@ class CAGOVChartD3Lines extends window.HTMLElement {
 
   writeChart(alldata, svg, data1Legend, data2Legend) {
     let component = this;
+
+    // DATE
+    console.log("LINE CHART ALL DATA",this.alldata);
+    let publishedDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10)); 
+    // !! don't know this date yet...
+    let reportDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10));
+    reportDate.setDate(reportDate.getDate() - 1); // subtract 1 day to date on file
+
+    let footerReplacementDict = {
+      'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+      'REPORT_DATE' : reformatJSDate( reportDate ),
+    };
+    const post_footerText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+    d3.select(this.querySelector(".chart-data-label")).text(post_footerText);
 
     component.dims = this.chartBreakpointValues !== undefined ? this.chartBreakpointValues : this.chartOptions.desktop; // Patch error until we can investigate it
     let data = alldata.county_positivity_all_nopris;
