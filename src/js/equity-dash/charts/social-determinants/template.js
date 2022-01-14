@@ -28,7 +28,7 @@ export default function template(translationsObj) {
         <div class="row d-flex justify-content-md-center">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto">
 
-          <p class="chart-data-label small-text mt-2 mb-2">${translationsObj.post_footerText}</p>
+          <p class="chart-data-label small-text mt-4 mb-2">${translationsObj.post_footerText}</p>
   
 
             <div class="mt-4">
