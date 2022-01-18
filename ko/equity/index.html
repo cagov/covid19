@@ -155,7 +155,7 @@
         <div class="col-lg-10 mx-auto">
           <h1>캘리포니아가 드리는 건강 평형성에 대한 약속</h1>
           
-            <p class="small-text">최종 갱신 일자&nbsp;2022년 1월 12일 오전 10:00</p>
+            <p class="small-text">최종 갱신 일자&nbsp;2022년 1월 14일 오전 11:46</p>
           
         </div>
       </div>
@@ -288,7 +288,8 @@
             <li data-label="data-missing-applied-suppression-total--deaths">이 그룹 내 사망자가 11명 미만이므로 데이터가 표시되지 않습니다.</li>
             <li data-label="data-missing-applied-suppression-population--tests">이 그룹 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
             <li data-label="data-missing-applied-suppression-population--cases">이 그룹 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
-            <li data-label="data-missing-applied-suppression-population--deaths">이 그룹 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
+            <li data-label="data-missing-applied-suppression-population--deaths">이 집단 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
+            <li data-label="footerText">{REPORT_DATE}자 데이터로 {PUBLISHED_DATE}에 업데이트됨.</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
           <li data-label="chartTitle--cases">placeholderForDynamicLocation 내 인종과 민족 별 100,000명 당 사례 발생율</li>
@@ -321,13 +322,15 @@
             <li data-label="data-missing-applied-suppression-population--tests">이 그룹 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
             <li data-label="data-missing-applied-suppression-population--cases">이 그룹 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">이 집단 내 인원이 20,000명 미만이므로 데이터가 표시되지 않습니다.</li>
+            <li data-label="footerText">{REPORT_DATE}자 데이터로 {PUBLISHED_DATE}에 업데이트됨.</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
 
 
 
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">인구 비중 대비 사례 건수, 사망자수와 검사 건수 및 인종과 민족별 1십만명 당 사례, 사망자, 검사율 관련 원천 데이터</a></p>
+<p><p class="top-charts-data-label small-text mt-2 mb-2"></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">인구 비중 대비 사례 건수, 사망자수와 검사 건수 및 인종과 민족별 1십만명 당 사례, 사망자, 검사율 관련 원천 데이터</a></p></p>
 
 
 
@@ -349,6 +352,7 @@
         <li data-label="data2-legend">건강 형평성 사분위수 양성 반응율</li>
         <li data-label="missing-data-caption">건강 형평성 메트릭은 인구수가 106,000명 미만인 카운티에는 적용되지 않습니다.</li>
         <li data-label="data-anomalies-caption">보고 상의 이상으로 인해 본 데이터를 정확하게 표시할 수 없습니다.</li>
+        <li data-label="footerText">{REPORT_DATE}자 데이터로 {PUBLISHED_DATE}에 업데이트됨.</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
@@ -371,6 +375,7 @@
       <ul class="small-text">
         <li data-label="title">캘리포니아 내 인종 및 민족 별 보고 내용</li>
         <li data-label="footnote"><ul><li>표시되는 데이터는 30일 누적 합계이며 업데이트됩니다 <span data-replacement="data-completeness-report-date"></span>.</li><li>성적 취향 및 성 정체성은 검사에서 수집하지 않습니다.</li><li>환자의 개인 정보 보호를 위해 1과 10 사이의 숫자는 표시하지 않습니다.</li></ul></li>
+        <li data-label="footerText">{REPORT_DATE}자 데이터로 {PUBLISHED_DATE}에 업데이트됨.</li>
         <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">인종과 민족, 성적 취향 및 성별 인식 관련 원천 데이터</a></p></li>
 
         <li data-label="tab-label">다음 사항<span data-replace="metric-filter"></span> 별<span data-replace="location"></span> 보고 내용</li>
@@ -416,6 +421,7 @@
    <li data-label="statewideCaseRate">주 전역에서의 사례율:</li>
    <li data-label="ariaBarLabel">100,000명 당 사례 건수 placeholderCaseRate. 30일 전 대비 증감 placeholderRateDiff30</li>
    <li data-label="tooltipCaption">100,000명 당 사례 건수 <span class="highlight-data">placeholderCaseRate</span>. 30일 전 대비 증감 placeholderRateDiff30</li>
+   <li data-label="footerText">{REPORT_DATE}자 데이터로 {PUBLISHED_DATE}에 업데이트됨.</li>
   </ul></cagov-chart-d3-bar>    <div class="bg-lightblue full-bleed py-4">
 <div class="container">
 <div class="row">
