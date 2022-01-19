@@ -436,8 +436,14 @@ function getAxisDiv(ascale,{hint='num'}) {
     // Determine additional days to add...
     const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-    // pad to 7 days
-    let padDays = Math.max(0, 14 - lastDateJ.getDate());
+
+    // determine width of a day in current projection, in pixels
+    const day_width = (this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)) / line_series_array[0].length;
+    const necessary_display_width = 32; // space to display Aug in English
+    const min_days = Math.ceil(necessary_display_width / day_width);
+    // pad to extra days to make room for month-name display
+    let padDays = Math.max(0, min_days - lastDateJ.getDate());
+    // console.log("MIN DAYS, pad_days", min_days, padDays);
 
     this.xline = d3
     .scaleLinear()
