@@ -92,12 +92,12 @@ hero-stats {
 
 		@include tablet {
 			display: flex;
-			width: 50%;
+			// width: 50%;
 			min-height: auto;
 	    	align-self: center;
 		}
 		@include tablet-wide {
-			width: 50%;
+			// width: 50%;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
 		}
 		&-align {
