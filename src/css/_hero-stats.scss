@@ -152,6 +152,11 @@ hero-stats {
 
 
 /* STATS */
+.hero-photo-pic {
+	@include desktop {
+		object-position: center top;
+	}
+}
 .hero-stats {
 	background: $darkblue;
 	color: white;
