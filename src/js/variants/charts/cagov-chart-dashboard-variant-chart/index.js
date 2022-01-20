@@ -120,7 +120,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
 
     this.chartlabels.forEach((label, i) => {
         let tseries_name = label + this.chartOptions.tseries_suffix;
-        console.log("tseries_name =",tseries_name);
+        // console.log("tseries_name =",tseries_name);
         line_series_array.push(this.chartData.time_series[tseries_name].VALUES);
     });
     if (this.chartOptions.normalize) {
