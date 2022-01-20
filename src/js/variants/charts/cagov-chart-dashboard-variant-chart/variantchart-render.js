@@ -269,11 +269,14 @@ function writePendingBlock(svg, x, y,
     root_id='barid',
   } ) {
 
+    const min_x_domain = x.domain()[0];
     const max_x_domain = x.domain()[1];
     const min_y_domain = y.domain()[0];
     const max_y_domain = y.domain()[1];
     const left_edge = x(max_x_domain-padDays + 0.5 - pending_days);
     const right_edge = x(max_x_domain-padDays);
+    const mid_edge = (left_edge + right_edge) / 2;
+    const right_chart_edge = x(max_x_domain);
 
     let xgroup = svg.append("g")
       .attr("class",'pending-block');
@@ -284,11 +287,12 @@ function writePendingBlock(svg, x, y,
       .attr("y",y(max_y_domain))
       .attr("width",right_edge - left_edge)
       .attr("height",y(min_y_domain)-y(max_y_domain));
+    
     xgroup.append('text')
-      // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
-      .text(pending_legend)
-      .attr("x",x(max_x_domain))
-      .attr("y",y(max_y_domain)-4);
+        // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+        .text(pending_legend)
+        .attr("x",mid_edge+22 > right_chart_edge? right_chart_edge : mid_edge+22)
+        .attr("y",y(max_y_domain)-4);
 }
 
 // Convert 
@@ -432,8 +436,14 @@ function getAxisDiv(ascale,{hint='num'}) {
     // Determine additional days to add...
     const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-    // pad to 21 days
-    let padDays = Math.max(0, 21 - lastDateJ.getDate());
+
+    // determine width of a day in current projection, in pixels
+    const day_width = (this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)) / line_series_array[0].length;
+    const necessary_display_width = 32; // space to display Aug in English
+    const min_days = Math.ceil(necessary_display_width / day_width);
+    // pad to extra days to make room for month-name display
+    let padDays = Math.max(0, min_days - lastDateJ.getDate());
+    // console.log("MIN DAYS, pad_days", min_days, padDays);
 
     this.xline = d3
     .scaleLinear()
