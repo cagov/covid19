@@ -13,6 +13,7 @@ class CAGovDashboardPositivityRate extends CAGovDashboardChart {
     const repDict = {
       DATE:   reformatReadableDate(lineSeries[di].DATE),
       '7DAY_POSRATE':formatValue(lineSeries[di].VALUE,{format:'percent'}),
+      'POSRATE':formatValue(barSeries[di].VALUE,{format:'percent'}),
       TOTAL_TESTS:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
