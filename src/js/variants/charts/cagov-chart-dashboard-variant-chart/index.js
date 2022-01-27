@@ -31,6 +31,7 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     this.chartBreakpointValues = chartConfig[this.screenDisplayType];
     this.dimensions = this.chartBreakpointValues;
 
+
     const handleChartResize = () => {
       // console.log("Handle chart resize");
       getScreenResizeCharts(this);
@@ -144,8 +145,6 @@ class CAGovDashboardVariantChart extends window.HTMLElement {
     }
     this.line_series_array = line_series_array;
 
-
-    // console.log("Rendering variants chart",this.translationsObj, this.line_series_array);
 
     let renderOptions = {
                           'chart_options':this.chartOptions,
