@@ -5,11 +5,24 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0', c
   let max_x_domain = x.domain()[1];
   let component = this;
 
+  // let i = 0;
+  // let trimStart = 0;
+  // while (i < data.length-1 && data[i][fld] == "NA" || data[i][fld] == "Inf") {
+  //   trimStart += 1;
+  //   i += 1;
+  // }
+  // let trimmedData = data.slice(trimStart);
+
   let groups = svg.append("g")
     .attr("class","fg-line "+root_id+" "+line_id);
-  if (line_id == "line_s3") {
-    groups.attr("stroke-dasharray","2 6");
-  }
+  // if (line_id == "line_s3") {
+  //   groups.attr("stroke-dasharray","2 6");
+  // }
+  data.forEach(d => {
+    if (typeof d[fld] != "number") {
+      console.log("Problem with field",fld,d.DATE);
+    }
+  });
   groups.append('path')
     .datum(data)
       .attr("d", d3.line()
@@ -257,28 +270,6 @@ function getAxisDiv(ascale,{hint='num'}) {
         this.chartBreakpointValues.height,
       ]);
 
-
-  // const patternSuffixes = ['1'];
-  //     this.svg.append("defs")
-  //       .selectAll("pattern")
-  //       .data(patternSuffixes)
-  //       .join("pattern")
-  //        .attr("id",d => root_id+'hatch'+d)
-  //        .attr("patternUnits","userSpaceOnUse")
-  //        .attr("style","stroke:#0AF; stroke-width:2")
-  //        .attr("x",0)
-  //        .attr("x",0)
-  //        .attr("width",3.75)
-  //        .attr("height",3.75)
-  //        .attr('patternTransform',"rotate(45 0 0)")
-  //        .append('line')
-  //         .attr('x1',0)
-  //         .attr('y1',0)
-  //         .attr('x2',0)
-  //         .attr('y2',10);
-  //     ;
-          
-
      this.svg.append("g")
            .attr("transform", "translate(0,0)")
            .attr("style", "fill:#CCCCCC;");
@@ -292,7 +283,8 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
     // console.log("Chart data",chartdata);
-    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[0]]), d3.max(chartdata, r => r[series_fields[1]]));
+    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[1]]), d3.max(chartdata, r => r[series_fields[2]]));
+    max_y_domain = Math.max(max_y_domain, d3.max(chartdata, r => r[series_fields[0]]));
     let min_y_domain = 0;
     this.yline = d3
     .scaleLinear()
@@ -314,18 +306,7 @@ function getAxisDiv(ascale,{hint='num'}) {
       writeLine.call(this, this.svg, chartdata, sf, this.xline, this.yline, 
         { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
     });
-
     
-    // if (pending_weeks > 0) {
-    //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-    //   if (pending_mode != 'dotted' && pending_mode != 'dots') {
-    //     writePendingBlock.call(this, this.svg, this.xline, this.yline,
-    //           { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
-    //   }
-    // }
-
-
-
     // Write Y Axis, favoring line on left, bars on right
     writeYAxis.call(this, this.svg, this.xline, this.yline,
          {y_fmt:y_fmt, root_id:root_id});
