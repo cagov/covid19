@@ -11,17 +11,20 @@ class CAGOVMenuRibbon extends window.HTMLElement {
         this.targetEachMenu();
       });
     this.openClass = 'js-open';
+    this.menuClass = '.menu-ribbon--primary';
+    this.buttonClass = '.menu-ribbon--button';
+    document.body.addEventListener('click', this.closeOnBodyClick.bind(this));
   }
 
   /**
    * Isolate each menu and run the toggle function when clicked.
    */
   targetEachMenu() {
-    const menus = this.querySelectorAll('.menu-ribbon--primary');
+    const menus = this.querySelectorAll(this.menuClass);
 
     menus.forEach((menu) => {
       const elements = {
-        button: menu.querySelector('.menu-ribbon--button'),
+        button: menu.querySelector(this.buttonClass),
         parent: menu,
       };
 
@@ -35,6 +38,32 @@ class CAGOVMenuRibbon extends window.HTMLElement {
         }
       });
     });
+  }
+
+  /**
+   * Check whether menus are open.
+   *
+   * returns NodeList or false
+   */
+
+  menusAreOpen() {
+    const anyMenuHasOpenClass = this.querySelectorAll(`.${this.openClass}`);
+
+    return (anyMenuHasOpenClass.length > 0) ? anyMenuHasOpenClass : false;
+  }
+
+  /**
+   * Close the menu if user clicks somewhere other than the menu.
+   */
+  closeOnBodyClick(event) {
+    if (!event.target.closest('cagov-menu-ribbon') && this.menusAreOpen()) {
+      const elements = {
+        button: this.querySelector(`${this.buttonClass}[aria-expanded="true"]`),
+        parent: this.querySelector(`${this.menuClass}.${this.openClass}`),
+      };
+
+      this.closeMenu(elements);
+    }
   }
 
   /**
@@ -57,11 +86,11 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    * @see this.toggleMenu().
    */
   openMenu(elements) {
-    const anyMenuHasOpenClass = this.querySelectorAll(`.${this.openClass}`);
-
     // Close any menus that are open.
-    if (anyMenuHasOpenClass.length > 0) {
-      anyMenuHasOpenClass.forEach((item) => { item.classList.remove(this.openClass); });
+    if (this.menusAreOpen()) {
+      this.menusAreOpen.forEach((item) => {
+        item.classList.remove(this.openClass);
+      });
     }
     elements.parent.classList.add(this.openClass);
     elements.button.setAttribute('aria-expanded', 'true');
