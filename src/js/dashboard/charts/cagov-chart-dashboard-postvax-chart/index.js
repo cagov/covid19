@@ -8,6 +8,7 @@ import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js";
+import testChartData from './boosted_12p_2022-01-26.json';
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
@@ -68,8 +69,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const drec = this.chartdata[di];
     const repDict = {
       WEEKDATE:   reformatReadableDate(drec.DATE),
-      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
-      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+      BCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
+      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[2]],{format:'number'}),
     };
     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
     return caption;
@@ -83,7 +85,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let tempData = [...this.chartdata];
     // let sample_days = this.chartOptions.sample_days;
     let last_day = this.chartdata.length-1;
-    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[2]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
     let end_impact_date = this.chartdata[last_day].DATE;
     let begin_impact_date = this.chartdata[last_day-6].DATE;
     // tempData.splice(tempData.length-sample_days,sample_days);
@@ -138,6 +140,10 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
+
+          // TEST OVERRIDE
+          alldata = JSON.parse(JSON.stringify(testChartData));
+
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
@@ -169,6 +175,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           this.chartdata.forEach(rec => {
             rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
             rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
+            rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
           });
 
           this.renderComponent();
