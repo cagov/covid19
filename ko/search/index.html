@@ -299,6 +299,7 @@
 
 	const isRejected = function(phrase) {
 		return phrase.match(/\S+/g).length > 4 || 
+			   phrase.length < 4 ||
     	       phrase.split(' ').find(wrd=>(rejectList.includes(wrd.hashCode()))) != undefined;
 	};
 
