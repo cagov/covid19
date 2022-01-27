@@ -62,7 +62,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width-20)
+        if (x(i) < this.dimensions.width)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthStr = sdate.toLocaleString('default', { month: 'short' });
@@ -391,9 +391,15 @@ function getAxisDiv(ascale,{hint='num'}) {
     pending_label = 'Pending',
    } )  {
 
-    // console.log("renderChart",root_id, line_series_array);
-    // d3.select(this.querySelector("svg g"))
-    //   .attr('style','font-family:sans-serif;font-size:16px;');
+    // Force padding on dimensions...
+    const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
+    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
+    const lastday = lastDateJ.getDate();
+    // as day goes from 1->16, padding goes from 35 -> 0
+    if (lastday < 16) {
+      const padding = 35 * 1-(lastday/15.0);
+      this.dimensions.margin.right = padding;
+    }
 
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
@@ -434,15 +440,15 @@ function getAxisDiv(ascale,{hint='num'}) {
 
 
     // Determine additional days to add...
-    const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
-    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-
+    // const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
+    // const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
     // determine width of a day in current projection, in pixels
-    const day_width = (this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)) / line_series_array[0].length;
-    const necessary_display_width = 32; // space to display Aug in English
-    const min_days = Math.ceil(necessary_display_width / day_width);
-    // pad to extra days to make room for month-name display
-    let padDays = Math.max(0, min_days - lastDateJ.getDate());
+    // const day_width = (this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)) / line_series_array[0].length;
+    // const necessary_display_width = 32; // space to display Aug in English
+    // const min_days = Math.ceil(necessary_display_width / day_width);
+    // // pad to extra days to make room for month-name display
+    // let padDays = Math.max(0, min_days - lastDateJ.getDate());
+    let padDays = 0;
     // console.log("MIN DAYS, pad_days", min_days, padDays);
 
     this.xline = d3
