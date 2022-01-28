@@ -83,7 +83,7 @@ hero-stats {
 	&-text {
 		display: flex;
 		text-align: left;
-		padding: 1.5rem 1rem;
+		padding: 1.5rem 0 1.5rem 1rem;
 		min-height: 60vh;
 		display: flex;
 		width: 100%;
@@ -132,7 +132,7 @@ hero-stats {
 			}
 		}
 		@include phone {
-			font-size: 1.8rem;
+			font-size: 1.7rem;
 		}
 	}
 	&-subhead {
@@ -144,7 +144,7 @@ hero-stats {
 		@include phone {
 			// padding-top: 0.25rem;
 			// padding-bottom: 0.5rem;
-			font-size: 1.8rem;
+			font-size: 1.7rem;
 		}
 	}
 	&-photo {
