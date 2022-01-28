@@ -116,6 +116,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
 
+    let show_pending = hasURLSearchParam('grayarea') || hasURLSearchParam('pending');
+
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'chartdata':this.chartdata,
@@ -126,6 +128,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
                           'root_id':this.chartOptions.root_id,
+                          'show_pending':show_pending,
                           // 'chart_mode':this.chart_mode,
                           // 'pending_mode':this.pending_mode,
                           // 'pending_weeks':this.chartOptions.pending_weeks,

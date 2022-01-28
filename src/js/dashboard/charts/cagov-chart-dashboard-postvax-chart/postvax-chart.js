@@ -102,6 +102,31 @@ function writeXAxis(svg, data, date_fld, x, y,
   // }
 }
 
+function writePendingArea(svg, x, y, 
+  { pending_days=7,
+    root_id='barid'})
+{
+    let xgroup = svg.append("g")
+    .attr("class",'pending-block');
+
+    const max_x_domain = x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    let nbr_pending = pending_days;
+
+    xgroup.append('rect')
+      .attr('style','fill:black;opacity:0.05;')
+      .attr("x",x(max_x_domain-nbr_pending))
+      .attr("y",y(max_y_domain))
+      .attr("width",x(max_x_domain) - x(max_x_domain-nbr_pending))
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    xgroup.append('text')
+      .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+      .text("Pending")
+      .attr("x",x(max_x_domain))
+      .attr("y",y(max_y_domain)-4);
+}
+
 // Formatter Factory
 // supported formats: num/number, pct, integer
 function getFormatter(max_v,{hint='num',digits=0})
@@ -260,6 +285,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     series_colors = null,
     x_axis_field = null,
     line_date_offset = 0,
+    show_pending = false,
     y_fmt = 'num',
     // pending_weeks = 0,
     // pending_legend = '',
@@ -276,8 +302,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
     const lastday = lastDateJ.getDate();
     // as day goes from 1->16, padding goes from 35 -> 0
-    if (lastday < 16) {
-      const padding = 2+(35 * 1-(lastday/15.0));
+    if (lastday < 6) {
+      const padding = 2+(35 * 1-(lastday/5.0));
       this.dimensions.margin.right = padding;
     }
 
@@ -320,7 +346,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     const LINE_OFFSET_X = line_date_offset;
     this.xline = d3
     .scaleLinear()
-    .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+chartdata.length-1])
+    .domain([LINE_OFFSET_X+0,LINE_OFFSET_X+chartdata.length-1+(show_pending? this.chartOptions.pending_days : 0)])
     .range([
         this.dimensions.margin.left,
         this.dimensions.width - this.dimensions.margin.right
@@ -333,6 +359,12 @@ function getAxisDiv(ascale,{hint='num'}) {
         { root_id:root_id+"_l"+(i+1), line_id:'line_s'+(i+1), crop_floor:crop_floor, color:series_colors[i]});
     });
     
+    if (show_pending) {
+      writePendingArea.call(this, this.svg, this.xline, this.yline,
+                        {pending_days:this.chartOptions.pending_days,root_id:root_id+'_pending'});
+    }    
+
+
     // Write Y Axis, favoring line on left, bars on right
     writeYAxis.call(this, this.svg, this.xline, this.yline,
          {y_fmt:y_fmt, root_id:root_id});
@@ -349,7 +381,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     .on("mousemove focus", (event) => {
       let xy = d3.pointer(event);
       let dIndex = getDataIndexByX(this.xline, this.yline, xy);
-      if (dIndex != null) {
+      if (dIndex != null && dIndex < this.chartdata.length) {
         showTooltip.call(this, event, xy, dIndex, this.xline, this.yline);
       } else {
         hideTooltip.call(this);
