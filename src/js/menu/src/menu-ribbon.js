@@ -45,7 +45,6 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    *
    * returns NodeList or false
    */
-
   menusAreOpen() {
     const anyMenuHasOpenClass = this.querySelectorAll(`.${this.openClass}`);
 
@@ -56,7 +55,7 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    * Close the menu if user clicks somewhere other than the menu.
    */
   closeOnBodyClick(event) {
-    if (!event.target.closest('cagov-menu-ribbon') && this.menusAreOpen()) {
+    if (!event.target.closest(this.menuClass) && (this.menusAreOpen() instanceof NodeList)) {
       const elements = {
         button: this.querySelector(`${this.buttonClass}[aria-expanded="true"]`),
         parent: this.querySelector(`${this.menuClass}.${this.openClass}`),
@@ -87,8 +86,8 @@ class CAGOVMenuRibbon extends window.HTMLElement {
    */
   openMenu(elements) {
     // Close any menus that are open.
-    if (this.menusAreOpen()) {
-      this.menusAreOpen.forEach((item) => {
+    if (this.menusAreOpen() instanceof NodeList) {
+      this.menusAreOpen().forEach((item) => {
         item.classList.remove(this.openClass);
       });
     }
