@@ -53,7 +53,7 @@ hero-stats {
 			margin-top: 120px;
 		}
 		@include small-phone {
-			margin-top: 135px;
+			margin-top: 138px;
 		}
 		@include tablet-wide {
         	margin-top: 129px;
@@ -83,16 +83,13 @@ hero-stats {
 	&-text {
 		display: flex;
 		text-align: left;
-		padding: 1rem;
+		padding: 1.5rem 1rem;
 		min-height: 60vh;
 		display: flex;
 		width: 100%;
 		min-height: auto;
 	    align-self: center;
 
-		@include phone {
-			font-size: 12px;
-		}
 
 		@include tablet { // tablet or larger
 			padding: 0rem 0.5rem;
@@ -134,10 +131,21 @@ hero-stats {
 				outline: 3px solid $yellow;
 			}
 		}
+		@include phone {
+			font-size: 1.8rem;
+		}
 	}
 	&-subhead {
 		color: $darkblue;
 		font-weight: 700;
+		margin: 0;
+		padding-top: 0.5rem;
+		padding-bottom: 1rem;
+		@include phone {
+			// padding-top: 0.25rem;
+			// padding-bottom: 0.5rem;
+			font-size: 1.8rem;
+		}
 	}
 	&-photo {
 		background: white;
