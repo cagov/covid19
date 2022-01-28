@@ -83,12 +83,16 @@ hero-stats {
 	&-text {
 		display: flex;
 		text-align: left;
-		padding: 1.5rem 0 1.5rem 1rem;
+		padding: 1.5rem 1rem;
 		min-height: 60vh;
 		display: flex;
 		width: 100%;
 		min-height: auto;
 	    align-self: center;
+
+		@include phone {
+			padding: 3rem 0 2rem 1rem;
+		}
 
 
 		@include tablet { // tablet or larger
@@ -134,6 +138,9 @@ hero-stats {
 		@include phone {
 			font-size: 1.7rem;
 		}
+		@include small-phone {
+			font-size: 1rem;
+		}
 	}
 	&-subhead {
 		color: $darkblue;
@@ -145,6 +152,9 @@ hero-stats {
 			// padding-top: 0.25rem;
 			// padding-bottom: 0.5rem;
 			font-size: 1.7rem;
+		}
+		@include small-phone {
+			font-size: 1rem;
 		}
 	}
 	&-photo {
