@@ -1,21 +1,14 @@
 ---
 layout: "page.njk"
 title: "تعقب كوفيد-19 في كاليفورنيا"
-meta: "تساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19.⁦"
+meta: "يساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19.⁦"
 author: "State of California"
-publishdate: "2022-01-06T23:14:41Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-⁩<div class="highlight">
-<h2 class="h3 color-primary mt-0">مذكرة بشأن 6 يناير 2022</h2>
-<p>ونظرًا لحدوث خطأ في معالجة البيانات، لم تُدرج بعض الحالات المبلغ عنها في تحديث اليوم وبيانات حالات الإصابة والوفيات في المقاطعة وعلى مستوى الولاية. مجموع عدد الحالات والوفيات للولاية ولبعض المقاطعات المبلغ عنها هو أقل من الرقم الحقيقي. ونتيجة لذلك، سجلت بعض المقاطعات عددًا سلبيًا من الحالات الجديدة سواء الإصابة أو الوفيات مقارنة بالأمس. وستُدرج حالات الإصابة والوفيات المفقودة في تقرير الغد.</p>
-</div><p></p>
-
-
-
-<p class="emphasized">تقوم ولاية كاليفورنيا بتعقب البيانات لفهم انتشار كوفيد-19.</p>
+⁩<p class="emphasized">تقوم ولاية كاليفورنيا بتعقب البيانات لفهم انتشار كوفيد-19.</p>
 
 
 
@@ -23,81 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
-
-<!--
-{# {%-set data = tableauCovidMetrics[0] -%}  #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
-{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-
-{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
-  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
-  %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_  -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
--->
-
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -157,7 +76,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>لا يتم الإبلاغ عن البيانات المتعلقة بعدد الحالات والوفيات والفحوصات في عطلات نهاية الأسبوع أو العطلات الرسمية. تُعالج هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو الإجازة وتُحدث هنا في اليوم التالي. يتم الإبلاغ عن بيانات اللقاحات المعطاة يوميًا.</li> <li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلين على اللقاح كليًا وجزئيًا مقسومةً على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها السلطات الصحية المحلية والكيانات الفيدرالية.</li><li>يستند كل من معدل الإصابات والمتوسط اليومي إلى متوسط 7 أيام مع تأخر 7 أيام.</li><li>'يستند كل من معدل الإصابات والمتوسط اليومي على متوسط 7 أيام مع تأخر 7 أيام.</li><li>إن القواسم السكانية المشتركة المستخدمة لمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
+                <ul><li>لا يتم الإبلاغ عن البيانات في عطلات نهاية الأسبوع أو العطلات الرسمية. تُعالَج هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو الإجازة وتُحدّث هنا في اليوم التالي.</li> <li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلون على اللقاح كليًا وجزئيًا والقسمة على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها السلطات الصحية المحلية والكيانات الفيدرالية.</li><li>يستند كل من معدل الإصابات والمتوسط اليومي إلى متوسط 7 أيام مع تأخر 7 أيام.</li><li>'يستند كل من معدل الإصابات والمتوسط اليومي على متوسط 7 أيام مع تأخر 7 أيام.</li><li>إن القواسم السكانية المشتركة المستخدمة لمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -213,7 +132,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">معلومات الرسم البياني</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>الحالة التي تم تطعيمها أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص تلقى جرعتين من لقاح Pfizer أو Moderna أو لقاح Janssen قبل أسبوعين على الأقل من إيجابية اختبار كوفيد-19.</li><li>الحالة غير المطعمة أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص لم يتلق لقاح كوفيد-19.</li><li>ويستخدم هذا الجدول البيانات المستقاة من الأشخاص البالغة أعمارهم 12 عامًا فأكبر التي تم جمعها خلال آخر 120 يومًا.</li><li>نستبعد بعض البيانات الحديثة غير المكتملة لتنعكس لنا بدقة الاتجاهات في البيانات.</li><li>لدى وزارة الصحة العامة بكاليفورنيا معلومات أكثر عن <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">الحالات المطعمة باللقاح والحالات المحتجزة بالمستشفيات وحالات الوفيات</a>.</li></ul>
+<ul class="small-text"><li>الحالة التي تم تطعيمها أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص تلقى جرعتين من لقاح Pfizer أو Moderna أو لقاح Johnson & Johnson قبل أسبوعين على الأقل من إيجابية اختبار كوفيد-19.</li><li>الحالة غير المطعمة أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص لم يتلق لقاح كوفيد-19.</li><li>ويستخدم هذا الجدول البيانات المستقاة من الأشخاص البالغة أعمارهم 12 عامًا فأكبر التي تم جمعها خلال آخر 120 يومًا.</li><li>نستبعد بعض البيانات الحديثة غير المكتملة لتنعكس لنا بدقة الاتجاهات في البيانات.</li><li>لدى وزارة الصحة العامة بكاليفورنيا معلومات أكثر عن <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">الحالات المطعمة باللقاح والحالات المحتجزة بالمستشفيات وحالات الوفيات</a>.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -289,7 +208,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، الزيادة في {{_varStatTestedDaily_}} الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩٪.</p>
+<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، أي بزيادة {{_varStatTestedDaily_}} من الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩%.</p>
 
 
 
@@ -391,7 +310,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>تتوفر بيانات المريض المشتبه بإصابته بكوفيد-19 في البيانات المصدرية للمرضى المقيمين في المستشفى والبيانات المصدرية لوحدات العناية المركزة. اعتبارًا من 5 يناير 2022، تشمل هذه الرسوم البيانية المرضى نزلاء المستشفيات المؤكد إصابتهم بفيروس كوفيد-19 ومرضى وحدات العناية المركزة فقط.</li><li>ويتوفر المزيد من التفاصيل عن المرضى المقيمين بالمستشفيات ووحدات العناية المركزة بما في ذلك المرضى المشتبه في إصابتهم بكوفيد-19، في <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">لوحة معلومات حالات دخول المستشفى للإقامة والعلاج</a>.</li></ul>
+<ul class="small-text"><li>تتوفر بيانات المريض المشتبه في إصابته بكوفيد-19 في البيانات المصدرية للمرضى المقيمين في المستشفى والبيانات المصدرية لوحدات العناية المركزة.</li><li>ويتوفر المزيد من التفاصيل عن المرضى المقيمين بالمستشفيات ووحدات العناية المركزة، بمن فيهم المرضى المشتبه في إصابتهم بكوفيد-19، في <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">لوحة معلومات حالات دخول المستشفى للإقامة والعلاج</a>.</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">الحالات والوفيات حسب العرق والجنس والعمر</h2>
