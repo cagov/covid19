@@ -32,12 +32,6 @@
 
 {% block bodyClass %}interior-page{% endblock%}
 
-{% block preHeader %}
-{%- pagesection page, "vaccines" %}
-	<cagov-vaccinesurvey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cagov-vaccinesurvey> 		
-{% endpagesection -%}
-{% endblock %}
-
 {% block contentBlock %}
   <div class="container-fluid jumbotron inverse-hyperlink jumbo-img">
     <div class="container">
