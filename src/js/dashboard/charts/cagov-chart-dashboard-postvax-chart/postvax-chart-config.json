@@ -20,7 +20,6 @@
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",
       "days_to_show": 120,
-      "earliest_date": "2021-07-24",
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
       "pre_mult":10
@@ -29,7 +28,7 @@
   "deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
-      "series_fields": ["BOOST_DEATH_RATE", "VAX_DEATH_RATE","UNVAX_DEATH_DOD_RATE"],
+      "series_fields": ["BOOST_DEATH_DOD_RATE", "VAX_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
       "series_colors": ["#21741f", "#1f2574", "#dc4567"],
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",

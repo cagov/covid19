@@ -5,10 +5,9 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './postvax-chart-config.json';
 import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js";
-import testChartData from './boosted_12p_2022-01-26.json';
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
@@ -129,9 +128,6 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'y_fmt':'number',
                           'root_id':this.chartOptions.root_id,
                           'show_pending':show_pending,
-                          // 'chart_mode':this.chart_mode,
-                          // 'pending_mode':this.pending_mode,
-                          // 'pending_weeks':this.chartOptions.pending_weeks,
                         };
       renderChart.call(this, renderOptions);
   }
@@ -145,24 +141,10 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
 
           // TEST OVERRIDE
-          alldata = JSON.parse(JSON.stringify(testChartData));
+          // alldata = JSON.parse(JSON.stringify(testChartData));
 
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
-
-          if ('earliest_date' in this.chartOptions) {
-            let number_to_clip = 0;
-            for (let i = 0; i < this.chartdata.length; i++) {
-              if (this.chartdata[i].DATE != this.chartOptions.earliest_date) {
-                number_to_clip += 1;
-              } else {
-                break;
-              }
-            }
-            if (number_to_clip > 0) {
-              this.chartdata.splice(0, number_to_clip); 
-            }
-          }
 
           let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
           console.log("days to show",days_to_show);
@@ -171,6 +153,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
 
           if (this.chartdata.length > days_to_show) {
+            console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
             this.chartdata.splice(0, this.chartdata.length-days_to_show); 
           }
 
