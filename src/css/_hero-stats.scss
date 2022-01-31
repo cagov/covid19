@@ -53,7 +53,7 @@ hero-stats {
 			margin-top: 120px;
 		}
 		@include small-phone {
-			margin-top: 135px;
+			margin-top: 138px;
 		}
 		@include tablet-wide {
         	margin-top: 129px;
@@ -83,29 +83,34 @@ hero-stats {
 	&-text {
 		display: flex;
 		text-align: left;
-		padding: 0rem 0.5rem;
+		padding: 1.5rem 1rem;
 		min-height: 60vh;
 		display: flex;
 		width: 100%;
 		min-height: auto;
 	    align-self: center;
 
-		@media (min-height: 40rem) {
-			padding: 1.0rem;
+		@include phone {
+			padding: 3rem 0 2rem 1rem;
 		}
 
-		@media (min-height: 48rem) {
-			padding: 1.5rem;
-		}
 
-		@include tablet {
+		@include tablet { // tablet or larger
+			padding: 0rem 0.5rem;
+			@media (min-height: 40rem) {
+				padding: 1.0rem;
+			}
+
+			@media (min-height: 48rem) {
+				padding: 1.5rem;
+			}
 			display: flex;
 			// width: 50%;
 			// padding: 0.5rem;
 			min-height: auto;
 	    	align-self: center;
 		}
-		@include tablet-wide {
+		@include tablet-wide { // or lareger
 			// width: 50%;
 			// padding: 1.0rem;
 			margin-bottom: 1rem; // added this space to make text visible before the fold
@@ -130,10 +135,27 @@ hero-stats {
 				outline: 3px solid $yellow;
 			}
 		}
+		@include phone {
+			font-size: 1.7rem;
+		}
+		@include small-phone {
+			font-size: 1rem;
+		}
 	}
 	&-subhead {
 		color: $darkblue;
 		font-weight: 700;
+		margin: 0;
+		padding-top: 0.5rem;
+		padding-bottom: 1rem;
+		@include phone {
+			// padding-top: 0.25rem;
+			// padding-bottom: 0.5rem;
+			font-size: 1.7rem;
+		}
+		@include small-phone {
+			font-size: 1rem;
+		}
 	}
 	&-photo {
 		background: white;
