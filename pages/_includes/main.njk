@@ -27,7 +27,7 @@ formatNumberSmall(tags)-%}
 formatNumber(tags,1)-%}
 {%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
 
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
 {%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
@@ -147,7 +147,7 @@ formatNumber(tags,1)-%}
 
 		{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}
+		{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
         {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
         {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
