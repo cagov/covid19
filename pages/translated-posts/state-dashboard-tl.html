@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2022-01-06T23:14:41Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Paalala para sa Enero 6, 2022</h2>
-<p>Dahil sa error sa pagproseso ng data, hindi naisama sa update ngayong araw ang ilang naiulat na kaso at ang data ng mga kaso at pagkamatay sa county at buong estado. Ang kabuuang bilang ng kaso at pagkamatay para sa estado at ilang county na naiuulat ay pagtatantya. Dahil diyan, nagkaroon ng negatibong bilang ng mga bagong kaso at pagkamatay ang ilang county kumpara kahapon. Ang mga hindi naitalang kaso at pagkamatay ay isasama sa ulat kinabukasn.</p>
-</div><p></p>
-
-
 
 <p class="emphasized">Sinusubaybayan ng California ang data para maunawaan ang pagkalat ng COVID-19.</p>
 
@@ -23,8 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>    
-
+<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>   
 
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
@@ -44,7 +36,7 @@ addtositemap: true
 
 {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}
+{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
@@ -62,7 +54,7 @@ formatNumberSmall(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
@@ -97,7 +89,6 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-
 
 <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -159,7 +150,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Hindi iniuulat ang data sa mga kaso, pagkamatay, at pagsusuri tuwing weekend o state holiday. Pinoproseso ang data na ito sa unang araw kasunod ng weekend o holiday, at ina-update ito rito sa susunod na araw. Iniuulat araw-araw ang data tungkol sa mga ibinibigay na bakuna.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
+                <ul><li>Hindi nag-uulat ng data tuwing weekend o holiday ng estado. Pinoproseso ang data na ito sa unang araw kasunod ng weekend o holiday, at ina-update ito rito sa susunod na araw.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -215,7 +206,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Impormasyon sa chart</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>Ang kasong nabakunahan, naospital, o namatay ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Janssen hindi bababa sa 2 linggo bago siya magpositibo sa COVID-19.</li><li>Ang kasong hindi pa nababakunahan, naospital, namatay ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19.</li><li>Ginagamit ng chart na ito ang data mula sa mga taong may edad na 12 taon pataas na nakolekta sa nakalipas na 120 araw.</li><li>Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</li><li>Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga kasong nabakunahan, naospital, at namatay</a>.</li></ul>
+<ul class="small-text"><li>Ang kasong nabakunahan, naospital, o namatay ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Johnson & Johnson hindi bababa sa 2 linggo bago siya magpositibo sa COVID-19.</li><li>Ang kasong hindi pa nababakunahan, naospital, namatay ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19.</li><li>Ginagamit ng chart na ito ang data mula sa mga taong may edad na 12 taon pataas na nakolekta sa nakalipas na 120 araw.</li><li>Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</li><li>Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga kasong nabakunahan, naospital, at namatay</a>.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -393,7 +384,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Available ang data ng pasyenteng pinaghihinalaang may COVID-19 sa source data ng mga pasyenteng nasa ospital at ICU. Simula Enero 5, 2022, kasama na sa mga chart na ito ang mga pasyente lang na nasa ospital at ICU na kumpirmadong may COVID-19.</li><li>Ang higit pang detalye tungkol sa mga pasyenteng nasa ospital at ICU, kasama ang mga pasyenteng pinaghihinalaang may COVID-19, ay available sa <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">dashboard ng pagpapaospital</a>.</li></ul>
+<ul class="small-text"><li>Available ang data ng pasyenteng pinaghihinalaang may COVID-19 sa source data ng mga pasyenteng nasa ospital at ICU.</li><li>Ang higit pang detalye tungkol sa mga pasyenteng nasa ospital at ICU, kasama ang mga pasyenteng pinaghihinalaang may COVID-19, ay available sa <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">dashboard ng pagpapaospital</a>.</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</h2>
