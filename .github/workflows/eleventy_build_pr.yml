@@ -3,6 +3,7 @@ on:
   pull_request:
     branches-ignore:
       dependabot/**
+      dependabotprs
     types:
       - opened
       - synchronize
