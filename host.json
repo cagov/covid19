@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "functionTimeout": "00:10:00",
+  "extensions": {
+      "http": {
+          "routePrefix": "",
+          "maxOutstandingRequests": 200,
+          "maxConcurrentRequests": 100,
+          "dynamicThrottlesEnabled": true
+      }
+  },
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+  }
+}

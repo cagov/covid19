@@ -21,10 +21,29 @@ const engSlug = page => page.inputPath.includes('/manual-content/homepages/')
   ? '' //This is a root language page
   : page.fileSlug.replace(langPostfixRegExp, '');
 
+const { addPreviewModeToEleventy } = require("@cagov/11ty-serverless-preview-mode");
+/**
+* @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettingCallback}
+*/
+const itemSetterCallback = (item, jsonData) => {
+  //Customize for your templates
+  item.data.layout = 'page.njk';
+  item.data.tags = ['do-not-crawl'];
+  item.data.addtositemap = false;
+  item.data.title = jsonData.title.rendered;
+  item.data.publishdate = jsonData.date.split('T')[0]; //new Date(jsonData.modified_gmt)
+  item.data.meta = jsonData.excerpt.rendered.replace(/<p>/g, '').replace(/<\/p>/g, '');
+
+  item.data.author = 'State of California'
+
+  item.template.frontMatter.content += jsonData.content.rendered;
+}
+
 /**
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig 
  */
 module.exports = function (eleventyConfig) {
+  addPreviewModeToEleventy(eleventyConfig, itemSetterCallback);
   //Copy static assets
   eleventyConfig.addPassthroughCopy({ "./src/css/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "./src/img": "img" });

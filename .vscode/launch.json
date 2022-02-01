@@ -11,18 +11,29 @@
       "cwd": "${workspaceRoot}/src/sandbox",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
-          "run-script", "sandbox_misc"
+        "run-script",
+        "sandbox_misc"
       ],
       "console": "internalConsole",
       "outputCapture": "std"
-    }
-    ,{
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Debug redirects",
       "program": "fromTable.js",
       "cwd": "${workspaceRoot}/src/redirects",
       "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug DIRECT previewMode",
+      "program": "previewMode/debug",
+      "cwd": "${workspaceRoot}",
+      "outputCapture": "std",
+      "autoAttachChildProcesses": true,
+      "console": "internalConsole"
     },
   ]
 }
