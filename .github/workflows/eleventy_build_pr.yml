@@ -2,7 +2,8 @@ name: Eleventy Build PR Site
 on:
   pull_request:
     branches-ignore:
-      dependabot/**
+      - dependabot/**
+      - dependabotprs
     types:
       - opened
       - synchronize
