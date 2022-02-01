@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 县及全州数据以帮助民众了解COVID-19的传播情况。"
 author: "State of California"
-publishdate: "2022-01-06T23:14:41Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2022年1月6日的通知</h2>
-<p>因为数据处理错误，今日更新的数据，以及县及州数据病例数及死亡数未包含部分报告的数据。计算出的全州及部分县的病例总数及死亡总数比实际数量少。因此，部分县的新增病例数及死亡数与昨天相比显示为负数。缺失的病例数及死亡数将在明天报告。</p>
-</div><p></p>
-
-
 
 <p class="emphasized">加州正在追踪数据以了解COVID-19的传播情况。</p>
 
@@ -23,7 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗数据及已接种疫苗数据</strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">查阅更多数据</a></strong></li></ul>   
+<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗数据及已接种疫苗数据</strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">查阅更多数据</a></strong></li></ul>  
 
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
@@ -96,7 +89,8 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+
+  <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -156,7 +150,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">数据说明</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>周末或国家假日期间没有报告病例数、死亡数以及检测数。将在周末或假日结束后的第一天处理此类数据，并在次日更新于此处。每天都会报告接种疫苗数。</li> <li>已接种疫苗的人数百分比等于已完全接种疫苗及部分接种疫苗的人数除以符合疫苗接种资格的人数。</li><li>将持续更新已接种疫苗人口的百分比，因为全州正在继续核对疫苗数据。此百分比可能与地方卫生辖区和联邦机构报告的数据有所不同。</li><li>患病率及日平均数基于7日平均数据，有7天的滞后期。</li><li>死亡率及日平均数基于7日平均数据，有21天的滞后期，因为报告有延迟。</li><li>每10万人比率所使用的人口分母来自加州财政部对2020年的人口预测。</li><li>检测呈阳性率为7日平均数据，无滞后期。数据由加州公共卫生局 (California Department of Public Health) 提供。</li></ul> 
+                <ul><li>周末或国家假日期间不报告数据。将在周末或假日结束后的第一天处理此类数据，并在次日更新于此处。</li> <li>已接种疫苗的人数百分比等于已完全接种疫苗及部分接种疫苗的人数除以符合疫苗接种资格的人数。</li><li>将持续更新已接种疫苗人口的百分比，因为全州正在继续核对疫苗数据。此百分比可能与地方卫生辖区和联邦机构报告的数据有所不同。</li><li>患病率及日平均数基于7日平均数据，有7天的滞后期。</li><li>死亡率及日平均数基于7日平均数据，有21天的滞后期，因为报告有延迟。</li><li>每10万人比率所使用的人口分母来自加州财政部对2020年的人口预测。</li><li>检测呈阳性率为7日平均数据，无滞后期。数据由加州公共卫生局 (California Department of Public Health) 提供。</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -212,7 +206,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">图表信息</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>已接种疫苗病例、住院病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Janssen疫苗的人士，在接种完疫苗至少2周后，COVID-19检测结果呈阳性。</li><li>未接种疫苗病例、住院病例或死亡病例指未接种COVID-19疫苗人士患病或死亡。</li><li>此图表使用在过去120天内从12岁及以上人士中收集的数据。</li><li>我们剔除了部分最近的、不完整的数据，以准确反映数据走向。</li><li>加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例、住院病例及死亡病例</a>的信息。</li></ul>
+<ul class="small-text"><li>已接种疫苗病例、住院病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Johnson & Johnson疫苗的人士，在接种完疫苗至少2周后，COVID-19检测结果呈阳性。</li><li>未接种疫苗病例、住院病例或死亡病例指未接种COVID-19疫苗人士患病或死亡。</li><li>此图表使用在过去120天内从12岁及以上人士中收集的数据。</li><li>我们剔除了部分最近的、不完整的数据，以准确反映数据走向。</li><li>加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例、住院病例及死亡病例</a>的信息。</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -390,7 +384,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">图表信息</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>COVID-19疑似患者数据可以在住院患者及ICU来源数据中获取。截至2022年1月5日，此类图表仅包含确诊的COVID-19住院患者及ICU患者。</li><li>更多关于住院患者及ICU患者的详细信息，包括COVID-19疑似患者，可以在<a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">住院一览表</a>中获取。</li></ul>
+<ul class="small-text"><li>COVID-19疑似患者数据可以在住院患者及ICU来源数据中获取。</li><li>更多关于住院患者及ICU患者的详细信息，包括COVID-19疑似患者，可以在<a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">住院一览表</a>中获取。</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">按族裔、性别及年龄分类的病例数及死亡数</h2>

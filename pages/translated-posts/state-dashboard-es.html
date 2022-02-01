@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-01-06T23:14:41Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Nota del 6 de enero de 2022</h2>
-<p>Debido a un error de procesamiento de datos, algunos casos reportados no se incluyeron en la actualización de hoy ni tampoco los datos de casos ni muertes de los condados y del estado. El conteo reportado total de casos y muertes para el estado y para algunos condados es una subestimación. Como resultado, algunos condados tienen un número negativo de casos nuevos y muertes en comparación con ayer. Los casos y las muertes faltantes se incluirán en el reporte de mañana.</p>
-</div><p></p>
-
-
 
 <p class="emphasized">California está rastreando los datos para comprender la propagación de la COVID-19.</p>
 
@@ -24,7 +17,6 @@ addtositemap: true
 
 
 <ul class="toc"><li><strong><a href="#todays-update">actualización de hoy</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    
-
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -96,7 +88,6 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-
 <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
@@ -157,7 +148,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Notas sobre los datos</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Los datos sobre casos, muertes y pruebas no se reportan los fines de semana ni los días festivos estatales. Estos datos se procesan el primer día que sigue al fin de semana o día festivo, y se actualizan aquí al día siguiente. Los datos sobre las vacunas administradas se reportan diariamente.</li> <li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>La tasa de casos y el promedio diario se basan en un promedio de 7 días con un retraso de 7 días.</li><li>La tasa de muertes y el promedio diario se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
+                <ul><li>Los datos no se reportan los fines de semana ni los días festivos estatales. Estos datos se procesan el primer día que sigue al fin de semana o día festivo, y se actualizan aquí al día siguiente.</li> <li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>La tasa de casos y el promedio diario se basan en un promedio de 7 días con un retraso de 7 días.</li><li>La tasa de muertes y el promedio diario se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -213,7 +204,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Información del cuadro</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió dos dosis de las vacunas de Pfizer o Moderna, o la vacuna de Janssen al menos dos semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa datos de personas mayores de 12 años recopilados durante los últimos 120 días.</li><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li></ul>
+<ul class="small-text"><li>Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió dos dosis de las vacunas de Pfizer o Moderna, o la vacuna de Johnson & Johnson al menos dos semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa datos de personas mayores de 12 años recopilados durante los últimos 120 días.</li><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -391,7 +382,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Los datos de pacientes con sospecha de COVID-19 están disponibles en los pacientes hospitalizados y en los datos de origen de las ICU. A partir del 5 de enero de 2022, estos cuadros incluyen solo pacientes hospitalizados por COVID-19 confirmada y de las ICU.</li><li>Hay disponibles más detalles sobre los pacientes hospitalizados y en las ICU, incluidos los pacientes con sospecha de tener COVID-19, en el <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">panel de control de hospitalizaciones</a>.</li></ul>
+<ul class="small-text"><li>Los datos de pacientes con sospecha de COVID-19 están disponibles en los datos de origen de pacientes hospitalizados e ICU.</li><li>Hay disponibles más detalles sobre los pacientes hospitalizados y en las ICU, incluidos los pacientes con sospecha de tener COVID-19, en el <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">panel de control de hospitalizaciones</a>.</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">Casos y muertes por etnia, sexo y edad</h2>

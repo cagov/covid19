@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-01-06T23:14:41Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">2022년 1월 6일자 유의 사항</h2>
-<p>데이터 처리 오류로 인해 일부 보고 확진자수가 금일 업데이트된 내용 및 카운티와 주 전역의 확진자수와 사망자수에 포함되지 않았습니다. 주 및 일부 카운티에 대한 전체 확진자 및 사망자 총계가 적게 잡힌 상태입니다. 그 결과 일부 카운티에서는 신규 확진자수와 사망자수가 어제에 비해 마이너스인 것으로 나타났습니다. 누락된 확진자수와 사망자수는 내일 보고서에 포함될 예정입니다.</p>
-</div><p></p>
-
-
 
 <p class="emphasized">캘리포니아가 COVID-19의 확산을 이해하기 위해 데이터를 추적 관리하고 있습니다.</p>
 
@@ -24,7 +17,6 @@ addtositemap: true
 
 
 <ul class="toc"><li><strong><a href="#todays-update">금일 업데이트 사항</a></strong></li><li><a href="#postvax-status"><strong>백신 미접종 및 접종 데이터</strong></a></li><li><strong><a href="#county-statewide">카운티 및 주 전체 대상 데이터</a></strong></li><li><strong><a href="#ethnicity-gender-age">민족, 성별 및 연령별 사례 건수 및 사망자 수</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    
-
 
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%}  #}
@@ -97,10 +89,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    
-
-<div class="bg-lightblue full-bleed mt-minus-4">
+<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -160,7 +149,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>사례 발생건수, 사망자수 및 검사 등은 주말이나 주 공휴일에는 보고되지 않습니다. 본 데이터는 주말이나 공휴일 다음 첫째 날에 처리하여 그 다음날에 업데이트됩니다. 백신 투여에 관한 데이터는 매일 보고됩니다.</li> <li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>사례 발생율 및 일 평균은 7일 평균을 기준으로 하며 7일의 시차가 있습니다.</li><li>사망율 및 일 평균은 7일 평균을 근거로 하며 보고 상의 지연으로 인해 21일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
+                <ul><li>데이터는 주말이나 주 공휴일에는 보고되지 않습니다. 본 데이터는 주말이나 공휴일 다음 첫째 날에 처리하여 그 다음날에 업데이트됩니다.</li> <li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>사례 발생율 및 일 평균은 7일 평균을 기준으로 하며 7일의 시차가 있습니다.</li><li>사망율 및 일 평균은 7일 평균을 근거로 하며 보고 상의 지연으로 인해 21일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -216,7 +205,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">차트 정보</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>백신 접종 완료 사례, 입원 환자 또는 사망자는 COVID-19 양성 판정을 받기 최소 2주 전에 Pfizer나 Moderna 백신 2회 또는 Janssen 백신을 접종받은 사람에게 발생하는 경우를 말합니다.</li><li>백신 미접종 사례, 입원 환자 또는 사망자는 COVID-19 백신을 접종하지 않았던 사람에게 발생하는 경우를 말합니다.</li><li>본 차트는 지난 120일 동안 만 12세 이상에게서 채집한 데이터를 사용합니다.</li><li>데이터 추이를 정확하게 반영하기 위해 일부 최근의 불완전한 데이터는 제외하고 있습니다.</li><li>캘리포니아주 공중 보건부에서 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">백신 접종 건수, 입원 환자 수 및 사망자 수</a>에 관해 더 자세한 내용을 제공하고 있습니다.</li></ul>
+<ul class="small-text"><li>백신 접종 완료 사례, 입원 환자 또는 사망자는 COVID-19 양성 판정을 받기 최소 2주 전에 Pfizer나 Moderna 백신 2회 또는 Johnson & Johnson 백신을 접종받은 사람에게 발생하는 경우를 말합니다.</li><li>백신 미접종 사례, 입원 환자 또는 사망자는 COVID-19 백신을 접종하지 않았던 사람에게 발생하는 경우를 말합니다.</li><li>본 차트는 지난 120일 동안 만 12세 이상에게서 채집한 데이터를 사용합니다.</li><li>데이터 추이를 정확하게 반영하기 위해 일부 최근의 불완전한 데이터는 제외하고 있습니다.</li><li>캘리포니아주 공중 보건부에서 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">백신 접종 건수, 입원 환자 수 및 사망자 수</a>에 관해 더 자세한 내용을 제공하고 있습니다.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -394,7 +383,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">차트 정보</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>COVID-19의심 환자 데이터가 입원 환자 및 ICU 원천 데이터에서 제공됩니다. 2022년 1월 5일 현재 본 차트에 포함된 내용은 COVID-19 확진 입원 환자와 ICU 환자에 한합니다.</li><li>COVID-19 의심 환자를 포함하여 입원 환자 및 ICU 환자에 관한 자세한 내용은 <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">입원 대시보드</a>에서 제공됩니다.</li></ul>
+<ul class="small-text"><li>COVID-19 의심 환자 데이터가 입원 환자 및 ICU 원천 데이터에서 제공됩니다.</li><li>COVID-19 의심 환자를 포함하여 입원 환자 및 ICU 환자에 관한 자세한 내용은 <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">입원 대시보드</a>에서 제공됩니다.</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">민족, 성별 및 연령별 사례 건수 및 사망자 수</h2>
