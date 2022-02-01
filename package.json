@@ -22,7 +22,7 @@
     "serve": "npx @11ty/eleventy --serve --quiet",
     "start": "npm run watch",
     "testdata": "tap test/11ty-data.js",
-    "test": "npx playwright test index.spec.mjs",
+    "test": "",
     "test:setup": "npx playwright install-deps chromium && npx playwright install",
     "watch": "gulp watch"
   },
