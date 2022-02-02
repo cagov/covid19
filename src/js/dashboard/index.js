@@ -35,6 +35,8 @@ function getSVG(file,selector) {
       let targetEl = document.querySelector(selector);
       if(targetEl) {
         targetEl.innerHTML = text;
+        let svg_about = targetEl.querySelector('svg').getAttribute('about');
+        console.log("SVG ABOUT: ",svg_about);
       }
     });
   });
