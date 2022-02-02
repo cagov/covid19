@@ -2,26 +2,24 @@
   "postvax-cases": {
     "weeks": {
       "chartName": "#postvax-cases-chart",
-      "series_fields": ["BREAKTHROUGH_CASE_RATE","UNVAX_CASE_RATE"],
-      "series_colors": ["#1f2574", "#dc4567"],
+      "series_fields": ["BOOST_CASE_RATE","VAX_CASE_RATE","UNVAX_CASE_RATE"],
+      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",
       "days_to_show": 120,
       "root_id": "postvax-cases",
-      "pending_days":7,
-      "pre_mult":1,
-      "timeKeys": ["all-time","months-6","days-120","days-90"]
+      "pending_days":14,
+      "pre_mult":1
     }
   },
   "postvax-hospitalizations": {
     "weeks": {
       "chartName": "#postvax-hospitalizations-chart",
-      "series_fields": ["BREAKTHROUGH_HOSP_RATE","UNVAX_HOSP_RATE"],
-      "series_colors": ["#1f2574", "#dc4567"],
+      "series_fields": ["BOOST_HOSP_RATE", "VAX_HOSP_RATE","UNVAX_HOSP_RATE"],
+      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",
       "days_to_show": 120,
-      "earliest_date": "2021-07-24",
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
       "pre_mult":10,
@@ -31,8 +29,8 @@
   "postvax-deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
-      "series_fields": ["BREAKTHROUGH_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
-      "series_colors": ["#1f2574", "#dc4567"],
+      "series_fields": ["BOOST_DEATH_DOD_RATE", "VAX_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
+      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
       "x_axis_field":"DATE",
       "dataUrl": "postvax/california.json",
       "days_to_show": 120,

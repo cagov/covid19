@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-01-28T18:18:26Z"
+publishdate: "2022-02-02T17:36:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -286,22 +286,19 @@ formatNumberFixed(tags,1)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-timerange="days-120" data-chart-config-key="postvax-cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">6 months</li>
-    <li data-label="timeTabLabel3">120 days</li>
-    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
       Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
+      Boosted cases per 100K: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -311,22 +308,18 @@ formatNumberFixed(tags,1)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="postvax-hospitalizations" data-chart-config-timerange="days-120" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">6 months</li>
-    <li data-label="timeTabLabel3">120 days</li>
-    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
-      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
+      Boosted hospitalizations per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -336,22 +329,19 @@ formatNumberFixed(tags,1)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="postvax-deaths" data-chart-config-timerange="days-120" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">6 months</li>
-    <li data-label="timeTabLabel3">120 days</li>
-    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
       Vaccinated deaths per million: <b>{VCOUNT}</b><br>
+      Boosted deaths per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -371,7 +361,7 @@ formatNumberFixed(tags,1)-%}
       </button>
       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 12 and older collected over the last 120 days.</li><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li></ul>
+<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>A boosted case, hospitalization, or death is one that occurs in a person who received an additional or booster dose on or after August 13, 2021, at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 12 and older collected over the last 120 days.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on Wednesdays. When we publish these charts:</li><ul class="mb-0"><li>The cases and hospitalizations charts have a 17-day lag.</li><li>The deaths chart has a 24-day lag.</li></ul><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li></ul>
         </div>
       </div>
     </div>

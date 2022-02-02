@@ -1,4 +1,4 @@
-cagov-chart-dashboard-postvax-chart {
+cagov-chart-dashboard-postvax-chart-prerender {
   .chart-title {
     font-weight: 300;
     font-size: 1.2rem;
@@ -19,17 +19,17 @@ cagov-chart-dashboard-postvax-chart {
       stroke-width: 2px;
     }
     g.fg-line.line_s1 path {
-      stroke: #21741f;
-    }
-    g.fg-line.line_s2 path {
        stroke: #1f2574;
     }
-    g.fg-line.line_s3 path {
+    g.fg-line.line_s2 path {
        stroke: #dc4567;
     }
-    // g.fg-line.line_s3 path {
-    //   stroke-dasharray:"1 3";
-    // }
+    g.fg-line.line_s3 path {
+      stroke: #cccccc;
+   }
+   g.fg-line.line_s3 path {
+      stroke-dasharray:"1 3";
+    }
     g.date-axis {
       line {
         stroke-width: 0.5px;
@@ -41,7 +41,7 @@ cagov-chart-dashboard-postvax-chart {
         fill: black;
       }
       text {
-        text-anchor: start;
+        text-anchor: middle;
         dominant-baseline: hanging;
       }
       text.x-axis-legend {
@@ -107,14 +107,14 @@ cagov-chart-dashboard-postvax-chart {
   svg.legend-line path {
     stroke-width: 3;
   }
-  svg.series1-legend-line path {
-    stroke: #21741f;
-  }
   svg.series2-legend-line path {
-    stroke: #1f2574;
+    stroke: #dc4567;
   }
   svg.series3-legend-line path {
-    stroke: #dc4567;
+    stroke: #21741f;
+  }
+  svg.series1-legend-line path {
+    stroke: #1f2574;
   }
   div.tooltip-container {
     font-weight: 300;
@@ -157,4 +157,9 @@ cagov-chart-dashboard-postvax-chart {
 
 .d-hide {
   display: none;
+}
+
+div.chart-prev-div {
+  width:700px;
+  margin-bottom:2rem;
 }

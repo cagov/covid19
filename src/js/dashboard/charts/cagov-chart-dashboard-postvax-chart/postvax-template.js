@@ -91,9 +91,6 @@ export default function template(chartOptions, {
 
 
   let legend_extra = '';
-  if (mode_3lines) {
-    legend_extra += "&nbsp;&nbsp;&nbsp;<span class=\"series3-legend-line\">⎯⎯⎯⎯</span> " + post_series3_legend;    
-  }
 
   return /*html*/ `
     <div class="py-2">
@@ -103,10 +100,12 @@ export default function template(chartOptions, {
             ${allSelectMarkup}
             <div class="y-axis-title">${post_yaxis_legend}
               <span class="chart-legend">
-                <svg class="series2-legend-line legend-line" data-name="legend-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15"><path d="M0,6L24,6Z" /></svg>
-                 ${post_series2_legend}&nbsp;&nbsp;&nbsp;
-               <svg class="series1-legend-line legend-line" data-name="legend-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15"><path d="M0,6L24,6Z" /></svg>
-                 ${post_series1_legend}${legend_extra}
+                <svg class="series3-legend-line legend-line" data-name="legend-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15"><path d="M0,6L24,6Z" /></svg>
+                 ${post_series3_legend}<br>
+                <svg class="series2-legend-line legend-line" data-name="legend-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15"><path d="M0,6L24,6Z" /></svg>
+                 ${post_series2_legend}<br>
+               <svg class="series1-legend-line legend-line" data-name="legend-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15"><path d="M0,6L24,6Z" /></svg>
+                 ${post_series1_legend}
                </span>
             </div>
             <div class="svg-holder"></div>

@@ -5,7 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './postvax-chart-config.json';
 import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { parseSnowflakeDate, reformatJSDate, reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js";
 
@@ -69,8 +69,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const drec = this.chartData[di];
     const repDict = {
       WEEKDATE:   reformatReadableDate(drec.DATE),
-      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
-      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+      BCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
+      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
+      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[2]],{format:'number'}),
     };
     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
     return caption;
@@ -155,10 +156,10 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let sumunvax = 0;
     // let tempData = [...this.chartData];
     // let sample_days = this.chartOptions.sample_days;
-    let last_day = this.chartData.length-1;
-    let last_ratio = this.chartData[last_day][this.chartOptions.series_fields[1]] / this.chartData[last_day][this.chartOptions.series_fields[0]];
-    let end_impact_date = this.chartData[last_day].DATE;
-    let begin_impact_date = this.chartData[last_day-6].DATE;
+    let last_day = this.chartdata.length-1;
+    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[2]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    let end_impact_date = this.chartdata[last_day].DATE;
+    let begin_impact_date = this.chartdata[last_day-6].DATE;
     // tempData.splice(tempData.length-sample_days,sample_days);
     // tempData.forEach(r => {
     //   sumvax += r[this.chartOptions.series_fields[0]];
@@ -192,6 +193,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
 
+    let show_pending = hasURLSearchParam('grayarea') || hasURLSearchParam('pending');
+
     let renderOptions = {'tooltip_func':this.tooltip,
                           'extras_func':this.renderExtras,
                           'chartdata':this.chartData,
@@ -202,9 +205,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'x_axis_field':this.chartOptions.x_axis_field,
                           'y_fmt':'number',
                           'root_id':this.chartOptions.root_id,
-                          // 'chart_mode':this.chart_mode,
-                          // 'pending_mode':this.pending_mode,
-                          // 'pending_weeks':this.chartOptions.pending_weeks,
+                          'show_pending':show_pending,
                         };
       renderChart.call(this, renderOptions);
   }
@@ -216,15 +217,29 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
       .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
-          this.metadata = alldata.meta;
-          this.chartData = alldata.data;
-          this.uncroppedChartData = alldata.data;
 
+          // TEST OVERRIDE
+          // alldata = JSON.parse(JSON.stringify(testChartData));
+
+          this.metadata = alldata.meta;
+          this.chartdata = alldata.data;
+
+          let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
+          console.log("days to show",days_to_show);
+
+          let pending_days = this.chartOptions.pending_days;
+          this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
+
+          if (this.chartdata.length > days_to_show) {
+            console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
+            this.chartdata.splice(0, this.chartdata.length-days_to_show); 
+          }
 
           // Premult
           this.chartData.forEach(rec => {
             rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
             rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
+            rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
           });
 
           this.renderComponent();
