@@ -1,5 +1,5 @@
 {
-  "postvax-cases": {
+  "cases": {
     "weeks": {
       "chartName": "#postvax-cases-chart",
       "series_fields": ["BOOST_CASE_RATE","VAX_CASE_RATE","UNVAX_CASE_RATE"],
@@ -12,7 +12,7 @@
       "pre_mult":1
     }
   },
-  "postvax-hospitalizations": {
+  "hospitalizations": {
     "weeks": {
       "chartName": "#postvax-hospitalizations-chart",
       "series_fields": ["BOOST_HOSP_RATE", "VAX_HOSP_RATE","UNVAX_HOSP_RATE"],
@@ -22,11 +22,10 @@
       "days_to_show": 120,
       "root_id": "postvax-hospitalizations",
       "pending_days":14,
-      "pre_mult":10,
-      "timeKeys": ["all-time","months-6","days-120","days-90"]
+      "pre_mult":10
     }
   },
-  "postvax-deaths": {
+  "deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
       "series_fields": ["BOOST_DEATH_DOD_RATE", "VAX_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
@@ -36,8 +35,7 @@
       "days_to_show": 120,
       "root_id": "postvax-deaths",
       "pending_days":21,
-      "pre_mult":10,
-      "timeKeys": ["all-time","months-6","days-120","days-90"]
+      "pre_mult":10
     }
   },
   "desktop": {
@@ -47,7 +45,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 20,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -58,7 +56,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 20,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -69,7 +67,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 20,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -80,7 +78,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 20,  
+      "right": 2,  
       "bottom": 45
     }
   }
