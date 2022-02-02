@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2021-12-31T23:56:06Z"
+publishdate: "2022-02-02T17:36:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -60,14 +60,11 @@ formatNumberFixed(tags,1)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
-{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
-formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
@@ -248,7 +245,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
             </button>
             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Data on cases, deaths, and testing is not reported on weekends or state holidays. This data is reported on the first day following the weekend or holiday. Data on vaccines administered is reported daily.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+                <ul><li>Data is not reported on weekends or state holidays. This data is processed on the first day following the weekend or holiday and updated here on the following day.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>Case rate and daily avg. are based on a 7-day average with a 7-day lag.</li><li>Death rate and daily avg. are based on a 7-day average with a 21-day lag due to delays in reporting.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
               </div>
             </div>
           </div>
@@ -289,18 +286,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
       Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
+      Boosted cases per 100K: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -310,18 +308,18 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
-      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
+      Boosted hospitalizations per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -331,18 +329,19 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than fully vaccinated people.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="series3_legend">All cases</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
       Vaccinated deaths per million: <b>{VCOUNT}</b><br>
+      Boosted deaths per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -362,7 +361,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </button>
       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Janssen vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 12 and older collected over the last 120 days.</li><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li></ul>
+<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>A boosted case, hospitalization, or death is one that occurs in a person who received an additional or booster dose on or after August 13, 2021, at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 12 and older collected over the last 120 days.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on Wednesdays. When we publish these charts:</li><ul class="mb-0"><li>The cases and hospitalizations charts have a 17-day lag.</li><li>The deaths chart has a 24-day lag.</li></ul><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li></ul>
         </div>
       </div>
     </div>
@@ -568,7 +567,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">Confirmed and suspected hospitalizations</h3>
+<h3 class="text-center">Hospitalizations</h3>
 
 
 
@@ -576,13 +575,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<p>The number of hospitalizations due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed and suspected COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
+<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <!-- 5 Confirmed and suspected hospitalizations - COVID-19 hospitalized patients in California -->
+      <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
       <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
@@ -611,7 +610,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
       </cagov-chart-dashboard-patients>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-      <!-- 6 Confirmed and suspected hospitalizations - ICU beds in California -->
+      <!-- 6 Confirmed hospitalizations - ICU beds in California -->
       <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
@@ -635,7 +634,13 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>
+<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+<ul class="small-text"><li>Suspected COVID-19 patient data is available in the hospitalized patients and ICU source data.</li><li>More details about hospitalized and ICU patients, including patients suspected of having COVID-19, are available in the <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">hospitalization dashboard</a>.</li></ul>
+</div></div></div></cagov-accordion></div>
+
+
+
+<hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>
 
 
 
@@ -788,20 +793,30 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/equity">Health equity data</a></h3> 
-                                <p class="card-text">How COVID-19 has affected different communities across the state</p>
+                                <h3 class="h4 card-title mt-2"><a href="/variants">Variants</a></h3> 
+                                <p class="card-text">Data about which variants are in California, including Delta and Omicron</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">Data and tools</a></h3>             
-                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                                <h3 class="h4 card-title mt-2"><a href="/equity">Health equity data</a></h3>             
+                                <p class="card-text">How COVID-19 has affected different communities across the state</p>
                             </div>
                         </div>
                     </div>
                 </div><!--row 1-->
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Data and tools</a></h3>
+                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 2-->
             </div>
             <!--col-10-->
         </div>

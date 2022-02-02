@@ -6,6 +6,8 @@ import getScreenResizeCharts from "./../../../common/get-window-size.js";
 import { chartOverlayBox, chartOverlayBoxClear } from "../../chart-overlay-box.js";
 import rtlOverride from "./../../../common/rtl-override.js";
 import formatValue from "./../../../common/value-formatters.js";
+import { reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 class CAGOVEquityRE100K extends window.HTMLElement {
   connectedCallback() {
@@ -277,6 +279,21 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   render() {
     // NOTE subgroups: "METRIC_VALUE_PER_100K", "WORST_VALUE_DELTA"
 
+    // correct publish date below 100k chart
+    let publishedDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10)); 
+    // !! don't know this date yet...
+    let reportDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10));
+    reportDate.setDate(reportDate.getDate() - 1); // subtract 1 day to date on file
+
+    let footerReplacementDict = {
+      'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+      'REPORT_DATE' : reformatJSDate( reportDate ),
+    };
+    const post_footerText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+    d3.select(document.querySelector(".top-charts-data-label")).text(post_footerText);
+
+
+
     // Exclude Other & Unknown categories from displaying for this chart.
     let data = this.alldata.filter(
       (item) =>
@@ -376,7 +393,8 @@ class CAGOVEquityRE100K extends window.HTMLElement {
   }
 
   retrieveData(url, statewideUrl) {
-    Promise.all([window.fetch(url), window.fetch(statewideUrl)])
+    const statusUrl = config.statusLoc+"/last_equity_update.json";
+    Promise.all([window.fetch(url), window.fetch(statewideUrl), window.fetch(statusUrl)])
       .then(function (responses) {
         return Promise.all(
           responses.map(function (response) {
@@ -388,6 +406,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         function (requestData) {
           this.alldata = requestData[0];
           this.combinedData = requestData[1];
+          this.statusdata = requestData[2];
           this.render();
         }.bind(this)
       );

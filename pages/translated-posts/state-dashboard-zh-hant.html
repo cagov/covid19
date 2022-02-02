@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 縣及全州數據以幫助民眾了解COVID-19的傳播情況。"
 author: "State of California"
-publishdate: "2021-12-16T20:38:02Z"
+publishdate: "2022-01-28T18:18:26Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,15 +16,27 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">今日的新數據</a></strong></li><li><a href="#postvax-status"><strong>未接種疫苗數據及已接種疫苗數據</strong></a></li><li><strong><a href="#county-statewide">縣及州數據</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性別及年齡分類的病例數及死亡數</a></strong></li><li><strong><a href="#more">查閱更多數據</a></strong></li></ul>    <!--
-{# {%-set data = tableauCovidMetrics[0] -%} #}
+<ul class="toc"><li><strong><a href="#todays-update">今日的新數據</a></strong></li><li><a href="#postvax-status"><strong>未接種疫苗數據及已接種疫苗數據</strong></a></li><li><strong><a href="#county-statewide">縣及州數據</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性別及年齡分類的病例數及死亡數</a></strong></li><li><strong><a href="#more">查閱更多數據</a></strong></li></ul>   
+<!--
+{# {%-set data = tableauCovidMetrics[0] -%}  #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
-{%-set _varStatDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDate_ | replace(", 2021", "")-%}
+{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
+{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
+{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
+
+{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
+
+{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
+
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
@@ -41,18 +53,15 @@ formatNumberSmall(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-{%-set _varStatYesterdayDate_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-{%-set _varStatHospitalTotal_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS) | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS + data2.icu.ICU_SUSPECTED_COVID_PATIENTS) |
-formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = (data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.hospitalizations.HOSPITALIZED_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = (data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY +
-data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
+
+{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
@@ -65,10 +74,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
 {%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
- _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
- %} 
+  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
+  %} 
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_ -%}
+{%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
@@ -78,16 +87,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 {%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
---> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+-->
+<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
-    <div class="row pb-4">
+    <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">更新於 {{_varStatDate_}}</h2>
-        <div class="text-center">到目前為止，加州已確認{{_varStatTotalCases_}}COVID-19病例總數及{{_varStatTotalDeaths_}}死亡總數 。</div>
-      </div>
+        <h2 class="text-center color-purple">更新於 {{_varStatDateNoTime_}}</h2>         <!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases&#xa; and {{_varStatTotalDeaths_}} deaths.</div> -->       </div>
     </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">施打的疫苗數</div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">接種的疫苗數</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">總共</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">日平均數</span> </div>
          <div class="text-white text-xs mb-2">
@@ -127,9 +135,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">檢測結果呈陽性</span>          </div>          <!-- <div class="text-white text-xs mb-2">
- <span class="text-300">&nbsp;</span>
- </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">檢測結果呈陽性</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300">過去8週</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
@@ -137,14 +143,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">
-        <p class="small-text">根據{{_varStatYesterdayDate_}}的數據在{{_varStatDate_}}更新。</p>
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">疫苗接種來源數據</a>及 <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數、死亡數及檢測數來源數據</a></p>
+      <div class="col-lg-10 mx-auto">         <!--&#xa; {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}&#xa; {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}&#xa; {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}&#xa; {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}&#xa;--> <p class="small-text">根據{{_varCommonDateReport_}}的數據在{{_varStatDateLaterAccurate_}}更新。</p> <!--&#xa; {%- else -%}&#xa;-->   <p class="small-text">使用{{_varVaxDateReport_}}的數據更新{{_varVaxDateAccurate_}}的疫苗接種數。使用{{_varCasesDateReport_}}的數據更新{{_varCasesDateAccurate_}}的病例數、死亡數及檢測數<br>。</p> <!--&#xa; {%- endif -%}&#xa;-->         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">疫苗接種來源數據</a>及 <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數、死亡數及檢測數來源數據</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">數據説明</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>週末或國家假日期間沒有報告病例數、死亡數以及檢測數。將在週末或假日結束後的第一天報告此類數據。每天都會報告接種疫苗數。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>患病率及日平均數為7日平均數據，有7天的滯後期。</li><li>死亡率及日平均數為7日平均數據，有21天的滯後期，因為報告有延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
+                <ul><li>週末或國家假日期間不報告數據。將在周末或假日結束後的第一天處理此類數據，並在次日更新於此處。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>患病率及日平均數為7日平均數據，有7天的滯後期。</li><li>死亡率及日平均數為7日平均數據，有21天的滯後期，因為報告有延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -200,7 +204,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">圖表資訊</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>已接種疫苗病例、住院病例數或死亡病例是指接種兩劑Pfizer或Moderna疫苗或一劑Janssen疫苗的人士，在接種完疫苗至少2週後，COVID-19檢測結果呈陽性。</li><li>未接種疫苗病例、住院病例或死亡病例是指未接種COVID-19疫苗人士患病或死亡。</li><li>此圖表使用在過去120天內從12歲及以上人士中收集的數據。</li><li>我們剔除了部分最近的、不完整的數據，以準確反映數據走向。</li><li>加州公共衛生局有更多關於<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接種疫苗病例、住院病例及死亡病例</a>的資訊。</li></ul>
+<ul class="small-text"><li>已接種疫苗病例、住院病例數或死亡病例是指接種兩劑Pfizer或Moderna疫苗或一劑Johnson & Johnson疫苗的人士，在接種完疫苗至少2週後，COVID-19檢測結果呈陽性。</li><li>未接種疫苗病例、住院病例或死亡病例是指未接種COVID-19疫苗人士患病或死亡。</li><li>此圖表使用在過去120天內從12歲及以上人士中收集的數據。</li><li>我們剔除了部分最近的、不完整的數據，以準確反映數據走向。</li><li>加州公共衛生局有更多關於<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接種疫苗病例、住院病例及死亡病例</a>的資訊。</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -220,7 +224,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-cases class="chart" data-chart-config-filter="episode" data-chart-config-key="cases">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 1 Cases and Deaths - Confirmed Cases --> <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">加州確診病例數</li>
           <li data-label="chartTitleCounty">{REGION}縣的確診病例數</li>
           <li data-label="chartLegend1">確診病例總數<span class="big-num">{total_confirmed_cases}</span></li>
@@ -229,7 +233,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3">每100K人中的病例數<span class="med-num">{cases_per_100k_7_days}</span>（7日平均數）</li>
           <li data-label="filterTabLabel1">事件日期</li>
           <li data-label="filterTabLabel2">呈報日期</li>
-          <li data-label="tooltipContent">                   事件日期： <b>{DATE}</b><br>每100K人在7日內的平均患病率： <b>{7DAY_AVERAGE}</b><br> 病例數： <b>{CASES}</b>           </li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
+          <li data-label="tooltipContent">                   日期： <b>{DATE}</b><br>每100K人在7日內的平均患病率： <b>{7DAY_AVERAGE}</b><br> 病例數： <b>{CASES}</b>           </li>
           <li data-label="dayAverage">7日平均數</li>
           <li data-label="cases_leftYAxisLegend">每100K人中的病例數</li>
           <li data-label="cases_rightYAxisLegend">病例數</li>
@@ -238,7 +245,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">待定</li>
           <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-confirmed-deaths class="chart" data-chart-config-filter="death" data-chart-config-key="deaths">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 2 Cases and Deaths - Confirmed Deaths --> <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州確認死亡數</li>
           <li data-label="chartTitleCounty">{REGION}縣的確認死亡數</li>
           <li data-label="chartLegend1">確認死亡總數<span class="big-num">{total_confirmed_deaths}</span></li>
@@ -247,7 +254,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend3">每100K人中的死亡數<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均數）</li>
           <li data-label="filterTabLabel1">死亡日期</li>
           <li data-label="filterTabLabel2">呈報日期</li>
-          <li data-label="tooltipContent">             死亡日期： <b>{DATE}</b><br> 每100K人在7日內的死亡率： <b>{7DAY_AVERAGE}</b><br> 死亡數： <b>{DEATHS}</b>           </li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
+          <li data-label="tooltipContent">             日期： <b>{DATE}</b><br> 每100K人在7日內的死亡率： <b>{7DAY_AVERAGE}</b><br> 死亡數： <b>{DEATHS}</b>           </li>
           <li data-label="dayAverage">7日平均數</li>
           <li data-label="deaths_leftYAxisLegend">每100K人中的死亡數</li>
           <li data-label="deaths_rightYAxisLegend">死亡數</li>
@@ -275,7 +285,7 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-total-tests class="chart" data-chart-config-filter="testing" data-chart-config-key="tests">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 3 Testing for COVID-19 - Total tests in California --> <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州總檢測數</li>
           <li data-label="chartTitleCounty">{REGION}縣的總檢測數</li>
           <li data-label="chartLegend1">已進行的檢測的總數<span class="big-num">{total_tests_performed}</span></li>
@@ -283,7 +293,10 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease">新呈報的檢測數<span class="med-num">{new_tests_reported}</span>（減少<span class="med-num">{new_tests_reported_delta_1_day}</span>）</li>
           <li data-label="filterTabLabel1">檢測日期</li>
           <li data-label="filterTabLabel2">呈報日期</li>
-          <li data-label="tooltipContent">             檢測日期： <b>{DATE} </b><br> 每100K人在7日內的平均檢測率：<b>{7DAY_AVERAGE} </b><br> 檢測總數：<b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
+          <li data-label="tooltipContent">             日期： <b>{DATE} </b><br> 每100K人在7日內的平均檢測率：<b>{7DAY_AVERAGE} </b><br> 檢測總數：<b>{TOTAL_TESTS} </b>           </li>
           <li data-label="dayAverage">7日平均數</li>
           <li data-label="tests_leftYAxisLegend">每100K人中的檢測數</li>
           <li data-label="tests_rightYAxisLegend">檢測數</li>
@@ -292,12 +305,15 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="pending">待定</li>
           <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-positivity-rate class="chart filter-button-space" data-chart-config-filter="positivity" data-chart-config-key="positivity">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 4 Testing for COVID-19 - Positivity rate in California --> <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州檢測結果呈陽性率</li>
           <li data-label="chartTitleCounty">{REGION}縣的檢測結果呈陽性率</li>
           <li data-label="chartLegend1">檢測結果呈陽性 <span class="big-num">{test_positivity_7_days}</span>（7日比率）</li>
           <li data-label="chartLegend2Increase">此前7日內增加<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
           <li data-label="chartLegend2Decrease">此前7日內減少<span class="med-num">{test_positivity_7_days_delta_7_days}</span></li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
           <li data-label="tooltipContent">             檢測日期：<b>{DATE} </b><br> 7日內檢測結果呈陽性率：<b>{7DAY_POSRATE} </b><br> 檢測總數：<b>{TOTAL_TESTS} </b>           </li>
           <li data-label="leftYAxisLegend">檢測結果呈陽性率</li>
           <li data-label="rightYAxisLegend">檢測數</li>
@@ -320,12 +336,12 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
 
 
 
-<h3 class="text-center">確診及疑似住院患者</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診及疑似感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，{{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}}來自前一天的總數。在加州因確診及疑似感染COVID-19而進入ICU的人數總共達到了{{_varStatIcuTotal_}}，{{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}}來自前一天的總數。</p>
+<h3 class="text-center">住院</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>在加州因確診感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，比前一天的總數{{_varStatHospitalChange_ | abs}}{{_varStatHospitalChangeText_}} 。在加州因確診感染COVID-19而進入重症監護室 (Intensive Care Unit, ICU) 的人數總共達到了{{_varStatIcuTotal_}}， 比前一天的總數{{_varStatIcuChange_ | abs}}{{_varStatIcuChangeText_}}。</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <cagov-chart-dashboard-patients class="chart" data-chart-config-filter="hospitalized" data-chart-config-key="patients">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California --> <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州COVID-19住院患者</li>
           <li data-label="chartTitleCounty">{REGION}縣的COVID-19住院患者</li>
           <li data-label="chartTitleStateICU">加州COVID-19 ICU患者</li>
@@ -338,11 +354,14 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2DecreaseICU">比前一天ICU患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="filterTabLabel1">住院患者</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
           <li data-label="xAxisLegend">呈報日期</li>
           <li data-label="dayAverage">14日平均數</li>
           <li data-label="tooltipContent">             呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <cagov-chart-dashboard-icu-beds class="chart filter-button-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12">       <!-- 6 Confirmed hospitalizations - ICU beds in California --> <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州ICU病床數</li>
           <li data-label="chartTitleCounty">{REGION}縣的ICU病床數</li>
           <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床</li>
@@ -350,12 +369,21 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
           <li data-label="chartLegend2Decrease">比前一天ICU空置病床總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="xAxisLegend">呈報日期</li>
           <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張空置的ICU病床。</li>
+          <li data-label="timeTabLabel1">所有時間</li>
+          <li data-label="timeTabLabel2">6個月</li>
+          <li data-label="timeTabLabel3">90天</li>
         </ul>       </cagov-chart-dashboard-icu-beds>                    </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19住院患者及ICU來源數據</a></p>    <hr class="wp-block-separator mt-4 mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19住院患者及ICU來源數據</a></p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">圖表資訊</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
+<ul class="small-text"><li>COVID-19疑似患者數據可以在住院患者及ICU來源數據中獲取。</li><li>更多關於住院患者及ICU患者的詳細資訊，包括COVID-19疑似患者，可以在<a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">住院一覽表</a>中獲取。</li></ul>
+</div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
     <h2 class="text-center color-primary">按族裔、性別及年齡分類的病例數及死亡數</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
@@ -451,17 +479,26 @@ data2.icu.ICU_SUSPECTED_COVID_PATIENTS_DAILY) | formatNumber(tags)-%}
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/equity">健康公平數據</a></h3> 
-                                <p class="card-text">COVID-19如何影響全州不同社區</p>
+                                <h3 class="h4 card-title mt-2"><a href="/variants">變種</a></h3> 
+                                <p class="card-text">關於加州變種的數據，包括Delta及Omicron</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">數據與工具</a></h3>             
+                                <h3 class="h4 card-title mt-2"><a href="/equity">健康公平數據</a></h3>             
+                                <p class="card-text">COVID-19如何影響全州不同社區</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->                 <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">數據與工具</a></h3>
                                 <p class="card-text">有關加州COVID-19數據報告的深入模型、一覽表、數據庫和資訊</p>
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
+                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>

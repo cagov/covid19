@@ -4,7 +4,8 @@ import getTranslations from '../../../common/get-strings-list.js';
 import getScreenResizeCharts from './../../../common/get-window-size.js';
 import rtlOverride from "./../../../common/rtl-override.js";
 import formatValue from "./../../../common/value-formatters.js";
-import { reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
+import applySubstitutions from "./../../../common/apply-substitutions.js";
 
 class CAGOVChartD3Bar extends window.HTMLElement {
   connectedCallback () {
@@ -117,7 +118,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
     Promise.all([
       window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-income.json"),
       window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-crowding.json"),
-      window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-insurance.json")
+      window.fetch(config.equityChartsDataLoc+"/equitydash/social-data-insurance.json"),
+      window.fetch(config.statusLoc+"/last_equity_update.json"),
     ]).then(function (responses) {
       return Promise.all(responses.map(function (response) {
         return response.json();
@@ -126,12 +128,28 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       let dataincome = alldata[0];
       let datacrowding = alldata[1];
       let datahealthcare = alldata[2];
+      let datastatus = alldata[3];
 
       dataincome.sort(sortedOrder).reverse()
       datacrowding.sort(sortedOrder).reverse()
       datahealthcare.sort(sortedOrder).reverse()
-      const ONE_DAY_LATER = 1;
-      let updateDate = reformatReadableDate( dataincome[0].DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER); // localized readable date
+
+      // Date replacement
+      console.log("dataincome",dataincome);
+      console.log("datastatus",datastatus);
+      let publishedDate = parseSnowflakeDate(datastatus.PUBLISH_DATE.substr(0,10)); // !! Fetch correct date here...
+      let reportDate = parseSnowflakeDate(dataincome[0].DATE);
+      // reportDate.setDate(reportDate.getDate() + 1); // add 1 day to date on file
+
+      let footerReplacementDict = {
+        'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+        'REPORT_DATE' : reformatJSDate( reportDate ),
+      };
+      this.translationsObj.post_footerText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
+
+
+      // const ONE_DAY_LATER = 1;
+      // let updateDate = reformatReadableDate( dataincome[0].DATE , { month: "long", day: 'numeric', year:'numeric' }, ONE_DAY_LATER); // localized readable date
 
       let y = d3.scaleLinear()
         .domain([0, d3.max(dataincome, d => d.CASE_RATE_PER_100K)]).nice()
@@ -143,10 +161,10 @@ class CAGOVChartD3Bar extends window.HTMLElement {
         .padding(this.chartBreakpointValues.is_mobile? 0.02 : 0.1)
       this.innerHTML = template(this.translationsObj);
       // console.log("ran template", this.innerHTML);
-      this.querySelectorAll('span[data-replacement="d3-bar-report-date"]').forEach(elem => {
-        // console.log("Got date span");
-        elem.innerHTML = updateDate;
-      });
+      // this.querySelectorAll('span[data-replacement="d3-bar-report-date"]').forEach(elem => {
+      //   // console.log("Got date span");
+      //   elem.innerHTML = updateDate;
+      // });
 
       this.tooltip = this.querySelector('.tooltip-container'); // @TODO: Q: where did the class go? tooltip is coming back null.
       writeBars(this, this.svg, dataincome, x, y, this.chartBreakpointValues.width, this.tooltip);

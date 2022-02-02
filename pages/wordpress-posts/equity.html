@@ -3,17 +3,10 @@ layout: "page.njk"
 title: "California’s commitment to health equity"
 meta: "COVID-19 has highlighted existing inequities in health. California is identifying communities most impacted."
 author: "State of California"
-publishdate: "2021-12-29T17:36:48Z"
+publishdate: "2022-01-18T17:59:48Z"
 tags: ["translate"]
 addtositemap: true
 ---
-
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">Health equity data not updated</h2>
-<p>Due to data processing errors, we could not update the health equity data on December 29, 2021. We will update the data on this page on January 5, 2022.</p>
-</div><p></p>
-
-
 
 <!--{% set data = equityTopBoxes[0] %} -->
 
@@ -319,6 +312,7 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">Data is not shown because there are fewer than 20,000 people in this group.</li>
             <li data-label="data-missing-applied-suppression-population--cases">Data is not shown because there are fewer than 20,000 people in this group.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Data is not shown because there are fewer than 20,000 people in this group.</li>
+            <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}.</li>
         </ul>
       </cagov-chart-re-pop>
     </div>
@@ -356,6 +350,7 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">Data is not shown because there are fewer than 20,000 people in this group.</li>
             <li data-label="data-missing-applied-suppression-population--cases">Data is not shown because there are fewer than 20,000 people in this group.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Data is not shown because there are fewer than 20,000 people in this group.</li>
+            <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}.</li>
         </ul>
       </cagov-chart-re-100k>
     </div>
@@ -364,7 +359,8 @@ addtositemap: true
 
 
 
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases, deaths, and tests relative to percentage of population and case, death, and test rate per 100K by race and ethnicity group source data</a></p>
+<p><p class="top-charts-data-label small-text mt-2 mb-2"></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases, deaths, and tests relative to percentage of population and case, death, and test rate per 100K by race and ethnicity group source data</a></p></p>
 
 
 
@@ -396,6 +392,7 @@ addtositemap: true
         <li data-label="data2-legend">Health equity quartile positivity</li>
         <li data-label="missing-data-caption">The health equity metric is not applied to counties with a population less than 106,000.</li>
         <li data-label="data-anomalies-caption">Due to reporting anomalies, we cannot display this data accurately.</li>
+        <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}.</li>
       </ul>
     </div>
 </cagov-chart-d3-lines>
@@ -432,7 +429,8 @@ addtositemap: true
     <div>
       <ul class="small-text">
         <li data-label="title">Reporting by race and ethnicity in California</li>
-        <li data-label="footnote"><ul><li>Data shown is a cumulative 30-day total, updated on <span data-replacement="data-completeness-report-date"></span>.</li><li>Sexual orientation and gender identity are not collected for tests.</li><li>Numbers between 1 and 10 are not shown to protect patient privacy.</li></ul></li>
+        <li data-label="footnote"><ul><li>Data shown is a cumulative 30-day total.</li><li>Sexual orientation and gender identity are not collected for tests.</li><li>Numbers between 1 and 10 are not shown to protect patient privacy.</li></ul></li>
+        <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}.</li>
         <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Reporting by race and ethnicity, sexual orientation, and gender identity source data</a></p></li>
 
         <li data-label="tab-label">Reporting by <span data-replace="metric-filter"></span> in <span data-replace="location"></span></li>
@@ -495,12 +493,13 @@ addtositemap: true
     <li data-label="chartButtonIncome">Income</li>
     <li data-label="chartButtonHousing">Crowded housing</li>
     <li data-label="chartButtonHealthcare">Access to health insurance</li>
-    <li data-label="footnote"><ul><li>Data comes from the American Community Survey and is statewide. It does not reflect individual counties.</li><li>Data shown is a cumulative 7-day total with a 7-day lag, updated on <span data-replacement="d3-bar-report-date"></span>.</li></ul></li>
+    <li data-label="footnote"><ul><li>Data comes from the American Community Survey and is statewide. It does not reflect individual counties.</li><li>Data shown is a cumulative 7-day total with a 7-day lag.</li></ul></li>
     <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Community case rate by income, crowded housing, and access to health insurance source data</a></p><li>
    <li data-label="casesPer100KPeople">Cases per 100K people</li>
    <li data-label="statewideCaseRate">Statewide case rate:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate cases per 100K people. placeholderRateDiff30 change from 30 days ago</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> cases per 100K people. placeholderRateDiff30 change from 30 days ago</li>
+   <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}.</li>
   </ul></cagov-chart-d3-bar>
 
 
@@ -587,12 +586,22 @@ addtositemap: true
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">Data and tools</a></h3>             
-                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                                <h3 class="h4 card-title mt-2"><a href="/variants">Variants</a></h3>             
+                                <p class="card-text">Data about which variants are in California, including Delta and Omicron</p>
                             </div>
                         </div>
                     </div>
                 </div><!--row 1-->
+                <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Data and tools</a></h3>
+                                <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 2-->
             </div>
             <!--col-10-->
         </div>

@@ -26,9 +26,11 @@
         "series_c_old2_9":["#c32398","#305906","#601718","#3c67dc","#c39823","#2f0659","#004847","#3cdc67","#888888"],
         "series_colors":["#c32398","#305906","#601718","#3c67dc","#c39823","#2f0659","#004847","#329914","#888888"],
         "starting_date":"2021-1-25",
-        "uncertainty_days": 0,
+        "uncertainty_days": 4,
         "unused_field": 0,
         "skip_zeros": true,
+        "timeKeys": ["all-time","months-6","days-90"],
+        "pending_days": 3,
         "omit_other": true,
         "normalize": true
       }
@@ -50,7 +52,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }
@@ -61,7 +63,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }
@@ -72,7 +74,7 @@
       "height": 400,
       "margin": {   
         "left": 50,   
-        "top": 45,  
+        "top": 57,  
         "right": 0,  
         "bottom": 45
       }

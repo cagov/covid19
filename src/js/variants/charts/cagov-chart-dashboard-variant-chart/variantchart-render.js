@@ -23,9 +23,6 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
     for (let i = 0; i < data.length && data[i][fld] == 0; ++i) {
       nbr_zeros += 1;
     }
-    // for (let i = data.length-1; i > nbr_zeros && data[i][fld] == 0; --i) {
-    //   nbr_tail_zeros += 1;
-    // }
   }
   const dataslice = data.slice(nbr_zeros, data.length - nbr_tail_zeros);
 
@@ -65,7 +62,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width-40)
+        if (x(i) < this.dimensions.width)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthStr = sdate.toLocaleString('default', { month: 'short' });
@@ -140,6 +137,8 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
   let legendGap = 12;
   let twoline_mode = this.dimensions.width < 700;
   // console.log("drawing legend, width =",this.dimensions.width);
+  const legendTop  = 12;
+  const lineOfst = -2;
   if (twoline_mode) {
     const cutIndex = chart_options.omit_other? 4 : 5;
     const labels2 = labels.slice(cutIndex);
@@ -153,13 +152,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -167,27 +166,26 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       xPos += box.getBBox().width + legendGap;
     });
     let yOffset = 12;
-    let xIdxOffset = 5;
     xPos = 0;
     labels2.forEach((label, i) => {
       // console.log("Drawing label", label);
       let lg = legend.append("g")
-                  .attr('id', 'legend_'+(i+xIdxOffset))
+                  .attr('id', 'legend_'+(i+cutIndex))
                   .attr('transform', `translate(${xPos})`);
       let line = lg.append('line')
-        .attr('style',`stroke:${colors[i+xIdxOffset]};`)  // 
+        .attr('style',`stroke:${colors[i+cutIndex]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22+yOffset)
+        .attr('y1', legendTop+lineOfst+yOffset)
         .attr('x2', lineWidth)
-        .attr('y2', 22+yOffset);
+        .attr('y2', legendTop+lineOfst+yOffset);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24+yOffset)
+        .attr("y", legendTop+yOffset)
         .attr("x", lineWidth+lineMargin)
         ;
 
-      let box = document.querySelector('#variant-lgend #legend_'+(i+xIdxOffset));
+      let box = document.querySelector('#variant-lgend #legend_'+(i+cutIndex));
       xPos += box.getBBox().width + legendGap;
     });
   } else {
@@ -199,13 +197,13 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let line = lg.append('line')
         .attr('style',`stroke:${colors[i]};`)  // 
         .attr('x1', 0)
-        .attr('y1', 22)
+        .attr('y1', legendTop+lineOfst)
         .attr('x2', lineWidth)
-        .attr('y2', 22);
+        .attr('y2', legendTop+lineOfst);
 
       let txt = lg.append('text')
         .text(label)
-        .attr("y", 24)
+        .attr("y", legendTop)
         .attr("x", lineWidth+lineMargin)
         ;
 
@@ -264,7 +262,38 @@ function writeYAxis(svg, x, y,
 
 }
 
+function writePendingBlock(svg, x, y,
+  { pending_days=0,
+    pending_legend='',
+    padDays=0,
+    root_id='barid',
+  } ) {
 
+    const min_x_domain = x.domain()[0];
+    const max_x_domain = x.domain()[1];
+    const min_y_domain = y.domain()[0];
+    const max_y_domain = y.domain()[1];
+    const left_edge = x(max_x_domain-padDays + 0.5 - pending_days);
+    const right_edge = x(max_x_domain-padDays);
+    const mid_edge = (left_edge + right_edge) / 2;
+    const right_chart_edge = x(max_x_domain);
+
+    let xgroup = svg.append("g")
+      .attr("class",'pending-block');
+
+    xgroup.append('rect')
+      // .attr('style','fill:black;opacity:0.05;')
+      .attr("x",left_edge)
+      .attr("y",y(max_y_domain))
+      .attr("width",right_edge - left_edge)
+      .attr("height",y(min_y_domain)-y(max_y_domain));
+    
+    xgroup.append('text')
+        // .attr('style','font-family:sans-serif; fill:black; font-weight:300; font-size: 0.8rem; text-anchor: end; dominant-baseline:auto;')
+        .text(pending_legend)
+        .attr("x",mid_edge+22 > right_chart_edge? right_chart_edge : mid_edge+22)
+        .attr("y",y(max_y_domain)-4);
+}
 
 // Convert 
 function getDataIndexByX(xScale, yScale, xy)
@@ -358,11 +387,19 @@ function getAxisDiv(ascale,{hint='num'}) {
     //              alpha      beta      delta     gamma      lambda     mu        other
     series_labels = [],
     chart_options = {},
+    pending_days = 0,
+    pending_label = 'Pending',
    } )  {
 
-    // console.log("renderChart",root_id, line_series_array);
-    // d3.select(this.querySelector("svg g"))
-    //   .attr('style','font-family:sans-serif;font-size:16px;');
+    // Force padding on dimensions...
+    const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
+    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
+    const lastday = lastDateJ.getDate();
+    // as day goes from 1->16, padding goes from 35 -> 0
+    if (lastday < 16) {
+      const padding = 35 * 1-(lastday/15.0);
+      this.dimensions.margin.right = padding;
+    }
 
     this.svg = d3
       .select(this.querySelector(".svg-holder"))
@@ -403,10 +440,16 @@ function getAxisDiv(ascale,{hint='num'}) {
 
 
     // Determine additional days to add...
-    const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
-    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-    // pad to 28 days
-    let padDays = Math.max(0, 28 - lastDateJ.getDate());
+    // const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
+    // const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
+    // determine width of a day in current projection, in pixels
+    // const day_width = (this.dimensions.width - (this.dimensions.margin.left+this.dimensions.margin.right)) / line_series_array[0].length;
+    // const necessary_display_width = 32; // space to display Aug in English
+    // const min_days = Math.ceil(necessary_display_width / day_width);
+    // // pad to extra days to make room for month-name display
+    // let padDays = Math.max(0, min_days - lastDateJ.getDate());
+    let padDays = 0;
+    // console.log("MIN DAYS, pad_days", min_days, padDays);
 
     this.xline = d3
     .scaleLinear()
@@ -427,17 +470,17 @@ function getAxisDiv(ascale,{hint='num'}) {
     writeLegend.call(this, this.svg, this.xline, this.yline, 
                 {colors:series_colors, 
                  labels:series_labels, 
-                 chart_options:chart_options});
+                 chart_options:chart_options,
+                 padDays: padDays
+                });
 
     
-    // if (pending_weeks > 0) {
-    //   let pending_units = pending_weeks * (chart_mode == 'weekly'? 1 : 7);
-    //   if (pending_mode != 'dotted' && pending_mode != 'dots') {
-    //     writePendingBlock.call(this, this.svg, this.xline, this.yline,
-    //           { root_id:root_id, pending_units:pending_units, pending_legend:pending_legend});
-    //   }
-    // }
-
+    if (pending_days > 0) {
+      writePendingBlock.call(this, this.svg, this.xline, this.yline, 
+            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label,
+              padDays: padDays
+            });
+    }
 
 
     // Write Y Axis, favoring line on left, bars on right

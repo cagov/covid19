@@ -21,6 +21,8 @@ export default function template(translationsObj) {
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12 mx-auto px-0">
 
+          <p class="chart-data-label small-text mt-2 mb-2">${translationsObj.footerText}</p>
+
           <div class="mt-2">
             ${dataSrc}
           </div>

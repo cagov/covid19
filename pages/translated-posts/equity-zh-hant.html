@@ -3,15 +3,12 @@ layout: "page.njk"
 title: "加州致力於健康公平"
 meta: "COVID-19凸顯出了現有的健康不公平問題。加州正在確認最受影響的社區。"
 author: "State of California"
-publishdate: "2021-12-29T17:36:48Z"
+publishdate: "2022-01-18T17:59:48Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h3 color-primary mt-0">未更新健康公平數據</h2>
-<p>因為數據處理錯誤，我們無法在2021年12月29日更新健康公平數據。我們將在2022年1月5日更新此頁的數據。</p>
-</div><p></p>    <!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">所有加州民眾，不論其居住的地方、工作環境、社會支援或身份如何，都值得擁有健康的生活。 </p>
+<!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">所有加州民眾，不論其居住的地方、工作環境、社會支援或身份如何，都值得擁有健康的生活。 </p>
 
 
 
@@ -135,6 +132,7 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">由於此群體的人數少於20,000，因此數據不顯示。</li>
             <li data-label="data-missing-applied-suppression-population--cases">由於此群體的人數少於20,000，因此數據不顯示。</li>
             <li data-label="data-missing-applied-suppression-population--deaths">由於此群體的人數少於20,000，因此數據不顯示。</li>
+            <li data-label="footerText">使用來自{REPORT_DATE}的數據更新{PUBLISHED_DATE}。</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
           <li data-label="chartTitle--cases">每100K人的患病率（按placeholderForDynamicLocation的種族和族裔群體劃分）</li>
@@ -167,13 +165,15 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">由於此群體的人數少於20,000，因此數據不顯示。</li>
             <li data-label="data-missing-applied-suppression-population--cases">由於此群體的人數少於20,000，因此數據不顯示。</li>
             <li data-label="data-missing-applied-suppression-population--deaths">由於此群體的人數少於20,000，因此數據不顯示。</li>
+            <li data-label="footerText">使用來自{REPORT_DATE}的數據更新{PUBLISHED_DATE}。</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
 
 
 
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按種族和族裔群體來源數據分類的病例數、死亡數及檢測數佔人口百分比和每10萬人的患病率、死亡率及檢測率</a></p>
+<p><p class="top-charts-data-label small-text mt-2 mb-2"></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">按種族和族裔群體來源數據分類的病例數、死亡數及檢測數佔人口百分比和每100K人的患病率、死亡率及檢測率</a></p></p>
 
 
 
@@ -195,6 +195,7 @@ addtositemap: true
         <li data-label="data2-legend">健康公平四分位檢測呈陽性率</li>
         <li data-label="missing-data-caption">健康公平指標不適用於人口少於106,000的縣。</li>
         <li data-label="data-anomalies-caption">由於報告異常，我們無法準確顯示此數據。</li>
+        <li data-label="footerText">使用來自{REPORT_DATE}的數據更新{PUBLISHED_DATE}。</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
@@ -216,7 +217,8 @@ addtositemap: true
     <div>
       <ul class="small-text">
         <li data-label="title">加州按種族和族裔分類的報告</li>
-        <li data-label="footnote"><ul><li>所示數據為總共30天的累計數據，更新於<span data-replacement="data-completeness-report-date"></span>。</li><li>不會在檢測中收集性取向和性別認同資訊。</li><li>為保護患者隱私，在1和10之間的數量不會顯示。</li></ul></li>
+        <li data-label="footnote"><ul><li>所示數據為總共30天的累計數據。</li><li>不會在檢測中收集性取向和性別認同資訊。</li><li>為保護患者隱私，在1和10之間的數量不會顯示。</li></ul></li>
+        <li data-label="footerText">使用來自{REPORT_DATE}的數據更新{PUBLISHED_DATE}。</li>
         <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按種族及族裔、性取向以及性別認同源數據報告</a></p></li>
 
         <li data-label="tab-label">由<span data-replace="metric-filter"></span>在<span data-replace="location"></span>報告</li>
@@ -256,12 +258,13 @@ addtositemap: true
     <li data-label="chartButtonIncome">收入</li>
     <li data-label="chartButtonHousing">擁擠的住房</li>
     <li data-label="chartButtonHealthcare">獲取醫療保險</li>
-    <li data-label="footnote"><ul><li>數據來自美國社區調查，屬於全州性質。其並未反映個別縣的數據。</li><li>所示數據為總共7天的累計數據，有7天的滯後期，更新於<span data-replacement="d3-bar-report-date"></span>。</li></ul></li>
+    <li data-label="footnote"><ul><li>數據來自美國社區調查，屬於全州性質。其並未反映個別縣的數據。</li><li>所示數據為總共7天的累計數據，有7天的滯後期。</li></ul></li>
     <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按收入、住房擁擠程度以及健康保險獲得機會源數據分類的社區患病率</a></p><li>
    <li data-label="casesPer100KPeople">每100K人中的病例數</li>
    <li data-label="statewideCaseRate">全州患病率：</li>
    <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例數。placeholderRateDiff30 自30天前以來的變化</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> 每100K人中的病例數。placeholderRateDiff30 自30天前以來的變化</li>
+   <li data-label="footerText">使用來自{REPORT_DATE}的數據更新{PUBLISHED_DATE}。</li>
   </ul></cagov-chart-d3-bar>    <div class="bg-lightblue full-bleed py-4">
 <div class="container">
 <div class="row">
@@ -322,9 +325,18 @@ addtositemap: true
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
-                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools">數據與工具</a></h3>             
+                                <h3 class="h4 card-title mt-2"><a href="/variants">變種</a></h3>             
+                                <p class="card-text">關於加州變種的數據，包括Delta及Omicron</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row 1-->                 <div class="row d-flex p-2">
+                    <div class="col-md-4 mt-3 px-10px">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">數據與工具</a></h3>
                                 <p class="card-text">有關加州COVID-19數據報告的深入模型、一覽表、數據庫和資訊</p>
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> 
+                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> 
