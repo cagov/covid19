@@ -91,14 +91,15 @@
     "positivity": {
       "chartName": "cagov-chart-dashboard-positivity-rate",
       "latestField": "POSITIVITY_RATE",
-      "seriesField": "TOTAL_TESTS",
+      "seriesField": "DAILY_TEST_POSITIVITY_RATE",
       "seriesFieldAvg": "TEST_POSITIVITY_RATE_7_DAYS",
       "dataUrl": "positivity-rate/california.json",
       "dataUrlCounty": "positivity-rate/<county>.json",
       "rootId": "pos-rate",
       "timeKeys": ["all-time","months-6","days-90"],
       "usesStateData": true,
-      "lineAndBarsSameScale":false
+      "rightMarginOverride": 20,
+      "lineAndBarsSameScale":true
     }
   },
   "patients": {
