@@ -39,19 +39,19 @@ function getSVG(file,selector) {
 
 				// pull "about" vars from SVG (alternately, use regex)
         let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        console.log("SVG ABOUT: ",svg_about);
+        // console.log("SVG ABOUT: ",svg_about);
 
 				let svgvars = {};
 				svg_about.split(',').forEach(elemStr => {
 					let pieces = elemStr.split(':');
 					svgvars[pieces[0]] = pieces[1];
 				});
-				console.log("CAPTURED VARS",svgvars);
+				// console.log("CAPTURED VARS",svgvars);
 				// supply caption...
 				let capEl = targetEl.parentElement.querySelector('.date-caption-span');
 				const dateFormat = { month: "long", day: 'numeric' };
 				if (capEl) {
-          console.log("Setting caption: ",svgvars.FIRST_DATE,svgvars.LAST_DATE);
+          // console.log("Setting caption: ",svgvars.FIRST_DATE,svgvars.LAST_DATE);
 					capEl.innerHTML = reformatReadableDate(svgvars.FIRST_DATE, dateFormat) +
 															' &ndash; ' + 
 														reformatReadableDate(svgvars.LAST_DATE, dateFormat);
