@@ -113,6 +113,8 @@ export default function renderChart({
   crop_floor = true,
   published_date = "YYYY-MM-DD",
   render_date = "YYYY-MM-DD",
+  first_date = "YYYY-MM-DD",
+  last_date = "YYYY-MM-DD",
   root_id = "barid",
   chart_options = {bar_color:'#FF0000',line_color:'#00FF00',stroke_width:10},
  } )  
@@ -122,7 +124,7 @@ export default function renderChart({
     .select(this.querySelector(".svg-holder"))
     .append("svg");
 
-  this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date)
+  this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date+ ",FIRST_DATE:" + first_date+ ",LAST_DATE:" + last_date)
           .attr('xmlns','http://www.w3.org/2000/svg');
 
   // this.svg.selectAll("g").remove();

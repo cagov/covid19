@@ -122,6 +122,8 @@ class CAGovDashboardSparkline extends window.HTMLElement {
                           'right_y_fmt':'integer',
                           'published_date': this.metadata.PUBLISHED_DATE,
                           'render_date': getSnowflakeStyleDate(0),
+                          'last_date': bar_series[0].DATE,
+                          'first_date': bar_series[bar_series.length-1].DATE,
                           'chart_options': this.chartOptions,
                         };
       console.log("RENDERING CHART",this.chartConfigFilter, this.chartConfigKey);
