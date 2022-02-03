@@ -190,7 +190,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
    								    <div class="sparkline-vax"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -217,7 +217,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-cases"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -244,7 +244,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-deaths"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -267,7 +267,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-tests"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -319,15 +319,71 @@ formatNumber(tags,1)-%}
 </hero-stats>
 <script>
 let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
-function getSVG(file,selector) {
+
+function parseSnowflakeDate(dateStr) {
+    const tokens = dateStr.split('-')
+    const yyyy = +tokens[0];
+    const mm = +tokens[1];
+    const dd = +tokens[2];
+    return new Date(yyyy,mm-1,dd);
+}
+
+function reformatJSDate(theDate, // expects javascript date
+    fmt={ month: "long", day: 'numeric', year:'numeric' }) 
+{
+    const readableDate = 
+    theDate.toLocaleString( document.documentElement.lang, fmt);
+    // console.log(dateStr + " --> " + readableDate);
+    return readableDate;
+}
+
+
+// Date converter for use on chart footnotes.
+// Converts a string (typically from Snowflake) 
+// in the form YYYY-MM-DD
+//
+// into a readable localized date, such as 
+//    December 12, 2020
+// or 
+//    12 de diciembre de 2020
+function reformatReadableDate(dateStr, // expects YYYY-MM-DD
+                              fmt={ month: "long", day: 'numeric', year:'numeric' }, dayDelta=0) {
+
+    const theDate = parseSnowflakeDate(dateStr);
+    if (dayDelta != 0) {
+        theDate.setDate(theDate.getDate() + dayDelta);
+    }
+    return reformatJSDate(theDate, fmt);
+}
+
+
+function getSVG(file, selector) {
   fetch(svg_path + file).then(function(response) {
     return response.text().then(function(text) {
-      let targetEl = document.querySelector(selector);
-      if(targetEl) {
-        targetEl.innerHTML = text;
-        let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        console.log("SVG ABOUT: ",svg_about);
-      }
+    	let targetEl = document.querySelector(selector);
+    	if(targetEl) {
+    		targetEl.innerHTML = text;
+
+			// pull "about" vars from SVG (alternately, use regex)
+        	let svg_about = targetEl.querySelector('svg').getAttribute('about');
+        	console.log("SVG ABOUT: ",svg_about);
+
+			let svgvars = {};
+			svg_about.split(',').forEach(elemStr => {
+				let pieces = elemStr.split(':');
+				svgvars[pieces[0]] = pieces[1];
+			});
+			console.log("CAPTURED VARS",svgvars);
+			// supply caption...
+			let capEl = targetEl.parentElement.querySelector('.date-caption-span');
+			const dateFormat = { month: "long", day: 'numeric' };
+			if (capEl) {
+          		console.log("Setting caption: ",svgvars.FIRST_DATE,svgvars.LAST_DATE);
+				capEl.innerHTML = reformatReadableDate(svgvars.FIRST_DATE, dateFormat) +
+								' &ndash; ' + 
+								reformatReadableDate(svgvars.LAST_DATE, dateFormat);
+			}
+    	}
     });
   });
 }
