@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-01-28T18:18:26Z"
+publishdate: "2022-02-02T17:36:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,80 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">금일 업데이트 사항</a></strong></li><li><a href="#postvax-status"><strong>백신 미접종 및 접종 데이터</strong></a></li><li><strong><a href="#county-statewide">카운티 및 주 전체 대상 데이터</a></strong></li><li><strong><a href="#ethnicity-gender-age">민족, 성별 및 연령별 사례 건수 및 사망자 수</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    
-
-<!--
-{# {%-set data = tableauCovidMetrics[0] -%}  #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
-{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-
-{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
-  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
-  %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_  -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
--->
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">금일 업데이트 사항</a></strong></li><li><a href="#postvax-status"><strong>백신 미접종 및 접종 데이터</strong></a></li><li><strong><a href="#county-statewide">카운티 및 주 전체 대상 데이터</a></strong></li><li><strong><a href="#ethnicity-gender-age">민족, 성별 및 연령별 사례 건수 및 사망자 수</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -167,45 +94,45 @@ formatNumberFixed(tags,1)-%}
     <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">사례 건수</button> <button class="large-tab js-toggle-group-postvax hospitalizations">입원 환자수</button> <button class="large-tab js-toggle-group-postvax deaths">사망자수</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">지난 4개월 간 COVID-19 사례 건수</li>
-    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19에 걸릴 가능성은 백신 접종 완료자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
+    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19에 걸릴 가능성은 부스터 샷 접종자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
     <li data-label="yaxis_legend">10만명 당 주간 사례 건수</li>
-    <li data-label="yaxis_legend_daily">10만명 당 사례 건수Cases per 100K(7일 이동 평균)</li>
+    <li data-label="yaxis_legend_daily">10만명 당 사례 건수(7일 이동 평균)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">백신 접종 완료</li>
-    <li data-label="series2_legend">백신 미접종</li>
-    <li data-label="series3_legend">전체 사례 건수</li>
+    <li data-label="series1_legend">백신접종 및 부스터 샷 접종</li>
+    <li data-label="series2_legend">백신접종 및 부스터 샷 미접종</li>
+    <li data-label="series3_legend">백신 미접종</li>
     <li data-label="pending_legend">데이터 처리 중</li>
-    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 10만명 당 백신 미접종자 사례 건수: <b>{UCOUNT}</b><br> 10만명 당 백신 접종자 사례 건수: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 10만명 당 백신 미접종 확진자 수: <b>{UCOUNT}</b><br> 10만명 당 백신 접종 확진자 수: <b>{VCOUNT}</b><br> 10만영 당 부스터 샷 접종 확진자 수: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">지난 4개월 간 COVID-19 입원 환자 수</li>
-    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19로 입원할 가능성은 백신 접종 완료자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
-    <li data-label="yaxis_legend">백만명 당 주간 입원 환자 수</li>
-    <li data-label="yaxis_legend_daily">백만명 당 인원 환자 수(7일 이동 평균)</li>
+    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19로 입원할 가능성은 부스터 샷 접종자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
+    <li data-label="yaxis_legend">1백만명 당 주간 입원 환자 수</li>
+    <li data-label="yaxis_legend_daily">1백만명 당 인원 환자 수(7일 이동 평균)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">백신 접종 완료</li>
-    <li data-label="series2_legend">백신 미접종</li>
-    <li data-label="series3_legend">전체 사례 건수</li>
+    <li data-label="series1_legend">백신접종 및 부스터 샷 접종</li>
+    <li data-label="series2_legend">백신접종 및 부스터 샷 미접종</li>
+    <li data-label="series3_legend">백신 미접종</li>
     <li data-label="pending_legend">데이터 처리 중</li>
-    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 백만명 당 백신 미접종 입원 환자 수: <b>{UCOUNT}</b><br> 백만명 당 백신 접종 입원 환자 수: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 1백만명 당 백신 미접종 입원 환자 수: <b>{UCOUNT}</b><br> 1백만명 당 부스터 샷 접종 입원 환자 수: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">지난 4개월 간 COVID-19 사망자 수</li>
-    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19로 인해 사망할 가능성은 백신 접종 완료자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
-    <li data-label="yaxis_legend">백만명 당 주간 사망자 수</li>
-    <li data-label="yaxis_legend_daily">백만명 당 사망자 수(7일 이동 평균)</li>
+    <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19로 사망할 가능성은 부스터 샷 접종자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
+    <li data-label="yaxis_legend">1백만명 당 주간 사망자 수</li>
+    <li data-label="yaxis_legend_daily">1백만명 당 사망자 수(7일 이동 평균)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">백신 접종 완료</li>
-    <li data-label="series2_legend">백신 미접종</li>
-    <li data-label="series3_legend">전체 사례 건수</li>
+    <li data-label="series1_legend">백신접종 및 부스터 샷 접종</li>
+    <li data-label="series2_legend">백신접종 및 부스터 샷 미접종</li>
+    <li data-label="series3_legend">백신 미접종</li>
     <li data-label="pending_legend">데이터 처리 중</li>
-    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 백만명 당 백신 미접종 사망자 수: <b>{UCOUNT}</b><br> 백만명 당 백신 접종 사망자 수: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">백신 미접종과 백신 접종 사례, 병원 입원 환자 및 사망자 관련 원천 데이터</a></p>
+    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 1백만명 당 백신 미접종 사망자 수: <b>{UCOUNT}</b><br> 1백만명 당 백신 접종 사망자 수: <b>{VCOUNT}</b><br> 1백만명당 부스터 샷 접종 사망자 수: <b>{BCOUNT}</b><br>     </li>  
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">백신 미접종과 백신 접종 확진자 수, 병원 입원 환자 수 및 사망자 수 관련 원천 데이터</a></p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">차트 정보</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>백신 접종 완료 사례, 입원 환자 또는 사망자는 COVID-19 양성 판정을 받기 최소 2주 전에 Pfizer나 Moderna 백신 2회 또는 Johnson & Johnson 백신을 접종받은 사람에게 발생하는 경우를 말합니다.</li><li>백신 미접종 사례, 입원 환자 또는 사망자는 COVID-19 백신을 접종하지 않았던 사람에게 발생하는 경우를 말합니다.</li><li>본 차트는 지난 120일 동안 만 12세 이상에게서 채집한 데이터를 사용합니다.</li><li>데이터 추이를 정확하게 반영하기 위해 일부 최근의 불완전한 데이터는 제외하고 있습니다.</li><li>캘리포니아주 공중 보건부에서 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">백신 접종 건수, 입원 환자 수 및 사망자 수</a>에 관해 더 자세한 내용을 제공하고 있습니다.</li></ul>
+<ul class="small-text"><li>백신접종 확진자, 입원 환자 또는 사망자는 COVID-19 양성 판정을 받기 최소 2주 전에 Pfizer나 Moderna 백신 2회 또는 Johnson & Johnson 백신을 접종받은 사람에게 발생하는 경우를 말합니다.</li><li>부스터 샷 접종 확진자, 입원 환자 또는 사망자는 2021년 8월 13일 이후에 COVID-19 양성 판정 결과를 받기 최소 2주 전에 추가 접종 또는 부스터 접종을 받은 사람에게 발생하는 경우를 말합니다.</li><li>백신 미접종 확진자, 입원 환자 또는 사망자는 COVID-19 백신을 접종하지 않았던 사람에게 발생하는 경우를 말합니다.</li><li>본 차트는 지난 120일 동안 만 12세 이상에게서 채집한 데이터를 사용합니다.</li><li>본 차트의 데이테에는 시차가 있습니다. COVID-19 확진사 수(입원 환자수 및 사망자 수 포함)와 백신접종 현황에 대한 일치 작업은 주별로 진행되며 이로 인해 일부 시차가 발생합니다. 이를 통해 사망자 수 보다 더 많은 확진자 수 및 입원환자 수 보고 시 발생하는 자연적인 시차와 절충합니다.</li><li>본 차트는 수요일마다 업데이트됩니다. 본 차트 공개 시점:</li><ul class="mb-0"><li>확진자 수 및 입원 환자 수 관련 차트는 17일의 시차가 있습니다.</li><li>사망자 수 관련 차트는 24일의 시차가 있습니다.</li></ul><li>데이터 추이를 정확하게 반영하기 위해 일부 최근의 불완전한 데이터는 제외하고 있습니다.</li><li>캘리포니아주 공중 보건부에서 <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">백신 접종 건수, 입원 환자 수 및 사망자 수</a>에 관해 더 자세한 내용을 제공하고 있습니다.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>

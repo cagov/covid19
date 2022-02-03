@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 县及全州数据以帮助民众了解COVID-19的传播情况。"
 author: "State of California"
-publishdate: "2022-01-28T18:18:26Z"
+publishdate: "2022-02-02T17:36:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,81 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗数据及已接种疫苗数据</strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">查阅更多数据</a></strong></li></ul>  
-
-<!--
-{# {%-set data = tableauCovidMetrics[0] -%}  #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
-{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-
-{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
-  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
-  %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_  -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
--->
-
-  <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">今日的新数据</a></strong></li><li><a href="#postvax-status"><strong>未接种疫苗数据及已接种疫苗数据</strong></a></li><li><strong><a href="#county-statewide">县及州数据</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性别及年龄分类的病例数及死亡数 </a></strong></li><li><strong><a href="#more">查阅更多数据</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -168,37 +94,37 @@ formatNumberFixed(tags,1)-%}
     <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">病例数</button><button class="large-tab js-toggle-group-postvax hospitalizations">住院病例数</button><button class="large-tab js-toggle-group-postvax deaths">死亡数</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月的COVID-19病例数</li>
-    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士感染COVID-19的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
+    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与打了疫苗补强针的人士相比，</strong>未接种疫苗人士感染COVID-19的几率要高<strong>{RATE_RATIO}倍。</li>
     <li data-label="yaxis_legend">每10万人中的周病例数</li>
     <li data-label="yaxis_legend_daily">每10万人中的病例数（7日滑动平均数）</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">已接种疫苗</li>
-    <li data-label="series2_legend">未接种疫苗</li>
-    <li data-label="series3_legend">所有病例数</li>
+    <li data-label="series1_legend">已接种疫苗并已打补强针</li>
+    <li data-label="series2_legend">已接种疫苗但未打补强针</li>
+    <li data-label="series3_legend">未接种疫苗</li>
     <li data-label="pending_legend">等待数据</li>
-    <li data-label="tooltipContent">       一周结束日： <b>{WEEKDATE}</b><br>每10万人中未接种疫苗人士的病例数： <b>{UCOUNT}</b><br>10万人中的已接种疫苗人士的病例数：<b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       一周结束日： <b>{WEEKDATE}</b><br>每10万人中未接种疫苗人士的病例数： <b>{UCOUNT}</b><br>每10万人中的已接种疫苗人士的病例数：<b>{VCOUNT}</b><br>每10万人中的已打补强针人士的病例数：<b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月内因COVID-19住院的人数</li>
-    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士因COVID-19住院的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
+    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与打了疫苗补强针的人士相比，</strong>未接种疫苗人士感染COVID-19并住院的几率要高<strong>{RATE_RATIO}倍。</li>
     <li data-label="yaxis_legend">每100万人中的周住院人数</li>
     <li data-label="yaxis_legend_daily">每100万人中的住院人数（7日滑动平均数）</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">已接种疫苗</li>
-    <li data-label="series2_legend">未接种疫苗</li>
-    <li data-label="series3_legend">所有病例数</li>
+    <li data-label="series1_legend">已接种疫苗并已打补强针</li>
+    <li data-label="series2_legend">已接种疫苗但未打补强针</li>
+    <li data-label="series3_legend">未接种疫苗</li>
     <li data-label="pending_legend">等待数据</li>
-    <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的住院人数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的住院人数：<b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的住院人数：<b>{UCOUNT}</b><br> 每100万人中已打补强针人士的住院人数：<b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">过去四个月内的COVID-19死亡人数</li>
-    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与已完全接种疫苗人士相比，未接种疫苗人士死于COVID-19的几率要<strong>高{RATE_RATIO}倍</strong>。</li>
+    <li data-label="chartImpactStatement">从{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，与打了疫苗补强针的人士相比，</strong>未接种疫苗人士因感染COVID-19死亡的几率要高<strong>{RATE_RATIO}倍。</li>
     <li data-label="yaxis_legend">每100万人中的周死亡数</li>
     <li data-label="yaxis_legend_daily">每100万人中的死亡数（7日滑动平均数）</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">已接种疫苗</li>
-    <li data-label="series2_legend">未接种疫苗</li>
-    <li data-label="series3_legend">所有病例数</li>
+    <li data-label="series1_legend">已接种疫苗并已打补强针</li>
+    <li data-label="series2_legend">已接种疫苗但未打补强针</li>
+    <li data-label="series3_legend">未接种疫苗</li>
     <li data-label="pending_legend">等待数据</li>
-    <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的死亡数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的死亡数：<b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       一周结束日：<b>{WEEKDATE}</b><br> 每100万人中未接种疫苗人士的死亡数：<b>{UCOUNT}</b><br> 每100万人中已接种疫苗人士的死亡数：<b>{VCOUNT}</b><br>每100万人中已打补强针人士的死亡数：<b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">未接种疫苗及已接种疫苗病例、住院病例及死亡病例来源数据</a></p>
 
 
@@ -206,7 +132,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">图表信息</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>已接种疫苗病例、住院病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Johnson & Johnson疫苗的人士，在接种完疫苗至少2周后，COVID-19检测结果呈阳性。</li><li>未接种疫苗病例、住院病例或死亡病例指未接种COVID-19疫苗人士患病或死亡。</li><li>此图表使用在过去120天内从12岁及以上人士中收集的数据。</li><li>我们剔除了部分最近的、不完整的数据，以准确反映数据走向。</li><li>加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例、住院病例及死亡病例</a>的信息。</li></ul>
+<ul class="small-text"><li>已接种疫苗病例、住院病例或死亡指接种两剂Pfizer或Moderna疫苗或一剂Johnson & Johnson疫苗的人士，在接种完疫苗至少2周后，COVID-19检测结果呈阳性。</li><li>已打补强针病例、住院病例或死亡指在2021年8月13日当天或之后补打疫苗或打了补强针的人士，在隔了至少2周后，COVID-19检测结果呈阳性。</li><li>未接种疫苗病例、住院病例或死亡病例指未接种COVID-19疫苗人士患病或死亡。</li><li>此图表使用在过去120天内从12岁及以上人士中收集的数据。</li><li>此类图表的数据有滞后。每周都会对COVID-19病例数（包括住院数和死亡数）和疫苗接种状态进行匹配，这导致了一些滞后。这与病例数和住院数的自然报告滞后相结合，死亡人数更多。</li><li>我们每周三对此类图表进行更新。当我们发布这些图表时：</li><ul class="mb-0"><li>病例数和住院数图表数据有17天滞后。</li><li>死亡数图表数据有24天滞后。</li></ul><li>我们剔除了部分最近的、不完整的数据，以准确反映数据走向。</li><li>加州公共卫生局有更多关于<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">已接种疫苗病例、住院病例及死亡病例</a>的信息。</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
