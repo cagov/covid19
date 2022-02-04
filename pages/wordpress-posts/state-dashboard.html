@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-02-03T18:49:57Z"
+publishdate: "2022-02-04T21:16:21Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -56,7 +56,7 @@ formatNumberSmall(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
