@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2022-01-28T18:18:26Z"
+publishdate: "2022-02-03T18:49:57Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,81 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>   
-
-<!--
-{# {%-set data = tableauCovidMetrics[0] -%}  #}
-{%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
-{%-set datacases = casesSummaryData.data -%}
-{%-set datadeaths = deathsSummaryData.data -%}
-
-{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}
-{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}
-{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
-
-{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
-
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
-{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
-{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
-formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
-
-{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
-{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
-formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
-{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
-
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
-{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
-{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
-{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
-
-{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
-{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
-{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
-{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
-{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
-{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
-  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
-  %} 
-{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_  -%}
-{%- set _varStatTotalCasesToday_ = '—' -%}
-{%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
-{%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
--->
-
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+<ul class="toc"><li><strong><a href="#todays-update">Update ngayong araw</a></strong></li><li><a href="#postvax-status"><strong>Data ng mga hindi pa nababakunahan at nabakunahan na</strong></a></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">Mga kaso at pagkamatay ayon sa etnisidad, kasarian, at edad</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>    <!--&#xa;{# {%-set data = tableauCovidMetrics[0] -%} #}&#xa;{%-set data2 = dailyStatsV2.data -%}&#xa;{%-set datavax = vaccineSparkData.data -%}&#xa;{%-set datacases = casesSummaryData.data -%}&#xa;{%-set datadeaths = deathsSummaryData.data -%}&#xa;&#xa;{%-set _varStatDateNoTime_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags, 0)-%}&#xa;{%-set _varStatDateNoYear_ = _varStatDateNoTime_ | replace(", 2021", "")-%}&#xa;{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}&#xa;&#xa;{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}&#xa;{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}&#xa;&#xa;{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}&#xa;{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}&#xa;{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |&#xa;formatNumberSmall(tags)-%}&#xa;{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}&#xa;{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}&#xa;{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |&#xa;formatNumberFixed(tags,1)-%}&#xa;&#xa;{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}&#xa;&#xa;{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}&#xa;{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}&#xa;&#xa;{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}&#xa;{%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}&#xa;{%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}&#xa;&#xa;{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}&#xa;{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}&#xa;{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}&#xa;{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}&#xa;{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}&#xa;{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if&#xa; _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"&#xa; %} &#xa;{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}&#xa;{%- if _varInhibitDailyTotals_ -%}&#xa;{%- set _varStatTotalCasesToday_ = '—' -%}&#xa;{%- set _varStatTotalDeathsToday_ = '—' -%}&#xa;{%- set _varStatTestedDaily_ = '—' -%}&#xa;{%- endif -%}&#xa;&#xa;{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}&#xa;{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}&#xa;&#xa;--> <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -105,7 +31,7 @@ formatNumberFixed(tags,1)-%}
            <div>             <span class="text-300">(5+ na may kahit iisang dosis lang)</span>            </div>
          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
@@ -117,7 +43,7 @@ formatNumberFixed(tags,1)-%}
            <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">mga bagong kaso (bawat 100K)</span>            </div><div> </div>
          </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
@@ -129,7 +55,7 @@ formatNumberFixed(tags,1)-%}
            <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">mga bagong pagkamatay (bawat 100K)</span>            </div><div> </div>
          </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">Nakaraang 8 linggo</span>            </div>
+           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>            </div>
          </div>          <!--End Chart and Label -->        </div>
      </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
@@ -139,7 +65,7 @@ formatNumberFixed(tags,1)-%}
         </div>
         <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">pagpopositibo sa pagsusuri</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300">Nakaraang 8 linggo</span>            </div>          <!--End Chart and Label -->          </div>
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>            </div>          <!--End Chart and Label -->          </div>
        </div>
      </div>
    </div>
@@ -168,37 +94,37 @@ formatNumberFixed(tags,1)-%}
     <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Mga Kaso</button> <button class="large-tab js-toggle-group-postvax hospitalizations">Pagpapaospital</button> <button class="large-tab js-toggle-group-postvax deaths">Pagkamatay</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">Mga kaso ng COVID-19 sa nakalipas na apat na buwan</li>
-    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na mahawahan ng COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hanggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na naging mas malaki ang posibilidad ng mga hindi pa nagpapabakunang indibidwal</strong> na magkaroon ng COVID-19 kaysa sa mga taong nagpa-booster na.</li>
     <li data-label="yaxis_legend">Mga lingguhang kaso sa bawat 100K</li>
     <li data-label="yaxis_legend_daily">Mga kaso sa bawat 100K (7 araw na tumatakbong average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Nabakunahan</li>
-    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
-    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="series1_legend">Nagpabakuna at nagpa-booster na</li>
+    <li data-label="series2_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
+    <li data-label="series3_legend">Hindi pa nagpapabakuna</li>
     <li data-label="pending_legend">Nakabinbin ang data</li>
-    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga hindi pa nababakunahang kaso sa bawat 100K: <b>{UCOUNT}</b><br> Mga nabakunahang kaso sa bawat 100K: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga kaso sa mga hindi pa nagpapabakuna bawat 100K: <b>{UCOUNT}</b><br> Mga kaso sa mga nagpabakuna na bawat 100K: <b>{VCOUNT}</b><br> Mga kaso sa mga nagpa-booster na bawat 100K: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">Mga pagpapaospital na dulot ng COVID-19 sa nakalipas na apat na buwan</li>
-    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na maospital dahil sa COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hanggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na naging mas malaki ang posibilidad ng mga hindi pa nagpapabakunang indibidwal</strong> na maospital para sa COVID-19 kaysa sa mga taong nagpa-booster na.</li>
     <li data-label="yaxis_legend">Mga lingguhang pagpapaospital sa bawat milyon</li>
     <li data-label="yaxis_legend_daily">Mga pagpapaospital sa bawat milyon (7 araw na tumatakbong average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Nabakunahan</li>
-    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
-    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="series1_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
+    <li data-label="series2_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
+    <li data-label="series3_legend">Hindi pa nagpapabakuna</li>
     <li data-label="pending_legend">Nakabinbin ang data</li>
-    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagpapaospital ng mga hindi pa nababakunahan sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagpapaospital ng nabakunahan na sa bawat milyon: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagpapaospital sa mga hindi pa nagpapabakuna sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagpapaospital sa mga nagpa-booster na sa bawat milyon: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">Mga pagkamatay na dulot ng COVID-19 sa nakalipas na apat na buwan</li>
-    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hangggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na mas malaki ang posibilidad ng mga hindi pa nababakunahang tao</strong> na mamatay dahil sa COVID-19 kaysa sa mga taong kumpleto na sa bakuna.</li>
+    <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hanggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na naging mas malaki ang posibilidad ng mga hindi pa nagpapabakunang indibidwal</strong> na mamatay mula sa COVID-19 kaysa sa mga taong nagpa-booster na.</li>
     <li data-label="yaxis_legend">Mga lingguhang pagkamatay sa bawat milyon</li>
     <li data-label="yaxis_legend_daily">Mga pagkamatay sa bawat milyon (7 araw na tumatakbong average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Nabakunahan</li>
-    <li data-label="series2_legend">Hindi Pa Nababakunahan</li>
-    <li data-label="series3_legend">Lahat ng kaso</li>
+    <li data-label="series1_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
+    <li data-label="series2_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
+    <li data-label="series3_legend">Hindi pa nagpapabakuna</li>
     <li data-label="pending_legend">Nakabinbin ang data</li>
-    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga hindi pa nababakunahang pagkamatay sa bawat milyon: <b>{UCOUNT}</b><br> Mga nabakunahan nang pagkamatay sa bawat milyon: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagkamatay sa mga hindi pa nagpapabakuna sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagkamatay sa mga nagpabakuna na sa bawat milyon: <b>{VCOUNT}</b><br> Mga pagkamatay sa mga nagpa-booster na sa bawat milyon: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Pinagmulan ng datos ng mga kasong nabakunahan at hindi pa nababakunahan, pagpapaospital, at pagkamatay</a></p>
 
 
@@ -206,7 +132,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Impormasyon sa chart</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>Ang kasong nabakunahan, naospital, o namatay ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Johnson & Johnson hindi bababa sa 2 linggo bago siya magpositibo sa COVID-19.</li><li>Ang kasong hindi pa nababakunahan, naospital, namatay ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19.</li><li>Ginagamit ng chart na ito ang data mula sa mga taong may edad na 12 taon pataas na nakolekta sa nakalipas na 120 araw.</li><li>Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</li><li>Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga kasong nabakunahan, naospital, at namatay</a>.</li></ul>
+<ul class="small-text"><li>Ang kaso, pagpapaospital, o pagkamatay ng nagpabakuna ay tumutukoy sa isang taong nakatanggap ng dalawang dosis ng bakuna ng Pfizer o Moderna o nakatanggap ng bakuna ng Johnson & Johnson hindi bababa sa 2 linggo bago siya magpositibo sa COVID-19.</li><li>Ang kaso, pagpapaospital, o pagkamatay ng nagpa-booster na ay tumutukoy sa isang taong nakatanggap na ng karagdagang dosis o booster sa o pagkalipas ng Agosto 13, 2021, hindi bababa sa 2 linggo bago sila magpositibo sa pagsusuri sa COVID-19.</li><li>Ang kaso, pagpapaospital, o pagkamatay ng hindi pa nagpapabakuna ay tumutukoy sa isang taong hindi pa nababakunahan laban sa COVID-19.</li><li>Ginagamit ng chart na ito ang data mula sa mga taong may edad na 12 taon pataas na nakolekta sa nakalipas na 120 araw.</li><li>May lag ng data para sa mga chart na ito. Lingguhan ang pagtutugma ng mga kaso ng COVID-19 (kasama ang mga pagpapaospital at pagkamatay) at status sa pagpapabakuna, na nagreresulta sa ilang lag. Kasabay nito ang mga lag sa natural na pag-uulat para sa mga kaso at pagpapaospital, na mas malaki para sa mga pagkamatay.</li><li>Ina-update namin ang mga chart na ito tuwing Miyerkules. Sa pag-publish namin sa mga chart na ito:</li><ul class="mb-0"><li>May 17 araw na lag ang mga chart ng mga kaso at pagpapaospital.</li><li>May 24 na araw na lag ang chart ng mga pagkamatay.</li></ul><li>Hindi namin isinasama ang ilang kamakailang hindi kumpletong data para tumpak na maipakita ang mga trend sa data.</li><li>Ang Departamento ng Pampublikong Kalusugan ng California ay may higit pang impormasyon tungkol sa <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">mga kasong nabakunahan, naospital, at namatay</a>.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -316,8 +242,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="timeTabLabel1">Lahat ng oras</li>
           <li data-label="timeTabLabel2">6 na buwan</li>
           <li data-label="timeTabLabel3">90 araw</li>
-          <li data-label="tooltipContent">             Petsa ng Pagsusuri: <b>{DATE} </b><br> 7 araw na rate ng pagpopositibo: <b>{7DAY_POSRATE} </b><br> Kabuuang Bilang ng Mga Pagsusuri: <b>{TOTAL_TESTS} </b>           </li>
-          <li data-label="leftYAxisLegend">Rate ng nagpopositibo</li>
+          <li data-label="tooltipContent">             Petsa ng Pagsusuri: <b>{DATE} </b><br> 7 araw na rate ng pagpopositibo: <b>{7DAY_POSRATE} </b><br> Rate ng pagpopositibo: <b>{POSRATE} </b>           </li>
+          <li data-label="leftYAxisLegend">Rate ng pagpopositibo</li>
           <li data-label="rightYAxisLegend">Mga Pagsusuri</li>
           <li data-label="xAxisLegend">Petsa ng pagsusuri</li>
           <li data-label="pending">Nakabinbin</li>
