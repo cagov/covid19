@@ -4,23 +4,18 @@ let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
 
 function getSVG(file, selector) {
     fetch(svg_path + file).then(function(response) {
-      return response.text().then(function(text) {
+      return response.text().then(function(svgtext) {
           let targetEl = document.querySelector(selector);
           if(targetEl) {
-              targetEl.innerHTML = text;
-              let svg_about = targetEl.querySelector('svg').getAttribute('about');
-  
-              let svgvars = {};
-              svg_about.split(',').forEach(elemStr => {
-                  let pieces = elemStr.split(':');
-                  svgvars[pieces[0]] = pieces[1];
-              });
-              let capEl = targetEl.parentElement.querySelector('.date-caption-span');
-              const dateFormat = { month: "long", day: 'numeric' };
-              if (capEl) {
-                  capEl.innerHTML = reformatReadableDate(svgvars.FIRST_DATE, dateFormat) +
-                                  ' &ndash; ' + 
-                                  reformatReadableDate(svgvars.LAST_DATE, dateFormat);
+                targetEl.innerHTML = svgtext;
+                let svg_meta = JSON.parse(targetEl.querySelector('svg').getAttribute('meta'));
+                // supply caption...
+                let capEl = targetEl.parentElement.querySelector('.date-caption-span');
+                const dateFormat = { month: "long", day: 'numeric' };
+                if (capEl && 'FIRST_DATE' in svg_meta && 'LAST_DATE' in svg_meta) {
+                        capEl.innerHTML = reformatReadableDate(svg_meta.FIRST_DATE, dateFormat) +
+                                          ' &ndash; ' + 
+                                          reformatReadableDate(svg_meta.LAST_DATE, dateFormat);
               }
           }
       });
