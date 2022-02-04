@@ -32,29 +32,18 @@ import { reformatReadableDate } from "../common/readable-date.js";
 let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
-    return response.text().then(function(text) {
+    return response.text().then(function(svgtext) {
       let targetEl = document.querySelector(selector);
       if(targetEl) {
-        targetEl.innerHTML = text;
-
-				// pull "about" vars from SVG (alternately, use regex)
-        let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        // console.log("SVG ABOUT: ",svg_about);
-
-				let svgvars = {};
-				svg_about.split(',').forEach(elemStr => {
-					let pieces = elemStr.split(':');
-					svgvars[pieces[0]] = pieces[1];
-				});
-				// console.log("CAPTURED VARS",svgvars);
-				// supply caption...
+        targetEl.innerHTML = svgtext;
+        let svg_meta = JSON.parse(targetEl.querySelector('svg').getAttribute('meta'));
 				let capEl = targetEl.parentElement.querySelector('.date-caption-span');
 				const dateFormat = { month: "long", day: 'numeric' };
-				if (capEl) {
-          // console.log("Setting caption: ",svgvars.FIRST_DATE,svgvars.LAST_DATE);
-					capEl.innerHTML = reformatReadableDate(svgvars.FIRST_DATE, dateFormat) +
+				if (capEl && 'FIRST_DATE' in svg_meta && 'LAST_DATE' in svg_meta) {
+          // console.log("Setting caption: ",svg_meta.FIRST_DATE,svg_meta.LAST_DATE);
+					capEl.innerHTML = reformatReadableDate(svg_meta.FIRST_DATE, dateFormat) +
 															' &ndash; ' + 
-														reformatReadableDate(svgvars.LAST_DATE, dateFormat);
+														reformatReadableDate(svg_meta.LAST_DATE, dateFormat);
 				}
       }
     });
