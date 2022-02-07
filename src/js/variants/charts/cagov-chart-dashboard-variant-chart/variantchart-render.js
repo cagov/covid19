@@ -392,6 +392,7 @@ function getAxisDiv(ascale,{hint='num'}) {
    } )  {
 
     // Force padding on dimensions...
+    const firstDateSnowflake = line_series_array[0][0].DATE
     const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
     const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
     const lastday = lastDateJ.getDate();
@@ -405,7 +406,14 @@ function getAxisDiv(ascale,{hint='num'}) {
       .select(this.querySelector(".svg-holder"))
       .append("svg");
 
-    this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date)
+    const meta = {
+        DATA_PUBLISHED_DATE: published_date, 
+        RENDER_DATE: render_date,
+        FIRST_DATE: firstDateSnowflake,
+        LAST_DATE: lastDateSnowFlake
+    };    
+
+    this.svg.attr("meta",JSON.stringify(meta))
             .attr('xmlns','http://www.w3.org/2000/svg');
 
 
