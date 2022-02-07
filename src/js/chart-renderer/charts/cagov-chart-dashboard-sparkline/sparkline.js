@@ -123,8 +123,15 @@ export default function renderChart({
   this.svg = d3
     .select(this.querySelector(".svg-holder"))
     .append("svg");
+  
+  const meta = {
+    DATA_PUBLISHED_DATE:published_date, 
+    RENDER_DATE: render_date,
+    FIRST_DATE: first_date,
+    LAST_DATE: last_date
+  };
 
-  this.svg.attr("about","DATA_PUBLISHED_DATE:" + published_date + ",RENDER_DATE:" + render_date+ ",FIRST_DATE:" + first_date+ ",LAST_DATE:" + last_date)
+  this.svg.attr("meta",JSON.stringify(meta))
           .attr('xmlns','http://www.w3.org/2000/svg');
 
   // this.svg.selectAll("g").remove();
