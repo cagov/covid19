@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-02-03T17:20:14Z"
+publishdate: "2022-02-04T21:22:13Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -38,7 +38,7 @@ addtositemap: true
 
 {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = dailyStatsV2.data.vaccinations.DATE | formatDate2(false, tags,0)-%}
+{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
@@ -56,7 +56,7 @@ formatNumberSmall(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
-{%-set _varStatVaccines_ = data2.vaccinations.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
@@ -132,7 +132,7 @@ formatNumberFixed(tags,1)-%}
          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">
-             <span class="text-300">Past 8 weeks</span>
+             <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          </div>
          <!--End Chart and Label -->
@@ -159,7 +159,7 @@ formatNumberFixed(tags,1)-%}
          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">
-             <span class="text-300">Past 8 weeks</span>
+             <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          </div>
          <!--End Chart and Label -->
@@ -186,7 +186,7 @@ formatNumberFixed(tags,1)-%}
          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">
-             <span class="text-300">Past 8 weeks</span>
+             <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          </div>
          <!--End Chart and Label -->
@@ -209,7 +209,7 @@ formatNumberFixed(tags,1)-%}
          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
            <div class="text-white text-xs mt-1 ">
-             <span class="text-300">Past 8 weeks</span>
+             <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          <!--End Chart and Label -->
          </div>
