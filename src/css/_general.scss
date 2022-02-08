@@ -1601,7 +1601,7 @@ li.active ul.nav.bd-sidenav {
 
 /* Wordpress Separator */
 .wp-block-separator {
-  width: 100vw;
+  // width: 100vw; // causes an unsightly gap on RTL languages and has no apparent effect on LTR pages.
   margin-left: calc(50% - 50vw);
   border-top: 1px solid $black;
   margin-top: 5rem;
