@@ -487,21 +487,14 @@ module.exports = function (eleventyConfig) {
           } //while
 
           const finalHTML =
-            `<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodyHTML}
-                  </div>
+            `<cagov-accordion data-css-height="4rem">
+              <details>
+                <summary>${headerHTML}</summary>
+                <div class="accordion-body">
+                  ${bodyHTML}
                 </div>
-              </div>
-            </cagov-accordion>
-            `;
+              </details>
+            </cagov-accordion>`;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finalHTML);
@@ -598,28 +591,21 @@ module.exports = function (eleventyConfig) {
 
           const finaldarkHTML =
             `<div class="full-bleed bg-darkblue dark-accordion-bg">
-            <div class="container">
-            <div class="row">
-            <div class="col-lg-10 mx-auto">
-            <cagov-accordion class="dark-accordion">
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerdarkHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodydarkHTML}
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-10 mx-auto">
+                    <cagov-accordion class="dark-accordion">
+                      <details>
+                        <summary>${headerdarkHTML}</summary>
+                        <div class="accordion-body">
+                          ${bodydarkHTML}
+                        </div>
+                      </details>
+                    </cagov-accordion>
                   </div>
                 </div>
               </div>
-            </cagov-dark-accordion>
-            </div>
-            </div>
-            </div>
-            </div>
-            `;
+            </div>`;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finaldarkHTML);
