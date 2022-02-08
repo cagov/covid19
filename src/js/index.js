@@ -1,5 +1,5 @@
 import '@cagov/step-list';
-import '@cagov/accordion';
+import '@cagov/ds-accordion';
 import './pagerating/index.js';
 import './feature-detect/webp.js';
 import './arrow/index.js';

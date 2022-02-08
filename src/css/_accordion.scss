@@ -1,44 +1,63 @@
 /* accordion component specific classes */
-cagov-accordion .card {
-  border-radius: 0 !important;
-  border: none;
-  margin-bottom: 0;
+cagov-accordion:defined details {
+  height: 4rem;
+}
+cagov-accordion:defined details .cagov-open-indicator {
+  background-color: #ff8000!important;
+  height: 2px !important;
+  top: 1.7rem !important;
+  width: 20px !important;
+}
+cagov-accordion:defined details .cagov-open-indicator:before {
+  width: 1px !important;
+  box-shadow: 7px -13px 0 1px #ff8000 !important;
+  top: 7px !important;
+  left: 2px !important;
+  height: 16px !important;
+}
+cagov-accordion:defined details .cagov-open-indicator:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: -8px;
+  width: 32px;
+  height: 32px;
+  border: solid 2px #ff8000;
+  background: none;
+  border-radius: 50%;
 }
 
-cagov-accordion .card-container {
-  display: block;
-  overflow: hidden;
-  &[aria-hidden="false"] {
-    border-bottom: 1px solid $darkblue;
+#main cagov-accordion:defined details summary {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0.5rem 0 0.4rem 0.5rem;
+
+  &:focus {
+    border-radius: 0 !important;
+  }
+  &:hover {
+    background-color: #f2f5fc !important;
   }
 }
 
-cagov-accordion.prog-enhanced .card-container {
-  height: 0px;
-  transition: height 0.3s ease;
-}
-
-cagov-accordion .collapsed {
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-}
-
-.card-header .button {
-  color: #000;
+cagov-accordion:defined details {
+  border: none !important;
+  border-bottom: 1px solid #1f2574 !important;
+  border-top: 1px solid #1f2574 !important;
+  border-radius: 0!important;
 }
 
 .accordion {
   margin-bottom: 20px;
 }
 
-.accordion-title {
+cagov-accordion summary {
   padding: 0.5rem;
   text-align: left;
   margin-bottom: 0;
   color: $darkblue;
   margin-right: auto;
-  width: 90%;
   h4,
   h3,
   h2 {
@@ -50,42 +69,8 @@ cagov-accordion .collapsed {
     font-weight: 700;
     color: $darkblue;
     text-align: left !important;
+    line-height: 3rem;
   }
-}
-
-button.card-header {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding: 1rem 0.75rem;
-  background-clip: border-box;
-  background-color: $white;
-  border: none;
-  border-bottom: 1px solid $darkblue;
-  border-top: 1px solid $darkblue;
-  border-radius: 0 !important;
-  margin-top: -1px;
-  &:hover {
-    background-color: $lightestblue;
-  }
-  &:focus {
-    outline-offset: -2px;
-  }
-}
-
-.prog-enhanced .accordion-alpha .plus-munus {
-  width: 2.125rem;
-  height: 2.125rem;
-  border: 2px solid $orange;
-  border-radius: 50%;
-  padding: 0.02rem 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  margin-left: 1rem;
-  color: $orange;
-  align-self: flex-start;
-  cagov-plus .accordion-icon {display: block;}
-  cagov-minus .accordion-icon {display: none;}
 }
 
 /* chart-drawer version overrides */
@@ -110,11 +95,6 @@ button.card-header {
   border: 1px solid #F2F5FC;
 }
 
-.prog-enhanced .accordion-alpha-open {
-  border-bottom-color: $white !important;
-  cagov-plus .accordion-icon {display: none !important;}
-  cagov-minus .accordion-icon {display: block !important;}
-}
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);
 }
