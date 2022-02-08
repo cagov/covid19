@@ -294,12 +294,15 @@
 		-519573749, 32245991, -1045620280, 3083181, 
 		105116, 3059156, -717313205, -20842805,
 		3529280, 3441177, 3065272, 3541578,
-		-1220868373, 1735918790, -1944906010
+		-1220868373, -1944906010
 	];
 
 	const isRejected = function(phrase) {
+		console.log("search check",phrase,phrase.hashCode());
 		return phrase.match(/\S+/g).length > 4 || 
 			   phrase.length < 4 ||
+			   phrase.search(/(@|\w+\.\w+)/) != -1 ||
+			   rejectList.includes(phrase.hashCode()) ||
     	       phrase.split(' ').find(wrd=>(rejectList.includes(wrd.hashCode()))) != undefined;
 	};
 
