@@ -19,7 +19,7 @@ function link_is_external(link_element) {
 // Looping thru all link inside of the internal pages main content body
 var externalLink = document.querySelectorAll(".container .row .col-lg-10 a");
 for (var i = 0; i < externalLink.length; i++) {
-  var anchorLink = externalLink[i].href.indexOf("#") > -1;
+  var anchorLink = externalLink[i].href.indexOf("#") == 0;
   var localHost = externalLink[i].href.indexOf("localhost") > -1;
   var localUrl = externalLink[i].href.indexOf("covid19.ca.gov/") > -1;
   var localEmail = externalLink[i].href.indexOf("@") > -1;
