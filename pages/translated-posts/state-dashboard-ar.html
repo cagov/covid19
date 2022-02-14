@@ -1,12 +1,19 @@
 ---
 layout: "page.njk"
 title: "تعقب كوفيد-19 في كاليفورنيا"
-meta: "يساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19."
+meta: "يساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19. "
 author: "State of California"
-publishdate: "2022-02-04T21:22:13Z"
+publishdate: "2022-02-10T17:36:47Z"
 tags: ["translate"]
 addtositemap: true
 ---
+
+ <div class="highlight">
+<h2 class="h3 color-primary mt-0">مذكرة بشأن يوم 10 فبراير 2022</h2>
+<p>لا توجد حالات أو وفيات جديدة تم الإبلاغ عنها لمقاطعتي لوس أنجلوس وسان دييغو اليوم. وسوف نبلغ عن هذه البيانات في 11 فبراير 2022. ويعزى ذلك إلى تنفيذ فترة تأخر إبلاغ مدتها يوم واحد (1) لمقاطعتي لوس أنجلوس وسان دييغو.</p>
+</div><p></p>
+
+
 
 <p class="emphasized">تقوم ولاية كاليفورنيا بتعقب البيانات لفهم انتشار كوفيد-19.</p>
 
@@ -16,8 +23,8 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
-<!--
+<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    <!--
+
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
@@ -92,14 +99,14 @@ formatNumberFixed(tags,1)-%}
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">تحديث بخصوص {{_varStatDateNoTime_}}</h2>         
-<!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
+        <h2 class="text-center color-purple">تحديث بخصوص {{_varStatDateNoTime_}}</h2>         <!--
+ <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
  and {{_varStatTotalDeaths_}} deaths.</div> -->
        </div>
-    </div>  
-<!----- Begin Summary Boxes -->
- <div class="row d-flex justify-content-md-center summary-boxes">   
-<!-- Blue Summary Box 1 -->
+    </div>  <!--
+--- Begin Summary Boxes -->
+ <div class="row d-flex justify-content-md-center summary-boxes">   <!--
+ Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">اللقاحات المعطاة</div>
@@ -108,16 +115,16 @@ formatNumberFixed(tags,1)-%}
          <div class="text-white text-xs mb-2">
            <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}النسبة المئوية (%)</strong> للسكان الذين تم تطعيمهم</span>            </div>
            <div>             <span class="text-300">(الأطفال بعمر 5 سنوات فما فوق بجرعة واحدة على الأقل)</span>            </div>
-         </div>          
-<!--Chart and Label -->
+         </div>          <!--
+Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">الأسابيع الـ 8 الماضية</span>            </div>
-         </div>          
-<!--End Chart and Label -->
+         </div>          <!--
+End Chart and Label -->
         </div>
-     </div>     
-<!-- Blue Summary Box 2 -->
+     </div>     <!--
+ Blue Summary Box 2 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">حالات الإصابة</div>
@@ -126,16 +133,16 @@ formatNumberFixed(tags,1)-%}
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">الحالات الجديدة (لكل 100 ألف)</span>            </div><div> </div>
-         </div>          
-<!--Chart and Label -->
+         </div>          <!--
+Chart and Label -->
           <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>
-         </div>          
-<!--End Chart and Label -->
+         </div>          <!--
+End Chart and Label -->
         </div>
-     </div>   
-<!-- Blue Summary Box 3 -->
+     </div>   <!--
+ Blue Summary Box 3 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">الوفيات</div>
@@ -144,51 +151,51 @@ formatNumberFixed(tags,1)-%}
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">الوفيات الجديدة (لكل 100 ألف شخص)</span>            </div><div> </div>
-         </div>           
-<!--Chart and Label -->
+         </div>           <!--
+Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>
-         </div>          
-<!--End Chart and Label -->
+         </div>          <!--
+End Chart and Label -->
         </div>
-     </div>    
-<!-- Blue Summary Box 4 -->
+     </div>    <!--
+ Blue Summary Box 4 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">الاختبارات</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}النسبة المئوية %</strong> <span class="text-300">لإيجابية الاختبار</span>          </div>          
-<!-- <div class="text-white text-xs mb-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}النسبة المئوية %</strong> <span class="text-300">لإيجابية الاختبار</span>          </div>          <!--
+ <div class="text-white text-xs mb-2">
  <span class="text-300">&nbsp;</span>
  </div> -->
- 
-<!--Chart and Label -->
+ <!--
+Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>          
-<!--End Chart and Label -->
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>          <!--
+End Chart and Label -->
           </div>
        </div>
      </div>
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         
-<!--
+      <div class="col-lg-10 mx-auto">         <!--
+
  {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
  {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}.</p> 
-<!--
+ <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}.</p> <!--
+
  {%- else -%}
 -->
-   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الإصابة وحالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> 
-<!--
+   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الإصابة وحالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> <!--
+
  {%- endif -%}
 -->
          <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الإصابة والوفيات والفحوصات</a></p>
@@ -196,20 +203,20 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>لا يتم الإبلاغ عن البيانات في عطلات نهاية الأسبوع أو العطلات الرسمية. تُعالَج هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو الإجازة وتُحدّث هنا في اليوم التالي.</li> <li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلون على اللقاح كليًا وجزئيًا والقسمة على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها السلطات الصحية المحلية والكيانات الفيدرالية.</li><li>يستند كل من معدل الإصابات والمتوسط اليومي إلى متوسط 7 أيام مع تأخر 7 أيام.</li><li>'يستند كل من معدل الإصابات والمتوسط اليومي على متوسط 7 أيام مع تأخر 7 أيام.</li><li>إن القواسم السكانية المشتركة المستخدمة لمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
+                <ul><li>لا يتم الإبلاغ عن البيانات في عطلات نهاية الأسبوع أو العطلات الرسمية. تُعالَج هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو الإجازة وتُحدّث هنا في اليوم التالي.</li> <li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلون على اللقاح كليًا وجزئيًا والقسمة على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها السلطات الصحية المحلية والكيانات الفيدرالية.</li><li>يستند كل من معدل الإصابات والمتوسط اليومي إلى متوسط 7 أيام مع تأخر 7 أيام.</li><li>يستند كل من معدل الإصابات والمتوسط اليومي على متوسط 7 أيام مع تأخر 7 أيام.</li><li>إن بيانات حالات الإصابة والوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي لمدة يوم واحد (1).</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت لمدة يوم واحد (1).</li><li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
     </div>
 
-  </div>   
-<!--END container-->
+  </div>   <!--
+END container-->
  </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">بيانات الحالات المُطعمة وغير المطعمة</h2>
 
 
 
-<div id="postvax-chart-intro">فاللقاحات تمنع الأمراض الخطيرة وتنقذ الأرواح وتحد أيضًا من انتشار كوفيد-19. ومع تطعيم المزيد من الناس، تقل احتمالية انتشار الفيروس وتحوره حتى أنه ربما يصبح أقل خطورة. وستساعد اللقاحات على وضع حد لهذا الوباء. 
-<!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
+<div id="postvax-chart-intro">فاللقاحات تمنع الأمراض الخطيرة وتنقذ الأرواح وتحد أيضًا من انتشار كوفيد-19. ومع تطعيم المزيد من الناس، تقل احتمالية انتشار الفيروس وتحوره حتى أنه ربما يصبح أقل خطورة. وستساعد اللقاحات على وضع حد لهذا الوباء. <!--
+ From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
  </div>
 
 
@@ -276,8 +283,8 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
-<!-- 1 Cases and Deaths - Confirmed Cases -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
+ 1 Cases and Deaths - Confirmed Cases -->
  <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">حالات مؤكدة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">الحالات المؤكدة في {منطقة} المقاطعة</li>
@@ -299,8 +306,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="pending">قيد الانتظار</li>
           <li data-label="pending_caveat">البيانات غير مكتملة إلى أحدث التواريخ</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
-<!-- 2 Cases and Deaths - Confirmed Deaths -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
+ 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">حالات الوفاة المؤكدة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">الحالات الوفاة المؤكدة في {منطقة} المقاطعة</li>
@@ -331,18 +338,18 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>الأرقام لا تمثل تغيرات يومية حقيقية لأن هذه النتائج تشمل حالات من قبل أمس.</li><li>تاريخ الحلقة هو التاريخ الذي يُقدَر أن الحدث قد وقع فيه.</li><li>والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة.</li><li>تشمل الحالات الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية. ويعني العدد السلبي للوفيات المبلغ عنها أن الوفيات التي كانت تُعزَى في السابق إلى كوفيد-19 قد ثبت أنها لا ترتبط بكوفيد-19.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
+<ul class="small-text"><li>الأرقام لا تمثل تغيرات يومية حقيقية لأن هذه النتائج تشمل حالات من قبل أمس.</li><li>تاريخ الحلقة هو التاريخ الذي يُقدَر أن الحدث قد وقع فيه.</li><li>والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة.</li><li>تشمل الحالات الأفراد الموجودين في سجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية.</li><li>إن البيانات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر لمدة يوم واحد (1).</li><li>ويعني العدد السلبي للوفيات المبلغ عنها أن الوفيات التي كانت تُعزى في السابق إلى كوفيد-19 قد ثبت أنها لا ترتبط بكوفيد-19.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
 
-<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، أي بزيادة {{_varStatTestedDaily_}} من الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو ⁦{{_varStatPos_7DayAvgPct_}}⁩%.</p>
+<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، أي بزيادة {{_varStatTestedDaily_}} من الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو  {{_varStatPos_7DayAvgPct_}} %.</p>
 
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
-<!-- 3 Testing for COVID-19 - Total tests in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
+ 3 Testing for COVID-19 - Total tests in California -->
  <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">إجمالي الاختبارات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">إجمالي الاختبارات في {منطقة} المقاطعة</li>
@@ -363,8 +370,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="pending">قيد الانتظار</li>
           <li data-label="pending_caveat">البيانات غير مكتملة إلى أحدث التواريخ</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
-<!-- 4 Testing for COVID-19 - Positivity rate in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
+ 4 Testing for COVID-19 - Positivity rate in California -->
  <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">معدل إيجابية الاختبارات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">معدل إيجابية الاختبارات في {منطقة} المقاطعة</li>
@@ -391,7 +398,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>تاريخ الاختبار هو التاريخ الذي تم فيه إجراء الاختبار.</li><li>والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. بيانات التواريخ المُبلغ عنها لم تكن متاحة للاختبارات قبل 5 مايو 2020.</li><li>قد لا تتطابق الأرقام الإجمالية لتاريخ إجراء الفحوصات مع الأرقام الإجمالية لتاريخ الإبلاغ.</li><li>يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية المقسوم على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد المتواجدين بسجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية.</li><li>وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
+<ul class="small-text"><li>تاريخ الاختبار هو التاريخ الذي تم فيه إجراء الاختبار.</li><li>والتاريخ المبلّغ عنه هو التاريخ الذي أُبلغت فيه إدارة الصحة العامة بكاليفورنيا عن الحالة. بيانات التواريخ المُبلغ عنها لم تكن متاحة للاختبارات قبل 5 مايو 2020.</li><li>قد لا تتطابق الأرقام الإجمالية لتاريخ إجراء الفحوصات مع الأرقام الإجمالية لتاريخ الإبلاغ.</li><li>يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية المقسوم على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد الموجودين في سجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية.</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر لمدة يوم واحد (1).</li><li>وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -401,8 +408,8 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
-<!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
+ 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
  <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">مرضى كوفيد-19 المحتجزين بالمستشفيات في كاليفورنيا</li>
           <li data-label="chartTitleCounty">مرضى كوفيد -19 المحتجزين بالمستشفيات في {منطقة} المقاطعة</li>
@@ -423,8 +430,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">متوسط 14 يوم</li>
           <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يومًا: <b>{متوسط_14 يومًا} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       
-<!-- 6 Confirmed hospitalizations - ICU beds in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12">       <!--
+ 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">أَسِرّة العناية المركزة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">أسرة العناية المركزة في {منطقة} المقاطعة</li>
@@ -454,16 +461,16 @@ formatNumberFixed(tags,1)-%}
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">الجنس والعرق</button> <button class="large-tab js-toggle-group gender">النوع</button> <button class="large-tab js-toggle-group age">العمر</button>         </div>
       </div>
-      <div class="row">         
-<!-- newly added -->
+      <div class="row">         <!--
+ newly added -->
          <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
                 <p>ويكشف توزيع وفيات كوفيد-19 المؤكدة عن وجود تفاوت بين الجنسين، حيث يكون للذكور عدد غير متناسب من الوفيات مقارنة بعدد السكان.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
+              </div>               <!--
+ <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات مؤكدة حسب نوع الجنس في كاليفورنيا</li>
@@ -486,8 +493,8 @@ formatNumberFixed(tags,1)-%}
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
                 <p>يكشف توزيع حالات كوفيد-19 المؤكدة والوفيات عن وجود تباينات كبيرة بين الفئات العمرية في كاليفورنيا. فالفئات العمرية ما بين 18 و49 لديهم عدد غير متكافئ من حالات الإصابة. فالفئات العمرية من 65 فما فوق لديهم عدد غير متكافئ من الوفيات.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
+              </div>               <!--
+ <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات مؤكدة حسب العمر في كاليفورنيا</li>
@@ -510,8 +517,8 @@ formatNumberFixed(tags,1)-%}
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
                 <p>يكشف توزيع حالات كوفيد-19 المؤكدة عن تباينات كبيرة داخل التركيبة السكانية العرقية والإثنية العامة في كاليفورنيا، حيث يوجد عدد غير متناسب من حالات الإصابة بين مجموعات اللاتينيين وسكان هاواي الأصليين/سكان جزر المحيط الهادئ مقارنة بعدد هذه الشرائح السكانية في الولاية. وتتوفر المزيد من <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">البيانات العرقية والإثنية للمصابين بكوفيد-19</a>.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
+              </div>               <!--
+ <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات مؤكدة حسب الجنس والعرق في كاليفورنيا</li>
@@ -534,10 +541,10 @@ formatNumberFixed(tags,1)-%}
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">انظر المزيد من البيانات المفصلة حسب المجموعة</div>         <cagov-arrow></cagov-arrow> </a>     </div>     
-<!--END col-12-->
-   </div>   
-<!--END CONTAINER-->
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">انظر المزيد من البيانات المفصلة حسب المجموعة</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--
+END col-12-->
+   </div>   <!--
+END CONTAINER-->
  </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>استكشف المزيد من البيانات</h2>
@@ -568,8 +575,8 @@ formatNumberFixed(tags,1)-%}
                             </div>
                         </div>
                     </div>
-                </div>
-<!--row 1-->
+                </div><!--
+row 1-->
                  <div class="row d-flex p-2">
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
@@ -579,14 +586,14 @@ formatNumberFixed(tags,1)-%}
                             </div>
                         </div>
                     </div>
-                </div>
-<!--row 2-->
-             </div>             
-<!--col-10-->
-         </div>         
-<!--row-->
-     </div>     
-<!--container-->
- </div> 
-<!--full bleed-->
+                </div><!--
+row 2-->
+             </div>             <!--
+col-10-->
+         </div>         <!--
+row-->
+     </div>     <!--
+container-->
+ </div> <!--
+full bleed-->
     <p></p>
