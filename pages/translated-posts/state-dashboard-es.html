@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-01-28T18:18:26Z"
+publishdate: "2022-02-11T17:24:24Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -18,7 +18,7 @@ addtositemap: true
 
 <ul class="toc"><li><strong><a href="#todays-update">actualización de hoy</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    
 <!--
-{# {%-set data = tableauCovidMetrics[0] -%}  #}
+{# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
@@ -74,10 +74,10 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
 {%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
 {%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} {%-set _varDeathsTrendClassD_='' if
-  _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
-  %} 
+ _varDeathsTrend_ < 0 else "d-none" %} {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none"
+ %} 
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
-{%- if _varInhibitDailyTotals_  -%}
+{%- if _varInhibitDailyTotals_ -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
@@ -88,12 +88,19 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+ <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">Actualizado para el {{_varStatDateNoTime_}}</h2>         <!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases&#xa; and {{_varStatTotalDeaths_}} deaths.</div> -->       </div>
-    </div>  <!----- Begin Summary Boxes --> <div class="row d-flex justify-content-md-center summary-boxes">   <!-- Blue Summary Box 1 -->     <div class="col-md-6 col-lg-3 px-10px">							
+        <h2 class="text-center color-purple">Actualizado para el {{_varStatDateNoTime_}}</h2>         
+<!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
+ and {{_varStatTotalDeaths_}} deaths.</div> -->
+       </div>
+    </div>  
+<!----- Begin Summary Boxes -->
+ <div class="row d-flex justify-content-md-center summary-boxes">   
+<!-- Blue Summary Box 1 -->
+     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Vacunas administradas</div>
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">total</span>          </div>
@@ -101,11 +108,17 @@ formatNumberFixed(tags,1)-%}
          <div class="text-white text-xs mb-2">
            <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> de personas vacunadas</span>            </div>
            <div>             <span class="text-300">(5 años o más con al menos una dosis)</span>            </div>
-         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         </div>          
+<!--Chart and Label -->
+          <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">Últimas 8 semanas</span>            </div>
-         </div>          <!--End Chart and Label -->        </div>
-     </div>     <!-- Blue Summary Box 2 -->     <div class="col-md-6 col-lg-3 px-10px">							
+           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
+         </div>          
+<!--End Chart and Label -->
+        </div>
+     </div>     
+<!-- Blue Summary Box 2 -->
+     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Casos</div>
 
@@ -113,11 +126,17 @@ formatNumberFixed(tags,1)-%}
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">promedio diario</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">casos nuevos (por cada 100 mil)</span>            </div><div> </div>
-         </div>          <!--Chart and Label -->          <div class="mt-auto px-2">
+         </div>          
+<!--Chart and Label -->
+          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300">Últimas 8 semanas</span>            </div>
-         </div>          <!--End Chart and Label -->        </div>
-     </div>   <!-- Blue Summary Box 3 -->     <div class="col-md-6 col-lg-3 px-10px">							
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
+         </div>          
+<!--End Chart and Label -->
+        </div>
+     </div>   
+<!-- Blue Summary Box 3 -->
+     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Muertes</div>
 
@@ -125,40 +144,73 @@ formatNumberFixed(tags,1)-%}
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">promedio diario</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">nuevas muertes (por cada 100 mil)</span>            </div><div> </div>
-         </div>           <!--Chart and Label -->          <div class="mt-auto px-2">
+         </div>           
+<!--Chart and Label -->
+          <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300">Últimas 8 semanas</span>            </div>
-         </div>          <!--End Chart and Label -->        </div>
-     </div>    <!-- Blue Summary Box 4 -->     <div class="col-md-6 col-lg-3 px-10px">							
+           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
+         </div>          
+<!--End Chart and Label -->
+        </div>
+     </div>    
+<!-- Blue Summary Box 4 -->
+     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Pruebas</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">de positividad de las pruebas</span>          </div>          <!-- <div class="text-white text-xs mb-2">&#xa; <span class="text-300">&nbsp;</span>&#xa; </div> --> <!--Chart and Label -->          <div class="mt-auto px-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">de positividad de las pruebas</span>          </div>          
+<!-- <div class="text-white text-xs mb-2">
+ <span class="text-300">&nbsp;</span>
+ </div> -->
+ 
+<!--Chart and Label -->
+          <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300">Últimas 8 semanas</span>            </div>          <!--End Chart and Label -->          </div>
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>          
+<!--End Chart and Label -->
+          </div>
        </div>
      </div>
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         <!--&#xa; {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}&#xa; {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}&#xa; {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}&#xa; {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}&#xa;--> <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}.</p> <!--&#xa; {%- else -%}&#xa;-->   <p class="small-text">Actualización de las vacunas administradas del {{_varVaxDateAccurate_}}, con datos del {{_varVaxDateReport_}}.   <br>Casos, decesos y pruebas actualizados {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p> <!--&#xa; {%- endif -%}&#xa;-->         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Datos de origen de vacunas administradas</a> y <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">datos de origen de casos, muertes y pruebas</a></p>
+      <div class="col-lg-10 mx-auto">         
+<!--
+ {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
+ {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
+ {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
+ {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
+-->
+ <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}.</p> 
+<!--
+ {%- else -%}
+-->
+   <p class="small-text">Actualización de las vacunas administradas del {{_varVaxDateAccurate_}}, con datos del {{_varVaxDateReport_}}.   <br>Casos, decesos y pruebas actualizados {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p> 
+<!--
+ {%- endif -%}
+-->
+         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Datos de origen de vacunas administradas</a> y <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">datos de origen de casos, muertes y pruebas</a></p>
       </div>
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Notas sobre los datos</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Los datos no se reportan los fines de semana ni los días festivos estatales. Estos datos se procesan el primer día que sigue al fin de semana o día festivo, y se actualizan aquí al día siguiente.</li> <li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>La tasa de casos y el promedio diario se basan en un promedio de 7 días con un retraso de 7 días.</li><li>La tasa de muertes y el promedio diario se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
+                <ul><li>Los datos no se reportan los fines de semana ni los días festivos estatales. Estos datos se procesan el primer día que sigue al fin de semana o día festivo, y se actualizan aquí al día siguiente.</li> <li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>La tasa de casos y el promedio diario se basan en un promedio de 7 días con un retraso de 7 días.</li><li>La tasa de muertes y el promedio diario se basan en un promedio de 7 días con un retraso de 21 días debido a demoras en el reporte.</li><li>Los datos de casos y muertes de los condados de Los Ángeles y San Diego tienen un retraso adicional de 1 día.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
     </div>
 
-  </div>   <!--END container--> </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Datos de no vacunados y vacunados</h2>
+  </div>   
+<!--END container-->
+ </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Datos de no vacunados y vacunados</h2>
 
 
 
-<div id="postvax-chart-intro">Las vacunas previenen enfermedades graves, salvan vidas y reducen la propagación de la COVID-19. A medida que se vacuna a más personas, es menos probable que el virus se propague, mute y, potencialmente, se vuelva aún más peligroso. Las vacunas ayudarán a poner fin a la pandemia. <!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. --> </div>
+<div id="postvax-chart-intro">Las vacunas previenen enfermedades graves, salvan vidas y reducen la propagación de la COVID-19. A medida que se vacuna a más personas, es menos probable que el virus se propague, mute y, potencialmente, se vuelva aún más peligroso. Las vacunas ayudarán a poner fin a la pandemia. 
+<!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
+ </div>
 
 
 
@@ -166,37 +218,37 @@ formatNumberFixed(tags,1)-%}
     <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">Casos</button> <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizaciones</button> <button class="large-tab js-toggle-group-postvax deaths">Muertes</button>     </div>
   </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
     <li data-label="chartTitleState">Casos de COVID-19 en los últimos cuatro meses</li>
-    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de contraer COVID-19 que las personas completamente vacunadas.</li>
+    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de contraer COVID-19 que las personas que recibieron su dosis de refuerzo.</li>
     <li data-label="yaxis_legend">Casos semanales por cada 100 mil</li>
     <li data-label="yaxis_legend_daily">Casos por cada 100 mil (promedio móvil de 7 días)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vacunados</li>
-    <li data-label="series2_legend">No vacunados</li>
-    <li data-label="series3_legend">Todos los casos</li>
+    <li data-label="series1_legend">Vacunados y con la dosis de refuerzo</li>
+    <li data-label="series2_legend">Vacunados, pero sin la dosis de refuerzo</li>
+    <li data-label="series3_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Casos no vacunados por cada 100 mil: <b>{UCOUNT}</b><br> Casos vacunados por cada 100 mil: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Casos en no vacunados por cada 100 mil: <b>{UCOUNT}</b><br> Casos en vacunados por cada 100 mil: <b>{VCOUNT}</b><br> Casos en vacunados con la dosis de refuerzo por cada 100 mil: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">Hospitalizaciones por COVID-19 en los últimos cuatro meses</li>
-    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de ser hospitalizadas por COVID-19 que las personas completamente vacunadas.</li>
+    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de ser hospitalizadas por COVID-19 que las personas que recibieron su dosis de refuerzo.</li>
     <li data-label="yaxis_legend">Hospitalizaciones semanales por cada millón</li>
     <li data-label="yaxis_legend_daily">Hospitalizaciones por cada millón (promedio móvil de 7 días)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vacunados</li>
-    <li data-label="series2_legend">No vacunados</li>
-    <li data-label="series3_legend">Todos los casos</li>
+    <li data-label="series1_legend">Vacunados y con la dosis de refuerzo</li>
+    <li data-label="series2_legend">Vacunados, pero sin la dosis de refuerzo</li>
+    <li data-label="series3_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Hospitalaciones de no vacunados por cada millón: <b>{UCOUNT}</b><br> Hospitalizaciones de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Hospitalaciones de no vacunados por cada millón: <b>{UCOUNT}</b><br> Hospitalizaciones de vacunados con la dosis de refuerzo por cada millón: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">Muertes por COVID-19 en los últimos cuatro meses</li>
-    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de morir por COVID-19 que las personas completamente vacunadas.</li>
+    <li data-label="chartImpactStatement">Del {BEGIN_IMPACT_DATE} al {END_IMPACT_DATE}, las personas no vacunadas tenían <strong>{RATE_RATIO} veces más probabilidades</strong> de morir por COVID-19 que las personas que recibieron su dosis de refuerzo.</li>
     <li data-label="yaxis_legend">Muertes semanales por cada millón</li>
     <li data-label="yaxis_legend_daily">Muertes por cada millón (promedio móvil de 7 días)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vacunados</li>
-    <li data-label="series2_legend">No vacunados</li>
-    <li data-label="series3_legend">Todos los casos</li>
+    <li data-label="series1_legend">Vacunados y con la dosis de refuerzo</li>
+    <li data-label="series2_legend">Vacunados, pero sin la dosis de refuerzo</li>
+    <li data-label="series3_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Muertes de no vacunados por cada millón: <b>{UCOUNT}</b><br> Muertes de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Muertes de no vacunados por cada millón: <b>{UCOUNT}</b><br> Muertes de vacunados por cada millón: <b>{VCOUNT}</b><br> Muertes de vacunados con la dosis de refuerzo por cada millón: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en vacunados y no vacunados</a></p>
 
 
@@ -204,7 +256,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Información del cuadro</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió dos dosis de las vacunas de Pfizer o Moderna, o la vacuna de Johnson & Johnson al menos dos semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa datos de personas mayores de 12 años recopilados durante los últimos 120 días.</li><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li></ul>
+<ul class="small-text"><li>Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió dos dosis de las vacunas de Pfizer o Moderna, o la vacuna de Johnson & Johnson al menos dos semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona vacunada con la dosis de refuerzo es aquel que ocurre en una persona que recibió una dosis adicional o de refuerzo el 13 de agosto de 2021 o después, al menos 2 semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa datos de personas mayores de 12 años recopilados durante los últimos 120 días.</li><li>Estos cuadros tienen un retraso en los datos. El emparejamiento de los casos de COVID-19 (incluidas las hospitalizaciones y las muertes) con el estado de vacunación se realiza semanalmente, lo que contribuye a que exista un cierto retraso. Esto se combina con retrasos naturales en la notificación de casos y hospitalizaciones, lo cual es mayor para la notificación de muertes.</li><li>Actualizamos estos cuadros los miércoles. Cuando publicamos estos cuadros:</li><ul class="mb-0"><li>Los cuadros de casos y hospitalizaciones tienen un retraso de 17 días.</li><li>El cuadro de muertes tiene un retraso de 24 días.</li></ul><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -224,7 +276,9 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 1 Cases and Deaths - Confirmed Cases --> <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 1 Cases and Deaths - Confirmed Cases -->
+ <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">Casos confirmados en California</li>
           <li data-label="chartTitleCounty">Casos confirmados en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> casos totales confirmados</li>
@@ -245,7 +299,9 @@ formatNumberFixed(tags,1)-%}
           <li data-label="pending">Pendientes</li>
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 2 Cases and Deaths - Confirmed Deaths --> <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 2 Cases and Deaths - Confirmed Deaths -->
+ <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Decesos confirmados en California</li>
           <li data-label="chartTitleCounty">Decesos confirmados en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> decesos totales confirmados</li>
@@ -275,7 +331,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Los números no representan cambios reales de un día a otro, ya que estos resultados incluyen casos de antes de ayer.</li><li>La fecha del episodio es la fecha estimada en que tuvo lugar el evento.</li><li>La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California.</li><li>Los casos incluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado. Un número negativo de muertes reportadas significa que se determinó que muertes previamente atribuidas a la COVID-19 no estuvieron asociadas con la COVID-19.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
+<ul class="small-text"><li>Los números no representan cambios reales de un día a otro, ya que estos resultados incluyen casos de antes de ayer.</li><li>La fecha del episodio es la fecha estimada en que tuvo lugar el evento.</li><li>La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California.</li><li>Los casos incluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li><li>Los datos de los condados de Los Ángeles y San Diego tienen un retraso de 1 día.</li><li>Un número negativo de muertes reportadas significa que se determinó que muertes previamente atribuidas a la COVID-19 no estuvieron asociadas con la COVID-19.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -285,7 +341,9 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 3 Testing for COVID-19 - Total tests in California --> <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 3 Testing for COVID-19 - Total tests in California -->
+ <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Pruebas totales en California</li>
           <li data-label="chartTitleCounty">Pruebas totales en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total de pruebas realizadas</li>
@@ -305,7 +363,9 @@ formatNumberFixed(tags,1)-%}
           <li data-label="pending">Pendientes</li>
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 4 Testing for COVID-19 - Positivity rate in California --> <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 4 Testing for COVID-19 - Positivity rate in California -->
+ <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Tasa de positividad en California</li>
           <li data-label="chartTitleCounty">Tasa de positividad en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> positividad de las pruebas (tasa de 7 días)</li>
@@ -314,7 +374,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="timeTabLabel1">Todo el tiempo</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
-          <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de positividad de 7 días: <b>{7DAY_POSRATE} </b><br> Pruebas totales: <b>{TOTAL_TESTS} </b>           </li>
+          <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de positividad de 7 días: <b>{7DAY_POSRATE} </b><br> Tasa de positividad: <b>{POSRATE} </b>           </li>
           <li data-label="leftYAxisLegend">Tasa de positividad</li>
           <li data-label="rightYAxisLegend">Pruebas</li>
           <li data-label="xAxisLegend">Fecha de la prueba</li>
@@ -331,7 +391,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>La fecha de la prueba es la fecha en la que se administró la prueba.</li><li>La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California. Los datos de las fechas reportadas no están disponibles para las pruebas de antes del 5 de mayo de 2020.</li><li>Los números totales de la fecha de la prueba pueden no coincidir con los números totales de la fecha del reporte.</li><li>La tasa de positividad se calcula como el número de pruebas moleculares positivas dividido entre el total de pruebas moleculares realizadas. La tasa de positividad incluye a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li><li>La tasa de positividad se reportaba anteriormente como un promedio de 14 días.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
+<ul class="small-text"><li>La fecha de la prueba es la fecha en la que se administró la prueba.</li><li>La fecha reportada es la fecha en la que se reportó el evento al Departamento de Salud Pública de California. Los datos de las fechas reportadas no están disponibles para las pruebas de antes del 5 de mayo de 2020.</li><li>Los números totales de la fecha de la prueba pueden no coincidir con los números totales de la fecha del reporte.</li><li>La tasa de positividad se calcula como el número de pruebas moleculares positivas dividido entre el total de pruebas moleculares realizadas. La tasa de positividad incluye a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>La tasa de positividad se reportaba anteriormente como un promedio de 14 días.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -341,7 +401,9 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California --> <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Pacientes hospitalizados con COVID-19 en California</li>
           <li data-label="chartTitleCounty">Pacientes hospitalizados con COVID-19 en el condado de {REGION}</li>
           <li data-label="chartTitleStateICU">Pacientes en ICU con COVID-19 en California</li>
@@ -361,7 +423,9 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">Promedio de 14 días</li>
           <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <!-- 6 Confirmed hospitalizations - ICU beds in California --> <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
+    <div class="col-lg-6 col-md-6 col-sm-12">       
+<!-- 6 Confirmed hospitalizations - ICU beds in California -->
+ <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Camas de ICU en California</li>
           <li data-label="chartTitleCounty">Camas de ICU en el condado de {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> camas disponibles en ICU</li>
@@ -390,13 +454,17 @@ formatNumberFixed(tags,1)-%}
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Raza y etnia</button> <button class="large-tab js-toggle-group gender">Género</button> <button class="large-tab js-toggle-group age">Edad</button>         </div>
       </div>
-      <div class="row">         <!-- newly added -->         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
+      <div class="row">         
+<!-- newly added -->
+         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de las muertes confirmadas por COVID-19 revela una disparidad entre los géneros: los hombres tienen un número desproporcionado de muertes en relación con su población.</p>
-              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
+               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por género en California</li>
                       <li data-label="chartLegend1">% de casos confirmados</li>
@@ -418,7 +486,9 @@ formatNumberFixed(tags,1)-%}
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de casos confirmados y muertes por COVID-19 revela disparidades significativas entre los grupos de edad de California. Las personas de 18 a 49 años tienen un número desproporcionado de casos. Las personas de 65 años o más tienen un número desproporcionado de muertes.</p>
-              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
+               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por edad en California</li>
                       <li data-label="chartLegend1">% de casos confirmados</li>
@@ -440,7 +510,9 @@ formatNumberFixed(tags,1)-%}
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
-              </div>               <!-- <div class="tableauPlaceholder"></div> -->               <div class="row">
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
+               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por raza y etnia en California</li>
                       <li data-label="chartLegend1">% de casos confirmados</li>
@@ -462,7 +534,11 @@ formatNumberFixed(tags,1)-%}
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--END col-12-->   </div>   <!--END CONTAINER--> </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     
+<!--END col-12-->
+   </div>   
+<!--END CONTAINER-->
+ </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>Explore más datos</h2>
         <div class="row">
@@ -492,7 +568,9 @@ formatNumberFixed(tags,1)-%}
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->                 <div class="row d-flex p-2">
+                </div>
+<!--row 1-->
+                 <div class="row d-flex p-2">
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
@@ -501,4 +579,14 @@ formatNumberFixed(tags,1)-%}
                             </div>
                         </div>
                     </div>
-                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed-->    <p></p>
+                </div>
+<!--row 2-->
+             </div>             
+<!--col-10-->
+         </div>         
+<!--row-->
+     </div>     
+<!--container-->
+ </div> 
+<!--full bleed-->
+    <p></p>
