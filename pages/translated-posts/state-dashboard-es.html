@@ -23,8 +23,8 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">actualización de hoy</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    <!--
-
+<ul class="toc"><li><strong><a href="#todays-update">actualización de hoy</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
@@ -99,14 +99,14 @@ formatNumberFixed(tags,1)-%}
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">Actualizado para el {{_varStatDateNoTime_}}</h2>         <!--
- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
+        <h2 class="text-center color-purple">Actualizado para el {{_varStatDateNoTime_}}</h2>         
+<!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
  and {{_varStatTotalDeaths_}} deaths.</div> -->
        </div>
-    </div>  <!--
---- Begin Summary Boxes -->
- <div class="row d-flex justify-content-md-center summary-boxes">   <!--
- Blue Summary Box 1 -->
+    </div>  
+<!----- Begin Summary Boxes -->
+ <div class="row d-flex justify-content-md-center summary-boxes">   
+<!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Vacunas administradas</div>
@@ -115,16 +115,16 @@ formatNumberFixed(tags,1)-%}
          <div class="text-white text-xs mb-2">
            <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> de personas vacunadas</span>            </div>
            <div>             <span class="text-300">(5 años o más con al menos una dosis)</span>            </div>
-         </div>          <!--
-Chart and Label -->
+         </div>          
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>     <!--
- Blue Summary Box 2 -->
+     </div>     
+<!-- Blue Summary Box 2 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Casos</div>
@@ -133,16 +133,16 @@ End Chart and Label -->
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">promedio diario</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">casos nuevos (por cada 100 mil)</span>            </div><div> </div>
-         </div>          <!--
-Chart and Label -->
+         </div>          
+<!--Chart and Label -->
           <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>   <!--
- Blue Summary Box 3 -->
+     </div>   
+<!-- Blue Summary Box 3 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Muertes</div>
@@ -151,51 +151,51 @@ End Chart and Label -->
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">promedio diario</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">nuevas muertes (por cada 100 mil)</span>            </div><div> </div>
-         </div>           <!--
-Chart and Label -->
+         </div>           
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>    <!--
- Blue Summary Box 4 -->
+     </div>    
+<!-- Blue Summary Box 4 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Pruebas</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">de positividad de las pruebas</span>          </div>          <!--
- <div class="text-white text-xs mb-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">de positividad de las pruebas</span>          </div>          
+<!-- <div class="text-white text-xs mb-2">
  <span class="text-300">&nbsp;</span>
  </div> -->
- <!--
-Chart and Label -->
+ 
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>          <!--
-End Chart and Label -->
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">Últimas 8 semanas</span>            </div>          
+<!--End Chart and Label -->
           </div>
        </div>
      </div>
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         <!--
-
+      <div class="col-lg-10 mx-auto">         
+<!--
  {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
  {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}.</p> <!--
-
+ <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}.</p> 
+<!--
  {%- else -%}
 -->
-   <p class="small-text">Actualización de las vacunas administradas del {{_varVaxDateAccurate_}}, con datos del {{_varVaxDateReport_}}.   <br>Casos, decesos y pruebas actualizados {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p> <!--
-
+   <p class="small-text">Actualización de las vacunas administradas del {{_varVaxDateAccurate_}}, con datos del {{_varVaxDateReport_}}.   <br>Casos, decesos y pruebas actualizados {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p> 
+<!--
  {%- endif -%}
 -->
          <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Datos de origen de vacunas administradas</a> y <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">datos de origen de casos, muertes y pruebas</a></p>
@@ -209,14 +209,14 @@ End Chart and Label -->
           </div>         </cagov-accordion>       </div>
     </div>
 
-  </div>   <!--
-END container-->
+  </div>   
+<!--END container-->
  </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Datos de no vacunados y vacunados</h2>
 
 
 
-<div id="postvax-chart-intro">Las vacunas previenen enfermedades graves, salvan vidas y reducen la propagación de la COVID-19. A medida que se vacuna a más personas, es menos probable que el virus se propague, mute y, potencialmente, se vuelva aún más peligroso. Las vacunas ayudarán a poner fin a la pandemia. <!--
- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
+<div id="postvax-chart-intro">Las vacunas previenen enfermedades graves, salvan vidas y reducen la propagación de la COVID-19. A medida que se vacuna a más personas, es menos probable que el virus se propague, mute y, potencialmente, se vuelva aún más peligroso. Las vacunas ayudarán a poner fin a la pandemia. 
+<!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
  </div>
 
 
@@ -283,8 +283,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 1 Cases and Deaths - Confirmed Cases -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 1 Cases and Deaths - Confirmed Cases -->
  <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">Casos confirmados en California</li>
           <li data-label="chartTitleCounty">Casos confirmados en el condado de {REGION}</li>
@@ -306,8 +306,8 @@ END container-->
           <li data-label="pending">Pendientes</li>
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 2 Cases and Deaths - Confirmed Deaths -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Decesos confirmados en California</li>
           <li data-label="chartTitleCounty">Decesos confirmados en el condado de {REGION}</li>
@@ -348,8 +348,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 3 Testing for COVID-19 - Total tests in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 3 Testing for COVID-19 - Total tests in California -->
  <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Pruebas totales en California</li>
           <li data-label="chartTitleCounty">Pruebas totales en el condado de {REGION}</li>
@@ -370,8 +370,8 @@ END container-->
           <li data-label="pending">Pendientes</li>
           <li data-label="pending_caveat">Datos incompletos para fechas recientes</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 4 Testing for COVID-19 - Positivity rate in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 4 Testing for COVID-19 - Positivity rate in California -->
  <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Tasa de positividad en California</li>
           <li data-label="chartTitleCounty">Tasa de positividad en el condado de {REGION}</li>
@@ -408,8 +408,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
  <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Pacientes hospitalizados con COVID-19 en California</li>
           <li data-label="chartTitleCounty">Pacientes hospitalizados con COVID-19 en el condado de {REGION}</li>
@@ -430,8 +430,8 @@ END container-->
           <li data-label="dayAverage">Promedio de 14 días</li>
           <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <!--
- 6 Confirmed hospitalizations - ICU beds in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12">       
+<!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Camas de ICU en California</li>
           <li data-label="chartTitleCounty">Camas de ICU en el condado de {REGION}</li>
@@ -461,16 +461,16 @@ END container-->
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Raza y etnia</button> <button class="large-tab js-toggle-group gender">Género</button> <button class="large-tab js-toggle-group age">Edad</button>         </div>
       </div>
-      <div class="row">         <!--
- newly added -->
+      <div class="row">         
+<!-- newly added -->
          <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de las muertes confirmadas por COVID-19 revela una disparidad entre los géneros: los hombres tienen un número desproporcionado de muertes en relación con su población.</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por género en California</li>
@@ -493,8 +493,8 @@ END container-->
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de casos confirmados y muertes por COVID-19 revela disparidades significativas entre los grupos de edad de California. Las personas de 18 a 49 años tienen un número desproporcionado de casos. Las personas de 65 años o más tienen un número desproporcionado de muertes.</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por edad en California</li>
@@ -517,8 +517,8 @@ END container-->
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
                 <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Casos confirmados por raza y etnia en California</li>
@@ -541,10 +541,10 @@ END container-->
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--
-END col-12-->
-   </div>   <!--
-END CONTAINER-->
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a>     </div>     
+<!--END col-12-->
+   </div>   
+<!--END CONTAINER-->
  </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>Explore más datos</h2>
@@ -575,8 +575,8 @@ END CONTAINER-->
                             </div>
                         </div>
                     </div>
-                </div><!--
-row 1-->
+                </div>
+<!--row 1-->
                  <div class="row d-flex p-2">
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
@@ -586,14 +586,14 @@ row 1-->
                             </div>
                         </div>
                     </div>
-                </div><!--
-row 2-->
-             </div>             <!--
-col-10-->
-         </div>         <!--
-row-->
-     </div>     <!--
-container-->
- </div> <!--
-full bleed-->
+                </div>
+<!--row 2-->
+             </div>             
+<!--col-10-->
+         </div>         
+<!--row-->
+     </div>     
+<!--container-->
+ </div> 
+<!--full bleed-->
     <p></p>
