@@ -23,8 +23,8 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">今日的新數據</a></strong></li><li><a href="#postvax-status"><strong>未接種疫苗數據及已接種疫苗數據</strong></a></li><li><strong><a href="#county-statewide">縣及州數據</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性別及年齡分類的病例數及死亡數</a></strong></li><li><strong><a href="#more">查閱更多數據</a></strong></li></ul>    <!--
-
+<ul class="toc"><li><strong><a href="#todays-update">今日的新數據</a></strong></li><li><a href="#postvax-status"><strong>未接種疫苗數據及已接種疫苗數據</strong></a></li><li><strong><a href="#county-statewide">縣及州數據</a></strong></li><li><strong><a href="#ethnicity-gender-age">按族裔、性別及年齡分類的病例數及死亡數</a></strong></li><li><strong><a href="#more">查閱更多數據</a></strong></li></ul>    
+<!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
 {%-set datavax = vaccineSparkData.data -%}
@@ -99,14 +99,14 @@ formatNumberFixed(tags,1)-%}
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
-        <h2 class="text-center color-purple">更新於 {{_varStatDateNoTime_}}</h2>         <!--
- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
+        <h2 class="text-center color-purple">更新於 {{_varStatDateNoTime_}}</h2>         
+<!-- <div class="text-center">To date, California has confirmed a total of {{_varStatTotalCases_}} COVID-19 cases
  and {{_varStatTotalDeaths_}} deaths.</div> -->
        </div>
-    </div>  <!--
---- Begin Summary Boxes -->
- <div class="row d-flex justify-content-md-center summary-boxes">   <!--
- Blue Summary Box 1 -->
+    </div>  
+<!----- Begin Summary Boxes -->
+ <div class="row d-flex justify-content-md-center summary-boxes">   
+<!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">接種的疫苗數</div>
@@ -115,16 +115,16 @@ formatNumberFixed(tags,1)-%}
          <div class="text-white text-xs mb-2">
            <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> 的人口已接種疫苗</span>            </div>
            <div>             <span class="text-300">（至少已接種一劑疫苗的年滿5歲人士）</span>            </div>
-         </div>          <!--
-Chart and Label -->
+         </div>          
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">過去8週</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>     <!--
- Blue Summary Box 2 -->
+     </div>     
+<!-- Blue Summary Box 2 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">病例數</div>
@@ -133,16 +133,16 @@ End Chart and Label -->
          <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">日平均數</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">新增病例數（每10萬人）</span>            </div><div> </div>
-         </div>          <!--
-Chart and Label -->
+         </div>          
+<!--Chart and Label -->
           <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">過去8週</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>   <!--
- Blue Summary Box 3 -->
+     </div>   
+<!-- Blue Summary Box 3 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">死亡數</div>
@@ -151,51 +151,51 @@ End Chart and Label -->
          <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">日平均數</span> </div>
          <div class="text-white text-xs mb-2">
            <div>              <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">新增死亡數（每10萬人）</span>            </div><div> </div>
-         </div>           <!--
-Chart and Label -->
+         </div>           
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-deaths"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">過去8週</span>            </div>
-         </div>          <!--
-End Chart and Label -->
+         </div>          
+<!--End Chart and Label -->
         </div>
-     </div>    <!--
- Blue Summary Box 4 -->
+     </div>    
+<!-- Blue Summary Box 4 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">檢測數</div>
          <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
           <span class="text-300"> </span>
         </div>
-        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">檢測結果呈陽性</span>          </div>          <!--
- <div class="text-white text-xs mb-2">
+        <div id="total-tested-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">檢測結果呈陽性</span>          </div>          
+<!-- <div class="text-white text-xs mb-2">
  <span class="text-300">&nbsp;</span>
  </div> -->
- <!--
-Chart and Label -->
+ 
+<!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">過去8週</span>            </div>          <!--
-End Chart and Label -->
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">過去8週</span>            </div>          
+<!--End Chart and Label -->
           </div>
        </div>
      </div>
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         <!--
-
+      <div class="col-lg-10 mx-auto">         
+<!--
  {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
  {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">根據{{_varCommonDateReport_}}的數據在{{_varStatDateLaterAccurate_}}更新。</p> <!--
-
+ <p class="small-text">根據{{_varCommonDateReport_}}的數據在{{_varStatDateLaterAccurate_}}更新。</p> 
+<!--
  {%- else -%}
 -->
-   <p class="small-text">使用{{_varVaxDateReport_}}的數據更新{{_varVaxDateAccurate_}}的疫苗接種數。使用{{_varCasesDateReport_}}的數據更新{{_varCasesDateAccurate_}}的病例數、死亡數及檢測數<br>。</p> <!--
-
+   <p class="small-text">使用{{_varVaxDateReport_}}的數據更新{{_varVaxDateAccurate_}}的疫苗接種數。使用{{_varCasesDateReport_}}的數據更新{{_varCasesDateAccurate_}}的病例數、死亡數及檢測數<br>。</p> 
+<!--
  {%- endif -%}
 -->
          <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">疫苗接種來源數據</a>及 <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數、死亡數及檢測數來源數據</a></p>
@@ -209,14 +209,14 @@ End Chart and Label -->
           </div>         </cagov-accordion>       </div>
     </div>
 
-  </div>   <!--
-END container-->
+  </div>   
+<!--END container-->
  </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">未接種疫苗數據及已接種疫苗數據</h2>
 
 
 
-<div id="postvax-chart-intro">接種疫苗可以預防患上重病、拯救生命並且進一步减少COVID-19傳播。隨著越來越多人接種疫苗，病毒不太可能傳播、變異，以及造成更大的危險。疫苗可以幫助結束疫情。 <!--
- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
+<div id="postvax-chart-intro">接種疫苗可以預防患上重病、拯救生命並且進一步减少COVID-19傳播。隨著越來越多人接種疫苗，病毒不太可能傳播、變異，以及造成更大的危險。疫苗可以幫助結束疫情。 
+<!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
  </div>
 
 
@@ -283,8 +283,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 1 Cases and Deaths - Confirmed Cases -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 1 Cases and Deaths - Confirmed Cases -->
  <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">         <ul class="d-none">
           <li data-label="chartTitleState">加州確診病例數</li>
           <li data-label="chartTitleCounty">{REGION}縣的確診病例數</li>
@@ -306,8 +306,8 @@ END container-->
           <li data-label="pending">待定</li>
           <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-confirmed-cases>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 2 Cases and Deaths - Confirmed Deaths -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州確認死亡數</li>
           <li data-label="chartTitleCounty">{REGION}縣的確認死亡數</li>
@@ -348,8 +348,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 3 Testing for COVID-19 - Total tests in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 3 Testing for COVID-19 - Total tests in California -->
  <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州總檢測數</li>
           <li data-label="chartTitleCounty">{REGION}縣的總檢測數</li>
@@ -370,8 +370,8 @@ END container-->
           <li data-label="pending">待定</li>
           <li data-label="pending_caveat">近期數據尚不完整</li>
         </ul>       </cagov-chart-dashboard-total-tests>                    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 4 Testing for COVID-19 - Positivity rate in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 4 Testing for COVID-19 - Positivity rate in California -->
  <cagov-chart-dashboard-positivity-rate class="chart filter-select-space" data-chart-config-filter="positivity" data-chart-config-key="positivity" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州檢測結果呈陽性率</li>
           <li data-label="chartTitleCounty">{REGION}縣的檢測結果呈陽性率</li>
@@ -408,8 +408,8 @@ END container-->
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       <!--
- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
  <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州COVID-19住院患者</li>
           <li data-label="chartTitleCounty">{REGION}縣的COVID-19住院患者</li>
@@ -430,8 +430,8 @@ END container-->
           <li data-label="dayAverage">14日平均數</li>
           <li data-label="tooltipContent">             呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients>                     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">       <!--
- 6 Confirmed hospitalizations - ICU beds in California -->
+    <div class="col-lg-6 col-md-6 col-sm-12">       
+<!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州ICU病床數</li>
           <li data-label="chartTitleCounty">{REGION}縣的ICU病床數</li>
@@ -461,16 +461,16 @@ END container-->
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">種族和族裔</button> <button class="large-tab js-toggle-group gender">性別</button> <button class="large-tab js-toggle-group age">年齡</button>         </div>
       </div>
-      <div class="row">         <!--
- newly added -->
+      <div class="row">         
+<!-- newly added -->
          <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
                 <p>COVID-19確診病例死亡人數的分佈情況，顯示了性別之間有差異，在患病人群中，有很大一部分死亡病例都是男性。</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">加州確診病例數（按性別分類）</li>
@@ -493,8 +493,8 @@ END container-->
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
                 <p>COVID-19確診病例和死亡病例的分佈情況，顯示了加州各年齡組的患病情況有很大差異。18至49歲人士中的病例數相當多。65歲及以上人士中的死亡數相當多。</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">加州確診病例數（按年齡分類）</li>
@@ -517,8 +517,8 @@ END container-->
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
                 <p>COVID-19確診病例的分佈情況，顯示了加州所有種族和族裔人口的患病情況有很大差異，本州的拉丁裔和夏威夷原住民/太平洋島民群體中有相當多的病例數。更多<a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19種族和族裔數據</a>可供查閱。</p>
-              </div>               <!--
- <div class="tableauPlaceholder"></div> -->
+              </div>               
+<!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">加州確診病例數（按種族及族裔分類）</li>
@@ -541,10 +541,10 @@ END container-->
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">查看各群體的更多詳細數據</div>         <cagov-arrow></cagov-arrow> </a>     </div>     <!--
-END col-12-->
-   </div>   <!--
-END CONTAINER-->
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">查看各群體的更多詳細數據</div>         <cagov-arrow></cagov-arrow> </a>     </div>     
+<!--END col-12-->
+   </div>   
+<!--END CONTAINER-->
  </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>查閱更多數據</h2>
@@ -575,8 +575,8 @@ END CONTAINER-->
                             </div>
                         </div>
                     </div>
-                </div><!--
-row 1-->
+                </div>
+<!--row 1-->
                  <div class="row d-flex p-2">
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
@@ -586,14 +586,14 @@ row 1-->
                             </div>
                         </div>
                     </div>
-                </div><!--
-row 2-->
-             </div>             <!--
-col-10-->
-         </div>         <!--
-row-->
-     </div>     <!--
-container-->
- </div> <!--
-full bleed-->
+                </div>
+<!--row 2-->
+             </div>             
+<!--col-10-->
+         </div>         
+<!--row-->
+     </div>     
+<!--container-->
+ </div> 
+<!--full bleed-->
     <p></p>
