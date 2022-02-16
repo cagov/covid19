@@ -72,6 +72,7 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
       'American Indian or Alaska Native':'AI/AN',
       'Asian':'Asian American',
       'Native Hawaiian and other Pacific Islander':'NHPI',
+      'Multi-Race':'Multi-race'
     };
 
     getScreenResizeCharts(this);
@@ -204,6 +205,8 @@ class CAGovDashboardGroupsRaceEthnicityCases extends window.HTMLElement {
           };
           let footerDisplayText = applySubstitutions(this.translationsObj.footerText, footerReplacementDict);
           d3.select(document.querySelector("#ethnicityGroupChartContainer .chart-footer-caption")).text(footerDisplayText);
+
+          // console.log("Rendering group chart",this.popdata);
 
           renderChart.call(this, this.renderExtras, this.popdata, this.tooltip, 'g-re-cases');
           // this.resetTitle({

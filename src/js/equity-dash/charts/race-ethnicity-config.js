@@ -17,6 +17,7 @@ export default function termCheck() {
   desiredTermMappings.set("African American", "Black")
   desiredTermMappings.set("Native Hawaiian and other Pacific Islander", "Native Hawaiian and other Pacific Islander (NHPI)")
   desiredTermMappings.set("American Indian", "American Indian or Alaska Native (AI/AN)") 
+  desiredTermMappings.set("Multi-Race", "Multi-race")
 
   return desiredTermMappings;
 }

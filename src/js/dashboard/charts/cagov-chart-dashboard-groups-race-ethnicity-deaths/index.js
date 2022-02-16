@@ -69,6 +69,7 @@ class CAGovDashboardGroupsRaceEthnicityDeaths extends window.HTMLElement {
       'American Indian or Alaska Native':'AI/AN',
       'Asian':'Asian American',
       'Native Hawaiian and other Pacific Islander':'NHPI',
+      'Multi-Race':'Multi-race'
     };
 
     getScreenResizeCharts(this);
