@@ -16,7 +16,7 @@
     "clean": "gulp clean",
     "compress:img": "cd src/build && node img.js",
     "dev": "cross-env NODE_ENV=development npm run start",
-    "devserver": "web-dev-server --root-dir docs/",
+    "devserver": "web-dev-server --root-dir docs/ --port 8081",
     "local": "npm run watch",
     "local:dev": "cross-env NODE_ENV=development npm run watch",
     "serve": "npx @11ty/eleventy --serve --quiet",
