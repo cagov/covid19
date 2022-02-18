@@ -18,7 +18,8 @@
           "Epsilon",
           "Lambda",
           "Mu",
-          "Omicron"
+          "Omicron",
+          "Other"
         ],
         "labels":"         alpha    beta       gamma     delta    epsilon   lambda     mu       omicron   other", 
         "series_colors8_old2":["#1F2574","#72267C","#DC4567","#C23371",          "#F96E55","#FFCF44","#32CC14","#888888"],
@@ -31,7 +32,7 @@
         "skip_zeros": true,
         "timeKeys": ["all-time","months-6","days-90"],
         "pending_days": 0,
-        "omit_other": true,
+        "omit_other": false,
         "normalize": true
       }
     },
