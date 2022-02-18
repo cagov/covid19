@@ -684,7 +684,7 @@ module.exports = function (eleventyConfig) {
           HTMLElement,
           Event, CustomEvent
         } = linkedom.parseHTML(html);
-        document.querySelectorAll('.wp-block-cgb-block-chart-drawer cagov-accordions').forEach(acc => {
+        document.querySelectorAll('.wp-block-cgb-block-chart-drawer cagov-accordion').forEach(acc => {
           if(acc.querySelector('.accordion-title') && acc.querySelector('.card-body')) {
             const accordionContainer = document.createElement('div')
             accordionContainer.innerHTML = `
