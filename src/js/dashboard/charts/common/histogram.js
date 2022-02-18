@@ -460,6 +460,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
     pending_legend = null,
     month_modulo = 3,
     lineAndBarsSameScale = false,
+    alignAverages = false,
     root_id = "barid" } )  {
 
     console.log("renderChart",root_id);
@@ -531,15 +532,26 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
         max_y_domain = 1;
       }
       // console.log("line range", root_id, min_y_domain, max_y_domain);
-      if (time_series_state_line && !lineAndBarsSameScale) {
-        max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
+      if (alignAverages) {
+        const avgBars = d3.mean(time_series_bars, d=> d.VALUE);
+        const avgLines = d3.mean(scale_series, d=> d.VALUE);
+        const scale = avgLines / avgBars;
+        max_y_domain = this.ybars.domain()[1] * scale;
+        console.log("Aligning averages scale=",scale,avgLines,avgBars,max_y_domain);
+        this.yline = d3
+          .scaleLinear()
+          .domain([0, max_y_domain])  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+          .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
+      } else {
+        if (time_series_state_line && !lineAndBarsSameScale) {
+          max_y_domain = Math.max(max_y_domain, d3.max(time_series_state_line, d=> d.VALUE));
+        }
+        // console.log("max_y_domain", max_y_domain);
+        this.yline = d3
+          .scaleLinear()
+          .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
+          .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
       }
-      // console.log("max_y_domain", max_y_domain);
-      this.yline = d3
-        .scaleLinear()
-        .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
-        .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
-
     }
 
 
