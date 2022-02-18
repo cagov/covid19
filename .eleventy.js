@@ -487,7 +487,7 @@ module.exports = function (eleventyConfig) {
           } //while
 
           const finalHTML =
-            `<cagov-accordion data-css-height="4rem">
+            `<cagov-accordion>
               <details>
                 <summary>${headerHTML}</summary>
                 <div class="accordion-body">

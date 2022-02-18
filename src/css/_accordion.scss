@@ -31,7 +31,7 @@ cagov-accordion:defined details .cagov-open-indicator:after {
 #main cagov-accordion:defined details summary {
   background-color: transparent !important;
   border-radius: 0 !important;
-  padding: 0.5rem 0 0.4rem 0.5rem;
+  padding: 0.5rem 3rem 0.4rem 0.5rem;
 
   &:focus {
     border-radius: 0 !important;
@@ -74,6 +74,10 @@ cagov-accordion summary {
 }
 
 /* chart-drawer version overrides */
+.wp-block-cgb-block-chart-drawer {
+  width: 100%;
+}
+
 .prog-enhanced.chart-drawer  {
   font-size: 0.95rem;
 }
