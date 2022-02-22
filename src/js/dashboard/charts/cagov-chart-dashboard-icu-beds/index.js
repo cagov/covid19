@@ -13,6 +13,7 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
       VALUE:formatValue(barSeries[di].VALUE,{format:'integer'}),
+      VALUE_AVG:formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
     };
     return applySubstitutions(this.translationsObj.tooltipContent, repDict);
   }
@@ -41,6 +42,8 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
   }
 
   setupRenderOptions() {
+    // do this upon data retrieval (so 90-days etc is unaffected)
+
     let renderOptions = { 'tooltip_func':this.tooltip,
                       'extras_func':this.renderExtras,
                       'time_series_bars':this.chartData.time_series[this.chartOptions.seriesField].VALUES,
@@ -54,6 +57,7 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
   }
 
   retrieveData(url, regionName) {
+    this.is_averaged = false;
     if (regionName == 'Alpine') {
         let alldata = {
           "meta": {
@@ -99,7 +103,36 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
     }
   }
 
+  renderComponent(regionName) {
+    // Average uncroppedData here...
+    if (!this.is_averaged) {
+      let time_series_bars = JSON.parse(JSON.stringify(this.uncroppedChartData.time_series[this.chartOptions.seriesField].VALUES));
+      let time_series_line = JSON.parse(JSON.stringify(time_series_bars));
+
+      // compute 14-day average
+      const avg_days = 14;
+      for (let i = avg_days-1; i < time_series_bars.length; ++i) {
+        let sum = 0;
+        for (let j = 0; j < avg_days; ++j) {
+          sum += time_series_bars[i-j].VALUE;
+        }
+        time_series_line[i].VALUE = sum / avg_days;
+      }
+      time_series_bars.splice(0,avg_days-1);
+      time_series_line.splice(0,avg_days-1);
+      let new_date_range = {
+        MAXIMUM:time_series_bars[0].DATE,
+        MINIMUM:time_series_bars[time_series_bars.length-1].DATE,
+      };
+      this.uncroppedChartData.time_series[this.chartOptions.seriesField].VALUES = time_series_bars;
+      this.uncroppedChartData.time_series[this.chartOptions.seriesField].DATE_RANGE = new_date_range;
+      this.uncroppedChartData.time_series[this.chartOptions.seriesFieldAvg] = {DATE_RANGE: new_date_range, VALUES:time_series_line};
+      this.is_averaged = true;
+    }
+    CAGovDashboardChart.prototype.renderComponent.call(this, regionName);
+  }
 }
+
 
 window.customElements.define(
   "cagov-chart-dashboard-icu-beds",
