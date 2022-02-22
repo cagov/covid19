@@ -268,7 +268,7 @@
 								<div class="mt-auto px-2">
    								    <div class="sparkline-vax"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">الـ 8 أسابيع الماضية</span>
+										<span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -295,7 +295,7 @@
 								<div class="mt-auto px-2">
 									<div class="sparkline-cases"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">الـ 8 أسابيع الماضية</span>
+										<span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -322,7 +322,7 @@
 								<div class="mt-auto px-2">
 									<div class="sparkline-deaths"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">الـ 8 أسابيع الماضية</span>
+										<span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -343,7 +343,7 @@
 								<div class="mt-auto px-2">
 									<div class="sparkline-tests"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">الـ 8 أسابيع الماضية</span>
+										<span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -393,26 +393,8 @@
 	</div>
 </div>
 </hero-stats>
-<script>
-let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
-function getSVG(file,selector) {
-  fetch(svg_path + file).then(function(response) {
-    return response.text().then(function(text) {
-      let targetEl = document.querySelector(selector);
-      if(targetEl) {
-        targetEl.innerHTML = text;
-        let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        console.log("SVG ABOUT: ",svg_about);
-      }
-    });
-  });
-}
-getSVG('sparkline-cases.svg','.sparkline-cases');
-getSVG('sparkline-tests.svg','.sparkline-tests');
-getSVG('sparkline-deaths.svg','.sparkline-deaths');
-getSVG('sparkline-vaccines.svg','.sparkline-vax');
-</script>
- <!-- END OF STATS -->
+
+<!-- END OF STATS -->
 
 <!-- begin video section  -->
 	<video-section>
@@ -654,6 +636,15 @@ ga('tracker3.send', 'pageview');
 	
 		<script type="module">
 			const e=document.getElementById("video-modal"),n=document.getElementById("video-container"),o=document.getElementsByClassName("video-modal-open"),t=document.getElementsByClassName("video-modal-close"),d=`\n<iframe \n  width="100%" \n  height="100%" \n  src="https://www.youtube.com/embed/${document.querySelector(".video-item").dataset.video}?autoplay=1" \n  frameborder="0" \n  allow="accelerometer; autoplay; encrypted-media; gyroscope" \n  allowfullscreen>\n</iframe>\n`,r=e=>{27===e.keyCode&&l()},a=()=>{e.style.display="block",document.body.classList.add("popup_visible"),n.innerHTML=d,Array.from(t).forEach((e=>{e.addEventListener("click",c)})),e.addEventListener("click",c),document.addEventListener("keydown",r)},l=()=>{e.style.display="none",document.body.classList.remove("popup_visible"),n.innerHTML="",Array.from(t).forEach((e=>{e.removeEventListener("click",c)})),e.removeEventListener("click",c),document.removeEventListener("keydown",r)},c=n=>{n.preventDefault(),"none"===e.style.display?a():l()};Array.from(o).forEach((e=>{e.addEventListener("click",c)}));
+
+		</script>
+	
+
+
+	
+	
+		<script type="module">
+			function e(e,n={month:"long",day:"numeric",year:"numeric"},t=0){const r=function(e){const n=e.split("-"),t=+n[0],r=+n[1],s=+n[2];return new Date(t,r-1,s)}(e);return 0!=t&&r.setDate(r.getDate()+t),function(e,n={month:"long",day:"numeric",year:"numeric"}){return e.toLocaleString(document.documentElement.lang,n)}(r,n)}function n(n,t){fetch("https://files.covid19.ca.gov/img/generated/sparklines/"+n).then((function(n){return n.text().then((function(n){let r=document.querySelector(t);if(r){r.innerHTML=n;let t=JSON.parse(r.querySelector("svg").getAttribute("meta")),s=r.parentElement.querySelector(".date-caption-span");const a={month:"long",day:"numeric"};s&&"FIRST_DATE"in t&&"LAST_DATE"in t&&(s.innerHTML=e(t.FIRST_DATE,a)+" &ndash; "+e(t.LAST_DATE,a))}}))}))}n("sparkline-cases.svg",".sparkline-cases"),n("sparkline-tests.svg",".sparkline-tests"),n("sparkline-deaths.svg",".sparkline-deaths"),n("sparkline-vaccines.svg",".sparkline-vax");
 
 		</script>
 	
