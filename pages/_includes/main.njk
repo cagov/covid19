@@ -190,7 +190,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
    								    <div class="sparkline-vax"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -217,7 +217,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-cases"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -244,7 +244,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-deaths"></div>
 									<div class="text-white text-xs mt-1">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -267,7 +267,7 @@ formatNumber(tags,1)-%}
 								<div class="mt-auto px-2">
 									<div class="sparkline-tests"></div>
 									<div class="text-white text-xs mt-1 ">
-										<span class="text-300">{{ translatedLabels.varPast8Weeks }}</span>
+										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
 								</div>
 								<!--End Chart and Label -->
@@ -317,26 +317,8 @@ formatNumber(tags,1)-%}
 	</div>
 </div>
 </hero-stats>
-<script>
-let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
-function getSVG(file,selector) {
-  fetch(svg_path + file).then(function(response) {
-    return response.text().then(function(text) {
-      let targetEl = document.querySelector(selector);
-      if(targetEl) {
-        targetEl.innerHTML = text;
-        let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        console.log("SVG ABOUT: ",svg_about);
-      }
-    });
-  });
-}
-getSVG('sparkline-cases.svg','.sparkline-cases');
-getSVG('sparkline-tests.svg','.sparkline-tests');
-getSVG('sparkline-deaths.svg','.sparkline-deaths');
-getSVG('sparkline-vaccines.svg','.sparkline-vax');
-</script>
- <!-- END OF STATS -->
+
+<!-- END OF STATS -->
 
 <!-- begin video section  -->
 	<video-section>
@@ -402,5 +384,7 @@ getSVG('sparkline-vaccines.svg','.sparkline-vax');
 	<div class="popup_background"></div>
 	<!-- end video overlay -->
 	{{ macros.includeJavascriptByEnv('video', env.dev) }}
+
+	{{ macros.includeJavascriptByEnv('main', env.dev) }}
 
 {% endblock %}

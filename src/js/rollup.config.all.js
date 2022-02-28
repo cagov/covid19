@@ -3,6 +3,7 @@ import es5 from './rollup.config.es5';
 import esm from './rollup.config';
 import video from './video/rollup.config';
 import dashboard from './dashboard/rollup.config';
+import main from './main/rollup.config';
 import equitydash from './equity-dash/rollup.config';
 import vaccines from './vaccines/rollup.config';
 import variants from './variants/rollup.config';
@@ -41,6 +42,7 @@ export default [
   ...(shouldIRebuild('/alerts/', '../../docs/js/alerts.js') ? [alerts] : []),
   ...(shouldIRebuild('/video/', '../../docs/js/video.js') ? [video] : []),
   ...(shouldIRebuild('/dashboard/', '../../docs/js/dashboard.js') ? [dashboard] : [dashboard]),
+  ...(shouldIRebuild('/main/', '../../docs/js/main.js') ? [main] : [main]),
   ...(shouldIRebuild('/equity-dash/', '../../docs/js/equitydash.js') ? [equitydash] : [equitydash]),
   ...(shouldIRebuild('/vaccines/', '../../docs/js/vaccines.js') ? [vaccines] : [vaccines]),
   ...(shouldIRebuild('/variants/', '../../docs/js/varioants.js') ? [variants] : [variants]),

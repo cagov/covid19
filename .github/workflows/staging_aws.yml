@@ -2,7 +2,7 @@ name: Staging deploy - AWS
 on:
   schedule:
     # run around 1:40pm on Tuesday
-    - cron:  '40 21 * * Tue'
+    - cron:  '55 21 * * Tue'
 
   push:
     branches:
