@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as macros %}
+
+{% block meta %}
+  <meta name="keywords" content="covid-19 california, covid-19 ca, covid-19 volunteer, covid-19 testing, covid-19 testing costs, covid-19 testing california, covid-19 toolkit, your actions save lives, california health corps, covid-19 immigrants, covid-19 financial help, covid-19 medi-cal, covid-19 healthcare, covid-19 alerts"/>
+	
+	<meta content="https://covid19.ca.gov/" property="og:url">
+	<meta content="https://covid19.ca.gov/img/awareness/CAForAll_COVID_EndCards_v4_English.jpg" property="og:image">
+{% endblock %}
+
+{% block headCSS %}
+	{{ macros.includeCSSByEnv("home", env.dev) }}
+	{{ super() }}
+{% endblock %}
+
+{% block preHeader %}
+	<cwds-survey data-npi-survey-url="{{ tags | npiSurveyUrl | safe }}" data-pulse-survey-url="{{ tags | pulseSurveyUrl | safe }}" data-survey-prompt="{{Terms[9].Text}}" data-pulse-survey-prompt="{{Terms[10].Text}}"></cwds-survey> 
+{% endblock %}
+
+{% block endingBlock %}
+	<!-- begin video overlay -->
+	<div id="video-modal" class="video-modal" style="display: none">
+		<div class="video-modal-content">
+			<button class="video-modal-close modal_close">
+				<svg class="video-modal-close-svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640">
+					<path d="m320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path>
+				</svg>
+			</button>
+			<div class="video-modal-player" id="video-container"></div>
+		</div>
+	</div>
+	<div class="popup_background"></div>
+	<!-- end video overlay -->
+	{{ macros.includeJavascriptByEnv('video', env.dev) }}
+
+	{{ macros.includeJavascriptByEnv('main', env.dev) }}
+
+{% endblock %}
