@@ -1,0 +1,362 @@
+---
+layout: "main_v2.njk"
+title: "Pagsubaybay sa COVID-19 sa CA"
+meta: "County and statewide data to help people understand the spread of COVID-19."
+author: "State of California"
+publishdate: "2022-02-28T19:59:05Z"
+tags: ["translate"]
+addtositemap: true
+---
+
+<!--
+
+{%-set dataYesterday = tableauCovidMetrics[1] -%}
+{%-set data2 = dailyStatsV2.data -%}
+{%-set datavax = vaccineSparkData.data -%}
+{%-set datacases = casesSummaryData.data -%}
+{%-set datadeaths = deathsSummaryData.data -%}
+
+{%-set _varStatDateAccurate_ = stateDashboardUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varStatDateRounded_ = stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
+
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
+{%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
+{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
+{%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
+formatNumberSmall(tags)-%}
+{%-set _varDeathsTrend_ = data2.deaths.LATEST_CONFIDENT_INCREASE_DEATH_RATE_PER_100K_7_DAYS %}
+{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+{%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
+{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
+formatNumber(tags,1)-%}
+{%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
+
+{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
+
+{%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
+{%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
+{%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
+{%-set _varCasesTrendClassD_ = '' if _varCasesTrend_ < 0 else "d-none" %} 
+{%-set _varDeathsTrendClassD_='' if _varDeathsTrend_ < 0 else "d-none" %} 
+{%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
+{%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
+
+
+{%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
+{%- if _varInhibitDailyTotals_  -%}
+{%- set _varStatTotalCasesToday_ = '—' -%}
+{%- set _varStatTotalDeathsToday_ = '—' -%}
+{%- set _varStatTestedDaily_ = '—' -%}
+{%- endif -%}
+
+{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
+{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
+
+-->
+
+<hero-stats>
+    <section class="hero trigger hero-padding-top">
+        <div class="hero-wrap">
+            <div class="hero-text-container" dir="ltr">
+                <div class="hero-text" role="region" aria-labelledby="hero-text">
+                    <div class="hero-text-align">				
+                        <h1 class="hero-headline m-0" id="hero-text">Nakakasagip ng buhay ang iyong mga pagkilos</h1>
+                        <h2 class="hero-subhead m-0">Panatilihing malusog ang California</h2>
+                        
+                        <a href="https://myturn.ca.gov/" class="link-arrow-medblue justify-content-start">
+                            <div class="link-arrow-label">Kunin Ang Iyong Booster</div>
+                            <cagov-arrow></cagov-arrow>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-alert" role="alert" aria-label="Alerts section">
+                <div class="hero-alert-align">
+                    <svg class="hero-alert-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 355.86 393.02">
+
+<title>loud-speaker</title><path d="M118,259.59c22.26,1.6,42.91,1.6,58.81,3.18-27-28.61-68.35-89-31.79-173.25L92.54,142C65.52,192.83,103.66,248.47,118,259.59Z" transform="translate(-19.23 -4.08)" style="fill:#1f2574"/><path d="M70.29,159.45A330.84,330.84,0,0,1,33.74,196C9,217,18,252.59,44.86,256.4c16.55,2.35,47.68,3.18,47.68,3.18C52.8,207.13,70.28,159.45,70.28,159.45Z" transform="translate(-19.23 -4.08)" style="fill:#1f2574"/><path d="M178.37,290.08c0-1.36.88-5.33-3.17-5.4-6.28-.1-59.95-1.29-67.2-1.57-2.56-.1-1.15,4.27.43,5.61,6.35,8.11,17.49,22.95,31.79,52.67,20.66,45.91,9.54,58.05,41.33,55.36C213.33,392.69,173.6,346.79,178.37,290.08Z" transform="translate(-19.23 -4.08)" style="fill:#1f2574"/><path d="M310.31,22.75c-39.74-36.55-73.12-9.54-82.66-1.59-20.67,15.89-27,20.66-44.51,38.15-25.43,31.79-62,109.68,17.49,203.46,46.1,4.77,90.61,9.54,124,9.54,12.71,0,41.33-7.94,47.68-49.27,11.12-66.77-11.13-152.59-62-200.27Zm19.07,228.9c-28.61,7.94-66.77-35-85.84-98.56S232.42,32.3,261,22.75c28.61-7.94,66.77,35,85.84,98.56C364.36,184.88,358,242.11,329.38,251.65Z" transform="translate(-19.23 -4.08)" style="fill:#1f2574"/><path d="M302.84,135.64c7.9,26,4.78,50-7,53.61s-27.7-14.64-35.61-40.68-4.77-50,7-53.61S294.93,109.6,302.84,135.64Z" transform="translate(-19.23 -4.08)" style="fill:#1f2574"/></svg>
+                    <div class="hero-alert-text">
+                        {% include (language.includepath + "new" + language.filepostfix + ".html") %}
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="hero-alert-social">
+                    <div class="hero-alert-social-align">
+                        <h3 class="color-purple m-0 pt-2 pb-3">Tingnan ang mga update ng Gobernador</h3>
+                        <nav class="social" role="navigation" aria-label="California Governor on on Social Media">
+                            <a class="social-link" href="https://www.facebook.com/CAgovernor" title="California Governor on Facebook"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Facebook</title><path d="M304 96h80V0h-80c-61.757 0-112 50.243-112 112v48h-64v96h64v256h96V256h80l16-96h-96v-48c0-8.673 7.327-16 16-16z"></path></svg></a>
+                            <a class="social-link" href="https://twitter.com/CAgovernor" title="California Governor on Twitter"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Twitter</title><path d="M512 113.2c-18.8 8.4-39.1 14-60.3 16.5 21.7-13 38.3-33.6 46.2-58.1-20.3 12-42.8 20.8-66.7 25.5C412 76.7 384.7 64 354.5 64c-58 0-105 47-105 105 0 8.2.9 16.2 2.7 23.9-87.3-4.4-164.7-46.2-216.5-109.8-9 15.5-14.2 33.6-14.2 52.8 0 36.4 18.5 68.6 46.7 87.4-17.2-.5-33.4-5.3-47.6-13.1v1.3c0 50.9 36.2 93.4 84.3 103-8.8 2.4-18.1 3.7-27.7 3.7-6.8 0-13.3-.7-19.8-1.9 13.4 41.7 52.2 72.1 98.1 73-36 28.2-81.2 45-130.5 45-8.5 0-16.8-.5-25.1-1.5C46.5 462.7 101.7 480 161 480c193.2 0 298.9-160.1 298.9-298.9 0-4.6-.1-9.1-.3-13.6 20.5-14.7 38.3-33.2 52.4-54.3z"></path></svg></a>
+                            <a class="social-link" href="https://www.youtube.com/c/cagovernor" title="California Governor on YouTube"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>California Governor on YouTube</title><path d="M314,355.4v60.3c0,12.9-3.7,19.1-11.1,19.1c-4.3,0-8.6-2-12.9-6.3v-86c4.3-4.3,8.6-6.3,12.9-6.3 C310.3,336.3,314,342.9,314,355.4z M410.6,355.7v13.1h-25.7v-13.1c0-12.9,4.3-19.4,12.9-19.4C406.3,336.3,410.6,342.9,410.6,355.7z M134.6,293.4h30.6v-26.9H76v26.9h30V456h28.6V293.4z M216.9,456h25.4V314.9h-25.4v108c-5.7,8-11.1,12-16.3,12c-3.4,0-5.4-2-6-6 c-0.3-0.9-0.3-4-0.3-10v-104h-25.4v111.7c0,10,0.9,16.6,2.3,20.9c2.3,7.1,8.3,10.6,16.6,10.6c9.1,0,18.9-5.7,29.1-17.4V456z M339.4,413.7v-56.3c0-13.1-0.6-22.6-2.6-28.3c-3.1-10.6-10.3-16-20.3-16c-9.4,0-18.3,5.1-26.6,15.4v-62h-25.4V456H290v-13.7 c8.6,10.6,17.4,15.7,26.6,15.7c10,0,17.1-5.4,20.3-15.7C338.9,436.3,339.4,426.9,339.4,413.7z M436,410.9v-3.7h-26 c0,10.3-0.3,16-0.6,17.4c-1.4,6.9-5.1,10.3-11.4,10.3c-8.9,0-13.1-6.6-13.1-19.7v-24.9H436v-29.4c0-15.1-2.6-26-7.7-33.1 c-7.4-9.7-17.4-14.6-30.3-14.6c-13.1,0-23.1,4.9-30.6,14.6c-5.4,7.1-8,18-8,33.1v49.4c0,15.1,2.9,26.3,8.3,33.1 c7.4,9.7,17.4,14.6,30.9,14.6c13.4,0,24-5.1,30.9-15.1c3.1-4.6,5.4-9.7,6-15.4C436,424.9,436,419.1,436,410.9z M262.3,150V90 c0-13.1-3.7-19.7-12.3-19.7c-8.3,0-12.3,6.6-12.3,19.7v60c0,13.1,4,20,12.3,20C258.6,170,262.3,163.1,262.3,150z M467.7,364.6 c0,32.9-0.3,68-7.4,100c-5.4,22.6-23.7,39.1-45.7,41.4c-52.6,6-105.7,6-158.6,6s-106,0-158.6-6c-22-2.3-40.6-18.9-45.7-41.4 c-7.4-32-7.4-67.1-7.4-100l0,0c0-33.1,0.3-68,7.4-100c5.4-22.6,23.7-39.1,46-41.7c52.3-5.7,105.4-5.7,158.3-5.7s106,0,158.6,5.7 c22,2.6,40.6,19.1,45.7,41.7C467.7,296.6,467.7,331.4,467.7,364.6z M182.6,0h29.1l-34.6,114v77.4h-28.6V114 c-2.6-14-8.3-34-17.4-60.6c-6.3-17.7-12.6-35.7-18.6-53.4h30.3l20.3,75.1L182.6,0z M288.3,95.1v50c0,15.1-2.6,26.6-8,33.7 c-7.1,9.7-17.1,14.6-30.3,14.6c-12.9,0-22.9-4.9-30-14.6c-5.4-7.4-8-18.6-8-33.7v-50c0-15.1,2.6-26.3,8-33.4	c7.1-9.7,17.1-14.6,30-14.6c13.1,0,23.1,4.9,30.3,14.6C285.7,68.9,288.3,80,288.3,95.1z M384,48.9v142.6h-26v-15.7 c-10.3,12-20,17.7-29.4,17.7c-8.3,0-14.3-3.4-16.9-10.6c-1.4-4.3-2.3-11.1-2.3-21.4V48.9h26v104.9c0,6,0,9.4,0.3,10	c0.6,4,2.6,6.3,6,6.3c5.1,0,10.6-4,16.3-12.3V48.9H384z"/></svg></a>
+                            <a class="social-link" href="https://www.instagram.com/cagovernor" title="California Governor on Instagram"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>California Governor on Instagram</title><path d="M256 46.1c68.4 0 76.5.3 103.4 1.5 25 1.1 38.5 5.3 47.5 8.8 11.9 4.6 20.5 10.2 29.4 19.1 9 9 14.5 17.5 19.2 29.4 3.5 9 7.7 22.6 8.8 47.5 1.2 27 1.5 35.1 1.5 103.4s-.3 76.5-1.5 103.4c-1.1 25-5.3 38.5-8.8 47.5-4.6 11.9-10.2 20.5-19.1 29.4-9 9-17.5 14.5-29.4 19.2-9 3.5-22.6 7.7-47.5 8.8-27 1.2-35.1 1.5-103.4 1.5s-76.5-.3-103.4-1.5c-25-1.1-38.5-5.3-47.5-8.8-11.9-4.6-20.5-10.2-29.4-19.1-9-9-14.5-17.5-19.2-29.4-3.5-9-7.7-22.6-8.8-47.5-1.2-27-1.5-35.1-1.5-103.4s.3-76.5 1.5-103.4c1.1-25 5.3-38.5 8.8-47.5 4.6-11.9 10.2-20.5 19.1-29.4 9-9 17.5-14.5 29.4-19.2 9-3.5 22.6-7.7 47.5-8.8 26.9-1.2 35-1.5 103.4-1.5zM256 0c-69.5 0-78.2.3-105.5 1.5-27.2 1.2-45.9 5.6-62.1 11.9C71.5 20 57.2 28.7 43 43 28.7 57.2 20 71.5 13.4 88.3c-6.3 16.3-10.7 34.9-11.9 62.1C.3 177.8 0 186.5 0 256s.3 78.2 1.5 105.5c1.2 27.2 5.6 45.9 11.9 62.1C20 440.5 28.7 454.8 43 469c14.2 14.2 28.5 23 45.3 29.5 16.3 6.3 34.9 10.7 62.1 11.9 27.3 1.2 36 1.5 105.5 1.5s78.2-.3 105.5-1.5c27.2-1.2 45.9-5.6 62.1-11.9 16.8-6.5 31.1-15.3 45.3-29.5s23-28.5 29.5-45.3c6.3-16.3 10.7-34.9 11.9-62.1 1.2-27.3 1.5-36 1.5-105.5s-.3-78.2-1.5-105.5c-1.2-27.2-5.6-45.9-11.9-62.1-6.3-17-15-31.3-29.3-45.5-14.2-14.2-28.5-23-45.3-29.5-16.3-6.3-34.9-10.7-62.1-11.9C334.2.3 325.5 0 256 0z"></path><path d="M256 124.5c-72.6 0-131.5 58.9-131.5 131.5S183.4 387.5 256 387.5 387.5 328.6 387.5 256 328.6 124.5 256 124.5zm0 216.8c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3c47.1 0 85.3 38.2 85.3 85.3s-38.2 85.3-85.3 85.3zM423.4 119.3c0 16.955-13.745 30.7-30.7 30.7S362 136.255 362 119.3s13.745-30.7 30.7-30.7 30.7 13.745 30.7 30.7z"></path></svg></a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-photo" role="complementary" aria-labelledby="hero-background">
+            <div class="hero-photo-fade"></div>
+            <picture>
+                <source media="(max-width: 767px)" type="image/webp" srcset="/img/hero_v4_mobile_lg.webp">
+                <source media="(max-width: 767px)" type="image/jpeg" srcset="/img/hero_v4_mobile_lg.jpg">
+                <source media="(min-width: 768px)" type="image/webp" srcset="/img/hero_v4_1600.webp">
+                <source media="(min-width: 768px)" type="image/jpeg" srcset="/img/hero_v4_1600.jpg">
+                <img class="hero-photo-pic" src="/img/hero_v4_1600.jpg" alt="Isang grupo ng mga mag-aaral na nakasuot ng mask at nag-uusap-usap sa isang pasilyo.">
+            </picture>
+            <div id="hero-background" class="hero-photo-description">Isang grupo ng mga mag-aaral na nakasuot ng mask at nag-uusap-usap sa isang pasilyo.</div>
+        </div>
+    </section>
+</hero-stats>
+
+{% include (language.includepath + "homepage-featured" + language.filepostfix + ".html") %}
+
+
+<!-- MOVED THE STATS -->
+<hero-stats>
+<div class="bg-darkblue full-bleed mb-0">
+<div class="container py-2">
+<div class="row pb-4">
+            <div class="hero-stats" role="region" aria-labelledby="tracking-covid">
+                <h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">Pagsubaybay sa COVID-19 sa CA</h2>
+
+    {%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+    {%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
+    {%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
+
+    {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+    {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
+    {%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
+
+    {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
+    {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
+    {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
+    {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
+                <div class="text-sm text-center text-300">
+                    {{- "Na-update noong [UpdatedDate] nang may data mula [DataDate]" | replace("[UpdatedDate]", _varStatDateLaterAccurate_) | replace("[DataDate]",_varCommonDateReport_) -}}
+                </div>
+
+    {%- else -%}
+                <div class="text-sm text-center text-300">
+                    {{- "Na-update ang mga ibinigay na bakuna noong [VaxUpdatedDate] , na may datos mula noong [VaxDataDate]" | replace("[VaxUpdatedDate]", _varVaxDateAccurate_) | replace("[VaxDataDate]",_varVaxDateReport_) -}}
+                </div>
+                <div class="text-sm text-center text-300">
+                    {{- "Na-update ang mga kaso, pagkamatay, at pagsusuri noong [CasesUpdatedDate] , na may datos mula noong [CasesDataDate]" | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
+                </div>
+    {%- endif -%}
+
+                <!----- Begin Summary Boxes -->
+                <div class="row d-flex justify-content-md-center summary-boxes">
+                    <!-- Blue Summary Box 1 -->						
+                    <div class="col-md-6 col-lg-3 px-10px">							
+                        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+                            <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Naibigay na Bakuna</div>
+                            <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
+                            <span class="text-300">kabuuan</span>
+                            </div>
+                            <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">
+                            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span>
+                            </div>
+                            <div class="text-white text-xs mb-2">
+                                <div>
+                                    <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> ng nabakunahan nang populasyon</span>
+                                </div>
+                                <div>
+                                    <span class="text-300">(5+ with at least one dose)</span>
+                                </div>
+                            </div>
+                            <!--Chart and Label -->
+                            <div class="mt-auto px-2">
+                                   <div class="sparkline-vax"></div>
+                                <div class="text-white text-xs mt-1">
+                                    <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>
+                                </div>
+                            </div>
+                            <!--End Chart and Label -->
+                        </div>
+                    </div>
+
+                    <!-- Blue Summary Box 2 -->
+                    <div class="col-md-6 col-lg-3 px-10px">							
+                        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+                            <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Kaso</div>
+
+                            <div id="total-cases-number" class="text-white font-size-1-2em mb-2">
+                            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">kabuuan</span>
+                            </div>
+                            <div id="total-cases-today" class="text-white font-size-1-2em mb-2">
+                            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span>
+                            </div>
+                            <div class="text-white text-xs mb-2">
+                                <div>
+                                    <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">mga bagong kaso sa bawat 100K</span>
+                                </div><div>&nbsp;</div>
+                            </div>
+                            <!--Chart and Label -->
+                            <div class="mt-auto px-2">
+                                <div class="sparkline-cases"></div>
+                                <div class="text-white text-xs mt-1 ">
+                                    <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>
+                                </div>
+                            </div>
+                            <!--End Chart and Label -->
+                        </div>
+                    </div>
+                    <!-- Blue Summary Box 3 -->
+                    <div class="col-md-6 col-lg-3 px-10px">							
+                        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+                            <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Pagkamatay</div>
+
+                            <div id="total-deaths-number" class="text-white font-size-1-2em mb-2">
+                            <strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">kabuuan</span>
+                            </div>
+                            <div id="total-deaths-today" class="text-white font-size-1-2em mb-2">
+                            <strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">pang-araw-araw na average</span>
+                            </div>
+                            <div class="text-white text-xs mb-2">
+                                <div>
+                                    <strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">mga bagong pagkamatay sa bawat 100K</span>
+                                </div><div>&nbsp;</div>
+                            </div>
+
+                            <!--Chart and Label -->
+                            <div class="mt-auto px-2">
+                                <div class="sparkline-deaths"></div>
+                                <div class="text-white text-xs mt-1">
+                                    <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>
+                                </div>
+                            </div>
+                            <!--End Chart and Label -->
+                        </div>
+                    </div>
+                    <!-- Blue Summary Box 4 -->
+                    <div class="col-md-6 col-lg-3 px-10px">							
+                        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+                            <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Pagsusuri</div>
+                            <div id="total-tests-number" class="text-white font-size-1-2em mb-2">
+                            <span class="text-300">&nbsp;</span>
+                            </div>
+                            <div id="total-tested-today" class="text-white font-size-1-2em mb-2">
+                                <strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">pagpopositibo sa pagsusuri</span>
+                            </div>
+                            {# <div class="text-white text-xs mb-2">
+                                <span class="text-300">&nbsp;</span>
+                            </div> #}
+                            <!--Chart and Label -->
+                            <div class="mt-auto px-2">
+                                <div class="sparkline-tests"></div>
+                                <div class="text-white text-xs mt-1 ">
+                                    <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>
+                                </div>
+                            </div>
+                            <!--End Chart and Label -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Summary Boxes -->
+
+            
+            <div class="text-sm text-center text-300 ptop-24px">
+                Available ang mga detalye tungkol sa data na ito sa <a class="hero-stats-footer-slink" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">dashboard ng estado</a>.
+            </div>
+                    
+            <div class="hero-stats-footer">
+                    <a class="hero-stats-footer-link mt-2" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">
+                    <span class="no-underline " aria-hidden="true">
+
+                    <svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+ M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
+</svg></span><span class="ml-2">Data ng estado</span></a>
+
+
+                    <a class="hero-stats-footer-link mt-2" href="{{ "vaccination-progress-data/"  | toTranslatedPath(tags) }}">
+                    <span class="no-underline " aria-hidden="true">
+
+                    <svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+ M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/>
+</svg></span><span class="ml-2">Data sa pagbabakuna</span></a>
+
+                    <a class="hero-stats-footer-link mt-2" href="{{ "equity/"  | toTranslatedPath(tags) }}">
+                    <span class="no-underline" aria-hidden="true">
+                    <svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ viewBox="0 0 26.33 25.29" style="enable-background:new 0 0 26.33 25.29;" xml:space="preserve">
+<path class="chart-icon-path" d="M3.14,0.31C2.29,0.31,1.6,1,1.6,1.85v21.59c0,0.85,0.69,1.54,1.54,1.54h20.05c0.85,0,1.54-0.69,1.54-1.54V1.85
+c0-0.85-0.69-1.54-1.54-1.54C23.19,0.31,3.14,0.31,3.14,0.31z M21.65,8.7v13.2h-4.63V8.7C17.02,8.7,21.65,8.7,21.65,8.7z
+ M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/></svg></span><span class="ml-2">Pagkakapantay-pantay sa kalusugan</span></a>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</hero-stats>
+
+<!-- END OF STATS -->
+
+<!-- begin video section  -->
+<video-section>
+
+<section class="video trigger bg-lightblue" role="region" aria-labelledby="video-resources">
+    <div class="video-wrap text-center">
+        {% set JSONVidraw -%}
+        {%- include (language.includepath + "video-section" + language.filepostfix + ".json") -%}
+        {%- endset -%}
+        {%- set JSONVid = JSONVidraw | jsonparse -%}
+        {%- set RowsVid = JSONVid.Table1 -%}
+        {%- for item in RowsVid -%}
+        {%- if item.Active -%}
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+        <h2 class="color-purple mt-0 mb-0 pb-2" id="video-resources">{{item["Video Title"]}}</h2>
+        <p class="mb-3 text-300">{{item["Description"]}}</p>
+            <article class="video-item mx-auto mt-3" data-video="{{item["VideoID"]}}">
+                <a class="video-modal-open video-thumb-link w-100 w-lg-40" data-video="{{item["VideoID"]}}" href="{{item["VideoURL"]}}">
+                    <figure class="video-thumb-photo">
+                        <div class="video-thumb-play-button" role="button" tabindex="0" aria-label="Watch video">
+                            <svg class="video-thumb-play-button-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
+                                <path class="st0" d="M0,45.9V4.4c0-3.3,2-4.2,4.9-2.5l32.9,19c4.7,2.6,4.8,5,0.6,7.5L5,47.6C1.7,49.6,0,48.5,0,45.9z"/>
+                            </svg>
+                        </div>
+                        <img class="video-thumb-photo-img" src="{{item["ImageURL"]}}" alt="{{item["ImageALT"]}}">
+                    </figure>
+                </a>
+            </article>
+
+            <a href="{{item["ButtonURL"]}}" class="link-arrow-blue mt-4" data-video="{{item["VideoID"]}}">
+                <div class="link-arrow-label">{{item["ButtonText"]}}</div>
+                <cagov-arrow></cagov-arrow>
+            </a>
+
+        </div>
+        </div>
+        </div>
+            {%- endif -%}
+            {%- endfor %}
+    </div>
+</section>
+</video-section>
+<!-- end video section -->
+
+
+<!-- end contentBlock -->
