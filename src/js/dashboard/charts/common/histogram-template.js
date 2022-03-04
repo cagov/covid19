@@ -22,14 +22,14 @@ const createSelect = (
     // Set 'selected' attribute based on current chart config.
     const optionAttribute = (optionValues[i] === configFilter || optionValues[i] === timerange) ? 'selected = "selected"' : '';
     // Contatenate options.
-    optionsMarkup += `<option role="option" ${optionAttribute} value="${optionValues[i]}">${label}</option>`;
+    optionsMarkup += `<option aria-label="${label}" ${optionAttribute} value="${optionValues[i]}">${label}</option>`;
     i += 1;
   });
 
   // @todo a11y: Each select should have a label with a for="" attribute.
   return `
     <cagov-chart-filter-select class="js-filter-${configKey}">
-      <select role="listbox" aria-label="drop-down menu" data-type="${selectType}">
+      <select aria-label="pull-down menu" data-type="${selectType}">
         ${optionsMarkup}
       </select>
     </cagov-chart-filter-select>
