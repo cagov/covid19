@@ -113,7 +113,7 @@ export default function template(chartOptions, {
 `            <div class="header-line">${post_chartLegend3}</div>
 ` : '') +
 `            </div>
-            <div class="svg-holder"></div>
+            <div class="svg-holder" aria-label="${post_chartTitle}" role="img"></div>
             <!-- <a class="dl-button" role="button">download</a> -->
         </div>
       </div>

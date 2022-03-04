@@ -488,6 +488,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
 
     // this.svg.selectAll("g").remove();
     this.svg
+      .attr("aria-hidden","true")
       .attr("viewBox", [
         0,
         0,
