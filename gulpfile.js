@@ -268,6 +268,7 @@ function writeMenuJson(lang) {
     sections: menuLinksJson.Table1
       .map(section => ({
         title: section.label,
+        idx:   section._section_index,
         links:
           menuLinksJson.Table2
             .filter(l => l._slug_or_url && l.label && l._section_index === section._section_index)
