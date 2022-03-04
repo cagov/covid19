@@ -29,7 +29,7 @@ const createSelect = (
   // @todo a11y: Each select should have a label with a for="" attribute.
   return `
     <cagov-chart-filter-select class="js-filter-${configKey}">
-      <select role="listbox" data-type="${selectType}">
+      <select role="listbox" aria-label="drop-down menu" data-type="${selectType}">
         ${optionsMarkup}
       </select>
     </cagov-chart-filter-select>
