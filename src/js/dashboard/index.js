@@ -26,17 +26,25 @@ import "./charts/cagov-chart-dashboard-icu-beds/index.js"
 
 // new postvax charts
 import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
+import { reformatReadableDate } from "../common/readable-date.js";
 
 // load sparklines
 let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
 function getSVG(file,selector) {
   fetch(svg_path + file).then(function(response) {
-    return response.text().then(function(text) {
+    return response.text().then(function(svgtext) {
       let targetEl = document.querySelector(selector);
       if(targetEl) {
-        targetEl.innerHTML = text;
-        let svg_about = targetEl.querySelector('svg').getAttribute('about');
-        console.log("SVG ABOUT: ",svg_about);
+        targetEl.innerHTML = svgtext;
+        let svg_meta = JSON.parse(targetEl.querySelector('svg').getAttribute('meta'));
+				let capEl = targetEl.parentElement.querySelector('.date-caption-span');
+				const dateFormat = { month: "long", day: 'numeric' };
+				if (capEl && 'FIRST_DATE' in svg_meta && 'LAST_DATE' in svg_meta) {
+          // console.log("Setting caption: ",svg_meta.FIRST_DATE,svg_meta.LAST_DATE);
+					capEl.innerHTML = reformatReadableDate(svg_meta.FIRST_DATE, dateFormat) +
+															' &ndash; ' + 
+														reformatReadableDate(svg_meta.LAST_DATE, dateFormat);
+				}
       }
     });
   });
