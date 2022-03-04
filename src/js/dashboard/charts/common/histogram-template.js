@@ -28,8 +28,8 @@ const createSelect = (
 
   // @todo a11y: Each select should have a label with a for="" attribute.
   return `
-    <cagov-chart-filter-select class="js-filter-${configKey}">
-      <select data-type="${selectType}">
+    <cagov-chart-filter-select role="listbox" class="js-filter-${configKey}">
+      <select role="group" data-type="${selectType}">
         ${optionsMarkup}
       </select>
     </cagov-chart-filter-select>

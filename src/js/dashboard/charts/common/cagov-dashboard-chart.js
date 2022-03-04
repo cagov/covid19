@@ -120,8 +120,8 @@ export default class CAGovDashboardChart extends window.HTMLElement {
   setupSelectFilters() {
     const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
 
-    selectFilters.forEach((selectFitler) => {
-      selectFitler.addEventListener(
+    selectFilters.forEach((selectFilter) => {
+      selectFilter.addEventListener(
         'change',
         this.chartFilterSelectsHandler.bind(this, selectFilters),
         false,
