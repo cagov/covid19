@@ -7,6 +7,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
 
   let groups = svg.append("g")
     .attr("class","fg-line "+root_id+(is_second_line?" second-line":""))
+    .attr("id",'line-'+root_id)
     // .attr('style','fill:none; stroke:#555555; stroke-width: 2.0px;'+(is_second_line? 'opacity:0.5;' : ''))
     .append('path')
     .datum(data)
@@ -22,6 +23,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
    }
    let groups = svg.append("g")
       .attr("class","fg-bars "+root_id)
+      .attr("id",'bars-'+root_id)
       // .attr('style','fill:#deeaf6;')
       .selectAll("g")
       .data(data)
@@ -53,7 +55,8 @@ function writePendingBlock(svg, data, x, y,
     pending_legend=null,
     root_id='barid'} ) {
     let xgroup = svg.append("g")
-      .attr("class",'pending-block');
+      .attr("class",'pending-block')
+      .attr("id",'pending-block-'+root_id);
 
     const max_x_domain = x.domain()[1];
     const min_y_domain = y.domain()[0];
@@ -84,6 +87,7 @@ function writePendingBlock(svg, data, x, y,
 function writeCountyStateLegend(svg,x,y, {
   county_legend = 'County',
   state_legend = 'State',
+  root_id='barid'
 })
 {
   let y_pos = this.dimensions.height - 6;
@@ -91,7 +95,10 @@ function writeCountyStateLegend(svg,x,y, {
 
 
   let g = svg.append("g")
-    .attr("class","county-legend");
+    .attr("class","county-legend")
+    .attr("id",'county-legend-'+root_id)
+    .attr("aria-flowto",'left-axis-'+root_id)
+    ;
 
   g.append('rect')
     // .attr('style','fill:black;')
@@ -107,7 +114,10 @@ function writeCountyStateLegend(svg,x,y, {
     .attr("y",y_pos);
 
   g = svg.append("g")
-    .attr("class","state-legend");
+    .attr("class","state-legend")
+    .attr("id",'state-legend-'+root_id)
+    .attr("aria-flowto",'left-axis-'+root_id)
+    ;
 
   g.append('rect')
     // .attr('style','fill:gray;')
@@ -135,6 +145,9 @@ function writeDateAxis(svg, data, x, y,
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
+      .attr("id",'date-axis-'+root_id)
+      .attr("aria-flowto",'pending-block-'+root_id)
+      ;
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
   data.forEach((d,i) => {
@@ -213,7 +226,10 @@ function writeLeftYAxis(svg, data, x, y,
                           root_id='barid' }) {
   const y_div = getAxisDiv(y,{'hint':left_y_fmt});
   let ygroup = svg.append("g")
-      .attr("class",'left-y-axis');
+      .attr("class",'left-y-axis')
+      .attr("id",'left-axis-'+root_id)
+      .attr("aria-flowto",'right-axis-'+root_id)
+      ;
 
   const max_y_domain = y.domain()[1];
   const min_x_domain = x.domain()[0];
@@ -256,6 +272,8 @@ function writeRightYAxis(svg, data, x, y,
   const y_div = getAxisDiv(y,{'hint':right_y_fmt});
   let ygroup = svg.append("g")
       .attr("class",'right-y-axis')
+      .attr("id",'right-axis-'+root_id)
+      .attr("aria-flowto",'date-axis-'+root_id)
       .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
 
 
@@ -409,7 +427,7 @@ function getAxisDiv(ascale,{hint='num'}) {
   return result;
 }
 
-function drawLineLegend(svg, line_legend, line_data, xline, yline) {
+function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='barid' }) {
   if (line_legend != null) {
     let lsi = Math.floor(line_data.length*2/3);
     let lsample = line_data[lsi];
@@ -425,8 +443,11 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
     x2 += Math.cos(ang+Math.PI)*margin;
     y2 += Math.sin(ang+Math.PI)*margin;
     let g = this.svg.append('g')
-      .attr('class','line-legend');
-    g.append('text')
+      .attr('class','line-legend')
+      .attr('id', 'line-legend-'+root_id)
+      .attr('aria-flowto', 'left-axis-'+root_id);
+
+      g.append('text')
       .text(line_legend)
       .attr("x",this.dimensions.width/3)
       .attr("y",this.dimensions.height/4);
@@ -566,13 +587,13 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline) {
       writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
         { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
       if (line_legend != null) {
-          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline);
+          drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline, {root_id:root_id});
       }
     }
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
         { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
-      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {});
+      writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {root_id:root_id});
     }
 
     if (pending_date && pending_legend) {
