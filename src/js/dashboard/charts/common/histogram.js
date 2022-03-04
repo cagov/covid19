@@ -97,7 +97,6 @@ function writeCountyStateLegend(svg,x,y, {
   let g = svg.append("g")
     .attr("class","county-legend")
     .attr("id",'county-legend-'+root_id)
-    .attr("aria-flowto",'left-axis-'+root_id)
     ;
 
   g.append('rect')
@@ -116,7 +115,6 @@ function writeCountyStateLegend(svg,x,y, {
   g = svg.append("g")
     .attr("class","state-legend")
     .attr("id",'state-legend-'+root_id)
-    .attr("aria-flowto",'left-axis-'+root_id)
     ;
 
   g.append('rect')
@@ -146,7 +144,6 @@ function writeDateAxis(svg, data, x, y,
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
       .attr("id",'date-axis-'+root_id)
-      .attr("aria-flowto",'pending-block-'+root_id)
       ;
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
@@ -228,7 +225,6 @@ function writeLeftYAxis(svg, data, x, y,
   let ygroup = svg.append("g")
       .attr("class",'left-y-axis')
       .attr("id",'left-axis-'+root_id)
-      .attr("aria-flowto",'right-axis-'+root_id)
       ;
 
   const max_y_domain = y.domain()[1];
@@ -273,7 +269,6 @@ function writeRightYAxis(svg, data, x, y,
   let ygroup = svg.append("g")
       .attr("class",'right-y-axis')
       .attr("id",'right-axis-'+root_id)
-      .attr("aria-flowto",'date-axis-'+root_id)
       .attr('style','stroke-width: 0.5px; stroke:#608cbd;');
 
 
@@ -444,8 +439,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
     y2 += Math.sin(ang+Math.PI)*margin;
     let g = this.svg.append('g')
       .attr('class','line-legend')
-      .attr('id', 'line-legend-'+root_id)
-      .attr('aria-flowto', 'left-axis-'+root_id);
+      .attr('id', 'line-legend-'+root_id);
 
       g.append('text')
       .text(line_legend)
