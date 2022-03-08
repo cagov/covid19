@@ -48,6 +48,7 @@ export default function drawBars({
   // Yellow bars rendered second
   let bar = svg
     .append("g")
+    .attr('role','list')
     .attr('class', 'svg-first-section')
     .selectAll("g")
     .data(stackedData1)
@@ -60,7 +61,7 @@ export default function drawBars({
     .data((d) => d)
     .enter();
 
-  bar .append("rect")
+    bar .append("rect")
     .attr("x", (d) => x1(d[0]))
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", (d) => x1(d[1]) - x1(d[0]))
@@ -74,7 +75,8 @@ export default function drawBars({
     .attr("height", "40px")
     .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
-    /* .attr("aria-label", (d, i) => {
+    .attr('role','listitem')
+     .attr("aria-label", (d, i) => {
       let caption = component.getToolTipCaption1(d, selectedMetric);
       // remove tags and trim excess whitespace
       caption = caption.replace( /(<([^>]+)>)/ig, ' ');
@@ -82,7 +84,9 @@ export default function drawBars({
       caption = caption.trim();
       // console.log("Set pop aria label",caption);
       return caption;
-    }) */
+    })
+
+
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"
@@ -108,6 +112,7 @@ export default function drawBars({
   let barGap = component.dimensions.is_single_col? 25 : 5;
   svg
     .append("g")
+    .attr('aria-hidden','true')
     .attr("class", "bars")
     .selectAll(".bars")
     .data(data)
