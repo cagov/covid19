@@ -38,6 +38,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .data(stackedData)
     .enter()
     .append("g")
+    .attr('role','list')
     .attr("fill", (d) => color(d.key))
     .selectAll("rect")
 
@@ -46,6 +47,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .enter();
   
   bar.append("rect")
+    .attr('aria-hidden','true')
     .attr("x", (d) => x(d[0]))
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY))
     .attr("width", (d) => x(d[1]) - x(d[0]))
@@ -60,6 +62,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .attr("height", "30px")
     .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
+    .attr('role','listitem')
     .attr("aria-label", (d, i) => {
       let caption = component.toolTipCaption(
         d.data.DEMOGRAPHIC_SET_CATEGORY,

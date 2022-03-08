@@ -148,7 +148,8 @@ class CAGovVaccinesHPIDose extends window.HTMLElement {
             .attr("width", d => xScale.bandwidth())
             .attr("height", d => (yScale(0)-yScale(d.COMBINED_DOSES/totalDosesAllQuartiles)))
             .attr("tabindex", "0")
-            .attr("aria-label", (d, i) => `${this.ariaLabel(d, totalDosesAllQuartiles)}`);
+            // .attr("aria-label", (d, i) => `${this.ariaLabel(d, totalDosesAllQuartiles)}`)
+            ;
 
     groups
         .append("text")

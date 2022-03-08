@@ -174,7 +174,8 @@ class CAGovVaccinesHPIPeople extends window.HTMLElement {
             .attr("width", d => xScaleInner.bandwidth())
             .attr("height", d => (yScale(0)-yScale(d.D[d.KEY])))
             .attr("tabindex", "0")
-            .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`);
+            // .attr("aria-label", (d, i) => `${this.ariaLabel(d)}`)
+            ;
 
     let barcaps1 = groups
         .selectAll("g")
