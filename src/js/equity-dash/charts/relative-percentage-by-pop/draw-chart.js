@@ -42,9 +42,7 @@ export default function drawBars({
     .attr("y", (d) => y(d.data.DEMOGRAPHIC_SET_CATEGORY) + 20)
     .attr("width", (d) => x2(d[1]) - x2(d[0]))
     .attr("height", "10px")
-
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => 'unused_caption1')
     ;
 
   // Yellow bars rendered second
