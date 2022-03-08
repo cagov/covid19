@@ -108,7 +108,7 @@ function writeBars(component, svg, data, x, y, width, tooltip) {
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
       .attr("tabindex", "0")
-      .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
+      // .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
         // problem the svg is not the width in px in page as the viewbox width
@@ -141,7 +141,7 @@ function rewriteBars(component, svg, data, x, y) {
     .attr("x", (d, i) => x(i))
     .attr("y", d => y(d.CASE_RATE_PER_100K))
     .attr("height", d => y(0) - y(d.CASE_RATE_PER_100K))
-    .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
+    // .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
 }
 
 function writeBarLabels(component, svg, data, x, y, sparkline) {

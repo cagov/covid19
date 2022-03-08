@@ -74,7 +74,7 @@ export default function drawBars({
     .attr("height", "40px")
     .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => {
+    /* .attr("aria-label", (d, i) => {
       let caption = component.getToolTipCaption1(d, selectedMetric);
       // remove tags and trim excess whitespace
       caption = caption.replace( /(<([^>]+)>)/ig, ' ');
@@ -82,7 +82,7 @@ export default function drawBars({
       caption = caption.trim();
       // console.log("Set pop aria label",caption);
       return caption;
-    })
+    }) */
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
       // Rephrase as "X people make up XX% of cases statewide and XX% of California's population"

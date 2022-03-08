@@ -60,7 +60,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
     .attr("height", "30px")
     .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => {
+    /* .attr("aria-label", (d, i) => {
       let caption = component.toolTipCaption(
         d.data.DEMOGRAPHIC_SET_CATEGORY,
         d.data.METRIC_VALUE_PER_100K
@@ -81,7 +81,7 @@ export default function drawBars(stackedData, data, statewideRatePer100k) {
       caption = caption.trim();
       // console.log("Set 100k aria-label",caption);
       return caption;
-    })
+    }) */
     .on("mouseover focus", function (event, d) {
       d3.select(this).transition();
 

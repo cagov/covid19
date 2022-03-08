@@ -72,7 +72,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
     .attr("height", "30px")
     .attr("fill", "transparent")  // use rgb(255,0,0,0.5) for debugging
     .attr("tabindex", "0")
-    .attr("aria-label", (d, i) => {
+    /* .attr("aria-label", (d, i) => {
       let percentNotMissing = d.data.NOT_MISSING
         ? parseFloat(d.data.NOT_MISSING * 100).toFixed(1) + "%"
         : 0;
@@ -100,7 +100,7 @@ function drawBars(svg, x, y, yAxis, stackedData, color, data, tooltip, translati
       caption = caption.replace( /\s+/g, ' ');
       caption = caption.trim();
       return caption;
-    })
+    }) */
 
     .on("mouseover focus", function(event, d) {
       d3.select(this).transition();
