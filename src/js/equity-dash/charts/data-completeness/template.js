@@ -31,7 +31,7 @@ export default function template(translationsObj) {
             
               <cagov-accordion class="accordion-chart-drawer">
                 <details>
-                  <summary>Chart information</summary>
+                  <summary><h2>Chart information</h2></summary>
                   <div class="accordion-body">
                   <p class="small-text">${translationsObj["footnote"]}</p>
                   </div>

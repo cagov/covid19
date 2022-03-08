@@ -37,7 +37,7 @@ export default function template(translationsObj) {
             <div class="wp-block-cgb-block-chart-drawer js-qa-exclude">
               <cagov-accordion class="accordion-chart-drawer">
                 <details>
-                  <summary>Chart information</summary>
+                  <summary><h2>Chart information</h2></summary>
                   <div class="accordion-body">
                   <p class="small-text">${translationsObj.footnote}</p>
                   </div>
