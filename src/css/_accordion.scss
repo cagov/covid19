@@ -1,6 +1,7 @@
 /* accordion component specific classes */
 cagov-accordion:defined details {
   height: 4rem;
+  margin-top: -1px;
 }
 cagov-accordion:defined details .cagov-open-indicator {
   background-color: #ff8000!important;
@@ -19,13 +20,14 @@ cagov-accordion:defined details .cagov-open-indicator:after {
   display: block;
   content: "";
   position: absolute;
-  top: -16px;
-  left: -8px;
+  top: -15px;
+  left: -7px;
   width: 32px;
   height: 32px;
   border: solid 2px #ff8000;
   background: none;
   border-radius: 50%;
+  box-sizing: border-box;
 }
 
 #main cagov-accordion:defined details summary {
