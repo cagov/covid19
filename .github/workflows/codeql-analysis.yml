@@ -28,7 +28,7 @@ on:
     #        │  │ │ │ │
     #        │  │ │ │ │
     #        *  * * * *
-    - cron: '45 20 * * WED'
+    - cron: '45 19 * * WED'
 
 jobs:
   analyze:
