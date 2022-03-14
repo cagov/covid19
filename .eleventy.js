@@ -2,6 +2,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json', 'utf8'));
 const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json', 'utf8'));
+const linkedom = require("linkedom");
 let filesSiteData = [];
 
 let htmlmap = [];
@@ -464,10 +465,15 @@ module.exports = function (eleventyConfig) {
       //loop and build content
       for (let resultIndex = 0; resultIndex < accordionContent.length; resultIndex++) {
         const row = accordionContent[resultIndex];
+        let isChartDrawer = false;
         if (row.header) {
           const headerHTML = row.html
             .replace(/wp-accordion/, '')
             .replace(/ class=""/, '');
+          
+            if(headerHTML.indexOf('accordion-chart-drawer') > -1) {
+              isChartDrawer = true;
+            }
 
           let bodyHTML = '';
           //fill the body
@@ -486,21 +492,14 @@ module.exports = function (eleventyConfig) {
           } //while
 
           const finalHTML =
-            `<cagov-accordion>
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodyHTML}
-                  </div>
+            `<cagov-accordion ${isChartDrawer ? 'class="accordion-chart-drawer"' : ''}>
+              <details>
+                <summary>${headerHTML}</summary>
+                <div class="accordion-body">
+                  ${bodyHTML}
                 </div>
-              </div>
-            </cagov-accordion>
-            `;
+              </details>
+            </cagov-accordion>`;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finalHTML);
@@ -597,28 +596,21 @@ module.exports = function (eleventyConfig) {
 
           const finaldarkHTML =
             `<div class="full-bleed bg-darkblue dark-accordion-bg">
-            <div class="container">
-            <div class="row">
-            <div class="col-lg-10 mx-auto">
-            <cagov-accordion class="dark-accordion">
-              <div class="card">
-                <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-                  <div class="accordion-title">
-            ${headerdarkHTML}
-                  </div><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-                </button>
-                <div class="card-container" aria-hidden="true">
-                  <div class="card-body">
-            ${bodydarkHTML}
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-10 mx-auto">
+                    <cagov-accordion class="dark-accordion">
+                      <details>
+                        <summary>${headerdarkHTML}</summary>
+                        <div class="accordion-body">
+                          ${bodydarkHTML}
+                        </div>
+                      </details>
+                    </cagov-accordion>
                   </div>
                 </div>
               </div>
-            </cagov-dark-accordion>
-            </div>
-            </div>
-            </div>
-            </div>
-            `;
+            </div>`;
 
           //replace the header with the new merged content
           result = result.replace(row.html, finaldarkHTML);
@@ -681,6 +673,32 @@ module.exports = function (eleventyConfig) {
       }
       if (html.indexOf(localizeString) > -1) {
         html = await findlinkstolocalize(html);
+      }
+
+      
+      // Temporary rewrite of chart-drawer accordions. This can be removed along with the linkedom lib after all chart drawer custom Gutenberg block accordions are removed from WordPress
+      if (html.indexOf('wp-block-cgb-block-chart-drawer') > -1) {
+        const {
+          window, document, customElements,
+          HTMLElement,
+          Event, CustomEvent
+        } = linkedom.parseHTML(html);
+        document.querySelectorAll('.wp-block-cgb-block-chart-drawer cagov-accordion').forEach(acc => {
+          if(acc.querySelector('.accordion-title') && acc.querySelector('.card-body')) {
+            const accordionContainer = document.createElement('div')
+            accordionContainer.innerHTML = `
+              <cagov-accordion class="accordion-chart-drawer">
+                <details>
+                  <summary><h2>${acc.querySelector('.accordion-title').innerHTML}</h2></summary>
+                  <div class="accordion-body">
+                    ${acc.querySelector('.card-body').innerHTML}
+                  </div>
+                </details>
+              </cagov-accordion>`;
+            acc.replaceWith(accordionContainer);
+          }
+        })
+        html = document.toString();
       }
     }
 

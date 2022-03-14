@@ -65,6 +65,9 @@ We need to balance pre-generating a lean site with ease of authoring. We do this
 
 The ```staging``` branch deploys to <a href="https://staging.covid19.ca.gov/">https://staging.covid19.ca.gov/</a> and can be administered via <a hrev="https://portal.azure.com/#@digitalca.onmicrosoft.com/resource/subscriptions/9bdb8e29-156f-4fc9-a1fe-1bb6a915a4f0/resourceGroups/RG-GO-COVID19-D-001/providers/Microsoft.Web/staticSites/SWA-GO-COVID-D-002/environments">static web app service 002</a>.
 
+## Css purging
+
+This project imports bootstrap styles some of which are unnecessary. There is a purge step in the build process which reviews local files and tosses unused CSS.
 ## Testing
 
 Github action workflow triggers ```npm test``` end to end tests on pull request to production branch.

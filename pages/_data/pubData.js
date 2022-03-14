@@ -7,7 +7,6 @@ const camelCase = (string) => string.replace(/-([a-z])/g, (g) => g[1].toUpperCas
 // [1] All language files are in the same directory (false, no split), or
 // [2] Language files are split between wordpress- and translated-posts folders (true, files are split).
 const files = [
-  { slug: 'do-dont', split: false },
   { slug: 'common-page-labels', split: true, tableSchema: {
     Table1: {
       pivot: true,
