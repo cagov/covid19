@@ -98,6 +98,7 @@ function writeBars(component, svg, data, x, y, width, tooltip) {
   svg.append("g")
     .attr("fill", "#92C5DE")
     .attr('class','barshere')
+    .attr('role','list')
     .selectAll("rect")
     .data(data)
     .enter()
@@ -108,6 +109,7 @@ function writeBars(component, svg, data, x, y, width, tooltip) {
       .attr("width", x.bandwidth())
       .attr("id", (d, i) => "barid-"+i)
       .attr("tabindex", "0")
+      .attr('role','listitem')
       .attr("aria-label", (d, i) => `${component.ariaLabel(d)}`)
       .on("mouseover focus", function(event, d, i) {
         d3.select(this).style("fill", "#003D9D");
