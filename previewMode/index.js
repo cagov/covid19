@@ -5,7 +5,7 @@ const { azureFunctionHandler } = require("@cagov/11ty-serverless-preview-mode");
 /** @type {import('@cagov/11ty-serverless-preview-mode').WordpressSettings} */
 const wordpressSettings = {
   resourceUrl: "https://covid19.ca.gov",
-  wordPressSite: "https://live-covid19-ca-gov.pantheonsite.io/"
+  wordPressSite: "https://live-covid19-ca-gov.pantheonsite.io"
 }
 
 /**
