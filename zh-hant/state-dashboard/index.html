@@ -259,7 +259,7 @@
                   <summary><h2>數據説明</h2></summary>
                   <div class="accordion-body">
                     
-                <ul><li>週末或國家假日期間不報告數據。將在周末或假日結束後的第一天處理此類數據，並在次日更新於此處。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>所有日平均數都是7日平均數。</li><li>接種的疫苗數有7天的滯後期。</li><li>病例數有8天的滯後期。</li><li>因為報告有延遲，所以死亡數有22天的滯後期。</li><li>檢測數有1天的滯後期。</li><li>Los Angeles和San Diego縣的病例和死亡數據有1天額外延遲。</li><li> Los Angeles縣的檢測數據有1天延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
+                <ul class="small-text"><li>週末或國家假日期間不報告數據。將在周末或假日結束後的第一天處理此類數據，並在次日更新於此處。</li> <li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>所有日平均數都是7日平均數。</li><li>接種的疫苗數有7天的滯後期。</li><li>病例數有8天的滯後期。</li><li>因為報告有延遲，所以死亡數有22天的滯後期。</li><li>檢測數有1天的滯後期。</li><li>Los Angeles和San Diego縣的病例和死亡數據有1天額外延遲。</li><li> Los Angeles縣的檢測數據有1天延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
               
                   </div>
                 </details>
@@ -303,7 +303,7 @@
     <li data-label="series2_legend">已接種疫苗但未打補強針</li>
     <li data-label="series3_legend">未接種疫苗</li>
     <li data-label="pending_legend">等待數據</li>
-    <li data-label="tooltipContent">       一週結束日：<b>{WEEKDATE}</b><br>每100萬人中未接種疫苗人士的住院人數：<b>{UCOUNT}</b><br>每100萬人中已打補強針人士的住院人數：<b>{BCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       一週結束日：<b>{WEEKDATE}</b><br>每100萬人中未接種疫苗人士的住院人數：<b>{UCOUNT}</b><br> 每100萬人中已接種疫苗人士的住院人數：<b>{VCOUNT}</b><br>每100萬人中已接種補強針人士的住院人數：<b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">過去四個月的COVID-19死亡數</li>
     <li data-label="chartImpactStatement">從{BEGIN_IMPACT_DATE}至{END_IMPACT_DATE}，與已打疫苗補強針人士相比，未接種疫苗人士因感染COVID-19死亡的機率要高<strong>{RATE_RATIO}</strong>倍。</li>
