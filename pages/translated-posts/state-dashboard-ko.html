@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-02-22T19:59:05Z"
+publishdate: "2022-03-16T21:41:52Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -196,7 +196,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>데이터는 주말이나 주 공휴일에는 보고되지 않습니다. 본 데이터는 주말이나 공휴일 다음 첫째 날에 처리하여 그 다음날에 업데이트됩니다.</li> <li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li><li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사자 데이터는 1일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
+                <ul class="small-text"><li>데이터는 주말이나 주 공휴일에는 보고되지 않습니다. 본 데이터는 주말이나 공휴일 다음 첫째 날에 처리하여 그 다음날에 업데이트됩니다.</li> <li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li><li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사자 데이터는 1일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -238,8 +238,8 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series1_legend">백신접종 및 부스터 샷 접종</li>
     <li data-label="series2_legend">백신접종 및 부스터 샷 미접종</li>
     <li data-label="series3_legend">백신 미접종</li>
-    <li data-label="pending_legend">데이터 처리 중</li>
-    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 1백만명 당 백신 미접종 입원 환자 수: <b>{UCOUNT}</b><br> 1백만명 당 부스터 샷 접종 입원 환자 수: <b>{BCOUNT}</b><br>     </li>  
+    <li data-label="pending_legend">데이터 계류 중</li>
+    <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 백만명 당 백신 미접종 입원 환자 수: <b>{UCOUNT}</b><br> 백만명 당 백신 접종 입원 환자 수: <b>{VCOUNT}</b><br> 백만명 당 부스터 샷을 맞은 입원 환자 수: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">지난 4개월 간 COVID-19 사망자 수</li>
     <li data-label="chartImpactStatement">{BEGIN_IMPACT_DATE} 부터 {END_IMPACT_DATE} 사이에 백신 미접종자가 COVID-19로 사망할 가능성은 부스터 샷 접종자에 비해 <strong>{RATE_RATIO} 배 더 높았습니다</strong>.</li>
