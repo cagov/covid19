@@ -65,7 +65,7 @@
 
 			let answers = [...data[0].answers];
 			if(answers[0].questions.length > 0) {
-				let html = `<h4>Quick answers</h4>
+				let html = `<h3>Quick answers</h3>
 					${answers.map(function(a) {
 						if(a.answer.indexOf('platform.twitter.com/widgets') > -1) {
 							let newScript = document.createElement("script");
@@ -74,15 +74,12 @@
 						}
 						if(a.questions.length > 0) {
 							return `<cagov-accordion>
-								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
-										<div class="accordion-title">${a.questions.join(' ')}</div>
-									</button>
-									<div class="card-container collapsed">
-										<div class="card-body">
-											<p>${a.answer}</p>
-										</div>
+								<details>
+									<summary><h4>${a.questions.join(' ')}</h4></summary>
+									<div class="accordion-body">
+										${a.answer}
 									</div>
-								</div>
+								</details>
 							</cagov-accordion>`;
 						} else {
 							return '';

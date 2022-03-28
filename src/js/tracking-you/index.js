@@ -6,8 +6,8 @@ export default function setupAnalytics() {
 
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
-      if(this.querySelector('.accordion-title')) {
-        reportGA('accordion', this.querySelector('.accordion-title').textContent.trim())
+      if(this.querySelector('summary')) {
+        reportGA('accordion', this.querySelector('summary').textContent.trim())
       }
     });
   });
