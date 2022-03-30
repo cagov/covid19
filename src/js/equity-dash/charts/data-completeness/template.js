@@ -27,13 +27,17 @@ export default function template(translationsObj) {
             ${dataSrc}
           </div>
 
-            <div class="wp-block-cgb-block-chart-drawer js-qa-exclude"><cagov-accordion class="chart-drawer">
-            <div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-            <div class="accordion-title js-qa-exclude">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-
-              <p class="small-text">${translationsObj["footnote"]}</p>
-
-            </div></div></div></cagov-accordion></div>
+            <div class="wp-block-cgb-block-chart-drawer js-qa-exclude">
+            
+              <cagov-accordion class="accordion-chart-drawer">
+                <details>
+                  <summary><h2>Chart information</h2></summary>
+                  <div class="accordion-body">
+                  <p class="small-text">${translationsObj["footnote"]}</p>
+                  </div>
+                </details>
+              </cagov-accordion>
+             </div>
   
           </div>
         </div>

@@ -111,7 +111,7 @@ function writeBars(svg, data, x, y, baselineData, tooltip, rootID='barid') {
         .attr("width", d => x(max_x_domain))
         .attr("height", y.bandwidth())
         .attr("tabindex", "0")
-        .attr("aria-label", (d, i) => `${this.ariaLabel(d, baselineData)}`)
+        // .attr("aria-label", (d, i) => `${this.ariaLabel(d, baselineData)}`)
         .on("mouseover focus", function(event, d, i) {
           d3.select(this.parentNode).select('.fg-bar')
           .transition().duration(200)

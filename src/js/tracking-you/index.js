@@ -6,8 +6,8 @@ export default function setupAnalytics() {
 
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
-      if(this.querySelector('.accordion-title')) {
-        reportGA('accordion', this.querySelector('.accordion-title').textContent.trim())
+      if(this.querySelector('summary')) {
+        reportGA('accordion', this.querySelector('summary').textContent.trim())
       }
     });
   });
@@ -206,10 +206,7 @@ export default function setupAnalytics() {
   };
 
   // Check to see if we're on any of the available homepages.
-  const homepages = ['/', '/tl', '/es', '/ar', '/ko', '/vi', '/zh-hans', '/zh-hant'];
-  const onHomePage = (pathname) => {
-    return homepages.some((homepage) => pathname.match(new RegExp(`^${homepage}[/]?$`, 'g')));
-  };
+  const homepages = ['/', '/tl/', '/es/', '/ar/', '/ko/', '/vi/', '/zh-hans/', '/zh-hant/'];
 
   // Don't load up these event listeners unless we've got Google Analytics on the page.
   if (window.ga && window.ga.create) {
@@ -240,7 +237,7 @@ export default function setupAnalytics() {
     })
 
     // Add these events if we're on the homepage.
-    if (onHomePage(window.location.pathname)) {
+    if (homepages.indexOf(window.location.pathname) > -1) {
       // Track how far the user has scrolled the homepage.
       window.addEventListener('scroll', throttle(scrollHandler('homepage'), 1000));
       // Report video clicks.
@@ -253,7 +250,7 @@ export default function setupAnalytics() {
         if(event.target.classList.contains('js-event-hm-menu')) {
           reportGA('homepage-menu', event.target.textContent.trim(), 'click');
         }
-      })
+      });
       // Report clicks on Want to Know section.
       document.querySelectorAll('.js-event-hm-wtk').forEach(link => {
         link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
@@ -280,34 +277,6 @@ export default function setupAnalytics() {
       });
     }
 
-    // Add these events if we're on the Roadmap page.
-    if (window.location.pathname.match(/\/roadmap[/]?$/g)) {
-      // Report clicks on roadmap links.
-      document.querySelectorAll('main a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'roadmap', annotateExternalLinks(link)));
-      });
-      // Report clicks on footer links.
-      document.querySelectorAll('footer a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'roadmap-footer', annotateExternalLinks(link)));
-      });
-    }
-
-    // Add these events if we're on the Safer Economy page.
-    if (window.location.pathname.match(/\/safer-economy[/]?$/g)) {
-      // Track submissions to the safer-economy page form.
-      // Note that 'safer-economy-page-submission' is a CustomEvent, fired from the form's JS.
-      window.addEventListener('safer-economy-page-submission', event => {
-        let eventAction = event.detail.county ? event.detail.county : 'None';
-        // If countyTier is selected override county data.
-        if (event.detail.countyTier) {
-          eventAction = event.detail.countyTier;
-        }        const eventLabel = event.detail.activity ? event.detail.activity : 'None';
-        reportGA(eventAction, eventLabel, 'activity-status');
-        // window.ga('send', 'event', 'activity-status', eventAction, eventLabel);
-        // window.ga('tracker2.send', 'event', 'activity-status', eventAction, eventLabel);
-        // window.ga('tracker3.send', 'event', 'activity-status', eventAction, eventLabel);
-      });
-    }
     if (window.location.pathname.match(/\/equity[/]?$/g)) {
       window.addEventListener('scroll', throttle(scrollHandler('equity'), 1000));
       
@@ -320,11 +289,6 @@ export default function setupAnalytics() {
           reportGA('county-select', e.detail.county, 'activity-status');
         }
       }.bind(this), false);
-
-      /* searchElement.addEventListener('county-search-typo', function(e) {
-        // console.log("got county thpo! ",e.detail);
-        reportGA('county-select-typo', e.detail.county, 'activity-status');
-      }.bind(this), false); */
       
       // Setting up trackers for big blue bar chart
       document.addEventListener('setup-sd-tab-tracking', function() {
@@ -354,10 +318,6 @@ export default function setupAnalytics() {
       boxTracker('cagov-chart-equity-data-completeness', 'data-completeness');
       boxTracker('cagov-chart-d3-bar', 'social-bar');
 
-      // window.addEventListener('tab-select', function(e) {
-      //   console.log("Tracking got tab-select",e.detail);
-      //   reportGA('tab-select',e.detail.tab_selected);
-      // });
     }
   }
 }

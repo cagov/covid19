@@ -65,7 +65,7 @@
 
 			let answers = [...data[0].answers];
 			if(answers[0].questions.length > 0) {
-				let html = `<h4>Quick answers</h4>
+				let html = `<h3>Quick answers</h3>
 					${answers.map(function(a) {
 						if(a.answer.indexOf('platform.twitter.com/widgets') > -1) {
 							let newScript = document.createElement("script");
@@ -74,15 +74,12 @@
 						}
 						if(a.questions.length > 0) {
 							return `<cagov-accordion>
-								<div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false">
-										<div class="accordion-title">${a.questions.join(' ')}</div>
-									</button>
-									<div class="card-container collapsed">
-										<div class="card-body">
-											<p>${a.answer}</p>
-										</div>
+								<details>
+									<summary><h4>${a.questions.join(' ')}</h4></summary>
+									<div class="accordion-body">
+										${a.answer}
 									</div>
-								</div>
+								</details>
 							</cagov-accordion>`;
 						} else {
 							return '';
@@ -121,7 +118,8 @@
 		-519573749, 32245991, -1045620280, 3083181, 
 		105116, 3059156, -717313205, -20842805,
 		3529280, 3441177, 3065272, 3541578,
-		-1220868373, -1944906010, 768376821,
+		-1220868373, -1944906010, 768376821, -1675033524,
+		208656131, 1161177713, -865057523, 1652680792, 937334084
 	];
 
 	const isRejected = function(phrase) {
@@ -136,7 +134,7 @@
 	const popularQueryiesCallback = data => {
 		let pqs = 
 		document.querySelector('#queries').innerHTML += data.popularQueries
-			.filter(x=>(x.num > 11))
+			.filter(x=>(x.num > 10))
 			.map(x=>x.query)
 			.filter(x=>!isRejected(x))
 			.map(x=>

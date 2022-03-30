@@ -12,23 +12,23 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
-  schedule:
-    # wednesday 8:45pm GMT (1:45pm PDT)
-    #        ┌───────────── minute (0 - 59)
-    #        │  ┌───────────── hour (0 - 23)
-    #        │  │ ┌───────────── day of the month (1 - 31)
-    #        │  │ │ ┌───────────── month (1 - 12 or JAN-DEC)
-    #        │  │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-    #        │  │ │ │ │
-    #        │  │ │ │ │
-    #        │  │ │ │ │
-    #        *  * * * *
-    - cron: '45 20 * * WED'
+  # schedule:
+  #   # wednesday 8:45pm GMT (1:45pm PDT)
+  #   #        ┌───────────── minute (0 - 59)
+  #   #        │  ┌───────────── hour (0 - 23)
+  #   #        │  │ ┌───────────── day of the month (1 - 31)
+  #   #        │  │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+  #   #        │  │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+  #   #        │  │ │ │ │
+  #   #        │  │ │ │ │
+  #   #        │  │ │ │ │
+  #   #        *  * * * *
+  #   - cron: '45 19 * * WED'
 
 jobs:
   analyze:

@@ -27,20 +27,14 @@ describe('accordion exists', () => {
 
       <a id="clicktest" href="#communications">auto anchor link</a>
 
-      <cagov-accordion class="prog-enhanced">
-      <div class="card">
-        <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-          <div class="accordion-title">
-          <h4 id="communications"><span class="ca-gov-icon-mobile"></span> Communications infrastructure</h4>
-          </div></div>
-        </button>
-        <div class="card-container" aria-hidden="true">
-          <div class="card-body">
-            <p style="height: 500px;">some text which takes up a lot of space</p>
+      <cagov-accordion>
+        <details>
+          <summary>Accordion title</summary>
+          <div class="accordion-body">
+            accordion content
           </div>
-        </div>
-      </div>
-    </cagov-accordion>
+        </details>
+      </cagov-accordion>
     <cagov-anchor-events />
     </div>`);
 

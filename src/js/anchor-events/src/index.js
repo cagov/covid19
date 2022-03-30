@@ -14,8 +14,8 @@
 class CAGOVAnchorsToEvents extends window.HTMLElement {
   connectedCallback() {
     this.selector = this.dataset.selector ? this.dataset.selector : 'cagov-accordion';
-    this.cancelSelector = this.dataset.cancelSelector ? this.dataset.cancelSelector : 'button[aria-expanded="true"]';
-    this.eventTargetSelector = this.dataset.eventTargetSelector ? this.dataset.eventTargetSelector  : 'button.card-header.accordion-alpha';
+    this.cancelSelector = this.dataset.cancelSelector ? this.dataset.cancelSelector : 'cagov-accordion details[open] summary';
+    this.eventTargetSelector = this.dataset.eventTargetSelector ? this.dataset.eventTargetSelector  : 'cagov-accordion details summary';
     this.eventType = this.dataset.eventType ? this.dataset.eventType : 'click';
     this.runConditions();
     this.reviewPageLinks()

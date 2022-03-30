@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2022-02-11T17:24:24Z"
+publishdate: "2022-03-24T16:47:06Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -192,15 +192,17 @@ formatNumberFixed(tags,1)-%}
  {%- endif -%}
 -->
          <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Source data ng mga naibigay nang bakuna</a> at <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">source data ng mga kaso, pagkamatay, at pagsusuri</a></p>
-      </div>
-      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+
+      <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul><li>Hindi nag-uulat ng data tuwing weekend o holiday ng estado. Pinoproseso ang data na ito sa unang araw kasunod ng weekend o holiday, at ina-update ito rito sa susunod na araw.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Ang rate ng kaso at pang-araw-araw na average ay batay sa 7 araw na average na may 7 araw na lag.</li><li>Ang rate ng pagkamatay at pang-araw-araw na average ay batay sa 7 araw na average na may 21 araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li><li>May karagdagang 1 araw na lag ang data ng kaso at pagkamatay mula sa county ng Los Angeles at San Diego.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
+                <ul class="small-text"><li>Hindi nag-uulat ng data tuwing weekend o holiday ng estado. Pinoproseso ang data na ito sa unang araw kasunod ng weekend o holiday, at ina-update ito rito sa susunod na araw.</li> <li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Lahat ng arawang average ay mga average sa 7 araw.</li><li>May 7 araw na lag sa mga naibigay na bakuna.</li><li>May 8 araw na lag sa mga kaso.</li><li>Dahil sa pagkaantala sa pag-uulat, may 22 araw na lag sa mga pagkamatay.</li><li>May 1 araw na pagkaantala sa mga pagsusuri.</li><li>May karagdagang 1 araw na lag ang data ng kaso at pagkamatay mula sa county ng Los Angeles at San Diego.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
     </div>
+     
+  </div>
 
   </div>   
 <!--END container-->
@@ -237,7 +239,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series2_legend">Nakapagpabakuna na pero hindi pa nakapagpa-booster</li>
     <li data-label="series3_legend">Hindi pa nagpapabakuna</li>
     <li data-label="pending_legend">Nakabinbin ang data</li>
-    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagpapaospital sa mga hindi pa nagpapabakuna sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagpapaospital sa mga nagpa-booster na sa bawat milyon: <b>{BCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Pagtatapos ng linggo: <b>{WEEKDATE}</b><br> Mga pagpapaospital ng mga hindi pa nababakunahan sa bawat milyon: <b>{UCOUNT}</b><br> Mga pagpapaospital ng nabakunahan na sa bawat milyon: <b>{VCOUNT}</b><br> Mga pagpapaospital ng nakapagpa-booster na sa bawat milyon: <b>{BCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
     <li data-label="chartTitleState">Mga pagkamatay na dulot ng COVID-19 sa nakalipas na apat na buwan</li>
     <li data-label="chartImpactStatement">Mula {BEGIN_IMPACT_DATE} hanggang {END_IMPACT_DATE}, <strong>{RATE_RATIO} (na) beses na naging mas malaki ang posibilidad ng mga hindi pa nagpapabakunang indibidwal</strong> na mamatay mula sa COVID-19 kaysa sa mga taong nagpa-booster na.</li>
@@ -331,7 +333,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Ang mga numero ay hindi kumakatawan sa tunay na pang-araw-araw na pagbabago dahil kasama sa mga resultang ang mga kaso sa nakaraang araw bago ang kahapon.</li><li>Ang petsa ng episode ay ang pesta kung kailan tinatantyang naganap ang event.</li><li>Ang petsa ng pag-uulat ay ang petsa kung kailan inulat ang event sa California Department of Public Health.</li><li>Kasama sa mga kaso ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles at San Diego.</li><li>Nangangahulugan ang isang negatibong numero ng mga naiulat na pagkamatay na ang mga pagkamatay na dating iniugnay sa COVID-19 ay natukoy na hindi nauugnay sa COVID-19.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</li></ul>
+<ul class="small-text"><li>Ang mga numero ay hindi kumakatawan sa tunay na pang-araw-araw na pagbabago dahil kasama sa mga resultang ang mga kaso sa nakaraang araw bago ang kahapon.</li><li>Ang petsa ng episode ay ang petsa kung kailan tinatantyang naganap ang event. Ito ang pinakatumpak na source ng data sa paglipas ng panahon.</li><li>Ang petsa ng pag-uulat ay ang petsa kung kailan iniulat ang event sa Departamento ng Pampublikong Kalusugan ng California.</li><li>Kasama sa mga kaso ang mga taong nasa bilangguan ng estado at pederal na bilangguan, pasilidad ng US Immigration and Customs Enforcement, detention facility ng US Marshal, at pasilidad ng Department of State Hospitals.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles at San Diego.</li><li>Ang negatibong bilang ng mga kaso ay resulta ng pagsisikap sa kalidad ng data, kasama ang pag-aalis ng mga duplicate na kaso.</li><li>Ang ibig sabihin ng negatibong bilang ng mga naiulat na pagkamatay ay natukoy na hindi nauugnay sa COVID-19 ang mga pagkamatay na dating naiugnay sa COVID-19.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng California Department of Finance ang mga denominotor ng populasyon sa mga chart na ito.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -485,7 +487,7 @@ formatNumberFixed(tags,1)-%}
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
-                <p>Ang distribusyon ng kumpirmadong pagkamatay dahil sa COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa lahat ng edad ng grupo ng California. Ang mga taong 18-49 na taong gulang ay may hindi pantay na dami ng mga kaso. Ang mga taong 65 taong gulang pataas ay may hindi pantay na dami ng mga pagkamatay.</p>
+                <p>Ang distribusyon ng kumpirmadong pagkamatay dahil sa COVID-19 ay nagpapakita ng malaking pagkakaiba-iba sa lahat ng edad ng grupo ng California. Ang mga taong 18-49 na taong gulang ay may hindi pantay na dami ng mga kaso. Ang mga taong 65 taong gulang pataas ay may hindi pantay na dami ng mga pagkamatay. May available na karagdagang <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">data ng edad kaugnay ng COVID-19</a>, pati mas magkakalapit na grupo ng edad.</p>
               </div>               
 <!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
