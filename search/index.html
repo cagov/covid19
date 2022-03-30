@@ -326,7 +326,7 @@
 	const popularQueryiesCallback = data => {
 		let pqs = 
 		document.querySelector('#queries').innerHTML += data.popularQueries
-			.filter(x=>(x.num > 11))
+			.filter(x=>(x.num > 10))
 			.map(x=>x.query)
 			.filter(x=>!isRejected(x))
 			.map(x=>
