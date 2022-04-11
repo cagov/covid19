@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-04-11T18:33:14Z"
+publishdate: "2022-04-11T18:48:27Z"
 tags: ["staging-only","translate"]
 addtositemap: true
 ---
@@ -225,12 +225,12 @@ formatNumberFixed(tags,1)-%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
         {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
-<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}.</p>
+<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}. Data is updated on Tuesdays and Fridays.</p>
 <!--
         {%- else -%}
 -->
   <p class="small-text">Vaccines administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
-  <br>Cases, deaths, and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}. Data is updated on Tuesdays and Fridays.</p>
+  <br>Cases, deaths, and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
         {%- endif -%}
 -->
