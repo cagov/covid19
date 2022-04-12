@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "تعقب كوفيد-19 في كاليفورنيا"
 meta: "يساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19."
 author: "State of California"
-publishdate: "2022-03-24T16:47:06Z"
+publishdate: "2022-04-11T20:41:05Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,7 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">تحديثات اليوم</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المُطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">آخر التحديثات</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -88,7 +88,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
- <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+ <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -183,7 +183,7 @@ formatNumberFixed(tags,1)-%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}.</p> 
+ <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}. يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع.</p> 
 <!--
  {%- else -%}
 -->
@@ -196,7 +196,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>لا يتم الإبلاغ عن البيانات في عطلات نهاية الأسبوع أو العطلات الرسمية. تُعالَج هذه البيانات في أول يوم يلي عطلة نهاية الأسبوع أو الإجازة وتُحدّث هنا في اليوم التالي.</li> <li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلون على اللقاح كليًا وجزئيًا والقسمة على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها دوائر الصحة المحلية والكيانات الفيدرالية.</li><li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li><li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li><li>وتتأخر حالات الإصابة مدة 8 أيام.</li><li>وتتأخر الوفيات مدة 22 يومًا بسبب التأخيرات في الإبلاغ.</li><li>تتأخر الاختبارات لمدة يوم واحد.</li><li>إن بيانات حالات الإصابة والوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي لمدة يوم واحد (1).</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت لمدة يوم واحد (1).</li><li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
+                <ul class="small-text"><li>النسبة المئوية للسكان الذين تم تطعيمهم هي السكان الحاصلون على اللقاح كليًا وجزئيًا والقسمة على السكان المؤهلين للحصول على اللقاح.</li><li>ستُحدث باستمرار النسبة المئوية للسكان الذين يتم تطعيمهم بسبب الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها دوائر الصحة المحلية والكيانات الفيدرالية.</li><li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li><li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li><li>وتتأخر حالات الإصابة مدة 8 أيام.</li><li>وتتأخر الوفيات مدة 22 يومًا بسبب التأخيرات في الإبلاغ.</li><li>تتأخر الاختبارات لمدة يوم واحد.</li><li>إن بيانات حالات الإصابة والوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي لمدة يوم واحد (1).</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت لمدة يوم واحد (1).</li><li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -251,7 +251,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series3_legend">غير الحاصلين على التطعيم</li>
     <li data-label="pending_legend">البيانات عالقة</li>
     <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> نسبة الوفيات لغير المطعمين لكل مليون: <b>{UCOUNT}</b><br> الوفيات للمطعمين لكل مليون: <b>{VCOUNT}</b><br> الوفيات للحاصلين على الجرعة المعززة لكل مليون: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">البيانات المصدرية للحالات المطعمة وغير المطعمة وحالات دخول المستشفى وحالات الوفاة</a></p>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">البيانات المصدرية للحالات المطعمة وغير المطعمة وحالات دخول المستشفى وحالات الوفاة</a>. يتم تحديث البيانات أيام الجمعة.</p>
 
 
 
@@ -328,7 +328,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية للحالات المؤكدة والوفيات</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية للحالات المؤكدة والوفيات</a>. يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع.</p>
 
 
 
@@ -388,7 +388,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">إجمالي الاختبارات والبيانات المصدرية لمعدل الإيجابية</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">إجمالي الاختبارات والبيانات المصدرية لمعدل الإيجابية</a>. يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع.</p>
 
 
 
@@ -443,7 +443,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">مرضى كوفيد-19 المحتجزون بالمستشفيات والبيانات المصدرية لوحدات العناية المركزة</a></p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">مرضى كوفيد-19 المحتجزون بالمستشفيات والبيانات المصدرية لوحدات العناية المركزة</a>. يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع.</p>
 
 
 
@@ -472,7 +472,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
                       <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
                       <li data-label="chartBarCaption">{category} حساب {metric-value} الحالات المؤكدة و {metric-baseline-value} حساب إجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب. تشمل عبارة النوع "غير معروف" أولئك الذين رفضوا التصريح أو الذين تكون المعلومات التي تخص نوعهم مفقودة أو الذين يُعرفون بأنهم متحولون جنسيًا أو لا منتمون للثنائية الجنسية أو أحرار الهوية الجنسية أو ثنائي الجنس.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع. قد لا تصل النسب المئوية إلى 100% بسبب التقريب. تشمل عبارة النوع "غير معروف" أولئك الذين رفضوا التصريح أو الذين تكون المعلومات التي تخص نوعهم مفقودة أو الذين يُعرفون بأنهم متحولون جنسيًا أو لا منتمون للثنائية الجنسية أو أحرار الهوية الجنسية أو ثنائي الجنس.</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات الوفاة المؤكدة حسب نوع الجنس في كاليفورنيا</li>
@@ -496,7 +496,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
                       <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
                       <li data-label="chartBarCaption">تمثل {category} الفئة العمرية {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع. قد لا تصل النسب المئوية إلى 100% بسبب التقريب.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات الوفاة المؤكدة حسب العمر في كاليفورنيا</li>
@@ -520,7 +520,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
                       <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
                       <li data-label="chartBarCaption">{category} يمثل السكان {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: قد لا تصل النسب المئوية إلى 100٪ بسبب التقريب. جنس وعرق ”آخر“ تعني أولئك الذين لا يندرجون تحت أي جنس أو عرق من المدرجين في القائمة.</li>
+                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملاحظة: يتم تحديث البيانات يومي الثلاثاء والجمعة من كل أسبوع. قد لا تصل النسب المئوية إلى 100% بسبب التقريب. جنس وعرق ”آخر“ تعني أولئك الذين لا يندرجون تحت أي جنس أو عرق من المدرجين في القائمة.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">حالات الوفاة المؤكدة حسب الجنس والعرق في كاليفورنيا</li>

@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-03-24T16:47:06Z"
+publishdate: "2022-04-11T20:41:05Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,7 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">actualización de hoy</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">última actualización</a></strong></li><li><a href="#postvax-status"><strong>datos de no vacunados y vacunados</strong></a></li><li><strong><a href="#county-statewide">datos de condados y del estado</a></strong></li><li><strong><a href="#ethnicity-gender-age">casos y muertes por etnia, sexo y edad</a></strong></li><li><strong><a href="#more">Explore más datos</a></strong></li></ul>    
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -88,7 +88,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
- <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+ <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -183,7 +183,7 @@ formatNumberFixed(tags,1)-%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}.</p> 
+ <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}. Los datos se actualizan los martes y los viernes.</p> 
 <!--
  {%- else -%}
 -->
@@ -196,7 +196,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Notas sobre los datos</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>Los datos no se reportan los fines de semana ni los días festivos estatales. Estos datos se procesan el primer día que sigue al fin de semana o día festivo, y se actualizan aquí al día siguiente.</li> <li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>Todos los promedios diarios son promedios de 7 días.</li><li>Las vacunas administradas tienen un retraso de 7 días.</li><li>Los casos tienen un retraso de 8 días.</li><li>Las muertes tienen un retraso de 22 días debido a retrasos en los reportes.</li><li>Las pruebas tienen un retraso de 1 día.</li><li>Los datos de casos y muertes de los condados de Los Ángeles y San Diego tienen un retraso adicional de 1 día.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
+                <ul class="small-text"><li>El porcentaje de población vacunada es la población total y parcialmente vacunada dividida entre la población elegible para la vacunación.</li><li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>Todos los promedios diarios son promedios de 7 días.</li><li>Las vacunas administradas tienen un retraso de 7 días.</li><li>Los casos tienen un retraso de 8 días.</li><li>Las muertes tienen un retraso de 22 días debido a retrasos en los reportes.</li><li>Las pruebas tienen un retraso de 1 día.</li><li>Los datos de casos y muertes de los condados de Los Ángeles y San Diego tienen un retraso adicional de 1 día.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -251,7 +251,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series3_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
     <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Muertes de no vacunados por cada millón: <b>{UCOUNT}</b><br> Muertes de vacunados por cada millón: <b>{VCOUNT}</b><br> Muertes de vacunados con la dosis de refuerzo por cada millón: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en vacunados y no vacunados</a></p>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en vacunados y no vacunados</a>. Los datos se actualizan los viernes.</p>
 
 
 
@@ -328,7 +328,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de casos confirmados y muertes</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de casos confirmados y muertes</a>. Los datos se actualizan los martes y los viernes.</p>
 
 
 
@@ -388,7 +388,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de pruebas totales y de la tasa de positividad</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de pruebas totales y de la tasa de positividad</a> Los datos se actualizan los martes y los viernes.</p>
 
 
 
@@ -443,7 +443,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a></p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a> Los datos se actualizan los martes y los viernes.</p>
 
 
 
@@ -472,7 +472,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">{category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo. En género, “Desconocido” incluye a aquellos que se negaron a declarar, cuya información de género falta o que se identifican como transgénero, género no binario, género queer o intersexual.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En género, “Desconocido” incluye a aquellos que se negaron a declarar, cuya información de género falta o que se identifican como transgénero, género no binario, género queer o intersexual.</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por género en California</li>
@@ -496,7 +496,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por edad en California</li>
@@ -520,7 +520,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">Las personas de {category} representan el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y etnia, “Otros” significa aquellos que no pertenecen a ninguna raza o etnia enumerada.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y etnia, “Otros” significa aquellos que no pertenecen a ninguna raza o etnia enumerada.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por raza y etnia en California</li>
