@@ -350,15 +350,7 @@ function getDataIndexByX(data, xScale, yScale, bardata, yLine, linedata, xy)
     let ydi = yScale.invert(y);
     if (ydi >= 0 && ydi <= yScale.domain()[1] ) {
       let idi = Math.round(xdi);
-      let yp = yScale(bardata[idi].VALUE);
-      if (y >= yp-2) {
-        return idi;
-      }
-      let yp2 = yLine(linedata[idi].VALUE);
-      let yd = Math.abs(yp2-y);
-      if (yd < 6) {
-        return idi;
-      }
+      return idi;
     }
   }
   return null;
