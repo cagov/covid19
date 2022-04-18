@@ -3,10 +3,17 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-03-24T16:47:06Z"
+publishdate: "2022-04-13T16:26:54Z"
 tags: ["translate"]
 addtositemap: true
 ---
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">2022년 4월 13일자 주의 사항</h2>
+<p>데이터 처리 관련 문제로 인해 캘리포니아주 공중보건부(California Department of Public Health)가 금일 COVID-19 검사에 관한 업데이트를 보류하고 있습니다. 금일자 데이터는 2022년 4월 14일에 보고될 예정입니다.</p>
+</div><p></p>
+
+
 
 <p class="emphasized">캘리포니아가 COVID-19의 확산을 이해하기 위해 데이터를 추적 관리하고 있습니다.</p>
 
@@ -16,7 +23,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">금일 업데이트 사항</a></strong></li><li><a href="#postvax-status"><strong>백신 미접종 및 접종 데이터</strong></a></li><li><strong><a href="#county-statewide">카운티 및 주 전체 대상 데이터</a></strong></li><li><strong><a href="#ethnicity-gender-age">민족, 성별 및 연령별 사례 건수 및 사망자 수</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">최근 업데이트</a></strong></li><li><a href="#postvax-status"><strong>백신 미접종 및 접종 데이터</strong></a></li><li><strong><a href="#county-statewide">카운티 및 주 전체 대상 데이터</a></strong></li><li><strong><a href="#ethnicity-gender-age">민족, 성별 및 연령별 사례 건수 및 사망자 수</a></strong></li><li><strong><a href="#more">추가 데이터 확인</a></strong></li></ul>    
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -88,7 +95,7 @@ formatNumberFixed(tags,1)-%}
 {%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
- <hr class="wp-block-separator noborder mb-4" id="todays-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
+ <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
     <div class="row">
       <div class="col-lg-10 mx-auto justify-content-md-center">
@@ -183,7 +190,7 @@ formatNumberFixed(tags,1)-%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">{{_varStatDateLaterAccurate_}} 업데이트, {{_varCommonDateReport_}} 자 데이터 사용.</p> 
+ <p class="small-text">{{_varStatDateLaterAccurate_}} 업데이트, {{_varCommonDateReport_}} 자 데이터 사용. 데이터는 화요일과 금요일에 업데이트됩니다.</p> 
 <!--
  {%- else -%}
 -->
@@ -196,7 +203,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>데이터는 주말이나 주 공휴일에는 보고되지 않습니다. 본 데이터는 주말이나 공휴일 다음 첫째 날에 처리하여 그 다음날에 업데이트됩니다.</li> <li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li><li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사자 데이터는 1일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
+                <ul class="small-text"><li>백신 접종을 완료한 인구 비율은 전체 및 부분 백신 접종을 받은 인구를 백신 접종 대상 인구로 나눈 수치입니다.</li><li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li><li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사자 데이터는 1일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -251,7 +258,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series3_legend">백신 미접종</li>
     <li data-label="pending_legend">데이터 처리 중</li>
     <li data-label="tooltipContent">       주 마감일: <b>{WEEKDATE}</b><br> 1백만명 당 백신 미접종 사망자 수: <b>{UCOUNT}</b><br> 1백만명 당 백신 접종 사망자 수: <b>{VCOUNT}</b><br> 1백만명당 부스터 샷 접종 사망자 수: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">백신 미접종과 백신 접종 확진자 수, 병원 입원 환자 수 및 사망자 수 관련 원천 데이터</a></p>
+  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">백신 미접종과 백신 접종 확진자 수, 병원 입원 환자 수 및 사망자 수 관련 원천 데이터</a>. 데이터는 금요일에 업데이트됩니다.</p>
 
 
 
@@ -328,7 +335,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">확진자 및 사망자 관련 원천 데이터</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">확진자 및 사망자 관련 원천 데이터</a>. 데이터는 화요일과 금요일에 업데이트됩니다.</p>
 
 
 
@@ -388,7 +395,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">총 검사 건수 및 양성판정율 관련 원천 데이터</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">총 검사 건수 및 양성판정율 관련 원천 데이터</a>. 데이터는 화요일과 금요일에 업데이트됩니다.</p>
 
 
 
@@ -443,7 +450,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 입원 환자 수 및 ICU 원천 데이터</a></p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 입원 환자 수 및 ICU 원천 데이터</a>. 데이터는 화요일과 금요일에 업데이트됩니다.</p>
 
 
 
@@ -472,7 +479,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">확진자 대비 %</li>
                       <li data-label="chartLegend2">주 인구 대비 %</li>
                       <li data-label="chartBarCaption">{category}는 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
-                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다. “미확인” 성별에는 진술을 거부하거나 성별 관련 정보가 누락되어 있거나 트렌스젠더, 성 논-바이너리, 젠더 퀴어, 또는 간성으로 확인하는 경우가 포함됩니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 데이터는 화요일과 금요일에 업데이트됩니다. 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다. “미확인” 성별에는 진술을 거부하거나 성별 관련 정보가 누락되어 있거나 트렌스젠더, 성 논-바이너리, 젠더 퀴어, 또는 간성으로 확인하는 경우가 포함됩니다.</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">캘리포니아 내 성별 사망 확인자</li>
@@ -496,7 +503,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">확진자 대비 %</li>
                       <li data-label="chartLegend2">주 인구 대비 %</li>
                       <li data-label="chartBarCaption">{category} 연령대는 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
-                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 데이터는 화요일과 금요일에 업데이트됩니다. 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">캘리포니아 내 연령별 사망 확인자</li>
@@ -520,7 +527,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">확진자 대비 %</li>
                       <li data-label="chartLegend2">주 인구 대비 %</li>
                       <li data-label="chartBarCaption">{category} 주민은 확진자의 {metric-value} 및 전체 캘리포니아 인구의 {metric-baseline-value}를 차지하고 있습니다.</li>
-                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다. “기타”는 목록에 있는 인종이나 민족에 해당하지 않는 경우를 의미합니다.</li>
+                      <li data-label="footerText">{MINUS_ONE_DATE} 데이터 기준 {PUBLISHED_DATE} 업데이트. 주의: 데이터는 화요일과 금요일에 업데이트됩니다. 백분율의 합은 반올림으로 인해 100%가 아닐 수도 있습니다. “기타”는 목록에 있는 인종이나 민족에 해당하지 않는 경우를 의미합니다.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">                     <ul class="d-none">
                       <li data-label="chartTitle">캘리포니아 내 인종 및 민족별 사망 확인자</li>

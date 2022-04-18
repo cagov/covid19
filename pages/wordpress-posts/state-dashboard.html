@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-03-24T16:47:06Z"
+publishdate: "2022-04-14T16:25:53Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -16,7 +16,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#todays-update">Today’s update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#latest-update">Latest update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
 
 
 
@@ -94,7 +94,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<hr class="wp-block-separator noborder mb-4" id="todays-update"/>
+<hr class="wp-block-separator noborder mb-4" id="latest-update"/>
 
 
 
@@ -225,7 +225,7 @@ formatNumberFixed(tags,1)-%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
         {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
-<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}.</p>
+<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}. Data is updated on Tuesdays and Fridays.</p>
 <!--
         {%- else -%}
 -->
@@ -245,7 +245,7 @@ formatNumberFixed(tags,1)-%}
             </button>
             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>Data is not reported on weekends or state holidays. This data is processed on the first day following the weekend or holiday and updated here on the following day.</li> <li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li><li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+                <ul class="small-text"><li>The percentage of population vaccinated is the fully and partially vaccinated population divided by the population eligible for vaccination.</li><li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li><li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a>. Data is updated on Fridays.</p>
 
 
 
@@ -478,7 +478,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths source data</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths source data</a>. Data is updated on Tuesdays and Fridays.</p>
 
 
 
@@ -560,7 +560,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Total tests and positivity rate source data</a></p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Total tests and positivity rate source data</a>. Data is updated on Tuesdays and Fridays.</p>
 
 
 
@@ -633,7 +633,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 hospitalized patients and ICU source data</a></p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 hospitalized patients and ICU source data</a>. Data is updated on Tuesdays and Fridays.</p>
 
 
 
@@ -676,7 +676,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Tuesdays and Fridays. Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-cases>                
                 </div>
@@ -708,7 +708,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Tuesdays and Fridays. Percentages may not add up to 100% due to rounding.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-age-cases>                
                 </div>
@@ -740,7 +740,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Tuesdays and Fridays. Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                
                 </div>

@@ -3,12 +3,14 @@ layout: "page.njk"
 title: "Pangako ng California sa pagkakapantay-pantay sa kalusugan"
 meta: "Dahil sa COVID-19, may mga natukoy na hindi pagkakapantay-pantay sa kalusugan sa kasalukuyan. Tinutukoy ng California ang mga pinakaapektadong komunidad."
 author: "State of California"
-publishdate: "2022-01-18T17:59:48Z"
+publishdate: "2022-04-11T20:35:21Z"
 tags: ["translate"]
 addtositemap: true
 ---
 
-<!--{% set data = equityTopBoxes[0] %} -->    <p class="emphasized">May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. </p>
+
+<!--{% set data = equityTopBoxes[0] %} -->
+    <p class="emphasized">May karapatan ang lahat ng Californian—saanman sila nakatira, saanman sila nagtatrabaho, anuman ang kanilang mga suporta sa lipunan, o anuman ang pagkakakilanlan nila sa kanilang sarili⁠—na mamuhay nang malayo sa sakit. </p>
 
 
 
@@ -49,38 +51,92 @@ addtositemap: true
             <h2 class="text-center color-purple" id="overview-of-disparities">Matindi ang mga pagkakaiba-iba sa ating mga komunidad na binubuo ng mga taong may iba't ibang pinagmulan</h2>
                 <p>Nakakaapekto ang COVID-19, sa hindi balanseng paraan, sa mga Latino, Black, at Pacific Islander na komunidad na may mababang kita, pati na rin sa mahahalagang manggagawa na nasa mga serbisyo sa pangangalagang pangkalusugan, grocery, at paglilinis.</p>
             </div>
-        </div><!--END row-->               <div class="row">
+        </div>
+<!--END row-->
+               <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div class="container">                                <cagov-equity-highlight-stats>             <div class="row d-flex row-eq-height justify-content-md-center pb-4">
-                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_latino %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>% mas mataas</span> ang rate ng pagkamatay para sa mga Latino kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>% mas mababa</span> ang rate ng pagkamatay para sa mga Latino kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng pagkamatay para sa mga Latino at ang average ng buong estado                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   
+<!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
+ 
+<!--{% if value > 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>% mas mataas</span> ang rate ng pagkamatay para sa mga Latino kumpara sa rate ng buong estado                   </div>                                
+<!--{% elif value < 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>% mas mababa</span> ang rate ng pagkamatay para sa mga Latino kumpara sa rate ng buong estado                   </div>                                
+<!--{% else %}-->
+                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng pagkamatay para sa mga Latino at ang average ng buong estado                   </div>                                
+<!--{% endif %}-->
+                                <div class="eq-cases">
                     <p class="text-xs">Mga pagkamatay sa bawat 100K tao:</p>
                     <p class="text-xs mb-0">                       <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags,0)}}</span></strong> Latino <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng etnisidad                     </p>
                   </div>
                 </div>
             
-                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga Pacific Islander kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga Pacific Islander kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga Pacific Islander at ang average ng buong estado                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   
+<!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
+ 
+<!--{% if value > 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga Pacific Islander kumpara sa rate ng buong estado                   </div>                                
+<!--{% elif value < 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga Pacific Islander kumpara sa rate ng buong estado                   </div>                                
+<!--{% else %}-->
+                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga Pacific Islander at ang average ng buong estado                   </div>                                
+<!--{% endif %}-->
+                   <div class="eq-cases">
                     <p class="text-xs">Mga kaso sa bawat 100K tao:</p>
                     <p class="text-xs mb-0">                       <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags,0)}}</span></strong> NHPI <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng etnisidad                     </p>
                   </div>
                 </div>
             
-                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.death_rate_vs_statewide_percent_black %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>% mas mataas</span> ang rate ng pagkamatay para sa mga Black kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>% mas mababa</span> ang rate ng pagkamatay para sa mga Black kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng pagkamatay para sa mga Black at ang average ng buong estado                   </div>                                <!--{% endif %}-->                   <div class="eq-cases">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   
+<!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
+ 
+<!--{% if value > 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>% mas mataas</span> ang rate ng pagkamatay para sa mga Black kumpara sa rate ng buong estado                   </div>                                
+<!--{% elif value < 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>% mas mababa</span> ang rate ng pagkamatay para sa mga Black kumpara sa rate ng buong estado                   </div>                                
+<!--{% else %}-->
+                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng pagkamatay para sa mga Black at ang average ng buong estado                   </div>                                
+<!--{% endif %}-->
+                   <div class="eq-cases">
                     <p class="text-xs">Mga pagkamatay sa bawat 100K tao:</p>
                     <p class="text-xs mb-0">                       <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black|formatNumber(tags,0)}}</span></strong> Black <br> <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng etnisidad                     </p>
                   </div>
                 </div>
             
-                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}--> <!--{% if value > 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                <!--{% elif value < 0 %}-->                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                <!--{% else %}-->                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga komunidad na may median na kita na <$40K at ang average ng buong estado                   </div>                                <!--{% endif %}-->                                <div class="eq-cases">
+                <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                   
+<!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
+ 
+<!--{% if value > 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% mas mataas</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                
+<!--{% elif value < 0 %}-->
+                                <div class="eq-text mb-3">                     <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% mas mababa</span> ang rate ng kaso para sa mga komunidad na may median na kita na <$40K kumpara sa rate ng buong estado                   </div>                                
+<!--{% else %}-->
+                                <div class="eq-text mb-3">                     Magkapareho lang ang rate ng kaso para sa mga komunidad na may median na kita na <$40K at ang average ng buong estado                   </div>                                
+<!--{% endif %}-->
+                                <div class="eq-cases">
                     <p class="text-xs">Mga kaso sa bawat 100K tao:</p>
                     <p class="text-xs mb-0">                       <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> kita <$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng bracket ng kita                     </p>
                   </div>
                 </div>
-              </div>           </cagov-equity-highlight-stats>                           </div><!--END cont-->             </div><!--END col-10-->         </div><!--END row-->                                    <div class="row pb-4">
+              </div>           </cagov-equity-highlight-stats>                           </div>
+<!--END cont-->
+             </div>
+<!--END col-10-->
+         </div>
+<!--END row-->
+                                    <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
                 <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng rate ng kaso at pagkamatay</a></p>
                 <p class="chart-data-label">Tandaan: Cumulative ang data na ito mula sa unang kaso ng COVID-19 na naiulat noong Enero 2020. Inilalarawan ang rate ng kaso bilang cumulative na bilang ng mga kaso ng COVID-19 sa bawat 100K populasyon. Inilalarawan ang rate ng pagkamatay bilang cumulative na bilang ng mga pagkamatay kaugnay ng COVID-19 sa bawat 100K.</p>
             </div>
-        </div><!--END row-->        </div><!--END container--> </div><!--END LIGHT BLUE BG-->    <div class="bg-darkblue py-5 full-bleed">
+        </div>
+<!--END row-->
+        </div>
+<!--END container-->
+ </div>
+<!--END LIGHT BLUE BG-->
+    <div class="bg-darkblue py-5 full-bleed">
   <div class="container py-2">
       <div class="row pb-4">
           <div class="col-lg-10 mx-auto color-white">
@@ -91,7 +147,9 @@ addtositemap: true
           </div>
       </div>
 
-  </div><!--END container--> </div>
+  </div>
+<!--END container-->
+ </div>
 
 
 
@@ -99,7 +157,9 @@ addtositemap: true
 
 
 
-<p>Naapektuhan ng COVID-19, sa hindi balanseng paraan, ang mga komunidad na binubuo ng mga Latino, Black, at Pacific Islander. Mayroon na kaming ilang nagawa para matugunan ang mga pagkakaiba-iba sa mga komunidad na ito, pero kailangan naming mas paghusayin pa. Ipinapakita ng datos na ito ang nakalipas na 30 araw.</p>    <!--SMALL TABS ARE THE BEST --> <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">Mga Kaso</button> <button class="small-tab" data-key="deaths">Mga Pagkamatay</button> <button class="small-tab" data-key="tests">Pagsusuri</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
+<p>Naapektuhan ng COVID-19, sa hindi balanseng paraan, ang mga komunidad na binubuo ng mga Latino, Black, at Pacific Islander. Mayroon na kaming ilang nagawa para matugunan ang mga pagkakaiba-iba sa mga komunidad na ito, pero kailangan naming mas paghusayin pa. Ipinapakita ng datos na ito ang nakalipas na 30 araw.</p>    
+<!--SMALL TABS ARE THE BEST -->
+ <cagov-chart-filter-buttons class="js-re-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="cases">Mga Kaso</button> <button class="small-tab" data-key="deaths">Mga Pagkamatay</button> <button class="small-tab" data-key="tests">Pagsusuri</button>   </div> </cagov-chart-filter-buttons>  <div class="container">
   <div class="row">
       <div class="col">         <cagov-chart-re-pop class="chart d-none">           <ul>
             <li data-label="chartTitle--cases">Mga kaso depende sa porsyento ng populasyon sa placeholderForDynamicLocation</li>
@@ -132,7 +192,7 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--cases">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
-            <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}.</li>
+            <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
         </ul>       </cagov-chart-re-pop>     </div>
     <div class="col">       <cagov-chart-re-100k class="chart d-none">          <ul>
           <li data-label="chartTitle--cases">Rate ng kaso sa bawat 100K ayon sa lahi at grupo sa etnisidad sa placeholderForDynamicLocation</li>
@@ -165,7 +225,7 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--cases">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
-            <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}.</li>
+            <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
         </ul>       </cagov-chart-re-100k>     </div>
   </div>
 </div>
@@ -177,9 +237,12 @@ addtositemap: true
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Linggu-linggong ina-update ang ipinapakitang data. Hindi kasama sa mga pagtataya sa populasyon ang kategoryang “iba pa” o “hindi alam” sa lahi at etnisidad, kaya naman hindi available ang porsyento ng mga ito sa populasyon ng estado. Para makita ang cumulative na datos ng lahi at etnisidad nang nakapangkat ayon sa mga grupo ng edad, tingnan ang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">Datos ng Lahi at Etnisidad Kaugnay ng COVID-19</a> ng Departamento ng Pampublikong Kalusugan ng California. Ipinapakita ang mga numero mula 1 hanggang 11 bilang “<11” para maprotektahan ang privacy ng pasyente.</li><li>Ang “iba pa” ay tumutukoy sa mga hindi kasama sa anumang nakalista na lahi o etnisidad. Kasama sa “hindi alam” na lahi at etnisidad ang mga tumangging magsabi o may kulang na impormasyon sa lahi at etnisidad.</li></ul>
-</div></div></div></cagov-accordion></div>
+<div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+                    
+<ul class="small-text"><li>Hindi kasama sa mga pagtataya sa populasyon ang kategoryang “iba pa” o “hindi alam” sa lahi at etnisidad, kaya naman hindi available ang porsyento ng mga ito sa populasyon ng estado. Para makita ang cumulative na datos ng lahi at etnisidad nang nakapangkat ayon sa mga grupo ng edad, tingnan ang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">Datos ng Lahi at Etnisidad Kaugnay ng COVID-19<span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span></a> ng Departamento ng Pampublikong Kalusugan ng California. Ipinapakita ang mga numero mula 1 hanggang 11 bilang “<11” para maprotektahan ang privacy ng pasyente.</li><li>Ang “iba pa” ay tumutukoy sa mga hindi kasama sa anumang nakalista na lahi o etnisidad. Kasama sa “hindi alam” na lahi at etnisidad ang mga tumangging magsabi o may kulang na impormasyon sa lahi at etnisidad.</li></ul>
+
+                  </div>
+                </details>               </cagov-accordion></div></div>
 
 
 
@@ -195,7 +258,7 @@ addtositemap: true
         <li data-label="data2-legend">Pagpopositibo ng equity quartile sa kalusugan</li>
         <li data-label="missing-data-caption">Ang sukatan sa equity sa kalusugan ay hindi nalalapat sa mga county na may populasyong wala pang 106,000.</li>
         <li data-label="data-anomalies-caption">Dahil sa mga anomalya sa pag-uulat, hindi namin tumpak na maipapakita ang datos na ito.</li>
-        <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}.</li>
+        <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
@@ -205,7 +268,10 @@ addtositemap: true
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Impormasyon sa chart</div></button><div class="card-container" aria-hidden="true"><div class="card-body"><ul><li>Ang ipinapakitang datos ay 7 araw na average ng rate ng pagiging positibo, na may lag na 7 araw.</li><li>Ang ipinapakitang datos ay para sa 7 araw na nagtatapos sa <span data-replacement="d3-lines-report-date"></span>.</li><li>Inilalarawan ang pagiging positihbo ng quartile ng pagkakapantay-pantay sa kalusugan bilang rate ng pagiging positibo sa pinakamababang 25% ng mga tract ng census ng Index ng Mga Lugar na Malayo sa Sakit sa county.</li><li>Ang sukatan sa equity sa kalusugan ay hindi nalalapat sa mga county na may populasyong wala pang 106,000.</li</ul></div></div></div></cagov-accordion></div></div>
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+                    <ul class="small-text"><li>Ang ipinapakitang data ay 7 araw na average ng rate ng pagiging positibo, na may lag na 7 araw.</li><li>Ang ipinapakitang data ay para sa 7 araw na nagtatapos sa <span data-replacement="d3-lines-report-date">Pebrero 26, 2022</span>.</li><li>Inilalarawan ang pagiging positihbo ng quartile ng pagkakapantay-pantay sa kalusugan bilang rate ng pagiging positibo sa pinakamababang 25% ng mga tract ng census ng Index ng Mga Lugar na Malayo sa Sakit sa county.</li><li>Ang sukatan sa equity sa kalusugan ay hindi nalalapat sa mga county na may populasyong wala pang 106,000.</li></ul>
+                  </div>
+                </details>               </cagov-accordion></div></div></div>
 
 
 
@@ -217,8 +283,8 @@ addtositemap: true
     <div>
       <ul class="small-text">
         <li data-label="title">Pag-uulat ayon sa lahi at etnisidad sa California</li>
-        <li data-label="footnote"><ul><li>Ang ipinapakitang datos ay cumulative na 30 araw sa kabuuan.</li><li>Hindi kinokolekta sa mga pagsusuri ang sekswal na oryentasyon at pagkakakilanlan sa kasarian.</li><li>Hindi ipinapakita ang mga numero mula 1 hanggang 10 para maprotektahan ang privacy ng pasyente.</li></ul></li>
-        <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}.</li>
+        <li data-label="footnote"><ul class="small-text"><li>Ang ipinapakitang datos ay cumulative na 30 araw sa kabuuan.</li><li>Hindi kinokolekta sa mga pagsusuri ang sekswal na oryentasyon at pagkakakilanlan sa kasarian.</li><li>Hindi ipinapakita ang mga numero mula 1 hanggang 10 para maprotektahan ang privacy ng pasyente.</li></ul></li>
+        <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
         <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng pag-uulat ayon sa lahi at etnisidad, sekswal na oryentasyon, at pagkakakilanlan ng kasarian</a></p></li>
 
         <li data-label="tab-label">Pag-uulat ayon sa <span data-replace="metric-filter"></span> sa <span data-replace="location"></span></li>
@@ -242,11 +308,7 @@ addtositemap: true
         <li data-item="deaths">Mga Pagkamatay</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <p class="small-text"></p>
-
-
-
-<div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle" id="factors">Mga salik na nagpapalaki sa posibilidad na magkaroon ng hawahan at malalang sakit</li>
     <li data-label="sectionDescription">Ang mga Californian na nasa siksikang pabahay o transportasyon, na may mas kaunting access sa bayad na leave at iba pang proteksyon sa manggagagawa ay may mas malaking posibilidad na mahawahan ng COVID-19. Puwedeng mapalaki ng mga panlipunang determinant ng kalusugan, gaya ng insurance sa kalusugan at hindi pagiging stable ng pabahay, ang posibilidad na magkaroon ng mga hindi magandang resulta. Kadalasan, resulta ng structural racism ang mga panlipunang determinant na ito ng kalusugan.</li>
     <li data-label="chartTitleIncome">Rate ng kaso sa komunidad ayon sa median na bracket ng taunang sambahayang kita</li>
@@ -258,13 +320,13 @@ addtositemap: true
     <li data-label="chartButtonIncome">Kita</li>
     <li data-label="chartButtonHousing">Siksikang pabahay</li>
     <li data-label="chartButtonHealthcare">Access sa insurance sa kalusugan</li>
-    <li data-label="footnote"><ul><li>Nagmumula sa Survey sa Komunidad ng Mga Amerikano at pambuong-estado ang datos. Hindi ito nakakaapekto sa mga indibidwal na county.</li><li>Ang ipinapakitang datos ay cumulative na 7 araw sa kabuuan, na may lag na 7 araw.</li></ul></li>
-    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng rate ng kaso sa komunidad ayon sa kita, crowded housing, at access sa insurance sa kalusugan</a></p><li>
-   <li data-label="casesPer100KPeople">Mga kaso sa bawat 100K tao</li>
+    <li data-label="footnote"><ul class="small-text"><li>Nagmumula sa Survey sa Komunidad ng Mga Amerikano at pambuong-estado ang datos. Hindi ito nakakaapekto sa mga indibidwal na county.</li><li>Ang ipinapakitang datos ay cumulative na 7 araw sa kabuuan, na may lag na 7 araw.</li></ul></li>
+    <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng rate ng kaso sa komunidad ayon sa kita, crowded housing, at access sa insurance sa kalusugan</a></p></li><li>
+   </li><li data-label="casesPer100KPeople">Mga kaso sa bawat 100K tao</li>
    <li data-label="statewideCaseRate">Rate ng kaso sa buong estado:</li>
    <li data-label="ariaBarLabel">placeholderCaseRate kaso sa bawat 100K tao. placeholderRateDiff30 pagbabago mula sa nakalipas na 30 araw</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> kaso sa bawat 100K tao. placeholderRateDiff30 pagbabago mula sa nakalipas na 30 araw</li>
-   <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}.</li>
+   <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
   </ul></cagov-chart-d3-bar>    <div class="bg-lightblue full-bleed py-4">
 <div class="container">
 <div class="row">
@@ -285,14 +347,16 @@ addtositemap: true
 
 
 
-<div id="learn-more"></div> <!--THIS IS LEARN MORE SECTION--> <div class="full-bleed">
+<div id="learn-more"></div> 
+<!--THIS IS LEARN MORE SECTION-->
+ <div class="full-bleed">
   <div class="container py-2">
     <h2 class="text-center color-purple my-4">Matuto pa</h2>
     <div class="row pb-5">
       <div class="col-lg-6">
         <ul class="arrow-links">
             <li>                 <a class="link-arrow-blue" data-kind="pdf" href="https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/Equity%20Playbook_V1_12.1.2020_final.pdf">                     <div class="link-arrow-label">                         Playbook ng county para sa pagtugon sa hindi pagkakapantay-pantay kaugnay ng COVID-19</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
-       </div>
+       </ul></div>
       <div class="col-lg-6">
         <ul class="arrow-links">
             <li>                 <a class="link-arrow-blue" data-kind="internal" href="https://covid19.ca.gov/discrimination/">                     <div class="link-arrow-label">                         Labanan ang diskriminasyon at stigma</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
@@ -330,7 +394,9 @@ addtositemap: true
                             </div>
                         </div>
                     </div>
-                </div><!--row 1-->                 <div class="row d-flex p-2">
+                </div>
+<!--row 1-->
+                 <div class="row d-flex p-2">
                     <div class="col-md-4 mt-3 px-10px">
                         <div class="bg-white h-100">
                             <div class="p-3">
@@ -339,4 +405,14 @@ addtositemap: true
                             </div>
                         </div>
                     </div>
-                </div><!--row 2-->             </div>             <!--col-10-->         </div>         <!--row-->     </div>     <!--container--> </div> <!--full bleed--> 
+                </div>
+<!--row 2-->
+             </div>             
+<!--col-10-->
+         </div>         
+<!--row-->
+     </div>     
+<!--container-->
+ </div> 
+<!--full bleed-->
+ 

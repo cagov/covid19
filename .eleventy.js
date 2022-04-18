@@ -625,7 +625,13 @@ module.exports = function (eleventyConfig) {
 
     const findlinkstolocalize = async function (html) {
 
-      const htmllang = html.match(/<html lang="(?<lang>[^"]*)"/).groups.lang;
+      const htmlmatch = html.match(/<html lang="(?<lang>[^"]*)"/);
+      if (!htmlmatch) {
+        // do not translate fragments this way...
+        return html;
+      }
+      const htmllang = htmlmatch.groups.lang;
+
       const lang = langData.languages.filter(x => x.enabled && x.hreflang === htmllang).concat(langData.languages[0])[0].id;
 
       //Scan the DOM for a files.covid19.ca.gov links
