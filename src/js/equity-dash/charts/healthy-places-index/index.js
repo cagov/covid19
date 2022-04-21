@@ -32,7 +32,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       desktop: {
         width: 613,
         height: 355,
-        margin: { top: 30, right: 24, bottom: 40, left: 30 },
+        margin: { top: 30, right: 24, bottom: 40, left: 36 },
         legendPosition: {
           x: 300,
           y: 10
@@ -41,7 +41,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       tablet: {
         width: 440,
         height: 355,
-        margin: { top: 30, right: 24, bottom: 40, left: 30 },
+        margin: { top: 30, right: 24, bottom: 40, left: 36 },
         legendPosition: {
           x: 160,
           y: 18
@@ -50,7 +50,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       mobile: {
         width: 440,
         height: 600,
-        margin: { top: 30, right: 24, bottom: 40, left: 30 },
+        margin: { top: 30, right: 24, bottom: 40, left: 36 },
         legendPosition: {
           x: 160,
           y: 18
@@ -59,7 +59,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       retina: {
         width: 320,
         height: 450,
-        margin: { top: 30, right: 24, bottom: 40, left: 30 },
+        margin: { top: 30, right: 24, bottom: 40, left: 36 },
         legendPosition: {
           x: 100,
           y: 18
@@ -244,10 +244,15 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       .range([this.chartBreakpointValues.margin.left, this.chartBreakpointValues.width - this.chartBreakpointValues.margin.right]);
 
     // don't allow max_y to exceed 100%, since that would be silly
+    let max_y_1 =  d3.max(missing_eq_data ? data : data2, (d) => d.METRIC_VALUE);
+    let max_y_2 =  d3.max(data, (d) => d.METRIC_VALUE);
+    let max_y_ab = Math.max(max_y_1, max_y_2);
+
     let max_y = Math.min(
       1,
-      d3.max(missing_eq_data ? data : data2, (d) => d.METRIC_VALUE) * 1.4
+      max_y_ab * 1.4
     );
+    console.log("Healthy places: max-y",max_y*100, max_y_1, max_y_2);
 
     let y = d3
       .scaleLinear()
@@ -280,7 +285,8 @@ class CAGOVChartD3Lines extends window.HTMLElement {
         .call((g) => g.select(".domain").remove());
 
     let nbr_ticks = Math.min(10, 1 + Math.floor(max_y * 100));
-    let y_tick_fmt = d3.format(".0%");
+    nbr_ticks = Math.max(5,nbr_ticks);
+    let y_tick_fmt = d3.format(".1%");
 
     let yAxis = (g) =>
       g
