@@ -252,7 +252,6 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       1,
       max_y_ab * 1.4
     );
-    console.log("Healthy places: max-y",max_y*100, max_y_1, max_y_2);
 
     let y = d3
       .scaleLinear()
