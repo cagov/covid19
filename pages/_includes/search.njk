@@ -113,6 +113,29 @@
 		return hash;
 	};
 
+	const allTimeTopQueries = [
+        'travel',
+        'covid vaccine appointment',
+        'vaccine appointment',
+        'testing',
+        'travel restrictions',
+        'vaccine',
+        'quarantine',
+        'orange county',
+        'gatherings',
+        'map',
+        'hair salons',
+        'covid testing',
+        'tiers',
+        'youth sports',
+        'thanksgiving',
+        'make an appointment',
+        'los angeles',
+        'vaccine locations',
+        'san diego',
+        'weddings'
+    ]
+	
 	const rejectList = [
 		3154295, -891899646, 3446907, -1263686556,
 		-519573749, 32245991, -1045620280, 3083181, 
@@ -120,12 +143,13 @@
 		3529280, 3441177, 3065272, 3541578,
 		-1220868373, -1944906010, 768376821, -1675033524,
 		208656131, 1161177713, -865057523, 1652680792, 937334084,
-		354670409
+		354670409,
+		940710456
 	];
 
 	const isRejected = function(phrase) {
-		console.log("search check",phrase,phrase.hashCode());
-		return phrase.match(/\S+/g).length > 4 || 
+		//console.log("search check",phrase,phrase.hashCode());
+		return phrase.match(/\S+/g).length > 5 || 
 			   phrase.length < 4 ||
 			   phrase.search(/(@|\w+\.\w+)/) != -1 ||
 			   rejectList.includes(phrase.hashCode()) ||
@@ -133,16 +157,18 @@
 	};
 
 	const popularQueryiesCallback = data => {
-		let pqs = 
-		document.querySelector('#queries').innerHTML += data.popularQueries
+		let popular = data.popularQueries
 			.filter(x=>(x.num > 10))
-			.map(x=>x.query)
+			.map(x=>x.query);
+
+		document.querySelector('#queries').innerHTML += 
+			popular
+			.concat(allTimeTopQueries.filter(x=>!popular.includes(x)))
 			.filter(x=>!isRejected(x))
 			.map(x=>
 				`<a rel="nofollow" class="action-link border-0 mr-3 mb-3" style="margin:0" href="?q=${x}">${x}</a>`
 			).join('');
 	}
 </script>
-<!-- disabled for now
+
 <script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script>
--->
