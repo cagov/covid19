@@ -19,17 +19,10 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
+    this.metric = this.chartConfigKey;
     console.log("Loading Disparity Chart",this.chartConfigKey,this.chartConfigFilter);
 
-    this.chartOptions = chartConfig[this.chartConfigKey][this.chartConfigFilter];
-
-    for (const [key, value] of Object.entries(chartConfig.common)) {
-        if (!(key in this.chartOptions)) // override not in use?
-        {
-            this.chartOptions[key] = value;
-        }
-    }
-
+    this.chartOptions = chartConfig.chart;
 
     getScreenResizeCharts(this);
 
@@ -56,10 +49,40 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
 
+    this.listenForLocations();
+
     this.retrieveData(this.dataUrl);
 
     rtlOverride(this); // quick fix for arabic
 
+  }
+
+  listenForLocations() {
+    // <-- county stuff goes here...
+
+    let metricFilter = document.querySelector(
+        "cagov-chart-filter-buttons.js-re-smalls"
+      );
+      metricFilter.addEventListener(
+        "filter-selected",
+        function (e) {
+          if (e.detail.filterKey != undefined) {
+            console.log("disparity filter selected",e.detail.filterKey);
+            this.metric = e.detail.filterKey;
+            this.renderComponent();
+            // this.selectedMetricDescription = e.detail.clickedFilterText.toLowerCase();
+            // let metricKey = "chartMetricName--" + e.detail.filterKey;
+            // if (metricKey in this.translationsObj) {
+            //   this.selectedMetricDescription = this.translationsObj[metricKey];
+            // }
+            // this.selectedMetric = e.detail.filterKey;
+            // this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
+            // this.resetDescription();
+            // this.resetTitle();
+          }
+        }.bind(this),
+        false
+      );      
   }
 
   ariaLabel(d, baselineData) {
@@ -102,6 +125,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     console.log("Rendering Disparity Chart A");
 
     const repDict = {
+      METRIC: this.metric,
       REGION: 'California',
     };
 
@@ -118,7 +142,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let line_series_array = [];
 
     series_fields.forEach((label, i) => {
-        let tseries_name = label.replaceAll(' ','_') + this.chartOptions.tseries_suffix;
+        let tseries_name = label.replaceAll(' ','_') + '_' + this.metric;
         console.log("tseries_name =",tseries_name);
         line_series_array.push(this.chartdata.time_series[tseries_name].VALUES);
     });
@@ -139,7 +163,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'x_axis_field':this.chartOptions.x_axis_field,
         'y_axis_legend':this.translationsObj.y_axis_legend,
         'y_fmt':'number',
-        'root_id':this.chartOptions.root_id,
+        'root_id':this.chartOptions.root_id + '_' + this.metric,
         'series_labels': series_labels,
         'series_fields': this.chartOptions.series_fields,
         'series_colors': this.chartOptions.series_colors,
