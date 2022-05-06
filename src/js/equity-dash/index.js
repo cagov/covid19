@@ -1,6 +1,7 @@
 import '../common/search/index.js'
 import '../common/county-buttons/buttons.js'
 import '../common/search/filters.js'
+import './charts/disparity-multi-linechart/index.js'
 import './charts/relative-percentage-by-100k/index.js'
 import './charts/relative-percentage-by-pop/index.js'
 import './charts/healthy-places-index/index.js'

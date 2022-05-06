@@ -66,17 +66,24 @@ addtositemap: false
                 <p>COVID-19 disproportionately affects California’s most marginalized communities, as well as essential workers such as those in health care, grocery, and cleaning services.</p>
                 <!-- <p><strong>New charts go here!</strong></p> -->
                 <!-- new charts -->
-                <cagov-chart-disparity-multi-linechart class="chart d-none" data-chart-config-filter="episode" data-chart-config-key="cases">
+                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
                   <ul>
                     <li data-label="chartTitle">COVID-19 cases by race/ethnicity, {REGION}</li>
                   </ul>
                 </cagov-chart-disparity-multi-linechart>
 
-                <cagov-chart-disparity-multi-linechart class="chart d-none" data-chart-config-filter="episode" data-chart-config-key="deaths">
+                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
                   <ul>
                     <li data-label="chartTitle">COVID-19 deaths by race/ethnicity, {REGION}</li>
                   </ul>
                 </cagov-chart-disparity-multi-linechart>
+
+                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="tests">
+                  <ul>
+                    <li data-label="chartTitle">COVID-19 tests by race/ethnicity, {REGION}</li>
+                  </ul>
+                </cagov-chart-disparity-multi-linechart>
+
                 <!-- end new charts -->
 
               </div>
