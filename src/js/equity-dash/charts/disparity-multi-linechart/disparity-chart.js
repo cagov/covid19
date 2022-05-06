@@ -390,11 +390,8 @@ function getAxisDiv(ascale,{hint='num'}) {
     published_date = null,
     render_date = null,
     root_id = "variantchart",
-    // ['#181b4a','#641c4f','#c32b3e','#ff592a','#ffb026','#ffd800','#d3d3d3'],
     series_colors = [], 
-    //              alpha      beta      delta     gamma      lambda     mu        other
     series_labels = [],
-    series_fields = [],
     chart_options = {},
     pending_days = 0,
     pending_label = 'Pending',
@@ -403,13 +400,13 @@ function getAxisDiv(ascale,{hint='num'}) {
     // Force padding on dimensions...
     const firstDateSnowflake = line_series_array[0][0].DATE
     const lastDateSnowFlake = line_series_array[0][line_series_array[0].length-1].DATE;
-    const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
-    const lastday = lastDateJ.getDate();
     // as day goes from 1->16, padding goes from 35 -> 0
-    if (lastday < 16) {
-      const padding = 35 * 1-(lastday/15.0);
-      this.dimensions.margin.right = padding;
-    }
+    // const lastDateJ = parseSnowflakeDate(lastDateSnowFlake);
+    // const lastday = lastDateJ.getDate();
+    // if (lastday < 16) {
+    //   const padding = 35 * 1-(lastday/15.0);
+    //   this.dimensions.margin.right = padding;
+    // }
 
     this.svg = d3
       .select(this.querySelector(".svg-holder"))

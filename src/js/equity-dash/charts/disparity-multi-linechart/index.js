@@ -17,10 +17,8 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   connectedCallback() {
 
     this.translationsObj = getTranslations(this);
-    this.chartConfigFilter = this.dataset.chartConfigFilter;
-    this.chartConfigKey = this.dataset.chartConfigKey;
-    this.metric = this.chartConfigKey;
-    console.log("Loading Disparity Chart",this.chartConfigKey,this.chartConfigFilter);
+    this.metric = this.dataset.chartConfigMetric;
+    console.log("Loading Disparity Chart");
 
     this.chartOptions = chartConfig.chart;
 
@@ -70,15 +68,6 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
             console.log("disparity filter selected",e.detail.filterKey);
             this.metric = e.detail.filterKey;
             this.renderComponent();
-            // this.selectedMetricDescription = e.detail.clickedFilterText.toLowerCase();
-            // let metricKey = "chartMetricName--" + e.detail.filterKey;
-            // if (metricKey in this.translationsObj) {
-            //   this.selectedMetricDescription = this.translationsObj[metricKey];
-            // }
-            // this.selectedMetric = e.detail.filterKey;
-            // this.retrieveData(this.dataUrl, this.dataStatewideRateUrl);
-            // this.resetDescription();
-            // this.resetTitle();
           }
         }.bind(this),
         false
@@ -122,7 +111,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
 
   renderComponent() {
-    console.log("Rendering Disparity Chart A");
+    console.log("Rendering Disparity Chart");
 
     const repDict = {
       METRIC: this.metric,
@@ -134,10 +123,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let series_fields = this.chartOptions.series_fields;
 
-    let show_pending = hasURLSearchParam('grayarea') || hasURLSearchParam('pending');
-
-    console.log("Rendering Disparity Chart B", this.chartdata);
-
+    // let show_pending = hasURLSearchParam('grayarea') || hasURLSearchParam('pending');
 
     let line_series_array = [];
 
@@ -149,11 +135,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.line_series_array = line_series_array;
 
     const displayDemoMap = termCheck();
-    var series_labels = [...this.chartOptions.series_fields].map(x => displayDemoMap.get(x)? displayDemoMap.get(x) : x);
-    console.log("Series labels",series_labels);
-
-    this.chartlabels = series_labels;
-
+    this.chartlabels = [...this.chartOptions.series_fields].map(x => displayDemoMap.get(x)? displayDemoMap.get(x) : x);
 
     let renderOptions = {
         'chart_options':this.chartOptions,
@@ -164,8 +146,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'y_axis_legend':this.translationsObj.y_axis_legend,
         'y_fmt':'number',
         'root_id':this.chartOptions.root_id + '_' + this.metric,
-        'series_labels': series_labels,
-        'series_fields': this.chartOptions.series_fields,
+        'series_labels': this.chartlabels,
         'series_colors': this.chartOptions.series_colors,
         'pending_days': this.chartOptions.pending_days,
         'pending_label': this.translationsObj.pending_label,
@@ -173,7 +154,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'render_date': getSnowflakeStyleDate(0),
     };
     console.log("Calling disparity renderer");
-      renderChart.call(this, renderOptions);
+    renderChart.call(this, renderOptions);
   }
 
   retrieveData(url) {
@@ -193,23 +174,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-        //   let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
-        //   console.log("days to show",days_to_show);
-
-        //   let pending_days = this.chartOptions.pending_days;
-        //   this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
-
-        //   if (this.chartdata.length > days_to_show) {
-        //     console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
-        //     this.chartdata.splice(0, this.chartdata.length-days_to_show); 
-        //   }
-
-        //   // Premult
-        //   this.chartdata.forEach(rec => {
-        //     rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
-        //     rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
-        //     rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
-        //   });
+          // Do clipping and premult here...
 
           this.renderComponent();
 
