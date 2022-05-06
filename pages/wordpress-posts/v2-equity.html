@@ -64,30 +64,167 @@ addtositemap: false
             <div class="col-lg-10 mx-auto">
             <h2 class="text-center color-purple" id="overview-of-disparities">The disparities in our diverse communities are severe</h2>
                 <p>COVID-19 disproportionately affects California’s most marginalized communities, as well as essential workers such as those in health care, grocery, and cleaning services.</p>
-                <!-- <p><strong>New charts go here!</strong></p> -->
-                <!-- new charts -->
-                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
-                  <ul>
-                    <li data-label="chartTitle">COVID-19 cases by race/ethnicity, {REGION}</li>
-                  </ul>
-                </cagov-chart-disparity-multi-linechart>
-
-                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
-                  <ul>
-                    <li data-label="chartTitle">COVID-19 deaths by race/ethnicity, {REGION}</li>
-                  </ul>
-                </cagov-chart-disparity-multi-linechart>
-
-                <cagov-chart-disparity-multi-linechart class="chart" data-chart-config-filter="weeks" data-chart-config-key="tests">
-                  <ul>
-                    <li data-label="chartTitle">COVID-19 tests by race/ethnicity, {REGION}</li>
-                  </ul>
-                </cagov-chart-disparity-multi-linechart>
-
                 <!-- end new charts -->
-
               </div>
         </div><!--END row-->
+
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+              <div class="container">
+  
+                        <cagov-equity-highlight-stats>
+          <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                <!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
+                <!--{% if value > 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Latino people is
+                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>% higher</span> than statewide
+                </div>
+          
+                <!--{% elif value < 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Latino people is
+                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>% lower</span> than
+                  statewide
+                </div>
+          
+                <!--{% else %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Latino people is the same as statewide average
+                </div>
+          
+                <!--{% endif %}-->
+          
+                <div class="eq-cases">
+                  <p class="text-xs">Deaths per 100K people:</p>
+                  <p class="text-xs mb-0">
+                    <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags,0)}}</span></strong> 
+                    Latino <br>
+                    <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
+                    all ethnicities
+                  </p>
+                </div>
+              </div>
+          
+              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
+                <!--{% if value > 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for Pacific Islanders is
+                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>% higher</span> than statewide
+                </div>
+          
+                <!--{% elif value < 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for Pacific Islanders is
+                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>% lower</span> than
+                  statewide
+                </div>
+          
+                <!--{% else %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for Pacific Islanders is the same as statewide
+                  average
+                </div>
+          
+                <!--{% endif %}-->
+                <div class="eq-cases">
+                  <p class="text-xs">Cases per 100K people:</p>
+                  <p class="text-xs mb-0">
+                    <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags,0)}}</span></strong>
+                    NHPI <br>
+                    <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
+                    all ethnicities
+                  </p>
+                </div>
+              </div>
+          
+              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                <!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
+                <!--{% if value > 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Black people is
+                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>% higher</span> than statewide
+                </div>
+          
+                <!--{% elif value < 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Black people is
+                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>% lower</span> than
+                  statewide
+                </div>
+          
+                <!--{% else %}-->
+          
+                <div class="eq-text mb-3">
+                  Death rate for Black people is the same as statewide average
+                </div>
+          
+                <!--{% endif %}-->
+                <div class="eq-cases">
+                  <p class="text-xs">Deaths per 100K people:</p>
+                  <p class="text-xs mb-0">
+                    <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black|formatNumber(tags,0)}}</span></strong> Black
+                    <br>
+                    <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> all
+                    ethnicities
+                  </p>
+                </div>
+              </div>
+          
+              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
+                <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
+                <!--{% if value > 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for communities with median income &lt;$40K is
+                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% higher</span> than statewide
+                </div>
+          
+                <!--{% elif value < 0 %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for communities with median income &lt;$40K is
+                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% lower</span> than
+                  statewide
+                </div>
+          
+                <!--{% else %}-->
+          
+                <div class="eq-text mb-3">
+                  Case rate for communities with median income &lt;$40K is the
+                  same as statewide average
+                </div>
+          
+                <!--{% endif %}-->
+          
+                <div class="eq-cases">
+                  <p class="text-xs">Cases per 100K people:</p>
+                  <p class="text-xs mb-0">
+                    <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong>
+                    income &lt;$40K <br>
+                    <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
+                    all income brackets
+                  </p>
+                </div>
+              </div>
+            </div>
+        </cagov-equity-highlight-stats>
+  
+  
+              </div><!--END cont-->
+          </div><!--END col-10-->
+      </div><!--END row-->
+
 
         <div class="row pb-4">
             <div class="col-lg-10 mx-auto">
@@ -97,6 +234,8 @@ addtositemap: false
   
     </div><!--END container-->
 </div><!--END LIGHT BLUE BG-->
+
+
 
 
 
@@ -118,6 +257,9 @@ addtositemap: false
 
 
 
+
+
+
 <!--SMALL TABS ARE THE BEST -->
 <cagov-chart-filter-buttons class="js-re-smalls">
   <div class="d-flex justify-content-center">
@@ -126,6 +268,38 @@ addtositemap: false
     <button class="small-tab" data-key="tests">Testing</button>
   </div>
 </cagov-chart-filter-buttons>
+
+  <!-- new charts -->
+  <div class="container disparity-chart-container">
+    <div class="row">
+        <div class="col">
+  
+          <cagov-chart-disparity-multi-linechart class="chart" id="disparity-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
+            <ul>
+              <li data-label="tooltip_date_label">Week ending</li>
+              <li data-label="chartTitle">COVID-19 cases by race/ethnicity, {REGION}</li>
+            </ul>
+          </cagov-chart-disparity-multi-linechart>
+
+          <cagov-chart-disparity-multi-linechart class="chart d-none" id="disparity-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
+            <ul>
+              <li data-label="tooltip_date_label">Week ending</li>
+              <li data-label="chartTitle">COVID-19 deaths by race/ethnicity, {REGION}</li>
+            </ul>
+          </cagov-chart-disparity-multi-linechart>
+
+          <cagov-chart-disparity-multi-linechart class="chart d-none" id="disparity-tests-chart" data-chart-config-filter="weeks" data-chart-config-key="tests">
+            <ul>
+              <li data-label="tooltip_date_label">Week ending</li>
+              <li data-label="chartTitle">COVID-19 tests by race/ethnicity, {REGION}</li>
+            </ul>
+          </cagov-chart-disparity-multi-linechart>
+
+        </div>
+      </div>
+    </div>
+
+
 
 <div class="container">
   <div class="row">

@@ -10,10 +10,14 @@ export default function template(chartOptions, {
 
   return /*html*/ `
     <div class="py-2">
-      <div class="bg-white pt-2 pb-1">
-      <div class="chart-title noborder">${post_chartTitle}</div>
-      <div class="mx-auto disparity-chart">
-            <div class="svg-holder"></div>
+      <div class="container">
+        <div class="col-lg-12 bg-white py-4">
+          <div class="row">
+            <div class="col-lg-12 mx-auto px-0 disparity-chart">
+              <div class="chart-title noborder">${post_chartTitle}</div>
+              <div class="svg-holder"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

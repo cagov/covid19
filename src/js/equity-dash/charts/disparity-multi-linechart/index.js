@@ -74,17 +74,27 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   renderExtras(svg) {
   }
 
-  getTooltipContent(di) {    
-    return 'TOOLTIP CONTENT';
-    // const drec = this.chartdata[di];
-    // const repDict = {
-    //   WEEKDATE:   reformatReadableDate(drec.DATE),
-    //   BCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
-    //   VCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
-    //   UCOUNT:   formatValue(drec[this.chartOptions.series_fields[2]],{format:'number'}),
-    // };
-    // let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
-    // return caption;
+  getTooltipContent(last_date_idx) {    
+    if (last_date_idx >= this.line_series_array[0].length) {
+        last_date_idx = this.line_series_array[0].length - 1;
+    }
+    if (last_date_idx < 0) {
+        last_date_idx = 0;
+    }
+  
+    let caption = '<table>';
+    let date_label = this.translationsObj.tooltip_date_label;
+    let date_value = reformatReadableDate(this.line_series_array[0][last_date_idx].DATE);
+    caption += `  <tr><td class="tt-label">${date_label}:</td><td class="tt-value">${date_value}</td></tr>`;
+    this.chartlabels.forEach(  (lab, i) => {
+      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'percent'});
+      caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
+    });
+    caption += '</table>';
+    if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_days) {
+      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    }
+    return caption;
   }
 
 
@@ -117,6 +127,8 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     const displayDemoMap = termCheck();
     var series_labels = [...this.chartOptions.series_fields].map(x => displayDemoMap.get(x)? displayDemoMap.get(x) : x);
     console.log("Series labels",series_labels);
+
+    this.chartlabels = series_labels;
 
 
     let renderOptions = {
