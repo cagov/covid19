@@ -1,37 +1,16 @@
 {
-    "common": {
+    "chart": {
         "series_fields": ["African American","American Indian","Asian American","Latino","Native Hawaiian and other Pacific Islander", "White", "Multi-Race"],
         "series_colors": ["#fa7b73", "#d4b762", "#59b321", "#0fbb8e", "#ad96fe", "#fc89e0", "#21b6ea"],
         "x_axis_field":"DATE",
         "days_to_show": 120,
         "pending_days":0,
         "chart_style": "normal",
-        "stroke_width": 2 
+        "stroke_width": 2,
+        "root_id": "disparity",
+        "chartName": "#disparity-chart",
+        "dataUrl": "disparity/california.json"
     },
-    "cases": {
-      "weeks": {
-        "chartName": "#disparity-cases-chart",
-        "dataUrl": "disparity/california.json",
-        "root_id": "disparity-cases",
-        "tseries_suffix": "_cases"
-      }
-    },
-    "deaths": {
-      "weeks": {
-        "chartName": "#disparity-deaths-chart",
-        "dataUrl": "disparity/california.json",
-        "root_id": "disparity-deaths",
-        "tseries_suffix": "_deaths"
-      }
-    },
-    "tests": {
-        "weeks": {
-          "chartName": "#disparity-tests-chart",
-          "dataUrl": "disparity/california.json",
-          "root_id": "disparity-hospitalizations",
-          "tseries_suffix": "_tests"
-        }
-      },
     "desktop": {
       "fontSize": 14,
       "width": 700,    

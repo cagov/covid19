@@ -274,13 +274,13 @@ addtositemap: false
     <div class="row">
         <div class="col">
   
-          <cagov-chart-disparity-multi-linechart class="chart" id="disparity-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
+          <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
             <ul>
               <li data-label="tooltip_date_label">Week ending</li>
-              <li data-label="chartTitle">COVID-19 cases by race/ethnicity, {REGION}</li>
+              <li data-label="chartTitle">COVID-19 {METRIC} by race/ethnicity, {REGION}</li>
             </ul>
           </cagov-chart-disparity-multi-linechart>
-
+        <!-- 
           <cagov-chart-disparity-multi-linechart class="chart d-none" id="disparity-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths">
             <ul>
               <li data-label="tooltip_date_label">Week ending</li>
@@ -294,6 +294,7 @@ addtositemap: false
               <li data-label="chartTitle">COVID-19 tests by race/ethnicity, {REGION}</li>
             </ul>
           </cagov-chart-disparity-multi-linechart>
+        -->
 
         </div>
       </div>
