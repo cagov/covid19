@@ -10,7 +10,11 @@ import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/rea
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "./geturlparams.js";
 
-import testChartData from "./disparity_sampledata-CA.json";
+import testChartDataCA from "./disparity_sampledata-california.json";
+import testChartDataLA from "./disparity_sampledata-losangeles.json";
+import testChartDataSD from "./disparity_sampledata-sandiego.json";
+import testChartDataMono from "./disparity_sampledata-mono.json";
+import testChartDataAlpine from "./disparity_sampledata-alpine.json";
 
 
 class CAGovDisparityMultiLineChart extends window.HTMLElement {
@@ -18,6 +22,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     this.translationsObj = getTranslations(this);
     this.metric = this.dataset.chartConfigMetric;
+    this.region = 'California';
     console.log("Loading Disparity Chart");
 
     this.chartOptions = chartConfig.chart;
@@ -57,6 +62,18 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
   listenForLocations() {
     // <-- county stuff goes here...
+    let searchElement = document.querySelector("cagov-county-search");
+
+    searchElement.addEventListener(
+        "county-selected",
+        function (e) {
+          this.region = e.detail.county;
+          this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
+          this.retrieveData(this.dataUrl);
+          // this.resetTitle();
+        }.bind(this),
+        false
+      );
 
     let metricFilter = document.querySelector(
         "cagov-chart-filter-buttons.js-re-smalls"
@@ -115,7 +132,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     const repDict = {
       METRIC: this.metric,
-      REGION: 'California',
+      REGION: this.region,
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
@@ -160,7 +177,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   retrieveData(url) {
     // test test test - retrieve and ignore data...
     url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
-
+    const fileregion = this.region.toLowerCase().replace(/ /g, "")
     window
       .fetch(url)
       .then((response) => response.json())
@@ -169,7 +186,23 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
           // console.log("Race/Eth data data", alldata.data);
 
           // TEST OVERRIDE
-          alldata = JSON.parse(JSON.stringify(testChartData));
+          switch (fileregion) {
+            case 'california':
+                alldata = JSON.parse(JSON.stringify(testChartDataCA));
+                break;
+            case 'losangeles':
+                alldata = JSON.parse(JSON.stringify(testChartDataLA));
+                break;
+            case 'sandiego':
+                alldata = JSON.parse(JSON.stringify(testChartDataSD));
+                break;
+            case 'mono':
+                alldata = JSON.parse(JSON.stringify(testChartDataMono));
+                break;
+            case 'alpine':
+                alldata = JSON.parse(JSON.stringify(testChartDataAlpine));
+                break;
+          }
 
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
