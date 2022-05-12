@@ -10,11 +10,12 @@ import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/rea
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "./geturlparams.js";
 
-import testChartDataCA from "./disparity_sampledata-california.json";
-import testChartDataLA from "./disparity_sampledata-losangeles.json";
-import testChartDataSD from "./disparity_sampledata-sandiego.json";
-import testChartDataMono from "./disparity_sampledata-mono.json";
-import testChartDataAlpine from "./disparity_sampledata-alpine.json";
+import testChartDataDaysCA from "./disparity_sampledata_days-california.json";
+import testChartDataWeeksCA from "./disparity_sampledata_weeks-california.json";
+// import testChartDataLA from "./disparity_sampledata-losangeles.json";
+// import testChartDataSD from "./disparity_sampledata-sandiego.json";
+// import testChartDataMono from "./disparity_sampledata-mono.json";
+// import testChartDataAlpine from "./disparity_sampledata-alpine.json";
 
 
 class CAGovDisparityMultiLineChart extends window.HTMLElement {
@@ -144,10 +145,20 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     let line_series_array = [];
 
+   
+    const pending_days = this.chartOptions.pending_days;
+    const days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
+
     series_fields.forEach((label, i) => {
         let tseries_name = label.replaceAll(' ','_') + '_' + this.metric;
         console.log("tseries_name =",tseries_name);
-        line_series_array.push(this.chartdata.time_series[tseries_name].VALUES);
+        let tseries = this.chartdata.time_series[tseries_name].VALUES;
+        tseries.splice(tseries.length-pending_days,pending_days);
+        if (tseries.length > days_to_show) {
+          console.log("Clipping",tseries.length-days_to_show,"days > days_to_show")
+          tseries.splice(0, tseries.length-days_to_show); 
+        }
+        line_series_array.push(tseries);
     });
     this.line_series_array = line_series_array;
 
@@ -176,6 +187,8 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
   retrieveData(url) {
     // test test test - retrieve and ignore data...
+    const fileregion = this.region.toLowerCase().replace(' ','_');
+
     url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
     window
       .fetch(url)
@@ -187,26 +200,26 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
           // TEST OVERRIDE
           switch (fileregion) {
             case 'california':
-                alldata = JSON.parse(JSON.stringify(testChartDataCA));
+                alldata = JSON.parse(JSON.stringify(testChartDataDaysCA));
                 break;
-            case 'losangeles':
-                alldata = JSON.parse(JSON.stringify(testChartDataLA));
-                break;
-            case 'sandiego':
-                alldata = JSON.parse(JSON.stringify(testChartDataSD));
-                break;
-            case 'mono':
-                alldata = JSON.parse(JSON.stringify(testChartDataMono));
-                break;
-            case 'alpine':
-                alldata = JSON.parse(JSON.stringify(testChartDataAlpine));
-                break;
+            // case 'losangeles':
+            //     alldata = JSON.parse(JSON.stringify(testChartDataLA));
+            //     break;
+            // case 'sandiego':
+            //     alldata = JSON.parse(JSON.stringify(testChartDataSD));
+            //     break;
+            // case 'mono':
+            //     alldata = JSON.parse(JSON.stringify(testChartDataMono));
+            //     break;
+            // case 'alpine':
+            //     alldata = JSON.parse(JSON.stringify(testChartDataAlpine));
+            //     break;
           }
 
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
 
-          // Do clipping and premult here...
+
 
           this.renderComponent();
 
