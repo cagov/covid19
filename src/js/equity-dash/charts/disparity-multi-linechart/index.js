@@ -178,6 +178,9 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     // test test test - retrieve and ignore data...
     url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
     window
+      .fetch(url)
+      .then((response) => response.json())
+      .then(
         function (alldata) {
           // console.log("Race/Eth data data", alldata.data);
 
