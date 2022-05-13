@@ -24,7 +24,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.metric = this.dataset.chartConfigMetric;
     this.region = 'California';
-    this.unit = getURLSearchParam('unit', 'days');
+    this.unit = getURLSearchParam('unit', 'weeks');
     console.log("Loading Disparity Chart");
 
     this.chartOptions = chartConfig.chart;
@@ -117,12 +117,13 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let date_label = this.translationsObj.tooltip_date_label;
     let date_value = reformatReadableDate(this.line_series_array[0][last_date_idx].DATE);
     caption += `  <tr><td class="tt-label">${date_label}:</td><td class="tt-value">${date_value}</td></tr>`;
-    this.chartlabels.forEach(  (lab, i) => {
-      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'percent'});
+
+    this.tooltiplabels.forEach(  (lab, i) => {      
+      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'number'});
       caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
     });
     caption += '</table>';
-    if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_days) {
+    if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_units) {
       caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
     }
     return caption;
@@ -147,17 +148,17 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let line_series_array = [];
 
    
-    const pending_days = parseInt(getURLSearchParam('pending', ''+this.chartOptions.pending_days)); 
-    const days_to_show = parseInt(getURLSearchParam('units', ''+this.chartOptions.days_to_show));
+    const pending_units = parseInt(getURLSearchParam('pending', ''+this.chartOptions.pending_units)); 
+    const units_to_show = parseInt(getURLSearchParam('units', ''+this.chartOptions.units_to_show));
 
     series_fields.forEach((label, i) => {
         let tseries_name = label.replaceAll(' ','_') + '_' + this.metric;
         console.log("tseries_name =",tseries_name);
         let tseries = this.chartdata.time_series[tseries_name].VALUES;
-        tseries.splice(tseries.length-pending_days,pending_days);
-        if (tseries.length > days_to_show) {
-          console.log("Clipping",tseries.length-days_to_show,"days > days_to_show")
-          tseries.splice(0, tseries.length-days_to_show); 
+        tseries.splice(tseries.length-pending_units,pending_units);
+        if (tseries.length > units_to_show) {
+          console.log("Clipping",tseries.length-units_to_show,"units > units_to_show")
+          tseries.splice(0, tseries.length-units_to_show); 
         }
         line_series_array.push(tseries);
     });
@@ -165,6 +166,9 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     const displayDemoMap = termCheck();
     this.chartlabels = [...this.chartOptions.series_fields].map(x => displayDemoMap.get(x)? displayDemoMap.get(x) : x);
+    this.tooltiplabels = [...this.chartOptions.series_fields].map(x => displayDemoMap.get(x)? displayDemoMap.get(x) : x);
+    this.tooltiplabels[1] = "AI/AN";
+    this.tooltiplabels[4] = "NHPI";
 
     let renderOptions = {
         'chart_options':this.chartOptions,
@@ -177,7 +181,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'root_id':this.chartOptions.root_id + '_' + this.metric,
         'series_labels': this.chartlabels,
         'series_colors': this.chartOptions.series_colors,
-        'pending_days': this.chartOptions.pending_days,
+        'pending_units': 0,
         'pending_label': this.translationsObj.pending_label,
         'unit':this.unit,
         'published_date': getSnowflakeStyleDate(0),

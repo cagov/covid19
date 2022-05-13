@@ -68,12 +68,13 @@ function writeXAxis(svg, data, date_fld, x, y,
         if (x(i) < this.dimensions.width)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
-          const monthStr = sdate.toLocaleString('default', { month: 'short' });
+          const monthDayStr = sdate.toLocaleString('default', { month: 'short', day: 'numeric' });
+          // const dayStr = sdate.toLocaleString('default', { day: 'numeric' });
           let subg = xgroup.append("g")
             .attr('class','x-tick');
           let text_anchor = 'middle';
           subg.append('text')
-            .text(monthStr)
+            .text(monthDayStr)
             .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
             .attr("x", x(i))
             .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
@@ -272,7 +273,7 @@ function writeYAxis(svg, x, y,
 }
 
 function writePendingBlock(svg, x, y,
-  { pending_days=0,
+  { pending_units=0,
     pending_legend='',
     padDays=0,
     root_id='barid',
@@ -282,7 +283,7 @@ function writePendingBlock(svg, x, y,
     const max_x_domain = x.domain()[1];
     const min_y_domain = y.domain()[0];
     const max_y_domain = y.domain()[1];
-    const left_edge = x(max_x_domain-padDays + 0.5 - pending_days);
+    const left_edge = x(max_x_domain-padDays + 0.5 - pending_units);
     const right_edge = x(max_x_domain-padDays);
     const mid_edge = (left_edge + right_edge) / 2;
     const right_chart_edge = x(max_x_domain);
@@ -394,7 +395,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     series_colors = [], 
     series_labels = [],
     chart_options = {},
-    pending_days = 0,
+    pending_units = 0,
     unit = 'days',
     pending_label = 'Pending',
    } )  {
@@ -494,9 +495,9 @@ function getAxisDiv(ascale,{hint='num'}) {
                 });
 
     
-    if (pending_days > 0) {
+    if (pending_units > 0) {
       writePendingBlock.call(this, this.svg, this.xline, this.yline, 
-            { root_id:root_id, pending_days:pending_days, pending_legend:pending_label,
+            { root_id:root_id, pending_units:pending_units, pending_legend:pending_label,
               padDays: padDays
             });
     }
