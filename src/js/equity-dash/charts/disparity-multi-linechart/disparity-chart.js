@@ -37,7 +37,7 @@ function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',li
 
 // Date Axis
 function writeXAxis(svg, data, date_fld, x, y, 
-  { root_id='barid'} ) {
+  { root_id='barid', unit='days'} ) {
   // console.log("writeXAxis A");
   const tick_height = 4;
   const tick_upper_gap = 1;
@@ -55,7 +55,8 @@ function writeXAxis(svg, data, date_fld, x, y,
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
-    if (day_idx == 1) {
+    if ((unit == 'days' && day_idx == 1) || 
+        (unit == 'weeks' && day_idx <= 7)) {
       let subj = xgroup.append("g")
         .append('line')
         .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
@@ -394,6 +395,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     series_labels = [],
     chart_options = {},
     pending_days = 0,
+    unit = 'days',
     pending_label = 'Pending',
    } )  {
 
@@ -507,7 +509,7 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     // console.log("Writing X Axis");
     writeXAxis.call(this, this.svg, line_series_array[0], x_axis_field, this.xline, this.yline,
-      {week_modulo: 1, root_id:root_id} );
+      {week_modulo: 1, root_id:root_id, unit:unit} );
 
     if (extras_func) {
       extras_func.call(this, this.svg);

@@ -24,6 +24,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.translationsObj = getTranslations(this);
     this.metric = this.dataset.chartConfigMetric;
     this.region = 'California';
+    this.unit = getURLSearchParam('unit', 'days');
     console.log("Loading Disparity Chart");
 
     this.chartOptions = chartConfig.chart;
@@ -146,8 +147,8 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let line_series_array = [];
 
    
-    const pending_days = this.chartOptions.pending_days;
-    const days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
+    const pending_days = parseInt(getURLSearchParam('pending', ''+this.chartOptions.pending_days)); 
+    const days_to_show = parseInt(getURLSearchParam('units', ''+this.chartOptions.days_to_show));
 
     series_fields.forEach((label, i) => {
         let tseries_name = label.replaceAll(' ','_') + '_' + this.metric;
@@ -178,6 +179,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'series_colors': this.chartOptions.series_colors,
         'pending_days': this.chartOptions.pending_days,
         'pending_label': this.translationsObj.pending_label,
+        'unit':this.unit,
         'published_date': getSnowflakeStyleDate(0),
         'render_date': getSnowflakeStyleDate(0),
     };
@@ -200,7 +202,14 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
           // TEST OVERRIDE
           switch (fileregion) {
             case 'california':
-                alldata = JSON.parse(JSON.stringify(testChartDataDaysCA));
+                switch(this.unit) {
+                  case 'days':
+                    alldata = JSON.parse(JSON.stringify(testChartDataDaysCA));
+                    break;
+                  case 'weeks':
+                    alldata = JSON.parse(JSON.stringify(testChartDataWeeksCA));
+                    break;
+                  }
                 break;
             // case 'losangeles':
             //     alldata = JSON.parse(JSON.stringify(testChartDataLA));
