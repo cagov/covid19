@@ -56,7 +56,7 @@ function writeXAxis(svg, data, date_fld, x, y,
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
     if ((unit == 'days' && day_idx == 1) || 
-        (unit == 'weeks' && day_idx <= 7)) {
+        (unit == 'weeks' && (day_idx <= 7 || data.length < 12))) {
       let subj = xgroup.append("g")
         .append('line')
         .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
@@ -65,7 +65,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width)
+        if (x(i) < this.dimensions.width-40)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthDayStr = sdate.toLocaleString('default', { month: 'short', day: 'numeric' });
@@ -470,7 +470,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     // let padDays = Math.max(0, min_days - lastDateJ.getDate());
     let padDays = 0;
     // console.log("MIN DAYS, pad_days", min_days, padDays);
-
+    console.log("margin right: ",this.dimensions.margin.right);
     this.xline = d3
     .scaleLinear()
     .domain([0,padDays + line_series_array[0].length-1])
