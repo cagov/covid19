@@ -263,11 +263,13 @@ function writeYAxis(svg, x, y,
   // y-axis-legend
   let yLegendG = svg.append("g");
   y_axis_legend.split('<br>').forEach((legend_line, yi) => {
-    yLegendG.append('text')
+  legend_line = legend_line.replace("cases","Cases");
+  yLegendG.append('text')
       .text(legend_line)
+      .attr('transform','translate(10,250)rotate(-90)')
       .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor: start; dominant-baseline:middle;')
-      .attr("x",0)
-      .attr("y",12+12*yi);
+      .attr("y",0)
+      .attr("x",0);
   });
 
 }

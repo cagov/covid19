@@ -139,6 +139,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
+    this.translationsObj.post_y_axis_legend = applySubstitutions(this.translationsObj.y_axis_legend, repDict);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
     let series_fields = this.chartOptions.series_fields;
@@ -176,7 +177,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'extras_func':this.renderExtras,
         'line_series_array':line_series_array,
         'x_axis_field':this.chartOptions.x_axis_field,
-        'y_axis_legend':this.translationsObj.y_axis_legend,
+        'y_axis_legend':this.translationsObj.post_y_axis_legend,
         'y_fmt':'number',
         'root_id':this.chartOptions.root_id + '_' + this.metric,
         'series_labels': this.chartlabels,
