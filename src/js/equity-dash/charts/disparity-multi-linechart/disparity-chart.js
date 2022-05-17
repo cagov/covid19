@@ -3,10 +3,6 @@
 import { parseSnowflakeDate} from "../../../common/readable-date.js";
 
 function writeLine(svg, data, fld, x, y, { root_id='barid', line_id='line_s0',line_idx=1, color='black', crop_floor=true,chart_options=null }) {
-  let max_y_domain = y.domain()[1];
-  let max_x_domain = x.domain()[1];
-  let component = this;
-
   let groups = svg.append("g")
     .attr("class","vc-fg-line "+root_id+" "+line_id)
     .attr("stroke",color)
@@ -69,7 +65,6 @@ function writeXAxis(svg, data, date_fld, x, y,
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthDayStr = sdate.toLocaleString('default', { month: 'short', day: 'numeric' });
-          // const dayStr = sdate.toLocaleString('default', { day: 'numeric' });
           let subg = xgroup.append("g")
             .attr('class','x-tick');
           let text_anchor = 'middle';
@@ -90,8 +85,6 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('y2', y(0)+5);
     }
   });
-  // console.log("writeXAxis C");
-
 }
 
 // Formatter Factory
