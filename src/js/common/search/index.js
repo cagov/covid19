@@ -74,6 +74,7 @@ class CAGovCountySearch extends window.HTMLElement {
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
+    console.log("Setting up auto comp, list =",aList);
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
