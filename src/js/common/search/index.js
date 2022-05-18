@@ -85,7 +85,11 @@ class CAGovCountySearch extends window.HTMLElement {
       },
       item: function (text, input) {
         var res = Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
-        console.log("filter item -->",res,"text->",text,"input->",input);
+
+        console.log("filter item text  -->", text);
+        console.log("filter item input -->", input);
+        console.log("filter item match -->", input.match(/[^,]*$/)[0]);
+        console.log("filter item res   -->", res);
         return res;
       },
       replace: function (selectedSuggestion) {
