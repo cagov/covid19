@@ -73,9 +73,17 @@ class CAGovCountySearch extends window.HTMLElement {
     rtlOverride(this, 'div', 'ltr');
   }
 
+
+  
   setupAutoComp(fieldSelector, fieldName, aList) {
-    console.log("Setting up auto comp, list =",aList);
+    console.log("Setting up auto comp, list =",aList,"field selector",fieldSelector);
     let component = this;
+    function myItem(text) {
+      var li = document.createElement('li')
+      li.setAttribute('aria-selected', 'false')
+      li.innerHTML = text
+      return li
+    }
     const awesompleteSettings = {
       autoFirst: true,
       filter: function (text, input) {
@@ -83,7 +91,7 @@ class CAGovCountySearch extends window.HTMLElement {
         // console.log("filter -->",res,"text->",text,"input->",input);
         return res;
       },
-      item: function (text, input) {
+      item: myItem, /*function (text, input) {
         var res = Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
 
         console.log("filter item text  -->", text);
@@ -91,7 +99,7 @@ class CAGovCountySearch extends window.HTMLElement {
         console.log("filter item match -->", input.match(/[^,]*$/)[0]);
         console.log("filter item res   -->", res);
         return res;
-      },
+      }, */
       replace: function (selectedSuggestion) {
         let typedInValue = selectedSuggestion.value;
         component.processCountySearchInput(typedInValue);
