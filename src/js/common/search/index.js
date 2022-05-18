@@ -74,14 +74,23 @@ class CAGovCountySearch extends window.HTMLElement {
   }
 
   setupAutoComp(fieldSelector, fieldName, aList) {
+    console.log("Setting up auto comp, list =",aList);
     let component = this;
     const awesompleteSettings = {
       autoFirst: true,
       filter: function (text, input) {
-        return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+        var res = Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+        // console.log("filter -->",res,"text->",text,"input->",input);
+        return res;
       },
       item: function (text, input) {
-        return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+        var res = Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
+
+        console.log("filter item text  -->", text);
+        console.log("filter item input -->", input);
+        console.log("filter item match -->", input.match(/[^,]*$/)[0]);
+        console.log("filter item res   -->", res);
+        return res;
       },
       replace: function (selectedSuggestion) {
         let typedInValue = selectedSuggestion.value;
