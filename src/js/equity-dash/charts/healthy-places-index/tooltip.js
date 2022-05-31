@@ -8,6 +8,7 @@ export default class Tooltip {
     // this.legend = legend; // no longer using this param
     this.node = document.createElementNS("http://www.w3.org/2000/svg","g")
     this.node.setAttribute("pointer-events","none")
+    this.node.setAttribute("display", "none");
     this.node.innerHTML = 
     
     // Pale, vertical line.

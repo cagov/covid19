@@ -32,7 +32,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       desktop: {
         width: 613,
         height: 355,
-        margin: { top: 30, right: 24, bottom: 40, left: 36 },
+        margin: { top: 30, right: 24, bottom: 40, left: 46 },
         legendPosition: {
           x: 300,
           y: 10
@@ -41,7 +41,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       tablet: {
         width: 440,
         height: 355,
-        margin: { top: 30, right: 24, bottom: 40, left: 36 },
+        margin: { top: 30, right: 24, bottom: 40, left: 46 },
         legendPosition: {
           x: 160,
           y: 18
@@ -50,7 +50,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       mobile: {
         width: 440,
         height: 600,
-        margin: { top: 30, right: 24, bottom: 40, left: 36 },
+        margin: { top: 30, right: 24, bottom: 40, left: 46 },
         legendPosition: {
           x: 160,
           y: 18
@@ -59,7 +59,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
       retina: {
         width: 320,
         height: 450,
-        margin: { top: 30, right: 24, bottom: 40, left: 36 },
+        margin: { top: 30, right: 24, bottom: 40, left: 46 },
         legendPosition: {
           x: 100,
           y: 18

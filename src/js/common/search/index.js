@@ -73,25 +73,35 @@ class CAGovCountySearch extends window.HTMLElement {
     rtlOverride(this, 'div', 'ltr');
   }
 
-  setupAutoComp(fieldSelector, fieldName, aList) {
-    let component = this;
-    const awesompleteSettings = {
-      autoFirst: true,
-      filter: function (text, input) {
-        return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
-      },
-      item: function (text, input) {
-        return Awesomplete.ITEM(text, input.match(/[^,]*$/)[0]);
-      },
-      replace: function (selectedSuggestion) {
-        let typedInValue = selectedSuggestion.value;
-        component.processCountySearchInput(typedInValue);
-      },
-      list: aList
-    };
 
-    const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
+setupAutoComp(fieldSelector, fieldName, aList) {
+  let component = this;
+
+  // custom item handler, based on this suggestion
+  // https://github.com/LeaVerou/awesomplete/issues/16939
+  function myItem(text) {
+    var li = document.createElement('li')
+    li.setAttribute('aria-selected', 'false')
+    li.innerHTML = text
+    return li
   }
+
+  const awesompleteSettings = {
+    autoFirst: true,
+    filter: function (text, input) {
+      var res = Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
+      return res;
+    },
+    item: myItem,
+    replace: function (selectedSuggestion) {
+      let typedInValue = selectedSuggestion.value;
+      component.processCountySearchInput(typedInValue);
+    },
+    list: aList
+  };
+
+  const aplete = new Awesomplete(fieldSelector, awesompleteSettings)
+}
 
   emitCounty() {
     // jbum: If we get statewide: true, reset the dialog to as it appears on refresh
