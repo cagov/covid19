@@ -51,8 +51,17 @@ function writeXAxis(svg, data, date_fld, x, y,
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
-    if ((unit == 'days' && day_idx == 1) || 
-        (unit == 'weeks' && (day_idx <= 7 || data.length < 12))) {
+    const isLong = unit == 'weeks' && data.length > 50;
+    const monthGroup = isLong? 3 : 1;
+    const monthModulo = isLong? 1 : 0;
+
+    const showLongTick = (unit == 'days' && day_idx == 1) || 
+                  (unit == 'weeks' && (day_idx <= 7 || data.length < 12));
+
+    const showMonthLabel = showLongTick && (mon_idx % monthGroup == monthModulo) && x(i) < this.dimensions.width-40;
+
+
+    if (showLongTick) {
       let subj = xgroup.append("g")
         .append('line')
         .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
@@ -61,7 +70,7 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width-40)
+        if (showMonthLabel)
         {
           const sdate = parseSnowflakeDate(d[date_fld]);
           const monthDayStr = sdate.toLocaleString('default', { month: 'short', day: 'numeric' });

@@ -11,7 +11,7 @@ import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "./geturlparams.js";
 
 import testChartDataDaysCA from "./disparity_sampledata_days-california.json";
-import testChartDataWeeksCA from "./disparity_sampledata_weeks-california.json";
+import testChartDataWeeksCA from "./disparity_sampledata_weeks_v2-CA.json";
 // import testChartDataLA from "./disparity_sampledata-losangeles.json";
 // import testChartDataSD from "./disparity_sampledata-sandiego.json";
 // import testChartDataMono from "./disparity_sampledata-mono.json";
