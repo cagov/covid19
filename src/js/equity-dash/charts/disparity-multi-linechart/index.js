@@ -10,8 +10,8 @@ import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/rea
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "./geturlparams.js";
 
-import testChartDataDaysCA from "./disparity_sampledata_days-california.json";
-import testChartDataWeeksCA from "./disparity_sampledata_weeks_v2-CA.json";
+// import testChartDataDaysCA from "./disparity_sampledata_days-california.json";
+// import testChartDataWeeksCA from "./disparity_sampledata_weeks_v2-CA.json";
 // import testChartDataLA from "./disparity_sampledata-losangeles.json";
 // import testChartDataSD from "./disparity_sampledata-sandiego.json";
 // import testChartDataMono from "./disparity_sampledata-mono.json";
@@ -195,27 +195,28 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   retrieveData(url) {
     // test test test - retrieve and ignore data...
     const fileregion = this.region.toLowerCase().replace(' ','_');
-
-    url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
+    console.log("Fetching disparity url",url);
+    // url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
+
           // console.log("Race/Eth data data", alldata.data);
 
           // TEST OVERRIDE
-          switch (fileregion) {
-            case 'california':
-                switch(this.unit) {
-                  case 'days':
-                    alldata = JSON.parse(JSON.stringify(testChartDataDaysCA));
-                    break;
-                  case 'weeks':
-                    alldata = JSON.parse(JSON.stringify(testChartDataWeeksCA));
-                    break;
-                  }
-                break;
+          // switch (fileregion) {
+          //   case 'california':
+          //       switch(this.unit) {
+          //         case 'days':
+          //           alldata = JSON.parse(JSON.stringify(testChartDataDaysCA));
+          //           break;
+          //         case 'weeks':
+          //           alldata = JSON.parse(JSON.stringify(testChartDataWeeksCA));
+          //           break;
+          //         }
+          //       break;
             // case 'losangeles':
             //     alldata = JSON.parse(JSON.stringify(testChartDataLA));
             //     break;
@@ -228,7 +229,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
             // case 'alpine':
             //     alldata = JSON.parse(JSON.stringify(testChartDataAlpine));
             //     break;
-          }
+          // }
 
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
