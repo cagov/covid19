@@ -266,6 +266,8 @@ function writeYAxis(svg, x, y,
   let yLegendG = svg.append("g");
   y_axis_legend.split('<br>').forEach((legend_line, yi) => {
   legend_line = legend_line.replace("cases","Cases");
+  legend_line = legend_line.replace("deaths","Deaths");
+  legend_line = legend_line.replace("tests","Tests");
   yLegendG.append('text')
       .text(legend_line)
       .attr('transform','translate(10,250)rotate(-90)')

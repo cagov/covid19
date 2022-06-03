@@ -238,7 +238,7 @@ addtositemap: false
 
 
 
-<h2 class="mt-5" id="community-impact">See how communities are impacted in your county</h2>
+<h2 class="mt-5" id="community-impact">See how communities are impacted in California</h2>
 
 
 
@@ -266,11 +266,15 @@ addtositemap: false
     <div class="row">
         <div class="col">
   
-          <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases">
+          <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8">
             <ul>
               <li data-label="tooltip_date_label">Week ending</li>
               <li data-label="chartTitle">COVID-19 {METRIC} by race/ethnicity, {REGION}</li>
               <li data-label="y_axis_legend">{METRIC} per 100k</li>
+              <li data-label="timeTabLabel1">8 weeks</li>
+              <li data-label="timeTabLabel2">6 months</li>
+              <li data-label="timeTabLabel3">1 year</li>
+              <li data-label="timeTabLabel4">2020&ndash;present</li>
             </ul>
           </cagov-chart-disparity-multi-linechart>
         </div>
@@ -294,6 +298,8 @@ addtositemap: false
                     </div>
                   </details>
                 </cagov-accordion></div></div>
+
+<h2 class="mt-5" id="community-impact">See how communities are impacted in your county</h2>
 
 
 <h3 class="text-center" id="race-and-ethnicity">COVID-19 impact by race and ethnicity &mdash; State and County</h3>
