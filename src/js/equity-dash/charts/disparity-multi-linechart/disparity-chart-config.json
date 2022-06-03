@@ -1,0 +1,66 @@
+{
+    "chart": {
+        "series_fields": ["African American","American Indian","Asian American","Latino","Native Hawaiian and other Pacific Islander", "White", "Multi-Race"],
+        "old_series_colors": ["#fa7b73", "#d4b762", "#59b321", "#0fbb8e", "#ad96fe", "#fc89e0", "#21b6ea"],
+        "old_2_series_colors": ["#fcbe75", "#277da1", "#43aa8b", "#577590", "#f07e27", "#f9c74f", "#bb3e03"],
+        "series_colors": ["#d84446", "#3c6392", "#ee7822", "#82cedc", "#e7ba37", "#865f4a", "#9d648c"],
+        "another_series_colors": ["#ec148e", "#0062a5", "#d34727", "#438ecc", "#fdb71a", "#245c2e", "#712671"],
+
+        
+        "timeKeys": ["weeks-8","weeks-26","weeks-52","all-time"],
+        "x_axis_field":"DATE",
+        "unit": "weeks",
+        "units_to_show": 8,
+        "pending_units":2,
+        "chart_style": "normal",
+        "stroke_width": 2,
+        "root_id": "disparity",
+        "chartName": "#disparity-chart",
+        "dataUrl": "/equitydash/disparity-california.json"
+    },
+    "desktop": {
+      "fontSize": 14,
+      "width": 700,    
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 30,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "tablet": {
+      "fontSize": 14,
+      "width": 700,     
+      "height": 400,
+      "margin": {   
+        "left": 50,   
+        "top": 30,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "mobile": {
+      "fontSize": 12,
+      "width": 400,     
+      "height": 300,
+      "margin": {   
+        "left": 50,   
+        "top": 30,  
+        "right": 2,  
+        "bottom": 45
+      }
+    },
+    "retina": {
+      "fontSize": 12,
+      "width": 400,     
+      "height": 300,
+      "margin": {   
+        "left": 50,   
+        "top": 30,  
+        "right": 2,  
+        "bottom": 45
+      }
+    }
+  }
+  
