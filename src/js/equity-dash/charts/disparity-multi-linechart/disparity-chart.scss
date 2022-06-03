@@ -1,0 +1,175 @@
+cagov-chart-disparity-multi-linechart {
+  .chart-title {
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+}
+  
+.disparity-chart {
+  max-width: 700px;
+  .svg-holder {
+    g.fg-line path {
+      fill: none;
+      stroke: #1f2574;
+      stroke-width: 2px;
+    }
+    g.fg-line.line_s1 path {
+      stroke: #21741f;
+    }
+    g.fg-line.line_s2 path {
+      stroke: #1f2574; 
+    }
+    g.fg-line.line_s3 path {
+      stroke: #dc4567;
+    }
+    g.date-axis {
+      line {
+        stroke-width: 0.5px;
+        stroke: black;
+      }
+      text {
+        font-weight: 300;
+        font-size: 0.85rem;
+        fill: black;
+      }
+      text {
+        text-anchor: start;
+        dominant-baseline: hanging;
+      }
+      text.x-axis-legend {
+        font-weight: 300;
+        text-anchor: end;
+        dominant-baseline: middle;
+      }
+    }
+    g.left-y-axis {
+      line {
+        stroke-width: 0.5px;
+        stroke: black;
+        opacity: 0.15;
+      }
+      text {
+        font-weight: 300;
+        font-size: 0.85rem;
+        fill: black;
+      }
+      text {
+        text-anchor: end;
+        dominant-baseline: middle;
+      }
+      text.left-y-axis-legend {
+        font-weight: 300;
+        font-size: 0.85rem;
+        text-anchor: start;
+        dominant-baseline: hanging;
+      }
+    }
+    g.tt-marker {
+      fill: black;
+      opacity: 0.15;
+    }
+      
+    g.pending-block-disparity {
+      rect {
+        // fill: url(#diagonal-stripe-1) #F00;
+        opacity: 0.4;
+      }
+      text {
+        font-weight: 300;
+        font-size: 0.85rem;
+        fill: black;
+      }
+      text {
+        text-anchor: end;
+        dominant-baseline: auto;
+      }
+    }
+  }
+  .y-axis-title {
+    font-weight: 300;
+    font-size: 0.85rem;
+  }
+  span.chart-legend {
+    float:right;
+  }
+  svg.legend-line {
+    width:24px;
+    height:15px;
+  }
+  svg.legend-line path {
+    stroke-width: 3;
+  }
+  .pending-caveat {
+    font-style:italic;
+  }
+  
+  a.dlbutton {
+    border-radius: 3px;
+    background-color: aqua;
+    color: blue;
+    font-weight: 300;
+    font-size: 0.5rem;
+  }
+}
+
+.disparity-chart-container {
+  div.tooltip-container {
+    font-weight: 300;
+    font-size: 0.75rem;
+    line-height: 2;
+    color: black;
+    text-align: center;
+  }
+  
+  .tooltip-container {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background: #fff;
+    width: 300px;
+  }
+  
+  .tooltip-container {
+    pointer-events: none;
+    /* padding: 10px; */
+    padding: 1rem 2rem;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.14);
+      /* box-shadow: -12px 11px 5px -4px rgba(0, 0, 0, 0.4); */
+    border: none;
+  }
+  div.tooltip-container td.tt-label {
+    padding-right: 20px;
+    width: 60%;
+  }
+  div.tooltip-container td.tt-value {
+    font-weight: 600;
+  }
+
+}
+
+s.d-hide {
+    display: none;
+}
+
+cagov-chart-filter-select {
+  select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: no-repeat right 10px top 50% url(/img/arrow-orange.svg);
+    border-color: black;
+    border-radius: 0;
+    color: #1f2574;
+    font-size: 15.2px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 10px 30px 10px 10px;
+    text-decoration: underline;
+    &:focus-visible {
+      border: 1px solid #ffcf44;
+      outline: none;
+    }
+  }
+}
