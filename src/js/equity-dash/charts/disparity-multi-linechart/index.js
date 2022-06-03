@@ -8,7 +8,7 @@ import termCheck from "../race-ethnicity-config.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
-import { hasURLSearchParam, getURLSearchParam}  from "./geturlparams.js";
+import { getURLSearchParam}  from "../../../common/geturlparams.js";
 
 // import testChartDataDaysCA from "./disparity_sampledata_days-california.json";
 // import testChartDataWeeksCA from "./disparity_sampledata_weeks_v2-CA.json";
