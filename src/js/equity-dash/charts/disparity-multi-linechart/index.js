@@ -55,7 +55,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     // Set default values for data and labels
     this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
 
-    this.listenForLocations();
+    // this.listenForLocations(); // unused
 
     this.retrieveData(this.dataUrl);
 
@@ -63,7 +63,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
   }
 
-  listenForLocations() {
+  listenForLocations() { // unused as yet
     // <-- county stuff goes here...
     let searchElement = document.querySelector("cagov-county-search");
 
