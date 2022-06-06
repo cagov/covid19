@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "(v2) California&#8217;s commitment to health equity"
 meta: "All Californians—regardless of where they live, their working environment, their social supports, or how they identify⁠—deserve a healthy life. On this page you’ll find:&nbsp; How California is addressing health inequity Overview of disparities in our diverse communities See data on how communities are impacted in your county See how other factors increase the risk of [&hellip;]"
 author: "State of California"
-publishdate: "2022-06-06T18:27:16Z"
+publishdate: "2022-06-06T19:07:04Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -35,187 +35,42 @@ addtositemap: false
 </div>
 
 
+
 <div class="mt-5"></div>
-<div class="bg-lightblue py-5 full-bleed">
-<div class="container py-2">
-<div class="row pb-4">
-<div class="col-lg-10 mx-auto">
-<h2 class="text-center color-purple" id="overview-of-disparities">The disparities in our diverse communities are severe</h2>
-<p>COVID-19 disproportionately affects California’s most marginalized communities, as well as essential workers such as those in health care, grocery, and cleaning services.</p>
-<p></p>
-</div>
-</div>
-<p><!--END row--></p>
-<div class="row">
-<div class="col-lg-10 mx-auto">
-<div class="container"></div>
-</div>
-</div>
-</div>
-</div>
 
 
-<cagov-equity-highlight-stats>
-          <div class="row d-flex row-eq-height justify-content-md-center pb-4">
-              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                <!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
-                <!--{% if value > 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Latino people is
-                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value}}</span>% higher</span> than statewide
-                </div>
-          
-                <!--{% elif value < 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Latino people is
-                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_latino">{{value|abs}}</span>% lower</span> than
-                  statewide
-                </div>
-          
-                <!--{% else %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Latino people is the same as statewide average
-                </div>
-          
-                <!--{% endif %}-->
-          
-                <div class="eq-cases">
-                  <p class="text-xs">Deaths per 100K people:</p>
-                  <p class="text-xs mb-0">
-                    <strong><span class="death_rate_per_100K_latino">{{data.death_rate_per_100K_latino|formatNumber(tags,0)}}</span></strong> 
-                    Latino <br>
-                    <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
-                    all ethnicities
-                  </p>
-                </div>
+
+<div class="bg-lightblue py-5 full-bleed"> 
+    <div class="container py-2">
+        
+        
+        <div class="row pb-4">
+            <div class="col-lg-10 mx-auto">
+            <h2 class="text-center color-purple" id="overview-of-disparities">The disparities in our diverse communities are severe</h2>
+                <p>COVID-19 disproportionately affects California’s most marginalized communities, as well as essential workers such as those in health care, grocery, and cleaning services.</p>
               </div>
-          
-              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                <!--{% set value = data.case_rate_vs_statewide_percent_pacific_islanders %}-->
-                <!--{% if value > 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for Pacific Islanders is
-                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value}}</span>% higher</span> than statewide
-                </div>
-          
-                <!--{% elif value < 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for Pacific Islanders is
-                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_pacific_islanders">{{value|abs}}</span>% lower</span> than
-                  statewide
-                </div>
-          
-                <!--{% else %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for Pacific Islanders is the same as statewide
-                  average
-                </div>
-          
-                <!--{% endif %}-->
-                <div class="eq-cases">
-                  <p class="text-xs">Cases per 100K people:</p>
-                  <p class="text-xs mb-0">
-                    <strong><span class="cases_per_100K_pacific_islanders">{{data.cases_per_100K_pacific_islanders|formatNumber(tags,0)}}</span></strong>
-                    NHPI <br>
-                    <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
-                    all ethnicities
-                  </p>
-                </div>
-              </div>
-          
-              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                <!--{% set value = data.death_rate_vs_statewide_percent_black %}-->
-                <!--{% if value > 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Black people is
-                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value}}</span>% higher</span> than statewide
-                </div>
-          
-                <!--{% elif value < 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Black people is
-                  <span class="eq-data"><span class="death_rate_vs_statewide_percent_black">{{value|abs}}</span>% lower</span> than
-                  statewide
-                </div>
-          
-                <!--{% else %}-->
-          
-                <div class="eq-text mb-3">
-                  Death rate for Black people is the same as statewide average
-                </div>
-          
-                <!--{% endif %}-->
-                <div class="eq-cases">
-                  <p class="text-xs">Deaths per 100K people:</p>
-                  <p class="text-xs mb-0">
-                    <strong><span class="death_rate_per_100K_black">{{data.death_rate_per_100K_black|formatNumber(tags,0)}}</span></strong> Black
-                    <br>
-                    <strong><span class="death_rate_per_100K_statewide">{{data.death_rate_per_100K_statewide|formatNumber(tags,0)}}</span></strong> all
-                    ethnicities
-                  </p>
-                </div>
-              </div>
-          
-              <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">
-                <!--{% set value = data.case_rate_vs_statewide_percent_low_income %}-->
-                <!--{% if value > 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for communities with median income &lt;$40K is
-                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value}}</span>% higher</span> than statewide
-                </div>
-          
-                <!--{% elif value < 0 %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for communities with median income &lt;$40K is
-                  <span class="eq-data"><span class="case_rate_vs_statewide_percent_low_income">{{value|abs}}</span>% lower</span> than
-                  statewide
-                </div>
-          
-                <!--{% else %}-->
-          
-                <div class="eq-text mb-3">
-                  Case rate for communities with median income &lt;$40K is the
-                  same as statewide average
-                </div>
-          
-                <!--{% endif %}-->
-          
-                <div class="eq-cases">
-                  <p class="text-xs">Cases per 100K people:</p>
-                  <p class="text-xs mb-0">
-                    <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong>
-                    income &lt;$40K <br>
-                    <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong>
-                    all income brackets
-                  </p>
-                </div>
-              </div>
+        </div><!--END row-->
+
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+              <div class="container">
+    
+  
+              </div><!--END cont-->
+          </div><!--END col-10-->
+      </div><!--END row-->
+
+
+        <div class="row pb-4">
+            <div class="col-lg-10 mx-auto">
+                <p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Case and death rate source data</a></p>
             </div>
-        </cagov-equity-highlight-stats>
+        </div><!--END row-->
+  
+    </div><!--END container-->
+</div><!--END LIGHT BLUE BG-->
 
 
-<p><!--END cont--></p>
-<p><!--END col-10--></p>
-<p><!--END row--></p>
-<div class="row pb-4">
-<div class="col-lg-10 mx-auto">
-<p class="small-text mb-4 pb-1"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Case and death rate source data</a></p>
-<p></p>
-</div>
-</div>
-<p><!--END row--></p>
-<p><!--END container--></p>
-<p><!--END LIGHT BLUE BG--></p>
 <h2 class="mt-5" id="community-impact">See how communities are impacted in California</h2>
 <h3 class="text-center" id="race-and-ethnicity">COVID-19 impact by race and ethnicity</h3>
 <p>Latino, Black, and Pacific Islander communities have been disproportionately affected by COVID-19. We have made some strides in addressing disparities within these communities, but we must do better. </p>
@@ -234,9 +89,7 @@ addtositemap: false
 <p><!-- new charts --></p>
 <div class="container disparity-chart-container">
 <div class="row">
-<div class="col"></div>
-</div>
-</div>
+<div class="col"></div></div></div>
 
 
 <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8">
@@ -250,6 +103,7 @@ addtositemap: false
               <li data-label="timeTabLabel4">2020–present</li>
             </ul>
           </cagov-chart-disparity-multi-linechart>
+
 
 
 <p></p>
@@ -286,9 +140,7 @@ addtositemap: false
 
 <div class="container">
 <div class="row">
-<div class="col"></div>
-</div>
-</div>
+<div class="col"></div></div></div>
 
 
 <cagov-chart-re-pop class="chart d-none">
@@ -327,6 +179,7 @@ addtositemap: false
             <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}. Data is updated on Fridays.</li>
         </ul>
       </cagov-chart-re-pop>
+
 
 
 <div class="col"></div>
@@ -368,6 +221,8 @@ addtositemap: false
             <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {REPORT_DATE}. Data is updated on Fridays.</li>
         </ul>
       </cagov-chart-re-100k>
+
+
 
 
 <p class="top-charts-data-label small-text mt-2 mb-2">
@@ -539,9 +394,7 @@ addtositemap: false
 <div class="full-bleed">
 <div class="container py-2">
 <h2 class="text-center color-purple my-4">Learn more</h2>
-<div class="row pb-5"></div>
-</div>
-</div>
+<div class="row pb-5"></div></div></div>
 
 
 <div class="col-lg-6">
@@ -570,6 +423,8 @@ addtositemap: false
       </div>
 
 
+
+
 <hr class="wp-block-separator mb-0" id="more">
 <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
 <div class="container pt-5 pb-5">
@@ -582,29 +437,26 @@ addtositemap: false
 <div class="p-3">
 <h3 class="h4 card-title mt-2"><a href="/state-dashboard">State data</a></h3>
 <p class="card-text">Statewide and county cases, deaths, hospitalizations, and tests, including by vaccination status, gender, and age</p>
-<p></p>
-</div>
-</div>
-</div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
 <div class="col-md-4 mt-3 px-10px">
 <div class="bg-white h-100">
 <div class="p-3">
 <h3 class="h4 card-title mt-2"><a href="/vaccination-progress-data/">Vaccination data</a></h3>
 <p class="card-text">State and county data about vaccination, including by race and ethnicity and age</p>
-<p></p>
-</div>
-</div>
-</div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
 <div class="col-md-4 mt-3 px-10px">
 <div class="bg-white h-100">
 <div class="p-3">
 <h3 class="h4 card-title mt-2"><a href="/variants">Variants</a></h3>
 <p class="card-text">Data about which variants are in California, including Delta and Omicron</p>
-<p></p>
-</div>
-</div>
-</div>
-</div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
 <p><!--row 1--></p>
 <div class="row d-flex p-2">
 <div class="col-md-4 mt-3 px-10px">
@@ -612,21 +464,16 @@ addtositemap: false
 <div class="p-3">
 <h3 class="h4 card-title mt-2"><a href="/data-and-tools/">Data and tools</a></h3>
 <p class="card-text">In-depth models, dashboards, databases, and information about California’s COVID-19 data reporting</p>
-<p></p>
-</div>
-</div>
-</div>
-</div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
+<p></p></div>
 <p><!--row 2-->
-            </p>
-</div>
+            </p></div>
 <p>            <!--col-10-->
-        </p>
-</div>
+        </p></div>
 <p>        <!--row-->
-    </p>
-</div>
+    </p></div>
 <p>    <!--container-->
-</p>
-</div>
+</p></div>
 <p><!--full bleed--></p>
