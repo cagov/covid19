@@ -22,7 +22,8 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   connectedCallback() {
 
     this.translationsObj = getTranslations(this);
-    this.metric = this.dataset.chartConfigMetric;
+    this.chartConfigMetric = this.dataset.chartConfigMetric;
+    this.chartConfigKey = 'disparity';
     this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.region = 'California';
     this.unit = getURLSearchParam('unit', 'weeks');
@@ -65,18 +66,18 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
   listenForLocations() { // unused as yet
     // <-- county stuff goes here...
-    let searchElement = document.querySelector("cagov-county-search");
+    // let searchElement = document.querySelector("cagov-county-search");
 
-    searchElement.addEventListener(
-        "county-selected",
-        function (e) {
-          this.region = e.detail.county;
-          this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
-          this.retrieveData(this.dataUrl);
-          // this.resetTitle();
-        }.bind(this),
-        false
-      );
+    // searchElement.addEventListener(
+    //     "county-selected",
+    //     function (e) {
+    //       this.region = e.detail.county;
+    //       this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
+    //       this.retrieveData(this.dataUrl);
+    //       // this.resetTitle();
+    //     }.bind(this),
+    //     false
+    //   );
 
     let metricFilter = document.querySelector(
         "cagov-chart-filter-buttons.js-re-smalls"
@@ -86,7 +87,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         function (e) {
           if (e.detail.filterKey != undefined) {
             console.log("disparity filter selected",e.detail.filterKey);
-            this.metric = e.detail.filterKey;
+            this.chartConfigMetric = e.detail.filterKey;
             this.renderComponent();
           }
         }.bind(this),
@@ -135,7 +136,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     console.log("Rendering Disparity Chart");
 
     const repDict = {
-      METRIC: this.metric,
+      METRIC: this.chartConfigMetric,
       REGION: this.region,
     };
     console.log("Applying substitutions",repDict);
@@ -166,7 +167,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     const units_to_show = parseInt(getURLSearchParam('units', ''+requested_units_to_show));
     console.log("Time Range",this.chartConfigTimerange,"pending units",pending_units,"units_to_show",units_to_show);
     series_fields.forEach((label, i) => {
-        let tseries_name = label.replaceAll(' ','_') + '_' + this.metric;
+        let tseries_name = label.replaceAll(' ','_') + '_' + this.chartConfigMetric;
         // console.log("tseries_name =",tseries_name);
         let tseries = JSON.parse(JSON.stringify(this.chartdata.time_series[tseries_name].VALUES));
         tseries.splice(tseries.length-pending_units,pending_units);
@@ -192,7 +193,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'x_axis_field':this.chartOptions.x_axis_field,
         'y_axis_legend':this.translationsObj.post_y_axis_legend,
         'y_fmt':'number',
-        'root_id':this.chartOptions.root_id + '_' + this.metric,
+        'root_id':this.chartOptions.root_id + '_' + this.chartConfigMetric,
         'series_labels': this.chartlabels,
         'series_colors': this.chartOptions.series_colors,
         'pending_units': 0,
@@ -212,8 +213,9 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
           this.chartConfigTimerange = select.value;
           console.log("Time Range",this.chartConfigTimerange);
           break;
-        case 'filter':
-          this.chartConfigFilter = select.value;
+        case 'metric':
+          console.log("Changing metric");
+          this.chartConfigMetric = select.value;
           break;
         default:
       }

@@ -8,6 +8,7 @@
 
         
         "timeKeys": ["weeks-8","weeks-26","weeks-52","all-time"],
+        "metricKeys": ["cases","deaths","tests"],
         "x_axis_field":"DATE",
         "unit": "weeks",
         "units_to_show": 8,
