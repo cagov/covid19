@@ -5,7 +5,7 @@ const createSelect = (
   labels,
   optionValues,
   configKey,
-  configFilter,
+  metric,
   timerange,
   selectType,
 ) => {
@@ -16,7 +16,7 @@ const createSelect = (
   let i = 0;
   labels.forEach((label) => {
     // Set 'selected' attribute based on current chart config.
-    const optionAttribute = (optionValues[i] === configFilter || optionValues[i] === timerange) ? 'selected = "selected"' : '';
+    const optionAttribute = (optionValues[i] === metric || optionValues[i] === timerange) ? 'selected = "selected"' : '';
     // Contatenate options.
     optionsMarkup += `<option aria-label="${label}" ${optionAttribute} value="${optionValues[i]}">${label}</option>`;
     i += 1;
@@ -42,9 +42,13 @@ export default function template(chartOptions, {
   timeTabLabel2 = 'Tab Label 2',
   timeTabLabel3 = 'Tab Label 3',
   timeTabLabel4 = 'Tab Label 4',
+  metricTabLabel1 = 'Cases',
+  metricTabLabel2 = 'Deaths',
+  metricTabLabel3 = 'Tests',
 }) {
+  const metricLabels = 'metricKeys' in chartOptions ? [metricTabLabel1, metricTabLabel2, metricTabLabel3] : [];
   const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3, timeTabLabel4] : [];
-  const filters = {timeLabels};
+  const filters = {metricLabels, timeLabels};
   const filterValues = Object.values(filters);
 
   let select = '';
@@ -58,30 +62,41 @@ export default function template(chartOptions, {
     let renderSelect = false;
 
     // Only render the select if the associated keys exist.
-    if (filtersIndex === 0 && 'timeKeys' in chartOptions) {
+    if (filtersIndex === 1 && 'timeKeys' in chartOptions) {
       console.log("time option",chartOptions.timeKeys);
 
       optionValues = chartOptions.timeKeys;
       renderSelect = [true, 'time'];
     }
+    else if (filtersIndex === 0 && 'metricKeys' in chartOptions) {
+      optionValues = chartOptions.metricKeys;
+      renderSelect = [true, 'metric'];
+    }
+    else {
+      console.log("Unknown filtersIndex", filtersIndex);
+    }
 
     // Unused, but if we add a drop down for chart type, it will get used
-    if (filtersIndex === 1 && 'filterKeys' in chartOptions) {
-      optionValues = chartOptions.filterKeys;
-      renderSelect = [true, 'filter'];
-    }
 
     // Send values to the createSelect() function.
     if (renderSelect[0] === true) {
-      console.log("Calling createSelect");
+      console.log("Calling createSelect",
+      filtersIndex,
+        labels,
+        optionValues,
+        this.chartConfigKey,
+        this.chartConfigMetric,
+        this.chartConfigTimerange,
+        renderSelect[1]);
       select += createSelect(
         labels,
         optionValues,
         this.chartConfigKey,
-        this.chartConfigFilter,
+        this.chartConfigMetric,
         this.chartConfigTimerange,
         renderSelect[1],
       );
+      console.log("Done Calling createSelect");
     }
   });
 
@@ -94,8 +109,8 @@ export default function template(chartOptions, {
         <div class="col-lg-12 bg-white py-4">
           <div class="row">
             <div class="col-lg-12 mx-auto px-0 disparity-chart">
-              <div class="chart-title noborder">${post_chartTitle}</div>
-              ${allSelectMarkup}
+            ${allSelectMarkup}
+            <div class="chart-title noborder">${post_chartTitle}</div>
               <div class="svg-holder"></div>
             </div>
           </div>
