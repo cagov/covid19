@@ -3,7 +3,7 @@ import css from './index.scss';
 
 export default function template(translationsObj) {
   let dataSrc = ('data-source' in translationsObj)? translationsObj["data-source"] : "";
-  return /*html*/`<div class="py-2 bg-lightblue full-bleed px-4">
+  return /*html*/`<div class="py-2 pb-5 bg-lightblue full-bleed px-4">
     <div class="container">
     <div class="row">
     <div class="container col-lg-10 mx-auto">
