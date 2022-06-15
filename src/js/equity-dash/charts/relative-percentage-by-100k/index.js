@@ -123,7 +123,7 @@ class CAGOVEquityRE100K extends window.HTMLElement {
         "--" +
         this.selectedMetric;
       let filterTxt =
-        this.translationsObj[key] + formatValue(statewideRatePer100k,{format:'integer'});
+        this.translationsObj[key] + formatValue(statewideRatePer100k,{format:statewideRatePer100k >=1?'integer':'number'});
       // console.log("Filter key",key);
       // console.log("Filter text",filterTxt);
       filterTxt = filterTxt.replace(

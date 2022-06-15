@@ -7,7 +7,7 @@ import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
 import { reformatReadableDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
-import { hasURLSearchParam, getURLSearchParam}  from "../common/geturlparams.js";
+import { hasURLSearchParam, getURLSearchParam}  from "../../../common/geturlparams.js";
 
 class CAGovDashboardPostvaxChart extends window.HTMLElement {
   connectedCallback() {
