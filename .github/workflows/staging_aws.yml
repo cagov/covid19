@@ -32,7 +32,7 @@ jobs:
       - name: Build 11ty
         run: |
           npm install
-          npm run build
+          npm run build:staging
 
       # Push built site files to S3 production bucket    
       - name: Configure AWS Credentials
