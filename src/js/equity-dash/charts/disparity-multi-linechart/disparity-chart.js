@@ -327,8 +327,13 @@ function showTooltip(event, xy, dataIndex, xscale, yscale)
 {
   let tooltip = this.tooltip;
   let content = this.getTooltipContent(dataIndex); 
+  let x = xy[0];
   tooltip.html(content);
-  tooltip.style("left",`${Math.min(this.dimensions.width-280,event.offsetX+20)}px`);
+  if (x < this.dimensions.width / 2) {
+    tooltip.style("left",`${Math.min(this.dimensions.width-200,event.offsetX+160)}px`);
+  } else {
+    tooltip.style("left",`${event.offsetX-260}px`);
+  }
   // console.log("Tool top L, O, y",event.layerY, event.offsetY, event.y);
   // tooltip.style("top",`${event.layerY+60}px`)
   tooltip.style("top",`${(event.offsetY+20)}px`);
