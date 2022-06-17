@@ -45,6 +45,7 @@ export default function template(chartOptions, {
   metricTabLabel1 = 'Cases',
   metricTabLabel2 = 'Deaths',
   metricTabLabel3 = 'Tests',
+  post_footerText = 'Footer Text',
 }) {
   const metricLabels = 'metricKeys' in chartOptions ? [metricTabLabel1, metricTabLabel2, metricTabLabel3] : [];
   const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3, timeTabLabel4] : [];
@@ -112,7 +113,8 @@ export default function template(chartOptions, {
             ${allSelectMarkup}
             <div class="chart-title noborder">${post_chartTitle}</div>
               <div class="svg-holder"></div>
-            </div>
+              <p class="chart-data-label small-text mt-2 mb-2">${post_footerText}</p>
+              </div>
           </div>
         </div>
       </div>
