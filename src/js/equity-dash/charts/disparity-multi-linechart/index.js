@@ -6,7 +6,7 @@ import chartConfig from './disparity-chart-config.json';
 import renderChart from "./disparity-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
+import { getSnowflakeStyleDate, reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { getURLSearchParam}  from "../../../common/geturlparams.js";
 
@@ -135,13 +135,22 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   renderComponent() {
     console.log("Rendering Disparity Chart");
 
+    let publishedDate = parseSnowflakeDate(this.metadata.PUBLISHED_DATE.substr(0,10)); // !! Fetch correct date here...
+    let reportDate = parseSnowflakeDate(this.metadata.REPORT_DATE.substr(0,10));
+
     const repDict = {
       METRIC: this.chartConfigMetric,
       REGION: this.region,
+      'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+      'REPORT_DATE' : reformatJSDate( reportDate ),
     };
+
+    // reportDate.setDate(reportDate.getDate() + 1); // add 1 day to date on file
+
     console.log("Applying substitutions",repDict);
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_y_axis_legend = applySubstitutions(this.translationsObj.y_axis_legend, repDict);
+    this.translationsObj.post_footerText = applySubstitutions(this.translationsObj.footerText, repDict);
     console.log("post_y_axis_legend",this.translationsObj.post_y_axis_legend);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
