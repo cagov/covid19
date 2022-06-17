@@ -110,14 +110,14 @@ export default function template(chartOptions, {
         <div class="col-lg-12 bg-white py-4">
           <div class="row">
             <div class="col-lg-12 mx-auto px-0 disparity-chart">
-            ${allSelectMarkup}
-            <div class="chart-title noborder">${post_chartTitle}</div>
+              ${allSelectMarkup}
+              <div class="chart-title noborder">${post_chartTitle}</div>
               <div class="svg-holder"></div>
-              <p class="chart-data-label small-text mt-2 mb-2">${post_footerText}</p>
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <p class="chart-data-label small-text mt-2 mb-2">${post_footerText}</p>
     `;
 }
