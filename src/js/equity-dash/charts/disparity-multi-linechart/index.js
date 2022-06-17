@@ -54,7 +54,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
+    this.dataUrl = config.disparityChartsDataLoc + this.chartOptions.dataUrl;
 
     // this.listenForLocations(); // unused
 
