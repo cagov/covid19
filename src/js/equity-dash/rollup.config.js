@@ -5,10 +5,12 @@ import { terser } from 'rollup-plugin-terser';
 
 const defaultConfig = {
   equityChartsDataLoc: 'https://data.covid19.ca.gov/data/reviewed',
+  disparityChartsDataLoc: 'https://data.covid19.ca.gov/data/reviewed',
   statusLoc: 'https://data.covid19.ca.gov/data/status'
 }
 const stagingConfig =  {
   equityChartsDataLoc: 'https://data.covid19.ca.gov/data/to-review',
+  disparityChartsDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidEquityImpact_Staging/data/to-review',
   statusLoc: 'https://data.covid19.ca.gov/data/status'
 }
 
