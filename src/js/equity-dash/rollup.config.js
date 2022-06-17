@@ -10,7 +10,7 @@ const defaultConfig = {
 }
 const stagingConfig =  {
   equityChartsDataLoc: 'https://data.covid19.ca.gov/data/to-review',
-  disparityChartsDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidEquityImpact_Staging/data/to-review',
+  disparityChartsDataLoc: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidEquityImpact_Staging/data/reviewed',
   statusLoc: 'https://data.covid19.ca.gov/data/status'
 }
 
