@@ -38,11 +38,15 @@ function writeXAxis(svg, data, date_fld, x, y,
   const tick_height = 4;
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
+  const year_row_gap = 15 + tick_height + tick_upper_gap + tick_lower_gap;
   const axisY = this.dimensions.height - this.dimensions.margin.bottom;
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
       .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  // Keep track of the first month of a year present in the data
+  let year_data = {};
 
   // console.log("writeXAxis B",data);
   const show_days = true;
@@ -82,6 +86,17 @@ function writeXAxis(svg, data, date_fld, x, y,
             .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
             .attr("x", x(i))
             .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+
+            // Save year information for later
+            if (year_data[year_idx] === undefined) {
+              year_data[year_idx] = {
+                min_month: mon_idx,
+                x_loc: i
+              };
+            } else if (year_data[year_idx].min_month > mon_idx) {
+              year_data[year].min_month = mon_idx;
+              year_data[year].x_loc = i;
+            }
         }
   
     } else if (show_days) {
@@ -94,6 +109,19 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('y2', y(0)+5);
     }
   });
+
+  let year_row = svg.append("g")
+      .attr("class",'date-axis')
+      .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  // Add years to x axis
+  for (let year in year_data) {
+    year_row.append('text')
+      .text(year)
+      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+      .attr("x", x(year_data[year].x_loc))
+      .attr("y", axisY+year_row_gap);
+  }
 }
 
 // Formatter Factory
