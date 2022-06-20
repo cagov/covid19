@@ -177,7 +177,7 @@ function writeLegend(svg, x, y, { colors=[], labels=[], chart_options={}})
       let box = document.querySelector('#variant-lgend #legend_'+i);
       xPos += box.getBBox().width + legendGap;
     });
-    let yOffset = 12;
+    let yOffset = 18;
     xPos = 0;
     labels2.forEach((label, i) => {
       // console.log("Drawing label", label);
