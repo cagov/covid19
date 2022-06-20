@@ -127,7 +127,7 @@ cagov-chart-disparity-multi-linechart {
     z-index: 10;
     visibility: hidden;
     background: #fff;
-    width: 300px;
+    width: 275px;
   }
   
   .tooltip-container {
@@ -141,6 +141,7 @@ cagov-chart-disparity-multi-linechart {
   div.tooltip-container td.tt-label {
     padding-right: 20px;
     width: 60%;
+    text-align: left;
   }
   div.tooltip-container td.tt-value {
     font-weight: 600;
