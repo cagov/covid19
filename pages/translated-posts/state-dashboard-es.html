@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-06-01T16:54:44Z"
+publishdate: "2022-06-17T16:25:50Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -273,7 +273,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Consulte los datos de la vacunación</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Datos de condados y del estado</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Casos y muertes</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes.</p>
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Consulte los datos de la vacunación</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Datos de condados y del estado</h2>
+
+
+
+<p>Los Centros para el Control y la Prevención de Enfermedades (Centers for Disease Control and Prevention, CDC) evalúan el riesgo actual de COVID-19 de cada condado y los organiza en niveles. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">Encuentre el nivel de la comunidad de su condado</a>. Escriba su condado para obtener datos detallados.</p>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Casos y muertes</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes.</p>
 
 
 

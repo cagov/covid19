@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-06-01T16:54:44Z"
+publishdate: "2022-06-17T16:25:50Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -273,7 +273,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">백신 접종 관련 데이터 확인</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">카운티 및 주 전체 대상 데이터</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">사례 건수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다.</p>
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">백신 접종 관련 데이터 확인</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">카운티 및 주 전체 대상 데이터</h2>
+
+
+
+<p>질병관리센터(Centers for Disease Control and Prevention, CDC)는 카운티 별 현 COVID-19 위험도를 여러 수준으로 평가하고 있습니다. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">해당 카운티의 지역 사회 수준을 확인하십시오</a>. 해당 카운티를 입력하여 자세한 데이터를 확인하십시오.</p>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">사례 건수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 사망자 수는 {{_varStatTotalDeaths_}} 명입니다.</p>
 
 
 
