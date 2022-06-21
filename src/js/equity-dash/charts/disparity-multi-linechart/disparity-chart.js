@@ -509,7 +509,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     // let padDays = Math.max(0, min_days - lastDateJ.getDate());
     let padDays = 0;
     // console.log("MIN DAYS, pad_days", min_days, padDays);
-    console.log("margin right: ",this.dimensions.margin.right);
+    // console.log("margin right: ",this.dimensions.margin.right);
     this.xline = d3
     .scaleLinear()
     .domain([0,padDays + line_series_array[0].length-1])

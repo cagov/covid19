@@ -135,8 +135,8 @@ class CAGOVChartD3Bar extends window.HTMLElement {
       datahealthcare.sort(sortedOrder).reverse()
 
       // Date replacement
-      console.log("dataincome",dataincome);
-      console.log("datastatus",datastatus);
+      // console.log("dataincome",dataincome);
+      // console.log("datastatus",datastatus);
       let publishedDate = parseSnowflakeDate(datastatus.PUBLISH_DATE.substr(0,10)); // !! Fetch correct date here...
       let reportDate = parseSnowflakeDate(dataincome[0].DATE);
       // reportDate.setDate(reportDate.getDate() + 1); // add 1 day to date on file

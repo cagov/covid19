@@ -190,7 +190,7 @@ class CAGOVChartD3Lines extends window.HTMLElement {
     let component = this;
 
     // DATE
-    console.log("LINE CHART ALL DATA",this.alldata);
+    // console.log("LINE CHART ALL DATA",this.alldata);
     let publishedDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10)); 
     // !! don't know this date yet...
     let reportDate = parseSnowflakeDate(this.statusdata.PUBLISH_DATE.substr(0,10));
