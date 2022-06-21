@@ -120,9 +120,17 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let date_value = reformatReadableDate(this.line_series_array[0][last_date_idx].DATE);
     caption += `  <tr><td class="tt-label">${date_label}:</td><td class="tt-value">${date_value}</td></tr>`;
 
-    this.tooltiplabels.forEach(  (lab, i) => {      
+    this.tooltiplabels.forEach(  (lab, i) => {
+      // construct line color markup
+      const lineLegendMarkup = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;"
+      xml:space="preserve">
+     <g>
+       <rect x="0" y="7" style="fill:${this.chartOptions.series_colors[i]};" width="12" height="${this.chartOptions.stroke_width}"/>
+     </g>
+   </svg>`;
       let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'number'});
-      caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
+      caption += `  <tr><td class="tt-label">${lineLegendMarkup} ${lab}:</td><td class="tt-value">${value}</td></tr>`;
     });
     caption += '</table>';
     // if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_units) {
