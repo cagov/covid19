@@ -55,7 +55,7 @@ export default function template(chartOptions, {
   let select = '';
   let allSelectMarkup = '';
 
-  console.log("timeLabels",timeLabels);
+  // console.log("timeLabels",timeLabels);
 
   // Loop through options to create select tag.
   filterValues.forEach((labels, filtersIndex) => {
@@ -64,7 +64,7 @@ export default function template(chartOptions, {
 
     // Only render the select if the associated keys exist.
     if (filtersIndex === 1 && 'timeKeys' in chartOptions) {
-      console.log("time option",chartOptions.timeKeys);
+      //console.log("time option",chartOptions.timeKeys);
 
       optionValues = chartOptions.timeKeys;
       renderSelect = [true, 'time'];
@@ -81,14 +81,14 @@ export default function template(chartOptions, {
 
     // Send values to the createSelect() function.
     if (renderSelect[0] === true) {
-      console.log("Calling createSelect",
-      filtersIndex,
-        labels,
-        optionValues,
-        this.chartConfigKey,
-        this.chartConfigMetric,
-        this.chartConfigTimerange,
-        renderSelect[1]);
+      // console.log("Calling createSelect",
+      // filtersIndex,
+      //   labels,
+      //   optionValues,
+      //   this.chartConfigKey,
+      //   this.chartConfigMetric,
+      //   this.chartConfigTimerange,
+      //   renderSelect[1]);
       select += createSelect(
         labels,
         optionValues,
@@ -97,7 +97,7 @@ export default function template(chartOptions, {
         this.chartConfigTimerange,
         renderSelect[1],
       );
-      console.log("Done Calling createSelect");
+      // console.log("Done Calling createSelect");
     }
   });
 
