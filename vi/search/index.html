@@ -324,6 +324,9 @@
 			.filter(x=>(x.num > 10))
 			.map(x=>x.query);
 
+		// disabling popular results
+		popular = [];
+
 		document.querySelector('#queries').innerHTML += 
 			popular
 			.concat(allTimeTopQueries.filter(x=>!popular.includes(x)))
