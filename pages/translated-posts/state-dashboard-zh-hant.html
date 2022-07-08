@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 縣及全州數據以幫助民眾了解COVID-19的傳播情況。"
 author: "State of California"
-publishdate: "2022-06-01T16:54:44Z"
+publishdate: "2022-06-22T18:47:30Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -196,7 +196,9 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">數據説明</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>已接種疫苗的人數百分比等於已完全接種疫苗及部分接種疫苗的人數除以符合疫苗接種資格的人數。</li><li>將持續更新已接種疫苗人口的百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>所有日平均數都是7日平均數。</li><li>接種的疫苗數有7天的滯後期。</li><li>病例數有8天的滯後期。</li><li>因為報告有延遲，所以死亡數有22天的滯後期。</li><li>檢測數有1天的滯後期。</li><li>Los Angeles和San Diego縣的病例和死亡數據有1天額外延遲。</li><li> Los Angeles縣的檢測數據有1天延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
+                <ul class="small-text"><li>已接種疫苗的人口百分比包括已接種一劑或兩劑疫苗的人數加上已接種疫苗和補強針的人數再除以符合接種資格的人數。 </li>
+
+<li>將持續更新已接種疫苗的人口百分比，因爲全州正在繼續覈對疫苗數據。此百分比可能與地方衛生轄區和聯邦機構報告的數據有所不同。</li><li>所有日平均數都是7日平均數。</li><li>接種的疫苗數有7天的滯後期。</li><li>病例數有8天的滯後期。</li><li>因為報告有延遲，所以死亡數有22天的滯後期。</li><li>檢測數有1天的滯後期。</li><li>Los Angeles和San Diego縣的病例和死亡數據有1天額外延遲。</li><li> Los Angeles縣的檢測數據有1天延遲。</li><li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li><li>檢測呈陽性率為7日平均數據，無滯後期。數據由加州公共衛生局 (California Department of Public Health) 提供。</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -273,7 +275,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">查看疫苗接種數據</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">縣及州數據</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州共有{{_varStatTotalCases_}}例COVID-19確診病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">查看疫苗接種數據</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">縣及州數據</h2>
+
+
+
+<p>美國疾病控制及預防中心 (Centers for Disease Control and Prevention, CDC) 對每個縣當前的COVID-19風險進行評估，並據此劃分級別。<a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">確認您所在縣的級別。</a>鍵入縣名，了解詳細數據。</p>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>加州共有{{_varStatTotalCases_}}例COVID-19確診病例，造成{{_varStatTotalDeaths_}}人死亡。</p>
 
 
 

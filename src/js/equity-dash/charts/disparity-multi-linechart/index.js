@@ -6,7 +6,7 @@ import chartConfig from './disparity-chart-config.json';
 import renderChart from "./disparity-chart.js";
 import termCheck from "../race-ethnicity-config.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { getSnowflakeStyleDate, reformatReadableDate } from "../../../common/readable-date.js";
+import { getSnowflakeStyleDate, reformatReadableDate, parseSnowflakeDate, reformatJSDate } from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { getURLSearchParam}  from "../../../common/geturlparams.js";
 
@@ -27,7 +27,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.region = 'California';
     this.unit = getURLSearchParam('unit', 'weeks');
-    console.log("Loading Disparity Chart");
+    // console.log("Loading Disparity Chart");
 
     this.chartOptions = chartConfig.chart;
 
@@ -54,7 +54,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     window.addEventListener("resize", handleChartResize);
     // Set default values for data and labels
-    this.dataUrl = config.equityChartsDataLoc + this.chartOptions.dataUrl;
+    this.dataUrl = config.disparityChartsDataLoc + this.chartOptions.dataUrl;
 
     // this.listenForLocations(); // unused
 
@@ -86,7 +86,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         "filter-selected",
         function (e) {
           if (e.detail.filterKey != undefined) {
-            console.log("disparity filter selected",e.detail.filterKey);
+            // console.log("disparity filter selected",e.detail.filterKey);
             this.chartConfigMetric = e.detail.filterKey;
             this.renderComponent();
           }
@@ -120,29 +120,46 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
     let date_value = reformatReadableDate(this.line_series_array[0][last_date_idx].DATE);
     caption += `  <tr><td class="tt-label">${date_label}:</td><td class="tt-value">${date_value}</td></tr>`;
 
-    this.tooltiplabels.forEach(  (lab, i) => {      
+    this.tooltiplabels.forEach(  (lab, i) => {
+      // construct line color markup
+      const lineLegendMarkup = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;"
+      xml:space="preserve">
+     <g>
+       <rect x="0" y="7" style="fill:${this.chartOptions.series_colors[i]};" width="12" height="${this.chartOptions.stroke_width}"/>
+     </g>
+   </svg>`;
       let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'number'});
-      caption += `  <tr><td class="tt-label">${lab}:</td><td class="tt-value">${value}</td></tr>`;
+      caption += `  <tr><td class="tt-label">${lineLegendMarkup} ${lab}:</td><td class="tt-value">${value}</td></tr>`;
     });
     caption += '</table>';
-    if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_units) {
-      caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
-    }
+    // if (last_date_idx >= this.line_series_array[0].length - this.chartOptions.pending_units) {
+    //   caption += `<br><span class="pending-caveat">${this.translationsObj.pending_caveat}</span>`;
+    // }
     return caption;
   }
 
 
   renderComponent() {
-    console.log("Rendering Disparity Chart");
+    // console.log("Rendering Disparity Chart");
+
+    let publishedDate = parseSnowflakeDate(this.metadata.PUBLISHED_DATE.substr(0,10)); // !! Fetch correct date here...
+    let reportDate = parseSnowflakeDate(this.metadata.REPORT_DATE.substr(0,10));
 
     const repDict = {
       METRIC: this.chartConfigMetric,
       REGION: this.region,
+      'PUBLISHED_DATE' : reformatJSDate( publishedDate ),
+      'REPORT_DATE' : reformatJSDate( reportDate ),
     };
-    console.log("Applying substitutions",repDict);
+
+    // reportDate.setDate(reportDate.getDate() + 1); // add 1 day to date on file
+
+    // console.log("Applying substitutions",repDict);
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_y_axis_legend = applySubstitutions(this.translationsObj.y_axis_legend, repDict);
-    console.log("post_y_axis_legend",this.translationsObj.post_y_axis_legend);
+    this.translationsObj.post_footerText = applySubstitutions(this.translationsObj.footerText, repDict);
+    // console.log("post_y_axis_legend",this.translationsObj.post_y_axis_legend);
 
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
 
@@ -165,7 +182,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
 
     const pending_units = parseInt(getURLSearchParam('pending', ''+this.chartOptions.pending_units)); 
     const units_to_show = parseInt(getURLSearchParam('units', ''+requested_units_to_show));
-    console.log("Time Range",this.chartConfigTimerange,"pending units",pending_units,"units_to_show",units_to_show);
+    // console.log("Time Range",this.chartConfigTimerange,"pending units",pending_units,"units_to_show",units_to_show);
     series_fields.forEach((label, i) => {
         let tseries_name = label.replaceAll(' ','_') + '_' + this.chartConfigMetric;
         // console.log("tseries_name =",tseries_name);
@@ -202,7 +219,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
         'published_date': getSnowflakeStyleDate(0),
         'render_date': getSnowflakeStyleDate(0),
     };
-    console.log("Calling disparity renderer");
+    // console.log("Calling disparity renderer");
     renderChart.call(this, renderOptions);
   }
 
@@ -211,10 +228,10 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
       switch (select.dataset.type) {
         case 'time':
           this.chartConfigTimerange = select.value;
-          console.log("Time Range",this.chartConfigTimerange);
+          // console.log("Time Range",this.chartConfigTimerange);
           break;
         case 'metric':
-          console.log("Changing metric");
+          // console.log("Changing metric");
           this.chartConfigMetric = select.value;
           break;
         default:
@@ -241,15 +258,13 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
   retrieveData(url) {
     // test test test - retrieve and ignore data...
     const fileregion = this.region.toLowerCase().replace(' ','_');
-    console.log("Fetching disparity url",url);
+    // console.log("Fetching disparity url",url);
     // url = 'https://data.covid19.ca.gov/data/dashboard/postvax/california.json'
     window
       .fetch(url)
       .then((response) => response.json())
       .then(
         function (alldata) {
-
-          // console.log("Race/Eth data data", alldata.data);
 
           // TEST OVERRIDE
           // switch (fileregion) {

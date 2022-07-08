@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pagsubaybay ng COVID-19 sa California"
 meta: "Data ng county at buong estado na makakatulong sa pag-unawa sa pagkalat ng COVID-19."
 author: "State of California"
-publishdate: "2022-06-01T16:54:44Z"
+publishdate: "2022-06-22T18:47:30Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -196,7 +196,9 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer">           <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>Ang porsyento ng nabakunahan nang populasyon ay ang populasyong kumpleto at hindi pa kumpleto sa bakuna, na hinati ayon sa populasyong kwalipikado para sa pagbabakuna.</li><li>Ang porsyento ng populasyong nabakunahan ay patuloy na ia-update dahil sa tuloy-tuloy na pagsisikap sa buong estado na pag-reconcile ng talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Lahat ng arawang average ay mga average sa 7 araw.</li><li>May 7 araw na lag sa mga naibigay na bakuna.</li><li>May 8 araw na lag sa mga kaso.</li><li>Dahil sa pagkaantala sa pag-uulat, may 22 araw na lag sa mga pagkamatay.</li><li>May 1 araw na pagkaantala sa mga pagsusuri.</li><li>May karagdagang 1 araw na lag ang data ng kaso at pagkamatay mula sa county ng Los Angeles at San Diego.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
+                <ul class="small-text"><li>Ang porsyento ng nabakunahan nang populasyon ay kinabibilangan ng mga taong may isa o dalawang dosis ng bakuna, at mga taong nabakunahan at na-booster na, na hinati ayon sa populasyong kwalipikado para sa bakuna. </li>
+
+<li>Ang porsyento ng nabakunahan nang populasyon ay patuloy na ia-update dahil sa tuluy-tuloy na pagsisikap sa buong estado na i-reconcile ang talaan sa pagbabakuna. Posibleng iba ang porsyentong ito sa data na iniulat ng mga lokal na hurisdiksyon sa kalusugan at mga pederal na entity.</li><li>Lahat ng arawang average ay mga average sa 7 araw.</li><li>May 7 araw na lag sa mga naibigay na bakuna.</li><li>May 8 araw na lag sa mga kaso.</li><li>Dahil sa pagkaantala sa pag-uulat, may 22 araw na lag sa mga pagkamatay.</li><li>May 1 araw na pagkaantala sa mga pagsusuri.</li><li>May karagdagang 1 araw na lag ang data ng kaso at pagkamatay mula sa county ng Los Angeles at San Diego.</li><li>May 1 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li><li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li><li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang datos ay ibinibigay ng Departamento ng Pampublikong Kalusugan ng California.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion>       </div>
@@ -273,7 +275,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Tingnan ang data sa pagbabakuna</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Data ng county at buong estado</h2>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Tingnan ang data sa pagbabakuna</div><cagov-arrow></cagov-arrow> </a>                         </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Data ng county at buong estado</h2>
+
+
+
+<p>Sinusuri ng CDC ang kasalukuyang panganib sa COVID-19 ng bawat bansa ayon sa mga antas. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">Alamin ang iyong antas ng komunidad ng county</a>. Ilagay ang iyong county para sa detalyadong data.</p>    <cagov-county-search></cagov-county-search>    <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} pagkamatay.</p>
 
 
 
