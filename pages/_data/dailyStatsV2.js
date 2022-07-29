@@ -8,11 +8,11 @@ module.exports = function() {
   let dataDomain = 'https://data.covid19.ca.gov/data/';
 
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
-    dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboard_Summary_Staging/data/';
+    dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboard_Summary_StagingV2/data/';
   }
   
   return new Promise((resolve, reject) => {
-    fetch(dataDomain+'daily-stats-v2.json?cachebust='+Math.random())
+    fetch(dataDomain+'daily-stats-v3.json?cachebust='+Math.random())
     .then(res => res.json())
     .then(json => {
         resolve(json);
