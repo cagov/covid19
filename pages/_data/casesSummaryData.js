@@ -6,10 +6,10 @@ const fetch = require('node-fetch')
 
 module.exports = function() {
   let dataDomain = 'https://data.covid19.ca.gov/data/dashboard/';
-  let directory = 'confirmed-cases';
+  let directory = 'combined-cases';
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'staging') {
     dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTablesV2_Staging/data/dashboard/';
-    directory = 'combined-cases';
+    //directory = 'combined-cases';
   }
   return new Promise((resolve, reject) => {
     fetch(dataDomain + directory + '/california.json')
