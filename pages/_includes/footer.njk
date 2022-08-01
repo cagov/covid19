@@ -142,6 +142,11 @@ ga('tracker3.send', 'pageview');
 	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
 {% endpagesection -%}
 
+{%- pagesection page, "state-dashboard-v2" %}
+	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
+	{{ macros.includeJavascriptByEnv('dashboard', env.dev) }}
+{% endpagesection -%}
+
 {%- pagesection page, "chart-renderer" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('chart-renderer', env.dev) }}
@@ -149,11 +154,6 @@ ga('tracker3.send', 'pageview');
 
 
 {%- pagesection page, "equity" %}
-	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
-	{{ macros.includeJavascriptByEnv('equitydash', env.dev) }}
-{% endpagesection -%}
-
-{%- pagesection page, "v2-equity" %}
 	<script type="module" src="https://d3js.org/d3.v6.min.js"></script><!-- had some trouble importing this, error circular dependencies after npm install so including here -->
 	{{ macros.includeJavascriptByEnv('equitydash', env.dev) }}
 {% endpagesection -%}
