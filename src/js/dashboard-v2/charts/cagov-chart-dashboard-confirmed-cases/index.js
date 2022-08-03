@@ -28,11 +28,17 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
     let totalKey = 'total_' + this.chartConfigFilter + '_cases';
     let avgKey = this.chartConfigFilter.toUpperCase() + '_CASES_DAILY_AVERAGE';
     let capitaKey = this.chartConfigFilter + '_cases_per_100k_7_days';
+    let total_cases_type = 'total ' + this.chartConfigFilter;
+
+    /* NOTE: the chart displays "total" cases but we use "combined" internally */
+    if (this.chartConfigFilter === 'combined') {
+        total_cases_type = 'total';
+    }
 
     const repDict = {
       total_cases:           formatValue(latestRec[totalKey],{format:'integer'}),
       avg_cases:             formatValue(latestRec[avgKey],{format:'integer'}),
-      total_cases_type:      this.chartConfigFilter,
+      total_cases_type:      total_cases_type,
       new_cases:             formatValue(latestRec.new_cases,{format:'integer'}),
       cases_per_100k_7_days: formatValue(latestRec[capitaKey],{format:'number',min_decimals:1}),
       REGION:                regionName,

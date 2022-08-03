@@ -46,7 +46,7 @@ export default function template(chartOptions, {
   post_chartLegend2 = "Chart Legend 2", // expected
   post_chartLegend3 = null, // only used if provided
   filterTabLabel1 = 'Tab Label 1',
-  filterTabLabel2 = 'Tab Label 2',
+  filterTabLabel2 = null, // only used if provided
   filterTabLabel3 = null, // only used if provided
   timeTabLabel1 = 'Tab Label 1',
   timeTabLabel2 = 'Tab Label 2',
