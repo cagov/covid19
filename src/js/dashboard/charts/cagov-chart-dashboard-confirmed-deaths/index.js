@@ -31,7 +31,6 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
       total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
       new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
-      avg_deaths:formatValue(latestRec.DEATHS_DAILY_AVERAGE,{format:'integer'}),
       deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
       REGION:regionName,
     };

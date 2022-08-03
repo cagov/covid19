@@ -17,13 +17,13 @@ const stagingConfig =  {
   chartsStateDashTablesLocPostvax: 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardPostvax_Staging/data/dashboard/',
 }
 
-const devOutputPath = 'docs/js/chart-renderer.js';
-const prodOutputPath = 'pages/_buildoutput/chart-renderer.js';
+const devOutputPath = 'docs/js/dashboard-v2.js';
+const prodOutputPath = 'pages/_buildoutput/dashboard-v2.js';
 const outputPath = (process.env.NODE_ENV === 'development') ? devOutputPath : prodOutputPath;
 const jsConfig = (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV == "development") ? stagingConfig : defaultConfig;
 
 export default {
-  input: 'src/js/chart-renderer/index.js',
+  input: 'src/js/dashboard-v2/index.js',
   output: {
     intro: 'const config = '+JSON.stringify(jsConfig),
     file: outputPath,

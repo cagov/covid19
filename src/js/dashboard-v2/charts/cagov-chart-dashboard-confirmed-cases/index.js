@@ -25,13 +25,17 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let totalKey = 'total_' + this.chartConfigFilter + '_cases';
+    let avgKey = this.chartConfigFilter.toUpperCase() + '_CASES_DAILY_AVERAGE';
+    let capitaKey = this.chartConfigFilter + '_cases_per_100k_7_days';
 
     const repDict = {
-      total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
-      new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
-      new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
-      cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
-      REGION:regionName,
+      total_cases:           formatValue(latestRec[totalKey],{format:'integer'}),
+      avg_cases:             formatValue(latestRec[avgKey],{format:'integer'}),
+      total_cases_type:      this.chartConfigFilter,
+      new_cases:             formatValue(latestRec.new_cases,{format:'integer'}),
+      cases_per_100k_7_days: formatValue(latestRec[capitaKey],{format:'number',min_decimals:1}),
+      REGION:                regionName,
     };
 
     if (!('chartTitleState' in this.translationsObj)) {
