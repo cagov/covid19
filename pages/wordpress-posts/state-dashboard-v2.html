@@ -423,17 +423,17 @@ formatNumberFixed(tags,1)-%}
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 1 Cases and Deaths - Confirmed Cases -->
-      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
+      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="combined" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
-          <li data-label="chartTitleState">Confirmed cases in California</li>
-          <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> total {total_cases_type} cases</li>
+          <li data-label="chartTitleState">Cases in California</li>
+          <li data-label="chartTitleCounty">Cases in {REGION} County</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} cases</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> average cases per day</li>
           <!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-          <li data-label="filterTabLabel1">Confirmed</li>
-          <li data-label="filterTabLabel2">Probable</li>
-          <li data-label="filterTabLabel3">Combined</li>
+          <li data-label="filterTabLabel1">Total</li>
+          <li data-label="filterTabLabel2">Confirmed</li>
+          <li data-label="filterTabLabel3">Probable</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -456,14 +456,14 @@ formatNumberFixed(tags,1)-%}
       <!-- 2 Cases and Deaths - Confirmed Deaths -->
       <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
-          <li data-label="chartTitleState">Confirmed deaths in California</li>
-          <li data-label="chartTitleCounty">Confirmed deaths in {REGION} County</li>
+          <li data-label="chartTitleState">Deaths in California</li>
+          <li data-label="chartTitleCounty">Deaths in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> average deaths per day</li>
           <!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
           <li data-label="filterTabLabel1">Death date</li>
-          <li data-label="filterTabLabel2">Reported date</li>
+          <!-- <li data-label="filterTabLabel2">Reported date</li> -->
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
