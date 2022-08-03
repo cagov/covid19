@@ -12,7 +12,7 @@ module.exports = function() {
   }
   
   return new Promise((resolve, reject) => {
-    fetch(dataDomain+'daily-stats-v2.json?cachebust='+Math.random())
+    fetch(dataDomain+'daily-stats-v3.json?cachebust='+Math.random())
     .then(res => res.json())
     .then(json => {
         resolve(json);

@@ -1,0 +1,13 @@
+cagov-chart-dashboard-confirmed-cases, cagov-chart-dashboard-confirmed-deaths, cagov-chart-dashboard-total-tests, cagov-chart-dashboard-positivity-rate, cagov-chart-dashboard-patients, cagov-chart-dashboard-icu-beds {  
+  .svg-holder svg {
+    width: 445px;
+		height: 334px;
+  }
+}
+
+cagov-chart-dashboard-postvax-chart  {
+  .svg-holder svg {
+    width: 615px;
+		height: 400px;
+  }
+}
