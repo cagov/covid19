@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "(V2) Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-08-04T16:23:37Z"
+publishdate: "2022-08-04T16:36:29Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -421,7 +421,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
+<p>California has {{_varStatTotalCases_}} confirmed and probable cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
 
 
 
@@ -491,12 +491,16 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths source data</a>. Data is updated on Tuesdays and Fridays.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated on Tuesdays and Fridays.</p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday.</li><li>Episode date is the date the event is estimated to have taken place. It is the most accurate source of data over time.</li><li>Reported date is the date the event was reported to the California Department of Public Health.</li><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Data from Los Angeles and San Diego counties have a 1-day lag.</li><li>A negative number of cases is a result of data quality work, including removing duplicate cases.</li><li>A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text"><li>Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday.</li><li>Episode date is the date the event is estimated to have taken place. It is the most accurate source of data over time.</li><li>Reported date is the date the event was reported to the California Department of Public Health.</li><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Data from Los Angeles and San Diego counties have a 1-day lag.</li>
+
+<li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
+
+<li>A negative number of cases is a result of data quality work, including removing duplicate cases.</li><li>A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
