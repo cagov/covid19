@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "(V2) Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-08-04T18:45:15Z"
+publishdate: "2022-08-09T18:56:12Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -40,10 +40,10 @@ addtositemap: false
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_COMBINED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (datacases.latest.CASES.combined_cases_per_100k_7_days) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CASES.COMBINED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CASES.CONFIRMED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
@@ -421,14 +421,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} confirmed and probable cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
+<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 1 Cases and Deaths - Cases -->
-      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="combined" data-chart-config-key="cases" data-chart-config-timerange="all-time">
+      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Cases in California</li>
           <li data-label="chartTitleCounty">Cases in {REGION} County</li>
@@ -436,9 +436,9 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> average cases per day</li>
           <!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-          <li data-label="filterTabLabel1">Total</li>
-          <li data-label="filterTabLabel2">Confirmed</li>
-          <li data-label="filterTabLabel3">Probable</li>
+          <li data-label="filterTabLabel1">Confirmed</li>
+          <li data-label="filterTabLabel2">Probable</li>
+          <li data-label="filterTabLabel3">Total</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
