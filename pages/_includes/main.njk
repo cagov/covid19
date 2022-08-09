@@ -8,11 +8,11 @@
 {%-set _varStatDateRounded_ = stateDashboardUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varStatDateYesterday_ = dailyStatsV2.meta.PUBLISHED_DATE | formatDate2(false, tags,-1)-%}
 
-{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_COMBINED_CASES | formatNumber(tags)-%}
+{%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
-{%-set _varStatNewCasesPer100k_ = (datacases.latest.CASES.combined_cases_per_100k_7_days) | formatNumber(tags,1)-%}
+{%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
 {%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varCasesDailyAverage_ = datacases.latest.CASES.COMBINED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CASES.CONFIRMED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
