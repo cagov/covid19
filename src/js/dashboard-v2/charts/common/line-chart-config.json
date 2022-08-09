@@ -1,6 +1,6 @@
 {
   "cases": {
-    "filterKeys": ["combined","confirmed","probable"],
+    "filterKeys": ["confirmed","probable","combined"],
     "confirmed": {
       "chartName": "cagov-chart-dashboard-confirmed-cases",
       "latestField": "CASES",
@@ -9,7 +9,7 @@
       "dataUrl": "combined-cases/california.json",
       "dataUrlCounty": "combined-cases/<county>.json",
       "rootId": "hcases-ep",
-      "filterKeys": ["combined","confirmed","probable"],
+      "filterKeys": ["confirmed","probable","combined"],
       "timeKeys": ["all-time","months-6","days-90"],
       "usesStateData": true,
       "lineAndBarsSameScale":false,
@@ -23,7 +23,7 @@
       "dataUrl": "combined-cases/california.json",
       "dataUrlCounty": "combined-cases/<county>.json",
       "rootId": "hcases-prob",
-      "filterKeys": ["combined","confirmed","probable"],
+      "filterKeys": ["confirmed","probable","combined"],
       "timeKeys": ["all-time","months-6","days-90"],
       "usesStateData": true,
       "lineAndBarsSameScale":false,
@@ -37,7 +37,7 @@
       "dataUrl": "combined-cases/california.json",
       "dataUrlCounty": "combined-cases/<county>.json",
       "rootId": "hcases-comb",
-      "filterKeys": ["combined","confirmed","probable"],
+      "filterKeys": ["confirmed","probable","combined"],
       "timeKeys": ["all-time","months-6","days-90"],
       "usesStateData": true,
       "lineAndBarsSameScale":false,
