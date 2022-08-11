@@ -33,6 +33,7 @@
       "chartName": "cagov-chart-dashboard-confirmed-cases",
       "latestField": "CASES",
       "seriesField": "COMBINED_CASES_EPISODE_DATE",
+      "seriesSubFields": ["PROBABLE_CASES_EPISODE_DATE","CONFIRMED_CASES_EPISODE_DATE"],
       "seriesFieldAvg": "AVG_COMBINED_CASE_RATE_PER_100K_7_DAYS",
       "dataUrl": "combined-cases/california.json",
       "dataUrlCounty": "combined-cases/<county>.json",
