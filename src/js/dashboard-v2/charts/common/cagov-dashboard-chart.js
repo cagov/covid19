@@ -136,7 +136,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       "<county>",
       countyEncoded
     );
-    this.retrieveData(searchURL, e.detail.county, this.timerange);
+    this.retrieveData(searchURL, e.detail.county);
   }
 
   listenForLocations() {
