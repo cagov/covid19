@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "(V2) Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-08-11T22:34:00Z"
+publishdate: "2022-08-18T18:04:09Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -443,6 +443,13 @@ formatNumberFixed(tags,1)-%}
                   Date: <b>{DATE}</b><br>
                   7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
                   Cases: <b>{CASES}</b>
+          </li>
+          <li data-label="tooltipCombinedContent">
+                  Date: <b>{DATE}</b><br>
+                  7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+                  Confirmed Cases: <b>{CONFIRMED_CASES}</b><br>
+                  Probable Cases: <b>{PROBABLE_CASES}</b><br>
+                  Total: <b>{COMBINED_CASES}</b>
           </li>
           <li data-label="dayAverage">7-day average</li>
           <li data-label="cases_leftYAxisLegend">Cases per 100K</li>
