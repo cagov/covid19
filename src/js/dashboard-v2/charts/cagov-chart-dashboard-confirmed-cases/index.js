@@ -85,7 +85,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                         'right_y_fmt':'integer',
-                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_xAxisLegend'],
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                         };
       if (this.chartConfigFilter != 'reported') {
