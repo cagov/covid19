@@ -77,7 +77,7 @@
     }
   },
   "tests": {
-    "filterKeys": ["testing","reported"],
+    "filterKeys": ["testing"],
     "testing": {
       "chartName": "cagov-chart-dashboard-total-tests",
       "latestField": "TOTAL_TESTS",
@@ -86,21 +86,6 @@
       "dataUrl": "total-tests/california.json",
       "dataUrlCounty": "total-tests/<county>.json",
       "rootId": "htests-tests",
-      "filterKeys": ["testing","reported"],
-      "timeKeys": ["all-time","months-6","days-90"],
-      "usesStateData": true,
-      "lineAndBarsSameScale":false,
-      "alignAverages":true
-    },
-    "reported": {
-      "chartName": "cagov-chart-dashboard-total-tests",
-      "latestField": "TOTAL_TESTS",
-      "seriesField": "REPORTED_TESTS",
-      "seriesFieldAvg": "AVG_TEST_REPORT_RATE_PER_100K_7_DAYS",
-      "dataUrl": "total-tests/california.json",
-      "dataUrlCounty": "total-tests/<county>.json",
-      "rootId": "htests-rep",
-      "filterKeys": ["testing","reported"],
       "timeKeys": ["all-time","months-6","days-90"],
       "usesStateData": true,
       "lineAndBarsSameScale":false,
