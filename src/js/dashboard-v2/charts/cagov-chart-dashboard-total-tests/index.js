@@ -31,6 +31,7 @@ class CAGovDashboardTotalTests extends CAGovDashboardChart {
       new_tests_reported:formatValue(Math.abs(latestRec.new_tests_reported),{format:'integer'}),
       new_tests_reported_delta_1_day:formatValue(Math.abs(latestRec.new_tests_reported_delta_1_day),{format:'percent'}),
       REGION:regionName,
+      avg_total_tests_7_days:formatValue(latestRec.avg_total_tests_7_days,{format:'integer'})
     };
 
     if (!('chartTitleState' in this.translationsObj)) {
@@ -43,7 +44,7 @@ class CAGovDashboardTotalTests extends CAGovDashboardChart {
     }
     // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_tests_reported_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(this.translationsObj.chartLegend2, repDict);
     this.translationsObj.currentLocation = regionName;
 
     return repDict;
