@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "(V2) Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-08-18T18:04:09Z"
+publishdate: "2022-08-22T19:33:39Z"
 tags: ["do-not-crawl","staging-only"]
 addtositemap: false
 ---
@@ -454,8 +454,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">7-day average</li>
           <li data-label="cases_leftYAxisLegend">Cases per 100K</li>
           <li data-label="cases_rightYAxisLegend">Cases</li>
-          <li data-label="cases_episode_xAxisLegend">Episode date</li>
-          <li data-label="cases_reported_xAxisLegend">Reported date</li>
+          <li data-label="cases_xAxisLegend">Episode date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -485,7 +484,6 @@ formatNumberFixed(tags,1)-%}
           <li data-label="deaths_leftYAxisLegend">Deaths per 100K</li>
           <li data-label="deaths_rightYAxisLegend">Deaths</li>
           <li data-label="deaths_death_xAxisLegend">Death date</li>
-          <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -500,7 +498,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday.</li><li>Episode date is the date the event is estimated to have taken place. It is the most accurate source of data over time.</li><li>Reported date is the date the event was reported to the California Department of Public Health.</li><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Data from Los Angeles and San Diego counties have a 1-day lag.</li>
+<ul class="small-text"><li>Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday.</li><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Data from Los Angeles and San Diego counties have a 1-day lag.</li>
 
 <li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
 
@@ -529,7 +527,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Total tests in California</li>
           <li data-label="chartTitleCounty">Total tests in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
-          <li data-label="chartLegend2"><span class="med-num">{avg_total_tests_7_days}</span> tests per 100K (7-day average)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_total_tests_7_days}</span> average tests per day</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -542,7 +540,6 @@ formatNumberFixed(tags,1)-%}
           <li data-label="tests_leftYAxisLegend">Tests per 100K</li>
           <li data-label="tests_rightYAxisLegend">Tests</li>
           <li data-label="tests_testing_xAxisLegend">Testing date</li>
-          <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -583,7 +580,8 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Testing date is the date the test was administered.</li><li>Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020.</li><li>Testing date total numbers may not match reporting date total numbers.</li><li>Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Testing data from Los Angeles county has a 1-day lag.</li><li>Positivity rate was previously reported as a 14-day average.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text"><li>Testing date is the date the test was administered.</li>
+<li>Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Testing data from Los Angeles county has a 1-day lag.</li><li>Positivity rate was previously reported as a 14-day average.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
