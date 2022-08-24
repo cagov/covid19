@@ -294,6 +294,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     // chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
 
+    console.log("PV render A");
     console.log("renderChart",root_id);
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
@@ -335,8 +336,7 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
     // console.log("Chart data",chartdata);
-    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[1]]), d3.max(chartdata, r => r[series_fields[2]]));
-    max_y_domain = Math.max(max_y_domain, d3.max(chartdata, r => r[series_fields[0]]));
+    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[1]]), d3.max(chartdata, r => r[series_fields[0]]));
     let min_y_domain = 0;
     this.yline = d3
     .scaleLinear()

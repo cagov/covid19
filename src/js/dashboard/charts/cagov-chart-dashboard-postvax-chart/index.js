@@ -68,9 +68,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const drec = this.chartdata[di];
     const repDict = {
       WEEKDATE:   reformatReadableDate(drec.DATE),
-      BCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
-      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
-      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[2]],{format:'number'}),
+      VCOUNT:   formatValue(drec[this.chartOptions.series_fields[0]],{format:'number'}),
+      UCOUNT:   formatValue(drec[this.chartOptions.series_fields[1]],{format:'number'}),
     };
     let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
     return caption;
@@ -84,7 +83,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let tempData = [...this.chartdata];
     // let sample_days = this.chartOptions.sample_days;
     let last_day = this.chartdata.length-1;
-    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[2]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
     let end_impact_date = this.chartdata[last_day].DATE;
     let begin_impact_date = this.chartdata[last_day-6].DATE;
     // tempData.splice(tempData.length-sample_days,sample_days);
@@ -108,7 +107,6 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_yaxis_legend = applySubstitutions(this.translationsObj.yaxis_legend_daily, repDict);
     this.translationsObj.post_series1_legend = applySubstitutions(this.translationsObj.series1_legend, repDict);
     this.translationsObj.post_series2_legend = applySubstitutions(this.translationsObj.series2_legend, repDict);
-    this.translationsObj.post_series3_legend = applySubstitutions(this.translationsObj.series3_legend, repDict);
     this.translationsObj.post_pending_legend = applySubstitutions(this.translationsObj.pending_legend, repDict);
     this.translationsObj.pending_mode = this.pending_mode;
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
@@ -129,7 +127,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
                           'root_id':this.chartOptions.root_id,
                           'show_pending':show_pending,
                         };
-      renderChart.call(this, renderOptions);
+    renderChart.call(this, renderOptions);
   }
 
   retrieveData(url) {
@@ -138,7 +136,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
       .then((response) => response.json())
       .then(
         function (alldata) {
-          // console.log("Race/Eth data data", alldata.data);
+          console.log("Postvax data received", alldata.data);
 
           // TEST OVERRIDE
           // alldata = JSON.parse(JSON.stringify(testChartData));
@@ -161,7 +159,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           this.chartdata.forEach(rec => {
             rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
             rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
-            rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
+            // rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
           });
 
           this.renderComponent();
