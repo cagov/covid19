@@ -15,6 +15,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // this.pending_mode = getURLSearchParam('pending','gray');
 
     this.translationsObj = getTranslations(this);
+    this.chartConfigTimerange = this.dataset.chartConfigTimerange;
     this.chartConfigFilter = this.dataset.chartConfigFilter;
     this.chartConfigKey = this.dataset.chartConfigKey;
     console.log("Loading Postvax Chart",this.chartConfigKey,this.chartConfigFilter);
@@ -75,6 +76,88 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     return caption;
   }
 
+  chartFilterSelectsHandler(selectFilters, e) {
+    console.log("SELECT HANDLER",selectFilters,e);
+    selectFilters.forEach((select) => {
+      switch (select.dataset.type) {
+        case 'time':
+          this.chartConfigTimerange = select.value;
+          console.log("Time range set to ",this.chartConfigTimerange);
+          break;
+        // case 'filter':
+        //   this.chartConfigFilter = select.value;
+        //   break;
+        // default:
+      }
+    });
+    this.renderComponent();
+  }
+
+
+          // let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
+          // console.log("days to show",days_to_show);
+
+          // let pending_days = this.chartOptions.pending_days;
+          // this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
+
+          // if (this.chartdata.length > days_to_show) {
+          //   console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
+          //   this.chartdata.splice(0, this.chartdata.length-days_to_show); 
+          // }
+
+
+
+  cropData(timerangeKey, uncroppedChartData) {
+    console.log("Cropping postvax data",timerangeKey);
+    let chartData = JSON.parse(JSON.stringify(uncroppedChartData));;
+    const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
+
+    let daysToKeep = -1;
+    const tokens = timerangeKey.split('-');
+    if (tokens[0] in unitSizeDict) {
+      daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
+    }
+
+
+    if ('earliest_date' in this.chartOptions) {
+      let number_to_clip = 0;
+      for (let i = 0; i < chartData.length; i++) {
+        if (chartData[i].DATE != this.chartOptions.earliest_date) {
+          number_to_clip += 1;
+        } else {
+          break;
+        }
+      }
+      if (number_to_clip > 0) {
+        chartData.splice(0, number_to_clip); 
+      }
+    }
+    console.log("postvax DAYS TO KEEP",daysToKeep);
+
+    let pending_days = this.chartOptions.pending_days;
+    chartData.splice(chartData.length-pending_days,pending_days);
+
+    if (daysToKeep > 0 && chartData.length > daysToKeep) {
+      chartData.splice(0, chartData.length-daysToKeep); 
+    }
+    console.log("RESULTANT postvax LENGTH",chartData.length);
+
+    return chartData;
+  }
+
+  // Add event listener to select filters.
+  setupSelectFilters() {
+    console.log("Setting up postvax select key =",this.chartConfigKey);
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
+
+    selectFilters.forEach((selectFitler) => {
+      selectFitler.addEventListener(
+        'change',
+        this.chartFilterSelectsHandler.bind(this, selectFilters),
+        false,
+      );
+    });
+  }
 
   renderComponent() {
     console.log("Rendering Post Vax Chart");
@@ -82,6 +165,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let sumunvax = 0;
     // let tempData = [...this.chartdata];
     // let sample_days = this.chartOptions.sample_days;
+    this.chartdata = this.cropData(this.chartConfigTimerange, this.uncroppedChartData);
+    console.log("Length chart data",this.chartdata.length);
+
     let last_day = this.chartdata.length-1;
     // let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
     const last_ratio = this.metadata[this.chartOptions.rate_field];
@@ -105,6 +191,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     this.translationsObj.post_pending_legend = applySubstitutions(this.translationsObj.pending_legend, repDict);
     this.translationsObj.pending_mode = this.pending_mode;
     this.innerHTML = template.call(this, this.chartOptions, this.translationsObj);
+
+    this.setupSelectFilters();
+
     let series_fields = this.chartOptions.series_fields;
     let series_colors = this.chartOptions.series_colors;
 
@@ -138,17 +227,18 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
           this.metadata = alldata.meta;
           this.chartdata = alldata.data;
+          this.uncroppedChartData = alldata.data;
 
-          let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
-          console.log("days to show",days_to_show);
+          // let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
+          // console.log("days to show",days_to_show);
 
-          let pending_days = this.chartOptions.pending_days;
-          this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
+          // let pending_days = this.chartOptions.pending_days;
+          // this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
 
-          if (this.chartdata.length > days_to_show) {
-            console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
-            this.chartdata.splice(0, this.chartdata.length-days_to_show); 
-          }
+          // if (this.chartdata.length > days_to_show) {
+          //   console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
+          //   this.chartdata.splice(0, this.chartdata.length-days_to_show); 
+          // }
 
           // Premult
           this.chartdata.forEach(rec => {
