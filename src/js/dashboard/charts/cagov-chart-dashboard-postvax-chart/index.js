@@ -83,22 +83,17 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     // let tempData = [...this.chartdata];
     // let sample_days = this.chartOptions.sample_days;
     let last_day = this.chartdata.length-1;
-    let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    // let last_ratio = this.chartdata[last_day][this.chartOptions.series_fields[1]] / this.chartdata[last_day][this.chartOptions.series_fields[0]];
+    const last_ratio = this.metadata[this.chartOptions.rate_field];
     let end_impact_date = this.chartdata[last_day].DATE;
     let begin_impact_date = this.chartdata[last_day-6].DATE;
-    // tempData.splice(tempData.length-sample_days,sample_days);
-    // tempData.forEach(r => {
-    //   sumvax += r[this.chartOptions.series_fields[0]];
-    //   sumunvax += r[this.chartOptions.series_fields[1]];
-    // });
-    // const repDict = {
-    //   RATE_PERCENT:(Math.round(100*sumunvax / sumvax))+'%',
-    // };
+    
     const repDict = {
       BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
       END_IMPACT_DATE: reformatReadableDate(end_impact_date),
+      RATE_MONTH: this.metadata.EPMONTH,
       RATE_RATIO:formatValue(last_ratio,{format:'number'}),
-      RATE_PERCENT:formatValue(last_ratio,{format:'number'}), // (Math.round(100*last_ratio))+'%',
+      // RATE_PERCENT:formatValue(last_ratio,{format:'number'}), // (Math.round(100*last_ratio))+'%',
     };
 
     this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleState, repDict);
