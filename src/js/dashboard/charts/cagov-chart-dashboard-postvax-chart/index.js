@@ -91,7 +91,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     const repDict = {
       BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
       END_IMPACT_DATE: reformatReadableDate(end_impact_date),
-      RATE_MONTH: this.metadata.EPMONTH,
+      RATE_MONTH: this.metadata.EPMONTH, // may need to format this when we switch to YYYY-MM
       RATE_RATIO:formatValue(last_ratio,{format:'number'}),
       // RATE_PERCENT:formatValue(last_ratio,{format:'number'}), // (Math.round(100*last_ratio))+'%',
     };
