@@ -76,35 +76,35 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     return caption;
   }
 
-  chartFilterSelectsHandler(selectFilters, e) {
-    console.log("SELECT HANDLER",selectFilters,e);
-    selectFilters.forEach((select) => {
-      switch (select.dataset.type) {
-        case 'time':
-          this.chartConfigTimerange = select.value;
-          console.log("Time range set to ",this.chartConfigTimerange);
-          break;
-        // case 'filter':
-        //   this.chartConfigFilter = select.value;
-        //   break;
-        // default:
-      }
-    });
+  chartFilterSelectsHandler(selectFilter, e) {
+    console.log("SELECT HANDLER",selectFilter,e);
+
+    switch (selectFilter.dataset.type) {
+      case 'time':
+        this.chartConfigTimerange = selectFilter.value;
+        console.log("Time range set to ",this.chartConfigTimerange);
+        break;
+      // case 'filter':
+      //   this.chartConfigFilter = select.value;
+      //   break;
+      // default:
+    }
     this.renderComponent();
   }
 
+  // Add event listener to select filters.
+  setupSelectFilters() {
+    console.log("Setting up postvax select key =",this.chartConfigKey);
+    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
 
-          // let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
-          // console.log("days to show",days_to_show);
-
-          // let pending_days = this.chartOptions.pending_days;
-          // this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
-
-          // if (this.chartdata.length > days_to_show) {
-          //   console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
-          //   this.chartdata.splice(0, this.chartdata.length-days_to_show); 
-          // }
-
+    selectFilters.forEach((selectFilter) => {
+      selectFilter.addEventListener(
+        'change',
+        this.chartFilterSelectsHandler.bind(this, selectFilter),
+        false,
+      );
+    });
+  }
 
 
   cropData(timerangeKey, uncroppedChartData) {
@@ -145,19 +145,6 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     return chartData;
   }
 
-  // Add event listener to select filters.
-  setupSelectFilters() {
-    console.log("Setting up postvax select key =",this.chartConfigKey);
-    const selectFilters = document.querySelectorAll(`cagov-chart-filter-select.js-filter-${this.chartConfigKey} select`);
-
-    selectFilters.forEach((selectFitler) => {
-      selectFitler.addEventListener(
-        'change',
-        this.chartFilterSelectsHandler.bind(this, selectFilters),
-        false,
-      );
-    });
-  }
 
   renderComponent() {
     console.log("Rendering Post Vax Chart");
