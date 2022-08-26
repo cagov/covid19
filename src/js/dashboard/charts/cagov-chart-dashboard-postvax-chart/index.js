@@ -117,6 +117,9 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     if (tokens[0] in unitSizeDict) {
       daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
     }
+    if (daysToKeep == 90) { // !! tweak based on position
+      daysToKeep = 92;
+    }
 
 
     if ('earliest_date' in this.chartOptions) {

@@ -10,7 +10,7 @@
       "dataUrl": "postvax-v2/california.json",
       "days_to_show": 274,
       "root_id": "postvax-cases",
-      "pending_days":14,
+      "pending_days":0,
       "pre_mult":1
     }
   },
@@ -25,7 +25,7 @@
       "dataUrl": "postvax-v2/california.json",
       "days_to_show": 274,
       "root_id": "postvax-hospitalizations",
-      "pending_days":14,
+      "pending_days":0,
       "pre_mult":10
     }
   },
@@ -40,18 +40,18 @@
       "dataUrl": "postvax-v2/california.json",
       "days_to_show": 274,
       "root_id": "postvax-deaths",
-      "pending_days":21,
+      "pending_days":0,
       "pre_mult":10
     }
   },
   "desktop": {
     "fontSize": 14,
-    "width": 700,    
+    "width": 720,    
     "height": 400,
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 30,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -62,7 +62,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 30,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -73,7 +73,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 30,  
+      "right": 2,  
       "bottom": 45
     }
   },
@@ -84,7 +84,7 @@
     "margin": {   
       "left": 50,   
       "top": 30,  
-      "right": 30,  
+      "right": 2,  
       "bottom": 45
     }
   }
