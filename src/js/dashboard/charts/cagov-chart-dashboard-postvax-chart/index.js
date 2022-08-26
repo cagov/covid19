@@ -116,7 +116,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     var nextDate = new Date(lastDate.valueOf());
     nextDate.setDate(nextDate.getDate() + 1);
     var startDate = parseSnowflakeDate(cdata[cdata.length-dayRange].DATE);
-    while (dayRange >= months*31-8 && startDate.getDate() != nextDate.getDate()) {
+    while (dayRange >= months*31-months && startDate.getDate() != nextDate.getDate()) {
       dayRange -= 1;
       startDate = parseSnowflakeDate(cdata[cdata.length-dayRange].DATE);
     }
@@ -136,6 +136,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     if (tokens[0] == 'months') {
       // recompute based on month boundaries
       daysToKeep = this.countExactMonths(parseInt(tokens[1]), chartData);
+    } else if (tokens[0] == 'years') {
+      daysToKeep = this.countExactMonths(parseInt(tokens[1]*12), chartData);
     }
 
     if ('earliest_date' in this.chartOptions) {
