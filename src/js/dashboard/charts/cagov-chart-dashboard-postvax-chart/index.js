@@ -182,10 +182,14 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     let end_impact_date = this.chartdata[last_day].DATE;
     let begin_impact_date = this.chartdata[last_day-6].DATE;
     
+    // console.log("EPMONTH: ",this.metadata.EPMONTH); // should match english readable of date_ceiling
+    // console.log("DATE CEILING: ", this.metadata.DATE_CEILING);
+    // console.log("Readable: ", reformatReadableDate(this.metadata.DATE_CEILING,{ month: "long", year: 'numeric'}));
+
     const repDict = {
       BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
       END_IMPACT_DATE: reformatReadableDate(end_impact_date),
-      RATE_MONTH: this.metadata.EPMONTH, // may need to format this when we switch to YYYY-MM
+      RATE_MONTH: reformatReadableDate(this.metadata.DATE_CEILING,{ month: "long", year: 'numeric'}), // may need to format this when we switch to YYYY-MM
       RATE_RATIO:formatValue(last_ratio,{format:'number'}),
       // RATE_PERCENT:formatValue(last_ratio,{format:'number'}), // (Math.round(100*last_ratio))+'%',
     };
