@@ -169,10 +169,7 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
 
   renderComponent() {
     console.log("Rendering Post Vax Chart");
-    // let sumvax = 0;
-    // let sumunvax = 0;
-    // let tempData = [...this.chartdata];
-    // let sample_days = this.chartOptions.sample_days;
+
     this.chartdata = this.cropData(this.chartConfigTimerange, this.uncroppedChartData);
     console.log("Length chart data",this.chartdata.length);
 
@@ -182,10 +179,6 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     let end_impact_date = this.chartdata[last_day].DATE;
     let begin_impact_date = this.chartdata[last_day-6].DATE;
     
-    // console.log("EPMONTH: ",this.metadata.EPMONTH); // should match english readable of date_ceiling
-    // console.log("DATE CEILING: ", this.metadata.DATE_CEILING);
-    // console.log("Readable: ", reformatReadableDate(this.metadata.DATE_CEILING,{ month: "long", year: 'numeric'}));
-
     const repDict = {
       BEGIN_IMPACT_DATE: reformatReadableDate(begin_impact_date),
       END_IMPACT_DATE: reformatReadableDate(end_impact_date),
@@ -241,19 +234,8 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
           this.chartdata = alldata.data;
           this.uncroppedChartData = alldata.data;
 
-          // let days_to_show = parseInt(getURLSearchParam('days', ''+this.chartOptions.days_to_show));
-          // console.log("days to show",days_to_show);
-
-          // let pending_days = this.chartOptions.pending_days;
-          // this.chartdata.splice(this.chartdata.length-pending_days,pending_days);
-
-          // if (this.chartdata.length > days_to_show) {
-          //   console.log("Clipping",this.chartdata.length-days_to_show,"days > days_to_show")
-          //   this.chartdata.splice(0, this.chartdata.length-days_to_show); 
-          // }
-
           // Premult
-          this.chartdata.forEach(rec => {
+          this.uncroppedChartData.forEach(rec => {
             rec[this.chartOptions.series_fields[0]] *= this.chartOptions.pre_mult;
             rec[this.chartOptions.series_fields[1]] *= this.chartOptions.pre_mult;
             // rec[this.chartOptions.series_fields[2]] *= this.chartOptions.pre_mult;
