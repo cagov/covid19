@@ -5,7 +5,7 @@ import rtlOverride from "../../../common/rtl-override.js";
 import chartConfig from './postvax-chart-config.json';
 import renderChart from "./postvax-chart.js";
 import applySubstitutions from "./../../../common/apply-substitutions.js";
-import { reformatReadableDate } from "../../../common/readable-date.js";
+import { reformatReadableDate, parseSnowflakeDate} from "../../../common/readable-date.js";
 import formatValue from "./../../../common/value-formatters.js";
 import { hasURLSearchParam, getURLSearchParam}  from "../../../common/geturlparams.js";
 
@@ -106,6 +106,22 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     });
   }
 
+  countExactMonths(months, cdata) {
+    // find closest day range of approx 31*months, in which the
+    // day of the month is the same as the day following the last data-day
+    // e.g. if we want three months, and the lastDate is 2022-07-31, we want 2022-04-01 (exactly 3 months)
+    //
+    const lastDate = parseSnowflakeDate(cdata[cdata.length-1].DATE);
+    var dayRange = months*31; // this isn't bad actually, but it may overshoot
+    var nextDate = new Date(lastDate.valueOf());
+    nextDate.setDate(nextDate.getDate() + 1);
+    var startDate = parseSnowflakeDate(cdata[cdata.length-dayRange].DATE);
+    while (dayRange >= months*31-8 && startDate.getDate() != nextDate.getDate()) {
+      dayRange -= 1;
+      startDate = parseSnowflakeDate(cdata[cdata.length-dayRange].DATE);
+    }
+    return dayRange;
+  }
 
   cropData(timerangeKey, uncroppedChartData) {
     console.log("Cropping postvax data",timerangeKey);
@@ -117,10 +133,10 @@ class CAGovDashboardPostvaxChart extends window.HTMLElement {
     if (tokens[0] in unitSizeDict) {
       daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
     }
-    if (daysToKeep == 90) { // !! tweak based on position
-      daysToKeep = 92;
+    if (tokens[0] == 'months') {
+      // recompute based on month boundaries
+      daysToKeep = this.countExactMonths(parseInt(tokens[1]), chartData);
     }
-
 
     if ('earliest_date' in this.chartOptions) {
       let number_to_clip = 0;

@@ -48,7 +48,7 @@ function writeXAxis(svg, data, date_fld, x, y,
 
   let last_mon_idx = 0;
   let last_year_idx = 0;
-  let month_modulo = data.length > 366? 3 : 1;
+  let month_modulo = data.length > 372? 3 : 1;
 
   data.forEach((d,i) => {
     const ymd = d[date_fld].split('-');
