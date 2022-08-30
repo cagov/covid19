@@ -12,7 +12,7 @@
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumber(tags,1)-%}
 {%-set _varCasesTrend_ = data2.cases.LATEST_CONFIDENT_INCREASE_CASE_RATE_PER_100K_7_DAYS %}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CASES.CONFIRMED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
