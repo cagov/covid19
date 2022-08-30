@@ -46,7 +46,8 @@ export default function template(chartOptions, {
   post_chartLegend2 = "Chart Legend 2", // expected
   post_chartLegend3 = null, // only used if provided
   filterTabLabel1 = 'Tab Label 1',
-  filterTabLabel2 = 'Tab Label 2',
+  filterTabLabel2 = null, // only used if provided
+  filterTabLabel3 = null, // only used if provided
   timeTabLabel1 = 'Tab Label 1',
   timeTabLabel2 = 'Tab Label 2',
   timeTabLabel3 = 'Tab Label 3',
@@ -54,7 +55,7 @@ export default function template(chartOptions, {
   // console.log('%c BEGIN SELECT', 'color: purple');
   // Group values into arrays.
   const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3] : [];
-  const filterLabels = 'filterKeys' in chartOptions ? [filterTabLabel1, filterTabLabel2] : [];
+  const filterLabels = 'filterKeys' in chartOptions ? [filterTabLabel1, filterTabLabel2, filterTabLabel3].filter(nonNull=>nonNull) : [];
   const filters = {
     filterLabels,
     timeLabels,

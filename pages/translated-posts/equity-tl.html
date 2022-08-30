@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Pangako ng California sa pagkakapantay-pantay sa kalusugan"
 meta: "Dahil sa COVID-19, may mga natukoy na hindi pagkakapantay-pantay sa kalusugan sa kasalukuyan. Tinutukoy ng California ang mga pinakaapektadong komunidad."
 author: "State of California"
-publishdate: "2022-07-13T18:38:34Z"
+publishdate: "2022-07-25T22:40:36Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -51,7 +51,7 @@ addtositemap: true
 <!--END row-->
           <div class="row">
           <div class="col-lg-10 mx-auto">
-              <div class="container">                         <cagov-equity-highlight-stats>           <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+              <div class="container">                         <cagov-equity-highlight-stats> <div class="row d-flex row-eq-height justify-content-md-center pb-4">
               <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                 
 <!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
  
@@ -115,7 +115,7 @@ addtositemap: true
                   <p class="text-xs mb-0">                     <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong> kita <$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> lahat ng bracket ng kita                   </p>
                 </div>
               </div>
-            </div>         </cagov-equity-highlight-stats>                  </div>
+            </div>         </cagov-equity-highlight-stats> </div>
 <!--END cont-->
            </div>
 <!--END col-10-->
@@ -150,7 +150,7 @@ addtositemap: true
 
 <div class="container disparity-chart-container px-0">
   <div class="row">
-    <div class="col">       <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8">             <ul>
+    <div class="col">       <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8"> <ul>
               <li data-label="tooltip_date_label">Pagtatapos ng linggo</li>
               <li data-label="chartTitle">COVID-19 {METRIC} ayon sa lahi/etnisidad, {REGION}</li>
               <li data-label="y_axis_legend">{METRIC} bawat 100k</li>
@@ -159,17 +159,17 @@ addtositemap: true
               <li data-label="timeTabLabel3">1 taon</li>
               <li data-label="timeTabLabel4">2020–kasalukuyan</li>
               <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
-            </ul>           </cagov-chart-disparity-multi-linechart>     </div>
+            </ul>           </cagov-chart-disparity-multi-linechart> </div>
   </div>
 </div>
 
 
 
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng pambuong-estadong epekto ng COVID-19 ayon sa lahi at etnisidad sa paglipas ng panahon</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng pambuong-estadong epekto ng COVID-19 ayon sa lahi at etnisidad sa paglipas ng panahon</a></p>
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><div>                 <cagov-accordion class="accordion-chart-drawer">                   <details>                     <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                     <div class="accordion-body">
+<div class="wp-block-cgb-block-chart-drawer"><div>                 <cagov-accordion class="accordion-chart-drawer"> <details>                     <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                     <div class="accordion-body">
                       
 <ul class="small-text">
 <li>Hindi in-adjust ang mga rate para sa mga salik gaya ng edad, status sa pagpapabakuna, at mga comorbidity. Puwedeng mag-iba ang mga salik na ito depende sa lahi at etnisidad, at nakakaapekto ang mga ito sa mga rate.</li>
@@ -183,9 +183,9 @@ addtositemap: true
 
 
 
-<h3 class="text-center">Epekto ng COVID-19 ayon sa lahi at etnisidad sa nakalipas na 30 araw</h3>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>Naapektuhan ng COVID-19, sa hindi balanseng paraan, ang mga komunidad na binubuo ng mga Latino, Black, at Pacific Islander. Mayroon na kaming ilang nagawa para matugunan ang mga pagkakaiba-iba sa mga komunidad na ito, pero kailangan naming mas paghusayin pa.</p>    <cagov-chart-filter-buttons class="js-re-smalls">     <div class="d-flex justify-content-center">       <button class="small-tab active" data-key="cases">Mga Kaso</button> <button class="small-tab" data-key="deaths">Mga Pagkamatay</button> <button class="small-tab" data-key="tests">Pagsusuri</button>     </div>   </cagov-chart-filter-buttons>      <div class="container">
+<h3 class="text-center">Epekto ng COVID-19 ayon sa lahi at etnisidad sa nakalipas na 30 araw</h3>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Naapektuhan ng COVID-19, sa hindi balanseng paraan, ang mga komunidad na binubuo ng mga Latino, Black, at Pacific Islander. Mayroon na kaming ilang nagawa para matugunan ang mga pagkakaiba-iba sa mga komunidad na ito, pero kailangan naming mas paghusayin pa.</p>    <cagov-chart-filter-buttons class="js-re-smalls"> <div class="d-flex justify-content-center">       <button class="small-tab active" data-key="cases">Mga Kaso</button> <button class="small-tab" data-key="deaths">Mga Pagkamatay</button> <button class="small-tab" data-key="tests">Pagsusuri</button>     </div>   </cagov-chart-filter-buttons> <div class="container">
   <div class="row">
-      <div class="col">        <cagov-chart-re-pop class="chart d-none">           <ul>
+      <div class="col">        <cagov-chart-re-pop class="chart d-none"> <ul>
             <li data-label="chartTitle--cases">Mga kaso depende sa porsyento ng populasyon sa placeholderForDynamicLocation</li>
             <li data-label="chartTitle--deaths">Mga pagkamatay depende sa porsyento ng populasyon sa placeholderForDynamicLocation</li>
             <li data-label="chartTitle--tests">Pagsusuri depende sa porsyento ng populasyon sa placeholderForDynamicLocation</li>
@@ -217,8 +217,8 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--cases">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
-        </ul>       </cagov-chart-re-pop>      </div>
-    <div class="col">        <cagov-chart-re-100k class="chart d-none">          <ul>
+        </ul>       </cagov-chart-re-pop> </div>
+    <div class="col">        <cagov-chart-re-100k class="chart d-none"> <ul>
           <li data-label="chartTitle--cases">Rate ng kaso sa bawat 100K ayon sa lahi at grupo sa etnisidad sa placeholderForDynamicLocation</li>
           <li data-label="chartTitle--deaths">Rate ng mga pagkamatay sa bawat 100K ayon sa lahi at grupo sa etnisidad sa placeholderForDynamicLocation</li>
           <li data-label="chartTitle--tests">Rate ng mga pagsusuri sa bawat 100K ayon sa lahi at grupo sa etnisidad sa placeholderForDynamicLocation</li>
@@ -250,18 +250,18 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--cases">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="data-missing-applied-suppression-population--deaths">Hindi ipinapakita ang datos dahil wala pang 20,000 ang mga tao sa grupong ito.</li>
             <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
-        </ul>       </cagov-chart-re-100k>     </div>
+        </ul>       </cagov-chart-re-100k> </div>
   </div>
 </div>
 
 
 
 <p></p><p class="top-charts-data-label small-text mt-2 mb-2"></p>
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">Source data ng mga kaso, pagkamatay, at pagsusuri kaugnay ng porsyento ng populasyon at rate ng kaso, pagkamatay, at pagsusuri sa kada 100K ayon sa lahi at etnisidad</a></p><p></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics"> Source data ng mga kaso, pagkamatay, at pagsusuri kaugnay ng porsyento ng populasyon at rate ng kaso, pagkamatay, at pagsusuri sa kada 100K ayon sa lahi at etnisidad</a></p><p></p>
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+<div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer"> <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
                     
 <ul class="small-text"><li>Hindi kasama sa mga pagtataya sa populasyon ang kategoryang “iba pa” o “hindi alam” sa lahi at etnisidad, kaya naman hindi available ang porsyento ng mga ito sa populasyon ng estado. Para makita ang cumulative na data ng lahi at etnisidad nang nakapangkat ayon sa mga grupo ng edad, tingnan ang <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">Data ng Lahi at Etnisidad Kaugnay ng COVID-19<span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span></a> ng Departamento ng Pampublikong Kalusugan ng California.</li><li>Ipinapakita ang mga numero mula 1 hanggang 11 bilang “<11” para maprotektahan ang privacy ng pasyente.</li><li>Ang “iba pa” ay tumutukoy sa mga hindi kasama sa anumang nakalista na lahi o etnisidad. Kasama sa “hindi alam” na lahi at etnisidad ang mga tumangging magsabi o may kulang na impormasyon sa lahi at etnisidad.</li></ul>
 
@@ -274,7 +274,7 @@ addtositemap: true
 
 
 
-<p>Sinusukat ng sukatan ng pagkakapantay-pantay sa kalusugan ang rate ng pagiging positibo sa mga komunidad na naapektuhan sa pinakahindi balanseng paraan. Tinutukoy ang mga komunidad na ito sa <a href="https://map.healthyplacesindex.org/">Index ng Mga Lugar na Malayo sa Sakit</a>, na binuo ng Alyansa sa Pampublikong Kalusugan ng Southern California (Public Health Alliance of Southern California), bilang mga tract ng census na may mas kaunting kundisyon sa komunidad na nauugnay sa kalusugan, gaya ng mababang median na kita, pagkakumpleto ng edukasyon, at access sa pangangalagang pangkalusugan. Inilalarawan ang pagiging positibo ng quartile ng pagkakapantay-pantay sa kalusugan bilang rate ng pagiging positibo sa COVID-19 sa pinakamababang 25% ng mga tract ng census ng Index ng Mga Lugar na Malayo sa Sakit.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>  <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
+<p>Sinusukat ng sukatan ng pagkakapantay-pantay sa kalusugan ang rate ng pagiging positibo sa mga komunidad na naapektuhan sa pinakahindi balanseng paraan. Tinutukoy ang mga komunidad na ito sa <a href="https://map.healthyplacesindex.org/">Index ng Mga Lugar na Malayo sa Sakit</a>, na binuo ng Alyansa sa Pampublikong Kalusugan ng Southern California (Public Health Alliance of Southern California), bilang mga tract ng census na may mas kaunting kundisyon sa komunidad na nauugnay sa kalusugan, gaya ng mababang median na kita, pagkakumpleto ng edukasyon, at access sa pangangalagang pangkalusugan. Inilalarawan ang pagiging positibo ng quartile ng pagkakapantay-pantay sa kalusugan bilang rate ng pagiging positibo sa COVID-19 sa pinakamababang 25% ng mga tract ng census ng Index ng Mga Lugar na Malayo sa Sakit.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none"> <div>
       <ul class="small-text">
         <li data-label="y-axis-label">Pagpopositibo sa pagsusuri</li>
         <li data-label="data1-legend">Pagpopositibo sa buong estado</li>
@@ -292,7 +292,7 @@ addtositemap: true
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer"> <details>                   <summary><h2>Impormasyon sa chart</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
                     <ul class="small-text"><li>Ang ipinapakitang data ay 7 araw na average ng rate ng pagiging positibo, na may lag na 7 araw.</li><li>Ang ipinapakitang data ay para sa 7 araw na nagtatapos sa <span data-replacement="d3-lines-report-date">Pebrero 26, 2022</span>.</li><li>Ang sukatan sa equity sa kalusugan ay hindi nalalapat sa mga county na may populasyong wala pang 106,000.</li></ul>
                   </div>
                 </details>               </cagov-accordion></div></div></div>
@@ -303,7 +303,7 @@ addtositemap: true
 
 
 
-<p>Marami tayong kaalaman sa epekto ng COVID-19 sa ilang partikular na komunidad, pero mas mahusay nating mailalaan ang ating mga mapagkukunan sa pamamagitan ng pangongolekta ng datos sa lahi, etnisidad, at sekswal na oryentasyon at kinikilalang kasarian. Mas mahusay nating matutugunan ang mga pagkakaiba-iba sa kalusugan kung mas kumpleto ang data. Sa pangongolektang ito ng datos, kailangang makipagtulungan sa mga partner sa pribadong sektor, laboratoryo, at opisyal ng estado at county. Tingnan ang mga mapagkukunan ng impormasyon sa kung paano mapapahusay ang pag-uulat sa <a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">lahi at etnisidad</a> at <a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">sekswal na oryentasyon at kinikilalang kasarian</a>.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">Lahi at etnisidad</button> <button class="small-tab" data-key="sexual_orientation">Sekswal na oryentasyon</button> <button class="small-tab" data-key="gender_identity">Kinikilalang kasarian</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none">   <ul>
+<p>Marami tayong kaalaman sa epekto ng COVID-19 sa ilang partikular na komunidad, pero mas mahusay nating mailalaan ang ating mga mapagkukunan sa pamamagitan ng pangongolekta ng datos sa lahi, etnisidad, at sekswal na oryentasyon at kinikilalang kasarian. Mas mahusay nating matutugunan ang mga pagkakaiba-iba sa kalusugan kung mas kumpleto ang data. Sa pangongolektang ito ng datos, kailangang makipagtulungan sa mga partner sa pribadong sektor, laboratoryo, at opisyal ng estado at county. Tingnan ang mga mapagkukunan ng impormasyon sa kung paano mapapahusay ang pag-uulat sa <a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">lahi at etnisidad</a> at <a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">sekswal na oryentasyon at kinikilalang kasarian</a>.</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls"> <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">Lahi at etnisidad</button> <button class="small-tab" data-key="sexual_orientation">Sekswal na oryentasyon</button> <button class="small-tab" data-key="gender_identity">Kinikilalang kasarian</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none"> <ul>
     <div>
       <ul class="small-text">
         <li data-label="title">Pag-uulat ayon sa lahi at etnisidad sa California</li>
@@ -332,7 +332,7 @@ addtositemap: true
         <li data-item="deaths">Mga Pagkamatay</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <hr class="wp-block-separator mb-0" id="factors"/> <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness> <div class="mb-2 mt-2"></div>    <hr class="wp-block-separator mb-0" id="factors"/> <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle">Mga salik na nagpapalaki sa posibilidad na magkaroon ng hawahan at malalang sakit</li>
     <li data-label="sectionDescription">Ang mga Californian na nasa siksikang pabahay o transportasyon, na may mas kaunting access sa bayad na leave at iba pang proteksyon sa manggagagawa ay may mas malaking posibilidad na mahawahan ng COVID-19. Puwedeng mapalaki ng mga panlipunang determinant ng kalusugan, gaya ng insurance sa kalusugan at hindi pagiging stable ng pabahay, ang posibilidad na magkaroon ng mga hindi magandang resulta. Kadalasan, resulta ng mga structural inequity ang mga panlipunang determinant na ito ng kalusugan.</li>
     <li data-label="chartTitleIncome">Rate ng kaso sa komunidad ayon sa median na bracket ng taunang sambahayang kita</li>
@@ -351,7 +351,7 @@ addtositemap: true
    <li data-label="ariaBarLabel">placeholderCaseRate kaso sa bawat 100K tao. placeholderRateDiff30 pagbabago mula sa nakalipas na 30 araw</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> kaso sa bawat 100K tao. placeholderRateDiff30 pagbabago mula sa nakalipas na 30 araw</li>
    <li data-label="footerText">Na-update noong {PUBLISHED_DATE} na may datos mula sa {REPORT_DATE}. Ina-update ang data tuwing Biyernes.</li>
-  </ul></cagov-chart-d3-bar> <hr class="wp-block-separator mt-0" id="underlying"/>    <h3 class="has-text-align-center text-center">Mga dati nang kundisyon sa kalusugan</h3>
+  </ul></cagov-chart-d3-bar>    <hr class="wp-block-separator mt-0" id="underlying"/>    <h3 class="has-text-align-center text-center">Mga dati nang kundisyon sa kalusugan</h3>
 
 
 
@@ -503,11 +503,11 @@ addtositemap: true
     <div class="row pb-5">
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="/smarter">                     <div class="link-arrow-label">                         Planong SMARTER</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="/smarter">                     <div class="link-arrow-label">                         Planong SMARTER</div>                     <cagov-arrow></cagov-arrow> </a> </li>
        </ul></div>
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="/discrimination/">                     <div class="link-arrow-label">                         Labanan ang diskriminasyon at stigma</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="/discrimination/">                     <div class="link-arrow-label">                         Labanan ang diskriminasyon at stigma</div>                     <cagov-arrow></cagov-arrow> </a> </li>
         </ul>
       </div>
     </div>

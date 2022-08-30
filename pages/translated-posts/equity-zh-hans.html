@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "加州致力于健康公平"
 meta: "COVID-19凸显出了现有的健康不公平问题。加州正在确认最受影响的社区。"
 author: "State of California"
-publishdate: "2022-07-13T18:38:34Z"
+publishdate: "2022-07-25T22:40:36Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -51,7 +51,7 @@ addtositemap: true
 <!--END row-->
           <div class="row">
           <div class="col-lg-10 mx-auto">
-              <div class="container">                         <cagov-equity-highlight-stats>           <div class="row d-flex row-eq-height justify-content-md-center pb-4">
+              <div class="container">                         <cagov-equity-highlight-stats> <div class="row d-flex row-eq-height justify-content-md-center pb-4">
               <div class="col-md-3 bg-purple bd-20 py-3 text-center text-white d-flex flex-column">                 
 <!--{% set value = data.death_rate_vs_statewide_percent_latino %}-->
  
@@ -115,7 +115,7 @@ addtositemap: true
                   <p class="text-xs mb-0">                     <strong><span class="case_rate_per_100K_low_income">{{data.case_rate_per_100K_low_income|formatNumber(tags,0)}}</span></strong>收入<$40K <br> <strong><span class="cases_per_100K_statewide">{{data.cases_per_100K_statewide|formatNumber(tags,0)}}</span></strong> 所有收入等级                   </p>
                 </div>
               </div>
-            </div>         </cagov-equity-highlight-stats>                  </div>
+            </div>         </cagov-equity-highlight-stats> </div>
 <!--END cont-->
            </div>
 <!--END col-10-->
@@ -150,7 +150,7 @@ addtositemap: true
 
 <div class="container disparity-chart-container px-0">
   <div class="row">
-    <div class="col">       <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8">             <ul>
+    <div class="col">       <cagov-chart-disparity-multi-linechart class="chart" id="disparity-chart" data-chart-config-metric="cases" data-chart-config-timerange="weeks-8"> <ul>
               <li data-label="tooltip_date_label">周结束日期</li>
               <li data-label="chartTitle">按种族/族裔划分的COVID-19{METRIC}数据，{REGION}</li>
               <li data-label="y_axis_legend">每10万人的{METRIC}数据</li>
@@ -158,18 +158,18 @@ addtositemap: true
               <li data-label="timeTabLabel2">6个月</li>
               <li data-label="timeTabLabel3">1年</li>
               <li data-label="timeTabLabel4">2020至今</li>
-              <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
-            </ul>           </cagov-chart-disparity-multi-linechart>     </div>
+              <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
+            </ul>           </cagov-chart-disparity-multi-linechart> </div>
   </div>
 </div>
 
 
 
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">随时间源数据变化的全州COVID-19影响（按种族和族裔划分）</a></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">随时间源数据变化的全州COVID-19影响（按种族和族裔划分）</a></p>
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><div>                 <cagov-accordion class="accordion-chart-drawer">                   <details>                     <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                     <div class="accordion-body">
+<div class="wp-block-cgb-block-chart-drawer"><div>                 <cagov-accordion class="accordion-chart-drawer"> <details>                     <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                     <div class="accordion-body">
                       
 <ul class="small-text">
 <li>未根据年龄、疫苗接种状况和伴随疾病等因素调整比率。这些因素在种族及族裔群体之间可能有所不同，并且会影响比率。</li>
@@ -183,9 +183,9 @@ addtositemap: true
 
 
 
-<h3 class="text-center">过去30天的COVID-19影响（按种族和族裔划分）</h3>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons>    <p>拉丁裔、黑人及太平洋岛民社区受到了COVID-19的严重影响。虽然我们在解决这些社区内的差异方面小有成效，但必须做得更好。</p>    <cagov-chart-filter-buttons class="js-re-smalls">     <div class="d-flex justify-content-center">       <button class="small-tab active" data-key="cases">病例数</button> <button class="small-tab" data-key="deaths">死亡数</button> <button class="small-tab" data-key="tests">检测数</button>     </div>   </cagov-chart-filter-buttons>      <div class="container">
+<h3 class="text-center">过去30天的COVID-19影响（按种族和族裔划分）</h3>    <cagov-county-search></cagov-county-search> <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>拉丁裔、黑人及太平洋岛民社区受到了COVID-19的严重影响。虽然我们在解决这些社区内的差异方面小有成效，但必须做得更好。</p>    <cagov-chart-filter-buttons class="js-re-smalls"> <div class="d-flex justify-content-center">       <button class="small-tab active" data-key="cases">病例数</button> <button class="small-tab" data-key="deaths">死亡数</button> <button class="small-tab" data-key="tests">检测数</button>     </div>   </cagov-chart-filter-buttons> <div class="container">
   <div class="row">
-      <div class="col">        <cagov-chart-re-pop class="chart d-none">           <ul>
+      <div class="col">        <cagov-chart-re-pop class="chart d-none"> <ul>
             <li data-label="chartTitle--cases">病例数占placeholderForDynamicLocation人口的百分比</li>
             <li data-label="chartTitle--deaths">死亡数占placeholderForDynamicLocation人口的百分比</li>
             <li data-label="chartTitle--tests">检测数占placeholderForDynamicLocation人口的百分比</li>
@@ -216,9 +216,9 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">由于此群体的人数少于20,000，因此数据不显示。</li>
             <li data-label="data-missing-applied-suppression-population--cases">由于此群体的人数少于20,000，因此数据不显示。</li>
             <li data-label="data-missing-applied-suppression-population--deaths">由于此群体的人数少于20,000，因此数据不显示。</li>
-            <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
-        </ul>       </cagov-chart-re-pop>      </div>
-    <div class="col">        <cagov-chart-re-100k class="chart d-none">          <ul>
+            <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
+        </ul>       </cagov-chart-re-pop> </div>
+    <div class="col">        <cagov-chart-re-100k class="chart d-none"> <ul>
           <li data-label="chartTitle--cases">每100K人的患病率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
           <li data-label="chartTitle--deaths">每100K人的死亡率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
           <li data-label="chartTitle--tests">每100K人的检测率（按placeholderForDynamicLocation的种族和族裔群体划分）</li>
@@ -249,21 +249,21 @@ addtositemap: true
             <li data-label="data-missing-applied-suppression-population--tests">由于此群体的人数少于20,000，因此数据不显示。</li>
             <li data-label="data-missing-applied-suppression-population--cases">由于此群体的人数少于20,000，因此数据不显示。</li>
             <li data-label="data-missing-applied-suppression-population--deaths">由于此群体的人数少于20,000，因此数据不显示。</li>
-            <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
-        </ul>       </cagov-chart-re-100k>     </div>
+            <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
+        </ul>       </cagov-chart-re-100k> </div>
   </div>
 </div>
 
 
 
 <p></p><p class="top-charts-data-label small-text mt-2 mb-2"></p>
-<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按种族和族裔群体源数据分类的病例数、死亡数及检测数占人口百分比和每100K人的患病率、死亡率及检测率</a></p><p></p>
+<p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics"> 按种族和族裔群体源数据分类的病例数、死亡数及检测数占人口百分比和每100K人的患病率、死亡率及检测率</a></p><p></p>
 
 
 
-<div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+<div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer"> <details>                   <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
                     
-<ul class="small-text"><li>人口估算不包括”其他“或”未知“种族和族裔类别，因此其所占的州人口百分比无法获知。如需查看按年龄组划分的种族和族裔累积数据，请参阅加州公共卫生局发布的<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19种族和族裔数据<span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span></a>。</li><li>为保护患者隐私，在1和11之间的数量均显示为”<11“。</li><li>”其他“代表不属于列出的任何种族或族裔的人士。”未知“种族及族裔包括拒绝提供或缺失种族和族裔信息的人士。</li></ul>
+<ul class="small-text"><li>人口估算不包括”其他“或”未知“种族和族裔类别，因此其所占的州人口百分比无法获知。如需查看按年龄组划分的种族和族裔累积数据，请参阅加州公共卫生局发布的<a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19种族和族裔数据<span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span></a>。</li><li>为保护患者隐私，在1和11之间的数量均显示为”<11“。</li><li>”其他“代表不属于列出的任何种族或族裔的人士。“未知”种族及族裔包括拒绝提供或缺失种族和族裔信息的人士。</li></ul>
 
                   </div>
                 </details>               </cagov-accordion></div></div>
@@ -274,7 +274,7 @@ addtositemap: true
 
 
 
-<p>健康公平指标会衡量受影响最严重社区的检测呈阳性率。<a href="https://map.healthyplacesindex.org/">健康地方指数</a>（由南加州公共卫生联盟研发）将这些社区作为具有较不健康社区环境（例如收入中位数低、教育完整性低和医疗保健普及率低）的人口普查区。健康公平四分位数检测呈阳性率，是指健康地方指数人口普查区中最低25%的COVID-19检测呈阳性率。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons>  <div class="col-lg-10 mx-auto"> <cagov-chart-d3-lines class="chart d-none">     <div>
+<p>健康公平指标会衡量受影响最严重社区的检测呈阳性率。<a href="https://map.healthyplacesindex.org/">健康地方指数</a>（由南加州公共卫生联盟研发）将这些社区作为具有较不健康社区环境（例如收入中位数低、教育完整性低和医疗保健普及率低）的人口普查区。健康公平四分位数检测呈阳性率，是指健康地方指数人口普查区中最低25%的COVID-19检测呈阳性率。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="col-lg-10 mx-auto"> <cagov-chart-re-pop class="chart d-none"> <div>
       <ul class="small-text">
         <li data-label="y-axis-label">检测呈阳性率</li>
         <li data-label="data1-legend">全州检测呈阳性率</li>
@@ -282,7 +282,7 @@ addtositemap: true
         <li data-label="data2-legend">健康公平四分位检测呈阳性率</li>
         <li data-label="missing-data-caption">健康公平指标不适用于人口少于106,000的县。</li>
         <li data-label="data-anomalies-caption">由于报告异常，我们无法准确显示此数据。</li>
-        <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
+        <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
       </ul>
     </div> </cagov-chart-d3-lines> </div>
 
@@ -292,7 +292,7 @@ addtositemap: true
 
 
 
-<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer">                 <details>                   <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
+<div class="col-lg-10 mx-auto"><div class="wp-block-cgb-block-chart-drawer"><div>               <cagov-accordion class="accordion-chart-drawer"> <details>                   <summary><h2>图表信息</h2><div class="cagov-open-indicator" aria-hidden="true"></div></summary>                   <div class="accordion-body">
                     <ul class="small-text"><li>所示数据为7日平均检测呈阳性率，有7天的滞后期。</li><li>所示数据为截至<span data-replacement="d3-lines-report-date">2022年2月26日</span>的7日周期数据。</li><li>健康公平指标不适用于人口少于106,000的县。</li></ul>
                   </div>
                 </details>               </cagov-accordion></div></div></div>
@@ -303,12 +303,12 @@ addtositemap: true
 
 
 
-<p>我们对于部分社区受到的COVID-19影响了解甚多，但我们可以通过收集更多的种族、族裔、性取向及性别认同数据，来更好地投入资源。我们可以通过更完整的数据来更好的应对健康差异。进行此数据收集工作，需要与私营行业合作伙伴、实验室及州府和县府官员密切合作。查看关于如何改进<a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">种族和族裔</a>、<a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">性取向及性别认同</a>报告的资源。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls">   <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">种族和族裔</button> <button class="small-tab" data-key="sexual_orientation">性取向</button> <button class="small-tab" data-key="gender_identity">性别认同</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none">   <ul>
+<p>我们对于部分社区受到的COVID-19影响了解甚多，但我们可以通过收集更多的种族、族裔、性取向及性别认同数据，来更好地投入资源。我们可以通过更完整的数据来更好的应对健康差异。进行此数据收集工作，需要与私营行业合作伙伴、实验室及州府和县府官员密切合作。查看关于如何改进<a href="https://www.ahrq.gov/evidencenow/tools/reduce-disparities.html">种族和族裔</a>、<a href="https://www.lgbtqiahealtheducation.org/resources/in/collecting-sexual-orientation-and-gender-identity-data/">性取向及性别认同</a>报告的资源。</p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <cagov-chart-filter-buttons class="js-missingness-smalls"> <div class="d-flex justify-content-center">     <button class="small-tab active" data-key="race_ethnicity">种族和族裔</button> <button class="small-tab" data-key="sexual_orientation">性取向</button> <button class="small-tab" data-key="gender_identity">性别认同</button>   </div> </cagov-chart-filter-buttons> <cagov-chart-equity-data-completeness class="chart d-none"> <ul>
     <div>
       <ul class="small-text">
         <li data-label="title">加州按种族和族裔分类的报告</li>
         <li data-label="footnote"><ul class="small-text"><li>所示数据为总共30天的累计数据。</li><li>不会在检测中收集性取向和性别认同信息。</li><li>为保护患者隐私，在1和10之间的数量不会显示。</li></ul></li>
-        <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
+        <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
         <li data-label="data-source"><p class="small-text"><a href="https://data.chhs.ca.gov/dataset/covid-19-equity-metrics">按种族及族裔、性取向以及性别认同源数据报告</a></p></li>
 
         <li data-label="tab-label">由<span data-replace="metric-filter"></span>在<span data-replace="location"></span>报告</li>
@@ -332,7 +332,7 @@ addtositemap: true
         <li data-item="deaths">死亡数</li>
       </ul>
     </div>
-  </ul> </cagov-chart-equity-data-completeness>    <div class="mb-2 mt-2"></div>    <hr class="wp-block-separator mb-0" id="factors"/> <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
+  </ul> </cagov-chart-equity-data-completeness> <div class="mb-2 mt-2"></div>    <hr class="wp-block-separator mb-0" id="factors"/> <cagov-chart-d3-bar class="chart d-none"><ul class="small-text">
     <li data-label="sectionTitle">增加感染及重症风险的因素</li>
     <li data-label="sectionDescription">住在拥挤的住房或乘坐公共交通工具的加州民众，以及不太容易获得带薪休假和其他员工保护措施的民众有较高的COVID-19感染风险。健康问题社会决定因素，例如食物无保障、没有医疗保险以及住房不稳定等，会增加预后不良的风险。这些有关健康的社会决定因素通常是由种族主义等结构性不平等导致的。</li>
     <li data-label="chartTitleIncome">按年度家庭收入中位数范围划分的社区患病率</li>
@@ -350,8 +350,8 @@ addtositemap: true
    <li data-label="statewideCaseRate">全州患病率：</li>
    <li data-label="ariaBarLabel">placeholderCaseRate 每100K人中的病例数。placeholderRateDiff30 自30天前以来的变化</li>
    <li data-label="tooltipCaption"><span class="highlight-data">placeholderCaseRate</span> 每100K人中的病例数。placeholderRateDiff30 自30天前以来的变化</li>
-   <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。在周五更新数据。</li>
-  </ul></cagov-chart-d3-bar> <hr class="wp-block-separator mt-0" id="underlying"/>    <h3 class="has-text-align-center text-center">潜在的健康状况</h3>
+   <li data-label="footerText">使用来自{REPORT_DATE}的数据更新{PUBLISHED_DATE}。每周五更新数据。</li>
+  </ul></cagov-chart-d3-bar>    <hr class="wp-block-separator mt-0" id="underlying"/>    <h3 class="has-text-align-center text-center">潜在的健康状况</h3>
 
 
 
@@ -503,11 +503,11 @@ addtositemap: true
     <div class="row pb-5">
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="/smarter">                     <div class="link-arrow-label">                         SMARTER计划</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="pdf" href="/smarter">                     <div class="link-arrow-label">                         SMARTER计划</div>                     <cagov-arrow></cagov-arrow> </a> </li>
        </ul></div>
       <div class="col-lg-6">
         <ul class="arrow-links">
-            <li>                 <a class="link-arrow-blue" data-kind="internal" href="/discrimination/">                     <div class="link-arrow-label">                         对抗歧视与污名化</div>                     <cagov-arrow></cagov-arrow> </a>             </li>
+            <li>                 <a class="link-arrow-blue" data-kind="internal" href="/discrimination/">                     <div class="link-arrow-label">                         对抗歧视与污名化</div>                     <cagov-arrow></cagov-arrow> </a> </li>
         </ul>
       </div>
     </div>
