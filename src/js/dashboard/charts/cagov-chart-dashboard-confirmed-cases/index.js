@@ -8,13 +8,28 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
   getTooltipContent(di) {
     const barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
     const lineSeries = this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    let caption = undefined;
     // console.log("getTooltipContent",di,lineSeries);
-    const repDict = {
-      DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
-      CASES:formatValue(barSeries[di].VALUE,{format:'integer'}),
-    };
-    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    if ('seriesSubFields' in this.chartOptions) {
+        const barSeries_prob = this.chartData.time_series[this.chartOptions.seriesSubFields[0]].VALUES;
+        const barSeries_conf = this.chartData.time_series[this.chartOptions.seriesSubFields[1]].VALUES;
+
+        const repDict = {
+          DATE:   reformatReadableDate(lineSeries[di].DATE),
+          '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+          CONFIRMED_CASES:formatValue(barSeries_conf[di].VALUE,{format:'integer'}),
+          PROBABLE_CASES:formatValue(barSeries_prob[di].VALUE,{format:'integer'}),
+          COMBINED_CASES:formatValue(barSeries[di].VALUE,{format:'integer'}),
+        };
+        caption = applySubstitutions(this.translationsObj.tooltipCombinedContent, repDict);
+    } else {
+        const repDict = {
+          DATE:   reformatReadableDate(lineSeries[di].DATE),
+          '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+          CASES:formatValue(barSeries[di].VALUE,{format:'integer'}),
+        };
+        caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    }
     let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
     let pendingDate = parseSnowflakeDate(this.chartData.latest[this.chartOptions.latestField].EPISODE_UNCERTAINTY_PERIOD);
     if (+datumDate >= +pendingDate) {
@@ -25,13 +40,23 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let totalKey = 'total_' + this.chartConfigFilter + '_cases';
+    let avgKey = this.chartConfigFilter.toUpperCase() + '_CASES_DAILY_AVERAGE';
+    let capitaKey = this.chartConfigFilter + '_cases_per_100k_7_days';
+    let total_cases_type = 'total ' + this.chartConfigFilter;
+
+    /* NOTE: the chart displays "total" cases but we use "combined" internally */
+    if (this.chartConfigFilter === 'combined') {
+        total_cases_type = 'total';
+    }
 
     const repDict = {
-      total_confirmed_cases:formatValue(latestRec.total_confirmed_cases,{format:'integer'}),
-      new_cases:formatValue(latestRec.new_cases,{format:'integer'}),
-      new_cases_delta_1_day:formatValue(Math.abs(latestRec.new_cases_delta_1_day),{format:'percent'}),
-      cases_per_100k_7_days:formatValue(latestRec.cases_per_100k_7_days,{format:'number',min_decimals:1}),
-      REGION:regionName,
+      total_cases:           formatValue(latestRec[totalKey],{format:'integer'}),
+      avg_cases:             formatValue(latestRec[avgKey],{format:'integer'}),
+      total_cases_type:      total_cases_type,
+      new_cases:             formatValue(latestRec.new_cases,{format:'integer'}),
+      cases_per_100k_7_days: formatValue(latestRec[capitaKey],{format:'number',min_decimals:1}),
+      REGION:                regionName,
     };
 
     if (!('chartTitleState' in this.translationsObj)) {
@@ -60,7 +85,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                         'right_y_fmt':'integer',
-                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_xAxisLegend'],
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                         };
       if (this.chartConfigFilter != 'reported') {
@@ -69,6 +94,12 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
       }
       if (this.addStateLine) {
         renderOptions.time_series_state_line = this.stateData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+      }
+      if ('seriesSubFields' in this.chartOptions) {
+        renderOptions.time_series_stacked_bars = [];
+        this.chartOptions.seriesSubFields.forEach(field => {
+            renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
+        });
       }
     return renderOptions;
   }
