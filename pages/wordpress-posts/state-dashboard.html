@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-08-19T16:29:50Z"
+publishdate: "2022-08-31T00:17:17Z"
 addtositemap: true
 ---
 
@@ -42,7 +42,7 @@ addtositemap: true
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
-{%-set _varCasesDailyAverage_ = datacases.latest.CONFIRMED_CASES.CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varCasesDailyAverage_ = datacases.latest.CASES.CONFIRMED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
@@ -247,7 +247,9 @@ formatNumberFixed(tags,1)-%}
                 <ul class="small-text"><li>The percentage of population vaccinated includes people with one or two vaccine doses and people who are vaccinated and boosted divided by the population eligible for vaccination.
 </li>
 
-<li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li><li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+<li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li>
+
+<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
               </div>
             </div>
           </div>
@@ -270,86 +272,89 @@ formatNumberFixed(tags,1)-%}
 <h2 class="text-center color-purple">Unvaccinated and vaccinated data</h2>
 
 
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">New change to how COVID-19 data by vaccination status is updated<br>
+</h2>
+<p>We are in the process of updating how we present this data by vaccination status. It will next be updated at the end of August. We will then shift to monthly updates.</p>
+</div>
 
-<div class="mb-4" id="postvax-chart-intro">COVID-19 vaccines save lives. Vaccines are safe and effective for everyone aged 6 months and older. Getting vaccinated is the most powerful tool against hospitalization, serious illness, and death.
+
+<div id="postvax-chart-intro">Vaccines prevent serious illness, save lives, and reduce further spread of COVID-19. As more people are vaccinated, the virus is less likely to spread, mutate, and potentially become even more dangerous. Vaccines will help put an end to the pandemic.
+<!--  From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
 </div>
 
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
     <div class="large-tabs">
-      <button class="large-tab toggle-active js-toggle-group-postvax deaths">Deaths</button>
+      <button class="large-tab toggle-active js-toggle-group-postvax cases">Cases</button>
       <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
-      <button class="large-tab js-toggle-group-postvax cases">Cases</button>
+      <button class="large-tab js-toggle-group-postvax deaths">Deaths</button>
     </div>
   </div>
 
 
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases" data-chart-config-timerange="months-3" style="display:none;">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly cases per 100K</li>
     <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
       Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
+      Boosted cases per 100K: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
 
 
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" data-chart-config-timerange="months-3" style="display:none;">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
     <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
       Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
+      Boosted hospitalizations per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
 
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" data-chart-config-timerange="months-3">
+
+
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">
   <ul class="d-none">
     <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="chartImpactStatement">From {BEGIN_IMPACT_DATE} to {END_IMPACT_DATE}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who received their booster dose.</li>
     <li data-label="yaxis_legend">Weekly deaths per million</li>
     <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
     <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="series1_legend">Vaccinated and boosted</li>
+    <li data-label="series2_legend">Vaccinated but not boosted</li>
+    <li data-label="series3_legend">Unvaccinated</li>
     <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
     <li data-label="tooltipContent">
       Week ending: <b>{WEEKDATE}</b><br>
       Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
       Vaccinated deaths per million: <b>{VCOUNT}</b><br>
+      Boosted deaths per million: <b>{BCOUNT}</b><br>
     </li>  
   </ul>
 </cagov-chart-dashboard-postvax-chart>
@@ -369,7 +374,7 @@ formatNumberFixed(tags,1)-%}
       </button>
       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received at least two doses of the Pfizer or Moderna vaccines or one dose of the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 5 and older.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on the first Friday of each month. When we publish these charts, there will be a one month lag.</li><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li><li>Calculating rates by vaccination and booster status is affected by several factors that make interpretation of recent trends especially difficult. Factors including immunity from prior infection, waning protection related to the amount of time since vaccination, and differences in prevention and testing behaviors by age and vaccination status, have a growing impact on data over time. Despite these limitations, data continue to show that COVID-19 vaccination significantly reduces risk of infection and severe disease. CDPH continues to evaluate ways to present this information in a way that better accounts for these limitations.</li></ul>
+<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received two doses of the Pfizer or Moderna vaccines or the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>A boosted case, hospitalization, or death is one that occurs in a person who received an additional or booster dose on or after August 13, 2021, at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 12 and older collected over the last 120 days.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on Wednesdays. When we publish these charts:</li><ul class="mb-0"><li>The cases and hospitalizations charts have a 17-day lag.</li><li>The deaths chart has a 24-day lag.</li></ul><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li><li>Calculating rates by vaccination and booster status is affected by several factors that make interpretation of recent trends especially difficult. Factors including immunity from prior infection, waning protection related to the amount of time since vaccination, and differences in prevention and testing behaviors by age and vaccination status, have a growing impact on data over time. Despite these limitations, data continue to show that COVID-19 vaccination significantly reduces risk of infection and severe disease. CDPH continues to evaluate ways to present this information in a way that better accounts for these limitations.</li></ul>
         </div>
       </div>
     </div>
@@ -418,23 +423,24 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} deaths.</p>
+<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <!-- 1 Cases and Deaths - Confirmed Cases -->
-      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="episode" data-chart-config-key="cases" data-chart-config-timerange="all-time">
+      <!-- 1 Cases and Deaths - Cases -->
+      <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
-          <li data-label="chartTitleState">Confirmed cases in California</li>
-          <li data-label="chartTitleCounty">Confirmed cases in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_cases}</span> total confirmed cases</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li>
+          <li data-label="chartTitleState">Cases in California</li>
+          <li data-label="chartTitleCounty">Cases in {REGION} County</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} cases</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> average cases per day</li>
+          <!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
-          <li data-label="filterTabLabel1">Episode date</li>
-          <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="filterTabLabel1">Confirmed</li>
+          <li data-label="filterTabLabel2">Probable</li>
+          <li data-label="filterTabLabel3">Total</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -443,11 +449,17 @@ formatNumberFixed(tags,1)-%}
                   7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
                   Cases: <b>{CASES}</b>
           </li>
+          <li data-label="tooltipCombinedContent">
+                  Date: <b>{DATE}</b><br>
+                  7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+                  Confirmed Cases: <b>{CONFIRMED_CASES}</b><br>
+                  Probable Cases: <b>{PROBABLE_CASES}</b><br>
+                  Total: <b>{COMBINED_CASES}</b>
+          </li>
           <li data-label="dayAverage">7-day average</li>
           <li data-label="cases_leftYAxisLegend">Cases per 100K</li>
           <li data-label="cases_rightYAxisLegend">Cases</li>
-          <li data-label="cases_episode_xAxisLegend">Episode date</li>
-          <li data-label="cases_reported_xAxisLegend">Reported date</li>
+          <li data-label="cases_xAxisLegend">Episode date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -457,14 +469,14 @@ formatNumberFixed(tags,1)-%}
       <!-- 2 Cases and Deaths - Confirmed Deaths -->
       <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
-          <li data-label="chartTitleState">Confirmed deaths in California</li>
-          <li data-label="chartTitleCounty">Confirmed deaths in {REGION} County</li>
+          <li data-label="chartTitleState">Deaths in California</li>
+          <li data-label="chartTitleCounty">Deaths in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> average deaths per day</li>
+          <!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
-          <li data-label="filterTabLabel1">Death date</li>
-          <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="filterTabLabel1">Confirmed</li>
+          <!-- <li data-label="filterTabLabel2">Reported date</li> -->
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -477,7 +489,6 @@ formatNumberFixed(tags,1)-%}
           <li data-label="deaths_leftYAxisLegend">Deaths per 100K</li>
           <li data-label="deaths_rightYAxisLegend">Deaths</li>
           <li data-label="deaths_death_xAxisLegend">Death date</li>
-          <li data-label="deaths_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -487,12 +498,16 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths source data</a>. Data is updated on Tuesdays and Fridays.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated on Tuesdays and Fridays.</p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Numbers do not represent true day-over-day changes as these results include cases from prior to yesterday.</li><li>Episode date is the date the event is estimated to have taken place. It is the most accurate source of data over time.</li><li>Reported date is the date the event was reported to the California Department of Public Health.</li><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Data from Los Angeles and San Diego counties have a 1-day lag.</li><li>A negative number of cases is a result of data quality work, including removing duplicate cases.</li><li>A negative number of reported deaths means that deaths previously attributed to COVID-19 were determined to not be associated with COVID-19.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text"><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li>
+
+<li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
+
+<li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -517,10 +532,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Total tests in California</li>
           <li data-label="chartTitleCounty">Total tests in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total tests performed</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{new_tests_reported}</span> new tests reported (<span class="med-num">{new_tests_reported_delta_1_day}</span> decrease)</li>
-          <li data-label="filterTabLabel1">Testing date</li>
-          <li data-label="filterTabLabel2">Reported date</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_total_tests_7_days}</span> average tests per day</li>
+          <li data-label="chartLegend3"><span class="med-num">{avg_tests_per_100k_7_days}</span> tests per 100k (7-day average)</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -533,7 +546,6 @@ formatNumberFixed(tags,1)-%}
           <li data-label="tests_leftYAxisLegend">Tests per 100K</li>
           <li data-label="tests_rightYAxisLegend">Tests</li>
           <li data-label="tests_testing_xAxisLegend">Testing date</li>
-          <li data-label="tests_reported_xAxisLegend">Reported date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
@@ -574,7 +586,8 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Testing date is the date the test was administered.</li><li>Reported date is the date the event was reported to the California Department of Public Health. Reported date data is not available for tests before May 5, 2020.</li><li>Testing date total numbers may not match reporting date total numbers.</li><li>Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Testing data from Los Angeles county has a 1-day lag.</li><li>Positivity rate was previously reported as a 14-day average.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text"><li>Testing date is the date the test was administered.</li>
+<li>Positivity rate is calculated as the number of positive molecular tests divided by the total molecular tests performed. Positivity rate includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li><li>Testing data from Los Angeles county has a 1-day lag.</li><li>Positivity rate was previously reported as a 14-day average.</li><li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
