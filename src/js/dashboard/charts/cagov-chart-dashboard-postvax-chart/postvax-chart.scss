@@ -11,7 +11,7 @@ cagov-chart-dashboard-postvax-chart {
 }
 
 .postvax-chart {
-  max-width: 615px;
+  max-width: 720px;
   .svg-holder {
     g.fg-line path {
       fill: none;
@@ -22,9 +22,6 @@ cagov-chart-dashboard-postvax-chart {
       stroke: #21741f;
     }
     g.fg-line.line_s2 path {
-       stroke: #1f2574;
-    }
-    g.fg-line.line_s3 path {
        stroke: #dc4567;
     }
     // g.fg-line.line_s3 path {
@@ -111,9 +108,6 @@ cagov-chart-dashboard-postvax-chart {
     stroke: #21741f;
   }
   svg.series2-legend-line path {
-    stroke: #1f2574;
-  }
-  svg.series3-legend-line path {
     stroke: #dc4567;
   }
   div.tooltip-container {

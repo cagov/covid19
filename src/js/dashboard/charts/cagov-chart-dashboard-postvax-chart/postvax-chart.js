@@ -39,6 +39,8 @@ function writeXAxis(svg, data, date_fld, x, y,
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
   const axisY = this.dimensions.height - this.dimensions.margin.bottom;
+  let year_data = {};
+  const year_row_gap = 15 + tick_height + tick_upper_gap + tick_lower_gap;
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
@@ -46,7 +48,7 @@ function writeXAxis(svg, data, date_fld, x, y,
 
   let last_mon_idx = 0;
   let last_year_idx = 0;
-  let month_modulo = data.length > 366? 3 : 1;
+  let month_modulo = data.length > 372? 3 : 1;
 
   data.forEach((d,i) => {
     const ymd = d[date_fld].split('-');
@@ -69,11 +71,25 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('y1', axisY+tick_upper_gap)
         .attr('x2', x(i))
         .attr('y2',axisY+tick_upper_gap+tick_height);
-        subg.append('text')
-         .text(monthStr)
-         // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
-         .attr("x", x(i))
-         .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
+
+        if (year_data[year_idx] === undefined) {
+          year_data[year_idx] = {
+            min_month: mon_idx,
+            x_loc: i
+          };
+        } else if (year_data[year_idx].min_month > mon_idx) {
+          year_data[year].min_month = mon_idx;
+          year_data[year].x_loc = i;
+        }
+    
+        // inhibit month name if too far right...
+        if ((mon_idx-1) % month_modulo == 0) {
+          subg.append('text')
+          .text(monthStr)
+          // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
+          .attr("x", x(i))
+          .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+        }
       }
 
       // let subg = xgroup.append("g")
@@ -100,6 +116,18 @@ function writeXAxis(svg, data, date_fld, x, y,
   //   .attr("x", this.dimensions.width - this.dimensions.margin.right)
   //   .attr("y", this.dimensions.height-6) // +this.getYOffset(i)
   // }
+  let year_row = svg.append("g")
+      .attr("class",'date-axis')
+      .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  // Add years to x axis
+  for (let year in year_data) {
+    year_row.append('text')
+      .text(year)
+      .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+      .attr("x", x(year_data[year].x_loc))
+      .attr("y", axisY+year_row_gap);
+  }
 }
 
 function writePendingArea(svg, x, y, 
@@ -294,6 +322,7 @@ function getAxisDiv(ascale,{hint='num'}) {
     // chart_mode = 'weekly',
     root_id = "postvaxid" } )  {
 
+    console.log("PV render A");
     console.log("renderChart",root_id);
     // d3.select(this.querySelector("svg g"))
     //   .attr('style','font-family:sans-serif;font-size:16px;');
@@ -335,8 +364,7 @@ function getAxisDiv(ascale,{hint='num'}) {
 
     // Prepare and draw the two lines here... using chartdata, seriesN_field and weeks_to_show
     // console.log("Chart data",chartdata);
-    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[1]]), d3.max(chartdata, r => r[series_fields[2]]));
-    max_y_domain = Math.max(max_y_domain, d3.max(chartdata, r => r[series_fields[0]]));
+    let max_y_domain = Math.max(d3.max(chartdata, r => r[series_fields[1]]), d3.max(chartdata, r => r[series_fields[0]]));
     let min_y_domain = 0;
     this.yline = d3
     .scaleLinear()
