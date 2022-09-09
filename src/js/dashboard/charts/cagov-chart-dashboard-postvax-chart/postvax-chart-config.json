@@ -2,45 +2,51 @@
   "cases": {
     "weeks": {
       "chartName": "#postvax-cases-chart",
-      "series_fields": ["BOOST_CASE_RATE","VAX_CASE_RATE","UNVAX_CASE_RATE"],
-      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
+      "series_fields": ["VAX_CASE_RATE","UNVAX_CASE_RATE"],
+      "series_colors": ["#21741f", "#dc4567"],
+      "rate_field": "RR_CASE",
       "x_axis_field":"DATE",
-      "dataUrl": "postvax/california.json",
-      "days_to_show": 120,
+      "timeKeys": ["all-time","months-12","months-6","months-3"],
+      "dataUrl": "postvax-v2/california.json",
+      "days_to_show": 274,
       "root_id": "postvax-cases",
-      "pending_days":14,
+      "pending_days":0,
       "pre_mult":1
     }
   },
   "hospitalizations": {
     "weeks": {
       "chartName": "#postvax-hospitalizations-chart",
-      "series_fields": ["BOOST_HOSP_RATE", "VAX_HOSP_RATE","UNVAX_HOSP_RATE"],
-      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
+      "series_fields": ["VAX_HOSP_RATE","UNVAX_HOSP_RATE"],
+      "series_colors": ["#21741f", "#dc4567"],
+      "rate_field": "RR_HOSP",
       "x_axis_field":"DATE",
-      "dataUrl": "postvax/california.json",
-      "days_to_show": 120,
+      "timeKeys": ["all-time","months-12","months-6","months-3"],
+      "dataUrl": "postvax-v2/california.json",
+      "days_to_show": 274,
       "root_id": "postvax-hospitalizations",
-      "pending_days":14,
+      "pending_days":0,
       "pre_mult":10
     }
   },
   "deaths": {
     "weeks": {
       "chartName": "#postvax-deaths-chart",
-      "series_fields": ["BOOST_DEATH_DOD_RATE", "VAX_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
-      "series_colors": ["#21741f", "#1f2574", "#dc4567"],
+      "series_fields": ["VAX_DEATH_DOD_RATE","UNVAX_DEATH_DOD_RATE"],
+      "series_colors": ["#21741f", "#dc4567"],
+      "rate_field": "RR_DEATH",
       "x_axis_field":"DATE",
-      "dataUrl": "postvax/california.json",
-      "days_to_show": 120,
+      "timeKeys": ["all-time","months-12","months-6","months-3"],
+      "dataUrl": "postvax-v2/california.json",
+      "days_to_show": 274,
       "root_id": "postvax-deaths",
-      "pending_days":21,
+      "pending_days":0,
       "pre_mult":10
     }
   },
   "desktop": {
     "fontSize": 14,
-    "width": 615,    
+    "width": 720,    
     "height": 400,
     "margin": {   
       "left": 50,   
@@ -51,7 +57,7 @@
   },
   "tablet": {
     "fontSize": 14,
-    "width": 400,     
+    "width": 500,     
     "height": 300,
     "margin": {   
       "left": 50,   
