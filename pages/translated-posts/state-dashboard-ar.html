@@ -208,62 +208,123 @@ formatNumberFixed(tags,1)-%}
 
   </div>   
 <!--END container-->
- </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">بيانات الحالات المُطعمة وغير المطعمة</h2>
+ </div>    
+ <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>
 
 
 
-<div id="postvax-chart-intro">فاللقاحات تمنع الأمراض الخطيرة وتنقذ الأرواح وتحد أيضًا من انتشار كوفيد-19. ومع تطعيم المزيد من الناس، تقل احتمالية انتشار الفيروس وتحوره حتى أنه ربما يصبح أقل خطورة. وستساعد اللقاحات على وضع حد لهذا الوباء. 
-<!-- From {POSTVAX_START_DATE} to {POSTVAX_END_DATE} there were {POSTVAX_UNVAX_RATIO} cases among unvaccinated people for every 1 case among vaccinated people. This shows that vaccination is the best way to protect yourself and your loved ones. The more fully vaccinated Californians there are, the less COVID-19 can spread in our communities. -->
- </div>
+<h2 class="text-center color-purple">Unvaccinated and vaccinated data</h2>
+
+
+
+<div class="mb-4" id="postvax-chart-intro">COVID-19 vaccines save lives. Vaccines are safe and effective for everyone aged 6 months and older. Getting vaccinated is the most powerful tool against hospitalization, serious illness, and death.
+</div>
 
 
 
 <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax cases">حالات الإصابة</button> <button class="large-tab js-toggle-group-postvax hospitalizations">حالات دخول المستشفى</button> <button class="large-tab js-toggle-group-postvax deaths">حالات الوفاة</button>     </div>
-  </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases">   <ul class="d-none">
-    <li data-label="chartTitleState">حالات الإصابات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">من {BEGIN_IMPACT_DATE} إلى {END_IMPACT_DATE}، كان الأشخاص غير المطعمين <strong>أكثر عرضة بنسبة {RATE_RATIO}</strong> للإصابة بكوفيد-19 من الأشخاص الذين تلقوا جرعتهم المعززة.</li>
-    <li data-label="yaxis_legend">الحالات الإصابة الأسبوعية لكل 100 ألف</li>
-    <li data-label="yaxis_legend_daily">حالات الإصابة لكل 100 ألف (متوسط تشغيل 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">الحاصلون على اللقاح والجرعة المعززة</li>
-    <li data-label="series2_legend">الحاصلون على اللقاح وغير الحاصلين على الجرعة المعززة</li>
-    <li data-label="series3_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> الحالات غير المطعمة لكل 100 ألف: <b>{UCOUNT}</b><br> الحالات المطعمة لكل 100 ألف: <b>{VCOUNT}</b><br> حالات الحاصلين على الجرعة المعززة لكل 100 ألف: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" style="display:none;">   <ul class="d-none">
-    <li data-label="chartTitleState">حالات دخول المستشفيات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">من {BEGIN_IMPACT_DATE} إلى {END_IMPACT_DATE}، كان الأشخاص غير المطعمين <strong>أكثر عرضة بنسبة {RATE_RATIO}</strong> لدخول المستشفيات بسبب إصابتهم بكوفيد-19 من الأشخاص الذين تلقوا جرعتهم المعززة.</li>
-    <li data-label="yaxis_legend">نسبة الدخول أسبوعيًا لكل مليون</li>
-    <li data-label="yaxis_legend_daily">نسبة دخول المستشفيات لكل مليون (في المتوسط على مدار 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">الحاصلون على اللقاح والجرعة المعززة</li>
-    <li data-label="series2_legend">الحاصلون على اللقاح وغير الحاصلين على الجرعة المعززة</li>
-    <li data-label="series3_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> دخول المستشفيات لغير المطعمين لكل مليون: <b>{UCOUNT}</b><br> دخول المستشفيات لغير المطعمين لكل مليون: <b>{VCOUNT}</b><br> دخول المستشفيات للحاصلين على الجرعة المعززة لكل مليون: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" style="display:none;">   <ul class="d-none">
-    <li data-label="chartTitleState">حالات الوفيات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">من {BEGIN_IMPACT_DATE} إلى {END_IMPACT_DATE}، كان الأشخاص غير المطعمين <strong>أكثر عرضة بنسبة {RATE_RATIO}</strong> للموت بكوفيد-19 من الأشخاص الذين تلقوا جرعتهم المعززة.</li>
-    <li data-label="yaxis_legend">حالات الوفيات أسبوعيًا لكل مليون</li>
-    <li data-label="yaxis_legend_daily">نسبة الوفيات لكل مليون (في المتوسط على مدار 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">الحاصلون على اللقاح والجرعة المعززة</li>
-    <li data-label="series2_legend">الحاصلون على اللقاح وغير الحاصلين على الجرعة المعززة</li>
-    <li data-label="series3_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> نسبة الوفيات لغير المطعمين لكل مليون: <b>{UCOUNT}</b><br> الوفيات للمطعمين لكل مليون: <b>{VCOUNT}</b><br> الوفيات للحاصلين على الجرعة المعززة لكل مليون: <b>{BCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart>    <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">البيانات المصدرية للحالات المطعمة وغير المطعمة وحالات دخول المستشفى وحالات الوفاة</a>. يتم تحديث البيانات أيام الجمعة.</p>
+    <div class="large-tabs">
+      <button class="large-tab toggle-active js-toggle-group-postvax deaths">Deaths</button>
+      <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
+      <button class="large-tab js-toggle-group-postvax cases">Cases</button>
+    </div>
+</div>
 
 
 
-<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer">     <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-        <div class="accordion-title">معلومات الرسم البياني</div>       </button>       <div class="card-container" aria-hidden="true">
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases" data-chart-config-timerange="months-3" style="display:none;">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
+    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="yaxis_legend">Weekly cases per 100K</li>
+    <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">1 year</li>
+    <li data-label="timeTabLabel3">6 months</li>
+    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
+      Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
+
+
+
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" data-chart-config-timerange="months-3" style="display:none;">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
+    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
+    <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">1 year</li>
+    <li data-label="timeTabLabel3">6 months</li>
+    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
+      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
+
+<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" data-chart-config-timerange="months-3">
+  <ul class="d-none">
+    <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
+    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who were vaccinated with at least a primary series.</li>
+    <li data-label="yaxis_legend">Weekly deaths per million</li>
+    <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
+    <li data-label="xaxis_legend"></li>
+    <li data-label="series1_legend">Vaccinated</li>
+    <li data-label="series2_legend">Unvaccinated</li>
+    <li data-label="pending_legend">Data pending</li>
+    <li data-label="timeTabLabel1">All time</li>
+    <li data-label="timeTabLabel2">1 year</li>
+    <li data-label="timeTabLabel3">6 months</li>
+    <li data-label="timeTabLabel4">90 days</li>
+    <li data-label="tooltipContent">
+      Week ending: <b>{WEEKDATE}</b><br>
+      Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
+      Vaccinated deaths per million: <b>{VCOUNT}</b><br>
+    </li>  
+  </ul>
+</cagov-chart-dashboard-postvax-chart>
+
+
+
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a>. Data is updated on the first Friday of the month.</p>
+
+
+
+<div class="wp-block-cgb-block-chart-drawer">
+  <cagov-accordion class="chart-drawer">
+    <div class="card">
+      <button class="card-header accordion-alpha" type="button" aria-expanded="false">
+        <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
+        <div class="accordion-title">Chart information</div>
+      </button>
+      <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>الحالة التي تم تطعيمها أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص تلقى جرعتين من لقاح Pfizer أو Moderna أو لقاح Johnson & Johnson قبل أسبوعين على الأقل من إيجابية اختبار كوفيد-19.</li><li>الحالة الحاصلة على الجرعة المعززة أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص تلقى جرعة إضافية أو معززة في 13 أغسطس 2021 أو بعده، قبل أسبوعين على الأقل من إيجابية نتيجة اختبار كوفيد-19.</li><li>الحالة غير المطعمة أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص لم يتلق لقاح كوفيد-19.</li><li>ويستخدم هذا الجدول البيانات المستقاة من الأشخاص البالغة أعمارهم 12 عامًا فأكبر التي تم جمعها خلال آخر 120 يومًا.</li><li>هناك تأخر في البيانات لهذه الجداول البيانية. إن مطابقة حالات كوفيد-19 (بما في ذلك حالات دخول المستشفيات والوفيات) وحالة التطعيم تحدث أسبوعياً، الأمر الذي يساهم في حدوث بعض التأخر. ويزيد هذا الأمر من التأخر في الإبلاغ الطبيعي عن حالات الإصابة وحالات دخول المستشفيات، وهو أكبر بالنسبة للوفيات.</li><li>نقوم بتحديث هذه الجداول البيانية كل أربعاء. عندما ننشر هذه الجداول البيانية:</li><ul class="mb-0"><li>فلدى الجداول البيانية لحالات الإصابة والدخول إلى المستشفيات تأخير مدته 17 يومًا.</li><li>جدول بيانات الوفيات لديه تأخر 24 يومًا.</li></ul><li>نستبعد بعض البيانات الحديثة غير المكتملة لتنعكس لنا بدقة الاتجاهات في البيانات.</li><li>لدى وزارة الصحة العامة بكاليفورنيا معلومات أكثر عن <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">الحالات المطعمة باللقاح والحالات المحتجزة بالمستشفيات وحالات الوفيات</a>.</li><li>يتأثر حساب معدلات التطعيم ووضع التطعيم بالجرعات المعززة بعدة عوامل تجعل تفسير الاتجاهات الحديثة أمرًا صعبًا بصورة استثنائية ملحوظة. إن العوامل بما فيها المناعة من العدوى السابقة وتضاؤل الحماية المتعلقة بمقدار الوقت منذ التطعيم والاختلافات في سلوكيات الوقاية وإجراء الاختبارات بحسب العمر وحالة التطعيم، لها تأثير متزايد في البيانات بمرور الوقت. وعلى الرغم من هذه القيود، ما تزال البيانات تُظهر أن التطعيم ضد كوفيد-19 يقلل بشكل كبير من خطر الإصابة بالعدوى والمرض الشديد بالفيروس. تواصل إدارة الصحة العامة بولاية كاليفورنيا تقييم طرق تقديم هذه المعلومات بطريقة تفسر هذه القيود بشكل أفضل.</li></ul>
+<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received at least two doses of the Pfizer or Moderna vaccines or one dose of the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 5 and older.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on the first Friday of each month. When we publish these charts, there will be a one month lag.</li><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li><li>Calculating rates by vaccination and booster status is affected by several factors that make interpretation of recent trends especially difficult. Factors including immunity from prior infection, waning protection related to the amount of time since vaccination, and differences in prevention and testing behaviors by age and vaccination status, have a growing impact on data over time. Despite these limitations, data continue to show that COVID-19 vaccination significantly reduces risk of infection and severe disease. CDPH continues to evaluate ways to present this information in a way that better accounts for these limitations.</li></ul>
         </div>
       </div>
-    </div>   </cagov-accordion> </div>
+    </div>
+  </cagov-accordion>
+</div>
+
+
+
+
 
 
 
