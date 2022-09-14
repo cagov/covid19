@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "在加州追踪COVID-19"
 meta: " 縣及全州數據以幫助民眾了解COVID-19的傳播情況。"
 author: "State of California"
-publishdate: "2022-09-09T17:46:46Z"
+publishdate: "2022-09-13T17:13:59Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -185,7 +185,7 @@ formatNumberFixed(tags,1)-%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">根據{{_varCommonDateReport_}}的數據在{{_varStatDateLaterAccurate_}}更新。在週二和週五更新數據。</p> 
+ <p class="small-text">根據{{_varCommonDateReport_}}的數據在{{_varStatDateLaterAccurate_}}更新。在每個星期四更新數據。</p> 
 <!--
  {%- else -%}
 -->
@@ -264,7 +264,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="timeTabLabel3">6個月</li>
     <li data-label="timeTabLabel4">90天</li>
     <li data-label="tooltipContent">       一週結束日：<b>{WEEKDATE}</b><br>每100萬人中未接種疫苗人士的死亡數：<b>{UCOUNT}</b><br>每100萬人中已接種疫苗人士的死亡數：<b>{VCOUNT}  </b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">未接種疫苗及已接種疫苗病例、住院病例及死亡病例源數據</a>。在每月第一個星期五更新數據。</p>
+  </ul> </cagov-chart-dashboard-postvax-chart> <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">未接種疫苗及已接種疫苗病例、住院病例及死亡病例源數據</a>。在每月第一個星期四更新數據。</p>
 
 
 
@@ -345,7 +345,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數及死亡數源數據</a>。在週二和週五更新數據。</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">病例數及死亡數源數據</a>。在每個星期四更新數據。</p>
 
 
 
@@ -406,7 +406,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">總檢測數及檢測呈陽性率源數據</a>。在週二和週五更新數據。</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">總檢測數及檢測呈陽性率源數據</a>。在每個星期四更新數據。</p>
 
 
 
@@ -462,7 +462,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19住院患者及ICU源數據</a>。在週二和週五更新數據。</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19住院患者及ICU源數據</a>。在每個星期四更新數據。</p>
 
 
 
@@ -491,7 +491,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">佔確診病例數的%</li>
                       <li data-label="chartLegend2">佔全州人口的%</li>
                       <li data-label="chartBarCaption">{category}佔確診病例數的{metric-value}及加州總人口的{metric-baseline-value}。</li>
-                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在週二和週五更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。「未知」性別包括拒絕提供及缺失性別資訊的人士，或認定為跨性別者、非二元性別、性別酷兒或雙性人的人士。</li>
+                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在每個星期四更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。「未知」性別包括拒絕提供及缺失性別資訊的人士，或認定為跨性別者、非二元性別、性別酷兒或雙性人的人士。</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">加州死亡病例數（按性別分類）</li>
@@ -515,7 +515,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">佔確診病例數的%</li>
                       <li data-label="chartLegend2">佔全州人口的%</li>
                       <li data-label="chartBarCaption">{category}年齡段佔確診病例數的{metric-value}及加州總人口的{metric-baseline-value}。</li>
-                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在週二和週五更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。</li>
+                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在每個星期四更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">加州死亡病例數（按年齡分類）</li>
@@ -539,7 +539,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">佔確診病例數的%</li>
                       <li data-label="chartLegend2">佔全州人口的%</li>
                       <li data-label="chartBarCaption">{category}人數佔確診病例數的{metric-value}及加州總人口的{metric-baseline-value}。</li>
-                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在週二和週五更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。「其他」代表不屬於列出的任何種族或族裔的人士。</li>
+                      <li data-label="footerText">使用來自{MINUS_ONE_DATE}的數據更新{PUBLISHED_DATE}。註：在每個星期四更新數據。由於四捨五入的關係，百分比加起來可能不等於100%。「其他」代表不屬於列出的任何種族或族裔的人士。</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">加州死亡病例數（按種族及族裔分類）</li>
