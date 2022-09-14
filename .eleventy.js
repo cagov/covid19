@@ -370,6 +370,13 @@ module.exports = function (eleventyConfig) {
     return "";
   }
 
+  const contentfrompageequals = (content, page, slug) => {
+    if (page.fileSlug && slug && page.fileSlug.toLocaleLowerCase() === slug.toLocaleLowerCase()) {
+      return content;
+    }
+    return "";
+  }
+
   const getTranslatedValue = (pageObj, tags, field) => {
 
     let langTag = getLangRecord(tags);
@@ -394,6 +401,7 @@ module.exports = function (eleventyConfig) {
   // show or hide content based on page
   eleventyConfig.addPairedShortcode("pagesection", contentfrompage);
   eleventyConfig.addPairedShortcode("pagesectionincludes", contentfrompageincludes);
+  eleventyConfig.addPairedShortcode("pagesectionequals", contentfrompageequals);
 
   let processedPostMap = new Map();
   htmlmap.forEach(pair => {

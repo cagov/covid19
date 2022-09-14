@@ -136,7 +136,7 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       "<county>",
       countyEncoded
     );
-    this.retrieveData(searchURL, e.detail.county, this.timerange);
+    this.retrieveData(searchURL, e.detail.county);
   }
 
   listenForLocations() {
@@ -149,7 +149,10 @@ export default class CAGovDashboardChart extends window.HTMLElement {
   }
 
   cropData(timerangeKey, uncroppedChartData) {
-    const keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
+    let keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
+    if ('seriesSubFields' in this.chartOptions) {
+        keys.push(...this.chartOptions.seriesSubFields);
+    }
     const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
 
     let daysToKeep = -1;

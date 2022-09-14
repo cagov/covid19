@@ -129,7 +129,7 @@ class CAGovDisparityMultiLineChart extends window.HTMLElement {
        <rect x="0" y="7" style="fill:${this.chartOptions.series_colors[i]};" width="12" height="${this.chartOptions.stroke_width}"/>
      </g>
    </svg>`;
-      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE/100.0,{format:'number'});
+      let value = formatValue(this.line_series_array[i][last_date_idx].VALUE,{format:'number'});
       caption += `  <tr><td class="tt-label">${lineLegendMarkup} ${lab}:</td><td class="tt-value">${value}</td></tr>`;
     });
     caption += '</table>';

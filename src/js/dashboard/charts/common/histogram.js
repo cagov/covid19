@@ -17,7 +17,7 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
         );
 }
 
- function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
+function writeBars(svg, data, x, y, { root_id='barid', crop_floor=true }) {
    if (!crop_floor) {
      console.log("NOT CROP FLOOR");
    }
@@ -49,6 +49,36 @@ function writeLine(svg, data, x, y, { root_id='barid', is_second_line=false, cro
     }
 }
 
+function writeStackedBars(svg, data, x, y, { root_id='barid', crop_floor=true, bar_type='fg-bars' }) {
+   if (!crop_floor) {
+     console.log("NOT CROP FLOOR");
+   }
+   let groups = svg.append("g")
+      .attr("class",bar_type+" "+root_id)
+      .attr("id",'bars-'+root_id)
+      .selectAll("g")
+      .data(data)
+      .enter()
+        .append("g");
+
+    if (crop_floor) { // positive only
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", (d,i) => y(d.VALUE, i))
+          .attr("width", 2)
+          .attr("height", (d,i) => Math.max(y(0,i) - y(d.VALUE,i),0))
+          .attr("id", (d,i) => root_id+'-'+i);
+    } else { // positive and negative rects
+      groups
+          .append("rect")
+          .attr("x", (d,i) => x(i))
+          .attr("y", (d,i) => Math.min(y(0,i),y(d.VALUE,i)))
+          .attr("width", 2)
+          .attr("height", (d,i) => Math.abs(y(0,i) - y(d.VALUE,i)))
+          .attr("id", (d,i) => root_id+'-'+i);
+    }
+}
 
 function writePendingBlock(svg, data, x, y,
   { pending_date=null,
@@ -453,6 +483,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
  export default function renderChart({
     extras_func = null,
     time_series_bars = null,
+    time_series_stacked_bars = null,
     time_series_line = null,
     time_series_state_line = null,
     line_date_offset = 0,
@@ -518,7 +549,41 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
         .domain([min_y_domain, max_y_domain]).nice()  // d3.max(data, d => d.METRIC_VALUE)]).nice()
         .range([this.dimensions.height - this.dimensions.margin.bottom, this.dimensions.margin.top]);
    
+      // Generate ybar-type function for each stack of bars
+      // NOTE: untested with more than 2 stacks
+      // NOTE: arrays in time_series_stacked_bars are assumed to have exactly matching lengths
+      if (time_series_stacked_bars) {
+        this.ybars_stacked = [];
+        let starting_points = [];
+        let base_ybars = this.ybars;
+
+        // This loop creates a function by looking at previous stacks of data
+        time_series_stacked_bars.forEach((dataset, idx) => {
+
+          // The bottom bars can use the function for the total dataset
+          if (idx === 0) {
+            this.ybars_stacked.push(function (val, i) { return base_ybars(val);} );
+            starting_points.push(Array(dataset.length).fill(0));
+            return;
+          }
+
+          // Calculate where the stack should start from on the y-axis
+          let prev_dataset = time_series_stacked_bars[idx-1];
+          let prev_starting_point = starting_points[idx-1];
+          let sum = Array(prev_starting_point.length)
+          for (let i = 0; i < sum.length; i++) {
+            sum[i] = prev_dataset[i].VALUE + prev_starting_point[i];
+          }
+          starting_points.push(sum);
+
+          // Finally generate function
+          this.ybars_stacked.push((val, i) => {
+            return base_ybars(val + starting_points[idx][i]);
+          });
+        });
+      }
     }
+
     if (time_series_line) {
       // console.log("time_series_line",time_series_line,root_id);
       const LINE_OFFSET_X = line_date_offset;
@@ -566,20 +631,29 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
     // let max_xdomain = d3.max(data, (d) => d3.max(d, (d) => d.METRIC_VALUE));
 
     if (time_series_bars) {
-      writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
-        { root_id:root_id, crop_floot:crop_floor});
-      // bar legend on left
+      if (time_series_stacked_bars) {
+        time_series_stacked_bars.forEach((dataset, idx) => {
+          const bar_type = (idx === 0) ? 'fg-bars-bot' : 'fg-bars-top';
+
+          writeStackedBars.call(this, this.svg, dataset, this.xbars, this.ybars_stacked[idx],
+            { root_id:root_id, crop_floor:crop_floor, bar_type:bar_type});
+        });
+      } else {
+        writeBars.call(this, this.svg, time_series_bars, this.xbars, this.ybars, 
+          { root_id:root_id, crop_floor:crop_floor});
+        // bar legend on left
+      }
     }
     if (time_series_line) {
       writeLine.call(this, this.svg, time_series_line, this.xline, this.yline, 
-        { line_legend:line_legend, root_id:root_id, crop_floot:crop_floor});
+        { line_legend:line_legend, root_id:root_id, crop_floor:crop_floor});
       if (line_legend != null) {
           drawLineLegend.call(this, this.svg, line_legend, time_series_line, this.xline, this.yline, {root_id:root_id});
       }
     }
     if (time_series_state_line) {
       writeLine.call(this, this.svg, time_series_state_line, this.xline, this.yline, 
-        { root_id:'state-'+root_id, is_second_line:true, crop_floot:crop_floor});
+        { root_id:'state-'+root_id, is_second_line:true, crop_floor:crop_floor});
       writeCountyStateLegend.call(this, this.svg, this.xline, this.yline, {root_id:root_id});
     }
 
