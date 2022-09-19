@@ -58,13 +58,19 @@
 
 		let search_url = `https://fa-go-covid-answ-001.azurewebsites.net/CovidAnswer?q=${query}&lang=${document.documentElement.lang}`;
 
+
+		//.then(response => console.log(response));
+		//.then(data => console.log(data));
+		//.then(response => response.json())
+
 		fetch(search_url)
-		.then(response => response.json())
+		.then(response => response.ok ? response.json() : null)
 		.then(data => {
 			console.log("Got data",data);
 
-			let answers = [...data[0].answers];
-			if(answers[0].questions.length > 0) {
+            const max_answers = 5;
+			let answers = data ? [...data[0].answers].slice(0, max_answers) : null;
+			if(answers && answers[0].questions.length > 0) {
 				let html = `<h3>Quick answers</h3>
 					${answers.map(function(a) {
 						if(a.answer.indexOf('platform.twitter.com/widgets') > -1) {
