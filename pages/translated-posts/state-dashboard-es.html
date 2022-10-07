@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-09-09T17:46:46Z"
+publishdate: "2022-09-13T17:13:59Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -185,7 +185,7 @@ formatNumberFixed(tags,1)-%}
  {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
  {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
- <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}. Los datos se actualizan los martes y los viernes.</p> 
+ <p class="small-text">Actualizado el {{_varStatDateLaterAccurate_}}, con datos del {{_varCommonDateReport_}}. Los datos se actualizan los jueves.</p> 
 <!--
  {%- else -%}
 -->
@@ -264,7 +264,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="timeTabLabel3">6 meses</li>
     <li data-label="timeTabLabel4">90 días</li>
     <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Muertes de no vacunados por cada millón: <b>{UCOUNT}</b><br> Muertes de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en vacunados y no vacunados</a>. Los datos se actualizan el primer viernes de cada mes.</p>
+  </ul> </cagov-chart-dashboard-postvax-chart> <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Datos de origen de casos, hospitalizaciones y muertes en no vacunados y vacunados</a>. Los datos se actualizan el primer jueves de cada mes.</p>
 
 
 
@@ -345,7 +345,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de casos y muertes</a>. Los datos se actualizan los martes y los viernes.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de casos y muertes</a>. Los datos se actualizan los jueves.</p>
 
 
 
@@ -406,7 +406,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de pruebas totales y de la tasa de positividad</a> Los datos se actualizan los martes y los viernes.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de pruebas totales y de la tasa de positividad</a>. Los datos se actualizan los jueves.</p>
 
 
 
@@ -462,7 +462,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a> Los datos se actualizan los martes y los viernes.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Datos de origen de pacientes hospitalizados con COVID-19 e ICU</a> Los datos se actualizan los jueves.</p>
 
 
 
@@ -491,7 +491,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">{category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En género, “Desconocido” incluye a aquellos que se negaron a declarar, cuya información de género falta o que se identifican como transgénero, género no binario, género queer o intersexual.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los jueves. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En género, “Desconocido” incluye a aquellos que se negaron a declarar, cuya información de género falta o que se identifican como transgénero, género no binario, género queer o intersexual.</li>
                     </ul>                   </cagov-chart-dashboard-groups-gender-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por género en California</li>
@@ -515,7 +515,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">El grupo de edad de {category} representa el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los jueves. Es posible que los porcentajes no sumen el 100 % debido al redondeo.</li>
                     </ul>                   </cagov-chart-dashboard-groups-age-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por edad en California</li>
@@ -539,7 +539,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">Las personas de {category} representan el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los martes y los viernes. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y etnia, “Otros” significa aquellos que no pertenecen a ninguna raza o etnia enumerada.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: Los datos se actualizan los jueves. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y etnia, “Otros” significa aquellos que no pertenecen a ninguna raza o etnia enumerada.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart"> <ul class="d-none">
                       <li data-label="chartTitle">Decesos confirmados por raza y etnia en California</li>
