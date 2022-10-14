@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "تعقب كوفيد-19 في كاليفورنيا"
 meta: "يساعد البيانات على مستوى الولاية والمقاطعة على فهم انتشار كوفيد-19."
 author: "State of California"
-publishdate: "2022-09-13T17:13:59Z"
+publishdate: "2022-10-13T16:11:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -108,8 +108,8 @@ formatNumberFixed(tags,1)-%}
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">إجمالي</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}النسبة المئوية (%)</strong> للسكان الذين تم تطعيمهم</span>            </div>
-           <div>             <span class="text-300">(بجرعة واحدة على الأقل)</span>            </div>
+           <div>              <span class="text-300"><strong>{{_varFullyVaxedPercent_}}النسبة المئوية (%)</strong> للسكان الذين تم تطعيمهم</span>            </div>
+           <div>             <span class="text-300">(بجرعات أساسية)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
@@ -198,7 +198,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>تشمل النسبة المئوية للسكان الذين حصلوا على اللقاح عدد الأشخاص الذين تم تطعيمهم بجرعة أو جرعتين من اللقاح والأشخاص الذين حصلوا على اللقاح والجرعة المعززة وقسمتهم على عدد السكان المؤهلين للحصول على اللقاح. </li>
+                <ul class="small-text"><li>تشمل النسبة المئوية للسكان الذين حصلوا على اللقاح عدد الأشخاص الذين أكملوا سلسلة جرعاتهم الأساسية والأشخاص الذين حصلوا على اللقاح والجرعة المعززة والقسمة على عدد السكان المؤهلين للحصول على اللقاح. </li>
 
 <li>ستُحدث باستمرار النسبة المئوية للسكان الذين حصلوا على اللقاح بفضل الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها دوائر الصحة المحلية والكيانات الفيدرالية.</li><li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li><li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li><li>وتتأخر حالات الإصابة مدة 8 أيام.</li>
 

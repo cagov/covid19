@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Rastreo de la COVID-19 en California"
 meta: "Datos de los condados y del estado para ayudar a las personas a comprender la propagación de la COVID-19."
 author: "State of California"
-publishdate: "2022-09-13T17:13:59Z"
+publishdate: "2022-10-13T16:11:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -108,8 +108,8 @@ formatNumberFixed(tags,1)-%}
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">total</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">promedio diario</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> de personas vacunadas</span>            </div>
-           <div>             <span class="text-300">(con al menos una dosis)</span>            </div>
+           <div>              <span class="text-300"><strong>{{_varFullyVaxedPercent_}}%</strong> de personas vacunadas</span>            </div>
+           <div>             <span class="text-300">(con la serie primaria)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
@@ -198,7 +198,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Notas sobre los datos</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>El porcentaje de población vacunada incluye a las personas con una o dos dosis de la vacuna y a las personas vacunadas y con la vacuna de refuerzo dividido entre la población elegible para la vacunación. </li>
+                <ul class="small-text"><li>El porcentaje de población vacunada incluye al número de personas que han completado su serie primaria, y las personas vacunadas y con la vacuna de refuerzo dividido entre la población elegible para la vacunación. </li>
 
 <li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>Todos los promedios diarios son promedios de 7 días.</li><li>Las vacunas administradas tienen un retraso de 7 días.</li><li>Los casos tienen un retraso de 8 días.</li>
 

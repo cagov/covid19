@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "캘리포니아 내 COVID-19 추적 관리"
 meta: "COVID-19 확산에 대한 이해를 돕기 위한 카운티와 주 전역 데이터."
 author: "State of California"
-publishdate: "2022-09-13T17:13:59Z"
+publishdate: "2022-10-13T16:11:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -108,8 +108,8 @@ formatNumberFixed(tags,1)-%}
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">합계</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">일 평균</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>백신 접종 인구의 {{_varTotalVaxedPercent_}}%</strong></span>            </div>
-           <div>             <span class="text-300">(최소 1 회 접종)</span>            </div>
+           <div>              <span class="text-300"><strong>백신 접종 인구의 {{_varFullyVaxedPercent_}}%</strong></span>            </div>
+           <div>             <span class="text-300">(1차 또는 2차 연속 백신 접종)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
@@ -198,7 +198,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>백신 접종을 마친 인구 비율은 1 차 또는 2 차 접종자 및 백신과 부스터 샷 접종자를 백신 접종 대상자로 나눈 숫자를 포함하고 있습니다. </li>
+                <ul class="small-text"><li>백신 접종을 마친 인구 비율은 1 차 또는 2 차 연속 백신 접종 완료자 및 백신과 부스터 샷 접종자를 백신 접종 대상자로 나눈 숫자를 포함하고 있습니다. </li>
 
 <li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li>
 

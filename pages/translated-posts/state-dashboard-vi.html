@@ -3,7 +3,7 @@ layout: "page.njk"
 title: "Theo dõi tình hình đại dịch COVID-19 tại California"
 meta: "Dữ liệu của quận và toàn tiểu bang để giúp mọi người hiểu rõ tốc độ lây lan của COVID-19."
 author: "State of California"
-publishdate: "2022-09-13T17:13:59Z"
+publishdate: "2022-10-13T16:11:45Z"
 tags: ["translate"]
 addtositemap: true
 ---
@@ -108,13 +108,13 @@ formatNumberFixed(tags,1)-%}
          <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">tổng</span>          </div>
          <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">trung bình hàng ngày</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{_varTotalVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>            </div>
-           <div>             <span class="text-300">(với ít nhất một liều)</span>            </div>
+           <div>              <span class="text-300"><strong>{{_varFullyVaxedPercent_}}%</strong> dân số đã tiêm vắc-xin</span>            </div>
+           <div>             <span class="text-300">(loạt mũi cơ bản)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-vax"></div>
-           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Trong 8 tuần qua</span>            </div>
+           <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">8 tuần qua</span>            </div>
          </div>          
 <!--End Chart and Label -->
         </div>
@@ -198,7 +198,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Ghi chú dữ liệu</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>Tỷ lệ phần trăm dân số được tiêm vắc-xin bao gồm những người được tiêm một hoặc hai liều vắc-xin và những người được tiêm vắc-xin và mũi nhắc lại chia cho số dân đủ điều kiện tiêm vắc-xin. </li>
+                <ul class="small-text"><li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin bao gồm những người đã tiêm đủ các mũi cơ bản và những người đã tiêm vắc-xin và mũi nhắc lại chia cho số dân đủ điều kiện tiêm vắc-xin. </li>
 
 <li>Tỷ lệ phần trăm dân số đã tiêm vắc-xin sẽ được cập nhật liên tục nhờ công tác điều chỉnh hồ sơ vắc-xin trên toàn tiểu bang đang được thực hiện. Tỷ lệ phần trăm này có thể khác với dữ liệu được báo cáo bởi các cơ quan y tế có thẩm quyền của địa phương và các tổ chức liên bang.</li><li>Tất cả mức trung bình hàng ngày là mức trung bình của 7 ngày.</li><li>Các vắc-xin đã tiêm có thời gian trễ là 7 ngày.</li><li>Các ca mắc có thời gian trễ là 8 ngày.</li>
 
