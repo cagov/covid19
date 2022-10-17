@@ -3,8 +3,8 @@ layout: "page.njk"
 title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
-publishdate: "2022-10-13T16:11:45Z"
-tags: ["translate"]
+publishdate: "2022-10-17T19:15:48Z"
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -226,7 +226,7 @@ formatNumberFixed(tags,1)-%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
         {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
 -->
-<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}. Data is updated on Thursdays.</p>
+<p class="small-text">Updated {{_varStatDateLaterAccurate_}}, with data from {{_varCommonDateReport_}}. Data is updated weekly.</p>
 <!--
         {%- else -%}
 -->
@@ -362,7 +362,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a>. Data is updated on the first Thursday of the month.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a>. Data is updated on the first week of every month.</p>
 
 
 
@@ -499,7 +499,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated on Thursdays.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated weekly.</p>
 
 
 
@@ -582,7 +582,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Total tests and positivity rate source data</a>. Data is updated on Thursdays.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Total tests and positivity rate source data</a>. Data is updated weekly.</p>
 
 
 
@@ -656,7 +656,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 hospitalized patients and ICU source data</a>. Data is updated on Thursdays.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 hospitalized patients and ICU source data</a>. Data is updated weekly.</p>
 
 
 
@@ -699,7 +699,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Thursdays. Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-gender-cases>                
                 </div>
@@ -731,7 +731,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Thursdays. Percentages may not add up to 100% due to rounding.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-age-cases>                
                 </div>
@@ -763,7 +763,7 @@ formatNumberFixed(tags,1)-%}
                       <li data-label="chartLegend1">% of confirmed cases</li>
                       <li data-label="chartLegend2">% of state population</li>
                       <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated on Thursdays. Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
+                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
                     </ul>
                   </cagov-chart-dashboard-groups-race-ethnicity-cases>                
                 </div>
