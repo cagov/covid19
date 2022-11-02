@@ -9,6 +9,9 @@ on:
       - synchronize
       - ready_for_review
       - reopened
+permissions:
+  id-token: write
+  contents: read
 jobs:
   build_deploy:
     runs-on: ubuntu-18.04
