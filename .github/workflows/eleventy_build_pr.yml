@@ -16,7 +16,7 @@ jobs:
       - uses: n1hility/cancel-previous-runs@v2
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Use Node.js 14.17.0
         uses: actions/setup-node@v1
         with:
