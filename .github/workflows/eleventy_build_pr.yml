@@ -59,7 +59,7 @@ jobs:
         run: aws cloudfront create-invalidation --distribution-id E3JRVVFYGDA1AM --paths "/*"
 
       - name: Post URL to PR
-        uses: mshick/add-pr-comment@v1
+        uses: mshick/add-pr-comment@v2
         with:
           message: |
             Preview site available at [${{ env.URLSAFE_BRANCH_NAME }}.pr.covid19.ca.gov](https://${{ env.URLSAFE_BRANCH_NAME }}.pr.covid19.ca.gov/).
