@@ -64,5 +64,5 @@ jobs:
           AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} npm run deploy:redirects
 
       - name: invalidate Cloudfront
-        run: aws cloudfront create-invalidation --distribution-id EUZDM53N8V5KD --paths "/*"
+        run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id EUZDM53N8V5KD --paths "/*"
 
