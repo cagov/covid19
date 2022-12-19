@@ -50,7 +50,8 @@ if (document.querySelector('.js-alert-lookup')) {
 
 function queryLoc (q,aplete) {
   window.lookup = q;
-  const url = `https://api.alpha.ca.gov/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=${q}`;
+  // was api.alpha.ca.gov
+  const url = `https://fa-go-alph-d-002.azurewebsites.net/CaZipCityCountyTypeAhead?citymode=false&countymode=true&q=${q}`;
   window.fetch(url)
     .then(response => response.json())
     .then(data => {
