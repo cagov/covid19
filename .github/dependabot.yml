@@ -10,4 +10,8 @@ updates:
     ignore:
       - dependency-name: "node-fetch"
         update-types: ["version-update:semver-major"]
-
+  - package-ecosystem: "github-actions" 
+    directory: "/"
+    schedule: 
+      interval: "daily"
+    target-branch: "dependabotprs"
