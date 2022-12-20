@@ -150,8 +150,18 @@ export default class CAGovDashboardChart extends window.HTMLElement {
 
   cropData(timerangeKey, uncroppedChartData) {
     let keys = [this.chartOptions.seriesField, this.chartOptions.seriesFieldAvg];
+    let lowest_max_date = undefined;
+
     if ('seriesSubFields' in this.chartOptions) {
-        keys.push(...this.chartOptions.seriesSubFields);
+      keys.push(...this.chartOptions.seriesSubFields);
+
+      // Find highest shared date between fields
+      this.chartOptions.seriesSubFields.forEach(field => {
+        let max_date = this.chartData.time_series[field].DATE_RANGE.MAXIMUM;
+        if (lowest_max_date === undefined || lowest_max_date > max_date) {
+          lowest_max_date = max_date;
+        }
+      });
     }
     const unitSizeDict = {'months':31,'month':31,'days':1,'day':1};
 
@@ -161,14 +171,29 @@ export default class CAGovDashboardChart extends window.HTMLElement {
       daysToKeep = unitSizeDict[tokens[0]] * parseInt(tokens[1]);
     }
     let chartData = JSON.parse(JSON.stringify(uncroppedChartData)); // deep copy
-    if (daysToKeep > 0) {
-      keys.forEach( (key) => {
-        const chartSeries = chartData.time_series[key];
-        chartSeries.VALUES = chartSeries.VALUES.splice(0,daysToKeep);
-        const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
-        chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
-      });
-    }
+
+    keys.forEach((key) => {
+      const chartSeries = chartData.time_series[key];
+      let offset = 0;
+
+      // Only include shared dates when subfields are in use
+      if ('seriesSubFields' in this.chartOptions) {
+        for (let value of chartSeries.VALUES) {
+          if (value.DATE === lowest_max_date) {
+            break;
+          }
+          offset += 1;
+        }
+      }
+
+      if (daysToKeep > 0) {
+        chartSeries.VALUES = chartSeries.VALUES.splice(offset,daysToKeep);
+      } else {
+        chartSeries.VALUES = chartSeries.VALUES.splice(offset);
+      }
+      const lastValue = chartSeries.VALUES[chartSeries.VALUES.length-1];
+      chartSeries.DATE_RANGE.MINIMUM = lastValue.DATE;
+    });
     return chartData;
   }  
 

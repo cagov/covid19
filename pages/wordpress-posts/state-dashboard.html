@@ -50,7 +50,7 @@ addtositemap: true
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumberSmall(tags)-%}
-{%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
+{%-set _varDeathsDailyAverage_ = datadeaths.latest.DEATHS.CONFIRMED_DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
@@ -466,16 +466,17 @@ formatNumberFixed(tags,1)-%}
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
-      <!-- 2 Cases and Deaths - Confirmed Deaths -->
-      <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
+      <!-- 2 Cases and Deaths - Deaths -->
+      <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
           <li data-label="chartTitleState">Deaths in California</li>
           <li data-label="chartTitleCounty">Deaths in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> total confirmed deaths</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_deaths}</span> {total_deaths_type} deaths</li>
           <li data-label="chartLegend2"><span class="med-num">{avg_deaths}</span> average deaths per day</li>
           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> deaths per 100K (7-day average)</li>
           <li data-label="filterTabLabel1">Confirmed</li>
-          <!-- <li data-label="filterTabLabel2">Reported date</li> -->
+          <li data-label="filterTabLabel2">Probable</li>
+          <li data-label="filterTabLabel3">Total</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">6 months</li>
           <li data-label="timeTabLabel3">90 days</li>
@@ -484,10 +485,17 @@ formatNumberFixed(tags,1)-%}
             7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
             Deaths: <b>{DEATHS}</b>
           </li>
+          <li data-label="tooltipCombinedContent">
+            Date: <b>{DATE}</b><br>
+            7-day average death rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+            Confirmed Deaths: <b>{CONFIRMED_DEATHS}</b><br>
+            Probable Deaths: <b>{PROBABLE_DEATHS}</b><br>
+            Combined Deaths: <b>{COMBINED_DEATHS}</b>
+          </li>
           <li data-label="dayAverage">7-day average</li>
           <li data-label="deaths_leftYAxisLegend">Deaths per 100K</li>
           <li data-label="deaths_rightYAxisLegend">Deaths</li>
-          <li data-label="deaths_death_xAxisLegend">Death date</li>
+          <li data-label="deaths_xAxisLegend">Death date</li>
           <li data-label="pending">Pending</li>
           <li data-label="pending_caveat">Data incomplete for recent dates</li>
         </ul>
