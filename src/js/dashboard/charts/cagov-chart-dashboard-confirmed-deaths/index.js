@@ -6,17 +6,32 @@ import CAGovDashboardChart from '../common/cagov-dashboard-chart.js';
 // cagov-chart-dashboard-confirmed-deaths
 class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
  
-
   getTooltipContent(di) {
     const barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
     const lineSeries = this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
+    let caption = undefined;
     // console.log("getTooltipContent",di,lineSeries);
-    const repDict = {
-      DATE:   reformatReadableDate(lineSeries[di].DATE),
-      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
-      DEATHS:formatValue(barSeries[di].VALUE,{format:'integer'}),
-    };
-    let caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    if ('seriesSubFields' in this.chartOptions) {
+      const barSeries_prob = this.chartData.time_series[this.chartOptions.seriesSubFields[0]].VALUES;
+      const barSeries_conf = this.chartData.time_series[this.chartOptions.seriesSubFields[1]].VALUES;
+
+      const repDict = {
+        DATE:             reformatReadableDate(lineSeries[di].DATE),
+        '7DAY_AVERAGE':   formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+        CONFIRMED_DEATHS: formatValue(barSeries_conf[di].VALUE,{format:'integer'}),
+        PROBABLE_DEATHS:  formatValue(barSeries_prob[di].VALUE,{format:'integer'}),
+        COMBINED_DEATHS:  formatValue(barSeries[di].VALUE,{format:'integer'})
+      };
+      caption = applySubstitutions(this.translationsObj.tooltipCombinedContent, repDict);
+
+    } else {
+      const repDict = {
+        DATE:   reformatReadableDate(lineSeries[di].DATE),
+        '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+        DEATHS:formatValue(barSeries[di].VALUE,{format:'integer'}),
+      };
+      caption = applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    }
     let datumDate = parseSnowflakeDate(lineSeries[di].DATE);
     let pendingDate = parseSnowflakeDate(this.chartData.latest[this.chartOptions.latestField].DEATH_UNCERTAINTY_PERIOD);
     if (+datumDate >= +pendingDate) {
@@ -27,12 +42,23 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let totalKey = 'total_' + this.chartConfigFilter + '_deaths';
+    let avgKey = this.chartConfigFilter.toUpperCase() + '_DEATHS_DAILY_AVERAGE';
+    let capitaKey = this.chartConfigFilter + '_deaths_per_100k_7_days';
+    let total_deaths_type = 'total ' + this.chartConfigFilter;
+
+    /* NOTE: the chart displays "total" deaths but we use "combined" internally */
+    if (this.chartConfigFilter === 'combined') {
+      total_deaths_type = 'total';
+    }
+
     const repDict = {
-      total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
-      new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
-      avg_deaths:formatValue(latestRec.DEATHS_DAILY_AVERAGE,{format:'integer'}),
-      deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
-      REGION:regionName,
+      total_deaths:           formatValue(latestRec[totalKey],{format:'integer'}),
+      avg_deaths:             formatValue(latestRec[avgKey],{format:'integer'}),
+      deaths_per_100k_7_days: formatValue(latestRec[capitaKey],{format:'number',min_decimals:1}),
+      new_deaths:             formatValue(latestRec.new_deaths,{format:'integer'}),
+      total_deaths_type:      total_deaths_type,
+      REGION:                 regionName
     };
     if (!('chartTitleState' in this.translationsObj)) {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
@@ -58,7 +84,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
                         'left_y_axis_legend':this.translationsObj[this.chartConfigKey+'_leftYAxisLegend'],
                         'right_y_axis_legend':this.translationsObj[this.chartConfigKey+'_rightYAxisLegend'],
                         'right_y_fmt':'integer',
-                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_'+this.chartConfigFilter+'_xAxisLegend'],
+                        'x_axis_legend':this.translationsObj[this.chartConfigKey+'_xAxisLegend'],
                         'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                         };
     if (this.chartConfigFilter != 'reported') {
@@ -68,15 +94,14 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     if (this.addStateLine) {
       renderOptions.time_series_state_line = this.stateData.time_series[this.chartOptions.seriesFieldAvg].VALUES;
     }
+    if ('seriesSubFields' in this.chartOptions) {
+      renderOptions.time_series_stacked_bars = [];
+      this.chartOptions.seriesSubFields.forEach(field => {
+        renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
+      });
+    }
     return renderOptions;
   }
-
-  // listenForLocations() {
-  //   CAGovDashboardChart.prototype.listenForLocations.call(this);
-  //   // insures cases/deaths stay in sync
-  //   window.addEventListener('cases-chart-filter-select', this.chartFilterSelectHandler.bind(this), false);
-  // }
-
 }
 
 window.customElements.define(

@@ -98,7 +98,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
       if ('seriesSubFields' in this.chartOptions) {
         renderOptions.time_series_stacked_bars = [];
         this.chartOptions.seriesSubFields.forEach(field => {
-            renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
+          renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
         });
       }
     return renderOptions;
