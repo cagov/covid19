@@ -42,7 +42,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
-    let totalKey = 'total_' + this.chartConfigFilter + '_deaths';
+    let totalKey = 'common_total_' + this.chartConfigFilter + '_deaths';
     let avgKey = this.chartConfigFilter.toUpperCase() + '_DEATHS_DAILY_AVERAGE';
     let capitaKey = this.chartConfigFilter + '_deaths_per_100k_7_days';
     let total_deaths_type = 'total ' + this.chartConfigFilter;
@@ -50,6 +50,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     /* NOTE: the chart displays "total" deaths but we use "combined" internally */
     if (this.chartConfigFilter === 'combined') {
       total_deaths_type = 'total';
+      totalKey = totalKey.replace('common_', '');
     }
 
     const repDict = {
