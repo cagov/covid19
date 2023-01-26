@@ -45,11 +45,12 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     let totalKey = 'common_total_' + this.chartConfigFilter + '_deaths';
     let avgKey = this.chartConfigFilter.toUpperCase() + '_DEATHS_DAILY_AVERAGE';
     let capitaKey = this.chartConfigFilter + '_deaths_per_100k_7_days';
-    let total_deaths_type = 'total ' + this.chartConfigFilter;
+    //let total_deaths_type = 'total ' + this.chartConfigFilter;
+    let total_deaths_type = 'deaths among ' + this.chartConfigFilter + ' cases';
 
     /* NOTE: the chart displays "total" deaths but we use "combined" internally */
     if (this.chartConfigFilter === 'combined') {
-      total_deaths_type = 'total';
+      total_deaths_type = 'total deaths';
       totalKey = totalKey.replace('common_', '');
     }
 
