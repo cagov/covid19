@@ -49,5 +49,5 @@ jobs:
       #
       # Invalidate Cloudfront production distribution (everything under data)
       - name: invalidate Cloudfront
-        run: aws cloudfront create-invalidation --distribution-id E17SNE7QRMFCI3 --paths "/*"
+        run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id E17SNE7QRMFCI3 --paths "/*"
 
