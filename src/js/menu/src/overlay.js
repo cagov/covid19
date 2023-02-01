@@ -31,7 +31,9 @@ class CAGOVOverlayNav extends window.HTMLElement {
     this.querySelector(".hamburger").classList.add("is-active");
     this.querySelector(".menu-trigger").classList.add("is-fixed");
     var menLabel = this.querySelector(".menu-trigger-label");
-    menLabel.innerHTML = menLabel.getAttribute("data-closelabel");
+    var closeLabel = menLabel.getAttribute("data-closelabel");
+    closeLabel = closeLabel.replace(/[-\/\\^$*+?.()|[\]{}<>]/g, '\\$&');
+    menLabel.innerHTML = closeLabel;
     this.querySelector("#main-menu").setAttribute("aria-hidden", "false");
     document.addEventListener("keydown", this.escapeMainMenu.bind(this));
     setTimeout(

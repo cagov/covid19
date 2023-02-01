@@ -175,7 +175,15 @@ class CAGOVEquityMissingness extends window.HTMLElement {
 
   resetTitle() {
     this.querySelector(".chart-title").innerHTML = this.translationsObj['tab-label'] ? this.translationsObj['tab-label'] : null;
-    this.querySelector('.chart-title span[data-replace="metric-filter"]').innerHTML = this.getFilterText().toLowerCase();
+
+    var filterText = this.getFilterText();
+    // escape meta chars
+    filterText = filterText.replace(/[-\/\\^$*+?.()|[\]{}<>]/g, '\\$&');
+    // console.log("Escaped filter text: " + filterText);
+    this.querySelector('.chart-title span[data-replace="metric-filter"]').innerHTML = filterText.toLowerCase();
+
+
+
     this.querySelector('.chart-title span[data-replace="location"]').innerHTML = this.getLocation();
   }
 

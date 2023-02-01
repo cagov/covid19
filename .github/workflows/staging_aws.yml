@@ -1,8 +1,8 @@
 name: Staging deploy - AWS
 on:
   schedule:
-    # run around 1:40pm on Wednesday
-    - cron:  '05 21 * * Wed'
+    # run around 9:00am on Mondays
+    - cron:  '0 17 * * Mon'
 
   push:
     branches:
@@ -49,5 +49,5 @@ jobs:
       #
       # Invalidate Cloudfront production distribution (everything under data)
       - name: invalidate Cloudfront
-        run: aws cloudfront create-invalidation --distribution-id E17SNE7QRMFCI3 --paths "/*"
+        run: AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --distribution-id E17SNE7QRMFCI3 --paths "/*"
 

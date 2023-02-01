@@ -30,7 +30,6 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
     const repDict = {
       total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
-      new_deaths_delta_1_day:formatValue(Math.abs(latestRec.new_deaths_delta_1_day),{format:'percent'}),
       avg_deaths:formatValue(latestRec.DEATHS_DAILY_AVERAGE,{format:'integer'}),
       deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
       REGION:regionName,
@@ -44,7 +43,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCounty, repDict);
     }
     this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
-    this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.new_deaths_delta_1_day >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
+    this.translationsObj.post_chartLegend2 = applySubstitutions(this.translationsObj.chartLegend2, repDict);
     this.translationsObj.post_chartLegend3 = applySubstitutions(this.translationsObj.chartLegend3, repDict);
     this.translationsObj.currentLocation = regionName;
     return repDict;
