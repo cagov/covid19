@@ -11,16 +11,16 @@ on:
       - reopened
 jobs:
   build_deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: n1hility/cancel-previous-runs@v2
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
-      - name: Use Node.js 14.17.0
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14.17.0
+          node-version: 14.21.0
       - name: Get branch name (merge)
         if: github.event_name != 'pull_request'
         shell: bash
