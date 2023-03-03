@@ -72,7 +72,7 @@ const rollup = (done) => {
   if (process.env.NODE_ENV === 'development') {
     log('Note: Building JS in dev mode. es5.js will not be included. Try *npm run start* if you need it for IE.');
   }
-  spawn('npx', ['rollup', '--config', 'src/js/rollup.config.all.js'], {
+  spawn('npx', ['rollup', '--bundleConfigAsCjs', '--config', 'src/js/rollup.config.all.js'], {
     stdio: 'inherit'
   }).on('close', code => {
     if(code) {
