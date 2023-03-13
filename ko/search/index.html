@@ -231,8 +231,9 @@
   const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
 	document.querySelectorAll('input[name=q]').forEach(x=>x.value=query);
 </script> 
-
+<!--
 <script>
+	/***
 	const myWebSearchStartingCallback = query => {
 		if(!query) return;
 
@@ -286,9 +287,11 @@
 				}
 			}
 		});
-	}
+
+	} 
 	myWebSearchStartingCallback(query)
-</script>
+	***/
+</script> -->
 <script>
 	String.prototype.hashCode = function() {
 		var hash = 0, i, chr;
