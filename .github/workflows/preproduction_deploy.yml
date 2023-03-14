@@ -18,7 +18,7 @@ jobs:
         with:
           ref: preproduction
           submodules: true
-      - uses: n1hility/cancel-previous-runs@v2
+      - uses: n1hility/cancel-previous-runs@v3
         with: 
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build 11ty
@@ -33,7 +33,7 @@ jobs:
 
       # Push built site files to S3 production bucket    
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
