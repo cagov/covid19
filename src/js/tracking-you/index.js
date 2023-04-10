@@ -1,6 +1,7 @@
 import boxTracker from "./box-tracker.js";
 
 export default function setupAnalytics() {
+  return;
 
   ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
 
