@@ -49,14 +49,11 @@ export default function setupAnalytics() {
     }
   });
 
-return;
-
   /*
     Changed the parameter names here to better match GA docs and new requirements.
     Old-to-new mappings:
       elementType ==> eventAction
       eventString ==> eventLabel
-  */
   function _reportGA(eventAction, eventLabel, eventCategory = 'click') {
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
@@ -69,6 +66,7 @@ return;
       }, 500);
     }
   }
+  */
 
   document.querySelectorAll('.show-all').forEach(btn => {
     const isCloseButton = btn.classList.contains('d-none');
@@ -86,7 +84,6 @@ return;
         .forEach(y => y.classList.toggle('d-none'));
     });
   });
-
 
   function toggleBoolean(el,attr) {
     if(el.getAttribute(attr) === "false") {
@@ -130,13 +127,15 @@ return;
 
   if(document.querySelector("cagov-pagefeedback")) {
     document.querySelector("cagov-pagefeedback").addEventListener("ratedPage", (evt) => {
-      ga('send', 'event', 'rating', 'helpful', evt.detail);
+      gtag('rating', {'was_helpful': evt.detail});
     });
   }
 
   /*
     Kennedy Project tracking stuff starts here.
   */
+
+return;
 
   // Create a throttled event listener.
   const throttle = (fn, delay) => (event) => {
