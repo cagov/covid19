@@ -127,7 +127,7 @@ export default function setupAnalytics() {
 
   if(document.querySelector("cagov-pagefeedback")) {
     document.querySelector("cagov-pagefeedback").addEventListener("ratedPage", (evt) => {
-      gtag('rating', {'was_helpful': evt.detail});
+      reportGA('rating', {'was_helpful': evt.detail});
     });
   }
 
