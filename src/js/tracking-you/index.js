@@ -7,40 +7,44 @@ export default function setupAnalytics() {
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('summary')) {
-        gtag('event', 'accordion_click', {
-            'accordion_summary': this.querySelector('summary').textContent.trim()
-        });
+        gtag('event', 'accordion_click', {'accordion_summary': this.querySelector('summary').textContent.trim()});
       }
     });
   });
 
-return;
-
   document.querySelectorAll('a').forEach((a) => {
+    const site_url_default = 'covid19.ca.gov/';
+
     // look for and track anchor and pdf links
-    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf('covid19.ca.gov/') > -1) { // do this because pdfs are on linked subdomains
+    if(a.href.indexOf(window.location.hostname) > -1 || a.href.indexOf(site_url_default) > -1) { // do this because pdfs are on linked subdomains
+
+      let splitter = a.href.indexOf(window.location.hostname) > -1 ? window.location.hostname : site_url_default;
+
       if(a.href.indexOf('.pdf') > -1) {
         a.addEventListener('click',function() {
-          reportGA('pdf', this.href.split(window.location.hostname)[1])
+          gtag('event', 'pdf_click', {'pdf_path': this.href.split(splitter)[1]});
         });    
       }
       if(a.href.indexOf('#') > -1) {
         a.addEventListener('click',function() {
-          reportGA('anchor', this.href.split(window.location.hostname)[1])
+          gtag('event', 'anchor_click', {'anchor_path': this.href.split(splitter)[1]});
         });    
       }
     }
+
     // look for offsite links
     if(a.href.indexOf(window.location.origin) === -1 && a.href.indexOf('http') > -1) { // we are looking at a different protocol + hostname, ignoring tel: links
       if(a.href.indexOf('.pdf') === -1) {
         // we want to track links to subdomains like toolkit.covid19.ca.gov
         // but we don't want to record clicks to files.covid19.ca.gov/my.pdf as offsite links because we record those as pdf clicks above
         a.addEventListener('click',function() {
-          reportGA('offsite', this.href)
+          gtag('event', 'offsite_click', {'offsite_path': this.href});
         })          
       }
     }
   });
+
+return;
 
   /*
     Changed the parameter names here to better match GA docs and new requirements.
