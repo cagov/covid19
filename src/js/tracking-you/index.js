@@ -1,17 +1,20 @@
 import boxTracker from "./box-tracker.js";
 
 export default function setupAnalytics() {
-  return;
 
-  ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
+  //ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
 
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('summary')) {
-        reportGA('accordion', this.querySelector('summary').textContent.trim())
+        gtag('event', 'accordion_click', {
+            'accordion_summary': this.querySelector('summary').textContent.trim()
+        });
       }
     });
   });
+
+return;
 
   document.querySelectorAll('a').forEach((a) => {
     // look for and track anchor and pdf links
