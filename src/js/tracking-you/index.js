@@ -2,12 +2,17 @@ import boxTracker from "./box-tracker.js";
 
 export default function setupAnalytics() {
 
+  function reportGA(eventName, eventParams) {
+    eventParams['send_to'] = 'custom_events'; // Group also mentioned in pages/_includes/footer.njk
+    gtag('event', eventName, eventParams);
+  }
+
   //ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
 
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('summary')) {
-        gtag('event', 'accordion_click', {'accordion_summary': this.querySelector('summary').textContent.trim()});
+        reportGA('accordion_click', {'accordion_summary': this.querySelector('summary').textContent.trim()});
       }
     });
   });
@@ -22,12 +27,12 @@ export default function setupAnalytics() {
 
       if(a.href.indexOf('.pdf') > -1) {
         a.addEventListener('click',function() {
-          gtag('event', 'pdf_click', {'pdf_path': this.href.split(splitter)[1]});
+          reportGA('pdf_click', {'pdf_path': this.href.split(splitter)[1]});
         });    
       }
       if(a.href.indexOf('#') > -1) {
         a.addEventListener('click',function() {
-          gtag('event', 'anchor_click', {'anchor_path': this.href.split(splitter)[1]});
+          reportGA('anchor_click', {'anchor_path': this.href.split(splitter)[1]});
         });    
       }
     }
@@ -38,7 +43,7 @@ export default function setupAnalytics() {
         // we want to track links to subdomains like toolkit.covid19.ca.gov
         // but we don't want to record clicks to files.covid19.ca.gov/my.pdf as offsite links because we record those as pdf clicks above
         a.addEventListener('click',function() {
-          gtag('event', 'offsite_click', {'offsite_path': this.href});
+          reportGA('offsite_click', {'offsite_path': this.href});
         })          
       }
     }
@@ -52,7 +57,7 @@ return;
       elementType ==> eventAction
       eventString ==> eventLabel
   */
-  function reportGA(eventAction, eventLabel, eventCategory = 'click') {
+  function _reportGA(eventAction, eventLabel, eventCategory = 'click') {
     if(typeof(ga) !== 'undefined') {
       ga('send', 'event', eventCategory, eventAction, eventLabel);
       ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
