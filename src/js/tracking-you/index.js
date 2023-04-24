@@ -188,12 +188,15 @@ export default function setupAnalytics() {
   };
 
   // Track searches from all pages.
+  // NOTE: CDPH's gtag implementation gets us this information with view_search_results events
+  /*
   document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
     form.addEventListener('submit', event => {
       const query = form.querySelector('input[name="q"]').value; // User's search query.
       reportGA('search', {'search_term': query});
     });
   });
+  */
 
   // Check to see if we're on any of the available homepages.
   const homepages = ['/', '/tl/', '/es/', '/ar/', '/ko/', '/vi/', '/zh-hans/', '/zh-hant/'];
