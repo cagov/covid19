@@ -7,8 +7,6 @@ export default function setupAnalytics() {
     gtag('event', eventName, eventParams);
   }
 
-  //ga('set', 'transport', 'beacon'); // jbum: use beacon by default if it's available, so we don't have to request it explicitly
-
   document.querySelectorAll('cagov-accordion').forEach((acc) => {
     acc.addEventListener('click',function() {
       if(this.querySelector('summary')) {
@@ -42,31 +40,14 @@ export default function setupAnalytics() {
       if(a.href.indexOf('.pdf') === -1) {
         // we want to track links to subdomains like toolkit.covid19.ca.gov
         // but we don't want to record clicks to files.covid19.ca.gov/my.pdf as offsite links because we record those as pdf clicks above
+        /*
         a.addEventListener('click',function() {
-          reportGA('offsite_click', {'offsite_path': this.href});
+          reportGA('offsite_click', {'url': this.href});
         })          
+        */
       }
     }
   });
-
-  /*
-    Changed the parameter names here to better match GA docs and new requirements.
-    Old-to-new mappings:
-      elementType ==> eventAction
-      eventString ==> eventLabel
-  function _reportGA(eventAction, eventLabel, eventCategory = 'click') {
-    if(typeof(ga) !== 'undefined') {
-      ga('send', 'event', eventCategory, eventAction, eventLabel);
-      ga('tracker2.send', 'event', eventCategory, eventAction, eventLabel);
-      ga('tracker3.send', 'event', eventCategory, eventAction, eventLabel);
-      // gtag('event','click',{'event_category':elementType,'event_label':eventString});
-    } else {
-      setTimeout(function() {
-        reportGA(eventAction, eventLabel, eventCategory);
-      }, 500);
-    }
-  }
-  */
 
   document.querySelectorAll('.show-all').forEach(btn => {
     const isCloseButton = btn.classList.contains('d-none');
@@ -135,8 +116,7 @@ export default function setupAnalytics() {
     Kennedy Project tracking stuff starts here.
   */
 
-return;
-
+/*
   // Create a throttled event listener.
   const throttle = (fn, delay) => (event) => {
     let wait = false;
@@ -175,34 +155,11 @@ return;
     });
   };
 
-  // Give all analytics calls a chance to finish before following the link.
-  // Note this generates a function for use by an event listener.
-  const linkHandler = (href, eventAction, eventLabel, follow = true) => (event) => {
-    // Fire off reports to Google Analytics.
-    reportGA(eventAction, eventLabel);
-    // we are using beacon by default, if it's available
-    // window.ga('send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
-    // window.ga('tracker2.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
-    // window.ga('tracker3.send', 'event', 'click', eventAction, eventLabel, { transport: 'beacon' });
-  };
-
-  // Add 'external' to front of any supplied links, when relevant.
-  const annotateExternalLinks = (link) => {
-    return (link.hostname === document.location.hostname) ? link.href : `external-${link.href}`;
-  };
-
   // Report a single error to GA.
   const trackError = (error, errorMsg = {}) => {
     // console.log("Tracking error");
     const fieldsObj = { eventAction: 'uncaught error: ' + errorMsg };
     window.ga('send', 'event', 'javascript', 'error', (error && error.stack) || '(not set)', fieldsObj);
-    // this syntax does not work
-    // window.ga('send', 'event', Object.assign({
-    //   eventCategory: 'javascript',
-    //   eventAction: 'error',
-    //   eventLabel: (error && error.stack) || '(not set)',
-    //   nonInteraction: true
-    // }, fieldsObj));
   };
 
   // Tracks and reports errors to GA.
@@ -217,119 +174,120 @@ return;
     window.addEventListener('error', (event) => trackError(event.error, event.message + " filename:" + event.filename + " lineno:" + event.lineno));
   };
 
+  // Add these events if we're public, not in local development scenarios.
+  if (window.location.hostname !== 'localhost') {
+    trackErrors();
+  }
+*/
+
+  // Give all analytics calls a chance to finish before following the link.
+  // Note this generates a function for use by an event listener.
+  const linkHandler = (eventName, url) => (event) => {
+    const params = {'url': url};
+    reportGA(eventName, params);
+  };
+
+  // Track searches from all pages.
+  document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
+    form.addEventListener('submit', event => {
+      const query = form.querySelector('input[name="q"]').value; // User's search query.
+      reportGA('search', {'search_term': query});
+    });
+  });
+
   // Check to see if we're on any of the available homepages.
   const homepages = ['/', '/tl/', '/es/', '/ar/', '/ko/', '/vi/', '/zh-hans/', '/zh-hant/'];
 
-  // Don't load up these event listeners unless we've got Google Analytics on the page.
-  if (window.ga && window.ga.create) {
-    // Track searches from all pages.
-    document.querySelectorAll('.header-search-form, .expanded-menu-search-form').forEach(form => {
-      form.addEventListener('submit', event => {
-        const eventAction = window.location.pathname; // Originating page of the search.
-        const eventLabel = form.querySelector('input[name="q"]').value; // User's search query.
-
-        // Send info to Google Analytics.
-        reportGA(eventAction, eventLabel, 'search');
-        // window.ga('send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
-        // window.ga('tracker2.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
-        // window.ga('tracker3.send', 'event', 'search', eventAction, eventLabel, { transport: 'beacon' });
-      });
+  // Homepage-only events
+  if (homepages.indexOf(window.location.pathname) > -1) {
+    // Report video clicks.
+    document.querySelectorAll('.video-modal-open').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_video_play', link.href));
     });
 
-    // Add these events if we're public, not in local development scenarios.
-    if (window.location.hostname !== 'localhost') {
-      trackErrors();
-    }
+    // Report clicks on footer links.
+    document.querySelectorAll('footer a').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_footer_click', link.href));
+    });
 
-    // universal event click trackers based on data attributes like: data-tracking-action="cta" data-tracking-label="$50 cards"
-    document.querySelectorAll('a[data-tracking-action="cta"]').forEach( el => {
-      el.addEventListener('click',function(e) {
-        reportGA('cta', this.dataset.trackingLabel, 'click');
-      })
-    })
+    // Report clicks on Tracking Covid section.
+    document.querySelectorAll('.hero-stats a').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_tracking_covid_click', link.href));
+    });
 
-    // Add these events if we're on the homepage.
-    if (homepages.indexOf(window.location.pathname) > -1) {
-      // Track how far the user has scrolled the homepage.
-      window.addEventListener('scroll', throttle(scrollHandler('homepage'), 1000));
-      // Report video clicks.
-      const videoUrl = document.querySelector('a.video-modal-open').href;
-      document.querySelectorAll('.video-modal-open').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-video', videoUrl, false));
-      });
-      // Report clicks on links in the menu.
-      document.querySelector('cagov-navoverlay').addEventListener('click', function(event) {
-        if(event.target.classList.contains('js-event-hm-menu')) {
-          reportGA('homepage-menu', event.target.textContent.trim(), 'click');
-        }
-      });
-      // Report clicks on Want to Know section.
-      document.querySelectorAll('.js-event-hm-wtk').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-want to know', link.href));
-      });
-      // Report clicks on footer links.
-      document.querySelectorAll('footer a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-footer', annotateExternalLinks(link)));
-      });
-      // Report clicks on Tracking Covid section.
-      document.querySelectorAll('.hero-stats a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-tracking covid', link.href));
-      });
-      // Report clicks on Hero Text section.
-      document.querySelectorAll('.hero-text a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-hero text', link.href));
-      });
-      // Report clicks on Alerts section.
-      document.querySelectorAll('.hero-alert a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-alerts section', annotateExternalLinks(link)));
-      });
-      // Report clicks on featured-links
-      document.querySelectorAll('.featured-content a').forEach(link => {
-        link.addEventListener('click', linkHandler(link.href, 'homepage-middle links', link.href));
-      });
-    }
+    // Report clicks on main headline link
+    document.querySelectorAll('.hero-alert .action-link').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_headline_click', link.href));
+    });
 
-    if (window.location.pathname.match(/\/equity[/]?$/g)) {
-      window.addEventListener('scroll', throttle(scrollHandler('equity'), 1000));
-      
-      let searchElement = document.querySelector('cagov-county-search');
-      searchElement.addEventListener('county-selected', function(e) {
-        // console.log("county selected! ",e.detail);
-        if (e.detail.how == 'tab') {
-          reportGA('tab-select',e.detail.county, 'click');
-        } else {
-          reportGA('county-select', e.detail.county, 'activity-status');
-        }
-      }.bind(this), false);
-      
-      // Setting up trackers for big blue bar chart
-      document.addEventListener('setup-sd-tab-tracking', function() {
-        for (let tlabel of ['income','housing','healthcare']) {
-          const btn = document.querySelector("button.large-tab." + tlabel);
-          if (btn != null) {
-            btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
-          }
-        }
-      });
+    // Report clicks on headline social links.
+    document.querySelectorAll('.hero-alert .social-link').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_headline_social_click', link.href));
+    });
 
-      document.querySelectorAll('.small-tab').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          let tabName = this.getAttribute('data-key');
-          // console.log("Got tab click",tabName);
-          reportGA('tab-select', tabName); // equity-tab-select?  or tabName+":equity"?
+    // Report clicks on featured links
+    document.querySelectorAll('.featured-content a').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_featured_click', link.href));
+    });
 
-        });
-      });
-      // this event generated by box-tracker
-      window.addEventListener('chart-in-view', function(e) {
-        reportGA('chart-in-view', e.detail.label, 'scroll');
-      });
-      boxTracker('cagov-chart-re-pop', 're-pop');
-      boxTracker('cagov-chart-re-100k', 're-100k');
-      boxTracker('cagov-chart-d3-lines', 'health-equity');
-      boxTracker('cagov-chart-equity-data-completeness', 'data-completeness');
-      boxTracker('cagov-chart-d3-bar', 'social-bar');
-
-    }
+    // Report clicks on myturn links
+    document.querySelectorAll('a').forEach(link => {
+      if (link.href.indexOf('myturn.ca.gov') >= 0) {
+        link.addEventListener('click', linkHandler('homepage_myturn_click', link.href));
+      }
+    });
   }
+
+  if (window.location.pathname.indexOf('/vaccines') >= 0) {
+    document.querySelectorAll('a').forEach(link => {
+      if (link.href.indexOf('myturn.ca.gov') >= 0) {
+        link.addEventListener('click', linkHandler('vaccines_myturn_click', link.href));
+      }
+    });
+  }
+
+
+
+/*
+  if (window.location.pathname.match(/\/equity[/]?$/g)) {
+      
+    let searchElement = document.querySelector('cagov-county-search');
+    searchElement.addEventListener('county-selected', function(e) {
+      // console.log("county selected! ",e.detail);
+      if (e.detail.how == 'tab') {
+        reportGA('tab-select',e.detail.county, 'click');
+      } else {
+        reportGA('county-select', e.detail.county, 'activity-status');
+      }
+    }.bind(this), false);
+      
+    // Setting up trackers for big blue bar chart
+    document.addEventListener('setup-sd-tab-tracking', function() {
+      for (let tlabel of ['income','housing','healthcare']) {
+        const btn = document.querySelector("button.large-tab." + tlabel);
+        if (btn != null) {
+          btn.addEventListener('click', (e) => reportGA('tab-select', tlabel) );
+        }
+      }
+    });
+
+    document.querySelectorAll('.small-tab').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        let tabName = this.getAttribute('data-key');
+        // console.log("Got tab click",tabName);
+        reportGA('tab-select', tabName); // equity-tab-select?  or tabName+":equity"?
+
+      });
+    });
+    // this event generated by box-tracker
+    window.addEventListener('chart-in-view', function(e) {
+      reportGA('chart-in-view', e.detail.label, 'scroll');
+    });
+    boxTracker('cagov-chart-re-pop', 're-pop');
+    boxTracker('cagov-chart-re-100k', 're-100k');
+    boxTracker('cagov-chart-d3-lines', 'health-equity');
+    boxTracker('cagov-chart-equity-data-completeness', 'data-completeness');
+    boxTracker('cagov-chart-d3-bar', 'social-bar');
+  }
+*/
 }
