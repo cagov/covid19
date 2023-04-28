@@ -206,6 +206,18 @@ export default function setupAnalytics() {
       link.addEventListener('click', linkHandler('homepage_video_play', link.href));
     });
 
+    // Report clicks on links in the menu.
+    document.querySelector('cagov-navoverlay').addEventListener('click', function(event) {
+      if(event.target.classList.contains('js-event-hm-menu')) {
+        reportGA('homepage_menu_click', {'text': event.target.textContent.trim()});
+      }
+    });
+    
+    // Report clicks on Hero Text section.
+    document.querySelectorAll('.hero-text a').forEach(link => {
+      link.addEventListener('click', linkHandler('homepage_hero_text', link.href));
+    });
+
     // Report clicks on footer links.
     document.querySelectorAll('footer a').forEach(link => {
       link.addEventListener('click', linkHandler('homepage_footer_click', link.href));
