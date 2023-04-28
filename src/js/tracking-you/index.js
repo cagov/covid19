@@ -215,7 +215,7 @@ export default function setupAnalytics() {
     
     // Report clicks on Hero Text section.
     document.querySelectorAll('.hero-text a').forEach(link => {
-      link.addEventListener('click', linkHandler('homepage_hero_text', link.href));
+      link.addEventListener('click', linkHandler('homepage_hero_click', link.href));
     });
 
     // Report clicks on footer links.
