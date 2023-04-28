@@ -40,11 +40,9 @@ export default function setupAnalytics() {
       if(a.href.indexOf('.pdf') === -1) {
         // we want to track links to subdomains like toolkit.covid19.ca.gov
         // but we don't want to record clicks to files.covid19.ca.gov/my.pdf as offsite links because we record those as pdf clicks above
-        /*
         a.addEventListener('click',function() {
           reportGA('offsite_click', {'url': this.href});
         })          
-        */
       }
     }
   });
