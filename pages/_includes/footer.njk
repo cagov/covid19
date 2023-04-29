@@ -1,30 +1,9 @@
 {% import "macros.njk" as macros %}
 {%- set text = pubData[language.id].commonPageLabels.Table1[0] -%}
 
-<!--
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-154336791-1', 'auto');
-ga('create', 'UA-3419582-2', 'auto', 'tracker2');
-ga('create', 'UA-21974567-38', 'auto', 'tracker3');
-ga('send', 'pageview');
-ga('tracker2.send', 'pageview');
-ga('tracker3.send', 'pageview');
-</script>
-<script async defer src='https://www.google-analytics.com/analytics.js'></script>
--->
-
-
-<script>
-// Based on template provided here:
+// Based on template here:
 // https://webstandards.ca.gov/add-analytics-to-your-site/
-(function () {
-  const ga = document.createElement("script");
-  ga.async = true;
-  ga.src = "https://www.googletagmanager.com/gtag/js?id=G-612TCBESCW";
-  const s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(ga, s);
-})();
 // Global site tag (gtag.js) - Google Analytics
 window.dataLayer = window.dataLayer || [];
 window.gtag = function () {
