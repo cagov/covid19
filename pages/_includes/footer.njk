@@ -4,6 +4,13 @@
 <script>
 // Based on template here:
 // https://webstandards.ca.gov/add-analytics-to-your-site/
+(function () {
+  const ga = document.createElement("script");
+  ga.async = true;
+  ga.src = "https://www.googletagmanager.com/gtag/js?id=G-612TCBESCW";
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(ga, s);
+})();
 // Global site tag (gtag.js) - Google Analytics
 window.dataLayer = window.dataLayer || [];
 window.gtag = function () {
