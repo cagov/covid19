@@ -41,9 +41,28 @@
 		return (results !== null) ? results[1] || 0 : false;
 	}
 	const urlq = urlParam('q')||'';
-  const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
+	const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
 	document.querySelectorAll('input[name=q]').forEach(x=>x.value=query);
+
+    let ele = document.getElementById('q');
+
+    // 'click' doesn't make sense but 'submit' doesn't work
+    ele.addEventListener('click', (e => {
+        const urlq = urlParam('q')||'';
+        const query = decodeURIComponent(urlq.replace(/\+/g,' ').toLowerCase());
+
+        let currentHost = `${window.location.protocol}//${window.location.hostname}`;
+
+        {% if env.dev %}
+            if (window.location.port) {
+                currentHost += ':' + window.location.port
+            }
+        {% endif %}
+
+        history.pushState(null,null,`${currentHost}${window.location.pathname}?q=${query}`);
+    }));
 </script> 
+
 <!--
 <script>
 	/***
@@ -104,7 +123,7 @@
 	} 
 	myWebSearchStartingCallback(query)
 	***/
-</script> -->
+</script>
 <script>
 	String.prototype.hashCode = function() {
 		var hash = 0, i, chr;
@@ -164,5 +183,6 @@
 			).join('');
 	}
 </script>
+ -->
 
-<script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script>
+<!-- <script src="https://cse.google.com/api/003358532045999200914:uxxka6d3pge/popularqueryjs?view=week&callback=popularQueryiesCallback"></script> -->

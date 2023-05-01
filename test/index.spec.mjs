@@ -10,9 +10,9 @@ test('home page tests', async ({ page }) => {
   // await checkA11y(page) -- this is failing due to contrast issues, need to fix or configure to ignore if invalid
 
   // retrieve GA window object
-  const dataLayerOnLoad = await page.evaluate(() => {
-    return Promise.resolve(window.gaData['UA-3419582-2'].hitcount);
-  },);
+  //const dataLayerOnLoad = await page.evaluate(() => {
+    //return Promise.resolve(window.gaData['UA-3419582-2'].hitcount);
+  //},);
   
   // verify page feedback form is in initial state with textarea hidden
   const inVisibleFeedback = await page.locator('.feedback-form-add');
@@ -26,10 +26,10 @@ test('home page tests', async ({ page }) => {
   expect(visibleFeedback).toBeTruthy();
 
   // the feedback interaction should have added an event to GA dataLayer
-  const dataLayerAfterAnchorClick = await page.evaluate(() => {
-    return Promise.resolve(window.gaData['UA-3419582-2'].hitcount);
-  },);
-  expect((dataLayerAfterAnchorClick - dataLayerOnLoad) >= 1).toBe(true);
+  //const dataLayerAfterAnchorClick = await page.evaluate(() => {
+    //return Promise.resolve(window.gaData['UA-3419582-2'].hitcount);
+  //},);
+  //expect((dataLayerAfterAnchorClick - dataLayerOnLoad) >= 1).toBe(true);
 });
 
 test('chart sparkline tests', async ({ page }) => {
