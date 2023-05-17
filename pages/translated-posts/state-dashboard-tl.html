@@ -290,7 +290,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>Sinusuri ng CDC ang kasalukuyang panganib sa COVID-19 ng bawat bansa ayon sa mga antas. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">Alamin ang iyong antas ng komunidad ng county</a>. Ilagay ang iyong county para sa detalyadong data.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} (na) kumpirmadong pagkamatay.</p>
+<p>Ilagay ang iyong county para sa detalyadong data. Mag-type ng dalawa o higit pang character para sa mga resulta.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Mga kaso at pagkamatay</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang California ay may {{_varStatTotalCases_}} (na) kumpirmado nang kaso ng COVID-19, na nagresulta sa {{_varStatTotalDeaths_}} (na) kumpirmadong pagkamatay.</p>
 
 
 
@@ -301,9 +301,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Mga Kaso sa California</li>
           <li data-label="chartTitleCounty">Mga Kaso sa County ng {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} (na) kaso</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> (na) average na kaso bawat araw</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> (na) kaso sa bawat 100K (7 araw na average)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_cases}</span> (na) average na kaso bawat araw</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> (na) kaso sa bawat 100K (7 araw na average)</li>
           <li data-label="filterTabLabel1">Kumpirmado</li>
           <li data-label="filterTabLabel2">Posible</li>
           <li data-label="filterTabLabel3">Kabuuan</li>
@@ -325,9 +324,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Mga Pagkamatay sa California</li>
           <li data-label="chartTitleCounty">Mga Pagkamatay sa County ng {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> (na) kumpirmadong pagkamatay sa kabuuan</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> (na) average na pagkamatay bawat araw</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> (na) pagkamatay sa bawat 100K (7 araw na average)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_deaths}</span> (na) average na pagkamatay bawat araw</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> (na) pagkamatay sa bawat 100K (7 araw na average)</li>
           <li data-label="filterTabLabel1">Kumpirmado</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
            <li data-label="timeTabLabel1">Lahat ng oras</li>
@@ -417,7 +415,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">Mga Pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang dami ng mga pagpapaospital dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
+<h3 class="text-center">Mga Pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="highlight">
+<h2 class="h4 color-primary mt-0">Pagkaantala sa Datos ng Pagpapaospital</h2>
+<p> Nagbago ang sistema sa pangongolekta ng datos ng pagpapaospital ng COVID-19 bilang resulta sa pagtatapos ng pederal na emergency sa pampublikong kalusugan Upang magawa ang transition na ito, ihihinto muna ng ilang linggo pagkatapos ng May 11, 2023 ang datos ng pagpapaospital ng COVID-19 sa Open Data Portal at sa COVID-19 website.</p>
+</div><p></p>
+
+
+
+<p>Ang dami ng mga pagpapaospital dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
 
 
 

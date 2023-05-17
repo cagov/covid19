@@ -193,7 +193,7 @@ formatNumberFixed(tags,1)-%}
 <!--
  {%- endif -%}
 -->
-         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Datos de origen de vacunas administradas</a> y <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">datos de origen de casos, muertes y pruebas</a></p>
+         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Datos de origen de vacunas administradas</a> y <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">datos de origen de casos, decesos y pruebas</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Notas sobre los datos</div>             </button>             <div class="card-container" aria-hidden="true">
@@ -202,7 +202,7 @@ formatNumberFixed(tags,1)-%}
 
 <li>El porcentaje de población vacunada se actualizará constantemente debido a los esfuerzos continuos de conciliación de registros de vacunas en todo el estado. Este porcentaje puede diferir de los datos reportados por las jurisdicciones de salud locales y las entidades federales.</li><li>Todos los promedios diarios son promedios de 7 días.</li><li>Las vacunas administradas tienen un retraso de 7 días.</li><li>Los casos tienen un retraso de 8 días.</li>
 
-<li>Las muertes tienen un retraso de 22 días debido a retrasos en los reportes.</li><li>Las pruebas tienen un retraso de 1 día.</li><li>Los datos de casos y muertes de los condados de Los Ángeles y San Diego tienen un retraso adicional de 1 día.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>Los denominadores de población usados para las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. Datos proporcionados por el Departamento de Salud Pública de California.</li></ul> 
+<li>Las muertes tienen un retraso de 22 días debido a retrasos en los reportes.</li><li>Las pruebas tienen un retraso de 1 día.</li><li>Los datos de casos y muertes de los condados de Los Ángeles y San Diego tienen un retraso adicional de 1 día.</li><li>Los datos sobre las pruebas aplicadas en el condado de Los Ángeles tienen un día de retraso.</li><li>Los denominadores de población que se utilizaron para determinar las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li><li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. El Departamento de Salud Pública de California es quien proporciona los datos.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion> </div>
@@ -212,11 +212,11 @@ formatNumberFixed(tags,1)-%}
 
   </div>   
 <!--END container-->
- </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Datos de no vacunados y vacunados</h2>
+ </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">Datos de personas no vacunadas y vacunadas</h2>
 
 
 
-<div id="postvax-chart-intro">Las vacunas contra la COVID-19 salvan vidas. Las vacunas son seguras y eficaces para todas las personas a partir de los 6 meses de edad. Vacunarse es la herramienta más poderosa contra la hospitalización, las formas graves de la enfermedad y la muerte. </div>
+<div id="postvax-chart-intro">Las vacunas contra la COVID-19 salvan vidas. Las vacunas son seguras y eficaces para todas las personas de 6 años de edad en adelante. Vacunarse es la herramienta más poderosa contra la hospitalización, la enfermedad grave y la muerte. </div>
 
 
 
@@ -224,34 +224,34 @@ formatNumberFixed(tags,1)-%}
     <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax deaths">Muertes</button> <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizaciones</button> <button class="large-tab js-toggle-group-postvax cases">Casos</button>     </div>
 </div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases" data-chart-config-timerange="months-3" style="display:none;"> <ul class="d-none">
     <li data-label="chartTitleState">Casos de COVID-19 en los últimos cuatro meses</li>
-    <li data-label="chartImpactStatement">Durante {RATE_MONTH}, las personas no vacunadas tuvieron <strong>{RATE_RATIO} veces más probabilidad</strong> de contagiarse de COVID-19 que las personas vacunadas con al menos una serie de vacunación primaria.</li>
+    <li data-label="chartImpactStatement">Durante {RATE_MONTH}, las personas no vacunadas tuvieron <strong>{RATE_RATIO} veces más de probabilidades</strong> de contagiarse de COVID-19 que las personas vacunadas con al menos una serie de vacunación primaria.</li>
     <li data-label="yaxis_legend">Casos semanales por cada 100 mil</li>
     <li data-label="yaxis_legend_daily">Casos por cada 100 mil (promedio móvil de 7 días)</li>
     <li data-label="xaxis_legend"></li>
     <li data-label="series1_legend">Vacunados</li>
     <li data-label="series2_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="timeTabLabel1">Todo el tiempo</li>
+    <li data-label="timeTabLabel1">Registro histórico</li>
     <li data-label="timeTabLabel2">1 año</li>
     <li data-label="timeTabLabel3">6 meses</li>
     <li data-label="timeTabLabel4">90 días</li>
     <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Casos no vacunados por cada 100 mil: <b>{UCOUNT}</b><br> Casos vacunados por cada 100 mil: <b>{VCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" data-chart-config-timerange="months-3" style="display:none;"> <ul class="d-none">
     <li data-label="chartTitleState">Hospitalizaciones por COVID-19 en los últimos cuatro meses</li>
-    <li data-label="chartImpactStatement">Durante {RATE_MONTH}, las personas no vacunadas tuvieron <strong>{RATE_RATIO} veces más probabilidad</strong> de ser hospitalizadas por COVID-19 que las personas vacunadas con al menos una serie de vacunación primaria.</li>
+    <li data-label="chartImpactStatement">Durante {RATE_MONTH}, las personas no vacunadas tuvieron <strong>{RATE_RATIO} veces más de probabilidades</strong> de ser hospitalizadas por COVID-19 que las personas vacunadas con al menos una serie de vacunación primaria.</li>
     <li data-label="yaxis_legend">Hospitalizaciones semanales por cada millón</li>
     <li data-label="yaxis_legend_daily">Hospitalizaciones por cada millón (promedio móvil de 7 días)</li>
     <li data-label="xaxis_legend"></li>
     <li data-label="series1_legend">Vacunados</li>
     <li data-label="series2_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="timeTabLabel1">Todo el tiempo</li>
+    <li data-label="timeTabLabel1">Registro histórico</li>
     <li data-label="timeTabLabel2">1 año</li>
     <li data-label="timeTabLabel3">6 meses</li>
     <li data-label="timeTabLabel4">90 días</li>
-    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Hospitalaciones de no vacunados por cada millón: <b>{UCOUNT}</b><br> Hospitalizaciones de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
+    <li data-label="tooltipContent">       Semana que termina el: <b>{WEEKDATE}</b><br> Hospitalizaciones de no vacunados por cada millón: <b>{UCOUNT}</b><br> Hospitalizaciones de vacunados por cada millón: <b>{VCOUNT}</b><br>     </li>  
   </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" data-chart-config-timerange="months-3"> <ul class="d-none">
-    <li data-label="chartTitleState">Muertes por COVID-19 en los últimos cuatro meses</li>
+    <li data-label="chartTitleState">Decesos por COVID-19 en los últimos cuatro meses</li>
     <li data-label="chartImpactStatement">Durante {RATE_MONTH}, las personas no vacunadas tuvieron <strong>{RATE_RATIO} veces más probabilidad</strong> de morir por COVID-19 que las personas vacunadas con al menos una serie de vacunación primaria.</li>
     <li data-label="yaxis_legend">Muertes semanales por cada millón</li>
     <li data-label="yaxis_legend_daily">Muertes por cada millón (promedio móvil de 7 días)</li>
@@ -259,7 +259,7 @@ formatNumberFixed(tags,1)-%}
     <li data-label="series1_legend">Vacunados</li>
     <li data-label="series2_legend">No vacunados</li>
     <li data-label="pending_legend">Datos pendientes</li>
-    <li data-label="timeTabLabel1">Todo el tiempo</li>
+    <li data-label="timeTabLabel1">Registro histórico</li>
     <li data-label="timeTabLabel2">1 año</li>
     <li data-label="timeTabLabel3">6 meses</li>
     <li data-label="timeTabLabel4">90 días</li>
@@ -271,7 +271,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer"> <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
         <div class="accordion-title">Información del cuadro</div>       </button>       <div class="card-container" aria-hidden="true">
         <div class="card-body">
-<ul class="small-text"><li>Un caso, una hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió al menos dos dosis de las vacunas de Pfizer o Moderna, o una dosis de la vacuna de Johnson & Johnson al menos dos semanas antes de dar positivo por COVID-19.</li><li>Un caso, una hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa los datos de personas a partir de los 5 años de edad.</li><li>Estos cuadros tienen un retraso en los datos. El emparejamiento de los casos de COVID-19 (incluidas las hospitalizaciones y las muertes) con el estado de vacunación se realiza semanalmente, lo que contribuye a que exista un cierto retraso. Esto se combina con retrasos naturales en la notificación de casos y hospitalizaciones, lo cual es mayor para la notificación de muertes.</li><li>Actualizamos estos cuadros el primer viernes de cada mes. Cuando publiquemos estos cuadros, habrá un retraso de un mes.</li><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li><li>El cálculo de las tasas por estado de vacunación y de vacunación de refuerzo se ve afectado por varios factores que dificultan especialmente la interpretación de las tendencias recientes. Los factores que tienen un impacto creciente en los datos a lo largo del tiempo incluyen la inmunidad de una infección previa, la disminución de la protección relacionada con la cantidad de tiempo transcurrido desde la vacunación y las diferencias en los comportamientos de prevención y pruebas realizadas por edad y estado de vacunación. A pesar de estas limitaciones, los datos siguen mostrando que la vacunación contra la COVID-19 reduce significativamente el riesgo de infección y enfermedad grave. El Departamento de Salud Pública de California (California Department of Public Health, CDPH) continúa evaluando formas de presentar esta información de una manera que explique mejor estas limitaciones.</li></ul>
+<ul class="small-text"><li>El caso, la hospitalización o la muerte de una persona vacunada es aquel que ocurre en una persona que recibió al menos dos dosis de las vacunas de Pfizer o Moderna, o una dosis de la vacuna de Johnson & Johnson al menos dos semanas antes de dar positivo por COVID-19.</li><li>El caso, la hospitalización o la muerte de una persona no vacunada es aquel que ocurre en una persona que no ha recibido una vacuna contra la COVID-19.</li><li>Este cuadro usa los datos de personas de 5 años de edad en adelante.</li><li>Estos cuadros tienen un retraso en los datos. El emparejamiento de los casos de COVID-19 (incluidas las hospitalizaciones y las muertes) con el estado de vacunación se realiza semanalmente, lo que contribuye a que exista un cierto retraso. Esto se combina con los retrasos naturales que se dan para notificar casos y hospitalizaciones, los cuales son mayores con respecto a las muertes.</li><li>Actualizamos estos cuadros el primer viernes de cada mes. Cuando publiquemos estos cuadros, habrá un retraso de un mes.</li><li>Excluimos algunos datos recientes e incompletos para reflejar con precisión las tendencias en los datos.</li><li>El Departamento de Salud Pública de California tiene más información sobre <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">los casos, las hospitalizaciones o las muertes en personas vacunadas</a>.</li><li>El cálculo de las tasas por estado de vacunación y de vacunación de refuerzo se ve afectado por varios factores que dificultan especialmente la interpretación de las tendencias recientes. Los factores que tienen un impacto creciente en los datos a lo largo del tiempo incluyen la inmunidad de una infección previa, la disminución de la protección relacionada con la cantidad de tiempo transcurrido desde la vacunación y las diferencias en los comportamientos de prevención y pruebas realizadas por edad y estado de vacunación. A pesar de estas limitaciones, los datos siguen mostrando que la vacunación contra la COVID-19 reduce significativamente el riesgo de infección y enfermedad grave. El Departamento de Salud Pública de California (California Department of Public Health, CDPH) continúa evaluando formas de presentar esta información de una manera que explique mejor estas limitaciones.</li></ul>
         </div>
       </div>
     </div>   </cagov-accordion> </div>
@@ -286,11 +286,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Consulte los datos de la vacunación</div><cagov-arrow></cagov-arrow> </a> </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Datos de condados y del estado</h2>
+<div class="mt-3 text-center">                             <a href="/vaccination-progress-data" class="link-arrow-blue">                                 <div class="link-arrow-label">Consulte los datos de la vacunación</div><cagov-arrow></cagov-arrow> </a> </div>    <hr class="wp-block-separator" id="county-statewide"/>    <h2 class="text-center color-purple">Datos por condado y de todo el estado</h2>
 
 
 
-<p>Los Centros para el Control y la Prevención de Enfermedades (Centers for Disease Control and Prevention, CDC) evalúan el riesgo actual de COVID-19 de cada condado y los organiza en niveles. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">Encuentre el nivel de la comunidad de su condado</a>. Escriba su condado para obtener datos detallados.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Casos y muertes</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19, que han dado como resultado {{_varStatTotalDeaths_}} muertes confirmadas.</p>
+<p>Escriba su condado para obtener datos detallados. Escriba dos o más caracteres para obtener resultados.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Casos y muertes</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>California tiene {{_varStatTotalCases_}} casos confirmados de COVID-19 cuyo desenlace son {{_varStatTotalDeaths_}} muertes confirmadas.</p>
 
 
 
@@ -300,14 +300,13 @@ formatNumberFixed(tags,1)-%}
  <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time"> <ul class="d-none">
           <li data-label="chartTitleState">Casos en California</li>
           <li data-label="chartTitleCounty">Casos en el condado de {REGION}</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} casos</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> promedio de casos por día</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> casos por cada 100 mil (promedio de 7 días)</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> casos de {total_cases_type} </li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_cases}</span> casos promedio por día</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> casos por cada 100 mil (promedio de 7 días)</li>
           <li data-label="filterTabLabel1">Confirmados</li>
           <li data-label="filterTabLabel2">Probables</li>
           <li data-label="filterTabLabel3">Total</li>
-          <li data-label="timeTabLabel1">Todo el tiempo</li>
+          <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
           <li data-label="tooltipContent">                   Fecha: <b>{DATE}</b><br> Tasa de casos promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE}</b><br> Casos: <b>{CASES}</b>           </li>
@@ -324,13 +323,12 @@ formatNumberFixed(tags,1)-%}
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Decesos en California</li>
           <li data-label="chartTitleCounty">Decesos en el condado de {REGION}</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> decesos totales confirmados</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> promedio de decesos por día</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> decesos por cada 100 mil (promedio de 7 días)</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> de decesos totales confirmados</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_deaths}</span> de decesos promedio por día</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> de decesos por cada 100 mil (promedio de 7 días)</li>
           <li data-label="filterTabLabel1">Confirmados</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
-           <li data-label="timeTabLabel1">Todo el tiempo</li>
+           <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
           <li data-label="tooltipContent">             Fecha: <b>{DATE}</b><br> Tasa de decesos promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE}</b><br> Decesos: <b>{DEATHS}</b>           </li>
@@ -352,7 +350,7 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 <ul class="small-text"><li>Los casos incluyen a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li>
 
-<li>Los casos confirmados hacen referencia a las personas con un resultado de prueba positivo usando una prueba molecular o PCR. Los casos probables hacen referencia a las personas con un resultado de prueba positivo usando una prueba de antígenos o prueba rápida.</li>
+<li>Los casos confirmados hacen referencia a las personas con un resultado de prueba positivo obtenido mediante una prueba molecular o PCR. Los casos probables hacen referencia a las personas con un resultado de prueba positivo obtenido mediante una prueba de antígenos o prueba rápida.</li>
 
 <li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
@@ -369,10 +367,10 @@ formatNumberFixed(tags,1)-%}
  <cagov-chart-dashboard-total-tests class="chart filter-select-space" data-chart-config-filter="testing" data-chart-config-key="tests" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Pruebas totales en California</li>
           <li data-label="chartTitleCounty">Pruebas totales en el condado de {REGION}</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> total de pruebas realizadas</li>
-          <li data-label="chartLegend2"><span class="med-num">{avg_total_tests_7_days}</span> promedio de pruebas realizadas por día</li>
+          <li data-label="chartLegend1"><span class="big-num">{total_tests_performed}</span> pruebas totales realizadas</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_total_tests_7_days}</span> pruebas realizadas en promedio por día</li>
           <li data-label="chartLegend3"><span class="med-num">{avg_tests_per_100k_7_days}</span> pruebas por cada 100 mil (promedio de 7 días)</li>
-          <li data-label="timeTabLabel1">Todo el tiempo</li>
+          <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
           <li data-label="tooltipContent">             Fecha: <b>{DATE}</b><br> Tasa de pruebas promedio por cada 100 mil en 7 días: <b>{7DAY_AVERAGE}</b><br> Total de pruebas: <b>{TOTAL_TESTS}</b>           </li>
@@ -391,7 +389,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend1"><span class="big-num">{test_positivity_7_days}</span> positividad de las pruebas (tasa de 7 días)</li>
           <li data-label="chartLegend2Increase">Incremento de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
           <li data-label="chartLegend2Decrease">Reducción de <span class="med-num">{test_positivity_7_days_delta_7_days}</span> con respecto a los 7 días anteriores</li>
-          <li data-label="timeTabLabel1">Todo el tiempo</li>
+          <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
           <li data-label="tooltipContent">             Fecha de la prueba: <b>{DATE} </b><br> Tasa de positividad de 7 días: <b>{7DAY_POSRATE} </b><br> Tasa de positividad: <b>{POSRATE} </b>           </li>
@@ -411,13 +409,20 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>La fecha de la prueba es la fecha en la que se administró la prueba.</li>
-<li>La tasa de positividad se calcula como el número de pruebas moleculares positivas dividido entre el total de pruebas moleculares realizadas. La tasa de positividad incluye a personas en prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li><li>Los datos sobre pruebas del condado de Los Ángeles tienen un retraso de 1 día.</li><li>La tasa de positividad se reportaba anteriormente como un promedio de 14 días.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
+<ul class="small-text"><li>La fecha de la prueba es la fecha en la que se hizo la prueba.</li>
+<li>La tasa de positividad se calcula como el número de pruebas moleculares positivas dividido entre el total de pruebas moleculares realizadas. La tasa de positividad incluye a personas en las prisiones estatales y federales, instalaciones del Servicio de Inmigración y Control de Aduanas de los EE. UU., instalaciones de detención del alguacil de los EE. UU. e instalaciones del Departamento de Hospitales del Estado.</li><li>Los datos sobre las pruebas aplicadas en el condado de Los Ángeles tienen un día de retraso.</li><li>La tasa de positividad se reportaba anteriormente como un promedio de 14 días.</li><li>Los denominadores de población usados en estos cuadros provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
 
-<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>El número de hospitalizaciones debido a casos confirmados de COVID-19 en California alcanzó un total de {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} con respecto al total del día anterior. El número de pacientes de ICU debido a casos confirmados de COVID-19 en California alcanzó un total de {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} con respecto al total del día anterior.</p>
+<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="highlight">
+<h2 class="h4 color-primary mt-0">Retrasos en los datos relacionados con las hospitalizaciones</h2>
+<p> El sistema de recopilación de datos de hospitalizaciones por COVID-19 cambió como consecuencia del término de la emergencia de salud pública federal. Para que la transición se lleve a cabo, los datos de las hospitalizaciones por COVID-19 en el portal Open Data y en el sitio web sobre COVID-19 sufrirán una interrupción durante algunas semanas después del 11 de mayo de 2023.</p>
+</div><p></p>
+
+
+
+<p>El número de hospitalizaciones debido a casos confirmados de COVID-19 en California alcanzó un total de {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} con respecto al total del día anterior. El número de pacientes de ICU debido a casos confirmados de COVID-19 en California alcanzó un total de {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} con respecto al total del día anterior.</p>
 
 
 
@@ -437,12 +442,12 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> pacientes en ICU menos con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
           <li data-label="filterTabLabel1">Hospitalizados</li>
           <li data-label="filterTabLabel2">ICU</li>
-          <li data-label="timeTabLabel1">Todo el tiempo</li>
+          <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
           <li data-label="xAxisLegend">Fecha reportada</li>
           <li data-label="dayAverage">Promedio de 14 días</li>
-          <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de 14 días de pacientes hospitalizados: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContent">             Fecha reportada: <b>{DATE} </b><br> Total de pacientes hospitalizados: <b>{TOTAL_HOSPITALIZED} </b><br> Promedio de pacientes hospitalizados en 14 días: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
@@ -454,7 +459,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> camas disponibles menos en ICU con respecto al total del día anterior (reducción de {CHANGE_FACTOR})</li>
           <li data-label="xAxisLegend">Fecha reportada</li>
           <li data-label="tooltipContent">El <b>{DATE}</b> había un total de <b>{VALUE}</b> camas disponibles en las ICU.</li>
-          <li data-label="timeTabLabel1">Todo el tiempo</li>
+          <li data-label="timeTabLabel1">Registro histórico</li>
           <li data-label="timeTabLabel2">6 meses</li>
           <li data-label="timeTabLabel3">90 días</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
@@ -467,10 +472,10 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Información del cuadro</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Los datos de pacientes con sospecha de COVID-19 están disponibles en los datos de origen de pacientes hospitalizados e ICU.</li><li>Hay disponibles más detalles sobre los pacientes hospitalizados y en las ICU, incluidos los pacientes con sospecha de tener COVID-19, en el <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">panel de control de hospitalizaciones</a>.</li></ul>
+<ul class="small-text"><li>Los datos de pacientes con sospecha de COVID-19 están disponibles en los datos de origen de pacientes hospitalizados e ICU.</li><li>En el <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">panel de control de hospitalizaciones</a>, se puede encontrar más información sobre los pacientes hospitalizados y en las ICU, incluidos los pacientes con sospecha de tener COVID-19.</li></ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
   <div class="container pt-1 pb-5">
-    <h2 class="text-center color-primary">Casos y muertes por etnia, sexo y edad</h2>
+    <h2 class="text-center color-primary">Casos y decesos por etnia, sexo y edad</h2>
     <div class="col-lg-12 bg-white px-4 py-4">
       <div class="d-flex flex-column flex-md-row justify-content-center my-3">
         <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">Raza y etnia</button> <button class="large-tab js-toggle-group gender">Género</button> <button class="large-tab js-toggle-group age">Edad</button>         </div>
@@ -482,7 +487,7 @@ formatNumberFixed(tags,1)-%}
           <div id="gender-graph" class="toggle-group-element" style="display:none">
             <div id="genderGroupChartContainer">
               <div class="mx-auto">
-                <p>La distribución de las muertes confirmadas por COVID-19 revela una disparidad entre los géneros: los hombres tienen un número desproporcionado de muertes en relación con su población.</p>
+                <p>La distribución de los decesos confirmados por COVID-19 revela una disparidad entre géneros: se presenta una cantidad desproporcionada de decesos en hombres en relación con su población.</p>
               </div>               
 <!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
@@ -506,7 +511,7 @@ formatNumberFixed(tags,1)-%}
           <div id="age-graph" class="toggle-group-element" style="display:none">
             <div id="ageGroupChartContainer">
               <div class="mx-auto">
-                <p>La distribución de casos confirmados y muertes por COVID-19 revela disparidades significativas entre los grupos de edad de California. Las personas de 18 a 49 años tienen un número desproporcionado de casos. Las personas de 65 años o más tienen un número desproporcionado de muertes. Hay más <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">datos sobre la edad con respecto a la COVID-19</a>, incluidos grupos de edad con rangos más reducidos.</p>
+                <p>La distribución de casos confirmados y muertes por COVID-19 revela disparidades significativas entre los grupos de edad de California. Las personas de 18 a 49 años tienen un número desproporcionado de casos. Las personas de 65 años o más tienen un número desproporcionado de muertes. Se cuenta con más <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">información sobre la edad con respecto a la COVID-19</a>, que incluye grupos de edad específicos.</p>
               </div>               
 <!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
@@ -530,19 +535,19 @@ formatNumberFixed(tags,1)-%}
           <div id="ethnicity-graph" class="toggle-group-element">
             <div id="ethnicityGroupChartContainer">
               <div class="mx-auto">
-                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se encuentran disponibles <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales de raza y etnia de la COVID-19</a>.</p>
+                <p>La distribución de casos confirmados de COVID-19 revela disparidades significativas dentro de la demografía racial y étnica general de California, y los grupos latinos y nativos de Hawái e islas del Pacífico tienen un número desproporcionado de casos en relación con su población en el estado. Se cuenta con <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">datos adicionales sobre la raza y el origen étnico con respecto a la COVID-19</a>.</p>
               </div>               
 <!-- <div class="tableauPlaceholder"></div> -->
                <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">Casos confirmados por raza y etnia en California</li>
+                      <li data-label="chartTitle">Casos confirmados por raza y origen étnico en California</li>
                       <li data-label="chartLegend1">% de casos confirmados</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">Las personas de {category} representan el {metric-value} de casos confirmados y {metric-baseline-value} de la población total de California.</li>
-                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: los datos se actualizan semanalmente. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y etnia, “Otros” significa aquellos que no pertenecen a ninguna raza o etnia enumerada.</li>
+                      <li data-label="footerText">Se actualizó el {PUBLISHED_DATE} con datos del {MINUS_ONE_DATE}. Nota: los datos se actualizan semanalmente. Es posible que los porcentajes no sumen el 100 % debido al redondeo. En raza y origen étnico, “Otros” significa aquellos que no pertenecen a ninguna raza o grupo étnico enumerado.</li>
                     </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases> </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">Decesos confirmados por raza y etnia en California</li>
+                      <li data-label="chartTitle">Decesos confirmados por raza y origen étnico en California</li>
                       <li data-label="chartLegend1">% de casos confirmados de decesos</li>
                       <li data-label="chartLegend2">% de población del estado</li>
                       <li data-label="chartBarCaption">Las personas de {category} representan {metric-value} de decesos confirmados y {metric-baseline-value} de la población total de California.</li>
@@ -555,13 +560,13 @@ formatNumberFixed(tags,1)-%}
         </div>
       </div>
     </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Vea más datos detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a> </div>     
+    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">Consultar datos más detallados por grupo.</div>         <cagov-arrow></cagov-arrow> </a> </div>     
 <!--END col-12-->
    </div>   
 <!--END CONTAINER-->
  </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
-        <h2>Explore más datos</h2>
+        <h2>Explorar más datos</h2>
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div class="row d-flex p-2">

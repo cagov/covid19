@@ -290,7 +290,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>美國疾病控制及預防中心 (Centers for Disease Control and Prevention, CDC) 對每個縣當前的COVID-19風險進行評估，並據此劃分級別。<a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">確認您所在縣的級別。</a>鍵入縣名，了解詳細數據。</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>加州共有{{_varStatTotalCases_}}例COVID-19確診病例，確認造成{{_varStatTotalDeaths_}}人死亡。</p>
+<p>鍵入縣名，了解詳細數據。請輸入兩個或多個字符以獲取結果。</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">病例數和死亡數</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>加州共有{{_varStatTotalCases_}}例COVID-19確診病例，確認造成{{_varStatTotalDeaths_}}人死亡。</p>
 
 
 
@@ -301,9 +301,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">加州病例數</li>
           <li data-label="chartTitleCounty">{REGION}縣的病例數</li>
           <li data-label="chartLegend1"><span class="big-num">{total_cases}例</span> {total_cases_type}病例</li>
-          <li data-label="chartLegend2Increase">每天平均<span class="med-num">{avg_cases}</span>例病例</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3">每10萬人中的病例數：<span class="med-num">{cases_per_100k_7_days}</span>（7日平均數）</li>
+          <li data-label="chartLegend2">每天平均<span class="med-num">{avg_cases}</span>例病例</li>
+          <li data-label="chartLegend3">每10萬人中的病例數：<span class="med-num">{cases_per_100k_7_days}</span>（7日平均數）</li>
           <li data-label="filterTabLabel1">已確認</li>
           <li data-label="filterTabLabel2">疑似</li>
           <li data-label="filterTabLabel3">總計</li>
@@ -325,9 +324,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">加州死亡數</li>
           <li data-label="chartTitleCounty">{REGION}縣的死亡數</li>
           <li data-label="chartLegend1">確認死亡總數：<span class="big-num">{total_confirmed_deaths}</span></li>
-          <li data-label="chartLegend2Increase">每日平均死亡數：<span class="med-num">{avg_deaths}</span> </li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3">每10萬人中的死亡數<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均數）</li>
+          <li data-label="chartLegend2">每日平均死亡數：<span class="med-num">{avg_deaths}</span> </li>
+          <li data-label="chartLegend3">每10萬人中的死亡數<span class="med-num">{deaths_per_100k_7_days}</span>（7日平均數）</li>
           <li data-label="filterTabLabel1">已確認</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
            <li data-label="timeTabLabel1">所有時間</li>
@@ -417,7 +415,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">住院</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>在加州因確診感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，比前一天的總數{{_varStatHospitalChange_ | abs}}{{_varStatHospitalChangeText_}} 。在加州因確診感染COVID-19而進入重症監護室 (Intensive Care Unit, ICU) 的人數總共達到了{{_varStatIcuTotal_}}， 比前一天的總數{{_varStatIcuChange_ | abs}}{{_varStatIcuChangeText_}}。</p>
+<h3 class="text-center">住院</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="highlight">
+<h2 class="h4 color-primary mt-0">住院數據延期更新</h2>
+<p> 隨著聯邦公共衛生緊急狀態的結束，COVID-19住院數據收集系統發生了變更。為了完成此轉換，開放數據門戶網站 (Open Data Portal) 和COVID-19網站上的COVID-19住院數據將在2023年5月11日後暫停更新幾週。</p>
+</div><p></p>
+
+
+
+<p>在加州因確診感染COVID-19而住院的人數總共達到了{{_varStatHospitalTotal_}}，比前一天的總數{{_varStatHospitalChange_ | abs}}{{_varStatHospitalChangeText_}} 。在加州因確診感染COVID-19而進入重症監護室 (Intensive Care Unit, ICU) 的人數總共達到了{{_varStatIcuTotal_}}， 比前一天的總數{{_varStatIcuChange_ | abs}}{{_varStatIcuChangeText_}}。</p>
 
 
 

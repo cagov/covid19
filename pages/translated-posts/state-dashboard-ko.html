@@ -202,7 +202,7 @@ formatNumberFixed(tags,1)-%}
 
 <li>백신을 접종 받은 인구 비율은 주 전역에서 백신 관련 기록 보정 노력이 진행됨에 따라 지속적으로 업데이트될 예정입니다. 본 비율은 지역 보건 관할지 및 연방 기관이 보고하는 데이터와 차이가 있을 수 있습니다.</li><li>모든 일일 평균값은 7일 평균값을 말합니다.</li><li>백신 투여 건수에는 7일의 시차가 있습니다.</li><li>확진자 수에는 8일의 시차가 있습니다.</li>
 
-<li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사자 데이터는 1일의 시차가 있습니다.</li><li>10만명당 비율에 대해 사용된 인구수 분모는 캘리포니아의 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
+<li>사망자 수에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li><li>검사 건수에는 1일의 시차가 있습니다.</li><li>Los Angeles 및 San Diego 카운티의 확진자 및 사망자 데이터는 1일의 시차가 추가로 있게 됩니다.</li><li>Los Angeles 카운티의 검사 데이터는 1일의 시차가 있습니다.</li><li>10만명 당 비율에 대해 사용된 인구수 분모는 캘리포니아주 재정부(Department of Finance)의 2020년도 예상 인구수를 참조하였습니다.</li><li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion> </div>
@@ -290,7 +290,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>질병관리센터(Centers for Disease Control and Prevention, CDC)는 카운티 별 현 COVID-19 위험도를 여러 수준으로 평가하고 있습니다. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">해당 카운티의 지역 사회 수준을 확인하십시오</a>. 해당 카운티를 입력하여 자세한 데이터를 확인하십시오.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">사례 건 수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 확인 사망자 수는 {{_varStatTotalDeaths_}} 명입니다.</p>
+<p>해당 카운티를 입력하여 자세한 데이터를 확인하십시오. 결과를 확인하려면 두 자 이상의 문자를 입력하십시오.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">사례 건 수 및 사망자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아의 COVID-19 확진자 수는 {{_varStatTotalCases_}} 명이며 이로 인한 확인 사망자 수는 {{_varStatTotalDeaths_}} 명입니다.</p>
 
 
 
@@ -301,9 +301,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">캘리포니아 내 확진자 수</li>
           <li data-label="chartTitleCounty">{REGION} 카운티 내 사례 건 수</li>
           <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} 사례 건 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> 일일 평균 사례 건 수</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> 10만명 당 사례 건 수(7 일 평균)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_cases}</span> 일일 평균 사례 건 수</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> 10만명 당 사례 건 수(7 일 평균)</li>
           <li data-label="filterTabLabel1">확진</li>
           <li data-label="filterTabLabel2">가능성이 있음</li>
           <li data-label="filterTabLabel3">합계</li>
@@ -325,9 +324,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">캘리포니아 내 사망자 수</li>
           <li data-label="chartTitleCounty">{REGION} 카운티 내 사망자 수</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> 총 확인 사망자 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> 일일 평균 사망자 수</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> 10만명 당 사망자 수(7일 평균)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_deaths}</span> 일일 평균 사망자 수</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> 10만명 당 사망자 수(7일 평균)</li>
           <li data-label="filterTabLabel1">확진</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
            <li data-label="timeTabLabel1">항시</li>
@@ -417,7 +415,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">입원 환자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 확진자로 인한 입원 환자 수는 총 {{_varStatHospitalTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} 명입니다. 캘리포니아 내 COVID-19 확진자로 인한 ICU 환자 수는 총 {{_varStatIcuTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} 명입니다.</p>
+<h3 class="text-center">입원 환자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="highlight">
+<h2 class="h4 color-primary mt-0">입원 데이터 지연</h2>
+<p> 연방 정부의 공중 건강 비상사태가 종료된 결과로 COVID-19 입원 데이터 수집 시스템에 변경이 있었습니다. 이번 변경 이행을 위해 공공 데이터 포털 및  COVID-19 웹사이트 상의 COVID-19 입원 데이터를 2023년 5월 11일 이후 수 주 동안 중단하게 됩니다.</p>
+</div><p></p>
+
+
+
+<p>캘리포니아 내 COVID-19 확진자로 인한 입원 환자 수는 총 {{_varStatHospitalTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} 명입니다. 캘리포니아 내 COVID-19 확진자로 인한 ICU 환자 수는 총 {{_varStatIcuTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} 명입니다.</p>
 
 
 

@@ -290,7 +290,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>Trung Tâm Kiểm Soát và Phòng Ngừa Dịch Bệnh (Centers for Disease Control and Prevention, CDC) đánh giá nguy cơ COVID-19 hiện tại của mỗi quận theo các mức. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">Tìm hiểu mức nguy cơ tại quận của quý vị</a>. Nhập quận của quý vị để biết dữ liệu chi tiết.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Số ca mắc và ca tử vong</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>California có {{_varStatTotalCases_}} các ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong được xác nhận.</p>
+<p>Nhập quận của quý vị để biết dữ liệu chi tiết. Nhập hai ký tự trở lên để biết kết quả.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">Số ca mắc và ca tử vong</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>California có {{_varStatTotalCases_}} các ca nhiễm COVID-19 được xác nhận, dẫn đến {{_varStatTotalDeaths_}} ca tử vong được xác nhận.</p>
 
 
 
@@ -301,9 +301,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Số ca mắc ở California</li>
           <li data-label="chartTitleCounty">Số ca mắc ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> ca mắc {total_cases_type}</li>
-          <li data-label="chartLegend2Increase">Trung bình <span class="med-num">{avg_case}</span> ca mắc mỗi ngày</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> ca mắc trên 100 nghìn người (mức trung bình trong 7 ngày)</li>
+          <li data-label="chartLegend2">Trung bình <span class="med-num">{avg_case}</span> ca mắc mỗi ngày</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> ca mắc trên 100 nghìn người (mức trung bình trong 7 ngày)</li>
           <li data-label="filterTabLabel1">Được xác nhận</li>
           <li data-label="filterTabLabel2">Có thể có</li>
           <li data-label="filterTabLabel3">Tổng số ca mắc</li>
@@ -325,9 +324,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleState">Các ca tử vong ở California</li>
           <li data-label="chartTitleCounty">Số ca tử vong ở Quận {REGION}</li>
           <li data-label="chartLegend1"><span class="big-num">{total_confirmed_deaths}</span> tổng số ca tử vong được xác nhận</li>
-          <li data-label="chartLegend2Increase">Trung bình <span class="med-num">{avg_deaths}</span> ca tử vong mỗi ngày</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> số ca tử vong trên 100 nghìn người (mức trung bình 7 ngày)</li>
+          <li data-label="chartLegend2">Trung bình <span class="med-num">{avg_deaths}</span> ca tử vong mỗi ngày</li>
+          <li data-label="chartLegend3"><span class="med-num">{deaths_per_100k_7_days}</span> số ca tử vong trên 100 nghìn người (mức trung bình 7 ngày)</li>
           <li data-label="filterTabLabel1">Được xác nhận</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
            <li data-label="timeTabLabel1">Mọi lúc</li>
@@ -417,7 +415,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">Nhập viện</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Tổng số ca nhập viện do nhiễm COVID-19 đã xác nhận tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số ca bệnh của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
+<h3 class="text-center">Nhập viện</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <div class="highlight">
+<h2 class="h4 color-primary mt-0">Trễ về Dữ Liệu Nhập Viện</h2>
+<p> Hệ thống thu thập dữ liệu nhập viện vì COVID-19 đã thay đổi do kết thúc giai đoạn khẩn cấp về sức khỏe cộng đồng của liên bang. Để cho phép quá trình chuyển tiếp này, dữ liệu nhập viện vì COVID-19 trên Cổng Thông Tin Dữ Liệu Mở và trang web về COVID-19 sẽ bị tạm dừng trong vài tuần sau ngày 11 tháng 5 năm 2023.</p>
+</div><p></p>
+
+
+
+<p>Tổng số ca nhập viện do nhiễm COVID-19 đã xác nhận tại California là {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} so với tổng số ca bệnh của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận tại California là {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} so với tổng số của ngày trước đó.</p>
 
 
 
