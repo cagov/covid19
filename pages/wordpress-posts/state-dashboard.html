@@ -389,16 +389,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated weekly.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Deaths source data</a>. Data is updated weekly.</p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li>
-
-<li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
-
-<li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text">
+<li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li>
+<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -560,138 +558,6 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 <ul class="small-text"><li>Suspected COVID-19 patient data is available in the hospitalized patients and ICU source data.</li><li>More details about hospitalized and ICU patients, including patients suspected of having COVID-19, are available in the <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">hospitalization dashboard</a>.</li></ul>
 </div></div></div></cagov-accordion></div>
-
-
-
-<hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>
-
-
-
-<div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-1 pb-5">
-    <h2 class="text-center color-primary">Cases and deaths by ethnicity, gender, and age</h2>
-    <div class="col-lg-12 bg-white px-4 py-4">
-      <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-        <div class="large-tabs">
-          <button class="large-tab toggle-active js-toggle-group ethnicity">Race and Ethnicity</button>
-          <button class="large-tab js-toggle-group gender">Gender</button>
-          <button class="large-tab js-toggle-group age">Age</button>
-        </div>
-      </div>
-      <div class="row">
-        <!-- newly added -->
-        <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
- mx-auto d3-charts">
-          <div id="gender-graph" class="toggle-group-element" style="display:none">
-            <div id="genderGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
-              </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-gender-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by gender in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-gender-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-gender-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by gender in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-gender-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-            </div>
-          </div>
-          <div id="age-graph" class="toggle-group-element" style="display:none">
-            <div id="ageGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">COVID-19 age data</a>, including narrower age groupings, is available.</p>
-              </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-age-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by age in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-age-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-age-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by age in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-age-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-            </div>
-          </div>
-          <div id="ethnicity-graph" class="toggle-group-element">
-            <div id="ethnicityGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.</p>
-              </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by race and ethnicity in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-race-ethnicity-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by race and ethnicity in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths by race and ethnicity, gender, and age source data</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center pt-5 p-rel">
-      <a href="/equity/" class="link-arrow-blue mb-4 mt-3">
-        <div class="link-arrow-label">See more detailed data by group</div>
-        <cagov-arrow></cagov-arrow>
-      </a>
-    </div>
-    <!--END col-12-->
-  </div>
-  <!--END CONTAINER-->
-</div>
 
 
 
