@@ -17,7 +17,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">Latest update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#latest-update">Latest update</a></strong></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
 
 
 
@@ -272,6 +272,7 @@ formatNumberFixed(tags,1)-%}
 </div>
 
 
+<!--
 
 <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>
 
@@ -388,6 +389,7 @@ formatNumberFixed(tags,1)-%}
   </cagov-accordion>
 </div>
 
+-->
 
 
 <h3>Vaccines administered data</h3>
@@ -422,7 +424,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">Cases and deaths</h3>
+<h3 class="text-center mt-4">COVID-19 deaths</h3>
 
 
 
@@ -430,13 +432,13 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
-
+<p style="text-align:center">COVID-19 has resulted in {{_varStatTotalDeaths_}} confirmed deaths in California.</p>
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 1 Cases and Deaths - Cases -->
+<!--
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Cases in California</li>
@@ -471,7 +473,8 @@ formatNumberFixed(tags,1)-%}
         </ul>
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+-->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel row_center">
       <!-- 2 Cases and Deaths - Confirmed Deaths -->
       <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
@@ -508,10 +511,7 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li>
-
-<li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
-
+<ul class="small-text">
 <li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
@@ -677,6 +677,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
+<!--
 <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>
 
 
@@ -801,6 +802,7 @@ formatNumberFixed(tags,1)-%}
   </div>
 </div>
 
+-->
 
 
 
