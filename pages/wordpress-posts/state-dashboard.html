@@ -237,11 +237,11 @@ formatNumberFixed(tags,1)-%}
         {%- else -%}
 -->
   <p class="small-text">Vaccines administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
-  <br>Cases, deaths, and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
+  <br>Deaths and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
         {%- endif -%}
 -->
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
+        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">deaths and tests source data</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">
         <cagov-accordion class="chart-drawer accordion-chart-drawer">
@@ -252,12 +252,10 @@ formatNumberFixed(tags,1)-%}
             </button>
             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>The percentage of population vaccinated includes people who have completed their primary series and people who are vaccinated and boosted divided by the population eligible for vaccination.
-</li>
+                <ul class="small-text">
+<li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li>
 
-<li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li>
-
-<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Death data from Los Angeles and San Diego counties have an additional 8-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
               </div>
             </div>
           </div>
@@ -506,7 +504,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated weekly.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Deaths source data</a>. Data is updated weekly.</p>
 
 
 
