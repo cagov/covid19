@@ -40,7 +40,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
-    let totalKey = 'common_total_' + this.chartConfigFilter + '_cases';
+    let totalKey = 'total_' + this.chartConfigFilter + '_cases';
     let avgKey = this.chartConfigFilter.toUpperCase() + '_CASES_DAILY_AVERAGE';
     let capitaKey = this.chartConfigFilter + '_cases_per_100k_7_days';
     let total_cases_type = 'total ' + this.chartConfigFilter;
@@ -48,7 +48,6 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
     /* NOTE: the chart displays "total" cases but we use "combined" internally */
     if (this.chartConfigFilter === 'combined') {
         total_cases_type = 'total';
-        totalKey = totalKey.replace('common_', '');
     }
 
     const repDict = {
@@ -99,7 +98,7 @@ class CAGovDashboardConfirmedCases extends CAGovDashboardChart {
       if ('seriesSubFields' in this.chartOptions) {
         renderOptions.time_series_stacked_bars = [];
         this.chartOptions.seriesSubFields.forEach(field => {
-          renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
+            renderOptions.time_series_stacked_bars.push(this.chartData.time_series[field].VALUES);
         });
       }
     return renderOptions;

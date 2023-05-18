@@ -10,7 +10,7 @@ module.exports = function() {
     dataDomain = 'https://raw.githubusercontent.com/cagov/covid-static-data/CovidStateDashboardTables_Staging/data/dashboard/';
   }
   return new Promise((resolve, reject) => {
-    fetch(dataDomain+'combined-deaths/california.json')
+    fetch(dataDomain+'confirmed-deaths/california.json')
     .then(res => res.json())
     .then(json => {
         // const data = json;          
