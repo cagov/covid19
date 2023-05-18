@@ -255,7 +255,9 @@ formatNumberFixed(tags,1)-%}
 <li>Tests have a 1-day lag.</li>
 <li>Death data from Los Angeles and San Diego counties have an additional 1-day lag.</li>
 <li>Testing data from Los Angeles county have an 8-day lag.</li>
-<li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+<li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li>
+<li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li>
+<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul> 
               </div>
             </div>
           </div>
@@ -303,7 +305,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">Cases and deaths</h3>
+<h3 class="text-center mt-4">COVID-19 deaths</h3>
 
 
 
@@ -311,13 +313,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
+<p><p style="text-align:center">COVID-19 has resulted in {{_varStatTotalDeaths_}} confirmed deaths in California.</p></p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 1 Cases and Deaths - Cases -->
+<!--
       <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Cases in California</li>
@@ -352,6 +355,7 @@ formatNumberFixed(tags,1)-%}
         </ul>
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
+-->
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 2 Cases and Deaths - Confirmed Deaths -->
       <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
