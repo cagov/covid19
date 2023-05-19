@@ -8,6 +8,11 @@ tags: ["translate"]
 addtositemap: true
 ---
 
+<div class="highlight">
+<h2 class="h4 color-primary mt-0">Changes in Data Reporting</h2>
+<p>As of May 11, 2023, the COVID-19 California Dashboard is no longer reporting aggregate cases; CDPH will continue to report sustainable and meaningful data that allow for timely monitoring of COVID-19.</p>
+</div><p></p>
+
 <p><p class="emphasized">California is tracking data to understand the spread of COVID-19.</p>
 <!-- test Fri, Sep 9, 10:46am #1 --></p>
 
@@ -17,7 +22,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">Latest update</a></strong></li><li><a href="#postvax-status"><strong>Unvaccinated and vaccinated data</strong></a></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#ethnicity-gender-age">Cases and deaths by ethnicity, gender, and age</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
+<ul class="toc"><li><strong><a href="#latest-update">Latest update</a></strong></li><li><strong><a href="#county-statewide">County and statewide data</a></strong></li><li><strong><a href="#more">Explore more data</a></strong></li></ul>
 
 
 
@@ -141,6 +146,7 @@ formatNumberFixed(tags,1)-%}
      </div>
 
    <!-- Blue Summary Box 2 -->
+<!--
     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Cases</div>
@@ -156,16 +162,21 @@ formatNumberFixed(tags,1)-%}
              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
            </div><div>&nbsp;</div>
          </div>
+-->
          <!--Chart and Label -->
+<!--
          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          </div>
+-->
          <!--End Chart and Label -->
+<!--
        </div>
      </div>
+-->
   <!-- Blue Summary Box 3 -->
     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
@@ -231,11 +242,11 @@ formatNumberFixed(tags,1)-%}
         {%- else -%}
 -->
   <p class="small-text">Vaccines administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
-  <br>Cases, deaths, and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
+  <br>Deaths and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
         {%- endif -%}
 -->
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">cases, deaths, and tests source data</a></p>
+        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">deaths and tests source data</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">
         <cagov-accordion class="chart-drawer accordion-chart-drawer">
@@ -246,12 +257,11 @@ formatNumberFixed(tags,1)-%}
             </button>
             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>The percentage of population vaccinated includes people who have completed their primary series and people who are vaccinated and boosted divided by the population eligible for vaccination.
-</li>
+                <ul class="small-text">
+<li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li>
 
-<li>The percentage of population vaccinated will be consistently updated due to ongoing statewide vaccine record reconciliation efforts. This percentage may differ from data reported by local health jurisdictions and federal entities.</li><li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li><li>Cases have an 8-day lag.</li>
-
-<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Case and death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have a 1-day lag.</li><li>The population  denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li></ul> 
+<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have an 8-day lag.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li>
+<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a>.</li></ul> 
               </div>
             </div>
           </div>
@@ -266,6 +276,7 @@ formatNumberFixed(tags,1)-%}
 </div>
 
 
+<!--
 
 <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>
 
@@ -382,6 +393,7 @@ formatNumberFixed(tags,1)-%}
   </cagov-accordion>
 </div>
 
+-->
 
 
 <h3>Vaccines administered data</h3>
@@ -416,7 +428,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">Cases and deaths</h3>
+<h3 class="text-center mt-4">COVID-19 deaths</h3>
 
 
 
@@ -424,13 +436,13 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>California has {{_varStatTotalCases_}} confirmed cases of COVID-19, resulting in {{_varStatTotalDeaths_}} confirmed deaths.</p>
-
+<p style="text-align:center">COVID-19 has resulted in {{_varStatTotalDeaths_}} confirmed deaths in California.</p>
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 1 Cases and Deaths - Cases -->
+<!--
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
         <ul class="d-none">
           <li data-label="chartTitleState">Cases in California</li>
@@ -465,7 +477,8 @@ formatNumberFixed(tags,1)-%}
         </ul>
       </cagov-chart-dashboard-confirmed-cases>                
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+-->
+    <div class="col-lg-6 col-md-6 col-sm-12 p-rel row_center">
       <!-- 2 Cases and Deaths - Confirmed Deaths -->
       <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
@@ -497,16 +510,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cases and deaths source data</a>. Data is updated weekly.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Deaths source data</a>. Data is updated weekly.</p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Cases includes people in state and federal prisons, US Immigration and Customs Enforcement facilities, US Marshal detention facilities, and Department of State Hospitals facilities.</li>
-
-<li>Confirmed cases refer to individuals with a positive test result using a molecular or PCR test. Probable cases refer to individuals with a positive test result using an antigen or rapid test.</li>
-
-<li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li></ul>
+<ul class="small-text">
+<li>The population denominators in these charts come from the California Department of Finance’s population projections for 2020.</li>
+<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -593,16 +604,16 @@ formatNumberFixed(tags,1)-%}
 
 <h3 class="text-center">Hospitalizations</h3>
 
+<div class="highlight">
+<h2 class="h4 color-primary mt-0">Delay in Hospitalization Data</h2>
+<p>The COVID-19 hospitalization data collection system changed as a result of the end of the federal public health emergency. To allow for this transition, COVID-19 hospitalization data on the Open Data Portal and the COVID-19 website will be paused for a few weeks after May 11, 2023.</p>
+</div><p></p>
+
 
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
 
-
-<div class="highlight">
-<h2 class="h4 color-primary mt-0">Delay in Hospitalization Data</h2>
-<p> The COVID-19 hospitalization data collection system changed as a result of the end of the federal public health emergency. To allow for this transition, COVID-19 hospitalization data on the Open Data Portal and the COVID-19 website will be paused for a few weeks after May 11, 2023.</p>
-</div><p></p>
 
 
 
@@ -671,6 +682,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
+<!--
 <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>
 
 
@@ -687,7 +699,6 @@ formatNumberFixed(tags,1)-%}
         </div>
       </div>
       <div class="row">
-        <!-- newly added -->
         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
  mx-auto d3-charts">
           <div id="gender-graph" class="toggle-group-element" style="display:none">
@@ -695,7 +706,6 @@ formatNumberFixed(tags,1)-%}
               <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
               </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <cagov-chart-dashboard-groups-gender-cases class="chart">
@@ -727,7 +737,6 @@ formatNumberFixed(tags,1)-%}
               <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">COVID-19 age data</a>, including narrower age groupings, is available.</p>
               </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <cagov-chart-dashboard-groups-age-cases class="chart">
@@ -759,7 +768,6 @@ formatNumberFixed(tags,1)-%}
               <div class="mx-auto">
                 <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.</p>
               </div>
-              <!-- <div class="tableauPlaceholder"></div> -->
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">
@@ -796,10 +804,10 @@ formatNumberFixed(tags,1)-%}
         <cagov-arrow></cagov-arrow>
       </a>
     </div>
-    <!--END col-12-->
   </div>
-  <!--END CONTAINER-->
 </div>
+
+-->
 
 
 
