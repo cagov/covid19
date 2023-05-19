@@ -13,6 +13,8 @@ addtositemap: true
 <p>As of May 11, 2023, the COVID-19 California Dashboard is no longer reporting aggregate cases; CDPH will continue to report sustainable and meaningful data that allow for timely monitoring of COVID-19.</p>
 </div><p></p>
 
+
+
 <p><p class="emphasized">California is tracking data to understand the spread of COVID-19.</p>
 <!-- test Fri, Sep 9, 10:46am #1 --></p>
 
@@ -162,18 +164,14 @@ formatNumberFixed(tags,1)-%}
              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
            </div><div>&nbsp;</div>
          </div>
--->
-         <!--Chart and Label -->
-<!--
+
          <div class="mt-auto px-2">
           <div class="sparkline-cases"></div>
            <div class="text-white text-xs mt-1 ">
              <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
          </div>
--->
-         <!--End Chart and Label -->
-<!--
+
        </div>
      </div>
 -->
@@ -258,10 +256,15 @@ formatNumberFixed(tags,1)-%}
             <div class="card-container" aria-hidden="true">
               <div class="card-body">
                 <ul class="small-text">
-<li>All daily averages are 7-day averages.</li><li>Vaccines administered have a 7-day lag.</li>
-
-<li>Deaths have a 22-day lag due to delays in reporting.</li><li>Tests have a 1-day lag.</li><li>Death data from Los Angeles and San Diego counties have an additional 1-day lag.</li><li>Testing data from Los Angeles county have an 8-day lag.</li><li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li><li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li>
-<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a>.</li></ul> 
+<li>All daily averages are 7-day averages.</li>
+<li>Vaccines administered have a 7-day lag.</li>
+<li>Deaths have a 22-day lag due to delays in reporting.</li>
+<li>Tests have a 1-day lag.</li>
+<li>Death data from Los Angeles and San Diego counties have an additional 1-day lag.</li>
+<li>Testing data from Los Angeles county have an 8-day lag.</li>
+<li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li>
+<li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li>
+<li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul> 
               </div>
             </div>
           </div>
@@ -275,125 +278,6 @@ formatNumberFixed(tags,1)-%}
   <!--END container-->
 </div>
 
-
-<!--
-
-<hr class="wp-block-separator noborder mt-0" id="postvax-status"/>
-
-
-
-<h2 class="text-center color-purple">Unvaccinated and vaccinated data</h2>
-
-
-
-<div id="postvax-chart-intro">COVID-19 vaccines save lives. Vaccines are safe and effective for everyone aged 6 months and older. Getting vaccinated is the most powerful tool against hospitalization, serious illness, and death.
-</div>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">
-      <button class="large-tab toggle-active js-toggle-group-postvax deaths">Deaths</button>
-      <button class="large-tab js-toggle-group-postvax hospitalizations">Hospitalizations</button>
-      <button class="large-tab js-toggle-group-postvax cases">Cases</button>
-    </div>
-</div>
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases" data-chart-config-timerange="months-3" style="display:none;">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 cases over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to get COVID-19 than people who were vaccinated with at least a primary series.</li>
-    <li data-label="yaxis_legend">Weekly cases per 100K</li>
-    <li data-label="yaxis_legend_daily">Cases per 100K (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated cases per 100K: <b>{UCOUNT}</b><br>
-      Vaccinated cases per 100K: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" data-chart-config-timerange="months-3" style="display:none;">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 hospitalizations over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to be hospitalized with COVID-19 than people who were vaccinated with at least a primary series.</li>
-    <li data-label="yaxis_legend">Weekly hospitalizations per million</li>
-    <li data-label="yaxis_legend_daily">Hospitalizations per million (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated hospitalizations per million: <b>{UCOUNT}</b><br>
-      Vaccinated hospitalizations per million: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" data-chart-config-timerange="months-3">
-  <ul class="d-none">
-    <li data-label="chartTitleState">COVID-19 deaths over the last four months</li>
-    <li data-label="chartImpactStatement">During {RATE_MONTH}, unvaccinated people were <strong>{RATE_RATIO} times more likely</strong> to die from COVID-19 than people who were vaccinated with at least a primary series.</li>
-    <li data-label="yaxis_legend">Weekly deaths per million</li>
-    <li data-label="yaxis_legend_daily">Deaths per million (7-day running average)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">Vaccinated</li>
-    <li data-label="series2_legend">Unvaccinated</li>
-    <li data-label="pending_legend">Data pending</li>
-    <li data-label="timeTabLabel1">All time</li>
-    <li data-label="timeTabLabel2">1 year</li>
-    <li data-label="timeTabLabel3">6 months</li>
-    <li data-label="timeTabLabel4">90 days</li>
-    <li data-label="tooltipContent">
-      Week ending: <b>{WEEKDATE}</b><br>
-      Unvaccinated deaths per million: <b>{UCOUNT}</b><br>
-      Vaccinated deaths per million: <b>{VCOUNT}</b><br>
-    </li>  
-  </ul>
-</cagov-chart-dashboard-postvax-chart>
-
-
-
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">Unvaccinated and vaccinated cases, hospitalizations, and death source data</a>. Data is updated on the first week of every month.</p>
-
-
-
-<div class="wp-block-cgb-block-chart-drawer">
-  <cagov-accordion class="chart-drawer">
-    <div class="card">
-      <button class="card-header accordion-alpha" type="button" aria-expanded="false">
-        <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-        <div class="accordion-title">Chart information</div>
-      </button>
-      <div class="card-container" aria-hidden="true">
-        <div class="card-body">
-<ul class="small-text"><li>A vaccinated case, hospitalization, or death is one that occurs in a person who received at least two doses of the Pfizer or Moderna vaccines or one dose of the Johnson &amp; Johnson vaccine at least 2 weeks before they tested positive for COVID-19.</li><li>An unvaccinated case, hospitalization, or death is one that occurs in a person who has not received a COVID-19 vaccine.</li><li>This chart uses data from people 5 and older.</li><li>There is a data lag for these charts. Matching of COVID-19 cases (including hospitalizations and deaths) and vaccination status happens weekly, contributing to some lag. This compounds with natural reporting lags for cases and hospitalizations, which is larger for deaths.</li><li>We update these charts on the first Friday of each month. When we publish these charts, there will be a one month lag.</li><li>We exclude some recent, incomplete data to accurately reflect trends in the data.</li><li>The California Department of Public Health has more information about <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">vaccinated cases, hospitalizations, and deaths</a>.</li><li>Calculating rates by vaccination and booster status is affected by several factors that make interpretation of recent trends especially difficult. Factors including immunity from prior infection, waning protection related to the amount of time since vaccination, and differences in prevention and testing behaviors by age and vaccination status, have a growing impact on data over time. Despite these limitations, data continue to show that COVID-19 vaccination significantly reduces risk of infection and severe disease. CDPH continues to evaluate ways to present this information in a way that better accounts for these limitations.</li></ul>
-        </div>
-      </div>
-    </div>
-  </cagov-accordion>
-</div>
-
--->
 
 
 <h3>Vaccines administered data</h3>
@@ -436,10 +320,12 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p style="text-align:center">COVID-19 has resulted in {{_varStatTotalDeaths_}} confirmed deaths in California.</p>
+<p><p style="text-align:center">COVID-19 has resulted in {{_varStatTotalDeaths_}} confirmed deaths in California.</p></p>
+
 
 
 <div class="row">
+
       <!-- 1 Cases and Deaths - Cases -->
 <!--
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
@@ -604,6 +490,8 @@ formatNumberFixed(tags,1)-%}
 
 <h3 class="text-center">Hospitalizations</h3>
 
+
+
 <div class="highlight">
 <h2 class="h4 color-primary mt-0">Delay in Hospitalization Data</h2>
 <p>The COVID-19 hospitalization data collection system changed as a result of the end of the federal public health emergency. To allow for this transition, COVID-19 hospitalization data on the Open Data Portal and the COVID-19 website will be paused for a few weeks after May 11, 2023.</p>
@@ -612,8 +500,6 @@ formatNumberFixed(tags,1)-%}
 
 
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
-
-
 
 
 
@@ -679,135 +565,6 @@ formatNumberFixed(tags,1)-%}
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 <ul class="small-text"><li>Suspected COVID-19 patient data is available in the hospitalized patients and ICU source data.</li><li>More details about hospitalized and ICU patients, including patients suspected of having COVID-19, are available in the <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">hospitalization dashboard</a>.</li></ul>
 </div></div></div></cagov-accordion></div>
-
-
-
-<!--
-<hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>
-
-
-
-<div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-1 pb-5">
-    <h2 class="text-center color-primary">Cases and deaths by ethnicity, gender, and age</h2>
-    <div class="col-lg-12 bg-white px-4 py-4">
-      <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-        <div class="large-tabs">
-          <button class="large-tab toggle-active js-toggle-group ethnicity">Race and Ethnicity</button>
-          <button class="large-tab js-toggle-group gender">Gender</button>
-          <button class="large-tab js-toggle-group age">Age</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
- mx-auto d3-charts">
-          <div id="gender-graph" class="toggle-group-element" style="display:none">
-            <div id="genderGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 deaths reveals a disparity between genders, with males having a disproportionate number of deaths relative to their population.</p>
-              </div>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-gender-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by gender in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Unknown” gender includes those who declined to state, whose gender information is missing, or who identify as transgender, gender non-binary, gender queer, or intersex.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-gender-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-gender-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by gender in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-gender-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-            </div>
-          </div>
-          <div id="age-graph" class="toggle-group-element" style="display:none">
-            <div id="ageGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases and deaths reveals significant disparities across California’s age groups. People 18-49 have a disproportionate number of cases. People 65 and over have a disproportionate number of deaths. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">COVID-19 age data</a>, including narrower age groupings, is available.</p>
-              </div>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-age-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by age in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-age-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-age-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by age in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">The {category} age group accounts for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-age-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-            </div>
-          </div>
-          <div id="ethnicity-graph" class="toggle-group-element">
-            <div id="ethnicityGroupChartContainer">
-              <div class="mx-auto">
-                <p>The distribution of confirmed COVID-19 cases reveals significant disparities within California’s overall racial and ethnic demographics, with Latino and Native Hawaiian / Pacific Islander groups having a disproportionate number of cases relative to their population in the state. Additional <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">COVID-19 race and ethnicity data</a> is available.</p>
-              </div>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed cases by race and ethnicity in California</li>
-                      <li data-label="chartLegend1">% of confirmed cases</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed cases and {metric-baseline-value} of the total California population.</li>
-                      <li data-label="footerText">Updated {PUBLISHED_DATE} with data from {MINUS_ONE_DATE}. Note: Data is updated weekly. Percentages may not add up to 100% due to rounding. “Other” race and ethnicity means those who do not fall under any listed race or ethnicity.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-race-ethnicity-cases>                
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart">
-                    <ul class="d-none">
-                      <li data-label="chartTitle">Confirmed deaths by race and ethnicity in California</li>
-                      <li data-label="chartLegend1">% of confirmed deaths</li>
-                      <li data-label="chartLegend2">% of state population</li>
-                      <li data-label="chartBarCaption">{category} people account for {metric-value} of confirmed deaths and {metric-baseline-value} of the total California population.</li>
-                    </ul>
-                  </cagov-chart-dashboard-groups-race-ethnicity-deaths>               
-                </div> 
-              </div>
-              <p class="small-text chart-footer-caption">footerText will go here</p>
-              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Confirmed cases and deaths by race and ethnicity, gender, and age source data</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center pt-5 p-rel">
-      <a href="/equity/" class="link-arrow-blue mb-4 mt-3">
-        <div class="link-arrow-label">See more detailed data by group</div>
-        <cagov-arrow></cagov-arrow>
-      </a>
-    </div>
-  </div>
-</div>
-
--->
 
 
 
