@@ -8,6 +8,13 @@ tags: ["translate"]
 addtositemap: true
 ---
 
+<div class="highlight">
+<h2 class="h4 color-primary mt-0">التغييرات في الإبلاغ عن البيانات</h2>
+<p>اعتبارًا من 11 مايو 2023، لم تعد لوحة بيانات كوفيد-19 بكاليفورنيا (COVID-19 California Dashboard) تبلغ عن إجمالي الحالات. ستواصل إدارة الصحة العامة بولاية كاليفورنيا الإبلاغ عن بيانات مستدامة ومفيدة تسمح برصد كوفيد-19 في الوقت المناسب.</p>
+</div><p></p>
+
+
+
 <p><p class="emphasized">تقوم ولاية كاليفورنيا بتعقب البيانات لفهم انتشار كوفيد-19.</p> 
 <!-- test Fri, Sep 9, 10:46am #1 -->
 </p>
@@ -18,7 +25,7 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">آخر التحديثات</a></strong></li><li><a href="#postvax-status"><strong>بيانات الحالات المطعمة وغير المطعمة</strong></a></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#ethnicity-gender-age">الحالات والوفيات حسب العِرق والجنس والعمر</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">آخر التحديثات</a></strong></li><li><strong><a href="#county-statewide">بيانات المقاطعة والولاية</a></strong></li><li><strong><a href="#more">استكشف المزيد من البيانات</a></strong></li></ul>    
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -120,23 +127,35 @@ formatNumberFixed(tags,1)-%}
         </div>
      </div>     
 <!-- Blue Summary Box 2 -->
-     <div class="col-md-6 col-lg-3 px-10px">							
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">حالات الإصابة</div>
+ 
+<!--
+ <div class="col-md-6 col-lg-3 px-10px"> 
+ <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
+ <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Cases</div>
 
-         <div id="total-cases-number" class="text-white font-size-1-2em mb-2">            <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">إجمالي</span>          </div>
-         <div id="total-cases-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
-         <div class="text-white text-xs mb-2">
-           <div>              <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">الحالات الجديدة (لكل 100 ألف)</span>            </div><div> </div>
-         </div>          
-<!--Chart and Label -->
-          <div class="mt-auto px-2">
-          <div class="sparkline-cases"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>
-         </div>          
-<!--End Chart and Label -->
-        </div>
-     </div>   
+ <div id="total-cases-number" class="text-white font-size-1-2em mb-2">
+ <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
+ </div>
+ <div id="total-cases-today" class="text-white font-size-1-2em mb-2">
+ <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
+ </div>
+ <div class="text-white text-xs mb-2">
+ <div>
+ <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
+ </div><div>&nbsp;</div>
+ </div>
+
+ <div class="mt-auto px-2">
+ <div class="sparkline-cases"></div>
+ <div class="text-white text-xs mt-1 ">
+ <span class="text-300 date-caption-span">Past 8 weeks</span>
+ </div>
+ </div>
+
+ </div>
+ </div>
+-->
+ 
 <!-- Blue Summary Box 3 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
@@ -189,20 +208,25 @@ formatNumberFixed(tags,1)-%}
 <!--
  {%- else -%}
 -->
-   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الإصابة وحالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> 
+   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> 
 <!--
  {%- endif -%}
 -->
-         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الإصابة والوفيات والفحوصات</a></p>
+         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الوفيات والفحوصات</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
-                <ul class="small-text"><li>تشمل النسبة المئوية للسكان الذين حصلوا على اللقاح عدد الأشخاص الذين أكملوا سلسلة جرعاتهم الأساسية والأشخاص الذين حصلوا على اللقاح والجرعة المعززة والقسمة على عدد السكان المؤهلين للحصول على اللقاح. </li>
-
-<li>ستُحدث باستمرار النسبة المئوية للسكان الذين حصلوا على اللقاح بفضل الجهود الجارية لتوفيق سجلات اللقاح وتوحيدها على مستوى الولاية. قد تختلف هذه النسبة المئوية عن البيانات التي أبلغت عنها دوائر الصحة المحلية والكيانات الفيدرالية.</li><li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li><li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li><li>وتتأخر حالات الإصابة مدة 8 أيام.</li>
-
-<li>وتتأخر الوفيات مدة 22 يومًا بسبب التأخيرات في الإبلاغ.</li><li>تتأخر الاختبارات لمدة يوم واحد.</li><li>إن بيانات حالات الإصابة والوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي لمدة يوم واحد (1).</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت لمدة يوم واحد (1).</li><li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li><li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li></ul> 
+                <ul class="small-text">
+<li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li>
+<li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li>
+<li>وتتأخر الوفيات مدة 22 يومًا بسبب التأخيرات في الإبلاغ.</li>
+<li>تتأخر الاختبارات بمدة يوم واحد.</li>
+<li>إن بيانات حالات الوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي مدته يوم واحد (1).</li>
+<li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت مدة 8 أيام.</li>
+<li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li>
+<li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li>
+<li>هل تبحث عن بيانات الحالة؟ يمكن الاطلاع على بيانات الحالة التاريخية المحفوظة على <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">بوابة البيانات المفتوحة.</a></li></ul> 
               </div>
             </div>
           </div>         </cagov-accordion> </div>
@@ -212,69 +236,7 @@ formatNumberFixed(tags,1)-%}
 
   </div>   
 <!--END container-->
- </div>    <hr class="wp-block-separator noborder mt-0" id="postvax-status"/>    <h2 class="text-center color-purple">بيانات الحالات المطعمة وغير المطعمة</h2>
-
-
-
-<div id="postvax-chart-intro">لقاحات كوفيد-19 تنقذ الأرواح. اللقاحات آمنة وفعالة لكل شخص يبلغ من العمر 6 أشهر فأكبر. التطعيم هو أقوى أداة ضد دخول المستشفى والإصابة بالأمراض الخطيرة وحدوث الوفيات. </div>
-
-
-
-<div class="d-flex flex-column flex-md-row justify-content-center my-3">
-    <div class="large-tabs">       <button class="large-tab toggle-active js-toggle-group-postvax deaths">حالات الوفيات</button> <button class="large-tab js-toggle-group-postvax hospitalizations">حالات دخول المستشفى</button> <button class="large-tab js-toggle-group-postvax cases">حالات الإصابة</button>     </div>
-</div>    <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-cases-chart" data-chart-config-filter="weeks" data-chart-config-key="cases" data-chart-config-timerange="months-3" style="display:none;"> <ul class="d-none">
-    <li data-label="chartTitleState">حالات الإصابات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">خلال {RATE_MONTH}، كان الأشخاص غير المطعمين أكثر عرضة للإصابة بكوفيد-19 بمعدل <strong>{RATE_RATIO}</strong> مرة عن الأشخاص الذين تم تطعيمهم بسلسلة جرعات أولية على الأقل.</li>
-    <li data-label="yaxis_legend">حالات الإصابة الأسبوعية لكل 100 ألف</li>
-    <li data-label="yaxis_legend_daily">حالات الإصابة لكل 100 ألف (متوسط تشغيل 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">حاصل على التطعيم</li>
-    <li data-label="series2_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="timeTabLabel1">كل الوقت</li>
-    <li data-label="timeTabLabel2">سنة واحدة</li>
-    <li data-label="timeTabLabel3">6 أشهر</li>
-    <li data-label="timeTabLabel4">90 يومًا</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> الحالات غير المطعمة لكل 100 ألف: <b>{UCOUNT}</b><br> الحالات المطعمة لكل 100 ألف: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-hospitalizations-chart" data-chart-config-filter="weeks" data-chart-config-key="hospitalizations" data-chart-config-timerange="months-3" style="display:none;"> <ul class="d-none">
-    <li data-label="chartTitleState">حالات دخول المستشفيات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">خلال {RATE_MONTH}، كان الأشخاص غير المطعمين <strong>أكثر عرضة للدخول إلى المستشفى بسبب الإصابة بكوفيد-19 بمعدل {RATE_RATIO} من المرات</strong> عن الأشخاص الذين تم تطعيمهم بسلسلة جرعات أولية على الأقل.</li>
-    <li data-label="yaxis_legend">نسبة الدخول أسبوعيًا لكل مليون</li>
-    <li data-label="yaxis_legend_daily">نسبة دخول المستشفيات لكل مليون (في المتوسط على مدار 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">حاصل على التطعيم</li>
-    <li data-label="series2_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="timeTabLabel1">كل الوقت</li>
-    <li data-label="timeTabLabel2">سنة واحدة</li>
-    <li data-label="timeTabLabel3">6 أشهر</li>
-    <li data-label="timeTabLabel4">90 يومًا</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> دخول المستشفيات لغير المطعمين لكل مليون: <b>{UCOUNT}</b><br> دخول المستشفيات لغير المطعمين لكل مليون: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <cagov-chart-dashboard-postvax-chart class="chart" id="postvax-deaths-chart" data-chart-config-filter="weeks" data-chart-config-key="deaths" data-chart-config-timerange="months-3"> <ul class="d-none">
-    <li data-label="chartTitleState">حالات الوفيات بسبب كوفيد-19 خلال الأشهر الأربعة الماضية</li>
-    <li data-label="chartImpactStatement">خلال {RATE_MONTH}، كان الأشخاص غير المطعمين <strong>أكثر عرضة للوفاة بسبب الإصابة بكوفيد-19 بمعدل {RATE_RATIO} من المرات</strong> عن الأشخاص الذين تم تطعيمهم بسلسلة جرعات أولية على الأقل.</li>
-    <li data-label="yaxis_legend">حالات الوفيات أسبوعيًا لكل مليون</li>
-    <li data-label="yaxis_legend_daily">نسبة الوفيات لكل مليون (في المتوسط على مدار 7 أيام)</li>
-    <li data-label="xaxis_legend"></li>
-    <li data-label="series1_legend">حاصل على التطعيم</li>
-    <li data-label="series2_legend">غير الحاصلين على التطعيم</li>
-    <li data-label="pending_legend">البيانات عالقة</li>
-    <li data-label="timeTabLabel1">كل الوقت</li>
-    <li data-label="timeTabLabel2">سنة واحدة</li>
-    <li data-label="timeTabLabel3">6 أشهر</li>
-    <li data-label="timeTabLabel4">90 يومًا</li>
-    <li data-label="tooltipContent">       نهاية الأسبوع: <b>{WEEKDATE}</b><br> نسبة الوفيات لغير المطعمين لكل مليون: <b>{UCOUNT}</b><br> الوفيات لغير المطعمين لكل مليون: <b>{VCOUNT}</b><br>     </li>  
-  </ul> </cagov-chart-dashboard-postvax-chart> <p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-post-vaccination-infection-data">البيانات المصدرية للحالات المطعمة وغير المطعمة وحالات دخول المستشفى وحالات الوفاة</a>. تُحدَّث البيانات في الأسبوع الأول من كل شهر.</p>
-
-
-
-<div class="wp-block-cgb-block-chart-drawer">   <cagov-accordion class="chart-drawer"> <div class="card">       <button class="card-header accordion-alpha" type="button" aria-expanded="false">         <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
-        <div class="accordion-title">معلومات الرسم البياني</div>       </button>       <div class="card-container" aria-hidden="true">
-        <div class="card-body">
-<ul class="small-text"><li>الحالة التي تم تطعيمها أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص تلقى جرعتين على الأقل من لقاح Pfizer أو Moderna أو تلقى جرعة من لقاح Johnson & Johnson قبل أسبوعين على الأقل من إيجابية اختبار كوفيد-19.</li><li>الحالة غير المطعمة أو حالة دخول المستشفى أو حالة الوفاة هي حالة تحدث لشخص لم يتلق لقاح كوفيد-19.</li><li>يستخدم هذا الجدول بيانات من الأشخاص الذين يبلغون من العمر 5 أعوام فأكبر.</li><li>هناك تأخر في البيانات لهذه الجداول البيانية. إن مطابقة حالات كوفيد-19 (بما في ذلك حالات دخول المستشفيات والوفيات) وحالة التطعيم تحدث أسبوعياً، الأمر الذي يساهم في حدوث بعض التأخر. ويزيد هذا الأمر في ظل التأخرالطبيعي في الإبلاغ عن حالات الإصابة وحالات دخول المستشفيات، وهو أكبر بالنسبة للوفيات.</li><li>نقوم بتحديث هذه الجداول البيانية في أول يوم جمعة من كل شهر. عندما ننشر هذه الجداول البيانية، سيكون هناك تأخير لمدة شهر واحد.</li><li>نستبعد بعض البيانات الحديثة غير المكتملة لتنعكس لنا بدقة الاتجاهات في البيانات.</li><li>لدى وزارة الصحة العامة بكاليفورنيا معلومات أكثر عن <a href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Post-Vaccine-COVID19-Cases.aspx">الحالات المطعمة باللقاح والحالات المحتجزة بالمستشفيات وحالات الوفيات</a>.</li><li>يتأثر حساب معدلات التطعيم ووضع التطعيم بالجرعات المعززة بعدة عوامل تجعل تفسير الاتجاهات الحديثة أمرًا صعبًا بصورة استثنائية ملحوظة. إن العوامل بما فيها المناعة من العدوى السابقة وتضاؤل الحماية المتعلقة بمقدار الوقت منذ التطعيم والاختلافات في سلوكيات الوقاية وإجراء الاختبارات بحسب العمر وحالة التطعيم، لها تأثير متزايد في البيانات بمرور الوقت. وعلى الرغم من هذه القيود، ما تزال البيانات تُظهر أن التطعيم ضد كوفيد-19 يقلل بشكل كبير من خطر الإصابة بالعدوى والمرض الشديد بالفيروس. تواصل إدارة الصحة العامة بولاية كاليفورنيا تقييم طرق تقديم هذه المعلومات بطريقة تفسر هذه القيود بشكل أفضل.</li></ul>
-        </div>
-      </div>
-    </div>   </cagov-accordion> </div>
+ </div>
 
 
 
@@ -290,44 +252,58 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>يقوم مركز مكافحة الأمراض والوقاية منها (CDC) بتقييم المخاطر الحالية لكوفيد-19 لكل مقاطعة بمستويات. <a href="https://covid19.ca.gov/safely-reopening/#what-to-do-now">اعثر على مستوى مجتمع مقاطعتك</a>. أدخل مقاطعتك للحصول على بيانات تفصيلية.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">الإصابات والوفيات</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وقد قامت ولاية كاليفورنيا {{_varStatTotalCases_}} بتأكيد الحالات المصابة بكوفيد-19 التي نتجت عنها {{_varStatTotalDeaths_}} وفيات مؤكدة.</p>
+<p>أدخل مقاطعتك للحصول على بيانات تفصيلية. اكتب حرفين أو أكثر لتحصل على نتائج.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">الوفيات بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p><p style="text-align:center">لقد أسفر كوفيد-19 عن {{_varStatTotalDeaths_}} من الوفيات المؤكدة في كاليفورنيا.</p></p>
 
 
 
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+<div class="row">        
 <!-- 1 Cases and Deaths - Cases -->
- <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time"> <ul class="d-none">
-          <li data-label="chartTitleState">حالات الإصابة في كاليفورنيا</li>
-          <li data-label="chartTitleCounty">حالات الإصابة في {منطقة} المقاطعة</li>
-          <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} حالات الإصابة</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_cases}</span> متوسط الحالات في اليوم الواحد</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_cases}</span> new cases (<span class="med-num">{new_cases_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> الحالات لكل 100 ألف (متوسط 7 أيام)</li>
-          <li data-label="filterTabLabel1">مؤكدة</li>
-          <li data-label="filterTabLabel2">محتملة</li>
-          <li data-label="filterTabLabel3">الإجمالي</li>
-          <li data-label="timeTabLabel1">كل الوقت</li>
-          <li data-label="timeTabLabel2">6 أشهر</li>
-          <li data-label="timeTabLabel3">90 يومًا</li>
-          <li data-label="tooltipContent">                   التاريخ: <b>{DATE}</b><br> الحالات لكل 100 ألف (متوسط 7 أيام): <b>{7DAY_AVERAGE}</b><br> الحالات: <b>{CASES}</b>           </li>
-          <li data-label="tooltipCombinedContent">                   التاريخ: <b>{DATE}</b><br> معدل حالات الإصابة في متوسط 7 أيام لكل 100 ألف حالة: <b>{7DAY_AVERAGE}</b><br> الحالات المؤكدة: <b>{CONFIRMED_CASES}</b><br> حالات الإصابة المحتملة: <b>{PROBABLE_CASES}</b><br> الإجمالي: <b>{COMBINED_CASES}</b>           </li>
-          <li data-label="dayAverage">متوسط 7 أيام</li>
-          <li data-label="cases_leftYAxisLegend">الحالات لكل 100 ألف</li>
-          <li data-label="cases_rightYAxisLegend">الحالات</li>
-          <li data-label="cases_xAxisLegend">تاريخ الحلقة</li>
-          <li data-label="pending">قيد الانتظار</li>
-          <li data-label="pending_caveat">البيانات غير مكتملة إلى أحدث التواريخ</li>
-        </ul>       </cagov-chart-dashboard-confirmed-cases> </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
+ 
+<!--
+ <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
+ <cagov-chart-dashboard-confirmed-cases class="chart filter-select-space" data-chart-config-filter="confirmed" data-chart-config-key="cases" data-chart-config-timerange="all-time">
+ <ul class="d-none">
+ <li data-label="chartTitleState">Cases in California</li>
+ <li data-label="chartTitleCounty">Cases in {REGION} County</li>
+ <li data-label="chartLegend1"><span class="big-num">{total_cases}</span> {total_cases_type} cases</li>
+ <li data-label="chartLegend2"><span class="med-num">{avg_cases}</span> average cases per day</li>
+ <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> cases per 100K (7-day average)</li>
+ <li data-label="filterTabLabel1">Confirmed</li>
+ <li data-label="filterTabLabel2">Probable</li>
+ <li data-label="filterTabLabel3">Total</li>
+ <li data-label="timeTabLabel1">All time</li>
+ <li data-label="timeTabLabel2">6 months</li>
+ <li data-label="timeTabLabel3">90 days</li>
+ <li data-label="tooltipContent">
+ Date: <b>{DATE}</b><br>
+ 7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+ Cases: <b>{CASES}</b>
+ </li>
+ <li data-label="tooltipCombinedContent">
+ Date: <b>{DATE}</b><br>
+ 7-day average case rate per 100K: <b>{7DAY_AVERAGE}</b><br>
+ Confirmed Cases: <b>{CONFIRMED_CASES}</b><br>
+ Probable Cases: <b>{PROBABLE_CASES}</b><br>
+ Total: <b>{COMBINED_CASES}</b>
+ </li>
+ <li data-label="dayAverage">7-day average</li>
+ <li data-label="cases_leftYAxisLegend">Cases per 100K</li>
+ <li data-label="cases_rightYAxisLegend">Cases</li>
+ <li data-label="cases_xAxisLegend">Episode date</li>
+ <li data-label="pending">Pending</li>
+ <li data-label="pending_caveat">Data incomplete for recent dates</li>
+ </ul>
+ </cagov-chart-dashboard-confirmed-cases> 
+ </div>
+-->
+     <div class="col-lg-6 col-md-6 col-sm-12 p-rel row_center">       
 <!-- 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">حالات الوفاة في كاليفورنيا</li>
           <li data-label="chartTitleCounty">حالات الوفاة في {منطقة} المقاطعة</li>
           <li data-label="chartLegend1"><span class="big-num">{إجمالي_confirmed_الوفيات}</span> إجمالي حالات الوفاة المؤكدة</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{avg_deaths}</span> متوسط الوفيات في اليوم</li>           
-<!-- <li data-label="chartLegend2Decrease"><span class="med-num">{new_deaths}</span> new deaths (<span class="med-num">{new_deaths_delta_1_day}</span> decrease)</li> -->
-           <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> حالات الوفاة لكل 100 ألف (متوسط 7 أيام)</li>
+          <li data-label="chartLegend2"><span class="med-num">{avg_deaths}</span> متوسط الوفيات في اليوم</li>
+          <li data-label="chartLegend3"><span class="med-num">{cases_per_100k_7_days}</span> حالات الوفاة لكل 100 ألف (متوسط 7 أيام)</li>
           <li data-label="filterTabLabel1">مؤكدة</li>           
 <!-- <li data-label="filterTabLabel2">Reported date</li> -->
            <li data-label="timeTabLabel1">كل الوقت</li>
@@ -345,16 +321,14 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لحالات الإصابة والوفيات</a>. وتُحدَّث البيانات أسبوعيًا.</p>
+<p class="small-text mt-2"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لحالات الوفيات</a>. وتُحدَّث البيانات أسبوعيًا.</p>
 
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>تشمل الحالات الأفراد الموجودين في سجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة والمرافق التابعة لمستشفيات وزارة الخارجية.</li>
-
-<li>تشير حالات الإصابة المؤكدة إلى الأفراد الذين نتيجة اختباراتهم إيجابية باستخدام اختبار جزيئي أو اختبار تفاعل البوليميراز المتسلسل (فحوصات PCR الفيروسية). تشير حالات الإصابة المحتملة إلى الأفراد الذين نتيجة اختباراتهم إيجابية باستخدام اختبار المستضد أو الاختبار السريع.</li>
-
-<li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
+<ul class="small-text">
+<li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li>
+<li>هل تبحث عن بيانات الحالة؟ يمكن الاطلاع على بيانات الحالة التاريخية المحفوظة على <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">بوابة البيانات المفتوحة.</a></li></ul>
 </div></div></div></cagov-accordion></div>
 
 
@@ -412,12 +386,19 @@ formatNumberFixed(tags,1)-%}
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 <ul class="small-text"><li>تاريخ الاختبار هو التاريخ الذي تم فيه إجراء الاختبار.</li>
-<li>يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية المقسوم على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد الموجودين في سجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة، والمرافق التابعة لمستشفيات وزارة الخارجية.</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر لمدة يوم واحد (1).</li><li>وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
+<li>يُحسب معدل الإيجابية على أنه عدد الاختبارات الجزيئية الإيجابية المقسوم على مجموع الاختبارات الجزيئية التي أجريت. يشمل معدل الإيجابية الأفراد الموجودين في سجون الولاية والسجون الفيدرالية ومنشآت وكالة إنفاذ قوانين الهجرة والجمارك بالولايات المتحدة ومراكز الاحتجاز التابعة لمارشال الولايات المتحدة والمرافق التابعة لمستشفيات وزارة الخارجية.</li><li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر لمدة يوم واحد (1).</li><li>وقد سبق الإبلاغ عن معدل الإيجابية كمتوسط مدته 14 يومًا.</li><li>إن القواسم السكانية المشتركة في هذه المخططات البيانية تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li></ul>
 </div></div></div></cagov-accordion></div>
 
 
 
-<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء كانت مؤكدة أو مشتبهًا فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة المؤكدة إصابتهم بكوفيد-19 ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
+<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>
+
+
+
+<div class="highlight">
+<h2 class="h4 color-primary mt-0">التأخر في بيانات دخول المستشفى للإقامة والعلاج</h2>
+<p>تغير نظام جمع بيانات دخول المستشفيات لعلاج كوفيد-19 نتيجة لانتهاء حالة الطوارئ الصحية العامة الفيدرالية. للسماح بهذا التحول، سيتم إيقاف بيانات الاحتجاز بالمستشفى لحالات كوفيد-19 على بوابة البيانات المفتوحة وموقع كوفيد-19 مؤقتًا لبضعة أسابيع بعد 11 مايو 2023.</p>
+</div><p></p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء كانت مؤكدة أو مشتبهًا فيها ما مجموعه {{_varStatHospitalTotal_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة المؤكدة إصابتهم بكوفيد-19 ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
 
 
 
@@ -426,10 +407,10 @@ formatNumberFixed(tags,1)-%}
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
  <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">مرضى كوفيد-19 المحتجزون بالمستشفيات في كاليفورنيا</li>
-          <li data-label="chartTitleCounty">مرضى كوفيد -19 المحتجزين بالمستشفيات في {منطقة} المقاطعة</li>
+          <li data-label="chartTitleCounty">مرضى كوفيد-19 المحتجزون بالمستشفيات في {منطقة} المقاطعة</li>
           <li data-label="chartTitleStateICU">مرضى كوفيد-19 في وحدات العناية المركزة بكاليفورنيا</li>
           <li data-label="chartTitleCountyICU">مرضى كوفيد-19 في وحدات العناية المركزة في {منطقة} المقاطعة</li>
-          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 المحتجزين بالمستشفيات</li>
+          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 المحتجزون بالمستشفيات</li>
           <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 في وحدات العناية المركزة</li>
@@ -447,13 +428,13 @@ formatNumberFixed(tags,1)-%}
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
-          <li data-label="chartTitleState">أسرّة العناية المركزة في كاليفورنيا</li>
-          <li data-label="chartTitleCounty">أسرة العناية المركزة في {منطقة} المقاطعة</li>
-          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أَسرّة العناية المركزة المتوفرة</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
+          <li data-label="chartTitleState">أسرَّة العناية المركزة في كاليفورنيا</li>
+          <li data-label="chartTitleCounty">أسرَّة العناية المركزة في {منطقة} المقاطعة</li>
+          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أسرَّة العناية المركزة المتوفرة</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرَّة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
-          <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> من أَسِرّة العناية المركزة المتوفرة.</li>
+          <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> من أسرَّة العناية المركزة المتوفرة.</li>
           <li data-label="timeTabLabel1">كل الوقت</li>
           <li data-label="timeTabLabel2">6 أشهر</li>
           <li data-label="timeTabLabel3">90 يومًا</li>
@@ -468,98 +449,7 @@ formatNumberFixed(tags,1)-%}
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
 <ul class="small-text"><li>تتوفر بيانات المريض المشتبه في إصابته بكوفيد-19 في البيانات المصدرية للمرضى المقيمين في المستشفى والبيانات المصدرية لوحدات العناية المركزة.</li><li>ويتوفر المزيد من التفاصيل عن المرضى المقيمين بالمستشفيات ووحدات العناية المركزة، بمن فيهم المرضى المشتبه في إصابتهم بكوفيد-19، في <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">لوحة معلومات حالات دخول المستشفى للإقامة والعلاج</a>.</li></ul>
-</div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mb-0" id="ethnicity-gender-age"/>    <div class="bg-lightblue full-bleed mb-0">
-  <div class="container pt-1 pb-5">
-    <h2 class="text-center color-primary">الحالات والوفيات حسب العرق والجنس والعمر</h2>
-    <div class="col-lg-12 bg-white px-4 py-4">
-      <div class="d-flex flex-column flex-md-row justify-content-center my-3">
-        <div class="large-tabs">           <button class="large-tab toggle-active js-toggle-group ethnicity">الجنس والعرق</button> <button class="large-tab js-toggle-group gender">النوع</button> <button class="large-tab js-toggle-group age">العمر</button>         </div>
-      </div>
-      <div class="row">         
-<!-- newly added -->
-         <div class="toggle-group-container d3-charts col-sm-12 col-lg-10 px-3 
- mx-auto d3-charts">
-          <div id="gender-graph" class="toggle-group-element" style="display:none">
-            <div id="genderGroupChartContainer">
-              <div class="mx-auto">
-                <p>ويكشف توزيع وفيات كوفيد-19 المؤكدة عن وجود تفاوت بين الجنسين، حيث يكون للذكور عدد غير متناسب من الوفيات مقارنة بعدد السكان.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
-               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-cases class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات مؤكدة حسب نوع الجنس في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">{category} حساب {metric-value} الحالات المؤكدة و {metric-baseline-value} حساب إجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملحوظة: تُحدَّث البيانات أسبوعيًا. قد لا تصل النسب المئوية إلى 100% بسبب التقريب. تشمل عبارة النوع "غير معروف" أولئك الذين رفضوا التصريح أو الذين تكون المعلومات التي تخص نوعهم مفقودة أو الذين يُعرّفون بأنهم متحولون جنسيًا أو لا ينتمون للثنائية الجنسية أو أحرار الهوية الجنسية أو ثنائيي الجنس.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-gender-cases> </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-gender-deaths class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب نوع الجنس في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">{category} حساب {metric-value} من حالات الوفاة المؤكدة و{metric-baseline-value} من حساب إجمالي سكان كاليفورنيا.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-gender-deaths> </div> 
-              </div>
-              <p class="small-text chart-footer-caption">سيظهر نص التذييل هنا</p>
-            </div>
-          </div>
-          <div id="age-graph" class="toggle-group-element" style="display:none">
-            <div id="ageGroupChartContainer">
-              <div class="mx-auto">
-                <p>يكشف توزيع حالات كوفيد-19 المؤكدة والوفيات عن وجود تباينات كبيرة بين الفئات العمرية في كاليفورنيا. فالفئات العمرية ما بين 18 و49 لديهم عدد غير متكافئ من حالات الإصابة. فالفئات العمرية من 65 فما فوق يحدث بها عدد غير متكافئ من الوفيات. يتوفر المزيد من <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Age-Race-Ethnicity.aspx">بيانات الأعمار المصابة بكوفيد-19</a>، بما في ذلك الفئات العمرية التي تقل فيها الإصابات.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
-               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-cases class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات مؤكدة حسب العمر في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">تمثل {category} الفئة العمرية {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملحوظة: تُحدَّث البيانات أسبوعيًا. قد لا تصل النسب المئوية إلى 100% بسبب التقريب.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-age-cases> </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-age-deaths class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب العمر في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">تمثل الفئة العمرية {category} {metric-value} من حالات الوفاة المؤكدة و{metric-baseline-value} من إجمالي سكان كاليفورنيا.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-age-deaths> </div> 
-              </div>
-              <p class="small-text chart-footer-caption">سيظهر نص التذييل هنا</p>
-            </div>
-          </div>
-          <div id="ethnicity-graph" class="toggle-group-element">
-            <div id="ethnicityGroupChartContainer">
-              <div class="mx-auto">
-                <p>يكشف توزيع حالات كوفيد-19 المؤكدة عن تباينات كبيرة داخل التركيبة السكانية العرقية والإثنية العامة في كاليفورنيا، حيث يوجد عدد غير متناسب من حالات الإصابة بين مجموعات اللاتينيين وسكان هاواي الأصليين/سكان جزر المحيط الهادئ مقارنة بعدد هذه الشرائح السكانية في الولاية. ويتوفر المزيد من <a class="external" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/Race-Ethnicity.aspx">البيانات العرقية والإثنية للمصابين بكوفيد-19</a>.</p>
-              </div>               
-<!-- <div class="tableauPlaceholder"></div> -->
-               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-cases class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات مؤكدة حسب الجنس والعرق في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية للحالات المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">{category} يمثل السكان {metric-value} للحالات المؤكدة و {metric-baseline-value} لإجمالي سكان كاليفورنيا.</li>
-                      <li data-label="footerText">تم التحديث في {PUBLISHED_DATE} ببيانات من {MINUS_ONE_DATE}. ملحوظة: تُحدَّث البيانات أسبوعيًا. قد لا تصل النسب المئوية إلى 100% بسبب التقريب. جنس وعرق ”آخر“ تعني أولئك الذين لا يندرجون تحت أي جنس أو عرق من المدرجين في القائمة.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-cases> </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">                   <cagov-chart-dashboard-groups-race-ethnicity-deaths class="chart"> <ul class="d-none">
-                      <li data-label="chartTitle">حالات الوفاة المؤكدة حسب الجنس والعرق في كاليفورنيا</li>
-                      <li data-label="chartLegend1">النسبة المئوية لحالات الوفاة المؤكدة</li>
-                      <li data-label="chartLegend2">النسبة المئوية لسكان الولاية</li>
-                      <li data-label="chartBarCaption">يمثل السكان {category} {metric-value} من حالات الوفاة المؤكدة و{metric-baseline-value} من إجمالي سكان كاليفورنيا.</li>
-                    </ul>                   </cagov-chart-dashboard-groups-race-ethnicity-deaths> </div> 
-              </div>
-              <p class="small-text chart-footer-caption">سيظهر نص التذييل هنا</p>
-              <p class="small-text chart-footer-caption"><a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لحالات الإصابة المؤكدة والوفيات حسب العرق والنوع والجنس والعمر</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center pt-5 p-rel">       <a href="/equity/" class="link-arrow-blue mb-4 mt-3">         <div class="link-arrow-label">انظر المزيد من البيانات المفصلة حسب المجموعة</div>         <cagov-arrow></cagov-arrow> </a> </div>     
-<!--END col-12-->
-   </div>   
-<!--END CONTAINER-->
- </div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
+</div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>استكشف المزيد من البيانات</h2>
         <div class="row">
