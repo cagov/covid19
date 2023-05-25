@@ -217,6 +217,7 @@ formatNumberFixed(tags,1)-%}
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
+
                 <ul class="small-text">
 <li>모든 일일 평균값은 7일 평균값을 말합니다.</li>
 <li>백신 투여 건 수에는 7일의 시차가 있습니다.</li>
@@ -252,7 +253,9 @@ formatNumberFixed(tags,1)-%}
 
 
 
+
 <p>해당 카운티를 입력하여 자세한 데이터를 확인하십시오. 결과를 확인하려면 두 자 이상의 문자를 입력하십시오.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">COVID-19 사망 건 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p><p style="text-align:center">COVID-19로 인해 캘리포니아에서 발생한 사망자는 {{_varStatTotalDeaths_}} 명으로 확인되었습니다.</p></p>
+
 
 
 
@@ -297,6 +300,7 @@ formatNumberFixed(tags,1)-%}
  </div>
 -->
      <div class="col-lg-6 col-md-6 col-sm-12 p-rel row_center">       
+
 <!-- 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">캘리포니아 내 사망자 수</li>
@@ -391,6 +395,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
+
 <h3 class="text-center">입원 환자 수</h3>
 
 
@@ -399,6 +404,7 @@ formatNumberFixed(tags,1)-%}
 <h2 class="h4 color-primary mt-0">입원 데이터 지연</h2>
 <p>연방 정부의 공중 건강 비상사태가 종료된 결과로 COVID-19 입원 데이터 수집 시스템에 변경이 있었습니다. 이번 변경 이행을 위해 공공 데이터 포털 및  COVID-19 웹사이트 상의 COVID-19 입원 데이터를 2023년 5월 11일 이후 수 주 동안 중단하게 됩니다.</p>
 </div><p></p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 확진자로 인한 입원 환자 수는 총 {{_varStatHospitalTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} 명입니다. 캘리포니아 내 COVID-19 확진자로 인한 ICU 환자 수는 총 {{_varStatIcuTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} 명입니다.</p>
+
 
 
 
