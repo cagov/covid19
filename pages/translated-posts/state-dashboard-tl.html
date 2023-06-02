@@ -8,13 +8,6 @@ tags: ["translate"]
 addtositemap: true
 ---
 
-<div class="highlight">
-<h2 class="h4 color-primary mt-0">Mga Pagbabago sa Pag-report ng Datos</h2>
-<p>Simula noong Mayo 11, 2023, hindi na nagre-report ng pinagsama-samang kaso ang Dashboard ng COVID-19 ng California; Patuloy pa rin na mag-uulat ang CDPH ng mga pagpapanatili at makahulugang data na nagbibigay-daan para sa napapanahong pagsubaybay sa COVID-19.</p>
-</div><p></p>
-
-
-
 <p><p class="emphasized">Sinusubaybayan ng California ang data para maunawaan ang pagkalat ng COVID-19.</p> 
 <!-- test Fri, Sep 9, 10:46am #1 -->
 </p>
@@ -252,7 +245,6 @@ formatNumberFixed(tags,1)-%}
 
 
 
-
 <p>Ilagay ang iyong county para sa detalyadong data. Mag-type ng dalawa o higit pang character para sa mga resulta.</p>    <cagov-county-search></cagov-county-search> <h3 class="text-center mt-4">mga pagkamatay dahil sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p><p style="text-align:center">Nagresulta ng {{_varStatTotalDeaths_}} kumpirmadong pagkamatay ang COVID-19 sa California.</p></p>
 
 
@@ -298,7 +290,6 @@ formatNumberFixed(tags,1)-%}
  </div>
 -->
      <div class="col-lg-6 col-md-6 col-sm-12 p-rel row_center">       
-
 <!-- 2 Cases and Deaths - Confirmed Deaths -->
  <cagov-chart-dashboard-confirmed-deaths class="chart filter-select-space" data-chart-config-filter="death" data-chart-config-key="deaths" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">Mga Pagkamatay sa California</li>
@@ -393,7 +384,6 @@ formatNumberFixed(tags,1)-%}
 
 
 
-
 <h3 class="text-center">Mga Pagpapaospital</h3>
 
 
@@ -401,8 +391,10 @@ formatNumberFixed(tags,1)-%}
 <div class="highlight">
 <h2 class="h4 color-primary mt-0">Pagkaantala sa Datos ng Pagpapaospital</h2>
 <p>Nagbago ang sistema sa pangongolekta ng datos ng pagpapaospital ng COVID-19 bilang resulta sa pagtatapos ng pederal na emergency sa pampublikong kalusugan Upang magawa ang transition na ito, ihihinto muna ng ilang linggo pagkatapos ng May 11, 2023 ang datos ng pagpapaospital ng COVID-19 sa Open Data Portal at sa COVID-19 website.</p>
-</div><p></p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang dami ng mga pagpapaospital dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} mula sa kabuuan ng naunang araw.</p>
-
+</div><p></p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>
+<!--
+<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p> -->
+</p>
 
 
 
