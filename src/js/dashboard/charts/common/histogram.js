@@ -164,7 +164,7 @@ function writeCountyStateLegend(svg,x,y, {
 
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
-    month_modulo=3,
+    month_modulo=6,
     root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
@@ -177,13 +177,30 @@ function writeDateAxis(svg, data, x, y,
       ;
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
+  // track ticks drawn to make sure we have drawn at least one
+  let tick_drawn = false;
+
+  const label_every_day = data.length < 8 ? true : false;
+
+  // Make month_modulo work for us
+  if (data.length < 95)       { month_modulo = 1; }
+  else if (data.length < 365) { month_modulo = 2; }
+  else if (data.length < 500) { month_modulo = 3; }
+  else                        { month_modulo = 6; }
+
   data.forEach((d,i) => {
     const ymd = d.DATE.split('-');
     const mon_idx = parseInt(ymd[1]);
-    if (mon_idx % month_modulo == 0) {
+
+    if (mon_idx % month_modulo == 0 || (!tick_drawn && i === data.length-1)) {
       const day_idx = parseInt(ymd[2]);
-      if (day_idx == 1) {
-        const date_caption = mon_idx+'/1'; // ?? localize
+
+      if (label_every_day || day_idx == 1 || (!tick_drawn && i === data.length-1)) {
+        let shift_right_extra = (!tick_drawn && i === data.length-1) ? 10 : 0;
+
+        tick_drawn = true;
+
+        const date_caption = mon_idx+`/${day_idx}`;
         let subg = xgroup.append("g")
               .attr('class','x-tick');
         subg.append('line')
@@ -194,7 +211,7 @@ function writeDateAxis(svg, data, x, y,
         subg.append('text')
          .text(date_caption)
          // .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.75rem; fill:black;text-anchor: middle; dominant-baseline:hanging;')
-         .attr("x", x(i))
+         .attr("x", x(i) + shift_right_extra)
          .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap) // +this.getYOffset(i)
       }
     }
@@ -496,7 +513,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
     crop_floor = true,
     pending_date = null,
     pending_legend = null,
-    month_modulo = 3,
+    month_modulo = 6,
     lineAndBarsSameScale = false,
     alignAverages = false,
     root_id = "barid" } )  {
