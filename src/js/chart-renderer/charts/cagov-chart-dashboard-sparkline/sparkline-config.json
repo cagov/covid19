@@ -1,19 +1,19 @@
 
 {
-    "cases": {
+    "hospitalizations": {
       "sparkline": {
         "chartName": "cagov-chart-dashboard-sparkline",
         "chart_style": "normal",
-        "seriesField": "CONFIRMED_CASES_EPISODE_DATE",
+        "seriesField": "HOSPITALIZED_PATIENTS",
         "comment_avg": "The below average field is unused",
         "seriesFieldAvg": "AVG_CASE_RATE_PER_100K_7_DAYS",
-        "dataUrl": "combined-cases/california.json",
+        "dataUrl": "patients/california.json",
         "dataPathVar": "chartsStateDashTablesLoc",
-        "rootId": "cases-ep",
+        "rootId": "hospitalizations-count",
         "display_weeks": 8,
-        "uncertainty_days_override": -1,
-        "uncertainty_latest_field": "CASES",
-        "uncertainty_date_field": "CONFIRMED_UNCERTAINTY_PERIOD",
+        "uncertainty_days_override": 7,
+        "uncertainty_latest_field": "",
+        "uncertainty_date_field": "",
         "bar_color":"#00183f",
         "line_color":"#92c5de",
         "stroke_width":2

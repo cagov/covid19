@@ -50,6 +50,7 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
                       'time_series_line':this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                       'root_id':this.chartOptions.rootId,
                       'x_axis_legend':this.translationsObj.xAxisLegend,
+                      'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                       'month_modulo':2,
                     };
 
@@ -109,17 +110,21 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
       let time_series_bars = JSON.parse(JSON.stringify(this.uncroppedChartData.time_series[this.chartOptions.seriesField].VALUES));
       let time_series_line = JSON.parse(JSON.stringify(time_series_bars));
 
-      // compute 14-day average
+      // compute 14-day average (first 14 days of data will have a 14-n day average)
       const avg_days = 14;
-      for (let i = avg_days-1; i < time_series_bars.length; ++i) {
+      for (let i = 0; i < time_series_bars.length; ++i) {
         let sum = 0;
+        let days = 0;
+
         for (let j = 0; j < avg_days; ++j) {
-          sum += time_series_bars[i-j].VALUE;
+          if (i+j >= time_series_bars.length) {
+            break;
+          }
+          sum += time_series_bars[i+j].VALUE;
+          days += 1;
         }
-        time_series_line[i].VALUE = sum / avg_days;
+        time_series_line[i].VALUE = sum / days;
       }
-      time_series_bars.splice(0,avg_days-1);
-      time_series_line.splice(0,avg_days-1);
       let new_date_range = {
         MAXIMUM:time_series_bars[0].DATE,
         MINIMUM:time_series_bars[time_series_bars.length-1].DATE,
