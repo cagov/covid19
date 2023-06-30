@@ -148,6 +148,9 @@ formatNumber(tags,1)-%}
 		{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
 
+		{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+		{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
+
 		{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
@@ -162,7 +165,7 @@ formatNumber(tags,1)-%}
 
 		{%- else -%}
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateTextVax | replace("[VaxUpdatedDate]", _varVaxDateAccurate_) | replace("[VaxDataDate]",_varVaxDateReport_) -}}
+						{{- translatedLabels.varUpdateTextHosp | replace("[HospUpdatedDate]", _varHospDateAccurate_) | replace("[HospDataDate]",_varHospDateReport_) -}}
 					</div>
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
