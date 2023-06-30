@@ -50,11 +50,11 @@ export default function template(chartOptions, {
   filterTabLabel3 = null, // only used if provided
   timeTabLabel1 = 'Tab Label 1',
   timeTabLabel2 = 'Tab Label 2',
-  timeTabLabel3 = 'Tab Label 3',
+  timeTabLabel3 = null,
 }) {
   // console.log('%c BEGIN SELECT', 'color: purple');
   // Group values into arrays.
-  const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3] : [];
+  const timeLabels = 'timeKeys' in chartOptions ? [timeTabLabel1, timeTabLabel2, timeTabLabel3].filter(nonNull=>nonNull) : [];
   const filterLabels = 'filterKeys' in chartOptions ? [filterTabLabel1, filterTabLabel2, filterTabLabel3].filter(nonNull=>nonNull) : [];
   const filters = {
     filterLabels,

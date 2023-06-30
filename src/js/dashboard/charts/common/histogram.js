@@ -164,7 +164,7 @@ function writeCountyStateLegend(svg,x,y, {
 
 function writeDateAxis(svg, data, x, y, 
   { x_axis_legend=null,
-    month_modulo=3,
+    month_modulo=6,
     root_id='barid'} ) {
   const tick_height = 4;
   const tick_upper_gap = 1;
@@ -177,13 +177,26 @@ function writeDateAxis(svg, data, x, y,
       ;
       // .attr('style','stroke-width: 0.5px; stroke:black;');
 
+  let day_mod = 0;
+  if      (data.length < 10) { day_mod = 1; }
+  else if (data.length < 60) { day_mod = 7; }
+  else if (data.length < 95) { day_mod = 10; }
+
+  if (data.length < 95)       { month_modulo = 1; }
+  else if (data.length < 365) { month_modulo = 2; }
+  else if (data.length < 500) { month_modulo = 3; }
+  else                        { month_modulo = 6; }
+
   data.forEach((d,i) => {
     const ymd = d.DATE.split('-');
     const mon_idx = parseInt(ymd[1]);
+
     if (mon_idx % month_modulo == 0) {
       const day_idx = parseInt(ymd[2]);
-      if (day_idx == 1) {
-        const date_caption = mon_idx+'/1'; // ?? localize
+
+      if ((day_mod > 0 && (i % day_mod) == 0) || (day_mod == 0 && day_idx == 1)) {
+
+        const date_caption = mon_idx+`/${day_idx}`;
         let subg = xgroup.append("g")
               .attr('class','x-tick');
         subg.append('line')
@@ -496,7 +509,7 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
     crop_floor = true,
     pending_date = null,
     pending_legend = null,
-    month_modulo = 3,
+    month_modulo = 6,
     lineAndBarsSameScale = false,
     alignAverages = false,
     root_id = "barid" } )  {

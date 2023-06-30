@@ -63,7 +63,7 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
                       'time_series_line':this.chartData.time_series[this.chartOptions.seriesFieldAvg].VALUES,
                       'root_id':this.chartOptions.rootId,
                       'x_axis_legend':this.translationsObj.xAxisLegend,
-                      'line_legend':this.translationsObj.dayAverage,
+                      'line_legend':this.regionName == 'California'? this.translationsObj.dayAverage : null,
                       'month_modulo':2,
                     };
 
