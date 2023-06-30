@@ -68,6 +68,8 @@ formatNumberFixed(tags,1)-%}
 {%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
 {%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
@@ -204,7 +206,7 @@ formatNumberFixed(tags,1)-%}
 <!--
         {%- else -%}
 -->
-  <p class="small-text">Vaccines administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
+  <p class="small-text">Hospitalizations updated {{ _varHospDateAccurate_ }}, with data from {{_varHospDateReport_}}.
   <br>Deaths and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
         {%- endif -%}
