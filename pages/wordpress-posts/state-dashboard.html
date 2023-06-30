@@ -61,10 +61,16 @@ formatNumberFixed(tags,1)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatHospital_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 {%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
 {%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
+
 
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
@@ -109,29 +115,26 @@ formatNumberFixed(tags,1)-%}
       </div>
     </div>
 
-<!----- Begin Summary Boxes -->
+<!-- Begin Summary Boxes -->
 <div class="row d-flex justify-content-md-center summary-boxes">
   <!-- Blue Summary Box 1 -->
     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Vaccines Administered</div>
-         <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
-           <span class="text-300">total</span>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Hospitalizations</div>
+         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+           <span class="text-300">{{ translatedLabels.varTotal }}</span>
          </div>
-         <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">
-           <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
+         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">
+           <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
            <div>
-             <span class="text-300"><strong>{{_varFullyVaxedPercent_}}%</strong> of population vaccinated</span>
-           </div>
-           <div>
-            <span class="text-300">(with primary series)</span>
+             <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (per 100k)</span>
            </div>
          </div>
          <!--Chart and Label -->
          <div class="mt-auto px-2">
-           <div class="sparkline-vax"></div>
+           <div class="sparkline-hospitalizations"></div>
            <div class="text-white text-xs mt-1">
              <span class="text-300 date-caption-span">Past 8 weeks</span>
            </div>
@@ -141,34 +144,6 @@ formatNumberFixed(tags,1)-%}
      </div>
 
    <!-- Blue Summary Box 2 -->
-<!--
-    <div class="col-md-6 col-lg-3 px-10px">							
-       <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Cases</div>
-
-         <div id="total-cases-number" class="text-white font-size-1-2em mb-2">
-           <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
-         </div>
-         <div id="total-cases-today" class="text-white font-size-1-2em mb-2">
-           <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
-         </div>
-         <div class="text-white text-xs mb-2">
-           <div>
-             <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
-           </div><div>&nbsp;</div>
-         </div>
-
-         <div class="mt-auto px-2">
-          <div class="sparkline-cases"></div>
-           <div class="text-white text-xs mt-1 ">
-             <span class="text-300 date-caption-span">Past 8 weeks</span>
-           </div>
-         </div>
-
-       </div>
-     </div>
--->
-  <!-- Blue Summary Box 3 -->
     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Deaths</div>
@@ -232,12 +207,13 @@ formatNumberFixed(tags,1)-%}
 <!--
         {%- else -%}
 -->
-  <p class="small-text">Vaccines administered updated {{_varVaxDateAccurate_}}, with data from {{_varVaxDateReport_}}.
+  <p class="small-text">Hospitalizations updated {{ _varHospDateAccurate_ }}, with data from {{_varHospDateReport_}}.
   <br>Deaths and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 <!--
+
         {%- endif -%}
 -->
-        <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">Vaccines administered source data</a> and <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">deaths and tests source data</a></p>
+        <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Deaths and tests source data</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">
         <cagov-accordion class="chart-drawer accordion-chart-drawer">
@@ -250,7 +226,7 @@ formatNumberFixed(tags,1)-%}
               <div class="card-body">
                 <ul class="small-text">
 <li>All daily averages are 7-day averages.</li>
-<li>Vaccines administered have a 7-day lag.</li>
+<li>Hospitalization counts include all patients diagnosed with COVID-19 during their stay. This does not necessarily mean they were hospitalized because of COVID-19 complications or that they experienced COVID-19 symptoms.</li> 
 <li>Deaths have a 22-day lag due to delays in reporting.</li>
 <li>Tests have a 1-day lag.</li>
 <li>Death data from Los Angeles and San Diego counties have an additional 1-day lag.</li>
@@ -485,19 +461,11 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<div class="highlight">
-<h2 class="h4 color-primary mt-0">Delay in Hospitalization Data</h2>
-<p>The COVID-19 hospitalization data collection system changed as a result of the end of the federal public health emergency. To allow for this transition, COVID-19 hospitalization data on the Open Data Portal and the COVID-19 website will be paused for a few weeks after May 11, 2023.</p>
-</div><p></p>
-
-
-
 <cagov-county-toggle-buttons></cagov-county-toggle-buttons>
 
 
 
-<p><!--
-<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p> --></p>
+<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospital_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
 
 
 
@@ -519,8 +487,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="filterTabLabel1">Hospitalized</li>
           <li data-label="filterTabLabel2">ICU</li>
           <li data-label="timeTabLabel1">All time</li>
-          <li data-label="timeTabLabel2">6 months</li>
-          <li data-label="timeTabLabel3">90 days</li>
+          <li data-label="timeTabLabel2">3 months</li>
+          <li data-label="timeTabLabel3">7 days</li>
           <li data-label="xAxisLegend">Reported date</li>
           <li data-label="dayAverage">14-day average</li>
           <li data-label="tooltipContent">
@@ -541,10 +509,10 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="xAxisLegend">Reported date</li>
+          <li data-label="dayAverage">14-day average</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
           <li data-label="timeTabLabel1">All time</li>
-          <li data-label="timeTabLabel2">6 months</li>
-          <li data-label="timeTabLabel3">90 days</li>
+          <li data-label="timeTabLabel2">7 days</li>
         </ul>
       </cagov-chart-dashboard-icu-beds>               
     </div> 
@@ -557,7 +525,12 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">Chart information</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>Suspected COVID-19 patient data is available in the hospitalized patients and ICU source data.</li><li>More details about hospitalized and ICU patients, including patients suspected of having COVID-19, are available in the <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">hospitalization dashboard</a>.</li></ul>
+<ul class="small-text">
+<li>Hospitalization counts include all patients diagnosed with COVID-19 during their stay. This does not necessarily mean they were hospitalized because of COVID-19 complications or that they experienced COVID-19 symptoms.</li> 
+<li>Suspected COVID-19 patient data is available in the hospitalized patients and ICU source data.</li>
+<li>More details about hospitalized and ICU patients, including patients suspected of having COVID-19, are available in the <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">hospitalization dashboard</a>.</li>
+<li>The &#8220;ICU Beds&#8221; chart will be truncated and only have data starting from 05/11/2023. This is due to differences in data collection between the new federal standard (NHSN) and the previous California standard (CHA).</li> 
+</ul>
 </div></div></div></cagov-accordion></div>
 
 
