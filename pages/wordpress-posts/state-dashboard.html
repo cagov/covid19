@@ -8,6 +8,11 @@ tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
+<div class="highlight">
+<h2 class="h4 color-primary mt-0">Holiday Delay</h2>
+<p>Due to the Fourth of July holiday, data on COVID-19 deaths and test positivity will not be updated this week.</p>
+</div><p></p>
+
 <p><p class="emphasized">California is tracking data to understand the spread of COVID-19.</p>
 <!-- test Fri, Sep 9, 10:46am #1 --></p>
 
@@ -46,7 +51,7 @@ addtositemap: true
 {%-set _varStatNewCasesPer100k_ = (data2.cases.LATEST_CONFIDENT_AVG_CASE_RATE_PER_100K_7_DAYS) | formatNumberFixed(tags,1)-%}
 {%-set _varCasesDailyAverage_ = datacases.latest.CASES.CONFIRMED_CASES_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
-{%-set _varStatTotalDeaths_ = data2.deaths.TOTAL_DEATHS | formatNumber(tags)-%}
+{%-set _varStatTotalDeaths_ = data2.deaths.LATEST_TOTAL_CONFIRMED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatTotalDeathsToday_ = data2.deaths.NEWLY_REPORTED_DEATHS | formatNumber(tags)-%}
 {%-set _varStatNewDeathsPer100k_ = (data2.deaths.LATEST_CONFIDENT_AVG_DEATH_RATE_PER_100K_7_DAYS) |
 formatNumberSmall(tags)-%}
