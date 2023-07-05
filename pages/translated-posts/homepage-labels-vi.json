@@ -45,6 +45,10 @@
       "text": "Dữ liệu tiêm chủng"
     },
     {
+      "_id": "varHospitalizations",
+      "text": "Nhập viện"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Công bằng sức khỏe"
     },
@@ -102,7 +106,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "Do sự cố xử lý dữ liệu, Sở Y Tế Công Cộng California sẽ không công bố cập nhật xét nghiệm COVID-19 trong hôm nay. Dữ liệu sẽ được báo cáo vào ngày 14 tháng 4 năm 2022. Thông tin chi tiết về dữ liệu này hiện có tại"
+      "text": "Thông tin chi tiết về dữ liệu này hiện có tại"
     },
     {
       "_id": "varStateDashboard",
@@ -123,6 +127,10 @@
     {
       "_id": "varUpdateTextVax",
       "text": "Các vắc-xin đã tiêm được cập nhật [VaxUpdatedDate] với dữ liệu từ [VaxDataDate]"
+    },
+    {
+      "_id": "varUpdateTextHosp",
+      "text": "Dữ liệu nhập viện được cập nhật [HospUpdatedDate] với dữ liệu từ [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
