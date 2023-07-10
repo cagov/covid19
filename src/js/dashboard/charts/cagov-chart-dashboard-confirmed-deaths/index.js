@@ -28,7 +28,7 @@ class CAGovDashboardConfirmedDeaths extends CAGovDashboardChart {
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
     const repDict = {
-      total_confirmed_deaths:formatValue(latestRec.total_deaths,{format:'integer'}),
+      total_confirmed_deaths:formatValue(latestRec.total_confirmed_deaths,{format:'integer'}),
       new_deaths:formatValue(latestRec.new_deaths,{format:'integer'}),
       avg_deaths:formatValue(latestRec.DEATHS_DAILY_AVERAGE,{format:'integer'}),
       deaths_per_100k_7_days:formatValue(latestRec.deaths_per_100k_7_days,{format:'number',min_decimals:1}),
