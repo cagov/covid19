@@ -37,6 +37,9 @@ formatNumber(tags,1)-%}
 {%-set _varPositivityTrendClassD_='' if _varPositivityTrend_ < 0 else "d-none" %} 
 {%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 
+{%- set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%- set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%- set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
 {%- if _varInhibitDailyTotals_  -%}
@@ -145,6 +148,9 @@ formatNumber(tags,1)-%}
 		{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
 
+		{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+		{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
+
 		{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
@@ -159,7 +165,7 @@ formatNumber(tags,1)-%}
 
 		{%- else -%}
 					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateTextVax | replace("[VaxUpdatedDate]", _varVaxDateAccurate_) | replace("[VaxDataDate]",_varVaxDateReport_) -}}
+						{{- translatedLabels.varUpdateTextHosp | replace("[HospUpdatedDate]", _varHospDateAccurate_) | replace("[HospDataDate]",_varHospDateReport_) -}}
 					</div>
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
@@ -171,24 +177,22 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 1 -->						
 						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varVaccinesAdministered }}</div>
-								<div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong>
-								<span class="text-300">{{translatedLabels.varTotal}}</span>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varHospitalizations }}</div>
+
+								<div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+								<span class="text-300">{{ translatedLabels.varTotal }}</span>
 								</div>
-								<div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">
-								<strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
+								<div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">
+								<strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
 									<div>
-										<span class="text-300"><strong>{{_varFullyVaxedPercent_}}%</strong> of population vaccinated</span>
-									</div>
-									<div>
-										<span class="text-300">(with primary series)</span>
+										<span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (per 100k)</span>
 									</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
-   								    <div class="sparkline-vax"></div>
+   								    <div class="sparkline-hospitalizations"></div>
 									<div class="text-white text-xs mt-1">
 										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>
@@ -197,32 +201,6 @@ formatNumber(tags,1)-%}
 							</div>
 						</div>
 
-						<!-- Blue Summary Box 2 -->
-						<div class="col-md-6 col-lg-3 px-10px">							
-							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalCases }}</div>
-
-								<div id="total-cases-number" class="text-white font-size-1-2em mb-2">
-								<strong>{{_varStatTotalCases_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span>
-								</div>
-								<div id="total-cases-today" class="text-white font-size-1-2em mb-2">
-								<strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
-								</div>
-								<div class="text-white text-xs mb-2">
-									<div>
-										<strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
-									</div><div>&nbsp;</div>
-								</div>
-								<!--Chart and Label -->
-								<div class="mt-auto px-2">
-									<div class="sparkline-cases"></div>
-									<div class="text-white text-xs mt-1 ">
-										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
-									</div>
-								</div>
-								<!--End Chart and Label -->
-							</div>
-						</div>
 						<!-- Blue Summary Box 3 -->
 						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">

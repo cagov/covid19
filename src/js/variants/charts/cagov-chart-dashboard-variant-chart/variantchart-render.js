@@ -42,10 +42,21 @@ function writeXAxis(svg, data, date_fld, x, y,
   const tick_upper_gap = 1;
   const tick_lower_gap = 12;
   const axisY = this.dimensions.height - this.dimensions.margin.bottom;
+  const year_row_gap = 15 + tick_height + tick_upper_gap + tick_lower_gap;
+
+  const isLong = data.length > 200; // don't print every month for >180 days
+  const monthGroup  = isLong ? 3 : 1;
+  const monthModulo = isLong ? 1 : 0;
 
   let xgroup = svg.append("g")
       .attr("class",'date-axis')
       .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  let year_row = svg.append("g")
+      .attr("class",'date-axis')
+      .attr('style','stroke-width: 0.5px; stroke:black;');
+
+  const years_outputted = new Set();
 
   // console.log("writeXAxis B",data);
   data.forEach((d,i) => {
@@ -53,7 +64,12 @@ function writeXAxis(svg, data, date_fld, x, y,
     const year_idx = parseInt(ymd[0]);
     const mon_idx = parseInt(ymd[1]);
     const day_idx = parseInt(ymd[2]);
-    if (day_idx == 1) {
+
+    let show_tick  = (day_idx == 1)                        ? true : false;
+    let show_month = (mon_idx % monthGroup == monthModulo) ? true : false;
+    let show_year  = (years_outputted.has(year_idx))       ? false : true;
+
+    if (show_tick) {
       let subj = xgroup.append("g")
         .append('line')
         .attr('style','stroke-width: 1.0px; stroke:black; opacity:1.0;')
@@ -62,26 +78,28 @@ function writeXAxis(svg, data, date_fld, x, y,
         .attr('x2', x(i))
         .attr('y2', y(0)+10);
 
-        if (x(i) < this.dimensions.width)
-        {
-          const sdate = parseSnowflakeDate(d[date_fld]);
-          const monthStr = sdate.toLocaleString('default', { month: 'short' });
-          let subg = xgroup.append("g")
+      if (show_month && x(i) < this.dimensions.width) {
+        const sdate = parseSnowflakeDate(d[date_fld]);
+        const monthStr = sdate.toLocaleString('default', { month: 'short' });
+        let subg = xgroup.append("g")
             .attr('class','x-tick');
-          let text_anchor = 'middle';
-          subg.append('text')
-            .text(monthStr)
-            .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
-            .attr("x", x(i))
-            .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
-        }
-  
-    }
-    if (day_idx == 15) {
+        let text_anchor = 'middle';
+        subg.append('text')
+          .text(monthStr)
+          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+          .attr("x", x(i))
+          .attr("y", axisY+tick_upper_gap+tick_height+tick_lower_gap); // +this.getYOffset(i)
+      }
+      if (show_year && x(i) < this.dimensions.width) {
+        years_outputted.add(year_idx);
+        year_row.append('text')
+          .text(year_idx)
+          .attr('style','font-family:sans-serif; font-weight:300; font-size: 0.85rem; fill:black;text-anchor:start; dominant-baseline:hanging;')
+          .attr("x", x(i))
+          .attr("y", axisY+year_row_gap);
+      }
     }
   });
-  // console.log("writeXAxis C");
-
 }
 
 // Formatter Factory

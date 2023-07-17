@@ -120,7 +120,7 @@
       "dataUrlCounty": "patients/<county>.json",
       "rootId": "hhosp-p",
       "filterKeys": ["hospitalized","icu"],
-      "timeKeys": ["all-time","months-6","days-90"],
+      "timeKeys": ["all-time","months-3","days-7"],
       "rightMarginOverride": 20,
       "lineAndBarsSameScale":true,
       "alignAverages":false
@@ -134,7 +134,7 @@
       "dataUrlCounty": "patients/<county>.json",
       "rootId": "hhosp-p",
       "filterKeys": ["hospitalized","icu"],
-      "timeKeys": ["all-time","months-6","days-90"],
+      "timeKeys": ["all-time","months-3","days-7"],
       "rightMarginOverride": 20,
       "lineAndBarsSameScale":true,
       "alignAverages":false
@@ -150,7 +150,7 @@
       "dataUrl": "icu-beds/california.json",
       "dataUrlCounty": "icu-beds/<county>.json",
       "rootId": "hicu-beds",
-      "timeKeys": ["all-time","months-6","days-90"],
+      "timeKeys": ["all-time","days-7"],
       "rightMarginOverride": 20,
       "lineAndBarsSameScale":true,
       "alignAverages":false

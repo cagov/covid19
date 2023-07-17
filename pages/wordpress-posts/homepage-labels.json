@@ -45,6 +45,10 @@
       "text": "Vaccination data"
     },
     {
+      "_id": "varHospitalizations",
+      "text": "Hospitalizations"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Health equity"
     },
@@ -123,6 +127,10 @@
     {
       "_id": "varUpdateTextVax",
       "text": "Vaccines administered updated [VaxUpdatedDate] with data from [VaxDataDate]"
+    },
+    {
+      "_id": "varUpdateTextHosp",
+      "text": "Hospitalizations updated [HospUpdatedDate] with data from [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
