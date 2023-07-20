@@ -57,25 +57,6 @@
         "stroke_width":2
       }
     },
-    "vaccines": {
-        "sparkline": {
-          "chartName": "cagov-chart-dashboard-sparkline",
-          "chart_style": "normal",
-          "seriesField": "VACCINE_DOSES",
-          "comment_avg": "The below average field is unused",
-          "seriesFieldAvg": "VACCINE_DOSES_7DAYAVG",
-          "dataUrl": "vaccines/sparkline.json",
-          "dataPathVar": "chartsStateDashTablesLocSparklineVaccines",
-          "rootId": "tests-vaccines",
-          "display_weeks": 8,
-          "uncertainty_days_override": 7,
-          "uncertainty_latest_field": "",
-          "uncertainty_date_field": "",
-          "bar_color":"#00183f",
-          "line_color":"#92c5de",
-          "stroke_width":2
-        }
-    },
     "desktop": {
       "fontSize": 14,
       "width": 200,    
