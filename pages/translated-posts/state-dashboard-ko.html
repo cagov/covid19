@@ -8,8 +8,6 @@ tags: ["translate"]
 addtositemap: true
 ---
 
-
-
 <p><p class="emphasized">캘리포니아가 COVID-19의 확산을 이해하기 위해 데이터를 추적 관리하고 있습니다.</p> 
 <!-- test Fri, Sep 9, 10:46am #1 -->
 </p>
@@ -24,7 +22,6 @@ addtositemap: true
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
@@ -39,7 +36,6 @@ addtositemap: true
 
 {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
@@ -56,8 +52,6 @@ formatNumberSmall(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
@@ -92,10 +86,6 @@ formatNumberFixed(tags,1)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
@@ -161,7 +151,7 @@ formatNumberFixed(tags,1)-%}
 <!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">지난 8주 간</span>            </div>          
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">지난 8주</span>            </div>          
 <!--End Chart and Label -->
           </div>
        </div>
@@ -169,23 +159,11 @@ formatNumberFixed(tags,1)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         
-<!--
- {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
- {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
- {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
- {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
--->
- <p class="small-text">{{_varStatDateLaterAccurate_}} 업데이트, {{_varCommonDateReport_}} 자 데이터 사용. 데이터는 주별로 업데이트됩니다.</p> 
-<!--
- {%- else -%}
--->
-   <p class="small-text">{{_varHospDateReport_}} 데이터로 {{ _varHospDateAccurate_ }}에 업데이트된 입원 환자 수.   {{_varCasesDateReport_}} 데이터로 {{_varCasesDateAccurate_}}에 업데이트한 <br>사망자 수 및 검사 건 수.</p> 
-<!--
+      <div class="col-lg-10 mx-auto">        
 
- {%- endif -%}
--->
-         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">사망자 수 및 검사 건 수 관련 원천 데이터.</a></p>
+  <p class="small-text">{{_varHospDateReport_}} 데이터로 {{ _varHospDateAccurate_ }}에 업데이트된 입원 환자 수.   {{_varCasesDateReport_}} 데이터로 {{_varCasesDateAccurate_}}에 업데이트한 <br>사망자 수 및 검사 건 수.</p>
+
+        <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">사망자 수 및 검사 건 수 관련 원천 데이터.</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">데이터 관련 유의 사항</div>             </button>             <div class="card-container" aria-hidden="true">
