@@ -8,8 +8,6 @@ tags: ["translate"]
 addtositemap: true
 ---
 
-
-
 <p><p class="emphasized">Sinusubaybayan ng California ang data para maunawaan ang pagkalat ng COVID-19.</p> 
 <!-- test Fri, Sep 9, 10:46am #1 -->
 </p>
@@ -24,7 +22,6 @@ addtositemap: true
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
@@ -39,7 +36,6 @@ addtositemap: true
 
 {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
@@ -56,8 +52,6 @@ formatNumberSmall(tags)-%}
 {%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
-
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
 
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
@@ -92,10 +86,6 @@ formatNumberFixed(tags,1)-%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
@@ -169,23 +159,11 @@ formatNumberFixed(tags,1)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         
-<!--
- {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
- {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
- {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
- {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
--->
- <p class="small-text">Na-update noong {{_varStatDateLaterAccurate_}}, gamit ang data mula sa {{_varCommonDateReport_}}. Linggu-linggong ina-update ang data.</p> 
-<!--
- {%- else -%}
--->
-   <p class="small-text">Na-update ang pagpapaospital {{ _varHospDateAccurate_ }}, na may data mula {{_varHospDateReport_}}.   <br>Na-update ang mga pagkamatay, at pagsusuri {{_varCasesDateAccurate_}}, na may data mula sa {{_varCasesDateReport_}}.</p> 
-<!--
+      <div class="col-lg-10 mx-auto">        
 
- {%- endif -%}
--->
-         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng pagkamatay at pagsusuri</a></p>
+  <p class="small-text">Na-update ang pagpapaospital {{ _varHospDateAccurate_ }}, na may data mula {{_varHospDateReport_}}.   <br>Na-update ang mga pagkamatay, at pagsusuri {{_varCasesDateAccurate_}}, na may data mula sa {{_varCasesDateReport_}}.</p>
+
+        <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng pagkamatay at pagsusuri</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">Mga tala sa data</div>             </button>             <div class="card-container" aria-hidden="true">
