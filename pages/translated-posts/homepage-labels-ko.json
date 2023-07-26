@@ -45,6 +45,10 @@
       "text": "백신 접종 데이터"
     },
     {
+      "_id": "varHospitalizations",
+      "text": "입원 환자 수"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "건강 형평성"
     },
@@ -102,7 +106,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "데이터 처리 관련 문제로 인해 캘리포니아주 공중보건부(California Department of Public Health)가 금일 COVID-19 검사에 관한 업데이트를 보류하고 있습니다. 데이터는 2022년 4월 14일에 보고될 예정입니다. 본 데이터에 관한 세부 내용은"
+      "text": "본 데이터애 관한 세부 내용은"
     },
     {
       "_id": "varStateDashboard",
@@ -125,8 +129,12 @@
       "text": "[VaxUpdatedDate]자로 [VaxDataDate]가 제공한 데이터로 업데이트된 백신 투여 데이터"
     },
     {
+      "_id": "varUpdateTextHosp",
+      "text": "[HospDataDate] 데이터로 [HospUpdatedDate]에 업데이트한 입원 환자 수"
+    },
+    {
       "_id": "varUpdateTextCases",
-      "text": "[CasesUpdatedDate]자로 [CasesDataDate]가 제공한 데이터로 업데이트된 확진 건수, 사망자수 및 검사 건수"
+      "text": "[CasesUpdatedDate]자로 [CasesDataDate]가 제공한 데이터로 업데이트된 확진 건 수, 사망자 수 및 검사 건 수"
     }
   ]
 }

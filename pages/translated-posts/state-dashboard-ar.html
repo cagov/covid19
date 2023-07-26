@@ -22,7 +22,6 @@ addtositemap: true
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
@@ -37,7 +36,6 @@ addtositemap: true
 
 {%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
 {%-set _varStatTotalCases_ = data2.cases.LATEST_TOTAL_CONFIRMED_CASES | formatNumber(tags)-%}
 {%-set _varStatTotalCasesToday_ = data2.cases.NEWLY_REPORTED_CASES | formatNumber(tags)-%}
@@ -55,14 +53,18 @@ formatNumberSmall(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
 {%-set _varStatPos_7DayAvgPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) | formatNumberFixed(tags,1) -%}
 
-{%-set _varStatHospitalTotal_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varStatHospital_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 {%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
 {%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
+
 
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
@@ -85,10 +87,6 @@ formatNumberFixed(tags,1)-%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
 
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -99,57 +97,28 @@ formatNumberFixed(tags,1)-%}
  and {{_varStatTotalDeaths_}} deaths.</div> -->
        </div>
     </div>  
-<!----- Begin Summary Boxes -->
+<!-- Begin Summary Boxes -->
  <div class="row d-flex justify-content-md-center summary-boxes">   
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">اللقاحات المعطاة</div>
-         <div id="total-vaccines-number" class="text-white font-size-1-2em mb-2"><strong>{{_varStatVaccines_}}</strong> <span class="text-300">إجمالي</span>          </div>
-         <div id="total-vaccines-today" class="text-white font-size-1-2em mb-2">            <strong>{{_varDosesDailyAverage_}}</strong> <span class="text-300">المتوسط اليومي</span> </div>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">حالات دخول المستشفى للإقامة والعلاج</div>
+         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+           <span class="text-300">{{ translatedLabels.varTotal }}</span>
+         </div>
+         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">المتوسط اليومي</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{_varFullyVaxedPercent_}}النسبة المئوية (%)</strong> للسكان الذين تم تطعيمهم</span>            </div>
-           <div>             <span class="text-300">(بجرعات أساسية)</span>            </div>
+           <div>              <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (لكل 100 ألف)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-vax"></div>
+           <div class="sparkline-hospitalizations"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">الأسابيع الـ 8 الماضية</span>            </div>
          </div>          
 <!--End Chart and Label -->
         </div>
      </div>     
 <!-- Blue Summary Box 2 -->
- 
-<!--
- <div class="col-md-6 col-lg-3 px-10px"> 
- <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
- <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Cases</div>
-
- <div id="total-cases-number" class="text-white font-size-1-2em mb-2">
- <strong>{{_varStatTotalCases_}}</strong> <span class="text-300">total</span>
- </div>
- <div id="total-cases-today" class="text-white font-size-1-2em mb-2">
- <strong>{{_varCasesDailyAverage_}}</strong> <span class="text-300">daily avg.</span>
- </div>
- <div class="text-white text-xs mb-2">
- <div>
- <strong>{{_varStatNewCasesPer100k_}}</strong> <span class="text-300">new cases (per 100K)</span>
- </div><div>&nbsp;</div>
- </div>
-
- <div class="mt-auto px-2">
- <div class="sparkline-cases"></div>
- <div class="text-white text-xs mt-1 ">
- <span class="text-300 date-caption-span">Past 8 weeks</span>
- </div>
- </div>
-
- </div>
- </div>
--->
- 
-<!-- Blue Summary Box 3 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
          <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">الوفيات</div>
@@ -182,7 +151,7 @@ formatNumberFixed(tags,1)-%}
 <!--Chart and Label -->
           <div class="mt-auto px-2">
            <div class="sparkline-tests"></div>
-           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الـ 8 أسابيع الماضية</span>            </div>          
+           <div class="text-white text-xs mt-1 ">              <span class="text-300 date-caption-span">الأسابيع الـ 8 الماضية</span>            </div>          
 <!--End Chart and Label -->
           </div>
        </div>
@@ -190,29 +159,18 @@ formatNumberFixed(tags,1)-%}
    </div>
 
     <div class="row pb-4 py-5">
-      <div class="col-lg-10 mx-auto">         
-<!--
- {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
- {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
- {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
- {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
--->
- <p class="small-text"> مُحدَّثة {{_varStatDateLaterAccurate_}}، ببيانات من {{_varCommonDateReport_}}. وتُحدَّث البيانات أسبوعيًا.</p> 
-<!--
- {%- else -%}
--->
-   <p class="small-text">تم تحديث اللقاحات المعطاة {{_varVaxDateAccurate_}}، ببيانات من {{_varVaxDateReport_}}.   <br>حالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p> 
-<!--
- {%- endif -%}
--->
-         <p class="small-text"><a href="https://data.ca.gov/dataset/covid-19-vaccine-progress-dashboard-data">البيانات المصدرية للقاحات الموزعة</a> و<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لعدد حالات الوفيات والفحوصات</a></p>
+      <div class="col-lg-10 mx-auto">        
+
+  <p class="small-text"> حالات محدثة لدخول المستشفى للإقامة والعلاج {{ _varHospDateAccurate_ }}، ببيانات من {{_varHospDateReport_}}.   <br>حالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p>
+
+        <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لحالات الوفيات والاختبارات</a></p>
 
       <div class="wp-block-cgb-block-chart-drawer">         <cagov-accordion class="chart-drawer accordion-chart-drawer"> <div class="card">             <button class="card-header accordion-alpha" type="button" aria-expanded="false">               <div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div>
               <div class="accordion-title">مذكرات البيانات</div>             </button>             <div class="card-container" aria-hidden="true">
               <div class="card-body">
                 <ul class="small-text">
 <li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li>
-<li>وتتأخر اللقاحات الموزعة والمعطاة مدة 7 أيام.</li>
+<li>إن عدد حالات دخول المستشفيات للإقامة والعلاج يشمل جميع المرضى الذين تم تشخيص إصابتهم بفيروس كوفيد-19 خلال فترة إقامتهم. وهذا لا يعني بالضرورة أنهم دخلوا المستشفى بسبب مضاعفات فيروس كوفيد-19 أو أنهم عانوا من أعراض فيروس كوفيد-19.</li> 
 <li>وتتأخر الوفيات مدة 22 يومًا بسبب التأخيرات في الإبلاغ.</li>
 <li>تتأخر الاختبارات بمدة يوم واحد.</li>
 <li>إن بيانات حالات الوفيات الآتية من مقاطعتي لوس أنجلوس وسان دييغو بها تأخر إضافي مدته يوم واحد (1).</li>
@@ -384,17 +342,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>
-
-
-
-<div class="highlight">
-<h2 class="h4 color-primary mt-0">التأخر في بيانات دخول المستشفى للإقامة والعلاج</h2>
-<p>تغير نظام جمع بيانات دخول المستشفيات لعلاج كوفيد-19 نتيجة لانتهاء حالة الطوارئ الصحية العامة الفيدرالية. للسماح بهذا التحول، سيتم إيقاف بيانات الاحتجاز بالمستشفى لحالات كوفيد-19 على بوابة البيانات المفتوحة وموقع كوفيد-19 مؤقتًا لبضعة أسابيع بعد 11 مايو 2023.</p>
-</div><p></p>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>
-<!--
-<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospitalTotal_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p> -->
-</p>
+<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء كانت مؤكدة أو مشتبهًا فيها ما مجموعه {{_varStatHospital_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة المؤكدة إصابتهم بكوفيد-19 ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
 
 
 
@@ -415,8 +363,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="filterTabLabel1">نزلاء المستشفيات</li>
           <li data-label="filterTabLabel2">وحدات العناية المركزة</li>
           <li data-label="timeTabLabel1">كل الوقت</li>
-          <li data-label="timeTabLabel2">6 أشهر</li>
-          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="timeTabLabel2">3 أشهر</li>
+          <li data-label="timeTabLabel3">7 أيام</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
           <li data-label="dayAverage">متوسط 14 يوم</li>
           <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين_بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يومًا: <b>{متوسط_14_يومًا} </b>           </li>
@@ -430,10 +378,10 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرَّة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
+          <li data-label="dayAverage">متوسط 14 يومًا</li>
           <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> من أسرَّة العناية المركزة المتوفرة.</li>
           <li data-label="timeTabLabel1">كل الوقت</li>
-          <li data-label="timeTabLabel2">6 أشهر</li>
-          <li data-label="timeTabLabel3">90 يومًا</li>
+          <li data-label="timeTabLabel2">7 أيام</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
   </div>
 
@@ -444,7 +392,12 @@ formatNumberFixed(tags,1)-%}
 
 
 <div class="wp-block-cgb-block-chart-drawer"><cagov-accordion class="chart-drawer"><div class="card"><button class="card-header accordion-alpha" type="button" aria-expanded="false"><div class="plus-munus"><cagov-plus></cagov-plus><cagov-minus></cagov-minus></div><div class="accordion-title">معلومات الرسم البياني</div></button><div class="card-container" aria-hidden="true"><div class="card-body">
-<ul class="small-text"><li>تتوفر بيانات المريض المشتبه في إصابته بكوفيد-19 في البيانات المصدرية للمرضى المقيمين في المستشفى والبيانات المصدرية لوحدات العناية المركزة.</li><li>ويتوفر المزيد من التفاصيل عن المرضى المقيمين بالمستشفيات ووحدات العناية المركزة، بمن فيهم المرضى المشتبه في إصابتهم بكوفيد-19، في <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">لوحة معلومات حالات دخول المستشفى للإقامة والعلاج</a>.</li></ul>
+<ul class="small-text">
+<li>إن عدد حالات دخول المستشفيات للإقامة والعلاج يشمل جميع المرضى الذين تم تشخيص إصابتهم بفيروس كوفيد-19 خلال فترة إقامتهم. وهذا لا يعني بالضرورة أنهم دخلوا المستشفى بسبب مضاعفات فيروس كوفيد-19 أو أنهم عانوا من أعراض فيروس كوفيد-19.</li> 
+<li>تتوفر بيانات المريض المشتبه في إصابته بكوفيد-19 في البيانات المصدرية للمرضى المقيمين في المستشفى والبيانات المصدرية لوحدات العناية المركزة.</li>
+<li>ويتوفر المزيد من التفاصيل عن المرضى المقيمين بالمستشفيات ووحدات العناية المركزة، بمن فيهم المرضى المشتبه في إصابتهم بكوفيد-19، في <a href="https://public.tableau.com/app/profile/ca.open.data/viz/COVID-19HospitalsDashboard/Hospitals">لوحة معلومات حالات دخول المستشفى للإقامة والعلاج</a>.</li>
+<li>سيُختزل ويُقتطع مخطط "ICU Beds" (أسرَّة العناية المركزة) ولن تُعرض عليه البيانات إلا ابتداءً من 11/05/2023. ويرجع ذلك إلى الاختلافات في جمع البيانات بين المعيار الفيدرالي الجديد (NHSN) ومعيار كاليفورنيا السابق (CHA).</li> 
+</ul>
 </div></div></div></cagov-accordion></div>    <hr class="wp-block-separator mt-0 mb-0" id="more"/>    <div class="full-bleed bg-lightblue mt-0 mb-0 pb-3">
     <div class="container pt-5 pb-5">
         <h2>استكشف المزيد من البيانات</h2>

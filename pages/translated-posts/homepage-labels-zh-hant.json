@@ -45,6 +45,10 @@
       "text": "疫苗接種數據"
     },
     {
+      "_id": "varHospitalizations",
+      "text": "住院"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "健康公平"
     },
@@ -102,7 +106,7 @@
     },
     {
       "_id": "varDataDetailsHere",
-      "text": "因數據處理問題，加州公共衛生局推遲今天的COVID-19檢測數據更新。數據將於2022年4月14日報告。此類數據的詳情在"
+      "text": "此數據的詳情在"
     },
     {
       "_id": "varStateDashboard",
@@ -122,11 +126,15 @@
     },
     {
       "_id": "varUpdateTextVax",
-      "text": "使用 [VaxDataDate] 的數據更新 [VaxUpdatedDate] 的疫苗接種數"
+      "text": "使用[VaxDataDate]的數據在[VaxUpdatedDate]更新疫苗接種數"
+    },
+    {
+      "_id": "varUpdateTextHosp",
+      "text": "使用[HospDataDate]的數據在[HospUpdatedDate]更新住院病例數"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "使用 [CasesDataDate] 的數據更新 [CasesUpdatedDate] 的病例數、死亡數及檢測數"
+      "text": "使用[CasesDataDate]的數據在[CasesUpdatedDate]更新病例數、死亡數及檢測數"
     }
   ]
 }
