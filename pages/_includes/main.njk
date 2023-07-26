@@ -150,14 +150,12 @@ formatNumber(tags,1)-%}
         {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
 
-                
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextHosp | replace("[HospUpdatedDate]", _varHospDateAccurate_) | replace("[HospDataDate]",_varHospDateReport_) -}}
 					</div>
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
 					</div>
-                
 
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
