@@ -260,8 +260,10 @@
   <div class="container py-2">
     <div class="row pb-4">
 				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
-					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">在加州追踪COVID-19</h2><div class="text-sm text-center text-300">使用2023年7月15日的数据在2023年7月20日, 上午9:36更新住院病例数</div>
+					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">在加州追踪COVID-19</h2>
+					<div class="text-sm text-center text-300">使用2023年7月15日的数据在2023年7月20日, 上午9:36更新住院病例数</div>
 					<div class="text-sm text-center text-300">使用2023年7月18日的数据在2023年7月20日, 上午9:36更新病例数、死亡数及检测数</div>
+                
 
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
@@ -649,7 +651,7 @@ gtag("config", "G-612TCBESCW", {"groups": "custom_events"});
 	
 	
 		<script type="module">
-			function e(e,n={month:"long",day:"numeric",year:"numeric"},t=0){const i=function(e){const n=e.split("-"),t=+n[0],i=+n[1],r=+n[2];return new Date(t,i-1,r)}(e);return 0!=t&&i.setDate(i.getDate()+t),function(e,n={month:"long",day:"numeric",year:"numeric"}){return e.toLocaleString(document.documentElement.lang,n)}(i,n)}function n(n,t){fetch("https://files.covid19.ca.gov/img/generated/sparklines/"+n).then((function(n){return n.text().then((function(n){let i=document.querySelector(t);if(i){i.innerHTML=n;let t=JSON.parse(i.querySelector("svg").getAttribute("meta")),r=i.parentElement.querySelector(".date-caption-span");const a={month:"long",day:"numeric"};r&&"FIRST_DATE"in t&&"LAST_DATE"in t&&(r.innerHTML=e(t.FIRST_DATE,a)+" &ndash; "+e(t.LAST_DATE,a))}}))}))}n("sparkline-hospitalizations.svg",".sparkline-hospitalizations"),n("sparkline-tests.svg",".sparkline-tests"),n("sparkline-deaths.svg",".sparkline-deaths"),n("sparkline-vaccines.svg",".sparkline-vax");
+			const e="https://files.covid19.ca.gov/img/generated/sparklines/";function n(e,n={month:"long",day:"numeric",year:"numeric"},t=0){const i=function(e){const n=e.split("-"),t=+n[0],i=+n[1],r=+n[2];return new Date(t,i-1,r)}(e);return 0!=t&&i.setDate(i.getDate()+t),function(e,n={month:"long",day:"numeric",year:"numeric"}){return e.toLocaleString(document.documentElement.lang,n)}(i,n)}function t(t,i){fetch(e+t).then((function(e){return e.text().then((function(e){let t=document.querySelector(i);if(t){t.innerHTML=e;let i=JSON.parse(t.querySelector("svg").getAttribute("meta")),r=t.parentElement.querySelector(".date-caption-span");const s={month:"long",day:"numeric"};r&&"FIRST_DATE"in i&&"LAST_DATE"in i&&(r.innerHTML=n(i.FIRST_DATE,s)+" &ndash; "+n(i.LAST_DATE,s))}}))}))}t("sparkline-hospitalizations.svg",".sparkline-hospitalizations"),t("sparkline-tests.svg",".sparkline-tests"),t("sparkline-deaths.svg",".sparkline-deaths");
 
 		</script>
 	
