@@ -29,9 +29,8 @@ import "./charts/cagov-chart-dashboard-postvax-chart/index.js"
 import { reformatReadableDate } from "../common/readable-date.js";
 
 // load sparklines
-let svg_path = 'https://files.covid19.ca.gov/img/generated/sparklines/';
 function getSVG(file,selector) {
-  fetch(svg_path + file).then(function(response) {
+  fetch(config.svg_path + file).then(function(response) {
     return response.text().then(function(svgtext) {
       let targetEl = document.querySelector(selector);
       if(targetEl) {
@@ -52,7 +51,6 @@ function getSVG(file,selector) {
 getSVG('sparkline-hospitalizations.svg','.sparkline-hospitalizations');
 getSVG('sparkline-tests.svg','.sparkline-tests');
 getSVG('sparkline-deaths.svg','.sparkline-deaths');
-getSVG('sparkline-vaccines.svg','.sparkline-vax');
 
 var countyInput = document.getElementById("location-query");
 var clearBtn = document.getElementById("clearCounty");
