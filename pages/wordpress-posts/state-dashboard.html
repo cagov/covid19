@@ -4,7 +4,7 @@ title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
 publishdate: "2022-10-17T19:41:51Z"
-tags: ["translate"]
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -86,7 +86,6 @@ formatNumberFixed(tags,1)-%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
 
 -->
@@ -369,7 +368,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior day total. The rate of positive tests over the last 7 days is {{_varStatPos_7DayAvgPct_}}%.</p>
+<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior week. The rate of positive tests over the last 7 days is {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
