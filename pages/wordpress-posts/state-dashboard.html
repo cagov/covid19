@@ -51,7 +51,7 @@ formatNumberSmall(tags)-%}
 {%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatTestedWeekly_ = data2.tests.NEWLY_REPORTED_TESTS_LAST_7_DAYS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
@@ -368,7 +368,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedDaily_}} tests from the prior week. The rate of positive tests over the last 7 days is {{_varStatPos_7DayAvgPct_}}%.</p>
+<p>The number of COVID-19 diagnostic test results in California reached a total of {{_varStatTested_}}, an increase of {{_varStatTestedWeekly_}} tests from the prior week. The rate of positive tests over the last 7 days is {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
