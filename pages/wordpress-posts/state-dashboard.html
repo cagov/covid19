@@ -4,7 +4,7 @@ title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
 publishdate: "2022-10-17T19:41:51Z"
-tags: ["translate"]
+tags: ["staging-only","translate"]
 addtositemap: true
 ---
 
@@ -61,14 +61,21 @@ formatNumberFixed(tags,1)-%}
 {%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
 {%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+{%-set _varStatAdmit_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
+{%-set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 {%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
 {%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
 
 
 {%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
@@ -87,7 +94,7 @@ formatNumberFixed(tags,1)-%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- endif -%}
-
+{%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 -->
 
 
@@ -111,16 +118,16 @@ formatNumberFixed(tags,1)-%}
   <!-- Blue Summary Box 1 -->
     <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Hospitalizations</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
            <span class="text-300">{{ translatedLabels.varTotal }}</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">
-           <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">daily avg.</span>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">
+           <strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">daily avg.</span>
          </div>
          <div class="text-white text-xs mb-2">
            <div>
-             <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (per 100k)</span>
+             <span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (per 100k)</span>
            </div>
          </div>
          <!--Chart and Label -->
@@ -189,7 +196,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">Hospitalizations updated {{ _varHospDateAccurate_ }}, with data from {{_varHospDateReport_}}.
+  <p class="small-text">Hospital admissions updated {{ _varAdmitDateAccurate_ }}, with data from {{_varHospDateReport_}}.
   <br>Deaths and tests updated {{_varCasesDateAccurate_}}, with data from {{_varCasesDateReport_}}.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Deaths and tests source data</a></p>
@@ -448,36 +455,52 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>The number of hospitalizations due to confirmed COVID-19 cases in California reached a total of {{_varStatHospital_}}, {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
+<p>The number of hospital admissions due to confirmed COVID-19 cases in California reached a total of {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} from the prior day total. The number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior day total.</p>
 
 
 
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">
       <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
-      <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt;
+      <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt;
         <ul class="d-none">
-          <li data-label="chartTitleState">COVID-19 hospitalized patients in California</li>
-          <li data-label="chartTitleCounty">COVID-19 hospitalized patients in {REGION} County</li>
+          <li data-label="chartTitleState">COVID-19 hospital admissions in California</li>
+          <li data-label="chartTitleCounty">COVID-19 hospital admissions in {REGION} County</li>
           <li data-label="chartTitleStateICU">COVID-19 ICU patients in California</li>
           <li data-label="chartTitleCountyICU">COVID-19 ICU patients in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior day total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartTitleStateHospitalized">COVID-19 hospitalized patients in California</li>
+          <li data-label="chartTitleCountyHospitalized">COVID-19 hospitalized patients in {REGION} County</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 hospital admissions</li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more admissions from prior day total ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer admissions from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU patients</li>
           <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior day total ({CHANGE_FACTOR} decrease)</li>
-          <li data-label="filterTabLabel1">Hospitalized</li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> COVID-19 hospitalized patients</li>
+          <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior day total ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior day total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="filterTabLabel1">Admissions</li>
           <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="filterTabLabel3">Hospitalized</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">3 months</li>
           <li data-label="timeTabLabel3">7 days</li>
           <li data-label="xAxisLegend">Reported date</li>
-          <li data-label="dayAverage">14-day average</li>
+          <li data-label="dayAverage">7-day average</li>
           <li data-label="tooltipContent">
-            Reported Date: <b>{DATE} </b><br>
+            Date: <b>{DATE} </b><br>
+            Total hospital admissions: <b>{TOTAL_HOSPITALIZED} </b><br>
+            7-day average of hospital admissions: <b>{7DAY_AVERAGE} </b>
+          </li>
+          <li data-label="tooltipContentICU">
+            Date: <b>{DATE} </b><br>
+            Total ICU patients: <b>{TOTAL_HOSPITALIZED} </b><br>
+            7-day average of ICU patients: <b>{7DAY_AVERAGE} </b>
+          </li>
+          <li data-label="tooltipContentHospitalized">
+            Date: <b>{DATE} </b><br>
             Total hospitalized patients: <b>{TOTAL_HOSPITALIZED} </b><br>
-            14-day average of hospitalized patients: <b>{14DAY_AVERAGE} </b>
+            7-day average of hospitalized patients: <b>{7DAY_AVERAGE} </b>
           </li>
         </ul>
       </cagov-chart-dashboard-patients>                
@@ -492,7 +515,7 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior day total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior day total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="xAxisLegend">Reported date</li>
-          <li data-label="dayAverage">14-day average</li>
+          <li data-label="dayAverage">7-day average</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
           <li data-label="timeTabLabel1">All time</li>
           <li data-label="timeTabLabel2">7 days</li>
