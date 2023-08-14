@@ -38,6 +38,10 @@ formatNumber(tags,1)-%}
 {%- set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%- set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 
+{%- set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%- set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%- set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
@@ -162,17 +166,17 @@ formatNumber(tags,1)-%}
 						<!-- Blue Summary Box 1 -->						
 						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varHospitalizations }}</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
 
-								<div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+								<div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
 								<span class="text-300">{{ translatedLabels.varTotal }}</span>
 								</div>
-								<div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">
-								<strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
+								<div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">
+								<strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
 									<div>
-										<span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (per 100k)</span>
+										<span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (per 100k)</span>
 									</div>
 								</div>
 								<!--Chart and Label -->
