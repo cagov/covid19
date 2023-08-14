@@ -12,10 +12,18 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
-      '14DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
       TOTAL_HOSPITALIZED:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
-    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    if (this.chartConfigFilter === 'hospitalized') {
+      return applySubstitutions(this.translationsObj.tooltipContentHospitalized, repDict);
+    }
+    else if (this.chartConfigFilter === 'icu') {
+      return applySubstitutions(this.translationsObj.tooltipContentICU, repDict);
+    }
+    else {
+      return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    }
   }
 
   setupPostTranslations(regionName) {

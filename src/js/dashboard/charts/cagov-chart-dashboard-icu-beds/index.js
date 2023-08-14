@@ -110,8 +110,8 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
       let time_series_bars = JSON.parse(JSON.stringify(this.uncroppedChartData.time_series[this.chartOptions.seriesField].VALUES));
       let time_series_line = JSON.parse(JSON.stringify(time_series_bars));
 
-      // compute 14-day average (first 14 days of data will have a 14-n day average)
-      const avg_days = 14;
+      // compute 7-day average (first 7 days of data will have a 7-n day average)
+      const avg_days = 7;
       for (let i = 0; i < time_series_bars.length; ++i) {
         let sum = 0;
         let days = 0;
