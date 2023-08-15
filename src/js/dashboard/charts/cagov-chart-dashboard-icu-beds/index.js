@@ -77,11 +77,18 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
             "time_series": {
               "ICU_BEDS": {
                 "DATE_RANGE": {
-                  "MINIMUM": "2020-03-30",
+                  "MINIMUM": "2023-05-11",
                   "MAXIMUM": getSnowflakeStyleDate(-1)
                 },
                "VALUES": []
               },
+              "ICU_BEDS_POSTAVG": {
+                "DATE_RANGE": {
+                  "MINIMUM": "2023-05-11",
+                  "MAXIMUM": getSnowflakeStyleDate(-1)
+                },
+               "VALUES": []
+              }
             }
           }
         };
