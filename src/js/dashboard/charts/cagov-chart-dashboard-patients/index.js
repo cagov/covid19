@@ -28,11 +28,13 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
     const repDict = {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
       REGION:regionName,
+      MAX_DATE:barSeries[0].DATE
     };
     if (this.chartConfigFilter == 'hospitalized') {
       if (!('chartTitleStateHospitalized' in this.translationsObj)) {
