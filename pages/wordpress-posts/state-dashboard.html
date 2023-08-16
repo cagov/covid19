@@ -468,9 +468,9 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleCountyICU">COVID-19 ICU patients in {REGION} County</li>
           <li data-label="chartTitleStateHospitalized">COVID-19 hospitalized patients in California</li>
           <li data-label="chartTitleCountyHospitalized">COVID-19 hospitalized patients in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> total weekly new hospital admissions</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> total weekly ICU patients</li>
-          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> total weekly hospitalized patients*</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> new hospital admissions <span class="minor-text">(weekly total)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> ICU patients <span class="minor-text">(weekly total)</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> hospitalized patients <span class="minor-text">(as of {MAX_DATE})</span></li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more new admissions from prior weekly total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer new admissions from prior weekly total ({CHANGE_FACTOR} decrease)</li>
           <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior weekly total ({CHANGE_FACTOR} increase)</li>
@@ -509,7 +509,7 @@ formatNumberFixed(tags,1)-%}
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
           <li data-label="chartTitleCounty">ICU beds in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available as of {MAX_DATE}</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available <span class="minor-text">(as of {MAX_DATE})</span></li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior week ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="xAxisLegend">Reported date</li>
