@@ -453,7 +453,9 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>The weekly number of new hospital admissions due to confirmed COVID-19 cases in California reached a total of {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} from the prior week. The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p>
+<p>The weekly number of new hospital admissions due to confirmed COVID-19 cases in California reached a total of {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} from the prior week. 
+
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
 
 
 
@@ -469,12 +471,12 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleStateHospitalized">COVID-19 hospitalized patients in California</li>
           <li data-label="chartTitleCountyHospitalized">COVID-19 hospitalized patients in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> new hospital admissions <span class="minor-text">(weekly total)</span></li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> ICU patients <span class="minor-text">(weekly total)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> ICU patients <span class="minor-text">(as of {MAX_DATE})</span></li>
           <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> hospitalized patients <span class="minor-text">(as of {MAX_DATE})</span></li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more new admissions from prior weekly total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer new admissions from prior weekly total ({CHANGE_FACTOR} decrease)</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior weekly total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior weekly total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior week ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior week ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="filterTabLabel1">New Admissions</li>
