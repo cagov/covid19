@@ -4,7 +4,7 @@ title: "Tracking COVID-19 in California"
 meta: "County and statewide data to help people understand the spread of COVID-19."
 author: "State of California"
 publishdate: "2022-10-17T19:41:51Z"
-tags: ["staging-only","translate"]
+tags: ["translate"]
 addtositemap: true
 ---
 
@@ -212,9 +212,10 @@ formatNumberFixed(tags,1)-%}
 <li>All daily averages are 7-day averages.</li>
 <li>For death data after December 31, 2022, California uses Provisional Deaths from the Center for Disease Control and Prevention’s National Center for Health Statistics (NCHS) National Vital Statistics System (NVSS). Prior to January 1, 2023, death data was sourced from the COVID-19 registry.</li>
 <li>The change in data source occurred in July 2023 and was applied retroactively to all 2023 data to provide a consistent source of death data for the year of 2023.</li>
-<li>Hospitalization counts include all patients diagnosed with COVID-19 during their stay. This does not necessarily mean they were hospitalized because of COVID-19 complications or that they experienced COVID-19 symptoms.</li> 
+<li>Hospitalization patients include all patients diagnosed with COVID-19 during their stay. This does not necessarily mean they were hospitalized because of COVID-19 complications or that they experienced COVID-19 symptoms.</li> 
+<li>New admissions counts include patients who were admitted to an inpatient bed on the previous calendar day who had laboratory-confirmed COVID19 at the time of admission </li>
 <li>Death daily average and rate have a 22-day lag due to delays in reporting.</li>
-<li>This week&#8217;s testing data does not include data from Los Angeles County.</li>
+<li>This week&#8217;s testing data includes two weeks of data from Los Angeles county.</li>
 <li>Tests have a 1-day lag.</li>
 <li>Testing data from Los Angeles county have an 8-day lag.</li>
 <li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li>
@@ -453,7 +454,9 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p>The weekly number of new hospital admissions due to confirmed COVID-19 cases in California reached a total of {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} from the prior week. The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p>
+<p>The weekly number of new hospital admissions due to confirmed COVID-19 cases in California is {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} from the prior week. 
+
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
 
 
 
@@ -469,12 +472,12 @@ formatNumberFixed(tags,1)-%}
           <li data-label="chartTitleStateHospitalized">COVID-19 hospitalized patients in California</li>
           <li data-label="chartTitleCountyHospitalized">COVID-19 hospitalized patients in {REGION} County</li>
           <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> new hospital admissions <span class="minor-text">(weekly total)</span></li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> ICU patients <span class="minor-text">(weekly total)</span></li>
-          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> hospitalized patients <span class="minor-text">(as of {MAX_DATE})</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> ICU patients <span class="minor-text">(on {MAX_DATE})</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> hospitalized patients <span class="minor-text">(on {MAX_DATE})</span></li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more new admissions from prior weekly total ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer new admissions from prior weekly total ({CHANGE_FACTOR} decrease)</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior weekly total ({CHANGE_FACTOR} increase)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior weekly total ({CHANGE_FACTOR} decrease)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> more ICU patients from prior week ({CHANGE_FACTOR} increase)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> fewer ICU patients from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> more patients hospitalized from prior week ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> fewer patients hospitalized from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="filterTabLabel1">New Admissions</li>
@@ -509,7 +512,7 @@ formatNumberFixed(tags,1)-%}
         <ul class="d-none">
           <li data-label="chartTitleState">ICU beds in California</li>
           <li data-label="chartTitleCounty">ICU beds in {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available <span class="minor-text">(as of {MAX_DATE})</span></li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ICU beds available <span class="minor-text">(on {MAX_DATE})</span></li>
           <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> more ICU beds available from prior week ({CHANGE_FACTOR} increase)</li>
           <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> fewer ICU beds available from prior week ({CHANGE_FACTOR} decrease)</li>
           <li data-label="xAxisLegend">Reported date</li>
