@@ -20,5 +20,6 @@ function getSVG(file, selector) {
     });
   }
   getSVG('sparkline-hospitalizations.svg','.sparkline-hospitalizations');
+  getSVG('sparkline-admissions.svg','.sparkline-admissions');
   getSVG('sparkline-tests.svg','.sparkline-tests');
   getSVG('sparkline-deaths.svg','.sparkline-deaths');
