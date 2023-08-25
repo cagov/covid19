@@ -49,7 +49,7 @@ formatNumberSmall(tags)-%}
 {%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatTestedWeekly_ = data2.tests.NEWLY_REPORTED_TESTS_LAST_7_DAYS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
@@ -59,14 +59,19 @@ formatNumberFixed(tags,1)-%}
 {%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
 {%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatAdmit_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
 {%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varAdmitDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
 
 
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatAdmitChangeText_ = 'an increase of' if _varStatAdmitChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
@@ -84,9 +89,8 @@ formatNumberFixed(tags,1)-%}
 {%- if _varInhibitDailyTotals_ -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
+{%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -102,17 +106,17 @@ formatNumberFixed(tags,1)-%}
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">입원 환자 수</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
            <span class="text-300">{{ translatedLabels.varTotal }}</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">일 평균</span> </div>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">일일 평균</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (1 십만명 당)</span>            </div>
+           <div>              <span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (1 십만명 당)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-hospitalizations"></div>
+           <div class="sparkline-admissions"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">지난 8주 간</span>            </div>
          </div>          
 <!--End Chart and Label -->
@@ -161,7 +165,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">{{_varHospDateReport_}} 데이터로 {{ _varHospDateAccurate_ }}에 업데이트된 입원 환자 수.   {{_varCasesDateReport_}} 데이터로 {{_varCasesDateAccurate_}}에 업데이트한 <br>사망자 수 및 검사 건 수.</p>
+  <p class="small-text">{{_varHospDateReport_}} 데이터로 {{ _varAdmitDateAccurate_ }}에 업데이트된 신규 입원자 수.   {{_varCasesDateReport_}} 데이터로 {{_varCasesDateAccurate_}}에 업데이트한 <br>사망자 수 및 검사 건 수.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">사망자 수 및 검사 건 수 관련 원천 데이터.</a></p>
 
@@ -171,10 +175,11 @@ formatNumberFixed(tags,1)-%}
                 <ul class="small-text">
 <li>모든 일일 평균값은 7일 평균값을 말합니다.</li>
 <li>2022년 12월 31일 이후의 사망자 데이터에 대해 캘리포니아는 질병 통제 센터(Center for Disease Control and Prevention)의 국립 보건 통계 센터(National Center for Health Statistics, NCHS) 국가 주요 통계 시스템(National Vital Statistics System, NVSS)에서 제공하는 임시 사망자 수를 사용하고 있습니다. 2023년 1월 1일 이전에는 사망자 데이터를 COVID-19 등록처로부터 제공받았습니다.</li>
-<li>데이터 출처는 2023년 7월에 변경되었으며 2023년도 사망자 데이터 출처를 일관성있게 제공하기 위해 모든 2023년 데이터에 소급 적용하였습니다.</li>
+<li>데이터 출처는 2023년 7월에 변경되었으며 2023년도의 사망자 데이터에 대한 출처를 일관성있게 제공하기 위해 모든 2023년 데이터에 소급 적용하였습니다.</li>
 <li>입원 환자 수에는 입원 기간 중 COVID-19 진단을 받은 환자가 모두 포함되어 있습니다. 이것이 COVID-19 합병증으로 인해 입원헸거나 COVID-19 증상을 겪었다는 것을 의미하지는 않습니다.</li> 
+<li>신규 입원자 수에는 역일 기준 전날에 입원 당시 검사에 의해 COVID-19로 확진되어 입원한 환자가 포함되어 있습니다.</li>
 <li>일일 평균 사망자 수 및 사망률에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li>
-<li>이번 주 검사 결과에는 Los Angeles 카운티의 데이터가 포함되어 있지 않습니다.</li>
+<li>이번 주 검사 결과에는 2주 간의 Los Angeles 카운티 데이터가 포함되어 있습니다.</li>
 <li>검사 건 수에는 1일의 시차가 있습니다.</li>
 <li>Los Angeles 카운티의 검사 데이터는 8일의 시차가 있습니다.</li>
 <li>10만명 당 비율에 대해 사용된 인구 수 분모는 캘리포니아주 재정부(Department of Finance)의 2020년도 예상 인구 수를 참조하였습니다.</li>
@@ -288,7 +293,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">COVID-19 검사</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 진단 검사 결과 수가 총 {{_varStatTested_}} 건에 달하며, 전일 총계 대비 증가는 {{_varStatTestedDaily_}} 건입니다. 지난 7 일 간 양성 반응률은 {{_varStatPos_7DayAvgPct_}}%입니다.</p>
+<h3 class="text-center mt-4">COVID-19 검사</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 진단 검사 결과 수가 총 {{_varStatTested_}} 건에 달하며, 전 주 대비 증가는 {{_varStatTestedWeekly_}} 건입니다. 지난 7일 간 양성 반응률은 {{_varStatPos_7DayAvgPct_}}%입니다.</p>
 
 
 
@@ -346,44 +351,50 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">입원 환자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 확진자로 인한 입원 환자 수는 총 {{_varStatHospital_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} 명입니다. 캘리포니아 내 COVID-19 확진자로 인한 ICU 환자 수는 총 {{_varStatIcuTotal_}} 건에 달하며, 전일 총계 대비 증감은 {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} 명입니다.</p>
-
-
-
-<div class="row">
+<h3 class="text-center">입원 환자 수</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>캘리포니아 내 COVID-19 확진자로 인한 주간 신규 병원 입원자 수는 총 {{_varStatAdmit_}} 건이며, 전 주 총계 대비 증감은 {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} 명입니다.   
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
+    <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
- <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
-          <li data-label="chartTitleState">캘리포니아 내 COVID-19 입원 환자 수</li>
-          <li data-label="chartTitleCounty">{REGION} 카운티 내 COVID-19 입원 환자 수</li>
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
+          <li data-label="chartTitleState">캘리포니아 내 COVID-19 신규 병원 입원자 수</li>
+          <li data-label="chartTitleCounty">{REGION} 카운티 내 COVID-19 신규 병원 입원자 수</li>
           <li data-label="chartTitleStateICU">캘리포니아 내 COVID-19 중환자실 환자 수</li>
           <li data-label="chartTitleCountyICU">{REGION} 카운티 내 COVID-19 중환자실 환자 수</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> COVID-19 입원 환자 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 입원 환자 수 감소({CHANGE_FACTOR} 감소)</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> COVID-19 ICU 환자 수</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 환자 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 전일 대비 총 ICU 환자 수 감소({CHANGE_FACTOR} 감소)</li>
-          <li data-label="filterTabLabel1">입원 환자</li>
-          <li data-label="filterTabLabel2">ICU 환자</li>
+          <li data-label="chartTitleStateHospitalized">캘리포니아 내 COVID-19 입원 환자 수</li>
+          <li data-label="chartTitleCountyHospitalized">{REGION} 카운티 내 COVID-19 입원 환자 수</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> 신규 병원 입원자 수<span class="minor-text">(주간 합계)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> 중환자실(Intensive Care Unit, ICU) 환자 수 <span class="minor-text">({MAX_DATE} 현재)</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> 입원 환자 수 <span class="minor-text">({MAX_DATE} 현재)</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 이전 주간 합계 대비 신규 입원자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 이전 주간 합계 대비 신규 입원자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> 이전 주간 대비 중환자실  환자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> 이전 주간 대비 중환자실  환자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> 이전 주간 대비 입원 환자 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> 이전 주간 대비 입원 환자 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="filterTabLabel1">신규 입원자 수</li>
+          <li data-label="filterTabLabel2">병원 환자 수</li>
+          <li data-label="filterTabLabel3">중환자실  환자 수</li>
           <li data-label="timeTabLabel1">항시</li>
           <li data-label="timeTabLabel2">3개월</li>
           <li data-label="timeTabLabel3">7일</li>
           <li data-label="xAxisLegend">보고일</li>
-          <li data-label="dayAverage">14일 평균</li>
-          <li data-label="tooltipContent">             보고일: <b>{DATE} </b><br> 총 입원 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 14 일 평균 입원 환자 수: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="dayAverage">7 일 평균</li>
+          <li data-label="tooltipContent">             날짜: <b>{DATE} </b><br> 신규 병원 입원자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 7일 평균 신규 병원 입원자 수: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentICU">             날짜: <b>{DATE} </b><br> 중환자실 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 7일 평균 중환자실 환자 수: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentHospitalized">             날짜: <b>{DATE} </b><br> 입원 환자 수: <b>{TOTAL_HOSPITALIZED} </b><br> 7일 평균 입원 환자 수: <b>{14DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">캘리포니아 내 중환자실 병상 수</li>
           <li data-label="chartTitleCounty">{REGION} 카운티 내 중환자실 병상 수</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> 사용 가능한 ICU 병상 수</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 증가({CHANGE_FACTOR} 증가)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> 전일 대비 총 가용 ICU 병상 수 감소({CHANGE_FACTOR} 감소)</li>
+          <li data-label="chartLegend1"><span class="big-num">{합계}</span> 사용 가능한 중환자실 병상 수 <span class="minor-text">({MAX_DATE} 현재)</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{변경}</span> 이전 주간 대비 사용 가능한 중환자실 병상 수 증가({CHANGE_FACTOR} 증가)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{변경}</span> 이전 주간 대비 사용 가능한 중환자실 병상 수 감소({CHANGE_FACTOR} 감소)</li>
           <li data-label="xAxisLegend">보고일</li>
-          <li data-label="dayAverage">14일 평균</li>
-          <li data-label="tooltipContent"><b>{DATE}</b> 자로 사용 가능한 ICU 병상 수는 총 <b>{VALUE}</b>입니다.</li>
+          <li data-label="dayAverage">7일 평균</li>
+          <li data-label="tooltipContent"><b>{날짜}</b> 자로 사용 가능한 중환자실 병상 수는 총 <b>{VALUE}</b>실입니다.</li>
           <li data-label="timeTabLabel1">항시</li>
           <li data-label="timeTabLabel2">7일</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 

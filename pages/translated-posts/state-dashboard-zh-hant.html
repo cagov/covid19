@@ -49,7 +49,7 @@ formatNumberSmall(tags)-%}
 {%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatTestedWeekly_ = data2.tests.NEWLY_REPORTED_TESTS_LAST_7_DAYS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
@@ -59,14 +59,19 @@ formatNumberFixed(tags,1)-%}
 {%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
 {%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatAdmit_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
 {%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varAdmitDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
 
 
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatAdmitChangeText_ = 'an increase of' if _varStatAdmitChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
@@ -84,9 +89,8 @@ formatNumberFixed(tags,1)-%}
 {%- if _varInhibitDailyTotals_ -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
+{%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -102,17 +106,17 @@ formatNumberFixed(tags,1)-%}
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">住院</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
            <span class="text-300">{{ translatedLabels.varTotal }}</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">日平均數</span> </div>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">日平均數</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> （每10萬）</span>            </div>
+           <div>              <span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> （每10萬）</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-hospitalizations"></div>
+           <div class="sparkline-admissions"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">過去8週</span>            </div>
          </div>          
 <!--End Chart and Label -->
@@ -161,7 +165,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">根據{{_varHospDateReport_}}的數據在{{ _varHospDateAccurate_ }}更新住院病例數。根據{{_varCasesDateReport_}}的數據在{{_varCasesDateAccurate_}}更新死亡數及檢測數<br>。</p>
+  <p class="small-text">根據{{_varHospDateReport_}}的數據在{{ _varAdmitDateAccurate_ }}更新新入院人數。根據{{_varCasesDateReport_}}的數據在{{_varCasesDateAccurate_}}更新死亡數及檢測數<br>。</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">死亡數和檢測數來源數據</a></p>
 
@@ -172,9 +176,10 @@ formatNumberFixed(tags,1)-%}
 <li>所有日平均數都是7日平均數。</li>
 <li>對於2022年12月31日後的死亡數據，加州使用來自疾病控制與預防中心國家衛生統計中心 (National Center for Health Statistics, NCHS) 的國家生命統計系統 (National Vital Statistics System, NVSS) 的暫定死亡人數。在2023年1月1日前，死亡數據都是從COVID-19登記處獲得。</li>
 <li>在2023年7月變更了數據來源，並且追溯更改2023年的所有數據，以在2023年使用一致的死亡數據源。</li>
-<li>住院人數包括住院期間診斷出患有COVID-19的所有患者。這並不一定意味著他們因COVID-19併發症或出現了COVID-19症狀而住院。</li> 
+<li>住院患者包括住院期間診斷出患有COVID-19的所有患者。這並不一定意味著他們因COVID-19併發症或出現了COVID-19症狀而住院。</li> 
+<li>新入院人數包括在前一個日曆日入院並且在入院時已透過化驗確診感染COVID-19的患者。</li>
 <li>因為報告有延遲，所以死亡日平均數和比例有22天的滯後期。</li>
-<li>本週的檢測數據不包含Los Angeles縣的數據。</li>
+<li>本週的檢測數據包含兩週的Los Angeles縣數據。</li>
 <li>檢測數據有1天的滯後期。</li>
 <li> Los Angeles縣的檢測數據有8天延遲。</li>
 <li>每10萬人比率所使用的人口分母來自加州財政部對2020年的人口預測。</li>
@@ -288,7 +293,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">COVID-19檢測</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>加州的COVID-19診斷檢測結果數量總共達到了{{_varStatTested_}}，較前一天的總數增加了{{_varStatTestedDaily_}}。過去7天的檢測呈陽性率為{{_varStatPos_7DayAvgPct_}}%。</p>
+<h3 class="text-center mt-4">COVID-19檢測</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>加州的COVID-19診斷檢測結果數量總共達到了{{_varStatTested_}}，較前一週的總數增加了{{_varStatTestedWeekly_}}。過去7天的檢測呈陽性率為{{_varStatPos_7DayAvgPct_}}%。</p>
 
 
 
@@ -346,43 +351,49 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">住院</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>在加州因確診感染COVID-19而住院的人數總共達到了{{_varStatHospital_}}，比前一天的總數{{_varStatHospitalChange_ | abs}}{{_varStatHospitalChangeText_}} 。在加州因確診感染COVID-19而進入重症監護室 (Intensive Care Unit, ICU) 的人數總共達到了{{_varStatIcuTotal_}}， 比前一天的總數{{_varStatIcuChange_ | abs}}{{_varStatIcuChangeText_}}。</p>
-
-
-
-<div class="row">
+<h3 class="text-center">住院</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>本週在加州因確診感染COVID-19而入院的最新人數達到了{{_varStatAdmit_}}，比前一週的總數{{_varStatAdmitChange_ | abs}}{{_varStatAdmitChangeText_}} 。   
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
+    <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
- <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
-          <li data-label="chartTitleState">加州COVID-19住院患者</li>
-          <li data-label="chartTitleCounty">{REGION}縣的COVID-19住院患者</li>
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
+          <li data-label="chartTitleState">加州COVID-19新入院人數</li>
+          <li data-label="chartTitleCounty">{REGION}縣的COVID-19新入院人數</li>
           <li data-label="chartTitleStateICU">加州COVID-19 ICU患者</li>
           <li data-label="chartTitleCountyICU">{REGION}縣的COVID-19 ICU患者</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>COVID-19住院患者</li>
-          <li data-label="chartLegend2Increase">比前一天住院患者總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2Decrease">比前一天住院患者總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span>COVID-19 ICU患者</li>
-          <li data-label="chartLegend2IncreaseICU">比前一天ICU患者總計多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2DecreaseICU">比前一天ICU患者總計少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
-          <li data-label="filterTabLabel1">住院患者</li>
-          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="chartTitleStateHospitalized">加州COVID-19住院患者</li>
+          <li data-label="chartTitleCountyHospitalized">{REGION}縣的COVID-19住院患者</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span>新入院人數<span class="minor-text">（一週的總數）</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span>ICU患者<span class="minor-text">（一週的總數）</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span>住院患者<span class="minor-text">（一週的總數）</span></li>
+          <li data-label="chartLegend2Increase">新入院人數比前一週多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2Decrease">新入院人數比前一週少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2IncreaseICU">ICU患者比前一週多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2DecreaseICU">ICU患者比前一週少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2IncreaseHospitalized">住院患者比前一週多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2DecreaseHospitalized">住院患者比前一週少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="filterTabLabel1">新入院人數</li>
+          <li data-label="filterTabLabel2">住院患者</li>
+          <li data-label="filterTabLabel3">ICU患者</li>
           <li data-label="timeTabLabel1">所有時間</li>
           <li data-label="timeTabLabel2">3個月</li>
           <li data-label="timeTabLabel3">7天</li>
           <li data-label="xAxisLegend">呈報日期</li>
-          <li data-label="dayAverage">14日平均數</li>
-          <li data-label="tooltipContent">             呈報日期：<b>{DATE} </b><br> 住院患者總計：<b>{TOTAL_HOSPITALIZED} </b><br> 14日內住院患者的平均數： <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="dayAverage">7日平均數</li>
+          <li data-label="tooltipContent">             日期：<b>{DATE} </b><br>新入院人數：<b>{TOTAL_HOSPITALIZED}  </b><br>新入院人數的7日平均數：<b>{7DAY_AVERAGE}</b>           </li>
+          <li data-label="tooltipContentICU">             日期：<b>{DATE}  </b><br>ICU患者：<b>{TOTAL_HOSPITALIZED}  </b><br>ICU患者的7日平均數：<b>{7DAY_AVERAGE}</b>           </li>
+          <li data-label="tooltipContentHospitalized">             日期： <b>{DATE}  </b><br>住院患者：<b>{TOTAL_HOSPITALIZED}  </b><br>住院患者的7日平均數：<b>{7DAY_AVERAGE}</b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">加州ICU病床數</li>
           <li data-label="chartTitleCounty">{REGION}縣的ICU病床數</li>
-          <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床</li>
-          <li data-label="chartLegend2Increase">比前一天ICU空置病床總數多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
-          <li data-label="chartLegend2Decrease">比前一天ICU空置病床總數少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend1">空置<span class="big-num">{TOTAL}</span>張ICU病床<span class="minor-text">（在 {MAX_DATE}）</span></li>
+          <li data-label="chartLegend2Increase">ICU空置病床數比前一週多<span class="med-num">{CHANGE}</span>（增加{CHANGE_FACTOR}）</li>
+          <li data-label="chartLegend2Decrease">ICU空置病床數比前一週少<span class="med-num">{CHANGE}</span>（減少{CHANGE_FACTOR}）</li>
           <li data-label="xAxisLegend">呈報日期</li>
-          <li data-label="dayAverage">14日平均數</li>
+          <li data-label="dayAverage">7日平均數</li>
           <li data-label="tooltipContent">在<b>{DATE}</b>，總計有<b>{VALUE}</b>張空置的ICU病床。</li>
           <li data-label="timeTabLabel1">所有時間</li>
           <li data-label="timeTabLabel2">7天</li>
