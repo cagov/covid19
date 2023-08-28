@@ -49,6 +49,10 @@
       "text": "입원 환자 수"
     },
     {
+      "_id": "varAdmissions",
+      "text": "신규 병원 입원자 수"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "건강 형평성"
     },
@@ -130,7 +134,7 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "[HospDataDate] 데이터로 [HospUpdatedDate]에 업데이트한 입원 환자 수"
+      "text": "[HospDataDate] 데이터로 [HospUpdatedDate]에 업데이트된 신규 병원 입원자 수"
     },
     {
       "_id": "varUpdateTextCases",
