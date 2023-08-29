@@ -191,17 +191,17 @@
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Nhập viện</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>NaN</strong>
-           <span class="text-300"></span>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Số Ca Nhập Viện Mới</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>590,752</strong>
+           <span class="text-300">tổng</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>1,434</strong> <span class="text-300">trung bình hàng ngày</span> </div>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">            <strong>336</strong> <span class="text-300">trung bình hàng ngày</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>3.6</strong> (mỗi 100k)</span>            </div>
+           <div>              <span class="text-300"><strong>0.8</strong> (mỗi 100k)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-hospitalizations"></div>
+           <div class="sparkline-admissions"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">8 tuần qua</span>            </div>
          </div>          
 <!--End Chart and Label -->
@@ -250,7 +250,7 @@
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">Đã cập nhật dữ liệu nhập viện 25 tháng 8, 2023 lúc 9:36, với dữ liệu từ 19 tháng 8, 2023.   <br>Số ca tử vong và số người được cập nhật 25 tháng 8, 2023 lúc 9:36, với dữ liệu từ 22 tháng 8, 2023.</p>
+  <p class="small-text">Đã cập nhật số ca nhập viện mới 25 tháng 8, 2023 lúc 9:36, với dữ liệu từ 19 tháng 8, 2023.   <br>Đã cập nhật số ca tử vong và xét nghiệm 25 tháng 8, 2023 lúc 9:36, với dữ liệu từ 22 tháng 8, 2023.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Dữ liệu nguồn về số người xét nghiệm và số ca tử vong</a></p>
 
@@ -264,9 +264,9 @@
 <li>Tất cả số ca trung bình hàng ngày là số ca trung bình của 7 ngày.</li>
 <li>Đối với dữ liệu số ca tử vong sau ngày 31 tháng 12 năm 2022, California sử dụng Dữ Liệu Số Ca Tử Vong Tạm Tính từ Hệ Thống Thống Kê Hộ Tịch Quốc Gia (National Vital Statistics System, NVSS) của Trung Tâm Quốc Gia về Thống Kê Y Tế (National Center for Health Statistics, NCHS) thuộc Trung Tâm Kiểm Soát và Phòng Ngừa Dịch Bệnh. Trước ngày 1 tháng 1 năm 2023, dữ liệu số ca tử vong được lấy từ cơ quan đăng ký COVID-19.</li>
 <li>Sự thay đổi về nguồn dữ liệu đã diễn ra vào tháng 7 năm 2023 và được áp dụng trở về trước cho tất cả dữ liệu của năm 2023 để cung cấp nguồn dữ liệu thống nhất về số ca tử vong cho năm 2023.</li>
-<li>Số lần nhập viện bao gồm tất cả bệnh nhân được chẩn đoán mắc COVID-19 trong thời gian nằm viện. Điều này không nhất thiết có nghĩa là họ phải nhập viện do các biến chứng của COVID-19 hoặc có các triệu chứng của COVID-19.</li> 
+<li>Số bệnh nhân nhập viện bao gồm tất cả bệnh nhân được chẩn đoán mắc COVID-19 trong thời gian nằm viện. Điều này không nhất thiết có nghĩa là họ phải nhập viện do các biến chứng của COVID-19 hoặc có các triệu chứng của COVID-19.</li> 
+<li>Số ca nhập viện mới bao gồm những bệnh nhân đã được nhập viện nội trú vào ngày dương lịch trước đó và có kết quả xét nghiệm xác nhận mắc COVID-19 vào thời điểm nhập viện.</li>
 <li>Số ca và tỷ lệ tử vong trung bình hàng ngày có thời gian trễ là 22 ngày do báo cáo chậm.</li>
-<li>Dữ liệu xét nghiệm của tuần này không bao gồm dữ liệu từ Quận Los Angeles.</li>
 <li>Các xét nghiệm có thời gian trễ là 1 ngày.</li>
 <li>Dữ liệu xét nghiệm từ quận Los Angeles có thời gian trễ là 8 ngày.</li>
 <li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li>
@@ -389,7 +389,7 @@
 
 
 
-<h3 class="text-center mt-4">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 202,640,945, tăng — xét nghiệm so với tổng số của ngày trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là 13.2%.</p>
+<h3 class="text-center mt-4">Xét nghiệm COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Tổng số kết quả xét nghiệm chẩn đoán COVID-19 tại California là 202,640,945, tăng 144,851 xét nghiệm so với tổng số của tuần trước đó. Tỉ lệ xét nghiệm dương tính trong 7 ngày qua là 13.2%.</p>
 
 
 
@@ -455,44 +455,50 @@
 
 
 
-<h3 class="text-center">Nhập viện</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Tổng số ca nhập viện do nhiễm COVID-19 đã xác nhận tại California là 1,438, a decrease of 26 so với tổng số ca bệnh của ngày trước đó. Tổng số bệnh nhân ICU do các ca nhiễm COVID-19 đã xác nhận tại California là 185, an increase of 38 so với tổng số của ngày trước đó.</p>
-
-
-
-<div class="row">
+<h3 class="text-center">Nhập viện</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Tổng số ca nhập viện mới hàng tuần do nhiễm COVID-19 đã xác nhận tại California là 2,354, an increase of 326 so với tổng số ca của tuần trước đó.   
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of 1,085, an increase of 222 from the prior week.</p> -->
+    </p><div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
- <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
-          <li data-label="chartTitleState">Số bệnh nhân nhập viện do mắc COVID-19 ở California</li>
-          <li data-label="chartTitleCounty">Số bệnh nhân nhập viện do mắc COVID-19 ở Quận {REGION}</li>
-          <li data-label="chartTitleStateICU">Số bệnh nhân ICU do mắc COVID-19 ở California</li>
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
+          <li data-label="chartTitleState">Số ca nhập viện mới do COVID-19 tại California</li>
+          <li data-label="chartTitleCounty">Số ca nhập viện mới do COVID-19 tại quận {REGION}</li>
+          <li data-label="chartTitleStateICU">Số bệnh nhân phải điều trị tích cực (Intensive Care Unit, ICU) do mắc COVID-19 ở California</li>
           <li data-label="chartTitleCountyICU">Số bệnh nhân ICU do mắc COVID-19 ở Quận {REGION}</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> Số bệnh nhân nhập viện do mắc COVID-19</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít bệnh nhân nhập viện hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> Số bệnh nhân ICU do mắc COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> nhiều bệnh nhân ICU hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> ít bệnh nhân ICU hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
-          <li data-label="filterTabLabel1">Nhập viện</li>
-          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="chartTitleStateHospitalized">Số bệnh nhân nhập viện do mắc COVID-19 ở California</li>
+          <li data-label="chartTitleCountyHospitalized">Số bệnh nhân nhập viện do mắc COVID-19 ở Quận {REGION}</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> ca nhập viện mới <span class="minor-text">(tổng số ca hàng tuần)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> bệnh nhân ICU <span class="minor-text">(vào {MAX_DATE})</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> bệnh nhân nhập viện <span class="minor-text">(vào {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase">Nhiều hơn tuần trước <span class="med-num">{CHANGE}</span> tổng số ca nhập viện mới (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease">Ít hơn tuần trước <span class="med-num">{CHANGE}</span> tổng số ca nhập viện mới (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2IncreaseICU">Nhiều hơn tuần trước <span class="med-num">{CHANGE}</span> bệnh nhân ICU (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseICU">Ít hơn tuần trước <span class="med-num">{CHANGE}</span> bệnh nhân ICU (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2IncreaseHospitalized">Nhiều hơn tuần trước <span class="med-num">{CHANGE}</span> bệnh nhân nhập viện (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2DecreaseHospitalized">Ít hơn tuần trước <span class="med-num">{CHANGE}</span> bệnh nhân nhập viện (giảm {CHANGE_FACTOR})</li>
+          <li data-label="filterTabLabel1">Số Ca Nhập Viện Mới</li>
+          <li data-label="filterTabLabel2">Số Bệnh Nhân Nhập Viện</li>
+          <li data-label="filterTabLabel3">Số Bệnh Nhân ICU</li>
           <li data-label="timeTabLabel1">Mọi lúc</li>
           <li data-label="timeTabLabel2">3 tháng</li>
           <li data-label="timeTabLabel3">7 ngày</li>
           <li data-label="xAxisLegend">Ngày báo cáo</li>
-          <li data-label="dayAverage">Mức trung bình 14 ngày</li>
-          <li data-label="tooltipContent">             Ngày Báo Cáo: <b>{DATE} </b><br> Tổng số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Mức trung bình 14 ngày của số bệnh nhân nhập viện: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="tooltipContent">             Ngày: <b>{DATE} </b><br> Số ca nhập viện mới: <b>{TOTAL_HOSPITALIZED} </b><br> số ca nhập viện mới trong trung bình 7 ngày: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentICU">             Ngày: <b>{DATE} </b><br> Số bệnh nhân ICU: <b>{TOTAL_HOSPITALIZED} </b><br> Số bệnh nhân ICU trong trung bình 7 ngày: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentHospitalized">             Ngày: <b>{DATE} </b><br> Số bệnh nhân nhập viện: <b>{TOTAL_HOSPITALIZED} </b><br> Số bệnh nhân đã nhập viện trong trung bình 7 ngày: <b>{7DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
           <li data-label="chartTitleState">Số giường tại ICU ở California</li>
-          <li data-label="chartTitleCounty">Số giường tại ICU ở Quận {REGION}</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> giường tại ICU còn trống</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> nhiều giường tại ICU còn trống hơn so với tổng số của ngày trước đó (tăng {CHANGE_FACTOR})</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> ít giường tại ICU còn trống hơn so với tổng số của ngày trước đó (giảm {CHANGE_FACTOR})</li>
+          <li data-label="chartTitleCounty">Số giường ICU ở Quận {REGION}</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> giường ICU còn trống <span class="minor-text">(vào {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase">Nhiều hơn tuần trước <span class="med-num">{CHANGE}</span> giường ICU trống (tăng {CHANGE_FACTOR})</li>
+          <li data-label="chartLegend2Decrease">Ít hơn tuần trước <span class="med-num">{CHANGE}</span> giường ICU trống (giảm {CHANGE_FACTOR})</li>
           <li data-label="xAxisLegend">Ngày báo cáo</li>
-          <li data-label="dayAverage">Mức trung bình 14 ngày</li>
-          <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường tại ICU còn trống.</li>
+          <li data-label="dayAverage">Mức trung bình 7 ngày</li>
+          <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường ICU còn trống.</li>
           <li data-label="timeTabLabel1">Mọi lúc</li>
           <li data-label="timeTabLabel2">7 ngày</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 

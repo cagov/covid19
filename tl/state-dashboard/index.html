@@ -189,17 +189,17 @@
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Pagpapaospital</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>NaN</strong>
-           <span class="text-300"></span>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">Mga Bagong Admission sa Ospital</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>590,752</strong>
+           <span class="text-300">kabuuan</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>1,434</strong> <span class="text-300">pang-araw-araw na average</span> </div>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">            <strong>336</strong> <span class="text-300">pang-araw-araw na average</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>3.6</strong> (kada 100k)</span>            </div>
+           <div>              <span class="text-300"><strong>0.8</strong> (kada 100k)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-hospitalizations"></div>
+           <div class="sparkline-admissions"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">Nakaraang 8 linggo</span>            </div>
          </div>          
 <!--End Chart and Label -->
@@ -248,7 +248,7 @@
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">Na-update ang pagpapaospital Agosto 25, 2023 sa 9:36 AM, na may data mula Agosto 19, 2023.   <br>Na-update ang mga pagkamatay, at pagsusuri Agosto 25, 2023 sa 9:36 AM, na may data mula sa Agosto 22, 2023.</p>
+  <p class="small-text">Na-update ang mga bagong admission sa ospital noong Agosto 25, 2023 sa 9:36 AM, na may data mula noong Agosto 19, 2023.   <br>Na-update ang mga pagkamatay at pagsusuri noong Agosto 25, 2023 sa 9:36 AM, na may data mula noong Agosto 22, 2023.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Source data ng pagkamatay at pagsusuri</a></p>
 
@@ -262,9 +262,9 @@
 <li>Lahat ng arawang average ay mga average sa 7 araw.</li>
 <li>Para sa mga datos ng pagkamatay pagkatapos ng Disyembre 31, 2022, ginagamit ng California ang Provisional Deaths mula sa Center for Disease Control and Prevention’s National Center for Health Statistics (NCHS) National Vital Statistics System (NVSS). Bago ang Enero 1, 2023, ang mga datos sa pagkamatay ay kinuha mula sa registry ng COVID-19.</li>
 <li>Nangyari ang pagpapalit ng source data noong Hulyo 2023 at retroactive na inilapat sa lahat ng datos ng 2023 para magbigay ng naaayon na source ng datos ng pagkamatay sa taong 2023.</li>
-<li>Kasama sa binibilang sa pagpapaospital ang lahat ng pasyenteng na-diagnose na may COVID-19 sa panahon ng kanilang pananatili. Hindi ito nangangahulugan na naospital sila dahil sa komplikasyon sa COVID-19 o nakaranas sila ng sintomas ng COVID-19.</li> 
+<li>Kasama sa mga naospital na pasyente ang lahat ng pasyenteng na-diagnose na may COVID-19 sa panahon ng kanilang pananatili. Hindi ito nangangahulugan na naospital sila dahil sa komplikasyon sa COVID-19 o nakaranas sila ng sintomas ng COVID-19.</li> 
+<li>Kasama sa bilang ng mga bagong admission ang mga pasyenteng na-admit sa isang inpatient na kama sa nakaraang araw ng kalendaryo, na nakumpirma ng laboratoryo na may COVID-19 sa panahon ng admission.</li>
 <li>Ang rate ng pagkamatay at pang-araw-araw na average ay may 22-araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li>
-<li>Hindi kasama sa data ng pagsusuri sa linggong ito ang data mula sa county ng Los Angeles.</li>
 <li>May 1 araw na pagkaantala sa mga pagsusuri.</li>
 <li>May 8 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li>
 <li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li>
@@ -387,7 +387,7 @@
 
 
 
-<h3 class="text-center mt-4">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang dami ng mga resulta ng diagnostic na pagsusuri sa COVID-19 sa California ay umabot sa kabuuang 202,640,945, pagtaas na — na pagsusuri mula sa kabuuan ng naunang araw. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay 13.2%.</p>
+<h3 class="text-center mt-4">Pagsusuri sa COVID-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang bilang ng mga resulta ng diagnostic na pagsusuri para sa COVID-19 sa California ay umabot sa 202,640,945 sa kabuuan, na 144,851 pagtaas kumpara noong nakaraang linggo. Ang rate ng mga positibong pagsusuri sa nakalipas na 7 araw ay 13.2%.</p>
 
 
 
@@ -453,43 +453,49 @@
 
 
 
-<h3 class="text-center">Mga Pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang dami ng mga pagpapaospital dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang 1,438, a decrease of 26 mula sa kabuuan ng naunang araw. Ang dami ng mga pasyente sa ICU dahil sa kumpirmadong kaso ng COVID-19 sa California ay umabot sa kabuuang 185, an increase of 38 mula sa kabuuan ng naunang araw.</p>
-
-
-
-<div class="row">
+<h3 class="text-center">Mga Pagpapaospital</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>Ang lingguhang bilang ng mga bagong admission sa ospital dahil sa mga kumpirmadong kaso ng COVID-19 sa California ay 2,354, na an increase of 326 kumpara noong nakaraang linggo.   
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of 1,085, an increase of 222 from the prior week.</p> -->
+    </p><div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
- <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
-          <li data-label="chartTitleState">Mga naospital na pasyente dahil sa COVID-19 sa California</li>
-          <li data-label="chartTitleCounty">Mga naospital na pasyente dahil sa COVID-19 sa {REGION} County</li>
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
+          <li data-label="chartTitleState">Mga bagong admission sa ospital sa California dahil sa COVID-19</li>
+          <li data-label="chartTitleCounty">Mga bagong admission sa ospital sa County ng {REGION} dahil sa COVID-19</li>
           <li data-label="chartTitleStateICU">Mga nasa ICU na pasyente dahil sa COVID-19 sa California</li>
           <li data-label="chartTitleCountyICU">Mga nasa ICU na pasyente dahil sa COVID-19 sa {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) naospital na pasyente dahil sa COVID-19</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyenteng nasa ospital mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> (na) pasyenteng nasa ICU dahil sa COVID-19</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) mas maraming pasyenteng sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente sa ICU mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
-          <li data-label="filterTabLabel1">Nasa ospital</li>
-          <li data-label="filterTabLabel2">ICU</li>
+          <li data-label="chartTitleStateHospitalized">Mga naospital na pasyente dahil sa COVID-19 sa California</li>
+          <li data-label="chartTitleCountyHospitalized">Mga naospital na pasyente dahil sa COVID-19 sa {REGION} County</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) mga bagong admission sa ospital <span class="minor-text">(lingguhang kabuuan)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> (na) pasyente sa ICU <span class="minor-text">(noong {MAX_DATE})</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> (na) naospital na pasyente <span class="minor-text">(noong {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) higit pang bagong admission kumpara sa nakaraang lingguhang kabuuan ({CHANGE_FACTOR} pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting bagong admission kumpara sa nakaraang lingguhang kabuuan ({CHANGE_FACTOR} pagbaba)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> (na) higit pang pasyente sa ICU kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagtaas)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> (na) mas kaunting pasyente sa ICU kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagbaba)</li>
+          <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> (na) higit pang naospital na pasyente kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagtaas)</li>
+          <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> (na) mas kaunting naospital na pasyente kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagbaba)</li>
+          <li data-label="filterTabLabel1">Mga Bagong Admission</li>
+          <li data-label="filterTabLabel2">Mga Pasyente sa Ospital</li>
+          <li data-label="filterTabLabel3">Mga Pasyente sa ICU</li>
           <li data-label="timeTabLabel1">Lahat ng oras</li>
           <li data-label="timeTabLabel2">3 buwan</li>
           <li data-label="timeTabLabel3">7 araw</li>
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
-          <li data-label="dayAverage">14 na araw na average</li>
-          <li data-label="tooltipContent">             Petsa ng Pag-uulat: <b>{DATE} </b><br> Kabuuang bilang ng mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 14 na araw na average ng mga naospital na pasyente: <b>{14DAY_AVERAGE} </b>           </li>
+          <li data-label="dayAverage">7 araw na average</li>
+          <li data-label="tooltipContent">             Petsa: <b>{DATE} </b><br> Mga bagong admission sa ospital: <b>{TOTAL_HOSPITALIZED} </b><br> 7 araw na average ng mga bagong admission sa ospital: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentICU">             Petsa: <b>{DATE} </b><br> Mga pasyente sa ICU: <b>{TOTAL_HOSPITALIZED} </b><br> 7 araw na average ng mga pasyente sa ICU: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentHospitalized">             Petsa: <b>{DATE} </b><br> Mga naospital na pasyente: <b>{TOTAL_HOSPITALIZED} </b><br> 7 araw na average ng mga naospital na pasyente: <b>{7DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">&gt; <ul class="d-none">
           <li data-label="chartTitleState">Mga kama sa ICU sa California</li>
           <li data-label="chartTitleCounty">Mga kama sa ICU sa {REGION} County</li>
-          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) na available na kama sa ICU</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) mas maraming kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagtaas)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting kama sa ICU na available mula sa kabuuan noong nakaraang araw ({CHANGE_FACTOR} (na) pagbaba)</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> (na) available na kama sa ICU <span class="minor-text">(noong {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> (na) higit pang available na kama sa ICU kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagtaas)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> (na) mas kaunting available na kama sa ICU kumpara noong nakaraang linggo ({CHANGE_FACTOR} pagbaba)</li>
           <li data-label="xAxisLegend">Petsa ng pag-uulat</li>
-          <li data-label="dayAverage">14 na araw na average</li>
+          <li data-label="dayAverage">7 araw na average</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
           <li data-label="timeTabLabel1">Lahat ng oras</li>
           <li data-label="timeTabLabel2">7 araw</li>
