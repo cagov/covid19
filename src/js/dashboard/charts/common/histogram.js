@@ -182,7 +182,7 @@ function writeDateAxis(svg, data, x, y,
   else if (data.length < 60) { day_mod = 7; }
   else if (data.length < 95) { day_mod = 10; }
 
-  if (data.length < 95)       { month_modulo = 1; }
+  if (data.length < 180)      { month_modulo = 1; }
   else if (data.length < 365) { month_modulo = 2; }
   else if (data.length < 500) { month_modulo = 3; }
   else                        { month_modulo = 6; }
