@@ -49,7 +49,7 @@ formatNumberSmall(tags)-%}
 {%-set _varDeathsDailyAverage_ = datadeaths.latest.CONFIRMED_DEATHS.DEATHS_DAILY_AVERAGE | formatNumber(tags,0)-%}
 
 {%-set _varStatTested_ = data2.tests.LATEST_TOTAL_TESTS_PERFORMED | formatNumber(tags)-%}
-{%-set _varStatTestedDaily_ = data2.tests.NEWLY_REPORTED_TESTS | formatNumber(tags)-%}
+{%-set _varStatTestedWeekly_ = data2.tests.NEWLY_REPORTED_TESTS_LAST_7_DAYS | formatNumber(tags)-%}
 {%-set _varStatLatestPositivityPct_ = (100*data2.tests.LATEST_CONFIDENT_POSITIVITY_RATE_7_DAYS) |
 formatNumberFixed(tags,1)-%}
 
@@ -59,14 +59,19 @@ formatNumberFixed(tags,1)-%}
 {%-set _varHospitalizations7DayAvg_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
 {%-set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%-set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
-{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS | formatNumber(tags)-%}
-{%-set _varStatHospitalChange_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
-{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_DAILY | formatNumber(tags)-%}
+{%-set _varStatAdmit_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%-set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%-set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+{%-set _varStatIcuTotal_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL | formatNumber(tags)-%}
+{%-set _varStatAdmitChange_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
+{%-set _varStatIcuChange_ = data2.icu.ICU_COVID_CONFIRMED_PATIENTS_7_DAY_TOTAL_CHANGE | formatNumber(tags)-%}
 {%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
+{%-set _varAdmitDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 {%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
 
 
-{%-set _varStatHospitalChangeText_ = 'an increase of' if _varStatHospitalChange_ >= 0 else 'a decrease of' -%}
+{%-set _varStatAdmitChangeText_ = 'an increase of' if _varStatAdmitChange_ >= 0 else 'a decrease of' -%}
 {%-set _varStatIcuChangeText_ = 'an increase of' if _varStatIcuChange_ >= 0 else 'a decrease of' -%}
 {%-set _varTierDate_ = tierData.TIER_DATE | formatDate2(false, tags) -%}
 {%-set _varTierEndDate_ = tierData.TIER_ENDDATE | formatDate2(false, tags) -%}
@@ -84,9 +89,8 @@ formatNumberFixed(tags,1)-%}
 {%- if _varInhibitDailyTotals_ -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
-{%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
+{%- set translatedLabels = pubData[language.id].homepageLabels.Table1[0] -%}
 -->
  <hr class="wp-block-separator noborder mb-4" id="latest-update"/>    <div class="bg-lightblue full-bleed mt-minus-4">
   <div class="container py-2">
@@ -102,17 +106,17 @@ formatNumberFixed(tags,1)-%}
 <!-- Blue Summary Box 1 -->
      <div class="col-md-6 col-lg-3 px-10px">							
        <div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">حالات دخول المستشفى للإقامة والعلاج</div>
-         <div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+         <div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
+         <div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
            <span class="text-300">{{ translatedLabels.varTotal }}</span>
          </div>
-         <div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">المتوسط اليومي</span> </div>
+         <div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">            <strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">المتوسط اليومي</span> </div>
          <div class="text-white text-xs mb-2">
-           <div>              <span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (لكل 100 ألف)</span>            </div>
+           <div>              <span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (لكل 100 ألف)</span>            </div>
          </div>          
 <!--Chart and Label -->
           <div class="mt-auto px-2">
-           <div class="sparkline-hospitalizations"></div>
+           <div class="sparkline-admissions"></div>
            <div class="text-white text-xs mt-1">              <span class="text-300 date-caption-span">الأسابيع الـ 8 الماضية</span>            </div>
          </div>          
 <!--End Chart and Label -->
@@ -161,7 +165,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text"> حالات محدثة لدخول المستشفى للإقامة والعلاج {{ _varHospDateAccurate_ }}، ببيانات من {{_varHospDateReport_}}.   <br>حالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p>
+  <p class="small-text"> حالات جديدة لدخول المستشفى محدثة {{ _varAdmitDateAccurate_ }}، ببيانات من {{_varHospDateReport_}}.   <br>حالات الوفاة والاختبارات تم تحديثها {{_varCasesDateAccurate_}}، ببيانات من {{_varCasesDateReport_}}.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">البيانات المصدرية لحالات الوفيات والاختبارات</a></p>
 
@@ -172,10 +176,10 @@ formatNumberFixed(tags,1)-%}
 <li>جميع المتوسطات اليومية عبارة عن متوسطات 7 أيام.</li>
 <li>لبيانات الوفاة بعد 31 ديسمبر 2022، تستخدم كاليفورنيا الوفيات المؤقتة من المركز الوطني للإحصاءات الصحية (NCHS) التابع لمركز مكافحة الأمراض والوقاية منها، وهو النظام الوطني للإحصاءات الحيوية (NVSS). قبل 1 يناير 2023، تم الحصول على بيانات الوفاة من سجل كوفيد-19.</li>
 <li>حدث تغيير في مصدر البيانات في يوليو 2023 وتم تطبيقه بشكل رجعي على جميع بيانات عام 2023 لتوفير مصدر ثابت موحد لبيانات الوفيات خلال عام 2023.</li>
-<li>إن عدد حالات دخول المستشفيات للإقامة والعلاج يشمل جميع المرضى الذين تم تشخيص إصابتهم بفيروس كوفيد-19 خلال فترة إقامتهم. وهذا لا يعني بالضرورة أنهم دخلوا المستشفى بسبب مضاعفات فيروس كوفيد-19 أو أنهم عانوا من أعراض فيروس كوفيد-19.</li> 
+<li>إن المرضى المحتجزين بالمستشفيات للإقامة والعلاج يشملون جميع المرضى الذين تم تشخيص إصابتهم بفيروس كوفيد-19 خلال فترة إقامتهم. وهذا لا يعني بالضرورة أنهم دخلوا المستشفى بسبب مضاعفات فيروس كوفيد-19 أو أنهم عانوا من أعراض فيروس كوفيد-19.</li> 
+<li>يُحتسب عدد حالات القبول الجديدة لتشمل المرضى الذين نُقلوا إلى سرير داخلي في اليوم التقويمي السابق وكانت نتائج الفحص المخبري إيجابية لفيروس كوفيد-19 وقت القبول.</li>
 <li>يبلغ المتوسط والمعدل اليوميان للوفيات تأخيرًا يصل إلى 22 يومًا بسبب التأخيرات في الإبلاغ.</li>
-<li>لا تتضمن بيانات الاختبارات لهذا الأسبوع بيانات من مقاطعة لوس أنجلوس.</li>
-<li>تتأخر الاختبارات لمدة يوم واحد.</li>
+<li>تتأخر الاختبارات بمدة يوم واحد.</li>
 <li>إن بيانات الاختبارات الآتية من مقاطعتي لوس أنجلوس وسان دييغو قد تأخرت مدة 8 أيام.</li>
 <li>إن القواسم السكانية المشتركة المستخدمة للمعدلات كل 100 ألف مواطن تأتي من التوقعات السكانية لوزارة المالية بولاية كاليفورنيا لعام 2020.</li>
 <li>ويستند اختبار الإيجابية إلى متوسط 7 أيام مع عدم وجود تأخير. تقوم إدارة الصحة العامة بكاليفورنيا بتوفير البيانات.</li>
@@ -288,7 +292,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، أي بزيادة {{_varStatTestedDaily_}} من الاختبارات عن مجموع اليوم السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو {{_varStatPos_7DayAvgPct_}}%.</p>
+<h3 class="text-center mt-4">الاختبارات الخاصة بكوفيد-19</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وصل عدد نتائج الاختبارات التشخيصية لكوفيد-19 في كاليفورنيا إلى ما مجموعه {{_varStatTested_}}، أي بزيادة {{_varStatTestedWeekly_}} من الاختبارات على الأسبوع السابق. معدل الاختبارات الإيجابية خلال الأيام الـ 7 الماضية هو {{_varStatPos_7DayAvgPct_}}%.</p>
 
 
 
@@ -346,44 +350,50 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>وداخل مستشفيات كاليفورنيا بلغ عدد الحالات التي يتم علاجها من كوفيد-19 سواء كانت مؤكدة أو مشتبهًا فيها ما مجموعه {{_varStatHospital_}}، {{_varStatHospitalChangeText_}} {{_varStatHospitalChange_ | abs}} من إجمالي اليوم السابق. وداخل مستشفيات كاليفورنيا بلغ عدد مرضى وحدات العناية المركزة المؤكدة إصابتهم بكوفيد-19 ما مجموعه {{_varStatIcuTotal_}}، {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} من مجموع اليوم السابق.</p>
-
-
-
-<div class="row">
+<h3 class="text-center">حالات دخول المستشفى للإقامة والعلاج</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>العدد الأسبوعي لحالات الدخول الجديدة إلى المستشفى بسبب حالات كوفيد-19 المؤكدة في كاليفورنيا {{_varStatAdmit_}}، {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} من الأسبوع السابق.   
+<!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
+    <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
 <!-- 5 Confirmed hospitalizations - COVID-19 hospitalized patients in California -->
- <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="hospitalized" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
-          <li data-label="chartTitleState">مرضى كوفيد-19 المحتجزون بالمستشفيات في كاليفورنيا</li>
-          <li data-label="chartTitleCounty">مرضى كوفيد-19 المحتجزون بالمستشفيات في {منطقة} المقاطعة</li>
+ <cagov-chart-dashboard-patients class="chart filter-select-space" data-chart-config-filter="admitted" data-chart-config-key="patients" data-chart-config-timerange="all-time">> <ul class="d-none">
+          <li data-label="chartTitleState">حالات الدخول الجديدة إلى المستشفى بسبب كوفيد-19 في كاليفورنيا</li>
+          <li data-label="chartTitleCounty">حالات الدخول الجديدة إلى المستشفى بسبب كوفيد-19 في مقاطعة {REGION}</li>
           <li data-label="chartTitleStateICU">مرضى كوفيد-19 في وحدات العناية المركزة بكاليفورنيا</li>
-          <li data-label="chartTitleCountyICU">مرضى كوفيد-19 في وحدات العناية المركزة في {منطقة} المقاطعة</li>
-          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 المحتجزون بالمستشفيات</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من المرضى الداخلين إلى المستشفيات من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
-          <li data-label="chartLegend1ICU"><span class="big-num">{إجمالي}</span> مرضى كوفيد-19 في وحدات العناية المركزة</li>
-          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{التغير}</span> المزيد من مرضى العناية المركزة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
-          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{التغير}</span> عدد أقل من مرضى العناية المركزة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
-          <li data-label="filterTabLabel1">نزلاء المستشفيات</li>
-          <li data-label="filterTabLabel2">وحدات العناية المركزة</li>
+          <li data-label="chartTitleCountyICU">مرضى كوفيد-19 في وحدات العناية المركزة في مقاطعة {REGION}</li>
+          <li data-label="chartTitleStateHospitalized">مرضى كوفيد-19 المحتجزون بالمستشفيات في كاليفورنيا</li>
+          <li data-label="chartTitleCountyHospitalized">مرضى كوفيد-19 المحتجزون بالمستشفيات في مقاطعة {REGION}</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> حالات الدخول الجديدة إلى المستشفى <span class="minor-text">(الإجمالي الأسبوعي)</span></li>
+          <li data-label="chartLegend1ICU"><span class="big-num">{TOTAL}</span> مرضى وحدة العناية المركزة <span class="minor-text">(في {MAX_DATE})</span></li>
+          <li data-label="chartLegend1Hospitalized"><span class="big-num">{TOTAL}</span> المرضى من نزلاء المستشفيات <span class="minor-text">(في {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> المزيد من حالات القبول الجديدة عن الإجمالي الأسبوعي السابق ({CHANGE_FACTOR} يزداد)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> عدد أقل من حالات القبول الجديدة من الإجمالي الأسبوعي السابق ({CHANGE_FACTOR} ينخفض)</li>
+          <li data-label="chartLegend2IncreaseICU"><span class="med-num">{CHANGE}</span> المزيد من مرضى العناية المركزة عن إجمالي الأسبوع السابق ({CHANGE_FACTOR} يزداد)</li>
+          <li data-label="chartLegend2DecreaseICU"><span class="med-num">{CHANGE}</span> عدد أقل من مرضى العناية المركزة من إجمالي الأسبوع السابق ({CHANGE_FACTOR} ينخفض)</li>
+          <li data-label="chartLegend2IncreaseHospitalized"><span class="med-num">{CHANGE}</span> المزيد من المرضى الداخليين إلى المستشفيات عن إجمالي الأسبوع السابق ({CHANGE_FACTOR} يزداد)</li>
+          <li data-label="chartLegend2DecreaseHospitalized"><span class="med-num">{CHANGE}</span> عدد أقل من المرضى الداخليين إلى المستشفيات من إجمالي اليوم السابق ({CHANGE_FACTOR} ينخفض)</li>
+          <li data-label="filterTabLabel1">حالات القبول الجديدة</li>
+          <li data-label="filterTabLabel2">المرضى من نزلاء المستشفيات</li>
+          <li data-label="filterTabLabel3">مرضى وحدة العناية المركزة</li>
           <li data-label="timeTabLabel1">كل الوقت</li>
           <li data-label="timeTabLabel2">3 أشهر</li>
           <li data-label="timeTabLabel3">7 أيام</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
-          <li data-label="dayAverage">متوسط 14 يوم</li>
-          <li data-label="tooltipContent">             تاريخ الإبلاغ: <b>{التاريخ} </b><br> إجمالي المرضى المحتجزين بالمستشفيات: <b>{إجمالي_المحتجزين_بالمستشفيات} </b><br> متوسط دخول المرضى المستشفيات في 14 يومًا: <b>{متوسط_14_يومًا} </b>           </li>
+          <li data-label="dayAverage">متوسط 7 أيام</li>
+          <li data-label="tooltipContent">             التاريخ: <b>{DATE} </b><br> حالات الدخول الجديدة للمستشفى: <b>{TOTAL_HOSPITALIZED} </b><br> متوسط 7 أيام من حالات الدخول الجديدة للمستشفى: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentICU">             التاريخ: <b>{DATE} </b><br> مرضى وحدة العناية المركزة: <b>{TOTAL_HOSPITALIZED} </b><br> متوسط 7 أيام من مرضى العناية المركزة: <b>{7DAY_AVERAGE} </b>           </li>
+          <li data-label="tooltipContentHospitalized">             التاريخ: <b>{DATE} </b><br> المرضى المحتجزون بالمستشفيات: <b>{TOTAL_HOSPITALIZED} </b><br> متوسط 7 أيام من المرضى المحتجزين بالمستشفيات: <b>{7DAY_AVERAGE} </b>           </li>
         </ul>       </cagov-chart-dashboard-patients> </div>
     <div class="col-lg-6 col-md-6 col-sm-12">       
 <!-- 6 Confirmed hospitalizations - ICU beds in California -->
  <cagov-chart-dashboard-icu-beds class="chart filter-select-space" data-chart-config-filter="icu-beds" data-chart-config-key="icu-beds" data-chart-config-timerange="all-time">> <ul class="d-none">
           <li data-label="chartTitleState">أسرَّة العناية المركزة في كاليفورنيا</li>
-          <li data-label="chartTitleCounty">أسرَّة العناية المركزة في {منطقة} المقاطعة</li>
-          <li data-label="chartLegend1"><span class="big-num">{إجمالي}</span> أسرَّة العناية المركزة المتوفرة</li>
-          <li data-label="chartLegend2Increase"><span class="med-num">{التغير}</span> المزيد من أسرَّة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} يزداد)</li>
-          <li data-label="chartLegend2Decrease"><span class="med-num">{التغير}</span> عدد أقل من أسرة العناية المركزة المتوفرة من إجمالي اليوم السابق ({عامل_التغير} ينخفض)</li>
+          <li data-label="chartTitleCounty">أسرَّة العناية المركزة في مقاطعة {REGION}</li>
+          <li data-label="chartLegend1"><span class="big-num">{TOTAL}</span> أسرَّة العناية المركزة المتوفرة <span class="minor-text">(في {MAX_DATE})</span></li>
+          <li data-label="chartLegend2Increase"><span class="med-num">{CHANGE}</span> المزيد من أسرَّة العناية المركزة المتوفرة عن إجمالي اليوم السابق ({CHANGE_FACTOR} يزداد)</li>
+          <li data-label="chartLegend2Decrease"><span class="med-num">{CHANGE}</span> عدد أقل من أسرَّة العناية المركزة المتوفرة من إجمالي اليوم السابق ({CHANGE_FACTOR} ينخفض)</li>
           <li data-label="xAxisLegend">تاريخ الإبلاغ</li>
-          <li data-label="dayAverage">متوسط 14 يومًا</li>
-          <li data-label="tooltipContent">في <b>{تاريخ}</b> كان هناك إجمالي <b>{قيمة}</b> من أسرَّة العناية المركزة المتوفرة.</li>
+          <li data-label="dayAverage">متوسط 7 أيام</li>
+          <li data-label="tooltipContent">في <b>{DATE}</b> كان هناك إجمالي <b>{VALUE}</b> من أسرَّة العناية المركزة المتوفرة.</li>
           <li data-label="timeTabLabel1">كل الوقت</li>
           <li data-label="timeTabLabel2">7 أيام</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 

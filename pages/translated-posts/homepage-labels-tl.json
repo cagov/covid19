@@ -49,6 +49,10 @@
       "text": "Mga Pagpapaospital"
     },
     {
+      "_id": "varAdmissions",
+      "text": "Mga Bagong Admission sa Ospital"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Pagkakapantay-pantay sa kalusugan"
     },
@@ -130,11 +134,11 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "Na-update ang Pagpapaospital noong [HospUpdatedDate] na may data mula noong [HospDataDate]"
+      "text": "Na-update ang mga bagong admission sa ospital noong [HospUpdatedDate] na may data mula noong [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "Na-update ang mga kaso, pagkamatay, at pagsusuri noong [CasesUpdatedDate] na may data mula noong [CasesDataDate]"
+      "text": "Na-update ang mga pagkamatay at pagsusuri noong [CasesUpdatedDate] na may data mula noong [CasesDataDate]"
     }
   ]
 }

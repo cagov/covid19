@@ -49,6 +49,10 @@
       "text": "Hospitalizaciones"
     },
     {
+      "_id": "varAdmissions",
+      "text": "Nuevas admisiones al hospital"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Equidad en la salud"
     },
@@ -130,11 +134,11 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "Actualización de las hospitalizaciones del [HospUpdatedDate] con datos del [HospDataDate]"
+      "text": "Actualización de las nuevas admisiones al hospital del [HospUpdatedDate] con datos del [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "Actualización de casos, decesos y pruebas del [CasesUpdatedDate] con datos del [CasesDataDate]"
+      "text": "Actualización de decesos y pruebas del [CasesUpdatedDate] con datos del [CasesDataDate]"
     }
   ]
 }
