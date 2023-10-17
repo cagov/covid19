@@ -164,7 +164,7 @@
       "dataUrl": "icu-beds/california.json",
       "dataUrlCounty": "icu-beds/<county>.json",
       "rootId": "hicu-beds",
-      "timeKeys": ["all-time","days-7"],
+      "timeKeys": ["all-time","months-3","days-7"],
       "rightMarginOverride": 20,
       "lineAndBarsSameScale":true,
       "alignAverages":false

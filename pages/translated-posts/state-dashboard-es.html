@@ -165,7 +165,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">Actualización de las nuevas hospitalizaciones del día {{ _varAdmitDateAccurate_ }}, con datos del {{_varHospDateReport_}}.   <br>Actualización de decesos y pruebas del día {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p>
+  <p class="small-text">Actualización de las nuevas admisiones al hospital del día {{ _varAdmitDateAccurate_ }}, con datos del {{_varHospDateReport_}}.   <br>Actualización de decesos y pruebas del día {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de decesos y pruebas</a></p>
 
@@ -180,7 +180,6 @@ formatNumberFixed(tags,1)-%}
 <li>Los recuentos de nuevas admisiones incluyen a los pacientes hospitalizados en una cama de internamiento el día calendario previo para quienes, al momento de la admisión, se confirmó que tenían COVID-19 mediante pruebas de laboratorio.</li>
 <li>El promedio y la tasa diarios de decesos tienen un retraso de 22 días debido a las demoras en los informes.</li>
 <li>Los datos de las pruebas tienen un retraso de 1 día.</li>
-<li>Los datos sobre las pruebas aplicadas en el condado de Los Ángeles tienen un retraso de 8 días.</li>
 <li>Los denominadores de población que se utilizaron para determinar las tasas por cada 100 mil habitantes provienen de las proyecciones de población del Departamento de Finanzas de California para 2020.</li>
 <li>La positividad de las pruebas se basa en un promedio de 7 días sin retraso. El Departamento de Salud Pública de California es quien proporciona los datos.</li>
 <li>¿Busca datos de casos? Los datos históricos archivados de los casos están disponibles en<a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state"> el portal Open Data.</a></li></ul> 
@@ -350,7 +349,8 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>El número semanal de nuevas hospitalizaciones por casos confirmados de COVID-19 en California es {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} con respecto a la semana anterior.   
+<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>El número semanal de nuevas admisiones al hospital debido a casos confirmados de COVID-19 en California es {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} con respecto a la semana anterior.   
+
 <!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
     <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
@@ -395,7 +395,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">Promedio de 7 días</li>
           <li data-label="tooltipContent">El <b>{DATE}</b> había un total de <b>{VALUE}</b> camas disponibles en la ICU.</li>
           <li data-label="timeTabLabel1">Registro histórico</li>
-          <li data-label="timeTabLabel2">Siete días</li>
+          <li data-label="timeTabLabel2">Tres meses</li>
+          <li data-label="timeTabLabel3">Siete días</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
   </div>
 
