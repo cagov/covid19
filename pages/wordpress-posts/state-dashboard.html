@@ -216,7 +216,6 @@ formatNumberFixed(tags,1)-%}
 <li>New admissions counts include patients who were admitted to an inpatient bed on the previous calendar day who had laboratory-confirmed COVID-19 at the time of admission.</li>
 <li>Death daily average and rate have a 22-day lag due to delays in reporting.</li>
 <li>Tests have a 1-day lag.</li>
-<li>Testing data from Los Angeles county have an 8-day lag.</li>
 <li>The population denominators used for the per 100K rates come from the California Department of Finance’s population projections for 2020.</li>
 <li>Test positivity is based on a 7-day average with no lag. Data is provided by the California Department of Public Health.</li>
 <li>Looking for case data? Archived historical case data is available on the <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul> 
@@ -518,7 +517,8 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">7-day average</li>
           <li data-label="tooltipContent">On <b>{DATE}</b> there was a total of <b>{VALUE}</b> available ICU beds.</li>
           <li data-label="timeTabLabel1">All time</li>
-          <li data-label="timeTabLabel2">7 days</li>
+          <li data-label="timeTabLabel2">3 months</li>
+          <li data-label="timeTabLabel3">7 days</li>
         </ul>
       </cagov-chart-dashboard-icu-beds>               
     </div> 
@@ -526,7 +526,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 hospitalized patients and ICU source data</a>. Data is updated weekly.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data">COVID-19 hospitalized patients and ICU source data</a>. Data is updated weekly.</p>
 
 
 

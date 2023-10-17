@@ -49,6 +49,10 @@
       "text": "حالات دخول المستشفى للإقامة والعلاج"
     },
     {
+      "_id": "varAdmissions",
+      "text": "حالات قبول جديدة لدخول المستشفى"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "العدالة الصحية"
     },
@@ -58,7 +62,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "احصل على جرعتك المعززة"
+      "text": "احصل على لقاح كوفيد-19 المحدَّث"
     },
     {
       "_id": "varHeroP2",
@@ -130,7 +134,7 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "حالات محدثة لدخول المستشفى للإقامة والعلاج [HospUpdatedDate] ببيانات من [HospDataDate]"
+      "text": "حالات قبول جديدة لدخول المستشفى محدثة [HospUpdatedDate] ببيانات من [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
