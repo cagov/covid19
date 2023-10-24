@@ -20,11 +20,13 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
     const repDict = {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
       REGION:regionName,
+      MAX_DATE:barSeries[0].DATE
     };
     if (!('chartTitleState' in this.translationsObj)) {
       this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
@@ -77,11 +79,18 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
             "time_series": {
               "ICU_BEDS": {
                 "DATE_RANGE": {
-                  "MINIMUM": "2020-03-30",
+                  "MINIMUM": "2023-05-11",
                   "MAXIMUM": getSnowflakeStyleDate(-1)
                 },
                "VALUES": []
               },
+              "ICU_BEDS_POSTAVG": {
+                "DATE_RANGE": {
+                  "MINIMUM": "2023-05-11",
+                  "MAXIMUM": getSnowflakeStyleDate(-1)
+                },
+               "VALUES": []
+              }
             }
           }
         };
@@ -110,8 +119,8 @@ class CAGovDashboardICUBeds extends CAGovDashboardChart {
       let time_series_bars = JSON.parse(JSON.stringify(this.uncroppedChartData.time_series[this.chartOptions.seriesField].VALUES));
       let time_series_line = JSON.parse(JSON.stringify(time_series_bars));
 
-      // compute 14-day average (first 14 days of data will have a 14-n day average)
-      const avg_days = 14;
+      // compute 7-day average (first 7 days of data will have a 7-n day average)
+      const avg_days = 7;
       for (let i = 0; i < time_series_bars.length; ++i) {
         let sum = 0;
         let days = 0;

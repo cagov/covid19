@@ -49,6 +49,10 @@
       "text": "Nhập viện"
     },
     {
+      "_id": "varAdmissions",
+      "text": "Số Ca Nhập Viện Mới"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Công bằng sức khỏe"
     },
@@ -58,7 +62,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Hãy tiêm mũi nhắc lại của quý vị"
+      "text": "Tiêm mũi vắc-xin COVID-19 cập nhật"
     },
     {
       "_id": "varHeroP2",
@@ -126,15 +130,15 @@
     },
     {
       "_id": "varUpdateTextVax",
-      "text": "Các vắc-xin đã tiêm được cập nhật [VaxUpdatedDate] với dữ liệu từ [VaxDataDate]"
+      "text": "Đã cập nhật vắc-xin được tiêm [VaxUpdatedDate] với dữ liệu từ [VaxDataDate]"
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "Dữ liệu nhập viện được cập nhật [HospUpdatedDate] với dữ liệu từ [HospDataDate]"
+      "text": "Đã cập nhật số ca nhập viện mới [HospUpdatedDate] với dữ liệu từ [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "Cập nhật số ca mắc, số ca tử vong và số ca xét nghiệm [CasesUpdatedDate] với dữ liệu từ [CasesDataDate]"
+      "text": "Cập nhật số ca tử vong và số ca xét nghiệm [CasesUpdatedDate] với dữ liệu từ [CasesDataDate]"
     }
   ]
 }

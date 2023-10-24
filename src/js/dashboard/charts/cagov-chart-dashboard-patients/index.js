@@ -12,21 +12,42 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
     // console.log("getTooltipContent",di,lineSeries);
     const repDict = {
       DATE:   reformatReadableDate(barSeries[di].DATE),
-      '14DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
+      '7DAY_AVERAGE':formatValue(lineSeries[di].VALUE,{format:'number',min_decimals:1}),
       TOTAL_HOSPITALIZED:formatValue(barSeries[di].VALUE,{format:'integer'}),
     };
-    return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    if (this.chartConfigFilter === 'hospitalized') {
+      return applySubstitutions(this.translationsObj.tooltipContentHospitalized, repDict);
+    }
+    else if (this.chartConfigFilter === 'icu') {
+      return applySubstitutions(this.translationsObj.tooltipContentICU, repDict);
+    }
+    else {
+      return applySubstitutions(this.translationsObj.tooltipContent, repDict);
+    }
   }
 
   setupPostTranslations(regionName) {
     let latestRec = this.chartData.latest[this.chartOptions.latestField];
+    let barSeries = this.chartData.time_series[this.chartOptions.seriesField].VALUES;
     const repDict = {
       TOTAL:formatValue(latestRec.TOTAL,{format:'integer'}),
       CHANGE:formatValue(Math.abs(latestRec.CHANGE),{format:'integer'}),
       CHANGE_FACTOR:formatValue(Math.abs(latestRec.CHANGE_FACTOR),{format:'percent'}),
       REGION:regionName,
+      MAX_DATE:barSeries[0].DATE
     };
-    if (this.chartConfigFilter == 'icu') {
+    if (this.chartConfigFilter == 'hospitalized') {
+      if (!('chartTitleStateHospitalized' in this.translationsObj)) {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleHospitalized, repDict) + " " + regionName;
+      } 
+      else if (regionName == 'California') {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleStateHospitalized, repDict);
+      } else {
+        this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleCountyHospitalized, repDict);
+      }
+      this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1Hospitalized, repDict);
+      this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseHospitalized : this.translationsObj.chartLegend2DecreaseHospitalized, repDict);
+    } else if (this.chartConfigFilter == 'icu') {
       if (!('chartTitleStateICU' in this.translationsObj)) {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict) + " " + regionName;
       } 
@@ -38,7 +59,6 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
       // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitleICU, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1ICU, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2IncreaseICU : this.translationsObj.chartLegend2DecreaseICU, repDict);
-      this.translationsObj.currentLocation = regionName;
     } else {
       if (!('chartTitleState' in this.translationsObj)) {
         this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict) + " " + regionName;
@@ -51,8 +71,8 @@ class CAGovDashboardPatients extends CAGovDashboardChart {
       // this.translationsObj.post_chartTitle = applySubstitutions(this.translationsObj.chartTitle, repDict);
       this.translationsObj.post_chartLegend1 = applySubstitutions(this.translationsObj.chartLegend1, repDict);
       this.translationsObj.post_chartLegend2 = applySubstitutions(latestRec.CHANGE_FACTOR >= 0? this.translationsObj.chartLegend2Increase : this.translationsObj.chartLegend2Decrease, repDict);
-      this.translationsObj.currentLocation = regionName;
     }
+    this.translationsObj.currentLocation = regionName;
     return repDict;
   }
 

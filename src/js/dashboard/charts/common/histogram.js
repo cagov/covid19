@@ -182,7 +182,7 @@ function writeDateAxis(svg, data, x, y,
   else if (data.length < 60) { day_mod = 7; }
   else if (data.length < 95) { day_mod = 10; }
 
-  if (data.length < 95)       { month_modulo = 1; }
+  if (data.length < 180)      { month_modulo = 1; }
   else if (data.length < 365) { month_modulo = 2; }
   else if (data.length < 500) { month_modulo = 3; }
   else                        { month_modulo = 6; }
@@ -461,8 +461,14 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
   if (line_legend != null) {
     let lsi = Math.floor(line_data.length*2/3);
     let lsample = line_data[lsi];
-    let x1 = this.dimensions.width/3;
-    let y1 = this.dimensions.height/4;
+    let base_x1 = 0.45*this.dimensions.width;
+    let base_y1 = 0.25*this.dimensions.height;
+    // custom positioning based on time-series data - may need to be updated in the future
+    if (root_id.includes('hosp') || root_id.includes('icu-beds')) {
+      base_y1 = 0.15*this.dimensions.height;
+    }
+    let x1 = base_x1;
+    let y1 = base_y1;
     let x2 = xline(lsi);
     let y2 = yline(lsample.VALUE);
     let margin = 6;
@@ -476,10 +482,10 @@ function drawLineLegend(svg, line_legend, line_data, xline, yline, { root_id='ba
       .attr('class','line-legend')
       .attr('id', 'line-legend-'+root_id);
 
-      g.append('text')
+    g.append('text')
       .text(line_legend)
-      .attr("x",this.dimensions.width/3)
-      .attr("y",this.dimensions.height/4);
+      .attr("x",base_x1)
+      .attr("y",base_y1)
     g.append('line')
       .attr('x1',x1)
       .attr('y1',y1)

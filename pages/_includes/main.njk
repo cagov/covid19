@@ -1,6 +1,5 @@
 {%-set dataYesterday = tableauCovidMetrics[1] -%}
 {%-set data2 = dailyStatsV2.data -%}
-{%-set datavax = vaccineSparkData.data -%}
 {%-set datacases = casesSummaryData.data -%}
 {%-set datadeaths = deathsSummaryData.data -%}
 
@@ -27,8 +26,6 @@ formatNumberSmall(tags)-%}
 formatNumber(tags,1)-%}
 {%-set _varPositivityTrend_ = data2.tests.LATEST_CONFIDENT_INCREASE_POSITIVITY_RATE_7_DAYS %}
 
-{%-set _varStatVaccines_ = datavax.summary.CUMMULATIVE_DAILY_DOSES_ADMINISTERED | formatNumber(tags)-%}
-
 {%-set _varCasesTrendClassU_ = '' if _varCasesTrend_ >= 0 else "d-none" %}
 {%-set _varDeathsTrendClassU_ = '' if _varDeathsTrend_ >= 0 else "d-none" %}
 {%-set _varPositivityTrendClassU_ = '' if _varPositivityTrend_ >= 0 else "d-none" %}
@@ -41,17 +38,16 @@ formatNumber(tags,1)-%}
 {%- set _varHospitalizationsPer100k_ = data2.hospitalizations.HOSPITALIZED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
 {%- set _varHospitalizationsTotal_ = data2.hospitalizations.TOTAL_HOSPITALIZED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
 
+{%- set _varAdmissions7DayAvg_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_7_DAY_AVG | formatNumber(tags) -%}
+{%- set _varAdmissionsPer100k_ = data2.hospitalizations.ADMITTED_COVID_CONFIRMED_PATIENTS_PER_100K | formatNumberSmall(tags) -%}
+{%- set _varAdmissionsTotal_ = data2.hospitalizations.TOTAL_ADMITTED_COVID_CONFIRMED_PATIENTS | formatNumber(tags) -%}
+
 {%- set _varInhibitDailyTotals_ = dailyStatsV2|suppressDailyTotals() -%}
 {%- if _varInhibitDailyTotals_  -%}
 {%- set _varStatTotalCasesToday_ = '—' -%}
 {%- set _varStatTotalDeathsToday_ = '—' -%}
 {%- set _varStatTestedDaily_ = '—' -%}
 {%- endif -%}
-
-{%-set _varFullyVaxedPercent_ = (datavax.population.FULLY_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varTotalVaxedPercent_ = (datavax.population.TOTAL_VAXED_RATIO*100) | formatNumberFixed(tags,1)-%}
-{%-set _varDosesDailyAverage_ = datavax.population.DAILY_AVERAGE | formatNumber(tags,0)-%}
-
 
 {% extends "layout.njk" %}
 {% import "macros.njk" as macros %}
@@ -153,46 +149,39 @@ formatNumber(tags,1)-%}
 
 		{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
 		{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varVaxDateReport_ = datavax.summary.DATE | formatDate2(false, tags,0)-%}
 
         {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
         {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
         {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
-        {%- if _deltaHours_ < 1.0 and _varCasesDateReport_ == _varVaxDateReport_ -%}
-					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateText | replace("[UpdatedDate]", _varStatDateLaterAccurate_) | replace("[DataDate]",_varCommonDateReport_) -}}
-					</div>
 
-		{%- else -%}
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextHosp | replace("[HospUpdatedDate]", _varHospDateAccurate_) | replace("[HospDataDate]",_varHospDateReport_) -}}
 					</div>
 					<div class="text-sm text-center text-300">
 						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
 					</div>
-		{%- endif -%}
 
 					<!----- Begin Summary Boxes -->
 					<div class="row d-flex justify-content-md-center summary-boxes">
 						<!-- Blue Summary Box 1 -->						
 						<div class="col-md-6 col-lg-3 px-10px">							
 							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varHospitalizations }}</div>
+								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
 
-								<div id="total-hospitalizations-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varHospitalizationsTotal_ }}</strong>
+								<div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
 								<span class="text-300">{{ translatedLabels.varTotal }}</span>
 								</div>
-								<div id="total-hospitalizations-avg" class="text-white font-size-1-2em mb-2">
-								<strong>{{ _varHospitalizations7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
+								<div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">
+								<strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
 								</div>
 								<div class="text-white text-xs mb-2">
 									<div>
-										<span class="text-300"><strong>{{ _varHospitalizationsPer100k_ }}</strong> (per 100k)</span>
+										<span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (per 100k)</span>
 									</div>
 								</div>
 								<!--Chart and Label -->
 								<div class="mt-auto px-2">
-   								    <div class="sparkline-hospitalizations"></div>
+   								    <div class="sparkline-admissions"></div>
 									<div class="text-white text-xs mt-1">
 										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
 									</div>

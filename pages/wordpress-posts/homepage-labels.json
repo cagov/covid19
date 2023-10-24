@@ -49,6 +49,10 @@
       "text": "Hospitalizations"
     },
     {
+      "_id": "varAdmissions",
+      "text": "New Hospital Admissions"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "Health equity"
     },
@@ -58,7 +62,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "Get your booster"
+      "text": "Get the updated COVID-19 vaccine"
     },
     {
       "_id": "varHeroP2",
@@ -130,11 +134,11 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "Hospitalizations updated [HospUpdatedDate] with data from [HospDataDate]"
+      "text": "New hospital admissions updated [HospUpdatedDate] with data from [HospDataDate]"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "Cases, deaths, and tests updated [CasesUpdatedDate] with data from [CasesDataDate]"
+      "text": "Deaths and tests updated [CasesUpdatedDate] with data from [CasesDataDate]"
     }
   ]
 }

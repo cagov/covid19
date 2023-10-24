@@ -49,6 +49,10 @@
       "text": "住院"
     },
     {
+      "_id": "varAdmissions",
+      "text": "新入院人數"
+    },
+    {
       "_id": "varHealthEquity",
       "text": "健康公平"
     },
@@ -58,7 +62,7 @@
     },
     {
       "_id": "varHeroP1",
-      "text": "接種您的補強針"
+      "text": "接種更新的COVID-19疫苗"
     },
     {
       "_id": "varHeroP2",
@@ -130,11 +134,11 @@
     },
     {
       "_id": "varUpdateTextHosp",
-      "text": "使用[HospDataDate]的數據在[HospUpdatedDate]更新住院病例數"
+      "text": "使用[HospDataDate]的數據在[HospUpdatedDate]更新新入院人數"
     },
     {
       "_id": "varUpdateTextCases",
-      "text": "使用[CasesDataDate]的數據在[CasesUpdatedDate]更新病例數、死亡數及檢測數"
+      "text": "使用[CasesDataDate]的數據在[CasesUpdatedDate]更新死亡數及檢測數"
     }
   ]
 }
