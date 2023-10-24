@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
+
 
 const devOutputPath = 'docs/js/survey-vaccine.js';
 const prodOutputPath = 'pages/_buildoutput/survey-vaccine.js';

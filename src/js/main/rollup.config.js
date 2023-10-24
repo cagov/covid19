@@ -1,5 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 
 const devOutputPath = 'docs/js/main.js';
 const prodOutputPath = 'pages/_buildoutput/main.js';

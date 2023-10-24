@@ -1,6 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 
 const devOutputPath = 'docs/js/alerts.js';
 const prodOutputPath = 'pages/_buildoutput/alerts.js';
