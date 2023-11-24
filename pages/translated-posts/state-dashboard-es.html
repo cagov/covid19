@@ -18,7 +18,14 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">Última actualización</a></strong></li><li><strong><a href="#county-statewide">Datos por condado y de todo el estado</a></strong></li><li><strong><a href="#more">Explorar más datos</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">Última actualización</a></strong></li><li><strong><a href="#county-statewide">Datos por condado y de todo el estado</a></strong></li><li><strong><a href="#more">Explorar más datos</a></strong></li></ul>
+
+
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Interrupción de las actualizaciones de datos sobre la COVID-19</h2>
+<p>Con motivo del Día de Acción de Gracias, se interrumpirán las actualizaciones semanales de los datos sobre la COVID-19. Las actualizaciones regulares se reanudarán en la semana del 27 de noviembre.</p>
+</div><p></p>  
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -165,7 +172,7 @@ formatNumberFixed(tags,1)-%}
     <div class="row pb-4 py-5">
       <div class="col-lg-10 mx-auto">        
 
-  <p class="small-text">Actualización de las nuevas admisiones al hospital del día {{ _varAdmitDateAccurate_ }}, con datos del {{_varHospDateReport_}}.   <br>Actualización de decesos y pruebas del día {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p>
+  <p class="small-text">Actualización de las nuevas hospitalizaciones del día {{ _varAdmitDateAccurate_ }}, con datos del {{_varHospDateReport_}}.   <br>Actualización de decesos y pruebas del día {{_varCasesDateAccurate_}}, con datos del {{_varCasesDateReport_}}.</p>
 
         <p class="small-text"> <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Datos de origen de decesos y pruebas</a></p>
 
@@ -349,8 +356,7 @@ formatNumberFixed(tags,1)-%}
 
 
 
-<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>El número semanal de nuevas admisiones al hospital debido a casos confirmados de COVID-19 en California es {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} con respecto a la semana anterior.   
-
+<h3 class="text-center">Hospitalizaciones</h3>    <cagov-county-toggle-buttons></cagov-county-toggle-buttons> <p>El número semanal de nuevas hospitalizaciones por casos confirmados de COVID-19 en California es {{_varStatAdmit_}}, {{_varStatAdmitChangeText_}} {{_varStatAdmitChange_ | abs}} con respecto a la semana anterior.   
 <!-- The weekly number of ICU patients due to confirmed COVID-19 cases in California reached a total of {{_varStatIcuTotal_}}, {{_varStatIcuChangeText_}} {{_varStatIcuChange_ | abs}} from the prior week.</p> -->
     <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 p-rel">       
