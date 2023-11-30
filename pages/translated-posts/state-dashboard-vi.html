@@ -18,7 +18,14 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">Cập nhật mới nhất</a></strong></li><li><strong><a href="#county-statewide">Dữ liệu của quận và toàn tiểu bang</a></strong></li><li><strong><a href="#more">Tìm hiểu thêm dữ liệu</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">Cập nhật mới nhất</a></strong></li><li><strong><a href="#county-statewide">Dữ liệu của quận và toàn tiểu bang</a></strong></li><li><strong><a href="#more">Tìm hiểu thêm dữ liệu</a></strong></li></ul>
+
+
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Tạm Dừng Cập Nhật Dữ Liệu về COVID-19</h2>
+<p>Việc cập nhật hàng tuần dữ liệu về COVID-19 sẽ tạm dừng do kỳ nghỉ Lễ Tạ Ơn. Chúng tôi sẽ tiếp tục cập nhật thường xuyên vào tuần có ngày 27 tháng 11.</p>
+</div><p></p>  
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -180,8 +187,7 @@ formatNumberFixed(tags,1)-%}
 <li>Số ca nhập viện mới bao gồm những bệnh nhân đã được nhập viện nội trú vào ngày dương lịch trước đó và có kết quả xét nghiệm xác nhận mắc COVID-19 vào thời điểm nhập viện.</li>
 <li>Số ca và tỷ lệ tử vong trung bình hàng ngày có thời gian trễ là 22 ngày do báo cáo chậm.</li>
 <li>Các xét nghiệm có thời gian trễ là 1 ngày.</li>
-<li>Dữ liệu xét nghiệm từ quận Los Angeles có thời gian trễ là 8 ngày.</li>
-<li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người nằm trong dự báo về dân số của Sở Tài Chính California cho năm 2020.</li>
+<li>Các mẫu số dân số được sử dụng cho tỷ lệ trên 100 nghìn người được lấy từ dự báo về dân số của Sở Tài Chính California cho năm 2020.</li>
 <li>Các ca xét nghiệm có kết quả dương tính dựa trên mức trung bình 7 ngày mà không có thời gian trễ. Dữ liệu do Sở Y Tế Công Cộng California cung cấp.</li>
 <li>Tìm kiếm dữ liệu về số ca mắc? Dữ liệu lịch sử về số ca mắc đã lưu trữ có sẵn trên <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Cổng Dữ Liệu Mở.</a></li></ul> 
               </div>
@@ -395,13 +401,14 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">Mức trung bình 7 ngày</li>
           <li data-label="tooltipContent">Vào <b>{DATE}</b> đã có tổng số <b>{VALUE}</b> giường ICU còn trống.</li>
           <li data-label="timeTabLabel1">Mọi lúc</li>
-          <li data-label="timeTabLabel2">7 ngày</li>
+          <li data-label="timeTabLabel2">3 tháng</li>
+          <li data-label="timeTabLabel3">7 ngày</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Dữ liệu nguồn về số bệnh nhân nhập viện và vào Đơn Vị Chăm Sóc Đặc Biệt (Intensive Care Unit, ICU) do mắc COVID-19</a>. Dữ liệu được cập nhật hàng tuần.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data">Dữ liệu nguồn về số bệnh nhân nhập viện và vào Đơn Vị Chăm Sóc Đặc Biệt (Intensive Care Unit, ICU) do mắc COVID-19</a>. Dữ liệu được cập nhật hàng tuần.</p>
 
 
 

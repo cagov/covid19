@@ -18,7 +18,14 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">Pinakabagong update</a></strong></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">Pinakabagong update</a></strong></li><li><strong><a href="#county-statewide">Data ng county at buong estado</a></strong></li><li><strong><a href="#more">Mag-explore ng higit pang data</a></strong></li></ul>
+
+
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">Pag-pause ng Mga Update sa Data Kaugnay ng COVID-19</h2>
+<p>Ipo-pause ang mga lingguhang update sa data kaugnay ng COVID-19 para sa Thanksgiving. Babalik ang mga regular na update na ito sa linggo ng Nobyembre 7.</p>
+</div><p></p>  
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -180,7 +187,6 @@ formatNumberFixed(tags,1)-%}
 <li>Kasama sa bilang ng mga bagong admission ang mga pasyenteng na-admit sa isang inpatient na kama sa nakaraang araw ng kalendaryo, na nakumpirma ng laboratoryo na may COVID-19 sa panahon ng admission.</li>
 <li>Ang rate ng pagkamatay at pang-araw-araw na average ay may 22-araw na lag dahil sa mga pagkakaantala sa pag-uulat.</li>
 <li>May 1 araw na pagkaantala sa mga pagsusuri.</li>
-<li>May 8 araw na lag ang data ng pagsusuri mula sa county ng Los Angeles.</li>
 <li>Mula sa mga pagtatantya sa populasyon para sa 2020 ng Departamento ng Pananalapi ng California ang mga denominator ng populasyong ginamit sa mga kada 100K na rate.</li>
 <li>Nakabatay ang pagpopositibo ng pagsusuri sa isang 7 araw na araw nang walang lag. Ang data ay mula sa Departamento ng Pampublikong Kalusugan ng California.</li>
 <li>Naghahanap ng data ng kaso? Available ang mga naka-archive na data ng dating kaso sa <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">Open Data Portal.</a></li></ul> 
@@ -395,13 +401,14 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">7 araw na average</li>
           <li data-label="tooltipContent">Noong <b>{DATE}</b>, <b>{VALUE}</b> ang available na kama sa ICU sa kabuuan.</li>
           <li data-label="timeTabLabel1">Lahat ng oras</li>
-          <li data-label="timeTabLabel2">7 araw</li>
+          <li data-label="timeTabLabel2">3 buwan</li>
+          <li data-label="timeTabLabel3">7 araw</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">Source data ng mga naospital na pasyente dahil sa COVID-19 at ICU</a>. Linggu-linggong ina-update ang data.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data">Source data ng mga naospital na pasyente dahil sa COVID-19 at ICU</a>. Linggu-linggong ina-update ang data.</p>
 
 
 

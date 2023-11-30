@@ -2,8 +2,8 @@ name: Staging deploy - AWS
 on:
   schedule:
     # run around 9:00am on Mondays, 3:55 on Wednesdays, 7:55 Thurs
-    - cron:  '0 16 * * Mon'
-    - cron:  '55 22 * * Wed'
+    - cron:  '0 17 * * Mon'
+    - cron:  '55 23 * * Wed'
     - cron:  '55 15 * * Thu'
 
   push:
@@ -21,7 +21,7 @@ jobs:
   build_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: staging
           submodules: true
@@ -48,7 +48,7 @@ jobs:
 
       # Push built site files to S3 production bucket    
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

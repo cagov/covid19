@@ -1,7 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import postcss from 'rollup-plugin-postcss';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
+
 
 const defaultConfig = {
   equityChartsDataLoc: 'https://data.covid19.ca.gov/data/reviewed',

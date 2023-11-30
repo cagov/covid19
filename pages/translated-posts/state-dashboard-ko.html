@@ -18,7 +18,14 @@ addtositemap: true
 
 
 
-<ul class="toc"><li><strong><a href="#latest-update">최근 업데이트</a></strong></li><li><strong><a href="#county-statewide">카운티 및 주 전역 데이터</a></strong></li><li><strong><a href="#more">추가 자료 확인</a></strong></li></ul>    
+<ul class="toc"><li><strong><a href="#latest-update">최근 업데이트</a></strong></li><li><strong><a href="#county-statewide">카운티 및 주 전역 데이터</a></strong></li><li><strong><a href="#more">추가 자료 확인</a></strong></li></ul>
+
+
+
+<div class="highlight">
+<h2 class="h3 color-primary mt-0">COVID-19 데이터 업데이트 일시 중단</h2>
+<p>COVID-19 데이터에 대한 주간 업데이트가 추수감사절 연휴로 인해 일시 중단됩니다. 해당 정기 업데이트는 11월 27일 주에 재개됩니다.</p>
+</div><p></p>  
 <!--
 {# {%-set data = tableauCovidMetrics[0] -%} #}
 {%-set data2 = dailyStatsV2.data -%}
@@ -178,10 +185,9 @@ formatNumberFixed(tags,1)-%}
 <li>데이터 출처는 2023년 7월에 변경되었으며 2023년도의 사망자 데이터에 대한 출처를 일관성있게 제공하기 위해 모든 2023년 데이터에 소급 적용하였습니다.</li>
 <li>입원 환자 수에는 입원 기간 중 COVID-19 진단을 받은 환자가 모두 포함되어 있습니다. 이것이 COVID-19 합병증으로 인해 입원헸거나 COVID-19 증상을 겪었다는 것을 의미하지는 않습니다.</li> 
 <li>신규 입원자 수에는 역일 기준 전날에 입원 당시 검사에 의해 COVID-19로 확진되어 입원한 환자가 포함되어 있습니다.</li>
-<li>일일 평균 사망자 수 및 사망률에는 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li>
+<li>사망자 일일 평균 및 사망률은 보고 상의 지연으로 인해 22일의 시차가 있습니다.</li>
 <li>검사 건 수에는 1일의 시차가 있습니다.</li>
-<li>Los Angeles 카운티의 검사 데이터는 8일의 시차가 있습니다.</li>
-<li>10만명 당 비율에 대해 사용된 인구 수 분모는 캘리포니아주 재정부(Department of Finance)의 2020년도 예상 인구 수를 참조하였습니다.</li>
+<li>10만명 당 비율에 대해 사용된 인구 수 분모는 캘리포니아주 재정부(Department of Finance)의 2020년도 예상 인구 수를사용하였습니다.</li>
 <li>양성 판정율은 시차 없이 7일 평균을 기준으로 합니다. 데이터는 캘리포니아주 공중보건부(California Department of Public Health)에서 제공합니다.</li>
 <li>확진자 데이터를 찾고 계신가요? 보관된 과거 확진자 데이터는 <a href="https://data.chhs.ca.gov/dataset/covid-19-time-series-metrics-by-county-and-state">공공 데이터 포털</a>에서 제공 받을 수 있습니다.</li></ul> 
               </div>
@@ -395,13 +401,14 @@ formatNumberFixed(tags,1)-%}
           <li data-label="dayAverage">7일 평균</li>
           <li data-label="tooltipContent"><b>{날짜}</b> 자로 사용 가능한 중환자실 병상 수는 총 <b>{VALUE}</b>실입니다.</li>
           <li data-label="timeTabLabel1">항시</li>
-          <li data-label="timeTabLabel2">7일</li>
+          <li data-label="timeTabLabel2">3개월</li>
+          <li data-label="timeTabLabel3">7일</li>
         </ul>       </cagov-chart-dashboard-icu-beds> </div> 
   </div>
 
 
 
-<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data1">COVID-19 입원 환자 수 및 ICU 원천 데이터</a>. 데이터는 주별로 업데이트됩니다.</p>
+<p class="small-text mt-2"><a href="https://data.ca.gov/dataset/covid-19-hospital-data">COVID-19 입원 환자 수 및 ICU 원천 데이터</a>. 데이터는 주별로 업데이트됩니다.</p>
 
 
 
