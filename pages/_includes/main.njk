@@ -134,122 +134,19 @@ formatNumber(tags,1)-%}
 
   <!-- MOVED THE STATS -->
 <hero-stats>
-	<div class="bg-darkblue full-bleed mb-0">
-  <div class="container py-2">
-    <div class="row pb-4">
-				<div class="hero-stats" role="region" aria-labelledby="tracking-covid">
+    <div class="bg-darkblue full-bleed mb-0">
+        <div class="container py-2">
+            <div class="row pb-4">
+                <div class="hero-stats" role="region" aria-labelledby="tracking-covid">
 					<h2 class="color-orange text-center m-0 pb-2 pt-3" id="tracking-covid">{{translatedLabels.varStatsHeader}}</h2>
 
-		{%-set _varCasesDateAccurate_ = stateDashboardCasesUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varCasesDateRounded_ = stateDashboardCasesUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varCasesDateReport_ = dailyStatsV2.data.cases.DATE | formatDate2(false, tags,0)-%}
-
-		{%-set _varHospDateAccurate_ = stateDashboardPatientsUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varHospDateReport_ = dailyStatsV2.data.hospitalizations.DATE | formatDate2(false, tags,0)-%}
-
-		{%-set _varVaxDateAccurate_ = stateDashboardVaxUpdateTime.PUBLISH_DATE | formatDate2(true,tags,0)-%}
-		{%-set _varVaxDateRounded_ = stateDashboardVaxUpdateTime.ROUNDED_PUBLISH_DATE | formatDate2(true,tags,0)-%}
-
-        {%- set _deltaHours_ = '' | dateDeltaHours(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) -%}
-        {%- set _varStatDateLaterAccurate_ = '' | latestDate(stateDashboardCasesUpdateTime.PUBLISH_DATE,stateDashboardVaxUpdateTime.PUBLISH_DATE) | formatDate2(true,tags,0) -%}
-        {%- set _varCommonDateReport_ = _varCasesDateReport_ -%}
-
-					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateTextHosp | replace("[HospUpdatedDate]", _varHospDateAccurate_) | replace("[HospDataDate]",_varHospDateReport_) -}}
-					</div>
-					<div class="text-sm text-center text-300">
-						{{- translatedLabels.varUpdateTextCases | replace("[CasesUpdatedDate]", _varCasesDateAccurate_) | replace("[CasesDataDate]",_varCasesDateReport_) -}}
-					</div>
-
-					<!----- Begin Summary Boxes -->
-					<div class="row d-flex justify-content-md-center summary-boxes">
-						<!-- Blue Summary Box 1 -->						
-						<div class="col-md-6 col-lg-3 px-10px">							
-							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varAdmissions }}</div>
-
-								<div id="total-admissions-number" class="text-white font-size-1-2em mb-2"><strong>{{ _varAdmissionsTotal_ }}</strong>
-								<span class="text-300">{{ translatedLabels.varTotal }}</span>
-								</div>
-								<div id="total-admissions-avg" class="text-white font-size-1-2em mb-2">
-								<strong>{{ _varAdmissions7DayAvg_ }}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
-								</div>
-								<div class="text-white text-xs mb-2">
-									<div>
-										<span class="text-300"><strong>{{ _varAdmissionsPer100k_ }}</strong> (per 100k)</span>
-									</div>
-								</div>
-								<!--Chart and Label -->
-								<div class="mt-auto px-2">
-   								    <div class="sparkline-admissions"></div>
-									<div class="text-white text-xs mt-1">
-										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
-									</div>
-								</div>
-								<!--End Chart and Label -->
-							</div>
-						</div>
-
-						<!-- Blue Summary Box 3 -->
-						<div class="col-md-6 col-lg-3 px-10px">							
-							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTotalDeaths }}</div>
-
-								<div id="total-deaths-number" class="text-white font-size-1-2em mb-2">
-								<strong>{{_varStatTotalDeaths_}}</strong> <span class="text-300">{{translatedLabels.varTotal}}</span>
-								</div>
-								<div id="total-deaths-today" class="text-white font-size-1-2em mb-2">
-								<strong>{{_varDeathsDailyAverage_}}</strong> <span class="text-300">{{ translatedLabels.varDailyAvg }}</span>
-								</div>
-								<div class="text-white text-xs mb-2">
-									<div>
-										<strong>{{_varStatNewDeathsPer100k_}}</strong> <span class="text-300">new deaths (per 100K)</span>
-									</div><div>&nbsp;</div>
-								</div>
-
-								<!--Chart and Label -->
-								<div class="mt-auto px-2">
-									<div class="sparkline-deaths"></div>
-									<div class="text-white text-xs mt-1">
-										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
-									</div>
-								</div>
-								<!--End Chart and Label -->
-							</div>
-						</div>
-						<!-- Blue Summary Box 4 -->
-						<div class="col-md-6 col-lg-3 px-10px">							
-							<div class="bg-blue bd-rounded-10 px-6px py-2 text-center mt-3 summary-box d-flex flex-column">
-								<div class="h5 text-uppercase color-white line-height-1-2 mt-1 mb-auto">{{ translatedLabels.varTestsReported }}</div>
-								<div id="total-tests-number" class="text-white font-size-1-2em mb-2">
-								<span class="text-300">&nbsp;</span>
-								</div>
-								<div id="total-tested-today" class="text-white font-size-1-2em mb-2">
-									<strong>{{_varStatLatestPositivityPct_}}%</strong> <span class="text-300">{{ translatedLabels.varTestPositivity }}</span>
-								</div>
-								{# <div class="text-white text-xs mb-2">
-									<span class="text-300">&nbsp;</span>
-								</div> #}
-								<!--Chart and Label -->
-								<div class="mt-auto px-2">
-									<div class="sparkline-tests"></div>
-									<div class="text-white text-xs mt-1 ">
-										<span class="text-300 date-caption-span">{{ translatedLabels.varPast8Weeks }}</span>
-									</div>
-								</div>
-								<!--End Chart and Label -->
-							</div>
-						</div>
-					</div>
-					<!-- End Summary Boxes -->
-
 				
-				<div class="text-sm text-center text-300 ptop-24px">
-							{{translatedLabels.varDataDetailsHere}} <a class="hero-stats-footer-slink" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">{{translatedLabels.varStateDashboard}}</a>.
+				<div class="text-md col-md-8 text-center text-300 mx-auto ptop-24px">
+                    California tracks data on COVID-19 and other respiratory viruses like influenza (flu). Check out the new dashboard to find data on hospitalization admission rates, death rates, and ICU bed availability.
 				</div>
 						
 				<div class="hero-stats-footer">
-					    <a class="hero-stats-footer-link mt-2" href="{{ "state-dashboard/"  | toTranslatedPath(tags) }}">
+					    <a class="hero-stats-footer-link mt-2" href="https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Respiratory-Viruses/RespiratoryDashboard.aspx">
 						<span class="no-underline " aria-hidden="true">
 
 						<svg class="chart-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -279,6 +176,11 @@ formatNumber(tags,1)-%}
 	 M15.48,4.93V21.9h-4.63V4.93C10.85,4.93,15.48,4.93,15.48,4.93z M9.31,14.36v7.54H4.68v-7.54C4.68,14.36,9.31,14.36,9.31,14.36z"/></svg></span><span class="ml-2">{{translatedLabels.varHealthEquity}}</span></a>
 						
 				</div>
+                <!--
+				<div class="text-sm text-center text-300 ptop-24px">
+                    Looking for county data? Use the <a class="hero-stats-footer-slink" href="https://www.cdc.gov/TemplatePackage/contrib/widgets/covidcountycheck/">COVID-19 County Check tool</a> to check local conditions.
+				</div>
+                -->
 			</div>
 		</div>
 	</div>
