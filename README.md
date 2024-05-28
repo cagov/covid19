@@ -1,5 +1,7 @@
 # covid19.ca.gov
 
+## NOTE: As of 5-28-2024 This project is not actively maintained by ODI and this repo is being converted to Archive (read-only) status.
+
 <img src="https://calenterprise.vsrm.visualstudio.com/_apis/public/Release/badge/520e8f21-6c5d-44c8-b523-979e428a7123/1/4">
 
 The <b>covid19.ca.gov</b> website is designed to answer the questions Californians have about COVID-19 and the public health measures taken across the state to control it. It presents real-time public health information that is accurate, easy to read, and actionable. It provides a single source of truth about the state’s COVID-19 response and a central location for simplified policy guidance. It is intended to be easy to understand while offering links to related info on other state websites. 
